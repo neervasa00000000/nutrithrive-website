@@ -2,11 +2,6 @@
   command = ""
   publish = "/"
 
-[[redirects]]
-  from = "/contact"
-  to = "/contact.html"
-  status = 200
-
 [forms]
   [forms.contact]
     action = "/thank-you.html" 
