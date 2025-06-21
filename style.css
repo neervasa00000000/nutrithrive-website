@@ -94,7 +94,7 @@ header {
     font-weight: 600;
     color: var(--primary);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .nav-links a.active,
@@ -116,7 +116,7 @@ header {
     height: 3px;
     background-color: var(--primary);
     margin: 5px 0;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .hamburger.toggle .line1 {
@@ -713,7 +713,7 @@ footer {
         justify-content: center;
         align-items: center;
         transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.2s ease-in-out;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         z-index: 1000;
     }
