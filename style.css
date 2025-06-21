@@ -155,6 +155,10 @@ nav a.active, nav a:hover {
     color: var(--primary);
 }
 
+.nav-links-container {
+    display: flex;
+    align-items: center;
+}
 
 /* Hero Section */
 .hero {
