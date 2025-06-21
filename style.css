@@ -702,20 +702,21 @@ footer {
     }
 
     .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
+        left: 0;
+        right: unset;
+        width: 100vw;
         height: 100vh;
-        width: 250px;
-        background-color: #fff;
+        top: 0;
+        position: fixed;
+        background: #fff;
+        z-index: 2000;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transform: translateX(100%);
+        transform: translateX(-100%);
         transition: transform 0.2s ease-in-out;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        z-index: 1000;
     }
 
     .nav-links.nav-active {
@@ -732,20 +733,131 @@ footer {
     }
 
     .about-mission {
-        grid-template-columns: 1fr;
-        padding: 1.5rem 1rem;
-        gap: 1.5rem;
+        padding: 2.2rem 1rem 2.5rem 1rem;
+        gap: 2.2rem;
+    }
+    .about-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.7rem;
+    }
+    .about-desc {
+        font-size: 1.08rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.7;
+        letter-spacing: 0.01em;
     }
     .about-img {
-        justify-content: center;
-        margin-top: 2rem;
+        margin-top: 2.2rem;
+        margin-bottom: 0.5rem;
     }
     .about-img img {
-        max-width: 80vw;
+        max-width: 90vw;
         width: 100%;
         height: auto;
         display: block;
         margin: 0 auto;
+    }
+
+    /* --- Product Section Mobile Optimizations --- */
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+        margin: 1.2rem 0.2rem;
+        text-align: center;
+    }
+    .hero-content {
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+    .hero-image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 1.2rem;
+    }
+    .hero-image img {
+        max-width: 90vw;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+    }
+    .products-section {
+        padding: 1.5rem 0.5rem;
+    }
+    .products-grid {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .product-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 1.2rem 0.7rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .product-image {
+        max-width: 90vw;
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+    }
+    .product-title {
+        font-size: 1.15rem;
+    }
+    .btn {
+        width: 100%;
+        font-size: 1.05rem;
+        padding: 0.8rem 0;
+        margin-top: 1.2rem;
+    }
+
+    /* --- About Section Mobile Optimizations --- */
+    .about-mission {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2.2rem 0.7rem 2.5rem 0.7rem;
+        gap: 1.5rem;
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(236, 231, 219, 0.8);
+    }
+    .about-text {
+        width: 100%;
+        padding: 0 0.2rem;
+    }
+    .about-title {
+        font-size: 1.18rem;
+        margin-bottom: 0.8rem;
+    }
+    .about-desc {
+        font-size: 1.09rem;
+        margin-bottom: 1.3rem;
+        line-height: 1.8;
+        letter-spacing: 0.01em;
+        padding: 0 0.1rem;
+    }
+    .about-img {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+    .about-img img {
+        max-width: 92vw;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 }
 
