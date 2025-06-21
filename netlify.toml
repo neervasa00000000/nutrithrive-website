@@ -1,0 +1,6 @@
+# Redirect rule to fix the broken contact page link
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 301
+  force = true 
