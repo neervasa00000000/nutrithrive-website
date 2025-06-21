@@ -817,30 +817,49 @@ footer {
         margin-top: 1.2rem;
     }
 
-    /* --- About Section Mobile Optimizations --- */
+    /* --- Improved About Section Mobile Styles --- */
+    .about-hero {
+        padding: 2.5rem 0.7rem 1.5rem 0.7rem;
+        background: var(--card);
+        border-radius: var(--radius);
+        margin: 1.2rem 0.2rem 0.5rem 0.2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .about-hero-title {
+        font-size: 1.6rem;
+        margin-bottom: 0.7rem;
+        line-height: 1.2;
+    }
+    .about-hero-desc {
+        font-size: 1.13rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
     .about-mission {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 2.2rem 0.7rem 2.5rem 0.7rem;
-        gap: 1.5rem;
+        gap: 1.7rem;
         background: var(--card);
         border-radius: var(--radius);
-        box-shadow: var(--shadow);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         border: 1px solid rgba(236, 231, 219, 0.8);
+        margin: 0.5rem 0.2rem 1.2rem 0.2rem;
     }
     .about-text {
         width: 100%;
         padding: 0 0.2rem;
     }
     .about-title {
-        font-size: 1.18rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.22rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
     }
     .about-desc {
-        font-size: 1.09rem;
-        margin-bottom: 1.3rem;
-        line-height: 1.8;
+        font-size: 1.13rem;
+        margin-bottom: 1.4rem;
+        line-height: 1.85;
         letter-spacing: 0.01em;
         padding: 0 0.1rem;
     }
@@ -848,16 +867,16 @@ footer {
         width: 100%;
         display: flex;
         justify-content: center;
-        margin: 1.5rem 0 0.5rem 0;
+        margin: 2rem 0 0.7rem 0;
     }
     .about-img img {
-        max-width: 92vw;
+        max-width: 95vw;
         width: 100%;
         height: auto;
         display: block;
         margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.10);
     }
 }
 
