@@ -43,6 +43,10 @@ body {
     overflow-x: hidden;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 header {
     position: sticky;
     top: 0;
@@ -84,20 +88,28 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--primary);
-    transition: all 0.3s ease-in-out;
+    padding: 10px;
+    z-index: 1001;
 }
 
-.hamburger.toggle .fa-bars {
-    transform: rotate(45deg);
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary);
+    margin: 5px 0;
+    transition: all 0.3s ease;
 }
-.hamburger.toggle .fa-times {
-    transform: rotate(-45deg);
-    display: block;
+
+.hamburger.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
 }
-.hamburger .fa-times {
-    display: none;
+
+.hamburger.toggle .line2 {
+    opacity: 0;
+}
+
+.hamburger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 nav a {
@@ -862,6 +874,7 @@ footer {
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1000;
 }
 
 .nav-links.nav-active {
