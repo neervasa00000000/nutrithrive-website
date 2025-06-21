@@ -361,7 +361,7 @@ nav a.active, nav a:hover {
 }
 
 .product-card {
-    flex: 0 1 200px;
+    flex: 0 1 220px;
     background: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
