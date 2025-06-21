@@ -1,7 +1,0 @@
-[build]
-  command = ""
-  publish = "/"
-
-[forms]
-  [forms.contact]
-    action = "/thank-you.html" 
