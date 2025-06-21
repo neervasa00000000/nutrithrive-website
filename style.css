@@ -665,19 +665,9 @@ footer {
 
 /* About Page Styles */
 .about-hero {
-    min-height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     text-align: center;
-    padding: 4rem 2rem 2rem 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin: 3rem auto 2rem auto;
-    max-width: 1200px;
-    border: 1px solid rgba(236, 231, 219, 0.8);
+    padding: 2.5rem 1rem;
+    background-color: var(--background);
 }
 
 .about-hero-title {
