@@ -83,6 +83,25 @@ header {
     margin-right: 0.5rem;
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: var(--accent);
+}
+
 .hamburger {
     display: none;
     background: none;
@@ -90,7 +109,6 @@ header {
     cursor: pointer;
     padding: 10px;
     z-index: 1001;
-    transition: all 0.3s ease;
 }
 
 .hamburger div {
@@ -111,36 +129,6 @@ header {
 
 .hamburger.toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
-}
-
-nav a {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--primary);
-    text-decoration: none;
-    position: relative;
-    transition: color var(--transition);
-    padding: 0.5rem 0;
-    margin: 0 1rem;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width var(--transition);
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-nav a.active, nav a:hover {
-    color: var(--accent);
 }
 
 .nav-icons {
@@ -715,7 +703,6 @@ footer {
 
     .nav-links {
         position: fixed;
-        z-index: 1000;
         top: 0;
         right: 0;
         height: 100vh;
@@ -728,6 +715,7 @@ footer {
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
     }
 
     .nav-links.nav-active {
@@ -870,19 +858,9 @@ footer {
 }
 
 .nav-links {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 250px;
-    background-color: #fff;
-    flex-direction: column;
-    justify-content: center;
+    display: flex;
     align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    z-index: 1000;
+    gap: 2rem;
 }
 
 .nav-links.nav-active {
