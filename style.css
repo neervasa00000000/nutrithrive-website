@@ -90,6 +90,7 @@ header {
     cursor: pointer;
     padding: 10px;
     z-index: 1001;
+    transition: all 0.3s ease;
 }
 
 .hamburger div {
@@ -700,9 +701,12 @@ footer {
         padding: 1.5rem 1rem;
     }
 
+    .nav-links-container {
+        display: none;
+    }
+
     .hamburger {
         display: block;
-        z-index: 1001; /* Ensure it's on top */
     }
 
     .nav-links {
