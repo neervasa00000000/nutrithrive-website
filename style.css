@@ -1115,4 +1115,100 @@ footer {
 
 #paypal-hosted-button-container {
     margin-top: 2rem;
+}
+
+.product-detail-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 1rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.thumbnail.active, .thumbnail:hover {
+    border-color: var(--primary);
+}
+
+.product-purchase-details .product-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+.product-purchase-details .product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.product-selectors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-purchase-details .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.product-purchase-details .form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.product-purchase-details select, 
+.product-purchase-details textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    width: 100%;
+}
+
+.product-purchase-details textarea {
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+    text-align: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+#paypal-button-container {
+    margin-top: 2rem;
 } 
