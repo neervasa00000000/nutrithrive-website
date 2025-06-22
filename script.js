@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sizeSelect = document.getElementById('size-select');
         const quantitySelect = document.getElementById('quantity-select');
         const priceDisplay = document.getElementById('product-price');
-        const paypalContainer = document.getElementById('paypal-button-container');
+        const paypalContainer = document.getElementById('paypal-container-ERYQAP7ZAHDDQ');
         const orderStatusEl = document.getElementById('order-status');
 
         // --- Image Gallery ---
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Price Calculation & PayPal ---
-        if (sizeSelect && quantitySelect && priceDisplay && paypalContainer) {
+        // --- Price Calculation ---
+        if (sizeSelect && quantitySelect && priceDisplay) {
             function updatePrice() {
                 const selectedSizeOption = sizeSelect.options[sizeSelect.selectedIndex];
                 const price = parseFloat(selectedSizeOption.getAttribute('data-price'));
