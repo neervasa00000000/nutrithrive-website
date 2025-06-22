@@ -297,8 +297,9 @@ header {
     padding: 4rem 0;
     margin: 4rem auto;
     max-width: 100%;
+    width: 100%;
     text-align: center;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
 }
 
