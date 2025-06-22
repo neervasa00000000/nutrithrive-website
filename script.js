@@ -13,24 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // New Product Detail Page Logic
     if (document.body.classList.contains('product-page')) {
-        const mainImage = document.getElementById('main-product-image');
-        const thumbnails = document.querySelectorAll('.thumbnail');
         const sizeSelect = document.getElementById('size-select');
         const quantitySelect = document.getElementById('quantity-select');
         const priceDisplay = document.getElementById('product-price');
         const paypalContainer = document.getElementById('paypal-container-ERYQAP7ZAHDDQ');
         const orderStatusEl = document.getElementById('order-status');
-
-        // --- Image Gallery ---
-        if (mainImage && thumbnails.length > 0) {
-            thumbnails.forEach(thumb => {
-                thumb.addEventListener('click', function() {
-                    mainImage.src = this.getAttribute('data-image');
-                    thumbnails.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        }
 
         // --- Price Calculation ---
         if (sizeSelect && quantitySelect && priceDisplay) {
