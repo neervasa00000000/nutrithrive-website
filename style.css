@@ -1,3 +1,10 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 :root {
     --bg: #f8f5ec;
     --card: #fffdfa;
@@ -701,25 +708,22 @@ footer {
         display: block;
     }
 
-    /* --- Definitive Mobile Menu Fullscreen Fix --- */
     .nav-links {
-        position: fixed;
-        top: 0;
         left: 0;
-        margin: 0;
-        padding: 0;
-        width: 100%; 
-        height: 100%;
-        min-width: 100vw;
-        min-height: 100vh;
+        right: unset;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        position: fixed;
         background: #fff;
         z-index: 2000;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.2s ease-in-out;
     }
 
     .nav-links.nav-active {
@@ -735,42 +739,30 @@ footer {
         font-size: 1.5rem;
     }
 
-    /* --- Final & Definitive Fix for About Page Mobile --- */
+    /* --- Definitive Fix for About Page Mobile --- */
     .about-hero {
-        padding: 2rem 1rem;
-        margin: 1rem;
-    }
-    .about-hero-title {
-        font-size: 1.8rem;
-    }
-    .about-hero-desc {
-        font-size: 1.1rem;
+        padding: 2rem 1.5rem;
+        margin: 1rem 0;
     }
     .about-mission {
         display: flex;
-        flex-direction: column-reverse;
-        width: auto;
-        padding: 1.5rem 1rem;
-        margin: 1rem;
+        flex-direction: column-reverse; /* Puts image first */
+        width: 100%; /* Occupy full width, no more */
+        padding: 2rem 1.5rem;
+        margin: 0; /* No margin, spacing is controlled by padding */
         gap: 2rem;
+        overflow: hidden; /* Extra safety to prevent overflow */
     }
     .about-text {
         width: 100%;
         min-width: unset;
-    }
-    .about-title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-    .about-desc {
-        font-size: 1.1rem;
-        line-height: 1.7;
     }
     .about-img {
         min-width: unset;
         margin: 0;
     }
     .about-img img {
+        display: block;
         width: 100%;
         border-radius: 12px;
     }
