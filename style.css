@@ -923,25 +923,13 @@ footer {
 
 /* Product Detail Page Styles */
 .product-detail-section {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 3rem auto;
     padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-}
-
-.product-detail-info {
-    text-align: left;
-}
-
-.product-detail-image img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .product-detail-info h1 {
@@ -962,17 +950,6 @@ footer {
     color: var(--muted);
     line-height: 1.6;
     margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-    .product-detail-section {
-        grid-template-columns: 1fr; /* Stack to a single column */
-        padding: 1rem;
-        margin: 1.5rem 1rem;
-    }
-    .product-detail-info {
-        text-align: center;
-    }
 }
 
 /* --- Blog Page Styles --- */
