@@ -9,9 +9,9 @@ html {
     --bg: #f8f5ec;
     --card: #fffdfa;
     --primary: #175c36;
-    --accent: #C7923E;
+    --accent: #A57C34;
     --footer-bg: #175c36;
-    --footer-text: #fff;
+    --footer-text: #ffffff;
     --text: #1a2e22;
     --muted: #5A6D5D;
     --radius: 18px;
@@ -494,7 +494,7 @@ footer {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: #fff;
+    color: var(--footer-text);
 }
 
 .footer-links {
@@ -519,10 +519,11 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     margin-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    color: var(--footer-text);
 }
 
 
@@ -532,6 +533,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    max-width: 800px;
 }
 
 .checkout-form-container {
