@@ -1111,4 +1111,8 @@ footer {
     .product-detail-page {
         grid-template-columns: 1fr;
     }
+}
+
+#paypal-hosted-button-container {
+    margin-top: 2rem;
 } 
