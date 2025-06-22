@@ -10,10 +10,4 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll');
         });
     }
-
-    // New Product Detail Page Logic
-    if (document.body.classList.contains('product-page')) {
-        const paypalContainer = document.getElementById('paypal-container-ERYQAP7ZAHDDQ');
-        const orderStatusEl = document.getElementById('order-status');
-    }
 });
