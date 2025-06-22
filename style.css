@@ -960,21 +960,6 @@ footer {
     margin-bottom: 2rem;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.nav-links.nav-active {
-    transform: translateX(0);
-}
-
-.nav-links a {
-    font-size: 1.5rem;
-    margin: 1.5rem 0;
-}
-
 /* --- Blog Page Styles --- */
 .blog-page {
     max-width: 1200px;
@@ -1092,6 +1077,7 @@ footer {
 
 .blog-post-content a.btn {
     text-decoration: none;
+    color: #fff;
 }
 
 .blog-post-content ul,
