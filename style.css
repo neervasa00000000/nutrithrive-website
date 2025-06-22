@@ -144,18 +144,6 @@ header {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-.nav-icons {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-}
-
-.nav-icons i {
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: var(--primary);
-}
-
 .nav-links-container {
     display: flex;
     align-items: center;
