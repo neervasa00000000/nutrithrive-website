@@ -940,10 +940,10 @@ footer {
 }
 
 .product-detail-info .product-desc {
-    font-size: 1.1rem;
-    color: var(--muted);
     line-height: 1.6;
-    margin-bottom: 2rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
 }
 
 .product-options {
@@ -993,7 +993,7 @@ footer {
 /* --- Blog Page Styles --- */
 .blog-page {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 3rem auto;
     padding: 2rem;
 }
 
