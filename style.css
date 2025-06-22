@@ -1123,11 +1123,12 @@ footer {
 }
 
 .product-detail-page {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
     max-width: 1200px;
-    margin: 3rem auto;
+    margin: 2rem auto;
     padding: 2rem;
 }
 
@@ -1165,15 +1166,37 @@ footer {
     border-color: var(--primary);
 }
 
+.product-purchase-details {
+    width: 100%;
+    max-width: 600px; /* Or adjust as needed */
+    text-align: center;
+    padding: 2rem;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+#paypal-hosted-button-container {
+    margin-top: 1.5rem;
+}
+
 .product-purchase-details .product-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
+    font-size: 2.5rem; /* Increased size */
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.product-purchase-details .product-description {
+    font-size: 1.2rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 
 .product-purchase-details .product-price {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: var(--primary);
     margin-bottom: 2rem;
 }
