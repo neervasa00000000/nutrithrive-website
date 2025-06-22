@@ -54,6 +54,11 @@ body.no-scroll {
     overflow: hidden;
 }
 
+/* Apply this class to the body tag of any page where the header should not be sticky */
+.non-sticky-header header {
+    position: static;
+}
+
 header {
     position: sticky;
     top: 0;
@@ -1212,3 +1217,22 @@ footer {
 #paypal-button-container {
     margin-top: 2rem;
 } 
+/* Product Detail Page Override */
+.product-detail-page {
+    display: none; /* Hide the broken layout */
+}
+
+.product-detail-section {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.product-detail-info h1 {
+    font-size: 2.5rem;
+}
+
+#paypal-container-ERYQAP7ZAHDDQ {
+    margin-top: 2rem;
+}
