@@ -96,13 +96,13 @@ header {
     line-height: 1;
 }
 
-.nav-links {
+.navbar .nav-links {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
 
-.nav-links a {
+.navbar a {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--primary);
@@ -110,8 +110,8 @@ header {
     transition: color 0.2s ease;
 }
 
-.nav-links a.active,
-.nav-links a:hover {
+.navbar a.active,
+.navbar a:hover {
     color: var(--accent);
 }
 
