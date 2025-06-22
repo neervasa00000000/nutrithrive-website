@@ -57,10 +57,11 @@
                 </div>
                 <div class="product-card" style="align-items: center;">
                     <a href="#" class="product-link">
-                        <img id="capsules-img" src="https://i.imgur.com/MMijyva.webp" alt="Moringa Capsules" class="product-image" width="450" height="450" style="display: block; margin: 0 auto; transition: transform 0.6s;">
-                        <h3 class="product-title">Moringa Capsules</h3>
+                        <div style="width: 450px; height: 450px; display: flex; align-items: center; justify-content: center; background: #f1f8e9; border-radius: 24px; font-size: 8rem; color: #2e7d32; font-weight: bold; box-shadow: 0 2px 12px rgba(44,125,50,0.08);">
+                            ?
+                        </div>
                     </a>
-                    <button id="capsules-btn" class="btn" type="button">Coming Soon!</button>
+                    <button id="capsules-btn" class="btn" type="button">Add to Cart</button>
                     <div id="capsules-message" style="display:none; margin-top: 1rem; font-weight: bold; color: #2e7d32; font-size: 1.2rem;">Curry Leaves</div>
                 </div>
             </div>
@@ -106,16 +107,13 @@
 
     <script src="script.js"></script>
     <script>
-    // Moringa Capsules: Rotate image and show message on button click
+    // Moringa Capsules: Show message on button click
     const capsulesBtn = document.getElementById('capsules-btn');
-    const capsulesImg = document.getElementById('capsules-img');
     const capsulesMsg = document.getElementById('capsules-message');
-    if (capsulesBtn && capsulesImg && capsulesMsg) {
+    if (capsulesBtn && capsulesMsg) {
       capsulesBtn.addEventListener('click', function() {
-        capsulesImg.style.transform = 'rotateY(360deg)';
         capsulesMsg.style.display = 'block';
         setTimeout(() => {
-          capsulesImg.style.transform = '';
           capsulesMsg.style.display = 'none';
         }, 2000);
       });
