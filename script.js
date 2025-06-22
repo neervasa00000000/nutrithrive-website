@@ -11,58 +11,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Optimized PayPal Hosted Button Loader
-    const paypalHostedContainer = document.getElementById('paypal-hosted-button-container');
-    if (paypalHostedContainer) {
-        const hostedButtonId = paypalHostedContainer.dataset.hostedButtonId;
-        if (hostedButtonId) {
-            const script = document.createElement('script');
-            script.src = 'https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD';
-            script.setAttribute('defer', '');
-            script.onload = () => {
-                paypal.HostedButtons({
-                    hostedButtonId: hostedButtonId,
-                }).render("#paypal-hosted-button-container");
-            };
-            document.head.appendChild(script);
-        }
-    }
-
     // New Product Detail Page Logic
-    if (document.querySelector('.product-detail-page')) {
+    if (document.body.classList.contains('product-page')) {
         const mainImage = document.getElementById('main-product-image');
         const thumbnails = document.querySelectorAll('.thumbnail');
         const sizeSelect = document.getElementById('size-select');
         const quantitySelect = document.getElementById('quantity-select');
         const priceDisplay = document.getElementById('product-price');
         const paypalContainer = document.getElementById('paypal-button-container');
+        const orderStatusEl = document.getElementById('order-status');
 
         // --- Image Gallery ---
-        thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                mainImage.src = this.getAttribute('data-image');
-                thumbnails.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
+        if (mainImage && thumbnails.length > 0) {
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    mainImage.src = this.getAttribute('data-image');
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
             });
-        });
-
-        // --- Price Calculation ---
-        function updatePrice() {
-            const selectedSizeOption = sizeSelect.options[sizeSelect.selectedIndex];
-            const price = parseFloat(selectedSizeOption.getAttribute('data-price'));
-            const quantity = parseInt(quantitySelect.value);
-            const total = (price * quantity).toFixed(2);
-            priceDisplay.textContent = `$${total} AUD`;
-            return total;
         }
 
-        sizeSelect.addEventListener('change', updatePrice);
-        quantitySelect.addEventListener('change', updatePrice);
+        // --- Price Calculation & PayPal ---
+        if (sizeSelect && quantitySelect && priceDisplay && paypalContainer) {
+            function updatePrice() {
+                const selectedSizeOption = sizeSelect.options[sizeSelect.selectedIndex];
+                const price = parseFloat(selectedSizeOption.getAttribute('data-price'));
+                const quantity = parseInt(quantitySelect.value);
+                const total = (price * quantity).toFixed(2);
+                priceDisplay.textContent = `$${total} AUD`;
+                return total;
+            }
 
-        // --- PayPal Integration ---
-        if (paypalContainer) {
+            sizeSelect.addEventListener('change', updatePrice);
+            quantitySelect.addEventListener('change', updatePrice);
+
+            // --- PayPal Integration ---
             const script = document.createElement('script');
+            // IMPORTANT: The client-id here should ideally be fetched from the .env file or a config endpoint,
+            // but for simplicity in this static context, we hardcode it. 
+            // This is the public client ID, so it's safe to be in client-side code.
             script.src = `https://www.paypal.com/sdk/js?client-id=AZ2-stnQ_x1AHe9dMx2y2p0N9E5P_8a09NfW-Mh-4f4y_e4a_e-zT_D_p-e-v-C_e-Y_n-f-O_f-Z_c&currency=AUD&components=buttons`;
+            
             script.onload = () => {
                 paypal.Buttons({
                     style: {
@@ -80,27 +70,49 @@ document.addEventListener('DOMContentLoaded', () => {
                             purchase_units: [{
                                 description: description,
                                 amount: {
-                                    value: totalValue
+                                    value: totalValue,
+                                    currency_code: 'AUD'
                                 }
                             }]
                         });
                     },
                     onApprove: (data, actions) => {
-                        return actions.order.capture().then(details => {
-                            alert('Transaction completed by ' + details.payer.name.given_name);
-                            window.location.href = 'thank-you.html';
+                        return actions.order.capture().then(order => {
+                            orderStatusEl.textContent = 'Processing your order...';
+                            // Call our serverless function
+                            fetch('/.netlify/functions/process-payment', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ order }),
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    orderStatusEl.textContent = 'Thank you! Your order has been received.';
+                                    // Optional: redirect to a thank you page
+                                    // window.location.href = 'thank-you.html';
+                                } else {
+                                    orderStatusEl.textContent = 'There was an issue processing your order. Please contact support.';
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error calling serverless function:', error);
+                                orderStatusEl.textContent = 'An error occurred. Please contact us.';
+                            });
                         });
                     },
                     onError: (err) => {
                         console.error("PayPal checkout error", err);
-                        alert("An error occurred with your payment. Please try again.");
+                        orderStatusEl.textContent = 'An error occurred with payment. Please try again.';
                     }
                 }).render('#paypal-button-container');
             };
             document.head.appendChild(script);
+            
+            // Initial price update
+            updatePrice();
         }
-        
-        // Initial price update
-        updatePrice();
     }
-}); 
+});

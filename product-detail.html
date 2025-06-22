@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://i.imgur.com/BHd5wsN.png">
 </head>
-<body>
+<body class="product-page">
     <header>
         <div class="navbar">
             <a href="/" class="logo">
@@ -32,20 +32,43 @@
     </header>
 
     <main>
-        <section class="product-detail-section">
-            <div class="product-detail-info">
-                <h1>Moringa Powder</h1>
-                <p class="product-desc">Our premium Moringa Powder is a powerhouse of nutrients. Sourced from the purest, organically grown moringa leaves, it's perfect for boosting your energy and promoting overall wellness.</p>
+        <section class="product-detail-page">
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="images/moringa-hero.jpg" alt="Moringa Powder in a stone bowl" id="main-product-image">
+                </div>
+                <div class="thumbnail-images">
+                    <img src="images/moringa-hero.jpg" alt="Moringa Powder thumbnail" class="thumbnail active" data-image="images/moringa-hero.jpg">
+                    <img src="images/7-Photoroom.jpg" alt="Moringa Powder packaging thumbnail" class="thumbnail" data-image="images/7-Photoroom.jpg">
+                </div>
+            </div>
+            <div class="product-purchase-details">
+                <h1 class="product-title">Moringa Powder</h1>
+                <p class="product-price" id="product-price">$10.00 AUD</p>
                 
-                <script 
-                  src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD">
-                </script>
-                <div id="paypal-container-ERYQAP7ZAHDDQ"></div>
-                <script>
-                  paypal.HostedButtons({
-                    hostedButtonId: "ERYQAP7ZAHDDQ",
-                  }).render("#paypal-container-ERYQAP7ZAHDDQ")
-                </script>
+                <div class="product-selectors">
+                    <div class="form-group">
+                        <label for="quantity-select">Quantity</label>
+                        <select id="quantity-select" name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="size-select">Grams</label>
+                        <select id="size-select" name="size">
+                            <option value="100" data-price="10.00">100g - $10.00 AUD</option>
+                            <option value="250" data-price="22.00">250g - $22.00 AUD</option>
+                            <option value="500" data-price="40.00">500g - $40.00 AUD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="paypal-button-container"></div>
+                <p id="order-status"></p>
             </div>
         </section>
     </main>

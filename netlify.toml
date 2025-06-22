@@ -3,4 +3,11 @@
   from = "/contact"
   to = "/contact.html"
   status = 301
-  force = true 
+  force = true
+
+[build]
+  command = "echo 'No build command specified'"
+  publish = "."
+
+[functions]
+  directory = "netlify/functions" 
