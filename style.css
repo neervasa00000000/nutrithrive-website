@@ -880,9 +880,9 @@ footer {
 }
 
 .about-desc {
+    line-height: 1.7;
+    font-size: 1.1rem;
     color: var(--muted);
-    font-size: 1.05rem;
-    margin-bottom: 1.5rem;
 }
 
 .about-list {
@@ -892,48 +892,51 @@ footer {
 }
 
 .about-list li {
-    margin-bottom: 0.7rem;
-    font-size: 1rem;
-    color: var(--text);
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    font-size: 1.1rem;
 }
 
 .about-list i {
     color: var(--primary);
-    margin-right: 0.5rem;
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
 }
 
 .about-img {
     flex: 1;
-    min-width: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .about-img img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    max-width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
 }
 
 /* Product Detail Page Styles */
 .product-detail-section {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 3rem auto;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.product-detail-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .product-detail-info h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: var(--primary);
     margin-bottom: 1rem;
@@ -1112,5 +1115,8 @@ footer {
     }
     .blog-post-header h1 {
         font-size: 2rem;
+    }
+    .product-detail-section {
+        grid-template-columns: 1fr;
     }
 } 
