@@ -90,9 +90,10 @@ header {
     letter-spacing: -1px;
 }
 
-.logo-img {
-    height: 30px;
+.logo-emoji {
+    font-size: 1.8rem;
     margin-right: 0.5rem;
+    line-height: 1;
 }
 
 .nav-links {
