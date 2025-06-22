@@ -1303,3 +1303,41 @@ footer {
 #paypal-container-ERYQAP7ZAHDDQ {
     margin-top: 2rem;
 }
+
+/* Unique color scheme for the grow-moringa-tree-australia blog post */
+body.blog-moringa-tree header,
+body.blog-moringa-tree .navbar {
+  background: linear-gradient(135deg, #43a047, #8bc34a);
+}
+body.blog-moringa-tree .blog-hero {
+  background: linear-gradient(90deg, #e8f5e9 60%, #c8e6c9 100%);
+}
+body.blog-moringa-tree .blog-hero-title,
+body.blog-moringa-tree .blog-hero-desc {
+  color: #2e7d32;
+}
+body.blog-moringa-tree .highlight {
+  background-color: #f1f8e9;
+  border-left: 4px solid #8bc34a;
+}
+body.blog-moringa-tree .cta-banner {
+  background: linear-gradient(135deg, #8bc34a, #43a047);
+  color: #fff;
+}
+body.blog-moringa-tree .cta-banner h2 {
+  color: #fff;
+}
+body.blog-moringa-tree .btn {
+  background-color: #43a047;
+  color: #fff;
+}
+body.blog-moringa-tree .btn:hover {
+  background-color: #2e7d32;
+}
+body.blog-moringa-tree .btn-secondary {
+  background-color: #fff;
+  color: #43a047;
+}
+body.blog-moringa-tree .btn-secondary:hover {
+  background-color: #e8f5e9;
+}
