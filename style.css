@@ -732,40 +732,47 @@ footer {
         font-size: 1.5rem;
     }
 
-    /* --- Consolidated & Fixed About Section Mobile Styles --- */
-    .about-mission {
-        display: flex;
-        flex-direction: column;
-        padding: 1.5rem 1rem;
-        gap: 1.5rem;
+    /* --- Final Fix for About Section Mobile --- */
+    /* Hero section of About page */
+    .about-hero {
+        padding: 2rem 1rem;
         margin: 1rem;
-        background: var(--card);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
+    }
+    .about-hero-title {
+        font-size: 1.8rem;
+    }
+    .about-hero-desc {
+        font-size: 1.1rem;
+    }
+
+    /* Main content section of About page */
+    .about-mission {
+        display: flex; /* Overriding desktop 'grid' */
+        flex-direction: column;
+        width: auto;
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+        gap: 1.5rem;
     }
     .about-text {
         width: 100%;
-        padding: 0 0.5rem;
+        min-width: unset;
+        padding: 0;
     }
     .about-title {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         margin-bottom: 1rem;
-        line-height: 1.4;
     }
     .about-desc {
         font-size: 1.1rem;
         line-height: 1.7;
-        margin-bottom: 1.2rem;
     }
     .about-img {
-        order: 2; /* Ensures image is after text */
-        width: 100%;
+        min-width: unset;
         margin-top: 1rem;
     }
     .about-img img {
         width: 100%;
-        max-width: 100%;
-        height: auto;
         border-radius: 12px;
     }
 
