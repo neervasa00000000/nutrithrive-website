@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Shop 100% pure, lab-tested Moringa powder from NutriThrive Australia. Boost your energy and wellness with nature's finest superfood. Fast shipping nationwide.">
     <title>Buy Pure Moringa Powder Online | NutriThrive Australia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Asynchronously load CSS -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://i.imgur.com/BHd5wsN.png">
 </head>
@@ -50,17 +56,17 @@
         <section class="features">
             <div class="feature-card">
                 <i class="fas fa-seedling feature-icon"></i>
-                <h3 class="feature-title">100% Natural</h3>
+                <h2 class="feature-title">100% Natural</h2>
                 <p class="feature-desc">All our products are made with pure, natural ingredients sourced from sustainable farms.</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-certificate feature-icon"></i>
-                <h3 class="feature-title">Premium Quality</h3>
+                <h2 class="feature-title">Premium Quality</h2>
                 <p class="feature-desc">Rigorous quality control ensures you receive only the finest wellness products.</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-heart-pulse feature-icon"></i>
-                <h3 class="feature-title">Health First</h3>
+                <h2 class="feature-title">Health First</h2>
                 <p class="feature-desc">Every product is designed to support your overall health and wellbeing.</p>
             </div>
         </section>
