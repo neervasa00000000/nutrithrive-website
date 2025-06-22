@@ -13,28 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // New Product Detail Page Logic
     if (document.body.classList.contains('product-page')) {
-        const sizeSelect = document.getElementById('size-select');
-        const quantitySelect = document.getElementById('quantity-select');
-        const priceDisplay = document.getElementById('product-price');
         const paypalContainer = document.getElementById('paypal-container-ERYQAP7ZAHDDQ');
         const orderStatusEl = document.getElementById('order-status');
-
-        // --- Price Calculation ---
-        if (sizeSelect && quantitySelect && priceDisplay) {
-            function updatePrice() {
-                const selectedSizeOption = sizeSelect.options[sizeSelect.selectedIndex];
-                const price = parseFloat(selectedSizeOption.getAttribute('data-price'));
-                const quantity = parseInt(quantitySelect.value);
-                const total = (price * quantity).toFixed(2);
-                priceDisplay.textContent = `$${total} AUD`;
-                return total;
-            }
-
-            sizeSelect.addEventListener('change', updatePrice);
-            quantitySelect.addEventListener('change', updatePrice);
-
-            // Initial price update
-            updatePrice();
-        }
     }
 });
