@@ -401,6 +401,8 @@ header {
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
 .product-card:hover {
@@ -419,7 +421,7 @@ header {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .product-title {
@@ -1340,4 +1342,29 @@ body.blog-moringa-tree .btn-secondary {
 }
 body.blog-moringa-tree .btn-secondary:hover {
   background-color: #e8f5e9;
+}
+
+.edgy-card {
+  border-radius: 2px !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: none !important;
+  padding-bottom: 0.5rem !important;
+  margin-bottom: 0 !important;
+  background: #fff !important;
+}
+
+.mystery-product-img {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8faf7;
+  border-radius: 2px;
+  font-size: 2.2rem;
+  color: #2e7d32;
+  font-weight: 400;
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+  margin: 0 auto 1rem auto;
 }
