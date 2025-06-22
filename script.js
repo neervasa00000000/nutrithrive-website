@@ -46,62 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
             sizeSelect.addEventListener('change', updatePrice);
             quantitySelect.addEventListener('change', updatePrice);
 
-            // --- Render PayPal Buttons ---
-            paypal.Buttons({
-                style: {
-                    layout: 'vertical',
-                    color:  'gold',
-                    shape:  'rect',
-                    label:  'paypal'
-                },
-                createOrder: (data, actions) => {
-                    const totalValue = updatePrice();
-                    const selectedSizeOption = sizeSelect.options[sizeSelect.selectedIndex];
-                    const description = `Moringa Powder - ${selectedSizeOption.text.split(' - ')[0]} x ${quantitySelect.value}`;
-                    
-                    return actions.order.create({
-                        purchase_units: [{
-                            description: description,
-                            amount: {
-                                value: totalValue,
-                                currency_code: 'AUD'
-                            }
-                        }]
-                    });
-                },
-                onApprove: (data, actions) => {
-                    return actions.order.capture().then(order => {
-                        orderStatusEl.textContent = 'Processing your order...';
-                        // Call our serverless function
-                        fetch('/.netlify/functions/process-payment', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ order }),
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                orderStatusEl.textContent = 'Thank you! Your order has been received.';
-                                // Optional: redirect to a thank you page
-                                // window.location.href = 'thank-you.html';
-                            } else {
-                                orderStatusEl.textContent = 'There was an issue processing your order. Please contact support.';
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error calling serverless function:', error);
-                            orderStatusEl.textContent = 'An error occurred. Please contact us.';
-                        });
-                    });
-                },
-                onError: (err) => {
-                    console.error("PayPal checkout error", err);
-                    orderStatusEl.textContent = 'An error occurred with payment. Please try again.';
-                }
-            }).render('#paypal-button-container');
-            
             // Initial price update
             updatePrice();
         }
