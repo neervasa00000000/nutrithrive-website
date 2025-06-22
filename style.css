@@ -702,21 +702,20 @@ footer {
     }
 
     .nav-links {
+        position: fixed;
+        top: 0;
         left: 0;
-        right: unset;
         width: 100vw;
         height: 100vh;
-        top: 0;
-        position: fixed;
         background: #fff;
         z-index: 2000;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        box-shadow: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         transform: translateX(-100%);
-        transition: transform 0.2s ease-in-out;
+        transition: transform 0.3s ease-in-out;
     }
 
     .nav-links.nav-active {
@@ -732,8 +731,7 @@ footer {
         font-size: 1.5rem;
     }
 
-    /* --- Final Fix for About Section Mobile --- */
-    /* Hero section of About page */
+    /* --- Final & Definitive Fix for About Page Mobile --- */
     .about-hero {
         padding: 2rem 1rem;
         margin: 1rem;
@@ -744,10 +742,8 @@ footer {
     .about-hero-desc {
         font-size: 1.1rem;
     }
-
-    /* Main content section of About page */
     .about-mission {
-        display: flex; /* Overriding desktop 'grid' */
+        display: flex; /* This is crucial to override the desktop 'grid' */
         flex-direction: column;
         width: auto;
         padding: 1.5rem 1rem;
@@ -757,7 +753,6 @@ footer {
     .about-text {
         width: 100%;
         min-width: unset;
-        padding: 0;
     }
     .about-title {
         font-size: 1.5rem;
