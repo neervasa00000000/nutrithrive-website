@@ -57,10 +57,11 @@
                 </div>
                 <div class="product-card" style="align-items: center;">
                     <a href="#" class="product-link">
-                        <img src="https://i.imgur.com/MMijyva.webp" alt="Moringa Capsules" class="product-image" width="450" height="450" style="display: block; margin: 0 auto;">
+                        <img id="capsules-img" src="https://i.imgur.com/MMijyva.webp" alt="Moringa Capsules" class="product-image" width="450" height="450" style="display: block; margin: 0 auto; transition: transform 0.6s;">
                         <h3 class="product-title">Moringa Capsules</h3>
                     </a>
-                    <a href="#" class="btn">Add to Cart</a>
+                    <button id="capsules-btn" class="btn" type="button">Coming Soon!</button>
+                    <div id="capsules-message" style="display:none; margin-top: 1rem; font-weight: bold; color: #2e7d32; font-size: 1.2rem;">Curry Leaves</div>
                 </div>
             </div>
         </section>
@@ -104,5 +105,21 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    // Moringa Capsules: Rotate image and show message on button click
+    const capsulesBtn = document.getElementById('capsules-btn');
+    const capsulesImg = document.getElementById('capsules-img');
+    const capsulesMsg = document.getElementById('capsules-message');
+    if (capsulesBtn && capsulesImg && capsulesMsg) {
+      capsulesBtn.addEventListener('click', function() {
+        capsulesImg.style.transform = 'rotateY(360deg)';
+        capsulesMsg.style.display = 'block';
+        setTimeout(() => {
+          capsulesImg.style.transform = '';
+          capsulesMsg.style.display = 'none';
+        }, 2000);
+      });
+    }
+    </script>
 </body>
 </html> 
