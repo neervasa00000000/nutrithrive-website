@@ -920,28 +920,17 @@ footer {
 
 /* Product Detail Page Styles */
 .product-detail-section {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 3rem auto;
     padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
-    align-items: flex-start;
-}
-
-.product-detail-image img {
-    width: 100%;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 120px;
 }
 
 .product-detail-info h1 {
+    text-align: center;
     font-size: 2.5rem;
     font-weight: 800;
     color: var(--primary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .product-detail-info .product-size {
@@ -1166,7 +1155,7 @@ footer {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    .product-detail-image img {
-        position: static;
+    .product-detail-info h1 {
+        font-size: 2rem;
     }
 } 
