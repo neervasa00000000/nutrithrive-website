@@ -786,17 +786,19 @@ footer {
     .about-mission {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
-        padding: 1.5rem 0.7rem;
-        margin: 1.5rem 0.2rem;
-        background: #fffdfa;
-        border-radius: 16px;
-        box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
-        border: 1px solid #ece7db;
+        gap: 1.5rem;
+        padding: 1.2rem 0.5rem;
+        margin: 1.2rem 0.2rem;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        align-items: center;
     }
     .about-text {
         width: 100%;
         padding: 0;
+        text-align: center;
     }
     .about-title {
         font-size: 1.25rem;
@@ -805,17 +807,18 @@ footer {
         margin-bottom: 1.1rem;
         margin-top: 0;
         letter-spacing: -0.5px;
-        text-align: left;
+        text-align: center;
     }
     .about-desc {
         font-size: 1.05rem;
         color: #333;
         line-height: 1.7;
         margin-bottom: 1.1rem;
-        background: #f8f5ec;
-        border-radius: 8px;
-        padding: 0.9rem 0.8rem;
-        box-shadow: 0 1px 6px 0 rgba(23,92,54,0.04);
+        background: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        text-align: center;
     }
     .about-img {
         width: 100%;
@@ -824,6 +827,7 @@ footer {
         align-items: flex-end;
         margin: 0;
         padding: 0;
+        order: 2;
     }
     .about-img img {
         width: 100%;
