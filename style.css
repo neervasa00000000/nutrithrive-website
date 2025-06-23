@@ -801,19 +801,20 @@ footer {
         text-align: center;
     }
     .about-title {
-        font-size: 1.25rem;
-        font-weight: 800;
+        font-size: 1.45rem;
+        font-weight: 900;
         color: #175c36;
-        margin-bottom: 1.1rem;
+        margin-bottom: 1.2rem;
         margin-top: 0;
         letter-spacing: -0.5px;
         text-align: center;
     }
     .about-desc {
-        font-size: 1.05rem;
-        color: #333;
-        line-height: 1.7;
-        margin-bottom: 1.1rem;
+        font-size: 1.18rem;
+        color: #222;
+        font-weight: 500;
+        line-height: 1.8;
+        margin-bottom: 1.2rem;
         background: none;
         border-radius: 0;
         padding: 0;
