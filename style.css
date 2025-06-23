@@ -1605,18 +1605,21 @@ body.blog-moringa-tree .btn-secondary:hover {
     margin-top: 0;
     letter-spacing: -0.5px;
     text-align: center;
+    line-height: 1.25;
   }
   .about-desc {
-    font-size: 1.25rem;
+    font-size: 1.22rem;
     color: #222;
-    font-weight: 600;
-    line-height: 1.9;
-    margin-bottom: 1.3rem;
+    font-weight: 500;
+    line-height: 2.05;
+    margin-bottom: 1.15rem;
     background: none;
     border-radius: 0;
-    padding: 0;
+    padding: 0 0.2rem;
     box-shadow: none;
     text-align: center;
+    letter-spacing: 0.01em;
+    word-break: break-word;
   }
   .about-img {
     width: 100%;
