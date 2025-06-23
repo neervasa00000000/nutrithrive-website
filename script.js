@@ -144,37 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    // Animate hero section on products.html (fade in and slide up)
-    if (window.gsap && window.ScrollTrigger) {
-        if (document.querySelector('.hero .hero-title') && window.location.pathname.includes('products.html')) {
-            gsap.set('.hero-content', { opacity: 0, y: 60 });
-            gsap.set('.hero-image', { opacity: 0, y: 60 });
-            gsap.to('.hero-content', {
-                opacity: 1,
-                y: 0,
-                duration: 0.9,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: '.hero',
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse',
-                }
-            });
-            gsap.to('.hero-image', {
-                opacity: 1,
-                y: 0,
-                duration: 1.1,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: '.hero',
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse',
-                },
-                delay: 0.12
-            });
-        }
-    }
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded
