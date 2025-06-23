@@ -1,3 +1,11 @@
+console.log('[NutriThrive] script.js loaded');
+if (!window.gsap) {
+  console.error('[NutriThrive] GSAP is NOT loaded!');
+}
+if (!window.ScrollTrigger) {
+  console.error('[NutriThrive] GSAP ScrollTrigger is NOT loaded!');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
