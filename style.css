@@ -1532,23 +1532,33 @@ body.blog-moringa-tree .btn-secondary:hover {
   .features-section.features-clean {
     flex-direction: column;
     align-items: stretch;
-    gap: 1.5rem;
+    gap: 1.2rem;
     margin: 2.5rem auto 1.5rem auto;
     padding: 0 0.5rem;
     max-width: 100%;
   }
   .features-section.features-clean .feature {
-    padding: 0.5rem 0.2rem;
+    background: #f8f5ec;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+    border-left: 5px solid #175c36;
+    padding: 1.2rem 1rem 1.2rem 1.3rem;
+    margin: 0;
     text-align: left;
-    background: none;
-    border: none;
-    box-shadow: none;
+    transition: box-shadow 0.2s;
   }
   .features-section.features-clean .feature h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.4rem;
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: #175c36;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    letter-spacing: -0.5px;
   }
   .features-section.features-clean .feature p {
-    font-size: 0.98rem;
+    font-size: 1.01rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.5;
   }
 }
