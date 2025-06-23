@@ -1460,15 +1460,48 @@ body.blog-moringa-tree .btn-secondary:hover {
 }
 @media (max-width: 600px) {
   .roadmap-section {
-    margin: 4rem auto 2rem auto;
-    padding: 0 0.5rem;
+    margin: 3rem auto 1.5rem auto;
+    padding: 0 0.2rem;
+  }
+  .roadmap-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
   }
   .roadmap-timeline {
-    margin-left: 36px;
+    margin-left: 18px;
+    padding-left: 0;
+  }
+  .roadmap-milestone {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 64px;
+    margin-bottom: 2.2rem;
+    padding-left: 0.5rem;
+  }
+  .roadmap-circle {
+    width: 28px;
+    height: 28px;
+    border-width: 3px;
+    left: -14px;
+    top: 0;
+    transform: none;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  .roadmap-hline {
+    margin-left: 28px;
+    margin-right: 0.5rem;
+    height: 3px;
+    min-width: 40px;
   }
   .roadmap-text {
-    font-size: 1rem;
-    min-width: 120px;
+    font-size: 0.98rem;
+    min-width: unset;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+    text-align: left;
+    line-height: 1.4;
   }
 }
 
@@ -1500,4 +1533,29 @@ body.blog-moringa-tree .btn-secondary:hover {
   font-size: 1.05rem;
   color: #333;
   margin: 0;
+}
+
+@media (max-width: 600px) {
+  .features-section.features-clean {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin: 2.5rem auto 1.5rem auto;
+    padding: 0 0.5rem;
+    max-width: 100%;
+  }
+  .features-section.features-clean .feature {
+    padding: 0.5rem 0.2rem;
+    text-align: left;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+  .features-section.features-clean .feature h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+  .features-section.features-clean .feature p {
+    font-size: 0.98rem;
+  }
 }
