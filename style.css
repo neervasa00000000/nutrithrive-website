@@ -785,25 +785,53 @@ footer {
     }
     .about-mission {
         display: flex;
-        flex-direction: column-reverse; /* Puts image first */
-        width: 100%; /* Occupy full width, no more */
-        padding: 2rem 1.5rem;
-        margin: 0; /* No margin, spacing is controlled by padding */
+        flex-direction: column;
         gap: 2rem;
-        overflow: hidden; /* Extra safety to prevent overflow */
+        padding: 1.5rem 0.7rem;
+        margin: 1.5rem 0.2rem;
+        background: #fffdfa;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+        border: 1px solid #ece7db;
     }
     .about-text {
         width: 100%;
-        min-width: unset;
+        padding: 0;
+    }
+    .about-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #175c36;
+        margin-bottom: 1.1rem;
+        margin-top: 0;
+        letter-spacing: -0.5px;
+        text-align: left;
+    }
+    .about-desc {
+        font-size: 1.05rem;
+        color: #333;
+        line-height: 1.7;
+        margin-bottom: 1.1rem;
+        background: #f8f5ec;
+        border-radius: 8px;
+        padding: 0.9rem 0.8rem;
+        box-shadow: 0 1px 6px 0 rgba(23,92,54,0.04);
     }
     .about-img {
-        min-width: unset;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
         margin: 0;
+        padding: 0;
     }
     .about-img img {
-        display: block;
         width: 100%;
+        max-width: 320px;
         border-radius: 12px;
+        box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+        margin: 0 auto;
+        display: block;
     }
 
     /* --- Product Section Mobile Optimizations --- */
