@@ -109,19 +109,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animate features below roadmap (fade in and move up, staggered)
     if (window.gsap && window.ScrollTrigger) {
-        gsap.set('.features-section.features-clean .feature', { opacity: 0, y: 40 });
-        gsap.to('.features-section.features-clean .feature', {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger: 0.18,
-            scrollTrigger: {
-                trigger: '.features-section.features-clean',
-                start: 'top 85%',
-                toggleActions: 'play none none reverse',
-            }
-        });
+        // Mobile only: animate in/out on scroll, disappear when not in view
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            gsap.set('.features-section.features-clean .feature', { opacity: 0, y: 40 });
+            gsap.utils.toArray('.features-section.features-clean .feature').forEach((el, i) => {
+                gsap.to(el, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        end: 'bottom 60%',
+                        toggleActions: 'play reverse play reverse',
+                        // When out of view, fade/slide out
+                    }
+                });
+            });
+        } else {
+            // Desktop: keep previous animation
+            gsap.set('.features-section.features-clean .feature', { opacity: 0, y: 40 });
+            gsap.to('.features-section.features-clean .feature', {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: 'power2.out',
+                stagger: 0.18,
+                scrollTrigger: {
+                    trigger: '.features-section.features-clean',
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse',
+                }
+            });
+        }
     }
 });
 
