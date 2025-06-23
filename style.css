@@ -932,6 +932,12 @@ footer {
     font-weight: 500;
 }
 
+.about-mission, .about-text, .about-title, .about-desc {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 .about-mission {
     max-width: 1200px;
     margin: 3rem auto;
