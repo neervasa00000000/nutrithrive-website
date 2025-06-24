@@ -111,39 +111,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const featuresSection = document.querySelector('.features-section.features-clean');
     if (featuresSection) {
         if (window.gsap && window.ScrollTrigger) {
-            // Mobile only: animate in/out on scroll, disappear when not in view
-            if (window.matchMedia('(max-width: 600px)').matches) {
-                gsap.set('.features-section.features-clean .feature', { opacity: 0, y: 40 });
-                gsap.utils.toArray('.features-section.features-clean .feature').forEach((el, i) => {
-                    gsap.to(el, {
+            gsap.utils.toArray('.features-section.features-clean .feature').forEach((el, i) => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 40 },
+                    {
                         opacity: 1,
                         y: 0,
-                        duration: 0.7,
-                        ease: 'power2.out',
+                        ease: 'power1.out',
                         scrollTrigger: {
                             trigger: el,
                             start: 'top 90%',
-                            end: 'bottom 60%',
-                            toggleActions: 'play reverse play reverse',
+                            end: 'top 60%',
+                            scrub: 0.7,
+                            invalidateOnRefresh: true,
                         }
-                    });
-                });
-            } else {
-                // Desktop: keep previous animation
-                gsap.set('.features-section.features-clean .feature', { opacity: 0, y: 40 });
-                gsap.to('.features-section.features-clean .feature', {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.7,
-                    ease: 'power2.out',
-                    stagger: 0.18,
-                    scrollTrigger: {
-                        trigger: '.features-section.features-clean',
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse',
                     }
-                });
-            }
+                );
+            });
         } else {
             console.log('[NutriThrive] GSAP not loaded, skipping features animations.');
         }
