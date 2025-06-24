@@ -1454,7 +1454,7 @@ body.blog-moringa-tree .btn-secondary:hover {
 }
 .roadmap-timeline {
   position: relative;
-  margin-left: 20px;
+  margin-left: 60px;
   padding-left: 0;
 }
 .roadmap-vline-grow {
@@ -1477,7 +1477,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   border: 5px solid #128539;
   border-radius: 50%;
   position: absolute;
-  left: -39px;
+  left: -19px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
