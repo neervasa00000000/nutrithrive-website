@@ -19,11 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Roadmap scroll-driven animation: vertical line grows as you scroll, milestones animate in sequence
-    if (window.gsap && window.ScrollTrigger) {
+    // --- Page-Specific Animations ---
+
+    // 1. Roadmap Animation (Homepage only)
+    const roadmapSection = document.querySelector('.roadmap-section');
+    if (roadmapSection && window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
-        const section = document.querySelector('.roadmap-section');
-        const timeline = document.querySelector('.roadmap-timeline');
+        const timeline = roadmapSection.querySelector('.roadmap-timeline');
         const milestones = gsap.utils.toArray('.roadmap-milestone');
 
         // Remove any previous vLineGrow
@@ -53,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             height: () => getTimelineHeight() + 'px',
             ease: 'none',
             scrollTrigger: {
-                trigger: section,
+                trigger: roadmapSection,
                 start: 'top 80%',
                 end: 'bottom 60%',
                 scrub: 1,
@@ -87,10 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
               .to(circle, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' }, '-=0.15')
               .to(text, { opacity: 1, y: 0, duration: 0.3, ease: 'power1.out' }, '-=0.1');
         });
-    }
 
-    // Animate the roadmap title (fade in and move up)
-    if (window.gsap && window.ScrollTrigger) {
+        // Animate the roadmap title
         gsap.fromTo('.roadmap-title',
             { opacity: 0, y: 40 },
             {
@@ -107,8 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    // Animate features below roadmap (fade in and move up, staggered)
-    if (window.gsap && window.ScrollTrigger) {
+    // 2. Features Section Animation (Homepage only)
+    const featuresSection = document.querySelector('.features-section.features-clean');
+    if (featuresSection && window.gsap && window.ScrollTrigger) {
         // Mobile only: animate in/out on scroll, disappear when not in view
         if (window.matchMedia('(max-width: 600px)').matches) {
             gsap.set('.features-section.features-clean .feature', { opacity: 0, y: 40 });
