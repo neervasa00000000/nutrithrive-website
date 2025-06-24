@@ -1493,7 +1493,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   height: 4px;
   width: 0;
   background: #1b7f5a;
-  margin-left: 38px;
+  margin-left: 10px;
   margin-right: 24px;
   border-radius: 2px;
   transition: width 0.5s cubic-bezier(.4,2,.6,1), background 0.4s;
