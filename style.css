@@ -1698,3 +1698,21 @@ body.blog-moringa-tree .btn-secondary:hover {
     min-height: 8em;
     overflow-anchor: none;
 }
+
+@media (max-width: 600px) {
+  .product-card {
+    padding: 0.7rem 0.5rem;
+  }
+  .product-card .btn {
+    width: auto;
+    min-width: 60%;
+    display: block;
+    margin: 1rem auto 0 auto;
+    font-size: 1.05rem;
+    border-radius: 8px;
+  }
+  .product-card .product-title {
+    margin-bottom: 0.7rem;
+    font-size: 1.1rem;
+  }
+}
