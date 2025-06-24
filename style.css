@@ -802,6 +802,7 @@ footer {
         box-shadow: none;
         border: none;
         align-items: center;
+        overflow-anchor: none;
     }
     .about-text {
         width: 100%;
@@ -828,7 +829,7 @@ footer {
         padding: 0;
         box-shadow: none;
         text-align: center;
-        min-height: 3.5em;
+        min-height: 5.5em;
     }
     .about-img {
         width: 100%;
@@ -959,6 +960,7 @@ footer {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     border: 1px solid rgba(236, 231, 219, 0.8);
+    overflow-anchor: none;
 }
 
 .about-text {
