@@ -1684,3 +1684,8 @@ body.blog-moringa-tree .btn-secondary:hover {
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
+
+.container {
+    min-height: 8em;
+    overflow-anchor: none;
+}
