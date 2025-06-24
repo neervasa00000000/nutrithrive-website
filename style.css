@@ -828,6 +828,7 @@ footer {
         padding: 0;
         box-shadow: none;
         text-align: center;
+        min-height: 3.5em;
     }
     .about-img {
         width: 100%;
