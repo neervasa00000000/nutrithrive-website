@@ -40,22 +40,52 @@
     <link rel="icon" type="image/png" href="https://i.imgur.com/BHd5wsN.png">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
     <style>
-      .blog-hero-title, .blog-hero-desc {
-        font-family: 'Inter', Arial, sans-serif;
-        color: #175c36;
-        font-weight: 800;
-        font-size: 2.1rem;
-        margin: 0 0 0.7rem;
-        letter-spacing: -1px;
-        line-height: 1.2;
-      }
-      .blog-hero-desc {
-        font-size: 1.15rem;
-        color: #1a2e22;
-        font-weight: 500;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-      }
+        /* Modern Blog Redesign for Grow Moringa Tree Australia */
+        body { background: #f6f8fa; font-family: 'Inter', Arial, sans-serif; color: #1a2e22; margin: 0; }
+        .custom-hero {
+            background: linear-gradient(120deg, #175c36 0%, #4ecdc4 100%);
+            color: #fff;
+            padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+            text-align: center;
+            border-radius: 0 0 2.5rem 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(23,92,54,0.12);
+            margin-bottom: 2.5rem;
+        }
+        .custom-hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -1px; }
+        .custom-hero p { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .custom-badge { display: inline-block; background: #006d5f; color: #fff; font-weight: 700; border-radius: 1.5em; padding: 0.3em 1em; font-size: 1em; margin: 0.2em 0.3em; letter-spacing: 0.5px; }
+        .custom-section { background: #fff; border-radius: 1.5rem; box-shadow: 0 2px 16px 0 rgba(23,92,54,0.07); padding: 2rem 1.5rem; margin-bottom: 2.5rem; }
+        .custom-section h2 { color: #175c36; font-size: 2rem; font-weight: 700; margin-top: 0; }
+        .custom-section h3 { color: #006d5f; font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; }
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: #f7f5f0; border-radius: 1rem; overflow: hidden; }
+        .custom-table th, .custom-table td { padding: 1rem; text-align: left; }
+        .custom-table th { background: #eaf7f0; color: #175c36; font-weight: 700; }
+        .custom-table tr:nth-child(even) { background: #f0f7ea; }
+        .custom-toc {
+            position: sticky; top: 2.5rem; background: #fff; border-radius: 1em; box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07); padding: 1.2rem 1rem; margin-bottom: 2rem; z-index: 10; max-width: 320px; margin-left: auto; margin-right: auto;
+        }
+        .custom-toc h4 { margin: 0 0 0.7em 0; color: #175c36; font-size: 1.1em; }
+        .custom-toc ul { list-style: none; padding: 0; margin: 0; }
+        .custom-toc li { margin-bottom: 0.5em; }
+        .custom-toc a { color: #006d5f; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .custom-toc a:hover { color: #d14500; }
+        .custom-callout { background: #eaf7f0; color: #175c36; border-left: 5px solid #4ecdc4; border-radius: 1em; padding: 1.2em 1em; margin: 1.5em 0; font-size: 1.1em; }
+        .custom-cta-box { background: linear-gradient(90deg, #175c36 60%, #4ecdc4 100%); color: #fff; border-radius: 1.5em; padding: 2em 1.5em; text-align: center; font-size: 1.2em; margin: 2.5em 0 0 0; box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07); }
+        .custom-cta-box a { color: #fff; text-decoration: underline; font-weight: 700; }
+        .custom-btn { display: inline-block; background: #175c36; color: #fff; font-weight: 700; border-radius: 2em; padding: 0.7em 2em; font-size: 1.1em; margin: 1em 0; text-decoration: none; box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10); transition: background 0.2s; }
+        .custom-btn:hover { background: #006d5f; }
+        .custom-poll { background: #f0f7ea; border-radius: 1em; padding: 1.2em 1em; margin: 1.5em 0; }
+        .custom-faq { margin: 2em 0; }
+        .custom-faq-item { background: #f7f5f0; border-radius: 1em; margin-bottom: 1em; padding: 1em; cursor: pointer; transition: box-shadow 0.2s; }
+        .custom-faq-item:hover { box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10); }
+        .custom-faq-question { font-weight: 700; color: #175c36; }
+        .custom-faq-answer { display: none; margin-top: 0.5em; color: #1a2e22; }
+        .custom-faq-item.active .custom-faq-answer { display: block; }
+        @media (max-width: 700px) {
+            .custom-hero h1 { font-size: 2rem; }
+            .custom-section { padding: 1.2rem 0.7rem; }
+            .custom-toc { max-width: 100%; padding: 1em 0.5em; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -99,6 +129,25 @@
     </script>
 </head>
 <body class="non-sticky-header blog-moringa-tree">
+    <div class="custom-hero">
+        <span class="custom-badge">2025 Guide</span>
+        <h1>How to Grow a Moringa Tree in Australia</h1>
+        <p>Step-by-step guide for pots, frost, and every Aussie climate. Join the superfood revolution!</p>
+        <span class="custom-badge">Moringa • Gardening • Superfood</span>
+    </div>
+    <div class="custom-toc">
+        <h4>On This Page</h4>
+        <ul>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#why-grow">Why Grow?</a></li>
+            <li><a href="#melbourne">Melbourne & Southern Australia</a></li>
+            <li><a href="#calendar">Yearly Growing Calendar</a></li>
+            <li><a href="#step-by-step">Step-by-Step</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="#share-story">Share Your Story</a></li>
+        </ul>
+    </div>
     <header>
         <div class="navbar">
             <a href="../index.html" class="logo">
