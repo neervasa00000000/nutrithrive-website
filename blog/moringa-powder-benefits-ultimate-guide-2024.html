@@ -75,6 +75,31 @@
             font-size: 1em !important;
             white-space: nowrap;
         }
+        /* NEW: Zero-CLS for heavy-metals and australia sections */
+        #heavy-metals, #heavy-metals * {
+            font-family: Arial, sans-serif !important;
+            font-size: 1em !important;
+            white-space: nowrap;
+        }
+        #heavy-metals {
+            min-height: 320px;
+            height: 320px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #australia, #australia * {
+            font-family: Arial, sans-serif !important;
+            font-size: 1em !important;
+            white-space: nowrap;
+        }
+        #australia {
+            min-height: 220px;
+            height: 220px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
         .custom-section [style*="color:#888"], .custom-section [style*="color: #888"] {
             color: #111 !important;
             font-size: 1em !important;
@@ -534,10 +559,20 @@
     <!-- END: Lab Report & Trust Section -->
     <script>
       window.addEventListener('load', function() {
-        var el = document.getElementById('side-effects-expanded');
-        if (el) {
-          el.style.visibility = 'visible';
-          el.style.opacity = '1';
+        var el1 = document.getElementById('side-effects-expanded');
+        if (el1) {
+          el1.style.visibility = 'visible';
+          el1.style.opacity = '1';
+        }
+        var el2 = document.getElementById('heavy-metals');
+        if (el2) {
+          el2.style.visibility = 'visible';
+          el2.style.opacity = '1';
+        }
+        var el3 = document.getElementById('australia');
+        if (el3) {
+          el3.style.visibility = 'visible';
+          el3.style.opacity = '1';
         }
       });
     </script>
