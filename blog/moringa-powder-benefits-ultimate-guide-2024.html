@@ -54,19 +54,26 @@
         .custom-section, .custom-section * {
             font-family: 'Inter', Arial, sans-serif !important;
         }
-        #side-effects-expanded {
-            min-height: 500px;
-        }
-        #side-effects-expanded .custom-table, #side-effects-expanded .custom-table th, #side-effects-expanded .custom-table td {
+        #side-effects-expanded, #side-effects-expanded * {
             font-family: Arial, sans-serif !important;
-            font-size: 1em !important;
-            white-space: nowrap;
+        }
+        #side-effects-expanded {
+            min-height: 520px;
+            height: 520px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         #side-effects-expanded .custom-table {
             table-layout: fixed;
             width: 100%;
             overflow-x: auto;
             display: block;
+            height: 220px;
+        }
+        #side-effects-expanded .custom-table th, #side-effects-expanded .custom-table td {
+            font-size: 1em !important;
+            white-space: nowrap;
         }
         .custom-section [style*="color:#888"], .custom-section [style*="color: #888"] {
             color: #111 !important;
@@ -526,5 +533,14 @@
       </div>
     </section>
     <!-- END: Lab Report & Trust Section -->
+    <script>
+      window.addEventListener('load', function() {
+        var el = document.getElementById('side-effects-expanded');
+        if (el) {
+          el.style.visibility = 'visible';
+          el.style.opacity = '1';
+        }
+      });
+    </script>
 </body>
 </html> 
