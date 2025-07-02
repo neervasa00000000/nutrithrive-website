@@ -55,11 +55,18 @@
             font-family: 'Inter', Arial, sans-serif !important;
         }
         #side-effects-expanded {
-            min-height: 340px;
+            min-height: 500px;
+        }
+        #side-effects-expanded .custom-table, #side-effects-expanded .custom-table th, #side-effects-expanded .custom-table td {
+            font-family: Arial, sans-serif !important;
+            font-size: 1em !important;
+            white-space: nowrap;
         }
         #side-effects-expanded .custom-table {
             table-layout: fixed;
             width: 100%;
+            overflow-x: auto;
+            display: block;
         }
         .custom-section [style*="color:#888"], .custom-section [style*="color: #888"] {
             color: #111 !important;
