@@ -197,7 +197,7 @@
                     <tr><th>Brand</th><th>Type</th><th>Origin</th><th>Price/100g</th><th>Lab Tested?</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>NutriThrive</td><td>Organic</td><td>Australia/India</td><td>$18</td><td>Yes</td></tr>
+                    <tr><td>NutriThrive</td><td>Organic</td><td>Australia/India</td><td>$10</td><td>Yes</td></tr>
                     <tr><td>Kuli Kuli</td><td>Organic</td><td>India/Africa</td><td>$22</td><td>Yes</td></tr>
                     <tr><td>Organic India</td><td>Organic</td><td>India</td><td>$20</td><td>Yes</td></tr>
                     <tr><td>Naturevibe</td><td>Non-Organic</td><td>India</td><td>$14</td><td>Yes</td></tr>
@@ -265,7 +265,8 @@
       <div class="custom-callout">Want the full expose? <a href="#heavy-metals">See our lab test results</a> and <a href="#ebook">download our free eBook</a> for insider tips.</div>
     </section>
     <!-- ⏳ SCARCITY POPUP (Sitewide, but only on this blog) -->
-    <div id="scarcity-popup" style="display:none;position:fixed;z-index:9999;left:50%;top:12%;transform:translate(-50%,0);background:#fffbe6;border:2px solid #ffb300;padding:2em 2.5em;border-radius:1.5em;box-shadow:0 8px 32px #ffb300cc;text-align:center;">
+    <div id="scarcity-popup" style="display:none;position:fixed;z-index:9999;left:50%;top:12%;transform:translate(-50%,0);background:#fffbe6;border:2px solid #ffb300;padding:2em 2.5em;border-radius:1.5em;box-shadow:0 8px 32px #ffb300cc;text-align:center;min-width:320px;">
+      <button id="close-popup" aria-label="Close" style="position:absolute;top:12px;right:18px;background:none;border:none;font-size:1.5em;color:#b80000;cursor:pointer;line-height:1;">&times;</button>
       <h3 style="color:#b80000;margin-top:0;">LAST 10 PACKS! 60% OFF</h3>
       <p style="font-size:1.1em;">Hurry – this offer ends in <span id="countdown">02:59</span> minutes!</p>
       <a href="../products.html" class="custom-btn" style="background:#b80000;">Shop Now</a>
@@ -276,6 +277,8 @@
       setTimeout(function(){document.getElementById('scarcity-popup').style.display='block';},12000);
       // Fake countdown
       let t=179;let cd=document.getElementById('countdown');setInterval(function(){if(t>0){let m=Math.floor(t/60),s=t%60;cd.innerText=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;t--;}},1000);
+      // Close popup
+      document.getElementById('close-popup').onclick = function(){document.getElementById('scarcity-popup').style.display='none';};
     </script>
     <script>
     // FAQ accordion
@@ -317,7 +320,7 @@
           <tr><th>Brand</th><th>Organic Cert.</th><th>Price/100g</th><th>Country Sourced</th><th>Heavy Metal Tested</th><th>Lab Results</th></tr>
         </thead>
         <tbody>
-          <tr><td>NutriThrive</td><td>USDA</td><td>$18</td><td>Australia</td><td>✅</td><td>✅</td></tr>
+          <tr><td>NutriThrive</td><td>USDA</td><td>$10</td><td>Australia</td><td>✅</td><td>✅</td></tr>
           <tr><td>Kuli Kuli</td><td>None</td><td>$22</td><td>India/Africa</td><td>❌</td><td>❌</td></tr>
           <tr><td>Organic India</td><td>EU</td><td>$20</td><td>India</td><td>✅</td><td>❌</td></tr>
           <tr><td>Naturevibe</td><td>None</td><td>$14</td><td>India</td><td>❌</td><td>❌</td></tr>
@@ -480,10 +483,6 @@
             ✅ <strong>Government-Tested: Heavy Metal-Free & High Omega-3</strong><br>
             <span style="color:#175c36;font-weight:600;">3X more Omega-3 than most imported brands (&lt;30%)</span>
           </div>
-        </div>
-        <div style="flex:1;min-width:180px;text-align:center;">
-          <img src="../images/lab-test-moringa-powder.jpg" alt="Nutri Thrive Moringa Powder Lab Report Screenshot" style="max-width:180px;border-radius:1em;box-shadow:0 2px 8px #ccc;">
-          <div style="font-size:0.95em;color:#888;margin-top:0.5em;">Trans Fats: &lt;0.1g/100g (undetectable)</div>
         </div>
       </div>
     </section>
