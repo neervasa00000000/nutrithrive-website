@@ -90,6 +90,27 @@
                 </div>
             </div>
         </section>
+
+        <!-- Lab-Tested Badge next to price -->
+        <span style="background:#175c36;color:white;font-weight:600;padding:0.3em 0.9em;border-radius:16px;font-size:0.95rem;margin-left:0.5em;">Lab-Tested</span>
+
+        <!-- Tabbed Comparison Block -->
+        <div class="tabbed-compare" style="margin:2em 0;">
+          <button onclick="showTab('ours')" style="background:#175c36;color:white;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Our Quality</button>
+          <button onclick="showTab('others')" style="background:#888;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Others</button>
+          <div id="tab-ours" style="display:block;margin-top:1em;">
+            <ul><li>100% Australian trusted, grown in India</li><li>Lab-tested for heavy metals</li><li>No fillers or additives</li></ul>
+          </div>
+          <div id="tab-others" style="display:none;margin-top:1em;">
+            <ul><li>Imported or mixed origin</li><li>Not always lab-tested</li><li>May contain fillers</li></ul>
+          </div>
+        </div>
+        <script>
+        function showTab(tab) {
+          document.getElementById('tab-ours').style.display = tab==='ours'?'block':'none';
+          document.getElementById('tab-others').style.display = tab==='others'?'block':'none';
+        }
+        </script>
     </main>
 
     <footer>
@@ -141,6 +162,22 @@
           capsulesMsg.style.display = 'none';
         }, 2000);
       });
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is your moringa heavy metal tested?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! See our Australian Government lab report [link]"
+        }
+      }]
     }
     </script>
 </body>

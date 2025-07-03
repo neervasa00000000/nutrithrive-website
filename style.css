@@ -1716,3 +1716,7 @@ body.blog-moringa-tree .btn-secondary:hover {
     font-size: 1.1rem;
   }
 }
+
+.trust-bar { background: #f8f8f8; text-align: center; padding: 8px; font-size: 14px; }
+.blog-post-content img, .product-detail img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+/* All <img> tags should use loading="lazy" for native lazy loading. */

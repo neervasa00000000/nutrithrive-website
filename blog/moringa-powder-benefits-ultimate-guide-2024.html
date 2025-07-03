@@ -145,21 +145,16 @@
         <p>Discover the science, recipes, and best brands for moringa powder. Updated for 2024.</p>
         <span class="custom-badge">Superfood • Wellness • Nutrition</span>
     </div>
-    <div class="custom-toc">
-        <h2>On This Page</h2>
-        <ul>
-            <li><a href="#what-is-moringa">What is Moringa Powder?</a></li>
-            <li><a href="#nutrition">Nutritional Profile</a></li>
-            <li><a href="#benefits">11 Science-Backed Benefits</a></li>
-            <li><a href="#weight-loss">Weight Loss</a></li>
-            <li><a href="#skin-hair">Skin & Hair Benefits</a></li>
-            <li><a href="#usage">How to Use</a></li>
-            <li><a href="#side-effects">Safety & Side Effects</a></li>
-            <li><a href="#buying-guide">Buying Guide</a></li>
-            <li><a href="#faqs">FAQs</a></li>
-            <li><a href="#references">References</a></li>
-        </ul>
-    </div>
+    <!-- Table of Contents -->
+    <nav class="toc" style="background:#f8f8f8;padding:1em 0.7em;margin-bottom:1.5em;border-radius:8px;font-size:1em;">
+      <strong>Contents:</strong>
+      <ul style="margin:0.5em 0 0 1.2em;">
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#how-to-use">How to Use</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
     <main>
         <section id="what-is-moringa" class="custom-section">
             <h2>What is Moringa Powder? (<em>Moringa oleifera</em>)</h2>
@@ -575,6 +570,31 @@
           el3.style.opacity = '1';
         }
       });
+    </script>
+    <!-- Recipe Card Block -->
+    <div class="recipe-card" style="background:#fffbe6;padding:1em 1.2em;margin:2em 0;border-radius:10px;box-shadow:0 2px 8px 0 rgba(255,107,53,0.07);">
+      <h3 style="margin-top:0;">🥤 Moringa Smoothie Recipe</h3>
+      <ul style="margin:0.5em 0 0 1.2em;">
+        <li>1 tsp moringa powder</li>
+        <li>1 banana</li>
+        <li>200ml almond milk</li>
+      </ul>
+      <p style="margin:0.7em 0 0 0.2em;">Blend all ingredients until smooth. Enjoy!</p>
+    </div>
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is moringa safe for daily use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, moringa is safe for most people when used as directed."
+        }
+      }]
+    }
     </script>
 </body>
 </html> 
