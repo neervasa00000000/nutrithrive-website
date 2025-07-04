@@ -7,98 +7,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    html, body { background: #fcfcfc; margin: 0; padding: 0; }
+    html, body { background: #fff; margin: 0; padding: 0; }
     body { font-family: 'Inter', Arial, sans-serif; color: #1a2e22; }
     .container {
       max-width: 700px;
       margin: 2.5rem auto;
-      background: #fff;
-      border-radius: 1.2rem;
-      box-shadow: 0 1px 8px 0 rgba(23,92,54,0.04);
-      padding: 2.2rem 1.2rem 2rem 1.2rem;
+      padding: 0 1.2rem 2rem 1.2rem;
     }
     h1, h2, h3 {
       font-family: 'Inter', Arial, sans-serif;
-      color: #22643a;
+      color: #1a2e22;
       font-weight: 700;
-      margin-top: 2em;
-      margin-bottom: 0.5em;
+      margin-top: 2.5em;
+      margin-bottom: 0.7em;
       letter-spacing: -0.5px;
     }
     h1 { font-size: 2rem; margin-top: 0; }
     h2 { font-size: 1.15rem; }
-    h3 { font-size: 1.05rem; color: #006d5f; }
+    h3 { font-size: 1.05rem; }
     .toc {
-      background: #f5f8f6;
-      border-radius: 0.8em;
-      padding: 1em 1em;
-      margin-bottom: 2em;
+      margin-bottom: 2.5em;
       font-size: 1em;
-      box-shadow: none;
+      padding: 0;
     }
-    .toc h2 { margin: 0 0 0.7em 0; color: #22643a; font-size: 1em; }
+    .toc h2 { margin: 0 0 0.7em 0; font-size: 1em; font-weight: 700; }
     .toc ul { list-style: none; padding: 0; margin: 0; }
     .toc li { margin-bottom: 0.5em; }
-    .toc a { color: #22643a; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-    .toc a:hover { color: #009e60; }
-    .intro, .callout, .scarcity, .trust, .faq, .calculator, .comparison, .download, .recipes {
-      margin: 2em 0;
-      padding: 0.7em 0.5em;
-      border-radius: 0.7em;
-      background: none;
-      box-shadow: none;
-    }
-    .intro { background: #f5f8f6; }
-    .scarcity { background: #fffbe6; color: #b80000; font-weight: 600; text-align: center; }
-    .trust { background: #f5f8f6; color: #22643a; }
-    .calculator { background: #f7f7f7; }
-    .comparison { background: #f7f7f7; }
-    .download { background: #f5f8f6; text-align: center; }
-    .recipes { background: #f7f7f7; }
+    .toc a { color: #1a2e22; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+    .toc a:hover { text-decoration: underline; }
+    section { margin-bottom: 2.5em; }
     ul, ol { margin-left: 1.2em; }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1.2em 0;
-      background: #fff;
-      border-radius: 0.7em;
-      overflow: hidden;
+      margin: 1.5em 0;
       font-size: 1em;
-      box-shadow: none;
     }
     th, td {
       padding: 0.5em 0.3em;
       text-align: left;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid #eee;
     }
-    th { background: #f5f8f6; color: #22643a; font-weight: 700; }
+    th { font-weight: 700; }
     tr:last-child td { border-bottom: none; }
-    .faq h3 { margin-top: 1em; }
     .faq-item { margin-bottom: 1.2em; }
-    .faq-q { font-weight: 700; color: #22643a; }
+    .faq-q { font-weight: 700; }
     .faq-a { margin-top: 0.2em; }
-    .btn {
-      display: inline-block;
-      background: #22643a;
-      color: #fff;
-      font-weight: 700;
-      border-radius: 2em;
-      padding: 0.6em 1.5em;
-      font-size: 1em;
-      margin: 1em 0;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      box-shadow: none;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: #009e60; }
-    .email-gate input[type="email"] {
-      padding: 0.6em 1em; border-radius: 2em; border: 1px solid #ccc; font-size: 1em; margin-right: 0.5em;
-    }
-    .email-gate { margin-top: 1em; }
+    .btn, .scarcity, .trust, .download, .calculator, .recipes, .comparison { display: none !important; }
+    form, input, select { display: none !important; }
     @media (max-width: 700px) {
-      .container { padding: 1.2rem 0.5rem; }
+      .container { padding: 0 0.5rem 2rem 0.5rem; }
       h1 { font-size: 1.2rem; }
       h2 { font-size: 1rem; }
     }
@@ -117,72 +75,24 @@
         <li><a href="#faq">FAQs</a></li>
       </ul>
     </div>
-    <section id="intro" class="intro">
-      <strong>Lab-Proven Nutrition</strong><br>
-      <span>
-        Australian lab tests reveal our moringa contains <b>44.6% Omega-3 fatty acids</b> – 3X higher than imported brands. With <b>29g protein per 100g</b> and undetectable heavy metals (&lt;0.01ppm), it's the purest superfood powder available today.
-      </span>
-      <div class="calculator">
-        <h3>Nutrition Match Calculator</h3>
-        <form onsubmit="event.preventDefault();calculate();">
-          <label for="goal">Your Goal:</label>
-          <select id="goal">
-            <option value="weight loss">Weight Loss</option>
-            <option value="energy">Energy</option>
-            <option value="general">General Wellness</option>
-          </select>
-          <button class="btn" type="submit">Get My Match</button>
-        </form>
-        <div id="result" style="margin-top:1em;font-weight:600;"></div>
-        <script>
-          function calculate() {
-            const goal = document.getElementById('goal').value;
-            let result;
-            switch(goal) {
-              case 'weight loss': result = "Take 5g before meals"; break;
-              case 'energy': result = "3g in morning smoothies"; break;
-              default: result = "2g daily with food";
-            }
-            document.getElementById('result').innerText = result;
-          }
-        </script>
-      </div>
+    <section id="intro">
+      <h2>Lab-Proven Nutrition</h2>
+      <p>Australian lab tests reveal our moringa contains <b>44.6% Omega-3 fatty acids</b> – 3X higher than imported brands. With <b>29g protein per 100g</b> and undetectable heavy metals (&lt;0.01ppm), it's the purest superfood powder available today.</p>
     </section>
     <section id="benefits">
       <h2>7 Evidence-Based Benefits (Backed by Lab Data)</h2>
       <h3>Why 92% of Nutritionists Recommend Moringa</h3>
       <ul>
-        <li><b>Blood Sugar Control</b> <br>
-          <span style="color:#006d5f;">(moringa powder benefits for diabetics)</span><br>
-          Our moringa contains 5.9g/100g glucose-regulating compounds (VL295 method) – ideal for type 2 management.
-        </li>
-        <li><b>Testosterone Boost</b> <br>
-          <span style="color:#006d5f;">(moringa powder benefits for male)</span><br>
-          Lab-tested zinc (78mg/100g) supports male hormone production – 40% higher than standard brands.
-        </li>
-        <li><b>Weight Loss Accelerator</b> <br>
-          <span style="color:#006d5f;">(moringa powder for weight loss)</span><br>
-          The 7.4g/100g healthy fats (VL302) increase satiety by 68% according to NIH studies.
-        </li>
-        <li><b>Heavy Metal Protection</b> <br>
-          <span style="color:#006d5f;">(moringa powder side effects)</span><br>
-          Unlike 70% of brands, ours shows 0% arsenic/lead – verified by National Measurement Institute (Report RN1453596).
-        </li>
-        <li><b>Skin Glow & Hair Strength</b> <br>
-          <span style="color:#006d5f;">(moringa powder for skin, moringa powder for hair)</span><br>
-          Antioxidants, vitamin A/E, and protein support collagen and hair growth.
-        </li>
-        <li><b>Immunity & Anti-Inflammatory</b> <br>
-          <span style="color:#006d5f;">(moringa powder benefits)</span><br>
-          Polyphenols and vitamin C boost immune response and reduce inflammation.
-        </li>
-        <li><b>Complete Nutrition</b> <br>
-          <span style="color:#006d5f;">(moringa powder nutrition facts)</span><br>
-          29g protein, 44.6% Omega-3, 10.6g calcium, 1530kJ/100g energy density.
-        </li>
+        <li><b>Blood Sugar Control:</b> Our moringa contains 5.9g/100g glucose-regulating compounds (VL295 method) – ideal for type 2 management.</li>
+        <li><b>Testosterone Boost:</b> Lab-tested zinc (78mg/100g) supports male hormone production – 40% higher than standard brands.</li>
+        <li><b>Weight Loss Accelerator:</b> The 7.4g/100g healthy fats (VL302) increase satiety by 68% according to NIH studies.</li>
+        <li><b>Heavy Metal Protection:</b> Unlike 70% of brands, ours shows 0% arsenic/lead – verified by National Measurement Institute (Report RN1453596).</li>
+        <li><b>Skin Glow & Hair Strength:</b> Antioxidants, vitamin A/E, and protein support collagen and hair growth.</li>
+        <li><b>Immunity & Anti-Inflammatory:</b> Polyphenols and vitamin C boost immune response and reduce inflammation.</li>
+        <li><b>Complete Nutrition:</b> 29g protein, 44.6% Omega-3, 10.6g calcium, 1530kJ/100g energy density.</li>
       </ul>
     </section>
-    <section id="howto" class="recipes">
+    <section id="howto">
       <h2>How to Use Moringa: 5-Minute Hacks</h2>
       <table>
         <thead>
@@ -228,66 +138,44 @@
         <li><b>Red Flag:</b> Real moringa is army green – bright greens indicate additives</li>
         <li><b>Lab Proof:</b> Always demand heavy metal reports</li>
       </ul>
-      <div class="comparison">
-        <h3>Brand Comparison</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Nutri Thrive</th>
-              <th>Woolworths Brand</th>
-              <th>Imported Brands</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Omega-3</td>
-              <td>44.6%</td>
-              <td>22%</td>
-              <td>18-30%</td>
-            </tr>
-            <tr>
-              <td>Protein</td>
-              <td>29g</td>
-              <td>18g</td>
-              <td>15-24g</td>
-            </tr>
-            <tr>
-              <td>Heavy Metals</td>
-              <td>0%</td>
-              <td>1.2ppm</td>
-              <td>Up to 2.3ppm</td>
-            </tr>
-            <tr>
-              <td>Price/100g</td>
-              <td>$4.20</td>
-              <td>$5.10</td>
-              <td>$3.50</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="scarcity">
-        ⚠️ Warning: Due to high demand, only 127 jars left in AU warehouse
-      </div>
-      <div class="trust">
-        <b>Trust Badges:</b>
-        <ul>
-          <li>Australian Organic Certified</li>
-          <li>Heavy Metal Tested (Batch NT042024)</li>
-          <li>1,200+ 5-star reviews</li>
-        </ul>
-      </div>
-      <div class="download">
-        <h3>Download Lab Report or Get Free Recipes</h3>
-        <form class="email-gate" onsubmit="event.preventDefault();alert('Thank you! Download link sent.');">
-          <input type="email" placeholder="Your email" required>
-          <button class="btn" type="submit">Get PDF</button>
-        </form>
-        <div style="font-size:0.95em;color:#888;margin-top:0.5em;">No spam. Unsubscribe anytime.</div>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Nutri Thrive</th>
+            <th>Woolworths Brand</th>
+            <th>Imported Brands</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Omega-3</td>
+            <td>44.6%</td>
+            <td>22%</td>
+            <td>18-30%</td>
+          </tr>
+          <tr>
+            <td>Protein</td>
+            <td>29g</td>
+            <td>18g</td>
+            <td>15-24g</td>
+          </tr>
+          <tr>
+            <td>Heavy Metals</td>
+            <td>0%</td>
+            <td>1.2ppm</td>
+            <td>Up to 2.3ppm</td>
+          </tr>
+          <tr>
+            <td>Price/100g</td>
+            <td>$4.20</td>
+            <td>$5.10</td>
+            <td>$3.50</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section id="faq" class="faq">
+    <section id="faq">
       <h2>FAQs for Featured Snippets</h2>
       <div class="faq-item">
         <div class="faq-q">Can moringa powder increase height?</div>
