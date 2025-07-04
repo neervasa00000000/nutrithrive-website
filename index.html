@@ -9,6 +9,57 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://i.imgur.com/BHd5wsN.png">
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "NutriThrive",
+      "image": "https://nutrithrive.com.au/images/logo.jpg",
+      "@id": "https://nutrithrive.com.au/",
+      "url": "https://nutrithrive.com.au/",
+      "telephone": "+61 438201419",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "15 Europe Street",
+        "addressLocality": "Truganina",
+        "addressRegion": "VIC",
+        "postalCode": "",
+        "addressCountry": "AU",
+        "addressLocality2": "Melbourne"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -37.8291,
+        "longitude": 144.7506
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "23:00"
+      }],
+      "sameAs": [
+        "https://www.facebook.com/share/p/1C5C1NeUCb/",
+        "https://www.instagram.com/nutrithriveau/"
+      ],
+      "review": [
+        {
+          "@type": "Review",
+          "author": "Ayodeji",
+          "reviewBody": "It's good 👍 the real deal"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <header>
@@ -146,7 +197,14 @@
                     <p class="testimonial-text">"The Moringa powder is 100% better, quality is good and keep up with the quality."</p>
                     <p class="testimonial-author">- Pierre</p>
                 </div>
-                 <!-- Duplicated for seamless scroll -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"It's good 👍 the real deal"</p>
+                    <p class="testimonial-author">- Ayodeji</p>
+                </div>
+                <!-- Duplicated for seamless scroll -->
                 <div class="testimonial-card">
                     <div class="testimonial-rating">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
