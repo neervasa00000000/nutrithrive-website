@@ -210,7 +210,9 @@
                 {
                     "@context": "https://schema.org",
                     "@type": "Product",
-                    "name": "NutriThrive Moringa Protein Powder",
+                    "name": "NutriThrive Moringa Protein Powder (2025 Edition)",
+                    "image": "https://i.imgur.com/BHd5wsN.png",
+                    "description": "Lab-tested, 100% pure moringa protein powder for Australians. High in protein, antioxidants, and free from additives. Trusted by nutritionists.",
                     "brand": "NutriThrive",
                     "review": {
                         "@type": "Review",
@@ -225,7 +227,48 @@
                     "offers": {
                         "@type": "Offer",
                         "price": "1.20",
-                        "priceCurrency": "AUD"
+                        "priceCurrency": "AUD",
+                        "availability": "http://schema.org/InStock",
+                        "itemCondition": "http://schema.org/NewCondition",
+                        "url": "https://nutrithrive.com.au/blog/best-protein-powder-australia",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "NutriThrive"
+                        },
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "returnPolicyCategory": "http://schema.org/RefundPolicy",
+                            "merchantReturnDays": 30,
+                            "returnMethod": "http://schema.org/ReturnByMail",
+                            "returnFees": "http://schema.org/FreeReturn"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "0",
+                                "currency": "AUD"
+                            },
+                            "shippingDestination": {
+                                "@type": "DefinedRegion",
+                                "addressCountry": "AU"
+                            },
+                            "deliveryTime": {
+                                "@type": "ShippingDeliveryTime",
+                                "handlingTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 0,
+                                    "maxValue": 1,
+                                    "unitCode": "d"
+                                },
+                                "transitTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 2,
+                                    "maxValue": 5,
+                                    "unitCode": "d"
+                                }
+                            }
+                        }
                     }
                 }
                 </script>
@@ -274,26 +317,34 @@
                     "mainEntity": [
                         {
                             "@type": "Question",
-                            "name": "What is the healthiest protein powder in Australia?",
+                            "name": "What makes NutriThrive Moringa Protein Powder unique in Australia?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "NutriThrive Moringa is lab-tested, 100% pure, and free from additives—making it one of the healthiest options in Australia."
+                                "text": "It is lab-tested, 100% pure, and free from additives. Sourced for Australian needs and trusted by local nutritionists."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Which protein powder is best for weight loss?",
+                            "name": "Is there a return policy?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "UProtein WPI 95 and NutriThrive Moringa are both excellent for weight loss due to their high protein and low carb content."
+                                "text": "Yes, we offer a 30-day free return policy for all unopened products."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Is plant-based protein powder as effective as whey?",
+                            "name": "How fast is shipping in Australia?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Yes, plant-based blends like NutriThrive and Vital Plant Protein offer complete amino acid profiles and are effective for most users."
+                                "text": "Shipping is free and typically arrives within 2-5 business days."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is this product suitable for vegans?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, our moringa protein powder is 100% plant-based and vegan-friendly."
                             }
                         }
                     ]
