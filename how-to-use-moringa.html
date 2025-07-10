@@ -9,6 +9,31 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="https://i.imgur.com/BHd5wsN.png">
+  <style>
+    .toc a {
+      display: block;
+      padding: 0.7em 0.5em;
+      margin-bottom: 0.3em;
+      min-height: 48px;
+      min-width: 48px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .toc a:hover, .toc a:focus {
+      background: #e8f5e9;
+      color: #175c36;
+      outline: none;
+    }
+    .toc ul { padding: 0; margin: 0; }
+    .toc li { margin-bottom: 0.2em; }
+    @media (max-width: 700px) {
+      .toc a {
+        font-size: 1em;
+        padding: 1em 0.5em;
+      }
+    }
+  </style>
 </head>
 <body>
     <header>
