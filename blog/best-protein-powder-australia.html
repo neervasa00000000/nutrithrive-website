@@ -230,7 +230,14 @@
                     "@context": "https://schema.org",
                     "@type": "Product",
                     "name": "NutriThrive Moringa Protein Powder",
-                    "brand": "NutriThrive",
+                    "image": "https://i.imgur.com/BHd5wsN.png",
+                    "description": "NutriThrive Moringa Protein Powder is a 100% pure, lab-tested, plant-based protein powder rich in antioxidants, vitamins, and minerals. Vegan, single-ingredient, and Australian-owned.",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "NutriThrive"
+                    },
+                    "sku": "NT-MORINGA-200G",
+                    "url": "https://nutrithrive.com.au/product-detail.html",
                     "review": {
                         "@type": "Review",
                         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
@@ -244,7 +251,11 @@
                     "offers": {
                         "@type": "Offer",
                         "price": "1.20",
-                        "priceCurrency": "AUD"
+                        "priceCurrency": "AUD",
+                        "availability": "https://schema.org/InStock",
+                        "url": "https://nutrithrive.com.au/product-detail.html",
+                        "priceValidUntil": "2026-07-08",
+                        "itemCondition": "https://schema.org/NewCondition"
                     }
                 }
                 </script>
