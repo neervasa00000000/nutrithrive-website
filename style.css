@@ -1742,5 +1742,11 @@ article h1, section h1, nav h1, aside h1 {
     margin-right: auto;
     text-align: center;
     letter-spacing: -1px;
-    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.04);
+    /* No background, border-radius, or box-shadow for a clean look */
+}
+
+.hero-title, .about-hero-title, .contact-hero-title, .products-section h1, .blog-hero-title {
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
