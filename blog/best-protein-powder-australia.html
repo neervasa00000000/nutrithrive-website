@@ -32,7 +32,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" rel="preload" as="style">
     <link rel="icon" type="image/png" href="https://i.imgur.com/BHd5wsN.png">
     <link rel="apple-touch-icon" href="../images/logo.jpg">
     
@@ -122,7 +122,7 @@
 
                 <!-- Editor's Note Badge -->
                 <div style="display:flex;align-items:center;gap:0.5em;margin-bottom:1.2em;">
-                    <span style="background:#ff6b35;color:white;font-weight:600;padding:0.3em 0.9em;border-radius:16px;font-size:0.95rem;">Editor's Note</span>
+                    <span style="background:#ff6b35;color:#1a2e22;font-weight:600;padding:0.3em 0.9em;border-radius:16px;font-size:0.95rem;">Editor's Note</span>
                     <span style="font-size:0.98rem;">This guide is updated monthly with the latest research and Aussie market trends.</span>
                 </div>
 
@@ -278,7 +278,7 @@
                     <h2 style="margin-top:0;">🎁 Free Download: 3 High-Protein Aussie Smoothie Recipes</h2>
                     <p>Share this guide on social media to unlock your free recipe PDF!</p>
                     <div id="shareBtns" style="display:flex;justify-content:center;gap:1em;margin:1em 0;">
-                        <button onclick="window.open('https://twitter.com/intent/tweet?text=Check+out+the+Best+Protein+Powder+in+Australia+2025+Guide+by+NutriThrive!+https://nutrithrive.com.au/blog/best-protein-powder-australia.html','_blank')" style="background:#1da1f2;color:white;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Share on Twitter</button>
+                        <button onclick="window.open('https://twitter.com/intent/tweet?text=Check+out+the+Best+Protein+Powder+in+Australia+2025+Guide+by+NutriThrive!+https://nutrithrive.com.au/blog/best-protein-powder-australia.html','_blank')" style="background:#155a8a;color:#fff;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Share on Twitter</button>
                         <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://nutrithrive.com.au/blog/best-protein-powder-australia.html','_blank')" style="background:#4267B2;color:white;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Share on Facebook</button>
                     </div>
                     <button id="unlockDownload" style="background:#175c36;color:white;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">I Shared – Unlock Download</button>
@@ -302,7 +302,7 @@
                 }
                 </style>
                 <div id="stickyShareMobile" style="display:none;">
-                    <button onclick="window.open('https://twitter.com/intent/tweet?text=Check+out+the+Best+Protein+Powder+in+Australia+2025+Guide+by+NutriThrive!+https://nutrithrive.com.au/blog/best-protein-powder-australia.html','_blank')" style="background:#1da1f2;color:white;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Share</button>
+                    <button onclick="window.open('https://twitter.com/intent/tweet?text=Check+out+the+Best+Protein+Powder+in+Australia+2025+Guide+by+NutriThrive!+https://nutrithrive.com.au/blog/best-protein-powder-australia.html','_blank')" style="background:#155a8a;color:#fff;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Share</button>
                     <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://nutrithrive.com.au/blog/best-protein-powder-australia.html','_blank')" style="background:#4267B2;color:white;padding:0.5em 1.2em;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Share</button>
                 </div>
                 <script>
@@ -1095,6 +1095,6 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
 </body>
 </html> 
