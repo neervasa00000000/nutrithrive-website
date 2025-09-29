@@ -20,10 +20,21 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('no-scroll');
         }
 
-        // Hamburger click
+        // Hamburger click - toggle menu and show close functionality
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleMenu();
+        });
+
+        // Make hamburger lines clickable to close menu when open
+        const hamburgerLines = hamburger.querySelectorAll('div');
+        hamburgerLines.forEach(line => {
+            line.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (navLinks.classList.contains('nav-active')) {
+                    closeMenu();
+                }
+            });
         });
 
         // Close menu when clicking on nav links
