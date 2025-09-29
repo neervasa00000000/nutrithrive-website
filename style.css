@@ -293,6 +293,98 @@ body.products-page .hero .hero-btn.alt {
     line-height: 1.6;
 }
 
+/* Blog Preview Section */
+.blog-preview {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 3rem 2rem;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(236, 231, 219, 0.8);
+}
+
+.blog-preview-content {
+    text-align: center;
+}
+
+.blog-preview-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.blog-preview-desc {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.blog-preview-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.blog-preview-link {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition);
+}
+
+.blog-preview-link:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+.blog-preview-cta {
+    display: inline-block;
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all var(--transition);
+}
+
+.blog-preview-cta:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .blog-preview {
+        margin: 2rem auto;
+        padding: 2rem 1rem;
+    }
+    
+    .blog-preview-title {
+        font-size: 1.8rem;
+    }
+    
+    .blog-preview-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .blog-preview-link {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
+
 /* Testimonials Section */
 .testimonials {
     padding: 4rem 0;
@@ -1446,6 +1538,104 @@ footer {
 
 #paypal-container-ERYQAP7ZAHDDQ {
     margin-top: 2rem;
+}
+
+/* Product Benefits Section */
+.product-benefits {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+}
+
+.product-benefits h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.product-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.product-benefits li {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+/* Product Usage Section */
+.product-usage {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #e8f5e9;
+    border-radius: 12px;
+}
+
+.product-usage h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.product-usage p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* Product FAQ Section */
+.product-faq {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.product-faq h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.faq-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.faq-item h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+    color: var(--text);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .product-benefits,
+    .product-usage,
+    .product-faq {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .product-benefits h2,
+    .product-usage h2,
+    .product-faq h2 {
+        font-size: 1.3rem;
+    }
 }
 
 /* Unique color scheme for the grow-moringa-tree-australia blog post */
