@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nutrithrive.com.au/sitemap.xml
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all important pages
+Allow: /index.html
+Allow: /products.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /blog.html
+Allow: /how-to-use-moringa.html
+Allow: /moringa-benefits.html
+Allow: /product-detail.html
+Allow: /product-black-tea.html
+Allow: /thank-you.html
+Allow: /blog/
+Allow: /images/
