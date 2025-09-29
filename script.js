@@ -5,12 +5,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
+    if (hamburger && navLinks) {
+        // Toggle menu function
+        function toggleMenu() {
             navLinks.classList.toggle('nav-active');
             hamburger.classList.toggle('toggle');
             document.body.classList.toggle('no-scroll');
+        }
+
+        // Close menu function
+        function closeMenu() {
+            navLinks.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+            document.body.classList.remove('no-scroll');
+        }
+
+        // Hamburger click
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
         });
+
+        // Close menu when clicking on nav links
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                closeMenu();
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('nav-active') && 
+                !navLinks.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('nav-active')) {
+                closeMenu();
+            }
+        });
+
+        // Prevent body scroll when menu is open
+        navLinks.addEventListener('touchmove', (e) => {
+            if (navLinks.classList.contains('nav-active')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     }
 
     // --- Page-Specific Animations ---
