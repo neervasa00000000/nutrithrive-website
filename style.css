@@ -1543,10 +1543,10 @@ footer {
 /* Product Benefits Section */
 .product-benefits {
     margin: 2rem 0;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 12px;
-    border-left: 4px solid var(--primary);
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    border-left: 0;
 }
 
 .product-benefits h2 {
@@ -1569,9 +1569,9 @@ footer {
 /* Product Usage Section */
 .product-usage {
     margin: 2rem 0;
-    padding: 2rem;
-    background: #e8f5e9;
-    border-radius: 12px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
 }
 
 .product-usage h2 {
@@ -1589,10 +1589,10 @@ footer {
 /* Product FAQ Section */
 .product-faq {
     margin: 2rem 0;
-    padding: 2rem;
-    background: var(--card);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .product-faq h2 {
@@ -1603,8 +1603,8 @@ footer {
 
 .faq-item {
     margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    border-bottom: none;
 }
 
 .faq-item:last-child {
@@ -1627,8 +1627,8 @@ footer {
     .product-benefits,
     .product-usage,
     .product-faq {
-        padding: 1.5rem;
-        margin: 1.5rem 0;
+        padding: 0;
+        margin: 1.2rem 0;
     }
     
     .product-benefits h2,
