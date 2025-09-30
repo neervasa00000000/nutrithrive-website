@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
             // Fade in the section as it enters, fade out when scrolling away
+            // Enter fade-in
             gsap.fromTo(
                 blogPreview,
                 { opacity: 0, y: 30 },
@@ -204,14 +205,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: 'power1.out',
                     scrollTrigger: {
                         trigger: blogPreview,
-                        start: 'top 80%',
-                        end: 'top 40%',
-                        scrub: 0.7,
-                        toggleActions: 'play none none reverse',
+                        start: 'top 85%',
+                        end: 'top 55%',
+                        scrub: 0.8,
                         invalidateOnRefresh: true,
                     },
                 }
             );
+
+            // Exit fade-out (as the section scrolls away)
+            gsap.to(blogPreview, {
+                opacity: 0,
+                y: -24,
+                ease: 'power1.out',
+                scrollTrigger: {
+                    trigger: blogPreview,
+                    start: 'top 35%',
+                    end: 'top -10%',
+                    scrub: 0.9,
+                    invalidateOnRefresh: true,
+                },
+            });
 
             // Stagger in the links/buttons for a subtle motion effect
             const blogLinks = gsap.utils.toArray('.blog-preview-link');
