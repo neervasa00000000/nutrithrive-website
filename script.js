@@ -220,8 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: 'power1.out',
                 scrollTrigger: {
                     trigger: blogPreview,
-                    start: 'top 35%',
-                    end: 'top -10%',
+                    // start fading only when the section's bottom approaches viewport bottom
+                    start: 'bottom 45%',
+                    end: 'bottom 10%',
                     scrub: 0.9,
                     invalidateOnRefresh: true,
                 },
