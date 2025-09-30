@@ -298,10 +298,10 @@ body.products-page .hero .hero-btn.alt {
     max-width: 1200px;
     margin: 4rem auto;
     padding: 3rem 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(236, 231, 219, 0.8);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
 }
 
 .blog-preview-content {
