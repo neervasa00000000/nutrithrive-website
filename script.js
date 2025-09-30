@@ -166,22 +166,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const featuresSection = document.querySelector('.features-section.features-clean');
     if (featuresSection) {
         if (window.gsap && window.ScrollTrigger) {
-            gsap.utils.toArray('.features-section.features-clean .feature').forEach((el, i) => {
-                gsap.fromTo(el,
-                    { opacity: 0, y: 40 },
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.features-section.features-clean .feature').forEach((el) => {
+                // Enter: blur -> sharp + fade in
+                gsap.fromTo(
+                    el,
+                    { opacity: 0, y: 32, filter: 'blur(8px)' },
                     {
                         opacity: 1,
                         y: 0,
+                        filter: 'blur(0px)',
                         ease: 'power1.out',
                         scrollTrigger: {
                             trigger: el,
                             start: 'top 90%',
-                            end: 'top 60%',
+                            end: 'top 65%',
                             scrub: 0.7,
                             invalidateOnRefresh: true,
-                        }
+                        },
                     }
                 );
+
+                // Keep fully visible while centered
+                ScrollTrigger.create({
+                    trigger: el,
+                    start: 'top 75%',
+                    end: 'bottom 25%',
+                    onEnter: () => gsap.to(el, { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.2 }),
+                    onEnterBack: () => gsap.to(el, { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.2 }),
+                });
+
+                // Exit: fade + slight blur when scrolling away
+                gsap.to(el, {
+                    opacity: 0,
+                    y: -16,
+                    filter: 'blur(6px)',
+                    ease: 'power1.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'bottom 45%',
+                        end: 'bottom 10%',
+                        scrub: 0.8,
+                        invalidateOnRefresh: true,
+                    },
+                });
             });
         } else {
             console.log('[NutriThrive] GSAP not loaded, skipping features animations.');
