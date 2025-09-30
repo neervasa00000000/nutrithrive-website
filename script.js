@@ -194,6 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.gsap && window.ScrollTrigger) {
             gsap.registerPlugin(ScrollTrigger);
 
+            // add initial class so CSS transition only applies after JS is ready
+            blogPreview.classList.add('motion-init');
+
             // Fade in the section as it enters, fade out when scrolling away
             // Toggle a CSS class for mid-section visibility so it's 100% visible when centered
             ScrollTrigger.create({
