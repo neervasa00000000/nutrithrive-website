@@ -304,11 +304,7 @@ body.products-page .hero .hero-btn.alt {
     border: none;
 }
 
-.blog-preview.motion-init {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
-}
+/* Initial state removed to prevent hidden-on-load issue */
 
 .blog-preview.is-visible {
     opacity: 1;

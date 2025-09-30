@@ -222,31 +222,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.gsap && window.ScrollTrigger) {
             gsap.registerPlugin(ScrollTrigger);
 
-            // add initial class so CSS transition only applies after JS is ready
-            blogPreview.classList.add('motion-init');
+            // Ensure visible on initial load (top→down). We'll only fade when leaving.
 
             // Fade in the section as it enters, fade out when scrolling away
-            // Toggle a CSS class for mid-section visibility so it's 100% visible when centered
+            // Keep fully visible while centered (works both directions)
             ScrollTrigger.create({
                 trigger: blogPreview,
-                start: 'top 80%',
-                end: 'bottom 20%',
+                start: 'top 85%',
+                end: 'bottom 15%',
                 onEnter: () => blogPreview.classList.add('is-visible'),
                 onEnterBack: () => blogPreview.classList.add('is-visible'),
                 onLeave: () => blogPreview.classList.remove('is-visible'),
                 onLeaveBack: () => blogPreview.classList.remove('is-visible'),
             });
 
-            // Exit fade-out (as the section scrolls away)
+            // Exit fade-out (as the section scrolls away, top→down)
             gsap.to(blogPreview, {
                 opacity: 0,
                 y: -24,
                 ease: 'power1.out',
                 scrollTrigger: {
                     trigger: blogPreview,
-                    // start fading only when the section's bottom approaches viewport bottom
-                    start: 'bottom 45%',
-                    end: 'bottom 10%',
+                    start: 'bottom 55%',
+                    end: 'bottom 5%',
                     scrub: 0.9,
                     invalidateOnRefresh: true,
                 },
