@@ -195,23 +195,16 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
             // Fade in the section as it enters, fade out when scrolling away
-            // Enter fade-in
-            gsap.fromTo(
-                blogPreview,
-                { opacity: 0, y: 30 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    ease: 'power1.out',
-                    scrollTrigger: {
-                        trigger: blogPreview,
-                        start: 'top 85%',
-                        end: 'top 55%',
-                        scrub: 0.8,
-                        invalidateOnRefresh: true,
-                    },
-                }
-            );
+            // Toggle a CSS class for mid-section visibility so it's 100% visible when centered
+            ScrollTrigger.create({
+                trigger: blogPreview,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                onEnter: () => blogPreview.classList.add('is-visible'),
+                onEnterBack: () => blogPreview.classList.add('is-visible'),
+                onLeave: () => blogPreview.classList.remove('is-visible'),
+                onLeaveBack: () => blogPreview.classList.remove('is-visible'),
+            });
 
             // Exit fade-out (as the section scrolls away)
             gsap.to(blogPreview, {
