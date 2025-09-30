@@ -187,6 +187,57 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('[NutriThrive] GSAP not loaded, skipping features animations.');
         }
     }
+
+    // 3. Blog Preview Section Fade/Reveal on Scroll (Homepage only)
+    const blogPreview = document.querySelector('.blog-preview');
+    if (blogPreview) {
+        if (window.gsap && window.ScrollTrigger) {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Fade in the section as it enters, fade out when scrolling away
+            gsap.fromTo(
+                blogPreview,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    ease: 'power1.out',
+                    scrollTrigger: {
+                        trigger: blogPreview,
+                        start: 'top 80%',
+                        end: 'top 40%',
+                        scrub: 0.7,
+                        toggleActions: 'play none none reverse',
+                        invalidateOnRefresh: true,
+                    },
+                }
+            );
+
+            // Stagger in the links/buttons for a subtle motion effect
+            const blogLinks = gsap.utils.toArray('.blog-preview-link');
+            if (blogLinks.length) {
+                gsap.fromTo(
+                    blogLinks,
+                    { opacity: 0, y: 16 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        ease: 'power1.out',
+                        stagger: 0.12,
+                        scrollTrigger: {
+                            trigger: blogPreview,
+                            start: 'top 70%',
+                            end: 'top 40%',
+                            scrub: 0.6,
+                            invalidateOnRefresh: true,
+                        },
+                    }
+                );
+            }
+        } else {
+            console.log('[NutriThrive] GSAP not loaded, skipping blog preview animation.');
+        }
+    }
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded
