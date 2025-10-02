@@ -53,6 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Safety mechanism: ensure scroll is restored on page load
+        window.addEventListener('load', () => {
+            document.body.classList.remove('no-scroll');
+        });
+
+        // Safety mechanism: ensure scroll is restored when page becomes visible
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                document.body.classList.remove('no-scroll');
+            }
+        });
+
         // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navLinks.classList.contains('nav-active')) {
