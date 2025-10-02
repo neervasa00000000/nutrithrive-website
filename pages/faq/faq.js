@@ -1,6 +1,16 @@
-console.log('[NutriThrive] script.js loaded');
+console.log('[NutriThrive] FAQ script.js loaded');
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('[FAQ] DOM loaded, checking content...');
+    
+    // Check if main content exists
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+        console.log('[FAQ] Main content found:', mainContent);
+    } else {
+        console.error('[FAQ] Main content not found!');
+    }
+    
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
