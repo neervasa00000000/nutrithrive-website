@@ -2085,17 +2085,17 @@ article h1, section h1, nav h1, aside h1 {
     margin-bottom: 1rem;
 }
 
-/* Modern Dark FAQ Styling */
+/* Modern FAQ Styling - No Background Box */
 .faq-content {
-    background: #1A1D29;
-    border-radius: 16px;
-    padding: 2rem;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
     margin-top: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
 }
 
 .faq-item {
-    border-bottom: 1px solid #2D3142;
+    border-bottom: 1px solid #e0e0e0;
     padding: 1.5rem 0;
     transition: all 0.3s ease;
 }
@@ -2118,7 +2118,7 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .faq-question h3 {
-    color: #ffffff;
+    color: var(--primary);
     font-size: 1.2rem;
     font-weight: 600;
     margin: 0;
@@ -2127,7 +2127,7 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .faq-icon {
-    color: #ffffff;
+    color: var(--primary);
     font-size: 1.5rem;
     font-weight: 300;
     transition: all 0.3s ease;
@@ -2153,7 +2153,7 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .faq-answer p {
-    color: #B8BCC8;
+    color: var(--text);
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
@@ -2167,8 +2167,8 @@ article h1, section h1, nav h1, aside h1 {
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .faq-content {
-        padding: 1.5rem;
-        margin: 1rem;
+        padding: 0;
+        margin: 1rem 0;
     }
     
     .faq-question h3 {
