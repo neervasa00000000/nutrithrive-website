@@ -297,6 +297,34 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('[NutriThrive] GSAP not loaded, skipping blog preview animation.');
         }
     }
+
+    // 4. FAQ Accordion Functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+
+        if (question && answer && icon) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                if (isActive) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded
