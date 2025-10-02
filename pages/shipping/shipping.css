@@ -2015,3 +2015,68 @@ article h1, section h1, nav h1, aside h1 {
     border-radius: 0 !important;
     box-shadow: none !important;
 }
+
+/* Shipping Specific Styling - Remove White Box */
+.shipping-main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.shipping-container {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.shipping-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.shipping-content {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.shipping-content h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+.shipping-content h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.shipping-content p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.shipping-content ul {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.shipping-content li {
+    margin-bottom: 0.5rem;
+}
