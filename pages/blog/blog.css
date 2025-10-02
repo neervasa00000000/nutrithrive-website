@@ -54,6 +54,246 @@ body.no-scroll { /* disabled scroll lock */
     overflow: auto !important;
 }
 
+/* Blog Post Styling */
+.blog-post {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.blog-post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--bg);
+}
+
+.blog-post-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.post-meta {
+    color: var(--muted);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.hero-image {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.hero-image img {
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(23,92,54,0.15);
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--bg);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.benefit-card {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(23,92,54,0.08);
+    border: 1px solid #e8f5e8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(23,92,54,0.15);
+}
+
+.benefit-number {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--accent);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.benefit-card h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.benefit-card p {
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.cta-section {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, var(--primary), #2d7a4a);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(23,92,54,0.2);
+}
+
+.cta-box h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-box p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.info-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background: var(--bg);
+    border-radius: 12px;
+}
+
+.info-section h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tip-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(23,92,54,0.08);
+    transition: transform 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-4px);
+}
+
+.tip-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.tip-card p {
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.faq-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid #e8f5e8;
+}
+
+.faq-section h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.faq-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e8f5e8;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.faq-item h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+}
+
 /* Apply this class to the body tag of any page where the header should not be sticky */
 .non-sticky-header header {
     position: static;
