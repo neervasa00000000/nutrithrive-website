@@ -2029,3 +2029,58 @@ article h1, section h1, nav h1, aside h1 {
     border-radius: 0 !important;
     box-shadow: none !important;
 }
+
+/* FAQ Specific Styling - Remove White Box */
+.faq-main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.faq-container {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.faq-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.faq-content {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.faq-content h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+.faq-content h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.faq-content p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
