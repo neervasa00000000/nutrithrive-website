@@ -287,6 +287,34 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('[NutriThrive] GSAP not loaded, skipping blog preview animation.');
         }
     }
+
+    // 4. Shipping Accordion Functionality
+    const shippingItems = document.querySelectorAll('.shipping-item');
+    shippingItems.forEach(item => {
+        const question = item.querySelector('.shipping-question');
+        const answer = item.querySelector('.shipping-answer');
+        const icon = item.querySelector('.shipping-icon');
+
+        if (question && answer && icon) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other shipping items
+                shippingItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                if (isActive) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded
