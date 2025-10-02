@@ -237,6 +237,8 @@ body.products-page .hero .hero-btn.alt {
     display: block;
     margin: 0 auto;
     border-radius: 16px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     box-shadow: var(--shadow);
 }
 
@@ -433,6 +435,8 @@ body.products-page .hero .hero-btn.alt {
     display: flex;
     width: fit-content;
     animation: scroll 84s linear infinite;
+    min-height: 200px;
+    contain: layout;
 }
 
 @keyframes scroll {
@@ -460,6 +464,7 @@ body.products-page .hero .hero-btn.alt {
     width: 350px;
     margin: 0 1rem;
     flex-shrink: 0;
+    contain: layout style;
 }
 
 .testimonial-card:hover {
