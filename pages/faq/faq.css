@@ -50,8 +50,8 @@ body {
     overflow-x: hidden;
 }
 
-body.no-scroll {
-    overflow: hidden;
+body.no-scroll { /* disabled scroll lock */
+    overflow: auto !important;
 }
 
 main {

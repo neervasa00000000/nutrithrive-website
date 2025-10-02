@@ -50,8 +50,8 @@ body {
     overflow-x: hidden;
 }
 
-body.no-scroll {
-    overflow: hidden;
+body.no-scroll { /* disabled scroll lock */
+    overflow: auto !important;
 }
 
 /* Apply this class to the body tag of any page where the header should not be sticky */
