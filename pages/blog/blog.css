@@ -1494,6 +1494,15 @@ footer {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+    .blog-list-section {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem 2rem;
+    }
 }
 
 .blog-post-card {
