@@ -53,17 +53,19 @@
     <link rel="canonical" href="https://nutrithrive.com.au/blog/best-superfoods-immunity-australia-2025.html">
     <link rel="stylesheet" href="../shared/css/style.css">
     <style>
+        html, body { scroll-behavior: auto !important; }
+        *, *::before, *::after { transition: none !important; animation: none !important; }
         .blog-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem 2rem 2rem;
             line-height: 1.7;
         }
         
         .blog-header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
+            margin: 0 0 2rem 0;
+            padding: 1.25rem 0 1.5rem 0;
             background: linear-gradient(135deg, #2c5530, #4a7c59);
             color: white;
             border-radius: 15px;
@@ -277,7 +279,7 @@
         
         @media (max-width: 768px) {
             .blog-container {
-                padding: 1rem;
+                padding: 0 1rem 1rem 1rem;
             }
             
             .blog-title {
@@ -690,39 +692,6 @@
         </div>
     </div>
 
-    <script>
-        // Add smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add loading animation for product cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all superfood cards
-        document.querySelectorAll('.superfood-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-    </script>
+    <!-- Interactivity removed to keep header fixed at top and avoid motion -->
 </body>
 </html>
