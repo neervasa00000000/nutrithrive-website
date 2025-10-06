@@ -59,6 +59,25 @@ html[data-theme="alt"] .features-section h3 {
     color: #EDEDED;
 }
 
+/* Consistent header/nav sizing across all pages */
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+}
+header .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+header .nav-links a {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 /* Transparent alt buttons should be legible on dark */
 html[data-theme="alt"] .hero-btn.alt { color: #EDEDED; border-color: #EDEDED; }
 
