@@ -56,10 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Hamburger click - toggle menu and show close functionality
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
+        const handleTap = (e) => { e.stopPropagation(); toggleMenu(); };
+        hamburger.addEventListener('click', handleTap);
+        hamburger.addEventListener('touchend', handleTap, { passive: true });
 
         // Fallback inline handler assignment
         hamburger.onclick = (e) => { e.stopPropagation(); toggleMenu(); };
