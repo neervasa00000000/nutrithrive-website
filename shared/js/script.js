@@ -44,6 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // Expose for inline fallback if needed
+        window.ntToggleMenu = toggleMenu;
+
         // Close menu function
         function closeMenu() {
             navLinks.classList.remove('nav-active');
@@ -57,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             toggleMenu();
         });
+
+        // Fallback inline handler assignment
+        hamburger.onclick = (e) => { e.stopPropagation(); toggleMenu(); };
 
         // Make hamburger lines clickable to close menu when open
         const hamburgerLines = hamburger.querySelectorAll('div');
