@@ -21,16 +21,31 @@ html {
 
 /* Alternate theme (activated by html[data-theme="alt"]) */
 html[data-theme="alt"] {
-    /* Light neutral palette: #B4B4B8, #C7C8CC, #E3E1D9, #F2EFE5 */
-    --bg: #F2EFE5;            /* page background */
-    --card: #E3E1D9;          /* panels/cards/header */
-    --primary: #272829;       /* dark accent for links/buttons */
-    --accent: #B4B4B8;        /* subtle hover/active */
-    --footer-bg: #C7C8CC;
-    --footer-text: #272829;
-    --text: #313131;          /* body text */
-    --muted: #B4B4B8;         /* secondary text */
+    /* Midnight matte black palette */
+    --bg: #0D0D0F;            /* near-black background */
+    --card: #121214;          /* slightly lighter panels/header */
+    --primary: #1A1A1D;       /* dark accent for filled buttons */
+    --accent: #1F1F22;        /* hover/active accents/borders */
+    --footer-bg: #121214;
+    --footer-text: #f2f2f2;
+    --text: #E6E6E6;          /* body text */
+    --muted: #A3A3A3;         /* secondary text */
 }
+
+/* Readability tweaks on dark theme */
+html[data-theme="alt"] body,
+html[data-theme="alt"] p,
+html[data-theme="alt"] li { color: var(--text); }
+
+html[data-theme="alt"] header { background: var(--card); border-bottom-color: #1c1c1e; }
+html[data-theme="alt"] .nav-links a { color: #EDEDED; }
+html[data-theme="alt"] .nav-links a:hover,
+html[data-theme="alt"] .nav-links a.active { color: #CFCFCF; }
+html[data-theme="alt"] .logo { color: #EDEDED; }
+html[data-theme="alt"] .hamburger div { background-color: #EDEDED; }
+
+/* Transparent alt buttons should be legible on dark */
+html[data-theme="alt"] .hero-btn.alt { color: #EDEDED; border-color: #EDEDED; }
 
 @keyframes float {
     0% { transform: translateY(0px); }
