@@ -24,7 +24,7 @@ html[data-theme="alt"] {
     /* Midnight matte black palette */
     --bg: #0D0D0F;            /* near-black background */
     --card: #121214;          /* slightly lighter panels/header */
-    --primary: #1A1A1D;       /* dark accent for filled buttons */
+    --primary: #175c36;       /* brand green for titles/links/icons */
     --accent: #1F1F22;        /* hover/active accents/borders */
     --footer-bg: #121214;
     --footer-text: #f2f2f2;
