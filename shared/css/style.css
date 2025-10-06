@@ -21,16 +21,15 @@ html {
 
 /* Alternate theme (activated by html[data-theme="alt"]) */
 html[data-theme="alt"] {
-    /* New palette */
-    /* #272829, #61677A, #D8D9DA, #FFF6E0 */
-    --bg: #FFF6E0;            /* cream background */
-    --card: #D8D9DA;          /* light gray panels/cards */
-    --primary: #272829;       /* charcoal text/primary */
-    --accent: #61677A;        /* blue‑gray accent/hover */
-    --footer-bg: #272829;
+    /* Dark neutral palette: #525252, #414141, #313131 */
+    --bg: #313131;            /* page background */
+    --card: #414141;          /* panels/cards/header */
+    --primary: #ffffff;       /* primary brand/text on dark */
+    --accent: #525252;        /* hover/active accents */
+    --footer-bg: #414141;
     --footer-text: #ffffff;
-    --text: #272829;
-    --muted: #61677A;
+    --text: #f5f5f5;          /* body text */
+    --muted: #c9c9c9;         /* secondary text */
 }
 
 @keyframes float {
