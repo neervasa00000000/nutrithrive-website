@@ -104,8 +104,8 @@ header {
 
 /* Theme toggle pill */
 .theme-toggle {
-    width: 48px;
-    height: 26px;
+    width: 64px;          /* bigger pill */
+    height: 34px;         /* bigger pill */
     border-radius: 999px;
     border: 2px solid rgba(0,0,0,0.12);
     background: rgba(0,0,0,0.08);
@@ -119,13 +119,13 @@ header {
 
 .theme-toggle::after {
     content: '';
-    width: 20px;
-    height: 20px;
+    width: 26px;          /* bigger knob */
+    height: 26px;
     border-radius: 50%;
     background: #fff;
     box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     position: absolute;
-    left: 3px;
+    left: 4px;
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.25s ease;
@@ -137,7 +137,7 @@ html[data-theme="alt"] .theme-toggle {
 }
 
 html[data-theme="alt"] .theme-toggle::after {
-    transform: translate(22px, -50%);
+    transform: translate(30px, -50%); /* move farther for bigger pill */
 }
 
 .logo-emoji {
