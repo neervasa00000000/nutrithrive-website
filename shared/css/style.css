@@ -21,14 +21,16 @@ html {
 
 /* Alternate theme (activated by html[data-theme="alt"]) */
 html[data-theme="alt"] {
-    --bg: #DBD8E3;            /* rgb(219, 216, 227) */
-    --card: #5C5470;          /* rgb(92, 84, 112) */
-    --primary: #352F44;       /* rgb(53, 47, 68) */
-    --accent: #2A2438;        /* rgb(42, 36, 56) */
-    --footer-bg: #352F44;
+    /* New palette */
+    /* #272829, #61677A, #D8D9DA, #FFF6E0 */
+    --bg: #FFF6E0;            /* cream background */
+    --card: #D8D9DA;          /* light gray panels/cards */
+    --primary: #272829;       /* charcoal text/primary */
+    --accent: #61677A;        /* blue‑gray accent/hover */
+    --footer-bg: #272829;
     --footer-text: #ffffff;
-    --text: #2A2438;
-    --muted: #3f3a4c;
+    --text: #272829;
+    --muted: #61677A;
 }
 
 @keyframes float {
