@@ -87,6 +87,18 @@ html[data-theme="alt"] .blog-post-content,
 html[data-theme="alt"] .features-section.features-clean .feature p {
   color: var(--text) !important;
 }
+
+/* Dark theme: make FAQ titles/questions green for visibility */
+html[data-theme="alt"] .faq-title,
+html[data-theme="alt"] .faq-content h2,
+html[data-theme="alt"] .faq-content h3,
+html[data-theme="alt"] .faq-question h3,
+html[data-theme="alt"] .faq-icon {
+  color: var(--primary) !important;
+}
+html[data-theme="alt"] .faq-item {
+  border-bottom-color: rgba(237,237,237,0.25);
+}
 header .nav-links {
   display: flex;
   align-items: center;
