@@ -887,7 +887,7 @@ footer {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         z-index: 2000;
-        display: flex;
+        display: none; /* hidden until toggled open by JS */
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
