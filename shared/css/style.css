@@ -52,6 +52,13 @@ html[data-theme="alt"] .products-section h1 {
     color: #EDEDED;
 }
 
+/* Other section headings in dark theme */
+html[data-theme="alt"] .testimonials-title,
+html[data-theme="alt"] .blog-preview-title,
+html[data-theme="alt"] .features-section h3 {
+    color: #EDEDED;
+}
+
 /* Transparent alt buttons should be legible on dark */
 html[data-theme="alt"] .hero-btn.alt { color: #EDEDED; border-color: #EDEDED; }
 
