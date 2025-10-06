@@ -31,11 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (hamburger && navLinks) {
-        // Toggle menu function
+        // Toggle menu function (force display on open for mobile)
         function toggleMenu() {
+            const willOpen = !navLinks.classList.contains('nav-active');
             navLinks.classList.toggle('nav-active');
             hamburger.classList.toggle('toggle');
             document.body.classList.toggle('no-scroll');
+            if (willOpen) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = '';
+            }
         }
 
         // Close menu function
@@ -43,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove('nav-active');
             hamburger.classList.remove('toggle');
             document.body.classList.remove('no-scroll');
+            navLinks.style.display = '';
         }
 
         // Hamburger click - toggle menu and show close functionality
