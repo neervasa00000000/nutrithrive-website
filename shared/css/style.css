@@ -1019,7 +1019,7 @@ footer {
         padding: 1rem;
     }
 
-    nav {
+    .nav-links {
         display: none;
     }
 
@@ -1069,6 +1069,7 @@ footer {
     }
 
     .nav-links.nav-active {
+        display: flex !important;
         transform: translateX(0);
     }
 
