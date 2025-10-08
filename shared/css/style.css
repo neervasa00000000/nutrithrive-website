@@ -294,8 +294,14 @@ html[data-theme="alt"] .theme-toggle::after {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 14px;
     z-index: 1001;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 12px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    position: relative;
 }
 
 .hamburger div {
@@ -304,6 +310,15 @@ html[data-theme="alt"] .theme-toggle::after {
     background-color: var(--primary);
     margin: 5px 0;
     transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.hamburger:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger:active {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hamburger.toggle .line1 {
