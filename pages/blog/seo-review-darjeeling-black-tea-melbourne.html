@@ -62,6 +62,17 @@
                     <span class="reading-time">15 min read</span>
                 </div>
             </header>
+            <!-- Smart Table of Contents -->
+            <aside class="toc-card" aria-label="On this page">
+                <h2 class="toc-title">On this page</h2>
+                <nav id="toc-nav"><ul></ul></nav>
+            </aside>
+
+            <!-- Primary CTA row -->
+            <div class="cta-row">
+                <a class="btn cta-primary" href="../products/product-black-tea.html">Shop Darjeeling Tea</a>
+                <a class="btn cta-secondary" href="black-tea-health-benefits-melbourne-guide.html">Read Black Tea Benefits</a>
+            </div>
 
             <div class="blog-post-body">
                 <h2>Content Structure & Formatting</h2>
@@ -242,6 +253,12 @@
 
                 <p>The key is to make the content more scannable with lists and tables, add proper schema markup for featured snippets, and build local authority through Melbourne-specific content and backlinks. This comprehensive approach will help the Darjeeling Black Tea blog post rank higher and attract more qualified traffic from Melbourne tea enthusiasts.</p>
             </div>
+            
+            <!-- Secondary CTA row -->
+            <div class="cta-row">
+                <a class="btn cta-primary" href="../products/product-black-tea.html">Buy NutriThrive Darjeeling – AU$10 / 100g</a>
+                <a class="btn cta-secondary" href="darjeeling-black-tea-melbourne-muscatel-marvel.html">Read the Original Blog</a>
+            </div>
         </article>
     </main>
 
@@ -284,6 +301,138 @@
             <p>&copy; 2025 NutriThrive. All rights reserved.</p>
         </div>
     </footer>
+
+    <style>
+        /* Inline minimal styles scoped to this page */
+        .toc-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .toc-title { margin: 0 0 .5rem 0; font-size: 1.05rem; }
+        #toc-nav ul { list-style: none; padding: 0; margin: 0; }
+        #toc-nav li { margin: .25rem 0; }
+        #toc-nav a { color: var(--primary); text-decoration: none; font-weight: 600; font-size: .97rem; }
+        #toc-nav a:hover { text-decoration: underline; }
+
+        .cta-row { display: flex; gap: .75rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; }
+        .cta-primary { background: var(--primary); color: #fff; padding: .75rem 1rem; border-radius: 12px; text-decoration: none; font-weight: 700; }
+        .cta-secondary { background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: .65rem .9rem; border-radius: 12px; text-decoration: none; font-weight: 700; }
+        .cta-primary:hover { filter: brightness(0.95); }
+        .cta-secondary:hover { background: var(--primary); color: #fff; }
+
+        details.nt-accordion { background: var(--card); border-radius: 14px; margin: .75rem 0; box-shadow: var(--shadow); }
+        details.nt-accordion > summary { cursor: pointer; padding: .9rem 1rem; font-weight: 700; outline: none; list-style: none; }
+        details.nt-accordion[open] > summary { border-bottom: 1px solid rgba(0,0,0,.08); }
+        details.nt-accordion .nt-accordion-body { padding: .9rem 1rem 1rem; }
+
+        html { scroll-behavior: smooth; }
+
+        @media (max-width: 768px) {
+            .cta-row { gap: .5rem; }
+            .cta-primary, .cta-secondary { flex: 1 1 auto; text-align: center; }
+        }
+    </style>
+
+    <script>
+    (function() {
+      // Build TOC from H2s and make sections collapsible
+      const body = document.querySelector('.blog-post-body');
+      if (!body) return;
+
+      const h2s = Array.from(body.querySelectorAll('h2'));
+      const tocList = document.querySelector('#toc-nav ul');
+
+      // Helper: slugify text
+      const slug = (t) => t.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+
+      // Wrap sections into <details> accordions and build TOC
+      for (let i = 0; i < h2s.length; i++) {
+        const h2 = h2s[i];
+        const id = h2.id || slug(h2.textContent);
+        h2.id = id;
+
+        // Collect nodes until next H2
+        const details = document.createElement('details');
+        details.className = 'nt-accordion';
+        details.setAttribute('aria-labelledby', id);
+
+        const summary = document.createElement('summary');
+        summary.textContent = h2.textContent;
+        details.appendChild(summary);
+
+        const bodyWrap = document.createElement('div');
+        bodyWrap.className = 'nt-accordion-body';
+
+        let next = h2.nextSibling;
+        while (next && !(next.nodeType === 1 && next.tagName === 'H2')) {
+          const move = next; next = next.nextSibling; bodyWrap.appendChild(move);
+        }
+        details.appendChild(bodyWrap);
+        body.insertBefore(details, h2);
+        body.removeChild(h2);
+
+        // Expand the first accordion by default
+        if (i === 0) details.setAttribute('open', '');
+
+        // Add to TOC
+        if (tocList) {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#' + id;
+          a.textContent = summary.textContent;
+          a.addEventListener('click', () => {
+            // open the target details if closed
+            details.setAttribute('open', '');
+          });
+          li.appendChild(a); tocList.appendChild(li);
+        }
+      }
+
+      // Turn the inline FAQ block into accordions (Q paragraphs to details)
+      const faqContainer = Array.from(document.querySelectorAll('.blog-post-body > div'))
+        .find(div => div.querySelector && div.querySelector('h3') && /FAQ/i.test(div.querySelector('h3').textContent || ''));
+      if (faqContainer) {
+        const children = Array.from(faqContainer.querySelectorAll('p'));
+        const newWrap = document.createElement('div');
+        children.forEach((p, idx) => {
+          const isQ = /^\s*Q\s*:/i.test(p.textContent);
+          if (isQ) {
+            const details = document.createElement('details');
+            details.className = 'nt-accordion';
+            const summary = document.createElement('summary');
+            summary.textContent = p.textContent.replace(/^\s*Q\s*:\s*/i, '');
+            details.appendChild(summary);
+            const answer = children[idx + 1] && !/^\s*Q\s*:/i.test(children[idx + 1].textContent) ? children[idx + 1] : null;
+            const bodyD = document.createElement('div');
+            bodyD.className = 'nt-accordion-body';
+            if (answer) bodyD.appendChild(answer.cloneNode(true));
+            details.appendChild(bodyD);
+            newWrap.appendChild(details);
+          }
+        });
+        faqContainer.parentNode.replaceChild(newWrap, faqContainer);
+      }
+
+      // Lightweight FAQ schema from generated accordions
+      try {
+        const faqDetails = Array.from(document.querySelectorAll('details.nt-accordion summary'));
+        const faqs = faqDetails.map(s => ({
+          "@type": "Question",
+          name: s.textContent,
+          acceptedAnswer: { "@type": "Answer", text: s.parentElement.querySelector('.nt-accordion-body')?.textContent?.trim() || '' }
+        }));
+        if (faqs.length) {
+          const ld = document.createElement('script');
+          ld.type = 'application/ld+json';
+          ld.text = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs });
+          document.head.appendChild(ld);
+        }
+      } catch(e) { /* no-op */ }
+    })();
+    </script>
 
     <script src="../../shared/js/script.js" defer></script>
 </body>
