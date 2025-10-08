@@ -24,7 +24,7 @@ html[data-theme="alt"] {
     /* All black theme with white text */
     --bg: #000000;            /* pure black background */
     --card: #1A1A1A;          /* light black boxes */
-    --primary: #FFFFFF;       /* white for titles/links/icons */
+    --primary: #1A1A1A;       /* light black for clickable elements */
     --accent: #2A2A2A;        /* slightly lighter black for hover/active */
     --footer-bg: #1A1A1A;     /* light black footer */
     --footer-text: #FFFFFF;   /* white text on black footer */
@@ -122,6 +122,28 @@ html[data-theme="alt"] .product-description,
 html[data-theme="alt"] .post-excerpt,
 html[data-theme="alt"] .blog-post-content,
 html[data-theme="alt"] .features-section.features-clean .feature p {
+    color: #FFFFFF !important;
+}
+
+/* Clickable elements with light black background and white text */
+html[data-theme="alt"] .btn,
+html[data-theme="alt"] .hero-btn,
+html[data-theme="alt"] .read-more-btn,
+html[data-theme="alt"] .theme-toggle,
+html[data-theme="alt"] button,
+html[data-theme="alt"] input[type="submit"],
+html[data-theme="alt"] input[type="button"],
+html[data-theme="alt"] .nav-links a {
+    background-color: #1A1A1A !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+}
+
+html[data-theme="alt"] .btn:hover,
+html[data-theme="alt"] .hero-btn:hover,
+html[data-theme="alt"] .read-more-btn:hover,
+html[data-theme="alt"] .nav-links a:hover {
+    background-color: #2A2A2A !important;
     color: #FFFFFF !important;
 }
 
