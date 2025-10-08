@@ -21,16 +21,16 @@ html {
 
 /* Alternate theme (activated by html[data-theme="alt"]) */
 html[data-theme="alt"] {
-    /* Dark theme with white text */
+    /* Hybrid theme: Dark background, white cards, black text */
     --bg: #0D0D0F;            /* near-black background */
-    --card: #121214;          /* slightly lighter panels/header */
-    --primary: #FFFFFF;       /* white for titles/links/icons */
-    --accent: #1A1A1D;        /* dark accent for filled buttons */
-    --footer-bg: #121214;
-    --footer-text: #FFFFFF;
-    --text: #FFFFFF;          /* white text on dark */
-    --muted: #CCCCCC;         /* light gray secondary text */
-    --shadow: 0 4px 24px 0 rgba(0,0,0,0.2);
+    --card: #FFFFFF;          /* white panels/header */
+    --primary: #175c36;       /* brand green for titles/links/icons */
+    --accent: #F5F5F5;        /* light gray accent for hover/active */
+    --footer-bg: #FFFFFF;     /* white footer */
+    --footer-text: #333333;   /* dark text on white footer */
+    --text: #333333;          /* dark text on white cards */
+    --muted: #666666;         /* secondary text on white cards */
+    --shadow: 0 4px 24px 0 rgba(0,0,0,0.1); /* lighter shadow */
 }
 
 /* Readability tweaks on dark theme */
@@ -38,26 +38,26 @@ html[data-theme="alt"] body,
 html[data-theme="alt"] p,
 html[data-theme="alt"] li { color: var(--text); }
 
-html[data-theme="alt"] header { background: var(--card); border-bottom-color: #1c1c1e; }
-html[data-theme="alt"] .nav-links a { color: #FFFFFF; }
+html[data-theme="alt"] header { background: var(--card); border-bottom-color: #E0E0E0; }
+html[data-theme="alt"] .nav-links a { color: #333333; }
 html[data-theme="alt"] .nav-links a:hover,
-html[data-theme="alt"] .nav-links a.active { color: #FFFFFF; }
-html[data-theme="alt"] .logo { color: #FFFFFF; }
-html[data-theme="alt"] .hamburger div { background-color: #FFFFFF; }
+html[data-theme="alt"] .nav-links a.active { color: #175c36; }
+html[data-theme="alt"] .logo { color: #333333; }
+html[data-theme="alt"] .hamburger div { background-color: #333333; }
 
 /* Make major headings readable in dark theme */
 html[data-theme="alt"] .hero-title,
 html[data-theme="alt"] .about-hero-title,
 html[data-theme="alt"] .blog-hero-title,
 html[data-theme="alt"] .products-section h1 {
-    color: #FFFFFF;
+    color: #333333;
 }
 
 /* Other section headings in dark theme */
 html[data-theme="alt"] .testimonials-title,
 html[data-theme="alt"] .blog-preview-title,
 html[data-theme="alt"] .features-section h3 {
-    color: #FFFFFF;
+    color: #333333;
 }
 
 /* Consistent header/nav sizing across all pages */
@@ -112,6 +112,17 @@ header .nav-links a {
 
 /* Transparent alt buttons should be legible on dark */
 html[data-theme="alt"] .hero-btn.alt { color: #FFFFFF; border-color: #FFFFFF; }
+
+/* Text on dark backgrounds should remain white */
+html[data-theme="alt"] .hero-desc,
+html[data-theme="alt"] .blog-preview-desc,
+html[data-theme="alt"] .testimonial-text,
+html[data-theme="alt"] .about-desc,
+html[data-theme="alt"] .product-description,
+html[data-theme="alt"] .post-excerpt,
+html[data-theme="alt"] .blog-post-content {
+    color: #FFFFFF !important;
+}
 
 @keyframes float {
     0% { transform: translateY(0px); }
