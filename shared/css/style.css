@@ -44,7 +44,7 @@ html[data-theme="alt"] .nav-links a:hover,
 html[data-theme="alt"] .nav-links a.active { color: #FFFFFF; }
 html[data-theme="alt"] .logo { color: #FFFFFF; }
 /* Prevent layout shift between pages with/without vertical scrollbar */
-html { overflow-y: scroll; scrollbar-gutter: stable; }
+html { overflow-y: scroll; scrollbar-gutter: stable both-edges; }
 html[data-theme="alt"] .hamburger div { background-color: #FFFFFF; }
 
 /* Make major headings readable in dark theme */
