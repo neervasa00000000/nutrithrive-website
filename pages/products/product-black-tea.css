@@ -1494,6 +1494,57 @@ footer {
     margin-bottom: 2rem;
 }
 
+/* Product Layout - Side by Side */
+.product-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.product-image-container {
+    flex: 1;
+    text-align: center;
+}
+
+.product-purchase-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.quantity-selector label {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.quantity-selector input {
+    width: 80px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(236, 231, 219, 0.5);
+    background: transparent;
+    color: var(--text);
+    text-align: center;
+    outline: none;
+    font-size: 1rem;
+}
+
+.quantity-selector input:focus {
+    border-color: var(--primary);
+}
+
 .product-purchase-details .product-price {
     font-size: 1.8rem;
     font-weight: 700;
@@ -2302,6 +2353,26 @@ body.blog-moringa-tree .btn-secondary:hover {
 
   .accordion-content .faq-item p {
     font-size: 0.95rem;
+  }
+
+  /* Mobile Product Layout */
+  .product-layout {
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .product-image-container {
+    text-align: center;
+  }
+
+  .product-purchase-container {
+    align-items: center;
+    text-align: center;
+  }
+
+  .quantity-selector {
+    justify-content: center;
   }
 }
 
