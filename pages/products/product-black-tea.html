@@ -113,11 +113,17 @@
     <script src="../../shared/js/script.js" defer></script>
     <script src="product-black-tea.js"></script>
     <script 
-      src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD">
+      src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD&enable-funding=card">
     </script>
     <script>
       paypal.HostedButtons({
         hostedButtonId: "AMDLXGV7HCKXW",
+        style: {
+          layout: 'vertical',
+          color: 'blue',
+          shape: 'rect',
+          label: 'paypal'
+        }
       }).render("#paypal-container-AMDLXGV7HCKXW")
     </script>
 </body>
