@@ -66,7 +66,13 @@
     <main>
         <section class="product-detail-page">
             <div class="product-purchase-details">
-                <div id="paypal-container-AMDLXGV7HCKXW"></div>
+                <div style="text-align: center; padding: 20px;">
+                    <h2 style="color: var(--primary); margin-bottom: 20px;">Premium Black Tea - AU$10</h2>
+                    <button id="add-to-cart-btn" style="background-color: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px;">
+                        Add to Cart
+                    </button>
+                    <div id="paypal-checkout-container" style="margin-top: 20px;"></div>
+                </div>
 
             </div>
         </section>
@@ -113,18 +119,66 @@
     <script src="../../shared/js/script.js" defer></script>
     <script src="product-black-tea.js"></script>
     <script 
-      src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD&enable-funding=card">
+      src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo">
     </script>
     <script>
-      paypal.HostedButtons({
-        hostedButtonId: "AMDLXGV7HCKXW",
-        style: {
-          layout: 'vertical',
-          color: 'blue',
-          shape: 'rect',
-          label: 'paypal'
-        }
-      }).render("#paypal-container-AMDLXGV7HCKXW")
+      // Custom Add to Cart functionality with your API credentials
+      document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+        // Show PayPal Smart Buttons
+        paypal.Buttons({
+          style: {
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'rect',
+            label: 'paypal',
+            height: 45
+          },
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: '10.00',
+                  currency_code: 'AUD'
+                },
+                description: 'NutriThrive Premium Black Tea - 100g',
+                item: {
+                  name: 'Premium Black Tea',
+                  description: 'NutriThrive Premium Black Tea - 100g',
+                  unit_amount: {
+                    currency_code: 'AUD',
+                    value: '10.00'
+                  },
+                  quantity: '1'
+                }
+              }],
+              application_context: {
+                brand_name: 'NutriThrive',
+                landing_page: 'NO_PREFERENCE',
+                user_action: 'PAY_NOW'
+              }
+            });
+          },
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              console.log('Payment completed:', details);
+              alert('Payment successful! Thank you for your purchase.');
+              // Redirect to thank you page or show success message
+              // window.location.href = '/thank-you.html';
+            });
+          },
+          onError: function(err) {
+            console.error('PayPal error:', err);
+            alert('Payment failed. Please try again or contact support.');
+          },
+          onCancel: function(data) {
+            console.log('Payment cancelled:', data);
+            alert('Payment was cancelled.');
+          }
+        }).render('#paypal-checkout-container');
+        
+        // Hide the Add to Cart button and show PayPal buttons
+        document.getElementById('add-to-cart-btn').style.display = 'none';
+      });
     </script>
 </body>
 </html>
