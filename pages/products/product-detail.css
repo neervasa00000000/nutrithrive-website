@@ -2025,6 +2025,8 @@ article h1, section h1, nav h1, aside h1 {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    width: 100%;
+    overflow: hidden;
 }
 
 /* Accordion Styles - Clean Minimalist Design */
@@ -2086,6 +2088,8 @@ article h1, section h1, nav h1, aside h1 {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .accordion-content ul {
@@ -2096,9 +2100,11 @@ article h1, section h1, nav h1, aside h1 {
 
 .accordion-content li {
     padding: 0.8rem 0;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text);
     border-bottom: 1px solid rgba(236, 231, 219, 0.3);
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 .accordion-content li:last-child {
@@ -2106,10 +2112,12 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .accordion-content p {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.6;
     color: var(--text);
     margin-bottom: 1rem;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 .accordion-content .faq-item {
@@ -2125,16 +2133,20 @@ article h1, section h1, nav h1, aside h1 {
 
 .accordion-content .faq-item h3 {
     color: var(--primary);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.8rem;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 .accordion-content .faq-item p {
     color: var(--text);
     line-height: 1.6;
-    font-size: 1.05rem;
+    font-size: 1rem;
     margin-bottom: 0;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 /* Mobile Accordion Styles */
