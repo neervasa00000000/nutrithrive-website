@@ -2009,36 +2009,32 @@ body.blog-moringa-tree .btn-secondary:hover {
     opacity: 1 !important;
 }
 
-/* Accordion Styles */
+/* Accordion Styles - Clean Minimalist Design */
 .accordion-section {
-    margin: 1.5rem 0;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(236, 231, 219, 0.8);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.accordion-section:hover {
-    box-shadow: 0 8px 24px rgba(23, 92, 54, 0.12);
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
 }
 
 .accordion-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 0;
     cursor: pointer;
-    background: var(--card);
+    background: transparent;
     border: none;
     width: 100%;
     text-align: left;
+    border-bottom: 1px solid rgba(236, 231, 219, 0.5);
     transition: all 0.3s ease;
 }
 
 .accordion-header:hover {
-    background: rgba(23, 92, 54, 0.05);
+    background: transparent;
 }
 
 .accordion-header h2 {
@@ -2063,9 +2059,9 @@ body.blog-moringa-tree .btn-secondary:hover {
 
 .accordion-content {
     display: none;
-    padding: 0 2rem 2rem 2rem;
-    background: var(--card);
-    border-top: 1px solid rgba(236, 231, 219, 0.5);
+    padding: 1.5rem 0;
+    background: transparent;
+    border: none;
 }
 
 .accordion-content ul {
@@ -2270,11 +2266,11 @@ body.blog-moringa-tree .btn-secondary:hover {
 
   /* Mobile Accordion Styles */
   .accordion-section {
-    margin: 1rem 0;
+    margin: 0;
   }
 
   .accordion-header {
-    padding: 1rem 1.5rem;
+    padding: 1rem 0;
   }
 
   .accordion-header h2 {
@@ -2286,7 +2282,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   }
 
   .accordion-content {
-    padding: 0 1.5rem 1.5rem 1.5rem;
+    padding: 1rem 0;
   }
 
   .accordion-content li {
