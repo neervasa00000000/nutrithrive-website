@@ -2019,6 +2019,9 @@ body.blog-moringa-tree .btn-secondary:hover {
     box-shadow: none;
     border-radius: 0;
     overflow: visible;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .accordion-header {
@@ -2064,6 +2067,9 @@ body.blog-moringa-tree .btn-secondary:hover {
     padding: 1.5rem 0;
     background: transparent;
     border: none;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .accordion-content ul {
