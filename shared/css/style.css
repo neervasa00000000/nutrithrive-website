@@ -315,7 +315,7 @@ html[data-theme="alt"] .theme-toggle::after {
     width: 25px;
     height: 3px;
     background-color: var(--primary);
-    margin: 5px 0;
+    margin: 3px 0; /* tighter spacing between lines */
     transition: all 0.2s ease;
     pointer-events: none;
 }
@@ -1064,6 +1064,8 @@ footer {
     .hamburger {
         display: block;
     }
+    /* tighter hamburger line spacing on mobile */
+    .hamburger div { margin: 2px 0; }
 
     /* --- Definitive Mobile Menu Fullscreen Fix --- */
     .nav-links {
