@@ -2015,3 +2015,157 @@ article h1, section h1, nav h1, aside h1 {
     border-radius: 0 !important;
     box-shadow: none !important;
 }
+
+/* Product Info Sections */
+.product-info-sections {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Accordion Styles - Clean Minimalist Design */
+.accordion-section {
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgba(236, 231, 219, 0.5);
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: transparent;
+}
+
+.accordion-header h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    flex: 1;
+}
+
+.accordion-icon {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+}
+
+.accordion-section.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    display: none;
+    padding: 1.5rem 0;
+    background: transparent;
+    border: none;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion-content li {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    color: var(--text);
+    border-bottom: 1px solid rgba(236, 231, 219, 0.3);
+}
+
+.accordion-content li:last-child {
+    border-bottom: none;
+}
+
+.accordion-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.accordion-content .faq-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(236, 231, 219, 0.3);
+}
+
+.accordion-content .faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.accordion-content .faq-item h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.accordion-content .faq-item p {
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+/* Mobile Accordion Styles */
+@media (max-width: 768px) {
+    .accordion-section {
+        margin: 0;
+    }
+
+    .accordion-header {
+        padding: 1rem 0;
+    }
+
+    .accordion-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .accordion-icon {
+        font-size: 1.5rem;
+    }
+
+    .accordion-content {
+        padding: 1rem 0;
+    }
+
+    .accordion-content li {
+        font-size: 1rem;
+        padding: 0.6rem 0;
+    }
+
+    .accordion-content p {
+        font-size: 1rem;
+    }
+
+    .accordion-content .faq-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .accordion-content .faq-item p {
+        font-size: 0.95rem;
+    }
+}
