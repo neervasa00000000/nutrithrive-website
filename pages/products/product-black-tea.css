@@ -1973,6 +1973,82 @@ body.blog-moringa-tree .btn-secondary:hover {
     overflow-anchor: none;
 }
 
+/* Product Info Sections */
+.product-info-sections {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.product-benefits,
+.product-usage,
+.product-faq {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(236, 231, 219, 0.8);
+}
+
+.product-benefits h2,
+.product-usage h2,
+.product-faq h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.product-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-benefits li {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    color: var(--text);
+    border-bottom: 1px solid rgba(236, 231, 219, 0.5);
+}
+
+.product-benefits li:last-child {
+    border-bottom: none;
+}
+
+.product-usage p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.faq-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(236, 231, 219, 0.5);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.faq-item h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.faq-item p {
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
 @media (max-width: 600px) {
   .product-card {
     padding: 0.7rem 0.5rem;
@@ -1988,6 +2064,43 @@ body.blog-moringa-tree .btn-secondary:hover {
   .product-card .product-title {
     margin-bottom: 0.7rem;
     font-size: 1.1rem;
+  }
+
+  /* Mobile Product Info Sections */
+  .product-info-sections {
+    padding: 0 1rem;
+    margin: 1rem auto;
+  }
+
+  .product-benefits,
+  .product-usage,
+  .product-faq {
+    margin: 1.5rem 0;
+    padding: 1.5rem 1rem;
+  }
+
+  .product-benefits h2,
+  .product-usage h2,
+  .product-faq h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-benefits li {
+    font-size: 1rem;
+    padding: 0.6rem 0;
+  }
+
+  .product-usage p {
+    font-size: 1rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .faq-item p {
+    font-size: 0.95rem;
   }
 }
 
