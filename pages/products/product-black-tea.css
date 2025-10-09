@@ -1423,6 +1423,9 @@ footer {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .product-gallery {
@@ -1467,6 +1470,9 @@ footer {
     background: var(--card);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #paypal-hosted-button-container {
@@ -1536,10 +1542,30 @@ footer {
 
 @media (max-width: 768px) {
     .product-detail-page {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        max-width: 100%;
+        margin: 1rem auto;
+        padding: 1rem;
     }
     .product-gallery {
         position: static;
+    }
+    .product-purchase-details {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+        margin: 0;
+    }
+    .product-purchase-details .product-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    .product-purchase-details .product-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 }
 
@@ -1978,6 +2004,9 @@ body.blog-moringa-tree .btn-secondary:hover {
     max-width: 800px;
     margin: 2rem auto;
     padding: 0 2rem;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .product-benefits,
@@ -2101,6 +2130,34 @@ body.blog-moringa-tree .btn-secondary:hover {
 
   .faq-item p {
     font-size: 0.95rem;
+  }
+
+  /* Additional mobile fixes for product page */
+  .product-detail-page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    max-width: 100% !important;
+    margin: 1rem auto !important;
+    padding: 1rem !important;
+  }
+
+  .product-purchase-details {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    margin: 0 !important;
+    background: var(--card) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow) !important;
+  }
+
+  .product-info-sections {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+    margin: 1rem auto !important;
   }
 }
 
