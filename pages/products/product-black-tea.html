@@ -68,6 +68,10 @@
             <div class="product-purchase-details">
                 <div style="text-align: center; padding: 20px;">
                     <h2 style="color: var(--primary); margin-bottom: 20px;">Premium Black Tea - AU$10</h2>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0;">
+                        <label for="qty" style="color:var(--text);font-weight:600;">Quantity</label>
+                        <input id="qty" type="number" value="1" min="1" step="1" inputmode="numeric" pattern="[0-9]*" style="width:80px;padding:10px 12px;border-radius:8px;border:1px solid #ccc;background:var(--card);color:var(--text);text-align:center;">
+                    </div>
                     <button id="add-to-cart-btn" style="background-color: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px;">
                         Add to Cart
                     </button>
@@ -134,22 +138,29 @@
             height: 45
           },
           createOrder: function(data, actions) {
+            // Get quantity and compute total
+            var qtyInput = document.getElementById('qty');
+            var qty = Math.max(1, parseInt((qtyInput && qtyInput.value) || '1', 10));
+            var unitPrice = 10.00; // AUD
+            var total = (unitPrice * qty).toFixed(2);
+
             return actions.order.create({
               purchase_units: [{
                 amount: {
-                  value: '10.00',
-                  currency_code: 'AUD'
+                  value: total,
+                  currency_code: 'AUD',
+                  breakdown: {
+                    item_total: { value: total, currency_code: 'AUD' }
+                  }
                 },
                 description: 'NutriThrive Premium Black Tea - 100g',
-                item: {
+                items: [{
                   name: 'Premium Black Tea',
                   description: 'NutriThrive Premium Black Tea - 100g',
-                  unit_amount: {
-                    currency_code: 'AUD',
-                    value: '10.00'
-                  },
-                  quantity: '1'
-                }
+                  unit_amount: { currency_code: 'AUD', value: unitPrice.toFixed(2) },
+                  quantity: qty.toString(),
+                  category: 'PHYSICAL_GOODS'
+                }]
               }],
               application_context: {
                 brand_name: 'NutriThrive',
