@@ -112,39 +112,54 @@
 
             <!-- Product information sections moved below the purchase block -->
             <div class="product-info-sections">
-                <div class="product-benefits">
-                    <h2>Benefits of NutriThrive Moringa Powder</h2>
-                    <ul>
-                        <li>✓ Rich in Vitamin C, A, and E for immune support</li>
-                        <li>✓ High in antioxidants to fight free radicals</li>
-                        <li>✓ Contains essential amino acids and minerals</li>
-                        <li>✓ Sustainably sourced from premium farms</li>
-                    </ul>
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('benefits-moringa')">
+                        <h2>Benefits of NutriThrive Moringa Powder</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="benefits-moringa">
+                        <ul>
+                            <li>✓ Rich in Vitamin C, A, and E for immune support</li>
+                            <li>✓ High in antioxidants to fight free radicals</li>
+                            <li>✓ Contains essential amino acids and minerals</li>
+                            <li>✓ Sustainably sourced from premium farms</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="product-usage">
-                    <h2>How to Use Moringa Powder</h2>
-                    <p>Mix 1 teaspoon (2-3g) into smoothies, water, or your favorite beverages. Can also be added to yogurt, oatmeal, or baked goods. Start with smaller amounts and gradually increase as desired.</p>
-                    <p><strong>Looking to buy Moringa powder in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium Moringa powder.</p>
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('usage-moringa')">
+                        <h2>How to Use Moringa Powder</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="usage-moringa">
+                        <p>Mix 1 teaspoon (2-3g) into smoothies, water, or your favorite beverages. Can also be added to yogurt, oatmeal, or baked goods. Start with smaller amounts and gradually increase as desired.</p>
+                        <p><strong>Looking to buy Moringa powder in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium Moringa powder.</p>
+                    </div>
                 </div>
 
-                <div class="product-faq">
-                    <h2>Frequently Asked Questions</h2>
-                    <div class="faq-item">
-                        <h3>Is there a safety note?</h3>
-                        <p>If you have low blood levels or thin blood, avoid use. If you are pregnant, nursing or on medication, please seek personal advice from your healthcare provider.</p>
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('faq-moringa')">
+                        <h2>Frequently Asked Questions</h2>
+                        <span class="accordion-icon">+</span>
                     </div>
-                    <div class="faq-item">
-                        <h3>What does Moringa powder taste like?</h3>
-                        <p>Our Moringa powder has a mild, earthy taste that blends well with smoothies and other foods.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Are there any side effects?</h3>
-                        <p>Moringa is generally safe for most people. Start with small amounts and consult your healthcare provider if you have concerns.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Payments & Shipping</h3>
-                        <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$30+ (dispatch within 2 business days).</p>
+                    <div class="accordion-content" id="faq-moringa">
+                        <div class="faq-item">
+                            <h3>Is there a safety note?</h3>
+                            <p>If you have low blood levels or thin blood, avoid use. If you are pregnant, nursing or on medication, please seek personal advice from your healthcare provider.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>What does Moringa powder taste like?</h3>
+                            <p>Our Moringa powder has a mild, earthy taste that blends well with smoothies and other foods.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Are there any side effects?</h3>
+                            <p>Moringa is generally safe for most people. Start with small amounts and consult your healthcare provider if you have concerns.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Payments & Shipping</h3>
+                            <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$30+ (dispatch within 2 business days).</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -189,6 +204,23 @@
         </div>
     </footer>
 
+    <script>
+        // Accordion functionality
+        function toggleAccordion(sectionId) {
+            const content = document.getElementById(sectionId);
+            const icon = content.previousElementSibling.querySelector('.accordion-icon');
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.textContent = '+';
+                content.parentElement.classList.remove('active');
+            } else {
+                content.style.display = 'block';
+                icon.textContent = '−';
+                content.parentElement.classList.add('active');
+            }
+        }
+    </script>
     <script src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo"></script>
     <script>
       // Smart Buttons checkout with quantity (same pattern as Darjeeling Black Tea)
