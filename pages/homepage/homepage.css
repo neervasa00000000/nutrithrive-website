@@ -75,7 +75,7 @@ header {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1.2rem 2rem;
+    padding: 1.5rem 2rem; /* match other pages */
     color: var(--primary);
     background: transparent;
 }
@@ -99,11 +99,11 @@ header {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 1.5rem; /* tighter spacing for cleaner look */
+    gap: 2rem; /* match other pages */
 }
 
 .nav-links a {
-    font-size: 0.95rem; /* smaller, more refined */
+    font-size: 1.1rem; /* match other pages */
     font-weight: 600;
     color: var(--primary);
     text-decoration: none;
