@@ -1467,9 +1467,10 @@ footer {
     max-width: 600px; /* Or adjust as needed */
     text-align: center;
     padding: 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -2252,9 +2253,10 @@ body.blog-moringa-tree .btn-secondary:hover {
     max-width: 100% !important;
     padding: 1rem !important;
     margin: 0 !important;
-    background: var(--card) !important;
-    border-radius: var(--radius) !important;
-    box-shadow: var(--shadow) !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
   .product-info-sections {
