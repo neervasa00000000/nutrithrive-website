@@ -1464,9 +1464,10 @@ footer {
     max-width: 600px; /* Or adjust as needed */
     text-align: center;
     padding: 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
 }
 
 #paypal-hosted-button-container {
