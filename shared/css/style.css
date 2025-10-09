@@ -213,7 +213,8 @@ header {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1.2rem 2rem;
+    padding: 1.2rem 2rem; /* horizontal spacing */
+    min-height: 68px;     /* normalize bar height across pages */
     color: var(--primary);
     background: transparent;
 }
@@ -274,7 +275,7 @@ html[data-theme="alt"] .theme-toggle::after {
 
 .nav-links {
     display: flex;
-    align-items: center;
+    align-items: center; /* keep text vertically centered */
     gap: 2rem;
 }
 
@@ -284,6 +285,10 @@ html[data-theme="alt"] .theme-toggle::after {
     color: var(--primary);
     text-decoration: none;
     transition: color 0.2s ease;
+    display: inline-flex;      /* normalize baseline differences */
+    align-items: center;       /* center text vertically */
+    line-height: 1;            /* consistent baseline */
+    height: 44px;              /* consistent click target */
 }
 
 .nav-links a.active,
