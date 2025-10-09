@@ -94,8 +94,16 @@
                 <h1 class="product-title">Moringa Powder</h1>
                 <p class="product-description">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system.</p>
 
-                <div id="paypal-container-ERYQAP7ZAHDDQ"></div>
-                <p id="order-status"></p>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0;">
+                        <label for="qty-moringa" style="color:var(--text);font-weight:600;">Quantity</label>
+                        <input id="qty-moringa" type="number" value="1" min="1" step="1" inputmode="numeric" pattern="[0-9]*" style="width:80px;padding:10px 12px;border-radius:8px;border:0;background:transparent;color:var(--text);text-align:center;outline:none;box-shadow:none;">
+                    </div>
+                    <button id="add-to-cart-moringa" style="background-color: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px;">
+                        Add to Cart
+                    </button>
+                    <div id="paypal-checkout-moringa" style="margin-top: 20px;"></div>
+                </div>
                 
             </div>
 
@@ -178,11 +186,56 @@
         </div>
     </footer>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo"></script>
     <script>
-      paypal.HostedButtons({
-        hostedButtonId: "ERYQAP7ZAHDDQ",
-      }).render("#paypal-container-ERYQAP7ZAHDDQ")
+      // Smart Buttons checkout with quantity (same pattern as Darjeeling Black Tea)
+      (function() {
+        var addBtn = document.getElementById('add-to-cart-moringa');
+        if (!addBtn) return;
+        addBtn.addEventListener('click', function() {
+          paypal.Buttons({
+            style: { layout: 'vertical', color: 'blue', shape: 'rect', label: 'paypal', height: 45 },
+            createOrder: function(data, actions) {
+              var qtyEl = document.getElementById('qty-moringa');
+              var qty = Math.max(1, parseInt((qtyEl && qtyEl.value) || '1', 10));
+              var unitPrice = 10.00; // AUD per unit
+              var total = (unitPrice * qty).toFixed(2);
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: total,
+                    currency_code: 'AUD',
+                    breakdown: { item_total: { value: total, currency_code: 'AUD' } }
+                  },
+                  description: 'NutriThrive Moringa Powder - 100g',
+                  items: [{
+                    name: 'Moringa Powder',
+                    description: 'NutriThrive Moringa Powder - 100g',
+                    unit_amount: { currency_code: 'AUD', value: unitPrice.toFixed(2) },
+                    quantity: qty.toString(),
+                    category: 'PHYSICAL_GOODS'
+                  }]
+                }],
+                application_context: { brand_name: 'NutriThrive', landing_page: 'NO_PREFERENCE', user_action: 'PAY_NOW' }
+              });
+            },
+            onApprove: function(data, actions) {
+              return actions.order.capture().then(function(details) {
+                alert('Payment successful! Thank you for your purchase.');
+              });
+            },
+            onError: function(err) {
+              console.error('PayPal error:', err);
+              alert('Payment failed. Please try again.');
+            },
+            onCancel: function(data) {
+              console.log('Payment cancelled:', data);
+            }
+          }).render('#paypal-checkout-moringa');
+          // Hide the Add to Cart button once PayPal renders
+          addBtn.style.display = 'none';
+        });
+      })();
     </script>
     <script src="product-detail.js"></script>
 </body>
