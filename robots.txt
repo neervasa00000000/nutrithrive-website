@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 
+# Favicon
+Allow: /favicon.ico
+
 # Sitemap
 Sitemap: https://nutrithrive.com.au/sitemap.xml
 
