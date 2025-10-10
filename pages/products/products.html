@@ -88,12 +88,10 @@
                 </div>
                 <div class="product-card edgy-card" style="align-items: center;">
                     <a href="#" class="product-link">
-                        <div class="mystery-product-img">
-                            ?
-                        </div>
+                        <img src="../../shared/images/Dried Curry Leaves .png" alt="NutriThrive Dried Curry Leaves Product" class="product-image" width="300" height="300" style="display: block; margin: 0 auto; object-fit: cover;">
+                        <h3 class="product-title">Dried Curry Leaves</h3>
                     </a>
-                    <button id="capsules-btn" class="btn" type="button">Add to Cart</button>
-                    <div id="capsules-message" style="display:none; margin-top: 1rem; font-weight: bold; color: #2e7d32; font-size: 1.2rem;">Curry Leaves</div>
+                    <button id="curry-leaves-btn" class="btn" type="button">Add to Cart</button>
                 </div>
                 <div class="product-card edgy-card" style="align-items: center;">
                     <a href="product-black-tea.html" class="product-link">
@@ -149,15 +147,11 @@
     <script src="../../shared/js/script.js" defer></script>
     <script src="products.js"></script>
     <script>
-    // Moringa Capsules: Show message on button click
-    const capsulesBtn = document.getElementById('capsules-btn');
-    const capsulesMsg = document.getElementById('capsules-message');
-    if (capsulesBtn && capsulesMsg) {
-      capsulesBtn.addEventListener('click', function() {
-        capsulesMsg.style.display = 'block';
-        setTimeout(() => {
-          capsulesMsg.style.display = 'none';
-        }, 2000);
+    // Dried Curry Leaves: Show message on button click
+    const curryLeavesBtn = document.getElementById('curry-leaves-btn');
+    if (curryLeavesBtn) {
+      curryLeavesBtn.addEventListener('click', function() {
+        alert('Dried Curry Leaves - Coming Soon! This traditional Indian spice will be available soon.');
       });
     }
     </script>
