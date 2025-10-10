@@ -92,7 +92,6 @@
                         <h3 class="product-title">Dried Curry Leaves</h3>
                     </a>
                     <button id="curry-leaves-btn" class="btn" type="button">Add to Cart</button>
-                    <div id="paypal-container-NJKU46NBZ55JN" style="display: none; margin-top: 1rem;"></div>
                 </div>
                 <div class="product-card edgy-card" style="align-items: center;">
                     <a href="product-black-tea.html" class="product-link">
@@ -149,22 +148,13 @@
     <script src="../../shared/js/script.js" defer></script>
     <script src="products.js"></script>
     <script>
-    // Dried Curry Leaves: Show PayPal button on click
+    // Dried Curry Leaves: Open PayPal in new tab
     const curryLeavesBtn = document.getElementById('curry-leaves-btn');
-    const paypalContainer = document.getElementById('paypal-container-NJKU46NBZ55JN');
     
-    if (curryLeavesBtn && paypalContainer) {
+    if (curryLeavesBtn) {
       curryLeavesBtn.addEventListener('click', function() {
-        // Hide the Add to Cart button
-        curryLeavesBtn.style.display = 'none';
-        
-        // Show the PayPal container
-        paypalContainer.style.display = 'block';
-        
-        // Render PayPal hosted button
-        paypal.HostedButtons({
-          hostedButtonId: "NJKU46NBZ55JN",
-        }).render("#paypal-container-NJKU46NBZ55JN");
+        // Open PayPal hosted button page in new tab
+        window.open('https://www.paypal.com/donate/buttons/hosted?id=NJKU46NBZ55JN', '_blank');
       });
     }
     </script>
