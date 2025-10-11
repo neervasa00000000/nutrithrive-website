@@ -184,7 +184,21 @@
         document.getElementById('add-to-cart-btn-curry').addEventListener('click', function() {
             const quantity = document.getElementById('curry-quantity').value;
             const itemPrice = 6.00;
-            const totalAmount = (quantity * itemPrice).toFixed(2);
+            const itemWeight = 30; // 30g per pack
+            const totalWeight = quantity * itemWeight;
+            
+            // Calculate shipping cost based on total weight
+            let shippingCost = 0;
+            if (totalWeight <= 200) {
+                shippingCost = 6.00;
+            } else if (totalWeight <= 400) {
+                shippingCost = 6.70;
+            } else if (totalWeight <= 1000) {
+                shippingCost = 7.90;
+            }
+            
+            const subtotal = (quantity * itemPrice);
+            const totalAmount = (subtotal + shippingCost).toFixed(2);
 
             paypal.Buttons({
                 style: {
@@ -199,10 +213,20 @@
                         purchase_units: [{
                             amount: {
                                 value: totalAmount,
-                                currency_code: 'AUD'
+                                currency_code: 'AUD',
+                                breakdown: {
+                                    item_total: {
+                                        currency_code: 'AUD',
+                                        value: subtotal.toFixed(2)
+                                    },
+                                    shipping: {
+                                        currency_code: 'AUD',
+                                        value: shippingCost.toFixed(2)
+                                    }
+                                }
                             },
-                            description: `NutriThrive Dried Curry Leaves - ${quantity} x 30g`,
-                            item: {
+                            description: `NutriThrive Dried Curry Leaves - ${quantity} x 30g (${totalWeight}g total)`,
+                            items: [{
                                 name: 'Dried Curry Leaves',
                                 description: 'NutriThrive Premium Dried Curry Leaves',
                                 unit_amount: {
@@ -210,7 +234,7 @@
                                     value: itemPrice.toFixed(2)
                                 },
                                 quantity: quantity
-                            }
+                            }]
                         }],
                         application_context: {
                             brand_name: 'NutriThrive',

@@ -220,7 +220,21 @@
             var qtyInput = document.getElementById('qty');
             var qty = Math.max(1, parseInt((qtyInput && qtyInput.value) || '1', 10));
             var unitPrice = 10.00; // AUD
-            var total = (unitPrice * qty).toFixed(2);
+            var itemWeight = 100; // 100g per pack
+            var totalWeight = qty * itemWeight;
+            
+            // Calculate shipping cost based on total weight
+            var shippingCost = 0;
+            if (totalWeight <= 200) {
+              shippingCost = 6.00;
+            } else if (totalWeight <= 400) {
+              shippingCost = 6.70;
+            } else if (totalWeight <= 1000) {
+              shippingCost = 7.90;
+            }
+            
+            var subtotal = (unitPrice * qty);
+            var total = (subtotal + shippingCost).toFixed(2);
 
             return actions.order.create({
               purchase_units: [{
@@ -228,10 +242,11 @@
                   value: total,
                   currency_code: 'AUD',
                   breakdown: {
-                    item_total: { value: total, currency_code: 'AUD' }
+                    item_total: { value: subtotal.toFixed(2), currency_code: 'AUD' },
+                    shipping: { value: shippingCost.toFixed(2), currency_code: 'AUD' }
                   }
                 },
-                description: 'NutriThrive Premium Black Tea - 100g',
+                description: `NutriThrive Premium Black Tea - ${qty} x 100g (${totalWeight}g total)`,
                 items: [{
                   name: 'Premium Black Tea',
                   description: 'NutriThrive Premium Black Tea - 100g',
