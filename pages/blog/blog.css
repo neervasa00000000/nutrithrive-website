@@ -59,16 +59,16 @@ body.no-scroll { /* disabled scroll lock */
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .blog-post-header {
     text-align: center;
     margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 2px solid var(--bg);
+    border-bottom: 2px solid var(--muted);
 }
 
 .blog-post-header h1 {
@@ -1547,15 +1547,15 @@ footer {
     max-width: 800px;
     margin: 3rem auto;
     padding: 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .blog-post-header {
     text-align: center;
     margin-bottom: 2.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--muted);
     padding-bottom: 2rem;
 }
 
