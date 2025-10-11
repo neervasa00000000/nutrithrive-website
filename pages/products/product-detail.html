@@ -225,7 +225,19 @@
             }
         }
     </script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo&enable-funding=card&components=buttons"></script>
+    <script>
+      // Load PayPal SDK asynchronously to avoid deprecated API warnings
+      (function() {
+        const script = document.createElement('script');
+        script.src = 'https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo&enable-funding=card&components=buttons';
+        script.crossOrigin = 'anonymous';
+        script.setAttribute('data-sdk-integration-source', 'button-factory');
+        script.setAttribute('data-namespace', 'paypal_sdk');
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+      })();
+    </script>
     <script>
       // Smart Buttons checkout with quantity (same pattern as Darjeeling Black Tea)
       (function initPayPal() {
@@ -236,6 +248,22 @@
         addBtn.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
+          
+          // Wait for PayPal to load if not already available
+          if (typeof paypal === 'undefined') {
+            const checkPayPal = setInterval(() => {
+              if (typeof paypal !== 'undefined') {
+                clearInterval(checkPayPal);
+                initPayPalButtons();
+              }
+            }, 100);
+            return;
+          }
+          
+          initPayPalButtons();
+        });
+        
+        function initPayPalButtons() {
           paypal.Buttons({
             style: { layout: 'vertical', color: 'blue', shape: 'rect', label: 'paypal', height: 45 },
             createOrder: function(data, actions) {
@@ -295,16 +323,32 @@
           }).render('#paypal-checkout-moringa');
           // Hide the Add to Cart button once PayPal renders
           addBtn.style.display = 'none';
-        });
+        }
         
-        // Cleanup function to prevent memory leaks
-        window.addEventListener('beforeunload', function() {
+        // Modern cleanup using pagehide instead of beforeunload
+        window.addEventListener('pagehide', function() {
           if (window.paypal && window.paypal.Buttons) {
-            // Clean up PayPal resources
             try {
-              document.querySelector('#paypal-checkout-moringa').innerHTML = '';
+              const container = document.querySelector('#paypal-checkout-moringa');
+              if (container) {
+                container.innerHTML = '';
+              }
             } catch (e) {
               console.log('PayPal cleanup completed');
+            }
+          }
+        });
+        
+        // Additional cleanup for visibility change
+        document.addEventListener('visibilitychange', function() {
+          if (document.hidden && window.paypal) {
+            try {
+              const container = document.querySelector('#paypal-checkout-moringa');
+              if (container && container.innerHTML) {
+                container.innerHTML = '';
+              }
+            } catch (e) {
+              console.log('PayPal visibility cleanup completed');
             }
           }
         });
