@@ -72,20 +72,8 @@
             <div class="product-purchase-details">
                 <h1 class="product-title">Dried Curry Leaves</h1>
                 <p class="product-description">Discover the authentic taste of traditional Indian cooking with our premium dried curry leaves. These aromatic leaves add depth and flavor to curries, dals, and South Indian dishes while providing numerous health benefits.</p>
-                <div style="margin:0 0 14px 0; text-align:center;">
-                    <img src="../../shared/images/Dried Curry Leaves .png" alt="NutriThrive Dried Curry Leaves Product" width="320" height="320" style="border-radius:12px;background:#f6f6f6;object-fit:cover;">
-                </div>
-
                 <div style="text-align: center; padding: 20px;">
-                    <h2 style="color: var(--primary); margin-bottom: 20px;">Dried Curry Leaves</h2>
-                    <div style="margin-bottom: 15px;">
-                        <label for="curry-quantity" style="font-weight: 600; color: var(--text);">Quantity:</label>
-                        <input type="number" id="curry-quantity" value="1" min="1" style="width: 60px; padding: 8px; border: 1px solid var(--border); border-radius: var(--radius); text-align: center; margin-left: 10px; background-color: var(--card); color: var(--text);">
-                    </div>
-                    <button id="add-to-cart-btn-curry" style="background-color: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px;">
-                        Add to Cart
-                    </button>
-                    <div id="paypal-checkout-container-curry" style="margin-top: 20px;"></div>
+                    <div id="paypal-container-NJKU46NBZ55JN" style="margin-top: 20px;"></div>
                 </div>
                 
             </div>
@@ -178,94 +166,14 @@
         </div>
     </footer>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo&enable-funding=card&components=buttons" 
-            crossorigin="anonymous" 
-            data-sdk-integration-source="button-factory"
-            data-namespace="paypal_sdk"></script>
+    <script 
+      src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD">
+    </script>
     <script src="../../shared/js/script.js" defer></script>
     <script>
-        document.getElementById('add-to-cart-btn-curry').addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const quantity = document.getElementById('curry-quantity').value;
-            const itemPrice = 6.00;
-            const itemWeight = 30; // 30g per pack
-            const totalWeight = quantity * itemWeight;
-            
-            // Calculate shipping cost based on total weight
-            let shippingCost = 0;
-            if (totalWeight <= 200) {
-                shippingCost = 6.00;
-            } else if (totalWeight <= 400) {
-                shippingCost = 6.70;
-            } else if (totalWeight <= 1000) {
-                shippingCost = 7.90;
-            }
-            
-            const subtotal = (quantity * itemPrice);
-            const totalAmount = (subtotal + shippingCost).toFixed(2);
-
-            paypal.Buttons({
-                style: {
-                    layout: 'vertical',
-                    color: 'blue',
-                    shape: 'rect',
-                    label: 'paypal',
-                    height: 45
-                },
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: totalAmount,
-                                currency_code: 'AUD',
-                                breakdown: {
-                                    item_total: {
-                                        currency_code: 'AUD',
-                                        value: subtotal.toFixed(2)
-                                    },
-                                    shipping: {
-                                        currency_code: 'AUD',
-                                        value: shippingCost.toFixed(2)
-                                    }
-                                }
-                            },
-                            description: `NutriThrive Dried Curry Leaves - ${quantity} x 30g (${totalWeight}g total)`,
-                            items: [{
-                                name: 'Dried Curry Leaves',
-                                description: 'NutriThrive Premium Dried Curry Leaves',
-                                unit_amount: {
-                                    currency_code: 'AUD',
-                                    value: itemPrice.toFixed(2)
-                                },
-                                quantity: quantity
-                            }]
-                        }],
-                        application_context: {
-                            brand_name: 'NutriThrive',
-                            landing_page: 'NO_PREFERENCE',
-                            user_action: 'PAY_NOW'
-                        }
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        console.log('Payment completed:', details);
-                        alert('Payment successful! Thank you for your purchase.');
-                    });
-                },
-                onError: function(err) {
-                    console.error('PayPal error:', err);
-                    alert('Payment failed. Please try again or contact support.');
-                },
-                onCancel: function(data) {
-                    console.log('Payment cancelled:', data);
-                    alert('Payment was cancelled.');
-                }
-            }).render('#paypal-checkout-container-curry');
-            
-            document.getElementById('add-to-cart-btn-curry').style.display = 'none';
-        });
+        paypal.HostedButtons({
+            hostedButtonId: "NJKU46NBZ55JN",
+        }).render("#paypal-container-NJKU46NBZ55JN")
 
         // Accordion functionality
         function toggleAccordion(sectionId) {
