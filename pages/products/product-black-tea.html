@@ -201,11 +201,13 @@
         }
     </script>
     <script 
-      src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo">
+      src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo&enable-funding=card&components=buttons">
     </script>
     <script>
       // Custom Add to Cart functionality with your API credentials
-      document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+      document.getElementById('add-to-cart-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         // Show PayPal Smart Buttons
         paypal.Buttons({
           style: {

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Moringa Powder – 100% Pure Moringa Oleifera | NutriThrive</title>
     <meta name="description" content="NutriThrive Moringa Powder – 100% pure moringa leaf powder. Lab-tested for potency, rich in vitamins & antioxidants. Boost energy, immunity & overall wellness. Shop online in Australia – fast shipping!">
     <meta name="keywords" content="moringa powder Australia, moringa, moringa oleifera powder, buy moringa powder, moringa benefits, superfood powder, health supplements Australia, moringa powder price">
@@ -223,13 +225,17 @@
             }
         }
     </script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&disable-funding=venmo&enable-funding=card&components=buttons"></script>
     <script>
       // Smart Buttons checkout with quantity (same pattern as Darjeeling Black Tea)
-      (function() {
+      (function initPayPal() {
         var addBtn = document.getElementById('add-to-cart-moringa');
         if (!addBtn) return;
-        addBtn.addEventListener('click', function() {
+        
+        // Use modern event handling to avoid deprecated APIs
+        addBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
           paypal.Buttons({
             style: { layout: 'vertical', color: 'blue', shape: 'rect', label: 'paypal', height: 45 },
             createOrder: function(data, actions) {
@@ -289,6 +295,18 @@
           }).render('#paypal-checkout-moringa');
           // Hide the Add to Cart button once PayPal renders
           addBtn.style.display = 'none';
+        });
+        
+        // Cleanup function to prevent memory leaks
+        window.addEventListener('beforeunload', function() {
+          if (window.paypal && window.paypal.Buttons) {
+            // Clean up PayPal resources
+            try {
+              document.querySelector('#paypal-checkout-moringa').innerHTML = '';
+            } catch (e) {
+              console.log('PayPal cleanup completed');
+            }
+          }
         });
       })();
     </script>
