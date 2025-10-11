@@ -70,19 +70,8 @@
             <div class="product-purchase-details">
                 <h1 class="product-title">Darjeeling Black Tea</h1>
                 <p class="product-description">Discover the rich aroma and smooth, balanced taste of our premium Darjeeling black tea. Perfect for mornings or afternoon pick-me-up, this authentic tea brings the finest flavors from the Himalayan region to your cup.</p>
-                <div style="margin:0 0 14px 0; text-align:center;">
-                    <img src="https://i.imgur.com/vn0DO4Q.jpg" alt="NutriThrive Darjeeling Black Tea" width="320" height="320" style="border-radius:12px;background:#f6f6f6;object-fit:cover;" onerror="this.onerror=null;this.src='https://i.imgur.com/vn0DO4Q.png';">
-                </div>
-
                 <div style="text-align: center; padding: 20px;">
-                    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0;">
-                        <label for="qty" style="color:var(--text);font-weight:600;">Quantity</label>
-                        <input id="qty" type="number" value="1" min="1" step="1" inputmode="numeric" pattern="[0-9]*" style="width:80px;padding:10px 12px;border-radius:8px;border:0;background:transparent;color:var(--text);text-align:center;outline:none;box-shadow:none;">
-                    </div>
-                    <button id="add-to-cart-btn" style="background-color: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px;">
-                        Add to Cart
-                    </button>
-                    <div id="paypal-checkout-container" style="margin-top: 20px;"></div>
+                    <div id="paypal-container-AMDLXGV7HCKXW" style="margin-top: 20px;"></div>
                 </div>
                 
             </div>
@@ -204,87 +193,9 @@
       src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD">
     </script>
     <script>
-      // Custom Add to Cart functionality with your API credentials
-      document.getElementById('add-to-cart-btn').addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        // Show PayPal Smart Buttons
-        paypal.Buttons({
-          style: {
-            layout: 'vertical',
-            color: 'blue',
-            shape: 'rect',
-            label: 'paypal',
-            height: 45
-          },
-          createOrder: function(data, actions) {
-            // Get quantity and compute total
-            var qtyInput = document.getElementById('qty');
-            var qty = Math.max(1, parseInt((qtyInput && qtyInput.value) || '1', 10));
-            var unitPrice = 10.00; // AUD
-            var itemWeight = 100; // 100g per pack
-            var totalWeight = qty * itemWeight;
-            
-            // Calculate shipping cost based on total weight
-            var shippingCost = 0;
-            if (totalWeight <= 200) {
-              shippingCost = 6.00;
-            } else if (totalWeight <= 400) {
-              shippingCost = 6.70;
-            } else if (totalWeight <= 1000) {
-              shippingCost = 7.90;
-            }
-            
-            var subtotal = (unitPrice * qty);
-            var total = (subtotal + shippingCost).toFixed(2);
-
-            return actions.order.create({
-              purchase_units: [{
-                amount: {
-                  value: total,
-                  currency_code: 'AUD',
-                  breakdown: {
-                    item_total: { value: subtotal.toFixed(2), currency_code: 'AUD' },
-                    shipping: { value: shippingCost.toFixed(2), currency_code: 'AUD' }
-                  }
-                },
-                description: `NutriThrive Premium Black Tea - ${qty} x 100g (${totalWeight}g total)`,
-                items: [{
-                  name: 'Premium Black Tea',
-                  description: 'NutriThrive Premium Black Tea - 100g',
-                  unit_amount: { currency_code: 'AUD', value: unitPrice.toFixed(2) },
-                  quantity: qty.toString(),
-                  category: 'PHYSICAL_GOODS'
-                }]
-              }],
-              application_context: {
-                brand_name: 'NutriThrive',
-                landing_page: 'NO_PREFERENCE',
-                user_action: 'PAY_NOW'
-              }
-            });
-          },
-          onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-              console.log('Payment completed:', details);
-              alert('Payment successful! Thank you for your purchase.');
-              // Redirect to thank you page or show success message
-              // window.location.href = '/thank-you.html';
-            });
-          },
-          onError: function(err) {
-            console.error('PayPal error:', err);
-            alert('Payment failed. Please try again or contact support.');
-          },
-          onCancel: function(data) {
-            console.log('Payment cancelled:', data);
-            alert('Payment was cancelled.');
-          }
-        }).render('#paypal-checkout-container');
-        
-        // Hide the Add to Cart button and show PayPal buttons
-        document.getElementById('add-to-cart-btn').style.display = 'none';
-      });
+        paypal.HostedButtons({
+            hostedButtonId: "AMDLXGV7HCKXW",
+        }).render("#paypal-container-AMDLXGV7HCKXW")
     </script>
 </body>
 </html>
