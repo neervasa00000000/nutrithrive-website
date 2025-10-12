@@ -57,39 +57,6 @@
     </script>
 </head>
 <body class="blog-post-page">
-    <header class="header">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="../pages/homepage/index.html">
-                    <img src="https://i.imgur.com/bZubhoR.png" alt="NutriThrive Logo" class="logo">
-                </a>
-            </div>
-            <nav class="navbar">
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="../pages/homepage/index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../pages/products/products.html" class="nav-link">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../pages/blog/blog.html" class="nav-link">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../pages/about/about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../pages/contact/contact.html" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
 
     <main>
         <article class="blog-post">
@@ -368,11 +335,6 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
