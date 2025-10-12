@@ -1567,6 +1567,33 @@ footer {
         font-size: 1.8rem;
         margin-bottom: 0.8rem;
     }
+    
+    .product-purchase-details .product-description {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .product-info-sections {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 1rem auto !important;
+        padding: 0 1rem !important;
+    }
+    
+    /* Fix PayPal button container */
+    #paypal-container-ERYQAP7ZAHDDQ,
+    #paypal-container-NJKU46NBZ55JN {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 1rem 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Ensure proper spacing */
+    .product-detail-page > * {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
     .product-purchase-details .product-description {
         font-size: 1rem;
         margin-bottom: 1.5rem;
