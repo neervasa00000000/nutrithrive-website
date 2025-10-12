@@ -48,6 +48,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    scroll-behavior: smooth;
     /* Hide scrollbar but keep scrolling functionality */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -2687,6 +2688,12 @@ article h1, section h1, nav h1, aside h1 {
 .blog-post-page {
     background: var(--bg);
     color: var(--text);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.blog-post-page * {
+    scroll-behavior: smooth;
 }
 
 .blog-post {
@@ -2789,7 +2796,6 @@ article h1, section h1, nav h1, aside h1 {
 
 .comparison-table {
     margin: 2rem 0;
-    overflow-x: auto;
 }
 
 .comparison-table table {
@@ -2797,7 +2803,6 @@ article h1, section h1, nav h1, aside h1 {
     border-collapse: collapse;
     background: transparent;
     border-radius: 0;
-    overflow: visible;
     box-shadow: none;
     border: 1px solid #e0e0e0;
 }
