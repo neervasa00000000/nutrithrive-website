@@ -42,7 +42,7 @@ html, body {
 }
 
 body {
-    background: var(--bg);
+    background: #f8f7f2;
     color: var(--text);
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -66,7 +66,7 @@ body.no-scroll { /* disabled scroll lock */
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    background: var(--bg);
+    background: transparent;
     border-radius: 0;
     box-shadow: none;
 }
@@ -83,9 +83,9 @@ body.no-scroll { /* disabled scroll lock */
     text-align: center;
     margin-bottom: 3rem;
     padding: 2rem;
-    background: var(--bg);
-    border-radius: 12px;
-    border: 1px solid #e8f5e8;
+    background: transparent;
+    border-radius: 0;
+    border: none;
 }
 
 .blog-post-header h1 {
