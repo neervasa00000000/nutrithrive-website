@@ -2708,9 +2708,7 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .blog-post-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: relative;
     background: var(--bg);
     padding: 1rem 0;
     margin-bottom: 2rem;
@@ -3137,9 +3135,7 @@ article h1, section h1, nav h1, aside h1 {
     }
     
     .blog-post-header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
+        position: relative;
         background: var(--bg);
         padding: 1rem 0;
         margin-bottom: 2rem;
