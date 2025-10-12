@@ -1882,17 +1882,23 @@ footer {
 }
 
 .blog-list-section {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     border-top: 1px solid #e0e0e0;
     padding-top: 2.5rem;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
     .blog-list-section {
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 }
 
@@ -1902,6 +1908,12 @@ footer {
     box-shadow: var(--shadow);
     padding: 2rem;
     transition: all var(--transition);
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
 }
 
 .blog-post-card:hover {
@@ -2022,8 +2034,23 @@ footer {
         font-size: 2rem;
     }
     
+    .blog-list-section {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        padding: 1rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
     .blog-list-section .blog-post-card {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.5rem !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
 
     .blog-post {
