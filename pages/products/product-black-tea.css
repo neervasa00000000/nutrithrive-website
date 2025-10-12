@@ -1545,39 +1545,105 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Reset and fix mobile layout */
     .product-detail-page {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        max-width: 100%;
-        margin: 1rem auto;
-        padding: 1rem;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0.5rem !important;
+        box-sizing: border-box !important;
     }
+    
     .product-gallery {
-        position: static;
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: 1rem !important;
     }
+    
     .product-purchase-details {
-        width: 100%;
-        max-width: 100%;
-        padding: 1rem;
-        margin: 0;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 2rem 0 !important;
+        padding: 1.5rem 1rem !important;
+        background: var(--card) !important;
+        border-radius: var(--radius) !important;
+        box-shadow: var(--shadow) !important;
+        border: none !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
+    
     .product-purchase-details .product-title {
-        font-size: 1.8rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.6rem !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.3 !important;
     }
     
     .product-purchase-details .product-description {
-        font-size: 1rem;
-        margin-bottom: 1rem;
+        font-size: 0.95rem !important;
+        margin-bottom: 1.5rem !important;
+        line-height: 1.5 !important;
     }
     
     .product-info-sections {
+        display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        margin: 1rem auto !important;
-        padding: 0 1rem !important;
+        margin: 2rem 0 0 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    
+    .accordion-section {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 1.5rem 0 !important;
+        padding: 0 !important;
+        background: var(--card) !important;
+        border-radius: var(--radius) !important;
+        box-shadow: var(--shadow) !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+    }
+    
+    .accordion-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 1.5rem 1rem !important;
+        margin: 0 !important;
+        cursor: pointer !important;
+        border: none !important;
+        background: transparent !important;
+    }
+    
+    .accordion-header h2 {
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+        color: var(--primary) !important;
+        font-weight: 600 !important;
+    }
+    
+    .accordion-icon {
+        font-size: 1.5rem !important;
+        color: var(--primary) !important;
+        font-weight: bold !important;
+    }
+    
+    .accordion-content {
+        display: none !important;
+        padding: 0 1rem 1.5rem 1rem !important;
+        margin: 0 !important;
+        border-top: 1px solid rgba(0,0,0,0.1) !important;
+    }
+    
+    .accordion-content.active {
+        display: block !important;
     }
     
     /* Fix PayPal button container */
@@ -1585,18 +1651,20 @@ footer {
     #paypal-container-NJKU46NBZ55JN {
         width: 100% !important;
         max-width: 100% !important;
-        margin: 1rem 0 !important;
+        margin: 1.5rem 0 0 0 !important;
         padding: 0 !important;
+        display: block !important;
+        text-align: center !important;
     }
     
-    /* Ensure proper spacing */
-    .product-detail-page > * {
-        width: 100% !important;
+    /* Ensure no overlapping */
+    * {
         box-sizing: border-box !important;
     }
-    .product-purchase-details .product-description {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
+    
+    /* Add bottom margin to prevent cutoff */
+    body {
+        padding-bottom: 2rem !important;
     }
 }
 
