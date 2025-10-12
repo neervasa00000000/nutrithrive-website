@@ -42,7 +42,7 @@ html, body {
 }
 
 body {
-    background: #f8f7f2;
+    background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -1863,7 +1863,7 @@ footer {
 .blog-hero {
     text-align: center;
     padding: 3rem 1rem;
-    background-color: var(--card);
+    background-color: #ffffff;
     border-radius: var(--radius);
     margin-bottom: 3rem;
     box-shadow: var(--shadow);
@@ -1897,7 +1897,7 @@ footer {
 }
 
 .blog-post-card {
-    background: var(--card);
+    background: #ffffff;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     padding: 2rem;
