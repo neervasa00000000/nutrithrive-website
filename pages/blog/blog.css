@@ -1863,7 +1863,7 @@ footer {
 .blog-hero {
     text-align: center;
     padding: 3rem 1rem;
-    background-color: var(--card);
+    background-color: var(--bg);
     border-radius: var(--radius);
     margin-bottom: 3rem;
     box-shadow: var(--shadow);
@@ -1897,7 +1897,7 @@ footer {
 }
 
 .blog-post-card {
-    background: var(--card);
+    background: var(--bg);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     padding: 2rem;
