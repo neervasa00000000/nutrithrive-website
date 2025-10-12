@@ -48,6 +48,13 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    /* Hide scrollbar but keep scrolling functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* WebKit browsers (Chrome, Safari, Edge) */
 }
 
 body.no-scroll { /* disabled scroll lock */
