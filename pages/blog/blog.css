@@ -71,6 +71,14 @@ body.no-scroll { /* disabled scroll lock */
     box-shadow: none;
 }
 
+.blog-post > * {
+    margin-bottom: 2rem;
+}
+
+.blog-post > *:last-child {
+    margin-bottom: 0;
+}
+
 .blog-post-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -128,6 +136,7 @@ body.no-scroll { /* disabled scroll lock */
     border: 1px solid #e8f5e8;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .benefit-card:hover {
@@ -137,7 +146,7 @@ body.no-scroll { /* disabled scroll lock */
 
 .benefit-number {
     position: absolute;
-    top: -15px;
+    top: -10px;
     left: 20px;
     background: var(--accent);
     color: white;
@@ -475,6 +484,7 @@ body.no-scroll { /* disabled scroll lock */
     border-radius: 12px;
     border: 1px solid #e8f5e8;
     transition: transform 0.3s ease;
+    margin-bottom: 2rem;
 }
 
 .benefit-card:hover {
