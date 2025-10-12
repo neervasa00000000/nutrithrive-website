@@ -338,45 +338,57 @@
                 const paginationNumbers = document.getElementById('paginationNumbers');
                 paginationNumbers.innerHTML = '';
 
-                // Always show first page
-                if (totalPages > 0) {
-                    createPageNumber(1);
-                }
-
-                // Show dots if there are more than 7 pages
-                if (totalPages > 7) {
-                    if (currentPage > 4) {
-                        createDots();
-                    }
-                    
-                    // Show current page and surrounding pages
-                    const startPage = Math.max(2, currentPage - 1);
-                    const endPage = Math.min(totalPages - 1, currentPage + 1);
-                    
-                    for (let i = startPage; i <= endPage; i++) {
-                        if (i !== 1 && i !== totalPages) {
-                            createPageNumber(i);
-                        }
-                    }
-                    
-                    if (currentPage < totalPages - 3) {
-                        createDots();
-                    }
-                } else {
+                if (totalPages <= 7) {
                     // Show all pages if 7 or fewer
-                    for (let i = 2; i <= totalPages; i++) {
+                    for (let i = 1; i <= totalPages; i++) {
                         createPageNumber(i);
                     }
-                }
-
-                // Always show last page if more than 1 page
-                if (totalPages > 1) {
-                    createPageNumber(totalPages);
+                } else {
+                    // Show smart pagination for more than 7 pages
+                    // Always show first page
+                    createPageNumber(1);
+                    
+                    if (currentPage <= 4) {
+                        // Show pages 2, 3, 4, 5, 6
+                        for (let i = 2; i <= Math.min(6, totalPages - 1); i++) {
+                            createPageNumber(i);
+                        }
+                        if (totalPages > 6) {
+                            createDots();
+                        }
+                    } else if (currentPage >= totalPages - 3) {
+                        // Show pages near the end
+                        if (totalPages > 6) {
+                            createDots();
+                        }
+                        for (let i = Math.max(2, totalPages - 4); i <= totalPages - 1; i++) {
+                            createPageNumber(i);
+                        }
+                    } else {
+                        // Show current page and surrounding pages
+                        createDots();
+                        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                            createPageNumber(i);
+                        }
+                        createDots();
+                    }
+                    
+                    // Always show last page if more than 1 page
+                    if (totalPages > 1) {
+                        createPageNumber(totalPages);
+                    }
                 }
             }
 
             function createPageNumber(pageNum) {
                 const paginationNumbers = document.getElementById('paginationNumbers');
+                
+                // Check if this page number already exists to prevent duplicates
+                const existingPages = Array.from(paginationNumbers.children).map(el => parseInt(el.textContent));
+                if (existingPages.includes(pageNum)) {
+                    return;
+                }
+                
                 const pageElement = document.createElement('span');
                 pageElement.className = 'pagination-number';
                 pageElement.textContent = pageNum;
