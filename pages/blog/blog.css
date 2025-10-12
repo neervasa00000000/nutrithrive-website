@@ -66,7 +66,7 @@ body.no-scroll { /* disabled scroll lock */
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    background: transparent;
+    background: var(--bg);
     border-radius: 0;
     box-shadow: none;
 }
@@ -82,8 +82,10 @@ body.no-scroll { /* disabled scroll lock */
 .blog-post-header {
     text-align: center;
     margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 2px solid var(--muted);
+    padding: 2rem;
+    background: var(--bg);
+    border-radius: 12px;
+    border: 1px solid #e8f5e8;
 }
 
 .blog-post-header h1 {
@@ -92,6 +94,21 @@ body.no-scroll { /* disabled scroll lock */
     color: var(--primary);
     margin-bottom: 1rem;
     line-height: 1.2;
+}
+
+.blog-post-header .blog-post-meta {
+    color: var(--muted);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.blog-post-header .blog-post-excerpt {
+    color: var(--text);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .post-meta {
