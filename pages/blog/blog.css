@@ -2693,9 +2693,9 @@ article h1, section h1, nav h1, aside h1 {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
@@ -2729,10 +2729,10 @@ article h1, section h1, nav h1, aside h1 {
     color: var(--text);
     line-height: 1.6;
     margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--bg);
-    border-radius: var(--radius);
-    border-left: 4px solid var(--primary);
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    border-left: none;
 }
 
 .cta-box {
@@ -2775,10 +2775,11 @@ article h1, section h1, nav h1, aside h1 {
 .comparison-table table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--card);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
 }
 
 .comparison-table th,
@@ -2812,9 +2813,9 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .recipe-box {
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    background: transparent;
+    border-radius: 0;
+    padding: 1.5rem 0;
     margin: 2rem 0;
     border-left: 4px solid var(--primary);
 }
@@ -2835,9 +2836,9 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .local-stores {
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    background: transparent;
+    border-radius: 0;
+    padding: 1.5rem 0;
     margin: 2rem 0;
 }
 
@@ -2847,9 +2848,9 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .cooking-methods {
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    background: transparent;
+    border-radius: 0;
+    padding: 1.5rem 0;
     margin: 2rem 0;
 }
 
@@ -2863,11 +2864,12 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .faq-item {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    background: transparent;
+    border-radius: 0;
+    padding: 1.5rem 0;
     margin-bottom: 1rem;
-    box-shadow: var(--shadow);
+    box-shadow: none;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .faq-item h3 {
