@@ -3127,6 +3127,110 @@ article h1, section h1, nav h1, aside h1 {
 .method-item:nth-child(4) { transition-delay: 0.4s; }
 .method-item:nth-child(5) { transition-delay: 0.5s; }
 
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+    padding: 2rem 0;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card);
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.pagination-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #0f4a2a;
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.pagination-numbers {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.pagination-number {
+    background: var(--bg);
+    color: var(--text);
+    border: 2px solid var(--muted);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition);
+    min-width: 2.5rem;
+    text-align: center;
+}
+
+.pagination-number:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.pagination-number.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.pagination-number.dots {
+    border: none;
+    background: transparent;
+    cursor: default;
+    color: var(--muted);
+}
+
+.pagination-number.dots:hover {
+    color: var(--muted);
+    border: none;
+}
+
+/* Mobile styles for pagination */
+@media (max-width: 768px) {
+    .pagination {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .pagination-numbers {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .pagination-number {
+        min-width: 2rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
 /* Mobile styles for blog post */
 @media (max-width: 768px) {
     .blog-post {
