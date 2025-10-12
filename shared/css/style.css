@@ -19,46 +19,14 @@ html {
     --transition: 0.4s cubic-bezier(.4,2,.6,1);
 }
 
-/* Alternate theme (activated by html[data-theme="alt"]) */
-html[data-theme="alt"] {
-    /* All black theme with white text */
-    --bg: #000000;            /* pure black background */
-    --card: #1A1A1A;          /* light black boxes */
-    --primary: #175c36;       /* brand green for titles/links/icons */
-    --accent: #2A2A2A;        /* slightly lighter black for hover/active */
-    --footer-bg: #1A1A1A;     /* light black footer */
-    --footer-text: #FFFFFF;   /* white text on black footer */
-    --text: #FFFFFF;          /* white text everywhere */
-    --muted: #CCCCCC;         /* light gray secondary text */
-    --shadow: 0 4px 24px 0 rgba(0,0,0,0.3); /* darker shadow */
-}
-
-/* Readability tweaks on dark theme */
-html[data-theme="alt"] body,
-html[data-theme="alt"] p,
-html[data-theme="alt"] li { color: var(--text); }
-
-html[data-theme="alt"] header { background: var(--card); border-bottom-color: #333333; }
-html[data-theme="alt"] .nav-links a { color: #FFFFFF; }
-html[data-theme="alt"] .nav-links a:hover,
-html[data-theme="alt"] .nav-links a.active { color: #FFFFFF; }
-html[data-theme="alt"] .logo { color: #FFFFFF; }
 /* Prevent layout shift between pages with/without vertical scrollbar */
 html { overflow-y: scroll; scrollbar-gutter: stable both-edges; }
-html[data-theme="alt"] .hamburger div { background-color: #FFFFFF; }
 
 /* Make major headings readable in dark theme */
-html[data-theme="alt"] .hero-title,
-html[data-theme="alt"] .about-hero-title,
-html[data-theme="alt"] .blog-hero-title,
-html[data-theme="alt"] .products-section h1 {
     color: #FFFFFF;
 }
 
 /* Other section headings in dark theme */
-html[data-theme="alt"] .testimonials-title,
-html[data-theme="alt"] .blog-preview-title,
-html[data-theme="alt"] .features-section h3 {
     color: #FFFFFF;
 }
 
@@ -73,33 +41,15 @@ header .navbar {
 }
 
 /* Dark theme: make all general text light */
-html[data-theme="alt"] {
   --text: #EDEDED;
   --muted: #D0D0D0;
 }
-html[data-theme="alt"] body,
-html[data-theme="alt"] p,
-html[data-theme="alt"] li,
-html[data-theme="alt"] .hero-desc,
-html[data-theme="alt"] .blog-preview-desc,
-html[data-theme="alt"] .testimonial-text,
-html[data-theme="alt"] .about-desc,
-html[data-theme="alt"] .product-description,
-html[data-theme="alt"] .post-excerpt,
-html[data-theme="alt"] .blog-post-content,
-html[data-theme="alt"] .features-section.features-clean .feature p {
   color: var(--text) !important;
 }
 
 /* Dark theme: make FAQ titles/questions green for visibility */
-html[data-theme="alt"] .faq-title,
-html[data-theme="alt"] .faq-content h2,
-html[data-theme="alt"] .faq-content h3,
-html[data-theme="alt"] .faq-question h3,
-html[data-theme="alt"] .faq-icon {
   color: var(--primary) !important;
 }
-html[data-theme="alt"] .faq-item {
   border-bottom-color: rgba(237,237,237,0.25);
 }
 header .nav-links {
@@ -113,47 +63,22 @@ header .nav-links a {
 }
 
 /* Transparent alt buttons should be legible on dark */
-html[data-theme="alt"] .hero-btn.alt { color: #FFFFFF; border-color: #FFFFFF; }
 
 /* All text should be white in alternate theme */
-html[data-theme="alt"] .hero-desc,
-html[data-theme="alt"] .blog-preview-desc,
-html[data-theme="alt"] .testimonial-text,
-html[data-theme="alt"] .about-desc,
-html[data-theme="alt"] .product-description,
-html[data-theme="alt"] .post-excerpt,
-html[data-theme="alt"] .blog-post-content,
-html[data-theme="alt"] .features-section.features-clean .feature p {
     color: #FFFFFF !important;
 }
 
 /* Clickable elements with light black background and white text */
-html[data-theme="alt"] .btn,
-html[data-theme="alt"] .hero-btn,
-html[data-theme="alt"] .read-more-btn,
-html[data-theme="alt"] .theme-toggle,
-html[data-theme="alt"] button,
-html[data-theme="alt"] input[type="submit"],
-html[data-theme="alt"] input[type="button"],
-html[data-theme="alt"] .nav-links a {
     background-color: #1A1A1A !important;
     color: #FFFFFF !important;
     border-color: #333333 !important;
 }
 
-html[data-theme="alt"] .btn:hover,
-html[data-theme="alt"] .hero-btn:hover,
-html[data-theme="alt"] .read-more-btn:hover,
-html[data-theme="alt"] .nav-links a:hover {
     background-color: #2A2A2A !important;
     color: #FFFFFF !important;
 }
 
 /* Blog titles should be green for better readability */
-html[data-theme="alt"] .post-title,
-html[data-theme="alt"] .post-title a,
-html[data-theme="alt"] .blog-preview-title,
-html[data-theme="alt"] .blog-post-title {
     color: #175c36 !important;
 }
 
@@ -229,43 +154,6 @@ header {
     letter-spacing: -1px;
 }
 
-/* Theme toggle pill */
-.theme-toggle {
-    width: 64px;          /* bigger pill */
-    height: 34px;         /* bigger pill */
-    border-radius: 999px;
-    border: 2px solid rgba(0,0,0,0.12);
-    background: rgba(0,0,0,0.08);
-    display: inline-flex;
-    align-items: center;
-    padding: 0;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-}
-
-.theme-toggle::after {
-    content: '';
-    width: 26px;          /* bigger knob */
-    height: 26px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    position: absolute;
-    left: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.25s ease;
-}
-
-html[data-theme="alt"] .theme-toggle {
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.2);
-}
-
-html[data-theme="alt"] .theme-toggle::after {
-    transform: translate(30px, -50%); /* move farther for bigger pill */
-}
 
 .logo-emoji {
     font-size: 1.8rem;

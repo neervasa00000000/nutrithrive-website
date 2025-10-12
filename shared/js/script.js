@@ -1,30 +1,6 @@
 console.log('[NutriThrive] script.js loaded');
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme toggle
-    const toggleButton = document.getElementById('theme-toggle');
-    const THEME_KEY = 'nt_theme';
-
-    const applySavedTheme = () => {
-        const saved = localStorage.getItem(THEME_KEY);
-        if (saved === 'alt') {
-            document.documentElement.setAttribute('data-theme', 'alt');
-        }
-    };
-    applySavedTheme();
-
-    if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
-            const isAlt = document.documentElement.getAttribute('data-theme') === 'alt';
-            if (isAlt) {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.removeItem(THEME_KEY);
-            } else {
-                document.documentElement.setAttribute('data-theme', 'alt');
-                localStorage.setItem(THEME_KEY, 'alt');
-            }
-        });
-    }
 
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
