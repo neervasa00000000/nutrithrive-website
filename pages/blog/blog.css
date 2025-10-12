@@ -387,6 +387,7 @@ body.no-scroll { /* disabled scroll lock */
     border: 1px solid #e8f5e8;
     transition: transform 0.3s ease;
     text-align: center;
+    color: #333;
 }
 
 .recipe-card:hover {
@@ -396,17 +397,27 @@ body.no-scroll { /* disabled scroll lock */
 .recipe-card h4 {
     color: var(--primary);
     margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.recipe-card p {
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
 }
 
 .recipe-link {
     display: inline-block;
     background: var(--primary);
-    color: white;
-    padding: 0.5rem 1rem;
+    color: white !important;
+    padding: 0.75rem 1.5rem;
     border-radius: 6px;
     text-decoration: none;
     margin-top: 1rem;
     transition: background 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .recipe-link:hover {
