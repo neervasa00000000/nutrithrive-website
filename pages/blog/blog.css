@@ -629,6 +629,13 @@ header {
     transition: background var(--transition);
 }
 
+.blog-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
 .navbar {
     display: flex;
     align-items: center;
