@@ -647,6 +647,30 @@ header {
     transition: background var(--transition);
 }
 
+.blog-main {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.blog-post {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 2rem;
+}
+
+.blog-post-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.blog-post-content {
+    width: 100%;
+    max-width: none;
+}
+
 
 .navbar {
     display: flex;
