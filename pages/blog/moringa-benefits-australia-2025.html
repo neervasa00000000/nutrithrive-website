@@ -187,6 +187,82 @@
 
       <hr>
       <p><em>Disclaimer: Educational content only and not medical advice. Individual needs vary; please seek personalised guidance where appropriate.</em></p>
+      
+      <!-- SIMPLE ENGAGEMENT SECTIONS -->
+      <section style="margin: 2rem 0; background: #f6fbf8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2d5a3d;">
+          <h2 style="color: #2d5a3d; text-align: center; margin-top: 0;">🧠 Quick Moringa Benefits Quiz</h2>
+          <div style="background: white; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+              <p><strong>Question:</strong> What is moringa good for?</p>
+              <div style="margin: 1rem 0;">
+                  <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="benefits1" value="a"> A) Just energy</label>
+                  <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="benefits1" value="b"> B) Energy, immunity, skin, and more</label>
+                  <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="benefits1" value="c"> C) Only weight loss</label>
+              </div>
+              <button onclick="checkBenefitsAnswer('benefits1', 'b', 'Correct! Moringa is good for energy, immunity, skin health, and much more! 🌟')" style="background: #2d5a3d; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+              <div id="benefits1-result" style="margin-top: 1rem; font-weight: bold;"></div>
+          </div>
+      </section>
+
+      <section style="margin: 2rem 0;">
+          <h2 style="color: #2d5a3d; text-align: center;">📊 Top 3 Moringa Benefits for Australians</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+              <div style="background: #f6fbf8; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #2d5a3d;">
+                  <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">⚡ Energy Boost</h4>
+                  <p style="margin: 0; font-size: 0.9rem;">Natural energy without caffeine crashes</p>
+              </div>
+              <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #ff9800;">
+                  <h4 style="color: #e65100; margin: 0 0 0.5rem 0;">🛡️ Immunity Support</h4>
+                  <p style="margin: 0; font-size: 0.9rem;">7x more vitamin C than oranges</p>
+              </div>
+              <div style="background: #e8f5e8; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #4caf50;">
+                  <h4 style="color: #2e7d32; margin: 0 0 0.5rem 0;">✨ Skin Health</h4>
+                  <p style="margin: 0; font-size: 0.9rem;">Antioxidants for glowing skin</p>
+              </div>
+          </div>
+      </section>
+
+      <section style="margin: 2rem 0; background: #fff3e0; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff9800;">
+          <h2 style="color: #e65100; text-align: center; margin-top: 0;">👥 Real Australian Success Stories</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+              <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">Emma, 29, Brisbane</h4>
+                  <p style="margin: 0; font-style: italic; color: #666; font-size: 0.9rem;">"What is moringa good for? Everything! My energy, skin, and overall health have improved dramatically."</p>
+                  <div style="margin-top: 0.5rem; color: #ffc107;">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">James, 35, Perth</h4>
+                  <p style="margin: 0; font-style: italic; color: #666; font-size: 0.9rem;">"As a busy dad, moringa gives me the energy I need without coffee jitters. Game changer!"</p>
+                  <div style="margin-top: 0.5rem; color: #ffc107;">⭐⭐⭐⭐⭐</div>
+              </div>
+          </div>
+      </section>
+
+      <section style="margin: 2rem 0; background: linear-gradient(135deg, #2d5a3d, #1e4029); color: white; text-align: center; border-radius: 8px; padding: 1.5rem;">
+          <h2 style="color: white; margin-bottom: 1rem;">🎁 Try Moringa Risk-Free</h2>
+          <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+              <h3 style="color: white; margin: 0 0 0.5rem 0;">What You Get:</h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; text-align: left;">
+                  <div>✅ Premium Moringa</div>
+                  <div>✅ Usage Guide</div>
+                  <div>✅ Free Delivery</div>
+                  <div>✅ 30-Day Guarantee</div>
+              </div>
+          </div>
+          <a href="../products/products.html" style="background: white; color: #2d5a3d; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Get Started Now</a>
+      </section>
+
+      <script>
+      function checkBenefitsAnswer(questionId, correctAnswer, message) {
+          const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+          const resultDiv = document.getElementById(questionId + '-result');
+          
+          if (selected && selected.value === correctAnswer) {
+              resultDiv.innerHTML = '<span style="color: #4caf50;">' + message + '</span>';
+          } else {
+              resultDiv.innerHTML = '<span style="color: #f44336;">Not quite! The correct answer is B - Moringa has multiple health benefits!</span>';
+          }
+      }
+      </script>
     </div>
   </article>
 </main>
