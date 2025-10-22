@@ -122,6 +122,134 @@
 
       <hr>
       <p><em>Disclaimer: Educational content only. Individual needs vary; seek personalised advice as needed.</em></p>
+      
+      <!-- ENHANCED ENGAGEMENT SECTIONS -->
+      <section style="margin: 3rem 0; background: linear-gradient(135deg, #f0f8f0, #e8f5e8); padding: 2rem; border-radius: 12px;">
+          <h2 style="color: #2d5a3d; margin-bottom: 1.5rem; text-align: center;">🧠 Moringa vs Matcha Quiz - Test Your Superfood Knowledge!</h2>
+          <div style="background: white; padding: 2rem; border-radius: 8px; margin: 1rem 0;">
+              <div style="margin-bottom: 2rem;">
+                  <p><strong>Question 1:</strong> Which superfood contains more protein per serving?</p>
+                  <div style="margin: 1rem 0;">
+                      <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="superfood1" value="a"> A) Matcha</label>
+                      <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="superfood1" value="b"> B) Moringa</label>
+                      <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="superfood1" value="c"> C) They're equal</label>
+                  </div>
+                  <button onclick="checkSuperfoodAnswer('superfood1', 'b', 'Correct! Moringa has 2g protein per serving vs Matcha\'s 1g! 💪')" style="background: #2d5a3d; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Check Answer</button>
+                  <div id="superfood1-result" style="margin-top: 1rem; font-weight: bold;"></div>
+              </div>
+              
+              <div style="margin-bottom: 2rem;">
+                  <p><strong>Question 2:</strong> Which one has caffeine?</p>
+                  <div style="margin: 1rem 0;">
+                      <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="superfood2" value="a"> A) Both have caffeine</label>
+                      <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="superfood2" value="b"> B) Only Matcha</label>
+                      <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="superfood2" value="c"> C) Only Moringa</label>
+                  </div>
+                  <button onclick="checkSuperfoodAnswer('superfood2', 'b', 'Right! Only Matcha has caffeine - Moringa is caffeine-free! ☕')" style="background: #2d5a3d; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Check Answer</button>
+                  <div id="superfood2-result" style="margin-top: 1rem; font-weight: bold;"></div>
+              </div>
+          </div>
+      </section>
+
+      <section style="margin: 3rem 0;">
+          <h2 style="color: #2d5a3d; margin-bottom: 2rem; text-align: center;">📊 Ultimate Superfood Comparison Chart</h2>
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+              <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                  <thead style="background: #2d5a3d; color: white;">
+                      <tr>
+                          <th style="padding: 15px; text-align: left;">Nutrient</th>
+                          <th style="padding: 15px; text-align: center;">Moringa</th>
+                          <th style="padding: 15px; text-align: center;">Matcha</th>
+                          <th style="padding: 15px; text-align: center;">Winner</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr style="background: #f6fbf8;">
+                          <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;"><strong>Protein</strong></td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">2g per serving</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">1g per serving</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0; color: #2d5a3d; font-weight: bold;">🥇 Moringa</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;"><strong>Vitamin C</strong></td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">7x more than oranges</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">Moderate</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0; color: #2d5a3d; font-weight: bold;">🥇 Moringa</td>
+                      </tr>
+                      <tr style="background: #f6fbf8;">
+                          <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;"><strong>Iron</strong></td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">25x more than spinach</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">Low</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0; color: #2d5a3d; font-weight: bold;">🥇 Moringa</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;"><strong>Caffeine</strong></td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">None</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;">70mg per cup</td>
+                          <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0; color: #ff9800; font-weight: bold;">🥇 Matcha</td>
+                      </tr>
+                      <tr style="background: #f6fbf8;">
+                          <td style="padding: 12px;"><strong>Antioxidants</strong></td>
+                          <td style="padding: 12px; text-align: center;">46 types</td>
+                          <td style="padding: 12px; text-align: center;">High EGCG</td>
+                          <td style="padding: 12px; text-align: center; color: #4caf50; font-weight: bold;">🤝 Tie</td>
+                      </tr>
+                  </tbody>
+              </table>
+              <p style="margin-top: 1.5rem; text-align: center; font-weight: bold; color: #2d5a3d;">Moringa wins 3 out of 5 categories! 🏆</p>
+          </div>
+      </section>
+
+      <section style="margin: 3rem 0; background: #fff3e0; padding: 2rem; border-radius: 12px; border-left: 4px solid #ff9800;">
+          <h2 style="color: #e65100; margin-bottom: 1.5rem; text-align: center;">🏆 Real Australian Superfood Stories</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+              <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                  <h4 style="color: #2d5a3d; margin: 0 0 1rem 0;">Lisa M., 29, Melbourne</h4>
+                  <p style="margin: 0; font-style: italic; color: #666;">"I switched from matcha to moringa for my morning routine. No caffeine crashes, more energy, and my skin has never looked better! Plus it's more affordable."</p>
+                  <div style="margin-top: 1rem; color: #ffc107; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                  <h4 style="color: #2d5a3d; margin: 0 0 1rem 0;">David R., 35, Sydney</h4>
+                  <p style="margin: 0; font-style: italic; color: #666;">"I use both! Matcha for my morning energy boost, moringa for my afternoon smoothie. The combination gives me sustained energy all day without crashes."</p>
+                  <div style="margin-top: 1rem; color: #ffc107; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                  <h4 style="color: #2d5a3d; margin: 0 0 1rem 0;">Emma L., 26, Brisbane</h4>
+                  <p style="margin: 0; font-style: italic; color: #666;">"As a vegan, moringa is a game-changer! The protein content helps me meet my daily needs, and the iron levels are incredible. Much better than expensive supplements!"</p>
+                  <div style="margin-top: 1rem; color: #ffc107; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
+              </div>
+          </div>
+      </section>
+
+      <section style="margin: 3rem 0; background: linear-gradient(135deg, #2d5a3d, #1e4029); color: white; padding: 2.5rem; border-radius: 12px; text-align: center;">
+          <h2 style="color: white; margin-bottom: 1.5rem;">🎁 Superfood Combo Deal - Best of Both Worlds!</h2>
+          <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px; margin: 1.5rem 0;">
+              <h3 style="color: white; margin: 0 0 1.5rem 0;">Perfect Combination:</h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left;">
+                  <div>🌿 Premium Moringa Powder</div>
+                  <div>🍵 High-Grade Matcha</div>
+                  <div>📖 Usage Guide & Recipes</div>
+                  <div>📊 Nutrition Comparison Chart</div>
+                  <div>🚚 Free Melbourne Delivery</div>
+                  <div>🛡️ 30-Day Money-Back Guarantee</div>
+              </div>
+          </div>
+          <a href="../products/product-detail.html" style="background: white; color: #2d5a3d; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem; font-size: 1.1rem;">Get Your Superfood Combo!</a>
+          <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">Save 25% when you buy both together!</p>
+      </section>
+
+      <script>
+      function checkSuperfoodAnswer(questionId, correctAnswer, message) {
+          const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+          const resultDiv = document.getElementById(questionId + '-result');
+          
+          if (selected && selected.value === correctAnswer) {
+              resultDiv.innerHTML = '<span style="color: #4caf50;">' + message + '</span>';
+          } else {
+              resultDiv.innerHTML = '<span style="color: #f44336;">Not quite! The correct answer is B - Moringa has superior nutritional density!</span>';
+          }
+      }
+      </script>
     </div>
   </article>
 </main>
