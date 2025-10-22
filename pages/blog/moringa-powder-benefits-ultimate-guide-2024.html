@@ -310,6 +310,83 @@
             <p><a href="../products/products.html" class="custom-btn">Shop NutriThrive Organic Moringa Powder</a></p>
             <p>Download our <a href="#" style="color:#fff;text-decoration:underline;">15 Moringa Recipes PDF</a> for free!</p>
         </section>
+        
+        <!-- SIMPLE ENGAGEMENT SECTIONS -->
+        <section class="custom-section" style="background: #f6fbf8; border-left: 4px solid #2d5a3d;">
+            <h2 style="color: #2d5a3d; text-align: center;">🧠 Quick Moringa Quiz</h2>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                <p><strong>Question:</strong> How much more vitamin C does moringa contain compared to oranges?</p>
+                <div style="margin: 1rem 0;">
+                    <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="moringa1" value="a"> A) 2x more</label>
+                    <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="moringa1" value="b"> B) 7x more</label>
+                    <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="moringa1" value="c"> C) Same amount</label>
+                </div>
+                <button onclick="checkMoringaAnswer('moringa1', 'b', 'Correct! Moringa has 7x more vitamin C than oranges! 🍊')" style="background: #2d5a3d; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+                <div id="moringa1-result" style="margin-top: 1rem; font-weight: bold;"></div>
+            </div>
+        </section>
+
+        <section class="custom-section">
+            <h2 style="color: #2d5a3d; text-align: center;">📊 Moringa vs Other Superfoods</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                <div style="background: #f6fbf8; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #2d5a3d;">
+                    <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">Moringa</h4>
+                    <p style="margin: 0; font-size: 0.9rem;">7x more vitamin C than oranges</p>
+                </div>
+                <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #ff9800;">
+                    <h4 style="color: #e65100; margin: 0 0 0.5rem 0;">Spinach</h4>
+                    <p style="margin: 0; font-size: 0.9rem;">Good iron source</p>
+                </div>
+                <div style="background: #e8f5e8; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #4caf50;">
+                    <h4 style="color: #2e7d32; margin: 0 0 0.5rem 0;">Kale</h4>
+                    <p style="margin: 0; font-size: 0.9rem;">High in vitamin K</p>
+                </div>
+            </div>
+            <p style="text-align: center; font-weight: bold; color: #2d5a3d;">Moringa wins in nutritional density! 🏆</p>
+        </section>
+
+        <section class="custom-section" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+            <h2 style="color: #e65100; text-align: center;">👥 Real Australian Success Stories</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">Sarah, 32, Melbourne</h4>
+                    <p style="margin: 0; font-style: italic; color: #666; font-size: 0.9rem;">"My energy levels have never been better! I take moringa every morning in my smoothie."</p>
+                    <div style="margin-top: 0.5rem; color: #ffc107;">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">Mike, 28, Sydney</h4>
+                    <p style="margin: 0; font-style: italic; color: #666; font-size: 0.9rem;">"As a vegan, moringa gives me the iron and protein I need. My skin has never looked better!"</p>
+                    <div style="margin-top: 0.5rem; color: #ffc107;">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="custom-section" style="background: linear-gradient(135deg, #2d5a3d, #1e4029); color: white; text-align: center; border-radius: 12px;">
+            <h2 style="color: white; margin-bottom: 1rem;">🎁 Get Your Moringa Starter Pack</h2>
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                <h3 style="color: white; margin: 0 0 1rem 0;">What's Included:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem; text-align: left;">
+                    <div>✅ Premium Moringa Powder</div>
+                    <div>✅ Usage Guide</div>
+                    <div>✅ Recipe Collection</div>
+                    <div>✅ Free Delivery</div>
+                </div>
+            </div>
+            <a href="../products/products.html" style="background: white; color: #2d5a3d; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Get Started Now</a>
+        </section>
+
+        <script>
+        function checkMoringaAnswer(questionId, correctAnswer, message) {
+            const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+            const resultDiv = document.getElementById(questionId + '-result');
+            
+            if (selected && selected.value === correctAnswer) {
+                resultDiv.innerHTML = '<span style="color: #4caf50;">' + message + '</span>';
+            } else {
+                resultDiv.innerHTML = '<span style="color: #f44336;">Not quite! The correct answer is B - Moringa has incredible nutritional density!</span>';
+            }
+        }
+        </script>
     </main>
     <!-- 🚦 LIVE SALES COUNTER (Mid-Content) -->
     <div id="live-sales-counter" style="background:#eaf7f0;color:#175c36;font-weight:700;text-align:center;padding:0.7em 0;margin:2em 0 1em 0;border-radius:1em;box-shadow:0 2px 8px #c8e6c9;">

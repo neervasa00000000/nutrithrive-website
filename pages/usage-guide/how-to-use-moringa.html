@@ -236,6 +236,82 @@
     <div style="margin-top:2em;text-align:center;font-size:1em;">
       <a href="blog/moringa-powder-benefits-ultimate-guide-2024.html">Moringa Benefits Guide</a> &nbsp;|&nbsp; <a href="products.html">Shop Moringa Powder</a>
     </div>
+    
+    <!-- SIMPLE ENGAGEMENT SECTIONS -->
+    <section style="margin: 2rem 0; background: #f6fbf8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2d5a3d;">
+        <h2 style="color: #2d5a3d; text-align: center; margin-top: 0;">🧠 Quick Moringa Usage Quiz</h2>
+        <div style="background: white; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+            <p><strong>Question:</strong> How much moringa should you start with daily?</p>
+            <div style="margin: 1rem 0;">
+                <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="usage1" value="a"> A) 2 tablespoons</label>
+                <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="usage1" value="b"> B) 1/4 to 1/2 teaspoon</label>
+                <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="usage1" value="c"> C) 1 cup</label>
+            </div>
+            <button onclick="checkUsageAnswer('usage1', 'b', 'Correct! Start with 1/4 to 1/2 teaspoon and gradually increase! 🌱')" style="background: #2d5a3d; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">Check Answer</button>
+            <div id="usage1-result" style="margin-top: 1rem; font-weight: bold;"></div>
+        </div>
+    </section>
+
+    <section style="margin: 2rem 0;">
+        <h2 style="color: #2d5a3d; text-align: center;">📊 Top 3 Ways to Use Moringa</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+            <div style="background: #f6fbf8; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #2d5a3d;">
+                <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">🥤 Smoothies</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Mix with fruits and yogurt</p>
+            </div>
+            <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #ff9800;">
+                <h4 style="color: #e65100; margin: 0 0 0.5rem 0;">🍵 Tea</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Steep in hot water with honey</p>
+            </div>
+            <div style="background: #e8f5e8; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid #4caf50;">
+                <h4 style="color: #2e7d32; margin: 0 0 0.5rem 0;">🥗 Food</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Sprinkle on salads and soups</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin: 2rem 0; background: #fff3e0; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff9800;">
+        <h2 style="color: #e65100; text-align: center; margin-top: 0;">👥 Real Australian Usage Stories</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+            <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">Lisa, 31, Melbourne</h4>
+                <p style="margin: 0; font-style: italic; color: #666; font-size: 0.9rem;">"I add moringa to my morning smoothie every day. It's become part of my routine and I feel amazing!"</p>
+                <div style="margin-top: 0.5rem; color: #ffc107;">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <h4 style="color: #2d5a3d; margin: 0 0 0.5rem 0;">David, 42, Adelaide</h4>
+                <p style="margin: 0; font-style: italic; color: #666; font-size: 0.9rem;">"I mix moringa into my yogurt with berries. Perfect for my busy lifestyle and tastes great!"</p>
+                <div style="margin-top: 0.5rem; color: #ffc107;">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin: 2rem 0; background: linear-gradient(135deg, #2d5a3d, #1e4029); color: white; text-align: center; border-radius: 8px; padding: 1.5rem;">
+        <h2 style="color: white; margin-bottom: 1rem;">🎁 Get Your Moringa Starter Kit</h2>
+        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+            <h3 style="color: white; margin: 0 0 0.5rem 0;">Everything You Need:</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; text-align: left;">
+                <div>✅ Premium Moringa</div>
+                <div>✅ Usage Guide</div>
+                <div>✅ Recipe Cards</div>
+                <div>✅ Free Delivery</div>
+            </div>
+        </div>
+        <a href="../products/products.html" style="background: white; color: #2d5a3d; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Get Started Now</a>
+    </section>
+
+    <script>
+    function checkUsageAnswer(questionId, correctAnswer, message) {
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+        const resultDiv = document.getElementById(questionId + '-result');
+        
+        if (selected && selected.value === correctAnswer) {
+            resultDiv.innerHTML = '<span style="color: #4caf50;">' + message + '</span>';
+        } else {
+            resultDiv.innerHTML = '<span style="color: #f44336;">Not quite! The correct answer is B - Start small and build up gradually!</span>';
+        }
+    }
+    </script>
   </div>
 
   <footer>
