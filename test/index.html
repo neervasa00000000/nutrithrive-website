@@ -37,6 +37,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="homepage.css">
+    
+    <style>
+        .stuck-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .grid-item {
+            background: #175c36;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(23, 92, 54, 0.3);
+        }
+        
+        .grid-item.special {
+            background: #7B541F;
+            font-size: 1.5rem;
+            grid-column: span 2;
+            grid-row: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        .grid-item.special b {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .grid-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .grid-item:hover::before {
+            left: 100%;
+        }
+    </style>
     <link rel="icon" type="image/png" href="../shared/images/logo.png">
     <link rel="apple-touch-icon" href="../shared/images/logo.png">
     <link rel="shortcut icon" href="../shared/images/logo.png">
@@ -145,8 +211,59 @@
             </div>
             
             <div style="opacity: 0; transform: translateY(50px); transition: all 0.8s ease;" id="empty-content">
-                <h1 style="font-size: 3rem; color: #175c36; text-align: center; margin-bottom: 1rem;">Welcome to NutriThrive</h1>
-                <p style="font-size: 1.2rem; color: #5A6D5D; text-align: center;">Scroll down to discover more</p>
+                <div class="stuck-grid">
+                    <div class="grid-item">oklch()</div>
+                    <div class="grid-item">scroll()</div>
+                    <div class="grid-item">text-box-trim</div>
+                    <div class="grid-item">pow()</div>
+                    <div class="grid-item">@property</div>
+                    <div class="grid-item">top-layer</div>
+                    <div class="grid-item">@view-transition</div>
+                    <div class="grid-item">var()</div>
+                    <div class="grid-item">clamp()</div>
+                    <div class="grid-item">view()</div>
+                    <div class="grid-item special"><b>Welcome to NutriThrive</b></div>
+                    <div class="grid-item">@layer</div>
+                    <div class="grid-item">@swash</div>
+                    <div class="grid-item">subgrid</div>
+                    <div class="grid-item">in oklab</div>
+                    <div class="grid-item">:popover-open</div>
+                    <div class="grid-item">abs()</div>
+                    <div class="grid-item">sin()</div>
+                    <div class="grid-item">:has()</div>
+                    <div class="grid-item">::marker</div>
+                    <div class="grid-item">1cap</div>
+                    <div class="grid-item">scrollbar-color</div>
+                    <div class="grid-item">scroll-timeline</div>
+                    <div class="grid-item">view-timeline</div>
+                    <div class="grid-item">overlay</div>
+                    <div class="grid-item">scale</div>
+                    <div class="grid-item">ascent-override</div>
+                    <div class="grid-item">initial-letter</div>
+                    <div class="grid-item">inset</div>
+                    <div class="grid-item">@container</div>
+                    <div class="grid-item">accent-color</div>
+                    <div class="grid-item">color-mix()</div>
+                    <div class="grid-item">@scope</div>
+                    <div class="grid-item">@starting-style</div>
+                    <div class="grid-item">override-colors</div>
+                    <div class="grid-item">anchor()</div>
+                    <div class="grid-item">scroll-snap</div>
+                    <div class="grid-item">::backdrop</div>
+                    <div class="grid-item">::cue</div>
+                    <div class="grid-item">:focus-visible</div>
+                    <div class="grid-item">:user-valid</div>
+                    <div class="grid-item">:fullscreen</div>
+                    <div class="grid-item">:dir()</div>
+                    <div class="grid-item">caret-color</div>
+                    <div class="grid-item">aspect-ratio</div>
+                    <div class="grid-item">cross-fade()</div>
+                    <div class="grid-item">image-set()</div>
+                    <div class="grid-item">env()</div>
+                    <div class="grid-item">place-content</div>
+                    <div class="grid-item">gap</div>
+                </div>
+                <p style="font-size: 1.2rem; color: #5A6D5D; text-align: center; margin-top: 2rem;">Scroll down to discover more</p>
             </div>
         </section>
 
