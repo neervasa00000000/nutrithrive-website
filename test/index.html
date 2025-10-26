@@ -478,43 +478,11 @@
         
         @media (max-width: 768px) {
             .roadmap-section {
-                margin: 4rem auto 2rem auto;
-                padding: 0 1rem;
+                display: none !important;
             }
-            .roadmap-title {
-                font-size: 2.5rem;
-                margin-bottom: 2.5rem;
-                letter-spacing: -1px;
-            }
-            .roadmap-timeline {
-                margin-left: 30px;
-                padding-left: 0;
-            }
-            .roadmap-milestone {
-                flex-direction: column;
-                align-items: flex-start;
-                min-height: 70px;
-                margin-bottom: 2.5rem;
-                padding-left: 0.5rem;
-            }
-            .roadmap-circle {
-                width: 30px;
-                height: 30px;
-                left: -15px;
-                border-width: 3px;
-            }
-            .roadmap-hline {
-                margin-left: 20px;
-                margin-right: 0.5rem;
-                height: 3px;
-                min-width: 50px;
-            }
-            .roadmap-text {
-                font-size: 1rem;
-                min-width: unset;
-                margin-left: 0.5rem;
-                margin-top: 0.3rem;
-                line-height: 1.4;
+            
+            .marquee-container {
+                display: none !important;
             }
         }
         
@@ -537,42 +505,6 @@
             .page-content p {
                 font-size: 0.9rem;
                 padding: 0 0.25rem;
-            }
-            
-            .roadmap-section {
-                margin: 3rem auto 1.5rem auto;
-                padding: 0 0.5rem;
-            }
-            .roadmap-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-                letter-spacing: -1px;
-            }
-            .roadmap-timeline {
-                margin-left: 18px;
-                padding-left: 0;
-            }
-            .roadmap-milestone {
-                flex-direction: column;
-                align-items: flex-start;
-                min-height: 64px;
-                margin-bottom: 2.2rem;
-                padding-left: 0.5rem;
-            }
-            .roadmap-circle {
-                display: none !important;
-            }
-            .roadmap-hline {
-                margin-left: 28px;
-                margin-right: 0.5rem;
-                height: 3px;
-                min-width: 40px;
-            }
-            .roadmap-text {
-                font-size: 0.9rem;
-                min-width: unset;
-                margin-left: 0.5rem;
-                margin-top: 0.2rem;
             }
         }
         
@@ -1061,6 +993,9 @@
             const sections = document.querySelectorAll(".page-content__section");
             const marquees = document.querySelectorAll(".marquee div");
             let marqueeText = "";
+            
+            // Check if mobile device
+            const isMobile = window.innerWidth <= 768;
 
             // Header hide/show functionality
             const header = document.querySelector('header');
@@ -1101,7 +1036,7 @@
                 updateMarqueeText();
             };
 
-            if (!prefersReducedMotion.matches) {
+            if (!prefersReducedMotion.matches && !isMobile) {
                 gsap.to(".marquee div", {
                     scrollTrigger: {
                         trigger: ".page-content",
@@ -1161,9 +1096,9 @@
                 }
             });
 
-            // Roadmap Animation (Exact copy from homepage)
+            // Roadmap Animation (Exact copy from homepage) - Desktop only
             const roadmapSection = document.querySelector('.roadmap-section');
-            if (roadmapSection) {
+            if (roadmapSection && !isMobile) {
                 if (window.gsap && window.ScrollTrigger) {
                     gsap.registerPlugin(ScrollTrigger);
                     const timeline = roadmapSection.querySelector('.roadmap-timeline');
