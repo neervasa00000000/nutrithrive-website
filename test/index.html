@@ -799,6 +799,17 @@
                     toggleActions: "play reverse play reverse"
                 }
             });
+            
+            // Keep marquees hidden when footer appears
+            gsap.to(".marquee--top, .marquee--left, .marquee--right, .marquee--bottom", {
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: "footer",
+                    start: "top bottom",
+                    end: "bottom top",
+                    toggleActions: "play none none none"
+                }
+            });
 
             // Roadmap Animation
             const roadmapMilestones = document.querySelectorAll('.roadmap-milestone');
