@@ -132,11 +132,11 @@
         <!-- Empty First Screen - Content appears on scroll -->
         <section style="height: 100vh; background: #f8f5ec; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
             <!-- Animated White Line -->
-            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; transform: translateX(100%);">
                 <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
                     <path id="curved-line" d="M 0,300 Q 300,200 600,300 T 1200,300" 
                           stroke="#ffffff" 
-                          stroke-width="12" 
+                          stroke-width="20" 
                           fill="none" 
                           stroke-linecap="round"
                           style="opacity: 0.9;">
@@ -253,6 +253,7 @@
             const linksSection = document.getElementById('links-section');
             const contactSection = document.getElementById('contact-section');
             const curvedLine = document.getElementById('curved-line');
+            const animatedLine = document.getElementById('animated-line');
             
             // Function to check if element is in viewport
             function isInViewport(element) {
@@ -268,32 +269,47 @@
             // Function to animate elements on scroll
             function animateOnScroll() {
                 const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Check if "Scroll down to discover more" text is visible
+                const isTextVisible = emptyContent && isInViewport(emptyContent);
                 
                 // Animate white line based on scroll
-                if (curvedLine) {
-                    // Create flowing wave animation only when scrolling
-                    const wave1 = Math.sin(scrollY * 0.01) * 100;
-                    const wave2 = Math.sin(scrollY * 0.008) * 80;
-                    const wave3 = Math.sin(scrollY * 0.012) * 60;
-                    
-                    // Move line down with scroll
-                    const moveY = scrollY * 0.4;
-                    
-                    // Create dynamic curve path
-                    const baseY = 300 + moveY;
-                    const control1Y = 200 + wave1;
-                    const control2Y = 400 + wave2;
-                    const endY = baseY + wave3;
-                    
-                    // Update the SVG path
-                    curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
-                    
-                    // Add rotation based on scroll
-                    const rotation = scrollY * 0.05;
-                    curvedLine.style.transform = `rotate(${rotation}deg)`;
-                    
-                    // Keep opacity steady
-                    curvedLine.style.opacity = 0.9;
+                if (curvedLine && animatedLine) {
+                    // Only animate the line if the text is not visible
+                    if (!isTextVisible) {
+                        // Create flowing wave animation only when scrolling
+                        const wave1 = Math.sin(scrollY * 0.01) * 100;
+                        const wave2 = Math.sin(scrollY * 0.008) * 80;
+                        const wave3 = Math.sin(scrollY * 0.012) * 60;
+                        
+                        // Move line down with scroll
+                        const moveY = scrollY * 0.4;
+                        
+                        // Create dynamic curve path
+                        const baseY = 300 + moveY;
+                        const control1Y = 200 + wave1;
+                        const control2Y = 400 + wave2;
+                        const endY = baseY + wave3;
+                        
+                        // Update the SVG path
+                        curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
+                        
+                        // Add rotation based on scroll
+                        const rotation = scrollY * 0.05;
+                        curvedLine.style.transform = `rotate(${rotation}deg)`;
+                        
+                        // Slide line in from right when text is not visible
+                        const slideProgress = Math.min((scrollY - viewportHeight * 0.5) / (viewportHeight * 0.5), 1);
+                        const translateX = 100 - (slideProgress * 100); // 100% to 0%
+                        animatedLine.style.transform = `translateX(${translateX}%)`;
+                        
+                        // Keep opacity steady
+                        curvedLine.style.opacity = 0.9;
+                    } else {
+                        // Hide line when text is visible
+                        animatedLine.style.transform = 'translateX(100%)';
+                    }
                 }
                 
                 // Show empty content when in view
