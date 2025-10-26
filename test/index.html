@@ -132,14 +132,14 @@
         <!-- Empty First Screen - Content appears on scroll -->
         <section style="height: 100vh; background: #f8f5ec; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
             <!-- Animated White Line -->
-            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
-                <svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-                    <path id="curved-line" d="M 0,200 Q 200,100 400,200 T 800,200 T 1000,200" 
+            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+                <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
+                    <path id="curved-line" d="M 0,300 Q 300,200 600,300 T 1200,300" 
                           stroke="#ffffff" 
-                          stroke-width="8" 
+                          stroke-width="12" 
                           fill="none" 
                           stroke-linecap="round"
-                          style="opacity: 0.8; transform: translateY(0px); transition: transform 0.1s ease-out;">
+                          style="opacity: 0.9;">
                     </path>
                 </svg>
             </div>
@@ -272,16 +272,20 @@
                 // Animate white line based on scroll
                 if (curvedLine) {
                     // Move the line down and create wave effect
-                    const moveY = scrollY * 0.5;
-                    const waveOffset = Math.sin(scrollY * 0.01) * 50;
-                    curvedLine.style.transform = `translateY(${moveY + waveOffset}px)`;
+                    const moveY = scrollY * 0.3;
+                    const waveOffset = Math.sin(scrollY * 0.02) * 80;
+                    const waveOffset2 = Math.sin(scrollY * 0.015) * 60;
                     
-                    // Change the curve path based on scroll
-                    const curveHeight = 200 + (scrollY * 0.3);
-                    const wave1 = 100 + Math.sin(scrollY * 0.005) * 30;
-                    const wave2 = 200 + Math.sin(scrollY * 0.008) * 40;
+                    // Update the curve path based on scroll
+                    const baseY = 300 + moveY;
+                    const controlY1 = 200 + waveOffset;
+                    const controlY2 = 400 + waveOffset2;
                     
-                    curvedLine.setAttribute('d', `M 0,${curveHeight} Q 200,${wave1} 400,${wave2} T 800,${curveHeight} T 1000,${curveHeight}`);
+                    curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${controlY1} 600,${baseY} T 1200,${baseY}`);
+                    
+                    // Add rotation for more dynamic effect
+                    const rotation = scrollY * 0.1;
+                    curvedLine.style.transform = `rotate(${rotation}deg)`;
                 }
                 
                 // Show empty content when in view
@@ -311,6 +315,12 @@
             
             // Initial check
             animateOnScroll();
+            
+            // Debug: Make sure line is visible
+            console.log('Curved line element:', curvedLine);
+            if (curvedLine) {
+                console.log('Line found, starting animation');
+            }
             
             // Listen for scroll events
             window.addEventListener('scroll', animateOnScroll);
