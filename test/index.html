@@ -344,6 +344,52 @@
             }
         }
         
+        /* MotionPath Animation Styles */
+        .motion-path-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin: 3rem 0;
+            overflow: hidden;
+        }
+        
+        .motion-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .motion-object {
+            position: absolute;
+            font-size: 2rem;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        .moringa-leaf {
+            color: #51cf66;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .product-icon {
+            color: #175c36;
+            animation: float 3s ease-in-out infinite 0.5s;
+        }
+        
+        .wellness-icon {
+            color: #7B541F;
+            animation: float 3s ease-in-out infinite 1s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+        
         .stuck-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -624,6 +670,16 @@
             <h1>Welcome to NutriThrive</h1>
             <p>Discover the power of premium Moringa powder and natural superfoods for your health and wellness journey.</p>
             
+            <!-- MotionPath Animation Elements -->
+            <div class="motion-path-container">
+                <svg class="motion-path" viewBox="0 0 800 400" width="100%" height="400">
+                    <path id="motionPath" d="M50,200 Q200,50 400,200 T750,200" stroke="#175c36" stroke-width="3" fill="none" opacity="0.3"/>
+                </svg>
+                <div class="motion-object moringa-leaf">🍃</div>
+                <div class="motion-object product-icon">🌿</div>
+                <div class="motion-object wellness-icon">💚</div>
+            </div>
+            
             <div class="page-content__section" data-bg-color="var(--bg)">
                 <h2>Premium Quality</h2>
                 <p>Our Moringa powder is sourced from the finest leaves and processed using advanced techniques to preserve maximum nutritional value. Every batch is lab-tested for purity and potency.</p>
@@ -680,7 +736,7 @@
                 </div>
             </div>
         </section>
-        </div>
+            </div>
 
     </main>
 
@@ -863,6 +919,42 @@
                     }
                 );
             });
+            
+            // MotionPath Animation
+            const motionPath = document.querySelector("#motionPath");
+            const motionObjects = document.querySelectorAll(".motion-object");
+            
+            if (motionPath && motionObjects.length > 0) {
+                // Animate objects along the motion path
+                motionObjects.forEach((obj, index) => {
+                    gsap.set(obj, { opacity: 1 });
+                    
+                    gsap.to(obj, {
+                        motionPath: {
+                            path: motionPath,
+                            autoRotate: true,
+                            alignOrigin: [0.5, 0.5]
+                        },
+                        duration: 4,
+                        ease: "power2.inOut",
+                        delay: index * 0.5,
+                        repeat: -1,
+                        yoyo: true,
+                        scrollTrigger: {
+                            trigger: ".motion-path-container",
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            scrub: 1,
+                            onEnter: () => {
+                                gsap.to(obj, { opacity: 1, duration: 0.5 });
+                            },
+                            onLeave: () => {
+                                gsap.to(obj, { opacity: 0.3, duration: 0.5 });
+                            }
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>
