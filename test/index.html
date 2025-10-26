@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Buy premium moringa powder Australia online. 100% natural, lab-tested superfood supplements for health and wellness. Free shipping Australia-wide. Best moringa powder Melbourne.">
     <title>Best Moringa Powder Australia 2025 | Premium Superfood Supplements | NutriThrive</title>
     <meta name="keywords" content="moringa powder Australia, buy moringa powder online Australia, moringa powder Australia, moringa powder benefits, superfoods Australia, health supplements Australia, moringa powder Melbourne, best moringa powder brand Australia, moringa powder price Australia">
@@ -65,6 +65,11 @@
             box-sizing: border-box;
         }
         
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
         body {
             background-color: var(--bg);
             font-family: "Inter", sans-serif;
@@ -119,24 +124,32 @@
         
         @media (max-width: 768px) {
             .page-content {
-                padding: 2rem 1rem;
+                padding: 2rem 1.5rem;
                 margin: 6rem auto 4rem auto;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             
             .page-content h1 {
                 font-size: 2.5rem;
                 margin-bottom: 1rem;
+                text-align: center;
+                padding: 0 1rem;
             }
             
             .page-content h2 {
                 font-size: 2rem;
                 margin-top: 4rem;
                 margin-bottom: 1rem;
+                text-align: left;
+                padding: 0 0.5rem;
             }
             
             .page-content p {
                 font-size: 1rem;
                 line-height: 1.6;
+                padding: 0 0.5rem;
+                text-align: left;
             }
         }
         
@@ -331,13 +344,26 @@
         
         @media (max-width: 768px) {
             .marquee {
-                font-size: 12px;
-                letter-spacing: 0.1rem;
+                font-size: 10px;
+                letter-spacing: 0.05rem;
                 padding: 1vmin 0;
             }
             
-            .marquee--left,
+            .marquee--left {
+                left: -2px;
+                font-size: 8px;
+            }
+            
             .marquee--right {
+                left: calc(100% + 2px);
+                font-size: 8px;
+            }
+            
+            .marquee--top {
+                font-size: 10px;
+            }
+            
+            .marquee--bottom {
                 font-size: 10px;
             }
         }
@@ -476,6 +502,26 @@
         }
         
         @media (max-width: 480px) {
+            .page-content {
+                padding: 1.5rem 1rem;
+                margin: 5rem auto 3rem auto;
+            }
+            
+            .page-content h1 {
+                font-size: 2rem;
+                padding: 0 0.5rem;
+            }
+            
+            .page-content h2 {
+                font-size: 1.5rem;
+                padding: 0 0.25rem;
+            }
+            
+            .page-content p {
+                font-size: 0.9rem;
+                padding: 0 0.25rem;
+            }
+            
             .roadmap-section {
                 margin: 3rem auto 1.5rem auto;
                 padding: 0 0.5rem;
