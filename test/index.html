@@ -269,47 +269,32 @@
             // Function to animate elements on scroll
             function animateOnScroll() {
                 const scrollY = window.scrollY;
-                const viewportHeight = window.innerHeight;
-                
-                // Check if "Scroll down to discover more" text is visible
-                const isTextVisible = emptyContent && isInViewport(emptyContent);
                 
                 // Animate white line based on scroll
                 if (curvedLine && animatedLine) {
-                    // Only animate the line if the text is not visible
-                    if (!isTextVisible) {
-                        // Create flowing wave animation only when scrolling
-                        const wave1 = Math.sin(scrollY * 0.01) * 100;
-                        const wave2 = Math.sin(scrollY * 0.008) * 80;
-                        const wave3 = Math.sin(scrollY * 0.012) * 60;
-                        
-                        // Move line down with scroll
-                        const moveY = scrollY * 0.4;
-                        
-                        // Create dynamic curve path
-                        const baseY = 300 + moveY;
-                        const control1Y = 200 + wave1;
-                        const control2Y = 400 + wave2;
-                        const endY = baseY + wave3;
-                        
-                        // Update the SVG path
-                        curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
-                        
-                        // Add rotation based on scroll
-                        const rotation = scrollY * 0.05;
-                        curvedLine.style.transform = `rotate(${rotation}deg)`;
-                        
-                        // Slide line in from right when text is not visible
-                        const slideProgress = Math.min((scrollY - viewportHeight * 0.5) / (viewportHeight * 0.5), 1);
-                        const translateX = 100 - (slideProgress * 100); // 100% to 0%
-                        animatedLine.style.transform = `translateX(${translateX}%)`;
-                        
-                        // Keep opacity steady
-                        curvedLine.style.opacity = 0.9;
-                    } else {
-                        // Hide line when text is visible
-                        animatedLine.style.transform = 'translateX(100%)';
-                    }
+                    // Create flowing wave animation only when scrolling
+                    const wave1 = Math.sin(scrollY * 0.01) * 100;
+                    const wave2 = Math.sin(scrollY * 0.008) * 80;
+                    const wave3 = Math.sin(scrollY * 0.012) * 60;
+                    
+                    // Move line down with scroll
+                    const moveY = scrollY * 0.4;
+                    
+                    // Create dynamic curve path
+                    const baseY = 300 + moveY;
+                    const control1Y = 200 + wave1;
+                    const control2Y = 400 + wave2;
+                    const endY = baseY + wave3;
+                    
+                    // Update the SVG path
+                    curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
+                    
+                    // Add rotation based on scroll
+                    const rotation = scrollY * 0.05;
+                    curvedLine.style.transform = `rotate(${rotation}deg)`;
+                    
+                    // Keep opacity steady
+                    curvedLine.style.opacity = 0.9;
                 }
                 
                 // Show empty content when in view
@@ -355,6 +340,105 @@
             
             // Listen for scroll events
             window.addEventListener('scroll', animateOnScroll);
+            
+            // GSAP ScrollTrigger Animations
+            if (typeof gsap !== 'undefined' && gsap.registerPlugin) {
+                gsap.registerPlugin(ScrollTrigger);
+                
+                // Animate line sliding in from right
+                gsap.fromTo(animatedLine, 
+                    { xPercent: 100 }, // Start off-screen right
+                    {
+                        xPercent: 0, // End on-screen
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: ".empty-hero",
+                            start: "bottom bottom",
+                            end: "bottom top",
+                            scrub: 1, // Smooth scrubbing
+                            onUpdate: (self) => {
+                                // Only show line when scrolling past the text
+                                if (self.progress > 0.3) {
+                                    animatedLine.style.opacity = "0.9";
+                                } else {
+                                    animatedLine.style.opacity = "0";
+                                }
+                            }
+                        }
+                    }
+                );
+                
+                // Animate line waves and rotation on scroll
+                gsap.to(curvedLine, {
+                    rotation: 360,
+                    scrollTrigger: {
+                        trigger: ".empty-hero",
+                        start: "bottom bottom",
+                        end: "bottom+=200% bottom",
+                        scrub: 2,
+                        onUpdate: (self) => {
+                            // Create wave effect based on scroll progress
+                            const progress = self.progress;
+                            const wave1 = Math.sin(progress * Math.PI * 4) * 100;
+                            const wave2 = Math.sin(progress * Math.PI * 6) * 80;
+                            const wave3 = Math.sin(progress * Math.PI * 8) * 60;
+                            
+                            const baseY = 300 + (progress * 200);
+                            const control1Y = 200 + wave1;
+                            const control2Y = 400 + wave2;
+                            const endY = baseY + wave3;
+                            
+                            curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
+                        }
+                    }
+                });
+                
+                // Animate sections with scroll
+                gsap.fromTo(aboutSection, 
+                    { opacity: 0, y: 100 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: aboutSection,
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            scrub: 1
+                        }
+                    }
+                );
+                
+                gsap.fromTo(linksSection, 
+                    { opacity: 0, y: 100 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: linksSection,
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            scrub: 1
+                        }
+                    }
+                );
+                
+                gsap.fromTo(contactSection, 
+                    { opacity: 0, y: 100 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: contactSection,
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            scrub: 1
+                        }
+                    }
+                );
+            }
         });
     </script>
 </body>
