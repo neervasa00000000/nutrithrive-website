@@ -268,24 +268,35 @@
             // Function to animate elements on scroll
             function animateOnScroll() {
                 const scrollY = window.scrollY;
+                const time = Date.now() * 0.001;
                 
                 // Animate white line based on scroll
                 if (curvedLine) {
-                    // Move the line down and create wave effect
-                    const moveY = scrollY * 0.3;
-                    const waveOffset = Math.sin(scrollY * 0.02) * 80;
-                    const waveOffset2 = Math.sin(scrollY * 0.015) * 60;
+                    // Create flowing wave animation
+                    const wave1 = Math.sin(scrollY * 0.01 + time * 2) * 100;
+                    const wave2 = Math.sin(scrollY * 0.008 + time * 1.5) * 80;
+                    const wave3 = Math.sin(scrollY * 0.012 + time * 2.5) * 60;
                     
-                    // Update the curve path based on scroll
+                    // Move line down with scroll
+                    const moveY = scrollY * 0.4;
+                    
+                    // Create dynamic curve path
                     const baseY = 300 + moveY;
-                    const controlY1 = 200 + waveOffset;
-                    const controlY2 = 400 + waveOffset2;
+                    const control1Y = 200 + wave1;
+                    const control2Y = 400 + wave2;
+                    const endY = baseY + wave3;
                     
-                    curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${controlY1} 600,${baseY} T 1200,${baseY}`);
+                    // Update the SVG path
+                    curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
                     
-                    // Add rotation for more dynamic effect
-                    const rotation = scrollY * 0.1;
-                    curvedLine.style.transform = `rotate(${rotation}deg)`;
+                    // Add continuous rotation and scaling
+                    const rotation = scrollY * 0.05 + Math.sin(time) * 5;
+                    const scale = 1 + Math.sin(time * 0.5) * 0.1;
+                    curvedLine.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+                    
+                    // Change opacity for breathing effect
+                    const opacity = 0.7 + Math.sin(time * 1.5) * 0.2;
+                    curvedLine.style.opacity = opacity;
                 }
                 
                 // Show empty content when in view
@@ -324,6 +335,15 @@
             
             // Listen for scroll events
             window.addEventListener('scroll', animateOnScroll);
+            
+            // Continuous animation loop
+            function continuousAnimation() {
+                animateOnScroll();
+                requestAnimationFrame(continuousAnimation);
+            }
+            
+            // Start continuous animation
+            continuousAnimation();
         });
     </script>
 </body>
