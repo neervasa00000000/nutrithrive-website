@@ -215,7 +215,7 @@
             opacity: 0;
         }
         
-        /* Roadmap Timeline Styles */
+        /* Roadmap Timeline Styles - Exact match from homepage */
         .roadmap-section {
             max-width: 900px;
             margin: 8rem auto 4rem auto;
@@ -224,7 +224,7 @@
             text-align: left;
         }
         
-        .roadmap-section h2 {
+        .roadmap-title {
             font-size: 3.5rem;
             font-weight: 900;
             color: #175c36;
@@ -311,7 +311,7 @@
                 margin: 3rem auto 1.5rem auto;
                 padding: 0 0.2rem;
             }
-            .roadmap-section h2 {
+            .roadmap-title {
                 font-size: 2rem;
                 margin-bottom: 2rem;
                 letter-spacing: -1px;
@@ -646,7 +646,7 @@
 
         <!-- Roadmap Section -->
             <div class="page-content__section roadmap-section" data-bg-color="var(--bg)">
-                <h2>Our Roadmap</h2>
+            <h2 class="roadmap-title">Our Roadmap</h2>
             <div class="roadmap-timeline">
                 <div class="roadmap-milestone">
                     <div class="roadmap-circle"></div>
@@ -850,7 +850,7 @@
 
             // Roadmap Animation
             const roadmapMilestones = document.querySelectorAll('.roadmap-milestone');
-            const roadmapTitle = document.querySelector('.roadmap-section h2');
+            const roadmapTitle = document.querySelector('.roadmap-title');
             
             if (roadmapTitle) {
                 gsap.fromTo(roadmapTitle, 
