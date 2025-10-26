@@ -400,10 +400,11 @@
             left: -2px;
             top: 0;
             bottom: 0;
-            width: 4px;
-            background: #1b7f5a;
-            border-radius: 2px;
+            width: 6px;
+            background: #128539;
+            border-radius: 3px;
             z-index: 1;
+            box-shadow: 0 0 10px rgba(18, 133, 57, 0.3);
         }
         
         .roadmap-milestone {
@@ -419,17 +420,17 @@
         }
         
         .roadmap-circle {
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
             background: #fff;
-            border: 5px solid #128539;
+            border: 6px solid #128539;
             border-radius: 50%;
             position: absolute;
-            left: -19px;
+            left: -21px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
-            box-shadow: none;
+            box-shadow: 0 4px 8px rgba(18, 133, 57, 0.3);
             filter: none;
             transition: border-color 0.4s, background 0.4s;
             opacity: 1;
@@ -442,25 +443,27 @@
         }
         
         .roadmap-hline {
-            height: 4px;
-            width: 64px;
-            background: #1b7f5a;
+            height: 6px;
+            width: 80px;
+            background: #128539;
             margin-left: 38px;
             margin-right: 24px;
-            border-radius: 2px;
+            border-radius: 3px;
             transition: width 0.5s cubic-bezier(.4,2,.6,1), background 0.4s;
             filter: none;
+            box-shadow: 0 2px 4px rgba(18, 133, 57, 0.3);
         }
         
         .roadmap-text {
             opacity: 1;
             transform: translateY(0) scale(1);
             filter: none;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text);
-            min-width: 220px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #128539;
+            min-width: 250px;
             transition: opacity 0.6s cubic-bezier(.4,2,.6,1), transform 0.6s cubic-bezier(.4,2,.6,1);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         
         .roadmap-milestone.active .roadmap-text {
@@ -1088,6 +1091,15 @@
                         ease: "power2"
                     },
                     xPercent: -50
+                });
+                
+                // Start marquee animation immediately
+                gsap.set(".marquee div", { xPercent: 0 });
+                gsap.to(".marquee div", {
+                    xPercent: -50,
+                    duration: 20,
+                    ease: "none",
+                    repeat: -1
                 });
             }
 
