@@ -53,6 +53,12 @@
             --section-heading-font-size: min(max(30px, 4vw), 50px);
             --duration: 300ms;
             --ease: cubic-bezier(0.33, 1, 0.68, 1);
+            --bg: #f8f5ec;
+            --card: #fffdfa;
+            --primary: #175c36;
+            --accent: #7B541F;
+            --text: #1a2e22;
+            --muted: #5A6D5D;
         }
         
         * {
@@ -60,9 +66,9 @@
         }
         
         body {
-            background-color: var(--color-background);
+            background-color: var(--bg);
             font-family: "Inter", sans-serif;
-            color: var(--color-text);
+            color: var(--text);
             width: 100%;
             transition: background-color var(--duration) var(--ease);
         }
@@ -78,7 +84,7 @@
         }
         
         .page-content a {
-            color: var(--color-chill);
+            color: var(--primary);
         }
         
         .page-content h1 {
@@ -171,8 +177,8 @@
             padding: 2vmin 0;
             min-width: 100%;
             user-select: none;
-            background-color: var(--color-background);
-            box-shadow: var(--color-background) 0 2vmin 2vmin 1vmin;
+            background-color: var(--bg);
+            box-shadow: var(--bg) 0 2vmin 2vmin 1vmin;
             transition: background-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
         }
         
@@ -621,28 +627,28 @@
             <h1>Welcome to NutriThrive</h1>
             <p>Discover the power of premium Moringa powder and natural superfoods for your health and wellness journey.</p>
             
-            <div class="page-content__section" data-bg-color="#f8f5ec">
+            <div class="page-content__section" data-bg-color="var(--bg)">
                 <h2>Premium Quality</h2>
                 <p>Our Moringa powder is sourced from the finest leaves and processed using advanced techniques to preserve maximum nutritional value. Every batch is lab-tested for purity and potency.</p>
-                </div>
-            
-            <div class="page-content__section" data-bg-color="#fffdfa">
-                <h2>Natural Benefits</h2>
-                <p>Rich in vitamins, minerals, and antioxidants, our Moringa powder supports immune health, energy levels, and overall well-being. Experience the natural power of this superfood.</p>
             </div>
             
-            <div class="page-content__section" data-bg-color="#175c36">
+            <div class="page-content__section" data-bg-color="var(--card)">
+                <h2>Natural Benefits</h2>
+                <p>Rich in vitamins, minerals, and antioxidants, our Moringa powder supports immune health, energy levels, and overall well-being. Experience the natural power of this superfood.</p>
+                </div>
+            
+            <div class="page-content__section" data-bg-color="var(--primary)">
                 <h2>Australian Made</h2>
                 <p>Proudly Australian, we ensure the highest standards in sourcing, processing, and packaging. Free shipping across Australia with fast, reliable delivery.</p>
             </div>
             
-            <div class="page-content__section" data-bg-color="#7B541F">
+            <div class="page-content__section" data-bg-color="var(--accent)">
                 <h2>Customer Satisfaction</h2>
                 <p>Join thousands of satisfied customers who have transformed their health with our premium Moringa powder. Read our reviews and see why we're Australia's trusted choice.</p>
             </div>
 
         <!-- Roadmap Section -->
-            <div class="page-content__section roadmap-section" data-bg-color="#f8f5ec">
+            <div class="page-content__section roadmap-section" data-bg-color="var(--bg)">
                 <h2>Our Roadmap</h2>
             <div class="roadmap-timeline">
                 <div class="roadmap-milestone">
