@@ -38,7 +38,177 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="homepage.css">
     
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <style>
+        :root {
+            --color-background: #151818;
+            --color-text: whitesmoke;
+            --color-chill: #ecf232;
+            --marquee-font-size: min(max(12px, 2vw), 22px);
+            --headline-font-size: min(max(40px, 6vw), 70px);
+            --paragraph-font-size: min(max(16px, 4vw), 22px);
+            --section-heading-font-size: min(max(30px, 4vw), 50px);
+            --duration: 300ms;
+            --ease: cubic-bezier(0.33, 1, 0.68, 1);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            font-family: "Inter", sans-serif;
+            color: var(--color-text);
+            width: 100%;
+            transition: background-color var(--duration) var(--ease);
+        }
+        
+        .page-content {
+            max-width: 90ch;
+            padding: 4rem;
+            margin: 8rem auto;
+        }
+        
+        .page-content * + * {
+            margin-top: 2.5rem;
+        }
+        
+        .page-content a {
+            color: var(--color-chill);
+        }
+        
+        .page-content h1 {
+            font-size: var(--headline-font-size);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .page-content h2 {
+            margin-top: 6rem;
+            font-size: var(--section-heading-font-size);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .page-content em {
+            font-style: italic;
+        }
+        
+        .page-content p {
+            font-size: var(--paragraph-font-size);
+            line-height: 1.75;
+            letter-spacing: 0.0125rem;
+        }
+        
+        .page-content__section {
+            transition: opacity var(--duration) var(--ease);
+        }
+        
+        .page-content__section h2 {
+            transform-origin: 50% 100%;
+        }
+        
+        .page-content__section.active {
+            opacity: 1;
+        }
+        
+        .page-content__section.active h2 {
+            animation: activate calc(var(--duration) * 2) var(--ease) forwards;
+        }
+        
+        @keyframes activate {
+            25% {
+                color: var(--color-chill);
+                transform: translateY(-12px);
+            }
+            40% {
+                transform: translateY(2px);
+            }
+            50% {
+                transform: translateY(-4px);
+            }
+            60% {
+                color: var(--color-text);
+                transform: translateY(1px);
+            }
+            65%, 100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .page-content__section.active h2 {
+                animation: none;
+            }
+        }
+        
+        .marquee-container {
+            position: fixed;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-weight: 700;
+            font-family: "Karla", sans-serif;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+        
+        .marquee {
+            position: absolute;
+            font-size: var(--marquee-font-size);
+            line-height: 1;
+            white-space: nowrap;
+            letter-spacing: 0.25rem;
+            overflow: hidden;
+            padding: 2vmin 0;
+            min-width: 100%;
+            user-select: none;
+            background-color: var(--color-background);
+            box-shadow: var(--color-background) 0 2vmin 2vmin 1vmin;
+            transition: background-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+        }
+        
+        .marquee--top {
+            top: -1px;
+        }
+        
+        .marquee--left {
+            left: -1px;
+            bottom: -6vmin;
+            transform: rotate(-0.25turn);
+            transform-origin: 0 0;
+        }
+        
+        .marquee--right {
+            left: calc(100% + 1px);
+            top: 0;
+            transform: rotate(0.25turn);
+            transform-origin: 0 0;
+        }
+        
+        .marquee--bottom {
+            bottom: -1px;
+            right: 0;
+            transform: rotate(0.5turn);
+        }
+        
+        .marquee div {
+            opacity: 1;
+            transition: opacity var(--duration) var(--ease);
+        }
+        
+        .marquee div.active {
+            opacity: 0;
+        }
+        
         .stuck-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -298,27 +468,47 @@
     </header>
 
 
+    <!-- Marquee Container -->
+    <div class="marquee-container">
+        <div class="marquee marquee--top">
+            <div>NUTRITHRIVE AUSTRALIA 😎 </div>
+        </div>
+        <div class="marquee marquee--left">
+            <div>PREMIUM MORINGA POWDER 😎 </div>
+        </div>
+        <div class="marquee marquee--right">
+            <div>NATURAL SUPERFOODS 😎 </div>
+        </div>
+        <div class="marquee marquee--bottom">
+            <div>HEALTH & WELLNESS 😎 </div>
+        </div>
+    </div>
+
     <main>
-        <!-- Empty First Screen - Content appears on scroll -->
-        <section style="height: 100vh; background: #f8f5ec; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-            <!-- Animated White Line -->
-            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; transform: translateX(100%);">
-                <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
-                    <path id="curved-line" d="M 0,300 Q 300,200 600,300 T 1200,300" 
-                          stroke="#175c36" 
-                          stroke-width="20" 
-                          fill="none" 
-                          stroke-linecap="round"
-                          style="opacity: 0.9;">
-                    </path>
-                </svg>
+        <div class="page-content">
+            <h1>Welcome to NutriThrive</h1>
+            <p>Discover the power of premium Moringa powder and natural superfoods for your health and wellness journey.</p>
+            
+            <div class="page-content__section" data-bg-color="#151818">
+                <h2>Premium Quality</h2>
+                <p>Our Moringa powder is sourced from the finest leaves and processed using advanced techniques to preserve maximum nutritional value. Every batch is lab-tested for purity and potency.</p>
             </div>
             
-            <div style="opacity: 1; transform: translateY(0); transition: all 0.8s ease;" id="empty-content">
-                <!-- Empty -->
-                <p style="font-size: 1.2rem; color: #5A6D5D; text-align: center; margin-top: 2rem;">Scroll down to discover more</p>
+            <div class="page-content__section" data-bg-color="#1a2e22">
+                <h2>Natural Benefits</h2>
+                <p>Rich in vitamins, minerals, and antioxidants, our Moringa powder supports immune health, energy levels, and overall well-being. Experience the natural power of this superfood.</p>
             </div>
-        </section>
+            
+            <div class="page-content__section" data-bg-color="#175c36">
+                <h2>Australian Made</h2>
+                <p>Proudly Australian, we ensure the highest standards in sourcing, processing, and packaging. Free shipping across Australia with fast, reliable delivery.</p>
+            </div>
+            
+            <div class="page-content__section" data-bg-color="#7B541F">
+                <h2>Customer Satisfaction</h2>
+                <p>Join thousands of satisfied customers who have transformed their health with our premium Moringa powder. Read our reviews and see why we're Australia's trusted choice.</p>
+            </div>
+        </div>
 
         <!-- About Section - Appears on scroll -->
         <section id="about-section" style="opacity: 0; transform: translateY(50px); transition: all 0.8s ease; background: #fffdfa; padding: 4rem 2rem;">
@@ -416,130 +606,64 @@
     <script src="homepage.js" defer></script>
     
     <script>
-        // Scroll-triggered animations for test homepage
+        // GSAP ScrollTrigger Animation
         document.addEventListener('DOMContentLoaded', function() {
-            const emptyContent = document.getElementById('empty-content');
-            const aboutSection = document.getElementById('about-section');
-            const linksSection = document.getElementById('links-section');
-            const contactSection = document.getElementById('contact-section');
-            const curvedLine = document.getElementById('curved-line');
-            const animatedLine = document.getElementById('animated-line');
-            
-            // Function to check if element is in viewport
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-            
-            // Function to animate elements on scroll
-            function animateOnScroll() {
-                const scrollY = window.scrollY;
-                
-                // Animate white line based on scroll
-                if (curvedLine && animatedLine) {
-                    // Create flowing wave animation only when scrolling
-                    const wave1 = Math.sin(scrollY * 0.01) * 100;
-                    const wave2 = Math.sin(scrollY * 0.008) * 80;
-                    const wave3 = Math.sin(scrollY * 0.012) * 60;
-                    
-                    // Move line down with scroll
-                    const moveY = scrollY * 0.4;
-                    
-                    // Create dynamic curve path
-                    const baseY = 300 + moveY;
-                    const control1Y = 200 + wave1;
-                    const control2Y = 400 + wave2;
-                    const endY = baseY + wave3;
-                    
-                    // Update the SVG path
-                    curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
-                    
-                    // Add rotation based on scroll
-                    const rotation = scrollY * 0.05;
-                    curvedLine.style.transform = `rotate(${rotation}deg)`;
-                    
-                    // Keep opacity steady
-                    curvedLine.style.opacity = 0.9;
-                }
-                
-                // Show empty content when in view
-                if (emptyContent && isInViewport(emptyContent)) {
-                    emptyContent.style.opacity = '1';
-                    emptyContent.style.transform = 'translateY(0)';
-                }
-                
-                // Show about section when scrolling down
-                if (aboutSection && scrollY > 200) {
-                    aboutSection.style.opacity = '1';
-                    aboutSection.style.transform = 'translateY(0)';
-                }
-                
-                // Show links section when scrolling further
-                if (linksSection && scrollY > 400) {
-                    linksSection.style.opacity = '1';
-                    linksSection.style.transform = 'translateY(0)';
-                }
-                
-                // Show contact section when scrolling further
-                if (contactSection && scrollY > 600) {
-                    contactSection.style.opacity = '1';
-                    contactSection.style.transform = 'translateY(0)';
-                }
-            }
-            
-            // Initial check
-            animateOnScroll();
-            
-            // Debug: Make sure line is visible
-            console.log('Curved line element:', curvedLine);
-            if (curvedLine) {
-                console.log('Line found, starting animation');
-            }
-            
-            // Listen for scroll events
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // Scroll-based zoom animation for grid items
-            function handleScrollZoom() {
-                const scrollY = window.scrollY;
-                const viewportHeight = window.innerHeight;
-                const gridItems = document.querySelectorAll('.grid-item');
-                
-                gridItems.forEach((item, index) => {
-                    const rect = item.getBoundingClientRect();
-                    const itemCenter = rect.top + rect.height / 2;
-                    const viewportCenter = viewportHeight / 2;
-                    
-                    // Calculate distance from viewport center
-                    const distance = Math.abs(itemCenter - viewportCenter);
-                    const maxDistance = viewportHeight / 2;
-                    
-                    // Calculate scale based on distance (closer = larger)
-                    const scale = Math.max(0.5, 1 - (distance / maxDistance) * 0.5);
-                    
-                    // Calculate opacity based on distance
-                    const opacity = Math.max(0.3, 1 - (distance / maxDistance) * 0.7);
-                    
-                    // Apply transform and opacity
-                    item.style.transform = `scale(${scale})`;
-                    item.style.opacity = opacity;
-                    
-                    // Add blur effect for items far from center
-                    const blur = Math.min(10, distance / maxDistance * 10);
-                    item.style.filter = `blur(${blur}px)`;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion)");
+            const sections = document.querySelectorAll(".page-content__section");
+            const marquees = document.querySelectorAll(".marquee div");
+            let marqueeText = "";
+
+            const updateMarqueeText = () => {
+                [...marquees].forEach((marquee) => {
+                    marquee.classList.add("active");
+                    marquee.addEventListener("transitionend", () => {
+                        marquee.classList.remove("active");
+                        marquee.innerText = `${marqueeText} 😎 `.repeat(20);
+                    });
+                });
+            };
+
+            const updateBgColor = (color) =>
+                document.documentElement.style.setProperty("--color-background", color);
+
+            const setActiveSection = (section) => {
+                marqueeText = section.querySelector("h2").textContent;
+                [...sections].forEach((section) => section.classList.remove("active"));
+                section.classList.add("active");
+                !prefersReducedMotion.matches && updateBgColor(section.dataset.bgColor);
+                updateMarqueeText();
+            };
+
+            if (!prefersReducedMotion.matches) {
+                gsap.to(".marquee div", {
+                    scrollTrigger: {
+                        trigger: ".page-content",
+                        scrub: 0.25,
+                        start: "top bottom",
+                        end: "bottom top",
+                        ease: "power2"
+                    },
+                    xPercent: -50
                 });
             }
-            
-            // Listen for scroll events for zoom animation
-            window.addEventListener('scroll', handleScrollZoom);
-            
-            // Initial call
-            handleScrollZoom();
+
+            gsap.utils.toArray(".page-content__section h2").forEach((heading) => {
+                ScrollTrigger.create({
+                    trigger: heading,
+                    start: "top center",
+                    end: "bottom 200px",
+                    toggleActions: "play reset play reset",
+                    ease: "power2",
+                    onEnter: () =>
+                        marqueeText !== heading.textContent &&
+                        setActiveSection(heading.parentElement),
+                    onEnterBack: () =>
+                        marqueeText !== heading.textContent &&
+                        setActiveSection(heading.parentElement)
+                });
+            });
         });
     </script>
 </body>
