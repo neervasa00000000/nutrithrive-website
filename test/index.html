@@ -178,6 +178,7 @@
         
         .marquee--top {
             top: -1px;
+            opacity: 0.3;
         }
         
         .marquee--left {
@@ -185,6 +186,7 @@
             bottom: -6vmin;
             transform: rotate(-0.25turn);
             transform-origin: 0 0;
+            opacity: 0.3;
         }
         
         .marquee--right {
@@ -192,6 +194,7 @@
             top: 0;
             transform: rotate(0.25turn);
             transform-origin: 0 0;
+            opacity: 0.3;
         }
         
         .marquee--bottom {
@@ -207,6 +210,135 @@
         
         .marquee div.active {
             opacity: 0;
+        }
+        
+        /* Roadmap Timeline Styles */
+        .roadmap-section {
+            max-width: 900px;
+            margin: 8rem auto 4rem auto;
+            padding: 0 2rem;
+            background: none;
+            text-align: left;
+        }
+        
+        .roadmap-section h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #175c36;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            letter-spacing: -2px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .roadmap-timeline {
+            position: relative;
+            margin-left: 60px;
+            padding-left: 0;
+        }
+        
+        .roadmap-milestone {
+            display: flex;
+            align-items: center;
+            min-height: 80px;
+            position: relative;
+            margin-bottom: 3.5rem;
+        }
+        
+        .roadmap-milestone:last-child {
+            margin-bottom: 0;
+        }
+        
+        .roadmap-circle {
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            border: 5px solid #128539;
+            border-radius: 50%;
+            position: absolute;
+            left: -19px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            box-shadow: none;
+            filter: none;
+            transition: border-color 0.4s, background 0.4s;
+        }
+        
+        .roadmap-milestone.active .roadmap-circle {
+            border-color: #1b7f5a;
+            background: #43e97b;
+        }
+        
+        .roadmap-hline {
+            height: 4px;
+            width: 0;
+            background: #1b7f5a;
+            margin-left: 38px;
+            margin-right: 24px;
+            border-radius: 2px;
+            transition: width 0.5s cubic-bezier(.4,2,.6,1), background 0.4s;
+            filter: none;
+        }
+        
+        .roadmap-text {
+            opacity: 0.3;
+            transform: translateY(20px) scale(0.98);
+            filter: none;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #175c36;
+            min-width: 220px;
+            transition: opacity 0.6s cubic-bezier(.4,2,.6,1), transform 0.6s cubic-bezier(.4,2,.6,1);
+        }
+        
+        .roadmap-milestone.active .roadmap-text {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: none;
+        }
+        
+        .roadmap-milestone.active {
+            z-index: 2;
+        }
+        
+        @media (max-width: 600px) {
+            .roadmap-section {
+                margin: 3rem auto 1.5rem auto;
+                padding: 0 0.2rem;
+            }
+            .roadmap-section h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+                letter-spacing: -1px;
+            }
+            .roadmap-timeline {
+                margin-left: 18px;
+                padding-left: 0;
+            }
+            .roadmap-milestone {
+                flex-direction: column;
+                align-items: flex-start;
+                min-height: 64px;
+                margin-bottom: 2.2rem;
+                padding-left: 0.5rem;
+            }
+            .roadmap-circle {
+                display: none !important;
+            }
+            .roadmap-hline {
+                margin-left: 28px;
+                margin-right: 0.5rem;
+                height: 3px;
+                min-width: 40px;
+            }
+            .roadmap-text {
+                font-size: 0.98rem;
+                min-width: unset;
+                margin-left: 0.5rem;
+                margin-top: 0.2rem;
+            }
         }
         
         .stuck-grid {
@@ -507,8 +639,45 @@
             <div class="page-content__section" data-bg-color="#7B541F">
                 <h2>Customer Satisfaction</h2>
                 <p>Join thousands of satisfied customers who have transformed their health with our premium Moringa powder. Read our reviews and see why we're Australia's trusted choice.</p>
+            </div>
+
+        <!-- Roadmap Section -->
+            <div class="page-content__section roadmap-section" data-bg-color="#f8f5ec">
+                <h2>Our Roadmap</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-milestone">
+                    <div class="roadmap-circle"></div>
+                    <div class="roadmap-hline"></div>
+                    <div class="roadmap-text">Started Q4 2024</div>
+                </div>
+                <div class="roadmap-milestone">
+                    <div class="roadmap-circle"></div>
+                    <div class="roadmap-hline"></div>
+                    <div class="roadmap-text">Launched First Product Q1 2025</div>
+                </div>
+                <div class="roadmap-milestone">
+                    <div class="roadmap-circle"></div>
+                    <div class="roadmap-hline"></div>
+                    <div class="roadmap-text">Launched Our Website Q2 2025</div>
+                </div>
+                <div class="roadmap-milestone">
+                    <div class="roadmap-circle"></div>
+                    <div class="roadmap-hline"></div>
+                    <div class="roadmap-text">Launched Second Product by 1 Half of Q3 2025</div>
+                </div>
+                <div class="roadmap-milestone">
+                    <div class="roadmap-circle"></div>
+                    <div class="roadmap-hline"></div>
+                    <div class="roadmap-text">Launched Third Product by 1 Half of Q3 2025</div>
+                </div>
+                <div class="roadmap-milestone">
+                    <div class="roadmap-circle"></div>
+                    <div class="roadmap-hline"></div>
+                    <div class="roadmap-text">Go to Major Part of Australia Q4 2025</div>
                 </div>
                 </div>
+            </div>
+        </div>
 
         <!-- About Section - Appears on scroll -->
         <section id="about-section" style="opacity: 0; transform: translateY(50px); transition: all 0.8s ease; background: #fffdfa; padding: 4rem 2rem;">
@@ -663,6 +832,59 @@
                         marqueeText !== heading.textContent &&
                         setActiveSection(heading.parentElement)
                 });
+            });
+
+            // Roadmap Animation
+            const roadmapMilestones = document.querySelectorAll('.roadmap-milestone');
+            const roadmapTitle = document.querySelector('.roadmap-section h2');
+            
+            if (roadmapTitle) {
+                gsap.fromTo(roadmapTitle, 
+                    { opacity: 0, y: 40 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: roadmapTitle,
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            }
+            
+            roadmapMilestones.forEach((milestone, index) => {
+                const circle = milestone.querySelector('.roadmap-circle');
+                const hline = milestone.querySelector('.roadmap-hline');
+                const text = milestone.querySelector('.roadmap-text');
+                
+                gsap.fromTo(milestone, 
+                    { opacity: 0, y: 30 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.8,
+                        ease: "power2.out",
+                        delay: index * 0.2,
+                        scrollTrigger: {
+                            trigger: milestone,
+                            start: "top 85%",
+                            end: "bottom 15%",
+                            toggleActions: "play none none reverse",
+                            onEnter: () => {
+                                milestone.classList.add('active');
+                                gsap.to(hline, { width: "100%", duration: 0.8, ease: "power2.out" });
+                            },
+                            onLeave: () => {
+                                milestone.classList.remove('active');
+                                gsap.to(hline, { width: 0, duration: 0.3, ease: "power2.out" });
+                            }
+                        }
+                    }
+                );
             });
         });
     </script>
