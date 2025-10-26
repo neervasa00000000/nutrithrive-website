@@ -582,6 +582,11 @@
             color: white;
             padding: 3rem 2rem 1rem 2rem;
             margin-top: 4rem;
+            position: relative;
+            z-index: 10;
+            display: block;
+            visibility: visible;
+            opacity: 1;
         }
         
         .footer-content {
@@ -594,15 +599,18 @@
         
         .footer-section h3 {
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
         
         .footer-section p {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             line-height: 1.6;
             margin: 0;
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         
         .footer-links {
@@ -616,9 +624,11 @@
         }
         
         .footer-links a {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         
         .footer-links a:hover {
@@ -645,6 +655,16 @@
             
             footer {
                 padding: 2rem 1rem 1rem 1rem;
+                margin-top: 2rem;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.2rem;
+            }
+            
+            .footer-section p,
+            .footer-links a {
+                font-size: 0.95rem;
             }
         }
         
