@@ -344,120 +344,6 @@
             }
         }
         
-        /* WHY US Section Styles */
-        #why-us {
-            min-block-size: 100vh;
-            background-color: var(--bg);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .flying-squares {
-            position: absolute;
-            z-index: 1;
-        }
-        
-        .square {
-            position: absolute;
-            width: 15vw;
-            height: 15vw;
-            rotate: 0.4turn;
-            background-color: var(--square-color);
-            top: var(--y);
-            left: var(--x);
-            opacity: 0.3;
-            rotate: var(--rx) var(--ry) var(--rz) 0.55turn;
-            animation: flying 2s infinite alternate both;
-        }
-        
-        .square:nth-of-type(1) {
-            --y: 17vh;
-            --x: 8vw;
-            --rx: 0.5;
-            --ry: 2.1;
-            --rz: 1.6;
-            --square-color: #ff6b6b;
-            animation-delay: 1s;
-        }
-        
-        .square:nth-of-type(2) {
-            --y: 8vh;
-            --x: 76vw;
-            --rx: 1.7;
-            --ry: 2.3;
-            --rz: 2.1;
-            --square-color: #9c88ff;
-        }
-        
-        .square:nth-of-type(3) {
-            --y: 60vh;
-            --x: 40vw;
-            --rx: 1.75;
-            --ry: 3.5;
-            --rz: 2.7;
-            --square-color: #51cf66;
-            animation-delay: 0.5s;
-        }
-        
-        @keyframes flying {
-            to {
-                translate: 0 -5vh;
-            }
-        }
-        
-        .masthead {
-            max-inline-size: 100vw;
-            block-size: 100vh;
-            overflow: hidden;
-            display: grid;
-            place-content: center;
-            padding-inline: 1rem;
-        }
-        
-        .masthead h1 {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            text-transform: uppercase;
-            font-size: calc(3rem + 2vw);
-            font-weight: 900;
-            color: var(--primary);
-            text-align: center;
-            margin: 0;
-            animation: scale-up both linear, fade-away both linear;
-            animation-timeline: var(--name);
-            animation-range: entry-crossing 70% exit 90%, exit 10% exit 70%;
-        }
-        
-        .masthead p {
-            position: fixed;
-            top: 60%;
-            left: 50%;
-            translate: -50% -50%;
-            font-size: 1.2rem;
-            color: var(--text);
-            text-align: center;
-            max-width: 600px;
-            margin: 0;
-            animation: scale-up both linear, fade-away both linear;
-            animation-timeline: var(--name);
-            animation-range: entry-crossing 70% exit 90%, exit 10% exit 70%;
-        }
-        
-        @keyframes scale-up {
-            100% {
-                top: 0;
-                scale: 5;
-            }
-        }
-        
-        @keyframes fade-away {
-            100% {
-                opacity: 0;
-            }
-        }
-        
         .stuck-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -796,19 +682,6 @@
         </section>
         </div>
 
-        <!-- WHY US Section -->
-        <section id="why-us" style="--name: --why-us-s">
-            <div class="flying-squares">
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-            </div>
-            <div class="masthead">
-                <h1>WHY US?</h1>
-                <p>Discover what makes NutriThrive the perfect choice for your wellness journey.</p>
-            </div>
-        </section>
-
     </main>
 
     <footer>
@@ -978,27 +851,6 @@
                         }
                     }
                 );
-            });
-            
-            // WHY US Section Animation
-            ScrollTrigger.create({
-                trigger: "#why-us",
-                start: "top bottom",
-                end: "bottom top",
-                onEnter: () => {
-                    gsap.fromTo(".masthead h1", 
-                        { scale: 1, opacity: 1 },
-                        { scale: 5, opacity: 0, duration: 1, ease: "power2.out" }
-                    );
-                    gsap.fromTo(".masthead p", 
-                        { scale: 1, opacity: 1 },
-                        { scale: 5, opacity: 0, duration: 1, ease: "power2.out" }
-                    );
-                },
-                onLeave: () => {
-                    gsap.set(".masthead h1", { scale: 1, opacity: 1 });
-                    gsap.set(".masthead p", { scale: 1, opacity: 1 });
-                }
             });
         });
     </script>
