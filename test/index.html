@@ -290,10 +290,11 @@
         
         /* Animated Timeline Styles */
         .timeline-section {
-            max-width: 600px;
-            margin: 8rem auto 4rem auto;
-            padding: 0 2rem;
+            width: 100vw;
+            margin: 8rem 0 4rem 0;
+            padding: 0;
             text-align: center;
+            overflow-x: hidden;
         }
         
         .header-section {
@@ -307,9 +308,11 @@
         }
         
         #svg-stage {
-            max-width: 600px;
+            width: 100vw;
+            height: 1200px;
             overflow: visible;
-            margin: 0 auto;
+            margin: 0;
+            display: block;
         }
         
         .ball {
@@ -723,12 +726,12 @@
         <!-- Animated Timeline Section -->
         <section class="timeline-section">
             <h1 class="header-section">Our Roadmap</h1>
-            <svg id="svg-stage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1200">
-                <path class="line01 line" d="M 10 200 600 200"></path>
-                <path class="line02 line" d="M 10 400 600 400"></path>
-                <path class="line03 line" d="M 10 600 600 600"></path>
-                <path class="line04 line" d="M 10 800 600 800"></path>
-                <path class="line05 line" d="M 10 1000 600 1000"></path>
+            <svg id="svg-stage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100vw 1200" style="width: 100vw; height: 1200px;">
+                <path class="line01 line" d="M 0 200 100% 200"></path>
+                <path class="line02 line" d="M 0 400 100% 400"></path>
+                <path class="line03 line" d="M 0 600 100% 600"></path>
+                <path class="line04 line" d="M 0 800 100% 800"></path>
+                <path class="line05 line" d="M 0 1000 100% 1000"></path>
                 <text class="text01" x="30" y="190">Q4 2024</text>
                 <text class="text02" x="30" y="390">Q1 2025</text>
                 <text class="text03" x="30" y="590">Q2 2025</text>
@@ -737,18 +740,18 @@
 
                 <path class="theLine" 
                       d="M 0,0
-                         Q 450 230 300 450 
-                         T 130 750
-                         Q 100 850 300 1000
-                         T 150 1200"
+                         Q 50vw 230 40vw 450 
+                         T 20vw 750
+                         Q 15vw 850 40vw 1000
+                         T 25vw 1200"
                       fill="none" stroke-width="10px" />
                 
-                <circle class="ball ball01" r="20" cx="50" cy="100"></circle>
-                <circle class="ball ball02" r="20" cx="278" cy="201"></circle>
-                <circle class="ball ball03" r="20" cx="327" cy="401"></circle>
-                <circle class="ball ball04" r="20" cx="203" cy="601"></circle>
-                <circle class="ball ball05" r="20" cx="350" cy="801"></circle>
-                <circle class="ball ball06" r="20" cx="180" cy="1001"></circle>
+                <circle class="ball ball01" r="20" cx="10" cy="100"></circle>
+                <circle class="ball ball02" r="20" cx="35vw" cy="201"></circle>
+                <circle class="ball ball03" r="20" cx="45vw" cy="401"></circle>
+                <circle class="ball ball04" r="20" cx="25vw" cy="601"></circle>
+                <circle class="ball ball05" r="20" cx="50vw" cy="801"></circle>
+                <circle class="ball ball06" r="20" cx="30vw" cy="1001"></circle>
             </svg>
         </section>
             </div>
