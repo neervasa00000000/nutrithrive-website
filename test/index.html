@@ -74,6 +74,12 @@
             padding-top: 80px; /* Account for fixed header */
         }
         
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px; /* Smaller header on mobile */
+            }
+        }
+        
         .page-content {
             max-width: 90ch;
             padding: 4rem;
@@ -109,6 +115,29 @@
             font-size: var(--paragraph-font-size);
             line-height: 1.75;
             letter-spacing: 0.0125rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-content {
+                padding: 2rem 1rem;
+                margin: 6rem auto 4rem auto;
+            }
+            
+            .page-content h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .page-content h2 {
+                font-size: 2rem;
+                margin-top: 4rem;
+                margin-bottom: 1rem;
+            }
+            
+            .page-content p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
         }
         
         .page-content__section {
@@ -224,6 +253,18 @@
             .hamburger {
                 display: flex;
             }
+            
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo img {
+                height: 1.5rem !important;
+            }
         }
 
         .marquee-container {
@@ -286,6 +327,19 @@
         
         .marquee div.active {
             opacity: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .marquee {
+                font-size: 12px;
+                letter-spacing: 0.1rem;
+                padding: 1vmin 0;
+            }
+            
+            .marquee--left,
+            .marquee--right {
+                font-size: 10px;
+            }
         }
         
         /* Roadmap Timeline Styles - Exact match from homepage */
@@ -379,10 +433,52 @@
             z-index: 2;
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .roadmap-section {
+                margin: 4rem auto 2rem auto;
+                padding: 0 1rem;
+            }
+            .roadmap-title {
+                font-size: 2.5rem;
+                margin-bottom: 2.5rem;
+                letter-spacing: -1px;
+            }
+            .roadmap-timeline {
+                margin-left: 30px;
+                padding-left: 0;
+            }
+            .roadmap-milestone {
+                flex-direction: column;
+                align-items: flex-start;
+                min-height: 70px;
+                margin-bottom: 2.5rem;
+                padding-left: 0.5rem;
+            }
+            .roadmap-circle {
+                width: 30px;
+                height: 30px;
+                left: -15px;
+                border-width: 3px;
+            }
+            .roadmap-hline {
+                margin-left: 20px;
+                margin-right: 0.5rem;
+                height: 3px;
+                min-width: 50px;
+            }
+            .roadmap-text {
+                font-size: 1rem;
+                min-width: unset;
+                margin-left: 0.5rem;
+                margin-top: 0.3rem;
+                line-height: 1.4;
+            }
+        }
+        
+        @media (max-width: 480px) {
             .roadmap-section {
                 margin: 3rem auto 1.5rem auto;
-                padding: 0 0.2rem;
+                padding: 0 0.5rem;
             }
             .roadmap-title {
                 font-size: 2rem;
@@ -410,7 +506,7 @@
                 min-width: 40px;
             }
             .roadmap-text {
-                font-size: 0.98rem;
+                font-size: 0.9rem;
                 min-width: unset;
                 margin-left: 0.5rem;
                 margin-top: 0.2rem;
