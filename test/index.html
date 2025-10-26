@@ -132,10 +132,10 @@
         <!-- Empty First Screen - Content appears on scroll -->
         <section style="height: 100vh; background: #f8f5ec; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
             <!-- Animated White Line -->
-            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; transform: translateX(100%);">
+            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; transform: translateX(100%);">
                 <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
                     <path id="curved-line" d="M 0,300 Q 300,200 600,300 T 1200,300" 
-                          stroke="#ffffff" 
+                          stroke="#175c36" 
                           stroke-width="20" 
                           fill="none" 
                           stroke-linecap="round"
@@ -344,6 +344,13 @@
             console.log('Curved line element:', curvedLine);
             if (curvedLine) {
                 console.log('Line found, starting animation');
+                // Test: Make line visible for 2 seconds to show it's working
+                setTimeout(() => {
+                    animatedLine.style.transform = 'translateX(0%)';
+                    setTimeout(() => {
+                        animatedLine.style.transform = 'translateX(100%)';
+                    }, 2000);
+                }, 1000);
             }
             
             // Listen for scroll events
