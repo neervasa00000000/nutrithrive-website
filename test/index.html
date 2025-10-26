@@ -130,7 +130,20 @@
 
     <main>
         <!-- Empty First Screen - Content appears on scroll -->
-        <section style="height: 100vh; background: #f8f5ec; display: flex; align-items: center; justify-content: center;">
+        <section style="height: 100vh; background: #f8f5ec; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+            <!-- Animated White Line -->
+            <div id="animated-line" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                <svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                    <path id="curved-line" d="M 0,200 Q 200,100 400,200 T 800,200 T 1000,200" 
+                          stroke="#ffffff" 
+                          stroke-width="8" 
+                          fill="none" 
+                          stroke-linecap="round"
+                          style="opacity: 0.8; transform: translateY(0px); transition: transform 0.1s ease-out;">
+                    </path>
+                </svg>
+            </div>
+            
             <div style="opacity: 0; transform: translateY(50px); transition: all 0.8s ease;" id="empty-content">
                 <h1 style="font-size: 3rem; color: #175c36; text-align: center; margin-bottom: 1rem;">Welcome to NutriThrive</h1>
                 <p style="font-size: 1.2rem; color: #5A6D5D; text-align: center;">Scroll down to discover more</p>
@@ -239,6 +252,7 @@
             const aboutSection = document.getElementById('about-section');
             const linksSection = document.getElementById('links-section');
             const contactSection = document.getElementById('contact-section');
+            const curvedLine = document.getElementById('curved-line');
             
             // Function to check if element is in viewport
             function isInViewport(element) {
@@ -253,6 +267,23 @@
             
             // Function to animate elements on scroll
             function animateOnScroll() {
+                const scrollY = window.scrollY;
+                
+                // Animate white line based on scroll
+                if (curvedLine) {
+                    // Move the line down and create wave effect
+                    const moveY = scrollY * 0.5;
+                    const waveOffset = Math.sin(scrollY * 0.01) * 50;
+                    curvedLine.style.transform = `translateY(${moveY + waveOffset}px)`;
+                    
+                    // Change the curve path based on scroll
+                    const curveHeight = 200 + (scrollY * 0.3);
+                    const wave1 = 100 + Math.sin(scrollY * 0.005) * 30;
+                    const wave2 = 200 + Math.sin(scrollY * 0.008) * 40;
+                    
+                    curvedLine.setAttribute('d', `M 0,${curveHeight} Q 200,${wave1} 400,${wave2} T 800,${curveHeight} T 1000,${curveHeight}`);
+                }
+                
                 // Show empty content when in view
                 if (emptyContent && isInViewport(emptyContent)) {
                     emptyContent.style.opacity = '1';
@@ -260,19 +291,19 @@
                 }
                 
                 // Show about section when scrolling down
-                if (aboutSection && window.scrollY > 200) {
+                if (aboutSection && scrollY > 200) {
                     aboutSection.style.opacity = '1';
                     aboutSection.style.transform = 'translateY(0)';
                 }
                 
                 // Show links section when scrolling further
-                if (linksSection && window.scrollY > 400) {
+                if (linksSection && scrollY > 400) {
                     linksSection.style.opacity = '1';
                     linksSection.style.transform = 'translateY(0)';
                 }
                 
                 // Show contact section when scrolling further
-                if (contactSection && window.scrollY > 600) {
+                if (contactSection && scrollY > 600) {
                     contactSection.style.opacity = '1';
                     contactSection.style.transform = 'translateY(0)';
                 }
