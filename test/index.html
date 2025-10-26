@@ -268,14 +268,13 @@
             // Function to animate elements on scroll
             function animateOnScroll() {
                 const scrollY = window.scrollY;
-                const time = Date.now() * 0.001;
                 
                 // Animate white line based on scroll
                 if (curvedLine) {
-                    // Create flowing wave animation
-                    const wave1 = Math.sin(scrollY * 0.01 + time * 2) * 100;
-                    const wave2 = Math.sin(scrollY * 0.008 + time * 1.5) * 80;
-                    const wave3 = Math.sin(scrollY * 0.012 + time * 2.5) * 60;
+                    // Create flowing wave animation only when scrolling
+                    const wave1 = Math.sin(scrollY * 0.01) * 100;
+                    const wave2 = Math.sin(scrollY * 0.008) * 80;
+                    const wave3 = Math.sin(scrollY * 0.012) * 60;
                     
                     // Move line down with scroll
                     const moveY = scrollY * 0.4;
@@ -289,14 +288,12 @@
                     // Update the SVG path
                     curvedLine.setAttribute('d', `M 0,${baseY} Q 300,${control1Y} 600,${control2Y} T 1200,${endY}`);
                     
-                    // Add continuous rotation and scaling
-                    const rotation = scrollY * 0.05 + Math.sin(time) * 5;
-                    const scale = 1 + Math.sin(time * 0.5) * 0.1;
-                    curvedLine.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+                    // Add rotation based on scroll
+                    const rotation = scrollY * 0.05;
+                    curvedLine.style.transform = `rotate(${rotation}deg)`;
                     
-                    // Change opacity for breathing effect
-                    const opacity = 0.7 + Math.sin(time * 1.5) * 0.2;
-                    curvedLine.style.opacity = opacity;
+                    // Keep opacity steady
+                    curvedLine.style.opacity = 0.9;
                 }
                 
                 // Show empty content when in view
@@ -335,15 +332,6 @@
             
             // Listen for scroll events
             window.addEventListener('scroll', animateOnScroll);
-            
-            // Continuous animation loop
-            function continuousAnimation() {
-                animateOnScroll();
-                requestAnimationFrame(continuousAnimation);
-            }
-            
-            // Start continuous animation
-            continuousAnimation();
         });
     </script>
 </body>
