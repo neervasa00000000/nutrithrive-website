@@ -837,8 +837,8 @@
                 });
             });
 
-            // Hide top, left, right marquees when roadmap appears
-            gsap.to(".marquee--top, .marquee--left, .marquee--right", {
+            // Hide all marquees when roadmap appears
+            gsap.to(".marquee--top, .marquee--left, .marquee--right, .marquee--bottom", {
                 opacity: 0,
                 scrollTrigger: {
                     trigger: ".roadmap-section",
