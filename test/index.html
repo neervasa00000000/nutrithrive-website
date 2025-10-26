@@ -384,14 +384,26 @@
             margin-bottom: 3.5rem;
             text-align: center;
             letter-spacing: -2px;
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .roadmap-timeline {
             position: relative;
             margin-left: 60px;
             padding-left: 0;
+        }
+        
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #1b7f5a;
+            border-radius: 2px;
+            z-index: 1;
         }
         
         .roadmap-milestone {
@@ -420,6 +432,8 @@
             box-shadow: none;
             filter: none;
             transition: border-color 0.4s, background 0.4s;
+            opacity: 1;
+            scale: 1;
         }
         
         .roadmap-milestone.active .roadmap-circle {
@@ -429,7 +443,7 @@
         
         .roadmap-hline {
             height: 4px;
-            width: 0;
+            width: 64px;
             background: #1b7f5a;
             margin-left: 38px;
             margin-right: 24px;
@@ -439,8 +453,8 @@
         }
         
         .roadmap-text {
-            opacity: 0.3;
-            transform: translateY(20px) scale(0.98);
+            opacity: 1;
+            transform: translateY(0) scale(1);
             filter: none;
             font-size: 1.15rem;
             font-weight: 600;
