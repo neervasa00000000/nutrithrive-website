@@ -133,18 +133,11 @@
     </div>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Best Moringa Powder Australia 2025 | Premium Superfood</h1>
-                <p class="hero-desc">Experience the perfect blend of nature and science with our carefully curated selection of premium wellness products. Each item is crafted with the finest ingredients to support your journey to optimal health.</p>
-                <p class="hero-intro">NutriThrive is Australia's trusted source for <a href="../pages/benefits/moringa-benefits.html" style="color: #1b7f5a; text-decoration: underline;">Moringa powder benefits</a> and wellness supplements. Based in Melbourne, we deliver Australia-wide to support your health journey with superfoods. Our 100% natural, lab-tested Moringa Oleifera powder is rich in vitamins, antioxidants, and nutrients to boost your energy and overall wellness. <a href="../pages/usage-guide/how-to-use-moringa.html" style="color: #1b7f5a; text-decoration: underline;">Learn how to use moringa powder</a> effectively.</p>
-                <div class="hero-cta" style="margin-top: 1.2rem; display: flex; gap: 1rem;">
-                    <a href="../pages/products/products.html" class="hero-btn">Explore Products</a>
-                    <a href="../pages/about/about.html" class="hero-btn alt">Learn More About Us</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://i.imgur.com/B92giK7.jpg" alt="A bag of NutriThrive Moringa Powder next to a vibrant green smoothie, showcasing its health benefits." width="600" height="600" loading="eager" fetchpriority="high" style="width: 100%; height: auto; object-fit: cover;">
+        <!-- Empty First Screen - Content appears on scroll -->
+        <section class="empty-hero" style="height: 100vh; background: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+            <div style="opacity: 0; transform: translateY(50px); transition: all 0.8s ease;" id="empty-content">
+                <h1 style="font-size: 3rem; color: #2d5a3d; text-align: center; margin-bottom: 1rem;">Welcome to NutriThrive</h1>
+                <p style="font-size: 1.2rem; color: #666; text-align: center;">Scroll down to discover our journey</p>
             </div>
         </section>
 
@@ -345,5 +338,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="../shared/js/script.js" defer></script>
     <script src="homepage.js" defer></script>
+    
+    <script>
+        // Scroll-triggered animations for test homepage
+        document.addEventListener('DOMContentLoaded', function() {
+            const emptyContent = document.getElementById('empty-content');
+            const roadmapSection = document.querySelector('.roadmap-section');
+            
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // Function to animate elements on scroll
+            function animateOnScroll() {
+                // Show empty content when in view
+                if (isInViewport(emptyContent)) {
+                    emptyContent.style.opacity = '1';
+                    emptyContent.style.transform = 'translateY(0)';
+                }
+                
+                // Show roadmap when scrolling down
+                if (roadmapSection && window.scrollY > 100) {
+                    roadmapSection.style.opacity = '1';
+                    roadmapSection.style.transform = 'translateY(0)';
+                }
+            }
+            
+            // Set initial roadmap state
+            if (roadmapSection) {
+                roadmapSection.style.opacity = '0';
+                roadmapSection.style.transform = 'translateY(50px)';
+                roadmapSection.style.transition = 'all 0.8s ease';
+            }
+            
+            // Initial check
+            animateOnScroll();
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
 </body>
 </html> 
