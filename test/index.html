@@ -184,7 +184,6 @@
         
         .marquee--top {
             top: -1px;
-            opacity: 0.3;
         }
         
         .marquee--left {
@@ -192,7 +191,6 @@
             bottom: -6vmin;
             transform: rotate(-0.25turn);
             transform-origin: 0 0;
-            opacity: 0.3;
         }
         
         .marquee--right {
@@ -200,7 +198,6 @@
             top: 0;
             transform: rotate(0.25turn);
             transform-origin: 0 0;
-            opacity: 0.3;
         }
         
         .marquee--bottom {
@@ -838,6 +835,17 @@
                         marqueeText !== heading.textContent &&
                         setActiveSection(heading.parentElement)
                 });
+            });
+
+            // Hide top, left, right marquees when roadmap appears
+            gsap.to(".marquee--top, .marquee--left, .marquee--right", {
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: ".roadmap-section",
+                    start: "top bottom",
+                    end: "bottom top",
+                    toggleActions: "play reverse play reverse"
+                }
             });
 
             // Roadmap Animation
