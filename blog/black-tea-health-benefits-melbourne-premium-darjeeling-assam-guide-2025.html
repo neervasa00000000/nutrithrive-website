@@ -273,7 +273,6 @@
         
         
             /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
             div[style*="background: #f6fbf8"],
             div[style*="background: #fff3e0"],
             div[style*="background: #e8f5e9"],
@@ -281,16 +280,13 @@
             div[style*="background: #fff9c4"],
             div[style*="background: #f8f9fa"],
             div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
             div[style*="background: linear-gradient(135deg, #f6fbf8"],
             div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
+            
+            
+            /* EXCEPTION: Keep product buy boxes with #2d5a3d gradient visible */
+            div[style*="background: linear-gradient(135deg, #2d5a3d"] {
+                background: #2d5a3d !important;
             }
             
             /* Remove decorative elements on mobile */
@@ -299,11 +295,63 @@
                 display: none !important;
             }
             
-            /* Simplify product buy boxes */
+            /* Simplify product buy boxes - BUT KEEP VISIBLE */
             div[style*="linear-gradient(135deg, #2d5a3d"] {
                 background: #2d5a3d !important;
                 border: none !important;
                 padding: 1.5rem 1rem !important;
+                color: white !important;
+            }
+            
+            /* Ensure ALL text inside boxes is visible on mobile */
+            div[style*="linear-gradient(135deg, #2d5a3d"] * {
+                color: white !important;
+            }
+            
+            /* Buttons inside boxes - ensure visibility */
+            div[style*="linear-gradient(135deg, #2d5a3d"] a[style*="background: white"] {
+                background: white !important;
+                color: #2d5a3d !important;
+                border: 2px solid white !important;
+                padding: 14px 24px !important;
+                font-size: 1rem !important;
+                font-weight: bold !important;
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                margin: 0.75rem 0 !important;
+                text-decoration: none !important;
+            }
+            
+            /* Buttons with transparent background - make more visible */
+            div[style*="linear-gradient(135deg, #2d5a3d"] a[style*="rgba(255,255,255"] {
+                background: rgba(255,255,255,0.3) !important;
+                color: white !important;
+                border: 2px solid white !important;
+                padding: 14px 24px !important;
+                font-size: 1rem !important;
+                font-weight: bold !important;
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                margin: 0.75rem 0 !important;
+                text-decoration: none !important;
+            }
+            
+            /* All buttons with green background */
+            a[style*="background: #2d5a3d"],
+            a[style*="background:#2d5a3d"] {
+                background: #2d5a3d !important;
+                color: white !important;
+                padding: 14px 24px !important;
+                font-size: 1rem !important;
+                font-weight: bold !important;
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                margin: 0.75rem 0 !important;
+                text-decoration: none !important;
+                border-radius: 8px !important;
             }
             
             /* Remove borders from cards */
@@ -316,7 +364,6 @@
         
         
             /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
             div[style*="background: #f6fbf8"],
             div[style*="background: #fff3e0"],
             div[style*="background: #e8f5e9"],
@@ -324,16 +371,13 @@
             div[style*="background: #fff9c4"],
             div[style*="background: #f8f9fa"],
             div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
             div[style*="background: linear-gradient(135deg, #f6fbf8"],
             div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
+            
+            
+            /* EXCEPTION: Keep product buy boxes with #2d5a3d gradient visible */
+            div[style*="background: linear-gradient(135deg, #2d5a3d"] {
+                background: #2d5a3d !important;
             }
             
             /* Remove decorative elements on mobile */
