@@ -1382,10 +1382,10 @@
                             ease: 'power3.out',
                             scrollTrigger: {
                                 trigger: '.roadmap-section',
-                                start: 'bottom top+=200', // Roadmap must be completely gone with LARGE buffer for blank screen
-                                end: 'bottom top+=200',
+                                start: 'bottom top+=400', // Roadmap must be completely gone with VERY LARGE buffer - move image further down
+                                end: 'bottom top+=400',
                                 toggleActions: 'play none reverse none', // play on enter, reverse on leave back (scroll up)
-                                onEnter: () => console.log('Right image animation triggered - screen is fully blank'),
+                                onEnter: () => console.log('Right image animation triggered - screen is fully blank, roadmap not visible'),
                                 onLeaveBack: () => console.log('Right image disappearing - scrolling up')
                             }
                         });
