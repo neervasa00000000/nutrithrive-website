@@ -530,7 +530,7 @@ body.products-page .hero .hero-btn.alt {
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: none;
 }
 
 .product-link {
@@ -1670,10 +1670,10 @@ footer {
         width: 100% !important;
         max-width: 350px !important;
         margin: 0 auto !important;
-        padding: 1.5rem 1rem !important;
-        background: var(--card) !important;
-        border-radius: var(--radius) !important;
-        box-shadow: var(--shadow) !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
