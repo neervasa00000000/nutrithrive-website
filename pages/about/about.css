@@ -1136,11 +1136,11 @@ footer {
 
 /* Statistics Section */
 .stats-section {
-    background: var(--card);
+    background: transparent;
     padding: 4rem 2rem;
     margin: 2rem 0;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .stats-container {
