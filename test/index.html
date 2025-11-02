@@ -426,6 +426,8 @@
           padding: 0 2rem;
           background: none;
           text-align: left;
+          opacity: 0;
+          visibility: hidden;
         }
         .roadmap-title {
           font-size: 3.5rem;
@@ -1232,8 +1234,8 @@
                 opacity: 0,
                 scrollTrigger: {
                     trigger: ".roadmap-section",
-                    start: "top bottom", // Hide when roadmap enters viewport
-                    end: "top top",
+                    start: "top 90%", // Hide when roadmap is about to enter viewport
+                    end: "top 80%",
                     toggleActions: "play none none reverse" // Hide and stay hidden
                 }
             });
@@ -1249,8 +1251,27 @@
                 }
             });
 
-            // Roadmap Animation (Exact copy from homepage)
+            // Roadmap Animation - Only show AFTER page content is completely done
             const roadmapSection = document.querySelector('.roadmap-section');
+            const pageContent = document.querySelector('.page-content');
+            
+            if (roadmapSection && pageContent) {
+                // Make roadmap visible ONLY after page content is fully scrolled past
+                gsap.to(roadmapSection, {
+                    opacity: 1,
+                    visibility: 'visible',
+                    duration: 0.5,
+                    scrollTrigger: {
+                        trigger: pageContent,
+                        start: 'bottom top+=200', // Wait until page content is well above viewport
+                        end: 'bottom top+=200',
+                        toggleActions: 'play none none reverse',
+                        once: true,
+                        onEnter: () => console.log('Roadmap becoming visible - page content is done')
+                    }
+                });
+            }
+
             if (roadmapSection) {
                 if (window.gsap && window.ScrollTrigger) {
                     gsap.registerPlugin(ScrollTrigger);
@@ -1369,7 +1390,7 @@
                             immediateRender: true
                         });
 
-                        // Sequence 1: Left image slides in ONLY after roadmap is completely gone
+                        // Sequence 1: Left image slides in ONLY after roadmap is completely gone (page is blank)
                         gsap.to(homeImageLeft, {
                             opacity: 1,
                             x: 0,
@@ -1377,11 +1398,11 @@
                             ease: 'power3.out',
                             scrollTrigger: {
                                 trigger: '.roadmap-section',
-                                start: 'bottom top-=50', // Roadmap must be completely above viewport
-                                end: 'bottom top-=50',
+                                start: 'bottom top+=150', // Roadmap must be completely above viewport with large buffer (blank space)
+                                end: 'bottom top+=150',
                                 toggleActions: 'play none none reverse',
                                 once: true,
-                                onEnter: () => console.log('Left image animation triggered')
+                                onEnter: () => console.log('Left image animation triggered - roadmap is fully gone, page is blank')
                             }
                         });
 
@@ -1394,15 +1415,15 @@
                             ease: 'power2.in',
                             scrollTrigger: {
                                 trigger: homeImagesSection,
-                                start: 'top 80%', // When images section enters view
-                                end: 'top 60%',
+                                start: 'top 85%', // When images section enters view
+                                end: 'top 65%',
                                 toggleActions: 'play none none reverse',
                                 once: true,
                                 onEnter: () => console.log('Left image disappearing')
                             }
                         });
 
-                        // Right image appears from right (slightly after left starts disappearing)
+                        // Right image appears from right - ONLY after left starts disappearing
                         gsap.to(homeImageRight, {
                             opacity: 1,
                             x: 0,
@@ -1410,8 +1431,8 @@
                             ease: 'power3.out',
                             scrollTrigger: {
                                 trigger: homeImagesSection,
-                                start: 'top 70%', // Right image appears as left disappears
-                                end: 'top 50%',
+                                start: 'top 75%', // Right image appears as left disappears
+                                end: 'top 55%',
                                 toggleActions: 'play none none reverse',
                                 once: true,
                                 onEnter: () => console.log('Right image animation triggered')
