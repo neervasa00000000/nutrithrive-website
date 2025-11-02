@@ -1367,18 +1367,19 @@
                     gsap.registerPlugin(ScrollTrigger);
 
                     const setupAnimations = () => {
-                        // Initial state - image completely hidden and off-screen to the LEFT
+                        // Initial state - image completely hidden and off-screen to the RIGHT
                         gsap.set(homeImageRight, { 
                             opacity: 0, 
                             visibility: 'hidden',
-                            x: -800, // Off-screen to the LEFT
+                            x: 800, // Off-screen to the RIGHT
                             display: 'block',
                             immediateRender: true
                         });
 
-                        // Image slides in from LEFT - ONLY when ENTIRE page is FULLY blank (no text visible)
+                        // Image slides in from RIGHT - ONLY when ENTIRE page is FULLY blank (no text visible)
                         // All roadmap content must be completely out of view with maximum blank space
                         // If ANY text is on screen, animation will NOT trigger
+                        // User sees only blank beige page before animation
                         gsap.to(homeImageRight, {
                             opacity: 1,
                             visibility: 'visible',
@@ -1408,7 +1409,7 @@
                                     gsap.to(homeImageRight, {
                                         opacity: 0,
                                         visibility: 'hidden',
-                                        x: -800,
+                                        x: 800, // Slide back to the RIGHT
                                         duration: 1.2,
                                         ease: 'power2.in'
                                     });
