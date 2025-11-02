@@ -64,6 +64,50 @@
                 box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
             
+            /* Breadcrumb mobile */
+            div[style*="background: #f8f9fa"] {
+                padding: 0.75rem 1rem !important;
+            }
+            
+            div[style*="background: #f8f9fa"] nav {
+                font-size: 0.875rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            div[style*="background: #f8f9fa"] a {
+                word-break: break-word !important;
+            }
+            
+            div[style*="background: #f8f9fa"] span:last-child {
+                display: block !important;
+                margin-top: 0.25rem !important;
+                white-space: normal !important;
+                word-break: break-word !important;
+            }
+            
+            /* Back navigation mobile */
+            div[style*="background: #f8f9fa"][style*="border-top"] {
+                padding: 1rem !important;
+            }
+            
+            div[style*="background: #f8f9fa"][style*="border-top"] > div {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.75rem !important;
+            }
+            
+            div[style*="background: #f8f9fa"][style*="border-top"] > div > span {
+                display: none !important;
+            }
+            
+            div[style*="background: #f8f9fa"][style*="border-top"] a {
+                display: block !important;
+                padding: 0.5rem 0 !important;
+                font-size: 0.9375rem !important;
+                min-height: 44px !important;
+                line-height: 1.5 !important;
+            }
+            
             .navbar {
                 display: flex;
                 justify-content: space-between;
@@ -411,6 +455,17 @@
                 <h1>The Rise of Plant-Based & Functional Foods in Australia: Transform Your Wellness with NutriThrive</h1>
             </div>
 
+            <!-- Breadcrumb Navigation -->
+            <div style="background: #f8f9fa; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0e0; margin: 0;">
+                <nav style="font-size: 0.9375rem; color: #666;">
+                    <a href="../pages/homepage/index.html" style="color: #2d5a3d; text-decoration: none;">Home</a>
+                    <span style="margin: 0 0.5rem; color: #999;">›</span>
+                    <a href="../pages/blog/blog.html" style="color: #2d5a3d; text-decoration: none;">Blog</a>
+                    <span style="margin: 0 0.5rem; color: #999;">›</span>
+                    <span style="color: #333; font-weight: 500;">Plant-Based & Functional Foods</span>
+                </nav>
+            </div>
+
             <div class="blog-content">
                 <!-- INTRO WITH STATISTICS -->
                 <p><strong>Plant-based and functional foods aren't just a trend—they're revolutionizing Australian wellness.</strong> According to <a href="https://www.ibisworld.com/au/industry/functional-food-manufacturing/4516/" target="_blank" rel="noopener">IBISWorld 2024 data</a>, Australia's functional food market has grown 8.2% annually, with <a href="https://www.roymorgan.com/findings/9081-australian-plant-based-food-market-march-2023" target="_blank" rel="noopener">Roy Morgan research</a> showing 2.5 million Australians now following plant-based diets. NutriThrive brings you the finest <a href="../pages/products/product-detail.html" style="color:#2d5a3d;font-weight:600;">moringa powder</a>, <a href="../pages/products/product-curry-leaves.html" style="color:#2d5a3d;font-weight:600;">dried curry leaves</a>, <a href="../pages/products/product-black-tea.html" style="color:#2d5a3d;font-weight:600;">premium black tea</a>, and high-quality protein powder—to support your health, energy, and vitality with every scoop or sip.</p>
@@ -670,6 +725,19 @@
                         <a href="../pages/products/products.html" style="background: rgba(255,255,255,0.15); color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3);">View All Products</a>
                     </div>
                     <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">Use code <strong>WELLNESS20</strong> for 20% off your first order. Free shipping Australia-wide!</p>
+                </div>
+
+                <!-- Back Navigation -->
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; border-top: 2px solid #e0e0e0;">
+                    <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <a href="../pages/blog/blog.html" style="display: inline-flex; align-items: center; color: #2d5a3d; text-decoration: none; font-weight: 600; font-size: 1rem;">
+                            ← Back to Blog
+                        </a>
+                        <span style="color: #999;">|</span>
+                        <a href="../pages/homepage/index.html" style="color: #666; text-decoration: none; font-size: 0.9375rem;">Home</a>
+                        <span style="color: #999;">|</span>
+                        <a href="../pages/products/products.html" style="color: #666; text-decoration: none; font-size: 0.9375rem;">Products</a>
+                    </div>
                 </div>
             </div>
         </article>
