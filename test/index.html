@@ -575,6 +575,8 @@
             box-shadow: 0 8px 32px rgba(23, 92, 54, 0.15);
             object-fit: cover;
             display: block;
+            opacity: 0; /* Hidden by default - will be animated by GSAP */
+            visibility: hidden; /* Completely hidden until animation */
         }
         
         .home-image-left {
@@ -1365,19 +1367,21 @@
                     gsap.registerPlugin(ScrollTrigger);
 
                     const setupAnimations = () => {
-                        // Initial state - right image completely hidden and off-screen to the right
+                        // Initial state - image completely hidden and off-screen to the LEFT
                         gsap.set(homeImageRight, { 
                             opacity: 0, 
-                            x: 800, // Further off-screen for more blank space
+                            visibility: 'hidden',
+                            x: -800, // Off-screen to the LEFT
                             display: 'block',
                             immediateRender: true
                         });
 
-                        // Right image slides in from right - ONLY when ENTIRE page is FULLY blank
+                        // Image slides in from LEFT - ONLY when ENTIRE page is FULLY blank (no text visible)
                         // All roadmap content must be completely out of view with maximum blank space
-                        // And slides out immediately when visible from bottom while scrolling up
+                        // If ANY text is on screen, animation will NOT trigger
                         gsap.to(homeImageRight, {
                             opacity: 1,
+                            visibility: 'visible',
                             x: 0,
                             duration: 1.5,
                             ease: 'power3.out',
@@ -1387,8 +1391,28 @@
                                 endTrigger: homeImagesSection, // Trigger for disappearance (image section itself)
                                 end: 'bottom bottom', // When bottom of image section hits bottom of viewport (scrolling up)
                                 toggleActions: 'play none reverse none', // play on enter, reverse on leave back
-                                onEnter: () => console.log('Right image animation triggered - entire page is fully blank'),
-                                onLeaveBack: () => console.log('Right image disappearing - bottom visible from bottom, scrolling up')
+                                onEnter: () => {
+                                    console.log('Image animation triggered - entire page is fully blank, no text visible');
+                                    // Double check - ensure no roadmap text is visible
+                                    const roadmapText = document.querySelector('.roadmap-section');
+                                    if (roadmapText) {
+                                        const rect = roadmapText.getBoundingClientRect();
+                                        if (rect.bottom > 0) {
+                                            console.log('Roadmap still visible - canceling animation');
+                                            return; // Don't animate if roadmap is still visible
+                                        }
+                                    }
+                                },
+                                onLeaveBack: () => {
+                                    console.log('Image disappearing - scrolling up');
+                                    gsap.to(homeImageRight, {
+                                        opacity: 0,
+                                        visibility: 'hidden',
+                                        x: -800,
+                                        duration: 1.2,
+                                        ease: 'power2.in'
+                                    });
+                                }
                             }
                         });
                     };
