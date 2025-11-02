@@ -1373,7 +1373,8 @@
                             immediateRender: true
                         });
 
-                        // Right image slides in from right - ONLY when screen is FULLY empty/blank
+                        // Right image slides in from right - ONLY after "Go to Major Part of Australia Q4 2025" 
+                        // is completely out of view AND user scrolls more (blank space)
                         // And slides out immediately when visible from bottom while scrolling up
                         gsap.to(homeImageRight, {
                             opacity: 1,
@@ -1382,11 +1383,11 @@
                             ease: 'power3.out',
                             scrollTrigger: {
                                 trigger: '.roadmap-section', // Trigger for appearance (roadmap gone)
-                                start: 'bottom top+=400', // Roadmap must be completely gone with VERY LARGE buffer - move image further down
+                                start: 'bottom top+=800', // Roadmap completely gone + EXTRA blank space - ensure last milestone is not visible
                                 endTrigger: homeImagesSection, // Trigger for disappearance (image section itself)
                                 end: 'bottom bottom', // When bottom of image section hits bottom of viewport (scrolling up)
                                 toggleActions: 'play none reverse none', // play on enter, reverse on leave back
-                                onEnter: () => console.log('Right image animation triggered - screen is fully blank, roadmap not visible'),
+                                onEnter: () => console.log('Right image animation triggered - last milestone gone, blank space scrolled'),
                                 onLeaveBack: () => console.log('Right image disappearing - bottom visible from bottom, scrolling up')
                             }
                         });
