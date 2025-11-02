@@ -1115,6 +1115,75 @@
                 </a>
             </div>
         </section>
+
+        <!-- Product Cards Section with GSAP Scroll Effect -->
+        <section class="product-cards-section">
+            <div class="l-cards">
+                <!-- CARD 1 - Moringa -->
+                <div class="c-card">
+                    <div class="c-card__description">
+                        <div class="c-card__tagline">
+                            NutriThrive
+                        </div>
+                        <h1 class="c-card__title">
+                            Moringa Powder
+                        </h1>
+                        <div class="c-card__excerpt">
+                            Premium organic Moringa powder packed with essential vitamins, minerals, and antioxidants. Boost your energy, support your immune system, and enhance your overall wellness with this powerful superfood from NutriThrive.
+                        </div>
+                        <div class="c-card__cta">
+                            <a href="../pages/products/product-detail.html">Shop Now</a>
+                        </div>
+                    </div>
+                    <figure class="c-card__figure">
+                        <img src="https://i.imgur.com/PgvCFY0.png" alt="NutriThrive Moringa Powder">
+                    </figure>
+                </div>
+
+                <!-- CARD 2 - Curry Leaves -->
+                <div class="c-card">
+                    <div class="c-card__description">
+                        <div class="c-card__tagline">
+                            NutriThrive
+                        </div>
+                        <h1 class="c-card__title">
+                            Dried Curry Leaves
+                        </h1>
+                        <div class="c-card__excerpt">
+                            Authentic dried curry leaves rich in antioxidants and essential oils. Enhance your culinary creations while supporting digestive health and providing anti-inflammatory benefits. Premium quality from NutriThrive.
+                        </div>
+                        <div class="c-card__cta">
+                            <a href="../pages/products/product-curry-leaves.html">Shop Now</a>
+                        </div>
+                    </div>
+                    <figure class="c-card__figure">
+                        <img src="https://i.imgur.com/pGYqg0z.png" alt="NutriThrive Dried Curry Leaves">
+                    </figure>
+                </div>
+
+                <!-- CARD 3 - Black Tea -->
+                <div class="c-card">
+                    <div class="c-card__description">
+                        <div class="c-card__tagline">
+                            NutriThrive
+                        </div>
+                        <h1 class="c-card__title">
+                            Black Tea
+                        </h1>
+                        <div class="c-card__excerpt">
+                            Premium black tea with a rich, robust flavor and natural antioxidants. Support heart health, improve focus, and enjoy a comforting cup of tea made from the finest tea leaves, sourced by NutriThrive.
+                        </div>
+                        <div class="c-card__cta">
+                            <a href="../pages/products/product-black-tea.html">Shop Now</a>
+                        </div>
+                    </div>
+                    <figure class="c-card__figure">
+                        <img src="https://i.imgur.com/EMjb66w.png" alt="NutriThrive Black Tea">
+                    </figure>
+                </div>
+            </div>
+            <div class="spacer"></div>
+        </section>
         </div>
 
     </main>
@@ -1421,6 +1490,42 @@
 
             // Home Images - No animation, just static display
             // Images are always visible, no GSAP animation needed
+
+            // Product Cards Scroll Effect
+            const cards = gsap.utils.toArray(".c-card");
+            const lastCardIndex = cards.length - 1;
+
+            if (cards.length > 0 && window.ScrollTrigger) {
+                // Create the ScrollTrigger for the first and last card
+                const firstCardST = ScrollTrigger.create({
+                    trigger: cards[0],
+                    start: "center center"
+                });
+                const lastCardST = ScrollTrigger.create({
+                    trigger: cards[cards.length - 1],
+                    start: "center center"
+                });
+
+                // Iterate over each card
+                cards.forEach((card, index) => {
+                    const scale = index === lastCardIndex ? 1 : 0.5;
+                    const scaleDown = gsap.to(card, {
+                        scale: scale,
+                    });
+
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: "top top",
+                        end: () => lastCardST.start,
+                        pin: true,
+                        pinSpacing: false,
+                        scrub: 0.5,
+                        ease: "none",
+                        animation: scaleDown,
+                        toggleActions: "restart none none reverse"
+                    });
+                });
+            }
         });
     </script>
 </body>
