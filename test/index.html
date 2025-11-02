@@ -453,8 +453,10 @@
           max-width: 800px;
         }
         .roadmap-vline-grow {
-          left: 50%;
-          transform: translateX(-50%);
+          position: absolute !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          top: 0;
         }
         .roadmap-milestone {
           display: flex;
@@ -1350,8 +1352,14 @@
                         }
 
                         // Animate the vertical line height with scroll
-                        gsap.fromTo(vLineGrow, { height: 0 }, {
+                        gsap.fromTo(vLineGrow, { 
+                            height: 0,
+                            left: '50%',
+                            transform: 'translateX(-50%)'
+                        }, {
                             height: () => getTimelineHeight() + 'px',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
                             ease: 'none',
                             scrollTrigger: {
                                 trigger: roadmapSection,
