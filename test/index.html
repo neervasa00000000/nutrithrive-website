@@ -1374,6 +1374,7 @@
                         });
 
                         // Right image slides in from right - ONLY when screen is FULLY empty/blank
+                        // And slides out when scrolling back up
                         gsap.to(homeImageRight, {
                             opacity: 1,
                             x: 0,
@@ -1383,9 +1384,9 @@
                                 trigger: '.roadmap-section',
                                 start: 'bottom top+=200', // Roadmap must be completely gone with LARGE buffer for blank screen
                                 end: 'bottom top+=200',
-                                toggleActions: 'play none none reverse',
-                                once: true,
-                                onEnter: () => console.log('Right image animation triggered - screen is fully blank')
+                                toggleActions: 'play none reverse none', // play on enter, reverse on leave back (scroll up)
+                                onEnter: () => console.log('Right image animation triggered - screen is fully blank'),
+                                onLeaveBack: () => console.log('Right image disappearing - scrolling up')
                             }
                         });
                     };
