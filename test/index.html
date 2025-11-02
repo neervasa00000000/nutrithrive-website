@@ -572,16 +572,31 @@
             flex-wrap: wrap;
         }
         
+        .home-image-link {
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .home-image-link:hover {
+            transform: scale(1.05);
+        }
+        
         .home-image {
-            max-width: 280px;
+            max-width: 320px;
             width: 100%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1);
-            object-fit: cover;
+            object-fit: contain;
             display: block !important;
             opacity: 1 !important;
             visibility: visible !important;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .home-image-link:hover .home-image {
+            box-shadow: 0 8px 24px rgba(23, 92, 54, 0.2);
         }
         
         @media (max-width: 768px) {
