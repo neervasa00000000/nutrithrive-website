@@ -514,18 +514,18 @@ body.products-page .hero .hero-btn.alt {
 
 .product-card {
     flex: 0 1 220px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    padding-bottom: 0.5rem;
+    box-shadow: none;
+    padding-bottom: 0;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-    min-height: 320px;
+    min-height: auto;
 }
 
 .product-card:hover {
@@ -1812,12 +1812,12 @@ body.blog-moringa-tree .btn-secondary:hover {
 }
 
 .edgy-card {
-  border-radius: 2px !important;
-  border: 1px solid #e0e0e0 !important;
+  border-radius: 0 !important;
+  border: none !important;
   box-shadow: none !important;
-  padding-bottom: 0.5rem !important;
+  padding-bottom: 0 !important;
   margin-bottom: 0 !important;
-  background: #fff !important;
+  background: transparent !important;
 }
 
 .mystery-product-img {
