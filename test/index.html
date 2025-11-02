@@ -1365,7 +1365,7 @@
                             const text = item.querySelector('.roadmap-text');
 
                             gsap.set([hline, circle, text], { clearProps: 'all' });
-                            gsap.set(hline, { width: 0, backgroundColor: '#f8f5ec' });
+                            gsap.set(hline, { width: 0, backgroundColor: '#1b7f5a' });
                             gsap.set(circle, { scale: 0, opacity: 0 });
                             gsap.set(text, { opacity: 0, y: 20 });
 
@@ -1379,7 +1379,7 @@
                                     fastScrollEnd: true,
                                 }
                             });
-                            tl.to(hline, { width: '64px', backgroundColor: '#f8f5ec', duration: 0.3, ease: 'power1.out' })
+                            tl.to(hline, { width: '64px', backgroundColor: '#1b7f5a', duration: 0.3, ease: 'power1.out' })
                               .to(circle, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' }, '-=0.15')
                               .to(text, { opacity: 1, y: 0, duration: 0.3, ease: 'power1.out' }, '-=0.1');
                         });
