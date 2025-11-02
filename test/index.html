@@ -1374,19 +1374,20 @@
                         });
 
                         // Right image slides in from right - ONLY when screen is FULLY empty/blank
-                        // And slides out when scrolling back up
+                        // And slides out immediately when visible from bottom while scrolling up
                         gsap.to(homeImageRight, {
                             opacity: 1,
                             x: 0,
                             duration: 1.5,
                             ease: 'power3.out',
                             scrollTrigger: {
-                                trigger: '.roadmap-section',
+                                trigger: '.roadmap-section', // Trigger for appearance (roadmap gone)
                                 start: 'bottom top+=400', // Roadmap must be completely gone with VERY LARGE buffer - move image further down
-                                end: 'bottom top+=400',
-                                toggleActions: 'play none reverse none', // play on enter, reverse on leave back (scroll up)
+                                endTrigger: homeImagesSection, // Trigger for disappearance (image section itself)
+                                end: 'bottom bottom', // When bottom of image section hits bottom of viewport (scrolling up)
+                                toggleActions: 'play none reverse none', // play on enter, reverse on leave back
                                 onEnter: () => console.log('Right image animation triggered - screen is fully blank, roadmap not visible'),
-                                onLeaveBack: () => console.log('Right image disappearing - scrolling up')
+                                onLeaveBack: () => console.log('Right image disappearing - bottom visible from bottom, scrolling up')
                             }
                         });
                     };
