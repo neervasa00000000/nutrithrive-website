@@ -552,20 +552,23 @@
         /* Home Images Section - Slides from sides */
         .home-images-section {
             max-width: 1200px;
-            margin: 6rem auto;
-            padding: 0 2rem;
+            margin: 0 auto;
+            padding: 20vh 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .home-image-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
+            width: 100%;
         }
         
         .home-image {
-            max-width: 400px;
+            max-width: 500px;
             width: 100%;
             height: auto;
             border-radius: 16px;
@@ -584,25 +587,13 @@
         
         @media (max-width: 768px) {
             .home-images-section {
-                margin: 4rem auto;
-                padding: 0 1rem;
-            }
-            
-            .home-image-container {
-                flex-direction: column;
-                gap: 2rem;
+                margin: 0 auto;
+                padding: 15vh 1rem;
+                min-height: 80vh;
             }
             
             .home-image {
                 max-width: 100%;
-            }
-            
-            .home-image-left {
-                /* Initial state set by GSAP */
-            }
-            
-            .home-image-right {
-                /* Initial state set by GSAP */
             }
         }
         
@@ -1060,8 +1051,8 @@
         <!-- Home Images Section - Slides in after roadmap -->
         <section class="home-images-section">
             <div class="home-image-container">
-                <img src="../shared/images/Home%20page%20/ChatGPT%20Image%20Nov%202,%202025,%2011_52_27%20PM.png" alt="NutriThrive Home Image 1" class="home-image home-image-left">
-                <img src="../shared/images/Home%20page%20/ChatGPT%20Image%20Nov%202,%202025,%2011_54_51%20PM.png" alt="NutriThrive Home Image 2" class="home-image home-image-right">
+                <!-- Left image removed - only showing right image for now -->
+                <img src="../shared/images/Home%20page%20/ChatGPT%20Image%20Nov%202,%202025,%2011_54_51%20PM.png" alt="NutriThrive Home Image" class="home-image home-image-right">
             </div>
         </section>
 
@@ -1362,117 +1353,62 @@
                 }
             }
 
-            // Home Images Animation - Sequential slides after roadmap completely scrolls out
+            // Home Images Animation - Only right image slides in from right after FULLY blank screen
             const homeImagesSection = document.querySelector('.home-images-section');
-            const homeImageLeft = document.querySelector('.home-image-left');
             const homeImageRight = document.querySelector('.home-image-right');
 
-            if (homeImagesSection && homeImageLeft && homeImageRight) {
+            if (homeImagesSection && homeImageRight) {
                 console.log('Home images section found:', homeImagesSection);
-                console.log('Left image found:', homeImageLeft);
                 console.log('Right image found:', homeImageRight);
 
                 if (window.gsap && window.ScrollTrigger) {
                     gsap.registerPlugin(ScrollTrigger);
 
                     const setupAnimations = () => {
-                        // Initial state - both images completely hidden and off-screen
-                        gsap.set(homeImageLeft, { 
-                            opacity: 0, 
-                            x: -500,
-                            display: 'block',
-                            immediateRender: true
-                        });
+                        // Initial state - right image completely hidden and off-screen to the right
                         gsap.set(homeImageRight, { 
                             opacity: 0, 
-                            x: 500,
+                            x: 800, // Further off-screen for more blank space
                             display: 'block',
                             immediateRender: true
                         });
 
-                        // Sequence 1: Left image slides in ONLY after roadmap is completely gone (page is blank)
-                        gsap.to(homeImageLeft, {
-                            opacity: 1,
-                            x: 0,
-                            duration: 1.2,
-                            ease: 'power3.out',
-                            scrollTrigger: {
-                                trigger: '.roadmap-section',
-                                start: 'bottom top+=150', // Roadmap must be completely above viewport with large buffer (blank space)
-                                end: 'bottom top+=150',
-                                toggleActions: 'play none none reverse',
-                                once: true,
-                                onEnter: () => console.log('Left image animation triggered - roadmap is fully gone, page is blank')
-                            }
-                        });
-
-                        // Sequence 2: When user scrolls more, left disappears and right appears
-                        // Left image disappears
-                        gsap.to(homeImageLeft, {
-                            opacity: 0,
-                            x: -500,
-                            duration: 0.9,
-                            ease: 'power2.in',
-                            scrollTrigger: {
-                                trigger: homeImagesSection,
-                                start: 'top 85%', // When images section enters view
-                                end: 'top 65%',
-                                toggleActions: 'play none none reverse',
-                                once: true,
-                                onEnter: () => console.log('Left image disappearing')
-                            }
-                        });
-
-                        // Right image appears from right - ONLY after left starts disappearing
+                        // Right image slides in from right - ONLY when screen is FULLY empty/blank
                         gsap.to(homeImageRight, {
                             opacity: 1,
                             x: 0,
-                            duration: 1.2,
+                            duration: 1.5,
                             ease: 'power3.out',
                             scrollTrigger: {
-                                trigger: homeImagesSection,
-                                start: 'top 75%', // Right image appears as left disappears
-                                end: 'top 55%',
+                                trigger: '.roadmap-section',
+                                start: 'bottom top+=200', // Roadmap must be completely gone with LARGE buffer for blank screen
+                                end: 'bottom top+=200',
                                 toggleActions: 'play none none reverse',
                                 once: true,
-                                onEnter: () => console.log('Right image animation triggered')
+                                onEnter: () => console.log('Right image animation triggered - screen is fully blank')
                             }
                         });
                     };
 
-                    // Check if images are already loaded
-                    if (homeImageLeft.complete && homeImageRight.complete) {
+                    // Check if image is already loaded
+                    if (homeImageRight.complete) {
                         setupAnimations();
                     } else {
-                        // Wait for images to load
-                        let loadedCount = 0;
-                        const checkLoaded = () => {
-                            loadedCount++;
-                            if (loadedCount === 2) {
-                                setupAnimations();
-                            }
-                        };
-                        homeImageLeft.onload = checkLoaded;
-                        homeImageRight.onload = checkLoaded;
+                        homeImageRight.onload = setupAnimations;
                         
                         // Fallback timeout
                         setTimeout(() => {
-                            if (loadedCount < 2) {
-                                console.log('Images taking time to load, setting up animations anyway');
-                                setupAnimations();
-                            }
+                            setupAnimations();
                         }, 1000);
                     }
                 } else {
                     console.error('GSAP or ScrollTrigger not loaded');
-                    // Fallback: show images without animation
-                    homeImageLeft.style.opacity = '1';
-                    homeImageLeft.style.transform = 'translateX(0)';
+                    // Fallback: show image without animation
                     homeImageRight.style.opacity = '1';
                     homeImageRight.style.transform = 'translateX(0)';
                 }
             } else {
-                console.error('Home images elements not found');
+                console.error('Home images section or right image not found');
             }
         });
     </script>
