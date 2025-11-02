@@ -486,7 +486,7 @@
         .roadmap-hline {
           height: 4px;
           width: 0;
-          background: #f8f5ec;
+          background: #f8f5ec !important;
           margin-left: 38px;
           margin-right: 24px;
           border-radius: 2px;
@@ -1364,7 +1364,7 @@
                             const text = item.querySelector('.roadmap-text');
 
                             gsap.set([hline, circle, text], { clearProps: 'all' });
-                            gsap.set(hline, { width: 0 });
+                            gsap.set(hline, { width: 0, background: '#f8f5ec' });
                             gsap.set(circle, { scale: 0, opacity: 0 });
                             gsap.set(text, { opacity: 0, y: 20 });
 
