@@ -549,51 +549,49 @@
             }
         }
         
-        /* Home Images Section - Slides from sides */
+        /* Home Images Section - Static display (no animation) */
         .home-images-section {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20vh 2rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin: 4rem auto;
+            padding: 2rem;
         }
         
         .home-image-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
         
         .home-image {
-            max-width: 500px;
+            max-width: 280px;
             width: 100%;
             height: auto;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(23, 92, 54, 0.15);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1);
             object-fit: cover;
             display: block;
-            opacity: 0; /* Hidden by default - will be animated by GSAP */
-            visibility: hidden; /* Completely hidden until animation */
-        }
-        
-        .home-image-left {
-            /* Initial state set by GSAP */
-        }
-        
-        .home-image-right {
-            /* Initial state set by GSAP */
+            opacity: 1;
+            visibility: visible;
         }
         
         @media (max-width: 768px) {
             .home-images-section {
-                margin: 0 auto;
-                padding: 15vh 1rem;
-                min-height: 80vh;
+                margin: 3rem auto;
+                padding: 1.5rem 1rem;
             }
             
+            .home-image-container {
+                gap: 1.5rem;
+            }
+            
+            .home-image {
+                max-width: 45%;
+            }
+        }
+        
+        @media (max-width: 480px) {
             .home-image {
                 max-width: 100%;
             }
@@ -1050,11 +1048,11 @@
             </div>
         </section>
 
-        <!-- Home Images Section - Slides in after roadmap -->
+        <!-- Home Images Section - Static display (no animation) -->
         <section class="home-images-section">
             <div class="home-image-container">
-                <!-- Left image removed - only showing right image for now -->
-                <img src="../shared/images/Home%20page%20/ChatGPT%20Image%20Nov%202,%202025,%2011_54_51%20PM.png" alt="NutriThrive Home Image" class="home-image home-image-right">
+                <img src="../shared/images/Home%20page%20/ChatGPT%20Image%20Nov%202,%202025,%2011_54_51%20PM.png" alt="NutriThrive Product 1" class="home-image">
+                <img src="../shared/images/Home%20page%20/ChatGPT%20Image%20Nov%203,%202025,%2012_31_46%20AM.png" alt="NutriThrive Product 2" class="home-image">
             </div>
         </section>
 
