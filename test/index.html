@@ -461,10 +461,15 @@
         .roadmap-milestone {
           display: flex;
           align-items: center;
-          justify-content: center;
           min-height: 80px;
           position: relative;
           margin-bottom: 3.5rem;
+        }
+        .roadmap-milestone.milestone-left {
+          justify-content: flex-start;
+        }
+        .roadmap-milestone.milestone-right {
+          justify-content: flex-end;
         }
         .roadmap-milestone:last-child {
           margin-bottom: 0;
@@ -493,10 +498,19 @@
           width: 0;
           background: #1b7f5a !important;
           background-color: #1b7f5a !important;
-          margin: 0 24px;
           border-radius: 2px;
           transition: width 0.5s cubic-bezier(.4,2,.6,1), background 0.4s, background-color 0.4s;
           filter: none;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .roadmap-hline-left {
+          transform: translateY(-50%) translateX(-100%);
+        }
+        .roadmap-hline-right {
+          transform: translateY(-50%);
         }
         .roadmap-text {
           opacity: 0.3;
@@ -505,12 +519,26 @@
           font-size: 1.15rem;
           font-weight: 600;
           color: #1b7f5a;
-          min-width: 220px;
+          min-width: 200px;
+          max-width: 300px;
           transition: opacity 0.6s cubic-bezier(.4,2,.6,1), transform 0.6s cubic-bezier(.4,2,.6,1);
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%) translateY(20px) scale(0.98);
+        }
+        .roadmap-text-left {
+          right: 50%;
+          margin-right: 24px;
+          text-align: right;
+        }
+        .roadmap-text-right {
+          left: 50%;
+          margin-left: 24px;
+          text-align: left;
         }
         .roadmap-milestone.active .roadmap-text {
           opacity: 1;
-          transform: translateY(0) scale(1);
+          transform: translateY(-50%) scale(1);
           filter: none;
         }
         .roadmap-milestone.active {
@@ -1063,35 +1091,35 @@
         <section class="roadmap-section">
             <h2 class="roadmap-title">Our Roadmap</h2>
             <div class="roadmap-timeline">
-                <div class="roadmap-milestone">
+                <div class="roadmap-milestone milestone-left">
                     <div class="roadmap-circle"></div>
-                    <div class="roadmap-hline"></div>
-                    <div class="roadmap-text">Started Q4 2024</div>
+                    <div class="roadmap-text roadmap-text-left">Started Q4 2024</div>
+                    <div class="roadmap-hline roadmap-hline-left"></div>
                 </div>
-                <div class="roadmap-milestone">
+                <div class="roadmap-milestone milestone-right">
                     <div class="roadmap-circle"></div>
-                    <div class="roadmap-hline"></div>
-                    <div class="roadmap-text">Launched First Product Q1 2025</div>
+                    <div class="roadmap-hline roadmap-hline-right"></div>
+                    <div class="roadmap-text roadmap-text-right">Launched First Product Q1 2025</div>
                 </div>
-                <div class="roadmap-milestone">
+                <div class="roadmap-milestone milestone-left">
                     <div class="roadmap-circle"></div>
-                    <div class="roadmap-hline"></div>
-                    <div class="roadmap-text">Launched Our Website Q2 2025</div>
+                    <div class="roadmap-text roadmap-text-left">Launched Our Website Q2 2025</div>
+                    <div class="roadmap-hline roadmap-hline-left"></div>
                 </div>
-                <div class="roadmap-milestone">
+                <div class="roadmap-milestone milestone-right">
                     <div class="roadmap-circle"></div>
-                    <div class="roadmap-hline"></div>
-                    <div class="roadmap-text">Launched Second Product by 1 Half of Q3 2025</div>
+                    <div class="roadmap-hline roadmap-hline-right"></div>
+                    <div class="roadmap-text roadmap-text-right">Launched Second Product by 1 Half of Q3 2025</div>
                 </div>
-                <div class="roadmap-milestone">
+                <div class="roadmap-milestone milestone-left">
                     <div class="roadmap-circle"></div>
-                    <div class="roadmap-hline"></div>
-                    <div class="roadmap-text">Launched Third Product by 1 Half of Q3 2025</div>
+                    <div class="roadmap-text roadmap-text-left">Launched Third Product by 1 Half of Q3 2025</div>
+                    <div class="roadmap-hline roadmap-hline-left"></div>
                 </div>
-                <div class="roadmap-milestone">
+                <div class="roadmap-milestone milestone-right">
                     <div class="roadmap-circle"></div>
-                    <div class="roadmap-hline"></div>
-                    <div class="roadmap-text">Go to Major Part of Australia Q4 2025</div>
+                    <div class="roadmap-hline roadmap-hline-right"></div>
+                    <div class="roadmap-text roadmap-text-right">Go to Major Part of Australia Q4 2025</div>
                 </div>
             </div>
         </section>
