@@ -448,15 +448,18 @@
         }
         .roadmap-timeline {
           position: relative;
-          margin-left: 60px;
-          padding-left: 0;
+          margin: 0 auto;
+          padding: 0;
+          max-width: 800px;
         }
         .roadmap-vline-grow {
-          left: 0;
+          left: 50%;
+          transform: translateX(-50%);
         }
         .roadmap-milestone {
           display: flex;
           align-items: center;
+          justify-content: center;
           min-height: 80px;
           position: relative;
           margin-bottom: 3.5rem;
@@ -471,9 +474,9 @@
           border: 5px solid #1b7f5a;
           border-radius: 50%;
           position: absolute;
-          left: -19px;
+          left: 50%;
+          transform: translate(-50%, -50%);
           top: 50%;
-          transform: translateY(-50%);
           z-index: 2;
           box-shadow: none;
           filter: none;
@@ -488,8 +491,7 @@
           width: 0;
           background: #1b7f5a !important;
           background-color: #1b7f5a !important;
-          margin-left: 38px;
-          margin-right: 24px;
+          margin: 0 24px;
           border-radius: 2px;
           transition: width 0.5s cubic-bezier(.4,2,.6,1), background 0.4s, background-color 0.4s;
           filter: none;
@@ -523,8 +525,9 @@
             letter-spacing: -1px;
           }
           .roadmap-timeline {
-            margin-left: 18px;
-            padding-left: 0;
+            margin: 0 auto;
+            padding: 0;
+            max-width: 100%;
           }
           .roadmap-milestone {
             flex-direction: column;
