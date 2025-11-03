@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (text === 'benefits' || href.includes('/benefits/')) {
                     a.remove();
                 }
+                if (href.includes('/usage-guide/how-to-use-moringa.html')) {
+                    a.textContent = 'Usage & Benefits';
+                }
             });
         });
     } catch(e) { console.warn('Nav cleanup error:', e); }
