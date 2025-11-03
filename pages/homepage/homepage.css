@@ -99,16 +99,15 @@ header {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem; /* match other pages */
+    gap: 2rem;
 }
 
 .nav-links a {
-    font-size: 1.1rem; /* match other pages */
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--primary);
     text-decoration: none;
     transition: color 0.2s ease;
-    letter-spacing: 0.1px;
 }
 
 .nav-links a.active,
