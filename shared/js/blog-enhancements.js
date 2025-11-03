@@ -246,6 +246,26 @@
       });
     } catch(e){}
 
+    // Ensure footer Quick Links label is normalized
+    try {
+      qsa('.footer-section').forEach(section => {
+        const h = section.querySelector('h3, h2');
+        if (!h) return;
+        if ((h.textContent || '').trim().toLowerCase() === 'quick links') {
+          qsa('a', section).forEach(a => {
+            const href = a.getAttribute('href') || '';
+            const label = (a.textContent || '').trim().toLowerCase();
+            if (href.includes('/usage-guide/how-to-use-moringa.html') || label === 'usage guide') {
+              a.textContent = 'Usage & Benefits';
+            }
+            if (label === 'benefits' || href.includes('/benefits/')) {
+              a.remove();
+            }
+          });
+        }
+      });
+    } catch(e){}
+
     // Remove any Benefits anchors in nav/footer outright
     try {
       const containers = [document.querySelector('.nav-links'), document.querySelector('.footer-links')];
