@@ -61,12 +61,13 @@
         .blog-post-content h2 { margin: 2.2rem 0 0.8rem 0; font-weight: 800; letter-spacing: -0.2px; }
         .blog-post-content h3 { margin: 1.6rem 0 0.6rem 0; font-weight: 700; }
 
-        /* Strip busy boxes/cards/shadows from inline-styled blocks */
+        /* Strip busy boxes/cards/shadows but ensure text is readable */
         .blog-post-content div[style*="background: linear-gradient"],
         .blog-post-content div[style*="background: #f6fbf8"],
         .blog-post-content div[style*="background: #fff3e0"],
         .blog-post-content div[style*="background: #e8f5e9"],
         .blog-post-content div[style*="background: rgba("],
+        .blog-post-content div[style*="background: #f8f9fa"],
         .blog-post-content div[style*="box-shadow"],
         .blog-post-content div[style*="border-left"],
         .blog-post-content div[style*="border: 1px"],
@@ -78,6 +79,35 @@
             padding: 0 !important;
             border-radius: 0 !important;
         }
+        
+        /* Force all text to be dark and readable */
+        .blog-post-content div[style*="color: white"],
+        .blog-post-content div[style*="color: #fff"],
+        .blog-post-content div[style*="color: rgba(255"],
+        .blog-post-content div[style*="background: linear-gradient"] *,
+        .blog-post-content div[style*="background: rgba("] *,
+        .blog-post-content div[style*="background: #"] * {
+            color: #222 !important;
+        }
+        
+        /* Ensure headings in stripped sections are readable */
+        .blog-post-content h2[style*="color: white"],
+        .blog-post-content h2[style*="color: #fff"],
+        .blog-post-content h3[style*="color: white"],
+        .blog-post-content h3[style*="color: #fff"] {
+            color: #2d5a3d !important;
+        }
+        
+        /* Table headers readable */
+        table.blog-table thead th {
+            color: #222 !important;
+            font-weight: 700;
+        }
+        
+        /* Ensure all paragraphs and text are dark */
+        .blog-post-content p { color: #222 !important; }
+        .blog-post-content ul { color: #222 !important; }
+        .blog-post-content li { color: #222 !important; }
 
         /* Tables: flat, clean, more breathing room */
         table.blog-table { width: 100%; border-collapse: collapse; background: transparent; box-shadow: none; }
@@ -201,7 +231,7 @@
               <td style="padding: 1rem; border-bottom: 1px solid #eee;">$20</td>
               <td style="padding: 1rem; border-bottom: 1px solid #eee;">Anti-inflammatory support</td>
             </tr>
-            <tr style="background: #f0f8f0;">
+            <tr style="background: transparent; border-top: 2px solid #eee;">
               <td style="padding: 1rem; font-weight: 800; color: #2d5a3d; font-size: 1.1rem;">TOTAL MONTHLY COST</td>
               <td style="padding: 1rem; font-weight: 800; color: #d32f2f; font-size: 1.1rem;">$200</td>
               <td style="padding: 1rem;"></td>
@@ -225,34 +255,34 @@
         <p style="font-weight: 600; margin-top: 1.5rem; color: #e65100;">The truth? Most supplements are overpriced single-nutrient pills when nature already provides complete nutrition.</p>
       </div>
 
-      <div style="background: linear-gradient(135deg, #2d5a3d, #1e4029); color: white; padding: 2.5rem; border-radius: 12px; margin: 2rem 0; text-align: center;">
-        <h2 style="color: white; margin-top: 0; font-size: 2rem;">🌿 The $10 Moringa Solution</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem;">One 100g bag of moringa powder ($10) replaces nearly my entire stack:</p>
+      <div style="background: transparent; color: #222; padding: 0; border-radius: 0; margin: 2rem 0; text-align: left;">
+        <h2 style="color: #2d5a3d; margin-top: 0; font-size: 2rem;">🌿 The $10 Moringa Solution</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #222;">One 100g bag of moringa powder ($10) replaces nearly my entire stack:</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-          <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 8px; backdrop-filter: blur(10px);">
-            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">25-30g</div>
-            <div style="font-weight: 600;">Complete Protein</div>
-            <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">All 9 essential amino acids</div>
+          <div style="background: transparent; padding: 0; border-radius: 0;">
+            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: #2d5a3d;">25-30g</div>
+            <div style="font-weight: 600; color: #222;">Complete Protein</div>
+            <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #555;">All 9 essential amino acids</div>
           </div>
-          <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 8px; backdrop-filter: blur(10px);">
-            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">220mg</div>
-            <div style="font-weight: 600;">Vitamin C</div>
-            <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">7x more than oranges</div>
+          <div style="background: transparent; padding: 0; border-radius: 0;">
+            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: #2d5a3d;">220mg</div>
+            <div style="font-weight: 600; color: #222;">Vitamin C</div>
+            <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #555;">7x more than oranges</div>
           </div>
-          <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 8px; backdrop-filter: blur(10px);">
-            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">28mg</div>
-            <div style="font-weight: 600;">Iron</div>
-            <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">25x more than spinach</div>
+          <div style="background: transparent; padding: 0; border-radius: 0;">
+            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: #2d5a3d;">28mg</div>
+            <div style="font-weight: 600; color: #222;">Iron</div>
+            <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #555;">25x more than spinach</div>
           </div>
-          <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 8px; backdrop-filter: blur(10px);">
-            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">2,003mg</div>
-            <div style="font-weight: 600;">Calcium</div>
-            <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">4x more than milk</div>
+          <div style="background: transparent; padding: 0; border-radius: 0;">
+            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: #2d5a3d;">2,003mg</div>
+            <div style="font-weight: 600; color: #222;">Calcium</div>
+            <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #555;">4x more than milk</div>
           </div>
         </div>
         
-        <p style="font-size: 1.1rem; margin-top: 2rem; font-weight: 600;">Plus 46 antioxidants, B-vitamins, vitamin A, E, potassium, magnesium, and more - all in natural, highly bioavailable form.</p>
+        <p style="font-size: 1.1rem; margin-top: 2rem; font-weight: 600; color: #222;">Plus 46 antioxidants, B-vitamins, vitamin A, E, potassium, magnesium, and more - all in natural, highly bioavailable form.</p>
       </div>
 
       <h2 style="color: #2d5a3d; margin-top: 2.5rem;">📊 Side-by-Side Comparison: What I Actually Saved</h2>
@@ -297,10 +327,10 @@
             <td style="padding: 1rem; border-bottom: 1px solid #eee;">✅ 2,003mg calcium per 100g</td>
             <td style="padding: 1rem; border-bottom: 1px solid #eee; color: #2d5a3d; font-weight: 600;">-$20</td>
           </tr>
-          <tr style="background: #e8f5e9;">
+          <tr style="background: transparent; border-top: 2px solid #eee;">
             <td style="padding: 1rem; font-weight: 800; color: #2d5a3d; font-size: 1.1rem;">TOTAL MONTHLY</td>
             <td style="padding: 1rem; font-weight: 800; color: #d32f2f;">$200</td>
-            <td style="padding: 1rem; font-weight: 600;">Moringa: $10</td>
+            <td style="padding: 1rem; font-weight: 600; color: #222;">Moringa: $10</td>
             <td style="padding: 1rem; font-weight: 800; color: #2d5a3d; font-size: 1.2rem;">-$190/month</td>
           </tr>
         </tbody>
@@ -375,12 +405,12 @@
         <p>Keep only supplements moringa doesn't cover (vitamin D in winter, omega-3 if you don't eat fish, specific medical supplements your doctor prescribed).</p>
       </div>
 
-      <div style="background: linear-gradient(135deg, #2d5a3d, #1e4029); color: white; padding: 2.5rem; border-radius: 12px; margin: 2.5rem 0; text-align: center;">
-        <h2 style="color: white; margin-top: 0; font-size: 1.8rem;">Ready to Save $190/Month?</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Start with one $10 bag and see if it replaces your stack:</p>
+      <div style="background: transparent; color: #222; padding: 0; border-radius: 0; margin: 2.5rem 0; text-align: center;">
+        <h2 style="color: #2d5a3d; margin-top: 0; font-size: 1.8rem;">Ready to Save $190/Month?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #222;">Start with one $10 bag and see if it replaces your stack:</p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="../products/product-detail.html" style="background: white; color: #2d5a3d; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: inline-block;">Buy Moringa ($10 / 100g)</a>
-          <a href="../usage-guide/how-to-use-moringa.html" style="background: transparent; color: white; border: 2px solid white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: inline-block;">See Usage Guide</a>
+          <a href="../products/product-detail.html" style="background: #2d5a3d; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: inline-block;">Buy Moringa ($10 / 100g)</a>
+          <a href="../usage-guide/how-to-use-moringa.html" style="background: transparent; color: #2d5a3d; border: 2px solid #2d5a3d; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: inline-block;">See Usage Guide</a>
         </div>
       </div>
 
@@ -412,11 +442,11 @@
       <p style="font-weight: 600; color: #2d5a3d; font-size: 1.1rem; margin-top: 1.5rem;">The supplement industry makes money by keeping you confused and buying multiple products. Moringa is nature's complete nutrition - simple, affordable, and effective.</p>
       <p style="margin-top: 1.5rem;">Try it for one month. If it doesn't work for you, you're out $10. If it does, you're saving hundreds per year.</p>
 
-      <div style="background: linear-gradient(135deg, #2d5a3d, #1e4029); color: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0; text-align: center;">
-        <h2 style="color: white; margin-top: 0;">Start Your Money-Saving Journey Today</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">One $10 bag. See if it replaces your stack.</p>
-        <a href="../products/product-detail.html" style="background: white; color: #2d5a3d; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.2rem; display: inline-block; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">Buy Moringa Powder - $10</a>
-        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">Free shipping on orders $30+ • 30-day money-back guarantee</p>
+      <div style="background: transparent; color: #222; padding: 0; border-radius: 0; margin: 3rem 0; text-align: center;">
+        <h2 style="color: #2d5a3d; margin-top: 0;">Start Your Money-Saving Journey Today</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #222;">One $10 bag. See if it replaces your stack.</p>
+        <a href="../products/product-detail.html" style="background: #2d5a3d; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.2rem; display: inline-block;">Buy Moringa Powder - $10</a>
+        <p style="font-size: 0.9rem; margin-top: 1rem; color: #666;">Free shipping on orders $30+ • 30-day money-back guarantee</p>
       </div>
 
       <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee; color: #666; font-size: 0.95rem;"><em>This article is based on personal experience and research. Individual results may vary. Always consult healthcare professionals before making significant changes to your supplement routine, especially if you have medical conditions or take prescription medications.</em></p>
