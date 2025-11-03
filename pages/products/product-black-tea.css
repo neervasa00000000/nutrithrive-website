@@ -2119,7 +2119,6 @@ body.blog-moringa-tree .btn-secondary:hover {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    position: relative; /* keep the section height fixed while showing overlay */
 }
 
 .accordion-header {
@@ -2162,20 +2161,12 @@ body.blog-moringa-tree .btn-secondary:hover {
 
 .accordion-content {
     display: none;
-    padding: 1rem;
-    background: #fffdfa;
-    border: 1px solid rgba(236, 231, 219, 0.8);
+    padding: 1.5rem 0;
+    background: transparent;
+    border: none;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    position: absolute; /* render on top, do not push layout */
-    left: 0;
-    top: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    z-index: 10;
-    max-height: 260px; /* allow scroll without growing page */
-    overflow: auto;
 }
 
 .accordion-content ul {
