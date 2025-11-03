@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const text = (a.textContent || '').trim().toLowerCase();
                 const href = a.getAttribute('href') || '';
                 if (text === 'benefits' || href.includes('/benefits/')) {
-                    a.parentElement ? a.parentElement.remove() : a.remove();
+                    a.remove();
                 }
             });
         });
