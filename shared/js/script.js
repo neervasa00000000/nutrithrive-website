@@ -4,17 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Remove any 'Benefits' nav links globally (page was removed)
     try {
-        const nav = document.querySelector('.nav-links');
-        if (nav) {
+        const containers = [document.querySelector('.nav-links'), ...Array.from(document.querySelectorAll('.footer-links'))];
+        containers.forEach(nav => {
+            if (!nav) return;
             const links = Array.from(nav.querySelectorAll('a'));
             links.forEach(a => {
                 const text = (a.textContent || '').trim().toLowerCase();
                 const href = a.getAttribute('href') || '';
                 if (text === 'benefits' || href.includes('/benefits/')) {
-                    a.remove();
+                    a.parentElement ? a.parentElement.remove() : a.remove();
                 }
             });
-        }
+        });
     } catch(e) { console.warn('Nav cleanup error:', e); }
 
     // Mobile menu toggle
