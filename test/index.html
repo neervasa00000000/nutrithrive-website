@@ -717,6 +717,102 @@
             height: 100vh;
         }
 
+        /* Why Us Elevator Animation Styles */
+        .why-us-space {
+            height: 100vh;
+        }
+
+        .elevator {
+            margin: 5em 0;
+            color: #1b7f5a;
+            font-family: "Inter", sans-serif;
+            font-size: 3em;
+            font-weight: 900;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 10px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 5em auto;
+        }
+
+        .elevatorL {
+            text-align: right;
+            left: 5em;
+        }
+
+        .elevatorR {
+            left: 10em;
+        }
+
+        @keyframes repeat {
+            100% {
+                filter: drop-shadow(0 1em 0 #1b7f5a) drop-shadow(0 1em 0 #1b7f5a) drop-shadow(0 1em 0 #1b7f5a) drop-shadow(0 1em 0 #1b7f5a) drop-shadow(0 1em 0 #1b7f5a) drop-shadow(0 1em 0 #1b7f5a);
+            }
+        }
+
+        .elevator-transition {
+            animation: repeat 1s forwards;
+            animation-delay: 1s;
+        }
+
+        .elevatorL-transition {
+            animation: moveLeft .7s forwards;
+            animation-play-state: paused;
+            animation-delay: calc(var(--scroll) * -1s);
+        }
+
+        .elevatorR-transition {
+            animation: moveRight .7s forwards;
+            animation-play-state: paused;
+            animation-delay: calc(var(--scroll) * -1s);
+        }
+
+        @keyframes moveLeft {
+            0% {
+                transform: translateX(0px) rotate(0);
+            }
+            100% {
+                transform: translateX(-10em);
+            }
+        }
+
+        @keyframes moveRight {
+            0% {
+                transform: translateX(0px) rotate(0);
+            }
+            100% {
+                transform: translateX(10em);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .elevator {
+                font-size: 2em;
+                grid-gap: 5px;
+            }
+
+            .elevatorL {
+                left: 2em;
+            }
+
+            .elevatorR {
+                left: 4em;
+            }
+
+            @keyframes moveLeft {
+                100% {
+                    transform: translateX(-5em);
+                }
+            }
+
+            @keyframes moveRight {
+                100% {
+                    transform: translateX(5em);
+                }
+            }
+        }
+
         @media (max-width: 768px) {
             .c-card {
                 grid-template-columns: 1fr;
@@ -1299,6 +1395,13 @@
             </div>
             <div class="spacer"></div>
         </section>
+        </div>
+
+        <!-- Why Us Section with Elevator Animation -->
+        <div class="why-us-space"></div>
+        <div class="elevator">
+            <div class="elevatorL">WHY</div>
+            <div class="elevatorR">US?</div>
         </div>
 
     </main>
