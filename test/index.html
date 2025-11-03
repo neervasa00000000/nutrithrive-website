@@ -1745,6 +1745,37 @@
                     });
                 });
             }
+
+            // Why Us Elevator Animation
+            window.addEventListener('scroll', () => {
+                document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+            }, false);
+
+            const elevator = document.querySelector('.elevator');
+            const elevatorL = document.querySelector('.elevatorL');
+            const elevatorR = document.querySelector('.elevatorR');
+
+            if (elevator && elevatorL && elevatorR) {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            elevator.classList.add('elevator-transition');
+                            elevatorL.classList.add('elevatorL-transition');
+                            elevatorR.classList.add('elevatorR-transition');
+                            return;
+                        }
+                        elevator.classList.remove('elevator-transition');
+                        elevatorL.classList.remove('elevatorL-transition');
+                        elevatorR.classList.remove('elevatorR-transition');
+                    });
+                }, {
+                    threshold: 0.5
+                });
+
+                observer.observe(elevator);
+                observer.observe(elevatorL);
+                observer.observe(elevatorR);
+            }
         });
     </script>
 </body>
