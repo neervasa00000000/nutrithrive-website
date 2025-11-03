@@ -643,7 +643,11 @@
             height: 90vh;
             min-height: 600px;
             background-color: var(--card);
-            border: 1px solid var(--primary);
+            border: none;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(23, 92, 54, 0.08);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .c-card__description {
@@ -652,6 +656,7 @@
             justify-content: center;
             padding: 40px;
             color: var(--text);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .c-card__tagline {
@@ -687,16 +692,19 @@
             width: max-content;
             padding: 12px 24px;
             border: 2px solid var(--primary);
+            border-radius: 12px;
             color: var(--primary);
             font-size: 16px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .c-card__cta a:hover {
             background: var(--primary);
             color: var(--bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(23, 92, 54, 0.2);
         }
 
         .c-card__figure {
@@ -710,6 +718,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .c-card:hover .c-card__figure img {
+            transform: scale(1.05);
         }
 
         .spacer {
@@ -1626,6 +1639,7 @@
                     const scale = index === lastCardIndex ? 1 : 0.5;
                     const scaleDown = gsap.to(card, {
                         scale: scale,
+                        ease: "power2.out"
                     });
 
                     ScrollTrigger.create({
@@ -1634,8 +1648,8 @@
                         end: () => lastCardST.start,
                         pin: true,
                         pinSpacing: false,
-                        scrub: 0.5,
-                        ease: "none",
+                        scrub: 1,
+                        ease: "power1.inOut",
                         animation: scaleDown,
                         toggleActions: "restart none none reverse"
                     });
