@@ -242,6 +242,21 @@
         }
       });
     } catch(e){}
+
+    // Remove any Benefits anchors in nav/footer outright
+    try {
+      const containers = [document.querySelector('.nav-links'), document.querySelector('.footer-links')];
+      containers.forEach(c => {
+        if (!c) return;
+        Array.from(c.querySelectorAll('a')).forEach(a => {
+          const txt = (a.textContent || '').trim().toLowerCase();
+          const href = a.getAttribute('href') || '';
+          if (txt === 'benefits' || href.includes('/benefits/')) {
+            a.parentElement ? a.parentElement.remove() : a.remove();
+          }
+        });
+      });
+    } catch(e){}
   });
 })();
 
