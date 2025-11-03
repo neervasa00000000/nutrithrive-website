@@ -210,6 +210,15 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
+    // Redirect if on the deprecated Usage Guide blog URL
+    try {
+      const oldPath = '/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html';
+      const newPath = '/pages/usage-guide/how-to-use-moringa.html';
+      if (location.pathname.endsWith(oldPath)) {
+        location.replace(newPath);
+        return;
+      }
+    } catch(e) {}
     try { createShareButtons(); } catch(e){}
     try { insertCTAs(); } catch(e){}
     try { relatedLinks(); } catch(e){}
@@ -224,6 +233,9 @@
       const anchors = qsa('a[href]');
       anchors.forEach(a => {
         const href = a.getAttribute('href') || '';
+        if (href.includes('/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html') || href.includes('usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html')) {
+          a.setAttribute('href','../usage-guide/how-to-use-moringa.html');
+        }
         if (href.includes('benefits/moringa-benefits.html')) {
           // compute relative path to usage guide
           let newHref = href.includes('/pages/') ? href.replace('/pages/benefits/moringa-benefits.html','/pages/usage-guide/how-to-use-moringa.html') : href.replace('benefits/moringa-benefits.html','usage-guide/how-to-use-moringa.html').replace('../usage-guide/','../usage-guide/');

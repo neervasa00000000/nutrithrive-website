@@ -2,6 +2,16 @@ console.log('[NutriThrive] script.js loaded');
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Hard redirect if user lands on deprecated Usage Guide blog URL
+    try {
+        const oldPath = '/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html';
+        const newPath = '/pages/usage-guide/how-to-use-moringa.html';
+        if (location.pathname.endsWith(oldPath)) {
+            location.replace(newPath);
+            return; // stop further scripts on this page
+        }
+    } catch(e) {}
+
     // Remove any 'Benefits' nav links globally (page was removed)
     try {
         const containers = [document.querySelector('.nav-links'), ...Array.from(document.querySelectorAll('.footer-links'))];
@@ -11,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
             links.forEach(a => {
                 const text = (a.textContent || '').trim().toLowerCase();
                 const href = a.getAttribute('href') || '';
+                // Normalize any links that still point to the old usage guide blog URL
+                if (href.includes('/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html') || href.includes('usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html')) {
+                    const absolute = href.startsWith('http') ? href : new URL(href, location.origin).pathname;
+                    const isAbsoluteOld = absolute.endsWith('/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html');
+                    if (isAbsoluteOld) {
+                        a.setAttribute('href', '../usage-guide/how-to-use-moringa.html');
+                    }
+                }
                 if (text === 'benefits' || href.includes('/benefits/')) {
                     a.remove();
                 }
