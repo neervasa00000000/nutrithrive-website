@@ -732,22 +732,24 @@
             font-family: "Inter", sans-serif;
             font-size: 3em;
             font-weight: 900;
-            display: grid;
-            grid-template-columns: auto auto;
-            grid-gap: 10px;
+            display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 10px;
             max-width: 1200px;
             margin: 8em auto 8em auto;
             padding: 4rem 0;
+            position: relative;
         }
 
         .elevatorL {
             text-align: right;
-            left: 5em;
+            position: relative;
         }
 
         .elevatorR {
-            left: 10em;
+            position: relative;
+            text-align: left;
         }
 
         @keyframes repeat {
