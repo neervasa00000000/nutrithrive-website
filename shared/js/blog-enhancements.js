@@ -218,6 +218,30 @@
     try { stickyShareMobile(); } catch(e){}
     try { injectJSONLD(); } catch(e){}
     try { breadcrumbs(); } catch(e){}
+
+    // Globally retarget/remove any lingering links to the old benefits page
+    try {
+      const anchors = qsa('a[href]');
+      anchors.forEach(a => {
+        const href = a.getAttribute('href') || '';
+        if (href.includes('benefits/moringa-benefits.html')) {
+          // compute relative path to usage guide
+          let newHref = href.includes('/pages/') ? href.replace('/pages/benefits/moringa-benefits.html','/pages/usage-guide/how-to-use-moringa.html') : href.replace('benefits/moringa-benefits.html','usage-guide/how-to-use-moringa.html').replace('../usage-guide/','../usage-guide/');
+          // normalize common relative patterns
+          newHref = newHref
+            .replace('../benefits/moringa-benefits.html','../usage-guide/how-to-use-moringa.html')
+            .replace('../pages/benefits/moringa-benefits.html','../pages/usage-guide/how-to-use-moringa.html');
+          a.setAttribute('href', newHref);
+          if (/benefits/i.test(a.textContent)) {
+            a.textContent = 'Usage & Benefits';
+          }
+        }
+        if (/(^|\/)moringa-benefits\.html$/.test(href)) {
+          a.setAttribute('href','../usage-guide/how-to-use-moringa.html');
+          if (/benefits/i.test(a.textContent)) a.textContent = 'Usage & Benefits';
+        }
+      });
+    } catch(e){}
   });
 })();
 
