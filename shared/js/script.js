@@ -19,6 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+
+        // Update any footer section titled "Quick Links"
+        Array.from(document.querySelectorAll('.footer-section')).forEach(section => {
+            const h = section.querySelector('h3, h2');
+            if (!h) return;
+            if ((h.textContent || '').trim().toLowerCase() === 'quick links') {
+                Array.from(section.querySelectorAll('a')).forEach(a => {
+                    const href = a.getAttribute('href') || '';
+                    const label = (a.textContent || '').trim().toLowerCase();
+                    if (href.includes('/usage-guide/how-to-use-moringa.html') || label === 'usage guide') {
+                        a.textContent = 'Usage & Benefits';
+                    }
+                    if (label === 'benefits' || href.includes('/benefits/')) {
+                        a.remove();
+                    }
+                });
+            }
+        });
     } catch(e) { console.warn('Nav cleanup error:', e); }
 
     // Mobile menu toggle
