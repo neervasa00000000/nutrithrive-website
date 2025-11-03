@@ -2,6 +2,21 @@ console.log('[NutriThrive] script.js loaded');
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Remove any 'Benefits' nav links globally (page was removed)
+    try {
+        const nav = document.querySelector('.nav-links');
+        if (nav) {
+            const links = Array.from(nav.querySelectorAll('a'));
+            links.forEach(a => {
+                const text = (a.textContent || '').trim().toLowerCase();
+                const href = a.getAttribute('href') || '';
+                if (text === 'benefits' || href.includes('/benefits/')) {
+                    a.remove();
+                }
+            });
+        }
+    } catch(e) { console.warn('Nav cleanup error:', e); }
+
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
