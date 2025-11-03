@@ -51,14 +51,50 @@
     <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
     <style>
         * { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.7; color: #222; }
+
+        /* Minimal, airy reading layout */
+        .blog-post-header { padding: 2rem 0 1rem 0; border: 0; }
+        .blog-post-header h1 { letter-spacing: -0.3px; }
+        .blog-post-content { max-width: 68ch; margin: 0 auto; padding: 0 1rem; }
+        .blog-post-content > * { margin: 1.2rem 0 1.6rem 0; }
+        .blog-post-content h2 { margin: 2.2rem 0 0.8rem 0; font-weight: 800; letter-spacing: -0.2px; }
+        .blog-post-content h3 { margin: 1.6rem 0 0.6rem 0; font-weight: 700; }
+
+        /* Strip busy boxes/cards/shadows from inline-styled blocks */
+        .blog-post-content div[style*="background: linear-gradient"],
+        .blog-post-content div[style*="background: #f6fbf8"],
+        .blog-post-content div[style*="background: #fff3e0"],
+        .blog-post-content div[style*="background: #e8f5e9"],
+        .blog-post-content div[style*="background: rgba("],
+        .blog-post-content div[style*="box-shadow"],
+        .blog-post-content div[style*="border-left"],
+        .blog-post-content div[style*="border: 1px"],
+        .blog-post-content div[style*="border: 2px"],
+        .blog-post-content div[style*="border-radius"] {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        /* Tables: flat, clean, more breathing room */
+        table.blog-table { width: 100%; border-collapse: collapse; background: transparent; box-shadow: none; }
+        table.blog-table thead { background: transparent; color: inherit; border-bottom: 2px solid #eee; }
+        table.blog-table th { padding: 0.75rem 0.5rem; text-align: left; font-weight: 700; }
+        table.blog-table td { padding: 0.7rem 0.5rem; border-bottom: 1px solid #f0f0f0; }
+
+        /* CTA blocks: keep only spacing */
+        .blog-post-content a.btn, .blog-post-content a[style*="padding:"] {
+            box-shadow: none !important;
+        }
 
         /* Laptop/Desktop: use full page width with generous readable max */
         @media screen and (min-width: 1024px) {
-            main.blog-post { max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 2rem; }
-            .blog-post-content { max-width: 1400px; width: 100%; padding: 0 1rem; }
-            .blog-post-header { max-width: 1400px; margin: 0 auto; padding: 1.5rem 1rem; }
-            table.blog-table { width: 100%; }
+            main.blog-post { max-width: 1200px; width: 100%; margin: 2rem auto; padding: 0 2rem; }
+            .blog-post-content { max-width: 900px; width: 100%; }
+            .blog-post-header { max-width: 900px; margin: 0 auto; }
         }
 
         /* Mobile: keep it simple */
@@ -67,7 +103,7 @@
             header { padding: 1rem !important; }
             .nav-links { display: none !important; }
             .blog-hero h1, .blog-post-header h1 { font-size: 1.75rem !important; line-height: 1.3 !important; }
-            .blog-post-content { padding: 1rem !important; }
+            .blog-post-content { padding: 1rem !important; max-width: 100% !important; }
             .blog-post-content p { font-size: 1rem !important; }
             table { display: block !important; width: 100% !important; }
             table thead { display: none !important; }
