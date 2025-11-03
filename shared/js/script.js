@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (text === 'benefits' || href.includes('/benefits/')) {
                     a.remove();
                 }
-                if (href.includes('/usage-guide/how-to-use-moringa.html')) {
+                if (href.includes('/usage-guide/how-to-use-moringa.html') || text === 'usage guide') {
                     a.textContent = 'Usage & Benefits';
                 }
             });

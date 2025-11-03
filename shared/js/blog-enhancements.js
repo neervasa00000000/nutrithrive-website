@@ -240,7 +240,7 @@
           a.setAttribute('href','../usage-guide/how-to-use-moringa.html');
           if (/benefits/i.test(a.textContent)) a.textContent = 'Usage & Benefits';
         }
-        if (href.includes('/usage-guide/how-to-use-moringa.html')) {
+        if (href.includes('/usage-guide/how-to-use-moringa.html') || /usage guide/i.test(a.textContent)) {
           a.textContent = 'Usage & Benefits';
         }
       });
