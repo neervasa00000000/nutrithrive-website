@@ -92,10 +92,93 @@
         .blog-post-content h2 { margin: 2.2rem 0 0.8rem 0; font-weight: 800; letter-spacing: -0.2px; color: #2d5a3d; }
         .blog-post-content h3 { margin: 1.6rem 0 0.6rem 0; font-weight: 700; color: #2d5a3d; }
         .quick-answer-box { background: #f6fbf8; padding: 1.5rem; border-left: 4px solid #2d5a3d; margin: 2rem 0; border-radius: 8px; }
-        .recipe-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .recipe-card h4 { color: #2d5a3d; margin-top: 0; font-weight: 700; }
-        .recipe-card ul { margin: 1rem 0; padding-left: 1.5rem; }
-        .recipe-card li { margin: 0.5rem 0; line-height: 1.8; }
+        .recipe-card { 
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); 
+            border: none;
+            border-radius: 16px; 
+            padding: 2rem; 
+            margin: 2rem 0; 
+            box-shadow: 0 4px 20px rgba(45, 90, 61, 0.08), 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .recipe-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #2d5a3d 0%, #4ecdc4 100%);
+        }
+        .recipe-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(45, 90, 61, 0.12), 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .recipe-card h4 { 
+            color: #2d5a3d; 
+            margin-top: 0; 
+            font-weight: 800; 
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+        }
+        .recipe-card > p:first-of-type {
+            background: #e8f5e9;
+            color: #1b5e20;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin: 0 0 1.5rem 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .recipe-card ul { 
+            margin: 1.25rem 0; 
+            padding-left: 0;
+            list-style: none;
+        }
+        .recipe-card li { 
+            margin: 0.75rem 0; 
+            line-height: 1.8;
+            padding-left: 1.75rem;
+            position: relative;
+            color: #333;
+        }
+        .recipe-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2d5a3d;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .recipe-card strong {
+            color: #2d5a3d;
+            font-weight: 700;
+        }
+        .recipe-nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.25rem;
+            background: #f6fbf8;
+            border-radius: 10px;
+        }
+        .nutrition-item {
+            text-align: center;
+        }
+        .nutrition-item strong {
+            display: block;
+            color: #2d5a3d;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        .nutrition-item span {
+            color: #666;
+            font-size: 0.9rem;
+        }
         .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
         .comparison-table th { background: #2d5a3d; color: white; padding: 1rem; text-align: left; font-weight: 700; }
         .comparison-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #eee; }
@@ -118,6 +201,11 @@
             .blog-post-content { padding: 1rem !important; max-width: 100% !important; }
             .recipe-card { padding: 1rem !important; }
             .cta-box { padding: 1.5rem 1rem !important; }
+            .recipe-nutrition-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem !important;
+                padding: 1rem !important;
+            }
             .comparison-table { display: block; overflow-x: auto; }
             .comparison-table thead { display: none; }
             .comparison-table tr { display: block; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; }
@@ -220,8 +308,24 @@
           <li>2 tbsp protein powder (optional)</li>
         </ul>
         <p><strong>Instructions:</strong> Blend dates, almonds, moringa, and lemon zest in food processor. Form into balls. Refrigerate for 30 minutes.</p>
-        <p><strong>Nutrition:</strong> 18g protein, 145 calories per 3 balls</p>
-        <p><strong>Cost:</strong> $1.20 per serve (vs $4.50 supermarket)</p>
+        <div class="recipe-nutrition-grid">
+          <div class="nutrition-item">
+            <strong>18g</strong>
+            <span>Protein</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>145</strong>
+            <span>Calories</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>$1.20</strong>
+            <span>Per serve</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>73%</strong>
+            <span>Savings</span>
+          </div>
+        </div>
       </div>
 
       <div class="recipe-card">
@@ -236,8 +340,20 @@
           <li>1 tsp turmeric</li>
         </ul>
         <p><strong>Instructions:</strong> Blend all ingredients. Form into small bites. Store in airtight container.</p>
-        <p><strong>Nutrition:</strong> 16g protein, 138 calories per 4 bites</p>
-        <p><strong>Cost:</strong> $1.50 per serve</p>
+        <div class="recipe-nutrition-grid">
+          <div class="nutrition-item">
+            <strong>16g</strong>
+            <span>Protein</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>138</strong>
+            <span>Calories</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>$1.50</strong>
+            <span>Per serve</span>
+          </div>
+        </div>
       </div>
 
       <div class="recipe-card">
@@ -251,8 +367,20 @@
           <li>2 tbsp chia seeds</li>
         </ul>
         <p><strong>Instructions:</strong> Blend all ingredients. Form into balls. Refrigerate.</p>
-        <p><strong>Nutrition:</strong> 14g protein, 142 calories per 3 balls</p>
-        <p><strong>Cost:</strong> $1.10 per serve</p>
+        <div class="recipe-nutrition-grid">
+          <div class="nutrition-item">
+            <strong>14g</strong>
+            <span>Protein</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>142</strong>
+            <span>Calories</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>$1.10</strong>
+            <span>Per serve</span>
+          </div>
+        </div>
       </div>
 
       <div class="recipe-card">
@@ -267,8 +395,20 @@
           <li>2 tbsp protein powder</li>
         </ul>
         <p><strong>Instructions:</strong> Blend all ingredients. Form into balls.</p>
-        <p><strong>Nutrition:</strong> 20g protein, 148 calories per 3 balls</p>
-        <p><strong>Cost:</strong> $1.30 per serve</p>
+        <div class="recipe-nutrition-grid">
+          <div class="nutrition-item">
+            <strong>20g</strong>
+            <span>Protein</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>148</strong>
+            <span>Calories</span>
+          </div>
+          <div class="nutrition-item">
+            <strong>$1.30</strong>
+            <span>Per serve</span>
+          </div>
+        </div>
       </div>
 
       <div class="recipe-card">
