@@ -174,6 +174,13 @@
         .cta-box { background: linear-gradient(135deg, #2d5a3d 0%, #4ecdc4 100%); color: white; padding: 2rem; border-radius: 12px; margin: 3rem 0; text-align: center; }
         .cta-box a { background: white; color: #2d5a3d; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: inline-block; margin-top: 1rem; }
         .stats-box { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .image-gallery { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; justify-content: center; }
+        .image-gallery a { display: inline-block; }
+        .image-gallery img { width: 80px; height: 80px; object-fit: cover; border-radius: 6px; border: 1px solid #e0e0e0; transition: transform 0.2s ease; }
+        .image-gallery img:hover { transform: scale(1.05); }
+        @media screen and (max-width: 768px) {
+            .image-gallery img { width: 60px; height: 60px; }
+        }
         @media screen and (min-width: 1024px) {
             main.blog-post { max-width: 1200px; width: 100%; margin: 2rem auto; padding: 0 2rem; }
             .blog-post-content { max-width: 900px; width: 100%; }
@@ -1220,6 +1227,13 @@
 
       <p>All available online, shipped to your door.</p>
       <p><strong>One pack of moringa powder = 60+ snacks. One pack of curry leaves = 12+ months of seasoning. One pack of black tea = 50+ cups.</strong></p>
+
+      <div class="image-gallery">
+        <a href="https://imgur.com/jDB9lxx" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/jDB9lxx.jpg" alt="Low calorie snack recipe" loading="lazy"></a>
+        <a href="https://imgur.com/CPQKAfM" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/CPQKAfM.jpg" alt="Healthy snack ideas" loading="lazy"></a>
+        <a href="https://imgur.com/a/nCQ5kAH" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/nCQ5kAH.jpg" alt="Satiety snacks" loading="lazy" onerror="this.style.display='none'"></a>
+        <a href="https://imgur.com/a/KJcVzgc" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/KJcVzgc.jpg" alt="Weight loss snacks" loading="lazy" onerror="this.style.display='none'"></a>
+      </div>
 
       <div class="cta-box">
         <h3 style="color: white; margin-top: 0;">Quality ingredients. Science-backed satiety. Guilt-free eating.</h3>
