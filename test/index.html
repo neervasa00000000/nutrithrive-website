@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="../shared/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="homepage.css">
     
     <!-- GSAP CDN -->
@@ -73,6 +74,9 @@
             --accent: #7B541F;
             --text: #1a2e22;
             --muted: #5A6D5D;
+            --radius: 18px;
+            --shadow: 0 4px 24px 0 rgba(23,92,54,0.07);
+            --transition: 0.4s cubic-bezier(.4,2,.6,1);
         }
         
         * {
@@ -1064,6 +1068,117 @@
         .grid-item:hover::before {
             left: 100%;
         }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 0;
+            margin: 4rem auto;
+            max-width: 100%;
+            width: 100%;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .testimonials::before, .testimonials::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 15%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .testimonials::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+        }
+        
+        .testimonials::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+        }
+        
+        .testimonials-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+        
+        .testimonial-carousel {
+            display: flex;
+            width: fit-content;
+            animation: scroll 84s linear infinite;
+            min-height: 200px;
+            contain: layout;
+        }
+        
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        
+        .testimonials:hover .testimonial-carousel {
+            animation-play-state: paused;
+        }
+        
+        .testimonial-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 340px;
+            min-height: 340px;
+            max-height: 340px;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(236, 231, 219, 0.8);
+            transition: all var(--transition);
+            width: 350px;
+            margin: 0 1rem;
+            flex-shrink: 0;
+            contain: layout style;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 16px 48px 0 rgba(23,92,54,0.10);
+        }
+        
+        .testimonial-rating {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-text {
+            flex: 1 1 auto;
+            font-size: 1.1rem;
+            color: var(--muted);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            margin-top: auto;
+            font-weight: 700;
+            color: var(--primary);
+            padding-bottom: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials-title {
+                font-size: 2rem;
+            }
+            
+            .testimonial-card {
+                width: 280px;
+                padding: 2rem 1.5rem;
+            }
+        }
     </style>
     <link rel="icon" type="image/png" href="../shared/images/logo.png">
     <link rel="apple-touch-icon" href="../shared/images/logo.png">
@@ -1324,6 +1439,104 @@
         </section>
         </div>
 
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2 class="testimonials-title">What Our Customers Say</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I'm enjoying it a lot and using it in my protein shakes."</p>
+                    <p class="testimonial-author">- Savira</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The product is amazing. Love the natural taste."</p>
+                    <p class="testimonial-author">- Sharita</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Definitely feeling healthy and more energetic after consuming it on a daily basis."</p>
+                    <p class="testimonial-author">- Siv</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The product is super good and healthy. I would definitely like to buy more and again! Thanks for the amazing product, it helped me."</p>
+                    <p class="testimonial-author">- Jay Sharma</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The product is good and I have been taking it for over 3 months now and not a single complaint."</p>
+                    <p class="testimonial-author">- Shaili</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The Moringa powder is 100% better, quality is good and keep up with the quality."</p>
+                    <p class="testimonial-author">- Pierre</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"It's good 👍 the real deal"</p>
+                    <p class="testimonial-author">- Ayodeji</p>
+                </div>
+                <!-- Duplicated for seamless scroll -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I'm enjoying it a lot and using it in my protein shakes."</p>
+                    <p class="testimonial-author">- Savira</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The product is amazing. Love the natural taste."</p>
+                    <p class="testimonial-author">- Sharita</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Definitely feeling healthy and more energetic after consuming it on a daily basis."</p>
+                    <p class="testimonial-author">- Siv</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The product is super good and healthy. I would definitely like to buy more and again! Thanks for the amazing product, it helped me."</p>
+                    <p class="testimonial-author">- Jay Sharma</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The product is good and I have been taking it for over 3 months now and not a single complaint."</p>
+                    <p class="testimonial-author">- Shaili</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The Moringa powder is 100% better, quality is good and keep up with the quality."</p>
+                    <p class="testimonial-author">- Pierre</p>
+                </div>
+            </div>
+        </section>
 
     </main>
 
