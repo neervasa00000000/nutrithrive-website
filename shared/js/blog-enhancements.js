@@ -118,6 +118,29 @@
     article.appendChild(cta);
   }
 
+  function proteinGuidePromo() {
+    try {
+      const path = window.location.pathname || '';
+      if (!/moringa/i.test(path) || /best-protein-powder/i.test(path)) return;
+      const article = qs('.blog-post-content, article, .blog-content');
+      if (!article || document.getElementById('nt-protein-guide')) return;
+      const firstParagraph = qs('p', article);
+      if (!firstParagraph) return;
+      const promo = document.createElement('div');
+      promo.id = 'nt-protein-guide';
+      promo.style.border = '1px solid #dfeee0';
+      promo.style.borderRadius = '12px';
+      promo.style.padding = '12px 16px';
+      promo.style.margin = '1.25rem 0';
+      promo.innerHTML = `
+        <strong style="color:#175c36;display:block;margin-bottom:6px;">Need the best protein to pair with your moringa?</strong>
+        <span style="display:block;margin-bottom:8px;">Our team blind-tested 9 Australian protein powders for clean ingredients, price, and taste.</span>
+        <a href="/pages/blog/best-protein-powder-australia-2025-complete-guide.html" style="color:#175c36;font-weight:700;text-decoration:none;">Read the protein powder testing guide →</a>
+      `;
+      firstParagraph.insertAdjacentElement('afterend', promo);
+    } catch (e) {}
+  }
+
   function stickyShareMobile() {
     if (document.getElementById('nt-sticky-share')) return;
     if (window.matchMedia('(max-width: 768px)').matches) {
@@ -224,6 +247,7 @@
     try { relatedLinks(); } catch(e){}
     try { authorBio(); } catch(e){}
     try { contactCTA(); } catch(e){}
+    try { proteinGuidePromo(); } catch(e){}
     try { stickyShareMobile(); } catch(e){}
     try { injectJSONLD(); } catch(e){}
     try { breadcrumbs(); } catch(e){}
