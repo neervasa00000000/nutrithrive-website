@@ -1,128 +1,337 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
     <loc>https://nutrithrive.com.au/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Main Pages -->
   <url>
-    <loc>https://nutrithrive.com.au/products.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/products/products.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/product-detail.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/products/product-detail.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/product-black-tea.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/products/product-black-tea.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/about.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/products/product-curry-leaves.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/about/about.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/contact.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/contact/contact.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/blog.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/how-to-use-moringa.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/moringa-benefits.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/faq/faq.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/thank-you.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/shipping/shipping-returns.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/contact/thank-you.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  
+  <!-- Blog Posts -->
   <url>
-    <loc>https://nutrithrive.com.au/blog/best-protein-powder-australia.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/black-tea-health-benefits-melbourne-guide.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/15-healthy-breakfast-meals-australians-love-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/complete-guide-to-moringa-powder-australia.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/best-foods-for-weight-loss-australian-dietitian-guide-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/grow-moringa-tree-australia.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/best-moringa-powder-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/how-to-add-moringa-to-diet.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/best-protein-powder-australia-2025-complete-guide.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/keto-atta-moringa-benefits-australia.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/best-protein-powder-australia.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/moringa-benefits-protein-powder-australia-2025.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/best-superfoods-australia-comparison-health-conscious-adults.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2025.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/moringa-magic-natural-glow.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/complete-guide-to-moringa-powder-australia.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/moringa-powder-australian-lab-guide-2024.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/curry-leaves-health-benefits-science-research-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/moringa-powder-benefits-ultimate-guide-2024.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://nutrithrive.com.au/pages/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/curry-leaves-australia-complete-guide-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/dried-curry-leaves-melbourne-buy-online-health-benefits-recipes-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/dried-curry-leaves-melbourne-premium-buyers-guide-benefits-recipes-free-delivery-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/dried-curry-leaves-ultimate-guide-melbourne-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/dried-curry-leaves-uses-benefits-how-to-cook-melbourne-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/grow-moringa-tree-australia.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/how-to-add-moringa-to-diet.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/keto-atta-moringa-benefits-australia.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/low-calorie-snacks-keep-you-full-22-options-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-benefits-protein-powder-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-brands-comparison-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-brands-reviewed-australia-2025-verdict.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-fitness-athletes-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-immune-system-support-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-magic-natural-glow.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-powder-australian-lab-guide-2024.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-skin-hair-benefits-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-vs-matcha-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-vs-superfoods-comparison-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/moringa-weight-loss-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/nutrithrive-dried-curry-leaves-tradition-health.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/plant-based-performance-protein-stack-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/south-indian-recipes-dried-curry-leaves-melbourne.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/superfoods-wellness-guide-australia-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/where-to-buy-dried-curry-leaves-melbourne-local-shopping-guide-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/pages/blog/where-to-buy-dried-curry-leaves-melbourne-ultimate-guide-surprise-tip-2025.html</loc>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
