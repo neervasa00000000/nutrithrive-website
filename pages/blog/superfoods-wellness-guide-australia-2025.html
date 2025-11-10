@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
+  // Defer Google Analytics loading
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP');
+  });
 </script>
 
     <meta charset="UTF-8">
@@ -16,6 +23,8 @@
     <meta name="description" content="Complete guide to superfoods for wellness in Australia. Discover moringa benefits, curry leaves health, black tea benefits, and natural wellness tips for optimal health.">
     <meta name="keywords" content="superfoods australia, wellness guide, moringa benefits, curry leaves health, black tea benefits, natural wellness, australian superfoods, health supplements, wellness tips, natural health">
     <link rel="canonical" href="https://nutrithrive.com.au/pages/blog/superfoods-wellness-guide-australia-2025.html">
+    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/pages/blog/superfoods-wellness-guide-australia-2025.html">
+    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/pages/blog/superfoods-wellness-guide-australia-2025.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -34,7 +43,10 @@
     <meta property="twitter:description" content="Complete guide to superfoods for wellness in Australia. Discover moringa benefits, curry leaves health, black tea benefits, and natural wellness tips.">
     <meta property="twitter:image" content="https://i.imgur.com/B92giK7.jpg">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../shared/css/style.css">
     <link rel="stylesheet" href="blog.css">
     <link rel="icon" type="image/png" href="../../shared/images/logo.png">
