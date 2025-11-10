@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
+  // Defer Google Analytics loading
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP');
+  });
 </script>
 
     <meta charset="UTF-8">
@@ -17,6 +24,8 @@
     <meta name="keywords" content="moringa vs matcha, moringa vs spirulina, moringa vs acai, moringa vs chlorella, superfood comparison, moringa powder vs other superfoods, best superfood Australia, moringa benefits vs other superfoods">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nutrithrive.com.au/pages/blog/moringa-vs-superfoods-comparison-australia-2025.html">
+    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/pages/blog/moringa-vs-superfoods-comparison-australia-2025.html">
+    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/pages/blog/moringa-vs-superfoods-comparison-australia-2025.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -39,7 +48,10 @@
     <meta name="geo.region" content="AU">
     <meta name="geo.placename" content="Melbourne">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+        <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="blog.css">
     <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">

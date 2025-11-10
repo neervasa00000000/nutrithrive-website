@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
+  // Defer Google Analytics loading
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP');
+  });
 </script>
 
   <meta charset="UTF-8">
-  <title>Moringa Powder Australian Lab Guide 2024 | Quality Testing & Certifications</title>
+  <title>Moringa Powder Australian Lab Guide 2024 | Quality Testing & Certif...</title>
   <meta name="description" content="Complete guide to moringa powder lab testing in Australia. Learn about quality certifications, lab testing standards, and how to verify product quality.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://nutrithrive.com.au/pages/blog/moringa-powder-australian-lab-guide-2024.html">
+    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/pages/blog/moringa-powder-australian-lab-guide-2024.html">
+    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/pages/blog/moringa-powder-australian-lab-guide-2024.html">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
@@ -37,7 +46,10 @@
     <link rel="icon" type="image/png" href="../../shared/images/Logo/logo copy.png">
     <link rel="apple-touch-icon" href="../../shared/images/Logo/logo copy.png">
     <link rel="shortcut icon" href="../../shared/images/Logo/logo copy.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+      <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <style>
     html, body { background: #fff; margin: 0; padding: 0; }

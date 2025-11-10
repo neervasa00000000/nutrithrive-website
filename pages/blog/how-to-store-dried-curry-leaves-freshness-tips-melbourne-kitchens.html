@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
+  // Defer Google Analytics loading
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP');
+  });
 </script>
 
     <meta charset="UTF-8">
@@ -16,6 +23,8 @@
     <meta name="description" content="Learn 5 proven methods to store dried curry leaves properly. Keep your karipatta fresh for 12+ months with these Melbourne kitchen-tested storage tips. Avoid common mistakes.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nutrithrive.com.au/pages/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html">
+    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/pages/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html">
+    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/pages/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -34,7 +43,10 @@
     <meta property="twitter:description" content="Learn 5 proven methods to store dried curry leaves properly. Keep your karipatta fresh for 12+ months with these Melbourne kitchen-tested storage tips.">
     <meta property="twitter:image" content="https://i.imgur.com/B92giK7.jpg">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+        <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../../shared/css/style.css">
     <link rel="stylesheet" href="blog.css">
@@ -784,7 +796,7 @@
                         <a href="../products/product-black-tea.html" style="background: rgba(255,255,255,0.15); color: white; padding: 15px 30px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s; font-size: 1rem;">Shop Black Tea</a>
                         <a href="../products/products.html" style="background: rgba(255,255,255,0.15); color: white; padding: 15px 30px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s; font-size: 1rem;">Browse All Products</a>
                     </div>
-                    <p style="margin-top: 1rem; color: rgba(255,255,255,0.9);">In Melbourne, Sydney, or Perth? View our <a href="../../homepage/melbourne.html" style="color: #fff; text-decoration: underline;">Melbourne page</a> for address, map and fast local delivery. Free shipping across Australia for <strong>organic curry leaves price Melbourne</strong> competitive rates.</p>
+                    <p style="margin-top: 1rem; color: rgba(255,255,255,0.9);">In Melbourne, Sydney, or Perth? View our <a href="../homepage/melbourne.html" style="color: #fff; text-decoration: underline;">Melbourne page</a> for address, map and fast local delivery. Free shipping across Australia for <strong>organic curry leaves price Melbourne</strong> competitive rates.</p>
                 </div>
 
                 <h2>FAQs: How to Store Dried Curry Leaves</h2>
