@@ -125,11 +125,12 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border-radius: 24px;
             padding: 4rem 3rem;
-            margin: 3rem 0;
+            margin: 3rem 0 6rem 0;
             box-shadow: 0 12px 48px rgba(23,92,54,0.2);
             border: 3px solid var(--primary);
             position: relative;
-            overflow: hidden;
+            overflow: visible !important;
+            z-index: 10;
         }
 
         .search-section::before {
@@ -565,6 +566,8 @@
             position: relative;
             overflow: hidden;
             border: 4px solid rgba(255,255,255,0.3);
+            z-index: 1;
+            margin-top: 8rem;
         }
 
         .guarantee-banner::before {
@@ -913,6 +916,7 @@
                     </div>
                 </div>
 
+                <div style="margin-top: 3rem;"></div>
 
                 <div class="guarantee-banner fade-in">
                     <h3 class="guarantee-title">🌏 Can't Find Your Place on Our List?</h3>
