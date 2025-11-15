@@ -1058,19 +1058,14 @@
             });
         }
 
-        // Search functionality - Initialize after DOM is ready
-        let searchInput, searchResults, successMessage;
-
-        // Function to highlight matching text
+        // Search functionality - Simple and reliable implementation
         function highlightMatch(text, query) {
             if (!query) return text;
-            // Escape special regex characters
             const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             const regex = new RegExp(`(${escapedQuery})`, 'gi');
             return text.replace(regex, '<span class="match-highlight">$1</span>');
         }
 
-        // Function to get best matches (prioritize starts with, then contains)
         function getBestMatches(locations, query) {
             const lowerQuery = query.toLowerCase();
             const startsWith = locations.filter(loc => 
@@ -1082,39 +1077,57 @@
             return [...startsWith, ...contains].slice(0, 15);
         }
 
-        function setupSearch() {
-            searchInput = document.getElementById('locationSearch');
-            searchResults = document.getElementById('searchResults');
-            successMessage = document.getElementById('successMessage');
+        function showSuccess() {
+            const successMsg = document.getElementById('successMessage');
+            if (successMsg) {
+                successMsg.classList.add('show');
+                setTimeout(() => {
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        }
 
+        function highlightLocation(location) {
+            document.querySelectorAll('.location-card').forEach(card => {
+                card.classList.remove('highlighted');
+                if (card.textContent.trim() === location) {
+                    card.classList.add('highlighted');
+                    setTimeout(() => {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                }
+            });
+        }
+
+        // Initialize search when DOM is ready
+        function initSearch() {
+            const searchInput = document.getElementById('locationSearch');
+            const searchResults = document.getElementById('searchResults');
+            
             if (!searchInput || !searchResults) {
-                console.error('Search elements not found');
-                setTimeout(setupSearch, 100); // Retry after 100ms
+                console.log('Search elements not ready, retrying...');
+                setTimeout(initSearch, 200);
                 return;
             }
 
+            console.log('Search initialized successfully');
+
             let selectedIndex = -1;
 
-            // Handle input changes
-            searchInput.oninput = function(e) {
-                const query = e.target.value.trim();
-                selectedIndex = -1; // Reset selection on new input
-                
-                // Always show results if there's any input
+            function handleSearch(query) {
+                query = query.trim();
+                selectedIndex = -1;
+
                 if (query.length === 0) {
+                    searchResults.style.display = 'none';
                     searchResults.classList.remove('active');
-                    if (successMessage) successMessage.classList.remove('show');
+                    const successMsg = document.getElementById('successMessage');
+                    if (successMsg) successMsg.classList.remove('show');
                     return;
                 }
 
-                // Force display
-                searchResults.style.display = 'block';
+                const matches = getBestMatches(victoriaLocations, query.toLowerCase());
                 
-                const lowerQuery = query.toLowerCase();
-                const matches = getBestMatches(victoriaLocations, lowerQuery);
-                
-                console.log('Search query:', query, 'Matches:', matches.length); // Debug
-
                 if (matches.length > 0) {
                     searchResults.innerHTML = `
                         <div class="suggestions-header">
@@ -1129,30 +1142,27 @@
                             </div>`
                         ).join('')}
                     `;
+                    
                     searchResults.style.display = 'block';
+                    searchResults.style.visibility = 'visible';
+                    searchResults.style.opacity = '1';
                     searchResults.classList.add('active');
-                    // Force visibility
-                    setTimeout(function() {
-                        searchResults.style.display = 'block';
-                        searchResults.style.visibility = 'visible';
-                        searchResults.style.opacity = '1';
-                    }, 10);
 
-                    // Add click handlers to results
+                    // Add click handlers
                     searchResults.querySelectorAll('.result-item').forEach((item) => {
-                        item.onclick = function() {
+                        item.addEventListener('click', function() {
                             const location = item.dataset.location;
                             searchInput.value = location;
+                            searchResults.style.display = 'none';
                             searchResults.classList.remove('active');
                             showSuccess();
                             highlightLocation(location);
-                        };
+                        });
 
-                        // Highlight on hover
-                        item.onmouseenter = function() {
+                        item.addEventListener('mouseenter', function() {
                             searchResults.querySelectorAll('.result-item').forEach(i => i.classList.remove('highlight'));
                             item.classList.add('highlight');
-                        };
+                        });
                     });
                 } else {
                     searchResults.innerHTML = `
@@ -1167,21 +1177,25 @@
                         </div>
                     `;
                     searchResults.style.display = 'block';
+                    searchResults.style.visibility = 'visible';
+                    searchResults.style.opacity = '1';
                     searchResults.classList.add('active');
-                    // Force visibility
-                    setTimeout(function() {
-                        searchResults.style.display = 'block';
-                        searchResults.style.visibility = 'visible';
-                        searchResults.style.opacity = '1';
-                    }, 10);
                 }
-            };
-            
-            // Also trigger on keyup for better responsiveness
-            searchInput.onkeyup = searchInput.oninput;
+            }
+
+            // Multiple event handlers for maximum compatibility
+            searchInput.addEventListener('input', function(e) {
+                handleSearch(e.target.value);
+            });
+
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Enter') {
+                    handleSearch(e.target.value);
+                }
+            });
 
             // Keyboard navigation
-            searchInput.onkeydown = function(e) {
+            searchInput.addEventListener('keydown', function(e) {
                 const items = searchResults.querySelectorAll('.result-item');
                 if (items.length === 0) return;
 
@@ -1204,51 +1218,29 @@
                 } else if (e.key === 'Enter' && selectedIndex >= 0) {
                     e.preventDefault();
                     items[selectedIndex].click();
-                } else if (e.key !== 'Backspace' && e.key !== 'Delete') {
-                    selectedIndex = -1; // Reset on other keys (except backspace/delete)
                 }
-            };
-        }
+            });
 
-        // Close results when clicking outside
-        document.addEventListener('click', function(e) {
-            if (searchInput && searchResults && 
-                !searchInput.contains(e.target) && 
-                !searchResults.contains(e.target)) {
-                searchResults.classList.remove('active');
-            }
-        });
-
-        // Show success message
-        function showSuccess() {
-            successMessage.classList.add('show');
-            setTimeout(() => {
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-        }
-
-        // Highlight location in grid
-        function highlightLocation(location) {
-            document.querySelectorAll('.location-card').forEach(card => {
-                card.classList.remove('highlighted');
-                if (card.textContent.trim() === location) {
-                    card.classList.add('highlighted');
-                    setTimeout(() => {
-                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 300);
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                    searchResults.classList.remove('active');
                 }
             });
         }
 
-        // Initialize on page load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                initializeLocations();
-                setupSearch();
-            });
-        } else {
+        // Initialize everything
+        function initializeEverything() {
             initializeLocations();
-            setupSearch();
+            initSearch();
+        }
+
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeEverything);
+        } else {
+            initializeEverything();
         }
     </script>
 </body>
