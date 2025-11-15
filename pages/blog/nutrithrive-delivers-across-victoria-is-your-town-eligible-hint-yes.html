@@ -861,18 +861,29 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="../../homepage/index.html" class="nav-logo">NutriThrive</a>
-            <ul class="nav-menu">
-                <li><a href="../../homepage/index.html">Home</a></li>
-                <li><a href="../products/products.html">Products</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="../../about/about.html">About</a></li>
-                <li><a href="../../contact/contact.html">Contact</a></li>
-            </ul>
+    <header>
+        <div class="navbar">
+            <a href="../homepage/index.html" class="logo">
+                <img src="https://i.imgur.com/bZubhoR.png" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="../homepage/index.html">Home</a>
+                <a href="../products/products.html">Products</a>
+                <a href="../faq/faq.html">FAQ</a>
+                <a href="../shipping/shipping-returns.html">Shipping & Returns</a>
+                <a href="../about/about.html">About</a>
+                <a href="../contact/contact.html">Contact</a>
+                <a href="../usage-guide/how-to-use-moringa.html">Usage & Benefits</a>
+                <a href="blog.html" class="active">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
         </div>
-    </nav>
+    </header>
 
     <main class="blog-container">
         <article class="blog-post">
@@ -986,8 +997,8 @@
                     <div class="cta-content">
                         <h2 class="cta-title">Order Now and Experience Victoria's Freshest Superfoods</h2>
                         <p class="cta-desc">Delivered fast, no matter where you live in Victoria!</p>
-                        <a href="../../products/products.html" class="btn">Shop Now →</a>
-                        <a href="../../contact/contact.html" class="btn btn-secondary">Contact Support</a>
+                        <a href="../products/products.html" class="btn">Shop Now →</a>
+                        <a href="../contact/contact.html" class="btn btn-secondary">Contact Support</a>
                     </div>
                 </div>
 
@@ -1003,11 +1014,21 @@
     <footer class="blog-footer">
         <div class="footer-container">
             <p>&copy; 2025 NutriThrive Australia. All rights reserved.</p>
-            <p><a href="../../homepage/index.html">Home</a> | <a href="../products/products.html">Products</a> | <a href="blog.html">Blog</a> | <a href="../../about/about.html">About</a> | <a href="../../contact/contact.html">Contact</a></p>
+            <p><a href="../homepage/index.html">Home</a> | <a href="../products/products.html">Products</a> | <a href="blog.html">Blog</a> | <a href="../about/about.html">About</a> | <a href="../contact/contact.html">Contact</a></p>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        window.ntToggleMenu = function() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            if (navLinks && hamburger) {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            }
+        };
+
         // Victoria locations list (200+ locations)
         const victoriaLocations = [
             'Melbourne', 'Geelong', 'Ballarat', 'Bendigo', 'Shepparton', 'Mildura', 
