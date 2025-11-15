@@ -1159,7 +1159,7 @@
 
             // Keyboard navigation
             let selectedIndex = -1;
-            searchInput.addEventListener('keydown', (e) => {
+            searchInput.addEventListener('keydown', function(e) {
                 const items = searchResults.querySelectorAll('.result-item');
                 if (items.length === 0) return;
 
@@ -1188,14 +1188,14 @@
             });
         }
 
-            // Close results when clicking outside
-            document.addEventListener('click', function(e) {
-                if (searchInput && searchResults && 
-                    !searchInput.contains(e.target) && 
-                    !searchResults.contains(e.target)) {
-                    searchResults.classList.remove('active');
-                }
-            });
+        // Close results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (searchInput && searchResults && 
+                !searchInput.contains(e.target) && 
+                !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
 
         // Show success message
         function showSuccess() {
