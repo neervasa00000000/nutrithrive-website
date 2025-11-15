@@ -913,14 +913,6 @@
                     </div>
                 </div>
 
-                <h2>📍 We Deliver To All These Victorian Locations and MANY More</h2>
-                <p>Click on any location below to see it highlighted, or use the search above to find your area instantly!</p>
-
-                <div class="locations-section fade-in">
-                    <div class="locations-grid" id="locationsGrid">
-                        <!-- Locations will be populated by JavaScript -->
-                    </div>
-                </div>
 
                 <div class="guarantee-banner fade-in">
                     <h3 class="guarantee-title">🌏 Can't Find Your Place on Our List?</h3>
@@ -1062,21 +1054,7 @@
             'Bell Post Hill', 'Hamlyn Heights', 'Herne Hill', 'Manifold Heights'
         ];
 
-        // Initialize locations grid
-        function initializeLocations() {
-            const grid = document.getElementById('locationsGrid');
-            victoriaLocations.forEach(location => {
-                const card = document.createElement('div');
-                card.className = 'location-card';
-                card.innerHTML = `<span>${location}</span>`;
-                card.addEventListener('click', () => {
-                    document.getElementById('locationSearch').value = location;
-                    showSuccess();
-                    highlightLocation(location);
-                });
-                grid.appendChild(card);
-            });
-        }
+        // Location grid removed - users can search instead
 
         // Search functionality - Simple and reliable implementation
         function highlightMatch(text, query) {
@@ -1108,15 +1086,7 @@
         }
 
         function highlightLocation(location) {
-            document.querySelectorAll('.location-card').forEach(card => {
-                card.classList.remove('highlighted');
-                if (card.textContent.trim() === location) {
-                    card.classList.add('highlighted');
-                    setTimeout(() => {
-                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 300);
-                }
-            });
+            // Location grid removed - just show success message
         }
 
         // Initialize search when DOM is ready - SIMPLE VERSION
@@ -1274,7 +1244,6 @@
 
         // Initialize everything
         function initializeEverything() {
-            initializeLocations();
             initSearch();
         }
 
