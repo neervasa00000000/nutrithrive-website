@@ -232,7 +232,7 @@
             box-shadow: 0 16px 64px rgba(23,92,54,0.3);
             border: 3px solid var(--primary);
             display: none;
-            z-index: 100;
+            z-index: 9999;
             animation: slideDown 0.3s ease;
         }
 
@@ -1100,14 +1100,20 @@
                 const query = e.target.value.trim();
                 selectedIndex = -1; // Reset selection on new input
                 
+                // Always show results if there's any input
                 if (query.length === 0) {
                     searchResults.classList.remove('active');
                     if (successMessage) successMessage.classList.remove('show');
                     return;
                 }
 
+                // Force display
+                searchResults.style.display = 'block';
+                
                 const lowerQuery = query.toLowerCase();
                 const matches = getBestMatches(victoriaLocations, lowerQuery);
+                
+                console.log('Search query:', query, 'Matches:', matches.length); // Debug
 
                 if (matches.length > 0) {
                     searchResults.innerHTML = `
@@ -1153,9 +1159,19 @@
                             <div style="margin-top: 0.5rem; font-size: 1rem;">We deliver everywhere in Victoria, even if your location isn't listed.</div>
                         </div>
                     `;
+                    searchResults.style.display = 'block';
                     searchResults.classList.add('active');
+                    // Force visibility
+                    setTimeout(function() {
+                        searchResults.style.display = 'block';
+                        searchResults.style.visibility = 'visible';
+                        searchResults.style.opacity = '1';
+                    }, 10);
                 }
             };
+            
+            // Also trigger on keyup for better responsiveness
+            searchInput.onkeyup = searchInput.oninput;
 
             // Keyboard navigation
             searchInput.onkeydown = function(e) {
