@@ -1089,19 +1089,19 @@
 
             if (!searchInput || !searchResults) {
                 console.error('Search elements not found');
+                setTimeout(setupSearch, 100); // Retry after 100ms
                 return;
             }
 
-            // Remove any existing listeners by cloning the element
-            const newInput = searchInput.cloneNode(true);
-            searchInput.parentNode.replaceChild(newInput, searchInput);
-            searchInput = newInput;
+            let selectedIndex = -1;
 
-            searchInput.addEventListener('input', function(e) {
+            // Handle input changes
+            searchInput.oninput = function(e) {
                 const query = e.target.value.trim();
+                selectedIndex = -1; // Reset selection on new input
                 
                 if (query.length === 0) {
-                    if (searchResults) searchResults.classList.remove('active');
+                    searchResults.classList.remove('active');
                     if (successMessage) successMessage.classList.remove('show');
                     return;
                 }
@@ -1124,6 +1124,23 @@
                         ).join('')}
                     `;
                     searchResults.classList.add('active');
+
+                    // Add click handlers to results
+                    searchResults.querySelectorAll('.result-item').forEach((item) => {
+                        item.onclick = function() {
+                            const location = item.dataset.location;
+                            searchInput.value = location;
+                            searchResults.classList.remove('active');
+                            showSuccess();
+                            highlightLocation(location);
+                        };
+
+                        // Highlight on hover
+                        item.onmouseenter = function() {
+                            searchResults.querySelectorAll('.result-item').forEach(i => i.classList.remove('highlight'));
+                            item.classList.add('highlight');
+                        };
+                    });
                 } else {
                     searchResults.innerHTML = `
                         <div class="suggestions-header">
@@ -1138,28 +1155,10 @@
                     `;
                     searchResults.classList.add('active');
                 }
-
-                // Add click handlers to results
-                searchResults.querySelectorAll('.result-item').forEach((item, index) => {
-                    item.addEventListener('click', function() {
-                        const location = item.dataset.location;
-                        searchInput.value = location;
-                        searchResults.classList.remove('active');
-                        showSuccess();
-                        highlightLocation(location);
-                    });
-
-                    // Highlight on hover
-                    item.addEventListener('mouseenter', function() {
-                        searchResults.querySelectorAll('.result-item').forEach(i => i.classList.remove('highlight'));
-                        item.classList.add('highlight');
-                    });
-                });
-            });
+            };
 
             // Keyboard navigation
-            let selectedIndex = -1;
-            searchInput.addEventListener('keydown', function(e) {
+            searchInput.onkeydown = function(e) {
                 const items = searchResults.querySelectorAll('.result-item');
                 if (items.length === 0) return;
 
@@ -1182,10 +1181,10 @@
                 } else if (e.key === 'Enter' && selectedIndex >= 0) {
                     e.preventDefault();
                     items[selectedIndex].click();
-                } else {
-                    selectedIndex = -1; // Reset on other keys
+                } else if (e.key !== 'Backspace' && e.key !== 'Delete') {
+                    selectedIndex = -1; // Reset on other keys (except backspace/delete)
                 }
-            });
+            };
         }
 
         // Close results when clicking outside
