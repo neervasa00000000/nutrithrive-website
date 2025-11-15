@@ -69,13 +69,14 @@
         .hero-banner {
             background: var(--gradient);
             color: white;
-            padding: 4rem 2rem;
+            padding: 5rem 3rem;
             border-radius: 24px;
-            margin: 2rem 0 3rem 0;
+            margin: 2rem 0 4rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 12px 48px rgba(23,92,54,0.25);
+            box-shadow: 0 16px 64px rgba(23,92,54,0.35);
+            border: 4px solid rgba(255,255,255,0.2);
         }
 
         .hero-banner::before {
@@ -100,12 +101,16 @@
         }
 
         .hero-banner h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
             letter-spacing: -0.02em;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-banner p {
@@ -117,20 +122,33 @@
         }
 
         .search-section {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 24px;
+            padding: 4rem 3rem;
             margin: 3rem 0;
-            box-shadow: 0 8px 32px rgba(23,92,54,0.12);
-            border: 1px solid rgba(23,92,54,0.1);
+            box-shadow: 0 12px 48px rgba(23,92,54,0.2);
+            border: 3px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient);
         }
 
         .search-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 900;
             color: var(--primary);
             margin-bottom: 1rem;
             text-align: center;
+            text-shadow: 0 2px 4px rgba(23,92,54,0.1);
         }
 
         .search-subtitle {
@@ -148,30 +166,37 @@
 
         .search-input-container {
             position: relative;
-            background: var(--bg);
-            border-radius: 16px;
-            border: 3px solid var(--primary);
+            background: white;
+            border-radius: 20px;
+            border: 4px solid var(--primary);
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 16px rgba(23,92,54,0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 32px rgba(23,92,54,0.25);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(23,92,54,0.25); }
+            50% { box-shadow: 0 8px 40px rgba(23,92,54,0.4); }
         }
 
         .search-input-container:focus-within {
             border-color: var(--accent);
-            box-shadow: 0 8px 32px rgba(23,92,54,0.25);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 48px rgba(23,92,54,0.4);
+            transform: translateY(-4px) scale(1.01);
+            animation: none;
         }
 
         .search-input {
             width: 100%;
-            padding: 1.5rem 4rem 1.5rem 1.5rem;
-            font-size: 1.25rem;
+            padding: 1.75rem 5rem 1.75rem 2rem;
+            font-size: 1.375rem;
             border: none;
             outline: none;
             font-family: 'Inter', sans-serif;
             color: var(--text);
             background: transparent;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .search-input::placeholder {
@@ -181,12 +206,13 @@
 
         .search-icon {
             position: absolute;
-            right: 1.5rem;
+            right: 2rem;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             animation: bounce 2s infinite;
+            filter: drop-shadow(0 2px 4px rgba(23,92,54,0.3));
         }
 
         @keyframes bounce {
@@ -265,15 +291,33 @@
         }
 
         .success-message {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
-            border: 3px solid var(--success);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 4px solid var(--success);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            margin: 2.5rem 0;
             text-align: center;
             display: none;
             animation: slideDown 0.4s ease;
-            box-shadow: 0 8px 24px rgba(16,185,129,0.2);
+            box-shadow: 0 12px 40px rgba(16,185,129,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-message::before {
+            content: '✨';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
         }
 
         .success-message.show {
@@ -281,9 +325,10 @@
         }
 
         .success-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
             animation: scaleIn 0.5s ease;
+            filter: drop-shadow(0 4px 8px rgba(16,185,129,0.4));
         }
 
         @keyframes scaleIn {
@@ -296,10 +341,13 @@
         }
 
         .success-title {
-            font-size: 1.75rem;
-            font-weight: 800;
+            font-size: 2.25rem;
+            font-weight: 900;
             color: var(--success);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(16,185,129,0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .success-text {
@@ -309,18 +357,21 @@
         }
 
         .locations-section {
-            background: var(--gradient-light);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(23,92,54,0.08) 0%, rgba(23,92,54,0.03) 100%);
+            border-radius: 24px;
+            padding: 4rem 2.5rem;
+            margin: 4rem 0;
+            border: 2px solid rgba(23,92,54,0.15);
+            box-shadow: 0 8px 32px rgba(23,92,54,0.1);
         }
 
         .locations-title {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
             color: var(--primary);
             margin-bottom: 1.5rem;
             text-align: center;
+            text-shadow: 0 2px 4px rgba(23,92,54,0.1);
         }
 
         .locations-subtitle {
@@ -339,15 +390,16 @@
 
         .location-card {
             background: white;
-            padding: 1.25rem 1.5rem;
-            border-radius: 12px;
-            border: 2px solid transparent;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1.5rem 1.75rem;
+            border-radius: 16px;
+            border: 3px solid rgba(23,92,54,0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.0625rem;
             color: var(--text);
-            box-shadow: 0 4px 12px rgba(23,92,54,0.08);
+            box-shadow: 0 6px 20px rgba(23,92,54,0.12);
             position: relative;
             overflow: hidden;
         }
@@ -369,10 +421,11 @@
         }
 
         .location-card:hover {
-            transform: translateY(-6px) scale(1.02);
+            transform: translateY(-8px) scale(1.05);
             border-color: var(--primary);
-            box-shadow: 0 12px 32px rgba(23,92,54,0.2);
+            box-shadow: 0 16px 48px rgba(23,92,54,0.3);
             color: white;
+            z-index: 10;
         }
 
         .location-card span {
@@ -384,20 +437,28 @@
             background: var(--gradient);
             color: white;
             border-color: var(--primary);
-            box-shadow: 0 12px 32px rgba(23,92,54,0.3);
-            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(23,92,54,0.4);
+            transform: scale(1.1);
+            z-index: 20;
+            animation: pulseHighlight 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseHighlight {
+            0%, 100% { box-shadow: 0 20px 60px rgba(23,92,54,0.4); }
+            50% { box-shadow: 0 20px 70px rgba(23,92,54,0.6); }
         }
 
         .guarantee-banner {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
+            padding: 4rem 3rem;
+            border-radius: 24px;
             text-align: center;
-            margin: 3rem 0;
-            box-shadow: 0 8px 32px rgba(16,185,129,0.3);
+            margin: 4rem 0;
+            box-shadow: 0 12px 48px rgba(16,185,129,0.4);
             position: relative;
             overflow: hidden;
+            border: 4px solid rgba(255,255,255,0.3);
         }
 
         .guarantee-banner::before {
@@ -412,19 +473,21 @@
         }
 
         .guarantee-title {
-            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .guarantee-text {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin-top: 0.5rem;
             position: relative;
             z-index: 1;
-            line-height: 1.7;
+            line-height: 1.8;
+            font-weight: 600;
         }
 
         .features-section {
@@ -712,13 +775,14 @@
             <div class="blog-content">
                 <div class="hero-banner fade-in">
                     <div class="hero-banner-content">
-                        <h1>🚚 NutriThrive Delivers Across Victoria</h1>
-                        <p>Looking for premium moringa powder, dried curry leaves, or superfoods—delivered direct to your door anywhere in Victoria? NutriThrive proudly offers Australia-wide shipping, with a special commitment to every corner of Victoria, from Melbourne to the tiniest regional town.</p>
+                        <div style="font-size: 6rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">🚚</div>
+                        <h1>NutriThrive Delivers Across Victoria</h1>
+                        <p style="font-size: clamp(1.25rem, 3vw, 1.75rem); max-width: 900px; margin: 0 auto;">Looking for premium moringa powder, dried curry leaves, or superfoods—delivered direct to your door anywhere in Victoria? NutriThrive proudly offers Australia-wide shipping, with a special commitment to every corner of Victoria, from Melbourne to the tiniest regional town.</p>
                     </div>
                 </div>
 
-                <h2>🔍 Check If We Deliver to Your Area in Victoria</h2>
-                <p>Use the search below to find your city, region, or suburb. Simply type the name in the search bar—if it appears, you're all set for speedy NutriThrive delivery!</p>
+                <h2 style="font-size: clamp(2rem, 4vw, 2.75rem); text-align: center; margin: 3rem 0 1.5rem 0; color: var(--primary); font-weight: 900;">🔍 Check If We Deliver to Your Area in Victoria</h2>
+                <p style="text-align: center; font-size: 1.25rem; color: var(--muted); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Use the search below to find your city, region, or suburb. Simply type the name in the search bar—if it appears, you're all set for speedy NutriThrive delivery!</p>
 
                 <div class="search-section fade-in">
                     <h3 class="search-title">Search Your Location</h3>
