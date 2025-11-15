@@ -1129,7 +1129,14 @@
                             </div>`
                         ).join('')}
                     `;
+                    searchResults.style.display = 'block';
                     searchResults.classList.add('active');
+                    // Force visibility
+                    setTimeout(function() {
+                        searchResults.style.display = 'block';
+                        searchResults.style.visibility = 'visible';
+                        searchResults.style.opacity = '1';
+                    }, 10);
 
                     // Add click handlers to results
                     searchResults.querySelectorAll('.result-item').forEach((item) => {
