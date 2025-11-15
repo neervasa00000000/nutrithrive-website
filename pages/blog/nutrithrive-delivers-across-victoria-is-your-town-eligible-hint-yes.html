@@ -222,18 +222,36 @@
 
         .search-results {
             position: absolute;
-            top: calc(100% + 8px);
+            top: calc(100% + 12px);
             left: 0;
             right: 0;
             background: white;
-            border-radius: 16px;
-            max-height: 400px;
+            border-radius: 20px;
+            max-height: 500px;
             overflow-y: auto;
-            box-shadow: 0 12px 48px rgba(23,92,54,0.2);
-            border: 2px solid var(--primary);
+            box-shadow: 0 16px 64px rgba(23,92,54,0.3);
+            border: 3px solid var(--primary);
             display: none;
             z-index: 100;
             animation: slideDown 0.3s ease;
+        }
+
+        .search-results::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .search-results::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .search-results::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .search-results::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
         }
 
         @keyframes slideDown {
@@ -252,21 +270,39 @@
         }
 
         .result-item {
-            padding: 1.25rem 1.5rem;
+            padding: 1.5rem 2rem;
             cursor: pointer;
-            transition: all 0.2s;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 1.125rem;
-            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 2px solid #f0f0f0;
+            font-size: 1.25rem;
+            font-weight: 600;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.25rem;
+            position: relative;
+        }
+
+        .result-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .result-item:hover {
             background: var(--gradient-light);
-            padding-left: 2rem;
+            padding-left: 2.5rem;
+            transform: translateX(4px);
+        }
+
+        .result-item:hover::before {
+            transform: scaleX(1);
         }
 
         .result-item:last-child {
@@ -276,18 +312,68 @@
         .result-item.highlight {
             background: var(--gradient);
             color: white;
-            font-weight: 700;
+            font-weight: 800;
+            padding-left: 2.5rem;
+        }
+
+        .result-item.highlight::before {
+            transform: scaleX(1);
+            background: white;
         }
 
         .result-icon {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            filter: drop-shadow(0 2px 4px rgba(23,92,54,0.2));
+        }
+
+        .result-item.highlight .result-icon {
+            filter: drop-shadow(0 2px 4px rgba(255,255,255,0.3));
+        }
+
+        .match-highlight {
+            background: rgba(23,92,54,0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .result-item.highlight .match-highlight {
+            background: rgba(255,255,255,0.3);
+            color: white;
         }
 
         .no-results {
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             color: var(--muted);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .suggestions-header {
+            padding: 1rem 1.5rem;
+            background: var(--gradient);
+            color: white;
+            font-weight: 800;
             font-size: 1.125rem;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .suggestions-count {
+            background: rgba(255,255,255,0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
         }
 
         .success-message {
@@ -977,33 +1063,69 @@
         const searchResults = document.getElementById('searchResults');
         const successMessage = document.getElementById('successMessage');
 
+        // Function to highlight matching text
+        function highlightMatch(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span class="match-highlight">$1</span>');
+        }
+
+        // Function to get best matches (prioritize starts with, then contains)
+        function getBestMatches(locations, query) {
+            const lowerQuery = query.toLowerCase();
+            const startsWith = locations.filter(loc => 
+                loc.toLowerCase().startsWith(lowerQuery)
+            );
+            const contains = locations.filter(loc => 
+                loc.toLowerCase().includes(lowerQuery) && !loc.toLowerCase().startsWith(lowerQuery)
+            );
+            return [...startsWith, ...contains].slice(0, 15);
+        }
+
         searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
+            const query = e.target.value.trim();
             
             if (query.length === 0) {
                 searchResults.classList.remove('active');
+                successMessage.classList.remove('show');
                 return;
             }
 
-            const matches = victoriaLocations.filter(loc => 
-                loc.toLowerCase().includes(query)
-            ).slice(0, 12);
+            const lowerQuery = query.toLowerCase();
+            const matches = getBestMatches(victoriaLocations, lowerQuery);
 
             if (matches.length > 0) {
-                searchResults.innerHTML = matches.map(loc => 
-                    `<div class="result-item" data-location="${loc}">
-                        <span class="result-icon">📍</span>
-                        <span>${loc}</span>
-                    </div>`
-                ).join('');
+                searchResults.innerHTML = `
+                    <div class="suggestions-header">
+                        <span>📍</span>
+                        <span>Suggestions</span>
+                        <span class="suggestions-count">${matches.length} found</span>
+                    </div>
+                    ${matches.map(loc => 
+                        `<div class="result-item" data-location="${loc}">
+                            <span class="result-icon">📍</span>
+                            <span>${highlightMatch(loc, query)}</span>
+                        </div>`
+                    ).join('')}
+                `;
                 searchResults.classList.add('active');
             } else {
-                searchResults.innerHTML = '<div class="no-results">✨ All locations in Victoria are covered! We deliver everywhere. ✨</div>';
+                searchResults.innerHTML = `
+                    <div class="suggestions-header">
+                        <span>📍</span>
+                        <span>No exact matches</span>
+                    </div>
+                    <div class="no-results">
+                        <span class="no-results-icon">✨</span>
+                        <div><strong>All locations in Victoria are covered!</strong></div>
+                        <div style="margin-top: 0.5rem; font-size: 1rem;">We deliver everywhere in Victoria, even if your location isn't listed.</div>
+                    </div>
+                `;
                 searchResults.classList.add('active');
             }
 
             // Add click handlers to results
-            searchResults.querySelectorAll('.result-item').forEach(item => {
+            searchResults.querySelectorAll('.result-item').forEach((item, index) => {
                 item.addEventListener('click', () => {
                     const location = item.dataset.location;
                     searchInput.value = location;
@@ -1014,11 +1136,37 @@
 
                 // Highlight on hover
                 item.addEventListener('mouseenter', () => {
+                    searchResults.querySelectorAll('.result-item').forEach(i => i.classList.remove('highlight'));
                     item.classList.add('highlight');
                 });
-                item.addEventListener('mouseleave', () => {
-                    item.classList.remove('highlight');
-                });
+            });
+
+            // Keyboard navigation
+            let selectedIndex = -1;
+            searchInput.addEventListener('keydown', (e) => {
+                const items = searchResults.querySelectorAll('.result-item');
+                if (items.length === 0) return;
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+                    items.forEach(i => i.classList.remove('highlight'));
+                    if (selectedIndex >= 0) {
+                        items[selectedIndex].classList.add('highlight');
+                        items[selectedIndex].scrollIntoView({ block: 'nearest' });
+                    }
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    selectedIndex = Math.max(selectedIndex - 1, -1);
+                    items.forEach(i => i.classList.remove('highlight'));
+                    if (selectedIndex >= 0) {
+                        items[selectedIndex].classList.add('highlight');
+                        items[selectedIndex].scrollIntoView({ block: 'nearest' });
+                    }
+                } else if (e.key === 'Enter' && selectedIndex >= 0) {
+                    e.preventDefault();
+                    items[selectedIndex].click();
+                }
             });
         });
 
