@@ -221,19 +221,27 @@
         }
 
         .search-results {
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 0;
-            right: 0;
-            background: white;
-            border-radius: 20px;
-            max-height: 500px;
-            overflow-y: auto;
-            box-shadow: 0 16px 64px rgba(23,92,54,0.3);
-            border: 3px solid var(--primary);
-            display: none;
-            z-index: 9999;
+            position: absolute !important;
+            top: calc(100% + 12px) !important;
+            left: 0 !important;
+            right: 0 !important;
+            background: white !important;
+            border-radius: 20px !important;
+            max-height: 500px !important;
+            overflow-y: auto !important;
+            box-shadow: 0 16px 64px rgba(23,92,54,0.3) !important;
+            border: 3px solid var(--primary) !important;
+            display: none !important;
+            z-index: 99999 !important;
             animation: slideDown 0.3s ease;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .search-results.active {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         .search-results::-webkit-scrollbar {
@@ -1099,22 +1107,27 @@
             });
         }
 
-        // Initialize search when DOM is ready
+        // Initialize search when DOM is ready - SIMPLE VERSION
         function initSearch() {
             const searchInput = document.getElementById('locationSearch');
             const searchResults = document.getElementById('searchResults');
             
+            console.log('initSearch called');
+            console.log('searchInput:', searchInput);
+            console.log('searchResults:', searchResults);
+            
             if (!searchInput || !searchResults) {
-                console.log('Search elements not ready, retrying...');
-                setTimeout(initSearch, 200);
+                console.error('Search elements not found! Retrying...');
+                setTimeout(initSearch, 100);
                 return;
             }
 
-            console.log('Search initialized successfully');
+            console.log('✅ Search initialized successfully!');
 
             let selectedIndex = -1;
 
             function handleSearch(query) {
+                console.log('handleSearch called with:', query);
                 query = query.trim();
                 selectedIndex = -1;
 
@@ -1127,9 +1140,10 @@
                 }
 
                 const matches = getBestMatches(victoriaLocations, query.toLowerCase());
+                console.log('Found matches:', matches.length, matches);
                 
                 if (matches.length > 0) {
-                    searchResults.innerHTML = `
+                    const html = `
                         <div class="suggestions-header">
                             <span>📍</span>
                             <span>Suggestions</span>
@@ -1143,27 +1157,32 @@
                         ).join('')}
                     `;
                     
-                    searchResults.style.display = 'block';
-                    searchResults.style.visibility = 'visible';
-                    searchResults.style.opacity = '1';
+                    searchResults.innerHTML = html;
+                    
+                    // Force show with multiple methods
+                    searchResults.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; z-index: 99999 !important; position: absolute !important;';
                     searchResults.classList.add('active');
+                    
+                    console.log('Results should be visible now. Display:', searchResults.style.display);
 
                     // Add click handlers
-                    searchResults.querySelectorAll('.result-item').forEach((item) => {
-                        item.addEventListener('click', function() {
-                            const location = item.dataset.location;
-                            searchInput.value = location;
-                            searchResults.style.display = 'none';
-                            searchResults.classList.remove('active');
-                            showSuccess();
-                            highlightLocation(location);
-                        });
+                    setTimeout(function() {
+                        searchResults.querySelectorAll('.result-item').forEach((item) => {
+                            item.onclick = function() {
+                                const location = item.dataset.location;
+                                searchInput.value = location;
+                                searchResults.style.display = 'none';
+                                searchResults.classList.remove('active');
+                                showSuccess();
+                                highlightLocation(location);
+                            };
 
-                        item.addEventListener('mouseenter', function() {
-                            searchResults.querySelectorAll('.result-item').forEach(i => i.classList.remove('highlight'));
-                            item.classList.add('highlight');
+                            item.onmouseenter = function() {
+                                searchResults.querySelectorAll('.result-item').forEach(i => i.classList.remove('highlight'));
+                                item.classList.add('highlight');
+                            };
                         });
-                    });
+                    }, 50);
                 } else {
                     searchResults.innerHTML = `
                         <div class="suggestions-header">
@@ -1176,22 +1195,27 @@
                             <div style="margin-top: 0.5rem; font-size: 1rem;">We deliver everywhere in Victoria, even if your location isn't listed.</div>
                         </div>
                     `;
-                    searchResults.style.display = 'block';
-                    searchResults.style.visibility = 'visible';
-                    searchResults.style.opacity = '1';
+                    searchResults.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; z-index: 99999 !important; position: absolute !important;';
                     searchResults.classList.add('active');
                 }
             }
 
-            // Multiple event handlers for maximum compatibility
+            // Test if input works
             searchInput.addEventListener('input', function(e) {
+                console.log('INPUT EVENT FIRED! Value:', e.target.value);
                 handleSearch(e.target.value);
             });
 
             searchInput.addEventListener('keyup', function(e) {
+                console.log('KEYUP EVENT FIRED! Key:', e.key, 'Value:', e.target.value);
                 if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Enter') {
                     handleSearch(e.target.value);
                 }
+            });
+
+            // Test click
+            searchInput.addEventListener('focus', function() {
+                console.log('Search input focused');
             });
 
             // Keyboard navigation
@@ -1223,7 +1247,9 @@
 
             // Close on outside click
             document.addEventListener('click', function(e) {
-                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                if (searchInput && searchResults && 
+                    !searchInput.contains(e.target) && 
+                    !searchResults.contains(e.target)) {
                     searchResults.style.display = 'none';
                     searchResults.classList.remove('active');
                 }
