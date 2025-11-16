@@ -268,11 +268,13 @@
             color: #2d5a3d !important;
             text-decoration: underline;
             font-weight: 600;
-            font-size: 1.0625rem;
-            cursor: pointer;
-            pointer-events: auto;
+            font-size: 1.125rem;
+            cursor: pointer !important;
+            pointer-events: auto !important;
             position: relative;
             z-index: 10;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
         }
         
         .btn-primary:hover {
@@ -280,8 +282,11 @@
             text-decoration: underline;
         }
         
-        .btn-primary:active {
+        .btn-primary:active,
+        .btn-primary:focus {
             color: #1e4029 !important;
+            outline: 2px solid #2d5a3d;
+            outline-offset: 2px;
         }
         
         /* Footer styling */
