@@ -231,30 +231,20 @@
             line-height: 1.8;
         }
         
-        /* Smooth scroll animations */
-        .blog-post-content > h2,
-        .blog-post-content > h3,
-        .blog-post-content > p,
-        .blog-post-content > ul,
-        .blog-post-content > ol {
-            opacity: 0;
-            transform: translateY(20px);
+        /* Smooth scroll animations - only animate on first load */
+        .blog-post-content h2:not(.quick-nav h3),
+        .blog-post-content h3:not(.quick-nav h3),
+        .blog-post-content p:not(.quick-nav p),
+        .blog-post-content ul:not(.quick-nav ul),
+        .blog-post-content ol {
             animation: fadeInUp 0.6s ease forwards;
         }
         
-        .blog-post-content > h2 {
-            animation-delay: 0.1s;
-        }
-        
-        .blog-post-content > h3 {
-            animation-delay: 0.2s;
-        }
-        
-        .blog-post-content > p {
-            animation-delay: 0.3s;
-        }
-        
         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -847,13 +837,14 @@
                 });
             });
             
-            // Remove animation classes after page load for better performance
+            // Ensure all content is visible (fallback if animations don't work)
             setTimeout(() => {
-                const animatedElements = document.querySelectorAll('.blog-post-content > h2, .blog-post-content > h3, .blog-post-content > p, .blog-post-content > ul, .blog-post-content > ol');
-                animatedElements.forEach(el => {
-                    el.style.animation = 'none';
+                const allContent = document.querySelectorAll('.blog-post-content h2, .blog-post-content h3, .blog-post-content p, .blog-post-content ul, .blog-post-content ol');
+                allContent.forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
                 });
-            }, 2000);
+            }, 100);
         });
     </script>
 </body>
