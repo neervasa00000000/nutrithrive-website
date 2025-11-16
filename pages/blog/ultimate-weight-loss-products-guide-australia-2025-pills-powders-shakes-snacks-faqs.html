@@ -220,43 +220,18 @@
         }
         
         .faq-item {
-            background: var(--card-new);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 16px;
-            border: 2px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .faq-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 5px;
-            background: var(--gradient-primary);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            border-color: var(--primary-new);
-            box-shadow: var(--shadow-new);
-            transform: translateX(8px);
-        }
-        
-        .faq-item:hover::before {
-            transform: scaleY(1);
+            padding: 0;
+            margin-bottom: 2rem;
+            border: none;
+            background: none;
         }
         
         .faq-item h3 {
             color: var(--primary-new);
             margin-top: 0;
-            font-size: 1.35rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
         }
         
         .faq-item p {
@@ -454,40 +429,18 @@
         }
         
         .product-type-card {
-            background: var(--card-new);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin: 2.5rem 0;
-            box-shadow: var(--shadow-new);
-            border: 2px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .product-type-card:hover {
-            border-color: var(--primary-new);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-5px);
+            margin: 2rem 0;
         }
         
         .product-type-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(99, 102, 241, 0.1);
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
         
         .product-icon {
-            font-size: 2.5rem;
-            background: var(--gradient-primary);
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            font-size: 1.75rem;
         }
         
         .product-type-header h3 {
@@ -496,118 +449,82 @@
         }
         
         .product-type-content {
-            padding-left: 0.5rem;
+            padding-left: 0;
         }
         
         .info-box {
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            border-left: 5px solid;
-            position: relative;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            background: rgba(99, 102, 241, 0.05);
         }
         
         .info-box.prescription {
-            background: rgba(99, 102, 241, 0.08);
             border-color: var(--primary-new);
         }
         
         .info-box.warning {
-            background: rgba(245, 158, 11, 0.08);
             border-color: var(--warning);
+            background: rgba(245, 158, 11, 0.05);
         }
         
         .info-box.success {
-            background: rgba(16, 185, 129, 0.08);
             border-color: var(--success);
+            background: rgba(16, 185, 129, 0.05);
         }
         
         .info-box.tip {
-            background: rgba(236, 72, 153, 0.08);
             border-color: var(--accent-new);
+            background: rgba(236, 72, 153, 0.05);
         }
         
         .info-box strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            display: inline;
+            font-size: 1rem;
         }
         
         .trending-section {
-            margin: 3rem 0;
+            margin: 2.5rem 0;
         }
         
         .trending-card {
-            background: var(--card-new);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-            border: 2px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .trending-card:hover {
-            border-color: var(--primary-new);
-            box-shadow: var(--shadow-new);
-            transform: translateX(8px);
+            margin: 1.25rem 0;
+            padding: 0;
         }
         
         .trending-icon {
-            font-size: 2.5rem;
-            flex-shrink: 0;
-            background: var(--gradient-primary);
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            font-size: 1.5rem;
+            display: inline-block;
+            margin-right: 0.5rem;
         }
         
         .trending-content h4 {
             color: var(--primary-new);
-            font-size: 1.5rem;
-            margin: 0 0 0.75rem 0;
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem 0;
             font-weight: 700;
+            display: inline;
         }
         
         .trending-content p {
-            margin: 0;
+            margin: 0.5rem 0 1rem 0;
             color: var(--text-muted);
         }
         
         .tea-section {
-            margin: 3rem 0;
+            margin: 2.5rem 0;
         }
         
         .tea-card {
-            background: var(--card-new);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            border-left: 5px solid var(--primary-new);
-            box-shadow: var(--shadow-new);
-            transition: all 0.3s ease;
-        }
-        
-        .tea-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .tea-card.warning-card {
-            border-left-color: var(--warning);
-            background: rgba(245, 158, 11, 0.05);
+            margin: 1.25rem 0;
+            padding: 0;
         }
         
         .tea-card h4 {
             color: var(--primary-new);
-            font-size: 1.5rem;
-            margin: 0 0 1rem 0;
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem 0;
             font-weight: 700;
         }
         
@@ -616,51 +533,42 @@
         }
         
         .tea-card p {
-            margin: 0;
+            margin: 0.5rem 0 1rem 0;
             color: var(--text-muted);
         }
         
         .advice-section {
-            margin: 3rem 0;
+            margin: 2.5rem 0;
         }
         
         .advice-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            display: block;
+            margin-top: 1.5rem;
         }
         
         .advice-card {
-            background: var(--card-new);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 2px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .advice-card:hover {
-            border-color: var(--primary-new);
-            box-shadow: var(--shadow-new);
-            transform: translateY(-6px);
+            padding: 0;
+            margin: 1rem 0;
+            border: none;
+            text-align: left;
         }
         
         .advice-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
+            font-size: 1.25rem;
+            margin-right: 0.5rem;
+            display: inline-block;
         }
         
         .advice-card h4 {
             color: var(--primary-new);
-            font-size: 1.25rem;
-            margin: 0 0 0.75rem 0;
+            font-size: 1.1rem;
+            margin: 0 0 0.25rem 0;
             font-weight: 700;
+            display: inline;
         }
         
         .advice-card p {
-            margin: 0;
+            margin: 0.25rem 0 0.75rem 0;
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
@@ -724,18 +632,6 @@
                 width: 100%;
             }
             
-            .trending-card {
-                flex-direction: column;
-            }
-            
-            .trending-icon {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .advice-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
     
@@ -822,9 +718,7 @@
                         <h3>1. Weight Loss Pills (Prescription & Over-the-Counter)</h3>
                     </div>
                     <div class="product-type-content">
-                        <div class="info-box prescription">
-                            <strong>Prescription:</strong> GLP-1 agonists (Ozempic, Wegovy), Orlistat, Qsymia—can be effective for some, must be prescribed and closely monitored by healthcare professionals. These medications work by affecting appetite hormones, slowing digestion, or reducing fat absorption.
-                        </div>
+                        <p><strong>Prescription:</strong> GLP-1 agonists (Ozempic, Wegovy), Orlistat, Qsymia—can be effective for some, must be prescribed and closely monitored by healthcare professionals. These medications work by affecting appetite hormones, slowing digestion, or reducing fat absorption.</p>
                         <div class="info-box warning">
                             <strong>OTC pills:</strong> Appetite suppressants, herbal fat burners, "slimming aids" (proceed with caution: many lack proven results and may contain unregulated ingredients). Always check for TGA approval and consult your doctor before starting any supplement regimen.
                         </div>
@@ -844,9 +738,7 @@
                             <li>Support metabolism and recovery</li>
                             <li>Provide essential amino acids for optimal health</li>
                         </ul>
-                        <div class="info-box success">
-                            <strong>Top sellers:</strong> Clean protein powder, weight loss shakes for women, vegan and bulk protein shakes; always check labels for added sugars and filler carbs. Look for products with at least 20g protein per serving and minimal added ingredients.
-                        </div>
+                        <p><strong>Top sellers:</strong> Clean protein powder, weight loss shakes for women, vegan and bulk protein shakes; always check labels for added sugars and filler carbs. Look for products with at least 20g protein per serving and minimal added ingredients.</p>
                         <p><strong>Use:</strong> Meal replacement for busy mornings, post-workout, or on-the-go support. Replace one meal per day with a quality protein shake to create a sustainable calorie deficit.</p>
                     </div>
                 </div>
@@ -865,30 +757,28 @@
                             <li>Avoid products with excessive marketing claims</li>
                         </ul>
                         <p>Gut health and detox supplements may support digestion but are not magic fixes. Focus on whole foods, fiber, and probiotics for sustainable gut health.</p>
-                        <div class="info-box tip">
-                            <strong>Top tip:</strong> Focus on fiber-rich, high-protein snacks to keep you satisfied between meals. Examples include nuts, Greek yogurt, protein bars, and vegetable sticks with hummus.
-                        </div>
+                        <p><strong>Top tip:</strong> Focus on fiber-rich, high-protein snacks to keep you satisfied between meals. Examples include nuts, Greek yogurt, protein bars, and vegetable sticks with hummus.</p>
                     </div>
                 </div>
 
                 <div class="trending-section">
                     <h2 id="glp1">Trending Now: Weight Loss Gummies, GLP-1 Drops & "Biohacks"</h2>
                     <div class="trending-card">
-                        <div class="trending-icon">💉</div>
+                        <span class="trending-icon">💉</span>
                         <div class="trending-content">
                             <h4>GLP-1 Weight Loss Products</h4>
                             <p>GLP-1 weight loss drops and weekly injections are gaining attention but require medical supervision. These prescription medications mimic natural hormones that regulate appetite and blood sugar. While effective for some, they come with potential side effects and must be prescribed by a healthcare provider.</p>
                         </div>
                     </div>
                     <div class="trending-card">
-                        <div class="trending-icon">🍬</div>
+                        <span class="trending-icon">🍬</span>
                         <div class="trending-content">
                             <h4>Slimming Gummies & Sprays</h4>
                             <p>Slimming gummies and appetite suppressant sprays are flooding the market—be skeptical. Look for transparent, science-backed brands with proven ingredients like fiber, protein, or clinically studied compounds. Many over-the-counter gummies contain minimal active ingredients and rely on marketing rather than results.</p>
                         </div>
                     </div>
                     <div class="trending-card">
-                        <div class="trending-icon">🧴</div>
+                        <span class="trending-icon">🧴</span>
                         <div class="trending-content">
                             <h4>Fat Burning Creams & Patches</h4>
                             <p>Data is limited, and results may be short-lived. These topical products may provide temporary water loss but don't address underlying fat metabolism. Focus on evidence-based approaches for sustainable results.</p>
