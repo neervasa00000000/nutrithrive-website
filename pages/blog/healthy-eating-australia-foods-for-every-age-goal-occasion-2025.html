@@ -354,6 +354,17 @@
         .cta-buttons {
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .cta-box {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-box a.interactive-btn {
+            z-index: 100 !important;
         }
         
         /* Footer styling */
@@ -853,7 +864,7 @@
                 });
             });
             
-            // Smooth scroll for anchor links
+            // Smooth scroll for anchor links (only internal # links)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -866,6 +877,24 @@
                     }
                 });
             });
+            
+            // Ensure CTA button is always clickable
+            const ctaButton = document.querySelector('.interactive-btn');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function(e) {
+                    // Allow default navigation
+                    const href = this.getAttribute('href');
+                    if (href && !href.startsWith('#')) {
+                        // Normal link - allow default behavior
+                        return true;
+                    }
+                });
+                
+                // Ensure button is clickable
+                ctaButton.style.pointerEvents = 'auto';
+                ctaButton.style.cursor = 'pointer';
+                ctaButton.style.zIndex = '1000';
+            }
             
             // Ensure all content is visible (fallback if animations don't work)
             setTimeout(() => {
