@@ -293,21 +293,33 @@
             padding: 0.75rem 1.5rem;
             background: #2d5a3d;
             color: #ffffff !important;
-            text-decoration: none;
+            text-decoration: none !important;
             border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(45, 90, 61, 0.2);
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 10;
         }
         
         .interactive-btn:hover {
             background: #1e4029;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(45, 90, 61, 0.3);
+            color: #ffffff !important;
         }
         
         .interactive-btn:active {
             transform: translateY(0);
+            color: #ffffff !important;
+        }
+        
+        .interactive-btn:focus {
+            outline: 2px solid #2d5a3d;
+            outline-offset: 2px;
+            color: #ffffff !important;
         }
         
         /* Clean links */
