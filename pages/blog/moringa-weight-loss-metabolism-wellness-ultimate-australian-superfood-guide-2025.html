@@ -254,6 +254,76 @@
             color: #1e4029 !important;
         }
         
+        /* Footer styling */
+        .blog-footer {
+            background: #175c36;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h3,
+        .footer-section h4 {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.1rem;
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.9) !important;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #ffffff !important;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
         /* Mobile responsive */
         @media (max-width: 768px) {
             .blog-content {
@@ -276,6 +346,11 @@
             
             .lead {
                 font-size: 1.1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
     </style>
