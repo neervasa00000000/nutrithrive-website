@@ -231,13 +231,19 @@
             line-height: 1.8;
         }
         
-        /* Smooth scroll animations - only animate on first load */
-        .blog-post-content h2:not(.quick-nav h3),
-        .blog-post-content h3:not(.quick-nav h3),
-        .blog-post-content p:not(.quick-nav p),
-        .blog-post-content ul:not(.quick-nav ul),
-        .blog-post-content ol {
+        /* Smooth scroll animations - only for main content, not quick-nav */
+        .blog-post-content > h2,
+        .blog-post-content > h3:not(.quick-nav h3),
+        .blog-post-content > p:not(.lead),
+        .blog-post-content > ul,
+        .blog-post-content > ol {
+            opacity: 1;
             animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Lead paragraph - visible immediately */
+        .blog-post-content > .lead {
+            opacity: 1;
         }
         
         @keyframes fadeInUp {
