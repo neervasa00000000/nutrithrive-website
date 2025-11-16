@@ -47,7 +47,697 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../../shared/css/style.css">
     <link rel="stylesheet" href="blog.css">
-    <link rel="icon" type="image/png" href="../../shared/images/logo.png">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
+    
+    <style>
+        /* NEW COLOR SCHEME & DESIGN */
+        :root {
+            --primary-new: #6366f1; /* Indigo */
+            --primary-dark: #4f46e5;
+            --accent-new: #ec4899; /* Pink */
+            --accent-light: #f472b6;
+            --success: #10b981; /* Green */
+            --warning: #f59e0b; /* Amber */
+            --bg-new: #faf5ff; /* Light purple tint */
+            --card-new: #ffffff;
+            --text-new: #1e293b;
+            --text-muted: #64748b;
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            --gradient-accent: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            --shadow-new: 0 10px 40px rgba(99, 102, 241, 0.15);
+            --shadow-hover: 0 20px 60px rgba(99, 102, 241, 0.25);
+        }
+        
+        body {
+            background: var(--bg-new);
+            color: var(--text-new);
+        }
+        
+        .blog-content {
+            background: var(--bg-new);
+        }
+        
+        .blog-post-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .blog-post-header {
+            background: var(--gradient-primary);
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow-new);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-post-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .blog-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .blog-meta {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .blog-post-content {
+            background: var(--card-new);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--text-new);
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border-left: 5px solid var(--primary-new);
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--primary-new);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid;
+            border-image: var(--gradient-primary) 1;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: clamp(1.35rem, 3vw, 1.75rem);
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .nav-list li {
+            background: var(--card-new);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-list li:hover {
+            border-color: var(--primary-new);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-new);
+        }
+        
+        .nav-list a {
+            color: var(--primary-new);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+        }
+        
+        .nav-list a:hover {
+            color: var(--accent-new);
+        }
+        
+        .faq-section {
+            margin: 3rem 0;
+        }
+        
+        .faq-item {
+            background: var(--card-new);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary-new);
+            box-shadow: var(--shadow-new);
+            transform: translateX(8px);
+        }
+        
+        .faq-item:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .faq-item h3 {
+            color: var(--primary-new);
+            margin-top: 0;
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-item p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        ul:not(.nav-list) {
+            list-style: none;
+            padding: 0;
+        }
+        
+        ul:not(.nav-list) li {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-new);
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        ul:not(.nav-list) li::before {
+            content: '✓';
+            position: absolute;
+            left: 0.75rem;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .cta-box {
+            background: var(--gradient-primary) !important;
+            color: white !important;
+            padding: 3rem 2.5rem !important;
+            border-radius: 24px !important;
+            margin: 4rem 0 !important;
+            text-align: center !important;
+            box-shadow: var(--shadow-hover) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .cta-box h2,
+        .cta-box h3 {
+            color: white !important;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-box p {
+            color: rgba(255,255,255,0.95) !important;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-box .btn {
+            background: white !important;
+            color: var(--primary-new) !important;
+            padding: 14px 28px !important;
+            border-radius: 12px !important;
+            text-decoration: none !important;
+            font-weight: 700 !important;
+            display: inline-block !important;
+            transition: all 0.3s ease !important;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-box .btn:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+        }
+        
+        .cta-box > div {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-box > div > div {
+            background: rgba(255,255,255,0.15) !important;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3) !important;
+        }
+        
+        .cta-box > div > div:hover {
+            background: rgba(255,255,255,0.25) !important;
+            transform: translateY(-5px);
+        }
+        
+        .cta-box-final {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 3px solid var(--primary-new);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+            box-shadow: var(--shadow-new);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-box-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .cta-box-final h3 {
+            color: var(--primary-new);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .cta-box-final p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary-new {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-primary-new:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-secondary-new {
+            background: white;
+            color: var(--primary-new);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 3px solid var(--primary-new);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-secondary-new:hover {
+            background: var(--primary-new);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        .product-type-card {
+            background: var(--card-new);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            box-shadow: var(--shadow-new);
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-type-card:hover {
+            border-color: var(--primary-new);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+        
+        .product-type-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .product-icon {
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .product-type-header h3 {
+            margin: 0;
+            flex: 1;
+        }
+        
+        .product-type-content {
+            padding-left: 0.5rem;
+        }
+        
+        .info-box {
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 5px solid;
+            position: relative;
+        }
+        
+        .info-box.prescription {
+            background: rgba(99, 102, 241, 0.08);
+            border-color: var(--primary-new);
+        }
+        
+        .info-box.warning {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: var(--warning);
+        }
+        
+        .info-box.success {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: var(--success);
+        }
+        
+        .info-box.tip {
+            background: rgba(236, 72, 153, 0.08);
+            border-color: var(--accent-new);
+        }
+        
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .trending-section {
+            margin: 3rem 0;
+        }
+        
+        .trending-card {
+            background: var(--card-new);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .trending-card:hover {
+            border-color: var(--primary-new);
+            box-shadow: var(--shadow-new);
+            transform: translateX(8px);
+        }
+        
+        .trending-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            background: var(--gradient-primary);
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .trending-content h4 {
+            color: var(--primary-new);
+            font-size: 1.5rem;
+            margin: 0 0 0.75rem 0;
+            font-weight: 700;
+        }
+        
+        .trending-content p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+        
+        .tea-section {
+            margin: 3rem 0;
+        }
+        
+        .tea-card {
+            background: var(--card-new);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--primary-new);
+            box-shadow: var(--shadow-new);
+            transition: all 0.3s ease;
+        }
+        
+        .tea-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .tea-card.warning-card {
+            border-left-color: var(--warning);
+            background: rgba(245, 158, 11, 0.05);
+        }
+        
+        .tea-card h4 {
+            color: var(--primary-new);
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            font-weight: 700;
+        }
+        
+        .tea-card.warning-card h4 {
+            color: var(--warning);
+        }
+        
+        .tea-card p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+        
+        .advice-section {
+            margin: 3rem 0;
+        }
+        
+        .advice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .advice-card {
+            background: var(--card-new);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .advice-card:hover {
+            border-color: var(--primary-new);
+            box-shadow: var(--shadow-new);
+            transform: translateY(-6px);
+        }
+        
+        .advice-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .advice-card h4 {
+            color: var(--primary-new);
+            font-size: 1.25rem;
+            margin: 0 0 0.75rem 0;
+            font-weight: 700;
+        }
+        
+        .advice-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        p {
+            line-height: 1.8;
+            color: var(--text-new);
+            margin-bottom: 1.5rem;
+        }
+        
+        strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        
+        .blog-footer {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .blog-footer a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+        
+        .blog-footer a:hover {
+            color: var(--accent-light);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post-header {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .blog-post-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .nav-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-box {
+                padding: 2rem 1.5rem !important;
+            }
+            
+            .cta-box > div {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-primary-new,
+            .btn-secondary-new {
+                width: 100%;
+            }
+            
+            .trending-card {
+                flex-direction: column;
+            }
+            
+            .trending-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .advice-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
     
     <script type="application/ld+json">
     {
@@ -126,40 +816,97 @@
 
                 <h2 id="top-rated">What Are the Most Popular Weight Loss Solutions in Australia?</h2>
 
-                <h3>1. Weight Loss Pills (Prescription & Over-the-Counter)</h3>
-                <p><strong>Prescription:</strong> GLP-1 agonists (Ozempic, Wegovy), Orlistat, Qsymia—can be effective for some, must be prescribed and closely monitored by healthcare professionals. These medications work by affecting appetite hormones, slowing digestion, or reducing fat absorption.</p>
-                <p><strong>OTC pills:</strong> Appetite suppressants, herbal fat burners, "slimming aids" (proceed with caution: many lack proven results and may contain unregulated ingredients). Always check for TGA approval and consult your doctor before starting any supplement regimen.</p>
+                <div class="product-type-card">
+                    <div class="product-type-header">
+                        <span class="product-icon">💊</span>
+                        <h3>1. Weight Loss Pills (Prescription & Over-the-Counter)</h3>
+                    </div>
+                    <div class="product-type-content">
+                        <div class="info-box prescription">
+                            <strong>Prescription:</strong> GLP-1 agonists (Ozempic, Wegovy), Orlistat, Qsymia—can be effective for some, must be prescribed and closely monitored by healthcare professionals. These medications work by affecting appetite hormones, slowing digestion, or reducing fat absorption.
+                        </div>
+                        <div class="info-box warning">
+                            <strong>OTC pills:</strong> Appetite suppressants, herbal fat burners, "slimming aids" (proceed with caution: many lack proven results and may contain unregulated ingredients). Always check for TGA approval and consult your doctor before starting any supplement regimen.
+                        </div>
+                    </div>
+                </div>
 
-                <h3>2. Weight Loss Protein Powders and Meal Replacement Shakes</h3>
-                <p>Modern protein blends (plant or whey) help control hunger and preserve muscle during calorie deficit. High-quality protein powders can:</p>
-                <ul>
-                    <li>Increase satiety and reduce cravings</li>
-                    <li>Preserve lean muscle mass during weight loss</li>
-                    <li>Support metabolism and recovery</li>
-                    <li>Provide essential amino acids for optimal health</li>
-                </ul>
-                <p><strong>Top sellers:</strong> Clean protein powder, weight loss shakes for women, vegan and bulk protein shakes; always check labels for added sugars and filler carbs. Look for products with at least 20g protein per serving and minimal added ingredients.</p>
-                <p><strong>Use:</strong> Meal replacement for busy mornings, post-workout, or on-the-go support. Replace one meal per day with a quality protein shake to create a sustainable calorie deficit.</p>
+                <div class="product-type-card">
+                    <div class="product-type-header">
+                        <span class="product-icon">🥤</span>
+                        <h3>2. Weight Loss Protein Powders and Meal Replacement Shakes</h3>
+                    </div>
+                    <div class="product-type-content">
+                        <p>Modern protein blends (plant or whey) help control hunger and preserve muscle during calorie deficit. High-quality protein powders can:</p>
+                        <ul>
+                            <li>Increase satiety and reduce cravings</li>
+                            <li>Preserve lean muscle mass during weight loss</li>
+                            <li>Support metabolism and recovery</li>
+                            <li>Provide essential amino acids for optimal health</li>
+                        </ul>
+                        <div class="info-box success">
+                            <strong>Top sellers:</strong> Clean protein powder, weight loss shakes for women, vegan and bulk protein shakes; always check labels for added sugars and filler carbs. Look for products with at least 20g protein per serving and minimal added ingredients.
+                        </div>
+                        <p><strong>Use:</strong> Meal replacement for busy mornings, post-workout, or on-the-go support. Replace one meal per day with a quality protein shake to create a sustainable calorie deficit.</p>
+                    </div>
+                </div>
 
-                <h3>3. Weight Loss Supplements and Snacks</h3>
-                <p>Gummies, capsules, green teas, and metabolism-boosters (not all products live up to promises). When choosing supplements:</p>
-                <ul>
-                    <li>Look for third-party lab testing and certifications</li>
-                    <li>Check ingredient transparency and dosages</li>
-                    <li>Read real customer reviews and research</li>
-                    <li>Avoid products with excessive marketing claims</li>
-                </ul>
-                <p>Gut health and detox supplements may support digestion but are not magic fixes. Focus on whole foods, fiber, and probiotics for sustainable gut health.</p>
-                <p><strong>Top tip:</strong> Focus on fiber-rich, high-protein snacks to keep you satisfied between meals. Examples include nuts, Greek yogurt, protein bars, and vegetable sticks with hummus.</p>
+                <div class="product-type-card">
+                    <div class="product-type-header">
+                        <span class="product-icon">🍬</span>
+                        <h3>3. Weight Loss Supplements and Snacks</h3>
+                    </div>
+                    <div class="product-type-content">
+                        <p>Gummies, capsules, green teas, and metabolism-boosters (not all products live up to promises). When choosing supplements:</p>
+                        <ul>
+                            <li>Look for third-party lab testing and certifications</li>
+                            <li>Check ingredient transparency and dosages</li>
+                            <li>Read real customer reviews and research</li>
+                            <li>Avoid products with excessive marketing claims</li>
+                        </ul>
+                        <p>Gut health and detox supplements may support digestion but are not magic fixes. Focus on whole foods, fiber, and probiotics for sustainable gut health.</p>
+                        <div class="info-box tip">
+                            <strong>Top tip:</strong> Focus on fiber-rich, high-protein snacks to keep you satisfied between meals. Examples include nuts, Greek yogurt, protein bars, and vegetable sticks with hummus.
+                        </div>
+                    </div>
+                </div>
 
-                <h2 id="glp1">Trending Now: Weight Loss Gummies, GLP-1 Drops & "Biohacks"</h2>
-                <p>GLP-1 weight loss drops and weekly injections are gaining attention but require medical supervision. These prescription medications mimic natural hormones that regulate appetite and blood sugar. While effective for some, they come with potential side effects and must be prescribed by a healthcare provider.</p>
-                <p>Slimming gummies and appetite suppressant sprays are flooding the market—be skeptical. Look for transparent, science-backed brands with proven ingredients like fiber, protein, or clinically studied compounds. Many over-the-counter gummies contain minimal active ingredients and rely on marketing rather than results.</p>
-                <p>Fat burning creams and patches: data is limited, and results may be short-lived. These topical products may provide temporary water loss but don't address underlying fat metabolism. Focus on evidence-based approaches for sustainable results.</p>
+                <div class="trending-section">
+                    <h2 id="glp1">Trending Now: Weight Loss Gummies, GLP-1 Drops & "Biohacks"</h2>
+                    <div class="trending-card">
+                        <div class="trending-icon">💉</div>
+                        <div class="trending-content">
+                            <h4>GLP-1 Weight Loss Products</h4>
+                            <p>GLP-1 weight loss drops and weekly injections are gaining attention but require medical supervision. These prescription medications mimic natural hormones that regulate appetite and blood sugar. While effective for some, they come with potential side effects and must be prescribed by a healthcare provider.</p>
+                        </div>
+                    </div>
+                    <div class="trending-card">
+                        <div class="trending-icon">🍬</div>
+                        <div class="trending-content">
+                            <h4>Slimming Gummies & Sprays</h4>
+                            <p>Slimming gummies and appetite suppressant sprays are flooding the market—be skeptical. Look for transparent, science-backed brands with proven ingredients like fiber, protein, or clinically studied compounds. Many over-the-counter gummies contain minimal active ingredients and rely on marketing rather than results.</p>
+                        </div>
+                    </div>
+                    <div class="trending-card">
+                        <div class="trending-icon">🧴</div>
+                        <div class="trending-content">
+                            <h4>Fat Burning Creams & Patches</h4>
+                            <p>Data is limited, and results may be short-lived. These topical products may provide temporary water loss but don't address underlying fat metabolism. Focus on evidence-based approaches for sustainable results.</p>
+                        </div>
+                    </div>
+                </div>
 
-                <h2 id="patches">Are Weight Loss Teas, Herbal Pills, and Detox Drinks Worth It?</h2>
-                <p>Green tea, coffee, herbal blends, and hot chocolate "fat burners" may give a small metabolic boost, but cannot replace diet/exercise or medical advice. Caffeine and compounds like EGCG in green tea can slightly increase metabolism, but the effect is modest (about 3-4% increase).</p>
-                <p>Detox drinks and "quick cleanses" can aid water loss, not fat loss—use as an occasional reset, not a long-term strategy. These products often cause temporary weight loss through dehydration, which returns once you resume normal eating. For real fat loss, focus on sustainable calorie deficit and regular exercise.</p>
+                <div class="tea-section">
+                    <h2 id="patches">Are Weight Loss Teas, Herbal Pills, and Detox Drinks Worth It?</h2>
+                    <div class="tea-card">
+                        <h4>🍵 Metabolic Boosters (Green Tea, Coffee, Herbal Blends)</h4>
+                        <p>Green tea, coffee, herbal blends, and hot chocolate "fat burners" may give a small metabolic boost, but cannot replace diet/exercise or medical advice. Caffeine and compounds like EGCG in green tea can slightly increase metabolism, but the effect is modest (about 3-4% increase).</p>
+                    </div>
+                    <div class="tea-card warning-card">
+                        <h4>🚫 Detox Drinks & Quick Cleanses</h4>
+                        <p>Detox drinks and "quick cleanses" can aid water loss, not fat loss—use as an occasional reset, not a long-term strategy. These products often cause temporary weight loss through dehydration, which returns once you resume normal eating. For real fat loss, focus on sustainable calorie deficit and regular exercise.</p>
+                    </div>
+                </div>
 
                 <h2 id="safety">FAQs – Your Weight Loss Product Questions Answered</h2>
 
@@ -205,15 +952,41 @@
                     </div>
                 </div>
 
-                <h2 id="tracking">Honest Advice: How to Choose a Weight Loss Product in Australia</h2>
-                <ul>
-                    <li><strong>Always prioritize Australian lab-tested products</strong> with clear ingredient listings and proven reviews. Look for TGA-approved products and third-party testing certifications.</li>
-                    <li><strong>Look for brands with money-back guarantees</strong>, expert backing, and transparent advice. Reputable companies stand behind their products and provide clear information.</li>
-                    <li><strong>Beware of dramatic claims</strong>—if it sounds too good to be true, it probably is. Sustainable weight loss takes time and consistent effort.</li>
-                    <li><strong>Check for scientific backing</strong>—look for products with research studies, not just testimonials.</li>
-                    <li><strong>Consider your lifestyle</strong>—choose products that fit your routine and are sustainable long-term.</li>
-                    <li><strong>Consult healthcare professionals</strong> before starting any new supplement, especially if you have medical conditions or take medications.</li>
-                </ul>
+                <div class="advice-section">
+                    <h2 id="tracking">Honest Advice: How to Choose a Weight Loss Product in Australia</h2>
+                    <div class="advice-grid">
+                        <div class="advice-card">
+                            <div class="advice-icon">✅</div>
+                            <h4>Lab-Tested Products</h4>
+                            <p>Always prioritize Australian lab-tested products with clear ingredient listings and proven reviews. Look for TGA-approved products and third-party testing certifications.</p>
+                        </div>
+                        <div class="advice-card">
+                            <div class="advice-icon">🛡️</div>
+                            <h4>Money-Back Guarantees</h4>
+                            <p>Look for brands with money-back guarantees, expert backing, and transparent advice. Reputable companies stand behind their products and provide clear information.</p>
+                        </div>
+                        <div class="advice-card">
+                            <div class="advice-icon">⚠️</div>
+                            <h4>Beware of Claims</h4>
+                            <p>Beware of dramatic claims—if it sounds too good to be true, it probably is. Sustainable weight loss takes time and consistent effort.</p>
+                        </div>
+                        <div class="advice-card">
+                            <div class="advice-icon">🔬</div>
+                            <h4>Scientific Backing</h4>
+                            <p>Check for scientific backing—look for products with research studies, not just testimonials.</p>
+                        </div>
+                        <div class="advice-card">
+                            <div class="advice-icon">📅</div>
+                            <h4>Lifestyle Fit</h4>
+                            <p>Consider your lifestyle—choose products that fit your routine and are sustainable long-term.</p>
+                        </div>
+                        <div class="advice-card">
+                            <div class="advice-icon">👨‍⚕️</div>
+                            <h4>Consult Professionals</h4>
+                            <p>Consult healthcare professionals before starting any new supplement, especially if you have medical conditions or take medications.</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="cta-box" style="background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); color: white; padding: 2.5rem; border-radius: 20px; margin: 3rem 0; text-align: center; box-shadow: 0 8px 32px rgba(23,92,54,0.2);">
                     <h2 style="color: white; margin-bottom: 1rem;">Product Picks & Resources</h2>
@@ -241,11 +1014,13 @@
                 <p>Focus on evidence-based solutions: high-quality protein powders for meal replacement, whole food snacks for satiety, and supplements that fill nutritional gaps. Avoid products with unrealistic claims, hidden ingredients, or promises of rapid results without effort.</p>
                 <p>Get real, sustainable weight loss support—Australia-wide. Shop NutriThrive's premium, science-backed protein blends, superfood shakes, and support tools today. Our lab-tested products are designed to support your health goals with transparency, quality, and proven results.</p>
 
-                <div class="cta-box" style="background: #f8f5ec; border: 3px solid #175c36; padding: 2rem; border-radius: 15px; margin: 3rem 0; text-align: center;">
-                    <h3 style="color: #175c36; margin-bottom: 1rem;">Ready to Start Your Weight Loss Journey?</h3>
-                    <p style="margin-bottom: 1.5rem; color: #1a2e22;">Discover NutriThrive's premium protein powders and superfood supplements designed to support sustainable weight loss.</p>
-                    <a href="../products/products.html" class="btn btn-primary" style="background: #175c36; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; margin-right: 1rem;">Shop Products →</a>
-                    <a href="../about/about.html" class="btn btn-secondary" style="background: transparent; color: #175c36; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; border: 2px solid #175c36;">Learn More</a>
+                <div class="cta-box-final">
+                    <h3>Ready to Start Your Weight Loss Journey?</h3>
+                    <p>Discover NutriThrive's premium protein powders and superfood supplements designed to support sustainable weight loss.</p>
+                    <div class="cta-buttons">
+                        <a href="../products/products.html" class="btn-primary-new">Shop Products →</a>
+                        <a href="../about/about.html" class="btn-secondary-new">Learn More</a>
+                    </div>
                 </div>
             </div>
         </article>
