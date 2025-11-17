@@ -9,124 +9,88 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
     :root {
-      --bg-1: #F9E7B2;
-      --bg-2: #DDC57A;
-      --card: rgba(249, 231, 178, 0.92);
-      --chip: rgba(221, 197, 122, 0.75);
-      --chip-active: #D34E4E;
-      --text-dark: #4C2A1A;
-      --text-muted: #8A5E3C;
+      --bg: #F9E7B2;
+      --paper: #FFFDF6;
+      --card: #FFF2CE;
+      --ink: #3B2B1F;
+      --muted: #7B5E3C;
       --accent: #D34E4E;
+      --accent-soft: #DDC57A;
       --accent-dark: #CE7E5A;
-      --accent-soft: #F9E7B2;
-      --border: rgba(206, 126, 90, 0.35);
+      --line: #E7D5AA;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, var(--bg-1), var(--bg-2));
+      background-color: var(--bg);
+      background-image: linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+      background-size: 28px 28px;
+      color: var(--ink);
       min-height: 100vh;
-      color: var(--text-dark);
     }
 
     .page {
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 32px 20px 60px;
-      position: relative;
+      padding: 32px 24px 72px;
     }
 
-    .bubble {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(40px);
-      opacity: 0.5;
-      z-index: 0;
-    }
-
-    .bubble.one {
-      width: 280px;
-      height: 280px;
-      background: #D34E4E;
-      top: 10%;
-      left: -60px;
-    }
-
-    .bubble.two {
-      width: 220px;
-      height: 220px;
-      background: #CE7E5A;
-      bottom: 8%;
-      right: -40px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 32px;
-      position: relative;
-      z-index: 1;
-    }
+    header { text-align: center; margin-bottom: 32px; }
 
     h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.3rem);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .highlight {
-      background: var(--card);
-      color: var(--accent);
-      padding: 4px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--paper);
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 12px;
     }
 
     .subtitle {
       max-width: 640px;
       margin: 12px auto 0;
-      color: var(--text-muted);
+      color: var(--muted);
       line-height: 1.6;
+      font-size: 1rem;
     }
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 22px;
-      position: relative;
-      z-index: 1;
+      grid-template-columns: minmax(0,1fr) minmax(0,1.05fr);
+      gap: 24px;
     }
 
-    @media (max-width: 920px) {
-      .layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
     }
 
     .panel {
-      background: var(--card);
-      border-radius: 24px;
-      padding: 24px;
-      border: 2px solid var(--border);
-      box-shadow: none;
+      background: var(--paper);
+      border-radius: 20px;
+      padding: 28px;
+      border: 2px solid var(--line);
     }
 
     .section-label {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
     .chip-row {
@@ -136,168 +100,163 @@
     }
 
     .chip {
-      border: 2px solid var(--border);
-      border-radius: 999px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
       padding: 10px 16px;
-      background: var(--chip);
+      background: var(--card);
+      color: var(--ink);
       cursor: pointer;
       font-weight: 600;
-      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      transition: background 0.15s ease, color 0.15s ease;
     }
 
     .chip.active {
-      background: var(--chip-active);
-      color: #F9E7B2;
-      border-color: var(--chip-active);
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
     }
 
     .tip-card {
       margin-top: 20px;
-      border-radius: 18px;
-      padding: 14px 16px;
-      background: #F9E7B2;
-      border: 2px solid var(--border);
-      color: #6A3C24;
+      padding: 16px 18px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--muted);
       font-size: 0.9rem;
       line-height: 1.5;
     }
 
     .cta-buttons {
-      margin-top: 18px;
+      margin-top: 22px;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
     }
 
     .btn-action {
       border: none;
-      border-radius: 18px;
-      padding: 12px 20px;
-      font-size: 1rem;
+      border-radius: 14px;
+      padding: 12px 22px;
       font-weight: 600;
+      font-size: 1rem;
       cursor: pointer;
-      transition: transform 0.2s ease;
     }
 
     .btn-action.generate {
-      background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+      background: var(--accent);
       color: #fff;
     }
 
     .btn-action.clear {
-      background: var(--accent-soft);
-      border: 2px solid var(--border);
-      color: var(--text-dark);
-    }
-
-    .btn-action:hover {
-      transform: translateY(-2px);
+      background: transparent;
+      border: 2px solid var(--line);
+      color: var(--ink);
     }
 
     .status-note {
-      margin-top: 12px;
+      margin-top: 14px;
+      color: var(--muted);
       font-size: 0.9rem;
-      color: var(--text-muted);
     }
 
-    .recipes-area {
-      display: grid;
-      gap: 16px;
-    }
+    .recipes-area { display: grid; gap: 18px; }
 
     .recipe-card {
       background: #fff;
-      border-radius: 22px;
-      padding: 18px;
-      border: 1px solid rgba(0,0,0,0.05);
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      padding: 20px 22px;
     }
 
     .recipe-heading {
       display: flex;
       justify-content: space-between;
+      gap: 10px;
       align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .recipe-heading h3 { margin: 0; font-size: 1.25rem; }
+
+    .label-pill {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--ink);
+    }
+
+    .tag-set {
+      margin: 6px 0 12px;
+      display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
 
-    .recipe-heading h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .tag-set {
-      margin-top: 10px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
     .tag-pill {
-      font-size: 0.75rem;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 4px 10px;
-      border: 1px solid rgba(0,0,0,0.09);
-      background: rgba(0,0,0,0.04);
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      background: var(--card);
     }
 
     ul, ol {
-      margin: 10px 0 0;
+      margin: 8px 0 0;
       padding-left: 18px;
-      color: var(--text-dark);
-      line-height: 1.6;
+      color: var(--ink);
     }
 
     .nutrition {
-      margin-top: 10px;
-      background: rgba(211, 78, 78, 0.1);
-      border-radius: 14px;
+      margin-top: 12px;
+      border-radius: 12px;
+      border: 1px dashed var(--accent-dark);
       padding: 10px 12px;
       font-size: 0.85rem;
+      color: var(--accent-dark);
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
     }
 
     .recipe-cta {
-      margin-top: 12px;
+      margin-top: 14px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
 
-    .recipe-cta button,
-    .recipe-cta a {
-      border-radius: 16px;
-      padding: 8px 14px;
+    .recipe-cta button, .recipe-cta a {
       border: none;
-      text-decoration: none;
+      border-radius: 12px;
+      padding: 10px 16px;
       font-weight: 600;
       cursor: pointer;
       font-size: 0.9rem;
     }
 
-    .recipe-cta button {
-      background: var(--accent);
-      color: #fff;
-    }
-
+    .recipe-cta button { background: var(--accent); color: #fff; }
     .recipe-cta a {
       background: var(--accent-soft);
-      border: 2px solid var(--border);
-      color: var(--text-dark);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      text-decoration: none;
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 36px;
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      color: var(--muted);
+      font-size: 0.85rem;
     }
-  </style>
+  </style></style>
 </head>
 <body>
-  <div class="bubble one"></div>
-  <div class="bubble two"></div>
   <div class="page">
     <header>
       <div class="highlight">⚡ Instant ideas • 🛒 Shop-ready</div>
