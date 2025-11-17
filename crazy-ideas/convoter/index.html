@@ -163,6 +163,8 @@
     }
   </style>
   <script src="pdf.min.js"></script>
+  <script src="pdf.worker.min.js" type="text/javascript"></script>
+  <script src="jspdf.umd.min.js"></script>
   <script>
     if (window.pdfjsLib) {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
@@ -176,6 +178,7 @@
       <p class="subtitle">Drop a PDF, extract clean text instantly, then keep the focus going with Australia’s favourite superfoods.</p>
     </header>
     <div class="layout">
+      <!-- existing layout content follows -->
       <section class="panel">
         <p class="section-title">Upload your PDF</p>
         <div class="drop-zone" id="dropZone">
@@ -217,6 +220,20 @@
         </div>
       </section>
     </div>
+
+    <section class="panel" id="txtPanel">
+      <p class="section-title">New · TXT to PDF</p>
+      <p style="margin:0;color:var(--muted);">Paste or upload plain text, then download a beautifully formatted PDF.</p>
+      <textarea id="txtInput" placeholder="Type or paste your text here..." style="min-height:220px;"></textarea>
+      <div class="btn-row">
+        <button class="btn outline" id="txtUploadBtn">Upload .txt</button>
+        <button class="btn outline" id="txtSampleBtn">Load sample text</button>
+        <button class="btn accent" id="txtConvertBtn">Make PDF</button>
+      </div>
+      <input type="file" id="txtFileInput" accept="text/plain" style="display:none" />
+      <div class="status" id="txtStatus">Waiting for your words.</div>
+    </section>
+
     <footer>
       Conversion happens locally using PDF.js. Scanned/image-only PDFs may need OCR before extracting text.
     </footer>
@@ -368,6 +385,74 @@
     newsletterLink.addEventListener('click', (e) => {
       e.preventDefault();
       alert('Hook this link up to your email platform to capture leads.');
+    });
+
+    // --- TXT to PDF ---
+    const txtInput = document.getElementById('txtInput');
+    const txtUploadBtn = document.getElementById('txtUploadBtn');
+    const txtSampleBtn = document.getElementById('txtSampleBtn');
+    const txtConvertBtn = document.getElementById('txtConvertBtn');
+    const txtFileInput = document.getElementById('txtFileInput');
+    const txtStatus = document.getElementById('txtStatus');
+
+    function setTxtStatus(msg) { txtStatus.textContent = msg; }
+
+    txtUploadBtn.addEventListener('click', () => txtFileInput.click());
+    txtFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (file.type !== 'text/plain') {
+        setTxtStatus('Please choose a plain .txt file.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        txtInput.value = reader.result;
+        setTxtStatus(`Loaded ${file.name}`);
+      };
+      reader.onerror = () => setTxtStatus('Could not read that file.');
+      reader.readAsText(file);
+    });
+
+    txtSampleBtn.addEventListener('click', () => {
+      txtInput.value = 'NutriThrive PDF maker demo
+
+• Use this tool to turn quick notes into ready-to-share PDFs.
+• Outline your smoothie recipes, grocery lists, or wellness challenges.
+• Add more text, then tap Make PDF!';
+      setTxtStatus('Sample text loaded.');
+    });
+
+    txtConvertBtn.addEventListener('click', () => {
+      const text = txtInput.value.trim();
+      if (!text) {
+        setTxtStatus('Type or paste some text first.');
+        return;
+      }
+      if (!window.jspdf || !window.jspdf.jsPDF) {
+        setTxtStatus('PDF generator missing. Please reload.');
+        return;
+      }
+      txtConvertBtn.disabled = true;
+      setTxtStatus('Rendering PDF…');
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+        const margin = 48;
+        const width = doc.internal.pageSize.getWidth() - margin * 2;
+        const lines = doc.splitTextToSize(text, width);
+        doc.setFont('Times','Normal');
+        doc.setFontSize(12);
+        doc.text(lines, margin, margin + 12);
+        const filename = 'nutrithrive-notes.pdf';
+        doc.save(filename);
+        setTxtStatus('PDF downloaded!');
+      } catch (err) {
+        console.error(err);
+        setTxtStatus('Could not create PDF.');
+      } finally {
+        txtConvertBtn.disabled = false;
+      }
     });
   </script>
 </body>
