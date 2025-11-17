@@ -294,8 +294,15 @@
       if (file) handleFile(file);
     });
 
+    function isPdfFile(file) {
+      if (!file) return false;
+      if (file.type === 'application/pdf') return true;
+      if (file.name && /\.pdf$/i.test(file.name)) return true;
+      return false;
+    }
+
     function handleFile(file) {
-      if (file.type !== 'application/pdf') {
+      if (!isPdfFile(file)) {
         setStatus('That file is not a PDF. Choose a .pdf file.');
         convertBtn.disabled = true;
         resetResults();
@@ -307,15 +314,26 @@
       resetResults();
     }
 
-    sampleBtn.addEventListener('click', () => {
+    function createDemoFile() {
       setStatus('Loading demo PDF…');
       const byteString = atob(SAMPLE_PDF_BASE64.replace(/\s+/g, ''));
       const array = new Uint8Array(byteString.length);
       for (let i = 0; i < byteString.length; i++) {
         array[i] = byteString.charCodeAt(i);
       }
-      const file = new File([array], 'nutrithrive-demo.pdf', { type: 'application/pdf' });
-      handleFile(file);
+      try {
+        return new File([array], 'nutrithrive-demo.pdf', { type: 'application/pdf' });
+      } catch (err) {
+        const blob = new Blob([array], { type: 'application/pdf' });
+        blob.name = 'nutrithrive-demo.pdf';
+        blob.lastModified = Date.now();
+        return blob;
+      }
+    }
+
+    sampleBtn.addEventListener('click', () => {
+      const demo = createDemoFile();
+      handleFile(demo);
     });
 
     convertBtn.addEventListener('click', async () => {
@@ -419,11 +437,13 @@
     });
 
     txtSampleBtn.addEventListener('click', () => {
-      txtInput.value = 'NutriThrive PDF maker demo
-
-• Use this tool to turn quick notes into ready-to-share PDFs.
-• Outline your smoothie recipes, grocery lists, or wellness challenges.
-• Add more text, then tap Make PDF!';
+      txtInput.value = [
+        'NutriThrive PDF maker demo',
+        '',
+        '• Use this tool to turn quick notes into ready-to-share PDFs.',
+        '• Outline your smoothie recipes, grocery lists, or wellness challenges.',
+        '• Add more text, then tap Make PDF!'
+      ].join('\n');
       setTxtStatus('Sample text loaded.');
     });
 
