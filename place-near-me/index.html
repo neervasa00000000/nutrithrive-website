@@ -431,7 +431,7 @@
       <div>
         <div class="pill">
           <span class="pill-dot"></span>
-          Prototype – plug in live APIs later
+          Live API Ready – Add your Google API key below
         </div>
       </div>
     </header>
@@ -487,12 +487,29 @@
     </section>
   </div>
 
+  <!-- Google Places API - Add your API key here -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
+  
   <script>
-    // --- SAMPLE DATA ---
-    // In a real app, you'd fetch this from your backend, which pulls from:
-    // - Google Places / other APIs
-    // - Your own "deals" database
-    const places = [
+    // ============================================
+    // API CONFIGURATION
+    // ============================================
+    // STEP 1: Get your Google Places API key from:
+    // https://console.cloud.google.com/google/maps-apis
+    // 
+    // STEP 2: Replace 'YOUR_GOOGLE_API_KEY' above with your actual key
+    // 
+    // STEP 3: Enable these APIs in Google Cloud Console:
+    // - Places API
+    // - Places API (New)
+    // - Geocoding API (optional, for address lookup)
+    // ============================================
+    
+    const USE_LIVE_API = false; // Set to true when you have API key
+    const GOOGLE_API_KEY = 'YOUR_GOOGLE_API_KEY'; // Replace with your key
+    
+    // --- SAMPLE DATA (Fallback when API is not available) ---
+    const samplePlaces = [
       {
         id: "1",
         name: "Campus Kebabs & Grill",
