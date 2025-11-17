@@ -1416,7 +1416,7 @@
             tags: extractTagsFromOSM(place),
             deals: [],
             notes: place.type || 'Restaurant',
-            url: `https://www.openstreetmap.org/?mlat=${place.lat}&mlon=${place.lon}&zoom=15`
+            url: `https://www.google.com/maps/search/?api=1&query=${parseFloat(place.lat)},${parseFloat(place.lon)}`
           }));
         }
         return null;
