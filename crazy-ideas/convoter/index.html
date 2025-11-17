@@ -7,12 +7,15 @@
   <meta name="description" content="Free PDF to TXT converter. Drag in a PDF, extract clean text instantly, download or email it, then explore Australia’s favourite focus foods." />
   <style>
     :root {
-      --bg: #C2E2FA;
-      --panel: #FFF1CB;
-      --accent: #FF8F8F;
-      --accent-dark: #B7A3E3;
-      --ink: #2c1d2b;
-      --muted: #6b5169;
+      --seafoam: #B4DEBD;
+      --mist: #91C4C3;
+      --deep: #80A1BA;
+      --bg: var(--seafoam);
+      --panel: color-mix(in srgb, var(--seafoam) 70%, #ffffff);
+      --accent: var(--deep);
+      --accent-dark: var(--mist);
+      --ink: #203338;
+      --muted: #3f5860;
     }
 
     * { box-sizing: border-box; }
@@ -56,7 +59,7 @@
 
     .panel {
       background: var(--panel);
-      border: 2px solid var(--accent-dark);
+      border: 2px solid var(--accent);
       border-radius: 22px;
       padding: 28px;
       display: flex;
@@ -85,7 +88,7 @@
 
     .drop-zone.dragover {
       border-color: var(--accent-dark);
-      background: #ffe5e5;
+      background: color-mix(in srgb, var(--mist) 30%, #ffffff);
     }
 
     .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -96,7 +99,7 @@
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      border: 2px solid var(--accent-dark);
+      border: 2px solid var(--accent);
       background: transparent;
       color: var(--ink);
     }
@@ -121,7 +124,7 @@
       width: 100%;
       min-height: 260px;
       border-radius: 16px;
-      border: 2px solid var(--accent-dark);
+      border: 2px solid var(--accent);
       padding: 16px;
       background: #fff;
       color: var(--ink);
@@ -133,16 +136,16 @@
     .email-box input {
       flex: 1;
       border-radius: 12px;
-      border: 2px solid var(--accent-dark);
+      border: 2px solid var(--accent);
       padding: 10px 14px;
       background: #fff;
       color: var(--ink);
     }
 
     .cta-card {
-      border: 2px solid var(--accent-dark);
+      border: 2px solid var(--accent);
       border-radius: 18px;
-      background: #fff;
+      background: color-mix(in srgb, var(--mist) 20%, #ffffff);
       padding: 18px;
       color: var(--ink);
     }
