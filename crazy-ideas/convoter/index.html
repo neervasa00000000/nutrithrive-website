@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDF to TXT Converter | NutriThrive Quick Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Free PDF to TXT converter. Drag and drop your PDF, extract clean text instantly, download it, or email it to yourself. Includes optional wellness CTAs." />
+  <style>
+    :root {
+      --sand: #fdf7ec;
+      --paper: #ffffff;
+      --ink: #1f130b;
+      --muted: #6f5b4d;
+      --accent: #c05746;
+      --accent-dark: #8a3a2b;
+      --accent-soft: #fbe0c3;
+      --border: #e7d7c1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #fff8f0, var(--sand));
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    header { text-align: center; margin-bottom: 32px; }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); }
+    .subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--paper);
+      border-radius: 24px;
+      padding: 28px;
+      border: 2px solid var(--border);
+      box-shadow: 0 20px 60px rgba(18, 8, 4, 0.08);
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .drop-zone {
+      border: 2px dashed var(--accent);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--accent-soft);
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .drop-zone.dragover {
+      border-color: var(--accent-dark);
+      background: #ffeeda;
+    }
+
+    .drop-zone strong { color: var(--accent-dark); }
+
+    .btn {
+      border: none;
+      border-radius: 16px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn.accent { background: var(--accent); color: #fff; }
+    .btn.outline { background: transparent; border: 2px solid var(--border); color: var(--ink); }
+
+    .status { margin-top: 16px; font-size: 0.95rem; color: var(--muted); }
+
+    .results {
+      margin-top: 24px;
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 280px;
+      border-radius: 16px;
+      border: 2px solid var(--border);
+      padding: 16px;
+      font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+      background: #fffbf5;
+      color: var(--ink);
+    }
+
+    .cta-card {
+      border-radius: 18px;
+      border: 2px solid var(--border);
+      padding: 16px;
+      background: var(--accent-soft);
+    }
+
+    .cta-card h3 { margin: 0 0 6px; }
+
+    .cta-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-weight: 600;
+      margin-right: 8px;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .email-box {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .email-box input {
+      flex: 1;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      padding: 10px 14px;
+      font-size: 0.95rem;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js" integrity="sha512-smkbnVClLwHxZ34rnOG0r8QODB3EuazSVT849NE0sTAhFGB4L2eNj8iRlB4pOyDOW5uErIvxDeR3vXTZVKNAyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    if (pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
+    }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>PDF to TXT Converter</h1>
+      <p class="subtitle">Drag in a PDF, extract clean text instantly, then download it or email it to yourself. After you convert, grab a little wellness boost with our best-selling superfoods.</p>
+    </header>
+    <div class="layout">
+      <section class="panel">
+        <p class="section-title">Step 1 · Upload your PDF</p>
+        <div class="drop-zone" id="dropZone">
+          <p><strong>Drop your PDF anywhere in this card</strong></p>
+          <p>or click to choose a file from your computer</p>
+          <small>Max 25MB · Text-based PDFs work best</small>
+        </div>
+        <input type="file" id="fileInput" accept="application/pdf" style="display:none" />
+        <div class="status" id="statusText">No file selected yet.</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+          <button class="btn outline" id="demoBtn">Try sample PDF</button>
+          <button class="btn accent" id="convertBtn" disabled>Convert to TXT</button>
+        </div>
+      </section>
+      <section class="panel">
+        <p class="section-title">Step 2 · Download & share</p>
+        <div class="results" id="resultsBlock">
+          <textarea id="textOutput" spellcheck="false"></textarea>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn accent" id="downloadBtn">Download TXT</button>
+            <button class="btn outline" id="copyBtn">Copy all text</button>
+          </div>
+          <label for="emailInput" style="font-weight:600;">Email it to yourself (optional)</label>
+          <div class="email-box">
+            <input type="email" id="emailInput" placeholder="you@example.com" />
+            <button class="btn accent" id="emailBtn">Email my file</button>
+          </div>
+          <small style="color:var(--muted);">We’ll open your email client with the text already attached.</small>
+        </div>
+        <div class="cta-card">
+          <h3>Love free tools? Try these next.</h3>
+          <p>Stay sharp while you work: convert your file, then fuel up with Australia’s #1 superfoods.</p>
+          <div class="cta-links">
+            <a href="https://nutrithrive.com.au/pages/products/product-detail.html">Moringa Focus Powder →</a>
+            <a href="https://nutrithrive.com.au/pages/products/product-black-tea.html">Darjeeling Brain Tea →</a>
+            <a href="https://nutrithrive.com.au/pages/blog/blog.html">More wellness tools →</a>
+          </div>
+          <p style="margin-top:10px;">Batch conversions + future freebies? <a href="#" id="newsletterLink" style="color:var(--accent-dark); font-weight:600;">Join the newsletter</a></p>
+        </div>
+      </section>
+    </div>
+    <footer>
+      Your file never leaves this browser. Conversion runs locally using PDF.js. For best results, use text-based PDFs (scanned images require OCR).
+    </footer>
+  </div>
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const convertBtn = document.getElementById('convertBtn');
+    const statusText = document.getElementById('statusText');
+    const resultsBlock = document.getElementById('resultsBlock');
+    const textOutput = document.getElementById('textOutput');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const emailBtn = document.getElementById('emailBtn');
+    const emailInput = document.getElementById('emailInput');
+    const demoBtn = document.getElementById('demoBtn');
+    const newsletterLink = document.getElementById('newsletterLink');
+
+    let currentFile = null;
+    let extractedText = '';
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleFile(e.target.files[0]);
+    });
+
+    ;['dragenter','dragover'].forEach(evt => dropZone.addEventListener(evt, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.add('dragover');
+    }));
+
+    ;['dragleave','drop'].forEach(evt => dropZone.addEventListener(evt, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.remove('dragover');
+    }));
+
+    dropZone.addEventListener('drop', (e) => {
+      const file = e.dataTransfer.files[0];
+      if (file) handleFile(file);
+    });
+
+    function handleFile(file) {
+      if (file.type !== 'application/pdf') {
+        statusText.textContent = 'Please upload a PDF file.';
+        convertBtn.disabled = true;
+        return;
+      }
+      currentFile = file;
+      statusText.textContent = `Ready to convert: ${file.name}`;
+      convertBtn.disabled = false;
+    }
+
+    demoBtn.addEventListener('click', async () => {
+      const sampleUrl = 'https://arxiv.org/pdf/2203.00001.pdf';
+      statusText.textContent = 'Downloading sample PDF…';
+      try {
+        const res = await fetch(sampleUrl);
+        const blob = await res.blob();
+        const file = new File([blob], 'sample.pdf', { type: 'application/pdf' });
+        handleFile(file);
+      } catch (err) {
+        statusText.textContent = 'Could not load sample. Try uploading your own PDF.';
+      }
+    });
+
+    convertBtn.addEventListener('click', () => {
+      if (!currentFile) return;
+      convertBtn.disabled = true;
+      statusText.textContent = 'Converting…';
+      extractTextFromPdf(currentFile)
+        .then(text => {
+          extractedText = text.trim();
+          textOutput.value = extractedText || '[No readable text found.]';
+          resultsBlock.style.display = 'flex';
+          statusText.textContent = 'Conversion complete ✅';
+        })
+        .catch(err => {
+          console.error(err);
+          statusText.textContent = 'Something went wrong. Please try another PDF.';
+        })
+        .finally(() => {
+          convertBtn.disabled = false;
+        });
+    });
+
+    async function extractTextFromPdf(file) {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      let text = '';
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        statusText.textContent = `Reading page ${pageNum} of ${pdf.numPages}…`;
+        const page = await pdf.getPage(pageNum);
+        const content = await page.getTextContent();
+        const pageText = content.items.map(item => item.str).join(' ');
+        text += pageText + '\n\n';
+      }
+      return text;
+    }
+
+    downloadBtn.addEventListener('click', () => {
+      if (!extractedText) return;
+      const blob = new Blob([extractedText], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const base = currentFile ? currentFile.name.replace(/\.pdf$/i, '') : 'converted';
+      a.download = `${base || 'converted'}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(extractedText);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy all text', 1500);
+      } catch (err) {
+        alert('Could not copy. Please select the text manually.');
+      }
+    });
+
+    emailBtn.addEventListener('click', () => {
+      const email = emailInput.value.trim();
+      if (!email) {
+        alert('Enter your email address first.');
+        return;
+      }
+      if (!extractedText) {
+        alert('Convert a PDF before emailing.');
+        return;
+      }
+      const snippet = extractedText.slice(0, 1500);
+      const subject = encodeURIComponent('Your converted PDF text');
+      const body = encodeURIComponent(snippet + '\n\nDownload full text inside the converter.');
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    });
+
+    newsletterLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Hook this to your email provider. For now, capture emails via your existing newsletter form.');
+    });
+  </script>
+</body>
+</html>
