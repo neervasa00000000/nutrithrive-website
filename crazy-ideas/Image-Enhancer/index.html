@@ -184,6 +184,19 @@
       border: 1px solid var(--border);
       background: #fff;
       object-fit: contain;
+      display: none;
+    }
+
+    .preview-card img.visible {
+      display: block;
+    }
+
+    .empty-state {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 12px;
+      width: 100%;
     }
 
     .controls {
@@ -278,10 +291,12 @@
           <div class="preview-card">
             <span>Original</span>
             <img id="inputImg" alt="Original preview" />
+            <div class="empty-state" id="originalEmpty">Drop an image to see the original preview.</div>
           </div>
           <div class="preview-card">
             <span>Enhanced</span>
             <img id="outputImg" alt="Enhanced preview" />
+            <div class="empty-state" id="enhancedEmpty">Enhance the photo to view the result.</div>
           </div>
         </div>
       </section>
@@ -344,6 +359,8 @@
     const brightnessLabel = document.getElementById('brightnessLabel');
     const contrastLabel = document.getElementById('contrastLabel');
     const warmthLabel = document.getElementById('warmthLabel');
+    const originalEmpty = document.getElementById('originalEmpty');
+    const enhancedEmpty = document.getElementById('enhancedEmpty');
     const canvas = document.getElementById('hiddenCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -369,14 +386,22 @@
       if (e.target.files[0]) loadImage(e.target.files[0]);
     });
 
+    function resetOutputs() {
+      outputImg.classList.remove('visible');
+      outputImg.src = '';
+      enhancedEmpty.style.display = 'block';
+      downloadLink.style.display = 'none';
+    }
+
     function loadImage(file) {
       const reader = new FileReader();
       reader.onload = (evt) => {
         uploadedImg = new Image();
         uploadedImg.onload = () => {
           inputImg.src = uploadedImg.src;
-          outputImg.src = '';
-          downloadLink.style.display = 'none';
+          inputImg.classList.add('visible');
+          originalEmpty.style.display = 'none';
+          resetOutputs();
           enhanceBtn.disabled = false;
         };
         uploadedImg.src = evt.target.result;
@@ -411,6 +436,8 @@
       ctx.putImageData(imageData, 0, 0);
       const resultURL = canvas.toDataURL('image/png');
       outputImg.src = resultURL;
+      outputImg.classList.add('visible');
+      enhancedEmpty.style.display = 'none';
       downloadLink.href = resultURL;
       downloadLink.download = 'nutrithrive-enhanced.png';
       downloadLink.style.display = 'inline-flex';
