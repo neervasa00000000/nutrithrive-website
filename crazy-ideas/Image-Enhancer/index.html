@@ -374,7 +374,7 @@
     const ctx = canvas.getContext('2d');
 
     let uploadedImg = null;
-    let pendingFrame = null;
+    let pendingTimeout = null;
 
     uploadTrigger.addEventListener('click', () => fileInput.click());
 
@@ -492,17 +492,19 @@
 
     function scheduleEnhancement() {
       if (!uploadedImg) return;
-      if (pendingFrame) return;
-      pendingFrame = requestAnimationFrame(() => {
-        pendingFrame = null;
+      if (pendingTimeout) {
+        clearTimeout(pendingTimeout);
+      }
+      pendingTimeout = setTimeout(() => {
+        pendingTimeout = null;
         runEnhancements();
-      });
+      }, 120);
     }
 
     enhanceBtn.addEventListener('click', () => {
-      if (pendingFrame) {
-        cancelAnimationFrame(pendingFrame);
-        pendingFrame = null;
+      if (pendingTimeout) {
+        clearTimeout(pendingTimeout);
+        pendingTimeout = null;
       }
       runEnhancements();
     });
