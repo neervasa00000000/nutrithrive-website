@@ -374,6 +374,7 @@
     const ctx = canvas.getContext('2d');
 
     let uploadedImg = null;
+    let pendingFrame = null;
 
     uploadTrigger.addEventListener('click', () => fileInput.click());
 
@@ -418,7 +419,7 @@
       reader.readAsDataURL(file);
     }
 
-    function applyEnhancements() {
+    function runEnhancements() {
       if (!uploadedImg) return;
       canvas.width = uploadedImg.width;
       canvas.height = uploadedImg.height;
@@ -489,11 +490,24 @@
       return Math.min(Math.max(value, min), max);
     }
 
-    enhanceBtn.addEventListener('click', applyEnhancements);
-    [brightnessRange, contrastRange, warmthRange, sharpnessRange].forEach(range => {
-      range.addEventListener('input', () => {
-        if (uploadedImg) applyEnhancements();
+    function scheduleEnhancement() {
+      if (!uploadedImg) return;
+      if (pendingFrame) return;
+      pendingFrame = requestAnimationFrame(() => {
+        pendingFrame = null;
+        runEnhancements();
       });
+    }
+
+    enhanceBtn.addEventListener('click', () => {
+      if (pendingFrame) {
+        cancelAnimationFrame(pendingFrame);
+        pendingFrame = null;
+      }
+      runEnhancements();
+    });
+    [brightnessRange, contrastRange, warmthRange, sharpnessRange].forEach(range => {
+      range.addEventListener('input', scheduleEnhancement);
     });
   </script>
 </body>
