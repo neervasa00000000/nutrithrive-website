@@ -1005,37 +1005,6 @@
       return null;
     }
 
-    function estimatePriceFromPlace(place) {
-      // Estimate price based on place type and rating
-      // This is a rough estimate - you'd want real price data
-      if (place.price_level !== undefined) {
-        // Google provides price_level: 0-4
-        const priceMap = { 0: 8, 1: 12, 2: 18, 3: 25, 4: 35 };
-        return priceMap[place.price_level] || 15;
-      }
-      return 15; // Default estimate
-    }
-
-    function extractTags(place) {
-      const tags = [];
-      const typeMap = {
-        'restaurant': 'restaurant',
-        'food': 'food',
-        'meal_takeaway': 'takeaway',
-        'cafe': 'cafe',
-        'bakery': 'bakery',
-        'meal_delivery': 'delivery'
-      };
-      
-      if (place.types) {
-        place.types.forEach(type => {
-          if (typeMap[type] && !tags.includes(typeMap[type])) {
-            tags.push(typeMap[type]);
-          }
-        });
-      }
-      return tags;
-    }
 
 
     // --- GEOLOCATION ---
