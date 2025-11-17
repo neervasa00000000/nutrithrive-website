@@ -7,15 +7,10 @@
   <meta name="description" content="Free PDF to TXT converter. Drag in a PDF, extract clean text instantly, download or email it, then explore Australia’s favourite focus foods." />
   <style>
     :root {
-      --bg: #f9e7b2;
-      --paper: #fffdf6;
-      --card: #fff2ce;
-      --ink: #3b2a1f;
-      --muted: #7a5d3c;
-      --accent: #d34e4e;
-      --accent-dark: #ce7e5a;
-      --accent-soft: #f6d9a6;
-      --line: #e7d5aa;
+      --bg: #450693;
+      --panel: #8C00FF;
+      --accent: #FF3F7F;
+      --highlight: #FFC400;
     }
 
     * { box-sizing: border-box; }
@@ -23,13 +18,12 @@
     body {
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-image: linear-gradient(transparent 27px, rgba(0,0,0,0.02) 28px),
-                        linear-gradient(90deg, transparent 27px, rgba(0,0,0,0.02) 28px);
-      background-size: 28px 28px;
-      background-color: var(--bg);
-      color: var(--ink);
+      background: var(--bg);
+      color: var(--highlight);
       min-height: 100vh;
     }
+
+    a { color: var(--highlight); }
 
     .page {
       max-width: 1200px;
@@ -37,7 +31,7 @@
       padding: 40px 20px 80px;
     }
 
-    header { text-align: center; margin-bottom: 36px; }
+    header { text-align: center; margin-bottom: 32px; }
 
     h1 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; }
 
@@ -45,7 +39,7 @@
       max-width: 640px;
       margin: 12px auto 0;
       line-height: 1.6;
-      color: var(--muted);
+      color: var(--highlight);
     }
 
     .layout {
@@ -59,8 +53,8 @@
     }
 
     .panel {
-      background: var(--paper);
-      border: 2px solid var(--line);
+      background: var(--panel);
+      border: 2px solid var(--accent);
       border-radius: 22px;
       padding: 28px;
       display: flex;
@@ -69,99 +63,111 @@
     }
 
     .section-title {
+      margin: 0;
       font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--muted);
-      margin: 0;
+      color: var(--highlight);
     }
 
     .drop-zone {
-      border: 2px dashed var(--accent-dark);
+      border: 2px dashed var(--accent);
       border-radius: 18px;
       padding: 36px;
       text-align: center;
-      background: var(--card);
+      background: var(--bg);
+      color: var(--highlight);
       cursor: pointer;
       transition: background 0.2s ease, border-color 0.2s ease;
     }
 
     .drop-zone.dragover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
+      background: var(--panel);
+      border-color: var(--highlight);
     }
-
-    .drop-zone p { margin: 6px 0; }
 
     .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .btn {
-      border: none;
       border-radius: 14px;
       padding: 11px 20px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
+      border: 2px solid var(--highlight);
+      background: transparent;
+      color: var(--highlight);
     }
 
-    .btn.accent { background: var(--accent); color: #fff; }
-    .btn.outline { background: transparent; border: 2px solid var(--line); color: var(--ink); }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn.accent {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--panel);
+    }
 
-    .status { color: var(--muted); font-size: 0.95rem; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .status { color: var(--highlight); font-size: 0.95rem; }
 
     .results {
       display: none;
       flex-direction: column;
       gap: 14px;
-      margin-top: 4px;
     }
 
     textarea {
       width: 100%;
       min-height: 260px;
       border-radius: 16px;
-      border: 2px solid var(--line);
+      border: 2px solid var(--accent);
       padding: 16px;
+      background: var(--bg);
+      color: var(--highlight);
       font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-      background: #fffaf2;
     }
 
-    .email-box { display: flex; flex-wrap: wrap; gap: 10px; }
+    .email-box { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .email-box input {
       flex: 1;
       border-radius: 12px;
-      border: 2px solid var(--line);
+      border: 2px solid var(--accent);
       padding: 10px 14px;
-      font-size: 0.95rem;
+      background: var(--bg);
+      color: var(--highlight);
     }
 
     .cta-card {
-      border: 2px solid var(--line);
+      border: 2px solid var(--accent);
       border-radius: 18px;
-      background: var(--card);
       padding: 18px;
+      background: var(--bg);
+      color: var(--highlight);
     }
 
     .cta-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
 
     .cta-links a {
-      padding: 8px 14px;
       border-radius: 999px;
-      border: 1px solid var(--accent);
+      padding: 8px 14px;
+      border: 2px solid var(--accent);
+      background: var(--accent);
+      color: var(--panel);
       text-decoration: none;
       font-weight: 600;
-      color: var(--accent-dark);
     }
 
     footer {
       margin-top: 40px;
       text-align: center;
-      color: var(--muted);
+      color: var(--highlight);
       font-size: 0.85rem;
     }
-  </style>
+
+    .drop-zone small,
+    .panel small,
+    label { color: var(--highlight); }
+  </style></style>
   <script src="pdf.min.js"></script>
   <script src="pdf.worker.min.js" type="text/javascript"></script>
   <script src="jspdf.umd.min.js"></script>
@@ -178,7 +184,7 @@
       <p class="subtitle">Drop a PDF, extract clean text instantly, then keep the focus going with Australia’s favourite superfoods.</p>
     </header>
     <div class="layout">
-      <!-- existing layout content follows -->
+      
       <section class="panel">
         <p class="section-title">Upload your PDF</p>
         <div class="drop-zone" id="dropZone">
