@@ -7,16 +7,14 @@
   <meta name="description" content="Free PDF to TXT converter. Drag in a PDF, extract clean text instantly, download or email it, then explore Australia’s favourite focus foods." />
   <style>
     :root {
-      --seafoam: #B4DEBD;
-      --mist: #91C4C3;
-      --deep: #80A1BA;
       --bg: #b7e2c3;
-      --panel: #ffffff;
-      --card: #f2f8f6;
-      --accent: #2d5061;
-      --accent-soft: #80A1BA;
-      --ink: #15303a;
-      --muted: #4f676f;
+      --surface: #ffffff;
+      --surface-alt: #eef6f1;
+      --accent: #38677a;
+      --accent-light: #5f8b9d;
+      --ink: #0f2530;
+      --muted: #4c646c;
+      --border: #86a8b5;
     }
 
     * { box-sizing: border-box; }
@@ -24,10 +22,7 @@
     body {
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-image:
-        linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 35%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%),
-        linear-gradient(0deg, var(--bg), var(--mist));
+      background: var(--bg);
       color: var(--ink);
       min-height: 100vh;
     }
@@ -35,18 +30,18 @@
     a { color: var(--accent); }
 
     .app-shell {
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 40px 20px 80px;
+      padding: 48px 20px 80px;
       display: flex;
       flex-direction: column;
       gap: 32px;
     }
 
     .hero {
-      background: var(--panel);
-      border: 1px solid var(--accent-soft);
-      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
       padding: 36px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -54,10 +49,10 @@
     }
 
     .eyebrow {
-      font-size: 0.85rem;
-      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--accent-soft);
+      color: var(--accent-light);
     }
 
     .hero h1 {
@@ -75,16 +70,16 @@
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       margin-top: 18px;
     }
 
     .badge {
-      padding: 6px 14px;
-      border: 1px solid var(--accent-soft);
+      padding: 6px 12px;
+      border: 1px solid var(--border);
       border-radius: 999px;
       font-size: 0.85rem;
-      background: var(--card);
+      background: var(--surface-alt);
       color: var(--accent);
     }
 
@@ -120,22 +115,22 @@
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      border: 1px solid var(--accent-soft);
-      border-radius: 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
       padding: 16px 18px;
-      background: var(--panel);
+      background: var(--surface);
     }
 
     .step-number {
       min-width: 36px;
       height: 36px;
       border-radius: 10px;
-      border: 1px solid var(--accent);
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      background: var(--card);
+      background: var(--surface-alt);
       color: var(--accent);
     }
 
@@ -164,9 +159,9 @@
     }
 
     .panel {
-      background: var(--panel);
-      border: 1px solid var(--accent-soft);
-      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 28px;
       display: flex;
       flex-direction: column;
@@ -195,41 +190,39 @@
     }
 
     .helper-card {
-      border: 1px solid var(--accent-soft);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 12px;
-      background: var(--card);
+      background: var(--surface-alt);
       font-size: 0.9rem;
       line-height: 1.4;
       color: var(--muted);
     }
 
     .drop-zone {
-      border: 1px dashed var(--accent);
-      border-radius: 16px;
-      padding: 36px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px;
       text-align: center;
-      background: #f7fbf7;
+      background: var(--surface-alt);
       color: var(--muted);
       cursor: pointer;
-      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
     .drop-zone.dragover {
       border-color: var(--accent);
-      background: #e5f2f1;
     }
 
     .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .btn {
-      border-radius: 12px;
-      padding: 11px 20px;
+      border-radius: 10px;
+      padding: 10px 18px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      border: 1px solid var(--accent);
-      background: transparent;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
       color: var(--ink);
     }
 
@@ -246,7 +239,8 @@
       font-size: 0.95rem;
       padding: 10px 14px;
       border-radius: 10px;
-      background: var(--card);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
     }
 
     .results {
@@ -260,8 +254,8 @@
     textarea {
       width: 100%;
       min-height: 260px;
-      border-radius: 14px;
-      border: 1px solid var(--accent-soft);
+      border-radius: 12px;
+      border: 1px solid var(--border);
       padding: 16px;
       background: #fff;
       color: var(--ink);
@@ -273,16 +267,16 @@
     .email-box input {
       flex: 1;
       border-radius: 10px;
-      border: 1px solid var(--accent-soft);
+      border: 1px solid var(--border);
       padding: 10px 14px;
       background: #fff;
       color: var(--ink);
     }
 
     .cta-card {
-      border: 1px solid var(--accent-soft);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      background: var(--card);
+      background: var(--surface-alt);
       padding: 18px;
       color: var(--ink);
     }
