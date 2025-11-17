@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cheap Food Deals Near Me</title>
+  <meta name="description" content="Find cheap food deals near you. Real-time recommendations using your location, showing places with student-friendly prices and deals (new-user and returning-user offers).">
+  <meta name="keywords" content="cheap food near me, food deals, student discounts, budget food, affordable restaurants, food deals near me, cheap eats">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Place Near Me">
+  <link rel="canonical" href="https://nutrithrive.com.au/place-near-me/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nutrithrive.com.au/place-near-me/">
+  <meta property="og:title" content="Cheap Food Deals Near Me">
+  <meta property="og:description" content="Find cheap food deals near you. Real-time recommendations using your location, showing places with student-friendly prices and deals.">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://nutrithrive.com.au/place-near-me/">
+  <meta property="twitter:title" content="Cheap Food Deals Near Me">
+  <meta property="twitter:description" content="Find cheap food deals near you. Real-time recommendations using your location, showing places with student-friendly prices and deals.">
+  
+  <style>
+    :root {
+      --bg: #f4f5fb;
+      --card-bg: #ffffff;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-subtle: #e5e7eb;
+      --radius-lg: 18px;
+      --shadow-soft: 0 14px 35px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Roboto", sans-serif;
+      background: radial-gradient(circle at top left, #e5f0ff, #fafafa 40%, #f4f4f5);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h1 span.icon {
+      font-size: 1.5em;
+    }
+
+    .subtitle {
+      margin-top: 4px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(37, 99, 235, 0.06);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #1d4ed8;
+      font-weight: 500;
+      align-self: flex-start;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    /* Controls */
+    .controls-card {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 10px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      backdrop-filter: blur(16px);
+      margin-bottom: 18px;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .controls-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .controls-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 0.82rem;
+    }
+
+    label {
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    select,
+    input[type="number"] {
+      padding: 7px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      outline: none;
+      background: #f9fafb;
+      transition: border-color 0.12s ease-out, box-shadow 0.12s ease-out,
+        background-color 0.12s ease-out;
+    }
+
+    select:focus,
+    input[type="number"]:focus {
+      border-color: var(--accent);
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
+    }
+
+    .secondary-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .checkbox-row input {
+      transform: scale(0.95);
+      accent-color: var(--accent);
+    }
+
+    .geo-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 11px;
+      font-size: 0.8rem;
+      background: #111827;
+      color: white;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.12s ease-out, transform 0.06s ease-out;
+    }
+
+    .geo-btn span {
+      font-size: 1.05rem;
+    }
+
+    .geo-btn:hover {
+      background: #020617;
+      transform: translateY(-1px);
+    }
+
+    .geo-status {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .clear-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      background: transparent;
+      color: #9ca3af;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.12s ease-out, background-color 0.12s ease-out;
+    }
+
+    .clear-btn:hover {
+      color: #4b5563;
+      background: #f3f4f6;
+    }
+
+    /* Results */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 16px;
+      padding: 12px 12px 11px;
+      border: 1px solid rgba(229, 231, 235, 0.9);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0,
+          rgba(37, 99, 235, 0.08),
+          transparent 55%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease-out;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .card-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 0.72rem;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      white-space: nowrap;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 2px 8px;
+      font-size: 0.72rem;
+      color: #4b5563;
+      background: #f9fafb;
+    }
+
+    .tag.deal {
+      border-color: #22c55e55;
+      background: #ecfdf5;
+      color: #15803d;
+    }
+
+    .tag.new-user {
+      border-color: #f9731655;
+      background: #fff7ed;
+      color: #c2410c;
+    }
+
+    .tag.returning {
+      border-color: #6366f155;
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    .card-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      margin-top: 4px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+      color: #f97316;
+    }
+
+    .rating span.star {
+      font-size: 0.9rem;
+    }
+
+    .card-notes {
+      font-size: 0.78rem;
+      color: #4b5563;
+    }
+
+    .deal-line {
+      font-size: 0.78rem;
+      color: #166534;
+      margin-top: 2px;
+    }
+
+    .deal-line span.label {
+      font-weight: 600;
+    }
+
+    .link-row {
+      margin-top: 2px;
+      font-size: 0.78rem;
+    }
+
+    .link-row a {
+      text-decoration: none;
+      color: #2563eb;
+    }
+
+    .link-row a:hover {
+      text-decoration: underline;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 32px 12px 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .empty-state span {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <h1><span class="icon">🍕</span> Cheap Food Deals Near Me</h1>
+        <div class="subtitle">
+          Real-time style recommendations using your location, showing places with student-friendly prices and deals
+          (new-user and returning-user offers).
+        </div>
+      </div>
+      <div>
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Prototype – plug in live APIs later
+        </div>
+      </div>
+    </header>
+
+    <section class="controls-card">
+      <div class="controls-grid">
+        <div class="field">
+          <label for="maxPrice">Max spend per person (AUD)</label>
+          <input id="maxPrice" type="number" min="5" step="1" value="20" />
+        </div>
+        <div class="field">
+          <label for="dealType">Deal type</label>
+          <select id="dealType">
+            <option value="any">Any deals</option>
+            <option value="new">New user only</option>
+            <option value="returning">Returning users too</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sortSelect">Sort by</label>
+          <select id="sortSelect">
+            <option value="distance">Closest first</option>
+            <option value="discount">Highest discount</option>
+            <option value="rating">Highest rating</option>
+            <option value="price">Cheapest first</option>
+          </select>
+        </div>
+      </div>
+      <div class="secondary-row">
+        <label class="checkbox-row">
+          <input type="checkbox" id="dealsOnly" checked />
+          Show places with deals only
+        </label>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <button class="geo-btn" id="geoBtn">
+            <span>📍</span> Use my location
+          </button>
+          <span id="geoStatus" class="geo-status">Location not set yet.</span>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div id="resultCount">Loading spots...</div>
+        <button class="clear-btn" id="clearFiltersBtn">⟳ Reset filters</button>
+      </div>
+    </section>
+
+    <section>
+      <div id="results" class="results-grid"></div>
+      <div id="emptyState" class="empty-state" style="display: none">
+        <span>🙈</span>
+        No places match those filters. Try lowering your budget or changing the deal type.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // --- SAMPLE DATA ---
+    // In a real app, you'd fetch this from your backend, which pulls from:
+    // - Google Places / other APIs
+    // - Your own "deals" database
+    const places = [
+      {
+        id: "1",
+        name: "Campus Kebabs & Grill",
+        suburb: "Clayton",
+        lat: -37.9105,
+        lng: 145.1332,
+        basePrice: 13,
+        rating: 4.3,
+        tags: ["halal", "wraps", "quick"],
+        deals: [
+          {
+            description: "15% off for students in-store (show ID)",
+            discountPercent: 15,
+            newUserOnly: false,
+            platform: "IN_STORE",
+            validTo: "2025-12-31",
+          },
+        ],
+        notes: "Halal kebabs, snack packs and falafel wraps. Perfect post-class meal.",
+        url: "https://maps.google.com/",
+      },
+      {
+        id: "2",
+        name: "Budget Buns Burger Co.",
+        suburb: "Melbourne CBD",
+        lat: -37.8124,
+        lng: 144.9624,
+        basePrice: 14,
+        rating: 4.4,
+        tags: ["burgers", "vegan", "gf"],
+        deals: [
+          {
+            description: "Buy 1 get 2nd burger 50% off (any user)",
+            discountPercent: 25,
+            newUserOnly: false,
+            platform: "IN_STORE",
+            validTo: "2025-11-30",
+          },
+          {
+            description: "40% off first Uber Eats order",
+            discountPercent: 40,
+            newUserOnly: true,
+            platform: "UBEREATS",
+            validTo: "2025-12-31",
+          },
+        ],
+        notes: "$10–14 burgers with vegan patties and gluten-free buns available.",
+        url: "https://maps.google.com/",
+      },
+      {
+        id: "3",
+        name: "Taste of India Express",
+        suburb: "Clayton",
+        lat: -37.9118,
+        lng: 145.1329,
+        basePrice: 12,
+        rating: 4.5,
+        tags: ["indian", "vegan", "halal"],
+        deals: [
+          {
+            description: "Lunch curry + rice combo for $10",
+            discountPercent: 20,
+            newUserOnly: false,
+            platform: "IN_STORE",
+            validTo: "2025-12-31",
+          },
+        ],
+        notes: "Curries, dosas and lots of vegan options. Great lunch specials.",
+        url: "https://maps.google.com/",
+      },
+      {
+        id: "4",
+        name: "City Falafel & Grill",
+        suburb: "Melbourne CBD",
+        lat: -37.8132,
+        lng: 144.964,
+        basePrice: 11,
+        rating: 4.5,
+        tags: ["middle eastern", "halal", "vegan"],
+        deals: [
+          {
+            description: "20% off first app order (own app)",
+            discountPercent: 20,
+            newUserOnly: true,
+            platform: "RESTAURANT_APP",
+            validTo: "2025-12-31",
+          },
+          {
+            description: "Free drink with returning orders over $20",
+            discountPercent: 10,
+            newUserOnly: false,
+            platform: "IN_STORE",
+            validTo: "2025-12-31",
+          },
+        ],
+        notes: "Plates, wraps and late-night options. Good for groups.",
+        url: "https://maps.google.com/",
+      },
+      {
+        id: "5",
+        name: "Union Cafe",
+        suburb: "Clayton",
+        lat: -37.9101,
+        lng: 145.137,
+        basePrice: 18,
+        rating: 4.2,
+        tags: ["cafe", "veg", "coffee"],
+        deals: [],
+        notes: "On-campus brunch and coffee. Not always cheap, but convenient.",
+        url: "https://maps.google.com/",
+      },
+      {
+        id: "6",
+        name: "Caulfield Noodle Bar",
+        suburb: "Caulfield",
+        lat: -37.877,
+        lng: 145.0455,
+        basePrice: 13,
+        rating: 4.3,
+        tags: ["asian", "noodles"],
+        deals: [
+          {
+            description: "Student noodle bowl for $9.90",
+            discountPercent: 25,
+            newUserOnly: false,
+            platform: "IN_STORE",
+            validTo: "2025-11-30",
+          },
+        ],
+        notes: "Fast stir-fries and noodles right next to campus.",
+        url: "https://maps.google.com/",
+      },
+    ];
+
+    // --- STATE ---
+    let userLocation = null; // {lat, lng}
+    const maxPriceInput = document.getElementById("maxPrice");
+    const dealTypeSelect = document.getElementById("dealType");
+    const sortSelect = document.getElementById("sortSelect");
+    const dealsOnlyCheck = document.getElementById("dealsOnly");
+    const resultCount = document.getElementById("resultCount");
+    const resultsContainer = document.getElementById("results");
+    const emptyState = document.getElementById("emptyState");
+    const geoBtn = document.getElementById("geoBtn");
+    const geoStatus = document.getElementById("geoStatus");
+    const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+
+    // --- UTILS ---
+    function deg2rad(deg) {
+      return deg * (Math.PI / 180);
+    }
+
+    function distanceInKm(lat1, lon1, lat2, lon2) {
+      const R = 6371; // km
+      const dLat = deg2rad(lat2 - lat1);
+      const dLon = deg2rad(lon2 - lon1);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+
+    function estimateMinutesFromKm(km) {
+      // assume ~5 km/h walking → 0.0833 km/min
+      if (!km && km !== 0) return null;
+      const mins = km / 0.0833;
+      return Math.round(mins);
+    }
+
+    function bestDeal(place) {
+      if (!place.deals || place.deals.length === 0) return null;
+      return place.deals.reduce((best, d) =>
+        !best || d.discountPercent > best.discountPercent ? d : best,
+        null
+      );
+    }
+
+    function priceAfterBestDeal(place) {
+      const bd = bestDeal(place);
+      if (!bd) return place.basePrice;
+      return Math.round(place.basePrice * (1 - bd.discountPercent / 100));
+    }
+
+    // --- FILTER / SORT / RENDER ---
+    function applyFiltersAndRender() {
+      const maxPrice = parseFloat(maxPriceInput.value) || 999;
+      const dealType = dealTypeSelect.value; // any | new | returning
+      const sortBy = sortSelect.value;
+      const dealsOnly = dealsOnlyCheck.checked;
+
+      let filtered = places
+        .map((p) => {
+          // enrich with computed distance
+          let km = null;
+          if (userLocation) {
+            km = distanceInKm(userLocation.lat, userLocation.lng, p.lat, p.lng);
+          }
+          const mins = estimateMinutesFromKm(km);
+          return { ...p, distanceKm: km, distanceMinutes: mins };
+        })
+        .filter((p) => {
+          // price filter (after best deal if exists)
+          const effectivePrice = priceAfterBestDeal(p);
+          if (effectivePrice > maxPrice) return false;
+
+          // deals-only filter
+          if (dealsOnly && (!p.deals || p.deals.length === 0)) return false;
+
+          // deal type filter
+          if (dealType === "new") {
+            return p.deals && p.deals.some((d) => d.newUserOnly);
+          } else if (dealType === "returning") {
+            return p.deals && p.deals.some((d) => !d.newUserOnly);
+          }
+
+          return true;
+        });
+
+      filtered.sort((a, b) => {
+        if (sortBy === "distance") {
+          const da = a.distanceKm ?? 9999;
+          const db = b.distanceKm ?? 9999;
+          return da - db;
+        } else if (sortBy === "discount") {
+          const ad = bestDeal(a)?.discountPercent || 0;
+          const bd = bestDeal(b)?.discountPercent || 0;
+          return bd - ad;
+        } else if (sortBy === "rating") {
+          return (b.rating || 0) - (a.rating || 0);
+        } else if (sortBy === "price") {
+          const ap = priceAfterBestDeal(a);
+          const bp = priceAfterBestDeal(b);
+          return ap - bp;
+        }
+        return 0;
+      });
+
+      renderResults(filtered);
+    }
+
+    function renderResults(list) {
+      resultsContainer.innerHTML = "";
+
+      if (list.length === 0) {
+        emptyState.style.display = "block";
+        resultCount.textContent = "0 spots found";
+        return;
+      }
+
+      emptyState.style.display = "none";
+      resultCount.textContent =
+        list.length === 1 ? "1 spot found" : list.length + " spots found";
+
+      list.forEach((place) => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const header = document.createElement("div");
+        header.className = "card-header";
+
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "card-title";
+
+        const titleSpan = document.createElement("span");
+        titleSpan.textContent = place.name;
+
+        const subSpan = document.createElement("span");
+        subSpan.className = "card-sub";
+        let distText = "";
+        if (place.distanceMinutes != null) {
+          distText = `${place.distanceMinutes} min walk · `;
+        }
+        subSpan.textContent =
+          distText + place.suburb + " · approx $" + priceAfterBestDeal(place);
+
+        titleWrap.appendChild(titleSpan);
+        titleWrap.appendChild(subSpan);
+
+        const badge = document.createElement("div");
+        badge.className = "badge";
+        badge.textContent = "Base $" + place.basePrice;
+
+        header.appendChild(titleWrap);
+        header.appendChild(badge);
+
+        const tagsRow = document.createElement("div");
+        tagsRow.className = "tags-row";
+
+        // basic tags
+        if (place.tags && place.tags.length) {
+          place.tags.forEach((t) => {
+            const tagEl = document.createElement("div");
+            tagEl.className = "tag";
+            tagEl.textContent = t;
+            tagsRow.appendChild(tagEl);
+          });
+        }
+
+        // deal-related tags
+        if (place.deals && place.deals.length > 0) {
+          const dealTag = document.createElement("div");
+          dealTag.className = "tag deal";
+          dealTag.textContent = "Has deals";
+          tagsRow.appendChild(dealTag);
+
+          if (place.deals.some((d) => d.newUserOnly)) {
+            const newTag = document.createElement("div");
+            newTag.className = "tag new-user";
+            newTag.textContent = "New user deals";
+            tagsRow.appendChild(newTag);
+          }
+
+          if (place.deals.some((d) => !d.newUserOnly)) {
+            const retTag = document.createElement("div");
+            retTag.className = "tag returning";
+            retTag.textContent = "Returning user deals";
+            tagsRow.appendChild(retTag);
+          }
+        }
+
+        const metaRow = document.createElement("div");
+        metaRow.className = "card-meta-row";
+
+        const leftMeta = document.createElement("div");
+        if (place.distanceMinutes != null) {
+          leftMeta.textContent = `${place.distanceMinutes} min walk · Student-friendly`;
+        } else {
+          leftMeta.textContent = "Distance unknown · Student-friendly";
+        }
+
+        const rightMeta = document.createElement("div");
+        rightMeta.className = "rating";
+        rightMeta.innerHTML =
+          '<span class="star">★</span><span>' +
+          (place.rating || 0).toFixed(1) +
+          "</span>";
+
+        metaRow.appendChild(leftMeta);
+        metaRow.appendChild(rightMeta);
+
+        const notes = document.createElement("div");
+        notes.className = "card-notes";
+        notes.textContent = place.notes;
+
+        // best deal line
+        const bd = bestDeal(place);
+        if (bd) {
+          const dealLine = document.createElement("div");
+          dealLine.className = "deal-line";
+          const typeLabel = bd.newUserOnly ? "New user" : "All users";
+          dealLine.innerHTML =
+            `<span class="label">${typeLabel} · ${bd.discountPercent}% off</span> – ${bd.description}`;
+          notes.appendChild(document.createElement("br"));
+          notes.appendChild(dealLine);
+        }
+
+        const linkRow = document.createElement("div");
+        linkRow.className = "link-row";
+        linkRow.innerHTML =
+          `<a href="${place.url}" target="_blank" rel="noopener noreferrer">Open in Maps ↗</a>`;
+
+        card.appendChild(header);
+        card.appendChild(tagsRow);
+        card.appendChild(metaRow);
+        card.appendChild(notes);
+        card.appendChild(linkRow);
+
+        resultsContainer.appendChild(card);
+      });
+    }
+
+    // --- GEOLOCATION ---
+    function requestLocation() {
+      if (!navigator.geolocation) {
+        geoStatus.textContent = "Geolocation not supported in this browser.";
+        return;
+      }
+
+      geoStatus.textContent = "Requesting your location…";
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          userLocation = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          };
+          geoStatus.textContent =
+            "Location set. Results sorted by closest first.";
+          applyFiltersAndRender();
+        },
+        (err) => {
+          geoStatus.textContent =
+            "Could not get location (" + err.message + "). Showing generic distances.";
+        }
+      );
+    }
+
+    // --- EVENTS ---
+    [maxPriceInput, dealTypeSelect, sortSelect, dealsOnlyCheck].forEach((el) => {
+      el.addEventListener("input", applyFiltersAndRender);
+      el.addEventListener("change", applyFiltersAndRender);
+    });
+
+    geoBtn.addEventListener("click", requestLocation);
+
+    clearFiltersBtn.addEventListener("click", () => {
+      maxPriceInput.value = 20;
+      dealTypeSelect.value = "any";
+      sortSelect.value = "distance";
+      dealsOnlyCheck.checked = true;
+      applyFiltersAndRender();
+    });
+
+    // Initial render
+    applyFiltersAndRender();
+  </script>
+</body>
+</html>
+
