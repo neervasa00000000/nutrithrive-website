@@ -10,12 +10,13 @@
       --seafoam: #B4DEBD;
       --mist: #91C4C3;
       --deep: #80A1BA;
-      --bg: var(--seafoam);
-      --panel: color-mix(in srgb, var(--seafoam) 70%, #ffffff);
-      --accent: var(--deep);
-      --accent-dark: var(--mist);
-      --ink: #203338;
-      --muted: #3f5860;
+      --bg: #b7e2c3;
+      --panel: #ffffff;
+      --card: #f2f8f6;
+      --accent: #2d5061;
+      --accent-soft: #80A1BA;
+      --ink: #15303a;
+      --muted: #4f676f;
     }
 
     * { box-sizing: border-box; }
@@ -23,28 +24,111 @@
     body {
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg);
+      background-image:
+        linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 35%),
+        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%),
+        linear-gradient(0deg, var(--bg), var(--mist));
       color: var(--ink);
       min-height: 100vh;
     }
 
-    a { color: var(--accent-dark); }
+    a { color: var(--accent); }
 
-    .page {
+    .app-shell {
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
     }
 
-    header { text-align: center; margin-bottom: 32px; }
+    .hero {
+      background: var(--panel);
+      border: 1px solid var(--accent-soft);
+      border-radius: 20px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
 
-    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; }
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
 
-    .subtitle {
-      max-width: 640px;
-      margin: 12px auto 0;
-      line-height: 1.6;
+    .hero h1 {
+      margin: 8px 0;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
       color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border: 1px solid var(--accent-soft);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      background: var(--card);
+      color: var(--accent);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 14px;
+    }
+
+    .metric-card {
+      border: 1px solid var(--accent-soft);
+      border-radius: 16px;
+      padding: 18px;
+      background: var(--card);
+    }
+
+    .metric-card span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step {
+      border: 1px solid var(--accent-soft);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--panel);
+    }
+
+    .step.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
     }
 
     .layout {
@@ -59,47 +143,70 @@
 
     .panel {
       background: var(--panel);
-      border: 2px solid var(--accent);
-      border-radius: 22px;
+      border: 1px solid var(--accent-soft);
+      border-radius: 18px;
       padding: 28px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .section-title {
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .panel-title {
       margin: 0;
-      font-size: 0.82rem;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .helper-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .helper-card {
+      border: 1px solid var(--accent-soft);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--card);
+      font-size: 0.9rem;
+      line-height: 1.4;
       color: var(--muted);
     }
 
     .drop-zone {
-      border: 2px dashed var(--accent);
-      border-radius: 18px;
+      border: 1px dashed var(--accent);
+      border-radius: 16px;
       padding: 36px;
       text-align: center;
-      background: #fff;
+      background: #f7fbf7;
       color: var(--muted);
       cursor: pointer;
       transition: border-color 0.2s ease, background 0.2s ease;
     }
 
     .drop-zone.dragover {
-      border-color: var(--accent-dark);
-      background: color-mix(in srgb, var(--mist) 30%, #ffffff);
+      border-color: var(--accent);
+      background: #e5f2f1;
     }
 
     .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .btn {
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 11px 20px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      border: 2px solid var(--accent);
+      border: 1px solid var(--accent);
       background: transparent;
       color: var(--ink);
     }
@@ -112,19 +219,27 @@
 
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    .status { color: var(--muted); font-size: 0.95rem; }
+    .status {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--card);
+    }
 
     .results {
       display: none;
       flex-direction: column;
       gap: 14px;
+      border-top: 1px solid var(--accent-soft);
+      padding-top: 16px;
     }
 
     textarea {
       width: 100%;
       min-height: 260px;
-      border-radius: 16px;
-      border: 2px solid var(--accent);
+      border-radius: 14px;
+      border: 1px solid var(--accent-soft);
       padding: 16px;
       background: #fff;
       color: var(--ink);
@@ -135,17 +250,17 @@
 
     .email-box input {
       flex: 1;
-      border-radius: 12px;
-      border: 2px solid var(--accent);
+      border-radius: 10px;
+      border: 1px solid var(--accent-soft);
       padding: 10px 14px;
       background: #fff;
       color: var(--ink);
     }
 
     .cta-card {
-      border: 2px solid var(--accent);
-      border-radius: 18px;
-      background: color-mix(in srgb, var(--mist) 20%, #ffffff);
+      border: 1px solid var(--accent-soft);
+      border-radius: 16px;
+      background: var(--card);
       padding: 18px;
       color: var(--ink);
     }
@@ -153,17 +268,24 @@
     .cta-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
 
     .cta-links a {
-      border-radius: 999px;
+      border-radius: 24px;
       padding: 8px 14px;
-      border: 2px solid var(--accent);
+      border: 1px solid var(--accent);
       background: var(--accent);
       color: #fff;
       text-decoration: none;
       font-weight: 600;
     }
 
+    .secondary-panel {
+      gap: 20px;
+    }
+
+    #txtPanel {
+      gap: 18px;
+    }
+
     footer {
-      margin-top: 40px;
       text-align: center;
       color: var(--muted);
       font-size: 0.85rem;
@@ -179,19 +301,50 @@
   </script>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <h1>PDF → TXT Converter</h1>
-      <p class="subtitle">Drop a PDF, extract clean text instantly, then keep the focus going with Australia’s favourite superfoods.</p>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">NutriThrive Labs</p>
+        <h1>PDF ↔ TXT in two clicks.</h1>
+        <p>Drag a PDF, pull clean text instantly, then flip any notes back into a sharable PDF without leaving your browser.</p>
+        <div class="hero-badges">
+          <span class="badge">Runs offline</span>
+          <span class="badge">No upload limits</span>
+          <span class="badge">AU privacy friendly</span>
+        </div>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric-card">
+          <span>25MB</span>
+          per file
+        </div>
+        <div class="metric-card">
+          <span>&lt;10s</span>
+          avg convert
+        </div>
+        <div class="metric-card">
+          <span>100%</span>
+          local
+        </div>
+      </div>
     </header>
+
+    <section class="timeline">
+      <div class="step active">1. Drop or browse your PDF</div>
+      <div class="step">2. Convert & copy text</div>
+      <div class="step">3. Export or email yourself</div>
+    </section>
+
     <div class="layout">
-      
-      <section class="panel">
-        <p class="section-title">Upload your PDF</p>
+      <section class="panel primary-panel">
+        <div class="panel-header">
+          <p class="panel-title">Upload your PDF</p>
+          <small style="color:var(--muted);">Max ~25 MB</small>
+        </div>
         <div class="drop-zone" id="dropZone">
           <p><strong>Drop your PDF anywhere here</strong></p>
           <p>or click to browse your device</p>
-          <small>Max ~25 MB • Text-based PDFs work best</small>
+          <small>Text-based PDFs convert fastest.</small>
         </div>
         <input type="file" id="fileInput" accept="application/pdf" style="display:none" />
         <div class="btn-row">
@@ -199,9 +352,18 @@
           <button class="btn accent" id="convertBtn" disabled>Convert to TXT</button>
         </div>
         <div class="status" id="statusText" aria-live="polite">No file selected.</div>
+        <div class="helper-grid">
+          <div class="helper-card">Best results: digital PDFs (not scans). Need OCR? Run it first, then come back here.</div>
+          <div class="helper-card">We never upload or store anything. All parsing lives in your browser tab.</div>
+          <div class="helper-card">Team tip: convert, copy, then paste into your research notes or Notion docs.</div>
+        </div>
       </section>
-      <section class="panel">
-        <p class="section-title">Download & share</p>
+
+      <section class="panel secondary-panel">
+        <div class="panel-header">
+          <p class="panel-title">Download & share</p>
+          <small style="color:var(--muted);">Outputs stay in this tab</small>
+        </div>
         <div class="results" id="resultsBlock">
           <textarea id="textOutput" spellcheck="false"></textarea>
           <div class="btn-row">
@@ -216,21 +378,23 @@
           <small style="color:var(--muted);">We’ll open your email app with the text already pasted.</small>
         </div>
         <div class="cta-card">
-          <h3>Stay sharp while you work</h3>
+          <h3 style="margin-top:0;">Stay sharp while you work</h3>
           <p>Converted your doc? Reward yourself with clean energy:</p>
           <div class="cta-links">
             <a href="https://nutrithrive.com.au/pages/products/product-detail.html">Moringa Focus Powder →</a>
             <a href="https://nutrithrive.com.au/pages/products/product-black-tea.html">Darjeeling Brain Tea →</a>
             <a href="https://nutrithrive.com.au/pages/blog/blog.html">More free wellness tools →</a>
           </div>
-          <p style="margin-top:12px;">Want batch converters + future freebies? <a href="#" id="newsletterLink" style="color:var(--accent-dark); font-weight:600;">Join our newsletter</a></p>
+          <p style="margin-top:12px;">Want batch converters + future freebies? <a href="#" id="newsletterLink" style="color:var(--accent); font-weight:600;">Join our newsletter</a></p>
         </div>
       </section>
     </div>
 
     <section class="panel" id="txtPanel">
-      <p class="section-title">New · TXT to PDF</p>
-      <p style="margin:0;color:var(--muted);">Paste or upload plain text, then download a beautifully formatted PDF.</p>
+      <div class="panel-header">
+        <p class="panel-title">TXT → PDF studio</p>
+        <small style="color:var(--muted);">Make formatted PDFs from simple notes.</small>
+      </div>
       <textarea id="txtInput" placeholder="Type or paste your text here..." style="min-height:220px;"></textarea>
       <div class="btn-row">
         <button class="btn outline" id="txtUploadBtn">Upload .txt</button>
