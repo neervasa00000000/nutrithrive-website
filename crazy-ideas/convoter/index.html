@@ -111,24 +111,46 @@
 
     .timeline {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
     }
 
     .step {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
       border: 1px solid var(--accent-soft);
-      border-radius: 12px;
-      padding: 12px;
-      text-align: center;
-      font-weight: 600;
-      color: var(--muted);
+      border-radius: 16px;
+      padding: 16px 18px;
       background: var(--panel);
     }
 
-    .step.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
+    .step-number {
+      min-width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      background: var(--card);
+      color: var(--accent);
+    }
+
+    .step-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .step-copy {
+      margin: 4px 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
     .layout {
@@ -330,9 +352,27 @@
     </header>
 
     <section class="timeline">
-      <div class="step active">1. Drop or browse your PDF</div>
-      <div class="step">2. Convert & copy text</div>
-      <div class="step">3. Export or email yourself</div>
+      <div class="step">
+        <div class="step-number">1</div>
+        <div>
+          <p class="step-title">Drop or browse your PDF</p>
+          <p class="step-copy">Drag it anywhere on the page or tap “Load demo” to see how it works.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div>
+          <p class="step-title">Convert & copy text</p>
+          <p class="step-copy">Hit “Convert to TXT” and grab the clean text with one click.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div>
+          <p class="step-title">Export or email yourself</p>
+          <p class="step-copy">Download the .txt file or email it to yourself for quick sharing.</p>
+        </div>
+      </div>
     </section>
 
     <div class="layout">
