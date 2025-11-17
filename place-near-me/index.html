@@ -2,568 +2,502 @@
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
-  <title>Premium Food Deals Near Me | Melbourne</title>
-  <meta name="description" content="Discover premium food deals across Melbourne. Real-time recommendations using your location, showing places with student-friendly prices and exclusive deals.">
-  <meta name="keywords" content="food deals melbourne, cheap food near me, student discounts melbourne, budget food melbourne, affordable restaurants melbourne, food deals near me">
+  <title>Food Finds Melbourne | Discover Hidden Gems</title>
+  <meta name="description" content="Discover amazing food deals across Melbourne. Real-time recommendations using your location, showing places with student-friendly prices and exclusive deals.">
+  <meta name="keywords" content="food deals melbourne, cheap food near me, student discounts melbourne, budget food melbourne, affordable restaurants melbourne">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow">
-  <meta name="author" content="Place Near Me">
   <link rel="canonical" href="https://nutrithrive.com.au/place-near-me/">
   
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nutrithrive.com.au/place-near-me/">
-  <meta property="og:title" content="Premium Food Deals Near Me | Melbourne">
-  <meta property="og:description" content="Discover premium food deals across Melbourne. Real-time recommendations using your location.">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://nutrithrive.com.au/place-near-me/">
-  <meta property="twitter:title" content="Premium Food Deals Near Me | Melbourne">
-  <meta property="twitter:description" content="Discover premium food deals across Melbourne. Real-time recommendations using your location.">
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Premium Food Deals Near Me",
-    "description": "Find premium food deals across Melbourne. Real-time recommendations using your location, showing places with student-friendly prices and deals.",
-    "url": "https://nutrithrive.com.au/place-near-me/",
-    "applicationCategory": "FoodService",
-    "operatingSystem": "Any",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "AUD"
-    },
-    "featureList": [
-      "Location-based food search",
-      "Student discounts",
-      "Budget-friendly options",
-      "Real-time deals",
-      "Free to use",
-      "Melbourne-wide coverage"
-    ]
-  }
-  </script>
-  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
     
-    :root {
-      /* Premium Color Palette - Deep Indigo & Gold */
-      --primary: #1e1b4b;
-      --primary-light: #312e81;
-      --primary-dark: #0f0e2e;
-      --accent: #f59e0b;
-      --accent-light: #fbbf24;
-      --accent-dark: #d97706;
-      --bg-gradient-start: #0f0e2e;
-      --bg-gradient-mid: #1e1b4b;
-      --bg-gradient-end: #312e81;
-      --card-bg: rgba(255, 255, 255, 0.95);
-      --card-bg-hover: rgba(255, 255, 255, 1);
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --border: rgba(148, 163, 184, 0.2);
-      --border-light: rgba(148, 163, 184, 0.1);
-      --shadow-sm: 0 2px 8px rgba(15, 14, 46, 0.1);
-      --shadow-md: 0 8px 24px rgba(15, 14, 46, 0.15);
-      --shadow-lg: 0 16px 48px rgba(15, 14, 46, 0.25);
-      --shadow-xl: 0 24px 64px rgba(15, 14, 46, 0.35);
-      --radius-sm: 12px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-xl: 32px;
-      --glow: 0 0 20px rgba(245, 158, 11, 0.3);
-    }
-
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ink: #0a0a0a;
+      --paper: #faf8f3;
+      --accent: #ff6b35;
+      --accent-soft: #ff8c61;
+      --mint: #a8e6cf;
+      --lavender: #d4a5f7;
+      --sky: #87ceeb;
+      --sunset: #ffd93d;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
-      background-attachment: fixed;
-      min-height: 100vh;
-      color: var(--text-primary);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background blobs */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    body::before {
+      background: var(--accent);
+      top: -200px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+
+    body::after {
+      background: var(--mint);
+      bottom: -200px;
+      right: -200px;
+      animation-delay: 10s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
     }
 
     .page {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
-
-    /* Premium Header */
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding: 2rem 0;
-    }
-
-    .header-content {
+      padding: 3rem 2rem;
       position: relative;
       z-index: 1;
     }
 
+    /* Hand-drawn style header */
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .header-decoration {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 3px solid var(--accent);
+      border-radius: 50% 40% 60% 30%;
+      opacity: 0.2;
+      top: -20px;
+      right: 10%;
+      animation: rotate 15s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #ffffff 0%, #fbbf24 50%, #f59e0b 100%);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--ink) 0%, var(--accent) 50%, var(--ink) 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 1rem;
-      text-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+      animation: shimmer 3s ease-in-out infinite;
+      letter-spacing: -0.02em;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
     }
 
     .subtitle {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--ink);
+      opacity: 0.7;
+      max-width: 700px;
+      margin: 0 auto;
       font-weight: 400;
-      line-height: 1.7;
     }
 
-    .premium-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 50px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #ffffff;
-      box-shadow: var(--shadow-md);
-    }
-
-    .premium-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
-    }
-
-    /* Premium Controls Card */
-    .controls-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-xl);
-      border: 1px solid var(--border);
-      margin-bottom: 2.5rem;
+    /* Creative controls - not a typical card */
+    .controls-wrapper {
+      margin-bottom: 3rem;
       position: relative;
-      overflow: hidden;
     }
 
-    .controls-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-    }
-
-    .controls-grid {
+    .controls-main {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
       margin-bottom: 1.5rem;
     }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .control-group {
+      position: relative;
     }
 
-    label {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-secondary);
+    .control-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
-    select,
-    input[type="number"] {
-      padding: 0.875rem 1rem;
-      border-radius: var(--radius-sm);
-      border: 2px solid var(--border);
-      font-size: 0.9375rem;
-      font-weight: 500;
-      outline: none;
-      background: #ffffff;
-      color: var(--text-primary);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .control-input {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      background: var(--paper);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
       font-family: inherit;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    select:focus,
-    input[type="number"]:focus {
+    .control-input:focus {
+      outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.2);
     }
 
-    .secondary-row {
+    .controls-secondary {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
       align-items: center;
       justify-content: space-between;
       padding-top: 1.5rem;
-      border-top: 1px solid var(--border-light);
+      border-top: 2px dashed var(--ink);
+      border-top-opacity: 0.2;
     }
 
-    .checkbox-row {
+    .checkbox-wrapper {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
       cursor: pointer;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--text-secondary);
     }
 
-    .checkbox-row input {
-      width: 18px;
-      height: 18px;
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
       accent-color: var(--accent);
       cursor: pointer;
     }
 
-    .geo-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.875rem 1.5rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 0.9375rem;
+    .checkbox-wrapper label {
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: var(--shadow-md);
-      font-family: inherit;
+      user-select: none;
     }
 
-    .geo-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    .location-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .geo-btn:active {
-      transform: translateY(0);
+    .location-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(10, 10, 10, 0.3);
     }
 
-    .geo-btn.loading {
-      opacity: 0.7;
-      cursor: not-allowed;
+    .location-btn:active {
+      transform: translateY(-1px) scale(1.02);
     }
 
-    .geo-status {
-      font-size: 0.875rem;
-      color: var(--text-muted);
+    .location-status {
+      font-size: 0.9rem;
+      color: var(--ink);
+      opacity: 0.6;
       font-weight: 500;
     }
 
-    .meta-row {
+    .results-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border-light);
+      margin-bottom: 2rem;
       flex-wrap: wrap;
       gap: 1rem;
     }
 
-    #resultCount {
-      font-size: 1rem;
+    .results-count {
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--text-primary);
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--ink);
     }
 
-    .clear-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.625rem 1.25rem;
+    .reset-btn {
+      padding: 0.75rem 1.5rem;
       background: transparent;
-      color: var(--text-muted);
-      border: 2px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 0.875rem;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: inherit;
     }
 
-    .clear-btn:hover {
-      color: var(--text-primary);
-      border-color: var(--text-muted);
-      background: rgba(0, 0, 0, 0.02);
+    .reset-btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: rotate(-5deg);
     }
 
-    /* Premium Results Grid */
+    /* Unique card design - not typical rectangles */
     .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-md);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .place-card {
+      background: var(--paper);
+      border: 3px solid var(--ink);
+      border-radius: 24px;
+      padding: 2rem;
       position: relative;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      animation: fadeInUp 0.6s ease-out backwards;
     }
 
-    .card:nth-child(1) { animation-delay: 0.05s; }
-    .card:nth-child(2) { animation-delay: 0.1s; }
-    .card:nth-child(3) { animation-delay: 0.15s; }
-    .card:nth-child(4) { animation-delay: 0.2s; }
-    .card:nth-child(5) { animation-delay: 0.25s; }
-    .card:nth-child(6) { animation-delay: 0.3s; }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .card::before {
+    .place-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
+    .place-card:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      box-shadow: 20px 20px 0 var(--ink);
       border-color: var(--accent);
-      background: var(--card-bg-hover);
     }
 
-    .card:hover::before {
-      transform: scaleX(1);
+    .place-card:hover::before {
+      opacity: 0.1;
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .card-title {
       flex: 1;
     }
 
-    .card-title span:first-child {
-      display: block;
-      font-size: 1.25rem;
+    .card-title h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--ink);
       margin-bottom: 0.25rem;
-      line-height: 1.3;
+      line-height: 1.2;
     }
 
-    .card-sub {
-      font-size: 0.875rem;
-      color: var(--text-muted);
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: var(--ink);
+      opacity: 0.6;
       font-weight: 500;
     }
 
-    .badge {
-      padding: 0.375rem 0.875rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      color: #ffffff;
-      border-radius: 50px;
-      font-size: 0.75rem;
+    .card-badge {
+      padding: 0.5rem 1rem;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 20px;
+      font-size: 0.85rem;
       font-weight: 700;
       white-space: nowrap;
-      box-shadow: var(--shadow-sm);
+      font-family: 'Space Grotesk', sans-serif;
     }
 
-    .tags-row {
+    .card-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .tag {
-      padding: 0.375rem 0.75rem;
-      border-radius: 50px;
+      padding: 0.4rem 0.8rem;
+      border: 2px solid var(--ink);
+      border-radius: 20px;
       font-size: 0.75rem;
       font-weight: 600;
-      border: 1.5px solid var(--border);
-      background: #ffffff;
-      color: var(--text-secondary);
+      background: var(--paper);
+      color: var(--ink);
       transition: all 0.3s ease;
     }
 
     .tag.deal {
-      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-      border-color: #22c55e;
-      color: #15803d;
+      background: var(--mint);
+      border-color: var(--mint);
     }
 
-    .tag.new-user {
-      background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
-      border-color: var(--accent);
-      color: var(--accent-dark);
+    .tag.new {
+      background: var(--sunset);
+      border-color: var(--sunset);
     }
 
     .tag.returning {
-      background: linear-gradient(135deg, #eef2ff 0%, #c7d2fe 100%);
-      border-color: #6366f1;
-      color: #4338ca;
+      background: var(--lavender);
+      border-color: var(--lavender);
     }
 
-    .card-meta-row {
+    .card-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--border-light);
-      font-size: 0.875rem;
+      padding-top: 1rem;
+      border-top: 2px dashed var(--ink);
+      border-top-opacity: 0.2;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .rating {
-      display: inline-flex;
+    .card-distance {
+      font-size: 0.9rem;
+      color: var(--ink);
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    .card-rating {
+      display: flex;
       align-items: center;
       gap: 0.25rem;
       font-weight: 700;
       color: var(--accent);
-      font-size: 0.9375rem;
-    }
-
-    .rating span.star {
-      font-size: 1.125rem;
-      color: var(--accent);
+      font-size: 1rem;
     }
 
     .card-notes {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .deal-line {
-      margin-top: 0.75rem;
-      padding: 0.75rem;
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border-left: 3px solid var(--accent);
-      border-radius: var(--radius-sm);
-      font-size: 0.875rem;
-      color: var(--accent-dark);
-      font-weight: 600;
+    .card-deal {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--sunset) 0%, var(--accent-soft) 100%);
+      border-radius: 12px;
+      border: 2px solid var(--ink);
+      position: relative;
+      z-index: 1;
     }
 
-    .deal-line span.label {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-size: 0.75rem;
+    .card-deal-label {
+      font-size: 0.7rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      opacity: 0.8;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
-    .link-row {
-      margin-top: 0.5rem;
+    .card-deal-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
     }
 
-    .link-row a {
+    .card-link {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.625rem 1.25rem;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: var(--paper);
       text-decoration: none;
-      border-radius: var(--radius-sm);
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 2px solid var(--ink);
+      position: relative;
+      z-index: 1;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
-    .link-row a:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+    .card-link:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+      background: var(--accent-soft);
     }
 
     .empty-state {
       text-align: center;
       padding: 4rem 2rem;
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border);
+      background: var(--paper);
+      border: 3px dashed var(--ink);
+      border-radius: 24px;
     }
 
-    .empty-state span {
+    .empty-state-icon {
       font-size: 4rem;
-      display: block;
       margin-bottom: 1rem;
     }
 
-    .empty-state p {
-      font-size: 1.125rem;
-      color: var(--text-secondary);
-      font-weight: 500;
+    .empty-state-text {
+      font-size: 1.25rem;
+      color: var(--ink);
+      opacity: 0.7;
+      font-weight: 600;
     }
 
     .loading {
@@ -572,13 +506,12 @@
       align-items: center;
       padding: 4rem;
       gap: 1rem;
-      color: var(--text-muted);
     }
 
     .loading-spinner {
-      width: 32px;
-      height: 32px;
-      border: 3px solid var(--border);
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--ink);
       border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
@@ -588,91 +521,81 @@
       to { transform: rotate(360deg); }
     }
 
-    .error-state {
-      text-align: center;
-      padding: 3rem 2rem;
-      background: #fef2f2;
-      border: 2px solid #fecaca;
-      border-radius: var(--radius-lg);
-      color: #dc2626;
-    }
-
-    .error-state span {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    /* Mobile Responsive */
+    /* Mobile responsive */
     @media (max-width: 768px) {
       .page {
-        padding: 1.5rem 1rem 3rem;
+        padding: 2rem 1rem;
       }
 
       header {
         margin-bottom: 2rem;
-        padding: 1.5rem 0;
       }
 
-      .controls-card {
-        padding: 1.5rem;
-      }
-
-      .controls-grid {
+      .controls-main {
         grid-template-columns: 1fr;
-        gap: 1rem;
       }
 
-      .results-grid {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-      }
-
-      .secondary-row {
+      .controls-secondary {
         flex-direction: column;
         align-items: stretch;
       }
 
-      .geo-btn {
+      .location-btn {
         width: 100%;
         justify-content: center;
       }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .place-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Creative accent elements */
+    .accent-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div class="header-content">
-        <h1>🍽️ Premium Food Deals</h1>
-        <p class="subtitle">
-          Discover the best food deals across Melbourne. Real-time recommendations using your location, 
-          showing places with student-friendly prices and exclusive deals.
-        </p>
-        <div class="premium-badge">
-          <span class="premium-badge-dot"></span>
-          100% FREE – Melbourne-Wide Coverage
-        </div>
-      </div>
+      <div class="header-decoration"></div>
+      <h1>Food Finds</h1>
+      <p class="subtitle">Discover hidden gems across Melbourne. Real-time recommendations tailored to your location.</p>
     </header>
 
-    <section class="controls-card">
-      <div class="controls-grid">
-        <div class="field">
-          <label for="maxPrice">Max Budget (AUD)</label>
-          <input id="maxPrice" type="number" min="5" step="1" value="25" />
+    <div class="controls-wrapper">
+      <div class="controls-main">
+        <div class="control-group">
+          <label class="control-label" for="maxPrice">Max Budget</label>
+          <input id="maxPrice" type="number" min="5" step="1" value="25" class="control-input" />
         </div>
-        <div class="field">
-          <label for="dealType">Deal Type</label>
-          <select id="dealType">
+        <div class="control-group">
+          <label class="control-label" for="dealType">Deal Type</label>
+          <select id="dealType" class="control-input">
             <option value="any">Any Deals</option>
             <option value="new">New User Only</option>
             <option value="returning">Returning Users</option>
           </select>
         </div>
-        <div class="field">
-          <label for="sortSelect">Sort By</label>
-          <select id="sortSelect">
+        <div class="control-group">
+          <label class="control-label" for="sortSelect">Sort By</label>
+          <select id="sortSelect" class="control-input">
             <option value="distance">Closest First</option>
             <option value="discount">Highest Discount</option>
             <option value="rating">Highest Rating</option>
@@ -680,44 +603,40 @@
           </select>
         </div>
       </div>
-      <div class="secondary-row">
-        <label class="checkbox-row">
+      <div class="controls-secondary">
+        <label class="checkbox-wrapper">
           <input type="checkbox" id="dealsOnly" checked />
-          Show places with deals only
+          <span>Show places with deals only</span>
         </label>
         <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-          <button class="geo-btn" id="geoBtn">
-            <span>📍</span> Use My Location
+          <button class="location-btn" id="geoBtn">
+            📍 Use My Location
           </button>
-          <span id="geoStatus" class="geo-status">Location not set yet.</span>
+          <span id="geoStatus" class="location-status">Location not set yet.</span>
         </div>
       </div>
-      <div class="meta-row">
-        <div id="resultCount">Loading spots...</div>
-        <button class="clear-btn" id="clearFiltersBtn">⟳ Reset Filters</button>
-      </div>
-    </section>
+    </div>
+
+    <div class="results-header">
+      <div id="resultCount" class="results-count">Loading spots...</div>
+      <button class="reset-btn" id="clearFiltersBtn">⟳ Reset</button>
+    </div>
 
     <section>
       <div id="results" class="results-grid"></div>
       <div id="emptyState" class="empty-state" style="display: none">
-        <span>🙈</span>
-        <p>No places match those filters. Try lowering your budget or changing the deal type.</p>
+        <div class="empty-state-icon">🔍</div>
+        <p class="empty-state-text">No places match those filters. Try adjusting your search.</p>
       </div>
     </section>
   </div>
 
   <script>
-    // ============================================
-    // FREE API CONFIGURATION
-    // ============================================
     const USE_FREE_API = true;
     const USE_FOURSQUARE = false;
     const FOURSQUARE_API_KEY = '';
     
-    // --- MELBOURNE-WIDE SAMPLE DATA ---
     const samplePlaces = [
-      // CBD & Inner City
       {
         id: "1",
         name: "Flinders Lane Eatery",
@@ -737,7 +656,7 @@
           },
         ],
         notes: "Premium brunch spot with excellent coffee. Great for business meetings.",
-        url: `https://www.google.com/maps/search/?api=1&query=${-37.8136},${144.9631}`,
+        url: "https://www.google.com/maps/search/?api=1&query=-37.8136,144.9631",
       },
       {
         id: "2",
@@ -758,7 +677,7 @@
           },
         ],
         notes: "Authentic Chinese noodles. Fast service, perfect for lunch breaks.",
-        url: `https://www.google.com/maps/search/?api=1&query=${-37.8105},${144.9631}`,
+        url: "https://www.google.com/maps/search/?api=1&query=-37.8105,144.9631",
       },
       {
         id: "3",
@@ -771,9 +690,8 @@
         tags: ["cafe", "coffee", "sandwiches"],
         deals: [],
         notes: "Iconic Melbourne laneway cafe. Great coffee and sandwiches.",
-        url: `https://www.google.com/maps/search/?api=1&query=${-37.8142},${144.9631}`,
+        url: "https://www.google.com/maps/search/?api=1&query=-37.8142,144.9631",
       },
-      // South Melbourne
       {
         id: "4",
         name: "South Melbourne Market Eatery",
@@ -793,9 +711,8 @@
           },
         ],
         notes: "Fresh produce and ready-made meals. Market atmosphere.",
-        url: `https://www.google.com/maps/search/?api=1&query=${-37.8333},${144.9667}`,
+        url: "https://www.google.com/maps/search/?api=1&query=-37.8333,144.9667",
       },
-      // St Kilda
       {
         id: "5",
         name: "St Kilda Beach Bistro",
@@ -817,7 +734,6 @@
         notes: "Beachside dining with ocean views. Great for sunset dinners.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8676,144.9780",
       },
-      // Fitzroy
       {
         id: "6",
         name: "Brunswick Street Social",
@@ -839,7 +755,6 @@
         notes: "Trendy spot with creative vegetarian options. Great atmosphere.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.7981,144.9784",
       },
-      // Carlton
       {
         id: "7",
         name: "Lygon Street Italian",
@@ -861,7 +776,6 @@
         notes: "Authentic Italian cuisine on famous Lygon Street.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8000,144.9667",
       },
-      // Richmond
       {
         id: "8",
         name: "Bridge Road Vietnamese",
@@ -883,7 +797,6 @@
         notes: "Best pho in Richmond. Authentic flavors, generous portions.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8167,145.0000",
       },
-      // Footscray
       {
         id: "9",
         name: "Footscray Market Food Court",
@@ -905,7 +818,6 @@
         notes: "Diverse Asian food court. Excellent value for money.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8000,144.9000",
       },
-      // Prahran
       {
         id: "10",
         name: "Chapel Street Brunch",
@@ -927,7 +839,6 @@
         notes: "Instagram-worthy brunch spot. Great coffee and presentation.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8500,144.9833",
       },
-      // Collingwood
       {
         id: "11",
         name: "Smith Street Ramen",
@@ -949,7 +860,6 @@
         notes: "Authentic Japanese ramen. Rich broths and perfect noodles.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8000,144.9833",
       },
-      // South Yarra
       {
         id: "12",
         name: "Toorak Road Fine Dining",
@@ -971,7 +881,6 @@
         notes: "Upscale dining experience. Perfect for special occasions.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8333,144.9833",
       },
-      // Docklands
       {
         id: "13",
         name: "Harbour Kitchen",
@@ -993,7 +902,6 @@
         notes: "Waterfront dining with city skyline views. Great for weekends.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8167,144.9500",
       },
-      // North Melbourne
       {
         id: "14",
         name: "Errol Street Cafe",
@@ -1015,7 +923,6 @@
         notes: "Neighborhood favorite. Cozy atmosphere, excellent coffee.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8000,144.9500",
       },
-      // Brunswick
       {
         id: "15",
         name: "Sydney Road Middle Eastern",
@@ -1037,7 +944,6 @@
         notes: "Authentic Middle Eastern cuisine. Large portions, great value.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.7667,144.9667",
       },
-      // Clayton (Monash University area)
       {
         id: "16",
         name: "Campus Kebabs & Grill",
@@ -1059,7 +965,6 @@
         notes: "Perfect for students. Halal kebabs and snack packs.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.9105,145.1332",
       },
-      // Caulfield
       {
         id: "17",
         name: "Caulfield Noodle Bar",
@@ -1081,7 +986,6 @@
         notes: "Fast stir-fries and noodles. Great for quick meals.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8770,145.0455",
       },
-      // Box Hill
       {
         id: "18",
         name: "Box Hill Chinese Restaurant",
@@ -1101,9 +1005,8 @@
           },
         ],
         notes: "Authentic Chinese dim sum. Popular with locals.",
-        url: "https://www.google.com/maps/search/?api=1&query=-37.8167,145.1167",
+        url: "https://www.google.com.maps/search/?api=1&query=-37.8167,145.1167",
       },
-      // Glen Waverley
       {
         id: "19",
         name: "Glen Waverley Thai",
@@ -1125,7 +1028,6 @@
         notes: "Authentic Thai flavors. Great for families.",
         url: "https://www.google.com/maps/search/?api=1&query=-37.8833,145.1667",
       },
-      // Dandenong
       {
         id: "20",
         name: "Dandenong Market Food",
@@ -1149,7 +1051,6 @@
       },
     ];
 
-    // --- STATE ---
     let places = [...samplePlaces];
     let userLocation = null;
     const maxPriceInput = document.getElementById("maxPrice");
@@ -1163,7 +1064,6 @@
     const geoStatus = document.getElementById("geoStatus");
     const clearFiltersBtn = document.getElementById("clearFiltersBtn");
 
-    // --- UTILS ---
     function deg2rad(deg) {
       return deg * (Math.PI / 180);
     }
@@ -1202,7 +1102,6 @@
       return Math.round(place.basePrice * (1 - bd.discountPercent / 100));
     }
 
-    // --- FILTER / SORT / RENDER ---
     function applyFiltersAndRender() {
       const maxPrice = parseFloat(maxPriceInput.value) || 999;
       const dealType = dealTypeSelect.value;
@@ -1268,9 +1167,10 @@
       resultCount.textContent =
         list.length === 1 ? "1 spot found" : `${list.length} spots found`;
 
-      list.forEach((place) => {
+      list.forEach((place, index) => {
         const card = document.createElement("article");
-        card.className = "card";
+        card.className = "place-card";
+        card.style.animationDelay = `${index * 0.1}s`;
 
         const header = document.createElement("div");
         header.className = "card-header";
@@ -1278,30 +1178,29 @@
         const titleWrap = document.createElement("div");
         titleWrap.className = "card-title";
 
-        const titleSpan = document.createElement("span");
-        titleSpan.textContent = place.name;
+        const title = document.createElement("h3");
+        title.textContent = place.name;
 
-        const subSpan = document.createElement("span");
-        subSpan.className = "card-sub";
+        const subtitle = document.createElement("div");
+        subtitle.className = "card-subtitle";
         let distText = "";
         if (place.distanceMinutes != null) {
           distText = `${place.distanceMinutes} min walk · `;
         }
-        subSpan.textContent =
-          distText + place.suburb + " · $" + priceAfterBestDeal(place);
+        subtitle.textContent = distText + place.suburb + " · $" + priceAfterBestDeal(place);
 
-        titleWrap.appendChild(titleSpan);
-        titleWrap.appendChild(subSpan);
+        titleWrap.appendChild(title);
+        titleWrap.appendChild(subtitle);
 
         const badge = document.createElement("div");
-        badge.className = "badge";
+        badge.className = "card-badge";
         badge.textContent = "$" + place.basePrice;
 
         header.appendChild(titleWrap);
         header.appendChild(badge);
 
         const tagsRow = document.createElement("div");
-        tagsRow.className = "tags-row";
+        tagsRow.className = "card-tags";
 
         if (place.tags && place.tags.length) {
           place.tags.forEach((t) => {
@@ -1320,7 +1219,7 @@
 
           if (place.deals.some((d) => d.newUserOnly)) {
             const newTag = document.createElement("div");
-            newTag.className = "tag new-user";
+            newTag.className = "tag new";
             newTag.textContent = "New user";
             tagsRow.appendChild(newTag);
           }
@@ -1334,23 +1233,19 @@
         }
 
         const metaRow = document.createElement("div");
-        metaRow.className = "card-meta-row";
+        metaRow.className = "card-meta";
 
         const leftMeta = document.createElement("div");
+        leftMeta.className = "card-distance";
         if (place.distanceMinutes != null) {
           leftMeta.textContent = `${place.distanceMinutes} min walk`;
         } else {
           leftMeta.textContent = "Distance unknown";
         }
-        leftMeta.style.color = "var(--text-muted)";
-        leftMeta.style.fontSize = "0.875rem";
 
         const rightMeta = document.createElement("div");
-        rightMeta.className = "rating";
-        rightMeta.innerHTML =
-          '<span class="star">★</span><span>' +
-          (place.rating || 0).toFixed(1) +
-          "</span>";
+        rightMeta.className = "card-rating";
+        rightMeta.innerHTML = "★ " + (place.rating || 0).toFixed(1);
 
         metaRow.appendChild(leftMeta);
         metaRow.appendChild(rightMeta);
@@ -1362,23 +1257,21 @@
         const bd = bestDeal(place);
         if (bd) {
           const dealLine = document.createElement("div");
-          dealLine.className = "deal-line";
+          dealLine.className = "card-deal";
           const typeLabel = bd.newUserOnly ? "New User" : "All Users";
           dealLine.innerHTML =
-            `<span class="label">${typeLabel} · ${bd.discountPercent}% OFF</span>${bd.description}`;
-          notes.appendChild(document.createElement("br"));
+            `<div class="card-deal-label">${typeLabel} · ${bd.discountPercent}% OFF</div>
+             <div class="card-deal-text">${bd.description}</div>`;
           notes.appendChild(dealLine);
         }
 
         const linkRow = document.createElement("div");
-        linkRow.className = "link-row";
-        // Generate Google Maps URL from coordinates if URL is generic or missing
         let mapsUrl = place.url;
         if (!mapsUrl || mapsUrl === "https://maps.google.com/" || mapsUrl.includes("maps.google.com/")) {
           mapsUrl = `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`;
         }
         linkRow.innerHTML =
-          `<a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Open in Maps ↗</a>`;
+          `<a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="card-link">Open in Maps →</a>`;
 
         card.appendChild(header);
         card.appendChild(tagsRow);
@@ -1390,7 +1283,6 @@
       });
     }
 
-    // --- FREE API INTEGRATION ---
     async function fetchPlacesFromOpenStreetMap(lat, lng, radius = 5000) {
       try {
         const response = await fetch(
@@ -1451,15 +1343,14 @@
       return null;
     }
 
-    // --- GEOLOCATION ---
     async function requestLocation() {
       if (!navigator.geolocation) {
-        geoStatus.textContent = "Geolocation not supported in this browser.";
+        geoStatus.textContent = "Geolocation not supported.";
         return;
       }
 
       geoBtn.classList.add('loading');
-      geoStatus.textContent = "Requesting your location…";
+      geoStatus.textContent = "Requesting location…";
       
       navigator.geolocation.getCurrentPosition(
         async (pos) => {
@@ -1468,26 +1359,26 @@
             lng: pos.coords.longitude,
           };
           
-          geoStatus.textContent = "Location set. Fetching nearby places (FREE API)...";
+          geoStatus.textContent = "Fetching nearby places...";
           
           if (USE_FREE_API) {
             try {
               const apiPlaces = await fetchPlacesFree(userLocation.lat, userLocation.lng);
               if (apiPlaces && apiPlaces.length > 0) {
                 places = apiPlaces;
-                geoStatus.textContent = `Found ${apiPlaces.length} places nearby (FREE API).`;
+                geoStatus.textContent = `Found ${apiPlaces.length} places nearby.`;
               } else {
                 places = [...samplePlaces];
-                geoStatus.textContent = "Using Melbourne-wide sample data.";
+                geoStatus.textContent = "Showing all Melbourne places.";
               }
             } catch (error) {
-              console.error('Free API error, using sample data:', error);
+              console.error('Free API error:', error);
               places = [...samplePlaces];
-              geoStatus.textContent = "Using Melbourne-wide sample data.";
+              geoStatus.textContent = "Showing all Melbourne places.";
             }
           } else {
             places = [...samplePlaces];
-            geoStatus.textContent = "Location set. Using Melbourne-wide sample data.";
+            geoStatus.textContent = "Location set. Showing all Melbourne places.";
           }
           
           geoBtn.classList.remove('loading');
@@ -1502,7 +1393,6 @@
       );
     }
 
-    // --- EVENTS ---
     [maxPriceInput, dealTypeSelect, sortSelect, dealsOnlyCheck].forEach((el) => {
       el.addEventListener("input", applyFiltersAndRender);
       el.addEventListener("change", applyFiltersAndRender);
@@ -1518,7 +1408,6 @@
       applyFiltersAndRender();
     });
 
-    // Initial render
     applyFiltersAndRender();
   </script>
 </body>
