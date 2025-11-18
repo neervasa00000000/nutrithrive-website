@@ -1525,22 +1525,25 @@
       // Parser is always available (built-in)
 
       try {
-        // Parse using chrono-node with current date as reference
         const now = new Date();
-        const results = chrono.parse(text, now, { forwardDate: true });
-
-        if (!results || results.length === 0 || !results[0].start) {
-          resultDiv.innerHTML = '<div class="error">⚠️ Could not extract date/time from your text.<br><br>Try being more specific:<br>• "Meeting tomorrow at 3pm"<br>• "Appointment Dec 15 2025 at 2:30pm"<br>• "Event next Friday 10am"</div>';
-          setTimeout(function() {
-            generateBtn.disabled = false;
-            generateBtn.innerHTML = 'Generate Event';
-          }, 100);
-          return;
-        }
-
-        const parsedResult = results[0];
-        const evStart = parsedResult.start.date();
+        const eventTexts = splitIntoEvents(text);
+        const allEvents = [];
         
+        // Parse each event separately
+        for (let i = 0; i < eventTexts.length; i++) {
+          const eventText = eventTexts[i].trim();
+          if (!eventText) continue;
+          
+          const results = chrono.parse(eventText, now, { forwardDate: true });
+
+          if (!results || results.length === 0 || !results[0].start) {
+            // Skip events that can't be parsed
+            continue;
+          }
+
+          const parsedResult = results[0];
+          const evStart = parsedResult.start.date();
+          
           // Validate that the date is in the future or today
           if (evStart < new Date(now.getTime() - 60000)) {
             continue; // Skip past events
@@ -1568,12 +1571,13 @@
             // Make sure it's not a time (like "at 11 am")
             const potentialLoc = locMatch[1].trim();
             if (!/^\d{1,2}(?::\d{2})?\s*(am|pm)$/i.test(potentialLoc)) {
-          location = locMatch[1].trim();
-          // Clean up common false positives
-          if (location.toLowerCase().match(/^(at|on|next|tomorrow|today|monday|tuesday|wednesday|thursday|friday|saturday|sunday)$/i)) {
-            location = "";
+              location = potentialLoc;
+              // Clean up common false positives
+              if (location.toLowerCase().match(/^(at|on|next|tomorrow|today|monday|tuesday|wednesday|thursday|friday|saturday|sunday)$/i)) {
+                location = "";
+              }
+            }
           }
-        }
 
         // If no location found with "at", try other patterns
         if (!location) {
