@@ -369,20 +369,24 @@
     }
   });
 
-  // Check for text in URL on load
+  // Check for text in URL on load (must be FIRST, before other event listeners)
   const urlParams = new URLSearchParams(location.search);
   const textParam = urlParams.get('text');
   if (textParam) {
     const decoded = decodeText(textParam);
-    if (decoded) {
+    if (decoded && decoded.length > 0) {
       textarea.value = decoded;
+      lastSimpleText = decoded;
       showBadge('✅ Loaded text from link!', 'success');
       updateSimpleShareLink(decoded);
+    } else {
+      console.warn('Could not decode text from URL parameter');
     }
   }
 
   // Auto-update simple share link as user types (debounced)
   let simpleSyncTimeout = null;
+  const originalInputHandler = textarea.oninput;
   textarea.addEventListener('input', (e) => {
     const text = e.target.value;
     if (simpleSyncTimeout) clearTimeout(simpleSyncTimeout);
@@ -390,13 +394,15 @@
       if (text !== lastSimpleText) {
         updateSimpleShareLink(text);
       }
-    }, 500);
+    }, 300);
   });
   
-  // Also update on initial load if textarea has content
-  if (textarea && textarea.value) {
-    updateSimpleShareLink(textarea.value);
-  }
+  // Also update on initial load if textarea has content (but not from URL)
+  setTimeout(() => {
+    if (textarea && textarea.value && !textParam) {
+      updateSimpleShareLink(textarea.value);
+    }
+  }, 100);
 
   renderHistory();
   textarea.focus();
