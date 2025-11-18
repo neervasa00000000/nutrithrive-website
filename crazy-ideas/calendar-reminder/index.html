@@ -1425,9 +1425,9 @@
               return this.parseTime(date, match[2], match[3] || '0', match[4]);
             }
           },
-          // "on [day] at [time]": "on wednesday at 11 am" or "on friday at 2:30pm"
+          // "on [day] at [time]": "on wednesday at 11 am" or "on friday at 2:30pm" or "[event] on [day] at [time]"
           {
-            regex: /on\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            regex: /(?:.*?\s+)?on\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:.*?\s+)?at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
             handler: function(match) {
               const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
               const targetDay = dayNames.indexOf(match[1].toLowerCase());
@@ -1437,6 +1437,22 @@
               if (daysAhead <= 0) daysAhead += 7;
               date.setDate(date.getDate() + daysAhead);
               return this.parseTime(date, match[2], match[3] || '0', match[4]);
+            }
+          },
+          // "today at [time]" or "today [event] at [time]"
+          {
+            regex: /today\s+(?:.*?\s+)?at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            handler: function(match) {
+              const date = new Date(now);
+              return this.parseTime(date, match[1], match[2] || '0', match[3]);
+            }
+          },
+          // "today [time]" or "today [event] [time]"
+          {
+            regex: /today\s+(?:.*?\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            handler: function(match) {
+              const date = new Date(now);
+              return this.parseTime(date, match[1], match[2] || '0', match[3]);
             }
           },
           // "in 2 hours" or "2 hours from now"
