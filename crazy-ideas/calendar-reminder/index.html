@@ -590,10 +590,11 @@
         
         // Extract time from text (single time) - more flexible
         const extractTime = function(text) {
-          // Try various patterns: "at 11 am", "11 am", "11:30 am", "at 11:30am", etc.
+          // Try various patterns: "at 11 am", "11 am", "11:30 am", "at 11:30am", "6pm", etc.
           const timePatterns = [
             /at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
             /(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /(\d{1,2})(?::(\d{2}))?(am|pm)/i,  // No space: "6pm", "11:30am"
             /at\s+(\d{1,2})(?::(\d{2}))?/i,
             /(\d{1,2})(?::(\d{2}))?/i
           ];
