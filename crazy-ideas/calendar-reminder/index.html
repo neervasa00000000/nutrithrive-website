@@ -979,7 +979,12 @@
                 }
               }
               
-              const date = new Date(year, month, day);
+              let date = new Date(year, month, day);
+              
+              // If date is in the past and no year was specified, try next year
+              if (!part3 && date < now) {
+                date = new Date(year + 1, month, day);
+              }
               
               // Check for time range first
               const timeRange = extractTimeRange(text);
