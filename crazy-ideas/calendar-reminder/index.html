@@ -588,7 +588,7 @@
           return str.replace(/(\d+)(st|nd|rd|th)/i, '$1');
         };
         
-        // Extract time from text
+        // Extract time from text (single time)
         const extractTime = function(text) {
           const timeMatch = text.match(/(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
           if (timeMatch) {
@@ -599,6 +599,38 @@
             };
           }
           return { hour: 12, minute: 0, ampm: null };
+        };
+        
+        // Extract time range from text (from X to Y)
+        const extractTimeRange = function(text) {
+          // Patterns: "from 11 pm to 12 am", "11 pm to 12 am", "11pm-12am", "11:00 pm to 12:00 am"
+          const rangePatterns = [
+            /from\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s*-\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /from\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+until\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /from\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+through\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i
+          ];
+          
+          for (const pattern of rangePatterns) {
+            const match = text.match(pattern);
+            if (match) {
+              return {
+                start: {
+                  hour: parseInt(match[1]),
+                  minute: parseInt(match[2] || '0'),
+                  ampm: match[3]
+                },
+                end: {
+                  hour: parseInt(match[4]),
+                  minute: parseInt(match[5] || '0'),
+                  ampm: match[6]
+                }
+              };
+            }
+          }
+          
+          return null;
         };
         
         // Patterns for common date/time expressions (ordered by specificity)
@@ -661,6 +693,43 @@
               }
               
               const date = new Date(year, month, day);
+              
+              // Check for time range first
+              const timeRange = extractTimeRange(text);
+              if (timeRange) {
+                const startDate = new Date(date);
+                const endDate = new Date(date);
+                
+                // Parse start time
+                let startHour = timeRange.start.hour;
+                let startMinute = timeRange.start.minute;
+                if (timeRange.start.ampm) {
+                  if (timeRange.start.ampm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                  if (timeRange.start.ampm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
+                }
+                startDate.setHours(startHour, startMinute, 0, 0);
+                
+                // Parse end time
+                let endHour = timeRange.end.hour;
+                let endMinute = timeRange.end.minute;
+                if (timeRange.end.ampm) {
+                  if (timeRange.end.ampm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                  if (timeRange.end.ampm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
+                }
+                endDate.setHours(endHour, endMinute, 0, 0);
+                
+                // Handle case where end time is next day (e.g., 11 pm to 12 am)
+                if (endDate <= startDate) {
+                  endDate.setDate(endDate.getDate() + 1);
+                }
+                
+                return {
+                  start: { date: () => startDate },
+                  end: { date: () => endDate }
+                };
+              }
+              
+              // Single time
               const time = extractTime(text);
               return this.parseTime(date, time.hour, time.minute, time.ampm);
             }
@@ -675,6 +744,39 @@
               const day = parseInt(removeOrdinal(match[2]));
               const year = parseYear(match[3]);
               const date = new Date(year, monthIdx, day);
+              
+              // Check for time range
+              const timeRange = extractTimeRange(text);
+              if (timeRange) {
+                const startDate = new Date(date);
+                const endDate = new Date(date);
+                
+                let startHour = timeRange.start.hour;
+                let startMinute = timeRange.start.minute;
+                if (timeRange.start.ampm) {
+                  if (timeRange.start.ampm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                  if (timeRange.start.ampm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
+                }
+                startDate.setHours(startHour, startMinute, 0, 0);
+                
+                let endHour = timeRange.end.hour;
+                let endMinute = timeRange.end.minute;
+                if (timeRange.end.ampm) {
+                  if (timeRange.end.ampm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                  if (timeRange.end.ampm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
+                }
+                endDate.setHours(endHour, endMinute, 0, 0);
+                
+                if (endDate <= startDate) {
+                  endDate.setDate(endDate.getDate() + 1);
+                }
+                
+                return {
+                  start: { date: () => startDate },
+                  end: { date: () => endDate }
+                };
+              }
+              
               const time = extractTime(text);
               return this.parseTime(date, time.hour, time.minute, time.ampm);
             }
@@ -689,6 +791,39 @@
               
               const year = parseYear(match[3]);
               const date = new Date(year, monthIdx, day);
+              
+              // Check for time range
+              const timeRange = extractTimeRange(text);
+              if (timeRange) {
+                const startDate = new Date(date);
+                const endDate = new Date(date);
+                
+                let startHour = timeRange.start.hour;
+                let startMinute = timeRange.start.minute;
+                if (timeRange.start.ampm) {
+                  if (timeRange.start.ampm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                  if (timeRange.start.ampm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
+                }
+                startDate.setHours(startHour, startMinute, 0, 0);
+                
+                let endHour = timeRange.end.hour;
+                let endMinute = timeRange.end.minute;
+                if (timeRange.end.ampm) {
+                  if (timeRange.end.ampm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                  if (timeRange.end.ampm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
+                }
+                endDate.setHours(endHour, endMinute, 0, 0);
+                
+                if (endDate <= startDate) {
+                  endDate.setDate(endDate.getDate() + 1);
+                }
+                
+                return {
+                  start: { date: () => startDate },
+                  end: { date: () => endDate }
+                };
+              }
+              
               const time = extractTime(text);
               return this.parseTime(date, time.hour, time.minute, time.ampm);
             }
@@ -722,6 +857,39 @@
               }
               
               const date = new Date(year, month, day);
+              
+              // Check for time range
+              const timeRange = extractTimeRange(text);
+              if (timeRange) {
+                const startDate = new Date(date);
+                const endDate = new Date(date);
+                
+                let startHour = timeRange.start.hour;
+                let startMinute = timeRange.start.minute;
+                if (timeRange.start.ampm) {
+                  if (timeRange.start.ampm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                  if (timeRange.start.ampm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
+                }
+                startDate.setHours(startHour, startMinute, 0, 0);
+                
+                let endHour = timeRange.end.hour;
+                let endMinute = timeRange.end.minute;
+                if (timeRange.end.ampm) {
+                  if (timeRange.end.ampm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                  if (timeRange.end.ampm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
+                }
+                endDate.setHours(endHour, endMinute, 0, 0);
+                
+                if (endDate <= startDate) {
+                  endDate.setDate(endDate.getDate() + 1);
+                }
+                
+                return {
+                  start: { date: () => startDate },
+                  end: { date: () => endDate }
+                };
+              }
+              
               return this.parseTime(date, hour, minute, ampm);
             }
           },
