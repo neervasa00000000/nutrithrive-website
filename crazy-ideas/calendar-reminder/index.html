@@ -85,38 +85,6 @@
       }
     }
 
-    .header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 28px;
-      background: var(--bg-tertiary);
-      border: 2px solid var(--accent);
-      border-radius: 50px;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s ease;
-    }
-
-    .header-badge:hover {
-      border-color: var(--primary);
-    }
-
-    .header-badge::before {
-      content: '✨';
-      display: inline-block;
-      font-size: 1.1rem;
-    }
-
-    .header-badge::after {
-      display: none;
-    }
 
     .main-content {
       display: grid;
@@ -720,7 +688,6 @@
 <body>
   <div class="container">
     <div class="header-section">
-      <div class="header-badge">Quick Reminder Tool</div>
       <h1>Calendar Reminder</h1>
       <p class="subtitle">
         Type naturally and we'll create your calendar event. Try: <em>"Lunch next Thursday 2:30pm"</em> or <em>"Dentist Dec 4 2025 8:15am"</em>
