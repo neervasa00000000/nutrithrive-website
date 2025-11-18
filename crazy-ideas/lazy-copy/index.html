@@ -610,8 +610,14 @@
 
     function decodeText(encoded) {
       try {
-        return decodeURIComponent(atob(encoded));
+        if (!encoded || encoded.length === 0) {
+          return "";
+        }
+        // Decode base64 then URI decode
+        const decoded = atob(encoded);
+        return decodeURIComponent(decoded);
       } catch (e) {
+        console.error("Decode error:", e);
         return "";
       }
     }
@@ -681,35 +687,50 @@
 
     function updateFromHash() {
       const hash = window.location.hash || "";
+      
       if (!hash.startsWith("#t=")) {
-        // No hash, clear everything
-        if (textarea.value === "" && shareBox.style.display !== "none") {
+        // No hash - if textarea is empty, hide share box
+        if (textarea.value === "") {
           shareBox.style.display = "none";
+          refreshSyncBtn.style.display = "none";
         }
         syncKey = "";
         stopAutoRefresh();
         return;
       }
 
-      // Check if hash actually changed
-      if (hash === lastHash && !isUpdatingFromHash) {
+      // Check if hash actually changed (skip if same and we're not forcing update)
+      if (hash === lastHash && !isUpdatingFromHash && lastHash !== "") {
         return;
       }
 
       isUpdatingFromHash = true;
       const encoded = hash.slice(3);
+      
+      if (!encoded) {
+        isUpdatingFromHash = false;
+        return;
+      }
+      
       const text = decodeText(encoded);
       
-      if (text && text !== textarea.value) {
-        textarea.value = text;
+      // Always update if we have text from hash
+      if (text !== null && text !== undefined) {
+        // Update textarea if different
+        if (textarea.value !== text) {
+          textarea.value = text;
+          showBadge("✅ Loaded from link!", 'success');
+        }
+        
         lastSyncedText = text;
         updateShareLink(text);
-        showBadge("✅ Synced!", 'success');
         
         // Auto-scroll to textarea
         setTimeout(() => {
           textarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
+      } else {
+        showBadge("⚠️ Could not decode text from link", 'info');
       }
       
       lastHash = hash;
@@ -717,7 +738,7 @@
       
       setTimeout(() => {
         isUpdatingFromHash = false;
-      }, 200);
+      }, 300);
     }
 
     function startAutoRefresh() {
@@ -893,12 +914,17 @@
       }
     });
 
-    // Auto-focus textarea on load
-    textarea.focus();
-
-    // On load, if URL has #t=..., decode it
-    updateFromHash();
-    lastHash = window.location.hash;
+    // On load, if URL has #t=..., decode it FIRST before focusing
+    const initialHash = window.location.hash || "";
+    if (initialHash.startsWith("#t=")) {
+      updateFromHash();
+      lastHash = initialHash;
+      // Don't auto-focus if we loaded from hash (user is receiving)
+      isReceivingMode = true;
+    } else {
+      // Auto-focus textarea on load only if no hash (user is creating new)
+      textarea.focus();
+    }
 
     // Listen for hash changes
     window.addEventListener("hashchange", () => {
