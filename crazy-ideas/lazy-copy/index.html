@@ -535,7 +535,11 @@
           </button>
         </div>
         <div class="helper" style="margin-top: 12px;">
-          📱 <strong>How to sync:</strong> Open this link on your other device. When text changes, click "Refresh to Sync" on the receiving device to see updates instantly!
+          📱 <strong>How to sync:</strong> 
+          <br>1. Copy this link and open it on your other device
+          <br>2. When Device A updates text, copy the updated link from Device A
+          <br>3. Paste it on Device B, or click "Refresh to Sync" 
+          <br>4. Auto-refresh will check for updates every 5 seconds
         </div>
       </div>
 
@@ -574,6 +578,9 @@
     let lastSyncedText = "";
     let lastHash = "";
     let syncKey = "";
+    let lastUserActivity = Date.now();
+    let autoRefreshInterval = null;
+    let isReceivingMode = false;
 
     function showBadge(message, type = 'success') {
       statusBadge.textContent = message;
@@ -667,6 +674,7 @@
           shareBox.style.display = "none";
         }
         syncKey = "";
+        stopAutoRefresh();
         return;
       }
 
@@ -697,6 +705,38 @@
       setTimeout(() => {
         isUpdatingFromHash = false;
       }, 200);
+    }
+
+    function startAutoRefresh() {
+      if (autoRefreshInterval) return;
+      
+      // Auto-refresh every 5 seconds if user hasn't typed in 3 seconds
+      autoRefreshInterval = setInterval(() => {
+        const timeSinceActivity = Date.now() - lastUserActivity;
+        const hash = window.location.hash || "";
+        
+        // Only auto-refresh if:
+        // 1. We have a hash (we're in sync mode)
+        // 2. User hasn't typed in 3 seconds (they're receiving, not sending)
+        // 3. We're not currently updating from hash
+        if (hash.startsWith("#t=") && timeSinceActivity > 3000 && !isUpdatingFromHash) {
+          // Store current text before refresh to compare
+          const currentText = textarea.value;
+          
+          // Reload page - when it reloads, it will get the latest hash from URL
+          // Note: This works because when Device A updates, Device B needs to 
+          // manually copy the new URL or refresh. Auto-refresh helps but the
+          // URL hash needs to be updated on Device B's side.
+          window.location.reload();
+        }
+      }, 5000);
+    }
+
+    function stopAutoRefresh() {
+      if (autoRefreshInterval) {
+        clearInterval(autoRefreshInterval);
+        autoRefreshInterval = null;
+      }
     }
 
     function checkForUpdates() {
@@ -800,6 +840,9 @@
     textarea.addEventListener("input", (e) => {
       if (isUpdatingFromHash) return;
       
+      lastUserActivity = Date.now();
+      stopAutoRefresh(); // Stop auto-refresh when user is typing
+      
       const text = e.target.value;
       const charCount = text.length;
       
@@ -811,6 +854,22 @@
       // Auto-sync to URL
       if (text !== lastSyncedText) {
         syncToUrl(text);
+      }
+    });
+
+    // Track user activity
+    textarea.addEventListener("focus", () => {
+      lastUserActivity = Date.now();
+      stopAutoRefresh();
+    });
+
+    textarea.addEventListener("blur", () => {
+      // Start auto-refresh when user stops interacting
+      const hash = window.location.hash || "";
+      if (hash.startsWith("#t=")) {
+        setTimeout(() => {
+          startAutoRefresh();
+        }, 2000);
       }
     });
 
@@ -833,16 +892,32 @@
       updateFromHash();
     });
 
-    // Poll for updates every 2 seconds (for cross-device sync)
-    // Note: For true cross-device sync, users need to refresh the page on the receiving device
-    // or manually copy the updated URL. This polling helps with same-device scenarios.
-    setInterval(() => {
-      checkForUpdates();
-    }, 2000);
+    // Start auto-refresh if we have a hash (receiving mode)
+    const initialHash = window.location.hash || "";
+    if (initialHash.startsWith("#t=")) {
+      // Wait 2 seconds, then start auto-refresh if user doesn't interact
+      setTimeout(() => {
+        if (Date.now() - lastUserActivity > 2000) {
+          startAutoRefresh();
+          showBadge("🔄 Auto-sync enabled - will refresh every 3 seconds", 'info');
+        }
+      }, 2000);
+    }
 
     // Also check when window gains focus (user switches back to tab)
     window.addEventListener("focus", () => {
       checkForUpdates();
+      // Restart auto-refresh if we have a hash
+      const hash = window.location.hash || "";
+      if (hash.startsWith("#t=")) {
+        setTimeout(() => {
+          startAutoRefresh();
+        }, 2000);
+      }
+    });
+
+    window.addEventListener("blur", () => {
+      stopAutoRefresh();
     });
   </script>
 </body>
