@@ -748,35 +748,45 @@
 </head>
 <body>
   <div class="container">
-    <h1>🗓️ Quick Calendar Reminder</h1>
-    <div class="subtitle">
-      Type your reminder naturally. Examples: <em>"Lunch next Thursday 2:30pm"</em> or <em>"Dentist Dec 4 2025 8:15am"</em>
+    <div class="header-section">
+      <div class="header-badge">Quick Reminder Tool</div>
+      <h1>Calendar Reminder</h1>
+      <p class="subtitle">
+        Type naturally and we'll create your calendar event. Try: <em>"Lunch next Thursday 2:30pm"</em> or <em>"Dentist Dec 4 2025 8:15am"</em>
+      </p>
     </div>
 
-    <textarea 
-      id="eventText" 
-      placeholder="e.g., Team meeting tomorrow at 3pm in Conference Room A"
-      autofocus
-    ></textarea>
+    <div class="main-content">
+      <div class="input-card">
+        <label class="input-label">Your Reminder</label>
+        <textarea 
+          id="eventText" 
+          placeholder="e.g., Team meeting tomorrow at 3pm in Conference Room A"
+          autofocus
+        ></textarea>
+        <div class="button-group">
+          <button id="generateBtn" onclick="generateCalendar()">
+            Generate Event
+          </button>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
 
-    <button id="generateBtn" onclick="generateCalendar()">
-      Generate Calendar Event
-    </button>
+      <div class="info-card">
+        <div class="tip">
+          <strong>Tip:</strong> Download the .ics file and open it in Google Calendar, Apple Calendar, Outlook, or any calendar app. The event will be added automatically!
+        </div>
 
-    <div class="result" id="result"></div>
-
-    <div class="tip">
-      <strong>💡 Tip:</strong> Download the .ics file and open it in Google Calendar, Apple Calendar, Outlook, or any calendar app. The event will be added automatically!
-    </div>
-
-    <div class="examples">
-      <h3>📝 Examples:</h3>
-      <ul>
-        <li>Doctor appointment next Monday at 10am</li>
-        <li>Birthday party Dec 25 2025 6pm</li>
-        <li>Gym session tomorrow 7am</li>
-        <li>Conference call Friday 2:30pm</li>
-      </ul>
+        <div class="examples">
+          <h3>Examples</h3>
+          <ul>
+            <li>Doctor appointment next Monday at 10am</li>
+            <li>Birthday party Dec 25 2025 6pm</li>
+            <li>Gym session tomorrow 7am</li>
+            <li>Conference call Friday 2:30pm</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -804,7 +814,7 @@
         resultDiv.innerHTML = '<div class="error">⚠️ Please describe your event or reminder.</div>';
         setTimeout(function() {
           generateBtn.disabled = false;
-          generateBtn.innerHTML = 'Generate Calendar Event';
+          generateBtn.innerHTML = 'Generate Event';
         }, 100);
         return;
       }
@@ -820,7 +830,7 @@
           resultDiv.innerHTML = '<div class="error">⚠️ Could not extract date/time from your text.<br><br>Try being more specific:<br>• "Meeting tomorrow at 3pm"<br>• "Appointment Dec 15 2025 at 2:30pm"<br>• "Event next Friday 10am"</div>';
           setTimeout(function() {
             generateBtn.disabled = false;
-            generateBtn.innerHTML = 'Generate Calendar Event';
+            generateBtn.innerHTML = 'Generate Event';
           }, 100);
           return;
         }
@@ -833,7 +843,7 @@
           resultDiv.innerHTML = '<div class="error">⚠️ The date/time you entered appears to be in the past. Please enter a future date.</div>';
           setTimeout(function() {
             generateBtn.disabled = false;
-            generateBtn.innerHTML = 'Generate Calendar Event';
+            generateBtn.innerHTML = 'Generate Event';
           }, 100);
           return;
         }
@@ -979,7 +989,7 @@
         // Always reset button state
         setTimeout(function() {
           generateBtn.disabled = false;
-          generateBtn.innerHTML = 'Generate Calendar Event';
+          generateBtn.innerHTML = 'Generate Event';
         }, 100);
 
         // Clean up URL after a delay
@@ -994,7 +1004,7 @@
         // Always reset button state
         setTimeout(function() {
           generateBtn.disabled = false;
-          generateBtn.innerHTML = 'Generate Calendar Event';
+          generateBtn.innerHTML = 'Generate Event';
         }, 100);
       }
     }
