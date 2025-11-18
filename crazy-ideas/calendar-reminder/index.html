@@ -604,29 +604,64 @@
         // Extract time range from text (from X to Y)
         const extractTimeRange = function(text) {
           // Patterns: "from 11 pm to 12 am", "11 pm to 12 am", "11pm-12am", "11:00 pm to 12:00 am"
+          // Also: "at 11 to 14:00", "11 to 14:00" (24-hour format)
           const rangePatterns = [
-            /from\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
-            /(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
-            /(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s*-\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
-            /from\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+until\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
-            /from\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+through\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i
+            // 12-hour format with am/pm
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s*-\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+until\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+through\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            // 24-hour format: "11 to 14:00", "at 11 to 14:00", "11:00 to 14:00"
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s+to\s+(\d{1,2})(?::(\d{2}))?/i,
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s*-\s*(\d{1,2})(?::(\d{2}))?/i,
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s+until\s+(\d{1,2})(?::(\d{2}))?/i,
+            /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?\s+through\s+(\d{1,2})(?::(\d{2}))?/i
           ];
           
           for (const pattern of rangePatterns) {
             const match = text.match(pattern);
             if (match) {
-              return {
-                start: {
-                  hour: parseInt(match[1]),
-                  minute: parseInt(match[2] || '0'),
-                  ampm: match[3]
-                },
-                end: {
-                  hour: parseInt(match[4]),
-                  minute: parseInt(match[5] || '0'),
-                  ampm: match[6]
+              // Check if it's 24-hour format (no am/pm in match)
+              const hasAmpm = match[3] && (match[3].toLowerCase() === 'am' || match[3].toLowerCase() === 'pm');
+              
+              if (hasAmpm) {
+                // 12-hour format
+                return {
+                  start: {
+                    hour: parseInt(match[1]),
+                    minute: parseInt(match[2] || '0'),
+                    ampm: match[3]
+                  },
+                  end: {
+                    hour: parseInt(match[4]),
+                    minute: parseInt(match[5] || '0'),
+                    ampm: match[6]
+                  }
+                };
+              } else {
+                // 24-hour format
+                const startHour = parseInt(match[1]);
+                const startMinute = parseInt(match[2] || '0');
+                const endHour = parseInt(match[3]);
+                const endMinute = parseInt(match[4] || '0');
+                
+                // Validate 24-hour format (0-23 for hours, 0-59 for minutes)
+                if (startHour >= 0 && startHour <= 23 && endHour >= 0 && endHour <= 23 &&
+                    startMinute >= 0 && startMinute <= 59 && endMinute >= 0 && endMinute <= 59) {
+                  return {
+                    start: {
+                      hour: startHour,
+                      minute: startMinute,
+                      ampm: null
+                    },
+                    end: {
+                      hour: endHour,
+                      minute: endMinute,
+                      ampm: null
+                    }
+                  };
                 }
-              };
+              }
             }
           }
           
@@ -635,9 +670,9 @@
         
         // Patterns for common date/time expressions (ordered by specificity)
         const patterns = [
-          // "next [day]" before time range: "on next wednesday from 11 am to 12 pm" or "next wednesday from 11 am to 12 pm"
+          // "next [day]" before time range: "on next wednesday from 11 am to 12 pm" or "next wednesday at 11 to 14:00"
           {
-            regex: /(?:on\s+)?next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            regex: /(?:on\s+)?next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:at\s+|from\s+)?(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+to\s+(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?/i,
             handler: function(match) {
               const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
               const targetDay = dayNames.indexOf(match[1].toLowerCase());
@@ -652,17 +687,21 @@
               
               let startHour = parseInt(match[2]);
               let startMinute = parseInt(match[3] || '0');
-              if (match[4]) {
-                if (match[4].toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
-                if (match[4].toLowerCase() === 'am' && startHour === 12) startHour = 0;
+              const startAmpm = match[4];
+              
+              if (startAmpm) {
+                if (startAmpm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                if (startAmpm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
               }
               startDate.setHours(startHour, startMinute, 0, 0);
               
               let endHour = parseInt(match[5]);
               let endMinute = parseInt(match[6] || '0');
-              if (match[7]) {
-                if (match[7].toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
-                if (match[7].toLowerCase() === 'am' && endHour === 12) endHour = 0;
+              const endAmpm = match[7];
+              
+              if (endAmpm) {
+                if (endAmpm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                if (endAmpm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
               }
               endDate.setHours(endHour, endMinute, 0, 0);
               
@@ -676,9 +715,9 @@
               };
             }
           },
-          // Time range with "next [day]": "11 pm to 12 am on next wednesday" or "from 11 pm to 12 am next wednesday"
+          // Time range with "next [day]": "11 pm to 12 am on next wednesday" or "11 to 14:00 on next wednesday"
           {
-            regex: /(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+(?:on\s+)?next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
+            regex: /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+to\s+(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+(?:on\s+)?next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
             handler: function(match) {
               const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
               const targetDay = dayNames.indexOf(match[7].toLowerCase());
@@ -717,9 +756,9 @@
               };
             }
           },
-          // "tomorrow" before time range: "tomorrow from 11 am to 12 pm" or "on tomorrow from 11 am to 12 pm"
+          // "tomorrow" before time range: "tomorrow from 11 am to 12 pm" or "tomorrow at 11 to 14:00"
           {
-            regex: /(?:on\s+)?tomorrow\s+(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            regex: /(?:on\s+)?tomorrow\s+(?:at\s+|from\s+)?(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+to\s+(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?/i,
             handler: function(match) {
               const date = new Date(now);
               date.setDate(date.getDate() + 1);
@@ -729,17 +768,19 @@
               
               let startHour = parseInt(match[1]);
               let startMinute = parseInt(match[2] || '0');
-              if (match[3]) {
-                if (match[3].toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
-                if (match[3].toLowerCase() === 'am' && startHour === 12) startHour = 0;
+              const startAmpm = match[3];
+              if (startAmpm) {
+                if (startAmpm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                if (startAmpm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
               }
               startDate.setHours(startHour, startMinute, 0, 0);
               
               let endHour = parseInt(match[4]);
               let endMinute = parseInt(match[5] || '0');
-              if (match[6]) {
-                if (match[6].toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
-                if (match[6].toLowerCase() === 'am' && endHour === 12) endHour = 0;
+              const endAmpm = match[6];
+              if (endAmpm) {
+                if (endAmpm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                if (endAmpm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
               }
               endDate.setHours(endHour, endMinute, 0, 0);
               
@@ -753,9 +794,9 @@
               };
             }
           },
-          // Time range with "tomorrow": "11 pm to 12 am tomorrow" or "from 11 pm to 12 am on tomorrow"
+          // Time range with "tomorrow": "11 pm to 12 am tomorrow" or "11 to 14:00 tomorrow"
           {
-            regex: /(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+(?:on\s+)?tomorrow/i,
+            regex: /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+to\s+(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+(?:on\s+)?tomorrow/i,
             handler: function(match) {
               const date = new Date(now);
               date.setDate(date.getDate() + 1);
@@ -858,21 +899,25 @@
                 let startHour = timeRange.start.hour;
                 let startMinute = timeRange.start.minute;
                 if (timeRange.start.ampm) {
+                  // 12-hour format
                   if (timeRange.start.ampm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
                   if (timeRange.start.ampm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
                 }
+                // If no ampm, it's already in 24-hour format
                 startDate.setHours(startHour, startMinute, 0, 0);
                 
                 // Parse end time
                 let endHour = timeRange.end.hour;
                 let endMinute = timeRange.end.minute;
                 if (timeRange.end.ampm) {
+                  // 12-hour format
                   if (timeRange.end.ampm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
                   if (timeRange.end.ampm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
                 }
+                // If no ampm, it's already in 24-hour format
                 endDate.setHours(endHour, endMinute, 0, 0);
                 
-                // Handle case where end time is next day (e.g., 11 pm to 12 am)
+                // Handle case where end time is next day (e.g., 11 pm to 12 am or 23:00 to 01:00)
                 if (endDate <= startDate) {
                   endDate.setDate(endDate.getDate() + 1);
                 }
@@ -1088,9 +1133,9 @@
               };
             }
           },
-          // Time range with day name: "11 pm to 12 am on wednesday" or "from 11 pm to 12 am wednesday"
+          // Time range with day name: "11 pm to 12 am on wednesday" or "11 to 14:00 on wednesday"
           {
-            regex: /(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
+            regex: /(?:from\s+|at\s+)?(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+to\s+(\d{1,2})(?::(\d{2}))?(?:\s*(am|pm))?\s+(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
             handler: function(match) {
               const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
               const targetDay = dayNames.indexOf(match[7].toLowerCase());
