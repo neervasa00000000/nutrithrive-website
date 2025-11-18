@@ -372,11 +372,14 @@
   // Check for text in URL on load (must be FIRST, before other event listeners)
   const urlParams = new URLSearchParams(location.search);
   const textParam = urlParams.get('text');
+  let loadedFromUrl = false;
+  
   if (textParam) {
     const decoded = decodeText(textParam);
     if (decoded && decoded.length > 0) {
       textarea.value = decoded;
       lastSimpleText = decoded;
+      loadedFromUrl = true;
       showBadge('✅ Loaded text from link!', 'success');
       updateSimpleShareLink(decoded);
     } else {
@@ -386,7 +389,6 @@
 
   // Auto-update simple share link as user types (debounced)
   let simpleSyncTimeout = null;
-  const originalInputHandler = textarea.oninput;
   textarea.addEventListener('input', (e) => {
     const text = e.target.value;
     if (simpleSyncTimeout) clearTimeout(simpleSyncTimeout);
@@ -398,11 +400,13 @@
   });
   
   // Also update on initial load if textarea has content (but not from URL)
-  setTimeout(() => {
-    if (textarea && textarea.value && !textParam) {
-      updateSimpleShareLink(textarea.value);
-    }
-  }, 100);
+  if (!loadedFromUrl) {
+    setTimeout(() => {
+      if (textarea && textarea.value) {
+        updateSimpleShareLink(textarea.value);
+      }
+    }, 100);
+  }
 
   renderHistory();
   textarea.focus();
