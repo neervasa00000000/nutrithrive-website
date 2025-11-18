@@ -1579,130 +1579,114 @@
             }
           }
 
-        // If no location found with "at", try other patterns
-        if (!location) {
-          const locPatterns = [
-            /\bin\s+([A-Za-z0-9 ,.'-]+?)(?:\s+(?:at|on|next|tomorrow|today))/i,
-            /\blocation[:\s]+([A-Za-z0-9 ,.'-]+)/i
-          ];
-          
-          for (const pattern of locPatterns) {
-            const match = text.match(pattern);
-            if (match && match[1]) {
-              location = match[1].trim();
-              break;
+          // If no location found with "at", try other patterns
+          if (!location) {
+            const locPatterns = [
+              /\bin\s+([A-Za-z0-9 ,.'-]+?)(?:\s+(?:at|on|next|tomorrow|today))/i,
+              /\blocation[:\s]+([A-Za-z0-9 ,.'-]+)/i
+            ];
+            
+            for (const pattern of locPatterns) {
+              const match = eventText.match(pattern);
+              if (match && match[1]) {
+                location = match[1].trim();
+                break;
+              }
             }
           }
-        }
 
-        // Extract summary (remove date/time/location from original text)
-        let summary = text;
-        
-        if (parsedResult.text) {
-          summary = text.replace(parsedResult.text, "").trim();
+          // Extract summary (remove date/time/location from original text)
+          let summary = eventText;
           
-          // Remove location patterns
-          if (location) {
-            summary = summary.replace(new RegExp(`\\s*at\\s+${location.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'), '');
-            summary = summary.replace(new RegExp(`\\s*in\\s+${location.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'), '');
+          if (parsedResult.text) {
+            summary = eventText.replace(parsedResult.text, "").trim();
+            
+            // Remove location patterns
+            if (location) {
+              summary = summary.replace(new RegExp(`\\s*at\\s+${location.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'), '');
+              summary = summary.replace(new RegExp(`\\s*in\\s+${location.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'), '');
+            }
+            
+            summary = summary.trim();
           }
-          
-          summary = summary.trim();
-        }
 
-        // If summary is empty or too short, use a default
-        if (!summary || summary.length < 2) {
-          summary = "Reminder";
-        }
-
-        // Clean up summary
-        summary = summary.replace(/\s+/g, ' ').trim();
-
-        // ICS formatting function
-        function fmtICS(dt) {
-          if (!dt || !(dt instanceof Date) || isNaN(dt.getTime())) {
-            throw new Error("Invalid date");
+          // If summary is empty or too short, use a default
+          if (!summary || summary.length < 2) {
+            summary = "Event";
           }
-          
-          // Format as UTC YYYYMMDDTHHmmssZ
-          const z = new Date(dt.getTime() - dt.getTimezoneOffset() * 60000);
-          const yyyy = z.getUTCFullYear();
-          const mm = String(z.getUTCMonth() + 1).padStart(2, "0");
-          const dd = String(z.getUTCDate()).padStart(2, "0");
-          const h = String(z.getUTCHours()).padStart(2, "0");
-          const m = String(z.getUTCMinutes()).padStart(2, "0");
-          const s = String(z.getUTCSeconds()).padStart(2, "0");
-          
-          return `${yyyy}${mm}${dd}T${h}${m}${s}Z`;
+
+          // Clean up summary
+          summary = summary.replace(/\s+/g, ' ').trim();
+
+          allEvents.push({
+            summary: summary,
+            start: evStart,
+            end: evEnd,
+            hasEnd: hasEnd,
+            location: location,
+            originalText: eventText
+          });
+        }
+        
+        if (allEvents.length === 0) {
+          resultDiv.innerHTML = '<div class="error">⚠️ Could not extract date/time from your text.<br><br>Try being more specific:<br>• "Meeting tomorrow at 3pm"<br>• "Appointment Dec 15 2025 at 2:30pm"<br>• "Event next Friday 10am"<br>• "black friday 28/11 at 12 am"</div>';
+          setTimeout(function() {
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = 'Generate Event';
+          }, 100);
+          return;
         }
 
-        // Generate ICS content
-        const icsContent = [
-          "BEGIN:VCALENDAR",
-          "VERSION:2.0",
-          "CALSCALE:GREGORIAN",
-          "PRODID:-//NutriThrive Labs//Quick Calendar Reminder//EN",
-          "BEGIN:VEVENT",
-          "UID:" + Date.now() + "-" + Math.random().toString(36).substr(2, 9) + "@nutrithrive.com.au",
-          "DTSTAMP:" + fmtICS(new Date()),
-          "SUMMARY:" + summary.replace(/\n/g, " ").replace(/[,;\\]/g, "\\$&"),
-          "DTSTART:" + fmtICS(evStart),
-          "DTEND:" + fmtICS(evEnd),
-          location ? "LOCATION:" + location.replace(/\n/g, " ").replace(/[,;\\]/g, "\\$&") : "",
-          "DESCRIPTION:" + text.replace(/\n/g, " ").replace(/[,;\\]/g, "\\$&"),
-          "STATUS:CONFIRMED",
-          "SEQUENCE:0",
-          "END:VEVENT",
-          "END:VCALENDAR"
-        ].filter(line => line !== "").join("\r\n");
-
-        // Format dates for display
-        const formatDate = (date) => {
-          return date.toLocaleDateString('en-AU', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-          });
-        };
-
-        const formatTime = (date) => {
-          return date.toLocaleTimeString('en-AU', { 
-            hour: '2-digit', 
-            minute: '2-digit',
-            hour12: true 
-          });
-        };
-
-        // Create download link
-        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
+        // Generate ICS files for all events
+        let html = '';
         
-        const html = `
-          <div class="event-summary">
-            <b>📌 Title:</b> ${escapeHtml(summary)}<br><br>
-            <b>📅 Date:</b> ${formatDate(evStart)}<br>
-            <b>⏰ Time:</b> ${formatTime(evStart)} - ${formatTime(evEnd)}<br>
-            ${location ? `<b>📍 Location:</b> ${escapeHtml(location)}<br>` : ''}
-            <b>📝 Description:</b> ${escapeHtml(text)}
-          </div>
-          <a href="${url}" download="reminder-${Date.now()}.ics" class="ics-link" onclick="this.href = '${url}'">
-            📥 Download Calendar Event (.ics)
-          </a>
-        `;
+        for (let i = 0; i < allEvents.length; i++) {
+          const event = allEvents[i];
+          
+          // ICS formatting
+          function fmtICS(dt) {
+            const z = new Date(dt.getTime() - dt.getTimezoneOffset() * 60000);
+            const yyyy = z.getUTCFullYear();
+            const mm = String(z.getUTCMonth() + 1).padStart(2, "0");
+            const dd = String(z.getUTCDate()).padStart(2, "0");
+            const h = String(z.getUTCHours()).padStart(2, "0");
+            const m = String(z.getUTCMinutes()).padStart(2, "0");
+            const s = String(z.getUTCSeconds()).padStart(2, "0");
+            return `${yyyy}${mm}${dd}T${h}${m}${s}Z`;
+          }
+
+          const ics = 
+            "BEGIN:VCALENDAR\nVERSION:2.0\nCALSCALE:GREGORIAN\n" +
+            "BEGIN:VEVENT\n" +
+            "SUMMARY:" + event.summary.replace(/\n/g," ") + "\n" +
+            "DTSTART:" + fmtICS(event.start) + "\n" +
+            "DTEND:" + fmtICS(event.end) + "\n" +
+            (event.location ? "LOCATION:" + event.location.replace(/\n/g," ") + "\n" : "") +
+            "DESCRIPTION:" + event.originalText.replace(/\n/g, " ") + "\n" +
+            "END:VEVENT\nEND:VCALENDAR";
+
+          html += `
+            <div class="event-summary" ${i > 0 ? 'style="margin-top: 1.5em;"' : ''}>
+              <b>Event ${allEvents.length > 1 ? (i + 1) + ': ' : ''}${event.summary}</b><br>
+              <b>Date & Time:</b> ${event.start.toLocaleString()}${event.hasEnd ? ' - ' + event.end.toLocaleString() : ''}<br>
+              ${event.location ? '<b>Location:</b> ' + event.location + '<br>' : ''}
+              <b>Description:</b> ${event.originalText}
+            </div>
+            <a href="data:text/calendar;charset=utf8,${encodeURIComponent(ics)}" download="event${allEvents.length > 1 ? '-' + (i + 1) : ''}.ics" class="ics-link">
+              ➡️ Download Event ${allEvents.length > 1 ? (i + 1) + ' ' : ''}(.ics)
+            </a>
+          `;
+        }
+        
+        if (allEvents.length > 1) {
+          html = `<div style="margin-bottom: 1em; font-weight: bold; color: #727D73;">Found ${allEvents.length} events:</div>` + html;
+        }
 
         resultDiv.innerHTML = html;
-        
-        // Always reset button state
         setTimeout(function() {
           generateBtn.disabled = false;
           generateBtn.innerHTML = 'Generate Event';
         }, 100);
-
-        // Clean up URL after a delay
-        setTimeout(() => {
-          URL.revokeObjectURL(url);
-        }, 10000);
 
       } catch (error) {
         console.error('Error generating calendar:', error);
