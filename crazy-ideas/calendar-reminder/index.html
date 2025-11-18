@@ -550,14 +550,58 @@
     }
   </style>
   <script>
-    // Simple date parser - no external dependencies
+    // Enhanced date parser - handles many human-friendly formats
     const SimpleDateParser = {
       parse: function(text, refDate) {
         refDate = refDate || new Date();
         const now = new Date(refDate);
         const textLower = text.toLowerCase().trim();
         
-        // Patterns for common date/time expressions
+        // Month names and abbreviations
+        const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const monthAbbr = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+        
+        // Helper to find month index
+        const findMonth = function(monthStr) {
+          if (!monthStr) return -1;
+          const m = monthStr.toLowerCase();
+          let idx = months.findIndex(month => month.startsWith(m));
+          if (idx === -1) idx = monthAbbr.findIndex(abbr => abbr === m);
+          return idx;
+        };
+        
+        // Helper to parse year (handles 2-digit years)
+        const parseYear = function(yearStr) {
+          if (!yearStr) return now.getFullYear();
+          const y = parseInt(yearStr);
+          if (y < 100) {
+            // 2-digit year: assume 20xx if >= current year - 2000, else 21xx
+            const currentYear = now.getFullYear();
+            const currentCentury = Math.floor(currentYear / 100) * 100;
+            return y >= (currentYear % 100) ? currentCentury + y : currentCentury + 100 + y;
+          }
+          return y;
+        };
+        
+        // Helper to remove ordinal suffixes (1st, 2nd, 3rd, 4th, etc.)
+        const removeOrdinal = function(str) {
+          return str.replace(/(\d+)(st|nd|rd|th)/i, '$1');
+        };
+        
+        // Extract time from text
+        const extractTime = function(text) {
+          const timeMatch = text.match(/(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
+          if (timeMatch) {
+            return {
+              hour: parseInt(timeMatch[1]),
+              minute: parseInt(timeMatch[2] || '0'),
+              ampm: timeMatch[3] || null
+            };
+          }
+          return { hour: 12, minute: 0, ampm: null };
+        };
+        
+        // Patterns for common date/time expressions (ordered by specificity)
         const patterns = [
           // "tomorrow at 3pm"
           {
@@ -582,29 +626,99 @@
               return this.parseTime(date, match[2], match[3] || '0', match[4]);
             }
           },
-          // "Dec 25 2025 at 6pm" or "25 Dec 2025 6pm"
+          // Slash/dash/dot separated dates: 11/10/2025, 11-10-2025, 11.10.2025, nov/10/2025, nov / 10 / 2025
           {
-            regex: /(?:(\w{3,9})\s+)?(\d{1,2})(?:\s+(\w{3,9}))?\s+(\d{4})\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i,
+            regex: /(\w{3,9}|\d{1,2})\s*[\/\-\.,]\s*(\d{1,2})(?:st|nd|rd|th)?\s*[\/\-\.,]\s*(\d{2,4})/i,
             handler: function(match) {
-              const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+              let month, day, year;
+              const part1 = match[1].toLowerCase();
+              const part2 = parseInt(removeOrdinal(match[2]));
+              const part3 = match[3];
+              
+              const monthIdx = findMonth(part1);
+              if (monthIdx >= 0) {
+                // Format: nov/10/2025 or nov / 10 / 2025
+                month = monthIdx;
+                day = part2;
+                year = parseYear(part3);
+              } else {
+                // Format: 11/10/2025 (US format MM/DD/YYYY) or 10/11/2025 (DD/MM/YYYY)
+                const num1 = parseInt(part1);
+                const num2 = part2;
+                year = parseYear(part3);
+                
+                // Try US format first (MM/DD)
+                if (num1 >= 1 && num1 <= 12 && num2 >= 1 && num2 <= 31) {
+                  month = num1 - 1;
+                  day = num2;
+                } else if (num2 >= 1 && num2 <= 12 && num1 >= 1 && num1 <= 31) {
+                  // Try DD/MM format
+                  month = num2 - 1;
+                  day = num1;
+                } else {
+                  return null;
+                }
+              }
+              
+              const date = new Date(year, month, day);
+              const time = extractTime(text);
+              return this.parseTime(date, time.hour, time.minute, time.ampm);
+            }
+          },
+          // Month name with ordinal: "10th nov 25", "november 10th 2025", "nov 10th 2025"
+          {
+            regex: /(\w{3,9})\s+(\d{1,2})(?:st|nd|rd|th)?\s+(\d{2,4})/i,
+            handler: function(match) {
+              const monthIdx = findMonth(match[1]);
+              if (monthIdx < 0) return null;
+              
+              const day = parseInt(removeOrdinal(match[2]));
+              const year = parseYear(match[3]);
+              const date = new Date(year, monthIdx, day);
+              const time = extractTime(text);
+              return this.parseTime(date, time.hour, time.minute, time.ampm);
+            }
+          },
+          // Ordinal day with month: "10th nov 25", "10th november 2025"
+          {
+            regex: /(\d{1,2})(?:st|nd|rd|th)\s+(\w{3,9})\s+(\d{2,4})/i,
+            handler: function(match) {
+              const day = parseInt(removeOrdinal(match[1]));
+              const monthIdx = findMonth(match[2]);
+              if (monthIdx < 0) return null;
+              
+              const year = parseYear(match[3]);
+              const date = new Date(year, monthIdx, day);
+              const time = extractTime(text);
+              return this.parseTime(date, time.hour, time.minute, time.ampm);
+            }
+          },
+          // "Dec 25 2025 at 6pm" or "25 Dec 2025 6pm" or "december 25 2025"
+          {
+            regex: /(?:(\w{3,9})\s+)?(\d{1,2})(?:st|nd|rd|th)?(?:\s+(\w{3,9}))?\s+(\d{2,4})(?:\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?)?/i,
+            handler: function(match) {
               let month, day, year, hour, minute, ampm;
               
               if (match[1]) {
-                // "Dec 25 2025"
-                month = months.findIndex(m => m.startsWith(match[1].toLowerCase()));
-                day = parseInt(match[2]);
-                year = parseInt(match[4]);
+                // "Dec 25 2025" or "november 10 2025"
+                month = findMonth(match[1]);
+                if (month < 0) return null;
+                day = parseInt(removeOrdinal(match[2]));
+                year = parseYear(match[4]);
+                hour = parseInt(match[5] || '12');
+                minute = parseInt(match[6] || '0');
+                ampm = match[7];
+              } else if (match[3]) {
+                // "25 Dec 2025" or "10th nov 2025"
+                day = parseInt(removeOrdinal(match[2]));
+                month = findMonth(match[3]);
+                if (month < 0) return null;
+                year = parseYear(match[4]);
                 hour = parseInt(match[5] || '12');
                 minute = parseInt(match[6] || '0');
                 ampm = match[7];
               } else {
-                // "25 Dec 2025"
-                day = parseInt(match[2]);
-                month = months.findIndex(m => m.startsWith(match[3].toLowerCase()));
-                year = parseInt(match[4]);
-                hour = parseInt(match[5] || '12');
-                minute = parseInt(match[6] || '0');
-                ampm = match[7];
+                return null;
               }
               
               const date = new Date(year, month, day);
@@ -632,6 +746,25 @@
               const date = new Date(now);
               date.setHours(date.getHours() + parseInt(match[1]));
               return { start: { date: () => date } };
+            }
+          },
+          // "in X minutes" or "X minutes from now"
+          {
+            regex: /(?:in\s+)?(\d+)\s+minutes?\s+(?:from\s+now)?/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setMinutes(date.getMinutes() + parseInt(match[1]));
+              return { start: { date: () => date } };
+            }
+          },
+          // "in X days" or "X days from now"
+          {
+            regex: /(?:in\s+)?(\d+)\s+days?\s+(?:from\s+now)?/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + parseInt(match[1]));
+              const time = extractTime(text);
+              return this.parseTime(date, time.hour, time.minute, time.ampm);
             }
           }
         ];
