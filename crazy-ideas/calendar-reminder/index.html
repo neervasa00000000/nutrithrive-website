@@ -1092,8 +1092,11 @@
                   };
                 }
                 
-                // Single time
-                const time = extractTime(text);
+                // Single time - extract from text after the date part
+                // Remove the matched date part to avoid matching year as time
+                const datePart = match[0];
+                const textAfterDate = text.substring(text.indexOf(datePart) + datePart.length);
+                const time = extractTime(textAfterDate.length > 0 ? textAfterDate : text);
                 if (!time || typeof time.hour !== 'number' || isNaN(time.hour)) {
                   // Default to noon if no time found
                   date.setHours(12, 0, 0, 0);
