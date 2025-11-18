@@ -1219,6 +1219,21 @@
     window.addEventListener('load', function() {
       document.getElementById('eventText').focus();
     });
+
+    // Make example items clickable - fill textarea when clicked
+    document.querySelectorAll('.examples li').forEach(function(li) {
+      li.addEventListener('click', function() {
+        const text = this.textContent.trim();
+        const textarea = document.getElementById('eventText');
+        textarea.value = text;
+        textarea.focus();
+        // Add visual feedback
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+      });
+    });
   </script>
 </body>
 </html>
