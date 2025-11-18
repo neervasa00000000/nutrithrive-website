@@ -852,13 +852,32 @@
               };
             }
           },
-          // "tomorrow at 3pm"
+          // "tomorrow at 3pm" or "tomorrow [event] at 8pm"
           {
-            regex: /tomorrow\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i,
+            regex: /tomorrow\s+(?:.*?\s+)?at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
             handler: function(match) {
               const date = new Date(now);
               date.setDate(date.getDate() + 1);
               return this.parseTime(date, match[1], match[2] || '0', match[3]);
+            }
+          },
+          // "tomorrow 3pm" or "tomorrow [event] 8pm" (without "at")
+          {
+            regex: /tomorrow\s+(?:.*?\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + 1);
+              return this.parseTime(date, match[1], match[2] || '0', match[3]);
+            }
+          },
+          // "tomorrow" (no time specified)
+          {
+            regex: /^tomorrow$/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + 1);
+              date.setHours(12, 0, 0, 0);
+              return { start: { date: () => date } };
             }
           },
           // "next monday/tuesday/etc at 3pm"
@@ -1378,9 +1397,23 @@
               };
             }
           },
-          // "friday 2:30pm" or "friday at 2:30pm" or "on friday at 2:30pm"
+          // "[event] on [day] at [time]" or "[event] [day] at [time]"
           {
-            regex: /(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            regex: /(?:.*?\s+)?(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:.*?\s+)?at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const targetDay = dayNames.indexOf(match[1].toLowerCase());
+              const date = new Date(now);
+              const currentDay = date.getDay();
+              let daysAhead = targetDay - currentDay;
+              if (daysAhead <= 0) daysAhead += 7;
+              date.setDate(date.getDate() + daysAhead);
+              return this.parseTime(date, match[2], match[3] || '0', match[4]);
+            }
+          },
+          // "friday 2:30pm" or "friday at 2:30pm" or "[event] friday 8pm"
+          {
+            regex: /(?:.*?\s+)?(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:.*?\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
             handler: function(match) {
               const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
               const targetDay = dayNames.indexOf(match[1].toLowerCase());
