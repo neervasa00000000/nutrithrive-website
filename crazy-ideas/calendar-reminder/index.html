@@ -269,60 +269,139 @@
     }
   </style>
   <script>
-    // Load chrono library with multiple fallbacks
-    let chronoLoaded = false;
-    
-    function loadChrono() {
-      // Try jsdelivr first
-      const script1 = document.createElement('script');
-      script1.src = 'https://cdn.jsdelivr.net/npm/chrono-node@2.7.8/dist/chrono.min.js';
-      script1.onload = function() {
-        chronoLoaded = true;
-        if (typeof chrono !== 'undefined') {
-          console.log('Chrono library loaded successfully');
-          const btn = document.getElementById('generateBtn');
-          if (btn) {
-            btn.disabled = false;
-            btn.innerHTML = 'Generate Calendar Event';
-          }
-        }
-      };
-      script1.onerror = function() {
-        console.warn('jsdelivr CDN failed, trying unpkg...');
-        // Fallback to unpkg
-        const script2 = document.createElement('script');
-        script2.src = 'https://unpkg.com/chrono-node@2.7.8/dist/chrono.min.js';
-        script2.onload = function() {
-          chronoLoaded = true;
-          if (typeof chrono !== 'undefined') {
-            console.log('Chrono library loaded from fallback CDN');
-            const btn = document.getElementById('generateBtn');
-            if (btn) {
-              btn.disabled = false;
-              btn.innerHTML = 'Generate Calendar Event';
+    // Simple date parser - no external dependencies
+    const SimpleDateParser = {
+      parse: function(text, refDate) {
+        refDate = refDate || new Date();
+        const now = new Date(refDate);
+        const textLower = text.toLowerCase().trim();
+        
+        // Patterns for common date/time expressions
+        const patterns = [
+          // "tomorrow at 3pm"
+          {
+            regex: /tomorrow\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + 1);
+              return this.parseTime(date, match[1], match[2] || '0', match[3]);
+            }
+          },
+          // "next monday/tuesday/etc at 3pm"
+          {
+            regex: /next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const targetDay = dayNames.indexOf(match[1].toLowerCase());
+              const date = new Date(now);
+              const currentDay = date.getDay();
+              let daysAhead = targetDay - currentDay;
+              if (daysAhead <= 0) daysAhead += 7;
+              date.setDate(date.getDate() + daysAhead);
+              return this.parseTime(date, match[2], match[3] || '0', match[4]);
+            }
+          },
+          // "Dec 25 2025 at 6pm" or "25 Dec 2025 6pm"
+          {
+            regex: /(?:(\w{3,9})\s+)?(\d{1,2})(?:\s+(\w{3,9}))?\s+(\d{4})\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i,
+            handler: function(match) {
+              const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+              let month, day, year, hour, minute, ampm;
+              
+              if (match[1]) {
+                // "Dec 25 2025"
+                month = months.findIndex(m => m.startsWith(match[1].toLowerCase()));
+                day = parseInt(match[2]);
+                year = parseInt(match[4]);
+                hour = parseInt(match[5] || '12');
+                minute = parseInt(match[6] || '0');
+                ampm = match[7];
+              } else {
+                // "25 Dec 2025"
+                day = parseInt(match[2]);
+                month = months.findIndex(m => m.startsWith(match[3].toLowerCase()));
+                year = parseInt(match[4]);
+                hour = parseInt(match[5] || '12');
+                minute = parseInt(match[6] || '0');
+                ampm = match[7];
+              }
+              
+              const date = new Date(year, month, day);
+              return this.parseTime(date, hour, minute, ampm);
+            }
+          },
+          // "friday 2:30pm" or "friday at 2:30pm"
+          {
+            regex: /(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const targetDay = dayNames.indexOf(match[1].toLowerCase());
+              const date = new Date(now);
+              const currentDay = date.getDay();
+              let daysAhead = targetDay - currentDay;
+              if (daysAhead <= 0) daysAhead += 7;
+              date.setDate(date.getDate() + daysAhead);
+              return this.parseTime(date, match[2], match[3] || '0', match[4]);
+            }
+          },
+          // "in 2 hours" or "2 hours from now"
+          {
+            regex: /(?:in\s+)?(\d+)\s+hours?\s+(?:from\s+now)?/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setHours(date.getHours() + parseInt(match[1]));
+              return { start: { date: () => date } };
             }
           }
-        };
-        script2.onerror = function() {
-          console.error('Both CDNs failed to load chrono library');
-          const btn = document.getElementById('generateBtn');
-          if (btn) {
-            btn.disabled = false;
-            btn.innerHTML = 'Generate Calendar Event';
-            btn.style.opacity = '0.7';
+        ];
+        
+        for (const pattern of patterns) {
+          const match = text.match(pattern.regex);
+          if (match) {
+            try {
+              const result = pattern.handler.call(this, match);
+              if (result && result.start) return [result];
+            } catch (e) {
+              console.error('Parse error:', e);
+            }
           }
-        };
-        document.head.appendChild(script2);
-      };
-      document.head.appendChild(script1);
-    }
+        }
+        
+        return [];
+      },
+      
+      parseTime: function(date, hour, minute, ampm) {
+        hour = parseInt(hour);
+        minute = parseInt(minute || '0');
+        
+        if (ampm) {
+          if (ampm.toLowerCase() === 'pm' && hour !== 12) hour += 12;
+          if (ampm.toLowerCase() === 'am' && hour === 12) hour = 0;
+        } else if (hour < 12) {
+          // Default to PM if no am/pm specified and hour < 12
+          hour += 12;
+        }
+        
+        date.setHours(hour, minute, 0, 0);
+        return { start: { date: () => date } };
+      }
+    };
     
-    // Start loading immediately
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadChrono);
-    } else {
-      loadChrono();
-    }
+    // Make it available globally
+    window.chrono = {
+      parse: function(text, refDate, options) {
+        return SimpleDateParser.parse(text, refDate);
+      }
+    };
+    
+    // Enable button immediately since we don't need external library
+    window.addEventListener('load', function() {
+      const btn = document.getElementById('generateBtn');
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = 'Generate Calendar Event';
+      }
+    });
   </script>
 </head>
 <body>
@@ -360,43 +439,7 @@
   </div>
 
   <script>
-    let chronoLoadAttempts = 0;
-    const maxLoadAttempts = 50; // 5 seconds max wait
-    
-    // Ensure chrono library is loaded
-    function checkChronoLoaded() {
-      chronoLoadAttempts++;
-      
-      if (typeof chrono !== 'undefined') {
-        // Chrono is loaded - enable button
-        const btn = document.getElementById('generateBtn');
-        btn.disabled = false;
-        btn.innerHTML = 'Generate Calendar Event';
-        return true;
-      }
-      
-      if (chronoLoadAttempts < maxLoadAttempts) {
-        setTimeout(checkChronoLoaded, 100);
-      } else {
-        // Timeout - enable button anyway and show warning
-        const btn = document.getElementById('generateBtn');
-        btn.disabled = false;
-        btn.innerHTML = 'Generate Calendar Event';
-        console.warn('Chrono library may not have loaded. Calendar parsing may not work.');
-      }
-      
-      return false;
-    }
-
-    // Check on page load - button starts disabled
-    window.addEventListener('load', function() {
-      const btn = document.getElementById('generateBtn');
-      if (btn && typeof chrono === 'undefined') {
-        btn.disabled = true;
-        btn.innerHTML = '<span class="loading"></span>Loading...';
-        checkChronoLoaded();
-      }
-    });
+    // No need for loading checks - parser is built-in
 
     // Allow Enter key to submit (Ctrl/Cmd + Enter)
     document.getElementById('eventText').addEventListener('keydown', function(e) {
@@ -424,26 +467,7 @@
         return;
       }
 
-      // Check if chrono is available - wait a bit more if still loading
-      if (typeof chrono === 'undefined') {
-        // Try waiting a bit more for async load
-        let waitCount = 0;
-        const checkInterval = setInterval(function() {
-          waitCount++;
-          if (typeof chrono !== 'undefined') {
-            clearInterval(checkInterval);
-            generateCalendar(); // Retry
-            return;
-          }
-          if (waitCount > 20) { // 2 seconds max
-            clearInterval(checkInterval);
-            resultDiv.innerHTML = '<div class="error">⚠️ Calendar parser is taking longer than expected to load. Please try refreshing the page. If the problem persists, the library CDN may be temporarily unavailable.</div>';
-            generateBtn.disabled = false;
-            generateBtn.innerHTML = 'Generate Calendar Event';
-          }
-        }, 100);
-        return;
-      }
+      // Parser is always available (built-in)
 
       try {
         // Parse using chrono-node with current date as reference
