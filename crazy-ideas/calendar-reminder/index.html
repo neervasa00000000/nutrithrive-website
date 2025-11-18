@@ -591,6 +591,7 @@
         // Extract time from text (single time) - more flexible
         const extractTime = function(text) {
           // Try various patterns: "at 11 am", "11 am", "11:30 am", "at 11:30am", "6pm", etc.
+          // Avoid matching years (4-digit numbers) or dates
           const timePatterns = [
             /at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
             /(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
@@ -605,6 +606,12 @@
               const hour = parseInt(timeMatch[1]);
               const minute = parseInt(timeMatch[2] || '0');
               const ampm = timeMatch[3] || null;
+              
+              // Skip if it looks like a year (4-digit number) or if hour is too large
+              if (hour > 23) continue;
+              
+              // If no am/pm and hour > 12, it's likely not a time
+              if (!ampm && hour > 12) continue;
               
               // Validate hour (1-12 for 12-hour, 0-23 for 24-hour)
               if (hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59) {
