@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Calendar Reminder | NutriThrive Labs</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #FFDCDC 0%, #FFF2EB 50%, #FFE8CD 100%);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .subtitle em {
+      color: #FF6B6B;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 16px;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 2px solid #FFD6BA;
+      margin-bottom: 24px;
+      outline: none;
+      transition: all 0.3s;
+      font-family: inherit;
+      resize: vertical;
+      background: #FFF2EB;
+    }
+
+    textarea:focus {
+      border-color: #FF6B6B;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+    }
+
+    textarea::placeholder {
+      color: #999;
+    }
+
+    button {
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+      margin-bottom: 24px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .result {
+      margin: 24px 0;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .event-summary {
+      background: linear-gradient(135deg, #FFE8CD 0%, #FFD6BA 100%);
+      border-left: 5px solid #FF6B6B;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .event-summary b {
+      color: #FF6B6B;
+      font-weight: 600;
+    }
+
+    .event-summary br {
+      margin-bottom: 8px;
+      display: block;
+      content: "";
+    }
+
+    .ics-link {
+      display: inline-block;
+      margin: 16px 0;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(78, 205, 196, 0.3);
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .ics-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+    }
+
+    .tip {
+      color: #555;
+      background: #FFF2EB;
+      font-size: 0.9rem;
+      padding: 16px;
+      border-radius: 12px;
+      margin-top: 24px;
+      border-left: 4px solid #FFD6BA;
+      text-align: left;
+    }
+
+    .tip strong {
+      color: #FF6B6B;
+    }
+
+    .error {
+      color: #D32F2F;
+      margin: 16px 0;
+      font-weight: 600;
+      padding: 16px;
+      border-radius: 12px;
+      background: #FFDCDC;
+      border-left: 4px solid #FF6B6B;
+      text-align: left;
+    }
+
+    .examples {
+      background: #FFE8CD;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .examples h3 {
+      color: #333;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .examples ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .examples li {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .examples li:before {
+      content: "📅";
+      position: absolute;
+      left: 0;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px;
+        border-radius: 16px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px 24px;
+      }
+
+      .ics-link {
+        width: 100%;
+        text-align: center;
+        display: block;
+      }
+    }
+  </style>
+  <script src="https://unpkg.com/chrono-node/dist/chrono.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🗓️ Quick Calendar Reminder</h1>
+    <div class="subtitle">
+      Type your reminder naturally. Examples: <em>"Lunch next Thursday 2:30pm"</em> or <em>"Dentist Dec 4 2025 8:15am"</em>
+    </div>
+
+    <textarea 
+      id="eventText" 
+      placeholder="e.g., Team meeting tomorrow at 3pm in Conference Room A"
+      autofocus
+    ></textarea>
+
+    <button id="generateBtn" onclick="generateCalendar()">
+      Generate Calendar Event
+    </button>
+
+    <div class="result" id="result"></div>
+
+    <div class="tip">
+      <strong>💡 Tip:</strong> Download the .ics file and open it in Google Calendar, Apple Calendar, Outlook, or any calendar app. The event will be added automatically!
+    </div>
+
+    <div class="examples">
+      <h3>📝 Examples:</h3>
+      <ul>
+        <li>Doctor appointment next Monday at 10am</li>
+        <li>Birthday party Dec 25 2025 6pm</li>
+        <li>Gym session tomorrow 7am</li>
+        <li>Conference call Friday 2:30pm</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Ensure chrono library is loaded
+    function checkChronoLoaded() {
+      if (typeof chrono === 'undefined') {
+        setTimeout(checkChronoLoaded, 100);
+        return;
+      }
+      // Enable button once chrono is loaded
+      document.getElementById('generateBtn').disabled = false;
+    }
+
+    // Check on page load
+    window.addEventListener('load', function() {
+      checkChronoLoaded();
+      if (typeof chrono === 'undefined') {
+        document.getElementById('generateBtn').disabled = true;
+        document.getElementById('generateBtn').innerHTML = '<span class="loading"></span>Loading...';
+      }
+    });
+
+    // Allow Enter key to submit (Ctrl/Cmd + Enter)
+    document.getElementById('eventText').addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        generateCalendar();
+      }
+    });
+
+    function generateCalendar() {
+      const text = document.getElementById("eventText").value.trim();
+      const resultDiv = document.getElementById("result");
+      const generateBtn = document.getElementById("generateBtn");
+
+      resultDiv.innerHTML = "";
+      generateBtn.disabled = true;
+      generateBtn.innerHTML = '<span class="loading"></span>Processing...';
+
+      // Check if text is empty
+      if (!text) {
+        resultDiv.innerHTML = '<div class="error">⚠️ Please describe your event or reminder.</div>';
+        generateBtn.disabled = false;
+        generateBtn.innerHTML = 'Generate Calendar Event';
+        return;
+      }
+
+      // Check if chrono is available
+      if (typeof chrono === 'undefined') {
+        resultDiv.innerHTML = '<div class="error">⚠️ Calendar parser is still loading. Please wait a moment and try again.</div>';
+        generateBtn.disabled = false;
+        generateBtn.innerHTML = 'Generate Calendar Event';
+        return;
+      }
+
+      try {
+        // Parse using chrono-node with current date as reference
+        const now = new Date();
+        const results = chrono.parse(text, now, { forwardDate: true });
+
+        if (!results || results.length === 0 || !results[0].start) {
+          resultDiv.innerHTML = '<div class="error">⚠️ Could not extract date/time from your text.<br><br>Try being more specific:<br>• "Meeting tomorrow at 3pm"<br>• "Appointment Dec 15 2025 at 2:30pm"<br>• "Event next Friday 10am"</div>';
+          generateBtn.disabled = false;
+          generateBtn.innerHTML = 'Generate Calendar Event';
+          return;
+        }
+
+        const parsedResult = results[0];
+        const evStart = parsedResult.start.date();
+        
+        // Validate that the date is in the future or today
+        if (evStart < new Date(now.getTime() - 60000)) {
+          resultDiv.innerHTML = '<div class="error">⚠️ The date/time you entered appears to be in the past. Please enter a future date.</div>';
+          generateBtn.disabled = false;
+          generateBtn.innerHTML = 'Generate Calendar Event';
+          return;
+        }
+
+        // Get end time
+        let evEnd = null;
+        let hasEnd = false;
+        
+        if (parsedResult.end && parsedResult.end.date()) {
+          evEnd = parsedResult.end.date();
+          hasEnd = true;
+        } else {
+          // Default: 1 hour duration
+          evEnd = new Date(evStart.getTime() + 60 * 60 * 1000);
+        }
+
+        // Extract location if "at <location>" is present
+        let location = "";
+        const locMatch = text.match(/\bat\s+([A-Za-z0-9 ,.'-]+?)(?:\s+(?:at|on|next|tomorrow|today|monday|tuesday|wednesday|thursday|friday|saturday|sunday|\d{1,2}[:\d]{0,5}\s*(?:am|pm)|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|\d{4}))/i);
+        
+        if (locMatch && locMatch[1]) {
+          location = locMatch[1].trim();
+          // Clean up common false positives
+          if (location.toLowerCase().match(/^(at|on|next|tomorrow|today|monday|tuesday|wednesday|thursday|friday|saturday|sunday)$/i)) {
+            location = "";
+          }
+        }
+
+        // If no location found with "at", try other patterns
+        if (!location) {
+          const locPatterns = [
+            /\bin\s+([A-Za-z0-9 ,.'-]+?)(?:\s+(?:at|on|next|tomorrow|today))/i,
+            /\blocation[:\s]+([A-Za-z0-9 ,.'-]+)/i
+          ];
+          
+          for (const pattern of locPatterns) {
+            const match = text.match(pattern);
+            if (match && match[1]) {
+              location = match[1].trim();
+              break;
+            }
+          }
+        }
+
+        // Extract summary (remove date/time/location from original text)
+        let summary = text;
+        
+        if (parsedResult.text) {
+          summary = text.replace(parsedResult.text, "").trim();
+          
+          // Remove location patterns
+          if (location) {
+            summary = summary.replace(new RegExp(`\\s*at\\s+${location.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'), '');
+            summary = summary.replace(new RegExp(`\\s*in\\s+${location.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'), '');
+          }
+          
+          summary = summary.trim();
+        }
+
+        // If summary is empty or too short, use a default
+        if (!summary || summary.length < 2) {
+          summary = "Reminder";
+        }
+
+        // Clean up summary
+        summary = summary.replace(/\s+/g, ' ').trim();
+
+        // ICS formatting function
+        function fmtICS(dt) {
+          if (!dt || !(dt instanceof Date) || isNaN(dt.getTime())) {
+            throw new Error("Invalid date");
+          }
+          
+          // Format as UTC YYYYMMDDTHHmmssZ
+          const z = new Date(dt.getTime() - dt.getTimezoneOffset() * 60000);
+          const yyyy = z.getUTCFullYear();
+          const mm = String(z.getUTCMonth() + 1).padStart(2, "0");
+          const dd = String(z.getUTCDate()).padStart(2, "0");
+          const h = String(z.getUTCHours()).padStart(2, "0");
+          const m = String(z.getUTCMinutes()).padStart(2, "0");
+          const s = String(z.getUTCSeconds()).padStart(2, "0");
+          
+          return `${yyyy}${mm}${dd}T${h}${m}${s}Z`;
+        }
+
+        // Generate ICS content
+        const icsContent = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "CALSCALE:GREGORIAN",
+          "PRODID:-//NutriThrive Labs//Quick Calendar Reminder//EN",
+          "BEGIN:VEVENT",
+          "UID:" + Date.now() + "-" + Math.random().toString(36).substr(2, 9) + "@nutrithrive.com.au",
+          "DTSTAMP:" + fmtICS(new Date()),
+          "SUMMARY:" + summary.replace(/\n/g, " ").replace(/[,;\\]/g, "\\$&"),
+          "DTSTART:" + fmtICS(evStart),
+          "DTEND:" + fmtICS(evEnd),
+          location ? "LOCATION:" + location.replace(/\n/g, " ").replace(/[,;\\]/g, "\\$&") : "",
+          "DESCRIPTION:" + text.replace(/\n/g, " ").replace(/[,;\\]/g, "\\$&"),
+          "STATUS:CONFIRMED",
+          "SEQUENCE:0",
+          "END:VEVENT",
+          "END:VCALENDAR"
+        ].filter(line => line !== "").join("\r\n");
+
+        // Format dates for display
+        const formatDate = (date) => {
+          return date.toLocaleDateString('en-AU', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          });
+        };
+
+        const formatTime = (date) => {
+          return date.toLocaleTimeString('en-AU', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: true 
+          });
+        };
+
+        // Create download link
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        
+        const html = `
+          <div class="event-summary">
+            <b>📌 Title:</b> ${escapeHtml(summary)}<br><br>
+            <b>📅 Date:</b> ${formatDate(evStart)}<br>
+            <b>⏰ Time:</b> ${formatTime(evStart)} - ${formatTime(evEnd)}<br>
+            ${location ? `<b>📍 Location:</b> ${escapeHtml(location)}<br>` : ''}
+            <b>📝 Description:</b> ${escapeHtml(text)}
+          </div>
+          <a href="${url}" download="reminder-${Date.now()}.ics" class="ics-link" onclick="this.href = '${url}'">
+            📥 Download Calendar Event (.ics)
+          </a>
+        `;
+
+        resultDiv.innerHTML = html;
+        generateBtn.disabled = false;
+        generateBtn.innerHTML = 'Generate Calendar Event';
+
+        // Clean up URL after a delay
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+        }, 10000);
+
+      } catch (error) {
+        console.error('Error generating calendar:', error);
+        resultDiv.innerHTML = '<div class="error">⚠️ An error occurred while processing your request. Please try again with a different format.</div>';
+        generateBtn.disabled = false;
+        generateBtn.innerHTML = 'Generate Calendar Event';
+      }
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Auto-focus textarea on load
+    window.addEventListener('load', function() {
+      document.getElementById('eventText').focus();
+    });
+  </script>
+</body>
+</html>
+
