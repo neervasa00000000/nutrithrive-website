@@ -931,16 +931,15 @@
       updateFromHash();
     });
 
-    // Start auto-refresh if we have a hash (receiving mode)
-    const initialHash = window.location.hash || "";
+    // Start auto-refresh if we have a hash (receiving mode)  
     if (initialHash.startsWith("#t=")) {
-      // Wait 2 seconds, then start auto-refresh if user doesn't interact
+      // Wait 3 seconds, then start auto-refresh if user doesn't interact
       setTimeout(() => {
         if (Date.now() - lastUserActivity > 2000) {
           startAutoRefresh();
-          showBadge("🔄 Auto-sync enabled - will refresh every 3 seconds", 'info');
+          showBadge("🔄 Auto-sync enabled - refreshing every 5 seconds", 'info');
         }
-      }, 2000);
+      }, 3000);
     }
 
     // Also check when window gains focus (user switches back to tab)
