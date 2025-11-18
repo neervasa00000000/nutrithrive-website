@@ -852,6 +852,24 @@
               };
             }
           },
+          // "[event] at [time] tomorrow" - time before tomorrow
+          {
+            regex: /.*?\s+at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+tomorrow/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + 1);
+              return this.parseTime(date, match[1], match[2] || '0', match[3]);
+            }
+          },
+          // "[time] tomorrow" - time before tomorrow (without "at")
+          {
+            regex: /(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+tomorrow/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + 1);
+              return this.parseTime(date, match[1], match[2] || '0', match[3]);
+            }
+          },
           // "tomorrow at 3pm" or "tomorrow [event] at 8pm"
           {
             regex: /tomorrow\s+(?:.*?\s+)?at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
