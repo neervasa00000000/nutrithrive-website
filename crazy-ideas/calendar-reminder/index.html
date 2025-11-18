@@ -305,24 +305,67 @@
   </div>
 
   <script>
+    let chronoLoadAttempts = 0;
+    const maxLoadAttempts = 50; // 5 seconds max wait
+    
     // Ensure chrono library is loaded
     function checkChronoLoaded() {
-      if (typeof chrono === 'undefined') {
-        setTimeout(checkChronoLoaded, 100);
-        return;
+      chronoLoadAttempts++;
+      
+      if (typeof chrono !== 'undefined') {
+        // Chrono is loaded - enable button
+        const btn = document.getElementById('generateBtn');
+        btn.disabled = false;
+        btn.innerHTML = 'Generate Calendar Event';
+        return true;
       }
-      // Enable button once chrono is loaded
-      document.getElementById('generateBtn').disabled = false;
+      
+      if (chronoLoadAttempts < maxLoadAttempts) {
+        setTimeout(checkChronoLoaded, 100);
+      } else {
+        // Timeout - enable button anyway and show warning
+        const btn = document.getElementById('generateBtn');
+        btn.disabled = false;
+        btn.innerHTML = 'Generate Calendar Event';
+        console.warn('Chrono library may not have loaded. Calendar parsing may not work.');
+      }
+      
+      return false;
     }
 
     // Check on page load
     window.addEventListener('load', function() {
-      checkChronoLoaded();
+      const btn = document.getElementById('generateBtn');
+      
       if (typeof chrono === 'undefined') {
-        document.getElementById('generateBtn').disabled = true;
-        document.getElementById('generateBtn').innerHTML = '<span class="loading"></span>Loading...';
+        btn.disabled = true;
+        btn.innerHTML = '<span class="loading"></span>Loading...';
+        checkChronoLoaded();
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Generate Calendar Event';
       }
     });
+    
+    // Also check immediately in case script loads before DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof chrono === 'undefined') {
+          const btn = document.getElementById('generateBtn');
+          btn.disabled = true;
+          btn.innerHTML = '<span class="loading"></span>Loading...';
+          checkChronoLoaded();
+        }
+      });
+    } else {
+      // DOM already loaded
+      if (typeof chrono === 'undefined') {
+        const btn = document.getElementById('generateBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="loading"></span>Loading...';
+        checkChronoLoaded();
+      }
+    }
 
     // Allow Enter key to submit (Ctrl/Cmd + Enter)
     document.getElementById('eventText').addEventListener('keydown', function(e) {
@@ -343,14 +386,16 @@
       // Check if text is empty
       if (!text) {
         resultDiv.innerHTML = '<div class="error">⚠️ Please describe your event or reminder.</div>';
-        generateBtn.disabled = false;
-        generateBtn.innerHTML = 'Generate Calendar Event';
+        setTimeout(function() {
+          generateBtn.disabled = false;
+          generateBtn.innerHTML = 'Generate Calendar Event';
+        }, 100);
         return;
       }
 
       // Check if chrono is available
       if (typeof chrono === 'undefined') {
-        resultDiv.innerHTML = '<div class="error">⚠️ Calendar parser is still loading. Please wait a moment and try again.</div>';
+        resultDiv.innerHTML = '<div class="error">⚠️ Calendar parser failed to load. Please refresh the page or check your internet connection.</div>';
         generateBtn.disabled = false;
         generateBtn.innerHTML = 'Generate Calendar Event';
         return;
@@ -363,8 +408,10 @@
 
         if (!results || results.length === 0 || !results[0].start) {
           resultDiv.innerHTML = '<div class="error">⚠️ Could not extract date/time from your text.<br><br>Try being more specific:<br>• "Meeting tomorrow at 3pm"<br>• "Appointment Dec 15 2025 at 2:30pm"<br>• "Event next Friday 10am"</div>';
-          generateBtn.disabled = false;
-          generateBtn.innerHTML = 'Generate Calendar Event';
+          setTimeout(function() {
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = 'Generate Calendar Event';
+          }, 100);
           return;
         }
 
@@ -374,8 +421,10 @@
         // Validate that the date is in the future or today
         if (evStart < new Date(now.getTime() - 60000)) {
           resultDiv.innerHTML = '<div class="error">⚠️ The date/time you entered appears to be in the past. Please enter a future date.</div>';
-          generateBtn.disabled = false;
-          generateBtn.innerHTML = 'Generate Calendar Event';
+          setTimeout(function() {
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = 'Generate Calendar Event';
+          }, 100);
           return;
         }
 
@@ -516,8 +565,12 @@
         `;
 
         resultDiv.innerHTML = html;
-        generateBtn.disabled = false;
-        generateBtn.innerHTML = 'Generate Calendar Event';
+        
+        // Always reset button state
+        setTimeout(function() {
+          generateBtn.disabled = false;
+          generateBtn.innerHTML = 'Generate Calendar Event';
+        }, 100);
 
         // Clean up URL after a delay
         setTimeout(() => {
@@ -527,8 +580,12 @@
       } catch (error) {
         console.error('Error generating calendar:', error);
         resultDiv.innerHTML = '<div class="error">⚠️ An error occurred while processing your request. Please try again with a different format.</div>';
-        generateBtn.disabled = false;
-        generateBtn.innerHTML = 'Generate Calendar Event';
+        
+        // Always reset button state
+        setTimeout(function() {
+          generateBtn.disabled = false;
+          generateBtn.innerHTML = 'Generate Calendar Event';
+        }, 100);
       }
     }
 
