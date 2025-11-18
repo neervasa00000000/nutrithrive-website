@@ -289,12 +289,7 @@
     }
   }
   
-  // Auto-connect on page load if server URL is set
-  if (serverUrlEl && serverUrlEl.value) {
-    setTimeout(() => {
-      connectWS(serverUrlEl.value.trim());
-    }, 500);
-  }
+  // Don't auto-connect - let user click Connect button
 
   // Auto-sync text as user types (debounced)
   let syncTimeout = null;
@@ -316,6 +311,74 @@
         }
       }
     }, 1000);
+  });
+
+  // Simple URL-based sync (fallback method - works without server)
+  const simpleShareLink = $('simpleShareLink');
+  const copySimpleLinkBtn = $('copySimpleLinkBtn');
+  let lastSimpleText = '';
+
+  function encodeText(text) {
+    try {
+      return btoa(encodeURIComponent(text));
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function decodeText(encoded) {
+    try {
+      if (!encoded || encoded.length === 0) return '';
+      return decodeURIComponent(atob(encoded));
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function updateSimpleShareLink(text) {
+    if (!text || text.trim() === '') {
+      if (simpleShareLink) simpleShareLink.value = '';
+      return;
+    }
+
+    const encoded = encodeText(text);
+    const link = `${location.origin}${location.pathname}?text=${encoded}`;
+    if (simpleShareLink) {
+      simpleShareLink.value = link;
+      simpleShareLink.select();
+    }
+    lastSimpleText = text;
+  }
+
+  copySimpleLinkBtn.addEventListener('click', async () => {
+    if (!simpleShareLink || !simpleShareLink.value) return;
+    try {
+      await navigator.clipboard.writeText(simpleShareLink.value);
+      showBadge('Link copied! Open it on another device', 'success');
+    } catch (e) {
+      simpleShareLink.select();
+      showBadge('Link selected - copy manually', 'info');
+    }
+  });
+
+  // Check for text in URL on load
+  const urlParams = new URLSearchParams(location.search);
+  const textParam = urlParams.get('text');
+  if (textParam) {
+    const decoded = decodeText(textParam);
+    if (decoded) {
+      textarea.value = decoded;
+      showBadge('✅ Loaded text from link!', 'success');
+      updateSimpleShareLink(decoded);
+    }
+  }
+
+  // Auto-update simple share link as user types
+  textarea.addEventListener('input', (e) => {
+    const text = e.target.value;
+    if (text !== lastSimpleText) {
+      updateSimpleShareLink(text);
+    }
   });
 
   renderHistory();

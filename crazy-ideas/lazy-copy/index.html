@@ -498,20 +498,23 @@
           Lazy Copy
         </h1>
         <p class="subtitle">
-          Real-time P2P clipboard sync! Create a room, share the link, and text syncs instantly between devices. 
-          End-to-end encrypted. No accounts, no storage.
+          Share text between devices instantly! Two methods: Simple sync (works now) or P2P real-time sync (requires server). 
+          All P2P data is end-to-end encrypted.
         </p>
       </div>
 
       <div class="share-box" id="connectionPanel" style="display:block; margin-bottom:24px;">
         <label>🔌 Connection</label>
         <div class="share-row" style="margin-top:8px;">
-          <input id="serverUrl" class="share-input" value="ws://localhost:3000" placeholder="WebSocket server URL" />
+          <input id="serverUrl" class="share-input" value="ws://localhost:3000" placeholder="WebSocket server URL (optional)" />
           <button class="btn-primary" id="connectBtn" style="padding:14px 20px;">
             <span>Connect</span>
           </button>
         </div>
-        <div class="helper" style="margin-top:8px;" id="connStatus">Not connected</div>
+        <div class="helper" style="margin-top:8px;" id="connStatus">Not connected - Click Connect to start</div>
+        <div class="helper" style="margin-top:8px; color:var(--accent);">
+          💡 <strong>No server?</strong> Use the simple sync method below - works instantly without setup!
+        </div>
       </div>
 
       <div class="share-box" id="roomPanel" style="display:none; margin-bottom:24px;">
@@ -544,10 +547,25 @@
         </div>
       </div>
 
+      <div class="share-box" id="simpleSyncBox" style="display:block; margin-top:24px; background:rgba(102, 126, 234, 0.05); border:2px dashed var(--accent);">
+        <label>⚡ Simple Sync (No Server Needed)</label>
+        <div class="share-row" style="margin-top:8px;">
+          <input id="simpleShareLink" class="share-input" readonly placeholder="Share link will appear when you type..." />
+          <button class="btn-primary" id="copySimpleLinkBtn" style="padding:14px 20px;">
+            <span>📎</span>
+            <span>Copy Link</span>
+          </button>
+        </div>
+        <div class="helper" style="margin-top:8px;">
+          💡 <strong>How it works:</strong> Type text → Copy link → Open on other device → Text appears! 
+          Works instantly without any server setup.
+        </div>
+      </div>
+
       <div class="btn-row">
         <button class="btn-primary" id="sendBtn">
           <span>📤</span>
-          <span>Send Now</span>
+          <span>Send Now (P2P)</span>
         </button>
         <button class="btn-ghost" id="monitorBtn">
           <span>👁️</span>
@@ -587,8 +605,10 @@
     </div>
 
     <footer>
-      💡 <strong>Setup:</strong> Run <code>npm install</code> then <code>node server.js</code> in this folder. 
-      Open <code>http://localhost:3000/index.html</code> in your browser. All data is end-to-end encrypted!
+      💡 <strong>Two sync methods:</strong> 
+      <br>1. <strong>Simple Sync</strong> (above) - Works instantly, no setup needed! Just copy the link.
+      <br>2. <strong>P2P Sync</strong> - Real-time bidirectional sync. Requires WebSocket server (run <code>node server.js</code>).
+      <br>All P2P data is end-to-end encrypted!
     </footer>
   </div>
 
