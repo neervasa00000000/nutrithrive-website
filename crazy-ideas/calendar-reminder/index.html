@@ -635,6 +635,83 @@
         
         // Patterns for common date/time expressions (ordered by specificity)
         const patterns = [
+          // Time range with "next [day]": "11 pm to 12 am on next wednesday" or "from 11 pm to 12 am next wednesday"
+          {
+            regex: /(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+(?:on\s+)?next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const targetDay = dayNames.indexOf(match[7].toLowerCase());
+              const date = new Date(now);
+              const currentDay = date.getDay();
+              let daysAhead = targetDay - currentDay;
+              if (daysAhead <= 0) daysAhead += 7;
+              date.setDate(date.getDate() + daysAhead);
+              
+              const startDate = new Date(date);
+              const endDate = new Date(date);
+              
+              let startHour = parseInt(match[1]);
+              let startMinute = parseInt(match[2] || '0');
+              if (match[3]) {
+                if (match[3].toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                if (match[3].toLowerCase() === 'am' && startHour === 12) startHour = 0;
+              }
+              startDate.setHours(startHour, startMinute, 0, 0);
+              
+              let endHour = parseInt(match[4]);
+              let endMinute = parseInt(match[5] || '0');
+              if (match[6]) {
+                if (match[6].toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                if (match[6].toLowerCase() === 'am' && endHour === 12) endHour = 0;
+              }
+              endDate.setHours(endHour, endMinute, 0, 0);
+              
+              if (endDate <= startDate) {
+                endDate.setDate(endDate.getDate() + 1);
+              }
+              
+              return {
+                start: { date: () => startDate },
+                end: { date: () => endDate }
+              };
+            }
+          },
+          // Time range with "tomorrow": "11 pm to 12 am tomorrow" or "from 11 pm to 12 am on tomorrow"
+          {
+            regex: /(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+(?:on\s+)?tomorrow/i,
+            handler: function(match) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + 1);
+              
+              const startDate = new Date(date);
+              const endDate = new Date(date);
+              
+              let startHour = parseInt(match[1]);
+              let startMinute = parseInt(match[2] || '0');
+              if (match[3]) {
+                if (match[3].toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                if (match[3].toLowerCase() === 'am' && startHour === 12) startHour = 0;
+              }
+              startDate.setHours(startHour, startMinute, 0, 0);
+              
+              let endHour = parseInt(match[4]);
+              let endMinute = parseInt(match[5] || '0');
+              if (match[6]) {
+                if (match[6].toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                if (match[6].toLowerCase() === 'am' && endHour === 12) endHour = 0;
+              }
+              endDate.setHours(endHour, endMinute, 0, 0);
+              
+              if (endDate <= startDate) {
+                endDate.setDate(endDate.getDate() + 1);
+              }
+              
+              return {
+                start: { date: () => startDate },
+                end: { date: () => endDate }
+              };
+            }
+          },
           // "tomorrow at 3pm"
           {
             regex: /tomorrow\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i,
@@ -891,6 +968,47 @@
               }
               
               return this.parseTime(date, hour, minute, ampm);
+            }
+          },
+          // Time range with day name: "11 pm to 12 am on wednesday" or "from 11 pm to 12 am wednesday"
+          {
+            regex: /(?:from\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+to\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const targetDay = dayNames.indexOf(match[7].toLowerCase());
+              const date = new Date(now);
+              const currentDay = date.getDay();
+              let daysAhead = targetDay - currentDay;
+              if (daysAhead <= 0) daysAhead += 7;
+              date.setDate(date.getDate() + daysAhead);
+              
+              const startDate = new Date(date);
+              const endDate = new Date(date);
+              
+              let startHour = parseInt(match[1]);
+              let startMinute = parseInt(match[2] || '0');
+              if (match[3]) {
+                if (match[3].toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                if (match[3].toLowerCase() === 'am' && startHour === 12) startHour = 0;
+              }
+              startDate.setHours(startHour, startMinute, 0, 0);
+              
+              let endHour = parseInt(match[4]);
+              let endMinute = parseInt(match[5] || '0');
+              if (match[6]) {
+                if (match[6].toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                if (match[6].toLowerCase() === 'am' && endHour === 12) endHour = 0;
+              }
+              endDate.setHours(endHour, endMinute, 0, 0);
+              
+              if (endDate <= startDate) {
+                endDate.setDate(endDate.getDate() + 1);
+              }
+              
+              return {
+                start: { date: () => startDate },
+                end: { date: () => endDate }
+              };
             }
           },
           // "friday 2:30pm" or "friday at 2:30pm"
