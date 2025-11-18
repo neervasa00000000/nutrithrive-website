@@ -268,7 +268,18 @@
       }
     }
   </style>
-  <script src="https://unpkg.com/chrono-node/dist/chrono.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chrono-node@2.7.8/dist/chrono.min.js"></script>
+  <script>
+    // Fallback if jsdelivr fails
+    if (typeof chrono === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/chrono-node@2.7.8/dist/chrono.min.js';
+      script.onerror = function() {
+        console.error('Failed to load chrono library from both CDNs');
+      };
+      document.head.appendChild(script);
+    }
+  </script>
 </head>
 <body>
   <div class="container">
@@ -393,11 +404,24 @@
         return;
       }
 
-      // Check if chrono is available
+      // Check if chrono is available - wait a bit more if still loading
       if (typeof chrono === 'undefined') {
-        resultDiv.innerHTML = '<div class="error">⚠️ Calendar parser failed to load. Please refresh the page or check your internet connection.</div>';
-        generateBtn.disabled = false;
-        generateBtn.innerHTML = 'Generate Calendar Event';
+        // Try waiting a bit more for async load
+        let waitCount = 0;
+        const checkInterval = setInterval(function() {
+          waitCount++;
+          if (typeof chrono !== 'undefined') {
+            clearInterval(checkInterval);
+            generateCalendar(); // Retry
+            return;
+          }
+          if (waitCount > 20) { // 2 seconds max
+            clearInterval(checkInterval);
+            resultDiv.innerHTML = '<div class="error">⚠️ Calendar parser is taking longer than expected to load. Please try refreshing the page. If the problem persists, the library CDN may be temporarily unavailable.</div>';
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = 'Generate Calendar Event';
+          }
+        }, 100);
         return;
       }
 
