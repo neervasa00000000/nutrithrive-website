@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lazy Copy | Cross-Device Clipboard | NutriThrive Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Share text between devices instantly. No login, no server – everything encoded in the URL. Perfect for codes, notes, and quick transfers." />
+  <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap');
+    
+    :root {
+      --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --card-bg: #ffffff;
+      --accent: #667eea;
+      --accent-dark: #5568d3;
+      --accent-light: #764ba2;
+      --text-main: #1a202c;
+      --text-muted: #718096;
+      --border-subtle: #e2e8f0;
+      --success: #48bb78;
+      --success-light: #c6f6d5;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow-soft: 0 20px 60px rgba(102, 126, 234, 0.25);
+      --shadow-hover: 0 25px 70px rgba(102, 126, 234, 0.35);
+    }
+
+    * { 
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated background elements */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -250px;
+      right: -250px;
+      z-index: 0;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: -200px;
+      left: -200px;
+      z-index: 0;
+      animation: float 25s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(120deg); }
+      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      opacity: 0.8;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .header-section {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.04em;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    h1 .icon {
+      font-size: 2.5rem;
+      -webkit-text-fill-color: var(--accent);
+      background: none;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .input-section {
+      margin-bottom: 24px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 200px;
+      resize: vertical;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-subtle);
+      font-size: 1rem;
+      outline: none;
+      background: #f7fafc;
+      line-height: 1.6;
+      font-family: 'Inter', monospace;
+      transition: all 0.3s ease;
+      color: var(--text-main);
+    }
+
+    textarea:focus {
+      border-color: var(--accent);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+      transform: translateY(-2px);
+    }
+
+    textarea::placeholder {
+      color: #cbd5e0;
+    }
+
+    .helper {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .helper::before {
+      content: '💡';
+      font-size: 1rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    button {
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    button span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border: 2px solid var(--border-subtle);
+    }
+
+    .btn-ghost:hover {
+      background: #f7fafc;
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .share-box {
+      margin-top: 24px;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border: 2px dashed var(--accent);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+      font-size: 0.9rem;
+      animation: slideDown 0.4s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .share-box label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .share-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .share-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 2px solid var(--border-subtle);
+      font-size: 0.875rem;
+      background: #ffffff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: 'Inter', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .share-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--success-light);
+      border: 2px solid var(--success);
+      font-size: 0.875rem;
+      color: #22543d;
+      font-weight: 600;
+      margin-top: 16px;
+      animation: slideDown 0.4s ease-out;
+    }
+
+    .badge.success {
+      background: var(--success-light);
+      border-color: var(--success);
+      color: #22543d;
+    }
+
+    .badge.info {
+      background: rgba(102, 126, 234, 0.1);
+      border-color: var(--accent);
+      color: var(--accent-dark);
+    }
+
+    .product-cta {
+      margin-top: 40px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+      border-radius: var(--radius-md);
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      text-align: center;
+    }
+
+    .product-cta h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .product-cta p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .product-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .product-links a {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .product-links a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .product-links a.secondary {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      box-shadow: none;
+    }
+
+    .product-links a.secondary:hover {
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 24px 16px 40px;
+      }
+
+      .card {
+        padding: 28px 20px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      h1 .icon {
+        font-size: 2rem;
+      }
+
+      .share-row {
+        flex-direction: column;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .product-links {
+        flex-direction: column;
+      }
+
+      .product-links a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Loading animation */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .loading {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="header-section">
+        <div class="eyebrow">NutriThrive Labs</div>
+        <h1>
+          <span class="icon">📋</span>
+          Lazy Copy
+        </h1>
+        <p class="subtitle">
+          Share text between devices instantly. No login, no server – everything encoded in the URL. 
+          Perfect for codes, notes, and quick transfers.
+        </p>
+      </div>
+
+      <div class="input-section">
+        <textarea id="clipboardText" placeholder="Paste anything here… Type your text, codes, notes, or anything you want to share across devices."></textarea>
+        <div class="helper">
+          Works best for short notes, codes, small paragraphs (URL length limit ~2,000 characters in most browsers)
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="createLinkBtn">
+          <span>🔗</span>
+          <span>Create Share Link</span>
+        </button>
+        <button class="btn-ghost" id="clearBtn">
+          <span>⟲</span>
+          <span>Clear</span>
+        </button>
+      </div>
+
+      <div class="share-box" id="shareBox" style="display:none;">
+        <label>✨ Share this link with your other device</label>
+        <div class="share-row">
+          <input id="shareLink" class="share-input" readonly placeholder="Share link will appear here..." />
+          <button class="btn-primary" id="copyLinkBtn">
+            <span>📎</span>
+            <span>Copy</span>
+          </button>
+        </div>
+        <div class="helper" style="margin-top: 12px;">
+          Open this link on your phone, laptop, or tablet. The clipboard text will appear automatically!
+        </div>
+      </div>
+
+      <div class="badge" id="statusBadge" style="display:none;"></div>
+    </div>
+
+    <div class="product-cta">
+      <h3>Stay Productive with NutriThrive</h3>
+      <p>Copying between devices? Keep your energy up with our premium superfoods:</p>
+      <div class="product-links">
+        <a href="https://nutrithrive.com.au/pages/products/product-detail.html">Moringa Powder →</a>
+        <a href="https://nutrithrive.com.au/pages/products/product-curry-leaves.html">Curry Leaves →</a>
+        <a href="https://nutrithrive.com.au/pages/products/product-black-tea.html">Black Tea →</a>
+        <a href="https://nutrithrive.com.au/pages/products/products.html" class="secondary">All Products →</a>
+      </div>
+    </div>
+
+    <footer>
+      💡 Tip: You can bookmark the generated link if you want a semi-permanent shared clipboard. 
+      Clearing text on one device doesn't clear it on others – you control when to overwrite by creating a new link.
+    </footer>
+  </div>
+
+  <script>
+    const textarea = document.getElementById("clipboardText");
+    const createLinkBtn = document.getElementById("createLinkBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const shareBox = document.getElementById("shareBox");
+    const shareLinkInput = document.getElementById("shareLink");
+    const copyLinkBtn = document.getElementById("copyLinkBtn");
+    const statusBadge = document.getElementById("statusBadge");
+
+    function showBadge(message, type = 'success') {
+      statusBadge.textContent = message;
+      statusBadge.className = `badge ${type}`;
+      statusBadge.style.display = "inline-flex";
+      setTimeout(() => {
+        if (statusBadge.textContent === message) {
+          statusBadge.style.display = "none";
+        }
+      }, 4000);
+    }
+
+    function encodeText(text) {
+      try {
+        return btoa(encodeURIComponent(text));
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function decodeText(encoded) {
+      try {
+        return decodeURIComponent(atob(encoded));
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function updateFromHash() {
+      const hash = window.location.hash || "";
+      if (!hash.startsWith("#t=")) return;
+
+      const encoded = hash.slice(3);
+      const text = decodeText(encoded);
+      
+      if (text) {
+        textarea.value = text;
+        showBadge("✅ Loaded from shared link!", 'success');
+        
+        // Auto-scroll to textarea
+        textarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        textarea.focus();
+      }
+    }
+
+    createLinkBtn.addEventListener("click", () => {
+      const text = textarea.value.trim();
+      
+      if (!text) {
+        showBadge("⚠️ Add some text to share first", 'info');
+        textarea.focus();
+        return;
+      }
+
+      const encoded = encodeText(text);
+      const newUrl = `${window.location.origin}${window.location.pathname}#t=${encoded}`;
+      
+      window.location.hash = `t=${encoded}`;
+      shareBox.style.display = "block";
+      shareLinkInput.value = newUrl;
+      
+      showBadge("✨ Share link created!", 'success');
+      
+      // Smooth scroll to share box
+      shareBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    copyLinkBtn.addEventListener("click", async () => {
+      if (!shareLinkInput.value) return;
+
+      try {
+        await navigator.clipboard.writeText(shareLinkInput.value);
+        showBadge("📎 Link copied to clipboard!", 'success');
+        
+        // Visual feedback
+        copyLinkBtn.innerHTML = '<span>✓</span><span>Copied!</span>';
+        setTimeout(() => {
+          copyLinkBtn.innerHTML = '<span>📎</span><span>Copy</span>';
+        }, 2000);
+      } catch (e) {
+        // Fallback: select the input
+        shareLinkInput.select();
+        shareLinkInput.setSelectionRange(0, 99999);
+        showBadge("📋 Link selected - copy manually (Ctrl+C / Cmd+C)", 'info');
+      }
+    });
+
+    clearBtn.addEventListener("click", () => {
+      textarea.value = "";
+      statusBadge.style.display = "none";
+      shareBox.style.display = "none";
+      shareLinkInput.value = "";
+      textarea.focus();
+    });
+
+    // Auto-focus textarea on load
+    textarea.focus();
+
+    // On load, if URL has #t=..., decode it
+    updateFromHash();
+
+    // Listen for hash changes (back/forward navigation)
+    window.addEventListener("hashchange", updateFromHash);
+
+    // Character counter
+    textarea.addEventListener("input", () => {
+      const charCount = textarea.value.length;
+      if (charCount > 1500) {
+        showBadge(`⚠️ Warning: ${charCount} characters - URL may be too long`, 'info');
+      }
+    });
+  </script>
+</body>
+</html>
+
