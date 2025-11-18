@@ -268,16 +268,60 @@
       }
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/chrono-node@2.7.8/dist/chrono.min.js"></script>
   <script>
-    // Fallback if jsdelivr fails
-    if (typeof chrono === 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/chrono-node@2.7.8/dist/chrono.min.js';
-      script.onerror = function() {
-        console.error('Failed to load chrono library from both CDNs');
+    // Load chrono library with multiple fallbacks
+    let chronoLoaded = false;
+    
+    function loadChrono() {
+      // Try jsdelivr first
+      const script1 = document.createElement('script');
+      script1.src = 'https://cdn.jsdelivr.net/npm/chrono-node@2.7.8/dist/chrono.min.js';
+      script1.onload = function() {
+        chronoLoaded = true;
+        if (typeof chrono !== 'undefined') {
+          console.log('Chrono library loaded successfully');
+          const btn = document.getElementById('generateBtn');
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = 'Generate Calendar Event';
+          }
+        }
       };
-      document.head.appendChild(script);
+      script1.onerror = function() {
+        console.warn('jsdelivr CDN failed, trying unpkg...');
+        // Fallback to unpkg
+        const script2 = document.createElement('script');
+        script2.src = 'https://unpkg.com/chrono-node@2.7.8/dist/chrono.min.js';
+        script2.onload = function() {
+          chronoLoaded = true;
+          if (typeof chrono !== 'undefined') {
+            console.log('Chrono library loaded from fallback CDN');
+            const btn = document.getElementById('generateBtn');
+            if (btn) {
+              btn.disabled = false;
+              btn.innerHTML = 'Generate Calendar Event';
+            }
+          }
+        };
+        script2.onerror = function() {
+          console.error('Both CDNs failed to load chrono library');
+          const btn = document.getElementById('generateBtn');
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = 'Generate Calendar Event';
+            btn.style.opacity = '0.7';
+          }
+        };
+        document.head.appendChild(script2);
+      };
+      document.head.appendChild(script1);
+    }
+    
+    // Start loading immediately
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadChrono);
+    } else {
+      loadChrono();
     }
   </script>
 </head>
@@ -344,39 +388,15 @@
       return false;
     }
 
-    // Check on page load
+    // Check on page load - button starts disabled
     window.addEventListener('load', function() {
       const btn = document.getElementById('generateBtn');
-      
-      if (typeof chrono === 'undefined') {
+      if (btn && typeof chrono === 'undefined') {
         btn.disabled = true;
         btn.innerHTML = '<span class="loading"></span>Loading...';
         checkChronoLoaded();
-      } else {
-        btn.disabled = false;
-        btn.innerHTML = 'Generate Calendar Event';
       }
     });
-    
-    // Also check immediately in case script loads before DOM
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        if (typeof chrono === 'undefined') {
-          const btn = document.getElementById('generateBtn');
-          btn.disabled = true;
-          btn.innerHTML = '<span class="loading"></span>Loading...';
-          checkChronoLoaded();
-        }
-      });
-    } else {
-      // DOM already loaded
-      if (typeof chrono === 'undefined') {
-        const btn = document.getElementById('generateBtn');
-        btn.disabled = true;
-        btn.innerHTML = '<span class="loading"></span>Loading...';
-        checkChronoLoaded();
-      }
-    }
 
     // Allow Enter key to submit (Ctrl/Cmd + Enter)
     document.getElementById('eventText').addEventListener('keydown', function(e) {
