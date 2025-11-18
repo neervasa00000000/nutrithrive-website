@@ -1106,9 +1106,59 @@
               return this.parseTime(date, hour, minute, ampm);
             }
           },
-          // "at [time] on [day]": "at 11 am on wednesday" or "at 11:30 am on wednesday"
+          // "at [time] on [day]": "at 11 am on wednesday" or "at 11:30 am on wednesday" (high priority - common format)
           {
             regex: /at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+on\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const targetDay = dayNames.indexOf(match[4].toLowerCase());
+              const date = new Date(now);
+              const currentDay = date.getDay();
+              let daysAhead = targetDay - currentDay;
+              if (daysAhead <= 0) daysAhead += 7;
+              date.setDate(date.getDate() + daysAhead);
+              
+              let hour = parseInt(match[1]);
+              let minute = parseInt(match[2] || '0');
+              const ampm = match[3];
+              
+              if (ampm) {
+                if (ampm.toLowerCase() === 'pm' && hour !== 12) hour += 12;
+                if (ampm.toLowerCase() === 'am' && hour === 12) hour = 0;
+              }
+              
+              date.setHours(hour, minute, 0, 0);
+              return { start: { date: () => date } };
+            }
+          },
+          // "at [time] on [day]" with no space: "at 11am on wednesday" or "at 11:30am on wednesday"
+          {
+            regex: /at\s+(\d{1,2})(?::(\d{2}))?(am|pm)\s+on\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const targetDay = dayNames.indexOf(match[4].toLowerCase());
+              const date = new Date(now);
+              const currentDay = date.getDay();
+              let daysAhead = targetDay - currentDay;
+              if (daysAhead <= 0) daysAhead += 7;
+              date.setDate(date.getDate() + daysAhead);
+              
+              let hour = parseInt(match[1]);
+              let minute = parseInt(match[2] || '0');
+              const ampm = match[3];
+              
+              if (ampm) {
+                if (ampm.toLowerCase() === 'pm' && hour !== 12) hour += 12;
+                if (ampm.toLowerCase() === 'am' && hour === 12) hour = 0;
+              }
+              
+              date.setHours(hour, minute, 0, 0);
+              return { start: { date: () => date } };
+            }
+          },
+          // "[time] on [day]": "11 am on wednesday" (without "at")
+          {
+            regex: /(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s+on\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i,
             handler: function(match) {
               const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
               const targetDay = dayNames.indexOf(match[4].toLowerCase());
