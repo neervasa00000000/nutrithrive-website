@@ -1553,6 +1553,24 @@
   <script>
     // No need for loading checks - parser is built-in
 
+    // Split text into multiple events (separated by newlines or common separators)
+    function splitIntoEvents(text) {
+      // Split by newlines first
+      const lines = text.split(/\n+/).map(l => l.trim()).filter(l => l.length > 0);
+      if (lines.length > 1) {
+        return lines;
+      }
+      
+      // Try splitting by common patterns: double newline, semicolon, or "and" followed by capital letter
+      const parts = text.split(/\n\s*\n|;\s*|(?=\s+[A-Z][a-z]+\s+\w+\s+\d)/).map(p => p.trim()).filter(p => p.length > 0);
+      if (parts.length > 1) {
+        return parts;
+      }
+      
+      // Single event
+      return [text];
+    }
+
     // Allow Enter key to submit (Ctrl/Cmd + Enter)
     document.getElementById('eventText').addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
