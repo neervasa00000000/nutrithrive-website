@@ -1554,6 +1554,7 @@
           }
         ];
         
+        // Try specific patterns first
         for (const pattern of patterns) {
           const match = text.match(pattern.regex);
           if (match) {
@@ -1564,6 +1565,105 @@
               console.error('Parse error:', e);
             }
           }
+        }
+        
+        // Fallback: Intelligent component-based parsing
+        // Extract all date/time components and combine them intelligently
+        const components = {
+          dayName: null,
+          month: null,
+          day: null,
+          year: null,
+          time: null
+        };
+        
+        // Extract day name (sunday, monday, etc.)
+        const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        for (const day of dayNames) {
+          if (textLower.includes(day)) {
+            components.dayName = day;
+            break;
+          }
+        }
+        
+        // Extract month (november, nov, etc.)
+        for (let i = 0; i < months.length; i++) {
+          if (textLower.includes(months[i]) || textLower.includes(monthAbbr[i])) {
+            components.month = i;
+            break;
+          }
+        }
+        
+        // Extract time with am/pm
+        const timeWithAmpm = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);
+        if (timeWithAmpm) {
+          const hour = parseInt(timeWithAmpm[1]);
+          const minute = parseInt(timeWithAmpm[2] || '0');
+          components.time = { hour, minute, ampm: timeWithAmpm[3] };
+        }
+        
+        // Extract 24-hour time (13:30, 14:00, etc.) if no am/pm time found
+        if (!components.time) {
+          const time24 = text.match(/(\d{1,2}):(\d{2})\b/);
+          if (time24) {
+            const hour = parseInt(time24[1]);
+            const minute = parseInt(time24[2]);
+            if (hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59) {
+              components.time = { hour, minute, ampm: null };
+            }
+          }
+        }
+        
+        // Extract day number (1-31) - but avoid matching time hours
+        const dayMatches = text.match(/\b(\d{1,2})(?:st|nd|rd|th)?\b/g);
+        if (dayMatches) {
+          for (const match of dayMatches) {
+            const dayNum = parseInt(match.replace(/(st|nd|rd|th)/i, ''));
+            // Skip if it's likely a time hour (1-12) and we already have a time
+            if (dayNum >= 1 && dayNum <= 31 && (!components.time || dayNum > 12)) {
+              components.day = dayNum;
+              break;
+            }
+          }
+        }
+        
+        // Extract year (4-digit)
+        const yearMatch = text.match(/\b(20\d{2})\b/);
+        if (yearMatch) {
+          components.year = parseInt(yearMatch[1]);
+        }
+        
+        // Combine components intelligently
+        let finalDate = null;
+        
+        // Priority 1: If we have day name, use it
+        if (components.dayName) {
+          const targetDay = dayNames.indexOf(components.dayName);
+          finalDate = new Date(now);
+          const currentDay = finalDate.getDay();
+          let daysAhead = targetDay - currentDay;
+          if (daysAhead <= 0) daysAhead += 7;
+          finalDate.setDate(finalDate.getDate() + daysAhead);
+        } 
+        // Priority 2: If we have month and day
+        else if (components.month !== null && components.day) {
+          finalDate = new Date(components.year || now.getFullYear(), components.month, components.day);
+          if (finalDate < now) {
+            finalDate = new Date((components.year || now.getFullYear()) + 1, components.month, components.day);
+          }
+        }
+        // Priority 3: Default to today
+        else {
+          finalDate = new Date(now);
+        }
+        
+        // Apply time if found
+        if (components.time) {
+          return [this.parseTime(finalDate, components.time.hour, components.time.minute, components.time.ampm)];
+        } else if (finalDate) {
+          // Default to noon if no time specified
+          finalDate.setHours(12, 0, 0, 0);
+          return [{ start: { date: () => finalDate } }];
         }
         
         return [];
