@@ -291,11 +291,12 @@
   
   // Don't auto-connect - let user click Connect button
 
-  // Auto-sync text as user types (debounced)
-  let syncTimeout = null;
+  // Auto-sync text as user types (debounced) - P2P method
+  let p2pSyncTimeout = null;
   textarea.addEventListener('input', (e) => {
-    if (syncTimeout) clearTimeout(syncTimeout);
-    syncTimeout = setTimeout(async () => {
+    // P2P sync (if connected)
+    if (p2pSyncTimeout) clearTimeout(p2pSyncTimeout);
+    p2pSyncTimeout = setTimeout(async () => {
       const text = textarea.value.trim();
       if (text && Object.keys(peers).length > 0) {
         // Check if any peer has open data channel
@@ -336,18 +337,25 @@
   }
 
   function updateSimpleShareLink(text) {
+    if (!simpleShareLink) return;
+    
     if (!text || text.trim() === '') {
-      if (simpleShareLink) simpleShareLink.value = '';
+      simpleShareLink.value = '';
+      lastSimpleText = '';
       return;
     }
 
-    const encoded = encodeText(text);
-    const link = `${location.origin}${location.pathname}?text=${encoded}`;
-    if (simpleShareLink) {
+    try {
+      const encoded = encodeText(text);
+      if (!encoded) return;
+      
+      const link = `${location.origin}${location.pathname}?text=${encoded}`;
       simpleShareLink.value = link;
-      simpleShareLink.select();
+      // Don't auto-select - let user click copy button
+      lastSimpleText = text;
+    } catch (e) {
+      console.error('Error updating simple share link:', e);
     }
-    lastSimpleText = text;
   }
 
   copySimpleLinkBtn.addEventListener('click', async () => {
@@ -373,13 +381,22 @@
     }
   }
 
-  // Auto-update simple share link as user types
+  // Auto-update simple share link as user types (debounced)
+  let simpleSyncTimeout = null;
   textarea.addEventListener('input', (e) => {
     const text = e.target.value;
-    if (text !== lastSimpleText) {
-      updateSimpleShareLink(text);
-    }
+    if (simpleSyncTimeout) clearTimeout(simpleSyncTimeout);
+    simpleSyncTimeout = setTimeout(() => {
+      if (text !== lastSimpleText) {
+        updateSimpleShareLink(text);
+      }
+    }, 500);
   });
+  
+  // Also update on initial load if textarea has content
+  if (textarea && textarea.value) {
+    updateSimpleShareLink(textarea.value);
+  }
 
   renderHistory();
   textarea.focus();
