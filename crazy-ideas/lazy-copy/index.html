@@ -498,26 +498,64 @@
           Lazy Copy
         </h1>
         <p class="subtitle">
-          Share text between devices instantly. Auto-syncs as you type! No login, no server – everything encoded in the URL. 
-          Perfect for codes, notes, and quick transfers.
+          Real-time P2P clipboard sync! Create a room, share the link, and text syncs instantly between devices. 
+          End-to-end encrypted. No accounts, no storage.
         </p>
       </div>
 
+      <div class="share-box" id="connectionPanel" style="display:block; margin-bottom:24px;">
+        <label>🔌 Connection</label>
+        <div class="share-row" style="margin-top:8px;">
+          <input id="serverUrl" class="share-input" value="ws://localhost:3000" placeholder="WebSocket server URL" />
+          <button class="btn-primary" id="connectBtn" style="padding:14px 20px;">
+            <span>Connect</span>
+          </button>
+        </div>
+        <div class="helper" style="margin-top:8px;" id="connStatus">Not connected</div>
+      </div>
+
+      <div class="share-box" id="roomPanel" style="display:none; margin-bottom:24px;">
+        <label>🏠 Room</label>
+        <div class="share-row" style="margin-top:8px;">
+          <input id="roomIdInput" class="share-input" placeholder="Room ID" />
+          <button class="btn-primary" id="createRoomBtn" style="padding:14px 20px;">
+            <span>Create Room</span>
+          </button>
+          <button class="btn-ghost" id="joinRoomBtn" style="padding:14px 20px;">
+            <span>Join</span>
+          </button>
+        </div>
+        <div class="helper" style="margin-top:8px;" id="peerStatus">No peers connected</div>
+        <div id="roomLinkBox" style="margin-top:12px; display:none;">
+          <div class="share-row">
+            <input id="roomLink" class="share-input" readonly placeholder="Room link will appear here..." />
+            <button class="btn-primary" id="copyRoomLinkBtn" style="padding:14px 20px;">
+              <span>📎</span>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div class="input-section">
-        <textarea id="clipboardText" placeholder="Paste anything here… Type your text, codes, notes, or anything you want to share across devices."></textarea>
+        <textarea id="clipboardText" placeholder="Type or paste text here... It will sync automatically to connected devices."></textarea>
         <div class="helper">
-          Works best for short notes, codes, small paragraphs (URL length limit ~2,000 characters in most browsers)
+          Text syncs in real-time to all connected devices. All data is end-to-end encrypted.
         </div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-primary" id="createLinkBtn">
-          <span>🔗</span>
-          <span>Create Share Link</span>
+        <button class="btn-primary" id="sendBtn">
+          <span>📤</span>
+          <span>Send Now</span>
         </button>
-        <button class="btn-ghost" id="refreshSyncBtn" style="display:none;">
-          <span>🔄</span>
-          <span>Refresh to Sync</span>
+        <button class="btn-ghost" id="monitorBtn">
+          <span>👁️</span>
+          <span>Monitor Clipboard</span>
+        </button>
+        <button class="btn-ghost" id="stopMonitorBtn" style="display:none;">
+          <span>⏸️</span>
+          <span>Stop Monitoring</span>
         </button>
         <button class="btn-ghost" id="clearBtn">
           <span>⟲</span>
@@ -525,29 +563,13 @@
         </button>
       </div>
 
-      <div class="share-box" id="shareBox" style="display:none;">
-        <label>✨ Share this link with your other device</label>
-        <div class="share-row">
-          <input id="shareLink" class="share-input" readonly placeholder="Share link will appear here..." />
-          <button class="btn-primary" id="copyLinkBtn">
-            <span>📎</span>
-            <span>Copy Link</span>
-          </button>
-        </div>
-        <div style="margin-top: 16px; padding: 16px; background: rgba(102, 126, 234, 0.1); border-radius: 12px; border: 2px solid var(--accent);">
-          <div style="font-weight: 700; color: var(--accent-dark); margin-bottom: 8px; font-size: 0.9rem;">
-            🔄 How Cross-Device Sync Works:
-          </div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-            <strong>Device A (Sender):</strong> Type text → Link updates automatically<br>
-            <strong>Device B (Receiver):</strong> 
-            <br>• Copy the updated link from Device A's input box above
-            <br>• Paste it in Device B's browser address bar
-            <br>• Or click "Refresh to Sync" button (auto-refreshes every 5 seconds)
-            <br><br>
-            <em>💡 Tip: Keep the link input visible on Device A so Device B can easily copy the updated URL!</em>
-          </div>
-        </div>
+      <div class="share-box" id="historyPanel" style="display:none; margin-top:24px;">
+        <label>📜 History</label>
+        <div id="historyList" style="max-height:200px; overflow-y:auto; margin-top:12px;"></div>
+        <button class="btn-ghost" id="clearHistoryBtn" style="margin-top:12px;">
+          <span>🗑️</span>
+          <span>Clear History</span>
+        </button>
       </div>
 
       <div class="badge" id="statusBadge" style="display:none;"></div>
@@ -565,399 +587,11 @@
     </div>
 
     <footer>
-      💡 Tip: You can bookmark the generated link if you want a semi-permanent shared clipboard. 
-      Clearing text on one device doesn't clear it on others – you control when to overwrite by creating a new link.
+      💡 <strong>Setup:</strong> Run <code>npm install</code> then <code>node server.js</code> in this folder. 
+      Open <code>http://localhost:3000/index.html</code> in your browser. All data is end-to-end encrypted!
     </footer>
   </div>
 
-  <script>
-    const textarea = document.getElementById("clipboardText");
-    const createLinkBtn = document.getElementById("createLinkBtn");
-    const refreshSyncBtn = document.getElementById("refreshSyncBtn");
-    const clearBtn = document.getElementById("clearBtn");
-    const shareBox = document.getElementById("shareBox");
-    const shareLinkInput = document.getElementById("shareLink");
-    const copyLinkBtn = document.getElementById("copyLinkBtn");
-    const statusBadge = document.getElementById("statusBadge");
-
-    let syncTimeout = null;
-    let isUpdatingFromHash = false;
-    let lastSyncedText = "";
-    let lastHash = "";
-    let syncKey = "";
-    let lastUserActivity = Date.now();
-    let autoRefreshInterval = null;
-    let isReceivingMode = false;
-
-    function showBadge(message, type = 'success') {
-      statusBadge.textContent = message;
-      statusBadge.className = `badge ${type}`;
-      statusBadge.style.display = "inline-flex";
-      setTimeout(() => {
-        if (statusBadge.textContent === message) {
-          statusBadge.style.display = "none";
-        }
-      }, 3000);
-    }
-
-    function encodeText(text) {
-      try {
-        return btoa(encodeURIComponent(text));
-      } catch (e) {
-        return "";
-      }
-    }
-
-    function decodeText(encoded) {
-      try {
-        if (!encoded || encoded.length === 0) {
-          return "";
-        }
-        // Decode base64 then URI decode
-        const decoded = atob(encoded);
-        return decodeURIComponent(decoded);
-      } catch (e) {
-        console.error("Decode error:", e);
-        return "";
-      }
-    }
-
-    function getSyncKey() {
-      const hash = window.location.hash || "";
-      if (hash.startsWith("#t=")) {
-        return hash.slice(3, 20); // Use first part of hash as key
-      }
-      return "";
-    }
-
-    function updateShareLink(text) {
-      if (!text || text.trim() === "") {
-        shareBox.style.display = "none";
-        shareLinkInput.value = "";
-        refreshSyncBtn.style.display = "none";
-        return;
-      }
-
-      const encoded = encodeText(text);
-      const newUrl = `${window.location.origin}${window.location.pathname}#t=${encoded}`;
-      
-      // Update URL hash
-      if (window.location.hash !== `#t=${encoded}`) {
-        history.replaceState(null, null, `#t=${encoded}`);
-        lastHash = window.location.hash;
-      }
-      
-      // Always show share box when there's text
-      shareBox.style.display = "block";
-      shareLinkInput.value = newUrl;
-      refreshSyncBtn.style.display = "inline-flex";
-      lastSyncedText = text;
-      
-      // Auto-select the input so user can easily copy
-      setTimeout(() => {
-        shareLinkInput.select();
-      }, 100);
-
-      // Store in localStorage for same-device sync
-      const currentSyncKey = getSyncKey();
-      if (currentSyncKey) {
-        try {
-          localStorage.setItem(`lazycopy_${currentSyncKey}`, JSON.stringify({
-            text: text,
-            timestamp: Date.now()
-          }));
-        } catch (e) {
-          // localStorage might be disabled
-        }
-      }
-    }
-
-    function syncToUrl(text) {
-      // Clear existing timeout
-      if (syncTimeout) {
-        clearTimeout(syncTimeout);
-      }
-
-      // Debounce: wait 800ms after user stops typing
-      syncTimeout = setTimeout(() => {
-        updateShareLink(text);
-        showBadge("🔄 Synced!", 'success');
-      }, 800);
-    }
-
-    function updateFromHash() {
-      const hash = window.location.hash || "";
-      
-      if (!hash.startsWith("#t=")) {
-        // No hash - if textarea is empty, hide share box
-        if (textarea.value === "") {
-          shareBox.style.display = "none";
-          refreshSyncBtn.style.display = "none";
-        }
-        syncKey = "";
-        stopAutoRefresh();
-        return;
-      }
-
-      // Check if hash actually changed (skip if same and we're not forcing update)
-      if (hash === lastHash && !isUpdatingFromHash && lastHash !== "") {
-        return;
-      }
-
-      isUpdatingFromHash = true;
-      const encoded = hash.slice(3);
-      
-      if (!encoded) {
-        isUpdatingFromHash = false;
-        return;
-      }
-      
-      const text = decodeText(encoded);
-      
-      // Always update if we have text from hash
-      if (text !== null && text !== undefined) {
-        // Update textarea if different
-        if (textarea.value !== text) {
-          textarea.value = text;
-          showBadge("✅ Loaded from link!", 'success');
-        }
-        
-        lastSyncedText = text;
-        updateShareLink(text);
-        
-        // Auto-scroll to textarea
-        setTimeout(() => {
-          textarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
-      } else {
-        showBadge("⚠️ Could not decode text from link", 'info');
-      }
-      
-      lastHash = hash;
-      syncKey = getSyncKey();
-      
-      setTimeout(() => {
-        isUpdatingFromHash = false;
-      }, 300);
-    }
-
-    function startAutoRefresh() {
-      if (autoRefreshInterval) return;
-      
-      // Auto-refresh every 5 seconds if user hasn't typed in 3 seconds
-      autoRefreshInterval = setInterval(() => {
-        const timeSinceActivity = Date.now() - lastUserActivity;
-        const hash = window.location.hash || "";
-        
-        // Only auto-refresh if:
-        // 1. We have a hash (we're in sync mode)
-        // 2. User hasn't typed in 3 seconds (they're receiving, not sending)
-        // 3. We're not currently updating from hash
-        if (hash.startsWith("#t=") && timeSinceActivity > 3000 && !isUpdatingFromHash) {
-          // Store current text before refresh to compare
-          const currentText = textarea.value;
-          
-          // Reload page - when it reloads, it will get the latest hash from URL
-          // Note: This works because when Device A updates, Device B needs to 
-          // manually copy the new URL or refresh. Auto-refresh helps but the
-          // URL hash needs to be updated on Device B's side.
-          window.location.reload();
-        }
-      }, 5000);
-    }
-
-    function stopAutoRefresh() {
-      if (autoRefreshInterval) {
-        clearInterval(autoRefreshInterval);
-        autoRefreshInterval = null;
-      }
-    }
-
-    function checkForUpdates() {
-      if (isUpdatingFromHash) return;
-
-      const hash = window.location.hash || "";
-      if (!hash.startsWith("#t=")) return;
-
-      const currentSyncKey = getSyncKey();
-      if (!currentSyncKey) return;
-
-      // Check localStorage for updates (same device, different tabs)
-      try {
-        const stored = localStorage.getItem(`lazycopy_${currentSyncKey}`);
-        if (stored) {
-          const data = JSON.parse(stored);
-          const storedText = decodeText(currentSyncKey + hash.slice(3 + currentSyncKey.length));
-          
-          // Try to decode from full hash
-          const fullEncoded = hash.slice(3);
-          const decodedText = decodeText(fullEncoded);
-          
-          if (decodedText && decodedText !== textarea.value && decodedText !== lastSyncedText) {
-            isUpdatingFromHash = true;
-            textarea.value = decodedText;
-            lastSyncedText = decodedText;
-            updateShareLink(decodedText);
-            showBadge("🔄 Synced from other device!", 'success');
-            setTimeout(() => {
-              isUpdatingFromHash = false;
-            }, 200);
-          }
-        }
-      } catch (e) {
-        // Ignore localStorage errors
-      }
-
-      // Check if URL hash changed (for cross-device sync via refresh)
-      if (hash !== lastHash) {
-        updateFromHash();
-      }
-    }
-
-    createLinkBtn.addEventListener("click", () => {
-      const text = textarea.value.trim();
-      
-      if (!text) {
-        showBadge("⚠️ Add some text to share first", 'info');
-        textarea.focus();
-        return;
-      }
-
-      updateShareLink(text);
-      showBadge("✨ Share link ready!", 'success');
-      
-      // Smooth scroll to share box
-      setTimeout(() => {
-        shareBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
-    });
-
-    copyLinkBtn.addEventListener("click", async () => {
-      if (!shareLinkInput.value) return;
-
-      try {
-        await navigator.clipboard.writeText(shareLinkInput.value);
-        showBadge("📎 Link copied to clipboard!", 'success');
-        
-        // Visual feedback
-        copyLinkBtn.innerHTML = '<span>✓</span><span>Copied!</span>';
-        setTimeout(() => {
-          copyLinkBtn.innerHTML = '<span>📎</span><span>Copy</span>';
-        }, 2000);
-      } catch (e) {
-        // Fallback: select the input
-        shareLinkInput.select();
-        shareLinkInput.setSelectionRange(0, 99999);
-        showBadge("📋 Link selected - copy manually (Ctrl+C / Cmd+C)", 'info');
-      }
-    });
-
-    refreshSyncBtn.addEventListener("click", () => {
-      // Reload page to sync with latest URL hash
-      window.location.reload();
-    });
-
-    clearBtn.addEventListener("click", () => {
-      textarea.value = "";
-      statusBadge.style.display = "none";
-      shareBox.style.display = "none";
-      shareLinkInput.value = "";
-      refreshSyncBtn.style.display = "none";
-      lastSyncedText = "";
-      lastHash = "";
-      syncKey = "";
-      history.replaceState(null, null, window.location.pathname);
-      textarea.focus();
-    });
-
-    // Auto-sync as user types
-    textarea.addEventListener("input", (e) => {
-      if (isUpdatingFromHash) return;
-      
-      lastUserActivity = Date.now();
-      stopAutoRefresh(); // Stop auto-refresh when user is typing
-      
-      const text = e.target.value;
-      const charCount = text.length;
-      
-      // Character limit warning
-      if (charCount > 1500) {
-        showBadge(`⚠️ Warning: ${charCount} characters - URL may be too long`, 'info');
-      }
-      
-      // Auto-sync to URL
-      if (text !== lastSyncedText) {
-        syncToUrl(text);
-      }
-    });
-
-    // Track user activity
-    textarea.addEventListener("focus", () => {
-      lastUserActivity = Date.now();
-      stopAutoRefresh();
-    });
-
-    textarea.addEventListener("blur", () => {
-      // Start auto-refresh when user stops interacting
-      const hash = window.location.hash || "";
-      if (hash.startsWith("#t=")) {
-        setTimeout(() => {
-          startAutoRefresh();
-        }, 2000);
-      }
-    });
-
-    // Listen for storage events (same device, different tabs)
-    window.addEventListener("storage", (e) => {
-      if (e.key && e.key.startsWith("lazycopy_")) {
-        checkForUpdates();
-      }
-    });
-
-    // On load, if URL has #t=..., decode it FIRST before focusing
-    const initialHash = window.location.hash || "";
-    if (initialHash.startsWith("#t=")) {
-      updateFromHash();
-      lastHash = initialHash;
-      // Don't auto-focus if we loaded from hash (user is receiving)
-      isReceivingMode = true;
-    } else {
-      // Auto-focus textarea on load only if no hash (user is creating new)
-      textarea.focus();
-    }
-
-    // Listen for hash changes
-    window.addEventListener("hashchange", () => {
-      updateFromHash();
-    });
-
-    // Start auto-refresh if we have a hash (receiving mode)  
-    if (initialHash.startsWith("#t=")) {
-      // Wait 3 seconds, then start auto-refresh if user doesn't interact
-      setTimeout(() => {
-        if (Date.now() - lastUserActivity > 2000) {
-          startAutoRefresh();
-          showBadge("🔄 Auto-sync enabled - refreshing every 5 seconds", 'info');
-        }
-      }, 3000);
-    }
-
-    // Also check when window gains focus (user switches back to tab)
-    window.addEventListener("focus", () => {
-      checkForUpdates();
-      // Restart auto-refresh if we have a hash
-      const hash = window.location.hash || "";
-      if (hash.startsWith("#t=")) {
-        setTimeout(() => {
-          startAutoRefresh();
-        }, 2000);
-      }
-    });
-
-    window.addEventListener("blur", () => {
-      stopAutoRefresh();
-    });
-  </script>
+  <script src="webrtc-client.js"></script>
 </body>
 </html>
-
