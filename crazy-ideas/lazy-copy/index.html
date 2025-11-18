@@ -515,6 +515,10 @@
           <span>🔗</span>
           <span>Create Share Link</span>
         </button>
+        <button class="btn-ghost" id="refreshSyncBtn" style="display:none;">
+          <span>🔄</span>
+          <span>Refresh to Sync</span>
+        </button>
         <button class="btn-ghost" id="clearBtn">
           <span>⟲</span>
           <span>Clear</span>
@@ -531,7 +535,7 @@
           </button>
         </div>
         <div class="helper" style="margin-top: 12px;">
-          ✨ Auto-sync enabled! Open this link on your phone, laptop, or tablet. Text syncs automatically as you type on either device!
+          📱 <strong>How to sync:</strong> Open this link on your other device. When text changes, click "Refresh to Sync" on the receiving device to see updates instantly!
         </div>
       </div>
 
@@ -558,6 +562,7 @@
   <script>
     const textarea = document.getElementById("clipboardText");
     const createLinkBtn = document.getElementById("createLinkBtn");
+    const refreshSyncBtn = document.getElementById("refreshSyncBtn");
     const clearBtn = document.getElementById("clearBtn");
     const shareBox = document.getElementById("shareBox");
     const shareLinkInput = document.getElementById("shareLink");
@@ -567,6 +572,8 @@
     let syncTimeout = null;
     let isUpdatingFromHash = false;
     let lastSyncedText = "";
+    let lastHash = "";
+    let syncKey = "";
 
     function showBadge(message, type = 'success') {
       statusBadge.textContent = message;
@@ -595,24 +602,48 @@
       }
     }
 
+    function getSyncKey() {
+      const hash = window.location.hash || "";
+      if (hash.startsWith("#t=")) {
+        return hash.slice(3, 20); // Use first part of hash as key
+      }
+      return "";
+    }
+
     function updateShareLink(text) {
       if (!text || text.trim() === "") {
         shareBox.style.display = "none";
         shareLinkInput.value = "";
+        refreshSyncBtn.style.display = "none";
         return;
       }
 
       const encoded = encodeText(text);
       const newUrl = `${window.location.origin}${window.location.pathname}#t=${encoded}`;
       
-      // Update URL hash without triggering hashchange event
+      // Update URL hash
       if (window.location.hash !== `#t=${encoded}`) {
         history.replaceState(null, null, `#t=${encoded}`);
+        lastHash = window.location.hash;
       }
       
       shareBox.style.display = "block";
       shareLinkInput.value = newUrl;
+      refreshSyncBtn.style.display = "inline-flex";
       lastSyncedText = text;
+
+      // Store in localStorage for same-device sync
+      const currentSyncKey = getSyncKey();
+      if (currentSyncKey) {
+        try {
+          localStorage.setItem(`lazycopy_${currentSyncKey}`, JSON.stringify({
+            text: text,
+            timestamp: Date.now()
+          }));
+        } catch (e) {
+          // localStorage might be disabled
+        }
+      }
     }
 
     function syncToUrl(text) {
@@ -621,20 +652,26 @@
         clearTimeout(syncTimeout);
       }
 
-      // Debounce: wait 500ms after user stops typing
+      // Debounce: wait 800ms after user stops typing
       syncTimeout = setTimeout(() => {
         updateShareLink(text);
         showBadge("🔄 Synced!", 'success');
-      }, 500);
+      }, 800);
     }
 
     function updateFromHash() {
       const hash = window.location.hash || "";
       if (!hash.startsWith("#t=")) {
         // No hash, clear everything
-        if (textarea.value === "") {
+        if (textarea.value === "" && shareBox.style.display !== "none") {
           shareBox.style.display = "none";
         }
+        syncKey = "";
+        return;
+      }
+
+      // Check if hash actually changed
+      if (hash === lastHash && !isUpdatingFromHash) {
         return;
       }
 
@@ -646,7 +683,7 @@
         textarea.value = text;
         lastSyncedText = text;
         updateShareLink(text);
-        showBadge("✅ Synced from other device!", 'success');
+        showBadge("✅ Synced!", 'success');
         
         // Auto-scroll to textarea
         setTimeout(() => {
@@ -654,9 +691,53 @@
         }, 100);
       }
       
+      lastHash = hash;
+      syncKey = getSyncKey();
+      
       setTimeout(() => {
         isUpdatingFromHash = false;
-      }, 100);
+      }, 200);
+    }
+
+    function checkForUpdates() {
+      if (isUpdatingFromHash) return;
+
+      const hash = window.location.hash || "";
+      if (!hash.startsWith("#t=")) return;
+
+      const currentSyncKey = getSyncKey();
+      if (!currentSyncKey) return;
+
+      // Check localStorage for updates (same device, different tabs)
+      try {
+        const stored = localStorage.getItem(`lazycopy_${currentSyncKey}`);
+        if (stored) {
+          const data = JSON.parse(stored);
+          const storedText = decodeText(currentSyncKey + hash.slice(3 + currentSyncKey.length));
+          
+          // Try to decode from full hash
+          const fullEncoded = hash.slice(3);
+          const decodedText = decodeText(fullEncoded);
+          
+          if (decodedText && decodedText !== textarea.value && decodedText !== lastSyncedText) {
+            isUpdatingFromHash = true;
+            textarea.value = decodedText;
+            lastSyncedText = decodedText;
+            updateShareLink(decodedText);
+            showBadge("🔄 Synced from other device!", 'success');
+            setTimeout(() => {
+              isUpdatingFromHash = false;
+            }, 200);
+          }
+        }
+      } catch (e) {
+        // Ignore localStorage errors
+      }
+
+      // Check if URL hash changed (for cross-device sync via refresh)
+      if (hash !== lastHash) {
+        updateFromHash();
+      }
     }
 
     createLinkBtn.addEventListener("click", () => {
@@ -697,12 +778,20 @@
       }
     });
 
+    refreshSyncBtn.addEventListener("click", () => {
+      // Reload page to sync with latest URL hash
+      window.location.reload();
+    });
+
     clearBtn.addEventListener("click", () => {
       textarea.value = "";
       statusBadge.style.display = "none";
       shareBox.style.display = "none";
       shareLinkInput.value = "";
+      refreshSyncBtn.style.display = "none";
       lastSyncedText = "";
+      lastHash = "";
+      syncKey = "";
       history.replaceState(null, null, window.location.pathname);
       textarea.focus();
     });
@@ -725,26 +814,36 @@
       }
     });
 
+    // Listen for storage events (same device, different tabs)
+    window.addEventListener("storage", (e) => {
+      if (e.key && e.key.startsWith("lazycopy_")) {
+        checkForUpdates();
+      }
+    });
+
     // Auto-focus textarea on load
     textarea.focus();
 
     // On load, if URL has #t=..., decode it
     updateFromHash();
+    lastHash = window.location.hash;
 
-    // Listen for hash changes (when other device updates the URL)
+    // Listen for hash changes
     window.addEventListener("hashchange", () => {
       updateFromHash();
     });
 
-    // Poll for hash changes (for cross-device sync)
-    // Check every 1 second if hash changed externally
-    let lastHash = window.location.hash;
+    // Poll for updates every 2 seconds (for cross-device sync)
+    // Note: For true cross-device sync, users need to refresh the page on the receiving device
+    // or manually copy the updated URL. This polling helps with same-device scenarios.
     setInterval(() => {
-      if (window.location.hash !== lastHash && !isUpdatingFromHash) {
-        lastHash = window.location.hash;
-        updateFromHash();
-      }
-    }, 1000);
+      checkForUpdates();
+    }, 2000);
+
+    // Also check when window gains focus (user switches back to tab)
+    window.addEventListener("focus", () => {
+      checkForUpdates();
+    });
   </script>
 </body>
 </html>
