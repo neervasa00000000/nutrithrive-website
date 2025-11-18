@@ -867,9 +867,72 @@
               return this.parseTime(date, match[2], match[3] || '0', match[4]);
             }
           },
-          // Slash/dash/dot separated dates: 11/10/2025, 11-10-2025, 11.10.2025, nov/10/2025, nov / 10 / 2025
+          // Day name + ordinal + month: "friday 21st nov" or "friday 21st november"
           {
-            regex: /(\w{3,9}|\d{1,2})\s*[\/\-\.,]\s*(\d{1,2})(?:st|nd|rd|th)?\s*[\/\-\.,]\s*(\d{2,4})/i,
+            regex: /(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(\d{1,2})(?:st|nd|rd|th)?\s+(\w{3,9})/i,
+            handler: function(match) {
+              const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+              const dayName = match[1].toLowerCase();
+              const day = parseInt(removeOrdinal(match[2]));
+              const monthIdx = findMonth(match[3]);
+              
+              if (monthIdx < 0) return null;
+              
+              // Find the date that matches both day name and day number
+              const currentYear = now.getFullYear();
+              let date = new Date(currentYear, monthIdx, day);
+              
+              // Adjust year if date is in the past
+              if (date < now) {
+                date = new Date(currentYear + 1, monthIdx, day);
+              }
+              
+              // Verify day name matches
+              const targetDay = dayNames.indexOf(dayName);
+              while (date.getDay() !== targetDay) {
+                date.setFullYear(date.getFullYear() + 1);
+              }
+              
+              // Check for time range
+              const timeRange = extractTimeRange(text);
+              if (timeRange) {
+                const startDate = new Date(date);
+                const endDate = new Date(date);
+                
+                let startHour = timeRange.start.hour;
+                let startMinute = timeRange.start.minute;
+                if (timeRange.start.ampm) {
+                  if (timeRange.start.ampm.toLowerCase() === 'pm' && startHour !== 12) startHour += 12;
+                  if (timeRange.start.ampm.toLowerCase() === 'am' && startHour === 12) startHour = 0;
+                }
+                startDate.setHours(startHour, startMinute, 0, 0);
+                
+                let endHour = timeRange.end.hour;
+                let endMinute = timeRange.end.minute;
+                if (timeRange.end.ampm) {
+                  if (timeRange.end.ampm.toLowerCase() === 'pm' && endHour !== 12) endHour += 12;
+                  if (timeRange.end.ampm.toLowerCase() === 'am' && endHour === 12) endHour = 0;
+                }
+                endDate.setHours(endHour, endMinute, 0, 0);
+                
+                if (endDate <= startDate) {
+                  endDate.setDate(endDate.getDate() + 1);
+                }
+                
+                return {
+                  start: { date: () => startDate },
+                  end: { date: () => endDate }
+                };
+              }
+              
+              // Single time
+              const time = extractTime(text);
+              return this.parseTime(date, time.hour, time.minute, time.ampm);
+            }
+          },
+          // Slash/dash/dot separated dates: 11/10/2025, 11-10-2025, 11.10.2025, nov/10/2025, nov / 10 / 2025, 28/11 (day/month)
+          {
+            regex: /(\w{3,9}|\d{1,2})\s*[\/\-\.,]\s*(\d{1,2})(?:st|nd|rd|th)?(?:\s*[\/\-\.,]\s*(\d{2,4}))?/i,
             handler: function(match) {
               let month, day, year;
               const part1 = match[1].toLowerCase();
@@ -881,22 +944,36 @@
                 // Format: nov/10/2025 or nov / 10 / 2025
                 month = monthIdx;
                 day = part2;
-                year = parseYear(part3);
+                year = part3 ? parseYear(part3) : now.getFullYear();
               } else {
-                // Format: 11/10/2025 (US format MM/DD/YYYY) or 10/11/2025 (DD/MM/YYYY)
+                // Format: 11/10/2025 (US format MM/DD/YYYY) or 10/11/2025 (DD/MM/YYYY) or 28/11 (DD/MM)
                 const num1 = parseInt(part1);
                 const num2 = part2;
-                year = parseYear(part3);
+                year = part3 ? parseYear(part3) : now.getFullYear();
                 
-                // Try US format first (MM/DD)
-                if (num1 >= 1 && num1 <= 12 && num2 >= 1 && num2 <= 31) {
-                  month = num1 - 1;
-                  day = num2;
-                } else if (num2 >= 1 && num2 <= 12 && num1 >= 1 && num1 <= 31) {
-                  // Try DD/MM format
-                  month = num2 - 1;
-                  day = num1;
+                // If no year provided, check if it's likely DD/MM format (common in many countries)
+                if (!part3) {
+                  // Try DD/MM format first (28/11 means Nov 28)
+                  if (num2 >= 1 && num2 <= 12 && num1 >= 1 && num1 <= 31) {
+                    month = num2 - 1;
+                    day = num1;
+                  } else if (num1 >= 1 && num1 <= 12 && num2 >= 1 && num2 <= 31) {
+                    // Try MM/DD format
+                    month = num1 - 1;
+                    day = num2;
+                  } else {
+                    return null;
+                  }
                 } else {
+                  // Year provided - try US format first (MM/DD)
+                  if (num1 >= 1 && num1 <= 12 && num2 >= 1 && num2 <= 31) {
+                    month = num1 - 1;
+                    day = num2;
+                  } else if (num2 >= 1 && num2 <= 12 && num1 >= 1 && num1 <= 31) {
+                    // Try DD/MM format
+                    month = num2 - 1;
+                    day = num1;
+                  } else {
                   return null;
                 }
               }
@@ -1464,33 +1541,33 @@
         const parsedResult = results[0];
         const evStart = parsedResult.start.date();
         
-        // Validate that the date is in the future or today
-        if (evStart < new Date(now.getTime() - 60000)) {
-          resultDiv.innerHTML = '<div class="error">⚠️ The date/time you entered appears to be in the past. Please enter a future date.</div>';
-          setTimeout(function() {
-            generateBtn.disabled = false;
-            generateBtn.innerHTML = 'Generate Event';
-          }, 100);
-          return;
-        }
+          // Validate that the date is in the future or today
+          if (evStart < new Date(now.getTime() - 60000)) {
+            continue; // Skip past events
+          }
 
-        // Get end time
-        let evEnd = null;
-        let hasEnd = false;
-        
-        if (parsedResult.end && parsedResult.end.date()) {
-          evEnd = parsedResult.end.date();
-          hasEnd = true;
-        } else {
-          // Default: 1 hour duration
-          evEnd = new Date(evStart.getTime() + 60 * 60 * 1000);
-        }
+          // Get end time
+          let evEnd = null;
+          let hasEnd = false;
+          
+          if (parsedResult.end && parsedResult.end.date()) {
+            evEnd = parsedResult.end.date();
+            hasEnd = true;
+          } else {
+            // Default: 1 hour duration
+            evEnd = new Date(evStart.getTime() + 60 * 60 * 1000);
+          }
 
-        // Extract location if "at <location>" is present
-        let location = "";
-        const locMatch = text.match(/\bat\s+([A-Za-z0-9 ,.'-]+?)(?:\s+(?:at|on|next|tomorrow|today|monday|tuesday|wednesday|thursday|friday|saturday|sunday|\d{1,2}[:\d]{0,5}\s*(?:am|pm)|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|\d{4}))/i);
-        
-        if (locMatch && locMatch[1]) {
+          // Extract location if "at <location>" is present (but not "at [time]")
+          let location = "";
+          // More precise location extraction - avoid matching "at 11 am" as location
+          const locPattern = /\bat\s+([A-Za-z0-9 ,.'-]+?)(?:\s+(?:on|next|tomorrow|today|monday|tuesday|wednesday|thursday|friday|saturday|sunday|\d{1,2}[:\d]{0,5}\s*(?:am|pm)|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|\d{4}|from|to))/i;
+          const locMatch = eventText.match(locPattern);
+          
+          if (locMatch && locMatch[1]) {
+            // Make sure it's not a time (like "at 11 am")
+            const potentialLoc = locMatch[1].trim();
+            if (!/^\d{1,2}(?::\d{2})?\s*(am|pm)$/i.test(potentialLoc)) {
           location = locMatch[1].trim();
           // Clean up common false positives
           if (location.toLowerCase().match(/^(at|on|next|tomorrow|today|monday|tuesday|wednesday|thursday|friday|saturday|sunday)$/i)) {
