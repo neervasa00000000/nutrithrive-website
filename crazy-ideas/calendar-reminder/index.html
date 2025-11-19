@@ -1836,7 +1836,7 @@
           autofocus
         ></textarea>
         <div class="button-group">
-          <button id="generateBtn" onclick="generateCalendar()">
+          <button id="generateBtn">
             Generate Event
           </button>
         </div>
@@ -1885,14 +1885,8 @@
       return [text];
     }
 
-    // Allow Enter key to submit (Ctrl/Cmd + Enter)
-    document.getElementById('eventText').addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-        generateCalendar();
-      }
-    });
-
-    function generateCalendar() {
+    // Make generateCalendar globally accessible
+    window.generateCalendar = function() {
       const text = document.getElementById("eventText").value.trim();
       const resultDiv = document.getElementById("result");
       const generateBtn = document.getElementById("generateBtn");
