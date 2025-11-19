@@ -551,7 +551,8 @@
   </style>
   <script>
     // Enhanced date parser - handles many human-friendly formats
-    const SimpleDateParser = {
+    // Make it globally accessible
+    window.SimpleDateParser = {
       parse: function(text, refDate) {
         refDate = refDate || new Date();
         const now = new Date(refDate);
@@ -1783,14 +1784,12 @@
     // Make it available globally - ensure it's available immediately
     window.chrono = {
       parse: function(text, refDate, options) {
-        return SimpleDateParser.parse(text, refDate);
+        return window.SimpleDateParser.parse(text, refDate);
       }
     };
     
-    // Also make it available as a global variable (not just window property)
-    if (typeof chrono === 'undefined') {
-      var chrono = window.chrono;
-    }
+    // Also make it available as a global variable
+    var chrono = window.chrono;
     
     // Enable button immediately since we don't need external library
     window.addEventListener('load', function() {
@@ -1804,9 +1803,10 @@
       if (typeof window.chrono === 'undefined') {
         window.chrono = {
           parse: function(text, refDate, options) {
-            return SimpleDateParser.parse(text, refDate);
+            return window.SimpleDateParser.parse(text, refDate);
           }
         };
+        chrono = window.chrono;
       }
     });
   </script>
@@ -1907,11 +1907,9 @@
       // Parser is always available (built-in)
 
       try {
-        // Ensure chrono is available
-        if (typeof chrono === 'undefined' && typeof window.chrono !== 'undefined') {
-          var chrono = window.chrono;
-        }
-        if (typeof chrono === 'undefined') {
+        // Ensure chrono is available - use window.chrono directly
+        const chronoParser = window.chrono || chrono;
+        if (typeof chronoParser === 'undefined') {
           throw new Error('Date parser not initialized. Please reload the page.');
         }
         
@@ -1924,7 +1922,7 @@
           const eventText = eventTexts[i].trim();
           if (!eventText) continue;
           
-          const results = chrono.parse(eventText, now, { forwardDate: true });
+          const results = chronoParser.parse(eventText, now, { forwardDate: true });
 
           if (!results || results.length === 0 || !results[0].start) {
             // Try to provide helpful error message
