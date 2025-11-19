@@ -2096,6 +2096,36 @@
           generateBtn.innerHTML = 'Generate Event';
         }, 100);
       }
+    };
+    
+    // Also make it available as a regular function for onclick handlers
+    function generateCalendar() {
+      return window.generateCalendar();
+    }
+    
+    // Attach event listener to button when DOM is ready
+    function setupEventListeners() {
+      const generateBtn = document.getElementById('generateBtn');
+      if (generateBtn) {
+        generateBtn.addEventListener('click', window.generateCalendar);
+      }
+      
+      // Allow Enter key to submit (Ctrl/Cmd + Enter)
+      const eventText = document.getElementById('eventText');
+      if (eventText) {
+        eventText.addEventListener('keydown', function(e) {
+          if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            window.generateCalendar();
+          }
+        });
+      }
+    }
+    
+    // Setup when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupEventListeners);
+    } else {
+      setupEventListeners();
     }
 
     // Escape HTML to prevent XSS
