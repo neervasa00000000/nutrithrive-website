@@ -1806,13 +1806,15 @@
           if (hour < 0) hour = 0;
           if (hour > 23) hour = 23;
           
-          date.setHours(hour, minute, 0, 0);
-          return { start: { date: () => date } };
+          // Create a new date object to avoid mutating the original
+          // Use the date's year, month, and day, but set the time
+          const newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute, 0, 0);
+          return { start: { date: () => newDate } };
         } catch (e) {
           console.error('Error in parseTime:', e);
           // Return default time
-          date.setHours(12, 0, 0, 0);
-          return { start: { date: () => date } };
+          const newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0, 0);
+          return { start: { date: () => newDate } };
         }
       }
     };
