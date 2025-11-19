@@ -1820,13 +1820,20 @@
         btn.innerHTML = 'Generate Calendar Event';
       }
       
-      // Ensure chrono is available
-      if (typeof window.chrono === 'undefined' && typeof window.SimpleDateParser !== 'undefined') {
-        window.chrono = {
-          parse: function(text, refDate, options) {
-            return window.SimpleDateParser.parse(text, refDate);
-          }
-        };
+      // Ensure chrono is available - re-initialize if needed
+      if (typeof window.chrono === 'undefined') {
+        if (typeof window.SimpleDateParser !== 'undefined') {
+          console.log('Re-initializing window.chrono on load');
+          window.chrono = {
+            parse: function(text, refDate, options) {
+              return window.SimpleDateParser.parse(text, refDate);
+            }
+          };
+        } else {
+          console.error('Cannot initialize chrono: SimpleDateParser not available');
+        }
+      } else {
+        console.log('window.chrono already initialized');
       }
     });
   </script>
