@@ -863,7 +863,7 @@
     convertBtn.addEventListener('click', async () => {
       if (!currentFile || !fromFormat.value || !toFormat.value) return;
 
-      convertBtn.disabled = true;
+        convertBtn.disabled = true;
       downloadSection.classList.remove('active');
       previewArea.classList.remove('active'); // Hide preview during conversion
       document.querySelector('.converter-card').classList.add('converting'); // Add converting class
@@ -885,7 +885,7 @@
         console.error('Conversion error:', error);
         showStatus('Conversion failed: ' + error.message, 'error');
       } finally {
-        convertBtn.disabled = false;
+      convertBtn.disabled = false;
         document.querySelector('.converter-card').classList.remove('converting'); // Remove converting class
       }
     });
