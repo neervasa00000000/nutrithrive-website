@@ -928,61 +928,79 @@
 
       switch (bork_fx) {
         case 0:
-          center.className = "shake";
+          center.className = "shake screen-flicker";
           forbid.className = "glitchit";
           btn.className = "borked";
+          document.body.style.filter = "hue-rotate(180deg) contrast(2)";
           break;
 
         case 1:
-          btn.className = "glitchit";
-          forbid.className = "borked";
+          btn.className = "glitchit borked";
+          forbid.className = "borked glitchit";
           center.style.background = "#" + ((1 << 24) * Math.random() | 0).toString(16);
-          center.style.transition = "background 0.3s ease";
+          center.style.transition = "background 0.1s ease";
+          center.className = "screen-flicker";
+          document.body.className = "reverse";
           break;
 
         case 2:
-          document.body.className = "reverse";
+          document.body.className = "reverse screen-flicker";
           btn.style.transform = "rotate(45deg) scale(1.7)";
-          btn.style.transition = "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+          btn.style.transition = "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+          btn.className = "borked glitchit";
+          forbid.className = "glitchit";
+          center.className = "shake";
           break;
 
         case 3:
           forbid.className = "glitchit";
           btn.innerText = "MAKE IT STOP!";
           btn.style.background = "linear-gradient(135deg, #ff0000 0%, #ff3333 100%)";
-          btn.className = "borked";
+          btn.className = "borked glitchit";
+          center.className = "shake screen-flicker";
+          document.body.style.filter = "invert(1) hue-rotate(90deg)";
           break;
 
         case 4:
           forbid.innerText = "█DΦ NΦT OβEY█";
+          forbid.setAttribute('data-text', forbid.innerText);
           btn.innerText = "👀";
-          btn.className = "borked";
-          center.style.filter = "blur(4.5px) invert(1)";
-          center.style.transition = "filter 0.5s ease";
+          btn.className = "borked glitchit";
+          center.style.filter = "hue-rotate(180deg) invert(1) contrast(3) brightness(2)";
+          center.style.transition = "filter 0.1s ease";
+          center.className = "screen-flicker";
+          document.body.className = "reverse";
           break;
 
         case 5:
-          center.className = "shake";
+          center.className = "shake screen-flicker";
           btn.innerText = "🦴🐍?!";
+          btn.className = "borked glitchit";
           forbid.innerText = "Don't trust your senses!";
           forbid.setAttribute('data-text', forbid.innerText);
           forbid.className = "glitchit";
+          document.body.style.filter = "hue-rotate(270deg) contrast(2.5)";
           break;
 
         case 6:
-          document.body.style.background = "#111";
-          document.body.style.transition = "background 0.3s ease";
-          btn.style.transform = "scale(2) rotate(180deg)";
-          btn.style.transition = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
+          document.body.style.background = "#000";
+          document.body.style.transition = "background 0.1s ease";
+          document.body.className = "reverse screen-flicker";
+          btn.style.transform = "scale(2.5) rotate(180deg)";
+          btn.style.transition = "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)";
+          btn.className = "borked glitchit";
           forbid.className = "glitchit";
+          center.className = "shake";
           break;
 
         case 7:
-          center.style.filter = "hue-rotate(180deg) saturate(2)";
-          center.style.transition = "filter 0.4s ease";
-          btn.className = "glitchit";
-          forbid.className = "borked";
+          center.style.filter = "hue-rotate(180deg) saturate(3) contrast(3) brightness(2)";
+          center.style.transition = "filter 0.1s ease";
+          center.className = "screen-flicker shake";
+          btn.className = "glitchit borked";
+          forbid.className = "borked glitchit";
           document.body.className = "reverse";
+          document.body.style.filter = "invert(1) hue-rotate(90deg) contrast(2)";
           break;
       }
 
