@@ -20,121 +20,131 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #b7e2c3;
-      --surface: #ffffff;
-      --surface-alt: #eef6f1;
-      --accent: #38677a;
-      --accent-light: #5f8b9d;
-      --ink: #0f2530;
-      --muted: #4c646c;
-      --border: #86a8b5;
-      --success: #10b981;
-      --warning: #f59e0b;
+      --primary: #8AA624;
+      --light: #DBE4C9;
+      --bg: #FFFFF0;
+      --accent: #FEA405;
+      --text: #1a1a1a;
+      --text-light: #666666;
+      --border: #DBE4C9;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
-      color: var(--ink);
+      color: var(--text);
       min-height: 100vh;
-      padding: 24px;
-    }
-
-    .app-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .header {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-      margin-bottom: 32px;
-      text-align: center;
-    }
-
-    .header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-    }
-
-    .header p {
-      color: var(--muted);
-      font-size: 1.1rem;
+      padding: 0;
       line-height: 1.6;
     }
 
+    .app-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    @media (max-width: 768px) {
+      .app-container {
+        padding: 40px 24px;
+      }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .header p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     .converter-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-      margin-bottom: 24px;
+      background: white;
+      border: 2px solid var(--border);
+      padding: 50px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .converter-card {
+        padding: 32px 24px;
+      }
     }
 
     .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     .file-drop-zone {
-      border: 2px dashed var(--border);
-      border-radius: 16px;
-      padding: 60px 40px;
+      border: 2px solid var(--border);
+      padding: 80px 40px;
       text-align: center;
-      background: var(--surface-alt);
+      background: var(--bg);
       cursor: pointer;
-      transition: all 0.3s;
-      margin-bottom: 24px;
+      transition: border-color 0.2s;
+      margin-bottom: 32px;
     }
 
     .file-drop-zone:hover {
-      border-color: var(--accent);
-      background: var(--surface);
+      border-color: var(--primary);
     }
 
     .file-drop-zone.dragover {
-      border-color: var(--accent);
-      background: var(--surface);
-      transform: scale(1.02);
+      border-color: var(--primary);
+      background: var(--light);
     }
 
     .file-drop-zone-icon {
       font-size: 4rem;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-weight: 300;
+      line-height: 1;
     }
 
     .file-drop-zone-text {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--ink);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
       margin-bottom: 8px;
+      letter-spacing: -0.3px;
     }
 
     .file-drop-zone-hint {
-      color: var(--muted);
+      color: var(--text-light);
       font-size: 0.95rem;
+      font-weight: 400;
     }
 
     .file-info {
       display: none;
-      padding: 20px;
-      background: var(--surface-alt);
-      border-radius: 12px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border);
+      padding: 24px;
+      background: var(--bg);
+      margin-bottom: 32px;
+      border: 2px solid var(--border);
     }
 
     .file-info.active {
@@ -142,27 +152,30 @@
     }
 
     .file-name {
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 1rem;
+      letter-spacing: -0.2px;
     }
 
     .file-size {
-      color: var(--muted);
+      color: var(--text-light);
       font-size: 0.9rem;
+      font-weight: 400;
     }
 
     .format-selector {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 32px;
+      gap: 32px;
+      margin-bottom: 40px;
     }
 
     @media (max-width: 768px) {
       .format-selector {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
     }
 
@@ -173,58 +186,62 @@
     }
 
     .format-label {
-      font-weight: 600;
-      color: var(--ink);
-      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .format-select {
-      padding: 14px 16px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface);
-      color: var(--ink);
+      padding: 16px 20px;
+      border: 2px solid var(--border);
+      background: white;
+      color: var(--text);
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 400;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: border-color 0.2s;
+      font-family: inherit;
     }
 
     .format-select:focus {
       outline: none;
-      border-color: var(--accent);
+      border-color: var(--primary);
     }
 
     .convert-btn {
       width: 100%;
-      padding: 18px 32px;
-      background: var(--accent);
+      padding: 20px 32px;
+      background: var(--primary);
       color: white;
       border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-size: 1rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s;
-      margin-bottom: 24px;
+      transition: background-color 0.2s;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
 
     .convert-btn:hover:not(:disabled) {
-      opacity: 0.9;
-      transform: translateY(-2px);
+      background: var(--accent);
     }
 
     .convert-btn:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
+      background: var(--border);
+      color: var(--text-light);
     }
 
     .status-message {
-      padding: 16px;
-      border-radius: 12px;
-      margin-bottom: 24px;
-      font-weight: 500;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      font-weight: 400;
       display: none;
+      border: 2px solid;
     }
 
     .status-message.active {
@@ -232,29 +249,28 @@
     }
 
     .status-success {
-      background: #d1fae5;
-      color: #065f46;
-      border: 1px solid #10b981;
+      background: var(--bg);
+      color: var(--text);
+      border-color: var(--primary);
     }
 
     .status-error {
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #ef4444;
+      background: var(--bg);
+      color: var(--text);
+      border-color: var(--accent);
     }
 
     .status-info {
-      background: #dbeafe;
-      color: #1e40af;
-      border: 1px solid #3b82f6;
+      background: var(--bg);
+      color: var(--text);
+      border-color: var(--border);
     }
 
     .download-section {
       display: none;
-      padding: 24px;
-      background: var(--surface-alt);
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      padding: 32px;
+      background: var(--bg);
+      border: 2px solid var(--primary);
       text-align: center;
     }
 
@@ -262,54 +278,67 @@
       display: block;
     }
 
+    .download-section > div {
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
     .download-btn {
-      padding: 14px 28px;
-      background: var(--success);
+      padding: 16px 40px;
+      background: var(--primary);
       color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background-color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
 
     .download-btn:hover {
-      opacity: 0.9;
+      background: var(--accent);
     }
 
     .format-categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
     }
 
     .category-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
+      background: white;
+      border: 2px solid var(--border);
+      padding: 28px 24px;
     }
 
     .category-title {
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 12px;
-      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .category-formats {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.8;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 2;
+      font-weight: 400;
     }
 
     .category-formats code {
-      background: var(--surface-alt);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.85rem;
+      background: var(--bg);
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text);
+      border: 1px solid var(--border);
     }
 
     input[type="file"] {
@@ -317,11 +346,10 @@
     }
 
     .preview-area {
-      margin-top: 24px;
-      padding: 20px;
-      background: var(--surface-alt);
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      margin-top: 32px;
+      padding: 24px;
+      background: var(--bg);
+      border: 2px solid var(--border);
       display: none;
     }
 
@@ -332,12 +360,10 @@
     .preview-area img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
     }
 
     .preview-area video {
       max-width: 100%;
-      border-radius: 8px;
     }
 
     .preview-area audio {
@@ -347,10 +373,12 @@
 
     footer {
       text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 40px;
-      padding: 24px;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 2px solid var(--border);
+      font-weight: 400;
     }
   </style>
   <script src="pdf.min.js"></script>
@@ -366,15 +394,15 @@
 <body>
   <div class="app-container">
     <div class="header">
-      <h1>🔄 Universal File Converter</h1>
+      <h1>Universal File Converter</h1>
       <p>Convert files between formats instantly. Images, Documents, Audio, Video, and Archives—all in your browser.</p>
-        </div>
+    </div>
 
     <div class="converter-card">
-      <div class="section-title">📁 Upload File</div>
+      <div class="section-title">Upload File</div>
       
       <div class="file-drop-zone" id="dropZone">
-        <div class="file-drop-zone-icon">📎</div>
+        <div class="file-drop-zone-icon">+</div>
         <div class="file-drop-zone-text">Drop your file here or click to browse</div>
         <div class="file-drop-zone-hint">Supports all major file formats</div>
       </div>
@@ -383,7 +411,7 @@
       <div class="file-info" id="fileInfo">
         <div class="file-name" id="fileName"></div>
         <div class="file-size" id="fileSize"></div>
-      </div>
+        </div>
 
       <div class="preview-area" id="previewArea"></div>
 
@@ -393,7 +421,7 @@
           <select class="format-select" id="fromFormat" disabled>
             <option value="">Select source format...</option>
           </select>
-        </div>
+      </div>
         <div class="format-group">
           <label class="format-label">To Format</label>
           <select class="format-select" id="toFormat" disabled>
@@ -402,54 +430,54 @@
         </div>
       </div>
 
-      <button class="convert-btn" id="convertBtn" disabled>🔄 Convert File</button>
+      <button class="convert-btn" id="convertBtn" disabled>Convert File</button>
 
       <div class="status-message" id="statusMessage"></div>
 
       <div class="download-section" id="downloadSection">
-        <div style="font-weight:600;margin-bottom:16px;color:var(--accent);">✓ Conversion Complete!</div>
-        <button class="download-btn" id="downloadBtn">⬇️ Download Converted File</button>
+        <div>Conversion Complete</div>
+        <button class="download-btn" id="downloadBtn">Download Converted File</button>
       </div>
-        </div>
+      </div>
 
     <div class="converter-card">
-      <div class="section-title">📋 Supported Formats</div>
+      <div class="section-title">Supported Formats</div>
       <div class="format-categories">
         <div class="category-card">
-          <div class="category-title">🖼️ Images</div>
+          <div class="category-title">Images</div>
           <div class="category-formats">
             <code>HEIC</code> <code>PNG</code> <code>JPG</code> <code>GIF</code><br>
             <code>WEBP</code> <code>TIFF</code> <code>SVG</code>
         </div>
         </div>
         <div class="category-card">
-          <div class="category-title">📄 Documents</div>
+          <div class="category-title">Documents</div>
           <div class="category-formats">
             <code>PDF</code> <code>DOC</code> <code>DOCX</code> <code>TXT</code><br>
             <code>RTF</code> <code>ODT</code> <code>HTML</code>
         </div>
         </div>
         <div class="category-card">
-          <div class="category-title">🎵 Audio</div>
+          <div class="category-title">Audio</div>
           <div class="category-formats">
             <code>MP3</code> <code>WAV</code> <code>OGG</code><br>
             <code>FLAC</code> <code>M4A</code>
-          </div>
         </div>
+          </div>
         <div class="category-card">
-          <div class="category-title">🎬 Video</div>
+          <div class="category-title">Video</div>
           <div class="category-formats">
             <code>MP4</code> <code>MOV</code> <code>AVI</code><br>
             <code>WMV</code> <code>WEBM</code> <code>MKV</code>
           </div>
         </div>
         <div class="category-card">
-          <div class="category-title">📦 Archives</div>
+          <div class="category-title">Archives</div>
           <div class="category-formats">
             <code>ZIP</code> <code>RAR</code> <code>7Z</code> <code>TAR</code>
           </div>
         </div>
-      </div>
+    </div>
       </div>
 
     <footer>
@@ -635,7 +663,7 @@
     convertBtn.addEventListener('click', async () => {
       if (!currentFile || !fromFormat.value || !toFormat.value) return;
 
-      convertBtn.disabled = true;
+        convertBtn.disabled = true;
       showStatus('Converting...', 'info');
 
       try {
@@ -654,7 +682,7 @@
         console.error('Conversion error:', error);
         showStatus('Conversion failed: ' + error.message, 'error');
       } finally {
-        convertBtn.disabled = false;
+      convertBtn.disabled = false;
       }
     });
 
@@ -967,8 +995,8 @@
               if (recording) {
                 recorder.stop();
               }
-              return;
-            }
+        return;
+      }
 
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             
@@ -1044,8 +1072,8 @@
             if (!MediaRecorder.isTypeSupported(mimeType)) {
               URL.revokeObjectURL(url);
               reject(new Error('Audio conversion not supported in this browser. Try Chrome or Firefox.'));
-              return;
-            }
+        return;
+      }
           }
 
           const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -1111,3 +1139,4 @@
   </script>
 </body>
 </html>
+
