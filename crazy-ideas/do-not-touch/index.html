@@ -1142,11 +1142,105 @@
         surprise.className = "";
         if (staticOverlay) staticOverlay.classList.remove('active');
         if (scanlines) scanlines.classList.remove('active');
-        setTimeout(nextForbid, 800);
+        
+        // Start challenge phase after glitch
+        startChallengePhase();
       }, 3500);
     }
 
+    function startChallengePhase() {
+      challengePhase = true;
+      clickCount = 0;
+      center.classList.add('challenge-phase');
+      forbid.innerText = "Ok fine, you want to touch it right?";
+      forbid.setAttribute('data-text', forbid.innerText);
+      btn.innerText = "Touch it";
+      btn.className = '';
+      btn.style.background = "linear-gradient(135deg, #f45c63 0%, #ff6b7a 100%)";
+      btn.style.color = "#fff";
+      btn.style.transform = "";
+      btn.style.left = "0px";
+      btn.style.top = "0px";
+      btn.style.position = "relative";
+      counterDisplay.classList.add('active');
+      counterDisplay.textContent = `0 / ${TARGET_CLICKS}`;
+      surprise.textContent = "";
+      surprise.className = "";
+      
+      // Reset all glitch effects
+      center.className = "challenge-phase";
+      document.body.className = "";
+      document.body.style.filter = "";
+      document.body.style.background = "#181818";
+      center.style.filter = "";
+      center.style.background = "#181818";
+    }
+
+    function handleChallengeClick() {
+      if (!challengePhase) return;
+      
+      clickCount++;
+      counterDisplay.textContent = `${clickCount} / ${TARGET_CLICKS}`;
+      
+      // Visual feedback on each click
+      btn.style.transform = "scale(0.95)";
+      setTimeout(() => {
+        btn.style.transform = "scale(1)";
+      }, 100);
+      
+      // Add particle effect on click
+      const rect = btn.getBoundingClientRect();
+      createParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      
+      // Check if reached target
+      if (clickCount >= TARGET_CLICKS) {
+        challengePhase = false;
+        center.classList.remove('challenge-phase');
+        counterDisplay.classList.remove('active');
+        counterDisplay.textContent = "";
+        forbid.innerText = "I FOOLED YOU";
+        forbid.setAttribute('data-text', forbid.innerText);
+        forbid.className = "glitchit";
+        btn.innerText = "😈";
+        btn.style.background = "linear-gradient(135deg, #ff0000 0%, #ff3333 100%)";
+        btn.className = "borked glitchit";
+        center.className = "shake screen-flicker";
+        surprise.textContent = "You actually clicked 100 times!";
+        surprise.setAttribute('data-text', surprise.textContent);
+        surprise.className = "glitch-text";
+        
+        // Add intense glitch effects
+        document.body.classList.add('screen-flicker');
+        const staticOverlay = document.getElementById('static-overlay');
+        const scanlines = document.getElementById('scanlines');
+        if (staticOverlay) staticOverlay.classList.add('active');
+        if (scanlines) scanlines.classList.add('active');
+        
+        // Play sound
+        const beep = document.getElementById('beep');
+        beep.volume = 0.6;
+        beep.currentTime = 0;
+        beep.loop = true;
+        beep.play().catch(e => console.log('Audio play failed:', e));
+        
+        // Reset after 4 seconds
+        setTimeout(() => {
+          beep.loop = false;
+          beep.pause();
+          document.body.classList.remove('screen-flicker');
+          if (staticOverlay) staticOverlay.classList.remove('active');
+          if (scanlines) scanlines.classList.remove('active');
+          nextForbid();
+        }, 4000);
+      }
+    }
+
     btn.onclick = function() {
+      if (challengePhase) {
+        handleChallengeClick();
+        return;
+      }
+      
       if (forbids[idx].action == "button" || forbids[idx].action == "smile") {
         doSurprise();
       }
