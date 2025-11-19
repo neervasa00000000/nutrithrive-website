@@ -1904,7 +1904,19 @@
 
       try {
         // Ensure chrono is available - use window.chrono directly
-        if (typeof window.chrono === 'undefined') {
+        // Check multiple ways to ensure parser is available
+        let chronoParser = window.chrono;
+        if (!chronoParser && typeof window.SimpleDateParser !== 'undefined') {
+          // Re-initialize if SimpleDateParser exists but chrono doesn't
+          window.chrono = {
+            parse: function(text, refDate, options) {
+              return window.SimpleDateParser.parse(text, refDate);
+            }
+          };
+          chronoParser = window.chrono;
+        }
+        
+        if (!chronoParser || typeof chronoParser.parse !== 'function') {
           throw new Error('Date parser not initialized. Please reload the page.');
         }
         
@@ -1917,7 +1929,7 @@
           const eventText = eventTexts[i].trim();
           if (!eventText) continue;
           
-          const results = window.chrono.parse(eventText, now, { forwardDate: true });
+            const results = chronoParser.parse(eventText, now, { forwardDate: true });
 
           if (!results || results.length === 0 || !results[0].start) {
             // Try to provide helpful error message
