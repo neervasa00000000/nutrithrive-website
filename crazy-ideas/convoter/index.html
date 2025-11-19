@@ -719,8 +719,9 @@
         }
         if (toExt === 'rtf') {
           // PDF to RTF via text extraction
-          const text = await pdfToText(file);
-          const rtf = `{\\rtf1\\ansi\\deff0 ${text.data ? await text.text() : text}}`;
+          const textBlob = await pdfToText(file);
+          const text = await textBlob.text();
+          const rtf = `{\\rtf1\\ansi\\deff0 {\\fonttbl {\\f0 Times New Roman;}}\\f0\\fs24 ${text.replace(/\n/g, '\\par ').replace(/[{}]/g, '')}}`;
           return new Blob([rtf], { type: 'application/rtf' });
         }
         // DOCX, DOC, ODT require server-side processing
