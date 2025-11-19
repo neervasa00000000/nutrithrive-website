@@ -766,9 +766,23 @@
         if (formats.images.map(f => f.toLowerCase()).includes(toExt)) {
           return await pdfToImage(file, toExt);
         }
-        // DOC, ODT require server-side processing
-        if (['doc', 'odt'].includes(toExt)) {
-          throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. Try converting to DOCX, TXT or HTML first.`);
+        // DOC conversion - try via DOCX first
+        if (toExt === 'doc') {
+          try {
+            // Convert PDF to DOCX first, then try to save as DOC
+            // Note: DOCX files can be opened by older Word versions
+            const docxBlob = await pdfToDocx(file);
+            // DOCX is compatible with Word 2003+ and can be opened as DOC
+            // We'll return DOCX but inform the user
+            showStatus('DOC format is outdated. Generated DOCX file instead (compatible with Word 2003+).', 'info');
+            return docxBlob;
+          } catch (e) {
+            throw new Error('DOC conversion requires server-side processing. DOCX format is recommended (compatible with all Word versions).');
+          }
+        }
+        // ODT require server-side processing
+        if (toExt === 'odt') {
+          throw new Error('ODT conversion requires server-side processing. Try converting to DOCX, TXT or HTML first.');
         }
       }
 
@@ -792,7 +806,11 @@
           return await docxToRtf(file);
         }
         if (toExt === 'doc') {
-          throw new Error('DOCX to DOC conversion requires server-side processing. Try converting to PDF or HTML instead.');
+          // DOCX files can be opened by Word 2003+ as DOC
+          // Return DOCX but inform user
+          showStatus('DOC format is outdated. Generated DOCX file instead (compatible with Word 2003+).', 'info');
+          const textBlob = await docxToText(file);
+          return await textToDocx(textBlob);
         }
         if (toExt === 'odt') {
           throw new Error('DOCX to ODT conversion requires server-side processing. Try converting to PDF or HTML instead.');
@@ -1149,9 +1167,27 @@
         throw new Error(`Reading ${fromExt.toUpperCase()} files requires server-side processing. Please convert your file to DOCX, TXT or HTML first, then convert to your desired format.`);
       }
 
-      // DOC, ODT writing requires server-side processing
-      if (['doc', 'odt'].includes(toExt)) {
-        throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. Try converting to DOCX, TXT or HTML instead.`);
+      // DOC conversion - try via DOCX
+      if (toExt === 'doc') {
+        try {
+          // Try converting to DOCX first
+          if (fromExt === 'txt') {
+            const docxBlob = await textToDocx(file);
+            showStatus('DOC format is outdated. Generated DOCX file instead (compatible with Word 2003+).', 'info');
+            return docxBlob;
+          }
+          if (fromExt === 'html') {
+            const docxBlob = await htmlToDocx(file);
+            showStatus('DOC format is outdated. Generated DOCX file instead (compatible with Word 2003+).', 'info');
+            return docxBlob;
+          }
+        } catch (e) {
+          throw new Error('DOC conversion requires server-side processing. DOCX format is recommended (compatible with all Word versions).');
+        }
+      }
+      // ODT writing requires server-side processing
+      if (toExt === 'odt') {
+        throw new Error('ODT conversion requires server-side processing. Try converting to DOCX, TXT or HTML instead.');
       }
 
       throw new Error(`Conversion from ${fromExt.toUpperCase()} to ${toExt.toUpperCase()} is not supported. Try converting to TXT or HTML as an intermediate format.`);
