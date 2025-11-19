@@ -1574,19 +1574,43 @@
           month: null,
           day: null,
           year: null,
-          time: null
+          time: null,
+          tomorrow: false,
+          next: null
         };
         
-        // Extract day name (sunday, monday, etc.)
+        // Check for "tomorrow"
+        if (textLower.includes('tomorrow')) {
+          components.tomorrow = true;
+        }
+        
+        // Check for "next [day]"
+        const nextDayMatch = textLower.match(/next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i);
+        if (nextDayMatch) {
+          components.next = nextDayMatch[1].toLowerCase();
+        }
+        
+        // Extract day name (sunday, monday, etc.) - but not if it's part of "next [day]"
         const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-        for (const day of dayNames) {
-          if (textLower.includes(day)) {
-            components.dayName = day;
-            break;
+        if (!components.next) {
+          for (const day of dayNames) {
+            // Make sure it's not part of "next [day]"
+            const dayIndex = textLower.indexOf(day);
+            if (dayIndex >= 0) {
+              const beforeDay = textLower.substring(Math.max(0, dayIndex - 5), dayIndex).trim();
+              if (!beforeDay.endsWith('next')) {
+                components.dayName = day;
+                break;
+              }
+            }
           }
+        } else {
+          components.dayName = components.next;
         }
         
         // Extract month (november, nov, etc.)
+        const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const monthAbbr = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
         for (let i = 0; i < months.length; i++) {
           if (textLower.includes(months[i]) || textLower.includes(monthAbbr[i])) {
             components.month = i;
@@ -1594,17 +1618,23 @@
           }
         }
         
-        // Extract time with am/pm
-        const timeWithAmpm = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);
+        // Extract time with am/pm - try multiple patterns
+        let timeWithAmpm = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/i);
+        if (!timeWithAmpm) {
+          // Try without space: "8pm", "11am"
+          timeWithAmpm = text.match(/(\d{1,2})(?::(\d{2}))?(am|pm)\b/i);
+        }
         if (timeWithAmpm) {
           const hour = parseInt(timeWithAmpm[1]);
           const minute = parseInt(timeWithAmpm[2] || '0');
-          components.time = { hour, minute, ampm: timeWithAmpm[3] };
+          if (hour >= 1 && hour <= 12 && minute >= 0 && minute <= 59) {
+            components.time = { hour, minute, ampm: timeWithAmpm[3] };
+          }
         }
         
         // Extract 24-hour time (13:30, 14:00, etc.) if no am/pm time found
         if (!components.time) {
-          const time24 = text.match(/(\d{1,2}):(\d{2})\b/);
+          const time24 = text.match(/\b(\d{1,2}):(\d{2})\b/);
           if (time24) {
             const hour = parseInt(time24[1]);
             const minute = parseInt(time24[2]);
@@ -1615,29 +1645,71 @@
         }
         
         // Extract day number (1-31) - but avoid matching time hours
-        const dayMatches = text.match(/\b(\d{1,2})(?:st|nd|rd|th)?\b/g);
+        // First, remove time patterns from text to avoid confusion
+        let textWithoutTime = text;
+        if (components.time) {
+          textWithoutTime = textWithoutTime.replace(/\d{1,2}(?::\d{2})?\s*(am|pm)\b/gi, '');
+          textWithoutTime = textWithoutTime.replace(/\d{1,2}:\d{2}\b/g, '');
+        }
+        
+        const dayMatches = textWithoutTime.match(/\b(\d{1,2})(?:st|nd|rd|th)?\b/g);
         if (dayMatches) {
+          // Sort by position in text and try to find the day number
           for (const match of dayMatches) {
             const dayNum = parseInt(match.replace(/(st|nd|rd|th)/i, ''));
             // Skip if it's likely a time hour (1-12) and we already have a time
-            if (dayNum >= 1 && dayNum <= 31 && (!components.time || dayNum > 12)) {
-              components.day = dayNum;
-              break;
+            if (dayNum >= 1 && dayNum <= 31) {
+              // If we have a time, skip numbers 1-12 that could be hours
+              if (!components.time || dayNum > 12) {
+                components.day = dayNum;
+                break;
+              } else if (components.time && dayNum <= 12) {
+                // Check if this number appears before the time in the text
+                const dayIndex = text.indexOf(match);
+                const timeIndex = text.toLowerCase().indexOf(components.time.hour.toString());
+                if (dayIndex < timeIndex || timeIndex === -1) {
+                  components.day = dayNum;
+                  break;
+                }
+              }
             }
           }
         }
         
-        // Extract year (4-digit)
+        // Extract year (4-digit or 2-digit)
         const yearMatch = text.match(/\b(20\d{2})\b/);
         if (yearMatch) {
           components.year = parseInt(yearMatch[1]);
+        } else {
+          // Try 2-digit year
+          const year2Match = text.match(/\b(\d{2})\b/);
+          if (year2Match && components.month !== null && components.day) {
+            const year2 = parseInt(year2Match[1]);
+            if (year2 >= 0 && year2 <= 99) {
+              components.year = 2000 + year2;
+            }
+          }
         }
         
         // Combine components intelligently
         let finalDate = null;
         
-        // Priority 1: If we have day name, use it
-        if (components.dayName) {
+        // Priority 1: Tomorrow
+        if (components.tomorrow) {
+          finalDate = new Date(now);
+          finalDate.setDate(finalDate.getDate() + 1);
+        }
+        // Priority 2: Next [day]
+        else if (components.next) {
+          const targetDay = dayNames.indexOf(components.next);
+          finalDate = new Date(now);
+          const currentDay = finalDate.getDay();
+          let daysAhead = targetDay - currentDay;
+          if (daysAhead <= 0) daysAhead += 7;
+          finalDate.setDate(finalDate.getDate() + daysAhead);
+        }
+        // Priority 3: If we have day name, use it
+        else if (components.dayName) {
           const targetDay = dayNames.indexOf(components.dayName);
           finalDate = new Date(now);
           const currentDay = finalDate.getDay();
@@ -1645,21 +1717,24 @@
           if (daysAhead <= 0) daysAhead += 7;
           finalDate.setDate(finalDate.getDate() + daysAhead);
         } 
-        // Priority 2: If we have month and day
+        // Priority 4: If we have month and day
         else if (components.month !== null && components.day) {
           finalDate = new Date(components.year || now.getFullYear(), components.month, components.day);
           if (finalDate < now) {
             finalDate = new Date((components.year || now.getFullYear()) + 1, components.month, components.day);
           }
         }
-        // Priority 3: Default to today
+        // Priority 5: Default to today
         else {
           finalDate = new Date(now);
         }
         
         // Apply time if found
         if (components.time) {
-          return [this.parseTime(finalDate, components.time.hour, components.time.minute, components.time.ampm)];
+          const result = this.parseTime(finalDate, components.time.hour, components.time.minute, components.time.ampm);
+          if (result && result.start) {
+            return [result];
+          }
         } else if (finalDate) {
           // Default to noon if no time specified
           finalDate.setHours(12, 0, 0, 0);
@@ -1830,7 +1905,16 @@
           const results = chrono.parse(eventText, now, { forwardDate: true });
 
           if (!results || results.length === 0 || !results[0].start) {
+            // Try to provide helpful error message
+            console.log('Could not parse:', eventText);
             // Skip events that can't be parsed
+            continue;
+          }
+          
+          // Validate the parsed result
+          const parsedResult = results[0];
+          if (!parsedResult.start || !parsedResult.start.date) {
+            console.log('Invalid parsed result:', parsedResult);
             continue;
           }
 
