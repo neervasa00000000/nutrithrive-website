@@ -1781,6 +1781,13 @@
       }
     };
     
+    // Verify SimpleDateParser was created
+    if (typeof window.SimpleDateParser === 'undefined') {
+      console.error('CRITICAL: SimpleDateParser was not created!');
+    } else {
+      console.log('SimpleDateParser created successfully');
+    }
+    
     // Make it available globally - ensure it's available immediately
     // Initialize chrono right after SimpleDateParser is defined
     (function() {
@@ -1931,19 +1938,30 @@
         // Ensure chrono is available - use window.chrono directly
         // Check multiple ways to ensure parser is available
         let chronoParser = window.chrono;
-        if (!chronoParser && typeof window.SimpleDateParser !== 'undefined') {
-          // Re-initialize if SimpleDateParser exists but chrono doesn't
-          window.chrono = {
-            parse: function(text, refDate, options) {
-              return window.SimpleDateParser.parse(text, refDate);
-            }
-          };
-          chronoParser = window.chrono;
+        
+        // If chrono doesn't exist, try to create it
+        if (!chronoParser || typeof chronoParser.parse !== 'function') {
+          if (typeof window.SimpleDateParser !== 'undefined') {
+            console.log('Creating window.chrono from SimpleDateParser');
+            window.chrono = {
+              parse: function(text, refDate, options) {
+                return window.SimpleDateParser.parse(text, refDate);
+              }
+            };
+            chronoParser = window.chrono;
+          } else {
+            console.error('SimpleDateParser not available');
+            throw new Error('Date parser not initialized. Please reload the page.');
+          }
         }
         
+        // Final check
         if (!chronoParser || typeof chronoParser.parse !== 'function') {
+          console.error('chronoParser is still not valid:', chronoParser);
           throw new Error('Date parser not initialized. Please reload the page.');
         }
+        
+        console.log('Using chronoParser:', chronoParser);
         
         const now = new Date();
         const eventTexts = splitIntoEvents(text);
