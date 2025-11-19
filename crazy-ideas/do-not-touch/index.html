@@ -1093,6 +1093,11 @@
     let challengePhase = false;
     let clickCount = 0;
     const TARGET_CLICKS = 100;
+    let phaseAfterFooled = 0; // 0 = left button, 1 = bottom right button, 2 = flip flop game
+    let flipFlopCards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    const FLIPFLOP_PAIRS = 8;
 
     // Smooth mouse tracking for background effect
     center.addEventListener('mousemove', (e) => {
