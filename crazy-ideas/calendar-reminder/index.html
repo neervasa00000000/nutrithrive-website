@@ -1790,12 +1790,11 @@
     
     // Make it available globally - ensure it's available immediately
     // Initialize chrono right after SimpleDateParser is defined
-    (function() {
-      if (typeof window.SimpleDateParser === 'undefined') {
-        console.error('SimpleDateParser not found when initializing chrono');
-        // Try to initialize anyway - maybe SimpleDateParser will be available later
-      }
-      
+    // Do this synchronously, not in an IIFE, to ensure it executes immediately
+    if (typeof window.SimpleDateParser === 'undefined') {
+      console.error('CRITICAL ERROR: SimpleDateParser not found when initializing chrono!');
+    } else {
+      console.log('Initializing window.chrono...');
       window.chrono = {
         parse: function(text, refDate, options) {
           if (typeof window.SimpleDateParser === 'undefined') {
@@ -1813,11 +1812,13 @@
       
       // Verify it was set
       if (typeof window.chrono === 'undefined') {
-        console.error('Failed to initialize window.chrono');
+        console.error('FAILED: window.chrono was not set!');
+      } else if (typeof window.chrono.parse !== 'function') {
+        console.error('FAILED: window.chrono.parse is not a function!');
       } else {
-        console.log('window.chrono initialized successfully');
+        console.log('SUCCESS: window.chrono initialized successfully');
       }
-    })();
+    }
     
     // Enable button immediately since we don't need external library
     window.addEventListener('load', function() {
