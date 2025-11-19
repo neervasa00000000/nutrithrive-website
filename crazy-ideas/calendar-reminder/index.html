@@ -1973,10 +1973,10 @@
           const eventText = eventTexts[i].trim();
           if (!eventText) continue;
           
-            const results = chronoParser.parse(eventText, now, { forwardDate: true });
-            
-            // Debug: log the results
-            console.log('Parsed results for "' + eventText + '":', results);
+          const results = chronoParser.parse(eventText, now, { forwardDate: true });
+          
+          // Debug: log the results
+          console.log('Parsed results for "' + eventText + '":', results);
 
           if (!results || results.length === 0 || !results[0].start) {
             // Try to provide helpful error message
