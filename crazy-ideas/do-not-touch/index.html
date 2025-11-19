@@ -402,6 +402,55 @@
       text-shadow: 0 0 10px rgba(178, 178, 178, 0.5);
     }
 
+    /* Counter display */
+    #counter-display {
+      margin-top: 20px;
+      font-size: clamp(2em, 5vw, 3em);
+      color: #fff445;
+      font-weight: 900;
+      text-shadow: 0 0 20px rgba(255, 244, 69, 0.8);
+      min-height: 50px;
+      display: none;
+    }
+
+    #counter-display.active {
+      display: block;
+      animation: counterPulse 0.3s ease;
+    }
+
+    @keyframes counterPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    /* Challenge phase styles */
+    .challenge-phase #forbid {
+      background: linear-gradient(135deg, #fff445 0%, #ffeb3b 100%);
+      color: #181818;
+      box-shadow: 0 20px 60px rgba(255, 244, 69, 0.5);
+    }
+
+    .challenge-phase #btn {
+      background: linear-gradient(135deg, #f45c63 0%, #ff6b7a 100%);
+      color: #fff;
+      animation: challengePulse 0.5s infinite;
+    }
+
+    @keyframes challengePulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 6px 48px rgba(244, 92, 99, 0.5);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 60px rgba(244, 92, 99, 0.7);
+      }
+    }
+
     #surprise.glitch-text {
       animation: textGlitch 0.08s infinite;
       color: #ff0000;
@@ -780,6 +829,7 @@
     <div id="forbid">Do NOT press the button below.</div>
     <button id="btn">Don't touch me!</button>
     <div id="surprise"></div>
+    <div id="counter-display"></div>
     <audio id="beep" src="https://cdn.pixabay.com/audio/2022/11/16/audio_12a3f159da.mp3" preload="auto"></audio>
   </div>
   
