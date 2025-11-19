@@ -1444,17 +1444,173 @@
         beep.loop = true;
         beep.play().catch(e => console.log('Audio play failed:', e));
         
-        // Reset after 4 seconds
+        // Start next phase after 4 seconds
         setTimeout(() => {
           beep.loop = false;
           beep.pause();
           document.body.classList.remove('screen-flicker');
           if (staticOverlay) staticOverlay.classList.remove('active');
           if (scanlines) scanlines.classList.remove('active');
-          nextForbid();
+          startLeftButtonPhase();
         }, 4000);
       }
     }
+
+    function showLoadingScreen(duration = 1500) {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.classList.add('active');
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          loadingScreen.classList.remove('active');
+          resolve();
+        }, duration);
+      });
+    }
+
+    function startLeftButtonPhase() {
+      phaseAfterFooled = 0;
+      showLoadingScreen(1500).then(() => {
+        forbid.innerText = "Check on left side, click the button on left side";
+        forbid.setAttribute('data-text', forbid.innerText);
+        forbid.className = "";
+        btn.style.display = "none";
+        const leftButton = document.getElementById('left-button');
+        leftButton.classList.add('active');
+        leftButton.textContent = "Click Me";
+        surprise.textContent = "";
+        surprise.className = "";
+        counterDisplay.textContent = "";
+        counterDisplay.classList.remove('active');
+      });
+    }
+
+    function startBottomRightPhase() {
+      phaseAfterFooled = 1;
+      showLoadingScreen(1500).then(() => {
+        forbid.innerText = "Check the button on bottom right, click it";
+        forbid.setAttribute('data-text', forbid.innerText);
+        const leftButton = document.getElementById('left-button');
+        leftButton.classList.remove('active');
+        const bottomRightButton = document.getElementById('bottom-right-button');
+        bottomRightButton.classList.add('active');
+        bottomRightButton.textContent = "Click Me";
+      });
+    }
+
+    function startFlipFlopGame() {
+      phaseAfterFooled = 2;
+      showLoadingScreen(2000).then(() => {
+        document.getElementById('center').style.display = 'none';
+        const flipFlopGame = document.getElementById('flipflop-game');
+        flipFlopGame.classList.add('active');
+        
+        // Initialize flip flop game
+        initializeFlipFlop();
+      });
+    }
+
+    function initializeFlipFlop() {
+      matchedPairs = 0;
+      flippedCards = [];
+      flipFlopCards = [];
+      
+      // Create pairs of emojis
+      const emojis = ['🎯', '🎲', '🎪', '🎨', '🎭', '🎬', '🎮', '🎰'];
+      const pairs = [...emojis, ...emojis];
+      
+      // Shuffle
+      for (let i = pairs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+      }
+      
+      const grid = document.getElementById('flipflop-grid');
+      grid.innerHTML = '';
+      
+      pairs.forEach((emoji, index) => {
+        const card = document.createElement('div');
+        card.className = 'flipflop-card';
+        card.dataset.index = index;
+        card.dataset.emoji = emoji;
+        card.textContent = '?';
+        card.addEventListener('click', () => handleFlipFlopClick(card));
+        flipFlopCards.push(card);
+        grid.appendChild(card);
+      });
+      
+      const message = document.getElementById('flipflop-message');
+      message.textContent = 'Find all matching pairs! Click the middle heart to exit.';
+    }
+
+    function handleFlipFlopClick(card) {
+      if (card.classList.contains('flipped') || card.classList.contains('matched')) {
+        return;
+      }
+      
+      if (flippedCards.length >= 2) {
+        return;
+      }
+      
+      card.classList.add('flipped');
+      card.textContent = card.dataset.emoji;
+      flippedCards.push(card);
+      
+      if (flippedCards.length === 2) {
+        setTimeout(() => {
+          checkFlipFlopMatch();
+        }, 1000);
+      }
+    }
+
+    function checkFlipFlopMatch() {
+      const [card1, card2] = flippedCards;
+      
+      if (card1.dataset.emoji === card2.dataset.emoji) {
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        matchedPairs++;
+        
+        if (matchedPairs >= FLIPFLOP_PAIRS) {
+          const message = document.getElementById('flipflop-message');
+          message.textContent = 'You won! Click the middle heart to exit.';
+        }
+      } else {
+        card1.classList.remove('flipped');
+        card2.classList.remove('flipped');
+        card1.textContent = '?';
+        card2.textContent = '?';
+      }
+      
+      flippedCards = [];
+    }
+
+    function exitFlipFlopGame() {
+      showLoadingScreen(1500).then(() => {
+        const flipFlopGame = document.getElementById('flipflop-game');
+        flipFlopGame.classList.remove('active');
+        document.getElementById('center').style.display = '';
+        phaseAfterFooled = 0;
+        nextForbid();
+      });
+    }
+
+    // Event listeners for side buttons
+    document.getElementById('left-button').addEventListener('click', () => {
+      if (phaseAfterFooled === 0) {
+        startBottomRightPhase();
+      }
+    });
+
+    document.getElementById('bottom-right-button').addEventListener('click', () => {
+      if (phaseAfterFooled === 1) {
+        startFlipFlopGame();
+      }
+    });
+
+    // Middle heart click to exit
+    document.getElementById('middle-heart').addEventListener('click', () => {
+      exitFlipFlopGame();
+    });
 
     btn.onclick = function() {
       if (challengePhase) {
