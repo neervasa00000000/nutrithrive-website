@@ -1534,9 +1534,17 @@
           recorder.onstop = () => {
             cleanup();
             if (chunks.length === 0) {
-              reject(new Error('No video data recorded. The video may be too short or corrupted.'));
+              reject(new Error('No video data recorded. The video may be too short, corrupted, or the conversion was interrupted.'));
               return;
             }
+            
+            const totalSize = chunks.reduce((sum, chunk) => sum + chunk.size, 0);
+            if (totalSize === 0) {
+              reject(new Error('Recorded video file is empty. The conversion may have failed.'));
+              return;
+            }
+            
+            showStatus('Finalizing conversion...', 'info');
             const blob = new Blob(chunks, { type: mimeType.split(';')[0] });
             resolve(blob);
           };
@@ -1547,48 +1555,87 @@
           };
 
           // Draw video frames to canvas
+          let frameCount = 0;
           const drawFrame = () => {
-            if (video.ended || video.paused) {
+            // Check if video ended or paused
+            if (video.ended) {
               if (recording && recorder.state === 'recording') {
                 recorder.stop();
               }
               return;
             }
-
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             
+            if (video.paused && recording) {
+              // Video paused but we're recording - wait a bit
+              animationFrameId = requestAnimationFrame(drawFrame);
+              return;
+            }
+
+            // Draw current frame
+            try {
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            } catch (e) {
+              cleanup();
+              reject(new Error('Failed to draw video frame: ' + e.message));
+              return;
+            }
+            
+            // Start recording when video starts playing
             if (!recording && video.currentTime > 0 && recorder.state === 'inactive') {
               recording = true;
               try {
                 recorder.start(100); // Collect data every 100ms
+                showStatus(`Recording video... (${Math.floor(video.currentTime)}s / ${Math.floor(video.duration)}s)`, 'info');
               } catch (e) {
                 cleanup();
                 reject(new Error('Failed to start recording: ' + e.message));
                 return;
               }
             }
-
+            
+            // Update progress during recording
+            if (recording && frameCount % 30 === 0) {
+              const progress = Math.floor((video.currentTime / video.duration) * 100);
+              showStatus(`Converting... ${progress}% (${Math.floor(video.currentTime)}s / ${Math.floor(video.duration)}s)`, 'info');
+            }
+            
+            frameCount++;
             animationFrameId = requestAnimationFrame(drawFrame);
           };
 
           // Wait for video to be ready
           let timeout = null;
+          let playbackStarted = false;
           
           video.oncanplaythrough = () => {
+            if (playbackStarted) return; // Prevent multiple calls
+            playbackStarted = true;
+            
+            showStatus('Starting video conversion...', 'info');
+            
             // Start playback
-            video.play().then(() => {
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                drawFrame();
+                
+                // Safety timeout - add extra buffer for long videos
+                const durationMs = (video.duration || 60) * 1000;
+                timeout = setTimeout(() => {
+                  if (recording && recorder.state === 'recording') {
+                    showStatus('Conversion timeout reached. Stopping...', 'info');
+                    recorder.stop();
+                  }
+                }, durationMs + 20000); // 20 second buffer
+              }).catch(err => {
+                cleanup();
+                reject(new Error('Could not play video. Browser may block autoplay. Try clicking on the page first, then convert again.'));
+              });
+            } else {
+              // Fallback for older browsers
               drawFrame();
-              
-              // Safety timeout
-              timeout = setTimeout(() => {
-                if (recording && recorder.state === 'recording') {
-                  recorder.stop();
-                }
-              }, (video.duration || 60) * 1000 + 10000);
-            }).catch(err => {
-              cleanup();
-              reject(new Error('Could not play video. Browser may block autoplay. ' + err.message));
-            });
+            }
           };
 
           // Stop after video ends
