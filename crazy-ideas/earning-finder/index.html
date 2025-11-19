@@ -13,7 +13,7 @@
 <meta charset="utf-8" />
 <title>Meeting Cost Tracker — NutriThrive</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="Track meeting costs in real-time. Simple, fast, and exciting.">
+<meta name="description" content="Track meeting costs in real-time. Simple, fast, and professional.">
 <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
 <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
 
@@ -26,65 +26,153 @@
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #F5EFE6;
     min-height: 100vh;
-    padding: 20px;
+    padding: 24px;
     color: #333;
   }
 
   .container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
     background: white;
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #E8DFCA;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #E8DFCA;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 8px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #6D94C5;
+    font-weight: 700;
   }
 
   .subtitle {
     color: #666;
-    margin-bottom: 32px;
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  .big-display {
+  .main-display {
+    background: linear-gradient(135deg, #CBDCEB, #E8DFCA);
+    border-radius: 16px;
+    padding: 48px 32px;
     text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #667eea15, #764ba215);
-    border-radius: 20px;
     margin-bottom: 32px;
-    border: 2px solid #667eea30;
+    border: 2px solid #6D94C5;
   }
 
   .cost {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 900;
-    color: #667eea;
-    margin-bottom: 8px;
+    color: #6D94C5;
+    margin-bottom: 12px;
     font-variant-numeric: tabular-nums;
+    letter-spacing: -1px;
   }
 
   .time {
-    font-size: 1.5rem;
-    color: #666;
+    font-size: 1.8rem;
+    color: #555;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
   }
 
-  .controls {
+  .controls-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 20px;
     margin-bottom: 32px;
+  }
+
+  .input-group {
+    background: #F5EFE6;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #E8DFCA;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #E8DFCA;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: white;
+    color: #333;
+    transition: all 0.2s;
+  }
+
+  .input-group input:focus {
+    outline: none;
+    border-color: #6D94C5;
+    box-shadow: 0 0 0 4px rgba(109, 148, 197, 0.1);
+  }
+
+  .rate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .rate-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #E8DFCA;
+    transition: all 0.2s;
+  }
+
+  .rate-card:focus-within {
+    border-color: #6D94C5;
+    box-shadow: 0 4px 12px rgba(109, 148, 197, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .rate-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .rate-card input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #6D94C5;
+    padding: 0;
+  }
+
+  .rate-card input:focus {
+    outline: none;
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
   .btn {
@@ -105,168 +193,144 @@
     transform: scale(0.98);
   }
 
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   .btn-start {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: #6D94C5;
     color: white;
   }
 
-  .btn-start:hover {
+  .btn-start:hover:not(:disabled) {
+    background: #5a7fb0;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 16px rgba(109, 148, 197, 0.3);
   }
 
   .btn-stop {
-    background: #ff6b6b;
+    background: #d9534f;
     color: white;
   }
 
-  .btn-stop:hover {
-    background: #ff5252;
+  .btn-stop:hover:not(:disabled) {
+    background: #c9302c;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 6px 16px rgba(217, 83, 79, 0.3);
   }
 
   .btn-save {
-    background: #4ecdc4;
+    background: #5cb85c;
     color: white;
   }
 
-  .btn-save:hover {
-    background: #45b7aa;
+  .btn-save:hover:not(:disabled) {
+    background: #4cae4c;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
+    box-shadow: 0 6px 16px rgba(92, 184, 92, 0.3);
   }
 
   .btn-reset {
-    background: #95a5a6;
+    background: #CBDCEB;
+    color: #6D94C5;
+  }
+
+  .btn-reset:hover:not(:disabled) {
+    background: #b8cfe0;
+    transform: translateY(-2px);
+  }
+
+  .secondary-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn-secondary {
+    flex: 1;
+    background: white;
+    color: #6D94C5;
+    border: 2px solid #6D94C5;
+  }
+
+  .btn-secondary:hover {
+    background: #6D94C5;
     color: white;
   }
 
-  .btn-reset:hover {
-    background: #7f8c8d;
-  }
-
-  .input-group {
-    margin-bottom: 24px;
-  }
-
-  .input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-    font-size: 0.9rem;
-  }
-
-  .input-group input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: all 0.2s;
-  }
-
-  .input-group input:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-  }
-
-  .rate-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .rate-card {
-    padding: 16px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    border: 2px solid #e0e0e0;
-    transition: all 0.2s;
-  }
-
-  .rate-card:focus-within {
-    border-color: #667eea;
-    background: white;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-  }
-
-  .rate-label {
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-
-  .rate-card input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #333;
-    padding: 0;
-  }
-
-  .rate-card input:focus {
-    outline: none;
-  }
-
-  .summary {
-    background: #f8f9fa;
+  .summary-section {
+    background: #F5EFE6;
     border-radius: 16px;
-    padding: 24px;
+    padding: 32px;
     margin-top: 32px;
+    border: 1px solid #E8DFCA;
   }
 
   .summary-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    margin-bottom: 16px;
-    color: #333;
-  }
-
-  .stat-row {
+    margin-bottom: 24px;
+    color: #6D94C5;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #e0e0e0;
+    gap: 8px;
   }
 
-  .stat-row:last-child {
-    border-bottom: none;
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #E8DFCA;
+    text-align: center;
   }
 
   .stat-label {
     color: #666;
-    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 600;
   }
 
   .stat-value {
     font-weight: 700;
-    font-size: 1.1rem;
-    color: #667eea;
+    font-size: 1.5rem;
+    color: #6D94C5;
+  }
+
+  .entries-section {
+    margin-top: 24px;
+  }
+
+  .entries-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 16px;
   }
 
   .entries {
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
-    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .entry {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
+    padding: 16px;
     background: white;
-    border-radius: 8px;
-    margin-bottom: 8px;
+    border-radius: 10px;
+    border: 1px solid #E8DFCA;
   }
 
   .entry-info {
@@ -275,62 +339,38 @@
 
   .entry-cost {
     font-weight: 700;
-    color: #667eea;
-    font-size: 1.1rem;
+    color: #6D94C5;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
   }
 
   .entry-meta {
     font-size: 0.85rem;
     color: #999;
-    margin-top: 4px;
   }
 
   .entry-delete {
-    background: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
+    background: #f8d7da;
+    color: #d9534f;
+    border: 1px solid #f5c6cb;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: 600;
+    transition: all 0.2s;
   }
 
   .entry-delete:hover {
-    background: #ff5252;
-  }
-
-  .actions-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 24px;
-  }
-
-  .actions-row .btn {
-    flex: 1;
-  }
-
-  .btn-export {
-    background: #f39c12;
-    color: white;
-  }
-
-  .btn-export:hover {
-    background: #e67e22;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
-  }
-
-  .btn-settings {
-    background: #34495e;
-    color: white;
-    padding: 12px;
+    background: #f5c6cb;
+    border-color: #f1b0b7;
   }
 
   .empty-state {
     text-align: center;
-    padding: 32px;
+    padding: 40px;
     color: #999;
+    font-style: italic;
   }
 
   .running {
@@ -339,7 +379,7 @@
 
   @keyframes pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+    50% { transform: scale(1.01); }
   }
 
   .modal {
@@ -349,7 +389,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.4);
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -362,26 +402,51 @@
   .modal-content {
     background: white;
     border-radius: 20px;
-    padding: 32px;
-    max-width: 400px;
+    padding: 40px;
+    max-width: 500px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
+    border: 2px solid #E8DFCA;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   }
 
   .modal-title {
-    font-size: 1.5rem;
-    margin-bottom: 24px;
+    font-size: 1.8rem;
+    margin-bottom: 32px;
     font-weight: 700;
+    color: #6D94C5;
   }
 
   .modal-actions {
     display: flex;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: 32px;
   }
 
-  @media (max-width: 640px) {
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #F5EFE6;
+    border-radius: 10px;
+    border: 1px solid #E8DFCA;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .checkbox-group label {
+    cursor: pointer;
+    font-weight: 600;
+    color: #555;
+  }
+
+  @media (max-width: 768px) {
     .container {
       padding: 24px;
     }
@@ -390,12 +455,24 @@
       font-size: 3rem;
     }
 
-    .controls {
+    .controls-section {
       grid-template-columns: 1fr;
     }
 
     .rate-grid {
       grid-template-columns: 1fr;
+    }
+
+    .button-group {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .secondary-actions {
+      flex-direction: column;
     }
   }
 </style>
@@ -403,66 +480,80 @@
 
 <body>
   <div class="container">
-    <h1>💰 Meeting Cost Tracker</h1>
-    <p class="subtitle">Track costs in real-time. Simple & fast.</p>
+    <div class="header">
+      <h1>💰 Meeting Cost Tracker</h1>
+      <p class="subtitle">Track meeting costs in real-time with professional precision</p>
+    </div>
 
-    <div class="big-display" id="display">
+    <div class="main-display" id="display">
       <div class="cost" id="costDisplay">$0.00</div>
       <div class="time" id="timeDisplay">00:00:00</div>
     </div>
 
-    <div class="input-group">
-      <label for="attendees">👥 Attendees</label>
-      <input type="number" id="attendees" min="1" value="5" />
+    <div class="controls-section">
+      <div class="input-group">
+        <label for="attendees">👥 Number of Attendees</label>
+        <input type="number" id="attendees" min="1" value="5" />
+      </div>
+      <div class="input-group">
+        <label for="hourly">💰 Hourly Rate ($/hour)</label>
+        <input type="number" id="hourly" step="0.01" min="0" value="50" />
+      </div>
     </div>
 
     <div class="rate-grid">
       <div class="rate-card">
-        <div class="rate-label">Hourly Rate</div>
-        <input type="number" id="hourly" step="0.01" min="0" value="50" />
+        <div class="rate-label">Hourly</div>
+        <input type="number" id="hourlyCard" step="0.01" min="0" value="50" />
       </div>
       <div class="rate-card">
-        <div class="rate-label">Daily Rate</div>
+        <div class="rate-label">Daily</div>
         <input type="number" id="daily" step="0.01" min="0" value="400" />
       </div>
       <div class="rate-card">
-        <div class="rate-label">Weekly Rate</div>
+        <div class="rate-label">Weekly</div>
         <input type="number" id="weekly" step="0.01" min="0" value="2000" />
       </div>
       <div class="rate-card">
-        <div class="rate-label">Monthly Rate</div>
+        <div class="rate-label">Monthly</div>
         <input type="number" id="monthly" step="0.01" min="0" value="8666.67" />
       </div>
     </div>
 
-    <div class="controls">
-      <button class="btn btn-start" id="startBtn">▶️ Start</button>
-      <button class="btn btn-stop" id="stopBtn">⏸️ Stop</button>
-      <button class="btn btn-save" id="saveBtn">💾 Save</button>
+    <div class="button-group">
+      <button class="btn btn-start" id="startBtn">▶️ Start Meeting</button>
+      <button class="btn btn-stop" id="stopBtn" disabled>⏸️ Stop</button>
+      <button class="btn btn-save" id="saveBtn">💾 Save Meeting</button>
       <button class="btn btn-reset" id="resetBtn">🔄 Reset</button>
     </div>
 
-    <div class="actions-row">
-      <button class="btn btn-export" id="exportBtn">📤 Export CSV</button>
-      <button class="btn btn-settings" id="settingsBtn">⚙️</button>
+    <div class="secondary-actions">
+      <button class="btn btn-secondary" id="exportBtn">📤 Export CSV</button>
+      <button class="btn btn-secondary" id="settingsBtn">⚙️ Settings</button>
     </div>
 
-    <div class="summary">
-      <div class="summary-title">📊 Today's Summary</div>
-      <div class="stat-row">
-        <span class="stat-label">Total Cost</span>
-        <span class="stat-value" id="dailyCost">$0.00</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-label">Meetings Saved</span>
-        <span class="stat-value" id="meetCount">0</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-label">This Month</span>
-        <span class="stat-value" id="monthCost">$0.00</span>
+    <div class="summary-section">
+      <div class="summary-title">📊 Summary</div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Today's Total</div>
+          <div class="stat-value" id="dailyCost">$0.00</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Meetings Saved</div>
+          <div class="stat-value" id="meetCount">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">This Month</div>
+          <div class="stat-value" id="monthCost">$0.00</div>
+        </div>
       </div>
 
-      <div id="entriesList" class="entries"></div>
+      <div class="entries-section">
+        <div class="entries-title">Recent Meetings</div>
+        <div id="entriesList" class="entries"></div>
+      </div>
     </div>
   </div>
 
@@ -486,16 +577,14 @@
         <input type="number" id="cfgWeeksPerMonth" step="0.01" min="0" value="4.33333" />
       </div>
 
-      <div class="input-group">
-        <label style="display: flex; align-items: center; gap: 8px;">
-          <input type="checkbox" id="cfgAutoSave" />
-          Auto-save when stopping
-        </label>
+      <div class="checkbox-group">
+        <input type="checkbox" id="cfgAutoSave" />
+        <label for="cfgAutoSave">Auto-save meetings when stopping</label>
       </div>
 
       <div class="modal-actions">
         <button class="btn btn-reset" id="modalCancel" style="flex: 1;">Cancel</button>
-        <button class="btn btn-start" id="modalSave" style="flex: 1;">Save</button>
+        <button class="btn btn-start" id="modalSave" style="flex: 1;">Save Settings</button>
       </div>
     </div>
   </div>
@@ -505,6 +594,7 @@ const KEY_PREFIX = 'nutri_meet_tracker_';
 const CFG_KEY = 'nutri_meet_cfg_v1';
 
 const hourlyInput = document.getElementById('hourly');
+const hourlyCardInput = document.getElementById('hourlyCard');
 const dailyInput = document.getElementById('daily');
 const weeklyInput = document.getElementById('weekly');
 const monthlyInput = document.getElementById('monthly');
@@ -586,6 +676,26 @@ let _ignore = false;
 
 function toFixed2(v){ return Number(v || 0).toFixed(2); }
 
+function syncHourlyInputs(){
+  const val = hourlyInput.value;
+  hourlyCardInput.value = val;
+}
+
+function syncHourlyCardInputs(){
+  const val = hourlyCardInput.value;
+  hourlyInput.value = val;
+}
+
+hourlyInput.addEventListener('input', () => {
+  syncHourlyInputs();
+  updateFromHourly();
+});
+
+hourlyCardInput.addEventListener('input', () => {
+  syncHourlyCardInputs();
+  updateFromHourly();
+});
+
 function updateFromHourly(){
   if (_ignore) return;
   _ignore = true;
@@ -602,6 +712,7 @@ function updateFromDaily(){
   const d = parseFloat(dailyInput.value) || 0;
   const hr = d / cfg.hoursPerDay;
   hourlyInput.value = toFixed2(hr);
+  hourlyCardInput.value = toFixed2(hr);
   weeklyInput.value = toFixed2(d * cfg.daysPerWeek);
   monthlyInput.value = toFixed2((d * cfg.daysPerWeek) * cfg.weeksPerMonth);
   _ignore = false;
@@ -615,6 +726,7 @@ function updateFromWeekly(){
   const hr = daily / cfg.hoursPerDay;
   dailyInput.value = toFixed2(daily);
   hourlyInput.value = toFixed2(hr);
+  hourlyCardInput.value = toFixed2(hr);
   monthlyInput.value = toFixed2(w * cfg.weeksPerMonth);
   _ignore = false;
 }
@@ -629,10 +741,10 @@ function updateFromMonthly(){
   weeklyInput.value = toFixed2(weekly);
   dailyInput.value = toFixed2(daily);
   hourlyInput.value = toFixed2(hr);
+  hourlyCardInput.value = toFixed2(hr);
   _ignore = false;
 }
 
-hourlyInput.addEventListener('input', updateFromHourly);
 dailyInput.addEventListener('input', updateFromDaily);
 weeklyInput.addEventListener('input', updateFromWeekly);
 monthlyInput.addEventListener('input', updateFromMonthly);
@@ -646,7 +758,7 @@ function initConversions(){
   else if (!isNaN(d) && d > 0) { updateFromDaily(); }
   else if (!isNaN(w) && w > 0) { updateFromWeekly(); }
   else if (!isNaN(m) && m > 0) { updateFromMonthly(); }
-  else { hourlyInput.value = '50.00'; updateFromHourly(); }
+  else { hourlyInput.value = '50.00'; hourlyCardInput.value = '50.00'; updateFromHourly(); }
 }
 
 function startMeeting(){
@@ -727,7 +839,7 @@ function renderDay(){
   const items = (data.meetings || []).slice().sort((a,b) => b.ts - a.ts);
   entriesList.innerHTML = '';
   if (items.length === 0){
-    entriesList.innerHTML = '<div class="empty-state">No meetings saved yet</div>';
+    entriesList.innerHTML = '<div class="empty-state">No meetings saved yet. Start tracking to see your meeting history here.</div>';
     return;
   }
   items.forEach(it => {
@@ -736,7 +848,7 @@ function renderDay(){
     el.innerHTML = `
       <div class="entry-info">
         <div class="entry-cost">$${(it.cost||0).toFixed(2)}</div>
-        <div class="entry-meta">${formatTime(it.durationSec)} • ${it.attendees}p @ $${it.hourlyRate}/hr</div>
+        <div class="entry-meta">${formatTime(it.durationSec)} • ${it.attendees} attendee${it.attendees > 1 ? 's' : ''} @ $${it.hourlyRate}/hr</div>
       </div>
       <button class="entry-delete" onclick="deleteEntry(${it.ts})">Delete</button>
     `;
