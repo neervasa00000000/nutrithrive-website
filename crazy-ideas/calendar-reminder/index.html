@@ -1782,14 +1782,22 @@
     };
     
     // Make it available globally - ensure it's available immediately
-    window.chrono = {
-      parse: function(text, refDate, options) {
-        return window.SimpleDateParser.parse(text, refDate);
+    // Initialize chrono right after SimpleDateParser is defined
+    (function() {
+      window.chrono = {
+        parse: function(text, refDate, options) {
+          if (typeof window.SimpleDateParser === 'undefined') {
+            throw new Error('SimpleDateParser not initialized');
+          }
+          return window.SimpleDateParser.parse(text, refDate);
+        }
+      };
+      
+      // Also make it available as a global variable
+      if (typeof chrono === 'undefined') {
+        window.chrono = window.chrono;
       }
-    };
-    
-    // Also make it available as a global variable
-    var chrono = window.chrono;
+    })();
     
     // Enable button immediately since we don't need external library
     window.addEventListener('load', function() {
@@ -1800,13 +1808,12 @@
       }
       
       // Ensure chrono is available
-      if (typeof window.chrono === 'undefined') {
+      if (typeof window.chrono === 'undefined' && typeof window.SimpleDateParser !== 'undefined') {
         window.chrono = {
           parse: function(text, refDate, options) {
             return window.SimpleDateParser.parse(text, refDate);
           }
         };
-        chrono = window.chrono;
       }
     });
   </script>
@@ -1908,8 +1915,7 @@
 
       try {
         // Ensure chrono is available - use window.chrono directly
-        const chronoParser = window.chrono || chrono;
-        if (typeof chronoParser === 'undefined') {
+        if (typeof window.chrono === 'undefined') {
           throw new Error('Date parser not initialized. Please reload the page.');
         }
         
@@ -1922,7 +1928,7 @@
           const eventText = eventTexts[i].trim();
           if (!eventText) continue;
           
-          const results = chronoParser.parse(eventText, now, { forwardDate: true });
+          const results = window.chrono.parse(eventText, now, { forwardDate: true });
 
           if (!results || results.length === 0 || !results[0].start) {
             // Try to provide helpful error message
