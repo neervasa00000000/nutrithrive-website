@@ -1780,12 +1780,17 @@
       }
     };
     
-    // Make it available globally
+    // Make it available globally - ensure it's available immediately
     window.chrono = {
       parse: function(text, refDate, options) {
         return SimpleDateParser.parse(text, refDate);
       }
     };
+    
+    // Also make it available as a global variable (not just window property)
+    if (typeof chrono === 'undefined') {
+      var chrono = window.chrono;
+    }
     
     // Enable button immediately since we don't need external library
     window.addEventListener('load', function() {
@@ -1793,6 +1798,15 @@
       if (btn) {
         btn.disabled = false;
         btn.innerHTML = 'Generate Calendar Event';
+      }
+      
+      // Ensure chrono is available
+      if (typeof window.chrono === 'undefined') {
+        window.chrono = {
+          parse: function(text, refDate, options) {
+            return SimpleDateParser.parse(text, refDate);
+          }
+        };
       }
     });
   </script>
@@ -1893,6 +1907,14 @@
       // Parser is always available (built-in)
 
       try {
+        // Ensure chrono is available
+        if (typeof chrono === 'undefined' && typeof window.chrono !== 'undefined') {
+          var chrono = window.chrono;
+        }
+        if (typeof chrono === 'undefined') {
+          throw new Error('Date parser not initialized. Please reload the page.');
+        }
+        
         const now = new Date();
         const eventTexts = splitIntoEvents(text);
         const allEvents = [];
