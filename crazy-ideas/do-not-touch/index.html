@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DO NOT TOUCH (GLITCH MODE + Arrow Dodge)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #181818;
+      color: white;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    #center {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #forbid {
+      font-size: clamp(1.8em, 4vw, 2.2em);
+      border-radius: 28px;
+      background: linear-gradient(135deg, #f45c63 0%, #ff6b7a 100%);
+      color: #fff;
+      padding: 26px 50px;
+      margin-bottom: 54px;
+      box-shadow: 0 20px 60px rgba(244, 92, 99, 0.5),
+                  0 0 40px rgba(244, 92, 99, 0.3);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  filter 0.4s ease,
+                  box-shadow 0.4s ease;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    #forbid:hover {
+      transform: scale(1.05);
+      box-shadow: 0 25px 80px rgba(244, 92, 99, 0.6),
+                  0 0 60px rgba(244, 92, 99, 0.4);
+    }
+
+    .glitchit {
+      animation: glitch 0.4s steps(2) infinite;
+    }
+
+    @keyframes glitch {
+      0% {
+        filter: hue-rotate(0deg) invert(0);
+        transform: scale(1);
+      }
+      10% {
+        filter: hue-rotate(90deg) brightness(2);
+        transform: scale(1.05) rotate(-2deg);
+      }
+      20% {
+        filter: hue-rotate(180deg) contrast(1.8);
+        transform: scale(1.08) rotate(2deg);
+      }
+      30% {
+        filter: hue-rotate(270deg) saturate(2);
+        transform: scale(1.1) rotate(-3deg);
+      }
+      40% {
+        filter: hue-rotate(340deg) invert(0.8) blur(0.5px);
+        transform: scale(1.12) rotate(3deg);
+      }
+      50% {
+        filter: hue-rotate(340deg) invert(1) blur(1.6px);
+        transform: scale(1.17) rotate(7deg);
+      }
+      60% {
+        filter: hue-rotate(200deg) brightness(1.5);
+        transform: scale(1.1) rotate(-5deg);
+      }
+      70% {
+        filter: hue-rotate(100deg) contrast(2);
+        transform: scale(1.08) rotate(4deg);
+      }
+      80% {
+        filter: hue-rotate(50deg) saturate(1.5);
+        transform: scale(1.05) rotate(-2deg);
+      }
+      100% {
+        filter: hue-rotate(0deg) invert(0);
+        transform: scale(1);
+      }
+    }
+
+    #btn {
+      font-size: clamp(1.2em, 3vw, 1.6em);
+      padding: 1.4em 2.7em;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fff445 0%, #ffeb3b 100%);
+      color: #181818;
+      border: none;
+      cursor: pointer;
+      transition: background 0.7s ease,
+                  transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  top 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.4s ease;
+      box-shadow: 0 6px 48px rgba(251, 189, 16, 0.5),
+                  0 0 20px rgba(255, 244, 69, 0.3);
+      margin-bottom: 1.5em;
+      position: relative;
+      z-index: 2;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    #btn:hover:not(.borked) {
+      transform: scale(1.1);
+      box-shadow: 0 8px 60px rgba(251, 189, 16, 0.6),
+                  0 0 30px rgba(255, 244, 69, 0.4);
+    }
+
+    #btn:active:not(.borked) {
+      transform: scale(0.95);
+    }
+
+    .borked {
+      animation: borked 0.25s infinite alternate;
+    }
+
+    @keyframes borked {
+      0% {
+        filter: hue-rotate(0deg);
+        transform: scale(1);
+      }
+      50% {
+        filter: hue-rotate(180deg) blur(0.8px) invert(0.5);
+        transform: scale(1.1) rotate(5deg);
+      }
+      100% {
+        filter: hue-rotate(270deg) blur(1.7px) invert(1);
+        transform: scale(1.15) rotate(-5deg);
+      }
+    }
+
+    .reverse {
+      transform: rotate(180deg) scale(-1, 1);
+      animation: reverseGlitch 0.3s infinite;
+    }
+
+    @keyframes reverseGlitch {
+      0%, 100% {
+        filter: hue-rotate(0deg);
+      }
+      50% {
+        filter: hue-rotate(180deg) invert(0.5);
+      }
+    }
+
+    .shake {
+      animation: shake 0.16s infinite steps(1);
+    }
+
+    @keyframes shake {
+      0% {
+        left: 0px;
+        top: 0px;
+        transform: translate(0, 0);
+      }
+      10% {
+        transform: translate(3px, -4px);
+      }
+      20% {
+        transform: translate(-2px, 3px);
+      }
+      30% {
+        transform: translate(4px, -3px);
+      }
+      35% {
+        transform: translate(7px, -6px);
+      }
+      40% {
+        transform: translate(-3px, 4px);
+      }
+      51% {
+        transform: translate(-5px, 4px);
+      }
+      60% {
+        transform: translate(2px, -2px);
+      }
+      70% {
+        transform: translate(-4px, 3px);
+      }
+      80% {
+        transform: translate(5px, -5px);
+      }
+      90% {
+        transform: translate(-2px, 2px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    #surprise {
+      margin-top: 32px;
+      font-size: clamp(1.1em, 2.5vw, 1.29em);
+      color: #b2b2b2;
+      text-align: center;
+      min-height: 30px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(178, 178, 178, 0.5);
+    }
+
+    #surprise.glitch-text {
+      animation: textGlitch 0.2s infinite;
+      color: #f45c63;
+      text-shadow: 0 0 20px rgba(244, 92, 99, 0.8);
+    }
+
+    @keyframes textGlitch {
+      0%, 100% {
+        transform: translate(0);
+        filter: hue-rotate(0deg);
+      }
+      25% {
+        transform: translate(-2px, 2px);
+        filter: hue-rotate(90deg);
+      }
+      50% {
+        transform: translate(2px, -2px);
+        filter: hue-rotate(180deg) invert(0.3);
+      }
+      75% {
+        transform: translate(-2px, -2px);
+        filter: hue-rotate(270deg);
+      }
+    }
+
+    /* Smooth background transitions */
+    #center::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                                  rgba(244, 92, 99, 0.1) 0%, 
+                                  transparent 50%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #center:hover::before {
+      opacity: 1;
+    }
+
+    /* Particle effect */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff445;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particleFloat 2s ease-out forwards;
+      z-index: 0;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx, 0), var(--ty, -100px)) scale(0);
+      }
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      #forbid {
+        padding: 20px 30px;
+        margin-bottom: 40px;
+        font-size: 1.5em;
+      }
+
+      #btn {
+        padding: 1.2em 2em;
+        font-size: 1.2em;
+      }
+
+      #surprise {
+        font-size: 1em;
+        padding: 0 20px;
+      }
+    }
+
+    /* Smooth cursor trail effect */
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 244, 69, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: trailFade 0.5s ease-out forwards;
+    }
+
+    @keyframes trailFade {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="center">
+    <div id="forbid">Do NOT press the button below.</div>
+    <button id="btn">Don't touch me!</button>
+    <div id="surprise"></div>
+    <audio id="beep" src="https://cdn.pixabay.com/audio/2022/11/16/audio_12a3f159da.mp3" preload="auto"></audio>
+  </div>
+
+  <script>
+    const forbids = [
+      { text: "Do NOT press the button below.", action: "button" },
+      { text: "NEVER click the background.", action: "bg" },
+      { text: "Don't move your mouse here.", action: "area" },
+      { text: "Don't double click the DANGER text.", action: "text" },
+      { text: "Don't tap the arrow.", action: "arrow" },
+      { text: "Don't touch the GLITCH face.", action: "smile" }
+    ];
+
+    const surprises = [
+      "!!! SYSTEM BORKED !!!",
+      "You unleashed the GL1TCH.",
+      "ERROR #e991: Oops.",
+      "The background is alive.",
+      "Reality is warping...",
+      "RUN.",
+      "DON'T LOOK AWAY...",
+      "It can't be undone.",
+      "INTRUDER DETECTED!",
+      "The simulation collapsed.",
+      "CHAOS MODE ACTIVATED",
+      "BREAKING REALITY...",
+      "GLITCH IN THE MATRIX",
+      "SYSTEM OVERRIDE",
+      "WARNING: ANOMALY DETECTED"
+    ];
+
+    let idx = 0;
+    const center = document.getElementById("center");
+    const forbid = document.getElementById("forbid");
+    const btn = document.getElementById("btn");
+    const surprise = document.getElementById("surprise");
+    let dodgeActive = false;
+    let particles = [];
+
+    // Smooth mouse tracking for background effect
+    center.addEventListener('mousemove', (e) => {
+      const rect = center.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      center.style.setProperty('--mouse-x', x + '%');
+      center.style.setProperty('--mouse-y', y + '%');
+    });
+
+    // Cursor trail effect
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() > 0.7) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = e.clientX - 4 + 'px';
+        trail.style.top = e.clientY - 4 + 'px';
+        document.body.appendChild(trail);
+        setTimeout(() => trail.remove(), 500);
+      }
+    });
+
+    function createParticles(x, y) {
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        const angle = (Math.PI * 2 * i) / 15;
+        const distance = 50 + Math.random() * 50;
+        particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+        particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+        center.appendChild(particle);
+        setTimeout(() => particle.remove(), 2000);
+      }
+    }
+
+    function nextForbid() {
+      idx = (idx + 1) % forbids.length;
+      forbid.innerText = forbids[idx].text;
+      btn.innerText = "Don't touch me!";
+      btn.style.background = "linear-gradient(135deg, #fff445 0%, #ffeb3b 100%)";
+      btn.className = '';
+      btn.style.left = "0px";
+      btn.style.top = "0px";
+      btn.style.position = "relative";
+      btn.style.transform = "";
+      btn.style.filter = "";
+      dodgeActive = false;
+      center.style.background = "#181818";
+      center.style.filter = "";
+      surprise.textContent = "";
+      surprise.className = "";
+      document.body.className = "";
+      forbid.className = "";
+      center.className = "";
+      document.body.style.transform = "";
+      document.body.style.transition = "";
+      document.body.style.background = "#181818";
+
+      if (forbids[idx].action == "smile") {
+        btn.innerText = "👻";
+        btn.style.background = "linear-gradient(135deg, #baf7ff 0%, #87ceeb 100%)";
+      }
+
+      if (forbids[idx].action == "text") {
+        forbid.innerText = "DANGER: Don't double click!";
+      }
+
+      if (forbids[idx].action == "arrow") {
+        btn.innerHTML = "⮞";
+        btn.style.background = "linear-gradient(135deg, #f9e7bb 0%, #f5d5a3 100%)";
+        dodgeActive = true;
+        btn.style.position = 'absolute';
+        btn.style.left = "50%";
+        btn.style.top = "60%";
+        btn.style.transform = "translate(-50%, -50%)";
+      }
+    }
+
+    function doSurprise() {
+      const rect = btn.getBoundingClientRect();
+      createParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+      let s = surprises[Math.floor(Math.random() * surprises.length)];
+      surprise.textContent = s;
+      surprise.className = "glitch-text";
+
+      let bork_fx = Math.floor(Math.random() * 8);
+
+      switch (bork_fx) {
+        case 0:
+          center.className = "shake";
+          forbid.className = "glitchit";
+          btn.className = "borked";
+          break;
+
+        case 1:
+          btn.className = "glitchit";
+          forbid.className = "borked";
+          center.style.background = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+          center.style.transition = "background 0.3s ease";
+          break;
+
+        case 2:
+          document.body.className = "reverse";
+          btn.style.transform = "rotate(45deg) scale(1.7)";
+          btn.style.transition = "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+          break;
+
+        case 3:
+          forbid.className = "glitchit";
+          btn.innerText = "MAKE IT STOP!";
+          btn.style.background = "linear-gradient(135deg, #f36 0%, #f45c63 100%)";
+          btn.className = "borked";
+          break;
+
+        case 4:
+          forbid.innerText = "█DΦ NΦT OβEY█";
+          btn.innerText = "👀";
+          btn.className = "borked";
+          center.style.filter = "blur(4.5px) invert(1)";
+          center.style.transition = "filter 0.5s ease";
+          break;
+
+        case 5:
+          center.className = "shake";
+          btn.innerText = "🦴🐍?!";
+          forbid.innerText = "Don't trust your senses!";
+          forbid.className = "glitchit";
+          break;
+
+        case 6:
+          document.body.style.background = "#111";
+          document.body.style.transition = "background 0.3s ease";
+          btn.style.transform = "scale(2) rotate(180deg)";
+          btn.style.transition = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
+          forbid.className = "glitchit";
+          break;
+
+        case 7:
+          center.style.filter = "hue-rotate(180deg) saturate(2)";
+          center.style.transition = "filter 0.4s ease";
+          btn.className = "glitchit";
+          forbid.className = "borked";
+          document.body.className = "reverse";
+          break;
+      }
+
+      // Play sound with smooth volume fade
+      const beep = document.getElementById('beep');
+      beep.volume = 0.39;
+      beep.currentTime = 0;
+      beep.play().catch(e => console.log('Audio play failed:', e));
+
+      // Occasionally add extra effects
+      if (Math.random() < 0.2) {
+        setTimeout(() => {
+          document.body.style.background = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+          document.body.style.transition = "background 0.3s ease";
+        }, 300);
+      }
+
+      setTimeout(() => {
+        surprise.className = "";
+        setTimeout(nextForbid, 1400);
+      }, 300);
+    }
+
+    btn.onclick = function() {
+      if (forbids[idx].action == "button" || forbids[idx].action == "smile") {
+        doSurprise();
+      }
+    };
+
+    center.onclick = function(e) {
+      if (forbids[idx].action == "bg" && e.target != btn && e.target != forbid) {
+        doSurprise();
+      }
+    };
+
+    forbid.ondblclick = function() {
+      if (forbids[idx].action == "text") {
+        doSurprise();
+      }
+    };
+
+    center.onmousemove = function(e) {
+      if (forbids[idx].action == "area" && e.target != btn && e.target != forbid) {
+        doSurprise();
+      }
+    };
+
+    // Enhanced dodge logic for arrow with smooth transitions
+    btn.onmouseenter = function(e) {
+      if (dodgeActive) {
+        const parentRect = center.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        const maxX = parentRect.width - btnRect.width;
+        const maxY = parentRect.height - btnRect.height - 100;
+        const minY = 100;
+
+        let randX = Math.random() * maxX;
+        let randY = minY + Math.random() * (maxY - minY);
+
+        // Ensure button stays within bounds
+        randX = Math.max(0, Math.min(randX, maxX));
+        randY = Math.max(minY, Math.min(randY, maxY));
+
+        btn.style.left = Math.floor(randX) + "px";
+        btn.style.top = Math.floor(randY) + "px";
+        btn.style.transform = "translate(0, 0)";
+      }
+    };
+
+    // Touch dodge with haptic feedback
+    btn.ontouchstart = function(e) {
+      if (dodgeActive) {
+        const parentRect = center.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        const maxX = parentRect.width - btnRect.width;
+        const maxY = parentRect.height - btnRect.height - 100;
+        const minY = 100;
+
+        let randX = Math.random() * maxX;
+        let randY = minY + Math.random() * (maxY - minY);
+
+        randX = Math.max(0, Math.min(randX, maxX));
+        randY = Math.max(minY, Math.min(randY, maxY));
+
+        btn.style.left = Math.floor(randX) + "px";
+        btn.style.top = Math.floor(randY) + "px";
+        btn.style.transform = "translate(0, 0)";
+
+        // Haptic feedback if available
+        if (navigator.vibrate) {
+          navigator.vibrate(50);
+        }
+
+        e.preventDefault();
+      }
+    };
+
+    // Initialize
+    nextForbid();
+
+    // Prevent context menu on long press
+    document.addEventListener('contextmenu', (e) => {
+      if (dodgeActive && e.target === btn) {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
+
