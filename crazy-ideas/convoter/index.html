@@ -396,7 +396,7 @@
     <div class="header">
       <h1>Universal File Converter</h1>
       <p>Convert files between formats instantly. Images, Documents, Audio, Video, and Archives—all in your browser.</p>
-    </div>
+        </div>
 
     <div class="converter-card">
       <div class="section-title">Upload File</div>
@@ -437,7 +437,7 @@
       <div class="download-section" id="downloadSection">
         <div>Conversion Complete</div>
         <button class="download-btn" id="downloadBtn">Download Converted File</button>
-      </div>
+        </div>
       </div>
 
     <div class="converter-card">
@@ -709,19 +709,23 @@
         return await convertImage(file, toExt);
       }
 
-      // Document conversions
-      if (formats.documents.map(f => f.toLowerCase()).includes(fromExt) && 
-          formats.documents.map(f => f.toLowerCase()).includes(toExt)) {
-        return await convertDocument(file, fromExt, toExt);
-      }
-
-      // PDF to other formats
+      // PDF conversions (check before general document conversions)
       if (fromExt === 'pdf') {
         if (toExt === 'txt') {
           return await pdfToText(file);
         }
         if (toExt === 'html') {
           return await pdfToHtml(file);
+        }
+        if (toExt === 'rtf') {
+          // PDF to RTF via text extraction
+          const text = await pdfToText(file);
+          const rtf = `{\\rtf1\\ansi\\deff0 ${text.data ? await text.text() : text}}`;
+          return new Blob([rtf], { type: 'application/rtf' });
+        }
+        // DOCX, DOC, ODT require server-side processing
+        if (['docx', 'doc', 'odt'].includes(toExt)) {
+          throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. Try converting to TXT or HTML first.`);
         }
       }
 
@@ -730,9 +734,24 @@
         return await textToPdf(file);
       }
 
-      // HTML to PDF
-      if (fromExt === 'html' && toExt === 'pdf') {
-        return await htmlToPdf(file);
+      // HTML conversions
+      if (fromExt === 'html') {
+        if (toExt === 'pdf') {
+          return await htmlToPdf(file);
+        }
+        if (toExt === 'txt') {
+          const html = await file.text();
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = html;
+          const text = tempDiv.innerText || tempDiv.textContent || '';
+          return new Blob([text], { type: 'text/plain' });
+        }
+      }
+
+      // Document conversions (non-PDF)
+      if (formats.documents.map(f => f.toLowerCase()).includes(fromExt) && 
+          formats.documents.map(f => f.toLowerCase()).includes(toExt)) {
+        return await convertDocument(file, fromExt, toExt);
       }
 
       // Archive conversions
@@ -851,34 +870,48 @@
 
     // Document conversion (simplified - mainly text extraction)
     async function convertDocument(file, fromExt, toExt) {
+      // TXT conversions
       if (toExt === 'txt') {
-        if (fromExt === 'pdf') {
-          return await pdfToText(file);
+        // For text-based formats, try to read as text
+        try {
+          const text = await file.text();
+          return new Blob([text], { type: 'text/plain' });
+        } catch (e) {
+          throw new Error('Could not extract text from this file format.');
         }
-        // For other formats, try to read as text
-        const text = await file.text();
-        return new Blob([text], { type: 'text/plain' });
       }
       
-      if (fromExt === 'txt' && toExt === 'pdf') {
-        return await textToPdf(file);
+      // TXT to other formats
+      if (fromExt === 'txt') {
+        if (toExt === 'pdf') {
+          return await textToPdf(file);
+        }
+        if (toExt === 'html') {
+          const text = await file.text();
+          const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Text</title><style>body{font-family:sans-serif;line-height:1.6;max-width:800px;margin:40px auto;padding:20px;}</style></head><body><pre style="white-space:pre-wrap;word-wrap:break-word;">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre></body></html>`;
+          return new Blob([html], { type: 'text/html' });
+        }
+        if (toExt === 'rtf') {
+          const text = await file.text();
+          const rtf = `{\\rtf1\\ansi\\deff0 {\\fonttbl {\\f0 Times New Roman;}}\\f0\\fs24 ${text.replace(/\n/g, '\\par ')}}`;
+          return new Blob([rtf], { type: 'application/rtf' });
+        }
       }
 
-      if (fromExt === 'txt' && toExt === 'html') {
-        const text = await file.text();
-        const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Text</title></head><body><pre>${text}</pre></body></html>`;
-        return new Blob([html], { type: 'text/html' });
-      }
-
-      if (fromExt === 'html' && toExt === 'txt') {
-        const html = await file.text();
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const text = tempDiv.innerText || tempDiv.textContent || '';
+      // RTF conversions
+      if (fromExt === 'rtf' && toExt === 'txt') {
+        const rtf = await file.text();
+        // Simple RTF to text extraction (removes RTF codes)
+        const text = rtf.replace(/\{[^}]*\}/g, '').replace(/\\[a-z]+\d*\s?/gi, '').replace(/\\par/g, '\n').trim();
         return new Blob([text], { type: 'text/plain' });
       }
 
-      throw new Error('Document conversion not supported');
+      // DOCX, DOC, ODT conversions require special libraries
+      if (['docx', 'doc', 'odt'].includes(fromExt) || ['docx', 'doc', 'odt'].includes(toExt)) {
+        throw new Error(`${fromExt.toUpperCase()} to ${toExt.toUpperCase()} conversion requires server-side processing. Try converting to TXT or HTML first.`);
+      }
+
+      throw new Error(`Conversion from ${fromExt.toUpperCase()} to ${toExt.toUpperCase()} is not supported. Try converting to TXT or HTML as an intermediate format.`);
     }
 
     // Archive conversion
