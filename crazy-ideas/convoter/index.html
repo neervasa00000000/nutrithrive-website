@@ -1572,10 +1572,19 @@
           };
 
           // Wait for video to be ready
+          let timeout = null;
+          
           video.oncanplaythrough = () => {
             // Start playback
             video.play().then(() => {
               drawFrame();
+              
+              // Safety timeout
+              timeout = setTimeout(() => {
+                if (recording && recorder.state === 'recording') {
+                  recorder.stop();
+                }
+              }, (video.duration || 60) * 1000 + 10000);
             }).catch(err => {
               cleanup();
               reject(new Error('Could not play video. Browser may block autoplay. ' + err.message));
@@ -1584,21 +1593,9 @@
 
           // Stop after video ends
           video.onended = () => {
-            if (recording && recorder.state === 'recording') {
-              recorder.stop();
+            if (timeout) {
+              clearTimeout(timeout);
             }
-          };
-
-          // Safety timeout
-          const timeout = setTimeout(() => {
-            if (recording && recorder.state === 'recording') {
-              recorder.stop();
-            }
-          }, (video.duration || 60) * 1000 + 10000);
-          
-          // Clear timeout when done
-          video.onended = () => {
-            clearTimeout(timeout);
             if (recording && recorder.state === 'recording') {
               recorder.stop();
             }
