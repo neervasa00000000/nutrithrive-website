@@ -388,6 +388,8 @@
       background: var(--bg);
       border: 2px solid var(--border);
       display: none;
+      position: relative;
+      overflow: hidden;
     }
 
     .preview-area.active {
@@ -397,15 +399,43 @@
     .preview-area img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
 
     .preview-area video {
       max-width: 100%;
+      display: block;
+      object-fit: contain;
     }
 
     .preview-area audio {
       width: 100%;
       margin-top: 12px;
+      display: block;
+    }
+    
+    /* Hide preview during conversion to prevent glitches */
+    .converting .preview-area {
+      display: none !important;
+    }
+    
+    /* Prevent layout shifts */
+    .converter-card {
+      min-height: 200px;
+      transition: none;
+    }
+    
+    /* Smooth status updates */
+    .status-message {
+      transition: opacity 0.2s ease;
+      will-change: contents;
+    }
+    
+    /* Prevent video from causing glitches */
+    video {
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     footer {
@@ -577,12 +607,37 @@
     }
 
     // Show status
-    function showStatus(message, type = 'info') {
-      statusMessage.textContent = message;
-      statusMessage.className = `status-message active status-${type}`;
-      setTimeout(() => {
-        statusMessage.classList.remove('active');
-      }, 5000);
+    let statusTimeout = null;
+    let isUpdating = false;
+    function showStatus(message, type = 'info', persist = false) {
+      // Prevent rapid updates that cause flickering
+      if (isUpdating && persist) {
+        // For persistent messages, update immediately without animation
+        statusMessage.textContent = message;
+        statusMessage.className = `status-message active status-${type}`;
+        return;
+      }
+      
+      isUpdating = true;
+      requestAnimationFrame(() => {
+        statusMessage.textContent = message;
+        statusMessage.className = `status-message active status-${type}`;
+        isUpdating = false;
+      });
+      
+      // Clear previous timeout
+      if (statusTimeout) {
+        clearTimeout(statusTimeout);
+        statusTimeout = null;
+      }
+      
+      // Only auto-hide if not persisting (for conversion progress)
+      if (!persist) {
+        statusTimeout = setTimeout(() => {
+          statusMessage.classList.remove('active');
+          statusTimeout = null;
+        }, 5000);
+      }
     }
 
     // Handle file selection
@@ -732,12 +787,24 @@
           previewArea.innerHTML = `<img src="${e.target.result}" alt="Preview" />`;
           previewArea.classList.add('active');
         };
+        reader.onerror = () => {
+          previewArea.classList.remove('active');
+        };
         reader.readAsDataURL(file);
       } else if (file.type.startsWith('video/')) {
         const reader = new FileReader();
         reader.onload = (e) => {
-          previewArea.innerHTML = `<video controls src="${e.target.result}"></video>`;
+          const video = document.createElement('video');
+          video.controls = true;
+          video.src = e.target.result;
+          video.style.maxWidth = '100%';
+          video.style.height = 'auto';
+          previewArea.innerHTML = '';
+          previewArea.appendChild(video);
           previewArea.classList.add('active');
+        };
+        reader.onerror = () => {
+          previewArea.classList.remove('active');
         };
         reader.readAsDataURL(file);
       } else if (file.type.startsWith('audio/')) {
@@ -746,7 +813,12 @@
           previewArea.innerHTML = `<audio controls src="${e.target.result}"></audio>`;
           previewArea.classList.add('active');
         };
+        reader.onerror = () => {
+          previewArea.classList.remove('active');
+        };
         reader.readAsDataURL(file);
+      } else {
+        previewArea.classList.remove('active');
       }
     }
 
@@ -791,8 +863,11 @@
     convertBtn.addEventListener('click', async () => {
       if (!currentFile || !fromFormat.value || !toFormat.value) return;
 
-        convertBtn.disabled = true;
-      showStatus('Converting...', 'info');
+      convertBtn.disabled = true;
+      downloadSection.classList.remove('active');
+      previewArea.classList.remove('active'); // Hide preview during conversion
+      document.querySelector('.converter-card').classList.add('converting'); // Add converting class
+      showStatus('Converting...', 'info', true); // Persist status during conversion
 
       try {
         const fromExt = fromFormat.value.toLowerCase();
@@ -810,7 +885,8 @@
         console.error('Conversion error:', error);
         showStatus('Conversion failed: ' + error.message, 'error');
       } finally {
-      convertBtn.disabled = false;
+        convertBtn.disabled = false;
+        document.querySelector('.converter-card').classList.remove('converting'); // Remove converting class
       }
     });
 
@@ -855,10 +931,11 @@
         if (toExt === 'docx') {
           return await pdfToDocx(file);
         }
-        // PDF to Image conversions
-        if (formats.images.map(f => f.toLowerCase()).includes(toExt)) {
-          return await pdfToImage(file, toExt);
-        }
+      // PDF to Image conversions
+      if (formats.images.map(f => f.toLowerCase()).includes(toExt)) {
+        showStatus('Converting PDF to image... This may take a moment.', 'info', true);
+        return await pdfToImage(file, toExt);
+      }
         // DOC conversion - try via DOCX first
         if (toExt === 'doc') {
           try {
@@ -1038,7 +1115,7 @@
       
       // Show progress for large PDFs
       if (pdf.numPages > 1) {
-        showStatus(`Rendering ${pdf.numPages} pages...`, 'info');
+        showStatus(`Rendering ${pdf.numPages} pages...`, 'info', true);
       }
       
       // Render all pages first to get dimensions
@@ -1067,7 +1144,7 @@
         
         // Show progress
         if (pdf.numPages > 1) {
-          showStatus(`Rendering page ${i + 1} of ${pdf.numPages}...`, 'info');
+          showStatus(`Rendering page ${i + 1} of ${pdf.numPages}...`, 'info', true);
         }
         
         // Save context before translation
@@ -1502,8 +1579,18 @@
           URL.revokeObjectURL(url);
         };
 
+        let metadataLoaded = false;
+        
         video.onloadedmetadata = () => {
-          showStatus(`Video loaded: ${video.videoWidth}x${video.videoHeight}, ${video.duration.toFixed(1)}s`, 'info');
+          if (metadataLoaded) return; // Prevent duplicate calls
+          metadataLoaded = true;
+          
+          // Hide video element to prevent visual glitches
+          video.style.display = 'none';
+          video.style.position = 'absolute';
+          video.style.visibility = 'hidden';
+          
+          showStatus(`Video loaded: ${video.videoWidth}x${video.videoHeight}, ${video.duration.toFixed(1)}s`, 'info', true);
           
           const canvas = document.createElement('canvas');
           canvas.width = video.videoWidth;
@@ -1544,7 +1631,7 @@
               return;
             }
             
-            showStatus('Finalizing conversion...', 'info');
+            showStatus('Finalizing conversion...', 'info', true);
             const blob = new Blob(chunks, { type: mimeType.split(';')[0] });
             resolve(blob);
           };
@@ -1585,7 +1672,7 @@
               recording = true;
               try {
                 recorder.start(100); // Collect data every 100ms
-                showStatus(`Recording video... (${Math.floor(video.currentTime)}s / ${Math.floor(video.duration)}s)`, 'info');
+                showStatus(`Recording video... (${Math.floor(video.currentTime)}s / ${Math.floor(video.duration)}s)`, 'info', true);
               } catch (e) {
                 cleanup();
                 reject(new Error('Failed to start recording: ' + e.message));
@@ -1596,7 +1683,7 @@
             // Update progress during recording
             if (recording && frameCount % 30 === 0) {
               const progress = Math.floor((video.currentTime / video.duration) * 100);
-              showStatus(`Converting... ${progress}% (${Math.floor(video.currentTime)}s / ${Math.floor(video.duration)}s)`, 'info');
+              showStatus(`Converting... ${progress}% (${Math.floor(video.currentTime)}s / ${Math.floor(video.duration)}s)`, 'info', true);
             }
             
             frameCount++;
@@ -1611,7 +1698,7 @@
             if (playbackStarted) return; // Prevent multiple calls
             playbackStarted = true;
             
-            showStatus('Starting video conversion...', 'info');
+            showStatus('Starting video conversion...', 'info', true);
             
             // Start playback
             const playPromise = video.play();
@@ -1624,7 +1711,7 @@
                 const durationMs = (video.duration || 60) * 1000;
                 timeout = setTimeout(() => {
                   if (recording && recorder.state === 'recording') {
-                    showStatus('Conversion timeout reached. Stopping...', 'info');
+                    showStatus('Conversion timeout reached. Stopping...', 'info', true);
                     recorder.stop();
                   }
                 }, durationMs + 20000); // 20 second buffer
@@ -1654,9 +1741,9 @@
           reject(new Error('Could not load video file: ' + (video.error ? video.error.message : 'Unknown error')));
         };
 
-        // Timeout for loading
+        // Timeout for loading - only check if metadata hasn't loaded
         setTimeout(() => {
-          if (!video.readyState || video.readyState < 2) {
+          if (!metadataLoaded && (!video.readyState || video.readyState < 2)) {
             cleanup();
             reject(new Error('Video file took too long to load. The file may be corrupted or too large.'));
           }
