@@ -13,10 +13,10 @@
 <meta charset="utf-8" />
 <title>Meeting Cost Tracker — NutriThrive</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="Track meeting costs in real-time. Professional, elegant, and powerful.">
+<meta name="description" content="Track meeting costs in real-time. Clean, modern, and intuitive.">
 <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
 <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   * {
@@ -35,149 +35,139 @@
     --text-light: #7f8c9a;
     --success: #27ae60;
     --danger: #e74c3c;
-    --warning: #f39c12;
   }
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--light-blue) 100%);
+    background: var(--cream);
     min-height: 100vh;
     padding: 0;
     color: var(--text);
-    line-height: 1.6;
   }
 
-  .app-container {
-    max-width: 1400px;
+  .app-wrapper {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 24px;
+    padding: 32px 24px;
   }
 
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 48px;
-    padding: 32px;
+  /* Top Bar */
+  .top-bar {
     background: white;
-    border-radius: 24px;
     border: 2px solid var(--tan);
+    border-radius: 20px;
+    padding: 24px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
-  .header h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--blue), var(--dark-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 12px;
-    letter-spacing: -1px;
+  .top-bar h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--blue);
+    margin: 0;
   }
 
-  .header .subtitle {
-    font-size: 1.1rem;
+  .top-bar .subtitle {
     color: var(--text-light);
-    font-weight: 500;
+    font-size: 0.95rem;
+    margin-top: 4px;
   }
 
-  /* Main Grid Layout */
-  .main-grid {
+  .top-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  /* Main Content Area */
+  .content-area {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 32px;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
   }
 
-  @media (max-width: 1024px) {
-    .main-grid {
+  @media (max-width: 968px) {
+    .content-area {
       grid-template-columns: 1fr;
     }
   }
 
-  /* Cost Display Card */
-  .display-card {
+  /* Left Panel - Main Controls */
+  .main-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Cost Display */
+  .cost-section {
     background: linear-gradient(135deg, var(--blue), var(--dark-blue));
-    border-radius: 24px;
-    padding: 48px;
+    border: 2px solid var(--dark-blue);
+    border-radius: 20px;
+    padding: 40px;
     text-align: center;
     color: white;
-    border: 2px solid var(--dark-blue);
     position: relative;
     overflow: hidden;
   }
 
-  .display-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: rotate 20s linear infinite;
+  .cost-section.running {
+    animation: subtle-pulse 2s ease-in-out infinite;
   }
 
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .display-card.running {
-    animation: pulse-scale 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse-scale {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+  @keyframes subtle-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
   }
 
   .cost-label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     opacity: 0.9;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
   }
 
-  .cost-amount {
-    font-size: 5rem;
+  .cost-value {
+    font-size: 4.5rem;
     font-weight: 900;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     font-variant-numeric: tabular-nums;
-    letter-spacing: -2px;
-    position: relative;
-    z-index: 1;
+    line-height: 1;
   }
 
-  .time-display {
-    font-size: 2rem;
+  .time-value {
+    font-size: 1.8rem;
     font-weight: 600;
     opacity: 0.95;
     font-variant-numeric: tabular-nums;
-    position: relative;
-    z-index: 1;
   }
 
-  /* Controls Card */
-  .controls-card {
+  /* Input Section */
+  .input-section {
     background: white;
-    border-radius: 24px;
-    padding: 40px;
     border: 2px solid var(--tan);
+    border-radius: 20px;
+    padding: 32px;
   }
 
-  .section-title {
-    font-size: 1.3rem;
+  .section-header {
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--blue);
     margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
   }
 
-  .input-row {
+  .input-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -185,360 +175,344 @@
   }
 
   @media (max-width: 640px) {
-    .input-row {
+    .input-grid {
       grid-template-columns: 1fr;
     }
   }
 
-  .input-wrapper {
-    position: relative;
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .input-wrapper label {
-    display: block;
+  .input-field label {
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 8px;
-    font-size: 0.95rem;
   }
 
-  .input-wrapper input {
-    width: 100%;
-    padding: 16px 20px;
+  .input-field input {
+    padding: 14px 16px;
     border: 2px solid var(--tan);
     border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 600;
     background: var(--cream);
     color: var(--text);
-    transition: all 0.3s;
+    transition: all 0.2s;
   }
 
-  .input-wrapper input:focus {
+  .input-field input:focus {
     outline: none;
     border-color: var(--blue);
     background: white;
   }
 
-  .rate-grid {
+  /* Rate Cards */
+  .rate-section {
+    background: white;
+    border: 2px solid var(--tan);
+    border-radius: 20px;
+    padding: 32px;
+  }
+
+  .rate-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    margin-bottom: 32px;
+  }
+
+  @media (max-width: 968px) {
+    .rate-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 640px) {
-    .rate-grid {
+    .rate-cards {
       grid-template-columns: 1fr;
     }
   }
 
-  .rate-card {
-    background: linear-gradient(135deg, var(--cream), white);
-    padding: 20px;
-    border-radius: 16px;
+  .rate-item {
+    background: var(--cream);
     border: 2px solid var(--tan);
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.2s;
   }
 
-  .rate-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--blue), var(--light-blue));
-    transform: scaleX(0);
-    transition: transform 0.3s;
-  }
-
-  .rate-card:focus-within {
+  .rate-item:focus-within {
     border-color: var(--blue);
+    background: white;
   }
 
-  .rate-card:focus-within::before {
-    transform: scaleX(1);
-  }
-
-  .rate-label {
+  .rate-item-label {
     font-size: 0.85rem;
     color: var(--text-light);
     margin-bottom: 10px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
-  .rate-card input {
+  .rate-item input {
     width: 100%;
     border: none;
     background: transparent;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 800;
     color: var(--blue);
+    text-align: center;
     padding: 0;
   }
 
-  .rate-card input:focus {
+  .rate-item input:focus {
     outline: none;
   }
 
-  /* Buttons */
-  .button-grid {
+  /* Action Buttons */
+  .actions-section {
+    background: white;
+    border: 2px solid var(--tan);
+    border-radius: 20px;
+    padding: 32px;
+  }
+
+  .button-group {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 968px) {
+    .button-group {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .button-group {
+      grid-template-columns: 1fr;
+    }
   }
 
   .btn {
-    padding: 18px 24px;
+    padding: 16px 20px;
     border: none;
-    border-radius: 14px;
-    font-size: 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-
-  .btn:active::before {
-    width: 300px;
-    height: 300px;
+    gap: 8px;
   }
 
   .btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    transform: none !important;
   }
 
-  .btn-start {
-    background: linear-gradient(135deg, var(--success), #229954);
+  .btn-primary {
+    background: var(--success);
     color: white;
   }
 
-  .btn-start:hover:not(:disabled) {
+  .btn-primary:hover:not(:disabled) {
     opacity: 0.9;
   }
 
-  .btn-stop {
-    background: linear-gradient(135deg, var(--danger), #c0392b);
+  .btn-danger {
+    background: var(--danger);
     color: white;
   }
 
-  .btn-stop:hover:not(:disabled) {
+  .btn-danger:hover:not(:disabled) {
     opacity: 0.9;
   }
 
-  .btn-save {
-    background: linear-gradient(135deg, var(--blue), var(--dark-blue));
+  .btn-blue {
+    background: var(--blue);
     color: white;
   }
 
-  .btn-save:hover:not(:disabled) {
+  .btn-blue:hover:not(:disabled) {
     opacity: 0.9;
   }
 
-  .btn-reset {
+  .btn-neutral {
     background: var(--tan);
     color: var(--text);
   }
 
-  .btn-reset:hover:not(:disabled) {
+  .btn-neutral:hover:not(:disabled) {
     background: var(--light-blue);
   }
 
-  .secondary-buttons {
-    display: flex;
-    gap: 12px;
-  }
-
-  .btn-secondary {
-    flex: 1;
+  .btn-outline {
     background: white;
     color: var(--blue);
     border: 2px solid var(--blue);
   }
 
-  .btn-secondary:hover {
+  .btn-outline:hover {
     background: var(--blue);
     color: white;
   }
 
-  /* Summary Section */
-  .summary-section {
-    background: white;
-    border-radius: 24px;
-    padding: 40px;
-    border: 2px solid var(--tan);
-  }
-
-  .stats-grid {
+  .secondary-actions {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
-  @media (max-width: 768px) {
-    .stats-grid {
+  @media (max-width: 640px) {
+    .secondary-actions {
       grid-template-columns: 1fr;
     }
   }
 
-  .stat-card {
-    background: linear-gradient(135deg, var(--cream), white);
-    padding: 28px;
-    border-radius: 16px;
-    border: 2px solid var(--tan);
-    text-align: center;
-    transition: all 0.3s;
+  /* Right Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  .stat-card:hover {
-    border-color: var(--blue);
+  /* Stats Cards */
+  .stats-card {
+    background: white;
+    border: 2px solid var(--tan);
+    border-radius: 20px;
+    padding: 32px;
+  }
+
+  .stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: var(--cream);
+    border-radius: 12px;
+    border: 2px solid var(--tan);
   }
 
   .stat-label {
     font-size: 0.9rem;
     color: var(--text-light);
-    margin-bottom: 12px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
-  .stat-value {
-    font-size: 2rem;
+  .stat-number {
+    font-size: 1.8rem;
     font-weight: 800;
     color: var(--blue);
     font-variant-numeric: tabular-nums;
   }
 
-  .entries-section {
-    margin-top: 32px;
-  }
-
-  .entries-header {
+  /* History Section */
+  .history-card {
+    background: white;
+    border: 2px solid var(--tan);
+    border-radius: 20px;
+    padding: 32px;
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
   }
 
-  .entries-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--blue);
-  }
-
-  .entries-list {
-    max-height: 400px;
+  .history-list {
+    flex: 1;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-top: 20px;
+    max-height: 400px;
     padding-right: 8px;
   }
 
-  .entries-list::-webkit-scrollbar {
-    width: 8px;
+  .history-list::-webkit-scrollbar {
+    width: 6px;
   }
 
-  .entries-list::-webkit-scrollbar-track {
+  .history-list::-webkit-scrollbar-track {
     background: var(--cream);
-    border-radius: 4px;
+    border-radius: 3px;
   }
 
-  .entries-list::-webkit-scrollbar-thumb {
+  .history-list::-webkit-scrollbar-thumb {
     background: var(--blue);
-    border-radius: 4px;
+    border-radius: 3px;
   }
 
-  .entry-card {
-    background: linear-gradient(135deg, var(--cream), white);
-    padding: 20px;
-    border-radius: 12px;
+  .history-item {
+    background: var(--cream);
     border: 2px solid var(--tan);
+    border-radius: 12px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s;
+    transition: all 0.2s;
   }
 
-  .entry-card:hover {
+  .history-item:hover {
     border-color: var(--blue);
   }
 
-  .entry-info {
+  .history-info {
     flex: 1;
   }
 
-  .entry-cost {
-    font-size: 1.5rem;
+  .history-cost {
+    font-size: 1.4rem;
     font-weight: 800;
     color: var(--blue);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
-  .entry-meta {
-    font-size: 0.9rem;
+  .history-meta {
+    font-size: 0.85rem;
     color: var(--text-light);
   }
 
-  .entry-delete {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  .history-delete {
+    background: var(--danger);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s;
+    font-size: 0.85rem;
+    transition: all 0.2s;
   }
 
-  .entry-delete:hover {
+  .history-delete:hover {
     opacity: 0.9;
   }
 
-  .empty-state {
+  .empty-history {
     text-align: center;
     padding: 60px 20px;
     color: var(--text-light);
   }
 
-  .empty-state-icon {
-    font-size: 4rem;
-    margin-bottom: 16px;
+  .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
     opacity: 0.5;
-  }
-
-  .empty-state-text {
-    font-size: 1.1rem;
-    font-weight: 500;
   }
 
   /* Modal */
@@ -549,8 +523,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(0,0,0,0.4);
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -561,210 +534,217 @@
     display: flex;
   }
 
-  .modal-content {
+  .modal-box {
     background: white;
-    border-radius: 24px;
-    padding: 48px;
+    border: 2px solid var(--tan);
+    border-radius: 20px;
+    padding: 40px;
     max-width: 500px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    border: 2px solid var(--tan);
-    animation: modalSlideIn 0.3s ease-out;
-  }
-
-  @keyframes modalSlideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   .modal-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 800;
     color: var(--blue);
     margin-bottom: 32px;
   }
 
-  .checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px;
-    background: var(--cream);
-    border-radius: 12px;
-    border: 2px solid var(--tan);
+  .modal-field {
     margin-bottom: 24px;
   }
 
-  .checkbox-group input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    accent-color: var(--blue);
+  .modal-field label {
+    display: block;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
   }
 
-  .checkbox-group label {
+  .modal-field input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--tan);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: var(--cream);
+    color: var(--text);
+  }
+
+  .modal-field input:focus {
+    outline: none;
+    border-color: var(--blue);
+    background: white;
+  }
+
+  .checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--cream);
+    border-radius: 12px;
+    border: 2px solid var(--tan);
+  }
+
+  .checkbox-field input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .checkbox-field label {
     cursor: pointer;
     font-weight: 600;
     color: var(--text);
-    font-size: 1rem;
+    margin: 0;
   }
 
-  @media (max-width: 640px) {
-    .app-container {
-      padding: 20px 16px;
-    }
-
-    .header h1 {
-      font-size: 2rem;
-    }
-
-    .cost-amount {
-      font-size: 3.5rem;
-    }
-
-    .time-display {
-      font-size: 1.5rem;
-    }
-
-    .button-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .secondary-buttons {
-      flex-direction: column;
-    }
+  .modal-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 32px;
   }
 </style>
 </head>
 
 <body>
-  <div class="app-container">
-    <!-- Header -->
-    <div class="header">
-      <h1>💰 Meeting Cost Tracker</h1>
-      <p class="subtitle">Track meeting expenses in real-time with precision and elegance</p>
-    </div>
-
-    <!-- Main Grid -->
-    <div class="main-grid">
-      <!-- Cost Display -->
-      <div class="display-card" id="display">
-        <div class="cost-label">Current Meeting Cost</div>
-        <div class="cost-amount" id="costDisplay">$0.00</div>
-        <div class="time-display" id="timeDisplay">00:00:00</div>
+  <div class="app-wrapper">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div>
+        <h1>💰 Meeting Cost Tracker</h1>
+        <div class="subtitle">Track expenses in real-time</div>
       </div>
-
-      <!-- Controls -->
-      <div class="controls-card">
-        <div class="section-title">⚙️ Controls</div>
-        
-        <div class="input-row">
-          <div class="input-wrapper">
-            <label for="attendees">👥 Attendees</label>
-            <input type="number" id="attendees" min="1" value="5" />
-          </div>
-          <div class="input-wrapper">
-            <label for="hourly">💰 Hourly Rate</label>
-            <input type="number" id="hourly" step="0.01" min="0" value="50" />
-          </div>
-        </div>
-
-        <div class="rate-grid">
-          <div class="rate-card">
-            <div class="rate-label">Hourly</div>
-            <input type="number" id="hourlyCard" step="0.01" min="0" value="50" />
-          </div>
-          <div class="rate-card">
-            <div class="rate-label">Daily</div>
-            <input type="number" id="daily" step="0.01" min="0" value="400" />
-          </div>
-          <div class="rate-card">
-            <div class="rate-label">Weekly</div>
-            <input type="number" id="weekly" step="0.01" min="0" value="2000" />
-          </div>
-          <div class="rate-card">
-            <div class="rate-label">Monthly</div>
-            <input type="number" id="monthly" step="0.01" min="0" value="8666.67" />
-          </div>
-        </div>
-
-        <div class="button-grid">
-          <button class="btn btn-start" id="startBtn">▶️ Start</button>
-          <button class="btn btn-stop" id="stopBtn" disabled>⏸️ Stop</button>
-          <button class="btn btn-save" id="saveBtn">💾 Save</button>
-          <button class="btn btn-reset" id="resetBtn">🔄 Reset</button>
-        </div>
-
-        <div class="secondary-buttons">
-          <button class="btn btn-secondary" id="exportBtn">📤 Export CSV</button>
-          <button class="btn btn-secondary" id="settingsBtn">⚙️ Settings</button>
-        </div>
+      <div class="top-actions">
+        <button class="btn btn-outline" id="exportBtn">📤 Export</button>
+        <button class="btn btn-outline" id="settingsBtn">⚙️ Settings</button>
       </div>
     </div>
 
-    <!-- Summary Section -->
-    <div class="summary-section">
-      <div class="section-title">📊 Summary & History</div>
-      
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Today's Total</div>
-          <div class="stat-value" id="dailyCost">$0.00</div>
+    <!-- Main Content -->
+    <div class="content-area">
+      <!-- Left Panel -->
+      <div class="main-panel">
+        <!-- Cost Display -->
+        <div class="cost-section" id="display">
+          <div class="cost-label">Current Meeting Cost</div>
+          <div class="cost-value" id="costDisplay">$0.00</div>
+          <div class="time-value" id="timeDisplay">00:00:00</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">Meetings</div>
-          <div class="stat-value" id="meetCount">0</div>
+
+        <!-- Inputs -->
+        <div class="input-section">
+          <div class="section-header">⚙️ Meeting Details</div>
+          <div class="input-grid">
+            <div class="input-field">
+              <label for="attendees">👥 Attendees</label>
+              <input type="number" id="attendees" min="1" value="5" />
+            </div>
+            <div class="input-field">
+              <label for="hourly">💰 Hourly Rate</label>
+              <input type="number" id="hourly" step="0.01" min="0" value="50" />
+            </div>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">This Month</div>
-          <div class="stat-value" id="monthCost">$0.00</div>
+
+        <!-- Rate Cards -->
+        <div class="rate-section">
+          <div class="section-header">📊 Rate Conversion</div>
+          <div class="rate-cards">
+            <div class="rate-item">
+              <div class="rate-item-label">Hourly</div>
+              <input type="number" id="hourlyCard" step="0.01" min="0" value="50" />
+            </div>
+            <div class="rate-item">
+              <div class="rate-item-label">Daily</div>
+              <input type="number" id="daily" step="0.01" min="0" value="400" />
+            </div>
+            <div class="rate-item">
+              <div class="rate-item-label">Weekly</div>
+              <input type="number" id="weekly" step="0.01" min="0" value="2000" />
+            </div>
+            <div class="rate-item">
+              <div class="rate-item-label">Monthly</div>
+              <input type="number" id="monthly" step="0.01" min="0" value="8666.67" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-section">
+          <div class="section-header">🎮 Controls</div>
+          <div class="button-group">
+            <button class="btn btn-primary" id="startBtn">▶️ Start</button>
+            <button class="btn btn-danger" id="stopBtn" disabled>⏸️ Stop</button>
+            <button class="btn btn-blue" id="saveBtn">💾 Save</button>
+            <button class="btn btn-neutral" id="resetBtn">🔄 Reset</button>
+          </div>
         </div>
       </div>
 
-      <div class="entries-section">
-        <div class="entries-header">
-          <div class="entries-title">Recent Meetings</div>
+      <!-- Right Sidebar -->
+      <div class="sidebar">
+        <!-- Stats -->
+        <div class="stats-card">
+          <div class="section-header">📈 Statistics</div>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-label">Today's Total</span>
+              <span class="stat-number" id="dailyCost">$0.00</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Meetings</span>
+              <span class="stat-number" id="meetCount">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">This Month</span>
+              <span class="stat-number" id="monthCost">$0.00</span>
+            </div>
+          </div>
         </div>
-        <div id="entriesList" class="entries-list"></div>
+
+        <!-- History -->
+        <div class="history-card">
+          <div class="section-header">📋 History</div>
+          <div id="entriesList" class="history-list"></div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Settings Modal -->
   <div class="modal" id="modal">
-    <div class="modal-content">
+    <div class="modal-box">
       <div class="modal-title">⚙️ Settings</div>
       
-      <div class="input-wrapper">
+      <div class="modal-field">
         <label>Hours per day</label>
         <input type="number" id="cfgHoursPerDay" step="0.1" min="0" value="8" />
       </div>
 
-      <div class="input-wrapper" style="margin-top: 20px;">
+      <div class="modal-field">
         <label>Days per week</label>
         <input type="number" id="cfgDaysPerWeek" step="0.1" min="0" value="5" />
       </div>
 
-      <div class="input-wrapper" style="margin-top: 20px;">
+      <div class="modal-field">
         <label>Weeks per month</label>
         <input type="number" id="cfgWeeksPerMonth" step="0.01" min="0" value="4.33333" />
       </div>
 
-      <div class="checkbox-group">
+      <div class="checkbox-field">
         <input type="checkbox" id="cfgAutoSave" />
-        <label for="cfgAutoSave">Auto-save meetings when stopping</label>
+        <label for="cfgAutoSave">Auto-save when stopping</label>
       </div>
 
-      <div class="button-grid" style="margin-top: 32px;">
-        <button class="btn btn-reset" id="modalCancel">Cancel</button>
-        <button class="btn btn-start" id="modalSave">Save Settings</button>
+      <div class="modal-buttons">
+        <button class="btn btn-neutral" id="modalCancel">Cancel</button>
+        <button class="btn btn-primary" id="modalSave">Save</button>
       </div>
     </div>
   </div>
@@ -1020,22 +1000,22 @@ function renderDay(){
   entriesList.innerHTML = '';
   if (items.length === 0){
     entriesList.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">📋</div>
-        <div class="empty-state-text">No meetings saved yet.<br>Start tracking to see your meeting history here.</div>
+      <div class="empty-history">
+        <div class="empty-icon">📋</div>
+        <div>No meetings saved yet</div>
       </div>
     `;
     return;
   }
   items.forEach(it => {
     const el = document.createElement('div');
-    el.className = 'entry-card';
+    el.className = 'history-item';
     el.innerHTML = `
-      <div class="entry-info">
-        <div class="entry-cost">$${(it.cost||0).toFixed(2)}</div>
-        <div class="entry-meta">${formatTime(it.durationSec)} • ${it.attendees} attendee${it.attendees > 1 ? 's' : ''} @ $${it.hourlyRate}/hr</div>
+      <div class="history-info">
+        <div class="history-cost">$${(it.cost||0).toFixed(2)}</div>
+        <div class="history-meta">${formatTime(it.durationSec)} • ${it.attendees} attendee${it.attendees > 1 ? 's' : ''} @ $${it.hourlyRate}/hr</div>
       </div>
-      <button class="entry-delete" onclick="deleteEntry(${it.ts})">Delete</button>
+      <button class="history-delete" onclick="deleteEntry(${it.ts})">Delete</button>
     `;
     entriesList.appendChild(el);
   });
