@@ -597,6 +597,11 @@
     <div id="surprise"></div>
     <audio id="beep" src="https://cdn.pixabay.com/audio/2022/11/16/audio_12a3f159da.mp3" preload="auto"></audio>
   </div>
+  
+  <!-- Glitch overlay effects -->
+  <div id="static-overlay" class="static-overlay"></div>
+  <div id="scanlines" class="scanlines"></div>
+  <div id="error-screen" class="error-screen"></div>
 
   <script>
     const forbids = [
@@ -826,10 +831,57 @@
         clearInterval(flashInterval);
       }, 3500);
 
+      // Add scary effects
+      const staticOverlay = document.getElementById('static-overlay');
+      const scanlines = document.getElementById('scanlines');
+      const errorScreen = document.getElementById('error-screen');
+      
+      if (staticOverlay) staticOverlay.classList.add('active');
+      if (scanlines) scanlines.classList.add('active');
+      
+      // Randomly show error screen
+      if (Math.random() < 0.4 && errorScreen) {
+        errorScreen.classList.add('active');
+        const errorCodes = [
+          "ERROR 0xDEADBEEF",
+          "SYSTEM CORRUPTION",
+          "MEMORY LEAK DETECTED",
+          "KERNEL PANIC",
+          "FATAL EXCEPTION",
+          "STACK OVERFLOW",
+          "NULL POINTER",
+          "SEGMENTATION FAULT"
+        ];
+        const errorMessages = [
+          "CRITICAL SYSTEM FAILURE",
+          "UNABLE TO RECOVER",
+          "DATA INTEGRITY COMPROMISED",
+          "SYSTEM UNSTABLE",
+          "IMMINENT SHUTDOWN",
+          "CORRUPTION DETECTED",
+          "FATAL ERROR",
+          "SYSTEM BREACH"
+        ];
+        const code = errorCodes[Math.floor(Math.random() * errorCodes.length)];
+        const msg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+        errorScreen.innerHTML = `
+          <div class="error-code">${code}</div>
+          <div>${msg}</div>
+          <div style="margin-top: 20px; font-size: 0.8em; color: #666;">Press any key to continue...</div>
+        `;
+        
+        setTimeout(() => {
+          errorScreen.classList.remove('active');
+        }, 2500);
+      }
+
+      // Extended glitch duration - 3.5 seconds instead of 0.3
       setTimeout(() => {
         surprise.className = "";
-        setTimeout(nextForbid, 1400);
-      }, 300);
+        if (staticOverlay) staticOverlay.classList.remove('active');
+        if (scanlines) scanlines.classList.remove('active');
+        setTimeout(nextForbid, 800);
+      }, 3500);
     }
 
     btn.onclick = function() {
