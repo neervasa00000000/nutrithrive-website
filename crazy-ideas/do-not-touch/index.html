@@ -871,8 +871,12 @@
     const forbid = document.getElementById("forbid");
     const btn = document.getElementById("btn");
     const surprise = document.getElementById("surprise");
+    const counterDisplay = document.getElementById("counter-display");
     let dodgeActive = false;
     let particles = [];
+    let challengePhase = false;
+    let clickCount = 0;
+    const TARGET_CLICKS = 100;
 
     // Smooth mouse tracking for background effect
     center.addEventListener('mousemove', (e) => {
@@ -927,14 +931,19 @@
       center.style.filter = "";
       surprise.textContent = "";
       surprise.className = "";
+      counterDisplay.textContent = "";
+      counterDisplay.classList.remove('active');
       document.body.className = "";
       document.body.style.filter = "";
       forbid.className = "";
       center.className = "";
+      center.classList.remove('challenge-phase');
       document.body.style.transform = "";
       document.body.style.transition = "";
       document.body.style.background = "#181818";
       document.body.classList.remove('screen-flicker');
+      challengePhase = false;
+      clickCount = 0;
       
       // Remove overlay effects
       const staticOverlay = document.getElementById('static-overlay');
