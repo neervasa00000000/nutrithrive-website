@@ -385,6 +385,7 @@
   <script src="pdf.worker.min.js" type="text/javascript"></script>
   <script src="jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script>
   <script>
     if (window.pdfjsLib) {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
@@ -724,9 +725,12 @@
           const rtf = `{\\rtf1\\ansi\\deff0 {\\fonttbl {\\f0 Times New Roman;}}\\f0\\fs24 ${text.replace(/\n/g, '\\par ').replace(/[{}]/g, '')}}`;
           return new Blob([rtf], { type: 'application/rtf' });
         }
-        // DOCX, DOC, ODT require server-side processing
-        if (['docx', 'doc', 'odt'].includes(toExt)) {
-          throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. Try converting to TXT or HTML first.`);
+        if (toExt === 'docx') {
+          return await pdfToDocx(file);
+        }
+        // DOC, ODT require server-side processing
+        if (['doc', 'odt'].includes(toExt)) {
+          throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. Try converting to DOCX, TXT or HTML first.`);
         }
       }
 
@@ -836,6 +840,55 @@
       return new Blob([html], { type: 'text/html' });
     }
 
+    // PDF to DOCX
+    async function pdfToDocx(file) {
+      if (typeof docx === 'undefined') {
+        throw new Error('DOCX library not loaded. Please reload the page.');
+      }
+      const textBlob = await pdfToText(file);
+      const text = await textBlob.text();
+      return await textToDocx(new Blob([text], { type: 'text/plain' }));
+    }
+
+    // Text to DOCX
+    async function textToDocx(file) {
+      if (typeof docx === 'undefined') {
+        throw new Error('DOCX library not loaded. Please reload the page.');
+      }
+      const text = await file.text();
+      const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim());
+      
+      const doc = new docx.Document({
+        sections: [{
+          properties: {},
+          children: paragraphs.map(para => 
+            new docx.Paragraph({
+              children: [new docx.TextRun({
+                text: para.replace(/\n/g, ' ').trim(),
+                size: 24, // 12pt
+              })],
+              spacing: { after: 200 },
+            })
+          ),
+        }],
+      });
+
+      const buffer = await docx.Packer.toBlob(doc);
+      return buffer;
+    }
+
+    // HTML to DOCX
+    async function htmlToDocx(file) {
+      if (typeof docx === 'undefined') {
+        throw new Error('DOCX library not loaded. Please reload the page.');
+      }
+      const html = await file.text();
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      const text = tempDiv.innerText || tempDiv.textContent || '';
+      return await textToDocx(new Blob([text], { type: 'text/plain' }));
+    }
+
     // Text to PDF
     async function textToPdf(file) {
       if (!window.jspdf || !window.jspdf.jsPDF) throw new Error('PDF generator not loaded');
@@ -907,9 +960,24 @@
         return new Blob([text], { type: 'text/plain' });
       }
 
-      // DOCX, DOC, ODT conversions require special libraries
-      if (['docx', 'doc', 'odt'].includes(fromExt) || ['docx', 'doc', 'odt'].includes(toExt)) {
-        throw new Error(`${fromExt.toUpperCase()} to ${toExt.toUpperCase()} conversion requires server-side processing. Try converting to TXT or HTML first.`);
+      // TXT to DOCX
+      if (fromExt === 'txt' && toExt === 'docx') {
+        return await textToDocx(file);
+      }
+
+      // HTML to DOCX
+      if (fromExt === 'html' && toExt === 'docx') {
+        return await htmlToDocx(file);
+      }
+
+      // DOCX, DOC, ODT reading requires special libraries
+      if (['docx', 'doc', 'odt'].includes(fromExt)) {
+        throw new Error(`Reading ${fromExt.toUpperCase()} files requires server-side processing. Please convert your file to TXT or HTML first, then convert to your desired format.`);
+      }
+
+      // DOC, ODT writing requires server-side processing
+      if (['doc', 'odt'].includes(toExt)) {
+        throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. Try converting to DOCX, TXT or HTML instead.`);
       }
 
       throw new Error(`Conversion from ${fromExt.toUpperCase()} to ${toExt.toUpperCase()} is not supported. Try converting to TXT or HTML as an intermediate format.`);
