@@ -606,7 +606,13 @@
       toFormat.innerHTML = '<option value="">Select target format...</option>';
       let targetFormats = [];
       
-      if (formats.images.includes(ext)) {
+      if (ext === 'PDF') {
+        // PDF can convert to documents AND images
+        targetFormats = [
+          ...formats.documents.filter(f => f !== ext),
+          ...formats.images
+        ];
+      } else if (formats.images.includes(ext)) {
         targetFormats = formats.images.filter(f => f !== ext);
       } else if (formats.documents.includes(ext)) {
         targetFormats = formats.documents.filter(f => f !== ext);
