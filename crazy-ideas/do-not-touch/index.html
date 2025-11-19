@@ -59,7 +59,7 @@
     }
 
     .glitchit {
-      animation: glitch 0.15s steps(1) infinite;
+      animation: glitch 0.12s steps(1) infinite;
       position: relative;
     }
 
@@ -210,7 +210,7 @@
     }
 
     .borked {
-      animation: borked 0.1s infinite;
+      animation: borked 0.08s infinite;
       position: relative;
     }
 
@@ -305,7 +305,7 @@
     }
 
     .shake {
-      animation: shake 0.16s infinite steps(1);
+      animation: shake 0.12s infinite steps(1);
     }
 
     @keyframes shake {
@@ -403,7 +403,7 @@
     }
 
     #surprise.glitch-text {
-      animation: textGlitch 0.1s infinite;
+      animation: textGlitch 0.08s infinite;
       color: #ff0000;
       text-shadow: 
         0 0 10px #ff0000,
@@ -688,11 +688,21 @@
       surprise.textContent = "";
       surprise.className = "";
       document.body.className = "";
+      document.body.style.filter = "";
       forbid.className = "";
       center.className = "";
       document.body.style.transform = "";
       document.body.style.transition = "";
       document.body.style.background = "#181818";
+      document.body.classList.remove('screen-flicker');
+      
+      // Remove overlay effects
+      const staticOverlay = document.getElementById('static-overlay');
+      const scanlines = document.getElementById('scanlines');
+      const errorScreen = document.getElementById('error-screen');
+      if (staticOverlay) staticOverlay.classList.remove('active');
+      if (scanlines) scanlines.classList.remove('active');
+      if (errorScreen) errorScreen.classList.remove('active');
 
       if (forbids[idx].action == "smile") {
         btn.innerText = "👻";
@@ -786,19 +796,35 @@
           break;
       }
 
-      // Play sound with smooth volume fade
+      // Play sound with smooth volume fade - loop it for longer
       const beep = document.getElementById('beep');
-      beep.volume = 0.39;
+      beep.volume = 0.5;
       beep.currentTime = 0;
+      beep.loop = true;
       beep.play().catch(e => console.log('Audio play failed:', e));
 
-      // Occasionally add extra effects
-      if (Math.random() < 0.2) {
-        setTimeout(() => {
+      // Add screen flicker to body
+      document.body.classList.add('screen-flicker');
+
+      // Multiple intense color flashes
+      let flashCount = 0;
+      const flashInterval = setInterval(() => {
+        if (flashCount < 8) {
           document.body.style.background = "#" + ((1 << 24) * Math.random() | 0).toString(16);
-          document.body.style.transition = "background 0.3s ease";
-        }, 300);
-      }
+          document.body.style.transition = "background 0.1s ease";
+          flashCount++;
+        } else {
+          clearInterval(flashInterval);
+        }
+      }, 200);
+
+      // Stop audio after glitch ends
+      setTimeout(() => {
+        beep.loop = false;
+        beep.pause();
+        document.body.classList.remove('screen-flicker');
+        clearInterval(flashInterval);
+      }, 3500);
 
       setTimeout(() => {
         surprise.className = "";
