@@ -60,8 +60,7 @@
     padding: 32px;
     background: white;
     border-radius: 24px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    border: 1px solid var(--tan);
+    border: 2px solid var(--tan);
   }
 
   .header h1 {
@@ -102,7 +101,7 @@
     padding: 48px;
     text-align: center;
     color: white;
-    box-shadow: 0 12px 48px rgba(109, 148, 197, 0.3);
+    border: 2px solid var(--dark-blue);
     position: relative;
     overflow: hidden;
   }
@@ -124,12 +123,12 @@
   }
 
   .display-card.running {
-    animation: pulse-glow 2s ease-in-out infinite;
+    animation: pulse-scale 2s ease-in-out infinite;
   }
 
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 12px 48px rgba(109, 148, 197, 0.3); }
-    50% { box-shadow: 0 12px 64px rgba(109, 148, 197, 0.5); }
+  @keyframes pulse-scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
   }
 
   .cost-label {
@@ -165,8 +164,7 @@
     background: white;
     border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    border: 1px solid var(--tan);
+    border: 2px solid var(--tan);
   }
 
   .section-title {
@@ -220,8 +218,6 @@
     outline: none;
     border-color: var(--blue);
     background: white;
-    box-shadow: 0 0 0 4px rgba(109, 148, 197, 0.1);
-    transform: translateY(-2px);
   }
 
   .rate-grid {
@@ -261,8 +257,6 @@
 
   .rate-card:focus-within {
     border-color: var(--blue);
-    box-shadow: 0 8px 24px rgba(109, 148, 197, 0.15);
-    transform: translateY(-4px);
   }
 
   .rate-card:focus-within::before {
@@ -343,45 +337,37 @@
   .btn-start {
     background: linear-gradient(135deg, var(--success), #229954);
     color: white;
-    box-shadow: 0 4px 16px rgba(39, 174, 96, 0.3);
   }
 
   .btn-start:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(39, 174, 96, 0.4);
+    opacity: 0.9;
   }
 
   .btn-stop {
     background: linear-gradient(135deg, var(--danger), #c0392b);
     color: white;
-    box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
   }
 
   .btn-stop:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(231, 76, 60, 0.4);
+    opacity: 0.9;
   }
 
   .btn-save {
     background: linear-gradient(135deg, var(--blue), var(--dark-blue));
     color: white;
-    box-shadow: 0 4px 16px rgba(109, 148, 197, 0.3);
   }
 
   .btn-save:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(109, 148, 197, 0.4);
+    opacity: 0.9;
   }
 
   .btn-reset {
     background: var(--tan);
     color: var(--text);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
   }
 
   .btn-reset:hover:not(:disabled) {
     background: var(--light-blue);
-    transform: translateY(-3px);
   }
 
   .secondary-buttons {
@@ -394,14 +380,11 @@
     background: white;
     color: var(--blue);
     border: 2px solid var(--blue);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
 
   .btn-secondary:hover {
     background: var(--blue);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(109, 148, 197, 0.3);
   }
 
   /* Summary Section */
@@ -409,8 +392,7 @@
     background: white;
     border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    border: 1px solid var(--tan);
+    border: 2px solid var(--tan);
   }
 
   .stats-grid {
@@ -436,8 +418,6 @@
   }
 
   .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     border-color: var(--blue);
   }
 
@@ -509,9 +489,7 @@
   }
 
   .entry-card:hover {
-    transform: translateX(4px);
     border-color: var(--blue);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
 
   .entry-info {
@@ -540,12 +518,10 @@
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s;
-    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
   }
 
   .entry-delete:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+    opacity: 0.9;
   }
 
   .empty-state {
@@ -593,7 +569,6 @@
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     border: 2px solid var(--tan);
     animation: modalSlideIn 0.3s ease-out;
   }
