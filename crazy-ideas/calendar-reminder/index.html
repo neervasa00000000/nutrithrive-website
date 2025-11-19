@@ -2050,16 +2050,17 @@
         for (let i = 0; i < allEvents.length; i++) {
           const event = allEvents[i];
           
-          // ICS formatting
+          // ICS formatting - use floating time (no timezone) to avoid day shift
           function fmtICS(dt) {
-            const z = new Date(dt.getTime() - dt.getTimezoneOffset() * 60000);
-            const yyyy = z.getUTCFullYear();
-            const mm = String(z.getUTCMonth() + 1).padStart(2, "0");
-            const dd = String(z.getUTCDate()).padStart(2, "0");
-            const h = String(z.getUTCHours()).padStart(2, "0");
-            const m = String(z.getUTCMinutes()).padStart(2, "0");
-            const s = String(z.getUTCSeconds()).padStart(2, "0");
-            return `${yyyy}${mm}${dd}T${h}${m}${s}Z`;
+            // Use local time components directly (floating time) to prevent timezone day shift
+            const yyyy = dt.getFullYear();
+            const mm = String(dt.getMonth() + 1).padStart(2, "0");
+            const dd = String(dt.getDate()).padStart(2, "0");
+            const h = String(dt.getHours()).padStart(2, "0");
+            const m = String(dt.getMinutes()).padStart(2, "0");
+            const s = String(dt.getSeconds()).padStart(2, "0");
+            // No 'Z' suffix = floating time (local time, no timezone conversion)
+            return `${yyyy}${mm}${dd}T${h}${m}${s}`;
           }
 
           const ics = 
