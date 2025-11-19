@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP');
+</script>
+
+<meta charset="utf-8" />
+<title>NutriThrive — Meeting Cost Tracker</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Track meeting costs in real-time. Calculate hourly, daily, weekly, and monthly meeting expenses with multiple attendees.">
+<link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
+<link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
+
+<style>
+  /* ========== THEME ========== */
+  :root{
+    --bg-a: #0f172a;
+    --bg-b: #1e293b;
+    --card: rgba(255,255,255,0.05);
+    --glass: rgba(255,255,255,0.03);
+    --accent: #22c1c3;
+    --accent-2: #60a5fa;
+    --accent-3: #7c3aed;
+    --danger: #ff6b6b;
+    --success: #16a34a;
+    --warning: #ffb703;
+    --muted: rgba(255,255,255,0.7);
+    --radius: 16px;
+    --shadow-1: 0 10px 40px rgba(0,0,0,0.4);
+    --glass-border: rgba(255,255,255,0.08);
+    --glass-2: rgba(255,255,255,0.04);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  html,body{
+    height:100%;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  }
+
+  body{
+    background: radial-gradient(800px 380px at 8% 8%, rgba(124,58,237,0.12), transparent 50%),
+                radial-gradient(600px 300px at 92% 92%, rgba(34,193,195,0.08), transparent 50%),
+                linear-gradient(180deg,var(--bg-a),var(--bg-b));
+    color: #fff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:24px;
+    min-height:100vh;
+  }
+
+  /* Layout */
+  .wrap{max-width:1200px;margin:0 auto}
+
+  header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:24px;
+    padding:20px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border-radius:var(--radius);
+    border:1px solid var(--glass-border);
+    backdrop-filter:blur(10px);
+  }
+
+  .logo{
+    width:64px;
+    height:64px;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    color:#042;
+    box-shadow:0 8px 26px rgba(34,193,195,0.3);
+    font-size:1.5rem;
+    flex-shrink:0;
+  }
+
+  header h1{
+    font-size:1.5rem;
+    margin:0;
+    font-weight:700;
+    background:linear-gradient(135deg, #fff, rgba(255,255,255,0.9));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  header p{
+    margin:4px 0 0 0;
+    opacity:0.85;
+    color:var(--muted);
+    font-size:0.95rem;
+    line-height:1.5;
+  }
+
+  .header-right{
+    margin-left:auto;
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border-radius:var(--radius);
+    padding:24px;
+    border:1px solid var(--glass-border);
+    box-shadow:var(--shadow-1);
+    backdrop-filter:blur(10px);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 400px;
+    gap:24px;
+    align-items:start;
+  }
+
+  @media (max-width:1024px){
+    .grid{grid-template-columns:1fr}
+  }
+
+  /* Left panel */
+  .control-panel{
+    padding:20px;
+    border-radius:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border:1px solid var(--glass-2);
+  }
+
+  .row{display:flex;gap:16px;align-items:center;margin-bottom:16px}
+
+  .col{flex:1}
+
+  label{
+    display:block;
+    font-weight:600;
+    font-size:0.9rem;
+    margin-bottom:8px;
+    color:var(--muted);
+  }
+
+  input[type="number"], .money-input{
+    width:100%;
+    padding:14px 16px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(0,0,0,0.2);
+    color:#fff;
+    font-weight:700;
+    font-size:1.1rem;
+    outline:none;
+    transition:all 0.2s;
+  }
+
+  input[type="number"]:focus, .money-input:focus{
+    background:rgba(0,0,0,0.3);
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px rgba(34,193,195,0.1);
+    transform:translateY(-1px);
+  }
+
+  .money-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    margin-top:12px;
+  }
+
+  .money-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    padding:16px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.08);
+    display:flex;
+    flex-direction:column;
+    transition:all 0.2s;
+  }
+
+  .money-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .money-label{
+    font-size:0.85rem;
+    color:var(--muted);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+
+  .money-value{
+    display:flex;
+    align-items:center;
+  }
+
+  .money-input{
+    font-size:1.2rem;
+    padding:12px 14px;
+  }
+
+  /* Big cost display */
+  .big{
+    margin-top:24px;
+    padding:24px;
+    border-radius:16px;
+    background:linear-gradient(135deg, rgba(34,193,195,0.1), rgba(96,165,250,0.08));
+    border:2px solid rgba(255,255,255,0.1);
+    text-align:center;
+    transition:all 0.3s;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .big::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition:left 0.5s;
+  }
+
+  .big.running::before{
+    left:100%;
+  }
+
+  .big .amount{
+    font-size:3.2rem;
+    font-weight:900;
+    letter-spacing:1px;
+    background:linear-gradient(135deg, #fff, var(--accent-2));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:8px;
+  }
+
+  .big .time{
+    margin-top:8px;
+    font-size:1.15rem;
+    opacity:0.9;
+    font-weight:600;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .controls{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:20px;
+  }
+
+  .btn{
+    padding:12px 20px;
+    border-radius:12px;
+    border:none;
+    font-weight:700;
+    font-size:0.95rem;
+    cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,0.3);
+    transition:all 0.2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(0,0,0,0.4);
+  }
+
+  .btn:active{
+    transform:translateY(0);
+  }
+
+  .btn-start{
+    background:linear-gradient(135deg,#60efbc,#22c1c3);
+    color:#053;
+  }
+
+  .btn-stop{
+    background:linear-gradient(135deg,#ff8b8b,#ff6b6b);
+    color:#fff;
+  }
+
+  .btn-save{
+    background:linear-gradient(135deg,#ffd166,#ffb703);
+    color:#222;
+  }
+
+  .btn-reset{
+    background:linear-gradient(135deg,#60a5fa,#3b82f6);
+    color:#fff;
+  }
+
+  .btn-export{
+    background:linear-gradient(135deg,#9f7aea,#7c3aed);
+    color:white;
+  }
+
+  .hint{
+    margin-top:16px;
+    text-align:center;
+    font-size:0.9rem;
+    color:var(--muted);
+    line-height:1.6;
+    padding:12px;
+    background:rgba(0,0,0,0.2);
+    border-radius:10px;
+  }
+
+  /* Right panel: summary */
+  .summary{
+    padding:20px;
+    border-radius:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.08);
+    position:sticky;
+    top:24px;
+  }
+
+  .summary h3{
+    margin:0 0 16px 0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:1.2rem;
+  }
+
+  .stat{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px;
+    border-radius:12px;
+    background:rgba(0,0,0,0.2);
+    margin-bottom:12px;
+    transition:all 0.2s;
+  }
+
+  .stat:hover{
+    background:rgba(0,0,0,0.3);
+    transform:translateX(4px);
+  }
+
+  .muted{
+    color:var(--muted);
+    opacity:0.9;
+    font-weight:500;
+  }
+
+  .entries{
+    max-height:320px;
+    overflow-y:auto;
+    padding:8px;
+    border-radius:12px;
+    background:rgba(0,0,0,0.15);
+    margin-top:12px;
+  }
+
+  .entries::-webkit-scrollbar{
+    width:6px;
+  }
+
+  .entries::-webkit-scrollbar-track{
+    background:rgba(0,0,0,0.2);
+    border-radius:3px;
+  }
+
+  .entries::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.2);
+    border-radius:3px;
+  }
+
+  .entry{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    transition:all 0.2s;
+  }
+
+  .entry:hover{
+    background:rgba(255,255,255,0.05);
+    border-radius:8px;
+  }
+
+  .entry:last-child{
+    border-bottom:none;
+  }
+
+  .entry .left{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .entry .meta{
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+
+  .entry .right{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:4px;
+  }
+
+  .entry .small{
+    font-size:0.9rem;
+  }
+
+  .entry button{
+    background:rgba(255,107,107,0.2);
+    border:1px solid rgba(255,107,107,0.3);
+    padding:6px 12px;
+    border-radius:8px;
+    color:#ff6b6b;
+    font-weight:600;
+    cursor:pointer;
+    font-size:0.85rem;
+    transition:all 0.2s;
+    margin-top:8px;
+  }
+
+  .entry button:hover{
+    background:rgba(255,107,107,0.3);
+    border-color:#ff6b6b;
+    transform:scale(1.05);
+  }
+
+  /* Settings modal */
+  .modal-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(2,6,23,0.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+    backdrop-filter:blur(4px);
+  }
+
+  .modal{
+    width:480px;
+    max-width:92%;
+    background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04));
+    padding:24px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .modal h4{
+    margin:0 0 20px 0;
+    font-size:1.3rem;
+  }
+
+  .field{
+    margin-bottom:16px;
+  }
+
+  .field label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+  }
+
+  .field input[type="number"]{
+    width:100%;
+  }
+
+  .field input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+  }
+
+  .row-between{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+  }
+
+  .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    margin-top:24px;
+  }
+
+  /* Small helpers */
+  .tiny{font-size:0.85rem;opacity:0.85}
+  .center{text-align:center}
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    padding:6px 12px;
+    border-radius:8px;
+    background:rgba(34,193,195,0.2);
+    border:1px solid rgba(34,193,195,0.3);
+    font-size:0.85rem;
+    font-weight:600;
+  }
+
+  @media (max-width:768px){
+    body{padding:16px}
+    header{flex-direction:column;text-align:center}
+    .header-right{width:100%;justify-content:center}
+    .money-grid{grid-template-columns:1fr}
+    .big .amount{font-size:2.4rem}
+    .controls{flex-direction:column}
+    .btn{width:100%;justify-content:center}
+  }
+</style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">NT</div>
+      <div style="flex:1">
+        <h1>NutriThrive — Meeting Cost Tracker</h1>
+        <p>Track meeting costs in real-time. Edit any dollar value (Hourly/Daily/Weekly/Monthly) and others update automatically. Configure conversion factors in Settings.</p>
+      </div>
+      <div class="header-right">
+        <button id="settingsBtn" class="btn btn-reset" title="Settings">⚙️ Settings</button>
+      </div>
+    </header>
+
+    <main class="card">
+      <div class="grid">
+        <!-- Left: controls -->
+        <section class="control-panel" aria-labelledby="controls-heading">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <div style="flex:1">
+              <label for="attendees">👥 Number of Attendees</label>
+              <input id="attendees" type="number" min="1" value="5" class="money-input" />
+            </div>
+            <div style="text-align:right;margin-left:20px">
+              <label class="tiny">Saved Today</label>
+              <div style="margin-top:8px;font-size:1.5rem;font-weight:900" id="meetCount">0</div>
+            </div>
+          </div>
+
+          <div class="money-grid" aria-hidden="false">
+            <div class="money-card">
+              <div class="money-label">💰 Hourly ($ / hour)</div>
+              <div class="money-value">
+                <input id="hourly" class="money-input" type="number" step="0.01" min="0" value="50" />
+              </div>
+            </div>
+
+            <div class="money-card">
+              <div class="money-label">📅 Daily ($ / day)</div>
+              <div class="money-value">
+                <input id="daily" class="money-input" type="number" step="0.01" min="0" value="400" />
+              </div>
+            </div>
+
+            <div class="money-card">
+              <div class="money-label">📆 Weekly ($ / week)</div>
+              <div class="money-value">
+                <input id="weekly" class="money-input" type="number" step="0.01" min="0" value="2000" />
+              </div>
+            </div>
+
+            <div class="money-card">
+              <div class="money-label">🗓️ Monthly ($ / month)</div>
+              <div class="money-value">
+                <input id="monthly" class="money-input" type="number" step="0.01" min="0" value="8666.67" />
+              </div>
+            </div>
+          </div>
+
+          <div class="big" id="costDisplayContainer" aria-live="polite">
+            <div class="amount" id="costDisplay">$0.00</div>
+            <div class="time" id="timeDisplay">00:00:00</div>
+          </div>
+
+          <div class="controls">
+            <button class="btn btn-start" id="startBtn">🚀 Start</button>
+            <button class="btn btn-stop" id="stopBtn">⏸ Stop</button>
+            <button class="btn btn-save" id="saveBtn">💾 Save</button>
+            <button class="btn btn-reset" id="resetBtn">🔄 Reset</button>
+            <button class="btn btn-export" id="exportBtn">📤 Export CSV</button>
+          </div>
+
+          <div class="hint">
+            💡 <strong>Tip:</strong> Editing any dollar field automatically updates all others. Default conversions: Daily = Hourly × hours/day, Weekly = Daily × days/week, Monthly = Weekly × weeks/month. Customize these in Settings.
+          </div>
+        </section>
+
+        <!-- Right: summary -->
+        <aside class="summary" aria-labelledby="summary-heading">
+          <h3 id="summary-heading">📅 Today — <span id="todayLabel"></span></h3>
+
+          <div class="stat">
+            <div class="muted">Total Meeting Cost</div>
+            <div style="font-weight:900;font-size:1.2rem;color:var(--accent)" id="dailyCost">$0.00</div>
+          </div>
+
+          <div class="stat">
+            <div class="muted">Saved Meetings</div>
+            <div style="font-weight:900;font-size:1.2rem" id="meetCountRight">0</div>
+          </div>
+
+          <div style="margin-top:16px">
+            <div class="muted tiny" style="margin-bottom:8px">📋 Saved meetings (most recent first)</div>
+            <div class="entries" id="entriesList" aria-live="polite">
+              <div class="muted" style="padding:16px;text-align:center">No entries yet — start and save a meeting to track costs.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:12px;align-items:center;justify-content:space-between">
+            <button class="btn btn-reset" id="clearTodayBtn" style="flex:1">🗑️ Clear Today</button>
+            <div style="text-align:right">
+              <div class="muted tiny">This Month</div>
+              <div style="font-weight:900;font-size:1.3rem;color:var(--accent-2)" id="monthCost">$0.00</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <!-- Settings modal -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="settingsTitle">
+      <h4 id="settingsTitle">⚙️ Settings</h4>
+
+      <div class="field">
+        <label class="tiny">Hours per day (used for conversions)</label>
+        <input id="cfgHoursPerDay" type="number" step="0.1" min="0" value="8" />
+      </div>
+
+      <div class="field">
+        <label class="tiny">Days per week (used for conversions)</label>
+        <input id="cfgDaysPerWeek" type="number" step="0.1" min="0" value="5" />
+      </div>
+
+      <div class="field">
+        <label class="tiny">Weeks per month (used for conversions)</label>
+        <input id="cfgWeeksPerMonth" type="number" step="0.01" min="0" value="4.33333" />
+      </div>
+
+      <div class="field">
+        <div class="row-between">
+          <label class="tiny">Auto-save meetings when stopping?</label>
+          <input id="cfgAutoSave" type="checkbox" />
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="modalCancel" class="btn btn-reset">Cancel</button>
+        <button id="modalSave" class="btn btn-start">💾 Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ========== App Logic ========== */
+const KEY_PREFIX = 'nutri_meet_tracker_';
+const CFG_KEY = 'nutri_meet_cfg_v1';
+
+/* UI refs */
+const hourlyInput = document.getElementById('hourly');
+const dailyInput = document.getElementById('daily');
+const weeklyInput = document.getElementById('weekly');
+const monthlyInput = document.getElementById('monthly');
+const attendeesInput = document.getElementById('attendees');
+const costDisplay = document.getElementById('costDisplay');
+const timeDisplay = document.getElementById('timeDisplay');
+const costDisplayContainer = document.getElementById('costDisplayContainer');
+const entriesList = document.getElementById('entriesList');
+const dailyCostEl = document.getElementById('dailyCost');
+const meetCount = document.getElementById('meetCount');
+const meetCountRight = document.getElementById('meetCountRight');
+const monthCostEl = document.getElementById('monthCost');
+const todayLabel = document.getElementById('todayLabel');
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const saveBtn = document.getElementById('saveBtn');
+const resetBtn = document.getElementById('resetBtn');
+const exportBtn = document.getElementById('exportBtn');
+const clearTodayBtn = document.getElementById('clearTodayBtn');
+const settingsBtn = document.getElementById('settingsBtn');
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalSave = document.getElementById('modalSave');
+const modalCancel = document.getElementById('modalCancel');
+const cfgHoursPerDay = document.getElementById('cfgHoursPerDay');
+const cfgDaysPerWeek = document.getElementById('cfgDaysPerWeek');
+const cfgWeeksPerMonth = document.getElementById('cfgWeeksPerMonth');
+const cfgAutoSave = document.getElementById('cfgAutoSave');
+
+/* runtime */
+let intervalId = null;
+let startTime = null;
+let elapsedSeconds = 0;
+let attendees = 0;
+let hourlyRate = 0;
+let lastTotalCost = 0;
+
+let cfg = loadCfg();
+
+todayLabel.textContent = new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+
+/* -- utility functions -- */
+function formatDateKey(d = new Date()){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const dd = String(d.getDate()).padStart(2,'0');
+  return KEY_PREFIX + y + m + dd;
+}
+
+function parseDateFromKey(key){
+  if (!key.startsWith(KEY_PREFIX)) return null;
+  const tail = key.slice(KEY_PREFIX.length);
+  if (!/^\d{8}$/.test(tail)) return null;
+  const y = +tail.slice(0,4);
+  const mo = +tail.slice(4,6) - 1;
+  const d = +tail.slice(6,8);
+  return new Date(y,mo,d);
+}
+
+function loadDailyData(date = new Date()){
+  const key = formatDateKey(date);
+  const raw = localStorage.getItem(key);
+  return raw ? JSON.parse(raw) : { meetings: [] };
+}
+
+function saveDailyData(data, date = new Date()){
+  const key = formatDateKey(date);
+  localStorage.setItem(key, JSON.stringify(data));
+  renderAll();
+}
+
+function saveCfg(){
+  localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+}
+
+function loadCfg(){
+  try{
+    const raw = localStorage.getItem(CFG_KEY);
+    if (!raw) return { hoursPerDay:8, daysPerWeek:5, weeksPerMonth:4.33333, autoSave:false };
+    return JSON.parse(raw);
+  }catch(e){
+    return { hoursPerDay:8, daysPerWeek:5, weeksPerMonth:4.33333, autoSave:false };
+  }
+}
+
+/* ========== two-way money conversions ========== */
+let _ignore = false;
+
+function toFixed2(v){ return Number(v || 0).toFixed(2); }
+
+function updateFromHourly(){
+  if (_ignore) return;
+  _ignore = true;
+  const hr = parseFloat(hourlyInput.value) || 0;
+  dailyInput.value = toFixed2(hr * cfg.hoursPerDay);
+  weeklyInput.value = toFixed2((hr * cfg.hoursPerDay) * cfg.daysPerWeek);
+  monthlyInput.value = toFixed2(((hr * cfg.hoursPerDay) * cfg.daysPerWeek) * cfg.weeksPerMonth);
+  _ignore = false;
+}
+
+function updateFromDaily(){
+  if (_ignore) return;
+  _ignore = true;
+  const d = parseFloat(dailyInput.value) || 0;
+  const hr = d / cfg.hoursPerDay;
+  hourlyInput.value = toFixed2(hr);
+  weeklyInput.value = toFixed2(d * cfg.daysPerWeek);
+  monthlyInput.value = toFixed2((d * cfg.daysPerWeek) * cfg.weeksPerMonth);
+  _ignore = false;
+}
+
+function updateFromWeekly(){
+  if (_ignore) return;
+  _ignore = true;
+  const w = parseFloat(weeklyInput.value) || 0;
+  const daily = w / cfg.daysPerWeek;
+  const hr = daily / cfg.hoursPerDay;
+  dailyInput.value = toFixed2(daily);
+  hourlyInput.value = toFixed2(hr);
+  monthlyInput.value = toFixed2(w * cfg.weeksPerMonth);
+  _ignore = false;
+}
+
+function updateFromMonthly(){
+  if (_ignore) return;
+  _ignore = true;
+  const m = parseFloat(monthlyInput.value) || 0;
+  const weekly = m / cfg.weeksPerMonth;
+  const daily = weekly / cfg.daysPerWeek;
+  const hr = daily / cfg.hoursPerDay;
+  weeklyInput.value = toFixed2(weekly);
+  dailyInput.value = toFixed2(daily);
+  hourlyInput.value = toFixed2(hr);
+  _ignore = false;
+}
+
+hourlyInput.addEventListener('input', updateFromHourly);
+dailyInput.addEventListener('input', updateFromDaily);
+weeklyInput.addEventListener('input', updateFromWeekly);
+monthlyInput.addEventListener('input', updateFromMonthly);
+
+[hourlyInput,dailyInput,weeklyInput,monthlyInput].forEach(el => el.addEventListener('keydown', e => {
+  if (e.key === 'Enter') el.dispatchEvent(new Event('input'));
+}));
+
+function initConversions(){
+  const hr = parseFloat(hourlyInput.value);
+  const d = parseFloat(dailyInput.value);
+  const w = parseFloat(weeklyInput.value);
+  const m = parseFloat(monthlyInput.value);
+  if (!isNaN(hr) && hr > 0) { updateFromHourly(); }
+  else if (!isNaN(d) && d > 0) { updateFromDaily(); }
+  else if (!isNaN(w) && w > 0) { updateFromWeekly(); }
+  else if (!isNaN(m) && m > 0) { updateFromMonthly(); }
+  else { hourlyInput.value = '50.00'; updateFromHourly(); }
+}
+
+/* ========== Meeting timer ========== */
+function startMeeting(){
+  attendees = Math.max(1, parseInt(attendeesInput.value) || 1);
+  hourlyRate = parseFloat(hourlyInput.value) || 0;
+  if (hourlyRate <= 0){ alert('Please enter a valid Hourly $ greater than 0.'); return; }
+  startTime = Date.now();
+  elapsedSeconds = 0;
+  lastTotalCost = 0;
+  if (intervalId) clearInterval(intervalId);
+  intervalId = setInterval(updateCost, 200);
+  updateCost();
+  costDisplayContainer.classList.add('running');
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
+}
+
+function updateCost(){
+  if (!startTime) return;
+  elapsedSeconds = (Date.now() - startTime) / 1000;
+  const costPerSecond = (attendees * hourlyRate) / 3600;
+  const total = costPerSecond * elapsedSeconds;
+  lastTotalCost = total;
+  costDisplay.textContent = '$' + total.toFixed(2);
+  const h = Math.floor(elapsedSeconds / 3600);
+  const m = Math.floor((elapsedSeconds % 3600) / 60);
+  const s = Math.floor(elapsedSeconds % 60);
+  timeDisplay.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function stopMeeting(){
+  if (intervalId) clearInterval(intervalId);
+  intervalId = null;
+  costDisplayContainer.classList.remove('running');
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+  if (cfg.autoSave) {
+    saveMeeting(true);
+  }
+}
+
+function resetMeeting(){
+  stopMeeting();
+  startTime = null; elapsedSeconds = 0; lastTotalCost = 0;
+  costDisplay.textContent = '$0.00'; timeDisplay.textContent = '00:00:00';
+  startBtn.disabled = false;
+}
+
+/* ========== Save / Data ========== */
+function saveMeeting(isAuto=false){
+  stopMeeting();
+  if (!(lastTotalCost > 0)){
+    if (!isAuto) alert('No meeting cost to save. Start and run the meeting, then Save.');
+    return;
+  }
+  const data = loadDailyData();
+  data.meetings.push({
+    ts: Date.now(),
+    durationSec: Math.round(elapsedSeconds || 0),
+    cost: parseFloat(lastTotalCost.toFixed(2)),
+    attendees: attendees,
+    hourlyRate: parseFloat(hourlyInput.value) || 0
+  });
+  saveDailyData(data);
+  resetMeeting();
+}
+
+/* ========== Render functions ========== */
+function renderAll(){
+  renderDay();
+  renderMonth();
+}
+
+function renderDay(){
+  const data = loadDailyData();
+  const totalCost = (data.meetings || []).reduce((s,m) => s + (m.cost||0), 0);
+  dailyCostEl.textContent = '$' + totalCost.toFixed(2);
+  const count = (data.meetings || []).length;
+  meetCount.textContent = String(count);
+  meetCountRight.textContent = String(count);
+  const items = (data.meetings || []).slice().sort((a,b) => b.ts - a.ts);
+  entriesList.innerHTML = '';
+  if (items.length === 0){
+    entriesList.innerHTML = '<div class="muted" style="padding:16px;text-align:center">No entries yet — start and save a meeting to track costs.</div>';
+    return;
+  }
+  items.forEach(it => {
+    const el = document.createElement('div'); el.className = 'entry';
+    const left = document.createElement('div'); left.className = 'left';
+    left.innerHTML = `<strong>Meeting</strong><div class="meta">${new Date(it.ts).toLocaleTimeString()}</div>`;
+    const right = document.createElement('div'); right.className = 'right';
+    right.innerHTML = `<div class="small" style="font-weight:900;color:var(--accent);font-size:1.1rem">$${(it.cost||0).toFixed(2)}</div>
+      <div class="meta">${formatTime(it.durationSec)} • ${it.attendees}p @ $${it.hourlyRate}/hr</div>
+      <div style="margin-top:8px"><button title="Delete" onclick="deleteEntry(${it.ts})">🗑️ Delete</button></div>`;
+    el.appendChild(left); el.appendChild(right); entriesList.appendChild(el);
+  });
+}
+
+function renderMonth(){
+  const now = new Date(); const year = now.getFullYear(); const month = now.getMonth();
+  let monthCost = 0;
+  for (let i=0;i<localStorage.length;i++){
+    const key = localStorage.key(i);
+    if (!key || !key.startsWith(KEY_PREFIX)) continue;
+    const d = parseDateFromKey(key);
+    if (!d) continue;
+    if (d.getFullYear() === year && d.getMonth() === month){
+      const dayData = JSON.parse(localStorage.getItem(key));
+      monthCost += (dayData.meetings || []).reduce((s,m) => s + (m.cost || 0), 0);
+    }
+  }
+  monthCostEl.textContent = '$' + monthCost.toFixed(2);
+}
+
+function deleteEntry(ts){
+  const data = loadDailyData();
+  data.meetings = (data.meetings || []).filter(m => m.ts !== ts);
+  saveDailyData(data);
+}
+
+function clearTodayData(){
+  if (!confirm('Clear all saved meetings for today? This cannot be undone.')) return;
+  localStorage.removeItem(formatDateKey(new Date()));
+  renderAll();
+}
+
+function exportCSV(){
+  const data = loadDailyData();
+  const rows = [['type','iso_timestamp','time','durationSec','attendees','hourlyRate','cost']];
+  (data.meetings || []).forEach(m => rows.push(['meeting', new Date(m.ts).toISOString(), new Date(m.ts).toLocaleTimeString(), m.durationSec || '', m.attendees || '', m.hourlyRate || '', m.cost || '']));
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `nutri_today_${(new Date()).toISOString().slice(0,10)}.csv`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+
+/* ========== Settings modal ========== */
+function openSettings(){
+  modalBackdrop.style.display = 'flex';
+  modalBackdrop.setAttribute('aria-hidden','false');
+  cfgHoursPerDay.value = cfg.hoursPerDay;
+  cfgDaysPerWeek.value = cfg.daysPerWeek;
+  cfgWeeksPerMonth.value = cfg.weeksPerMonth;
+  cfgAutoSave.checked = !!cfg.autoSave;
+}
+
+function closeSettings(){
+  modalBackdrop.style.display = 'none';
+  modalBackdrop.setAttribute('aria-hidden','true');
+}
+
+settingsBtn.addEventListener('click', openSettings);
+modalCancel.addEventListener('click', closeSettings);
+modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeSettings(); });
+modalSave.addEventListener('click', () => {
+  const hpday = parseFloat(cfgHoursPerDay.value) || 8;
+  const dpw = parseFloat(cfgDaysPerWeek.value) || 5;
+  const wpm = parseFloat(cfgWeeksPerMonth.value) || 4.33333;
+  const autos = !!cfgAutoSave.checked;
+  cfg = { hoursPerDay: hpday, daysPerWeek: dpw, weeksPerMonth: wpm, autoSave: autos };
+  saveCfg();
+  initConversions();
+  renderAll();
+  closeSettings();
+});
+
+startBtn.addEventListener('click', startMeeting);
+stopBtn.addEventListener('click', () => { stopMeeting(); });
+saveBtn.addEventListener('click', () => saveMeeting(false));
+resetBtn.addEventListener('click', resetMeeting);
+exportBtn.addEventListener('click', exportCSV);
+clearTodayBtn.addEventListener('click', clearTodayData);
+
+function pad(n){ return String(n).padStart(2,'0'); }
+function formatTime(sec){ const h = Math.floor(sec/3600); const m = Math.floor((sec%3600)/60); const s = Math.floor(sec%60); return `${pad(h)}:${pad(m)}:${pad(s)}`; }
+
+window.addEventListener('load', () => {
+  cfg = loadCfg();
+  if (cfgHoursPerDay) cfgHoursPerDay.value = cfg.hoursPerDay;
+  if (cfgDaysPerWeek) cfgDaysPerWeek.value = cfg.daysPerWeek;
+  if (cfgWeeksPerMonth) cfgWeeksPerMonth.value = cfg.weeksPerMonth;
+  if (cfgAutoSave) cfgAutoSave.checked = !!cfg.autoSave;
+  initConversions();
+  renderAll();
+  stopBtn.disabled = true;
+});
+
+window.deleteEntry = deleteEntry;
+</script>
+</body>
+</html>
+
