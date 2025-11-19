@@ -551,8 +551,7 @@
   </style>
   <script>
     // Enhanced date parser - handles many human-friendly formats
-    // Make it globally accessible
-    window.SimpleDateParser = {
+    const SimpleDateParser = {
       parse: function(text, refDate) {
         refDate = refDate || new Date();
         const now = new Date(refDate);
@@ -1575,43 +1574,19 @@
           month: null,
           day: null,
           year: null,
-          time: null,
-          tomorrow: false,
-          next: null
+          time: null
         };
         
-        // Check for "tomorrow"
-        if (textLower.includes('tomorrow')) {
-          components.tomorrow = true;
-        }
-        
-        // Check for "next [day]"
-        const nextDayMatch = textLower.match(/next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i);
-        if (nextDayMatch) {
-          components.next = nextDayMatch[1].toLowerCase();
-        }
-        
-        // Extract day name (sunday, monday, etc.) - but not if it's part of "next [day]"
+        // Extract day name (sunday, monday, etc.)
         const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-        if (!components.next) {
-          for (const day of dayNames) {
-            // Make sure it's not part of "next [day]"
-            const dayIndex = textLower.indexOf(day);
-            if (dayIndex >= 0) {
-              const beforeDay = textLower.substring(Math.max(0, dayIndex - 5), dayIndex).trim();
-              if (!beforeDay.endsWith('next')) {
-                components.dayName = day;
-                break;
-              }
-            }
+        for (const day of dayNames) {
+          if (textLower.includes(day)) {
+            components.dayName = day;
+            break;
           }
-        } else {
-          components.dayName = components.next;
         }
         
         // Extract month (november, nov, etc.)
-        const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const monthAbbr = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
         for (let i = 0; i < months.length; i++) {
           if (textLower.includes(months[i]) || textLower.includes(monthAbbr[i])) {
             components.month = i;
@@ -1619,23 +1594,17 @@
           }
         }
         
-        // Extract time with am/pm - try multiple patterns
-        let timeWithAmpm = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/i);
-        if (!timeWithAmpm) {
-          // Try without space: "8pm", "11am"
-          timeWithAmpm = text.match(/(\d{1,2})(?::(\d{2}))?(am|pm)\b/i);
-        }
+        // Extract time with am/pm
+        const timeWithAmpm = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);
         if (timeWithAmpm) {
           const hour = parseInt(timeWithAmpm[1]);
           const minute = parseInt(timeWithAmpm[2] || '0');
-          if (hour >= 1 && hour <= 12 && minute >= 0 && minute <= 59) {
-            components.time = { hour, minute, ampm: timeWithAmpm[3] };
-          }
+          components.time = { hour, minute, ampm: timeWithAmpm[3] };
         }
         
         // Extract 24-hour time (13:30, 14:00, etc.) if no am/pm time found
         if (!components.time) {
-          const time24 = text.match(/\b(\d{1,2}):(\d{2})\b/);
+          const time24 = text.match(/(\d{1,2}):(\d{2})\b/);
           if (time24) {
             const hour = parseInt(time24[1]);
             const minute = parseInt(time24[2]);
@@ -1646,71 +1615,29 @@
         }
         
         // Extract day number (1-31) - but avoid matching time hours
-        // First, remove time patterns from text to avoid confusion
-        let textWithoutTime = text;
-        if (components.time) {
-          textWithoutTime = textWithoutTime.replace(/\d{1,2}(?::\d{2})?\s*(am|pm)\b/gi, '');
-          textWithoutTime = textWithoutTime.replace(/\d{1,2}:\d{2}\b/g, '');
-        }
-        
-        const dayMatches = textWithoutTime.match(/\b(\d{1,2})(?:st|nd|rd|th)?\b/g);
+        const dayMatches = text.match(/\b(\d{1,2})(?:st|nd|rd|th)?\b/g);
         if (dayMatches) {
-          // Sort by position in text and try to find the day number
           for (const match of dayMatches) {
             const dayNum = parseInt(match.replace(/(st|nd|rd|th)/i, ''));
             // Skip if it's likely a time hour (1-12) and we already have a time
-            if (dayNum >= 1 && dayNum <= 31) {
-              // If we have a time, skip numbers 1-12 that could be hours
-              if (!components.time || dayNum > 12) {
-                components.day = dayNum;
-                break;
-              } else if (components.time && dayNum <= 12) {
-                // Check if this number appears before the time in the text
-                const dayIndex = text.indexOf(match);
-                const timeIndex = text.toLowerCase().indexOf(components.time.hour.toString());
-                if (dayIndex < timeIndex || timeIndex === -1) {
-                  components.day = dayNum;
-                  break;
-                }
-              }
+            if (dayNum >= 1 && dayNum <= 31 && (!components.time || dayNum > 12)) {
+              components.day = dayNum;
+              break;
             }
           }
         }
         
-        // Extract year (4-digit or 2-digit)
+        // Extract year (4-digit)
         const yearMatch = text.match(/\b(20\d{2})\b/);
         if (yearMatch) {
           components.year = parseInt(yearMatch[1]);
-        } else {
-          // Try 2-digit year
-          const year2Match = text.match(/\b(\d{2})\b/);
-          if (year2Match && components.month !== null && components.day) {
-            const year2 = parseInt(year2Match[1]);
-            if (year2 >= 0 && year2 <= 99) {
-              components.year = 2000 + year2;
-            }
-          }
         }
         
         // Combine components intelligently
         let finalDate = null;
         
-        // Priority 1: Tomorrow
-        if (components.tomorrow) {
-          finalDate = new Date(now);
-          finalDate.setDate(finalDate.getDate() + 1);
-        }
-        // Priority 2: Next [day]
-        else if (components.next) {
-          const targetDay = dayNames.indexOf(components.next);
-          finalDate = new Date(now);
-          const currentDay = finalDate.getDay();
-          let daysAhead = targetDay - currentDay;
-          if (daysAhead <= 0) daysAhead += 7;
-          finalDate.setDate(finalDate.getDate() + daysAhead);
-        }
-        // Priority 3: If we have day name, use it
-        else if (components.dayName) {
+        // Priority 1: If we have day name, use it
+        if (components.dayName) {
           const targetDay = dayNames.indexOf(components.dayName);
           finalDate = new Date(now);
           const currentDay = finalDate.getDay();
@@ -1718,24 +1645,21 @@
           if (daysAhead <= 0) daysAhead += 7;
           finalDate.setDate(finalDate.getDate() + daysAhead);
         } 
-        // Priority 4: If we have month and day
+        // Priority 2: If we have month and day
         else if (components.month !== null && components.day) {
           finalDate = new Date(components.year || now.getFullYear(), components.month, components.day);
           if (finalDate < now) {
             finalDate = new Date((components.year || now.getFullYear()) + 1, components.month, components.day);
           }
         }
-        // Priority 5: Default to today
+        // Priority 3: Default to today
         else {
           finalDate = new Date(now);
         }
         
         // Apply time if found
         if (components.time) {
-          const result = this.parseTime(finalDate, components.time.hour, components.time.minute, components.time.ampm);
-          if (result && result.start) {
-            return [result];
-          }
+          return [this.parseTime(finalDate, components.time.hour, components.time.minute, components.time.ampm)];
         } else if (finalDate) {
           // Default to noon if no time specified
           finalDate.setHours(12, 0, 0, 0);
@@ -1781,44 +1705,12 @@
       }
     };
     
-    // Verify SimpleDateParser was created
-    if (typeof window.SimpleDateParser === 'undefined') {
-      console.error('CRITICAL: SimpleDateParser was not created!');
-    } else {
-      console.log('SimpleDateParser created successfully');
-    }
-    
-    // Make it available globally - ensure it's available immediately
-    // Initialize chrono right after SimpleDateParser is defined
-    // Do this synchronously, not in an IIFE, to ensure it executes immediately
-    if (typeof window.SimpleDateParser === 'undefined') {
-      console.error('CRITICAL ERROR: SimpleDateParser not found when initializing chrono!');
-    } else {
-      console.log('Initializing window.chrono...');
-      window.chrono = {
-        parse: function(text, refDate, options) {
-          if (typeof window.SimpleDateParser === 'undefined') {
-            console.error('SimpleDateParser not available in chrono.parse');
-            throw new Error('SimpleDateParser not initialized');
-          }
-          try {
-            return window.SimpleDateParser.parse(text, refDate);
-          } catch (e) {
-            console.error('Error in chrono.parse:', e);
-            throw e;
-          }
-        }
-      };
-      
-      // Verify it was set
-      if (typeof window.chrono === 'undefined') {
-        console.error('FAILED: window.chrono was not set!');
-      } else if (typeof window.chrono.parse !== 'function') {
-        console.error('FAILED: window.chrono.parse is not a function!');
-      } else {
-        console.log('SUCCESS: window.chrono initialized successfully');
+    // Make it available globally
+    window.chrono = {
+      parse: function(text, refDate, options) {
+        return SimpleDateParser.parse(text, refDate);
       }
-    }
+    };
     
     // Enable button immediately since we don't need external library
     window.addEventListener('load', function() {
@@ -1826,22 +1718,6 @@
       if (btn) {
         btn.disabled = false;
         btn.innerHTML = 'Generate Calendar Event';
-      }
-      
-      // Ensure chrono is available - re-initialize if needed
-      if (typeof window.chrono === 'undefined') {
-        if (typeof window.SimpleDateParser !== 'undefined') {
-          console.log('Re-initializing window.chrono on load');
-          window.chrono = {
-            parse: function(text, refDate, options) {
-              return window.SimpleDateParser.parse(text, refDate);
-            }
-          };
-        } else {
-          console.error('Cannot initialize chrono: SimpleDateParser not available');
-        }
-      } else {
-        console.log('window.chrono already initialized');
       }
     });
   </script>
@@ -1864,7 +1740,7 @@
           autofocus
         ></textarea>
         <div class="button-group">
-          <button id="generateBtn">
+          <button id="generateBtn" onclick="generateCalendar()">
             Generate Event
           </button>
         </div>
@@ -1913,8 +1789,14 @@
       return [text];
     }
 
-    // Make generateCalendar globally accessible
-    window.generateCalendar = function() {
+    // Allow Enter key to submit (Ctrl/Cmd + Enter)
+    document.getElementById('eventText').addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        generateCalendar();
+      }
+    });
+
+    function generateCalendar() {
       const text = document.getElementById("eventText").value.trim();
       const resultDiv = document.getElementById("result");
       const generateBtn = document.getElementById("generateBtn");
@@ -1936,34 +1818,6 @@
       // Parser is always available (built-in)
 
       try {
-        // Ensure chrono is available - use window.chrono directly
-        // Check multiple ways to ensure parser is available
-        let chronoParser = window.chrono;
-        
-        // If chrono doesn't exist, try to create it
-        if (!chronoParser || typeof chronoParser.parse !== 'function') {
-          if (typeof window.SimpleDateParser !== 'undefined') {
-            console.log('Creating window.chrono from SimpleDateParser');
-            window.chrono = {
-              parse: function(text, refDate, options) {
-                return window.SimpleDateParser.parse(text, refDate);
-              }
-            };
-            chronoParser = window.chrono;
-          } else {
-            console.error('SimpleDateParser not available');
-            throw new Error('Date parser not initialized. Please reload the page.');
-          }
-        }
-        
-        // Final check
-        if (!chronoParser || typeof chronoParser.parse !== 'function') {
-          console.error('chronoParser is still not valid:', chronoParser);
-          throw new Error('Date parser not initialized. Please reload the page.');
-        }
-        
-        console.log('Using chronoParser:', chronoParser);
-        
         const now = new Date();
         const eventTexts = splitIntoEvents(text);
         const allEvents = [];
@@ -1973,25 +1827,14 @@
           const eventText = eventTexts[i].trim();
           if (!eventText) continue;
           
-          const results = chronoParser.parse(eventText, now, { forwardDate: true });
-          
-          // Debug: log the results
-          console.log('Parsed results for "' + eventText + '":', results);
+          const results = chrono.parse(eventText, now, { forwardDate: true });
 
           if (!results || results.length === 0 || !results[0].start) {
-            // Try to provide helpful error message
-            console.log('Could not parse:', eventText);
             // Skip events that can't be parsed
             continue;
           }
-          
-          // Validate the parsed result
-          const parsedResult = results[0];
-          if (!parsedResult.start || !parsedResult.start.date) {
-            console.log('Invalid parsed result:', parsedResult);
-            continue;
-          }
 
+          const parsedResult = results[0];
           const evStart = parsedResult.start.date();
           
           // Validate that the date is in the future or today
@@ -2150,36 +1993,6 @@
           generateBtn.innerHTML = 'Generate Event';
         }, 100);
       }
-    };
-    
-    // Also make it available as a regular function for onclick handlers
-    function generateCalendar() {
-      return window.generateCalendar();
-    }
-    
-    // Attach event listener to button when DOM is ready
-    function setupEventListeners() {
-      const generateBtn = document.getElementById('generateBtn');
-      if (generateBtn) {
-        generateBtn.addEventListener('click', window.generateCalendar);
-      }
-      
-      // Allow Enter key to submit (Ctrl/Cmd + Enter)
-      const eventText = document.getElementById('eventText');
-      if (eventText) {
-        eventText.addEventListener('keydown', function(e) {
-          if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-            window.generateCalendar();
-          }
-        });
-      }
-    }
-    
-    // Setup when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupEventListeners);
-    } else {
-      setupEventListeners();
     }
 
     // Escape HTML to prevent XSS
