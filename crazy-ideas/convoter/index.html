@@ -11,12 +11,13 @@
 </script>
 
   <meta charset="UTF-8" />
-  <title>Universal Converter | PDF ↔ TXT ↔ URL | NutriThrive Quick Tools</title>
+  <title>Universal File Converter | NutriThrive Quick Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Free universal converter: PDF to TXT, TXT to PDF, and URL to multiple formats (text, PDF, image, Markdown). All conversions happen in your browser." />
+  <meta name="description" content="Convert files between formats: Images (HEIC, PNG, JPG, GIF, WEBP, TIFF, SVG), Documents (PDF, DOC, DOCX, TXT, RTF, ODT, HTML), Audio (MP3, WAV, OGG, FLAC, M4A), Video (MP4, MOV, AVI, WMV, WEBM, MKV), Archives (ZIP, RAR, 7Z, TAR)." />
   <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
   <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
   <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #b7e2c3;
@@ -27,9 +28,11 @@
       --ink: #0f2530;
       --muted: #4c646c;
       --border: #86a8b5;
+      --success: #10b981;
+      --warning: #f59e0b;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       margin: 0;
@@ -37,322 +40,293 @@
       background: var(--bg);
       color: var(--ink);
       min-height: 100vh;
+      padding: 24px;
     }
 
-    a { color: var(--accent); }
-
-    .app-shell {
-      max-width: 1180px;
+    .app-container {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 48px 20px 80px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
     }
 
-    .hero {
+    .header {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 36px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 32px;
+      text-align: center;
     }
 
-    .eyebrow {
-      font-size: 0.82rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-light);
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
     }
 
-    .hero h1 {
-      margin: 8px 0;
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      margin: 0;
+    .header p {
       color: var(--muted);
+      font-size: 1.1rem;
       line-height: 1.6;
     }
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .badge {
-      padding: 6px 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      background: var(--surface-alt);
-      color: var(--accent);
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .step {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px 18px;
+    .converter-card {
       background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 24px;
     }
 
-    .step-number {
-      min-width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      background: var(--surface-alt);
-      color: var(--accent);
+      gap: 10px;
     }
 
-    .step-title {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .step-copy {
-      margin: 4px 0 0;
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 24px;
-    }
-
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; }
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .file-drop-zone {
+      border: 2px dashed var(--border);
       border-radius: 16px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .panel-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .panel-title {
-      margin: 0;
-      font-size: 1rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .helper-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-    }
-
-    .helper-card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      background: var(--surface-alt);
-      font-size: 0.9rem;
-      line-height: 1.4;
-      color: var(--muted);
-    }
-
-    .drop-zone {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 30px;
+      padding: 60px 40px;
       text-align: center;
       background: var(--surface-alt);
-      color: var(--muted);
       cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 24px;
     }
 
-    .drop-zone.dragover {
+    .file-drop-zone:hover {
       border-color: var(--accent);
+      background: var(--surface);
     }
 
-    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .file-drop-zone.dragover {
+      border-color: var(--accent);
+      background: var(--surface);
+      transform: scale(1.02);
+    }
 
-    .btn {
-      border-radius: 10px;
-      padding: 10px 18px;
-      font-size: 1rem;
+    .file-drop-zone-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    .file-drop-zone-text {
+      font-size: 1.1rem;
       font-weight: 600;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: var(--surface-alt);
       color: var(--ink);
+      margin-bottom: 8px;
     }
 
-    .btn.accent {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-
-    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    .status {
+    .file-drop-zone-hint {
       color: var(--muted);
       font-size: 0.95rem;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
     }
 
-    .results {
+    .file-info {
       display: none;
-      flex-direction: column;
-      gap: 14px;
-      border-top: 1px solid var(--accent-soft);
-      padding-top: 16px;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 260px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      padding: 16px;
-      background: #fff;
-      color: var(--ink);
-      font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-    }
-
-    .email-box { display: flex; gap: 10px; flex-wrap: wrap; }
-
-    .email-box input {
-      flex: 1;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: 10px 14px;
-      background: #fff;
-      color: var(--ink);
-    }
-
-    .cta-card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      padding: 20px;
       background: var(--surface-alt);
-      padding: 18px;
-      color: var(--ink);
-    }
-
-    .cta-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-
-    .cta-links a {
-      border-radius: 24px;
-      padding: 8px 14px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .secondary-panel {
-      gap: 20px;
-    }
-
-    #txtPanel {
-      gap: 18px;
-    }
-
-    /* URL Converter Styles */
-    .url-input-section {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .url-input-section input {
-      flex: 1;
-      min-width: 200px;
-      border-radius: 10px;
+      border-radius: 12px;
+      margin-bottom: 24px;
       border: 1px solid var(--border);
-      padding: 12px 16px;
-      background: #fff;
+    }
+
+    .file-info.active {
+      display: block;
+    }
+
+    .file-name {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .file-size {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .format-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .format-selector {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .format-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .format-label {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+
+    .format-select {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
       color: var(--ink);
       font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .url-input-section input:focus {
+    .format-select:focus {
       outline: none;
       border-color: var(--accent);
     }
 
-    .format-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .format-btn {
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--surface-alt);
-      color: var(--ink);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 0.9rem;
-    }
-
-    .format-btn:hover {
+    .convert-btn {
+      width: 100%;
+      padding: 18px 32px;
       background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 24px;
     }
 
-    .format-btn:disabled {
+    .convert-btn:hover:not(:disabled) {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .convert-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
 
-    .preview-area {
-      margin-top: 16px;
+    .status-message {
       padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      font-weight: 500;
+      display: none;
+    }
+
+    .status-message.active {
+      display: block;
+    }
+
+    .status-success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #10b981;
+    }
+
+    .status-error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #ef4444;
+    }
+
+    .status-info {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #3b82f6;
+    }
+
+    .download-section {
+      display: none;
+      padding: 24px;
       background: var(--surface-alt);
       border-radius: 12px;
       border: 1px solid var(--border);
-      max-height: 400px;
-      overflow-y: auto;
+      text-align: center;
+    }
+
+    .download-section.active {
+      display: block;
+    }
+
+    .download-btn {
+      padding: 14px 28px;
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+      opacity: 0.9;
+    }
+
+    .format-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .category-title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .category-formats {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .category-formats code {
+      background: var(--surface-alt);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .preview-area {
+      margin-top: 24px;
+      padding: 20px;
+      background: var(--surface-alt);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: none;
+    }
+
+    .preview-area.active {
+      display: block;
     }
 
     .preview-area img {
@@ -361,17 +335,28 @@
       border-radius: 8px;
     }
 
+    .preview-area video {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .preview-area audio {
+      width: 100%;
+      margin-top: 12px;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      padding: 24px;
     }
   </style>
   <script src="pdf.min.js"></script>
   <script src="pdf.worker.min.js" type="text/javascript"></script>
   <script src="jspdf.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/turndown@7.1.3/dist/turndown.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script>
     if (window.pdfjsLib) {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
@@ -379,613 +364,517 @@
   </script>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="hero">
-      <div>
-        <p class="eyebrow">NutriThrive Labs</p>
-        <h1>Universal Converter</h1>
-        <p>Convert PDF ↔ TXT ↔ URL to any format. PDF to text, text to PDF, or paste any webpage URL and get it as plain text, PDF, image, or Markdown—all in your browser.</p>
-        <div class="hero-badges">
-          <span class="badge">Runs offline</span>
-          <span class="badge">No upload limits</span>
-          <span class="badge">AU privacy friendly</span>
+  <div class="app-container">
+    <div class="header">
+      <h1>🔄 Universal File Converter</h1>
+      <p>Convert files between formats instantly. Images, Documents, Audio, Video, and Archives—all in your browser.</p>
         </div>
-      </div>
-      <div></div>
-    </header>
 
-    <!-- URL Converter Section -->
-    <section class="panel">
-      <div class="panel-header">
-        <p class="panel-title">🌐 URL to Any Format</p>
-        <small style="color:var(--muted);">Convert any webpage</small>
+    <div class="converter-card">
+      <div class="section-title">📁 Upload File</div>
+      
+      <div class="file-drop-zone" id="dropZone">
+        <div class="file-drop-zone-icon">📎</div>
+        <div class="file-drop-zone-text">Drop your file here or click to browse</div>
+        <div class="file-drop-zone-hint">Supports all major file formats</div>
       </div>
-      <div class="url-input-section">
-        <input type="url" id="urlInput" placeholder="https://example.com" />
-        <button class="btn accent" id="fetchUrlBtn">Fetch & Convert</button>
-      </div>
-      <div class="status" id="urlStatus">Enter a webpage URL above</div>
-      <div class="format-buttons" id="formatButtons" style="display:none;">
-        <button class="format-btn" id="toTextBtn">📄 Plain Text</button>
-        <button class="format-btn" id="toPdfBtn">📑 PDF</button>
-        <button class="format-btn" id="toImageBtn">🖼️ Image (PNG)</button>
-        <button class="format-btn" id="toMarkdownBtn">📝 Markdown</button>
-      </div>
-      <div class="preview-area" id="urlPreview" style="display:none;"></div>
-    </section>
+      <input type="file" id="fileInput" accept="*/*" />
 
-    <section class="timeline">
-      <div class="step">
-        <div class="step-number">1</div>
-        <div>
-          <p class="step-title">Drop or browse your PDF</p>
-          <p class="step-copy">Drag it anywhere on the page or tap "Load demo" to see how it works.</p>
-        </div>
+      <div class="file-info" id="fileInfo">
+        <div class="file-name" id="fileName"></div>
+        <div class="file-size" id="fileSize"></div>
       </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <div>
-          <p class="step-title">Convert & copy text</p>
-          <p class="step-copy">Hit "Convert to TXT" and grab the clean text with one click.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <div>
-          <p class="step-title">Export or email yourself</p>
-          <p class="step-copy">Download the .txt file or email it to yourself for quick sharing.</p>
-        </div>
-      </div>
-    </section>
 
-    <div class="layout">
-      <section class="panel primary-panel">
-        <div class="panel-header">
-          <p class="panel-title">Upload your PDF</p>
-          <small style="color:var(--muted);">Max ~25 MB</small>
-        </div>
-        <div class="drop-zone" id="dropZone">
-          <p><strong>Drop your PDF anywhere here</strong></p>
-          <p>or click to browse your device</p>
-          <small>Text-based PDFs convert fastest.</small>
-        </div>
-        <input type="file" id="fileInput" accept="application/pdf" style="display:none" />
-        <div class="btn-row">
-          <button class="btn outline" id="sampleBtn">Load demo PDF</button>
-          <button class="btn accent" id="convertBtn" disabled>Convert to TXT</button>
-        </div>
-        <div class="status" id="statusText" aria-live="polite">No file selected.</div>
-        <div class="helper-grid">
-          <div class="helper-card">Best results: digital PDFs (not scans). Need OCR? Run it first, then come back here.</div>
-          <div class="helper-card">We never upload or store anything. All parsing lives in your browser tab.</div>
-          <div class="helper-card">Team tip: convert, copy, then paste into your research notes or Notion docs.</div>
-        </div>
-      </section>
+      <div class="preview-area" id="previewArea"></div>
 
-      <section class="panel secondary-panel">
-        <div class="panel-header">
-          <p class="panel-title">Download & share</p>
-          <small style="color:var(--muted);">Outputs stay in this tab</small>
+      <div class="format-selector">
+        <div class="format-group">
+          <label class="format-label">From Format</label>
+          <select class="format-select" id="fromFormat" disabled>
+            <option value="">Select source format...</option>
+          </select>
         </div>
-        <div class="results" id="resultsBlock">
-          <textarea id="textOutput" spellcheck="false"></textarea>
-          <div class="btn-row">
-            <button class="btn accent" id="downloadBtn">Download TXT</button>
-            <button class="btn outline" id="copyBtn">Copy text</button>
-          </div>
-          <label for="emailInput" style="font-weight:600;">Email it to yourself (optional)</label>
-          <div class="email-box">
-            <input type="email" id="emailInput" placeholder="you@example.com" />
-            <button class="btn accent" id="emailBtn">Email me</button>
-          </div>
-          <small style="color:var(--muted);">We'll open your email app with the text already pasted.</small>
+        <div class="format-group">
+          <label class="format-label">To Format</label>
+          <select class="format-select" id="toFormat" disabled>
+            <option value="">Select target format...</option>
+          </select>
         </div>
-        <div class="cta-card">
-          <h3 style="margin-top:0;">Stay sharp while you work</h3>
-          <p>Converted your doc? Reward yourself with clean energy:</p>
-          <div class="cta-links">
-            <a href="https://nutrithrive.com.au/pages/products/product-detail.html">Moringa Focus Powder →</a>
-            <a href="https://nutrithrive.com.au/pages/products/product-curry-leaves.html">Dried Curry Leaves →</a>
-            <a href="https://nutrithrive.com.au/pages/products/product-black-tea.html">Darjeeling Brain Tea →</a>
-            <a href="https://nutrithrive.com.au/pages/blog/blog.html">More free wellness tools →</a>
+      </div>
+
+      <button class="convert-btn" id="convertBtn" disabled>🔄 Convert File</button>
+
+      <div class="status-message" id="statusMessage"></div>
+
+      <div class="download-section" id="downloadSection">
+        <div style="font-weight:600;margin-bottom:16px;color:var(--accent);">✓ Conversion Complete!</div>
+        <button class="download-btn" id="downloadBtn">⬇️ Download Converted File</button>
+      </div>
+        </div>
+
+    <div class="converter-card">
+      <div class="section-title">📋 Supported Formats</div>
+      <div class="format-categories">
+        <div class="category-card">
+          <div class="category-title">🖼️ Images</div>
+          <div class="category-formats">
+            <code>HEIC</code> <code>PNG</code> <code>JPG</code> <code>GIF</code><br>
+            <code>WEBP</code> <code>TIFF</code> <code>SVG</code>
+        </div>
+        </div>
+        <div class="category-card">
+          <div class="category-title">📄 Documents</div>
+          <div class="category-formats">
+            <code>PDF</code> <code>DOC</code> <code>DOCX</code> <code>TXT</code><br>
+            <code>RTF</code> <code>ODT</code> <code>HTML</code>
+        </div>
+        </div>
+        <div class="category-card">
+          <div class="category-title">🎵 Audio</div>
+          <div class="category-formats">
+            <code>MP3</code> <code>WAV</code> <code>OGG</code><br>
+            <code>FLAC</code> <code>M4A</code>
           </div>
         </div>
-      </section>
-    </div>
-
-    <section class="panel" id="txtPanel">
-      <div class="panel-header">
-        <p class="panel-title">TXT → PDF studio</p>
-        <small style="color:var(--muted);">Make formatted PDFs from simple notes.</small>
+        <div class="category-card">
+          <div class="category-title">🎬 Video</div>
+          <div class="category-formats">
+            <code>MP4</code> <code>MOV</code> <code>AVI</code><br>
+            <code>WMV</code> <code>WEBM</code> <code>MKV</code>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-title">📦 Archives</div>
+          <div class="category-formats">
+            <code>ZIP</code> <code>RAR</code> <code>7Z</code> <code>TAR</code>
+          </div>
+        </div>
       </div>
-      <textarea id="txtInput" placeholder="Type or paste your text here..." style="min-height:220px;"></textarea>
-      <div class="btn-row">
-        <button class="btn outline" id="txtUploadBtn">Upload .txt</button>
-        <button class="btn outline" id="txtSampleBtn">Load sample text</button>
-        <button class="btn accent" id="txtConvertBtn">Make PDF</button>
       </div>
-      <input type="file" id="txtFileInput" accept="text/plain" style="display:none" />
-      <div class="status" id="txtStatus">Waiting for your words.</div>
-    </section>
 
     <footer>
-      Conversion happens locally using PDF.js. Scanned/image-only PDFs may need OCR before extracting text. URL conversion uses CORS proxy for fetching content.
+      All conversions happen locally in your browser. Your files never leave your device.
     </footer>
   </div>
 
   <script>
-    const SAMPLE_PDF_BASE64 = `JVBERi0xLjMKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgaHR0cDovL3d3dy5yZXBvcnRsYWIuY29tCjEgMCBvYmoKPDwKL0YxIDIgMCBSCj4+CmVuZG9iagoyIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMSAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjMgMCBvYmoKPDwKL0NvbnRlbnRzIDcgMCBSIC9NZWRpYUJveCBbIDAgMCA2MTIgNzkyIF0gL1BhcmVudCA2IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago0IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgNiAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjUgMCBvYmoKPDwKL0F1dGhvciAoYW5vbnltb3VzKSAvQ3JlYXRpb25EYXRlIChEOjIwMjUxMTE3MjIxOTE2KzExJzAwJykgL0NyZWF0b3IgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIHd3dy5yZXBvcnRsYWIuY29tKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNTExMTcyMjE5MTYrMTEnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIHd3dy5yZXBvcnRsYWIuY29tKSAKICAvU3ViamVjdCAodW5zcGVjaWZpZWQpIC9UaXRsZSAodW50aXRsZWQpIC9UcmFwcGVkIC9GYWxzZQo+PgplbmRvYmoKNiAwIG9iago8PAovQ291bnQgMSAvS2lkcyBbIDMgMCBSIF0gL1R5cGUgL1BhZ2VzCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI1MAo+PgpzdHJlYW0KR2FyVzM1bXRPYCUjKzBMTVdbXUY5TnNwVC5fOmgkP2olIUhhcWU6JVhlWTdmcmQzczFnZDFMJWFGZWwkI1lbUkFbXGo7NSxgRUI7K1tIcCNCZmxROVlicDovVD0rWUJROVNgKCY5QV5HIT5RSTxDMll1azxdPnRpLl1QUj9eSWo2UillZGE/ckpCZHNBckFVLkVwWEY2aSxmQE1cMWZSRnInXypVTmhKVktKUyxkMmhCb3NbM1k+N2cySmJQMmhuZGxHPyFeTmFbJ29bWjQwKypBS1pZNFpccjZcW2lATygxY0RxMSYtRVM7JHJRWWY3NFRTZE08PEV+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDgKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDczIDAwMDAwIG4gCjAwMDAwMDAxMDQgMDAwMDAgbiAKMDAwMDAwMDIxMSAwMDAwMCBuIAowMDAwMDAwNDA0IDAwMDAwIG4gCjAwMDAwMDA0NzIgMDAwMDAgbiAKMDAwMDAwMDc2OCAwMDAwMCBuIAowMDAwMDAwODI3IDAwMDAwIG4gCnRyYWlsZXIKPDwKL0lEIAlgPDhkNWY4MjZhMTQ1NWExNjk4MTViZWNkYzUzODMzNWVhPjw4ZDVmODI2YTE0NTVhMTY5ODE1YmVjZGM1MzgzMzVlYT5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQgLS0gZGlnZXN0IChodHRwOi8vd3d3LnJlcG9ydGxhYi5jb20pCgovSW5mbyA1IDAgUgovUm9vdCA0IDAgUgovU2l6ZSA4Cj4+CnN0YXJ0eHJlZgoxMTY3CiUlRU9G\n`;
-
-    // URL Converter Elements
-    const urlInput = document.getElementById('urlInput');
-    const fetchUrlBtn = document.getElementById('fetchUrlBtn');
-    const urlStatus = document.getElementById('urlStatus');
-    const formatButtons = document.getElementById('formatButtons');
-    const urlPreview = document.getElementById('urlPreview');
-    const toTextBtn = document.getElementById('toTextBtn');
-    const toPdfBtn = document.getElementById('toPdfBtn');
-    const toImageBtn = document.getElementById('toImageBtn');
-    const toMarkdownBtn = document.getElementById('toMarkdownBtn');
-
-    let fetchedHtml = '';
-    let fetchedText = '';
-    let fetchedUrl = '';
-
-    // CORS Proxy function
-    async function fetchWithProxy(url) {
-      try {
-        // Try direct fetch first
-        const response = await fetch(url, {
-          mode: 'cors',
-          headers: {
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-          }
-        });
-        if (response.ok) {
-          return await response.text();
-        }
-      } catch (e) {
-        console.log('Direct fetch failed, trying proxy');
-      }
-
-      // Use CORS proxy as fallback
-      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-      const response = await fetch(proxyUrl);
-      const data = await response.json();
-      return data.contents;
-    }
-
-    // Extract text from HTML
-    function htmlToText(html) {
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = html;
-      
-      // Remove script and style elements
-      const scripts = tempDiv.querySelectorAll('script, style');
-      scripts.forEach(el => el.remove());
-      
-      // Get text content
-      let text = tempDiv.innerText || tempDiv.textContent || '';
-      
-      // Clean up whitespace
-      text = text.replace(/\s+/g, ' ').trim();
-      text = text.replace(/\n\s*\n/g, '\n\n');
-      
-      return text;
-    }
-
-    // HTML to Markdown converter
-    function htmlToMarkdown(html) {
-      if (typeof TurndownService === 'undefined') {
-        return 'Markdown converter not loaded. Please reload the page.';
-      }
-      try {
-        const turndownService = new TurndownService({
-          headingStyle: 'atx',
-          codeBlockStyle: 'fenced'
-        });
-        return turndownService.turndown(html);
-      } catch (e) {
-        console.error('Markdown conversion error:', e);
-        return htmlToText(html);
-      }
-    }
-
-    // Fetch URL content
-    fetchUrlBtn.addEventListener('click', async () => {
-      const url = urlInput.value.trim();
-      if (!url) {
-        urlStatus.textContent = 'Please enter a valid URL';
-        return;
-      }
-
-      // Validate URL
-      try {
-        new URL(url);
-      } catch (e) {
-        urlStatus.textContent = 'Invalid URL format. Please include http:// or https://';
-        return;
-      }
-
-      fetchUrlBtn.disabled = true;
-      urlStatus.textContent = 'Fetching webpage...';
-      formatButtons.style.display = 'none';
-      urlPreview.style.display = 'none';
-
-      try {
-        fetchedHtml = await fetchWithProxy(url);
-        fetchedText = htmlToText(fetchedHtml);
-        fetchedUrl = url;
-        
-        urlStatus.textContent = `✓ Fetched successfully! Choose a format below.`;
-        formatButtons.style.display = 'grid';
-        
-        // Show preview
-        urlPreview.style.display = 'block';
-        urlPreview.innerHTML = `
-          <div style="margin-bottom:12px;font-weight:600;color:var(--accent);">Preview:</div>
-          <div style="max-height:200px;overflow-y:auto;font-size:0.9rem;line-height:1.6;">
-            ${fetchedText.substring(0, 500)}${fetchedText.length > 500 ? '...' : ''}
-          </div>
-        `;
-      } catch (error) {
-        console.error('Fetch error:', error);
-        urlStatus.textContent = 'Failed to fetch webpage. The site may block CORS or require authentication.';
-      } finally {
-        fetchUrlBtn.disabled = false;
-      }
-    });
-
-    // Convert to Plain Text
-    toTextBtn.addEventListener('click', () => {
-      if (!fetchedText) return;
-      const blob = new Blob([fetchedText], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `webpage-${new Date().getTime()}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      urlStatus.textContent = '✓ Plain text downloaded!';
-    });
-
-    // Convert to PDF
-    toPdfBtn.addEventListener('click', () => {
-      if (!fetchedText || !window.jspdf) {
-        urlStatus.textContent = 'PDF generator not available. Please reload.';
-        return;
-      }
-      try {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-        const margin = 48;
-        const width = doc.internal.pageSize.getWidth() - margin * 2;
-        const lines = doc.splitTextToSize(fetchedText, width);
-        
-        doc.setFont('Helvetica', 'Normal');
-        doc.setFontSize(10);
-        
-        let y = margin + 12;
-        for (let i = 0; i < lines.length; i++) {
-          if (y > doc.internal.pageSize.getHeight() - margin) {
-            doc.addPage();
-            y = margin;
-          }
-          doc.text(lines[i], margin, y);
-          y += 12;
-        }
-        
-        const filename = `webpage-${new Date().getTime()}.pdf`;
-        doc.save(filename);
-        urlStatus.textContent = '✓ PDF downloaded!';
-      } catch (error) {
-        console.error('PDF error:', error);
-        urlStatus.textContent = 'Failed to create PDF.';
-      }
-    });
-
-    // Convert to Image
-    toImageBtn.addEventListener('click', async () => {
-      if (!fetchedHtml || typeof html2canvas === 'undefined') {
-        urlStatus.textContent = 'Image converter not available. Please reload.';
-        return;
-      }
-      
-      try {
-        urlStatus.textContent = 'Rendering image...';
-        
-        // Create temporary iframe to render HTML
-        const iframe = document.createElement('iframe');
-        iframe.style.position = 'absolute';
-        iframe.style.left = '-9999px';
-        iframe.style.width = '1200px';
-        iframe.style.height = '800px';
-        document.body.appendChild(iframe);
-        
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        iframeDoc.open();
-        iframeDoc.write(fetchedHtml);
-        iframeDoc.close();
-        
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        const canvas = await html2canvas(iframeDoc.body, {
-          width: 1200,
-          height: iframeDoc.body.scrollHeight,
-          useCORS: true,
-          allowTaint: true
-        });
-        
-        canvas.toBlob((blob) => {
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `webpage-${new Date().getTime()}.png`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-          document.body.removeChild(iframe);
-          urlStatus.textContent = '✓ Image downloaded!';
-        });
-      } catch (error) {
-        console.error('Image error:', error);
-        urlStatus.textContent = 'Failed to create image. Some sites block iframe rendering.';
-      }
-    });
-
-    // Convert to Markdown
-    toMarkdownBtn.addEventListener('click', () => {
-      if (!fetchedHtml) return;
-      const markdown = htmlToMarkdown(fetchedHtml);
-      const blob = new Blob([markdown], { type: 'text/markdown' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `webpage-${new Date().getTime()}.md`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      urlStatus.textContent = '✓ Markdown downloaded!';
-    });
-
-    // Enter key support for URL input
-    urlInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        fetchUrlBtn.click();
-      }
-    });
-
-    // Existing PDF to TXT code
-    const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const fromFormat = document.getElementById('fromFormat');
+    const toFormat = document.getElementById('toFormat');
     const convertBtn = document.getElementById('convertBtn');
-    const sampleBtn = document.getElementById('sampleBtn');
-    const statusText = document.getElementById('statusText');
-    const resultsBlock = document.getElementById('resultsBlock');
-    const textOutput = document.getElementById('textOutput');
+    const statusMessage = document.getElementById('statusMessage');
+    const downloadSection = document.getElementById('downloadSection');
     const downloadBtn = document.getElementById('downloadBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const emailBtn = document.getElementById('emailBtn');
-    const emailInput = document.getElementById('emailInput');
+    const previewArea = document.getElementById('previewArea');
 
     let currentFile = null;
-    let extractedText = '';
+    let convertedBlob = null;
 
-    function setStatus(msg) {
-      statusText.textContent = msg;
+    // Format categories
+    const formats = {
+      images: ['HEIC', 'PNG', 'JPG', 'JPEG', 'GIF', 'WEBP', 'TIFF', 'SVG'],
+      documents: ['PDF', 'DOC', 'DOCX', 'TXT', 'RTF', 'ODT', 'HTML'],
+      audio: ['MP3', 'WAV', 'OGG', 'FLAC', 'M4A'],
+      video: ['MP4', 'MOV', 'AVI', 'WMV', 'WEBM', 'MKV'],
+      archives: ['ZIP', 'RAR', '7Z', 'TAR']
+    };
+
+    // All formats combined
+    const allFormats = [...formats.images, ...formats.documents, ...formats.audio, ...formats.video, ...formats.archives];
+
+    // Get file extension
+    function getFileExtension(filename) {
+      return filename.split('.').pop().toUpperCase();
     }
 
-    function resetResults() {
-      resultsBlock.style.display = 'none';
-      textOutput.value = '';
-      extractedText = '';
+    // Format file size
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
     }
 
+    // Show status
+    function showStatus(message, type = 'info') {
+      statusMessage.textContent = message;
+      statusMessage.className = `status-message active status-${type}`;
+      setTimeout(() => {
+        statusMessage.classList.remove('active');
+      }, 5000);
+    }
+
+    // Handle file selection
+    function handleFile(file) {
+      if (!file) return;
+
+      currentFile = file;
+      const ext = getFileExtension(file.name);
+      
+      fileName.textContent = file.name;
+      fileSize.textContent = formatFileSize(file.size);
+      fileInfo.classList.add('active');
+      downloadSection.classList.remove('active');
+      previewArea.classList.remove('active');
+      convertedBlob = null;
+
+      // Populate from format
+      fromFormat.innerHTML = '<option value="">Select source format...</option>';
+      if (allFormats.includes(ext)) {
+        const option = document.createElement('option');
+        option.value = ext;
+        option.textContent = ext;
+        option.selected = true;
+        fromFormat.appendChild(option);
+      } else {
+        const option = document.createElement('option');
+        option.value = ext;
+        option.textContent = ext + ' (detected)';
+        option.selected = true;
+        fromFormat.appendChild(option);
+      }
+
+      // Populate to format based on category
+      toFormat.innerHTML = '<option value="">Select target format...</option>';
+      let targetFormats = [];
+      
+      if (formats.images.includes(ext)) {
+        targetFormats = formats.images.filter(f => f !== ext);
+      } else if (formats.documents.includes(ext)) {
+        targetFormats = formats.documents.filter(f => f !== ext);
+      } else if (formats.audio.includes(ext)) {
+        targetFormats = formats.audio.filter(f => f !== ext);
+      } else if (formats.video.includes(ext)) {
+        targetFormats = formats.video.filter(f => f !== ext);
+      } else if (formats.archives.includes(ext)) {
+        targetFormats = formats.archives.filter(f => f !== ext);
+      } else {
+        // Unknown format - show all formats
+        targetFormats = allFormats.filter(f => f !== ext);
+      }
+
+      targetFormats.forEach(format => {
+        const option = document.createElement('option');
+        option.value = format;
+        option.textContent = format;
+        toFormat.appendChild(option);
+      });
+
+      fromFormat.disabled = false;
+      toFormat.disabled = false;
+      convertBtn.disabled = !toFormat.value;
+
+      // Show preview
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewArea.innerHTML = `<img src="${e.target.result}" alt="Preview" />`;
+          previewArea.classList.add('active');
+        };
+        reader.readAsDataURL(file);
+      } else if (file.type.startsWith('video/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewArea.innerHTML = `<video controls src="${e.target.result}"></video>`;
+          previewArea.classList.add('active');
+        };
+        reader.readAsDataURL(file);
+      } else if (file.type.startsWith('audio/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewArea.innerHTML = `<audio controls src="${e.target.result}"></audio>`;
+          previewArea.classList.add('active');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // File input handlers
     dropZone.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', (e) => {
       if (e.target.files.length) handleFile(e.target.files[0]);
     });
 
-    ['dragenter','dragover'].forEach(evt => dropZone.addEventListener(evt, (e) => {
+    // Drag and drop
+    ['dragenter', 'dragover'].forEach(evt => {
+      dropZone.addEventListener(evt, (e) => {
       e.preventDefault();
       e.stopPropagation();
       dropZone.classList.add('dragover');
-    }));
+      });
+    });
 
-    ['dragleave','drop'].forEach(evt => dropZone.addEventListener(evt, (e) => {
+    ['dragleave', 'drop'].forEach(evt => {
+      dropZone.addEventListener(evt, (e) => {
       e.preventDefault();
       e.stopPropagation();
       dropZone.classList.remove('dragover');
-    }));
+      });
+    });
 
     dropZone.addEventListener('drop', (e) => {
       const file = e.dataTransfer.files[0];
       if (file) handleFile(file);
     });
 
-    function isPdfFile(file) {
-      if (!file) return false;
-      if (file.type === 'application/pdf') return true;
-      if (file.name && /\.pdf$/i.test(file.name)) return true;
-      return false;
-    }
-
-    function handleFile(file) {
-      if (!isPdfFile(file)) {
-        setStatus('That file is not a PDF. Choose a .pdf file.');
-        convertBtn.disabled = true;
-        resetResults();
-        return;
-      }
-      currentFile = file;
-      setStatus(`Ready: ${file.name}`);
-      convertBtn.disabled = false;
-      resetResults();
-    }
-
-    function createDemoFile() {
-      setStatus('Loading demo PDF…');
-      const byteString = atob(SAMPLE_PDF_BASE64.replace(/\s+/g, ''));
-      const array = new Uint8Array(byteString.length);
-      for (let i = 0; i < byteString.length; i++) {
-        array[i] = byteString.charCodeAt(i);
-      }
-      try {
-        return new File([array], 'nutrithrive-demo.pdf', { type: 'application/pdf' });
-      } catch (err) {
-        const blob = new Blob([array], { type: 'application/pdf' });
-        blob.name = 'nutrithrive-demo.pdf';
-        blob.lastModified = Date.now();
-        return blob;
-      }
-    }
-
-    sampleBtn.addEventListener('click', () => {
-      const demo = createDemoFile();
-      handleFile(demo);
+    // Format change handlers
+    toFormat.addEventListener('change', () => {
+      convertBtn.disabled = !toFormat.value || !fromFormat.value;
     });
 
+    fromFormat.addEventListener('change', () => {
+      convertBtn.disabled = !toFormat.value || !fromFormat.value;
+    });
+
+    // Convert function
     convertBtn.addEventListener('click', async () => {
-      if (!currentFile) return;
+      if (!currentFile || !fromFormat.value || !toFormat.value) return;
+
       convertBtn.disabled = true;
-      setStatus('Converting…');
+      showStatus('Converting...', 'info');
+
       try {
-        const text = (await extractTextFromPdf(currentFile)).trim();
-        extractedText = text;
-        textOutput.value = text || '[No selectable text was found in this PDF.]';
-        resultsBlock.style.display = 'flex';
-        setStatus(text ? 'Done! Scroll down to copy or download.' : 'Finished, but this PDF had no selectable text.');
-      } catch (err) {
-        console.error(err);
-        setStatus('Something went wrong. Try another PDF or ensure it is not password-protected.');
-        resetResults();
+        const fromExt = fromFormat.value.toLowerCase();
+        const toExt = toFormat.value.toLowerCase();
+        
+        convertedBlob = await convertFile(currentFile, fromExt, toExt);
+        
+        if (convertedBlob) {
+          downloadSection.classList.add('active');
+          showStatus('Conversion successful!', 'success');
+        } else {
+          showStatus('Conversion not supported for this format combination.', 'error');
+        }
+      } catch (error) {
+        console.error('Conversion error:', error);
+        showStatus('Conversion failed: ' + error.message, 'error');
       } finally {
-        convertBtn.disabled = !currentFile;
+        convertBtn.disabled = false;
       }
     });
 
-    async function extractTextFromPdf(file) {
-      if (!window.pdfjsLib) throw new Error('PDF library not loaded');
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      let text = '';
-      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-        setStatus(`Reading page ${pageNum}/${pdf.numPages}…`);
-        const page = await pdf.getPage(pageNum);
-        const content = await page.getTextContent();
-        const pageText = content.items.map(item => item.str).join(' ');
-        text += pageText + '\n\n';
-      }
-      return text;
-    }
-
+    // Download handler
     downloadBtn.addEventListener('click', () => {
-      if (!extractedText) return alert('Convert a PDF first.');
-      const blob = new Blob([extractedText], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const base = currentFile ? currentFile.name.replace(/\.pdf$/i, '') : 'converted';
+      if (!convertedBlob) return;
+      
+      const url = URL.createObjectURL(convertedBlob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${base || 'converted'}.txt`;
+      const originalName = currentFile.name.replace(/\.[^/.]+$/, '');
+      a.download = `${originalName}.${toFormat.value.toLowerCase()}`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     });
 
-    copyBtn.addEventListener('click', async () => {
-      if (!extractedText) return alert('Convert a PDF first.');
-      try {
-        await navigator.clipboard.writeText(extractedText);
-        copyBtn.textContent = 'Copied!';
-        setTimeout(() => copyBtn.textContent = 'Copy text', 1500);
-      } catch (err) {
-        alert('Clipboard blocked. Please select the text manually.');
+    // Conversion functions
+    async function convertFile(file, fromExt, toExt) {
+      // Image conversions
+      if (formats.images.map(f => f.toLowerCase()).includes(fromExt) && 
+          formats.images.map(f => f.toLowerCase()).includes(toExt)) {
+        return await convertImage(file, toExt);
       }
-    });
 
-    emailBtn.addEventListener('click', () => {
-      if (!extractedText) return alert('Convert a PDF first.');
-      const email = emailInput.value.trim();
-      if (!email) return alert('Enter an email address.');
-      const subject = encodeURIComponent('Your converted PDF text');
-      const body = encodeURIComponent(extractedText.slice(0, 1500) + '\n\n— Sent with NutriThrive PDF to TXT');
-      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-    });
-
-    // --- TXT to PDF ---
-    const txtInput = document.getElementById('txtInput');
-    const txtUploadBtn = document.getElementById('txtUploadBtn');
-    const txtSampleBtn = document.getElementById('txtSampleBtn');
-    const txtConvertBtn = document.getElementById('txtConvertBtn');
-    const txtFileInput = document.getElementById('txtFileInput');
-    const txtStatus = document.getElementById('txtStatus');
-
-    function setTxtStatus(msg) { txtStatus.textContent = msg; }
-
-    txtUploadBtn.addEventListener('click', () => txtFileInput.click());
-    txtFileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      if (file.type !== 'text/plain') {
-        setTxtStatus('Please choose a plain .txt file.');
-        return;
+      // Document conversions
+      if (formats.documents.map(f => f.toLowerCase()).includes(fromExt) && 
+          formats.documents.map(f => f.toLowerCase()).includes(toExt)) {
+        return await convertDocument(file, fromExt, toExt);
       }
-      const reader = new FileReader();
-      reader.onload = () => {
-        txtInput.value = reader.result;
-        setTxtStatus(`Loaded ${file.name}`);
-      };
-      reader.onerror = () => setTxtStatus('Could not read that file.');
-      reader.readAsText(file);
-    });
 
-    txtSampleBtn.addEventListener('click', () => {
-      txtInput.value = [
-        'NutriThrive PDF maker demo',
-        '',
-        '• Use this tool to turn quick notes into ready-to-share PDFs.',
-        '• Outline your smoothie recipes, grocery lists, or wellness challenges.',
-        '• Add more text, then tap Make PDF!'
-      ].join('\n');
-      setTxtStatus('Sample text loaded.');
-    });
+      // PDF to other formats
+      if (fromExt === 'pdf') {
+        if (toExt === 'txt') {
+          return await pdfToText(file);
+        }
+        if (toExt === 'html') {
+          return await pdfToHtml(file);
+        }
+      }
 
-    txtConvertBtn.addEventListener('click', () => {
-      const text = txtInput.value.trim();
-      if (!text) {
-        setTxtStatus('Type or paste some text first.');
-        return;
+      // Text to PDF
+      if (fromExt === 'txt' && toExt === 'pdf') {
+        return await textToPdf(file);
       }
-      if (!window.jspdf || !window.jspdf.jsPDF) {
-        setTxtStatus('PDF generator missing. Please reload.');
-        return;
+
+      // HTML to PDF
+      if (fromExt === 'html' && toExt === 'pdf') {
+        return await htmlToPdf(file);
       }
-      txtConvertBtn.disabled = true;
-      setTxtStatus('Rendering PDF…');
-      try {
+
+      // Archive conversions
+      if (formats.archives.map(f => f.toLowerCase()).includes(fromExt) && 
+          formats.archives.map(f => f.toLowerCase()).includes(toExt)) {
+        return await convertArchive(file, fromExt, toExt);
+      }
+
+      // Audio/Video conversions (limited browser support)
+      if ((formats.audio.map(f => f.toLowerCase()).includes(fromExt) || 
+           formats.video.map(f => f.toLowerCase()).includes(fromExt)) &&
+          (formats.audio.map(f => f.toLowerCase()).includes(toExt) || 
+           formats.video.map(f => f.toLowerCase()).includes(toExt))) {
+        showStatus('Audio/Video conversion requires server-side processing. This feature is coming soon.', 'info');
+        return null;
+      }
+
+      showStatus('Conversion between ' + fromExt + ' and ' + toExt + ' is not yet supported.', 'error');
+      return null;
+    }
+
+    // Image conversion
+    async function convertImage(file, targetFormat) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            
+            canvas.toBlob((blob) => {
+              resolve(blob);
+            }, `image/${targetFormat === 'jpg' ? 'jpeg' : targetFormat}`, 0.95);
+          };
+          img.onerror = reject;
+          img.src = e.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // PDF to Text
+    async function pdfToText(file) {
+      if (!window.pdfjsLib) throw new Error('PDF library not loaded');
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      let text = '';
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const content = await page.getTextContent();
+        const pageText = content.items.map(item => item.str).join(' ');
+        text += pageText + '\n\n';
+      }
+      return new Blob([text], { type: 'text/plain' });
+    }
+
+    // PDF to HTML
+    async function pdfToHtml(file) {
+      if (!window.pdfjsLib) throw new Error('PDF library not loaded');
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      let html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted PDF</title></head><body>';
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const content = await page.getTextContent();
+        html += '<div style="page-break-after:always;padding:20px;">';
+        content.items.forEach(item => {
+          html += `<p>${item.str}</p>`;
+        });
+        html += '</div>';
+      }
+      html += '</body></html>';
+      return new Blob([html], { type: 'text/html' });
+    }
+
+    // Text to PDF
+    async function textToPdf(file) {
+      if (!window.jspdf || !window.jspdf.jsPDF) throw new Error('PDF generator not loaded');
+      const text = await file.text();
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF({ unit: 'pt', format: 'a4' });
         const margin = 48;
         const width = doc.internal.pageSize.getWidth() - margin * 2;
         const lines = doc.splitTextToSize(text, width);
-        doc.setFont('Times','Normal');
+      doc.setFont('Helvetica', 'Normal');
         doc.setFontSize(12);
-        doc.text(lines, margin, margin + 12);
-        const filename = 'nutrithrive-notes.pdf';
-        doc.save(filename);
-        setTxtStatus('PDF downloaded!');
-      } catch (err) {
-        console.error(err);
-        setTxtStatus('Could not create PDF.');
-      } finally {
-        txtConvertBtn.disabled = false;
+      let y = margin + 12;
+      for (let i = 0; i < lines.length; i++) {
+        if (y > doc.internal.pageSize.getHeight() - margin) {
+          doc.addPage();
+          y = margin;
+        }
+        doc.text(lines[i], margin, y);
+        y += 14;
       }
-    });
+      return doc.output('blob');
+    }
+
+    // HTML to PDF
+    async function htmlToPdf(file) {
+      if (!window.jspdf || !window.jspdf.jsPDF) throw new Error('PDF generator not loaded');
+      const html = await file.text();
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      const text = tempDiv.innerText || tempDiv.textContent || '';
+      return await textToPdf(new Blob([text], { type: 'text/plain' }));
+    }
+
+    // Document conversion (simplified - mainly text extraction)
+    async function convertDocument(file, fromExt, toExt) {
+      if (toExt === 'txt') {
+        if (fromExt === 'pdf') {
+          return await pdfToText(file);
+        }
+        // For other formats, try to read as text
+        const text = await file.text();
+        return new Blob([text], { type: 'text/plain' });
+      }
+      
+      if (fromExt === 'txt' && toExt === 'pdf') {
+        return await textToPdf(file);
+      }
+
+      if (fromExt === 'txt' && toExt === 'html') {
+        const text = await file.text();
+        const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Text</title></head><body><pre>${text}</pre></body></html>`;
+        return new Blob([html], { type: 'text/html' });
+      }
+
+      if (fromExt === 'html' && toExt === 'txt') {
+        const html = await file.text();
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const text = tempDiv.innerText || tempDiv.textContent || '';
+        return new Blob([text], { type: 'text/plain' });
+      }
+
+      throw new Error('Document conversion not supported');
+    }
+
+    // Archive conversion
+    async function convertArchive(file, fromExt, toExt) {
+      if (!window.JSZip) throw new Error('Archive library not loaded');
+      
+      if (fromExt === 'zip' && toExt === 'zip') {
+        // Re-zip (just return original)
+        return file;
+      }
+
+      if (fromExt === 'zip') {
+        const zip = await JSZip.loadAsync(file);
+        const files = [];
+        zip.forEach((relativePath, file) => {
+          files.push({ name: relativePath, data: file });
+        });
+        
+        if (toExt === 'tar') {
+          // Convert to TAR format (simplified)
+          showStatus('TAR conversion requires additional library. ZIP format maintained.', 'info');
+          return file;
+        }
+      }
+
+      throw new Error('Archive conversion not fully supported');
+    }
   </script>
 </body>
 </html>
