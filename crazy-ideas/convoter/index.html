@@ -234,6 +234,19 @@
       background: var(--light);
     }
 
+    .format-select optgroup {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.85rem;
+      padding: 8px 0;
+      background: var(--bg);
+    }
+
+    .format-select optgroup option {
+      padding-left: 24px;
+      font-weight: 400;
+    }
+
     .convert-btn {
       width: 100%;
       padding: 20px 32px;
@@ -604,35 +617,109 @@
 
       // Populate to format based on category
       toFormat.innerHTML = '<option value="">Select target format...</option>';
-      let targetFormats = [];
       
       if (ext === 'PDF') {
-        // PDF can convert to documents AND images
-        targetFormats = [
-          ...formats.documents.filter(f => f !== ext),
-          ...formats.images
-        ];
+        // PDF can convert to documents AND images - add grouped options
+        const docFormats = formats.documents.filter(f => f !== ext);
+        const imgFormats = formats.images;
+        
+        // Add Document formats group
+        if (docFormats.length > 0) {
+          const docGroup = document.createElement('optgroup');
+          docGroup.label = 'Document formats:';
+          docFormats.forEach(format => {
+            const option = document.createElement('option');
+            option.value = format;
+            option.textContent = format;
+            docGroup.appendChild(option);
+          });
+          toFormat.appendChild(docGroup);
+        }
+        
+        // Add Image formats group
+        if (imgFormats.length > 0) {
+          const imgGroup = document.createElement('optgroup');
+          imgGroup.label = 'Image formats:';
+          imgFormats.forEach(format => {
+            const option = document.createElement('option');
+            option.value = format;
+            option.textContent = format;
+            imgGroup.appendChild(option);
+          });
+          toFormat.appendChild(imgGroup);
+        }
       } else if (formats.images.includes(ext)) {
-        targetFormats = formats.images.filter(f => f !== ext);
+        const imgGroup = document.createElement('optgroup');
+        imgGroup.label = 'Image formats:';
+        formats.images.filter(f => f !== ext).forEach(format => {
+          const option = document.createElement('option');
+          option.value = format;
+          option.textContent = format;
+          imgGroup.appendChild(option);
+        });
+        toFormat.appendChild(imgGroup);
       } else if (formats.documents.includes(ext)) {
-        targetFormats = formats.documents.filter(f => f !== ext);
+        const docGroup = document.createElement('optgroup');
+        docGroup.label = 'Document formats:';
+        formats.documents.filter(f => f !== ext).forEach(format => {
+          const option = document.createElement('option');
+          option.value = format;
+          option.textContent = format;
+          docGroup.appendChild(option);
+        });
+        toFormat.appendChild(docGroup);
       } else if (formats.audio.includes(ext)) {
-        targetFormats = formats.audio.filter(f => f !== ext);
+        const audioGroup = document.createElement('optgroup');
+        audioGroup.label = 'Audio formats:';
+        formats.audio.filter(f => f !== ext).forEach(format => {
+          const option = document.createElement('option');
+          option.value = format;
+          option.textContent = format;
+          audioGroup.appendChild(option);
+        });
+        toFormat.appendChild(audioGroup);
       } else if (formats.video.includes(ext)) {
-        targetFormats = formats.video.filter(f => f !== ext);
+        const videoGroup = document.createElement('optgroup');
+        videoGroup.label = 'Video formats:';
+        formats.video.filter(f => f !== ext).forEach(format => {
+          const option = document.createElement('option');
+          option.value = format;
+          option.textContent = format;
+          videoGroup.appendChild(option);
+        });
+        toFormat.appendChild(videoGroup);
       } else if (formats.archives.includes(ext)) {
-        targetFormats = formats.archives.filter(f => f !== ext);
+        const archiveGroup = document.createElement('optgroup');
+        archiveGroup.label = 'Archive formats:';
+        formats.archives.filter(f => f !== ext).forEach(format => {
+          const option = document.createElement('option');
+          option.value = format;
+          option.textContent = format;
+          archiveGroup.appendChild(option);
+        });
+        toFormat.appendChild(archiveGroup);
       } else {
-        // Unknown format - show all formats
-        targetFormats = allFormats.filter(f => f !== ext);
+        // Unknown format - show all formats grouped
+        const docGroup = document.createElement('optgroup');
+        docGroup.label = 'Document formats:';
+        formats.documents.filter(f => f !== ext).forEach(format => {
+          const option = document.createElement('option');
+          option.value = format;
+          option.textContent = format;
+          docGroup.appendChild(option);
+        });
+        toFormat.appendChild(docGroup);
+        
+        const imgGroup = document.createElement('optgroup');
+        imgGroup.label = 'Image formats:';
+        formats.images.forEach(format => {
+          const option = document.createElement('option');
+          option.value = format;
+          option.textContent = format;
+          imgGroup.appendChild(option);
+        });
+        toFormat.appendChild(imgGroup);
       }
-
-      targetFormats.forEach(format => {
-        const option = document.createElement('option');
-        option.value = format;
-        option.textContent = format;
-        toFormat.appendChild(option);
-      });
 
       fromFormat.disabled = false;
       toFormat.disabled = false;
