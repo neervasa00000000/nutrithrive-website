@@ -713,13 +713,16 @@
         return await convertArchive(file, fromExt, toExt);
       }
 
-      // Audio/Video conversions (limited browser support)
-      if ((formats.audio.map(f => f.toLowerCase()).includes(fromExt) || 
-           formats.video.map(f => f.toLowerCase()).includes(fromExt)) &&
-          (formats.audio.map(f => f.toLowerCase()).includes(toExt) || 
-           formats.video.map(f => f.toLowerCase()).includes(toExt))) {
-        showStatus('Audio/Video conversion requires server-side processing. This feature is coming soon.', 'info');
-        return null;
+      // Video conversions
+      if (formats.video.map(f => f.toLowerCase()).includes(fromExt) && 
+          formats.video.map(f => f.toLowerCase()).includes(toExt)) {
+        return await convertVideo(file, fromExt, toExt);
+      }
+
+      // Audio conversions
+      if (formats.audio.map(f => f.toLowerCase()).includes(fromExt) && 
+          formats.audio.map(f => f.toLowerCase()).includes(toExt)) {
+        return await convertAudio(file, fromExt, toExt);
       }
 
       showStatus('Conversion between ' + fromExt + ' and ' + toExt + ' is not yet supported.', 'error');
@@ -874,6 +877,236 @@
       }
 
       throw new Error('Archive conversion not fully supported');
+    }
+
+    // Video conversion
+    async function convertVideo(file, fromExt, toExt) {
+      return new Promise((resolve, reject) => {
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.muted = true;
+        video.playsInline = true;
+        
+        const url = URL.createObjectURL(file);
+        video.src = url;
+
+        video.onloadedmetadata = () => {
+          video.currentTime = 0.1; // Seek to ensure video is loaded
+        };
+
+        video.oncanplay = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const ctx = canvas.getContext('2d');
+
+          // Determine MIME type based on target format
+          let mimeType = 'video/webm';
+          let codecs = 'vp8';
+          
+          if (toExt === 'webm') {
+            mimeType = 'video/webm';
+            codecs = 'vp8';
+          } else if (toExt === 'mp4') {
+            mimeType = 'video/mp4';
+            codecs = 'avc1.42E01E';
+          } else if (toExt === 'mov') {
+            mimeType = 'video/quicktime';
+            codecs = 'avc1.42E01E';
+          } else if (toExt === 'avi') {
+            mimeType = 'video/x-msvideo';
+            codecs = 'avc1.42E01E';
+          } else if (toExt === 'wmv') {
+            mimeType = 'video/x-ms-wmv';
+            codecs = 'wmv3';
+          } else if (toExt === 'mkv') {
+            mimeType = 'video/x-matroska';
+            codecs = 'vp8';
+          }
+
+          // Check if MediaRecorder supports the format
+          if (!MediaRecorder.isTypeSupported(mimeType)) {
+            // Fallback to webm if format not supported
+            mimeType = 'video/webm';
+            codecs = 'vp8';
+            if (!MediaRecorder.isTypeSupported(mimeType)) {
+              URL.revokeObjectURL(url);
+              reject(new Error('Video conversion not supported in this browser. Try Chrome or Firefox.'));
+              return;
+            }
+          }
+
+          const chunks = [];
+          const stream = canvas.captureStream(30); // 30 FPS
+          const recorder = new MediaRecorder(stream, {
+            mimeType: mimeType,
+            videoBitsPerSecond: 2500000 // 2.5 Mbps
+          });
+
+          recorder.ondataavailable = (e) => {
+            if (e.data.size > 0) {
+              chunks.push(e.data);
+            }
+          };
+
+          recorder.onstop = () => {
+            const blob = new Blob(chunks, { type: mimeType });
+            URL.revokeObjectURL(url);
+            resolve(blob);
+          };
+
+          recorder.onerror = (e) => {
+            URL.revokeObjectURL(url);
+            reject(new Error('Recording error: ' + e.error));
+          };
+
+          // Draw video frames to canvas and record
+          let recording = false;
+          const drawFrame = () => {
+            if (video.ended || video.paused) {
+              if (recording) {
+                recorder.stop();
+              }
+              return;
+            }
+
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            if (!recording && video.currentTime > 0) {
+              recording = true;
+              recorder.start();
+            }
+
+            requestAnimationFrame(drawFrame);
+          };
+
+          video.onplay = () => {
+            drawFrame();
+          };
+
+          // Start playback
+          video.play().catch(err => {
+            URL.revokeObjectURL(url);
+            reject(new Error('Could not play video: ' + err.message));
+          });
+
+          // Stop after video ends
+          video.onended = () => {
+            if (recording) {
+              recorder.stop();
+            }
+          };
+
+          // Safety timeout
+          setTimeout(() => {
+            if (recording) {
+              recorder.stop();
+            }
+          }, (video.duration || 60) * 1000 + 5000);
+        };
+
+        video.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error('Could not load video file'));
+        };
+      });
+    }
+
+    // Audio conversion
+    async function convertAudio(file, fromExt, toExt) {
+      return new Promise((resolve, reject) => {
+        const audio = document.createElement('audio');
+        audio.preload = 'auto';
+        
+        const url = URL.createObjectURL(file);
+        audio.src = url;
+
+        audio.oncanplaythrough = () => {
+          // Determine MIME type based on target format
+          let mimeType = 'audio/webm';
+          
+          if (toExt === 'webm' || toExt === 'ogg') {
+            mimeType = 'audio/webm';
+          } else if (toExt === 'mp3') {
+            mimeType = 'audio/mpeg';
+          } else if (toExt === 'wav') {
+            mimeType = 'audio/wav';
+          } else if (toExt === 'm4a') {
+            mimeType = 'audio/mp4';
+          } else if (toExt === 'flac') {
+            mimeType = 'audio/flac';
+          }
+
+          // Check if MediaRecorder supports the format
+          if (!MediaRecorder.isTypeSupported(mimeType)) {
+            // Fallback to webm
+            mimeType = 'audio/webm';
+            if (!MediaRecorder.isTypeSupported(mimeType)) {
+              URL.revokeObjectURL(url);
+              reject(new Error('Audio conversion not supported in this browser. Try Chrome or Firefox.'));
+              return;
+            }
+          }
+
+          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          const source = audioContext.createMediaElementSource(audio);
+          const destination = audioContext.createMediaStreamDestination();
+          source.connect(destination);
+          source.connect(audioContext.destination);
+
+          const chunks = [];
+          const recorder = new MediaRecorder(destination.stream, {
+            mimeType: mimeType,
+            audioBitsPerSecond: 128000 // 128 kbps
+          });
+
+          recorder.ondataavailable = (e) => {
+            if (e.data.size > 0) {
+              chunks.push(e.data);
+            }
+          };
+
+          recorder.onstop = () => {
+            const blob = new Blob(chunks, { type: mimeType });
+            audioContext.close();
+            URL.revokeObjectURL(url);
+            resolve(blob);
+          };
+
+          recorder.onerror = (e) => {
+            audioContext.close();
+            URL.revokeObjectURL(url);
+            reject(new Error('Recording error: ' + e.error));
+          };
+
+          audio.onplay = () => {
+            recorder.start();
+          };
+
+          audio.onended = () => {
+            recorder.stop();
+          };
+
+          // Start playback
+          audio.play().catch(err => {
+            audioContext.close();
+            URL.revokeObjectURL(url);
+            reject(new Error('Could not play audio: ' + err.message));
+          });
+
+          // Safety timeout
+          setTimeout(() => {
+            if (recorder.state === 'recording') {
+              recorder.stop();
+            }
+          }, (audio.duration || 60) * 1000 + 5000);
+        };
+
+        audio.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error('Could not load audio file'));
+        };
+      });
     }
   </script>
 </body>
