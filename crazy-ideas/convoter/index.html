@@ -890,13 +890,25 @@
       const arrayBuffer = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       let text = '';
+      let hasText = false;
+      
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
         const page = await pdf.getPage(pageNum);
         const content = await page.getTextContent();
-        const pageText = content.items.map(item => item.str).join(' ');
+        const pageText = content.items.map(item => item.str).join(' ').trim();
+        
+        if (pageText.length > 0) {
+          hasText = true;
         text += pageText + '\n\n';
       }
-      return new Blob([text], { type: 'text/plain' });
+      }
+      
+      // If no text was extracted, the PDF might be image-based
+      if (!hasText || text.trim().length === 0) {
+        throw new Error('This PDF appears to be image-based or scanned. No selectable text was found. Please use OCR software first to extract text, then convert.');
+      }
+      
+      return new Blob([text.trim()], { type: 'text/plain' });
     }
 
     // PDF to HTML
@@ -983,11 +995,33 @@
       const textBlob = await pdfToText(file);
       const text = await textBlob.text();
       
+      // Validate text content
+      if (!text || text.trim().length === 0) {
+        throw new Error('No text content extracted from PDF. The PDF may be image-based or scanned. Please use OCR software first.');
+      }
+      
       // Convert text to HTML first
-      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;white-space:pre-wrap;}</style></head><body>${text.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
+      const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+      
+      if (paragraphs.length === 0) {
+        // Fallback: use single line breaks
+        const lines = text.split(/\n/).filter(l => l.trim().length > 0);
+        if (lines.length === 0) {
+          throw new Error('No readable text found in PDF. The file may be image-based.');
+        }
+        paragraphs.push(...lines);
+      }
+      
+      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;white-space:pre-wrap;}</style></head><body>${paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
       
       // Use the library to convert HTML to DOCX
       const converted = htmlDocxLib.asBlob(html);
+      
+      // Validate the converted blob
+      if (!converted || converted.size === 0) {
+        throw new Error('Failed to generate DOCX file. Please try converting to TXT or HTML first.');
+      }
+      
       return converted;
     }
 
@@ -1026,9 +1060,31 @@
     async function textToDocx(file) {
       const htmlDocxLib = await getHtmlDocxLib();
       const text = await file.text();
+      
+      // Validate text content
+      if (!text || text.trim().length === 0) {
+        throw new Error('Text file is empty. Please provide a file with content.');
+      }
+      
       // Convert text to HTML first, then to DOCX
-      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;white-space:pre-wrap;}</style></head><body>${text.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
-      return await htmlToDocx(new Blob([html], { type: 'text/html' }));
+      const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+      if (paragraphs.length === 0) {
+        // Fallback: use single line breaks
+        paragraphs.push(...text.split(/\n/).filter(l => l.trim().length > 0));
+      }
+      
+      if (paragraphs.length === 0) {
+        throw new Error('No readable content found in text file.');
+      }
+      
+      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;white-space:pre-wrap;}</style></head><body>${paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
+      const result = await htmlToDocx(new Blob([html], { type: 'text/html' }));
+      
+      if (!result || result.size === 0) {
+        throw new Error('Failed to generate DOCX file.');
+      }
+      
+      return result;
     }
 
     // HTML to DOCX
