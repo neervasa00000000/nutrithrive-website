@@ -738,6 +738,10 @@
         if (toExt === 'docx') {
           return await pdfToDocx(file);
         }
+        // PDF to Image conversions
+        if (formats.images.map(f => f.toLowerCase()).includes(toExt)) {
+          return await pdfToImage(file, toExt);
+        }
         // DOC, ODT require server-side processing
         if (['doc', 'odt'].includes(toExt)) {
           throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. Try converting to DOCX, TXT or HTML first.`);
@@ -870,6 +874,64 @@
       }
       html += '</body></html>';
       return new Blob([html], { type: 'text/html' });
+    }
+
+    // PDF to Image
+    async function pdfToImage(file, targetFormat) {
+      if (!window.pdfjsLib) throw new Error('PDF library not loaded');
+      
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      
+      // For multi-page PDFs, combine all pages into one tall image
+      const scale = 2; // Higher quality
+      const pages = [];
+      let totalHeight = 0;
+      let maxWidth = 0;
+      
+      // Render all pages first to get dimensions
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const viewport = page.getViewport({ scale });
+        maxWidth = Math.max(maxWidth, viewport.width);
+        totalHeight += viewport.height;
+        pages.push({ page, viewport, height: viewport.height });
+      }
+      
+      // Create combined canvas
+      const canvas = document.createElement('canvas');
+      canvas.width = maxWidth;
+      canvas.height = totalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Render all pages onto the canvas
+      let currentY = 0;
+      for (const { page, viewport } of pages) {
+        const renderContext = {
+          canvasContext: ctx,
+          viewport: viewport
+        };
+        await page.render(renderContext).promise;
+        currentY += viewport.height;
+        ctx.translate(0, viewport.height);
+      }
+      
+      // Convert canvas to blob in target format
+      return new Promise((resolve, reject) => {
+        const mimeType = targetFormat === 'jpg' || targetFormat === 'jpeg' 
+          ? 'image/jpeg' 
+          : `image/${targetFormat}`;
+        
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error('Failed to convert PDF page to image'));
+          }
+        }, mimeType, 0.95);
+      });
     }
 
     // PDF to DOCX
