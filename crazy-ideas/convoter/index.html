@@ -938,10 +938,15 @@
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       
       // For multi-page PDFs, combine all pages into one tall image
-      const scale = 2; // Higher quality
+      const scale = 2; // Higher quality (2x resolution)
       const pages = [];
       let totalHeight = 0;
       let maxWidth = 0;
+      
+      // Show progress for large PDFs
+      if (pdf.numPages > 1) {
+        showStatus(`Rendering ${pdf.numPages} pages...`, 'info');
+      }
       
       // Render all pages first to get dimensions
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
@@ -957,34 +962,82 @@
       canvas.width = maxWidth;
       canvas.height = totalHeight;
       const ctx = canvas.getContext('2d');
+      
+      // Fill with white background
       ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Render all pages onto the canvas
       let currentY = 0;
-      for (const { page, viewport } of pages) {
+      for (let i = 0; i < pages.length; i++) {
+        const { page, viewport } = pages[i];
+        
+        // Show progress
+        if (pdf.numPages > 1) {
+          showStatus(`Rendering page ${i + 1} of ${pdf.numPages}...`, 'info');
+        }
+        
+        // Save context before translation
+        ctx.save();
+        
+        // Translate to position for this page
+        ctx.translate(0, currentY);
+        
+        // Render the page
         const renderContext = {
           canvasContext: ctx,
           viewport: viewport
         };
+        
         await page.render(renderContext).promise;
+        
+        // Restore context
+        ctx.restore();
+        
+        // Move to next page position
         currentY += viewport.height;
-        ctx.translate(0, viewport.height);
       }
       
       // Convert canvas to blob in target format
       return new Promise((resolve, reject) => {
-        const mimeType = targetFormat === 'jpg' || targetFormat === 'jpeg' 
-          ? 'image/jpeg' 
-          : `image/${targetFormat}`;
+        let mimeType;
+        let quality = 0.95;
+        
+        // Determine MIME type and quality based on target format
+        if (targetFormat === 'jpg' || targetFormat === 'jpeg') {
+          mimeType = 'image/jpeg';
+          quality = 0.92; // Slightly lower for JPEG
+        } else if (targetFormat === 'png') {
+          mimeType = 'image/png';
+        } else if (targetFormat === 'webp') {
+          mimeType = 'image/webp';
+          quality = 0.90;
+        } else if (targetFormat === 'gif') {
+          // GIF doesn't support quality parameter, convert to PNG first then handle separately
+          mimeType = 'image/png';
+        } else if (targetFormat === 'tiff' || targetFormat === 'tif') {
+          // Browser doesn't support TIFF directly, convert to PNG
+          mimeType = 'image/png';
+        } else {
+          mimeType = 'image/png'; // Default fallback
+        }
         
         canvas.toBlob((blob) => {
           if (blob) {
+            // For formats that need special handling
+            if (targetFormat === 'gif') {
+              // GIF conversion would require additional library
+              // For now, return PNG and inform user
+              showStatus('GIF conversion requires additional processing. PNG format provided.', 'info');
+            }
+            if (targetFormat === 'tiff' || targetFormat === 'tif') {
+              showStatus('TIFF conversion requires additional processing. PNG format provided.', 'info');
+            }
             resolve(blob);
           } else {
-            reject(new Error('Failed to convert PDF page to image'));
+            reject(new Error('Failed to convert PDF to image. Please try a different format.'));
           }
-        }, mimeType, 0.95);
+        }, mimeType, quality);
       });
     }
 
