@@ -1165,6 +1165,11 @@
       document.body.classList.remove('screen-flicker');
       challengePhase = false;
       clickCount = 0;
+      phaseAfterFooled = 0;
+      
+      // Hide side buttons
+      document.getElementById('left-button').classList.remove('active');
+      document.getElementById('bottom-right-button').classList.remove('active');
       
       // Remove overlay effects
       const staticOverlay = document.getElementById('static-overlay');
