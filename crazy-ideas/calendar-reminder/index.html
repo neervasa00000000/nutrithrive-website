@@ -1002,11 +1002,12 @@
               
               // Find the date that matches both day name and day number
               const currentYear = now.getFullYear();
-              let date = new Date(currentYear, monthIdx, day);
+              // Create date at noon to avoid timezone issues causing day shift
+              let date = new Date(currentYear, monthIdx, day, 12, 0, 0, 0);
               
               // Adjust year if date is in the past
               if (date < now) {
-                date = new Date(currentYear + 1, monthIdx, day);
+                date = new Date(currentYear + 1, monthIdx, day, 12, 0, 0, 0);
               }
               
               // Verify day name matches
