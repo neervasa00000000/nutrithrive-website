@@ -387,7 +387,13 @@
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/7zip-wasm@0.0.5/dist/index.js"></script>
+  <script>
+    // Ensure html-docx-js is available globally
+    if (typeof HTMLDocx === 'undefined' && typeof window !== 'undefined') {
+      // Try alternative global name
+      window.HTMLDocx = window.htmlDocx || window.HTMLDocx;
+    }
+  </script>
   <script>
     if (window.pdfjsLib) {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
@@ -866,32 +872,43 @@
 
     // PDF to DOCX
     async function pdfToDocx(file) {
-      if (typeof HTMLDocx === 'undefined') {
-        throw new Error('DOCX library not loaded. Please reload the page.');
+      // Check for html-docx-js library
+      const htmlDocxLib = window.HTMLDocx || window.htmlDocx || (typeof HTMLDocx !== 'undefined' ? HTMLDocx : null);
+      if (!htmlDocxLib) {
+        throw new Error('DOCX library not loaded. Please reload the page and wait for libraries to load.');
       }
+      
       const textBlob = await pdfToText(file);
       const text = await textBlob.text();
-      return await textToDocx(new Blob([text], { type: 'text/plain' }));
+      
+      // Convert text to HTML first
+      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;white-space:pre-wrap;}</style></head><body>${text.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
+      
+      // Use the library to convert HTML to DOCX
+      const converted = htmlDocxLib.asBlob(html);
+      return converted;
     }
 
     // Text to DOCX
     async function textToDocx(file) {
-      if (typeof HTMLDocx === 'undefined') {
-        throw new Error('DOCX library not loaded. Please reload the page.');
+      const htmlDocxLib = window.HTMLDocx || window.htmlDocx || (typeof HTMLDocx !== 'undefined' ? HTMLDocx : null);
+      if (!htmlDocxLib) {
+        throw new Error('DOCX library not loaded. Please reload the page and wait for libraries to load.');
       }
       const text = await file.text();
       // Convert text to HTML first, then to DOCX
-      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;}</style></head><body>${text.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
+      const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;white-space:pre-wrap;}</style></head><body>${text.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
       return await htmlToDocx(new Blob([html], { type: 'text/html' }));
     }
 
     // HTML to DOCX
     async function htmlToDocx(file) {
-      if (typeof HTMLDocx === 'undefined') {
-        throw new Error('DOCX library not loaded. Please reload the page.');
+      const htmlDocxLib = window.HTMLDocx || window.htmlDocx || (typeof HTMLDocx !== 'undefined' ? HTMLDocx : null);
+      if (!htmlDocxLib) {
+        throw new Error('DOCX library not loaded. Please reload the page and wait for libraries to load.');
       }
       const html = await file.text();
-      const converted = HTMLDocx.asBlob(html);
+      const converted = htmlDocxLib.asBlob(html);
       return converted;
     }
 
