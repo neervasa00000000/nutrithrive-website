@@ -1792,11 +1792,6 @@
           return window.SimpleDateParser.parse(text, refDate);
         }
       };
-      
-      // Also make it available as a global variable
-      if (typeof chrono === 'undefined') {
-        window.chrono = window.chrono;
-      }
     })();
     
     // Enable button immediately since we don't need external library
