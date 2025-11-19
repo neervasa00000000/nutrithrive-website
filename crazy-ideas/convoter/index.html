@@ -874,30 +874,7 @@
 
     // PDF to DOCX
     async function pdfToDocx(file) {
-      // Check for html-docx-js library with multiple fallbacks
-      const htmlDocxLib = window.HTMLDocx || window.htmlDocx || window.htmlDocxJs || (typeof HTMLDocx !== 'undefined' ? HTMLDocx : null);
-      
-      if (!htmlDocxLib || typeof htmlDocxLib.asBlob !== 'function') {
-        // Try loading from unpkg as fallback
-        if (!window.htmlDocxLoaded) {
-          await new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = 'https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js';
-            script.onload = () => {
-              window.htmlDocxLoaded = true;
-              resolve();
-            };
-            script.onerror = reject;
-            document.head.appendChild(script);
-          });
-        }
-        
-        const fallbackLib = window.HTMLDocx || window.htmlDocx || window.htmlDocxJs;
-        if (!fallbackLib || typeof fallbackLib.asBlob !== 'function') {
-          throw new Error('DOCX library failed to load. Please check your internet connection and reload the page.');
-        }
-        return await pdfToDocx(file); // Retry with loaded library
-      }
+      const htmlDocxLib = await getHtmlDocxLib();
       
       const textBlob = await pdfToText(file);
       const text = await textBlob.text();
@@ -910,12 +887,40 @@
       return converted;
     }
 
+    // Helper function to get html-docx-js library
+    async function getHtmlDocxLib() {
+      let htmlDocxLib = window.HTMLDocx || window.htmlDocx || window.htmlDocxJs || (typeof HTMLDocx !== 'undefined' ? HTMLDocx : null);
+      
+      if (!htmlDocxLib || typeof htmlDocxLib.asBlob !== 'function') {
+        // Try loading from unpkg as fallback
+        if (!window.htmlDocxLoaded) {
+          await new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js';
+            script.onload = () => {
+              window.htmlDocxLoaded = true;
+              resolve();
+            };
+            script.onerror = () => {
+              console.error('Failed to load html-docx-js from fallback CDN');
+              resolve(); // Don't reject, just continue
+            };
+            document.head.appendChild(script);
+          });
+        }
+        
+        htmlDocxLib = window.HTMLDocx || window.htmlDocx || window.htmlDocxJs;
+        if (!htmlDocxLib || typeof htmlDocxLib.asBlob !== 'function') {
+          throw new Error('DOCX library failed to load. Please check your internet connection and reload the page.');
+        }
+      }
+      
+      return htmlDocxLib;
+    }
+
     // Text to DOCX
     async function textToDocx(file) {
-      const htmlDocxLib = window.HTMLDocx || window.htmlDocx || (typeof HTMLDocx !== 'undefined' ? HTMLDocx : null);
-      if (!htmlDocxLib) {
-        throw new Error('DOCX library not loaded. Please reload the page and wait for libraries to load.');
-      }
+      const htmlDocxLib = await getHtmlDocxLib();
       const text = await file.text();
       // Convert text to HTML first, then to DOCX
       const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;line-height:1.6;padding:20px;max-width:800px;margin:0 auto;}p{margin:12px 0;white-space:pre-wrap;}</style></head><body>${text.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`).join('')}</body></html>`;
@@ -924,10 +929,7 @@
 
     // HTML to DOCX
     async function htmlToDocx(file) {
-      const htmlDocxLib = window.HTMLDocx || window.htmlDocx || (typeof HTMLDocx !== 'undefined' ? HTMLDocx : null);
-      if (!htmlDocxLib) {
-        throw new Error('DOCX library not loaded. Please reload the page and wait for libraries to load.');
-      }
+      const htmlDocxLib = await getHtmlDocxLib();
       const html = await file.text();
       const converted = htmlDocxLib.asBlob(html);
       return converted;
