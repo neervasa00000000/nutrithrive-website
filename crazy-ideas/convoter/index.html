@@ -386,6 +386,8 @@
   <script src="jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/7zip-wasm@0.0.5/dist/index.js"></script>
   <script>
     if (window.pdfjsLib) {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
@@ -739,6 +741,28 @@
         return await textToPdf(file);
       }
 
+      // DOCX conversions
+      if (fromExt === 'docx') {
+        if (toExt === 'pdf') {
+          return await docxToPdf(file);
+        }
+        if (toExt === 'txt') {
+          return await docxToText(file);
+        }
+        if (toExt === 'html') {
+          return await docxToHtml(file);
+        }
+        if (toExt === 'rtf') {
+          return await docxToRtf(file);
+        }
+        if (toExt === 'doc') {
+          throw new Error('DOCX to DOC conversion requires server-side processing. Try converting to PDF or HTML instead.');
+        }
+        if (toExt === 'odt') {
+          throw new Error('DOCX to ODT conversion requires server-side processing. Try converting to PDF or HTML instead.');
+        }
+      }
+
       // HTML conversions
       if (fromExt === 'html') {
         if (toExt === 'pdf') {
@@ -753,7 +777,7 @@
         }
       }
 
-      // Document conversions (non-PDF)
+      // Document conversions (non-PDF, non-DOCX)
       if (formats.documents.map(f => f.toLowerCase()).includes(fromExt) && 
           formats.documents.map(f => f.toLowerCase()).includes(toExt)) {
         return await convertDocument(file, fromExt, toExt);
@@ -871,6 +895,48 @@
       return converted;
     }
 
+    // DOCX to Text
+    async function docxToText(file) {
+      if (typeof mammoth === 'undefined') {
+        throw new Error('DOCX reader library not loaded. Please reload the page.');
+      }
+      const arrayBuffer = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({ arrayBuffer });
+      return new Blob([result.value], { type: 'text/plain' });
+    }
+
+    // DOCX to HTML
+    async function docxToHtml(file) {
+      if (typeof mammoth === 'undefined') {
+        throw new Error('DOCX reader library not loaded. Please reload the page.');
+      }
+      const arrayBuffer = await file.arrayBuffer();
+      const result = await mammoth.convertToHtml({ arrayBuffer });
+      return new Blob([result.value], { type: 'text/html' });
+    }
+
+    // DOCX to PDF
+    async function docxToPdf(file) {
+      if (typeof mammoth === 'undefined' || !window.jspdf) {
+        throw new Error('Required libraries not loaded. Please reload the page.');
+      }
+      // Convert DOCX to text first, then to PDF
+      const textBlob = await docxToText(file);
+      return await textToPdf(textBlob);
+    }
+
+    // DOCX to RTF
+    async function docxToRtf(file) {
+      if (typeof mammoth === 'undefined') {
+        throw new Error('DOCX reader library not loaded. Please reload the page.');
+      }
+      // Convert DOCX to text first, then to RTF
+      const textBlob = await docxToText(file);
+      const text = await textBlob.text();
+      const rtf = `{\\rtf1\\ansi\\deff0 {\\fonttbl {\\f0 Times New Roman;}}\\f0\\fs24 ${text.replace(/\n/g, '\\par ').replace(/[{}]/g, '')}}`;
+      return new Blob([rtf], { type: 'application/rtf' });
+    }
+
     // Text to PDF
     async function textToPdf(file) {
       if (!window.jspdf || !window.jspdf.jsPDF) throw new Error('PDF generator not loaded');
@@ -952,9 +1018,9 @@
         return await htmlToDocx(file);
       }
 
-      // DOCX, DOC, ODT reading requires special libraries
-      if (['docx', 'doc', 'odt'].includes(fromExt)) {
-        throw new Error(`Reading ${fromExt.toUpperCase()} files requires server-side processing. Please convert your file to TXT or HTML first, then convert to your desired format.`);
+      // DOC, ODT reading requires special libraries
+      if (['doc', 'odt'].includes(fromExt)) {
+        throw new Error(`Reading ${fromExt.toUpperCase()} files requires server-side processing. Please convert your file to DOCX, TXT or HTML first, then convert to your desired format.`);
       }
 
       // DOC, ODT writing requires server-side processing
@@ -975,20 +1041,24 @@
       }
 
       if (fromExt === 'zip') {
-        const zip = await JSZip.loadAsync(file);
-        const files = [];
-        zip.forEach((relativePath, file) => {
-          files.push({ name: relativePath, data: file });
-        });
+        if (toExt === 'rar' || toExt === '7z') {
+          // ZIP to RAR/7Z requires server-side processing
+          throw new Error(`${toExt.toUpperCase()} conversion requires server-side processing. ZIP files can be opened by most archive tools.`);
+        }
         
         if (toExt === 'tar') {
-          // Convert to TAR format (simplified)
+          // Convert ZIP to TAR (simplified - just re-zip)
           showStatus('TAR conversion requires additional library. ZIP format maintained.', 'info');
           return file;
         }
       }
 
-      throw new Error('Archive conversion not fully supported');
+      // RAR/7Z to ZIP requires extraction libraries
+      if (['rar', '7z'].includes(fromExt)) {
+        throw new Error(`${fromExt.toUpperCase()} extraction requires server-side processing. Please extract the file first, then create a new ZIP archive.`);
+      }
+
+      throw new Error(`Archive conversion from ${fromExt.toUpperCase()} to ${toExt.toUpperCase()} is not supported.`);
     }
 
     // Video conversion
