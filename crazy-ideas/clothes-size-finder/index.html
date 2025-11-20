@@ -88,14 +88,14 @@
 
     .tab:hover:not(.active) {
       background: white;
-      color: #FFD6BA;
-      border-color: #FFE8CD;
+      color: var(--primary);
+      border-color: var(--border);
     }
 
     .tab.active {
-      background: #FFD6BA;
-      color: #2d3748;
-      border-color: #FFD6BA;
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
     }
 
     .tab-content {
@@ -137,7 +137,7 @@
       flex: 1;
       padding: 1em 1.5em;
       background: white;
-      border: 2px solid #FFE8CD;
+      border: 2px solid var(--border);
       border-radius: 10px;
       font-weight: 600;
       cursor: pointer;
@@ -147,14 +147,14 @@
     }
 
     .toggle-btn:hover {
-      border-color: #FFD6BA;
-      color: #FFD6BA;
+      border-color: var(--primary);
+      color: var(--primary);
     }
 
     .toggle-btn.active {
-      background: #FFD6BA;
-      color: #2d3748;
-      border-color: #FFD6BA;
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
     }
 
     .input-method {
@@ -186,7 +186,7 @@
     input, select {
       width: 100%;
       padding: 1em;
-      border: 2px solid #FFE8CD;
+      border: 2px solid var(--border);
       border-radius: 10px;
       font-size: 1em;
       transition: all 0.3s ease;
@@ -196,7 +196,8 @@
 
     input:focus, select:focus {
       outline: none;
-      border-color: #FFD6BA;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(146, 72, 122, 0.1);
     }
 
     .size-selector {
@@ -208,7 +209,7 @@
 
     .size-option {
       padding: 1.2em;
-      border: 2px solid #FFE8CD;
+      border: 2px solid var(--border);
       border-radius: 12px;
       text-align: center;
       cursor: pointer;
@@ -220,22 +221,22 @@
     }
 
     .size-option:hover {
-      border-color: #FFD6BA;
-      background: #FFF2EB;
+      border-color: var(--primary);
+      background: var(--secondary);
     }
 
     .size-option.selected {
-      background: #FFD6BA;
-      color: #2d3748;
-      border-color: #FFD6BA;
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
     }
 
     .convert-btn {
       width: 100%;
       padding: 1.5em;
-      background: #FFD6BA;
-      color: #2d3748;
-      border: 2px solid #FFD6BA;
+      background: var(--primary);
+      color: white;
+      border: 2px solid var(--primary);
       border-radius: 14px;
       font-size: 1.2em;
       font-weight: 700;
@@ -245,8 +246,8 @@
     }
 
     .convert-btn:hover {
-      background: #FFE8CD;
-      border-color: #FFE8CD;
+      background: var(--accent);
+      border-color: var(--accent);
     }
 
     .results {
@@ -274,12 +275,12 @@
     .your-size {
       display: inline-block;
       padding: 0.8em 2em;
-      background: #FFD6BA;
-      color: #2d3748;
+      background: var(--primary);
+      color: white;
       border-radius: 50px;
       font-size: 2em;
       font-weight: 700;
-      border: 2px solid #FFD6BA;
+      border: 2px solid var(--primary);
     }
 
     .brand-grid {
@@ -291,15 +292,16 @@
 
     .brand-card {
       background: white;
-      border: 2px solid #FFE8CD;
+      border: 2px solid var(--border);
       border-radius: 18px;
       padding: 2em;
       transition: all 0.3s ease;
     }
 
     .brand-card:hover {
-      border-color: #FFD6BA;
-      background: #FFF2EB;
+      border-color: var(--primary);
+      background: var(--secondary);
+      box-shadow: 0 2px 8px rgba(84, 8, 99, 0.1);
     }
 
     .brand-name {
@@ -312,7 +314,7 @@
     .size-display {
       font-size: 3em;
       font-weight: 700;
-      color: #FFD6BA;
+      color: var(--primary);
       margin: 0.5em 0;
     }
 
@@ -326,7 +328,7 @@
     }
 
     .size-detail {
-      background: #FFF2EB;
+      background: var(--secondary);
       padding: 0.8em;
       border-radius: 10px;
       text-align: center;
@@ -348,27 +350,27 @@
     }
 
     .note {
-      background: #FFE8CD;
+      background: var(--secondary);
       padding: 2em;
       border-radius: 16px;
       margin-top: 3em;
-      border-left: 6px solid #FFD6BA;
-      color: #2d3748;
+      border-left: 6px solid var(--primary);
+      color: var(--text);
       font-size: 1.05em;
       line-height: 1.8;
     }
 
     .note strong {
-      color: #2d3748;
+      color: var(--text);
       font-weight: 700;
     }
 
     .measurement-guide {
-      background: #FFF2EB;
+      background: var(--secondary);
       padding: 2em;
       border-radius: 16px;
       margin-top: 2em;
-      border: 2px solid #FFE8CD;
+      border: 2px solid var(--border);
     }
 
     .measurement-guide h3 {
