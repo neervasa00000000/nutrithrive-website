@@ -401,17 +401,204 @@
     }
 
     @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+
+      .container {
+        padding: 1rem 0.5rem;
+      }
+
+      .header {
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+      }
+
+      .tabs {
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab {
+        min-width: 120px;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+
+      .content {
+        padding: 0;
+      }
+
+      .input-section {
+        padding: 0;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .input-toggle {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .toggle-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+      }
+
       .size-selector {
         grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
       }
-      .brand-grid {
+
+      .size-option {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .input-group {
         grid-template-columns: 1fr;
+        gap: 1rem;
       }
-      .content {
-        padding: 2em 1em;
+
+      .input-box {
+        max-width: 100% !important;
       }
-      .input-section {
-        padding: 2em 1.5em;
+
+      .input-box input,
+      .input-box select {
+        font-size: 1rem;
+        padding: 0.875rem;
+      }
+
+      .convert-btn {
+        padding: 1rem;
+        font-size: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .result-header {
+        padding: 0.75rem 0;
+        margin-bottom: 1rem;
+      }
+
+      .result-header h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .your-size {
+        font-size: 1.25rem;
+        padding: 0.4rem 1rem;
+      }
+
+      .brand-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .brand-card {
+        padding: 0.75rem;
+      }
+
+      .brand-name {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .size-display {
+        font-size: 1.5rem;
+        margin: 0.25rem 0;
+      }
+
+      .size-details {
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+      }
+
+      .size-detail {
+        padding: 0.4rem;
+      }
+
+      .size-label {
+        font-size: 0.6rem;
+      }
+
+      .size-value {
+        font-size: 0.8rem;
+      }
+
+      .measurement-guide {
+        padding: 1rem;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .measurement-guide h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .measurement-guide li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        font-size: 0.85rem;
+      }
+
+      .note {
+        padding: 0.75rem;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .product-promo {
+        padding: 1rem !important;
+        margin-top: 1.5rem !important;
+      }
+
+      .product-promo h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+
+      .product-promo p {
+        font-size: 0.85rem !important;
+        margin-bottom: 1rem !important;
+      }
+
+      .product-promo a {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.85rem !important;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-promo > div {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
       }
     }
   </style>
@@ -536,10 +723,10 @@
             </div>
             <div id="menWaistInput" class="input-method" style="display:none;">
               <div class="input-group">
-                <div class="input-box" style="max-width: 300px; margin: 0 auto;">
-                  <label>Waist Size (inches)</label>
-                  <input type="number" id="menWaistInches" placeholder="Enter waist size" min="24" max="50" step="0.5">
-                </div>
+              <div class="input-box" style="max-width: 100%; margin: 0 auto;">
+                <label>Waist Size (inches)</label>
+                <input type="number" id="menWaistInches" placeholder="Enter waist size" min="24" max="50" step="0.5">
+              </div>
               </div>
               <div class="measurement-guide">
                 <h3>How to Measure</h3>
@@ -1450,7 +1637,7 @@
     }
   </script>
 
-  <div style="max-width: 900px; margin: 2rem auto 0; padding: 0 1rem 2rem;">
+  <div style="max-width: 900px; margin: 2rem auto 0; padding: 0 1rem 2rem;" class="product-promo">
     <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center;">
       <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 1rem;">Shop NutriThrive Products</h3>
       <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 0.95rem;">Discover premium superfoods and wellness products:</p>
