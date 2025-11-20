@@ -38,7 +38,7 @@
       margin: 0 auto;
       background: var(--card);
       border-radius: 24px;
-      box-shadow: 0 25px 80px rgba(0,0,0,0.15);
+      border: 2px solid #FFE8CD;
       overflow: hidden;
     }
 
@@ -121,14 +121,12 @@
       background: white;
       color: #FFD6BA;
       border-color: #FFE8CD;
-      transform: translateY(-2px);
     }
 
     .tab.active {
       background: linear-gradient(135deg, #FFD6BA 0%, #FFE8CD 100%);
       color: #2d3748;
-      box-shadow: 0 8px 20px rgba(255,214,186,0.4);
-      border-color: transparent;
+      border-color: #FFD6BA;
     }
 
     .tab-content {
@@ -146,11 +144,11 @@
     }
 
     .input-section {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      background: #FFF2EB;
       padding: 3em;
       border-radius: 20px;
       margin-bottom: 3em;
-      border: 2px solid var(--border);
+      border: 2px solid #FFE8CD;
     }
 
     .section-title {
@@ -170,7 +168,7 @@
       background: var(--card);
       padding: 0.75em;
       border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 2px solid #FFE8CD;
     }
 
     .toggle-btn {
@@ -194,8 +192,7 @@
     .toggle-btn.active {
       background: linear-gradient(135deg, #FFD6BA 0%, #FFE8CD 100%);
       color: #2d3748;
-      border-color: transparent;
-      box-shadow: 0 4px 12px rgba(255,214,186,0.3);
+      border-color: #FFD6BA;
     }
 
     .input-method {
@@ -212,14 +209,12 @@
       background: var(--card);
       padding: 1.5em;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border: 2px solid var(--border);
+      border: 2px solid #FFE8CD;
       transition: all 0.3s ease;
     }
 
     .input-box:focus-within {
       border-color: #FFD6BA;
-      box-shadow: 0 4px 12px rgba(255,214,186,0.25);
     }
 
     label {
@@ -244,7 +239,6 @@
     input:focus, select:focus {
       outline: none;
       border-color: #FFD6BA;
-      box-shadow: 0 0 0 4px rgba(255,214,186,0.2);
     }
 
     .size-selector {
@@ -269,16 +263,13 @@
 
     .size-option:hover {
       border-color: #FFD6BA;
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(255,214,186,0.3);
+      background: #FFF2EB;
     }
 
     .size-option.selected {
       background: linear-gradient(135deg, #FFD6BA 0%, #FFE8CD 100%);
       color: #2d3748;
-      border-color: transparent;
-      box-shadow: 0 6px 20px rgba(255,214,186,0.4);
-      transform: translateY(-3px);
+      border-color: #FFD6BA;
     }
 
     .convert-btn {
@@ -286,23 +277,17 @@
       padding: 1.5em;
       background: linear-gradient(135deg, #FFD6BA 0%, #FFE8CD 100%);
       color: #2d3748;
-      border: none;
+      border: 2px solid #FFD6BA;
       border-radius: 14px;
       font-size: 1.2em;
       font-weight: 700;
       cursor: pointer;
       margin-top: 2em;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 24px rgba(255,214,186,0.4);
     }
 
     .convert-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(255,214,186,0.5);
-    }
-
-    .convert-btn:active {
-      transform: translateY(-1px);
+      background: linear-gradient(135deg, #FFE8CD 0%, #FFD6BA 100%);
     }
 
     .results {
@@ -318,8 +303,9 @@
       text-align: center;
       margin-bottom: 3em;
       padding: 2em;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      background: #FFF2EB;
       border-radius: 20px;
+      border: 2px solid #FFE8CD;
     }
 
     .result-header h2 {
@@ -337,7 +323,7 @@
       border-radius: 50px;
       font-size: 2em;
       font-weight: 700;
-      box-shadow: 0 8px 24px rgba(255,214,186,0.4);
+      border: 2px solid #FFD6BA;
     }
 
     .brand-grid {
@@ -368,9 +354,8 @@
     }
 
     .brand-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 32px rgba(255,214,186,0.2);
       border-color: #FFD6BA;
+      background: #FFF2EB;
     }
 
     .brand-name {
