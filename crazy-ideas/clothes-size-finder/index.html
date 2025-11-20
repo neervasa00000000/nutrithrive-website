@@ -650,17 +650,75 @@
       if (selectedSize) {
         letterSize = selectedSize;
       } else if (bust || waist || hips) {
-        // Use bust as primary measurement, fallback to waist/hips
-        const primaryMeasure = bust || waist || hips;
+        // Match measurements to actual size ranges from sizeMap
+        // Find the size that best matches all provided measurements
+        let bestMatch = null;
+        let bestScore = -1;
         
-        if (primaryMeasure < 80) letterSize = 'XXS';
-        else if (primaryMeasure < 85) letterSize = 'XS';
-        else if (primaryMeasure < 90) letterSize = 'S';
-        else if (primaryMeasure < 95) letterSize = 'M';
-        else if (primaryMeasure < 100) letterSize = 'L';
-        else if (primaryMeasure < 106) letterSize = 'XL';
-        else if (primaryMeasure < 112) letterSize = 'XXL';
-        else letterSize = '3XL';
+        for (const [size, data] of Object.entries(womenSizeMap)) {
+          let score = 0;
+          let matches = 0;
+          
+          if (bust) {
+            const bustRange = data.bust.split('-');
+            const minBust = parseFloat(bustRange[0]);
+            const maxBust = bustRange[1] ? parseFloat(bustRange[1].replace('+', '')) : minBust + 10;
+            if (bust >= minBust && bust <= maxBust) {
+              score += 3;
+              matches++;
+            } else if (bust >= minBust - 2 && bust <= maxBust + 2) {
+              score += 1;
+            }
+          }
+          
+          if (waist) {
+            const waistRange = data.waist.split('-');
+            const minWaist = parseFloat(waistRange[0]);
+            const maxWaist = waistRange[1] ? parseFloat(waistRange[1].replace('+', '')) : minWaist + 10;
+            if (waist >= minWaist && waist <= maxWaist) {
+              score += 3;
+              matches++;
+            } else if (waist >= minWaist - 2 && waist <= maxWaist + 2) {
+              score += 1;
+            }
+          }
+          
+          if (hips) {
+            const hipsRange = data.hips.split('-');
+            const minHips = parseFloat(hipsRange[0]);
+            const maxHips = hipsRange[1] ? parseFloat(hipsRange[1].replace('+', '')) : minHips + 10;
+            if (hips >= minHips && hips <= maxHips) {
+              score += 3;
+              matches++;
+            } else if (hips >= minHips - 2 && hips <= maxHips + 2) {
+              score += 1;
+            }
+          }
+          
+          if (score > bestScore) {
+            bestScore = score;
+            bestMatch = size;
+          }
+        }
+        
+        if (bestMatch) {
+          letterSize = bestMatch;
+        } else {
+          // Fallback: use bust measurement with accurate thresholds
+          if (bust) {
+            if (bust < 80) letterSize = 'XXS';
+            else if (bust < 85) letterSize = 'XS';
+            else if (bust < 90) letterSize = 'S';
+            else if (bust < 95) letterSize = 'M';
+            else if (bust < 100) letterSize = 'L';
+            else if (bust < 106) letterSize = 'XL';
+            else if (bust < 112) letterSize = 'XXL';
+            else letterSize = '3XL';
+          } else {
+            alert('Please enter at least bust measurement for accurate sizing');
+            return;
+          }
+        }
       } else {
         alert('Please select a size or enter at least one measurement');
         return;
@@ -727,16 +785,62 @@
       if (selectedSize) {
         letterSize = selectedSize;
       } else if (chest || waist) {
-        const primaryMeasure = chest || waist;
+        // Match measurements to actual size ranges from sizeMap
+        let bestMatch = null;
+        let bestScore = -1;
         
-        if (primaryMeasure < 88) letterSize = 'XS';
-        else if (primaryMeasure < 95) letterSize = 'S';
-        else if (primaryMeasure < 102) letterSize = 'M';
-        else if (primaryMeasure < 110) letterSize = 'L';
-        else if (primaryMeasure < 118) letterSize = 'XL';
-        else if (primaryMeasure < 126) letterSize = 'XXL';
-        else if (primaryMeasure < 134) letterSize = '3XL';
-        else letterSize = '4XL';
+        for (const [size, data] of Object.entries(menSizeMap)) {
+          let score = 0;
+          let matches = 0;
+          
+          if (chest) {
+            const chestRange = data.chest.split('-');
+            const minChest = parseFloat(chestRange[0]);
+            const maxChest = chestRange[1] ? parseFloat(chestRange[1].replace('+', '')) : minChest + 10;
+            if (chest >= minChest && chest <= maxChest) {
+              score += 5;
+              matches++;
+            } else if (chest >= minChest - 2 && chest <= maxChest + 2) {
+              score += 2;
+            }
+          }
+          
+          if (waist) {
+            const waistRange = data.waist.split('-');
+            const minWaist = parseFloat(waistRange[0]);
+            const maxWaist = waistRange[1] ? parseFloat(waistRange[1].replace('+', '')) : minWaist + 10;
+            if (waist >= minWaist && waist <= maxWaist) {
+              score += 3;
+              matches++;
+            } else if (waist >= minWaist - 2 && waist <= maxWaist + 2) {
+              score += 1;
+            }
+          }
+          
+          if (score > bestScore) {
+            bestScore = score;
+            bestMatch = size;
+          }
+        }
+        
+        if (bestMatch && bestScore > 0) {
+          letterSize = bestMatch;
+        } else {
+          // Fallback: use chest measurement with accurate thresholds
+          if (chest) {
+            if (chest < 92) letterSize = 'XS';
+            else if (chest < 98) letterSize = 'S';
+            else if (chest < 104) letterSize = 'M';
+            else if (chest < 110) letterSize = 'L';
+            else if (chest < 116) letterSize = 'XL';
+            else if (chest < 122) letterSize = 'XXL';
+            else if (chest < 128) letterSize = '3XL';
+            else letterSize = '4XL';
+          } else {
+            alert('Please enter at least chest measurement for accurate sizing');
+            return;
+          }
+        }
       } else {
         alert('Please select a size or enter at least one measurement');
         return;
