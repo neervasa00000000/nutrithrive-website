@@ -435,11 +435,36 @@
       <!-- WOMEN'S SECTION -->
       <div id="womens" class="tab-content active">
         <div class="input-section">
-          <div class="section-title">How would you like to find your size?</div>
+          <div class="section-title">What are you shopping for?</div>
 
-          <div class="input-toggle">
-            <button class="toggle-btn active" onclick="toggleInput('women', 'letter')">By Letter Size (XS, S, M, L, XL)</button>
-            <button class="toggle-btn" onclick="toggleInput('women', 'measurements')">By Measurements (cm)</button>
+          <div class="input-toggle" style="margin-bottom: 1em;">
+            <button class="toggle-btn active" onclick="toggleWearType('women', 'top')" id="womenTopBtn">👕 Top Wear (T-shirts, Blouses)</button>
+            <button class="toggle-btn" onclick="toggleWearType('women', 'bottom')" id="womenBottomBtn">👖 Bottom Wear (Pants, Jeans)</button>
+          </div>
+
+          <div id="womenTopSection">
+            <div class="section-title" style="margin-top: 1em;">How would you like to find your size?</div>
+            <div class="input-toggle">
+              <button class="toggle-btn active" onclick="toggleInput('women', 'letter')">By Letter Size (XS, S, M, L, XL)</button>
+              <button class="toggle-btn" onclick="toggleInput('women', 'measurements')">By Measurements (cm)</button>
+            </div>
+          </div>
+
+          <div id="womenBottomSection" style="display:none;">
+            <div class="section-title" style="margin-top: 1em;">Enter Your Waist Size</div>
+            <div class="input-group">
+              <div class="input-box" style="max-width: 300px; margin: 0 auto;">
+                <label>Waist Size (inches):</label>
+                <input type="number" id="womenWaistInches" placeholder="e.g., 28" min="20" max="50" step="0.5">
+              </div>
+            </div>
+            <div class="measurement-guide">
+              <h3>📏 How to Measure:</h3>
+              <ul>
+                <li><strong>Waist:</strong> Measure around your natural waistline (usually 1-2 inches above your belly button)</li>
+                <li>For pants/jeans, measure where you want the waistband to sit</li>
+              </ul>
+            </div>
           </div>
 
           <div id="womenLetter" class="input-method">
@@ -490,11 +515,36 @@
       <!-- MEN'S SECTION -->
       <div id="mens" class="tab-content">
         <div class="input-section">
-          <div class="section-title">How would you like to find your size?</div>
+          <div class="section-title">What are you shopping for?</div>
 
-          <div class="input-toggle">
-            <button class="toggle-btn active" onclick="toggleInput('men', 'letter')">By Letter Size (XS, S, M, L, XL)</button>
-            <button class="toggle-btn" onclick="toggleInput('men', 'measurements')">By Measurements (cm)</button>
+          <div class="input-toggle" style="margin-bottom: 1em;">
+            <button class="toggle-btn active" onclick="toggleWearType('men', 'top')" id="menTopBtn">👕 Top Wear (T-shirts, Shirts)</button>
+            <button class="toggle-btn" onclick="toggleWearType('men', 'bottom')" id="menBottomBtn">👖 Bottom Wear (Pants, Jeans)</button>
+          </div>
+
+          <div id="menTopSection">
+            <div class="section-title" style="margin-top: 1em;">How would you like to find your size?</div>
+            <div class="input-toggle">
+              <button class="toggle-btn active" onclick="toggleInput('men', 'letter')">By Letter Size (XS, S, M, L, XL)</button>
+              <button class="toggle-btn" onclick="toggleInput('men', 'measurements')">By Measurements (cm)</button>
+            </div>
+          </div>
+
+          <div id="menBottomSection" style="display:none;">
+            <div class="section-title" style="margin-top: 1em;">Enter Your Waist Size</div>
+            <div class="input-group">
+              <div class="input-box" style="max-width: 300px; margin: 0 auto;">
+                <label>Waist Size (inches):</label>
+                <input type="number" id="menWaistInches" placeholder="e.g., 30" min="24" max="50" step="0.5">
+              </div>
+            </div>
+            <div class="measurement-guide">
+              <h3>📏 How to Measure:</h3>
+              <ul>
+                <li><strong>Waist:</strong> Measure around your natural waistline (usually at belly button level)</li>
+                <li>For pants/jeans, measure where you want the waistband to sit</li>
+              </ul>
+            </div>
           </div>
 
           <div id="menLetter" class="input-method">
@@ -532,7 +582,8 @@
             </div>
           </div>
 
-          <button class="convert-btn" onclick="convertMens()">🔍 Find My Size Everywhere</button>
+          <button class="convert-btn" onclick="convertMens()" id="menConvertBtn">🔍 Find My Size Everywhere</button>
+          <button class="convert-btn" onclick="convertMensBottom()" id="menBottomConvertBtn" style="display:none;">🔍 Find My Pant Size</button>
         </div>
         <div id="mensResults" class="results"></div>
       </div>
