@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universal Clothes Size Converter - Find Your Perfect Size</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #667eea;
+      --primary-dark: #5568d3;
+      --secondary: #764ba2;
+      --accent: #f093fb;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --success: #48bb78;
+      --warning: #ed8936;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 2em 1em;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 3.5em 2em;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      padding: 3em 2em;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 3em;
+      flex-wrap: wrap;
+      background: var(--bg);
+      padding: 0.75em;
+      border-radius: 16px;
+    }
+
+    .tab {
+      flex: 1;
+      min-width: 160px;
+      padding: 1.2em 1.8em;
+      background: var(--card);
+      border: 2px solid transparent;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-light);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .tab:hover:not(.active) {
+      background: white;
+      color: var(--primary);
+      border-color: var(--border);
+      transform: translateY(-2px);
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      box-shadow: 0 8px 20px rgba(102,126,234,0.3);
+      border-color: transparent;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 3em;
+      border-radius: 20px;
+      margin-bottom: 3em;
+      border: 2px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.75em;
+      color: var(--text);
+      margin-bottom: 2em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .input-toggle {
+      display: flex;
+      gap: 1em;
+      margin-bottom: 2.5em;
+      background: var(--card);
+      padding: 0.75em;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 1em 1.5em;
+      background: transparent;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-light);
+      font-size: 0.95em;
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .toggle-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(102,126,234,0.2);
+    }
+
+    .input-method {
+      margin-top: 2em;
+    }
+
+    .input-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2em;
+    }
+
+    .input-box {
+      background: var(--card);
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 2px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .input-box:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.8em;
+      color: var(--text);
+      font-size: 0.95em;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 1em;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      background: var(--card);
+      color: var(--text);
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
+    }
+
+    .size-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      gap: 1em;
+      margin-top: 1em;
+    }
+
+    .size-option {
+      padding: 1.2em;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .size-option:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(102,126,234,0.2);
+    }
+
+    .size-option.selected {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+      transform: translateY(-3px);
+    }
+
+    .convert-btn {
+      width: 100%;
+      padding: 1.5em;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.2em;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 2em;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(102,126,234,0.3);
+    }
+
+    .convert-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(102,126,234,0.4);
+    }
+
+    .convert-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .results {
+      display: none;
+    }
+
+    .results.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .result-header {
+      text-align: center;
+      margin-bottom: 3em;
+      padding: 2em;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 20px;
+    }
+
+    .result-header h2 {
+      font-size: 2em;
+      color: var(--text);
+      margin-bottom: 1em;
+      font-weight: 700;
+    }
+
+    .your-size {
+      display: inline-block;
+      padding: 0.8em 2em;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-radius: 50px;
+      font-size: 2em;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(102,126,234,0.3);
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2em;
+      margin-bottom: 3em;
+    }
+
+    .brand-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 2em;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+
+    .brand-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      border-color: var(--primary);
+    }
+
+    .brand-name {
+      font-size: 1.4em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1em;
+    }
+
+    .size-display {
+      font-size: 3em;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0.5em 0;
+    }
+
+    .size-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1em;
+      margin-top: 1.5em;
+      padding-top: 1.5em;
+      border-top: 2px solid var(--border);
+    }
+
+    .size-detail {
+      background: var(--bg);
+      padding: 0.8em;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .size-label {
+      font-size: 0.75em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .size-value {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 0.3em;
+    }
+
+    .note {
+      background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+      padding: 2em;
+      border-radius: 16px;
+      margin-top: 3em;
+      border-left: 6px solid var(--warning);
+      color: #856404;
+      font-size: 1.05em;
+      line-height: 1.8;
+    }
+
+    .note strong {
+      color: #533f03;
+      font-weight: 700;
+    }
+
+    .measurement-guide {
+      background: var(--bg);
+      padding: 2em;
+      border-radius: 16px;
+      margin-top: 2em;
+      border: 2px solid var(--border);
+    }
+
+    .measurement-guide h3 {
+      font-size: 1.3em;
+      margin-bottom: 1em;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .measurement-guide ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .measurement-guide li {
+      padding: 0.8em 0;
+      padding-left: 2em;
+      position: relative;
+      color: var(--text-light);
+    }
+
+    .measurement-guide li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .size-selector {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .brand-grid {
+        grid-template-columns: 1fr;
+      }
+      .content {
+        padding: 2em 1em;
+      }
+      .input-section {
+        padding: 2em 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>👔 Universal Size Converter</h1>
+      <p class="subtitle">Find your perfect size across all brands and countries</p>
+    </div>
+
+    <div class="content">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('womens')">👗 Women's Clothing</button>
+        <button class="tab" onclick="switchTab('mens')">👔 Men's Clothing</button>
+        <button class="tab" onclick="switchTab('shoes')">👟 Shoes</button>
+      </div>
+
+      <!-- WOMEN'S SECTION -->
+      <div id="womens" class="tab-content active">
+        <div class="input-section">
+          <div class="section-title">How would you like to find your size?</div>
+
+          <div class="input-toggle">
+            <button class="toggle-btn active" onclick="toggleInput('women', 'letter')">By Letter Size (XS, S, M, L, XL)</button>
+            <button class="toggle-btn" onclick="toggleInput('women', 'measurements')">By Measurements (cm)</button>
+          </div>
+
+          <div id="womenLetter" class="input-method">
+            <label>Select Your Current Size:</label>
+            <div class="size-selector">
+              <div class="size-option" onclick="selectSize(this, 'women', 'XXS')">XXS</div>
+              <div class="size-option" onclick="selectSize(this, 'women', 'XS')">XS</div>
+              <div class="size-option" onclick="selectSize(this, 'women', 'S')">S</div>
+              <div class="size-option" onclick="selectSize(this, 'women', 'M')">M</div>
+              <div class="size-option" onclick="selectSize(this, 'women', 'L')">L</div>
+              <div class="size-option" onclick="selectSize(this, 'women', 'XL')">XL</div>
+              <div class="size-option" onclick="selectSize(this, 'women', 'XXL')">XXL</div>
+              <div class="size-option" onclick="selectSize(this, 'women', '3XL')">3XL</div>
+            </div>
+            <input type="hidden" id="womenSelectedSize">
+          </div>
+
+          <div id="womenMeasurements" class="input-method" style="display:none;">
+            <div class="input-group">
+              <div class="input-box">
+                <label>Bust (cm):</label>
+                <input type="number" id="womenBust" placeholder="e.g., 88" min="60" max="150">
+              </div>
+              <div class="input-box">
+                <label>Waist (cm):</label>
+                <input type="number" id="womenWaist" placeholder="e.g., 68" min="50" max="150">
+              </div>
+              <div class="input-box">
+                <label>Hips (cm):</label>
+                <input type="number" id="womenHips" placeholder="e.g., 93" min="60" max="150">
+              </div>
+            </div>
+            <div class="measurement-guide">
+              <h3>📏 How to Measure:</h3>
+              <ul>
+                <li><strong>Bust:</strong> Measure around the fullest part of your chest</li>
+                <li><strong>Waist:</strong> Measure around your natural waistline (smallest part)</li>
+                <li><strong>Hips:</strong> Measure around the fullest part of your hips</li>
+              </ul>
+            </div>
+          </div>
+
+          <button class="convert-btn" onclick="convertWomens()">🔍 Find My Size Everywhere</button>
+        </div>
+        <div id="womensResults" class="results"></div>
+      </div>
+
+      <!-- MEN'S SECTION -->
+      <div id="mens" class="tab-content">
+        <div class="input-section">
+          <div class="section-title">How would you like to find your size?</div>
+
+          <div class="input-toggle">
+            <button class="toggle-btn active" onclick="toggleInput('men', 'letter')">By Letter Size (XS, S, M, L, XL)</button>
+            <button class="toggle-btn" onclick="toggleInput('men', 'measurements')">By Measurements (cm)</button>
+          </div>
+
+          <div id="menLetter" class="input-method">
+            <label>Select Your Current Size:</label>
+            <div class="size-selector">
+              <div class="size-option" onclick="selectSize(this, 'men', 'XS')">XS</div>
+              <div class="size-option" onclick="selectSize(this, 'men', 'S')">S</div>
+              <div class="size-option" onclick="selectSize(this, 'men', 'M')">M</div>
+              <div class="size-option" onclick="selectSize(this, 'men', 'L')">L</div>
+              <div class="size-option" onclick="selectSize(this, 'men', 'XL')">XL</div>
+              <div class="size-option" onclick="selectSize(this, 'men', 'XXL')">XXL</div>
+              <div class="size-option" onclick="selectSize(this, 'men', '3XL')">3XL</div>
+              <div class="size-option" onclick="selectSize(this, 'men', '4XL')">4XL</div>
+            </div>
+            <input type="hidden" id="menSelectedSize">
+          </div>
+
+          <div id="menMeasurements" class="input-method" style="display:none;">
+            <div class="input-group">
+              <div class="input-box">
+                <label>Chest (cm):</label>
+                <input type="number" id="menChest" placeholder="e.g., 96" min="70" max="160">
+              </div>
+              <div class="input-box">
+                <label>Waist (cm):</label>
+                <input type="number" id="menWaist" placeholder="e.g., 81" min="60" max="150">
+              </div>
+            </div>
+            <div class="measurement-guide">
+              <h3>📏 How to Measure:</h3>
+              <ul>
+                <li><strong>Chest:</strong> Measure around the fullest part of your chest, under your arms</li>
+                <li><strong>Waist:</strong> Measure around your natural waistline (usually at belly button level)</li>
+              </ul>
+            </div>
+          </div>
+
+          <button class="convert-btn" onclick="convertMens()">🔍 Find My Size Everywhere</button>
+        </div>
+        <div id="mensResults" class="results"></div>
+      </div>
+
+      <!-- SHOES SECTION -->
+      <div id="shoes" class="tab-content">
+        <div class="input-section">
+          <div class="section-title">Enter Your Shoe Information</div>
+          <div class="input-group">
+            <div class="input-box">
+              <label>Gender:</label>
+              <select id="shoeGender">
+                <option>Women's</option>
+                <option>Men's</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <label>Your Size:</label>
+              <input type="number" step="0.5" id="shoeSize" placeholder="e.g., 7" min="1" max="20">
+            </div>
+            <div class="input-box">
+              <label>Size System:</label>
+              <select id="shoeSystem">
+                <option value="us">US</option>
+                <option value="uk">UK</option>
+                <option value="eu">EU</option>
+                <option value="au">AU</option>
+              </select>
+            </div>
+          </div>
+          <button class="convert-btn" onclick="convertShoes()">🔍 Convert Shoe Size</button>
+        </div>
+        <div id="shoesResults" class="results"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Accurate size conversion data based on standard international size charts
+    const womenSizeMap = {
+      'XXS': { us: '00-0', uk: '4', eu: '30-32', au: '4', bust: '76-79', waist: '58-61', hips: '81-84' },
+      'XS': { us: '2-4', uk: '6-8', eu: '34-36', au: '6-8', bust: '80-84', waist: '62-65', hips: '85-89' },
+      'S': { us: '6-8', uk: '10-12', eu: '38-40', au: '10-12', bust: '85-89', waist: '66-69', hips: '90-94' },
+      'M': { us: '10-12', uk: '14-16', eu: '42-44', au: '14-16', bust: '90-94', waist: '70-74', hips: '95-99' },
+      'L': { us: '14-16', uk: '18-20', eu: '46-48', au: '18-20', bust: '95-99', waist: '75-79', hips: '100-104' },
+      'XL': { us: '18-20', uk: '22-24', eu: '50-52', au: '22-24', bust: '100-104', waist: '80-84', hips: '105-109' },
+      'XXL': { us: '22-24', uk: '26-28', eu: '54-56', au: '26-28', bust: '105-109', waist: '85-89', hips: '110-114' },
+      '3XL': { us: '26+', uk: '30+', eu: '58+', au: '30+', bust: '110+', waist: '90+', hips: '115+' }
+    };
+
+    const menSizeMap = {
+      'XS': { us: 'XS', uk: '34-36', eu: '44-46', au: 'XS', chest: '86-91', waist: '71-76' },
+      'S': { us: 'S', uk: '36-38', eu: '46-48', au: 'S', chest: '92-97', waist: '77-82' },
+      'M': { us: 'M', uk: '38-40', eu: '48-50', au: 'M', chest: '98-103', waist: '83-88' },
+      'L': { us: 'L', uk: '40-42', eu: '50-52', au: 'L', chest: '104-109', waist: '89-94' },
+      'XL': { us: 'XL', uk: '42-44', eu: '52-54', au: 'XL', chest: '110-115', waist: '95-100' },
+      'XXL': { us: 'XXL', uk: '44-46', eu: '54-56', au: 'XXL', chest: '116-121', waist: '101-106' },
+      '3XL': { us: '3XL', uk: '46-48', eu: '56-58', au: '3XL', chest: '122-127', waist: '107-112' },
+      '4XL': { us: '4XL', uk: '48+', eu: '58+', au: '4XL', chest: '128+', waist: '113+' }
+    };
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById(tab).classList.add('active');
+      
+      // Reset results
+      document.querySelectorAll('.results').forEach(r => {
+        r.classList.remove('show');
+        r.innerHTML = '';
+      });
+    }
+
+    function toggleInput(gender, method) {
+      const buttons = event.target.parentElement.querySelectorAll('.toggle-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.getElementById(gender + 'Letter').style.display = method === 'letter' ? 'block' : 'none';
+      document.getElementById(gender + 'Measurements').style.display = method === 'measurements' ? 'block' : 'none';
+
+      if (method === 'letter') {
+        if (gender === 'women') {
+          document.getElementById('womenBust').value = '';
+          document.getElementById('womenWaist').value = '';
+          document.getElementById('womenHips').value = '';
+        } else if (gender === 'men') {
+          document.getElementById('menChest').value = '';
+          document.getElementById('menWaist').value = '';
+        }
+      } else if (method === 'measurements') {
+        const letterSection = document.getElementById(gender + 'Letter');
+        const sizeOptions = letterSection.querySelectorAll('.size-option');
+        sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        document.getElementById(gender + 'SelectedSize').value = '';
+      }
+    }
+
+    function selectSize(element, gender, size) {
+      const container = element.parentElement;
+      container.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+      document.getElementById(gender + 'SelectedSize').value = size;
+    }
+
+    function convertWomens() {
+      const selectedSize = document.getElementById('womenSelectedSize').value;
+      const bust = parseFloat(document.getElementById('womenBust').value);
+      const waist = parseFloat(document.getElementById('womenWaist').value);
+      const hips = parseFloat(document.getElementById('womenHips').value);
+
+      let letterSize;
+
+      if (selectedSize) {
+        letterSize = selectedSize;
+      } else if (bust || waist || hips) {
+        // Use bust as primary measurement, fallback to waist/hips
+        const primaryMeasure = bust || waist || hips;
+        
+        if (primaryMeasure < 80) letterSize = 'XXS';
+        else if (primaryMeasure < 85) letterSize = 'XS';
+        else if (primaryMeasure < 90) letterSize = 'S';
+        else if (primaryMeasure < 95) letterSize = 'M';
+        else if (primaryMeasure < 100) letterSize = 'L';
+        else if (primaryMeasure < 106) letterSize = 'XL';
+        else if (primaryMeasure < 112) letterSize = 'XXL';
+        else letterSize = '3XL';
+      } else {
+        alert('Please select a size or enter at least one measurement');
+        return;
+      }
+
+      const size = womenSizeMap[letterSize];
+      if (!size) {
+        alert('Invalid size selected');
+        return;
+      }
+
+      const brands = [
+        { name: 'Zara', size: size.eu, us: size.us, uk: size.uk, eu: size.eu, au: size.au, letter: letterSize },
+        { name: 'H&M', size: size.us, us: size.us, uk: size.uk, eu: size.eu, au: size.au, letter: letterSize },
+        { name: 'ASOS', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.au, letter: letterSize },
+        { name: 'Target AU', size: size.au, au: size.au, letter: letterSize },
+        { name: 'Kmart', size: size.au, au: size.au, letter: letterSize },
+        { name: 'Uniqlo', size: letterSize, us: size.us, letter: letterSize },
+        { name: 'Nike', size: letterSize, us: size.us, letter: letterSize },
+        { name: 'Adidas', size: letterSize, us: size.us, uk: size.uk, eu: size.eu, letter: letterSize },
+        { name: 'Forever 21', size: size.us, us: size.us, letter: letterSize },
+        { name: 'Cotton On', size: size.au, au: size.au, letter: letterSize },
+      ];
+
+      let html = `
+        <div class="result-header">
+          <h2>Your Size Is:</h2>
+          <div class="your-size">${letterSize}</div>
+        </div>
+        <div class="brand-grid">
+      `;
+
+      brands.forEach(brand => {
+        html += `
+          <div class="brand-card">
+            <div class="brand-name">${brand.name}</div>
+            <div class="size-display">${brand.size}</div>
+            <div class="size-details">
+              ${brand.letter ? `<div class="size-detail"><div class="size-label">Letter</div><div class="size-value">${brand.letter}</div></div>` : ''}
+              ${brand.us ? `<div class="size-detail"><div class="size-label">US</div><div class="size-value">${brand.us}</div></div>` : ''}
+              ${brand.uk ? `<div class="size-detail"><div class="size-label">UK</div><div class="size-value">${brand.uk}</div></div>` : ''}
+              ${brand.eu ? `<div class="size-detail"><div class="size-label">EU</div><div class="size-value">${brand.eu}</div></div>` : ''}
+              ${brand.au ? `<div class="size-detail"><div class="size-label">AU</div><div class="size-value">${brand.au}</div></div>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      html += '</div>';
+      html += '<div class="note">💡 <strong>Pro Tip:</strong> Sizes vary significantly between brands and styles. European brands (Zara, H&M) often run smaller. When in doubt, check the brand\'s specific size chart or size up for comfort. Always measure yourself accurately!</div>';
+
+      document.getElementById('womensResults').innerHTML = html;
+      document.getElementById('womensResults').classList.add('show');
+      document.getElementById('womensResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function convertMens() {
+      const selectedSize = document.getElementById('menSelectedSize').value;
+      const chest = parseFloat(document.getElementById('menChest').value);
+      const waist = parseFloat(document.getElementById('menWaist').value);
+
+      let letterSize;
+
+      if (selectedSize) {
+        letterSize = selectedSize;
+      } else if (chest || waist) {
+        const primaryMeasure = chest || waist;
+        
+        if (primaryMeasure < 88) letterSize = 'XS';
+        else if (primaryMeasure < 95) letterSize = 'S';
+        else if (primaryMeasure < 102) letterSize = 'M';
+        else if (primaryMeasure < 110) letterSize = 'L';
+        else if (primaryMeasure < 118) letterSize = 'XL';
+        else if (primaryMeasure < 126) letterSize = 'XXL';
+        else if (primaryMeasure < 134) letterSize = '3XL';
+        else letterSize = '4XL';
+      } else {
+        alert('Please select a size or enter at least one measurement');
+        return;
+      }
+
+      const size = menSizeMap[letterSize];
+      if (!size) {
+        alert('Invalid size selected');
+        return;
+      }
+
+      const brands = [
+        { name: 'H&M', size: size.letter, us: size.us, uk: size.uk, eu: size.eu, au: size.au, letter: letterSize },
+        { name: 'Zara', size: size.eu, eu: size.eu, letter: letterSize },
+        { name: 'ASOS', size: size.uk, uk: size.uk, letter: letterSize },
+        { name: 'Uniqlo', size: size.letter, letter: letterSize },
+        { name: 'Target AU', size: size.au, au: size.au, letter: letterSize },
+        { name: 'Kmart', size: size.au, au: size.au, letter: letterSize },
+        { name: 'Nike', size: size.letter, letter: letterSize },
+        { name: 'Adidas', size: size.letter, us: size.us, uk: size.uk, eu: size.eu, letter: letterSize },
+        { name: 'Cotton On', size: size.au, au: size.au, letter: letterSize },
+        { name: 'Connor', size: size.au, au: size.au, letter: letterSize },
+      ];
+
+      let html = `
+        <div class="result-header">
+          <h2>Your Size Is:</h2>
+          <div class="your-size">${letterSize}</div>
+        </div>
+        <div class="brand-grid">
+      `;
+
+      brands.forEach(brand => {
+        html += `
+          <div class="brand-card">
+            <div class="brand-name">${brand.name}</div>
+            <div class="size-display">${brand.size}</div>
+            <div class="size-details">
+              ${brand.letter ? `<div class="size-detail"><div class="size-label">Letter</div><div class="size-value">${brand.letter}</div></div>` : ''}
+              ${brand.us ? `<div class="size-detail"><div class="size-label">US</div><div class="size-value">${brand.us}</div></div>` : ''}
+              ${brand.uk ? `<div class="size-detail"><div class="size-label">UK</div><div class="size-value">${brand.uk}</div></div>` : ''}
+              ${brand.eu ? `<div class="size-detail"><div class="size-label">EU</div><div class="size-value">${brand.eu}</div></div>` : ''}
+              ${brand.au ? `<div class="size-detail"><div class="size-label">AU</div><div class="size-value">${brand.au}</div></div>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      html += '</div>';
+      html += '<div class="note">💡 <strong>Pro Tip:</strong> Athletic brands (Nike, Adidas) often run smaller and tighter. European brands (Zara, H&M) typically run smaller than US/AU brands. Consider sizing up for a relaxed fit, especially for athletic wear!</div>';
+
+      document.getElementById('mensResults').innerHTML = html;
+      document.getElementById('mensResults').classList.add('show');
+      document.getElementById('mensResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function convertShoes() {
+      const size = parseFloat(document.getElementById('shoeSize').value);
+      const system = document.getElementById('shoeSystem').value;
+      const gender = document.getElementById('shoeGender').value;
+
+      if (!size || size < 1 || size > 20) {
+        alert('Please enter a valid shoe size (1-20)');
+        return;
+      }
+
+      let us, uk, eu, au;
+
+      // Accurate shoe size conversions based on standard charts
+      if (gender === "Women's") {
+        if (system === 'us') {
+          us = size;
+          uk = size - 2;
+          eu = size + 30;
+          au = size - 0.5;
+        } else if (system === 'uk') {
+          uk = size;
+          us = size + 2;
+          eu = size + 32;
+          au = size + 1.5;
+        } else if (system === 'eu') {
+          eu = size;
+          us = size - 30;
+          uk = size - 32;
+          au = size - 30.5;
+        } else { // AU
+          au = size;
+          us = size + 0.5;
+          uk = size - 1.5;
+          eu = size + 30.5;
+        }
+      } else { // Men's
+        if (system === 'us') {
+          us = size;
+          uk = size - 0.5;
+          eu = size + 32;
+          au = size;
+        } else if (system === 'uk') {
+          uk = size;
+          us = size + 0.5;
+          eu = size + 32.5;
+          au = size + 0.5;
+        } else if (system === 'eu') {
+          eu = size;
+          us = size - 32;
+          uk = size - 32.5;
+          au = size - 32;
+        } else { // AU
+          au = size;
+          us = size;
+          uk = size - 0.5;
+          eu = size + 32;
+        }
+      }
+
+      let html = `
+        <div class="result-header">
+          <h2>${gender} Shoe Size Conversion</h2>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-card">
+            <div class="brand-name">US Size</div>
+            <div class="size-display">${us.toFixed(1)}</div>
+          </div>
+          <div class="brand-card">
+            <div class="brand-name">UK Size</div>
+            <div class="size-display">${uk.toFixed(1)}</div>
+          </div>
+          <div class="brand-card">
+            <div class="brand-name">EU Size</div>
+            <div class="size-display">${Math.round(eu)}</div>
+          </div>
+          <div class="brand-card">
+            <div class="brand-name">AU Size</div>
+            <div class="size-display">${au.toFixed(1)}</div>
+          </div>
+        </div>
+        <div class="note">💡 <strong>Shoe Tip:</strong> Shoe sizes vary significantly between brands. Nike and Adidas often run narrow. European brands typically run smaller. Always try before buying when possible, or check the brand's specific size chart!</div>
+      `;
+
+      document.getElementById('shoesResults').innerHTML = html;
+      document.getElementById('shoesResults').classList.add('show');
+      document.getElementById('shoesResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
+
