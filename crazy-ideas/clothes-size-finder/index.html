@@ -583,15 +583,16 @@
       '3XL': { us: '26+', uk: '30+', eu: '58+', au: '30+', bust: '110+', waist: '90+', hips: '115+' }
     };
 
+    // Men's sizes based on standard international sizing
     const menSizeMap = {
-      'XS': { us: 'XS', uk: '34-36', eu: '44-46', au: 'XS', chest: '86-91', waist: '71-76' },
-      'S': { us: 'S', uk: '36-38', eu: '46-48', au: 'S', chest: '92-97', waist: '77-82' },
-      'M': { us: 'M', uk: '38-40', eu: '48-50', au: 'M', chest: '98-103', waist: '83-88' },
-      'L': { us: 'L', uk: '40-42', eu: '50-52', au: 'L', chest: '104-109', waist: '89-94' },
-      'XL': { us: 'XL', uk: '42-44', eu: '52-54', au: 'XL', chest: '110-115', waist: '95-100' },
-      'XXL': { us: 'XXL', uk: '44-46', eu: '54-56', au: 'XXL', chest: '116-121', waist: '101-106' },
-      '3XL': { us: '3XL', uk: '46-48', eu: '56-58', au: '3XL', chest: '122-127', waist: '107-112' },
-      '4XL': { us: '4XL', uk: '48+', eu: '58+', au: '4XL', chest: '128+', waist: '113+' }
+      'XS': { us: 'XS', uk: '34-36', eu: '44-46', au: 'XS', chest: '86-91', waist: '71', neck: '37-38' },
+      'S': { us: 'S', uk: '36-38', eu: '46-48', au: 'S', chest: '91-96', waist: '76-81', neck: '38-39.5' },
+      'M': { us: 'M', uk: '38-40', eu: '48-50', au: 'M', chest: '96-102', waist: '84-86', neck: '40.5' },
+      'L': { us: 'L', uk: '40-42', eu: '50-52', au: 'L', chest: '102-107', waist: '91-97', neck: '43' },
+      'XL': { us: 'XL', uk: '42-44', eu: '52-54', au: 'XL', chest: '107-112', waist: '99-104', neck: '44.5' },
+      'XXL': { us: '2XL', uk: '44-46', eu: '54-56', au: '2XL', chest: '112-117', waist: '107-112', neck: '46-47' },
+      '3XL': { us: '3XL', uk: '46-48', eu: '56-58', au: '3XL', chest: '117-122', waist: '114-119', neck: '48-49.5' },
+      '4XL': { us: '4XL', uk: '48-50', eu: '58+', au: '4XL', chest: '122-127', waist: '122-127', neck: '51' }
     };
 
     function switchTab(tab) {
@@ -796,24 +797,35 @@
           if (chest) {
             const chestRange = data.chest.split('-');
             const minChest = parseFloat(chestRange[0]);
-            const maxChest = chestRange[1] ? parseFloat(chestRange[1].replace('+', '')) : minChest + 10;
+            const maxChest = chestRange[1] ? parseFloat(chestRange[1].replace('+', '')) : minChest + 5;
             if (chest >= minChest && chest <= maxChest) {
               score += 5;
               matches++;
-            } else if (chest >= minChest - 2 && chest <= maxChest + 2) {
+            } else if (chest >= minChest - 3 && chest <= maxChest + 3) {
               score += 2;
             }
           }
           
           if (waist) {
-            const waistRange = data.waist.split('-');
-            const minWaist = parseFloat(waistRange[0]);
-            const maxWaist = waistRange[1] ? parseFloat(waistRange[1].replace('+', '')) : minWaist + 10;
-            if (waist >= minWaist && waist <= maxWaist) {
-              score += 3;
-              matches++;
-            } else if (waist >= minWaist - 2 && waist <= maxWaist + 2) {
-              score += 1;
+            const waistStr = data.waist.toString();
+            if (waistStr.includes('-')) {
+              const waistRange = waistStr.split('-');
+              const minWaist = parseFloat(waistRange[0]);
+              const maxWaist = parseFloat(waistRange[1].replace('+', ''));
+              if (waist >= minWaist && waist <= maxWaist) {
+                score += 4;
+                matches++;
+              } else if (waist >= minWaist - 3 && waist <= maxWaist + 3) {
+                score += 1;
+              }
+            } else {
+              const targetWaist = parseFloat(waistStr.replace('+', ''));
+              if (Math.abs(waist - targetWaist) <= 2) {
+                score += 4;
+                matches++;
+              } else if (Math.abs(waist - targetWaist) <= 5) {
+                score += 1;
+              }
             }
           }
           
