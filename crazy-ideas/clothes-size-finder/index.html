@@ -940,6 +940,115 @@
       document.getElementById('womensResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    function toggleWearType(gender, type) {
+      const topBtn = document.getElementById(gender + 'TopBtn');
+      const bottomBtn = document.getElementById(gender + 'BottomBtn');
+      const topSection = document.getElementById(gender + 'TopSection');
+      const bottomSection = document.getElementById(gender + 'BottomSection');
+      const topConvertBtn = document.getElementById(gender + 'ConvertBtn');
+      const bottomConvertBtn = document.getElementById(gender + 'BottomConvertBtn');
+      
+      topBtn.classList.remove('active');
+      bottomBtn.classList.remove('active');
+      
+      if (type === 'top') {
+        topBtn.classList.add('active');
+        topSection.style.display = 'block';
+        bottomSection.style.display = 'none';
+        topConvertBtn.style.display = 'block';
+        bottomConvertBtn.style.display = 'none';
+      } else {
+        bottomBtn.classList.add('active');
+        topSection.style.display = 'none';
+        bottomSection.style.display = 'block';
+        topConvertBtn.style.display = 'none';
+        bottomConvertBtn.style.display = 'block';
+      }
+      
+      // Reset results
+      document.querySelectorAll('.results').forEach(r => {
+        r.classList.remove('show');
+        r.innerHTML = '';
+      });
+    }
+
+    function convertMensBottom() {
+      const waistInches = parseFloat(document.getElementById('menWaistInches').value);
+      
+      if (!waistInches || waistInches < 24 || waistInches > 50) {
+        alert('Please enter a valid waist size (24-50 inches)');
+        return;
+      }
+      
+      const waistCm = waistInches * 2.54;
+      
+      // Waist size to letter size mapping for pants (28-30 inches = S/XS range)
+      let letterSize;
+      if (waistInches < 28) letterSize = 'XS';
+      else if (waistInches < 30) letterSize = 'S';
+      else if (waistInches < 32) letterSize = 'S';
+      else if (waistInches < 34) letterSize = 'M';
+      else if (waistInches < 36) letterSize = 'M';
+      else if (waistInches < 38) letterSize = 'L';
+      else if (waistInches < 40) letterSize = 'L';
+      else if (waistInches < 42) letterSize = 'XL';
+      else if (waistInches < 44) letterSize = 'XXL';
+      else if (waistInches < 46) letterSize = '3XL';
+      else letterSize = '4XL';
+      
+      const size = menSizeMap[letterSize];
+      if (!size) {
+        alert('Invalid size');
+        return;
+      }
+
+      const brands = [
+        { name: 'H&M', size: size.letter, us: size.us, uk: size.uk, eu: size.eu, au: size.au, letter: letterSize, note: 'Standard fit' },
+        { name: 'Zara', size: size.eu, eu: size.eu, letter: letterSize, note: 'Runs small' },
+        { name: 'ASOS', size: size.uk, uk: size.uk, letter: letterSize, note: 'True to size' },
+        { name: 'Uniqlo', size: size.letter, letter: letterSize, note: 'Asian fit - runs small' },
+        { name: 'Target AU', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
+        { name: 'Kmart', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
+        { name: 'Nike', size: size.letter, letter: letterSize, note: 'Athletic fit' },
+        { name: 'Adidas', size: size.letter, us: size.us, uk: size.uk, eu: size.eu, letter: letterSize, note: 'Athletic fit' },
+        { name: 'Cotton On', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
+        { name: 'Connor', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
+      ];
+
+      let html = `
+        <div class="result-header">
+          <h2>Your Pant Size Is:</h2>
+          <div class="your-size">${letterSize}</div>
+          <div style="font-size: 0.9em; color: var(--text-light); margin-top: 0.5em;">Waist: ${waistInches}" (${waistCm.toFixed(1)}cm)</div>
+        </div>
+        <div class="brand-grid">
+      `;
+
+      brands.forEach(brand => {
+        html += `
+          <div class="brand-card">
+            <div class="brand-name">${brand.name}</div>
+            <div class="size-display">${brand.size}</div>
+            ${brand.note ? `<div style="font-size: 0.85em; color: var(--text-light); margin-top: 0.5em;">${brand.note}</div>` : ''}
+            <div class="size-details">
+              ${brand.letter ? `<div class="size-detail"><div class="size-label">Letter</div><div class="size-value">${brand.letter}</div></div>` : ''}
+              ${brand.us ? `<div class="size-detail"><div class="size-label">US</div><div class="size-value">${brand.us}</div></div>` : ''}
+              ${brand.uk ? `<div class="size-detail"><div class="size-label">UK</div><div class="size-value">${brand.uk}</div></div>` : ''}
+              ${brand.eu ? `<div class="size-detail"><div class="size-label">EU</div><div class="size-value">${brand.eu}</div></div>` : ''}
+              ${brand.au ? `<div class="size-detail"><div class="size-label">AU</div><div class="size-value">${brand.au}</div></div>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      html += '</div>';
+      html += '<div class="note">💡 <strong>Pro Tip:</strong> Pant sizes vary by brand and style. Low-rise vs high-rise, stretch vs non-stretch fabrics all affect fit. When in doubt, check the brand\'s specific size chart!</div>';
+
+      document.getElementById('mensResults').innerHTML = html;
+      document.getElementById('mensResults').classList.add('show');
+      document.getElementById('mensResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     function convertMens() {
       const selectedSize = document.getElementById('menSelectedSize').value;
       const chest = parseFloat(document.getElementById('menChest').value);
