@@ -999,26 +999,40 @@
     }
 
     function convertMensBottom() {
+      const selectedSize = document.getElementById('menSelectedSize').value;
       const waistInches = parseFloat(document.getElementById('menWaistInches').value);
       
-      if (!waistInches || waistInches < 24 || waistInches > 50) {
-        alert('Please enter a valid waist size (24-50 inches)');
+      let letterSize;
+      let waistInchesValue = null;
+      let waistCm = null;
+      
+      // Check if user selected letter size first
+      if (selectedSize) {
+        letterSize = selectedSize;
+        // Get waist range from size map for display
+        const bottomSize = menBottomSizeMap[letterSize];
+        if (bottomSize && bottomSize.waistRange) {
+          waistInchesValue = bottomSize.waistRange;
+        }
+      } else if (waistInches && waistInches >= 24 && waistInches <= 50) {
+        // User entered waist measurement
+        waistInchesValue = waistInches;
+        waistCm = waistInches * 2.54;
+        
+        // Waist size to letter size mapping - verified from U.S. Standard + UK Standard charts
+        // XS: 28", S: 30-32", M: 32-34", L: 34-36", XL: 36-38", XXL: 38-40", 3XL: 40-42"
+        if (waistInches < 29) letterSize = 'XS';
+        else if (waistInches < 33) letterSize = 'S';
+        else if (waistInches < 35) letterSize = 'M';
+        else if (waistInches < 37) letterSize = 'L';
+        else if (waistInches < 39) letterSize = 'XL';
+        else if (waistInches < 41) letterSize = 'XXL';
+        else if (waistInches < 43) letterSize = '3XL';
+        else letterSize = '4XL';
+      } else {
+        alert('Please select a size or enter a valid waist size (24-50 inches)');
         return;
       }
-      
-      const waistCm = waistInches * 2.54;
-      
-      // Waist size to letter size mapping - verified from U.S. Standard + UK Standard charts
-      // XS: 28", S: 30-32", M: 32-34", L: 34-36", XL: 36-38", XXL: 38-40", 3XL: 40-42"
-      let letterSize;
-      if (waistInches < 29) letterSize = 'XS';
-      else if (waistInches < 33) letterSize = 'S';
-      else if (waistInches < 35) letterSize = 'M';
-      else if (waistInches < 37) letterSize = 'L';
-      else if (waistInches < 39) letterSize = 'XL';
-      else if (waistInches < 41) letterSize = 'XXL';
-      else if (waistInches < 43) letterSize = '3XL';
-      else letterSize = '4XL';
       
       const bottomSize = menBottomSizeMap[letterSize];
       const size = menSizeMap[letterSize];
@@ -1044,7 +1058,7 @@
         <div class="result-header">
           <h2>Your Pant Size Is:</h2>
           <div class="your-size">${letterSize}</div>
-          <div style="font-size: 0.875rem; color: var(--text-light); margin-top: 0.5rem;">Waist: ${waistInches}" (${waistCm.toFixed(1)}cm) | UK: ${bottomSize.uk} | US: ${bottomSize.us} | EU: ${bottomSize.eu}</div>
+          ${waistInchesValue ? `<div style="font-size: 0.875rem; color: var(--text-light); margin-top: 0.5rem;">Waist: ${typeof waistInchesValue === 'number' ? waistInchesValue + '" (' + waistCm.toFixed(1) + 'cm)' : waistInchesValue + '"'} | UK: ${bottomSize.uk} | US: ${bottomSize.us} | EU: ${bottomSize.eu}</div>` : ''}
           <div style="font-size: 0.8rem; color: var(--text-light); margin-top: 0.25rem;">Standard Range: Waist ${bottomSize.waistRange}" (${bottomSize.waistRangeCm}cm)</div>
         </div>
         <div class="brand-grid">
