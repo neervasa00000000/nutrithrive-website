@@ -692,10 +692,15 @@
       buttons.forEach(b => b.classList.remove('active'));
       event.target.classList.add('active');
 
-      document.getElementById(gender + 'Letter').style.display = method === 'letter' ? 'block' : 'none';
-      document.getElementById(gender + 'Measurements').style.display = method === 'measurements' ? 'block' : 'none';
+      const letterDiv = document.getElementById(gender + 'Letter');
+      const measurementsDiv = document.getElementById(gender + 'Measurements');
+      const waistInputDiv = document.getElementById(gender + 'WaistInput');
 
       if (method === 'letter') {
+        if (letterDiv) letterDiv.style.display = 'block';
+        if (measurementsDiv) measurementsDiv.style.display = 'none';
+        if (waistInputDiv) waistInputDiv.style.display = 'none';
+        
         if (gender === 'women') {
           document.getElementById('womenBust').value = '';
           document.getElementById('womenWaist').value = '';
@@ -703,11 +708,29 @@
         } else if (gender === 'men') {
           document.getElementById('menChest').value = '';
           document.getElementById('menWaist').value = '';
+          document.getElementById('menWaistInches').value = '';
         }
       } else if (method === 'measurements') {
+        if (letterDiv) letterDiv.style.display = 'none';
+        if (measurementsDiv) measurementsDiv.style.display = 'block';
+        if (waistInputDiv) waistInputDiv.style.display = 'none';
+        
         const letterSection = document.getElementById(gender + 'Letter');
-        const sizeOptions = letterSection.querySelectorAll('.size-option');
-        sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        if (letterSection) {
+          const sizeOptions = letterSection.querySelectorAll('.size-option');
+          sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        }
+        document.getElementById(gender + 'SelectedSize').value = '';
+      } else if (method === 'waist') {
+        if (letterDiv) letterDiv.style.display = 'none';
+        if (measurementsDiv) measurementsDiv.style.display = 'none';
+        if (waistInputDiv) waistInputDiv.style.display = 'block';
+        
+        const letterSection = document.getElementById(gender + 'Letter');
+        if (letterSection) {
+          const sizeOptions = letterSection.querySelectorAll('.size-option');
+          sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        }
         document.getElementById(gender + 'SelectedSize').value = '';
       }
     }
