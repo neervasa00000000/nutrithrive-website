@@ -759,16 +759,16 @@
       
       const waistCm = waistInches * 2.54;
       
-      // Waist size to letter size mapping based on accurate size chart
-      // XS: 27.5-28.5", S: 28.5-29.5", M: 29.5-31.5", L: 32-34.5", XL: 35-38.5"
+      // Waist size to letter size mapping - verified from U.S. Standard + UK Standard charts
+      // XXS: 22", XS: 24", S: 26", M: 28-30", L: 32-34", XL: 34-36", XXL: 36-39"
       let letterSize;
-      if (waistInches < 27.5) letterSize = 'XXS';
-      else if (waistInches < 28.5) letterSize = 'XS';
-      else if (waistInches < 29.5) letterSize = 'S';
-      else if (waistInches < 31.5) letterSize = 'M';
-      else if (waistInches < 34.5) letterSize = 'L';
-      else if (waistInches < 38.5) letterSize = 'XL';
-      else if (waistInches < 43) letterSize = 'XXL';
+      if (waistInches < 23) letterSize = 'XXS';
+      else if (waistInches < 25) letterSize = 'XS';
+      else if (waistInches < 27) letterSize = 'S';
+      else if (waistInches < 31) letterSize = 'M';
+      else if (waistInches < 35) letterSize = 'L';
+      else if (waistInches < 39) letterSize = 'XL';
+      else if (waistInches < 42) letterSize = 'XXL';
       else letterSize = '3XL';
       
       const bottomSize = womenBottomSizeMap[letterSize];
