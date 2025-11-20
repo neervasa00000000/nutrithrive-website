@@ -758,20 +758,26 @@
       
       const waistCm = waistInches * 2.54;
       
-      // Waist size to letter size mapping for pants (28-30 inches = S/XS range)
+      // Waist size to letter size mapping based on accurate size chart
+      // XS: 27.5-28.5", S: 28.5-29.5", M: 29.5-31.5", L: 32-34.5", XL: 35-38.5"
       let letterSize;
-      if (waistInches < 26) letterSize = 'XXS';
-      else if (waistInches < 28) letterSize = 'XS';
-      else if (waistInches < 30) letterSize = 'S';
-      else if (waistInches < 32) letterSize = 'S';
-      else if (waistInches < 34) letterSize = 'M';
-      else if (waistInches < 36) letterSize = 'M';
-      else if (waistInches < 38) letterSize = 'L';
-      else if (waistInches < 40) letterSize = 'L';
-      else if (waistInches < 42) letterSize = 'XL';
-      else if (waistInches < 44) letterSize = 'XXL';
+      if (waistInches < 27.5) letterSize = 'XXS';
+      else if (waistInches < 28.5) letterSize = 'XS';
+      else if (waistInches < 29.5) letterSize = 'S';
+      else if (waistInches < 31.5) letterSize = 'M';
+      else if (waistInches < 34.5) letterSize = 'L';
+      else if (waistInches < 38.5) letterSize = 'XL';
+      else if (waistInches < 43) letterSize = 'XXL';
       else letterSize = '3XL';
       
+      const bottomSize = womenBottomSizeMap[letterSize];
+      if (!bottomSize) {
+        alert('Invalid size');
+        return;
+      }
+      
+      // Get corresponding top size for brand conversions
+      const size = womenSizeMap[letterSize];
       if (!size) {
         alert('Invalid size');
         return;
@@ -1005,44 +1011,44 @@
       
       const waistCm = waistInches * 2.54;
       
-      // Waist size to letter size mapping for pants (28-30 inches = S/XS range)
+      // Waist size to letter size mapping based on accurate size chart
+      // S: 30-32", M: 34-36", L: 38-40", XL: 42-44", XXL: 46+
       let letterSize;
-      if (waistInches < 28) letterSize = 'XS';
-      else if (waistInches < 30) letterSize = 'S';
-      else if (waistInches < 32) letterSize = 'S';
-      else if (waistInches < 34) letterSize = 'M';
-      else if (waistInches < 36) letterSize = 'M';
-      else if (waistInches < 38) letterSize = 'L';
-      else if (waistInches < 40) letterSize = 'L';
-      else if (waistInches < 42) letterSize = 'XL';
-      else if (waistInches < 44) letterSize = 'XXL';
-      else if (waistInches < 46) letterSize = '3XL';
+      if (waistInches < 30) letterSize = 'XS';
+      else if (waistInches < 34) letterSize = 'S';
+      else if (waistInches < 38) letterSize = 'M';
+      else if (waistInches < 42) letterSize = 'L';
+      else if (waistInches < 46) letterSize = 'XL';
+      else if (waistInches < 50) letterSize = 'XXL';
+      else if (waistInches < 52) letterSize = '3XL';
       else letterSize = '4XL';
       
+      const bottomSize = menBottomSizeMap[letterSize];
       const size = menSizeMap[letterSize];
-      if (!size) {
+      if (!bottomSize || !size) {
         alert('Invalid size');
         return;
       }
 
       const brands = [
-        { name: 'H&M', size: size.letter, us: size.us, uk: size.uk, eu: size.eu, au: size.au, letter: letterSize, note: 'Standard fit' },
-        { name: 'Zara', size: size.eu, eu: size.eu, letter: letterSize, note: 'Runs small' },
-        { name: 'ASOS', size: size.uk, uk: size.uk, letter: letterSize, note: 'True to size' },
-        { name: 'Uniqlo', size: size.letter, letter: letterSize, note: 'Asian fit - runs small' },
-        { name: 'Target AU', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
-        { name: 'Kmart', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
-        { name: 'Nike', size: size.letter, letter: letterSize, note: 'Athletic fit' },
-        { name: 'Adidas', size: size.letter, us: size.us, uk: size.uk, eu: size.eu, letter: letterSize, note: 'Athletic fit' },
-        { name: 'Cotton On', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
-        { name: 'Connor', size: size.au, au: size.au, letter: letterSize, note: 'AU sizing' },
+        { name: 'H&M', size: bottomSize.uk, us: size.us, uk: bottomSize.uk, eu: bottomSize.eu, au: bottomSize.uk, letter: letterSize, note: 'Standard fit' },
+        { name: 'Zara', size: bottomSize.eu, eu: bottomSize.eu, letter: letterSize, note: 'Runs small' },
+        { name: 'ASOS', size: bottomSize.uk, uk: bottomSize.uk, letter: letterSize, note: 'True to size' },
+        { name: 'Uniqlo', size: letterSize, letter: letterSize, note: 'Asian fit - runs small' },
+        { name: 'Target AU', size: bottomSize.uk, au: bottomSize.uk, letter: letterSize, note: 'AU sizing' },
+        { name: 'Kmart', size: bottomSize.uk, au: bottomSize.uk, letter: letterSize, note: 'AU sizing' },
+        { name: 'Nike', size: letterSize, letter: letterSize, note: 'Athletic fit' },
+        { name: 'Adidas', size: letterSize, us: size.us, uk: bottomSize.uk, eu: bottomSize.eu, letter: letterSize, note: 'Athletic fit' },
+        { name: 'Cotton On', size: bottomSize.uk, au: bottomSize.uk, letter: letterSize, note: 'AU sizing' },
+        { name: 'Connor', size: bottomSize.uk, au: bottomSize.uk, letter: letterSize, note: 'AU sizing' },
       ];
 
       let html = `
         <div class="result-header">
           <h2>Your Pant Size Is:</h2>
           <div class="your-size">${letterSize}</div>
-          <div style="font-size: 0.9em; color: var(--text-light); margin-top: 0.5em;">Waist: ${waistInches}" (${waistCm.toFixed(1)}cm)</div>
+          <div style="font-size: 0.9em; color: var(--text-light); margin-top: 0.5em;">Waist: ${waistInches}" (${waistCm.toFixed(1)}cm) | UK: ${bottomSize.uk} | EU: ${bottomSize.eu}</div>
+          <div style="font-size: 0.85em; color: var(--text-light); margin-top: 0.3em;">Waist Range: ${bottomSize.waist}" (${bottomSize.waistCm}cm)</div>
         </div>
         <div class="brand-grid">
       `;
