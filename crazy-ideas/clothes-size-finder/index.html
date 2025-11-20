@@ -527,19 +527,25 @@
           </div>
 
           <div id="menBottomSection" style="display:none;">
-            <div class="section-title" style="margin-top: 0; font-size: 1rem;">Enter Your Waist Size</div>
-            <div class="input-group">
-              <div class="input-box" style="max-width: 300px; margin: 0 auto;">
-                <label>Waist Size (inches)</label>
-                <input type="number" id="menWaistInches" placeholder="Enter waist size" min="24" max="50" step="0.5">
-              </div>
+            <div class="section-title" style="margin-top: 0; font-size: 1rem;">How would you like to find your size?</div>
+            <div class="input-toggle">
+              <button class="toggle-btn active" onclick="toggleInput('men', 'letter')">Letter Size</button>
+              <button class="toggle-btn" onclick="toggleInput('men', 'waist')">Waist Measurement</button>
             </div>
-            <div class="measurement-guide">
-              <h3>How to Measure</h3>
-              <ul>
-                <li><strong>Waist:</strong> Measure around your natural waistline</li>
-                <li>For pants and jeans, measure where you want the waistband to sit</li>
-              </ul>
+            <div id="menWaistInput" class="input-method" style="display:none;">
+              <div class="input-group">
+                <div class="input-box" style="max-width: 300px; margin: 0 auto;">
+                  <label>Waist Size (inches)</label>
+                  <input type="number" id="menWaistInches" placeholder="Enter waist size" min="24" max="50" step="0.5">
+                </div>
+              </div>
+              <div class="measurement-guide">
+                <h3>How to Measure</h3>
+                <ul>
+                  <li><strong>Waist:</strong> Measure around your natural waistline</li>
+                  <li>For pants and jeans, measure where you want the waistband to sit</li>
+                </ul>
+              </div>
             </div>
           </div>
 
