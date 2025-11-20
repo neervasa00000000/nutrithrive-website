@@ -571,19 +571,21 @@
   </div>
 
   <script>
-    // Accurate size conversion data based on standard international size charts
+    // Accurate size conversion data based on UK standard sizing (UK 6-20)
+    // Measurements in cm: Bust, Waist, Hip
     const womenSizeMap = {
-      'XXS': { us: '00-0', uk: '4', eu: '30-32', au: '4', bust: '76-79', waist: '58-61', hips: '81-84' },
-      'XS': { us: '2-4', uk: '6-8', eu: '34-36', au: '6-8', bust: '80-84', waist: '62-65', hips: '85-89' },
-      'S': { us: '6-8', uk: '10-12', eu: '38-40', au: '10-12', bust: '85-89', waist: '66-69', hips: '90-94' },
-      'M': { us: '10-12', uk: '14-16', eu: '42-44', au: '14-16', bust: '90-94', waist: '70-74', hips: '95-99' },
-      'L': { us: '14-16', uk: '18-20', eu: '46-48', au: '18-20', bust: '95-99', waist: '75-79', hips: '100-104' },
-      'XL': { us: '18-20', uk: '22-24', eu: '50-52', au: '22-24', bust: '100-104', waist: '80-84', hips: '105-109' },
-      'XXL': { us: '22-24', uk: '26-28', eu: '54-56', au: '26-28', bust: '105-109', waist: '85-89', hips: '110-114' },
-      '3XL': { us: '26+', uk: '30+', eu: '58+', au: '30+', bust: '110+', waist: '90+', hips: '115+' }
+      'XXS': { us: '00-0', uk: '4', eu: '30-32', au: '4', bust: '76-79', waist: '60', hips: '84-86.5' },
+      'XS': { us: '2-4', uk: '6-8', eu: '34-36', au: '6-8', bust: '81-86', waist: '63.5', hips: '89-91.5' },
+      'S': { us: '6-8', uk: '10-12', eu: '38-40', au: '10-12', bust: '89-92', waist: '68.5-72', hips: '94-99' },
+      'M': { us: '10-12', uk: '14-16', eu: '42-44', au: '14-16', bust: '94-97', waist: '72-79', hips: '96.5-99' },
+      'L': { us: '14-16', uk: '18-20', eu: '46-48', au: '18-20', bust: '99-102', waist: '79-84', hips: '102-104' },
+      'XL': { us: '18-20', uk: '22-24', eu: '50-52', au: '22-24', bust: '104-107', waist: '84-91.5', hips: '107-112' },
+      'XXL': { us: '22-24', uk: '26-28', eu: '54-56', au: '26-28', bust: '109-112', waist: '91.5-99', hips: '116-117' },
+      '3XL': { us: '26+', uk: '30+', eu: '58+', au: '30+', bust: '114-117', waist: '99+', hips: '119-123' }
     };
 
     // Men's sizes based on standard international sizing
+    // Measurements in cm: Chest, Waist, Neck
     const menSizeMap = {
       'XS': { us: 'XS', uk: '34-36', eu: '44-46', au: 'XS', chest: '86-91', waist: '71', neck: '37-38' },
       'S': { us: 'S', uk: '36-38', eu: '46-48', au: 'S', chest: '91-96', waist: '76-81', neck: '38-39.5' },
@@ -979,19 +981,19 @@
         <div class="brand-grid">
           <div class="brand-card">
             <div class="brand-name">US Size</div>
-            <div class="size-display">${us.toFixed(1)}</div>
+            <div class="size-display">${us % 1 === 0 ? us : us.toFixed(1)}</div>
           </div>
           <div class="brand-card">
             <div class="brand-name">UK Size</div>
-            <div class="size-display">${uk.toFixed(1)}</div>
+            <div class="size-display">${uk % 1 === 0 ? uk : uk.toFixed(1)}</div>
           </div>
           <div class="brand-card">
             <div class="brand-name">EU Size</div>
-            <div class="size-display">${Math.round(eu)}</div>
+            <div class="size-display">${eu % 1 === 0 ? eu : eu.toFixed(1)}</div>
           </div>
           <div class="brand-card">
             <div class="brand-name">AU Size</div>
-            <div class="size-display">${au.toFixed(1)}</div>
+            <div class="size-display">${au % 1 === 0 ? au : au.toFixed(1)}</div>
           </div>
         </div>
         <div class="note">💡 <strong>Shoe Tip:</strong> Shoe sizes vary significantly between brands. Nike and Adidas often run narrow. European brands typically run smaller. Always try before buying when possible, or check the brand's specific size chart!</div>
