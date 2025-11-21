@@ -77,7 +77,12 @@
       padding: 3rem;
       margin-bottom: 3rem;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(116, 141, 174, 0.1);
+      box-shadow: 0 2px 12px rgba(116, 141, 174, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .upload-card:hover {
+      box-shadow: 0 4px 16px rgba(116, 141, 174, 0.12);
     }
 
     .upload-area {
@@ -141,7 +146,7 @@
     .content-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
       margin-top: 2rem;
     }
 
@@ -151,7 +156,12 @@
       border-radius: 20px;
       padding: 2rem;
       display: none;
-      box-shadow: 0 2px 8px rgba(116, 141, 174, 0.1);
+      box-shadow: 0 2px 12px rgba(116, 141, 174, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .image-card.show {
+      box-shadow: 0 4px 16px rgba(116, 141, 174, 0.12);
     }
 
     .image-card.show {
@@ -200,7 +210,12 @@
       border-radius: 20px;
       padding: 2.5rem;
       display: none;
-      box-shadow: 0 2px 8px rgba(116, 141, 174, 0.1);
+      box-shadow: 0 2px 12px rgba(116, 141, 174, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .palette-card.show {
+      box-shadow: 0 4px 16px rgba(116, 141, 174, 0.12);
     }
 
     .palette-card.show {
@@ -213,7 +228,7 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 2rem;
-      padding-bottom: 1rem;
+      padding-bottom: 1.25rem;
       border-bottom: 2px solid var(--primary-light);
     }
 
@@ -237,7 +252,7 @@
     .palette-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1.5rem;
+      gap: 2rem;
       margin-bottom: 2.5rem;
     }
 
@@ -245,7 +260,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .color-swatch {
@@ -260,8 +275,9 @@
     }
 
     .color-swatch:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
       border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(116, 141, 174, 0.2);
     }
 
     .color-swatch:active {
@@ -298,6 +314,7 @@
       text-align: center;
       border: none;
       display: none;
+      box-shadow: 0 4px 16px rgba(116, 141, 174, 0.2);
     }
 
     .mood-card.show {
@@ -355,11 +372,11 @@
 
     .copy-btn {
       margin-top: 0.5rem;
-      padding: 0.4rem 1rem;
+      padding: 0.5rem 1.25rem;
       background: var(--primary);
       color: var(--white);
       border: 2px solid var(--primary);
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
@@ -373,6 +390,8 @@
     .copy-btn:hover {
       background: var(--primary-light);
       border-color: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(116, 141, 174, 0.2);
     }
 
     .copy-btn:active {
