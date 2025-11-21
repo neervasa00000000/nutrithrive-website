@@ -995,8 +995,13 @@
         if (bottomSize && bottomSize.waistRange) {
           waistInchesValue = bottomSize.waistRange;
         }
-      } else if (waistInches && waistInches >= 20 && waistInches <= 50) {
-        // User entered waist measurement
+      } else if (waistInches) {
+        // User entered waist measurement - check if it's within valid range
+        if (waistInches < 20 || waistInches > 50) {
+          alert('Please enter a valid waist size between 20 and 50 inches');
+          return;
+        }
+        
         waistInchesValue = waistInches;
         waistCm = waistInches * 2.54;
         
@@ -1011,7 +1016,7 @@
         else if (waistInches < 42) letterSize = 'XXL';
         else letterSize = '3XL';
       } else {
-        alert('Please select a size or enter a valid waist size (20-50 inches)');
+        alert('Please select a size or enter a waist measurement');
         return;
       }
       
