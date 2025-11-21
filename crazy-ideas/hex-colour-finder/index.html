@@ -7,7 +7,7 @@
   <meta name="description" content="Extract dominant colors from any photo and analyze its mood. Perfect for design inspiration.">
   <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
   <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #511D43;
@@ -31,110 +31,146 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding: 2rem 1rem;
+      padding: 0;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--white);
-      border: 3px solid var(--primary);
-      border-radius: 24px;
-      padding: 3rem 2.5rem;
+    .hero-section {
+      background: var(--primary);
+      color: var(--white);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
       position: relative;
-      overflow: hidden;
     }
 
-    .container::before {
+    .hero-section::after {
       content: '';
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
       right: 0;
-      height: 6px;
-      background: var(--primary);
+      height: 40px;
+      background: var(--bg);
+      border-radius: 40px 40px 0 0;
     }
 
     h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+      letter-spacing: -2px;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: -20px auto 0;
+      padding: 0 2rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .upload-card {
+      background: var(--white);
+      border: 4px solid var(--primary);
+      border-radius: 24px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .upload-area {
+      border: 3px dashed var(--accent);
+      border-radius: 20px;
+      padding: 4rem 2rem;
+      background: var(--bg);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .upload-area:hover {
+      border-color: var(--primary);
+      background: var(--white);
+    }
+
+    .upload-area.dragover {
+      border-color: var(--secondary);
+      background: var(--accent);
+    }
+
+    .upload-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .upload-text {
+      font-size: 1.5rem;
+      font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.5rem;
-      text-align: center;
-      letter-spacing: -1px;
-      line-height: 1.2;
     }
 
-    .subtitle {
-      text-align: center;
-      color: var(--text-light);
+    .upload-hint {
       font-size: 1rem;
-      margin-bottom: 2.5rem;
+      color: var(--text-light);
       font-weight: 500;
-    }
-
-    .upload-section {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .upload-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 2.5rem;
-      background: var(--primary);
-      color: var(--white);
-      border: 3px solid var(--primary);
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .upload-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-
-    .upload-btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .upload-btn:hover {
-      background: var(--primary-light);
-      border-color: var(--primary-light);
-      transform: translateY(-2px);
-    }
-
-    .upload-btn:active {
-      transform: translateY(0);
     }
 
     input[type="file"] {
       display: none;
     }
 
-    .image-section {
-      margin: 2.5rem 0;
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .image-card {
+      background: var(--white);
+      border: 4px solid var(--primary);
+      border-radius: 24px;
+      padding: 2rem;
+      display: none;
+    }
+
+    .image-card.show {
+      display: block;
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .image-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
       text-align: center;
     }
 
     .image-wrapper {
-      display: inline-block;
       position: relative;
       border-radius: 16px;
       overflow: hidden;
@@ -144,136 +180,143 @@
     }
 
     #canvas {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       display: block;
       border-radius: 12px;
     }
 
-    .palette-section {
-      margin: 3rem 0;
+    .palette-card {
+      background: var(--white);
+      border: 4px solid var(--primary);
+      border-radius: 24px;
+      padding: 2.5rem;
+      display: none;
+    }
+
+    .palette-card.show {
+      display: block;
+      animation: slideUp 0.5s ease-out 0.2s both;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--accent);
     }
 
     .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.75rem;
+      font-weight: 800;
       color: var(--primary);
-      margin-bottom: 1.5rem;
-      text-align: center;
-      letter-spacing: -0.5px;
+      letter-spacing: -1px;
     }
 
-    .palette-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      margin-bottom: 2rem;
+    .color-count {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+      background: var(--bg);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 2px solid var(--accent);
     }
 
-    .swatch-wrapper {
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .color-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
-    .swatch {
-      width: 80px;
-      height: 80px;
+    .color-swatch {
+      width: 100%;
+      aspect-ratio: 1;
       border-radius: 16px;
-      border: 3px solid var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
+      border: 4px solid var(--primary);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .swatch:hover {
-      transform: scale(1.1) rotate(5deg);
+    .color-swatch:hover {
+      transform: scale(1.05) rotate(2deg);
       border-color: var(--secondary);
     }
 
-
-    .color-label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--primary);
+    .color-info {
       text-align: center;
-      font-family: 'Courier New', monospace;
-      letter-spacing: 0.5px;
-    }
-
-    .color-info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .color-card {
-      padding: 1.25rem;
-      background: var(--bg);
-      border: 2px solid var(--secondary);
-      border-radius: 12px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .color-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      background: var(--white);
+      width: 100%;
     }
 
     .color-hex {
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--primary);
       font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
       letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
     .color-name {
-      color: var(--text-light);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
+      color: var(--text-light);
+      padding: 0.4rem 0.8rem;
+      background: var(--bg);
+      border-radius: 12px;
+      border: 2px solid var(--accent);
+      display: inline-block;
     }
 
-    .mood-section {
-      margin: 3rem 0;
-      padding: 2rem;
+    .mood-card {
       background: var(--primary);
-      border-radius: 16px;
-      text-align: center;
       color: var(--white);
-      border: 3px solid var(--primary-light);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      border: 4px solid var(--primary-light);
+      display: none;
+    }
+
+    .mood-card.show {
+      display: block;
+      animation: slideUp 0.5s ease-out 0.4s both;
     }
 
     .mood-label {
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       opacity: 0.9;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .mood-title {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      letter-spacing: -1px;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+      letter-spacing: -2px;
+      line-height: 1.2;
     }
 
     .mood-desc {
-      font-size: 1.1rem;
-      opacity: 0.95;
+      font-size: 1.2rem;
       font-weight: 500;
+      opacity: 0.95;
     }
 
     .empty-state {
@@ -283,75 +326,99 @@
     }
 
     .empty-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      opacity: 0.5;
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.6;
     }
 
     .empty-text {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
     }
 
-    .credit {
-      text-align: center;
-      margin-top: 2.5rem;
-      padding-top: 2rem;
-      border-top: 2px solid var(--accent);
+    .empty-hint {
+      font-size: 1rem;
       color: var(--text-light);
-      font-size: 0.9rem;
+      font-weight: 500;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .copy-btn {
+      margin-top: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: var(--primary);
+      color: var(--white);
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
-    .fade-in {
-      animation: fadeIn 0.5s ease-out;
+    .copy-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-light);
     }
 
-    @media (max-width: 640px) {
-      body {
-        padding: 1rem 0.5rem;
-      }
+    .copy-btn.copied {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--primary);
+    }
 
-      .container {
-        padding: 2rem 1.5rem;
-        border-radius: 20px;
-      }
-
-      h1 {
-        font-size: 1.75rem;
-      }
-
-      .subtitle {
-        font-size: 0.9rem;
-      }
-
-      .upload-btn {
-        padding: 0.875rem 2rem;
-        font-size: 1rem;
-      }
-
-      .swatch {
-        width: 65px;
-        height: 65px;
-      }
-
-      .color-info-grid {
+    @media (max-width: 1024px) {
+      .content-grid {
         grid-template-columns: 1fr;
       }
 
+      .palette-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-section {
+        padding: 3rem 1.5rem 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .main-container {
+        padding: 0 1rem 2rem;
+      }
+
+      .upload-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .upload-area {
+        padding: 3rem 1.5rem;
+      }
+
+      .upload-icon {
+        font-size: 3rem;
+      }
+
+      .upload-text {
+        font-size: 1.25rem;
+      }
+
+      .palette-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
       .mood-title {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
       }
 
       .mood-desc {
@@ -361,34 +428,38 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="hero-section">
     <h1>Photo Palette & Mood Analyzer</h1>
-    <p class="subtitle">Extract colors and discover the mood of any image</p>
+    <p class="hero-subtitle">Extract colors and discover the emotional essence of any image</p>
+  </div>
 
-    <div class="upload-section">
-      <label class="upload-btn">
-        <span>📸</span>
-        <span>Select a Photo</span>
-      </label>
-      <input type="file" id="photoInput" accept="image/*"/>
-    </div>
-
-    <div class="image-section">
-      <div class="image-wrapper">
-        <canvas id="canvas" width="500" height="400"></canvas>
+  <div class="main-container">
+    <div class="upload-card">
+      <div class="upload-area" id="uploadArea">
+        <span class="upload-icon">📸</span>
+        <div class="upload-text">Drop your image here</div>
+        <div class="upload-hint">or click to browse</div>
+        <input type="file" id="photoInput" accept="image/*"/>
       </div>
     </div>
 
-    <div id="palette" class="palette-section">
-      <div class="empty-state">
-        <div class="empty-icon">🎨</div>
-        <div class="empty-text">Upload a photo to extract its color palette</div>
+    <div class="content-grid">
+      <div class="image-card" id="imageCard">
+        <div class="image-title">Your Image</div>
+        <div class="image-wrapper">
+          <canvas id="canvas" width="600" height="450"></canvas>
+        </div>
+      </div>
+
+      <div class="palette-card" id="paletteCard">
+        <div class="section-header">
+          <div class="section-title">Color Palette</div>
+          <div class="color-count" id="colorCount">5 Colors</div>
+        </div>
+        <div class="palette-grid" id="paletteGrid"></div>
+        <div class="mood-card" id="moodCard"></div>
       </div>
     </div>
-
-    <div id="mood" class="mood-section" style="display: none;"></div>
-
-    <div class="credit">Palette and mood analysis for design inspiration</div>
   </div>
 
   <script>
@@ -407,7 +478,6 @@
         }
       }
 
-      // Simple clustering algorithm
       let clusters = [];
       
       pixels.forEach(p => {
@@ -429,7 +499,6 @@
         }
       });
 
-      // Sort by population
       clusters = clusters.sort((a, b) => b[3] - a[3]);
 
       return clusters.slice(0, num).map(c => {
@@ -543,15 +612,47 @@
       return closest;
     }
 
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        // Visual feedback handled by CSS class
+      });
+    }
+
     // UI handlers
     const photoInput = document.getElementById('photoInput');
+    const uploadArea = document.getElementById('uploadArea');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+    const imageCard = document.getElementById('imageCard');
+    const paletteCard = document.getElementById('paletteCard');
+    const paletteGrid = document.getElementById('paletteGrid');
+    const moodCard = document.getElementById('moodCard');
+    const colorCount = document.getElementById('colorCount');
 
-    photoInput.onchange = function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
+    // Click to upload
+    uploadArea.addEventListener('click', () => photoInput.click());
 
+    // Drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        photoInput.files = e.dataTransfer.files;
+        handleFile(file);
+      }
+    });
+
+    function handleFile(file) {
       const img = new window.Image();
       
       img.onload = function() {
@@ -563,47 +664,41 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, (canvas.width - w) / 2, (canvas.height - h) / 2, w, h);
 
+        // Show image card
+        imageCard.classList.add('show');
+
         // Extract palette
         let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const palette = getDominantColors(imgData, 5);
 
-        // Build palette display
-        let paletteHTML = '<div class="section-title fade-in">Dominant Colors</div>';
-        paletteHTML += '<div class="palette-row fade-in">';
-        
-        palette.forEach((c, index) => {
-          let name = closestName(c.rgb);
-          paletteHTML += `
-            <div class="swatch-wrapper fade-in" style="animation-delay: ${index * 0.1}s">
-              <div class="swatch" style="background: ${c.hex}" title="${c.hex}"></div>
-              <div class="color-label">${c.hex}</div>
-            </div>
-          `;
-        });
-        
-        paletteHTML += '</div>';
+        // Show palette card
+        paletteCard.classList.add('show');
 
-        // Build color info cards
-        paletteHTML += '<div class="color-info-grid fade-in">';
+        // Build palette grid
+        paletteGrid.innerHTML = '';
         palette.forEach((c, index) => {
           let name = closestName(c.rgb);
-          paletteHTML += `
-            <div class="color-card fade-in" style="animation-delay: ${index * 0.1}s">
-              <div class="color-hex">${c.hex}</div>
+          const colorItem = document.createElement('div');
+          colorItem.className = 'color-item';
+          colorItem.style.animationDelay = `${index * 0.1}s`;
+          colorItem.innerHTML = `
+            <div class="color-swatch" style="background: ${c.hex}" title="Click to copy"></div>
+            <div class="color-info">
+              <span class="color-hex">${c.hex}</span>
               <div class="color-name">${name.name}</div>
+              <button class="copy-btn" onclick="copyToClipboard('${c.hex}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 2000);">Copy</button>
             </div>
           `;
+          paletteGrid.appendChild(colorItem);
         });
-        paletteHTML += '</div>';
 
-        document.getElementById('palette').innerHTML = paletteHTML;
+        // Update color count
+        colorCount.textContent = `${palette.length} Colors`;
 
         // Display mood
         const mood = getPaletteMood(palette);
-        const moodSection = document.getElementById('mood');
-        moodSection.style.display = 'block';
-        moodSection.className = 'mood-section fade-in';
-        moodSection.innerHTML = `
+        moodCard.classList.add('show');
+        moodCard.innerHTML = `
           <div class="mood-label">Mood Analysis</div>
           <div class="mood-title">${mood.main}</div>
           <div class="mood-desc">${mood.desc}</div>
@@ -611,7 +706,17 @@
       };
 
       img.src = URL.createObjectURL(file);
+    }
+
+    photoInput.onchange = function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        handleFile(file);
+      }
     };
+
+    // Make copyToClipboard available globally
+    window.copyToClipboard = copyToClipboard;
   </script>
 </body>
 </html>
