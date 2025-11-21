@@ -34,6 +34,9 @@
       padding: 0;
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .hero-section {
@@ -101,6 +104,14 @@
     .upload-area:hover {
       border-color: var(--primary);
       background: var(--white);
+    }
+
+    @media (hover: none) {
+      .upload-area:active {
+        border-color: var(--primary);
+        background: var(--white);
+        transform: scale(0.98);
+      }
     }
 
     .upload-area.dragover {
@@ -255,6 +266,17 @@
       border-color: var(--secondary);
     }
 
+    .color-swatch:active {
+      transform: scale(0.98);
+    }
+
+    @media (hover: none) {
+      .color-swatch:active {
+        transform: scale(0.95);
+        border-color: var(--secondary);
+      }
+    }
+
     .color-info {
       text-align: center;
       width: 100%;
@@ -343,8 +365,11 @@
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       display: inline-block;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
     }
 
     .copy-btn:hover {
@@ -352,10 +377,20 @@
       border-color: var(--primary-light);
     }
 
+    .copy-btn:active {
+      transform: scale(0.95);
+    }
+
     .copy-btn.copied {
       background: var(--accent);
       border-color: var(--accent);
       color: var(--primary);
+    }
+
+    @media (hover: none) {
+      .copy-btn:active {
+        transform: scale(0.92);
+      }
     }
 
     @media (max-width: 1024px) {
@@ -368,50 +403,259 @@
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .hero-section {
-        padding: 3rem 1.5rem 2rem;
+        padding: 2.5rem 1.25rem 1.75rem;
+      }
+
+      .hero-section::after {
+        height: 30px;
+        border-radius: 30px 30px 0 0;
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        letter-spacing: -1px;
+        margin-bottom: 0.5rem;
       }
 
       .hero-subtitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
       }
 
       .main-container {
-        padding: 0 1rem 2rem;
+        padding: 0 1rem 2.5rem;
+        margin-top: -15px;
       }
 
       .upload-card {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1rem;
+        border-width: 3px;
+        border-radius: 20px;
+        margin-bottom: 2rem;
       }
 
       .upload-area {
-        padding: 3rem 1.5rem;
+        padding: 2.5rem 1rem;
+        border-width: 2.5px;
+        border-radius: 16px;
       }
 
       .upload-icon {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
       }
 
       .upload-text {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .upload-hint {
+        font-size: 0.9rem;
+      }
+
+      .content-grid {
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .image-card,
+      .palette-card {
+        padding: 1.5rem 1rem;
+        border-width: 3px;
+        border-radius: 20px;
+      }
+
+      .image-title {
         font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .image-wrapper {
+        border-width: 2.5px;
+        border-radius: 12px;
+        padding: 0.4rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+      }
+
+      .section-title {
+        font-size: 1.35rem;
+        width: 100%;
+      }
+
+      .color-count {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.85rem;
+        border-width: 2px;
+        border-radius: 16px;
+        align-self: flex-start;
       }
 
       .palette-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .color-swatch {
+        border-width: 3px;
+        border-radius: 12px;
+        min-height: 80px;
+      }
+
+      .color-hex {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+        word-break: break-all;
+      }
+
+      .copy-btn {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.9rem;
+        border-width: 2px;
+        border-radius: 10px;
+        min-height: 44px;
+        min-width: 80px;
+        touch-action: manipulation;
+      }
+
+      .mood-card {
+        padding: 2rem 1.5rem;
+        border-width: 3px;
+        border-radius: 16px;
+        margin-top: 1.5rem;
+      }
+
+      .mood-label {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        margin-bottom: 0.75rem;
       }
 
       .mood-title {
         font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
       }
 
       .mood-desc {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        letter-spacing: -0.5px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.875rem;
+      }
+
+      .main-container {
+        padding: 0 0.75rem 2rem;
+      }
+
+      .upload-card {
+        padding: 1.25rem 0.75rem;
+        border-radius: 16px;
+      }
+
+      .upload-area {
+        padding: 2rem 0.75rem;
+        border-radius: 14px;
+      }
+
+      .upload-icon {
+        font-size: 2rem;
+      }
+
+      .upload-text {
         font-size: 1rem;
+      }
+
+      .upload-hint {
+        font-size: 0.85rem;
+      }
+
+      .image-card,
+      .palette-card {
+        padding: 1.25rem 0.75rem;
+        border-radius: 16px;
+      }
+
+      .image-title {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+      }
+
+      .palette-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .color-swatch {
+        min-height: 100px;
+        border-radius: 14px;
+      }
+
+      .color-hex {
+        font-size: 1.1rem;
+      }
+
+      .copy-btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .mood-card {
+        padding: 1.75rem 1.25rem;
+      }
+
+      .mood-title {
+        font-size: 1.5rem;
+      }
+
+      .mood-desc {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 1.35rem;
+      }
+
+      .upload-area {
+        padding: 1.75rem 0.5rem;
+      }
+
+      .palette-grid {
+        gap: 1.25rem;
+      }
+
+      .color-swatch {
+        min-height: 90px;
       }
     }
   </style>
