@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Block The Buy - Impulse Purchase Blocker",
+  "version": "1.0.0",
+  "description": "Blocks impulse purchases by adding friction to buy buttons. Save money, think before you buy!",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.amazon.com.au/*",
+        "*://*.amazon.com/*",
+        "*://*.ebay.com.au/*",
+        "*://*.ebay.com/*",
+        "*://*.coles.com.au/*",
+        "*://*.woolworths.com.au/*",
+        "*://*.kmart.com.au/*",
+        "*://*.target.com.au/*",
+        "*://*.bunnings.com.au/*",
+        "*://*.jbhifi.com.au/*",
+        "*://*.myer.com.au/*",
+        "*://*.catch.com.au/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
+
