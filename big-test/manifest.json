@@ -17,18 +17,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.amazon.com.au/*",
-        "*://*.amazon.com/*",
-        "*://*.ebay.com.au/*",
-        "*://*.ebay.com/*",
-        "*://*.coles.com.au/*",
-        "*://*.woolworths.com.au/*",
-        "*://*.kmart.com.au/*",
-        "*://*.target.com.au/*",
-        "*://*.bunnings.com.au/*",
-        "*://*.jbhifi.com.au/*",
-        "*://*.myer.com.au/*",
-        "*://*.catch.com.au/*"
+        "<all_urls>"
       ],
       "js": ["content.js"],
       "css": ["content.css"],
