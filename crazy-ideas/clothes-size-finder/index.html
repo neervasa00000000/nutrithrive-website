@@ -636,19 +636,25 @@
           </div>
 
           <div id="womenBottomSection" style="display:none;">
-            <div class="section-title" style="margin-top: 0; font-size: 1rem;">Enter Your Waist Size</div>
-            <div class="input-group">
+            <div class="section-title" style="margin-top: 0; font-size: 1rem;">How would you like to find your size?</div>
+            <div class="input-toggle">
+              <button class="toggle-btn active" onclick="toggleInput('women', 'letter')">Letter Size</button>
+              <button class="toggle-btn" onclick="toggleInput('women', 'waist')">Waist Measurement</button>
+            </div>
+            <div id="womenWaistInput" class="input-method" style="display:none;">
+              <div class="input-group">
               <div class="input-box" style="max-width: 100%; margin: 0 auto;">
                 <label>Waist Size (inches)</label>
                 <input type="number" id="womenWaistInches" placeholder="Enter waist size" min="20" max="50" step="0.5">
               </div>
-            </div>
-            <div class="measurement-guide">
-              <h3>How to Measure</h3>
-              <ul>
-                <li><strong>Waist:</strong> Measure around your natural waistline</li>
-                <li>For pants and jeans, measure where you want the waistband to sit</li>
-              </ul>
+              </div>
+              <div class="measurement-guide">
+                <h3>How to Measure</h3>
+                <ul>
+                  <li><strong>Waist:</strong> Measure around your natural waistline</li>
+                  <li>For pants and jeans, measure where you want the waistband to sit</li>
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -894,6 +900,7 @@
           document.getElementById('womenBust').value = '';
           document.getElementById('womenWaist').value = '';
           document.getElementById('womenHips').value = '';
+          document.getElementById('womenWaistInches').value = '';
         } else if (gender === 'men') {
           document.getElementById('menChest').value = '';
           document.getElementById('menWaist').value = '';
@@ -921,6 +928,15 @@
           sizeOptions.forEach(opt => opt.classList.remove('selected'));
         }
         document.getElementById(gender + 'SelectedSize').value = '';
+        
+        if (gender === 'women') {
+          document.getElementById('womenBust').value = '';
+          document.getElementById('womenWaist').value = '';
+          document.getElementById('womenHips').value = '';
+        } else if (gender === 'men') {
+          document.getElementById('menChest').value = '';
+          document.getElementById('menWaist').value = '';
+        }
       }
     }
 
@@ -964,26 +980,40 @@
     }
 
     function convertWomensBottom() {
+      const selectedSize = document.getElementById('womenSelectedSize').value;
       const waistInches = parseFloat(document.getElementById('womenWaistInches').value);
       
-      if (!waistInches || waistInches < 20 || waistInches > 50) {
-        alert('Please enter a valid waist size (20-50 inches)');
+      let letterSize;
+      let waistInchesValue = null;
+      let waistCm = null;
+      
+      // Check if user selected letter size first
+      if (selectedSize) {
+        letterSize = selectedSize;
+        // Get waist range from size map for display
+        const bottomSize = womenBottomSizeMap[letterSize];
+        if (bottomSize && bottomSize.waistRange) {
+          waistInchesValue = bottomSize.waistRange;
+        }
+      } else if (waistInches && waistInches >= 20 && waistInches <= 50) {
+        // User entered waist measurement
+        waistInchesValue = waistInches;
+        waistCm = waistInches * 2.54;
+        
+        // Waist size to letter size mapping - verified from U.S. Standard + UK Standard charts
+        // XXS: 22", XS: 24", S: 26", M: 28-30", L: 32-34", XL: 34-36", XXL: 36-39"
+        if (waistInches < 23) letterSize = 'XXS';
+        else if (waistInches < 25) letterSize = 'XS';
+        else if (waistInches < 27) letterSize = 'S';
+        else if (waistInches < 31) letterSize = 'M';
+        else if (waistInches < 35) letterSize = 'L';
+        else if (waistInches < 39) letterSize = 'XL';
+        else if (waistInches < 42) letterSize = 'XXL';
+        else letterSize = '3XL';
+      } else {
+        alert('Please select a size or enter a valid waist size (20-50 inches)');
         return;
       }
-      
-      const waistCm = waistInches * 2.54;
-      
-      // Waist size to letter size mapping - verified from U.S. Standard + UK Standard charts
-      // XXS: 22", XS: 24", S: 26", M: 28-30", L: 32-34", XL: 34-36", XXL: 36-39"
-      let letterSize;
-      if (waistInches < 23) letterSize = 'XXS';
-      else if (waistInches < 25) letterSize = 'XS';
-      else if (waistInches < 27) letterSize = 'S';
-      else if (waistInches < 31) letterSize = 'M';
-      else if (waistInches < 35) letterSize = 'L';
-      else if (waistInches < 39) letterSize = 'XL';
-      else if (waistInches < 42) letterSize = 'XXL';
-      else letterSize = '3XL';
       
       const bottomSize = womenBottomSizeMap[letterSize];
       if (!bottomSize) {
@@ -1015,8 +1045,8 @@
         <div class="result-header">
           <h2>Your Pant Size Is:</h2>
           <div class="your-size">${letterSize}</div>
-          <div style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.25rem;">Waist: ${waistInches}" (${waistCm.toFixed(1)}cm) | UK: ${bottomSize.uk}</div>
-          <div style="font-size: 0.7rem; color: var(--text-light); margin-top: 0.15rem;">Waist Range: ${bottomSize.waist}" (${bottomSize.waistCm}cm) | Hip: ${bottomSize.hip}" (${bottomSize.hipCm}cm)</div>
+          ${waistInchesValue ? `<div style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.25rem;">Waist: ${typeof waistInchesValue === 'number' ? waistInchesValue + '" (' + waistCm.toFixed(1) + 'cm)' : waistInchesValue + '"'} | UK: ${bottomSize.uk}</div>` : ''}
+          <div style="font-size: 0.7rem; color: var(--text-light); margin-top: 0.15rem;">Standard Range: Waist ${bottomSize.waist}" (${bottomSize.waistCm}cm) | Hip: ${bottomSize.hip}" (${bottomSize.hipCm}cm)</div>
         </div>
         <div class="brand-grid">
       `;
