@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1B3C53;
-      --primary-light: #234C6A;
-      --secondary: #456882;
-      --accent: #D2C1B6;
-      --bg: #D2C1B6;
-      --text: #1B3C53;
-      --text-light: #456882;
+      --primary: #511D43;
+      --primary-light: #901E3E;
+      --secondary: #DC2525;
+      --accent: #9BC09C;
+      --bg: #9BC09C;
+      --text: #511D43;
+      --text-light: #901E3E;
       --white: #ffffff;
     }
 
@@ -28,7 +28,7 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, var(--bg) 0%, var(--secondary) 100%);
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       padding: 2rem 1rem;
@@ -53,7 +53,7 @@
       left: 0;
       right: 0;
       height: 6px;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+      background: var(--primary);
     }
 
     h1 {
@@ -197,18 +197,6 @@
       border-color: var(--secondary);
     }
 
-    .swatch::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .swatch:hover::after {
-      opacity: 1;
-    }
 
     .color-label {
       font-size: 0.85rem;
@@ -259,10 +247,11 @@
     .mood-section {
       margin: 3rem 0;
       padding: 2rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      background: var(--primary);
       border-radius: 16px;
       text-align: center;
       color: var(--white);
+      border: 3px solid var(--primary-light);
     }
 
     .mood-label {
