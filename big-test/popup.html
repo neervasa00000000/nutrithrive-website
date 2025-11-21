@@ -12,176 +12,194 @@
     }
 
     body {
-      width: 380px;
+      width: 400px;
       margin: 0;
-      padding: 24px;
+      padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
       color: #ffffff;
-      min-height: 400px;
+      min-height: 500px;
     }
 
     .header {
+      background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+      padding: 24px;
       text-align: center;
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid rgba(255, 68, 68, 0.3);
+      border-bottom: 3px solid rgba(255, 68, 68, 0.5);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
-      font-size: 1.8em;
+      font-size: 2em;
       margin: 0 0 8px 0;
-      color: #ff4444;
+      color: #ffffff;
       font-weight: 900;
       letter-spacing: -1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .subtitle {
-      color: #999;
-      font-size: 0.9em;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95em;
       font-weight: 500;
+    }
+
+    .content {
+      padding: 24px;
     }
 
     .stat-card {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-      border: 2px solid rgba(255, 170, 0, 0.2);
-      border-radius: 12px;
+      border: 2px solid rgba(255, 170, 0, 0.3);
+      border-radius: 14px;
       padding: 20px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       transition: all 0.3s ease;
     }
 
     .stat-card:hover {
-      border-color: rgba(255, 170, 0, 0.4);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 170, 0, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     .stat-label {
       color: #bbb;
       font-size: 0.9em;
-      margin-bottom: 8px;
-      font-weight: 500;
+      margin-bottom: 10px;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .stat-value {
-      font-size: 2.2em;
+      font-size: 2.5em;
       font-weight: 900;
       color: #00ff88;
-      text-shadow: 0 2px 4px rgba(0, 255, 136, 0.3);
-      letter-spacing: -1px;
+      text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+      letter-spacing: -2px;
+      line-height: 1;
     }
 
     .toggle-section {
       margin-top: 24px;
-      padding: 20px;
-      background: rgba(255, 68, 68, 0.1);
-      border: 2px solid rgba(255, 68, 68, 0.3);
-      border-radius: 12px;
+      padding: 24px;
+      background: rgba(255, 68, 68, 0.12);
+      border: 2px solid rgba(255, 68, 68, 0.4);
+      border-radius: 14px;
       text-align: center;
     }
 
     .status-text {
-      font-weight: 700;
+      font-weight: 800;
       color: #00ff88;
-      font-size: 1.1em;
-      margin-bottom: 16px;
+      font-size: 1.2em;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .status-dot {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       background: #00ff88;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
       0%, 100% {
         opacity: 1;
+        transform: scale(1);
       }
       50% {
-        opacity: 0.5;
+        opacity: 0.7;
+        transform: scale(1.2);
       }
     }
 
     .toggle-btn {
       width: 100%;
-      padding: 14px;
+      padding: 16px;
       background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
       color: #000;
       border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1em;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 1.05em;
       cursor: pointer;
       margin-top: 12px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .toggle-btn:hover {
       background: linear-gradient(135deg, #00cc66 0%, #00aa55 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 255, 136, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 255, 136, 0.5);
     }
 
     .toggle-btn:active {
-      transform: translateY(0);
+      transform: translateY(-1px);
     }
 
-    .footer {
+    .info-section {
       margin-top: 20px;
-      text-align: center;
-      color: #666;
+      padding: 16px;
+      background: rgba(255, 170, 0, 0.1);
+      border: 1px solid rgba(255, 170, 0, 0.3);
+      border-radius: 10px;
       font-size: 0.85em;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #bbb;
+      line-height: 1.6;
+    }
+
+    .info-section strong {
+      color: #ffaa00;
     }
   </style>
 </head>
 <body>
   <div class="header">
     <h1>🛑 Block The Buy</h1>
-    <div class="subtitle">Impulse Purchase Blocker</div>
+    <div class="subtitle">Universal Purchase Blocker</div>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-label">🛒 Blocked Purchases</div>
-    <div class="stat-value" id="blocked-count">0</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-label">💰 Money Saved</div>
-    <div class="stat-value" id="money-saved">$0</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-label">⏰ Work Hours Saved</div>
-    <div class="stat-value" id="hours-saved">0</div>
-  </div>
-
-  <div class="toggle-section">
-    <div class="status-text">
-      <span class="status-dot"></span>
-      Status: Active
+  <div class="content">
+    <div class="stat-card">
+      <div class="stat-label">🛒 Blocked Purchases</div>
+      <div class="stat-value" id="blocked-count">0</div>
     </div>
-    <button class="toggle-btn" id="reset-btn">Reset Stats</button>
-  </div>
 
-  <div class="footer">
-    💡 Think before you buy!
+    <div class="stat-card">
+      <div class="stat-label">💰 Money Saved</div>
+      <div class="stat-value" id="money-saved">$0</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">⏰ Work Hours Saved</div>
+      <div class="stat-value" id="hours-saved">0</div>
+    </div>
+
+    <div class="toggle-section">
+      <div class="status-text">
+        <span class="status-dot"></span>
+        Status: Active
+      </div>
+      <button class="toggle-btn" id="reset-btn">Reset Stats</button>
+    </div>
+
+    <div class="info-section">
+      <strong>Universal Protection:</strong> Blocks all purchases, subscriptions, and checkouts with a mandatory 24-hour delay. Works on all websites including Shein, Amazon, eBay, and more.
+    </div>
   </div>
 
   <script src="popup.js"></script>
 </body>
 </html>
-
