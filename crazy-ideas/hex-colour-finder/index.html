@@ -99,6 +99,11 @@
       transition: all 0.3s ease;
       cursor: pointer;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     .upload-area:hover {
@@ -405,7 +410,8 @@
 
     @media (max-width: 768px) {
       .hero-section {
-        padding: 2.5rem 1.25rem 1.75rem;
+        padding: 2.5rem 1.25rem 2rem;
+        min-height: auto;
       }
 
       .hero-section::after {
@@ -416,12 +422,14 @@
       h1 {
         font-size: 1.75rem;
         letter-spacing: -1px;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
       }
 
       .hero-subtitle {
         font-size: 0.95rem;
-        line-height: 1.5;
+        line-height: 1.6;
+        padding-bottom: 0.5rem;
       }
 
       .main-container {
@@ -434,12 +442,18 @@
         border-width: 3px;
         border-radius: 20px;
         margin-bottom: 2rem;
+        margin-top: 0.5rem;
       }
 
       .upload-area {
         padding: 2.5rem 1rem;
         border-width: 2.5px;
         border-radius: 16px;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .upload-icon {
@@ -555,16 +569,21 @@
 
     @media (max-width: 480px) {
       .hero-section {
-        padding: 2rem 1rem 1.5rem;
+        padding: 2rem 1rem 1.75rem;
+        min-height: auto;
       }
 
       h1 {
         font-size: 1.5rem;
         letter-spacing: -0.5px;
+        line-height: 1.2;
+        margin-bottom: 0.6rem;
       }
 
       .hero-subtitle {
         font-size: 0.875rem;
+        line-height: 1.6;
+        padding-bottom: 0.25rem;
       }
 
       .main-container {
@@ -574,11 +593,17 @@
       .upload-card {
         padding: 1.25rem 0.75rem;
         border-radius: 16px;
+        margin-top: 0.5rem;
       }
 
       .upload-area {
         padding: 2rem 0.75rem;
         border-radius: 14px;
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .upload-icon {
