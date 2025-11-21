@@ -962,14 +962,50 @@
         topBtn.classList.add('active');
         topSection.style.display = 'block';
         bottomSection.style.display = 'none';
-        topConvertBtn.style.display = 'block';
-        bottomConvertBtn.style.display = 'none';
+        if (topConvertBtn) topConvertBtn.style.display = 'block';
+        if (bottomConvertBtn) bottomConvertBtn.style.display = 'none';
+        
+        // Reset bottom wear inputs
+        if (gender === 'women') {
+          const waistInput = document.getElementById('womenWaistInput');
+          if (waistInput) waistInput.style.display = 'none';
+          const waistInchesInput = document.getElementById('womenWaistInches');
+          if (waistInchesInput) waistInchesInput.value = '';
+        } else if (gender === 'men') {
+          const waistInput = document.getElementById('menWaistInput');
+          if (waistInput) waistInput.style.display = 'none';
+          const waistInchesInput = document.getElementById('menWaistInches');
+          if (waistInchesInput) waistInchesInput.value = '';
+        }
       } else {
         bottomBtn.classList.add('active');
         topSection.style.display = 'none';
         bottomSection.style.display = 'block';
-        topConvertBtn.style.display = 'none';
-        bottomConvertBtn.style.display = 'block';
+        if (topConvertBtn) topConvertBtn.style.display = 'none';
+        if (bottomConvertBtn) bottomConvertBtn.style.display = 'block';
+        
+        // Show letter size selector by default for bottom wear
+        if (gender === 'women') {
+          const letterDiv = document.getElementById('womenLetter');
+          const waistInput = document.getElementById('womenWaistInput');
+          if (letterDiv) letterDiv.style.display = 'block';
+          if (waistInput) waistInput.style.display = 'none';
+          // Reset selected size
+          const selectedSizeInput = document.getElementById('womenSelectedSize');
+          if (selectedSizeInput) selectedSizeInput.value = '';
+          const sizeOptions = letterDiv ? letterDiv.querySelectorAll('.size-option') : [];
+          sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        } else if (gender === 'men') {
+          const letterDiv = document.getElementById('menLetter');
+          const waistInput = document.getElementById('menWaistInput');
+          if (letterDiv) letterDiv.style.display = 'block';
+          if (waistInput) waistInput.style.display = 'none';
+          // Reset selected size
+          const selectedSizeInput = document.getElementById('menSelectedSize');
+          if (selectedSizeInput) selectedSizeInput.value = '';
+          const sizeOptions = letterDiv ? letterDiv.querySelectorAll('.size-option') : [];
+          sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        }
       }
       
       // Reset results
