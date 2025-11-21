@@ -1077,6 +1077,13 @@
     }
 
     function convertWomens() {
+      // Check if bottom wear is selected
+      const bottomBtn = document.getElementById('womenBottomBtn');
+      if (bottomBtn && bottomBtn.classList.contains('active')) {
+        convertWomensBottom();
+        return;
+      }
+      
       const selectedSize = document.getElementById('womenSelectedSize').value;
       const bust = parseFloat(document.getElementById('womenBust').value);
       const waist = parseFloat(document.getElementById('womenWaist').value);
