@@ -285,6 +285,8 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--bg-secondary);
 }
 
 .tab-item {
@@ -302,6 +304,7 @@ body {
     width: 100%;
     box-sizing: border-box;
     gap: 12px;
+    transform: translateZ(0);
 }
 
 .tab-item:hover {
@@ -350,6 +353,7 @@ body {
     flex: 1;
     font-weight: 500;
     line-height: 1.4;
+    min-width: 0;
 }
 
 .tab-actions {
@@ -404,6 +408,8 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--bg-secondary);
 }
 
 .snoozed-item {
@@ -417,6 +423,7 @@ body {
     min-height: 80px;
     width: 100%;
     box-sizing: border-box;
+    transform: translateZ(0);
 }
 
 .snoozed-item:hover {
@@ -439,6 +446,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 500;
+    min-width: 0;
 }
 
 .snoozed-time {

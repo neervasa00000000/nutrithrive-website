@@ -1,147 +1,117 @@
-// Tab Amnesty - Popup Script
+// Tab Amnesty - Optimized Popup Script
 
 let currentTabId = null;
-let stats = {
-    tabsSnoozed: 0,
-    ramSaved: 0,
-    timeSaved: 0
-};
+let stats = { tabsSnoozed: 0, ramSaved: 0, timeSaved: 0 };
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
-    // Always refresh everything when popup opens
     await refreshAll();
     setupEventListeners();
 });
 
-// Refresh all data
+// --- CORE DATA LOADING ---
+
 async function refreshAll() {
-    await loadStats();
-    await loadTabs();
-    await loadSnoozedTabs();
+    // 1. Preserve scroll positions
+    const openList = document.getElementById('openTabsList');
+    const snoozedList = document.getElementById('snoozedList');
+    const scrollPosOpen = openList ? openList.scrollTop : 0;
+    const scrollPosSnoozed = snoozedList ? snoozedList.scrollTop : 0;
+
+    // 2. Load data
+    await Promise.all([loadStats(), loadTabs(), loadSnoozedTabs()]);
     updateStats();
+
+    // 3. Restore scroll positions
+    if (document.getElementById('openTabsList')) document.getElementById('openTabsList').scrollTop = scrollPosOpen;
+    if (document.getElementById('snoozedList')) document.getElementById('snoozedList').scrollTop = scrollPosSnoozed;
 }
 
-// Also refresh when popup becomes visible (in case it was already open)
-document.addEventListener('visibilitychange', async () => {
-    if (!document.hidden) {
-        await refreshAll();
-    }
-});
-
-// Load stats from storage and recalculate from actual data
 async function loadStats() {
-    // Get actual snoozed tabs to calculate real stats
-    const result = await chrome.storage.local.get(['snoozedTabs', 'stats']);
+    const result = await chrome.storage.local.get(['snoozedTabs']);
     const snoozedTabs = result.snoozedTabs || [];
     
-    // Recalculate stats from actual data
     stats.tabsSnoozed = snoozedTabs.length;
-    
-    // Calculate RAM saved (realistic estimates based on Chrome's actual usage)
-    // Each tab typically uses:
-    // - Base: 30-50MB (Chrome process overhead)
-    // - Content: 20-100MB+ (depending on page complexity)
-    // - Average: ~60-80MB per tab
-    // We use 75MB as a conservative average
-    stats.ramSaved = snoozedTabs.length * 75;
-    
-    // Calculate time saved (estimate: 0.5 hours per tab)
+    stats.ramSaved = snoozedTabs.length * 75; // ~75MB avg
     stats.timeSaved = Math.floor(snoozedTabs.length * 0.5);
-    
-    // Save updated stats
-    await chrome.storage.local.set({ stats });
 }
 
-// Save stats to storage
-async function saveStats() {
-    await chrome.storage.local.set({ stats });
-}
+// --- TAB MANAGEMENT ---
 
-// Load all open tabs
 async function loadTabs() {
     const tabs = await chrome.tabs.query({});
     const openTabsList = document.getElementById('openTabsList');
     const openTabCount = document.getElementById('openTabCount');
     
-    // Filter out extension pages and this popup
     const filteredTabs = tabs.filter(tab => 
         !tab.url.startsWith('chrome://') && 
-        !tab.url.startsWith('chrome-extension://') &&
-        !tab.url.startsWith('edge://')
+        !tab.url.startsWith('edge://') &&
+        !tab.url.startsWith('about:')
     );
     
     openTabCount.textContent = filteredTabs.length;
-    
+    openTabsList.innerHTML = ''; // Clear current list
     if (filteredTabs.length === 0) {
-        openTabsList.innerHTML = `
-            <div class="empty-state">
-                <span class="empty-icon">📑</span>
-                <p>No tabs to manage</p>
-            </div>
-        `;
+        openTabsList.innerHTML = `<div class="empty-state"><div class="empty-icon">📑</div><p class="empty-title">No tabs to manage</p><p class="empty-hint">Open some tabs to get started</p></div>`;
         return;
     }
     
-    openTabsList.innerHTML = '';
-    
-    filteredTabs.forEach(tab => {
-        const tabItem = createTabItem(tab);
-        openTabsList.appendChild(tabItem);
-    });
+    // PERFORMANCE: Use DocumentFragment to minimize reflows
+    const fragment = document.createDocumentFragment();
+    filteredTabs.forEach(tab => fragment.appendChild(createTabItem(tab)));
+    openTabsList.appendChild(fragment);
 }
 
-// Create tab item element
 function createTabItem(tab) {
     const tabItem = document.createElement('div');
     tabItem.className = 'tab-item';
     tabItem.dataset.tabId = tab.id;
     
-    const title = tab.title || tab.url;
+    // MODERN FAVICON FETCHING (MV3)
+    const faviconUrl = new URL(chrome.runtime.getURL("/_favicon/"));
+    faviconUrl.searchParams.set("pageUrl", tab.url);
+    faviconUrl.searchParams.set("size", "32");
     
-    // Create tab info
     const tabInfo = document.createElement('div');
     tabInfo.className = 'tab-info';
     
-    // Create favicon element
     const faviconEl = document.createElement('div');
     faviconEl.className = 'tab-favicon';
-    if (tab.favIconUrl && tab.favIconUrl.startsWith('http')) {
-        const img = document.createElement('img');
-        img.src = tab.favIconUrl;
-        img.alt = '';
-        img.onerror = function() {
-            faviconEl.textContent = '🌐';
-            faviconEl.style.fontSize = '12px';
-        };
-        faviconEl.appendChild(img);
-    } else {
+    const img = document.createElement('img');
+    img.src = faviconUrl.toString();
+    img.alt = '';
+    img.onerror = function() {
         faviconEl.textContent = '🌐';
-        faviconEl.style.fontSize = '12px';
-    }
+        faviconEl.style.fontSize = '10px';
+    };
+    faviconEl.appendChild(img);
     
-    // Create title
     const titleEl = document.createElement('div');
     titleEl.className = 'tab-title';
-    titleEl.textContent = title;
-    titleEl.title = title;
+    titleEl.textContent = tab.title || tab.url;
+    titleEl.title = tab.title || tab.url;
     
     tabInfo.appendChild(faviconEl);
     tabInfo.appendChild(titleEl);
     
-    // Create actions
     const actions = document.createElement('div');
     actions.className = 'tab-actions';
     
     const snoozeBtn = document.createElement('button');
     snoozeBtn.className = 'btn btn-primary snooze-btn';
     snoozeBtn.textContent = 'Snooze';
-    snoozeBtn.addEventListener('click', () => snoozeTab(tab.id));
+    snoozeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        snoozeTab(tab.id);
+    });
     
     const closeBtn = document.createElement('button');
     closeBtn.className = 'btn btn-danger close-btn';
     closeBtn.textContent = 'Close';
-    closeBtn.addEventListener('click', () => closeTab(tab.id));
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeTab(tab.id);
+    });
     
     actions.appendChild(snoozeBtn);
     actions.appendChild(closeBtn);
@@ -152,35 +122,27 @@ function createTabItem(tab) {
     return tabItem;
 }
 
-// Load snoozed tabs
 async function loadSnoozedTabs() {
     const result = await chrome.storage.local.get(['snoozedTabs']);
     const snoozedTabs = result.snoozedTabs || [];
     const snoozedList = document.getElementById('snoozedList');
-    const snoozedTabCount = document.getElementById('snoozedTabCount');
+    const countBadge = document.getElementById('snoozedTabCount');
     
-    snoozedTabCount.textContent = snoozedTabs.length;
-    
+    countBadge.textContent = snoozedTabs.length;
+    snoozedList.innerHTML = '';
     if (snoozedTabs.length === 0) {
-        snoozedList.innerHTML = `
-            <div class="empty-state">
-                <div class="empty-icon">💤</div>
-                <p class="empty-title">No snoozed tabs</p>
-                <p class="empty-hint">Snooze tabs to see them here</p>
-            </div>
-        `;
+        snoozedList.innerHTML = `<div class="empty-state"><div class="empty-icon">💤</div><p class="empty-title">No snoozed tabs</p><p class="empty-hint">Snooze tabs to see them here</p></div>`;
         return;
     }
+
+    // Sort by wake time (soonest first)
+    snoozedTabs.sort((a, b) => a.wakeTime - b.wakeTime);
     
-    snoozedList.innerHTML = '';
-    
-    snoozedTabs.forEach(snoozedTab => {
-        const snoozedItem = createSnoozedItem(snoozedTab);
-        snoozedList.appendChild(snoozedItem);
-    });
+    const fragment = document.createDocumentFragment();
+    snoozedTabs.forEach(tab => fragment.appendChild(createSnoozedItem(tab)));
+    snoozedList.appendChild(fragment);
 }
 
-// Create snoozed item element
 function createSnoozedItem(snoozedTab) {
     const item = document.createElement('div');
     item.className = 'snoozed-item';
@@ -188,23 +150,21 @@ function createSnoozedItem(snoozedTab) {
     
     const timeUntil = formatTimeUntil(snoozedTab.wakeTime);
     
-    // Create header
     const header = document.createElement('div');
     header.className = 'snoozed-header';
     
     const title = document.createElement('div');
     title.className = 'snoozed-title';
-    title.textContent = snoozedTab.title;
-    title.title = snoozedTab.title;
+    title.textContent = snoozedTab.title || 'Untitled';
+    title.title = snoozedTab.title || 'Untitled';
     
     const time = document.createElement('div');
     time.className = 'snoozed-time';
-    time.textContent = `⏰ ${timeUntil}`;
+    time.innerHTML = `⏰ ${timeUntil}`;
     
     header.appendChild(title);
     header.appendChild(time);
     
-    // Create actions
     const actions = document.createElement('div');
     actions.className = 'snoozed-actions';
     
@@ -227,80 +187,135 @@ function createSnoozedItem(snoozedTab) {
     return item;
 }
 
-// Format time until
-function formatTimeUntil(timestamp) {
-    const now = Date.now();
-    const diff = timestamp - now;
-    
-    if (diff <= 0) return 'Ready now';
-    
-    const totalMinutes = Math.floor(diff / (1000 * 60));
-    const totalHours = Math.floor(totalMinutes / 60);
-    const days = Math.floor(totalHours / 24);
-    const hours = totalHours % 24;
-    const minutes = totalMinutes % 60;
-    
-    if (days > 0) {
-        if (days === 1 && hours === 0) {
-            return '1 day';
-        } else if (days === 1) {
-            return `1 day ${hours}h`;
-        } else {
-            return `${days} days`;
-        }
-    } else if (totalHours > 0) {
-        return `${totalHours}h ${minutes}m`;
-    } else {
-        return `${minutes}m`;
-    }
-}
+// --- ACTIONS ---
 
-// Snooze tab
+// 1. Snooze Single
 function snoozeTab(tabId) {
     currentTabId = tabId;
     document.getElementById('snoozeModal').classList.add('active');
 }
 
-// Close modal
-function closeModal() {
-    document.getElementById('snoozeModal').classList.remove('active');
-    currentTabId = null;
+// 2. Perform Snooze (Optimized Logic)
+async function performSnooze(tabId, wakeTime, timeOption) {
+    const tab = await chrome.tabs.get(tabId).catch(() => null);
+    if (!tab) return;
+
+    // 1. Update Storage
+    const result = await chrome.storage.local.get(['snoozedTabs']);
+    const snoozedTabs = result.snoozedTabs || [];
     
-    // Remove selected state
-    document.querySelectorAll('.snooze-option').forEach(opt => {
-        opt.classList.remove('selected');
+    snoozedTabs.push({
+        tabId: tab.id,
+        url: tab.url,
+        title: tab.title,
+        favIconUrl: tab.favIconUrl, // Backup
+        wakeTime: wakeTime,
+        snoozedAt: Date.now(),
+        timeOption: timeOption
     });
+    await chrome.storage.local.set({ snoozedTabs });
+
+    // 2. Set Alarm
+    await chrome.alarms.create(`snooze_${tab.id}_${wakeTime}`, { when: wakeTime });
+
+    // 3. Close Tab
+    await chrome.tabs.remove(tab.id);
 }
 
-// Setup snooze option listeners (called after DOM is ready)
-function setupSnoozeOptions() {
-    const snoozeOptions = document.querySelectorAll('.snooze-option');
-    snoozeOptions.forEach(option => {
-        option.addEventListener('click', async () => {
-            const timeOption = option.dataset.time;
-            
-            // Visual feedback
-            document.querySelectorAll('.snooze-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            option.classList.add('selected');
-            
-            // Calculate wake time
-            const wakeTime = calculateWakeTime(timeOption);
-            
-            if (wakeTime) {
-                await performSnooze(currentTabId, wakeTime, timeOption);
-                closeModal();
-            }
+// 3. BATCH ACTION: Clear All / Weekend
+// This is the biggest performance fix. It does all logic first, then refreshes UI ONCE.
+async function batchSnooze(timeOption) {
+    const tabs = await chrome.tabs.query({ currentWindow: true }); // Only snooze tabs in current window usually
+    const filteredTabs = tabs.filter(tab => 
+        !tab.url.startsWith('chrome://') && 
+        !tab.url.startsWith('edge://') && 
+        !tab.url.startsWith('chrome-extension://') &&
+        !tab.url.startsWith('about:')
+    );
+    
+    if (filteredTabs.length === 0) {
+        showToast('No tabs to snooze', 'error');
+        return;
+    }
+
+    const wakeTime = calculateWakeTime(timeOption);
+    const result = await chrome.storage.local.get(['snoozedTabs']);
+    const snoozedTabs = result.snoozedTabs || [];
+
+    // Prepare all data promises
+    const snoozePromises = filteredTabs.map(async (tab) => {
+        snoozedTabs.push({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+            favIconUrl: tab.favIconUrl,
+            wakeTime: wakeTime,
+            snoozedAt: Date.now(),
+            timeOption: timeOption
         });
+        
+        // Create alarm
+        await chrome.alarms.create(`snooze_${tab.id}_${wakeTime}`, { when: wakeTime });
+        
+        // Close tab
+        return chrome.tabs.remove(tab.id);
     });
+
+    // Wait for all tabs to close and alarms to set
+    await Promise.all(snoozePromises);
+    
+    // Save storage once
+    await chrome.storage.local.set({ snoozedTabs });
+
+    // Refresh UI once
+    await refreshAll();
+    showToast(`Snoozed ${filteredTabs.length} tabs!`, 'success');
 }
 
-// Calculate wake time
+async function reopenTab(tabId) {
+    const result = await chrome.storage.local.get(['snoozedTabs']);
+    let snoozedTabs = result.snoozedTabs || [];
+    const targetTab = snoozedTabs.find(st => st.tabId === tabId);
+    
+    if (targetTab) {
+        await chrome.tabs.create({ url: targetTab.url, active: false }); // Open in background
+        
+        // Cleanup
+        chrome.alarms.clear(`snooze_${tabId}_${targetTab.wakeTime}`);
+        snoozedTabs = snoozedTabs.filter(st => st.tabId !== tabId);
+        await chrome.storage.local.set({ snoozedTabs });
+        
+        await refreshAll();
+        showToast('Tab reopened', 'success');
+    }
+}
+
+async function deleteSnooze(tabId) {
+    const result = await chrome.storage.local.get(['snoozedTabs']);
+    const snoozedTabs = result.snoozedTabs || [];
+    const targetTab = snoozedTabs.find(st => st.tabId === tabId);
+    
+    if (targetTab) {
+        chrome.alarms.clear(`snooze_${tabId}_${targetTab.wakeTime}`);
+        const updated = snoozedTabs.filter(st => st.tabId !== tabId);
+        await chrome.storage.local.set({ snoozedTabs: updated });
+        
+        await refreshAll();
+        showToast('Snooze cancelled', 'success');
+    }
+}
+
+async function closeTab(tabId) {
+    await chrome.tabs.remove(tabId);
+    await refreshAll();
+}
+
+// --- UTILS ---
+
 function calculateWakeTime(option) {
     const now = new Date();
     let wakeTime = new Date();
-    const dayOfWeek = now.getDay(); // Get day of week once (0 = Sunday, 6 = Saturday)
+    const dayOfWeek = now.getDay();
     
     switch(option) {
         case 'tonight':
@@ -312,249 +327,130 @@ function calculateWakeTime(option) {
             wakeTime.setHours(9, 0, 0, 0);
             break;
         case 'weekend':
-            // Calculate days until Saturday (6)
-            let daysUntilSaturday = (6 - dayOfWeek + 7) % 7;
-            if (daysUntilSaturday === 0) daysUntilSaturday = 7; // If it's Saturday, go to next Saturday
-            wakeTime.setDate(now.getDate() + daysUntilSaturday);
+            let daysUntilSat = (6 - dayOfWeek + 7) % 7;
+            if (daysUntilSat === 0) daysUntilSat = 7;
+            wakeTime.setDate(now.getDate() + daysUntilSat);
             wakeTime.setHours(9, 0, 0, 0);
             break;
         case 'nextweek':
-            // Calculate days until next Monday (1)
-            let daysUntilMonday = (1 - dayOfWeek + 7) % 7;
-            if (daysUntilMonday === 0) daysUntilMonday = 7; // If it's Monday, go to next Monday
-            wakeTime.setDate(now.getDate() + daysUntilMonday);
+            let daysUntilMon = (1 - dayOfWeek + 7) % 7;
+            if (daysUntilMon === 0) daysUntilMon = 7;
+            wakeTime.setDate(now.getDate() + daysUntilMon);
             wakeTime.setHours(9, 0, 0, 0);
             break;
-        case 'custom':
-            // For MVP, add 7 days from now
-            wakeTime.setDate(now.getDate() + 7);
-            wakeTime.setHours(9, 0, 0, 0);
-            // Ensure it's in the future
-            if (wakeTime <= now) {
-                wakeTime.setDate(wakeTime.getDate() + 1);
-            }
-            break;
-        default:
-            return null;
     }
     
     return wakeTime.getTime();
 }
 
-// Perform snooze
-async function performSnooze(tabId, wakeTime, timeOption) {
-    try {
-        const tab = await chrome.tabs.get(tabId);
-        
-        if (!tab) {
-            console.error('Tab not found:', tabId);
-            return;
-        }
-        
-        // Save snoozed tab
-        const result = await chrome.storage.local.get(['snoozedTabs']);
-        const snoozedTabs = result.snoozedTabs || [];
-        
-        snoozedTabs.push({
-            tabId: tab.id,
-            url: tab.url,
-            title: tab.title,
-            favIconUrl: tab.favIconUrl,
-            wakeTime: wakeTime,
-            snoozedAt: Date.now(),
-            timeOption: timeOption
-        });
-        
-        await chrome.storage.local.set({ snoozedTabs });
-        
-        // Set alarm
-        const alarmName = `snooze_${tab.id}_${wakeTime}`;
-        chrome.alarms.create(alarmName, {
-            when: wakeTime
-        });
-        
-        // Close tab
-        await chrome.tabs.remove(tab.id);
-        
-    // Batch UI updates to prevent layout shifts
-    requestAnimationFrame(async () => {
-        await loadTabs();
-        await loadSnoozedTabs();
-        await loadStats();
-        updateStats();
-        showToast('Tab snoozed successfully!', 'success');
-    });
-    } catch (error) {
-        console.error('Error performing snooze:', error);
-    }
-}
-
-// Close tab
-async function closeTab(tabId) {
-    await chrome.tabs.remove(tabId);
-    requestAnimationFrame(async () => {
-        await loadTabs();
-        await loadStats();
-        updateStats();
-        showToast('Tab closed', 'success');
-    });
-}
-
-// Reopen tab
-async function reopenTab(tabId) {
-    const result = await chrome.storage.local.get(['snoozedTabs']);
-    const snoozedTabs = result.snoozedTabs || [];
-    const snoozedTab = snoozedTabs.find(st => st.tabId === parseInt(tabId));
-    
-    if (snoozedTab) {
-        await chrome.tabs.create({
-            url: snoozedTab.url,
-            active: false
-        });
-        
-        // Remove from snoozed
-        const updated = snoozedTabs.filter(st => st.tabId !== parseInt(tabId));
-        await chrome.storage.local.set({ snoozedTabs: updated });
-        
-        // Cancel alarm
-        const alarmName = `snooze_${tabId}_${snoozedTab.wakeTime}`;
-        chrome.alarms.clear(alarmName);
-        
-        requestAnimationFrame(async () => {
-            await loadSnoozedTabs();
-            await loadTabs();
-            await loadStats();
-            updateStats();
-            showToast('Tab reopened!', 'success');
-        });
-    }
-}
-
-// Delete snooze
-async function deleteSnooze(tabId) {
-    const result = await chrome.storage.local.get(['snoozedTabs']);
-    const snoozedTabs = result.snoozedTabs || [];
-    const snoozedTab = snoozedTabs.find(st => st.tabId === parseInt(tabId));
-    
-    if (snoozedTab) {
-        // Cancel alarm
-        const alarmName = `snooze_${tabId}_${snoozedTab.wakeTime}`;
-        chrome.alarms.clear(alarmName);
-        
-        // Remove from snoozed
-        const updated = snoozedTabs.filter(st => st.tabId !== parseInt(tabId));
-        await chrome.storage.local.set({ snoozedTabs: updated });
-        
-        requestAnimationFrame(async () => {
-            await loadSnoozedTabs();
-            await loadStats();
-            updateStats();
-            showToast('Snooze cancelled', 'success');
-        });
-    }
-}
-
-// Clear all tabs
-async function clearAllTabs() {
-    const tabs = await chrome.tabs.query({});
-    const filteredTabs = tabs.filter(tab => 
-        !tab.url.startsWith('chrome://') && 
-        !tab.url.startsWith('chrome-extension://') &&
-        !tab.url.startsWith('edge://')
-    );
-    
-    const wakeTime = calculateWakeTime('tomorrow');
-    
-    for (const tab of filteredTabs) {
-        await performSnooze(tab.id, wakeTime, 'tomorrow');
-    }
-}
-
-// Snooze until weekend
-async function snoozeWeekend() {
-    const tabs = await chrome.tabs.query({});
-    const filteredTabs = tabs.filter(tab => 
-        !tab.url.startsWith('chrome://') && 
-        !tab.url.startsWith('chrome-extension://') &&
-        !tab.url.startsWith('edge://')
-    );
-    
-    const wakeTime = calculateWakeTime('weekend');
-    
-    for (const tab of filteredTabs) {
-        await performSnooze(tab.id, wakeTime, 'weekend');
-    }
-    
-    // Final refresh
-    requestAnimationFrame(async () => {
-        await refreshAll();
-        showToast(`Snoozed ${filteredTabs.length} tabs until weekend`, 'success');
-    });
-}
-
-// Update stats display - NO ANIMATION to prevent glitching
 function updateStats() {
     const tabsSnoozedEl = document.getElementById('tabsSnoozed');
     const ramSavedEl = document.getElementById('ramSaved');
     const timeSavedEl = document.getElementById('timeSaved');
     
-    // Direct update - no animation to prevent size changes
     if (tabsSnoozedEl) tabsSnoozedEl.textContent = stats.tabsSnoozed;
     if (ramSavedEl) ramSavedEl.textContent = `${stats.ramSaved} MB`;
     if (timeSavedEl) timeSavedEl.textContent = `${stats.timeSaved}h`;
 }
 
-// Show toast notification
-function showToast(message, type = 'success') {
+function formatTimeUntil(timestamp) {
+    const diff = timestamp - Date.now();
+    if (diff <= 0) return 'Ready';
+    
+    const mins = Math.floor(diff / 60000);
+    const hours = Math.floor(mins / 60);
+    const days = Math.floor(hours / 24);
+    
+    if (days > 0) return `${days}d ${hours % 24}h`;
+    if (hours > 0) return `${hours}h ${mins % 60}m`;
+    return `${mins}m`;
+}
+
+function showToast(msg, type = 'success') {
     const toast = document.getElementById('toast');
     const toastIcon = document.getElementById('toastIcon');
     const toastMessage = document.getElementById('toastMessage');
     
-    toastMessage.textContent = message;
+    if (!toast || !toastIcon || !toastMessage) return;
+    
+    toastMessage.textContent = msg;
+    toastIcon.textContent = type === 'success' ? '✓' : '✕';
     
     if (type === 'success') {
-        toastIcon.textContent = '✓';
         toastIcon.style.color = 'var(--success)';
         toast.style.borderColor = 'var(--success)';
-    } else if (type === 'error') {
-        toastIcon.textContent = '✕';
+    } else {
         toastIcon.style.color = 'var(--danger)';
         toast.style.borderColor = 'var(--danger)';
     }
     
     toast.classList.add('show');
-    
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3000);
+    setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
-// Setup event listeners
 function setupEventListeners() {
+    // Modal
     const closeModalBtn = document.getElementById('closeModalBtn');
-    const clearAllBtn = document.getElementById('clearAllBtn');
-    const snoozeWeekendBtn = document.getElementById('snoozeWeekendBtn');
-    const modalOverlay = document.querySelector('.modal-overlay');
-    
     if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
+        closeModalBtn.addEventListener('click', () => {
+            document.getElementById('snoozeModal').classList.remove('active');
+            currentTabId = null;
+            document.querySelectorAll('.snooze-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+        });
     }
     
+    // Modal overlay
+    const modal = document.getElementById('snoozeModal');
+    if (modal) {
+        const overlay = modal.querySelector('.modal-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                modal.classList.remove('active');
+                currentTabId = null;
+                document.querySelectorAll('.snooze-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+            });
+        }
+    }
+    
+    // Quick Actions - USING THE NEW BATCH FUNCTION
+    const clearAllBtn = document.getElementById('clearAllBtn');
     if (clearAllBtn) {
-        clearAllBtn.addEventListener('click', clearAllTabs);
+        clearAllBtn.addEventListener('click', () => batchSnooze('tomorrow'));
     }
     
+    const snoozeWeekendBtn = document.getElementById('snoozeWeekendBtn');
     if (snoozeWeekendBtn) {
-        snoozeWeekendBtn.addEventListener('click', snoozeWeekend);
+        snoozeWeekendBtn.addEventListener('click', () => batchSnooze('weekend'));
     }
     
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeModal);
-    }
-    
-    // Setup snooze options after DOM is ready
-    setTimeout(() => {
-        setupSnoozeOptions();
-    }, 100);
+    // Snooze Options
+    document.querySelectorAll('.snooze-option').forEach(opt => {
+        opt.addEventListener('click', async () => {
+            // Remove selected state from all options
+            document.querySelectorAll('.snooze-option').forEach(o => o.classList.remove('selected'));
+            // Add selected state to clicked option
+            opt.classList.add('selected');
+            
+            const time = calculateWakeTime(opt.dataset.time);
+            if (currentTabId && time) {
+                await performSnooze(currentTabId, time, opt.dataset.time);
+                document.getElementById('snoozeModal').classList.remove('active');
+                currentTabId = null;
+                await refreshAll(); // Refresh UI only after single snooze
+                showToast('Tab snoozed!', 'success');
+            }
+        });
+    });
 }
+
+// Also refresh when popup becomes visible (in case it was already open)
+document.addEventListener('visibilitychange', async () => {
+    if (!document.hidden) {
+        await refreshAll();
+    }
+});
 
