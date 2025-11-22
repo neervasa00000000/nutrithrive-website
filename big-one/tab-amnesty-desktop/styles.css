@@ -286,8 +286,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    max-height: 400px;
-    overflow-y: auto;
+    max-height: none;
+    overflow-y: visible;
     overflow-x: hidden;
     position: relative;
     scrollbar-width: thin;
@@ -409,8 +409,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: 250px;
-    overflow-y: auto;
+    max-height: none;
+    overflow-y: visible;
     overflow-x: hidden;
     position: relative;
     scrollbar-width: thin;
