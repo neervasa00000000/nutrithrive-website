@@ -43,52 +43,60 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
 
 // Handle notification button clicks
 chrome.notifications.onButtonClicked.addListener(async (notificationId, buttonIndex) => {
-    const key = `notification_${notificationId}`;
-    const result = await chrome.storage.local.get([key]);
-    const notificationData = result[key];
-    
-    if (notificationData) {
-        if (buttonIndex === 0) {
-            // Open Now
-            await chrome.tabs.create({
-                url: notificationData.url,
-                active: true
-            });
-            
-            // Remove from snoozed
-            const snoozedResult = await chrome.storage.local.get(['snoozedTabs']);
-            const snoozedTabs = snoozedResult.snoozedTabs || [];
-            const updated = snoozedTabs.filter(st => 
-                !(st.tabId === notificationData.tabId && st.wakeTime === notificationData.wakeTime)
-            );
-            await chrome.storage.local.set({ snoozedTabs: updated });
-            
-            // Clear alarm
-            chrome.alarms.clear(`snooze_${notificationData.tabId}_${notificationData.wakeTime}`);
-        } else if (buttonIndex === 1) {
-            // Snooze Again (1 hour)
-            const newWakeTime = Date.now() + (60 * 60 * 1000);
-            const snoozedResult = await chrome.storage.local.get(['snoozedTabs']);
-            const snoozedTabs = snoozedResult.snoozedTabs || [];
-            const snoozedTab = snoozedTabs.find(st => 
-                st.tabId === notificationData.tabId && st.wakeTime === notificationData.wakeTime
-            );
-            
-            if (snoozedTab) {
-                snoozedTab.wakeTime = newWakeTime;
-                await chrome.storage.local.set({ snoozedTabs });
-                
-                // Update alarm
-                chrome.alarms.clear(`snooze_${notificationData.tabId}_${notificationData.wakeTime}`);
-                chrome.alarms.create(`snooze_${notificationData.tabId}_${newWakeTime}`, {
-                    when: newWakeTime
-                });
-            }
-        }
+    try {
+        const key = `notification_${notificationId}`;
+        const result = await chrome.storage.local.get([key]);
+        const notificationData = result[key];
         
-        // Clean up
-        chrome.storage.local.remove([key]);
-        chrome.notifications.clear(notificationId);
+        if (notificationData) {
+            if (buttonIndex === 0) {
+                // Open Now
+                try {
+                    await chrome.tabs.create({
+                        url: notificationData.url,
+                        active: true
+                    });
+                } catch (e) {
+                    console.log("Error opening tab:", e);
+                }
+                
+                // Remove from snoozed
+                const snoozedResult = await chrome.storage.local.get(['snoozedTabs']);
+                const snoozedTabs = snoozedResult.snoozedTabs || [];
+                const updated = snoozedTabs.filter(st => 
+                    !(st.tabId === notificationData.tabId && st.wakeTime === notificationData.wakeTime)
+                );
+                await chrome.storage.local.set({ snoozedTabs: updated });
+                
+                // Clear alarm
+                chrome.alarms.clear(`snooze_${notificationData.tabId}_${notificationData.wakeTime}`);
+            } else if (buttonIndex === 1) {
+                // Snooze Again (1 hour)
+                const newWakeTime = Date.now() + (60 * 60 * 1000);
+                const snoozedResult = await chrome.storage.local.get(['snoozedTabs']);
+                const snoozedTabs = snoozedResult.snoozedTabs || [];
+                const snoozedTab = snoozedTabs.find(st => 
+                    st.tabId === notificationData.tabId && st.wakeTime === notificationData.wakeTime
+                );
+                
+                if (snoozedTab) {
+                    snoozedTab.wakeTime = newWakeTime;
+                    await chrome.storage.local.set({ snoozedTabs });
+                    
+                    // Update alarm
+                    chrome.alarms.clear(`snooze_${notificationData.tabId}_${notificationData.wakeTime}`);
+                    chrome.alarms.create(`snooze_${notificationData.tabId}_${newWakeTime}`, {
+                        when: newWakeTime
+                    });
+                }
+            }
+            
+            // Clean up
+            chrome.storage.local.remove([key]);
+            chrome.notifications.clear(notificationId);
+        }
+    } catch (e) {
+        console.log("Error handling notification button click:", e);
     }
 });
 
