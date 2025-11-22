@@ -9,19 +9,43 @@ let stats = {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+    // Always refresh everything when popup opens
+    await refreshAll();
+    setupEventListeners();
+});
+
+// Refresh all data
+async function refreshAll() {
     await loadStats();
     await loadTabs();
     await loadSnoozedTabs();
-    setupEventListeners();
     updateStats();
+}
+
+// Also refresh when popup becomes visible (in case it was already open)
+document.addEventListener('visibilitychange', async () => {
+    if (!document.hidden) {
+        await refreshAll();
+    }
 });
 
-// Load stats from storage
+// Load stats from storage and recalculate from actual data
 async function loadStats() {
-    const result = await chrome.storage.local.get(['stats']);
-    if (result.stats) {
-        stats = result.stats;
-    }
+    // Get actual snoozed tabs to calculate real stats
+    const result = await chrome.storage.local.get(['snoozedTabs', 'stats']);
+    const snoozedTabs = result.snoozedTabs || [];
+    
+    // Recalculate stats from actual data
+    stats.tabsSnoozed = snoozedTabs.length;
+    
+    // Calculate RAM saved (estimate: ~50-100MB per tab)
+    stats.ramSaved = snoozedTabs.length * 75; // Average estimate
+    
+    // Calculate time saved (estimate: 0.5 hours per tab)
+    stats.timeSaved = Math.floor(snoozedTabs.length * 0.5);
+    
+    // Save updated stats
+    await chrome.storage.local.set({ stats });
 }
 
 // Save stats to storage
@@ -343,16 +367,13 @@ async function performSnooze(tabId, wakeTime, timeOption) {
         // Close tab
         await chrome.tabs.remove(tab.id);
         
-        // Update stats
-        stats.tabsSnoozed++;
-        stats.ramSaved += Math.floor(Math.random() * 100) + 50;
-        stats.timeSaved = Math.floor(stats.tabsSnoozed * 0.5);
-        await saveStats();
-        
-        // Reload UI
-        await loadTabs();
-        await loadSnoozedTabs();
-        updateStats();
+    // Reload UI first
+    await loadTabs();
+    await loadSnoozedTabs();
+    
+    // Recalculate stats from actual data
+    await loadStats();
+    updateStats();
     } catch (error) {
         console.error('Error performing snooze:', error);
     }
@@ -363,9 +384,8 @@ async function closeTab(tabId) {
     await chrome.tabs.remove(tabId);
     await loadTabs();
     
-    stats.tabsSnoozed++;
-    stats.ramSaved += Math.floor(Math.random() * 50) + 30;
-    await saveStats();
+    // Recalculate stats
+    await loadStats();
     updateStats();
 }
 
@@ -391,6 +411,10 @@ async function reopenTab(tabId) {
         
         await loadSnoozedTabs();
         await loadTabs();
+        
+        // Recalculate stats
+        await loadStats();
+        updateStats();
     }
 }
 
@@ -410,6 +434,10 @@ async function deleteSnooze(tabId) {
         await chrome.storage.local.set({ snoozedTabs: updated });
         
         await loadSnoozedTabs();
+        
+        // Recalculate stats
+        await loadStats();
+        updateStats();
     }
 }
 
@@ -443,6 +471,9 @@ async function snoozeWeekend() {
     for (const tab of filteredTabs) {
         await performSnooze(tab.id, wakeTime, 'weekend');
     }
+    
+    // Final refresh
+    await refreshAll();
 }
 
 // Update stats display
