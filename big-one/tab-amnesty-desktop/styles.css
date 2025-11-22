@@ -48,6 +48,8 @@ body {
     min-height: 100vh;
     position: relative;
     padding-bottom: 20px;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 /* Header */
@@ -59,6 +61,9 @@ body {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    margin-top: 0;
+    top: 0;
+    z-index: 10;
 }
 
 .header-content {
