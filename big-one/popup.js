@@ -71,20 +71,50 @@ function createTabItem(tab) {
     const favicon = tab.favIconUrl || '🌐';
     const title = tab.title || tab.url;
     
-    tabItem.innerHTML = `
-        <div class="tab-info">
-            ${favicon.startsWith('http') ? `<img src="${favicon}" class="tab-favicon" onerror="this.style.display='none'">` : `<span class="tab-favicon">${favicon}</span>`}
-            <div class="tab-title" title="${title}">${title}</div>
-        </div>
-        <div class="tab-actions">
-            <button class="btn btn-primary snooze-btn">Snooze</button>
-            <button class="btn btn-danger close-btn">Close</button>
-        </div>
-    `;
+    // Create tab info
+    const tabInfo = document.createElement('div');
+    tabInfo.className = 'tab-info';
     
-    // Event listeners
-    tabItem.querySelector('.snooze-btn').addEventListener('click', () => snoozeTab(tab.id));
-    tabItem.querySelector('.close-btn').addEventListener('click', () => closeTab(tab.id));
+    // Create favicon element
+    const faviconEl = document.createElement(favicon.startsWith('http') ? 'img' : 'span');
+    faviconEl.className = 'tab-favicon';
+    if (favicon.startsWith('http')) {
+        faviconEl.src = favicon;
+        faviconEl.addEventListener('error', function() {
+            this.style.display = 'none';
+        });
+    } else {
+        faviconEl.textContent = favicon;
+    }
+    
+    // Create title
+    const titleEl = document.createElement('div');
+    titleEl.className = 'tab-title';
+    titleEl.textContent = title;
+    titleEl.title = title;
+    
+    tabInfo.appendChild(faviconEl);
+    tabInfo.appendChild(titleEl);
+    
+    // Create actions
+    const actions = document.createElement('div');
+    actions.className = 'tab-actions';
+    
+    const snoozeBtn = document.createElement('button');
+    snoozeBtn.className = 'btn btn-primary snooze-btn';
+    snoozeBtn.textContent = 'Snooze';
+    snoozeBtn.addEventListener('click', () => snoozeTab(tab.id));
+    
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'btn btn-danger close-btn';
+    closeBtn.textContent = 'Close';
+    closeBtn.addEventListener('click', () => closeTab(tab.id));
+    
+    actions.appendChild(snoozeBtn);
+    actions.appendChild(closeBtn);
+    
+    tabItem.appendChild(tabInfo);
+    tabItem.appendChild(actions);
     
     return tabItem;
 }
@@ -125,20 +155,41 @@ function createSnoozedItem(snoozedTab) {
     
     const timeUntil = formatTimeUntil(snoozedTab.wakeTime);
     
-    item.innerHTML = `
-        <div class="snoozed-header">
-            <div class="snoozed-title" title="${snoozedTab.title}">${snoozedTab.title}</div>
-            <div class="snoozed-time">⏰ ${timeUntil}</div>
-        </div>
-        <div class="snoozed-actions">
-            <button class="btn btn-primary btn-small reopen-btn">Open Now</button>
-            <button class="btn btn-danger btn-small delete-btn">Delete</button>
-        </div>
-    `;
+    // Create header
+    const header = document.createElement('div');
+    header.className = 'snoozed-header';
     
-    // Event listeners
-    item.querySelector('.reopen-btn').addEventListener('click', () => reopenTab(snoozedTab.tabId));
-    item.querySelector('.delete-btn').addEventListener('click', () => deleteSnooze(snoozedTab.tabId));
+    const title = document.createElement('div');
+    title.className = 'snoozed-title';
+    title.textContent = snoozedTab.title;
+    title.title = snoozedTab.title;
+    
+    const time = document.createElement('div');
+    time.className = 'snoozed-time';
+    time.textContent = `⏰ ${timeUntil}`;
+    
+    header.appendChild(title);
+    header.appendChild(time);
+    
+    // Create actions
+    const actions = document.createElement('div');
+    actions.className = 'snoozed-actions';
+    
+    const reopenBtn = document.createElement('button');
+    reopenBtn.className = 'btn btn-primary btn-small reopen-btn';
+    reopenBtn.textContent = 'Open Now';
+    reopenBtn.addEventListener('click', () => reopenTab(snoozedTab.tabId));
+    
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn btn-danger btn-small delete-btn';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.addEventListener('click', () => deleteSnooze(snoozedTab.tabId));
+    
+    actions.appendChild(reopenBtn);
+    actions.appendChild(deleteBtn);
+    
+    item.appendChild(header);
+    item.appendChild(actions);
     
     return item;
 }
@@ -375,11 +426,30 @@ function updateStats() {
 
 // Setup event listeners
 function setupEventListeners() {
-    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-    document.getElementById('clearAllBtn').addEventListener('click', clearAllTabs);
-    document.getElementById('snoozeWeekendBtn').addEventListener('click', snoozeWeekend);
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    const snoozeWeekendBtn = document.getElementById('snoozeWeekendBtn');
+    const modalOverlay = document.querySelector('.modal-overlay');
     
-    // Close modal on overlay click
-    document.querySelector('.modal-overlay').addEventListener('click', closeModal);
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    if (clearAllBtn) {
+        clearAllBtn.addEventListener('click', clearAllTabs);
+    }
+    
+    if (snoozeWeekendBtn) {
+        snoozeWeekendBtn.addEventListener('click', snoozeWeekend);
+    }
+    
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+    
+    // Setup snooze options after DOM is ready
+    setTimeout(() => {
+        setupSnoozeOptions();
+    }, 100);
 }
 
