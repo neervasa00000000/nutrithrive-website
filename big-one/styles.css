@@ -53,7 +53,7 @@ body {
 /* Header */
 .header {
     background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-    padding: 24px;
+    padding: 16px 20px;
     border-bottom: 1px solid var(--border-color);
     position: relative;
 }
@@ -67,19 +67,20 @@ body {
 }
 
 .header-icon {
-    font-size: 2rem;
+    font-size: 1.25rem;
+    opacity: 0.9;
 }
 
 .header-text h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     color: var(--accent-primary);
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
 }
 
 .subtitle {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
@@ -88,8 +89,8 @@ body {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    padding: 20px 24px;
+    gap: 8px;
+    padding: 12px 16px;
     background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
     flex-shrink: 0;
 }
@@ -97,13 +98,13 @@ body {
 .stat-card {
     background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: 10px;
+    padding: 12px 8px;
     text-align: center;
     transition: border-color 0.2s ease, background-color 0.2s ease;
     position: relative;
     overflow: hidden;
-    min-height: 90px;
+    min-height: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,9 +123,10 @@ body {
 }
 
 .stat-icon {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
+    font-size: 1rem;
+    margin-bottom: 6px;
     display: block;
+    opacity: 0.8;
 }
 
 .stat-content {
@@ -134,14 +136,14 @@ body {
 }
 
 .stat-value {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--accent-primary);
     line-height: 1.2;
     font-variant-numeric: tabular-nums;
-    letter-spacing: -1px;
-    min-width: 80px;
-    width: 80px;
+    letter-spacing: -0.5px;
+    min-width: 60px;
+    width: auto;
     display: inline-block;
     text-align: center;
     white-space: nowrap;
@@ -150,18 +152,19 @@ body {
 }
 
 .stat-label {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 600;
+    margin-top: 2px;
 }
 
 /* Quick Actions Bar */
 .quick-actions-bar {
     display: flex;
     gap: 8px;
-    padding: 16px 24px;
+    padding: 10px 16px;
     background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
     border-bottom: 1px solid var(--border-color);
 }
@@ -171,17 +174,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    padding: 12px;
+    gap: 4px;
+    padding: 10px;
     background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
     border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: border-color 0.15s ease, background-color 0.15s ease;
     font-size: 0.75rem;
     color: var(--text-primary);
     font-weight: 600;
-    min-height: 70px;
+    min-height: 60px;
     box-sizing: border-box;
 }
 
@@ -209,8 +212,8 @@ body {
 .main-content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: 20px 24px;
+    gap: 12px;
+    padding: 16px;
     overflow-y: auto;
     overflow-x: hidden;
     flex: 1;
@@ -220,9 +223,19 @@ body {
 .section {
     background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 18px;
+    border-radius: 10px;
+    padding: 14px;
     transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.open-tabs-section {
+    flex: 2;
+    min-height: 300px;
+}
+
+.snoozed-section {
+    flex: 1;
+    min-height: 150px;
 }
 
 .section:hover {
@@ -234,7 +247,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .section-title-group {
@@ -244,14 +259,15 @@ body {
 }
 
 .section-icon {
-    font-size: 1.25rem;
+    font-size: 1rem;
+    opacity: 0.9;
 }
 
 .section-header h2 {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     color: var(--text-primary);
-    letter-spacing: -0.3px;
+    letter-spacing: -0.2px;
 }
 
 .tab-count-badge {
@@ -268,8 +284,8 @@ body {
 .tabs-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-height: 250px;
+    gap: 6px;
+    max-height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
@@ -279,16 +295,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px;
-    background: var(--bg-tertiary);
+    padding: 10px 12px;
+    background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 8px;
     transition: border-color 0.15s ease, background-color 0.15s ease;
     cursor: pointer;
     flex-shrink: 0;
-    min-height: 50px;
+    min-height: 48px;
     width: 100%;
     box-sizing: border-box;
+    gap: 12px;
+}
+
+.tab-item:hover {
+    background: linear-gradient(180deg, var(--bg-hover) 0%, var(--bg-tertiary) 100%);
+    border-color: var(--accent-primary);
 }
 
 .tab-item:hover {
@@ -305,16 +327,16 @@ body {
 }
 
 .tab-favicon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
-    border-radius: 4px;
+    border-radius: 3px;
     object-fit: cover;
     background: var(--bg-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
     overflow: hidden;
 }
 
@@ -332,26 +354,28 @@ body {
     text-overflow: ellipsis;
     flex: 1;
     font-weight: 500;
+    line-height: 1.4;
 }
 
 .tab-actions {
     display: flex;
     gap: 6px;
     flex-shrink: 0;
+    align-items: center;
 }
 
 .btn {
-    padding: 6px 14px;
+    padding: 6px 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
     white-space: nowrap;
     position: relative;
     overflow: hidden;
-    /* Removed ::before animation to prevent flickering */
+    min-width: 60px;
 }
 
 .btn-primary {
