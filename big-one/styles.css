@@ -509,10 +509,12 @@ body {
     z-index: 1000;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
 }
 
 .modal.active {
     display: flex;
+    pointer-events: auto;
 }
 
 .modal-overlay {
@@ -522,6 +524,8 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    z-index: 1;
 }
 
 .modal-content {
@@ -532,6 +536,8 @@ body {
     width: 90%;
     max-width: 420px;
     overflow: hidden;
+    z-index: 2;
+    pointer-events: auto;
 }
 
 .modal-header {
