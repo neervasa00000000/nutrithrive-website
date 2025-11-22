@@ -259,6 +259,7 @@ function setupSnoozeOptions() {
 function calculateWakeTime(option) {
     const now = new Date();
     let wakeTime = new Date();
+    const dayOfWeek = now.getDay(); // Get day of week once (0 = Sunday, 6 = Saturday)
     
     switch(option) {
         case 'tonight':
@@ -266,22 +267,25 @@ function calculateWakeTime(option) {
             if (wakeTime <= now) wakeTime.setDate(wakeTime.getDate() + 1);
             break;
         case 'tomorrow':
-            wakeTime.setDate(wakeTime.getDate() + 1);
+            wakeTime.setDate(now.getDate() + 1);
             wakeTime.setHours(9, 0, 0, 0);
             break;
         case 'weekend':
-            const dayOfWeek = now.getDay();
-            const daysUntilSaturday = (6 - dayOfWeek + 7) % 7 || 7;
+            // Calculate days until Saturday (6)
+            let daysUntilSaturday = (6 - dayOfWeek + 7) % 7;
+            if (daysUntilSaturday === 0) daysUntilSaturday = 7; // If it's Saturday, go to next Saturday
             wakeTime.setDate(now.getDate() + daysUntilSaturday);
             wakeTime.setHours(9, 0, 0, 0);
             break;
         case 'nextweek':
-            const daysUntilMonday = (1 - dayOfWeek + 7) % 7 || 7;
+            // Calculate days until next Monday (1)
+            let daysUntilMonday = (1 - dayOfWeek + 7) % 7;
+            if (daysUntilMonday === 0) daysUntilMonday = 7; // If it's Monday, go to next Monday
             wakeTime.setDate(now.getDate() + daysUntilMonday);
             wakeTime.setHours(9, 0, 0, 0);
             break;
         case 'custom':
-            // For MVP, use next week
+            // For MVP, add 7 days from now
             wakeTime.setDate(now.getDate() + 7);
             wakeTime.setHours(9, 0, 0, 0);
             break;
@@ -294,43 +298,52 @@ function calculateWakeTime(option) {
 
 // Perform snooze
 async function performSnooze(tabId, wakeTime, timeOption) {
-    const tab = await chrome.tabs.get(tabId);
-    
-    // Save snoozed tab
-    const result = await chrome.storage.local.get(['snoozedTabs']);
-    const snoozedTabs = result.snoozedTabs || [];
-    
-    snoozedTabs.push({
-        tabId: tab.id,
-        url: tab.url,
-        title: tab.title,
-        favIconUrl: tab.favIconUrl,
-        wakeTime: wakeTime,
-        snoozedAt: Date.now(),
-        timeOption: timeOption
-    });
-    
-    await chrome.storage.local.set({ snoozedTabs });
-    
-    // Set alarm
-    const alarmName = `snooze_${tab.id}_${wakeTime}`;
-    chrome.alarms.create(alarmName, {
-        when: wakeTime
-    });
-    
-    // Close tab
-    await chrome.tabs.remove(tab.id);
-    
-    // Update stats
-    stats.tabsSnoozed++;
-    stats.ramSaved += Math.floor(Math.random() * 100) + 50;
-    stats.timeSaved = Math.floor(stats.tabsSnoozed * 0.5);
-    await saveStats();
-    
-    // Reload UI
-    await loadTabs();
-    await loadSnoozedTabs();
-    updateStats();
+    try {
+        const tab = await chrome.tabs.get(tabId);
+        
+        if (!tab) {
+            console.error('Tab not found:', tabId);
+            return;
+        }
+        
+        // Save snoozed tab
+        const result = await chrome.storage.local.get(['snoozedTabs']);
+        const snoozedTabs = result.snoozedTabs || [];
+        
+        snoozedTabs.push({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+            favIconUrl: tab.favIconUrl,
+            wakeTime: wakeTime,
+            snoozedAt: Date.now(),
+            timeOption: timeOption
+        });
+        
+        await chrome.storage.local.set({ snoozedTabs });
+        
+        // Set alarm
+        const alarmName = `snooze_${tab.id}_${wakeTime}`;
+        chrome.alarms.create(alarmName, {
+            when: wakeTime
+        });
+        
+        // Close tab
+        await chrome.tabs.remove(tab.id);
+        
+        // Update stats
+        stats.tabsSnoozed++;
+        stats.ramSaved += Math.floor(Math.random() * 100) + 50;
+        stats.timeSaved = Math.floor(stats.tabsSnoozed * 0.5);
+        await saveStats();
+        
+        // Reload UI
+        await loadTabs();
+        await loadSnoozedTabs();
+        updateStats();
+    } catch (error) {
+        console.error('Error performing snooze:', error);
+    }
 }
 
 // Close tab
