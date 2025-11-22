@@ -376,16 +376,14 @@ async function performSnooze(tabId, wakeTime, timeOption) {
         // Close tab
         await chrome.tabs.remove(tab.id);
         
-    // Reload UI first
-    await loadTabs();
-    await loadSnoozedTabs();
-    
-    // Recalculate stats from actual data
-    await loadStats();
-    updateStats();
-    
-    // Show success toast
-    showToast('Tab snoozed successfully!', 'success');
+    // Batch UI updates to prevent layout shifts
+    requestAnimationFrame(async () => {
+        await loadTabs();
+        await loadSnoozedTabs();
+        await loadStats();
+        updateStats();
+        showToast('Tab snoozed successfully!', 'success');
+    });
     } catch (error) {
         console.error('Error performing snooze:', error);
     }
@@ -394,13 +392,12 @@ async function performSnooze(tabId, wakeTime, timeOption) {
 // Close tab
 async function closeTab(tabId) {
     await chrome.tabs.remove(tabId);
-    await loadTabs();
-    
-    // Recalculate stats
-    await loadStats();
-    updateStats();
-    
-    showToast('Tab closed', 'success');
+    requestAnimationFrame(async () => {
+        await loadTabs();
+        await loadStats();
+        updateStats();
+        showToast('Tab closed', 'success');
+    });
 }
 
 // Reopen tab
@@ -423,14 +420,13 @@ async function reopenTab(tabId) {
         const alarmName = `snooze_${tabId}_${snoozedTab.wakeTime}`;
         chrome.alarms.clear(alarmName);
         
-        await loadSnoozedTabs();
-        await loadTabs();
-        
-        // Recalculate stats
-        await loadStats();
-        updateStats();
-        
-        showToast('Tab reopened!', 'success');
+        requestAnimationFrame(async () => {
+            await loadSnoozedTabs();
+            await loadTabs();
+            await loadStats();
+            updateStats();
+            showToast('Tab reopened!', 'success');
+        });
     }
 }
 
@@ -449,13 +445,12 @@ async function deleteSnooze(tabId) {
         const updated = snoozedTabs.filter(st => st.tabId !== parseInt(tabId));
         await chrome.storage.local.set({ snoozedTabs: updated });
         
-        await loadSnoozedTabs();
-        
-        // Recalculate stats
-        await loadStats();
-        updateStats();
-        
-        showToast('Snooze cancelled', 'success');
+        requestAnimationFrame(async () => {
+            await loadSnoozedTabs();
+            await loadStats();
+            updateStats();
+            showToast('Snooze cancelled', 'success');
+        });
     }
 }
 
@@ -491,36 +486,22 @@ async function snoozeWeekend() {
     }
     
     // Final refresh
-    await refreshAll();
-    showToast(`Snoozed ${filteredTabs.length} tabs until weekend`, 'success');
+    requestAnimationFrame(async () => {
+        await refreshAll();
+        showToast(`Snoozed ${filteredTabs.length} tabs until weekend`, 'success');
+    });
 }
 
-// Update stats display with animation
+// Update stats display - NO ANIMATION to prevent glitching
 function updateStats() {
     const tabsSnoozedEl = document.getElementById('tabsSnoozed');
     const ramSavedEl = document.getElementById('ramSaved');
     const timeSavedEl = document.getElementById('timeSaved');
     
-    // Animate stat updates
-    animateValue(tabsSnoozedEl, parseInt(tabsSnoozedEl.textContent) || 0, stats.tabsSnoozed, 300);
-    animateValue(ramSavedEl, parseInt(ramSavedEl.textContent) || 0, stats.ramSaved, 300, ' MB');
-    animateValue(timeSavedEl, parseInt(timeSavedEl.textContent) || 0, stats.timeSaved, 300, 'h');
-}
-
-// Animate number changes
-function animateValue(element, start, end, duration, suffix = '') {
-    const range = end - start;
-    const increment = range / (duration / 16);
-    let current = start;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
-            current = end;
-            clearInterval(timer);
-        }
-        element.textContent = Math.floor(current) + suffix;
-    }, 16);
+    // Direct update - no animation to prevent size changes
+    if (tabsSnoozedEl) tabsSnoozedEl.textContent = stats.tabsSnoozed;
+    if (ramSavedEl) ramSavedEl.textContent = `${stats.ramSaved} MB`;
+    if (timeSavedEl) timeSavedEl.textContent = `${stats.timeSaved}h`;
 }
 
 // Show toast notification
