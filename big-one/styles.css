@@ -604,7 +604,6 @@ body {
 .snooze-option:hover {
     background: var(--bg-hover);
     border-color: var(--accent-primary);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .snooze-option:hover::before {
@@ -614,7 +613,6 @@ body {
 .snooze-option.selected {
     background: var(--accent-light);
     border-color: var(--accent-primary);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
 }
 
 .snooze-option.selected::before {
