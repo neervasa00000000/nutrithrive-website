@@ -104,11 +104,30 @@
       border-radius: 12px;
       cursor: pointer;
       font-size: 1rem;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .primary-btn:hover {
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .primary-btn:active,
+    .primary-btn.active {
+      background: var(--ink);
+      transform: translateY(0);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .primary-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+
+    .primary-btn:disabled:hover {
+      transform: none;
+      background: var(--accent);
     }
 
     .workspace {
@@ -256,6 +275,23 @@
       border-radius: 999px;
       text-decoration: none;
       font-weight: 600;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-btn:hover {
+      background: var(--accent);
+      color: #F5F5F0;
+    }
+
+    .link-btn:active,
+    .link-btn.active {
+      background: var(--ink);
+      color: #F5F5F0;
+      border-color: var(--ink);
+      transform: scale(0.98);
     }
 
     footer {
@@ -347,7 +383,7 @@
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
           <button class="primary-btn" id="enhanceBtn" disabled>Enhance image</button>
           <button class="primary-btn" id="autoDeblurBtn" disabled style="background: var(--accent-soft);">Auto Fix Blur</button>
-          <a id="downloadLink" class="link-btn" style="display:none;">Download PNG</a>
+          <a id="downloadLink" class="link-btn" style="display:none;">Download</a>
         </div>
         <div id="blurStatus" style="margin-top: 12px; padding: 12px; background: var(--pane-alt); border-radius: 8px; font-size: 0.9rem; color: var(--muted); display: none;">
           <strong>Blur Detection:</strong> <span id="blurStatusText"></span>
@@ -400,6 +436,8 @@
 
     let uploadedImg = null;
     let pendingTimeout = null;
+    let originalFormat = 'png';
+    let originalFileName = 'enhanced';
 
     uploadTrigger.addEventListener('click', () => fileInput.click());
 
@@ -442,6 +480,35 @@
           resetOutputs();
           enhanceBtn.disabled = false;
           autoDeblurBtn.disabled = false;
+          
+          // Detect and store original format
+          const fileName = file.name.toLowerCase();
+          originalFileName = fileName.substring(0, fileName.lastIndexOf('.')) || 'enhanced';
+          
+          if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg')) {
+            originalFormat = 'jpeg';
+          } else if (fileName.endsWith('.png')) {
+            originalFormat = 'png';
+          } else if (fileName.endsWith('.webp')) {
+            originalFormat = 'webp';
+          } else if (fileName.endsWith('.gif')) {
+            originalFormat = 'gif';
+          } else {
+            // Try to detect from file type
+            const mimeType = file.type;
+            if (mimeType.includes('jpeg')) {
+              originalFormat = 'jpeg';
+            } else if (mimeType.includes('png')) {
+              originalFormat = 'png';
+            } else if (mimeType.includes('webp')) {
+              originalFormat = 'webp';
+            } else if (mimeType.includes('gif')) {
+              originalFormat = 'gif';
+            } else {
+              originalFormat = 'png'; // default fallback
+            }
+          }
+          
           detectBlur();
         };
         uploadedImg.src = evt.target.result;
@@ -539,12 +606,23 @@
       }
 
       ctx.putImageData(imageData, 0, 0);
-      const resultURL = canvas.toDataURL('image/png');
+      
+      // Use original format for download
+      const mimeType = originalFormat === 'jpeg' ? 'image/jpeg' : 
+                       originalFormat === 'webp' ? 'image/webp' :
+                       originalFormat === 'gif' ? 'image/gif' : 'image/png';
+      const quality = originalFormat === 'jpeg' ? 0.92 : undefined;
+      
+      const resultURL = quality !== undefined ? 
+        canvas.toDataURL(mimeType, quality) : 
+        canvas.toDataURL(mimeType);
+      
       outputImg.src = resultURL;
       outputImg.classList.add('visible');
       enhancedEmpty.style.display = 'none';
       downloadLink.href = resultURL;
-      downloadLink.download = 'nutrithrive-enhanced.png';
+      downloadLink.download = `${originalFileName}-enhanced.${originalFormat}`;
+      downloadLink.textContent = `Download ${originalFormat.toUpperCase()}`;
       downloadLink.style.display = 'inline-flex';
     }
 
@@ -632,11 +710,15 @@
         clearTimeout(pendingTimeout);
         pendingTimeout = null;
       }
+      enhanceBtn.classList.add('active');
+      setTimeout(() => enhanceBtn.classList.remove('active'), 200);
       runEnhancements();
     });
 
     autoDeblurBtn.addEventListener('click', () => {
       if (!uploadedImg) return;
+      autoDeblurBtn.classList.add('active');
+      setTimeout(() => autoDeblurBtn.classList.remove('active'), 200);
       detectBlur();
       const recommendedDeblur = parseInt(deblurRange.value, 10);
       if (recommendedDeblur > 0) {
@@ -644,6 +726,11 @@
         sharpnessLabel.textContent = sharpnessRange.value;
         runEnhancements();
       }
+    });
+
+    downloadLink.addEventListener('click', () => {
+      downloadLink.classList.add('active');
+      setTimeout(() => downloadLink.classList.remove('active'), 200);
     });
 
     [brightnessRange, contrastRange, warmthRange, sharpnessRange, deblurRange].forEach(range => {
