@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Amnesty</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>
+                    <span class="icon">⏰</span>
+                    Tab Amnesty
+                </h1>
+                <p class="subtitle">Snooze tabs. Free RAM. Save sanity.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="tabsSnoozed">0</div>
+                <div class="stat-label">Tabs Snoozed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="ramSaved">0 MB</div>
+                <div class="stat-label">RAM Saved</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="timeSaved">0h</div>
+                <div class="stat-label">Time Saved</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section open-tabs-section">
+                <div class="section-header">
+                    <h2>🗂️ Open Tabs</h2>
+                    <div class="tab-count" id="openTabCount">0 tabs</div>
+                </div>
+                
+                <div class="quick-actions">
+                    <button class="quick-action-btn" id="clearAllBtn">
+                        <span class="emoji">🧹</span>
+                        <span class="text">Clear All Until Tomorrow</span>
+                    </button>
+                    <button class="quick-action-btn" id="snoozeWeekendBtn">
+                        <span class="emoji">🎉</span>
+                        <span class="text">Snooze Until Weekend</span>
+                    </button>
+                </div>
+
+                <div class="tabs-list" id="openTabsList">
+                    <div class="empty-state">
+                        <span class="empty-icon">📑</span>
+                        <p>No tabs to manage</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section snoozed-section">
+                <div class="section-header">
+                    <h2>😴 Snoozed Tabs</h2>
+                    <div class="tab-count" id="snoozedTabCount">0 tabs</div>
+                </div>
+                
+                <div class="snoozed-list" id="snoozedList">
+                    <div class="empty-state">
+                        <span class="empty-icon">💤</span>
+                        <p>No snoozed tabs</p>
+                        <p class="empty-hint">Snooze tabs to see them here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Snooze Modal -->
+    <div class="modal" id="snoozeModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⏰ Snooze Tab Until...</h3>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="snooze-options-grid">
+                    <div class="snooze-option" data-time="tonight">
+                        <span class="emoji">🌙</span>
+                        <div class="label">Tonight</div>
+                        <div class="time">9:00 PM</div>
+                    </div>
+                    <div class="snooze-option" data-time="tomorrow">
+                        <span class="emoji">☀️</span>
+                        <div class="label">Tomorrow</div>
+                        <div class="time">9:00 AM</div>
+                    </div>
+                    <div class="snooze-option" data-time="weekend">
+                        <span class="emoji">📅</span>
+                        <div class="label">This Weekend</div>
+                        <div class="time">Saturday</div>
+                    </div>
+                    <div class="snooze-option" data-time="nextweek">
+                        <span class="emoji">🗓️</span>
+                        <div class="label">Next Week</div>
+                        <div class="time">Monday</div>
+                    </div>
+                    <div class="snooze-option" data-time="custom">
+                        <span class="emoji">📆</span>
+                        <div class="label">Custom</div>
+                        <div class="time">Pick date</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
+
