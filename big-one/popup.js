@@ -201,14 +201,22 @@ function formatTimeUntil(timestamp) {
     
     if (diff <= 0) return 'Ready now';
     
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const totalMinutes = Math.floor(diff / (1000 * 60));
+    const totalHours = Math.floor(totalMinutes / 60);
+    const days = Math.floor(totalHours / 24);
+    const hours = totalHours % 24;
+    const minutes = totalMinutes % 60;
     
-    if (hours > 24) {
-        const days = Math.floor(hours / 24);
-        return `${days} day${days !== 1 ? 's' : ''}`;
-    } else if (hours > 0) {
-        return `${hours}h ${minutes}m`;
+    if (days > 0) {
+        if (days === 1 && hours === 0) {
+            return '1 day';
+        } else if (days === 1) {
+            return `1 day ${hours}h`;
+        } else {
+            return `${days} days`;
+        }
+    } else if (totalHours > 0) {
+        return `${totalHours}h ${minutes}m`;
     } else {
         return `${minutes}m`;
     }
@@ -288,6 +296,10 @@ function calculateWakeTime(option) {
             // For MVP, add 7 days from now
             wakeTime.setDate(now.getDate() + 7);
             wakeTime.setHours(9, 0, 0, 0);
+            // Ensure it's in the future
+            if (wakeTime <= now) {
+                wakeTime.setDate(wakeTime.getDate() + 1);
+            }
             break;
         default:
             return null;
