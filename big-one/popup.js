@@ -71,7 +71,7 @@ async function loadTabs() {
         !tab.url.startsWith('edge://')
     );
     
-    openTabCount.textContent = `${filteredTabs.length} tab${filteredTabs.length !== 1 ? 's' : ''}`;
+    openTabCount.textContent = filteredTabs.length;
     
     if (filteredTabs.length === 0) {
         openTabsList.innerHTML = `
@@ -488,7 +488,7 @@ async function snoozeWeekend() {
     
     // Final refresh
     await refreshAll();
-    showToast(`Snoozed ${filteredTabs.length} tabs until tomorrow`, 'success');
+    showToast(`Snoozed ${filteredTabs.length} tabs until weekend`, 'success');
 }
 
 // Update stats display with animation
