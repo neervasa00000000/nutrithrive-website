@@ -160,8 +160,8 @@ async function loadSnoozedTabs() {
     if (snoozedTabs.length === 0) {
         snoozedList.innerHTML = `
             <div class="empty-state">
-                <span class="empty-icon">💤</span>
-                <p>No snoozed tabs</p>
+                <div class="empty-icon">💤</div>
+                <p class="empty-title">No snoozed tabs</p>
                 <p class="empty-hint">Snooze tabs to see them here</p>
             </div>
         `;
@@ -379,6 +379,9 @@ async function performSnooze(tabId, wakeTime, timeOption) {
     // Recalculate stats from actual data
     await loadStats();
     updateStats();
+    
+    // Show success toast
+    showToast('Tab snoozed successfully!', 'success');
     } catch (error) {
         console.error('Error performing snooze:', error);
     }
@@ -392,6 +395,8 @@ async function closeTab(tabId) {
     // Recalculate stats
     await loadStats();
     updateStats();
+    
+    showToast('Tab closed', 'success');
 }
 
 // Reopen tab
@@ -420,6 +425,8 @@ async function reopenTab(tabId) {
         // Recalculate stats
         await loadStats();
         updateStats();
+        
+        showToast('Tab reopened!', 'success');
     }
 }
 
@@ -443,6 +450,8 @@ async function deleteSnooze(tabId) {
         // Recalculate stats
         await loadStats();
         updateStats();
+        
+        showToast('Snooze cancelled', 'success');
     }
 }
 
@@ -479,13 +488,60 @@ async function snoozeWeekend() {
     
     // Final refresh
     await refreshAll();
+    showToast(`Snoozed ${filteredTabs.length} tabs until tomorrow`, 'success');
 }
 
-// Update stats display
+// Update stats display with animation
 function updateStats() {
-    document.getElementById('tabsSnoozed').textContent = stats.tabsSnoozed;
-    document.getElementById('ramSaved').textContent = `${stats.ramSaved} MB`;
-    document.getElementById('timeSaved').textContent = `${stats.timeSaved}h`;
+    const tabsSnoozedEl = document.getElementById('tabsSnoozed');
+    const ramSavedEl = document.getElementById('ramSaved');
+    const timeSavedEl = document.getElementById('timeSaved');
+    
+    // Animate stat updates
+    animateValue(tabsSnoozedEl, parseInt(tabsSnoozedEl.textContent) || 0, stats.tabsSnoozed, 300);
+    animateValue(ramSavedEl, parseInt(ramSavedEl.textContent) || 0, stats.ramSaved, 300, ' MB');
+    animateValue(timeSavedEl, parseInt(timeSavedEl.textContent) || 0, stats.timeSaved, 300, 'h');
+}
+
+// Animate number changes
+function animateValue(element, start, end, duration, suffix = '') {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            current = end;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + suffix;
+    }, 16);
+}
+
+// Show toast notification
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    const toastIcon = document.getElementById('toastIcon');
+    const toastMessage = document.getElementById('toastMessage');
+    
+    toastMessage.textContent = message;
+    
+    if (type === 'success') {
+        toastIcon.textContent = '✓';
+        toastIcon.style.color = 'var(--success)';
+        toast.style.borderColor = 'var(--success)';
+    } else if (type === 'error') {
+        toastIcon.textContent = '✕';
+        toastIcon.style.color = 'var(--danger)';
+        toast.style.borderColor = 'var(--danger)';
+    }
+    
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
 }
 
 // Setup event listeners

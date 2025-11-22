@@ -8,67 +8,89 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
             <div class="header-content">
-                <h1>
-                    <span class="icon">⏰</span>
-                    Tab Amnesty
-                </h1>
-                <p class="subtitle">Snooze tabs. Free RAM. Save sanity.</p>
+                <div class="header-icon">⏰</div>
+                <div class="header-text">
+                    <h1>Tab Amnesty</h1>
+                    <p class="subtitle">Snooze tabs. Free RAM. Save sanity.</p>
+                </div>
             </div>
         </div>
 
+        <!-- Stats Grid -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value" id="tabsSnoozed">0</div>
-                <div class="stat-label">Tabs Snoozed</div>
+                <div class="stat-icon">📑</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="tabsSnoozed">0</div>
+                    <div class="stat-label">Tabs Snoozed</div>
+                </div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="ramSaved">0 MB</div>
-                <div class="stat-label">RAM Saved</div>
+                <div class="stat-icon">💾</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="ramSaved">0 MB</div>
+                    <div class="stat-label">RAM Saved</div>
+                </div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="timeSaved">0h</div>
-                <div class="stat-label">Time Saved</div>
+                <div class="stat-icon">⚡</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="timeSaved">0h</div>
+                    <div class="stat-label">Time Saved</div>
+                </div>
             </div>
         </div>
 
+        <!-- Quick Actions Bar -->
+        <div class="quick-actions-bar">
+            <button class="quick-action-btn" id="clearAllBtn" title="Snooze all tabs until tomorrow">
+                <span class="quick-action-icon">🧹</span>
+                <span class="quick-action-text">Clear All</span>
+            </button>
+            <button class="quick-action-btn" id="snoozeWeekendBtn" title="Snooze all tabs until weekend">
+                <span class="quick-action-icon">🎉</span>
+                <span class="quick-action-text">Weekend</span>
+            </button>
+        </div>
+
+        <!-- Main Content -->
         <div class="main-content">
+            <!-- Open Tabs Section -->
             <div class="section open-tabs-section">
                 <div class="section-header">
-                    <h2>🗂️ Open Tabs</h2>
-                    <div class="tab-count" id="openTabCount">0 tabs</div>
+                    <div class="section-title-group">
+                        <span class="section-icon">🗂️</span>
+                        <h2>Open Tabs</h2>
+                    </div>
+                    <div class="tab-count-badge" id="openTabCount">0</div>
                 </div>
                 
-                <div class="quick-actions">
-                    <button class="quick-action-btn" id="clearAllBtn">
-                        <span class="emoji">🧹</span>
-                        <span class="text">Clear All Until Tomorrow</span>
-                    </button>
-                    <button class="quick-action-btn" id="snoozeWeekendBtn">
-                        <span class="emoji">🎉</span>
-                        <span class="text">Snooze Until Weekend</span>
-                    </button>
-                </div>
-
                 <div class="tabs-list" id="openTabsList">
                     <div class="empty-state">
-                        <span class="empty-icon">📑</span>
-                        <p>No tabs to manage</p>
+                        <div class="empty-icon">📑</div>
+                        <p class="empty-title">No tabs to manage</p>
+                        <p class="empty-hint">Open some tabs to get started</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Snoozed Tabs Section -->
             <div class="section snoozed-section">
                 <div class="section-header">
-                    <h2>😴 Snoozed Tabs</h2>
-                    <div class="tab-count" id="snoozedTabCount">0 tabs</div>
+                    <div class="section-title-group">
+                        <span class="section-icon">😴</span>
+                        <h2>Snoozed Tabs</h2>
+                    </div>
+                    <div class="tab-count-badge" id="snoozedTabCount">0</div>
                 </div>
                 
                 <div class="snoozed-list" id="snoozedList">
                     <div class="empty-state">
-                        <span class="empty-icon">💤</span>
-                        <p>No snoozed tabs</p>
+                        <div class="empty-icon">💤</div>
+                        <p class="empty-title">No snoozed tabs</p>
                         <p class="empty-hint">Snooze tabs to see them here</p>
                     </div>
                 </div>
@@ -81,42 +103,51 @@
         <div class="modal-overlay"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h3>⏰ Snooze Tab Until...</h3>
-                <button class="modal-close" id="closeModalBtn">&times;</button>
+                <div class="modal-title-group">
+                    <span class="modal-icon">⏰</span>
+                    <h3>Snooze Tab Until...</h3>
+                </div>
+                <button class="modal-close" id="closeModalBtn" aria-label="Close">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="snooze-options-grid">
                     <div class="snooze-option" data-time="tonight">
-                        <span class="emoji">🌙</span>
-                        <div class="label">Tonight</div>
-                        <div class="time">9:00 PM</div>
+                        <div class="snooze-emoji">🌙</div>
+                        <div class="snooze-label">Tonight</div>
+                        <div class="snooze-time">9:00 PM</div>
                     </div>
                     <div class="snooze-option" data-time="tomorrow">
-                        <span class="emoji">☀️</span>
-                        <div class="label">Tomorrow</div>
-                        <div class="time">9:00 AM</div>
+                        <div class="snooze-emoji">☀️</div>
+                        <div class="snooze-label">Tomorrow</div>
+                        <div class="snooze-time">9:00 AM</div>
                     </div>
                     <div class="snooze-option" data-time="weekend">
-                        <span class="emoji">📅</span>
-                        <div class="label">This Weekend</div>
-                        <div class="time">Saturday</div>
+                        <div class="snooze-emoji">📅</div>
+                        <div class="snooze-label">This Weekend</div>
+                        <div class="snooze-time">Saturday</div>
                     </div>
                     <div class="snooze-option" data-time="nextweek">
-                        <span class="emoji">🗓️</span>
-                        <div class="label">Next Week</div>
-                        <div class="time">Monday</div>
-                    </div>
-                    <div class="snooze-option" data-time="custom">
-                        <span class="emoji">📆</span>
-                        <div class="label">Custom</div>
-                        <div class="time">Pick date</div>
+                        <div class="snooze-emoji">🗓️</div>
+                        <div class="snooze-label">Next Week</div>
+                        <div class="snooze-time">Monday</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✓</span>
+            <span class="toast-message" id="toastMessage">Tab snoozed!</span>
+        </div>
+    </div>
+
     <script src="popup.js"></script>
 </body>
 </html>
-
