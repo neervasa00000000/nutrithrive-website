@@ -56,6 +56,9 @@ body {
     padding: 16px 20px;
     border-bottom: 1px solid var(--border-color);
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .header-content {
@@ -166,6 +169,9 @@ body {
     padding: 10px 16px;
     background: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .quick-actions-bar .quick-action-btn {
@@ -220,6 +226,9 @@ body {
     overflow-x: hidden;
     flex: 1;
     min-height: 200px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .section {
@@ -228,6 +237,9 @@ body {
     border-radius: 8px;
     padding: 14px;
     transition: border-color 0.15s ease;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .open-tabs-section {

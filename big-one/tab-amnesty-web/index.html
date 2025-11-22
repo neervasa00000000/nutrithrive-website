@@ -7,21 +7,67 @@
     <link rel="stylesheet" href="../tab-amnesty-desktop/styles.css">
     <link rel="icon" href="../tab-amnesty-desktop/lazy-sleep.png">
     <style>
-        /* Web-specific overrides */
+        /* Web-specific overrides - Full scrollability and proper width */
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            height: auto !important;
+        }
         body {
             overflow-y: auto !important;
             overflow-x: hidden !important;
+            height: auto !important;
+            min-height: 100vh;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
         .container {
             min-height: 100vh;
             padding-bottom: 40px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .header {
+            width: 100%;
+            max-width: 100%;
+        }
+        .stats-grid {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        .quick-actions-bar {
+            width: 100%;
+            max-width: 100%;
         }
         .main-content {
+            overflow: visible !important;
+            width: 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        .section {
+            width: 100%;
+            max-width: 100%;
             overflow: visible;
         }
         .tabs-list, .snoozed-list {
-            max-height: none;
-            overflow-y: visible;
+            max-height: none !important;
+            overflow-y: visible !important;
+            width: 100%;
+        }
+        .modal {
+            position: fixed;
+            z-index: 1000;
         }
     </style>
 </head>
