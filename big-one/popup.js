@@ -231,26 +231,29 @@ function closeModal() {
     });
 }
 
-// Select snooze time
-document.querySelectorAll('.snooze-option').forEach(option => {
-    option.addEventListener('click', async () => {
-        const timeOption = option.dataset.time;
-        
-        // Visual feedback
-        document.querySelectorAll('.snooze-option').forEach(opt => {
-            opt.classList.remove('selected');
+// Setup snooze option listeners (called after DOM is ready)
+function setupSnoozeOptions() {
+    const snoozeOptions = document.querySelectorAll('.snooze-option');
+    snoozeOptions.forEach(option => {
+        option.addEventListener('click', async () => {
+            const timeOption = option.dataset.time;
+            
+            // Visual feedback
+            document.querySelectorAll('.snooze-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+            
+            // Calculate wake time
+            const wakeTime = calculateWakeTime(timeOption);
+            
+            if (wakeTime) {
+                await performSnooze(currentTabId, wakeTime, timeOption);
+                closeModal();
+            }
         });
-        option.classList.add('selected');
-        
-        // Calculate wake time
-        const wakeTime = calculateWakeTime(timeOption);
-        
-        if (wakeTime) {
-            await performSnooze(currentTabId, wakeTime, timeOption);
-            closeModal();
-        }
     });
-});
+}
 
 // Calculate wake time
 function calculateWakeTime(option) {
