@@ -97,7 +97,6 @@ function createTabItem(tab) {
     tabItem.className = 'tab-item';
     tabItem.dataset.tabId = tab.id;
     
-    const favicon = tab.favIconUrl || '🌐';
     const title = tab.title || tab.url;
     
     // Create tab info
@@ -105,15 +104,20 @@ function createTabItem(tab) {
     tabInfo.className = 'tab-info';
     
     // Create favicon element
-    const faviconEl = document.createElement(favicon.startsWith('http') ? 'img' : 'span');
+    const faviconEl = document.createElement('div');
     faviconEl.className = 'tab-favicon';
-    if (favicon.startsWith('http')) {
-        faviconEl.src = favicon;
-        faviconEl.addEventListener('error', function() {
-            this.style.display = 'none';
-        });
+    if (tab.favIconUrl && tab.favIconUrl.startsWith('http')) {
+        const img = document.createElement('img');
+        img.src = tab.favIconUrl;
+        img.alt = '';
+        img.onerror = function() {
+            faviconEl.textContent = '🌐';
+            faviconEl.style.fontSize = '12px';
+        };
+        faviconEl.appendChild(img);
     } else {
-        faviconEl.textContent = favicon;
+        faviconEl.textContent = '🌐';
+        faviconEl.style.fontSize = '12px';
     }
     
     // Create title
