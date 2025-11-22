@@ -192,7 +192,10 @@ function createSnoozedItem(snoozedTab) {
 // 1. Snooze Single
 function snoozeTab(tabId) {
     currentTabId = tabId;
-    document.getElementById('snoozeModal').classList.add('active');
+    const modal = document.getElementById('snoozeModal');
+    if (modal) {
+        modal.classList.add('active');
+    }
 }
 
 // 2. Perform Snooze (Optimized Logic)
@@ -389,29 +392,31 @@ function showToast(msg, type = 'success') {
 }
 
 function setupEventListeners() {
-    // Modal
+    // Modal close button
     const closeModalBtn = document.getElementById('closeModalBtn');
     if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', () => {
-            document.getElementById('snoozeModal').classList.remove('active');
-            currentTabId = null;
-            document.querySelectorAll('.snooze-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
+        closeModalBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeModal();
         });
     }
     
-    // Modal overlay
+    // Modal overlay - close on click
     const modal = document.getElementById('snoozeModal');
     if (modal) {
         const overlay = modal.querySelector('.modal-overlay');
         if (overlay) {
-            overlay.addEventListener('click', () => {
-                modal.classList.remove('active');
-                currentTabId = null;
-                document.querySelectorAll('.snooze-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
+            overlay.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeModal();
+            });
+        }
+        
+        // Prevent modal content clicks from closing modal
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.addEventListener('click', (e) => {
+                e.stopPropagation();
             });
         }
     }
@@ -427,24 +432,43 @@ function setupEventListeners() {
         snoozeWeekendBtn.addEventListener('click', () => batchSnooze('weekend'));
     }
     
-    // Snooze Options
-    document.querySelectorAll('.snooze-option').forEach(opt => {
-        opt.addEventListener('click', async () => {
+    // Snooze Options - Use event delegation for better performance
+    const modalBody = document.querySelector('.modal-body');
+    if (modalBody) {
+        modalBody.addEventListener('click', async (e) => {
+            const option = e.target.closest('.snooze-option');
+            if (!option) return;
+            
+            e.stopPropagation();
+            
             // Remove selected state from all options
             document.querySelectorAll('.snooze-option').forEach(o => o.classList.remove('selected'));
             // Add selected state to clicked option
-            opt.classList.add('selected');
+            option.classList.add('selected');
             
-            const time = calculateWakeTime(opt.dataset.time);
+            const timeOption = option.dataset.time;
+            const time = calculateWakeTime(timeOption);
+            
             if (currentTabId && time) {
-                await performSnooze(currentTabId, time, opt.dataset.time);
-                document.getElementById('snoozeModal').classList.remove('active');
-                currentTabId = null;
+                await performSnooze(currentTabId, time, timeOption);
+                closeModal();
                 await refreshAll(); // Refresh UI only after single snooze
                 showToast('Tab snoozed!', 'success');
             }
         });
-    });
+    }
+}
+
+// Close modal function
+function closeModal() {
+    const modal = document.getElementById('snoozeModal');
+    if (modal) {
+        modal.classList.remove('active');
+        currentTabId = null;
+        document.querySelectorAll('.snooze-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+    }
 }
 
 // Also refresh when popup becomes visible (in case it was already open)
