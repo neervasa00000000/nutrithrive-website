@@ -40,12 +40,16 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    contain: layout style paint;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 0;
+    position: relative;
 }
 
 /* Header */
@@ -106,6 +110,7 @@ body {
     gap: 12px;
     padding: 20px 24px;
     background: var(--bg-secondary);
+    flex-shrink: 0;
 }
 
 .stat-card {
@@ -117,7 +122,11 @@ body {
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     overflow: hidden;
-    will-change: transform;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .stat-card::before {
@@ -166,6 +175,9 @@ body {
     line-height: 1;
     font-variant-numeric: tabular-nums;
     letter-spacing: -1px;
+    min-width: 60px;
+    display: inline-block;
+    text-align: center;
 }
 
 .stat-label {
@@ -233,6 +245,7 @@ body {
     padding: 20px 24px;
     overflow-y: auto;
     flex: 1;
+    min-height: 0;
     max-height: 400px;
 }
 
