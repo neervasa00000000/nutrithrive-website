@@ -19,11 +19,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Load demo tabs for desktop app
 function loadDemoTabs() {
-    tabs = [
-        { id: 1, url: 'https://example.com', title: 'Example Website', favIconUrl: '' },
-        { id: 2, url: 'https://github.com', title: 'GitHub', favIconUrl: '' },
-        { id: 3, url: 'https://stackoverflow.com', title: 'Stack Overflow', favIconUrl: '' }
-    ];
+    // Check if we have stored tabs
+    const stored = localStorage.getItem('tabAmnestyTabs');
+    if (stored) {
+        tabs = JSON.parse(stored);
+    } else {
+        // Load initial demo tabs
+        tabs = [
+            { id: 1, url: 'https://example.com', title: 'Example Website', favIconUrl: '' },
+            { id: 2, url: 'https://github.com', title: 'GitHub', favIconUrl: '' },
+            { id: 3, url: 'https://stackoverflow.com', title: 'Stack Overflow', favIconUrl: '' }
+        ];
+        localStorage.setItem('tabAmnestyTabs', JSON.stringify(tabs));
+    }
     refreshAll();
 }
 
