@@ -155,7 +155,7 @@ async function loadSnoozedTabs() {
     const snoozedList = document.getElementById('snoozedList');
     const snoozedTabCount = document.getElementById('snoozedTabCount');
     
-    snoozedTabCount.textContent = `${snoozedTabs.length} tab${snoozedTabs.length !== 1 ? 's' : ''}`;
+    snoozedTabCount.textContent = snoozedTabs.length;
     
     if (snoozedTabs.length === 0) {
         snoozedList.innerHTML = `
