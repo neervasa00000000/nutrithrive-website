@@ -455,10 +455,39 @@ function showToast(msg, type = 'success') {
     setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
+// Add new tab function
+function addNewTab() {
+    const url = prompt('Enter URL or website name:');
+    if (!url) return;
+    
+    let tabUrl = url;
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        tabUrl = 'https://' + url;
+    }
+    
+    const newTab = {
+        id: Date.now(),
+        url: tabUrl,
+        title: url,
+        favIconUrl: ''
+    };
+    
+    tabs.push(newTab);
+    localStorage.setItem('tabAmnestyTabs', JSON.stringify(tabs));
+    refreshAll();
+    showToast('Tab added!', 'success');
+}
+
 function setupEventListeners() {
     // Request notification permission
     if ('Notification' in window && Notification.permission === 'default') {
         Notification.requestPermission();
+    }
+    
+    // Add Tab button
+    const addTabBtn = document.getElementById('addTabBtn');
+    if (addTabBtn) {
+        addTabBtn.addEventListener('click', addNewTab);
     }
     
     // Modal close button
