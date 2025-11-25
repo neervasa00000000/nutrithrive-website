@@ -14,7 +14,7 @@
     
     /* --- TERMINAL RESET --- */
     * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
-    
+
     :root {
       --bg: #0D0D0D;
       --surface: #1A1A1A;
@@ -51,8 +51,8 @@
     /* --- MAIN INTERFACE FRAME --- */
     .terminal-frame {
       width: 100%;
-      max-width: 900px;
-      min-height: 500px;
+      max-width: 1200px;
+      min-height: 650px;
       background: var(--bg);
       border: 1px solid var(--border);
       display: grid;
@@ -65,10 +65,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.8rem 1.5rem;
+      padding: 1rem 2rem;
       border-bottom: 1px solid var(--border);
       background: var(--surface);
-      font-size: 0.8rem;
+      font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
@@ -86,12 +86,12 @@
     /* --- WORKSPACE --- */
     .workspace {
       display: grid;
-      grid-template-columns: 1fr 300px;
+      grid-template-columns: 1fr 380px;
     }
 
     /* --- INPUT AREA --- */
     .input-area {
-      padding: 2rem;
+      padding: 2.5rem;
       display: flex;
       flex-direction: column;
       border-right: 1px solid var(--border);
@@ -100,13 +100,15 @@
     .prompt-line {
       display: flex;
       gap: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       color: var(--text-dim);
+      font-size: 1rem;
     }
 
     .prompt-symbol {
       color: var(--accent);
       font-weight: 700;
+      font-size: 1.1rem;
     }
 
     textarea {
@@ -116,9 +118,9 @@
       border: none;
       color: var(--text-main);
       font-family: var(--font-mono);
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       resize: none;
-      min-height: 200px;
+      min-height: 280px;
       caret-color: var(--accent);
     }
 
@@ -134,15 +136,15 @@
     }
 
     .panel-section {
-      padding: 1.5rem;
+      padding: 2rem;
       border-bottom: 1px solid var(--border);
     }
 
     .panel-label {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       color: var(--text-dim);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       display: block;
     }
 
@@ -155,9 +157,9 @@
 
     .cmd-item {
       cursor: pointer;
-      padding: 0.5rem;
+      padding: 0.7rem;
       border: 1px solid transparent;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: #888;
       transition: all 0.1s;
     }
@@ -171,16 +173,16 @@
     .cmd-item::before {
       content: '> ';
       color: var(--accent);
-      opacity: 0;
-    }
+        opacity: 0;
+      }
 
     .cmd-item:hover::before {
-      opacity: 1;
+        opacity: 1;
     }
 
     /* --- ACTION FOOTER --- */
     .footer-bar {
-      padding: 1rem 1.5rem;
+      padding: 1.2rem 2rem;
       border-top: 1px solid var(--border);
       background: var(--surface);
       display: flex;
@@ -192,10 +194,10 @@
       background: var(--text-main);
       color: var(--bg);
       border: none;
-      padding: 0.8rem 2rem;
+      padding: 1rem 2.5rem;
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 1rem;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.1s;
@@ -216,19 +218,19 @@
     }
 
     .key-hint {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: var(--text-dim);
       border: 1px solid var(--border);
-      padding: 4px 8px;
+      padding: 6px 12px;
       border-radius: 4px;
     }
 
     /* --- OUTPUT DISPLAY --- */
     .output-log {
       border-top: 1px solid var(--border);
-      padding: 1.5rem;
+      padding: 2rem;
       background: #000;
-      font-size: 0.9rem;
+      font-size: 1rem;
       display: none;
     }
 
@@ -1925,9 +1927,9 @@
       <div style="display:flex; align-items:center;">
         <div class="status-led"></div>
         <span>QuickCal_TERM_v3.0</span>
-      </div>
+        </div>
       <span id="clock">--:--</span>
-    </div>
+      </div>
 
     <!-- WORKSPACE -->
     <div class="workspace">
@@ -1960,11 +1962,11 @@
         
         <div class="panel-section" style="flex-grow:1;">
           <span class="panel-label">SYSTEM LOG</span>
-          <div style="font-size:0.75rem; color:#444; line-height:1.6;">
+          <div style="font-size:0.85rem; color:#444; line-height:1.6;">
             [INIT] Parser loaded...<br>
             [READY] Waiting for input...
-          </div>
         </div>
+      </div>
       </div>
     </div>
 
