@@ -681,6 +681,110 @@
 
 
 
+    /* Footer */
+
+    .footer {
+
+      margin-top: 5rem;
+
+      padding-top: 3rem;
+
+      border-top: 1px solid var(--border);
+
+      text-align: center;
+
+    }
+
+
+
+    .footer-title {
+
+      font-family: 'Satoshi', sans-serif;
+
+      font-size: 0.75rem;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.15em;
+
+      color: var(--ink-light);
+
+      margin-bottom: 1.5rem;
+
+    }
+
+
+
+    .footer-links {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 2rem;
+
+      flex-wrap: wrap;
+
+    }
+
+
+
+    .footer-link {
+
+      font-family: 'Playfair Display', serif;
+
+      font-size: 1.1rem;
+
+      color: var(--ink);
+
+      text-decoration: none;
+
+      transition: color 0.3s;
+
+      position: relative;
+
+    }
+
+
+
+    .footer-link:hover {
+
+      color: var(--ink-light);
+
+    }
+
+
+
+    .footer-link::after {
+
+      content: '';
+
+      position: absolute;
+
+      bottom: -2px;
+
+      left: 0;
+
+      width: 0;
+
+      height: 1px;
+
+      background: var(--ink);
+
+      transition: width 0.3s;
+
+    }
+
+
+
+    .footer-link:hover::after {
+
+      width: 100%;
+
+    }
+
+
+
     /* Mobile */
 
     @media (max-width: 600px) {
@@ -698,6 +802,10 @@
       .list-head { display: none; }
 
       .input-flex { flex-direction: column; align-items: center; gap: 1.5rem; }
+
+      .footer { margin-top: 3rem; padding-top: 2rem; }
+
+      .footer-links { flex-direction: column; gap: 1rem; }
 
     }
 
@@ -1840,6 +1948,26 @@
     }
 
   </script>
+
+
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="footer-title">Our Products</div>
+
+      <div class="footer-links">
+
+        <a href="https://scintilla.world/" target="_blank" rel="noopener noreferrer" class="footer-link">Scintilla World</a>
+
+        <a href="https://nutrithrive.com.au/crazy-ideas/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">NutriThrive Labs</a>
+
+      </div>
+
+    </div>
+
+  </footer>
 
 </body>
 
