@@ -600,7 +600,7 @@
 
     padding: 30px; width: 90%; max-width: 400px;
 
-  }
+    }
 
   .modal-row { margin-bottom: 15px; }
 
@@ -642,9 +642,9 @@
 
              <button id="settingsBtn" style="background:none; border:none; cursor:pointer; font-size:1.2rem;">⚙️</button>
 
-           </div>
+      </div>
 
-        </div>
+    </div>
 
         <div class="input-wrapper">
 
@@ -660,7 +660,7 @@
 
           <input type="number" id="hourly" value="50" min="0">
 
-        </div>
+            </div>
 
         <div class="input-wrapper">
 
@@ -674,7 +674,7 @@
 
                     <input type="number" id="daily" value="400">
 
-                </div>
+            </div>
 
                 <div class="rate-box">
 
@@ -682,15 +682,15 @@
 
                     <input type="number" id="weekly" value="2000">
 
-                </div>
+          </div>
 
-            </div>
+        </div>
 
             <input type="hidden" id="hourlyCard">
 
             <input type="hidden" id="monthly" value="8666.67">
 
-        </div>
+            </div>
 
         <button class="btn btn-start" id="startBtn">▶ Start Meeting</button>
 
@@ -700,15 +700,15 @@
 
             <button class="btn" id="resetBtn">↺ Reset</button>
 
-        </div>
+            </div>
 
         <button class="btn" id="saveBtn" style="margin-top:12px; border-style:dashed;">💾 Save Entry</button>
 
         <button class="btn" id="exportBtn" style="margin-top:12px; font-size:0.8rem; padding:12px;">Download CSV</button>
 
-      </div>
+            </div>
 
-    </div>
+            </div>
 
     <div class="display-area">
 
@@ -722,7 +722,7 @@
 
         <div class="time-pill" id="timeDisplay">00:00:00</div>
 
-      </div>
+          </div>
 
       <div class="stats-bar">
 
@@ -740,7 +740,7 @@
 
             <div class="stat-lbl">Today</div>
 
-        </div>
+          </div>
 
         <div class="stat-block">
 
@@ -760,7 +760,7 @@
 
             </div>
 
-      </div>
+            </div>
 
       
 
@@ -772,15 +772,15 @@
 
             <p>Power your workflow with Organic Moringa.</p>
 
-        </div>
+            </div>
 
         <a href="https://nutrithrive.com.au/pages/products/product-detail.html" class="ad-cta">Get Boosted →</a>
 
-      </div>
+          </div>
 
-    </div>
+        </div>
 
-  </div>
+        </div>
 
   <div class="modal-overlay" id="modal">
 
@@ -794,7 +794,7 @@
 
             <input type="number" id="cfgHoursPerDay">
 
-        </div>
+      </div>
 
         <div class="modal-row">
 
@@ -802,7 +802,7 @@
 
             <input type="number" id="cfgDaysPerWeek">
 
-        </div>
+  </div>
 
         <div class="modal-row">
 
@@ -810,7 +810,7 @@
 
             <input type="number" id="cfgWeeksPerMonth">
 
-        </div>
+      </div>
 
         <div style="display:flex; align-items:center; gap:10px; margin-top:20px;">
 
@@ -818,7 +818,7 @@
 
             <label style="margin:0;">Auto-save on stop</label>
 
-        </div>
+      </div>
 
         <div class="btn-grid" style="margin-top:20px;">
 
@@ -826,9 +826,9 @@
 
             <button class="btn btn-start" id="modalSave">Save</button>
 
-        </div>
+      </div>
 
-    </div>
+      </div>
 
   </div>
 
@@ -918,7 +918,7 @@ let cfg = loadCfg();
 
 function loadCfg(){
 
-    try{
+  try{
 
         return JSON.parse(localStorage.getItem(CFG_KEY)) || { hoursPerDay:8, daysPerWeek:5, weeksPerMonth:4.33333, autoSave:false };
 
@@ -1052,7 +1052,7 @@ function stopMeeting(){
 
 function resetMeeting(){
 
-    stopMeeting();
+  stopMeeting();
 
     state.startTime = null; state.elapsedSeconds = 0; state.lastTotalCost = 0;
 
@@ -1064,17 +1064,17 @@ function resetMeeting(){
 
 function saveMeeting(isAuto=false){
 
-    stopMeeting();
+  stopMeeting();
 
     if(state.lastTotalCost <= 0) { if(!isAuto) alert('Nothing to save.'); return; }
 
     
 
-    const data = loadDailyData();
+  const data = loadDailyData();
 
-    data.meetings.push({
+  data.meetings.push({
 
-        ts: Date.now(),
+    ts: Date.now(),
 
         durationSec: Math.round(state.elapsedSeconds),
 
@@ -1084,11 +1084,11 @@ function saveMeeting(isAuto=false){
 
         hourlyRate: state.hourlyRate
 
-    });
+  });
 
-    saveDailyData(data);
+  saveDailyData(data);
 
-    resetMeeting();
+  resetMeeting();
 
 }
 
@@ -1106,7 +1106,7 @@ window.deleteEntry = deleteEntry;
 
 function renderStats(){
 
-    const data = loadDailyData();
+  const data = loadDailyData();
 
     const sorted = (data.meetings || []).sort((a,b) => b.ts - a.ts);
 
@@ -1148,7 +1148,7 @@ function renderStats(){
 
         dom.entriesList.innerHTML = `<div style="text-align:center; padding:10px; font-weight:700; opacity:0.5;">NO ENTRIES</div>`;
 
-        return;
+    return;
 
     }
 
@@ -1170,7 +1170,7 @@ function renderStats(){
 
                     ${Math.floor(m.durationSec/60)}m ${m.durationSec%60}s • ${m.attendees} PPL
 
-                </div>
+      </div>
 
             </div>
 
@@ -1186,7 +1186,7 @@ function renderStats(){
 
 function exportCSV(){
 
-    const data = loadDailyData();
+  const data = loadDailyData();
 
     let csv = "Timestamp,Duration(s),Cost,Attendees,Rate\n";
 
@@ -1198,9 +1198,9 @@ function exportCSV(){
 
     const blob = new Blob([csv], {type:'text/csv'});
 
-    const url = URL.createObjectURL(blob);
+  const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
+  const a = document.createElement('a');
 
     a.href = url; a.download = 'meetings.csv';
 
