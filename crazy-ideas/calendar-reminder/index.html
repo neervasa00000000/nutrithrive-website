@@ -40,6 +40,13 @@
       padding: 40px 20px;
     }
 
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+        font-size: 13px;
+      }
+    }
+
     body::before {
       display: none;
     }
@@ -272,8 +279,207 @@
 
     /* Mobile */
     @media (max-width: 800px) {
-      .workspace { grid-template-columns: 1fr; }
-      .context-panel { display: none; }
+      .workspace { 
+        grid-template-columns: 1fr; 
+      }
+      .context-panel { 
+        display: none; 
+      }
+    }
+
+    @media (max-width: 768px) {
+      .terminal-frame {
+        max-width: 100%;
+        min-height: auto;
+        margin-bottom: 20px;
+      }
+
+      .header-bar {
+        padding: 0.7rem 1rem;
+        font-size: 0.7rem;
+      }
+
+      .header-bar span:last-child {
+        font-size: 0.65rem;
+      }
+
+      .input-area {
+        padding: 1.5rem 1rem;
+      }
+
+      .prompt-line {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+      }
+
+      textarea {
+        font-size: 1rem;
+        min-height: 150px;
+        padding: 1rem;
+      }
+
+      .footer-bar {
+        padding: 0.8rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      button#generateBtn {
+        width: 100%;
+        padding: 0.9rem 1.5rem;
+        font-size: 0.85rem;
+      }
+
+      .key-hint {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+      }
+
+      .output-log {
+        padding: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .log-line {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .result-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .res-link {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 15px 8px;
+        font-size: 12px;
+      }
+
+      .terminal-frame {
+        border-radius: 0;
+      }
+
+      .header-bar {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.65rem;
+      }
+
+      .input-area {
+        padding: 1rem 0.8rem;
+      }
+
+      textarea {
+        font-size: 0.95rem;
+        min-height: 120px;
+      }
+
+      .footer-bar {
+        padding: 0.7rem 0.8rem;
+      }
+
+      button#generateBtn {
+        padding: 0.85rem 1.2rem;
+        font-size: 0.8rem;
+      }
+
+      /* Product Links Section Mobile */
+      .product-links-section {
+        margin-top: 30px !important;
+        padding: 20px 10px !important;
+      }
+
+      .product-links-section > div {
+        padding: 1.5rem 1rem !important;
+      }
+
+      .product-links-section h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+
+      .product-links-section p {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.2rem !important;
+      }
+
+      .product-links-section a {
+        padding: 10px 16px !important;
+        font-size: 0.8rem !important;
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    /* Product Links Mobile Styles */
+    @media (max-width: 768px) {
+      .product-links-section {
+        margin-top: 30px !important;
+        padding: 20px 10px !important;
+      }
+
+      .product-links-section > div {
+        padding: 1.5rem 1rem !important;
+      }
+
+      .product-links-section h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+
+      .product-links-section p {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.2rem !important;
+      }
+
+      .product-links-section > div > div:first-of-type {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+
+      .product-links-section > div > div:first-of-type a {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        font-size: 0.85rem !important;
+      }
+
+      .product-links-section > div > div:last-of-type > div {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+      }
+
+      .product-links-section > div > div:last-of-type a {
+        width: 100% !important;
+        padding: 10px 16px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-links-section {
+        margin-top: 20px !important;
+        padding: 15px 8px !important;
+      }
+
+      .product-links-section > div {
+        padding: 1.2rem 0.8rem !important;
+      }
+
+      .product-links-section h3 {
+        font-size: 1rem !important;
+      }
+
+      .product-links-section p {
+        font-size: 0.8rem !important;
+      }
     }
 
   </style>
@@ -1963,8 +2169,8 @@
           <div style="font-size:0.75rem; color:#444; line-height:1.6;">
             [INIT] Parser loaded...<br>
             [READY] Waiting for input...
-          </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -2255,7 +2461,7 @@
   </script>
 
   <!-- Product Links Section - Full Width at Bottom -->
-  <div style="width: 100%; max-width: 100%; margin-top: 60px; padding: 40px 20px; background: var(--bg); order: 2;">
+  <div class="product-links-section" style="width: 100%; max-width: 100%; margin-top: 60px; padding: 40px 20px; background: var(--bg); order: 2;">
     <div style="max-width: 1200px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 3rem 2rem; text-align: center;">
       <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 1rem; font-family: var(--font-mono);">Shop NutriThrive Products</h3>
       <p style="color: var(--text-dim); margin-bottom: 2rem; font-size: 1rem;">Discover premium superfoods and wellness products:</p>
