@@ -10,7 +10,9 @@
 
   <title>The Fit Atelier | Size Guide</title>
 
-  <link rel="icon" type="image/png" href="/assets/logo/favicon.png">
+  <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
 
   
 
@@ -1354,7 +1356,7 @@
 
 
 
-    function renderResults(mainSize, subDetails, brands, targetId) {
+    function renderResults(mainSize, subDetails, brands, targetId, standardRange) {
 
       let brandsHtml = '';
 
@@ -1384,11 +1386,17 @@
 
 
 
+      const standardRangeHtml = standardRange ? `<div class="res-sub" style="margin-top: 1rem; padding: 1rem; background: #F9F7F2; border-radius: 2px; font-size: 0.85rem; color: var(--ink-light);">Standard Range: ${standardRange}</div>` : '';
+
+
+
       const html = `
 
         <div class="res-hero">${mainSize}</div>
 
         <div class="res-sub">${subHtml}</div>
+
+        ${standardRangeHtml}
 
         <div class="brand-list">
 
@@ -1546,13 +1554,17 @@
 
 
 
+      const standardRange = `Waist ${size.waist}" (${size.waistCm}cm) | Hip: ${size.hip}" (${size.hipCm}cm)`;
+
+
+
       renderResults(letterSize, [
 
         { label: 'Waist', val: size.waist + '"' },
 
         { label: 'UK', val: size.uk }
 
-      ], brands, 'womensResults');
+      ], brands, 'womensResults', standardRange);
 
     }
 
@@ -1678,13 +1690,41 @@
 
 
 
+      // Calculate waist in cm from inches (1 inch = 2.54 cm)
+
+      let waistCm = '';
+
+      if (size.waist.includes('-')) {
+
+        const [minWaist, maxWaist] = size.waist.split('-').map(w => Math.round(parseFloat(w) * 2.54));
+
+        waistCm = `${minWaist}-${maxWaist}`;
+
+      } else if (size.waist.includes('+')) {
+
+        const minWaist = Math.round(parseFloat(size.waist.replace('+', '')) * 2.54);
+
+        waistCm = `${minWaist}+`;
+
+      } else {
+
+        waistCm = Math.round(parseFloat(size.waist) * 2.54).toString();
+
+      }
+
+
+
+      const standardRange = `Waist ${size.waist}" (${waistCm}cm)`;
+
+
+
       renderResults(letterSize, [
 
         { label: 'Waist', val: size.waist + '"' },
 
         { label: 'EU', val: size.eu }
 
-      ], brands, 'mensResults');
+      ], brands, 'mensResults', standardRange);
 
     }
 
