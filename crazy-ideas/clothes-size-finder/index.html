@@ -635,7 +635,7 @@
 
       display: grid;
 
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
 
       padding: 1.2rem 0;
 
@@ -1367,13 +1367,17 @@
 
           <div class="brand-row">
 
-            <div class="b-name">${b.name}</div>
+            <div class="b-name">${b.name}${b.note ? `<br><span style="font-size: 0.75rem; color: var(--ink-light); font-weight: 400;">${b.note}</span>` : ''}</div>
 
             <div class="b-val"><span class="list-head">Spec Size</span><br><strong>${b.size}</strong></div>
 
             <div class="b-val"><span class="list-head">US</span><br>${b.us || '-'}</div>
 
+            <div class="b-val"><span class="list-head">UK</span><br>${b.uk || '-'}</div>
+
             <div class="b-val"><span class="list-head">EU</span><br>${b.eu || '-'}</div>
+
+            ${b.au ? `<div class="b-val"><span class="list-head">AU</span><br>${b.au}</div>` : ''}
 
         </div>
 
@@ -1545,11 +1549,25 @@
 
       const brands = [
 
-        { name: 'Zara', size: size.uk, us: size.us, uk: size.uk, eu: size.eu },
+        { name: 'Zara', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, note: 'Runs small' },
 
-        { name: 'Levi\'s', size: size.waist, us: size.us, uk: size.uk, eu: size.eu },
+        { name: 'Levi\'s', size: size.waist, us: size.us, uk: size.uk, eu: size.eu, note: 'True to size' },
 
-        { name: 'Uniqlo', size: letterSize, us: size.us, uk: size.uk, eu: size.eu }
+        { name: 'H&M', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'Standard fit' },
+
+        { name: 'ASOS', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, note: 'True to size' },
+
+        { name: 'Uniqlo', size: letterSize, us: size.us, uk: size.uk, eu: size.eu, note: 'Asian fit - runs small' },
+
+        { name: 'Target AU', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'AU sizing' },
+
+        { name: 'Kmart', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'AU sizing' },
+
+        { name: 'Nike', size: letterSize, us: size.us, uk: size.uk, eu: size.eu, note: 'Athletic fit' },
+
+        { name: 'Adidas', size: letterSize, us: size.us, uk: size.uk, eu: size.eu, note: 'Athletic fit' },
+
+        { name: 'Cotton On', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'AU sizing' }
 
       ];
 
@@ -1681,11 +1699,25 @@
 
       const brands = [
 
-        { name: 'H&M', size: size.uk, us: size.us, uk: size.uk, eu: size.eu },
+        { name: 'H&M', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'Standard fit' },
 
-        { name: 'Zara', size: size.eu, us: size.us, uk: size.uk, eu: size.eu },
+        { name: 'Zara', size: size.eu, us: size.us, uk: size.uk, eu: size.eu, note: 'Runs small' },
 
-        { name: 'Levi\'s', size: size.waist, us: size.us, uk: size.uk, eu: size.eu }
+        { name: 'ASOS', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, note: 'True to size' },
+
+        { name: 'Uniqlo', size: letterSize, us: size.us, uk: size.uk, eu: size.eu, note: 'Asian fit - runs small' },
+
+        { name: 'Target AU', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'AU sizing' },
+
+        { name: 'Kmart', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'AU sizing' },
+
+        { name: 'Nike', size: letterSize, us: size.us, uk: size.uk, eu: size.eu, note: 'Athletic fit' },
+
+        { name: 'Adidas', size: letterSize, us: size.us, uk: size.uk, eu: size.eu, note: 'Athletic fit' },
+
+        { name: 'Cotton On', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'AU sizing' },
+
+        { name: 'Connor', size: size.uk, us: size.us, uk: size.uk, eu: size.eu, au: size.uk, note: 'AU sizing' }
 
       ];
 
