@@ -46,7 +46,9 @@
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             padding: 40px 20px;
             overflow-x: hidden;
             position: relative;
@@ -425,9 +427,11 @@
         }
         /* --- Product Links Section --- */
         .product-section {
-            max-width: 680px;
+            width: 100%;
+            max-width: 100%;
             margin: 60px auto 0;
             padding: 0 20px 60px;
+            order: 2;
         }
         .product-card {
             background: rgba(255,255,255,0.05);
@@ -511,13 +515,218 @@
             transform: translateY(-2px);
         }
         /* --- Responsive --- */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .info-grid { grid-template-columns: 1fr; }
-            .glass-panel { padding: 24px; }
-            .sleep-card { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .tag { align-self: flex-start; }
-            .product-card { padding: 28px 20px; }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .app-container {
+                width: 100%;
+                max-width: 100%;
+                order: 1;
+            }
+
+            header {
+                margin-bottom: 30px;
+            }
+
+            h1 { 
+                font-size: 2.5rem; 
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .logo-wrapper {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 20px;
+            }
+
+            .logo-icon {
+                font-size: 35px;
+            }
+
+            .glass-panel { 
+                padding: 24px 20px; 
+                border-radius: 24px;
+            }
+
+            .toggle-container {
+                margin-bottom: 24px;
+            }
+
+            .toggle-btn {
+                padding: 14px 12px;
+                font-size: 0.85rem;
+            }
+
+            .input-group {
+                margin-bottom: 24px;
+            }
+
+            .input-label {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+
+            .custom-input {
+                padding: 18px 20px;
+                font-size: 1.1rem;
+            }
+
+            .btn-magic {
+                padding: 20px;
+                font-size: 1rem;
+            }
+
+            .info-grid { 
+                grid-template-columns: 1fr; 
+                gap: 16px;
+                margin-top: 30px;
+            }
+
+            .info-tile {
+                padding: 20px;
+            }
+
+            .sleep-card { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 12px; 
+                padding: 20px;
+            }
+
+            .time {
+                font-size: 1.75rem;
+            }
+
+            .tag { 
+                align-self: flex-start; 
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+            }
+
+            .age-rec {
+                padding: 16px;
+                font-size: 0.9rem;
+                margin-top: 24px;
+            }
+
+            .product-section {
+                margin-top: 40px;
+                padding: 0 15px 40px;
+            }
+
+            .product-card { 
+                padding: 28px 20px; 
+            }
+
+            .product-card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+
+            .product-card p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .product-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .product-link {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.9rem;
+                text-align: center;
+            }
+
+            .tools-section {
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+
+            .tools-section h4 {
+                font-size: 1rem;
+                margin-bottom: 12px;
+            }
+
+            .tools-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .tool-link {
+                width: 100%;
+                padding: 12px 18px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .logo-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+
+            .logo-icon {
+                font-size: 30px;
+            }
+
+            .glass-panel {
+                padding: 20px 16px;
+                border-radius: 20px;
+            }
+
+            .toggle-btn {
+                padding: 12px 10px;
+                font-size: 0.8rem;
+            }
+
+            .custom-input {
+                padding: 16px 18px;
+                font-size: 1rem;
+            }
+
+            .btn-magic {
+                padding: 18px;
+                font-size: 0.95rem;
+            }
+
+            .time {
+                font-size: 1.5rem;
+            }
+
+            .product-card {
+                padding: 24px 16px;
+            }
+
+            .product-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .product-card p {
+                font-size: 0.85rem;
+            }
         }
         /* Keyframes */
         @keyframes float-orb {
