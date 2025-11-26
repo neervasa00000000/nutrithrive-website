@@ -1,0 +1,15 @@
+# NutriThrive URL Structure Consolidation
+# Redirect old /pages/ folders to the new clean structure
+
+# Blog redirects - redirect ALL /pages/blog/ to /blog/
+/pages/blog/* /blog/:splat 301
+/pages/blog /blog/ 301
+
+# Products redirects
+/pages/products/* /products/:splat 301
+/pages/products /products/ 301
+
+# Homepage redirects
+/pages/homepage/* /:splat 301
+/pages/homepage / 301
+
