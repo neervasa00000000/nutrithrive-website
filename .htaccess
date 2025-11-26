@@ -9,19 +9,23 @@ DirectoryIndex index.html index.htm
     RewriteEngine On
     RewriteBase /
     
-    # Blog redirects - redirect all /pages/blog/ to /blog/ (with .html if needed)
-    # First, handle /pages/blog/ URLs without .html extension
+    # Blog redirects - redirect all /pages/blog/ to /blog/
+    # Handle /pages/blog/ URLs without .html extension - redirect to /blog/ with .html
+    RewriteCond %{REQUEST_URI} ^/pages/blog/([^/]+)$
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^pages/blog/([^/]+)$ /blog/$1.html [R=301,L]
     
-    # Then handle /pages/blog/ URLs with .html extension
+    # Handle /pages/blog/ URLs with .html extension - redirect to /blog/
     RewriteRule ^pages/blog/(.*)$ /blog/$1 [R=301,L]
+    
+    # Handle /pages/blog/ directory - redirect to /blog/
     RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
     
-    # Handle blog URLs without .html extension (direct access to /blog/)
+    # Handle direct /blog/ URLs without .html extension
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/blog/([^/]+)$
     RewriteRule ^blog/([^/]+)$ /blog/$1.html [R=301,L]
     
     # Products redirects - redirect all /pages/products/ to /products/
