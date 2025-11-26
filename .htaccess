@@ -1,0 +1,30 @@
+# NutriThrive URL Structure Consolidation
+# Redirect old /pages/ folders to the new clean structure
+
+# Enable rewrite engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Blog redirects - redirect all /pages/blog/ to /blog/
+    RewriteRule ^pages/blog/(.*)$ /blog/$1 [R=301,L]
+    RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
+    
+    # Products redirects - redirect all /pages/products/ to /products/
+    RewriteRule ^pages/products/(.*)$ /products/$1 [R=301,L]
+    RewriteRule ^pages/products/?$ /products/ [R=301,L]
+    
+    # Homepage redirect
+    RewriteRule ^pages/homepage/(.*)$ /$1 [R=301,L]
+    RewriteRule ^pages/homepage/?$ / [R=301,L]
+</IfModule>
+
+# Fallback Apache redirects (if mod_rewrite is not available)
+# Blog redirects
+RedirectMatch 301 ^/pages/blog/(.*)$ https://nutrithrive.com.au/blog/$1
+
+# Products redirects  
+RedirectMatch 301 ^/pages/products/(.*)$ https://nutrithrive.com.au/products/$1
+
+# Homepage redirect
+RedirectMatch 301 ^/pages/homepage/(.*)$ https://nutrithrive.com.au/$1
