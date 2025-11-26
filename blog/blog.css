@@ -765,7 +765,7 @@ header {
     background: transparent;
 }
 
-.logo {
+    .logo {
     display: flex;
     align-items: center;
     font-weight: 800;
@@ -773,6 +773,9 @@ header {
     color: var(--primary);
     text-decoration: none;
     letter-spacing: -1px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
 }
 
 .logo-emoji {
@@ -1600,6 +1603,8 @@ footer {
         display: flex;
         align-items: center;
         justify-content: center;
+        background: transparent !important;
+        border: none !important;
     }
 
     .nav-links a:hover,
