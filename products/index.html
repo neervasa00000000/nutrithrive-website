@@ -27,42 +27,22 @@
     
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['DM Sans', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            light: '#F4F7F5', // Creamy white
-                            sage: '#CAD2C5',  // Soft Green
-                            accent: '#D4A373', // Gold/Bronze
-                            dark: '#2F3E46',  // Charcoal Green
-                            deep: '#1B4332',  // Forest Green
-                        }
-                    },
-                    animation: {
-                        'marquee': 'marquee 25s linear infinite',
-                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                    },
-                    keyframes: {
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-100%)' },
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        :root {
+            --brand-light: #F4F7F5;
+            --brand-sage: #CAD2C5;
+            --brand-accent: #D4A373;
+            --brand-dark: #2F3E46;
+            --brand-deep: #1B4332;
+            --brand-cream: #F5F5F0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--brand-light);
+            color: var(--brand-dark);
+        }
+
         /* Hide scrollbar for clean UI */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -133,6 +113,231 @@
                 display: block;
             }
         }
+
+        /* Hero */
+        .products-hero {
+            position: relative;
+            padding: 6rem 1.5rem 4rem;
+            text-align: center;
+            overflow: hidden;
+            background: var(--brand-light);
+        }
+
+        .products-hero::after {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -5%;
+            width: 55%;
+            height: 140%;
+            background: linear-gradient(135deg, #E8F5E9 0%, rgba(255,255,255,0) 100%);
+            border-radius: 120px 0 0 120px;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        .hero-inner {
+            max-width: 780px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            font-weight: 700;
+            font-size: 0.72rem;
+            color: var(--brand-accent);
+            margin-bottom: 1.5rem;
+        }
+
+      .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            line-height: 1.15;
+            color: var(--brand-deep);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            color: var(--brand-accent);
+            font-style: italic;
+        }
+
+      .hero-desc {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #4f5b58;
+            margin-bottom: 0;
+        }
+
+        /* Marquee */
+        .products-marquee {
+            background: var(--brand-deep);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 0.85rem 0;
+            overflow: hidden;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 2.5rem;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            font-size: 0.78rem;
+            animation: marquee 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Products */
+        .products-section {
+            padding: 5rem 1.5rem;
+            background: #fff;
+        }
+
+        .section-heading {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            color: var(--brand-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-heading p {
+            color: #6b706d;
+            font-size: 1rem;
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+
+        .img-zoom-container {
+            position: relative;
+            background: var(--brand-cream);
+            border-radius: 6px;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-zoom {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 2.5rem;
+            transition: transform 0.7s ease;
+            mix-blend-mode: multiply;
+        }
+
+        .product-card:hover .img-zoom {
+            transform: scale(1.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--brand-deep);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2px;
+        }
+
+        .product-badge.alt {
+            background: var(--brand-accent);
+        }
+
+        .quick-add {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            padding: 1rem;
+        }
+
+        .product-card:hover .quick-add {
+            transform: translateY(0);
+        }
+
+        .quick-add button {
+            width: 100%;
+            background: #fff;
+            color: var(--brand-deep);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.8rem 1rem;
+            border: none;
+            box-shadow: 0 12px 25px rgba(47,62,70,0.18);
+            border-radius: 999px;
+        }
+
+        .product-info {
+            margin-top: 1.2rem;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--brand-deep);
+            margin: 0 0 0.4rem;
+            transition: color 0.2s ease;
+        }
+
+        .product-card:hover h3 {
+            color: var(--brand-accent);
+        }
+
+        .product-meta {
+            color: #767c79;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .color-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .color-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .color-dots .dot-green { background: #5D8233; }
+        .color-dots .dot-leaf { background: #3A5A40; }
+        .color-dots .dot-black { background: #242424; }
+
     </style>
     <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/bZubhoR.png">
