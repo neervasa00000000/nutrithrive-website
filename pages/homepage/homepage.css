@@ -989,7 +989,18 @@ footer {
     }
 
     .hero-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    .hero-desc {
+        font-size: 1.05rem;
+    }
+    .hero-intro {
+        font-size: 0.95rem;
+        padding: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.6;
     }
 
     /* --- Definitive Fix for About Page Mobile --- */
@@ -1069,6 +1080,20 @@ footer {
         width: 100%;
         padding: 0 0.5rem;
     }
+    .hero-intro {
+        font-size: 0.95rem;
+        padding: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    .hero-desc {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+    }
     .hero-image {
         width: 100%;
         display: flex;
@@ -1081,6 +1106,16 @@ footer {
         height: auto;
         border-radius: 12px;
         box-shadow: var(--shadow);
+    }
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .hero-btn {
+        width: 100%;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
     }
     .products-section {
         padding: 1.5rem 0.5rem;
