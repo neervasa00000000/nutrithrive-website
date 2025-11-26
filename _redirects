@@ -2,7 +2,11 @@
 # Redirect old /pages/ folders to the new clean structure
 
 # Blog redirects - redirect ALL /pages/blog/ to /blog/
-/pages/blog/* /blog/:splat 301
+# Handle URLs with .html extension
+/pages/blog/*.html /blog/:splat.html 301
+# Handle URLs without .html extension (add .html)
+/pages/blog/* /blog/:splat.html 301
+# Handle directory
 /pages/blog /blog/ 301
 
 # Products redirects
