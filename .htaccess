@@ -1,6 +1,9 @@
 # NutriThrive URL Structure Consolidation
 # Redirect old /pages/ folders to the new clean structure
 
+# Set directory index files
+DirectoryIndex index.html index.htm
+
 # Enable rewrite engine
 <IfModule mod_rewrite.c>
     RewriteEngine On
