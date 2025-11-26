@@ -13,7 +13,7 @@ DirectoryIndex index.html index.htm
     # First: Handle /pages/blog/ directory - redirect to /blog/
     RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
     
-    # Second: Handle /pages/blog/ URLs with .html extension - redirect to /blog/ (exact match)
+    # Second: Handle /pages/blog/ URLs with .html extension - redirect to /blog/
     RewriteCond %{REQUEST_URI} ^/pages/blog/(.+\.html)$
     RewriteRule ^pages/blog/(.+\.html)$ /blog/$1 [R=301,L]
     
@@ -47,12 +47,12 @@ DirectoryIndex index.html index.htm
 
 # Fallback Apache redirects (if mod_rewrite is not available)
 # Blog redirects - handle URLs with .html extension first (exact match)
-RedirectMatch 301 ^/pages/blog/(.+\.html)$ https://nutrithrive.com.au/blog/$1
+RedirectMatch 301 ^/pages/blog/(.+\.html)$ /blog/$1
 # Then handle URLs without .html extension (add .html) - must not end with .html
-RedirectMatch 301 ^/pages/blog/([^/]+)$ https://nutrithrive.com.au/blog/$1.html
+RedirectMatch 301 ^/pages/blog/([^/]+)$ /blog/$1.html
 
 # Products redirects  
-RedirectMatch 301 ^/pages/products/(.*)$ https://nutrithrive.com.au/products/$1
+RedirectMatch 301 ^/pages/products/(.*)$ /products/$1
 
 # Homepage redirect
-RedirectMatch 301 ^/pages/homepage/(.*)$ https://nutrithrive.com.au/$1
+RedirectMatch 301 ^/pages/homepage/(.*)$ /$1
