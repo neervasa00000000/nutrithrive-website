@@ -1002,6 +1002,8 @@ footer {
         display: flex;
         align-items: center;
         justify-content: center;
+        background: transparent !important;
+        border: none !important;
     }
 
     .nav-links a:hover,
