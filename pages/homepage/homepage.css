@@ -192,6 +192,17 @@ header {
     line-height: 1.6;
 }
 
+.hero-intro {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
 .hero-cta {
     display: flex;
     gap: 1.2rem;
