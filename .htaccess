@@ -48,8 +48,8 @@ DirectoryIndex index.html index.htm
 # Fallback Apache redirects (if mod_rewrite is not available)
 # Blog redirects - handle URLs with .html extension first (exact match)
 RedirectMatch 301 ^/pages/blog/(.+\.html)$ https://nutrithrive.com.au/blog/$1
-# Then handle URLs without .html extension (add .html)
-RedirectMatch 301 ^/pages/blog/(.+)$ https://nutrithrive.com.au/blog/$1.html
+# Then handle URLs without .html extension (add .html) - must not end with .html
+RedirectMatch 301 ^/pages/blog/([^/]+)$ https://nutrithrive.com.au/blog/$1.html
 
 # Products redirects  
 RedirectMatch 301 ^/pages/products/(.*)$ https://nutrithrive.com.au/products/$1
