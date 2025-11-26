@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - Deferred for performance -->
+<script>
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP');
+  });
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universal Size Converter: Clothing & Shoe Size Calculator (US, UK, EU, AU)</title>
+  <meta name="description" content="Stop guessing your size. Use our free Universal Size Converter to translate US, UK, EU, and AU sizes instantly. Plus, how to beat the bloat for the perfect fit.">
+
+  <!-- Canonical & language -->
+  <link rel="canonical" href="https://nutrithrive.com.au/blog/universal-size-converter.html">
+  <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/universal-size-converter.html">
+  <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/universal-size-converter.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://nutrithrive.com.au/blog/universal-size-converter.html">
+  <meta property="og:title" content="Universal Size Converter: Clothing & Shoe Size Calculator (US, UK, EU, AU)">
+  <meta property="og:description" content="Stop guessing your size. Use our free Universal Size Converter to translate US, UK, EU, and AU sizes instantly. Plus, how to beat the bloat for the perfect fit.">
+  <meta property="og:image" content="https://i.imgur.com/bZubhoR.png">
+  <meta property="og:site_name" content="NutriThrive Australia">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://nutrithrive.com.au/blog/universal-size-converter.html">
+  <meta property="twitter:title" content="Universal Size Converter: Clothing & Shoe Size Calculator (US, UK, EU, AU)">
+  <meta property="twitter:description" content="Stop guessing your size. Use our free Universal Size Converter to translate US, UK, EU, and AU sizes instantly.">
+  <meta property="twitter:image" content="https://i.imgur.com/bZubhoR.png">
+
+  <meta name="author" content="NutriThrive">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="geo.region" content="AU">
+  <meta name="geo.placename" content="Melbourne">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="../shared/css/style.css">
+
+  <!-- Favicon (standardised) -->
+  <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/bZubhoR.png">
+  <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
+  <meta name="theme-color" content="#2d1b3d">
+
+  <style>
+    body.usc-page {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top right, #3d2a5f 0, #1f1538 40%, #0f0a1f 100%);
+      color: #f5f5ff;
+    }
+
+    .usc-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .usc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(255, 182, 193, 0.15);
+      color: #ffb6c1;
+      border: 1px solid rgba(255, 182, 193, 0.35);
+    }
+
+    .usc-hero-title {
+      margin-top: 1.25rem;
+      font-size: clamp(2.4rem, 3.2vw + 1.6rem, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+    }
+
+    .usc-hero-title span {
+      background: linear-gradient(120deg, #ffb6c1, #dda0dd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .usc-hero-sub {
+      margin-top: 1rem;
+      max-width: 36rem;
+      color: #d4c8f5;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .usc-cta-row {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .usc-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #ffb6c1, #dda0dd);
+      color: #1f1538;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 16px 40px rgba(221, 160, 221, 0.4);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .usc-btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 50px rgba(221, 160, 221, 0.5);
+    }
+
+    .usc-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.75rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 182, 193, 0.28);
+      color: #d4c8f5;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    .usc-btn-ghost span {
+      font-weight: 600;
+    }
+
+    .usc-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.4fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .usc-card {
+      background: radial-gradient(circle at top left, rgba(255, 182, 193, 0.1), rgba(15, 10, 31, 0.96));
+      border-radius: 1.4rem;
+      border: 1px solid rgba(221, 160, 221, 0.24);
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+    }
+
+    .usc-card h2 {
+      font-size: 1.3rem;
+      margin: 0 0 0.6rem;
+    }
+
+    .usc-card p {
+      color: #d4c8f5;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .usc-card ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.1rem;
+      color: #e4d7ff;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .usc-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #c8a2ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .usc-divider {
+      margin: 3rem 0 2rem;
+      border-top: 1px dashed rgba(221, 160, 221, 0.4);
+    }
+
+    .usc-section-title {
+      font-size: 1.55rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .usc-section-lead {
+      color: #d4c8f5;
+      max-width: 40rem;
+      font-size: 0.98rem;
+      margin-bottom: 1.6rem;
+      line-height: 1.7;
+    }
+
+    .usc-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .usc-pill-card {
+      background: rgba(31, 21, 56, 0.96);
+      border-radius: 1.2rem;
+      border: 1px solid rgba(221, 160, 221, 0.28);
+      padding: 1.4rem 1.3rem;
+    }
+
+    .usc-pill-card h3 {
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+    }
+
+    .usc-pill-card p {
+      margin: 0;
+      color: #d4c8f5;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .usc-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #c8a2ff;
+    }
+
+    .usc-highlight {
+      color: #ffb6c1;
+      font-weight: 600;
+    }
+
+    .usc-pricing {
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      color: #e8e9ff;
+    }
+
+    .usc-pricing strong {
+      font-size: 1.05rem;
+    }
+
+    .usc-stat {
+      font-size: 1.1rem;
+      color: #ffb6c1;
+      font-weight: 700;
+    }
+
+    @media (max-width: 800px) {
+      .usc-shell {
+        padding-top: 5rem;
+      }
+
+      .usc-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body class="usc-page">
+  <!-- Reuse global navbar from shared styles -->
+  <header>
+    <div class="navbar">
+      <a href="/" class="logo">
+        <img src="https://i.imgur.com/bZubhoR.png" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+        NutriThrive
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/products/">Products</a>
+        <a href="/pages/faq/faq.html">FAQ</a>
+        <a href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a>
+        <a href="/pages/about/about.html">About</a>
+        <a href="/pages/contact/contact.html">Contact</a>
+        <a href="/pages/usage-guide/how-to-use-moringa.html">Usage &amp; Benefits</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+      <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+    </div>
+  </header>
+
+  <div class="usc-shell">
+    <div class="usc-badge">🛍️ Free Tool</div>
+    <h1 class="usc-hero-title">
+      US, UK, EU, or AU?<br>
+      <span>Stop Guessing Your Size</span> When Shopping Online
+    </h1>
+    <p class="usc-hero-sub">
+      You've found the perfect jacket or pair of sneakers on an international site. You go to select your size, and you freeze. Is a UK 10 the same as a US 6? Or is it an 8? What is an EU 38 in Australian sizing?
+    </p>
+
+    <div class="usc-cta-row">
+      <a href="/crazy-ideas/clothes-size-finder/" target="_blank" class="usc-btn-primary">
+        Try the Universal Size Converter →
+      </a>
+      <a href="#how-it-works" class="usc-btn-ghost">
+        <span>Learn How It Works</span>
+      </a>
+    </div>
+
+    <div class="usc-grid">
+      <div class="usc-card">
+        <div class="usc-tagline">The Problem</div>
+        <h2>You Take a Guess. Two Weeks Later, It Doesn't Fit.</h2>
+        <p>
+          You take a guess. Two weeks later, the package arrives—and it doesn't fit. Now you're stuck with the hassle of printing return labels, paying international shipping fees, and waiting another two weeks for a refund.
+        </p>
+        <p class="usc-stat">67% of online shoppers check the returns policy before buying because they don't trust the sizing.</p>
+        <p>Stop the guesswork. It's time to use a Universal Size Converter.</p>
+      </div>
+
+      <div class="usc-card">
+        <div class="usc-tagline">The Solution</div>
+        <h2>The Ultimate Cheat Sheet for Online Shoppers</h2>
+        <p>
+          Sizing standards are a mess. A "Medium" in Italy is a "Small" in America. A size 40 suit in Europe is completely different from a size 40 suit in the UK.
+        </p>
+        <p>
+          Our Universal Size Converter cuts through the confusion. It aggregates data from global sizing standards to give you the exact conversion you need in seconds.
+        </p>
+      </div>
+    </div>
+
+    <div class="usc-divider"></div>
+
+    <div id="how-it-works">
+      <div class="usc-tagline">How It Works</div>
+      <h2 class="usc-section-title">How to Use the Size Calculator</h2>
+      <p class="usc-section-lead">
+        Whether you are buying men's suits, women's dresses, or sneakers, simply select your region and current size. The tool instantly translates it across all major global standards:
+      </p>
+
+      <div class="usc-columns">
+        <div class="usc-pill-card">
+          <h3>🇺🇸 US & Canada</h3>
+          <p>North American Standard sizing for clothing, shoes, and accessories.</p>
+        </div>
+        <div class="usc-pill-card">
+          <h3>🇬🇧 UK & Australia</h3>
+          <p>Commonwealth Standard sizing used across UK, AU, and NZ markets.</p>
+        </div>
+        <div class="usc-pill-card">
+          <h3>🇪🇺 EU</h3>
+          <p>European Standard sizing for continental Europe and most international brands.</p>
+        </div>
+        <div class="usc-pill-card">
+          <h3>🇯🇵 Japan & Asia</h3>
+          <p>Asian Standard sizing for Japanese, Korean, and Chinese markets.</p>
+        </div>
+      </div>
+
+      <p class="usc-section-lead" style="margin-top: 1.5rem;">
+        It also provides specific measurements in inches and centimeters, so you can measure your own bust, waist, or foot length to confirm the perfect fit before you click "Buy."
+      </p>
+
+      <div class="usc-cta-row" style="margin-top: 2rem;">
+        <a href="/crazy-ideas/clothes-size-finder/" target="_blank" class="usc-btn-primary">
+          Open Size Converter Tool →
+        </a>
+      </div>
+    </div>
+
+    <div class="usc-divider"></div>
+
+    <div>
+      <div class="usc-tagline">The Hidden Problem</div>
+      <h2 class="usc-section-title">The "Internal Fit" Problem: Why Clothes Feel Uncomfortable</h2>
+      <p class="usc-section-lead">
+        You used the converter. You bought the right size. The measurements are perfect. So why does the waistband still feel tight by 3 PM?
+      </p>
+      <p class="usc-section-lead">
+        Sometimes, the problem isn't the clothes—it's inflammation.
+      </p>
+      <p class="usc-section-lead">
+        <span class="usc-highlight">Bloating can add up to 2-3 inches to your waistline throughout the day.</span> You might technically be a Size 8, but digestive distress makes you feel like a Size 10. No amount of accurate measuring can fix a gut that is constantly inflamed.
+      </p>
+    </div>
+
+    <div class="usc-divider"></div>
+
+    <div>
+      <div class="usc-tagline">The Biological Fix</div>
+      <h2 class="usc-section-title">Reduce Inflammation for the Perfect Fit</h2>
+      <p class="usc-section-lead">
+        Fitting into your clothes feels great, but feeling great inside your clothes is what matters most.
+      </p>
+      <p class="usc-section-lead">
+        NutriThrive Moringa is your daily defense against bloating and digestive inflammation. It helps you maintain your "morning waistline" all day long.
+      </p>
+
+      <div class="usc-columns" style="margin-top: 2rem;">
+        <div class="usc-pill-card">
+          <h3>🌿 Natural Anti-Inflammatory</h3>
+          <p>Moringa is packed with isothiocyanates, compounds that actively reduce inflammation in the gut lining to soothe bloating.</p>
+        </div>
+        <div class="usc-pill-card">
+          <h3>🍃 Digestive Enzymes & Fiber</h3>
+          <p>High fiber content keeps your digestion regular, preventing the sluggish, heavy feeling that ruins a good outfit.</p>
+        </div>
+        <div class="usc-pill-card">
+          <h3>✨ Zero Bloat</h3>
+          <p>Unlike synthetic supplements that can cause irritation, Moringa is a natural superfood that supports a flat, happy tummy.</p>
+        </div>
+      </div>
+
+      <p class="usc-section-lead" style="margin-top: 2rem; font-weight: 600;">
+        Don't just wear the right size. Feel comfortable in it.
+      </p>
+
+      <div class="usc-cta-row" style="margin-top: 2rem;">
+        <a href="/products/product-detail.html" class="usc-btn-primary">
+          Shop NutriThrive Moringa →
+        </a>
+        <p class="usc-pricing">
+          Starts from <strong>AU$10</strong> • Free shipping on orders over AU$30
+        </p>
+      </div>
+    </div>
+
+    <div class="usc-divider"></div>
+
+    <div style="text-align: center; padding: 2rem 0;">
+      <p style="color: #c8a2ff; font-size: 0.9rem;">
+        Ready to shop with confidence? Use the <a href="/crazy-ideas/clothes-size-finder/" target="_blank" style="color: #ffb6c1; text-decoration: underline;">Universal Size Converter</a> to find your perfect fit, and fuel your body with NutriThrive Moringa to feel great in it.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About NutriThrive</h3>
+        <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/products/">Products</a></li>
+          <li><a href="/pages/faq/faq.html">FAQ</a></li>
+          <li><a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a></li>
+          <li><a href="/pages/about/about.html">About</a></li>
+          <li><a href="/pages/contact/contact.html">Contact</a></li>
+          <li><a href="/pages/usage-guide/how-to-use-moringa.html">Usage & Benefits</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <ul class="footer-links">
+          <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
+          <li><a href="tel:+61438201419">+61 438201419</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Business Hours</h3>
+        <ul class="footer-links">
+          <li>Monday - Sunday</li>
+          <li>9:00 AM - 11:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NutriThrive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../shared/js/script.js" defer></script>
+</body>
+</html>
+
