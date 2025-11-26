@@ -13,17 +13,17 @@ DirectoryIndex index.html index.htm
     # First: Handle /pages/blog/ directory - redirect to /blog/
     RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
     
-    # Second: Handle /pages/blog/ URLs without .html extension - check if file exists and redirect
+    # Second: Handle /pages/blog/ URLs with .html extension - redirect to /blog/ (exact match)
+    RewriteCond %{REQUEST_URI} ^/pages/blog/(.+\.html)$
+    RewriteRule ^pages/blog/(.+\.html)$ /blog/$1 [R=301,L]
+    
+    # Third: Handle /pages/blog/ URLs without .html - check if file exists and redirect
     RewriteCond %{REQUEST_URI} ^/pages/blog/(.+)$
     RewriteCond %{REQUEST_URI} !\.html$
     RewriteCond %{DOCUMENT_ROOT}/blog/%1.html -f
     RewriteRule ^pages/blog/(.+)$ /blog/$1.html [R=301,L]
     
-    # Third: Handle /pages/blog/ URLs with .html extension - redirect to /blog/
-    RewriteCond %{REQUEST_URI} ^/pages/blog/(.+\.html)$
-    RewriteRule ^pages/blog/(.+)$ /blog/$1 [R=301,L]
-    
-    # Fourth: Catch-all for any other /pages/blog/ URLs (without .html, file might not exist)
+    # Fourth: Catch-all for any other /pages/blog/ URLs (without .html, always add .html)
     RewriteCond %{REQUEST_URI} ^/pages/blog/(.+)$
     RewriteCond %{REQUEST_URI} !\.html$
     RewriteRule ^pages/blog/(.+)$ /blog/$1.html [R=301,L]
@@ -31,8 +31,10 @@ DirectoryIndex index.html index.htm
     # Handle direct /blog/ URLs without .html extension
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} ^/blog/([^/]+)$
-    RewriteRule ^blog/([^/]+)$ /blog/$1.html [R=301,L]
+    RewriteCond %{REQUEST_URI} ^/blog/(.+)$
+    RewriteCond %{REQUEST_URI} !\.html$
+    RewriteCond %{DOCUMENT_ROOT}/blog/%1.html -f
+    RewriteRule ^blog/(.+)$ /blog/$1.html [R=301,L]
     
     # Products redirects - redirect all /pages/products/ to /products/
     RewriteRule ^pages/products/(.*)$ /products/$1 [R=301,L]
@@ -44,12 +46,10 @@ DirectoryIndex index.html index.htm
 </IfModule>
 
 # Fallback Apache redirects (if mod_rewrite is not available)
-# Blog redirects - handle URLs without .html extension first
-RedirectMatch 301 ^/pages/blog/([^/]+)$ https://nutrithrive.com.au/blog/$1.html
-# Then handle URLs with .html extension
+# Blog redirects - handle URLs with .html extension first (exact match)
 RedirectMatch 301 ^/pages/blog/(.+\.html)$ https://nutrithrive.com.au/blog/$1
-# Catch-all for any other /pages/blog/ URLs
-RedirectMatch 301 ^/pages/blog/(.*)$ https://nutrithrive.com.au/blog/$1
+# Then handle URLs without .html extension (add .html)
+RedirectMatch 301 ^/pages/blog/(.+)$ https://nutrithrive.com.au/blog/$1.html
 
 # Products redirects  
 RedirectMatch 301 ^/pages/products/(.*)$ https://nutrithrive.com.au/products/$1
