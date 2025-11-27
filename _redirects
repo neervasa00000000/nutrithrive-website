@@ -9,6 +9,15 @@
 # Handle directory
 /pages/blog /blog/ 301
 
+# SEO Consolidation Redirects
+# Moringa vs Matcha - redirect duplicate to Melbourne version
+/blog/moringa-vs-matcha-australia-2025.html /blog/moringa-vs-matcha-superfood-comparison-melbourne-2025.html 301
+
+# Curry Leaves - consolidate to master guide
+/blog/where-to-buy-dried-curry-leaves-melbourne-local-shopping-guide-2025.html /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html 301
+/blog/where-to-buy-dried-curry-leaves-melbourne-ultimate-guide-surprise-tip-2025.html /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html 301
+/blog/dried-curry-leaves-ultimate-guide-melbourne-australia-2025.html /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html 301
+
 # Products redirects
 /pages/products/* /products/:splat 301
 /pages/products /products/ 301
