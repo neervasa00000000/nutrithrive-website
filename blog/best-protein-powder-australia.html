@@ -118,15 +118,349 @@
     <link rel="preload" as="image" href="https://i.imgur.com/bZubhoR.png">
     <!-- Medical News Today Style Mobile Responsive -->
     <style>
-        /* Base mobile-first styles */
+        /* Modern Blog UI/UX - Enhanced Readability */
         * {
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-green: #175c36;
+            --accent-green: #2d5a3d;
+            --light-green: #e8f5e9;
+            --text-dark: #1a1a1a;
+            --text-muted: #5a6d5d;
+            --bg-light: #fafafa;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --radius: 12px;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        /* Blog Post Content Container */
+        .blog-post-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        /* Typography Improvements */
+        .blog-post-content p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #2c2c2c;
+        }
+        
+        .blog-post-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--light-green);
+        }
+        
+        .blog-post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin: 2.5rem 0 1.25rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        /* Modern Table Design */
+        .blog-post-content table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .blog-post-content table thead {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #0f4a2a 100%);
+        }
+        
+        .blog-post-content table th {
+            padding: 1.25rem 1rem;
+            text-align: left;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .blog-post-content table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+        
+        .blog-post-content table tbody tr {
+            transition: background 0.2s ease;
+        }
+        
+        .blog-post-content table tbody tr:hover {
+            background: var(--light-green);
+        }
+        
+        .blog-post-content table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Product Review Cards */
+        .product-review-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .product-review-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .product-review-card h3 {
+            margin-top: 0;
+            padding-left: 0;
+            border-left: none;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pros-cons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .pros-box, .cons-box {
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+        
+        .pros-box {
+            background: #f0f9f4;
+            border-left-color: #10b981;
+        }
+        
+        .cons-box {
+            background: #fef3f2;
+            border-left-color: #ef4444;
+        }
+        
+        .pros-box strong, .cons-box strong {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .pros-box strong {
+            color: #059669;
+        }
+        
+        .cons-box strong {
+            color: #dc2626;
+        }
+        
+        .verdict-box {
+            background: linear-gradient(135deg, #f0f9f4 0%, #e8f5e9 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .verdict-box strong {
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Lists Styling */
+        .blog-post-content ul, .blog-post-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .blog-post-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+            color: #2c2c2c;
+        }
+        
+        .blog-post-content ul li::marker {
+            color: var(--primary-green);
+        }
+        
+        /* Info Boxes */
+        .info-box {
+            background: var(--light-green);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Links */
+        .blog-post-content a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        
+        .blog-post-content a:hover {
+            border-bottom-color: var(--primary-green);
+        }
+        
+        /* Special Highlight Box for NutriThrive */
+        .moringa-highlight {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f0f9f4 100%);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin: 2.5rem 0;
+            border: 2px solid var(--primary-green);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .moringa-highlight p {
+            margin-bottom: 1rem;
+        }
+        
+        .moringa-highlight p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Buyer's Guide Section */
+        .buyers-guide-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin: 2.5rem 0;
+        }
+        
+        .buyers-guide-section h3 {
+            margin-top: 0;
+            padding-left: 0;
+            border-left: none;
+            color: var(--primary-green);
+        }
+        
+        /* Final Verdict Section */
+        .final-verdict {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #0f4a2a 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            margin: 3rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .final-verdict h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            margin-top: 0;
+        }
+        
+        .final-verdict p {
+            color: rgba(255,255,255,0.95);
+        }
+        
+        .final-verdict a {
+            color: #ffd700;
+            border-bottom-color: #ffd700;
+        }
+        
+        .final-verdict a:hover {
+            color: white;
+        }
+        
+        /* Disclaimer Box */
+        .disclaimer-box {
+            background: #fff9e6;
+            border: 1px solid #ffd700;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2.5rem 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-post-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .blog-post-content h2 {
+                font-size: 1.75rem;
+                margin-top: 2rem;
+            }
+            
+            .blog-post-content h3 {
+                font-size: 1.25rem;
+                margin-top: 2rem;
+            }
+            
+            .pros-cons-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .blog-post-content table {
+                font-size: 0.875rem;
+            }
+            
+            .blog-post-content table th,
+            .blog-post-content table td {
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .product-review-card {
+                padding: 1.5rem;
+            }
+            
+            .final-verdict {
+                padding: 2rem 1.5rem;
+            }
         }
         
         /* Mobile styles - Medical News Today inspired */
@@ -596,168 +930,252 @@
 
                 <h2>Best Protein Powder Australia Reviews (The List)</h2>
 
-                <h3>1. True Protein WPI 90 (Best for Muscle)</h3>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>90% whey protein isolate - one of the highest concentrations available</li>
-                    <li>Fast-absorbing for rapid muscle recovery post-workout</li>
-                    <li>Excellent mixability - no clumps or chalky texture</li>
-                    <li>Wide range of flavours including natural options</li>
-                    <li>Australian-owned and manufactured</li>
-                    <li>Third-party tested for purity</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Contains artificial sweeteners in flavoured versions</li>
-                    <li>Not suitable for vegans or lactose-intolerant individuals</li>
-                    <li>Premium pricing compared to budget options</li>
-                </ul>
-                <p><strong>Verdict:</strong> Great for gym junkies who want maximum protein with minimal carbs. True Protein WPI 90 delivers on its promise of high-quality, fast-absorbing protein. If you're serious about muscle gain and don't mind the price tag, this is a solid choice.</p>
+                <div class="product-review-card">
+                    <h3>1. True Protein WPI 90 (Best for Muscle)</h3>
+                    <div class="pros-cons-container">
+                        <div class="pros-box">
+                            <strong>✓ Pros</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>90% whey protein isolate - one of the highest concentrations available</li>
+                                <li>Fast-absorbing for rapid muscle recovery post-workout</li>
+                                <li>Excellent mixability - no clumps or chalky texture</li>
+                                <li>Wide range of flavours including natural options</li>
+                                <li>Australian-owned and manufactured</li>
+                                <li>Third-party tested for purity</li>
+                            </ul>
+                        </div>
+                        <div class="cons-box">
+                            <strong>✗ Cons</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Contains artificial sweeteners in flavoured versions</li>
+                                <li>Not suitable for vegans or lactose-intolerant individuals</li>
+                                <li>Premium pricing compared to budget options</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="verdict-box">
+                        <strong>Verdict:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">Great for gym junkies who want maximum protein with minimal carbs. True Protein WPI 90 delivers on its promise of high-quality, fast-absorbing protein. If you're serious about muscle gain and don't mind the price tag, this is a solid choice.</p>
+                    </div>
+                </div>
 
-                <h3>2. NutriThrive Moringa (Best Natural Superfood Stack)</h3>
-                <p>Technically a superfood, but with 27% protein, this is the best additive to stack with your shakes for gut health and zero bloating. It makes any cheap protein powder premium.</p>
-                <p><strong>What makes it special:</strong> Unlike isolated protein powders that focus solely on amino acids, NutriThrive Moringa Superleaf Powder is a whole-food source that delivers complete protein (all 9 essential amino acids) plus a powerhouse of micronutrients. With 7x the vitamin C of oranges, 3x the iron of spinach, and zero artificial additives, it's the perfect complement to any protein shake.</p>
-                <p><strong>Best use case:</strong> Don't just drink empty protein. Add 1 scoop of <a href="/products/product-detail.html" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa</a> to your True Protein or Musashi shake to get 7x the Vitamin C of oranges and perfect gut health. Whey builds muscle, but it causes bloating and lacks vitamins. NutriThrive Moringa fixes that. It is the Best Protein Booster.</p>
-                <p><strong>Verdict:</strong> The secret weapon for anyone serious about nutrition. Stack it with any protein powder to transform a basic shake into a complete meal replacement. <a href="/products/product-detail.html" style="color: #2d5a3d; font-weight: 600;">Buy Organic Moringa Powder Australia</a> from NutriThrive.</p>
+                <div class="product-review-card moringa-highlight">
+                    <h3>2. NutriThrive Moringa (Best Natural Superfood Stack)</h3>
+                    <p>Technically a superfood, but with 27% protein, this is the best additive to stack with your shakes for gut health and zero bloating. It makes any cheap protein powder premium.</p>
+                    <p><strong>What makes it special:</strong> Unlike isolated protein powders that focus solely on amino acids, NutriThrive Moringa Superleaf Powder is a whole-food source that delivers complete protein (all 9 essential amino acids) plus a powerhouse of micronutrients. With 7x the vitamin C of oranges, 3x the iron of spinach, and zero artificial additives, it's the perfect complement to any protein shake.</p>
+                    <p><strong>Best use case:</strong> Don't just drink empty protein. Add 1 scoop of <a href="/products/product-detail.html">NutriThrive Moringa</a> to your True Protein or Musashi shake to get 7x the Vitamin C of oranges and perfect gut health. Whey builds muscle, but it causes bloating and lacks vitamins. NutriThrive Moringa fixes that. It is the Best Protein Booster.</p>
+                    <div class="verdict-box">
+                        <strong>Verdict:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">The secret weapon for anyone serious about nutrition. Stack it with any protein powder to transform a basic shake into a complete meal replacement. <a href="/products/product-detail.html">Buy Organic Moringa Powder Australia</a> from NutriThrive.</p>
+                    </div>
+                </div>
 
-                <h3>3. Vital Plant Protein (Best Vegan)</h3>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>Complete plant-based protein blend (pea, rice, hemp)</li>
-                    <li>25g protein per serve - competitive with whey options</li>
-                    <li>No artificial sweeteners or flavours</li>
-                    <li>Certified organic and non-GMO</li>
-                    <li>Great for sensitive stomachs - no bloating reported</li>
-                    <li>Affordable compared to other premium vegan options</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Texture can be slightly grainy compared to whey</li>
-                    <li>Limited flavour options</li>
-                    <li>May not mix as smoothly as whey isolates</li>
-                </ul>
-                <p><strong>Verdict:</strong> An honest, no-nonsense vegan protein that delivers on its promises. If you're plant-based and want a clean, affordable option, Vital Plant Protein is a solid choice. It won't win any taste awards, but it gets the job done without the premium price tag.</p>
+                <div class="product-review-card">
+                    <h3>3. Vital Plant Protein (Best Vegan)</h3>
+                    <div class="pros-cons-container">
+                        <div class="pros-box">
+                            <strong>✓ Pros</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Complete plant-based protein blend (pea, rice, hemp)</li>
+                                <li>25g protein per serve - competitive with whey options</li>
+                                <li>No artificial sweeteners or flavours</li>
+                                <li>Certified organic and non-GMO</li>
+                                <li>Great for sensitive stomachs - no bloating reported</li>
+                                <li>Affordable compared to other premium vegan options</li>
+                            </ul>
+                        </div>
+                        <div class="cons-box">
+                            <strong>✗ Cons</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Texture can be slightly grainy compared to whey</li>
+                                <li>Limited flavour options</li>
+                                <li>May not mix as smoothly as whey isolates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="verdict-box">
+                        <strong>Verdict:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">An honest, no-nonsense vegan protein that delivers on its promises. If you're plant-based and want a clean, affordable option, Vital Plant Protein is a solid choice. It won't win any taste awards, but it gets the job done without the premium price tag.</p>
+                    </div>
+                </div>
 
-                <h3>4. Musashi High Protein (Best Cheap Option)</h3>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>Excellent value - often under $50 for 1kg</li>
-                    <li>30g protein per serve - one of the highest in the market</li>
-                    <li>Widely available at Chemist Warehouse, Coles, and Woolworths</li>
-                    <li>Multiple flavour options</li>
-                    <li>Fast-absorbing whey protein blend</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Contains artificial sweeteners and flavours</li>
-                    <li>Higher in carbs and calories than premium isolates</li>
-                    <li>Can cause bloating in some individuals</li>
-                    <li>Not the cleanest ingredient list</li>
-                </ul>
-                <p><strong>Verdict:</strong> If budget is your primary concern and you need maximum protein per dollar, Musashi High Protein is hard to beat. It's not the cleanest option, but for gym-goers on a tight budget, it delivers 30g of protein at a fraction of the cost of premium brands. <strong>Best cheap protein powder</strong> for those who prioritize value over purity.</p>
+                <div class="product-review-card">
+                    <h3>4. Musashi High Protein (Best Cheap Option)</h3>
+                    <div class="pros-cons-container">
+                        <div class="pros-box">
+                            <strong>✓ Pros</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Excellent value - often under $50 for 1kg</li>
+                                <li>30g protein per serve - one of the highest in the market</li>
+                                <li>Widely available at Chemist Warehouse, Coles, and Woolworths</li>
+                                <li>Multiple flavour options</li>
+                                <li>Fast-absorbing whey protein blend</li>
+                            </ul>
+                        </div>
+                        <div class="cons-box">
+                            <strong>✗ Cons</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Contains artificial sweeteners and flavours</li>
+                                <li>Higher in carbs and calories than premium isolates</li>
+                                <li>Can cause bloating in some individuals</li>
+                                <li>Not the cleanest ingredient list</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="verdict-box">
+                        <strong>Verdict:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">If budget is your primary concern and you need maximum protein per dollar, Musashi High Protein is hard to beat. It's not the cleanest option, but for gym-goers on a tight budget, it delivers 30g of protein at a fraction of the cost of premium brands. <strong>Best cheap protein powder</strong> for those who prioritize value over purity.</p>
+                    </div>
+                </div>
 
-                <h3>5. Nuzest Clean Lean Protein (Best for Weight Loss)</h3>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>Ultra-clean ingredient list - just pea protein and natural flavours</li>
-                    <li>Low-calorie (around 100 calories per serve)</li>
-                    <li>21g protein per serve with minimal carbs</li>
-                    <li>No artificial sweeteners, colours, or preservatives</li>
-                    <li>Easy on digestion - no bloating</li>
-                    <li>Certified organic and non-GMO</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Premium pricing - one of the most expensive options</li>
-                    <li>Lower protein content than some competitors</li>
-                    <li>Limited flavour variety</li>
-                </ul>
-                <p><strong>Verdict:</strong> If you're cutting calories and want the cleanest possible protein powder, Nuzest Clean Lean Protein is worth the investment. It's expensive, but you're paying for purity and quality. Perfect for weight loss goals where every calorie counts.</p>
+                <div class="product-review-card">
+                    <h3>5. Nuzest Clean Lean Protein (Best for Weight Loss)</h3>
+                    <div class="pros-cons-container">
+                        <div class="pros-box">
+                            <strong>✓ Pros</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Ultra-clean ingredient list - just pea protein and natural flavours</li>
+                                <li>Low-calorie (around 100 calories per serve)</li>
+                                <li>21g protein per serve with minimal carbs</li>
+                                <li>No artificial sweeteners, colours, or preservatives</li>
+                                <li>Easy on digestion - no bloating</li>
+                                <li>Certified organic and non-GMO</li>
+                            </ul>
+                        </div>
+                        <div class="cons-box">
+                            <strong>✗ Cons</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Premium pricing - one of the most expensive options</li>
+                                <li>Lower protein content than some competitors</li>
+                                <li>Limited flavour variety</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="verdict-box">
+                        <strong>Verdict:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">If you're cutting calories and want the cleanest possible protein powder, Nuzest Clean Lean Protein is worth the investment. It's expensive, but you're paying for purity and quality. Perfect for weight loss goals where every calorie counts.</p>
+                    </div>
+                </div>
 
-                <h3>6. Optimum Nutrition Gold Standard Whey (Best for Beginners)</h3>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>Trusted brand with decades of reputation</li>
-                    <li>24g protein per serve</li>
-                    <li>Wide variety of flavours</li>
-                    <li>Third-party tested for quality</li>
-                    <li>Good mixability</li>
-                    <li>Available everywhere</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Contains artificial sweeteners (sucralose, acesulfame potassium)</li>
-                    <li>Not the cleanest option</li>
-                    <li>Can be too sweet for some palates</li>
-                </ul>
-                <p><strong>Verdict:</strong> The safe choice for beginners. Optimum Nutrition Gold Standard Whey is reliable, widely available, and won't break the bank. It's not the cleanest option, but if you're just starting your protein journey, it's a solid entry point.</p>
+                <div class="product-review-card">
+                    <h3>6. Optimum Nutrition Gold Standard Whey (Best for Beginners)</h3>
+                    <div class="pros-cons-container">
+                        <div class="pros-box">
+                            <strong>✓ Pros</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Trusted brand with decades of reputation</li>
+                                <li>24g protein per serve</li>
+                                <li>Wide variety of flavours</li>
+                                <li>Third-party tested for quality</li>
+                                <li>Good mixability</li>
+                                <li>Available everywhere</li>
+                            </ul>
+                        </div>
+                        <div class="cons-box">
+                            <strong>✗ Cons</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Contains artificial sweeteners (sucralose, acesulfame potassium)</li>
+                                <li>Not the cleanest option</li>
+                                <li>Can be too sweet for some palates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="verdict-box">
+                        <strong>Verdict:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">The safe choice for beginners. Optimum Nutrition Gold Standard Whey is reliable, widely available, and won't break the bank. It's not the cleanest option, but if you're just starting your protein journey, it's a solid entry point.</p>
+                    </div>
+                </div>
 
-                <h3>7. Amazonia Raw Protein Isolate (Best Organic Option)</h3>
-                <p><strong>Pros:</strong></p>
-                <ul>
-                    <li>Certified organic and non-GMO</li>
-                    <li>24g protein per serve from pea and brown rice</li>
-                    <li>Includes digestive enzymes and probiotics</li>
-                    <li>No artificial additives</li>
-                    <li>Gut-friendly formulation</li>
-                </ul>
-                <p><strong>Cons:</strong></p>
-                <ul>
-                    <li>Premium pricing</li>
-                    <li>Earthy flavour may not appeal to everyone</li>
-                    <li>Can be harder to find in stores</li>
-                </ul>
-                <p><strong>Verdict:</strong> If organic certification is important to you, Amazonia Raw Protein Isolate is a solid choice. The added probiotics and enzymes make it particularly gut-friendly, though the earthy taste takes some getting used to.</p>
+                <div class="product-review-card">
+                    <h3>7. Amazonia Raw Protein Isolate (Best Organic Option)</h3>
+                    <div class="pros-cons-container">
+                        <div class="pros-box">
+                            <strong>✓ Pros</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Certified organic and non-GMO</li>
+                                <li>24g protein per serve from pea and brown rice</li>
+                                <li>Includes digestive enzymes and probiotics</li>
+                                <li>No artificial additives</li>
+                                <li>Gut-friendly formulation</li>
+                            </ul>
+                        </div>
+                        <div class="cons-box">
+                            <strong>✗ Cons</strong>
+                            <ul style="margin: 0; padding-left: 1.25rem;">
+                                <li>Premium pricing</li>
+                                <li>Earthy flavour may not appeal to everyone</li>
+                                <li>Can be harder to find in stores</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="verdict-box">
+                        <strong>Verdict:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">If organic certification is important to you, Amazonia Raw Protein Isolate is a solid choice. The added probiotics and enzymes make it particularly gut-friendly, though the earthy taste takes some getting used to.</p>
+                    </div>
+                </div>
 
-                <h2>Cleanest Protein Powder Australia: Why Ingredients Matter</h2>
-                <p>When searching for the <strong>cleanest protein powder</strong> or <strong>best organic protein powder Australia</strong>, you're looking for more than just high protein content. You want a product free from fillers, artificial sweeteners, and unnecessary additives.</p>
-                <p>Many protein powders on the market contain:</p>
-                <ul>
-                    <li><strong>Artificial sweeteners</strong> like sucralose, aspartame, and acesulfame potassium - linked to gut health issues</li>
-                    <li><strong>Fillers</strong> like maltodextrin and cornstarch - add calories without nutrition</li>
-                    <li><strong>Artificial flavours and colours</strong> - unnecessary chemicals in your body</li>
-                    <li><strong>Thickeners</strong> like xanthan gum and carrageenan - can cause digestive discomfort</li>
-                </ul>
-                <p>Why does this matter? Your body deserves real nutrition, not a chemistry experiment. Clean protein powders with minimal ingredients are easier to digest, less likely to cause bloating, and provide better overall health benefits.</p>
-                <p>For more on clean energy sources, check out our guide on <a href="/blog/moringa-vs-matcha-superfood-comparison-melbourne-2025.html" style="color: #2d5a3d; font-weight: 600;">Moringa vs Matcha</a> for more on clean energy.</p>
+                <div class="info-box">
+                    <h2>Cleanest Protein Powder Australia: Why Ingredients Matter</h2>
+                    <p>When searching for the <strong>cleanest protein powder</strong> or <strong>best organic protein powder Australia</strong>, you're looking for more than just high protein content. You want a product free from fillers, artificial sweeteners, and unnecessary additives.</p>
+                    <p>Many protein powders on the market contain:</p>
+                    <ul>
+                        <li><strong>Artificial sweeteners</strong> like sucralose, aspartame, and acesulfame potassium - linked to gut health issues</li>
+                        <li><strong>Fillers</strong> like maltodextrin and cornstarch - add calories without nutrition</li>
+                        <li><strong>Artificial flavours and colours</strong> - unnecessary chemicals in your body</li>
+                        <li><strong>Thickeners</strong> like xanthan gum and carrageenan - can cause digestive discomfort</li>
+                    </ul>
+                    <p>Why does this matter? Your body deserves real nutrition, not a chemistry experiment. Clean protein powders with minimal ingredients are easier to digest, less likely to cause bloating, and provide better overall health benefits.</p>
+                    <p>For more on clean energy sources, check out our guide on <a href="/blog/moringa-vs-matcha-superfood-comparison-melbourne-2025.html">Moringa vs Matcha</a> for more on clean energy.</p>
+                </div>
 
-                <h2>Buyers Guide: How to Choose</h2>
-                <h3>Protein Powder for Women</h3>
-                <p>Women have unique nutritional needs. When choosing a <strong>protein powder for women</strong>, look for:</p>
-                <ul>
-                    <li><strong>Iron content</strong> - Many women are iron-deficient. Plant proteins like moringa naturally contain iron</li>
-                    <li><strong>Lower calorie options</strong> - For weight management goals</li>
-                    <li><strong>Calcium</strong> - Important for bone health</li>
-                    <li><strong>Digestibility</strong> - Women often have more sensitive stomachs</li>
-                </ul>
-                <p><strong>Best choice for women:</strong> Consider stacking a clean whey or plant protein with <a href="/products/product-detail.html" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa</a> for added iron, calcium, and vitamins without extra calories.</p>
+                <div class="buyers-guide-section">
+                    <h2>Buyers Guide: How to Choose</h2>
+                    
+                    <div style="margin: 2rem 0;">
+                        <h3>Protein Powder for Women</h3>
+                        <p>Women have unique nutritional needs. When choosing a <strong>protein powder for women</strong>, look for:</p>
+                        <ul>
+                            <li><strong>Iron content</strong> - Many women are iron-deficient. Plant proteins like moringa naturally contain iron</li>
+                            <li><strong>Lower calorie options</strong> - For weight management goals</li>
+                            <li><strong>Calcium</strong> - Important for bone health</li>
+                            <li><strong>Digestibility</strong> - Women often have more sensitive stomachs</li>
+                        </ul>
+                        <p><strong>Best choice for women:</strong> Consider stacking a clean whey or plant protein with <a href="/products/product-detail.html">NutriThrive Moringa</a> for added iron, calcium, and vitamins without extra calories.</p>
+                    </div>
 
-                <h3>Protein Powder for Weight Loss</h3>
-                <p>When selecting a <strong>protein powder for weight loss</strong>, prioritize:</p>
-                <ul>
-                    <li><strong>Low calories</strong> - Aim for under 120 calories per serve</li>
-                    <li><strong>High protein</strong> - At least 20g per serve to keep you full</li>
-                    <li><strong>Minimal carbs</strong> - Under 5g per serve is ideal</li>
-                    <li><strong>No added sugars</strong> - Avoid maltodextrin and other hidden sugars</li>
-                </ul>
-                <p><strong>Best choice for weight loss:</strong> Nuzest Clean Lean Protein or a low-calorie whey isolate. For maximum nutrition, add a scoop of moringa for vitamins and antioxidants without significant calories.</p>
+                    <div style="margin: 2rem 0;">
+                        <h3>Protein Powder for Weight Loss</h3>
+                        <p>When selecting a <strong>protein powder for weight loss</strong>, prioritize:</p>
+                        <ul>
+                            <li><strong>Low calories</strong> - Aim for under 120 calories per serve</li>
+                            <li><strong>High protein</strong> - At least 20g per serve to keep you full</li>
+                            <li><strong>Minimal carbs</strong> - Under 5g per serve is ideal</li>
+                            <li><strong>No added sugars</strong> - Avoid maltodextrin and other hidden sugars</li>
+                        </ul>
+                        <p><strong>Best choice for weight loss:</strong> Nuzest Clean Lean Protein or a low-calorie whey isolate. For maximum nutrition, add a scoop of moringa for vitamins and antioxidants without significant calories.</p>
+                    </div>
 
-                <h3>Protein Powder for Muscle Gain</h3>
-                <p>For muscle building, you need:</p>
-                <ul>
-                    <li><strong>High protein content</strong> - 25-30g per serve</li>
-                    <li><strong>Complete amino acid profile</strong> - All 9 essential amino acids</li>
-                    <li><strong>Fast absorption</strong> - Whey isolate is ideal post-workout</li>
-                    <li><strong>BCAAs</strong> - Branched-chain amino acids for recovery</li>
-                </ul>
-                <p><strong>Best choice for muscle gain:</strong> True Protein WPI 90 or Optimum Nutrition Gold Standard Whey. Stack with moringa for added micronutrients and antioxidants to support recovery.</p>
+                    <div style="margin: 2rem 0;">
+                        <h3>Protein Powder for Muscle Gain</h3>
+                        <p>For muscle building, you need:</p>
+                        <ul>
+                            <li><strong>High protein content</strong> - 25-30g per serve</li>
+                            <li><strong>Complete amino acid profile</strong> - All 9 essential amino acids</li>
+                            <li><strong>Fast absorption</strong> - Whey isolate is ideal post-workout</li>
+                            <li><strong>BCAAs</strong> - Branched-chain amino acids for recovery</li>
+                        </ul>
+                        <p><strong>Best choice for muscle gain:</strong> True Protein WPI 90 or Optimum Nutrition Gold Standard Whey. Stack with moringa for added micronutrients and antioxidants to support recovery.</p>
+                    </div>
+                </div>
 
-                <h2>Final Verdict</h2>
-                <p>There's no one-size-fits-all protein powder. The best choice depends on your goals, budget, and dietary preferences. For muscle gain, whey isolates like True Protein deliver results. For weight loss, clean plant proteins like Nuzest work well. For overall health and nutrition, stacking any protein with <a href="/products/product-detail.html" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa Superleaf Powder</a> transforms a basic shake into a complete nutritional powerhouse.</p>
-                <p><strong>Remember:</strong> Don't just drink empty protein. Add 1 scoop of NutriThrive Moringa to your True Protein or Musashi shake to get 7x the Vitamin C of oranges and perfect gut health. <a href="/products/product-detail.html" style="color: #2d5a3d; font-weight: 600;">Buy Organic Moringa Powder Australia</a> today.</p>
+                <div class="final-verdict">
+                    <h2>Final Verdict</h2>
+                    <p>There's no one-size-fits-all protein powder. The best choice depends on your goals, budget, and dietary preferences. For muscle gain, whey isolates like True Protein deliver results. For weight loss, clean plant proteins like Nuzest work well. For overall health and nutrition, stacking any protein with <a href="/products/product-detail.html">NutriThrive Moringa Superleaf Powder</a> transforms a basic shake into a complete nutritional powerhouse.</p>
+                    <p><strong>Remember:</strong> Don't just drink empty protein. Add 1 scoop of NutriThrive Moringa to your True Protein or Musashi shake to get 7x the Vitamin C of oranges and perfect gut health. <a href="/products/product-detail.html">Buy Organic Moringa Powder Australia</a> today.</p>
+                </div>
 
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; border-left: 4px solid #175c36;">
-                    <p><strong>Disclaimer:</strong> The information in this article is for educational purposes only. Consult a healthcare professional before beginning any new supplement regimen.</p>
+                <div class="disclaimer-box">
+                    <p style="margin: 0;"><strong>Disclaimer:</strong> The information in this article is for educational purposes only. Consult a healthcare professional before beginning any new supplement regimen.</p>
                 </div>
             </div>
         </article>
