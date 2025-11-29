@@ -22,6 +22,19 @@
 /blog/moringa-benefits-protein-powder-australia-2025.html /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html 301
 /blog/moringa-powder-benefits-ultimate-guide-2024.html /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html 301
 
+# Duplicate Content Fixes - Moringa Brands Comparison
+# Redirect non-.html version to .html version (if accessed without extension)
+/blog/moringa-brands-comparison-australia-2025 /blog/moringa-brands-comparison-australia-2025.html 301
+
+# Duplicate Content Fixes - Protein Powder Consolidation
+# Redirect complete guide to main high-traffic page
+/blog/best-protein-powder-australia-2025-complete-guide.html /blog/best-protein-powder-australia.html 301
+
+# Duplicate Content Fixes - Grow Moringa Tree
+# Redirect any pages/blog versions to /blog/ version (already handled by general rule above, but explicit for clarity)
+/pages/blog/grow-moringa-tree-australia /blog/grow-moringa-tree-australia.html 301
+/pages/blog/grow-moringa-tree-australia.html /blog/grow-moringa-tree-australia.html 301
+
 # Products redirects
 /pages/products/* /products/:splat 301
 /pages/products /products/ 301
