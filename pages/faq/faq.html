@@ -35,6 +35,136 @@
     <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/pages/faq/faq.html">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/pages/faq/faq.html">
+    
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is NutriThrive Moringa powder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A single‑ingredient moringa leaf powder to add to smoothies, water, yoghurt or meals. Shop Moringa Powder here."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much Moringa powder should I take daily?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with 1/2 tsp per day for a week, then increase to 1 tsp (2–3g) as desired. Mix 1 tsp into smoothies, water, or yogurt. Shop Moringa Powder here."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Moringa powder taste like?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moringa powder has a mild, earthy, spinach-like flavor that blends well with smoothies, juices, and meals. It's not overpowering and works great in green smoothies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast is shipping from Melbourne to Sydney/Brisbane?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Orders dispatch within 2 business days. Typical delivery: 3–4 days to metro/suburban areas like Sydney and Brisbane; up to 10 days for rural areas. Fast shipping from our Melbourne warehouse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use dried curry leaves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use 2-3 times the amount of dried leaves compared to fresh. Fry in hot oil or ghee at the start of cooking (tadka method) to release their aroma. Perfect for curries, dals, sambars, and South Indian dishes. Shop Dried Curry Leaves here."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Any safety notes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have low blood levels or thin blood, avoid use. If you are pregnant, nursing or on medication, please seek personal advice from your healthcare provider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are NutriThrive Dried Curry Leaves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Premium dried curry leaves (karipatta) sourced from traditional Indian suppliers. Perfect for authentic Indian cooking, adding depth and flavor to curries, dals, and South Indian dishes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I store dried curry leaves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep in an airtight container away from heat and light. Stored properly, they maintain their flavor for 6+ months. Store in a cool, dry place for best results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is NutriThrive Darjeeling Black Tea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Premium Darjeeling black tea from the Himalayan region of India. Known as the \"champagne of teas,\" it offers a unique muscatel flavor with floral and fruity notes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I brew Darjeeling black tea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use 1-2 teaspoons of loose tea per cup. Heat water to 85-90°C (not boiling). Steep for 3-5 minutes for optimal flavor. Enjoy plain or with a splash of milk and honey. Shop Premium Black Tea here."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much caffeine does Darjeeling tea contain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Darjeeling black tea contains moderate caffeine - about 40-50mg per cup, providing a gentle energy boost without jitters. Perfect for morning or afternoon enjoyment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which payment methods do you accept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visa, bank transfer, cash and PayPal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I place an order by phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If you believe your order may be eligible for free post, call us and we can process it manually for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the free shipping threshold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free shipping Australia‑wide on orders of AU$30 and above."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer a money‑back guarantee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes – 7‑day money‑back guarantee. Shipping costs are not refunded."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <header>
@@ -63,6 +193,9 @@
     <main class="faq-main">
         <div class="faq-container">
             <h1 class="faq-title">Frequently Asked Questions</h1>
+            <div style="max-width: 600px; margin: 2rem auto 3rem auto;">
+                <input type="text" id="faq-search" placeholder="Search questions..." style="width: 100%; padding: 1rem 1.5rem; border: 2px solid #e2e8f0; border-radius: 50px; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.3s;">
+            </div>
             <div class="faq-content">
                 <div class="faq-item">
                     <div class="faq-question">
@@ -70,17 +203,17 @@
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>A single‑ingredient moringa leaf powder to add to smoothies, water, yoghurt or meals.</p>
+                        <p>A single‑ingredient moringa leaf powder to add to smoothies, water, yoghurt or meals. <a href="/products/product-detail.html" style="color: #1b7f5a; text-decoration: underline; font-weight: 600;">Shop Moringa Powder Here</a>.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>How much should I take daily?</h3>
+                        <h3>How much Moringa powder should I take daily?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Start with 1/2 tsp per day for a week, then increase to 1 tsp (2–3g) as desired.</p>
+                        <p>Start with 1/2 tsp per day for a week, then increase to 1 tsp (2–3g) as desired. Mix 1 tsp into smoothies, water, or yogurt. <a href="/products/product-detail.html" style="color: #1b7f5a; text-decoration: underline; font-weight: 600;">Shop Moringa Powder Here</a>.</p>
                     </div>
                 </div>
 
@@ -110,7 +243,7 @@
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Use 2-3 times the amount of dried leaves compared to fresh. Fry in hot oil or ghee at the start of cooking (tadka method) to release their aroma. Perfect for curries, dals, sambars, and South Indian dishes.</p>
+                        <p>Use 2-3 times the amount of dried leaves compared to fresh. Fry in hot oil or ghee at the start of cooking (tadka method) to release their aroma. Perfect for curries, dals, sambars, and South Indian dishes. <a href="/products/product-curry-leaves.html" style="color: #1b7f5a; text-decoration: underline; font-weight: 600;">Shop Dried Curry Leaves Here</a>.</p>
                     </div>
                 </div>
 
@@ -140,7 +273,7 @@
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Use 1-2 teaspoons of loose tea per cup. Heat water to 85-90°C (not boiling). Steep for 3-5 minutes for optimal flavor. Enjoy plain or with a splash of milk and honey.</p>
+                        <p>Use 1-2 teaspoons of loose tea per cup. Heat water to 85-90°C (not boiling). Steep for 3-5 minutes for optimal flavor. Enjoy plain or with a splash of milk and honey. <a href="/products/product-black-tea.html" style="color: #1b7f5a; text-decoration: underline; font-weight: 600;">Shop Premium Black Tea Here</a>.</p>
                     </div>
                 </div>
 
@@ -186,11 +319,11 @@
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>How fast will my order ship?</h3>
+                        <h3>How fast is shipping from Melbourne to Sydney/Brisbane?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Orders dispatch within 2 business days (no Sunday dispatch). Typical delivery: 3–4 days to metro/suburban areas; up to 10 days for rural areas.</p>
+                        <p>Orders dispatch within 2 business days (no Sunday dispatch). Typical delivery: 3–4 days to metro/suburban areas like Sydney and Brisbane; up to 10 days for rural areas. Fast shipping from our Melbourne warehouse.</p>
                     </div>
                 </div>
 
@@ -202,6 +335,26 @@
                     <div class="faq-answer">
                         <p>Yes – 7‑day money‑back guarantee. Shipping costs are not refunded.</p>
                     </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What does Moringa powder taste like?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Moringa powder has a mild, earthy, spinach-like flavor that blends well with smoothies, juices, and meals. It's not overpowering and works great in green smoothies. <a href="/products/product-detail.html" style="color: #1b7f5a; text-decoration: underline; font-weight: 600;">Shop Moringa Powder Here</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still Have Questions Section -->
+            <div style="background: #f8faf7; border-radius: 16px; padding: 3rem 2rem; margin: 4rem auto 2rem auto; max-width: 800px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <h2 style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem; font-weight: 700;">Still have questions?</h2>
+                <p style="font-size: 1.1rem; color: #64748B; margin-bottom: 2rem; line-height: 1.6;">Our team is here to help! Get in touch and we'll answer any questions you have.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/pages/contact/contact.html" style="background: var(--primary); color: #fff; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s; display: inline-block;">Contact Us</a>
+                    <a href="tel:+61438201419" style="background: #fff; color: var(--primary); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 2px solid var(--primary); transition: all 0.3s; display: inline-block;">Call +61 438201419</a>
                 </div>
             </div>
         </div>
