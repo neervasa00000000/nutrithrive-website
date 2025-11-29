@@ -325,6 +325,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // 5. FAQ Search Functionality
+    const faqSearch = document.getElementById('faq-search');
+    if (faqSearch) {
+        faqSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            faqItems.forEach(item => {
+                const questionText = item.querySelector('h3')?.textContent.toLowerCase() || '';
+                const answerText = item.querySelector('.faq-answer')?.textContent.toLowerCase() || '';
+                
+                if (searchTerm === '' || questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded
