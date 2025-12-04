@@ -49,3 +49,28 @@
 /faq /pages/faq/faq.html 301
 /contact /pages/contact/contact.html 301
 
+# Fix alternative pages without .html extension - Blog posts
+/blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
+/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2025 /blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2025.html 301
+/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide /blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html 301
+/blog/complete-guide-to-moringa-powder-australia /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/best-protein-powder-australia /blog/best-protein-powder-australia.html 301
+
+# Fix /pages/blog/ URLs (without .html) - redirect to /blog/ versions
+/pages/blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
+/pages/blog/moringa-brands-comparison-australia-2025 /blog/moringa-brands-comparison-australia-2025.html 301
+/pages/blog/moringa-benefits-australia-2025 /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html 301
+/pages/blog/moringa-benefits-protein-powder-australia-2025 /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html 301
+/pages/blog/moringa-vs-matcha-australia-2025 /blog/moringa-vs-matcha-energy-metabolism-2025.html 301
+/pages/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2025 /blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2025.html 301
+
+# Fix /pages/contact/contact (without .html)
+/pages/contact/contact /pages/contact/contact.html 301
+
+# Fix /pages/products/product-detail (without .html)
+/pages/products/product-detail /products/ 301
+
+# Fix /pages/benefits/moringa-benefits (with and without .html)
+/pages/benefits/moringa-benefits /pages/usage-guide/how-to-use-moringa.html 301
+/pages/benefits/moringa-benefits.html /pages/usage-guide/how-to-use-moringa.html 301
+
