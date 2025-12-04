@@ -214,6 +214,33 @@
             merchantReturnDays: 7,
             returnMethod: 'https://schema.org/ReturnByMail',
             returnFees: 'https://schema.org/FreeReturn'
+          },
+          shippingDetails: {
+            '@type': 'OfferShippingDetails',
+            shippingRate: {
+              '@type': 'MonetaryAmount',
+              value: '0',
+              currency: 'AUD'
+            },
+            shippingDestination: {
+              '@type': 'DefinedRegion',
+              addressCountry: 'AU'
+            },
+            deliveryTime: {
+              '@type': 'ShippingDeliveryTime',
+              handlingTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 1,
+                maxValue: 2,
+                unitCode: 'DAY'
+              },
+              transitTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 3,
+                maxValue: 10,
+                unitCode: 'DAY'
+              }
+            }
           }
         }
       }))
