@@ -190,6 +190,8 @@
           '@type':'Offer',
           priceCurrency:'AUD',
           price: String(p.price),
+          priceValidUntil: '2026-12-31',
+          availability: 'https://schema.org/InStock',
           url: p.url
         }
       }))
