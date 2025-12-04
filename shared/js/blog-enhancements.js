@@ -176,15 +176,16 @@
     const scripts = [];
     // Product entities for key items (used for knowledge/association, not altering page copy)
     const products = [
-      { name: 'NutriThrive Moringa Powder', price: PRICES.moringa.price, unit: PRICES.moringa.unit, url: PRICES.moringa.url },
-      { name: 'NutriThrive Dried Curry Leaves', price: PRICES.curry.price, unit: PRICES.curry.unit, url: PRICES.curry.url },
-      { name: 'NutriThrive Darjeeling Black Tea', price: PRICES.tea.price, unit: PRICES.tea.unit, url: PRICES.tea.url }
+      { name: 'NutriThrive Moringa Powder', price: PRICES.moringa.price, unit: PRICES.moringa.unit, url: PRICES.moringa.url, image: 'https://i.imgur.com/56hwJfZ.png' },
+      { name: 'NutriThrive Dried Curry Leaves', price: PRICES.curry.price, unit: PRICES.curry.unit, url: PRICES.curry.url, image: 'https://nutrithrive.com.au/shared/images/Dried_curry_leaves/Curry1.png' },
+      { name: 'NutriThrive Darjeeling Black Tea', price: PRICES.tea.price, unit: PRICES.tea.unit, url: PRICES.tea.url, image: 'https://i.imgur.com/vn0DO4Q.jpg' }
     ];
     const prodLD = {
       '@context':'https://schema.org',
       '@graph': products.map(p => ({
         '@type':'Product',
         name: p.name,
+        image: p.image,
         brand: { '@type': 'Brand', name: 'NutriThrive' },
         aggregateRating: {
           '@type': 'AggregateRating',
