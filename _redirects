@@ -44,3 +44,8 @@
 /pages/homepage/* /:splat 301
 /pages/homepage / 301
 
+# Clean URL redirects for main pages
+/about /pages/about/about.html 301
+/faq /pages/faq/faq.html 301
+/contact /pages/contact/contact.html 301
+
