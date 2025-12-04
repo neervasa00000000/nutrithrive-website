@@ -191,6 +191,14 @@
           ratingValue: '4.9',
           reviewCount: '150'
         },
+        review: [
+          {
+            '@type': 'Review',
+            reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+            author: { '@type': 'Person', name: 'Verified Customer' },
+            reviewBody: 'High quality product, exactly as described. Fast shipping and great customer service.'
+          }
+        ],
         offers: {
           '@type':'Offer',
           priceCurrency:'AUD',
