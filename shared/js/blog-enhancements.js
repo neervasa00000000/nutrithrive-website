@@ -206,7 +206,15 @@
           price: String(p.price),
           priceValidUntil: '2026-12-31',
           availability: 'https://schema.org/InStock',
-          url: p.url
+          url: p.url,
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy',
+            applicableCountry: 'AU',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            merchantReturnDays: 7,
+            returnMethod: 'https://schema.org/ReturnByMail',
+            returnFees: 'https://schema.org/FreeReturn'
+          }
         }
       }))
     };
