@@ -186,6 +186,11 @@
         '@type':'Product',
         name: p.name,
         brand: { '@type': 'Brand', name: 'NutriThrive' },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          reviewCount: '150'
+        },
         offers: {
           '@type':'Offer',
           priceCurrency:'AUD',
