@@ -31,6 +31,30 @@
 # Redirect complete guide to main high-traffic page
 /blog/best-protein-powder-australia-2025-complete-guide.html /blog/best-protein-powder-australia.html 301
 
+# Fix URLs without .html extension - Blog Posts
+/blog/grow-moringa-tree-australia /blog/grow-moringa-tree-australia.html 301
+/blog/best-superfoods-immunity-australia-2025 /blog/best-superfoods-immunity-australia-2025.html 301
+/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2025 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2025.html 301
+/blog/protein-powder-bloating-fix-moringa /blog/protein-powder-bloating-fix-moringa.html 301
+/blog/dried-curry-leaf-hair-oil-recipe /blog/dried-curry-leaf-hair-oil-recipe.html 301
+/blog/calcium-supplements-complete-guide-australia-2025 /blog/calcium-supplements-complete-guide-australia-2025.html 301
+/blog/complete-guide-to-moringa-powder-australia /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html 301
+/blog/affordable-food-budget-eating-family-australia-complete-guide-2025 /blog/affordable-food-budget-eating-family-australia-complete-guide-2025.html 301
+/blog/fresh-vs-dried-curry-leaves-substitute-guide /blog/fresh-vs-dried-curry-leaves-substitute-guide.html 301
+/blog/best-protein-powder-australia /blog/best-protein-powder-australia.html 301
+/blog/darjeeling-black-tea-melbourne-muscatel-marvel /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html 301
+/blog/iron-deficiency-complete-guide-australia-2025 /blog/iron-deficiency-complete-guide-australia-2025.html 301
+/blog/high-protein-snacks-australia-25-options-under-150-calories-2025 /blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html 301
+/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide /blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html 301
+/blog/moringa-chemist-warehouse-freshness-truth /blog/moringa-chemist-warehouse-freshness-truth.html 301
+/blog/dried-curry-leaves-cooking-tips-melbourne /blog/dried-curry-leaves-cooking-tips-melbourne.html 301
+
+# Fix URLs without .html extension - Product Pages
+/products/product-black-tea /products/product-black-tea.html 301
+/products/product-detail /products/product-detail.html 301
+/products/product-curry-leaves /products/product-curry-leaves.html 301
+
 # Duplicate Content Fixes - Grow Moringa Tree
 # Redirect any pages/blog versions to /blog/ version (already handled by general rule above, but explicit for clarity)
 /pages/blog/grow-moringa-tree-australia /blog/grow-moringa-tree-australia.html 301
