@@ -71,21 +71,8 @@
         .blog-post-content img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 12px;
             margin: 2rem 0;
-        }
-        
-        .hero-image-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .hero-image-container {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -134,13 +121,12 @@
     </div>
 
     <div class="blog-post-content">
-      <!-- Hero Images -->
-      <div class="hero-image-container">
-        <img src="/shared/images/random/m.png" alt="Active senior person enjoying life with moringa" style="width: 100%; height: auto; border-radius: 8px;">
-        <img src="/shared/images/random/vic.png" alt="Map of Victoria showing delivery areas" style="width: 100%; height: auto; border-radius: 8px;">
-      </div>
-
       <p class="intro-text">Living in Victoria has its perks, but the chill in the air—especially during those long Melbourne winters—can be tough on the joints.</p>
+
+      <!-- Hero Image - Active Senior -->
+      <div style="margin: 3rem 0; text-align: center;">
+        <img src="/shared/images/random/m.png" alt="Active senior person enjoying life with moringa" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+      </div>
 
       <p>If you are over 50 and finding it harder to get out of bed without stiffness, or if you just don't have the energy to keep up with the grandkids like you used to, you aren't alone.</p>
 
@@ -175,6 +161,11 @@
       <p>By the time you buy them, they are often brown, stale, and have lost their potency. Read our <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html" style="color:#2d5a3d;font-weight:600;">comparison of Chemist Warehouse vs NutriThrive</a> to see the difference.</p>
 
       <h2>The Local Advantage (Truganina, VIC)</h2>
+
+      <!-- Victoria Map Image -->
+      <div style="margin: 2rem 0; text-align: center;">
+        <img src="/shared/images/random/vic.png" alt="Map of Victoria showing delivery areas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+      </div>
 
       <p>At NutriThrive, we are based locally in Truganina. We understand the Victorian standard for quality.</p>
 
