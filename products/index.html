@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) - Deferred to prevent blocking render -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
-  // Defer Google Analytics to prevent blocking initial render and forced reflows
-  window.addEventListener('load', function() {
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-    script.crossOrigin = 'anonymous';
-    document.head.appendChild(script);
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WH21SW75WP');
-  });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP');
 </script>
 
     <meta charset="UTF-8">
@@ -30,7 +22,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../shared/css/style.min.css">
+    <link rel="stylesheet" href="../shared/css/style.css">
     <style>
       .hero-title {
         font-family: 'Inter', Arial, sans-serif;
@@ -144,7 +136,7 @@
                 <div class="product-card" style="background: #fff; border-radius: 16px; padding: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;">
                     <a href="product-curry-leaves.html" class="product-link" style="text-decoration: none; color: inherit; flex: 1; display: flex; flex-direction: column;">
                         <div style="background: #1E4A35; padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 280px;">
-                            <img src="https://i.imgur.com/pGYqg0z.png" alt="NutriThrive Premium Dried Curry Leaves - Aromatic Flavor Enhancement" class="product-image" width="680" height="680" loading="lazy" decoding="async" style="display: block; max-width: 100%; height: auto; object-fit: contain;">
+                            <img src="https://i.imgur.com/pGYqg0z.png" alt="NutriThrive Premium Dried Curry Leaves - Aromatic Flavor Enhancement" class="product-image" width="680" height="680" loading="eager" style="display: block; max-width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                             <h2 class="product-title" style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 700; color: #1E4A35; text-align: center;">Dried Curry Leaves</h2>
@@ -161,7 +153,7 @@
                 <div class="product-card" style="background: #fff; border-radius: 16px; padding: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;">
                     <a href="product-black-tea.html" class="product-link" style="text-decoration: none; color: inherit; flex: 1; display: flex; flex-direction: column;">
                         <div style="background: #1E4A35; padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 280px;">
-                            <img src="https://i.imgur.com/EMjb66w.png" alt="NutriThrive Premium Black Tea - Focus & Clarity Boost" class="product-image" width="680" height="680" loading="lazy" decoding="async" style="display: block; max-width: 100%; height: auto; object-fit: contain;">
+                            <img src="https://i.imgur.com/EMjb66w.png" alt="NutriThrive Premium Black Tea - Focus & Clarity Boost" class="product-image" width="680" height="680" loading="eager" decoding="async" style="display: block; max-width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
                             <h2 class="product-title" style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 700; color: #1E4A35; text-align: center;">Black Tea</h2>
