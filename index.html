@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP" crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) - Deferred to prevent blocking render -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP', {
-    'anonymize_ip': true,
-    'allow_google_signals': false
+  // Defer Google Analytics to prevent blocking initial render
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP', {
+      'anonymize_ip': true,
+      'allow_google_signals': false
+    });
   });
 </script>
 
@@ -57,11 +65,17 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://i.imgur.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
+    <!-- Critical CSS - Load immediately -->
     <link rel="stylesheet" href="shared/css/style.css">
+    <!-- Non-critical CSS - Defer loading -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="pages/homepage/homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="pages/homepage/homepage.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="pages/homepage/homepage.css">
+    </noscript>
     <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/bZubhoR.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/bZubhoR.png">
@@ -176,7 +190,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="shared/images/random/GC.webp" alt="A bag of NutriThrive Moringa Powder next to a vibrant green smoothie, showcasing its health benefits." width="600" height="600" loading="eager" decoding="async" fetchpriority="high" style="width: 100%; height: auto; object-fit: cover;">
+                <img src="shared/images/random/GC.webp" alt="A bag of NutriThrive Moringa Powder next to a vibrant green smoothie, showcasing its health benefits." width="600" height="600" loading="eager" decoding="async" fetchpriority="high" style="width: 100%; max-width: 600px; height: auto; aspect-ratio: 1/1; object-fit: cover;">
             </div>
         </section>
 
@@ -201,7 +215,7 @@
                 <div id="blogCarousel" style="display: flex; gap: 2rem; transition: transform 0.6s ease-in-out; will-change: transform;">
                     <article style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; flex: 0 0 calc(33.333% - 1.34rem); min-width: 0;">
                         <div style="position: relative;">
-                            <img src="https://i.imgur.com/B92giK7.jpg" alt="Moringa Brands Comparison" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
+                            <img src="https://i.imgur.com/B92giK7.jpg" alt="Moringa Brands Comparison" width="400" height="200" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
                             <span style="position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: #fff; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Winner</span>
                         </div>
                         <div style="padding: 1.5rem;">
@@ -210,7 +224,7 @@
                     </article>
                     <article style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; flex: 0 0 calc(33.333% - 1.34rem); min-width: 0;">
                         <div>
-                            <img src="https://i.imgur.com/EMjb66w.png" alt="Black Tea Health Benefits" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
+                            <img src="https://i.imgur.com/EMjb66w.png" alt="Black Tea Health Benefits" width="400" height="200" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
                         </div>
                         <div style="padding: 1.5rem;">
                             <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--primary);"><a href="/blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2025.html" style="color: inherit; text-decoration: none;">Black Tea Health Benefits Guide</a></h3>
@@ -218,7 +232,7 @@
                     </article>
                     <article style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; flex: 0 0 calc(33.333% - 1.34rem); min-width: 0;">
                         <div>
-                            <img src="https://i.imgur.com/PgvCFY0.png" alt="How to Grow Moringa" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
+                            <img src="https://i.imgur.com/PgvCFY0.png" alt="How to Grow Moringa" width="400" height="200" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
                         </div>
                         <div style="padding: 1.5rem;">
                             <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--primary);"><a href="/blog/grow-moringa-tree-australia.html" style="color: inherit; text-decoration: none;">How to Grow Moringa in Australia</a></h3>
@@ -226,7 +240,7 @@
                     </article>
                     <article style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; flex: 0 0 calc(33.333% - 1.34rem); min-width: 0;">
                         <div>
-                            <img src="https://i.imgur.com/B92giK7.jpg" alt="How to Add Moringa to Your Diet" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
+                            <img src="https://i.imgur.com/B92giK7.jpg" alt="How to Add Moringa to Your Diet" width="400" height="200" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
                         </div>
                         <div style="padding: 1.5rem;">
                             <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--primary);"><a href="/blog/how-to-add-moringa-to-diet.html" style="color: inherit; text-decoration: none;">How to Add Moringa to Your Diet</a></h3>
@@ -234,7 +248,7 @@
                     </article>
                     <article style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; flex: 0 0 calc(33.333% - 1.34rem); min-width: 0;">
                         <div>
-                            <img src="https://i.imgur.com/B92giK7.jpg" alt="Best Protein Powder Australia" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
+                            <img src="https://i.imgur.com/B92giK7.jpg" alt="Best Protein Powder Australia" width="400" height="200" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
                 </div>
                         <div style="padding: 1.5rem;">
                             <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--primary);"><a href="/blog/best-protein-powder-australia.html" style="color: inherit; text-decoration: none;">Best Protein Powder Australia 2025</a></h3>
@@ -242,7 +256,7 @@
                     </article>
                     <article style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; flex: 0 0 calc(33.333% - 1.34rem); min-width: 0;">
                         <div>
-                            <img src="https://i.imgur.com/B92giK7.jpg" alt="Where to Buy Dried Curry Leaves Melbourne" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
+                            <img src="https://i.imgur.com/B92giK7.jpg" alt="Where to Buy Dried Curry Leaves Melbourne" width="400" height="200" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;" decoding="async">
                 </div>
                         <div style="padding: 1.5rem;">
                             <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--primary);"><a href="/blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html" style="color: inherit; text-decoration: none;">Where to Buy Dried Curry Leaves Melbourne</a></h3>
@@ -456,8 +470,23 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <!-- Defer non-critical JavaScript until after page load -->
+    <script>
+      // Load GSAP and ScrollTrigger after page is interactive
+      window.addEventListener('load', function() {
+        var gsapScript = document.createElement('script');
+        gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+        gsapScript.defer = true;
+        document.head.appendChild(gsapScript);
+        
+        gsapScript.onload = function() {
+          var scrollTriggerScript = document.createElement('script');
+          scrollTriggerScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
+          scrollTriggerScript.defer = true;
+          document.head.appendChild(scrollTriggerScript);
+        };
+      });
+    </script>
     <script src="shared/js/script.js" defer></script>
     <script src="pages/homepage/homepage.js" defer></script>
 </body>
