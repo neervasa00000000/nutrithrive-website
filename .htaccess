@@ -70,12 +70,5 @@ RedirectMatch 301 ^/about\.html$ /pages/about/about.html
 RedirectMatch 301 ^/blog\.html$ /blog/
 RedirectMatch 301 ^/thank-you\.html$ /pages/contact/thank-you.html
 RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html
-
-# Fix root-level URLs that Google is trying to access (404 errors)
-RedirectMatch 301 ^/product-detail\.html$ /products/product-detail.html
-RedirectMatch 301 ^/product-black-tea\.html$ /products/product-black-tea.html
-RedirectMatch 301 ^/product-curry-leaves\.html$ /products/product-curry-leaves.html
-RedirectMatch 301 ^/about\.html$ /pages/about/about.html
-RedirectMatch 301 ^/blog\.html$ /blog/
-RedirectMatch 301 ^/thank-you\.html$ /pages/contact/thank-you.html
-RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html
+RedirectMatch 301 ^/contact\.html$ /pages/contact/contact.html
+RedirectMatch 301 ^/moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html
