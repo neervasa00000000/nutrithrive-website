@@ -48,6 +48,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^contact\.html$ /pages/contact/contact.html [R=301,L]
     RewriteRule ^moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
+    RewriteRule ^products\.html$ /products/ [R=301,L]
 </IfModule>
 
 # Fallback Apache redirects (if mod_rewrite is not available)
@@ -72,3 +73,4 @@ RedirectMatch 301 ^/thank-you\.html$ /pages/contact/thank-you.html
 RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html
 RedirectMatch 301 ^/contact\.html$ /pages/contact/contact.html
 RedirectMatch 301 ^/moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html
+RedirectMatch 301 ^/products\.html$ /products/
