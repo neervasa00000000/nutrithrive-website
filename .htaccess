@@ -37,6 +37,15 @@ DirectoryIndex index.html index.htm
     # Homepage redirect
     RewriteRule ^pages/homepage/(.*)$ /$1 [R=301,L]
     RewriteRule ^pages/homepage/?$ / [R=301,L]
+    
+    # Fix root-level URLs that Google is trying to access (404 errors)
+    RewriteRule ^product-detail\.html$ /products/product-detail.html [R=301,L]
+    RewriteRule ^product-black-tea\.html$ /products/product-black-tea.html [R=301,L]
+    RewriteRule ^product-curry-leaves\.html$ /products/product-curry-leaves.html [R=301,L]
+    RewriteRule ^about\.html$ /pages/about/about.html [R=301,L]
+    RewriteRule ^blog\.html$ /blog/ [R=301,L]
+    RewriteRule ^thank-you\.html$ /pages/contact/thank-you.html [R=301,L]
+    RewriteRule ^how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
 </IfModule>
 
 # Fallback Apache redirects (if mod_rewrite is not available)
@@ -50,6 +59,15 @@ RedirectMatch 301 ^/pages/products/(.*)$ /products/$1
 
 # Homepage redirect
 RedirectMatch 301 ^/pages/homepage/(.*)$ /$1
+
+# Fix root-level URLs that Google is trying to access (404 errors)
+RedirectMatch 301 ^/product-detail\.html$ /products/product-detail.html
+RedirectMatch 301 ^/product-black-tea\.html$ /products/product-black-tea.html
+RedirectMatch 301 ^/product-curry-leaves\.html$ /products/product-curry-leaves.html
+RedirectMatch 301 ^/about\.html$ /pages/about/about.html
+RedirectMatch 301 ^/blog\.html$ /blog/
+RedirectMatch 301 ^/thank-you\.html$ /pages/contact/thank-you.html
+RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html
 
 # Fix root-level URLs that Google is trying to access (404 errors)
 RedirectMatch 301 ^/product-detail\.html$ /products/product-detail.html
