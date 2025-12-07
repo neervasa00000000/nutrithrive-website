@@ -83,6 +83,15 @@
 # Fix /pages/blog/ URLs (without .html) - redirect to /blog/ versions
 /pages/blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
 /pages/blog/moringa-brands-comparison-australia-2025 /blog/moringa-brands-comparison-australia-2025.html 301
+
+# Fix root-level URLs that Google is trying to access (404 errors)
+/product-detail.html /products/product-detail.html 301
+/product-black-tea.html /products/product-black-tea.html 301
+/product-curry-leaves.html /products/product-curry-leaves.html 301
+/about.html /pages/about/about.html 301
+/blog.html /blog/ 301
+/thank-you.html /pages/contact/thank-you.html 301
+/how-to-use-moringa.html /pages/usage-guide/how-to-use-moringa.html 301
 /pages/blog/moringa-benefits-australia-2025 /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html 301
 /pages/blog/moringa-benefits-protein-powder-australia-2025 /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html 301
 /pages/blog/moringa-vs-matcha-australia-2025 /blog/moringa-vs-matcha-energy-metabolism-2025.html 301
