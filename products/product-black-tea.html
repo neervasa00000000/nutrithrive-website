@@ -46,6 +46,74 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../shared/css/style.css">
     <link rel="stylesheet" href="../pages/products/product-black-tea.css">
+    <style>
+      /* Mobile navigation - match homepage exactly */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(10px);
+          z-index: 2000;
+          display: none;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+          padding: 4rem 2rem 2rem;
+          margin: 0;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          gap: 0.3rem;
+        }
+        
+        .nav-links.nav-active {
+          display: flex !important;
+          transform: translateX(0);
+        }
+        
+        .nav-links a {
+          font-size: 1.3rem !important;
+          margin: 0.2rem 0 !important;
+          padding: 0.8rem 1.2rem !important;
+          border-radius: 8px !important;
+          transition: background-color 0.2s ease !important;
+          text-align: center !important;
+          width: 100% !important;
+          max-width: 260px !important;
+          display: flex !important;
+          text-decoration: none !important;
+          color: var(--primary) !important;
+          font-weight: 600 !important;
+          min-height: 48px !important;
+          align-items: center !important;
+          justify-content: center !important;
+          background: transparent !important;
+          border: none !important;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+          background-color: rgba(23, 92, 54, 0.1) !important;
+          color: var(--accent) !important;
+        }
+        
+        .hamburger {
+          min-width: 48px !important;
+          min-height: 48px !important;
+          padding: 12px !important;
+          -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+          touch-action: manipulation !important;
+          cursor: pointer !important;
+        }
+      }
+    </style>
     <link rel="icon" type="image/png" href="https://i.imgur.com/bZubhoR.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/bZubhoR.png">
     <link rel="shortcut icon" href="https://i.imgur.com/bZubhoR.png">
