@@ -419,16 +419,24 @@
             console.log('Toggling menu, currently open:', isOpen);
             
             if (isOpen) {
-              navLinks.classList.remove('nav-active');
-              hamburger.classList.remove('toggle');
-              document.body.classList.remove('no-scroll');
-              navLinks.style.display = '';
+              closeMenu();
             } else {
-              navLinks.classList.add('nav-active');
-              hamburger.classList.add('toggle');
-              document.body.classList.add('no-scroll');
-              navLinks.style.display = 'flex';
+              openMenu();
             }
+          }
+          
+          function openMenu() {
+            navLinks.classList.add('nav-active');
+            hamburger.classList.add('toggle');
+            document.body.classList.add('no-scroll');
+            navLinks.style.display = 'flex';
+          }
+          
+          function closeMenu() {
+            navLinks.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+            document.body.classList.remove('no-scroll');
+            navLinks.style.display = '';
           }
           
           // Expose globally
@@ -438,33 +446,73 @@
           const newHamburger = hamburger.cloneNode(true);
           hamburger.parentNode.replaceChild(newHamburger, hamburger);
           
-          // Add event handlers
-          newHamburger.addEventListener('click', function(e) {
+          // Get fresh references after cloning
+          const currentHamburger = document.querySelector('.hamburger');
+          const currentNavLinks = document.querySelector('.nav-links');
+          
+          // Add event handlers to hamburger
+          currentHamburger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             console.log('Click event triggered');
             toggleMenu();
           }, true);
           
-          newHamburger.addEventListener('touchend', function(e) {
+          currentHamburger.addEventListener('touchend', function(e) {
             e.preventDefault();
             e.stopPropagation();
             console.log('Touch event triggered');
             toggleMenu();
           }, { passive: false, capture: true });
           
-          newHamburger.addEventListener('touchstart', function(e) {
+          currentHamburger.addEventListener('touchstart', function(e) {
             e.stopPropagation();
           }, { passive: true });
           
           // Also handle onclick directly
-          newHamburger.onclick = function(e) {
+          currentHamburger.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
             console.log('Onclick handler triggered');
             toggleMenu();
             return false;
           };
+          
+          // Close menu when clicking on nav links
+          currentNavLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+              console.log('Nav link clicked, closing menu');
+              closeMenu();
+            }
+          });
+          
+          // Close menu when clicking outside
+          document.addEventListener('click', function(e) {
+            if (currentNavLinks.classList.contains('nav-active') && 
+                !currentNavLinks.contains(e.target) && 
+                !currentHamburger.contains(e.target)) {
+              console.log('Clicked outside, closing menu');
+              closeMenu();
+            }
+          });
+          
+          // Close menu on escape key
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && currentNavLinks.classList.contains('nav-active')) {
+              console.log('Escape key pressed, closing menu');
+              closeMenu();
+            }
+          });
+          
+          // Close menu on touch outside (for mobile)
+          document.addEventListener('touchend', function(e) {
+            if (currentNavLinks.classList.contains('nav-active') && 
+                !currentNavLinks.contains(e.target) && 
+                !currentHamburger.contains(e.target)) {
+              console.log('Touched outside, closing menu');
+              closeMenu();
+            }
+          }, { passive: true });
         }
         
         // Try immediately and also on DOMContentLoaded
