@@ -388,7 +388,7 @@
     </footer>
 
     <script>
-        // Accordion functionality - works on all product pages
+        // Accordion functionality - works on all product pages with smooth animation
         function toggleAccordion(sectionId) {
             const content = document.getElementById(sectionId);
             if (!content) {
@@ -400,22 +400,48 @@
             const icon = header ? header.querySelector('.accordion-icon') : null;
             const section = content.parentElement;
             
-            // Check if currently open (check both style.display and class)
-            const isOpen = content.style.display === 'block' || 
-                          section.classList.contains('active') ||
-                          content.classList.contains('active');
+            // Check if currently open
+            const isOpen = section.classList.contains('active') || 
+                          content.classList.contains('active') ||
+                          content.style.display === 'block' ||
+                          getComputedStyle(content).display !== 'none';
             
             if (isOpen) {
-                // Close
-                content.style.display = 'none';
-                content.style.maxHeight = null;
+                // Close - smooth animation
+                content.style.maxHeight = '0px';
+                content.style.overflow = 'hidden';
+                content.style.transition = 'max-height 0.3s ease-out, padding 0.3s ease-out';
+                
+                setTimeout(() => {
+                    content.style.display = 'none';
+                    content.style.maxHeight = null;
+                    content.style.overflow = null;
+                    content.style.transition = null;
+                }, 300);
+                
                 if (icon) icon.textContent = '+';
                 section.classList.remove('active');
                 content.classList.remove('active');
             } else {
-                // Open
+                // Open - smooth animation
                 content.style.display = 'block';
-                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.maxHeight = '0px';
+                content.style.overflow = 'hidden';
+                content.style.transition = 'max-height 0.3s ease-out, padding 0.3s ease-out';
+                
+                // Force reflow to ensure transition works
+                content.offsetHeight;
+                
+                // Set to full height
+                const fullHeight = content.scrollHeight + 'px';
+                content.style.maxHeight = fullHeight;
+                
+                setTimeout(() => {
+                    content.style.maxHeight = 'none';
+                    content.style.overflow = null;
+                    content.style.transition = null;
+                }, 300);
+                
                 if (icon) icon.textContent = '−';
                 section.classList.add('active');
                 content.classList.add('active');
