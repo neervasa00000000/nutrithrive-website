@@ -6,25 +6,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (hamburger && navLinks) {
-        // Toggle menu function
+        // Toggle menu function (force display on open for mobile)
         function toggleMenu() {
+            const willOpen = !navLinks.classList.contains('nav-active');
             navLinks.classList.toggle('nav-active');
             hamburger.classList.toggle('toggle');
             document.body.classList.toggle('no-scroll');
+            if (willOpen) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = '';
+            }
         }
+
+        // Expose for inline fallback if needed
+        window.ntToggleMenu = toggleMenu;
 
         // Close menu function
         function closeMenu() {
             navLinks.classList.remove('nav-active');
             hamburger.classList.remove('toggle');
             document.body.classList.remove('no-scroll');
+            navLinks.style.display = '';
         }
 
-        // Hamburger click - toggle menu and show close functionality
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
+        // Hamburger click/touch handler - multiple event listeners for better compatibility
+        const handleTap = (e) => { 
+            e.preventDefault();
+            e.stopPropagation(); 
+            console.log('Hamburger clicked/touched!');
+            toggleMenu(); 
+        };
+        
+        // Multiple event listeners for better compatibility
+        hamburger.addEventListener('click', handleTap);
+        hamburger.addEventListener('touchend', handleTap, { passive: false });
+        hamburger.addEventListener('mousedown', handleTap);
+        
+        // Fallback inline handler assignment
+        hamburger.onclick = (e) => { 
+            e.preventDefault();
+            e.stopPropagation(); 
+            console.log('Hamburger onclick triggered!');
+            toggleMenu(); 
+        };
 
         // Make hamburger lines clickable to close menu when open
         const hamburgerLines = hamburger.querySelectorAll('div');
