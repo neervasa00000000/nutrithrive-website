@@ -206,10 +206,13 @@
             a[style*="padding: 16px 32px"],
             a[style*="padding: 10px 20px"],
             a[style*="padding: 8px 16px"],
-            a[style*="padding: 14px"] {
-                padding: 14px 24px !important;
+            a[style*="padding: 14px"],
+            a[style*="background: white"],
+            a[style*="background: rgba(255,255,255"] {
+                padding: 16px 24px !important;
                 font-size: 1rem !important;
-                min-height: 44px !important;
+                min-height: 48px !important;
+                min-width: 48px !important;
                 width: 100% !important;
                 text-align: center !important;
                 display: block !important;
@@ -217,12 +220,49 @@
                 border-radius: 8px !important;
                 font-weight: 600 !important;
                 text-decoration: none !important;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+                touch-action: manipulation !important;
+                cursor: pointer !important;
+                box-sizing: border-box !important;
             }
             
-            /* Button containers mobile */
-            div[style*="display: flex"]:has(a[style*="padding"]) {
+            /* Button containers mobile - stack vertically */
+            div[style*="display: flex"]:has(a[style*="padding"]),
+            div[style*="display: flex"]:has(a[style*="background: white"]),
+            div[style*="display: flex"]:has(a[style*="background: rgba"]),
+            div[style*="display: flex; gap: 15px"] {
                 flex-direction: column !important;
                 gap: 0.75rem !important;
+                width: 100% !important;
+            }
+            
+            /* Force all buttons in flex containers to be full width on mobile */
+            div[style*="display: flex"] a[style*="padding"],
+            div[style*="display: flex"] a[style*="background"] {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0.5rem 0 !important;
+            }
+            
+            /* Ensure all links are tappable */
+            .blog-content a,
+            .blog-post-content a,
+            article a {
+                min-height: 44px !important;
+                display: inline-block !important;
+                padding: 4px 8px !important;
+                -webkit-tap-highlight-color: rgba(45, 90, 61, 0.2) !important;
+                touch-action: manipulation !important;
+            }
+            
+            /* Hamburger menu touch target */
+            .hamburger {
+                min-width: 48px !important;
+                min-height: 48px !important;
+                padding: 12px !important;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+                touch-action: manipulation !important;
+                cursor: pointer !important;
             }
             
             /* Tables Mobile - Convert to cards */
@@ -638,7 +678,7 @@
 <div style="background-color: #f0fdf4; border: 2px solid #16a34a; padding: 20px; border-radius: 10px; margin: 25px 0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
     <h3 style="margin-top: 0; color: #166534; font-size: 1.2rem;">🌿 Don't just read about it—feel the difference.</h3>
     <p style="margin-bottom: 15px; color: #15803d;">Get 100% Organic Moringa & Curry Leaves delivered to your door.</p>
-    <a href="/products/" style="background-color: #16a34a; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; display: inline-block; transition: background 0.3s;">Shop Best Sellers &rarr;</a>
+    <a href="/products/" style="background-color: #16a34a; color: white; padding: 16px 32px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; display: inline-block; transition: background 0.3s; min-height: 48px; min-width: 48px; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation;">Shop Best Sellers &rarr;</a>
 </div>
 
 
@@ -783,10 +823,10 @@
         <h2 style="color: white; margin-bottom: 1rem;">🌿 Start Your Moringa Weight Loss Journey</h2>
         <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Join thousands of Australians who are achieving their weight loss goals naturally with <strong>best moringa powder Australia</strong>. When comparing <strong>moringa vs spirulina Australia</strong> for weight loss, Moringa offers complete nutrition. Our <strong>lab-tested moringa powder buy</strong> ensures quality. Discover more in our <a href="/blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2025.html" style="color: white; text-decoration: underline;">ultimate weight loss guide</a> and <a href="/blog/ultimate-weight-loss-products-guide-australia-2025-pills-powders-shakes-snacks-faqs.html" style="color: white; text-decoration: underline;">weight loss products comparison</a>.</p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 25px;">
-          <a href="../products/product-detail.html" style="background: white; color: #2d5a3d; padding: 15px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 1rem;">Shop Moringa Powder →</a>
-          <a href="../products/product-curry-leaves.html" style="background: rgba(255,255,255,0.15); color: white; padding: 15px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem;">Shop Curry Leaves</a>
-          <a href="../products/product-black-tea.html" style="background: rgba(255,255,255,0.15); color: white; padding: 15px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem;">Shop Black Tea</a>
-          <a href="/products/" style="background: rgba(255,255,255,0.15); color: white; padding: 15px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem;">View All Products</a>
+          <a href="../products/product-detail.html" style="background: white; color: #2d5a3d; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 1rem; min-height: 48px; min-width: 48px; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation; box-sizing: border-box;">Shop Moringa Powder →</a>
+          <a href="../products/product-curry-leaves.html" style="background: rgba(255,255,255,0.15); color: white; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem; min-height: 48px; min-width: 48px; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation; box-sizing: border-box;">Shop Curry Leaves</a>
+          <a href="../products/product-black-tea.html" style="background: rgba(255,255,255,0.15); color: white; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem; min-height: 48px; min-width: 48px; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation; box-sizing: border-box;">Shop Black Tea</a>
+          <a href="/products/" style="background: rgba(255,255,255,0.15); color: white; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); font-size: 1rem; min-height: 48px; min-width: 48px; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation; box-sizing: border-box;">View All Products</a>
         </div>
         <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">Perfect for <strong>gluten-free superfoods Australia</strong> weight loss plans. Compare with <a href="https://www.iherb.com" target="_blank" rel="noopener" style="color:white;text-decoration:underline;">iHerb</a>, <a href="https://www.bulknutrients.com.au" target="_blank" rel="noopener" style="color:white;text-decoration:underline;">Bulk Nutrients</a>, or <a href="https://swisse.com.au" target="_blank" rel="noopener" style="color:white;text-decoration:underline;">Swisse</a> - we offer best value! Free shipping nationwide! Boost results with <a href="../products/product-detail.html" style="color:white;text-decoration:underline;">moringa</a> + <a href="../products/product-curry-leaves.html" style="color:white;text-decoration:underline;">curry leaves</a> + <a href="../products/product-black-tea.html" style="color:white;text-decoration:underline;">black tea</a>! Learn about <a href="/blog/how-to-add-moringa-to-diet.html" style="color:white;text-decoration:underline;">how to add moringa to your diet</a> and <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color:white;text-decoration:underline;">complete moringa guide</a>.</p>
       </div>
