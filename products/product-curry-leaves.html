@@ -335,18 +335,39 @@
         // Accordion functionality
         function toggleAccordion(sectionId) {
             const content = document.getElementById(sectionId);
-            const icon = content.previousElementSibling.querySelector('.accordion-icon');
+            if (!content) {
+                console.error('Accordion content not found:', sectionId);
+                return;
+            }
             
-            if (content.style.display === 'block') {
+            const header = content.previousElementSibling;
+            const icon = header ? header.querySelector('.accordion-icon') : null;
+            const section = content.parentElement;
+            
+            // Check if currently open (check both style.display and class)
+            const isOpen = content.style.display === 'block' || 
+                          section.classList.contains('active') ||
+                          content.classList.contains('active');
+            
+            if (isOpen) {
+                // Close
                 content.style.display = 'none';
-                icon.textContent = '+';
-                content.parentElement.classList.remove('active');
+                content.style.maxHeight = null;
+                if (icon) icon.textContent = '+';
+                section.classList.remove('active');
+                content.classList.remove('active');
             } else {
+                // Open
                 content.style.display = 'block';
-                icon.textContent = '−';
-                content.parentElement.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                if (icon) icon.textContent = '−';
+                section.classList.add('active');
+                content.classList.add('active');
             }
         }
+        
+        // Make sure function is available globally
+        window.toggleAccordion = toggleAccordion;
     </script>
 </body>
 </html>
