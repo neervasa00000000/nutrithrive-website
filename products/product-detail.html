@@ -389,5 +389,57 @@
     </script>
     <script src="../shared/js/script.js"></script>
     <script src="../pages/products/product-detail.js"></script>
+    <!-- Ensure hamburger menu works - simple inline fallback -->
+    <script>
+      // Simple fallback to ensure hamburger works
+      (function() {
+        function setupHamburger() {
+          const hamburger = document.querySelector('.hamburger');
+          const navLinks = document.querySelector('.nav-links');
+          
+          if (!hamburger || !navLinks) {
+            setTimeout(setupHamburger, 100);
+            return;
+          }
+          
+          // Ensure toggle function exists
+          if (!window.ntToggleMenu) {
+            window.ntToggleMenu = function() {
+              const isOpen = navLinks.classList.contains('nav-active');
+              if (isOpen) {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+                document.body.classList.remove('no-scroll');
+                navLinks.style.display = '';
+              } else {
+                navLinks.classList.add('nav-active');
+                hamburger.classList.add('toggle');
+                document.body.classList.add('no-scroll');
+                navLinks.style.display = 'flex';
+              }
+            };
+          }
+          
+          // Add direct click handler as backup
+          hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.ntToggleMenu();
+          });
+          
+          hamburger.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.ntToggleMenu();
+          }, { passive: false });
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupHamburger);
+        } else {
+          setupHamburger();
+        }
+      })();
+    </script>
 </body>
 </html> 
