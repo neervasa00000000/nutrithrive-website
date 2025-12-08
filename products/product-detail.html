@@ -116,11 +116,39 @@
           position: relative !important;
           z-index: 1001 !important;
           pointer-events: auto !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          align-items: center !important;
         }
         
-        /* Ensure hamburger lines are clickable */
+        /* Hamburger lines styling */
         .hamburger div {
           pointer-events: none !important;
+          width: 25px !important;
+          height: 3px !important;
+          background-color: var(--primary) !important;
+          margin: 5px 0 !important;
+          transition: all 0.3s ease !important;
+          border-radius: 2px !important;
+        }
+        
+        /* Transform hamburger to X when menu is open */
+        .hamburger.toggle {
+          position: relative !important;
+          z-index: 2001 !important;
+        }
+        
+        .hamburger.toggle .line1 {
+          transform: rotate(-45deg) translate(-5px, 6px) !important;
+        }
+        
+        .hamburger.toggle .line2 {
+          opacity: 0 !important;
+        }
+        
+        .hamburger.toggle .line3 {
+          transform: rotate(45deg) translate(-5px, -6px) !important;
         }
       }
     </style>
