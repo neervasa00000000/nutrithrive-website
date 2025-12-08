@@ -22,6 +22,17 @@
     <link rel="stylesheet" href="../shared/css/style.css">
     <link rel="stylesheet" href="../pages/products/product-curry-leaves.css">
     <style>
+      /* Accordion smooth animation */
+      .accordion-content {
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out !important;
+        overflow: hidden !important;
+      }
+      
+      .accordion-content.active {
+        display: block !important;
+        max-height: none !important;
+      }
+      
       /* Mobile navigation - match homepage exactly */
       @media (max-width: 768px) {
         .nav-links {
@@ -352,39 +363,51 @@
             
             if (isOpen) {
                 // Close - smooth animation
-                content.style.maxHeight = '0px';
+                const currentHeight = content.scrollHeight + 'px';
+                content.style.maxHeight = currentHeight;
                 content.style.overflow = 'hidden';
-                content.style.transition = 'max-height 0.3s ease-out, padding 0.3s ease-out';
+                content.style.opacity = '1';
+                
+                // Force reflow
+                content.offsetHeight;
+                
+                // Animate to 0
+                content.style.maxHeight = '0px';
+                content.style.opacity = '0';
                 
                 setTimeout(() => {
                     content.style.display = 'none';
                     content.style.maxHeight = null;
                     content.style.overflow = null;
-                    content.style.transition = null;
-                }, 300);
+                    content.style.opacity = null;
+                }, 350);
                 
                 if (icon) icon.textContent = '+';
                 section.classList.remove('active');
                 content.classList.remove('active');
             } else {
                 // Open - smooth animation
+                // First, make it visible but at 0 height
                 content.style.display = 'block';
                 content.style.maxHeight = '0px';
                 content.style.overflow = 'hidden';
-                content.style.transition = 'max-height 0.3s ease-out, padding 0.3s ease-out';
+                content.style.opacity = '0';
                 
                 // Force reflow to ensure transition works
                 content.offsetHeight;
                 
-                // Set to full height
-                const fullHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = fullHeight;
+                // Get the full height
+                const fullHeight = content.scrollHeight + 50 + 'px'; // Add extra padding
                 
+                // Animate to full height
+                content.style.maxHeight = fullHeight;
+                content.style.opacity = '1';
+                
+                // After animation completes, allow natural height
                 setTimeout(() => {
                     content.style.maxHeight = 'none';
-                    content.style.overflow = null;
-                    content.style.transition = null;
-                }, 300);
+                    content.style.overflow = 'visible';
+                }, 350);
                 
                 if (icon) icon.textContent = '−';
                 section.classList.add('active');
