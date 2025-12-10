@@ -19,57 +19,382 @@
     <link rel="preconnect" href="https://i.imgur.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../shared/css/style.min.css">
     <style>
-      .hero-title {
-        font-family: 'Inter', Arial, sans-serif;
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #175c36;
-        margin: 0 0 0.7rem;
-        letter-spacing: -1px;
-        line-height: 1.2;
+      :root {
+        --forest: var(--primary);
+        --gold: var(--accent);
+        --sage: #eef4ef;
+        --sand: #f8f5ec;
       }
-      .hero-desc {
-        font-family: 'Inter', Arial, sans-serif;
-        font-size: 1.2rem;
-        color: #5A6D5D;
-        font-weight: 500;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
+      body.products-page {
+        background: var(--sand);
+        color: var(--text);
+        font-family: 'Lato', 'Inter', sans-serif;
+      }
+      .promo-bar {
+        background: var(--forest);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 800;
+        font-size: 0.72rem;
+        text-align: center;
+        padding: 0.65rem 1rem;
+      }
+      .products-shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 4rem;
+      }
+      .products-hero {
+        text-align: center;
+        padding: 2.5rem 0 2rem;
+      }
+      .products-hero .eyebrow {
+        color: var(--gold);
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .products-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.4rem, 5vw, 3.1rem);
+        color: var(--forest);
+        margin: 0 0 1rem;
+        line-height: 1.15;
+      }
+      .hero-lede {
+        max-width: 760px;
+        margin: 0 auto 1.5rem;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        font-weight: 400;
+      }
+      .hero-badges {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .icon {
+        width: 18px;
+        height: 18px;
+        color: var(--forest);
+      }
+      .hero-badges .pill {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 1px solid rgba(27, 92, 54, 0.18);
+        background: #fff;
+        color: var(--forest);
+        font-weight: 700;
+        font-size: 0.8rem;
+        padding: 0.55rem 0.9rem;
+        border-radius: 999px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      }
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.5rem 0 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e3dfd6;
+      }
+      .controls .helper {
+        color: var(--muted);
+        font-style: italic;
+        font-size: 0.95rem;
+        margin: 0;
+      }
+      .sort-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 1px solid #d7d2c7;
+        background: #fff;
+        color: var(--forest);
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.65rem 0.9rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+      }
+      .sort-btn:hover {
+        border-color: var(--forest);
+        transform: translateY(-1px);
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      .product-card {
+        background: #fff;
+        border: 1px solid #ebe7de;
+        border-radius: 12px;
+        box-shadow: 0 18px 36px -18px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       }
       .product-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        transform: translateY(-6px);
+        box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.16);
+        border-color: rgba(23, 92, 54, 0.25);
       }
-      .product-card a[style*="background: #1E4A35"]:hover {
-        background: #2A6348 !important;
-        transform: scale(1.02);
+      .urgency-tag {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background: var(--forest);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        padding: 0.4rem 0.75rem;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .product-card:hover .urgency-tag {
+        opacity: 1;
+      }
+      .product-media {
+        position: relative;
+        background: #f8f6f1;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #f0ece3;
+      }
+      .product-media img {
+        max-width: 82%;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.08));
+      }
+      .media-label {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid #e8e1d6;
+        color: var(--forest);
+        font-weight: 800;
+        font-size: 0.75rem;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+      }
+      .product-body {
+        padding: 1.5rem 1.5rem 1.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex: 1;
+        background: #fff;
+      }
+      .product-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .product-title {
+        font-family: 'Playfair Display', serif;
+        color: var(--forest);
+        font-size: 1.45rem;
+        margin: 0;
+        line-height: 1.25;
+      }
+      .product-price {
+        text-align: right;
+        min-width: 96px;
+      }
+      .price {
+        color: var(--forest);
+        font-weight: 800;
+        font-size: 1.25rem;
+      }
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.15rem;
+        color: var(--gold);
+        font-size: 0.8rem;
+      }
+      .meta {
+        color: #7c8575;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin: 0;
+      }
+      .why-box {
+        background: rgba(197, 160, 89, 0.08);
+        border: 1px solid rgba(197, 160, 89, 0.35);
+        border-radius: 10px;
+        padding: 1rem;
+      }
+      .why-title {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.75rem;
+        color: var(--forest);
+        font-weight: 800;
+        border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+        padding-bottom: 0.6rem;
+        margin: 0 0 0.8rem;
+      }
+      .why-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.7rem;
+      }
+      .why-list li {
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+        color: #3b4235;
+        font-size: 0.98rem;
+        line-height: 1.5;
+      }
+      .why-list .icon {
+        color: var(--forest);
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .chip {
+        border: 1px solid #e5dfd2;
+        color: #6b705f;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 0.3rem 0.6rem;
+        border-radius: 6px;
+        background: #fff;
+      }
+      .cta-row {
+        display: flex;
+        gap: 0.65rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        flex: 1;
+        background: var(--forest);
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 8px;
+        padding: 0.95rem 1rem;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.25s ease, background-color 0.2s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.45rem;
+        text-decoration: none;
+      }
+      .btn-primary:hover {
+        background: #0f5230;
+        box-shadow: 0 12px 28px rgba(23, 92, 54, 0.22);
+        transform: translateY(-1px);
+      }
+      .qty-badge {
+        width: 54px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #d7d2c7;
+        color: #4b5443;
+        font-weight: 800;
+        border-radius: 8px;
+        background: #f5f3ed;
+      }
+      .stock-note {
+        width: 100%;
+        text-align: center;
+        color: #1f6f3a;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        align-items: center;
+        margin-top: 0.35rem;
+      }
+      .stock-dot {
+        width: 8px;
+        height: 8px;
+        background: #22c55e;
+        border-radius: 50%;
+        display: inline-flex;
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.15);
+      }
+      .helper-note {
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-align: center;
+        margin-top: 2rem;
+      }
+      .icon-star {
+        width: 14px;
+        height: 14px;
+        color: var(--gold);
+        fill: currentColor;
       }
       @media (max-width: 768px) {
-        .products-grid {
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 1rem !important;
-          padding: 1rem !important;
+        .products-shell {
+          padding: 1.25rem 1rem 3rem;
         }
-        .product-card {
-          border-radius: 12px !important;
+        .product-header {
+          flex-direction: column;
         }
-        .product-card > a > div:first-child {
-          min-height: 200px !important;
-          padding: 1.5rem 1rem !important;
+        .product-price {
+          text-align: left;
         }
-        .hero-title {
-          font-size: 2rem !important;
+        .hero-badges {
+          gap: 0.5rem;
         }
-        .hero-desc {
-          font-size: 1rem !important;
+        .products-hero {
+          padding: 2rem 0 1.5rem;
         }
-        
-        /* Mobile navigation - match homepage exactly */
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Mobile navigation - match homepage exactly */
+      @media (max-width: 768px) {
         .nav-links {
           position: fixed;
           top: 0;
@@ -93,12 +418,10 @@
           -webkit-overflow-scrolling: touch;
           gap: 0.3rem;
         }
-        
         .nav-links.nav-active {
           display: flex !important;
           transform: translateX(0);
         }
-        
         .nav-links a {
           font-size: 1.3rem !important;
           margin: 0.2rem 0 !important;
@@ -118,13 +441,11 @@
           background: transparent !important;
           border: none !important;
         }
-        
         .nav-links a:hover,
         .nav-links a.active {
           background-color: rgba(23, 92, 54, 0.1) !important;
           color: var(--accent) !important;
         }
-        
         .hamburger {
           min-width: 48px !important;
           min-height: 48px !important;
@@ -150,6 +471,7 @@
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/">
 </head>
 <body class="products-page">
+    <div class="promo-bar">Free Shipping Australia Wide on Orders Over $50</div>
     <header>
         <div class="navbar">
             <a href="/" class="logo">
@@ -174,91 +496,156 @@
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Premium Natural Superfoods Collection</h1>
-                <p class="hero-desc">Discover our premium collection of 100% natural superfoods designed to boost your natural energy, eliminate bloating, and support your immune system. Each product is lab-tested for purity and potency, sourced from trusted suppliers, and delivered fresh from our Melbourne warehouse. Experience the power of nature with our Moringa Powder, Dried Curry Leaves, and Premium Black Tea - your trusted source for 100% natural, vegan, gluten-free superfoods in Australia. No additives, no preservatives, nutritionally rich.</p>
-            </div>
-            <div class="hero-image">
-                
+    <main class="products-shell">
+        <section class="products-hero">
+            <p class="eyebrow">Pure &amp; Potent</p>
+            <h1>Shop Premium Wellness</h1>
+            <p class="hero-lede">Sourced from the finest origins, our 100% natural collection is designed to boost immunity, enhance digestion, and restore balance. Crafted in small batches and dispatched fresh from Melbourne.</p>
+            <div class="hero-badges">
+                <span class="pill"><i data-lucide="leaf" class="icon"></i>100% Natural</span>
+                <span class="pill"><i data-lucide="droplet" class="icon"></i>No Additives</span>
+                <span class="pill"><i data-lucide="check-circle" class="icon"></i>Vegan Friendly</span>
             </div>
         </section>
 
-        <section class="products-section" id="products-section">
-            <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem;">
-                <div class="product-card" style="background: #fff; border-radius: 16px; padding: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;">
-                    <a href="product-detail.html" class="product-link" style="text-decoration: none; color: inherit; flex: 1; display: flex; flex-direction: column;">
-                        <div style="background: #1E4A35; padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 280px;">
-                            <img src="https://i.imgur.com/PgvCFY0.png" alt="NutriThrive Premium Moringa Powder - Natural Energy Boost" class="product-image" width="280" height="280" loading="lazy" decoding="async" style="display: block; max-width: 100%; height: auto; object-fit: contain;">
-                        </div>
-                        <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                            <h2 class="product-title" style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 700; color: #1E4A35; text-align: center;">Moringa Powder</h2>
-                            <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
-                                <span style="color: #F59E0B; font-size: 1rem;">⭐⭐⭐⭐⭐</span>
-                                <span style="font-size: 0.9rem; color: #64748B;">(124)</span>
-                            </div>
-                        </div>
-                    </a>
-                    <div style="padding: 0 1.5rem 1.5rem 1.5rem;">
-                        <a href="product-detail.html" aria-label="Buy Moringa Powder Now" style="display: block; width: 100%; background: #1E4A35; color: #fff; text-align: center; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;">Buy Now</a>
-                    </div>
-                </div>
-                <div class="product-card" style="background: #fff; border-radius: 16px; padding: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;">
-                    <a href="product-curry-leaves.html" class="product-link" style="text-decoration: none; color: inherit; flex: 1; display: flex; flex-direction: column;">
-                        <div style="background: #1E4A35; padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 280px;">
-                            <img src="https://i.imgur.com/pGYqg0z.png" alt="NutriThrive Premium Dried Curry Leaves - Aromatic Flavor Enhancement" class="product-image" width="280" height="280" loading="lazy" decoding="async" style="display: block; max-width: 100%; height: auto; object-fit: contain;">
-                        </div>
-                        <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                            <h2 class="product-title" style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 700; color: #1E4A35; text-align: center;">Dried Curry Leaves</h2>
-                            <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
-                                <span style="color: #F59E0B; font-size: 1rem;">⭐⭐⭐⭐⭐</span>
-                                <span style="font-size: 0.9rem; color: #64748B;">(42)</span>
-                            </div>
-                        </div>
-                    </a>
-                    <div style="padding: 0 1.5rem 1.5rem 1.5rem;">
-                        <a href="product-curry-leaves.html" aria-label="Buy Dried Curry Leaves Now" style="display: block; width: 100%; background: #1E4A35; color: #fff; text-align: center; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;">Buy Now</a>
-                    </div>
-                </div>
-                <div class="product-card" style="background: #fff; border-radius: 16px; padding: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;">
-                    <a href="product-black-tea.html" class="product-link" style="text-decoration: none; color: inherit; flex: 1; display: flex; flex-direction: column;">
-                        <div style="background: #1E4A35; padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 280px;">
-                            <img src="https://i.imgur.com/EMjb66w.png" alt="NutriThrive Premium Black Tea - Focus & Clarity Boost" class="product-image" width="280" height="280" loading="lazy" decoding="async" style="display: block; max-width: 100%; height: auto; object-fit: contain;">
-                        </div>
-                        <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                            <h2 class="product-title" style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 700; color: #1E4A35; text-align: center;">Black Tea</h2>
-                            <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
-                                <span style="color: #F59E0B; font-size: 1rem;">⭐⭐⭐⭐⭐</span>
-                                <span style="font-size: 0.9rem; color: #64748B;">(89)</span>
-                            </div>
-                        </div>
-                    </a>
-                    <div style="padding: 0 1.5rem 1.5rem 1.5rem;">
-                        <a href="product-black-tea.html" aria-label="Buy Black Tea Now" style="display: block; width: 100%; background: #1E4A35; color: #fff; text-align: center; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Related Guides Section -->
-            <div style="max-width: 1200px; margin: 4rem auto; padding: 0 1.5rem;">
-                <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: var(--primary);">Related Guides</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-                    <a href="/pages/usage-guide/how-to-use-moringa.html" style="background: #f8faf7; padding: 1.5rem; border-radius: 8px; text-decoration: none; color: var(--primary); transition: transform 0.3s; display: block;">
-                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.2rem;">Moringa Benefits Guide</h3>
-                        <p style="margin: 0; color: #64748B; font-size: 0.95rem;">Learn how to use Moringa powder effectively and discover its health benefits.</p>
-                    </a>
-                    <a href="/blog/moringa-brands-comparison-australia-2025.html" style="background: #f8faf7; padding: 1.5rem; border-radius: 8px; text-decoration: none; color: var(--primary); transition: transform 0.3s; display: block;">
-                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.2rem;">Moringa Brands Comparison</h3>
-                        <p style="margin: 0; color: #64748B; font-size: 0.95rem;">See why NutriThrive won Australia's 2025 brand comparison.</p>
-                    </a>
-                    <a href="/blog/grow-moringa-tree-australia.html" style="background: #f8faf7; padding: 1.5rem; border-radius: 8px; text-decoration: none; color: var(--primary); transition: transform 0.3s; display: block;">
-                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.2rem;">How to Grow Moringa</h3>
-                        <p style="margin: 0; color: #64748B; font-size: 0.95rem;">Learn how to grow your own Moringa tree in Australia.</p>
-                    </a>
-                </div>
-            </div>
+        <section class="controls">
+            <p class="helper">Showing 3 premium products</p>
+            <button class="sort-btn" type="button">
+                Sort by <i data-lucide="chevron-down" class="icon"></i>
+            </button>
         </section>
+
+        <section class="product-grid">
+            <article class="product-card">
+                <div class="urgency-tag">🔥 14 people are looking at this right now</div>
+                <a class="product-media" href="product-detail.html">
+                    <img src="https://i.imgur.com/PgvCFY0.png" alt="Premium Natural Moringa Powder">
+                    <span class="media-label">Best Seller</span>
+                </a>
+                <div class="product-body">
+                    <div class="product-header">
+                        <h2 class="product-title">Premium Natural Moringa Powder</h2>
+                        <div class="product-price">
+                            <div class="price">$24.95</div>
+                            <div class="rating">
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="meta">100g Pack • 50 Servings</p>
+                    <div class="why-box">
+                        <p class="why-title">Why you need this</p>
+                        <ul class="why-list">
+                            <li><i data-lucide="zap" class="icon"></i><span><strong>Boost energy:</strong> 100% pure leaf powder packed with iron and vitamin C to fight fatigue without the crash.</span></li>
+                            <li><i data-lucide="shield-check" class="icon"></i><span><strong>Daily detox:</strong> Antioxidant-rich to support digestion, immunity, and glowing skin.</span></li>
+                            <li><i data-lucide="cup-soda" class="icon"></i><span><strong>Easy usage:</strong> Mixes effortlessly into smoothies, juices, or tea.</span></li>
+                        </ul>
+                    </div>
+                    <div class="chips">
+                        <span class="chip">Vegan</span>
+                        <span class="chip">Gluten Free</span>
+                        <span class="chip">Immunity</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="cta-row">
+                            <div class="qty-badge">1</div>
+                            <a class="btn-primary" href="product-detail.html">View product</a>
+                        </div>
+                        <p class="stock-note"><span class="stock-dot"></span>In Stock - Dispatched from Melbourne</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <a class="product-media" href="product-curry-leaves.html">
+                    <img src="https://i.imgur.com/pGYqg0z.png" alt="Dried Curry Leaves (Premium)">
+                    <span class="media-label">Premium</span>
+                </a>
+                <div class="product-body">
+                    <div class="product-header">
+                        <h2 class="product-title">Dried Curry Leaves (Premium)</h2>
+                        <div class="product-price">
+                            <div class="price">$14.95</div>
+                            <div class="rating">
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star-half" class="icon-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="meta">50g Pack • High Potency</p>
+                    <div class="why-box">
+                        <p class="why-title">Why you need this</p>
+                        <ul class="why-list">
+                            <li><i data-lucide="flower" class="icon"></i><span><strong>Authentic aroma:</strong> Retains 95% of essential oils for a fresh, nutty fragrance.</span></li>
+                            <li><i data-lucide="chef-hat" class="icon"></i><span><strong>Pantry essential:</strong> Instantly elevates curries, tadka, and rice dishes.</span></li>
+                            <li><i data-lucide="droplet" class="icon"></i><span><strong>High value:</strong> Concentrated flavour—only a few leaves per dish.</span></li>
+                        </ul>
+                    </div>
+                    <div class="chips">
+                        <span class="chip">100% Natural</span>
+                        <span class="chip">No Preservatives</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="cta-row">
+                            <div class="qty-badge">1</div>
+                            <a class="btn-primary" href="product-curry-leaves.html">View product</a>
+                        </div>
+                        <p class="stock-note"><span class="stock-dot"></span>In Stock - Dispatched from Melbourne</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="urgency-tag">Only 5 packs left at this price</div>
+                <a class="product-media" href="product-black-tea.html">
+                    <img src="https://i.imgur.com/EMjb66w.png" alt="Premium Loose Leaf Black Tea">
+                </a>
+                <div class="product-body">
+                    <div class="product-header">
+                        <h2 class="product-title">Premium Loose Leaf Black Tea</h2>
+                        <div class="product-price">
+                            <div class="price">$19.95</div>
+                            <div class="rating">
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star" style="color: #d4d8d0;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="meta">200g Pack • Premium Grade</p>
+                    <div class="why-box">
+                        <p class="why-title">Why you need this</p>
+                        <ul class="why-list">
+                            <li><i data-lucide="sun" class="icon"></i><span><strong>Morning focus:</strong> Robust, full-bodied blend to improve mental clarity.</span></li>
+                            <li><i data-lucide="heart" class="icon"></i><span><strong>Rich flavour:</strong> Smooth finish with malty undertones—perfect with or without milk.</span></li>
+                            <li><i data-lucide="award" class="icon"></i><span><strong>Better value:</strong> Superior taste profile compared to standard bagged dust.</span></li>
+                        </ul>
+                    </div>
+                    <div class="chips">
+                        <span class="chip">Antioxidant</span>
+                        <span class="chip">No Additives</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="cta-row">
+                            <div class="qty-badge">1</div>
+                            <a class="btn-primary" href="product-black-tea.html">View product</a>
+                        </div>
+                        <p class="stock-note"><span class="stock-dot"></span>In Stock - Dispatched from Melbourne</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <p class="helper-note">All products are packed fresh in Melbourne and shipped Australia-wide with tracked delivery.</p>
     </main>
 
     <footer>
@@ -300,7 +687,15 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="../shared/js/script.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      });
+    </script>
 
     <!-- CollectionPage Schema -->
     <script type="application/ld+json">
