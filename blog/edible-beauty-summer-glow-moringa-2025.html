@@ -70,10 +70,20 @@
             line-height: 1.7;
             color: #1a1a1a;
             background: #ffffff;
+            position: relative;
+        }
+        body > :not(.blog-container) {
+            display: none;
+        }
+        body::before {
+            content: none !important;
         }
         .blog-container {
             width: 100%;
             margin: 0;
+        }
+        .blog-container::before {
+            content: none !important;
         }
         header {
             background: linear-gradient(135deg, #2d5a3d 0%, #1e4029 100%);
