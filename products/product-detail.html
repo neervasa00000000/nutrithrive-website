@@ -104,26 +104,6 @@
         }
       }
       
-      /* Benefits Accordion Section */
-      .benefits-accordion-header {
-        user-select: none;
-        -webkit-user-select: none;
-      }
-      
-      .benefits-accordion-header:hover {
-        opacity: 0.8;
-      }
-      
-      .benefits-accordion-content {
-        display: block;
-      }
-      
-      @media (max-width: 768px) {
-        .benefits-accordion-header {
-          min-height: 48px;
-          padding: 0.75rem 0;
-        }
-      }
       
       /* Mobile navigation - match homepage exactly */
       @media (max-width: 768px) {
@@ -335,13 +315,13 @@
                 <p class="product-description">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system.</p>
 
                 <!-- Interactive Benefit Badges - Collapsible Accordion -->
-                <div class="benefits-accordion-section" style="margin: 1.5rem 0;">
-                    <div class="benefits-accordion-header" onclick="toggleBenefitsSection()" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #e0e0e0; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;">
-                        <h3 style="color: #2d5a3d; margin: 0; font-size: 1.1rem; font-weight: 700;">✨ What Makes NutriThrive Moringa Powder Special?</h3>
-                        <span class="benefits-accordion-icon" style="color: #2d5a3d; font-size: 1.5rem; font-weight: 700; transition: transform 0.3s ease;">+</span>
+                <div class="accordion-section" style="margin: 1.5rem 0;">
+                    <div class="accordion-header" onclick="toggleAccordion('benefits-special')">
+                        <h2>✨ What Makes NutriThrive Moringa Powder Special?</h2>
+                        <span class="accordion-icon">+</span>
                     </div>
-                    <div class="benefits-accordion-content" id="benefits-content" style="overflow: hidden; max-height: 0; transition: max-height 0.3s ease-out, padding 0.3s ease-out;">
-                        <div style="background: #f8faf7; padding: 1.5rem; border-radius: 12px; margin-top: 1rem; border: 2px solid #2d5a3d;">
+                    <div class="accordion-content" id="benefits-special">
+                        <div style="background: #f8faf7; padding: 1.5rem; border-radius: 12px; border: 2px solid #2d5a3d;">
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem;">
                         <!-- 100% NATURAL -->
                         <div class="benefit-badge" onclick="toggleBenefit('benefit-1')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
@@ -687,45 +667,6 @@
         
         // Make function available globally
         window.toggleBenefit = toggleBenefit;
-        
-        // Benefits Section Accordion Toggle
-        function toggleBenefitsSection() {
-            const content = document.getElementById('benefits-content');
-            const icon = document.querySelector('.benefits-accordion-icon');
-            
-            if (!content || !icon) {
-                console.error('Benefits accordion elements not found');
-                return;
-            }
-            
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
-            
-            if (isOpen) {
-                // Close
-                content.style.maxHeight = '0px';
-                content.style.paddingTop = '0';
-                content.style.paddingBottom = '0';
-                icon.textContent = '+';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                // Open
-                content.style.display = 'block';
-                const fullHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = fullHeight;
-                content.style.paddingTop = '0';
-                content.style.paddingBottom = '0';
-                icon.textContent = '−';
-                icon.style.transform = 'rotate(0deg)';
-                
-                // After animation, set to auto for dynamic content
-                setTimeout(() => {
-                    content.style.maxHeight = 'none';
-                }, 300);
-            }
-        }
-        
-        // Make function available globally
-        window.toggleBenefitsSection = toggleBenefitsSection;
     </script>
     <script 
       src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture">
