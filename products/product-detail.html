@@ -334,115 +334,6 @@
                 
                 <p class="product-description">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system.</p>
 
-                <!-- Interactive Benefit Badges - Collapsible Accordion -->
-                <div class="benefits-accordion-section" style="margin: 1.5rem 0;">
-                    <div class="benefits-accordion-header" onclick="toggleBenefitsSection()" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #e0e0e0; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;">
-                        <h3 style="color: #2d5a3d; margin: 0; font-size: 1.1rem; font-weight: 700;">✨ What Makes NutriThrive Moringa Powder Special?</h3>
-                        <span class="benefits-accordion-icon" style="color: #2d5a3d; font-size: 1.5rem; font-weight: 700; transition: transform 0.3s ease;">+</span>
-                    </div>
-                    <div class="benefits-accordion-content" id="benefits-content" style="overflow: hidden; max-height: 0; transition: max-height 0.3s ease-out, padding 0.3s ease-out;">
-                        <div style="background: #f8faf7; padding: 1.5rem; border-radius: 12px; margin-top: 1rem; border: 2px solid #2d5a3d;">
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem;">
-                        <!-- 100% NATURAL -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-1')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">100% NATURAL</div>
-                            <div class="benefit-content" id="benefit-1" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                Pure Moringa Oleifera leaf powder with no synthetic additives, fillers, or artificial ingredients. Sourced directly from farms using traditional methods.
-                            </div>
-                        </div>
-                        
-                        <!-- VEGAN -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-2')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">VEGAN</div>
-                            <div class="benefit-content" id="benefit-2" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                Plant-based and cruelty-free. Perfect for vegan and vegetarian diets. Contains all 9 essential amino acids for complete protein.
-                            </div>
-                        </div>
-                        
-                        <!-- GLUTEN FREE -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-3')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">GLUTEN FREE</div>
-                            <div class="benefit-content" id="benefit-3" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                Naturally gluten-free. Safe for those with celiac disease or gluten sensitivity. Processed in a gluten-free facility.
-                            </div>
-                        </div>
-                        
-                        <!-- ANTIOXIDANT -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-4')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">ANTIOXIDANT</div>
-                            <div class="benefit-content" id="benefit-4" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                Contains 36+ antioxidants including Quercetin and Chlorogenic Acid. Fights free radicals and supports cellular health.
-                            </div>
-                        </div>
-                        
-                        <!-- INCREASE DIGESTION -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-5')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">INCREASE DIGESTION</div>
-                            <div class="benefit-content" id="benefit-5" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                High fiber content supports healthy digestion. Alkaline nature helps balance pH levels and reduces inflammation in the gut.
-                            </div>
-                        </div>
-                        
-                        <!-- NO ADDITIVES -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-6')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">NO ADDITIVES</div>
-                            <div class="benefit-content" id="benefit-6" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                Pure Moringa leaf powder only. No fillers, binders, or artificial additives. What you see is what you get.
-                            </div>
-                        </div>
-                        
-                        <!-- NUTRITIONALLY RICH -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-7')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">NUTRITIONALLY RICH</div>
-                            <div class="benefit-content" id="benefit-7" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                92+ vitamins, minerals, and antioxidants. 7x more Vitamin C than oranges, 4x more calcium than milk, 25x more iron than spinach.
-                            </div>
-                        </div>
-                        
-                        <!-- IMMUNITY BOOSTER -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-8')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">IMMUNITY BOOSTER</div>
-                            <div class="benefit-content" id="benefit-8" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                High Vitamin C and Zinc content supports immune function. Essential for white blood cell production and immune cell development.
-                            </div>
-                        </div>
-                        
-                        <!-- INCREASE METABOLISM -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-9')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">INCREASE METABOLISM</div>
-                            <div class="benefit-content" id="benefit-9" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                B vitamins and iron support energy production at the cellular level. Helps convert food into energy more efficiently.
-                            </div>
-                        </div>
-                        
-                        <!-- GOOD FOR SKIN & HAIR -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-10')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">GOOD FOR SKIN & HAIR</div>
-                            <div class="benefit-content" id="benefit-10" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                Vitamin C supports collagen production. Vitamin E and Zinc promote skin healing. Antioxidants fight premature aging.
-                            </div>
-                        </div>
-                        
-                        <!-- HEALTHY JOINTS -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-11')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">HEALTHY JOINTS</div>
-                            <div class="benefit-content" id="benefit-11" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                36 anti-inflammatory compounds including Quercetin help reduce joint inflammation. Supports mobility and reduces stiffness.
-                            </div>
-                        </div>
-                        
-                        <!-- NO PRESERVATIVES -->
-                        <div class="benefit-badge" onclick="toggleBenefit('benefit-12')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
-                            <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">NO PRESERVATIVES</div>
-                            <div class="benefit-content" id="benefit-12" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
-                                Freshly processed and sealed to preserve nutrients naturally. No chemical preservatives needed when stored properly.
-                            </div>
-                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div style="text-align: center; padding: 20px;">
                     <div id="paypal-container-ERYQAP7ZAHDDQ" style="margin-top: 20px;"></div>
                 </div>
@@ -460,11 +351,109 @@
             <div class="product-info-sections">
                 <div class="accordion-section">
                     <div class="accordion-header" onclick="toggleAccordion('what-makes-special')">
-                        <h2>What Makes NutriThrive Moringa Powder Special?</h2>
+                        <h2>✨ What Makes NutriThrive Moringa Powder Special?</h2>
                         <span class="accordion-icon">+</span>
                     </div>
                     <div class="accordion-content" id="what-makes-special">
-                        <p>Our premium Moringa powder is sourced directly from our own farms in India, where we control every step from cultivation to packaging. We use traditional shade-drying methods that preserve natural green color and maximum nutrient content. Each batch is lab-tested for purity and potency, with no stems, fillers, or artificial additives. Contains 27g protein per 100g, 25x more iron than spinach, and 7x more vitamin C than oranges. Perfect for smoothies, teas, yogurt bowls, or mixed into your favorite recipes.</p>
+                        <div style="background: #f8faf7; padding: 1.5rem; border-radius: 12px; border: 2px solid #2d5a3d;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem;">
+                                <!-- 100% NATURAL -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-1')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">100% NATURAL</div>
+                                    <div class="benefit-content" id="benefit-1" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        Pure Moringa Oleifera leaf powder with no synthetic additives, fillers, or artificial ingredients. Sourced directly from farms using traditional methods.
+                                    </div>
+                                </div>
+                                
+                                <!-- VEGAN -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-2')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">VEGAN</div>
+                                    <div class="benefit-content" id="benefit-2" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        Plant-based and cruelty-free. Perfect for vegan and vegetarian diets. Contains all 9 essential amino acids for complete protein.
+                                    </div>
+                                </div>
+                                
+                                <!-- GLUTEN FREE -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-3')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">GLUTEN FREE</div>
+                                    <div class="benefit-content" id="benefit-3" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        Naturally gluten-free. Safe for those with celiac disease or gluten sensitivity. Processed in a gluten-free facility.
+                                    </div>
+                                </div>
+                                
+                                <!-- ANTIOXIDANT -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-4')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">ANTIOXIDANT</div>
+                                    <div class="benefit-content" id="benefit-4" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        Contains 36+ antioxidants including Quercetin and Chlorogenic Acid. Fights free radicals and supports cellular health.
+                                    </div>
+                                </div>
+                                
+                                <!-- INCREASE DIGESTION -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-5')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">INCREASE DIGESTION</div>
+                                    <div class="benefit-content" id="benefit-5" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        High fiber content supports healthy digestion. Alkaline nature helps balance pH levels and reduces inflammation in the gut.
+                                    </div>
+                                </div>
+                                
+                                <!-- NO ADDITIVES -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-6')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">NO ADDITIVES</div>
+                                    <div class="benefit-content" id="benefit-6" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        Pure Moringa leaf powder only. No fillers, binders, or artificial additives. What you see is what you get.
+                                    </div>
+                                </div>
+                                
+                                <!-- NUTRITIONALLY RICH -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-7')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">NUTRITIONALLY RICH</div>
+                                    <div class="benefit-content" id="benefit-7" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        92+ vitamins, minerals, and antioxidants. 7x more Vitamin C than oranges, 4x more calcium than milk, 25x more iron than spinach.
+                                    </div>
+                                </div>
+                                
+                                <!-- IMMUNITY BOOSTER -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-8')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">IMMUNITY BOOSTER</div>
+                                    <div class="benefit-content" id="benefit-8" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        High Vitamin C and Zinc content supports immune function. Essential for white blood cell production and immune cell development.
+                                    </div>
+                                </div>
+                                
+                                <!-- INCREASE METABOLISM -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-9')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">INCREASE METABOLISM</div>
+                                    <div class="benefit-content" id="benefit-9" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        B vitamins and iron support energy production at the cellular level. Helps convert food into energy more efficiently.
+                                    </div>
+                                </div>
+                                
+                                <!-- GOOD FOR SKIN & HAIR -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-10')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">GOOD FOR SKIN & HAIR</div>
+                                    <div class="benefit-content" id="benefit-10" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        Vitamin C supports collagen production. Vitamin E and Zinc promote skin healing. Antioxidants fight premature aging.
+                                    </div>
+                                </div>
+                                
+                                <!-- HEALTHY JOINTS -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-11')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">HEALTHY JOINTS</div>
+                                    <div class="benefit-content" id="benefit-11" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        36 anti-inflammatory compounds including Quercetin help reduce joint inflammation. Supports mobility and reduces stiffness.
+                                    </div>
+                                </div>
+                                
+                                <!-- NO PRESERVATIVES -->
+                                <div class="benefit-badge" onclick="toggleBenefit('benefit-12')" style="background: #fff; padding: 0.75rem; border-radius: 8px; border: 1px solid #2d5a3d; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative;">
+                                    <div style="font-weight: 700; color: #2d5a3d; font-size: 0.9rem;">NO PRESERVATIVES</div>
+                                    <div class="benefit-content" id="benefit-12" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e0e0e0; font-size: 0.85rem; color: #555; line-height: 1.4;">
+                                        Freshly processed and sealed to preserve nutrients naturally. No chemical preservatives needed when stored properly.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -687,45 +676,6 @@
         
         // Make function available globally
         window.toggleBenefit = toggleBenefit;
-        
-        // Benefits Section Accordion Toggle
-        function toggleBenefitsSection() {
-            const content = document.getElementById('benefits-content');
-            const icon = document.querySelector('.benefits-accordion-icon');
-            
-            if (!content || !icon) {
-                console.error('Benefits accordion elements not found');
-                return;
-            }
-            
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
-            
-            if (isOpen) {
-                // Close
-                content.style.maxHeight = '0px';
-                content.style.paddingTop = '0';
-                content.style.paddingBottom = '0';
-                icon.textContent = '+';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                // Open
-                content.style.display = 'block';
-                const fullHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = fullHeight;
-                content.style.paddingTop = '0';
-                content.style.paddingBottom = '0';
-                icon.textContent = '−';
-                icon.style.transform = 'rotate(0deg)';
-                
-                // After animation, set to auto for dynamic content
-                setTimeout(() => {
-                    content.style.maxHeight = 'none';
-                }, 300);
-            }
-        }
-        
-        // Make function available globally
-        window.toggleBenefitsSection = toggleBenefitsSection;
     </script>
     <script 
       src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture">
