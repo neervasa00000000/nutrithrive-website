@@ -92,11 +92,20 @@
             <p class="blog-hero-desc">Learn how to grow your wellness with research‑backed superfoods, moringa insights, and practical Australian guides.</p>
         </section>
 
+        <!-- Blog Search Section -->
+        <section class="blog-search-section" style="padding: 2rem 2rem; margin: 2rem auto; max-width: 800px;">
+            <div class="blog-search-container" style="position: relative;">
+                <input type="text" id="blogSearchInput" class="blog-search-input" placeholder="Search blog posts..." autocomplete="off" style="width: 100%; padding: 1.25rem 3.5rem 1.25rem 1.5rem; font-size: 1.1rem; border: 2px solid #175c36; border-radius: 12px; outline: none; font-family: 'Inter', sans-serif; color: #1a2e22; background: white; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(23,92,54,0.1);">
+                <span class="blog-search-icon" style="position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: #175c36; pointer-events: none;">🔍</span>
+                <div id="blogSearchResults" class="blog-search-results" style="display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(23,92,54,0.15); border: 2px solid #175c36; max-height: 400px; overflow-y: auto; z-index: 1000;"></div>
+            </div>
+        </section>
+
         <!-- External Resources Section -->
         <section style="padding: 4rem 2rem; margin: 4rem auto; max-width: 1100px;">
             <h2 style="color: #175c36; margin: 0 0 2.5rem 0; text-align: center; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px;">Explore More Resources</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; justify-items: center;">
-                <div style="background: white; padding: 2.5rem; border-radius: 16px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; border: 1px solid rgba(23,92,54,0.08); max-width: 400px; width: 100%;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 28px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.1)'">
+                <div style="padding: 2.5rem; text-align: center; transition: all 0.3s ease; max-width: 400px; width: 100%;">
                     <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.25rem;">
                         <span style="font-size: 1.75rem; filter: drop-shadow(0 2px 4px rgba(23,92,54,0.2));">🧪</span>
                         <h3 style="color: #175c36; margin: 0; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.3px;">Crazy Ideas</h3>
@@ -104,7 +113,7 @@
                     <p style="color: #4a5568; margin: 0 0 2rem 0; font-size: 1.05rem; line-height: 1.7; font-weight: 400;">Experimental tools, calculators, and innovative wellness solutions.</p>
                     <a href="https://nutrithrive.com.au/crazy-ideas/index.html" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #175c36; color: white; padding: 1rem 2.25rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(23,92,54,0.3); letter-spacing: 0.2px;" onmouseover="this.style.background='#1a6b42'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(23,92,54,0.4)'" onmouseout="this.style.background='#175c36'; this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(23,92,54,0.3)'">Visit Crazy Ideas →</a>
                 </div>
-                <div style="background: white; padding: 2.5rem; border-radius: 16px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; border: 1px solid rgba(23,92,54,0.08); max-width: 400px; width: 100%;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 28px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.1)'">
+                <div style="padding: 2.5rem; text-align: center; transition: all 0.3s ease; max-width: 400px; width: 100%;">
                     <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.25rem;">
                         <span style="font-size: 1.75rem; filter: drop-shadow(0 2px 4px rgba(255,193,7,0.3));">✨</span>
                         <h3 style="color: #175c36; margin: 0; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.3px;">Scintilla World</h3>
@@ -1449,6 +1458,126 @@
                 document.querySelector('.pagination-container').style.display = 'none';
             }
         });
+
+        // Blog Search Functionality
+        (function() {
+            const searchInput = document.getElementById('blogSearchInput');
+            const searchResults = document.getElementById('blogSearchResults');
+            
+            if (!searchInput || !searchResults) return;
+
+            // Extract all blog posts from the page
+            function extractBlogPosts() {
+                const posts = [];
+                const blogCards = document.querySelectorAll('.blog-post-card');
+                
+                blogCards.forEach(card => {
+                    const titleLink = card.querySelector('.post-title a');
+                    const excerpt = card.querySelector('.post-excerpt');
+                    
+                    if (titleLink) {
+                        posts.push({
+                            title: titleLink.textContent.trim(),
+                            url: titleLink.getAttribute('href'),
+                            excerpt: excerpt ? excerpt.textContent.trim() : ''
+                        });
+                    }
+                });
+                
+                return posts;
+            }
+
+            const blogPosts = extractBlogPosts();
+
+            // Search function
+            function searchBlogPosts(query) {
+                if (!query || query.trim().length === 0) {
+                    searchResults.style.display = 'none';
+                    return [];
+                }
+
+                const searchTerm = query.toLowerCase().trim();
+                const results = [];
+
+                blogPosts.forEach(post => {
+                    const titleMatch = post.title.toLowerCase().includes(searchTerm);
+                    const excerptMatch = post.excerpt.toLowerCase().includes(searchTerm);
+                    
+                    if (titleMatch || excerptMatch) {
+                        results.push(post);
+                    }
+                });
+
+                return results;
+            }
+
+            // Display search results
+            function displayResults(results) {
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<div style="padding: 1.5rem; text-align: center; color: #6b7d6f;">No results found</div>';
+                    searchResults.style.display = 'block';
+                    return;
+                }
+
+                let html = '';
+                results.slice(0, 5).forEach(post => {
+                    html += `
+                        <a href="${post.url}" style="display: block; padding: 1.25rem 1.5rem; text-decoration: none; color: #1a2e22; border-bottom: 1px solid rgba(23,92,54,0.1); transition: background 0.2s ease;" 
+                           onmouseover="this.style.background='#f5f9f7'" 
+                           onmouseout="this.style.background='white'">
+                            <div style="font-weight: 600; color: #175c36; margin-bottom: 0.5rem; font-size: 1.05rem;">${post.title}</div>
+                            <div style="font-size: 0.9rem; color: #6b7d6f; line-height: 1.5;">${post.excerpt.substring(0, 100)}${post.excerpt.length > 100 ? '...' : ''}</div>
+                        </a>
+                    `;
+                });
+
+                if (results.length > 5) {
+                    html += `<div style="padding: 1rem; text-align: center; color: #6b7d6f; font-size: 0.9rem;">And ${results.length - 5} more result${results.length - 5 > 1 ? 's' : ''}...</div>`;
+                }
+
+                searchResults.innerHTML = html;
+                searchResults.style.display = 'block';
+            }
+
+            // Handle input
+            let searchTimeout;
+            searchInput.addEventListener('input', function(e) {
+                clearTimeout(searchTimeout);
+                const query = e.target.value;
+                
+                searchTimeout = setTimeout(() => {
+                    const results = searchBlogPosts(query);
+                    displayResults(results);
+                }, 200);
+            });
+
+            // Handle focus
+            searchInput.addEventListener('focus', function() {
+                const query = this.value;
+                if (query.trim().length > 0) {
+                    const results = searchBlogPosts(query);
+                    displayResults(results);
+                }
+            });
+
+            // Close results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+
+            // Handle Enter key to navigate to first result
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const query = this.value;
+                    const results = searchBlogPosts(query);
+                    if (results.length > 0) {
+                        window.location.href = results[0].url;
+                    }
+                }
+            });
+        })();
     </script>
 </body>
 </html> 

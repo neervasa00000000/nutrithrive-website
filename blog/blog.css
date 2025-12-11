@@ -1922,10 +1922,10 @@ footer {
 .blog-hero {
     text-align: center;
     padding: 3rem 1rem;
-    background-color: #ffffff;
-    border-radius: var(--radius);
+    background-color: transparent;
+    border-radius: 0;
     margin-bottom: 3rem;
-    box-shadow: var(--shadow);
+    box-shadow: none;
 }
 
 .blog-hero-title {
@@ -1938,6 +1938,44 @@ footer {
 .blog-hero-desc {
     font-size: 1.2rem;
     color: var(--muted);
+}
+
+/* Blog Search Styles */
+.blog-search-section {
+    position: relative;
+    z-index: 10;
+}
+
+.blog-search-container {
+    position: relative;
+}
+
+.blog-search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 6px 20px rgba(23,92,54,0.2);
+}
+
+.blog-search-results {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) #f1f1f1;
+}
+
+.blog-search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blog-search-results::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.blog-search-results::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.blog-search-results::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
 
 .blog-list-section {
