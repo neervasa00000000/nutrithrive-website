@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
+  // Defer Google Analytics to prevent blocking initial render
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP', {
+      'anonymize_ip': true,
+      'allow_google_signals': false
+    });
+  });
 </script>
 
     <meta charset="UTF-8">
@@ -44,10 +55,23 @@
     <link rel="canonical" href="https://nutrithrive.com.au/products/product-detail.html">
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/products/product-detail.html">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/product-detail.html">
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://i.imgur.com">
+    <link rel="preconnect" href="https://www.paypal.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
+    <!-- Non-render-blocking CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../shared/css/style.css">
-    <link rel="stylesheet" href="../pages/products/product-detail.css">
+    <link rel="stylesheet" href="../shared/css/style.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../pages/products/product-detail.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="../shared/css/style.css">
+        <link rel="stylesheet" href="../pages/products/product-detail.css">
+    </noscript>
     <style>
       /* Accordion smooth animation */
       .accordion-content {
@@ -306,7 +330,7 @@
     <header>
         <div class="navbar">
             <a href="/products/" class="logo">
-                <img src="https://i.imgur.com/bZubhoR.png" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                <img src="https://i.imgur.com/bZubhoR.png" alt="NutriThrive Logo" width="29" height="29" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
             <nav class="nav-links">
@@ -335,13 +359,13 @@
                 <p class="product-description">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system. Shipped fresh from Truganina, Melbourne to Sydney and across Australia. When comparing moringa brands comparison Australia 2025, NutriThrive stands out as the best protein powder Australia alternative with complete amino acid profiles and natural plant-based nutrition.</p>
 
                 <div style="text-align: center; padding: 20px;">
-                    <div id="paypal-container-ERYQAP7ZAHDDQ" style="margin-top: 20px;"></div>
+                    <div id="paypal-container-ERYQAP7ZAHDDQ" style="margin-top: 20px;" aria-label="PayPal payment options for Moringa Powder"></div>
                 </div>
                 
                 
                 <!-- RISK REVERSAL -->
                 <div style="padding: 16px; margin: 16px 0; text-align: center; border-top: 1px solid #e0e0e0;">
-                    <h3 style="color: #2d5a3d; margin: 0 0 8px 0;">🛡️ 30-Day Money-Back Guarantee</h3>
+                    <h2 style="color: #2d5a3d; margin: 0 0 8px 0; font-size: 1.25rem; font-weight: 600;">🛡️ 30-Day Money-Back Guarantee</h2>
                     <p style="margin: 0; color: #2d5a3d;">Not satisfied? Full refund, no questions asked!</p>
                 </div>
                 
@@ -732,7 +756,6 @@
     <script 
       src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture">
     </script>
-    <div id="paypal-container-ERYQAP7ZAHDDQ"></div>
     <script>
       // Suppress PayPal SDK console errors
       const originalError = console.error;
@@ -750,7 +773,21 @@
           try {
             paypal.HostedButtons({
               hostedButtonId: "ERYQAP7ZAHDDQ",
-            }).render("#paypal-container-ERYQAP7ZAHDDQ").catch(function(err) {
+            }).render("#paypal-container-ERYQAP7ZAHDDQ").then(function() {
+              // Fix ARIA accessibility for PayPal thumbnail container
+              setTimeout(function() {
+                const thumbnailContainer = document.querySelector('#thumbnail-container-ERYQAP7ZAHDDQ');
+                if (thumbnailContainer && !thumbnailContainer.getAttribute('aria-label')) {
+                  thumbnailContainer.setAttribute('aria-label', 'Product image gallery for Moringa Powder');
+                  thumbnailContainer.setAttribute('role', 'group');
+                }
+                const heroImg = document.querySelector('#hero-img-ERYQAP7ZAHDDQ');
+                if (heroImg && !heroImg.getAttribute('width') && !heroImg.getAttribute('height')) {
+                  heroImg.setAttribute('width', '533');
+                  heroImg.setAttribute('height', '800');
+                }
+              }, 500);
+            }).catch(function(err) {
               // Silently handle rendering errors
               console.warn('PayPal button rendering issue:', err);
             });
