@@ -2,18 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nutrithrive.com.au</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-12</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/products/</loc>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/product-detail.html</loc>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/product-curry-leaves.html</loc>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/product-black-tea.html</loc>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-12</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/instagram-worthy-moringa-smoothie-bowls-recipes.html</loc>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/pages/about/about.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/pages/benefits/moringa-benefits.html</loc>
@@ -22,92 +47,22 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/pages/contact/contact.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/contact</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/contact/thank-you.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/delivery/victoria-delivery-coverage.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/pages/faq/faq.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/homepage</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/homepage/melbourne.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/melbourne-page.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/products</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/pages/products/products.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/pages/shipping/shipping-returns.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/products/</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/products.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/products/product-black-tea.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/products/product-curry-leaves.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/products/product-detail.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/products/products.html</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-12</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
