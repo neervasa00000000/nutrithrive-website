@@ -115,26 +115,6 @@
         font-size: 0.95rem;
         margin: 0;
       }
-      .sort-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        border: 1px solid #d7d2c7;
-        background: #fff;
-        color: var(--forest);
-        font-weight: 700;
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 0.65rem 0.9rem;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: border-color 0.2s ease, transform 0.2s ease;
-      }
-      .sort-btn:hover {
-        border-color: var(--forest);
-        transform: translateY(-1px);
-      }
       .product-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -494,9 +474,6 @@
 
         <section class="controls">
             <p class="helper">Showing 3 premium products</p>
-            <button class="sort-btn" type="button">
-                Sort by <i data-lucide="chevron-down" class="icon"></i>
-            </button>
         </section>
 
         <section class="product-grid">
