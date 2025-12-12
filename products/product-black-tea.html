@@ -445,9 +445,42 @@
       src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture">
     </script>
     <script>
-        paypal.HostedButtons({
-            hostedButtonId: "AMDLXGV7HCKXW",
-        }).render("#paypal-container-AMDLXGV7HCKXW")
+      // Suppress PayPal SDK console errors
+      const originalError = console.error;
+      console.error = function(...args) {
+        // Filter out PayPal paylater errors
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('ncps_standalone_paylater_ineligible')) {
+          return; // Suppress this error
+        }
+        originalError.apply(console, args);
+      };
+
+      // Wait for PayPal SDK to load before rendering
+      function initPayPal() {
+        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
+          try {
+            paypal.HostedButtons({
+              hostedButtonId: "AMDLXGV7HCKXW",
+            }).render("#paypal-container-AMDLXGV7HCKXW").catch(function(err) {
+              // Silently handle rendering errors
+              console.warn('PayPal button rendering issue:', err);
+            });
+          } catch (err) {
+            // Silently handle initialization errors
+            console.warn('PayPal initialization error:', err);
+          }
+        } else {
+          // Retry if PayPal SDK not loaded yet
+          setTimeout(initPayPal, 100);
+        }
+      }
+
+      // Start initialization
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPayPal);
+      } else {
+        initPayPal();
+      }
     </script>
 </body>
 </html>
