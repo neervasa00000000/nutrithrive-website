@@ -118,3 +118,7 @@
 /pages/pages/homepage/index.html / 301
 /blog/blog.html.html /blog/ 301
 /pages/blog/blog.html /blog/ 301
+
+# Removed blog posts - redirect to homepage
+/blog/moringa-vs-spirulina-which-green-powder-tastes-better.html / 301
+/blog/moringa-vs-spirulina-which-green-powder-tastes-better / 301
