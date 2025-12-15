@@ -49,6 +49,22 @@ DirectoryIndex index.html index.htm
     RewriteRule ^contact\.html$ /pages/contact/contact.html [R=301,L]
     RewriteRule ^moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^products\.html$ /products/ [R=301,L]
+    
+    # Fix incorrect URL paths causing 301 redirects
+    RewriteRule ^about/about\.html$ /pages/about/about.html [R=301,L]
+    RewriteRule ^contact/contact\.html$ /pages/contact/contact.html [R=301,L]
+    RewriteRule ^homepage/index\.html$ / [R=301,L]
+    RewriteRule ^homepage/?$ / [R=301,L]
+    
+    # Fix blog redirects
+    RewriteRule ^pages/blog/blog\.html$ /blog/ [R=301,L]
+    RewriteRule ^blog/blog\.html\.html$ /blog/ [R=301,L]
+    
+    # Redirect non-existent blog posts to actual files
+    RewriteRule ^blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
+    RewriteRule ^blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html [R=301,L]
+    RewriteRule ^blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html [R=301,L]
+    RewriteRule ^blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html [R=301,L]
 </IfModule>
 
 # Fallback Apache redirects (if mod_rewrite is not available)
@@ -74,3 +90,19 @@ RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-mori
 RedirectMatch 301 ^/contact\.html$ /pages/contact/contact.html
 RedirectMatch 301 ^/moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html
 RedirectMatch 301 ^/products\.html$ /products/
+
+# Fix incorrect URL paths causing 301 redirects
+RedirectMatch 301 ^/about/about\.html$ /pages/about/about.html
+RedirectMatch 301 ^/contact/contact\.html$ /pages/contact/contact.html
+RedirectMatch 301 ^/homepage/index\.html$ /
+RedirectMatch 301 ^/homepage/?$ /
+
+# Fix blog redirects
+RedirectMatch 301 ^/pages/blog/blog\.html$ /blog/
+RedirectMatch 301 ^/blog/blog\.html\.html$ /blog/
+
+# Redirect non-existent blog posts to actual files
+RedirectMatch 301 ^/blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html
+RedirectMatch 301 ^/blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html
+RedirectMatch 301 ^/blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html
+RedirectMatch 301 ^/blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html
