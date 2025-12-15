@@ -65,6 +65,30 @@ DirectoryIndex index.html index.htm
     RewriteRule ^blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html [R=301,L]
     RewriteRule ^blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html [R=301,L]
     RewriteRule ^blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html [R=301,L]
+    
+    # Fix broken image URLs (404 errors from Google Search Console)
+    # Redirect old Dried_curry_leaves directory paths to random folder
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry3\.png$ /shared/images/random/CURRY3.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry2\.png$ /shared/images/random/Curry2.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry1\.png$ /shared/images/random/Curry1.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry1 .png$ /shared/images/random/Curry1.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/4\.png$ /shared/images/random/4.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/energy-boosters\.png$ /shared/images/random/energy-boosters.png [R=301,L]
+    # Redirect old Moringa directory paths to random folder
+    RewriteRule ^shared/images/Moringa%20/Moringa\.png$ /shared/images/random/Moringa.png [R=301,L]
+    RewriteRule ^shared/images/Moringa /Moringa\.png$ /shared/images/random/Moringa.png [R=301,L]
+    RewriteRule ^shared/images/Moringa/Moringa\.png$ /shared/images/random/Moringa.png [R=301,L]
+    RewriteRule ^shared/images/Moringa%20/moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg [R=301,L]
+    RewriteRule ^shared/images/Moringa /moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg [R=301,L]
+    RewriteRule ^shared/images/Moringa/moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg [R=301,L]
+    RewriteRule ^shared/images/Moringa/athletes\.png$ /shared/images/random/athletes.png [R=301,L]
+    # Redirect incorrect /blog/shared/images/ paths
+    RewriteRule ^blog/shared/images/Moringa/moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg [R=301,L]
+    RewriteRule ^blog/shared/images/Moringa/athletes\.png$ /shared/images/random/athletes.png [R=301,L]
+    # Redirect other missing images to appropriate existing images
+    RewriteRule ^shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /shared/images/random/Curry1.png [R=301,L]
+    RewriteRule ^shared/images/dried-curry-leaves-cooking-soup\.jpg$ /shared/images/random/Curry1.png [R=301,L]
+    RewriteRule ^shared/images/curry-leaf-tea-recipe-australia\.jpg$ /shared/images/random/Curry1.png [R=301,L]
 </IfModule>
 
 # Fallback Apache redirects (if mod_rewrite is not available)
@@ -106,3 +130,27 @@ RedirectMatch 301 ^/blog/natural-eye-health-supplements-australia\.html$ /blog/m
 RedirectMatch 301 ^/blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html
 RedirectMatch 301 ^/blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html
 RedirectMatch 301 ^/blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html
+
+# Fix broken image URLs (404 errors from Google Search Console)
+# Redirect old Dried_curry_leaves directory paths to random folder
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry3\.png$ /shared/images/random/CURRY3.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry2\.png$ /shared/images/random/Curry2.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1\.png$ /shared/images/random/Curry1.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1%20\.png$ /shared/images/random/Curry1.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/4\.png$ /shared/images/random/4.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/energy-boosters\.png$ /shared/images/random/energy-boosters.png
+# Redirect old Moringa directory paths to random folder
+RedirectMatch 301 ^/shared/images/Moringa%20/Moringa\.png$ /shared/images/random/Moringa.png
+RedirectMatch 301 ^/shared/images/Moringa /Moringa\.png$ /shared/images/random/Moringa.png
+RedirectMatch 301 ^/shared/images/Moringa/Moringa\.png$ /shared/images/random/Moringa.png
+RedirectMatch 301 ^/shared/images/Moringa%20/moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg
+RedirectMatch 301 ^/shared/images/Moringa /moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg
+RedirectMatch 301 ^/shared/images/Moringa/moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg
+RedirectMatch 301 ^/shared/images/Moringa/athletes\.png$ /shared/images/random/athletes.png
+# Redirect incorrect /blog/shared/images/ paths
+RedirectMatch 301 ^/blog/shared/images/Moringa/moringa-hero\.jpg$ /shared/images/random/moringa-hero.jpg
+RedirectMatch 301 ^/blog/shared/images/Moringa/athletes\.png$ /shared/images/random/athletes.png
+# Redirect other missing images to appropriate existing images
+RedirectMatch 301 ^/shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /shared/images/random/Curry1.png
+RedirectMatch 301 ^/shared/images/dried-curry-leaves-cooking-soup\.jpg$ /shared/images/random/Curry1.png
+RedirectMatch 301 ^/shared/images/curry-leaf-tea-recipe-australia\.jpg$ /shared/images/random/Curry1.png
