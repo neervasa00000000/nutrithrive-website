@@ -74,6 +74,10 @@
 /faq /pages/faq/faq.html 301
 /contact /pages/contact/contact.html 301
 
+# Fix case sensitivity for Image-Enhancer
+/crazy-ideas/Image-Enhancer/* /crazy-ideas/image-enhancer/:splat 301
+/crazy-ideas/Image-Enhancer /crazy-ideas/image-enhancer/ 301
+
 # Fix alternative pages without .html extension - Blog posts
 /blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
 /blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2025 /blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2025.html 301
@@ -106,6 +110,8 @@
 
 # Fix /pages/products/product-detail (without .html)
 /pages/products/product-detail /products/ 301
+# Fix /pages/products/product-detail.html (with .html)
+/pages/products/product-detail.html /products/product-detail.html 301
 
 # Fix /pages/benefits/moringa-benefits (with and without .html)
 /pages/benefits/moringa-benefits /pages/usage-guide/how-to-use-moringa.html 301

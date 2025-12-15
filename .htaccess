@@ -9,6 +9,18 @@ DirectoryIndex index.html index.htm
     RewriteEngine On
     RewriteBase /
     
+    # Force HTTPS - redirect HTTP to HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+    
+    # Force non-WWW - redirect www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
+    
+    # Fix case sensitivity for Image-Enhancer
+    RewriteRule ^crazy-ideas/Image-Enhancer/?$ /crazy-ideas/image-enhancer/ [R=301,L]
+    RewriteRule ^crazy-ideas/Image-Enhancer/(.*)$ /crazy-ideas/image-enhancer/$1 [R=301,L]
+    
     # Blog redirects - redirect ALL /pages/blog/ to /blog/
     # First: Handle /pages/blog/ directory - redirect to /blog/
     RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
@@ -33,6 +45,11 @@ DirectoryIndex index.html index.htm
     # Products redirects - redirect all /pages/products/ to /products/
     RewriteRule ^pages/products/(.*)$ /products/$1 [R=301,L]
     RewriteRule ^pages/products/?$ /products/ [R=301,L]
+    
+    # Clean URL redirects for main pages (without trailing slash)
+    RewriteRule ^faq/?$ /pages/faq/faq.html [R=301,L]
+    RewriteRule ^contact/?$ /pages/contact/contact.html [R=301,L]
+    RewriteRule ^about/?$ /pages/about/about.html [R=301,L]
     
     # Homepage redirect
     RewriteRule ^pages/homepage/(.*)$ /$1 [R=301,L]
@@ -59,6 +76,15 @@ DirectoryIndex index.html index.htm
     # Fix blog redirects
     RewriteRule ^pages/blog/blog\.html$ /blog/ [R=301,L]
     RewriteRule ^blog/blog\.html\.html$ /blog/ [R=301,L]
+    
+    # Fix case sensitivity for Image-Enhancer
+    RewriteRule ^crazy-ideas/Image-Enhancer/?$ /crazy-ideas/image-enhancer/ [R=301,L]
+    RewriteRule ^crazy-ideas/Image-Enhancer/(.*)$ /crazy-ideas/image-enhancer/$1 [R=301,L]
+    
+    # Clean URL redirects for main pages (without trailing slash)
+    RewriteRule ^faq/?$ /pages/faq/faq.html [R=301,L]
+    RewriteRule ^contact/?$ /pages/contact/contact.html [R=301,L]
+    RewriteRule ^about/?$ /pages/about/about.html [R=301,L]
     
     # Redirect non-existent blog posts to actual files
     RewriteRule ^blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
