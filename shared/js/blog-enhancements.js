@@ -177,7 +177,7 @@
     // Product entities for key items (used for knowledge/association, not altering page copy)
     const products = [
       { name: 'NutriThrive Moringa Powder', price: PRICES.moringa.price, unit: PRICES.moringa.unit, url: PRICES.moringa.url, image: 'https://i.imgur.com/56hwJfZ.png', description: '100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, perfect for boosting energy and supporting a healthy immune system.' },
-      { name: 'NutriThrive Dried Curry Leaves', price: PRICES.curry.price, unit: PRICES.curry.unit, url: PRICES.curry.url, image: 'https://nutrithrive.com.au/shared/images/Dried_curry_leaves/Curry1.png', description: 'Premium dried curry leaves from our own farm. Traditional Indian spice with health benefits. 100% natural, perfect for authentic Indian cooking.' },
+      { name: 'NutriThrive Dried Curry Leaves', price: PRICES.curry.price, unit: PRICES.curry.unit, url: PRICES.curry.url, image: 'https://nutrithrive.com.au/shared/images/random/Curry1.png', description: 'Premium dried curry leaves from our own farm. Traditional Indian spice with health benefits. 100% natural, perfect for authentic Indian cooking.' },
       { name: 'NutriThrive Darjeeling Black Tea', price: PRICES.tea.price, unit: PRICES.tea.unit, url: PRICES.tea.url, image: 'https://i.imgur.com/vn0DO4Q.jpg', description: 'Premium Darjeeling black tea with rich aroma and smooth, balanced taste. Perfect for mornings or afternoon pick-me-up.' }
     ];
     const prodLD = {
