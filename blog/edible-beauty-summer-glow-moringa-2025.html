@@ -749,7 +749,19 @@
                 scroll-behavior: smooth;
             }
         }
-    </style>
+    
+        /* Related Articles and Product CTAs Hover Effects */
+        .related-article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(23, 92, 54, 0.2) !important;
+        }
+        .cta-button-primary:hover, .cta-button-secondary:hover {
+            transform: translateY(-2px);
+        }
+        .product-card a:hover {
+            background: #0f4a2a !important;
+        }
+    </style></style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
@@ -829,7 +841,18 @@
 
             <p>Furthermore, the wellness narrative has shifted from vague aspirations of "clean eating" to specific, quantifiable biological goals: insulin sensitivity, microbiome diversity, and cognitive preservation. This has propelled functional ingredients—from indigenous saltbush to superfoods like Moringa—into the mainstream Australian pantry, available throughout Melbourne, Sydney, and across the country.</p>
 
-            <h2>2. The Metabolic Awakening: Insulin, Glucose, and the Savoury Shift</h2>
+            
+            <!-- Product CTA Inline -->
+            <div class="product-cta-inline" style="margin: 3rem 0; padding: 2.5rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); border-radius: 16px; text-align: center; color: white; box-shadow: 0 8px 32px rgba(23, 92, 54, 0.3);">
+                <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700;">🌿 Try Premium Moringa Powder Today</h3>
+                <p style="color: #e8f5ed; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">Experience the benefits of 100% organic, lab-tested moringa powder from NutriThrive. Free delivery across Victoria!</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/products/" class="cta-button-primary" style="display: inline-block; padding: 1rem 2.5rem; background: white; color: #175c36; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">Shop Now</a>
+                    <a href="/pages/products/products.html" class="cta-button-secondary" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; border: 2px solid white; transition: transform 0.3s ease;">View All Products</a>
+                </div>
+            </div>
+            <!-- End Product CTA Inline -->
+<h2>2. The Metabolic Awakening: Insulin, Glucose, and the Savoury Shift</h2>
 
             <p>A dominant theme in 2025 is the widespread consumer focus on "Metabolic Mastery." Influenced by accessible scientific knowledge regarding blood glucose regulation, Australians are fundamentally altering the composition of their first meal to mitigate insulin spikes and sustain energy.</p>
 
@@ -1196,7 +1219,77 @@
                         <div style="margin-top: 3rem; padding: 2.5rem; background: #f8f9fa; border-radius: 12px; border-top: 3px solid #2d5a3d;">
                 <h2 style="font-size: 1.75rem; color: #2d5a3d; margin-bottom: 1.5rem; font-weight: 700;">Frequently Asked Questions About Moringa</h2>
                 
-                <div class="faq-section" style="margin-top: 2rem;">
+                
+            <!-- Product Showcase Section -->
+            <div class="product-showcase" style="margin: 4rem 0; padding: 3rem; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(23, 92, 54, 0.16);">
+                <h2 style="color: #175c36; font-size: 2rem; margin-bottom: 1rem; text-align: center; font-weight: 700;">🛒 Shop Our Premium Superfoods</h2>
+                <p style="text-align: center; color: #4a6741; margin-bottom: 3rem; font-size: 1.1rem;">Lab-tested, organic, and delivered fresh to your door across Victoria</p>
+                
+                <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                    <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
+                        <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Moringa Powder</h3>
+                        <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Premium 100% organic moringa leaf powder. Packed with vitamins, minerals, and antioxidants.</p>
+                        <a href="/products/product-detail.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                    </div>
+                    
+                    <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
+                        <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Dried Curry Leaves</h3>
+                        <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Authentic South Indian curry leaves. Perfect for cooking and loaded with health benefits.</p>
+                        <a href="/products/product-curry-leaves.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                    </div>
+                    
+                    <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
+                        <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Premium Black Tea</h3>
+                        <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Premium Darjeeling & Assam black tea blend. Rich flavor with natural antioxidants.</p>
+                        <a href="/products/product-black-tea.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="/products/" style="display: inline-block; padding: 1rem 3rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.2rem; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.3); transition: transform 0.3s ease;">View All Products</a>
+                </div>
+            </div>
+            <!-- End Product Showcase Section -->
+
+
+            <!-- Related Articles Section -->
+            <div class="related-articles-section" style="margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 16px; border: 2px solid #2d7a4f;">
+                <h2 style="color: #175c36; font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 700;">📚 Read More From Our Blog</h2>
+                <p style="text-align: center; color: #4a6741; margin-bottom: 2.5rem; font-size: 1.1rem;">Explore more articles about superfoods, health tips, and wellness guides</p>
+                <div class="related-articles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <a href="/blog/best-foods-for-weight-loss-australian-dietitian-guide-2025.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Best Foods for Weight Loss: Australian Dietitian's Top 15 Picks (2025)</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/moringa-breastfeeding-mums-natural-lactation-support.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Easy Moringa Lactation Cookies: A Natural Milk Booster for Aussie Mums</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/best-clean-protein-powder-australia-2025-lab-tested-reviews-comparison-expert-buyers-guide.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Best Non-Bloating Protein Powder Australia 2025 (Busy Professionals)</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/natural-language-calendar-scheduler.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Natural Language Calendar Scheduler: The Fastest Way to Create Events</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/complete-vegan-protein-moringa-plant-based-eaters.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">The "Complete" Vegan Protein: Why Plant-Based Eaters Need Moringa</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/iron-deficiency-complete-guide-australia-2025.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Why Your Coffee is Killing Your Iron Levels (And How to Fix It)</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/10-healthiest-foods-world-complete-guide-australia-2025.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">10 Healthiest Foods in the World: Complete Guide for Australians 2025</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                </div>
+            </div>
+            <!-- End Related Articles Section -->
+
+<div class="faq-section" style="margin-top: 2rem;">
 
                     <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
                         <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d; display: flex; justify-content: space-between; align-items: center;">
