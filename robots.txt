@@ -1,26 +1,150 @@
+# Nutrithrive.com.au - Robots.txt
+# We welcome all search engines and AI crawlers!
+
+# ====================
+# ALL BOTS (General Rule)
+# ====================
 User-agent: *
 Allow: /
 
-# Favicon
-Allow: /favicon.ico
+# ====================
+# SEARCH ENGINE BOTS
+# ====================
 
-# Sitemap
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# ====================
+# AI CRAWLERS & LLMs
+# ====================
+
+# OpenAI ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# OpenAI SearchGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: Claude-Web
+Allow: /
+
+# Anthropic (alternative)
+User-agent: anthropic-ai
+Allow: /
+
+# Google Gemini/Bard AI Training
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl (used by many AI companies)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Meta AI (alternative)
+User-agent: meta-externalagent
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+# Amazon Alexa
+User-agent: ia_archiver
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# AI2 (Allen Institute)
+User-agent: AI2Bot
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# YouBot (You.com AI)
+User-agent: YouBot
+Allow: /
+
+# ====================
+# SITEMAPS
+# ====================
 Sitemap: https://nutrithrive.com.au/sitemap.xml
 
+# ====================
+# DISALLOWED AREAS
+# ====================
 # Disallow admin or private areas (if any)
 # Disallow: /admin/
 # Disallow: /private/
 
+# Disallow old URL structures that redirect (prevent Google from wasting crawl budget)
+Disallow: /pages/blog/
+Disallow: /pages/products/product-
+Disallow: /pages/homepage/
+
+# ====================
+# EXPLICITLY ALLOWED CONTENT
+# ====================
 # Allow all important pages
 Allow: /index.html
-Allow: /products.html
+Allow: /products/
+Allow: /pages/
 Allow: /about.html
 Allow: /contact.html
-Allow: /blog.html
+Allow: /blog/
 Allow: /how-to-use-moringa.html
 Allow: /moringa-benefits.html
 Allow: /product-detail.html
 Allow: /product-black-tea.html
-Allow: /thank-you.html
-Allow: /blog/
+Allow: /product-curry-leaves.html
+Allow: /crazy-ideas/
 Allow: /images/
+Allow: /favicon.ico
+
+# Allow CSS and JS for better crawling
+Allow: /*.css
+Allow: /*.js
+
+# ====================
+# CRAWL RATE (Optional)
+# ====================
+# Request delay: 1 second between requests (adjust as needed)
+# Crawl-delay: 1
