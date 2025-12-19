@@ -334,6 +334,24 @@
             }
         </style>
 
+        <!-- Newsletter Subscription Section -->
+        <section class="newsletter-section">
+            <h2>Stay Updated with NutriThrive</h2>
+            <p>Get the latest health tips, product updates, exclusive offers, and wellness insights delivered to your inbox!</p>
+            <form class="newsletter-form" action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST" style="max-width: 500px; margin: 0 auto;">
+                <input type="hidden" name="_subject" value="Newsletter Subscription - NutriThrive">
+                <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <input type="text" name="name" placeholder="Your name (optional)" style="flex: 1; min-width: 200px;">
+                    <input type="email" name="email" placeholder="Enter your email" required style="flex: 1; min-width: 200px;">
+                </div>
+                <button type="submit" class="newsletter-submit-btn" style="width: 100%; margin-top: 0.5rem;">Subscribe to Newsletter</button>
+                <div class="newsletter-message"></div>
+            </form>
+        </section>
+
         <section class="testimonials">
             <h2 class="testimonials-title">What Our Customers Say</h2>
             <div class="testimonial-carousel">
@@ -423,6 +441,19 @@
                 </ul>
             </div>
             <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; font-size: 0.95rem;">Subscribe to get health tips, product updates, and exclusive offers!</p>
+                <form class="newsletter-form newsletter-form-inline" action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Newsletter Subscription - NutriThrive">
+                    <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+                    <div class="newsletter-message"></div>
+                </form>
+            </div>
+            <div class="footer-section">
                 <h3>Business Info</h3>
                 <ul class="footer-links">
                     <li>Based in Truganina, Melbourne, Victoria<br>Fast Shipping Australia-wide<br>Serving Melbourne, Sydney & All of Australia</li>
@@ -455,5 +486,6 @@
     </script>
     <script src="shared/js/script.js" defer></script>
     <script src="pages/homepage/homepage.js" defer></script>
+    <script src="shared/js/newsletter.js" defer></script>
 </body>
 </html>
