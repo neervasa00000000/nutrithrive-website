@@ -86,6 +86,12 @@ DirectoryIndex index.html index.htm
     RewriteRule ^contact/?$ /pages/contact/contact.html [R=301,L]
     RewriteRule ^about/?$ /pages/about/about.html [R=301,L]
     
+    # Fix double .html.html extensions (Google Search Console errors)
+    RewriteRule ^(.+)\.html\.html$ /$1.html [R=301,L]
+    
+    # Fix /product-detail without .html
+    RewriteRule ^product-detail/?$ /products/product-detail.html [R=301,L]
+    
     # Redirect non-existent blog posts to actual files
     RewriteRule ^blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
     RewriteRule ^blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html [R=301,L]
@@ -150,6 +156,12 @@ RedirectMatch 301 ^/homepage/?$ /
 # Fix blog redirects
 RedirectMatch 301 ^/pages/blog/blog\.html$ /blog/
 RedirectMatch 301 ^/blog/blog\.html\.html$ /blog/
+
+# Fix double .html.html extensions (Google Search Console errors)
+RedirectMatch 301 ^/(.+)\.html\.html$ /$1.html
+
+# Fix /product-detail without .html
+RedirectMatch 301 ^/product-detail/?$ /products/product-detail.html
 
 # Redirect non-existent blog posts to actual files
 RedirectMatch 301 ^/blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html
