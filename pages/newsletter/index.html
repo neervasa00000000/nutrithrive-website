@@ -100,8 +100,16 @@
                 <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="text" name="name" placeholder="Your name">
-                <input type="email" name="email" placeholder="Enter your email address" required>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <div>
+                        <label for="newsletter-page-name" style="display: block; margin-bottom: 0.4rem; color: var(--text); font-weight: 600; font-size: 0.95rem;">Your Name</label>
+                        <input type="text" id="newsletter-page-name" name="name" placeholder="Enter your name" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                    </div>
+                    <div>
+                        <label for="newsletter-page-email" style="display: block; margin-bottom: 0.4rem; color: var(--text); font-weight: 600; font-size: 0.95rem;">Your Email</label>
+                        <input type="email" id="newsletter-page-email" name="email" placeholder="Enter your email address" required style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                    </div>
+                </div>
                 <button type="submit" class="newsletter-submit-btn" style="width: 100%; margin-top: 0.5rem;">Subscribe Now</button>
                 <div class="newsletter-message"></div>
                 <p style="font-size: 0.85rem; color: var(--muted); margin-top: 1rem;">
@@ -145,8 +153,10 @@
                     <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="name" placeholder="Your name" style="margin-bottom: 0.5rem;">
-                    <input type="email" name="email" placeholder="Enter your email" required style="margin-bottom: 0.5rem;">
+                    <label for="newsletter-footer-name" style="display: block; margin-bottom: 0.4rem; color: rgba(255, 255, 255, 0.9); font-weight: 600; font-size: 0.9rem;">Your Name</label>
+                    <input type="text" id="newsletter-footer-name" name="name" placeholder="Enter your name" style="margin-bottom: 0.75rem;">
+                    <label for="newsletter-footer-email" style="display: block; margin-bottom: 0.4rem; color: rgba(255, 255, 255, 0.9); font-weight: 600; font-size: 0.9rem;">Your Email</label>
+                    <input type="email" id="newsletter-footer-email" name="email" placeholder="Enter your email address" required style="margin-bottom: 0.75rem;">
                     <button type="submit" class="newsletter-submit-btn" style="width: 100%;">Subscribe</button>
                     <div class="newsletter-message"></div>
                 </form>
