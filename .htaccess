@@ -63,6 +63,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^blog\.html$ /blog/ [R=301,L]
     RewriteRule ^thank-you\.html$ /pages/contact/thank-you.html [R=301,L]
     RewriteRule ^how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
+    RewriteRule ^how-to-use-moringa/?$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^contact\.html$ /pages/contact/contact.html [R=301,L]
     RewriteRule ^moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^products\.html$ /products/ [R=301,L]
@@ -143,6 +144,7 @@ RedirectMatch 301 ^/about\.html$ /pages/about/about.html
 RedirectMatch 301 ^/blog\.html$ /blog/
 RedirectMatch 301 ^/thank-you\.html$ /pages/contact/thank-you.html
 RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html
+RedirectMatch 301 ^/how-to-use-moringa/?$ /pages/usage-guide/how-to-use-moringa.html
 RedirectMatch 301 ^/contact\.html$ /pages/contact/contact.html
 RedirectMatch 301 ^/moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html
 RedirectMatch 301 ^/products\.html$ /products/
