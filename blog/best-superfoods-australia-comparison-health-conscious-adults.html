@@ -67,11 +67,11 @@
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Best Superfoods in Australia: A Comparison for Health-Conscious Adults and Gym-Goers",
-      "description": "Compare top superfoods in Australia for health-conscious adults and gym-goers. Moringa, spirulina, <a href="/blog/chia-seeds-nutritional-information-health-benefits-complete-guide-2025.html" style="color: #16a34a; text-decoration: underline;">Chia Seeds</a>, turmeric, matcha, ashwagandha - nutrition, benefits, and how to use them.",
+      "description": "Compare top superfoods in Australia for health-conscious adults and gym-goers: moringa, spirulina, chia seeds, turmeric, matcha, and ashwagandha — nutrition, benefits, and how to use them.",
       "author": {"@type": "Organization", "name": "NutriThrive"},
       "datePublished": "2025-01-15",
       "dateModified": "2025-10-17",
-      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html}"},
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html"},
       "image": "https://nutrithrive.com.au/shared/images/random/moringa-hero.jpg",
       "publisher": {
         "@type": "Organization",
@@ -882,7 +882,91 @@
         .product-card a:hover {
             background: #0f4a2a !important;
         }
-    </style></style>
+        
+        /* -------- Page-specific UI polish (this article only) -------- */
+        .breadcrumbs {
+            margin: 0.75rem auto 0;
+            max-width: 800px;
+            padding: 0 1rem;
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+        .breadcrumbs a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .breadcrumbs a:hover { text-decoration: underline; }
+        .breadcrumbs .sep { margin: 0 0.5rem; color: #9ca3af; }
+        
+        .superfoods-promo {
+            background: linear-gradient(180deg, rgba(240, 253, 244, 1), rgba(240, 253, 244, 0.6));
+            border: 1px solid rgba(22, 163, 74, 0.25);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0 2.25rem;
+            box-shadow: 0 10px 24px rgba(23,92,54,0.08);
+        }
+        .superfoods-promo h3 {
+            margin: 0 0 0.5rem 0;
+            color: #166534;
+            font-size: 1.15rem;
+        }
+        .superfoods-promo p {
+            margin: 0.25rem 0 1rem 0;
+            color: #166534;
+            line-height: 1.55;
+        }
+        .superfoods-promo .promo-points {
+            margin: 0 0 1rem 0;
+            padding-left: 1.1rem;
+            color: #14532d;
+        }
+        .superfoods-promo .promo-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .superfoods-promo .promo-actions a {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 999px;
+            padding: 0.85rem 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .superfoods-promo .promo-actions a:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 18px rgba(23,92,54,0.15);
+        }
+        .superfoods-promo .btn-primary {
+            background: #16a34a;
+            color: #fff;
+        }
+        .superfoods-promo .btn-secondary {
+            background: rgba(22, 163, 74, 0.08);
+            color: #14532d;
+            border: 1px solid rgba(22, 163, 74, 0.35);
+        }
+        
+        .toc-container a:hover { color: var(--primary) !important; }
+        .quiz-container { border-radius: 16px !important; }
+        
+        .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 14px;
+            border: 1px solid rgba(23,92,54,0.12);
+            background: rgba(255, 253, 250, 0.75);
+        }
+        .table-wrap table { margin: 0 !important; }
+        .table-wrap th {
+            background: rgba(23, 92, 54, 0.04);
+            position: sticky;
+            top: 0;
+        }
+    </style>
 </head>
 <body class="non-sticky-header">
     <header>
@@ -918,27 +1002,29 @@
                     <time datetime="2025-01-15">January 15, 2025</time>
                     <span class="reading-time">10 min read</span>
                 </div>
-            <!-- Breadcrumb Navigation -->
-            <div style="background: #f8f9fa; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0e0; margin: 0;">
-                <nav style="font-size: 0.9375rem; color: #666;">
-                    <a href="/" style="color: #2d5a3d; text-decoration: none;">Home</a>
-                    <span style="margin: 0 0.5rem; color: #999;">›</span>
-                    <a href="/blog/index.html" style="color: #2d5a3d; text-decoration: none;">Blog</a>
-                    <span style="margin: 0 0.5rem; color: #999;">›</span>
-                    <span style="color: #333; font-weight: 500;">Best Superfoods in Australia: A Comparison for ...</span>
-                </nav>
-            </div>
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <a href="/">Home</a><span class="sep">›</span>
+                <a href="/blog/">Blog</a><span class="sep">›</span>
+                <span>Best Superfoods in Australia</span>
+            </nav>
 
             </header>
 
             <div class="blog-post-body">
                  <p>Superfoods are nutrient-dense foods packed with vitamins, minerals and antioxidants that support overall wellness. In Australia, a growing number of health-conscious adults (including the Indian-Australian community) are adding superfoods to their diets for better energy, recovery and digestion. The key is choosing superfoods that boost immunity, fuel workouts and improve gut health. Below we compare top options – including Indian favourites like <a href="../products/product-detail.html" style="color: var(--primary); text-decoration: underline;">moringa</a> and ashwagandha – on nutrition, taste, fitness benefits, origin and cost.</p>
 
-<div style="background-color: #f0fdf4; border: 2px solid #16a34a; padding: 20px; border-radius: 10px; margin: 25px 0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-    <h3 style="margin-top: 0; color: #166534; font-size: 1.2rem;">🌿 Don't just read about it—feel the difference.</h3>
-    <p style="margin-bottom: 15px; color: #15803d;">Get 100% Natural Moringa Get 100% Natural Moringa Get 100% Natural Moringa Get 100% Natural Moringa Get 100% Natural Moringa Get 100% Natural Moringa Get 100% Natural Moringa Get 100% Natural Moringa Get 100% Natural Moringa & Curry Leaves delivered to your door. Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives Curry Leaves delivered to your door. Vegan • Gluten-Free • No Additives • No Preservatives</p>
-    <a href="/products/" style="background-color: #16a34a; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; display: inline-block; transition: background 0.3s;">Shop Best Sellers &rarr;</a>
-</div>
+                <section class="superfoods-promo" aria-label="Shop NutriThrive superfoods">
+                    <h3>🌿 Don’t just read about it—feel the difference.</h3>
+                    <p>Get lab-tested moringa, curry leaves, and premium black tea delivered Australia-wide.</p>
+                    <ul class="promo-points">
+                        <li>Vegan • Gluten-Free • No Additives</li>
+                        <li>Fast dispatch from Truganina, VIC</li>
+                    </ul>
+                    <div class="promo-actions">
+                        <a class="btn-primary" href="/products/">Shop Best Sellers →</a>
+                        <a class="btn-secondary" href="/products/">View All Products</a>
+                    </div>
+                </section>
 
                 <div style="background: linear-gradient(135deg, #2d5a3d 0%, #1e4029 100%); color: white; padding: 2.5rem 2rem; border-radius: 16px; margin: 3rem 0; text-align: center; box-shadow: 0 8px 24px rgba(45,90,61,0.2);">
                     <h2 style="color: white; margin: 0 0 1rem 0; font-size: 2rem;">🌿 Ultimate Aussie Wellness Kit</h2>
@@ -977,7 +1063,7 @@
                 </div>
 
                 <!-- Interactive Superfood Quiz -->
-                <div class="quiz-container" style="background: linear-gradient(135deg, var(--primary), #2d5a3d); padding: 30px; margin: 40px 0; color: white; border-radius: 0;">
+                <div class="quiz-container" style="background: linear-gradient(135deg, var(--primary), #2d5a3d); padding: 30px; margin: 40px 0; color: white;">
                     <h3 style="color: white; margin-bottom: 15px; font-size: 1.4rem;">🎯 Find Your Perfect Superfood</h3>
                     <p style="color: rgba(255,255,255,0.9); margin-bottom: 25px;">Take our quick quiz to discover which superfoods match your health goals:</p>
                     <div class="quiz-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
@@ -996,7 +1082,7 @@
                 <p style="color: #e8f5ed; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">Experience the benefits of 100% organic, lab-tested moringa powder from NutriThrive. Free delivery across Victoria!</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="/products/" class="cta-button-primary" style="display: inline-block; padding: 1rem 2.5rem; background: white; color: #175c36; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">Shop Now</a>
-                    <a href="/pages/products/products.html" class="cta-button-secondary" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; border: 2px solid white; transition: transform 0.3s ease;">View All Products</a>
+                    <a href="/products/" class="cta-button-secondary" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; border: 2px solid white; transition: transform 0.3s ease;">View All Products</a>
                 </div>
             </div>
             <!-- End Product CTA Inline -->
@@ -1034,6 +1120,7 @@
                 </ul>
 
                 <h2 id="comparison">📊 Superfood Comparison Table</h2>
+                <div class="table-wrap" role="region" aria-label="Superfood comparison table" tabindex="0">
                 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
                     <thead>
                         <tr style="background-color: var(--card);">
@@ -1120,6 +1207,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
 
                 <h2 id="incorporate">🍽️ How to Incorporate Superfoods into Your Diet</h2>
                 
