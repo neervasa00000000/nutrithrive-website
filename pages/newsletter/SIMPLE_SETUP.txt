@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════════════
+  SUPER SIMPLE SETUP - Just 3 Steps!
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Open Google Apps Script
+─────────────────────────────────
+1. Open: https://docs.google.com/spreadsheets/d/124i9E9BZWU8CZO_JKbIeSM8i1BL-fVLnX6GL-ZXaBAg/edit
+2. Click: Extensions → Apps Script
+
+STEP 2: Copy & Paste This Code
+─────────────────────────────────
+Copy everything below this line and paste into Apps Script:
+
+─────────────────────────────────────────────────────────────────
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([data.email || '', data.name || '', new Date(), 'Website']);
+  return ContentService.createTextOutput('OK');
+}
+─────────────────────────────────────────────────────────────────
+
+STEP 3: Deploy
+───────────────
+1. Click: Deploy → New deployment
+2. Click gear icon → Choose "Web app"
+3. Set "Who has access" to: Anyone
+4. Click: Deploy
+5. Copy the URL (looks like: https://script.google.com/macros/s/.../exec)
+6. Send me that URL and I'll update your website!
+
+═══════════════════════════════════════════════════════════════
+That's it! Just 3 steps. Takes 2 minutes.
+═══════════════════════════════════════════════════════════════
+
