@@ -728,7 +728,19 @@
             }
         }
 
-        </style>
+        
+        /* Related Articles and Product CTAs Hover Effects */
+        .related-article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(23, 92, 54, 0.2) !important;
+        }
+        .cta-button-primary:hover, .cta-button-secondary:hover {
+            transform: translateY(-2px);
+        }
+        .product-card a:hover {
+            background: #0f4a2a !important;
+        }
+    </style></style>
 </head>
 <body class="non-sticky-header">
     <header>
@@ -796,7 +808,18 @@
                     <a href="../products/product-curry-leaves.html" style="color: var(--primary); text-decoration: underline; font-weight: 600;">Order Now →</a>
                 </div>
 
-                <h2>🍋 1. Lemon Rice (Chitranna)</h2>
+                
+            <!-- Product CTA Inline -->
+            <div class="product-cta-inline" style="margin: 3rem 0; padding: 2.5rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); border-radius: 16px; text-align: center; color: white; box-shadow: 0 8px 32px rgba(23, 92, 54, 0.3);">
+                <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700;">🌿 Try Premium Moringa Powder Today</h3>
+                <p style="color: #e8f5ed; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">Experience the benefits of 100% organic, lab-tested moringa powder from NutriThrive. Free delivery across Victoria!</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/products/" class="cta-button-primary" style="display: inline-block; padding: 1rem 2.5rem; background: white; color: #175c36; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">Shop Now</a>
+                    <a href="/pages/products/products.html" class="cta-button-secondary" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; border: 2px solid white; transition: transform 0.3s ease;">View All Products</a>
+                </div>
+            </div>
+            <!-- End Product CTA Inline -->
+<h2>🍋 1. Lemon Rice (Chitranna)</h2>
                 <p><strong>Keyword focus:</strong> lemon rice with curry leaves, South Indian rice recipe Melbourne</p>
                 <p>Lemon rice is a zesty, comforting South Indian dish made with cooked rice, lemon juice, turmeric, and a tempering of spices and curry leaves.</p>
 
@@ -939,7 +962,77 @@
                 </div>
 
                 <h2>❓ FAQ</h2>
-                <div class="faq-section">
+                
+            <!-- Product Showcase Section -->
+            <div class="product-showcase" style="margin: 4rem 0; padding: 3rem; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(23, 92, 54, 0.16);">
+                <h2 style="color: #175c36; font-size: 2rem; margin-bottom: 1rem; text-align: center; font-weight: 700;">🛒 Shop Our Premium Superfoods</h2>
+                <p style="text-align: center; color: #4a6741; margin-bottom: 3rem; font-size: 1.1rem;">Lab-tested, organic, and delivered fresh to your door across Victoria</p>
+                
+                <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                    <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
+                        <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Moringa Powder</h3>
+                        <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Premium 100% organic moringa leaf powder. Packed with vitamins, minerals, and antioxidants.</p>
+                        <a href="/products/product-detail.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                    </div>
+                    
+                    <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
+                        <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Dried Curry Leaves</h3>
+                        <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Authentic South Indian curry leaves. Perfect for cooking and loaded with health benefits.</p>
+                        <a href="/products/product-curry-leaves.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                    </div>
+                    
+                    <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
+                        <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Premium Black Tea</h3>
+                        <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Premium Darjeeling & Assam black tea blend. Rich flavor with natural antioxidants.</p>
+                        <a href="/products/product-black-tea.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="/products/" style="display: inline-block; padding: 1rem 3rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.2rem; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.3); transition: transform 0.3s ease;">View All Products</a>
+                </div>
+            </div>
+            <!-- End Product Showcase Section -->
+
+
+            <!-- Related Articles Section -->
+            <div class="related-articles-section" style="margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 16px; border: 2px solid #2d7a4f;">
+                <h2 style="color: #175c36; font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 700;">📚 Read More From Our Blog</h2>
+                <p style="text-align: center; color: #4a6741; margin-bottom: 2.5rem; font-size: 1.1rem;">Explore more articles about superfoods, health tips, and wellness guides</p>
+                <div class="related-articles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <a href="/blog/keto-atta-moringa-benefits-australia.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Keto Atta & Moringa Benefits Australia 2025</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2025.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Best Loose Leaf Black Tea in Melbourne: A Healthier Alternative to Coffee (2025 Guide)</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/moringa-for-gut-health-bloating-2025.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Bloated After Dinner? How to Fix the 'Melbourne Food Coma' Naturally</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/dried-curry-leaf-powder-recipe-hair-growth.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">The 2-Minute "Green Gold" Powder: Why Eating Dried Curry Leaves Stops Hair Fall</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/sneak-greens-into-kids-diet-moringa-hack.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">5 Ways to Hide Veggies in Your Kid's Diet (The "Green Dust" Hack)</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/moringa-breastfeeding-mums-natural-lactation-support.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Easy Moringa Lactation Cookies: A Natural Milk Booster for Aussie Mums</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                    <a href="/blog/nutrithrive-dried-curry-leaves-tradition-health.html" class="related-article-card" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
+                        <h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">NutriThrive Dried Curry Leaves: Farm Story 2025</h3>
+                        <span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
+                    </a>
+                </div>
+            </div>
+            <!-- End Related Articles Section -->
+
+<div class="faq-section">
                     <div class="faq-item" style="margin-bottom: 20px; border: 1px solid #e8f5e8; border-radius: 8px; overflow: hidden;">
                         <button class="faq-question" onclick="toggleFAQ(this)" style="width: 100%; padding: 15px 20px; background: #f8f7f2; border: none; text-align: left; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; align-items: center;">
                             <span>Can I use dried curry leaves in South Indian recipes?</span>
