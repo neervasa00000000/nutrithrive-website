@@ -128,3 +128,7 @@
 # Removed blog posts - redirect to homepage
 /blog/moringa-vs-spirulina-which-green-powder-tastes-better.html / 301
 /blog/moringa-vs-spirulina-which-green-powder-tastes-better / 301
+
+# Removed blog post - redirect to similar beauty/glow page
+/blog/moringa-magic-natural-glow.html /blog/edible-beauty-summer-glow-moringa-2025.html 301
+/blog/moringa-magic-natural-glow /blog/edible-beauty-summer-glow-moringa-2025.html 301
