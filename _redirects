@@ -108,19 +108,17 @@
 # Fix /pages/contact/contact (without .html)
 /pages/contact/contact /pages/contact/contact.html 301
 
-# Fix /pages/products/product-detail (without .html)
-/pages/products/product-detail /products/ 301
-# Fix /pages/products/product-detail.html (with .html)
-/pages/products/product-detail.html /products/product-detail.html 301
+# Fix /pages/products/product-detail (without .html) - REMOVED
+#/pages/products/product-detail /products/ 301
+# Fix /pages/products/product-detail.html (with .html) - REMOVED
+#/pages/products/product-detail.html /products/product-detail.html 301
 
 # Fix /pages/benefits/moringa-benefits (with and without .html)
 /pages/benefits/moringa-benefits /pages/usage-guide/how-to-use-moringa.html 301
 /pages/benefits/moringa-benefits.html /pages/usage-guide/how-to-use-moringa.html 301
 
 # Fix broken 404 links
-/homepage/index.html / 301
-/contact/contact.html /pages/contact/contact.html 301
-/about/about.html /pages/about/about.html 301
+#/homepage/index.html / 301  # REMOVED - no longer redirecting
 /pages/pages/homepage/index.html / 301
 /blog/blog.html.html /blog/ 301
 /pages/blog/blog.html /blog/ 301
