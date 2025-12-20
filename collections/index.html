@@ -46,6 +46,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../shared/css/style.css">
+    <link rel="stylesheet" href="collections.css">
 
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="../shared/images/Logo%20/LOGO.webp" sizes="32x32">
@@ -83,117 +84,228 @@
         </div>
     </header>
 
-    <main class="collections-page">
-        <div class="container">
-            <h1>🛍️ Our Collections</h1>
-            <p class="page-intro">Discover our premium superfood collections, each carefully curated for maximum health benefits and exceptional quality.</p>
+    <!-- Hero Section -->
+    <section class="collections-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🛍️ Collections</div>
+            <h1>Premium Superfood Collections</h1>
+            <p>Discover our carefully curated collections of nature's finest wellness products</p>
+        </div>
+    </section>
+
+    <main class="collections-main">
+        <!-- Collections Showcase -->
+        <section class="collections-showcase">
+            <div class="collections-header">
+                <h2>Explore Our Collections</h2>
+                <p>Each collection is thoughtfully designed for maximum health benefits and exceptional quality</p>
+            </div>
 
             <div class="collections-grid">
                 <div class="collection-card">
-                    <div class="collection-image">
-                        <img src="../shared/images/Home%20page/Moringa.png" alt="Moringa Powder Collection" loading="lazy">
+                    <div class="collection-header">
+                        <div class="collection-icon">🌿</div>
+                        <div class="collection-meta">
+                            <span class="collection-tag">Best Seller</span>
+                            <span class="collection-price">From $12</span>
+                        </div>
                     </div>
                     <div class="collection-content">
-                        <h2>Moringa Collection</h2>
+                        <h3>Moringa Collection</h3>
                         <p>The "Miracle Tree" superfood packed with 92 nutrients. Perfect for energy, immunity, and overall wellness.</p>
-                        <ul>
-                            <li>🌿 100% Pure Moringa Oleifera Leaf Powder</li>
-                            <li>🔬 Lab-tested for heavy metals & contaminants</li>
-                            <li>💪 Complete plant-based protein (18 amino acids)</li>
-                            <li>⚡ Natural energy without caffeine crashes</li>
-                        </ul>
-                        <a href="/products/product-detail.html" class="collection-btn">Shop Moringa Collection</a>
+                        <div class="collection-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">💪</span>
+                                <span>Complete plant-based protein</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">⚡</span>
+                                <span>Natural energy boost</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🛡️</span>
+                                <span>Immune system support</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🔬</span>
+                                <span>Lab-tested purity</span>
+                            </div>
+                        </div>
+                        <a href="/products/product-detail.html" class="collection-cta">Explore Moringa Collection</a>
                     </div>
                 </div>
 
                 <div class="collection-card">
-                    <div class="collection-image">
-                        <img src="../shared/images/Home%20page/Curry%20.png" alt="Curry Leaves Collection" loading="lazy">
+                    <div class="collection-header">
+                        <div class="collection-icon">🍃</div>
+                        <div class="collection-meta">
+                            <span class="collection-tag">Traditional</span>
+                            <span class="collection-price">From $6</span>
+                        </div>
                     </div>
                     <div class="collection-content">
-                        <h2>Curry Leaves Collection</h2>
+                        <h3>Curry Leaves Collection</h3>
                         <p>Authentic South Indian spice with powerful health benefits. Essential for traditional cooking and wellness.</p>
-                        <ul>
-                            <li>🍃 Premium dried curry leaves from sustainable farms</li>
-                            <li>🩺 Rich in antioxidants & anti-inflammatory compounds</li>
-                            <li>👩‍🍳 Perfect for authentic Indian cooking</li>
-                            <li>💚 Supports digestion and metabolic health</li>
-                        </ul>
-                        <a href="/products/product-curry-leaves.html" class="collection-btn">Shop Curry Leaves Collection</a>
+                        <div class="collection-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">🩺</span>
+                                <span>Rich antioxidants</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">👩‍🍳</span>
+                                <span>Authentic cooking</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">💚</span>
+                                <span>Digestion support</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🌱</span>
+                                <span>Sustainably sourced</span>
+                            </div>
+                        </div>
+                        <a href="/products/product-curry-leaves.html" class="collection-cta">Explore Curry Leaves Collection</a>
                     </div>
                 </div>
 
                 <div class="collection-card">
-                    <div class="collection-image">
-                        <img src="../shared/images/Home%20page/BlackTea.png" alt="Black Tea Collection" loading="lazy">
+                    <div class="collection-header">
+                        <div class="collection-icon">☕</div>
+                        <div class="collection-meta">
+                            <span class="collection-tag">Premium</span>
+                            <span class="collection-price">From $15</span>
+                        </div>
                     </div>
                     <div class="collection-content">
-                        <h2>Premium Tea Collection</h2>
+                        <h3>Premium Tea Collection</h3>
                         <p>Finest quality loose leaf teas from renowned estates. Perfect for mindful moments and health benefits.</p>
-                        <ul>
-                            <li>☕ Darjeeling & Assam premium black teas</li>
-                            <li>🧘 Supports calm focus and stress reduction</li>
-                            <li>🇮🇳 Authentic single-origin estate teas</li>
-                            <li>🍵 Rich antioxidants for overall wellness</li>
-                        </ul>
-                        <a href="/products/product-black-tea.html" class="collection-btn">Shop Tea Collection</a>
+                        <div class="collection-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">🧘</span>
+                                <span>Stress reduction</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🇮🇳</span>
+                                <span>Single-origin estates</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🍵</span>
+                                <span>Rich antioxidants</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">⚖️</span>
+                                <span>Premium quality</span>
+                            </div>
+                        </div>
+                        <a href="/products/product-black-tea.html" class="collection-cta">Explore Tea Collection</a>
                     </div>
                 </div>
 
                 <div class="collection-card featured">
-                    <div class="collection-image">
-                        <img src="../shared/images/Logo/LOGO.webp" alt="Complete Wellness Bundle" loading="lazy">
+                    <div class="collection-header">
+                        <div class="collection-icon">🎁</div>
+                        <div class="collection-meta">
+                            <span class="collection-tag popular">Save 15%</span>
+                            <span class="collection-price">From $25</span>
+                        </div>
                     </div>
                     <div class="collection-content">
-                        <h2>Complete Wellness Bundle</h2>
+                        <h3>Complete Wellness Bundle</h3>
                         <p>Experience the full spectrum of natural wellness with our curated superfood collection.</p>
-                        <ul>
-                            <li>🌱 All three premium superfoods in one bundle</li>
-                            <li>💰 Save 15% compared to buying individually</li>
-                            <li>📦 Free shipping Australia-wide</li>
-                            <li>🎁 Perfect for wellness enthusiasts</li>
-                        </ul>
-                        <a href="/products/" class="collection-btn featured-btn">Shop Complete Bundle</a>
+                        <div class="collection-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">🌱</span>
+                                <span>All three superfoods</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">💰</span>
+                                <span>15% savings</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">📦</span>
+                                <span>Free shipping</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">⭐</span>
+                                <span>Perfect starter kit</span>
+                            </div>
+                        </div>
+                        <a href="/products/" class="collection-cta featured-cta">Shop Complete Bundle</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Trust & Quality Section -->
+        <section class="trust-section">
+            <div class="trust-header">
+                <h2>Why Choose Our Collections?</h2>
+                <p>Every product meets our uncompromising standards for quality and purity</p>
             </div>
 
-            <div class="collection-features">
-                <h2>Why Choose Our Collections?</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">🔬</div>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">🔬</div>
+                    <div class="trust-content">
                         <h3>Lab-Tested Quality</h3>
-                        <p>Every batch is independently tested for purity, potency, and contaminants.</p>
+                        <p>Every batch is independently tested for purity, potency, and contaminants to ensure you get the highest quality.</p>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🚚</div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">🚚</div>
+                    <div class="trust-content">
                         <h3>Fast Australian Shipping</h3>
-                        <p>Free delivery Australia-wide. Orders processed within 24 hours.</p>
+                        <p>Free delivery Australia-wide on orders over $80. All orders processed within 24 hours of payment.</p>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🌱</div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">🌱</div>
+                    <div class="trust-content">
                         <h3>Sustainably Sourced</h3>
-                        <p>Ethically sourced from trusted farmers and estates worldwide.</p>
+                        <p>Ethically sourced from trusted farmers and estates worldwide, supporting sustainable agriculture.</p>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">💚</div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">💚</div>
+                    <div class="trust-content">
                         <h3>100% Natural</h3>
-                        <p>No additives, preservatives, or artificial ingredients ever.</p>
+                        <p>No additives, preservatives, or artificial ingredients ever. Just pure, natural wellness products.</p>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🛡️</div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">🛡️</div>
+                    <div class="trust-content">
                         <h3>Quality Guarantee</h3>
-                        <p>7-day money-back guarantee on all our premium products.</p>
+                        <p>7-day money-back guarantee on all our premium products. Your satisfaction is our priority.</p>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">📞</div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">📞</div>
+                    <div class="trust-content">
                         <h3>Expert Support</h3>
-                        <p>Our wellness experts are here to help you choose the perfect products.</p>
+                        <p>Our wellness experts are here to help you choose the perfect products for your health journey.</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Start Your Wellness Journey?</h2>
+                <p>Browse our complete product range and discover which superfoods are perfect for you.</p>
+                <div class="cta-buttons">
+                    <a href="/products/" class="cta-primary">Browse All Products</a>
+                    <a href="/pages/contact/contact.html" class="cta-secondary">Get Expert Advice</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -212,10 +324,20 @@
                 </ul>
             </div>
             <div class="footer-section">
+                <h3>Shipping from Truganina</h3>
+                <ul class="footer-links">
+                    <li><strong>Melbourne Metro:</strong> Same day pickup</li>
+                    <li><strong>Victoria:</strong> 1-2 business days</li>
+                    <li><strong>Australia-wide:</strong> 2-5 business days</li>
+                    <li><strong>Free shipping:</strong> Orders over $80</li>
+                </ul>
+            </div>
+            <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul class="footer-links">
                     <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
                     <li><a href="tel:+61438201419">+61 438201419</a></li>
+                    <li><strong>Location:</strong> Truganina, Melbourne</li>
                 </ul>
             </div>
         </div>
