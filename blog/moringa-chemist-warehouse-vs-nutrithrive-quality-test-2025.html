@@ -3,18 +3,29 @@
 <head>
 <!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  // Defer Google Analytics loading
-  window.addEventListener('load', function() {
+  // Defer Google Analytics loading until user interaction or after 3 seconds
+  let gaLoaded = false;
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
     var script = document.createElement('script');
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
     document.head.appendChild(script);
-    
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-WH21SW75WP');
+  }
+
+  // Load GA on first user interaction
+  ['click', 'scroll', 'keydown'].forEach(event => {
+    document.addEventListener(event, loadGA, { once: true, passive: true });
   });
+
+  // Fallback: load after 3 seconds if no interaction
+  setTimeout(loadGA, 3000);
 </script>
 
     <meta charset="UTF-8">
