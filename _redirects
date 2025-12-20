@@ -132,3 +132,7 @@
 # Removed blog post - redirect to similar beauty/glow page
 /blog/moringa-magic-natural-glow.html /blog/edible-beauty-summer-glow-moringa-2025.html 301
 /blog/moringa-magic-natural-glow /blog/edible-beauty-summer-glow-moringa-2025.html 301
+
+# Removed blog posts - redirect to homepage as per user request
+/blog/moringa-weight-loss-burn-fat-actually-help.html / 301
+/blog/moringa-weight-loss-australia-2025.html / 301
