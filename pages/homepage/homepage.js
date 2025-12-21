@@ -1,4 +1,4 @@
-console.log('[NutriThrive] script.js loaded');
+console.log('[NutriThrive] Homepage script loaded. Optimizing for Nutri Thrive.');
 
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
