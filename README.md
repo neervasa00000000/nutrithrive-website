@@ -77,4 +77,4 @@ Located in `pages/blog/` - 50+ optimized blog posts covering:
 
 ## 📄 **License**
 
-© 2025 NutriThrive. All rights reserved.
+© 2026 NutriThrive. All rights reserved.

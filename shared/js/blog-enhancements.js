@@ -135,7 +135,7 @@
       promo.innerHTML = `
         <strong style="color:#175c36;display:block;margin-bottom:6px;">Need the best protein to pair with your moringa?</strong>
         <span style="display:block;margin-bottom:8px;">Our team blind-tested 9 Australian protein powders for clean ingredients, price, and taste.</span>
-        <a href="/blog/best-protein-powder-australia-2025-complete-guide.html" style="color:#175c36;font-weight:700;text-decoration:none;">Read the protein powder testing guide →</a>
+        <a href="/blog/best-protein-powder-australia-2026-complete-guide.html" style="color:#175c36;font-weight:700;text-decoration:none;">Read the protein powder testing guide →</a>
       `;
       firstParagraph.insertAdjacentElement('afterend', promo);
     } catch (e) {}

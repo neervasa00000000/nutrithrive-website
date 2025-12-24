@@ -640,7 +640,7 @@
         
         // Patterns for common date/time expressions (ordered by specificity)
         const patterns = [
-          // Month before day: "nov 10 2025 6pm", "november 10 2025 6pm", "Birthday party nov 10 2025 6pm"
+          // Month before day: "nov 10 2026 6pm", "november 10 2026 6pm", "Birthday party nov 10 2026 6pm"
           // Match month names specifically: jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec or full names
           // Allow text before the month name (removed \b to allow matching anywhere in text)
           // MOVED TO TOP for higher priority
@@ -703,7 +703,7 @@
               return result;
             }
           },
-          // Month before day with slashes: "nov / 19 / 2025", "nov/19/2025", "Party nov / 19 / 2025 from 11 pm to 12 am"
+          // Month before day with slashes: "nov / 19 / 2026", "nov/19/2026", "Party nov / 19 / 2026 from 11 pm to 12 am"
           // Allow text before the month name (removed \b to allow matching anywhere in text)
           {
             regex: /(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s*\/\s*(\d{1,2})(?:st|nd|rd|th)?\s*\/\s*(\d{2,4})/i,
@@ -748,7 +748,7 @@
               return result;
             }
           },
-          // MM/DD/YYYY format: "11/10/2025 at 2pm", "11/10/25 at 2pm", "Meeting 11/10/2025 at 2pm"
+          // MM/DD/YYYY format: "11/10/2026 at 2pm", "11/10/25 at 2pm", "Meeting 11/10/2026 at 2pm"
           {
             regex: /(\d{1,2})\s*\/\s*(\d{1,2})\s*\/\s*(\d{2,4})(?:\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?)?/i,
             handler: function(match, fullText) {
@@ -886,7 +886,7 @@
               return this.parseTime(date, time.hour, time.minute, time.ampm);
             }
           },
-          // Day number before month (with or without year): "22 nov", "22 nov 2025", "22nd nov event at 11pm", "11 nov 2025"
+          // Day number before month (with or without year): "22 nov", "22 nov 2026", "22nd nov event at 11pm", "11 nov 2026"
           {
             regex: /(\d{1,2})(?:st|nd|rd|th)?\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?:\s+(\d{2,4}))?(?:\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?)?/i,
             handler: function(match, fullText) {
@@ -1239,7 +1239,7 @@
               return this.parseTime(date, time.hour, time.minute, time.ampm);
             }
           },
-          // Slash/dash/dot separated dates: 11/10/2025, 11-10-2025, 11.10.2025, nov/10/2025, nov / 10 / 2025, 28/11 (day/month)
+          // Slash/dash/dot separated dates: 11/10/2026, 11-10-2026, 11.10.2026, nov/10/2026, nov / 10 / 2026, 28/11 (day/month)
           // Allow text before the date (removed \b to allow matching anywhere in text)
           {
             regex: /((?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)|\d{1,2})\s*[\/\-\.,]\s*(\d{1,2})(?:st|nd|rd|th)?(?:\s*[\/\-\.,]\s*(\d{2,4}))?(?:\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?)?/i,
@@ -1253,12 +1253,12 @@
               const monthIdx = findMonth(part1);
               if (monthIdx >= 0) {
                 // Month name found in first part
-                // Format: nov/10/2025 or nov / 10 / 2025
+                // Format: nov/10/2026 or nov / 10 / 2026
                 month = monthIdx;
                 day = part2;
                 year = part3 ? parseYear(part3) : now.getFullYear();
               } else {
-                // Format: 11/10/2025 (US format MM/DD/YYYY) or 10/11/2025 (DD/MM/YYYY) or 28/11 (DD/MM)
+                // Format: 11/10/2026 (US format MM/DD/YYYY) or 10/11/2026 (DD/MM/YYYY) or 28/11 (DD/MM)
                 const num1 = parseInt(part1);
                 const num2 = part2;
                 year = part3 ? parseYear(part3) : now.getFullYear();
@@ -1363,7 +1363,7 @@
               return result;
             }
           },
-          // Month name with day (with or without year): "nov 10 2025", "november 10 2025", "nov 10th 2025", "22 nov", "nov 22"
+          // Month name with day (with or without year): "nov 10 2026", "november 10 2026", "nov 10th 2026", "22 nov", "nov 22"
           // Allow text before the month name (removed \b to allow matching anywhere in text)
           {
             regex: /(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s+(\d{2,4}))?/i,
@@ -1441,7 +1441,7 @@
               }
             }
           },
-          // Ordinal day with month (with or without year): "10th nov 25", "10th november 2025", "22nd nov", "Event 10th nov 25 at 3pm"
+          // Ordinal day with month (with or without year): "10th nov 25", "10th november 2026", "22nd nov", "Event 10th nov 25 at 3pm"
           {
             regex: /(\d{1,2})(?:st|nd|rd|th)\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?:\s+(\d{2,4}))?(?:\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?)?/i,
             handler: function(match) {
@@ -1514,14 +1514,14 @@
               return result;
             }
           },
-          // "Dec 25 2025 at 6pm" or "25 Dec 2025 6pm" or "december 25 2025"
+          // "Dec 25 2026 at 6pm" or "25 Dec 2026 6pm" or "december 25 2026"
           {
             regex: /(?:(\w{3,9})\s+)?(\d{1,2})(?:st|nd|rd|th)?(?:\s+(\w{3,9}))?\s+(\d{2,4})(?:\s+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)?)?/i,
             handler: function(match) {
               let month, day, year, hour, minute, ampm;
               
               if (match[1]) {
-                // "Dec 25 2025" or "november 10 2025"
+                // "Dec 25 2026" or "november 10 2026"
                 month = findMonth(match[1]);
                 if (month < 0) return null;
                 day = parseInt(removeOrdinal(match[2]));
@@ -1530,7 +1530,7 @@
                 minute = parseInt(match[6] || '0');
                 ampm = match[7];
               } else if (match[3]) {
-                // "25 Dec 2025" or "10th nov 2025"
+                // "25 Dec 2026" or "10th nov 2026"
                 day = parseInt(removeOrdinal(match[2]));
                 month = findMonth(match[3]);
                 if (month < 0) return null;
@@ -1968,7 +1968,7 @@
             }
           },
           // "Event at 10am" or "[anything] at [time]" - time only, default to today
-          // MOVED TO END - only match if no date patterns matched (to avoid matching "at 2pm" in "11/10/2025 at 2pm")
+          // MOVED TO END - only match if no date patterns matched (to avoid matching "at 2pm" in "11/10/2026 at 2pm")
           // Must NOT match if "next month" is present (that's handled by patterns above)
           {
             regex: /at\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i,
@@ -2241,8 +2241,8 @@
             <li class="cmd-item" onclick="fillCmd('Lunch next Fri 1pm')">Lunch next Fri 1pm</li>
             <li class="cmd-item" onclick="fillCmd('Flight to SFO Dec 20')">Flight to SFO Dec 20</li>
             <li class="cmd-item" onclick="fillCmd('Doctor appointment next Monday at 10am')">Doctor appointment next Monday at 10am</li>
-            <li class="cmd-item" onclick="fillCmd('Birthday party nov 10 2025 6pm')">Birthday party nov 10 2025 6pm</li>
-            <li class="cmd-item" onclick="fillCmd('Meeting 11/10/2025 at 2pm')">Meeting 11/10/2025 at 2pm</li>
+            <li class="cmd-item" onclick="fillCmd('Birthday party nov 10 2026 6pm')">Birthday party nov 10 2026 6pm</li>
+            <li class="cmd-item" onclick="fillCmd('Meeting 11/10/2026 at 2pm')">Meeting 11/10/2026 at 2pm</li>
             <li class="cmd-item" onclick="fillCmd('Gym session tomorrow 7am')">Gym session tomorrow 7am</li>
           </ul>
         </div>
