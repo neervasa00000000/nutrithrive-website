@@ -147,7 +147,7 @@ Create `deals.json`:
       "discountPercent": 15,
       "newUserOnly": false,
       "platform": "IN_STORE",
-      "validTo": "2025-12-31"
+      "validTo": "2026-12-31"
     }
   ]
 }
