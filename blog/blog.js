@@ -297,3 +297,8 @@ window.addEventListener('load', () => {
         }, 100);
     }
 });
+
+function closeExitPopup() {
+    document.getElementById('exitIntentPopup').style.display = 'none';
+}
+window.closeExitPopup = closeExitPopup;
