@@ -1049,22 +1049,32 @@
                     const card = allBlogCards[i];
                     const content = card.querySelector('.blog-post-card-content');
                     if (!content) {
-                        console.log(`Card ${i}: No content div`);
                         continue;
                     }
                     // Card is valid if it has a post-title (all valid blog posts have this)
                     const hasTitle = content.querySelector('.post-title');
                     if (hasTitle !== null) {
                         blogCards.push(card);
-                    } else {
-                        console.log(`Card ${i}: No post-title found`);
                     }
                 }
                 
+                console.log('=== BLOG PAGINATION DEBUG ===');
+                console.log('Total cards in DOM:', allBlogCards.length);
                 console.log('Valid blog cards after filtering:', blogCards.length);
+                console.log('Expected pages (9 per page):', Math.ceil(blogCards.length / 9));
+                
+                // Log first and last few cards
                 if (blogCards.length > 0) {
-                    console.log('First card title:', blogCards[0]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
-                    console.log('Last card title:', blogCards[blogCards.length - 1]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
+                    console.log('First 3 cards:');
+                    for (let i = 0; i < Math.min(3, blogCards.length); i++) {
+                        const title = blogCards[i]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title';
+                        console.log(`  Card ${i}: ${title}`);
+                    }
+                    console.log('Last 3 cards:');
+                    for (let i = Math.max(0, blogCards.length - 3); i < blogCards.length; i++) {
+                        const title = blogCards[i]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title';
+                        console.log(`  Card ${i}: ${title}`);
+                    }
                 }
                 
                 const postsPerPage = 9;
@@ -1102,42 +1112,58 @@
                     
                     // Calculate indices starting from 0
                     const startIndex = (currentPage - 1) * postsPerPage;
-                    const endIndex = startIndex + postsPerPage;
+                    const endIndex = Math.min(startIndex + postsPerPage, blogCards.length);
                     
-                    console.log(`Page ${currentPage}: Showing cards from index ${startIndex} to ${endIndex - 1} (total: ${blogCards.length}, total pages: ${totalPages})`);
-                    console.log(`BlogCards array length: ${blogCards.length}`);
+                    console.log(`=== PAGE ${currentPage} ===`);
+                    console.log(`Total cards: ${blogCards.length}, Total pages: ${totalPages}`);
+                    console.log(`Showing cards from index ${startIndex} to ${endIndex - 1} (inclusive)`);
+                    console.log(`Expected cards on this page: ${endIndex - startIndex}`);
                     
-                    // First hide all cards
+                    // First hide ALL cards (including empty ones)
                     hideAllCards();
                     
                     // Then show only the cards for current page from the filtered array
                     let shownCount = 0;
+                    let hiddenCount = 0;
+                    
                     for (let i = 0; i < blogCards.length; i++) {
                         const card = blogCards[i];
-                        if (card && card.parentNode) {
-                            // Show card if it's in the current page range
-                            if (i >= startIndex && i < endIndex) {
-                                // Force display with important styles
-                                card.removeAttribute('style');
-                                card.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important;';
-                                shownCount++;
-                            } else {
-                                // Hide cards not on current page
-                                card.style.display = 'none';
-                                card.style.visibility = 'hidden';
+                        if (!card) {
+                            console.warn(`Card at index ${i} is null`);
+                            continue;
+                        }
+                        
+                        if (!card.parentNode) {
+                            console.warn(`Card at index ${i} has no parent node`);
+                            continue;
+                        }
+                        
+                        // Show card if it's in the current page range
+                        if (i >= startIndex && i < endIndex) {
+                            // Force display with important styles
+                            card.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important;';
+                            shownCount++;
+                            
+                            // Verify it's actually visible
+                            const computedStyle = window.getComputedStyle(card);
+                            if (computedStyle.display === 'none') {
+                                console.error(`Card ${i} still hidden despite setting display:block!important`);
                             }
                         } else {
-                            console.warn(`Card at index ${i} is missing or not in DOM`);
+                            // Hide cards not on current page
+                            card.style.display = 'none';
+                            card.style.visibility = 'hidden';
+                            hiddenCount++;
                         }
                     }
                     
-                    console.log(`Actually shown ${shownCount} cards on page ${currentPage}`);
-                    console.log(`Cards that should be shown: ${Math.min(endIndex - startIndex, blogCards.length - startIndex)}`);
+                    console.log(`Result: Shown ${shownCount} cards, Hidden ${hiddenCount} cards`);
                     
-                    // If no cards shown, log warning
-                    if (shownCount === 0 && currentPage <= totalPages) {
-                        console.warn(`WARNING: Page ${currentPage} has no cards! Total cards: ${blogCards.length}, Total pages: ${totalPages}, Start: ${startIndex}, End: ${endIndex}`);
-                        console.warn(`Available cards in range: ${blogCards.slice(startIndex, endIndex).length}`);
+                    // If no cards shown, log detailed warning
+                    if (shownCount === 0) {
+                        console.error(`ERROR: Page ${currentPage} has no cards!`);
+                        console.error(`Total cards: ${blogCards.length}, Start: ${startIndex}, End: ${endIndex}`);
+                        console.error(`Cards in range:`, blogCards.slice(startIndex, endIndex));
                     }
                 }
 
