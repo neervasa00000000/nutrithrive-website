@@ -1037,11 +1037,20 @@
             const allBlogCards = document.querySelectorAll('.blog-post-card');
             const blogCards = Array.from(allBlogCards).filter(card => {
                 const content = card.querySelector('.blog-post-card-content');
-                return content && (content.querySelector('.post-title') || content.textContent.trim().length > 0);
+                if (!content) return false;
+                const hasTitle = content.querySelector('.post-title');
+                const hasText = content.textContent.trim().length > 0;
+                return hasTitle || hasText;
             });
+            
+            console.log('Total blog cards found:', allBlogCards.length);
+            console.log('Valid blog cards after filtering:', blogCards.length);
+            
             const postsPerPage = 9;
             const totalPages = Math.ceil(blogCards.length / postsPerPage);
             let currentPage = 1;
+            
+            console.log('Total pages:', totalPages);
 
             // Hide all blog cards initially (including empty ones)
             function hideAllCards() {
@@ -1055,15 +1064,21 @@
                 const startIndex = (currentPage - 1) * postsPerPage;
                 const endIndex = Math.min(startIndex + postsPerPage, blogCards.length);
                 
+                console.log(`Page ${currentPage}: Showing cards ${startIndex} to ${endIndex - 1} (total: ${blogCards.length})`);
+                
                 // First hide all cards
                 hideAllCards();
                 
                 // Then show only the cards for current page
+                let shownCount = 0;
                 blogCards.forEach((card, index) => {
                     if (index >= startIndex && index < endIndex) {
                         card.style.display = 'block';
+                        shownCount++;
                     }
                 });
+                
+                console.log(`Actually shown ${shownCount} cards on page ${currentPage}`);
             }
 
             // Create pagination numbers
