@@ -1140,19 +1140,35 @@
                         
                         // Show card if it's in the current page range
                         if (i >= startIndex && i < endIndex) {
-                            // Force display with important styles
-                            card.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important;';
+                            // Remove any existing inline styles first
+                            card.removeAttribute('style');
+                            
+                            // Force display with important styles - use setProperty for !important
+                            card.style.setProperty('display', 'block', 'important');
+                            card.style.setProperty('visibility', 'visible', 'important');
+                            card.style.setProperty('opacity', '1', 'important');
+                            card.style.setProperty('height', 'auto', 'important');
+                            card.style.setProperty('overflow', 'visible', 'important');
+                            card.style.setProperty('max-height', 'none', 'important');
+                            
+                            // Also remove any classes that might hide it
+                            card.classList.remove('hidden', 'd-none');
+                            
                             shownCount++;
                             
-                            // Verify it's actually visible
-                            const computedStyle = window.getComputedStyle(card);
-                            if (computedStyle.display === 'none') {
-                                console.error(`Card ${i} still hidden despite setting display:block!important`);
-                            }
+                            // Verify it's actually visible after a brief delay
+                            setTimeout(() => {
+                                const computedStyle = window.getComputedStyle(card);
+                                if (computedStyle.display === 'none' || computedStyle.visibility === 'hidden') {
+                                    console.error(`Card ${i} still hidden! Display: ${computedStyle.display}, Visibility: ${computedStyle.visibility}`);
+                                    console.error(`Card element:`, card);
+                                    console.error(`Card parent:`, card.parentNode);
+                                }
+                            }, 10);
                         } else {
                             // Hide cards not on current page
-                            card.style.display = 'none';
-                            card.style.visibility = 'hidden';
+                            card.style.setProperty('display', 'none', 'important');
+                            card.style.setProperty('visibility', 'hidden', 'important');
                             hiddenCount++;
                         }
                     }
