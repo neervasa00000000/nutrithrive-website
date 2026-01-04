@@ -293,6 +293,11 @@
 /blog/moringa-benefits-australia-2026 /blog/moringa-benefits-australia-2026.html 301
 /blog/edible-beauty-summer-glow-moringa-2026 /blog/edible-beauty-summer-glow-moringa-2026.html 301
 
+# Note: All the above blog files exist in the file system. If they return 404, it's likely a deployment issue.
+# Self-referential redirects don't help - files should be accessible directly.
+# The /homepage/index.html redirect is correct as it points to the actual location.
+/homepage/index.html /pages/homepage/index.html 301
+
 # Fix 404 errors from SEO audit - Redirect non-existent pages to related content
 # Note: Self-referential redirects removed - these files exist and should be accessible directly
 
