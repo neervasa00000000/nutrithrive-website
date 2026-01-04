@@ -11,7 +11,8 @@
 
 # SEO Consolidation Redirects
 # Moringa vs Matcha - redirect duplicates to energy version (main page)
-# Note: moringa-vs-matcha-superfood-comparison-melbourne-2026.html exists, so only redirect non-existent variants
+# Note: moringa-vs-matcha-superfood-comparison-melbourne-2026.html exists and should be accessible directly
+# Only redirect non-existent variants
 /blog/moringa-vs-matcha-australia-2026.html /blog/moringa-vs-matcha-energy-metabolism-2026.html 301
 
 # Curry Leaves - consolidate to master guide
