@@ -1037,40 +1037,53 @@
             setTimeout(function() {
                 // Get blog cards from the blog-list-section only
                 const blogListSection = document.querySelector('.blog-list-section');
-                console.log('Blog list section found:', blogListSection !== null);
+                if (!blogListSection) {
+                    console.error('Blog list section not found!');
+                    return;
+                }
                 
-                const allBlogCards = blogListSection ? blogListSection.querySelectorAll('.blog-post-card') : document.querySelectorAll('.blog-post-card');
+                const allBlogCards = blogListSection.querySelectorAll('.blog-post-card');
+                console.log('=== BLOG PAGINATION INIT ===');
                 console.log('Total blog cards in DOM:', allBlogCards.length);
                 
-                // Filter out empty blog cards (cards without content)
-                // Only filter out cards that are completely empty (no content div or no title)
+                // Filter out empty blog cards - be more lenient
                 const blogCards = [];
                 for (let i = 0; i < allBlogCards.length; i++) {
                     const card = allBlogCards[i];
                     const content = card.querySelector('.blog-post-card-content');
                     if (!content) {
+                        console.log(`Skipping card ${i}: No content div`);
                         continue;
                     }
-                    // Card is valid if it has a post-title (all valid blog posts have this)
+                    
+                    // Check for post-title
                     const hasTitle = content.querySelector('.post-title');
-                    if (hasTitle !== null) {
-                        blogCards.push(card);
+                    if (!hasTitle) {
+                        console.log(`Skipping card ${i}: No post-title`);
+                        continue;
                     }
+                    
+                    // Card is valid - add it
+                    blogCards.push(card);
                 }
                 
-                console.log('=== BLOG PAGINATION DEBUG ===');
-                console.log('Total cards in DOM:', allBlogCards.length);
                 console.log('Valid blog cards after filtering:', blogCards.length);
                 console.log('Expected pages (9 per page):', Math.ceil(blogCards.length / 9));
                 
-                // Log first and last few cards
-                if (blogCards.length > 0) {
-                    console.log('First 3 cards:');
-                    for (let i = 0; i < Math.min(3, blogCards.length); i++) {
-                        const title = blogCards[i]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title';
-                        console.log(`  Card ${i}: ${title}`);
-                    }
-                    console.log('Last 3 cards:');
+                // Verify we have cards
+                if (blogCards.length === 0) {
+                    console.error('ERROR: No valid blog cards found!');
+                    return;
+                }
+                
+                // Log sample cards
+                console.log('Sample cards:');
+                for (let i = 0; i < Math.min(5, blogCards.length); i++) {
+                    const title = blogCards[i]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title';
+                    console.log(`  Card ${i}: ${title}`);
+                }
+                if (blogCards.length > 5) {
+                    console.log(`  ... (${blogCards.length - 5} more cards) ...`);
                     for (let i = Math.max(0, blogCards.length - 3); i < blogCards.length; i++) {
                         const title = blogCards[i]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title';
                         console.log(`  Card ${i}: ${title}`);
@@ -1126,49 +1139,41 @@
                     let shownCount = 0;
                     let hiddenCount = 0;
                     
+                    console.log(`Processing ${blogCards.length} cards, showing indices ${startIndex} to ${endIndex - 1}`);
+                    
                     for (let i = 0; i < blogCards.length; i++) {
                         const card = blogCards[i];
                         if (!card) {
-                            console.warn(`Card at index ${i} is null`);
+                            console.error(`Card at index ${i} is null!`);
                             continue;
                         }
                         
                         if (!card.parentNode) {
-                            console.warn(`Card at index ${i} has no parent node`);
+                            console.error(`Card at index ${i} has no parent node!`);
                             continue;
                         }
                         
                         // Show card if it's in the current page range
                         if (i >= startIndex && i < endIndex) {
-                            // Remove any existing inline styles first
+                            // Force display - remove all inline styles first
                             card.removeAttribute('style');
                             
-                            // Force display with important styles - use setProperty for !important
+                            // Set display properties with !important
                             card.style.setProperty('display', 'block', 'important');
                             card.style.setProperty('visibility', 'visible', 'important');
                             card.style.setProperty('opacity', '1', 'important');
-                            card.style.setProperty('height', 'auto', 'important');
-                            card.style.setProperty('overflow', 'visible', 'important');
-                            card.style.setProperty('max-height', 'none', 'important');
                             
-                            // Also remove any classes that might hide it
-                            card.classList.remove('hidden', 'd-none');
+                            // Remove hiding classes
+                            card.classList.remove('hidden', 'd-none', 'hide');
                             
                             shownCount++;
                             
-                            // Verify it's actually visible after a brief delay
-                            setTimeout(() => {
-                                const computedStyle = window.getComputedStyle(card);
-                                if (computedStyle.display === 'none' || computedStyle.visibility === 'hidden') {
-                                    console.error(`Card ${i} still hidden! Display: ${computedStyle.display}, Visibility: ${computedStyle.visibility}`);
-                                    console.error(`Card element:`, card);
-                                    console.error(`Card parent:`, card.parentNode);
-                                }
-                            }, 10);
+                            // Log which card we're showing
+                            const title = card.querySelector('.post-title')?.textContent?.trim().substring(0, 40) || 'No title';
+                            console.log(`  Showing card ${i}: ${title}`);
                         } else {
                             // Hide cards not on current page
                             card.style.setProperty('display', 'none', 'important');
-                            card.style.setProperty('visibility', 'hidden', 'important');
                             hiddenCount++;
                         }
                     }
