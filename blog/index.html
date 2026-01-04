@@ -1141,6 +1141,11 @@
                     
                     console.log(`Processing ${blogCards.length} cards, showing indices ${startIndex} to ${endIndex - 1}`);
                     
+                    // Verify blogCards array integrity
+                    if (blogCards.length < endIndex) {
+                        console.error(`ERROR: blogCards array only has ${blogCards.length} items, but trying to access up to index ${endIndex - 1}`);
+                    }
+                    
                     for (let i = 0; i < blogCards.length; i++) {
                         const card = blogCards[i];
                         if (!card) {
@@ -1155,13 +1160,19 @@
                         
                         // Show card if it's in the current page range
                         if (i >= startIndex && i < endIndex) {
-                            // Force display - remove all inline styles first
+                            // Clear any existing styles
                             card.removeAttribute('style');
                             
-                            // Set display properties with !important
-                            card.style.setProperty('display', 'block', 'important');
-                            card.style.setProperty('visibility', 'visible', 'important');
-                            card.style.setProperty('opacity', '1', 'important');
+                            // Set display properties with !important using setProperty
+                            try {
+                                card.style.setProperty('display', 'block', 'important');
+                                card.style.setProperty('visibility', 'visible', 'important');
+                                card.style.setProperty('opacity', '1', 'important');
+                                card.style.setProperty('height', 'auto', 'important');
+                            } catch (e) {
+                                // Fallback if setProperty doesn't work
+                                card.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important;';
+                            }
                             
                             // Remove hiding classes
                             card.classList.remove('hidden', 'd-none', 'hide');
@@ -1170,13 +1181,30 @@
                             
                             // Log which card we're showing
                             const title = card.querySelector('.post-title')?.textContent?.trim().substring(0, 40) || 'No title';
-                            console.log(`  Showing card ${i}: ${title}`);
+                            console.log(`  ✓ Showing card ${i}: ${title}`);
                         } else {
                             // Hide cards not on current page
                             card.style.setProperty('display', 'none', 'important');
                             hiddenCount++;
                         }
                     }
+                    
+                    // Double-check: verify cards are actually visible
+                    setTimeout(() => {
+                        let actuallyVisible = 0;
+                        for (let i = startIndex; i < endIndex && i < blogCards.length; i++) {
+                            const card = blogCards[i];
+                            if (card) {
+                                const style = window.getComputedStyle(card);
+                                if (style.display !== 'none' && style.visibility !== 'hidden') {
+                                    actuallyVisible++;
+                                } else {
+                                    console.error(`Card ${i} is still hidden! Display: ${style.display}, Visibility: ${style.visibility}`);
+                                }
+                            }
+                        }
+                        console.log(`Actually visible cards: ${actuallyVisible} (expected: ${shownCount})`);
+                    }, 50);
                     
                     console.log(`Result: Shown ${shownCount} cards, Hidden ${hiddenCount} cards`);
                     
