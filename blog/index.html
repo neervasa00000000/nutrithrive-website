@@ -1040,11 +1040,18 @@
             // Filter out empty blog cards (cards without content)
             const blogCards = Array.from(allBlogCards).filter(card => {
                 const content = card.querySelector('.blog-post-card-content');
-                if (!content) return false;
+                if (!content) {
+                    console.log('Card has no content element');
+                    return false;
+                }
                 const hasTitle = content.querySelector('.post-title');
                 const hasText = content.textContent.trim().length > 0;
-                // Card is valid if it has a title OR has text content
-                return hasTitle || hasText;
+                // Card is valid if it has a title (most important) OR has substantial text content
+                const isValid = hasTitle || (hasText && content.textContent.trim().length > 50);
+                if (!isValid) {
+                    console.log('Card filtered out:', content.textContent.substring(0, 50));
+                }
+                return isValid;
             });
             
             console.log('Total blog cards found:', allBlogCards.length);
