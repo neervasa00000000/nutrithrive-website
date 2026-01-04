@@ -1042,8 +1042,9 @@
                 const content = card.querySelector('.blog-post-card-content');
                 if (!content) return false;
                 const hasTitle = content.querySelector('.post-title');
-                const hasText = content.textContent.trim().length > 10; // At least 10 chars of text
-                return hasTitle && hasText;
+                const hasText = content.textContent.trim().length > 0;
+                // Card is valid if it has a title OR has text content
+                return hasTitle || hasText;
             });
             
             console.log('Total blog cards found:', allBlogCards.length);
