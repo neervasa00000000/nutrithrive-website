@@ -1043,9 +1043,9 @@
             const totalPages = Math.ceil(blogCards.length / postsPerPage);
             let currentPage = 1;
 
-            // Hide all blog cards initially
+            // Hide all blog cards initially (including empty ones)
             function hideAllCards() {
-                blogCards.forEach(card => {
+                allBlogCards.forEach(card => {
                     card.style.display = 'none';
                 });
             }
