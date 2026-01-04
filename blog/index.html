@@ -1078,16 +1078,16 @@
                 console.log('Posts per page:', postsPerPage);
                 console.log('Blog cards array length:', blogCards.length);
 
-            // Hide all blog cards initially (including empty ones)
-            function hideAllCards() {
-                allBlogCards.forEach(card => {
-                    card.style.display = 'none';
-                    card.style.visibility = 'hidden';
-                });
-            }
+                // Hide all blog cards initially (including empty ones)
+                function hideAllCards() {
+                    allBlogCards.forEach(card => {
+                        card.style.display = 'none';
+                        card.style.visibility = 'hidden';
+                    });
+                }
 
-            // Show cards for current page
-            function showCurrentPageCards() {
+                // Show cards for current page
+                function showCurrentPageCards() {
                 // Recalculate total pages based on actual filtered cards
                 const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
                 totalPages = actualTotalPages;
