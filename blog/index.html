@@ -1072,22 +1072,37 @@
 
             // Show cards for current page
             function showCurrentPageCards() {
+                // Recalculate total pages based on actual filtered cards
+                const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
+                totalPages = actualTotalPages;
+                
+                // Ensure currentPage is within valid range
+                if (currentPage > totalPages) {
+                    currentPage = totalPages;
+                }
+                if (currentPage < 1) {
+                    currentPage = 1;
+                }
+                
                 const startIndex = (currentPage - 1) * postsPerPage;
                 const endIndex = Math.min(startIndex + postsPerPage, blogCards.length);
                 
-                console.log(`Page ${currentPage}: Showing cards ${startIndex} to ${endIndex - 1} (total: ${blogCards.length})`);
+                console.log(`Page ${currentPage}: Showing cards ${startIndex} to ${endIndex - 1} (total: ${blogCards.length}, total pages: ${totalPages})`);
                 
                 // First hide all cards
                 hideAllCards();
                 
-                // Then show only the cards for current page
+                // Then show only the cards for current page from the filtered array
                 let shownCount = 0;
                 for (let i = startIndex; i < endIndex && i < blogCards.length; i++) {
                     const card = blogCards[i];
-                    if (card) {
+                    if (card && card.parentNode) {
+                        // Force display with important styles
                         card.style.display = 'block';
                         card.style.visibility = 'visible';
                         card.style.opacity = '1';
+                        card.style.height = 'auto';
+                        card.style.overflow = 'visible';
                         shownCount++;
                     }
                 }
@@ -1096,7 +1111,7 @@
                 
                 // If no cards shown, log warning
                 if (shownCount === 0 && currentPage <= totalPages) {
-                    console.warn(`WARNING: Page ${currentPage} has no cards! Total cards: ${blogCards.length}, Total pages: ${totalPages}`);
+                    console.warn(`WARNING: Page ${currentPage} has no cards! Total cards: ${blogCards.length}, Total pages: ${totalPages}, Start: ${startIndex}, End: ${endIndex}`);
                 }
             }
 
