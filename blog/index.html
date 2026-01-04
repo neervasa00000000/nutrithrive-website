@@ -1053,13 +1053,15 @@
             // Show cards for current page
             function showCurrentPageCards() {
                 const startIndex = (currentPage - 1) * postsPerPage;
-                const endIndex = startIndex + postsPerPage;
+                const endIndex = Math.min(startIndex + postsPerPage, blogCards.length);
                 
+                // First hide all cards
+                hideAllCards();
+                
+                // Then show only the cards for current page
                 blogCards.forEach((card, index) => {
                     if (index >= startIndex && index < endIndex) {
                         card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
                     }
                 });
             }
@@ -1146,7 +1148,14 @@
 
             // Update pagination
             function updatePagination() {
-                hideAllCards();
+                // Ensure currentPage doesn't exceed totalPages
+                if (currentPage > totalPages) {
+                    currentPage = totalPages;
+                }
+                if (currentPage < 1) {
+                    currentPage = 1;
+                }
+                
                 showCurrentPageCards();
                 createPaginationNumbers();
                 
