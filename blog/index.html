@@ -1050,11 +1050,15 @@
             console.log('Valid blog cards after filtering:', blogCards.length);
             
             const postsPerPage = 9;
-            const totalPages = Math.ceil(blogCards.length / postsPerPage);
+            let totalPages = Math.ceil(blogCards.length / postsPerPage);
             let currentPage = 1;
+            
+            // Ensure we have at least 1 page
+            if (totalPages < 1) totalPages = 1;
             
             console.log('Total pages:', totalPages);
             console.log('Posts per page:', postsPerPage);
+            console.log('Blog cards array length:', blogCards.length);
 
             // Hide all blog cards initially (including empty ones)
             function hideAllCards() {
@@ -1097,10 +1101,16 @@
             function createPaginationNumbers() {
                 const paginationNumbers = document.getElementById('paginationNumbers');
                 paginationNumbers.innerHTML = '';
+                
+                // Only show pages that have content
+                const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
+                if (actualTotalPages !== totalPages) {
+                    console.warn(`Page count mismatch: calculated ${totalPages}, actual ${actualTotalPages}`);
+                }
 
-                if (totalPages <= 7) {
+                if (actualTotalPages <= 7) {
                     // Show all pages if 7 or fewer
-                    for (let i = 1; i <= totalPages; i++) {
+                    for (let i = 1; i <= actualTotalPages; i++) {
                         createPageNumber(i);
                     }
                 } else {
@@ -1110,18 +1120,18 @@
                     
                     if (currentPage <= 4) {
                         // Show pages 2, 3, 4, 5, 6
-                        for (let i = 2; i <= Math.min(6, totalPages - 1); i++) {
+                        for (let i = 2; i <= Math.min(6, actualTotalPages - 1); i++) {
                             createPageNumber(i);
                         }
-                        if (totalPages > 6) {
+                        if (actualTotalPages > 6) {
                             createDots();
                         }
-                    } else if (currentPage >= totalPages - 3) {
+                    } else if (currentPage >= actualTotalPages - 3) {
                         // Show pages near the end
-                        if (totalPages > 6) {
+                        if (actualTotalPages > 6) {
                             createDots();
                         }
-                        for (let i = Math.max(2, totalPages - 4); i <= totalPages - 1; i++) {
+                        for (let i = Math.max(2, actualTotalPages - 4); i <= actualTotalPages - 1; i++) {
                             createPageNumber(i);
                         }
                     } else {
@@ -1134,8 +1144,8 @@
                     }
                     
                     // Always show last page if more than 1 page
-                    if (totalPages > 1) {
-                        createPageNumber(totalPages);
+                    if (actualTotalPages > 1) {
+                        createPageNumber(actualTotalPages);
                     }
                 }
             }
