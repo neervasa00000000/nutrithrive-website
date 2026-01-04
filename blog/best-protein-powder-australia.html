@@ -640,6 +640,89 @@
     </header>
 
     <main class="blog-post">
+<!-- Clean Reviews Section at Top -->
+<section class="top-reviews-section" style="padding: 3rem 2rem; background: #ffffff; margin: 0; border-bottom: 1px solid #e5e7eb;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="text-align: center; color: #1a2e22; font-size: 1.75rem; margin-bottom: 0.75rem; font-weight: 700;">Real Proof: Don't Just Take Our Word</h2>
+        <p style="text-align: center; color: #6b7280; font-size: 1rem; margin-bottom: 2.5rem;">We know buying online requires trust. Here is what verified Australian customers are saying:</p>
+        
+        <div class="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+            <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1); text-align: center; border-left: 4px solid #175c36; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; margin: 0;">
+                        <div class="quote-icon" style="position: absolute; top: 1rem; right: 1rem; font-size: 3rem; color: #e8f5e9; opacity: 0.5; font-family: Georgia, serif; line-height: 1; z-index: 0; pointer-events: none;">"</div>
+                        <div style="margin-bottom: 1rem; position: relative; z-index: 1;">
+                            <div style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #175c36; font-size: 0.85rem; font-weight: 600;">
+                                <span>Verified Purchase</span>
+                                <div style="width: 16px; height: 16px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; line-height: 1; flex-shrink: 0;">✓</div>
+                            <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1); text-align: center; border-left: 4px solid #175c36; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; margin: 0;">
+                        <div class="quote-icon" style="position: absolute; top: 1rem; right: 1rem; font-size: 3rem; color: #e8f5e9; opacity: 0.5; font-family: Georgia, serif; line-height: 1; z-index: 0; pointer-events: none;">"</div>
+                        <div style="margin-bottom: 1rem; position: relative; z-index: 1;">
+                            <div style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #175c36; font-size: 0.85rem; font-weight: 600;">
+                                <span>Verified Purchase</span>
+                                <div style="width: 16px; height: 16px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; line-height: 1; flex-shrink: 0;">✓</div>
+                            <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1); text-align: center; border-left: 4px solid #175c36; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; margin: 0;">
+                        <div class="quote-icon" style="position: absolute; top: 1rem; right: 1rem; font-size: 3rem; color: #e8f5e9; opacity: 0.5; font-family: Georgia, serif; line-height: 1; z-index: 0; pointer-events: none;">"</div>
+                        <div style="margin-bottom: 1rem; position: relative; z-index: 1;">
+                            <div style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #175c36; font-size: 0.85rem; font-weight: 600;">
+                                <span>Verified Purchase</span>
+                                <div style="width: 16px; height: 16px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; line-height: 1; flex-shrink: 0;">✓</div>
+                            
+        </div>
+    </div>
+</section>
+
+<style>
+.top-reviews-section .testimonial-card,
+.top-reviews-section .review-card {
+    background: white;
+    padding: 1.75rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    box-shadow: none;
+    text-align: center;
+    position: relative;
+    overflow: visible;
+}
+
+.top-reviews-section .quote-icon {
+    display: none;
+}
+
+.top-reviews-section .review-stars,
+.top-reviews-section [style*="FFD700"] {
+    color: #fbbf24;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+
+.top-reviews-section .verified-badge,
+.top-reviews-section [style*="Verified Purchase"] {
+    color: #6b7280;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.top-reviews-section .review-text,
+.top-reviews-section p[style*="font-style: italic"] {
+    color: #374151;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.top-reviews-section .review-author,
+.top-reviews-section p[style*="color: #5A6D5D"] {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+}
+</style>
+
         <article class="blog-post">
             <div class="content-wrapper" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
                 <div class="main-content" style="flex: 3; min-width: 60%; padding-right: 20px;">
@@ -1140,58 +1223,7 @@
 
                 <h2>Real Australian Users Review NutriThrive Moringa</h2>
                 <p>Don't just take our word for it. Here's what real Australian gym-goers and health enthusiasts are saying after switching to or stacking with NutriThrive Moringa:</p>
-                <div class="customer-testimonials" style="opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin: 3rem 0 2rem 0; clear: both; position: relative; z-index: 1; width: 100%; box-sizing: border-box;">
-                    <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1); text-align: center; border-left: 4px solid #175c36; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; margin: 0;">
-                        <div class="quote-icon" style="position: absolute; top: 1rem; right: 1rem; font-size: 3rem; color: #e8f5e9; opacity: 0.5; font-family: Georgia, serif; line-height: 1; z-index: 0; pointer-events: none;">"</div>
-                        <div style="margin-bottom: 1rem; position: relative; z-index: 1;">
-                            <div style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #175c36; font-size: 0.85rem; font-weight: 600;">
-                                <span>Verified Purchase</span>
-                                <div style="width: 16px; height: 16px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; line-height: 1; flex-shrink: 0;">✓</div>
-                            </div>
-                        </div>
-                        <p style="font-style: italic; color: #1a2e22; line-height: 1.7; margin-bottom: 1rem; font-size: 1rem; position: relative; z-index: 1; flex-grow: 1;">"I used to get such bad bloat from my whey protein, even the 'clean' ones. Adding NutriThrive Moringa completely changed my digestion. No more discomfort, and I feel so much more energized in my Melbourne Crossfit sessions!"</p>
-                        <div style="position: relative; z-index: 1;">
-                            <p style="color: #5A6D5D; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; margin-top: 0;">Sarah, 32, Melbourne</p>
-                            <p style="color: #175c36; font-size: 0.9rem; font-weight: 600; margin: 0;">Benefit: No bloat, improved energy</p>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1); text-align: center; border-left: 4px solid #175c36; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; margin: 0;">
-                        <div class="quote-icon" style="position: absolute; top: 1rem; right: 1rem; font-size: 3rem; color: #e8f5e9; opacity: 0.5; font-family: Georgia, serif; line-height: 1; z-index: 0; pointer-events: none;">"</div>
-                        <div style="margin-bottom: 1rem; position: relative; z-index: 1;">
-                            <div style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #175c36; font-size: 0.85rem; font-weight: 600;">
-                                <span>Verified Purchase</span>
-                                <div style="width: 16px; height: 16px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; line-height: 1; flex-shrink: 0;">✓</div>
-                            </div>
-                        </div>
-                        <p style="font-style: italic; color: #1a2e22; line-height: 1.7; margin-bottom: 1rem; font-size: 1rem; position: relative; z-index: 1; flex-grow: 1;">"I was skeptical about a 'superfood' helping with protein absorption, but the science backed it up. My recovery has been better, and I definitely feel like I'm getting more out of my protein shakes since adding NutriThrive. Essential for my Sydney training."</p>
-                        <div style="position: relative; z-index: 1;">
-                            <p style="color: #5A6D5D; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; margin-top: 0;">Jason, 45, Sydney</p>
-                            <p style="color: #175c36; font-size: 0.9rem; font-weight: 600; margin: 0;">Benefit: Enhanced absorption, better recovery</p>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1); text-align: center; border-left: 4px solid #175c36; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; margin: 0;">
-                        <div class="quote-icon" style="position: absolute; top: 1rem; right: 1rem; font-size: 3rem; color: #e8f5e9; opacity: 0.5; font-family: Georgia, serif; line-height: 1; z-index: 0; pointer-events: none;">"</div>
-                        <div style="margin-bottom: 1rem; position: relative; z-index: 1;">
-                            <div style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: #175c36; font-size: 0.85rem; font-weight: 600;">
-                                <span>Verified Purchase</span>
-                                <div style="width: 16px; height: 16px; background: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; line-height: 1; flex-shrink: 0;">✓</div>
-                            </div>
-                        </div>
-                        <p style="font-style: italic; color: #1a2e22; line-height: 1.7; margin-bottom: 1rem; font-size: 1rem; position: relative; z-index: 1; flex-grow: 1;">"As a vegan, finding a complete protein that doesn't taste like dirt is tough. NutriThrive Moringa is an amazing addition to my plant-based protein shakes. It actually tastes good and helps me hit my macros without any gut issues. Big win for Brisbane vegans!"</p>
-                        <div style="position: relative; z-index: 1;">
-                            <p style="color: #5A6D5D; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; margin-top: 0;">Emma, 28, Brisbane</p>
-                            <p style="color: #175c36; font-size: 0.9rem; font-weight: 600; margin: 0;">Benefit: Complete vegan protein, no gut issues</p>
-                        </div>
-                    </div>
-                </div>
-                <div style="text-align: center; margin: 2.5rem 0 3rem 0; clear: both; position: relative; z-index: 1;">
-                    <a href="/products/product-detail.html" class="btn-secondary" style="display: inline-block; background-color: #175c36; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(23, 92, 54, 0.2);">See More Customer Reviews</a>
-                </div>
+                
 
 
                 
