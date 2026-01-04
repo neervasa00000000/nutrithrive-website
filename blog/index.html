@@ -1033,14 +1033,17 @@
     <script>
         // Blog Pagination
         document.addEventListener('DOMContentLoaded', function() {
+            // Get blog cards from the blog-list-section only
+            const blogListSection = document.querySelector('.blog-list-section');
+            const allBlogCards = blogListSection ? blogListSection.querySelectorAll('.blog-post-card') : document.querySelectorAll('.blog-post-card');
+            
             // Filter out empty blog cards (cards without content)
-            const allBlogCards = document.querySelectorAll('.blog-post-card');
             const blogCards = Array.from(allBlogCards).filter(card => {
                 const content = card.querySelector('.blog-post-card-content');
                 if (!content) return false;
                 const hasTitle = content.querySelector('.post-title');
-                const hasText = content.textContent.trim().length > 0;
-                return hasTitle || hasText;
+                const hasText = content.textContent.trim().length > 10; // At least 10 chars of text
+                return hasTitle && hasText;
             });
             
             console.log('Total blog cards found:', allBlogCards.length);
@@ -1051,6 +1054,7 @@
             let currentPage = 1;
             
             console.log('Total pages:', totalPages);
+            console.log('Posts per page:', postsPerPage);
 
             // Hide all blog cards initially (including empty ones)
             function hideAllCards() {
