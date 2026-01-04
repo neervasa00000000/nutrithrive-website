@@ -69,6 +69,7 @@
 # Products redirects
 /pages/products/* /products/:splat 301
 /pages/products /products/ 301
+/pages/products/product-detail.html /products/product-detail.html 301
 
 # Homepage redirects
 /pages/homepage/* /:splat 301
@@ -189,6 +190,7 @@
 # Fix additional 404 errors
 /blog/how-to-stop-chrome-from-using-all-your-ram-2025.html /blog/best-superfoods-australia-comparison-health-conscious-adults.html 301
 /homepage/index.html /pages/homepage/index.html 301
+/homepage/index.html / 301
 /contact/contact.css /pages/contact/contact.css 301
 /contact/contact.js /pages/contact/contact.js 301
 
