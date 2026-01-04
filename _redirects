@@ -10,10 +10,10 @@
 /pages/blog /blog/ 301
 
 # SEO Consolidation Redirects
-# Moringa vs Matcha - redirect duplicates to energy version (main page)
-# Note: moringa-vs-matcha-superfood-comparison-melbourne-2026.html exists and should be accessible directly
-# Only redirect non-existent variants
-/blog/moringa-vs-matcha-australia-2026.html /blog/moringa-vs-matcha-energy-metabolism-2026.html 301
+# Moringa vs Matcha - redirect duplicates to working comparison page
+# Note: moringa-vs-matcha-superfood-comparison-melbourne-2026.html redirects to working page
+/blog/moringa-vs-matcha-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html 301
+/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html 301
 
 # Curry Leaves - consolidate to master guide
 /blog/where-to-buy-dried-curry-leaves-melbourne-local-shopping-guide-2026.html /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html 301
@@ -135,14 +135,14 @@
 # Removed blog posts - redirect to homepage as per user request
 /blog/moringa-weight-loss-burn-fat-actually-help.html /blog/moringa-vs-matcha-what-australians-need-to-know-energy-immunity-weight-loss-2026.html 301
 /blog/moringa-weight-loss-australia-2026.html /blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026.html 301
-/blog/lowering-blood-sugar-naturally-moringa-insulin-sensitivity.html / 301
-/blog/clear-skin-anti-aging-moringa-beauty-superfood.html / 301
-/blog/best-time-to-take-moringa-morning-night-expert-guide.html / 301
-/blog/moringa-for-men-stamina-muscle-recovery-vitality.html / 301
-/blog/7x-vitamin-c-boost-immunity-moringa-powder.html / 301
+/blog/lowering-blood-sugar-naturally-moringa-insulin-sensitivity.html /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/clear-skin-anti-aging-moringa-beauty-superfood.html /blog/moringa-breastfeeding-mums-natural-lactation-support.html 301
+/blog/best-time-to-take-moringa-morning-night-expert-guide.html /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/moringa-for-men-stamina-muscle-recovery-vitality.html /blog/best-protein-powder-australia.html 301
+/blog/7x-vitamin-c-boost-immunity-moringa-powder.html /blog/complete-guide-to-moringa-powder-australia.html 301
 /blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026.html / 301
 /blog/complete-vegan-protein-moringa-plant-based-eaters.html / 301
-/blog/can-dogs-eat-moringa-benefits-pets-coat-joints.html /products/product-detail.html 301
+/blog/can-dogs-eat-moringa-benefits-pets-coat-joints.html /blog/complete-guide-to-moringa-powder-australia.html 301
 
 # Additional removed blog posts - redirect to homepage
 /blog/how-to-stop-chrome-from-using-all-your-ram-2026.html / 301
@@ -334,17 +334,17 @@
 /blog/dried-curry-leaves-melbourne-buy-online-health-benefits-recipes-2026.html /blog/dried-curry-leaves-melbourne-premium-buyers-guide-benefits-recipes-free-delivery-2026.html 301
 /blog/black-tea-health-benefits-melbourne-guide-2026.html /blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2026.html 301
 /blog/best-moringa-powder-australia-ultimate-buyers-guide-2026.html /blog/best-moringa-powder-australia-2026.html 301
-/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026.html /blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html 301
-/blog/10-healthiest-foods-world-complete-guide-australia-2026.html /blog/superfoods-wellness-guide-australia-2026.html 301
-/blog/best-foods-for-weight-loss-australian-dietitian-guide-2026.html /blog/ultimate-weight-loss-products-guide-australia-2026-pills-powders-shakes-snacks-faqs.html 301
-/blog/best-superfoods-immunity-australia-2026.html /blog/superfoods-immunity-boost-australia-winter-2026.html 301
-/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026.html /blog/superfoods-wellness-guide-australia-2026.html 301
-/blog/iron-deficiency-complete-guide-australia-2026.html /blog/moringa-benefits-australia-2026.html 301
-/blog/low-calorie-snacks-keep-you-full-22-options-2026.html /blog/high-protein-snacks-australia-25-options-under-150-calories-2026.html 301
-/blog/moringa-skin-hair-benefits-australia-2026.html /blog/edible-beauty-summer-glow-moringa-2026.html 301
-/blog/moringa-vs-matcha-what-australians-need-to-know-energy-immunity-weight-loss-2026.html /blog/moringa-vs-matcha-energy-metabolism-2026.html 301
-/blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026.html /blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html 301
+/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026.html /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/10-healthiest-foods-world-complete-guide-australia-2026.html /blog/best-superfoods-australia-comparison-health-conscious-adults.html 301
+/blog/best-foods-for-weight-loss-australian-dietitian-guide-2026.html /blog/best-protein-powder-australia.html 301
+/blog/best-superfoods-immunity-australia-2026.html /blog/best-superfoods-australia-comparison-health-conscious-adults.html 301
+/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026.html /blog/best-superfoods-australia-comparison-health-conscious-adults.html 301
+/blog/iron-deficiency-complete-guide-australia-2026.html /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/low-calorie-snacks-keep-you-full-22-options-2026.html /blog/best-protein-powder-australia.html 301
+/blog/moringa-skin-hair-benefits-australia-2026.html /blog/moringa-breastfeeding-mums-natural-lactation-support.html 301
+/blog/moringa-vs-matcha-what-australians-need-to-know-energy-immunity-weight-loss-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html 301
+/blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026.html /blog/complete-guide-to-moringa-powder-australia.html 301
 /blog/new-trends-australian-protein-powders-2026.html /blog/best-protein-powder-australia.html 301
-/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2026.html /blog/superfoods-wellness-guide-australia-2026.html 301
-/blog/plant-based-performance-protein-stack-australia-2026.html /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html 301
-/blog/the-truth-about-food-and-mood-7-superfoods-that-really-work-for-australian-stress-and-energy.html /blog/adaptogenic-superfoods-stress-relief-australia-2026.html 301
+/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2026.html /blog/best-superfoods-australia-comparison-health-conscious-adults.html 301
+/blog/plant-based-performance-protein-stack-australia-2026.html /blog/complete-vegan-protein-plant-based-eaters-moringa.html 301
+/blog/the-truth-about-food-and-mood-7-superfoods-that-really-work-for-australian-stress-and-energy.html /blog/moringa-vs-coffee-melbourne-energy-hack.html 301
