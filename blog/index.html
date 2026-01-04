@@ -939,10 +939,6 @@
                     <a href="moringa-breastfeeding-mums-natural-lactation-support.html" class="btn read-more-btn">Read More →</a>
                 </div>
             </div>
-            <div class="blog-post-card">
-                <div class="blog-post-card-content">
-                </div>
-            </div>
         </section>
 
         <!-- Pagination -->
@@ -1037,7 +1033,12 @@
     <script>
         // Blog Pagination
         document.addEventListener('DOMContentLoaded', function() {
-            const blogCards = document.querySelectorAll('.blog-post-card');
+            // Filter out empty blog cards (cards without content)
+            const allBlogCards = document.querySelectorAll('.blog-post-card');
+            const blogCards = Array.from(allBlogCards).filter(card => {
+                const content = card.querySelector('.blog-post-card-content');
+                return content && (content.querySelector('.post-title') || content.textContent.trim().length > 0);
+            });
             const postsPerPage = 9;
             const totalPages = Math.ceil(blogCards.length / postsPerPage);
             let currentPage = 1;
