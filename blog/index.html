@@ -1163,18 +1163,29 @@
                         
                         // Show card if it's in the current page range
                         if (i >= startIndex && i < endIndex) {
-                            // Clear any existing styles completely
+                            // IMPORTANT: Remove ALL inline styles first to clear any previous settings
                             card.removeAttribute('style');
                             
-                            // Set display properties with !important using setProperty
+                            // Force display using multiple methods to ensure it works
                             card.style.setProperty('display', 'block', 'important');
                             card.style.setProperty('visibility', 'visible', 'important');
                             card.style.setProperty('opacity', '1', 'important');
                             card.style.setProperty('height', 'auto', 'important');
                             card.style.setProperty('overflow', 'visible', 'important');
+                            card.style.setProperty('max-height', 'none', 'important');
+                            
+                            // Also set directly as fallback
+                            card.style.display = 'block';
+                            card.style.visibility = 'visible';
                             
                             // Remove hiding classes
                             card.classList.remove('hidden', 'd-none', 'hide');
+                            
+                            // Ensure parent is also visible
+                            if (card.parentNode && card.parentNode.style) {
+                                card.parentNode.style.display = 'block';
+                                card.parentNode.style.visibility = 'visible';
+                            }
                             
                             shownCount++;
                             
@@ -1183,6 +1194,7 @@
                         } else {
                             // Hide cards not on current page
                             card.style.setProperty('display', 'none', 'important');
+                            card.style.display = 'none';
                             hiddenCount++;
                         }
                     }
