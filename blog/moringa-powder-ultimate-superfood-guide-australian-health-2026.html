@@ -1098,7 +1098,7 @@
         </div>
     
 <!-- Customer Reviews Section -->
-<section class="customer-reviews-section" style="margin: 4rem 0; padding: 3rem 0; background: linear-gradient(135deg, #f8faf7 0%, #ffffff 100%); overflow: hidden; position: relative; clear: both; z-index: 1;">
+<section class="customer-reviews-section" style="opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; margin: 4rem 0; padding: 3rem 0; background: linear-gradient(135deg, #f8faf7 0%, #ffffff 100%); overflow: hidden; position: relative; clear: both; z-index: 1;">
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
         <h2 style="text-align: center; color: #175c36; font-size: 2rem; margin-bottom: 1rem; font-weight: 700;">Real Proof: Don't Just Take Our Word</h2>
         <p style="text-align: center; color: #5A6D5D; font-size: 1.1rem; margin-bottom: 3rem;">We know buying online requires trust. Here is what verified Australian customers are saying:</p>
@@ -1534,5 +1534,67 @@
     });
 })();
 </script>
+
+    <!-- Scroll-triggered Reviews Animation -->
+    <script>
+    (function() {
+        var hasScrolled = false;
+        var scrollTimer = null;
+        var reviewsElement = null;
+        
+        // Find the reviews section
+        if (document.querySelector('.customer-testimonials')) {
+            reviewsElement = document.querySelector('.customer-testimonials');
+        } else if (document.querySelector('.customer-reviews-section')) {
+            reviewsElement = document.querySelector('.customer-reviews-section');
+        }
+        
+        if (!reviewsElement) {
+            return; // No reviews section found
+        }
+        
+        // Function to show reviews with animation
+        function showReviews() {
+            if (reviewsElement && reviewsElement.style.opacity !== '1') {
+                reviewsElement.style.opacity = '1';
+                reviewsElement.style.transform = 'translateY(0)';
+            }
+        }
+        
+        // Function to handle scroll
+        function handleScroll() {
+            if (!hasScrolled) {
+                hasScrolled = true;
+                
+                // Show reviews after 3-4 seconds (random between 3000-4000ms)
+                var delay = Math.random() * 1000 + 3000; // 3000-4000ms
+                
+                scrollTimer = setTimeout(function() {
+                    showReviews();
+                }, delay);
+            }
+        }
+        
+        // Listen for scroll events
+        var scrollListener = function() {
+            handleScroll();
+        };
+        
+        // Use passive listener for better performance
+        window.addEventListener('scroll', scrollListener, { passive: true });
+        
+        // Also trigger on wheel event (for trackpad users)
+        window.addEventListener('wheel', function() {
+            handleScroll();
+        }, { passive: true });
+        
+        // Clean up timer if page is unloaded
+        window.addEventListener('beforeunload', function() {
+            if (scrollTimer) {
+                clearTimeout(scrollTimer);
+            }
+        });
+    })();
+    </script>
 </body>
 </html>

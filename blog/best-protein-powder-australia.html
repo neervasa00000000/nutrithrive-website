@@ -1140,7 +1140,7 @@
 
                 <h2>Real Australian Users Review NutriThrive Moringa</h2>
                 <p>Don't just take our word for it. Here's what real Australian gym-goers and health enthusiasts are saying after switching to or stacking with NutriThrive Moringa:</p>
-                <div class="customer-testimonials" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin: 3rem 0 2rem 0; clear: both; position: relative; z-index: 1; width: 100%; box-sizing: border-box;">
+                <div class="customer-testimonials" style="opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin: 3rem 0 2rem 0; clear: both; position: relative; z-index: 1; width: 100%; box-sizing: border-box;">
                     <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.1); text-align: center; border-left: 4px solid #175c36; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; margin: 0;">
                         <div class="quote-icon" style="position: absolute; top: 1rem; right: 1rem; font-size: 3rem; color: #e8f5e9; opacity: 0.5; font-family: Georgia, serif; line-height: 1; z-index: 0; pointer-events: none;">"</div>
                         <div style="margin-bottom: 1rem; position: relative; z-index: 1;">
@@ -2692,5 +2692,67 @@
     });
 })();
 </script>
+
+    <!-- Scroll-triggered Reviews Animation -->
+    <script>
+    (function() {
+        var hasScrolled = false;
+        var scrollTimer = null;
+        var reviewsElement = null;
+        
+        // Find the reviews section
+        if (document.querySelector('.customer-testimonials')) {
+            reviewsElement = document.querySelector('.customer-testimonials');
+        } else if (document.querySelector('.customer-reviews-section')) {
+            reviewsElement = document.querySelector('.customer-reviews-section');
+        }
+        
+        if (!reviewsElement) {
+            return; // No reviews section found
+        }
+        
+        // Function to show reviews with animation
+        function showReviews() {
+            if (reviewsElement && reviewsElement.style.opacity !== '1') {
+                reviewsElement.style.opacity = '1';
+                reviewsElement.style.transform = 'translateY(0)';
+            }
+        }
+        
+        // Function to handle scroll
+        function handleScroll() {
+            if (!hasScrolled) {
+                hasScrolled = true;
+                
+                // Show reviews after 3-4 seconds (random between 3000-4000ms)
+                var delay = Math.random() * 1000 + 3000; // 3000-4000ms
+                
+                scrollTimer = setTimeout(function() {
+                    showReviews();
+                }, delay);
+            }
+        }
+        
+        // Listen for scroll events
+        var scrollListener = function() {
+            handleScroll();
+        };
+        
+        // Use passive listener for better performance
+        window.addEventListener('scroll', scrollListener, { passive: true });
+        
+        // Also trigger on wheel event (for trackpad users)
+        window.addEventListener('wheel', function() {
+            handleScroll();
+        }, { passive: true });
+        
+        // Clean up timer if page is unloaded
+        window.addEventListener('beforeunload', function() {
+            if (scrollTimer) {
+                clearTimeout(scrollTimer);
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
