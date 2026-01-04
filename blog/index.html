@@ -1204,21 +1204,38 @@
                     // Double-check: verify cards are actually visible after a delay
                     setTimeout(() => {
                         let actuallyVisible = 0;
+                        let stillHidden = [];
                         for (let i = startIndex; i < endIndex && i < blogCards.length; i++) {
-                            const card = blogCards[i].element;
+                            const cardData = blogCards[i];
+                            const card = cardData.element;
                             if (card) {
                                 const style = window.getComputedStyle(card);
                                 if (style.display !== 'none' && style.visibility !== 'hidden') {
                                     actuallyVisible++;
                                 } else {
-                                    console.error(`Card ${i} is still hidden! Display: ${style.display}, Visibility: ${style.visibility}`);
-                                    // Try to force it again
+                                    stillHidden.push(i);
+                                    console.error(`Card ${i} (${cardData.title}) is still hidden! Display: ${style.display}, Visibility: ${style.visibility}`);
+                                    // Try to force it again with even more aggressive methods
+                                    card.removeAttribute('style');
+                                    card.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important;';
                                     card.style.setProperty('display', 'block', 'important');
                                     card.style.setProperty('visibility', 'visible', 'important');
+                                    
+                                    // Check parent
+                                    if (card.parentNode) {
+                                        const parentStyle = window.getComputedStyle(card.parentNode);
+                                        if (parentStyle.display === 'none') {
+                                            console.error(`Parent of card ${i} is hidden!`);
+                                            card.parentNode.style.setProperty('display', 'block', 'important');
+                                        }
+                                    }
                                 }
                             }
                         }
                         console.log(`Verification: ${actuallyVisible} cards actually visible (expected: ${shownCount})`);
+                        if (stillHidden.length > 0) {
+                            console.error(`Cards still hidden: ${stillHidden.join(', ')}`);
+                        }
                     }, 100);
                     
                     console.log(`Result: Shown ${shownCount} cards, Hidden ${hiddenCount} cards`);
