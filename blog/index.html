@@ -1186,13 +1186,19 @@
 
             // Update pagination
             function updatePagination() {
-                // Ensure currentPage doesn't exceed totalPages
-                if (currentPage > totalPages) {
-                    currentPage = totalPages;
+                // Recalculate total pages based on actual blog cards
+                const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
+                
+                // Ensure currentPage doesn't exceed actual total pages
+                if (currentPage > actualTotalPages) {
+                    currentPage = actualTotalPages;
                 }
                 if (currentPage < 1) {
                     currentPage = 1;
                 }
+                
+                // Update totalPages to match actual
+                totalPages = actualTotalPages;
                 
                 showCurrentPageCards();
                 createPaginationNumbers();
@@ -1202,7 +1208,7 @@
                 const nextBtn = document.getElementById('nextBtn');
                 
                 prevBtn.disabled = currentPage === 1;
-                nextBtn.disabled = currentPage === totalPages;
+                nextBtn.disabled = currentPage === totalPages || totalPages === 0;
             }
 
             // Event listeners for prev/next buttons
@@ -1221,11 +1227,20 @@
             });
 
             // Initialize pagination
-            if (blogCards.length > postsPerPage) {
+            const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
+            totalPages = actualTotalPages;
+            
+            if (blogCards.length > postsPerPage && actualTotalPages > 0) {
                 updatePagination();
             } else {
                 // Hide pagination if not needed
                 document.querySelector('.pagination-container').style.display = 'none';
+                // Show all cards if no pagination needed
+                if (blogCards.length > 0) {
+                    blogCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                }
             }
         });
 
