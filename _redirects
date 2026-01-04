@@ -191,7 +191,6 @@
 # Fix additional 404 errors
 /blog/how-to-stop-chrome-from-using-all-your-ram-2025.html /blog/best-superfoods-australia-comparison-health-conscious-adults.html 301
 /homepage/index.html / 301
-/homepage/index.html / 301
 /contact/contact.css /pages/contact/contact.css 301
 /contact/contact.js /pages/contact/contact.js 301
 
