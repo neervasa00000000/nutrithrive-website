@@ -1062,22 +1062,21 @@
                 }
                 
                 console.log('Valid blog cards after filtering:', blogCards.length);
-                console.log('First card title:', blogCards[0]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
-                console.log('Last card title:', blogCards[blogCards.length - 1]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
-            
-            console.log('Total blog cards found:', allBlogCards.length);
-            console.log('Valid blog cards after filtering:', blogCards.length);
-            
-            const postsPerPage = 9;
-            let totalPages = Math.ceil(blogCards.length / postsPerPage);
-            let currentPage = 1;
-            
-            // Ensure we have at least 1 page
-            if (totalPages < 1) totalPages = 1;
-            
-            console.log('Total pages:', totalPages);
-            console.log('Posts per page:', postsPerPage);
-            console.log('Blog cards array length:', blogCards.length);
+                if (blogCards.length > 0) {
+                    console.log('First card title:', blogCards[0]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
+                    console.log('Last card title:', blogCards[blogCards.length - 1]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
+                }
+                
+                const postsPerPage = 9;
+                let totalPages = Math.ceil(blogCards.length / postsPerPage);
+                let currentPage = 1;
+                
+                // Ensure we have at least 1 page
+                if (totalPages < 1) totalPages = 1;
+                
+                console.log('Total pages:', totalPages);
+                console.log('Posts per page:', postsPerPage);
+                console.log('Blog cards array length:', blogCards.length);
 
             // Hide all blog cards initially (including empty ones)
             function hideAllCards() {
@@ -1131,8 +1130,8 @@
                 }
             }
 
-            // Create pagination numbers
-            function createPaginationNumbers() {
+                // Create pagination numbers
+                function createPaginationNumbers() {
                 const paginationNumbers = document.getElementById('paginationNumbers');
                 paginationNumbers.innerHTML = '';
                 
@@ -1209,7 +1208,7 @@
                 paginationNumbers.appendChild(pageElement);
             }
 
-            function createDots() {
+                function createDots() {
                 const paginationNumbers = document.getElementById('paginationNumbers');
                 const dotsElement = document.createElement('span');
                 dotsElement.className = 'pagination-number dots';
@@ -1217,8 +1216,8 @@
                 paginationNumbers.appendChild(dotsElement);
             }
 
-            // Update pagination
-            function updatePagination() {
+                // Update pagination
+                function updatePagination() {
                 // Recalculate total pages based on actual blog cards
                 const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
                 
