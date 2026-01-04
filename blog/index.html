@@ -1039,6 +1039,7 @@
             
             // Filter out empty blog cards (cards without content)
             // Only filter out cards that are completely empty (no content div or no title)
+            // IMPORTANT: Keep the original DOM order by filtering in place
             const blogCards = Array.from(allBlogCards).filter(card => {
                 const content = card.querySelector('.blog-post-card-content');
                 if (!content) {
@@ -1046,8 +1047,17 @@
                 }
                 // Card is valid if it has a post-title (all valid blog posts have this)
                 const hasTitle = content.querySelector('.post-title');
-                return hasTitle !== null;
+                const isValid = hasTitle !== null;
+                if (!isValid) {
+                    console.log('Filtered out card:', card);
+                }
+                return isValid;
             });
+            
+            // Verify we have the right number of cards
+            console.log('Filtered blogCards array:', blogCards.length, 'cards');
+            console.log('First 5 cards:', blogCards.slice(0, 5).map(c => c.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title'));
+            console.log('Last 5 cards:', blogCards.slice(-5).map(c => c.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title'));
             
             console.log('Total blog cards found:', allBlogCards.length);
             console.log('Valid blog cards after filtering:', blogCards.length);
