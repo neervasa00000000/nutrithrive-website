@@ -1,6 +1,9 @@
 # NutriThrive URL Structure Consolidation
 # Redirect old /pages/ folders to the new clean structure
 
+# Fix double slash in blog URLs
+/blog// /blog/ 301
+
 # Blog redirects - redirect ALL /pages/blog/ to /blog/
 # Handle URLs with .html extension (must come first)
 /pages/blog/*.html /blog/:splat 301
