@@ -1067,6 +1067,7 @@
             function hideAllCards() {
                 allBlogCards.forEach(card => {
                     card.style.display = 'none';
+                    card.style.visibility = 'hidden';
                 });
             }
 
@@ -1097,13 +1098,12 @@
                 for (let i = startIndex; i < endIndex && i < blogCards.length; i++) {
                     const card = blogCards[i];
                     if (card && card.parentNode) {
-                        // Force display with important styles
-                        card.style.display = 'block';
-                        card.style.visibility = 'visible';
-                        card.style.opacity = '1';
-                        card.style.height = 'auto';
-                        card.style.overflow = 'visible';
+                        // Force display with important styles - remove any inline styles that might hide it
+                        card.removeAttribute('style');
+                        card.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important;';
                         shownCount++;
+                    } else {
+                        console.warn(`Card at index ${i} is missing or not in DOM`);
                     }
                 }
                 
