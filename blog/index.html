@@ -1042,29 +1042,31 @@
                     return;
                 }
                 
-                const allBlogCards = blogListSection.querySelectorAll('.blog-post-card');
+                // Get ALL cards in the section, preserving DOM order
+                const allBlogCards = Array.from(blogListSection.querySelectorAll('.blog-post-card'));
                 console.log('=== BLOG PAGINATION INIT ===');
                 console.log('Total blog cards in DOM:', allBlogCards.length);
                 
-                // Filter out empty blog cards - be more lenient
+                // Filter out empty blog cards - preserve DOM order
                 const blogCards = [];
                 for (let i = 0; i < allBlogCards.length; i++) {
                     const card = allBlogCards[i];
+                    
+                    // Check if card has content div
                     const content = card.querySelector('.blog-post-card-content');
                     if (!content) {
-                        console.log(`Skipping card ${i}: No content div`);
                         continue;
                     }
                     
-                    // Check for post-title
+                    // Check for post-title - this is the key indicator
                     const hasTitle = content.querySelector('.post-title');
-                    if (!hasTitle) {
-                        console.log(`Skipping card ${i}: No post-title`);
-                        continue;
+                    if (hasTitle !== null) {
+                        blogCards.push({
+                            element: card,
+                            index: i,
+                            title: hasTitle.textContent?.trim().substring(0, 50) || 'No title'
+                        });
                     }
-                    
-                    // Card is valid - add it
-                    blogCards.push(card);
                 }
                 
                 console.log('Valid blog cards after filtering:', blogCards.length);
@@ -1076,17 +1078,15 @@
                     return;
                 }
                 
-                // Log sample cards
-                console.log('Sample cards:');
+                // Log first and last cards to verify order
+                console.log('First 5 cards:');
                 for (let i = 0; i < Math.min(5, blogCards.length); i++) {
-                    const title = blogCards[i]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title';
-                    console.log(`  Card ${i}: ${title}`);
+                    console.log(`  Card ${i} (DOM index ${blogCards[i].index}): ${blogCards[i].title}`);
                 }
-                if (blogCards.length > 5) {
-                    console.log(`  ... (${blogCards.length - 5} more cards) ...`);
-                    for (let i = Math.max(0, blogCards.length - 3); i < blogCards.length; i++) {
-                        const title = blogCards[i]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title';
-                        console.log(`  Card ${i}: ${title}`);
+                if (blogCards.length > 10) {
+                    console.log(`  ... (${blogCards.length - 10} more cards) ...`);
+                    for (let i = Math.max(0, blogCards.length - 5); i < blogCards.length; i++) {
+                        console.log(`  Card ${i} (DOM index ${blogCards[i].index}): ${blogCards[i].title}`);
                     }
                 }
                 
@@ -1139,40 +1139,39 @@
                     let shownCount = 0;
                     let hiddenCount = 0;
                     
-                    console.log(`Processing ${blogCards.length} cards, showing indices ${startIndex} to ${endIndex - 1}`);
+                    console.log(`Processing ${blogCards.length} cards, showing array indices ${startIndex} to ${endIndex - 1}`);
                     
                     // Verify blogCards array integrity
                     if (blogCards.length < endIndex) {
                         console.error(`ERROR: blogCards array only has ${blogCards.length} items, but trying to access up to index ${endIndex - 1}`);
                     }
                     
+                    // Process all cards
                     for (let i = 0; i < blogCards.length; i++) {
-                        const card = blogCards[i];
+                        const cardData = blogCards[i];
+                        const card = cardData.element;
+                        
                         if (!card) {
-                            console.error(`Card at index ${i} is null!`);
+                            console.error(`Card at array index ${i} is null!`);
                             continue;
                         }
                         
                         if (!card.parentNode) {
-                            console.error(`Card at index ${i} has no parent node!`);
+                            console.error(`Card at array index ${i} (DOM index ${cardData.index}) has no parent node!`);
                             continue;
                         }
                         
                         // Show card if it's in the current page range
                         if (i >= startIndex && i < endIndex) {
-                            // Clear any existing styles
+                            // Clear any existing styles completely
                             card.removeAttribute('style');
                             
                             // Set display properties with !important using setProperty
-                            try {
-                                card.style.setProperty('display', 'block', 'important');
-                                card.style.setProperty('visibility', 'visible', 'important');
-                                card.style.setProperty('opacity', '1', 'important');
-                                card.style.setProperty('height', 'auto', 'important');
-                            } catch (e) {
-                                // Fallback if setProperty doesn't work
-                                card.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important;';
-                            }
+                            card.style.setProperty('display', 'block', 'important');
+                            card.style.setProperty('visibility', 'visible', 'important');
+                            card.style.setProperty('opacity', '1', 'important');
+                            card.style.setProperty('height', 'auto', 'important');
+                            card.style.setProperty('overflow', 'visible', 'important');
                             
                             // Remove hiding classes
                             card.classList.remove('hidden', 'd-none', 'hide');
@@ -1180,8 +1179,7 @@
                             shownCount++;
                             
                             // Log which card we're showing
-                            const title = card.querySelector('.post-title')?.textContent?.trim().substring(0, 40) || 'No title';
-                            console.log(`  ✓ Showing card ${i}: ${title}`);
+                            console.log(`  ✓ Showing card ${i} (DOM ${cardData.index}): ${cardData.title}`);
                         } else {
                             // Hide cards not on current page
                             card.style.setProperty('display', 'none', 'important');
@@ -1189,22 +1187,27 @@
                         }
                     }
                     
-                    // Double-check: verify cards are actually visible
+                    console.log(`Result: Shown ${shownCount} cards, Hidden ${hiddenCount} cards`);
+                    
+                    // Double-check: verify cards are actually visible after a delay
                     setTimeout(() => {
                         let actuallyVisible = 0;
                         for (let i = startIndex; i < endIndex && i < blogCards.length; i++) {
-                            const card = blogCards[i];
+                            const card = blogCards[i].element;
                             if (card) {
                                 const style = window.getComputedStyle(card);
                                 if (style.display !== 'none' && style.visibility !== 'hidden') {
                                     actuallyVisible++;
                                 } else {
                                     console.error(`Card ${i} is still hidden! Display: ${style.display}, Visibility: ${style.visibility}`);
+                                    // Try to force it again
+                                    card.style.setProperty('display', 'block', 'important');
+                                    card.style.setProperty('visibility', 'visible', 'important');
                                 }
                             }
                         }
-                        console.log(`Actually visible cards: ${actuallyVisible} (expected: ${shownCount})`);
-                    }, 50);
+                        console.log(`Verification: ${actuallyVisible} cards actually visible (expected: ${shownCount})`);
+                    }, 100);
                     
                     console.log(`Result: Shown ${shownCount} cards, Hidden ${hiddenCount} cards`);
                     
