@@ -1033,31 +1033,37 @@
     <script>
         // Blog Pagination
         document.addEventListener('DOMContentLoaded', function() {
-            // Get blog cards from the blog-list-section only
-            const blogListSection = document.querySelector('.blog-list-section');
-            const allBlogCards = blogListSection ? blogListSection.querySelectorAll('.blog-post-card') : document.querySelectorAll('.blog-post-card');
-            
-            // Filter out empty blog cards (cards without content)
-            // Only filter out cards that are completely empty (no content div or no title)
-            // IMPORTANT: Keep the original DOM order by filtering in place
-            const blogCards = Array.from(allBlogCards).filter(card => {
-                const content = card.querySelector('.blog-post-card-content');
-                if (!content) {
-                    return false;
+            // Wait a bit to ensure DOM is fully loaded
+            setTimeout(function() {
+                // Get blog cards from the blog-list-section only
+                const blogListSection = document.querySelector('.blog-list-section');
+                console.log('Blog list section found:', blogListSection !== null);
+                
+                const allBlogCards = blogListSection ? blogListSection.querySelectorAll('.blog-post-card') : document.querySelectorAll('.blog-post-card');
+                console.log('Total blog cards in DOM:', allBlogCards.length);
+                
+                // Filter out empty blog cards (cards without content)
+                // Only filter out cards that are completely empty (no content div or no title)
+                const blogCards = [];
+                for (let i = 0; i < allBlogCards.length; i++) {
+                    const card = allBlogCards[i];
+                    const content = card.querySelector('.blog-post-card-content');
+                    if (!content) {
+                        console.log(`Card ${i}: No content div`);
+                        continue;
+                    }
+                    // Card is valid if it has a post-title (all valid blog posts have this)
+                    const hasTitle = content.querySelector('.post-title');
+                    if (hasTitle !== null) {
+                        blogCards.push(card);
+                    } else {
+                        console.log(`Card ${i}: No post-title found`);
+                    }
                 }
-                // Card is valid if it has a post-title (all valid blog posts have this)
-                const hasTitle = content.querySelector('.post-title');
-                const isValid = hasTitle !== null;
-                if (!isValid) {
-                    console.log('Filtered out card:', card);
-                }
-                return isValid;
-            });
-            
-            // Verify we have the right number of cards
-            console.log('Filtered blogCards array:', blogCards.length, 'cards');
-            console.log('First 5 cards:', blogCards.slice(0, 5).map(c => c.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title'));
-            console.log('Last 5 cards:', blogCards.slice(-5).map(c => c.querySelector('.post-title')?.textContent?.trim().substring(0, 50) || 'No title'));
+                
+                console.log('Valid blog cards after filtering:', blogCards.length);
+                console.log('First card title:', blogCards[0]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
+                console.log('Last card title:', blogCards[blogCards.length - 1]?.querySelector('.post-title')?.textContent?.trim().substring(0, 50));
             
             console.log('Total blog cards found:', allBlogCards.length);
             console.log('Valid blog cards after filtering:', blogCards.length);
@@ -1253,22 +1259,26 @@
                 }
             });
 
-            // Initialize pagination
-            const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
-            totalPages = actualTotalPages;
-            
-            if (blogCards.length > postsPerPage && actualTotalPages > 0) {
-                updatePagination();
-            } else {
-                // Hide pagination if not needed
-                document.querySelector('.pagination-container').style.display = 'none';
-                // Show all cards if no pagination needed
-                if (blogCards.length > 0) {
-                    blogCards.forEach(card => {
-                        card.style.display = 'block';
-                    });
+                // Initialize pagination
+                const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
+                totalPages = actualTotalPages;
+                
+                if (blogCards.length > postsPerPage && actualTotalPages > 0) {
+                    updatePagination();
+                } else {
+                    // Hide pagination if not needed
+                    const paginationContainer = document.querySelector('.pagination-container');
+                    if (paginationContainer) {
+                        paginationContainer.style.display = 'none';
+                    }
+                    // Show all cards if no pagination needed
+                    if (blogCards.length > 0) {
+                        blogCards.forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    }
                 }
-            }
+            }, 100); // Small delay to ensure DOM is ready
         });
 
         // Blog Search Functionality
