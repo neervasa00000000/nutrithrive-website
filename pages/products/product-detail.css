@@ -2177,22 +2177,16 @@ article h1, section h1, nav h1, aside h1 {
 
 .accordion-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
     cursor: pointer;
     background: transparent;
     border: none;
     width: 100%;
-    text-align: center;
+    text-align: left;
     border-bottom: 1px solid rgba(236, 231, 219, 0.5);
     transition: all 0.3s ease;
-    position: relative;
-}
-
-.accordion-header h2 {
-    margin: 0 auto;
-    text-align: center;
 }
 
 .accordion-header:hover {
@@ -2203,11 +2197,8 @@ article h1, section h1, nav h1, aside h1 {
     color: var(--primary);
     font-size: 1.5rem;
     font-weight: 700;
-    margin: 0 auto;
-    text-align: center;
-    width: auto;
-    flex: 0 0 auto;
-    padding-right: 2rem;
+    margin: 0;
+    flex: 1;
 }
 
 .accordion-icon {
