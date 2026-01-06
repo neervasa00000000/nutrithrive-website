@@ -1522,6 +1522,7 @@ footer {
     margin-bottom: 1rem;
     text-align: center;
     width: 100%;
+    flex-basis: 100%;
 }
 
 .product-purchase-details > .product-content {
@@ -1533,13 +1534,12 @@ footer {
     font-size: 1.2rem;
     color: var(--muted);
     line-height: 1.6;
-    margin: 2rem 0 !important;
-    clear: both !important;
-    display: block !important;
-    position: relative !important;
-    width: 100% !important;
-    overflow: visible !important;
-    padding-top: 0 !important;
+    margin: 0 0 2rem 0;
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    padding-top: 0;
 }
 
 .product-purchase-details .product-price {
