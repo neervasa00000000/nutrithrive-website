@@ -1647,6 +1647,8 @@ footer {
         font-size: 1.5rem !important;
         color: var(--primary) !important;
         font-weight: bold !important;
+        position: absolute !important;
+        right: 1rem !important;
     }
     
     .accordion-content {
