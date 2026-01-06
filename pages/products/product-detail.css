@@ -1415,6 +1415,7 @@ footer {
     margin-top: 2rem;
 }
 
+/* Product Detail Page Styles */
 .product-detail-page {
     display: flex;
     flex-direction: column;
@@ -1427,24 +1428,6 @@ footer {
     opacity: 1 !important;
     width: 100%;
     box-sizing: border-box;
-}
-
-@media (max-width: 968px) {
-    .product-detail-page {
-        padding: 1rem;
-        gap: 2rem;
-    }
-    
-    .product-gallery {
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    .main-image img {
-        max-width: 400px;
-        margin: 0 auto;
-        display: block;
-    }
 }
 
 .product-gallery {
@@ -2177,7 +2160,6 @@ article h1, section h1, nav h1, aside h1 {
     opacity: 1 !important;
     width: 100%;
     overflow: hidden;
-    text-align: center;
 }
 
 /* Accordion Styles - Clean Minimalist Design */
@@ -2233,8 +2215,7 @@ article h1, section h1, nav h1, aside h1 {
     font-weight: bold;
     color: var(--primary);
     transition: transform 0.3s ease;
-    position: absolute;
-    right: 0;
+    margin-left: 1rem;
 }
 
 .accordion-section.active .accordion-icon {
@@ -2251,7 +2232,6 @@ article h1, section h1, nav h1, aside h1 {
     box-sizing: border-box;
     overflow: hidden;
     word-wrap: break-word;
-    text-align: center;
 }
 
 .accordion-content ul {
