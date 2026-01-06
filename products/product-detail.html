@@ -392,7 +392,14 @@
                 <p class="product-description">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system. Shipped fresh from Truganina, Melbourne to Sydney and across Australia. Our premium moringa powder contains complete amino acid profiles and natural plant-based nutrition for optimal health benefits.</p>
 
                 <div style="text-align: center; padding: 20px;">
-                    <div id="paypal-container-ERYQAP7ZAHDDQ" style="margin-top: 20px;" aria-label="PayPal payment options for Moringa Powder"></div>
+                    <div>
+                      <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                      <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                        <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Pay Now" />
+                        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                        <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+                      </form>
+                    </div>
                 </div>
                 
                 
@@ -698,61 +705,6 @@
         
         // Make sure function is available globally
         window.toggleAccordion = toggleAccordion;
-    </script>
-    <script 
-      src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture">
-    </script>
-    <script>
-      // Suppress PayPal SDK console errors
-      const originalError = console.error;
-      console.error = function(...args) {
-        // Filter out PayPal paylater errors
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('ncps_standalone_paylater_ineligible')) {
-          return; // Suppress this error
-        }
-        originalError.apply(console, args);
-      };
-
-      // Wait for PayPal SDK to load before rendering
-      function initPayPal() {
-        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
-          try {
-            paypal.HostedButtons({
-              hostedButtonId: "ERYQAP7ZAHDDQ",
-            }).render("#paypal-container-ERYQAP7ZAHDDQ").then(function() {
-              // Fix ARIA accessibility for PayPal thumbnail container
-              setTimeout(function() {
-                const thumbnailContainer = document.querySelector('#thumbnail-container-ERYQAP7ZAHDDQ');
-                if (thumbnailContainer && !thumbnailContainer.getAttribute('aria-label')) {
-                  thumbnailContainer.setAttribute('aria-label', 'Product image gallery for Moringa Powder');
-                  thumbnailContainer.setAttribute('role', 'group');
-                }
-                const heroImg = document.querySelector('#hero-img-ERYQAP7ZAHDDQ');
-                if (heroImg && !heroImg.getAttribute('width') && !heroImg.getAttribute('height')) {
-                  heroImg.setAttribute('width', '533');
-                  heroImg.setAttribute('height', '800');
-                }
-              }, 500);
-            }).catch(function(err) {
-              // Silently handle rendering errors
-              console.warn('PayPal button rendering issue:', err);
-            });
-          } catch (err) {
-            // Silently handle initialization errors
-            console.warn('PayPal initialization error:', err);
-          }
-        } else {
-          // Retry if PayPal SDK not loaded yet
-          setTimeout(initPayPal, 100);
-        }
-      }
-
-      // Start initialization
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPayPal);
-      } else {
-        initPayPal();
-      }
     </script>
     <script src="../shared/js/script.js"></script>
     <script src="../pages/products/product-detail.js"></script>
