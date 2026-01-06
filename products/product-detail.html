@@ -671,52 +671,51 @@
                           getComputedStyle(content).display !== 'none';
             
             if (isOpen) {
-                // Close - smooth animation
-                const currentHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = currentHeight;
-                content.style.overflow = 'hidden';
-                content.style.opacity = '1';
+                // Close - smooth animation using CSS transitions
+                const currentHeight = content.scrollHeight;
+                content.style.maxHeight = currentHeight + 'px';
                 
-                // Force reflow
-                content.offsetHeight;
+                // Force reflow to ensure transition starts
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        content.style.maxHeight = '0px';
+                        content.style.opacity = '0';
+                        content.style.paddingTop = '0';
+                        content.style.paddingBottom = '0';
+                    });
+                });
                 
-                // Animate to 0
-                content.style.maxHeight = '0px';
-                content.style.opacity = '0';
-                
+                // Remove active classes after animation
                 setTimeout(() => {
                     content.style.display = 'none';
-                    content.style.maxHeight = null;
-                    content.style.overflow = null;
-                    content.style.opacity = null;
-                }, 350);
+                    content.classList.remove('active');
+                    section.classList.remove('active');
+                    if (header) header.classList.remove('active');
+                }, 400);
                 
-                if (icon) icon.textContent = '+';
-                section.classList.remove('active');
-                content.classList.remove('active');
             } else {
-                // Open - smooth animation
+                // Open - smooth animation using CSS transitions
                 content.style.display = 'block';
                 content.style.maxHeight = '0px';
-                content.style.overflow = 'hidden';
-                content.style.transition = 'max-height 0.3s ease-out, padding 0.3s ease-out';
+                content.style.opacity = '0';
+                content.style.paddingTop = '0';
+                content.style.paddingBottom = '0';
                 
                 // Force reflow to ensure transition works
-                content.offsetHeight;
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        const fullHeight = content.scrollHeight + 48; // 1.5rem top + 1.5rem bottom = 48px
+                        content.style.maxHeight = fullHeight + 'px';
+                        content.style.opacity = '1';
+                        content.style.paddingTop = '1.5rem';
+                        content.style.paddingBottom = '1.5rem';
+                    });
+                });
                 
-                // Set to full height
-                const fullHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = fullHeight;
-                
-                setTimeout(() => {
-                    content.style.maxHeight = 'none';
-                    content.style.overflow = null;
-                    content.style.transition = null;
-                }, 300);
-                
-                if (icon) icon.textContent = '−';
-                section.classList.add('active');
+                // Add active classes
                 content.classList.add('active');
+                section.classList.add('active');
+                if (header) header.classList.add('active');
             }
         }
         
