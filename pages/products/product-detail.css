@@ -1592,8 +1592,27 @@ footer {
     
     .product-purchase-details .product-description {
         font-size: 0.95rem !important;
-        margin-bottom: 1.5rem !important;
+        margin: 2rem 0 1.5rem 0 !important;
         line-height: 1.5 !important;
+        clear: both !important;
+        display: block !important;
+    }
+    
+    .product-gallery {
+        max-width: 100% !important;
+        margin: 0 auto 2rem auto !important;
+        clear: both !important;
+    }
+    
+    .main-image {
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .main-image img {
+        max-width: 400px !important;
+        margin: 0 auto !important;
+        display: block !important;
     }
     
     .product-info-sections {
