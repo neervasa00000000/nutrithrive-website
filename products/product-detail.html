@@ -386,6 +386,19 @@
 
     <main>
         <section class="product-detail-page">
+            <!-- Product Gallery -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img id="main-product-image" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Powder - 100% Pure Moringa Oleifera" style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                </div>
+                <div class="thumbnail-images">
+                    <img class="thumbnail active" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Powder Package" onclick="changeMainImage(this.src)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid #2d5a3d;">
+                    <img class="thumbnail" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Powder" onclick="changeMainImage(this.src)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+                    <img class="thumbnail" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Leaves" onclick="changeMainImage(this.src)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+                    <img class="thumbnail" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Product" onclick="changeMainImage(this.src)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+                </div>
+            </div>
+
             <div class="product-purchase-details">
                 <h1 class="product-title">Moringa Powder</h1>
                 
@@ -705,6 +718,29 @@
         
         // Make sure function is available globally
         window.toggleAccordion = toggleAccordion;
+        
+        // Product image gallery functionality
+        function changeMainImage(newSrc) {
+            const mainImage = document.getElementById('main-product-image');
+            if (mainImage) {
+                mainImage.src = newSrc;
+            }
+            
+            // Update active thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => {
+                if (thumb.src === newSrc) {
+                    thumb.classList.add('active');
+                    thumb.style.border = '2px solid #2d5a3d';
+                } else {
+                    thumb.classList.remove('active');
+                    thumb.style.border = '2px solid transparent';
+                }
+            });
+        }
+        
+        // Make function available globally
+        window.changeMainImage = changeMainImage;
     </script>
     <script src="../shared/js/script.js"></script>
     <script src="../pages/products/product-detail.js"></script>
