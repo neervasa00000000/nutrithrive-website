@@ -1436,10 +1436,13 @@ footer {
     position: relative;
     width: 100%;
     max-width: 400px;
+    margin: 0 auto 2rem auto;
+    clear: both;
 }
 
 .main-image {
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .main-image img {
@@ -1447,13 +1450,16 @@ footer {
     max-width: 100%;
     height: auto;
     border-radius: var(--radius);
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: block;
 }
 
 .thumbnail-images {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
 .thumbnail {
@@ -1500,7 +1506,9 @@ footer {
     font-size: 1.2rem;
     color: var(--muted);
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
+    clear: both;
+    display: block;
 }
 
 .product-purchase-details .product-price {
