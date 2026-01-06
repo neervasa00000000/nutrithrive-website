@@ -1515,10 +1515,23 @@ footer {
 @media (max-width: 968px) {
     .product-purchase-details .product-content-wrapper {
         flex-direction: column !important;
+        gap: 2rem !important;
     }
     
     .product-purchase-details {
         text-align: center !important;
+    }
+    
+    .product-gallery {
+        order: 1;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto 1.5rem auto !important;
+    }
+    
+    .product-content {
+        order: 2;
+        width: 100% !important;
     }
 }
 
@@ -1648,13 +1661,33 @@ footer {
         display: block !important;
     }
     
+    .product-purchase-details .product-content-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+    }
+    
     .product-gallery {
+        order: 1 !important;
         max-width: 100% !important;
+        width: 100% !important;
         margin: 0 auto 1.5rem auto !important;
         clear: both !important;
         position: relative !important;
         top: auto !important;
         height: auto !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .product-content {
+        order: 2 !important;
+        width: 100% !important;
+        flex: 1 !important;
+        min-width: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     .main-image {
@@ -1682,6 +1715,19 @@ footer {
     .thumbnail {
         width: 60px !important;
         height: 60px !important;
+    }
+    
+    .product-purchase-details .product-description {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0 0 1.5rem 0 !important;
+    }
+    
+    .product-purchase-details .product-content > div {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     .product-info-sections {
