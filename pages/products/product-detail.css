@@ -2199,6 +2199,11 @@ article h1, section h1, nav h1, aside h1 {
     position: relative;
 }
 
+.accordion-header h2 {
+    margin: 0 auto;
+    text-align: center;
+}
+
 .accordion-header:hover {
     background: transparent;
 }
@@ -2207,9 +2212,11 @@ article h1, section h1, nav h1, aside h1 {
     color: var(--primary);
     font-size: 1.5rem;
     font-weight: 700;
-    margin: 0;
+    margin: 0 auto;
     text-align: center;
-    width: 100%;
+    width: auto;
+    flex: 0 0 auto;
+    padding-right: 2rem;
 }
 
 .accordion-icon {
