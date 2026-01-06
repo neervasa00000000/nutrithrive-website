@@ -1486,19 +1486,29 @@ footer {
 
 .product-purchase-details {
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto; /* Center the container */
-    text-align: center;
+    text-align: left;
     padding: 2rem;
     background: transparent;
     border-radius: 0;
     box-shadow: none;
     border: none;
-    display: block !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 3rem !important;
+    align-items: flex-start !important;
     visibility: visible !important;
     opacity: 1 !important;
     overflow: visible;
     position: relative;
+}
+
+@media (max-width: 968px) {
+    .product-purchase-details {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
 }
 
 #paypal-hosted-button-container {
@@ -1510,6 +1520,13 @@ footer {
     font-weight: 800;
     color: var(--primary);
     margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.product-purchase-details > .product-content {
+    flex: 1;
+    min-width: 0;
 }
 
 .product-purchase-details .product-description {
