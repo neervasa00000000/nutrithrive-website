@@ -1438,11 +1438,15 @@ footer {
     max-width: 400px;
     margin: 0 auto 2rem auto;
     clear: both;
+    float: none;
+    overflow: visible;
 }
 
 .main-image {
     width: 100%;
     margin-bottom: 1rem;
+    display: block;
+    position: relative;
 }
 
 .main-image img {
@@ -1453,6 +1457,7 @@ footer {
     margin-bottom: 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     display: block;
+    position: relative;
 }
 
 .thumbnail-images {
@@ -1460,6 +1465,8 @@ footer {
     gap: 1rem;
     justify-content: center;
     margin-top: 1rem;
+    flex-wrap: wrap;
+    clear: both;
 }
 
 .thumbnail {
@@ -1489,6 +1496,8 @@ footer {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    overflow: visible;
+    position: relative;
 }
 
 #paypal-hosted-button-container {
@@ -1509,6 +1518,9 @@ footer {
     margin: 2rem 0;
     clear: both;
     display: block;
+    position: relative;
+    width: 100%;
+    overflow: visible;
 }
 
 .product-purchase-details .product-price {
