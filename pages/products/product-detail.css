@@ -2179,7 +2179,7 @@ article h1, section h1, nav h1, aside h1 {
 
 .accordion-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 1.5rem 0;
     cursor: pointer;
@@ -2189,6 +2189,7 @@ article h1, section h1, nav h1, aside h1 {
     text-align: center;
     border-bottom: 1px solid rgba(236, 231, 219, 0.5);
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .accordion-header:hover {
@@ -2200,8 +2201,8 @@ article h1, section h1, nav h1, aside h1 {
     font-size: 1.5rem;
     font-weight: 700;
     margin: 0;
-    flex: 1;
     text-align: center;
+    width: 100%;
 }
 
 .accordion-icon {
@@ -2209,7 +2210,8 @@ article h1, section h1, nav h1, aside h1 {
     font-weight: bold;
     color: var(--primary);
     transition: transform 0.3s ease;
-    margin-left: 1rem;
+    position: absolute;
+    right: 0;
 }
 
 .accordion-section.active .accordion-icon {
@@ -2226,6 +2228,7 @@ article h1, section h1, nav h1, aside h1 {
     box-sizing: border-box;
     overflow: hidden;
     word-wrap: break-word;
+    text-align: center;
 }
 
 .accordion-content ul {
