@@ -1636,11 +1636,13 @@ footer {
     
     .accordion-header h2 {
         font-size: 1.2rem !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
         color: var(--primary) !important;
         font-weight: 600 !important;
         text-align: center !important;
-        width: 100% !important;
+        width: auto !important;
+        flex: 0 0 auto !important;
+        padding-right: 2rem !important;
     }
     
     .accordion-icon {
