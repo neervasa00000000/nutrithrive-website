@@ -148,7 +148,7 @@
         }
       })();
     </script>
-
+    
     <style>
       /* Accordion smooth animation */
       .accordion-content {
@@ -386,77 +386,16 @@
 
     <main>
         <section class="product-detail-page">
-            <!-- Product Gallery -->
-            <div class="product-gallery" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                <div class="main-image" style="display: block !important; visibility: visible !important;">
-                    <img id="main-product-image" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Powder - 100% Pure Moringa Oleifera" style="width: 100% !important; max-width: 500px !important; height: auto !important; display: block !important; visibility: visible !important; border-radius: 12px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;">
-                </div>
-                <div class="thumbnail-images" style="display: flex !important; gap: 1rem !important; margin-top: 1rem !important; visibility: visible !important; opacity: 1 !important;">
-                    <img class="thumbnail active" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Powder Package" onclick="changeMainImage(this.src)" style="width: 80px !important; height: 80px !important; object-fit: cover !important; border-radius: 8px !important; cursor: pointer !important; border: 2px solid #2d5a3d !important; display: block !important; visibility: visible !important;">
-                    <img class="thumbnail" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Powder" onclick="changeMainImage(this.src)" style="width: 80px !important; height: 80px !important; object-fit: cover !important; border-radius: 8px !important; cursor: pointer !important; border: 2px solid transparent !important; display: block !important; visibility: visible !important;">
-                    <img class="thumbnail" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Leaves" onclick="changeMainImage(this.src)" style="width: 80px !important; height: 80px !important; object-fit: cover !important; border-radius: 8px !important; cursor: pointer !important; border: 2px solid transparent !important; display: block !important; visibility: visible !important;">
-                    <img class="thumbnail" src="https://i.imgur.com/56hwJfZ.png" alt="Moringa Product" onclick="changeMainImage(this.src)" style="width: 80px !important; height: 80px !important; object-fit: cover !important; border-radius: 8px !important; cursor: pointer !important; border: 2px solid transparent !important; display: block !important; visibility: visible !important;">
-                </div>
-            </div>
-
             <div class="product-purchase-details">
                 <h1 class="product-title">Moringa Powder</h1>
                 
                 <p class="product-description">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system. Shipped fresh from Truganina, Melbourne to Sydney and across Australia. Our premium moringa powder contains complete amino acid profiles and natural plant-based nutrition for optimal health benefits.</p>
 
-                <!-- TEST: Selectors should be visible here -->
-                <div style="background: yellow !important; padding: 1rem !important; margin: 1rem 0 !important; border: 3px solid red !important; font-weight: bold !important; display: block !important; visibility: visible !important;">
-                    ⚠️ IF YOU SEE THIS, THE PAGE HAS UPDATED. SELECTORS SHOULD BE BELOW ⚠️
-                </div>
-
-                <!-- Price Display -->
-                <div class="product-price" id="product-price-display" style="font-size: 1.8rem !important; font-weight: 700 !important; color: #2d5a3d !important; margin: 1.5rem 0 !important; visibility: visible !important; opacity: 1 !important; display: block !important;">$10.00 AUD</div>
-
-                <!-- Product Selectors: Grams and Quantity -->
-                <div class="product-selectors" style="display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1.5rem !important; margin: 2rem 0 !important; padding: 1rem !important; visibility: visible !important; opacity: 1 !important; background: #fff !important; border: 3px solid #2d5a3d !important; border-radius: 12px !important; min-height: 120px !important;">
-                    <div class="form-group" style="display: flex !important; flex-direction: column !important; visibility: visible !important; opacity: 1 !important;">
-                        <label for="product-grams" style="font-weight: 600 !important; margin-bottom: 0.5rem !important; color: #2d5a3d !important; font-size: 1rem !important; display: block !important;">Size</label>
-                        <select id="product-grams" onchange="updatePrice()" style="padding: 0.8rem 1rem !important; border: 2px solid #2d5a3d !important; border-radius: 8px !important; font-size: 1rem !important; background-color: #fff !important; width: 100% !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
-                            <option value="100" data-price="10.00">100g - $10.00 AUD</option>
-                            <option value="200" data-price="20.00">200g - $20.00 AUD</option>
-                            <option value="500" data-price="45.00">500g - $45.00 AUD</option>
-                            <option value="1000" data-price="80.00">1kg - $80.00 AUD</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="display: flex !important; flex-direction: column !important; visibility: visible !important; opacity: 1 !important;">
-                        <label for="product-quantity" style="font-weight: 600 !important; margin-bottom: 0.5rem !important; color: #2d5a3d !important; font-size: 1rem !important; display: block !important;">Quantity</label>
-                        <select id="product-quantity" onchange="updatePrice()" style="padding: 0.8rem 1rem !important; border: 2px solid #2d5a3d !important; border-radius: 8px !important; font-size: 1rem !important; background-color: #fff !important; width: 100% !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Shipping Cost Display -->
-                <div style="margin: 2rem 0 !important; padding: 1.5rem !important; background: #f8f9fa !important; border: 2px solid #2d5a3d !important; border-radius: 8px !important; visibility: visible !important; opacity: 1 !important; display: block !important;">
-                    <div style="display: flex !important; justify-content: space-between !important; margin-bottom: 0.75rem !important; font-size: 1rem !important;">
-                        <span style="font-weight: 600 !important; color: #2d5a3d !important;">Subtotal:</span>
-                        <span id="subtotal-display" style="font-weight: 600 !important; color: #2d5a3d !important;">$10.00 AUD</span>
-                    </div>
-                    <div style="display: flex !important; justify-content: space-between !important; margin-bottom: 0.75rem !important; font-size: 1rem !important;">
-                        <span style="font-weight: 600 !important; color: #2d5a3d !important;">Shipping:</span>
-                        <span id="shipping-display" style="font-weight: 600 !important; color: #2d5a3d !important;">Calculating...</span>
-                    </div>
-                    <div style="display: flex !important; justify-content: space-between !important; padding-top: 0.75rem !important; border-top: 2px solid #2d5a3d !important; font-size: 1.3rem !important; font-weight: 700 !important; color: #2d5a3d !important;">
-                        <span>Total:</span>
-                        <span id="total-display" style="color: #2d5a3d !important;">$10.00 AUD</span>
-                    </div>
-                </div>
-
-                <!-- PayPal Button Container -->
                 <div style="text-align: center; padding: 20px;">
                     <div id="paypal-container-ERYQAP7ZAHDDQ" style="margin-top: 20px;" aria-label="PayPal payment options for Moringa Powder"></div>
                 </div>
-
+                
+                
                 <!-- RISK REVERSAL -->
                 <div style="padding: 16px; margin: 16px 0; text-align: center; border-top: 1px solid #e0e0e0;">
                     <h2 style="color: #2d5a3d; margin: 0 0 8px 0; font-size: 1.25rem; font-weight: 600;">🛡️ 30-Day Money-Back Guarantee</h2>
@@ -760,82 +699,8 @@
         // Make sure function is available globally
         window.toggleAccordion = toggleAccordion;
     </script>
-    
-    <!-- Product Image and Price Management -->
-    <script>
-      // Image switching function
-      function changeMainImage(src) {
-        document.getElementById('main-product-image').src = src;
-        // Update active thumbnail
-        document.querySelectorAll('.thumbnail').forEach(thumb => {
-          thumb.classList.remove('active');
-        });
-        event.target.classList.add('active');
-      }
-      window.changeMainImage = changeMainImage;
-
-      // Price and shipping calculation
-      let currentPayPalButtons = null;
-      
-      function calculateShipping(subtotal) {
-        // Free shipping on orders $80 or more
-        if (subtotal >= 80) {
-          return 0;
-        }
-        // Otherwise $9.95 shipping
-        return 9.95;
-      }
-
-      function updatePrice() {
-        const gramsSelect = document.getElementById('product-grams');
-        const quantitySelect = document.getElementById('product-quantity');
-        const selectedOption = gramsSelect.options[gramsSelect.selectedIndex];
-        const unitPrice = parseFloat(selectedOption.getAttribute('data-price'));
-        const quantity = parseInt(quantitySelect.value);
-        const grams = gramsSelect.value;
-        
-        const subtotal = unitPrice * quantity;
-        const shipping = calculateShipping(subtotal);
-        const total = subtotal + shipping;
-        
-        // Update displays
-        document.getElementById('product-price-display').textContent = '$' + unitPrice.toFixed(2) + ' AUD';
-        document.getElementById('subtotal-display').textContent = '$' + subtotal.toFixed(2) + ' AUD';
-        document.getElementById('shipping-display').textContent = shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2) + ' AUD';
-        document.getElementById('total-display').textContent = '$' + total.toFixed(2) + ' AUD';
-        
-        // Re-render PayPal buttons with new price
-        if (currentPayPalButtons) {
-          currentPayPalButtons.close();
-        }
-        initPayPal();
-      }
-      window.updatePrice = updatePrice;
-
-      // Initialize price on page load and ensure selectors are visible
-      document.addEventListener('DOMContentLoaded', function() {
-        updatePrice();
-        
-        // Force visibility of selectors
-        const selectors = document.querySelector('.product-selectors');
-        const shippingBox = document.querySelector('#shipping-display').closest('div');
-        if (selectors) {
-          selectors.style.display = 'grid';
-          selectors.style.visibility = 'visible';
-          selectors.style.opacity = '1';
-        }
-        if (shippingBox) {
-          shippingBox.style.display = 'block';
-          shippingBox.style.visibility = 'visible';
-          shippingBox.style.opacity = '1';
-        }
-        
-        console.log('Product selectors should be visible now');
-      });
-    </script>
-    
     <script 
-      src="https://www.paypal.com/sdk/js?client-id=AdlyATb6dUkcwxag4z7aeRYB08D6CFZNxEl5lFU6QWAC_-6Bao6o_R12AqIAgWmqSSMZ9mV7rDZmx2c3&currency=AUD&intent=capture&enable-funding=card">
+      src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture">
     </script>
     <script>
       // Suppress PayPal SDK console errors
@@ -848,125 +713,33 @@
         originalError.apply(console, args);
       };
 
-      // Wait for PayPal SDK to load before rendering Smart Buttons
+      // Wait for PayPal SDK to load before rendering
       function initPayPal() {
-        if (typeof paypal !== 'undefined' && paypal.Buttons) {
+        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
           try {
-            // Get current price from display
-            const totalText = document.getElementById('total-display').textContent;
-            const totalAmount = parseFloat(totalText.replace('$', '').replace(' AUD', ''));
-            const subtotalText = document.getElementById('subtotal-display').textContent;
-            const subtotalAmount = parseFloat(subtotalText.replace('$', '').replace(' AUD', ''));
-            const shippingText = document.getElementById('shipping-display').textContent;
-            const shippingAmount = shippingText === 'FREE' ? 0 : parseFloat(shippingText.replace('$', '').replace(' AUD', ''));
-            
-            const gramsSelect = document.getElementById('product-grams');
-            const quantitySelect = document.getElementById('product-quantity');
-            const grams = gramsSelect.value;
-            const quantity = quantitySelect.value;
-            const selectedOption = gramsSelect.options[gramsSelect.selectedIndex];
-            const productName = 'Moringa Powder ' + grams + 'g';
-            
-            currentPayPalButtons = paypal.Buttons({
-              style: {
-                layout: 'vertical',
-                color: 'gold',
-                shape: 'rect',
-                label: 'paypal'
-              },
-              createOrder: function(data, actions) {
-                console.log('Creating PayPal order...', { total: totalAmount, subtotal: subtotalAmount, shipping: shippingAmount });
-                return actions.order.create({
-                  purchase_units: [{
-                    amount: {
-                      value: totalAmount.toFixed(2),
-                      currency_code: 'AUD',
-                      breakdown: {
-                        item_total: {
-                          value: subtotalAmount.toFixed(2),
-                          currency_code: 'AUD'
-                        },
-                        shipping: {
-                          value: shippingAmount.toFixed(2),
-                          currency_code: 'AUD'
-                        }
-                      }
-                    },
-                    items: [{
-                      name: productName + ' x' + quantity,
-                      description: '100% Pure Moringa Oleifera - ' + grams + 'g pack',
-                      quantity: quantity,
-                      unit_amount: {
-                        value: (subtotalAmount / quantity).toFixed(2),
-                        currency_code: 'AUD'
-                      }
-                    }],
-                    description: productName + ' (Quantity: ' + quantity + ')'
-                  }]
-                }).catch(function(err) {
-                  console.error('Error creating order:', err);
-                  alert('Error creating order. Please try again.');
-                  throw err;
-                });
-              },
-              onApprove: function(data, actions) {
-                console.log('Order approved, capturing payment...', data);
-                return actions.order.capture().then(function(details) {
-                  console.log('Payment captured successfully:', details);
-                  console.log('Transaction details:', JSON.stringify(details, null, 2));
-                  
-                  // Check payment status
-                  const status = details.status;
-                  const payerEmail = details.payer.email_address;
-                  const amount = details.purchase_units[0].payments.captures[0].amount.value;
-                  const currency = details.purchase_units[0].payments.captures[0].amount.currency_code;
-                  
-                  // Check if this is sandbox mode (sandbox emails contain @sandbox.paypal.com or @personal.example.com)
-                  const isSandbox = payerEmail.includes('@sandbox.paypal.com') || 
-                                   payerEmail.includes('@personal.example.com') || 
-                                   payerEmail.includes('@business.example.com');
-                  
-                  let message = 'Payment ' + status.toUpperCase() + '!\n';
-                  message += 'Transaction ID: ' + details.id + '\n';
-                  message += 'Amount: ' + amount + ' ' + currency + '\n';
-                  message += 'Thank you, ' + (details.payer.name.given_name || 'Customer') + '!';
-                  
-                  if (isSandbox) {
-                    message += '\n\n⚠️ SANDBOX MODE: This is a test payment. No real money was charged.';
-                    message += '\nTo accept real payments, switch to live PayPal credentials.';
-                  }
-                  
-                  alert(message);
-                  
-                  // Log full details for debugging
-                  console.log('Payment Status:', status);
-                  console.log('Is Sandbox:', isSandbox);
-                  console.log('Capture Details:', details.purchase_units[0].payments.captures[0]);
-                  
-                  // Optionally redirect to thank you page
-                  // window.location.href = '/pages/contact/thank-you.html';
-                }).catch(function(err) {
-                  console.error('Error capturing payment:', err);
-                  console.error('Error details:', JSON.stringify(err, null, 2));
-                  alert('Payment was authorized but could not be captured. Error: ' + (err.message || 'Unknown error') + '\nPlease contact support with Order ID: ' + data.orderID);
-                });
-              },
-              onCancel: function(data) {
-                console.log('Payment cancelled:', data);
-                alert('Payment was cancelled.');
-              },
-              onError: function(err) {
-                console.error('PayPal error:', err);
-                console.error('Error details:', JSON.stringify(err, null, 2));
-                alert('An error occurred with PayPal: ' + (err.message || 'Unknown error') + '. Please try again.');
-              }
-            }).render("#paypal-container-ERYQAP7ZAHDDQ").catch(function(err) {
+            paypal.HostedButtons({
+              hostedButtonId: "ERYQAP7ZAHDDQ",
+            }).render("#paypal-container-ERYQAP7ZAHDDQ").then(function() {
+              // Fix ARIA accessibility for PayPal thumbnail container
+              setTimeout(function() {
+                const thumbnailContainer = document.querySelector('#thumbnail-container-ERYQAP7ZAHDDQ');
+                if (thumbnailContainer && !thumbnailContainer.getAttribute('aria-label')) {
+                  thumbnailContainer.setAttribute('aria-label', 'Product image gallery for Moringa Powder');
+                  thumbnailContainer.setAttribute('role', 'group');
+                }
+                const heroImg = document.querySelector('#hero-img-ERYQAP7ZAHDDQ');
+                if (heroImg && !heroImg.getAttribute('width') && !heroImg.getAttribute('height')) {
+                  heroImg.setAttribute('width', '533');
+                  heroImg.setAttribute('height', '800');
+                }
+              }, 500);
+            }).catch(function(err) {
+              // Silently handle rendering errors
               console.warn('PayPal button rendering issue:', err);
-              alert('Failed to load PayPal buttons. Please refresh the page.');
             });
           } catch (err) {
+            // Silently handle initialization errors
             console.warn('PayPal initialization error:', err);
-            alert('Failed to initialize PayPal. Please refresh the page.');
           }
         } else {
           // Retry if PayPal SDK not loaded yet
@@ -980,19 +753,7 @@
       } else {
         initPayPal();
       }
-      
-      // Check if we're in sandbox mode and log it
-      window.addEventListener('load', function() {
-        const clientId = 'AdlyATb6dUkcwxag4z7aeRYB08D6CFZNxEl5lFU6QWAC_-6Bao6o_R12AqIAgWmqSSMZ9mV7rDZmx2c3';
-        // Sandbox client IDs typically start with specific patterns, but we can't determine from client ID alone
-        // The actual determination happens when we see the payer email in the payment response
-        console.log('PayPal Client ID:', clientId);
-        console.log('Note: If payments show as successful but no money is deducted, you are likely in SANDBOX/TEST mode.');
-        console.log('Sandbox mode is for testing only - it does NOT charge real money.');
-        console.log('To accept real payments, you need LIVE PayPal credentials from your PayPal business account.');
-      });
     </script>
-
     <script src="../shared/js/script.js"></script>
     <script src="../pages/products/product-detail.js"></script>
     <!-- Ensure hamburger menu works - simple inline fallback -->
