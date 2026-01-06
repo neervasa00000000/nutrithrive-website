@@ -1534,7 +1534,15 @@ footer {
     flex-basis: 100%;
 }
 
-.product-purchase-details > .product-content {
+.product-purchase-details .product-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.product-purchase-details .product-content {
     flex: 1;
     min-width: 0;
 }
