@@ -1416,20 +1416,23 @@ footer {
 }
 
 .product-detail-page {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 1rem 2rem;
-    align-items: start;
+    padding: 2rem;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width: 968px) {
     .product-detail-page {
-        grid-template-columns: 1fr;
-        gap: 2rem;
         padding: 1rem;
+        gap: 2rem;
     }
     
     .product-gallery {
@@ -1486,13 +1489,17 @@ footer {
 
 .product-purchase-details {
     width: 100%;
-    max-width: 600px; /* Or adjust as needed */
+    max-width: 600px;
+    margin: 0 auto; /* Center the container */
     text-align: center;
     padding: 2rem;
     background: transparent;
     border-radius: 0;
     box-shadow: none;
     border: none;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #paypal-hosted-button-container {
