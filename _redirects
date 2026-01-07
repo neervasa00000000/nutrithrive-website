@@ -228,3 +228,6 @@
 # Blog to Product Page Redirects
 /blog/moringa-vs-superfoods-comparison-australia-2025.html.html /products/ 301
 /blog/best-moringa-powder-australia-ultimate-buyers-guide-2025.html /products/ 301
+
+# Blog redirects - make 2025 URLs live
+/blog/best-protein-powder-australia-2025-complete-guide.html /blog/best-protein-powder-australia.html 301
