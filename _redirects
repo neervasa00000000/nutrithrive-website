@@ -224,3 +224,7 @@
 
 # Redirect non-existent pages to related content
 # Missing URLs from sitemap and 404 errors - duplicates removed
+
+# Blog to Product Page Redirects
+/blog/moringa-vs-superfoods-comparison-australia-2025.html.html /products/ 301
+/blog/best-moringa-powder-australia-ultimate-buyers-guide-2025.html /products/ 301
