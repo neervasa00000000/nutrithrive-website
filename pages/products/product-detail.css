@@ -1629,6 +1629,10 @@ footer {
         max-width: 100% !important;
         margin: 0 !important;
         padding: 0.5rem !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
         box-sizing: border-box !important;
     }
     
@@ -1738,6 +1742,10 @@ footer {
         max-width: 100% !important;
         margin: 2rem 0 0 0 !important;
         padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
         box-sizing: border-box !important;
         position: relative !important;
         z-index: 2 !important;
