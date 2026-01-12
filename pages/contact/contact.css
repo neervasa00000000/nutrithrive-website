@@ -740,10 +740,10 @@ footer {
     max-width: 600px;
     margin: 0 auto 4rem auto;
     padding: 2.5rem 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(236, 231, 219, 0.8);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
     animation: fadeInUp 1.2s 0.2s backwards;
 }
 
@@ -859,6 +859,10 @@ footer {
 
     .contact-section {
         padding: 1.5rem 1rem;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
     }
 
     .nav-links-container {
