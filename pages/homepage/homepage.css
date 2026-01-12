@@ -450,7 +450,7 @@ body.products-page .hero .hero-btn.alt {
 .testimonial-carousel {
     display: flex;
     width: fit-content;
-    animation: scroll 84s linear infinite;
+    animation: scroll 35s linear infinite;
     min-height: 200px;
     contain: layout;
 }
