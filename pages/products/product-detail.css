@@ -1638,9 +1638,9 @@ footer {
         max-width: 100% !important;
         margin: 0 0 2rem 0 !important;
         padding: 1.25rem 1rem 1.75rem 1rem !important;
-        background: var(--card) !important;
-        border-radius: var(--radius) !important;
-        box-shadow: var(--shadow) !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
         border: none !important;
         box-sizing: border-box !important;
         position: static !important;
