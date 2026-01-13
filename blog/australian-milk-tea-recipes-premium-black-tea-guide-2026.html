@@ -638,17 +638,26 @@
             overflow: hidden;
             border: 1px solid #E5E0D6;
         }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         .product-image::before {
             content: '';
             position: absolute;
             inset: 0.5rem;
             border: 1px solid #E5E0D6;
             opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
         }
         .product-image span {
             font-family: 'Crimson Text', serif;
             font-style: italic;
             color: #A8A29E;
+            position: relative;
+            z-index: 2;
         }
         .product-card h2 {
             font-size: 1.5rem;
@@ -851,7 +860,7 @@
             "@type": "Offer",
             "url": "https://nutrithrive.com.au/products/product-black-tea.html",
             "priceCurrency": "AUD",
-            "price": "7.00",
+            "price": "6.45",
             "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
             "itemCondition": "https://schema.org/NewCondition",
@@ -972,14 +981,10 @@
                 <span class="logo-text">Nutri Thrive</span>
             </div>
             <div class="nav-links">
-                <a href="/products/">Shop</a>
-                <a href="/pages/about/about.html">Legacy</a>
-                <a href="/blog/">Journal</a>
+                <a href="../products/product-black-tea.html">Shop</a>
+                <a href="../pages/about/about.html">Legacy</a>
+                <a href="index.html">Journal</a>
             </div>
-            <button class="cart-btn">
-                <span style="font-size: 0.75rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; display: none;" class="sm:inline">Bag (0)</span>
-                <i data-lucide="shopping-bag"></i>
-            </button>
         </div>
     </nav>
 
@@ -1243,12 +1248,12 @@
             <div class="sticky-sidebar">
                 <div class="product-card">
                     <div class="product-image">
-                        <span>Exquisite Packaging</span>
+                        <img src="../shared/images/random/Dried%20Curry%20Leaves%20.png" alt="Dried Curry Leaves" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h2>Premium Black Tea</h2>
-                    <p class="product-subtitle">Loose Leaf • 100g</p>
+                    <p class="product-subtitle">Loose Leaf • 30g</p>
                     <div class="product-price">
-                        <span class="current">$7.00</span>
+                        <span class="current">$6.45</span>
                         <span class="old">$12.95</span>
                     </div>
                     <ul class="product-features">
