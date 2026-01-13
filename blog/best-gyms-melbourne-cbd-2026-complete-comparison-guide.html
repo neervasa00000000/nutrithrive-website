@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Gyms in Melbourne CBD 2026: Complete Comparison Guide</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="../shared/images/Logo%20/LOGO.webp" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="../shared/images/Logo%20/LOGO.webp">
+    <link rel="shortcut icon" href="../shared/images/Logo%20/LOGO.webp">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -18,6 +22,110 @@
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
+        }
+        /* Email Popup Styles */
+        .email-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .email-popup-overlay.show {
+            display: flex;
+        }
+        .email-popup {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: popupSlideIn 0.3s ease-out;
+        }
+        @keyframes popupSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .email-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .email-popup-close:hover {
+            background: #f3f4f6;
+            color: #000;
+        }
+        .email-popup-form input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+        }
+        .email-popup-form input:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+        .email-popup-form button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .email-popup-form button:hover {
+            background: #059669;
+        }
+        .email-popup-form button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        .email-popup-message {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .email-popup-message.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .email-popup-message.error {
+            background: #fee2e2;
+            color: #991b1b;
         }
     </style>
 </head>
@@ -240,10 +348,10 @@
                             Packed with 9 essential amino acids, iron, and antioxidants. Great for endurance and reducing post-workout fatigue without the caffeine jitters.
                         </p>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold">$19.95</span>
-                            <button class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
+                            <span class="text-2xl font-bold">$10</span>
+                            <a href="../products/product-detail.html" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition inline-block text-center">
                                 View Product
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -424,9 +532,108 @@
         </div>
     </footer>
 
+    <!-- Email Popup -->
+    <div id="emailPopup" class="email-popup-overlay">
+        <div class="email-popup">
+            <button class="email-popup-close" onclick="closeEmailPopup()" aria-label="Close">×</button>
+            <h2 class="text-2xl font-bold mb-2 text-gray-900">Get Fitness Tips & Exclusive Deals</h2>
+            <p class="text-gray-600 mb-4">Subscribe to our newsletter for weekly fitness tips, nutrition advice, and special offers!</p>
+            <form class="email-popup-form" id="emailPopupForm" action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Newsletter Subscription from Gym Guide">
+                <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <input type="text" name="name" placeholder="Your name (optional)">
+                <button type="submit" id="emailPopupSubmit">Subscribe Now</button>
+                <div id="emailPopupMessage" class="email-popup-message" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+
     <!-- Initialize Icons -->
     <script>
         lucide.createIcons();
+        
+        // Email Popup Functionality
+        let popupShown = false;
+        let popupTimer = null;
+        
+        function showEmailPopup() {
+            if (popupShown) return;
+            const popup = document.getElementById('emailPopup');
+            if (popup) {
+                popup.classList.add('show');
+                popupShown = true;
+                // Store in sessionStorage to prevent showing again in this session
+                sessionStorage.setItem('emailPopupShown', 'true');
+            }
+        }
+        
+        function closeEmailPopup() {
+            const popup = document.getElementById('emailPopup');
+            if (popup) {
+                popup.classList.remove('show');
+            }
+        }
+        
+        // Show popup after 30 seconds or when user is about to leave
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if popup was already shown in this session
+            if (!sessionStorage.getItem('emailPopupShown')) {
+                // Show after 30 seconds
+                popupTimer = setTimeout(showEmailPopup, 30000);
+                
+                // Show when user tries to leave (mouse leaves viewport)
+                let mouseLeft = false;
+                document.addEventListener('mouseleave', function(e) {
+                    if (e.clientY <= 0 && !mouseLeft && !popupShown) {
+                        mouseLeft = true;
+                        clearTimeout(popupTimer);
+                        showEmailPopup();
+                    }
+                });
+            }
+            
+            // Handle form submission
+            const form = document.getElementById('emailPopupForm');
+            const messageDiv = document.getElementById('emailPopupMessage');
+            const submitBtn = document.getElementById('emailPopupSubmit');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const email = form.querySelector('input[type="email"]').value;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    
+                    if (!emailRegex.test(email)) {
+                        e.preventDefault();
+                        messageDiv.style.display = 'block';
+                        messageDiv.className = 'email-popup-message error';
+                        messageDiv.textContent = 'Please enter a valid email address.';
+                        return false;
+                    }
+                    
+                    // Show success message
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Subscribing...';
+                    
+                    // Form will submit normally to FormSubmit
+                    // On success, show thank you message
+                    setTimeout(function() {
+                        messageDiv.style.display = 'block';
+                        messageDiv.className = 'email-popup-message success';
+                        messageDiv.textContent = 'Thank you for subscribing! Check your email.';
+                        setTimeout(closeEmailPopup, 2000);
+                    }, 500);
+                });
+            }
+            
+            // Close popup when clicking outside
+            document.getElementById('emailPopup')?.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeEmailPopup();
+                }
+            });
+        });
     </script>
 </body>
 </html>
