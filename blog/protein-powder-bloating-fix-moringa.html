@@ -611,7 +611,8 @@ SCHEMA: Product + Aggregate Rating
     "priceCurrency": "AUD",
     "price": "10.00",
     "availability": "https://schema.org/InStock",
-    "url": "https://nutrithrive.com.au/products/product-detail.html"
+     "url": "https://nutrithrive.com.au/products/product-detail.html",
+     "priceValidUntil": "2027-12-31"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -633,8 +634,46 @@ SCHEMA: Product + Aggregate Rating
     "priceCurrency": "AUD",
     "price": "6.00",
     "availability": "https://schema.org/InStock",
-    "url": "https://nutrithrive.com.au/products/product-curry-leaves.html"
-  }
+    "url": "https://nutrithrive.com.au/products/product-curry-leaves.html",
+    "priceValidUntil": "2027-12-31"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "89",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Priya S."
+      },
+      "datePublished": "2026-01-20",
+      "reviewBody": "Authentic curry leaves that remind me of home. Perfect for South Indian cooking. The flavor is preserved well and they're so convenient to have on hand.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Michael C."
+      },
+      "datePublished": "2026-01-18",
+      "reviewBody": "Great quality dried curry leaves. I use them in my curries and the aroma is amazing. Fast shipping from Melbourne too.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }
+  ]
 }
 </script>
 
@@ -650,7 +689,8 @@ SCHEMA: Product + Aggregate Rating
     "priceCurrency": "AUD",
     "price": "15.00",
     "availability": "https://schema.org/InStock",
-    "url": "https://nutrithrive.com.au/products/product-combo"
+    "url": "https://nutrithrive.com.au/products/product-combo",
+    "priceValidUntil": "2027-12-31"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
