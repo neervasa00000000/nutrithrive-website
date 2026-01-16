@@ -119,8 +119,8 @@
         }
         .content-wrapper {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 3rem;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
             margin: 3rem 0;
         }
         .main-content {
@@ -136,14 +136,14 @@
         }
         .toc {
             background: #F2F7F5;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 12px;
             border-left: 4px solid #4A7C6F;
         }
         .toc h3 {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: #1A3C34;
         }
         .toc ul {
@@ -151,16 +151,17 @@
             padding: 0;
         }
         .toc li {
-            margin: 0.5rem 0;
+            margin: 0.35rem 0;
         }
         .toc a {
             color: #4A7C6F;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             display: block;
-            padding: 0.5rem;
+            padding: 0.4rem;
             border-radius: 6px;
             transition: all 0.2s;
+            line-height: 1.4;
         }
         .toc a:hover {
             background: #E8F5E9;
@@ -565,6 +566,27 @@
 
         <!-- Content Wrapper -->
         <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="toc">
+                    <h3>Contents</h3>
+                    <ul>
+                        <li><a href="#executive-summary">Executive Summary</a></li>
+                        <li><a href="#part-1-temporal">1. Term Dates & Schedule</a></li>
+                        <li><a href="#part-2-economic">2. Economic Landscape</a></li>
+                        <li><a href="#part-3-curriculum">3. Curriculum Reform</a></li>
+                        <li><a href="#part-4-digital">4. Digital & BYOD</a></li>
+                        <li><a href="#part-5-transport">5. Transport Logistics</a></li>
+                        <li><a href="#part-6-wellbeing">6. Wellbeing & Health</a></li>
+                        <li><a href="#part-7-nutrition">7. Nutrition</a></li>
+                        <li><a href="#part-8-extracurricular">8. Extracurricular</a></li>
+                        <li><a href="#part-9-transition">9. Transition Dynamics</a></li>
+                        <li><a href="#part-10-state">10. Summary of Impact</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </aside>
+
             <!-- Main Content -->
             <main class="main-content">
                 <!-- Featured Image -->
@@ -908,27 +930,6 @@
                     </div>
                 </section>
             </main>
-
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <div class="toc">
-                    <h3>Contents</h3>
-                    <ul>
-                        <li><a href="#executive-summary">Executive Summary</a></li>
-                        <li><a href="#part-1-temporal">1. Term Dates & Schedule</a></li>
-                        <li><a href="#part-2-economic">2. Economic Landscape</a></li>
-                        <li><a href="#part-3-curriculum">3. Curriculum Reform</a></li>
-                        <li><a href="#part-4-digital">4. Digital & BYOD</a></li>
-                        <li><a href="#part-5-transport">5. Transport Logistics</a></li>
-                        <li><a href="#part-6-wellbeing">6. Wellbeing & Health</a></li>
-                        <li><a href="#part-7-nutrition">7. Nutrition</a></li>
-                        <li><a href="#part-8-extracurricular">8. Extracurricular</a></li>
-                        <li><a href="#part-9-transition">9. Transition Dynamics</a></li>
-                        <li><a href="#part-10-state">10. Summary of Impact</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-            </aside>
         </div>
     </div>
 </body>
