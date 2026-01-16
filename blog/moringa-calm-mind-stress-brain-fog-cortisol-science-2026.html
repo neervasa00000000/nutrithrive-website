@@ -47,18 +47,94 @@
     <meta name="msapplication-TileColor" content="#0f6b4d">
     <meta name="theme-color" content="#0f6b4d">
     
+    <!-- Schema.org markup - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nutrithrive.com.au/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://nutrithrive.com.au/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Moringa for a Calm Mind",
+          "item": "https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Schema.org markup - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au",
+      "logo": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+      "sameAs": [
+        "https://www.facebook.com/nutrithrive",
+        "https://www.instagram.com/nutrithrive"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+61-438-201-419",
+        "contactType": "Customer Service",
+        "email": "nutrithrive0@gmail.com",
+        "areaServed": "AU",
+        "availableLanguage": "English"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Truganina",
+        "addressRegion": "VIC",
+        "addressCountry": "AU"
+      }
+    }
+    </script>
+    
     <!-- Schema.org markup - Article -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Moringa for a Calm Mind: The Deep Science Behind Stress, Brain Fog & Cortisol",
-      "description": "How to build a daily ritual that actually works in 2026.",
-      "image": "../shared/images/Logo%20/LOGO.webp",
-      "author": {"@type": "Organization", "name": "NutriThrive"},
+      "description": "How to build a daily ritual that actually works in 2026. Discover the science behind moringa and meditation for stress relief, brain fog, and cortisol balance.",
+      "image": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "NutriThrive Research Team",
+        "url": "https://nutrithrive.com.au"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NutriThrive",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+          "width": 180,
+          "height": 180
+        }
+      },
       "datePublished": "2026-01-26",
       "dateModified": "2026-01-26",
-      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"}
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"
+      },
+      "articleSection": "Wellness",
+      "keywords": "moringa calm mind, moringa stress relief, reduce cortisol naturally, brain fog supplement, moringa meditation, stress relief Australia, moringa cortisol, calm mind ritual, moringa brain fog"
     }
     </script>
     
@@ -82,6 +158,44 @@
         "seller": {
           "@type": "Organization",
           "name": "NutriThrive"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "AUD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "AU"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "applicableCountry": {
+            "@type": "Country",
+            "name": "AU"
+          },
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
         }
       },
       "aggregateRating": {
@@ -94,6 +208,10 @@
       "review": [
         {
           "@type": "Review",
+          "itemReviewed": {
+            "@type": "Product",
+            "name": "NutriThrive Premium Moringa Powder"
+          },
           "author": {"@type": "Person", "name": "Sarah M."},
           "datePublished": "2026-01-15",
           "reviewBody": "This moringa powder has been a game-changer for my stress levels. I've noticed a significant improvement in my energy and mental clarity since starting my morning ritual.",
@@ -266,6 +384,60 @@
         }
       ],
       "keywords": "moringa drink, calm mind ritual, stress relief, morning routine, wellness drink"
+    }
+    </script>
+    
+    <!-- Schema.org markup - HowTo (Daily Calm Mind Ritual) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Build Your Daily Calm Mind Ritual with Moringa and Meditation",
+      "description": "Step-by-step guide to building a daily calm mind ritual using moringa powder and meditation for stress relief, brain fog, and cortisol balance.",
+      "image": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+      "totalTime": "PT7M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "AUD",
+        "value": "10.00"
+      },
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "NutriThrive Moringa Powder"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Water or coconut water"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Lemon (optional)"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Morning Calm Focus Ritual (5 Minutes)",
+          "text": "Start your day with a calm focus drink and breath meditation. Mix ½ tsp moringa with water/coconut water and lemon. Drink slowly, then do a 3-minute breath meditation: Inhale 4 seconds, Exhale 6 seconds. Repeat 10 cycles.",
+          "image": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Midday Brain Fog Reset (2 Minutes)",
+          "text": "Use moringa with food (yoghurt/oats/smoothie) to avoid nausea. Stand up, drop your shoulders down. Take 10 slow breaths, relaxing your tongue and jaw. This interrupts stress loops and resets focus.",
+          "image": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Evening Routine (No Moringa)",
+          "text": "Avoid Moringa at night (it can be energising). Try a Body Scan Meditation or Guided Sleep Meditation. Journal 3 lines: What's heavy / What's good / What's next. This prepares the nervous system for deep recovery.",
+          "image": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+          "position": 3
+        }
+      ]
     }
     </script>
     
