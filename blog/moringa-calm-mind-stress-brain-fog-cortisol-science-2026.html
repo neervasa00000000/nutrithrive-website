@@ -58,7 +58,14 @@
       "author": {"@type": "Organization", "name": "NutriThrive"},
       "datePublished": "2026-01-26",
       "dateModified": "2026-01-26",
-      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"}
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"},
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "536",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
     }
     </script>
     
@@ -311,6 +318,85 @@
             color: #6b7280;
             font-weight: 300;
             line-height: 1.6;
+        }
+
+        /* Rating Display */
+        .article-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .rating-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .rating-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #d1d5db;
+        }
+
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 1.125rem;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .star.empty {
+            color: #e5e7eb;
+        }
+
+        .rating-value {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .rating-count {
+            color: #6b7280;
+        }
+
+        .in-stock {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .stock-text {
+            color: #6b7280;
+            font-weight: 500;
         }
 
         .article-divider {
@@ -788,6 +874,30 @@
                 <span class="article-category">Wellness Deep Dive</span>
                 <h1 class="article-title">Moringa for a Calm Mind: The Deep Science Behind Stress, Brain Fog & Cortisol</h1>
                 <p class="article-subtitle">How to build a daily ritual that actually works in 2026.</p>
+                
+                <!-- Rating & Trust Indicators -->
+                <div class="article-rating">
+                    <div class="rating-item">
+                        <span class="rating-value">4.9</span>
+                        <div class="rating-stars" title="4.9 out of 5 stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star" style="opacity: 0.9;">★</span>
+                        </div>
+                        <span class="rating-count">(536)</span>
+                    </div>
+                    <span class="rating-dot"></span>
+                    <div class="rating-item in-stock">
+                        <span class="stock-dot"></span>
+                        <span class="stock-text">In stock</span>
+                    </div>
+                    <span class="rating-dot"></span>
+                    <div class="rating-item">
+                        <span class="stock-text">12 min read</span>
+                    </div>
+                </div>
             </header>
 
             <hr class="article-divider">
