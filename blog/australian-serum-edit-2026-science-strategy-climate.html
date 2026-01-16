@@ -363,20 +363,18 @@
             margin-bottom: 0.25rem;
         }
         .product-card {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1.25rem;
+            padding: 1rem;
             background: white;
             border-radius: 0.5rem;
             border: 1px solid #f3f4f6;
             margin-bottom: 1rem;
         }
-        @media (min-width: 768px) {
-            .product-card {
-                flex-direction: row;
-                align-items: center;
-            }
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
         }
         .product-info {
             flex: 1;
@@ -388,16 +386,22 @@
             border-radius: 0.375rem;
             font-weight: 700;
             font-size: 0.875rem;
+            white-space: nowrap;
         }
         .product-verdict {
             font-size: 0.875rem;
             color: #4b5563;
-            border-left: 2px solid #e5e7eb;
-            padding-left: 0.75rem;
+            line-height: 1.6;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e5e7eb;
         }
-        @media (min-width: 768px) {
-            .product-verdict {
-                width: 50%;
+        @media (max-width: 768px) {
+            .product-card {
+                padding: 0.875rem;
+            }
+            .product-header {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
         .tier-header {
@@ -464,24 +468,35 @@
         .climate-section {
             background: white;
             border-radius: 1rem;
-            overflow: hidden;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             margin: 2rem 0;
+            overflow: hidden;
         }
         .climate-header {
             background: #1f2937;
             color: white;
-            padding: 2rem;
+            padding: 1.5rem;
         }
         .climate-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
         .climate-card {
-            background: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.9);
             padding: 1rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+        @media (max-width: 768px) {
+            .climate-header {
+                padding: 1rem;
+            }
+            .climate-content {
+                padding: 1rem;
+            }
+            .climate-card {
+                padding: 0.75rem;
+            }
         }
         .testimonial-grid {
             display: grid;
@@ -491,10 +506,14 @@
         }
         .testimonial-card {
             background: white;
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 0.75rem;
             border: 1px solid #f3f4f6;
-            position: relative;
+        }
+        @media (max-width: 768px) {
+            .testimonial-card {
+                padding: 1rem;
+            }
         }
         .stars {
             display: flex;
@@ -594,9 +613,43 @@
             margin-top: 4rem;
         }
         @media (max-width: 768px) {
-            .blog-container { padding: 1rem; }
-            h2 { font-size: 1.5rem; }
-            .card-grid, .testimonial-grid { grid-template-columns: 1fr; }
+            .blog-container { 
+                padding: 1rem; 
+            }
+            .blog-header {
+                padding: 2rem 0 1.5rem;
+            }
+            h2 { 
+                font-size: 1.5rem; 
+                margin: 2rem 0 1rem;
+                flex-wrap: wrap;
+            }
+            .section-number {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.75rem;
+            }
+            .card-grid, .testimonial-grid, .botanical-grid, .quickfix-grid { 
+                grid-template-columns: 1fr; 
+                gap: 1rem;
+            }
+            .card {
+                padding: 1rem;
+            }
+            .product-card {
+                margin-bottom: 0.75rem;
+            }
+            .intro-quote {
+                font-size: 1.1rem;
+                padding-left: 1rem;
+            }
+            .section {
+                margin-bottom: 2rem;
+            }
+            .post-meta {
+                flex-wrap: wrap;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -710,35 +763,43 @@
                         <span class="tier-badge badge-high">High End</span>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">SkinCeuticals</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">C E Ferulic</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">SkinCeuticals</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">C E Ferulic</h4>
+                            </div>
+                            <div class="product-price">~$258</div>
                         </div>
-                        <div class="product-price">~$258</div>
                         <div class="product-verdict">The Benchmark. Unbeatable brightening, though the 'hot dog water' smell is infamous.</div>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">Estée Lauder</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Adv. Night Repair</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">Estée Lauder</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Adv. Night Repair</h4>
+                            </div>
+                            <div class="product-price">~$139</div>
                         </div>
-                        <div class="product-price">~$139</div>
                         <div class="product-verdict">The Icon. 88% of users report more youthful skin. Luxury texture.</div>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">Aspect Dr</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Pigment Punch+</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">Aspect Dr</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Pigment Punch+</h4>
+                            </div>
+                            <div class="product-price">~$155</div>
                         </div>
-                        <div class="product-price">~$155</div>
                         <div class="product-verdict">The Clinic Choice. Best for Melasma without the rebound effect.</div>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">Medik8</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Crystal Retinal</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">Medik8</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Crystal Retinal</h4>
+                            </div>
+                            <div class="product-price">~$100+</div>
                         </div>
-                        <div class="product-price">~$100+</div>
                         <div class="product-verdict">Best Retinoid. The 'ladder system' allows you to build tolerance safely.</div>
                     </div>
                 </div>
@@ -749,19 +810,23 @@
                         <span class="tier-badge badge-mid">Mid Range</span>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">La Roche-Posay</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Hyalu B5 Serum</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">La Roche-Posay</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Hyalu B5 Serum</h4>
+                            </div>
+                            <div class="product-price">~$75.95</div>
                         </div>
-                        <div class="product-price">~$75.95</div>
                         <div class="product-verdict">Top Hydrator. Plumps skin instantly. Great for Melbourne winters.</div>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">Biodroga</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Skin Booster</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">Biodroga</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Skin Booster</h4>
+                            </div>
+                            <div class="product-price">~$75.00</div>
                         </div>
-                        <div class="product-price">~$75.00</div>
                         <div class="product-verdict">Mid-Range Hero. A solid upgrade if you are moving on from budget brands.</div>
                     </div>
                 </div>
@@ -772,26 +837,30 @@
                         <span class="tier-badge badge-budget">Budget</span>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">The Ordinary</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Niacinamide 10%</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">The Ordinary</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Niacinamide 10%</h4>
+                            </div>
+                            <div class="product-price">~$9.50</div>
                         </div>
-                        <div class="product-price">~$9.50</div>
                         <div class="product-verdict">Budget King. Great for oily teens, though can pill under makeup.</div>
                     </div>
                     <div class="product-card">
-                        <div class="product-info">
-                            <div class="card-brand">Kora Organics</div>
-                            <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Noni Bright Vit C</h4>
+                        <div class="product-header">
+                            <div class="product-info">
+                                <div class="card-brand">Kora Organics</div>
+                                <h4 style="font-size: 1.125rem; font-weight: 500; color: #1a2e22; margin: 0.25rem 0;">Noni Bright Vit C</h4>
+                            </div>
+                            <div class="product-price">~$97.00</div>
                         </div>
-                        <div class="product-price">~$97.00</div>
                         <div class="product-verdict">The Glow Getter. Certified organic and pregnancy safe.</div>
                     </div>
                 </div>
             </section>
 
-            <section class="section" style="background: #f9fafb; padding: 2rem; border-radius: 1rem; margin: 3rem 0;">
-                <h2 style="margin-top: 0;">Community Voices</h2>
+            <section class="section">
+                <h2>Community Voices</h2>
                 <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 2rem;">Real results from the Nutri Thrive community.</p>
                 <div class="testimonial-grid">
                     <div class="testimonial-card">
@@ -887,7 +956,7 @@
                                 <p style="font-size: 0.875rem; margin: 0;">Occlusion. You need a "raincoat" for your face.</p>
                             </div>
                         </div>
-                        <div style="background: #065f46; color: #d1fae5; padding: 1rem; border-radius: 0.75rem; margin-top: 1rem;">
+                        <div style="background: #065f46; color: #d1fae5; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
                             <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #a7f3d0; margin-bottom: 0.5rem;">✓ Recommendation</div>
                             <p style="font-weight: 500; font-size: 0.875rem; margin: 0;">La Roche-Posay Hyalu B5 layered under a thick lipid moisturiser.</p>
                         </div>
@@ -895,7 +964,7 @@
                 </div>
             </section>
 
-            <section class="section" style="background: #f9fafb; padding: 2rem; border-radius: 1rem;">
+            <section class="section">
                 <h2><span class="section-number">6</span>Native Botanicals: The New Gold Standard</h2>
                 <div class="botanical-grid">
                     <div class="botanical-item">
