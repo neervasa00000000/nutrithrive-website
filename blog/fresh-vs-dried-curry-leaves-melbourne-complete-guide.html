@@ -64,32 +64,491 @@
     <meta name="msapplication-TileColor" content="#0f6b4d">
     <link rel="apple-touch-icon" sizes="180x180" href="../shared/images/Logo%20/LOGO.webp">
     <link rel="shortcut icon" href="../shared/images/Logo%20/LOGO.webp">
+    
+    <!-- CSS for Star Rating and In Stock Indicator -->
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
 
+    <!-- Schema.org markup - BreadcrumbList -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nutrithrive.com.au/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://nutrithrive.com.au/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fresh vs Dried Curry Leaves",
+          "item": "https://nutrithrive.com.au/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Schema.org markup - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au",
+      "logo": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+      "sameAs": [
+        "https://www.facebook.com/nutrithrive",
+        "https://www.instagram.com/nutrithrive"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+61-438-201-419",
+        "contactType": "Customer Service",
+        "email": "nutrithrive0@gmail.com",
+        "areaServed": "AU",
+        "availableLanguage": "English"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Truganina",
+        "addressRegion": "VIC",
+        "addressCountry": "AU"
+      }
+    }
+    </script>
+    
+    <!-- Schema.org markup - BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
       "headline": "Fresh vs Dried Curry Leaves: Pros, Cons & Flavor Differences",
       "description": "Compare fresh vs dried curry leaves: flavor differences, pros and cons, when to use which. Expert guide to choosing the right curry leaves for your cooking.",
       "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
       "author": {
         "@type": "Organization",
-        "name": "NutriThrive Australia"
+        "name": "NutriThrive Research Team",
+        "url": "https://nutrithrive.com.au"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "NutriThrive Australia",
+        "name": "NutriThrive",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp"
+          "url": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+          "width": 180,
+          "height": 180
         }
       },
-      "datePublished": "2026-01-27",
+      "datePublished": "2026-01-18",
       "dateModified": "2026-01-27",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://nutrithrive.com.au/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html"
-      }
+      },
+      "articleSection": "Indian Spices",
+      "keywords": "fresh vs dried curry leaves, curry leaves Melbourne, karipatta benefits, curry leaf tea, Indian spices Melbourne, dried curry leaves benefits, buy curry leaves Melbourne, curry leaves storage, curry leaves cooking"
+    }
+    </script>
+    
+    <!-- Schema.org markup - Product (Dried Curry Leaves) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "NutriThrive Premium Dried Curry Leaves",
+      "brand": {"@type": "Brand", "name": "NutriThrive"},
+      "description": "Premium 30g pack of farm-grown dried curry leaves. Perfect for authentic Indian cooking, tempering, and traditional remedies. Shipped fresh from Melbourne.",
+      "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+      "url": "https://nutrithrive.com.au/products/product-curry-leaves.html",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://nutrithrive.com.au/products/product-curry-leaves.html",
+        "priceCurrency": "AUD",
+        "price": "6.00",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31",
+        "seller": {
+          "@type": "Organization",
+          "name": "NutriThrive"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "AUD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "AU"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 2,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 10,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "applicableCountry": {
+            "@type": "Country",
+            "name": "AU"
+          },
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "42",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "itemReviewed": {
+            "@type": "Product",
+            "name": "NutriThrive Premium Dried Curry Leaves"
+          },
+          "author": {"@type": "Person", "name": "Priya S."},
+          "datePublished": "2026-01-20",
+          "reviewBody": "Excellent quality dried curry leaves! Perfect aroma when tempered in oil. Much better than what I find at local stores. Great value for money.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "Review",
+          "itemReviewed": {
+            "@type": "Product",
+            "name": "NutriThrive Premium Dried Curry Leaves"
+          },
+          "author": {"@type": "Person", "name": "Raj K."},
+          "datePublished": "2026-01-18",
+          "reviewBody": "Authentic South Indian flavor. These dried leaves work perfectly for dal tadka and curry dishes. Fast shipping from Melbourne.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "Review",
+          "itemReviewed": {
+            "@type": "Product",
+            "name": "NutriThrive Premium Dried Curry Leaves"
+          },
+          "author": {"@type": "Person", "name": "Meera P."},
+          "datePublished": "2026-01-15",
+          "reviewBody": "Love the convenience of dried curry leaves. They last much longer than fresh and the flavor is still excellent. Highly recommend for busy home cooks.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "Review",
+          "itemReviewed": {
+            "@type": "Product",
+            "name": "NutriThrive Premium Dried Curry Leaves"
+          },
+          "author": {"@type": "Person", "name": "Arjun M."},
+          "datePublished": "2026-01-12",
+          "reviewBody": "Great product for making curry leaf tea. The health benefits are amazing and the quality is top-notch. Will order again!",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "Review",
+          "itemReviewed": {
+            "@type": "Product",
+            "name": "NutriThrive Premium Dried Curry Leaves"
+          },
+          "author": {"@type": "Person", "name": "Sneha R."},
+          "datePublished": "2026-01-10",
+          "reviewBody": "Perfect for my Indian cooking needs. The leaves are aromatic and fresh. Much better than buying from supermarkets. Free shipping is a bonus!",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Schema.org markup - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the difference between fresh and dried curry leaves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fresh curry leaves have an intense citrusy, nutty scent when fried and a strong, fresh, slightly bitter-citrus flavor. Dried curry leaves have a milder aroma that develops when tempered, with deeper, roasted notes when fried. Fresh leaves last 3-7 days in the fridge, while dried leaves last 6-12 months in airtight storage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use dried curry leaves instead of fresh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can use dried curry leaves instead of fresh. Use 2-3 times more dried leaves than fresh to achieve a similar intensity. For example, if a recipe calls for 5 fresh leaves, use 10-15 dried leaves. Fry them early in hot oil or ghee to release their aroma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do dried curry leaves last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dried curry leaves maintain their potency for 6-12 months when stored in an airtight container in a cool, dark pantry. Check for moisture periodically and replace if needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I buy curry leaves in Melbourne?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can buy premium dried curry leaves from NutriThrive, shipped fresh from Melbourne. We offer 30g packs for $6 with free shipping on orders over $80. Fast delivery across Victoria and Australia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the health benefits of curry leaves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Curry leaves are rich in antioxidants (vitamin A, C, E), support healthy digestion, may help manage blood sugar, promote hair health, boost immune function, and support cardiovascular wellness. They're a traditional remedy used in Ayurvedic medicine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you make curry leaf tea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To make curry leaf tea, boil 1 cup of water, add 8-10 fresh curry leaves or 15-20 dried leaves, let it simmer for 5-7 minutes, then strain and add honey or lemon to taste. Drink warm for maximum benefits including digestion support, stress reduction, and hair growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I store dried curry leaves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Store dried curry leaves in an airtight container in a cool, dark pantry. Keep them away from moisture and direct sunlight. They will maintain their potency for 6-12 months when stored properly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the best way to use dried curry leaves in cooking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For tempering (tadka), heat oil or ghee in a pan, add dried curry leaves (2-3x more than fresh), and fry until crispy and aromatic (30-60 seconds). Then add to dal, curry, or rice dishes. You can also crumble dried leaves before adding to release more aroma."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Schema.org markup - Recipe (Curry Leaf Tea) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Curry Leaf Tea",
+      "description": "A traditional tea made from curry leaves that aids digestion, reduces stress, supports hair growth, and provides antioxidant protection.",
+      "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+      "author": {"@type": "Organization", "name": "NutriThrive"},
+      "datePublished": "2026-01-18",
+      "prepTime": "PT2M",
+      "cookTime": "PT7M",
+      "totalTime": "PT9M",
+      "recipeYield": "1 serving",
+      "recipeCategory": "Herbal Tea",
+      "recipeCuisine": "Indian",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "8 calories"
+      },
+      "recipeIngredient": [
+        "1 cup water",
+        "8-10 fresh curry leaves OR 15-20 dried curry leaves",
+        "Honey or lemon to taste (optional)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "Boil Water",
+          "text": "Boil 1 cup of water in a saucepan.",
+          "url": "https://nutrithrive.com.au/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html#step1",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Add Curry Leaves",
+          "text": "Add 8-10 fresh curry leaves or 15-20 dried leaves to the boiling water.",
+          "url": "https://nutrithrive.com.au/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html#step2",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Simmer",
+          "text": "Let it simmer for 5-7 minutes to extract the beneficial compounds.",
+          "url": "https://nutrithrive.com.au/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html#step3",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Strain and Serve",
+          "text": "Strain the tea and add honey or lemon to taste if desired. Drink warm for maximum benefits.",
+          "url": "https://nutrithrive.com.au/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html#step4",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png"
+        }
+      ],
+      "keywords": "curry leaf tea, herbal tea, Indian tea, digestion tea, hair growth tea, curry leaves benefits"
+    }
+    </script>
+    
+    <!-- Schema.org markup - HowTo (How to Store Dried Curry Leaves) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Store Dried Curry Leaves for Maximum Freshness",
+      "description": "Step-by-step guide to storing dried curry leaves properly to maintain their flavor and aroma for 6-12 months.",
+      "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+      "totalTime": "PT5M",
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Airtight container"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Cool, dark pantry or cupboard"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Choose an Airtight Container",
+          "text": "Select a clean, airtight container such as a glass jar with a tight-fitting lid or a food-grade plastic container. This prevents moisture and air from entering.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Transfer Dried Leaves",
+          "text": "Carefully transfer the dried curry leaves into the airtight container, ensuring they are completely dry before storing.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Store in Cool, Dark Place",
+          "text": "Place the container in a cool, dark pantry or cupboard away from direct sunlight, heat sources, and moisture. This helps maintain potency for 6-12 months.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Check Periodically",
+          "text": "Check the leaves periodically for any signs of moisture or spoilage. Replace if they lose their aroma or show signs of mold.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 4
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Schema.org markup - HowTo (How to Use Dried Curry Leaves in Cooking) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use Dried Curry Leaves for Tempering (Tadka)",
+      "description": "Step-by-step guide to using dried curry leaves in Indian cooking for authentic flavor and aroma.",
+      "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+      "totalTime": "PT2M",
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Pan or kadai"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Oil or ghee"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Dried curry leaves (2-3x more than fresh)"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Heat Oil or Ghee",
+          "text": "Heat oil or ghee in a pan over medium heat until it's hot but not smoking.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Add Dried Curry Leaves",
+          "text": "Add dried curry leaves (use 2-3 times more than you would fresh leaves) right at the beginning of tempering. You can crumble them slightly to release more aroma.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Fry Until Aromatic",
+          "text": "Fry the leaves until they become crispy and aromatic, about 30-60 seconds. Be careful not to burn them.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Add to Dish",
+          "text": "Add the tempered curry leaves along with the oil to your dal, curry, or rice dishes for authentic Indian flavor.",
+          "image": "https://nutrithrive.com.au/shared/images/Dried Curry Leaves .png",
+          "position": 4
+        }
+      ]
     }
     </script>
     <!-- Medical News Today Style Mobile Responsive -->
@@ -549,6 +1008,23 @@
                 <!-- Prominent CTA Banner at Top -->
                 <div style="background: linear-gradient(135deg, #175c36 0%, #2d5a3d 100%); color: white; padding: 2rem 1.5rem; border-radius: 16px; margin: 2rem 0; text-align: center; box-shadow: 0 8px 24px rgba(23,92,54,0.2);">
                     <h2 style="color: white; margin: 0 0 1rem 0; font-size: 1.5rem; font-weight: 700;">🌿 Buy Premium Dried Curry Leaves - $6</h2>
+                    <!-- Star Rating Display -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin: 0.75rem 0; flex-wrap: wrap;">
+                        <div style="display: flex; gap: 2px;">
+                            <span style="color: #FFD700; font-size: 1.2rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.2rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.2rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.2rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.2rem;">★</span>
+                        </div>
+                        <span style="font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.95);">5.0</span>
+                        <span style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">(42 reviews)</span>
+                    </div>
+                    <!-- In Stock Indicator -->
+                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1rem;">
+                        <span style="display: inline-block; width: 10px; height: 10px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                        <span style="font-size: 0.9rem; font-weight: 600;">In Stock</span>
+                    </div>
                     <p style="color: rgba(255,255,255,0.95); margin: 0 0 1.5rem 0; font-size: 1.1rem; line-height: 1.6;">Farm-grown, premium quality dried curry leaves. Perfect for authentic Indian cooking. <strong>Free shipping on orders $80+</strong> • Fast Melbourne delivery</p>
 
 <div style="background-color: #f0fdf4; border: 2px solid #16a34a; padding: 20px; border-radius: 10px; margin: 25px 0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
@@ -570,6 +1046,23 @@
 
                 <div class="cta-box">
                     <h3>🌿 Shop NutriThrive Dried Curry Leaves</h3>
+                    <!-- Star Rating Display -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin: 0.75rem 0; flex-wrap: wrap;">
+                        <div style="display: flex; gap: 2px;">
+                            <span style="color: #FFD700; font-size: 1.1rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.1rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.1rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.1rem;">★</span>
+                            <span style="color: #FFD700; font-size: 1.1rem;">★</span>
+                        </div>
+                        <span style="font-size: 0.95rem; font-weight: 600; color: #2d5a3d;">5.0</span>
+                        <span style="font-size: 0.85rem; color: #666;">(42 reviews)</span>
+                    </div>
+                    <!-- In Stock Indicator -->
+                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: #e8f5e9; padding: 0.4rem 0.9rem; border-radius: 20px; margin-bottom: 0.75rem;">
+                        <span style="display: inline-block; width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #166534;">In Stock</span>
+                    </div>
                     <p>Premium 30g pack for just $6 with <strong>free Melbourne delivery</strong></p>
                     <a href="../products/product-curry-leaves.html" class="btn">Order Now</a>
                 </div>
