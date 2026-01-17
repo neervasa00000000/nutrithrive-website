@@ -436,6 +436,73 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Product Schema with Merchant Return Policy -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "NutriThrive Premium Moringa Powder",
+      "image": "https://nutrithrive.com.au/shared/images/Home%20page%20/Moringa.png",
+      "description": "Premium 100% natural Moringa Oleifera powder for natural energy boost and immune support. Lab-tested and packed fresh in Melbourne, Australia.",
+      "brand": {
+        "@type": "Brand",
+        "name": "NutriThrive"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://nutrithrive.com.au/products/product-detail.html",
+        "priceCurrency": "AUD",
+        "price": "10.00",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "AU",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "AUD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "AU"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 2,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 10,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "seller": {
+          "@type": "Organization",
+          "name": "NutriThrive"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "124"
+      }
+    }
+    </script>
 </head>
 <body class="blog-post-page">
 <header>
