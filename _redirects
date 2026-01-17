@@ -3,8 +3,12 @@
 
 # Fix double slash in blog URLs
 /blog// /blog/ 301
+# Fix /blog without trailing slash
+/blog /blog/ 301
 
 # Blog redirects - redirect ALL /pages/blog/ to /blog/
+# Fix specific double .html issue first
+/pages/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html 301
 # Handle URLs with .html extension (must come first)
 /pages/blog/*.html /blog/:splat 301
 # Handle URLs without .html extension (add .html)
@@ -323,19 +327,19 @@
 /blog/can-dogs-eat-moringa-benefits-pets-coat-joints /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
 /blog/how-to-stop-chrome-from-using-all-your-ram-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
 
-# Removed blog posts - redirect to moringa-brands-comparison-australia-2025
-/blog/instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/instagram-worthy-moringa-smoothie-bowls-recipes /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026.html /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026 /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/moringa-for-breastfeeding-mums-natural-lactation-support.html /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/moringa-for-breastfeeding-mums-natural-lactation-support /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/dried-curry-leaf-hair-oil-recipe.html /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/dried-curry-leaf-hair-oil-recipe /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/edible-beauty-summer-glow-moringa-2026.html /blog/moringa-brands-comparison-australia-2025.html 301
-/blog/edible-beauty-summer-glow-moringa-2026 /blog/moringa-brands-comparison-australia-2025.html 301
+# Removed blog posts - redirect directly to moringa-brands-comparison-australia-2026 (no double redirect)
+/blog/instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/instagram-worthy-moringa-smoothie-bowls-recipes /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026.html /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026 /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/moringa-for-breastfeeding-mums-natural-lactation-support.html /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/moringa-for-breastfeeding-mums-natural-lactation-support /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/dried-curry-leaf-hair-oil-recipe.html /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/dried-curry-leaf-hair-oil-recipe /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/edible-beauty-summer-glow-moringa-2026.html /blog/moringa-brands-comparison-australia-2026.html 301
+/blog/edible-beauty-summer-glow-moringa-2026 /blog/moringa-brands-comparison-australia-2026.html 301
 
 # Fix 404 errors - Broken URLs
 /blog/natural-heavy-metal-detox-does-moringa-cleanse-the-body /blog/natural-heavy-metal-detox-moringa-cleanse-body.html 301
