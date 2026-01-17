@@ -23,7 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const href = a.getAttribute('href') || '';
                 // Normalize any links that still point to the old usage guide blog URL
                 if (href.includes('/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html') || href.includes('usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html')) {
-                    const absolute = href.startsWith('http') ? href : new URL(href, location.origin).pathname;
+                    // Fix double slashes in URL construction
+                    const baseUrl = location.origin.replace(/\/+$/, ''); // Remove trailing slashes
+                    const cleanHref = href.replace(/^\/+/, '/'); // Normalize leading slashes
+                    const absolute = href.startsWith('http') ? href : new URL(cleanHref, baseUrl).pathname;
                     const isAbsoluteOld = absolute.endsWith('/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html');
                     if (isAbsoluteOld) {
                         a.setAttribute('href', '../usage-guide/how-to-use-moringa.html');
