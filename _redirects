@@ -159,6 +159,7 @@
 /homepage/index.html / 301
 /contact/contact.css /pages/contact/contact.css 301
 /contact/contact.js /pages/contact/contact.js 301
+/pages/blog/blog.css /blog/blog.css 301
 
 # Fix URLs without .html extension for 2026 blog posts
 /blog/15-healthy-breakfast-meals-australians-love-2026 /blog/15-healthy-breakfast-meals-australians-love-2026.html 301
