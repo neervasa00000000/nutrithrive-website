@@ -76,6 +76,27 @@ DirectoryIndex index.html index.htm
     RewriteCond %{DOCUMENT_ROOT}/blog/%1.html -f
     RewriteRule ^blog/(.+)$ /blog/$1.html [R=301,L]
     
+    # Products: Serve product pages without .html extension directly (200 status)
+    # This must come BEFORE the redirect rules to serve files directly
+    # Internal rewrite (no redirect) - returns 200 status
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/products/product-detail/?$
+    RewriteCond %{DOCUMENT_ROOT}/products/product-detail.html -f
+    RewriteRule ^products/product-detail/?$ /products/product-detail.html [L]
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/products/product-curry-leaves/?$
+    RewriteCond %{DOCUMENT_ROOT}/products/product-curry-leaves.html -f
+    RewriteRule ^products/product-curry-leaves/?$ /products/product-curry-leaves.html [L]
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/products/product-black-tea/?$
+    RewriteCond %{DOCUMENT_ROOT}/products/product-black-tea.html -f
+    RewriteRule ^products/product-black-tea/?$ /products/product-black-tea.html [L]
+    
     # Products redirects - redirect all /pages/products/ to /products/
     RewriteRule ^pages/products/(.*)$ /products/$1 [R=301,L]
     RewriteRule ^pages/products/?$ /products/ [R=301,L]
@@ -124,7 +145,7 @@ DirectoryIndex index.html index.htm
     # Fix double .html.html extensions (Google Search Console errors)
     RewriteRule ^(.+)\.html\.html$ /$1.html [R=301,L]
     
-    # Fix /product-detail without .html
+    # Fix root-level /product-detail without .html (redirect to /products/)
     RewriteRule ^product-detail/?$ /products/product-detail.html [R=301,L]
     
     # Redirect non-existent blog posts to actual files
