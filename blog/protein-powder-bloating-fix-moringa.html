@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-<!-- Google tag (gtag.js) - Deferred for performance -->
+<!-- Defer Loader - Load early to enable script deferral -->
+<script src="../shared/js/defer-loader.js"></script>
+
+<!-- Google Analytics - Deferred until user interaction -->
 <script>
-  // Defer Google Analytics loading
-  window.addEventListener('load', function() {
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-    document.head.appendChild(script);
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WH21SW75WP');
-  });
+  // Initialize dataLayer immediately (lightweight, non-blocking)
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  
+  // Defer actual GA script loading until user interaction
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      // Load GA script
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true,
+        crossorigin: 'anonymous'
+      }).then(function() {
+        // Initialize GA after script loads
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {
+          'anonymize_ip': true,
+          'allow_google_signals': false
+        });
+      }).catch(function(err) {
+        console.warn('[GA] Failed to load:', err);
+      });
+    }, { once: true, passive: true });
+  } else {
+    // Fallback if defer-loader fails to load
+    window.addEventListener('load', function() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      script.crossOrigin = 'anonymous';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP');
+    });
+  }
 </script>
 
     <meta charset="UTF-8">
@@ -476,8 +501,26 @@
         </div>
     </footer>
 
+    <!-- CRITICAL: Core functionality - Load immediately with defer -->
     <script src="../shared/js/script.js" defer></script>
-    <script src="../shared/js/newsletter.js" defer></script>
+    
+    <!-- NON-CRITICAL: Newsletter script - Defer until browser idle -->
+    <script>
+        if (window.DeferLoader) {
+            window.DeferLoader.deferUntilIdle(function() {
+                var script = document.createElement('script');
+                script.src = '../shared/js/newsletter.js';
+                script.defer = true;
+                document.body.appendChild(script);
+            }, { timeout: 1500 });
+        } else {
+            // Fallback: load normally
+            var script = document.createElement('script');
+            script.src = '../shared/js/newsletter.js';
+            script.defer = true;
+            document.body.appendChild(script);
+        }
+    </script>
 
 <!-- =========================
 SCHEMA: BreadcrumbList
@@ -785,112 +828,205 @@ SCHEMA: Product + Aggregate Rating
 }
 </style>
 
+<!-- NON-CRITICAL: Email popup - Defer until interaction AND idle (most aggressive deferral) -->
 <script>
-(function() {
-    // Check if popup was closed in this session
-    function wasPopupClosed() {
-        return sessionStorage.getItem('emailPopupClosed') === 'true';
-    }
-    
-    // Mark popup as closed
-    function markPopupClosed() {
-        sessionStorage.setItem('emailPopupClosed', 'true');
-    }
-    
-    // Show popup after delay
-    function showPopup() {
-        if (!wasPopupClosed()) {
-            setTimeout(function() {
+if (window.DeferLoader) {
+    // Defer popup script until both interaction AND idle (most aggressive)
+    window.DeferLoader.deferUntilInteractionAndIdle(function() {
+        (function() {
+            // Check if popup was closed in this session
+            function wasPopupClosed() {
+                return sessionStorage.getItem('emailPopupClosed') === 'true';
+            }
+            
+            // Mark popup as closed
+            function markPopupClosed() {
+                sessionStorage.setItem('emailPopupClosed', 'true');
+            }
+            
+            // Show popup after delay
+            function showPopup() {
+                if (!wasPopupClosed()) {
+                    setTimeout(function() {
+                        var popup = document.getElementById('emailSignupPopup');
+                        if (popup) {
+                            popup.style.display = 'flex';
+                            popup.classList.add('show');
+                        }
+                    }, 2000); // Show after 2 seconds
+                }
+            }
+            
+            // Close popup
+            window.closeEmailPopup = function() {
                 var popup = document.getElementById('emailSignupPopup');
                 if (popup) {
-                    popup.style.display = 'flex';
-                    popup.classList.add('show');
+                    popup.style.display = 'none';
+                    popup.classList.remove('show');
+                    markPopupClosed();
                 }
-            }, 2000); // Show after 2 seconds
-        }
-    }
-    
-    // Close popup
-    window.closeEmailPopup = function() {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup) {
-            popup.style.display = 'none';
-            popup.classList.remove('show');
-            markPopupClosed();
-        }
-    };
-    
-    // Handle form submission
-    function handleFormSubmit(e) {
-        e.preventDefault();
-        var form = e.target;
-        var submitBtn = document.getElementById('submitBtn');
-        var messageDiv = document.getElementById('popupMessage');
-        var formData = new FormData(form);
-        
-        // Add formsubmit endpoint
-        
-        
-        // Disable submit button
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Subscribing...';
-        messageDiv.innerHTML = '';
-        
-        // Submit via AJAX
-        fetch('https://formsubmit.co/ajax/nutrithrive0@gmail.com', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+            };
+            
+            // Handle form submission
+            function handleFormSubmit(e) {
+                e.preventDefault();
+                var form = e.target;
+                var submitBtn = document.getElementById('submitBtn');
+                var messageDiv = document.getElementById('popupMessage');
+                var formData = new FormData(form);
+                
+                // Disable submit button
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Subscribing...';
+                }
+                if (messageDiv) {
+                    messageDiv.innerHTML = '';
+                }
+                
+                // Submit via AJAX
+                fetch('https://formsubmit.co/ajax/nutrithrive0@gmail.com', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        if (messageDiv) {
+                            messageDiv.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Thank you for subscribing!</span>';
+                        }
+                        if (form) form.reset();
+                        // Close popup after 2 seconds
+                        setTimeout(function() {
+                            closeEmailPopup();
+                        }, 2000);
+                    } else {
+                        if (messageDiv) {
+                            messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
+                        }
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Subscribe';
+                        }
+                    }
+                })
+                .catch(error => {
+                    if (messageDiv) {
+                        messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
+                    }
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Subscribe';
+                    }
+                });
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                messageDiv.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Thank you for subscribing!</span>';
-                form.reset();
-                // Close popup after 2 seconds
-                setTimeout(function() {
-                    closeEmailPopup();
-                }, 2000);
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    showPopup();
+                    var form = document.getElementById('emailSignupForm');
+                    if (form) {
+                        form.addEventListener('submit', handleFormSubmit);
+                    }
+                });
             } else {
-                messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Subscribe';
+                showPopup();
+                var form = document.getElementById('emailSignupForm');
+                if (form) {
+                    form.addEventListener('submit', handleFormSubmit);
+                }
             }
-        })
-        .catch(error => {
-            messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Subscribe';
-        });
-    }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Close on background click
+            document.addEventListener('click', function(e) {
+                var popup = document.getElementById('emailSignupPopup');
+                if (popup && e.target === popup) {
+                    closeEmailPopup();
+                }
+            }, { passive: true });
+        })();
+    }, { timeout: 2000 });
+} else {
+    // Fallback: load normally if defer-loader not available
+    (function() {
+        function wasPopupClosed() {
+            return sessionStorage.getItem('emailPopupClosed') === 'true';
+        }
+        function markPopupClosed() {
+            sessionStorage.setItem('emailPopupClosed', 'true');
+        }
+        function showPopup() {
+            if (!wasPopupClosed()) {
+                setTimeout(function() {
+                    var popup = document.getElementById('emailSignupPopup');
+                    if (popup) {
+                        popup.style.display = 'flex';
+                        popup.classList.add('show');
+                    }
+                }, 2000);
+            }
+        }
+        window.closeEmailPopup = function() {
+            var popup = document.getElementById('emailSignupPopup');
+            if (popup) {
+                popup.style.display = 'none';
+                popup.classList.remove('show');
+                markPopupClosed();
+            }
+        };
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            var form = e.target;
+            var submitBtn = document.getElementById('submitBtn');
+            var messageDiv = document.getElementById('popupMessage');
+            var formData = new FormData(form);
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Subscribing...';
+            }
+            if (messageDiv) messageDiv.innerHTML = '';
+            fetch('https://formsubmit.co/ajax/nutrithrive0@gmail.com', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (messageDiv) messageDiv.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Thank you for subscribing!</span>';
+                    if (form) form.reset();
+                    setTimeout(closeEmailPopup, 2000);
+                } else {
+                    if (messageDiv) messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Subscribe'; }
+                }
+            })
+            .catch(error => {
+                if (messageDiv) messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Subscribe'; }
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                showPopup();
+                var form = document.getElementById('emailSignupForm');
+                if (form) form.addEventListener('submit', handleFormSubmit);
+            });
+        } else {
             showPopup();
             var form = document.getElementById('emailSignupForm');
-            if (form) {
-                form.addEventListener('submit', handleFormSubmit);
-            }
+            if (form) form.addEventListener('submit', handleFormSubmit);
+        }
+        document.addEventListener('click', function(e) {
+            var popup = document.getElementById('emailSignupPopup');
+            if (popup && e.target === popup) closeEmailPopup();
         });
-    } else {
-        showPopup();
-        var form = document.getElementById('emailSignupForm');
-        if (form) {
-            form.addEventListener('submit', handleFormSubmit);
-        }
-    }
-    
-    // Close on background click
-    document.addEventListener('click', function(e) {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup && e.target === popup) {
-            closeEmailPopup();
-        }
-    });
-})();
+    })();
+}
 </script>
 
             <!-- Related Articles Section -->
