@@ -29,18 +29,13 @@ DirectoryIndex index.html index.htm
     
     # CRITICAL: Redirect /pages/blog/ and /pages/products/ FIRST (before other rules)
     # These must come early to catch all /pages/blog/ and /pages/products/ URLs
-    # Specific product page redirects - must be exact matches (force redirect regardless of file existence)
-    RewriteCond %{REQUEST_URI} ^/pages/products/product-detail\.html$ [NC]
-    RewriteRule ^pages/products/product-detail\.html$ /products/product-detail.html [R=301,L]
-    RewriteCond %{REQUEST_URI} ^/pages/products/product-curry-leaves\.html$ [NC]
-    RewriteRule ^pages/products/product-curry-leaves\.html$ /products/product-curry-leaves.html [R=301,L]
-    RewriteCond %{REQUEST_URI} ^/pages/products/product-black-tea\.html$ [NC]
-    RewriteRule ^pages/products/product-black-tea\.html$ /products/product-black-tea.html [R=301,L]
-    RewriteCond %{REQUEST_URI} ^/pages/products/product-combo\.html$ [NC]
-    RewriteRule ^pages/products/product-combo\.html$ /products/product-combo.html [R=301,L]
+    # Specific product page redirects - exact matches with case-insensitive matching
+    RewriteRule ^pages/products/product-detail\.html$ /products/product-detail.html [R=301,L,NC]
+    RewriteRule ^pages/products/product-curry-leaves\.html$ /products/product-curry-leaves.html [R=301,L,NC]
+    RewriteRule ^pages/products/product-black-tea\.html$ /products/product-black-tea.html [R=301,L,NC]
+    RewriteRule ^pages/products/product-combo\.html$ /products/product-combo.html [R=301,L,NC]
     # Generic /pages/products/ redirects (catch all other product pages)
-    RewriteCond %{REQUEST_URI} ^/pages/products/(.+)$ [NC]
-    RewriteRule ^pages/products/(.+)$ /products/$1 [R=301,L]
+    RewriteRule ^pages/products/(.+)$ /products/$1 [R=301,L,NC]
     # Blog redirects
     RewriteRule ^pages/blog/(.+\.html)$ /blog/$1 [R=301,L]
     RewriteRule ^pages/blog/(.+)$ /blog/$1.html [R=301,L]
