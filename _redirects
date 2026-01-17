@@ -70,8 +70,6 @@
 # Products redirects
 /pages/products/* /products/:splat 301
 /pages/products /products/ 301
-/pages/products/product-detail.html /products/product-detail.html 301
-/pages/products/product-detail.html /products/product-detail.html 301
 
 # Homepage redirects
 /pages/homepage/* /:splat 301
