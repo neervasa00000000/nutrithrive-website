@@ -29,12 +29,19 @@ DirectoryIndex index.html index.htm
     
     # CRITICAL: Redirect /pages/blog/ and /pages/products/ FIRST (before other rules)
     # These must come early to catch all /pages/blog/ and /pages/products/ URLs
-    RewriteRule ^pages/blog/(.+\.html)$ /blog/$1 [R=301,L]
+    # Specific product page redirects - must be exact matches
+    RewriteRule ^pages/products/product-detail\.html$ /products/product-detail.html [R=301,L]
+    RewriteRule ^pages/products/product-curry-leaves\.html$ /products/product-curry-leaves.html [R=301,L]
+    RewriteRule ^pages/products/product-black-tea\.html$ /products/product-black-tea.html [R=301,L]
+    RewriteRule ^pages/products/product-combo\.html$ /products/product-combo.html [R=301,L]
+    # Generic /pages/products/ redirects
     RewriteRule ^pages/products/(.+\.html)$ /products/$1 [R=301,L]
-    RewriteRule ^pages/blog/(.+)$ /blog/$1.html [R=301,L]
     RewriteRule ^pages/products/(.+)$ /products/$1 [R=301,L]
-    RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
     RewriteRule ^pages/products/?$ /products/ [R=301,L]
+    # Blog redirects
+    RewriteRule ^pages/blog/(.+\.html)$ /blog/$1 [R=301,L]
+    RewriteRule ^pages/blog/(.+)$ /blog/$1.html [R=301,L]
+    RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
     
     # Fix case sensitivity for Image-Enhancer
     RewriteRule ^crazy-ideas/Image-Enhancer/?$ /crazy-ideas/image-enhancer/ [R=301,L]
