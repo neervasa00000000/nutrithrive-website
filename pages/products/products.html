@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
+<script src="../shared/js/defer-loader.js"></script>
+<!-- Google Analytics - Deferred until user interaction -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP');
+    });
+  }
+</script>
+
+
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="../../shared/images/Logo%20/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="../../shared/images/Logo%20/LOGO.webp">
@@ -11,7 +39,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../../shared/images/Logo%20/LOGO.webp">
     <link rel="shortcut icon" href="../../shared/images/Logo%20/LOGO.webp">
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+    
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);} 

@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
+<script src="../shared/js/defer-loader.js"></script>
+
 <!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  window.addEventListener('load', function() {
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-    document.head.appendChild(script);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WH21SW75WP');
-  });
+  
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -484,7 +477,22 @@
 
 
 
-    <script src="../shared/js/newsletter.js" defer></script>
+        <script src="../shared/js/script.js" defer></script>
+    <script>
+        if (window.DeferLoader) {
+            window.DeferLoader.deferUntilIdle(function() {
+                var s = document.createElement('script');
+                s.src = '../shared/js/newsletter.js';
+                s.defer = true;
+                document.body.appendChild(s);
+            }, { timeout: 1500 });
+        } else {
+            var s = document.createElement('script');
+            s.src = '../shared/js/newsletter.js';
+            s.defer = true;
+            document.body.appendChild(s);
+        }
+    </script>
 
 <!-- Email Signup Popup -->
 <div id="emailSignupPopup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; justify-content: center; align-items: center; animation: fadeIn 0.3s ease;">
