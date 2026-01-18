@@ -586,12 +586,65 @@
         });
     </script>
 
-    <!-- PayPal SDK with Live API -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&intent=capture"></script>
-    
+    <!-- PayPal SDK - Load dynamically with retry mechanism -->
     <script>
-        // PayPal Smart Buttons - Embedded Checkout (No Redirect)
-        paypal.Buttons({
+        // Load PayPal SDK dynamically with retry mechanism
+        function loadPayPalSDK(retryCount = 0) {
+            const maxRetries = 3;
+            const script = document.createElement('script');
+            script.src = 'https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&intent=capture';
+            script.setAttribute('data-sdk-integration-source', 'button-factory');
+            script.async = true;
+            
+            script.onload = function() {
+                console.log('PayPal SDK loaded successfully');
+                // Initialize PayPal buttons after SDK loads
+                initPayPalButtons();
+            };
+            
+            script.onerror = function() {
+                console.error('PayPal SDK failed to load (attempt ' + (retryCount + 1) + ')');
+                if (retryCount < maxRetries) {
+                    console.log('Retrying PayPal SDK load...');
+                    setTimeout(function() {
+                        loadPayPalSDK(retryCount + 1);
+                    }, 2000 * (retryCount + 1)); // Exponential backoff
+                } else {
+                    console.error('PayPal SDK failed to load after ' + maxRetries + ' attempts');
+                    showPayPalError();
+                }
+            };
+            
+            document.head.appendChild(script);
+        }
+        
+        function showPayPalError() {
+            const container = document.getElementById('paypal-button-container');
+            if (container) {
+                container.innerHTML = '<div style="padding: 1rem; text-align: center; color: #d32f2f; background: #ffebee; border-radius: 8px; border: 2px solid #d32f2f;"><strong>PayPal SDK failed to load</strong><br><br>Please check your internet connection and refresh the page.<br><br><button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 4px; cursor: pointer;">Refresh Page</button></div>';
+            }
+        }
+        
+        // Initialize PayPal buttons
+        function initPayPalButtons() {
+            if (typeof paypal === 'undefined' || !paypal.Buttons) {
+                console.error('PayPal SDK not available');
+                showPayPalError();
+                return;
+            }
+            
+            const container = document.getElementById('paypal-button-container');
+            if (!container) {
+                console.error('PayPal button container not found');
+                return;
+            }
+            
+            // Clear any error messages
+            container.innerHTML = '';
+            
+            try {
+                // PayPal Smart Buttons - Embedded Checkout (No Redirect)
+                paypal.Buttons({
             style: {
                 layout: 'vertical',
                 color: 'gold',
@@ -739,7 +792,26 @@
                 // User cancelled the payment
                 console.log('Payment cancelled:', data);
             }
-        }).render('#paypal-button-container');
+                }).render('#paypal-button-container').then(function() {
+                    console.log('PayPal buttons rendered successfully');
+                }).catch(function(err) {
+                    console.error('PayPal button render error:', err);
+                    showPayPalError();
+                });
+            } catch (err) {
+                console.error('PayPal initialization error:', err);
+                showPayPalError();
+            }
+        }
+        
+        // Start loading PayPal SDK when page is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(loadPayPalSDK, 500);
+            });
+        } else {
+            setTimeout(loadPayPalSDK, 500);
+        }
     </script>
 
     <script>
