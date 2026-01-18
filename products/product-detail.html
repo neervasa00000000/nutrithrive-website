@@ -409,21 +409,15 @@
                     <div class="product-content" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; position: relative !important; z-index: 2 !important;">
                         <p class="product-description" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 0 1.5rem 0 !important;">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system. Shipped fresh from Truganina, Melbourne to Sydney and across Australia. Our premium moringa powder contains complete amino acid profiles and natural plant-based nutrition for optimal health benefits.</p>
 
-                        <!-- Product Price & Quantity -->
-                        <div style="margin: 1.5rem 0; padding: 1rem; background: #f8faf7; border-radius: 8px;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-                                <span style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$10.00 AUD</span>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <label style="font-weight: 600; color: #1a2e22;">Quantity:</label>
-                                    <input type="number" id="product-quantity" min="1" value="1" style="width: 60px; padding: 0.5rem; border: 2px solid #e0e0e0; border-radius: 6px; text-align: center; font-size: 1rem;">
-                                </div>
+                        <div style="text-align: center; padding: 20px; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 3 !important;">
+                            <div style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                              <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                              <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display:inline-grid !important; justify-items:center;align-content:start;gap:0.5rem; visibility: visible !important; opacity: 1 !important;">
+                                <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Pay Now" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important;" />
+                                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" style="display: block !important; visibility: visible !important; opacity: 1 !important;" />
+                                <section style="font-size: 0.75rem; display: block !important; visibility: visible !important; opacity: 1 !important;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;display: inline-block !important; visibility: visible !important; opacity: 1 !important;"/></section>
+                              </form>
                             </div>
-                            
-                            <!-- PayPal Checkout - Embedded (No Redirect) -->
-                            <div id="paypal-button-container" style="margin: 1rem 0; min-height: 50px;"></div>
-                            <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem; text-align: center;">
-                                🔒 Secure checkout powered by PayPal
-                            </p>
                         </div>
                 
                 
@@ -753,67 +747,6 @@
         // Make function available globally
         window.changeMainImage = changeMainImage;
     </script>
-    <!-- PayPal SDK - Embedded Checkout (No Redirect) -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&intent=capture"></script>
-    
-    <script>
-        // PayPal Smart Buttons - Embedded Checkout (No Redirect)
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color: 'gold',
-                shape: 'rect',
-                label: 'paypal'
-            },
-            createOrder: function(data, actions) {
-                // Get quantity from input
-                const quantity = parseInt(document.getElementById('product-quantity').value) || 1;
-                const total = (10.00 * quantity).toFixed(2);
-                
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: total,
-                            currency_code: 'AUD'
-                        },
-                        description: 'Moringa Powder - 100% Pure Moringa Oleifera',
-                        items: [{
-                            name: 'Moringa Powder',
-                            description: '100% pure Moringa Oleifera leaf powder',
-                            quantity: quantity.toString(),
-                            unit_amount: {
-                                currency_code: 'AUD',
-                                value: '10.00'
-                            }
-                        }]
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                // Capture the payment
-                return actions.order.capture().then(function(details) {
-                    // Payment successful
-                    console.log('Payment successful:', details);
-                    
-                    // Show success message
-                    alert('Payment successful! Order ID: ' + details.id + '\n\nThank you for your purchase! You will receive a confirmation email shortly.');
-                    
-                    // Optional: Redirect to thank you page
-                    // window.location.href = '/pages/contact/thank-you.html?orderId=' + details.id;
-                });
-            },
-            onError: function(err) {
-                // Handle errors
-                console.error('PayPal error:', err);
-                alert('An error occurred with PayPal. Please try again or contact support.');
-            },
-            onCancel: function(data) {
-                // User cancelled the payment
-                console.log('Payment cancelled:', data);
-            }
-        }).render('#paypal-button-container');
-    </script>
-    
     <script src="../shared/js/script.js"></script>
     <script src="../pages/products/product-detail.js"></script>
     <!-- Ensure hamburger menu works - simple inline fallback -->
