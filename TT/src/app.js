@@ -209,22 +209,33 @@ function initializePayPal() {
             });
             expiryField.render("#card-expiry-field-container");
 
-            // Add click listener to submit button
+            // Add click listener to submit button - use event delegation for reliability
             const submitButton = document.getElementById("card-field-submit-button");
             if (submitButton) {
-                submitButton.addEventListener("click", () => {
+                // Remove any existing listeners first
+                const newButton = submitButton.cloneNode(true);
+                submitButton.parentNode.replaceChild(newButton, submitButton);
+                
+                newButton.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
                     console.log("Card submit button clicked");
                     
                     // Validate billing address fields
-                    const addressLine1 = document.getElementById("card-billing-address-line-1").value;
-                    const adminArea1 = document.getElementById("card-billing-address-admin-area-line-1").value;
-                    const countryCode = document.getElementById("card-billing-address-country-code").value;
-                    const postalCode = document.getElementById("card-billing-address-postal-code").value;
+                    const addressLine1 = document.getElementById("card-billing-address-line-1")?.value?.trim();
+                    const adminArea1 = document.getElementById("card-billing-address-admin-area-line-1")?.value?.trim();
+                    const countryCode = document.getElementById("card-billing-address-country-code")?.value?.trim();
+                    const postalCode = document.getElementById("card-billing-address-postal-code")?.value?.trim();
                     
                     if (!addressLine1 || !adminArea1 || !countryCode || !postalCode) {
                         resultMessage("Please fill in all required billing address fields.", true);
                         return;
                     }
+                    
+                    // Disable button during processing
+                    newButton.disabled = true;
+                    newButton.textContent = "Processing...";
                     
                     console.log("Submitting card payment...");
                     resultMessage("Processing payment...", false);
@@ -233,9 +244,9 @@ function initializePayPal() {
                         .submit({
                             billingAddress: {
                                 addressLine1: addressLine1,
-                                addressLine2: document.getElementById("card-billing-address-line-2").value || "",
+                                addressLine2: document.getElementById("card-billing-address-line-2")?.value?.trim() || "",
                                 adminArea1: adminArea1,
-                                adminArea2: document.getElementById("card-billing-address-admin-area-line-2").value || "",
+                                adminArea2: document.getElementById("card-billing-address-admin-area-line-2")?.value?.trim() || "",
                                 countryCode: countryCode,
                                 postalCode: postalCode,
                             },
@@ -246,10 +257,23 @@ function initializePayPal() {
                         .catch((error) => {
                             console.error("Card field submit error:", error);
                             resultMessage(`Card payment error: ${error.message}`, true);
+                            // Re-enable button on error
+                            newButton.disabled = false;
+                            newButton.textContent = "Pay now with Card";
                         });
                 });
+                
+                console.log("Card submit button handler attached");
             } else {
-                console.error("Card submit button not found");
+                console.error("Card submit button not found - retrying in 500ms");
+                setTimeout(() => {
+                    const retryButton = document.getElementById("card-field-submit-button");
+                    if (retryButton) {
+                        console.log("Found button on retry");
+                        // Re-run the button setup
+                        location.reload();
+                    }
+                }, 500);
             }
         } else {
             // Card fields not eligible - hide the card form
