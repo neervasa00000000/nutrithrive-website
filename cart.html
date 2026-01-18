@@ -260,7 +260,7 @@
             `;
             
             cart.items.forEach(item => {
-                const itemTotal = (parseFloat(item.price) * parseInt(item.quantity).toFixed(2);
+                const itemTotal = (parseFloat(item.price) * parseInt(item.quantity)).toFixed(2);
                 itemsHTML += `
                     <div class="cart-item" data-product-id="${item.id}">
                         <div class="item-info">

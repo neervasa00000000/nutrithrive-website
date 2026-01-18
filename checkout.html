@@ -237,7 +237,7 @@
                         body: JSON.stringify({ amount: orderData.total.toFixed(2) })
                     });
                     
-                    if (!res.ok) {
+                    if (!response.ok) {
                         const error = await response.json();
                         throw new Error(error.error || "Failed to create order");
                     }
