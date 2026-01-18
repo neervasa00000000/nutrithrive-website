@@ -198,87 +198,9 @@
                     <!-- PayPal Buttons Container -->
                     <div id="paypal-button-container"></div>
                     
-                    <!-- Card Fields Container -->
-                    <div id="card-form" class="card_container">
-                        <h3 style="margin-top: 0; margin-bottom: 1rem;">Pay with Card</h3>
-                        
-                        <!-- Card Fields hosted by PayPal -->
-                        <div id="card-name-field-container"></div>
-                        <div id="card-number-field-container"></div>
-                        <div id="card-expiry-field-container"></div>
-                        <div id="card-cvv-field-container"></div>
-                        
-                        <!-- Billing Address Fields -->
-                        <div>
-                            <label for="card-billing-address-line-1">Billing Address Line 1 *</label>
-                            <input
-                                type="text"
-                                id="card-billing-address-line-1"
-                                name="card-billing-address-line-1"
-                                autocomplete="off"
-                                placeholder="Street address"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label for="card-billing-address-line-2">Billing Address Line 2</label>
-                            <input
-                                type="text"
-                                id="card-billing-address-line-2"
-                                name="card-billing-address-line-2"
-                                autocomplete="off"
-                                placeholder="Apartment, suite, etc. (optional)"
-                            />
-                        </div>
-                        <div>
-                            <label for="card-billing-address-admin-area-line-1">City/State *</label>
-                            <input
-                                type="text"
-                                id="card-billing-address-admin-area-line-1"
-                                name="card-billing-address-admin-area-line-1"
-                                autocomplete="off"
-                                placeholder="City"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label for="card-billing-address-admin-area-line-2">State/Province</label>
-                            <input
-                                type="text"
-                                id="card-billing-address-admin-area-line-2"
-                                name="card-billing-address-admin-area-line-2"
-                                autocomplete="off"
-                                placeholder="State (optional)"
-                            />
-                        </div>
-                        <div>
-                            <label for="card-billing-address-country-code">Country Code *</label>
-                            <input
-                                type="text"
-                                id="card-billing-address-country-code"
-                                name="card-billing-address-country-code"
-                                autocomplete="off"
-                                placeholder="AU"
-                                value="AU"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label for="card-billing-address-postal-code">Postal Code *</label>
-                            <input
-                                type="text"
-                                id="card-billing-address-postal-code"
-                                name="card-billing-address-postal-code"
-                                autocomplete="off"
-                                placeholder="Postal/Zip code"
-                                required
-                            />
-                        </div>
-                        
-                        <button id="card-field-submit-button" type="button" onclick="window.handleCardPayment && window.handleCardPayment(event)">
-                            Pay now with Card
-                        </button>
-                    </div>
+                    <!-- Card Fields removed - using PayPal buttons only for now -->
+                    <!-- Card fields require PayPal approval for "Expanded Credit and Debit Card Payments" -->
+                    <!-- Once approved, you can add card fields back -->
                 </div>
                 
                 <!-- Result Message -->
