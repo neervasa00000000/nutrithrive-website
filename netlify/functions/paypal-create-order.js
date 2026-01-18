@@ -28,10 +28,18 @@ export async function handler(event) {
   try {
     const { amount, cart } = JSON.parse(event.body || "{}");
 
-    // Use environment variables or fallback to defaults
+    // Use environment variables - REQUIRED (no fallbacks for security)
     const base = (process.env.PAYPAL_BASE || process.env.PAYPAL_ENVIRONMENT || "https://api.paypal.com").replace(/\/$/, "");
-    const client = process.env.PAYPAL_CLIENT_ID || "AWtclBnz1gQWQne-vS-OnExG1-RI7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi";
-    const secret = process.env.PAYPAL_CLIENT_SECRET || "EAnPKgxB1TWM042LEvt-FmCeWZB9UqX3rSdJ0W95IU_selSN1ZFqRx69SIMBCSQOsk8fBc336C_mSICw";
+    const client = process.env.PAYPAL_CLIENT_ID;
+    const secret = process.env.PAYPAL_CLIENT_SECRET;
+
+    if (!client || !secret) {
+        return {
+            statusCode: 500,
+            headers,
+            body: JSON.stringify({ error: "Missing PayPal environment variables. Please configure PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET in Netlify." }),
+        };
+    }
 
     // Calculate amount from cart if provided
     let orderAmount = amount || "10.00";
