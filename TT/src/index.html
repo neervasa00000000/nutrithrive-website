@@ -287,14 +287,88 @@
         </div>
     </div>
     
-    <!-- PayPal SDK - Load at end of body -->
-    <!-- Try loading without card-fields first to see if that's the issue -->
-    <script
-        src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-RI7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons&intent=capture"
-        data-sdk-integration-source="developer-studio"
-        onload="console.log('PayPal SDK loaded successfully'); window.paypalSDKLoaded = true; if (typeof paypal !== 'undefined' && paypal.CardFields) { console.log('CardFields available'); } else { console.warn('CardFields not available - may need approval'); }"
-        onerror="console.error('PayPal SDK failed to load from CDN - Status:', this.status || 'unknown'); window.paypalSDKLoaded = false; const msgEl = document.getElementById('result-message'); if (msgEl) { msgEl.innerHTML='PayPal SDK failed to load. Check browser console (F12) for details. Error code: ' + (this.status || 'network error'); msgEl.className='error-message'; }"
-    ></script>
+    <!-- PayPal SDK - Simple version -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-RI7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD"></script>
+    
+    <script>
+        // Wait for PayPal SDK to load
+        function initPayPal() {
+            if (typeof paypal === 'undefined') {
+                setTimeout(initPayPal, 100);
+                return;
+            }
+
+            console.log("PayPal SDK loaded, initializing buttons...");
+
+            paypal.Buttons({
+                createOrder: async () => {
+                    const quantity = parseInt(document.getElementById('product-quantity')?.value) || 1;
+                    const amount = (10.00 * quantity).toFixed(2);
+                    
+                    console.log("Creating order for amount:", amount);
+                    
+                    const res = await fetch("/.netlify/functions/paypal-create-order", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ amount: amount })
+                    });
+                    
+                    if (!res.ok) {
+                        const error = await res.json();
+                        throw new Error(error.error || "Failed to create order");
+                    }
+                    
+                    const data = await res.json();
+                    console.log("Order created:", data.id);
+                    return data.id;
+                },
+                onApprove: async (data) => {
+                    console.log("Order approved, capturing:", data.orderID);
+                    
+                    const res = await fetch("/.netlify/functions/paypal-capture-order", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ orderID: data.orderID })
+                    });
+                    
+                    if (!res.ok) {
+                        const error = await res.json();
+                        throw new Error(error.error || "Failed to capture order");
+                    }
+                    
+                    const details = await res.json();
+                    console.log("CAPTURED:", details);
+                    
+                    const resultMsg = document.getElementById('result-message');
+                    if (resultMsg) {
+                        const transaction = details?.purchase_units?.[0]?.payments?.captures?.[0];
+                        if (transaction) {
+                            resultMsg.innerHTML = `✅ Payment successful!<br><br>Transaction ID: ${transaction.id}<br>Status: ${transaction.status}<br><br>Thank you for your purchase!`;
+                            resultMsg.className = "";
+                        } else {
+                            resultMsg.innerHTML = "✅ Payment processed successfully!";
+                            resultMsg.className = "";
+                        }
+                    }
+                },
+                onError: (err) => {
+                    console.error("PayPal error:", err);
+                    const resultMsg = document.getElementById('result-message');
+                    if (resultMsg) {
+                        resultMsg.innerHTML = `❌ Payment error: ${err.message || "Unknown error"}`;
+                        resultMsg.className = "error-message";
+                    }
+                }
+            }).render("#paypal-button-container");
+        }
+
+        // Start initialization
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPayPal);
+        } else {
+            initPayPal();
+        }
+    </script>
     
     <script src="app.js"></script>
 </body>
