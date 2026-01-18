@@ -288,11 +288,12 @@
     </div>
     
     <!-- PayPal SDK - Load at end of body -->
+    <!-- Try loading without card-fields first to see if that's the issue -->
     <script
-        src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-RI7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons,card-fields&intent=capture"
+        src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-RI7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons&intent=capture"
         data-sdk-integration-source="developer-studio"
-        onload="console.log('PayPal SDK loaded successfully'); window.paypalSDKLoaded = true;"
-        onerror="console.error('PayPal SDK failed to load from CDN'); window.paypalSDKLoaded = false; document.getElementById('result-message').innerHTML='PayPal SDK failed to load. Please check your internet connection and refresh the page.'; document.getElementById('result-message').className='error-message';"
+        onload="console.log('PayPal SDK loaded successfully'); window.paypalSDKLoaded = true; if (typeof paypal !== 'undefined' && paypal.CardFields) { console.log('CardFields available'); } else { console.warn('CardFields not available - may need approval'); }"
+        onerror="console.error('PayPal SDK failed to load from CDN - Status:', this.status || 'unknown'); window.paypalSDKLoaded = false; const msgEl = document.getElementById('result-message'); if (msgEl) { msgEl.innerHTML='PayPal SDK failed to load. Check browser console (F12) for details. Error code: ' + (this.status || 'network error'); msgEl.className='error-message'; }"
     ></script>
     
     <script src="app.js"></script>
