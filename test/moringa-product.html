@@ -652,9 +652,15 @@
                 label: 'paypal'
             },
             createOrder: async function(data, actions) {
+                console.log('=== Creating PayPal Order ===');
+                console.log('Data:', data);
+                console.log('Actions:', actions);
+                
                 // Try backend API first, fallback to client-side
                 const quantity = parseInt(document.getElementById('product-quantity').value) || 1;
                 const total = (10.00 * quantity).toFixed(2);
+                
+                console.log('Order details - Quantity:', quantity, 'Total:', total);
                 
                 // Try backend API first
                 try {
@@ -681,6 +687,7 @@
                     });
                     
                     const orderData = await response.json();
+                    console.log('Backend response:', orderData);
                     
                     if (response.ok && orderData.id) {
                         console.log('✅ Backend API success:', orderData.id);
@@ -693,24 +700,35 @@
                     console.warn('Backend API failed, using client-side fallback:', backendError);
                     // Fallback to client-side order creation
                     console.log('Using client-side order creation');
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: total,
-                                currency_code: 'AUD'
-                            },
-                            description: 'Moringa Powder - 100% Pure Moringa Oleifera',
-                            items: [{
-                                name: 'Moringa Powder',
-                                description: '100% pure Moringa Oleifera leaf powder',
-                                quantity: quantity.toString(),
-                                unit_amount: {
-                                    currency_code: 'AUD',
-                                    value: '10.00'
-                                }
+                    
+                    try {
+                        const orderRequest = {
+                            purchase_units: [{
+                                amount: {
+                                    value: total,
+                                    currency_code: 'AUD'
+                                },
+                                description: 'Moringa Powder - 100% Pure Moringa Oleifera',
+                                items: [{
+                                    name: 'Moringa Powder',
+                                    description: '100% pure Moringa Oleifera leaf powder',
+                                    quantity: quantity.toString(),
+                                    unit_amount: {
+                                        currency_code: 'AUD',
+                                        value: '10.00'
+                                    }
+                                }]
                             }]
-                        }]
-                    });
+                        };
+                        
+                        console.log('Client-side order request:', orderRequest);
+                        const orderId = await actions.order.create(orderRequest);
+                        console.log('✅ Client-side order created:', orderId);
+                        return orderId;
+                    } catch (clientError) {
+                        console.error('❌ Client-side order creation failed:', clientError);
+                        throw clientError;
+                    }
                 }
             },
             onApprove: async function(data, actions) {
@@ -774,19 +792,36 @@
             },
             onError: function(err) {
                 // Handle buyer checkout errors
-                console.error('PayPal error:', err);
+                console.error('=== PayPal Error ===');
+                console.error('Error object:', err);
+                console.error('Error type:', typeof err);
+                console.error('Error message:', err?.message);
                 console.error('Error details:', JSON.stringify(err, null, 2));
                 
-                let errorMsg = 'An error occurred with PayPal. ';
-                if (err && err.message) {
-                    errorMsg += '\n\nError: ' + err.message;
-                } else if (err && typeof err === 'string') {
-                    errorMsg += '\n\nError: ' + err;
-                } else {
-                    errorMsg += '\n\nPlease check the browser console (F12) for details.';
+                // Don't show alert for every error - some might be recoverable
+                // Only show critical errors
+                if (err && err.message && !err.message.includes('INSTRUMENT_DECLINED')) {
+                    let errorMsg = 'PayPal Error: ';
+                    if (err.message) {
+                        errorMsg += err.message;
+                    } else if (typeof err === 'string') {
+                        errorMsg += err;
+                    } else {
+                        errorMsg += 'Please check browser console (F12) for details.';
+                    }
+                    
+                    // Show in console instead of alert to avoid interrupting user
+                    console.error('User-facing error:', errorMsg);
+                    
+                    // Only show alert for critical errors
+                    if (err.message && (
+                        err.message.includes('INVALID_CLIENT_ID') ||
+                        err.message.includes('AUTHENTICATION_FAILURE') ||
+                        err.message.includes('UNAUTHORIZED')
+                    )) {
+                        alert('PayPal configuration error. Please contact support at nutrithrive0@gmail.com\n\nError: ' + err.message);
+                    }
                 }
-                errorMsg += '\n\nPlease try again or contact support at nutrithrive0@gmail.com';
-                alert(errorMsg);
             },
             onCancel: function(data) {
                 // User cancelled the payment
