@@ -421,7 +421,7 @@
         const API_BASE = window.location.origin; // Will use /api/orders for Netlify functions
         
         // Create Order Callback (for both PayPal and Card Fields)
-        async function createOrderCallback() {
+        function createOrderCallback(data, actions) {
             const totals = renderOrderSummary();
             
             // Get form data
@@ -446,43 +446,9 @@
                 throw new Error('Form validation failed');
             }
             
-            // For now, use client-side order creation
-            // Backend API requires PayPal Server SDK setup
-            // Uncomment below to use backend API once configured:
-            
-            /*
-            try {
-                const response = await fetch(`${API_BASE}/.netlify/functions/create-order`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        cart: cart,
-                        totals: totals,
-                        shipping: orderData
-                    }),
-                });
-                
-                const orderData_response = await response.json();
-                
-                if (orderData_response.id) {
-                    return orderData_response.id;
-                }
-            } catch (error) {
-                console.error('API error:', error);
-            }
-            */
-            
-            // Client-side order creation (current implementation)
-            return createOrderClientSide(totals, orderData);
-        }
-        
-        // Client-side order creation (using PayPal SDK directly)
-        // Note: For production, use backend API for better security
-        async function createOrderClientSide(totals, orderData) {
+            // Create order items
             const items = cart.map(item => ({
-                name: item.name.substring(0, 127), // PayPal limit
+                name: item.name.substring(0, 127), // PayPal 127 char limit
                 description: item.name.substring(0, 127),
                 quantity: item.quantity.toString(),
                 unit_amount: {
@@ -492,9 +458,8 @@
             }));
             
             // Create order using PayPal SDK (client-side)
-            // This works but backend API is recommended for production
-            const orderData_paypal = {
-                intent: 'CAPTURE',
+            // Note: For production, use backend API for better security
+            return actions.order.create({
                 purchase_units: [{
                     amount: {
                         value: totals.total.toFixed(2),
@@ -525,22 +490,11 @@
                         }
                     }
                 }]
-            };
-            
-            // Use PayPal SDK to create order
-            // Note: This requires the PayPal SDK to be loaded
-            if (typeof paypal !== 'undefined' && paypal.rest) {
-                // If using REST API directly (not recommended client-side)
-                // For now, return the order structure and let PayPal handle it
-                return orderData_paypal;
-            }
-            
-            // Return order structure - PayPal Buttons will create the order
-            return orderData_paypal;
+            });
         }
         
         // On Approve Callback (for both PayPal and Card Fields)
-        async function onApproveCallback(data, actions) {
+        function onApproveCallback(data, actions) {
             // Client-side capture (current implementation)
             // For production, use backend API for better security
             if (actions && actions.order) {
@@ -609,112 +563,15 @@
                         label: 'paypal',
                         height: 50
                     },
-            createOrder: createOrderCallback,
-                const totals = renderOrderSummary();
-                
-                // Get form data
-                orderData = {
-                    firstName: document.getElementById('first-name').value,
-                    lastName: document.getElementById('last-name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    address: document.getElementById('address').value,
-                    address2: document.getElementById('address2').value,
-                    city: document.getElementById('city').value,
-                    state: document.getElementById('state').value,
-                    postcode: document.getElementById('postcode').value,
-                    notes: document.getElementById('notes').value
-                };
-                
-                // Validate form
-                if (!orderData.firstName || !orderData.lastName || !orderData.email || 
-                    !orderData.phone || !orderData.address || !orderData.city || 
-                    !orderData.state || !orderData.postcode) {
-                    alert('Please fill in all required fields');
-                    return;
-                }
-                
-                // Create PayPal order
-                const items = cart.map(item => ({
-                    name: item.name,
-                    description: item.name,
-                    quantity: item.quantity.toString(),
-                    unit_amount: {
-                        currency_code: 'AUD',
-                        value: item.price.toFixed(2)
+                    createOrder: createOrderCallback,
+                    onApprove: onApproveCallback,
+                    onError: function(err) {
+                        console.error('PayPal error:', err);
+                        handleError(err);
+                    },
+                    onCancel: function(data) {
+                        console.log('Payment cancelled:', data);
                     }
-                }));
-                
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: totals.total.toFixed(2),
-                            currency_code: 'AUD',
-                            breakdown: {
-                                item_total: {
-                                    currency_code: 'AUD',
-                                    value: totals.subtotal.toFixed(2)
-                                },
-                                shipping: {
-                                    currency_code: 'AUD',
-                                    value: totals.shipping.toFixed(2)
-                                }
-                            }
-                        },
-                        items: items,
-                        shipping: {
-                            name: {
-                                full_name: orderData.firstName + ' ' + orderData.lastName
-                            },
-                            address: {
-                                address_line_1: orderData.address,
-                                address_line_2: orderData.address2 || '',
-                                admin_area_2: orderData.city,
-                                admin_area_1: orderData.state,
-                                postal_code: orderData.postcode,
-                                country_code: 'AU'
-                            }
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // Payment successful
-                    console.log('Payment successful:', details);
-                    console.log('Order data:', orderData);
-                    console.log('Cart:', cart);
-                    
-                    // Store order data (you would send this to your backend)
-                    const order = {
-                        orderId: details.id,
-                        payer: details.payer,
-                        items: cart,
-                        shipping: orderData,
-                        total: details.purchase_units[0].amount.value,
-                        timestamp: new Date().toISOString()
-                    };
-                    
-                    // Save order locally (in production, send to backend)
-                    localStorage.setItem('lastOrder', JSON.stringify(order));
-                    
-                    // Clear cart
-                    localStorage.removeItem('cart');
-                    
-                    // Redirect to thank you page
-                    alert('Payment successful! Order ID: ' + details.id + '\n\nThank you for your purchase!');
-                    window.location.href = 'thank-you.html?orderId=' + details.id;
-                });
-            },
-            onError: function(err) {
-                console.error('PayPal error:', err);
-                errorDiv.style.display = 'block';
-                errorDiv.textContent = 'PayPal payment failed. Please try again or contact support.';
-                alert('An error occurred with PayPal. Please try again.');
-            },
-            onCancel: function(data) {
-                console.log('Payment cancelled:', data);
-            }
                 }).render('#paypal-button-container').then(function() {
                     console.log('PayPal button rendered successfully');
                     
