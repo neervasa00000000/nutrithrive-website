@@ -154,47 +154,14 @@ function initializePayPal() {
         })
         .render("#paypal-button-container");
 
-    // Try to load CardFields component dynamically
-    // First check if it's available
+    // Render Card Fields - check if available
     if (!window.paypal.CardFields) {
-        console.warn("⚠️ CardFields not available - trying to load it...");
-        
-        // Try loading SDK again with card-fields component
-        const cardFieldsScript = document.createElement('script');
-        cardFieldsScript.src = 'https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=card-fields&intent=capture';
-        cardFieldsScript.onload = function() {
-            console.log("CardFields component script loaded");
-            if (window.paypal.CardFields) {
-                console.log("✅ CardFields now available");
-                initializeCardFields();
-            } else {
-                console.warn("⚠️ CardFields still not available after loading component script");
-                showCardFieldsUnavailable();
-            }
-        };
-        cardFieldsScript.onerror = function() {
-            console.error("❌ Failed to load CardFields component");
-            showCardFieldsUnavailable();
-        };
-        document.head.appendChild(cardFieldsScript);
-        return;
-    }
-    
-    initializeCardFields();
-}
-
-function initializeCardFields() {
-    if (!window.paypal.CardFields) {
-        showCardFieldsUnavailable();
-        return;
-    }
-    
-    function showCardFieldsUnavailable() {
-        console.warn("CardFields not available - your account may need approval");
+        console.warn("⚠️ CardFields not available - your account may need approval for Expanded Checkout");
         const cardForm = document.getElementById("card-form");
         if (cardForm) {
             cardForm.innerHTML = '<p style="color: #c62828; padding: 1rem;">Card payment is not available. Your PayPal account needs to be approved for "Expanded Credit and Debit Card Payments". Please use the PayPal button above.</p>';
         }
+        return;
     }
 
     console.log("Initializing Card Fields...");
