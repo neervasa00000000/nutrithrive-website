@@ -7,6 +7,9 @@ const PRODUCT_ID = "MORINGA_POWDER_200G";
 const PRODUCT_NAME = "Moringa Powder";
 const PRODUCT_DESCRIPTION = "100% pure Moringa Oleifera leaf powder";
 
+// Global card field reference
+let globalCardField = null;
+
 // Get quantity from input
 function getQuantity() {
     const quantityInput = document.getElementById('product-quantity');
@@ -139,6 +142,67 @@ function resultMessage(message, isError = false) {
     }
 }
 
+// Global card payment handler (backup for onclick)
+window.handleCardPayment = function(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
+    console.log("handleCardPayment called");
+    
+    if (!globalCardField) {
+        console.error("Card field not initialized");
+        resultMessage("Card payment not ready. Please refresh the page.", true);
+        return false;
+    }
+    
+    // Validate billing address fields
+    const addressLine1 = document.getElementById("card-billing-address-line-1")?.value?.trim();
+    const adminArea1 = document.getElementById("card-billing-address-admin-area-line-1")?.value?.trim();
+    const countryCode = document.getElementById("card-billing-address-country-code")?.value?.trim();
+    const postalCode = document.getElementById("card-billing-address-postal-code")?.value?.trim();
+    
+    if (!addressLine1 || !adminArea1 || !countryCode || !postalCode) {
+        resultMessage("Please fill in all required billing address fields.", true);
+        return false;
+    }
+    
+    const submitButton = document.getElementById("card-field-submit-button");
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Processing...";
+    }
+    
+    console.log("Submitting card payment...");
+    resultMessage("Processing payment...", false);
+    
+    globalCardField
+        .submit({
+            billingAddress: {
+                addressLine1: addressLine1,
+                addressLine2: document.getElementById("card-billing-address-line-2")?.value?.trim() || "",
+                adminArea1: adminArea1,
+                adminArea2: document.getElementById("card-billing-address-admin-area-line-2")?.value?.trim() || "",
+                countryCode: countryCode,
+                postalCode: postalCode,
+            },
+        })
+        .then(() => {
+            console.log("Card field submit successful");
+        })
+        .catch((error) => {
+            console.error("Card field submit error:", error);
+            resultMessage(`Card payment error: ${error.message}`, true);
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = "Pay now with Card";
+            }
+        });
+    
+    return false;
+};
+
 // Wait for PayPal SDK to load
 function initializePayPal() {
     if (typeof paypal === 'undefined') {
@@ -180,6 +244,9 @@ function initializePayPal() {
                 },
             },
         });
+        
+        // Store globally for onclick handler
+        globalCardField = cardField;
 
         if (cardField.isEligible()) {
             // Render Card Name Field
