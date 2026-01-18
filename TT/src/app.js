@@ -140,10 +140,14 @@ function resultMessage(message, isError = false) {
 }
 
 // Wait for PayPal SDK to load
-if (typeof paypal === 'undefined') {
-    console.error("PayPal SDK not loaded");
-    resultMessage("PayPal SDK failed to load. Please refresh the page.", true);
-} else {
+function initializePayPal() {
+    if (typeof paypal === 'undefined') {
+        console.error("PayPal SDK not loaded");
+        resultMessage("PayPal SDK failed to load. Please refresh the page.", true);
+        return;
+    }
+    
+    try {
     // Render PayPal Buttons
     paypal
         .Buttons({
@@ -245,5 +249,36 @@ if (typeof paypal === 'undefined') {
         if (cardForm) {
             cardForm.style.display = "none";
         }
+    } catch (error) {
+        console.error("PayPal initialization error:", error);
+        resultMessage(`PayPal initialization error: ${error.message}. Please refresh the page.`, true);
+    }
+}
+
+// Wait for DOM and PayPal SDK to be ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a bit for PayPal SDK to load
+        setTimeout(initializePayPal, 100);
+    });
+} else {
+    // DOM already loaded, wait for PayPal SDK
+    if (typeof paypal !== 'undefined') {
+        initializePayPal();
+    } else {
+        // Wait for PayPal SDK to load
+        let attempts = 0;
+        const maxAttempts = 50; // 5 seconds max wait
+        
+        const checkPayPal = setInterval(function() {
+            attempts++;
+            if (typeof paypal !== 'undefined') {
+                clearInterval(checkPayPal);
+                initializePayPal();
+            } else if (attempts >= maxAttempts) {
+                clearInterval(checkPayPal);
+                resultMessage("PayPal SDK failed to load. Please check your internet connection and refresh the page.", true);
+            }
+        }, 100);
     }
 }
