@@ -205,11 +205,27 @@ window.handleCardPayment = function(event) {
 
 // Wait for PayPal SDK to load
 function initializePayPal() {
+    console.log("initializePayPal called, typeof paypal:", typeof paypal);
+    console.log("window.paypalSDKLoaded:", window.paypalSDKLoaded);
+    
     if (typeof paypal === 'undefined') {
-        console.error("PayPal SDK not loaded");
-        resultMessage("PayPal SDK failed to load. Please refresh the page.", true);
+        console.error("PayPal SDK not loaded - paypal object is undefined");
+        console.error("This could mean:");
+        console.error("1. The SDK script failed to load (check Network tab)");
+        console.error("2. The Client ID is invalid");
+        console.error("3. There's a CORS or network issue");
+        resultMessage("PayPal SDK failed to load. Please check your internet connection and refresh the page. If the problem persists, the Client ID may be invalid.", true);
         return;
     }
+    
+    if (!paypal.Buttons || !paypal.CardFields) {
+        console.error("PayPal SDK loaded but missing required components");
+        console.error("Available paypal properties:", Object.keys(paypal));
+        resultMessage("PayPal SDK loaded but missing required components. Please refresh the page.", true);
+        return;
+    }
+    
+    console.log("PayPal SDK loaded successfully, initializing...");
     
     try {
         // Render PayPal Buttons
@@ -382,12 +398,17 @@ if (document.readyState === 'loading') {
         
         const checkPayPal = setInterval(function() {
             attempts++;
-            if (typeof paypal !== 'undefined') {
+            console.log(`Waiting for PayPal SDK... attempt ${attempts}/${maxAttempts}`);
+            
+            if (typeof paypal !== 'undefined' && paypal.Buttons && paypal.CardFields) {
                 clearInterval(checkPayPal);
+                console.log("PayPal SDK detected, initializing...");
                 initializePayPal();
             } else if (attempts >= maxAttempts) {
                 clearInterval(checkPayPal);
-                resultMessage("PayPal SDK failed to load. Please check your internet connection and refresh the page.", true);
+                console.error("PayPal SDK failed to load after", maxAttempts, "attempts");
+                console.error("Check the Network tab to see if the SDK script loaded");
+                resultMessage("PayPal SDK failed to load after 5 seconds. Please check your internet connection, verify the Client ID is correct, and refresh the page.", true);
             }
         }, 100);
     }

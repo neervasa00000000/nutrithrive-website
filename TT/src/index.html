@@ -291,6 +291,8 @@
     <script
         src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons,card-fields&intent=capture"
         data-sdk-integration-source="developer-studio"
+        onload="console.log('PayPal SDK loaded successfully'); window.paypalSDKLoaded = true;"
+        onerror="console.error('PayPal SDK failed to load from CDN'); window.paypalSDKLoaded = false; document.getElementById('result-message').innerHTML='PayPal SDK failed to load. Please check your internet connection and refresh the page.'; document.getElementById('result-message').className='error-message';"
     ></script>
     
     <script src="app.js"></script>
