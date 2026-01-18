@@ -188,36 +188,56 @@ function initializePayPal() {
     if (isEligible) {
         console.log("Rendering card fields...");
         
-        // Render Card Name Field
-        const nameField = cardField.NameField({
-            style: { 
-                input: { color: "#1a2e22" }, 
-                ".invalid": { color: "#c62828" } 
-            },
-        });
-        nameField.render("#card-name-field-container");
-        console.log("✅ Card name field rendered");
+        try {
+            // Render Card Name Field
+            const nameField = cardField.NameField({
+                style: { 
+                    input: { color: "#1a2e22" }, 
+                    ".invalid": { color: "#c62828" } 
+                },
+            });
+            nameField.render("#card-name-field-container");
+            console.log("✅ Card name field rendered");
 
-        // Render Card Number Field
-        const numberField = cardField.NumberField({
-            style: { input: { color: "#1a2e22" } },
-        });
-        numberField.render("#card-number-field-container");
-        console.log("✅ Card number field rendered");
+            // Render Card Number Field
+            const numberField = cardField.NumberField({
+                style: { input: { color: "#1a2e22" } },
+            });
+            numberField.render("#card-number-field-container");
+            console.log("✅ Card number field rendered");
 
-        // Render CVV Field
-        const cvvField = cardField.CVVField({
-            style: { input: { color: "#1a2e22" } },
-        });
-        cvvField.render("#card-cvv-field-container");
-        console.log("✅ Card CVV field rendered");
+            // Render CVV Field
+            const cvvField = cardField.CVVField({
+                style: { input: { color: "#1a2e22" } },
+            });
+            cvvField.render("#card-cvv-field-container");
+            console.log("✅ Card CVV field rendered");
 
-        // Render Expiry Field
-        const expiryField = cardField.ExpiryField({
-            style: { input: { color: "#1a2e22" } },
-        });
-        expiryField.render("#card-expiry-field-container");
-        console.log("✅ Card expiry field rendered");
+            // Render Expiry Field
+            const expiryField = cardField.ExpiryField({
+                style: { input: { color: "#1a2e22" } },
+            });
+            expiryField.render("#card-expiry-field-container");
+            console.log("✅ Card expiry field rendered");
+            
+            // Check if fields are actually visible after a short delay
+            setTimeout(() => {
+                const nameContainer = document.querySelector("#card-name-field-container");
+                const numberContainer = document.querySelector("#card-number-field-container");
+                if (nameContainer && nameContainer.children.length === 0) {
+                    console.warn("⚠️ Card name field container is empty - fields may not have rendered");
+                }
+                if (numberContainer && numberContainer.children.length === 0) {
+                    console.warn("⚠️ Card number field container is empty - fields may not have rendered");
+                }
+                if (nameContainer && nameContainer.children.length > 0) {
+                    console.log("✅ Card fields are visible in DOM");
+                }
+            }, 1000);
+        } catch (error) {
+            console.error("Error rendering card fields:", error);
+            resultMessage(`Error setting up card fields: ${error.message}`);
+        }
 
         // Add click listener to submit button
         const submitButton = document.getElementById("card-field-submit-button");
@@ -250,19 +270,21 @@ function initializePayPal() {
                     return;
                 }
                 
-                // Validate card fields are filled
-                const cardFields = document.querySelectorAll('#card-form input[type="text"]');
-                let cardFieldsFilled = true;
-                cardFields.forEach(field => {
-                    if (field.id.includes('card-') && !field.id.includes('billing-address') && !field.value.trim()) {
-                        cardFieldsFilled = false;
-                    }
-                });
+                // Check if card fields are actually rendered
+                const nameContainer = document.querySelector("#card-name-field-container");
+                const numberContainer = document.querySelector("#card-number-field-container");
                 
-                if (!cardFieldsFilled) {
-                    resultMessage("Please fill in all card details (name, number, expiry, CVV)");
+                if (!nameContainer || nameContainer.children.length === 0) {
+                    resultMessage("Card fields are not available. Your account may need approval for Expanded Checkout. Please use the PayPal button above.");
+                    newButton.disabled = false;
+                    newButton.textContent = "Pay now with Card";
                     return;
                 }
+                
+                console.log("Card field containers found:", {
+                    nameContainer: nameContainer?.children.length || 0,
+                    numberContainer: numberContainer?.children.length || 0
+                });
                 
                 // Disable button during processing
                 newButton.disabled = true;
