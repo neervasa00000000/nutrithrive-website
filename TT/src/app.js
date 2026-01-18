@@ -243,7 +243,16 @@ function initializePayPal() {
             })
             .render("#paypal-button-container");
 
-        // Render Card Fields
+        // Render Card Fields - check if available
+        if (!window.paypal.CardFields) {
+            console.warn("CardFields not available - your account may need approval for Expanded Checkout");
+            const cardForm = document.getElementById("card-form");
+            if (cardForm) {
+                cardForm.innerHTML = '<p style="color: #c62828; padding: 1rem;">Card payment is not available. Your PayPal account needs to be approved for "Expanded Credit and Debit Card Payments". Please use the PayPal button above.</p>';
+            }
+            return; // Exit early if CardFields not available
+        }
+        
         const cardField = window.paypal.CardFields({
             createOrder: createOrderCallback,
             onApprove: onApproveCallback,
