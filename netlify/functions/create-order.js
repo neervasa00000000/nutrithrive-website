@@ -1,55 +1,144 @@
 // Netlify Serverless Function - Create PayPal Order
-// This requires PayPal Server SDK - for now, we'll use a simpler approach
+// Uses PayPal Server SDK for secure server-side order creation
+
+const { Client, Environment, LogLevel, OrdersController } = require('@paypal/paypal-server-sdk');
 
 exports.handler = async (event, context) => {
+    // Handle CORS preflight
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            },
+            body: '',
+        };
+    }
+    
     // Only allow POST
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({ error: 'Method not allowed' })
         };
     }
     
     try {
+        // Get credentials from environment variables
+        const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || 'AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV';
+        const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || 'EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY';
+        const PAYPAL_ENVIRONMENT = process.env.PAYPAL_ENVIRONMENT || 'live'; // 'live' or 'sandbox'
+        
+        // Initialize PayPal client
+        const client = new Client({
+            clientCredentialsAuthCredentials: {
+                oAuthClientId: PAYPAL_CLIENT_ID,
+                oAuthClientSecret: PAYPAL_CLIENT_SECRET,
+            },
+            timeout: 0,
+            environment: PAYPAL_ENVIRONMENT === 'live' ? Environment.Live : Environment.Sandbox,
+        });
+        
+        const ordersController = new OrdersController(client);
+        
+        // Parse request body
         const { cart, totals, shipping } = JSON.parse(event.body);
         
-        // Calculate order total
-        const subtotal = totals.subtotal || cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const shippingCost = totals.shipping || (subtotal >= 80 ? 0 : 10);
+        // Calculate order amounts
+        const subtotal = totals?.subtotal || cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shippingCost = totals?.shipping || (subtotal >= 80 ? 0 : 10);
         const total = subtotal + shippingCost;
         
-        // For now, return a client-side order structure
-        // In production, you would call PayPal API here using your secret key
-        // For security, the secret key should be in environment variables
+        // Create order items
+        const items = cart.map(item => ({
+            name: item.name.substring(0, 127),
+            description: item.name.substring(0, 127),
+            quantity: item.quantity.toString(),
+            unit_amount: {
+                currency_code: 'AUD',
+                value: item.price.toFixed(2)
+            }
+        }));
         
-        // Note: This is a simplified version. For production, you need:
-        // 1. Install @paypal/paypal-server-sdk
-        // 2. Use your PayPal Secret Key from environment variables
-        // 3. Call PayPal Orders API to create order server-side
-        
-        return {
-            statusCode: 200,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
+        // Create order payload
+        const payload = {
+            body: {
+                intent: 'CAPTURE',
+                purchase_units: [{
+                    amount: {
+                        currency_code: 'AUD',
+                        value: total.toFixed(2),
+                        breakdown: {
+                            item_total: {
+                                currency_code: 'AUD',
+                                value: subtotal.toFixed(2)
+                            },
+                            shipping: {
+                                currency_code: 'AUD',
+                                value: shippingCost.toFixed(2)
+                            }
+                        }
+                    },
+                    items: items,
+                    shipping: shipping ? {
+                        name: {
+                            full_name: (shipping.firstName || '') + ' ' + (shipping.lastName || '')
+                        },
+                        address: {
+                            address_line_1: shipping.address || '',
+                            address_line_2: shipping.address2 || '',
+                            admin_area_2: shipping.city || '',
+                            admin_area_1: shipping.state || '',
+                            postal_code: shipping.postcode || '',
+                            country_code: 'AU'
+                        }
+                    } : undefined
+                }]
             },
-            body: JSON.stringify({
-                message: 'Use client-side order creation. Backend API requires PayPal Server SDK setup.',
-                // Return cart data for client-side processing
-                cart: cart,
-                totals: { subtotal, shipping: shippingCost, total }
-            })
+            prefer: 'return=minimal',
         };
+        
+        // Create order via PayPal API
+        const { body, ...httpResponse } = await ordersController.createOrder(payload);
+        const orderData = JSON.parse(body);
+        
+        if (orderData.id) {
+            return {
+                statusCode: httpResponse.statusCode || 201,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Content-Type',
+                },
+                body: JSON.stringify(orderData)
+            };
+        } else {
+            const errorDetail = orderData?.details?.[0];
+            const errorMessage = errorDetail
+                ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
+                : JSON.stringify(orderData);
+            
+            throw new Error(errorMessage);
+        }
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Failed to create order:', error);
         return {
             statusCode: 500,
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             },
-            body: JSON.stringify({ error: 'Failed to create order', message: error.message })
+            body: JSON.stringify({ 
+                error: 'Failed to create order', 
+                message: error.message,
+                details: error.stack
+            })
         };
     }
 };

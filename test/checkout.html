@@ -445,8 +445,9 @@
         const API_BASE = window.location.origin; // Will use /api/orders for Netlify functions
         
         // Create Order Callback (for both PayPal and Card Fields)
-        function createOrderCallback(data, actions) {
-            console.log('Creating PayPal order...');
+        // Uses backend API for secure server-side order creation
+        async function createOrderCallback(data, actions) {
+            console.log('Creating PayPal order via backend API...');
             
             const totals = renderOrderSummary();
             
@@ -474,99 +475,115 @@
                 throw error;
             }
             
-            // Create order items
-            const items = cart.map(item => ({
-                name: item.name.substring(0, 127), // PayPal 127 char limit
-                description: item.name.substring(0, 127),
-                quantity: item.quantity.toString(),
-                unit_amount: {
-                    currency_code: 'AUD',
-                    value: item.price.toFixed(2)
-                }
-            }));
-            
-            const orderRequest = {
-                purchase_units: [{
-                    amount: {
-                        value: totals.total.toFixed(2),
-                        currency_code: 'AUD',
-                        breakdown: {
-                            item_total: {
-                                currency_code: 'AUD',
-                                value: totals.subtotal.toFixed(2)
-                            },
-                            shipping: {
-                                currency_code: 'AUD',
-                                value: totals.shipping.toFixed(2)
-                            }
-                        }
+            try {
+                // Call backend API to create order
+                const response = await fetch(`${API_BASE}/.netlify/functions/create-order`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                    items: items,
-                    shipping: {
-                        name: {
-                            full_name: orderData.firstName + ' ' + orderData.lastName
-                        },
-                        address: {
-                            address_line_1: orderData.address,
-                            address_line_2: orderData.address2 || '',
-                            admin_area_2: orderData.city,
-                            admin_area_1: orderData.state,
-                            postal_code: orderData.postcode,
-                            country_code: 'AU'
-                        }
-                    }
-                }]
-            };
-            
-            console.log('Order request:', JSON.stringify(orderRequest, null, 2));
-            
-            // Create order using PayPal SDK (client-side)
-            // Note: For production, use backend API for better security
-            return actions.order.create(orderRequest).catch(function(err) {
-                console.error('Order creation error:', err);
-                console.error('Order creation error details:', JSON.stringify(err, null, 2));
+                    body: JSON.stringify({
+                        cart: cart,
+                        totals: totals,
+                        shipping: orderData
+                    }),
+                });
+                
+                const orderData_response = await response.json();
+                
+                if (!response.ok) {
+                    const errorDetail = orderData_response?.details?.[0];
+                    const errorMessage = errorDetail
+                        ? `${errorDetail.issue} ${errorDetail.description} (${orderData_response.debug_id})`
+                        : orderData_response.message || 'Failed to create order';
+                    throw new Error(errorMessage);
+                }
+                
+                if (orderData_response.id) {
+                    console.log('Order created successfully:', orderData_response.id);
+                    return orderData_response.id;
+                } else {
+                    const errorDetail = orderData_response?.details?.[0];
+                    const errorMessage = errorDetail
+                        ? `${errorDetail.issue} ${errorDetail.description} (${orderData_response.debug_id})`
+                        : JSON.stringify(orderData_response);
+                    throw new Error(errorMessage);
+                }
+            } catch (error) {
+                console.error('Order creation error:', error);
+                console.error('Order creation error details:', JSON.stringify(error, null, 2));
                 
                 let errorMsg = 'Failed to create order. ';
-                if (err && err.message) {
-                    errorMsg += err.message;
-                } else if (err && err.details && err.details[0]) {
-                    errorMsg += err.details[0].description || 'Unknown error';
+                if (error && error.message) {
+                    errorMsg += error.message;
                 } else {
                     errorMsg += 'Please check console for details.';
                 }
                 
                 handleError(new Error(errorMsg));
-                throw err;
-            });
+                throw error;
+            }
         }
         
         // On Approve Callback (for both PayPal and Card Fields)
-        function onApproveCallback(data, actions) {
+        // Uses backend API for secure server-side order capture
+        async function onApproveCallback(data, actions) {
             console.log('Payment approved, order ID:', data.orderID);
             
-            // Client-side capture (current implementation)
-            // For production, use backend API for better security
-            if (actions && actions.order) {
-                return actions.order.capture().then(function(details) {
-                    console.log('Payment captured successfully:', details);
-                    handleSuccess(details);
-                }).catch(function(err) {
-                    console.error('Capture error:', err);
-                    console.error('Capture error details:', JSON.stringify(err, null, 2));
-                    
-                    let errorMsg = 'Failed to capture payment. ';
-                    if (err && err.message) {
-                        errorMsg += err.message;
-                    } else if (err && err.details && err.details[0]) {
-                        errorMsg += err.details[0].description || 'Unknown error';
-                    } else {
-                        errorMsg += 'Please check console for details.';
-                    }
-                    
-                    handleError(new Error(errorMsg));
+            try {
+                // Call backend API to capture order
+                const response = await fetch(`${API_BASE}/.netlify/functions/capture-order`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID
+                    }),
                 });
-            } else {
-                handleError(new Error('No capture actions available'));
+                
+                const orderData_response = await response.json();
+                
+                if (!response.ok) {
+                    const errorDetail = orderData_response?.details?.[0];
+                    const errorMessage = errorDetail
+                        ? `${errorDetail.description} (${orderData_response.debug_id})`
+                        : orderData_response.message || 'Failed to capture order';
+                    throw new Error(errorMessage);
+                }
+                
+                // Check for transaction status
+                const transaction = orderData_response?.purchase_units?.[0]?.payments?.captures?.[0] ||
+                    orderData_response?.purchase_units?.[0]?.payments?.authorizations?.[0];
+                const errorDetail = orderData_response?.details?.[0];
+                
+                if (errorDetail || !transaction || transaction.status === 'DECLINED') {
+                    let errorMessage;
+                    if (transaction) {
+                        errorMessage = `Transaction ${transaction.status}: ${transaction.id}`;
+                    } else if (errorDetail) {
+                        errorMessage = `${errorDetail.description} (${orderData_response.debug_id})`;
+                    } else {
+                        errorMessage = JSON.stringify(orderData_response);
+                    }
+                    throw new Error(errorMessage);
+                } else {
+                    // Success - handle the successful transaction
+                    console.log('Payment captured successfully:', orderData_response);
+                    handleSuccess(orderData_response);
+                }
+            } catch (error) {
+                console.error('Capture error:', error);
+                console.error('Capture error details:', JSON.stringify(error, null, 2));
+                
+                let errorMsg = 'Failed to capture payment. ';
+                if (error && error.message) {
+                    errorMsg += error.message;
+                } else {
+                    errorMsg += 'Please check console for details.';
+                }
+                
+                handleError(new Error(errorMsg));
             }
         }
         

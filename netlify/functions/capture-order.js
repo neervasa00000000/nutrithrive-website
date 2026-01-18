@@ -1,51 +1,103 @@
 // Netlify Serverless Function - Capture PayPal Order
-// This requires PayPal Server SDK - for now, we'll use a simpler approach
+// Uses PayPal Server SDK for secure server-side order capture
+
+const { Client, Environment, LogLevel, OrdersController } = require('@paypal/paypal-server-sdk');
 
 exports.handler = async (event, context) => {
+    // Handle CORS preflight
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            },
+            body: '',
+        };
+    }
+    
     // Only allow POST
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({ error: 'Method not allowed' })
         };
     }
     
     try {
-        const { orderID } = JSON.parse(event.body);
+        // Get credentials from environment variables
+        const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || 'AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV';
+        const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || 'EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY';
+        const PAYPAL_ENVIRONMENT = process.env.PAYPAL_ENVIRONMENT || 'live'; // 'live' or 'sandbox'
         
-        // For now, return success message
-        // In production, you would call PayPal API here using your secret key
-        // to capture the order server-side
+        // Initialize PayPal client
+        const client = new Client({
+            clientCredentialsAuthCredentials: {
+                oAuthClientId: PAYPAL_CLIENT_ID,
+                oAuthClientSecret: PAYPAL_CLIENT_SECRET,
+            },
+            timeout: 0,
+            environment: PAYPAL_ENVIRONMENT === 'live' ? Environment.Live : Environment.Sandbox,
+        });
         
-        // Note: This is a simplified version. For production, you need:
-        // 1. Install @paypal/paypal-server-sdk
-        // 2. Use your PayPal Secret Key from environment variables
-        // 3. Call PayPal Orders API to capture order server-side
+        const ordersController = new OrdersController(client);
+        
+        // Parse request body - can get orderID from body or URL
+        let orderID;
+        if (event.body) {
+            const body = JSON.parse(event.body);
+            orderID = body.orderID || event.pathParameters?.orderID;
+        } else if (event.pathParameters) {
+            orderID = event.pathParameters.orderID;
+        }
+        
+        if (!orderID) {
+            return {
+                statusCode: 400,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
+                body: JSON.stringify({ error: 'Order ID is required' })
+            };
+        }
+        
+        // Capture order
+        const collect = {
+            id: orderID,
+            prefer: 'return=minimal',
+        };
+        
+        const { body, ...httpResponse } = await ordersController.captureOrder(collect);
+        const orderData = JSON.parse(body);
         
         return {
-            statusCode: 200,
+            statusCode: httpResponse.statusCode || 200,
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Headers': 'Content-Type',
             },
-            body: JSON.stringify({
-                message: 'Use client-side capture. Backend API requires PayPal Server SDK setup.',
-                orderID: orderID,
-                // Return mock success response
-                id: orderID,
-                status: 'COMPLETED'
-            })
+            body: JSON.stringify(orderData)
         };
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Failed to capture order:', error);
         return {
             statusCode: 500,
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             },
-            body: JSON.stringify({ error: 'Failed to capture order', message: error.message })
+            body: JSON.stringify({ 
+                error: 'Failed to capture order', 
+                message: error.message,
+                details: error.stack
+            })
         };
     }
 };

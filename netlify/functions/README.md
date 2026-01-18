@@ -2,40 +2,67 @@
 
 ## Setup Instructions
 
-### Option 1: Client-Side Only (Current - Works Now)
-The checkout page currently uses client-side PayPal order creation and capture. This works immediately but processes payments on the client side.
+### 1. Install Dependencies
 
-### Option 2: Server-Side with PayPal Server SDK (Recommended for Production)
+The PayPal Server SDK needs to be installed. Netlify will automatically install dependencies from `package.json` when deploying.
 
-1. **Install PayPal Server SDK:**
+If testing locally, run:
 ```bash
-npm install @paypal/paypal-server-sdk
+cd netlify/functions
+npm install
 ```
 
-2. **Set Environment Variables in Netlify:**
-   - Go to Netlify Dashboard → Site Settings → Environment Variables
-   - Add:
-     - `PAYPAL_CLIENT_ID` = Your Live Client ID
-     - `PAYPAL_CLIENT_SECRET` = Your Live Secret Key
-     - `PAYPAL_ENVIRONMENT` = `live` (or `sandbox` for testing)
+### 2. Set Environment Variables in Netlify
 
-3. **Update Functions:**
-   - The functions in this directory need to be updated to use the PayPal Server SDK
-   - See the Express.js example code you provided for reference
+Go to **Netlify Dashboard** → **Site Settings** → **Environment Variables** and add:
 
-4. **Deploy:**
-   - Netlify will automatically deploy these functions
-   - They'll be available at: `/.netlify/functions/create-order` and `/.netlify/functions/capture-order`
+- `PAYPAL_CLIENT_ID` = `AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV`
+- `PAYPAL_CLIENT_SECRET` = `EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY`
+- `PAYPAL_ENVIRONMENT` = `live` (or `sandbox` for testing)
 
-## Current Status
+⚠️ **Important:** The functions have fallback values, but it's better to use environment variables for security.
 
-- ✅ Client-side PayPal integration (works now)
-- ✅ Card Fields integration (works now)
-- ⚠️ Backend API functions created but need PayPal Server SDK setup
-- ⚠️ Environment variables need to be configured in Netlify
+### 3. Deploy
 
-## Security Notes
+Netlify will automatically:
+1. Install dependencies from `package.json`
+2. Deploy the functions
+3. Make them available at:
+   - `/.netlify/functions/create-order`
+   - `/.netlify/functions/capture-order`
 
-- Never expose Secret Key in frontend code
-- Always use environment variables for sensitive data
-- Server-side processing is more secure for production
+## How It Works
+
+### Frontend (checkout.html)
+- Calls `/.netlify/functions/create-order` to create PayPal order
+- Calls `/.netlify/functions/capture-order` to capture payment
+- All sensitive operations happen server-side
+
+### Backend (Netlify Functions)
+- Uses PayPal Server SDK to securely create and capture orders
+- Credentials stored in environment variables (not exposed to frontend)
+- Returns order IDs and transaction details
+
+## Testing
+
+1. Visit: `https://nutrithrive.com.au/test/checkout.html`
+2. Fill in the form
+3. Click PayPal button or use card fields
+4. Check browser console (F12) for detailed logs
+
+## Troubleshooting
+
+### Function not found (404)
+- Check Netlify deployment logs
+- Ensure `package.json` exists in `netlify/functions/`
+- Verify functions are deployed in Netlify dashboard
+
+### Authentication errors
+- Verify environment variables are set correctly
+- Check Client ID and Secret are for the correct environment (live/sandbox)
+- Ensure credentials are active in PayPal dashboard
+
+### Order creation fails
+- Check Netlify function logs
+- Verify cart data is being sent correctly
+- Check PayPal account status and permissions
