@@ -263,8 +263,36 @@
         </div>
     </div>
 
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture"></script>
+    <!-- PayPal SDK - Load with error handling -->
+    <script>
+        // Load PayPal SDK with error handling
+        function loadPayPalSDK() {
+            const script = document.createElement('script');
+            script.src = 'https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture';
+            script.async = true;
+            script.onload = function() {
+                console.log('PayPal SDK loaded successfully');
+                initPayPal();
+            };
+            script.onerror = function() {
+                console.error('PayPal SDK failed to load');
+                showPayPalError('PayPal SDK failed to load. Please check your internet connection and refresh the page.');
+            };
+            document.head.appendChild(script);
+        }
+        
+        function showPayPalError(message) {
+            const errorDiv = document.getElementById('paypal-error');
+            const container = document.getElementById('paypal-button-container');
+            if (errorDiv) {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = message;
+            }
+            if (container) {
+                container.innerHTML = '<div style="padding: 1rem; text-align: center; color: #d32f2f; background: #ffebee; border-radius: 8px;">PayPal payment unavailable. Please contact us at nutrithrive0@gmail.com or call +61 438201419</div>';
+            }
+        }
+    </script>
     
     <script>
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -312,6 +340,11 @@
         
         // PayPal Integration
         function initPayPal() {
+            if (typeof paypal === 'undefined') {
+                showPayPalError('PayPal SDK not loaded. Please refresh the page.');
+                return;
+            }
+            
             const container = document.getElementById('paypal-button-container');
             const errorDiv = document.getElementById('paypal-error');
             
@@ -448,27 +481,15 @@
             }
         }
         
-        // Wait for PayPal SDK to load
-        if (typeof paypal !== 'undefined') {
-            initPayPal();
-        } else {
-            // Check if SDK loaded after a delay
-            let attempts = 0;
-            const checkPayPal = setInterval(function() {
-                attempts++;
-                if (typeof paypal !== 'undefined') {
-                    clearInterval(checkPayPal);
-                    initPayPal();
-                } else if (attempts > 20) {
-                    clearInterval(checkPayPal);
-                    document.getElementById('paypal-error').style.display = 'block';
-                    document.getElementById('paypal-error').textContent = 'PayPal SDK failed to load. Please refresh the page.';
-                }
-            }, 500);
-        }
-        
-        // Initialize
+        // Initialize order summary
         renderOrderSummary();
+        
+        // Load PayPal SDK when page is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadPayPalSDK);
+        } else {
+            loadPayPalSDK();
+        }
     </script>
 </body>
 </html>
