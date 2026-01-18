@@ -627,8 +627,19 @@
         
         // Initialize PayPal buttons
         function initPayPalButtons() {
-            if (typeof paypal === 'undefined' || !paypal.Buttons) {
-                console.error('PayPal SDK not available');
+            console.log('=== Initializing PayPal Buttons ===');
+            console.log('PayPal object exists:', typeof paypal !== 'undefined');
+            console.log('PayPal.Buttons exists:', typeof paypal !== 'undefined' && typeof paypal.Buttons === 'function');
+            
+            if (typeof paypal === 'undefined') {
+                console.error('PayPal SDK not available - paypal is undefined');
+                showPayPalError();
+                return;
+            }
+            
+            if (!paypal.Buttons) {
+                console.error('PayPal SDK not available - Buttons function missing');
+                console.log('Available PayPal properties:', Object.keys(paypal));
                 showPayPalError();
                 return;
             }
@@ -642,6 +653,7 @@
             // Clear any error messages
             container.innerHTML = '';
             
+            console.log('Rendering PayPal buttons...');
             try {
                 // PayPal Smart Buttons - Embedded Checkout (No Redirect)
                 paypal.Buttons({
@@ -828,10 +840,12 @@
                 console.log('Payment cancelled:', data);
             }
                 }).render('#paypal-button-container').then(function() {
-                    console.log('PayPal buttons rendered successfully');
+                    console.log('✅ PayPal buttons rendered successfully');
                 }).catch(function(err) {
-                    console.error('PayPal button render error:', err);
+                    console.error('❌ PayPal button render error:', err);
+                    console.error('Render error details:', JSON.stringify(err, null, 2));
                     showPayPalError();
+                    alert('Failed to render PayPal buttons. Please check console (F12) for details.\n\nError: ' + (err.message || JSON.stringify(err)));
                 });
             } catch (err) {
                 console.error('PayPal initialization error:', err);
