@@ -182,7 +182,12 @@ function initializePayPal() {
         },
     });
 
-    if (cardField.isEligible()) {
+    const isEligible = cardField.isEligible();
+    console.log("Card fields eligible:", isEligible);
+    
+    if (isEligible) {
+        console.log("Rendering card fields...");
+        
         // Render Card Name Field
         const nameField = cardField.NameField({
             style: { 
@@ -191,24 +196,28 @@ function initializePayPal() {
             },
         });
         nameField.render("#card-name-field-container");
+        console.log("✅ Card name field rendered");
 
         // Render Card Number Field
         const numberField = cardField.NumberField({
             style: { input: { color: "#1a2e22" } },
         });
         numberField.render("#card-number-field-container");
+        console.log("✅ Card number field rendered");
 
         // Render CVV Field
         const cvvField = cardField.CVVField({
             style: { input: { color: "#1a2e22" } },
         });
         cvvField.render("#card-cvv-field-container");
+        console.log("✅ Card CVV field rendered");
 
         // Render Expiry Field
         const expiryField = cardField.ExpiryField({
             style: { input: { color: "#1a2e22" } },
         });
         expiryField.render("#card-expiry-field-container");
+        console.log("✅ Card expiry field rendered");
 
         // Add click listener to submit button
         const submitButton = document.getElementById("card-field-submit-button");
@@ -221,7 +230,7 @@ function initializePayPal() {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                console.log("Card submit button clicked");
+                console.log("=== Card submit button clicked ===");
                 
                 // Validate required fields
                 const addressLine1 = document.getElementById("card-billing-address-line-1")?.value?.trim();
@@ -229,8 +238,29 @@ function initializePayPal() {
                 const countryCode = document.getElementById("card-billing-address-country-code")?.value?.trim();
                 const postalCode = document.getElementById("card-billing-address-postal-code")?.value?.trim();
                 
+                console.log("Billing address fields:", { addressLine1, adminArea1, countryCode, postalCode });
+                
                 if (!addressLine1 || !adminArea1 || !countryCode || !postalCode) {
-                    resultMessage("Please fill in all required billing address fields.");
+                    const missing = [];
+                    if (!addressLine1) missing.push("Address Line 1");
+                    if (!adminArea1) missing.push("City/State");
+                    if (!countryCode) missing.push("Country Code");
+                    if (!postalCode) missing.push("Postal Code");
+                    resultMessage(`Please fill in all required fields: ${missing.join(", ")}`);
+                    return;
+                }
+                
+                // Validate card fields are filled
+                const cardFields = document.querySelectorAll('#card-form input[type="text"]');
+                let cardFieldsFilled = true;
+                cardFields.forEach(field => {
+                    if (field.id.includes('card-') && !field.id.includes('billing-address') && !field.value.trim()) {
+                        cardFieldsFilled = false;
+                    }
+                });
+                
+                if (!cardFieldsFilled) {
+                    resultMessage("Please fill in all card details (name, number, expiry, CVV)");
                     return;
                 }
                 
@@ -238,36 +268,41 @@ function initializePayPal() {
                 newButton.disabled = true;
                 newButton.textContent = "Processing...";
                 
-                console.log("Submitting card payment with billing address...");
+                console.log("Calling cardField.submit()...");
                 resultMessage("Processing payment...");
+                
+                const billingAddress = {
+                    addressLine1: addressLine1,
+                    addressLine2: document.getElementById("card-billing-address-line-2")?.value?.trim() || "",
+                    adminArea1: adminArea1,
+                    adminArea2: document.getElementById("card-billing-address-admin-area-line-2")?.value?.trim() || "",
+                    countryCode: countryCode,
+                    postalCode: postalCode,
+                };
+                
+                console.log("Billing address object:", billingAddress);
                 
                 cardField
                     .submit({
-                        // From your billing address fields
-                        billingAddress: {
-                            addressLine1: addressLine1,
-                            addressLine2: document.getElementById("card-billing-address-line-2")?.value?.trim() || "",
-                            adminArea1: adminArea1,
-                            adminArea2: document.getElementById("card-billing-address-admin-area-line-2")?.value?.trim() || "",
-                            countryCode: countryCode,
-                            postalCode: postalCode,
-                        },
+                        billingAddress: billingAddress,
                     })
-                    .then(() => {
-                        console.log("Card field submit successful");
+                    .then((result) => {
+                        console.log("Card field submit successful, result:", result);
+                        resultMessage("Payment processing...");
                     })
                     .catch((error) => {
                         console.error("Card field submit error:", error);
-                        resultMessage(`Card payment error: ${error.message || error}`);
+                        console.error("Error details:", JSON.stringify(error, null, 2));
+                        resultMessage(`Card payment error: ${error.message || JSON.stringify(error)}`);
                         // Re-enable button on error
                         newButton.disabled = false;
                         newButton.textContent = "Pay now with Card";
                     });
             });
             
-            console.log("Card submit button handler attached successfully");
+            console.log("✅ Card submit button handler attached successfully");
         } else {
-            console.error("Card submit button not found");
+            console.error("❌ Card submit button not found");
         }
     } else {
         // Card fields not eligible - hide the card form
