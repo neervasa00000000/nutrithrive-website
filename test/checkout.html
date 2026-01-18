@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | NutriThrive</title>
+    <link rel="stylesheet" href="../../shared/css/style.css">
+    <style>
+        body {
+            background: #f8f5ec;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .checkout-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .checkout-header h1 {
+            color: #2d5a3d;
+            font-size: 2.5rem;
+        }
+        .checkout-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        .checkout-form {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        .form-section h2 {
+            color: #2d5a3d;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a2e22;
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2d5a3d;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .order-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+        .order-summary h2 {
+            color: #2d5a3d;
+            margin-top: 0;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            padding: 0.5rem 0;
+        }
+        .summary-total {
+            border-top: 2px solid #2d5a3d;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d5a3d;
+        }
+        #paypal-button-container {
+            margin-top: 1.5rem;
+        }
+        .required {
+            color: #d32f2f;
+        }
+        @media (max-width: 768px) {
+            .checkout-content {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+        </div>
+        
+        <div class="checkout-content">
+            <div class="checkout-form">
+                <form id="checkout-form">
+                    <!-- Billing Information -->
+                    <div class="form-section">
+                        <h2>Billing Information</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name <span class="required">*</span></label>
+                                <input type="text" id="first-name" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name <span class="required">*</span></label>
+                                <input type="text" id="last-name" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Shipping Address -->
+                    <div class="form-section">
+                        <h2>Shipping Address</h2>
+                        <div class="form-group">
+                            <label for="address">Street Address <span class="required">*</span></label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address2">Apartment, suite, etc. (optional)</label>
+                            <input type="text" id="address2" name="address2">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City <span class="required">*</span></label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State <span class="required">*</span></label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select State</option>
+                                    <option value="VIC">Victoria</option>
+                                    <option value="NSW">New South Wales</option>
+                                    <option value="QLD">Queensland</option>
+                                    <option value="WA">Western Australia</option>
+                                    <option value="SA">South Australia</option>
+                                    <option value="TAS">Tasmania</option>
+                                    <option value="ACT">Australian Capital Territory</option>
+                                    <option value="NT">Northern Territory</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="postcode">Postcode <span class="required">*</span></label>
+                            <input type="text" id="postcode" name="postcode" required pattern="[0-9]{4}">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="same-as-billing" onchange="copyBillingToShipping()">
+                                Use billing address for shipping
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Notes -->
+                    <div class="form-section">
+                        <h2>Order Notes (Optional)</h2>
+                        <div class="form-group">
+                            <label for="notes">Special instructions for delivery</label>
+                            <textarea id="notes" name="notes" rows="4" placeholder="Any special delivery instructions..."></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="order-items">
+                    <!-- Order items will be loaded here -->
+                </div>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00 AUD</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span id="shipping">$0.00 AUD</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total:</span>
+                    <span id="total">$0.00 AUD</span>
+                </div>
+                
+                <div id="paypal-button-container"></div>
+                
+                <p style="font-size: 0.85rem; color: #666; margin-top: 1rem; text-align: center;">
+                    🔒 Secure checkout powered by PayPal
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture"></script>
+    
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let orderData = {};
+        
+        function renderOrderSummary() {
+            if (cart.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+            
+            let itemsHTML = '';
+            cart.forEach(item => {
+                const itemTotal = (item.price * item.quantity).toFixed(2);
+                itemsHTML += `
+                    <div class="order-item">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>Qty: ${item.quantity} × $${item.price.toFixed(2)}</small>
+                        </div>
+                        <div>$${itemTotal} AUD</div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('order-items').innerHTML = itemsHTML;
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 80 ? 0 : 10;
+            const total = subtotal + shipping;
+            
+            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2) + ' AUD';
+            document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2) + ' AUD';
+            document.getElementById('total').textContent = '$' + total.toFixed(2) + ' AUD';
+            
+            return { subtotal, shipping, total };
+        }
+        
+        function copyBillingToShipping() {
+            if (document.getElementById('same-as-billing').checked) {
+                // This would copy billing address to shipping if we had separate fields
+                // For now, we'll just note it
+            }
+        }
+        
+        // PayPal Integration
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'gold',
+                shape: 'rect',
+                label: 'paypal'
+            },
+            createOrder: function(data, actions) {
+                const totals = renderOrderSummary();
+                
+                // Get form data
+                orderData = {
+                    firstName: document.getElementById('first-name').value,
+                    lastName: document.getElementById('last-name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    address2: document.getElementById('address2').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    postcode: document.getElementById('postcode').value,
+                    notes: document.getElementById('notes').value
+                };
+                
+                // Validate form
+                if (!orderData.firstName || !orderData.lastName || !orderData.email || 
+                    !orderData.phone || !orderData.address || !orderData.city || 
+                    !orderData.state || !orderData.postcode) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                // Create PayPal order
+                const items = cart.map(item => ({
+                    name: item.name,
+                    description: item.name,
+                    quantity: item.quantity.toString(),
+                    unit_amount: {
+                        currency_code: 'AUD',
+                        value: item.price.toFixed(2)
+                    }
+                }));
+                
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: totals.total.toFixed(2),
+                            currency_code: 'AUD',
+                            breakdown: {
+                                item_total: {
+                                    currency_code: 'AUD',
+                                    value: totals.subtotal.toFixed(2)
+                                },
+                                shipping: {
+                                    currency_code: 'AUD',
+                                    value: totals.shipping.toFixed(2)
+                                }
+                            }
+                        },
+                        items: items,
+                        shipping: {
+                            name: {
+                                full_name: orderData.firstName + ' ' + orderData.lastName
+                            },
+                            address: {
+                                address_line_1: orderData.address,
+                                address_line_2: orderData.address2 || '',
+                                admin_area_2: orderData.city,
+                                admin_area_1: orderData.state,
+                                postal_code: orderData.postcode,
+                                country_code: 'AU'
+                            }
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Payment successful
+                    console.log('Payment successful:', details);
+                    console.log('Order data:', orderData);
+                    console.log('Cart:', cart);
+                    
+                    // Store order data (you would send this to your backend)
+                    const order = {
+                        orderId: details.id,
+                        payer: details.payer,
+                        items: cart,
+                        shipping: orderData,
+                        total: details.purchase_units[0].amount.value,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    // Save order locally (in production, send to backend)
+                    localStorage.setItem('lastOrder', JSON.stringify(order));
+                    
+                    // Clear cart
+                    localStorage.removeItem('cart');
+                    
+                    // Redirect to thank you page
+                    alert('Payment successful! Order ID: ' + details.id + '\n\nThank you for your purchase!');
+                    window.location.href = 'thank-you.html?orderId=' + details.id;
+                });
+            },
+            onError: function(err) {
+                console.error('PayPal error:', err);
+                alert('An error occurred with PayPal. Please try again.');
+            },
+            onCancel: function(data) {
+                console.log('Payment cancelled:', data);
+            }
+        }).render('#paypal-button-container');
+        
+        // Initialize
+        renderOrderSummary();
+    </script>
+</body>
+</html>
