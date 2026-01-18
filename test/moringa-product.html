@@ -395,6 +395,10 @@
                 <img src="../../shared/images/Logo%20/LOGO.webp" alt="NutriThrive Logo" width="29" height="29" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
+            <a href="cart.html" class="cart-icon" style="position: relative; text-decoration: none; color: #1a2e22; font-size: 1.5rem; margin-left: auto; margin-right: 1rem;">
+                🛒
+                <span id="cart-count" style="position: absolute; top: -8px; right: -8px; background: #2d5a3d; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">0</span>
+            </a>
             <nav class="nav-links">
                 <a href="/">Home</a>
                 <a href="/products/" class="active">Products</a>
@@ -436,10 +440,26 @@
                     <div class="product-content" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; position: relative !important; z-index: 2 !important;">
                         <p class="product-description" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 0 1.5rem 0 !important;">Discover the amazing benefits of our 100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, it's the perfect supplement to boost your energy and support a healthy immune system. Shipped fresh from Truganina, Melbourne to Sydney and across Australia. Our premium moringa powder contains complete amino acid profiles and natural plant-based nutrition for optimal health benefits.</p>
 
-                        <!-- PayPal Smart Buttons - Embedded Checkout (No Redirect) -->
-                        <div style="text-align: center; padding: 20px; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 3 !important;">
-                            <div id="paypal-button-container" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 20px auto; max-width: 500px;"></div>
-                            <p style="font-size: 0.75rem; color: #666; margin-top: 10px;">Secure checkout powered by PayPal</p>
+                        <!-- Product Price & Quantity -->
+                        <div style="margin: 1.5rem 0; padding: 1rem; background: #f8faf7; border-radius: 8px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$10.00 AUD</span>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <label style="font-weight: 600; color: #1a2e22;">Quantity:</label>
+                                    <input type="number" id="product-quantity" min="1" value="1" style="width: 60px; padding: 0.5rem; border: 2px solid #e0e0e0; border-radius: 6px; text-align: center; font-size: 1rem;">
+                                </div>
+                            </div>
+                            
+                            <!-- Add to Cart Button -->
+                            <button id="add-to-cart-btn" style="width: 100%; padding: 1rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: background 0.3s; margin-bottom: 1rem;">
+                                🛒 Add to Cart
+                            </button>
+                            
+                            <!-- Quick Buy with PayPal -->
+                            <div style="text-align: center; padding: 10px 0; border-top: 1px solid #e0e0e0;">
+                                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Or checkout directly with PayPal:</p>
+                                <div id="paypal-button-container" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 10px auto; max-width: 500px;"></div>
+                            </div>
                         </div>
                 
                 <!-- RISK REVERSAL -->
@@ -511,6 +531,61 @@
         </div>
     </footer>
 
+    <!-- Shopping Cart JavaScript -->
+    <script>
+        // Cart Management
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Update cart count
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCountEl = document.getElementById('cart-count');
+            if (cartCountEl) {
+                cartCountEl.textContent = count;
+                cartCountEl.style.display = count > 0 ? 'flex' : 'none';
+            }
+        }
+        
+        // Add to cart
+        function addToCart() {
+            const quantity = parseInt(document.getElementById('product-quantity').value) || 1;
+            const product = {
+                id: 'moringa-powder',
+                name: 'Moringa Powder',
+                price: 10.00,
+                quantity: quantity,
+                image: '../../shared/images/Home page /Moringa.png'
+            };
+            
+            // Check if product already in cart
+            const existingIndex = cart.findIndex(item => item.id === product.id);
+            if (existingIndex >= 0) {
+                cart[existingIndex].quantity += quantity;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            
+            // Show success message
+            const btn = document.getElementById('add-to-cart-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✓ Added to Cart!';
+            btn.style.background = '#4caf50';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '#2d5a3d';
+            }, 2000);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            document.getElementById('add-to-cart-btn').addEventListener('click', addToCart);
+        });
+    </script>
+
     <!-- PayPal SDK with Live API -->
     <script src="https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture"></script>
     
@@ -524,23 +599,26 @@
                 label: 'paypal'
             },
             createOrder: function(data, actions) {
-                // Create order on your server or use client-side
+                // Get quantity from input
+                const quantity = parseInt(document.getElementById('product-quantity').value) || 1;
+                const total = (10.00 * quantity).toFixed(2);
+                
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '10.00',
+                            value: total,
                             currency_code: 'AUD'
                         },
                         description: 'Moringa Powder - 100% Pure Moringa Oleifera',
-                        item: {
+                        items: [{
                             name: 'Moringa Powder',
                             description: '100% pure Moringa Oleifera leaf powder',
-                            quantity: '1',
+                            quantity: quantity.toString(),
                             unit_amount: {
                                 currency_code: 'AUD',
                                 value: '10.00'
                             }
-                        }
+                        }]
                     }]
                 });
             },
