@@ -509,6 +509,9 @@
             
             try {
                 // Call backend API to create order
+                console.log('Calling backend API:', `${API_BASE}/.netlify/functions/create-order`);
+                console.log('Request payload:', { cart, totals, shipping: orderData });
+                
                 const response = await fetch(`${API_BASE}/.netlify/functions/create-order`, {
                     method: 'POST',
                     headers: {
@@ -521,7 +524,16 @@
                     }),
                 });
                 
+                console.log('Response status:', response.status, response.statusText);
+                
                 const orderData_response = await response.json();
+                console.log('Response data:', orderData_response);
+                
+                if (!response.ok) {
+                    const errorMsg = orderData_response.message || orderData_response.error || 'Failed to create order';
+                    resultMessage(`Could not initiate PayPal Checkout...<br><br>${errorMsg}`, true);
+                    throw new Error(errorMsg);
+                }
                 
                 if (orderData_response.id) {
                     console.log('Order created successfully:', orderData_response.id);
@@ -537,7 +549,14 @@
                 }
             } catch (error) {
                 console.error('Order creation error:', error);
-                resultMessage(`Could not initiate PayPal Checkout...<br><br>${error.message || error}`, true);
+                console.error('Error stack:', error.stack);
+                
+                let errorMsg = error.message || 'Unknown error';
+                if (error.message && error.message.includes('Failed to fetch')) {
+                    errorMsg = 'Cannot connect to server. Please check your internet connection or try again later.';
+                }
+                
+                resultMessage(`Could not initiate PayPal Checkout...<br><br>${errorMsg}`, true);
                 throw error;
             }
         }

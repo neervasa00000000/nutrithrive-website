@@ -30,6 +30,29 @@ exports.handler = async (event, context) => {
     }
     
     try {
+        // Check if PayPal SDK is available
+        let Client, Environment, OrdersController;
+        try {
+            const paypalSDK = require('@paypal/paypal-server-sdk');
+            Client = paypalSDK.Client;
+            Environment = paypalSDK.Environment;
+            OrdersController = paypalSDK.OrdersController;
+        } catch (sdkError) {
+            console.error('PayPal Server SDK not installed:', sdkError);
+            return {
+                statusCode: 500,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
+                body: JSON.stringify({ 
+                    error: 'PayPal Server SDK not installed',
+                    message: 'Please install @paypal/paypal-server-sdk in netlify/functions/',
+                    details: sdkError.message
+                })
+            };
+        }
+        
         // Get credentials from environment variables
         const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || 'AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV';
         const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || 'EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY';
