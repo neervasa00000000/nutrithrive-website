@@ -446,7 +446,10 @@
         
         // Create Order Callback (for both PayPal and Card Fields)
         // Uses backend API for secure server-side order creation
+        // Follows PayPal's official documentation pattern
         async function createOrderCallback(data, actions) {
+            resultMessage(''); // Clear previous messages
+            
             console.log('Creating PayPal order via backend API...');
             
             const totals = renderOrderSummary();
@@ -491,14 +494,6 @@
                 
                 const orderData_response = await response.json();
                 
-                if (!response.ok) {
-                    const errorDetail = orderData_response?.details?.[0];
-                    const errorMessage = errorDetail
-                        ? `${errorDetail.issue} ${errorDetail.description} (${orderData_response.debug_id})`
-                        : orderData_response.message || 'Failed to create order';
-                    throw new Error(errorMessage);
-                }
-                
                 if (orderData_response.id) {
                     console.log('Order created successfully:', orderData_response.id);
                     return orderData_response.id;
@@ -507,26 +502,20 @@
                     const errorMessage = errorDetail
                         ? `${errorDetail.issue} ${errorDetail.description} (${orderData_response.debug_id})`
                         : JSON.stringify(orderData_response);
+                    
+                    resultMessage(`Could not initiate PayPal Checkout...<br><br>${errorMessage}`, true);
                     throw new Error(errorMessage);
                 }
             } catch (error) {
                 console.error('Order creation error:', error);
-                console.error('Order creation error details:', JSON.stringify(error, null, 2));
-                
-                let errorMsg = 'Failed to create order. ';
-                if (error && error.message) {
-                    errorMsg += error.message;
-                } else {
-                    errorMsg += 'Please check console for details.';
-                }
-                
-                handleError(new Error(errorMsg));
+                resultMessage(`Could not initiate PayPal Checkout...<br><br>${error.message || error}`, true);
                 throw error;
             }
         }
         
         // On Approve Callback (for both PayPal and Card Fields)
         // Uses backend API for secure server-side order capture
+        // Follows PayPal's official documentation pattern
         async function onApproveCallback(data, actions) {
             console.log('Payment approved, order ID:', data.orderID);
             
@@ -542,106 +531,78 @@
                     }),
                 });
                 
-                const orderData_response = await response.json();
+                const orderData = await response.json();
                 
-                if (!response.ok) {
-                    const errorDetail = orderData_response?.details?.[0];
-                    const errorMessage = errorDetail
-                        ? `${errorDetail.description} (${orderData_response.debug_id})`
-                        : orderData_response.message || 'Failed to capture order';
-                    throw new Error(errorMessage);
+                // Three cases to handle:
+                //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+                //   (2) Other non-recoverable errors -> Show a failure message
+                //   (3) Successful transaction -> Show confirmation or thank you message
+                
+                const transaction = orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
+                    orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
+                const errorDetail = orderData?.details?.[0];
+                
+                // Check for INSTRUMENT_DECLINED error (recoverable)
+                if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+                    // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+                    if (actions && actions.restart) {
+                        return actions.restart();
+                    }
                 }
                 
-                // Check for transaction status
-                const transaction = orderData_response?.purchase_units?.[0]?.payments?.captures?.[0] ||
-                    orderData_response?.purchase_units?.[0]?.payments?.authorizations?.[0];
-                const errorDetail = orderData_response?.details?.[0];
-                
                 if (errorDetail || !transaction || transaction.status === 'DECLINED') {
+                    // (2) Other non-recoverable errors -> Show a failure message
                     let errorMessage;
                     if (transaction) {
                         errorMessage = `Transaction ${transaction.status}: ${transaction.id}`;
                     } else if (errorDetail) {
-                        errorMessage = `${errorDetail.description} (${orderData_response.debug_id})`;
+                        errorMessage = `${errorDetail.description} (${orderData.debug_id})`;
                     } else {
-                        errorMessage = JSON.stringify(orderData_response);
+                        errorMessage = JSON.stringify(orderData);
                     }
+                    
+                    resultMessage(`Sorry, your transaction could not be processed...<br><br>${errorMessage}`, true);
                     throw new Error(errorMessage);
                 } else {
-                    // Success - handle the successful transaction
-                    console.log('Payment captured successfully:', orderData_response);
-                    handleSuccess(orderData_response);
+                    // (3) Successful transaction -> Show confirmation or thank you message
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    
+                    const orderId = transaction.id || orderData.id;
+                    resultMessage(`Transaction ${transaction.status}: ${orderId}<br><br>Redirecting to thank you page...`, false);
+                    
+                    // Store order data
+                    const order = {
+                        orderId: orderId,
+                        payer: orderData.payer,
+                        items: cart,
+                        shipping: orderData,
+                        total: transaction.amount?.value || totals.total.toFixed(2),
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    localStorage.setItem('lastOrder', JSON.stringify(order));
+                    localStorage.removeItem('cart');
+                    
+                    // Redirect to thank you page
+                    setTimeout(() => {
+                        window.location.href = 'thank-you.html?orderId=' + orderId;
+                    }, 2000);
                 }
             } catch (error) {
                 console.error('Capture error:', error);
-                console.error('Capture error details:', JSON.stringify(error, null, 2));
-                
-                let errorMsg = 'Failed to capture payment. ';
-                if (error && error.message) {
-                    errorMsg += error.message;
-                } else {
-                    errorMsg += 'Please check console for details.';
-                }
-                
-                handleError(new Error(errorMsg));
+                resultMessage(`Sorry, your transaction could not be processed...<br><br>${error.message || error}`, true);
             }
         }
         
-        function handleSuccess(details) {
-            console.log('Payment successful:', details);
-            
-            const order = {
-                orderId: details.id || details.purchase_units?.[0]?.payments?.captures?.[0]?.id,
-                payer: details.payer,
-                items: cart,
-                shipping: orderData,
-                total: details.purchase_units?.[0]?.amount?.value || renderOrderSummary().total.toFixed(2),
-                timestamp: new Date().toISOString()
-            };
-            
-            localStorage.setItem('lastOrder', JSON.stringify(order));
-            localStorage.removeItem('cart');
-            
-            window.location.href = 'thank-you.html?orderId=' + order.orderId;
-        }
-        
-        function handleError(error) {
-            console.error('Payment error:', error);
-            console.error('Full error object:', error);
-            
-            const resultMsg = document.getElementById('result-message');
-            if (resultMsg) {
-                resultMsg.style.display = 'block';
-                resultMsg.style.background = '#ffebee';
-                resultMsg.style.color = '#d32f2f';
-                
-                let errorText = 'Payment failed. ';
-                if (error && error.message) {
-                    errorText += error.message;
-                } else if (error && typeof error === 'string') {
-                    errorText += error;
-                } else {
-                    errorText += 'Please check the browser console (F12) for details.';
-                }
-                
-                resultMsg.textContent = errorText;
-            }
-            
-            // Show user-friendly alert with option to see details
-            let alertMessage = 'Payment failed. ';
-            if (error && error.message) {
-                alertMessage += '\n\nError: ' + error.message;
-            }
-            alertMessage += '\n\nPlease check the browser console (F12) for more details.';
-            alert(alertMessage);
-        }
-        
+        // Result message function (matches PayPal documentation pattern)
         function resultMessage(message, isError = false) {
             const container = document.getElementById('result-message');
-            container.style.display = 'block';
-            container.style.background = isError ? '#ffebee' : '#e8f5e9';
-            container.style.color = isError ? '#d32f2f' : '#2d5a3d';
-            container.innerHTML = message;
+            if (container) {
+                container.style.display = 'block';
+                container.style.background = isError ? '#ffebee' : '#e8f5e9';
+                container.style.color = isError ? '#d32f2f' : '#2d5a3d';
+                container.innerHTML = message;
+            }
         }
         
         // PayPal Integration
@@ -679,20 +640,14 @@
                     createOrder: createOrderCallback,
                     onApprove: onApproveCallback,
                     onError: function(err) {
+                        // Handle buyer checkout errors
                         console.error('PayPal error:', err);
                         console.error('Error details:', JSON.stringify(err, null, 2));
-                        let errorMessage = 'An error occurred with PayPal. ';
-                        if (err && err.message) {
-                            errorMessage += 'Details: ' + err.message;
-                        } else if (err && typeof err === 'string') {
-                            errorMessage += 'Details: ' + err;
-                        } else {
-                            errorMessage += 'Please check the browser console for details.';
-                        }
-                        handleError(new Error(errorMessage));
+                        resultMessage(`An error occurred with PayPal. Please try again or contact support.<br><br>Error: ${err.message || JSON.stringify(err)}`, true);
                     },
                     onCancel: function(data) {
                         console.log('Payment cancelled:', data);
+                        resultMessage('Payment was cancelled.', false);
                     }
                 }).render('#paypal-button-container').then(function() {
                     console.log('PayPal button rendered successfully');
@@ -721,8 +676,12 @@
                 }
                 
                 const cardField = paypal.CardFields({
-            createOrder: createOrderCallback,
-            onApprove: onApproveCallback,
+                    createOrder: createOrderCallback,
+                    onApprove: onApproveCallback,
+                    onError: function(err) {
+                        console.error('Card Fields error:', err);
+                        resultMessage(`An error occurred with card payment. Please try again.<br><br>Error: ${err.message || JSON.stringify(err)}`, true);
+                    },
                     style: {
                         input: {
                             'font-size': '16px',
@@ -790,20 +749,10 @@
                             billingAddress: billingAddress
                         }).then(() => {
                             console.log('Card payment submitted successfully');
+                            // The onApprove callback will handle the success case
                         }).catch((err) => {
                             console.error('Card payment error:', err);
-                            console.error('Card payment error details:', JSON.stringify(err, null, 2));
-                            
-                            let errorMsg = 'Card payment failed. ';
-                            if (err && err.message) {
-                                errorMsg += err.message;
-                            } else if (err && err.details && err.details[0]) {
-                                errorMsg += err.details[0].description || 'Unknown error';
-                            } else {
-                                errorMsg += 'Please check console for details.';
-                            }
-                            
-                            handleError(new Error(errorMsg));
+                            resultMessage(`Card payment failed. Please try again.<br><br>Error: ${err.message || JSON.stringify(err)}`, true);
                         });
                     });
                 } else {
