@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | NutriThrive</title>
     <link rel="stylesheet" href="../../shared/css/style.css">
+    <!-- PayPal SDK - Load directly in head -->
+    <script src="https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture&components=buttons,card-fields&buyer-country=AU" data-sdk-integration-source="button-factory"></script>
     <style>
         body {
             background: #f8f5ec;
@@ -342,24 +344,8 @@
         }
     </style>
     
-    <!-- PayPal SDK - Load with card fields component -->
+    <!-- PayPal SDK Error Handling -->
     <script>
-        // Load PayPal SDK with error handling
-        function loadPayPalSDK() {
-            const script = document.createElement('script');
-            script.src = 'https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture&components=buttons,card-fields';
-            script.async = true;
-            script.onload = function() {
-                console.log('PayPal SDK loaded successfully');
-                initPayPal();
-            };
-            script.onerror = function() {
-                console.error('PayPal SDK failed to load');
-                showPayPalError('PayPal SDK failed to load. Please check your internet connection and refresh the page.');
-            };
-            document.head.appendChild(script);
-        }
-        
         function showPayPalError(message) {
             const errorDiv = document.getElementById('paypal-error');
             const container = document.getElementById('paypal-button-container');
@@ -367,9 +353,19 @@
                 errorDiv.style.display = 'block';
                 errorDiv.textContent = message;
             }
-            if (container) {
+            if (container && !container.querySelector('#paypal-button-container > div')) {
                 container.innerHTML = '<div style="padding: 1rem; text-align: center; color: #d32f2f; background: #ffebee; border-radius: 8px;">PayPal payment unavailable. Please contact us at nutrithrive0@gmail.com or call +61 438201419</div>';
             }
+        }
+        
+        // Check if PayPal SDK loaded
+        function checkPayPalSDK() {
+            if (typeof paypal === 'undefined') {
+                console.error('PayPal SDK not loaded');
+                showPayPalError('PayPal SDK failed to load. Please refresh the page.');
+                return false;
+            }
+            return true;
         }
     </script>
     
@@ -542,7 +538,8 @@
         
         // PayPal Integration
         function initPayPal() {
-            if (typeof paypal === 'undefined') {
+            if (typeof paypal === 'undefined' || !paypal.Buttons) {
+                console.error('PayPal SDK not available');
                 showPayPalError('PayPal SDK not loaded. Please refresh the page.');
                 return;
             }
@@ -550,8 +547,16 @@
             const container = document.getElementById('paypal-button-container');
             const errorDiv = document.getElementById('paypal-error');
             
-            // Clear loading message
+            if (!container) {
+                console.error('PayPal button container not found');
+                return;
+            }
+            
+            // Clear loading message and errors
             container.innerHTML = '';
+            if (errorDiv) {
+                errorDiv.style.display = 'none';
+            }
             
             try {
                 // Render PayPal Buttons
@@ -667,11 +672,29 @@
         // Initialize order summary
         renderOrderSummary();
         
-        // Load PayPal SDK when page is ready
+        // Initialize PayPal when page is ready
+        function initializePayment() {
+            if (checkPayPalSDK()) {
+                initPayPal();
+            } else {
+                // Retry after a short delay
+                setTimeout(function() {
+                    if (checkPayPalSDK()) {
+                        initPayPal();
+                    } else {
+                        showPayPalError('PayPal SDK failed to load. Please refresh the page or check your internet connection.');
+                    }
+                }, 2000);
+            }
+        }
+        
+        // Wait for DOM and PayPal SDK to be ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadPayPalSDK);
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(initializePayment, 500);
+            });
         } else {
-            loadPayPalSDK();
+            setTimeout(initializePayment, 500);
         }
     </script>
 </body>
