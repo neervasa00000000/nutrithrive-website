@@ -248,7 +248,10 @@ function initializePayPal() {
         // Store globally for onclick handler
         globalCardField = cardField;
 
-        if (cardField.isEligible()) {
+        const isEligible = cardField.isEligible();
+        console.log("Card fields eligible:", isEligible);
+        
+        if (isEligible) {
             // Render Card Name Field
             const nameField = cardField.NameField({
                 style: { 
@@ -343,11 +346,18 @@ function initializePayPal() {
                 }, 500);
             }
         } else {
-            // Card fields not eligible - hide the card form
+            // Card fields not eligible - show message
+            console.warn("Card fields not eligible for this account");
             const cardForm = document.getElementById("card-form");
             if (cardForm) {
-                cardForm.style.display = "none";
+                const message = document.createElement("p");
+                message.style.color = "#c62828";
+                message.style.marginTop = "1rem";
+                message.textContent = "Card payment not available. Please use PayPal button above.";
+                cardForm.appendChild(message);
+                document.getElementById("card-field-submit-button").style.display = "none";
             }
+            resultMessage("Card fields are not eligible. Your PayPal account may need to be approved for Expanded Checkout. Please use the PayPal button above.", true);
         }
     } catch (error) {
         console.error("PayPal initialization error:", error);
