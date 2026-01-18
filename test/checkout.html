@@ -112,6 +112,24 @@
         }
         #paypal-button-container {
             margin-top: 1.5rem;
+            min-height: 50px;
+            padding: 1rem;
+            background: #f8faf7;
+            border-radius: 8px;
+            border: 2px dashed #2d5a3d;
+        }
+        .paypal-loading {
+            text-align: center;
+            color: #666;
+            padding: 1rem;
+        }
+        .paypal-error {
+            background: #ffebee;
+            color: #d32f2f;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
         }
         .required {
             color: #d32f2f;
@@ -231,11 +249,16 @@
                     <span id="total">$0.00 AUD</span>
                 </div>
                 
-                <div id="paypal-button-container"></div>
-                
-                <p style="font-size: 0.85rem; color: #666; margin-top: 1rem; text-align: center;">
-                    🔒 Secure checkout powered by PayPal
-                </p>
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="color: #2d5a3d; margin-bottom: 1rem; text-align: center;">Payment Method</h3>
+                    <div id="paypal-button-container">
+                        <div class="paypal-loading">Loading PayPal...</div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 1rem; text-align: center;">
+                        🔒 Secure checkout powered by PayPal
+                    </p>
+                    <div id="paypal-error" class="paypal-error" style="display: none;"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -288,13 +311,22 @@
         }
         
         // PayPal Integration
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color: 'gold',
-                shape: 'rect',
-                label: 'paypal'
-            },
+        function initPayPal() {
+            const container = document.getElementById('paypal-button-container');
+            const errorDiv = document.getElementById('paypal-error');
+            
+            // Clear loading message
+            container.innerHTML = '';
+            
+            try {
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color: 'gold',
+                        shape: 'rect',
+                        label: 'paypal',
+                        height: 50
+                    },
             createOrder: function(data, actions) {
                 const totals = renderOrderSummary();
                 
@@ -394,12 +426,46 @@
             },
             onError: function(err) {
                 console.error('PayPal error:', err);
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = 'PayPal payment failed. Please try again or contact support.';
                 alert('An error occurred with PayPal. Please try again.');
             },
             onCancel: function(data) {
                 console.log('Payment cancelled:', data);
             }
-        }).render('#paypal-button-container');
+                }).render('#paypal-button-container').then(function() {
+                    console.log('PayPal button rendered successfully');
+                }).catch(function(err) {
+                    console.error('PayPal render error:', err);
+                    errorDiv.style.display = 'block';
+                    errorDiv.textContent = 'Unable to load PayPal. Please refresh the page or contact support.';
+                    container.innerHTML = '<div class="paypal-error">PayPal payment unavailable. Please contact support at nutrithrive0@gmail.com</div>';
+                });
+            } catch (err) {
+                console.error('PayPal initialization error:', err);
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = 'PayPal initialization failed. Please refresh the page.';
+            }
+        }
+        
+        // Wait for PayPal SDK to load
+        if (typeof paypal !== 'undefined') {
+            initPayPal();
+        } else {
+            // Check if SDK loaded after a delay
+            let attempts = 0;
+            const checkPayPal = setInterval(function() {
+                attempts++;
+                if (typeof paypal !== 'undefined') {
+                    clearInterval(checkPayPal);
+                    initPayPal();
+                } else if (attempts > 20) {
+                    clearInterval(checkPayPal);
+                    document.getElementById('paypal-error').style.display = 'block';
+                    document.getElementById('paypal-error').textContent = 'PayPal SDK failed to load. Please refresh the page.';
+                }
+            }, 500);
+        }
         
         // Initialize
         renderOrderSummary();
