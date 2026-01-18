@@ -287,8 +287,12 @@
         </div>
     </div>
     
-    <!-- PayPal SDK with Card Fields -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons,card-fields&intent=capture"></script>
+    <!-- PayPal SDK - Load buttons first, then check for card-fields -->
+    <script 
+        src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons&intent=capture"
+        onload="console.log('✅ PayPal SDK (buttons) loaded successfully'); if (typeof paypal !== 'undefined') { console.log('✅ paypal object is defined'); } else { console.error('❌ paypal object is undefined after SDK load'); }"
+        onerror="console.error('❌ PayPal SDK failed to load - Status:', this.status || 'network error'); console.error('Check: 1) Client ID is correct, 2) Internet connection, 3) PayPal servers are up');"
+    ></script>
     
     <script>
         // Wait for PayPal SDK to load
