@@ -211,31 +211,46 @@ function initializePayPal() {
         expiryField.render("#card-expiry-field-container");
 
         // Add click listener to submit button
-        document
-            .getElementById("card-field-submit-button")
-            .addEventListener("click", () => {
+        const submitButton = document.getElementById("card-field-submit-button");
+        if (submitButton) {
+            // Remove any existing listeners by cloning the button
+            const newButton = submitButton.cloneNode(true);
+            submitButton.parentNode.replaceChild(newButton, submitButton);
+            
+            newButton.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log("Card submit button clicked");
+                
+                // Validate required fields
+                const addressLine1 = document.getElementById("card-billing-address-line-1")?.value?.trim();
+                const adminArea1 = document.getElementById("card-billing-address-admin-area-line-1")?.value?.trim();
+                const countryCode = document.getElementById("card-billing-address-country-code")?.value?.trim();
+                const postalCode = document.getElementById("card-billing-address-postal-code")?.value?.trim();
+                
+                if (!addressLine1 || !adminArea1 || !countryCode || !postalCode) {
+                    resultMessage("Please fill in all required billing address fields.");
+                    return;
+                }
+                
+                // Disable button during processing
+                newButton.disabled = true;
+                newButton.textContent = "Processing...";
+                
+                console.log("Submitting card payment with billing address...");
+                resultMessage("Processing payment...");
+                
                 cardField
                     .submit({
                         // From your billing address fields
                         billingAddress: {
-                            addressLine1: document.getElementById(
-                                "card-billing-address-line-1"
-                            ).value,
-                            addressLine2: document.getElementById(
-                                "card-billing-address-line-2"
-                            ).value || "",
-                            adminArea1: document.getElementById(
-                                "card-billing-address-admin-area-line-1"
-                            ).value,
-                            adminArea2: document.getElementById(
-                                "card-billing-address-admin-area-line-2"
-                            ).value || "",
-                            countryCode: document.getElementById(
-                                "card-billing-address-country-code"
-                            ).value,
-                            postalCode: document.getElementById(
-                                "card-billing-address-postal-code"
-                            ).value,
+                            addressLine1: addressLine1,
+                            addressLine2: document.getElementById("card-billing-address-line-2")?.value?.trim() || "",
+                            adminArea1: adminArea1,
+                            adminArea2: document.getElementById("card-billing-address-admin-area-line-2")?.value?.trim() || "",
+                            countryCode: countryCode,
+                            postalCode: postalCode,
                         },
                     })
                     .then(() => {
@@ -244,8 +259,16 @@ function initializePayPal() {
                     .catch((error) => {
                         console.error("Card field submit error:", error);
                         resultMessage(`Card payment error: ${error.message || error}`);
+                        // Re-enable button on error
+                        newButton.disabled = false;
+                        newButton.textContent = "Pay now with Card";
                     });
             });
+            
+            console.log("Card submit button handler attached successfully");
+        } else {
+            console.error("Card submit button not found");
+        }
     } else {
         // Card fields not eligible - hide the card form
         console.warn("Card fields not eligible for this account");
