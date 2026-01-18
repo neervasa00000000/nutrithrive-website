@@ -251,24 +251,103 @@
                 
                 <div style="margin-top: 1.5rem;">
                     <h3 style="color: #2d5a3d; margin-bottom: 1rem; text-align: center;">Payment Method</h3>
+                    
+                    <!-- PayPal Buttons -->
                     <div id="paypal-button-container">
                         <div class="paypal-loading">Loading PayPal...</div>
                     </div>
+                    
+                    <div class="payment-divider">OR</div>
+                    
+                    <!-- Card Fields -->
+                    <div id="card-form" style="display: none;">
+                        <h3>Pay with Card</h3>
+                        <div id="card-name-field-container"></div>
+                        <div id="card-number-field-container"></div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div id="card-expiry-field-container"></div>
+                            <div id="card-cvv-field-container"></div>
+                        </div>
+                        <button id="card-field-submit-button" type="button">Pay Now with Card</button>
+                    </div>
+                    
                     <p style="font-size: 0.85rem; color: #666; margin-top: 1rem; text-align: center;">
                         🔒 Secure checkout powered by PayPal
                     </p>
                     <div id="paypal-error" class="paypal-error" style="display: none;"></div>
+                    <div id="result-message" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none;"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PayPal SDK - Load with error handling -->
+    <!-- PayPal Card Fields CSS -->
+    <link rel="stylesheet" type="text/css" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css" />
+    
+    <style>
+        /* Card Fields Styling */
+        #card-form {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8faf7;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+        #card-form h3 {
+            color: #2d5a3d;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        #card-name-field-container,
+        #card-number-field-container,
+        #card-expiry-field-container,
+        #card-cvv-field-container {
+            margin-bottom: 1rem;
+        }
+        #card-field-submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: #2d5a3d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        #card-field-submit-button:hover {
+            background: #1e4029;
+        }
+        .payment-divider {
+            text-align: center;
+            margin: 2rem 0;
+            color: #666;
+            position: relative;
+        }
+        .payment-divider::before,
+        .payment-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        .payment-divider::before {
+            left: 0;
+        }
+        .payment-divider::after {
+            right: 0;
+        }
+    </style>
+    
+    <!-- PayPal SDK - Load with card fields component -->
     <script>
         // Load PayPal SDK with error handling
         function loadPayPalSDK() {
             const script = document.createElement('script');
-            script.src = 'https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture';
+            script.src = 'https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture&components=buttons,card-fields';
             script.async = true;
             script.onload = function() {
                 console.log('PayPal SDK loaded successfully');
@@ -338,6 +417,175 @@
             }
         }
         
+        // API Base URL - Use Netlify functions or your backend
+        const API_BASE = window.location.origin; // Will use /api/orders for Netlify functions
+        
+        // Create Order Callback (for both PayPal and Card Fields)
+        async function createOrderCallback() {
+            const totals = renderOrderSummary();
+            
+            // Get form data
+            orderData = {
+                firstName: document.getElementById('first-name').value,
+                lastName: document.getElementById('last-name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                address2: document.getElementById('address2').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                postcode: document.getElementById('postcode').value,
+                notes: document.getElementById('notes').value
+            };
+            
+            // Validate form
+            if (!orderData.firstName || !orderData.lastName || !orderData.email || 
+                !orderData.phone || !orderData.address || !orderData.city || 
+                !orderData.state || !orderData.postcode) {
+                alert('Please fill in all required fields');
+                throw new Error('Form validation failed');
+            }
+            
+            // For now, use client-side order creation
+            // Backend API requires PayPal Server SDK setup
+            // Uncomment below to use backend API once configured:
+            
+            /*
+            try {
+                const response = await fetch(`${API_BASE}/.netlify/functions/create-order`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        cart: cart,
+                        totals: totals,
+                        shipping: orderData
+                    }),
+                });
+                
+                const orderData_response = await response.json();
+                
+                if (orderData_response.id) {
+                    return orderData_response.id;
+                }
+            } catch (error) {
+                console.error('API error:', error);
+            }
+            */
+            
+            // Client-side order creation (current implementation)
+            return createOrderClientSide(totals, orderData);
+        }
+        
+        // Client-side order creation (using PayPal SDK directly)
+        // Note: For production, use backend API for better security
+        async function createOrderClientSide(totals, orderData) {
+            const items = cart.map(item => ({
+                name: item.name.substring(0, 127), // PayPal limit
+                description: item.name.substring(0, 127),
+                quantity: item.quantity.toString(),
+                unit_amount: {
+                    currency_code: 'AUD',
+                    value: item.price.toFixed(2)
+                }
+            }));
+            
+            // Create order using PayPal SDK (client-side)
+            // This works but backend API is recommended for production
+            const orderData_paypal = {
+                intent: 'CAPTURE',
+                purchase_units: [{
+                    amount: {
+                        value: totals.total.toFixed(2),
+                        currency_code: 'AUD',
+                        breakdown: {
+                            item_total: {
+                                currency_code: 'AUD',
+                                value: totals.subtotal.toFixed(2)
+                            },
+                            shipping: {
+                                currency_code: 'AUD',
+                                value: totals.shipping.toFixed(2)
+                            }
+                        }
+                    },
+                    items: items,
+                    shipping: {
+                        name: {
+                            full_name: orderData.firstName + ' ' + orderData.lastName
+                        },
+                        address: {
+                            address_line_1: orderData.address,
+                            address_line_2: orderData.address2 || '',
+                            admin_area_2: orderData.city,
+                            admin_area_1: orderData.state,
+                            postal_code: orderData.postcode,
+                            country_code: 'AU'
+                        }
+                    }
+                }]
+            };
+            
+            // Use PayPal SDK to create order
+            // Note: This requires the PayPal SDK to be loaded
+            if (typeof paypal !== 'undefined' && paypal.rest) {
+                // If using REST API directly (not recommended client-side)
+                // For now, return the order structure and let PayPal handle it
+                return orderData_paypal;
+            }
+            
+            // Return order structure - PayPal Buttons will create the order
+            return orderData_paypal;
+        }
+        
+        // On Approve Callback (for both PayPal and Card Fields)
+        async function onApproveCallback(data, actions) {
+            // Client-side capture (current implementation)
+            // For production, use backend API for better security
+            if (actions && actions.order) {
+                return actions.order.capture().then(handleSuccess).catch(handleError);
+            } else {
+                handleError(new Error('No capture actions available'));
+            }
+        }
+        
+        function handleSuccess(details) {
+            console.log('Payment successful:', details);
+            
+            const order = {
+                orderId: details.id || details.purchase_units?.[0]?.payments?.captures?.[0]?.id,
+                payer: details.payer,
+                items: cart,
+                shipping: orderData,
+                total: details.purchase_units?.[0]?.amount?.value || renderOrderSummary().total.toFixed(2),
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('lastOrder', JSON.stringify(order));
+            localStorage.removeItem('cart');
+            
+            window.location.href = 'thank-you.html?orderId=' + order.orderId;
+        }
+        
+        function handleError(error) {
+            console.error('Payment error:', error);
+            const resultMsg = document.getElementById('result-message');
+            resultMsg.style.display = 'block';
+            resultMsg.style.background = '#ffebee';
+            resultMsg.style.color = '#d32f2f';
+            resultMsg.textContent = 'Payment failed: ' + error.message;
+            alert('Payment failed. Please try again or contact support.');
+        }
+        
+        function resultMessage(message, isError = false) {
+            const container = document.getElementById('result-message');
+            container.style.display = 'block';
+            container.style.background = isError ? '#ffebee' : '#e8f5e9';
+            container.style.color = isError ? '#d32f2f' : '#2d5a3d';
+            container.innerHTML = message;
+        }
+        
         // PayPal Integration
         function initPayPal() {
             if (typeof paypal === 'undefined') {
@@ -352,6 +600,7 @@
             container.innerHTML = '';
             
             try {
+                // Render PayPal Buttons
                 paypal.Buttons({
                     style: {
                         layout: 'vertical',
@@ -360,7 +609,7 @@
                         label: 'paypal',
                         height: 50
                     },
-            createOrder: function(data, actions) {
+            createOrder: createOrderCallback,
                 const totals = renderOrderSummary();
                 
                 // Get form data
@@ -468,6 +717,9 @@
             }
                 }).render('#paypal-button-container').then(function() {
                     console.log('PayPal button rendered successfully');
+                    
+                    // Initialize Card Fields
+                    initCardFields();
                 }).catch(function(err) {
                     console.error('PayPal render error:', err);
                     errorDiv.style.display = 'block';
@@ -478,6 +730,80 @@
                 console.error('PayPal initialization error:', err);
                 errorDiv.style.display = 'block';
                 errorDiv.textContent = 'PayPal initialization failed. Please refresh the page.';
+            }
+        }
+        
+        // Initialize Card Fields
+        function initCardFields() {
+            try {
+                if (typeof paypal === 'undefined' || !paypal.CardFields) {
+                    console.warn('Card Fields not available');
+                    return;
+                }
+                
+                const cardField = paypal.CardFields({
+            createOrder: createOrderCallback,
+            onApprove: onApproveCallback,
+                    style: {
+                        input: {
+                            'font-size': '16px',
+                            'font-family': '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                            color: '#1a2e22',
+                            'border-radius': '8px',
+                        },
+                        '.invalid': { 
+                            color: '#d32f2f',
+                            'border-color': '#d32f2f'
+                        },
+                        '.valid': {
+                            color: '#2d5a3d'
+                        }
+                    },
+                });
+                
+                if (cardField.isEligible()) {
+                    // Show card form
+                    document.getElementById('card-form').style.display = 'block';
+                    
+                    // Render card fields
+                    const nameField = cardField.NameField();
+                    nameField.render('#card-name-field-container');
+                    
+                    const numberField = cardField.NumberField();
+                    numberField.render('#card-number-field-container');
+                    
+                    const cvvField = cardField.CVVField();
+                    cvvField.render('#card-cvv-field-container');
+                    
+                    const expiryField = cardField.ExpiryField();
+                    expiryField.render('#card-expiry-field-container');
+                    
+                    // Submit button handler
+                    document.getElementById('card-field-submit-button').addEventListener('click', () => {
+                        // Get billing address from form
+                        const billingAddress = {
+                            addressLine1: document.getElementById('address').value,
+                            addressLine2: document.getElementById('address2').value || '',
+                            adminArea1: document.getElementById('state').value,
+                            adminArea2: document.getElementById('city').value,
+                            countryCode: 'AU',
+                            postalCode: document.getElementById('postcode').value,
+                        };
+                        
+                        cardField.submit({
+                            billingAddress: billingAddress
+                        }).then(() => {
+                            console.log('Card payment submitted');
+                        }).catch((err) => {
+                            console.error('Card payment error:', err);
+                            handleError(err);
+                        });
+                    });
+                } else {
+                    console.log('Card Fields not eligible');
+                }
+            } catch (err) {
+                console.error('Card Fields initialization error:', err);
             }
         }
         
