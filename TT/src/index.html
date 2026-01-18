@@ -13,13 +13,6 @@
         href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css"
     />
     
-    <!-- PayPal SDK -->
-    <script
-        src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons,card-fields&intent=capture"
-        data-sdk-integration-source="developer-studio"
-        onerror="console.error('PayPal SDK failed to load'); document.getElementById('result-message').innerHTML='PayPal SDK failed to load. Please check your internet connection and refresh the page.'; document.getElementById('result-message').className='error-message';"
-    ></script>
-    
     <!-- Shared Styles -->
     <link rel="stylesheet" href="../../shared/css/style.css">
     <link rel="stylesheet" href="../../pages/products/product-detail.css">
@@ -293,6 +286,12 @@
             </div>
         </div>
     </div>
+    
+    <!-- PayPal SDK - Load at end of body -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&buyer-country=AU&currency=AUD&components=buttons,card-fields&intent=capture"
+        data-sdk-integration-source="developer-studio"
+    ></script>
     
     <script src="app.js"></script>
 </body>
