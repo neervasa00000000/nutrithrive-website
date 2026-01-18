@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Client ID Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        #paypal-button-container {
+            margin: 20px 0;
+            min-height: 50px;
+        }
+    </style>
+    <!-- Test PayPal SDK with your Client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture&components=buttons,card-fields"></script>
+</head>
+<body>
+    <h1>PayPal Client ID Test</h1>
+    
+    <div class="test-section">
+        <h2>SDK Status</h2>
+        <div id="sdk-status">Checking...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Client ID Information</h2>
+        <p><strong>Client ID:</strong> EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY</p>
+        <p><strong>Expected:</strong> Live Client ID for production</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>PayPal Button Test</h2>
+        <p>If the button appears below, your Client ID is working:</p>
+        <div id="paypal-button-container"></div>
+        <div id="button-status"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Diagnostic Information</h2>
+        <div id="diagnostics"></div>
+    </div>
+
+    <script>
+        function updateStatus(elementId, message, isSuccess) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = message;
+            element.className = isSuccess ? 'success' : 'error';
+        }
+        
+        function checkPayPalSDK() {
+            const diagnostics = [];
+            
+            // Check if SDK loaded
+            if (typeof paypal === 'undefined') {
+                updateStatus('sdk-status', '❌ PayPal SDK NOT loaded', false);
+                diagnostics.push('❌ PayPal SDK object is undefined');
+                diagnostics.push('Possible causes:');
+                diagnostics.push('1. Invalid Client ID');
+                diagnostics.push('2. Client ID is for sandbox but domain is live');
+                diagnostics.push('3. Domain not whitelisted in PayPal app settings');
+                diagnostics.push('4. Network/CORS error');
+                diagnostics.push('5. Client ID has been revoked or expired');
+                document.getElementById('diagnostics').innerHTML = diagnostics.join('<br>');
+                return false;
+            }
+            
+            updateStatus('sdk-status', '✅ PayPal SDK loaded', true);
+            diagnostics.push('✅ PayPal SDK object exists');
+            diagnostics.push('Available properties: ' + Object.keys(paypal).join(', '));
+            
+            // Check for Buttons
+            if (typeof paypal.Buttons === 'function') {
+                diagnostics.push('✅ PayPal.Buttons is available');
+                
+                // Try to render a test button
+                try {
+                    paypal.Buttons({
+                        createOrder: function(data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: '10.00',
+                                        currency_code: 'AUD'
+                                    }
+                                }]
+                            });
+                        },
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                updateStatus('button-status', '✅ Payment test successful! Order ID: ' + details.id, true);
+                            });
+                        },
+                        onError: function(err) {
+                            updateStatus('button-status', '❌ Payment error: ' + err.message, false);
+                        }
+                    }).render('#paypal-button-container').then(function() {
+                        updateStatus('button-status', '✅ PayPal button rendered successfully', true);
+                    }).catch(function(err) {
+                        updateStatus('button-status', '❌ Failed to render button: ' + err.message, false);
+                        diagnostics.push('❌ Button render error: ' + err.message);
+                    });
+                } catch (err) {
+                    updateStatus('button-status', '❌ Error creating button: ' + err.message, false);
+                    diagnostics.push('❌ Button creation error: ' + err.message);
+                }
+            } else {
+                diagnostics.push('❌ PayPal.Buttons is NOT available');
+                updateStatus('button-status', '❌ PayPal Buttons component not available', false);
+            }
+            
+            // Check for CardFields
+            if (typeof paypal.CardFields === 'function') {
+                diagnostics.push('✅ PayPal.CardFields is available');
+            } else {
+                diagnostics.push('❌ PayPal.CardFields is NOT available');
+            }
+            
+            document.getElementById('diagnostics').innerHTML = diagnostics.join('<br>');
+            return true;
+        }
+        
+        // Wait for SDK to load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                checkPayPalSDK();
+            }, 1000);
+        });
+        
+        // Also check immediately if SDK already loaded
+        if (typeof paypal !== 'undefined') {
+            setTimeout(checkPayPalSDK, 500);
+        }
+    </script>
+</body>
+</html>
