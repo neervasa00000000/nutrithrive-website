@@ -1,14 +1,8 @@
-// PayPal Integration - Expanded Checkout
-// This file handles both PayPal buttons and Card Fields
+// PayPal Integration with Card Fields
+// Based on PayPal official documentation
 
 // Product configuration
 const PRODUCT_PRICE = 10.00;
-const PRODUCT_ID = "MORINGA_POWDER_200G";
-const PRODUCT_NAME = "Moringa Powder";
-const PRODUCT_DESCRIPTION = "100% pure Moringa Oleifera leaf powder";
-
-// Global card field reference
-let globalCardField = null;
 
 // Get quantity from input
 function getQuantity() {
@@ -22,28 +16,24 @@ function calculateTotal() {
     return (PRODUCT_PRICE * quantity).toFixed(2);
 }
 
-// Create Order Callback - Called when user clicks PayPal button or submits card
+// Create Order Callback - Used by both PayPal buttons and card fields
 async function createOrderCallback() {
     resultMessage("");
-    
     try {
         const quantity = getQuantity();
-        const total = calculateTotal();
+        const amount = calculateTotal();
         
-        const response = await fetch("/.netlify/functions/create-order-tt", {
+        const response = await fetch("/.netlify/functions/paypal-create-order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                amount: amount,
                 cart: [
                     {
-                        id: PRODUCT_ID,
+                        id: "MORINGA_POWDER_200G",
                         quantity: quantity.toString(),
-                        name: PRODUCT_NAME,
-                        description: PRODUCT_DESCRIPTION,
-                        unit_amount: PRODUCT_PRICE.toFixed(2),
-                        total: total
                     },
                 ],
             }),
@@ -52,7 +42,6 @@ async function createOrderCallback() {
         const orderData = await response.json();
 
         if (orderData.id) {
-            console.log("Order created:", orderData.id);
             return orderData.id;
         } else {
             const errorDetail = orderData?.details?.[0];
@@ -63,16 +52,16 @@ async function createOrderCallback() {
             throw new Error(errorMessage);
         }
     } catch (error) {
-        console.error("Create order error:", error);
-        resultMessage(`Could not initiate PayPal Checkout...<br><br>${error.message}`, true);
+        console.error(error);
+        resultMessage(`Could not initiate PayPal Checkout...<br><br>${error.message || error}`);
         throw error;
     }
 }
 
-// On Approve Callback - Called after payment is approved
+// On Approve Callback - Used by both PayPal buttons and card fields
 async function onApproveCallback(data, actions) {
     try {
-        const response = await fetch(`/.netlify/functions/capture-order-tt`, {
+        const response = await fetch(`/.netlify/functions/paypal-capture-order`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -95,9 +84,8 @@ async function onApproveCallback(data, actions) {
         const errorDetail = orderData?.details?.[0];
 
         // Handle INSTRUMENT_DECLINED error
-        if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
+        if (errorDetail?.issue === "INSTRUMENT_DECLINED" && actions && actions.restart) {
             // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-            // Restart the payment flow
             return actions.restart();
         } else if (errorDetail || !transaction || transaction.status === "DECLINED") {
             // (2) Other non-recoverable errors -> Show a failure message
@@ -116,309 +104,161 @@ async function onApproveCallback(data, actions) {
             resultMessage(
                 `✅ Payment Successful!<br><br>Transaction ID: ${transaction.id}<br>Status: ${transaction.status}<br><br>Thank you for your purchase!`
             );
-            console.log("Capture result", orderData, JSON.stringify(orderData, null, 2));
+            console.log(
+                "Capture result",
+                orderData,
+                JSON.stringify(orderData, null, 2)
+            );
         }
     } catch (error) {
-        console.error("Capture error:", error);
+        console.error(error);
         resultMessage(
-            `Sorry, your transaction could not be processed...<br><br>${error.message}`,
-            true
+            `Sorry, your transaction could not be processed...<br><br>${error.message || error}`
         );
     }
 }
 
-// Error Handler
-function onErrorCallback(error) {
-    console.error("PayPal SDK error:", error);
-    resultMessage(`An error occurred with PayPal. Please try again or contact support.<br><br>Error: ${error.message}`, true);
-}
-
 // Result Message Display
-function resultMessage(message, isError = false) {
+function resultMessage(message) {
     const container = document.querySelector("#result-message");
     if (container) {
         container.innerHTML = message;
-        container.className = isError ? "error-message" : "";
+        container.className = message.includes("✅") ? "" : "error-message";
     }
 }
-
-// Global card payment handler (backup for onclick)
-window.handleCardPayment = function(event) {
-    if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-    
-    console.log("handleCardPayment called");
-    
-    if (!globalCardField) {
-        console.error("Card field not initialized");
-        resultMessage("Card payment not ready. Please refresh the page.", true);
-        return false;
-    }
-    
-    // Validate billing address fields
-    const addressLine1 = document.getElementById("card-billing-address-line-1")?.value?.trim();
-    const adminArea1 = document.getElementById("card-billing-address-admin-area-line-1")?.value?.trim();
-    const countryCode = document.getElementById("card-billing-address-country-code")?.value?.trim();
-    const postalCode = document.getElementById("card-billing-address-postal-code")?.value?.trim();
-    
-    if (!addressLine1 || !adminArea1 || !countryCode || !postalCode) {
-        resultMessage("Please fill in all required billing address fields.", true);
-        return false;
-    }
-    
-    const submitButton = document.getElementById("card-field-submit-button");
-    if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = "Processing...";
-    }
-    
-    console.log("Submitting card payment...");
-    resultMessage("Processing payment...", false);
-    
-    globalCardField
-        .submit({
-            billingAddress: {
-                addressLine1: addressLine1,
-                addressLine2: document.getElementById("card-billing-address-line-2")?.value?.trim() || "",
-                adminArea1: adminArea1,
-                adminArea2: document.getElementById("card-billing-address-admin-area-line-2")?.value?.trim() || "",
-                countryCode: countryCode,
-                postalCode: postalCode,
-            },
-        })
-        .then(() => {
-            console.log("Card field submit successful");
-        })
-        .catch((error) => {
-            console.error("Card field submit error:", error);
-            resultMessage(`Card payment error: ${error.message}`, true);
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.textContent = "Pay now with Card";
-            }
-        });
-    
-    return false;
-};
 
 // Wait for PayPal SDK to load
 function initializePayPal() {
-    console.log("initializePayPal called, typeof paypal:", typeof paypal);
-    console.log("window.paypalSDKLoaded:", window.paypalSDKLoaded);
-    
     if (typeof paypal === 'undefined') {
-        console.error("PayPal SDK not loaded - paypal object is undefined");
-        console.error("This could mean:");
-        console.error("1. The SDK script failed to load (check Network tab)");
-        console.error("2. The Client ID is invalid");
-        console.error("3. There's a CORS or network issue");
-        resultMessage("PayPal SDK failed to load. Please check your internet connection and refresh the page. If the problem persists, the Client ID may be invalid.", true);
+        setTimeout(initializePayPal, 100);
         return;
     }
-    
-    if (!paypal.Buttons || !paypal.CardFields) {
-        console.error("PayPal SDK loaded but missing required components");
-        console.error("Available paypal properties:", Object.keys(paypal));
-        resultMessage("PayPal SDK loaded but missing required components. Please refresh the page.", true);
-        return;
-    }
-    
-    console.log("PayPal SDK loaded successfully, initializing...");
-    
-    try {
-        // Render PayPal Buttons
-        paypal
-            .Buttons({
-                createOrder: createOrderCallback,
-                onApprove: onApproveCallback,
-                onError: onErrorCallback,
-                style: {
-                    shape: "rect",
-                    layout: "vertical",
-                    color: "gold",
-                    label: "paypal",
-                },
-            })
-            .render("#paypal-button-container");
 
-        // Render Card Fields - check if available
-        if (!window.paypal.CardFields) {
-            console.warn("CardFields not available - your account may need approval for Expanded Checkout");
-            const cardForm = document.getElementById("card-form");
-            if (cardForm) {
-                cardForm.innerHTML = '<p style="color: #c62828; padding: 1rem;">Card payment is not available. Your PayPal account needs to be approved for "Expanded Credit and Debit Card Payments". Please use the PayPal button above.</p>';
-            }
-            return; // Exit early if CardFields not available
-        }
-        
-        const cardField = window.paypal.CardFields({
+    console.log("PayPal SDK loaded, initializing...");
+
+    // Render PayPal Buttons
+    paypal
+        .Buttons({
             createOrder: createOrderCallback,
             onApprove: onApproveCallback,
+            onError: function (error) {
+                console.error("PayPal button error:", error);
+                resultMessage(`An error occurred with PayPal. Please try again.<br><br>${error.message || error}`);
+            },
             style: {
-                input: {
-                    "font-size": "16px",
-                    "font-family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                    "font-weight": "normal",
-                    color: "#1a2e22",
-                },
-                ".invalid": { 
-                    color: "#c62828",
-                    border: "2px solid #c62828"
-                },
+                shape: "rect",
+                layout: "vertical",
+                color: "gold",
+                label: "paypal",
+            },
+        })
+        .render("#paypal-button-container");
+
+    // Render Card Fields - check if available
+    if (!window.paypal.CardFields) {
+        console.warn("CardFields not available - your account may need approval");
+        const cardForm = document.getElementById("card-form");
+        if (cardForm) {
+            cardForm.innerHTML = '<p style="color: #c62828; padding: 1rem;">Card payment is not available. Your PayPal account needs to be approved for "Expanded Credit and Debit Card Payments". Please use the PayPal button above.</p>';
+        }
+        return;
+    }
+
+    // Render Card Fields
+    const cardField = window.paypal.CardFields({
+        createOrder: createOrderCallback,
+        onApprove: onApproveCallback,
+        style: {
+            input: {
+                "font-size": "16px",
+                "font-family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                "font-weight": "normal",
+                color: "#1a2e22",
+            },
+            ".invalid": { 
+                color: "#c62828",
+                border: "2px solid #c62828"
+            },
+        },
+    });
+
+    if (cardField.isEligible()) {
+        // Render Card Name Field
+        const nameField = cardField.NameField({
+            style: { 
+                input: { color: "#1a2e22" }, 
+                ".invalid": { color: "#c62828" } 
             },
         });
-        
-        // Store globally for onclick handler
-        globalCardField = cardField;
+        nameField.render("#card-name-field-container");
 
-        const isEligible = cardField.isEligible();
-        console.log("Card fields eligible:", isEligible);
-        
-        if (isEligible) {
-            // Render Card Name Field
-            const nameField = cardField.NameField({
-                style: { 
-                    input: { color: "#1a2e22" }, 
-                    ".invalid": { color: "#c62828" } 
-                },
+        // Render Card Number Field
+        const numberField = cardField.NumberField({
+            style: { input: { color: "#1a2e22" } },
+        });
+        numberField.render("#card-number-field-container");
+
+        // Render CVV Field
+        const cvvField = cardField.CVVField({
+            style: { input: { color: "#1a2e22" } },
+        });
+        cvvField.render("#card-cvv-field-container");
+
+        // Render Expiry Field
+        const expiryField = cardField.ExpiryField({
+            style: { input: { color: "#1a2e22" } },
+        });
+        expiryField.render("#card-expiry-field-container");
+
+        // Add click listener to submit button
+        document
+            .getElementById("card-field-submit-button")
+            .addEventListener("click", () => {
+                cardField
+                    .submit({
+                        // From your billing address fields
+                        billingAddress: {
+                            addressLine1: document.getElementById(
+                                "card-billing-address-line-1"
+                            ).value,
+                            addressLine2: document.getElementById(
+                                "card-billing-address-line-2"
+                            ).value || "",
+                            adminArea1: document.getElementById(
+                                "card-billing-address-admin-area-line-1"
+                            ).value,
+                            adminArea2: document.getElementById(
+                                "card-billing-address-admin-area-line-2"
+                            ).value || "",
+                            countryCode: document.getElementById(
+                                "card-billing-address-country-code"
+                            ).value,
+                            postalCode: document.getElementById(
+                                "card-billing-address-postal-code"
+                            ).value,
+                        },
+                    })
+                    .then(() => {
+                        console.log("Card field submit successful");
+                    })
+                    .catch((error) => {
+                        console.error("Card field submit error:", error);
+                        resultMessage(`Card payment error: ${error.message || error}`);
+                    });
             });
-            nameField.render("#card-name-field-container");
-
-            // Render Card Number Field
-            const numberField = cardField.NumberField({
-                style: { input: { color: "#1a2e22" } },
-            });
-            numberField.render("#card-number-field-container");
-
-            // Render CVV Field
-            const cvvField = cardField.CVVField({
-                style: { input: { color: "#1a2e22" } },
-            });
-            cvvField.render("#card-cvv-field-container");
-
-            // Render Expiry Field
-            const expiryField = cardField.ExpiryField({
-                style: { input: { color: "#1a2e22" } },
-            });
-            expiryField.render("#card-expiry-field-container");
-
-            // Add click listener to submit button - use event delegation for reliability
-            const submitButton = document.getElementById("card-field-submit-button");
-            if (submitButton) {
-                // Remove any existing listeners first
-                const newButton = submitButton.cloneNode(true);
-                submitButton.parentNode.replaceChild(newButton, submitButton);
-                
-                newButton.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    console.log("Card submit button clicked");
-                    
-                    // Validate billing address fields
-                    const addressLine1 = document.getElementById("card-billing-address-line-1")?.value?.trim();
-                    const adminArea1 = document.getElementById("card-billing-address-admin-area-line-1")?.value?.trim();
-                    const countryCode = document.getElementById("card-billing-address-country-code")?.value?.trim();
-                    const postalCode = document.getElementById("card-billing-address-postal-code")?.value?.trim();
-                    
-                    if (!addressLine1 || !adminArea1 || !countryCode || !postalCode) {
-                        resultMessage("Please fill in all required billing address fields.", true);
-                        return;
-                    }
-                    
-                    // Disable button during processing
-                    newButton.disabled = true;
-                    newButton.textContent = "Processing...";
-                    
-                    console.log("Submitting card payment...");
-                    resultMessage("Processing payment...", false);
-                    
-                    cardField
-                        .submit({
-                            billingAddress: {
-                                addressLine1: addressLine1,
-                                addressLine2: document.getElementById("card-billing-address-line-2")?.value?.trim() || "",
-                                adminArea1: adminArea1,
-                                adminArea2: document.getElementById("card-billing-address-admin-area-line-2")?.value?.trim() || "",
-                                countryCode: countryCode,
-                                postalCode: postalCode,
-                            },
-                        })
-                        .then(() => {
-                            console.log("Card field submit successful");
-                        })
-                        .catch((error) => {
-                            console.error("Card field submit error:", error);
-                            resultMessage(`Card payment error: ${error.message}`, true);
-                            // Re-enable button on error
-                            newButton.disabled = false;
-                            newButton.textContent = "Pay now with Card";
-                        });
-                });
-                
-                console.log("Card submit button handler attached");
-            } else {
-                console.error("Card submit button not found - retrying in 500ms");
-                setTimeout(() => {
-                    const retryButton = document.getElementById("card-field-submit-button");
-                    if (retryButton) {
-                        console.log("Found button on retry");
-                        // Re-run the button setup
-                        location.reload();
-                    }
-                }, 500);
-            }
-        } else {
-            // Card fields not eligible - show message
-            console.warn("Card fields not eligible for this account");
-            const cardForm = document.getElementById("card-form");
-            if (cardForm) {
-                const message = document.createElement("p");
-                message.style.color = "#c62828";
-                message.style.marginTop = "1rem";
-                message.textContent = "Card payment not available. Please use PayPal button above.";
-                cardForm.appendChild(message);
-                document.getElementById("card-field-submit-button").style.display = "none";
-            }
-            resultMessage("Card fields are not eligible. Your PayPal account may need to be approved for Expanded Checkout. Please use the PayPal button above.", true);
+    } else {
+        // Card fields not eligible - hide the card form
+        console.warn("Card fields not eligible for this account");
+        const cardForm = document.getElementById("card-form");
+        if (cardForm) {
+            cardForm.innerHTML = '<p style="color: #c62828; padding: 1rem;">Card payment is not available. Please use the PayPal button above.</p>';
         }
-    } catch (error) {
-        console.error("PayPal initialization error:", error);
-        resultMessage(`PayPal initialization error: ${error.message}. Please refresh the page.`, true);
     }
 }
 
-// Wait for DOM and PayPal SDK to be ready
+// Start initialization when SDK is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        // Wait a bit for PayPal SDK to load
-        setTimeout(initializePayPal, 100);
-    });
+    document.addEventListener('DOMContentLoaded', initializePayPal);
 } else {
-    // DOM already loaded, wait for PayPal SDK
-    if (typeof paypal !== 'undefined') {
-        initializePayPal();
-    } else {
-        // Wait for PayPal SDK to load
-        let attempts = 0;
-        const maxAttempts = 50; // 5 seconds max wait
-        
-        const checkPayPal = setInterval(function() {
-            attempts++;
-            console.log(`Waiting for PayPal SDK... attempt ${attempts}/${maxAttempts}`);
-            
-            if (typeof paypal !== 'undefined' && paypal.Buttons && paypal.CardFields) {
-                clearInterval(checkPayPal);
-                console.log("PayPal SDK detected, initializing...");
-                initializePayPal();
-            } else if (attempts >= maxAttempts) {
-                clearInterval(checkPayPal);
-                console.error("PayPal SDK failed to load after", maxAttempts, "attempts");
-                console.error("Check the Network tab to see if the SDK script loaded");
-                resultMessage("PayPal SDK failed to load after 5 seconds. Please check your internet connection, verify the Client ID is correct, and refresh the page.", true);
-            }
-        }, 100);
-    }
+    initializePayPal();
 }
