@@ -11,7 +11,7 @@
         function loadPayPalSDK(retryCount = 0) {
             const maxRetries = 3;
             const script = document.createElement('script');
-            script.src = 'https://www.paypal.com/sdk/js?client-id=AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV&currency=AUD&intent=capture&components=buttons,card-fields&buyer-country=AU';
+            script.src = 'https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&intent=capture&components=buttons,card-fields&buyer-country=AU';
             script.setAttribute('data-sdk-integration-source', 'button-factory');
             script.async = true;
             
@@ -415,7 +415,7 @@
                     console.error('2. Client ID is for sandbox but trying to use on live domain');
                     console.error('3. Domain not allowed in PayPal app settings');
                     console.error('4. Network/CORS issues');
-                    console.error('Client ID used: AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV');
+                    console.error('Client ID used: AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi');
                 } else {
                     console.log('=== PayPal SDK Diagnostic ===');
                     console.log('PayPal SDK loaded successfully');

@@ -31,8 +31,8 @@ exports.handler = async (event, context) => {
     
     try {
         // Get credentials from environment variables
-        const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || 'AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV';
-        const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || 'EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY';
+        const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || 'AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi';
+        const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || 'EAnPKgxB1TWM042LEvt-FmCeWZB9UqX3rSdJ0W95lU_selSN1ZFqRx69SlMBCSQOsk8fBc336C_mSICw';
         const PAYPAL_ENVIRONMENT = process.env.PAYPAL_ENVIRONMENT || 'live'; // 'live' or 'sandbox'
         
         // Initialize PayPal client

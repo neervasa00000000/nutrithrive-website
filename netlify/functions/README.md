@@ -16,8 +16,8 @@ npm install
 
 Go to **Netlify Dashboard** → **Site Settings** → **Environment Variables** and add:
 
-- `PAYPAL_CLIENT_ID` = `AWENgCZmgDmSWoCPafyEVah9MQmXbJpsNfaq8bQrHElnLCnqSJTNG34tMXtHRKBlDuKoTf49Po3iwcRV`
-- `PAYPAL_CLIENT_SECRET` = `EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY`
+- `PAYPAL_CLIENT_ID` = `AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi`
+- `PAYPAL_CLIENT_SECRET` = `EAnPKgxB1TWM042LEvt-FmCeWZB9UqX3rSdJ0W95lU_selSN1ZFqRx69SlMBCSQOsk8fBc336C_mSICw`
 - `PAYPAL_ENVIRONMENT` = `live` (or `sandbox` for testing)
 
 ⚠️ **Important:** The functions have fallback values, but it's better to use environment variables for security.
