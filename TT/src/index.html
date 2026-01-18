@@ -311,6 +311,9 @@
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ amount: amount })
+                    }).catch(err => {
+                        console.error("Network error:", err);
+                        throw new Error("Failed to connect to server. Please check your internet connection.");
                     });
                     
                     if (!res.ok) {
@@ -329,6 +332,9 @@
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ orderID: data.orderID })
+                    }).catch(err => {
+                        console.error("Network error:", err);
+                        throw new Error("Failed to connect to server. Please check your internet connection.");
                     });
                     
                     if (!res.ok) {
@@ -370,6 +376,6 @@
         }
     </script>
     
-    <script src="app.js"></script>
+    <!-- app.js removed - PayPal integration is now inline above -->
 </body>
 </html>
