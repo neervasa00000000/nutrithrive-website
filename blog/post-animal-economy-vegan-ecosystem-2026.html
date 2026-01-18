@@ -1182,34 +1182,58 @@
     <script src="../shared/js/script.js" defer></script>
     
     <script>
-        // Table of Contents Navigation
-        (function() {
+        // Table of Contents Navigation - Ensure it runs after DOM is ready
+        function initTableOfContents() {
             // Smooth scroll for TOC links
-            document.querySelectorAll('.table-of-contents a, .toc-mobile a, .toc-mobile-link').forEach(function(link) {
+            var tocLinks = document.querySelectorAll('.table-of-contents a, .toc-mobile a, .toc-mobile-link');
+            
+            tocLinks.forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    
                     var targetId = this.getAttribute('href');
+                    if (!targetId || !targetId.startsWith('#')) return;
+                    
                     var targetElement = document.querySelector(targetId);
                     
                     if (targetElement) {
-                        var headerOffset = 100;
+                        // Get header height (navbar + some padding)
+                        var headerOffset = 120;
+                        
+                        // Calculate position
                         var elementPosition = targetElement.getBoundingClientRect().top;
                         var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                         
+                        // Smooth scroll to the section
                         window.scrollTo({
-                            top: offsetPosition,
+                            top: Math.max(0, offsetPosition),
                             behavior: 'smooth'
                         });
+                        
+                        // Update URL hash without triggering scroll
+                        if (history.pushState) {
+                            history.pushState(null, null, targetId);
+                        } else {
+                            window.location.hash = targetId;
+                        }
+                        
+                        // Focus the element for accessibility
+                        targetElement.setAttribute('tabindex', '-1');
+                        targetElement.focus();
+                    } else {
+                        // Fallback: try native anchor behavior
+                        window.location.href = targetId;
                     }
                 });
             });
             
             // Active section highlighting
             var sections = document.querySelectorAll('h2[id]');
-            var tocLinks = document.querySelectorAll('.table-of-contents a, .toc-mobile a, .toc-mobile-link');
             
             function updateActiveSection() {
                 var scrollPosition = window.pageYOffset + 150;
+                var currentActive = null;
                 
                 sections.forEach(function(section) {
                     var sectionTop = section.offsetTop;
@@ -1217,12 +1241,16 @@
                     var sectionId = section.getAttribute('id');
                     
                     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        tocLinks.forEach(function(link) {
-                            link.classList.remove('active');
-                            if (link.getAttribute('data-section') === sectionId) {
-                                link.classList.add('active');
-                            }
-                        });
+                        currentActive = sectionId;
+                    }
+                });
+                
+                // Update active state
+                tocLinks.forEach(function(link) {
+                    var linkSection = link.getAttribute('data-section') || link.getAttribute('href').substring(1);
+                    link.classList.remove('active');
+                    if (linkSection === currentActive) {
+                        link.classList.add('active');
                     }
                 });
             }
@@ -1240,24 +1268,35 @@
             });
             
             // Initial check
-            updateActiveSection();
-        })();
+            setTimeout(updateActiveSection, 100);
+        }
         
         // Mobile TOC Toggle
         function toggleMobileTOC() {
             var tocMobile = document.getElementById('tocMobile');
             var tocOverlay = document.getElementById('tocOverlay');
             
-            tocMobile.classList.toggle('open');
-            tocOverlay.style.display = tocMobile.classList.contains('open') ? 'block' : 'none';
+            if (tocMobile && tocOverlay) {
+                tocMobile.classList.toggle('open');
+                tocOverlay.style.display = tocMobile.classList.contains('open') ? 'block' : 'none';
+            }
         }
         
         function closeMobileTOC() {
             var tocMobile = document.getElementById('tocMobile');
             var tocOverlay = document.getElementById('tocOverlay');
             
-            tocMobile.classList.remove('open');
-            tocOverlay.style.display = 'none';
+            if (tocMobile && tocOverlay) {
+                tocMobile.classList.remove('open');
+                tocOverlay.style.display = 'none';
+            }
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTableOfContents);
+        } else {
+            initTableOfContents();
         }
         
         // Close mobile TOC on escape key
@@ -1266,6 +1305,10 @@
                 closeMobileTOC();
             }
         });
+        
+        // Make functions globally available
+        window.toggleMobileTOC = toggleMobileTOC;
+        window.closeMobileTOC = closeMobileTOC;
     </script>
     
     <script>
