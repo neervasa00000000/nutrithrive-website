@@ -6,7 +6,7 @@
     <title>Checkout | NutriThrive</title>
     <link rel="stylesheet" href="../../shared/css/style.css">
     <!-- PayPal SDK - Load directly in head -->
-    <script src="https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture&components=buttons,card-fields&buyer-country=AU" data-sdk-integration-source="button-factory"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY&currency=AUD&intent=capture&components=buttons,card-fields&buyer-country=AU" data-sdk-integration-source="button-factory" onerror="console.error('PayPal SDK script failed to load - check Client ID and network connection')"></script>
     <style>
         body {
             background: #f8f5ec;
@@ -362,11 +362,39 @@
         function checkPayPalSDK() {
             if (typeof paypal === 'undefined') {
                 console.error('PayPal SDK not loaded');
-                showPayPalError('PayPal SDK failed to load. Please refresh the page.');
+                console.error('Check if Client ID is valid and account is properly configured');
+                showPayPalError('PayPal SDK failed to load. Please check: 1) Client ID is valid, 2) Account is live (not sandbox), 3) Domain is allowed in PayPal settings.');
+                return false;
+            }
+            if (!paypal.Buttons) {
+                console.error('PayPal Buttons not available');
+                console.error('PayPal object:', paypal);
+                showPayPalError('PayPal Buttons component not available. Check Client ID configuration.');
                 return false;
             }
             return true;
         }
+        
+        // Log PayPal SDK status
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof paypal === 'undefined') {
+                    console.error('=== PayPal SDK Diagnostic ===');
+                    console.error('PayPal SDK failed to load after page load');
+                    console.error('Possible issues:');
+                    console.error('1. Invalid Client ID');
+                    console.error('2. Client ID is for sandbox but trying to use on live domain');
+                    console.error('3. Domain not allowed in PayPal app settings');
+                    console.error('4. Network/CORS issues');
+                    console.error('Client ID used: EPv_hqIeerM5-A8UspVHLViBWsKMaoHNdHP5Gp4UvpzN-DBKk1ZRPap-dWEkW0vZGEdNHQ0pEHLjiCPY');
+                } else {
+                    console.log('=== PayPal SDK Diagnostic ===');
+                    console.log('PayPal SDK loaded successfully');
+                    console.log('PayPal object:', paypal);
+                    console.log('Available components:', Object.keys(paypal));
+                }
+            }, 2000);
+        });
     </script>
     
     <script>
