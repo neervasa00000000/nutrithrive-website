@@ -24,11 +24,26 @@ export async function handler(event) {
         const client = process.env.PAYPAL_CLIENT_ID;
         const secret = process.env.PAYPAL_CLIENT_SECRET;
 
+        // Debug logging (remove in production if needed)
+        console.log("Environment check:", {
+            hasBase: !!process.env.PAYPAL_BASE,
+            hasClient: !!client,
+            hasSecret: !!secret,
+            base: base
+        });
+
         if (!client || !secret) {
+            const missing = [];
+            if (!client) missing.push("PAYPAL_CLIENT_ID");
+            if (!secret) missing.push("PAYPAL_CLIENT_SECRET");
             return {
                 statusCode: 500,
                 headers,
-                body: JSON.stringify({ error: "Missing PayPal environment variables" }),
+                body: JSON.stringify({ 
+                    error: "Missing PayPal environment variables",
+                    missing: missing,
+                    hint: "Please check Netlify environment variables and redeploy"
+                }),
             };
         }
 

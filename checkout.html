@@ -259,7 +259,12 @@
                     window.location.href = `/thank-you.html?orderId=${details.id || data.orderID}`;
                 },
                 onError: (err) => {
-                    alert(`Payment error: ${err.message || "Unknown error"}`);
+                    console.error("PayPal error:", err);
+                    let errorMsg = err.message || "Unknown error";
+                    if (err.message && err.message.includes("Missing PayPal")) {
+                        errorMsg = "Server configuration error. Please contact support or try again later.";
+                    }
+                    alert(`Payment error: ${errorMsg}`);
                 }
             }).render("#paypal-button-container");
         }
