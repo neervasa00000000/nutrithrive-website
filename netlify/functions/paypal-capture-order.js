@@ -36,7 +36,7 @@ export async function handler(event) {
     }
 
     // Use environment variables or fallback to defaults
-    const base = process.env.PAYPAL_BASE || "https://api.paypal.com";
+    const base = (process.env.PAYPAL_BASE || process.env.PAYPAL_ENVIRONMENT || "https://api.paypal.com").replace(/\/$/, "");
     const client = process.env.PAYPAL_CLIENT_ID || "AWtclBnz1gQWQne-vS-OnExG1-RI7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi";
     const secret = process.env.PAYPAL_CLIENT_SECRET || "EAnPKgxB1TWM042LEvt-FmCeWZB9UqX3rSdJ0W95IU_selSN1ZFqRx69SIMBCSQOsk8fBc336C_mSICw";
 
