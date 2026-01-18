@@ -622,9 +622,49 @@
                     }]
                 });
             },
-            onApprove: function(data, actions) {
-                // Capture the payment
-                return actions.order.capture().then(function(details) {
+            onApprove: async function(data, actions) {
+                // Use backend API to capture payment (more secure)
+                try {
+                    const response = await fetch(`${window.location.origin}/.netlify/functions/capture-order`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            orderID: data.orderID
+                        }),
+                    });
+                    
+                    const orderData = await response.json();
+                    const transaction = orderData?.purchase_units?.[0]?.payments?.captures?.[0];
+                    const errorDetail = orderData?.details?.[0];
+                    
+                    // Handle INSTRUMENT_DECLINED (recoverable)
+                    if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED' && actions && actions.restart) {
+                        return actions.restart();
+                    }
+                    
+                    if (errorDetail || !transaction || transaction.status === 'DECLINED') {
+                        let errorMessage;
+                        if (transaction) {
+                            errorMessage = `Transaction ${transaction.status}: ${transaction.id}`;
+                        } else if (errorDetail) {
+                            errorMessage = `${errorDetail.description} (${orderData.debug_id})`;
+                        } else {
+                            errorMessage = JSON.stringify(orderData);
+                        }
+                        alert('Payment failed: ' + errorMessage);
+                        throw new Error(errorMessage);
+                    }
+                    
+                    // Success
+                    const orderId = transaction.id || orderData.id;
+                    alert('Payment successful! Order ID: ' + orderId + '\n\nThank you for your purchase!');
+                    window.location.href = '../test/thank-you.html?orderId=' + orderId;
+                } catch (error) {
+                    console.error('Capture error:', error);
+                    // Fallback to client-side capture if backend fails
+                    return actions.order.capture().then(function(details) {
                     // Payment successful
                     console.log('Payment successful:', details);
                     
