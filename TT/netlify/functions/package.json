@@ -1,9 +1,0 @@
-{
-  "name": "tt-paypal-functions",
-  "version": "1.0.0",
-  "description": "Netlify Functions for PayPal integration",
-  "main": "index.js",
-  "dependencies": {
-    "@paypal/paypal-server-sdk": "^1.0.0"
-  }
-}

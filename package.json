@@ -1,8 +1,0 @@
-{
-  "name": "nutrithrive-website",
-  "version": "1.0.0",
-  "description": "NutriThrive website with PayPal integration",
-  "dependencies": {
-    "@paypal/paypal-server-sdk": "^1.0.0"
-  }
-}
