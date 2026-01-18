@@ -474,12 +474,11 @@
         const API_BASE = window.location.origin; // Will use /api/orders for Netlify functions
         
         // Create Order Callback (for both PayPal and Card Fields)
-        // Uses backend API for secure server-side order creation
-        // Follows PayPal's official documentation pattern
+        // Uses backend API first, falls back to client-side if backend fails
         async function createOrderCallback(data, actions) {
             resultMessage(''); // Clear previous messages
             
-            console.log('Creating PayPal order via backend API...');
+            console.log('Creating PayPal order...');
             
             const totals = renderOrderSummary();
             
@@ -507,11 +506,9 @@
                 throw error;
             }
             
+            // Try backend API first
             try {
-                // Call backend API to create order
-                console.log('Calling backend API:', `${API_BASE}/.netlify/functions/create-order`);
-                console.log('Request payload:', { cart, totals, shipping: orderData });
-                
+                console.log('Attempting backend API...');
                 const response = await fetch(`${API_BASE}/.netlify/functions/create-order`, {
                     method: 'POST',
                     headers: {
@@ -524,51 +521,78 @@
                     }),
                 });
                 
-                console.log('Response status:', response.status, response.statusText);
-                
                 const orderData_response = await response.json();
-                console.log('Response data:', orderData_response);
                 
-                if (!response.ok) {
-                    const errorMsg = orderData_response.message || orderData_response.error || 'Failed to create order';
-                    resultMessage(`Could not initiate PayPal Checkout...<br><br>${errorMsg}`, true);
-                    throw new Error(errorMsg);
-                }
-                
-                if (orderData_response.id) {
-                    console.log('Order created successfully:', orderData_response.id);
+                if (response.ok && orderData_response.id) {
+                    console.log('✅ Backend API success:', orderData_response.id);
                     return orderData_response.id;
                 } else {
-                    const errorDetail = orderData_response?.details?.[0];
-                    const errorMessage = errorDetail
-                        ? `${errorDetail.issue} ${errorDetail.description} (${orderData_response.debug_id})`
-                        : JSON.stringify(orderData_response);
+                    console.warn('⚠️ Backend API returned error, falling back to client-side');
+                    throw new Error('Backend API error');
+                }
+            } catch (backendError) {
+                console.warn('Backend API failed, using client-side fallback:', backendError);
+                // Fallback to client-side order creation
+                try {
+                    const items = cart.map(item => ({
+                        name: item.name.substring(0, 127),
+                        description: item.name.substring(0, 127),
+                        quantity: item.quantity.toString(),
+                        unit_amount: {
+                            currency_code: 'AUD',
+                            value: item.price.toFixed(2)
+                        }
+                    }));
                     
-                    resultMessage(`Could not initiate PayPal Checkout...<br><br>${errorMessage}`, true);
-                    throw new Error(errorMessage);
+                    console.log('Using client-side order creation');
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: totals.total.toFixed(2),
+                                currency_code: 'AUD',
+                                breakdown: {
+                                    item_total: {
+                                        currency_code: 'AUD',
+                                        value: totals.subtotal.toFixed(2)
+                                    },
+                                    shipping: {
+                                        currency_code: 'AUD',
+                                        value: totals.shipping.toFixed(2)
+                                    }
+                                }
+                            },
+                            items: items,
+                            shipping: {
+                                name: {
+                                    full_name: orderData.firstName + ' ' + orderData.lastName
+                                },
+                                address: {
+                                    address_line_1: orderData.address,
+                                    address_line_2: orderData.address2 || '',
+                                    admin_area_2: orderData.city,
+                                    admin_area_1: orderData.state,
+                                    postal_code: orderData.postcode,
+                                    country_code: 'AU'
+                                }
+                            }
+                        }]
+                    });
+                } catch (clientError) {
+                    console.error('Both backend and client-side failed:', clientError);
+                    resultMessage(`Could not create order. Please try again or contact support.<br><br>Error: ${clientError.message || 'Unknown error'}`, true);
+                    throw clientError;
                 }
-            } catch (error) {
-                console.error('Order creation error:', error);
-                console.error('Error stack:', error.stack);
-                
-                let errorMsg = error.message || 'Unknown error';
-                if (error.message && error.message.includes('Failed to fetch')) {
-                    errorMsg = 'Cannot connect to server. Please check your internet connection or try again later.';
-                }
-                
-                resultMessage(`Could not initiate PayPal Checkout...<br><br>${errorMsg}`, true);
-                throw error;
             }
         }
         
         // On Approve Callback (for both PayPal and Card Fields)
-        // Uses backend API for secure server-side order capture
-        // Follows PayPal's official documentation pattern
+        // Uses backend API first, falls back to client-side if backend fails
         async function onApproveCallback(data, actions) {
             console.log('Payment approved, order ID:', data.orderID);
             
+            // Try backend API first
             try {
-                // Call backend API to capture order
+                console.log('Attempting backend capture...');
                 const response = await fetch(`${API_BASE}/.netlify/functions/capture-order`, {
                     method: 'POST',
                     headers: {
@@ -598,48 +622,59 @@
                     }
                 }
                 
-                if (errorDetail || !transaction || transaction.status === 'DECLINED') {
-                    // (2) Other non-recoverable errors -> Show a failure message
-                    let errorMessage;
-                    if (transaction) {
-                        errorMessage = `Transaction ${transaction.status}: ${transaction.id}`;
-                    } else if (errorDetail) {
-                        errorMessage = `${errorDetail.description} (${orderData.debug_id})`;
-                    } else {
-                        errorMessage = JSON.stringify(orderData);
-                    }
-                    
-                    resultMessage(`Sorry, your transaction could not be processed...<br><br>${errorMessage}`, true);
-                    throw new Error(errorMessage);
-                } else {
-                    // (3) Successful transaction -> Show confirmation or thank you message
-                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    
+                if (response.ok && transaction && transaction.status !== 'DECLINED') {
+                    // (3) Success via backend
+                    console.log('✅ Backend capture success');
                     const orderId = transaction.id || orderData.id;
-                    resultMessage(`Transaction ${transaction.status}: ${orderId}<br><br>Redirecting to thank you page...`, false);
-                    
-                    // Store order data
-                    const order = {
-                        orderId: orderId,
-                        payer: orderData.payer,
-                        items: cart,
-                        shipping: orderData,
-                        total: transaction.amount?.value || totals.total.toFixed(2),
-                        timestamp: new Date().toISOString()
-                    };
-                    
-                    localStorage.setItem('lastOrder', JSON.stringify(order));
-                    localStorage.removeItem('cart');
-                    
-                    // Redirect to thank you page
-                    setTimeout(() => {
-                        window.location.href = 'thank-you.html?orderId=' + orderId;
-                    }, 2000);
+                    handlePaymentSuccess(orderId, orderData);
+                    return;
+                } else {
+                    // (2) Backend returned error, try client-side fallback
+                    console.warn('⚠️ Backend capture failed, trying client-side fallback');
+                    throw new Error('Backend capture error');
                 }
-            } catch (error) {
-                console.error('Capture error:', error);
-                resultMessage(`Sorry, your transaction could not be processed...<br><br>${error.message || error}`, true);
+            } catch (backendError) {
+                console.warn('Backend capture failed, using client-side fallback:', backendError);
+                // Fallback to client-side capture
+                if (actions && actions.order) {
+                    return actions.order.capture().then(function(details) {
+                        console.log('✅ Client-side capture success');
+                        handlePaymentSuccess(details.id, details);
+                    }).catch(function(err) {
+                        console.error('❌ Client-side capture also failed:', err);
+                        resultMessage(`Sorry, your transaction could not be processed...<br><br>${err.message || 'Unknown error'}<br><br>Please contact support at nutrithrive0@gmail.com`, true);
+                    });
+                } else {
+                    resultMessage(`Sorry, your transaction could not be processed...<br><br>Please contact support at nutrithrive0@gmail.com`, true);
+                }
             }
+        }
+        
+        function handlePaymentSuccess(orderId, orderData) {
+            const totals = renderOrderSummary();
+            const transaction = orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
+                orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
+            
+            console.log('Payment successful! Order ID:', orderId);
+            resultMessage(`Transaction successful! Order ID: ${orderId}<br><br>Redirecting to thank you page...`, false);
+            
+            // Store order data
+            const order = {
+                orderId: orderId,
+                payer: orderData.payer || orderData.payer,
+                items: cart,
+                shipping: orderData,
+                total: transaction?.amount?.value || totals.total.toFixed(2),
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('lastOrder', JSON.stringify(order));
+            localStorage.removeItem('cart');
+            
+            // Redirect to thank you page
+            setTimeout(() => {
+                window.location.href = 'thank-you.html?orderId=' + orderId;
+            }, 2000);
         }
         
         // Result message function (matches PayPal documentation pattern)
@@ -691,7 +726,17 @@
                         // Handle buyer checkout errors
                         console.error('PayPal error:', err);
                         console.error('Error details:', JSON.stringify(err, null, 2));
-                        resultMessage(`An error occurred with PayPal. Please try again or contact support.<br><br>Error: ${err.message || JSON.stringify(err)}`, true);
+                        
+                        let errorMsg = 'An error occurred with PayPal. ';
+                        if (err && err.message) {
+                            errorMsg += err.message;
+                        } else if (err && typeof err === 'string') {
+                            errorMsg += err;
+                        } else {
+                            errorMsg += 'Please check the browser console (F12) for details.';
+                        }
+                        
+                        resultMessage(`${errorMsg}<br><br>Please try again or contact support at nutrithrive0@gmail.com`, true);
                     },
                     onCancel: function(data) {
                         console.log('Payment cancelled:', data);
