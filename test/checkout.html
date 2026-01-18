@@ -446,6 +446,8 @@
         
         // Create Order Callback (for both PayPal and Card Fields)
         function createOrderCallback(data, actions) {
+            console.log('Creating PayPal order...');
+            
             const totals = renderOrderSummary();
             
             // Get form data
@@ -466,8 +468,10 @@
             if (!orderData.firstName || !orderData.lastName || !orderData.email || 
                 !orderData.phone || !orderData.address || !orderData.city || 
                 !orderData.state || !orderData.postcode) {
+                const error = new Error('Please fill in all required fields');
+                console.error('Form validation failed:', orderData);
                 alert('Please fill in all required fields');
-                throw new Error('Form validation failed');
+                throw error;
             }
             
             // Create order items
@@ -481,9 +485,7 @@
                 }
             }));
             
-            // Create order using PayPal SDK (client-side)
-            // Note: For production, use backend API for better security
-            return actions.order.create({
+            const orderRequest = {
                 purchase_units: [{
                     amount: {
                         value: totals.total.toFixed(2),
@@ -514,15 +516,55 @@
                         }
                     }
                 }]
+            };
+            
+            console.log('Order request:', JSON.stringify(orderRequest, null, 2));
+            
+            // Create order using PayPal SDK (client-side)
+            // Note: For production, use backend API for better security
+            return actions.order.create(orderRequest).catch(function(err) {
+                console.error('Order creation error:', err);
+                console.error('Order creation error details:', JSON.stringify(err, null, 2));
+                
+                let errorMsg = 'Failed to create order. ';
+                if (err && err.message) {
+                    errorMsg += err.message;
+                } else if (err && err.details && err.details[0]) {
+                    errorMsg += err.details[0].description || 'Unknown error';
+                } else {
+                    errorMsg += 'Please check console for details.';
+                }
+                
+                handleError(new Error(errorMsg));
+                throw err;
             });
         }
         
         // On Approve Callback (for both PayPal and Card Fields)
         function onApproveCallback(data, actions) {
+            console.log('Payment approved, order ID:', data.orderID);
+            
             // Client-side capture (current implementation)
             // For production, use backend API for better security
             if (actions && actions.order) {
-                return actions.order.capture().then(handleSuccess).catch(handleError);
+                return actions.order.capture().then(function(details) {
+                    console.log('Payment captured successfully:', details);
+                    handleSuccess(details);
+                }).catch(function(err) {
+                    console.error('Capture error:', err);
+                    console.error('Capture error details:', JSON.stringify(err, null, 2));
+                    
+                    let errorMsg = 'Failed to capture payment. ';
+                    if (err && err.message) {
+                        errorMsg += err.message;
+                    } else if (err && err.details && err.details[0]) {
+                        errorMsg += err.details[0].description || 'Unknown error';
+                    } else {
+                        errorMsg += 'Please check console for details.';
+                    }
+                    
+                    handleError(new Error(errorMsg));
+                });
             } else {
                 handleError(new Error('No capture actions available'));
             }
@@ -548,12 +590,33 @@
         
         function handleError(error) {
             console.error('Payment error:', error);
+            console.error('Full error object:', error);
+            
             const resultMsg = document.getElementById('result-message');
-            resultMsg.style.display = 'block';
-            resultMsg.style.background = '#ffebee';
-            resultMsg.style.color = '#d32f2f';
-            resultMsg.textContent = 'Payment failed: ' + error.message;
-            alert('Payment failed. Please try again or contact support.');
+            if (resultMsg) {
+                resultMsg.style.display = 'block';
+                resultMsg.style.background = '#ffebee';
+                resultMsg.style.color = '#d32f2f';
+                
+                let errorText = 'Payment failed. ';
+                if (error && error.message) {
+                    errorText += error.message;
+                } else if (error && typeof error === 'string') {
+                    errorText += error;
+                } else {
+                    errorText += 'Please check the browser console (F12) for details.';
+                }
+                
+                resultMsg.textContent = errorText;
+            }
+            
+            // Show user-friendly alert with option to see details
+            let alertMessage = 'Payment failed. ';
+            if (error && error.message) {
+                alertMessage += '\n\nError: ' + error.message;
+            }
+            alertMessage += '\n\nPlease check the browser console (F12) for more details.';
+            alert(alertMessage);
         }
         
         function resultMessage(message, isError = false) {
@@ -600,7 +663,16 @@
                     onApprove: onApproveCallback,
                     onError: function(err) {
                         console.error('PayPal error:', err);
-                        handleError(err);
+                        console.error('Error details:', JSON.stringify(err, null, 2));
+                        let errorMessage = 'An error occurred with PayPal. ';
+                        if (err && err.message) {
+                            errorMessage += 'Details: ' + err.message;
+                        } else if (err && typeof err === 'string') {
+                            errorMessage += 'Details: ' + err;
+                        } else {
+                            errorMessage += 'Please check the browser console for details.';
+                        }
+                        handleError(new Error(errorMessage));
                     },
                     onCancel: function(data) {
                         console.log('Payment cancelled:', data);
@@ -670,23 +742,51 @@
                     
                     // Submit button handler
                     document.getElementById('card-field-submit-button').addEventListener('click', () => {
+                        console.log('Card payment submit clicked');
+                        
+                        // Validate form first
+                        const firstName = document.getElementById('first-name').value;
+                        const lastName = document.getElementById('last-name').value;
+                        const address = document.getElementById('address').value;
+                        const city = document.getElementById('city').value;
+                        const state = document.getElementById('state').value;
+                        const postcode = document.getElementById('postcode').value;
+                        
+                        if (!firstName || !lastName || !address || !city || !state || !postcode) {
+                            alert('Please fill in all required billing and shipping fields before submitting payment.');
+                            return;
+                        }
+                        
                         // Get billing address from form
                         const billingAddress = {
-                            addressLine1: document.getElementById('address').value,
+                            addressLine1: address,
                             addressLine2: document.getElementById('address2').value || '',
-                            adminArea1: document.getElementById('state').value,
-                            adminArea2: document.getElementById('city').value,
+                            adminArea1: state,
+                            adminArea2: city,
                             countryCode: 'AU',
-                            postalCode: document.getElementById('postcode').value,
+                            postalCode: postcode,
                         };
+                        
+                        console.log('Submitting card payment with address:', billingAddress);
                         
                         cardField.submit({
                             billingAddress: billingAddress
                         }).then(() => {
-                            console.log('Card payment submitted');
+                            console.log('Card payment submitted successfully');
                         }).catch((err) => {
                             console.error('Card payment error:', err);
-                            handleError(err);
+                            console.error('Card payment error details:', JSON.stringify(err, null, 2));
+                            
+                            let errorMsg = 'Card payment failed. ';
+                            if (err && err.message) {
+                                errorMsg += err.message;
+                            } else if (err && err.details && err.details[0]) {
+                                errorMsg += err.details[0].description || 'Unknown error';
+                            } else {
+                                errorMsg += 'Please check console for details.';
+                            }
+                            
+                            handleError(new Error(errorMsg));
                         });
                     });
                 } else {
