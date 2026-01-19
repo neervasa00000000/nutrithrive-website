@@ -511,8 +511,25 @@
             }
         }
         
-        // Initialize on load (country loading is handled earlier)
-        // PayPal initialization happens when SDK loads
+        // Load saved country on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                loadSavedCountry();
+                renderOrderSummary();
+            });
+        } else {
+            loadSavedCountry();
+            renderOrderSummary();
+        }
+        
+        // Load PayPal SDK and initialize
+        const paypalScript = document.createElement('script');
+        paypalScript.src = 'https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&currency=AUD';
+        paypalScript.onload = function() {
+            console.log("PayPal SDK script loaded");
+            setTimeout(initPayPal, 500);
+        };
+        document.head.appendChild(paypalScript);
     </script>
 </body>
 </html>
