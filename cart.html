@@ -97,32 +97,45 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 0.5rem;
             padding-left: 0.5rem;
         }
-        .quantity-btn {
-            width: 32px;
-            height: 32px;
-            border: 2px solid #e0e0e0;
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             background: white;
-            border-radius: 6px;
+            overflow: hidden;
+        }
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: transparent;
             cursor: pointer;
             font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #1a2e22;
+            transition: background-color 0.2s ease;
         }
         .quantity-btn:hover {
-            border-color: #2d5a3d;
-            background: #f8faf7;
+            background: #f0f0f0;
         }
         .quantity-input {
-            width: 60px;
+            width: 50px;
             padding: 0.5rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
+            border: none;
+            border-left: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
             text-align: center;
             font-size: 1rem;
+            background: white;
+            color: #1a2e22;
+        }
+        .quantity-input:focus {
+            outline: none;
         }
         .item-total {
             font-weight: 600;
@@ -320,10 +333,12 @@
                             </div>
                         </div>
                         <div class="quantity-controls">
-                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${parseInt(item.quantity) - 1})">-</button>
-                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" 
-                                   onchange="updateQuantity('${item.id}', this.value)">
-                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${parseInt(item.quantity) + 1})">+</button>
+                            <div class="quantity-box">
+                                <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${parseInt(item.quantity) - 1})">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" 
+                                       onchange="updateQuantity('${item.id}', this.value)">
+                                <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${parseInt(item.quantity) + 1})">+</button>
+                            </div>
                         </div>
                         <div style="text-align: left; padding-left: 0.5rem;">$${parseFloat(item.price).toFixed(2)}</div>
                         <div class="item-total" style="text-align: left; padding-left: 0.5rem;">$${itemTotal}</div>
