@@ -36,22 +36,17 @@
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
-                top: -8px;
+                top: -12px;
                 right: -8px;
-                background: #c62828;
-                color: white;
-                border-radius: 50%;
-                width: 18px;
-                height: 18px;
-                font-size: 11px;
+                background: transparent;
+                color: #2d5a3d;
+                font-size: 14px;
                 font-weight: 700;
                 display: none;
                 align-items: center;
                 justify-content: center;
                 line-height: 1;
-                min-width: 18px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-                border: 2px solid white;
+                min-width: auto;
             ">0</span>
         `;
         
