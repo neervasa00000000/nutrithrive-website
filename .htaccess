@@ -100,6 +100,11 @@ DirectoryIndex index.html index.htm
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^privacy-policy/?$ /privacy-policy.html [L]
     
+    # Cart: Serve clean URL internally (no redirect)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^cart/?$ /cart.html [L]
+    
     # Products redirects - redirect all /pages/products/ to /products/ (already handled above, but keeping for fallback)
     
     # Clean URL redirects for main pages (without trailing slash)
