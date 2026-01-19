@@ -512,12 +512,14 @@
             renderOrderSummary();
             
             // Re-initialize PayPal buttons with updated total if PayPal is selected
-            if (selectedPaymentMethod === 'paypal' && typeof paypal !== 'undefined') {
-                setTimeout(initPayPal, 200);
-            } else if (selectedPaymentMethod === 'paypal') {
-                const paypalContainer = document.getElementById('paypal-button-container');
-                if (paypalContainer) {
-                    paypalContainer.innerHTML = '<p style="color: #666; padding: 1rem;">Loading PayPal...</p>';
+            if (selectedPaymentMethod === 'paypal') {
+                if (typeof paypal !== 'undefined') {
+                    setTimeout(initPayPal, 200);
+                } else {
+                    const paypalContainer = document.getElementById('paypal-button-container');
+                    if (paypalContainer) {
+                        paypalContainer.innerHTML = '<p style="color: #666; padding: 1rem;">Loading PayPal...</p>';
+                    }
                 }
             }
         }
