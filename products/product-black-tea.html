@@ -424,6 +424,25 @@
     <script src="../shared/js/script.js" defer></script>
     <script src="../pages/products/product-black-tea.js"></script>
     <script>
+        // Add to cart function for Black Tea
+        function addBlackTeaToCart() {
+            const quantitySelect = document.getElementById('product-quantity');
+            const quantity = parseInt(quantitySelect ? quantitySelect.value : 1) || 1;
+            
+            if (window.Cart && window.Cart.add) {
+                window.Cart.add({
+                    id: 'black-tea',
+                    name: 'Darjeeling Black Tea',
+                    price: 7.00,
+                    weight: 100, // 100g pack
+                    image: 'https://i.imgur.com/EMjb66w.png',
+                    quantity: quantity
+                });
+            } else {
+                console.error('Cart is not initialized');
+            }
+        }
+        
         // Accordion functionality
         function toggleAccordion(sectionId) {
             const content = document.getElementById(sectionId);
