@@ -374,7 +374,20 @@
 
                         <!-- Add to Cart Section -->
                         <div style="margin: 1.5rem 0; padding: 1.5rem; background: transparent; border-radius: 0;">
-                            <!-- Price (on top) -->
+                            <!-- Country/Region Selector (on top) -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <label for="product-country" style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: #666; font-weight: 500;">Country/region</label>
+                                <select id="product-country" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #999; border-radius: 4px; font-size: 1rem; background: #8B4513; color: white; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"white\"><path d=\"M7 10l5 5 5-5z\"/></svg>'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1.2em; padding-right: 2.5rem;" onchange="updateCountryCurrency()">
+                                    <option value="AU">Australia | AUD $</option>
+                                    <option value="NZ">New Zealand | NZD $</option>
+                                    <option value="US">United States | USD $</option>
+                                    <option value="GB">United Kingdom | GBP £</option>
+                                    <option value="CA">Canada | CAD $</option>
+                                    <option value="EU">Europe | EUR €</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Price (below country selector) -->
                             <div style="margin-bottom: 1.5rem;">
                                 <div id="product-price-container" style="display: block;">
                                     <span id="product-original-price" style="font-size: 1.5rem; font-weight: 600; color: #999; text-decoration: line-through; margin-right: 0.5rem;">$37.18 AUD</span>
@@ -834,11 +847,35 @@
             }
         }
         
+        // Country/Currency update function
+        function updateCountryCurrency() {
+            const countrySelect = document.getElementById('product-country');
+            if (!countrySelect) return;
+            
+            const countryCode = countrySelect.value;
+            // For now, we'll just store the selection
+            // You can add currency conversion logic here if needed
+            localStorage.setItem('nutrithrive_country', countryCode);
+        }
+        
+        // Load saved country selection
+        function loadSavedCountry() {
+            const savedCountry = localStorage.getItem('nutrithrive_country');
+            const countrySelect = document.getElementById('product-country');
+            if (savedCountry && countrySelect) {
+                countrySelect.value = savedCountry;
+            }
+        }
+        
         // Initialize variation on page load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', updateProductVariation);
+            document.addEventListener('DOMContentLoaded', function() {
+                updateProductVariation();
+                loadSavedCountry();
+            });
         } else {
             updateProductVariation();
+            loadSavedCountry();
         }
     </script>
     <script src="../pages/products/product-detail.js"></script>
