@@ -514,20 +514,27 @@
                             if (!response.ok) {
                                 throw new Error(data.error || "Failed to create order");
                             }
-                            console.log("PayPal order created:", data.orderID);
-                            return data.orderID;
+                            console.log("PayPal order created:", data.orderID || data.id);
+                            // Handle both orderID and id for compatibility
+                            return data.orderID || data.id;
                         } catch (err) {
                             console.error("Error creating PayPal order:", err);
                             throw err;
                         }
                     },
-                    onApprove: async (data) => {
-                        console.log("Payment approved, capturing order:", data.orderID);
+                    onApprove: async (data, actions) => {
+                        const orderID = data.orderID || data.id;
+                        console.log("Payment approved, capturing order:", orderID);
+                        if (!orderID) {
+                            console.error("No order ID in approval data:", data);
+                            alert("Payment error: No order ID received. Please try again.");
+                            return;
+                        }
                         try {
                             const response = await fetch("/.netlify/functions/paypal-capture-order", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ orderID: data.orderID })
+                                body: JSON.stringify({ orderID: orderID })
                             });
                             const result = await response.json();
                             if (!response.ok) {
@@ -536,7 +543,7 @@
                             console.log("Payment successful:", result);
                             // Clear cart and redirect
                             window.Cart.clear();
-                            window.location.href = `/thank-you.html?orderId=${data.orderID}`;
+                            window.location.href = `/thank-you.html?orderId=${orderID}`;
                         } catch (err) {
                             console.error("Error capturing payment:", err);
                             alert(`Payment error: ${err.message || "Unknown error"}`);
