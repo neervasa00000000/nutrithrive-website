@@ -182,7 +182,7 @@ function showCartNotification(message) {
     notification.textContent = message;
     notification.style.cssText = `
         position: fixed;
-        top: 20px;
+        top: 80px;
         right: 20px;
         background: #2d5a3d;
         color: white;
