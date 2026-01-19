@@ -381,16 +381,16 @@
                             <div style="margin-bottom: 1.5rem;">
                                 <div id="product-price-container" style="display: block;">
                                     <span id="product-original-price" style="font-size: 1.5rem; font-weight: 600; color: #999; text-decoration: line-through; margin-right: 0.5rem;">$49.00 AUD</span>
-                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$31.60 AUD</span>
+                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$37.18 AUD</span>
                                 </div>
-                                <div id="product-discount-text" style="font-size: 0.9rem; color: #2d5a3d; margin-top: 0.25rem;">35% discount ($17.40 AUD off)</div>
+                                <div id="product-discount-text" style="font-size: 0.9rem; color: #2d5a3d; margin-top: 0.25rem;">24% discount ($11.82 AUD off)</div>
                             </div>
                             
                             <!-- Variations Selector (below price) -->
                             <div style="margin-bottom: 1.5rem;">
                                 <label style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Variations</label>
                                 <select id="product-variation" onchange="updateProductVariation()" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
-                                    <option value="variation-1" data-original-price="49.00" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../shared/images/Home page /Moringa.png">3 + 1 = 400g - $31.60 AUD (was $49.00)</option>
+                                    <option value="variation-1" data-original-price="49.00" data-price="37.18" data-name="3 + 1 = 400g Moringa" data-image="../shared/images/Home page /Moringa.png">3 + 1 = 400g - $37.18 AUD (was $49.00)</option>
                                     <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../shared/images/Home page /Moringa.png">100g Moringa - $10.50 AUD (was $12.35)</option>
                                     <option value="variation-3" data-original-price="18.30" data-price="15.56" data-name="Combo Moringa + Dried Curry Leaves" data-image="../shared/images/Home page /Moringa.png">Combo Moringa + Dried Curry Leaves - $15.56 AUD (was $18.30)</option>
                                     <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../shared/images/Home page /Moringa.png">200g Moringa - $20.49 AUD (was $24.11)</option>
@@ -766,7 +766,7 @@
         // Product variations data with actual weights in grams from shipping_rates.xlsx (updated)
         // Original prices from image, with 15% discount applied to get final prices
         const productVariations = {
-            'variation-1': { originalPrice: 49.00, price: 31.60, discount: 17.40, name: '3 + 1 = 400g Moringa', weight: 400, image: '../shared/images/Home page /Moringa.png' }, // Original: $49.00, Discounted: $31.60
+            'variation-1': { originalPrice: 49.00, price: 37.18, discount: 11.82, name: '3 + 1 = 400g Moringa', weight: 400, image: '../shared/images/Home page /Moringa.png' }, // Original: $49.00, Discounted: $37.18
             'variation-2': { originalPrice: 12.35, price: 10.50, discount: 1.85, name: '100g Moringa', weight: 100, image: '../shared/images/Home page /Moringa.png' }, // Original: $12.35, Discounted: $10.50
             'variation-3': { originalPrice: 18.30, price: 15.56, discount: 2.74, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../shared/images/Home page /Moringa.png' }, // Original: $18.30, Discounted: $15.56
             'variation-4': { originalPrice: 24.11, price: 20.49, discount: 3.62, name: '200g Moringa', weight: 200, image: '../shared/images/Home page /Moringa.png' }, // Original: $24.11, Discounted: $20.49
