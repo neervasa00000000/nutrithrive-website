@@ -139,11 +139,16 @@
       }
       .product-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        align-items: start;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.5rem;
+        align-items: stretch;
       }
       @media (max-width: 1200px) {
+        .product-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 900px) {
         .product-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -231,24 +236,29 @@
       }
       .product-header {
         display: flex;
-        justify-content: space-between;
-        gap: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
       }
       .product-title {
         font-family: 'Playfair Display', serif;
         color: var(--forest);
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         margin: 0;
         line-height: 1.25;
+        min-height: 2.5em;
       }
       .product-price {
-        text-align: right;
-        min-width: 96px;
+        text-align: left;
+        width: 100%;
       }
       .price {
         color: var(--forest);
         font-weight: 800;
         font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
       }
       .rating {
         display: flex;
@@ -259,11 +269,12 @@
       }
       .meta {
         color: #555f4a;
-        font-size: 0.8rem;
-        letter-spacing: 0.12em;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         font-weight: 700;
         margin: 0;
+        min-height: 1.2em;
       }
       .why-box {
         background: transparent;
@@ -379,9 +390,6 @@
       @media (max-width: 768px) {
         .products-shell {
           padding: 1.25rem 1rem 3rem;
-        }
-        .product-header {
-          flex-direction: column;
         }
         .product-price {
           text-align: left;
