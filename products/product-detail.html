@@ -380,22 +380,22 @@
                             <!-- Price (on top) -->
                             <div style="margin-bottom: 1.5rem;">
                                 <div id="product-price-container" style="display: block;">
-                                    <span id="product-original-price" style="font-size: 1.5rem; font-weight: 600; color: #999; text-decoration: line-through; margin-right: 0.5rem;">$31.60 AUD</span>
-                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$26.86 AUD</span>
+                                    <span id="product-original-price" style="font-size: 1.5rem; font-weight: 600; color: #999; text-decoration: line-through; margin-right: 0.5rem;">$37.18 AUD</span>
+                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$31.60 AUD</span>
                                 </div>
-                                <div id="product-discount-text" style="font-size: 0.9rem; color: #2d5a3d; margin-top: 0.25rem;">15% discount ($4.74 AUD off)</div>
+                                <div id="product-discount-text" style="font-size: 0.9rem; color: #2d5a3d; margin-top: 0.25rem;">15% discount ($5.58 AUD off)</div>
                             </div>
                             
                             <!-- Variations Selector (below price) -->
                             <div style="margin-bottom: 1.5rem;">
                                 <label style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Variations</label>
                                 <select id="product-variation" onchange="updateProductVariation()" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
-                                    <option value="variation-1" data-original-price="31.60" data-price="26.86" data-name="3 + 1 = 400g Moringa" data-image="../shared/images/Home page /Moringa.png">3 + 1 = 400g - $26.86 AUD (was $31.60)</option>
-                                    <option value="variation-2" data-original-price="10.50" data-price="8.93" data-name="100g Moringa" data-image="../shared/images/Home page /Moringa.png">100g Moringa - $8.93 AUD (was $10.50)</option>
-                                    <option value="variation-3" data-original-price="15.55" data-price="13.22" data-name="Combo Moringa + Dried Curry Leaves" data-image="../shared/images/Home page /Moringa.png">Combo Moringa + Dried Curry Leaves - $13.22 AUD (was $15.55)</option>
-                                    <option value="variation-4" data-original-price="20.49" data-price="17.42" data-name="200g Moringa" data-image="../shared/images/Home page /Moringa.png">200g Moringa - $17.42 AUD (was $20.49)</option>
-                                    <option value="variation-5" data-original-price="6.45" data-price="5.48" data-name="30g Dried Curry Leaves" data-image="../shared/images/Home page /Moringa.png">30g Dried Curry Leaves - $5.48 AUD (was $6.45)</option>
-                                    <option value="variation-6" data-original-price="17.00" data-price="14.45" data-name="Moringa 100g + Soap 95g" data-image="../shared/images/Home page /Moringa.png">Moringa 100g + Soap 95g - $14.45 AUD (was $17.00)</option>
+                                    <option value="variation-1" data-original-price="37.18" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../shared/images/Home page /Moringa.png">3 + 1 = 400g - $31.60 AUD (was $37.18)</option>
+                                    <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../shared/images/Home page /Moringa.png">100g Moringa - $10.50 AUD (was $12.35)</option>
+                                    <option value="variation-3" data-original-price="18.30" data-price="15.56" data-name="Combo Moringa + Dried Curry Leaves" data-image="../shared/images/Home page /Moringa.png">Combo Moringa + Dried Curry Leaves - $15.56 AUD (was $18.30)</option>
+                                    <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../shared/images/Home page /Moringa.png">200g Moringa - $20.49 AUD (was $24.11)</option>
+                                    <option value="variation-5" data-original-price="7.59" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../shared/images/Home page /Moringa.png">30g Dried Curry Leaves - $6.45 AUD (was $7.59)</option>
+                                    <option value="variation-6" data-original-price="20.00" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../shared/images/Home page /Moringa.png">Moringa 100g + Soap 95g - $17.00 AUD (was $20.00)</option>
                                 </select>
                             </div>
                             
@@ -764,14 +764,14 @@
     <script src="../shared/js/script.js"></script>
     <script>
         // Product variations data with actual weights in grams from shipping_rates.xlsx (updated)
-        // Prices shown are with 15% discount applied
+        // Original prices from image, with 15% discount applied to get final prices
         const productVariations = {
-            'variation-1': { originalPrice: 31.60, price: 26.86, discount: 4.74, name: '3 + 1 = 400g Moringa', weight: 400, image: '../shared/images/Home page /Moringa.png' }, // 4 x 100g Moringa
-            'variation-2': { originalPrice: 10.50, price: 8.93, discount: 1.58, name: '100g Moringa', weight: 100, image: '../shared/images/Home page /Moringa.png' }, // From Excel: Moringa 100g
-            'variation-3': { originalPrice: 15.55, price: 13.22, discount: 2.33, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../shared/images/Home page /Moringa.png' }, // From Excel: Combo pack 100g + 30g = 130g
-            'variation-4': { originalPrice: 20.49, price: 17.42, discount: 3.07, name: '200g Moringa', weight: 200, image: '../shared/images/Home page /Moringa.png' }, // From Excel: Moringa 200g
-            'variation-5': { originalPrice: 6.45, price: 5.48, discount: 0.97, name: '30g Dried Curry Leaves', weight: 30, image: '../shared/images/Home page /Moringa.png' }, // From Excel: Dried Curry Leaves 30g
-            'variation-6': { originalPrice: 17.00, price: 14.45, discount: 2.55, name: 'Moringa 100g + Soap 95g', weight: 195, image: '../shared/images/Home page /Moringa.png' } // From Excel: Moringa + Soap = 100g + 95g = 195g
+            'variation-1': { originalPrice: 37.18, price: 31.60, discount: 5.58, name: '3 + 1 = 400g Moringa', weight: 400, image: '../shared/images/Home page /Moringa.png' }, // Original: $37.18, Discounted: $31.60
+            'variation-2': { originalPrice: 12.35, price: 10.50, discount: 1.85, name: '100g Moringa', weight: 100, image: '../shared/images/Home page /Moringa.png' }, // Original: $12.35, Discounted: $10.50
+            'variation-3': { originalPrice: 18.30, price: 15.56, discount: 2.74, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../shared/images/Home page /Moringa.png' }, // Original: $18.30, Discounted: $15.56
+            'variation-4': { originalPrice: 24.11, price: 20.49, discount: 3.62, name: '200g Moringa', weight: 200, image: '../shared/images/Home page /Moringa.png' }, // Original: $24.11, Discounted: $20.49
+            'variation-5': { originalPrice: 7.59, price: 6.45, discount: 1.14, name: '30g Dried Curry Leaves', weight: 30, image: '../shared/images/Home page /Moringa.png' }, // Original: $7.59, Discounted: $6.45
+            'variation-6': { originalPrice: 20.00, price: 17.00, discount: 3.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '../shared/images/Home page /Moringa.png' } // Original: $20.00, Discounted: $17.00
         };
         
         // Update product details when variation changes
