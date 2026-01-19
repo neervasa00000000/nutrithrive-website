@@ -368,29 +368,9 @@
             const subtotal = cart.total || 0;
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
             
-            // Update shipping display (will show "Calculated in PayPal" or use saved country)
-            const countrySelect = document.getElementById('cart-shipping-country');
-            const countryCode = countrySelect ? countrySelect.value : '';
-            
-            if (countryCode && window.ShippingRates) {
-                const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
-                const shipping = window.ShippingRates.calculate(countryCode, totalQuantity, subtotal);
-                if (shipping !== null) {
-                    if (shipping === 0) {
-                        document.getElementById('shipping').textContent = 'Free';
-                    } else {
-                        document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
-                    }
-                    const total = subtotal + shipping;
-                    document.getElementById('total').textContent = `$${total.toFixed(2)}`;
-                } else {
-                    document.getElementById('shipping').textContent = 'Calculated in PayPal';
-                    document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
-                }
-            } else {
-                document.getElementById('shipping').textContent = 'Calculated in PayPal';
-                document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
-            }
+            // Shipping will be calculated in PayPal based on billing address
+            document.getElementById('shipping').textContent = 'Calculated in PayPal';
+            document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
             
             // Show payment section
             document.getElementById('payment-section').style.display = 'block';
