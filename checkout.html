@@ -43,19 +43,19 @@
             height: 100%;
         }
         .summary-column {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
             position: sticky;
             top: 2rem;
             height: fit-content;
         }
         .payment-column {
-            background: white;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
             min-height: 500px;
             display: flex;
             flex-direction: column;
@@ -97,6 +97,12 @@
         .order-summary {
             background: transparent;
             padding: 0;
+        }
+        .summary-column h3 {
+            color: #2d5a3d;
+            margin: 0 0 1.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
         .order-items {
             margin-bottom: 1rem;
@@ -216,6 +222,7 @@
             
             <div class="checkout-content">
                 <div class="summary-column">
+                    <h3>Order Summary</h3>
                     <div id="order-summary">
                         <!-- Order items will be loaded here -->
                     </div>
