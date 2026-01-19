@@ -85,6 +85,7 @@ function addToCart(product) {
             id: product.id,
             name: product.name,
             price: parseFloat(product.price),
+            weight: parseFloat(product.weight || 0), // Store weight in grams
             quantity: parseInt(product.quantity || 1),
             image: product.image || ''
         });
