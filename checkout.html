@@ -12,18 +12,21 @@
             color: #1a2e22;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
         }
         .checkout-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
+            max-width: 100%;
+            margin: 0;
+            padding: 2rem 3rem;
             background: transparent;
+            min-height: calc(100vh - 4rem);
         }
         .checkout-section {
             background: transparent;
             border-radius: 0;
             padding: 0;
             box-shadow: none;
+            height: 100%;
         }
         .checkout-section h2 {
             color: #2d5a3d;
@@ -34,28 +37,33 @@
         }
         .checkout-content {
             display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 2rem;
+            grid-template-columns: 400px 1fr;
+            gap: 2.5rem;
             align-items: start;
+            height: 100%;
         }
         .summary-column {
             background: white;
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 2rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            max-height: calc(100vh - 200px);
-            overflow-y: auto;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
         }
         .payment-column {
             background: white;
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 2.5rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
         }
         .payment-column h3 {
             color: #2d5a3d;
-            margin: 0 0 1rem 0;
-            font-size: 1.25rem;
+            margin: 0 0 2rem 0;
+            font-size: 1.5rem;
             font-weight: 600;
         }
         .form-group {
@@ -158,13 +166,22 @@
         .summary-column::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
+            .checkout-container {
+                padding: 2rem;
+            }
+            .checkout-content {
+                grid-template-columns: 350px 1fr;
+                gap: 2rem;
+            }
+        }
+        @media (max-width: 968px) {
             .checkout-content {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             .summary-column {
-                max-height: none;
+                position: static;
             }
             .checkout-section h2 {
                 text-align: center;
@@ -173,7 +190,7 @@
         }
         @media (max-width: 768px) {
             .checkout-container {
-                padding: 1rem;
+                padding: 1.5rem 1rem;
             }
             .checkout-section h2 {
                 font-size: 1.5rem;
@@ -181,7 +198,10 @@
             }
             .summary-column,
             .payment-column {
-                padding: 1.25rem;
+                padding: 1.5rem;
+            }
+            .payment-column {
+                min-height: auto;
             }
         }
     </style>
