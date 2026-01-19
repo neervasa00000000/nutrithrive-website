@@ -257,19 +257,33 @@
         </div>
         
         <div id="cart-summary" class="cart-summary" style="display: none;">
+            <div class="shipping-location-section" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0;">
+                <label for="shipping-country" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">
+                    Shipping Country
+                </label>
+                <select id="shipping-country" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer;" onchange="updateShippingCost()">
+                    <option value="">Select your country</option>
+                    <option value="AU">Australia</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="US">United States</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="OTHER">Other Countries</option>
+                </select>
+            </div>
             <div class="summary-row">
                 <span>Subtotal</span>
                 <span id="subtotal">$0.00</span>
             </div>
             <div class="summary-row">
                 <span>Shipping</span>
-                <span id="shipping">Free</span>
+                <span id="shipping">-</span>
             </div>
             <div class="summary-row">
                 <span>Total</span>
                 <span id="total">$0.00</span>
             </div>
-            <button class="checkout-btn" onclick="window.location.href='/checkout.html'">
+            <button class="checkout-btn" onclick="window.location.href='/checkout.html'" id="checkout-btn">
                 Proceed to Checkout
             </button>
         </div>
@@ -277,8 +291,82 @@
     
     <script src="/shared/js/cart.js"></script>
     <script src="/shared/js/cart-header.js"></script>
+    <script src="/shared/js/shipping-rates.js"></script>
     <script src="/shared/js/script.js"></script>
     <script>
+        // Load saved country selection
+        function loadSavedCountry() {
+            const savedCountry = localStorage.getItem('nutrithrive_shipping_country');
+            if (savedCountry) {
+                const countrySelect = document.getElementById('shipping-country');
+                if (countrySelect) {
+                    countrySelect.value = savedCountry;
+                }
+            }
+        }
+        
+        // Save country selection
+        function saveCountry(countryCode) {
+            if (countryCode) {
+                localStorage.setItem('nutrithrive_shipping_country', countryCode);
+            } else {
+                localStorage.removeItem('nutrithrive_shipping_country');
+            }
+        }
+        
+        // Update shipping cost based on selected country and cart contents
+        function updateShippingCost() {
+            const countrySelect = document.getElementById('shipping-country');
+            const countryCode = countrySelect ? countrySelect.value : '';
+            
+            if (countryCode) {
+                saveCountry(countryCode);
+            }
+            
+            const cart = window.Cart.get();
+            if (!cart || !cart.items || cart.items.length === 0) {
+                return;
+            }
+            
+            // Calculate total quantity
+            const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
+            const subtotal = cart.total || 0;
+            
+            // Calculate shipping
+            let shippingCost = null;
+            if (countryCode && window.ShippingRates) {
+                shippingCost = window.ShippingRates.calculate(countryCode, totalQuantity, subtotal);
+            }
+            
+            // Update shipping display
+            const shippingElement = document.getElementById('shipping');
+            const totalElement = document.getElementById('total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            
+            if (shippingCost === null) {
+                shippingElement.textContent = '-';
+                totalElement.textContent = `$${subtotal.toFixed(2)}`;
+                if (checkoutBtn) {
+                    checkoutBtn.disabled = true;
+                    checkoutBtn.textContent = 'Select Country to Continue';
+                }
+            } else {
+                if (shippingCost === 0) {
+                    shippingElement.textContent = 'Free';
+                } else {
+                    shippingElement.textContent = `$${shippingCost.toFixed(2)}`;
+                }
+                const total = subtotal + shippingCost;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+                if (checkoutBtn) {
+                    checkoutBtn.disabled = false;
+                    checkoutBtn.textContent = 'Proceed to Checkout';
+                }
+            }
+        }
+        
+        // Override renderCart to include shipping calculation
+        const originalRenderCart = window.renderCart;
         function renderCart() {
             const cart = window.Cart.get();
             const cartContent = document.getElementById('cart-content');
@@ -344,12 +432,11 @@
             
             // Update summary
             const subtotal = cart.total || 0;
-            const shipping = subtotal >= 80 ? 0 : 10; // Free shipping over $80
-            const total = subtotal + shipping;
-            
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('shipping').textContent = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+            
+            // Load saved country and update shipping
+            loadSavedCountry();
+            updateShippingCost();
             
             cartSummary.style.display = 'block';
         }
@@ -357,20 +444,27 @@
         function updateQuantity(productId, quantity) {
             window.Cart.updateQuantity(productId, parseInt(quantity));
             renderCart();
+            updateShippingCost(); // Recalculate shipping after quantity change
         }
         
         function removeItem(productId) {
             if (confirm('Remove this item from cart?')) {
                 window.Cart.remove(productId);
                 renderCart();
+                updateShippingCost(); // Recalculate shipping after item removal
             }
         }
         
         // Render cart on load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', renderCart);
+            document.addEventListener('DOMContentLoaded', function() {
+                renderCart();
+                // Wait a bit for shipping rates to load
+                setTimeout(updateShippingCost, 100);
+            });
         } else {
             renderCart();
+            setTimeout(updateShippingCost, 100);
         }
     </script>
 </body>
