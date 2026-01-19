@@ -292,8 +292,8 @@
         </div>
     </div>
     
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD"></script>
+    <!-- PayPal SDK - commit=false keeps checkout inline without redirect -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&intent=capture&commit=false&disable-funding=credit,card"></script>
     <script src="/shared/js/cart.js"></script>
     <script src="/shared/js/cart-header.js"></script>
     <script src="/shared/js/shipping-rates.js"></script>
@@ -424,6 +424,14 @@
             
             try {
                 paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color: 'gold',
+                        shape: 'rect',
+                        label: 'paypal'
+                    },
+                    // Prevent redirect - keep checkout inline
+                    commit: false,
                     createOrder: async () => {
                         // Create order with subtotal only, shipping will be added via onShippingChange
                         console.log("Creating PayPal order for amount:", subtotal);
