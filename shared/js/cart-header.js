@@ -30,19 +30,19 @@
         
         cartLink.innerHTML = `
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Shopping bag body -->
-                <path d="M6 2L4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4H6z" style="fill: none;"></path>
-                <!-- Top opening line -->
-                <line x1="4" y1="6" x2="20" y2="6" style="fill: none;"></line>
-                <!-- Left handle -->
-                <path d="M8 6c0-1.1.9-2 2-2h0c1.1 0 2 .9 2 2" style="fill: none;"></path>
-                <!-- Right handle -->
-                <path d="M14 6c0-1.1.9-2 2-2h0c1.1 0 2 .9 2 2" style="fill: none;"></path>
+                <!-- Shopping cart basket -->
+                <path d="M7 8H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-2" style="fill: none;"></path>
+                <!-- Cart handle -->
+                <path d="M7 8V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3" style="fill: none;"></path>
+                <!-- Left wheel -->
+                <circle cx="7" cy="20" r="1.5" style="fill: none;"></circle>
+                <!-- Right wheel -->
+                <circle cx="17" cy="20" r="1.5" style="fill: none;"></circle>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
-                bottom: -2px;
-                right: -2px;
+                top: -4px;
+                right: -4px;
                 background: #175c36;
                 color: white;
                 font-size: 11px;
