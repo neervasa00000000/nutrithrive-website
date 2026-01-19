@@ -137,7 +137,7 @@
       }
       .product-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 2rem;
         align-items: start;
       }
@@ -519,7 +519,7 @@
         </section>
 
         <section class="controls">
-            <p class="helper">Showing 4 premium products</p>
+            <p class="helper">Showing 5 premium products</p>
         </section>
 
         <section class="product-grid">
@@ -647,6 +647,38 @@
                         <div class="cta-row">
                             <a class="btn-primary" href="product-combo.html">View product</a>
                             <button class="btn-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 15.56, '../shared/images/Home page /webp/combo.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <a class="product-media" href="#">
+                    <img src="../shared/images/Home page /webp/moringa_soap.webp" alt="Moringa Soap">
+                </a>
+                <div class="product-body">
+                    <div class="product-header">
+                        <h2 class="product-title">Moringa Soap</h2>
+                        <div class="product-price">
+                            <div class="price" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                <span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$6.50</span>
+                            </div>
+                            <div class="rating">
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="meta">95g Pack • Natural Soap</p>
+                    <div class="product-footer">
+                        <div class="cta-row">
+                            <a class="btn-primary" href="#">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 6.50, '../shared/images/Home page /webp/moringa_soap.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
                                 Add to Cart
                             </button>
                         </div>
@@ -1001,6 +1033,78 @@
                 }
               }
             }
+          },
+          {
+            "@type": "Product",
+            "position": 5,
+            "name": "Moringa Soap",
+            "url": "https://nutrithrive.com.au/products/",
+            "image": "https://nutrithrive.com.au/shared/images/Home%20page/webp/moringa_soap.webp",
+            "description": "Natural moringa soap for gentle cleansing and skin nourishment.",
+            "brand": {
+              "@type": "Brand",
+              "name": "NutriThrive"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "42"
+            },
+            "review": [
+              {
+                "@type": "Review",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "author": { "@type": "Person", "name": "Verified Customer" },
+                "reviewBody": "Great natural soap with a pleasant scent. Leaves skin feeling clean and soft."
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "url": "https://nutrithrive.com.au/products/",
+              "priceCurrency": "AUD",
+              "price": "6.50",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock",
+              "seller": {
+                "@type": "Organization",
+                "name": "NutriThrive"
+              },
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "AU",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/FreeReturn"
+              },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "AUD"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "AU"
+                },
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 1,
+                    "maxValue": 2,
+                    "unitCode": "DAY"
+                  },
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 3,
+                    "maxValue": 10,
+                    "unitCode": "DAY"
+                  }
+                }
+              }
+            }
           }
         ]
       }
@@ -1011,7 +1115,8 @@
         const productWeights = {
             'moringa-powder': 100, // Default Moringa is 100g
             'curry-leaves': 30,
-            'black-tea': 100
+            'black-tea': 100,
+            'moringa-soap': 95 // Soap is 95g
         };
         
         // Add to Cart function for product listing page
