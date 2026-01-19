@@ -522,14 +522,15 @@
             renderOrderSummary();
         }
         
-        // Load PayPal SDK and initialize
-        const paypalScript = document.createElement('script');
-        paypalScript.src = 'https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&currency=AUD';
-        paypalScript.onload = function() {
-            console.log("PayPal SDK script loaded");
+        // Initialize PayPal when SDK is ready (SDK is loaded via script tag in head)
+        if (typeof paypal !== 'undefined') {
             setTimeout(initPayPal, 500);
-        };
-        document.head.appendChild(paypalScript);
+        } else {
+            // Wait for PayPal SDK to load
+            window.addEventListener('load', function() {
+                setTimeout(initPayPal, 500);
+            });
+        }
     </script>
 </body>
 </html>
