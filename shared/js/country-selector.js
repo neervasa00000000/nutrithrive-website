@@ -382,14 +382,27 @@
 
     // Initialize country selector
     function initCountrySelector() {
-        // Remove any existing selector to avoid duplicates (in case of multiple script loads)
-        document.querySelectorAll('#country-selector-container').forEach(el => el.remove());
+        // Remove any existing selector IMMEDIATELY to avoid duplicates (in case of multiple script loads)
+        // Do this synchronously before any DOM operations
+        const existingSelectors = document.querySelectorAll('#country-selector-container');
+        existingSelectors.forEach(el => {
+            el.remove();
+        });
+        
+        // Double-check: if selector still exists, remove it again
+        if (document.getElementById('country-selector-container')) {
+            document.getElementById('country-selector-container').remove();
+        }
 
         const selector = createCountrySelector();
         
         // Find footer and insert before footer-bottom
         const footer = document.querySelector('footer');
         if (footer) {
+            // Check one more time for duplicates before inserting
+            const checkDuplicates = footer.querySelectorAll('#country-selector-container');
+            checkDuplicates.forEach(el => el.remove());
+            
             const footerContent = footer.querySelector('.footer-content');
             const footerBottom = footer.querySelector('.footer-bottom');
             
@@ -402,6 +415,9 @@
             }
         } else {
             // Fallback: append to body if no footer found
+            // Check for duplicates in body too
+            const checkDuplicates = document.querySelectorAll('#country-selector-container');
+            checkDuplicates.forEach(el => el.remove());
             document.body.appendChild(selector);
         }
 
@@ -453,9 +469,19 @@
     }
 
     // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCountrySelector);
-    } else {
-        initCountrySelector();
+    // Use requestAnimationFrame to ensure DOM is fully ready and prevent flash
+    function safeInit() {
+        // Final check for duplicates before init
+        document.querySelectorAll('#country-selector-container').forEach(el => el.remove());
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                requestAnimationFrame(initCountrySelector);
+            });
+        } else {
+            requestAnimationFrame(initCountrySelector);
+        }
     }
+    
+    safeInit();
 })();
