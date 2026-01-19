@@ -315,6 +315,11 @@
             
             // Re-render order summary with updated shipping
             renderOrderSummary();
+            
+            // Re-initialize PayPal buttons with updated total
+            if (typeof paypal !== 'undefined') {
+                setTimeout(initPayPal, 200);
+            }
         }
         
         function renderOrderSummary() {
@@ -412,21 +417,32 @@
                 return;
             }
             
-            console.log("PayPal SDK loaded, rendering order summary...");
-            const orderData = renderOrderSummary();
-            if (!orderData) {
-                console.error("No order data available");
-                return;
-            }
-            
-            console.log("Order data:", orderData);
-            
+            // Clear existing PayPal buttons
             const container = document.getElementById('paypal-button-container');
             if (!container) {
                 console.error("PayPal button container not found!");
                 return;
             }
+            container.innerHTML = '';
             
+            console.log("PayPal SDK loaded, rendering order summary...");
+            const orderData = renderOrderSummary();
+            if (!orderData) {
+                console.error("No order data available");
+                container.innerHTML = '<p style="color: #666;">Your cart is empty.</p>';
+                return;
+            }
+            
+            // Check if country is selected
+            const countrySelect = document.getElementById('checkout-shipping-country');
+            const countryCode = countrySelect ? countrySelect.value : '';
+            if (!countryCode) {
+                console.log("Country not selected, waiting...");
+                container.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country above to proceed with payment.</p>';
+                return;
+            }
+            
+            console.log("Order data:", orderData);
             console.log("Rendering PayPal buttons...");
             try {
                 paypal.Buttons({
