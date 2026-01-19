@@ -511,19 +511,8 @@
             }
         }
         
-        // Initialize on load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                console.log("DOM loaded, initializing checkout...");
-                renderOrderSummary();
-                // Wait a bit for PayPal SDK to load
-                setTimeout(initPayPal, 500);
-            });
-        } else {
-            console.log("DOM already loaded, initializing checkout...");
-            renderOrderSummary();
-            setTimeout(initPayPal, 500);
-        }
+        // Initialize on load (country loading is handled earlier)
+        // PayPal initialization happens when SDK loads
     </script>
 </body>
 </html>
