@@ -495,25 +495,35 @@
                 return;
             }
             
-            // Calculate totals - start with subtotal only, shipping will be calculated from PayPal country
-            // Store cart data globally for use in onShippingChange
-            const subtotal = cart.total || 0;
+            // Check if country is selected
+            const countrySelect = document.getElementById('cart-shipping-country');
+            const countryCode = countrySelect ? countrySelect.value : '';
+            if (!countryCode) {
+                container.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country to proceed.</p>';
+                return;
+            }
+            
+            // Calculate totals including shipping
+            const subtotal = parseFloat(cart.total || 0);
             const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
+            const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, totalQuantity, subtotal) : 0;
+            const shippingCost = shipping !== null && shipping !== undefined ? parseFloat(shipping) : 0;
+            const total = parseFloat(subtotal) + parseFloat(shippingCost);
             
-            // Store cart data for shipping calculation
-            window.cartData = {
-                subtotal: subtotal,
-                totalQuantity: totalQuantity,
-                items: cart.items
-            };
+            console.log("Order data:", { subtotal, shipping: shippingCost, total, items: cart.items });
             
-            console.log("Order data:", { subtotal, totalQuantity, items: cart.items });
+            // Validate total is a number
+            if (isNaN(total) || total <= 0) {
+                console.error("Invalid total calculated:", total);
+                container.innerHTML = '<p style="color: red; padding: 1rem;">Error calculating order total. Please try again.</p>';
+                return;
+            }
             
             try {
                 paypal.Buttons({
                     createOrder: async () => {
-                        // Create order with subtotal only, shipping will be added via onShippingChange
-                        console.log("Creating PayPal order for amount:", subtotal);
+                        // Create order with total including shipping (calculated on website)
+                        console.log("Creating PayPal order for amount:", total);
                         try {
                             const response = await fetch("/.netlify/functions/paypal-create-order", {
                                 method: "POST",
