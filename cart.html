@@ -287,7 +287,20 @@
         <!-- Payment Section -->
         <div id="payment-section" class="payment-section" style="display: none; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e0e0e0;">
             <h2 style="color: #2d5a3d; margin-bottom: 2rem; font-size: 2rem;">Payment</h2>
-            <p style="color: #666; margin-bottom: 1.5rem; font-size: 0.95rem;">Shipping will be calculated automatically based on your billing address in PayPal.</p>
+            <div style="margin-bottom: 2rem;">
+                <label for="cart-shipping-country" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">
+                    Shipping Country
+                </label>
+                <select id="cart-shipping-country" style="width: 100%; max-width: 400px; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer;" onchange="updateCartShipping()">
+                    <option value="">Select your country</option>
+                    <option value="AU">Australia</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="US">United States</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="OTHER">Other Countries</option>
+                </select>
+            </div>
             <div id="paypal-button-container"></div>
         </div>
     </div>
@@ -368,9 +381,8 @@
             const subtotal = cart.total || 0;
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
             
-            // Shipping will be calculated in PayPal based on billing address
-            document.getElementById('shipping').textContent = 'Calculated in PayPal';
-            document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
+            // Calculate shipping if country is selected
+            updateCartShipping();
             
             // Show payment section
             document.getElementById('payment-section').style.display = 'block';
@@ -383,6 +395,74 @@
             cartSummary.style.display = 'block';
         }
         
+        // Update shipping cost on cart page
+        function updateCartShipping() {
+            const countrySelect = document.getElementById('cart-shipping-country');
+            const countryCode = countrySelect ? countrySelect.value : '';
+            
+            if (countryCode) {
+                saveCountry(countryCode);
+            }
+            
+            const cart = window.Cart.get();
+            if (!cart || !cart.items || cart.items.length === 0) {
+                return;
+            }
+            
+            // Calculate total quantity
+            const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
+            const subtotal = cart.total || 0;
+            
+            // Calculate shipping based on country and quantity
+            let shipping = null;
+            if (countryCode && window.ShippingRates) {
+                shipping = window.ShippingRates.calculate(countryCode, totalQuantity, subtotal);
+            }
+            
+            // Update shipping and total display
+            const shippingElement = document.getElementById('shipping');
+            const totalElement = document.getElementById('total');
+            
+            if (shipping === null) {
+                shippingElement.textContent = 'Select country';
+            } else if (shipping === 0) {
+                shippingElement.textContent = 'Free';
+            } else {
+                shippingElement.textContent = `$${shipping.toFixed(2)}`;
+            }
+            
+            const total = shipping !== null ? subtotal + shipping : subtotal;
+            totalElement.textContent = `$${total.toFixed(2)}`;
+            
+            // Reinitialize PayPal with new total if country is selected
+            if (countryCode && typeof paypal !== 'undefined') {
+                setTimeout(initPayPal, 200);
+            } else if (!countryCode) {
+                // Clear PayPal buttons if no country selected
+                const container = document.getElementById('paypal-button-container');
+                if (container) {
+                    container.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country to proceed.</p>';
+                }
+            }
+        }
+        
+        // Load saved country selection
+        function loadSavedCountry() {
+            const savedCountry = localStorage.getItem('nutrithrive_shipping_country');
+            const countrySelect = document.getElementById('cart-shipping-country');
+            if (savedCountry && countrySelect) {
+                countrySelect.value = savedCountry;
+            }
+        }
+        
+        // Save country selection
+        function saveCountry(countryCode) {
+            if (countryCode) {
+                localStorage.setItem('nutrithrive_shipping_country', countryCode);
+            } else {
+                localStorage.removeItem('nutrithrive_shipping_country');
+            }
+        }
         
         // Initialize PayPal buttons
         function initPayPal() {
@@ -431,7 +511,7 @@
                             const response = await fetch("/.netlify/functions/paypal-create-order", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ amount: subtotal.toFixed(2) })
+                                body: JSON.stringify({ amount: total.toFixed(2) })
                             });
                             const data = await response.json();
                             if (!response.ok) {
@@ -443,61 +523,6 @@
                             console.error("Error creating PayPal order:", err);
                             throw err;
                         }
-                    },
-                    onShippingChange: async (data, actions) => {
-                        console.log("Shipping address changed:", data);
-                        
-                        // Get country code from PayPal shipping address
-                        const countryCode = data.shipping_address?.country_code || '';
-                        if (!countryCode) {
-                            console.log("No country code in shipping address");
-                            return actions.reject();
-                        }
-                        
-                        console.log("Country from PayPal:", countryCode);
-                        
-                        // Calculate shipping based on country and weight
-                        const cartData = window.cartData;
-                        if (!cartData || !window.ShippingRates) {
-                            console.error("Cart data or shipping rates not available");
-                            return actions.reject();
-                        }
-                        
-                        const shipping = window.ShippingRates.calculate(
-                            countryCode, 
-                            cartData.totalQuantity, 
-                            cartData.subtotal
-                        );
-                        
-                        if (shipping === null) {
-                            console.error("Could not calculate shipping");
-                            return actions.reject();
-                        }
-                        
-                        const newTotal = cartData.subtotal + shipping;
-                        console.log("Calculated shipping:", shipping, "New total:", newTotal);
-                        
-                        // Update the order with shipping
-                        return actions.order.patch([
-                            {
-                                op: "replace",
-                                path: "/purchase_units/@reference_id=='default'/amount",
-                                value: {
-                                    currency_code: "AUD",
-                                    value: newTotal.toFixed(2),
-                                    breakdown: {
-                                        item_total: {
-                                            currency_code: "AUD",
-                                            value: cartData.subtotal.toFixed(2)
-                                        },
-                                        shipping: {
-                                            currency_code: "AUD",
-                                            value: shipping.toFixed(2)
-                                        }
-                                    }
-                                }
-                            }
-                        ]);
                     },
                     onApprove: async (data, actions) => {
                         const orderID = data.orderID || data.id;
@@ -556,9 +581,23 @@
         
         // Render cart on load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', renderCart);
+            document.addEventListener('DOMContentLoaded', function() {
+                loadSavedCountry();
+                renderCart();
+                // Initialize PayPal if country is already selected
+                const countrySelect = document.getElementById('cart-shipping-country');
+                if (countrySelect && countrySelect.value && typeof paypal !== 'undefined') {
+                    setTimeout(initPayPal, 500);
+                }
+            });
         } else {
+            loadSavedCountry();
             renderCart();
+            // Initialize PayPal if country is already selected
+            const countrySelect = document.getElementById('cart-shipping-country');
+            if (countrySelect && countrySelect.value && typeof paypal !== 'undefined') {
+                setTimeout(initPayPal, 500);
+            }
         }
     </script>
 </body>
