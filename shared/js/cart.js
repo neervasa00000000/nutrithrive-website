@@ -160,7 +160,7 @@ function updateCartUI() {
     const cartBadges = document.querySelectorAll('.cart-badge, [data-cart-count]');
     cartBadges.forEach(badge => {
         badge.textContent = itemCount;
-        badge.style.display = itemCount > 0 ? 'block' : 'none';
+        badge.style.display = itemCount > 0 ? 'flex' : 'none';
     });
     
     // Update cart link text if exists

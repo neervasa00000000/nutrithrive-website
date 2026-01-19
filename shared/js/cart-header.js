@@ -29,28 +29,29 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: block;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <path d="M16 10a4 4 0 0 1-8 0"></path>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
-                top: -5px;
-                right: -5px;
+                top: -8px;
+                right: -8px;
                 background: #c62828;
                 color: white;
                 border-radius: 50%;
-                width: 20px;
-                height: 20px;
-                font-size: 12px;
-                font-weight: bold;
-                display: flex;
+                width: 18px;
+                height: 18px;
+                font-size: 11px;
+                font-weight: 700;
+                display: none;
                 align-items: center;
                 justify-content: center;
                 line-height: 1;
-                min-width: 20px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                min-width: 18px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                border: 2px solid white;
             ">0</span>
         `;
         
