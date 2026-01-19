@@ -193,40 +193,31 @@
     function createCountrySelector() {
         const selector = document.createElement('div');
         selector.id = 'country-selector-container';
+        selector.className = 'footer-section';
         selector.style.cssText = `
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(26, 46, 34, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            border-top: 1px solid rgba(45, 90, 61, 0.3);
-            z-index: 9999;
+            position: relative;
+            background: transparent;
+            padding: 0;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-            transform: translateZ(0);
-            will-change: transform;
+            flex-direction: column;
+            gap: 0.5rem;
         `;
 
         const label = document.createElement('label');
         label.setAttribute('for', 'global-country-selector');
         label.textContent = 'Country/region';
         label.style.cssText = `
-            color: #e0e0e0;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
         `;
 
         // Create wrapper for search and select
         const selectWrapper = document.createElement('div');
         selectWrapper.style.cssText = `
             position: relative;
-            min-width: 300px;
+            width: 100%;
         `;
 
         // Create search input
@@ -237,16 +228,15 @@
         searchInput.style.cssText = `
             width: 100%;
             padding: 0.75rem 1rem;
-            padding-right: 2.5rem;
-            border: 1px solid rgba(45, 90, 61, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 4px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.15);
             color: white;
             margin-bottom: 0.5rem;
             box-sizing: border-box;
         `;
-        searchInput.style.setProperty('::placeholder', 'color: #999', 'important');
+        searchInput.setAttribute('style', searchInput.style.cssText + '::placeholder { color: rgba(255, 255, 255, 0.6); }');
 
         // Create datalist for search autocomplete
         const datalist = document.createElement('datalist');
@@ -259,10 +249,10 @@
             width: 100%;
             padding: 0.75rem 1rem;
             padding-right: 2.5rem;
-            border: 1px solid rgba(45, 90, 61, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 4px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.15);
             color: white;
             cursor: pointer;
             appearance: none;
@@ -378,7 +368,27 @@
         }
 
         const selector = createCountrySelector();
-        document.body.appendChild(selector);
+        
+        // Find footer and insert before footer-bottom
+        const footer = document.querySelector('footer');
+        if (footer) {
+            const footerContent = footer.querySelector('.footer-content');
+            const footerBottom = footer.querySelector('.footer-bottom');
+            
+            if (footerContent) {
+                // Add as a new footer section
+                footerContent.appendChild(selector);
+            } else if (footerBottom) {
+                // Insert before footer-bottom if no footer-content
+                footer.insertBefore(selector, footerBottom);
+            } else {
+                // Fallback: append to footer
+                footer.appendChild(selector);
+            }
+        } else {
+            // Fallback: append to body if no footer found
+            document.body.appendChild(selector);
+        }
 
         // Auto-detect and set country
         detectCountry().then(countryCode => {
