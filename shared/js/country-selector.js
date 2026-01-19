@@ -189,7 +189,7 @@
         return null;
     }
 
-    // Create country selector HTML
+    // Create country selector HTML with search
     function createCountrySelector() {
         const selector = document.createElement('div');
         selector.id = 'country-selector-container';
@@ -198,16 +198,16 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(139, 69, 19, 0.95);
+            background: rgba(26, 46, 34, 0.98);
             backdrop-filter: blur(10px);
             padding: 1rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(45, 90, 61, 0.3);
             z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
             transform: translateZ(0);
             will-change: transform;
         `;
@@ -216,18 +216,50 @@
         label.setAttribute('for', 'global-country-selector');
         label.textContent = 'Country/region';
         label.style.cssText = `
-            color: #ccc;
+            color: #e0e0e0;
             font-size: 0.9rem;
             font-weight: 500;
             margin: 0;
         `;
 
+        // Create wrapper for search and select
+        const selectWrapper = document.createElement('div');
+        selectWrapper.style.cssText = `
+            position: relative;
+            min-width: 300px;
+        `;
+
+        // Create search input
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.id = 'country-search-input';
+        searchInput.placeholder = 'Search';
+        searchInput.style.cssText = `
+            width: 100%;
+            padding: 0.75rem 1rem;
+            padding-right: 2.5rem;
+            border: 1px solid rgba(45, 90, 61, 0.5);
+            border-radius: 4px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-bottom: 0.5rem;
+            box-sizing: border-box;
+        `;
+        searchInput.style.setProperty('::placeholder', 'color: #999', 'important');
+
+        // Create datalist for search autocomplete
+        const datalist = document.createElement('datalist');
+        datalist.id = 'country-options';
+
+        // Create select dropdown (hidden, used for value storage)
         const select = document.createElement('select');
         select.id = 'global-country-selector';
         select.style.cssText = `
+            width: 100%;
             padding: 0.75rem 1rem;
             padding-right: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(45, 90, 61, 0.5);
             border-radius: 4px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.1);
@@ -238,33 +270,103 @@
             background-repeat: no-repeat;
             background-position: right 0.75rem center;
             background-size: 1.2em;
-            min-width: 250px;
+            box-sizing: border-box;
         `;
 
-        // Add all countries to select
+        // Store all country options for filtering
+        const allCountries = [];
         Object.keys(countryCurrencyMap).forEach(code => {
             const country = countryCurrencyMap[code];
+            const displayText = `${country.name} | ${country.currency} ${country.symbol}`;
+            
+            // Add to datalist for search
+            const datalistOption = document.createElement('option');
+            datalistOption.value = displayText;
+            datalistOption.setAttribute('data-code', code);
+            datalist.appendChild(datalistOption);
+            
+            // Add to select
             const option = document.createElement('option');
             option.value = code;
-            option.textContent = `${country.name} | ${country.currency} ${country.symbol}`;
+            option.textContent = displayText;
             select.appendChild(option);
+            
+            allCountries.push({ code, name: country.name, displayText });
         });
 
         // Add "Other Countries" option
+        const otherDatalistOption = document.createElement('option');
+        otherDatalistOption.value = 'Other Countries | Various';
+        otherDatalistOption.setAttribute('data-code', 'OTHER');
+        datalist.appendChild(otherDatalistOption);
+        
         const otherOption = document.createElement('option');
         otherOption.value = 'OTHER';
         otherOption.textContent = 'Other Countries | Various';
         select.appendChild(otherOption);
+        allCountries.push({ code: 'OTHER', name: 'Other Countries', displayText: 'Other Countries | Various' });
+
+        // Link search input to datalist
+        searchInput.setAttribute('list', 'country-options');
+
+        // Handle search input changes
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            if (searchTerm) {
+                // Filter and show matching countries
+                const filtered = allCountries.filter(c => 
+                    c.name.toLowerCase().includes(searchTerm) || 
+                    c.displayText.toLowerCase().includes(searchTerm)
+                );
+                
+                // Update datalist options
+                datalist.innerHTML = '';
+                filtered.forEach(c => {
+                    const option = document.createElement('option');
+                    option.value = c.displayText;
+                    option.setAttribute('data-code', c.code);
+                    datalist.appendChild(option);
+                });
+            } else {
+                // Show all countries when search is empty
+                datalist.innerHTML = '';
+                allCountries.forEach(c => {
+                    const option = document.createElement('option');
+                    option.value = c.displayText;
+                    option.setAttribute('data-code', c.code);
+                    datalist.appendChild(option);
+                });
+            }
+        });
+
+        // Handle selection from search
+        searchInput.addEventListener('change', function() {
+            const selectedText = this.value;
+            const selectedOption = Array.from(datalist.options).find(opt => opt.value === selectedText);
+            if (selectedOption) {
+                const countryCode = selectedOption.getAttribute('data-code');
+                select.value = countryCode;
+                localStorage.setItem('nutrithrive_country', countryCode);
+                window.dispatchEvent(new CustomEvent('countryChanged', { detail: { countryCode: countryCode } }));
+            }
+        });
 
         select.addEventListener('change', function() {
             const selectedCode = this.value;
+            const selectedCountry = allCountries.find(c => c.code === selectedCode);
+            if (selectedCountry) {
+                searchInput.value = selectedCountry.displayText;
+            }
             localStorage.setItem('nutrithrive_country', selectedCode);
-            // Trigger custom event for other scripts to listen
             window.dispatchEvent(new CustomEvent('countryChanged', { detail: { countryCode: selectedCode } }));
         });
 
+        selectWrapper.appendChild(searchInput);
+        selectWrapper.appendChild(datalist);
+        selectWrapper.appendChild(select);
+        
         selector.appendChild(label);
-        selector.appendChild(select);
+        selector.appendChild(selectWrapper);
         return selector;
     }
 
@@ -280,26 +382,59 @@
 
         // Auto-detect and set country
         detectCountry().then(countryCode => {
-            if (countryCode && countryCode in countryCurrencyMap) {
-                const select = document.getElementById('global-country-selector');
+            const select = document.getElementById('global-country-selector');
+            const searchInput = document.getElementById('country-search-input');
+            
+            if (countryCode && (countryCode in countryCurrencyMap || countryCode === 'OTHER')) {
                 if (select) {
                     select.value = countryCode;
                     localStorage.setItem('nutrithrive_country', countryCode);
+                    
+                    // Update search input to show selected country
+                    if (searchInput) {
+                        const country = countryCurrencyMap[countryCode];
+                        if (country) {
+                            searchInput.value = `${country.name} | ${country.currency} ${country.symbol}`;
+                        } else if (countryCode === 'OTHER') {
+                            searchInput.value = 'Other Countries | Various';
+                        }
+                    }
                 }
             } else {
                 // Load saved country or default to Australia
                 const savedCountry = localStorage.getItem('nutrithrive_country') || 'AU';
-                const select = document.getElementById('global-country-selector');
                 if (select) {
                     select.value = savedCountry;
+                    
+                    // Update search input
+                    if (searchInput) {
+                        const country = countryCurrencyMap[savedCountry];
+                        if (country) {
+                            searchInput.value = `${country.name} | ${country.currency} ${country.symbol}`;
+                        } else if (savedCountry === 'OTHER') {
+                            searchInput.value = 'Other Countries | Various';
+                        }
+                    }
                 }
             }
         }).catch(() => {
             // On error, load saved country or default to Australia
             const savedCountry = localStorage.getItem('nutrithrive_country') || 'AU';
             const select = document.getElementById('global-country-selector');
+            const searchInput = document.getElementById('country-search-input');
+            
             if (select) {
                 select.value = savedCountry;
+                
+                // Update search input
+                if (searchInput) {
+                    const country = countryCurrencyMap[savedCountry];
+                    if (country) {
+                        searchInput.value = `${country.name} | ${country.currency} ${country.symbol}`;
+                    } else if (savedCountry === 'OTHER') {
+                        searchInput.value = 'Other Countries | Various';
+                    }
+                }
             }
         });
     }
