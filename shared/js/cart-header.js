@@ -29,16 +29,16 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="display: block;">
-                <!-- Solid black basket with trapezoidal body -->
-                <path d="M5 8h14l-1 12H6L5 8z" fill="#1a2e22"></path>
-                <path d="M5 8l-1-4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 4" fill="#1a2e22"></path>
-                <!-- Flat rectangular handle -->
-                <rect x="8" y="3" width="8" height="2" fill="#1a2e22" rx="1"></rect>
-                <!-- Three vertical white bars on front -->
-                <rect x="6" y="10" width="2" height="8" fill="white" rx="0.5"></rect>
-                <rect x="11" y="10" width="2" height="8" fill="white" rx="0.5"></rect>
-                <rect x="16" y="10" width="2" height="8" fill="white" rx="0.5"></rect>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <!-- Rounded basket with curved handle -->
+                <path d="M6 3h12a1 1 0 0 1 1 1v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a1 1 0 0 1 1-1z" style="fill: none;"></path>
+                <path d="M6 3V2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" style="fill: none;"></path>
+                <!-- Curved handle -->
+                <path d="M9 3c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2" style="fill: none;"></path>
+                <!-- Horizontal weave lines -->
+                <line x1="6" y1="8" x2="18" y2="8" style="fill: none;"></line>
+                <line x1="6" y1="12" x2="18" y2="12" style="fill: none;"></line>
+                <line x1="6" y1="16" x2="18" y2="16" style="fill: none;"></line>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
