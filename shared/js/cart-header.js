@@ -29,15 +29,15 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Classic shopping basket -->
-                <path d="M4 7h16l-1 13H5L4 7z" style="fill: none;"></path>
-                <path d="M4 7l-1-3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1l-1 3" style="fill: none;"></path>
-                <!-- Two handles -->
-                <path d="M8 7c0-1.1.9-2 2-2h0" style="fill: none;"></path>
-                <path d="M8 7c0 1.1-.9 2-2 2" style="fill: none;"></path>
-                <path d="M16 7c0-1.1.9-2 2-2h0" style="fill: none;"></path>
-                <path d="M16 7c0 1.1.9 2 2 2" style="fill: none;"></path>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="display: block;">
+                <!-- Rounded basket with curved handle -->
+                <path d="M6 8h12l-1 12H7L6 8z" fill="#1a2e22" rx="2"></path>
+                <path d="M6 8l-1-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1l-1 3" fill="#1a2e22"></path>
+                <!-- Single curved handle -->
+                <path d="M9 5c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" fill="none"></path>
+                <!-- Basket weave pattern -->
+                <line x1="8" y1="11" x2="16" y2="11" stroke="#1a2e22" stroke-width="1" opacity="0.3"></line>
+                <line x1="8" y1="14" x2="16" y2="14" stroke="#1a2e22" stroke-width="1" opacity="0.3"></line>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
