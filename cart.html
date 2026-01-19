@@ -413,10 +413,10 @@
             const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
             const subtotal = cart.total || 0;
             
-            // Calculate shipping based on country and quantity
+            // Calculate shipping based on country and actual cart items (with weights)
             let shipping = null;
             if (countryCode && window.ShippingRates) {
-                shipping = window.ShippingRates.calculate(countryCode, totalQuantity, subtotal);
+                shipping = window.ShippingRates.calculate(countryCode, cart.items, subtotal);
             }
             
             // Update shipping and total display
@@ -505,8 +505,7 @@
             
             // Calculate totals including shipping
             const subtotal = parseFloat(cart.total || 0);
-            const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
-            const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, totalQuantity, subtotal) : 0;
+            const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
             const shippingCost = shipping !== null && shipping !== undefined ? parseFloat(shipping) : 0;
             const total = parseFloat(subtotal) + parseFloat(shippingCost);
             

@@ -80,29 +80,23 @@ const SHIPPING_RATES = {
     }
 };
 
-// Map product quantity to package size
-// Assuming average product weight: ~100g per product
-// This can be adjusted based on actual product weights
-function getPackageSize(totalQuantity) {
-    // Calculate approximate weight based on quantity
-    // Adjust these thresholds based on your actual product weights
-    const estimatedWeight = totalQuantity * 100; // grams (adjust multiplier as needed)
-    
-    if (estimatedWeight <= 250) {
+// Map total weight in grams to package size
+function getPackageSize(totalWeightGrams) {
+    if (totalWeightGrams <= 250) {
         return 'Extra Small';
-    } else if (estimatedWeight <= 500) {
+    } else if (totalWeightGrams <= 500) {
         return 'Small';
-    } else if (estimatedWeight <= 1000) {
+    } else if (totalWeightGrams <= 1000) {
         return 'Medium';
-    } else if (estimatedWeight <= 3000) {
+    } else if (totalWeightGrams <= 3000) {
         return 'Large';
     } else {
         return 'Extra Large';
     }
 }
 
-// Calculate shipping cost based on country and total quantity
-function calculateShipping(countryCode, totalQuantity, subtotal) {
+// Calculate shipping cost based on country and actual cart items weight
+function calculateShipping(countryCode, cartItems, subtotal) {
     if (!countryCode) {
         return null; // Country not selected
     }
@@ -115,8 +109,24 @@ function calculateShipping(countryCode, totalQuantity, subtotal) {
         return 0;
     }
     
-    // Determine package size based on quantity
-    const packageSize = getPackageSize(totalQuantity);
+    // Calculate total weight from cart items
+    let totalWeightGrams = 0;
+    if (cartItems && Array.isArray(cartItems)) {
+        cartItems.forEach(item => {
+            const itemWeight = item.weight || 0; // Weight in grams per unit
+            const quantity = parseInt(item.quantity || 1);
+            totalWeightGrams += itemWeight * quantity;
+        });
+    }
+    
+    // If no weight data available, fallback to old method (quantity * 100g)
+    if (totalWeightGrams === 0 && cartItems && cartItems.length > 0) {
+        const totalQuantity = cartItems.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
+        totalWeightGrams = totalQuantity * 100; // Fallback estimate
+    }
+    
+    // Determine package size based on actual total weight
+    const packageSize = getPackageSize(totalWeightGrams);
     
     // Get the shipping cost for this package size
     const packageRate = countryRates.rates[packageSize];
@@ -140,5 +150,15 @@ window.ShippingRates = {
     calculate: calculateShipping,
     getCountryName: getCountryName,
     rates: SHIPPING_RATES,
-    getPackageSize: getPackageSize
+    getPackageSize: getPackageSize,
+    // Keep old function for backward compatibility
+    calculateOld: function(countryCode, totalQuantity, subtotal) {
+        const estimatedWeight = totalQuantity * 100;
+        const packageSize = getPackageSize(estimatedWeight);
+        const countryRates = SHIPPING_RATES[countryCode] || SHIPPING_RATES['OTHER'];
+        if (countryRates.freeShippingThreshold && subtotal >= countryRates.freeShippingThreshold) {
+            return 0;
+        }
+        return countryRates.rates[packageSize]?.cost || countryRates.rates['Extra Large'].cost;
+    }
 };

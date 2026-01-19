@@ -755,14 +755,14 @@
     <script src="../shared/js/cart-header.js"></script>
     <script src="../shared/js/script.js"></script>
     <script>
-        // Product variations data
+        // Product variations data with actual weights in grams
         const productVariations = {
-            'variation-1': { price: 31.60, name: '3 + 1 = 400g Moringa', image: '../shared/images/Home page /Moringa.png' },
-            'variation-2': { price: 10.50, name: '100g Moringa', image: '../shared/images/Home page /Moringa.png' },
-            'variation-3': { price: 15.55, name: 'Combo Moringa + Dried Curry Leaves', image: '../shared/images/Home page /Moringa.png' },
-            'variation-4': { price: 20.49, name: '200g Moringa', image: '../shared/images/Home page /Moringa.png' },
-            'variation-5': { price: 6.45, name: '30g Dried Curry Leaves', image: '../shared/images/Home page /Moringa.png' },
-            'variation-6': { price: 17.00, name: 'Moringa 100g + Soap 95g', image: '../shared/images/Home page /Moringa.png' }
+            'variation-1': { price: 31.60, name: '3 + 1 = 400g Moringa', weight: 400, image: '../shared/images/Home page /Moringa.png' },
+            'variation-2': { price: 10.50, name: '100g Moringa', weight: 100, image: '../shared/images/Home page /Moringa.png' },
+            'variation-3': { price: 15.55, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../shared/images/Home page /Moringa.png' }, // 100g + 30g
+            'variation-4': { price: 20.49, name: '200g Moringa', weight: 200, image: '../shared/images/Home page /Moringa.png' },
+            'variation-5': { price: 6.45, name: '30g Dried Curry Leaves', weight: 30, image: '../shared/images/Home page /Moringa.png' },
+            'variation-6': { price: 17.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '../shared/images/Home page /Moringa.png' } // 100g + 95g
         };
         
         // Update product details when variation changes
@@ -795,6 +795,7 @@
                     id: `moringa-${variationId}`,
                     name: variation.name,
                     price: variation.price,
+                    weight: variation.weight, // Store actual weight in grams
                     image: variation.image,
                     quantity: quantity
                 });
