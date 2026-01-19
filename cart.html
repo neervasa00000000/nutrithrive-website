@@ -384,54 +384,6 @@
         }
         
         
-        // Update shipping cost on cart page
-        function updateCartShipping() {
-            const countrySelect = document.getElementById('cart-shipping-country');
-            const countryCode = countrySelect ? countrySelect.value : '';
-            
-            if (countryCode) {
-                saveCountry(countryCode);
-                // Highlight country box when selected
-                const countryBox = document.getElementById('country-box');
-                if (countryBox) {
-                    countryBox.style.background = '#f0f0f0';
-                    countryBox.style.borderColor = '#2d5a3d';
-                }
-            }
-            
-            const cart = window.Cart.get();
-            if (!cart || !cart.items || cart.items.length === 0) {
-                return;
-            }
-            
-            // Calculate total quantity
-            const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
-            const subtotal = cart.total || 0;
-            
-            // Calculate shipping based on country and quantity
-            let shipping = null;
-            if (countryCode && window.ShippingRates) {
-                shipping = window.ShippingRates.calculate(countryCode, totalQuantity, subtotal);
-            }
-            
-            // Update shipping and total display
-            const shippingElement = document.getElementById('shipping');
-            const totalElement = document.getElementById('total');
-            
-            if (shipping === null) {
-                shippingElement.textContent = 'Select country';
-            } else if (shipping === 0) {
-                shippingElement.textContent = 'Free';
-            } else {
-                shippingElement.textContent = `$${shipping.toFixed(2)}`;
-            }
-            
-            const total = shipping !== null ? subtotal + shipping : subtotal;
-            totalElement.textContent = `$${total.toFixed(2)}`;
-            
-        }
-        
-        
         // Initialize PayPal buttons
         function initPayPal() {
             console.log("Initializing PayPal...");
