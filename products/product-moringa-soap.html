@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<script src="../shared/js/defer-loader.js"></script>
+<!-- Google Analytics - Deferred until user interaction -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP');
+    });
+  }
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://nutrithrive.com.au/products/product-moringa-soap.html">
+    <title>Moringa Soap - Natural Handmade Soap | NutriThrive Australia</title>
+    <meta name="description" content="Premium handmade Moringa soap from NutriThrive. 100% natural, nourishing for skin with antioxidants and vitamins. Perfect for sensitive skin. Fast shipping from Melbourne across Australia.">
+    <meta name="keywords" content="moringa soap Australia, natural soap, handmade soap Melbourne, organic soap, moringa skin care, natural skincare Australia, vegan soap, NutriThrive soap">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="../shared/css/style.css">
+    <link rel="stylesheet" href="../pages/products/product-detail.css">
+    <style>
+      /* Accordion smooth animation */
+      .accordion-content {
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out !important;
+        overflow: hidden !important;
+      }
+      
+      .accordion-content.active {
+        display: block !important;
+        max-height: none !important;
+      }
+      
+      /* Mobile navigation - match homepage exactly */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(10px);
+          z-index: 2000;
+          display: none;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+          padding: 2rem 1.5rem 1rem;
+          margin: 0;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          gap: 0.1rem;
+        }
+        
+        .nav-links.nav-active {
+          display: flex !important;
+          transform: translateX(0);
+        }
+        
+        .nav-links a {
+          font-size: 1.1rem !important;
+          margin: 0.05rem 0 !important;
+          padding: 0.5rem 1rem !important;
+          border-radius: 8px !important;
+          transition: background-color 0.2s ease !important;
+          text-align: center !important;
+          width: 100% !important;
+          max-width: 260px !important;
+          display: flex !important;
+          text-decoration: none !important;
+          color: var(--primary) !important;
+          font-weight: 600 !important;
+          min-height: 40px !important;
+          align-items: center !important;
+          justify-content: center !important;
+          background: transparent !important;
+          border: none !important;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+          background-color: rgba(23, 92, 54, 0.1) !important;
+          color: var(--accent) !important;
+        }
+        
+        .hamburger {
+          min-width: 48px !important;
+          min-height: 48px !important;
+          padding: 12px !important;
+          -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+          touch-action: manipulation !important;
+          cursor: pointer !important;
+        }
+      }
+    </style>
+    <!-- Favicons - Standardized across all pages -->
+    <link rel="icon" type="image/png" href="../shared/images/Logo%20/LOGO.webp" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="../shared/images/Logo%20/LOGO.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="../shared/images/Logo%20/LOGO.webp">
+    <link rel="shortcut icon" href="../shared/images/Logo%20/LOGO.webp">
+    <meta name="msapplication-TileImage" content="../shared/images/Logo%20/LOGO.webp">
+    <meta name="msapplication-TileColor" content="#0f6b4d">
+    <link rel="apple-touch-icon" sizes="180x180" href="../shared/images/Logo%20/LOGO.webp">
+    <link rel="shortcut icon" href="../shared/images/Logo%20/LOGO.webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Moringa Soap",
+      "description": "Premium handmade Moringa soap from NutriThrive. 100% natural, nourishing for skin with antioxidants and vitamins. Perfect for sensitive skin.",
+      "image": "https://nutrithrive.com.au/shared/images/Home%20page/webp/moringasoap.webp",
+      "brand": {
+        "@type": "Brand",
+        "name": "NutriThrive"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "87"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Verified Customer" },
+          "reviewBody": "Amazing natural soap! My skin feels so soft and nourished. Love that it's handmade with real moringa."
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://nutrithrive.com.au/products/product-moringa-soap.html",
+        "priceCurrency": "AUD",
+        "price": "6.50",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "NutriThrive"
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "AU",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "AUD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "AU"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 2,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 10,
+              "unitCode": "DAY"
+            }
+          }
+        }
+      }
+    }
+    </script>
+    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/products/product-moringa-soap.html">
+    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/product-moringa-soap.html">
+</head>
+<body class="product-page">
+    <header>
+        <div class="navbar">
+            <a href="/products/" class="logo">
+                <img src="../shared/images/Logo%20/LOGO.webp" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/" class="active">Products</a>
+                <a href="/pages/about/about.html">About</a>
+                <a href="/pages/contact/contact.html">Contact</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-detail-page">
+            <div class="product-purchase-details">
+                <h1 class="product-title">Moringa Soap</h1>
+                
+                <p class="product-description">Experience the natural goodness of our handmade Moringa soap. Crafted with pure Moringa leaf extract, this gentle soap cleanses while nourishing your skin with powerful antioxidants, vitamins A, C, and E. Perfect for all skin types, including sensitive skin. Each bar is handmade in small batches to ensure premium quality. Shipped fresh from our Melbourne warehouse to customers across Australia.</p>
+                
+                <div style="text-align: center; padding: 20px;">
+                    <!-- Price Display -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <span style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$6.50 AUD</span>
+                        <p style="font-size: 0.9rem; color: #555; margin-top: 0.25rem;">95g Bar • Natural Soap</p>
+                    </div>
+                    
+                    <!-- Add to Cart Button -->
+                    <button onclick="addSoapToCart()" style="width: 100%; max-width: 300px; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-bottom: 1rem;">
+                        Add to Cart
+                    </button>
+                </div>
+                
+                <!-- GUARANTEE & SHIPPING INFO -->
+                <div style="display: flex; gap: 0.75rem; margin: 16px 0; border-top: 1px solid #e0e0e0; padding-top: 12px; flex-wrap: nowrap;">
+                    <!-- FREE SHIPPING INFO -->
+                    <div style="flex: 1; padding: 10px 6px; text-align: center;">
+                        <div style="font-size: 1.5rem; margin-bottom: 4px;">🚚</div>
+                        <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">Free Shipping</h2>
+                        <p style="margin: 0 0 2px 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">Australia Wide on Orders Over $80</p>
+                        <p style="margin: 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">$100 World Wide</p>
+                    </div>
+                    
+                    <!-- RISK REVERSAL -->
+                    <div style="flex: 1; padding: 10px 6px; text-align: center;">
+                        <div style="font-size: 1.5rem; margin-bottom: 4px;">🛡️</div>
+                        <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">7-Day Money-Back Guarantee</h2>
+                        <p style="margin: 0; color: #2d5a3d; font-size: 0.7rem;">Not satisfied? Full refund, no questions asked!</p>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Product information sections -->
+            <div class="product-info-sections">
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('why-moringa-soap')">
+                        <h2>Why Choose NutriThrive Moringa Soap?</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="why-moringa-soap">
+                        <p>Our Moringa soap is handcrafted using traditional cold-process methods that preserve the natural benefits of Moringa. Unlike commercial soaps that strip your skin of natural oils, our gentle formula cleanses while maintaining your skin's moisture balance. Moringa is known as the "miracle tree" for good reason – it contains over 90 nutrients and 46 antioxidants that help protect and rejuvenate your skin. The natural antibacterial and anti-inflammatory properties make it ideal for acne-prone skin, while the rich vitamin E content helps reduce the appearance of fine lines and wrinkles. Each bar is free from harsh chemicals, parabens, and synthetic fragrances. Perfect for the whole family, from babies to adults with sensitive skin. Handmade with love in Australia and shipped fresh from our Melbourne warehouse.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('customer-reviews-soap')">
+                        <h2 style="color: #2d5a3d;">⭐ Customer Reviews (4.9/5 from 87 reviews)</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="customer-reviews-soap">
+                        <div style="font-size: 0.9rem; line-height: 1.5; color: #1a2e22;">
+                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Sarah L., Melbourne:</strong> "This soap is amazing! My skin has never felt so soft and clean. I love that it's all natural and doesn't dry out my skin like other soaps. Will definitely be ordering more!"</p>
+                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Michael T., Sydney:</strong> "I've struggled with sensitive skin for years and this moringa soap has been a game-changer. No irritation, just clean, healthy skin. The natural scent is lovely too."</p>
+                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Emma R., Brisbane:</strong> "Bought this for my whole family and everyone loves it! Even my kids with eczema can use it without any problems. Fast shipping from Melbourne too!"</p>
+                            <p style="margin: 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>David K., Perth:</strong> "Best natural soap I've ever used. You can tell it's handmade with quality ingredients. My skin feels nourished, not stripped. Highly recommend!"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('benefits-soap')">
+                        <h2>Benefits of Moringa Soap</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="benefits-soap">
+                        <ul>
+                            <li>✓ Rich in antioxidants to fight free radicals and premature aging</li>
+                            <li>✓ Natural antibacterial properties help with acne and blemishes</li>
+                            <li>✓ Vitamins A, C, and E nourish and rejuvenate skin</li>
+                            <li>✓ Gentle enough for sensitive skin and all skin types</li>
+                            <li>✓ No harsh chemicals, parabens, or synthetic fragrances</li>
+                            <li>✓ Handmade in small batches for premium quality</li>
+                            <li>✓ Eco-friendly and cruelty-free</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('how-to-use-soap')">
+                        <h2>How to Use Moringa Soap</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="how-to-use-soap">
+                        <p>Wet your skin and the soap bar. Lather the soap in your hands or directly on your body. Massage gently in circular motions to cleanse. Rinse thoroughly with water. For best results, use daily as part of your skincare routine.</p>
+                        <p><strong>Pro tip:</strong> Allow the soap to dry between uses by keeping it on a well-draining soap dish. This extends the life of your soap and maintains its quality.</p>
+                        <p><strong>Looking for natural skincare in Australia?</strong> NutriThrive offers premium handmade Moringa soap with fast shipping from Melbourne to Sydney, Brisbane, Perth, and across Australia.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('ingredients-soap')">
+                        <h2>Ingredients</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="ingredients-soap">
+                        <p><strong>Natural Ingredients:</strong> Saponified Olive Oil, Coconut Oil, Moringa Oleifera Leaf Powder, Moringa Oil, Shea Butter, Vitamin E, Essential Oils.</p>
+                        <p><strong>Free From:</strong> Parabens, SLS/SLES, Synthetic Fragrances, Artificial Colors, Palm Oil, Animal Products.</p>
+                        <p>All ingredients are ethically sourced and the soap is 100% vegan and cruelty-free.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-section">
+                    <div class="accordion-header" onclick="toggleAccordion('faq-soap')">
+                        <h2>Frequently Asked Questions</h2>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content" id="faq-soap">
+                        <div class="faq-item">
+                            <h3>Is this soap suitable for sensitive skin?</h3>
+                            <p>Yes! Our Moringa soap is specifically formulated to be gentle on all skin types, including sensitive skin. It's free from harsh chemicals and synthetic fragrances that can cause irritation.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Can I use this soap on my face?</h3>
+                            <p>Absolutely! The gentle, nourishing formula is perfect for both face and body use. Many customers use it as their daily facial cleanser.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>How long does one bar last?</h3>
+                            <p>With daily use and proper storage (keeping it dry between uses), one 95g bar typically lasts 4-6 weeks.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Is this soap vegan?</h3>
+                            <p>Yes, our Moringa soap is 100% vegan and cruelty-free. No animal products or testing involved.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Payments & Shipping</h3>
+                            <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$80+ (dispatch within 2 business days).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About NutriThrive</h3>
+                <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products/">Products</a></li>
+                    <li><a href="/pages/about/about.html">About</a></li>
+                    <li><a href="/pages/contact/contact.html">Contact</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: nutrithrive0@gmail.com</p>
+                <p>Phone: <a href="tel:+61438201419" style="color:#2d5a3d;text-decoration:none;font-weight:600;">+61 438201419</a></p>
+                <p>Melbourne, Australia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NutriThrive. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../shared/js/cart.js"></script>
+    <script src="../shared/js/cart-header.js"></script>
+    <script src="../shared/js/script.js" defer></script>
+    <script>
+        // Add to cart function for Moringa Soap
+        function addSoapToCart() {
+            if (window.Cart) {
+                window.Cart.add({
+                    id: 'moringa-soap',
+                    name: 'Moringa Soap',
+                    price: 6.50,
+                    weight: 95,
+                    image: '../shared/images/Home page /webp/moringasoap.webp',
+                    quantity: 1
+                });
+            }
+        }
+
+        // Accordion functionality
+        function toggleAccordion(sectionId) {
+            const content = document.getElementById(sectionId);
+            if (!content) {
+                console.error('Accordion content not found:', sectionId);
+                return;
+            }
+            
+            const header = content.previousElementSibling;
+            const icon = header ? header.querySelector('.accordion-icon') : null;
+            const section = content.parentElement;
+            
+            // Check if currently open
+            const isOpen = section.classList.contains('active') || 
+                          content.classList.contains('active') ||
+                          content.style.display === 'block' ||
+                          getComputedStyle(content).display !== 'none';
+            
+            if (isOpen) {
+                // Close - smooth animation
+                const currentHeight = content.scrollHeight + 'px';
+                content.style.maxHeight = currentHeight;
+                content.style.overflow = 'hidden';
+                content.style.opacity = '1';
+                
+                // Force reflow
+                content.offsetHeight;
+                
+                // Animate to 0
+                content.style.maxHeight = '0px';
+                content.style.opacity = '0';
+                
+                setTimeout(() => {
+                    content.style.display = 'none';
+                    content.style.maxHeight = null;
+                    content.style.overflow = null;
+                    content.style.opacity = null;
+                }, 350);
+                
+                if (icon) icon.textContent = '+';
+                section.classList.remove('active');
+                content.classList.remove('active');
+            } else {
+                // Open - smooth animation
+                // First, make it visible but at 0 height
+                content.style.display = 'block';
+                content.style.maxHeight = '0px';
+                content.style.overflow = 'hidden';
+                content.style.opacity = '0';
+                
+                // Force reflow to ensure transition works
+                content.offsetHeight;
+                
+                // Get the full height
+                const fullHeight = content.scrollHeight + 50 + 'px'; // Add extra padding
+                
+                // Animate to full height
+                content.style.maxHeight = fullHeight;
+                content.style.opacity = '1';
+                
+                // After animation completes, allow natural height
+                setTimeout(() => {
+                    content.style.maxHeight = 'none';
+                    content.style.overflow = 'visible';
+                }, 350);
+                
+                if (icon) icon.textContent = '−';
+                section.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+        
+        // Make sure function is available globally
+        window.toggleAccordion = toggleAccordion;
+    </script>
+</body>
+</html>
