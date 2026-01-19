@@ -46,10 +46,200 @@ const COUNTRY_MAPPING = {
     'GB': { zone: 4, color: 'BLUE' }, // United Kingdom - Zone 4 in BLUE table
     'IE': { zone: 4, color: 'BLUE' }, // Ireland - Zone 4 in BLUE table
     
-    // YELLOW - Other International (default for all other countries)
-    // Uses zones 2, 4, or 5 from YELLOW table based on Country Master List
+    // YELLOW - Zone 2 (Rest of Asia, Pacific Islands)
+    'JP': { zone: 2, color: 'YELLOW' }, // Japan
+    'KR': { zone: 2, color: 'YELLOW' }, // South Korea
+    'SG': { zone: 2, color: 'YELLOW' }, // Singapore
+    'MY': { zone: 2, color: 'YELLOW' }, // Malaysia
+    'TH': { zone: 2, color: 'YELLOW' }, // Thailand
+    'ID': { zone: 2, color: 'YELLOW' }, // Indonesia
+    'PH': { zone: 2, color: 'YELLOW' }, // Philippines
+    'VN': { zone: 2, color: 'YELLOW' }, // Vietnam
+    'HK': { zone: 2, color: 'YELLOW' }, // Hong Kong
+    'TW': { zone: 2, color: 'YELLOW' }, // Taiwan
+    'IN': { zone: 2, color: 'YELLOW' }, // India
+    'PK': { zone: 2, color: 'YELLOW' }, // Pakistan
+    'BD': { zone: 2, color: 'YELLOW' }, // Bangladesh
+    'LK': { zone: 2, color: 'YELLOW' }, // Sri Lanka
+    'NP': { zone: 2, color: 'YELLOW' }, // Nepal
+    'FJ': { zone: 2, color: 'YELLOW' }, // Fiji
+    'PG': { zone: 2, color: 'YELLOW' }, // Papua New Guinea
+    'WS': { zone: 2, color: 'YELLOW' }, // Samoa
+    'TO': { zone: 2, color: 'YELLOW' }, // Tonga
+    'VU': { zone: 2, color: 'YELLOW' }, // Vanuatu
+    'NC': { zone: 2, color: 'YELLOW' }, // New Caledonia
+    'PF': { zone: 2, color: 'YELLOW' }, // French Polynesia
+    
+    // YELLOW - Zone 4 (Major Europe, Rest of World 1)
+    'DE': { zone: 4, color: 'YELLOW' }, // Germany
+    'FR': { zone: 4, color: 'YELLOW' }, // France
+    'IT': { zone: 4, color: 'YELLOW' }, // Italy
+    'ES': { zone: 4, color: 'YELLOW' }, // Spain
+    'PT': { zone: 4, color: 'YELLOW' }, // Portugal
+    'NL': { zone: 4, color: 'YELLOW' }, // Netherlands
+    'BE': { zone: 4, color: 'YELLOW' }, // Belgium
+    'AT': { zone: 4, color: 'YELLOW' }, // Austria
+    'CH': { zone: 4, color: 'YELLOW' }, // Switzerland
+    'SE': { zone: 4, color: 'YELLOW' }, // Sweden
+    'NO': { zone: 4, color: 'YELLOW' }, // Norway
+    'DK': { zone: 4, color: 'YELLOW' }, // Denmark
+    'FI': { zone: 4, color: 'YELLOW' }, // Finland
+    'PL': { zone: 4, color: 'YELLOW' }, // Poland
+    'CZ': { zone: 4, color: 'YELLOW' }, // Czech Republic
+    'GR': { zone: 4, color: 'YELLOW' }, // Greece
+    'HU': { zone: 4, color: 'YELLOW' }, // Hungary
+    'RO': { zone: 4, color: 'YELLOW' }, // Romania
+    'BG': { zone: 4, color: 'YELLOW' }, // Bulgaria
+    'HR': { zone: 4, color: 'YELLOW' }, // Croatia
+    'SK': { zone: 4, color: 'YELLOW' }, // Slovakia
+    'SI': { zone: 4, color: 'YELLOW' }, // Slovenia
+    'LT': { zone: 4, color: 'YELLOW' }, // Lithuania
+    'LV': { zone: 4, color: 'YELLOW' }, // Latvia
+    'EE': { zone: 4, color: 'YELLOW' }, // Estonia
+    'CY': { zone: 4, color: 'YELLOW' }, // Cyprus
+    'MT': { zone: 4, color: 'YELLOW' }, // Malta
+    'LU': { zone: 4, color: 'YELLOW' }, // Luxembourg
+    'IS': { zone: 4, color: 'YELLOW' }, // Iceland
+    'AE': { zone: 4, color: 'YELLOW' }, // United Arab Emirates
+    'SA': { zone: 4, color: 'YELLOW' }, // Saudi Arabia
+    'QA': { zone: 4, color: 'YELLOW' }, // Qatar
+    'KW': { zone: 4, color: 'YELLOW' }, // Kuwait
+    'BH': { zone: 4, color: 'YELLOW' }, // Bahrain
+    'OM': { zone: 4, color: 'YELLOW' }, // Oman
+    'IL': { zone: 4, color: 'YELLOW' }, // Israel
+    'TR': { zone: 4, color: 'YELLOW' }, // Turkey
+    'ZA': { zone: 4, color: 'YELLOW' }, // South Africa
+    
+    // YELLOW - Zone 5 (Rest of World 2)
+    'MX': { zone: 5, color: 'YELLOW' }, // Mexico
+    'BR': { zone: 5, color: 'YELLOW' }, // Brazil
+    'AR': { zone: 5, color: 'YELLOW' }, // Argentina
+    'CL': { zone: 5, color: 'YELLOW' }, // Chile
+    'CO': { zone: 5, color: 'YELLOW' }, // Colombia
+    'PE': { zone: 5, color: 'YELLOW' }, // Peru
+    'VE': { zone: 5, color: 'YELLOW' }, // Venezuela
+    'EC': { zone: 5, color: 'YELLOW' }, // Ecuador
+    'UY': { zone: 5, color: 'YELLOW' }, // Uruguay
+    'PY': { zone: 5, color: 'YELLOW' }, // Paraguay
+    'BO': { zone: 5, color: 'YELLOW' }, // Bolivia
+    'RU': { zone: 5, color: 'YELLOW' }, // Russia
+    'UA': { zone: 5, color: 'YELLOW' }, // Ukraine
+    'EG': { zone: 5, color: 'YELLOW' }, // Egypt
+    'NG': { zone: 5, color: 'YELLOW' }, // Nigeria
+    'KE': { zone: 5, color: 'YELLOW' }, // Kenya
+    'GH': { zone: 5, color: 'YELLOW' }, // Ghana
+    'MA': { zone: 5, color: 'YELLOW' }, // Morocco
+    'TN': { zone: 5, color: 'YELLOW' }, // Tunisia
+    'ET': { zone: 5, color: 'YELLOW' }, // Ethiopia
+    'TZ': { zone: 5, color: 'YELLOW' }, // Tanzania
+    'UG': { zone: 5, color: 'YELLOW' }, // Uganda
+    'ZW': { zone: 5, color: 'YELLOW' }, // Zimbabwe
+    'MU': { zone: 5, color: 'YELLOW' }, // Mauritius
+    
+    // Default for any other country not listed
     'OTHER': { zone: 5, color: 'YELLOW' } // Default for other countries - Zone 5 (Rest of World 2)
 };
+
+// Complete country list for dropdown
+const COUNTRY_LIST = [
+    { code: 'AU', name: 'Australia' },
+    { code: 'NZ', name: 'New Zealand' },
+    { code: 'US', name: 'United States' },
+    { code: 'GB', name: 'United Kingdom' },
+    { code: 'CA', name: 'Canada' },
+    { code: 'IE', name: 'Ireland' },
+    { code: 'CN', name: 'China' },
+    // Asia & Pacific
+    { code: 'JP', name: 'Japan' },
+    { code: 'KR', name: 'South Korea' },
+    { code: 'SG', name: 'Singapore' },
+    { code: 'MY', name: 'Malaysia' },
+    { code: 'TH', name: 'Thailand' },
+    { code: 'ID', name: 'Indonesia' },
+    { code: 'PH', name: 'Philippines' },
+    { code: 'VN', name: 'Vietnam' },
+    { code: 'HK', name: 'Hong Kong' },
+    { code: 'TW', name: 'Taiwan' },
+    { code: 'IN', name: 'India' },
+    { code: 'PK', name: 'Pakistan' },
+    { code: 'BD', name: 'Bangladesh' },
+    { code: 'LK', name: 'Sri Lanka' },
+    { code: 'NP', name: 'Nepal' },
+    { code: 'FJ', name: 'Fiji' },
+    { code: 'PG', name: 'Papua New Guinea' },
+    { code: 'WS', name: 'Samoa' },
+    { code: 'TO', name: 'Tonga' },
+    { code: 'VU', name: 'Vanuatu' },
+    { code: 'NC', name: 'New Caledonia' },
+    { code: 'PF', name: 'French Polynesia' },
+    // Europe
+    { code: 'DE', name: 'Germany' },
+    { code: 'FR', name: 'France' },
+    { code: 'IT', name: 'Italy' },
+    { code: 'ES', name: 'Spain' },
+    { code: 'PT', name: 'Portugal' },
+    { code: 'NL', name: 'Netherlands' },
+    { code: 'BE', name: 'Belgium' },
+    { code: 'AT', name: 'Austria' },
+    { code: 'CH', name: 'Switzerland' },
+    { code: 'SE', name: 'Sweden' },
+    { code: 'NO', name: 'Norway' },
+    { code: 'DK', name: 'Denmark' },
+    { code: 'FI', name: 'Finland' },
+    { code: 'PL', name: 'Poland' },
+    { code: 'CZ', name: 'Czech Republic' },
+    { code: 'GR', name: 'Greece' },
+    { code: 'HU', name: 'Hungary' },
+    { code: 'RO', name: 'Romania' },
+    { code: 'BG', name: 'Bulgaria' },
+    { code: 'HR', name: 'Croatia' },
+    { code: 'SK', name: 'Slovakia' },
+    { code: 'SI', name: 'Slovenia' },
+    { code: 'LT', name: 'Lithuania' },
+    { code: 'LV', name: 'Latvia' },
+    { code: 'EE', name: 'Estonia' },
+    { code: 'CY', name: 'Cyprus' },
+    { code: 'MT', name: 'Malta' },
+    { code: 'LU', name: 'Luxembourg' },
+    { code: 'IS', name: 'Iceland' },
+    // Middle East
+    { code: 'AE', name: 'United Arab Emirates' },
+    { code: 'SA', name: 'Saudi Arabia' },
+    { code: 'QA', name: 'Qatar' },
+    { code: 'KW', name: 'Kuwait' },
+    { code: 'BH', name: 'Bahrain' },
+    { code: 'OM', name: 'Oman' },
+    { code: 'IL', name: 'Israel' },
+    { code: 'TR', name: 'Turkey' },
+    // Africa
+    { code: 'ZA', name: 'South Africa' },
+    { code: 'EG', name: 'Egypt' },
+    { code: 'NG', name: 'Nigeria' },
+    { code: 'KE', name: 'Kenya' },
+    { code: 'GH', name: 'Ghana' },
+    { code: 'MA', name: 'Morocco' },
+    { code: 'TN', name: 'Tunisia' },
+    { code: 'ET', name: 'Ethiopia' },
+    { code: 'TZ', name: 'Tanzania' },
+    { code: 'UG', name: 'Uganda' },
+    { code: 'ZW', name: 'Zimbabwe' },
+    { code: 'MU', name: 'Mauritius' },
+    // Americas
+    { code: 'MX', name: 'Mexico' },
+    { code: 'BR', name: 'Brazil' },
+    { code: 'AR', name: 'Argentina' },
+    { code: 'CL', name: 'Chile' },
+    { code: 'CO', name: 'Colombia' },
+    { code: 'PE', name: 'Peru' },
+    { code: 'VE', name: 'Venezuela' },
+    { code: 'EC', name: 'Ecuador' },
+    { code: 'UY', name: 'Uruguay' },
+    { code: 'PY', name: 'Paraguay' },
+    { code: 'BO', name: 'Bolivia' },
+    // Other
+    { code: 'RU', name: 'Russia' },
+    { code: 'UA', name: 'Ukraine' }
+];
 
 // Map weight in grams to weight range category
 function getWeightRange(totalWeightGrams) {
@@ -205,21 +395,17 @@ function calculateShipping(countryCode, cartItems, subtotal) {
 // Get country name
 function getCountryName(countryCode) {
     if (!countryCode) return '';
-    const countryInfo = getCountryInfo(countryCode);
-    if (countryInfo) {
-        // Return a readable name based on code
-        const names = {
-            'AU': 'Australia',
-            'NZ': 'New Zealand',
-            'US': 'United States',
-            'CA': 'Canada',
-            'GB': 'United Kingdom',
-            'IE': 'Ireland',
-            'CN': 'China'
-        };
-        return names[countryCode.toUpperCase()] || 'Other Countries';
+    const code = countryCode.toUpperCase();
+    const country = COUNTRY_LIST.find(c => c.code === code);
+    if (country) {
+        return country.name;
     }
     return 'Other Countries';
+}
+
+// Get full country list for dropdowns
+function getCountryList() {
+    return COUNTRY_LIST;
 }
 
 // Export for use in other scripts
@@ -227,5 +413,6 @@ window.ShippingRates = {
     calculate: calculateShipping,
     getCountryName: getCountryName,
     getWeightRange: getWeightRange,
-    getCountryInfo: getCountryInfo
+    getCountryInfo: getCountryInfo,
+    getCountryList: getCountryList
 };

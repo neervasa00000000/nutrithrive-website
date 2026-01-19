@@ -294,12 +294,7 @@
                 </label>
                 <select id="cart-shipping-country" style="width: 100%; max-width: 400px; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer;" onchange="updateCartShipping()">
                     <option value="">Select your country</option>
-                    <option value="AU">Australia</option>
-                    <option value="NZ">New Zealand</option>
-                    <option value="US">United States</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="CA">Canada</option>
-                    <option value="OTHER">Other Countries</option>
+                    <!-- Countries will be populated dynamically -->
                 </select>
             </div>
             <div id="paypal-button-container"></div>
@@ -500,6 +495,50 @@
             }
         }
         
+        // Populate country dropdown from shipping rates data
+        function populateCountryDropdown() {
+            const countrySelect = document.getElementById('cart-shipping-country');
+            if (!countrySelect || !window.ShippingRates || !window.ShippingRates.getCountryList) {
+                return;
+            }
+            
+            const countries = window.ShippingRates.getCountryList();
+            
+            // Clear existing options except the first one
+            countrySelect.innerHTML = '<option value="">Select your country</option>';
+            
+            // Group countries by region for better UX
+            const regions = {
+                'Popular': ['AU', 'NZ', 'US', 'GB', 'CA', 'IE'],
+                'Asia & Pacific': ['CN', 'JP', 'KR', 'SG', 'MY', 'TH', 'ID', 'PH', 'VN', 'HK', 'TW', 'IN', 'PK', 'BD', 'LK', 'NP', 'FJ', 'PG', 'WS', 'TO', 'VU', 'NC', 'PF'],
+                'Europe': ['DE', 'FR', 'IT', 'ES', 'PT', 'NL', 'BE', 'AT', 'CH', 'SE', 'NO', 'DK', 'FI', 'PL', 'CZ', 'GR', 'HU', 'RO', 'BG', 'HR', 'SK', 'SI', 'LT', 'LV', 'EE', 'CY', 'MT', 'LU', 'IS'],
+                'Middle East': ['AE', 'SA', 'QA', 'KW', 'BH', 'OM', 'IL', 'TR'],
+                'Africa': ['ZA', 'EG', 'NG', 'KE', 'GH', 'MA', 'TN', 'ET', 'TZ', 'UG', 'ZW', 'MU'],
+                'Americas': ['MX', 'BR', 'AR', 'CL', 'CO', 'PE', 'VE', 'EC', 'UY', 'PY', 'BO'],
+                'Other': ['RU', 'UA']
+            };
+            
+            // Add countries grouped by region
+            Object.keys(regions).forEach(region => {
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = region;
+                
+                regions[region].forEach(code => {
+                    const country = countries.find(c => c.code === code);
+                    if (country) {
+                        const option = document.createElement('option');
+                        option.value = country.code;
+                        option.textContent = country.name;
+                        optgroup.appendChild(option);
+                    }
+                });
+                
+                if (optgroup.children.length > 0) {
+                    countrySelect.appendChild(optgroup);
+                }
+            });
+        }
+        
         // Load saved country selection
         function loadSavedCountry() {
             const savedCountry = localStorage.getItem('nutrithrive_shipping_country');
@@ -656,6 +695,7 @@
         // Render cart on load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
+                populateCountryDropdown();
                 loadSavedCountry();
                 renderCart();
                 // Initialize PayPal if country is already selected
@@ -665,6 +705,7 @@
                 }
             });
         } else {
+            populateCountryDropdown();
             loadSavedCountry();
             renderCart();
             // Initialize PayPal if country is already selected
