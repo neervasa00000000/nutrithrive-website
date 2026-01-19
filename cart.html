@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart | NutriThrive</title>
     <link rel="stylesheet" href="/shared/css/style.css">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/shared/images/Logo%20/LOGO.webp" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="/shared/images/Logo%20/LOGO.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="/shared/images/Logo%20/LOGO.webp">
+    <link rel="shortcut icon" href="/shared/images/Logo%20/LOGO.webp">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -117,10 +122,16 @@
             color: #c62828;
             cursor: pointer;
             padding: 0.5rem;
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease;
         }
         .remove-btn:hover {
             color: #a02020;
+        }
+        .remove-btn svg {
+            display: block;
         }
         .cart-summary {
             background: white;
@@ -199,6 +210,30 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="/shared/images/Logo%20/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/">Products</a>
+                <a href="/pages/faq/faq.html">FAQ</a>
+                <a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a>
+                <a href="/pages/about/about.html">About</a>
+                <a href="/pages/contact/contact.html">Contact</a>
+                <a href="/pages/usage-guide/how-to-use-moringa.html">Usage & Benefits</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
+        </div>
+    </header>
+    
     <div class="cart-container">
         <div class="cart-header">
             <h1>Your cart</h1>
@@ -229,6 +264,8 @@
     </div>
     
     <script src="/shared/js/cart.js"></script>
+    <script src="/shared/js/cart-header.js"></script>
+    <script src="/shared/js/script.js"></script>
     <script>
         function renderCart() {
             const cart = window.Cart.get();
@@ -278,8 +315,13 @@
                         </div>
                         <div>$${parseFloat(item.price).toFixed(2)}</div>
                         <div class="item-total">$${itemTotal}</div>
-                        <button class="remove-btn" onclick="removeItem('${item.id}')" title="Remove item">
-                            🗑️
+                        <button class="remove-btn" onclick="removeItem('${item.id}')" title="Remove item" aria-label="Remove item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
                         </button>
                     </div>
                 `;
