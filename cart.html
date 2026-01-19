@@ -428,11 +428,18 @@
             } else if (shipping === 0) {
                 shippingElement.textContent = 'Free';
             } else {
-                shippingElement.textContent = `$${shipping.toFixed(2)}`;
+                shippingElement.textContent = `$${parseFloat(shipping).toFixed(2)}`;
             }
             
-            const total = shipping !== null ? subtotal + shipping : subtotal;
-            totalElement.textContent = `$${total.toFixed(2)}`;
+            const shippingCost = shipping !== null && shipping !== undefined ? parseFloat(shipping) : 0;
+            const total = parseFloat(subtotal) + parseFloat(shippingCost);
+            
+            // Ensure total is a valid number
+            if (!isNaN(total)) {
+                totalElement.textContent = `$${total.toFixed(2)}`;
+            } else {
+                totalElement.textContent = `$${parseFloat(subtotal).toFixed(2)}`;
+            }
             
             // Reinitialize PayPal with new total if country is selected
             if (countryCode && typeof paypal !== 'undefined') {
