@@ -519,16 +519,27 @@
                 return;
             }
             
+            // Store total in a variable that will be accessible in createOrder
+            const orderTotal = parseFloat(total);
+            
+            // Double-check orderTotal is valid
+            if (isNaN(orderTotal) || orderTotal <= 0) {
+                console.error("Invalid orderTotal:", orderTotal);
+                container.innerHTML = '<p style="color: red; padding: 1rem;">Error calculating order total. Please try again.</p>';
+                return;
+            }
+            
             try {
                 paypal.Buttons({
                     createOrder: async () => {
                         // Create order with total including shipping (calculated on website)
-                        console.log("Creating PayPal order for amount:", total);
+                        const amount = orderTotal.toFixed(2);
+                        console.log("Creating PayPal order for amount:", amount);
                         try {
                             const response = await fetch("/.netlify/functions/paypal-create-order", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ amount: total.toFixed(2) })
+                                body: JSON.stringify({ amount: amount })
                             });
                             const data = await response.json();
                             if (!response.ok) {
