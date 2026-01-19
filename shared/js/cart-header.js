@@ -29,18 +29,22 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Shopping bag body with rounded bottom corners -->
-                <path d="M5 8h14l-1 12H6L5 8z" style="fill: none;"></path>
-                <!-- Bag bottom with rounded corners -->
-                <path d="M5 8l-1-4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 4" style="fill: none;"></path>
-                <!-- Left handle -->
-                <path d="M9 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" style="fill: none;"></path>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <!-- Shopping bag body - rectangular with rounded bottom -->
+                <path d="M6 2h12a1 1 0 0 1 1 1v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V3a1 1 0 0 1 1-1z" style="fill: none;"></path>
+                <!-- Top opening line -->
+                <line x1="6" y1="3" x2="18" y2="3" style="fill: none;"></line>
+                <!-- Left handle (curved) -->
+                <path d="M8 3c0-1.1.9-2 2-2" style="fill: none;"></path>
+                <path d="M8 3c0 1.1-.9 2-2 2" style="fill: none;"></path>
+                <!-- Right handle (curved) -->
+                <path d="M16 3c0-1.1.9-2 2-2" style="fill: none;"></path>
+                <path d="M16 3c0 1.1.9 2 2 2" style="fill: none;"></path>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
-                bottom: -1px;
-                right: -1px;
+                bottom: -2px;
+                right: -2px;
                 background: #175c36;
                 color: white;
                 font-size: 11px;
@@ -54,7 +58,7 @@
                 border-radius: 50%;
                 padding: 0 4px;
                 box-sizing: border-box;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             ">0</span>
         `;
         
