@@ -142,6 +142,8 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     const zone = countryInfo.zone;
     const color = countryInfo.color;
     
+    console.log(`Shipping calculation: weight=${totalWeightGrams}g, range=${weightRange}, country=${countryCode}, zone=${zone}, color=${color}`);
+    
     // Get shipping cost based on color and zone
     let shippingCost = null;
     
@@ -150,6 +152,7 @@ function calculateShipping(countryCode, cartItems, subtotal) {
         const rates = GREEN_RATES[weightRange];
         if (rates) {
             shippingCost = rates[`zone${zone}`] || rates.zone1;
+            console.log(`GREEN rates for ${weightRange}, zone${zone}: ${shippingCost}`);
         }
     } else if (color === 'BLUE') {
         // Key International Destinations - use BLUE rates
