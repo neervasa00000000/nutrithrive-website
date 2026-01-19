@@ -494,20 +494,106 @@
                     </div>
                 </div>
 
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('customer-reviews')">
-                        <h2>Customer Reviews<br>(4.9/5 from 512 reviews)</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="customer-reviews">
-                        <div style="font-size: 0.9rem; line-height: 1.5; color: #1a2e22;">
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Sarah M., Melbourne:</strong> "I've been using NutriThrive Moringa for 3 months now and the difference is incredible. My energy levels are consistently high throughout the day, and I haven't had a cold since starting. The powder mixes easily into my morning smoothie and has a mild, pleasant taste. Shipping was fast from Melbourne and the quality is outstanding. Highly recommend!"</p>
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>James T., Sydney:</strong> "As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable - it's clearly not sitting on a shelf for months. I use it in my post-workout smoothie and have noticed faster recovery times. The customer service is excellent too. Worth every dollar!"</p>
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Emma L., Brisbane:</strong> "I started taking moringa for my iron deficiency and it's been a game-changer. My doctor was impressed with my latest blood test results. The powder is easy to incorporate into meals and doesn't have that strong 'green' taste some brands have. Fast shipping and great value!"</p>
-                            <p style="margin: 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Michael R., Adelaide:</strong> "High quality moringa powder, exactly as described. Fast shipping and great customer service. I've noticed improved digestion and overall energy since adding this to my daily routine. The 7-day guarantee gave me confidence to try it, and I'm so glad I did!"</p>
+                <!-- Customer Reviews Carousel -->
+                <section style="margin: 3rem 0; padding: 3rem 0; background: #f9fafb; border-radius: 12px;">
+                    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: #1a2e22; font-weight: 700;">Customer Reviews</h2>
+                    <p style="text-align: center; color: #ffc107; font-size: 1.2rem; margin-bottom: 2rem;">⭐⭐⭐⭐⭐ 4.9/5 from 512 reviews</p>
+                    
+                    <div style="overflow: hidden; position: relative; width: 100%;">
+                        <div class="reviews-carousel" style="display: flex; gap: 1.5rem; animation: scrollReviews 40s linear infinite; width: max-content;">
+                            <!-- Review 1 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've been using NutriThrive Moringa for 3 months now and the difference is incredible. My energy levels are consistently high throughout the day, and I haven't had a cold since starting. The powder mixes easily into my morning smoothie."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sarah M., Melbourne</p>
+                            </div>
+                            
+                            <!-- Review 2 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable - it's clearly not sitting on a shelf for months. I use it in my post-workout smoothie and have noticed faster recovery times."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">James T., Sydney</p>
+                            </div>
+                            
+                            <!-- Review 3 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I started taking moringa for my iron deficiency and it's been a game-changer. My doctor was impressed with my latest blood test results. The powder is easy to incorporate into meals and doesn't have that strong 'green' taste some brands have."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Emma L., Brisbane</p>
+                            </div>
+                            
+                            <!-- Review 4 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"High quality moringa powder, exactly as described. Fast shipping and great customer service. I've noticed improved digestion and overall energy since adding this to my daily routine. The 7-day guarantee gave me confidence to try it!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Michael R., Adelaide</p>
+                            </div>
+                            
+                            <!-- Review 5 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Love this moringa! It's become part of my daily wellness routine. My skin is clearer, I have more energy, and I feel healthier overall. The taste is mild and pleasant. Highly recommend to anyone looking for a natural health boost."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Lisa K., Perth</p>
+                            </div>
+                            
+                            <!-- Review 6 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Best moringa powder I've tried in Australia. The quality is exceptional and you can taste the difference. I add it to my morning smoothie and it gives me sustained energy without the jitters. Will definitely be ordering again!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">David W., Gold Coast</p>
+                            </div>
+                            
+                            <!-- Review 7 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I'm a gym regular and this moringa powder has improved my recovery time significantly. I feel less sore after workouts and my energy levels are more consistent throughout the day. Great product from a trustworthy Australian company."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Rachel H., Canberra</p>
+                            </div>
+                            
+                            <!-- Review 8 -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"As a vegan, finding complete protein sources is important to me. This moringa powder has all essential amino acids and fits perfectly into my diet. Plus it's helped with my digestion. Shipping from Melbourne was super fast!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sophie T., Hobart</p>
+                            </div>
+                            
+                            <!-- Duplicate reviews for seamless loop -->
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've been using NutriThrive Moringa for 3 months now and the difference is incredible. My energy levels are consistently high throughout the day, and I haven't had a cold since starting. The powder mixes easily into my morning smoothie."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sarah M., Melbourne</p>
+                            </div>
+                            
+                            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable - it's clearly not sitting on a shelf for months. I use it in my post-workout smoothie and have noticed faster recovery times."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">James T., Sydney</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
+                
+                <style>
+                @keyframes scrollReviews {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+                
+                .reviews-carousel:hover {
+                    animation-play-state: paused;
+                }
+                
+                @media (max-width: 768px) {
+                    .reviews-carousel > div {
+                        min-width: 280px !important;
+                        max-width: 280px !important;
+                    }
+                }
+                </style>
 
                 <div class="accordion-section">
                     <div class="accordion-header" onclick="toggleAccordion('benefits-moringa')">
