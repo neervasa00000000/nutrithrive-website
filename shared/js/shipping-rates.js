@@ -31,23 +31,24 @@ const YELLOW_RATES = {
 
 // Country to zone and color mapping
 // Based on Country Master List from Excel
+// GREEN = Australia only
+// BLUE = Key International Destinations (NZ, China, USA & Canada, UK & Ireland)
+// YELLOW = All other international destinations
 const COUNTRY_MAPPING = {
-    // Australia - GREEN
+    // Australia - GREEN (uses Zone 1, 2, or 3 from GREEN table)
     'AU': { zone: 1, color: 'GREEN', freeShippingThreshold: 80 },
     
     // BLUE - Key International Destinations
-    'NZ': { zone: 1, color: 'BLUE' },
-    'CN': { zone: 2, color: 'BLUE' }, // China
-    'US': { zone: 3, color: 'BLUE' },
-    'CA': { zone: 3, color: 'BLUE' },
-    'GB': { zone: 4, color: 'BLUE' },
-    'IE': { zone: 4, color: 'BLUE' }, // Ireland
+    'NZ': { zone: 1, color: 'BLUE' }, // New Zealand - Zone 1 in BLUE table
+    'CN': { zone: 2, color: 'BLUE' }, // China - Zone 2 in BLUE table
+    'US': { zone: 3, color: 'BLUE' }, // United States - Zone 3 in BLUE table
+    'CA': { zone: 3, color: 'BLUE' }, // Canada - Zone 3 in BLUE table
+    'GB': { zone: 4, color: 'BLUE' }, // United Kingdom - Zone 4 in BLUE table
+    'IE': { zone: 4, color: 'BLUE' }, // Ireland - Zone 4 in BLUE table
     
-    // YELLOW - Other International (default for most countries)
-    // Zone 2: Rest of Asia, Pacific Islands
-    // Zone 4: Major Europe, Rest of World 1
-    // Zone 5: Rest of World 2
-    'OTHER': { zone: 5, color: 'YELLOW' } // Default for other countries
+    // YELLOW - Other International (default for all other countries)
+    // Uses zones 2, 4, or 5 from YELLOW table based on Country Master List
+    'OTHER': { zone: 5, color: 'YELLOW' } // Default for other countries - Zone 5 (Rest of World 2)
 };
 
 // Map weight in grams to weight range category
