@@ -994,35 +994,11 @@
             }
         }
         
-        // Country/Currency update function
-        function updateCountryCurrency() {
-            const countrySelect = document.getElementById('product-country');
-            if (!countrySelect) return;
-            
-            const countryCode = countrySelect.value;
-            // For now, we'll just store the selection
-            // You can add currency conversion logic here if needed
-            localStorage.setItem('nutrithrive_country', countryCode);
-        }
-        
-        // Load saved country selection
-        function loadSavedCountry() {
-            const savedCountry = localStorage.getItem('nutrithrive_country');
-            const countrySelect = document.getElementById('product-country');
-            if (savedCountry && countrySelect) {
-                countrySelect.value = savedCountry;
-            }
-        }
-        
         // Initialize variation on page load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                updateProductVariation();
-                loadSavedCountry();
-            });
+            document.addEventListener('DOMContentLoaded', updateProductVariation);
         } else {
             updateProductVariation();
-            loadSavedCountry();
         }
     </script>
     <script src="../pages/products/product-detail.js"></script>
