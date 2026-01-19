@@ -62,7 +62,7 @@
     box.innerHTML = [
       btn(PRICES.moringa.url, `Buy Moringa ($${PRICES.moringa.price}/${PRICES.moringa.unit})`, true),
       btn(PRICES.tea.url, `Shop Black Tea ($${PRICES.tea.price}/${PRICES.tea.unit})`, false),
-      btn('../products/products.html', 'See All Products', false)
+      btn('https://nutrithrive.com.au/products/product-detail', 'See All Products', false)
     ].join('');
 
     target.parentNode.insertBefore(box, target.nextSibling);
@@ -79,7 +79,7 @@
         <strong style="color:#175c36;">Related reads</strong>
         <ul style="margin:8px 0 0 18px;line-height:1.6;">
           <li><a href="../benefits/moringa-benefits.html" style="color:#175c36;text-decoration:none;">Moringa Benefits (Australia)</a></li>
-          <li><a href="../products/products.html" style="color:#175c36;text-decoration:none;">Compare our products</a></li>
+          <li><a href="https://nutrithrive.com.au/products/product-detail" style="color:#175c36;text-decoration:none;">Compare our products</a></li>
           <li><a href="/blog/index.html" style="color:#175c36;text-decoration:none;">More from the blog</a></li>
         </ul>
       </div>`;
@@ -112,7 +112,7 @@
         <strong style="color:#175c36;">Questions about products or pricing?</strong>
         <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap;">
           <a href="../contact/contact.html" style="background:#175c36;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Contact Us</a>
-          <a href="../products/products.html" style="border:1px solid #175c36;color:#175c36;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Browse Products</a>
+          <a href="https://nutrithrive.com.au/products/product-detail" style="border:1px solid #175c36;color:#175c36;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Browse Products</a>
         </div>
       </div>`;
     article.appendChild(cta);
