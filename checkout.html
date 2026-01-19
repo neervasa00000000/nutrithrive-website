@@ -335,8 +335,13 @@
             }
         }
         
+        // Track selected payment method
+        let selectedPaymentMethod = null;
+        
         // Select payment method
         function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            
             // Remove active class from all boxes
             document.querySelectorAll('.payment-box').forEach(box => {
                 box.style.background = 'white';
@@ -360,9 +365,13 @@
                     paypalContainer.style.display = 'block';
                     // Initialize PayPal if country is selected
                     const countrySelect = document.getElementById('checkout-shipping-country');
-                    if (countrySelect && countrySelect.value && typeof paypal !== 'undefined') {
-                        setTimeout(initPayPal, 200);
-                    } else if (countrySelect && !countrySelect.value) {
+                    if (countrySelect && countrySelect.value) {
+                        if (typeof paypal !== 'undefined') {
+                            setTimeout(initPayPal, 200);
+                        } else {
+                            paypalContainer.innerHTML = '<p style="color: #666; padding: 1rem;">Loading PayPal...</p>';
+                        }
+                    } else {
                         paypalContainer.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country first.</p>';
                     }
                 }
@@ -502,9 +511,14 @@
             // Re-render order summary with updated shipping
             renderOrderSummary();
             
-            // Re-initialize PayPal buttons with updated total
-            if (typeof paypal !== 'undefined') {
+            // Re-initialize PayPal buttons with updated total if PayPal is selected
+            if (selectedPaymentMethod === 'paypal' && typeof paypal !== 'undefined') {
                 setTimeout(initPayPal, 200);
+            } else if (selectedPaymentMethod === 'paypal') {
+                const paypalContainer = document.getElementById('paypal-button-container');
+                if (paypalContainer) {
+                    paypalContainer.innerHTML = '<p style="color: #666; padding: 1rem;">Loading PayPal...</p>';
+                }
             }
         }
         
