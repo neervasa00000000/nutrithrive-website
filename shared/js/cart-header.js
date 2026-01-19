@@ -30,16 +30,14 @@
         
         cartLink.innerHTML = `
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Basket body with rounded bottom -->
-                <path d="M6 2L4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4H6z" style="fill: none;"></path>
-                <!-- Top opening -->
-                <line x1="4" y1="6" x2="20" y2="6" style="fill: none;"></line>
-                <!-- Left handle (semicircular) -->
-                <path d="M8 6c0-1.1.9-2 2-2h0" style="fill: none;"></path>
-                <path d="M8 6c0 1.1-.9 2-2 2" style="fill: none;"></path>
-                <!-- Right handle (semicircular) -->
-                <path d="M16 6c0-1.1.9-2 2-2h0" style="fill: none;"></path>
-                <path d="M16 6c0 1.1.9 2 2 2" style="fill: none;"></path>
+                <!-- Wicker basket style -->
+                <path d="M5 8h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z" style="fill: none;"></path>
+                <path d="M5 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" style="fill: none;"></path>
+                <!-- Basket weave pattern -->
+                <line x1="5" y1="12" x2="19" y2="12" style="fill: none;"></line>
+                <line x1="5" y1="16" x2="19" y2="16" style="fill: none;"></line>
+                <!-- Handle arch -->
+                <path d="M9 6c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2" style="fill: none;"></path>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
