@@ -285,6 +285,7 @@
                         </select>
                     </div>
                     <div id="paypal-button-container"></div>
+                    <div id="card-payment-container" style="display: none;"></div>
                 </div>
             </div>
         </div>
@@ -349,13 +350,133 @@
                 selectedBox.style.borderColor = '#2d5a3d';
             }
             
-            // For now, only PayPal is functional
+            const paypalContainer = document.getElementById('paypal-button-container');
+            const cardContainer = document.getElementById('card-payment-container');
+            
             if (method === 'paypal') {
-                // PayPal buttons will be shown when country is selected
+                // Show PayPal, hide card
+                if (cardContainer) cardContainer.style.display = 'none';
+                if (paypalContainer) {
+                    paypalContainer.style.display = 'block';
+                    // Initialize PayPal if country is selected
+                    const countrySelect = document.getElementById('checkout-shipping-country');
+                    if (countrySelect && countrySelect.value && typeof paypal !== 'undefined') {
+                        setTimeout(initPayPal, 200);
+                    } else if (countrySelect && !countrySelect.value) {
+                        paypalContainer.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country first.</p>';
+                    }
+                }
             } else if (method === 'card') {
-                // Card payment - can be implemented later
-                alert('Card payment coming soon!');
+                // Show card form, hide PayPal
+                if (paypalContainer) paypalContainer.style.display = 'none';
+                if (cardContainer) {
+                    cardContainer.style.display = 'block';
+                } else {
+                    // Create card payment form
+                    createCardPaymentForm();
+                }
             }
+        }
+        
+        // Create card payment form
+        function createCardPaymentForm() {
+            const paymentColumn = document.querySelector('.payment-column');
+            if (!paymentColumn) return;
+            
+            const cardContainer = document.createElement('div');
+            cardContainer.id = 'card-payment-container';
+            cardContainer.style.cssText = 'margin-top: 2rem;';
+            
+            const orderData = renderOrderSummary();
+            const total = orderData ? orderData.total : 0;
+            
+            cardContainer.innerHTML = `
+                <div style="background: white; border: 3px solid #1a2e22; border-radius: 8px; padding: 2rem;">
+                    <h4 style="margin: 0 0 1.5rem 0; color: #1a2e22; font-size: 1.2rem;">Card Payment</h4>
+                    <form id="card-payment-form" onsubmit="handleCardPayment(event)">
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">Card Number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required
+                                   style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem;"
+                                   maxlength="19" oninput="formatCardNumber(this)">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">Expiry</label>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" required
+                                       style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem;"
+                                       maxlength="5" oninput="formatExpiry(this)">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">CVV</label>
+                                <input type="text" id="card-cvv" placeholder="123" required
+                                       style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem;"
+                                       maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">Cardholder Name</label>
+                            <input type="text" id="card-name" placeholder="John Doe" required
+                                   style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem;">
+                        </div>
+                        <button type="submit" style="width: 100%; padding: 1rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                            Pay $${total.toFixed(2)} AUD
+                        </button>
+                    </form>
+                </div>
+            `;
+            
+            paymentColumn.appendChild(cardContainer);
+        }
+        
+        // Format card number with spaces
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\s/g, '').replace(/[^0-9]/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
+            input.value = formattedValue;
+        }
+        
+        // Format expiry date
+        function formatExpiry(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            input.value = value;
+        }
+        
+        // Handle card payment submission
+        function handleCardPayment(event) {
+            event.preventDefault();
+            
+            const cardNumber = document.getElementById('card-number').value.replace(/\s/g, '');
+            const cardExpiry = document.getElementById('card-expiry').value;
+            const cardCvv = document.getElementById('card-cvv').value;
+            const cardName = document.getElementById('card-name').value;
+            
+            // Basic validation
+            if (cardNumber.length < 13 || cardNumber.length > 19) {
+                alert('Please enter a valid card number');
+                return;
+            }
+            
+            if (!cardExpiry.match(/^\d{2}\/\d{2}$/)) {
+                alert('Please enter a valid expiry date (MM/YY)');
+                return;
+            }
+            
+            if (cardCvv.length < 3) {
+                alert('Please enter a valid CVV');
+                return;
+            }
+            
+            // For now, redirect to PayPal or show message
+            // In production, this would integrate with a payment processor
+            alert('Card payment processing will be integrated with your payment gateway. For now, please use PayPal.');
+            
+            // Optionally redirect to PayPal
+            // selectPaymentMethod('paypal');
         }
         
         // Update shipping cost on checkout page
@@ -606,14 +727,11 @@
         }
         
         // Initialize PayPal when SDK is ready (SDK is loaded via script tag in head)
-        if (typeof paypal !== 'undefined') {
-            setTimeout(initPayPal, 500);
-        } else {
-            // Wait for PayPal SDK to load
-            window.addEventListener('load', function() {
-                setTimeout(initPayPal, 500);
-            });
-        }
+        // Don't auto-initialize - wait for user to select PayPal
+        window.addEventListener('load', function() {
+            // Just render order summary, don't show PayPal until selected
+            renderOrderSummary();
+        });
     </script>
 </body>
 </html>
