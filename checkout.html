@@ -14,7 +14,7 @@
             padding: 0;
         }
         .checkout-container {
-            max-width: 600px;
+            max-width: 1000px;
             margin: 2rem auto;
             padding: 2rem;
             background: transparent;
@@ -22,13 +22,27 @@
         .checkout-section {
             background: transparent;
             border-radius: 0;
-            padding: 2rem 0;
+            padding: 0;
             box-shadow: none;
         }
         .checkout-section h2 {
             color: #2d5a3d;
             margin-top: 0;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        .checkout-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .summary-column {
+            /* Left column for order summary */
+        }
+        .payment-column {
+            /* Right column for payment buttons */
         }
         .form-group {
             margin-bottom: 1.5rem;
@@ -82,24 +96,36 @@
             border-top: 2px solid rgba(45, 90, 61, 0.2);
         }
         #paypal-button-container {
-            margin-top: 1.5rem;
+            margin-top: 0;
             min-height: 50px;
+        }
+        @media (max-width: 768px) {
+            .checkout-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
     <!-- PayPal SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD"></script>
 </head>
 <body>
-    <div class="checkout-container" style="max-width: 600px; margin: 2rem auto;">
+    <div class="checkout-container">
         <!-- Order Summary & Payment -->
         <div class="checkout-section">
             <h2>Order Summary</h2>
             
-            <div id="order-summary">
-                <!-- Order items will be loaded here -->
+            <div class="checkout-content">
+                <div class="summary-column">
+                    <div id="order-summary">
+                        <!-- Order items will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="payment-column">
+                    <div id="paypal-button-container"></div>
+                </div>
             </div>
-            
-            <div id="paypal-button-container"></div>
         </div>
     </div>
     
