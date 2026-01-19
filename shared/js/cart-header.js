@@ -29,16 +29,18 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Shopping bag body with rounded bottom -->
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z" style="fill: none;"></path>
-                <!-- Bag handle (curved) -->
-                <path d="M9 6c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2" style="fill: none;"></path>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <!-- Shopping bag body with rounded bottom corners -->
+                <path d="M5 8h14l-1 12H6L5 8z" style="fill: none;"></path>
+                <!-- Bag bottom with rounded corners -->
+                <path d="M5 8l-1-4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 4" style="fill: none;"></path>
+                <!-- Left handle -->
+                <path d="M9 6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" style="fill: none;"></path>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
-                bottom: -2px;
-                right: -2px;
+                bottom: -1px;
+                right: -1px;
                 background: #175c36;
                 color: white;
                 font-size: 11px;
@@ -50,8 +52,9 @@
                 min-width: 18px;
                 height: 18px;
                 border-radius: 50%;
-                padding: 0;
+                padding: 0 4px;
                 box-sizing: border-box;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             ">0</span>
         `;
         
