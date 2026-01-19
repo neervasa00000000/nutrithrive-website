@@ -1,74 +1,105 @@
 // Shipping Rates Configuration
-// Based on location and product quantity
+// Based on location (Zone) and package size/weight
+// Rates from shipping_rates.xlsx
 
 const SHIPPING_RATES = {
-    // Australia - Free shipping over $80, otherwise based on quantity
+    // Zone 1 - Australia
     'AU': {
         name: 'Australia',
-        freeShippingThreshold: 80,
-        rates: [
-            { minQuantity: 1, maxQuantity: 2, cost: 10.00 },
-            { minQuantity: 3, maxQuantity: 5, cost: 15.00 },
-            { minQuantity: 6, maxQuantity: 10, cost: 20.00 },
-            { minQuantity: 11, maxQuantity: null, cost: 25.00 }
-        ]
+        zone: 1,
+        freeShippingThreshold: 80, // Free shipping over $80
+        rates: {
+            'Extra Small': { weight: '250g', cost: 8.73 },
+            'Small': { weight: '500g', cost: 10.04 },
+            'Medium': { weight: '1kg', cost: 13.73 },
+            'Large': { weight: '3kg', cost: 17.37 },
+            'Extra Large': { weight: '5kg', cost: 20.97 }
+        }
     },
-    // New Zealand
+    // Zone 2 - New Zealand
     'NZ': {
         name: 'New Zealand',
+        zone: 2,
         freeShippingThreshold: null,
-        rates: [
-            { minQuantity: 1, maxQuantity: 2, cost: 15.00 },
-            { minQuantity: 3, maxQuantity: 5, cost: 25.00 },
-            { minQuantity: 6, maxQuantity: 10, cost: 35.00 },
-            { minQuantity: 11, maxQuantity: null, cost: 45.00 }
-        ]
+        rates: {
+            'Extra Small': { weight: '250g', cost: 9.22 },
+            'Small': { weight: '500g', cost: 10.59 },
+            'Medium': { weight: '1kg', cost: 14.49 },
+            'Large': { weight: '3kg', cost: 18.34 },
+            'Extra Large': { weight: '5kg', cost: 22.14 }
+        }
     },
-    // United States
+    // Zone 3 - International (US, UK, Canada, Other)
     'US': {
         name: 'United States',
+        zone: 3,
         freeShippingThreshold: null,
-        rates: [
-            { minQuantity: 1, maxQuantity: 2, cost: 20.00 },
-            { minQuantity: 3, maxQuantity: 5, cost: 30.00 },
-            { minQuantity: 6, maxQuantity: 10, cost: 40.00 },
-            { minQuantity: 11, maxQuantity: null, cost: 50.00 }
-        ]
+        rates: {
+            'Extra Small': { weight: '250g', cost: 9.70 },
+            'Small': { weight: '500g', cost: 11.15 },
+            'Medium': { weight: '1kg', cost: 15.25 },
+            'Large': { weight: '3kg', cost: 19.30 },
+            'Extra Large': { weight: '5kg', cost: 23.30 }
+        }
     },
-    // United Kingdom
     'GB': {
         name: 'United Kingdom',
+        zone: 3,
         freeShippingThreshold: null,
-        rates: [
-            { minQuantity: 1, maxQuantity: 2, cost: 18.00 },
-            { minQuantity: 3, maxQuantity: 5, cost: 28.00 },
-            { minQuantity: 6, maxQuantity: 10, cost: 38.00 },
-            { minQuantity: 11, maxQuantity: null, cost: 48.00 }
-        ]
+        rates: {
+            'Extra Small': { weight: '250g', cost: 9.70 },
+            'Small': { weight: '500g', cost: 11.15 },
+            'Medium': { weight: '1kg', cost: 15.25 },
+            'Large': { weight: '3kg', cost: 19.30 },
+            'Extra Large': { weight: '5kg', cost: 23.30 }
+        }
     },
-    // Canada
     'CA': {
         name: 'Canada',
+        zone: 3,
         freeShippingThreshold: null,
-        rates: [
-            { minQuantity: 1, maxQuantity: 2, cost: 22.00 },
-            { minQuantity: 3, maxQuantity: 5, cost: 32.00 },
-            { minQuantity: 6, maxQuantity: 10, cost: 42.00 },
-            { minQuantity: 11, maxQuantity: null, cost: 52.00 }
-        ]
+        rates: {
+            'Extra Small': { weight: '250g', cost: 9.70 },
+            'Small': { weight: '500g', cost: 11.15 },
+            'Medium': { weight: '1kg', cost: 15.25 },
+            'Large': { weight: '3kg', cost: 19.30 },
+            'Extra Large': { weight: '5kg', cost: 23.30 }
+        }
     },
-    // Other countries - default rates
     'OTHER': {
         name: 'Other Countries',
+        zone: 3,
         freeShippingThreshold: null,
-        rates: [
-            { minQuantity: 1, maxQuantity: 2, cost: 25.00 },
-            { minQuantity: 3, maxQuantity: 5, cost: 35.00 },
-            { minQuantity: 6, maxQuantity: 10, cost: 45.00 },
-            { minQuantity: 11, maxQuantity: null, cost: 55.00 }
-        ]
+        rates: {
+            'Extra Small': { weight: '250g', cost: 9.70 },
+            'Small': { weight: '500g', cost: 11.15 },
+            'Medium': { weight: '1kg', cost: 15.25 },
+            'Large': { weight: '3kg', cost: 19.30 },
+            'Extra Large': { weight: '5kg', cost: 23.30 }
+        }
     }
 };
+
+// Map product quantity to package size
+// Assuming average product weight: ~100g per product
+// This can be adjusted based on actual product weights
+function getPackageSize(totalQuantity) {
+    // Calculate approximate weight based on quantity
+    // Adjust these thresholds based on your actual product weights
+    const estimatedWeight = totalQuantity * 100; // grams (adjust multiplier as needed)
+    
+    if (estimatedWeight <= 250) {
+        return 'Extra Small';
+    } else if (estimatedWeight <= 500) {
+        return 'Small';
+    } else if (estimatedWeight <= 1000) {
+        return 'Medium';
+    } else if (estimatedWeight <= 3000) {
+        return 'Large';
+    } else {
+        return 'Extra Large';
+    }
+}
 
 // Calculate shipping cost based on country and total quantity
 function calculateShipping(countryCode, totalQuantity, subtotal) {
@@ -84,18 +115,17 @@ function calculateShipping(countryCode, totalQuantity, subtotal) {
         return 0;
     }
     
-    // Find the appropriate rate based on quantity
-    for (const rate of countryRates.rates) {
-        if (totalQuantity >= rate.minQuantity) {
-            if (rate.maxQuantity === null || totalQuantity <= rate.maxQuantity) {
-                return rate.cost;
-            }
-        }
+    // Determine package size based on quantity
+    const packageSize = getPackageSize(totalQuantity);
+    
+    // Get the shipping cost for this package size
+    const packageRate = countryRates.rates[packageSize];
+    if (packageRate) {
+        return packageRate.cost;
     }
     
-    // If no rate matches, use the highest rate
-    const lastRate = countryRates.rates[countryRates.rates.length - 1];
-    return lastRate.cost;
+    // Fallback to Extra Large if no match
+    return countryRates.rates['Extra Large'].cost;
 }
 
 // Get country name
@@ -109,5 +139,6 @@ function getCountryName(countryCode) {
 window.ShippingRates = {
     calculate: calculateShipping,
     getCountryName: getCountryName,
-    rates: SHIPPING_RATES
+    rates: SHIPPING_RATES,
+    getPackageSize: getPackageSize
 };
