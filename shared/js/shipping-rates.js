@@ -105,17 +105,37 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     let totalWeightGrams = 0;
     if (cartItems && Array.isArray(cartItems)) {
         cartItems.forEach(item => {
-            const itemWeight = parseFloat(item.weight || 0); // Weight in grams per unit
+            let itemWeight = parseFloat(item.weight || 0); // Weight in grams per unit
+            
+            // If weight is 0 or missing, try to infer from product name
+            if (itemWeight === 0 || isNaN(itemWeight)) {
+                const name = (item.name || '').toLowerCase();
+                if (name.includes('200g')) {
+                    itemWeight = 200;
+                } else if (name.includes('100g')) {
+                    itemWeight = 100;
+                } else if (name.includes('30g')) {
+                    itemWeight = 30;
+                } else if (name.includes('400g') || name.includes('3 + 1')) {
+                    itemWeight = 400;
+                } else if (name.includes('moringa')) {
+                    itemWeight = 100; // Default Moringa is 100g
+                } else if (name.includes('curry')) {
+                    itemWeight = 30;
+                } else {
+                    itemWeight = 100; // Default fallback
+                }
+            }
+            
             const quantity = parseInt(item.quantity || 1);
-            totalWeightGrams += itemWeight * quantity;
+            const itemTotalWeight = itemWeight * quantity;
+            totalWeightGrams += itemTotalWeight;
+            
+            console.log(`Cart item: ${item.name}, weight: ${itemWeight}g, qty: ${quantity}, total: ${itemTotalWeight}g`);
         });
     }
     
-    // If no weight data available, fallback to old method (quantity * 100g)
-    if (totalWeightGrams === 0 && cartItems && cartItems.length > 0) {
-        const totalQuantity = cartItems.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
-        totalWeightGrams = totalQuantity * 100; // Fallback estimate
-    }
+    console.log(`Total cart weight: ${totalWeightGrams}g`);
     
     // Get weight range
     const weightRange = getWeightRange(totalWeightGrams);
