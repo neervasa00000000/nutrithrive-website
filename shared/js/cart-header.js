@@ -29,34 +29,28 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Shopping cart basket -->
-                <path d="M7 8H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-2" style="fill: none;"></path>
-                <!-- Cart handle -->
-                <path d="M7 8V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3" style="fill: none;"></path>
-                <!-- Left wheel -->
-                <circle cx="7" cy="20" r="1.5" style="fill: none;"></circle>
-                <!-- Right wheel -->
-                <circle cx="17" cy="20" r="1.5" style="fill: none;"></circle>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <!-- Simple shopping cart -->
+                <path d="M3 3h2l.4 2M7 13h11l-4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" style="fill: none;"></path>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
-                top: -4px;
-                right: -4px;
+                top: -6px;
+                right: -6px;
                 background: #175c36;
                 color: white;
-                font-size: 11px;
+                font-size: 12px;
                 font-weight: 700;
                 display: none;
                 align-items: center;
                 justify-content: center;
                 line-height: 1;
-                min-width: 18px;
-                height: 18px;
+                min-width: 20px;
+                height: 20px;
                 border-radius: 50%;
-                padding: 0 4px;
+                padding: 0 5px;
                 box-sizing: border-box;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             ">0</span>
         `;
         
