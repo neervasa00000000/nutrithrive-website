@@ -14,7 +14,7 @@
         
         // Create cart icon link
         const cartLink = document.createElement('a');
-        cartLink.href = '/cart.html';
+        cartLink.href = '/cart';
         cartLink.className = 'cart-icon-link';
         cartLink.setAttribute('aria-label', 'View shopping cart');
         cartLink.style.cssText = `
