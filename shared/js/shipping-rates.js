@@ -110,20 +110,30 @@ function calculateShipping(countryCode, cartItems, subtotal) {
             // If weight is 0 or missing, try to infer from product name
             if (itemWeight === 0 || isNaN(itemWeight)) {
                 const name = (item.name || '').toLowerCase();
-                if (name.includes('200g')) {
-                    itemWeight = 200;
-                } else if (name.includes('100g')) {
-                    itemWeight = 100;
-                } else if (name.includes('30g')) {
-                    itemWeight = 30;
-                } else if (name.includes('400g') || name.includes('3 + 1')) {
+                
+                // Extract weight from product name (e.g., "200g Moringa", "100g Moringa")
+                const weightMatch = name.match(/(\d+)g/);
+                if (weightMatch) {
+                    itemWeight = parseInt(weightMatch[1]);
+                } else if (name.includes('400g') || name.includes('3 + 1') || name.includes('4 x')) {
                     itemWeight = 400;
+                } else if (name.includes('195g') || (name.includes('soap') && name.includes('100g'))) {
+                    itemWeight = 195; // Moringa 100g + Soap 95g
+                } else if (name.includes('130g') || (name.includes('combo') && name.includes('curry'))) {
+                    itemWeight = 130; // Combo pack 100g + 30g
                 } else if (name.includes('moringa')) {
                     itemWeight = 100; // Default Moringa is 100g
                 } else if (name.includes('curry')) {
-                    itemWeight = 30;
+                    itemWeight = 30; // Dried Curry Leaves
+                } else if (name.includes('tea')) {
+                    itemWeight = 100; // Black Tea
                 } else {
                     itemWeight = 100; // Default fallback
+                }
+                
+                // Update the item's weight in the cart for future calculations
+                if (item.weight === undefined || item.weight === null || item.weight === 0) {
+                    item.weight = itemWeight;
                 }
             }
             
