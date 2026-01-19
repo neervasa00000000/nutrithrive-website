@@ -1,5 +1,20 @@
 // Country/Region Selector with Auto-Detection
+// This script automatically detects user's country and displays a selector at the bottom of all pages
 (function() {
+    // Determine base path for relative URLs
+    function getBasePath() {
+        const path = window.location.pathname;
+        if (path === '/' || path.match(/^\/[^\/]+\.html$/)) {
+            return '/';
+        } else if (path.includes('/products/')) {
+            return '../';
+        } else if (path.includes('/pages/') || path.includes('/blog/')) {
+            return '../../';
+        } else if (path.includes('/about/')) {
+            return '../';
+        }
+        return '/';
+    }
     // Country to currency mapping
     const countryCurrencyMap = {
         'AU': { name: 'Australia', currency: 'AUD', symbol: '$' },
