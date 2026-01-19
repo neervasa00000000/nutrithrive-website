@@ -382,7 +382,7 @@
                             
                             <!-- Variations Selector (below price) -->
                             <div style="margin-bottom: 1.5rem;">
-                                <label style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Variations</label>
+                                <label for="product-variation" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Variations</label>
                                 <select id="product-variation" onchange="updateProductVariation()" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
                                     <option value="variation-1" data-original-price="37.18" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../shared/images/Home page /webp/Bundleoffer.webp">3 + 1 = 400g - $31.60 AUD (was $37.18)</option>
                                     <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../shared/images/Home page /webp/Moringa.webp">100g Moringa - $10.50 AUD (was $12.35)</option>
@@ -395,7 +395,7 @@
                             
                             <!-- Quantity (below variation) -->
                             <div style="margin-bottom: 1.5rem;">
-                                <label style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
+                                <label for="product-quantity" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
                                 <select id="product-quantity" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -837,7 +837,7 @@
             updateProductVariation();
         }
     </script>
-    <script src="../products/product-detail.js"></script>
+    <script src="../pages/products/product-detail.js"></script>
     <!-- Ensure hamburger menu works - simple inline fallback -->
     <script>
       // Simple fallback to ensure hamburger works
