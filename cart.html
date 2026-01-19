@@ -274,6 +274,10 @@
                 <span>Subtotal</span>
                 <span id="subtotal">$0.00</span>
             </div>
+            <div class="summary-row" id="discount-row" style="display: none;">
+                <span style="color: #2d5a3d;">Discount (15% off)</span>
+                <span id="discount-amount" style="color: #2d5a3d; font-weight: 600;">-$0.00</span>
+            </div>
             <div class="summary-row">
                 <span>Shipping</span>
                 <span id="shipping">-</span>
@@ -380,6 +384,26 @@
             // Update summary
             const subtotal = cart.total || 0;
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            
+            // Calculate and display discount (15% off)
+            // Calculate original total before discount
+            let originalTotal = 0;
+            cart.items.forEach(item => {
+                // Reverse the 15% discount: discounted_price = original * 0.85, so original = discounted / 0.85
+                const originalItemPrice = parseFloat(item.price) / 0.85;
+                originalTotal += originalItemPrice * parseInt(item.quantity || 1);
+            });
+            
+            const discountAmount = originalTotal - subtotal;
+            const discountRow = document.getElementById('discount-row');
+            const discountAmountElement = document.getElementById('discount-amount');
+            
+            if (discountAmount > 0.01) { // Only show if discount is significant
+                discountRow.style.display = 'flex';
+                discountAmountElement.textContent = `-$${discountAmount.toFixed(2)}`;
+            } else {
+                discountRow.style.display = 'none';
+            }
             
             // Calculate shipping if country is selected
             updateCartShipping();
