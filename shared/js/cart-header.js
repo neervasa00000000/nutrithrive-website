@@ -36,8 +36,8 @@
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
-                top: -12px;
-                right: -8px;
+                top: -6px;
+                right: -4px;
                 background: transparent;
                 color: #2d5a3d;
                 font-size: 14px;
