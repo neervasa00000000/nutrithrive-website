@@ -744,15 +744,65 @@
     <script src="../shared/js/cart-header.js"></script>
     <script src="../shared/js/script.js"></script>
     <script>
+        // Product variations data
+        const productVariations = {
+            'variation-1': { price: 31.60, name: '3 + 1 = 400g Moringa', image: '../shared/images/Home page /Moringa.png' },
+            'variation-2': { price: 10.50, name: '100g Moringa', image: '../shared/images/Home page /Moringa.png' },
+            'variation-3': { price: 15.55, name: 'Combo Moringa + Dried Curry Leaves', image: '../shared/images/Home page /Moringa.png' },
+            'variation-4': { price: 20.49, name: '200g Moringa', image: '../shared/images/Home page /Moringa.png' },
+            'variation-5': { price: 6.45, name: '30g Dried Curry Leaves', image: '../shared/images/Home page /Moringa.png' },
+            'variation-6': { price: 17.00, name: 'Moringa 100g + Soap 95g', image: '../shared/images/Home page /Moringa.png' }
+        };
+        
+        // Update product details when variation changes
+        function updateProductVariation() {
+            const variationSelect = document.getElementById('product-variation');
+            if (!variationSelect) return;
+            
+            const variationId = variationSelect.value;
+            const variation = productVariations[variationId];
+            
+            if (variation) {
+                // Update price display
+                const priceElement = document.getElementById('product-price');
+                if (priceElement) {
+                    priceElement.textContent = `$${variation.price.toFixed(2)} AUD`;
+                }
+            }
+        }
+        
+        // Add to cart function
         function addMoringaToCart() {
             const quantity = parseInt(document.getElementById('product-quantity').value) || 1;
-            window.Cart.add({
-                id: 'moringa-powder',
-                name: 'Moringa Powder',
-                price: 10.00,
-                image: '../shared/images/Home page /Moringa.png',
-                quantity: quantity
-            });
+            const variationSelect = document.getElementById('product-variation');
+            const variationId = variationSelect ? variationSelect.value : 'variation-1';
+            const variation = productVariations[variationId];
+            
+            if (variation) {
+                window.Cart.add({
+                    id: `moringa-${variationId}`,
+                    name: variation.name,
+                    price: variation.price,
+                    image: variation.image,
+                    quantity: quantity
+                });
+            } else {
+                // Fallback to default
+                window.Cart.add({
+                    id: 'moringa-powder',
+                    name: 'Moringa Powder',
+                    price: 10.00,
+                    image: '../shared/images/Home page /Moringa.png',
+                    quantity: quantity
+                });
+            }
+        }
+        
+        // Initialize variation on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', updateProductVariation);
+        } else {
+            updateProductVariation();
         }
     </script>
     <script src="../pages/products/product-detail.js"></script>
