@@ -1036,13 +1036,24 @@
     }
     </script>
     <script>
+        // Product weights mapping (from Excel Product Grams sheet)
+        const productWeights = {
+            'moringa-powder': 100, // Default Moringa is 100g
+            'curry-leaves': 30,
+            'black-tea': 100
+        };
+        
         // Add to Cart function for product listing page
         function addProductToCart(id, name, price, image) {
             if (window.Cart && window.Cart.add) {
+                // Get weight for this product
+                const weight = productWeights[id] || 100; // Default to 100g if not found
+                
                 window.Cart.add({
                     id: id,
                     name: name,
                     price: price,
+                    weight: weight, // Add weight data
                     image: image,
                     quantity: 1
                 });
