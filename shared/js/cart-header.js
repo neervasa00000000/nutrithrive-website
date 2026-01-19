@@ -29,17 +29,17 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Shopping bag body - rectangular with rounded bottom -->
-                <path d="M6 2h12a1 1 0 0 1 1 1v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V3a1 1 0 0 1 1-1z" style="fill: none;"></path>
-                <!-- Top opening line -->
-                <line x1="6" y1="3" x2="18" y2="3" style="fill: none;"></line>
-                <!-- Left handle (curved) -->
-                <path d="M8 3c0-1.1.9-2 2-2" style="fill: none;"></path>
-                <path d="M8 3c0 1.1-.9 2-2 2" style="fill: none;"></path>
-                <!-- Right handle (curved) -->
-                <path d="M16 3c0-1.1.9-2 2-2" style="fill: none;"></path>
-                <path d="M16 3c0 1.1.9 2 2 2" style="fill: none;"></path>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <!-- Shopping bag body with rounded bottom -->
+                <path d="M6 2L4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4H6z" style="fill: none;"></path>
+                <!-- Top opening -->
+                <line x1="4" y1="6" x2="20" y2="6" style="fill: none;"></line>
+                <!-- Left handle (rounded) -->
+                <path d="M8 6c0-1.1.9-2 2-2h0" style="fill: none;"></path>
+                <path d="M8 6c0 1.1-.9 2-2 2" style="fill: none;"></path>
+                <!-- Right handle (rounded) -->
+                <path d="M16 6c0-1.1.9-2 2-2h0" style="fill: none;"></path>
+                <path d="M16 6c0 1.1.9 2 2 2" style="fill: none;"></path>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
