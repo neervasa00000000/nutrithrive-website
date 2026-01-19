@@ -369,3 +369,36 @@ window.addEventListener('load', () => {
         }, 100);
     }
 });
+
+// Load country selector on all pages
+(function() {
+    function loadCountrySelector() {
+        if (document.getElementById('country-selector-container')) {
+            return; // Already loaded
+        }
+        const script = document.createElement('script');
+        // Determine correct path based on current page location
+        const isRoot = window.location.pathname === '/' || window.location.pathname.match(/^\/[^\/]+\.html$/);
+        const isProducts = window.location.pathname.includes('/products/');
+        const isPages = window.location.pathname.includes('/pages/');
+        const isBlog = window.location.pathname.includes('/blog/');
+        
+        if (isRoot) {
+            script.src = '/shared/js/country-selector.js';
+        } else if (isProducts) {
+            script.src = '../shared/js/country-selector.js';
+        } else if (isPages || isBlog) {
+            script.src = '../../shared/js/country-selector.js';
+        } else {
+            script.src = '/shared/js/country-selector.js';
+        }
+        script.async = true;
+        document.body.appendChild(script);
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadCountrySelector);
+    } else {
+        loadCountrySelector();
+    }
+})();
