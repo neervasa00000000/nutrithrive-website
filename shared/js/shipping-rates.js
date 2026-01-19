@@ -141,13 +141,14 @@ function calculateShipping(countryCode, cartItems, subtotal) {
         // Other International Destinations - use YELLOW rates
         const rates = YELLOW_RATES[weightRange];
         if (rates) {
-            // Map zone to YELLOW structure
+            // Map zone from Country Master List to YELLOW table structure
+            // YELLOW table has: Zone 2 (Rest of Asia, Pacific Islands), Zone 4 (Major Europe, Rest of World 1), Zone 5 (Rest of World 2)
             if (zone === 2) {
-                shippingCost = rates.zone2;
+                shippingCost = rates.zone2; // Rest of Asia, Pacific Islands
             } else if (zone === 4) {
-                shippingCost = rates.zone4;
+                shippingCost = rates.zone4; // Major Europe, Rest of World 1
             } else {
-                shippingCost = rates.zone5; // Default to Zone 5
+                shippingCost = rates.zone5; // Rest of World 2 (default for Zone 5 and others)
             }
         }
     }
