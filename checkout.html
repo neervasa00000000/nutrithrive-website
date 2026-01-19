@@ -183,63 +183,109 @@
         
         // Initialize PayPal buttons
         function initPayPal() {
+            console.log("Initializing PayPal...");
+            
             if (typeof paypal === 'undefined') {
+                console.log("PayPal SDK not loaded yet, retrying...");
                 setTimeout(initPayPal, 100);
                 return;
             }
             
+            console.log("PayPal SDK loaded, rendering order summary...");
             const orderData = renderOrderSummary();
-            if (!orderData) return;
+            if (!orderData) {
+                console.error("No order data available");
+                return;
+            }
             
-            paypal.Buttons({
-                createOrder: async () => {
-                    const response = await fetch("/.netlify/functions/paypal-create-order", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ amount: orderData.total.toFixed(2) })
-                    });
-                    
-                    if (!response.ok) {
-                        const error = await response.json();
-                        throw new Error(error.error || "Failed to create order");
+            console.log("Order data:", orderData);
+            
+            const container = document.getElementById('paypal-button-container');
+            if (!container) {
+                console.error("PayPal button container not found!");
+                return;
+            }
+            
+            console.log("Rendering PayPal buttons...");
+            try {
+                paypal.Buttons({
+                    createOrder: async () => {
+                        console.log("Creating PayPal order for amount:", orderData.total);
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-create-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ amount: orderData.total.toFixed(2) })
+                            });
+                            
+                            if (!response.ok) {
+                                const error = await response.json();
+                                console.error("Create order error:", error);
+                                throw new Error(error.error || "Failed to create order");
+                            }
+                            
+                            const data = await response.json();
+                            console.log("Order created:", data.id);
+                            return data.id;
+                        } catch (err) {
+                            console.error("Error in createOrder:", err);
+                            throw err;
+                        }
+                    },
+                    onApprove: async (data) => {
+                        console.log("Payment approved, capturing order:", data.orderID);
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-capture-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ orderID: data.orderID })
+                            });
+                            
+                            if (!response.ok) {
+                                const error = await response.json();
+                                console.error("Capture order error:", error);
+                                throw new Error(error.error || "Failed to capture order");
+                            }
+                            
+                            const details = await response.json();
+                            console.log("Order captured:", details);
+                            
+                            // Clear cart and redirect to thank you
+                            window.Cart.clear();
+                            window.location.href = `/thank-you.html?orderId=${details.id || data.orderID}`;
+                        } catch (err) {
+                            console.error("Error in onApprove:", err);
+                            alert(`Payment error: ${err.message || "Unknown error"}`);
+                        }
+                    },
+                    onError: (err) => {
+                        console.error("PayPal error:", err);
+                        let errorMsg = err.message || "Unknown error";
+                        if (err.message && err.message.includes("Missing PayPal")) {
+                            errorMsg = "Server configuration error. Please contact support or try again later.";
+                        }
+                        alert(`Payment error: ${errorMsg}`);
                     }
-                    
-                    const data = await response.json();
-                    return data.id;
-                },
-                onApprove: async (data) => {
-                    const response = await fetch("/.netlify/functions/paypal-capture-order", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ orderID: data.orderID })
-                    });
-                    
-                    const details = await response.json();
-                    
-                    // Clear cart and redirect to thank you
-                    window.Cart.clear();
-                    window.location.href = `/thank-you.html?orderId=${details.id || data.orderID}`;
-                },
-                onError: (err) => {
-                    console.error("PayPal error:", err);
-                    let errorMsg = err.message || "Unknown error";
-                    if (err.message && err.message.includes("Missing PayPal")) {
-                        errorMsg = "Server configuration error. Please contact support or try again later.";
-                    }
-                    alert(`Payment error: ${errorMsg}`);
-                }
-            }).render("#paypal-button-container");
+                }).render("#paypal-button-container");
+                console.log("PayPal buttons rendered successfully");
+            } catch (err) {
+                console.error("Error rendering PayPal buttons:", err);
+                container.innerHTML = `<p style="color: red;">Error loading payment buttons. Please refresh the page.</p>`;
+            }
         }
         
         // Initialize on load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
+                console.log("DOM loaded, initializing checkout...");
                 renderOrderSummary();
-                initPayPal();
+                // Wait a bit for PayPal SDK to load
+                setTimeout(initPayPal, 500);
             });
         } else {
+            console.log("DOM already loaded, initializing checkout...");
             renderOrderSummary();
-            initPayPal();
+            setTimeout(initPayPal, 500);
         }
     </script>
 </body>
