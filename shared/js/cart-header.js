@@ -30,14 +30,14 @@
         
         cartLink.innerHTML = `
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Wicker basket style -->
-                <path d="M5 8h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z" style="fill: none;"></path>
-                <path d="M5 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" style="fill: none;"></path>
-                <!-- Basket weave pattern -->
-                <line x1="5" y1="12" x2="19" y2="12" style="fill: none;"></line>
-                <line x1="5" y1="16" x2="19" y2="16" style="fill: none;"></line>
-                <!-- Handle arch -->
-                <path d="M9 6c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2" style="fill: none;"></path>
+                <!-- Shopping basket with handle -->
+                <path d="M6 2L4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4H6z" style="fill: none;"></path>
+                <path d="M4 6h16" style="fill: none;"></path>
+                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" style="fill: none;"></path>
+                <!-- Basket texture lines (vertical ovals) -->
+                <ellipse cx="6" cy="14" rx="1.5" ry="4" style="fill: none;"></ellipse>
+                <ellipse cx="12" cy="14" rx="1.5" ry="4" style="fill: none;"></ellipse>
+                <ellipse cx="18" cy="14" rx="1.5" ry="4" style="fill: none;"></ellipse>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
