@@ -254,20 +254,6 @@
             <div class="checkout-content">
                 <div class="summary-column">
                     <h3>Order Summary</h3>
-                    <div class="shipping-location-section" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0;">
-                        <label for="checkout-shipping-country" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22; font-size: 0.95rem;">
-                            Shipping Country
-                        </label>
-                        <select id="checkout-shipping-country" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer;" onchange="updateCheckoutShipping()">
-                            <option value="">Select your country</option>
-                            <option value="AU">Australia</option>
-                            <option value="NZ">New Zealand</option>
-                            <option value="US">United States</option>
-                            <option value="GB">United Kingdom</option>
-                            <option value="CA">Canada</option>
-                            <option value="OTHER">Other Countries</option>
-                        </select>
-                    </div>
                     <div id="order-summary">
                         <!-- Order items will be loaded here -->
                     </div>
@@ -275,6 +261,18 @@
                 
                 <div class="payment-column">
                     <h3>Payment</h3>
+                    <div class="payment-methods" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                        <div class="payment-box" id="paypal-box" style="flex: 1; min-width: 150px; padding: 1.5rem; border: 3px solid #1a2e22; border-radius: 8px; background: white; cursor: pointer; text-align: center; font-weight: 600; color: #1a2e22; transition: all 0.2s ease;" onclick="selectPaymentMethod('paypal')">
+                            PayPal
+                        </div>
+                        <div class="payment-box" id="country-box" style="flex: 1; min-width: 150px; padding: 1.5rem; border: 3px solid #1a2e22; border-radius: 8px; background: white; cursor: pointer; text-align: center; font-weight: 600; color: #1a2e22; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;" onclick="document.getElementById('checkout-shipping-country').focus()">
+                            <div>CHOOSE</div>
+                            <div>COUNTRY</div>
+                        </div>
+                        <div class="payment-box" id="card-box" style="flex: 1; min-width: 150px; padding: 1.5rem; border: 3px solid #1a2e22; border-radius: 8px; background: white; cursor: pointer; text-align: center; font-weight: 600; color: #1a2e22; transition: all 0.2s ease;" onclick="selectPaymentMethod('card')">
+                            Card
+                        </div>
+                    </div>
                     <div id="paypal-button-container"></div>
                 </div>
             </div>
@@ -304,6 +302,30 @@
             }
         }
         
+        // Select payment method
+        function selectPaymentMethod(method) {
+            // Remove active class from all boxes
+            document.querySelectorAll('.payment-box').forEach(box => {
+                box.style.background = 'white';
+                box.style.borderColor = '#1a2e22';
+            });
+            
+            // Add active class to selected box
+            const selectedBox = document.getElementById(method + '-box');
+            if (selectedBox) {
+                selectedBox.style.background = '#f0f0f0';
+                selectedBox.style.borderColor = '#2d5a3d';
+            }
+            
+            // For now, only PayPal is functional
+            if (method === 'paypal') {
+                // PayPal buttons will be shown when country is selected
+            } else if (method === 'card') {
+                // Card payment - can be implemented later
+                alert('Card payment coming soon!');
+            }
+        }
+        
         // Update shipping cost on checkout page
         function updateCheckoutShipping() {
             const countrySelect = document.getElementById('checkout-shipping-country');
@@ -311,6 +333,12 @@
             
             if (countryCode) {
                 saveCountry(countryCode);
+                // Highlight country box when selected
+                const countryBox = document.getElementById('country-box');
+                if (countryBox) {
+                    countryBox.style.background = '#f0f0f0';
+                    countryBox.style.borderColor = '#2d5a3d';
+                }
             }
             
             // Re-render order summary with updated shipping
