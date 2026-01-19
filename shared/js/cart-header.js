@@ -29,15 +29,16 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Shopping basket with handle -->
-                <path d="M6 2L4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4H6z" style="fill: none;"></path>
-                <path d="M4 6h16" style="fill: none;"></path>
-                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" style="fill: none;"></path>
-                <!-- Basket texture lines (vertical ovals) -->
-                <ellipse cx="6" cy="14" rx="1.5" ry="4" style="fill: none;"></ellipse>
-                <ellipse cx="12" cy="14" rx="1.5" ry="4" style="fill: none;"></ellipse>
-                <ellipse cx="18" cy="14" rx="1.5" ry="4" style="fill: none;"></ellipse>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="display: block;">
+                <!-- Solid black basket with trapezoidal body -->
+                <path d="M5 8h14l-1 12H6L5 8z" fill="#1a2e22"></path>
+                <path d="M5 8l-1-4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 4" fill="#1a2e22"></path>
+                <!-- Flat rectangular handle -->
+                <rect x="8" y="3" width="8" height="2" fill="#1a2e22" rx="1"></rect>
+                <!-- Three vertical white bars on front -->
+                <rect x="6" y="10" width="2" height="8" fill="white" rx="0.5"></rect>
+                <rect x="11" y="10" width="2" height="8" fill="white" rx="0.5"></rect>
+                <rect x="16" y="10" width="2" height="8" fill="white" rx="0.5"></rect>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
