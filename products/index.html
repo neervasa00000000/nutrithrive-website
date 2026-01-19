@@ -728,6 +728,8 @@
         </div>
     </footer>
 
+    <script src="../shared/js/cart.js"></script>
+    <script src="../shared/js/cart-header.js"></script>
     <script src="../shared/js/script.js" defer></script>
 
     <!-- CollectionPage Schema -->
@@ -1032,6 +1034,22 @@
         ]
       }
     }
+    </script>
+    <script>
+        // Add to Cart function for product listing page
+        function addProductToCart(id, name, price, image) {
+            if (window.Cart && window.Cart.add) {
+                window.Cart.add({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            } else {
+                console.error('Cart is not initialized');
+            }
+        }
     </script>
 </body>
 </html>
