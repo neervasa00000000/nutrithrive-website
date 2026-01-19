@@ -795,6 +795,13 @@
                     const discountPercent = Math.round((variation.discount / variation.originalPrice) * 100);
                     discountTextElement.textContent = `${discountPercent}% discount ($${variation.discount.toFixed(2)} AUD off)`;
                 }
+                
+                // Update main product image
+                const mainImage = document.getElementById('main-product-image');
+                if (mainImage && variation.image) {
+                    mainImage.src = variation.image;
+                    mainImage.alt = variation.name + ' - 100% Pure Moringa Oleifera';
+                }
             }
         }
         
