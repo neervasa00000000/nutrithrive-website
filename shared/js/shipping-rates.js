@@ -101,14 +101,37 @@ function getPackageSize(totalQuantity) {
     }
 }
 
+// Map PayPal country codes to our shipping zones
+function mapCountryToZone(countryCode) {
+    if (!countryCode) return 'OTHER';
+    
+    // Convert to uppercase for consistency
+    const code = countryCode.toUpperCase();
+    
+    // Zone 1 - Australia
+    if (code === 'AU') return 'AU';
+    
+    // Zone 2 - New Zealand
+    if (code === 'NZ') return 'NZ';
+    
+    // Zone 3 - US, UK, Canada (these are already in our rates)
+    if (code === 'US' || code === 'GB' || code === 'CA') return code;
+    
+    // All other countries use Zone 3 rates
+    return 'OTHER';
+}
+
 // Calculate shipping cost based on country and total quantity
 function calculateShipping(countryCode, totalQuantity, subtotal) {
     if (!countryCode) {
         return null; // Country not selected
     }
     
+    // Map country code to our zone
+    const mappedCountry = mapCountryToZone(countryCode);
+    
     // Get shipping rates for the country, or use OTHER as default
-    const countryRates = SHIPPING_RATES[countryCode] || SHIPPING_RATES['OTHER'];
+    const countryRates = SHIPPING_RATES[mappedCountry] || SHIPPING_RATES['OTHER'];
     
     // Check for free shipping threshold
     if (countryRates.freeShippingThreshold && subtotal >= countryRates.freeShippingThreshold) {
