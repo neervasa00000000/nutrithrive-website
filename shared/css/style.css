@@ -721,6 +721,17 @@ footer {
     color: var(--accent);
 }
 
+.footer-newsletter {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem 2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-newsletter .footer-section {
+    max-width: 100%;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 1.5rem;
