@@ -238,7 +238,8 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
       }
       .product-title {
         font-family: 'Playfair Display', serif;
@@ -247,9 +248,10 @@
         margin: 0;
         line-height: 1.25;
         min-height: 2.5em;
+        text-align: center;
       }
       .product-price {
-        text-align: left;
+        text-align: center;
         width: 100%;
       }
       .price {
@@ -258,6 +260,7 @@
         font-size: 1rem;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.4rem;
       }
       .rating {
@@ -275,6 +278,7 @@
         font-weight: 700;
         margin: 0;
         min-height: 1.2em;
+        text-align: center;
       }
       .why-box {
         background: transparent;
@@ -391,7 +395,20 @@
         .products-shell {
           padding: 1.25rem 1rem 3rem;
         }
+        .product-header {
+          align-items: flex-start;
+          text-align: left;
+        }
+        .product-title {
+          text-align: left;
+        }
         .product-price {
+          text-align: left;
+        }
+        .price {
+          justify-content: flex-start;
+        }
+        .meta {
           text-align: left;
         }
         .hero-badges {
