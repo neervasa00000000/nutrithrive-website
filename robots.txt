@@ -135,7 +135,6 @@ Allow: /moringa-benefits.html
 Allow: /product-detail.html
 Allow: /product-black-tea.html
 Allow: /product-curry-leaves.html
-Allow: /crazy-ideas/
 Allow: /images/
 Allow: /favicon.ico
 
