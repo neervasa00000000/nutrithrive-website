@@ -469,35 +469,40 @@
                             cartData.subtotal
                         );
                         
-                        if (shipping === null) {
-                            console.error("Could not calculate shipping");
+                        if (shipping === null || shipping === undefined) {
+                            console.error("Could not calculate shipping for country:", countryCode);
                             return actions.reject();
                         }
                         
                         const newTotal = cartData.subtotal + shipping;
-                        console.log("Calculated shipping:", shipping, "New total:", newTotal);
+                        console.log("Calculated shipping:", shipping, "New total:", newTotal, "for country:", countryCode);
                         
                         // Update the order with shipping
-                        return actions.order.patch([
-                            {
-                                op: "replace",
-                                path: "/purchase_units/@reference_id=='default'/amount",
-                                value: {
-                                    currency_code: "AUD",
-                                    value: newTotal.toFixed(2),
-                                    breakdown: {
-                                        item_total: {
-                                            currency_code: "AUD",
-                                            value: cartData.subtotal.toFixed(2)
-                                        },
-                                        shipping: {
-                                            currency_code: "AUD",
-                                            value: shipping.toFixed(2)
+                        try {
+                            return await actions.order.patch([
+                                {
+                                    op: "replace",
+                                    path: "/purchase_units/@reference_id=='default'/amount",
+                                    value: {
+                                        currency_code: "AUD",
+                                        value: newTotal.toFixed(2),
+                                        breakdown: {
+                                            item_total: {
+                                                currency_code: "AUD",
+                                                value: cartData.subtotal.toFixed(2)
+                                            },
+                                            shipping: {
+                                                currency_code: "AUD",
+                                                value: shipping.toFixed(2)
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        ]);
+                            ]);
+                        } catch (err) {
+                            console.error("Error updating order with shipping:", err);
+                            return actions.reject();
+                        }
                     },
                     onApprove: async (data, actions) => {
                         const orderID = data.orderID || data.id;
