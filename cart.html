@@ -257,33 +257,19 @@
         </div>
         
         <div id="cart-summary" class="cart-summary" style="display: none;">
-            <div class="shipping-location-section" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0;">
-                <label for="shipping-country" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">
-                    Shipping Country
-                </label>
-                <select id="shipping-country" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer;" onchange="updateShippingCost()">
-                    <option value="">Select your country</option>
-                    <option value="AU">Australia</option>
-                    <option value="NZ">New Zealand</option>
-                    <option value="US">United States</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="CA">Canada</option>
-                    <option value="OTHER">Other Countries</option>
-                </select>
-            </div>
             <div class="summary-row">
                 <span>Subtotal</span>
                 <span id="subtotal">$0.00</span>
             </div>
             <div class="summary-row">
                 <span>Shipping</span>
-                <span id="shipping">-</span>
+                <span id="shipping">Calculated at checkout</span>
             </div>
             <div class="summary-row">
                 <span>Total</span>
                 <span id="total">$0.00</span>
             </div>
-            <button class="checkout-btn" onclick="window.location.href='/checkout.html'" id="checkout-btn">
+            <button class="checkout-btn" onclick="window.location.href='/checkout.html'">
                 Proceed to Checkout
             </button>
         </div>
@@ -291,7 +277,6 @@
     
     <script src="/shared/js/cart.js"></script>
     <script src="/shared/js/cart-header.js"></script>
-    <script src="/shared/js/shipping-rates.js"></script>
     <script src="/shared/js/script.js"></script>
     <script>
         // Load saved country selection
@@ -433,10 +418,7 @@
             // Update summary
             const subtotal = cart.total || 0;
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            
-            // Load saved country and update shipping
-            loadSavedCountry();
-            updateShippingCost();
+            document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
             
             cartSummary.style.display = 'block';
         }
@@ -444,27 +426,20 @@
         function updateQuantity(productId, quantity) {
             window.Cart.updateQuantity(productId, parseInt(quantity));
             renderCart();
-            updateShippingCost(); // Recalculate shipping after quantity change
         }
         
         function removeItem(productId) {
             if (confirm('Remove this item from cart?')) {
                 window.Cart.remove(productId);
                 renderCart();
-                updateShippingCost(); // Recalculate shipping after item removal
             }
         }
         
         // Render cart on load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                renderCart();
-                // Wait a bit for shipping rates to load
-                setTimeout(updateShippingCost, 100);
-            });
+            document.addEventListener('DOMContentLoaded', renderCart);
         } else {
             renderCart();
-            setTimeout(updateShippingCost, 100);
         }
     </script>
 </body>
