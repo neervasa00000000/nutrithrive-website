@@ -377,8 +377,21 @@
 
                         <!-- Add to Cart Section -->
                         <div style="margin: 1.5rem 0; padding: 1.5rem; background: #f8faf7; border-radius: 8px;">
+                            <!-- Variations Selector -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Variations</label>
+                                <select id="product-variation" onchange="updateProductVariation()" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
+                                    <option value="variation-1" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../shared/images/Home page /Moringa.png">3 + 1 = 400g - $31.60 AUD</option>
+                                    <option value="variation-2" data-price="10.50" data-name="100g Moringa" data-image="../shared/images/Home page /Moringa.png">100g Moringa - $10.50 AUD</option>
+                                    <option value="variation-3" data-price="15.55" data-name="Combo Moringa + Dried Curry Leaves" data-image="../shared/images/Home page /Moringa.png">Combo Moringa + Dried Curry Leaves - $15.55 AUD</option>
+                                    <option value="variation-4" data-price="20.49" data-name="200g Moringa" data-image="../shared/images/Home page /Moringa.png">200g Moringa - $20.49 AUD</option>
+                                    <option value="variation-5" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../shared/images/Home page /Moringa.png">30g Dried Curry Leaves - $6.45 AUD</option>
+                                    <option value="variation-6" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../shared/images/Home page /Moringa.png">Moringa 100g + Soap 95g - $17.00 AUD</option>
+                                </select>
+                            </div>
+                            
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-                                <span style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$10.00 AUD</span>
+                                <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$31.60 AUD</span>
                                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                                     <label style="font-weight: 600; color: #1a2e22;">Quantity:</label>
                                     <input type="number" id="product-quantity" min="1" value="1" style="width: 60px; padding: 0.5rem; border: 2px solid #e0e0e0; border-radius: 6px; text-align: center; font-size: 1rem;">
