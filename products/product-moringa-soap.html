@@ -237,24 +237,26 @@
                     <p>Based in Melbourne, Australia, we offer fast Australia-wide shipping and worldwide shipping 🌍 — delivering to customers across Australia and internationally.</p>
                 </div>
                 
-                <!-- Product Image -->
-                <div class="product-image-container" style="text-align: center; margin: 1.5rem 0;">
-                    <img src="../shared/images/Home%20page%20/webp/moringa_soap.webp" 
-                         alt="NutriThrive Moringa Soap - Natural Handmade Soap Bar" 
-                         style="max-width: 100%; width: 300px; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                </div>
-                
-                <div style="text-align: center; padding: 20px;">
-                    <!-- Price Display -->
-                    <div style="margin-bottom: 1.5rem;">
-                        <span style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$6.50 AUD</span>
-                        <p style="font-size: 0.9rem; color: #555; margin-top: 0.25rem;">95g Bar • Natural Soap</p>
+                <!-- Product Image + Price/Cart Side by Side -->
+                <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; margin: 1.5rem 0; flex-wrap: wrap;">
+                    <!-- Left: Product Image -->
+                    <div class="product-image-container">
+                        <img src="../shared/images/Home%20page%20/webp/moringa_soap.webp" 
+                             alt="NutriThrive Moringa Soap - Natural Handmade Soap Bar" 
+                             style="max-width: 100%; width: 280px; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                     </div>
                     
-                    <!-- Add to Cart Button -->
-                    <button onclick="addSoapToCart()" style="width: 100%; max-width: 300px; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-bottom: 1rem;">
-                        Add to Cart
-                    </button>
+                    <!-- Right: Price and Add to Cart -->
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <span style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$6.50 AUD</span>
+                            <p style="font-size: 0.9rem; color: #555; margin-top: 0.25rem;">95g Bar • Natural Soap</p>
+                        </div>
+                        
+                        <button onclick="addSoapToCart()" style="width: 100%; max-width: 300px; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                            Add to Cart
+                        </button>
+                    </div>
                 </div>
                 
                 <!-- GUARANTEE & SHIPPING INFO -->
