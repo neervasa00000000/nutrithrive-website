@@ -254,6 +254,20 @@
             <div class="checkout-content">
                 <div class="summary-column">
                     <h3>Order Summary</h3>
+                    <div class="shipping-location-section" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0;">
+                        <label for="checkout-shipping-country" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22; font-size: 0.95rem;">
+                            Shipping Country
+                        </label>
+                        <select id="checkout-shipping-country" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer;" onchange="updateCheckoutShipping()">
+                            <option value="">Select your country</option>
+                            <option value="AU">Australia</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="US">United States</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="CA">Canada</option>
+                            <option value="OTHER">Other Countries</option>
+                        </select>
+                    </div>
                     <div id="order-summary">
                         <!-- Order items will be loaded here -->
                     </div>
@@ -269,8 +283,40 @@
     
     <script src="/shared/js/cart.js"></script>
     <script src="/shared/js/cart-header.js"></script>
+    <script src="/shared/js/shipping-rates.js"></script>
     <script src="/shared/js/script.js"></script>
     <script>
+        // Load saved country selection
+        function loadSavedCountry() {
+            const savedCountry = localStorage.getItem('nutrithrive_shipping_country');
+            const countrySelect = document.getElementById('checkout-shipping-country');
+            if (savedCountry && countrySelect) {
+                countrySelect.value = savedCountry;
+            }
+        }
+        
+        // Save country selection
+        function saveCountry(countryCode) {
+            if (countryCode) {
+                localStorage.setItem('nutrithrive_shipping_country', countryCode);
+            } else {
+                localStorage.removeItem('nutrithrive_shipping_country');
+            }
+        }
+        
+        // Update shipping cost on checkout page
+        function updateCheckoutShipping() {
+            const countrySelect = document.getElementById('checkout-shipping-country');
+            const countryCode = countrySelect ? countrySelect.value : '';
+            
+            if (countryCode) {
+                saveCountry(countryCode);
+            }
+            
+            // Re-render order summary with updated shipping
+            renderOrderSummary();
+        }
+        
         function renderOrderSummary() {
             const cart = window.Cart.get();
             const summaryDiv = document.getElementById('order-summary');
@@ -299,8 +345,27 @@
             itemsHTML += '</div>';
             
             const subtotal = cart.total || 0;
-            const shipping = subtotal >= 80 ? 0 : 10;
-            const total = subtotal + shipping;
+            
+            // Calculate total quantity
+            const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
+            
+            // Get selected country
+            const countrySelect = document.getElementById('checkout-shipping-country');
+            const countryCode = countrySelect ? countrySelect.value : '';
+            
+            // Calculate shipping based on country and quantity
+            let shipping = null;
+            if (countryCode && window.ShippingRates) {
+                shipping = window.ShippingRates.calculate(countryCode, totalQuantity, subtotal);
+            } else if (!countryCode) {
+                shipping = null; // Country not selected
+            } else {
+                // Fallback to old calculation if shipping rates not loaded
+                shipping = subtotal >= 80 ? 0 : 10;
+            }
+            
+            // Calculate total
+            const total = shipping !== null ? subtotal + shipping : subtotal;
             
             itemsHTML += `
                 <div class="summary-item">
@@ -309,7 +374,7 @@
                 </div>
                 <div class="summary-item">
                     <span class="summary-label">Shipping</span>
-                    <span class="summary-value">${shipping === 0 ? 'Free' : '$' + shipping.toFixed(2)}</span>
+                    <span class="summary-value">${shipping === null ? 'Select country' : (shipping === 0 ? 'Free' : '$' + shipping.toFixed(2))}</span>
                 </div>
                 <div class="summary-item summary-total">
                     <span>Total</span>
@@ -319,9 +384,19 @@
             
             summaryDiv.innerHTML = itemsHTML;
             
+            // Update PayPal buttons if country is selected
+            if (countryCode && shipping !== null) {
+                // Re-initialize PayPal with updated total
+                setTimeout(() => {
+                    if (typeof paypal !== 'undefined') {
+                        initPayPal();
+                    }
+                }, 100);
+            }
+            
             return {
                 subtotal: subtotal,
-                shipping: shipping,
+                shipping: shipping !== null ? shipping : 0,
                 total: total,
                 items: cart.items
             };
