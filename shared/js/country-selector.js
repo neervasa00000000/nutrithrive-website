@@ -220,21 +220,23 @@
             width: 100%;
         `;
 
-        // Create search input
+        // Create search input (hidden by default, shown when dropdown is focused)
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
         searchInput.id = 'country-search-input';
         searchInput.placeholder = 'Search';
+        searchInput.autocomplete = 'off';
         searchInput.style.cssText = `
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.65rem 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 4px;
             font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
             color: white;
             margin-bottom: 0.5rem;
             box-sizing: border-box;
+            display: none;
         `;
         searchInput.setAttribute('style', searchInput.style.cssText + '::placeholder { color: rgba(255, 255, 255, 0.6); }');
 
@@ -303,13 +305,10 @@
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             if (searchTerm) {
-                // Filter and show matching countries
                 const filtered = allCountries.filter(c => 
                     c.name.toLowerCase().includes(searchTerm) || 
                     c.displayText.toLowerCase().includes(searchTerm)
                 );
-                
-                // Update datalist options
                 datalist.innerHTML = '';
                 filtered.forEach(c => {
                     const option = document.createElement('option');
@@ -318,7 +317,6 @@
                     datalist.appendChild(option);
                 });
             } else {
-                // Show all countries when search is empty
                 datalist.innerHTML = '';
                 allCountries.forEach(c => {
                     const option = document.createElement('option');
@@ -351,6 +349,28 @@
             window.dispatchEvent(new CustomEvent('countryChanged', { detail: { countryCode: selectedCode } }));
         });
 
+        // Show search when select is focused/clicked
+        select.addEventListener('focus', () => {
+            searchInput.style.display = 'block';
+            searchInput.focus();
+        });
+        select.addEventListener('click', () => {
+            searchInput.style.display = 'block';
+            searchInput.focus();
+        });
+
+        // Hide search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!selector.contains(e.target)) {
+                searchInput.style.display = 'none';
+            }
+        });
+
+        // If user types in search, ensure select stays in sync
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => { searchInput.style.display = 'none'; }, 150);
+        });
+
         selectWrapper.appendChild(searchInput);
         selectWrapper.appendChild(datalist);
         selectWrapper.appendChild(select);
@@ -362,10 +382,8 @@
 
     // Initialize country selector
     function initCountrySelector() {
-        // Check if already exists
-        if (document.getElementById('country-selector-container')) {
-            return;
-        }
+        // Remove any existing selector to avoid duplicates (in case of multiple script loads)
+        document.querySelectorAll('#country-selector-container').forEach(el => el.remove());
 
         const selector = createCountrySelector();
         
@@ -376,13 +394,10 @@
             const footerBottom = footer.querySelector('.footer-bottom');
             
             if (footerContent) {
-                // Add as a new footer section
                 footerContent.appendChild(selector);
             } else if (footerBottom) {
-                // Insert before footer-bottom if no footer-content
                 footer.insertBefore(selector, footerBottom);
             } else {
-                // Fallback: append to footer
                 footer.appendChild(selector);
             }
         } else {
@@ -395,54 +410,42 @@
             const select = document.getElementById('global-country-selector');
             const searchInput = document.getElementById('country-search-input');
             
+            const setCountry = (code) => {
+                if (!select) return;
+                select.value = code;
+                localStorage.setItem('nutrithrive_country', code);
+                if (searchInput) {
+                    const country = countryCurrencyMap[code];
+                    if (country) {
+                        searchInput.value = `${country.name} | ${country.currency} ${country.symbol}`;
+                    } else if (code === 'OTHER') {
+                        searchInput.value = 'Other Countries | Various';
+                    } else {
+                        searchInput.value = '';
+                    }
+                }
+            };
+            
             if (countryCode && (countryCode in countryCurrencyMap || countryCode === 'OTHER')) {
-                if (select) {
-                    select.value = countryCode;
-                    localStorage.setItem('nutrithrive_country', countryCode);
-                    
-                    // Update search input to show selected country
-                    if (searchInput) {
-                        const country = countryCurrencyMap[countryCode];
-                        if (country) {
-                            searchInput.value = `${country.name} | ${country.currency} ${country.symbol}`;
-                        } else if (countryCode === 'OTHER') {
-                            searchInput.value = 'Other Countries | Various';
-                        }
-                    }
-                }
+                setCountry(countryCode);
             } else {
-                // Load saved country or default to Australia
                 const savedCountry = localStorage.getItem('nutrithrive_country') || 'AU';
-                if (select) {
-                    select.value = savedCountry;
-                    
-                    // Update search input
-                    if (searchInput) {
-                        const country = countryCurrencyMap[savedCountry];
-                        if (country) {
-                            searchInput.value = `${country.name} | ${country.currency} ${country.symbol}`;
-                        } else if (savedCountry === 'OTHER') {
-                            searchInput.value = 'Other Countries | Various';
-                        }
-                    }
-                }
+                setCountry(savedCountry);
             }
         }).catch(() => {
-            // On error, load saved country or default to Australia
-            const savedCountry = localStorage.getItem('nutrithrive_country') || 'AU';
             const select = document.getElementById('global-country-selector');
             const searchInput = document.getElementById('country-search-input');
-            
+            const savedCountry = localStorage.getItem('nutrithrive_country') || 'AU';
             if (select) {
                 select.value = savedCountry;
-                
-                // Update search input
                 if (searchInput) {
                     const country = countryCurrencyMap[savedCountry];
                     if (country) {
                         searchInput.value = `${country.name} | ${country.currency} ${country.symbol}`;
                     } else if (savedCountry === 'OTHER') {
                         searchInput.value = 'Other Countries | Various';
+                    } else {
+                        searchInput.value = '';
                     }
                 }
             }
