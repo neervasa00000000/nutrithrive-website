@@ -244,7 +244,7 @@
         const datalist = document.createElement('datalist');
         datalist.id = 'country-options';
 
-        // Create select dropdown (hidden, used for value storage)
+        // Create select dropdown (visible by default, hidden when search is shown)
         const select = document.createElement('select');
         select.id = 'global-country-selector';
         select.style.cssText = `
@@ -263,6 +263,7 @@
             background-position: right 0.75rem center;
             background-size: 1.2em;
             box-sizing: border-box;
+            display: block;
         `;
 
         // Store all country options for filtering
@@ -349,26 +350,40 @@
             window.dispatchEvent(new CustomEvent('countryChanged', { detail: { countryCode: selectedCode } }));
         });
 
+        // Hide select when search is shown, show select when search is hidden
+        const showSearch = () => {
+            select.style.display = 'none';
+            searchInput.style.display = 'block';
+            searchInput.focus();
+        };
+        
+        const hideSearch = () => {
+            searchInput.style.display = 'none';
+            select.style.display = 'block';
+        };
+
         // Show search when select is focused/clicked
-        select.addEventListener('focus', () => {
-            searchInput.style.display = 'block';
-            searchInput.focus();
-        });
-        select.addEventListener('click', () => {
-            searchInput.style.display = 'block';
-            searchInput.focus();
+        select.addEventListener('focus', showSearch);
+        select.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSearch();
         });
 
         // Hide search when clicking outside
         document.addEventListener('click', (e) => {
             if (!selector.contains(e.target)) {
-                searchInput.style.display = 'none';
+                hideSearch();
             }
         });
 
         // If user types in search, ensure select stays in sync
         searchInput.addEventListener('blur', () => {
-            setTimeout(() => { searchInput.style.display = 'none'; }, 150);
+            setTimeout(() => { hideSearch(); }, 150);
+        });
+        
+        // When search value changes and user selects, hide search and show select
+        searchInput.addEventListener('change', () => {
+            setTimeout(() => { hideSearch(); }, 100);
         });
 
         selectWrapper.appendChild(searchInput);
