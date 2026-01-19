@@ -390,11 +390,22 @@
                                 </select>
                             </div>
                             
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-                                <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$31.60 AUD</span>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <label style="font-weight: 600; color: #1a2e22;">Quantity:</label>
-                                    <input type="number" id="product-quantity" min="1" value="1" style="width: 60px; padding: 0.5rem; border: 2px solid #e0e0e0; border-radius: 6px; text-align: center; font-size: 1rem;">
+                            <div style="margin-bottom: 1.5rem;">
+                                <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: block; margin-bottom: 1rem;">$31.60 AUD</span>
+                                <div>
+                                    <label style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
+                                    <select id="product-quantity" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
                                 </div>
                             </div>
                             <button onclick="addMoringaToCart()" style="width: 100%; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
@@ -773,7 +784,8 @@
         
         // Add to cart function
         function addMoringaToCart() {
-            const quantity = parseInt(document.getElementById('product-quantity').value) || 1;
+            const quantitySelect = document.getElementById('product-quantity');
+            const quantity = parseInt(quantitySelect ? quantitySelect.value : 1) || 1;
             const variationSelect = document.getElementById('product-variation');
             const variationId = variationSelect ? variationSelect.value : 'variation-1';
             const variation = productVariations[variationId];
