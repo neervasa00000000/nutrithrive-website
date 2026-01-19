@@ -372,10 +372,22 @@ window.addEventListener('load', () => {
 
 // Load country selector on all pages
 (function() {
+    // Prevent multiple loads
+    if (window.countrySelectorLoading) {
+        return; // Already loading or loaded
+    }
+    window.countrySelectorLoading = true;
+    
     function loadCountrySelector() {
+        // Check if already exists before loading
         if (document.getElementById('country-selector-container')) {
+            window.countrySelectorLoading = false;
             return; // Already loaded
         }
+        
+        // Remove any existing selectors first (safety check)
+        document.querySelectorAll('#country-selector-container').forEach(el => el.remove());
+        
         const script = document.createElement('script');
         // Determine correct path based on current page location
         const isRoot = window.location.pathname === '/' || window.location.pathname.match(/^\/[^\/]+\.html$/);
@@ -393,6 +405,15 @@ window.addEventListener('load', () => {
             script.src = '/shared/js/country-selector.js';
         }
         script.async = true;
+        
+        // Mark as loaded when script finishes
+        script.onload = function() {
+            window.countrySelectorLoading = false;
+        };
+        script.onerror = function() {
+            window.countrySelectorLoading = false;
+        };
+        
         document.body.appendChild(script);
     }
     
