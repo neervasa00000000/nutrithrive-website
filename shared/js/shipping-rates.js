@@ -1,111 +1,102 @@
 // Shipping Rates Configuration
-// Based on location (Zone) and package size/weight
-// Rates from shipping_rates.xlsx
+// Based on color-coded tables from shipping_rates.xlsx
+// GREEN = Australia, BLUE = International Key Destinations, YELLOW = International Other Destinations
 
-const SHIPPING_RATES = {
-    // Zone 1 - Australia
-    'AU': {
-        name: 'Australia',
-        zone: 1,
-        freeShippingThreshold: 80, // Free shipping over $80
-        rates: {
-            'Extra Small': { weight: '250g', cost: 8.73 },
-            'Small': { weight: '500g', cost: 10.04 },
-            'Medium': { weight: '1kg', cost: 13.73 },
-            'Large': { weight: '3kg', cost: 17.37 },
-            'Extra Large': { weight: '5kg', cost: 20.97 }
-        }
-    },
-    // Zone 2 - New Zealand
-    'NZ': {
-        name: 'New Zealand',
-        zone: 2,
-        freeShippingThreshold: null,
-        rates: {
-            'Extra Small': { weight: '250g', cost: 9.22 },
-            'Small': { weight: '500g', cost: 10.59 },
-            'Medium': { weight: '1kg', cost: 14.49 },
-            'Large': { weight: '3kg', cost: 18.34 },
-            'Extra Large': { weight: '5kg', cost: 22.14 }
-        }
-    },
-    // Zone 3 - International (US, UK, Canada, Other)
-    'US': {
-        name: 'United States',
-        zone: 3,
-        freeShippingThreshold: null,
-        rates: {
-            'Extra Small': { weight: '250g', cost: 9.70 },
-            'Small': { weight: '500g', cost: 11.15 },
-            'Medium': { weight: '1kg', cost: 15.25 },
-            'Large': { weight: '3kg', cost: 19.30 },
-            'Extra Large': { weight: '5kg', cost: 23.30 }
-        }
-    },
-    'GB': {
-        name: 'United Kingdom',
-        zone: 3,
-        freeShippingThreshold: null,
-        rates: {
-            'Extra Small': { weight: '250g', cost: 9.70 },
-            'Small': { weight: '500g', cost: 11.15 },
-            'Medium': { weight: '1kg', cost: 15.25 },
-            'Large': { weight: '3kg', cost: 19.30 },
-            'Extra Large': { weight: '5kg', cost: 23.30 }
-        }
-    },
-    'CA': {
-        name: 'Canada',
-        zone: 3,
-        freeShippingThreshold: null,
-        rates: {
-            'Extra Small': { weight: '250g', cost: 9.70 },
-            'Small': { weight: '500g', cost: 11.15 },
-            'Medium': { weight: '1kg', cost: 15.25 },
-            'Large': { weight: '3kg', cost: 19.30 },
-            'Extra Large': { weight: '5kg', cost: 23.30 }
-        }
-    },
-    'OTHER': {
-        name: 'Other Countries',
-        zone: 3,
-        freeShippingThreshold: null,
-        rates: {
-            'Extra Small': { weight: '250g', cost: 9.70 },
-            'Small': { weight: '500g', cost: 11.15 },
-            'Medium': { weight: '1kg', cost: 15.25 },
-            'Large': { weight: '3kg', cost: 19.30 },
-            'Extra Large': { weight: '5kg', cost: 23.30 }
-        }
-    }
+// GREEN section - Australia (Domestic)
+const GREEN_RATES = {
+    'Up to 250g': { zone1: 8.73, zone2: 9.22, zone3: 9.70 },
+    '251g-500g': { zone1: 10.04, zone2: 10.59, zone3: 11.15 },
+    '501g-1kg': { zone1: 13.73, zone2: 14.49, zone3: 15.25 },
+    '1.001kg-1.5kg': { zone1: 17.37, zone2: 18.34, zone3: 19.30 },
+    '1.501kg-2kg': { zone1: 20.97, zone2: 22.14, zone3: 23.30 }
 };
 
-// Map total weight in grams to package size
-function getPackageSize(totalWeightGrams) {
+// BLUE section - International Key Destinations
+const BLUE_RATES = {
+    'Up to 250g': { zone1: 15.49, zone2: 18.95, zone3: 21.19, zone4: 26.13 },
+    '251g-500g': { zone1: 18.67, zone2: 24.70, zone3: 27.55, zone4: 32.68 },
+    '501g-1kg': { zone1: 25.08, zone2: 36.24, zone3: 40.09, zone4: 45.89 },
+    '1.001kg-1.5kg': { zone1: 31.49, zone2: 47.79, zone3: 52.77, zone4: 59.04 },
+    '1.501kg-2kg': { zone1: 37.91, zone2: 59.33, zone3: 65.41, zone4: 72.20 }
+};
+
+// YELLOW section - International Other Destinations
+const YELLOW_RATES = {
+    'Up to 250g': { zone2: 18.95, zone4: 26.13, zone5: 31.68 },
+    '251g-500g': { zone2: 24.70, zone4: 32.68, zone5: 40.28 },
+    '501g-1kg': { zone2: 36.24, zone4: 45.89, zone5: 57.48 },
+    '1.001kg-1.5kg': { zone2: 47.79, zone4: 59.04, zone5: 74.62 },
+    '1.501kg-2kg': { zone2: 59.33, zone4: 72.20, zone5: 91.82 }
+};
+
+// Country to zone and color mapping
+// Based on Country Master List from Excel
+const COUNTRY_MAPPING = {
+    // Australia - GREEN
+    'AU': { zone: 1, color: 'GREEN', freeShippingThreshold: 80 },
+    
+    // BLUE - Key International Destinations
+    'NZ': { zone: 1, color: 'BLUE' },
+    'CN': { zone: 2, color: 'BLUE' }, // China
+    'US': { zone: 3, color: 'BLUE' },
+    'CA': { zone: 3, color: 'BLUE' },
+    'GB': { zone: 4, color: 'BLUE' },
+    'IE': { zone: 4, color: 'BLUE' }, // Ireland
+    
+    // YELLOW - Other International (default for most countries)
+    // Zone 2: Rest of Asia, Pacific Islands
+    // Zone 4: Major Europe, Rest of World 1
+    // Zone 5: Rest of World 2
+    'OTHER': { zone: 5, color: 'YELLOW' } // Default for other countries
+};
+
+// Map weight in grams to weight range category
+function getWeightRange(totalWeightGrams) {
     if (totalWeightGrams <= 250) {
-        return 'Extra Small';
+        return 'Up to 250g';
     } else if (totalWeightGrams <= 500) {
-        return 'Small';
+        return '251g-500g';
     } else if (totalWeightGrams <= 1000) {
-        return 'Medium';
-    } else if (totalWeightGrams <= 3000) {
-        return 'Large';
+        return '501g-1kg';
+    } else if (totalWeightGrams <= 1500) {
+        return '1.001kg-1.5kg';
+    } else if (totalWeightGrams <= 2000) {
+        return '1.501kg-2kg';
     } else {
-        return 'Extra Large';
+        // For weights over 2kg, use the highest tier
+        return '1.501kg-2kg';
     }
 }
 
-// Calculate shipping cost based on country and actual cart items weight
+// Get country mapping with zone and color
+function getCountryInfo(countryCode) {
+    if (!countryCode) return null;
+    
+    const code = countryCode.toUpperCase();
+    const mapping = COUNTRY_MAPPING[code];
+    
+    if (mapping) {
+        return mapping;
+    }
+    
+    // Default to YELLOW for unknown countries
+    // Most countries fall into Zone 5 (Rest of World 2)
+    return { zone: 5, color: 'YELLOW' };
+}
+
+// Calculate shipping cost based on country, weight, and color-coded tables
 function calculateShipping(countryCode, cartItems, subtotal) {
     if (!countryCode) {
         return null; // Country not selected
     }
     
-    // Get shipping rates for the country, or use OTHER as default
-    const countryRates = SHIPPING_RATES[countryCode] || SHIPPING_RATES['OTHER'];
+    const countryInfo = getCountryInfo(countryCode);
+    if (!countryInfo) {
+        return null;
+    }
     
-    // Check for free shipping threshold
-    if (countryRates.freeShippingThreshold && subtotal >= countryRates.freeShippingThreshold) {
+    // Check for free shipping threshold (Australia only)
+    if (countryInfo.freeShippingThreshold && subtotal >= countryInfo.freeShippingThreshold) {
         return 0;
     }
     
@@ -113,7 +104,7 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     let totalWeightGrams = 0;
     if (cartItems && Array.isArray(cartItems)) {
         cartItems.forEach(item => {
-            const itemWeight = item.weight || 0; // Weight in grams per unit
+            const itemWeight = parseFloat(item.weight || 0); // Weight in grams per unit
             const quantity = parseInt(item.quantity || 1);
             totalWeightGrams += itemWeight * quantity;
         });
@@ -125,40 +116,81 @@ function calculateShipping(countryCode, cartItems, subtotal) {
         totalWeightGrams = totalQuantity * 100; // Fallback estimate
     }
     
-    // Determine package size based on actual total weight
-    const packageSize = getPackageSize(totalWeightGrams);
+    // Get weight range
+    const weightRange = getWeightRange(totalWeightGrams);
+    const zone = countryInfo.zone;
+    const color = countryInfo.color;
     
-    // Get the shipping cost for this package size
-    const packageRate = countryRates.rates[packageSize];
-    if (packageRate) {
-        return packageRate.cost;
+    // Get shipping cost based on color and zone
+    let shippingCost = null;
+    
+    if (color === 'GREEN') {
+        // Australia - use GREEN rates
+        const rates = GREEN_RATES[weightRange];
+        if (rates) {
+            shippingCost = rates[`zone${zone}`] || rates.zone1;
+        }
+    } else if (color === 'BLUE') {
+        // Key International Destinations - use BLUE rates
+        const rates = BLUE_RATES[weightRange];
+        if (rates) {
+            shippingCost = rates[`zone${zone}`] || rates.zone3;
+        }
+    } else if (color === 'YELLOW') {
+        // Other International Destinations - use YELLOW rates
+        const rates = YELLOW_RATES[weightRange];
+        if (rates) {
+            // Map zone to YELLOW structure
+            if (zone === 2) {
+                shippingCost = rates.zone2;
+            } else if (zone === 4) {
+                shippingCost = rates.zone4;
+            } else {
+                shippingCost = rates.zone5; // Default to Zone 5
+            }
+        }
     }
     
-    // Fallback to Extra Large if no match
-    return countryRates.rates['Extra Large'].cost;
+    // Fallback if no match found
+    if (shippingCost === null) {
+        console.warn(`No shipping rate found for country ${countryCode}, zone ${zone}, color ${color}, weight ${totalWeightGrams}g`);
+        // Use highest tier as fallback
+        if (color === 'GREEN') {
+            shippingCost = GREEN_RATES['1.501kg-2kg'].zone3;
+        } else if (color === 'BLUE') {
+            shippingCost = BLUE_RATES['1.501kg-2kg'].zone4;
+        } else {
+            shippingCost = YELLOW_RATES['1.501kg-2kg'].zone5;
+        }
+    }
+    
+    return shippingCost;
 }
 
 // Get country name
 function getCountryName(countryCode) {
     if (!countryCode) return '';
-    const country = SHIPPING_RATES[countryCode] || SHIPPING_RATES['OTHER'];
-    return country.name;
+    const countryInfo = getCountryInfo(countryCode);
+    if (countryInfo) {
+        // Return a readable name based on code
+        const names = {
+            'AU': 'Australia',
+            'NZ': 'New Zealand',
+            'US': 'United States',
+            'CA': 'Canada',
+            'GB': 'United Kingdom',
+            'IE': 'Ireland',
+            'CN': 'China'
+        };
+        return names[countryCode.toUpperCase()] || 'Other Countries';
+    }
+    return 'Other Countries';
 }
 
 // Export for use in other scripts
 window.ShippingRates = {
     calculate: calculateShipping,
     getCountryName: getCountryName,
-    rates: SHIPPING_RATES,
-    getPackageSize: getPackageSize,
-    // Keep old function for backward compatibility
-    calculateOld: function(countryCode, totalQuantity, subtotal) {
-        const estimatedWeight = totalQuantity * 100;
-        const packageSize = getPackageSize(estimatedWeight);
-        const countryRates = SHIPPING_RATES[countryCode] || SHIPPING_RATES['OTHER'];
-        if (countryRates.freeShippingThreshold && subtotal >= countryRates.freeShippingThreshold) {
-            return 0;
-        }
-        return countryRates.rates[packageSize]?.cost || countryRates.rates['Extra Large'].cost;
-    }
+    getWeightRange: getWeightRange,
+    getCountryInfo: getCountryInfo
 };
