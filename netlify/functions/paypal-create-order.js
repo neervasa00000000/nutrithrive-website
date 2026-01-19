@@ -68,12 +68,6 @@ export async function handler(event) {
             },
             body: JSON.stringify({
                 intent: "CAPTURE",
-                application_context: {
-                    brand_name: "NutriThrive",
-                    landing_page: "NO_PREFERENCE",
-                    user_action: "PAY_NOW",
-                    shipping_preference: "GET_FROM_FILE"
-                },
                 purchase_units: [{
                     amount: {
                         currency_code: "AUD",

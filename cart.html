@@ -292,8 +292,8 @@
         </div>
     </div>
     
-    <!-- PayPal SDK - commit=false keeps checkout inline without redirect -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&intent=capture&commit=false&disable-funding=credit,card"></script>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD"></script>
     <script src="/shared/js/cart.js"></script>
     <script src="/shared/js/cart-header.js"></script>
     <script src="/shared/js/shipping-rates.js"></script>
@@ -424,14 +424,6 @@
             
             try {
                 paypal.Buttons({
-                    style: {
-                        layout: 'vertical',
-                        color: 'gold',
-                        shape: 'rect',
-                        label: 'paypal'
-                    },
-                    // Prevent redirect - keep checkout inline
-                    commit: false,
                     createOrder: async () => {
                         // Create order with subtotal only, shipping will be added via onShippingChange
                         console.log("Creating PayPal order for amount:", subtotal);
@@ -477,40 +469,35 @@
                             cartData.subtotal
                         );
                         
-                        if (shipping === null || shipping === undefined) {
-                            console.error("Could not calculate shipping for country:", countryCode);
+                        if (shipping === null) {
+                            console.error("Could not calculate shipping");
                             return actions.reject();
                         }
                         
                         const newTotal = cartData.subtotal + shipping;
-                        console.log("Calculated shipping:", shipping, "New total:", newTotal, "for country:", countryCode);
+                        console.log("Calculated shipping:", shipping, "New total:", newTotal);
                         
                         // Update the order with shipping
-                        try {
-                            return await actions.order.patch([
-                                {
-                                    op: "replace",
-                                    path: "/purchase_units/@reference_id=='default'/amount",
-                                    value: {
-                                        currency_code: "AUD",
-                                        value: newTotal.toFixed(2),
-                                        breakdown: {
-                                            item_total: {
-                                                currency_code: "AUD",
-                                                value: cartData.subtotal.toFixed(2)
-                                            },
-                                            shipping: {
-                                                currency_code: "AUD",
-                                                value: shipping.toFixed(2)
-                                            }
+                        return actions.order.patch([
+                            {
+                                op: "replace",
+                                path: "/purchase_units/@reference_id=='default'/amount",
+                                value: {
+                                    currency_code: "AUD",
+                                    value: newTotal.toFixed(2),
+                                    breakdown: {
+                                        item_total: {
+                                            currency_code: "AUD",
+                                            value: cartData.subtotal.toFixed(2)
+                                        },
+                                        shipping: {
+                                            currency_code: "AUD",
+                                            value: shipping.toFixed(2)
                                         }
                                     }
                                 }
-                            ]);
-                        } catch (err) {
-                            console.error("Error updating order with shipping:", err);
-                            return actions.reject();
-                        }
+                            }
+                        ]);
                     },
                     onApprove: async (data, actions) => {
                         const orderID = data.orderID || data.id;
