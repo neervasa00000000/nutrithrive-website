@@ -30,8 +30,10 @@
         
         cartLink.innerHTML = `
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
-                <!-- Simple shopping cart -->
-                <path d="M3 3h2l.4 2M7 13h11l-4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" style="fill: none;"></path>
+                <!-- Simple basket -->
+                <path d="M5 8h14l-1 12H6L5 8z" style="fill: none;"></path>
+                <path d="M5 8l-1-4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 4" style="fill: none;"></path>
+                <path d="M9 6c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2" style="fill: none;"></path>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
