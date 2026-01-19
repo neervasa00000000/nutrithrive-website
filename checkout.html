@@ -265,13 +265,24 @@
                         <div class="payment-box" id="paypal-box" style="flex: 1; min-width: 150px; padding: 1.5rem; border: 3px solid #1a2e22; border-radius: 8px; background: white; cursor: pointer; text-align: center; font-weight: 600; color: #1a2e22; transition: all 0.2s ease;" onclick="selectPaymentMethod('paypal')">
                             PayPal
                         </div>
-                        <div class="payment-box" id="country-box" style="flex: 1; min-width: 150px; padding: 1.5rem; border: 3px solid #1a2e22; border-radius: 8px; background: white; cursor: pointer; text-align: center; font-weight: 600; color: #1a2e22; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;" onclick="document.getElementById('checkout-shipping-country').focus()">
+                        <div class="payment-box" id="country-box" style="flex: 1; min-width: 150px; padding: 1.5rem; border: 3px solid #1a2e22; border-radius: 8px; background: white; cursor: pointer; text-align: center; font-weight: 600; color: #1a2e22; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;" onclick="toggleCountrySelector()">
                             <div>CHOOSE</div>
                             <div>COUNTRY</div>
                         </div>
                         <div class="payment-box" id="card-box" style="flex: 1; min-width: 150px; padding: 1.5rem; border: 3px solid #1a2e22; border-radius: 8px; background: white; cursor: pointer; text-align: center; font-weight: 600; color: #1a2e22; transition: all 0.2s ease;" onclick="selectPaymentMethod('card')">
                             Card
                         </div>
+                    </div>
+                    <div id="country-selector-container" style="display: none; margin-bottom: 2rem;">
+                        <select id="checkout-shipping-country" style="width: 100%; padding: 1rem; border: 3px solid #1a2e22; border-radius: 8px; font-size: 1rem; background: white; cursor: pointer; font-weight: 600;" onchange="updateCheckoutShipping()">
+                            <option value="">Select your country</option>
+                            <option value="AU">Australia</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="US">United States</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="CA">Canada</option>
+                            <option value="OTHER">Other Countries</option>
+                        </select>
                     </div>
                     <div id="paypal-button-container"></div>
                 </div>
@@ -299,6 +310,27 @@
                 localStorage.setItem('nutrithrive_shipping_country', countryCode);
             } else {
                 localStorage.removeItem('nutrithrive_shipping_country');
+            }
+        }
+        
+        // Toggle country selector
+        function toggleCountrySelector() {
+            const container = document.getElementById('country-selector-container');
+            if (container) {
+                const isVisible = container.style.display !== 'none';
+                container.style.display = isVisible ? 'none' : 'block';
+                
+                // Highlight country box
+                const countryBox = document.getElementById('country-box');
+                if (countryBox) {
+                    if (!isVisible) {
+                        countryBox.style.background = '#f0f0f0';
+                        countryBox.style.borderColor = '#2d5a3d';
+                    } else {
+                        countryBox.style.background = 'white';
+                        countryBox.style.borderColor = '#1a2e22';
+                    }
+                }
             }
         }
         
@@ -338,6 +370,11 @@
                 if (countryBox) {
                     countryBox.style.background = '#f0f0f0';
                     countryBox.style.borderColor = '#2d5a3d';
+                }
+                // Hide selector after selection
+                const container = document.getElementById('country-selector-container');
+                if (container) {
+                    container.style.display = 'none';
                 }
             }
             
@@ -544,10 +581,28 @@
             document.addEventListener('DOMContentLoaded', function() {
                 loadSavedCountry();
                 renderOrderSummary();
+                // Highlight country box if country is already selected
+                const countrySelect = document.getElementById('checkout-shipping-country');
+                if (countrySelect && countrySelect.value) {
+                    const countryBox = document.getElementById('country-box');
+                    if (countryBox) {
+                        countryBox.style.background = '#f0f0f0';
+                        countryBox.style.borderColor = '#2d5a3d';
+                    }
+                }
             });
         } else {
             loadSavedCountry();
             renderOrderSummary();
+            // Highlight country box if country is already selected
+            const countrySelect = document.getElementById('checkout-shipping-country');
+            if (countrySelect && countrySelect.value) {
+                const countryBox = document.getElementById('country-box');
+                if (countryBox) {
+                    countryBox.style.background = '#f0f0f0';
+                    countryBox.style.borderColor = '#2d5a3d';
+                }
+            }
         }
         
         // Initialize PayPal when SDK is ready (SDK is loaded via script tag in head)
