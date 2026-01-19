@@ -16,6 +16,7 @@
         const cartLink = document.createElement('a');
         cartLink.href = '/cart.html';
         cartLink.className = 'cart-icon-link';
+        cartLink.setAttribute('aria-label', 'View shopping cart');
         cartLink.style.cssText = `
             position: relative;
             display: flex;
@@ -29,7 +30,7 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="display: block;">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="display: block;" aria-hidden="true">
                 <!-- Traditional woven basket -->
                 <path d="M5 9h14l-1 10H6L5 9z" fill="#1a2e22"></path>
                 <path d="M5 9l-1-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 2" fill="#1a2e22"></path>
@@ -40,7 +41,7 @@
                 <line x1="7" y1="15" x2="17" y2="15" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
                 <line x1="7" y1="18" x2="17" y2="18" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
             </svg>
-            <span class="cart-badge" data-cart-count style="
+            <span class="cart-badge" data-cart-count aria-label="items in cart" style="
                 position: absolute;
                 bottom: -4px;
                 right: -4px;
