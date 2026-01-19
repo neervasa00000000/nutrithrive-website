@@ -30,13 +30,15 @@
         
         cartLink.innerHTML = `
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="display: block;">
-                <!-- Modern shopping bag with wide opening -->
-                <path d="M5 7h14l-1.5 12H6.5L5 7z" fill="#1a2e22"></path>
-                <path d="M5 7l-1.5-4a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1L19 7" fill="#1a2e22"></path>
-                <!-- Wide arched handle -->
-                <path d="M7 4c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2" stroke="#1a2e22" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
-                <!-- Opening lines -->
-                <line x1="7" y1="7" x2="17" y2="7" stroke="#1a2e22" stroke-width="1.5" stroke-linecap="round"></line>
+                <!-- Traditional woven basket -->
+                <path d="M5 9h14l-1 10H6L5 9z" fill="#1a2e22"></path>
+                <path d="M5 9l-1-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 2" fill="#1a2e22"></path>
+                <!-- Basket handle -->
+                <path d="M8 6c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" fill="none"></path>
+                <!-- Woven pattern lines -->
+                <line x1="7" y1="12" x2="17" y2="12" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
+                <line x1="7" y1="15" x2="17" y2="15" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
+                <line x1="7" y1="18" x2="17" y2="18" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
             </svg>
             <span class="cart-badge" data-cart-count style="
                 position: absolute;
