@@ -80,10 +80,12 @@ export async function handler(event) {
         const order = await orderRes.json();
         if (!orderRes.ok) throw new Error(JSON.stringify(order));
 
+        console.log("Order created successfully:", order.id);
+
         return {
             statusCode: 200,
             headers,
-            body: JSON.stringify({ id: order.id }),
+            body: JSON.stringify({ orderID: order.id }),
         };
     } catch (err) {
         console.error("Create order error:", err);
