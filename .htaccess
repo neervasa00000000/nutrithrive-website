@@ -42,8 +42,6 @@ DirectoryIndex index.html index.htm
     RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
     
     # Fix case sensitivity for Image-Enhancer
-    RewriteRule ^crazy-ideas/Image-Enhancer/?$ /crazy-ideas/image-enhancer/ [R=301,L]
-    RewriteRule ^crazy-ideas/Image-Enhancer/(.*)$ /crazy-ideas/image-enhancer/$1 [R=301,L]
     
     # ---- Google Search Console 404 fixes (explicit legacy URL redirects) ----
     # Old /pages/blog/ slug that no longer exists (and sometimes has a stray "}" at the end)
@@ -65,9 +63,6 @@ DirectoryIndex index.html index.htm
     RewriteRule ^about-us/?$ /pages/about/about.html [R=301,L]
     RewriteRule ^reviews/?$ /products/ [R=301,L]
     RewriteRule ^recipes/high-protein-smoothies\.pdf$ /blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html [R=301,L]
-    
-    # Handle a historic typo with spaces in the URL path (usually crawled as %20)
-    RewriteRule ^crazy\ ideas/cost-per-serve/?$ /crazy-ideas/cost-per-serve/ [R=301,L]
     
     # Blog redirects - redirect ALL /pages/blog/ to /blog/ (already handled above, but keeping for fallback)
     
@@ -135,8 +130,6 @@ DirectoryIndex index.html index.htm
     RewriteRule ^blog/blog\.html\.html$ /blog/ [R=301,L]
     
     # Fix case sensitivity for Image-Enhancer
-    RewriteRule ^crazy-ideas/Image-Enhancer/?$ /crazy-ideas/image-enhancer/ [R=301,L]
-    RewriteRule ^crazy-ideas/Image-Enhancer/(.*)$ /crazy-ideas/image-enhancer/$1 [R=301,L]
     
     # Clean URL redirects for main pages (without trailing slash)
     RewriteRule ^faq/?$ /pages/faq/faq.html [R=301,L]
@@ -194,7 +187,6 @@ RedirectMatch 301 ^/moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.ht
 RedirectMatch 301 ^/about-us/?$ /pages/about/about.html
 RedirectMatch 301 ^/reviews/?$ /products/
 RedirectMatch 301 ^/recipes/high-protein-smoothies\.pdf$ /blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html
-RedirectMatch 301 ^/crazy%20ideas/cost-per-serve/?$ /crazy-ideas/cost-per-serve/
 # Blog redirects - handle URLs with .html extension first (exact match)
 RedirectMatch 301 ^/pages/blog/(.+\.html)$ /blog/$1
 # Then handle URLs without .html extension (add .html)

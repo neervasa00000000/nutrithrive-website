@@ -80,10 +80,6 @@
 /faq /pages/faq/faq.html 301
 /contact /pages/contact/contact.html 301
 
-# Fix case sensitivity for Image-Enhancer
-/crazy-ideas/Image-Enhancer/* /crazy-ideas/image-enhancer/:splat 301
-/crazy-ideas/Image-Enhancer /crazy-ideas/image-enhancer/ 301
-
 # Fix alternative pages without .html extension - Blog posts
 /blog/moringa-brands-reviewed-australia-2026-verdict /blog/moringa-brands-reviewed-australia-2026-verdict.html 301
 /blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026 /blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026.html 301
