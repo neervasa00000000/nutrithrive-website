@@ -507,33 +507,37 @@
             // Clear existing options except the first one
             countrySelect.innerHTML = '<option value="">Select your country</option>';
             
-            // Group countries by region for better UX
-            const regions = {
-                'Popular': ['AU', 'NZ', 'US', 'GB', 'CA', 'IE'],
-                'Asia & Pacific': ['CN', 'JP', 'KR', 'SG', 'MY', 'TH', 'ID', 'PH', 'VN', 'HK', 'TW', 'IN', 'PK', 'BD', 'LK', 'NP', 'FJ', 'PG', 'WS', 'TO', 'VU', 'NC', 'PF'],
-                'Europe': ['DE', 'FR', 'IT', 'ES', 'PT', 'NL', 'BE', 'AT', 'CH', 'SE', 'NO', 'DK', 'FI', 'PL', 'CZ', 'GR', 'HU', 'RO', 'BG', 'HR', 'SK', 'SI', 'LT', 'LV', 'EE', 'CY', 'MT', 'LU', 'IS'],
-                'Middle East': ['AE', 'SA', 'QA', 'KW', 'BH', 'OM', 'IL', 'TR'],
-                'Africa': ['ZA', 'EG', 'NG', 'KE', 'GH', 'MA', 'TN', 'ET', 'TZ', 'UG', 'ZW', 'MU'],
-                'Americas': ['MX', 'BR', 'AR', 'CL', 'CO', 'PE', 'VE', 'EC', 'UY', 'PY', 'BO'],
-                'Other': ['RU', 'UA']
-            };
+            // Group countries by their 'group' property
+            const groups = {};
+            countries.forEach(country => {
+                const group = country.group || 'Other';
+                if (!groups[group]) {
+                    groups[group] = [];
+                }
+                groups[group].push(country);
+            });
+            
+            // Define the order of groups
+            const groupOrder = ['Popular', 'Asia Pacific', 'Europe', 'Middle East', 'Africa', 'Americas', 'Other'];
             
             // Add countries grouped by region
-            Object.keys(regions).forEach(region => {
-                const optgroup = document.createElement('optgroup');
-                optgroup.label = region;
-                
-                regions[region].forEach(code => {
-                    const country = countries.find(c => c.code === code);
-                    if (country) {
+            groupOrder.forEach(groupName => {
+                if (groups[groupName] && groups[groupName].length > 0) {
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = groupName;
+                    
+                    // Sort countries alphabetically within each group (except Popular)
+                    const sortedCountries = groupName === 'Popular' 
+                        ? groups[groupName] 
+                        : groups[groupName].sort((a, b) => a.name.localeCompare(b.name));
+                    
+                    sortedCountries.forEach(country => {
                         const option = document.createElement('option');
                         option.value = country.code;
                         option.textContent = country.name;
                         optgroup.appendChild(option);
-                    }
-                });
-                
-                if (optgroup.children.length > 0) {
+                    });
+                    
                     countrySelect.appendChild(optgroup);
                 }
             });
