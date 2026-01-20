@@ -1179,52 +1179,9 @@
                 }
                 
                 // Get ALL cards in the section, preserving DOM order
-                const allBlogCards = Array.from(blogListSection.querySelectorAll('.blog-post-card'));
+                const blogCards = Array.from(blogListSection.querySelectorAll('.blog-post-card'));
                 console.log('=== BLOG PAGINATION INIT ===');
-                console.log('Total blog cards in DOM:', allBlogCards.length);
-                
-                // Filter out empty blog cards - preserve DOM order
-                const blogCards = [];
-                for (let i = 0; i < allBlogCards.length; i++) {
-                    const card = allBlogCards[i];
-                    
-                    // Check if card has content div
-                    const content = card.querySelector('.blog-post-card-content');
-                    if (!content) {
-                        continue;
-                    }
-                    
-                    // Check for post-title - this is the key indicator
-                    const hasTitle = content.querySelector('.post-title');
-                    if (hasTitle !== null) {
-                        blogCards.push({
-                            element: card,
-                            index: i,
-                            title: hasTitle.textContent?.trim().substring(0, 50) || 'No title'
-                        });
-                    }
-                }
-                
-                console.log('Valid blog cards after filtering:', blogCards.length);
-                console.log('Expected pages (9 per page):', Math.ceil(blogCards.length / 9));
-                
-                // Verify we have cards
-                if (blogCards.length === 0) {
-                    console.error('ERROR: No valid blog cards found!');
-                    return;
-                }
-                
-                // Log first and last cards to verify order
-                console.log('First 5 cards:');
-                for (let i = 0; i < Math.min(5, blogCards.length); i++) {
-                    console.log(`  Card ${i} (DOM index ${blogCards[i].index}): ${blogCards[i].title}`);
-                }
-                if (blogCards.length > 10) {
-                    console.log(`  ... (${blogCards.length - 10} more cards) ...`);
-                    for (let i = Math.max(0, blogCards.length - 5); i < blogCards.length; i++) {
-                        console.log(`  Card ${i} (DOM index ${blogCards[i].index}): ${blogCards[i].title}`);
-                    }
-                }
+                console.log('Total blog cards in DOM:', blogCards.length);
                 
                 const postsPerPage = 9;
                 let totalPages = Math.ceil(blogCards.length / postsPerPage);
@@ -1237,119 +1194,22 @@
                 console.log('Posts per page:', postsPerPage);
                 console.log('Blog cards array length:', blogCards.length);
 
-                // Hide all blog cards initially (including empty ones)
-                function hideAllCards() {
-                    allBlogCards.forEach(card => {
-                        card.style.display = 'none';
-                    });
-                }
-
                 // Show cards for current page
                 function showCurrentPageCards() {
-                    // Recalculate total pages based on actual filtered cards
-                    const actualTotalPages = Math.ceil(blogCards.length / postsPerPage);
-                    totalPages = actualTotalPages;
-                    
-                    // Ensure currentPage is within valid range
-                    if (currentPage > totalPages) {
-                        currentPage = totalPages;
-                    }
-                    if (currentPage < 1) {
-                        currentPage = 1;
-                    }
-                    
-                    // Calculate indices starting from 0
+                    // Calculate indices
                     const startIndex = (currentPage - 1) * postsPerPage;
                     const endIndex = Math.min(startIndex + postsPerPage, blogCards.length);
                     
-                    console.log(`=== PAGE ${currentPage} ===`);
-                    console.log(`Total cards: ${blogCards.length}, Total pages: ${totalPages}`);
-                    console.log(`Showing cards from index ${startIndex} to ${endIndex - 1} (inclusive)`);
-                    console.log(`Expected cards on this page: ${endIndex - startIndex}`);
+                    console.log(`Page ${currentPage}: showing cards ${startIndex} to ${endIndex - 1}`);
                     
-                    // First hide ALL cards (including empty ones)
-                    hideAllCards();
-                    
-                    // Then show only the cards for current page from the filtered array
-                    let shownCount = 0;
-                    let hiddenCount = 0;
-                    
-                    console.log(`Processing ${blogCards.length} cards, showing array indices ${startIndex} to ${endIndex - 1}`);
-                    
-                    // Verify blogCards array integrity
-                    if (blogCards.length < endIndex) {
-                        console.error(`ERROR: blogCards array only has ${blogCards.length} items, but trying to access up to index ${endIndex - 1}`);
-                    }
-                    
-                    // Process all cards
-                    for (let i = 0; i < blogCards.length; i++) {
-                        const cardData = blogCards[i];
-                        const card = cardData.element;
-                        
-                        if (!card) {
-                            console.error(`Card at array index ${i} is null!`);
-                            continue;
-                        }
-                        
-                        if (!card.parentNode) {
-                            console.error(`Card at array index ${i} (DOM index ${cardData.index}) has no parent node!`);
-                            continue;
-                        }
-                        
-                        // Show card if it's in the current page range
+                    // Show/hide cards based on current page
+                    blogCards.forEach((card, i) => {
                         if (i >= startIndex && i < endIndex) {
-                            // IMPORTANT: Remove ALL inline styles first to clear any previous settings
-                            card.removeAttribute('style');
-                            
-                            // Remove hiding classes
-                            card.classList.remove('hidden', 'd-none', 'hide');
-                            
-                            shownCount++;
-                            
-                            // Log which card we're showing
-                            console.log(`  ✓ Showing card ${i} (DOM ${cardData.index}): ${cardData.title}`);
+                            card.style.display = '';  // Remove inline display to show card
                         } else {
-                            // Hide cards not on current page
-                            card.style.display = 'none';
-                            hiddenCount++;
+                            card.style.display = 'none';  // Hide card
                         }
-                    }
-                    
-                    console.log(`Result: Shown ${shownCount} cards, Hidden ${hiddenCount} cards`);
-                    
-                    // Double-check: verify cards are actually visible after a delay
-                    setTimeout(() => {
-                        let actuallyVisible = 0;
-                        let stillHidden = [];
-                        for (let i = startIndex; i < endIndex && i < blogCards.length; i++) {
-                            const cardData = blogCards[i];
-                            const card = cardData.element;
-                            if (card) {
-                                const style = window.getComputedStyle(card);
-                                if (style.display !== 'none' && style.visibility !== 'hidden') {
-                                    actuallyVisible++;
-                                } else {
-                                    stillHidden.push(i);
-                                    console.error(`Card ${i} (${cardData.title}) is still hidden! Display: ${style.display}, Visibility: ${style.visibility}`);
-                                    // Remove inline styles to let CSS take over
-                                    card.removeAttribute('style');
-                                }
-                            }
-                        }
-                        console.log(`Verification: ${actuallyVisible} cards actually visible (expected: ${shownCount})`);
-                        if (stillHidden.length > 0) {
-                            console.error(`Cards still hidden: ${stillHidden.join(', ')}`);
-                        }
-                    }, 100);
-                    
-                    console.log(`Result: Shown ${shownCount} cards, Hidden ${hiddenCount} cards`);
-                    
-                    // If no cards shown, log detailed warning
-                    if (shownCount === 0) {
-                        console.error(`ERROR: Page ${currentPage} has no cards!`);
-                        console.error(`Total cards: ${blogCards.length}, Start: ${startIndex}, End: ${endIndex}`);
-                        console.error(`Cards in range:`, blogCards.slice(startIndex, endIndex));
-                    }
+                    });
                 }
 
                 // Create pagination numbers
@@ -1495,7 +1355,7 @@
                     // Show all cards if no pagination needed
                     if (blogCards.length > 0) {
                         blogCards.forEach(card => {
-                            card.style.display = 'block';
+                            card.style.display = '';  // Let CSS control display
                         });
                     }
                 }
