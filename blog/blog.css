@@ -1980,23 +1980,29 @@ footer {
 }
 
 .blog-list-section {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     border-top: 1px solid #e0e0e0;
     padding-top: 2.5rem;
-    max-width: 100%;
+    max-width: 1200px;
     width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
     .blog-list-section {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-list-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 }
 
@@ -2006,7 +2012,7 @@ footer {
     box-shadow: var(--shadow);
     padding: 2rem;
     transition: all var(--transition);
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -2246,17 +2252,6 @@ footer {
     .blog-hero-desc {
         font-size: 1rem;
         line-height: 1.6;
-    }
-    
-    .blog-list-section {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-        padding: 1rem 0 !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        border-top: 1px solid #e0e0e0;
-        padding-top: 2rem !important;
     }
     
     .blog-list-section .blog-post-card {
