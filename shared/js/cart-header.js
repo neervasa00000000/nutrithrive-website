@@ -30,16 +30,13 @@
         `;
         
         cartLink.innerHTML = `
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="display: block;" aria-hidden="true">
-                <!-- Traditional woven basket -->
-                <path d="M5 9h14l-1 10H6L5 9z" fill="#1a2e22"></path>
-                <path d="M5 9l-1-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1l-1 2" fill="#1a2e22"></path>
-                <!-- Basket handle -->
-                <path d="M8 6c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2" stroke="#1a2e22" stroke-width="2" stroke-linecap="round" fill="none"></path>
-                <!-- Woven pattern lines -->
-                <line x1="7" y1="12" x2="17" y2="12" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
-                <line x1="7" y1="15" x2="17" y2="15" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
-                <line x1="7" y1="18" x2="17" y2="18" stroke="#1a2e22" stroke-width="1" opacity="0.4"></line>
+            <svg width="30" height="30" viewBox="0 0 25 25" fill="none" style="display: block;" aria-hidden="true">
+                <path d="M8.5 10.5H5L6.5 19.5H18.5L20 10.5H16.5M8.5 10.5L10.2721 5.18377C10.4082 4.77543 10.7903 4.5 11.2208 4.5H13.7792C14.2097 4.5 14.5918 4.77543 14.7279 5.18377L16.5 10.5M8.5 10.5H16.5" stroke="#1a2e22" stroke-width="1.5"/>
+                <path d="M12.5 10.5V19.5" stroke="#1a2e22" stroke-width="1.5"/>
+                <path d="M9.5 19.5L8.5 10.5" stroke="#1a2e22" stroke-width="1.5"/>
+                <path d="M15.5 19.5L16.5 10.5" stroke="#1a2e22" stroke-width="1.5"/>
+                <path d="M19.5 13.5H5.5" stroke="#1a2e22" stroke-width="1.5"/>
+                <path d="M19 16.5H6" stroke="#1a2e22" stroke-width="1.5"/>
             </svg>
             <span class="cart-badge" data-cart-count aria-label="items in cart" style="
                 position: absolute;
