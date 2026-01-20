@@ -1980,9 +1980,9 @@ footer {
 }
 
 .blog-list-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
     border-top: 1px solid #e0e0e0;
     padding-top: 2.5rem;
     max-width: 1200px;
@@ -1995,14 +1995,14 @@ footer {
 
 @media (max-width: 1024px) {
     .blog-list-section {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 
 @media (max-width: 768px) {
     .blog-list-section {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
     }
 }
 
