@@ -376,7 +376,7 @@
                     <p class="product-name">Nutri Thrive Black Tea</p>
                     <p class="product-details">$10 <strong>&bull;</strong> <span class="in-stock">In Stock</span> <strong>&bull;</strong> <span aria-label="rating">&#11088;&#11088;&#11088;&#11088;&#11088;</span> <strong>4.9</strong> (<strong>150+ reviews</strong>)</p>
                     <p>Australia delivery: Sydney/NSW, Melbourne, QLD + <strong>worldwide shipping</strong></p>
-                    <a href="https://nutrithrive.com.au/products/product-black-tea.html" class="shop-btn">Shop Nutri Thrive Black Tea</a>
+                    <div id="paypal-container-top" style="margin-top: 15px;"></div>
                 </div>
 
                 <!-- Internal Links -->
@@ -592,7 +592,7 @@
                     <p class="product-name">Nutri Thrive Black Tea</p>
                     <p class="product-details">$10 &bull; <strong class="in-stock">In Stock</strong> &bull; &#11088;&#11088;&#11088;&#11088;&#11088; <strong>4.9</strong> (150+ reviews)</p>
                     <p>Australia shipping (Sydney/NSW, Melbourne, QLD) + worldwide delivery</p>
-                    <a href="https://nutrithrive.com.au/products/product-black-tea.html" class="shop-btn">Buy Nutri Thrive Black Tea</a>
+                    <div id="paypal-container-bottom" style="margin-top: 15px;"></div>
                 </div>
 
                 <hr>
@@ -863,5 +863,49 @@
     <script src="../shared/js/cart-header.js"></script>
     <script src="../shared/js/script.js" defer></script>
     <script src="../shared/js/newsletter.js" defer></script>
+    
+    <!-- PayPal SDK for direct checkout -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture"></script>
+    <script>
+      // Suppress PayPal SDK console errors
+      const originalError = console.error;
+      console.error = function(...args) {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('ncps_standalone_paylater_ineligible')) {
+          return;
+        }
+        originalError.apply(console, args);
+      };
+
+      // Initialize PayPal buttons
+      function initPayPalButtons() {
+        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
+          try {
+            // Render button at top
+            paypal.HostedButtons({
+              hostedButtonId: "AMDLXGV7HCKXW",
+            }).render("#paypal-container-top").catch(function(err) {
+              console.warn('PayPal top button rendering issue:', err);
+            });
+            
+            // Render button at bottom
+            paypal.HostedButtons({
+              hostedButtonId: "AMDLXGV7HCKXW",
+            }).render("#paypal-container-bottom").catch(function(err) {
+              console.warn('PayPal bottom button rendering issue:', err);
+            });
+          } catch (err) {
+            console.warn('PayPal initialization error:', err);
+          }
+        } else {
+          setTimeout(initPayPalButtons, 100);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPayPalButtons);
+      } else {
+        initPayPalButtons();
+      }
+    </script>
 </body>
 </html>
