@@ -74,7 +74,10 @@
 /pages/homepage/* /:splat 301
 /pages/homepage / 301
 
-# Clean URL rewrites removed - files now organized in pages/ subdirectories
+# Clean URL rewrites for main pages (serve content without changing URL)
+/about /about 200
+/contact /contact 200
+/faq /faq 200
 
 # Fix alternative pages without .html extension - Blog posts
 /blog/moringa-brands-reviewed-australia-2026-verdict /blog/moringa-brands-reviewed-australia-2026-verdict.html 301
