@@ -75,9 +75,9 @@
 /pages/homepage / 301
 
 # Clean URL redirects for main pages
-/contact /contact.html 200
-/faq /faq.html 200
-/about /about.html 200
+/contact /pages/contact/contact.html 301
+/faq /pages/faq/faq.html 301
+/about /pages/about/about.html 301
 
 # Fix alternative pages without .html extension - Blog posts
 /blog/moringa-brands-reviewed-australia-2026-verdict /blog/moringa-brands-reviewed-australia-2026-verdict.html 301
