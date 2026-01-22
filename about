@@ -44,7 +44,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://nutrithrive.com.au/about/about.html">
+    <link rel="canonical" href="https://nutrithrive.com.au/about">
     <title>About NutriThrive Australia | Superfoods</title>
     <meta name="description" content="Learn about NutriThrive Australia - premium moringa powder company based in Truganina, Melbourne. Our mission, quality commitment, and journey bringing the best superfoods to Melbourne, Sydney, and across Australia.">
     <meta name="keywords" content="about NutriThrive Australia, moringa powder company Australia, superfoods company, premium moringa powder Melbourne, health supplements Australia, Truganina Melbourne, Sydney superfoods, Victoria health products, best protein powder Australia, moringa brands comparison Australia 2026">
@@ -52,7 +52,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nutrithrive.com.au/about/about.html">
+    <meta property="og:url" content="https://nutrithrive.com.au/about">
     <meta property="og:title" content="About NutriThrive Australia | Superfoods">
     <meta property="og:description" content="Learn about NutriThrive Australia - premium moringa powder company based in Truganina, Melbourne. Our mission, quality commitment, and journey bringing the best superfoods to Melbourne, Sydney, and across Australia.">
     <meta property="og:image" content="https://nutrithrive.com.au/shared/images/Logo/LOGO.webp">
@@ -63,7 +63,7 @@
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://nutrithrive.com.au/about/about.html">
+    <meta property="twitter:url" content="https://nutrithrive.com.au/about">
     <meta property="twitter:title" content="About NutriThrive Australia | Superfoods">
     <meta property="twitter:description" content="Learn about NutriThrive Australia - premium moringa powder company based in Truganina, Melbourne. Our mission, quality commitment, and journey bringing the best superfoods to Melbourne, Sydney, and across Australia.">
     <meta property="twitter:image" content="https://nutrithrive.com.au/shared/images/Logo/LOGO.webp">
@@ -79,8 +79,8 @@
     <link rel="shortcut icon" href="/shared/images/Logo%20/LOGO.webp">
     <meta name="msapplication-TileImage" content="/shared/images/Logo%20/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
-    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/about/about.html">
-    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/about/about.html">
+    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/about">
+    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/about">
 </head>
 <body>
     <header>
@@ -92,8 +92,8 @@
             <nav class="nav-links">
                 <a href="/">Home</a>
                 <a href="/products/">Products</a>
-                <a href="/about/about.html" class="active">About</a>
-                <a href="/contact/contact.html">Contact</a>
+                <a href="/about" class="active">About</a>
+                <a href="/contact">Contact</a>
                 <a href="/blog/">Blog</a>
             </nav>
             <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
@@ -187,21 +187,30 @@
 
     </main>
 
-    <footer>
+        <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>About NutriThrive</h3>
                 <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Shopping</h3>
                 <ul class="footer-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/products/">Products</a></li>
-                    <li><a href="/about/about.html">About</a></li>
-                    <li><a href="/contact/contact.html">Contact</a></li>
-                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li><a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a></li>
                 </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help &amp; Info</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/pages/usage-guide/how-to-use-moringa.html">Usage &amp; Benefits</a></li>                </ul>
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
@@ -213,15 +222,16 @@
             <div class="footer-section">
                 <h3>Business Info</h3>
                 <ul class="footer-links">
-                    <li>Based in Truganina, Melbourne, Victoria</li>
-                    <li>Serving Melbourne, Sydney & All of Australia</li>
+                    <li>Based in Truganina, Melbourne, VIC (Australia)<br>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br>Worldwide Shipping Available 🌍</li>
                     <li>Monday - Sunday</li>
                     <li>9:00 AM - 11:00 PM</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 NutriThrive. All rights reserved.</p>
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 NutriThrive. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

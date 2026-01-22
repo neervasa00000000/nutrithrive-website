@@ -54,7 +54,6 @@
 /blog/iron-deficiency-complete-guide-australia-2026 /blog/iron-deficiency-complete-guide-australia-2026.html 301
 /blog/high-protein-snacks-australia-25-options-under-150-calories-2026 /blog/high-protein-snacks-australia-25-options-under-150-calories-2026.html 301
 /blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide /blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html 301
-/blog/moringa-chemist-warehouse-freshness-truth /blog/moringa-chemist-warehouse-freshness-truth.html 301
 /blog/dried-curry-leaves-cooking-tips-melbourne /blog/dried-curry-leaves-cooking-tips-melbourne.html 301
 
 # Fix URLs without .html extension - Product Pages
@@ -75,10 +74,7 @@
 /pages/homepage/* /:splat 301
 /pages/homepage / 301
 
-# Clean URL redirects for main pages
-/about /pages/about/about.html 301
-/faq /pages/faq/faq.html 301
-/contact /pages/contact/contact.html 301
+# Clean URL redirects for main pages - REMOVED: files now exist directly at these URLs
 
 # Fix alternative pages without .html extension - Blog posts
 /blog/moringa-brands-reviewed-australia-2026-verdict /blog/moringa-brands-reviewed-australia-2026-verdict.html 301
@@ -92,11 +88,11 @@
 /product-detail.html /products/product-detail.html 301
 /product-black-tea.html /products/product-black-tea.html 301
 /product-curry-leaves.html /products/product-curry-leaves.html 301
-/about.html /pages/about/about.html 301
+# /about.html /pages/about/about.html 301 - REMOVED: not needed
 /blog.html /blog/ 301
 /thank-you.html /pages/contact/thank-you.html 301
 /how-to-use-moringa.html /pages/usage-guide/how-to-use-moringa.html 301
-/contact.html /pages/contact/contact.html 301
+# /contact.html /pages/contact/contact.html 301 - REMOVED: not needed
 /moringa-benefits.html /pages/usage-guide/how-to-use-moringa.html 301
 /products.html /products/ 301
 /pages/blog/moringa-benefits-australia-2026 /blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html 301
@@ -104,8 +100,7 @@
 /pages/blog/moringa-vs-matcha-australia-2026 /blog/moringa-vs-matcha-energy-metabolism-2026.html 301
 /pages/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026 /blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026.html 301
 
-# Fix /pages/contact/contact (without .html)
-/pages/contact/contact /pages/contact/contact.html 301
+# Fix /pages/contact/contact (without .html) - REMOVED: not needed
 
 # Fix /pages/products/product-detail (without .html) - REMOVED
 #/pages/products/product-detail /products/ 301
@@ -153,8 +148,8 @@
 # Fix additional 404 errors
 /blog/how-to-stop-chrome-from-using-all-your-ram-2025.html /blog/best-superfoods-australia-comparison-health-conscious-adults.html 301
 /homepage/index.html / 301
-/contact/contact.css /pages/contact/contact.css 301
-/contact/contact.js /pages/contact/contact.js 301
+# /contact/contact.css /pages/contact/contact.css 301 - REMOVED: not needed
+# /contact/contact.js /pages/contact/contact.js 301 - REMOVED: not needed
 /pages/blog/blog.css /blog/blog.css 301
 
 # Fix URLs without .html extension for 2026 blog posts

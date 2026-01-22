@@ -141,11 +141,6 @@ DirectoryIndex index.html index.htm
     
     # Fix case sensitivity for Image-Enhancer
     
-    # Clean URL redirects for main pages (without trailing slash)
-    RewriteRule ^faq/?$ /pages/faq/faq.html [R=301,L]
-    RewriteRule ^contact/?$ /pages/contact/contact.html [R=301,L]
-    RewriteRule ^about/?$ /pages/about/about.html [R=301,L]
-    
     # Fix double .html.html extensions (Google Search Console errors)
     RewriteRule ^(.+)\.html\.html$ /$1.html [R=301,L]
     
