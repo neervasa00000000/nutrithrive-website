@@ -466,20 +466,16 @@
             margin-bottom: 2rem;
         }
 
-        /* Content sections full width */
+        /* Content sections full width - edge to edge */
         .content-section {
             width: 100vw;
             max-width: 100%;
-            padding: 5rem 2rem;
+            padding: 5rem 0;
             margin: 0;
         }
 
-        /* Alternating background colors for sections */
-        .content-section:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .content-section:nth-child(odd) {
+        /* Single background color for all sections */
+        .content-section {
             background: white;
         }
 
@@ -518,47 +514,6 @@
             background: #f6fbf8;
         }
 
-        /* Highlight boxes */
-        .highlight-box {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border: 2px solid #16a34a;
-            border-radius: 16px;
-            padding: 3rem;
-            margin: 3rem 0;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(22, 163, 74, 0.1);
-        }
-
-        .highlight-box h3 {
-            color: #166534;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .highlight-box p {
-            font-size: 1.2rem;
-            color: #15803d;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .highlight-box .cta-button {
-            background: #16a34a;
-            color: white;
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .highlight-box .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(22, 163, 74, 0.3);
-        }
 
         /* Section headers */
         .section-header {
@@ -582,35 +537,6 @@
             margin: 0 auto;
         }
 
-        /* Statistics boxes */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .stat-box {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            text-align: center;
-            border: 1px solid #e0e0e0;
-        }
-
-        .stat-box .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #2d5a3d;
-            margin-bottom: 1rem;
-        }
-
-        .stat-box .stat-label {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.5;
-        }
 
         /* Product showcase */
         .product-showcase {
@@ -633,33 +559,6 @@
             line-height: 1.6;
         }
 
-        .product-card {
-            background: white;
-            color: #333;
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-            margin: 2rem 0;
-        }
-
-        .product-card h3 {
-            color: #2d5a3d;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .product-card .price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #16a34a;
-            margin-bottom: 1.5rem;
-        }
 
         /* Related articles */
         .related-articles {
@@ -827,17 +726,17 @@
 
             <!-- Introduction Section -->
             <section class="content-section">
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
                     <h2>1. Executive Introduction: The Culinary and Safety Imperative</h2>
 
                     <p>The contemporary United States culinary landscape is witnessing a profound transformation, characterized by a rapid diversification of the pantry and an increasing consumer demand for authentic, regional global flavors. Within this expanding gastronomic horizon, the curry leaf (<em>Murraya koenigii</em>)—an indispensable aromatic herb native to the Indian subcontinent—has emerged from the niche aisles of ethnic grocery stores to capture the attention of mainstream epicureans, health-conscious home cooks, and professional chefs alike. However, the integration of this unique ingredient into the American supply chain is fraught with significant challenges, ranging from the volatility of its essential oils during preservation to serious, industry-wide concerns regarding food safety standards in the imported spice sector.</p>
 
                     <p>This comprehensive report provides an exhaustive analysis of the dried curry leaf market in the United States. It is designed to serve as a definitive resource for understanding the competitive dynamics between established market incumbents ("Other Brands") and the market entrant, Nutri Thrive. The analysis is anchored in a rigorous evaluation of Nutri Thrive's value proposition: a laboratory-tested, premium dried product priced at $7.00 for 30g, with a free shipping threshold of $80.00. This proposition is weighed against a backdrop of supply chain opacity, widely fluctuating price-per-ounce metrics among competitors, and a critical "aroma gap" that has historically plagued the dried curry leaf category.</p>
 
-                    <div class="highlight-box">
-                        <h3>🌿 The Nutri Thrive Advantage</h3>
-                        <p>Laboratory-tested premium dried curry leaves at $7.00 for 30g, with free shipping over $80.00</p>
-                        <a href="../products/product-curry-leaves.html" class="cta-button">Shop Now</a>
+                    <div style="text-align: center; margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, #2d5a3d 0%, #1a3a28 100%); border-radius: 16px; color: white;">
+                        <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">🌿 The Nutri Thrive Advantage</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Laboratory-tested premium dried curry leaves at $7.00 for 30g, with free shipping over $80.00</p>
+                        <a href="../products/product-curry-leaves.html" style="background: white; color: #2d5a3d; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.2rem; display: inline-block; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0px)'">Shop Now</a>
                     </div>
 
                     <p>Furthermore, this report delves deeply into the regulatory and safety dimensions of the spice trade. With the U.S. Food and Drug Administration (FDA) maintaining strict scrutiny over imported spices due to the prevalence of biological pathogens like Salmonella and chemical contaminants such as heavy metals, the role of third-party laboratory testing has transitioned from a value-added differentiator to a fundamental necessity for consumer trust. Through a synthesis of market data, scientific literature on botanical preservation, and consumer sentiment analysis, this report delineates the pathway for Nutri Thrive to disrupt the current market hierarchy by addressing the twin pillars of uncompromising safety and culinary authenticity.</p>
@@ -846,30 +745,29 @@
 
             <!-- Botanical Profile Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>2. Botanical Profile and Culinary Significance of Murraya koenigii</h2>
-                    <div class="subtitle">Understanding the unique chemistry and cultural importance of curry leaves</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>2. Botanical Profile and Culinary Significance of Murraya koenigii</h2>
+                        <div class="subtitle">Understanding the unique chemistry and cultural importance of curry leaves</div>
+                    </div>
                     <h3>2.1 Botanical Origins and Characteristics</h3>
 
                     <p>The curry leaf tree belongs to the family Rutaceae, a taxonomic classification it shares with citrus fruits like lemon, lime, and orange. This familial link is not merely academic; it is the key to understanding the herb's flavor. Fresh curry leaves possess a complex aromatic profile that is often described as a convergence of citrus zest, lemongrass, asafoetida, and anise, with a distinct nutty undertone when roasted.</p>
 
                     <p>The plant is indigenous to India and Sri Lanka, where it grows wild in the foothills of the Himalayas and is cultivated extensively across the tropical south.</p>
 
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Years of culinary use in Indian cuisine</div>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; margin: 3rem 0; text-align: center;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="font-size: 3rem; font-weight: 800; color: #2d5a3d; margin-bottom: 1rem;">500+</div>
+                            <div style="font-size: 1.1rem; color: #666; line-height: 1.5;">Years of culinary use in Indian cuisine</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-number">3-7</div>
-                            <div class="stat-label">Days shelf life for fresh leaves</div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="font-size: 3rem; font-weight: 800; color: #2d5a3d; margin-bottom: 1rem;">3-7</div>
+                            <div style="font-size: 1.1rem; color: #666; line-height: 1.5;">Days shelf life for fresh leaves</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-number">6-12</div>
-                            <div class="stat-label">Months shelf life when properly dried</div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="font-size: 3rem; font-weight: 800; color: #2d5a3d; margin-bottom: 1rem;">6-12</div>
+                            <div style="font-size: 1.1rem; color: #666; line-height: 1.5;">Months shelf life when properly dried</div>
                         </div>
                     </div>
 
@@ -895,12 +793,11 @@
 
             <!-- Market Landscape Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>3. The United States Market Landscape</h2>
-                    <div class="subtitle">Fresh vs. dried supply chains and key market players</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>3. The United States Market Landscape</h2>
+                        <div class="subtitle">Fresh vs. dried supply chains and key market players</div>
+                    </div>
                     <h3>3.1 The Fresh vs. Dried Supply Chain</h3>
 
                     <p>Fresh curry leaves are highly perishable. They are prone to blackening, mold, and wilting within days of harvest if not stored under precise humidity and temperature conditions. Consequently, their availability is largely restricted to brick-and-mortar Indian grocery stores located in major metropolitan areas with significant South Asian diasporas (e.g., New Jersey, California, Texas, Chicago). For the vast majority of Americans living outside these hubs, fresh curry leaves are inaccessible.</p>
@@ -961,12 +858,11 @@
 
             <!-- Food Safety Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>4. The Food Safety Crisis in the Global Spice Trade</h2>
-                    <div class="subtitle">Pathogens, contaminants, and the lab-testing imperative</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>4. The Food Safety Crisis in the Global Spice Trade</h2>
+                        <div class="subtitle">Pathogens, contaminants, and the lab-testing imperative</div>
+                    </div>
                     <p>To fully appreciate the value of Nutri Thrive's "Lab-Tested" claim, one must examine the precarious state of food safety in the global spice supply chain. Spices are agricultural products often grown in developing nations with varying standards of sanitation and environmental protection. They are subjected to complex supply chains involving aggregation, drying, storage, and shipping, each stage presenting an opportunity for contamination.</p>
 
                     <h3>4.1 Pathogen Risks: The Salmonella Threat</h3>
@@ -1005,12 +901,11 @@
 
             <!-- Comparative Market Data Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>5. Comparative Market Data: A Detailed Analysis</h2>
-                    <div class="subtitle">Side-by-side comparison of Nutri Thrive vs competitors</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>5. Comparative Market Data: A Detailed Analysis</h2>
+                        <div class="subtitle">Side-by-side comparison of Nutri Thrive vs competitors</div>
+                    </div>
                     <p>The following section synthesizes the pricing and feature data to provide a clear, side-by-side comparison of Nutri Thrive against the competitive field.</p>
 
                     <h3>Table 1: Comparative Pricing and Value Metrics</h3>
@@ -1135,12 +1030,11 @@
 
             <!-- Strategic Analysis Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>6. Strategic Analysis of Nutri Thrive's Market Offer</h2>
-                    <div class="subtitle">Economic positioning and competitive advantages</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>6. Strategic Analysis of Nutri Thrive's Market Offer</h2>
+                        <div class="subtitle">Economic positioning and competitive advantages</div>
+                    </div>
                     <h3>6.1 The Economics of $7.00 for 30g</h3>
 
                     <p>The pricing strategy of $7.00 for 30g is surgically precise.</p>
@@ -1165,12 +1059,11 @@
 
             <!-- Culinary Education Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>7. Culinary Education: Bridging the Aroma Gap</h2>
-                    <div class="subtitle">How to use dried curry leaves effectively in cooking</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>7. Culinary Education: Bridging the Aroma Gap</h2>
+                        <div class="subtitle">How to use dried curry leaves effectively in cooking</div>
+                    </div>
                     <p>To retain customers, Nutri Thrive must ensure they have a positive culinary experience. Given the inherent limitations of dried leaves, education on how to use them is a critical part of the value proposition.</p>
 
                     <h3>7.1 The Art of Tempering (Tadka)</h3>
@@ -1201,12 +1094,11 @@
 
             <!-- Health and Wellness Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>8. Health, Wellness, and Non-Food Applications</h2>
-                    <div class="subtitle">Expanding beyond culinary uses into health and beauty markets</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>8. Health, Wellness, and Non-Food Applications</h2>
+                        <div class="subtitle">Expanding beyond culinary uses into health and beauty markets</div>
+                    </div>
                     <p>Nutri Thrive can significantly expand its Total Addressable Market (TAM) by appealing to the health and beauty sectors, leveraging the "Lab-Tested" claim.</p>
 
                     <h3>8.1 Metabolic Health and Diabetes Support</h3>
@@ -1229,12 +1121,11 @@
 
             <!-- Conclusion Section -->
             <section class="content-section">
-                <div class="section-header">
-                    <h2>9. Conclusion</h2>
-                    <div class="subtitle">The future of the American spice market and Nutri Thrive's role</div>
-                </div>
-
-                <div class="blog-post-content">
+                <div class="blog-post-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <div class="section-header">
+                        <h2>9. Conclusion</h2>
+                        <div class="subtitle">The future of the American spice market and Nutri Thrive's role</div>
+                    </div>
                     <p>The United States market for dried curry leaves is characterized by a "quality vacuum." Consumers are caught between the logistical impossibility of fresh leaves and the disappointing reality of degraded, generic dried imports. Furthermore, the specter of food safety risks—ranging from Salmonella to heavy metals—looms large over the entire spice category.</p>
 
                     <p>Nutri Thrive disrupts this stagnant landscape with a proposition that is both economically attractive and psychologically reassuring.</p>
@@ -1251,21 +1142,24 @@
 
             <!-- Product Showcase -->
             <section class="product-showcase">
-                <h2>🛒 Experience the Nutri Thrive Difference</h2>
-                <p>Lab-tested, premium quality superfoods delivered fresh to your door</p>
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <h2>🛒 Experience the Nutri Thrive Difference</h2>
+                    <p>Lab-tested, premium quality superfoods delivered fresh to your door</p>
+                </div>
 
-                <div class="product-card">
-                    <h3>Premium Dried Curry Leaves</h3>
-                    <p>Authentic South Indian curry leaves, laboratory-tested for purity and safety. Perfect for cooking, health benefits, and DIY beauty applications.</p>
-                    <div class="price">$7.00 for 30g</div>
-                    <p>Free shipping on orders over $80.00</p>
-                    <a href="../products/product-curry-leaves.html" class="cta-button-primary">Order Now</a>
+                <div style="text-align: center;">
+                    <h3 style="color: white; font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 700;">Premium Dried Curry Leaves</h3>
+                    <p style="color: white; font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; line-height: 1.6;">Authentic South Indian curry leaves, laboratory-tested for purity and safety. Perfect for cooking, health benefits, and DIY beauty applications.</p>
+                    <div style="color: #16a34a; font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">$7.00 for 30g</div>
+                    <p style="color: white; font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">Free shipping on orders over $80.00</p>
+                    <a href="../products/product-curry-leaves.html" style="background: white; color: #2d5a3d; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.2rem; display: inline-block; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0px)'">Order Now</a>
                 </div>
             </section>
 
             <!-- Related Articles -->
             <section class="related-articles">
-                <h2>📚 Explore More Market Insights</h2>
+                <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                    <h2>📚 Explore More Market Insights</h2>
                 <div class="related-grid">
                     <a href="curry-leaves-australia-complete-guide-2026.html" class="related-card">
                         <h3>Curry Leaves in Australia: Complete Guide 2026</h3>
@@ -1282,6 +1176,7 @@
                         <p>Complete guide to moringa powder benefits and usage</p>
                         <span>Read Article →</span>
                     </a>
+                </div>
                 </div>
             </section>
         </article>
