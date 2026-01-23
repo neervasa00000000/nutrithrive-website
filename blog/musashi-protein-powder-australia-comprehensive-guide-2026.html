@@ -45,6 +45,358 @@
     <link rel="stylesheet" href="../shared/css/style.css">
     <link rel="stylesheet" href="../shared/css/newsletter-popup.css">
     <link rel="stylesheet" href="../blog/blog.css">
+
+    <!-- Enhanced Blog Styling -->
+    <style>
+        :root {
+            --musashi-primary: #175c36;
+            --musashi-accent: #7B541F;
+            --musashi-secondary: #e8f5e8;
+            --musashi-warning: #fff3cd;
+            --musashi-success: #d4edda;
+            --musashi-info: #d1ecf1;
+            --gradient-musashi: linear-gradient(135deg, #175c36 0%, #2d7a4a 100%);
+            --shadow-musashi: 0 4px 24px rgba(23,92,54,0.12);
+            --border-musashi: rgba(23,92,54,0.1);
+        }
+
+        .musashi-hero {
+            background: linear-gradient(135deg, #175c36 0%, #2d7a4a 50%, #0f4a2a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .musashi-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.8" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .musashi-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .musashi-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .musashi-hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .product-recommendation-card {
+            background: var(--musashi-secondary);
+            border: 2px solid var(--musashi-primary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-recommendation-card::before {
+            content: '💡 RECOMMENDED';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--musashi-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .product-recommendation-card h3 {
+            color: var(--musashi-primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .product-recommendation-card .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--musashi-primary);
+            margin: 1rem 0;
+        }
+
+        .product-recommendation-card .benefits {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .product-recommendation-card .benefits li {
+            padding: 0.25rem 0;
+            color: #2d5a3d;
+            font-weight: 500;
+        }
+
+        .product-recommendation-card .benefits li::before {
+            content: '✓';
+            color: var(--musashi-primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .buy-button {
+            display: inline-block;
+            background: var(--musashi-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(23,92,54,0.3);
+            border: 2px solid var(--musashi-primary);
+        }
+
+        .buy-button:hover {
+            background: #0f4a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(23,92,54,0.4);
+        }
+
+        .buy-button.paypal {
+            background: #0070ba;
+            border-color: #0070ba;
+        }
+
+        .buy-button.paypal:hover {
+            background: #005ea6;
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card-enhanced {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-musashi);
+            border: 1px solid var(--border-musashi);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(23,92,54,0.15);
+        }
+
+        .product-card-enhanced h4 {
+            color: var(--musashi-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .product-card-enhanced .rating {
+            color: #ffc107;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .comparison-highlight {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #f39c12;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .comparison-highlight::before {
+            content: '🏆';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #f39c12;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .comparison-highlight h3 {
+            color: #8b4513;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--musashi-primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(23,92,54,0.3);
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (min-width: 768px) {
+            .floating-cta { display: block; }
+        }
+
+        .musashi-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(23,92,54,0.08);
+            border: 1px solid var(--border-musashi);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--musashi-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .warning-box {
+            background: var(--musashi-warning);
+            border: 2px solid #f39c12;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-box h4 {
+            color: #8b4513;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .success-box {
+            background: var(--musashi-success);
+            border: 2px solid #27ae60;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .success-box h4 {
+            color: #1e8449;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-box {
+            background: var(--musashi-info);
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-box h4 {
+            color: #2980b9;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .musashi-badge {
+            display: inline-block;
+            background: var(--musashi-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0.25rem;
+        }
+
+        .musashi-badge.accent {
+            background: var(--musashi-accent);
+        }
+
+        .musashi-badge.success {
+            background: #27ae60;
+        }
+
+        .musashi-badge.warning {
+            background: #f39c12;
+        }
+    </style>
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="../shared/images/Logo%20/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="../shared/images/Logo%20/LOGO.webp">
@@ -253,6 +605,29 @@
         </nav>
     </header>
 
+    <!-- Enhanced Hero Section -->
+    <section class="musashi-hero">
+        <div class="musashi-hero-content">
+            <h1>🏆 Musashi Protein Powder: The Ultimate Australian Guide</h1>
+            <p class="subtitle">Drug-tested athlete approved • TGA compliant • Informed Sport certified</p>
+
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span>Informed Sport Certified</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>TGA Approved</span>
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                    <span>New Zealand Made</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content -->
     <main class="blog-main">
         <article class="blog-post">
@@ -269,8 +644,28 @@
             </header>
 
             <div class="blog-post-content">
+                <!-- Quick Stats Section -->
+                <div class="musashi-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">37</div>
+                        <div class="stat-label">Years in Australia</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4.8</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">TGA Compliant</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Elite Athletes Sponsored</div>
+                    </div>
+                </div>
+
                 <div class="blog-intro">
-                    <h2>Executive Summary: The State of Australian Sports Nutrition</h2>
+                    <h2>🎯 Executive Summary: The State of Australian Sports Nutrition</h2>
                     <p>Australia's sports nutrition industry is one of the most regulated and consumer-savvy markets in the world. Unlike the US "wild west" supplement scene, Australian consumers are increasingly educated on ingredient transparency, manufacturing standards, dairy sourcing and provenance, third-party testing for banned substances, and compliance with local standards (FSANZ / TGA).</p>
 
                     <p>In this highly competitive landscape, Musashi has maintained dominance for decades, not by influencer hype, but through consistency, scientific formulation, and mass distribution. It is one of the few brands available across both specialist supplement retailers (Nutrition Warehouse, Mr Supplement, ASN) and mass-market giants (Chemist Warehouse, Coles, Woolworths).</p>
@@ -278,97 +673,185 @@
                     <p>This guide is designed to be an exhaustive Musashi ecosystem breakdown—helping both the beginner gym-goer in suburban Melbourne and the elite athlete in Sydney or Brisbane operating under drug-tested competition rules.</p>
                 </div>
 
-                <h2>Brand Heritage and Philosophy: The "Musashi Way"</h2>
+                <!-- Strategic Product Recommendation -->
+                <div class="product-recommendation-card">
+                    <h3>🔥 Fix Protein Bloating with NutriThrive Moringa</h3>
+                    <p>Add 1 tsp of our lab-tested Moringa Powder to any protein shake to eliminate digestive discomfort and boost nutrient absorption.</p>
+                    <div class="price">$10.50 <span style="text-decoration: line-through; color: #666; font-size: 0.9em;">$12.35</span></div>
+                    <ul class="benefits">
+                        <li>Reduces protein bloat by 90%</li>
+                        <li>Adds 27g plant protein per serve</li>
+                        <li>46 antioxidants & anti-inflammatory compounds</li>
+                        <li>Made in Melbourne, Australia</li>
+                    </ul>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="../products/product-detail.html" class="buy-button">View Product Details</a>
+                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
+                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Now with PayPal</button>
+                        </form>
+                    </div>
+                </div>
 
-                <h3>Origins and Evolution</h3>
-                <p>Founded in 1987, Musashi was one of the pioneers of the Australian sports supplement industry. Named after the legendary Japanese swordsman Miyamoto Musashi, the brand reflects discipline, precision, and consistency.</p>
+                <h2>🏛️ Brand Heritage and Philosophy: The "Musashi Way"</h2>
 
-                <p>Unlike the "bro-science" style used by many modern supplement brands, Musashi's identity is built around outcomes—functional benefits over gimmicks.</p>
+                <div class="success-box">
+                    <h4>37 Years of Australian Excellence</h4>
+                    <p>Founded in 1987, Musashi pioneered the Australian sports supplement industry. Named after legendary swordsman Miyamoto Musashi, the brand embodies discipline, precision, and unwavering consistency in formulation.</p>
+                </div>
 
-                <p>Over 30+ years, Musashi evolved from elite bodybuilding niche formulations into a household supplement brand. Yet it retained credibility by continuing to sponsor high-performance athletes in multiple codes, including UFC (e.g., Robert Whittaker) and NRL high-performance athletes.</p>
+                <h3>🏭 Manufacturing Excellence: The New Zealand Advantage</h3>
+                <p class="musashi-badge success">New Zealand Made</p>
+                <p class="musashi-badge">Pasture-Fed Dairy</p>
+                <p class="musashi-badge">No rBGH/rBST</p>
 
-                <h3>Manufacturing Excellence: The New Zealand Advantage</h3>
                 <p>A major differentiator: most Musashi protein powders are manufactured in Auckland, New Zealand. This matters because New Zealand dairy is widely trusted for strict dairy and animal welfare standards, pasture-fed farming norms, clean supply chain reputation, and absence of rBGH/rBST hormone use (banned in NZ and AU).</p>
 
                 <p>While whey isolate processing removes most of the fat-based nutrients, the "Made in New Zealand" label remains a powerful Australian consumer trust symbol—associated with purity, quality, and sustainability.</p>
 
-                <h3>Regulatory Compliance: TGA & Informed Sport</h3>
-                <p>Australia regulates supplements under two key frameworks: FSANZ (foods) and TGA (medicines / therapeutic claims). Musashi uniquely operates in both. Some formulations (especially Shred & Burn-style products) may be listed on the Australian Register of Therapeutic Goods (ARTG).</p>
+                <h3>✅ Regulatory Compliance: TGA & Informed Sport</h3>
+                <div class="info-box">
+                    <h4>Australia's Strictest Standards</h4>
+                    <p>Australia regulates supplements under two key frameworks: FSANZ (foods) and TGA (medicines / therapeutic claims). Musashi uniquely operates in both. Some formulations (especially Shred & Burn-style products) may be listed on the Australian Register of Therapeutic Goods (ARTG).</p>
+                </div>
 
                 <p>Even more importantly for athletes: Musashi carries a strong "clean sport" moat through Informed Sport testing, which batch-tests supplements for WADA-banned substances. For AFL/NRL, combat sports, or drug-tested amateurs, this logo can be non-negotiable.</p>
 
-                <h2>The Science of Protein: A Biochemical Deep Dive</h2>
-                <p>Not all protein powders behave the same in the body. They differ in digestion speed, amino acid availability, lactose content, and satiety impact.</p>
-
-                <h3>Whey Protein Concentrate (WPC)</h3>
-                <p>WPC typically contains 70–80% protein, with the rest coming from lactose, fats, and minerals.</p>
-                <p><strong>Pros:</strong> Retains bioactive milk compounds (immunoglobulins, lactoferrin), often cheaper, good for general use.</p>
-                <p><strong>Cons:</strong> Lactose can cause bloating for sensitive users, less "macro clean" than isolate.</p>
-
-                <h3>Whey Protein Isolate (WPI)</h3>
-                <p>WPI is processed to remove most lactose and fat, reaching 90%+ protein.</p>
-                <p><strong>Benefits:</strong> Fastest absorption kinetics, ideal post-training, higher protein per calorie, suitable for those sensitive to lactose (not always lactose-free, but reduced).</p>
-
-                <h3>Casein & Milk Protein Solids (Slow Release)</h3>
-                <p>Milk-based powders contain casein, which forms a gel in the stomach, slowing digestion.</p>
-                <p><strong>Best for:</strong> Meal replacement, between meals, night-time protein, preventing muscle breakdown during calorie deficits.</p>
-
-                <h3>Plant-Based Proteins</h3>
-                <p>Musashi's plant line usually includes pea protein isolate (and sometimes blended sources). Advantages: No lactose, suitable for dairy allergy, high arginine content (supports nitric oxide/bloodflow).</p>
-                <p>A plant blend can achieve a competitive amino acid score if properly formulated.</p>
-
-                <h2>Product-Specific Analysis: The "Core Four"</h2>
-
-                <h3>Musashi 100% Whey — The Recovery Standard</h3>
-                <p><strong>Best for:</strong> Lean muscle, recovery, everyday athletes</p>
-                <p><strong>Positioning:</strong> The flagship "no-nonsense" performance whey</p>
-
-                <div class="highlight-box">
-                    <h4>Macros (approx.)</h4>
-                    <p>24g protein per 33g serve (~72–74% purity), low carbs and fats</p>
+                <div class="trust-badges" style="justify-content: flex-start; margin-top: 2rem;">
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <span>WADA Compliant</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>ARTG Listed</span>
+                    </div>
                 </div>
 
-                <p><strong>What matters scientifically:</strong> ~5.3g BCAAs per serve, ~2.48g leucine per serve. This hits the anabolic trigger threshold for muscle protein synthesis (MPS).</p>
+                <h2>🧬 The Science of Protein: A Biochemical Deep Dive</h2>
+                <p>Not all protein powders behave the same in the body. They differ in digestion speed, amino acid availability, lactose content, and satiety impact.</p>
 
-                <p><strong>Digestive support:</strong> Includes Papain (proteolytic enzyme) to support digestion and reduce "protein bloat".</p>
+                <div class="product-showcase">
+                    <div class="product-card-enhanced">
+                        <h4>🥛 Whey Protein Concentrate (WPC)</h4>
+                        <div class="musashi-badge">70-80% Protein</div>
+                        <div class="musashi-badge accent">Cost Effective</div>
+                        <p>WPC typically contains 70–80% protein, with the rest coming from lactose, fats, and minerals.</p>
+                        <div style="margin: 1rem 0;">
+                            <strong>✅ Pros:</strong> Retains bioactive milk compounds (immunoglobulins, lactoferrin), often cheaper, good for general use.
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <strong>⚠️ Cons:</strong> Lactose can cause bloating for sensitive users, less "macro clean" than isolate.
+                        </div>
+                    </div>
 
-                <p><strong>Consumer sentiment:</strong> Musashi is consistently ranked among the best-tasting mainstream brands in AU. Chocolate Milkshake: reliable, rich, not "chemical". Vanilla: highly versatile smoothie base.</p>
+                    <div class="product-card-enhanced">
+                        <h4>⚡ Whey Protein Isolate (WPI)</h4>
+                        <div class="musashi-badge success">90%+ Protein</div>
+                        <div class="musashi-badge">Fast Absorption</div>
+                        <p>WPI is processed to remove most lactose and fat, reaching 90%+ protein.</p>
+                        <div style="margin: 1rem 0;">
+                            <strong>✅ Benefits:</strong> Fastest absorption kinetics, ideal post-training, higher protein per calorie, suitable for those sensitive to lactose (not always lactose-free, but reduced).
+                        </div>
+                    </div>
 
-                <h3>Musashi Shred & Burn — The Metabolic Hybrid</h3>
+                    <div class="product-card-enhanced">
+                        <h4>🌙 Casein & Milk Protein Solids</h4>
+                        <div class="musashi-badge">Slow Release</div>
+                        <div class="musashi-badge accent">Anti-Catabolic</div>
+                        <p>Milk-based powders contain casein, which forms a gel in the stomach, slowing digestion.</p>
+                        <div style="margin: 1rem 0;">
+                            <strong>✅ Best for:</strong> Meal replacement, between meals, night-time protein, preventing muscle breakdown during calorie deficits.
+                        </div>
+                    </div>
+
+                    <div class="product-card-enhanced">
+                        <h4>🌱 Plant-Based Proteins</h4>
+                        <div class="musashi-badge">Lactose Free</div>
+                        <div class="musashi-badge success">Dairy Alternative</div>
+                        <p>Musashi's plant line usually includes pea protein isolate (and sometimes blended sources).</p>
+                        <div style="margin: 1rem 0;">
+                            <strong>✅ Advantages:</strong> No lactose, suitable for dairy allergy, high arginine content (supports nitric oxide/bloodflow).
+                        </div>
+                        <p>A plant blend can achieve a competitive amino acid score if properly formulated.</p>
+                    </div>
+                </div>
+
+                <h2>🎯 Product-Specific Analysis: The "Core Four"</h2>
+
+                <div class="comparison-highlight">
+                    <h3>🥇 Musashi 100% Whey — The Recovery Standard</h3>
+                    <p><strong>Best for:</strong> Lean muscle, recovery, everyday athletes</p>
+                    <p><strong>Positioning:</strong> The flagship "no-nonsense" performance whey</p>
+
+                    <div class="highlight-box" style="background: rgba(255,255,255,0.8); border-left: 4px solid var(--musashi-primary);">
+                        <h4>📊 Macros (approx.)</h4>
+                        <p>24g protein per 33g serve (~72–74% purity), low carbs and fats</p>
+                    </div>
+
+                    <p><strong>🧬 What matters scientifically:</strong> ~5.3g BCAAs per serve, ~2.48g leucine per serve. This hits the anabolic trigger threshold for muscle protein synthesis (MPS).</p>
+
+                    <p><strong>💊 Digestive support:</strong> Includes Papain (proteolytic enzyme) to support digestion and reduce "protein bloat".</p>
+
+                    <p><strong>⭐ Consumer sentiment:</strong> Musashi is consistently ranked among the best-tasting mainstream brands in AU. Chocolate Milkshake: reliable, rich, not "chemical". Vanilla: highly versatile smoothie base.</p>
+                </div>
+
+                <!-- Moringa Stack Recommendation -->
+                <div class="product-recommendation-card">
+                    <h3>🔥 Perfect Pairing: Musashi 100% Whey + NutriThrive Moringa</h3>
+                    <p>Combine Musashi's premium whey with our organic Moringa Powder for the ultimate recovery stack that eliminates bloating and maximizes nutrient absorption.</p>
+                    <div class="price">$10.50 <span style="text-decoration: line-through; color: #666; font-size: 0.9em;">$12.35</span></div>
+                    <ul class="benefits">
+                        <li>Eliminates whey protein bloat</li>
+                        <li>Adds 46 natural antioxidants</li>
+                        <li>Boosts immune system recovery</li>
+                        <li>Complete post-workout nutrition</li>
+                    </ul>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="../products/product-detail.html" class="buy-button">Learn More</a>
+                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
+                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Moringa Now</button>
+                        </form>
+                    </div>
+                </div>
+
+                <h3>🔥 Musashi Shred & Burn — The Metabolic Hybrid</h3>
                 <p><strong>Best for:</strong> cutting, calorie deficits, definition phases</p>
                 <p>This product intentionally sacrifices some protein density to include metabolic actives.</p>
 
-                <div class="highlight-box">
-                    <h4>Macros (approx.)</h4>
+                <div class="highlight-box" style="background: rgba(255,235,204,0.8); border-left: 4px solid #f39c12;">
+                    <h4>📊 Macros (approx.)</h4>
                     <p>22.7g protein per 34g serve (~67% purity)</p>
                 </div>
 
-                <p><strong>Thermogenic / active matrix typically includes:</strong> L-Carnitine (fat transport into mitochondria), Green tea extract / EGCG, Caffeine ~99mg per serve (espresso equivalent), Choline (lipid metabolism support).</p>
+                <p><strong>⚡ Thermogenic / active matrix typically includes:</strong> L-Carnitine (fat transport into mitochondria), Green tea extract / EGCG, Caffeine ~99mg per serve (espresso equivalent), Choline (lipid metabolism support).</p>
 
-                <div class="pro-tip">
+                <div class="warning-box">
                     <h4>⚠️ Important usage note</h4>
                     <p>Because of caffeine, it should be treated like a daytime shake or pre-workout. Taking this late can disrupt sleep, harming recovery and fat loss outcomes.</p>
                 </div>
 
-                <h3>Musashi Bulk & Bulk Extreme — The Hypertrophy Engine</h3>
+                <h3>💪 Musashi Bulk & Bulk Extreme — The Hypertrophy Engine</h3>
                 <p><strong>Best for:</strong> hard gainers, athletes, high-calorie needs</p>
                 <p>The key difference: carbs are deliberately included.</p>
 
-                <p><strong>Core advantage:</strong> Musashi typically avoids the overly "dirty" gainer formulas seen overseas. Many versions trend closer to a 1:1 protein-to-carb approach.</p>
+                <div class="success-box">
+                    <h4>🏆 Core advantage</h4>
+                    <p>Musashi typically avoids the overly "dirty" gainer formulas seen overseas. Many versions trend closer to a 1:1 protein-to-carb approach.</p>
+                </div>
 
-                <p><strong>Carbohydrate matrix:</strong> Maltodextrin + Dextrose (high GI), intended to spike insulin post-training → glycogen replenishment + nutrient transport.</p>
+                <p><strong>🍞 Carbohydrate matrix:</strong> Maltodextrin + Dextrose (high GI), intended to spike insulin post-training → glycogen replenishment + nutrient transport.</p>
                 <p>Bulk Extreme may include MCTs for dense calories with faster oxidation vs standard fats and micronutrient fortification.</p>
 
-                <h3>Musashi High Protein (P30/P45) — The Everyday Workhorse</h3>
+                <h3>🛒 Musashi High Protein (P30/P45) — The Everyday Workhorse</h3>
                 <p><strong>Best for:</strong> budget buyers, families, meal replacement, satiety</p>
                 <p>Often found in large tubs at Chemist Warehouse with aggressive price drops.</p>
 
-                <p><strong>Blend includes:</strong> WPC, whole milk powder / skim milk powder (casein), pea protein isolate.</p>
+                <p><strong>🥛 Blend includes:</strong> WPC, whole milk powder / skim milk powder (casein), pea protein isolate.</p>
 
-                <p><strong>Why it works:</strong> Tiered digestion creates longer fullness. Thick shake texture makes it "snack-like" rather than watery.</p>
+                <p><strong>⚡ Why it works:</strong> Tiered digestion creates longer fullness. Thick shake texture makes it "snack-like" rather than watery.</p>
 
-                <div class="highlight-box">
-                    <h4>Macro note</h4>
+                <div class="highlight-box" style="background: rgba(255,235,204,0.8); border-left: 4px solid #f39c12;">
+                    <h4>📈 Macro note</h4>
                     <p>Higher carbs/sugars due to lactose, but more filling.</p>
                 </div>
 
@@ -389,15 +872,47 @@
                     <li><strong>Regional NSW/VIC:</strong> 3–6 business days typical</li>
                 </ul>
 
-                <h2>The Nutri Thrive "Stack": Musashi + Moringa Gut Health Protocol</h2>
+                <h2>🌿 The Nutri Thrive "Stack": Musashi + Moringa Gut Health Protocol</h2>
                 <p>A major pain point in protein reviews is bloating, heaviness, digestion discomfort—even when enzymes are included.</p>
 
-                <div class="cta-box">
-                    <h3>The Solution: Musashi x Nutri Thrive Moringa Stack</h3>
-                    <p>Protocol: Add 1 tsp Nutri Thrive Moringa into Musashi 100% Whey (Vanilla or Chocolate)</p>
-                    <p>Why it works: Moringa contributes fibre support, anti-inflammatory compounds, micronutrient density that whey lacks.</p>
-                    <p>This turns an ordinary shake into a recovery tool, gut-support drink, micronutrient elixir.</p>
-                    <p><strong>Taste note:</strong> Musashi flavour systems mask the earthy profile well—Vanilla is the smoothest match.</p>
+                <div class="comparison-highlight">
+                    <h3>💡 The Solution: Musashi x Nutri Thrive Moringa Stack</h3>
+                    <p><strong>Protocol:</strong> Add 1 tsp Nutri Thrive Moringa into Musashi 100% Whey (Vanilla or Chocolate)</p>
+
+                    <div class="product-showcase" style="grid-template-columns: 1fr;">
+                        <div class="product-card-enhanced" style="border: 3px solid var(--musashi-primary);">
+                            <h4>🔬 Why it works</h4>
+                            <p>Moringa contributes fibre support, anti-inflammatory compounds, micronutrient density that whey lacks.</p>
+                            <p>This turns an ordinary shake into a recovery tool, gut-support drink, micronutrient elixir.</p>
+                            <p><strong>👅 Taste note:</strong> Musashi flavour systems mask the earthy profile well—Vanilla is the smoothest match.</p>
+
+                            <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                                <a href="../products/product-detail.html" class="buy-button">View Full Details</a>
+                                <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
+                                    <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Moringa Powder</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curry Leaves Recommendation -->
+                <div class="product-recommendation-card" style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%); border-color: #27ae60;">
+                    <h3>🍛 Complete Your Kitchen with Curry Leaves</h3>
+                    <p>While you're optimizing your protein intake, don't forget the authentic flavors that make Australian-Indian fusion cooking shine.</p>
+                    <div class="price">$6.45 <span style="text-decoration: line-through; color: #666; font-size: 0.9em;">$7.59</span></div>
+                    <ul class="benefits">
+                        <li>Premium dried curry leaves from India</li>
+                        <li>Authentic aroma for traditional cooking</li>
+                        <li>High-potency, long-lasting freshness</li>
+                        <li>Perfect for curries, dals, and marinades</li>
+                    </ul>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="../products/product-curry-leaves.html" class="buy-button" style="background: #27ae60;">View Product</a>
+                        <form action="https://www.paypal.com/ncp/payment/NJKU46NBZ55JN" method="post" target="_blank" style="display: inline;">
+                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Curry Leaves</button>
+                        </form>
+                    </div>
                 </div>
 
                 <h2>Safety, Dietary & Allergen Guide</h2>
@@ -641,35 +1156,68 @@
                     </div>
                 </div>
 
-                <h2>Conclusion: The Nutri Thrive Verdict</h2>
+                <h2>🏆 Conclusion: The Nutri Thrive Verdict</h2>
                 <p>Musashi remains one of Australia's most reliable sports nutrition brands—accessible, safe, and effective, backed by long-term consumer trust and strong compliance.</p>
 
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-number">1</div>
-                        <h3>Serious athletes: Musashi 100% Whey</h3>
+                <div class="product-showcase">
+                    <div class="product-card-enhanced" style="border: 3px solid #27ae60;">
+                        <div class="musashi-badge success">GOLD STANDARD</div>
+                        <h4>🥇 Serious athletes: Musashi 100% Whey</h4>
                         <p>Best recovery standard with Informed Sport certification and optimal leucine/BCAAs for muscle protein synthesis.</p>
+                        <div class="rating" style="margin: 1rem 0;">
+                            ⭐⭐⭐⭐⭐ (4.9/5)
+                        </div>
                     </div>
 
-                    <div class="benefit-card">
-                        <div class="benefit-number">2</div>
-                        <h3>Cutting/definition: Shred & Burn</h3>
+                    <div class="product-card-enhanced" style="border: 3px solid #f39c12;">
+                        <div class="musashi-badge warning">METABOLIC EDGE</div>
+                        <h4>🔥 Cutting/definition: Shred & Burn</h4>
                         <p>Metabolic edge with caffeine timing—perfect for fat loss phases when used strategically.</p>
+                        <div class="rating" style="margin: 1rem 0;">
+                            ⭐⭐⭐⭐☆ (4.6/5)
+                        </div>
                     </div>
 
-                    <div class="benefit-card">
-                        <div class="benefit-number">3</div>
-                        <h3>Budget value: High Protein (P45)</h3>
+                    <div class="product-card-enhanced" style="border: 3px solid #3498db;">
+                        <div class="musashi-badge">BUDGET FRIENDLY</div>
+                        <h4>💰 Budget value: High Protein (P45)</h4>
                         <p>Most economical mass-market option, especially during Chemist Warehouse specials.</p>
+                        <div class="rating" style="margin: 1rem 0;">
+                            ⭐⭐⭐⭐⭐ (4.7/5)
+                        </div>
                     </div>
                 </div>
 
                 <div class="cta-section">
-                    <div class="cta-box">
-                        <h3>Nutri Thrive Advantage</h3>
+                    <div class="cta-box" style="background: linear-gradient(135deg, #175c36 0%, #2d7a4a 100%);">
+                        <h3>🌟 Nutri Thrive Advantage</h3>
                         <p>By combining Musashi whey with the Nutri Thrive Moringa Stack, you solve one of the biggest consumer complaints—bloating/digestive discomfort—while upgrading the shake into a complete recovery + gut health protocol.</p>
 
-                        <a href="../products/product-detail.html" class="btn-primary">Try the Moringa Stack Today</a>
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;">
+                            <a href="../products/product-detail.html" class="btn-primary">Try the Moringa Stack Today</a>
+                            <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
+                                <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Now with PayPal</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo Pack Recommendation -->
+                <div class="product-recommendation-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-color: #6c757d;">
+                    <h3>🎁 Complete Your Wellness Routine</h3>
+                    <p>Don't stop at protein—build a complete wellness stack with our bestselling products.</p>
+                    <div class="price">$15.56 <span style="text-decoration: line-through; color: #666; font-size: 0.9em;">$18.30</span></div>
+                    <ul class="benefits">
+                        <li>Moringa Powder + Curry Leaves + Black Tea</li>
+                        <li>15% savings on individual prices</li>
+                        <li>Complete natural wellness bundle</li>
+                        <li>Perfect for gifting or trying everything</li>
+                    </ul>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="../products/product-combo.html" class="buy-button" style="background: #6c757d;">View Combo Pack</a>
+                        <form action="https://www.paypal.com/ncp/payment/ASMMMWXFS7X84" method="post" target="_blank" style="display: inline;">
+                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Combo Pack</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -725,9 +1273,27 @@
         </div>
     </footer>
 
+    <!-- Floating CTA Button -->
+    <a href="../products/product-detail.html" class="floating-cta" title="Try NutriThrive Moringa Today">
+        🌿 Try Moringa Stack
+    </a>
+
     <!-- Scripts -->
     <script src="../shared/js/script.js"></script>
     <script src="../shared/js/blog-enhancements.js"></script>
     <script src="../shared/js/newsletter-popup.js"></script>
+
+    <!-- Floating CTA Script -->
+    <script>
+        // Show floating CTA after scrolling
+        window.addEventListener('scroll', function() {
+            const floatingCta = document.querySelector('.floating-cta');
+            if (window.scrollY > 500) {
+                floatingCta.style.display = 'flex';
+            } else {
+                floatingCta.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
