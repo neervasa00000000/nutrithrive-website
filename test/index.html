@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #e0e0e0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+            animation: float 20s infinite linear;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: -100px;
+            animation: float 15s infinite linear reverse;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(0deg) translate(0, 0);
+            }
+            50% {
+                transform: rotate(180deg) translate(50px, 50px);
+            }
+            100% {
+                transform: rotate(360deg) translate(0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    
+    <div class="container">
+        <h1>Hello World</h1>
+        <p>Welcome to your new page.</p>
+    </div>
+</body>
+</html>
