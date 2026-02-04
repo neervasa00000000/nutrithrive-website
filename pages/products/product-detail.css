@@ -878,7 +878,7 @@ footer {
         display: block;
     }
 
-    /* --- Definitive Mobile Menu Fullscreen Fix --- */
+    /* --- Definitive Mobile Menu Fullscreen Fix (synced with homepage) --- */
     .nav-links {
         position: fixed;
         top: 0;
@@ -890,7 +890,7 @@ footer {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         z-index: 2000;
-        display: flex;
+        display: none; /* hidden until toggled open by JS */
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -900,7 +900,7 @@ footer {
         margin: 0;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        gap: 0.1rem;
+        gap: 0.8rem;
     }
 
     .nav-links.nav-active {
@@ -909,22 +909,24 @@ footer {
     }
 
     .nav-links a {
-        font-size: 1.1rem;
-        margin: 0.05rem 0;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
+        font-size: 2.4rem;
+        margin: 0.2rem 0;
+        padding: 1rem 1.5rem;
+        border-radius: 16px;
         transition: background-color 0.2s ease;
         text-align: center;
         width: 100%;
-        max-width: 260px;
+        max-width: 380px;
         display: block;
         text-decoration: none;
         color: var(--primary);
-        font-weight: 600;
-        min-height: 40px;
+        font-weight: 700;
+        min-height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: transparent !important;
+        border: none !important;
     }
 
     .nav-links a:hover,
@@ -933,24 +935,37 @@ footer {
         color: var(--accent);
     }
 
-    /* Hamburger close functionality */
+    /* Hamburger close functionality - force perfectly centered X on mobile (match homepage) */
     .hamburger.toggle {
         position: relative;
         z-index: 2001;
+        background: none !important;
+        border: none !important;
+    }
+
+    /* When open, overlay both visible lines in the exact center */
+    .hamburger.toggle div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 25px;
+        height: 3px;
+        margin: 0;
+        transform-origin: center;
     }
 
     .hamburger.toggle .line1 {
-        transform: rotate(-45deg) translateY(8px);
-    transform-origin: center;
+        transform: translate(-50%, -50%) rotate(45deg);
     }
 
     .hamburger.toggle .line2 {
         opacity: 0;
+        visibility: hidden;
+        display: none;
     }
 
     .hamburger.toggle .line3 {
-        transform: rotate(45deg) translateY(-8px);
-    transform-origin: center;
+        transform: translate(-50%, -50%) rotate(-45deg);
     }
 
     /* Scroll indicator for mobile menu */
