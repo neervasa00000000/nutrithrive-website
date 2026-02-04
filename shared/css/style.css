@@ -181,7 +181,8 @@ header {
 
 .nav-links a.active,
 .nav-links a:hover {
-    color: var(--primary);
+    /* Use accent (brown) for active/hover nav links site-wide */
+    color: var(--accent);
     text-decoration: none;
     box-shadow: none;
     border-bottom: none;
@@ -1098,7 +1099,7 @@ footer {
     .nav-links a:hover,
     .nav-links a.active {
         background-color: rgba(23, 92, 54, 0.1);
-        color: var(--primary);
+        color: var(--accent);
         text-decoration: none;
         box-shadow: none;
         border-bottom: none;
