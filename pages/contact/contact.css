@@ -742,6 +742,7 @@ footer {
     padding: 2.5rem 2rem;
     /* Remove any card-style white box around the contact content */
     background: transparent !important;
+    background-color: transparent !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     border: none !important;
@@ -752,6 +753,11 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    background: transparent !important;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
 }
 
 .form-group {
