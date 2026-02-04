@@ -621,14 +621,25 @@
             try {
                 paypal.Buttons({
                     createOrder: async () => {
-                        // Create order with total including shipping (calculated on website)
+                        // Create order with full cart details so PayPal shows proper line items
                         const amount = orderTotal.toFixed(2);
                         console.log("Creating PayPal order for amount:", amount);
                         try {
                             const response = await fetch("/.netlify/functions/paypal-create-order", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ amount: amount })
+                                body: JSON.stringify({
+                                    amount: amount,
+                                    subtotal: subtotal.toFixed(2),
+                                    shipping: shippingCost.toFixed(2),
+                                    items: cart.items.map(item => ({
+                                        id: item.id,
+                                        name: item.name,
+                                        // price stored in cart is already discounted price per unit
+                                        unitPrice: parseFloat(item.price).toFixed(2),
+                                        quantity: parseInt(item.quantity || 1, 10)
+                                    }))
+                                })
                             });
                             const data = await response.json();
                             if (!response.ok) {
