@@ -112,7 +112,7 @@
         <strong style="color:#175c36;">Questions about products or pricing?</strong>
         <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap;">
           <a href="/pages/contact/contact.html" style="background:#175c36;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Contact Us</a>
-          <a href="https://nutrithrive.com.au/products/product-detail" style="border:1px solid #175c36;color:#175c36;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Browse Products</a>
+          <a href="https://nutrithrive.com.au/products/product-detail.html" style="border:1px solid #175c36;color:#175c36;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Browse Products</a>
         </div>
       </div>`;
     article.appendChild(cta);
