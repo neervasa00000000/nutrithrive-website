@@ -138,6 +138,13 @@ header {
 
 .hamburger.toggle .line2 {
     opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.hamburger.toggle {
+    background: none !important;
+    border: none !important;
 }
 
 .hamburger.toggle .line3 {
