@@ -379,42 +379,11 @@ window.addEventListener('load', () => {
     window.countrySelectorLoading = true;
     
     function loadCountrySelector() {
-        // Check if already exists before loading
-        if (document.getElementById('country-selector-container')) {
-            window.countrySelectorLoading = false;
-            return; // Already loaded
-        }
-        
-        // Remove any existing selectors first (safety check)
+        // Country/region selector has been fully removed from the site.
+        // Keep this function as a no-op so existing event hooks remain safe.
         document.querySelectorAll('#country-selector-container').forEach(el => el.remove());
-        
-        const script = document.createElement('script');
-        // Determine correct path based on current page location
-        const isRoot = window.location.pathname === '/' || window.location.pathname.match(/^\/[^\/]+\.html$/);
-        const isProducts = window.location.pathname.includes('/products/');
-        const isPages = window.location.pathname.includes('/pages/');
-        const isBlog = window.location.pathname.includes('/blog/');
-        
-        if (isRoot) {
-            script.src = '/shared/js/country-selector.js';
-        } else if (isProducts) {
-            script.src = '../shared/js/country-selector.js';
-        } else if (isPages || isBlog) {
-            script.src = '../../shared/js/country-selector.js';
-        } else {
-            script.src = '/shared/js/country-selector.js';
-        }
-        script.async = true;
-        
-        // Mark as loaded when script finishes
-        script.onload = function() {
-            window.countrySelectorLoading = false;
-        };
-        script.onerror = function() {
-            window.countrySelectorLoading = false;
-        };
-        
-        document.body.appendChild(script);
+        window.countrySelectorLoading = false;
+        return;
     }
     
     if (document.readyState === 'loading') {
