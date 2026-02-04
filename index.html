@@ -144,13 +144,46 @@
     }
     </script>
 
-    <!-- WebSite Schema -->
+    <!-- WebSite Schema (Sitelinks Search Box eligibility) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "NutriThrive Australia",
-      "url": "https://nutrithrive.com.au"
+      "url": "https://nutrithrive.com.au",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://nutrithrive.com.au/products/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <!-- Organization Schema (Site name / Logo / E-E-A-T) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NutriThrive Australia",
+      "url": "https://nutrithrive.com.au",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+61-438-201-419",
+        "contactType": "customer service",
+        "email": "nutrithrive0@gmail.com",
+        "areaServed": "AU",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/p/1C5C1NeUCb/",
+        "https://www.instagram.com/nutrithriveau/"
+      ]
     }
     </script>
 </head>
