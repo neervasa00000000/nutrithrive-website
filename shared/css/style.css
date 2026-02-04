@@ -906,10 +906,11 @@ footer {
     max-width: 600px;
     margin: 0 auto 4rem auto;
     padding: 2.5rem 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(236, 231, 219, 0.8);
+    background: transparent !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
     animation: fadeInUp 1.2s 0.2s backwards;
 }
 
@@ -917,6 +918,11 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    background: transparent !important;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
 }
 
 .form-group {
@@ -971,10 +977,11 @@ footer {
 }
 
 .contact-info {
-    padding: 2rem;
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    padding: 2rem 0;
+    background: transparent !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
 
 .contact-info h3 {
