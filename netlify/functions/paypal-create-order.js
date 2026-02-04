@@ -19,7 +19,8 @@ export async function handler(event) {
     }
 
     try {
-        const { amount } = JSON.parse(event.body || "{}");
+        const payload = JSON.parse(event.body || "{}");
+        const { amount, items, subtotal, shipping } = payload;
         const base = (process.env.PAYPAL_BASE || "https://api-m.paypal.com").replace(/\/$/, "");
         const client = process.env.PAYPAL_CLIENT_ID;
         const secret = process.env.PAYPAL_CLIENT_SECRET;
@@ -59,6 +60,74 @@ export async function handler(event) {
         const tokenData = await tokenRes.json();
         if (!tokenRes.ok) throw new Error(JSON.stringify(tokenData));
 
+        // Build purchase unit with optional item and breakdown details
+        const currency = "AUD";
+
+        let purchaseUnit;
+
+        // If we have detailed cart info, build a rich breakdown for PayPal
+        if (Array.isArray(items) && items.length > 0) {
+            // Map cart items into PayPal line items
+            let computedItemTotal = 0;
+            const paypalItems = items.map((item) => {
+                const quantity = parseInt(item.quantity || 1, 10);
+                const unitPrice = parseFloat(item.unitPrice ?? item.price ?? 0);
+                const safeUnitPrice = isNaN(unitPrice) ? 0 : unitPrice;
+                const lineTotal = safeUnitPrice * quantity;
+                computedItemTotal += lineTotal;
+
+                return {
+                    name: String(item.name || "Item").substring(0, 127),
+                    quantity: String(quantity),
+                    unit_amount: {
+                        currency_code: currency,
+                        value: safeUnitPrice.toFixed(2),
+                    },
+                };
+            });
+
+            // Prefer provided subtotal/shipping, but fall back to computed totals
+            const subtotalNum = !isNaN(parseFloat(subtotal))
+                ? parseFloat(subtotal)
+                : parseFloat(computedItemTotal.toFixed(2));
+
+            const shippingNum = !isNaN(parseFloat(shipping))
+                ? parseFloat(shipping)
+                : 0;
+
+            const totalNum = subtotalNum + shippingNum;
+
+            purchaseUnit = {
+                amount: {
+                    currency_code: currency,
+                    value: totalNum.toFixed(2),
+                    breakdown: {
+                        item_total: {
+                            currency_code: currency,
+                            value: subtotalNum.toFixed(2),
+                        },
+                        ...(shippingNum > 0
+                            ? {
+                                  shipping: {
+                                      currency_code: currency,
+                                      value: shippingNum.toFixed(2),
+                                  },
+                              }
+                            : {}),
+                    },
+                },
+                items: paypalItems,
+            };
+        } else {
+            // Fallback: simple amount-only order (previous behaviour)
+            purchaseUnit = {
+                amount: {
+                    currency_code: currency,
+                    value: String(amount ?? "10.00"),
+                },
+            };
+        }
+
         // Create order
         const orderRes = await fetch(`${base}/v2/checkout/orders`, {
             method: "POST",
@@ -68,12 +137,7 @@ export async function handler(event) {
             },
             body: JSON.stringify({
                 intent: "CAPTURE",
-                purchase_units: [{
-                    amount: {
-                        currency_code: "AUD",
-                        value: String(amount ?? "10.00"),
-                    },
-                }],
+                purchase_units: [purchaseUnit],
             }),
         });
 
