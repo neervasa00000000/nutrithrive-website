@@ -956,7 +956,7 @@ footer {
         color: var(--accent);
     }
 
-    /* Hamburger close functionality */
+    /* Hamburger close functionality - force perfectly centered X on mobile */
     .hamburger.toggle {
         position: relative;
         z-index: 2001;
@@ -964,9 +964,19 @@ footer {
         border: none !important;
     }
 
-    .hamburger.toggle .line1 {
-        transform: rotate(-45deg) translateY(8px);
+    /* When open, overlay both visible lines in the exact center */
+    .hamburger.toggle div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 25px;
+        height: 3px;
+        margin: 0;
         transform-origin: center;
+    }
+
+    .hamburger.toggle .line1 {
+        transform: translate(-50%, -50%) rotate(45deg);
     }
 
     .hamburger.toggle .line2 {
@@ -976,8 +986,7 @@ footer {
     }
 
     .hamburger.toggle .line3 {
-        transform: rotate(45deg) translateY(-8px);
-        transform-origin: center;
+        transform: translate(-50%, -50%) rotate(-45deg);
     }
 
     /* Scroll indicator for mobile menu */
