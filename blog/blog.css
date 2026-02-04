@@ -827,7 +827,8 @@ header {
 }
 
 .hamburger.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(-45deg) translateY(8px);
+    transform-origin: center;
 }
 
 .hamburger.toggle .line2 {
@@ -837,7 +838,8 @@ header {
 }
 
 .hamburger.toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(45deg) translateY(-8px);
+    transform-origin: center;
 }
 
 .hamburger.toggle {
@@ -1650,7 +1652,8 @@ footer {
     }
 
     .hamburger.toggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
+        transform: rotate(-45deg) translateY(8px);
+        transform-origin: center;
     }
 
     .hamburger.toggle .line2 {
@@ -1660,7 +1663,8 @@ footer {
     }
 
     .hamburger.toggle .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
+        transform: rotate(45deg) translateY(-8px);
+        transform-origin: center;
     }
 
     /* Scroll indicator for mobile menu */
