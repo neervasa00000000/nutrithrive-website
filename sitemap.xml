@@ -6,13 +6,13 @@
   <!-- ============================================ -->
   <url>
     <loc>https://nutrithrive.com.au/</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/index.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/contact</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -103,12 +103,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/products/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://nutrithrive.com.au/pages/homepage/index.html</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -127,35 +121,18 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Legacy/Alternative Paths -->
-  <url>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
   <!-- ============================================ -->
   <!-- BLOG - Main Index -->
   <!-- ============================================ -->
   <url>
     <loc>https://nutrithrive.com.au/blog/</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/index.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -189,6 +166,18 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/affordable-food-budget-eating-family-australia-complete-guide-2026.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/american-spice-renaissance-dried-curry-leaves-market-analysis-2026.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/australia-summer-2026-trends-travel-shopping-wellness-guide.html</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -249,6 +238,12 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/black-tea-benefits-caffeine-australia.html</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -495,7 +490,7 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/moringa-powder-athletes-performance-benefits-australia-2026.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -543,7 +538,7 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/moringa-vs-matcha-energy-metabolism-2026.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -561,6 +556,12 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/moringa-vs-superfoods-comparison-australia-2026.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -597,6 +598,12 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/post-animal-economy-vegan-ecosystem-2026.html</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
