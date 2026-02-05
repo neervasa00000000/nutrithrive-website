@@ -2617,6 +2617,62 @@ footer {
     margin-top: 2rem;
 }
 
+/* Wellness Shift section layout with product card and Apple Pay CTA */
+.wellness-shift-layout {
+    margin: 3rem 0;
+}
+
+.wellness-shift-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.wellness-shift-product .wellness-product-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.wellness-product-image {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+.wellness-product-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 0.25rem;
+}
+
+.wellness-product-price {
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+    color: #2d5a3d;
+}
+
+.blog-applepay-wrapper {
+    margin-top: 0.75rem;
+}
+
+.blog-applepay-label {
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .wellness-shift-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Product Benefits Section */
 .product-benefits {
     margin: 2rem 0;

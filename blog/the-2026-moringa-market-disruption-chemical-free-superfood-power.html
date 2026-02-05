@@ -223,17 +223,41 @@
 
         <hr />
 
-        <h2>The Australian Wellness Shift: From Luxury Labels to Real Results</h2>
-        <p>Search interest across Australia is rising fast for:</p>
-        <ul>
-          <li>affordable superfoods Australia</li>
-          <li>clean supplements without fillers</li>
-          <li>natural energy powder no caffeine</li>
-          <li>gut health green powder Australia</li>
-          <li>chemical free wellness supplements</li>
-        </ul>
+        <section class="wellness-shift-layout">
+          <div class="wellness-shift-grid">
+            <div class="wellness-shift-copy">
+              <h2>The Australian Wellness Shift: From Luxury Labels to Real Results</h2>
+              <p>Search interest across Australia is rising fast for:</p>
+              <ul>
+                <li>affordable superfoods Australia</li>
+                <li>clean supplements without fillers</li>
+                <li>natural energy powder no caffeine</li>
+                <li>gut health green powder Australia</li>
+                <li>chemical free wellness supplements</li>
+              </ul>
 
-        <p>Consumers are tired of paying for branding, consuming industrial additives, and guessing what’s actually inside. Instead, they want transparent sourcing, real nutrition, ethical pricing, and no chemicals or fillers.</p>
+              <p>Consumers are tired of paying for branding, consuming industrial additives, and guessing what’s actually inside. Instead, they want transparent sourcing, real nutrition, ethical pricing, and no chemicals or fillers.</p>
+            </div>
+            <aside class="wellness-shift-product" aria-label="Nutri Thrive Moringa quick checkout">
+              <div class="wellness-product-card">
+                <img src="/shared/images/Home%20page%20/webp/Moringa.webp"
+                     alt="Nutri Thrive Pure Moringa Powder 100g pouch"
+                     class="wellness-product-image"
+                     loading="lazy"
+                     width="320"
+                     height="400">
+                <div class="wellness-product-text">
+                  <h3 class="wellness-product-title">Nutri Thrive Pure Moringa Powder</h3>
+                  <p class="wellness-product-price">$10.50 • 100g pack</p>
+                </div>
+                <div id="blog-applepay-wrapper" class="blog-applepay-wrapper" style="display: none; text-align: center;">
+                  <p class="blog-applepay-label">Pay quickly with Apple&nbsp;Pay</p>
+                  <div id="blog-applepay-container" class="blog-applepay-container" style="display: inline-block;"></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
 
         <h2>The “Organic Tax” – Why Australians Are Overpaying</h2>
         <p>Premium brands selling “certified organic” moringa often charge <strong>$45–$55 per 100g</strong>. Our market read is simple: a meaningful portion of that price frequently goes toward certification overhead and marketing, not necessarily better leaves.</p>
@@ -403,6 +427,158 @@
     </div>
   </footer>
 
+  <!-- Apple Pay via PayPal for blog quick checkout -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=applepay"></script>
+  <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
+  <script>
+    (function () {
+      function setupBlogApplePay() {
+        var wrapper = document.getElementById('blog-applepay-wrapper');
+        var container = document.getElementById('blog-applepay-container');
+        if (!wrapper || !container) return;
+
+        // Hide by default and clear any previous content
+        wrapper.style.display = 'none';
+        container.innerHTML = '';
+
+        if (typeof ApplePaySession === 'undefined' || !ApplePaySession.canMakePayments()) return;
+        if (typeof paypal === 'undefined' || !paypal.Applepay) return;
+
+        var applepay = paypal.Applepay();
+
+        applepay.config()
+          .then(function (config) {
+            if (!config || !config.isEligible) return;
+
+            wrapper.style.display = 'block';
+            container.innerHTML =
+              '<apple-pay-button id="blog-applepay-btn" buttonstyle="black" type="buy" locale="en" style="transform: scale(1.15); -webkit-transform: scale(1.15); transform-origin: center; -webkit-transform-origin: center;"></apple-pay-button>';
+
+            var button = document.getElementById('blog-applepay-btn');
+            if (!button) return;
+
+            button.addEventListener('click', function () {
+              try {
+                var price = 10.50;
+                var subtotal = price;
+                var shippingCost = 0.00; // Assumption: shipping handled separately or included in price.
+                var total = subtotal + shippingCost;
+
+                var paymentRequest = {
+                  countryCode: config.countryCode,
+                  merchantCapabilities: config.merchantCapabilities,
+                  supportedNetworks: config.supportedNetworks,
+                  currencyCode: "AUD",
+                  requiredShippingContactFields: ["name", "phone", "email", "postalAddress"],
+                  requiredBillingContactFields: ["postalAddress"],
+                  total: {
+                    label: "NutriThrive",
+                    type: "final",
+                    amount: total.toFixed(2)
+                  }
+                };
+
+                var session = new ApplePaySession(4, paymentRequest);
+
+                session.onvalidatemerchant = function (event) {
+                  applepay.validateMerchant({
+                    validationUrl: event.validationURL,
+                    displayName: "NutriThrive"
+                  })
+                    .then(function (result) {
+                      session.completeMerchantValidation(result.merchantSession);
+                    })
+                    .catch(function (err) {
+                      console.error('Apple Pay merchant validation failed (blog)', err);
+                      session.abort();
+                    });
+                };
+
+                session.onpaymentauthorized = function (event) {
+                  fetch("/.netlify/functions/paypal-create-order", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      amount: total.toFixed(2),
+                      subtotal: subtotal.toFixed(2),
+                      shipping: shippingCost.toFixed(2),
+                      items: [
+                        {
+                          id: "moringa-powder",
+                          name: "Moringa Powder 100g",
+                          unitPrice: subtotal.toFixed(2),
+                          quantity: 1
+                        }
+                      ]
+                    })
+                  })
+                    .then(function (res) {
+                      return res.json().then(function (data) {
+                        return { ok: res.ok, data: data };
+                      });
+                    })
+                    .then(function (response) {
+                      if (!response.ok) {
+                        throw new Error(response.data.error || "Failed to create order");
+                      }
+                      var orderId = response.data.orderID || response.data.id;
+                      if (!orderId) {
+                        throw new Error("No order ID returned from server.");
+                      }
+
+                      return applepay.confirmOrder({
+                        orderId: orderId,
+                        token: event.payment.token,
+                        billingContact: event.payment.billingContact
+                      }).then(function () {
+                        session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                        return orderId;
+                      });
+                    })
+                    .then(function (orderId) {
+                      return fetch("/.netlify/functions/paypal-capture-order", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ orderID: orderId })
+                      }).then(function (res) {
+                        return res.json().then(function (data) {
+                          if (!res.ok) {
+                            throw new Error(data.error || "Payment failed");
+                          }
+                          console.log("Blog Apple Pay payment successful:", data);
+                          window.location.href = "/thank-you.html?orderId=" + orderId;
+                        });
+                      });
+                    })
+                    .catch(function (err) {
+                      console.error("Blog Apple Pay payment error:", err);
+                      session.completePayment(ApplePaySession.STATUS_FAILURE);
+                      alert("Apple Pay payment error: " + (err.message || "Unknown error"));
+                    });
+                };
+
+                session.oncancel = function () {
+                  console.log("Blog Apple Pay payment cancelled");
+                };
+
+                session.begin();
+              } catch (err) {
+                console.error("Error starting blog Apple Pay session:", err);
+              }
+            });
+          })
+          .catch(function (err) {
+            console.error("Error fetching Apple Pay config for blog:", err);
+          });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupBlogApplePay);
+      } else {
+        setupBlogApplePay();
+      }
+    })();
+  </script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
