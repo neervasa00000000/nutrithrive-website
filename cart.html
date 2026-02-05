@@ -297,9 +297,9 @@
                 <!-- Countries will be populated dynamically -->
                 </select>
             </div>
-            <div id="applepay-wrapper" style="margin-bottom: 1.5rem; display: none;">
-                <p style="margin: 0 0 0.5rem; font-weight: 600;">Or pay quickly with Apple&nbsp;Pay</p>
-                <div id="applepay-container"></div>
+            <div id="applepay-wrapper" style="margin-bottom: 1.5rem; display: none; text-align: center;">
+                <p style="margin: 0 0 0.75rem; font-weight: 600;">Pay quickly with Apple&nbsp;Pay</p>
+                <div id="applepay-container" style="display: inline-block;"></div>
             </div>
             <div id="paypal-button-container"></div>
         </div>
@@ -766,7 +766,7 @@
                     // Show wrapper and render Apple Pay button
                     wrapper.style.display = 'block';
                     container.innerHTML =
-                        '<apple-pay-button id="nt-applepay-btn" buttonstyle="black" type="buy" locale="en"></apple-pay-button>';
+                        '<apple-pay-button id="nt-applepay-btn" buttonstyle="black" type="buy" locale="en" style="transform: scale(1.25); -webkit-transform: scale(1.25); transform-origin: center; -webkit-transform-origin: center;"></apple-pay-button>';
 
                     const button = document.getElementById('nt-applepay-btn');
                     if (!button) {
