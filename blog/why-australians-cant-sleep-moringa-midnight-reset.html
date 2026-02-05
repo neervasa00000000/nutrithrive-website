@@ -119,6 +119,92 @@
       ]
     }
     </script>
+    <!-- Product schema (Product + Review snippets for blog CTA) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "NutriThrive Premium Moringa Powder",
+      "description": "100% pure Moringa Oleifera leaf powder. Lab-tested for potency, rich in vitamins and antioxidants. Supports calmer nights, energy, immunity and overall wellness. Free delivery across Victoria.",
+      "image": "https://nutrithrive.com.au/shared/images/Home%20page%20/webp/Moringa.webp",
+      "brand": {
+        "@type": "Brand",
+        "name": "NutriThrive"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "512",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {"@type": "Person", "name": "Sarah M."},
+          "datePublished": "2025-11-15",
+          "reviewBody": "I've been using NutriThrive Moringa for 3 months. My energy is consistently high and I use it in my evening drink for calmer sleep. The powder mixes easily."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {"@type": "Person", "name": "James T."},
+          "datePublished": "2025-12-02",
+          "reviewBody": "NutriThrive stands out for freshness. I use it in a warm drink before bed and have noticed better sleep and faster recovery. Great Australian brand."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {"@type": "Person", "name": "Emma L."},
+          "datePublished": "2025-10-28",
+          "reviewBody": "I started moringa for iron and sleep. My doctor was impressed with my bloods. I take it around 9 PM and sleep more soundly. Easy to add to warm milk."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {"@type": "Person", "name": "Michael R."},
+          "datePublished": "2025-12-10",
+          "reviewBody": "High quality moringa powder. Fast shipping, great service. I use it for digestion and as part of my wind-down routine. 30-day guarantee gave me confidence."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {"@type": "Person", "name": "Lisa K."},
+          "datePublished": "2025-11-22",
+          "reviewBody": "Love this moringa for my nightly routine. Calmer evenings, clearer skin, more energy. Mild taste. Highly recommend for anyone looking for natural sleep support."
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://nutrithrive.com.au/products/product-detail.html",
+        "priceCurrency": "AUD",
+        "price": "10.00",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {"@type": "Organization", "name": "NutriThrive"},
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "AU",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "AUD"},
+          "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "AU"},
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY"},
+            "transitTime": {"@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY"}
+          }
+        }
+      }
+    }
+    </script>
     <style>
         :root {
             --bg: #141414;
@@ -321,21 +407,6 @@
         footer nav { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
         footer a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: var(--secondary-font); }
         footer a:hover { color: var(--text-primary); }
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 1rem 0;
-            border: none;
-            background: none;
-            text-align: left;
-            cursor: pointer;
-            font-size: inherit;
-            font-weight: 600;
-            color: var(--text-primary);
-            font-family: inherit;
-        }
         .toc { margin: 2.5rem 0 !important; padding: 0 !important; background: none !important; border: none !important; border-radius: 0 !important; }
         .toc h3 { margin-bottom: 0.75rem; font-size: 1.15em; color: var(--text-primary); }
         .toc ul { margin: 0; padding-left: 1.5rem; font-size: var(--secondary-font); }
@@ -354,10 +425,43 @@
         .product-cta-inline p { color: var(--text-secondary) !important; font-size: var(--secondary-font); }
         .product-cta-inline a { color: var(--text-primary); text-decoration: none; font-weight: 600; padding: 0.25em 0; border-bottom: 1px solid var(--text-secondary); }
         .product-cta-inline a:hover { border-bottom-color: var(--text-primary); color: var(--text-primary); }
-        .faq-item { margin-bottom: 0.5rem !important; border: none !important; border-radius: 0 !important; background: none !important; border-bottom: 1px solid var(--border) !important; }
-        .faq-question { background: none !important; padding: 1rem 0 !important; }
-        .faq-answer { padding: 0 0 1.25rem 0 !important; background: none !important; }
-        .faq-answer p { margin-bottom: 0; }
+        .product-cta-inline .pay-now-wrap { margin-top: 1.25rem; text-align: center; }
+        .product-cta-inline .pay-now-wrap form { display: inline-grid; justify-items: center; align-content: start; gap: 0.5rem; }
+        .product-cta-inline .pay-now-wrap .pp-btn { text-align: center; border: 1px solid rgba(255,255,255,0.4); border-radius: 0.25rem; min-width: 11.625rem; padding: 0 2rem; height: 2.625rem; font-weight: bold; background: #fff; color: #000; font-family: inherit; font-size: 1rem; cursor: pointer; }
+        .product-cta-inline .pay-now-wrap .pp-attribution { font-size: 0.75rem; color: var(--text-secondary); }
+        .product-cta-inline .pay-now-wrap .pp-attribution img { height: 0.875rem; vertical-align: middle; }
+        .product-cta-inline .cta-links { margin-top: 1rem; }
+        .faq-section.faq-plain {
+            margin: 2.5rem 0 !important;
+            padding: 0 !important;
+            background: none !important;
+            border: none !important;
+            border-radius: 0 !important;
+        }
+        .faq-section.faq-plain .faq-item {
+            margin-bottom: 0 !important;
+            padding: 0 0 1.5rem 0 !important;
+            background: none !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border-bottom: 1px solid var(--border) !important;
+        }
+        .faq-section.faq-plain .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-section.faq-plain .faq-q {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: inherit;
+        }
+        .faq-section.faq-plain .faq-a {
+            display: block !important;
+            padding: 0 0 0 0;
+            margin-bottom: 0;
+            font-size: var(--secondary-font);
+            color: var(--text-secondary);
+        }
+        .faq-section.faq-plain .faq-a p { margin-bottom: 0; }
         @media (max-width: 430px) {
             .navbar { padding: 1rem 1rem; }
             .hero-section { padding: 3.5rem 1rem 2.5rem; }
@@ -681,191 +785,98 @@
                 <div class="product-cta-inline">
                     <h3>Premium Moringa Powder for Calmer Nights</h3>
                     <p>100% organic, lab-tested moringa powder from NutriThrive. Free delivery across Victoria.</p>
-                    <p><a href="https://nutrithrive.com.au/products/">Shop Now</a> · <a href="https://nutrithrive.com.au/products/">View All Products</a></p>
+                    <div class="pay-now-wrap">
+                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank">
+                            <input class="pp-btn" type="submit" value="Pay Now" />
+                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="PayPal, Visa, Mastercard and more" />
+                            <p class="pp-attribution">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" /></p>
+                        </form>
+                    </div>
+                    <p class="cta-links"><a href="https://nutrithrive.com.au/products/product-detail.html">View product details</a> · <a href="https://nutrithrive.com.au/products/">Shop Now</a> · <a href="https://nutrithrive.com.au/products/">View All Products</a></p>
                 </div>
 
                 <h2 id="faq">Frequently Asked Questions (FAQ)</h2>
 
-                <div class="faq-section">
+                <div class="faq-section faq-plain">
                     <div class="faq-item">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
-                            <span>1. Does moringa help with sleep?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Moringa is not a sleeping pill or sedative. It may support sleep naturally by helping calm the nervous system, stabilise blood sugar levels, reduce inflammation, and support gut health — all of which influence sleep quality.</p>
-                        </div>
+                        <p class="faq-q">Q: Does moringa help with sleep?</p>
+                        <div class="faq-a"><p>Moringa is not a sleeping pill or sedative. It may support sleep naturally by helping calm the nervous system, stabilise blood sugar levels, reduce inflammation, and support gut health — all of which influence sleep quality.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
-                            <span>2. Is moringa safe to take at night?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>For most people, moringa is well tolerated as a food-based supplement. Many prefer taking it earlier in the evening rather than right before bed. If you're pregnant, breastfeeding, or taking medication, consult your healthcare professional.</p>
-                        </div>
+                        <p class="faq-q">Q: Is moringa safe to take at night?</p>
+                        <div class="faq-a"><p>For most people, moringa is well tolerated as a food-based supplement. Many prefer taking it earlier in the evening rather than right before bed. If you're pregnant, breastfeeding, or taking medication, consult your healthcare professional.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>3. Can moringa replace melatonin supplements?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Moringa does not contain melatonin. Instead, it provides nutrients like tryptophan, magnesium, and vitamin B6 that may support the body's natural sleep hormone production rather than delivering a synthetic hormone.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Can moringa replace melatonin supplements?</p>
+                        <div class="faq-a"><p>Moringa does not contain melatonin. Instead, it provides nutrients like tryptophan, magnesium, and vitamin B6 that may support the body's natural sleep hormone production rather than delivering a synthetic hormone.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>4. Why do I keep waking up around 3 AM?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Waking between 2–4 AM is often linked to stress hormones like cortisol or drops in blood sugar during the night. When blood sugar dips too low, the body releases adrenaline and cortisol, which can wake you suddenly.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Why do I keep waking up around 3 AM?</p>
+                        <div class="faq-a"><p>Waking between 2–4 AM is often linked to stress hormones like cortisol or drops in blood sugar during the night. When blood sugar dips too low, the body releases adrenaline and cortisol, which can wake you suddenly.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>5. How can moringa help with 3 AM wake-ups?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Moringa has been studied for supporting healthier glucose regulation, which may help reduce sharp blood sugar crashes overnight — one of the triggers for cortisol-related wake-ups.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: How can moringa help with 3 AM wake-ups?</p>
+                        <div class="faq-a"><p>Moringa has been studied for supporting healthier glucose regulation, which may help reduce sharp blood sugar crashes overnight — one of the triggers for cortisol-related wake-ups.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>6. Will moringa make me feel sleepy or drowsy?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Most people don't feel "drugged" or sedated. Instead, many report feeling calmer and more relaxed, which may make it easier to fall asleep naturally.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Will moringa make me feel sleepy or drowsy?</p>
+                        <div class="faq-a"><p>Most people don't feel "drugged" or sedated. Instead, many report feeling calmer and more relaxed, which may make it easier to fall asleep naturally.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>7. How long does moringa take to improve sleep?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Some people notice improvements within a few days, especially if their sleep issues are related to stress or late-night eating. For many, consistent use over 1–3 weeks brings the best results.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: How long does moringa take to improve sleep?</p>
+                        <div class="faq-a"><p>Some people notice improvements within a few days, especially if their sleep issues are related to stress or late-night eating. For many, consistent use over 1–3 weeks brings the best results.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>8. Can I take moringa every night?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Yes, many people use moringa daily as part of a nighttime wellness routine. It's commonly consumed as a whole-food powder or tea rather than a short-term sleep aid.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Can I take moringa every night?</p>
+                        <div class="faq-a"><p>Yes, many people use moringa daily as part of a nighttime wellness routine. It's commonly consumed as a whole-food powder or tea rather than a short-term sleep aid.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>9. What's the best time to take moringa for sleep support?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Most people do best taking it between 8:30 PM and 9:30 PM, giving the body time to relax before bed. Some prefer it earlier if they find it energising.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: What's the best time to take moringa for sleep support?</p>
+                        <div class="faq-a"><p>Most people do best taking it between 8:30 PM and 9:30 PM, giving the body time to relax before bed. Some prefer it earlier if they find it energising.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>10. Should I take moringa on an empty stomach or with food?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Both are fine, but many people prefer it with a warm drink or a small amount of healthy fat (like plant milk or nut butter) for comfort and blood sugar stability.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Should I take moringa on an empty stomach or with food?</p>
+                        <div class="faq-a"><p>Both are fine, but many people prefer it with a warm drink or a small amount of healthy fat (like plant milk or nut butter) for comfort and blood sugar stability.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>11. Does moringa help with anxiety at night?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Moringa may support calmer nervous system activity by influencing neurotransmitter balance and reducing inflammation, which can help with nighttime anxious feelings for some people.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Does moringa help with anxiety at night?</p>
+                        <div class="faq-a"><p>Moringa may support calmer nervous system activity by influencing neurotransmitter balance and reducing inflammation, which can help with nighttime anxious feelings for some people.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>12. Can moringa help with digestion-related sleep problems?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Yes, moringa is often used to support digestion and gut comfort. Since gut health is closely linked to sleep hormone production, better digestion may improve sleep quality.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Can moringa help with digestion-related sleep problems?</p>
+                        <div class="faq-a"><p>Yes, moringa is often used to support digestion and gut comfort. Since gut health is closely linked to sleep hormone production, better digestion may improve sleep quality.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>13. Is moringa stimulating or energising?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Most people find it calming, but some may feel mild energy due to its nutrient density. If this happens, try a smaller dose or take it earlier in the evening.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Is moringa stimulating or energising?</p>
+                        <div class="faq-a"><p>Most people find it calming, but some may feel mild energy due to its nutrient density. If this happens, try a smaller dose or take it earlier in the evening.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>14. Can moringa help with hot nights or night sweats?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Moringa contains compounds studied for anti-inflammatory support, which may help the body regulate heat and cool down more effectively — especially helpful in hot climates.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Can moringa help with hot nights or night sweats?</p>
+                        <div class="faq-a"><p>Moringa contains compounds studied for anti-inflammatory support, which may help the body regulate heat and cool down more effectively — especially helpful in hot climates.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>15. Why are many Australians avoiding melatonin gummies?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Australian regulators like the Therapeutic Goods Administration have issued safety alerts about imported, unregistered melatonin products due to inconsistent dosages and potential overdose risks.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Why are many Australians avoiding melatonin gummies?</p>
+                        <div class="faq-a"><p>Australian regulators like the Therapeutic Goods Administration have issued safety alerts about imported, unregistered melatonin products due to inconsistent dosages and potential overdose risks.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>16. Is moringa suitable for long-term use?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Moringa is a whole plant food traditionally used in many cultures for daily wellness. Many people use it long term as part of a balanced lifestyle.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Is moringa suitable for long-term use?</p>
+                        <div class="faq-a"><p>Moringa is a whole plant food traditionally used in many cultures for daily wellness. Many people use it long term as part of a balanced lifestyle.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>17. Can moringa improve sleep quality, not just help you fall asleep?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Some users report deeper, more refreshing sleep with fewer wake-ups — likely due to improved nervous system calm, blood sugar stability, and digestion.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Can moringa improve sleep quality, not just help you fall asleep?</p>
+                        <div class="faq-a"><p>Some users report deeper, more refreshing sleep with fewer wake-ups — likely due to improved nervous system calm, blood sugar stability, and digestion.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>18. Can I mix moringa with other calming teas or supplements?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Generally yes, but it's best to introduce one new supplement at a time to see how your body responds. Always consult a professional if combining with medications.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Can I mix moringa with other calming teas or supplements?</p>
+                        <div class="faq-a"><p>Generally yes, but it's best to introduce one new supplement at a time to see how your body responds. Always consult a professional if combining with medications.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>19. Is moringa suitable for people sensitive to sleep medications?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>Many people choose moringa because it's not a sedative and doesn't force sleep. However, individual responses vary, so start with a small amount.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: Is moringa suitable for people sensitive to sleep medications?</p>
+                        <div class="faq-a"><p>Many people choose moringa because it's not a sedative and doesn't force sleep. However, individual responses vary, so start with a small amount.</p></div>
                     </div>
-                    <div class="faq-item" >
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
-                            <span>20. What's the simplest way to use moringa for better sleep?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer" style="display: none;">
-                            <p>The easiest method is: Mix 1 teaspoon moringa powder in warm almond or oat milk around 9 PM. Drink slowly as part of a relaxing night routine. Consistency is more important than large doses.</p>
-                        </div>
+                    <div class="faq-item">
+                        <p class="faq-q">Q: What's the simplest way to use moringa for better sleep?</p>
+                        <div class="faq-a"><p>The easiest method is: Mix 1 teaspoon moringa powder in warm almond or oat milk around 9 PM. Drink slowly as part of a relaxing night routine. Consistency is more important than large doses.</p></div>
                     </div>
                 </div>
 
