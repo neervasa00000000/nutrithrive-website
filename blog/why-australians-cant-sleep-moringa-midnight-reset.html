@@ -171,8 +171,11 @@
             align-items: center;
             flex-wrap: wrap;
             padding: 1.25rem 2rem;
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
+        }
+        @media (min-width: 1024px) {
+            .navbar { padding: 1.25rem 4rem; }
         }
         .logo {
             display: flex;
@@ -218,36 +221,43 @@
             margin: 0 auto;
             line-height: 1.7;
         }
-        .breadcrumb-wrapper { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem 0; }
+        .breadcrumb-wrapper { max-width: 100%; margin: 0 auto; padding: 1rem 2rem 0; }
         .breadcrumb {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             font-size: 0.875rem;
             color: var(--text-muted);
-            padding: 0.75rem 1.25rem;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 2rem;
+            padding: 0;
+            margin-bottom: 1.5rem;
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
         }
         .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
         .breadcrumb span { color: var(--text-muted); }
         .content-wrapper {
-            max-width: 900px;
+            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2rem 3rem 4rem;
             position: relative;
             z-index: 1;
         }
+        @media (min-width: 1024px) {
+            .content-wrapper { padding: 2rem 4rem 4rem; max-width: 1400px; }
+        }
         .content-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(23, 92, 54, 0.08);
+            background: none;
+            backdrop-filter: none;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            margin-bottom: 0;
+            border: none;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
         h2 {
             font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -278,12 +288,45 @@
         footer nav { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
         footer a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-weight: 500; }
         footer a:hover { color: white; }
-        .faq-question { display: flex; justify-content: space-between; align-items: center; }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 0;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-family: inherit;
+        }
+        .toc { margin: 2.5rem 0 !important; padding: 0 !important; background: none !important; border: none !important; border-radius: 0 !important; }
+        .toc h3 { margin-bottom: 0.75rem; }
+        .toc ul { margin: 0; padding-left: 1.5rem; }
+        .toc a { color: var(--primary); text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        .hub-links { margin: 2rem 0 !important; padding: 0 !important; background: none !important; border: none !important; border-radius: 0 !important; }
+        .hub-links a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        .hub-links a:hover { text-decoration: underline; }
+        .hub-links h3 { margin-bottom: 0.5rem; }
+        .hub-links ul { margin: 0; padding-left: 1.5rem; }
+        .sources-section { margin: 3rem 0 !important; padding: 0 !important; background: none !important; border: none !important; border-radius: 0 !important; }
+        .product-cta-inline { margin: 3rem 0 !important; padding: 2rem 0 !important; background: none !important; border-radius: 0 !important; box-shadow: none !important; border-top: 1px solid rgba(23,92,54,0.2); border-bottom: 1px solid rgba(23,92,54,0.2); text-align: left !important; }
+        .product-cta-inline h3 { color: var(--primary) !important; }
+        .product-cta-inline p { color: var(--text-secondary) !important; }
+        .product-cta-inline a { color: var(--primary); text-decoration: none; font-weight: 600; padding: 0.25em 0; border-bottom: 1px solid var(--primary); }
+        .product-cta-inline a:hover { border-bottom-color: var(--primary-dark); color: var(--primary-dark); }
+        .faq-item { margin-bottom: 0.5rem !important; border: none !important; border-radius: 0 !important; background: none !important; border-bottom: 1px solid rgba(23,92,54,0.12) !important; }
+        .faq-question { background: none !important; padding: 1rem 0 !important; }
+        .faq-answer { padding: 0 0 1.25rem 0 !important; background: none !important; }
+        .faq-answer p { margin-bottom: 0; }
         @media (max-width: 768px) {
             .navbar { padding: 1rem 1.5rem; }
             .hero-section { padding: 4rem 1.5rem 3rem; }
             .content-wrapper { padding: 2rem 1.5rem; }
-            .content-card { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -342,31 +385,30 @@
 
                 <p>This article explains — without hype — how sleep breaks down, why night wake-ups happen, and how moringa may support the body's natural nighttime recovery.</p>
 
-                <nav class="toc" aria-label="Table of contents" style="margin: 2.5rem 0; padding: 1.5rem 1.75rem; background: #f0f8f3; border-radius: 12px; border-left: 4px solid var(--primary);">
-                    <h3 style="margin-top: 0; margin-bottom: 1rem; font-size: 1.15rem; color: var(--primary);">In this article</h3>
-                    <ul style="list-style: none; padding-left: 0; margin: 0;">
-                        <li style="margin: 0.5rem 0;"><a href="#late-night-brain" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">The Late-Night Brain: Why 9 PM to 2 AM Feels So Different</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#sleep-nervous-system" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">Sleep Isn't Just About Melatonin: It's About Your Nervous System</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#where-moringa-fits" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">Where Moringa Fits: Calm Support Without "Knocking You Out"</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#3am-wake-up" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">The 3 AM Wake-Up: The Blood Sugar + Cortisol Connection</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#gut-brain-axis" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">The Gut–Brain Axis: Why Digestion and Sleep Are Linked</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#cooling-body" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">Cooling the Body for Sleep</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#australian-sleep-crisis" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">The Australian Sleep Crisis — Localised</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#midnight-reset-routine" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">A Simple "Midnight Reset" Routine</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#final-thoughts" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">Final Thoughts</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="#faq" style="color: #2d5a3d; text-decoration: none; font-weight: 500;">Frequently Asked Questions</a></li>
+                <nav class="toc" aria-label="Table of contents">
+                    <h3>In this article</h3>
+                    <ul>
+                        <li><a href="#late-night-brain">The Late-Night Brain: Why 9 PM to 2 AM Feels So Different</a></li>
+                        <li><a href="#sleep-nervous-system">Sleep Isn't Just About Melatonin: It's About Your Nervous System</a></li>
+                        <li><a href="#where-moringa-fits">Where Moringa Fits: Calm Support Without "Knocking You Out"</a></li>
+                        <li><a href="#3am-wake-up">The 3 AM Wake-Up: The Blood Sugar + Cortisol Connection</a></li>
+                        <li><a href="#gut-brain-axis">The Gut–Brain Axis: Why Digestion and Sleep Are Linked</a></li>
+                        <li><a href="#cooling-body">Cooling the Body for Sleep</a></li>
+                        <li><a href="#australian-sleep-crisis">The Australian Sleep Crisis — Localised</a></li>
+                        <li><a href="#midnight-reset-routine">A Simple "Midnight Reset" Routine</a></li>
+                        <li><a href="#final-thoughts">Final Thoughts</a></li>
+                        <li><a href="#faq">Frequently Asked Questions</a></li>
                     </ul>
                 </nav>
 
-                <div class="hub-links" style="margin: 2rem 0; padding: 1.5rem; background: #e8f5ed; border-radius: 12px; border-left: 4px solid #175c36;">
-                    <h3 style="color: #175c36; margin-top: 0; font-size: 1.25rem;">Explore our content hubs</h3>
-                    <p style="color: #5A6D5D; margin-bottom: 1rem;">More guides and articles by topic:</p>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li style="margin: 0.5rem 0;"><a href="/blog/why-australians-cant-sleep-moringa-midnight-reset.html" style="color: #175c36; font-weight: 600; text-decoration: none;">Sleep & Moringa (this article)</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="/blog/moringa-adaptogen-stress-relief-cortisol-balance.html" style="color: #175c36; font-weight: 600; text-decoration: none;">Stress & Adrenal Health Hub</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="/blog/moringa-benefits-australia-2026.html" style="color: #175c36; font-weight: 600; text-decoration: none;">Moringa Benefits Hub</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="/blog/gut-health-superfoods-complete-guide-australia-2026.html" style="color: #175c36; font-weight: 600; text-decoration: none;">Gut Health & Superfoods Hub</a></li>
-                        <li style="margin: 0.5rem 0;"><a href="/blog/how-to-add-moringa-to-diet.html" style="color: #175c36; font-weight: 600; text-decoration: none;">How to Use Moringa</a></li>
+                <div class="hub-links">
+                    <h3>Explore our content hubs</h3>
+                    <ul>
+                        <li><a href="/blog/why-australians-cant-sleep-moringa-midnight-reset.html">Sleep & Moringa (this article)</a></li>
+                        <li><a href="/blog/moringa-adaptogen-stress-relief-cortisol-balance.html">Stress & Adrenal Health Hub</a></li>
+                        <li><a href="/blog/moringa-benefits-australia-2026.html">Moringa Benefits Hub</a></li>
+                        <li><a href="/blog/gut-health-superfoods-complete-guide-australia-2026.html">Gut Health & Superfoods Hub</a></li>
+                        <li><a href="/blog/how-to-add-moringa-to-diet.html">How to Use Moringa</a></li>
                     </ul>
                 </div>
 
@@ -579,223 +621,211 @@
 
                 <p>That's the real measure.</p>
 
-                <section class="sources-section" style="margin: 3rem 0; padding: 2rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #175c36;">
-                    <h2 style="color: #175c36; margin-top: 0; font-size: 1.5rem;">Sources &amp; References</h2>
-                    <p style="color: #5A6D5D; line-height: 1.7; margin-bottom: 1rem;">This article is for educational purposes and draws on research and trusted sources. It is not medical advice. Always consult a healthcare professional for personal health decisions.</p>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: #175c36;">•</span> Moringa oleifera and GABA/glutamate balance — fermented moringa leaf extracts (research on nervous system support).</li>
-                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: #175c36;">•</span> Glucose regulation and blood sugar stability — moringa and glucose tolerance studies.</li>
-                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: #175c36;">•</span> Gut–brain axis, serotonin and melatonin production — digestive health and sleep.</li>
-                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: #175c36;">•</span> Therapeutic Goods Administration (TGA) — safety alerts on imported/unregistered melatonin products (Australia).</li>
-                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: #175c36;">•</span> NutriThrive product information and quality assurance.</li>
+                <section class="sources-section">
+                    <h2>Sources &amp; References</h2>
+                    <p>This article is for educational purposes and draws on research and trusted sources. It is not medical advice. Always consult a healthcare professional for personal health decisions.</p>
+                    <ul>
+                        <li>Moringa oleifera and GABA/glutamate balance — fermented moringa leaf extracts (research on nervous system support).</li>
+                        <li>Glucose regulation and blood sugar stability — moringa and glucose tolerance studies.</li>
+                        <li>Gut–brain axis, serotonin and melatonin production — digestive health and sleep.</li>
+                        <li>Therapeutic Goods Administration (TGA) — safety alerts on imported/unregistered melatonin products (Australia).</li>
+                        <li>NutriThrive product information and quality assurance.</li>
                     </ul>
-                    <p style="font-size: 0.9rem; color: #5A6D5D; margin-top: 1.5rem; font-style: italic;"><strong>Disclaimer:</strong> This content is for general information only and does not replace professional medical advice. Speak to your doctor or qualified health provider before changing your diet or supplement routine.</p>
+                    <p><strong>Disclaimer:</strong> This content is for general information only and does not replace professional medical advice. Speak to your doctor or qualified health provider before changing your diet or supplement routine.</p>
                 </section>
 
-                <!-- Product CTA -->
-                <div class="product-cta-inline" style="margin: 3rem 0; padding: 2.5rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); border-radius: 16px; text-align: center; color: white; box-shadow: 0 8px 32px rgba(23, 92, 54, 0.3);">
-                    <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700;">🌿 Premium Moringa Powder for Calmer Nights</h3>
-                    <p style="color: #e8f5ed; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">100% organic, lab-tested moringa powder from NutriThrive. Free delivery across Victoria.</p>
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="https://nutrithrive.com.au/products/" style="display: inline-block; padding: 1rem 2.5rem; background: white; color: #175c36; text-decoration: none; border-radius: 50px; font-weight: 700;">Shop Now</a>
-                        <a href="https://nutrithrive.com.au/products/" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; border: 2px solid white;">View All Products</a>
-                    </div>
+                <div class="product-cta-inline">
+                    <h3>Premium Moringa Powder for Calmer Nights</h3>
+                    <p>100% organic, lab-tested moringa powder from NutriThrive. Free delivery across Victoria.</p>
+                    <p><a href="https://nutrithrive.com.au/products/">Shop Now</a> · <a href="https://nutrithrive.com.au/products/">View All Products</a></p>
                 </div>
 
                 <h2 id="faq">Frequently Asked Questions (FAQ)</h2>
 
-                <div class="faq-section" style="margin-top: 2rem;">
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
                             <span>1. Does moringa help with sleep?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Moringa is not a sleeping pill or sedative. It may support sleep naturally by helping calm the nervous system, stabilise blood sugar levels, reduce inflammation, and support gut health — all of which influence sleep quality.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
                             <span>2. Is moringa safe to take at night?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>For most people, moringa is well tolerated as a food-based supplement. Many prefer taking it earlier in the evening rather than right before bed. If you're pregnant, breastfeeding, or taking medication, consult your healthcare professional.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>3. Can moringa replace melatonin supplements?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Moringa does not contain melatonin. Instead, it provides nutrients like tryptophan, magnesium, and vitamin B6 that may support the body's natural sleep hormone production rather than delivering a synthetic hormone.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>4. Why do I keep waking up around 3 AM?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Waking between 2–4 AM is often linked to stress hormones like cortisol or drops in blood sugar during the night. When blood sugar dips too low, the body releases adrenaline and cortisol, which can wake you suddenly.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>5. How can moringa help with 3 AM wake-ups?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Moringa has been studied for supporting healthier glucose regulation, which may help reduce sharp blood sugar crashes overnight — one of the triggers for cortisol-related wake-ups.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>6. Will moringa make me feel sleepy or drowsy?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Most people don't feel "drugged" or sedated. Instead, many report feeling calmer and more relaxed, which may make it easier to fall asleep naturally.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>7. How long does moringa take to improve sleep?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Some people notice improvements within a few days, especially if their sleep issues are related to stress or late-night eating. For many, consistent use over 1–3 weeks brings the best results.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>8. Can I take moringa every night?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Yes, many people use moringa daily as part of a nighttime wellness routine. It's commonly consumed as a whole-food powder or tea rather than a short-term sleep aid.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>9. What's the best time to take moringa for sleep support?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Most people do best taking it between 8:30 PM and 9:30 PM, giving the body time to relax before bed. Some prefer it earlier if they find it energising.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>10. Should I take moringa on an empty stomach or with food?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Both are fine, but many people prefer it with a warm drink or a small amount of healthy fat (like plant milk or nut butter) for comfort and blood sugar stability.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>11. Does moringa help with anxiety at night?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Moringa may support calmer nervous system activity by influencing neurotransmitter balance and reducing inflammation, which can help with nighttime anxious feelings for some people.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>12. Can moringa help with digestion-related sleep problems?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Yes, moringa is often used to support digestion and gut comfort. Since gut health is closely linked to sleep hormone production, better digestion may improve sleep quality.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>13. Is moringa stimulating or energising?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Most people find it calming, but some may feel mild energy due to its nutrient density. If this happens, try a smaller dose or take it earlier in the evening.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>14. Can moringa help with hot nights or night sweats?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Moringa contains compounds studied for anti-inflammatory support, which may help the body regulate heat and cool down more effectively — especially helpful in hot climates.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>15. Why are many Australians avoiding melatonin gummies?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Australian regulators like the Therapeutic Goods Administration have issued safety alerts about imported, unregistered melatonin products due to inconsistent dosages and potential overdose risks.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>16. Is moringa suitable for long-term use?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Moringa is a whole plant food traditionally used in many cultures for daily wellness. Many people use it long term as part of a balanced lifestyle.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>17. Can moringa improve sleep quality, not just help you fall asleep?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Some users report deeper, more refreshing sleep with fewer wake-ups — likely due to improved nervous system calm, blood sugar stability, and digestion.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>18. Can I mix moringa with other calming teas or supplements?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Generally yes, but it's best to introduce one new supplement at a time to see how your body responds. Always consult a professional if combining with medications.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>19. Is moringa suitable for people sensitive to sleep medications?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>Many people choose moringa because it's not a sedative and doesn't force sleep. However, individual responses vary, so start with a small amount.</p>
                         </div>
                     </div>
-                    <div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #f8f9fa; border: none; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #2d5a3d;">
+                    <div class="faq-item" >
+                        <button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" >
                             <span>20. What's the simplest way to use moringa for better sleep?</span>
                             <span class="faq-icon">+</span>
                         </button>
-                        <div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
+                        <div class="faq-answer" style="display: none;">
                             <p>The easiest method is: Mix 1 teaspoon moringa powder in warm almond or oat milk around 9 PM. Drink slowly as part of a relaxing night routine. Consistency is more important than large doses.</p>
                         </div>
                     </div>
                 </div>
 
-                <div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 12px; border-top: 3px solid #2d5a3d;">
-                    <h3 style="font-size: 1.5rem; color: #2d5a3d; margin-bottom: 1rem;">Explore More from NutriThrive</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.75rem;"><a href="/blog/moringa-adaptogen-stress-relief-cortisol-balance.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Moringa for Stress & Cortisol Balance</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="/blog/how-to-add-moringa-to-diet.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ How to Add Moringa to Your Diet</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="/blog/moringa-benefits-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Moringa Benefits Australia 2026</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="/blog/" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Browse All Articles</a></li>
-                    </ul>
-                </div>
+                <p style="margin-top: 3rem;"><strong>Explore more:</strong> <a href="/blog/moringa-adaptogen-stress-relief-cortisol-balance.html">Moringa for Stress & Cortisol Balance</a> · <a href="/blog/how-to-add-moringa-to-diet.html">How to Add Moringa to Your Diet</a> · <a href="/blog/moringa-benefits-australia-2026.html">Moringa Benefits Australia 2026</a> · <a href="/blog/">Browse All Articles</a></p>
 
             </div>
         </div>
