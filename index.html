@@ -93,7 +93,30 @@
       #our-products .home-product-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; align-items: stretch; max-width: 1200px; margin: 0 auto; }
       @media (max-width: 1200px) { #our-products .home-product-grid { grid-template-columns: repeat(3, 1fr); } }
       @media (max-width: 900px) { #our-products .home-product-grid { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 600px) { #our-products .home-product-grid { grid-template-columns: 1fr; } }
+      /* Mobile: horizontal scroll left-to-right instead of vertical stack */
+      @media (max-width: 600px) {
+        #our-products .home-product-grid {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x mandatory;
+          gap: 1rem;
+          padding-bottom: 0.5rem;
+          margin-left: -1.5rem;
+          margin-right: -1.5rem;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+          max-width: none;
+        }
+        #our-products .home-product-card {
+          flex: 0 0 auto;
+          min-width: 260px;
+          max-width: 280px;
+          scroll-snap-align: start;
+        }
+      }
     </style>
     <!-- Local Business Schema -->
     <script type="application/ld+json">
