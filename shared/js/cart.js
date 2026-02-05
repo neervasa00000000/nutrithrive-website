@@ -250,3 +250,20 @@ window.Cart = {
     getTotal: getCartTotal,
     updateUI: updateCartUI
 };
+
+// Simple helper for inline "Add to Cart" buttons on pages like the homepage.
+// Example usage in HTML:
+//   onclick="addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'image-url')"
+window.addProductToCart = function(id, name, price, image) {
+    if (window.Cart && window.Cart.add) {
+        window.Cart.add({
+            id: id,
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+    } else {
+        console.error('Cart is not initialized');
+    }
+};
