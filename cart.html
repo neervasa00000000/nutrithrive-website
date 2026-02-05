@@ -780,6 +780,8 @@
                                 merchantCapabilities: applepayConfig.merchantCapabilities,
                                 supportedNetworks: applepayConfig.supportedNetworks,
                                 currencyCode: "AUD",
+                                requiredShippingContactFields: ["name", "phone", "email", "postalAddress"],
+                                requiredBillingContactFields: ["postalAddress"],
                                 total: {
                                     label: "NutriThrive",
                                     type: "final",
