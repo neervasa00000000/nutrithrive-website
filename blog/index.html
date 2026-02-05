@@ -75,8 +75,9 @@
     <link rel="canonical" href="https://nutrithrive.com.au/blog/">
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/">
+    <meta name="theme-color" content="#141414">
 </head>
-<body>
+<body class="blog-index-page">
     <header>
         <div class="navbar">
             <a href="/" class="logo">
@@ -1479,5 +1480,29 @@
         }
     </script>
     <script src="../shared/js/newsletter-popup.js" defer></script>
+    <!-- Blog index dark theme: load last so it overrides shared styles -->
+    <style>
+        body.blog-index-page { background: #141414 !important; color: #ffffff !important; }
+        body.blog-index-page header { background: #141414 !important; border-bottom: 1px solid rgba(255,255,255,0.12) !important; }
+        body.blog-index-page .navbar .logo { color: #ffffff !important; }
+        body.blog-index-page .navbar .logo img { filter: brightness(0) invert(1) !important; }
+        body.blog-index-page .nav-links a { color: rgba(255,255,255,0.85) !important; }
+        body.blog-index-page .nav-links a:hover, body.blog-index-page .nav-links a.active { color: #ffffff !important; }
+        body.blog-index-page main section:first-of-type h1 { color: #ffffff !important; }
+        body.blog-index-page main section:first-of-type h2 { color: rgba(255,255,255,0.8) !important; }
+        body.blog-index-page .blog-list-section { border-top: 1px solid rgba(255,255,255,0.12) !important; padding: 2.5rem 2rem 4rem !important; }
+        body.blog-index-page .blog-post-card { background: none !important; border-radius: 0 !important; box-shadow: none !important; border-bottom: 1px solid rgba(255,255,255,0.12) !important; padding: 2rem 0 !important; }
+        body.blog-index-page .blog-post-card:last-child { border-bottom: none !important; }
+        body.blog-index-page .blog-post-card:hover { transform: none !important; box-shadow: none !important; }
+        body.blog-index-page .post-title a { color: #ffffff !important; }
+        body.blog-index-page .post-title a:hover { text-decoration: underline; }
+        body.blog-index-page .post-meta { color: rgba(255,255,255,0.65) !important; }
+        body.blog-index-page .post-excerpt { color: rgba(255,255,255,0.85) !important; }
+        body.blog-index-page .read-more-btn { color: #ffffff !important; border: 1px solid rgba(255,255,255,0.5) !important; background: transparent !important; }
+        body.blog-index-page .read-more-btn:hover { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.8) !important; }
+        body.blog-index-page footer { background: #141414 !important; border-top: 1px solid rgba(255,255,255,0.12) !important; }
+        body.blog-index-page footer, body.blog-index-page footer a { color: rgba(255,255,255,0.75) !important; }
+        body.blog-index-page footer a:hover { color: #ffffff !important; }
+    </style>
 </body>
 </html> 
