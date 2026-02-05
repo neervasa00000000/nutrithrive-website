@@ -91,9 +91,18 @@
     <link rel="preload" href="/pages/homepage/homepage.js" as="script">
     <style>
       #our-products .home-product-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; align-items: stretch; max-width: 1200px; margin: 0 auto; }
-      /* Desktop/tablet: align card bottoms and Add to Cart buttons */
+      /* Desktop/tablet: align card bottoms and Add to Cart buttons; center content */
       #our-products .home-product-card { align-items: stretch; }
-      #our-products .home-product-card > div:last-of-type { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+      #our-products .home-product-card > div:first-of-type { display: flex; align-items: center; justify-content: center; }
+      #our-products .home-product-card > div:last-of-type {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 0;
+        text-align: center;
+        align-items: center;
+      }
+      #our-products .home-product-card > div:last-of-type > div { justify-content: center; }
       #our-products .home-product-card button {
         margin-top: auto;
         width: 100%;
@@ -106,7 +115,7 @@
         font-weight: 600;
         font-size: 0.85rem;
         letter-spacing: 0.05em;
-        text-align: left;
+        text-align: center;
         text-decoration: underline;
       }
       #our-products .home-product-card button:hover { text-decoration: none; opacity: 0.85; }
