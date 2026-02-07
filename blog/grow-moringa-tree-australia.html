@@ -809,16 +809,52 @@
                 </nav>
             </div>
 
+    <!-- What You'll Learn Section -->
+    <section style="background:transparent;padding:2rem 1rem;margin:2rem 0;border-top:2px solid #e0e0e0;border-bottom:2px solid #e0e0e0;">
+      <h2 style="color:#000000;margin-top:0;font-size:1.75rem;font-weight:700;">📚 What You'll Learn in This Complete Guide</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem;">
+        <div>
+          <h3 style="color:#000000;font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">🌱 Growing Basics</h3>
+          <ul style="margin:0;padding-left:1.5rem;line-height:1.8;color:#000000;">
+            <li>Climate requirements for Australian moringa growing</li>
+            <li>Soil preparation and seed germination</li>
+            <li>Watering schedules and care routines</li>
+            <li>Pruning techniques for optimal growth</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:#000000;font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">❄️ Frost Protection</h3>
+          <ul style="margin:0;padding-left:1.5rem;line-height:1.8;color:#000000;">
+            <li>Melbourne & southern Australia strategies</li>
+            <li>Pot growing and indoor options</li>
+            <li>Microclimate optimization</li>
+            <li>Winter dormancy management</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:#000000;font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">🌿 Harvesting & Use</h3>
+          <ul style="margin:0;padding-left:1.5rem;line-height:1.8;color:#000000;">
+            <li>When and how to harvest leaves</li>
+            <li>Making moringa powder at home</li>
+            <li>Yearly growing calendar</li>
+            <li>Troubleshooting common issues</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem;color:#666;font-size:0.95rem;"><strong>⏱️ Read time:</strong> 8-10 minutes | <strong>Last updated:</strong> January 2026</p>
+    </section>
+
     <!-- 2026 Grower's Stories: Real Aussies, Real Results -->
-    <section style="background:#eaf7f0;padding:1.5rem 1rem;margin:2rem 0 1.5rem 0;border-radius:12px;box-shadow:0 2px 12px 0 rgba(23,92,54,0.07);">
-      <h2 style="color:#175c36;margin-top:0;">🌱 2026 Grower's Stories: Real Aussies, Real Results</h2>
-      <ul style="margin:0.5rem 0 1rem 1.2rem;">
-        <li><strong>Melbourne gardener Sarah</strong> grew her first moringa tree in a 60L pot—harvested leaves in just 7 months, even with winter frost!</li>
-        <li><strong>Brisbane family</strong> planted 3 trees in their backyard and now enjoy fresh moringa in smoothies and curries year-round.</li>
-        <li><strong>Pro tip:</strong> Use a mix of compost and sand for fast drainage—moringa hates soggy roots.</li>
+    <section style="background:transparent;padding:1.5rem 0;margin:2rem 0;border-bottom:2px solid #e0e0e0;">
+      <h2 style="color:#000000;margin-top:0;font-size:1.75rem;font-weight:700;">🌱 2026 Grower's Stories: Real Aussies, Real Results</h2>
+      <ul style="margin:0.5rem 0 1rem 1.2rem;line-height:1.8;color:#000000;">
+        <li><strong>Melbourne gardener Sarah</strong> grew her first moringa tree in a 60L pot—harvested leaves in just 7 months, even with winter frost! "The key was moving it indoors during cold snaps," she shares.</li>
+        <li><strong>Brisbane family</strong> planted 3 trees in their backyard and now enjoy fresh moringa in smoothies and curries year-round. "Our trees grow like crazy in the Queensland climate!"</li>
+        <li><strong>Sydney urban gardener</strong> successfully grows moringa on a sunny balcony using 50L pots. "Regular pruning keeps it manageable, and I harvest leaves every 3 weeks."</li>
+        <li><strong>Pro tip:</strong> Use a mix of compost and sand for fast drainage—moringa hates soggy roots. This is crucial for successful moringa cultivation in Australia.</li>
       </ul>
-      <div style="background:#fffbe6;padding:1em 1em;border-radius:8px;margin-top:1em;">
-        <strong>Did you know?</strong> Moringa trees can regrow from the base after frost damage—just prune back and watch them bounce back in spring!
+      <div style="background:transparent;padding:1em;border-left:4px solid #0066cc;border-radius:4px;margin-top:1em;">
+        <p style="margin:0;color:#000000;"><strong>💡 Did you know?</strong> Moringa trees can regrow from the base after frost damage—just prune back and watch them bounce back in spring! This resilience makes moringa growing possible even in cooler Australian regions.</p>
       </div>
     </section>
     <div class="custom-toc">
@@ -1639,5 +1675,30 @@
                 </div>
             </div>
     <script src="../shared/js/newsletter-popup.js" defer></script>
+    <!-- Smooth Scroll for Table of Contents -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add smooth scrolling to all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const headerOffset = 100;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html> 
