@@ -148,6 +148,20 @@
             color: #333;
         }
         
+        /* Logo size constraints */
+        .logo img {
+            max-width: 50px !important;
+            max-height: 50px !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+        }
+        
+        header .logo img {
+            max-width: 50px !important;
+            max-height: 50px !important;
+        }
+        
         /* Mobile styles - Medical News Today inspired */
         @media screen and (max-width: 768px) {
             body {
@@ -714,7 +728,7 @@
     <header>
         <div class="navbar">
             <a href="/" class="logo">
-                <img decoding="async" src="../shared/images/Logo%20/LOGO.webp" alt="NutriThrive Logo" loading="lazy">
+                <img decoding="async" src="../shared/images/Logo%20/LOGO.webp" alt="NutriThrive Logo" loading="lazy" style="max-width: 50px; max-height: 50px; width: auto; height: auto; object-fit: contain;">
                 NutriThrive
             </a>
             <nav class="nav-links">
