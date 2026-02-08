@@ -1145,12 +1145,20 @@
         </div>
     </footer>
 
-    <script src="/shared/js/script.js" defer></script>
-    <script src="/shared/js/cart.js"></script>
+    <script src="../shared/js/script.js" defer></script>
+    <script src="../shared/js/cart.js"></script>
     <script>
         // Function to add product to cart and redirect to cart page (which collects buyer info)
+        // Wait for cart.js to load before defining this function
         function addProductToCartAndRedirect(id, name, price, image) {
-            if (window.Cart && window.Cart.add) {
+            // Ensure Cart is loaded
+            if (typeof window.Cart === 'undefined' || !window.Cart.add) {
+                console.warn('Cart not loaded yet, redirecting to product page');
+                window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+                return;
+            }
+            
+            try {
                 window.Cart.add({
                     id: id,
                     name: name,
@@ -1160,14 +1168,21 @@
                 });
                 // Redirect to cart page which has proper PayPal/Apple Pay with buyer info collection
                 window.location.href = '/cart.html';
-            } else {
+            } catch (error) {
+                console.error('Error adding to cart:', error);
                 // Fallback: redirect to product page
                 window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
             }
         }
         
-        // Make function available globally
-        window.addProductToCartAndRedirect = addProductToCartAndRedirect;
+        // Make function available globally after page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                window.addProductToCartAndRedirect = addProductToCartAndRedirect;
+            });
+        } else {
+            window.addProductToCartAndRedirect = addProductToCartAndRedirect;
+        }
     </script>
 </body>
 </html>
