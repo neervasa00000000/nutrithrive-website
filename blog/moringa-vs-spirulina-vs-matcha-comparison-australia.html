@@ -151,6 +151,18 @@
                 padding: 0.75rem 0.5rem !important;
                 font-size: 0.9rem;
             }
+            
+            .table-of-contents {
+                padding: 1.5rem !important;
+            }
+            
+            .table-of-contents > div {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        .table-of-contents a:hover {
+            background: #0f4a2a !important;
         }
         
         .blog-post-content a {
@@ -455,14 +467,38 @@
                 </p>
             </header>
 
+            <!-- Table of Contents - 3 Main Parts -->
+            <div class="table-of-contents" style="background: linear-gradient(135deg, rgba(23,92,54,0.05) 0%, rgba(23,92,54,0.02) 100%); border-radius: 16px; padding: 2rem; margin: 2rem 0; border-left: 4px solid #175c36;">
+                <h3 style="color: #175c36; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; margin-top: 0;">📋 This Guide Has 3 Main Parts</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h4 style="color: #175c36; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 0;">Part 1: Understanding Moringa</h4>
+                        <p style="color: #4a6741; font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.6;">Learn what moringa is, its incredible benefits, and how to use it in your daily routine.</p>
+                        <a href="#part1-understanding-moringa" style="display: inline-block; padding: 0.6rem 1.5rem; background: #175c36; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: background 0.3s ease;">Jump to Part 1 →</a>
+                    </div>
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h4 style="color: #175c36; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 0;">Part 2: The Power of Moringa</h4>
+                        <p style="color: #4a6741; font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.6;">Discover moringa supplements, tea benefits, and how moringa supports your wellness journey.</p>
+                        <a href="#part2-power-of-moringa" style="display: inline-block; padding: 0.6rem 1.5rem; background: #175c36; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: background 0.3s ease;">Jump to Part 2 →</a>
+                    </div>
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h4 style="color: #175c36; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 0;">Part 3: Head-to-Head Comparison</h4>
+                        <p style="color: #4a6741; font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.6;">Compare Moringa vs Spirulina vs Matcha: nutrition, cost, taste, and which is best for you.</p>
+                        <a href="#part3-comparison" style="display: inline-block; padding: 0.6rem 1.5rem; background: #175c36; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: background 0.3s ease;">Jump to Part 3 →</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="blog-post-content" style="width: 100%; max-width: 100%; padding: 0; line-height: 1.85; font-size: 1.125rem; color: #1a2e22;">
                 
-                <h2>Why This Comparison Matters for Australians</h2>
+                <h2 id="part1-understanding-moringa">Part 1: Understanding Moringa</h2>
+                
+                <h3>Why This Comparison Matters for Australians</h3>
                 <p>Australia's superfood market has exploded in recent years, with health-conscious consumers spending millions on green powders annually. But here's the reality: not all superfoods are created equal. What works for someone in Melbourne might not suit someone in Sydney, and what's affordable for one person might break another's budget.</p>
                 
                 <p>We've spent months researching, testing, and comparing these three powerhouse superfoods specifically for the Australian market. This isn't just another generic comparison—we've factored in local availability, shipping costs, quality standards, and what actually works for Australian lifestyles.</p>
 
-                <h2>What is Moringa? Understanding the Miracle Tree</h2>
+                <h3>What is Moringa? Understanding the Miracle Tree</h3>
                 <p>You might be wondering, what is moringa and what is moringa used for? Every part of this "miracle" botanical—from the moringa leaf and drumstick leaves to the moringa seeds and malunggay seeds—is packed with essential nutrients. Whether you consume it as moringa powder (also known as moringa pulver, moringa em pó, or pó de moringa) or as drumstick vegetable in your cooking, the moringa tree benefits are undeniable.</p>
                 
                 <p>Moringa oleifera is a fast-growing, drought-resistant tree native to the foothills of the Himalayas in India, but now cultivated in many tropical and subtropical regions worldwide. In Australia, moringa is becoming increasingly popular as people discover its remarkable nutritional density and versatility.</p>
@@ -564,7 +600,96 @@
                 
                 <p>For Australian consumers, <a href="https://nutrithrive.com.au/products/product-detail.html" style="color: #175c36; font-weight: 600; text-decoration: underline;">NutriThrive offers premium moringa powder</a> that combines quality, affordability, and convenience. Our moringa is shade-dried to preserve nutrients, lab-tested for purity, and shipped fresh from our Melbourne warehouse. With fast shipping across Australia and free delivery on orders over $80, it's never been easier to add moringa to your wellness routine.</p>
 
-                <h2>Understanding the Three Contenders</h2>
+                <h2 id="part2-power-of-moringa">Part 2: The Power of Moringa - More Than Just a Tea</h2>
+                
+                <p>Moringa is often hailed as a "super-supplement" because of its incredible nutrient density. When you incorporate a moringa supplement into your diet, you aren't just getting vitamins; you are fueling your body with antioxidants, anti-inflammatories, and essential amino acids.</p>
+                
+                <p>One of the most convenient ways to enjoy these perks is through moringa tea. Many health enthusiasts have shifted from their morning coffee to this herbal alternative to enjoy the wide range of moringa tea benefits, which include improved digestion, enhanced energy levels, and even clearer skin. For those who prefer a more concentrated form, moringa capsules offer the same potency in a quick, travel-friendly format.</p>
+                
+                <p>What makes moringa tea particularly appealing for Australians is its versatility. You can enjoy it hot in the morning for a gentle energy boost, or iced during our hot summers. Unlike coffee, moringa tea won't cause jitters or afternoon crashes, making it perfect for people who need sustained energy throughout the day.</p>
+
+                <h3>Why Combine Moringa with Your Weight Loss Journey?</h3>
+                <p>The concept of a slimming tea isn't new, but the quality of ingredients matters immensely. A well-formulated tea helps to boost metabolism and detoxify the body naturally. When you combine the nutrient-rich profile of Moringa with detoxifying herbs, you get a beverage that supports your body's natural fat-burning processes while keeping your nutrient levels high.</p>
+                
+                <p>However, it's important to be realistic: moringa isn't a magic weight loss solution. Instead, it supports your weight management goals by:</p>
+                <ul>
+                    <li><strong>Boosting Metabolism:</strong> The combination of B vitamins, iron, and protein helps support your body's natural metabolic processes</li>
+                    <li><strong>Reducing Cravings:</strong> The high nutrient density helps satisfy your body's nutritional needs, which can reduce unhealthy food cravings</li>
+                    <li><strong>Supporting Digestion:</strong> The fiber content helps keep your digestive system functioning smoothly</li>
+                    <li><strong>Providing Energy:</strong> Natural energy without caffeine means you're more likely to stay active and burn calories</li>
+                </ul>
+                
+                <p>Remember, sustainable weight management comes from a combination of a balanced diet, regular exercise, and quality nutrition. Moringa can be a valuable part of this equation, but it works best when combined with healthy lifestyle choices.</p>
+
+                <h3>Comparative Overview: Why Choose Moringa-Based Tea?</h3>
+                <p>To understand why moringa tea stands out, let's compare it to standard teas:</p>
+                
+                <div style="overflow-x: auto; margin: 2rem 0;">
+                    <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <thead>
+                            <tr style="background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); color: white;">
+                                <th style="padding: 1rem; text-align: left; font-weight: 700;">Feature</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 700;">Standard Black/Green Tea</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 700;">Moringa-Based Slimming Tea</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem; font-weight: 600; color: #175c36;">Nutrient Density</td>
+                                <td style="padding: 1rem;">Moderate</td>
+                                <td style="padding: 1rem;">Exceptionally High (A, C, Iron, Protein)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e0e0e0; background: #f8f9fa;">
+                                <td style="padding: 1rem; font-weight: 600; color: #175c36;">Caffeine Level</td>
+                                <td style="padding: 1rem;">High (can cause jitters)</td>
+                                <td style="padding: 1rem;">Low to None (steady energy)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem; font-weight: 600; color: #175c36;">Detox Properties</td>
+                                <td style="padding: 1rem;">Basic Antioxidants</td>
+                                <td style="padding: 1rem;">Potent Chlorogenic Acid & Isothiocyanates</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem; font-weight: 600; color: #175c36;">Support for Weight Loss</td>
+                                <td style="padding: 1rem;">Mild metabolism boost</td>
+                                <td style="padding: 1rem;">Targeted metabolic support + hunger control</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p>As you can see, moringa-based tea offers significant advantages over standard teas. The combination of high nutrient density, low caffeine, and targeted metabolic support makes it an excellent choice for Australians looking to improve their wellness while managing their weight.</p>
+
+                <h3>Discover the "Moringa Magic"</h3>
+                <p>If you've been searching for a trusted source for these products, you may have come across the name Moringa Magic. As a leader in the industry, the moringa magic official products are designed to ensure maximum bioavailability. Whether you are looking for the pure leaf powder or a specialized blend, the moringa magic official website is the gold standard for purity.</p>
+                
+                <p>When you decide to moringa magic buy, you are investing in a product that prioritizes quality sourcing. Unlike generic brands, this moringa supplement is harvested and processed to preserve the delicate nutrients that make the plant so effective.</p>
+                
+                <p>For Australian consumers, <a href="https://nutrithrive.com.au/products/product-detail.html" style="color: #175c36; font-weight: 600; text-decoration: underline;">NutriThrive offers that same commitment to quality</a>. Our moringa powder is shade-dried to preserve nutrients, lab-tested for purity and heavy metals, and shipped fresh from our Melbourne warehouse. We believe that quality nutrition should be accessible to all Australians, which is why we offer competitive pricing without compromising on quality.</p>
+
+                <h3>Your Guide to Getting Started (and Saving!)</h3>
+                <p>Ready to transform your routine? Getting started is easier than you think. If you are looking to kickstart a healthier lifestyle, a slimming tea buy is a great first step. Not only does it help with weight management, but the ritual of a warm cup of tea can also reduce stress-related snacking.</p>
+                
+                <p>To help you on your journey, keep an eye out for a slimming tea discount. High-quality wellness shouldn't have to break the bank. Once you find a promotion that fits your budget, you can easily place your slimming tea order online and have it delivered directly to your door.</p>
+                
+                <p>At NutriThrive, we make it easy to get started:</p>
+                <ul>
+                    <li><strong>Affordable Pricing:</strong> Our moringa powder is priced at just $10.50 for 100g, making it one of the most affordable quality options in Australia</li>
+                    <li><strong>Free Delivery:</strong> Orders over $80 qualify for free shipping across Australia</li>
+                    <li><strong>Fast Shipping:</strong> We ship fresh from Melbourne, so you receive your order quickly</li>
+                    <li><strong>Money-Back Guarantee:</strong> If you're not satisfied, we offer a 7-day money-back guarantee</li>
+                </ul>
+                
+                <p>Whether you choose to start with <a href="https://nutrithrive.com.au/products/product-detail.html" style="color: #175c36; font-weight: 600; text-decoration: underline;">moringa powder for maximum versatility</a> or prefer the convenience of capsules, you're making an investment in your long-term health and wellness.</p>
+
+                <h3>Conclusion: A Simple Step for a Better You</h3>
+                <p>Whether you choose the convenience of moringa capsules or the soothing experience of a warm moringa tea, the goal is consistency. By choosing the moringa magic official path, you ensure that your body is getting the very best that nature has to offer.</p>
+                
+                <p>Don't wait for a "perfect time" to start feeling better. Explore the moringa tea benefits for yourself today. <a href="https://nutrithrive.com.au/products/product-detail.html" style="color: #175c36; font-weight: 600; text-decoration: underline;">Visit our store to moringa magic buy your first batch</a> and take the first step toward a more vibrant, energized version of yourself!</p>
+                
+                <p>Remember, the best superfood is the one you'll actually use consistently. Moringa's mild taste, versatility, and comprehensive nutritional profile make it easy to incorporate into your daily routine. Start with small amounts, experiment with different ways to use it, and find what works best for your lifestyle and taste preferences.</p>
+
+                <h2 id="part3-comparison">Part 3: Understanding the Three Contenders - Head-to-Head Comparison</h2>
                 
                 <h3>Moringa: The Nutrient-Dense Powerhouse</h3>
                 <p>Moringa oleifera, often called the "drumstick tree" or "miracle tree," has been used in traditional medicine for thousands of years. Native to parts of Africa and Asia, moringa leaves are packed with an impressive array of nutrients. What makes moringa stand out is its complete nutritional profile—it contains all nine essential amino acids, making it a rare plant-based complete protein source.</p>
