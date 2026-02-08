@@ -166,6 +166,11 @@
             border-left: 4px solid #175c36;
         }
         
+        /* Product Sidebar Styling */
+        .moringa-product-sidebar {
+            display: block;
+        }
+        
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             .breadcrumbs {
@@ -192,6 +197,20 @@
                 padding: 2rem 1.5rem !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
+            }
+            
+            /* Stack product card below on mobile */
+            div[style*="display: flex"] {
+                flex-direction: column !important;
+            }
+            
+            .moringa-product-sidebar {
+                flex: 1 1 100% !important;
+                position: relative !important;
+                top: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-top: 2rem;
             }
             
             .blog-post-header h1 {
@@ -250,6 +269,13 @@
                 font-size: 1.125rem;
                 width: 100%;
                 max-width: 100%;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .moringa-product-sidebar {
+                flex: 0 0 240px !important;
             }
         }
         
