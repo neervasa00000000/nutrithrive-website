@@ -281,6 +281,7 @@
         "url": "https://nutrithrive.com.au/products/product-detail.html",
         "priceCurrency": "AUD",
         "price": "10.50",
+        "priceValidUntil": "2026-12-31",
         "itemCondition": "https://schema.org/NewCondition",
         "availability": "https://schema.org/InStock",
         "shippingDetails": {
@@ -290,6 +291,10 @@
             "value": "0.00",
             "currency": "AUD"
           },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "AU"
+          },
           "deliveryTime": {
             "@type": "ShippingDeliveryTime",
             "handlingTime": {
@@ -297,8 +302,22 @@
               "minValue": 0,
               "maxValue": 1,
               "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 10,
+              "unitCode": "DAY"
             }
           }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "AU",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
         }
       }
     }
