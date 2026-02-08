@@ -554,10 +554,53 @@
         }
 
         .hero-image img {
-            max-width: 100%;
+            max-width: 45%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(23, 92, 54, 0.15);
+        }
+
+        .product-checkout {
+            margin: 2rem 0;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(23, 92, 54, 0.03);
+            border-radius: 12px;
+        }
+
+        .product-checkout h3 {
+            color: #175c36;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .product-checkout .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #175c36;
+            margin: 1rem 0;
+        }
+
+        .paypal-button {
+            display: inline-block;
+            background: #0070ba;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .paypal-button:hover {
+            background: #005ea6;
+        }
+
+        .paypal-button img {
+            vertical-align: middle;
+            margin-right: 0.5rem;
         }
 
         /* CTA section - clean and simple */
@@ -689,6 +732,28 @@
 
             .icon-large {
                 font-size: 2rem;
+            }
+
+            .hero-image img {
+                max-width: 80%;
+            }
+
+            .product-checkout {
+                padding: 1.5rem 1rem;
+            }
+
+            .product-checkout h3 {
+                font-size: 1.25rem;
+            }
+
+            .product-checkout .price {
+                font-size: 1.75rem;
+            }
+
+            .paypal-button {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
             }
         }
 
@@ -904,7 +969,19 @@
             </div>
 
             <div class="hero-image">
-                <img src="https://i.imgur.com/PgvCFY0.png" alt="NutriThrive Premium Moringa Powder - Bioharmony timing guide showing optimal times to consume moringa for maximum nutrient absorption in Australia" width="800" height="600" loading="eager" decoding="async" fetchpriority="high">
+                <img src="/shared/images/moringa-powder-product-100g.png" alt="NutriThrive Premium Moringa Powder 100g - Bioharmony timing guide showing optimal times to consume moringa for maximum nutrient absorption in Australia" loading="eager" decoding="async" fetchpriority="high">
+            </div>
+
+            <!-- Product Checkout Section -->
+            <div class="product-checkout">
+                <h3>Ready to Start Your Bioharmony Journey?</h3>
+                <p style="font-size: 1.1rem; color: #5A6D5D; margin-bottom: 0.5rem;">NutriThrive Premium Moringa Powder - 100g</p>
+                <div class="price">$10.50</div>
+                <p style="font-size: 0.95rem; color: #5A6D5D; margin: 0.5rem 0;">30 Servings • Lab-Tested • Free Shipping Australia-Wide</p>
+                <a href="https://nutrithrive.com.au/products/product-detail.html" class="paypal-button" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, '/shared/images/moringa-powder-product-100g.png'); window.location.href='/cart.html'; return false; }">
+                    🛒 Buy Now with PayPal Checkout
+                </a>
+                <p style="font-size: 0.85rem; color: #5A6D5D; margin-top: 1rem;">Secure checkout • Fast delivery from Melbourne • 100% satisfaction guaranteed</p>
             </div>
 
             <div class="blog-post-content">
