@@ -890,7 +890,8 @@
                 <h3>Nutri Thrive Pure Moringa Powder</h3>
                 <div class="price-tag">$10.50</div>
                 <p style="margin: 0.5rem 0;"><strong>In Stock</strong> • <span class="rating-stars">★★★★★</span> (4.9/5 from 150+ reviews)</p>
-                <a href="https://nutrithrive.com.au/products/product-detail.html" class="cta-button">View Product →</a>
+                <button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" class="cta-button" style="cursor: pointer; border: none;">Add to Cart & Checkout →</button>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Or <a href="https://nutrithrive.com.au/products/product-detail.html" style="color: var(--primary); text-decoration: underline;">view product details</a></p>
             </div>
 
             <h2 id="performance-comparison">The 2026 Performance Comparison</h2>
@@ -946,9 +947,10 @@
             <h2>Transform Your Results Today</h2>
             <p>Don't let metabolic plateaus hold you back. Whether you're training in Sydney, Melbourne, or Brisbane, Nutri Thrive Moringa is the biological essential your body demands.</p>
             <p>Join thousands of Australian athletes who have discovered the power of lab-tested, non-stimulant Moringa powder. Packed fresh in Melbourne and shipped Australia-wide, Nutri Thrive Moringa delivers the nutritional density your performance goals require.</p>
-            <p style="text-align: center; margin: 2.5rem 0;">
-                <a href="https://nutrithrive.com.au/products/product-detail.html" class="cta-button">Shop Nutri Thrive Pure Moringa Powder - $10.50</a>
-            </p>
+            <div style="text-align: center; margin: 2.5rem 0;">
+                <button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" class="cta-button" style="cursor: pointer; border: none; margin-bottom: 1rem;">Add to Cart & Checkout - $10.50</button>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Secure checkout with PayPal or Apple Pay • Collects all buyer information automatically</p>
+            </div>
             <p style="text-align: center; margin-top: 1rem;">
                 <a href="https://nutrithrive.com.au/products/" style="color: var(--primary); text-decoration: underline; font-weight: 600;">Browse Full Collection →</a>
             </p>
@@ -1095,9 +1097,10 @@
             <h2>Ready to Transform Your Fitness Journey?</h2>
             <p>Join thousands of Australian athletes who have discovered the power of Nutri Thrive Moringa. Lab-tested, non-stimulant, and packed fresh in Melbourne. Our Moringa powder is shade-dried to preserve maximum nutrient content, then lab-tested for purity and potency.</p>
             <p>We ship Australia-wide from our Melbourne warehouse, with fast delivery to Sydney, Brisbane, Perth, Adelaide, and all regional areas. International shipping is also available.</p>
-            <p style="text-align: center; margin: 2.5rem 0;">
-                <a href="https://nutrithrive.com.au/products/product-detail.html" class="cta-button">Shop Now - $10.50 per 100g</a>
-            </p>
+            <div style="text-align: center; margin: 2.5rem 0;">
+                <button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" class="cta-button" style="cursor: pointer; border: none; margin-bottom: 1rem;">Shop Now - $10.50 per 100g</button>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Secure checkout with PayPal or Apple Pay • Collects name, email, address, phone automatically</p>
+            </div>
             <p style="text-align: center; color: #666; font-size: 1rem;">Free shipping on orders over $80 • 30-day money-back guarantee • Lab-tested for purity</p>
         </article>
     </main>
@@ -1143,5 +1146,28 @@
     </footer>
 
     <script src="/shared/js/script.js" defer></script>
+    <script src="/shared/js/cart.js"></script>
+    <script>
+        // Function to add product to cart and redirect to cart page (which collects buyer info)
+        function addProductToCartAndRedirect(id, name, price, image) {
+            if (window.Cart && window.Cart.add) {
+                window.Cart.add({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+                // Redirect to cart page which has proper PayPal/Apple Pay with buyer info collection
+                window.location.href = '/cart.html';
+            } else {
+                // Fallback: redirect to product page
+                window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+            }
+        }
+        
+        // Make function available globally
+        window.addProductToCartAndRedirect = addProductToCartAndRedirect;
+    </script>
 </body>
 </html>
