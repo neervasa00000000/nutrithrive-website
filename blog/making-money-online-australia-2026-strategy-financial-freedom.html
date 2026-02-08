@@ -493,6 +493,21 @@
             div[style*="font-size: 1.5rem"] {
                 font-size: 1.25rem !important;
             }
+
+            /* Buy buttons mobile */
+            a[style*="padding: 1rem 2.5rem"],
+            a[style*="padding: 0.875rem 2rem"] {
+                width: 100% !important;
+                display: block !important;
+                margin: 0.5rem 0 !important;
+                text-align: center !important;
+                padding: 1rem !important;
+                font-size: 1rem !important;
+            }
+
+            div[style*="display: flex"]:has(a[style*="Buy"]) {
+                flex-direction: column !important;
+            }
         }
 
         html {
@@ -983,6 +998,14 @@
                     <li><strong>Unbeatable Value:</strong> $10.50/100g compared to $18-57/100g at competitors</li>
                 </ul>
 
+                <!-- Buy Now Button -->
+                <div style="margin: 2rem 0; text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); border-radius: 12px;">
+                    <p style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to Experience Premium Quality?</p>
+                    <a href="https://nutrithrive.com.au/products/product-detail.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s ease;">
+                        🛒 Buy Moringa Powder Now - $10.50
+                    </a>
+                </div>
+
                 <!-- Product Reviews & Ratings Section -->
                 <div style="margin: 3rem 0; padding: 2rem; background: rgba(23, 92, 54, 0.03); border-radius: 12px; border-left: 4px solid #175c36;">
                     <h3 id="product-reviews" style="color: #175c36; margin-top: 0; font-size: 1.75rem;">⭐ What Our Customers Say: NutriThrive Product Reviews</h3>
@@ -1040,6 +1063,13 @@
                                 <p style="margin: 0; color: #1a2e22; line-height: 1.6;">"Moringa powder mixed in my morning smoothie gives me sustained energy without the jitters. Love this product! The shade-dried method really makes a difference in quality."</p>
                             </div>
                         </div>
+
+                        <!-- Buy Moringa Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="https://nutrithrive.com.au/products/product-detail.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
+                                🛒 Buy Moringa Powder - $10.50
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Dried Curry Leaves Reviews -->
@@ -1078,6 +1108,13 @@
                                 <p style="margin: 0; color: #1a2e22; line-height: 1.6;">"The curry leaves are perfect for my South Indian cooking. Great quality and the packaging keeps them fresh. Will order again! Excellent customer service."</p>
                             </div>
                         </div>
+
+                        <!-- Buy Curry Leaves Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="https://nutrithrive.com.au/products/product-curry-leaves.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('curry-leaves', 'Dried Curry Leaves', 6.45, '/shared/images/Home page /webp/Curry .webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
+                                🛒 Buy Curry Leaves - $6.45
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Darjeeling Black Tea Reviews -->
@@ -1108,11 +1145,21 @@
                                 <p style="margin: 0; color: #1a2e22; line-height: 1.6;">"Premium quality tea at an affordable price. The muscatel flavor is authentic and the tea leaves are high quality. Great replacement for evening coffee. Helps me wind down naturally."</p>
                             </div>
                         </div>
+
+                        <!-- Buy Black Tea Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="https://nutrithrive.com.au/products/product-black-tea.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('black-tea', 'Premium Black Tea', 7.00, '/shared/images/Home page /webp/BlackTea.webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
+                                🛒 Buy Black Tea - $7.00
+                            </a>
+                        </div>
                     </div>
 
                     <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); border-radius: 8px; text-align: center; color: white;">
                         <p style="margin: 0; font-size: 1.1rem; font-weight: 600;">Join 500+ satisfied customers across Australia</p>
-                        <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; opacity: 0.9;">100% satisfaction guaranteed • Fast shipping from Melbourne • Lab-tested quality</p>
+                        <p style="margin: 0.5rem 0 1rem 0; font-size: 0.95rem; opacity: 0.9;">100% satisfaction guaranteed • Fast shipping from Melbourne • Lab-tested quality</p>
+                        <a href="https://nutrithrive.com.au/products/" style="display: inline-block; background: white; color: #175c36; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease;">
+                            🛒 Shop All Products
+                        </a>
                     </div>
                 </div>
 
@@ -1244,7 +1291,18 @@
                 <div style="margin: 4rem 0; padding: 2rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); border-radius: 12px; color: white; text-align: center;">
                     <h3 style="color: white; margin-top: 0; font-size: 1.75rem;">Ready to Optimize Your Wellness Budget?</h3>
                     <p style="font-size: 1.125rem; margin-bottom: 1.5rem; opacity: 0.95;">Combine smart shopping with premium nutrition for maximum results.</p>
-                    <a href="https://nutrithrive.com.au/products/" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s ease;">Shop NutriThrive Products →</a>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+                        <a href="https://nutrithrive.com.au/products/product-detail.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease;">
+                            🛒 Buy Moringa - $10.50
+                        </a>
+                        <a href="https://nutrithrive.com.au/products/product-curry-leaves.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('curry-leaves', 'Dried Curry Leaves', 6.45, '/shared/images/Home page /webp/Curry .webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease;">
+                            🛒 Buy Curry Leaves - $6.45
+                        </a>
+                        <a href="https://nutrithrive.com.au/products/" style="display: inline-block; background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
+                            View All Products →
+                        </a>
+                    </div>
+                    <p style="font-size: 0.9rem; opacity: 0.9; margin: 0;">Free shipping Australia-wide • Lab-tested quality • 100% satisfaction guaranteed</p>
                 </div>
 
             </div>
