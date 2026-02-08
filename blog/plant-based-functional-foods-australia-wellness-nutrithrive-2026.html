@@ -843,7 +843,7 @@
                             <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;" data-label="Price (100g)"><strong>$10</strong><br><small style="color:#4caf50;">Best value</small></td>
                             <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;" data-label="Quality">⭐⭐⭐⭐⭐<br><small>Premium</small></td>
                             <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;" data-label="Lab-Tested">✅ Yes</td>
-                            <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;" data-label="Buy Now"><a href="https://nutrithrive.com.au/products/product-detail.html" style="background:#2d5a3d;color:white;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block;font-size:0.9rem;">Add to Cart</a></td>
+                            <td style="padding: 12px; text-align: center; border-bottom: 1px solid #e0e0e0;" data-label="Buy Now"><button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" style="background:#2d5a3d;color:white;padding:8px 16px;border:none;border-radius:6px;font-weight:bold;display:inline-block;font-size:0.9rem;cursor:pointer;">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;" data-label=""><strong><a href="https://www.iherb.com" target="_blank" rel="noopener">iHerb</a></strong></td>
@@ -1008,19 +1008,19 @@
                     <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
                         <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Moringa Powder</h3>
                         <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Premium 100% organic moringa leaf powder. Packed with vitamins, minerals, and antioxidants. <a href="https://nutrithrive.com.au/products/" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">check our contact</a></p>
-                        <a href="https://nutrithrive.com.au/products/product-detail.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                        <button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer;">Buy Now</button>
                     </div>
                     
                     <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
                         <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Dried Curry Leaves</h3>
                         <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Authentic South Indian curry leaves. Perfect for cooking and loaded with health benefits.</p>
-                        <a href="https://nutrithrive.com.au/products/product-curry-leaves.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                        <button type="button" onclick="addProductToCartAndRedirect('curry-leaves', 'Dried Curry Leaves', 6.45, '/shared/images/Home page /webp/Curry .webp')" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer;">Buy Now</button>
                     </div>
                     
                     <div class="product-card" style="padding: 2rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 12px; text-align: center; border: 2px solid #2d7a4f;">
                         <h3 style="color: #175c36; font-size: 1.4rem; margin-bottom: 1rem;">Premium Black Tea</h3>
                         <p style="color: #4a6741; margin-bottom: 1.5rem; line-height: 1.6;">Premium Darjeeling & Assam black tea blend. Rich flavor with natural antioxidants.</p>
-                        <a href="https://nutrithrive.com.au/products/product-black-tea.html" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Buy Now</a>
+                        <button type="button" onclick="addProductToCartAndRedirect('black-tea', 'Premium Black Tea', 7.00, '/shared/images/Home page /webp/BlackTea.webp')" style="display: inline-block; padding: 0.8rem 2rem; background: #175c36; color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer;">Buy Now</button>
                     </div>
                 </div>
                 
@@ -1486,6 +1486,7 @@
 })();
 </script>
     <script src="../shared/js/newsletter-popup.js" defer></script>
+    <script src="../shared/js/cart.js"></script>
 </body>
 </html>
 
