@@ -790,21 +790,21 @@
           <h4 style="color: #175c36; margin-bottom: 10px;">Moringa Powder</h4>
           <p style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">Premium 100% organic leaf powder for daily detox</p>
           <p style="color: #175c36; font-weight: 700; margin-bottom: 15px;">From $12</p>
-          <a href="https://nutrithrive.com.au/products/product-detail.html" style="background: #16a34a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block;">Add to Cart</a>
+          <button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" style="background: #16a34a; color: white; padding: 10px 20px; border: none; border-radius: 25px; font-weight: 600; display: inline-block; cursor: pointer;">Add to Cart</button>
         </div>
         <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
           <div style="font-size: 3rem; margin-bottom: 15px;">🍃</div>
           <h4 style="color: #175c36; margin-bottom: 10px;">Dried Curry Leaves</h4>
           <p style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">Authentic South Indian spice for wellness</p>
           <p style="color: #175c36; font-weight: 700; margin-bottom: 15px;">From $6</p>
-          <a href="https://nutrithrive.com.au/products/product-curry-leaves.html" style="background: #16a34a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block;">Add to Cart</a>
+          <button type="button" onclick="addProductToCartAndRedirect('curry-leaves', 'Dried Curry Leaves', 6.45, '/shared/images/Home page /webp/Curry .webp')" style="background: #16a34a; color: white; padding: 10px 20px; border: none; border-radius: 25px; font-weight: 600; display: inline-block; cursor: pointer;">Add to Cart</button>
         </div>
         <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
           <div style="font-size: 3rem; margin-bottom: 15px;">☕</div>
           <h4 style="color: #175c36; margin-bottom: 10px;">Premium Black Tea</h4>
           <p style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">Rich antioxidants for cellular health <a href="/blog/best-protein-powder-australia.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">explore protein powder</a></p>
           <p style="color: #175c36; font-weight: 700; margin-bottom: 15px;">From $15</p>
-          <a href="https://nutrithrive.com.au/products/product-black-tea.html" style="background: #16a34a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block;">Add to Cart</a>
+          <button type="button" onclick="addProductToCartAndRedirect('black-tea', 'Premium Black Tea', 7.00, '/shared/images/Home page /webp/BlackTea.webp')" style="background: #16a34a; color: white; padding: 10px 20px; border: none; border-radius: 25px; font-weight: 600; display: inline-block; cursor: pointer;">Add to Cart</button>
         </div>
       </div>
     </section>
@@ -1023,6 +1023,37 @@
 })();
 </script>
     <script src="../shared/js/newsletter-popup.js" defer></script>
+    <script src="../shared/js/cart.js"></script>
+    <script>
+        // Function to add product to cart and redirect to cart page (which collects buyer info)
+        function addProductToCartAndRedirect(id, name, price, image) {
+            if (typeof window.Cart === 'undefined' || !window.Cart.add) {
+                console.warn('Cart not loaded yet, redirecting to product page');
+                window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+                return;
+            }
+            try {
+                window.Cart.add({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+                window.location.href = '/cart.html';
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                window.addProductToCartAndRedirect = addProductToCartAndRedirect;
+            });
+        } else {
+            window.addProductToCartAndRedirect = addProductToCartAndRedirect;
+        }
+    </script>
 </body>
 </html>
 

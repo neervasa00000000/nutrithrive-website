@@ -267,3 +267,29 @@ window.addProductToCart = function(id, name, price, image) {
         console.error('Cart is not initialized');
     }
 };
+
+// Function to add product to cart and redirect to cart page (which collects buyer info via PayPal/Apple Pay)
+// Example usage in HTML:
+//   onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'image-url')"
+window.addProductToCartAndRedirect = function(id, name, price, image) {
+    if (typeof window.Cart === 'undefined' || !window.Cart.add) {
+        console.warn('Cart not loaded yet, redirecting to product page');
+        window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+        return;
+    }
+    try {
+        window.Cart.add({
+            id: id,
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+        // Redirect to cart page which has proper PayPal/Apple Pay with buyer info collection
+        window.location.href = '/cart.html';
+    } catch (error) {
+        console.error('Error adding to cart:', error);
+        // Fallback: redirect to product page
+        window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+    }
+};
