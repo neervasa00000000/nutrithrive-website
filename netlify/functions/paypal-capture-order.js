@@ -79,6 +79,15 @@ export async function handler(event) {
         const capture = await capRes.json();
         if (!capRes.ok) throw new Error(JSON.stringify(capture));
 
+        // Log shipping address and email for verification
+        if (capture.purchase_units && capture.purchase_units[0]) {
+            const shipping = capture.purchase_units[0].shipping;
+            const payer = capture.payer;
+            console.log("Shipping address:", shipping);
+            console.log("Payer email:", payer?.email_address);
+            console.log("Payer name:", payer?.name);
+        }
+
         return {
             statusCode: 200,
             headers,

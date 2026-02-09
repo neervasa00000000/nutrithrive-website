@@ -573,12 +573,7 @@
         <h3 style="color: #2d5a3d; margin: 0 0 1rem 0; font-size: 1.5rem; font-weight: 700;">🏆 Get Award-Winning NutriThrive Moringa</h3>
         <p style="margin: 0 0 1.5rem 0; color: #555; font-size: 1.1rem;">Lab-tested • 100% Natural • Fast Australia-wide Shipping</p>
         <div style="display: block;">
-          <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-          <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display:inline-grid; justify-items:center;align-content:start;gap:0.5rem;">
-            <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Buy Now" style="display: inline-block;" />
-            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" style="display: block;" />
-            <section style="font-size: 0.75rem; display: block;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;display: inline-block;"/></section>
-          </form>
+          <div id="paypal-button-brands"></div>
         </div>
         <p style="margin: 1rem 0 0 0; color: #2d5a3d; font-size: 0.9rem;">✅ 7-Day Money-Back Guarantee • Free Shipping on Orders $80+</p>
       </div>
@@ -1495,3 +1490,88 @@
       <div style="background: #f6fbf8; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; border-left: 4px solid #175c36;">
           <h3 style="color: #175c36; margin-top: 0;">Explore More Resources</h3>
           <ul style="margin: 0.5rem 0 0 0; padding-left: 1.5rem; line-height: 2;">
+          </ul>
+      </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 NutriThrive. All rights reserved.</p>
+    </footer>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&currency=AUD&intent=capture"></script>
+    <script>
+        function initPayPalButtons() {
+            if (typeof paypal === 'undefined') {
+                setTimeout(initPayPalButtons, 100);
+                return;
+            }
+
+            function createPayPalButton(containerId, productName, productId, price, quantity = 1) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                paypal.Buttons({
+                    createOrder: async () => {
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-create-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    amount: (price * quantity).toFixed(2),
+                                    subtotal: (price * quantity).toFixed(2),
+                                    shipping: "0.00",
+                                    items: [{
+                                        id: productId,
+                                        name: productName,
+                                        unitPrice: price.toFixed(2),
+                                        quantity: quantity
+                                    }]
+                                })
+                            });
+                            const data = await response.json();
+                            if (!response.ok) {
+                                throw new Error(data.error || "Failed to create order");
+                            }
+                            return data.orderID || data.id;
+                        } catch (err) {
+                            console.error("Error creating PayPal order:", err);
+                            alert("Payment error: " + (err.message || "Unknown error"));
+                            throw err;
+                        }
+                    },
+                    onApprove: async (data, actions) => {
+                        const orderID = data.orderID || data.id;
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-capture-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ orderID: orderID })
+                            });
+                            const result = await response.json();
+                            if (!response.ok) {
+                                throw new Error(result.error || "Payment failed");
+                            }
+                            window.location.href = `/thank-you.html?orderId=${orderID}`;
+                        } catch (err) {
+                            console.error("Error capturing payment:", err);
+                            alert(`Payment error: ${err.message || "Unknown error"}`);
+                        }
+                    },
+                    onError: (err) => {
+                        console.error("PayPal error:", err);
+                        alert(`Payment error: ${err.message || "Unknown error"}`);
+                    }
+                }).render(containerId);
+            }
+
+            createPayPalButton('paypal-button-brands', 'Moringa Powder', 'moringa-powder', 10.50);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPayPalButtons);
+        } else {
+            initPayPalButtons();
+        }
+    </script>
+</body>
+</html>

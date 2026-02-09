@@ -1504,48 +1504,82 @@
     <script src="../shared/js/script.js" defer></script>
     <script src="../shared/js/newsletter.js" defer></script>
     
-    <!-- PayPal SDK for direct checkout -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture"></script>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&currency=AUD&intent=capture"></script>
     <script>
-      // Suppress PayPal SDK console errors
-      const originalError = console.error;
-      console.error = function(...args) {
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('ncps_standalone_paylater_ineligible')) {
-          return;
-        }
-        originalError.apply(console, args);
-      };
+        function initPayPalButtons() {
+            if (typeof paypal === 'undefined') {
+                setTimeout(initPayPalButtons, 100);
+                return;
+            }
 
-      // Initialize PayPal buttons
-      function initPayPalButtons() {
-        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
-          try {
-            // Render button at top
-            paypal.HostedButtons({
-              hostedButtonId: "AMDLXGV7HCKXW",
-            }).render("#paypal-container-top").catch(function(err) {
-              console.warn('PayPal top button rendering issue:', err);
-            });
-            
-            // Render button at bottom
-            paypal.HostedButtons({
-              hostedButtonId: "AMDLXGV7HCKXW",
-            }).render("#paypal-container-bottom").catch(function(err) {
-              console.warn('PayPal bottom button rendering issue:', err);
-            });
-          } catch (err) {
-            console.warn('PayPal initialization error:', err);
-          }
+            function createPayPalButton(containerId, productName, productId, price, quantity = 1) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                paypal.Buttons({
+                    createOrder: async () => {
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-create-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    amount: (price * quantity).toFixed(2),
+                                    subtotal: (price * quantity).toFixed(2),
+                                    shipping: "0.00",
+                                    items: [{
+                                        id: productId,
+                                        name: productName,
+                                        unitPrice: price.toFixed(2),
+                                        quantity: quantity
+                                    }]
+                                })
+                            });
+                            const data = await response.json();
+                            if (!response.ok) {
+                                throw new Error(data.error || "Failed to create order");
+                            }
+                            return data.orderID || data.id;
+                        } catch (err) {
+                            console.error("Error creating PayPal order:", err);
+                            alert("Payment error: " + (err.message || "Unknown error"));
+                            throw err;
+                        }
+                    },
+                    onApprove: async (data, actions) => {
+                        const orderID = data.orderID || data.id;
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-capture-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ orderID: orderID })
+                            });
+                            const result = await response.json();
+                            if (!response.ok) {
+                                throw new Error(result.error || "Payment failed");
+                            }
+                            window.location.href = `/thank-you.html?orderId=${orderID}`;
+                        } catch (err) {
+                            console.error("Error capturing payment:", err);
+                            alert(`Payment error: ${err.message || "Unknown error"}`);
+                        }
+                    },
+                    onError: (err) => {
+                        console.error("PayPal error:", err);
+                        alert(`Payment error: ${err.message || "Unknown error"}`);
+                    }
+                }).render(containerId);
+            }
+
+            createPayPalButton('paypal-container-top', 'Premium Black Tea', 'black-tea', 7.00);
+            createPayPalButton('paypal-container-bottom', 'Premium Black Tea', 'black-tea', 7.00);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPayPalButtons);
         } else {
-          setTimeout(initPayPalButtons, 100);
+            initPayPalButtons();
         }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPayPalButtons);
-      } else {
-        initPayPalButtons();
-      }
     </script>
 </body>
 </html>

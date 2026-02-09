@@ -128,7 +128,7 @@ export async function handler(event) {
             };
         }
 
-        // Create order
+        // Create order with application_context to require shipping address and email
         const orderRes = await fetch(`${base}/v2/checkout/orders`, {
             method: "POST",
             headers: {
@@ -138,6 +138,14 @@ export async function handler(event) {
             body: JSON.stringify({
                 intent: "CAPTURE",
                 purchase_units: [purchaseUnit],
+                application_context: {
+                    shipping_preference: "GET_FROM_FILE", // Requires buyer to provide shipping address
+                    user_action: "PAY_NOW", // Shows "Pay Now" button instead of "Continue"
+                    payment_method: {
+                        payer_selected: "PAYPAL",
+                        payee_preferred: "IMMEDIATE_PAYMENT_REQUIRED"
+                    }
+                }
             }),
         });
 
