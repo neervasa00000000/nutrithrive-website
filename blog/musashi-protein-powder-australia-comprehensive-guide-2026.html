@@ -985,9 +985,7 @@
                     </ul>
                     <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
                         <a href="../products/product-detail.html" class="buy-button" style="color: white;">View Product Details</a>
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
-                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Now with PayPal</button>
-                        </form>
+                        <div id="paypal-button-moringa-1"></div>
                     </div>
                 </div>
 
@@ -1169,9 +1167,7 @@
                     </ul>
                     <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
                         <a href="../products/product-detail.html" class="buy-button" style="color: white;">Learn More</a>
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
-                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Moringa Now</button>
-                        </form>
+                        <div id="paypal-button-moringa-2"></div>
                     </div>
                 </div>
 
@@ -1260,9 +1256,7 @@
 
                             <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
                                 <a href="../products/product-detail.html" class="buy-button" style="color: white;">View Full Details</a>
-                                <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
-                                    <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Moringa Powder</button>
-                                </form>
+                                <div id="paypal-button-moringa-3"></div>
                             </div>
                         </div>
                     </div>
@@ -1281,9 +1275,7 @@
                     </ul>
                     <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
                         <a href="../products/product-curry-leaves.html" class="buy-button" style="background: #27ae60;">View Product</a>
-                        <form action="https://www.paypal.com/ncp/payment/NJKU46NBZ55JN" method="post" target="_blank" style="display: inline;">
-                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Curry Leaves</button>
-                        </form>
+                        <div id="paypal-button-curry"></div>
                     </div>
                 </div>
 
@@ -1712,9 +1704,7 @@
 
                         <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;">
                             <a href="../products/product-detail.html" class="btn-primary">Try the Moringa Stack Today</a>
-                            <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display: inline;">
-                                <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Now with PayPal</button>
-                            </form>
+                            <div id="paypal-button-moringa-4"></div>
                         </div>
                     </div>
                 </div>
@@ -1732,9 +1722,7 @@
                     </ul>
                     <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
                         <a href="../products/product-combo.html" class="buy-button" style="background: #6c757d;">View Combo Pack</a>
-                        <form action="https://www.paypal.com/ncp/payment/ASMMMWXFS7X84" method="post" target="_blank" style="display: inline;">
-                            <button type="submit" class="buy-button paypal" style="border: none; cursor: pointer;">Buy Combo Pack</button>
-                        </form>
+                        <div id="paypal-button-combo"></div>
                     </div>
                 </div>
 
@@ -1844,6 +1832,92 @@
                 floatingCta.style.display = 'none';
             }
         });
+    </script>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&currency=AUD&intent=capture"></script>
+    <script>
+        // Initialize PayPal buttons when SDK loads
+        function initPayPalButtons() {
+            if (typeof paypal === 'undefined') {
+                setTimeout(initPayPalButtons, 100);
+                return;
+            }
+
+            // Helper function to create PayPal button
+            function createPayPalButton(containerId, productName, productId, price, quantity = 1) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                paypal.Buttons({
+                    createOrder: async () => {
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-create-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    amount: (price * quantity).toFixed(2),
+                                    subtotal: (price * quantity).toFixed(2),
+                                    shipping: "0.00",
+                                    items: [{
+                                        id: productId,
+                                        name: productName,
+                                        unitPrice: price.toFixed(2),
+                                        quantity: quantity
+                                    }]
+                                })
+                            });
+                            const data = await response.json();
+                            if (!response.ok) {
+                                throw new Error(data.error || "Failed to create order");
+                            }
+                            return data.orderID || data.id;
+                        } catch (err) {
+                            console.error("Error creating PayPal order:", err);
+                            alert("Payment error: " + (err.message || "Unknown error"));
+                            throw err;
+                        }
+                    },
+                    onApprove: async (data, actions) => {
+                        const orderID = data.orderID || data.id;
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-capture-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ orderID: orderID })
+                            });
+                            const result = await response.json();
+                            if (!response.ok) {
+                                throw new Error(result.error || "Payment failed");
+                            }
+                            window.location.href = `/thank-you.html?orderId=${orderID}`;
+                        } catch (err) {
+                            console.error("Error capturing payment:", err);
+                            alert(`Payment error: ${err.message || "Unknown error"}`);
+                        }
+                    },
+                    onError: (err) => {
+                        console.error("PayPal error:", err);
+                        alert(`Payment error: ${err.message || "Unknown error"}`);
+                    }
+                }).render(containerId);
+            }
+
+            // Initialize all PayPal buttons
+            createPayPalButton('paypal-button-moringa-1', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-moringa-2', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-moringa-3', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-moringa-4', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-curry', 'Dried Curry Leaves', 'curry-leaves', 6.45);
+            createPayPalButton('paypal-button-combo', 'Premium Combo Pack', 'combo-pack', 15.55);
+        }
+
+        // Start initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPayPalButtons);
+        } else {
+            initPayPalButtons();
+        }
     </script>
 </body>
 </html>

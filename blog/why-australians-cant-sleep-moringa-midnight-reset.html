@@ -538,11 +538,7 @@
                     <h3>Premium Moringa Powder for Calmer Nights</h3>
                     <p>100% organic, lab-tested moringa from NutriThrive. Free delivery across Victoria. Pay with PayPal, Visa or Mastercard.</p>
                     <div class="pay-now-wrap">
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank">
-                            <input class="pp-btn" type="submit" value="Pay Now" />
-                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="PayPal, Visa, Mastercard and more" />
-                            <p class="pp-attribution">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" /></p>
-                        </form>
+                        <div id="paypal-button-sleep-1"></div>
                     </div>
                     <p class="cta-links"><a href="https://nutrithrive.com.au/products/product-detail.html">View product details</a> · <a href="https://nutrithrive.com.au/products/">Shop Now</a> · <a href="https://nutrithrive.com.au/products/">View All Products</a></p>
                 </div>
@@ -673,11 +669,7 @@
                     <h3>Try NutriThrive Moringa — Calm Support, No Sedatives</h3>
                     <p>100% organic moringa powder. Free delivery across Victoria. Pay with PayPal, Visa or Mastercard.</p>
                     <div class="pay-now-wrap">
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank">
-                            <input class="pp-btn" type="submit" value="Pay Now" />
-                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="PayPal, Visa, Mastercard and more" />
-                            <p class="pp-attribution">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" /></p>
-                        </form>
+                        <div id="paypal-button-sleep-2"></div>
                     </div>
                     <p class="cta-links"><a href="https://nutrithrive.com.au/products/product-detail.html">View product details</a> · <a href="https://nutrithrive.com.au/products/">Shop Now</a></p>
                 </div>
@@ -711,11 +703,7 @@
                     <h3>Premium Moringa for Better Overnight Balance</h3>
                     <p>Lab-tested moringa powder from NutriThrive. Free delivery Victoria. Pay Now with PayPal or card.</p>
                     <div class="pay-now-wrap">
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank">
-                            <input class="pp-btn" type="submit" value="Pay Now" />
-                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="PayPal, Visa, Mastercard and more" />
-                            <p class="pp-attribution">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" /></p>
-                        </form>
+                        <div id="paypal-button-sleep-3"></div>
                     </div>
                     <p class="cta-links"><a href="https://nutrithrive.com.au/products/product-detail.html">View product details</a> · <a href="https://nutrithrive.com.au/products/">Shop Now</a></p>
                 </div>
@@ -804,11 +792,7 @@
                     <h3>Get Your Midnight Reset Moringa</h3>
                     <p>Start tonight: 1 tsp in a warm drink around 9 PM. NutriThrive moringa — organic, lab-tested, free delivery Victoria.</p>
                     <div class="pay-now-wrap">
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank">
-                            <input class="pp-btn" type="submit" value="Pay Now" />
-                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="PayPal, Visa, Mastercard and more" />
-                            <p class="pp-attribution">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" /></p>
-                        </form>
+                        <div id="paypal-button-sleep-4"></div>
                     </div>
                     <p class="cta-links"><a href="https://nutrithrive.com.au/products/product-detail.html">View product details</a> · <a href="https://nutrithrive.com.au/products/">Shop Now</a></p>
                 </div>
@@ -1067,11 +1051,7 @@
                     <h3>Premium Moringa Powder for Calmer Nights</h3>
                     <p>100% organic, lab-tested moringa powder from NutriThrive. Free delivery across Victoria.</p>
                     <div class="pay-now-wrap">
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank">
-                            <input class="pp-btn" type="submit" value="Pay Now" />
-                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="PayPal, Visa, Mastercard and more" />
-                            <p class="pp-attribution">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" /></p>
-                        </form>
+                        <div id="paypal-button-sleep-5"></div>
                     </div>
                     <p class="cta-links"><a href="https://nutrithrive.com.au/products/product-detail.html">View product details</a> · <a href="https://nutrithrive.com.au/products/">Shop Now</a> · <a href="https://nutrithrive.com.au/products/">View All Products</a></p>
                 </div>
@@ -1199,5 +1179,87 @@
     <script src="../shared/js/cart.js"></script>
     <script src="../shared/js/cart-header.js"></script>
     <script src="../shared/js/script.js" defer></script>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&currency=AUD&intent=capture"></script>
+    <script>
+        function initPayPalButtons() {
+            if (typeof paypal === 'undefined') {
+                setTimeout(initPayPalButtons, 100);
+                return;
+            }
+
+            function createPayPalButton(containerId, productName, productId, price, quantity = 1) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                paypal.Buttons({
+                    createOrder: async () => {
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-create-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    amount: (price * quantity).toFixed(2),
+                                    subtotal: (price * quantity).toFixed(2),
+                                    shipping: "0.00",
+                                    items: [{
+                                        id: productId,
+                                        name: productName,
+                                        unitPrice: price.toFixed(2),
+                                        quantity: quantity
+                                    }]
+                                })
+                            });
+                            const data = await response.json();
+                            if (!response.ok) {
+                                throw new Error(data.error || "Failed to create order");
+                            }
+                            return data.orderID || data.id;
+                        } catch (err) {
+                            console.error("Error creating PayPal order:", err);
+                            alert("Payment error: " + (err.message || "Unknown error"));
+                            throw err;
+                        }
+                    },
+                    onApprove: async (data, actions) => {
+                        const orderID = data.orderID || data.id;
+                        try {
+                            const response = await fetch("/.netlify/functions/paypal-capture-order", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ orderID: orderID })
+                            });
+                            const result = await response.json();
+                            if (!response.ok) {
+                                throw new Error(result.error || "Payment failed");
+                            }
+                            window.location.href = `/thank-you.html?orderId=${orderID}`;
+                        } catch (err) {
+                            console.error("Error capturing payment:", err);
+                            alert(`Payment error: ${err.message || "Unknown error"}`);
+                        }
+                    },
+                    onError: (err) => {
+                        console.error("PayPal error:", err);
+                        alert(`Payment error: ${err.message || "Unknown error"}`);
+                    }
+                }).render(containerId);
+            }
+
+            // Initialize all 5 PayPal buttons
+            createPayPalButton('paypal-button-sleep-1', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-sleep-2', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-sleep-3', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-sleep-4', 'Moringa Powder', 'moringa-powder', 10.50);
+            createPayPalButton('paypal-button-sleep-5', 'Moringa Powder', 'moringa-powder', 10.50);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPayPalButtons);
+        } else {
+            initPayPalButtons();
+        }
+    </script>
 </body>
 </html>
