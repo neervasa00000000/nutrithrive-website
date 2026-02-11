@@ -15,7 +15,7 @@
 
 /* Hero Section */
 .product-hero {
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
     border-bottom: 1px solid rgba(26, 46, 34, 0.1);
 }
 
@@ -29,6 +29,9 @@
 .product-image-section {
     position: sticky;
     top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-main-image {
@@ -37,12 +40,13 @@
     height: auto;
     border-radius: 8px;
     display: block;
+    object-fit: contain;
 }
 
 .product-info-section {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .product-title {
@@ -235,7 +239,7 @@
 
 /* Reviews Section */
 .reviews-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
     border-bottom: 1px solid rgba(26, 46, 34, 0.1);
 }
 
@@ -308,7 +312,7 @@
 
 /* Features Section */
 .features-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
     border-bottom: 1px solid rgba(26, 46, 34, 0.1);
 }
 
@@ -347,7 +351,7 @@
 
 /* Benefits Section */
 .benefits-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
     border-bottom: 1px solid rgba(26, 46, 34, 0.1);
 }
 
@@ -379,7 +383,7 @@
 
 /* Usage Section */
 .usage-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
     border-bottom: 1px solid rgba(26, 46, 34, 0.1);
     max-width: 800px;
     margin: 0 auto;
@@ -403,7 +407,7 @@
 
 /* Comparison Section */
 .comparison-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
     border-bottom: 1px solid rgba(26, 46, 34, 0.1);
 }
 
@@ -481,7 +485,7 @@
 
 /* FAQ Section */
 .faq-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
 }
 
 .faq-list {
@@ -518,21 +522,44 @@
 
 /* Mobile Responsive */
 @media (max-width: 968px) {
+    .product-hero {
+        padding: 1.5rem 1rem;
+    }
+    
     .product-hero-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
     
     .product-image-section {
         position: static;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
     
     .product-main-image {
         max-width: 100%;
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+    }
+    
+    .product-info-section {
+        gap: 1rem;
     }
     
     .product-title {
-        font-size: 2.25rem;
+        font-size: 2rem;
+    }
+    
+    .product-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .product-description {
+        font-size: 1rem;
     }
     
     .current-price {
@@ -540,17 +567,19 @@
     }
     
     .section-title {
-        font-size: 1.875rem;
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
     }
     
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
     
     .comparison-row {
         grid-template-columns: 1fr;
         gap: 0.75rem;
+        padding: 1rem;
     }
     
     .comparison-row.header {
@@ -567,10 +596,7 @@
         min-width: 280px;
         max-width: 280px;
     }
-}
-
-@media (max-width: 640px) {
-    .product-hero,
+    
     .reviews-section,
     .features-section,
     .benefits-section,
@@ -579,9 +605,44 @@
     .faq-section {
         padding: 2rem 1rem;
     }
+}
+
+@media (max-width: 640px) {
+    .product-hero {
+        padding: 1rem 0.75rem;
+    }
+    
+    .product-hero-content {
+        gap: 1rem;
+    }
+    
+    .product-main-image {
+        max-height: 300px;
+        width: 100%;
+    }
     
     .product-title {
-        font-size: 1.875rem;
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .product-subtitle {
+        font-size: 1rem;
+    }
+    
+    .product-description,
+    .product-location {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .product-pricing {
+        padding: 1rem 0;
+    }
+    
+    .price-row {
+        flex-wrap: wrap;
+        gap: 0.75rem;
     }
     
     .current-price {
@@ -589,20 +650,143 @@
     }
     
     .original-price {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
     }
     
-    .section-title {
-        font-size: 1.5rem;
+    .discount-text {
+        font-size: 0.875rem;
+    }
+    
+    .variation-select,
+    .quantity-select {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+    
+    .add-to-cart-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
     }
     
     .trust-badges {
         gap: 1rem;
+        padding: 1rem 0;
     }
     
     .trust-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .trust-icon {
+        font-size: 1.5rem;
+    }
+    
+    .trust-content strong {
+        font-size: 0.95rem;
+    }
+    
+    .trust-content span {
+        font-size: 0.8rem;
+    }
+    
+    .reviews-section,
+    .features-section,
+    .benefits-section,
+    .usage-section,
+    .comparison-section,
+    .faq-section {
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .reviews-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .reviews-rating {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .features-grid {
+        gap: 1rem;
+    }
+    
+    .feature-item strong {
+        font-size: 1rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.9rem;
+    }
+    
+    .benefits-list {
+        gap: 0.75rem;
+    }
+    
+    .benefits-list li {
+        font-size: 1rem;
+    }
+    
+    .usage-section p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .comparison-intro {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .comparison-table {
+        margin: 1.5rem 0;
+    }
+    
+    .comparison-row {
+        padding: 0.875rem;
+    }
+    
+    .comparison-cell {
+        font-size: 0.875rem;
+    }
+    
+    .comparison-conclusion {
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+    }
+    
+    .faq-list {
+        gap: 1.5rem;
+    }
+    
+    .faq-item {
+        padding-bottom: 1.5rem;
+    }
+    
+    .faq-item h3 {
+        font-size: 1.125rem;
+    }
+    
+    .faq-item p {
+        font-size: 0.95rem;
+    }
+    
+    .review-item {
+        min-width: 260px;
+        max-width: 260px;
+        padding: 1.5rem 0;
+    }
+    
+    .review-text {
+        font-size: 0.95rem;
+    }
+    
+    .review-author {
+        font-size: 0.875rem;
     }
 }
