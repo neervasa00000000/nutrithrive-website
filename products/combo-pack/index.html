@@ -130,7 +130,7 @@
     <link rel="preload" as="style" href="../../styles/products/moringa-powder.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles/global/style.css">
-    <link rel="stylesheet" href="../../styles/products/moringa-powder.css">
+    <link rel="stylesheet" href="../../styles/products/moringa-powder-new.css">
     
     <!-- Mark page as loaded once CSS is ready -->
     <script>
@@ -388,10 +388,10 @@
     }
     </script>
 </head>
-<body class="product-page">
+<body class="product-page-new">
     <header>
         <div class="navbar">
-            <a href="https://nutrithrive.com.au/products/" class="logo">
+            <a href="/" class="logo">
                 <img src="../../assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="29" height="29" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
@@ -410,252 +410,200 @@
         </div>
     </header>
 
-    <main>
-        <section class="product-detail-page">
-            <div class="product-purchase-details">
-                <h1 class="product-title">Premium Combo Pack</h1>
+    <main class="product-main">
+        <!-- Hero Section -->
+        <section class="product-hero">
+            <div class="product-hero-content">
+                <div class="product-image-section">
+                    <img id="main-product-image" src="../../assets/images/homepage/product-showcase/combo.webp" alt="Premium Combo Pack - Wellness Collection" class="product-main-image">
+                </div>
                 
-                <div class="product-content-wrapper">
-                    <!-- Product Gallery - Left Side -->
-                    <div class="product-gallery" style="position: relative !important; top: auto !important; height: auto !important; z-index: 1 !important;">
-                        <div class="main-image" style="position: relative !important; width: 100% !important;">
-                            <img id="main-product-image" src="../../assets/images/homepage/product-showcase/combo.webp" alt="Premium Combo Pack - Wellness Collection" style="width: 100%; max-width: 350px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block; position: relative !important;">
+                <div class="product-info-section">
+                    <h1 class="product-title">Premium Combo Pack</h1>
+                    <p class="product-subtitle">Wellness Collection</p>
+                    
+                    <!-- Purchase Section - Right after image -->
+                    <div class="product-purchase-section">
+                        <!-- Price -->
+                        <div class="product-pricing">
+                            <div class="price-row">
+                                <span id="product-original-price" class="original-price">$18.30 AUD</span>
+                                <span id="product-price" class="current-price">$15.55 AUD</span>
+                            </div>
+                            <p id="product-discount-text" class="discount-text">15% discount ($2.75 AUD off)</p>
+                        </div>
+                        
+                        <!-- Quantity -->
+                        <div class="product-quantity">
+                            <label for="product-quantity" class="quantity-label">Quantity</label>
+                            <select id="product-quantity" class="quantity-select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <button onclick="addComboPackToCart()" class="add-to-cart-btn">Add to Cart</button>
+                        
+                        <!-- PayPal Button -->
+                        <div class="paypal-section">
+                            <div id="paypal-container-ASMMMWXFS7X84"></div>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="trust-item">
+                                <span class="trust-icon">🚚</span>
+                                <div class="trust-content">
+                                    <strong>Free Shipping</strong>
+                                    <span>Australia Wide on Orders Over $80</span>
+                                    <span>$100 World Wide</span>
+                                </div>
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-icon">🛡️</span>
+                                <div class="trust-content">
+                                    <strong>7-Day Money-Back Guarantee</strong>
+                                    <span>Not satisfied? Full refund, no questions asked!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Product Content - Right Side -->
-                    <div class="product-content" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; position: relative !important; z-index: 2 !important;">
-                        <p class="product-description" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 0 1.5rem 0 !important; font-size: 0.95rem; line-height: 1.6;">Discover our Premium Wellness Combo Pack, a curated selection of our best-selling natural products for holistic health and great value. This pack is designed to boost your energy, support a healthy immune system, and enhance overall well-being. Shipped fresh from Truganina, Melbourne to Sydney and across Australia.</p>
-
-                        <!-- Add to Cart Section -->
-                        <div style="margin: 1.5rem 0; padding: 1.5rem; background: transparent; border-radius: 0;">
-                            <!-- Price (on top) -->
-                            <div style="margin-bottom: 1.5rem;">
-                                <div id="product-price-container" style="display: block;">
-                                    <span id="product-original-price" style="font-size: 1.5rem; font-weight: 600; color: #555; text-decoration: line-through; margin-right: 0.5rem;">$18.30 AUD</span>
-                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$15.55 AUD</span>
-                                </div>
-                                <div id="product-discount-text" style="font-size: 0.9rem; color: #2d5a3d; margin-top: 0.25rem;">15% discount ($2.75 AUD off)</div>
-                            </div>
-                            
-                            <!-- Quantity (below price) -->
-                            <div style="margin-bottom: 1.5rem;">
-                                <label for="product-quantity" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
-                                <select id="product-quantity" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                            
-                            <button onclick="addComboPackToCart()" style="width: 100%; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                                Add to Cart
-                            </button>
-                        </div>
-
-                        <div style="text-align: center; padding: 20px; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 3 !important;">
-                            <div id="paypal-container-ASMMMWXFS7X84" style="margin-top: 20px;" aria-label="PayPal payment options for Premium Combo Pack"></div>
-                        </div>
-                
-                        <!-- GUARANTEE & SHIPPING INFO -->
-                        <div style="display: flex; gap: 0.75rem; margin: 16px 0; border-top: 1px solid #e0e0e0; padding-top: 12px; flex-wrap: nowrap;">
-                            <!-- FREE SHIPPING INFO -->
-                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🚚</div>
-                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">Free Shipping</h2>
-                                <p style="margin: 0 0 2px 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">Australia Wide on Orders Over $80</p>
-                                <p style="margin: 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">$100 World Wide</p>
-                            </div>
-                            
-                            <!-- RISK REVERSAL -->
-                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🛡️</div>
-                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">7-Day Money-Back Guarantee</h2>
-                                <p style="margin: 0; color: #2d5a3d; font-size: 0.7rem;">Not satisfied? Full refund, no questions asked!</p>
-                            </div>
-                        </div>
+                    <!-- Description Text - After purchase section -->
+                    <div class="product-description-section">
+                        <p class="product-description">Discover our Premium Wellness Combo Pack, a curated selection of our best-selling natural products for holistic health and great value. This pack is designed to boost your energy, support a healthy immune system, and enhance overall well-being.</p>
+                        
+                        <p class="product-description">Shipped fresh from Truganina, Melbourne to Sydney and across Australia.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Product information sections moved below the purchase block -->
-            <div class="product-info-sections">
-                <!-- Customer Reviews Carousel -->
-                <section style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 3rem; margin-bottom: 3rem; padding: 3rem 0;">
-                    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: #1a2e22; font-weight: 700;">Customer Reviews</h2>
-                    <p style="text-align: center; color: #ffc107; font-size: 1.2rem; margin-bottom: 2rem;">⭐⭐⭐⭐⭐ 5/5 from 15 reviews</p>
-                    
-                    <div style="overflow: hidden; position: relative; width: 100%;">
-                        <div class="reviews-carousel" style="display: flex; gap: 1.5rem; animation: scrollReviews 80s linear infinite; width: max-content; padding: 0 2rem;">
-                            <!-- Review 1 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Olivia C., Perth</p>
-                            </div>
-                            
-                            <!-- Review 2 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Daniel H., Brisbane</p>
-                            </div>
-                            
-                            <!-- Review 3 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Amazing value! I've been a long-time customer of NutriThrive, and this combo pack makes it so easy to reorder my essentials. Everything arrived fresh and well-packaged. A must-have for a healthy lifestyle!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sophie K., Adelaide</p>
-                            </div>
-                            
-                            <!-- Review 4 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"This combo pack is perfect for daily use. I appreciate the quality and the fact that it's all-natural. My digestion has improved, and I feel more balanced throughout the day. Definitely worth it!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Noah P., Sydney</p>
-                            </div>
-                            
-                            <!-- Review 5 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Fantastic value and a great way to try different products. Highly recommend!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Verified Customer</p>
-                            </div>
-                            
-                            <!-- Duplicate reviews for seamless loop -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Olivia C., Perth</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Daniel H., Brisbane</p>
-                            </div>
-                        </div>
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <p class="reviews-rating">⭐⭐⭐⭐⭐ 5/5 from 15 reviews</p>
+            </div>
+            
+            <div class="reviews-container">
+                <div class="reviews-carousel">
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
+                        <p class="review-author">Olivia C., Perth</p>
                     </div>
-                </section>
-                
-                <style>
-                @keyframes scrollReviews {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-50%);
-                    }
-                }
-                
-                .reviews-carousel:hover {
-                    animation-play-state: paused;
-                }
-                
-                @media (max-width: 768px) {
-                    .reviews-carousel > div {
-                        min-width: 280px !important;
-                        max-width: 280px !important;
-                        background: transparent !important;
-                    }
-                }
-                </style>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('what-makes-special')">
-                        <h2>What Makes NutriThrive Combo Pack Special?</h2>
-                        <span class="accordion-icon">+</span>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
+                        <p class="review-author">Daniel H., Brisbane</p>
                     </div>
-                    <div class="accordion-content" id="what-makes-special">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 0.5rem 0;">
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Complete Wellness</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">A synergistic blend of our top natural products designed to support your health journey comprehensively.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Exceptional Value</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Enjoy significant savings when purchasing our combo pack compared to buying individual products.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Perfect Gift</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">An ideal gift for health enthusiasts or anyone looking to kickstart their wellness journey with premium natural products.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Curated Selection</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Thoughtfully chosen products that complement each other to provide maximum health benefits.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Australian Sourced</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">All products are sourced and dispatched fresh from Melbourne, ensuring quality and supporting local.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Boosted Benefits</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">The combination of products amplifies individual benefits, offering a more potent wellness experience.</p>
-                            </div>
-                        </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Amazing value! I've been a long-time customer of NutriThrive, and this combo pack makes it so easy to reorder my essentials. Everything arrived fresh and well-packaged. A must-have for a healthy lifestyle!"</p>
+                        <p class="review-author">Sophie K., Adelaide</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"This combo pack is perfect for daily use. I appreciate the quality and the fact that it's all-natural. My digestion has improved, and I feel more balanced throughout the day. Definitely worth it!"</p>
+                        <p class="review-author">Noah P., Sydney</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Fantastic value and a great way to try different products. Highly recommend!"</p>
+                        <p class="review-author">Verified Customer</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
+                        <p class="review-author">Olivia C., Perth</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
+                        <p class="review-author">Daniel H., Brisbane</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('benefits-combo')">
-                        <h2>Benefits of NutriThrive Combo Pack</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="benefits-combo">
-                        <ul>
-                            <li>✓ Holistic support for energy, immunity, and digestion</li>
-                            <li>✓ Exceptional value with premium natural products</li>
-                            <li>✓ Perfect for personal wellness or as a thoughtful gift</li>
-                            <li>✓ Sustainably sourced and dispatched fresh from Melbourne</li>
-                        </ul>
-                    </div>
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">What Makes NutriThrive Combo Pack Special?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>Complete Wellness</strong>
+                    <p>A curated selection of our best-selling natural products for holistic health and great value. Designed to boost your energy, support a healthy immune system, and enhance overall well-being.</p>
                 </div>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('usage-combo')">
-                        <h2>How to Use Your Combo Pack Products</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="usage-combo">
-                        <p>Refer to the individual product pages for detailed usage instructions for Moringa Powder, Dried Curry Leaves, and Premium Black Tea. Generally, Moringa powder can be mixed into smoothies or water, Dried Curry Leaves are used in cooking, and Black Tea is brewed as a beverage.</p>
-                        <p><strong>Looking to buy natural wellness products in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium combo pack.</p>
-                    </div>
+                <div class="feature-item">
+                    <strong>Exceptional Value</strong>
+                    <p>Get premium natural products together at a great price. Perfect for personal wellness or as a thoughtful gift.</p>
                 </div>
+                <div class="feature-item">
+                    <strong>Premium Quality</strong>
+                    <p>All products included are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Fresh Delivery</strong>
+                    <p>Sustainably sourced and dispatched fresh from Melbourne. Fast shipping Australia-wide.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Synergistic Benefits</strong>
+                    <p>Pre-selected to offer the best synergistic benefits and value for holistic health support.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Perfect Gift</strong>
+                    <p>Ideal for introducing someone to natural wellness or as a thoughtful gift for health-conscious individuals.</p>
+                </div>
+            </div>
+        </section>
 
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('faq-combo')">
-                        <h2>Frequently Asked Questions</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="faq-combo">
-                        <div class="faq-item">
-                            <h3>What's included in the combo pack?</h3>
-                            <p>The combo pack typically includes our Premium Natural Moringa Powder, Dried Curry Leaves (Premium), and Premium Loose Leaf Black Tea. Please check the product description for current contents.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Are the products in the combo pack natural and additive-free?</h3>
-                            <p>Yes, all products included in our combo pack are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Can I customize the combo pack?</h3>
-                            <p>Currently, our combo packs are pre-selected to offer the best synergistic benefits and value. We do not offer customization options at this time.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Payments & Shipping</h3>
-                            <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$80+ (dispatch within 2 business days).</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Is this available in stores like Chemist Warehouse?</h3>
-                            <p>No. To guarantee maximum potency and freshness, we only sell direct-to-consumer from our Truganina, Melbourne warehouse. Fast shipping available to Sydney and across Australia. No middlemen, no stale shelf life.</p>
-                        </div>
-                    </div>
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Benefits of NutriThrive Combo Pack</h2>
+            <ul class="benefits-list">
+                <li>Holistic support for energy, immunity, and digestion</li>
+                <li>Exceptional value with premium natural products</li>
+                <li>Perfect for personal wellness or as a thoughtful gift</li>
+                <li>Sustainably sourced and dispatched fresh from Melbourne</li>
+            </ul>
+        </section>
+
+        <!-- Usage Section -->
+        <section class="usage-section">
+            <h2 class="section-title">How to Use Your Combo Pack Products</h2>
+            <p>Refer to the individual product pages for detailed usage instructions for Moringa Powder, Dried Curry Leaves, and Premium Black Tea. Generally, Moringa powder can be mixed into smoothies or water, Dried Curry Leaves are used in cooking, and Black Tea is brewed as a beverage.</p>
+            <p><strong>Looking to buy natural wellness products in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium combo pack.</p>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>What's included in the combo pack?</h3>
+                    <p>The combo pack typically includes our Premium Natural Moringa Powder, Dried Curry Leaves (Premium), and Premium Loose Leaf Black Tea. Please check the product description for current contents.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are the products in the combo pack natural and additive-free?</h3>
+                    <p>Yes, all products included in our combo pack are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I customize the combo pack?</h3>
+                    <p>Currently, our combo packs are pre-selected to offer the best synergistic benefits and value. We do not offer customization options at this time.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Payments & Shipping</h3>
+                    <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$80+ (dispatch within 2 business days).</p>
                 </div>
             </div>
         </section>
@@ -800,14 +748,30 @@
         // Make sure function is available globally
         window.toggleAccordion = toggleAccordion;
     </script>
-    <script 
-  src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo&currency=AUD">
-</script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture"></script>
     <script>
-  paypal.HostedButtons({
-    hostedButtonId: "ASMMMWXFS7X84",
-  }).render("#paypal-container-ASMMMWXFS7X84")
-</script>
+        function initPayPal() {
+            if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
+                try {
+                    paypal.HostedButtons({
+                        hostedButtonId: "ASMMMWXFS7X84",
+                    }).render("#paypal-container-ASMMMWXFS7X84").catch(function(err) {
+                        console.warn('PayPal button rendering issue:', err);
+                    });
+                } catch (err) {
+                    console.warn('PayPal initialization error:', err);
+                }
+            } else {
+                setTimeout(initPayPal, 100);
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPayPal);
+        } else {
+            initPayPal();
+        }
+    </script>
     <script src="../../scripts/global/cart.js"></script>
     <script src="../../scripts/global/cart-header.js"></script>
     <script src="../../scripts/global/script.js"></script>

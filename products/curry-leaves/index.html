@@ -2,170 +2,90 @@
 <html lang="en-AU">
 <head>
 <script src="../../scripts/global/defer-loader.js"></script>
-<!-- Google Analytics - Deferred until user interaction -->
+
+<!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true, crossorigin: 'anonymous'
-      }).then(function() {
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
-    }, { once: true, passive: true });
-  } else {
-    window.addEventListener('load', function() {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-WH21SW75WP');
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP', {
+      'anonymize_ip': true,
+      'allow_google_signals': false
     });
-  }
+  });
 </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://nutrithrive.com.au/products/product-curry-leaves.html">
-    <title>Dried Curry Leaves - NutriThrive Australia</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Dried Curry Leaves - Premium Quality | NutriThrive</title>
     <meta name="description" content="Premium dried curry leaves from NutriThrive. Traditional Indian spice with health benefits. 100% natural, perfect for authentic Indian cooking in Australia. Fast shipping from Truganina, Melbourne to Sydney and across Australia.">
     <meta name="keywords" content="dried curry leaves Australia, Indian spices, curry leaves benefits, traditional cooking, NutriThrive spices, dried curry leaves Melbourne, Sydney Indian spices, Truganina spices, Victoria curry leaves, Australia Indian cooking">
+    <meta name="author" content="NutriThrive Australia">
     <meta name="robots" content="index, follow">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <meta name="language" content="en-AU">
+    <meta name="geo.region" content="AU-VIC">
+    <meta name="geo.placename" content="Melbourne">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://nutrithrive.com.au/products/product-curry-leaves.html">
+    <meta property="og:title" content="Dried Curry Leaves - Premium Quality | NutriThrive">
+    <meta property="og:description" content="Premium dried curry leaves for authentic Indian cooking. Rich in antioxidants, vitamins, and traditional flavor. Fast shipping Australia-wide.">
+    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp">
+    <meta property="og:site_name" content="NutriThrive Australia">
+    <meta property="og:locale" content="en_AU">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nutrithrive.com.au/products/product-curry-leaves.html">
+    <meta property="twitter:title" content="Dried Curry Leaves - Premium Quality | NutriThrive">
+    <meta property="twitter:description" content="Premium dried curry leaves for authentic Indian cooking. Rich in antioxidants, vitamins, and traditional flavor. Fast shipping Australia-wide.">
+    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nutrithrive.com.au/products/product-curry-leaves.html">
+    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/products/product-curry-leaves.html">
+    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/product-curry-leaves.html">
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.paypal.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../styles/global/style.css">
-    <link rel="stylesheet" href="../../styles/products/moringa-powder.css">
-    <style>
-      /* Accordion smooth animation */
-      .accordion-content {
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out !important;
-        overflow: hidden !important;
-      }
-      
-      .accordion-content.active {
-        display: block !important;
-        max-height: none !important;
-      }
-      
-      /* Mobile navigation - match homepage exactly */
-      @media (max-width: 768px) {
-        .nav-links {
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(10px);
-          z-index: 2000;
-          display: none;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: center;
-          transform: translateX(-100%);
-          transition: transform 0.3s ease-in-out;
-          padding: 2rem 1.5rem 1rem;
-          margin: 0;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-          gap: 0.8rem;
-        }
-        
-        .nav-links.nav-active {
-          display: flex !important;
-          transform: translateX(0);
-        }
-        
-        .nav-links a {
-          font-size: 1.5rem !important;
-          margin: 0.2rem 0 !important;
-          padding: 1.2rem 1.5rem !important;
-          border-radius: 12px !important;
-          transition: background-color 0.2s ease !important;
-          text-align: center !important;
-          width: 100% !important;
-          max-width: 300px !important;
-          display: flex !important;
-          text-decoration: none !important;
-          color: var(--primary) !important;
-          font-weight: 600 !important;
-          min-height: 60px !important;
-          align-items: center !important;
-          justify-content: center !important;
-          background: transparent !important;
-          border: none !important;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-          background-color: rgba(23, 92, 54, 0.1) !important;
-          color: var(--accent) !important;
-        }
-        
-        .hamburger {
-          min-width: 48px !important;
-          min-height: 48px !important;
-          padding: 12px !important;
-          -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
-          touch-action: manipulation !important;
-          cursor: pointer !important;
-        }
-        
-        /* Hamburger close functionality - force perfectly centered X on mobile (match homepage) */
-        .hamburger.toggle {
-          background: none !important;
-          border: none !important;
-        }
-        
-        /* When open, overlay both visible lines in the exact center */
-        .hamburger.toggle div {
-          position: absolute !important;
-          top: 50% !important;
-          left: 50% !important;
-          width: 25px !important;
-          height: 3px !important;
-          margin: 0 !important;
-          transform-origin: center !important;
-        }
-        
-        .hamburger.toggle .line1 {
-          transform: translate(-50%, -50%) rotate(45deg) !important;
-        }
-        
-        .hamburger.toggle .line2 {
-          opacity: 0 !important;
-          visibility: hidden !important;
-          display: none !important;
-        }
-        
-        .hamburger.toggle .line3 {
-          transform: translate(-50%, -50%) rotate(-45deg) !important;
-        }
-      }
-    </style>
-    <!-- Favicons - Standardized across all pages -->
+    <link rel="stylesheet" href="../../styles/products/moringa-powder-new.css">
+    
+    <!-- Favicons -->
     <link rel="icon" type="image/png" href="../../assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/logo/LOGO.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
-    <meta name="msapplication-TileImage" content="../assets/images/logo/LOGO.webp">
+    <meta name="msapplication-TileImage" content="../../assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
-    <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
       "@type": "Product",
       "name": "Dried Curry Leaves",
-      "description": "Premium dried curry leaves from NutriThrive. Traditional Indian spice with health benefits. 100% natural, perfect for authentic Indian cooking.",
-      "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/Curry.webp",
+      "sku": "NT-CL-30G",
+      "mpn": "NT-CL-30G",
+      "description": "Discover the authentic taste of traditional cooking with our premium dried curry leaves. These aromatic leaves add depth and flavor to curries, dals, and South Indian dishes while providing numerous health benefits.",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp",
       "brand": {
         "@type": "Brand",
         "name": "NutriThrive"
@@ -173,43 +93,24 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
-        "reviewCount": "134"
+        "reviewCount": "134",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "review": [
         {
           "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Priya S." },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Priya S."
+          },
           "datePublished": "2025-11-20",
           "reviewBody": "Excellent quality dried curry leaves, perfect for authentic cooking. The aroma is incredible when I use them in my tadka. Much better than what I used to buy from local stores in Melbourne. Fast shipping and great value!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Raj K." },
-          "datePublished": "2025-12-05",
-          "reviewBody": "These curry leaves have transformed my cooking! The flavor is so much more intense than other brands I've tried in Sydney. My family can't get enough of my curries now. Highly recommend for anyone in Australia serious about authentic flavors."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Anita M." },
-          "datePublished": "2025-11-15",
-          "reviewBody": "Excellent quality dried curry leaves, perfect for authentic Indian cooking. Fast shipping and great value. These are now a staple in my pantry!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Vikram P." },
-          "datePublished": "2025-12-10",
-          "reviewBody": "Best dried curry leaves I've found in Australia! The quality is outstanding and they maintain their flavor perfectly. I use them in all my South Indian dishes. Highly recommend!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Meera R." },
-          "datePublished": "2025-11-28",
-          "reviewBody": "These curry leaves are fantastic! The aroma when I fry them in ghee is incredible. My sambars and dals taste so much better now. Great quality and fast delivery from Melbourne!"
         }
       ],
       "offers": {
@@ -219,56 +120,20 @@
         "price": "6.45",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
         "seller": {
           "@type": "Organization",
           "name": "NutriThrive"
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "AU",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 7,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn"
-        },
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "AUD"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "AU"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 3,
-              "maxValue": 10,
-              "unitCode": "DAY"
-            }
-          }
         }
       }
     }
     </script>
-    <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/products/product-curry-leaves.html">
-    <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/product-curry-leaves.html">
 </head>
-<body class="product-page">
+<body class="product-page-new">
     <header>
         <div class="navbar">
-            <a href="https://nutrithrive.com.au/products/" class="logo">
-                <img src="../../assets/images/logo/LOGO.webp" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+            <a href="/" class="logo">
+                <img src="../../assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
             <nav class="nav-links">
@@ -286,222 +151,200 @@
         </div>
     </header>
 
-    <main>
-        <section class="product-detail-page">
-            <div class="product-purchase-details">
-                <h1 class="product-title">Dried Curry Leaves</h1>
+    <main class="product-main">
+        <!-- Hero Section -->
+        <section class="product-hero">
+            <div class="product-hero-content">
+                <div class="product-image-section">
+                    <img id="main-product-image" src="../../assets/images/homepage/product-showcase/Curry.webp" alt="Dried Curry Leaves - Premium Quality" class="product-main-image">
+                </div>
                 
-                <div class="product-content-wrapper">
-                    <!-- Product Gallery - Left Side -->
-                    <div class="product-gallery" style="position: relative !important; top: auto !important; height: auto !important; z-index: 1 !important;">
-                        <div class="main-image" style="position: relative !important; width: 100% !important;">
-                            <img id="main-product-image" src="../../assets/images/homepage/product-showcase/Curry.webp" alt="Dried Curry Leaves - Premium Quality" style="width: 100%; max-width: 350px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block; position: relative !important;">
+                <div class="product-info-section">
+                    <h1 class="product-title">Dried Curry Leaves</h1>
+                    <p class="product-subtitle">Premium Quality</p>
+                    
+                    <!-- Purchase Section - Right after image -->
+                    <div class="product-purchase-section">
+                        <!-- Price -->
+                        <div class="product-pricing">
+                            <div class="price-row">
+                                <span id="product-original-price" class="original-price">$7.59 AUD</span>
+                                <span id="product-price" class="current-price">$6.45 AUD</span>
+                            </div>
+                            <p id="product-discount-text" class="discount-text">15% discount ($1.14 AUD off)</p>
+                        </div>
+                        
+                        <!-- Quantity -->
+                        <div class="product-quantity">
+                            <label for="product-quantity" class="quantity-label">Quantity</label>
+                            <select id="product-quantity" class="quantity-select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <button onclick="addCurryLeavesToCart()" class="add-to-cart-btn">Add to Cart</button>
+                        
+                        <!-- PayPal Button -->
+                        <div class="paypal-section">
+                            <div id="paypal-container-NJKU46NBZ55JN"></div>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="trust-item">
+                                <span class="trust-icon">🚚</span>
+                                <div class="trust-content">
+                                    <strong>Free Shipping</strong>
+                                    <span>Australia Wide on Orders Over $80</span>
+                                    <span>$100 World Wide</span>
+                                </div>
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-icon">🛡️</span>
+                                <div class="trust-content">
+                                    <strong>7-Day Money-Back Guarantee</strong>
+                                    <span>Not satisfied? Full refund, no questions asked!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Product Content - Right Side -->
-                    <div class="product-content" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; position: relative !important; z-index: 2 !important;">
-                        <p class="product-description" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 0 1.5rem 0 !important; font-size: 0.95rem; line-height: 1.6;">Discover the authentic taste of traditional cooking with our premium dried curry leaves. These aromatic leaves add depth and flavor to curries, dals, and South Indian dishes while providing numerous health benefits. Perfect for home cooks in Melbourne, Sydney, and across Australia. Shipped fresh from Truganina, Melbourne to customers throughout Australia.</p>
-
-                        <!-- Add to Cart Section -->
-                        <div style="margin: 1.5rem 0; padding: 1.5rem; background: transparent; border-radius: 0;">
-                            <!-- Price (on top) -->
-                            <div style="margin-bottom: 1.5rem;">
-                                <div id="product-price-container" style="display: block;">
-                                    <span id="product-original-price" style="font-size: 1.5rem; font-weight: 600; color: #555; text-decoration: line-through; margin-right: 0.5rem;">$7.59 AUD</span>
-                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$6.45 AUD</span>
-                                </div>
-                                <div id="product-discount-text" style="font-size: 0.9rem; color: #2d5a3d; margin-top: 0.25rem;">15% discount ($1.14 AUD off)</div>
-                            </div>
-                            
-                            <!-- Quantity (below price) -->
-                            <div style="margin-bottom: 1.5rem;">
-                                <label for="product-quantity" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
-                                <select id="product-quantity" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                            
-                            <button onclick="addCurryLeavesToCart()" style="width: 100%; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                                Add to Cart
-                            </button>
-                        </div>
-
-                        <div style="text-align: center; padding: 20px; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 3 !important;">
-                            <div id="paypal-container-NJKU46NBZ55JN" style="margin-top: 20px;"></div>
-                        </div>
-                
-                        <!-- GUARANTEE & SHIPPING INFO -->
-                        <div style="display: flex; gap: 0.75rem; margin: 16px 0; border-top: 1px solid #e0e0e0; padding-top: 12px; flex-wrap: nowrap;">
-                            <!-- FREE SHIPPING INFO -->
-                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🚚</div>
-                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">Free Shipping</h2>
-                                <p style="margin: 0 0 2px 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">Australia Wide on Orders Over $80</p>
-                                <p style="margin: 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">$100 World Wide</p>
-                            </div>
-                            
-                            <!-- RISK REVERSAL -->
-                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🛡️</div>
-                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">7-Day Money-Back Guarantee</h2>
-                                <p style="margin: 0; color: #2d5a3d; font-size: 0.7rem;">Not satisfied? Full refund, no questions asked!</p>
-                            </div>
-                        </div>
+                    <!-- Description Text - After purchase section -->
+                    <div class="product-description-section">
+                        <p class="product-description">Discover the authentic taste of traditional cooking with our premium dried curry leaves. These aromatic leaves add depth and flavor to curries, dals, and South Indian dishes while providing numerous health benefits.</p>
+                        
+                        <p class="product-description">Perfect for home cooks in Melbourne, Sydney, and across Australia. Shipped fresh from Truganina, Melbourne to customers throughout Australia.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Product information sections moved below the purchase block -->
-            <div class="product-info-sections">
-                <!-- Customer Reviews Carousel -->
-                <section style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 3rem; margin-bottom: 3rem; padding: 3rem 0;">
-                    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: #1a2e22; font-weight: 700;">Customer Reviews</h2>
-                    <p style="text-align: center; color: #ffc107; font-size: 1.2rem; margin-bottom: 2rem;">⭐⭐⭐⭐⭐ 5/5 from 134 reviews</p>
-                    
-                    <div style="overflow: hidden; position: relative; width: 100%;">
-                        <div class="reviews-carousel" style="display: flex; gap: 1.5rem; animation: scrollReviews 80s linear infinite; width: max-content; padding: 0 2rem;">
-                            <!-- Review 1 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Excellent quality dried curry leaves, perfect for authentic cooking. The aroma is incredible when I use them in my tadka. Much better than what I used to buy from local stores in Melbourne. Fast shipping and great value!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Priya S., Melbourne</p>
-                            </div>
-                            
-                            <!-- Review 2 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"These curry leaves have transformed my cooking! The flavor is so much more intense than other brands I've tried in Sydney. My family can't get enough of my curries now. Highly recommend for anyone in Australia serious about authentic flavors."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Raj K., Sydney</p>
-                            </div>
-                            
-                            <!-- Review 3 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Excellent quality dried curry leaves, perfect for authentic Indian cooking. Fast shipping and great value. These are now a staple in my pantry!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Anita M., Brisbane</p>
-                            </div>
-                            
-                            <!-- Review 4 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Best dried curry leaves I've found in Australia! The quality is outstanding and they maintain their flavor perfectly. I use them in all my South Indian dishes. Highly recommend!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Vikram P., Adelaide</p>
-                            </div>
-                            
-                            <!-- Review 5 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"These curry leaves are fantastic! The aroma when I fry them in ghee is incredible. My sambars and dals taste so much better now. Great quality and fast delivery from Melbourne!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Meera R., Perth</p>
-                            </div>
-                            
-                            <!-- Duplicate reviews for seamless loop -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Excellent quality dried curry leaves, perfect for authentic cooking. The aroma is incredible when I use them in my tadka. Much better than what I used to buy from local stores in Melbourne. Fast shipping and great value!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Priya S., Melbourne</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"These curry leaves have transformed my cooking! The flavor is so much more intense than other brands I've tried in Sydney. My family can't get enough of my curries now. Highly recommend for anyone in Australia serious about authentic flavors."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Raj K., Sydney</p>
-                            </div>
-                        </div>
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <p class="reviews-rating">⭐⭐⭐⭐⭐ 5/5 from 134 reviews</p>
+            </div>
+            
+            <div class="reviews-container">
+                <div class="reviews-carousel">
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Excellent quality dried curry leaves, perfect for authentic cooking. The aroma is incredible when I use them in my tadka. Much better than what I used to buy from local stores in Melbourne. Fast shipping and great value!"</p>
+                        <p class="review-author">Priya S., Melbourne</p>
                     </div>
-                </section>
-                
-                <style>
-                @keyframes scrollReviews {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-50%);
-                    }
-                }
-                
-                .reviews-carousel:hover {
-                    animation-play-state: paused;
-                }
-                
-                @media (max-width: 768px) {
-                    .reviews-carousel > div {
-                        min-width: 280px !important;
-                        max-width: 280px !important;
-                        background: transparent !important;
-                    }
-                }
-                </style>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('what-makes-curry')">
-                        <h2>Why Choose NutriThrive Dried Curry Leaves?</h2>
-                        <span class="accordion-icon">+</span>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"These curry leaves have transformed my cooking! The flavor is so much more intense than other brands I've tried in Sydney. My family can't get enough of my curries now. Highly recommend for anyone in Australia serious about authentic flavors."</p>
+                        <p class="review-author">Raj K., Sydney</p>
                     </div>
-                    <div class="accordion-content" id="what-makes-curry">
-                        <p>Our premium dried curry leaves are harvested using traditional methods that preserve their authentic aroma and flavor. Unlike store-bought alternatives that may sit on shelves for months, our curry leaves are carefully shade-dried to maintain their vibrant green color and maximum potency. Rich in antioxidants, vitamins A, B, and C, as well as iron and folic acid, these leaves not only enhance your cooking but also support digestive health and metabolism. Perfect for authentic dishes including curries, dals, sambars, and South Indian vegetable preparations. Each batch is quality-tested to ensure you receive the freshest, most aromatic curry leaves available in Australia. Whether you're a seasoned home cook in Melbourne, Sydney, or anywhere across Australia, our dried curry leaves will elevate your dishes to restaurant-quality flavor. Available for fast delivery throughout Australia from our Melbourne warehouse.</p>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Excellent quality dried curry leaves, perfect for authentic Indian cooking. Fast shipping and great value. These are now a staple in my pantry!"</p>
+                        <p class="review-author">Anita M., Brisbane</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Best dried curry leaves I've found in Australia! The quality is outstanding and they maintain their flavor perfectly. I use them in all my South Indian dishes. Highly recommend!"</p>
+                        <p class="review-author">Vikram P., Adelaide</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"These curry leaves are fantastic! The aroma when I fry them in ghee is incredible. My sambars and dals taste so much better now. Great quality and fast delivery from Melbourne!"</p>
+                        <p class="review-author">Meera R., Perth</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Excellent quality dried curry leaves, perfect for authentic cooking. The aroma is incredible when I use them in my tadka. Much better than what I used to buy from local stores in Melbourne. Fast shipping and great value!"</p>
+                        <p class="review-author">Priya S., Melbourne</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"These curry leaves have transformed my cooking! The flavor is so much more intense than other brands I've tried in Sydney. My family can't get enough of my curries now. Highly recommend for anyone in Australia serious about authentic flavors."</p>
+                        <p class="review-author">Raj K., Sydney</p>
                     </div>
                 </div>
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('benefits-curry')">
-                        <h2>Benefits of NutriThrive Dried Curry Leaves</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="benefits-curry">
-                        <ul>
-                            <li>✓ Rich in antioxidants and vitamins A, B, C</li>
-                            <li>✓ Supports digestive health and metabolism</li>
-                            <li>✓ Contains iron and folic acid for blood health</li>
-                            <li>✓ Traditional Ayurvedic medicinal properties</li>
-                        </ul>
-                    </div>
-                </div>
+            </div>
+        </section>
 
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('usage-curry')">
-                        <h2>How to Use Dried Curry Leaves</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="usage-curry">
-                        <p>Use 2-3 times the amount of dried leaves compared to fresh. Fry in hot oil or ghee at the start of cooking (tadka method) to release their aroma. Perfect for curries, dals, sambars, and South Indian dishes.</p>
-                        <p><strong>Looking for premium dried curry leaves in Australia?</strong> NutriThrive offers the freshest dried curry leaves with fast shipping from Truganina, Melbourne to Sydney and across Australia. Perfect for home cooks in Melbourne, Sydney, and throughout Victoria, New South Wales, and all of Australia.</p>
-                    </div>
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">Why Choose NutriThrive Dried Curry Leaves?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>Premium Quality</strong>
+                    <p>Harvested using traditional methods that preserve authentic aroma and flavor. Carefully shade-dried to maintain vibrant green color and maximum potency.</p>
                 </div>
+                <div class="feature-item">
+                    <strong>Rich in Nutrients</strong>
+                    <p>Rich in antioxidants, vitamins A, B, and C, as well as iron and folic acid. Supports digestive health and metabolism.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Authentic Flavor</strong>
+                    <p>Perfect for authentic dishes including curries, dals, sambars, and South Indian vegetable preparations.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Quality Tested</strong>
+                    <p>Each batch is quality-tested to ensure you receive the freshest, most aromatic curry leaves available in Australia.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Traditional Methods</strong>
+                    <p>Unlike store-bought alternatives that may sit on shelves for months, our curry leaves are carefully processed to maintain freshness.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Fast Delivery</strong>
+                    <p>Available for fast delivery throughout Australia from our Melbourne warehouse to Sydney and across Australia.</p>
+                </div>
+            </div>
+        </section>
 
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('faq-curry')">
-                        <h2>Frequently Asked Questions</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="faq-curry">
-                        <div class="faq-item">
-                            <h3>How do dried curry leaves compare to fresh?</h3>
-                            <p>Dried curry leaves are more convenient and have a longer shelf life. Use about 2-3 times the amount of dried leaves compared to fresh for the same flavor intensity.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>What dishes can I use them in?</h3>
-                            <p>Perfect for curries, dals, sambars, rice dishes, and South Indian vegetable preparations. They add authentic flavor to any dish. Available for delivery throughout Australia.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>How should I store them?</h3>
-                            <p>Keep in an airtight container away from heat and light. Stored properly, they maintain their flavor for 6+ months.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Payments & Shipping</h3>
-                            <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$80+ (dispatch within 2 business days).</p>
-                        </div>
-                    </div>
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Benefits of NutriThrive Dried Curry Leaves</h2>
+            <ul class="benefits-list">
+                <li>Rich in antioxidants and vitamins A, B, C</li>
+                <li>Supports digestive health and metabolism</li>
+                <li>Contains iron and folic acid for blood health</li>
+                <li>Traditional Ayurvedic medicinal properties</li>
+            </ul>
+        </section>
+
+        <!-- Usage Section -->
+        <section class="usage-section">
+            <h2 class="section-title">How to Use Dried Curry Leaves</h2>
+            <p>Use 2-3 times the amount of dried leaves compared to fresh. Fry in hot oil or ghee at the start of cooking (tadka method) to release their aroma. Perfect for curries, dals, sambars, and South Indian dishes.</p>
+            <p><strong>Looking for premium dried curry leaves in Australia?</strong> NutriThrive offers the freshest dried curry leaves with fast shipping from Truganina, Melbourne to Sydney and across Australia. Perfect for home cooks in Melbourne, Sydney, and throughout Victoria, New South Wales, and all of Australia.</p>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>How do dried curry leaves compare to fresh?</h3>
+                    <p>Dried curry leaves are more convenient and have a longer shelf life. Use about 2-3 times the amount of dried leaves compared to fresh for the same flavor intensity.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What dishes can I use them in?</h3>
+                    <p>Perfect for curries, dals, sambars, rice dishes, and South Indian vegetable preparations. They add authentic flavor to any dish. Available for delivery throughout Australia.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How should I store them?</h3>
+                    <p>Keep in an airtight container away from heat and light. Stored properly, they maintain their flavor for 6+ months.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Payments & Shipping</h3>
+                    <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$80+ (dispatch within 2 business days).</p>
                 </div>
             </div>
         </section>
@@ -530,7 +373,8 @@
                     <li><a href="/faq">FAQ</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/blog/">Blog</a></li>
-                    <li><a href="/pages/usage-guide/how-to-use-moringa.html">Usage &amp; Benefits</a></li>                </ul>
+                    <li><a href="/pages/usage-guide/how-to-use-moringa.html">Usage &amp; Benefits</a></li>
+                </ul>
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
@@ -558,46 +402,8 @@
     <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture"></script>
     <script src="../../scripts/global/cart.js"></script>
     <script src="../../scripts/global/cart-header.js"></script>
-    <script src="../../scripts/global/script.js" defer></script>
+    <script src="../../scripts/global/script.js"></script>
     <script>
-      // Suppress PayPal SDK console errors
-      const originalError = console.error;
-      console.error = function(...args) {
-        // Filter out PayPal paylater errors
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('ncps_standalone_paylater_ineligible')) {
-          return; // Suppress this error
-        }
-        originalError.apply(console, args);
-      };
-
-      // Wait for PayPal SDK to load before rendering
-      function initPayPal() {
-        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
-          try {
-            paypal.HostedButtons({
-              hostedButtonId: "NJKU46NBZ55JN",
-            }).render("#paypal-container-NJKU46NBZ55JN").catch(function(err) {
-              // Silently handle rendering errors
-              console.warn('PayPal button rendering issue:', err);
-            });
-          } catch (err) {
-            // Silently handle initialization errors
-            console.warn('PayPal initialization error:', err);
-          }
-        } else {
-          // Retry if PayPal SDK not loaded yet
-          setTimeout(initPayPal, 100);
-        }
-      }
-
-      // Start initialization
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPayPal);
-      } else {
-        initPayPal();
-      }
-
-        // Add to cart function for Curry Leaves
         function addCurryLeavesToCart() {
             const quantitySelect = document.getElementById('product-quantity');
             const quantity = parseInt(quantitySelect ? quantitySelect.value : 1) || 1;
@@ -607,7 +413,7 @@
                     id: 'curry-leaves',
                     name: 'Dried Curry Leaves',
                     price: 6.45,
-                    weight: 30, // 30g pack
+                    weight: 30,
                     image: '../../assets/images/homepage/product-showcase/Curry.webp',
                     quantity: quantity
                 });
@@ -616,80 +422,75 @@
             }
         }
         
-        // Accordion functionality
-        function toggleAccordion(sectionId) {
-            const content = document.getElementById(sectionId);
-            if (!content) {
-                console.error('Accordion content not found:', sectionId);
-                return;
-            }
-            
-            const header = content.previousElementSibling;
-            const icon = header ? header.querySelector('.accordion-icon') : null;
-            const section = content.parentElement;
-            
-            // Check if currently open
-            const isOpen = section.classList.contains('active') || 
-                          content.classList.contains('active') ||
-                          content.style.display === 'block' ||
-                          getComputedStyle(content).display !== 'none';
-            
-            if (isOpen) {
-                // Close - smooth animation
-                const currentHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = currentHeight;
-                content.style.overflow = 'hidden';
-                content.style.opacity = '1';
-                
-                // Force reflow
-                content.offsetHeight;
-                
-                // Animate to 0
-                content.style.maxHeight = '0px';
-                content.style.opacity = '0';
-                
-                setTimeout(() => {
-                    content.style.display = 'none';
-                    content.style.maxHeight = null;
-                    content.style.overflow = null;
-                    content.style.opacity = null;
-                }, 350);
-                
-                if (icon) icon.textContent = '+';
-                section.classList.remove('active');
-                content.classList.remove('active');
+        function initPayPal() {
+            if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
+                try {
+                    paypal.HostedButtons({
+                        hostedButtonId: "NJKU46NBZ55JN",
+                    }).render("#paypal-container-NJKU46NBZ55JN").catch(function(err) {
+                        console.warn('PayPal button rendering issue:', err);
+                    });
+                } catch (err) {
+                    console.warn('PayPal initialization error:', err);
+                }
             } else {
-                // Open - smooth animation
-                // First, make it visible but at 0 height
-                content.style.display = 'block';
-                content.style.maxHeight = '0px';
-                content.style.overflow = 'hidden';
-                content.style.opacity = '0';
-                
-                // Force reflow to ensure transition works
-                content.offsetHeight;
-                
-                // Get the full height
-                const fullHeight = content.scrollHeight + 50 + 'px'; // Add extra padding
-                
-                // Animate to full height
-                content.style.maxHeight = fullHeight;
-                content.style.opacity = '1';
-                
-                // After animation completes, allow natural height
-                setTimeout(() => {
-                    content.style.maxHeight = 'none';
-                    content.style.overflow = 'visible';
-                }, 350);
-                
-                if (icon) icon.textContent = '−';
-                section.classList.add('active');
-                content.classList.add('active');
+                setTimeout(initPayPal, 100);
             }
         }
         
-        // Make sure function is available globally
-        window.toggleAccordion = toggleAccordion;
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPayPal);
+        } else {
+            initPayPal();
+        }
+    </script>
+    <script>
+      (function() {
+        function setupHamburger() {
+          const hamburger = document.querySelector('.hamburger');
+          const navLinks = document.querySelector('.nav-links');
+          
+          if (!hamburger || !navLinks) {
+            setTimeout(setupHamburger, 100);
+            return;
+          }
+          
+          if (!window.ntToggleMenu) {
+            window.ntToggleMenu = function() {
+              const isOpen = navLinks.classList.contains('nav-active');
+              if (isOpen) {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+                document.body.classList.remove('no-scroll');
+                navLinks.style.display = '';
+              } else {
+                navLinks.classList.add('nav-active');
+                hamburger.classList.add('toggle');
+                document.body.classList.add('no-scroll');
+                navLinks.style.display = 'flex';
+              }
+            };
+          }
+          
+          hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.ntToggleMenu();
+          });
+          
+          hamburger.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.ntToggleMenu();
+          }, { passive: false });
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupHamburger);
+        } else {
+          setupHamburger();
+        }
+      })();
     </script>
 </body>
 </html>
