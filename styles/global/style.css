@@ -1823,27 +1823,7 @@ footer {
     margin-bottom: 1.5rem;
 }
 
-.faq-item {
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: none;
-}
-
-.faq-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.faq-item h3 {
-    color: var(--primary);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.faq-item p {
-    color: var(--text);
-    line-height: 1.6;
-}
+/* FAQ styles moved to pages/faq/faq.css - removed to prevent conflicts */
 
 @media (max-width: 768px) {
     .product-benefits,
