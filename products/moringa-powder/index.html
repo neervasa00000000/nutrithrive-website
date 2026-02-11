@@ -5,7 +5,6 @@
 
 <!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
-  // Defer Google Analytics to prevent blocking initial render
   window.addEventListener('load', function() {
     var script = document.createElement('script');
     script.async = true;
@@ -58,218 +57,27 @@
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/products/product-detail.html">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/product-detail.html">
     
-    <!-- Resource Hints for Performance -->
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://i.imgur.com">
     <link rel="preconnect" href="https://www.paypal.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
-    <!-- Critical CSS to prevent FOUC -->
-    <style>
-      /* Prevent FOUC - Hide content until CSS loads */
-      html:not(.loaded) { visibility: hidden; opacity: 0; }
-      html.loaded { visibility: visible; opacity: 1; transition: opacity 0.1s; }
-      
-      /* Critical above-the-fold styles */
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        background: #f8f5ec;
-        color: #1a2e22;
-        line-height: 1.6;
-      }
-      
-      /* Header critical styles - use standard header styling */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: var(--bg);
-      }
-    </style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Load CSS normally (blocking) to prevent FOUC -->
-    <link rel="preload" as="style" href="../../styles/global/style.css">
-    <link rel="preload" as="style" href="../../styles/products/moringa-powder.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../styles/global/style.css">
-    <link rel="stylesheet" href="../../styles/products/moringa-powder.css">
+    <link rel="stylesheet" href="../../styles/products/moringa-powder-new.css">
     
-    <!-- Mark page as loaded once CSS is ready -->
-    <script>
-      // Prevent FOUC - mark page as loaded once CSS is ready
-      (function() {
-        function markLoaded() {
-          document.documentElement.classList.add('loaded');
-        }
-        
-        // If CSS is already loaded
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-          setTimeout(markLoaded, 0);
-        } else {
-          window.addEventListener('load', markLoaded);
-          // Fallback timeout
-          setTimeout(markLoaded, 100);
-        }
-      })();
-    </script>
-    
-    <style>
-      /* Accordion smooth animation */
-      .accordion-content {
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out !important;
-        overflow: hidden !important;
-      }
-      
-      .accordion-content.active {
-        display: block !important;
-        max-height: none !important;
-      }
-      
-      /* Benefits Accordion Section */
-      .benefits-accordion-header {
-        user-select: none;
-        -webkit-user-select: none;
-      }
-      
-      .benefits-accordion-header:hover {
-        opacity: 0.8;
-      }
-      
-      .benefits-accordion-content {
-        display: block;
-      }
-      
-      @media (max-width: 768px) {
-        .benefits-accordion-header {
-          min-height: 48px;
-          padding: 0.75rem 0;
-        }
-      }
-      
-      /* Mobile navigation - match homepage exactly */
-      @media (max-width: 768px) {
-        .nav-links {
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(10px);
-          z-index: 2000;
-          display: none;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: center;
-          transform: translateX(-100%);
-          transition: transform 0.3s ease-in-out;
-          padding: 2rem 1.5rem 1rem;
-          margin: 0;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-          gap: 0.8rem;
-        }
-        
-        .nav-links.nav-active {
-          display: flex !important;
-          transform: translateX(0);
-        }
-        
-        .nav-links a {
-          font-size: 1.5rem !important;
-          margin: 0.2rem 0 !important;
-          padding: 1.2rem 1.5rem !important;
-          border-radius: 12px !important;
-          transition: background-color 0.2s ease !important;
-          text-align: center !important;
-          width: 100% !important;
-          max-width: 300px !important;
-          display: flex !important;
-          text-decoration: none !important;
-          color: var(--primary) !important;
-          font-weight: 600 !important;
-          min-height: 60px !important;
-          align-items: center !important;
-          justify-content: center !important;
-          background: transparent !important;
-          border: none !important;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-          background-color: rgba(23, 92, 54, 0.1) !important;
-          color: var(--accent) !important;
-        }
-        
-        .hamburger {
-          display: block !important;
-          background: none !important;
-          border: none !important;
-          cursor: pointer !important;
-          padding: 10px !important;
-          min-width: 44px !important;
-          min-height: 44px !important;
-          -webkit-tap-highlight-color: transparent !important;
-          touch-action: manipulation !important;
-          z-index: 2001 !important;
-          position: relative !important;
-        }
-        
-        .hamburger div {
-          width: 25px !important;
-          height: 3px !important;
-          background-color: var(--primary) !important;
-          margin: 5px 0 !important;
-          transition: all 0.2s ease !important;
-          pointer-events: none !important;
-        }
-        
-        /* Hamburger close functionality - force perfectly centered X on mobile (match homepage) */
-        .hamburger.toggle {
-          background: none !important;
-          border: none !important;
-        }
-        
-        /* When open, overlay both visible lines in the exact center */
-        .hamburger.toggle div {
-          position: absolute !important;
-          top: 50% !important;
-          left: 50% !important;
-          width: 25px !important;
-          height: 3px !important;
-          margin: 0 !important;
-          transform-origin: center !important;
-        }
-        
-        .hamburger.toggle .line1 {
-          transform: translate(-50%, -50%) rotate(45deg) !important;
-        }
-        
-        .hamburger.toggle .line2 {
-          opacity: 0 !important;
-          visibility: hidden !important;
-          display: none !important;
-        }
-        
-        .hamburger.toggle .line3 {
-          transform: translate(-50%, -50%) rotate(-45deg) !important;
-        }
-      }
-    </style>
-    <!-- Favicons - Standardized across all pages -->
+    <!-- Favicons -->
     <link rel="icon" type="image/png" href="../../assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/logo/LOGO.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileImage" content="../../assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
-    <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
 
     <script type="application/ld+json">
     {
@@ -305,286 +113,6 @@
           },
           "datePublished": "2025-11-15",
           "reviewBody": "I've been using NutriThrive Moringa for 3 months now and the difference is incredible. My energy levels are consistently high throughout the day, and I haven't had a cold since starting. The powder mixes easily into my morning smoothie."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "James T."
-          },
-          "datePublished": "2025-12-02",
-          "reviewBody": "As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable - it's clearly not sitting on a shelf for months. I use it in my post-workout smoothie and have noticed faster recovery times."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Emma L."
-          },
-          "datePublished": "2025-10-28",
-          "reviewBody": "I started taking moringa for my iron deficiency and it's been a game-changer. My doctor was impressed with my latest blood test results. The powder is easy to incorporate into meals and doesn't have that strong 'green' taste some brands have."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Michael R."
-          },
-          "datePublished": "2025-12-10",
-          "reviewBody": "High quality moringa powder, exactly as described. Fast shipping and great customer service. I've noticed improved digestion and overall energy since adding this to my daily routine. The 30-day guarantee gave me confidence to try it!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Lisa K."
-          },
-          "datePublished": "2025-11-22",
-          "reviewBody": "Love this moringa! It's become part of my daily wellness routine. My skin is clearer, I have more energy, and I feel healthier overall. The taste is mild and pleasant. Highly recommend to anyone looking for a natural health boost."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "David W."
-          },
-          "datePublished": "2025-12-05",
-          "reviewBody": "Best moringa powder I've tried in Australia. The quality is exceptional and you can taste the difference. I add it to my morning smoothie and it gives me sustained energy without the jitters. Will definitely be ordering again!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Rachel H."
-          },
-          "datePublished": "2025-11-18",
-          "reviewBody": "I'm a gym regular and this moringa powder has improved my recovery time significantly. I feel less sore after workouts and my energy levels are more consistent throughout the day. Great product from a trustworthy Australian company."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Sophie T."
-          },
-          "datePublished": "2025-10-15",
-          "reviewBody": "As a vegan, finding complete protein sources is important to me. This moringa powder has all essential amino acids and fits perfectly into my diet. Plus it's helped with my digestion. Shipping from Melbourne was super fast!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Andrew B."
-          },
-          "datePublished": "2025-11-30",
-          "reviewBody": "My naturopath recommended moringa for inflammation and this is the best brand I've found. The quality is outstanding and I've noticed reduced joint pain within weeks. Customer service is excellent too!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Jennifer L."
-          },
-          "datePublished": "2025-12-08",
-          "reviewBody": "I add this to my kids' smoothies and they don't even notice! Great way to boost their nutrition naturally. The powder is super fine and mixes perfectly. So happy I found NutriThrive!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Olivia P."
-          },
-          "datePublished": "2025-11-25",
-          "reviewBody": "Fantastic product! I've been taking it for 2 months and my energy is through the roof. My hair and nails are growing faster and stronger too. Will be a repeat customer for sure!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Mark D."
-          },
-          "datePublished": "2025-12-12",
-          "reviewBody": "Best superfood supplement I've ever used. Helped me get through winter without getting sick once! The taste is mild and it blends into everything. Highly recommend for immune support."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Chris W."
-          },
-          "datePublished": "2025-11-05",
-          "reviewBody": "I'm a shift worker and this moringa powder has helped regulate my sleep and energy levels. No more afternoon crashes! The quality is exceptional and delivery was super quick."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Anna K."
-          },
-          "datePublished": "2025-10-20",
-          "reviewBody": "My doctor suggested moringa for my low iron levels and this brand is amazing. My blood work improved significantly! Plus it's 100% natural which I love. Great Australian company!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Maya S."
-          },
-          "datePublished": "2025-12-15",
-          "reviewBody": "I use this daily in my morning matcha latte and it's the perfect combo! Energy boost without jitters, and I feel so much healthier. The green color shows how fresh it is!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Patrick M."
-          },
-          "datePublished": "2025-11-12",
-          "reviewBody": "Outstanding quality! I've tried 5 different moringa brands and NutriThrive is by far the freshest. You can really taste the difference. My whole family uses it now!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Chloe R."
-          },
-          "datePublished": "2025-10-10",
-          "reviewBody": "Been using this for 4 months and my skin has completely cleared up! My energy is consistent all day and I sleep better at night. This powder is a game changer!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Tyler J."
-          },
-          "datePublished": "2025-12-01",
-          "reviewBody": "Perfect for post-workout recovery! I mix it with my protein shake and the combination is unbeatable. Less muscle soreness and more energy for my next session. Love this stuff!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Barbara H."
-          },
-          "datePublished": "2025-11-08",
-          "reviewBody": "I'm 65 and this moringa powder has given me energy I haven't felt in years! My joints feel better and I'm more active now. Couldn't be happier with this product!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Nina F."
-          },
-          "datePublished": "2025-12-20",
-          "reviewBody": "This moringa is incredible! I add it to my smoothie bowls and salads. My immunity has improved so much - haven't been sick in 6 months. Fast delivery from Melbourne too!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Hannah W."
-          },
-          "datePublished": "2025-11-28",
-          "reviewBody": "Absolutely love this moringa powder! It's helped with my chronic fatigue and brain fog. I feel sharper and more focused throughout the day. This is now a staple in my pantry!"
         }
       ],
       "offers": {
@@ -598,47 +126,12 @@
         "seller": {
           "@type": "Organization",
           "name": "NutriThrive"
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "AU",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 30,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn"
-        },
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "AUD"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "AU"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 3,
-              "maxValue": 10,
-              "unitCode": "DAY"
-            }
-          }
         }
       }
     }
     </script>
 </head>
-<body class="product-page">
+<body class="product-page-new">
     <header>
         <div class="navbar">
             <a href="/" class="logo">
@@ -660,504 +153,289 @@
         </div>
     </header>
 
-    <main>
-        <div style="border-top: 0.3px solid #ece7db; width: 100%;"></div>
-        <section class="product-detail-page">
-            <div class="product-purchase-details">
-                <h1 class="product-title">Moringa Powder</h1>
+    <main class="product-main">
+        <!-- Hero Section -->
+        <section class="product-hero">
+            <div class="product-hero-content">
+                <div class="product-image-section">
+                    <img id="main-product-image" src="../../assets/images/homepage/product-showcase/Moringa.webp" alt="Moringa Powder - 100% Pure Moringa Oleifera" class="product-main-image">
+                </div>
                 
-                <div class="product-content-wrapper">
-                    <!-- Product Gallery - Left Side -->
-                    <div class="product-gallery" style="position: relative !important; top: auto !important; height: auto !important; z-index: 1 !important;">
-                        <div class="main-image" style="position: relative !important; width: 100% !important;">
-                            <img id="main-product-image" src="../../assets/images/homepage/product-showcase/Moringa.webp" alt="Moringa Powder - 100% Pure Moringa Oleifera" style="width: 100%; max-width: 350px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block; position: relative !important;">
+                <div class="product-info-section">
+                    <h1 class="product-title">Moringa Powder</h1>
+                    <p class="product-subtitle">100% Pure Moringa Oleifera</p>
+                    
+                    <p class="product-description">Discover the benefits of our 100% pure Moringa Oleifera leaf powder. Naturally packed with antioxidants, vitamins, and minerals, it's a great daily supplement to support energy, immunity, and overall wellbeing.</p>
+                    
+                    <p class="product-description">Our moringa powder contains a complete amino acid profile and natural plant-based nutrition to support your health goals.</p>
+                    
+                    <p class="product-location">Based in Truganina, Melbourne (Victoria, Australia), we offer fast Australia-wide shipping and also ship worldwide 🌍 — delivering to Melbourne, Sydney, across Australia, and international customers globally.</p>
+                    
+                    <!-- Price -->
+                    <div class="product-pricing">
+                        <div class="price-row">
+                            <span id="product-original-price" class="original-price">$37.18 AUD</span>
+                            <span id="product-price" class="current-price">$31.60 AUD</span>
                         </div>
+                        <p id="product-discount-text" class="discount-text">15% discount ($5.58 AUD off)</p>
                     </div>
                     
-                    <!-- Product Content - Right Side -->
-                    <div class="product-content" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; position: relative !important; z-index: 2 !important;">
-                        <p class="product-description" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 0 1.5rem 0 !important; font-size: 0.95rem; line-height: 1.6;">Discover the benefits of our 100% pure Moringa Oleifera leaf powder. Naturally packed with antioxidants, vitamins, and minerals, it's a great daily supplement to support energy, immunity, and overall wellbeing.<br><br>Our moringa powder contains a complete amino acid profile and natural plant-based nutrition to support your health goals.<br><br>Based in Truganina, Melbourne (Victoria, Australia), we offer fast Australia-wide shipping and also ship worldwide 🌍 — delivering to Melbourne, Sydney, across Australia, and international customers globally.</p>
-
-                        <!-- Add to Cart Section -->
-                        <div style="margin: 1.5rem 0; padding: 1.5rem; background: transparent; border-radius: 0;">
-                            <!-- Price (on top) -->
-                            <div style="margin-bottom: 1.5rem;">
-                                <div id="product-price-container" style="display: block;">
-                                    <span id="product-original-price" style="font-size: 1.5rem; font-weight: 600; color: #555; text-decoration: line-through; margin-right: 0.5rem;">$37.18 AUD</span>
-                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$31.60 AUD</span>
-                                </div>
-                                <div id="product-discount-text" style="font-size: 0.9rem; color: #2d5a3d; margin-top: 0.25rem;">15% discount ($5.58 AUD off)</div>
-                            </div>
-                            
-                            <!-- Variations Selector (below price) -->
-                            <div style="margin-bottom: 1.5rem;">
-                                <label for="product-variation" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Variations</label>
-                                <select id="product-variation" onchange="updateProductVariation()" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
-                                    <option value="variation-1" data-original-price="37.18" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../../assets/images/homepage/product-showcase/Bundleoffer.webp">3 + 1 = 400g - $31.60 AUD (was $37.18)</option>
-                                    <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">100g Moringa - $10.50 AUD (was $12.35)</option>
-                                    <option value="variation-3" data-original-price="18.30" data-price="15.55" data-name="Combo Moringa + Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/combo.webp">Combo Moringa + Dried Curry Leaves - $15.55 AUD (was $18.30)</option>
-                                    <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">200g Moringa - $20.49 AUD (was $24.11)</option>
-                                    <option value="variation-5" data-original-price="7.59" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/Curry.webp">30g Dried Curry Leaves - $6.45 AUD (was $7.59)</option>
-                                    <option value="variation-6" data-original-price="20.00" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../../assets/images/homepage/product-showcase/moringasoap_combo.webp">Moringa 100g + Soap 95g - $17.00 AUD (was $20.00)</option>
-                                </select>
-                            </div>
-                            
-                            <!-- Quantity (below variation) -->
-                            <div style="margin-bottom: 1.5rem;">
-                                <label for="product-quantity" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
-                                <select id="product-quantity" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                            
-                            <button onclick="addMoringaToCart()" style="width: 100%; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                                Add to Cart
-                            </button>
-                        </div>
-
-                        <div style="text-align: center; padding: 20px; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 3 !important;">
-                            <div style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-                              <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-                              <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" style="display:inline-grid !important; justify-items:center;align-content:start;gap:0.5rem; visibility: visible !important; opacity: 1 !important;">
-                                <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Pay Now" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important;" />
-                                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" style="display: block !important; visibility: visible !important; opacity: 1 !important;" />
-                                <section style="font-size: 0.75rem; display: block !important; visibility: visible !important; opacity: 1 !important;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;display: inline-block !important; visibility: visible !important; opacity: 1 !important;"/></section>
-                              </form>
-                            </div>
-                        </div>
-                
-                
-                <!-- GUARANTEE & SHIPPING INFO -->
-                <div style="display: flex; gap: 0.75rem; margin: 16px 0; border-top: 1px solid #e0e0e0; padding-top: 12px; flex-wrap: nowrap;">
-                    <!-- FREE SHIPPING INFO -->
-                    <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 4px;">🚚</div>
-                        <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">Free Shipping</h2>
-                        <p style="margin: 0 0 2px 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">Australia Wide on Orders Over $80</p>
-                        <p style="margin: 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">$100 World Wide</p>
+                    <!-- Variations -->
+                    <div class="product-variations">
+                        <label for="product-variation" class="variation-label">Select Size</label>
+                        <select id="product-variation" onchange="updateProductVariation()" class="variation-select">
+                            <option value="variation-1" data-original-price="37.18" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../../assets/images/homepage/product-showcase/Bundleoffer.webp">3 + 1 = 400g - $31.60 AUD (was $37.18)</option>
+                            <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">100g Moringa - $10.50 AUD (was $12.35)</option>
+                            <option value="variation-3" data-original-price="18.30" data-price="15.55" data-name="Combo Moringa + Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/combo.webp">Combo Moringa + Dried Curry Leaves - $15.55 AUD (was $18.30)</option>
+                            <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">200g Moringa - $20.49 AUD (was $24.11)</option>
+                            <option value="variation-5" data-original-price="7.59" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/Curry.webp">30g Dried Curry Leaves - $6.45 AUD (was $7.59)</option>
+                            <option value="variation-6" data-original-price="20.00" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../../assets/images/homepage/product-showcase/moringasoap_combo.webp">Moringa 100g + Soap 95g - $17.00 AUD (was $20.00)</option>
+                        </select>
                     </div>
                     
-                    <!-- RISK REVERSAL -->
-                    <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 4px;">🛡️</div>
-                        <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">7-Day Money-Back Guarantee</h2>
-                        <p style="margin: 0; color: #2d5a3d; font-size: 0.7rem;">Not satisfied? Full refund, no questions asked!</p>
+                    <!-- Quantity -->
+                    <div class="product-quantity">
+                        <label for="product-quantity" class="quantity-label">Quantity</label>
+                        <select id="product-quantity" class="quantity-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
                     </div>
-                </div>
-                </div>
-                
-            </div>
-
-            <!-- Product information sections moved below the purchase block -->
-            <div class="product-info-sections">
-                <!-- Customer Reviews Carousel -->
-                <section style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 3rem; margin-bottom: 3rem; padding: 3rem 0;">
-                    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: #1a2e22; font-weight: 700;">Customer Reviews</h2>
-                    <p style="text-align: center; color: #ffc107; font-size: 1.2rem; margin-bottom: 2rem;">⭐⭐⭐⭐⭐ 4.9/5 from 512 reviews</p>
                     
-                    <div style="overflow: hidden; position: relative; width: 100%;">
-                        <div class="reviews-carousel" style="display: flex; gap: 1.5rem; animation: scrollReviews 80s linear infinite; width: max-content; padding: 0 2rem;">
-                            <!-- Review 1 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've been using NutriThrive Moringa for 3 months now and the difference is incredible. My energy levels are consistently high throughout the day, and I haven't had a cold since starting. The powder mixes easily into my morning smoothie."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sarah M., Melbourne</p>
-                            </div>
-                            
-                            <!-- Review 2 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable - it's clearly not sitting on a shelf for months. I use it in my post-workout smoothie and have noticed faster recovery times."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">James T., Sydney</p>
-                            </div>
-                            
-                            <!-- Review 3 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I started taking moringa for my iron deficiency and it's been a game-changer. My doctor was impressed with my latest blood test results. The powder is easy to incorporate into meals and doesn't have that strong 'green' taste some brands have."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Emma L., Brisbane</p>
-                            </div>
-                            
-                            <!-- Review 4 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"High quality moringa powder, exactly as described. Fast shipping and great customer service. I've noticed improved digestion and overall energy since adding this to my daily routine. The 7-day guarantee gave me confidence to try it!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Michael R., Adelaide</p>
-                            </div>
-                            
-                            <!-- Review 5 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Love this moringa! It's become part of my daily wellness routine. My skin is clearer, I have more energy, and I feel healthier overall. The taste is mild and pleasant. Highly recommend to anyone looking for a natural health boost."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Lisa K., Perth</p>
-                            </div>
-                            
-                            <!-- Review 6 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Best moringa powder I've tried in Australia. The quality is exceptional and you can taste the difference. I add it to my morning smoothie and it gives me sustained energy without the jitters. Will definitely be ordering again!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">David W., Gold Coast</p>
-                            </div>
-                            
-                            <!-- Review 7 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I'm a gym regular and this moringa powder has improved my recovery time significantly. I feel less sore after workouts and my energy levels are more consistent throughout the day. Great product from a trustworthy Australian company."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Rachel H., Canberra</p>
-                            </div>
-                            
-                            <!-- Review 8 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"As a vegan, finding complete protein sources is important to me. This moringa powder has all essential amino acids and fits perfectly into my diet. Plus it's helped with my digestion. Shipping from Melbourne was super fast!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sophie T., Hobart</p>
-                            </div>
-                            
-                            <!-- Review 9 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"My naturopath recommended moringa for inflammation and this is the best brand I've found. The quality is outstanding and I've noticed reduced joint pain within weeks. Customer service is excellent too!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Andrew B., Newcastle</p>
-                            </div>
-                            
-                            <!-- Review 10 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I add this to my kids' smoothies and they don't even notice! Great way to boost their nutrition naturally. The powder is super fine and mixes perfectly. So happy I found NutriThrive!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Jennifer L., Wollongong</p>
-                            </div>
-                            
-                            <!-- Review 11 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Fantastic product! I've been taking it for 2 months and my energy is through the roof. My hair and nails are growing faster and stronger too. Will be a repeat customer for sure!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Olivia P., Darwin</p>
-                            </div>
-                            
-                            <!-- Review 12 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Best superfood supplement I've ever used. Helped me get through winter without getting sick once! The taste is mild and it blends into everything. Highly recommend for immune support."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Mark D., Geelong</p>
-                            </div>
-                            
-                            <!-- Review 13 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I'm a shift worker and this moringa powder has helped regulate my sleep and energy levels. No more afternoon crashes! The quality is exceptional and delivery was super quick."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Chris W., Townsville</p>
-                            </div>
-                            
-                            <!-- Review 14 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"My doctor suggested moringa for my low iron levels and this brand is amazing. My blood work improved significantly! Plus it's 100% natural which I love. Great Australian company!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Anna K., Cairns</p>
-                            </div>
-                            
-                            <!-- Review 15 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I use this daily in my morning matcha latte and it's the perfect combo! Energy boost without jitters, and I feel so much healthier. The green color shows how fresh it is!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Maya S., Byron Bay</p>
-                            </div>
-                            
-                            <!-- Review 16 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Outstanding quality! I've tried 5 different moringa brands and NutriThrive is by far the freshest. You can really taste the difference. My whole family uses it now!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Patrick M., Ballarat</p>
-                            </div>
-                            
-                            <!-- Review 17 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Been using this for 4 months and my skin has completely cleared up! My energy is consistent all day and I sleep better at night. This powder is a game changer!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Chloe R., Bendigo</p>
-                            </div>
-                            
-                            <!-- Review 18 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Perfect for post-workout recovery! I mix it with my protein shake and the combination is unbeatable. Less muscle soreness and more energy for my next session. Love this stuff!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Tyler J., Sunshine Coast</p>
-                            </div>
-                            
-                            <!-- Review 19 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I'm 65 and this moringa powder has given me energy I haven't felt in years! My joints feel better and I'm more active now. Couldn't be happier with this product!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Barbara H., Launceston</p>
-                            </div>
-                            
-                            <!-- Review 20 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"This moringa is incredible! I add it to my smoothie bowls and salads. My immunity has improved so much - haven't been sick in 6 months. Fast delivery from Melbourne too!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Nina F., Fremantle</p>
-                            </div>
-                            
-                            <!-- Review 21 -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Absolutely love this moringa powder! It's helped with my chronic fatigue and brain fog. I feel sharper and more focused throughout the day. This is now a staple in my pantry!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Hannah W., Toowoomba</p>
-                            </div>
-                            
-                            <!-- Duplicate reviews for seamless loop -->
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've been using NutriThrive Moringa for 3 months now and the difference is incredible. My energy levels are consistently high throughout the day, and I haven't had a cold since starting. The powder mixes easily into my morning smoothie."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sarah M., Melbourne</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable - it's clearly not sitting on a shelf for months. I use it in my post-workout smoothie and have noticed faster recovery times."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">James T., Sydney</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I started taking moringa for my iron deficiency and it's been a game-changer. My doctor was impressed with my latest blood test results. The powder is easy to incorporate into meals and doesn't have that strong 'green' taste some brands have."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Emma L., Brisbane</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"High quality moringa powder, exactly as described. Fast shipping and great customer service. I've noticed improved digestion and overall energy since adding this to my daily routine. The 7-day guarantee gave me confidence to try it!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Michael R., Adelaide</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Love this moringa! It's become part of my daily wellness routine. My skin is clearer, I have more energy, and I feel healthier overall. The taste is mild and pleasant. Highly recommend to anyone looking for a natural health boost."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Lisa K., Perth</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Best moringa powder I've tried in Australia. The quality is exceptional and you can taste the difference. I add it to my morning smoothie and it gives me sustained energy without the jitters. Will definitely be ordering again!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">David W., Gold Coast</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I'm a gym regular and this moringa powder has improved my recovery time significantly. I feel less sore after workouts and my energy levels are more consistent throughout the day. Great product from a trustworthy Australian company."</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Rachel H., Canberra</p>
-                            </div>
-                            
-                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
-                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
-                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"As a vegan, finding complete protein sources is important to me. This moringa powder has all essential amino acids and fits perfectly into my diet. Plus it's helped with my digestion. Shipping from Melbourne was super fast!"</p>
-                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sophie T., Hobart</p>
+                    <!-- Add to Cart Button -->
+                    <button onclick="addMoringaToCart()" class="add-to-cart-btn">Add to Cart</button>
+                    
+                    <!-- PayPal Button -->
+                    <div class="paypal-section">
+                        <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" class="paypal-form">
+                            <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Pay Now" />
+                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                            <section class="paypal-powered"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" /></section>
+                        </form>
+                    </div>
+                    
+                    <!-- Trust Badges -->
+                    <div class="trust-badges">
+                        <div class="trust-item">
+                            <span class="trust-icon">🚚</span>
+                            <div class="trust-content">
+                                <strong>Free Shipping</strong>
+                                <span>Australia Wide on Orders Over $80</span>
+                                <span>$100 World Wide</span>
                             </div>
                         </div>
-                    </div>
-                </section>
-                
-                <style>
-                @keyframes scrollReviews {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-50%);
-                    }
-                }
-                
-                .reviews-carousel:hover {
-                    animation-play-state: paused;
-                }
-                
-                @media (max-width: 768px) {
-                    .reviews-carousel > div {
-                        min-width: 280px !important;
-                        max-width: 280px !important;
-                        background: transparent !important;
-                    }
-                }
-                </style>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('what-makes-special')">
-                        <h2>What Makes NutriThrive<br>Moringa Powder Special?</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="what-makes-special">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 0.5rem 0;">
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">100% Natural</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Pure Moringa Oleifera leaf powder with no synthetic additives, fillers, or artificial ingredients. Sourced directly from farms using traditional methods.</p>
+                        <div class="trust-item">
+                            <span class="trust-icon">🛡️</span>
+                            <div class="trust-content">
+                                <strong>7-Day Money-Back Guarantee</strong>
+                                <span>Not satisfied? Full refund, no questions asked!</span>
                             </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Vegan</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Plant-based and cruelty-free. Perfect for vegan and vegetarian diets. Contains all 9 essential amino acids for complete protein.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Gluten Free</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Naturally gluten-free. Safe for those with celiac disease or gluten sensitivity. Processed in a gluten-free facility.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Antioxidant Rich</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Contains 36+ antioxidants including Quercetin and Chlorogenic Acid. Fights free radicals and supports cellular health.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Digestion Support</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">High fiber content supports healthy digestion. Alkaline nature helps balance pH levels and reduces inflammation in the gut.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">No Additives</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Pure Moringa leaf powder only. No fillers, binders, or artificial additives. What you see is what you get.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Nutritionally Dense</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">92+ vitamins, minerals, and antioxidants. 7x more Vitamin C than oranges, 4x more calcium than milk, 25x more iron than spinach.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Immunity Booster</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">High Vitamin C and Zinc content supports immune function. Essential for white blood cell production and immune cell development.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Metabolism Boost</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">B vitamins and iron support energy production at the cellular level. Helps convert food into energy more efficiently.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Skin & Hair Health</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Vitamin C supports collagen production. Vitamin E and Zinc promote skin healing. Antioxidants fight premature aging.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">Joint Support</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">36 anti-inflammatory compounds including Quercetin help reduce joint inflammation. Supports mobility and reduces stiffness.</p>
-                            </div>
-                            <div style="padding: 1.25rem; border-left: 3px solid #2d5a3d; background: linear-gradient(to right, rgba(45, 90, 61, 0.03), transparent); transition: transform 0.2s ease;">
-                                <strong style="color: #2d5a3d; font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 700;">No Preservatives</strong>
-                                <p style="margin: 0; color: #555; line-height: 1.7; font-size: 0.95rem;">Freshly processed and sealed to preserve nutrients naturally. No chemical preservatives needed when stored properly.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('benefits-moringa')">
-                        <h2>Benefits of NutriThrive<br>Moringa Powder</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="benefits-moringa">
-                        <ul>
-                            <li>✓ Rich in Vitamin C, A, and E for immune support</li>
-                            <li>✓ High in antioxidants to fight free radicals</li>
-                            <li>✓ Contains essential amino acids and minerals</li>
-                            <li>✓ Sustainably sourced from premium farms</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('usage-moringa')">
-                        <h2>How to Use Moringa Powder</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="usage-moringa">
-                        <p>Mix 1 teaspoon (2-3g) into smoothies, water, or your favorite beverages. Can also be added to yogurt, oatmeal, or baked goods. Start with smaller amounts and gradually increase as desired.</p>
-                        <p><strong>Looking to buy Moringa powder in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium Moringa powder.</p>
-                    </div>
-                </div>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('moringa-comparison')">
-                        <h2>Moringa Brands Comparison<br>Australia 2026</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="moringa-comparison">
-                        <p style="margin-bottom: 1.5rem;">When comparing moringa brands comparison Australia 2026, here's why NutriThrive stands out as the best protein powder Australia alternative and premium moringa choice for customers in Melbourne, Sydney, Truganina, and across Australia:</p>
-                        <table style="width: 100%; border-collapse: collapse; margin: 2rem 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            <thead style="background: #2d5a3d; color: white;">
-                                <tr>
-                                    <th style="padding: 1rem; text-align: left; font-weight: 700;">Feature</th>
-                                    <th style="padding: 1rem; text-align: center; font-weight: 700;">NutriThrive</th>
-                                    <th style="padding: 1rem; text-align: center; font-weight: 700;">Other Brands</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="background: #f8faf7;">
-                                    <td style="padding: 1rem; font-weight: 600;">Origin & Freshness</td>
-                                    <td style="padding: 1rem; text-align: center; color: var(--primary);">Shipped from Truganina, Melbourne warehouse - maximum freshness</td>
-                                    <td style="padding: 1rem; text-align: center;">Often imported, may sit in warehouses for months</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 1rem; font-weight: 600;">Protein Content</td>
-                                    <td style="padding: 1rem; text-align: center; color: var(--primary);">Complete protein with all 9 essential amino acids - best protein powder Australia alternative</td>
-                                    <td style="padding: 1rem; text-align: center;">Varies, may not be complete protein</td>
-                                </tr>
-                                <tr style="background: #f8faf7;">
-                                    <td style="padding: 1rem; font-weight: 600;">Lab Testing</td>
-                                    <td style="padding: 1rem; text-align: center; color: var(--primary);">Third-party lab tested for purity and heavy metals</td>
-                                    <td style="padding: 1rem; text-align: center;">May rely only on organic certification</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 1rem; font-weight: 600;">Delivery Speed</td>
-                                    <td style="padding: 1rem; text-align: center; color: var(--primary);">Fast shipping to Melbourne, Sydney, and across Australia</td>
-                                    <td style="padding: 1rem; text-align: center;">Slower, often from overseas</td>
-                                </tr>
-                                <tr style="background: #f8faf7;">
-                                    <td style="padding: 1rem; font-weight: 600;">Purity</td>
-                                    <td style="padding: 1rem; text-align: center; color: var(--primary);">100% pure Moringa leaf powder, no fillers or additives</td>
-                                    <td style="padding: 1rem; text-align: center;">May contain stems, fillers, or additives</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 1rem; font-weight: 600;">Australian Support</td>
-                                    <td style="padding: 1rem; text-align: center; color: var(--primary);">Local customer support in Truganina, Melbourne, serving all of Australia</td>
-                                    <td style="padding: 1rem; text-align: center;">Overseas support, limited local presence</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p style="margin-top: 1.5rem; font-weight: 600; color: #2d5a3d;">Why choose NutriThrive for moringa brands comparison Australia 2026? We're based in Truganina, Melbourne, ensuring fresh products and fast delivery to Sydney and across Australia. Our moringa powder is the best protein powder Australia alternative with complete amino acid profiles, perfect for health-conscious Australians in Melbourne, Sydney, and throughout the country.</p>
-                    </div>
-                </div>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('faq-moringa')">
-                        <h2>Frequently Asked Questions</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="faq-moringa">
-                        <div class="faq-item">
-                            <h3>Is there a safety note?</h3>
-                            <p>If you have low blood levels or thin blood, avoid use. If you are pregnant, nursing or on medication, please seek personal advice from your healthcare provider.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>What does Moringa powder taste like?</h3>
-                            <p>Our Moringa powder has a mild, earthy taste that blends well with smoothies and other foods.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Are there any side effects?</h3>
-                            <p>Moringa is generally safe for most people. Start with small amounts and consult your healthcare provider if you have concerns.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Payments & Shipping</h3>
-                            <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$80+ (dispatch within 2 business days).</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3>Are you stocked in Chemist Warehouse?</h3>
-                            <p>No. To guarantee maximum potency and freshness, we only sell direct-to-consumer from our Truganina, Melbourne warehouse. Fast shipping available to Sydney and across Australia. No middlemen, no stale shelf life.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <p class="reviews-rating">⭐⭐⭐⭐⭐ 4.9/5 from 512 reviews</p>
+            </div>
+            
+            <div class="reviews-container">
+                <div class="reviews-carousel">
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"I've been using NutriThrive Moringa for 3 months now and the difference is incredible. My energy levels are consistently high throughout the day, and I haven't had a cold since starting. The powder mixes easily into my morning smoothie."</p>
+                        <p class="review-author">Sarah M., Melbourne</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable - it's clearly not sitting on a shelf for months. I use it in my post-workout smoothie and have noticed faster recovery times."</p>
+                        <p class="review-author">James T., Sydney</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"I started taking moringa for my iron deficiency and it's been a game-changer. My doctor was impressed with my latest blood test results. The powder is easy to incorporate into meals and doesn't have that strong 'green' taste some brands have."</p>
+                        <p class="review-author">Emma L., Brisbane</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"High quality moringa powder, exactly as described. Fast shipping and great customer service. I've noticed improved digestion and overall energy since adding this to my daily routine. The 7-day guarantee gave me confidence to try it!"</p>
+                        <p class="review-author">Michael R., Adelaide</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Love this moringa! It's become part of my daily wellness routine. My skin is clearer, I have more energy, and I feel healthier overall. The taste is mild and pleasant. Highly recommend to anyone looking for a natural health boost."</p>
+                        <p class="review-author">Lisa K., Perth</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Best moringa powder I've tried in Australia. The quality is exceptional and you can taste the difference. I add it to my morning smoothie and it gives me sustained energy without the jitters. Will definitely be ordering again!"</p>
+                        <p class="review-author">David W., Gold Coast</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">What Makes NutriThrive Moringa Powder Special?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>100% Natural</strong>
+                    <p>Pure Moringa Oleifera leaf powder with no synthetic additives, fillers, or artificial ingredients. Sourced directly from farms using traditional methods.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Vegan</strong>
+                    <p>Plant-based and cruelty-free. Perfect for vegan and vegetarian diets. Contains all 9 essential amino acids for complete protein.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Gluten Free</strong>
+                    <p>Naturally gluten-free. Safe for those with celiac disease or gluten sensitivity. Processed in a gluten-free facility.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Antioxidant Rich</strong>
+                    <p>Contains 36+ antioxidants including Quercetin and Chlorogenic Acid. Fights free radicals and supports cellular health.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Digestion Support</strong>
+                    <p>High fiber content supports healthy digestion. Alkaline nature helps balance pH levels and reduces inflammation in the gut.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>No Additives</strong>
+                    <p>Pure Moringa leaf powder only. No fillers, binders, or artificial additives. What you see is what you get.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Nutritionally Dense</strong>
+                    <p>92+ vitamins, minerals, and antioxidants. 7x more Vitamin C than oranges, 4x more calcium than milk, 25x more iron than spinach.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Immunity Booster</strong>
+                    <p>High Vitamin C and Zinc content supports immune function. Essential for white blood cell production and immune cell development.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Metabolism Boost</strong>
+                    <p>B vitamins and iron support energy production at the cellular level. Helps convert food into energy more efficiently.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Skin & Hair Health</strong>
+                    <p>Vitamin C supports collagen production. Vitamin E and Zinc promote skin healing. Antioxidants fight premature aging.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Joint Support</strong>
+                    <p>36 anti-inflammatory compounds including Quercetin help reduce joint inflammation. Supports mobility and reduces stiffness.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>No Preservatives</strong>
+                    <p>Freshly processed and sealed to preserve nutrients naturally. No chemical preservatives needed when stored properly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Benefits of NutriThrive Moringa Powder</h2>
+            <ul class="benefits-list">
+                <li>Rich in Vitamin C, A, and E for immune support</li>
+                <li>High in antioxidants to fight free radicals</li>
+                <li>Contains essential amino acids and minerals</li>
+                <li>Sustainably sourced from premium farms</li>
+            </ul>
+        </section>
+
+        <!-- Usage Section -->
+        <section class="usage-section">
+            <h2 class="section-title">How to Use Moringa Powder</h2>
+            <p>Mix 1 teaspoon (2-3g) into smoothies, water, or your favorite beverages. Can also be added to yogurt, oatmeal, or baked goods. Start with smaller amounts and gradually increase as desired.</p>
+            <p><strong>Looking to buy Moringa powder in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium Moringa powder.</p>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="comparison-section">
+            <h2 class="section-title">Moringa Brands Comparison Australia 2026</h2>
+            <p class="comparison-intro">When comparing moringa brands comparison Australia 2026, here's why NutriThrive stands out as the best protein powder Australia alternative and premium moringa choice for customers in Melbourne, Sydney, Truganina, and across Australia:</p>
+            
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div class="comparison-cell">Feature</div>
+                    <div class="comparison-cell">NutriThrive</div>
+                    <div class="comparison-cell">Other Brands</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>Origin & Freshness</strong></div>
+                    <div class="comparison-cell">Shipped from Truganina, Melbourne warehouse - maximum freshness</div>
+                    <div class="comparison-cell">Often imported, may sit in warehouses for months</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>Protein Content</strong></div>
+                    <div class="comparison-cell">Complete protein with all 9 essential amino acids - best protein powder Australia alternative</div>
+                    <div class="comparison-cell">Varies, may not be complete protein</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>Lab Testing</strong></div>
+                    <div class="comparison-cell">Third-party lab tested for purity and heavy metals</div>
+                    <div class="comparison-cell">May rely only on organic certification</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>Delivery Speed</strong></div>
+                    <div class="comparison-cell">Fast shipping to Melbourne, Sydney, and across Australia</div>
+                    <div class="comparison-cell">Slower, often from overseas</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>Purity</strong></div>
+                    <div class="comparison-cell">100% pure Moringa leaf powder, no fillers or additives</div>
+                    <div class="comparison-cell">May contain stems, fillers, or additives</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>Australian Support</strong></div>
+                    <div class="comparison-cell">Local customer support in Truganina, Melbourne, serving all of Australia</div>
+                    <div class="comparison-cell">Overseas support, limited local presence</div>
+                </div>
+            </div>
+            
+            <p class="comparison-conclusion">Why choose NutriThrive for moringa brands comparison Australia 2026? We're based in Truganina, Melbourne, ensuring fresh products and fast delivery to Sydney and across Australia. Our moringa powder is the best protein powder Australia alternative with complete amino acid profiles, perfect for health-conscious Australians in Melbourne, Sydney, and throughout the country.</p>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Is there a safety note?</h3>
+                    <p>If you have low blood levels or thin blood, avoid use. If you are pregnant, nursing or on medication, please seek personal advice from your healthcare provider.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What does Moringa powder taste like?</h3>
+                    <p>Our Moringa powder has a mild, earthy taste that blends well with smoothies and other foods.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are there any side effects?</h3>
+                    <p>Moringa is generally safe for most people. Start with small amounts and consult your healthcare provider if you have concerns.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Payments & Shipping</h3>
+                    <p>We accept Visa, bank transfer, cash and PayPal. Free shipping on orders AU$80+ (dispatch within 2 business days).</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are you stocked in Chemist Warehouse?</h3>
+                    <p>No. To guarantee maximum potency and freshness, we only sell direct-to-consumer from our Truganina, Melbourne warehouse. Fast shipping available to Sydney and across Australia. No middlemen, no stale shelf life.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-        <footer>
+    <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>About NutriThrive</h3>
@@ -1180,7 +458,8 @@
                     <li><a href="/faq">FAQ</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/blog/">Blog</a></li>
-                    <li><a href="/pages/usage-guide/how-to-use-moringa.html">Usage &amp; Benefits</a></li>                </ul>
+                    <li><a href="/pages/usage-guide/how-to-use-moringa.html">Usage &amp; Benefits</a></li>
+                </ul>
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
@@ -1205,116 +484,20 @@
         </div>
     </footer>
 
-    <script>
-        // Accordion functionality - works on all product pages with smooth animation
-        function toggleAccordion(sectionId) {
-            const content = document.getElementById(sectionId);
-            if (!content) {
-                console.error('Accordion content not found:', sectionId);
-                return;
-            }
-            
-            const header = content.previousElementSibling;
-            const icon = header ? header.querySelector('.accordion-icon') : null;
-            const section = content.parentElement;
-            
-            // Check if currently open
-            const isOpen = section.classList.contains('active') || 
-                          content.classList.contains('active') ||
-                          content.style.display === 'block' ||
-                          getComputedStyle(content).display !== 'none';
-            
-            if (isOpen) {
-                // Close - smooth animation using CSS transitions
-                const currentHeight = content.scrollHeight;
-                content.style.maxHeight = currentHeight + 'px';
-                
-                // Force reflow to ensure transition starts
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        content.style.maxHeight = '0px';
-                        content.style.opacity = '0';
-                        content.style.paddingTop = '0';
-                        content.style.paddingBottom = '0';
-                    });
-                });
-                
-                // Remove active classes after animation
-                setTimeout(() => {
-                    content.style.display = 'none';
-                    content.classList.remove('active');
-                    section.classList.remove('active');
-                    if (header) header.classList.remove('active');
-                }, 400);
-                
-            } else {
-                // Open - smooth animation using CSS transitions
-                content.style.display = 'block';
-                content.style.maxHeight = '0px';
-                content.style.opacity = '0';
-                content.style.paddingTop = '0';
-                content.style.paddingBottom = '0';
-                
-                // Force reflow to ensure transition works
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        const fullHeight = content.scrollHeight + 48; // 1.5rem top + 1.5rem bottom = 48px
-                        content.style.maxHeight = fullHeight + 'px';
-                        content.style.opacity = '1';
-                        content.style.paddingTop = '1.5rem';
-                        content.style.paddingBottom = '1.5rem';
-                    });
-                });
-                
-                // Add active classes
-                content.classList.add('active');
-                section.classList.add('active');
-                if (header) header.classList.add('active');
-            }
-        }
-        
-        // Make sure function is available globally
-        window.toggleAccordion = toggleAccordion;
-        
-        // Product image gallery functionality
-        function changeMainImage(newSrc) {
-            const mainImage = document.getElementById('main-product-image');
-            if (mainImage) {
-                mainImage.src = newSrc;
-            }
-            
-            // Update active thumbnail
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            thumbnails.forEach(thumb => {
-                if (thumb.src === newSrc) {
-                    thumb.classList.add('active');
-                    thumb.style.border = '2px solid #2d5a3d';
-                } else {
-                    thumb.classList.remove('active');
-                    thumb.style.border = '2px solid transparent';
-                }
-            });
-        }
-        
-        // Make function available globally
-        window.changeMainImage = changeMainImage;
-    </script>
     <script src="../../scripts/global/cart.js"></script>
     <script src="../../scripts/global/cart-header.js"></script>
     <script src="../../scripts/global/script.js"></script>
     <script>
-        // Product variations data with actual weights in grams from shipping_rates.xlsx (updated)
-        // Original prices from image, with 15% discount applied to get final prices
+        // Product variations data
         const productVariations = {
-            'variation-1': { originalPrice: 37.18, price: 31.60, discount: 5.58, name: '3 + 1 = 400g Moringa', weight: 400, image: '../../assets/images/homepage/product-showcase/Bundleoffer.webp' }, // Original: $37.18 AUD, Discounted: $31.60 AUD, 15% off
-            'variation-2': { originalPrice: 12.35, price: 10.50, discount: 1.85, name: '100g Moringa', weight: 100, image: '../../assets/images/homepage/product-showcase/Moringa.webp' }, // Original: $12.35, Discounted: $10.50
-            'variation-3': { originalPrice: 18.30, price: 15.55, discount: 2.75, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../../assets/images/homepage/product-showcase/combo.webp' }, // Original: $18.30, Discounted: $15.55
-            'variation-4': { originalPrice: 24.11, price: 20.49, discount: 3.62, name: '200g Moringa', weight: 200, image: '../../assets/images/homepage/product-showcase/Moringa.webp' }, // Original: $24.11, Discounted: $20.49
-            'variation-5': { originalPrice: 7.59, price: 6.45, discount: 1.14, name: '30g Dried Curry Leaves', weight: 30, image: '../../assets/images/homepage/product-showcase/Curry.webp' }, // Original: $7.59, Discounted: $6.45
-            'variation-6': { originalPrice: 20.00, price: 17.00, discount: 3.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '../../assets/images/homepage/product-showcase/moringasoap_combo.webp' } // Original: $20.00, Discounted: $17.00
+            'variation-1': { originalPrice: 37.18, price: 31.60, discount: 5.58, name: '3 + 1 = 400g Moringa', weight: 400, image: '../../assets/images/homepage/product-showcase/Bundleoffer.webp' },
+            'variation-2': { originalPrice: 12.35, price: 10.50, discount: 1.85, name: '100g Moringa', weight: 100, image: '../../assets/images/homepage/product-showcase/Moringa.webp' },
+            'variation-3': { originalPrice: 18.30, price: 15.55, discount: 2.75, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../../assets/images/homepage/product-showcase/combo.webp' },
+            'variation-4': { originalPrice: 24.11, price: 20.49, discount: 3.62, name: '200g Moringa', weight: 200, image: '../../assets/images/homepage/product-showcase/Moringa.webp' },
+            'variation-5': { originalPrice: 7.59, price: 6.45, discount: 1.14, name: '30g Dried Curry Leaves', weight: 30, image: '../../assets/images/homepage/product-showcase/Curry.webp' },
+            'variation-6': { originalPrice: 20.00, price: 17.00, discount: 3.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '../../assets/images/homepage/product-showcase/moringasoap_combo.webp' }
         };
         
-        // Update product details when variation changes
         function updateProductVariation() {
             const variationSelect = document.getElementById('product-variation');
             if (!variationSelect) return;
@@ -1323,7 +506,6 @@
             const variation = productVariations[variationId];
             
             if (variation) {
-                // Update price display with strikethrough original and discounted price
                 const originalPriceElement = document.getElementById('product-original-price');
                 const priceElement = document.getElementById('product-price');
                 const discountTextElement = document.getElementById('product-discount-text');
@@ -1339,7 +521,6 @@
                     discountTextElement.textContent = `${discountPercent}% discount ($${variation.discount.toFixed(2)} AUD off)`;
                 }
                 
-                // Update main product image
                 const mainImage = document.getElementById('main-product-image');
                 if (mainImage && variation.image) {
                     mainImage.src = variation.image;
@@ -1348,7 +529,6 @@
             }
         }
         
-        // Add to cart function
         function addMoringaToCart() {
             const quantitySelect = document.getElementById('product-quantity');
             const quantity = parseInt(quantitySelect ? quantitySelect.value : 1) || 1;
@@ -1361,12 +541,11 @@
                     id: `moringa-${variationId}`,
                     name: variation.name,
                     price: variation.price,
-                    weight: variation.weight, // Store actual weight in grams
+                    weight: variation.weight,
                     image: variation.image,
                     quantity: quantity
                 });
             } else {
-                // Fallback to default
                 window.Cart.add({
                     id: 'moringa-powder',
                     name: 'Moringa Powder',
@@ -1377,17 +556,13 @@
             }
         }
         
-        // Initialize variation on page load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', updateProductVariation);
         } else {
             updateProductVariation();
         }
     </script>
-    <script src="../../scripts/products/moringa-powder.js"></script>
-    <!-- Ensure hamburger menu works - simple inline fallback -->
     <script>
-      // Simple fallback to ensure hamburger works
       (function() {
         function setupHamburger() {
           const hamburger = document.querySelector('.hamburger');
@@ -1398,7 +573,6 @@
             return;
           }
           
-          // Ensure toggle function exists
           if (!window.ntToggleMenu) {
             window.ntToggleMenu = function() {
               const isOpen = navLinks.classList.contains('nav-active');
@@ -1416,7 +590,6 @@
             };
           }
           
-          // Add direct click handler as backup
           hamburger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -1438,4 +611,4 @@
       })();
     </script>
 </body>
-</html> 
+</html>
