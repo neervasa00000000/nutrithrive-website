@@ -36,7 +36,22 @@ DirectoryIndex index.html index.htm
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^shared/js/(.+)$ /scripts/global/$1 [L]
-    # Images: /shared/images/ -> /assets/images/
+    # Images: /shared/images/ -> /assets/images/ (with path mapping)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/images/Logo%20/(.+)$ /assets/images/logo/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/images/Logo /(.+)$ /assets/images/logo/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/images/Home%20page%20/webp/(.+)$ /assets/images/homepage/product-showcase/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/images/Home page /webp/(.+)$ /assets/images/homepage/product-showcase/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/images/random/(.+)$ /assets/images/general/$1 [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^shared/images/(.+)$ /assets/images/$1 [L]
@@ -44,6 +59,22 @@ DirectoryIndex index.html index.htm
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^shared/icon/(.+)$ /assets/icons/$1 [L]
+    # Old image paths with spaces/encoding - Internal rewrites
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^assets/images/Home%20page%20/webp/(.+)$ /assets/images/homepage/product-showcase/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^assets/images/Home page /webp/(.+)$ /assets/images/homepage/product-showcase/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^assets/images/random/(.+)$ /assets/images/general/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^assets/images/Logo%20/(.+)$ /assets/images/logo/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^assets/images/Logo /(.+)$ /assets/images/logo/$1 [L]
     
     # CRITICAL: Internal rewrites for /pages/blog/ and /pages/products/ (no redirects)
     # These must come early to catch all /pages/blog/ and /pages/products/ URLs
