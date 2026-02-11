@@ -165,81 +165,87 @@
                     <h1 class="product-title">Moringa Powder</h1>
                     <p class="product-subtitle">100% Pure Moringa Oleifera</p>
                     
-                    <p class="product-description">Discover the benefits of our 100% pure Moringa Oleifera leaf powder. Naturally packed with antioxidants, vitamins, and minerals, it's a great daily supplement to support energy, immunity, and overall wellbeing.</p>
-                    
-                    <p class="product-description">Our moringa powder contains a complete amino acid profile and natural plant-based nutrition to support your health goals.</p>
-                    
-                    <p class="product-location">Based in Truganina, Melbourne (Victoria, Australia), we offer fast Australia-wide shipping and also ship worldwide 🌍 — delivering to Melbourne, Sydney, across Australia, and international customers globally.</p>
-                    
-                    <!-- Price -->
-                    <div class="product-pricing">
-                        <div class="price-row">
-                            <span id="product-original-price" class="original-price">$37.18 AUD</span>
-                            <span id="product-price" class="current-price">$31.60 AUD</span>
+                    <!-- Purchase Section - Right after image -->
+                    <div class="product-purchase-section">
+                        <!-- Price -->
+                        <div class="product-pricing">
+                            <div class="price-row">
+                                <span id="product-original-price" class="original-price">$37.18 AUD</span>
+                                <span id="product-price" class="current-price">$31.60 AUD</span>
+                            </div>
+                            <p id="product-discount-text" class="discount-text">15% discount ($5.58 AUD off)</p>
                         </div>
-                        <p id="product-discount-text" class="discount-text">15% discount ($5.58 AUD off)</p>
-                    </div>
-                    
-                    <!-- Variations -->
-                    <div class="product-variations">
-                        <label for="product-variation" class="variation-label">Select Size</label>
-                        <select id="product-variation" onchange="updateProductVariation()" class="variation-select">
-                            <option value="variation-1" data-original-price="37.18" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../../assets/images/homepage/product-showcase/Bundleoffer.webp">3 + 1 = 400g - $31.60 AUD (was $37.18)</option>
-                            <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">100g Moringa - $10.50 AUD (was $12.35)</option>
-                            <option value="variation-3" data-original-price="18.30" data-price="15.55" data-name="Combo Moringa + Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/combo.webp">Combo Moringa + Dried Curry Leaves - $15.55 AUD (was $18.30)</option>
-                            <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">200g Moringa - $20.49 AUD (was $24.11)</option>
-                            <option value="variation-5" data-original-price="7.59" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/Curry.webp">30g Dried Curry Leaves - $6.45 AUD (was $7.59)</option>
-                            <option value="variation-6" data-original-price="20.00" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../../assets/images/homepage/product-showcase/moringasoap_combo.webp">Moringa 100g + Soap 95g - $17.00 AUD (was $20.00)</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Quantity -->
-                    <div class="product-quantity">
-                        <label for="product-quantity" class="quantity-label">Quantity</label>
-                        <select id="product-quantity" class="quantity-select">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Add to Cart Button -->
-                    <button onclick="addMoringaToCart()" class="add-to-cart-btn">Add to Cart</button>
-                    
-                    <!-- PayPal Button -->
-                    <div class="paypal-section">
-                        <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-                        <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" class="paypal-form">
-                            <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Pay Now" />
-                            <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                            <section class="paypal-powered"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" /></section>
-                        </form>
-                    </div>
-                    
-                    <!-- Trust Badges -->
-                    <div class="trust-badges">
-                        <div class="trust-item">
-                            <span class="trust-icon">🚚</span>
-                            <div class="trust-content">
-                                <strong>Free Shipping</strong>
-                                <span>Australia Wide on Orders Over $80</span>
-                                <span>$100 World Wide</span>
+                        
+                        <!-- Variations -->
+                        <div class="product-variations">
+                            <label for="product-variation" class="variation-label">Select Size</label>
+                            <select id="product-variation" onchange="updateProductVariation()" class="variation-select">
+                                <option value="variation-1" data-original-price="37.18" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../../assets/images/homepage/product-showcase/Bundleoffer.webp">3 + 1 = 400g - $31.60 AUD (was $37.18)</option>
+                                <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">100g Moringa - $10.50 AUD (was $12.35)</option>
+                                <option value="variation-3" data-original-price="18.30" data-price="15.55" data-name="Combo Moringa + Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/combo.webp">Combo Moringa + Dried Curry Leaves - $15.55 AUD (was $18.30)</option>
+                                <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">200g Moringa - $20.49 AUD (was $24.11)</option>
+                                <option value="variation-5" data-original-price="7.59" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/Curry.webp">30g Dried Curry Leaves - $6.45 AUD (was $7.59)</option>
+                                <option value="variation-6" data-original-price="20.00" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../../assets/images/homepage/product-showcase/moringasoap_combo.webp">Moringa 100g + Soap 95g - $17.00 AUD (was $20.00)</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Quantity -->
+                        <div class="product-quantity">
+                            <label for="product-quantity" class="quantity-label">Quantity</label>
+                            <select id="product-quantity" class="quantity-select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <button onclick="addMoringaToCart()" class="add-to-cart-btn">Add to Cart</button>
+                        
+                        <!-- PayPal Button -->
+                        <div class="paypal-section">
+                            <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 1.5rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;max-width:300px;box-sizing:border-box;}</style>
+                            <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" class="paypal-form">
+                                <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Pay Now" />
+                                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" style="max-width:100%;height:auto;width:100%;max-width:280px;" />
+                                <section class="paypal-powered"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;max-width:100%;" /></section>
+                            </form>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="trust-item">
+                                <span class="trust-icon">🚚</span>
+                                <div class="trust-content">
+                                    <strong>Free Shipping</strong>
+                                    <span>Australia Wide on Orders Over $80</span>
+                                    <span>$100 World Wide</span>
+                                </div>
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-icon">🛡️</span>
+                                <div class="trust-content">
+                                    <strong>7-Day Money-Back Guarantee</strong>
+                                    <span>Not satisfied? Full refund, no questions asked!</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="trust-item">
-                            <span class="trust-icon">🛡️</span>
-                            <div class="trust-content">
-                                <strong>7-Day Money-Back Guarantee</strong>
-                                <span>Not satisfied? Full refund, no questions asked!</span>
-                            </div>
-                        </div>
+                    </div>
+                    
+                    <!-- Description Text - After purchase section -->
+                    <div class="product-description-section">
+                        <p class="product-description">Discover the benefits of our 100% pure Moringa Oleifera leaf powder. Naturally packed with antioxidants, vitamins, and minerals, it's a great daily supplement to support energy, immunity, and overall wellbeing.</p>
+                        
+                        <p class="product-description">Our moringa powder contains a complete amino acid profile and natural plant-based nutrition to support your health goals.</p>
+                        
+                        <p class="product-location">Based in Truganina, Melbourne (Victoria, Australia), we offer fast Australia-wide shipping and also ship worldwide 🌍 — delivering to Melbourne, Sydney, across Australia, and international customers globally.</p>
                     </div>
                 </div>
             </div>
