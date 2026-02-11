@@ -78,6 +78,8 @@
 /about /about.html 200
 /contact /contact.html 200
 /faq /faq.html 200
+/cart /pages/shop/cart.html 200
+/cart.html /pages/shop/cart.html 200
 
 # Fix alternative pages without .html extension - Blog posts
 /blog/moringa-brands-reviewed-australia-2026-verdict /blog/moringa-brands-reviewed-australia-2026-verdict.html 301
