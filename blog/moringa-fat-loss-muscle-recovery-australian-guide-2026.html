@@ -142,7 +142,240 @@
     }
     </script>
     
-    <!-- FAQPage Schema (All 20 FAQs) -->
+    <!-- Product Schema with Offer, Reviews, and AggregateRating -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Nutri Thrive Premium Moringa Powder",
+      "description": "100% natural, lab-tested Moringa powder. Shade-dried for maximum nutrient retention. Contains 92+ nutrients including complete protein, iron, calcium, and antioxidants.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Nutri Thrive"
+      },
+      "image": "https://i.imgur.com/PgvCFY0.png",
+      "sku": "MORINGA-100G",
+      "gtin": "",
+      "mpn": "NT-MOR-100G",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://nutrithrive.com.au/products/product-detail.html",
+        "priceCurrency": "AUD",
+        "price": "10.50",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Organization",
+          "name": "Nutri Thrive",
+          "url": "https://nutrithrive.com.au"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "AUD"
+          },
+          "shippingDestination": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "addressCountry": "AU"
+            }
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "businessDays": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+            },
+            "cutoffTime": "14:00",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 2,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "AU",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah M."
+          },
+          "datePublished": "2026-01-15",
+          "reviewBody": "Amazing energy boost without the crash. I've been using Nutri Thrive Moringa for 3 months and my recovery after workouts has improved significantly.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "James T."
+          },
+          "datePublished": "2026-01-20",
+          "reviewBody": "Best moringa powder I've tried. The quality is exceptional and the price is unbeatable. Fast shipping from Melbourne.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Emma L."
+          },
+          "datePublished": "2026-02-01",
+          "reviewBody": "Helped me manage my PCOS symptoms. Better digestion and more stable energy throughout the day.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "4.8",
+            "bestRating": "5"
+          }
+        }
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Weight",
+          "value": "100g"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Protein",
+          "value": "27-30g per 100g"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Iron",
+          "value": "28mg per 100g"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Calcium",
+          "value": "2000mg per 100g"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Vegan",
+          "value": "Yes"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Gluten-Free",
+          "value": "Yes"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Lab-Tested",
+          "value": "NATA Accredited"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Organization Schema with ContactPoint and sameAs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nutri Thrive",
+      "alternateName": "NutriThrive",
+      "url": "https://nutrithrive.com.au",
+      "logo": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp",
+      "description": "Australian-owned provider of 100% natural, lab-tested superfoods. Premium Moringa powder and Dried Curry Leaves delivered fast across Australia from Melbourne warehouse.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Truganina",
+        "addressRegion": "VIC",
+        "addressCountry": "AU"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+61-438201419",
+        "contactType": "Customer Service",
+        "email": "nutrithrive0@gmail.com",
+        "availableLanguage": ["English"],
+        "areaServed": "AU",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "23:00"
+        }
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/p/1C5C1NeUCb/",
+        "https://www.instagram.com/nutrithriveau/"
+      ],
+      "foundingDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "Nutri Thrive Team"
+      }
+    }
+    </script>
+
+    <!-- Author/Person Schema for E-E-A-T -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nutri Thrive Research Team",
+      "jobTitle": "Health & Nutrition Research",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Nutri Thrive",
+        "url": "https://nutrithrive.com.au"
+      },
+      "sameAs": [
+        "https://www.instagram.com/nutrithriveau/",
+        "https://www.facebook.com/share/p/1C5C1NeUCb/"
+      ],
+      "knowsAbout": [
+        "Nutrition Science",
+        "Moringa Oleifera",
+        "Superfoods",
+        "Wellness",
+        "Sports Nutrition",
+        "Gut Health",
+        "Hormone Balance"
+      ]
+    }
+    </script>
+
+    <!-- FAQPage Schema (All 44 FAQs) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -307,6 +540,281 @@
             "@type": "Answer",
             "text": "We ship Australia-wide and worldwide from our Melbourne warehouse."
           }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Recipe Schema - Morning Energy Moringa Smoothie -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "@id": "https://nutrithrive.com.au/blog/moringa-fat-loss-muscle-recovery-australian-guide-2026.html#recipe-morning-smoothie",
+      "name": "Morning Energy Moringa Smoothie",
+      "description": "Nutrient-dense morning smoothie with Nutri Thrive Moringa Powder, almond milk, banana, and almond butter. Perfect for the Dawn Catalyst window for maximum nutrient absorption.",
+      "image": "https://i.imgur.com/PgvCFY0.png",
+      "author": {
+        "@type": "Person",
+        "name": "Nutri Thrive Research Team",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Nutri Thrive"
+        }
+      },
+      "datePublished": "2026-02-09",
+      "prepTime": "PT3M",
+      "totalTime": "PT3M",
+      "recipeYield": "1 serving",
+      "recipeCategory": "Smoothie",
+      "recipeCuisine": "Australian",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "180",
+        "proteinContent": "8g",
+        "fiberContent": "5g",
+        "ironContent": "28mg",
+        "servingSize": "1 serving"
+      },
+      "recipeIngredient": [
+        "1 cup almond milk",
+        "1 frozen banana",
+        "1 teaspoon Nutri Thrive Moringa Powder",
+        "1 tablespoon almond butter",
+        "1 teaspoon honey (optional)",
+        "Ice cubes (optional)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Add all ingredients to a blender"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Blend on high speed for 30-45 seconds until smooth"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Pour into a glass and enjoy immediately"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Best consumed on an empty stomach for maximum nutrient absorption"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Recipe Schema - Moringa Morning Tea -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "@id": "https://nutrithrive.com.au/blog/moringa-fat-loss-muscle-recovery-australian-guide-2026.html#recipe-moringa-tea",
+      "name": "Moringa Morning Tea",
+      "description": "Simple warm moringa tea made with Nutri Thrive Moringa Powder. Best consumed on empty stomach during Dawn Catalyst window (7-9 AM) for maximum nutrient absorption.",
+      "image": "https://i.imgur.com/PgvCFY0.png",
+      "author": {
+        "@type": "Person",
+        "name": "Nutri Thrive Research Team",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Nutri Thrive"
+        }
+      },
+      "datePublished": "2026-02-09",
+      "prepTime": "PT2M",
+      "cookTime": "PT1M",
+      "totalTime": "PT3M",
+      "recipeYield": "1 serving",
+      "recipeCategory": "Tea",
+      "recipeCuisine": "Australian",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "5",
+        "proteinContent": "3g",
+        "ironContent": "2.8mg",
+        "servingSize": "1 cup"
+      },
+      "recipeIngredient": [
+        "1 teaspoon Nutri Thrive Moringa Powder",
+        "1 cup warm water (40-50°C, never boiling)",
+        "Slice of lemon (optional)",
+        "1 teaspoon honey (optional)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Heat water to 40-50°C (warm, not boiling - boiling destroys heat-sensitive nutrients)"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add moringa powder to warm water"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Stir or whisk until powder dissolves"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add lemon and honey if desired"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Consume 15-20 minutes before breakfast for optimal absorption"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Recipe Schema - Post-Workout Recovery Smoothie -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "@id": "https://nutrithrive.com.au/blog/moringa-fat-loss-muscle-recovery-australian-guide-2026.html#recipe-post-workout",
+      "name": "Post-Workout Recovery Smoothie",
+      "description": "Complete recovery smoothie with Nutri Thrive Moringa Powder, protein, and berries. Supports muscle protein synthesis and reduces exercise-induced inflammation.",
+      "image": "https://i.imgur.com/PgvCFY0.png",
+      "author": {
+        "@type": "Person",
+        "name": "Nutri Thrive Research Team",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Nutri Thrive"
+        }
+      },
+      "datePublished": "2026-02-09",
+      "prepTime": "PT3M",
+      "totalTime": "PT3M",
+      "recipeYield": "1 serving",
+      "recipeCategory": "Smoothie",
+      "recipeCuisine": "Australian",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "220",
+        "proteinContent": "25g",
+        "ironContent": "4.2mg",
+        "servingSize": "1 serving"
+      },
+      "recipeIngredient": [
+        "1 cup coconut water",
+        "1 scoop protein powder (optional)",
+        "1.5 teaspoons Nutri Thrive Moringa Powder",
+        "1/2 cup frozen berries",
+        "1 tablespoon chia seeds"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Blend all ingredients together"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Consume within 30 minutes after workout"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Moringa's complete amino acids support muscle protein synthesis"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Antioxidants reduce exercise-induced inflammation"
+        }
+      ]
+    }
+    </script>
+
+    <!-- HowTo Schema - How to Use Moringa Powder -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "@id": "https://nutrithrive.com.au/blog/moringa-fat-loss-muscle-recovery-australian-guide-2026.html#how-to-use-moringa",
+      "name": "How to Use Moringa Powder for Maximum Absorption",
+      "description": "Step-by-step guide on how to take Nutri Thrive Moringa Powder for optimal nutrient absorption and maximum health benefits.",
+      "image": "https://i.imgur.com/PgvCFY0.png",
+      "totalTime": "PT5M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Choose the right time",
+          "text": "Morning (7-9 AM) on an empty stomach for best results. This is the Dawn Catalyst window when nutrient absorption is maximized.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Measure accurately",
+          "text": "Start with 1 teaspoon (3g) daily. Gradually increase to 1.5-2 teaspoons based on your body's response.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Use warm water",
+          "text": "Mix with warm water (40-50°C), never boiling. Boiling water destroys heat-sensitive nutrients like Vitamin C.",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Wait before eating",
+          "text": "Consume 15-20 minutes before breakfast for optimal absorption without competition from other food particles.",
+          "position": 4
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Stay consistent",
+          "text": "Take daily for at least 2-3 weeks to see results. Consistency is key for long-term benefits.",
+          "position": 5
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Hydrate well",
+          "text": "Drink plenty of water throughout the day. Moringa's high fiber content requires adequate hydration.",
+          "position": 6
+        }
+      ]
+    }
+    </script>
+
+    <!-- HowTo Schema - How to Store Moringa Powder -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "@id": "https://nutrithrive.com.au/blog/moringa-fat-loss-muscle-recovery-australian-guide-2026.html#how-to-store-moringa",
+      "name": "How to Store Moringa Powder Properly",
+      "description": "Step-by-step guide on proper storage methods to maintain freshness and nutrient quality of Nutri Thrive Moringa Powder.",
+      "image": "https://i.imgur.com/PgvCFY0.png",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Keep in original packaging",
+          "text": "Keep in original packaging or airtight container to prevent moisture and oxidation.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Store in cool, dry place",
+          "text": "Store in a cool, dry place away from direct sunlight. Heat and light degrade nutrients.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Keep away from heat",
+          "text": "Keep away from heat sources (stove, oven) to preserve heat-sensitive vitamins.",
+          "position": 3
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Use within 18 months",
+          "text": "Use within 18 months of opening for best quality. Our shade-drying process ensures long shelf life.",
+          "position": 4
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Check color regularly",
+          "text": "Check color regularly - vibrant green indicates freshness. Brown color suggests oxidation.",
+          "position": 5
         }
       ]
     }
@@ -980,14 +1488,11 @@
             <p>Australian athletes training in summer conditions face unique challenges. The combination of high-intensity exercise and elevated ambient temperatures creates a perfect storm for oxidative stress. Moringa's 46 antioxidants work synergistically to combat this, with research showing a 42% reduction in post-exercise inflammation markers compared to placebo groups.</p>
             <p>The anti-inflammatory benefits extend beyond recovery. Regular Moringa consumption has been shown to reduce delayed onset muscle soreness (DOMS), allowing for more consistent training schedules. This is particularly valuable for competitive athletes who need to maintain peak performance throughout the season.</p>
 
-            <div class="product-showcase">
-                <img src="https://i.imgur.com/PgvCFY0.png" alt="Nutri Thrive Pure Moringa Powder" width="400" height="400">
-                <h3>Nutri Thrive Pure Moringa Powder</h3>
-                <div class="price-tag">$10.50</div>
-                <p style="margin: 0.5rem 0;"><strong>In Stock</strong> • <span class="rating-stars">★★★★★</span> (4.9/5 from 150+ reviews)</p>
-                <button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" class="cta-button" style="cursor: pointer; border: none;">Add to Cart & Checkout →</button>
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Or <a href="https://nutrithrive.com.au/products/product-detail.html" style="color: var(--primary); text-decoration: underline;">view product details</a></p>
-            </div>
+            <h3>Nutri Thrive Pure Moringa Powder</h3>
+            <p><strong>Price:</strong> $10.50 per 100g</p>
+            <p><strong>In Stock</strong> • Rating: 4.9/5 from 150+ reviews</p>
+            <p><button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png')" class="cta-button" style="cursor: pointer; border: none;">Add to Cart & Checkout →</button></p>
+            <p>Or <a href="https://nutrithrive.com.au/products/product-detail.html">view product details</a></p>
 
             <h2 id="performance-comparison">The 2026 Performance Comparison</h2>
             <p>How does your current routine stack up against a natural metabolic anchor?</p>
@@ -1146,6 +1651,99 @@
             <p><strong>Morning:</strong> 1 teaspoon moringa powder in smoothie or water</p>
             <p><strong>Evening:</strong> Curry leaf tea or add to meals</p>
             <p><strong>Consistency brings the best results</strong></p>
+
+            <h2 id="moringa-recipes">Easy Moringa Recipes for Daily Use</h2>
+            <p>Here are simple, delicious ways to incorporate Nutri Thrive Moringa Powder into your daily routine:</p>
+
+            <h3 id="recipe-morning-smoothie">Morning Energy Moringa Smoothie</h3>
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+                <li>1 cup almond milk (or coconut milk)</li>
+                <li>1 frozen banana</li>
+                <li>1 teaspoon Nutri Thrive Moringa Powder</li>
+                <li>1 tablespoon almond butter</li>
+                <li>1 teaspoon honey (optional)</li>
+                <li>Ice cubes (optional)</li>
+            </ul>
+            <p><strong>Instructions:</strong></p>
+            <ol>
+                <li>Add all ingredients to a blender</li>
+                <li>Blend on high speed for 30-45 seconds until smooth</li>
+                <li>Pour into a glass and enjoy immediately</li>
+                <li>Best consumed on an empty stomach for maximum nutrient absorption</li>
+            </ol>
+            <p><strong>Nutrition per serving:</strong> 180 calories, 8g protein, 5g fiber, 28mg iron</p>
+            <p><strong>Best time:</strong> Morning (7-9 AM) for the Dawn Catalyst effect</p>
+
+            <h3 id="recipe-moringa-tea">Moringa Morning Tea</h3>
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+                <li>1 teaspoon Nutri Thrive Moringa Powder</li>
+                <li>1 cup warm water (40-50°C, never boiling)</li>
+                <li>Slice of lemon (optional)</li>
+                <li>1 teaspoon honey (optional)</li>
+            </ul>
+            <p><strong>Instructions:</strong></p>
+            <ol>
+                <li>Heat water to 40-50°C (warm, not boiling - boiling destroys heat-sensitive nutrients)</li>
+                <li>Add moringa powder to warm water</li>
+                <li>Stir or whisk until powder dissolves</li>
+                <li>Add lemon and honey if desired</li>
+                <li>Consume 15-20 minutes before breakfast for optimal absorption</li>
+            </ol>
+            <p><strong>Nutrition per serving:</strong> 5 calories, 3g protein, 2.8mg iron</p>
+            <p><strong>Best time:</strong> Morning on empty stomach (Dawn Catalyst window)</p>
+
+            <h3 id="recipe-post-workout-recovery">Post-Workout Recovery Smoothie</h3>
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+                <li>1 cup coconut water</li>
+                <li>1 scoop protein powder (optional)</li>
+                <li>1.5 teaspoons Nutri Thrive Moringa Powder</li>
+                <li>1/2 cup frozen berries</li>
+                <li>1 tablespoon chia seeds</li>
+            </ul>
+            <p><strong>Instructions:</strong></p>
+            <ol>
+                <li>Blend all ingredients together</li>
+                <li>Consume within 30 minutes after workout</li>
+                <li>Moringa's complete amino acids support muscle protein synthesis</li>
+                <li>Antioxidants reduce exercise-induced inflammation</li>
+            </ol>
+            <p><strong>Nutrition per serving:</strong> 220 calories, 25g protein, 4.2mg iron, complete amino acid profile</p>
+            <p><strong>Best time:</strong> Within 30 minutes post-workout</p>
+
+            <h2 id="how-to-use-moringa">How to Use Moringa Powder: Complete Guide</h2>
+            <p>Follow these step-by-step instructions to maximize the benefits of Nutri Thrive Moringa Powder:</p>
+
+            <h3>How to Take Moringa Powder for Maximum Absorption</h3>
+            <ol>
+                <li><strong>Choose the right time:</strong> Morning (7-9 AM) on an empty stomach for best results</li>
+                <li><strong>Measure accurately:</strong> Start with 1 teaspoon (3g) daily</li>
+                <li><strong>Use warm water:</strong> Mix with warm water (40-50°C), never boiling</li>
+                <li><strong>Wait before eating:</strong> Consume 15-20 minutes before breakfast</li>
+                <li><strong>Stay consistent:</strong> Take daily for at least 2-3 weeks to see results</li>
+                <li><strong>Hydrate well:</strong> Drink plenty of water throughout the day</li>
+            </ol>
+
+            <h3>How to Store Moringa Powder Properly</h3>
+            <ol>
+                <li>Keep in original packaging or airtight container</li>
+                <li>Store in a cool, dry place away from direct sunlight</li>
+                <li>Keep away from heat sources (stove, oven)</li>
+                <li>Use within 18 months of opening for best quality</li>
+                <li>Check color regularly - vibrant green indicates freshness</li>
+            </ol>
+
+            <h3>How to Identify High-Quality Moringa Powder</h3>
+            <ol>
+                <li><strong>Color:</strong> Should be vibrant forest green, not brown or yellow</li>
+                <li><strong>Texture:</strong> Fine, silky powder (particles less than 200μm)</li>
+                <li><strong>Aroma:</strong> Fresh, grassy, slightly nutty smell</li>
+                <li><strong>Dispersion:</strong> Dissolves smoothly in water without clumping</li>
+                <li><strong>Lab testing:</strong> Look for NATA-accredited lab testing certificates</li>
+                <li><strong>Source:</strong> Check for farm-direct, shade-dried processing</li>
+            </ol>
 
             <h2 id="part3" style="margin-top: 4rem; padding-top: 2rem; border-top: 3px solid var(--primary);">Part 3: Science of Timing & Bioharmony</h2>
 
@@ -1536,8 +2134,79 @@
             <h2 id="local-logistics-trust">Local Logistics & Fulfillment: From Melbourne Warehouse to Your Door</h2>
             <p>We understand that buying supplements online can feel uncertain. That's why we've built complete transparency into our fulfillment process, ensuring you know exactly what you're getting and when it will arrive.</p>
             
-            <div style="background: #e8f5ed; padding: 2rem; margin: 2rem 0; border-radius: 12px; border: 2px solid var(--primary);">
-                <h3 style="color: var(--primary); margin-top: 0;">Our Melbourne-Based Fulfillment Process</h3>
+            <h2 id="product-information">Complete Product Information: Nutri Thrive Premium Moringa Powder</h2>
+
+            <h3>Product Specifications</h3>
+            <ul>
+                <li><strong>Product Name:</strong> Nutri Thrive Premium Moringa Powder</li>
+                <li><strong>Weight:</strong> 100g</li>
+                <li><strong>Price:</strong> $10.50 AUD per 100g</li>
+                <li><strong>Price per serving:</strong> ~$0.20 (1 teaspoon = 3g)</li>
+                <li><strong>Availability:</strong> In Stock</li>
+                <li><strong>Shipping:</strong> Free shipping on orders over $80 AUD</li>
+                <li><strong>Returns:</strong> 30-day money-back guarantee</li>
+            </ul>
+
+            <h3>Nutritional Information (per 100g)</h3>
+            <ul>
+                <li><strong>Protein:</strong> 27-30g (complete protein with all 9 essential amino acids)</li>
+                <li><strong>Iron:</strong> 28mg (10x more than spinach)</li>
+                <li><strong>Calcium:</strong> 2000mg (17x more than milk)</li>
+                <li><strong>Potassium:</strong> 1324mg (3.7x more than bananas)</li>
+                <li><strong>Vitamin A:</strong> 18.9mg (2.3x more than carrots)</li>
+                <li><strong>Vitamin C:</strong> 17.1mg (7x more than oranges)</li>
+                <li><strong>Vitamin E:</strong> 113mg</li>
+                <li><strong>Magnesium:</strong> 368mg</li>
+                <li><strong>Fiber:</strong> 35g</li>
+                <li><strong>Total Nutrients:</strong> 92+ verified compounds</li>
+            </ul>
+
+            <h3>Quality & Certifications</h3>
+            <ul>
+                <li><strong>Lab Testing:</strong> NATA-accredited laboratory testing (Melbourne)</li>
+                <li><strong>Heavy Metals:</strong> Tested for lead, mercury, cadmium, arsenic (FSANZ compliant)</li>
+                <li><strong>Microbiological:</strong> Tested for E. coli, Salmonella, total plate count</li>
+                <li><strong>Purity:</strong> 100% Moringa oleifera (no fillers or additives)</li>
+                <li><strong>Processing:</strong> Shade-dried (preserves heat-sensitive nutrients)</li>
+                <li><strong>Packaging:</strong> BPA-free, UV-resistant, nitrogen-flushed</li>
+                <li><strong>Vegan:</strong> Yes</li>
+                <li><strong>Gluten-Free:</strong> Yes</li>
+                <li><strong>Non-GMO:</strong> Yes</li>
+                <li><strong>Organic:</strong> Natural (lab-tested for purity without organic certification markup)</li>
+            </ul>
+
+            <h3>Customer Reviews & Ratings</h3>
+            <p><strong>Overall Rating:</strong> 4.9/5 stars from 150+ verified customer reviews</p>
+            <p><strong>What customers say:</strong></p>
+            <ul>
+                <li>"Amazing energy boost without the crash. Recovery after workouts has improved significantly." - Sarah M.</li>
+                <li>"Best moringa powder I've tried. Quality is exceptional and price is unbeatable." - James T.</li>
+                <li>"Helped me manage my PCOS symptoms. Better digestion and more stable energy." - Emma L.</li>
+                <li>"Fast shipping from Melbourne. Product is fresh and vibrant green color." - Michael R.</li>
+                <li>"Perfect for my plant-based diet. Complete protein profile." - Lisa K.</li>
+            </ul>
+
+            <h3>Shipping & Delivery</h3>
+            <ul>
+                <li><strong>Warehouse Location:</strong> Truganina, Melbourne, VIC, Australia</li>
+                <li><strong>Dispatch Time:</strong> Same-day dispatch for orders placed before 2 PM AEST</li>
+                <li><strong>Metro Melbourne:</strong> 1-2 business days</li>
+                <li><strong>Sydney, Brisbane, Adelaide, Perth:</strong> 2-3 business days</li>
+                <li><strong>Regional Australia:</strong> 3-5 business days</li>
+                <li><strong>International:</strong> 7-14 business days (tracked shipping available)</li>
+                <li><strong>Free Shipping:</strong> Orders over $80 AUD ship free Australia-wide</li>
+                <li><strong>Tracking:</strong> All orders include tracking information sent via email</li>
+            </ul>
+
+            <h3>Returns & Guarantees</h3>
+            <ul>
+                <li><strong>Money-Back Guarantee:</strong> 30-day money-back guarantee on all products</li>
+                <li><strong>Return Policy:</strong> Full refund if not satisfied (unopened or opened products)</li>
+                <li><strong>Customer Support:</strong> Email: nutrithrive0@gmail.com | Phone: +61 438201419</li>
+                <li><strong>Business Hours:</strong> Monday-Sunday, 9:00 AM - 11:00 PM AEST</li>
+            </ul>
+
+            <h3>Our Melbourne-Based Fulfillment Process</h3>
                 
                 <h4 style="color: #2d5a3d; margin-top: 1.5rem;">1. Quality Control & Lab Testing (Truganina, VIC)</h4>
                 <p>Every batch of Nutri Thrive Moringa undergoes rigorous testing at our NATA-accredited laboratory facility in Truganina, Melbourne:</p>
@@ -1578,9 +2247,7 @@
                 </ul>
             </div>
             
-            <div style="background: #fff9e6; padding: 1.5rem; margin: 2rem 0; border-radius: 8px; border: 2px solid #ffc107;">
-                <p style="margin: 0; font-weight: 600; color: #856404;"><strong>🔒 Your Trust Matters:</strong> We're not a faceless international supplier. We're a Melbourne-based business with a physical warehouse, local phone support (+61 438201419), and Australian customer service. Every product is packed by hand in Truganina, Victoria, and shipped with care. If you have questions about our fulfillment process, lab testing, or shipping times, we're here to help.</p>
-            </div>
+            <p><strong>Your Trust Matters:</strong> We're not a faceless international supplier. We're a Melbourne-based business with a physical warehouse, local phone support (+61 438201419), and Australian customer service. Every product is packed by hand in Truganina, Victoria, and shipped with care. If you have questions about our fulfillment process, lab testing, or shipping times, we're here to help.</p>
             
             <h2>Ready to Transform Your Fitness Journey?</h2>
             <p>Join thousands of Australian athletes who have discovered the power of Nutri Thrive Moringa. Lab-tested, non-stimulant, and packed fresh in Melbourne. Our Moringa powder is shade-dried to preserve maximum nutrient content, then lab-tested for purity and potency.</p>
