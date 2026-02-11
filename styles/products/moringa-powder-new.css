@@ -11,19 +11,22 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 0;
+    background: transparent !important;
 }
 
 /* Hero Section */
 .product-hero {
     padding: 2rem 1.5rem;
     border-bottom: 1px solid rgba(26, 46, 34, 0.1);
+    background: transparent !important;
 }
 
 .product-hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
     gap: 4rem;
     align-items: start;
+    background: transparent !important;
 }
 
 .product-image-section {
@@ -34,6 +37,7 @@
     justify-content: center;
     width: 100%;
     margin-bottom: 2rem;
+    background: transparent !important;
 }
 
 .product-main-image {
@@ -50,18 +54,21 @@
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(26, 46, 34, 0.1);
+    background: transparent !important;
 }
 
 .product-description-section {
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(26, 46, 34, 0.1);
+    background: transparent !important;
 }
 
 .product-info-section {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    background: transparent !important;
 }
 
 .product-title {
