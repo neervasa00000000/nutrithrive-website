@@ -81,7 +81,6 @@
 - `/blog/moringa-fitness-athletes-australia-2026.html`
 - `/blog/moringa-powder-athletes-performance-benefits-australia-2026.html`
 - `/blog/moringa-powder-benefits-ultimate-guide-2024.html`
-- `/blog/moringa-powder-complete-faq-guide-benefits-safety-australia-2026.html`
 - `/blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html`
 - `/blog/moringa-powder-victoria-seniors-joint-health.html`
 - `/blog/moringa-vs-coffee-melbourne-energy-hack.html`
@@ -116,7 +115,6 @@
 - `/blog/buy-moringa-victoria-delivery-guide.html`
 - `/blog/grow-moringa-tree-australia.html`
 - `/blog/natural-heavy-metal-detox-moringa-cleanse-body.html`
-- `/blog/sneak-greens-into-kids-diet-moringa-hack.html`
 
 ### Curry Leaves Blog Posts
 - `/blog/dried-curry-leaves-melbourne-premium-buyers-guide-benefits-recipes-free-delivery-2026.html`
@@ -124,8 +122,6 @@
 - `/blog/dried-curry-leaves-uses-benefits-how-to-cook-melbourne-2026.html`
 - `/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html`
 - `/blog/dried-curry-leaves-karipatta-benefits-melbourne-guide.html`
-- `/blog/dried-curry-leaves-cooking-tips-melbourne.html`
-- `/blog/dried-curry-leaf-powder-recipe-hair-growth.html`
 - `/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html`
 - `/blog/south-indian-recipes-dried-curry-leaves-melbourne.html`
 - `/blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html`
@@ -165,7 +161,6 @@
 - `/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html`
 - `/blog/post-animal-economy-vegan-ecosystem-2026.html`
 - `/blog/australian-serum-edit-2026-science-strategy-climate.html`
-- `/blog/making-money-online-australia-2026-strategy-financial-freedom.html`
 - `/blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html`
 - `/blog/state-of-australian-schooling-2026-comprehensive-analysis.html`
 - `/blog/natural-language-calendar-scheduler.html`
