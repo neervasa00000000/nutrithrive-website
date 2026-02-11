@@ -14,10 +14,10 @@
 - `/products/` - Products listing page
 - `/products/index.html` - Products listing (alternate)
 - `/products/product-detail.html` - Moringa Powder product page
-- `/products/curry-leaves/` - Dried Curry Leaves product page
-- `/products/black-tea/` - Premium Black Tea product page
-- `/products/combo-pack/` - Premium Combo Pack product page
-- `/products/moringa-soap/` - Moringa Soap product page
+- `/products/product-curry-leaves.html` - Dried Curry Leaves product page
+- `/products/product-black-tea.html` - Premium Black Tea product page
+- `/products/product-combo.html` - Premium Combo Pack product page
+- `/products/product-moringa-soap.html` - Moringa Soap product page
 
 ### Shopping & Checkout
 - `/pages/shop/cart.html` - Shopping cart page
