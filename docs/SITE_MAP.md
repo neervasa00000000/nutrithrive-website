@@ -88,7 +88,6 @@
 - `/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html`
 - `/blog/melbourne-fitness-gym-guide-2026-nutrition-supplements.html`
 - `/blog/melbourne-gut-hack-internal-shower-moringa-superfood-2026.html`
-- `/blog/protein-powder-bloating-fix-moringa.html`
 - `/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html`
 - `/blog/the-2026-moringa-market-disruption-chemical-free-superfood-power.html`
 - `/blog/gut-health-superfoods-complete-guide-australia-2026.html`
@@ -107,7 +106,6 @@
 - `/blog/moringa-adaptogen-stress-relief-cortisol-balance.html`
 - `/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html`
 - `/blog/moringa-eyesight-better-than-carrots.html`
-- `/blog/moringa-fat-loss-muscle-recovery-australian-guide-2026.html`
 - `/blog/moringa-breastfeeding-mums-natural-lactation-support.html`
 - `/blog/moringa-vs-matcha-australia-2025.html`
 - `/blog/moringa-vs-matcha-energy-metabolism-2026.html`
@@ -128,8 +126,6 @@
 - `/blog/dried-curry-leaves-karipatta-benefits-melbourne-guide.html`
 - `/blog/dried-curry-leaves-cooking-tips-melbourne.html`
 - `/blog/dried-curry-leaf-powder-recipe-hair-growth.html`
-- `/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html`
-- `/blog/fresh-vs-dried-curry-leaves-substitute-guide.html`
 - `/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html`
 - `/blog/south-indian-recipes-dried-curry-leaves-melbourne.html`
 - `/blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html`
