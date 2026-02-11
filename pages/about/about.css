@@ -2139,94 +2139,195 @@ body.blog-moringa-tree .btn-secondary:hover {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+    main {
+        padding: 0 1rem;
+    }
+    
     .about-hero {
-        padding: 3rem 1rem;
+        padding: 2.5rem 1rem;
+        margin: 0.5rem 0;
     }
     
     .about-hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         letter-spacing: -1px;
+        line-height: 1.2;
+        margin-bottom: 1.25rem;
     }
     
     .about-hero-desc {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 0.5rem;
     }
     
     .stats-section {
-        padding: 3rem 1rem;
+        padding: 2.5rem 1rem;
         margin: 1rem 0;
     }
     
     .stats-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        gap: 1.5rem;
+    }
+    
+    .stat-item {
+        padding: 0.75rem;
     }
     
     .stat-number {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
+        margin-bottom: 0.5rem;
     }
     
     .stat-label {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
     
     .values-section {
-        padding: 3rem 1rem;
+        padding: 2.5rem 1rem;
+        margin: 1rem 0;
     }
     
     .values-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
     }
     
     .values-intro {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
     }
     
     .values-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
+        margin-top: 2rem;
     }
     
     .value-item {
         padding: 1.5rem 1rem;
     }
     
+    .value-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .value-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .value-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
     .story-section {
-        padding: 3rem 1rem;
+        padding: 2.5rem 1rem;
         margin: 1rem 0;
+        border-radius: 12px;
     }
     
     .story-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
     }
     
     .story-intro {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
     }
     
     .story-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
     }
     
     .story-column p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
     }
 }
 
 @media (max-width: 480px) {
-    .stats-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .about-hero {
+        padding: 2rem 0.75rem;
     }
     
     .about-hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .about-hero-desc {
+        font-size: 0.95rem;
+        padding: 0;
+    }
+    
+    .stats-section {
+        padding: 2rem 0.75rem;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    .stat-number {
         font-size: 2rem;
     }
     
-    .values-title,
+    .stat-label {
+        font-size: 0.9rem;
+    }
+    
+    .values-section {
+        padding: 2rem 0.75rem;
+    }
+    
+    .values-title {
+        font-size: 1.5rem;
+    }
+    
+    .values-intro {
+        font-size: 0.95rem;
+    }
+    
+    .value-item {
+        padding: 1.25rem 0.75rem;
+    }
+    
+    .value-title {
+        font-size: 1.1rem;
+    }
+    
+    .value-desc {
+        font-size: 0.9rem;
+    }
+    
+    .story-section {
+        padding: 2rem 0.75rem;
+    }
+    
     .story-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+    }
+    
+    .story-intro {
+        font-size: 0.95rem;
+    }
+    
+    .story-column p {
+        font-size: 0.9rem;
     }
 }
 
