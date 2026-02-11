@@ -120,7 +120,7 @@ DirectoryIndex index.html index.htm
     
     # Old/typo blog slugs
     RewriteRule ^blog/everything-you-need-know-moringa-2025-faq\.html$ /blog/everything-about-moringa-2025-faq.html [R=301,L]
-    RewriteRule ^blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html [R=301,L]
+    RewriteRule ^blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
     RewriteRule ^blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html [R=301,L]
     RewriteRule ^blog/moringa-benefits\.html$ /blog/moringa-benefits-australia-2025.html [R=301,L]
     
@@ -259,7 +259,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
     RewriteRule ^blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html [R=301,L]
     RewriteRule ^blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html [R=301,L]
-    RewriteRule ^blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html [R=301,L]
+    RewriteRule ^blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
     
     # Fix broken image URLs (404 errors from Google Search Console)
     # Redirect old Dried_curry_leaves directory paths to random folder
@@ -290,7 +290,7 @@ DirectoryIndex index.html index.htm
 # ---- Google Search Console 404 fixes (explicit legacy URL redirects) ----
 RedirectMatch 301 ^/pages/blog/where-to-buy-dried-curry-leaves-melbourne-ultimate-guide-surprise-tip-2025\.html\}?$ /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html
 RedirectMatch 301 ^/blog/everything-you-need-know-moringa-2025-faq\.html$ /blog/everything-about-moringa-2025-faq.html
-RedirectMatch 301 ^/blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html
+RedirectMatch 301 ^/blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/moringa-eyesight-better-than-carrots.html
 RedirectMatch 301 ^/blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html
 RedirectMatch 301 ^/blog/moringa-benefits\.html$ /blog/moringa-benefits-australia-2025.html
 RedirectMatch 301 ^/blog/blog\.html$ /blog/
@@ -347,7 +347,7 @@ RedirectMatch 301 ^/product-detail/?$ /products/product-detail.html
 RedirectMatch 301 ^/blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html
 RedirectMatch 301 ^/blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html
 RedirectMatch 301 ^/blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html
-RedirectMatch 301 ^/blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html
+RedirectMatch 301 ^/blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/moringa-eyesight-better-than-carrots.html
 
 # Fix broken image URLs (404 errors from Google Search Console)
 # Redirect old Dried_curry_leaves directory paths to random folder
