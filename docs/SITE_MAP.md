@@ -13,7 +13,7 @@
 ### Products
 - `/products/` - Products listing page
 - `/products/index.html` - Products listing (alternate)
-- `/products/moringa-powder/` - Moringa Powder product page
+- `/products/product-detail.html` - Moringa Powder product page
 - `/products/curry-leaves/` - Dried Curry Leaves product page
 - `/products/black-tea/` - Premium Black Tea product page
 - `/products/combo-pack/` - Premium Combo Pack product page
