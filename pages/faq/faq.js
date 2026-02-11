@@ -298,115 +298,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 4. FAQ Accordion Functionality - Enhanced for Touch and Click
+    // 4. FAQ Accordion Functionality - Match Shipping Page Style
     const faqItems = document.querySelectorAll('.faq-item');
-    
-    function toggleFAQItem(item) {
-        const isActive = item.classList.contains('active');
-        
-        // Close all other FAQ items
-        faqItems.forEach(otherItem => {
-            if (otherItem !== item) {
-                otherItem.classList.remove('active');
-            }
-        });
-        
-        // Toggle current item
-        if (isActive) {
-            item.classList.remove('active');
-        } else {
-            item.classList.add('active');
-        }
-    }
-    
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
         const icon = item.querySelector('.faq-icon');
 
         if (question && answer && icon) {
-            // Prevent default link behavior if question contains links
-            question.style.cursor = 'pointer';
-            question.setAttribute('role', 'button');
-            question.setAttribute('aria-expanded', 'false');
-            question.setAttribute('tabindex', '0');
-            
-            // Prevent clicks on links inside answers from toggling FAQ
-            const answerLinks = answer.querySelectorAll('a');
-            answerLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent FAQ toggle when clicking links
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
                 });
-            });
-            
-            // Handle click events (desktop and mobile)
-            question.addEventListener('click', (e) => {
-                // Don't toggle if clicking on a link inside the question
-                if (e.target.tagName === 'A') {
-                    return;
-                }
-                e.preventDefault();
-                e.stopPropagation();
-                toggleFAQItem(item);
-                question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
-            });
-            
-            // Handle touch events (mobile) - more responsive
-            let touchStartTime = 0;
-            question.addEventListener('touchstart', (e) => {
-                touchStartTime = Date.now();
-            }, { passive: true });
-            
-            question.addEventListener('touchend', (e) => {
-                // Don't toggle if clicking on a link inside the question
-                if (e.target.tagName === 'A') {
-                    return;
-                }
-                // Only toggle if it was a quick tap (not a scroll)
-                const touchDuration = Date.now() - touchStartTime;
-                if (touchDuration < 300) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleFAQItem(item);
-                    question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
-                }
-            }, { passive: false });
-            
-            // Handle keyboard navigation (Enter and Space)
-            question.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleFAQItem(item);
-                    question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+                
+                // Toggle current item
+                if (isActive) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
                 }
             });
-            
-            // Update aria-expanded when item state changes
-            const observer = new MutationObserver(() => {
-                question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
-            });
-            observer.observe(item, { attributes: true, attributeFilter: ['class'] });
         }
     });
-
-    // 5. FAQ Search Functionality
-    const faqSearch = document.getElementById('faq-search');
-    if (faqSearch) {
-        faqSearch.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            faqItems.forEach(item => {
-                const questionText = item.querySelector('h3')?.textContent.toLowerCase() || '';
-                const answerText = item.querySelector('.faq-answer')?.textContent.toLowerCase() || '';
-                
-                if (searchTerm === '' || questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    }
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded

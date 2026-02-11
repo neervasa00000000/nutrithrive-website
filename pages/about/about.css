@@ -2137,153 +2137,224 @@ body.blog-moringa-tree .btn-secondary:hover {
   }
 }
 
-/* Mobile Responsive Styles */
+/* Mobile Responsive Styles - Professional & Optimized */
 @media (max-width: 768px) {
     main {
-        padding: 0 1rem;
+        padding: 0;
+        overflow-x: hidden;
     }
     
     .about-hero {
-        padding: 2.5rem 1rem;
-        margin: 0.5rem 0;
+        padding: 3rem 1.25rem 2.5rem 1.25rem;
+        margin: 0;
+        background: linear-gradient(180deg, rgba(248, 245, 236, 0.5) 0%, var(--bg) 100%);
     }
     
     .about-hero-title {
         font-size: 2rem;
-        letter-spacing: -1px;
-        line-height: 1.2;
-        margin-bottom: 1.25rem;
+        letter-spacing: -0.5px;
+        line-height: 1.25;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
     }
     
     .about-hero-desc {
-        font-size: 1rem;
-        line-height: 1.6;
-        padding: 0 0.5rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        padding: 0;
+        color: var(--text);
+        font-weight: 400;
+        max-width: 100%;
     }
     
     .stats-section {
-        padding: 2.5rem 1rem;
-        margin: 1rem 0;
+        padding: 3rem 1.25rem;
+        margin: 0;
+        background: var(--bg);
     }
     
     .stats-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
+        max-width: 100%;
     }
     
     .stat-item {
-        padding: 0.75rem;
+        padding: 1.5rem 1rem;
+        background: var(--card);
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(23, 92, 54, 0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .stat-item:active {
+        transform: scale(0.98);
     }
     
     .stat-number {
-        font-size: 2.25rem;
-        margin-bottom: 0.5rem;
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+        font-weight: 800;
+        color: var(--primary);
+        line-height: 1;
     }
     
     .stat-label {
         font-size: 0.95rem;
-        line-height: 1.4;
+        line-height: 1.5;
+        color: var(--muted);
+        font-weight: 500;
     }
     
     .values-section {
-        padding: 2.5rem 1rem;
-        margin: 1rem 0;
+        padding: 3rem 1.25rem;
+        margin: 0;
+        background: var(--bg);
     }
     
     .values-title {
-        font-size: 1.75rem;
-        margin-bottom: 0.75rem;
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
     }
     
     .values-intro {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-        padding: 0 0.5rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        padding: 0;
+        color: var(--muted);
+        font-weight: 400;
     }
     
     .values-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.75rem;
         margin-top: 2rem;
     }
     
     .value-item {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1.5rem;
+        background: var(--card);
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(23, 92, 54, 0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 1px solid rgba(236, 231, 219, 0.5);
+    }
+    
+    .value-item:active {
+        transform: scale(0.98);
     }
     
     .value-icon {
-        font-size: 2rem;
-        margin-bottom: 0.75rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
     }
     
     .value-title {
-        font-size: 1.15rem;
-        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+        margin-bottom: 0.875rem;
+        font-weight: 700;
+        color: var(--primary);
     }
     
     .value-desc {
         font-size: 0.95rem;
-        line-height: 1.6;
+        line-height: 1.65;
+        color: var(--text);
+        font-weight: 400;
     }
     
     .story-section {
-        padding: 2.5rem 1rem;
-        margin: 1rem 0;
-        border-radius: 12px;
+        padding: 3rem 1.25rem;
+        margin: 0;
+        border-radius: 0;
+        background: var(--card);
+        box-shadow: none;
     }
     
     .story-title {
-        font-size: 1.75rem;
-        margin-bottom: 0.75rem;
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
     }
     
     .story-intro {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-        padding: 0 0.5rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        padding: 0;
+        color: var(--muted);
+        font-weight: 400;
     }
     
     .story-content {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
+        gap: 2rem;
+        margin-top: 2rem;
     }
     
     .story-column p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 1.25rem;
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+        font-weight: 400;
+    }
+    
+    .story-column p:last-child {
+        margin-bottom: 0;
+    }
+    
+    .story-column p strong {
+        color: var(--primary);
+        font-weight: 600;
+    }
+    
+    .story-column a {
+        color: var(--primary);
+        text-decoration: underline;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+    
+    .story-column a:active {
+        color: var(--accent);
     }
 }
 
 @media (max-width: 480px) {
     .about-hero {
-        padding: 2rem 0.75rem;
+        padding: 2.5rem 1rem 2rem 1rem;
     }
     
     .about-hero-title {
         font-size: 1.75rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
     }
     
     .about-hero-desc {
-        font-size: 0.95rem;
-        padding: 0;
+        font-size: 1rem;
     }
     
     .stats-section {
-        padding: 2rem 0.75rem;
+        padding: 2.5rem 1rem;
     }
     
     .stats-container {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1.5rem;
+    }
+    
+    .stat-item {
+        padding: 1.25rem 0.875rem;
     }
     
     .stat-number {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
     
     .stat-label {
@@ -2291,23 +2362,32 @@ body.blog-moringa-tree .btn-secondary:hover {
     }
     
     .values-section {
-        padding: 2rem 0.75rem;
+        padding: 2.5rem 1rem;
     }
     
     .values-title {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
     
     .values-intro {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .values-grid {
+        gap: 1.5rem;
     }
     
     .value-item {
-        padding: 1.25rem 0.75rem;
+        padding: 1.75rem 1.25rem;
+    }
+    
+    .value-icon {
+        font-size: 2.25rem;
     }
     
     .value-title {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
     }
     
     .value-desc {
@@ -2315,19 +2395,25 @@ body.blog-moringa-tree .btn-secondary:hover {
     }
     
     .story-section {
-        padding: 2rem 0.75rem;
+        padding: 2.5rem 1rem;
     }
     
     .story-title {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
     
     .story-intro {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .story-content {
+        gap: 1.75rem;
     }
     
     .story-column p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 }
 
