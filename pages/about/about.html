@@ -2,7 +2,7 @@
 <html lang="en-AU">
 <head>
 <!-- Defer Loader - Load early to enable script deferral -->
-<script src="/shared/js/defer-loader.js"></script>
+<script src="/scripts/global/defer-loader.js"></script>
 
 <!-- Google Analytics - Deferred until user interaction -->
 <script>
@@ -55,7 +55,7 @@
     <meta property="og:url" content="https://nutrithrive.com.au/about">
     <meta property="og:title" content="About NutriThrive Australia | Superfoods">
     <meta property="og:description" content="Learn about NutriThrive Australia - premium moringa powder company based in Truganina, Melbourne. Our mission, quality commitment, and journey bringing the best superfoods to Melbourne, Sydney, and across Australia.">
-    <meta property="og:image" content="https://nutrithrive.com.au/shared/images/Logo/LOGO.webp">
+    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/Logo/LOGO.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="NutriThrive Australia">
@@ -66,18 +66,18 @@
     <meta property="twitter:url" content="https://nutrithrive.com.au/about">
     <meta property="twitter:title" content="About NutriThrive Australia | Superfoods">
     <meta property="twitter:description" content="Learn about NutriThrive Australia - premium moringa powder company based in Truganina, Melbourne. Our mission, quality commitment, and journey bringing the best superfoods to Melbourne, Sydney, and across Australia.">
-    <meta property="twitter:image" content="https://nutrithrive.com.au/shared/images/Logo/LOGO.webp">
+    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/Logo/LOGO.webp">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="/shared/css/style.css">
+    <link rel="stylesheet" href="/styles/global/style.css">
     <link rel="stylesheet" href="about.css">
     <!-- Favicons - Standardized across all pages -->
-    <link rel="icon" type="image/png" href="/shared/images/Logo%20/LOGO.webp" sizes="32x32">
-    <link rel="icon" type="image/png" sizes="16x16" href="/shared/images/Logo%20/LOGO.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="/shared/images/Logo%20/LOGO.webp">
-    <link rel="shortcut icon" href="/shared/images/Logo%20/LOGO.webp">
-    <meta name="msapplication-TileImage" content="/shared/images/Logo%20/LOGO.webp">
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
+    <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
+    <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/about">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/about">
@@ -86,7 +86,7 @@
     <header>
         <div class="navbar">
             <a href="/" class="logo">
-                <img decoding="async" src="/shared/images/Logo%20/LOGO.webp" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                <img decoding="async" src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
             <nav class="nav-links">
@@ -236,9 +236,9 @@
     </footer>
 
     <!-- CRITICAL: Core functionality - Load immediately with defer -->
-    <script src="/shared/js/cart.js"></script>
-    <script src="/shared/js/cart-header.js"></script>
-    <script src="/shared/js/script.js" defer></script>
+    <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/cart-header.js"></script>
+    <script src="/scripts/global/script.js" defer></script>
     
     <!-- NON-CRITICAL: Page-specific script - Defer until idle (about.js is mostly duplicate of script.js) -->
     <script>
@@ -253,7 +253,7 @@
       } else {
         // Fallback: load normally
         var script = document.createElement('script');
-        script.src = '/pages/about/about.js';
+        script.src = '/scripts/pages/about.js';
         script.defer = true;
         document.body.appendChild(script);
       }

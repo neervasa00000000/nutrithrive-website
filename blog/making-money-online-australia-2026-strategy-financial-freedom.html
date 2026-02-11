@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-<script src="../shared/js/defer-loader.js"></script>
+<script src="../scripts/global/defer-loader.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -59,15 +59,15 @@
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../shared/css/style.css">
-    <link rel="stylesheet" href="../shared/css/newsletter-popup.css">
+    <link rel="stylesheet" href="../styles/global/style.css">
+    <link rel="stylesheet" href="../styles/global/newsletter-popup.css">
     <link rel="stylesheet" href="../blog/blog.css">
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="../shared/images/Logo%20/LOGO.webp" sizes="32x32">
-    <link rel="icon" type="image/png" sizes="16x16" href="../shared/images/Logo%20/LOGO.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="../shared/images/Logo%20/LOGO.webp">
-    <link rel="shortcut icon" href="../shared/images/Logo%20/LOGO.webp">
-    <meta name="msapplication-TileImage" content="../shared/images/Logo%20/LOGO.webp">
+    <link rel="icon" type="image/png" href="../assets/images/logo/LOGO.webp" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/LOGO.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/LOGO.webp">
+    <link rel="shortcut icon" href="../assets/images/logo/LOGO.webp">
+    <meta name="msapplication-TileImage" content="../assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
 
     <!-- BlogPosting Schema -->
@@ -93,7 +93,7 @@
         "name": "NutriThrive",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://nutrithrive.com.au/shared/images/Logo%20/LOGO.webp"
+          "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"
         }
       },
       "datePublished": "2026-02-08T00:00:00+11:00",
@@ -203,7 +203,7 @@
       ],
       "offers": {
         "@type": "Offer",
-        "url": "https://nutrithrive.com.au/products/product-detail.html",
+        "url": "https://nutrithrive.com.au/products/moringa-powder/",
         "priceCurrency": "AUD",
         "price": "10.50",
         "availability": "https://schema.org/InStock"
@@ -217,7 +217,7 @@
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "NutriThrive Dried Curry Leaves",
-      "image": "https://nutrithrive.com.au/shared/images/Home%20page%20/webp/Curry%20.webp",
+      "image": "https://nutrithrive.com.au/assets/images/Home%20page%20/webp/Curry%20.webp",
       "description": "Premium dried curry leaves for cooking and metabolic health. High-potency carbazole alkaloids.",
       "brand": {
         "@type": "Brand",
@@ -260,7 +260,7 @@
       ],
       "offers": {
         "@type": "Offer",
-        "url": "https://nutrithrive.com.au/products/product-curry-leaves.html",
+        "url": "https://nutrithrive.com.au/products/curry-leaves/",
         "priceCurrency": "AUD",
         "price": "6.45",
         "availability": "https://schema.org/InStock"
@@ -519,7 +519,7 @@
     <header>
         <div class="navbar">
             <a href="/" class="logo">
-                <img src="/shared/images/Logo%20/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
             <nav class="nav-links">
@@ -1001,7 +1001,7 @@
                 <!-- Buy Now Button -->
                 <div style="margin: 2rem 0; text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%); border-radius: 12px;">
                     <p style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">Ready to Experience Premium Quality?</p>
-                    <a href="https://nutrithrive.com.au/products/product-detail.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s ease;">
+                    <a href="https://nutrithrive.com.au/products/moringa-powder/" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s ease;">
                         🛒 Buy Moringa Powder Now - $10.50
                     </a>
                 </div>
@@ -1066,7 +1066,7 @@
 
                         <!-- Buy Moringa Button -->
                         <div style="margin-top: 2rem; text-align: center;">
-                            <a href="https://nutrithrive.com.au/products/product-detail.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
+                            <a href="https://nutrithrive.com.au/products/moringa-powder/" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
                                 🛒 Buy Moringa Powder - $10.50
                             </a>
                         </div>
@@ -1111,7 +1111,7 @@
 
                         <!-- Buy Curry Leaves Button -->
                         <div style="margin-top: 2rem; text-align: center;">
-                            <a href="https://nutrithrive.com.au/products/product-curry-leaves.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('curry-leaves', 'Dried Curry Leaves', 6.45, '/shared/images/Home page /webp/Curry .webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
+                            <a href="https://nutrithrive.com.au/products/curry-leaves/" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('curry-leaves', 'Dried Curry Leaves', 6.45,../assets/images/homepage/product-showcase/Curry .webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
                                 🛒 Buy Curry Leaves - $6.45
                             </a>
                         </div>
@@ -1148,7 +1148,7 @@
 
                         <!-- Buy Black Tea Button -->
                         <div style="margin-top: 2rem; text-align: center;">
-                            <a href="https://nutrithrive.com.au/products/product-black-tea.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('black-tea', 'Premium Black Tea', 7.00, '/shared/images/Home page /webp/BlackTea.webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
+                            <a href="https://nutrithrive.com.au/products/black-tea/" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('black-tea', 'Premium Black Tea', 7.00,../assets/images/homepage/product-showcase/BlackTea.webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: #175c36; color: white; padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
                                 🛒 Buy Black Tea - $7.00
                             </a>
                         </div>
@@ -1292,10 +1292,10 @@
                     <h3 style="color: white; margin-top: 0; font-size: 1.75rem;">Ready to Optimize Your Wellness Budget?</h3>
                     <p style="font-size: 1.125rem; margin-bottom: 1.5rem; opacity: 0.95;">Combine smart shopping with premium nutrition for maximum results.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
-                        <a href="https://nutrithrive.com.au/products/product-detail.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease;">
+                        <a href="https://nutrithrive.com.au/products/moringa-powder/" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'https://i.imgur.com/PgvCFY0.png'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease;">
                             🛒 Buy Moringa - $10.50
                         </a>
-                        <a href="https://nutrithrive.com.au/products/product-curry-leaves.html" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('curry-leaves', 'Dried Curry Leaves', 6.45, '/shared/images/Home page /webp/Curry .webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease;">
+                        <a href="https://nutrithrive.com.au/products/curry-leaves/" onclick="if(typeof addProductToCart === 'function') { event.preventDefault(); addProductToCart('curry-leaves', 'Dried Curry Leaves', 6.45,../assets/images/homepage/product-showcase/Curry .webp'); window.location.href='/cart.html'; return false; }" style="display: inline-block; background: white; color: #175c36; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.3s ease;">
                             🛒 Buy Curry Leaves - $6.45
                         </a>
                         <a href="https://nutrithrive.com.au/products/" style="display: inline-block; background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.3s ease;">
@@ -1358,8 +1358,8 @@
         </div>
     </footer>
 
-    <script src="/shared/js/script.js" defer></script>
-    <script src="/shared/js/cart.js"></script>
-    <script src="/shared/js/cart-header.js"></script>
+    <script src="/scripts/global/script.js" defer></script>
+    <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/cart-header.js"></script>
 </body>
 </html>

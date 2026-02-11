@@ -13,21 +13,21 @@
 ### Products
 - `/products/` - Products listing page
 - `/products/index.html` - Products listing (alternate)
-- `/products/product-detail.html` - Moringa Powder product page
-- `/products/product-curry-leaves.html` - Dried Curry Leaves product page
-- `/products/product-black-tea.html` - Premium Black Tea product page
-- `/products/product-combo.html` - Premium Combo Pack product page
-- `/products/product-moringa-soap.html` - Moringa Soap product page
+- `/products/moringa-powder/` - Moringa Powder product page
+- `/products/curry-leaves/` - Dried Curry Leaves product page
+- `/products/black-tea/` - Premium Black Tea product page
+- `/products/combo-pack/` - Premium Combo Pack product page
+- `/products/moringa-soap/` - Moringa Soap product page
 
 ### Shopping & Checkout
-- `/cart.html` - Shopping cart page
-- `/thank-you.html` - Order confirmation page
+- `/pages/shop/cart.html` - Shopping cart page
+- `/pages/contact/thank-you.html` - Order confirmation page
 
 ### Main Navigation Pages
-- `/about.html` - About Us page
-- `/contact.html` - Contact page
-- `/faq.html` - Frequently Asked Questions
-- `/privacy-policy.html` - Privacy Policy
+- `/pages/about/about.html` - About Us page
+- `/pages/contact/contact.html` - Contact page
+- `/pages/faq/faq.html` - Frequently Asked Questions
+- `/pages/legal/privacy-policy.html` - Privacy Policy
 
 ---
 
@@ -183,7 +183,7 @@
 
 ## 🛠️ Utility & Diagnostic Pages
 
-- `/check-paypal-buttons.html` - PayPal button diagnostic tool
+- `/tools/check-paypal-buttons.html` - PayPal button diagnostic tool
 
 ---
 
