@@ -154,7 +154,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/logo/LOGO.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
-    <meta name="msapplication-TileImage" content="../assets/images/logo/LOGO.webp">
+    <meta name="msapplication-TileImage" content="../../assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
@@ -262,56 +262,158 @@
             <div class="product-purchase-details">
                 <h1 class="product-title">Moringa Soap</h1>
                 
-                <div class="product-description">
-                    <p>Experience the natural goodness of our handmade Moringa soap. Made with pure Moringa leaf extract, this gentle soap cleanses while helping nourish your skin with natural antioxidants and vitamins A, C, and E.</p>
-                    <p>Suitable for all skin types, including sensitive skin, each bar is handmade in small batches with care and consistency.</p>
-                    <p>Based in Melbourne, Australia, we offer fast Australia-wide shipping and worldwide shipping 🌍 — delivering to customers across Australia and internationally.</p>
-                </div>
-                
-                <!-- Product Image + Price/Cart Side by Side -->
-                <div style="display: flex; gap: 4rem; align-items: center; justify-content: center; margin: 1.5rem 0; flex-wrap: wrap;">
-                    <!-- Left: Product Image -->
-                    <div class="product-image-container">
-                        <img src="../../assets/images/homepage/product-showcase/moringa_soap.webp" 
-                             alt="NutriThrive Moringa Soap - Natural Handmade Soap Bar" 
-                             style="max-width: 100%; width: 280px; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    </div>
-                    
-                    <!-- Right: Price and Add to Cart -->
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="margin-bottom: 1.5rem;">
-                            <span style="font-size: 2rem; font-weight: 700; color: #2d5a3d;">$6.50 AUD</span>
-                            <p style="font-size: 0.9rem; color: #555; margin-top: 0.25rem;">95g Bar • Natural Soap</p>
+                <div class="product-content-wrapper">
+                    <!-- Product Gallery - Left Side -->
+                    <div class="product-gallery" style="position: relative !important; top: auto !important; height: auto !important; z-index: 1 !important;">
+                        <div class="main-image" style="position: relative !important; width: 100% !important;">
+                            <img id="main-product-image" src="../../assets/images/homepage/product-showcase/moringa_soap.webp" alt="Moringa Soap - Natural Handmade Soap Bar" style="width: 100%; max-width: 350px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block; position: relative !important;">
                         </div>
-                        
-                        <button onclick="addSoapToCart()" style="width: 100%; max-width: 300px; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- GUARANTEE & SHIPPING INFO -->
-                <div style="display: flex; gap: 0.75rem; margin: 16px 0; border-top: 1px solid #e0e0e0; padding-top: 12px; flex-wrap: nowrap;">
-                    <!-- FREE SHIPPING INFO -->
-                    <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 4px;">🚚</div>
-                        <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">Free Shipping</h2>
-                        <p style="margin: 0 0 2px 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">Australia Wide on Orders Over $80</p>
-                        <p style="margin: 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">$100 World Wide</p>
                     </div>
                     
-                    <!-- RISK REVERSAL -->
-                    <div style="flex: 1; padding: 10px 6px; text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 4px;">🛡️</div>
-                        <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">7-Day Money-Back Guarantee</h2>
-                        <p style="margin: 0; color: #2d5a3d; font-size: 0.7rem;">Not satisfied? Full refund, no questions asked!</p>
+                    <!-- Product Content - Right Side -->
+                    <div class="product-content" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; position: relative !important; z-index: 2 !important;">
+                        <p class="product-description" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 0 1.5rem 0 !important; font-size: 0.95rem; line-height: 1.6;">Experience the natural goodness of our handmade Moringa soap. Made with pure Moringa leaf extract, this gentle soap cleanses while helping nourish your skin with natural antioxidants and vitamins A, C, and E. Suitable for all skin types, including sensitive skin, each bar is handmade in small batches with care and consistency. Based in Melbourne, Australia, we offer fast Australia-wide shipping and worldwide shipping 🌍 — delivering to customers across Australia and internationally.</p>
+
+                        <!-- Add to Cart Section -->
+                        <div style="margin: 1.5rem 0; padding: 1.5rem; background: transparent; border-radius: 0;">
+                            <!-- Price (on top) -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <div id="product-price-container" style="display: block;">
+                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$6.50 AUD</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: #555; margin-top: 0.25rem;">95g Bar • Natural Soap</p>
+                            </div>
+                            
+                            <!-- Quantity (below price) -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <label for="product-quantity" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
+                                <select id="product-quantity" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="addSoapToCart()" style="width: 100%; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                                Add to Cart
+                            </button>
+                        </div>
+
+                        <div style="text-align: center; padding: 20px; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 3 !important;">
+                            <div id="paypal-container-moringa-soap" style="margin-top: 20px;"></div>
+                        </div>
+                
+                        <!-- GUARANTEE & SHIPPING INFO -->
+                        <div style="display: flex; gap: 0.75rem; margin: 16px 0; border-top: 1px solid #e0e0e0; padding-top: 12px; flex-wrap: nowrap;">
+                            <!-- FREE SHIPPING INFO -->
+                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🚚</div>
+                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">Free Shipping</h2>
+                                <p style="margin: 0 0 2px 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">Australia Wide on Orders Over $80</p>
+                                <p style="margin: 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">$100 World Wide</p>
+                            </div>
+                            
+                            <!-- RISK REVERSAL -->
+                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🛡️</div>
+                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">7-Day Money-Back Guarantee</h2>
+                                <p style="margin: 0; color: #2d5a3d; font-size: 0.7rem;">Not satisfied? Full refund, no questions asked!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
             </div>
 
-            <!-- Product information sections -->
+            <!-- Product information sections moved below the purchase block -->
             <div class="product-info-sections">
+                <!-- Customer Reviews Carousel -->
+                <section style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 3rem; margin-bottom: 3rem; padding: 3rem 0;">
+                    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: #1a2e22; font-weight: 700;">Customer Reviews</h2>
+                    <p style="text-align: center; color: #ffc107; font-size: 1.2rem; margin-bottom: 2rem;">⭐⭐⭐⭐⭐ 4.9/5 from 87 reviews</p>
+                    
+                    <div style="overflow: hidden; position: relative; width: 100%;">
+                        <div class="reviews-carousel" style="display: flex; gap: 1.5rem; animation: scrollReviews 80s linear infinite; width: max-content; padding: 0 2rem;">
+                            <!-- Review 1 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"This soap is amazing! My skin has never felt so soft and clean. I love that it's all natural and doesn't dry out my skin like other soaps. Will definitely be ordering more!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sarah L., Melbourne</p>
+                            </div>
+                            
+                            <!-- Review 2 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've struggled with sensitive skin for years and this moringa soap has been a game-changer. No irritation, just clean, healthy skin. The natural scent is lovely too."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Michael T., Sydney</p>
+                            </div>
+                            
+                            <!-- Review 3 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Bought this for my whole family and everyone loves it! Even my kids with eczema can use it without any problems. Fast shipping from Melbourne too!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Emma R., Brisbane</p>
+                            </div>
+                            
+                            <!-- Review 4 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Best natural soap I've ever used. You can tell it's handmade with quality ingredients. My skin feels nourished, not stripped. Highly recommend!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">David K., Perth</p>
+                            </div>
+                            
+                            <!-- Review 5 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Amazing natural soap! My skin feels so soft and nourished. Love that it's handmade with real moringa. Perfect for sensitive skin!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Lisa M., Adelaide</p>
+                            </div>
+                            
+                            <!-- Duplicate reviews for seamless loop -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"This soap is amazing! My skin has never felt so soft and clean. I love that it's all natural and doesn't dry out my skin like other soaps. Will definitely be ordering more!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sarah L., Melbourne</p>
+                            </div>
+                            
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've struggled with sensitive skin for years and this moringa soap has been a game-changer. No irritation, just clean, healthy skin. The natural scent is lovely too."</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Michael T., Sydney</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <style>
+                @keyframes scrollReviews {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+                
+                .reviews-carousel:hover {
+                    animation-play-state: paused;
+                }
+                
+                @media (max-width: 768px) {
+                    .reviews-carousel > div {
+                        min-width: 280px !important;
+                        max-width: 280px !important;
+                        background: transparent !important;
+                    }
+                }
+                </style>
+
                 <div class="accordion-section">
                     <div class="accordion-header" onclick="toggleAccordion('why-moringa-soap')">
                         <h2>Why Choose NutriThrive Moringa Soap?</h2>
@@ -319,21 +421,6 @@
                     </div>
                     <div class="accordion-content" id="why-moringa-soap">
                         <p>Our Moringa soap is handcrafted using traditional cold-process methods that preserve the natural benefits of Moringa. Unlike commercial soaps that strip your skin of natural oils, our gentle formula cleanses while maintaining your skin's moisture balance. Moringa is known as the "miracle tree" for good reason – it contains over 90 nutrients and 46 antioxidants that help protect and rejuvenate your skin. The natural antibacterial and anti-inflammatory properties make it ideal for acne-prone skin, while the rich vitamin E content helps reduce the appearance of fine lines and wrinkles. Each bar is free from harsh chemicals, parabens, and synthetic fragrances. Perfect for the whole family, from babies to adults with sensitive skin. Handmade with love in Australia and shipped fresh from our Melbourne warehouse.</p>
-                    </div>
-                </div>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('customer-reviews-soap')">
-                        <h2 style="color: #2d5a3d;">⭐ Customer Reviews (4.9/5 from 87 reviews)</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="customer-reviews-soap">
-                        <div style="font-size: 0.9rem; line-height: 1.5; color: #1a2e22;">
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Sarah L., Melbourne:</strong> "This soap is amazing! My skin has never felt so soft and clean. I love that it's all natural and doesn't dry out my skin like other soaps. Will definitely be ordering more!"</p>
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Michael T., Sydney:</strong> "I've struggled with sensitive skin for years and this moringa soap has been a game-changer. No irritation, just clean, healthy skin. The natural scent is lovely too."</p>
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Emma R., Brisbane:</strong> "Bought this for my whole family and everyone loves it! Even my kids with eczema can use it without any problems. Fast shipping from Melbourne too!"</p>
-                            <p style="margin: 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>David K., Perth:</strong> "Best natural soap I've ever used. You can tell it's handmade with quality ingredients. My skin feels nourished, not stripped. Highly recommend!"</p>
-                        </div>
                     </div>
                 </div>
 
@@ -459,21 +546,60 @@
         </div>
     </footer>
 
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture"></script>
     <script src="../../scripts/global/cart.js"></script>
     <script src="../../scripts/global/cart-header.js"></script>
     <script src="../../scripts/global/script.js" defer></script>
     <script>
+      // Suppress PayPal SDK console errors
+      const originalError = console.error;
+      console.error = function(...args) {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('ncps_standalone_paylater_ineligible')) {
+          return;
+        }
+        originalError.apply(console, args);
+      };
+
+      // Wait for PayPal SDK to load before rendering
+      function initPayPal() {
+        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
+          try {
+            paypal.HostedButtons({
+              hostedButtonId: "MORINGA_SOAP_BUTTON_ID",
+            }).render("#paypal-container-moringa-soap").catch(function(err) {
+              console.warn('PayPal button rendering issue:', err);
+            });
+          } catch (err) {
+            console.warn('PayPal initialization error:', err);
+          }
+        } else {
+          setTimeout(initPayPal, 100);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPayPal);
+      } else {
+        initPayPal();
+      }
+    </script>
+    <script>
         // Add to cart function for Moringa Soap
         function addSoapToCart() {
-            if (window.Cart) {
+            const quantitySelect = document.getElementById('product-quantity');
+            const quantity = parseInt(quantitySelect ? quantitySelect.value : 1) || 1;
+            
+            if (window.Cart && window.Cart.add) {
                 window.Cart.add({
                     id: 'moringa-soap',
                     name: 'Moringa Soap',
                     price: 6.50,
                     weight: 95,
-                    image: '../assets/images/homepage/product-showcase/moringasoap.webp',
-                    quantity: 1
+                    image: '../../assets/images/homepage/product-showcase/moringa_soap.webp',
+                    quantity: quantity
                 });
+            } else {
+                console.error('Cart is not initialized');
             }
         }
 

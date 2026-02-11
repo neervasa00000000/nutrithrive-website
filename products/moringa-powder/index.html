@@ -266,7 +266,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/logo/LOGO.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
-    <meta name="msapplication-TileImage" content="../assets/images/logo/LOGO.webp">
+    <meta name="msapplication-TileImage" content="../../assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="../../assets/images/logo/LOGO.webp">
@@ -642,7 +642,7 @@
     <header>
         <div class="navbar">
             <a href="/" class="logo">
-                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                <img src="../../assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
             <nav class="nav-links">
@@ -695,10 +695,10 @@
                                 <select id="product-variation" onchange="updateProductVariation()" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
                                     <option value="variation-1" data-original-price="37.18" data-price="31.60" data-name="3 + 1 = 400g Moringa" data-image="../assets/images/homepage/product-showcase/Bundleoffer.webp">3 + 1 = 400g - $31.60 AUD (was $37.18)</option>
                                     <option value="variation-2" data-original-price="12.35" data-price="10.50" data-name="100g Moringa" data-image="../assets/images/homepage/product-showcase/Moringa.webp">100g Moringa - $10.50 AUD (was $12.35)</option>
-                                    <option value="variation-3" data-original-price="18.30" data-price="15.55" data-name="Combo Moringa + Dried Curry Leaves" data-image="../assets/images/homepage/product-showcase/combo.webp">Combo Moringa + Dried Curry Leaves - $15.55 AUD (was $18.30)</option>
-                                    <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../assets/images/homepage/product-showcase/Moringa.webp">200g Moringa - $20.49 AUD (was $24.11)</option>
-                                    <option value="variation-5" data-original-price="7.59" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../assets/images/homepage/product-showcase/Curry.webp">30g Dried Curry Leaves - $6.45 AUD (was $7.59)</option>
-                                    <option value="variation-6" data-original-price="20.00" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../assets/images/homepage/product-showcase/moringasoap_combo.webp">Moringa 100g + Soap 95g - $17.00 AUD (was $20.00)</option>
+                                    <option value="variation-3" data-original-price="18.30" data-price="15.55" data-name="Combo Moringa + Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/combo.webp">Combo Moringa + Dried Curry Leaves - $15.55 AUD (was $18.30)</option>
+                                    <option value="variation-4" data-original-price="24.11" data-price="20.49" data-name="200g Moringa" data-image="../../assets/images/homepage/product-showcase/Moringa.webp">200g Moringa - $20.49 AUD (was $24.11)</option>
+                                    <option value="variation-5" data-original-price="7.59" data-price="6.45" data-name="30g Dried Curry Leaves" data-image="../../assets/images/homepage/product-showcase/Curry.webp">30g Dried Curry Leaves - $6.45 AUD (was $7.59)</option>
+                                    <option value="variation-6" data-original-price="20.00" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="../../assets/images/homepage/product-showcase/moringasoap_combo.webp">Moringa 100g + Soap 95g - $17.00 AUD (was $20.00)</option>
                                 </select>
                             </div>
                             
@@ -1306,12 +1306,12 @@
         // Product variations data with actual weights in grams from shipping_rates.xlsx (updated)
         // Original prices from image, with 15% discount applied to get final prices
         const productVariations = {
-            'variation-1': { originalPrice: 37.18, price: 31.60, discount: 5.58, name: '3 + 1 = 400g Moringa', weight: 400, image: '../assets/images/homepage/product-showcase/Bundleoffer.webp' }, // Original: $37.18 AUD, Discounted: $31.60 AUD, 15% off
-            'variation-2': { originalPrice: 12.35, price: 10.50, discount: 1.85, name: '100g Moringa', weight: 100, image: '../assets/images/homepage/product-showcase/Moringa.webp' }, // Original: $12.35, Discounted: $10.50
-            'variation-3': { originalPrice: 18.30, price: 15.55, discount: 2.75, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../assets/images/homepage/product-showcase/combo.webp' }, // Original: $18.30, Discounted: $15.55
-            'variation-4': { originalPrice: 24.11, price: 20.49, discount: 3.62, name: '200g Moringa', weight: 200, image: '../assets/images/homepage/product-showcase/Moringa.webp' }, // Original: $24.11, Discounted: $20.49
-            'variation-5': { originalPrice: 7.59, price: 6.45, discount: 1.14, name: '30g Dried Curry Leaves', weight: 30, image: '../assets/images/homepage/product-showcase/Curry.webp' }, // Original: $7.59, Discounted: $6.45
-            'variation-6': { originalPrice: 20.00, price: 17.00, discount: 3.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '../assets/images/homepage/product-showcase/moringasoap_combo.webp' } // Original: $20.00, Discounted: $17.00
+            'variation-1': { originalPrice: 37.18, price: 31.60, discount: 5.58, name: '3 + 1 = 400g Moringa', weight: 400, image: '../../assets/images/homepage/product-showcase/Bundleoffer.webp' }, // Original: $37.18 AUD, Discounted: $31.60 AUD, 15% off
+            'variation-2': { originalPrice: 12.35, price: 10.50, discount: 1.85, name: '100g Moringa', weight: 100, image: '../../assets/images/homepage/product-showcase/Moringa.webp' }, // Original: $12.35, Discounted: $10.50
+            'variation-3': { originalPrice: 18.30, price: 15.55, discount: 2.75, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '../../assets/images/homepage/product-showcase/combo.webp' }, // Original: $18.30, Discounted: $15.55
+            'variation-4': { originalPrice: 24.11, price: 20.49, discount: 3.62, name: '200g Moringa', weight: 200, image: '../../assets/images/homepage/product-showcase/Moringa.webp' }, // Original: $24.11, Discounted: $20.49
+            'variation-5': { originalPrice: 7.59, price: 6.45, discount: 1.14, name: '30g Dried Curry Leaves', weight: 30, image: '../../assets/images/homepage/product-showcase/Curry.webp' }, // Original: $7.59, Discounted: $6.45
+            'variation-6': { originalPrice: 20.00, price: 17.00, discount: 3.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '../../assets/images/homepage/product-showcase/moringasoap_combo.webp' } // Original: $20.00, Discounted: $17.00
         };
         
         // Update product details when variation changes
@@ -1371,7 +1371,7 @@
                     id: 'moringa-powder',
                     name: 'Moringa Powder',
                     price: 10.00,
-                    image: '../assets/images/homepage/product-showcase/Moringa.webp',
+                    image: '../../assets/images/homepage/product-showcase/Moringa.webp',
                     quantity: quantity
                 });
             }
@@ -1384,7 +1384,7 @@
             updateProductVariation();
         }
     </script>
-    <script src="../scripts/products/moringa-powder.js"></script>
+    <script src="../../scripts/products/moringa-powder.js"></script>
     <!-- Ensure hamburger menu works - simple inline fallback -->
     <script>
       // Simple fallback to ensure hamburger works
