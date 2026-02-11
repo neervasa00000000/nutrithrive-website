@@ -298,31 +298,89 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 4. FAQ Accordion Functionality - Match Shipping Page Style
+    // 4. FAQ Accordion Functionality - Touch & Click Support
     const faqItems = document.querySelectorAll('.faq-item');
+    
+    function toggleFAQItem(item) {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other FAQ items
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+            item.classList.remove('active');
+        } else {
+            item.classList.add('active');
+        }
+    }
+    
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
         const icon = item.querySelector('.faq-icon');
 
         if (question && answer && icon) {
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all other FAQ items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
+            // Prevent clicks on links inside answers from toggling FAQ
+            const answerLinks = answer.querySelectorAll('a');
+            answerLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.stopPropagation();
                 });
-                
-                // Toggle current item
-                if (isActive) {
-                    item.classList.remove('active');
-                } else {
-                    item.classList.add('active');
+            });
+            
+            // Handle click events (desktop and mobile)
+            question.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    return;
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                toggleFAQItem(item);
+            });
+            
+            // Handle touch events (mobile) - more responsive
+            let touchStartTime = 0;
+            question.addEventListener('touchstart', (e) => {
+                touchStartTime = Date.now();
+            }, { passive: true });
+            
+            question.addEventListener('touchend', (e) => {
+                if (e.target.tagName === 'A') {
+                    return;
+                }
+                // Only toggle if it was a quick tap (not a scroll)
+                const touchDuration = Date.now() - touchStartTime;
+                if (touchDuration < 300) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleFAQItem(item);
+                }
+            }, { passive: false });
+            
+            // Handle keyboard navigation
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('role', 'button');
+            question.setAttribute('aria-expanded', 'false');
+            
+            question.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleFAQItem(item);
+                    question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
                 }
             });
+            
+            // Update aria-expanded when item state changes
+            const observer = new MutationObserver(() => {
+                question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+            });
+            observer.observe(item, { attributes: true, attributeFilter: ['class'] });
         }
     });
 });
