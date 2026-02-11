@@ -219,8 +219,10 @@ DirectoryIndex index.html index.htm
     # Fix double .html.html extensions (Google Search Console errors)
     RewriteRule ^(.+)\.html\.html$ /$1.html [R=301,L]
     
-    # Fix root-level /product-detail without .html (redirect to /products/)
-    RewriteRule ^product-detail/?$ /products/product-detail.html [R=301,L]
+    # Fix root-level /product-detail without .html - Internal rewrite to new location
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^product-detail/?$ /products/moringa-powder/ [L]
     
     # Redirect non-existent blog posts to actual files
     RewriteRule ^blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
