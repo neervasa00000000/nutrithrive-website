@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .product-main-image {
@@ -41,6 +42,7 @@
     border-radius: 8px;
     display: block;
     object-fit: contain;
+    margin: 0 auto;
 }
 
 .product-info-section {
@@ -180,11 +182,27 @@
     border-top: 1px solid rgba(26, 46, 34, 0.1);
 }
 
+.paypal-section.paypal-first {
+    border-top: none;
+    border-bottom: 1px solid rgba(26, 46, 34, 0.1);
+    margin-bottom: 1.5rem;
+}
+
 .paypal-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.paypal-form input,
+.paypal-form img,
+.paypal-form section {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .paypal-powered {
@@ -192,12 +210,19 @@
     color: #6b7280;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.25rem;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+    padding: 0 0.5rem;
 }
 
 .paypal-powered img {
     height: 0.875rem;
     vertical-align: middle;
+    max-width: 100%;
+    flex-shrink: 0;
 }
 
 /* Trust Badges */
@@ -536,6 +561,8 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
+        margin: 0 auto;
     }
     
     .product-main-image {
@@ -544,6 +571,8 @@
         height: auto;
         max-height: 400px;
         object-fit: contain;
+        margin: 0 auto;
+        display: block;
     }
     
     .product-info-section {
@@ -616,9 +645,46 @@
         gap: 1rem;
     }
     
+    .product-image-section {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
+    
     .product-main-image {
         max-height: 300px;
         width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .paypal-section.paypal-first {
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+    }
+    
+    .paypal-form {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .paypal-form input {
+        width: 100%;
+        max-width: 280px;
+        padding: 0 1rem;
+    }
+    
+    .paypal-form img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+    }
+    
+    .paypal-powered {
+        font-size: 0.7rem;
+        padding: 0 0.25rem;
+        word-wrap: break-word;
     }
     
     .product-title {
