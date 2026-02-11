@@ -664,6 +664,68 @@
         gap: 1rem;
     }
     
+    .product-image-section {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto 1rem auto;
+    }
+    
+    .product-main-image {
+        max-height: 300px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .product-purchase-section {
+        margin-top: 0;
+        padding-top: 1rem;
+    }
+    
+    .product-description-section {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+    
+    .product-description,
+    .product-location {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .paypal-section {
+        padding: 0.75rem 0;
+    }
+    
+    .paypal-form {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .paypal-form input {
+        width: 100%;
+        max-width: 280px;
+        padding: 0 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .paypal-form img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+    }
+    
+    .paypal-powered {
+        font-size: 0.7rem;
+        padding: 0 0.25rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
     .product-main-image {
         max-height: 300px;
         width: 100%;
