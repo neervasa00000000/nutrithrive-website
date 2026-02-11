@@ -1,0 +1,374 @@
+/* Modern Clean About Page - Full Page Design (No Boxes) */
+
+.about-page-new {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8f5ec;
+    color: #1a2e22;
+    line-height: 1.6;
+}
+
+.about-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Hero Section */
+.about-hero-new {
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(26, 46, 34, 0.1);
+}
+
+.about-hero-title-new {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #1a2e22;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.about-hero-desc-new {
+    font-size: 1.25rem;
+    color: #374151;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+/* Statistics Section */
+.stats-section-new {
+    padding: 4rem 2rem;
+    border-bottom: 1px solid rgba(26, 46, 34, 0.1);
+}
+
+.stats-container-new {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    text-align: center;
+}
+
+.stat-item-new {
+    padding: 0;
+}
+
+.stat-number-new {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #175c36;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.stat-label-new {
+    font-size: 1.1rem;
+    color: #5A6D5D;
+    font-weight: 500;
+}
+
+/* Values Section */
+.values-section-new {
+    padding: 4rem 2rem;
+    border-bottom: 1px solid rgba(26, 46, 34, 0.1);
+}
+
+.values-container-new {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.values-title-new {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a2e22;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.values-intro-new {
+    font-size: 1.2rem;
+    color: #5A6D5D;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+.values-grid-new {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.value-item-new {
+    text-align: center;
+    padding: 0;
+}
+
+.value-icon-new {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.value-title-new {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a2e22;
+    margin-bottom: 0.75rem;
+}
+
+.value-desc-new {
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Story Section */
+.story-section-new {
+    padding: 4rem 2rem;
+    border-bottom: 1px solid rgba(26, 46, 34, 0.1);
+}
+
+.story-container-new {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-title-new {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a2e22;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.story-intro-new {
+    font-size: 1.2rem;
+    color: #5A6D5D;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+.story-content-new {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.story-column-new p {
+    font-size: 1.1rem;
+    color: #374151;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.story-column-new p:last-child {
+    margin-bottom: 0;
+}
+
+.story-column-new p strong {
+    color: #175c36;
+    font-weight: 600;
+}
+
+.story-column-new a {
+    color: #175c36;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.story-column-new a:hover {
+    color: #7B541F;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-main {
+        padding: 0;
+    }
+    
+    .about-hero-new {
+        padding: 3rem 1.25rem;
+    }
+    
+    .about-hero-title-new {
+        font-size: 2.25rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .about-hero-desc-new {
+        font-size: 1.05rem;
+        padding: 0;
+    }
+    
+    .stats-section-new {
+        padding: 3rem 1.25rem;
+    }
+    
+    .stats-container-new {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .stat-number-new {
+        font-size: 2.75rem;
+    }
+    
+    .stat-label-new {
+        font-size: 1rem;
+    }
+    
+    .values-section-new {
+        padding: 3rem 1.25rem;
+    }
+    
+    .values-title-new {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .values-intro-new {
+        font-size: 1.05rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .values-grid-new {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .value-icon-new {
+        font-size: 2.5rem;
+    }
+    
+    .value-title-new {
+        font-size: 1.2rem;
+    }
+    
+    .value-desc-new {
+        font-size: 0.95rem;
+    }
+    
+    .story-section-new {
+        padding: 3rem 1.25rem;
+    }
+    
+    .story-title-new {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .story-intro-new {
+        font-size: 1.05rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .story-content-new {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .story-column-new p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero-new {
+        padding: 2.5rem 1rem;
+    }
+    
+    .about-hero-title-new {
+        font-size: 1.9rem;
+    }
+    
+    .about-hero-desc-new {
+        font-size: 1rem;
+    }
+    
+    .stats-section-new {
+        padding: 2.5rem 1rem;
+    }
+    
+    .stats-container-new {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stat-number-new {
+        font-size: 2.5rem;
+    }
+    
+    .stat-label-new {
+        font-size: 0.95rem;
+    }
+    
+    .values-section-new {
+        padding: 2.5rem 1rem;
+    }
+    
+    .values-title-new {
+        font-size: 1.75rem;
+    }
+    
+    .values-intro-new {
+        font-size: 1rem;
+    }
+    
+    .values-grid-new {
+        gap: 1.75rem;
+    }
+    
+    .value-icon-new {
+        font-size: 2.25rem;
+    }
+    
+    .value-title-new {
+        font-size: 1.15rem;
+    }
+    
+    .value-desc-new {
+        font-size: 0.9rem;
+    }
+    
+    .story-section-new {
+        padding: 2.5rem 1rem;
+    }
+    
+    .story-title-new {
+        font-size: 1.75rem;
+    }
+    
+    .story-intro-new {
+        font-size: 1rem;
+    }
+    
+    .story-column-new p {
+        font-size: 0.95rem;
+    }
+}
