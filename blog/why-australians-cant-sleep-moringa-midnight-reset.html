@@ -1190,61 +1190,82 @@
             }
 
             function createPayPalButton(containerId, productName, productId, price, quantity = 1) {
+                // Double-check element exists before proceeding
                 const container = document.getElementById(containerId);
-                if (!container) return;
+                if (!container) {
+                    console.warn(`PayPal button container "${containerId}" not found. Skipping.`);
+                    return;
+                }
 
-                paypal.Buttons({
-                    createOrder: async () => {
-                        try {
-                            const response = await fetch("/.netlify/functions/paypal-create-order", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                    amount: (price * quantity).toFixed(2),
-                                    subtotal: (price * quantity).toFixed(2),
-                                    shipping: "0.00",
-                                    items: [{
-                                        id: productId,
-                                        name: productName,
-                                        unitPrice: price.toFixed(2),
-                                        quantity: quantity
-                                    }]
-                                })
-                            });
-                            const data = await response.json();
-                            if (!response.ok) {
-                                throw new Error(data.error || "Failed to create order");
+                // Ensure container is visible and ready
+                if (container.offsetParent === null && container.style.display === 'none') {
+                    console.warn(`PayPal button container "${containerId}" is hidden. Skipping.`);
+                    return;
+                }
+
+                try {
+                    paypal.Buttons({
+                        createOrder: async () => {
+                            try {
+                                const response = await fetch("/.netlify/functions/paypal-create-order", {
+                                    method: "POST",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify({
+                                        amount: (price * quantity).toFixed(2),
+                                        subtotal: (price * quantity).toFixed(2),
+                                        shipping: "0.00",
+                                        items: [{
+                                            id: productId,
+                                            name: productName,
+                                            unitPrice: price.toFixed(2),
+                                            quantity: quantity
+                                        }]
+                                    })
+                                });
+                                const data = await response.json();
+                                if (!response.ok) {
+                                    throw new Error(data.error || "Failed to create order");
+                                }
+                                return data.orderID || data.id;
+                            } catch (err) {
+                                console.error("Error creating PayPal order:", err);
+                                alert("Payment error: " + (err.message || "Unknown error"));
+                                throw err;
                             }
-                            return data.orderID || data.id;
-                        } catch (err) {
-                            console.error("Error creating PayPal order:", err);
-                            alert("Payment error: " + (err.message || "Unknown error"));
-                            throw err;
-                        }
-                    },
-                    onApprove: async (data, actions) => {
-                        const orderID = data.orderID || data.id;
-                        try {
-                            const response = await fetch("/.netlify/functions/paypal-capture-order", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ orderID: orderID })
-                            });
-                            const result = await response.json();
-                            if (!response.ok) {
-                                throw new Error(result.error || "Payment failed");
+                        },
+                        onApprove: async (data, actions) => {
+                            const orderID = data.orderID || data.id;
+                            try {
+                                const response = await fetch("/.netlify/functions/paypal-capture-order", {
+                                    method: "POST",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify({ orderID: orderID })
+                                });
+                                const result = await response.json();
+                                if (!response.ok) {
+                                    throw new Error(result.error || "Payment failed");
+                                }
+                                window.location.href = `/thank-you.html?orderId=${orderID}`;
+                            } catch (err) {
+                                console.error("Error capturing payment:", err);
+                                alert(`Payment error: ${err.message || "Unknown error"}`);
                             }
-                            window.location.href = `/thank-you.html?orderId=${orderID}`;
-                        } catch (err) {
-                            console.error("Error capturing payment:", err);
-                            alert(`Payment error: ${err.message || "Unknown error"}`);
+                        },
+                        onError: (err) => {
+                            console.error("PayPal error:", err);
+                            // Only show alert for actual payment errors, not rendering issues
+                            if (err && err.message && !err.message.includes('does not exist') && !err.message.includes('not found')) {
+                                alert(`Payment error: ${err.message || "Unknown error"}`);
+                            }
                         }
-                    },
-                    onError: (err) => {
-                        console.error("PayPal error:", err);
-                        alert(`Payment error: ${err.message || "Unknown error"}`);
-                    }
-                }).render(containerId);
+                    }).render(containerId).catch(function(err) {
+                        console.error(`Error rendering PayPal button in ${containerId}:`, err);
+                        // Don't show alert for rendering errors - just log them
+                    });
+                } catch (err) {
+                    console.error(`Error initializing PayPal button for ${containerId}:`, err);
+                    // Don't show alert for initialization errors
+                }
             }
 
             // Initialize all 5 PayPal buttons
@@ -1255,11 +1276,23 @@
             createPayPalButton('paypal-button-sleep-5', 'Moringa Powder', 'moringa-powder', 10.50);
         }
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initPayPalButtons);
-        } else {
-            initPayPalButtons();
+        // Wait for both DOM and PayPal SDK to be ready
+        function startInitialization() {
+            if (typeof paypal === 'undefined') {
+                setTimeout(startInitialization, 100);
+                return;
+            }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(initPayPalButtons, 100);
+                });
+            } else {
+                setTimeout(initPayPalButtons, 100);
+            }
         }
+        
+        startInitialization();
     </script>
 </body>
 </html>
