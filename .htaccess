@@ -93,15 +93,35 @@ DirectoryIndex index.html index.htm
     RewriteCond %{DOCUMENT_ROOT}/products/product-black-tea.html -f
     RewriteRule ^products/product-black-tea/?$ /products/product-black-tea.html [L]
     
-    # Privacy Policy: Serve clean URL internally (no redirect)
+    # Privacy Policy: Serve clean URL internally (no redirect) - Internal rewrite to new location
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^privacy-policy/?$ /privacy-policy.html [L]
+    RewriteRule ^privacy-policy/?$ /pages/legal/privacy-policy.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^privacy-policy\.html$ /pages/legal/privacy-policy.html [L]
     
-    # Cart: Serve clean URL internally (no redirect)
+    # Cart: Serve clean URL internally (no redirect) - Internal rewrite to new location
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^cart/?$ /cart.html [L]
+    RewriteRule ^cart/?$ /pages/shop/cart.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^cart\.html$ /pages/shop/cart.html [L]
+    
+    # About, Contact, FAQ: Internal rewrites to /pages/ locations (no redirects)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^about\.html$ /pages/about/about.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^contact\.html$ /pages/contact/contact.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^faq\.html$ /pages/faq/faq.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^thank-you\.html$ /pages/contact/thank-you.html [L]
     
     # Products redirects - redirect all /pages/products/ to /products/ (already handled above, but keeping for fallback)
     
@@ -118,9 +138,9 @@ DirectoryIndex index.html index.htm
     RewriteRule ^product-detail\.html$ /products/product-detail.html [R=301,L]
     RewriteRule ^product-black-tea\.html$ /products/product-black-tea.html [R=301,L]
     RewriteRule ^product-curry-leaves\.html$ /products/product-curry-leaves.html [R=301,L]
-    RewriteRule ^about\.html$ /pages/about/about.html [R=301,L]
+    # Removed - now handled by internal rewrite above
     RewriteRule ^blog\.html$ /blog/ [R=301,L]
-    RewriteRule ^thank-you\.html$ /pages/contact/thank-you.html [R=301,L]
+    # Removed - now handled by internal rewrite above
     RewriteRule ^how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^how-to-use-moringa/?$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^contact\.html$ /pages/contact/contact.html [R=301,L]
