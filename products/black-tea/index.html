@@ -73,7 +73,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../../styles/global/style.css">
-    <link rel="stylesheet" href="../../styles/products/black-tea.css">
+    <link rel="stylesheet" href="../../styles/products/moringa-powder.css">
     <style>
       /* Accordion smooth animation */
       .accordion-content {
@@ -322,18 +322,161 @@
 
     <main>
         <section class="product-detail-page">
-            <div class="product-purchase-details" style="max-width: 100%; width: 100%; padding: 2rem 4rem;">
+            <div class="product-purchase-details">
                 <h1 class="product-title">Darjeeling Black Tea</h1>
-                <p class="product-description" style="text-align: left; font-size: 1rem; max-width: none; width: 100%;">Discover the rich aroma and smooth, balanced taste of our premium Darjeeling black tea. Perfect for mornings or afternoon pick-me-up, this authentic tea is available for delivery across Australia. Shipped fresh from our Melbourne warehouse to customers in Melbourne, Sydney, and throughout Australia.</p>
                 
-                <div style="text-align: center; padding: 20px;">
-                    <div id="paypal-container-AMDLXGV7HCKXW" style="margin-top: 20px;"></div>
+                <div class="product-content-wrapper">
+                    <!-- Product Gallery - Left Side -->
+                    <div class="product-gallery" style="position: relative !important; top: auto !important; height: auto !important; z-index: 1 !important;">
+                        <div class="main-image" style="position: relative !important; width: 100% !important;">
+                            <img id="main-product-image" src="../../assets/images/homepage/product-showcase/BlackTea.webp" alt="Darjeeling Black Tea - Premium Quality" style="width: 100%; max-width: 350px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block; position: relative !important;">
+                        </div>
+                    </div>
+                    
+                    <!-- Product Content - Right Side -->
+                    <div class="product-content" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; position: relative !important; z-index: 2 !important;">
+                        <p class="product-description" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 0 0 1.5rem 0 !important; font-size: 0.95rem; line-height: 1.6;">Discover the rich aroma and smooth, balanced taste of our premium Darjeeling black tea. Perfect for mornings or afternoon pick-me-up, this authentic tea is available for delivery across Australia. Shipped fresh from our Melbourne warehouse to customers in Melbourne, Sydney, and throughout Australia.</p>
+
+                        <!-- Add to Cart Section -->
+                        <div style="margin: 1.5rem 0; padding: 1.5rem; background: transparent; border-radius: 0;">
+                            <!-- Price (on top) -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <div id="product-price-container" style="display: block;">
+                                    <span id="product-price" style="font-size: 2rem; font-weight: 700; color: #2d5a3d; display: inline-block;">$7.00 AUD</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: #555; margin-top: 0.25rem;">100g Pack • Premium Grade</p>
+                            </div>
+                            
+                            <!-- Quantity (below price) -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <label for="product-quantity" style="display: block; font-weight: 600; color: #1a2e22; margin-bottom: 0.5rem;">Quantity:</label>
+                                <select id="product-quantity" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer; color: #1a2e22;">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            
+                            <button onclick="addBlackTeaToCart()" style="width: 100%; padding: 1rem 2rem; background: #2d5a3d; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                                Add to Cart
+                            </button>
+                        </div>
+
+                        <div style="text-align: center; padding: 20px; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 3 !important;">
+                            <div id="paypal-container-AMDLXGV7HCKXW" style="margin-top: 20px;"></div>
+                        </div>
+                
+                        <!-- GUARANTEE & SHIPPING INFO -->
+                        <div style="display: flex; gap: 0.75rem; margin: 16px 0; border-top: 1px solid #e0e0e0; padding-top: 12px; flex-wrap: nowrap;">
+                            <!-- FREE SHIPPING INFO -->
+                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🚚</div>
+                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">Free Shipping</h2>
+                                <p style="margin: 0 0 2px 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">Australia Wide on Orders Over $80</p>
+                                <p style="margin: 0; color: #2d5a3d; font-weight: 500; font-size: 0.7rem;">$100 World Wide</p>
+                            </div>
+                            
+                            <!-- RISK REVERSAL -->
+                            <div style="flex: 1; padding: 10px 6px; text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🛡️</div>
+                                <h2 style="color: #2d5a3d; margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700;">7-Day Money-Back Guarantee</h2>
+                                <p style="margin: 0; color: #2d5a3d; font-size: 0.7rem;">Not satisfied? Full refund, no questions asked!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
             </div>
 
             <!-- Product information sections moved below the purchase block -->
             <div class="product-info-sections">
+                <!-- Customer Reviews Carousel -->
+                <section style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 3rem; margin-bottom: 3rem; padding: 3rem 0;">
+                    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: #1a2e22; font-weight: 700;">Customer Reviews</h2>
+                    <p style="text-align: center; color: #ffc107; font-size: 1.2rem; margin-bottom: 2rem;">⭐⭐⭐⭐⭐ 4.5/5 from 89 reviews</p>
+                    
+                    <div style="overflow: hidden; position: relative; width: 100%;">
+                        <div class="reviews-carousel" style="display: flex; gap: 1.5rem; animation: scrollReviews 80s linear infinite; width: max-content; padding: 0 2rem;">
+                            <!-- Review 1 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Premium quality black tea with rich aroma and smooth taste. The best Darjeeling available in Australia. The muscatel flavor is perfectly balanced - not too strong, not too weak. Highly recommend for tea lovers in Melbourne and across Australia!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Helen W., Melbourne</p>
+                            </div>
+                            
+                            <!-- Review 2 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've been a tea enthusiast for years and this Darjeeling is exceptional. The quality is evident from the first sip - smooth, aromatic, and perfectly balanced. It's become my go-to morning tea. Fast shipping and excellent customer service!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Mark T., Sydney</p>
+                            </div>
+                            
+                            <!-- Review 3 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Premium quality black tea with rich aroma and smooth taste. Perfect for my afternoon break. The gentle caffeine boost is exactly what I need without feeling jittery. Highly recommend!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Sophie L., Adelaide</p>
+                            </div>
+                            
+                            <!-- Review 4 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Excellent Darjeeling tea! The flavor is rich and complex without being bitter. I've tried many brands and this is one of the best. Highly recommend for anyone who appreciates quality tea!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">David K., Brisbane</p>
+                            </div>
+                            
+                            <!-- Review 5 -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"This tea is absolutely delightful! The smooth taste and rich aroma make it perfect for both mornings and afternoons. I love how it doesn't need any sugar - it's perfect as is. Great product!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Emma B., Perth</p>
+                            </div>
+                            
+                            <!-- Duplicate reviews for seamless loop -->
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"Premium quality black tea with rich aroma and smooth taste. The best Darjeeling available in Australia. The muscatel flavor is perfectly balanced - not too strong, not too weak. Highly recommend for tea lovers in Melbourne and across Australia!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Helen W., Melbourne</p>
+                            </div>
+                            
+                            <div style="background: transparent; padding: 1.5rem; min-width: 350px; max-width: 350px;">
+                                <div style="color: #ffc107; font-size: 1.2rem; margin-bottom: 0.75rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; color: #374151; line-height: 1.6; margin-bottom: 1rem;">"I've been a tea enthusiast for years and this Darjeeling is exceptional. The quality is evident from the first sip - smooth, aromatic, and perfectly balanced. It's become my go-to morning tea. Fast shipping and excellent customer service!"</p>
+                                <p style="font-weight: 700; color: #1a2e22; margin: 0;">Mark T., Sydney</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <style>
+                @keyframes scrollReviews {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+                
+                .reviews-carousel:hover {
+                    animation-play-state: paused;
+                }
+                
+                @media (max-width: 768px) {
+                    .reviews-carousel > div {
+                        min-width: 280px !important;
+                        max-width: 280px !important;
+                        background: transparent !important;
+                    }
+                }
+                </style>
+
                 <div class="accordion-section">
                     <div class="accordion-header" onclick="toggleAccordion('what-makes-tea')">
                         <h2>What Makes Our Darjeeling Black Tea Special?</h2>
@@ -341,20 +484,6 @@
                     </div>
                     <div class="accordion-content" id="what-makes-tea">
                         <p>Our premium Darjeeling black tea is carefully selected from certified gardens and delivered fresh to Australia. Known as the "champagne of teas," Darjeeling offers a delicate balance of floral, fruity, and slightly astringent notes that set it apart from other black teas. Each batch is carefully selected and processed to preserve the tea's natural antioxidants, which support heart health, circulation, and overall wellness. With moderate caffeine content (40-50mg per cup), it provides a gentle energy boost without the jitters associated with coffee. Whether enjoyed plain to appreciate its nuanced flavors or with a splash of milk and honey for a traditional breakfast tea, our Darjeeling black tea delivers an exceptional tea-drinking experience that elevates your daily routine. Shipped fresh from our Melbourne warehouse to customers across Melbourne, Sydney, and throughout Australia.</p>
-                    </div>
-                </div>
-
-                <div class="accordion-section">
-                    <div class="accordion-header" onclick="toggleAccordion('customer-reviews-tea')">
-                        <h2>⭐ Customer Reviews (4.5/5 from 89 reviews)</h2>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content" id="customer-reviews-tea">
-                        <div style="font-size: 0.9rem; line-height: 1.5; color: #1a2e22;">
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Helen W., Melbourne:</strong> "Premium quality black tea with rich aroma and smooth taste. The best Darjeeling available in Australia. The muscatel flavor is perfectly balanced - not too strong, not too weak. Highly recommend for tea lovers in Melbourne and across Australia!"</p>
-                            <p style="margin: 0 0 12px 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Mark T., Sydney:</strong> "I've been a tea enthusiast for years and this Darjeeling is exceptional. The quality is evident from the first sip - smooth, aromatic, and perfectly balanced. It's become my go-to morning tea. Fast shipping and excellent customer service!"</p>
-                            <p style="margin: 0;"><span style="color: #ffc107;">⭐⭐⭐⭐⭐</span> <strong>Sophie L., Adelaide:</strong> "Premium quality black tea with rich aroma and smooth taste. Perfect for my afternoon break. The gentle caffeine boost is exactly what I need without feeling jittery. Highly recommend!"</p>
-                        </div>
                     </div>
                 </div>
                 <div class="accordion-section">
@@ -462,7 +591,6 @@
     <script src="../../scripts/global/cart.js"></script>
     <script src="../../scripts/global/cart-header.js"></script>
     <script src="../../scripts/global/script.js" defer></script>
-    <script src="../scripts/products/black-tea.js"></script>
     <script>
         // Add to cart function for Black Tea
         function addBlackTeaToCart() {
@@ -475,7 +603,7 @@
                     name: 'Darjeeling Black Tea',
                     price: 7.00,
                     weight: 100, // 100g pack
-                    image: '../assets/images/homepage/product-showcase/BlackTea.webp',
+                    image: '../../assets/images/homepage/product-showcase/BlackTea.webp',
                     quantity: quantity
                 });
             } else {
