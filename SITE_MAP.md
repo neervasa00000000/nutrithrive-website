@@ -69,7 +69,6 @@
 ## 📝 Blog Posts (98 Articles)
 
 ### High Priority Blog Posts (0.8-0.9)
-- `/blog/science-of-timing-orchestrating-your-biology-bioharmony-moringa-2026.html` ⭐ **Recently Enhanced**
 - `/blog/moringa-brands-reviewed-australia-2025-verdict.html`
 - `/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html`
 - `/blog/why-australians-cant-sleep-moringa-midnight-reset.html`
@@ -154,7 +153,6 @@
 - `/blog/adaptogenic-superfoods-stress-relief-australia-2026.html`
 - `/blog/affordable-food-budget-eating-family-australia-complete-guide-2026.html`
 - `/blog/australia-summer-2026-trends-travel-shopping-wellness-guide.html`
-- `/blog/australian-vitality-blueprint-2026-natural-superfoods-burnout-hormones-glow.html`
 - `/blog/best-superfoods-australia-comparison-health-conscious-adults.html`
 - `/blog/calcium-supplements-complete-guide-australia-2026.html`
 - `/blog/lower-cholesterol-naturally-moringa-heart-health.html`
