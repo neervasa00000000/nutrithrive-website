@@ -75,9 +75,12 @@
 /pages/homepage / 301
 
 # Clean URL rewrites - serve HTML files without changing browser URL
-/about /about.html 200
-/contact /contact.html 200
-/faq /faq.html 200
+/about /pages/about/about.html 200
+/about.html /pages/about/about.html 200
+/contact /pages/contact/contact.html 200
+/contact.html /pages/contact/contact.html 200
+/faq /pages/faq/faq.html 200
+/faq.html /pages/faq/faq.html 200
 /cart /pages/shop/cart.html 200
 /cart.html /pages/shop/cart.html 200
 
