@@ -104,7 +104,6 @@
 - `/blog/how-to-add-moringa-to-diet.html`
 - `/blog/moringa-benefits-australia-2026.html`
 - `/blog/moringa-benefits-protein-powder-australia-2026.html`
-- `/blog/moringa-powder-australian-lab-guide-2024.html`
 - `/blog/moringa-adaptogen-stress-relief-cortisol-balance.html`
 - `/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html`
 - `/blog/moringa-eyesight-better-than-carrots.html`

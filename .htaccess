@@ -53,8 +53,6 @@ DirectoryIndex index.html index.htm
     RewriteRule ^blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html [R=301,L]
     RewriteRule ^blog/moringa-benefits\.html$ /blog/moringa-benefits-australia-2025.html [R=301,L]
     
-    # Fix broken/looping "lab guide" URL by redirecting to the canonical long-form guide
-    RewriteRule ^blog/moringa-powder-australian-lab-guide-2024\.html$ /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html [R=301,L]
     
     # Common wrong paths
     RewriteRule ^blog/blog\.html$ /blog/ [R=301,L]
@@ -185,7 +183,6 @@ RedirectMatch 301 ^/blog/everything-you-need-know-moringa-2025-faq\.html$ /blog/
 RedirectMatch 301 ^/blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/sneak-greens-into-kids-diet-moringa-hack.html
 RedirectMatch 301 ^/blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html
 RedirectMatch 301 ^/blog/moringa-benefits\.html$ /blog/moringa-benefits-australia-2025.html
-RedirectMatch 301 ^/blog/moringa-powder-australian-lab-guide-2024\.html$ /blog/moringa-powder-ultimate-superfood-guide-australian-health-2025.html
 RedirectMatch 301 ^/blog/blog\.html$ /blog/
 RedirectMatch 301 ^/products/?$ /products/
 RedirectMatch 301 ^/moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.html
