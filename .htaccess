@@ -27,15 +27,55 @@ DirectoryIndex index.html index.htm
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
     
-    # CRITICAL: Redirect /pages/blog/ and /pages/products/ FIRST (before other rules)
+    # Internal rewrites for /shared/ paths to new organized structure (no redirects)
+    # CSS files: /shared/css/ -> /styles/global/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/css/(.+)$ /styles/global/$1 [L]
+    # JS files: /shared/js/ -> /scripts/global/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/js/(.+)$ /scripts/global/$1 [L]
+    # Images: /shared/images/ -> /assets/images/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/images/(.+)$ /assets/images/$1 [L]
+    # Icons: /shared/icon/ -> /assets/icons/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^shared/icon/(.+)$ /assets/icons/$1 [L]
+    
+    # CRITICAL: Internal rewrites for /pages/blog/ and /pages/products/ (no redirects)
     # These must come early to catch all /pages/blog/ and /pages/products/ URLs
-    # Specific product page redirects - exact matches with case-insensitive matching
-    RewriteRule ^pages/products/product-detail\.html$ /products/product-detail.html [R=301,L,NC]
-    RewriteRule ^pages/products/product-curry-leaves\.html$ /products/product-curry-leaves.html [R=301,L,NC]
-    RewriteRule ^pages/products/product-black-tea\.html$ /products/product-black-tea.html [R=301,L,NC]
-    RewriteRule ^pages/products/product-combo\.html$ /products/product-combo.html [R=301,L,NC]
-    # Generic /pages/products/ redirects (catch all other product pages)
-    RewriteRule ^pages/products/(.+)$ /products/$1 [R=301,L,NC]
+    # Specific product page internal rewrites - exact matches with case-insensitive matching
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^pages/products/product-detail\.html$ /products/moringa-powder/ [L,NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^pages/products/product-curry-leaves\.html$ /products/curry-leaves/ [L,NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^pages/products/product-black-tea\.html$ /products/black-tea/ [L,NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^pages/products/product-combo\.html$ /products/combo-pack/ [L,NC]
+    # Product page internal rewrites (old URLs to new folder structure)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^products/product-detail\.html$ /products/moringa-powder/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^products/product-curry-leaves\.html$ /products/curry-leaves/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^products/product-black-tea\.html$ /products/black-tea/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^products/product-moringa-soap\.html$ /products/moringa-soap/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^products/product-combo\.html$ /products/combo-pack/ [L]
     # Blog redirects
     RewriteRule ^pages/blog/(.+\.html)$ /blog/$1 [R=301,L]
     RewriteRule ^pages/blog/(.+)$ /blog/$1.html [R=301,L]
@@ -75,23 +115,22 @@ DirectoryIndex index.html index.htm
     # Products: Serve product pages without .html extension directly (200 status)
     # This must come BEFORE the redirect rules to serve files directly
     # Internal rewrite (no redirect) - returns 200 status
+    # Product clean URLs - Internal rewrites to new folder structure
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} ^/products/product-detail/?$
-    RewriteCond %{DOCUMENT_ROOT}/products/product-detail.html -f
-    RewriteRule ^products/product-detail/?$ /products/product-detail.html [L]
-    
+    RewriteRule ^products/product-detail/?$ /products/moringa-powder/ [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} ^/products/product-curry-leaves/?$
-    RewriteCond %{DOCUMENT_ROOT}/products/product-curry-leaves.html -f
-    RewriteRule ^products/product-curry-leaves/?$ /products/product-curry-leaves.html [L]
-    
+    RewriteRule ^products/product-curry-leaves/?$ /products/curry-leaves/ [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} ^/products/product-black-tea/?$
-    RewriteCond %{DOCUMENT_ROOT}/products/product-black-tea.html -f
-    RewriteRule ^products/product-black-tea/?$ /products/product-black-tea.html [L]
+    RewriteRule ^products/product-black-tea/?$ /products/black-tea/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^products/product-combo/?$ /products/combo-pack/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^products/product-moringa-soap/?$ /products/moringa-soap/ [L]
     
     # Privacy Policy: Serve clean URL internally (no redirect) - Internal rewrite to new location
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -125,25 +164,43 @@ DirectoryIndex index.html index.htm
     
     # Products redirects - redirect all /pages/products/ to /products/ (already handled above, but keeping for fallback)
     
-    # Clean URL redirects for main pages (without trailing slash)
-    RewriteRule ^faq/?$ /pages/faq/faq.html [R=301,L]
-    RewriteRule ^contact/?$ /pages/contact/contact.html [R=301,L]
-    RewriteRule ^about/?$ /pages/about/about.html [R=301,L]
+    # Clean URL internal rewrites for main pages (without trailing slash) - No redirects
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^faq/?$ /pages/faq/faq.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^contact/?$ /pages/contact/contact.html [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^about/?$ /pages/about/about.html [L]
     
     # Homepage redirect
     RewriteRule ^pages/homepage/(.*)$ /$1 [R=301,L]
     RewriteRule ^pages/homepage/?$ / [R=301,L]
     
-    # Fix root-level URLs that Google is trying to access (404 errors)
-    RewriteRule ^product-detail\.html$ /products/product-detail.html [R=301,L]
-    RewriteRule ^product-black-tea\.html$ /products/product-black-tea.html [R=301,L]
-    RewriteRule ^product-curry-leaves\.html$ /products/product-curry-leaves.html [R=301,L]
+    # Fix root-level URLs that Google is trying to access (404 errors) - Internal rewrites
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^product-detail\.html$ /products/moringa-powder/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^product-black-tea\.html$ /products/black-tea/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^product-curry-leaves\.html$ /products/curry-leaves/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^product-combo\.html$ /products/combo-pack/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^product-moringa-soap\.html$ /products/moringa-soap/ [L]
     # Removed - now handled by internal rewrite above
     RewriteRule ^blog\.html$ /blog/ [R=301,L]
     # Removed - now handled by internal rewrite above
     RewriteRule ^how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^how-to-use-moringa/?$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
-    RewriteRule ^contact\.html$ /pages/contact/contact.html [R=301,L]
+    # Removed - now handled by internal rewrite above
     RewriteRule ^moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^products\.html$ /products/ [R=301,L]
     
@@ -228,12 +285,12 @@ RedirectMatch 301 ^/pages/homepage/(.*)$ /$1
 RedirectMatch 301 ^/product-detail\.html$ /products/product-detail.html
 RedirectMatch 301 ^/product-black-tea\.html$ /products/product-black-tea.html
 RedirectMatch 301 ^/product-curry-leaves\.html$ /products/product-curry-leaves.html
-RedirectMatch 301 ^/about\.html$ /pages/about/about.html
+# Removed - now handled by internal rewrite above
 RedirectMatch 301 ^/blog\.html$ /blog/
-RedirectMatch 301 ^/thank-you\.html$ /pages/contact/thank-you.html
+# Removed - now handled by internal rewrite above
 RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html
 RedirectMatch 301 ^/how-to-use-moringa/?$ /pages/usage-guide/how-to-use-moringa.html
-RedirectMatch 301 ^/contact\.html$ /pages/contact/contact.html
+# Removed - now handled by internal rewrite above
 RedirectMatch 301 ^/moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html
 RedirectMatch 301 ^/products\.html$ /products/
 

@@ -91,7 +91,12 @@
 /product-detail.html /products/product-detail.html 301
 /product-black-tea.html /products/product-black-tea.html 301
 /product-curry-leaves.html /products/product-curry-leaves.html 301
-# /about.html /pages/about/about.html 301 - REMOVED: not needed
+# Product URLs - Internal rewrites handled by .htaccess
+# /products/product-detail.html /products/moringa-powder/ 301 - REMOVED: using internal rewrite
+# /products/product-curry-leaves.html /products/curry-leaves/ 301 - REMOVED: using internal rewrite
+# /products/product-black-tea.html /products/black-tea/ 301 - REMOVED: using internal rewrite
+# /products/product-combo.html /products/combo-pack/ 301 - REMOVED: using internal rewrite
+# /products/product-moringa-soap.html /products/moringa-soap/ 301 - REMOVED: using internal rewrite
 /blog.html /blog/ 301
 /thank-you.html /pages/contact/thank-you.html 301
 /how-to-use-moringa.html /pages/usage-guide/how-to-use-moringa.html 301

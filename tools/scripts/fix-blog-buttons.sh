@@ -11,7 +11,7 @@ add_cart_js() {
     if ! grep -q "cart.js" "$file"; then
         # Find </body> tag and add cart.js before it
         if grep -q "</body>" "$file"; then
-            sed -i.bak 's|</body>|<script src="../shared/js/cart.js"></script>\n</body>|' "$file"
+            sed -i.bak 's|</body>|<script src="../../scripts/global/cart.js"></script>\n</body>|' "$file"
             rm -f "${file}.bak"
             echo "Added cart.js to $file"
         fi
