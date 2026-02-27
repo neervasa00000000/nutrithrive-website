@@ -268,7 +268,8 @@ window.addProductToCart = function(id, name, price, image) {
     }
 };
 
-// Function to add product to cart and redirect to cart page (which collects buyer info via PayPal/Apple Pay)
+// Function to add product to cart and redirect to the modern cart page
+// (which collects buyer info via PayPal / Apple Pay)
 // Example usage in HTML:
 //   onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'image-url')"
 window.addProductToCartAndRedirect = function(id, name, price, image) {
@@ -285,8 +286,8 @@ window.addProductToCartAndRedirect = function(id, name, price, image) {
             image: image,
             quantity: 1
         });
-        // Redirect to cart page which has proper PayPal/Apple Pay with buyer info collection
-        window.location.href = '/cart.html';
+        // Redirect to new cart page that integrates PayPal/Apple Pay and surfaces buyer details
+        window.location.href = '/pages/shop/cart.html';
     } catch (error) {
         console.error('Error adding to cart:', error);
         // Fallback: redirect to product page
