@@ -299,9 +299,15 @@
                         <!-- Add to Cart Button -->
                         <button onclick="addSoapToCart()" class="add-to-cart-btn">Add to Cart</button>
                         
-                        <!-- PayPal Button -->
+                        <!-- Secure Checkout Button (routes via cart with full address collection) -->
                         <div class="paypal-section">
-                            <div id="paypal-container-moringa-soap"></div>
+                            <button onclick="buySoapNow()" class="add-to-cart-btn" style="margin-top: 0.75rem;">
+                                Buy Now – Go to Secure Checkout
+                            </button>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #4b5563; line-height: 1.5;">
+                                On the next step, our secure cart will redirect you to PayPal or Apple&nbsp;Pay where
+                                your <strong>name, email and full shipping address</strong> are confirmed before payment.
+                            </p>
                         </div>
                         
                         <!-- Trust Badges -->
@@ -510,44 +516,10 @@
             </div>
         </div>
     </footer>
-
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture"></script>
+    
     <script src="../../scripts/global/cart.js"></script>
     <script src="../../scripts/global/cart-header.js"></script>
     <script src="../../scripts/global/script.js" defer></script>
-    <script>
-      // Suppress PayPal SDK console errors
-      const originalError = console.error;
-      console.error = function(...args) {
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('ncps_standalone_paylater_ineligible')) {
-          return;
-        }
-        originalError.apply(console, args);
-      };
-
-      // Wait for PayPal SDK to load before rendering
-      function initPayPal() {
-        if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
-          try {
-            paypal.HostedButtons({
-              hostedButtonId: "MORINGA_SOAP_BUTTON_ID",
-            }).render("#paypal-container-moringa-soap").catch(function(err) {
-              console.warn('PayPal button rendering issue:', err);
-            });
-          } catch (err) {
-            console.warn('PayPal initialization error:', err);
-          }
-        } else {
-          setTimeout(initPayPal, 100);
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPayPal);
-      } else {
-        initPayPal();
-      }
-    </script>
     <script>
         // Add to cart function for Moringa Soap
         function addSoapToCart() {
@@ -567,7 +539,13 @@
                 console.error('Cart is not initialized');
             }
         }
-
+        
+        // Add item to cart and send customer to the main checkout
+        function buySoapNow() {
+            addSoapToCart();
+            window.location.href = "/pages/shop/cart.html";
+        }
+        
     </script>
     <script>
       (function() {

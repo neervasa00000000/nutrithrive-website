@@ -194,9 +194,15 @@
                         <!-- Add to Cart Button -->
                         <button onclick="addCurryLeavesToCart()" class="add-to-cart-btn">Add to Cart</button>
                         
-                        <!-- PayPal Button -->
+                        <!-- Secure Checkout Button (routes via cart with full address collection) -->
                         <div class="paypal-section">
-                            <div id="paypal-container-NJKU46NBZ55JN"></div>
+                            <button onclick="buyCurryLeavesNow()" class="add-to-cart-btn" style="margin-top: 0.75rem;">
+                                Buy Now – Go to Secure Checkout
+                            </button>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #4b5563; line-height: 1.5;">
+                                On the next step, our secure cart will redirect you to PayPal or Apple&nbsp;Pay where
+                                your <strong>name, email and full shipping address</strong> are confirmed before payment.
+                            </p>
                         </div>
                         
                         <!-- Trust Badges -->
@@ -399,7 +405,6 @@
         </div>
     </footer>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk&components=hosted-buttons&disable-funding=venmo,paylater,applepay,card,credit&currency=AUD&intent=capture"></script>
     <script src="../../scripts/global/cart.js"></script>
     <script src="../../scripts/global/cart-header.js"></script>
     <script src="../../scripts/global/script.js"></script>
@@ -422,26 +427,10 @@
             }
         }
         
-        function initPayPal() {
-            if (typeof paypal !== 'undefined' && paypal.HostedButtons) {
-                try {
-                    paypal.HostedButtons({
-                        hostedButtonId: "NJKU46NBZ55JN",
-                    }).render("#paypal-container-NJKU46NBZ55JN").catch(function(err) {
-                        console.warn('PayPal button rendering issue:', err);
-                    });
-                } catch (err) {
-                    console.warn('PayPal initialization error:', err);
-                }
-            } else {
-                setTimeout(initPayPal, 100);
-            }
-        }
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initPayPal);
-        } else {
-            initPayPal();
+        // Add item to cart and send customer to the main checkout
+        function buyCurryLeavesNow() {
+            addCurryLeavesToCart();
+            window.location.href = "/pages/shop/cart.html";
         }
     </script>
     <script>

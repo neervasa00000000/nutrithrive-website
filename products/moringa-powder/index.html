@@ -209,14 +209,15 @@
                         <!-- Add to Cart Button -->
                         <button onclick="addMoringaToCart()" class="add-to-cart-btn">Add to Cart</button>
                         
-                        <!-- PayPal Button -->
+                        <!-- Secure Checkout Button (routes via cart with full address collection) -->
                         <div class="paypal-section">
-                            <style>.pp-ERYQAP7ZAHDDQ{text-align:center;border:1px solid #000;border-radius:0.25rem;min-width:11.625rem;padding:0 1.5rem;height:2.625rem;font-weight:bold;background-color:#ffffff;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;max-width:300px;box-sizing:border-box;}</style>
-                            <form action="https://www.paypal.com/ncp/payment/ERYQAP7ZAHDDQ" method="post" target="_blank" class="paypal-form">
-                                <input class="pp-ERYQAP7ZAHDDQ" type="submit" value="Pay Now" />
-                                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" style="max-width:100%;height:auto;width:100%;max-width:280px;" />
-                                <section class="paypal-powered"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;max-width:100%;" /></section>
-                            </form>
+                            <button onclick="buyMoringaNow()" class="add-to-cart-btn" style="margin-top: 0.75rem;">
+                                Buy Now – Go to Secure Checkout
+                            </button>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #4b5563; line-height: 1.5;">
+                                On the next step, our secure cart will redirect you to PayPal or Apple&nbsp;Pay where
+                                your <strong>name, email and full shipping address</strong> are confirmed before payment.
+                            </p>
                         </div>
                         
                         <!-- Trust Badges -->
@@ -560,6 +561,12 @@
                     quantity: quantity
                 });
             }
+        }
+        
+        // Add selected variation to cart and send customer to the main checkout
+        function buyMoringaNow() {
+            addMoringaToCart();
+            window.location.href = "/pages/shop/cart.html";
         }
         
         if (document.readyState === 'loading') {
