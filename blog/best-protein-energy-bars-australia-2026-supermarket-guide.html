@@ -92,7 +92,7 @@
     }
     </script>
 
-    <!-- BlogPosting Schema -->
+    <!-- BlogPosting Schema (Article Rich Results + E-E-A-T) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -104,10 +104,14 @@
       ],
       "datePublished": "2026-02-27",
       "dateModified": "2026-03-01",
+      "articleSection": "Fitness & Nutrition",
+      "keywords": "protein bars Australia, energy bars Australia, best protein bar 2026, protein bar supermarket, low FODMAP protein bar, keto protein bar, sugar alcohol bars",
+      "wordCount": 3500,
       "author": {
         "@type": "Person",
         "name": "NutriThrive Research Team",
         "jobTitle": "Health & Nutrition Research",
+        "url": "https://nutrithrive.com.au/about",
         "worksFor": {
           "@type": "Organization",
           "name": "NutriThrive",
@@ -121,14 +125,33 @@
       "publisher": {
         "@type": "Organization",
         "name": "NutriThrive",
+        "url": "https://nutrithrive.com.au",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"
-        }
+          "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+          "width": 250,
+          "height": 60
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+61-438-201-419",
+          "contactType": "Customer Service",
+          "email": "nutrithrive0@gmail.com",
+          "availableLanguage": "English",
+          "areaServed": "AU"
+        },
+        "sameAs": [
+          "https://www.instagram.com/nutrithrive",
+          "https://www.facebook.com/nutrithrive"
+        ]
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".blog-intro", "#overview", "#protein-bar-faq"]
       }
     }
     </script>
@@ -349,6 +372,40 @@
     }
     </script>
 
+    <!-- Organization Schema (E-E-A-T + ContactPoint for rich results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+        "width": 250,
+        "height": 60
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+61-438-201-419",
+        "contactType": "Customer Service",
+        "email": "nutrithrive0@gmail.com",
+        "availableLanguage": "English",
+        "areaServed": "AU",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "23:00"
+        }
+      },
+      "sameAs": [
+        "https://www.instagram.com/nutrithrive",
+        "https://www.facebook.com/nutrithrive"
+      ]
+    }
+    </script>
+
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -386,6 +443,30 @@
         </button>
     </div>
 </header>
+
+<nav aria-label="Breadcrumb" class="breadcrumb-nav" style="background: #f8f9fa; padding: 0.75rem 1.5rem; border-bottom: 1px solid #e0e0e0; font-size: 0.9375rem;">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; max-width: 1200px; margin-left: auto; margin-right: auto;">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="https://nutrithrive.com.au"><span itemprop="name">Home</span></a>
+            <meta itemprop="position" content="1">
+        </li>
+        <span style="color: #999;">›</span>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="https://nutrithrive.com.au/blog/"><span itemprop="name">Blog</span></a>
+            <meta itemprop="position" content="2">
+        </li>
+        <span style="color: #999;">›</span>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="https://nutrithrive.com.au/blog/#fitness-&-nutrition"><span itemprop="name">Fitness &amp; Nutrition</span></a>
+            <meta itemprop="position" content="3">
+        </li>
+        <span style="color: #999;">›</span>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html"><span itemprop="name" style="color: #333; font-weight: 500;">Best Protein &amp; Energy Bars Australia 2026</span></a>
+            <meta itemprop="position" content="4">
+        </li>
+    </ol>
+</nav>
 
 <div class="table-of-contents" style="background: #f0f8f3; padding: 2rem; border-radius: 12px; margin: 2rem auto; border-left: 4px solid #175c36; max-width: 900px;">
     <h3 style="color: #175c36; margin-top: 0; font-size: 1.5rem; font-weight: 700;">📑 Table of Contents</h3>
@@ -690,7 +771,8 @@
       <li><a href="/blog/natural-energy-boosters-australia-superfoods-2026.html">Natural Energy Boosters Australia 2026</a> – for days when you need a lift beyond just caffeine.</li>
     </ul>
 
-    <h2 id="sources-references">11. Sources &amp; References</h2>
+    <h2 id="sources-references">11. Sources, References &amp; Expert Review (E-E-A-T)</h2>
+    <p><strong>Written by:</strong> NutriThrive Research Team · <strong>Last updated:</strong> March 2026 · <strong>Review:</strong> Content is checked for accuracy and updated to reflect current Australian product labels and nutrition research. This guide is for general information only and is not medical or dietary advice; always read product labels and consult a health professional when needed.</p>
     <p>Selected sources that informed this guide:</p>
     <ul>
       <li>Australian Bureau of Statistics – national nutrition and health surveys (most recent releases covering dietary patterns and snack consumption).</li>
