@@ -238,7 +238,7 @@
 
               <p>Consumers are tired of paying for branding, consuming industrial additives, and guessing what’s actually inside. Instead, they want transparent sourcing, real nutrition, ethical pricing, and no chemicals or fillers.</p>
             </div>
-            <aside class="wellness-shift-product" aria-label="Nutri Thrive Moringa quick checkout">
+            <aside class="wellness-shift-product" aria-label="Nutri Thrive Moringa highlight">
               <div class="wellness-product-card">
                 <img src="/assets/images/homepage/product-showcase/Moringa.webp"
                      alt="Nutri Thrive Pure Moringa Powder 100g pouch"
@@ -250,10 +250,9 @@
                   <h3 class="wellness-product-title">Nutri Thrive Pure Moringa Powder</h3>
                   <p class="wellness-product-price $10.50 • 100g pack<br><span style="font-size: 0.9rem; color: var(--muted);">+ $8.95 tracked delivery (AU)</span></p>
                 </div>
-                <div id="blog-applepay-wrapper" class="blog-applepay-wrapper" style="display: none; text-align: center;">
-                  <p class="blog-applepay-label">Pay quickly with Apple&nbsp;Pay</p>
-                  <div id="blog-applepay-container" class="blog-applepay-container" style="display: inline-block;"></div>
-                </div>
+                <a href="/products/" class="btn btn-large" style="display: inline-block; margin-top: 0.75rem;">
+                  Shop with PayPal or card →
+                </a>
               </div>
             </aside>
           </div>
@@ -569,158 +568,6 @@
     </div>
   </footer>
 
-  <!-- Apple Pay via PayPal for blog quick checkout -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=applepay"></script>
-  <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-  <script>
-    (function () {
-      function setupBlogApplePay() {
-        var wrapper = document.getElementById('blog-applepay-wrapper');
-        var container = document.getElementById('blog-applepay-container');
-        if (!wrapper || !container) return;
-
-        // Hide by default and clear any previous content
-        wrapper.style.display = 'none';
-        container.innerHTML = '';
-
-        if (typeof ApplePaySession === 'undefined' || !ApplePaySession.canMakePayments()) return;
-        if (typeof paypal === 'undefined' || !paypal.Applepay) return;
-
-        var applepay = paypal.Applepay();
-
-        applepay.config()
-          .then(function (config) {
-            if (!config || !config.isEligible) return;
-
-            wrapper.style.display = 'block';
-            container.innerHTML =
-              '<apple-pay-button id="blog-applepay-btn" buttonstyle="black" type="buy" locale="en" style="transform: scale(1.15); -webkit-transform: scale(1.15); transform-origin: center; -webkit-transform-origin: center;"></apple-pay-button>';
-
-            var button = document.getElementById('blog-applepay-btn');
-            if (!button) return;
-
-            button.addEventListener('click', function () {
-              try {
-                var price = 10.50;
-                var subtotal = price;
-                var shippingCost = 8.95; // Flat tracked delivery for 100g pack
-                var total = subtotal + shippingCost;
-
-                var paymentRequest = {
-                  countryCode: config.countryCode,
-                  merchantCapabilities: config.merchantCapabilities,
-                  supportedNetworks: config.supportedNetworks,
-                  currencyCode: "AUD",
-                  requiredShippingContactFields: ["name", "phone", "email", "postalAddress"],
-                  requiredBillingContactFields: ["postalAddress"],
-                  total: {
-                    label: "NutriThrive",
-                    type: "final",
-                    amount: total.toFixed(2)
-                  }
-                };
-
-                var session = new ApplePaySession(4, paymentRequest);
-
-                session.onvalidatemerchant = function (event) {
-                  applepay.validateMerchant({
-                    validationUrl: event.validationURL,
-                    displayName: "NutriThrive"
-                  })
-                    .then(function (result) {
-                      session.completeMerchantValidation(result.merchantSession);
-                    })
-                    .catch(function (err) {
-                      console.error('Apple Pay merchant validation failed (blog)', err);
-                      session.abort();
-                    });
-                };
-
-                session.onpaymentauthorized = function (event) {
-                  fetch("/.netlify/functions/paypal-create-order", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      amount: total.toFixed(2),
-                      subtotal: subtotal.toFixed(2),
-                      shipping: shippingCost.toFixed(2),
-                      items: [
-                        {
-                          id: "moringa-powder",
-                          name: "Moringa Powder 100g",
-                          unitPrice: subtotal.toFixed(2),
-                          quantity: 1
-                        }
-                      ]
-                    })
-                  })
-                    .then(function (res) {
-                      return res.json().then(function (data) {
-                        return { ok: res.ok, data: data };
-                      });
-                    })
-                    .then(function (response) {
-                      if (!response.ok) {
-                        throw new Error(response.data.error || "Failed to create order");
-                      }
-                      var orderId = response.data.orderID || response.data.id;
-                      if (!orderId) {
-                        throw new Error("No order ID returned from server.");
-                      }
-
-                      return applepay.confirmOrder({
-                        orderId: orderId,
-                        token: event.payment.token,
-                        billingContact: event.payment.billingContact
-                      }).then(function () {
-                        session.completePayment(ApplePaySession.STATUS_SUCCESS);
-                        return orderId;
-                      });
-                    })
-                    .then(function (orderId) {
-                      return fetch("/.netlify/functions/paypal-capture-order", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ orderID: orderId })
-                      }).then(function (res) {
-                        return res.json().then(function (data) {
-                          if (!res.ok) {
-                            throw new Error(data.error || "Payment failed");
-                          }
-                          console.log("Blog Apple Pay payment successful:", data);
-                          window.location.href = "/thank-you.html?orderId=" + orderId;
-                        });
-                      });
-                    })
-                    .catch(function (err) {
-                      console.error("Blog Apple Pay payment error:", err);
-                      session.completePayment(ApplePaySession.STATUS_FAILURE);
-                      alert("Apple Pay payment error: " + (err.message || "Unknown error"));
-                    });
-                };
-
-                session.oncancel = function () {
-                  console.log("Blog Apple Pay payment cancelled");
-                };
-
-                session.begin();
-              } catch (err) {
-                console.error("Error starting blog Apple Pay session:", err);
-              }
-            });
-          })
-          .catch(function (err) {
-            console.error("Error fetching Apple Pay config for blog:", err);
-          });
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupBlogApplePay);
-      } else {
-        setupBlogApplePay();
-      }
-    })();
-  </script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
