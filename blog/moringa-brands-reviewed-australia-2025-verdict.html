@@ -184,29 +184,6 @@
       }
     }
     </script>
-    <!-- Review Schema for star ratings in search results -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "NutriThrive Premium Moringa Powder",
-        "brand": { "@type": "Brand", "name": "NutriThrive" }
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "NutriThrive Research Team"
-      },
-      "reviewBody": "NutriThrive is the top pick for moringa in Australia: lab-tested freshness, shade-dried quality, and 50% cheaper than retail at $10.50 per 100g."
-    }
-    </script>
     <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -448,15 +425,6 @@
 
         
         /* Related Articles and Product CTAs Hover Effects */
-        /* TL;DR box - keep green border and background */
-        .tldr-box { border: 3px solid #2d5a3d !important; background: #f6fbf8 !important; }
-        /* Freshness color bar - stack on small screens */
-        @media screen and (max-width: 600px) {
-            .freshness-color-bar { flex-direction: column !important; height: auto !important; }
-            .freshness-color-bar > div { min-height: 44px !important; }
-        }
-        /* Authority sidebar */
-        .authority-sidebar { background: #f8faf9 !important; border: 2px solid #2d5a3d !important; }
         .related-article-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 24px rgba(23, 92, 54, 0.2) !important;
@@ -532,13 +500,10 @@
         <span style="background: #fff3e0; color: #e65100; padding: 0.3rem 0.8rem; border-radius: 999px; font-weight: 700; font-size: 0.9rem;">Australian Review Panel</span>
       </div>
       <h1 style="margin: 0 0 0.75rem 0;">Don't Buy Moringa Until You Read This</h1>
-      <div id="tldr-box" class="tldr-box" style="border: 3px solid #2d5a3d; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1rem 0 1.5rem 0; background: #f6fbf8;">
-        <h2 style="margin: 0 0 0.75rem 0; font-size: 1.1rem; color: #2d5a3d;">TL;DR (Too Long; Didn't Read)</h2>
-        <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.7; color: #1a2e22;">
-          <li><strong>Winner:</strong> NutriThrive Premium Moringa</li>
-          <li><strong>Key Reason:</strong> Lab-tested freshness &amp; 50% cheaper than retail.</li>
-          <li><strong>Price:</strong> $10.50 per 100g.</li>
-        </ul>
+      <div class="tldr-box" style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1rem 0 1.5rem 0;">
+        <p style="margin: 0; line-height: 1.7; color: #1a2e22;"><strong>Winner:</strong> NutriThrive Premium Moringa</p>
+        <p style="margin: 0.5rem 0 0 0; line-height: 1.7; color: #1a2e22;"><strong>Key Reason:</strong> Lab-tested freshness &amp; 50% cheaper than retail.</p>
+        <p style="margin: 0.5rem 0 0 0; line-height: 1.7; color: #1a2e22;"><strong>Price:</strong> $10.50 per 100g.</p>
       </div>
       <p style="color: #555; margin-bottom: 1.5rem;">Published: January 8, 2026 • Updated: January 2026 • Tested by: 2 nutritionists, 1 naturopath, 4 real customers.</p>
       <div id="winner-summary" style="background:#f6fbf8;border:1px solid #dcefe2;border-radius:14px;padding:1.2rem 1.4rem;display:flex;flex-wrap:wrap;gap:16px;margin-bottom:1.5rem;box-shadow:0 18px 45px -30px rgba(45,90,61,0.35);">
@@ -580,11 +545,6 @@
       <nav id="toc" style="background: #f6fbf8; padding: 1.25rem 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #dcefe2;" aria-label="Article contents">
         <h3 style="margin: 0 0 0.75rem 0; font-size: 1.1rem; color: #2d5a3d;">In this article</h3>
         <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.9;">
-          <li><a href="#moringa-vs-superfoods" style="color: #2d5a3d; text-decoration: none;">Moringa vs. Ashwagandha vs. Spirulina</a></li>
-          <li><a href="#bioavailability" style="color: #2d5a3d; text-decoration: none;">Bioavailability Report</a></li>
-          <li><a href="#delivery-timelines" style="color: #2d5a3d; text-decoration: none;">Delivery Timelines</a></li>
-          <li><a href="#nutrient-density" style="color: #2d5a3d; text-decoration: none;">Moringa vs. The World</a></li>
-          <li><a href="#freshness-scale" style="color: #2d5a3d; text-decoration: none;">Freshness Color Scale</a></li>
           <li><a href="#comparison" style="color: #2d5a3d; text-decoration: none;">Brand Comparison</a></li>
           <li><a href="#lab-panel" style="color: #2d5a3d; text-decoration: none;">Lab Results Panel</a></li>
           <li><a href="#faq" style="color: #2d5a3d; text-decoration: none;">FAQs</a></li>
@@ -620,92 +580,6 @@
     <div class="blog-post-content">
       <p><strong>Short answer:</strong> NutriThrive is the only moringa brand we'd confidently put in our own pantry. Below you'll see how it measures up against typical options on taste, lab results, price, and value—using objective criteria you can apply to any brand.</p>
 
-      <h2 id="moringa-vs-superfoods" style="color: #2d5a3d; margin-top: 2.5rem;">Moringa vs. Ashwagandha vs. Spirulina: Which is the Best Superfood?</h2>
-      <p>Australians often compare these three popular superfoods. Here's how they stack up on primary benefit, nutrient density, and price—so you can choose the best fit.</p>
-      <div class="table-wrap" role="region" aria-label="Moringa vs Ashwagandha vs Spirulina comparison" style="overflow-x: auto; margin: 2rem 0;">
-        <table class="comparison-table superfood-comparison-table" style="width: 100%; border-collapse: collapse;">
-          <thead>
-            <tr style="background-color: #2d5a3d; color: white;">
-              <th style="padding: 12px; text-align: left;">Superfood</th>
-              <th style="padding: 12px; text-align: left;">Primary Benefit</th>
-              <th style="padding: 12px; text-align: left;">Nutrient Density</th>
-              <th style="padding: 12px; text-align: left;">Price (approx. per 100g)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background-color: #f0f8f3;">
-              <td data-label="Superfood" style="padding: 12px; border: 1px solid #e0e0e0;"><strong>Moringa</strong></td>
-              <td data-label="Primary Benefit" style="padding: 12px; border: 1px solid #e0e0e0;">Energy, full nutrition, immune support</td>
-              <td data-label="Nutrient Density" style="padding: 12px; border: 1px solid #e0e0e0;">92+ nutrients, complete protein, iron, vitamins</td>
-              <td data-label="Price" style="padding: 12px; border: 1px solid #e0e0e0;"><strong>~$10.50</strong> (NutriThrive)</td>
-            </tr>
-            <tr>
-              <td data-label="Superfood" style="padding: 12px; border: 1px solid #e0e0e0;">Ashwagandha</td>
-              <td data-label="Primary Benefit" style="padding: 12px; border: 1px solid #e0e0e0;">Stress, cortisol, sleep</td>
-              <td data-label="Nutrient Density" style="padding: 12px; border: 1px solid #e0e0e0;">Adaptogens, withanolides</td>
-              <td data-label="Price" style="padding: 12px; border: 1px solid #e0e0e0;">~$15–30</td>
-            </tr>
-            <tr>
-              <td data-label="Superfood" style="padding: 12px; border: 1px solid #e0e0e0;">Spirulina</td>
-              <td data-label="Primary Benefit" style="padding: 12px; border: 1px solid #e0e0e0;">Detox, protein, B vitamins</td>
-              <td data-label="Nutrient Density" style="padding: 12px; border: 1px solid #e0e0e0;">Protein, iron, B12 (often synthetic)</td>
-              <td data-label="Price" style="padding: 12px; border: 1px solid #e0e0e0;">~$12–25</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p><strong>Verdict:</strong> For Australians wanting one all-in-one superfood—energy, nutrients, and value—<a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Moringa</a> wins. Ashwagandha excels for stress; spirulina for protein and detox. Moringa covers the broadest range of benefits at the best price point.</p>
-
-      <h2 id="bioavailability" style="color: #2d5a3d; margin-top: 2.5rem;">The 2026 Bioavailability Report: How to Maximize Absorption</h2>
-      <p>Getting the most from your moringa isn't just about dosage—it's about <strong>how</strong> you take it. Vitamins A, E, and K in moringa are <strong>fat-soluble</strong>, meaning they need dietary fat to be absorbed properly.</p>
-      <div class="expert-tip-box" style="background: #f0fff4; border: 2px solid #22c55e; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;">
-        <h3 style="margin: 0 0 0.5rem 0; color: #166534; font-size: 1.1rem;">Expert tip</h3>
-        <p style="margin: 0; color: #1a2e22; line-height: 1.7;">Take your moringa with a source of healthy fat—such as <strong>avocado</strong>, <strong>coconut oil</strong>, or <strong>full-fat yogurt</strong>—to increase nutrient uptake by up to 40%. Adding a teaspoon to a smoothie with avocado or stirring it into yogurt at breakfast are simple ways to maximise absorption.</p>
-      </div>
-
-      <h2 id="delivery-timelines" style="color: #2d5a3d; margin-top: 2.5rem;">Fast Shipping Across Australia: Delivery Timelines</h2>
-      <p>We ship from our Melbourne warehouse so you get fresh moringa fast. Typical delivery windows by region:</p>
-      <ul class="delivery-timelines-list" style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
-        <li style="padding: 0.75rem 1rem; margin: 0.5rem 0; background: #f6fbf8; border-left: 4px solid #2d5a3d; border-radius: 0 8px 8px 0;"><strong>Melbourne / Victoria:</strong> 1–2 business days</li>
-        <li style="padding: 0.75rem 1rem; margin: 0.5rem 0; background: #f6fbf8; border-left: 4px solid #2d5a3d; border-radius: 0 8px 8px 0;"><strong>Sydney / NSW:</strong> 2–3 business days</li>
-        <li style="padding: 0.75rem 1rem; margin: 0.5rem 0; background: #f6fbf8; border-left: 4px solid #2d5a3d; border-radius: 0 8px 8px 0;"><strong>Brisbane / QLD:</strong> 2–3 business days</li>
-        <li style="padding: 0.75rem 1rem; margin: 0.5rem 0; background: #f6fbf8; border-left: 4px solid #2d5a3d; border-radius: 0 8px 8px 0;"><strong>Perth / WA:</strong> 3–5 business days</li>
-        <li style="padding: 0.75rem 1rem; margin: 0.5rem 0; background: #f6fbf8; border-left: 4px solid #2d5a3d; border-radius: 0 8px 8px 0;"><strong>Adelaide / SA:</strong> 2–3 business days</li>
-      </ul>
-      <p style="font-size: 0.95rem; color: #555;">Free express shipping on orders over $49. Orders placed before 2pm AEST typically ship same day.</p>
-
-      <h2 id="nutrient-density" style="color: #2d5a3d; margin-top: 2.5rem;">Moringa vs. The World: The Nutrient Density Chart</h2>
-      <p>Moringa isn't called the "Miracle Tree" for nothing. Compared to common foods (per gram or typical serving), moringa leaves deliver dramatically more of key nutrients:</p>
-      <div class="table-wrap" role="region" aria-label="Moringa nutrient density comparison" style="overflow-x: auto; margin: 2rem 0;">
-        <table class="comparison-table nutrient-density-table" style="width: 100%; border-collapse: collapse;">
-          <thead>
-            <tr style="background-color: #2d5a3d; color: white;">
-              <th style="padding: 12px; text-align: left;">Nutrient</th>
-              <th style="padding: 12px; text-align: left;">Moringa vs. common food</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td data-label="Nutrient" style="padding: 12px; border: 1px solid #e0e0e0;">Vitamin C</td><td data-label="Comparison" style="padding: 12px; border: 1px solid #e0e0e0;"><strong>7× more</strong> than oranges</td></tr>
-            <tr style="background-color: #f9f9f9;"><td data-label="Nutrient" style="padding: 12px; border: 1px solid #e0e0e0;">Vitamin A</td><td data-label="Comparison" style="padding: 12px; border: 1px solid #e0e0e0;"><strong>10× more</strong> than carrots</td></tr>
-            <tr><td data-label="Nutrient" style="padding: 12px; border: 1px solid #e0e0e0;">Calcium</td><td data-label="Comparison" style="padding: 12px; border: 1px solid #e0e0e0;"><strong>17× more</strong> than milk</td></tr>
-            <tr style="background-color: #f9f9f9;"><td data-label="Nutrient" style="padding: 12px; border: 1px solid #e0e0e0;">Iron</td><td data-label="Comparison" style="padding: 12px; border: 1px solid #e0e0e0;"><strong>25× more</strong> than spinach</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>That's why a small daily dose of quality moringa—like <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive's shade-dried powder</a>—can make a real difference to energy, immunity, and bone health.</p>
-
-      <h2 id="freshness-scale" style="color: #2d5a3d; margin-top: 2.5rem;">The Freshness Color Scale</h2>
-      <p>Colour is a quick visual cue for moringa quality. Use the scale below to judge what you're buying.</p>
-      <div class="freshness-color-bar" style="display: flex; width: 100%; height: 48px; border-radius: 8px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <div style="flex: 1; background: linear-gradient(90deg, #2d5a3d 0%, #4caf50 100%); display: flex; align-items: center; justify-content: center;">
-          <span style="color: white; font-weight: 700; font-size: 0.85rem; text-align: center; padding: 0 8px;">NutriThrive – Shade Dried (Fresh)</span>
-        </div>
-        <div style="flex: 1; background: linear-gradient(90deg, #8d6e63 0%, #5d4037 100%); display: flex; align-items: center; justify-content: center;">
-          <span style="color: white; font-weight: 700; font-size: 0.85rem; text-align: center; padding: 0 8px;">Retail Brands – Sun Dried (Oxidized)</span>
-        </div>
-      </div>
-      <p style="margin-top: 1rem;"><strong>Why it matters:</strong> Brown or dull powder usually means the leaves were sun-dried or stored too long. Heat and light destroy chlorophyll and many vitamins—so the nutrients are effectively "dead." Bright green moringa (shade-dried, like NutriThrive's) indicates preserved chlorophyll and better nutrient retention.</p>
-
       <!-- PayPal Buy Now Button -->
       <div style="text-align: center; padding: 40px 20px; margin: 3rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; border: 2px solid #2d5a3d;">
         <h3 style="color: #2d5a3d; margin: 0 0 1rem 0; font-size: 1.5rem; font-weight: 700;">🏆 Get Award-Winning NutriThrive Moringa</h3>
@@ -718,6 +592,16 @@
 
       <h2 style="color: #2d5a3d; margin-top: 2.5rem;">Why Australia Needs Moringa: The Science of Resilience</h2>
       <p>Australia's unique environmental and lifestyle factors make Moringa oleifera uniquely suited to the local population. Understanding these connections helps explain why this "Miracle Tree" has become essential for many Australians.</p>
+
+      <div class="nutrient-comparison-box" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #22c55e; border-radius: 12px; padding: 1.5rem 1.75rem; margin: 2rem 0;">
+        <h3 style="margin: 0 0 1rem 0; color: #166534; font-size: 1.15rem;">Nutrient Comparison: Moringa vs. Common Foods</h3>
+        <ul style="margin: 0; padding-left: 1.25rem; line-height: 2; color: #1a2e22; font-weight: 500;">
+          <li><strong>Vitamin C:</strong> 7× more than Oranges</li>
+          <li><strong>Vitamin A:</strong> 10× more than Carrots</li>
+          <li><strong>Calcium:</strong> 17× more than Milk</li>
+          <li><strong>Iron:</strong> 25× more than Spinach</li>
+        </ul>
+      </div>
       
       <h3 style="color: #2d5a3d; margin-top: 1.5rem;">Combating the "Aussie Burnout"</h3>
       <p>With a culture that glorifies "hard yakka," fatigue is a national epidemic. Moringa's nutritional profile acts as a natural countermeasure. It contains <strong>25 times the iron of spinach</strong> and <strong>7 times the Vitamin C of oranges</strong>. This combination is critical because Vitamin C exponentially increases iron absorption, directly addressing the lethargy associated with iron deficiency, which is prevalent among Australian women and vegetarians.</p>
@@ -786,23 +670,6 @@
         </div>
         <p style="font-size: 0.85rem; color: #2f4f4f; margin-top: 0.75rem;">Full certificates available on request. Brands that refused to share lab data were scored lower.</p>
       </section>
-
-      <!-- Authority Sidebar (boxed section for mobile / sidebar on desktop) -->
-      <aside id="authority-sidebar" class="authority-sidebar" style="background: #f8faf9; border: 2px solid #2d5a3d; border-radius: 14px; padding: 1.5rem; margin: 2.5rem 0;">
-        <h3 style="margin: 0 0 1rem 0; color: #2d5a3d; font-size: 1.15rem;">Lab Verification &amp; Expert Endorsement</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start;">
-          <div class="nata-lab-placeholder" style="flex: 0 0 140px; min-height: 100px; background: #e8f0ec; border: 2px dashed #2d5a3d; border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative;">
-            <span style="color: #2d5a3d; font-size: 0.8rem; text-align: center; padding: 0.5rem;">NATA Lab Report</span>
-            <span style="position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); background: #2d5a3d; color: white; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Verified Jan 2026</span>
-          </div>
-          <div style="flex: 1; min-width: 200px;">
-            <blockquote class="authority-blockquote" style="margin: 0; padding: 0 0 0 1rem; border-left: 4px solid #2d5a3d; font-style: italic; color: #1a2e22; line-height: 1.65;">
-              &ldquo;As a nutritionist, I recommend NutriThrive because their shade-drying process preserves 40% more Vitamin C and delicate antioxidants compared to mass-produced supermarket capsules.&rdquo;
-              <cite style="display: block; margin-top: 0.75rem; font-style: normal; font-weight: 600; color: #2d5a3d;">— Clinical Nutritionist Panel, 2026</cite>
-            </blockquote>
-          </div>
-        </div>
-      </aside>
 
       <!-- The Freshness Test Visual Comparison -->
       <section style="margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 16px; border: 2px solid #ff9800;">
@@ -1008,7 +875,7 @@
       
       <div class="brand-review">
         <p><strong>Rating: ⭐⭐⭐⭐⭐ (5/5)</strong></p>
-        <p><strong>Price:</strong> $10.50 <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa</a></p>
+        <p><strong>Price:</strong> $10.50 NutriThrive Moringa</a></p>
         
         <h3>What We Tested:</h3>
         <ul style="line-height: 1.8;">
@@ -1129,6 +996,59 @@
       
       <h3 style="color: #2d5a3d; margin-top: 1.5rem;">Sustainability as a Non-Negotiable</h3>
       <p>By 2026, plastic packaging will be a significant detractor for the urban demographic. The future belongs to brands that adopt compostable pouches or reusable glass jars. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive</a> is investigating transition pathways to sustainable packaging to future-proof the brand against this inevitable consumer shift.</p>
+
+      <h2 style="color: #2d5a3d; margin-top: 2.5rem;">Moringa vs. Ashwagandha vs. Spirulina: Which is the Best Superfood?</h2>
+      <p>Australians often compare these three popular superfoods. Here's how they stack up so you can choose the best fit for your goals.</p>
+      <div class="table-wrap" role="region" aria-label="Superfood comparison" style="overflow-x: auto; margin: 1.5rem 0;">
+        <table class="comparison-table" style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background-color: #2d5a3d; color: white;">
+              <th style="padding: 12px; text-align: left;">Superfood</th>
+              <th style="padding: 12px; text-align: left;">Primary Benefit</th>
+              <th style="padding: 12px; text-align: left;">Nutrient Density</th>
+              <th style="padding: 12px; text-align: left;">Best Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background-color: #f0f8f3;">
+              <td data-label="Superfood" style="padding: 12px; border: 1px solid #e0e0e0;"><strong>Moringa</strong></td>
+              <td data-label="Primary Benefit" style="padding: 12px; border: 1px solid #e0e0e0;">Energy, full nutrition, immune support</td>
+              <td data-label="Nutrient Density" style="padding: 12px; border: 1px solid #e0e0e0;">92+ nutrients, complete protein, iron, vitamins A, C, E, K</td>
+              <td data-label="Best Use Case" style="padding: 12px; border: 1px solid #e0e0e0;">Daily energy, vitamins, all-round wellness</td>
+            </tr>
+            <tr>
+              <td data-label="Superfood" style="padding: 12px; border: 1px solid #e0e0e0;">Ashwagandha</td>
+              <td data-label="Primary Benefit" style="padding: 12px; border: 1px solid #e0e0e0;">Stress relief, cortisol, sleep</td>
+              <td data-label="Nutrient Density" style="padding: 12px; border: 1px solid #e0e0e0;">Adaptogens, withanolides</td>
+              <td data-label="Best Use Case" style="padding: 12px; border: 1px solid #e0e0e0;">Stress management, relaxation</td>
+            </tr>
+            <tr>
+              <td data-label="Superfood" style="padding: 12px; border: 1px solid #e0e0e0;">Spirulina</td>
+              <td data-label="Primary Benefit" style="padding: 12px; border: 1px solid #e0e0e0;">Protein, detox, B vitamins</td>
+              <td data-label="Nutrient Density" style="padding: 12px; border: 1px solid #e0e0e0;">Protein, iron, B12</td>
+              <td data-label="Best Use Case" style="padding: 12px; border: 1px solid #e0e0e0;">Plant protein, detox support</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Verdict:</strong> Moringa is the best all-rounder for daily energy and vitamins. Ashwagandha excels for stress; spirulina for protein and detox. For a single superfood that covers the broadest range, <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa</a> wins.</p>
+
+      <h2 style="color: #2d5a3d; margin-top: 2.5rem;">The 2026 Bioavailability Report: How to Maximize Absorption</h2>
+      <p>Getting the most from your moringa isn't just about dosage—it's about <strong>how</strong> you take it. Vitamins A, E, and K in moringa are <strong>fat-soluble</strong>, meaning they need dietary fat to be absorbed properly.</p>
+      <div style="background: #ecfdf5; border: 2px solid #10b981; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;">
+        <h3 style="margin: 0 0 0.5rem 0; color: #065f46; font-size: 1.1rem;">Expert tip</h3>
+        <p style="margin: 0; color: #1a2e22; line-height: 1.7;">Take your moringa powder with healthy fats—such as <strong>avocado</strong> or <strong>coconut oil</strong>—to increase absorption by up to 40%. Add a teaspoon to a smoothie with avocado, or stir into full-fat yogurt at breakfast.</p>
+      </div>
+
+      <h2 style="color: #2d5a3d; margin-top: 2.5rem;">Fast Shipping Across Australia: Delivery Timelines</h2>
+      <p>We ship from our Melbourne warehouse. Typical delivery windows:</p>
+      <ul style="line-height: 1.9; margin: 1rem 0;">
+        <li><strong>Melbourne / VIC:</strong> 1–2 Business Days</li>
+        <li><strong>Sydney / NSW:</strong> 2–3 Business Days</li>
+        <li><strong>Brisbane / QLD:</strong> 2–3 Business Days</li>
+        <li><strong>Perth / WA:</strong> 3–5 Business Days</li>
+      </ul>
+      <p style="font-size: 0.95rem; color: #555;">Free express shipping on orders over $49.</p>
 
       <h2 style="color: #2d5a3d; margin-top: 2.5rem;">🏆 Final Verdict: Which Brand Wins?</h2>
       
@@ -1482,6 +1402,41 @@
         }
         
         startInitialization();
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "NutriThrive Premium Moringa Powder",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "reviewCount": "1"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "Product",
+        "name": "NutriThrive Premium Moringa Powder"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "NutriThrive Research Team"
+      },
+      "reviewBody": "Pros: Lab-tested, Shade-dried, Best Price. Cons: Only available online."
+    }
     </script>
 </body>
 </html>
