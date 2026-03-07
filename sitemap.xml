@@ -65,6 +65,36 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/moringa-powder/</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/curry-leaves/</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/black-tea/</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/combo-pack/</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/products/moringa-soap/</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   
   <!-- ============================================ -->
   <!-- CART & CHECKOUT -->
@@ -120,6 +150,12 @@
     <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/sitemap.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/pages/legal/privacy-policy.html</loc>
@@ -227,13 +263,13 @@
   <!-- ============================================ -->
   <url>
     <loc>https://nutrithrive.com.au/blog/</loc>
-    <lastmod>2026-02-09</lastmod>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/index.html</loc>
-    <lastmod>2026-02-09</lastmod>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -334,6 +370,12 @@
   <url>
     <loc>https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html</loc>
     <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -572,6 +614,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/moringa-for-weight-loss-australia-2026.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/moringa-powder-athletes-performance-benefits-australia-2026.html</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -654,6 +702,12 @@
     <lastmod>2026-02-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/natural-pre-workout-moringa-australia-2026.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html</loc>
