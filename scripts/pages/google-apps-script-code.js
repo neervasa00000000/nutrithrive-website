@@ -11,7 +11,7 @@
  * 7. Set "Execute as" to "Me"
  * 8. Set "Who has access" to "Anyone"
  * 9. Click Deploy
- * 10. Copy the Web App URL and paste it into shared/js/newsletter.js
+ * 10. Copy the Web App URL and paste it into scripts/global/newsletter.js
  */
 
 function doPost(e) {

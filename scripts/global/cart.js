@@ -275,7 +275,7 @@ window.addProductToCart = function(id, name, price, image) {
 window.addProductToCartAndRedirect = function(id, name, price, image) {
     if (typeof window.Cart === 'undefined' || !window.Cart.add) {
         console.warn('Cart not loaded yet, redirecting to product page');
-        window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+        window.location.href = 'https://nutrithrive.com.au/products/moringa-powder/';
         return;
     }
     try {
@@ -291,6 +291,6 @@ window.addProductToCartAndRedirect = function(id, name, price, image) {
     } catch (error) {
         console.error('Error adding to cart:', error);
         // Fallback: redirect to product page
-        window.location.href = 'https://nutrithrive.com.au/products/product-detail.html';
+        window.location.href = 'https://nutrithrive.com.au/products/moringa-powder/';
     }
 };
