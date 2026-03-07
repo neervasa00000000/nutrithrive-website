@@ -289,7 +289,7 @@
             <div id="payment-section" class="payment-section" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0;">
             <h2 style="color: #2d5a3d; margin-bottom: 0.75rem; font-size: 2rem;">Payment</h2>
             <p style="margin: 0 0 1.5rem; font-size: 0.95rem; color: #4b5563; max-width: 560px;">
-                At checkout, PayPal will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet or entered with your card.
+                At checkout, PayPal or Apple&nbsp;Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
                 Please review and confirm these details carefully&mdash;your order will be shipped to the address you approve there.
             </p>
             <div style="margin-bottom: 2rem;">
@@ -301,12 +301,18 @@
                 <!-- Countries will be populated dynamically -->
                 </select>
             </div>
+            <div id="applepay-wrapper" style="margin-bottom: 1.5rem; display: none; text-align: center;">
+                <p style="margin: 0 0 0.75rem; font-weight: 600;">Pay quickly with Apple&nbsp;Pay</p>
+                <div id="applepay-container" style="display: inline-block;"></div>
+            </div>
             <div id="paypal-button-container"></div>
         </div>
     </div>
     
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&intent=capture&components=buttons&enable-funding=applepay"></script>
+    <!-- PayPal SDK with Apple Pay component -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=buttons,applepay"></script>
+    <!-- Apple Pay JS SDK -->
+    <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
     <script src="/scripts/global/cart.js"></script>
     <script src="/scripts/global/cart-header.js"></script>
     <script src="/scripts/global/shipping-rates.js"></script>
@@ -403,6 +409,8 @@
             
             // Calculate shipping if country is selected
             updateCartShipping();
+            // Try to set up Apple Pay (only shows on eligible devices)
+            setupApplePay();
             
             // Show payment section
             document.getElementById('payment-section').style.display = 'block';
@@ -490,11 +498,17 @@
             // Reinitialize PayPal with new total if country is selected
             if (countryCode && typeof paypal !== 'undefined') {
                 setTimeout(initPayPal, 200);
+                // Also refresh Apple Pay button for updated totals
+                setTimeout(setupApplePay, 250);
             } else if (!countryCode) {
                 // Clear PayPal buttons if no country selected
                 const container = document.getElementById('paypal-button-container');
                 if (container) {
                     container.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country to proceed.</p>';
+                }
+                const appleWrapper = document.getElementById('applepay-wrapper');
+                if (appleWrapper) {
+                    appleWrapper.style.display = 'none';
                 }
             }
         }
@@ -688,6 +702,175 @@
             }
         }
         
+        /**
+         * Set up Apple Pay button using PayPal Apple Pay component.
+         * Only shows on eligible Apple devices with Apple Pay enabled.
+         */
+        function setupApplePay() {
+            const wrapper = document.getElementById('applepay-wrapper');
+            const container = document.getElementById('applepay-container');
+
+            if (!wrapper || !container) {
+                return;
+            }
+
+            wrapper.style.display = 'none';
+            container.innerHTML = '';
+
+            if (typeof ApplePaySession === 'undefined' || !ApplePaySession.canMakePayments()) {
+                return;
+            }
+
+            if (typeof paypal === 'undefined' || !paypal.Applepay) {
+                return;
+            }
+
+            const cart = window.Cart.get();
+            if (!cart || !cart.items || cart.items.length === 0) {
+                return;
+            }
+
+            const countrySelect = document.getElementById('cart-shipping-country');
+            const countryCode = countrySelect ? countrySelect.value : '';
+            if (!countryCode) {
+                return;
+            }
+
+            const subtotal = parseFloat(cart.total || 0);
+            const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
+            const shippingCost = shipping !== null && shipping !== undefined ? parseFloat(shipping) : 0;
+            const total = parseFloat(subtotal) + parseFloat(shippingCost);
+
+            if (isNaN(total) || total <= 0) {
+                return;
+            }
+
+            const applepay = paypal.Applepay();
+
+            applepay.config()
+                .then(function (applepayConfig) {
+                    if (!applepayConfig || !applepayConfig.isEligible) {
+                        return;
+                    }
+
+                    wrapper.style.display = 'block';
+                    container.innerHTML =
+                        '<apple-pay-button id="nt-applepay-btn" buttonstyle="black" type="buy" locale="en" style="transform: scale(1.25); -webkit-transform: scale(1.25); transform-origin: center; -webkit-transform-origin: center;"></apple-pay-button>';
+
+                    const button = document.getElementById('nt-applepay-btn');
+                    if (!button) {
+                        return;
+                    }
+
+                    button.addEventListener('click', function () {
+                        try {
+                            const paymentRequest = {
+                                countryCode: applepayConfig.countryCode,
+                                merchantCapabilities: applepayConfig.merchantCapabilities,
+                                supportedNetworks: applepayConfig.supportedNetworks,
+                                currencyCode: "AUD",
+                                requiredShippingContactFields: ["name", "phone", "email", "postalAddress"],
+                                requiredBillingContactFields: ["postalAddress"],
+                                total: {
+                                    label: "NutriThrive",
+                                    type: "final",
+                                    amount: total.toFixed(2)
+                                }
+                            };
+
+                            const session = new ApplePaySession(4, paymentRequest);
+
+                            session.onvalidatemerchant = function (event) {
+                                applepay.validateMerchant({
+                                    validationUrl: event.validationURL,
+                                    displayName: "NutriThrive"
+                                })
+                                    .then(function (validateResult) {
+                                        session.completeMerchantValidation(validateResult.merchantSession);
+                                    })
+                                    .catch(function (err) {
+                                        console.error('Apple Pay merchant validation failed', err);
+                                        session.abort();
+                                    });
+                            };
+
+                            session.onpaymentauthorized = function (event) {
+                                fetch("/.netlify/functions/paypal-create-order", {
+                                    method: "POST",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify({
+                                        amount: total.toFixed(2),
+                                        subtotal: subtotal.toFixed(2),
+                                        shipping: shippingCost.toFixed(2),
+                                        items: cart.items.map(function (item) {
+                                            return {
+                                                id: item.id,
+                                                name: item.name,
+                                                unitPrice: parseFloat(item.price).toFixed(2),
+                                                quantity: parseInt(item.quantity || 1, 10)
+                                            };
+                                        })
+                                    })
+                                })
+                                    .then(function (res) {
+                                        return res.json().then(function (data) {
+                                            return { ok: res.ok, data: data };
+                                        });
+                                    })
+                                    .then(function (response) {
+                                        if (!response.ok) {
+                                            throw new Error(response.data.error || "Failed to create order");
+                                        }
+                                        var orderId = response.data.orderID || response.data.id;
+                                        if (!orderId) {
+                                            throw new Error("No order ID returned from server.");
+                                        }
+
+                                        return applepay.confirmOrder({
+                                            orderId: orderId,
+                                            token: event.payment.token,
+                                            billingContact: event.payment.billingContact
+                                        }).then(function () {
+                                            session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                                            return orderId;
+                                        });
+                                    })
+                                    .then(function (orderId) {
+                                        return fetch("/.netlify/functions/paypal-capture-order", {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ orderID: orderId })
+                                        }).then(function (res) {
+                                            return res.json().then(function (data) {
+                                                if (!res.ok) {
+                                                    throw new Error(data.error || "Payment failed");
+                                                }
+                                                window.Cart.clear();
+                                                window.location.href = "/thank-you.html?orderId=" + orderId;
+                                            });
+                                        });
+                                    })
+                                    .catch(function (err) {
+                                        console.error("Apple Pay payment error:", err);
+                                        session.completePayment(ApplePaySession.STATUS_FAILURE);
+                                        alert("Apple Pay payment error: " + (err.message || "Unknown error"));
+                                    });
+                            };
+
+                            session.oncancel = function () {
+                                console.log("Apple Pay payment cancelled by buyer");
+                            };
+
+                            session.begin();
+                        } catch (err) {
+                            console.error("Error starting Apple Pay session:", err);
+                        }
+                    });
+                })
+                .catch(function (err) {
+                    console.error('Error while fetching Apple Pay configuration.', err);
+                });
+        }
         
         function updateQuantity(productId, quantity) {
             window.Cart.updateQuantity(productId, parseInt(quantity));
