@@ -306,7 +306,7 @@
     </div>
     
     <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=buttons"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&intent=capture&components=buttons&enable-funding=applepay"></script>
     <script src="/scripts/global/cart.js"></script>
     <script src="/scripts/global/cart-header.js"></script>
     <script src="/scripts/global/shipping-rates.js"></script>
@@ -625,7 +625,6 @@
             try {
                 paypal.Buttons({
                     createOrder: async () => {
-                        // Create order with full cart details so PayPal shows proper line items
                         const amount = orderTotal.toFixed(2);
                         console.log("Creating PayPal order for amount:", amount);
                         try {
@@ -639,17 +638,13 @@
                                     items: cart.items.map(item => ({
                                         id: item.id,
                                         name: item.name,
-                                        // price stored in cart is already discounted price per unit
                                         unitPrice: parseFloat(item.price).toFixed(2),
                                         quantity: parseInt(item.quantity || 1, 10)
                                     }))
                                 })
                             });
                             const data = await response.json();
-                            if (!response.ok) {
-                                throw new Error(data.error || "Failed to create order");
-                            }
-                            console.log("PayPal order created:", data.orderID || data.id);
+                            if (!response.ok) throw new Error(data.error || "Failed to create order");
                             return data.orderID || data.id;
                         } catch (err) {
                             console.error("Error creating PayPal order:", err);
@@ -658,9 +653,7 @@
                     },
                     onApprove: async (data, actions) => {
                         const orderID = data.orderID || data.id;
-                        console.log("Payment approved, capturing order:", orderID);
                         if (!orderID) {
-                            console.error("No order ID in approval data:", data);
                             alert("Payment error: No order ID received. Please try again.");
                             return;
                         }
@@ -671,11 +664,7 @@
                                 body: JSON.stringify({ orderID: orderID })
                             });
                             const result = await response.json();
-                            if (!response.ok) {
-                                throw new Error(result.error || "Payment failed");
-                            }
-                            console.log("Payment successful:", result);
-                            // Clear cart and redirect
+                            if (!response.ok) throw new Error(result.error || "Payment failed");
                             window.Cart.clear();
                             window.location.href = `/thank-you.html?orderId=${orderID}`;
                         } catch (err) {
@@ -685,11 +674,11 @@
                     },
                     onError: (err) => {
                         console.error("PayPal error:", err);
-                        let errorMsg = err.message || "Unknown error";
+                        var errorMsg = err.message || "Unknown error";
                         if (err.message && err.message.includes("Missing PayPal")) {
                             errorMsg = "Server configuration error. Please contact support or try again later.";
                         }
-                        alert(`Payment error: ${errorMsg}`);
+                        alert("Payment error: " + errorMsg);
                     }
                 }).render("#paypal-button-container");
                 console.log("PayPal buttons rendered successfully");
