@@ -582,8 +582,14 @@ function calculateShipping(countryCode, cartItems, subtotal) {
         return null;
     }
     
-    // Check for free shipping threshold (Australia only)
+    // Check for free shipping thresholds
+    // 1) Australia: free from configured threshold (currently $80)
     if (countryInfo.freeShippingThreshold && subtotal >= countryInfo.freeShippingThreshold) {
+        return 0;
+    }
+    // 2) All other countries: free shipping at $90+ order value
+    const upperCountryCode = countryCode.toUpperCase();
+    if (upperCountryCode !== 'AU' && subtotal >= 90) {
         return 0;
     }
     
