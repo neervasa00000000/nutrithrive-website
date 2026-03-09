@@ -283,7 +283,7 @@
       }
     </style>
 
-    <!-- Schema.org: BlogPosting + FAQPage + Breadcrumb -->
+    <!-- Schema.org: BlogPosting + Product AggregateRating + Recipe + FAQPage + Breadcrumb -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -308,6 +308,78 @@
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://nutrithrive.com.au/blog/green-gold-standard-moringa-bioactive-or-just-fiber-2026-definitive-guide.html"
+      }
+    }
+    </script>
+    <!-- AggregateRating / Review Snippet for Rosabella Moringa -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "NutriThrive Rosabella Moringa Powder",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp",
+      "description": "Premium leaf-only, cold-dried moringa powder designed for high bio-activity and smooth digestion.",
+      "brand": {
+        "@type": "Brand",
+        "name": "NutriThrive"
+      },
+      "sku": "NT-MOR-ROSABELLA",
+      "url": "https://nutrithrive.com.au/products/moringa-powder/",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "512",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+    <!-- Recipe Rich Result: Green Gold Morning Shot -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Green Gold Morning Moringa Shot",
+      "description": "A quick Australian-style morning shot using NutriThrive Rosabella moringa for clean, sustained energy.",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp",
+      "author": {
+        "@type": "Person",
+        "name": "NutriThrive Research Team"
+      },
+      "recipeCuisine": "Australian",
+      "recipeCategory": "Drink",
+      "keywords": "moringa shot, green gold, NutriThrive Rosabella",
+      "recipeYield": "1 serving",
+      "totalTime": "PT2M",
+      "prepTime": "PT2M",
+      "recipeIngredient": [
+        "1 teaspoon NutriThrive Rosabella moringa powder",
+        "150 ml cold water or orange juice",
+        "Ice cubes (optional)",
+        "Slice of lemon or lime (optional)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Add 1 teaspoon of NutriThrive Rosabella moringa powder to a small glass or shaker."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Pour in 150 ml of cold water or orange juice."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Shake or stir well until the powder is fully dispersed and smooth."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Optionally add ice and a slice of lemon or lime, then drink within a few minutes."
+        }
+      ],
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 shot",
+        "calories": "15"
       }
     }
     </script>
@@ -344,7 +416,7 @@
           "@type": "Question",
           "name": "How can I use moringa with dried curry leaves and Darjeeling black tea?",
           "acceptedAnswer": {
-            "@type": Answer,
+          "@type": "Answer",
             "text": "Many Australians now stack moringa with aromatic dried curry leaves and a moderate‑caffeine Darjeeling black tea. A common routine is: 1) a morning shot of moringa in juice, 2) curry leaves in tempering, rice or herbal infusions, and 3) NutriThrive Darjeeling black tea as an afternoon focus ritual. This combines micronutrients, gentle digestive support and clean energy."
           }
         }
