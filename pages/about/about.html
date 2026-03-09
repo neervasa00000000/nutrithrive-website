@@ -71,7 +71,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="/styles/global/style.css">
-    <link rel="stylesheet" href="about-new.css">
+    <link rel="stylesheet" href="/pages/about/about-new.css">
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
@@ -330,7 +330,7 @@
       if (window.DeferLoader) {
         window.DeferLoader.deferUntilIdle(function() {
           var script = document.createElement('script');
-          script.src = 'about.js';
+          script.src = '/pages/about/about.js';
           script.defer = true;
           document.body.appendChild(script);
         }, { timeout: 1000 });
