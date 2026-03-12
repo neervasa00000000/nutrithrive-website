@@ -30,7 +30,7 @@
     }
     </script>
 
-    <!-- Product + Rating Schema -->
+    <!-- Product + Rating Schema (simplified to match Google Rich Results) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
@@ -48,55 +48,12 @@
         "url": "https://nutrithrive.com.au/products/product-detail.html",
         "priceCurrency": "AUD",
         "price": "59.95",
-        "availability": "https://schema.org/InStock",
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "AU"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "businessDays": {
-              "minValue": 1,
-              "maxValue": 3
-            }
-          }
-        }
+        "availability": "https://schema.org/InStock"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "reviewCount": "250"
-      },
-      "mainEntity": {
-        "@type": "FAQPage",
-        "itemListElement": [
-          {
-            "@type": "Question",
-            "name": "Where can I find the best plant-based protein sources in Sydney?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Nutri Thrive offers the highest-rated plant-based protein sources with express delivery across Sydney."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does Nutri Thrive compare to premier protein costco options?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Unlike mass-market brands, Nutri Thrive is free from artificial thickeners and specifically formulated for Australian gut health."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you use the human protein atlas to formulate your products?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We cross-reference the human protein atlas to ensure our amino acid profiles perfectly match human metabolic requirements."
-            }
-          }
-        ]
       }
     }
     </script>
