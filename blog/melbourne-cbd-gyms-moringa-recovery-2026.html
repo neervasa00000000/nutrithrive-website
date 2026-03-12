@@ -101,6 +101,121 @@
     }
     </script>
 
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nutrithrive.com.au/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://nutrithrive.com.au/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Melbourne CBD Gyms & Moringa Recovery",
+          "item": "https://nutrithrive.com.au/blog/melbourne-cbd-gyms-moringa-recovery-2026.html"
+        }
+      ]
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best gym near Southern Cross Station for commuters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Melbourne CBD commuters using Southern Cross Station, Virgin Active on Collins Street is the best premium all-round option. It offers around 4,000 square metres of space with a pool, bouldering walls, strength floor and co-working lounges, so you can train, shower and work in one stop with minimal commute friction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Melbourne CBD gym is best for strength and bodybuilding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Doherty's Gym in the Flinders Street Banana Alley Vaults is the leading choice for strength and bodybuilding in Melbourne CBD. It has Rogue and Eleiko competition-grade equipment, a hardcore lifting culture and 365-day staffing, making it ideal for powerlifters and serious strength athletes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can moringa help with gym recovery for Melbourne commuters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moringa supports recovery for Melbourne commuter-athletes by providing 22 to 28 grams of plant protein per 100 grams, around 28 milligrams of iron and a high density of antioxidants including quercetin. When added to pre- and post-workout smoothies, it helps support oxygen transport, reduces oxidative stress and offers a convenient way to upgrade recovery during short time windows around work and commuting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good pre-workout smoothie for Melbourne CBD gym-goers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A simple pre-workout smoothie for Melbourne CBD commuters is the Southern Cross Energiser: 1 teaspoon of moringa powder, 1 banana, 1 cup of unsweetened almond milk and 1 tablespoon of almond butter. Blend and drink 20 to 45 minutes before training to provide steady energy and antioxidant support."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Recipe Schema for Key Smoothies -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Southern Cross Energiser Moringa Smoothie",
+      "description": "A pre-workout moringa smoothie designed for Melbourne CBD commuters training near Southern Cross Station.",
+      "author": {
+        "@type": "Organization",
+        "name": "NutriThrive"
+      },
+      "recipeCategory": "Smoothie",
+      "recipeCuisine": "Australian",
+      "keywords": "moringa smoothie, Southern Cross gym, Melbourne CBD commuters",
+      "recipeYield": "1 serving",
+      "prepTime": "PT3M",
+      "totalTime": "PT3M",
+      "recipeIngredient": [
+        "1 teaspoon moringa powder",
+        "1 medium banana",
+        "1 cup unsweetened almond milk",
+        "1 tablespoon almond butter"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Add moringa powder, banana, almond milk and almond butter to a blender."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Blend until smooth and drink 20\u201345 minutes before your workout."
+        }
+      ],
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 smoothie",
+        "calories": "250",
+        "proteinContent": "8 g",
+        "fatContent": "11 g",
+        "carbohydrateContent": "32 g",
+        "fiberContent": "5 g"
+      }
+    }
+    </script>
+
     <style>
         :root {
             --primary: #175c36;
