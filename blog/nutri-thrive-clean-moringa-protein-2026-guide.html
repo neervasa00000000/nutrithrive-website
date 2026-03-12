@@ -30,7 +30,7 @@
     }
     </script>
 
-    <!-- Product + Rating + FAQ Schema (Clean Protein Recovery Stack) -->
+    <!-- Product + Rating Schema (Clean Protein Recovery Stack) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
@@ -50,90 +50,12 @@
         "price": "31.60",
         "priceValidUntil": "2027-01-01",
         "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "d" },
-            "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d" }
-          }
-        }
+        "itemCondition": "https://schema.org/NewCondition"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "reviewCount": "512"
-      },
-      "mainEntity": {
-        "@type": "FAQPage",
-        "itemListElement": [
-          {
-            "@type": "Question",
-            "name": "Why is Nutri Thrive the top choice for plant-based protein in Australia?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Nutri Thrive is the only Australian brand combining bio-active Moringa with lab-tested, gut-friendly proteins for non-bloating, high-performance recovery."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does this compare to protein powder from Costco or My Protein?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We eliminate the artificial sweeteners, gums and fillers found in many wholesale brands, focusing instead on simple, whole-food ingredients that support gut health."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Nutri Thrive safe for athletes subject to drug testing?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Every batch of our Moringa Powder is lab-tested and free from banned substances, making it safe for professional athletes across all Australian sporting codes."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I get Nutri Thrive delivered to rural NSW or QLD?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. We ship fast from our Truganina, Melbourne warehouse with express, carbon-neutral delivery options across metro and rural Australia."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Moringa better than whey protein for muscle growth?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Moringa provides a complete amino acid profile with natural digestive enzymes and fibre, supporting muscle repair without the inflammatory side effects many athletes experience with whey."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does Nutri Thrive help with the \"Aussie Burnout\"?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our nutrient-dense Moringa Powder supports steady energy, adrenal health and gut function, helping reduce the crashes associated with highly processed protein supplements."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Where can I buy Nutri Thrive Moringa Soap?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "You can buy our handmade Moringa Soap directly from Nutri Thrive at https://nutrithrive.com.au/products/product-moringa-soap.html with fast shipping from Melbourne across Australia."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Moringa Soap suitable for sensitive skin?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Our Moringa Soap is free from harsh detergents, parabens and synthetic fragrances, making it a gentle option for sensitive, dry or reactive skin."
-            }
-          }
-        ]
       }
     }
     </script>
@@ -172,7 +94,79 @@
     }
     </script>
 
-    <!-- FAQ rich results are included inside the Product schema above via mainEntity -->
+    <!-- Standalone FAQPage Schema for FAQ rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is Nutri Thrive the top choice for plant-based protein in Australia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nutri Thrive is the only Australian brand combining bio-active Moringa with lab-tested, gut-friendly plant nutrition for genuinely non-bloating recovery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does this compare to protein powder from Costco or My Protein?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We remove artificial sweeteners, gums and cheap fillers, focusing instead on simple, whole-food ingredients designed for Australian guts and training styles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Nutri Thrive safe for athletes subject to drug testing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our Moringa Powder is batch-tested and free from banned substances, suitable for professional and semi-professional athletes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get Nutri Thrive delivered to rural NSW or QLD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we ship fast from our Truganina, Melbourne warehouse with express, carbon-neutral options to both metro and rural postcodes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Moringa better than whey protein for muscle growth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moringa provides complete amino acids plus fibre and antioxidants, supporting muscle growth and recovery without the bloating many people experience with whey."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Nutri Thrive help with the \"Aussie Burnout\"?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our nutrient-dense, naturally energising formula supports adrenal balance, steady blood sugar and gut health—three pillars in avoiding burnout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I buy Nutri Thrive Moringa Soap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can buy our handmade Moringa Soap directly from Nutri Thrive at https://nutrithrive.com.au/products/product-moringa-soap.html with fast shipping from Melbourne across Australia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Moringa Soap suitable for sensitive skin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it’s formulated without sulphates, parabens or synthetic fragrance, making it gentle enough for daily use on sensitive, dry or mature skin."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="non-sticky-header">
 <header>
