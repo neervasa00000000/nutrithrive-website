@@ -26,23 +26,17 @@
 
 .about-hero-layout {
     position: relative;
-    border-radius: var(--radius, 18px);
-    padding: 2.8rem 2.4rem 2.5rem;
-    background: linear-gradient(135deg, rgba(23, 92, 54, 0.08) 0%, rgba(123, 84, 31, 0.05) 100%),
-                var(--card, #fffdfa);
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
     color: var(--text, #1a2e22);
-    overflow: hidden;
-    border: 1px solid rgba(236, 231, 219, 0.9);
-    box-shadow: var(--shadow, 0 4px 24px 0 rgba(23, 92, 54, 0.07));
+    overflow: visible;
+    border: none;
+    box-shadow: none;
 }
 
 .about-hero-layout::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    border: 1px solid rgba(23, 92, 54, 0.06);
-    pointer-events: none;
+    content: none;
 }
 
 .about-hero-main {
@@ -457,7 +451,7 @@
     }
 
     .about-hero-layout {
-        padding: 2.4rem 2rem 2.5rem;
+        padding: 0;
     }
 
     .about-process-steps {
@@ -479,7 +473,7 @@
     }
 
     .about-hero-layout {
-        padding: 2.2rem 1.7rem 2.3rem;
+        padding: 0;
     }
 
     .about-band-grid {
@@ -505,7 +499,7 @@
     }
 
     .about-hero-layout {
-        padding: 2rem 1.4rem 2.1rem;
+        padding: 0;
     }
 
     .about-band-item,
