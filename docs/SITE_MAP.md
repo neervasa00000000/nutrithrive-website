@@ -54,7 +54,7 @@
 
 ### Homepage Variants
 - `/pages/homepage/index.html` - Homepage variant
-- `/pages/homepage/melbourne.html` - Melbourne-specific homepage
+- `/melbourne/` - Melbourne-specific landing page (canonical)
 - `/pages/melbourne-page.html` - Melbourne page
 
 ### Products (Pages Directory)
