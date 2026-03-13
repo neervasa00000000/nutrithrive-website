@@ -412,12 +412,11 @@
 
 .about-cta-inner {
     text-align: center;
-    background: linear-gradient(135deg, rgba(23, 92, 54, 0.08) 0%, rgba(123, 84, 31, 0.05) 100%),
-                var(--card, #fffdfa);
-    border-radius: var(--radius, 18px);
-    padding: 2.6rem 1.9rem 2.8rem;
-    border: 1px solid rgba(23, 92, 54, 0.2);
-    box-shadow: var(--shadow, 0 4px 24px 0 rgba(23, 92, 54, 0.07));
+    background: transparent;
+    border-radius: 0;
+    padding: 2.2rem 0 0;
+    border: none;
+    box-shadow: none;
 }
 
 .about-cta-inner h2 {
