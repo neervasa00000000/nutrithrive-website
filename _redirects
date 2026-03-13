@@ -70,6 +70,11 @@
 /pages/homepage/* /:splat 301
 /pages/homepage / 301
 
+# Melbourne local landing page
+/melbourne /pages/homepage/melbourne.html 200
+/melbourne/ /pages/homepage/melbourne.html 200
+/melbourne.html /melbourne/ 301
+
 # Clean URL rewrites - serve HTML files without changing browser URL
 /about /pages/about/about.html 200
 /about.html /pages/about/about.html 200
