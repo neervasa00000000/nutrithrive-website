@@ -68,7 +68,7 @@
 }
 
 .about-hero-subtitle {
-    font-size: 1.02rem;
+    font-size: 1.1rem;
     line-height: 1.9;
     color: var(--muted, #5A6D5D);
     margin: 0 0 1.7rem 0;
@@ -167,7 +167,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--muted, #5A6D5D);
 }
 
@@ -210,7 +210,7 @@
 }
 
 .about-band-item p {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.9;
     color: var(--muted, #5A6D5D);
     margin: 0;
@@ -240,7 +240,7 @@
 }
 
 .about-story-text p {
-    font-size: 0.98rem;
+    font-size: 1.1rem;
     line-height: 1.9;
     color: var(--muted, #5A6D5D);
     margin: 0 0 1.1rem 0;
@@ -351,7 +351,7 @@
 }
 
 .process-copy p {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: var(--muted, #5A6D5D);
     margin: 0;
@@ -396,7 +396,7 @@
 }
 
 .about-value-col p {
-    font-size: 0.96rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: var(--muted, #5A6D5D);
     margin: 0;
@@ -427,7 +427,7 @@
 }
 
 .about-cta-inner p {
-    font-size: 0.98rem;
+    font-size: 1.1rem;
     color: var(--muted, #5A6D5D);
     max-width: 640px;
     margin: 0 auto 1.6rem auto;

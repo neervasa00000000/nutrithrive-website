@@ -2117,6 +2117,14 @@ article h1, section h1, nav h1, aside h1 {
     background: #f8f6ef;
 }
 
+.faq-item:hover {
+    background: #f3efe2;
+}
+
+.faq-item.active {
+    background: #f1ebdd;
+}
+
 .faq-item:last-child {
     border-bottom: none;
 }

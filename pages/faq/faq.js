@@ -388,6 +388,11 @@ document.addEventListener('DOMContentLoaded', () => {
             observer.observe(item, { attributes: true, attributeFilter: ['class'] });
         }
     });
+
+    // Open the first FAQ by default for a smoother first impression
+    if (faqItems.length > 0) {
+        faqItems[0].classList.add('active');
+    }
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded
