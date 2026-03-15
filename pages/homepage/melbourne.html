@@ -51,6 +51,7 @@
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/melbourne/">
 
     <link rel="stylesheet" href="/styles/global/style.css">
+    <link rel="stylesheet" href="/styles/pages/homepage.css">
 
     <script type="application/ld+json">
     {
@@ -74,153 +75,42 @@
     </script>
     <style>
         .melb-page {
-            max-width: 720px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 1.5rem 4rem;
+            padding: 0 1.5rem 4rem;
         }
 
-        .melb-eyebrow {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+        .melb-hero .hero-title { font-size: clamp(2rem, 4vw, 2.5rem); }
+        .melb-hero .hero-desc { font-size: 1.15rem; line-height: 1.65; }
 
-        .melb-hero {
-            margin-bottom: 3.5rem;
-        }
-
-        .melb-hero h1 {
-            font-size: clamp(1.85rem, 4vw, 2.25rem);
-            line-height: 1.2;
-            margin: 0 0 1rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .melb-hero-tagline {
-            font-size: 1.0625rem;
-            line-height: 1.65;
-            color: var(--muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .melb-hero-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.75rem;
-            font-size: 0.9375rem;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .melb-hero-list li {
-            padding-left: 1.25rem;
-            position: relative;
-            margin-bottom: 0.4rem;
-        }
-
-        .melb-hero-list li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.55em;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .melb-hero-ctas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .melb-primary-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            background: var(--primary);
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            border: none;
-            text-decoration: none;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        .melb-primary-btn:hover {
-            opacity: 0.92;
-            transform: translateY(-1px);
-        }
-
-        .melb-secondary-link {
-            font-size: 0.9375rem;
-            color: var(--muted);
-            text-decoration: none;
-            border-bottom: 1px solid currentColor;
-            padding-bottom: 1px;
-        }
-
-        .melb-secondary-link:hover {
-            color: var(--primary);
-        }
-
-        .melb-hero-card {
-            margin-top: 2rem;
-            padding: 1.5rem 1.5rem 1.25rem;
+        .melb-welcome-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 2rem 1.5rem;
             background: var(--card);
             border-radius: var(--radius);
-            border: 1px solid rgba(23, 92, 54, 0.08);
             box-shadow: var(--shadow);
+            border: 1px solid rgba(23, 92, 54, 0.06);
         }
 
-        .melb-hero-card-title {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin: 0 0 0.75rem;
-            color: var(--text);
+        .melb-welcome-strip-item {
+            text-align: center;
         }
 
-        .melb-hero-card-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1rem;
-            font-size: 0.875rem;
-            color: var(--muted);
-            line-height: 1.55;
-        }
-
-        .melb-hero-card-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .melb-hero-card-list li span:first-child {
+        .melb-welcome-strip-item strong {
+            display: block;
             color: var(--primary);
-            flex-shrink: 0;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
         }
 
-        .melb-hero-card-pill {
-            font-size: 0.8125rem;
+        .melb-welcome-strip-item span {
+            font-size: 0.9rem;
             color: var(--muted);
-        }
-
-        .melb-hero-meta {
-            font-size: 0.8125rem;
-            color: var(--muted);
-            margin-top: 1.5rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid rgba(23, 92, 54, 0.08);
+            line-height: 1.4;
         }
 
         .melb-section {
@@ -232,10 +122,10 @@
         }
 
         .melb-section h2 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin: 0 0 0.25rem;
-            color: var(--text);
+            margin: 0 0 0.35rem;
+            color: var(--primary);
         }
 
         .melb-section-subtitle {
@@ -388,19 +278,25 @@
         .melb-bottom-cta {
             text-align: center;
             margin-top: 2rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(23, 92, 54, 0.08);
+            padding: 2.5rem 1.5rem;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(23, 92, 54, 0.06);
         }
 
         .melb-bottom-cta p {
-            font-size: 0.9375rem;
-            color: var(--muted);
-            margin: 0 0 1rem;
-            line-height: 1.55;
+            font-size: 1.05rem;
+            color: var(--text);
+            margin: 0 0 1.25rem;
+            line-height: 1.6;
+            max-width: 36em;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .melb-bottom-cta .melb-primary-btn {
-            padding: 0.75rem 1.75rem;
+        .melb-bottom-cta .hero-btn {
+            padding: 0.9rem 1.75rem;
         }
 
         @media (min-width: 640px) {
@@ -466,41 +362,52 @@
     </header>
 
     <main class="melb-page">
-        <section class="melb-hero">
-            <p class="melb-eyebrow">Melbourne · Local Moringa</p>
-            <h1>Moringa in Melbourne, made simple.</h1>
-            <p class="melb-hero-tagline">
-                Clean, lab-tested Moringa powder delivered fast across Melbourne – for energy,
-                gut health, and everyday recovery. No noise, just high-quality greens.
-            </p>
-            <ul class="melb-hero-list">
-                <li>Premium Moringa Oleifera powder, batch-tested for quality</li>
-                <li>Fast dispatch from Truganina warehouse (VIC)</li>
-                <li>Works in smoothies, water, or post-gym shakes</li>
-                <li>Backed by detailed guides for Melbourne customers</li>
-            </ul>
-            <div class="melb-hero-ctas">
-                <a class="melb-primary-btn" href="/products/moringa-powder/">Shop Moringa powder</a>
-                <a class="melb-secondary-link" href="#delivery">See delivery details</a>
-            </div>
-            <aside class="melb-hero-card" aria-label="At-a-glance overview for Melbourne shoppers">
-                <p class="melb-hero-card-title">What you get with NutriThrive Melbourne</p>
-                <ul class="melb-hero-card-list">
-                    <li><span>✓</span><span>Consistent flavour and texture designed for daily use.</span></li>
-                    <li><span>✓</span><span>Transparent sourcing and storage practices.</span></li>
-                    <li><span>✓</span><span>Support via email if you’re unsure how to start.</span></li>
+        <section class="hero melb-hero">
+            <div class="hero-content">
+                <p class="melb-eyebrow" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin: 0 0 0.75rem;">Melbourne · Your local superfoods</p>
+                <h1 class="hero-title">Welcome to NutriThrive Melbourne.</h1>
+                <p class="hero-desc">
+                    Clean, lab-tested Moringa powder and superfoods delivered fast across Melbourne — for energy,
+                    gut health, and everyday recovery. We’re based in Truganina and we’re here for you.
+                </p>
+                <ul class="melb-hero-list" style="list-style: none; padding: 0; margin: 0 0 1.5rem; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
+                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Premium Moringa Oleifera, batch-tested for quality</li>
+                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Fast dispatch from our Truganina warehouse</li>
+                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Smoothies, water, or post-gym — however you like it</li>
                 </ul>
-                <p class="melb-hero-card-pill">Same-week dispatch · Free delivery on select packs</p>
-            </aside>
-            <p class="melb-hero-meta">
-                <strong>Based in Truganina</strong> — serving Greater Melbourne. Simple ingredients, no fillers, small-batch imports.
-            </p>
+                <div class="hero-cta" style="margin-top: 0;">
+                    <a href="/products/moringa-powder/" class="hero-btn">Shop Moringa</a>
+                    <a href="#delivery" class="hero-btn alt">Delivery &amp; location</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/assets/images/general/GC.webp" alt="NutriThrive Moringa Powder — premium greens for Melbourne." width="500" height="500" loading="eager" decoding="async" style="width: 100%; max-width: 420px; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; box-shadow: var(--shadow);">
+            </div>
         </section>
+
+        <div class="melb-welcome-strip" aria-label="What you get">
+            <div class="melb-welcome-strip-item">
+                <strong>Consistent quality</strong>
+                <span>Flavour and texture designed for daily use</span>
+            </div>
+            <div class="melb-welcome-strip-item">
+                <strong>Transparent sourcing</strong>
+                <span>Clear practices, no hidden ingredients</span>
+            </div>
+            <div class="melb-welcome-strip-item">
+                <strong>Same-week dispatch</strong>
+                <span>Free delivery on select packs</span>
+            </div>
+            <div class="melb-welcome-strip-item">
+                <strong>Here to help</strong>
+                <span>Email support if you’re unsure where to start</span>
+            </div>
+        </div>
 
         <section class="melb-section" aria-labelledby="benefits-heading">
             <div class="melb-section-header">
-                <h2 id="benefits-heading">Why Melbourne customers choose our Moringa</h2>
-                <p class="melb-section-subtitle">Designed for real life – work, training, family, and recovery.</p>
+                <h2 id="benefits-heading">Why Melbourne loves NutriThrive</h2>
+                <p class="melb-section-subtitle">Real life — work, training, family, recovery. We’ve got you.</p>
             </div>
             <div class="melb-benefits-grid">
                 <article class="melb-card">
@@ -523,7 +430,8 @@
 
         <section class="melb-section" id="delivery" aria-labelledby="delivery-heading">
             <div class="melb-section-header">
-                <h2 id="delivery-heading">Melbourne delivery & store details</h2>
+                <h2 id="delivery-heading">We deliver across Melbourne</h2>
+                <p class="melb-section-subtitle">Based in Truganina — fast, tracked shipping to your door.</p>
             </div>
             <div class="melb-two-col">
                 <div>
@@ -546,8 +454,8 @@
 
         <section class="melb-section melb-guides" aria-labelledby="guides-heading">
             <div class="melb-section-header">
-                <h2 id="guides-heading">Helpful guides for Melbourne readers</h2>
-                <p class="melb-section-subtitle">Short, practical articles that answer real questions we get from local customers.</p>
+                <h2 id="guides-heading">Read & learn</h2>
+                <p class="melb-section-subtitle">Practical guides from our blog — recipes, storage, and more.</p>
             </div>
             <ul>
                 <li><a href="/blog/curry-leaves-australia-complete-guide-2026.html">Curry Leaves in Australia – Complete Guide</a></li>
@@ -558,7 +466,7 @@
 
         <section class="melb-section" aria-labelledby="faq-heading">
             <div class="melb-section-header">
-                <h2 id="faq-heading">FAQ – Melbourne customers</h2>
+                <h2 id="faq-heading">Common questions</h2>
             </div>
             <div class="melb-faq-grid">
                 <article class="melb-faq-item">
@@ -577,8 +485,8 @@
         </section>
 
         <section class="melb-bottom-cta" aria-label="Call to action">
-            <p>Ready to start with Moringa? Keep your routine simple and consistent – small, daily servings beat complicated stacks.</p>
-            <a class="melb-primary-btn" href="/products/moringa-powder/">Shop Moringa powder</a>
+            <p>Ready to feel the difference? Start with a simple daily serve — we’ll get it to your door fast.</p>
+            <a class="hero-btn" href="/products/moringa-powder/">Shop Moringa</a>
         </section>
     </main>
 
