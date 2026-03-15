@@ -226,11 +226,6 @@
             border-top: 2px solid #e0e0e0;
             background: transparent;
         }
-        .payment-section-inner {
-            background: transparent;
-            padding: 0;
-            max-width: 100%;
-        }
         .payment-section h2 {
             color: #2d5a3d;
             margin: 0 0 0.5rem 0;
@@ -288,8 +283,15 @@
             margin-bottom: 0.75rem;
             display: block;
         }
+        .payment-section .payment-buttons-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0;
+        }
         .payment-section #applepay-wrapper {
-            margin-bottom: 1.25rem;
+            margin-bottom: 0;
         }
         .payment-section #applepay-wrapper .applepay-label {
             margin: 0 0 0.75rem 0;
@@ -298,6 +300,13 @@
             font-size: 0.95rem;
         }
         .payment-section #paypal-button-container {
+            min-height: 50px;
+            min-width: 200px;
+        }
+        .payment-section .payment-card-row {
+            margin-top: 1.25rem;
+        }
+        .payment-section #paypal-card-container {
             min-height: 50px;
         }
         .payment-section #paypal-button-container .payment-placeholder {
@@ -384,33 +393,34 @@
         
         <!-- Payment Section -->
         <div id="payment-section" class="payment-section" style="display: none;">
-            <div class="payment-section-inner">
-                <h2>Payment</h2>
-                <p class="payment-security">All transactions are secure and encrypted.</p>
-                <p class="payment-instruction">
-                    At checkout, PayPal or Apple&nbsp;Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
-                    Please review and confirm these details carefully&mdash;your order will be shipped to the address you approve there.
-                </p>
-                <div class="form-group">
-                    <label for="cart-shipping-country">Shipping country</label>
-                    <select id="cart-shipping-country" onchange="updateCartShipping()">
-                        <option value="">Select your country</option>
-                        <!-- Countries will be populated dynamically -->
-                    </select>
-                </div>
-                <span class="payment-methods-label">Choose your payment method</span>
+            <h2>Payment</h2>
+            <p class="payment-security">All transactions are secure and encrypted.</p>
+            <p class="payment-instruction">
+                At checkout, PayPal or Apple&nbsp;Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
+                Please review and confirm these details carefully&mdash;your order will be shipped to the address you approve there.
+            </p>
+            <div class="form-group">
+                <label for="cart-shipping-country">Shipping country</label>
+                <select id="cart-shipping-country" onchange="updateCartShipping()">
+                    <option value="">Select your country</option>
+                    <!-- Countries will be populated dynamically -->
+                </select>
+            </div>
+            <span class="payment-methods-label">Choose your payment method</span>
+            <div class="payment-buttons-row">
                 <div id="applepay-wrapper" style="display: none;">
                     <p class="applepay-label">Pay quickly with Apple&nbsp;Pay</p>
                     <div id="applepay-container" style="display: inline-block;"></div>
                 </div>
                 <div id="paypal-button-container"></div>
-                <p class="payment-powered">Powered by PayPal</p>
             </div>
+            <div id="paypal-card-container" class="payment-card-row"></div>
+            <p class="payment-powered">Powered by PayPal</p>
         </div>
     </div>
     
     <!-- PayPal SDK with Apple Pay component -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=buttons,applepay"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=buttons,applepay,funding-eligibility"></script>
     <!-- Apple Pay JS SDK -->
     <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
     <script src="/scripts/global/cart.js"></script>
@@ -601,11 +611,12 @@
                 // Also refresh Apple Pay button for updated totals
                 setTimeout(setupApplePay, 250);
             } else if (!countryCode) {
-                // Clear PayPal buttons if no country selected
                 const container = document.getElementById('paypal-button-container');
+                const cardContainer = document.getElementById('paypal-card-container');
                 if (container) {
                     container.innerHTML = '<p class="payment-placeholder">Please select your shipping country to proceed.</p>';
                 }
+                if (cardContainer) cardContainer.innerHTML = '';
                 const appleWrapper = document.getElementById('applepay-wrapper');
                 if (appleWrapper) {
                     appleWrapper.style.display = 'none';
@@ -689,116 +700,112 @@
                 return;
             }
             
-            // Clear existing PayPal buttons
             const container = document.getElementById('paypal-button-container');
+            const cardContainer = document.getElementById('paypal-card-container');
             if (!container) {
                 console.error("PayPal button container not found!");
                 return;
             }
             container.innerHTML = '';
-            
+            if (cardContainer) cardContainer.innerHTML = '';
+
             const cart = window.Cart.get();
             if (!cart || !cart.items || cart.items.length === 0) {
                 container.innerHTML = '<p class="payment-placeholder">Your cart is empty.</p>';
                 return;
             }
-            
-            // Check if country is selected
+
             const countrySelect = document.getElementById('cart-shipping-country');
             const countryCode = countrySelect ? countrySelect.value : '';
             if (!countryCode) {
                 container.innerHTML = '<p class="payment-placeholder">Please select your shipping country to proceed.</p>';
                 return;
             }
-            
-            // Calculate totals including shipping
+
             const subtotal = parseFloat(cart.total || 0);
             const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
             const shippingCost = shipping !== null && shipping !== undefined ? parseFloat(shipping) : 0;
             const total = parseFloat(subtotal) + parseFloat(shippingCost);
-            
-            console.log("Order data:", { subtotal, shipping: shippingCost, total, items: cart.items });
-            
-            // Validate total is a number
+
             if (isNaN(total) || total <= 0) {
-                console.error("Invalid total calculated:", total);
                 container.innerHTML = '<p style="color: red; padding: 1rem;">Error calculating order total. Please try again.</p>';
                 return;
             }
-            
-            // Store total in a variable that will be accessible in createOrder
             const orderTotal = parseFloat(total);
-            
-            // Double-check orderTotal is valid
             if (isNaN(orderTotal) || orderTotal <= 0) {
-                console.error("Invalid orderTotal:", orderTotal);
                 container.innerHTML = '<p style="color: red; padding: 1rem;">Error calculating order total. Please try again.</p>';
                 return;
             }
-            
-            try {
-                paypal.Buttons({
-                    createOrder: async () => {
-                        const amount = orderTotal.toFixed(2);
-                        console.log("Creating PayPal order for amount:", amount);
-                        try {
-                            const response = await fetch("/.netlify/functions/paypal-create-order", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                    amount: amount,
-                                    subtotal: subtotal.toFixed(2),
-                                    shipping: shippingCost.toFixed(2),
-                                    items: cart.items.map(item => ({
-                                        id: item.id,
-                                        name: item.name,
-                                        unitPrice: parseFloat(item.price).toFixed(2),
-                                        quantity: parseInt(item.quantity || 1, 10)
-                                    }))
-                                })
-                            });
-                            const data = await response.json();
+
+            var buttonConfig = {
+                createOrder: function () {
+                    var amount = orderTotal.toFixed(2);
+                    return fetch("/.netlify/functions/paypal-create-order", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            amount: amount,
+                            subtotal: subtotal.toFixed(2),
+                            shipping: shippingCost.toFixed(2),
+                            items: cart.items.map(function (item) {
+                                return {
+                                    id: item.id,
+                                    name: item.name,
+                                    unitPrice: parseFloat(item.price).toFixed(2),
+                                    quantity: parseInt(item.quantity || 1, 10)
+                                };
+                            })
+                        })
+                    }).then(function (response) {
+                        return response.json().then(function (data) {
                             if (!response.ok) throw new Error(data.error || "Failed to create order");
                             return data.orderID || data.id;
-                        } catch (err) {
-                            console.error("Error creating PayPal order:", err);
-                            throw err;
-                        }
-                    },
-                    onApprove: async (data, actions) => {
-                        const orderID = data.orderID || data.id;
-                        if (!orderID) {
-                            alert("Payment error: No order ID received. Please try again.");
-                            return;
-                        }
-                        try {
-                            const response = await fetch("/.netlify/functions/paypal-capture-order", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ orderID: orderID })
-                            });
-                            const result = await response.json();
+                        });
+                    });
+                },
+                onApprove: function (data) {
+                    var orderID = data.orderID || data.id;
+                    if (!orderID) {
+                        alert("Payment error: No order ID received. Please try again.");
+                        return;
+                    }
+                    fetch("/.netlify/functions/paypal-capture-order", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ orderID: orderID })
+                    }).then(function (response) {
+                        return response.json().then(function (result) {
                             if (!response.ok) throw new Error(result.error || "Payment failed");
                             window.Cart.clear();
-                            window.location.href = `/thank-you.html?orderId=${orderID}`;
-                        } catch (err) {
-                            console.error("Error capturing payment:", err);
-                            alert(`Payment error: ${err.message || "Unknown error"}`);
-                        }
-                    },
-                    onError: (err) => {
-                        console.error("PayPal error:", err);
-                        var errorMsg = err.message || "Unknown error";
-                        if (err.message && err.message.includes("Missing PayPal")) {
-                            errorMsg = "Server configuration error. Please contact support or try again later.";
-                        }
-                        alert("Payment error: " + errorMsg);
+                            window.location.href = "/thank-you.html?orderId=" + orderID;
+                        });
+                    }).catch(function (err) {
+                        console.error("Error capturing payment:", err);
+                        alert("Payment error: " + (err.message || "Unknown error"));
+                    });
+                },
+                onError: function (err) {
+                    var errorMsg = err.message || "Unknown error";
+                    if (err.message && err.message.indexOf("Missing PayPal") !== -1) {
+                        errorMsg = "Server configuration error. Please contact support or try again later.";
                     }
-                }).render("#paypal-button-container");
-                console.log("PayPal buttons rendered successfully");
+                    alert("Payment error: " + errorMsg);
+                }
+            };
+
+            try {
+                var paypalBtn = paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.PAYPAL }, buttonConfig));
+                if (typeof paypalBtn.isEligible !== "function" || paypalBtn.isEligible()) {
+                    paypalBtn.render("#paypal-button-container");
+                }
+                var cardBtn = paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.CARD }, buttonConfig));
+                if (typeof cardBtn.isEligible !== "function" || cardBtn.isEligible()) {
+                    cardBtn.render("#paypal-card-container");
+                }
+                console.log("PayPal buttons rendered");
             } catch (err) {
                 console.error("Error rendering PayPal buttons:", err);
-                container.innerHTML = `<p style="color: red;">Error loading payment buttons. Please refresh the page.</p>`;
+                container.innerHTML = '<p style="color: red;">Error loading payment buttons. Please refresh the page.</p>';
             }
         }
         
