@@ -219,35 +219,33 @@
             border-radius: 8px;
             font-weight: 600;
         }
-        /* Payment section – professional layout (cart layout unchanged above) */
+        /* Payment section – same look as cart (no card, same colours) */
         .payment-section {
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             padding-top: 2rem;
             border-top: 2px solid #e0e0e0;
+            background: transparent;
         }
         .payment-section-inner {
-            background: #fff;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 1px 3px rgba(45, 90, 61, 0.08);
-            border: 1px solid #e8e6e0;
-            max-width: 560px;
+            background: transparent;
+            padding: 0;
+            max-width: 100%;
         }
         .payment-section h2 {
             color: #2d5a3d;
             margin: 0 0 0.5rem 0;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
         .payment-section .payment-security {
             font-size: 0.9rem;
-            color: #6b7280;
-            margin-bottom: 1.5rem;
+            color: #666;
+            margin-bottom: 1rem;
         }
         .payment-section .payment-instruction {
             margin: 0 0 1.5rem 0;
             font-size: 0.95rem;
-            color: #374151;
+            color: #1a2e22;
             line-height: 1.55;
             max-width: 100%;
         }
@@ -255,7 +253,7 @@
             color: #1a2e22;
         }
         .payment-section .form-group {
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.5rem;
         }
         .payment-section .form-group label {
             display: block;
@@ -266,28 +264,27 @@
         }
         .payment-section .form-group select {
             width: 100%;
-            max-width: 100%;
+            max-width: 400px;
             padding: 0.75rem 1rem;
-            border: 2px solid #e0e0e0;
+            border: 1px solid #d4cfc3;
             border-radius: 8px;
             font-size: 1rem;
-            background: #fff;
+            background: #f8f5ec;
             cursor: pointer;
             color: #1a2e22;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: border-color 0.2s ease;
         }
         .payment-section .form-group select:hover {
-            border-color: #c5d0c8;
+            border-color: #c5c0b5;
         }
         .payment-section .form-group select:focus {
             outline: none;
             border-color: #2d5a3d;
-            box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.12);
         }
         .payment-section .payment-methods-label {
             font-size: 0.9rem;
             font-weight: 600;
-            color: #374151;
+            color: #2d5a3d;
             margin-bottom: 0.75rem;
             display: block;
         }
@@ -303,18 +300,17 @@
         .payment-section #paypal-button-container {
             min-height: 50px;
         }
-        .payment-section .powered-by {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e8e6e0;
-            font-size: 0.8rem;
-            color: #9ca3af;
-            text-align: center;
-        }
         .payment-section #paypal-button-container .payment-placeholder {
-            color: #6b7280;
+            color: #666;
             font-size: 0.95rem;
             padding: 0.75rem 0;
+        }
+        .payment-section .payment-powered {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.8rem;
+            color: #666;
         }
         @media (max-width: 768px) {
             .cart-table-header,
@@ -329,8 +325,8 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .payment-section-inner {
-                padding: 1.5rem;
+            .payment-section .form-group select {
+                max-width: 100%;
             }
         }
     </style>
@@ -408,7 +404,7 @@
                     <div id="applepay-container" style="display: inline-block;"></div>
                 </div>
                 <div id="paypal-button-container"></div>
-                <p class="powered-by">Powered by PayPal</p>
+                <p class="payment-powered">Powered by PayPal</p>
             </div>
         </div>
     </div>
