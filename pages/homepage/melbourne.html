@@ -32,7 +32,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moringa in Melbourne – NutriThrive® Local Superfoods</title>
-    <meta name="description" content="Buy premium Moringa powder in Melbourne with fast local delivery from NutriThrive. Clean ingredients, lab-tested quality, and simple wellness routines for busy Melburnians.">
+    <meta name="description" content="NutriThrive Melbourne: Moringa powder, dried curry leaves, black tea & more. Free delivery on orders $80+ Australia-wide. Lab-tested, vegan, shipped from Truganina. Shop now.">
     <meta name="keywords" content="Moringa Melbourne, buy moringa Melbourne, moringa powder Melbourne, local moringa delivery, superfoods Melbourne, NutriThrive Melbourne">
     <meta name="robots" content="index, follow">
 
@@ -299,6 +299,102 @@
             padding: 0.9rem 1.75rem;
         }
 
+        .melb-products {
+            padding: 2rem 0 3rem;
+        }
+
+        .melb-products h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 0.5rem;
+            text-align: center;
+        }
+
+        .melb-products-sub {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--muted);
+            margin: 0 0 1.5rem;
+        }
+
+        .melb-product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.25rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 600px) {
+            .melb-product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .melb-product-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1rem;
+            border: 1px solid rgba(23, 92, 54, 0.08);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .melb-product-card img {
+            max-height: 120px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 0.75rem;
+        }
+
+        .melb-product-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 0.35rem;
+        }
+
+        .melb-product-card .price {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .melb-product-card .tag {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.75rem;
+        }
+
+        .melb-product-card a.hero-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .melb-trust-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(23, 92, 54, 0.06);
+            border-radius: var(--radius);
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .melb-trust-bar strong { color: var(--primary); }
+
         @media (min-width: 640px) {
             .melb-benefits-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -367,13 +463,13 @@
                 <p class="melb-eyebrow" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin: 0 0 0.75rem;">Melbourne · Your local superfoods</p>
                 <h1 class="hero-title">Welcome to NutriThrive Melbourne.</h1>
                 <p class="hero-desc">
-                    Clean, lab-tested Moringa powder and superfoods delivered fast across Melbourne — for energy,
-                    gut health, and everyday recovery. We’re based in Truganina and we’re here for you.
+                    Lab-tested Moringa powder, dried curry leaves, black tea and more — shipped from our Truganina warehouse.
+                    <strong>Free delivery on orders $80+ Australia-wide.</strong> Melbourne metro often in 1–3 business days.
                 </p>
                 <ul class="melb-hero-list" style="list-style: none; padding: 0; margin: 0 0 1.5rem; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
-                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Premium Moringa Oleifera, batch-tested for quality</li>
-                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Fast dispatch from our Truganina warehouse</li>
-                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Smoothies, water, or post-gym — however you like it</li>
+                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>100% natural, vegan, gluten-free — no fillers</li>
+                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Batch-tested for quality &amp; safety</li>
+                    <li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Same-week dispatch, tracked shipping</li>
                 </ul>
                 <div class="hero-cta" style="margin-top: 0;">
                     <a href="/products/moringa-powder/" class="hero-btn">Shop Moringa</a>
@@ -387,22 +483,77 @@
 
         <div class="melb-welcome-strip" aria-label="What you get">
             <div class="melb-welcome-strip-item">
-                <strong>Consistent quality</strong>
-                <span>Flavour and texture designed for daily use</span>
+                <strong>Free delivery Australia-wide</strong>
+                <span>On orders $80+ — no minimum for Melbourne</span>
             </div>
             <div class="melb-welcome-strip-item">
-                <strong>Transparent sourcing</strong>
-                <span>Clear practices, no hidden ingredients</span>
+                <strong>Lab-tested &amp; transparent</strong>
+                <span>Batch-level checks, clear sourcing</span>
             </div>
             <div class="melb-welcome-strip-item">
                 <strong>Same-week dispatch</strong>
-                <span>Free delivery on select packs</span>
+                <span>Tracked shipping from Truganina</span>
             </div>
             <div class="melb-welcome-strip-item">
-                <strong>Here to help</strong>
-                <span>Email support if you’re unsure where to start</span>
+                <strong>Real support</strong>
+                <span>Email or call — we’re here to help</span>
             </div>
         </div>
+
+        <section class="melb-section melb-products" aria-labelledby="products-heading">
+            <h2 id="products-heading">Shop our products</h2>
+            <p class="melb-products-sub">100% natural · Vegan · Gluten-free · Shipped from Melbourne</p>
+            <div class="melb-product-grid">
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="Moringa Powder" width="120" height="160" loading="lazy">
+                    <h3>Moringa Powder</h3>
+                    <span class="price">$10.50</span>
+                    <span class="tag">100g · 30 servings</span>
+                    <a href="/products/moringa-powder/" class="hero-btn">Shop</a>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/Bundleoffer.webp" alt="3+1 Moringa" width="120" height="160" loading="lazy">
+                    <h3>3+1 = 400g Moringa</h3>
+                    <span class="price">$31.60</span>
+                    <span class="tag">Best value</span>
+                    <a href="/products/moringa-powder/" class="hero-btn">Shop</a>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/Curry.webp" alt="Dried Curry Leaves" width="120" height="160" loading="lazy">
+                    <h3>Dried Curry Leaves</h3>
+                    <span class="price">$6.45</span>
+                    <span class="tag">30g</span>
+                    <a href="/products/curry-leaves/" class="hero-btn">Shop</a>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/BlackTea.webp" alt="Darjeeling Black Tea" width="120" height="160" loading="lazy">
+                    <h3>Darjeeling Black Tea</h3>
+                    <span class="price">$7.00</span>
+                    <span class="tag">100g</span>
+                    <a href="/products/black-tea/" class="hero-btn">Shop</a>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/moringa_soap.webp" alt="Moringa Soap" width="120" height="160" loading="lazy">
+                    <h3>Moringa Soap</h3>
+                    <span class="price">$6.50</span>
+                    <span class="tag">95g</span>
+                    <a href="/products/moringa-soap/" class="hero-btn">Shop</a>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/combo.webp" alt="Combo Pack" width="120" height="160" loading="lazy">
+                    <h3>Premium Combo Pack</h3>
+                    <span class="price">$15.55</span>
+                    <span class="tag">Moringa + Tea + Curry</span>
+                    <a href="/products/combo-pack/" class="hero-btn">Shop</a>
+                </article>
+            </div>
+            <div class="melb-trust-bar">
+                <span><strong>Free delivery</strong> on orders $80+ Australia-wide</span>
+                <span><strong>Tracked shipping</strong> · Same-week dispatch</span>
+                <span><strong>Lab-tested</strong> · Vegan · No additives</span>
+            </div>
+            <p style="text-align: center; margin-top: 1.25rem;"><a href="/products/" class="hero-btn alt" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">View all products</a></p>
+        </section>
 
         <section class="melb-section" aria-labelledby="benefits-heading">
             <div class="melb-section-header">
@@ -430,20 +581,22 @@
 
         <section class="melb-section" id="delivery" aria-labelledby="delivery-heading">
             <div class="melb-section-header">
-                <h2 id="delivery-heading">We deliver across Melbourne</h2>
-                <p class="melb-section-subtitle">Based in Truganina — fast, tracked shipping to your door.</p>
+                <h2 id="delivery-heading">Delivery &amp; shipping</h2>
+                <p class="melb-section-subtitle">We ship Australia-wide from Truganina. Free delivery on orders $80+.</p>
             </div>
             <div class="melb-two-col">
                 <div>
-                    <p class="melb-geo"><strong>Dispatch address</strong><br>15 Europe Street, Truganina VIC 3029</p>
+                    <p class="melb-geo"><strong>Warehouse</strong><br>15 Europe Street, Truganina VIC 3029</p>
                     <ul class="melb-list">
-                        <li><strong>Greater Melbourne coverage:</strong> Delivery to most metro and surrounding suburbs.</li>
-                        <li><strong>Shipping times:</strong> Typically within a few business days once dispatched.</li>
-                        <li><strong>Order online:</strong> We’re currently focused on online orders while local partnerships grow.</li>
+                        <li><strong>Free delivery Australia-wide</strong> on orders $80 and over. Standard shipping for orders under $80.</li>
+                        <li><strong>Melbourne metro:</strong> Usually 1–3 business days after dispatch. We ship same week when you order early.</li>
+                        <li><strong>NSW, QLD, other states:</strong> Typically 3–7 business days. Tracked via Australia Post.</li>
+                        <li><strong>Order online 24/7</strong> — we dispatch on business days. No minimum for Melbourne; mix and match to hit free shipping Australia-wide.</li>
                     </ul>
                     <div class="melb-badge-row">
-                        <span class="melb-chip">Melbourne‑based warehouse</span>
-                        <span class="melb-chip">Secure tracked shipping</span>
+                        <span class="melb-chip">Free delivery $80+ AU</span>
+                        <span class="melb-chip">Tracked shipping</span>
+                        <span class="melb-chip">Melbourne warehouse</span>
                     </div>
                 </div>
                 <div>
@@ -470,23 +623,26 @@
             </div>
             <div class="melb-faq-grid">
                 <article class="melb-faq-item">
-                    <h3>Do you deliver across Melbourne?</h3>
-                    <p>Yes. We deliver across Greater Melbourne, with shipping options that prioritise freshness and consistency.</p>
+                    <h3>Is delivery really free?</h3>
+                    <p>Yes. Orders of $80 or more ship free anywhere in Australia. Under $80, standard shipping applies. Melbourne orders often arrive in 1–3 business days.</p>
                 </article>
                 <article class="melb-faq-item">
-                    <h3>Where can I buy NutriThrive products locally?</h3>
-                    <p>Right now, the simplest option is to order online for quick delivery. In‑store options will be added to this page as partnerships go live.</p>
+                    <h3>Do you deliver across Melbourne and Australia?</h3>
+                    <p>Yes. We deliver to all Melbourne suburbs and Australia-wide from our Truganina warehouse. Every order is tracked.</p>
                 </article>
                 <article class="melb-faq-item">
-                    <h3>Are your products lab‑tested?</h3>
-                    <p>Yes. We run batch‑level checks on key products like Moringa powder to ensure quality and safety before they reach Melbourne customers.</p>
+                    <h3>Are your products lab-tested?</h3>
+                    <p>Yes. We run batch-level checks on key products (including Moringa powder) for quality and safety. Vegan, gluten-free, no artificial additives.</p>
                 </article>
             </div>
         </section>
 
         <section class="melb-bottom-cta" aria-label="Call to action">
-            <p>Ready to feel the difference? Start with a simple daily serve — we’ll get it to your door fast.</p>
-            <a class="hero-btn" href="/products/moringa-powder/">Shop Moringa</a>
+            <p>Order $80+ for free delivery Australia-wide. Lab-tested, 100% natural — Moringa, curry leaves, black tea and more, shipped from Melbourne.</p>
+            <div class="hero-cta" style="justify-content: center; flex-wrap: wrap; gap: 0.75rem;">
+                <a class="hero-btn" href="/products/moringa-powder/">Shop Moringa</a>
+                <a class="hero-btn alt" href="/products/">View all products</a>
+            </div>
         </section>
     </main>
 
