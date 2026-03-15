@@ -219,12 +219,16 @@
             border-radius: 8px;
             font-weight: 600;
         }
-        /* Payment section – same look as cart (no card, same colours) */
+        /* Payment section – same look as cart (no card, same colours), centred */
         .payment-section {
             margin-top: 2rem;
             padding-top: 2rem;
             border-top: 2px solid #e0e0e0;
             background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         .payment-section h2 {
             color: #2d5a3d;
@@ -242,13 +246,15 @@
             font-size: 0.95rem;
             color: #1a2e22;
             line-height: 1.55;
-            max-width: 100%;
+            max-width: 560px;
         }
         .payment-section .payment-instruction strong {
             color: #1a2e22;
         }
         .payment-section .form-group {
             margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 400px;
         }
         .payment-section .form-group label {
             display: block;
@@ -282,11 +288,13 @@
             color: #2d5a3d;
             margin-bottom: 0.75rem;
             display: block;
+            width: 100%;
         }
         .payment-section .payment-buttons-row {
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
+            justify-content: center;
             gap: 1rem;
             margin-bottom: 0;
         }
@@ -305,6 +313,9 @@
         }
         .payment-section .payment-card-row {
             margin-top: 1.25rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
         .payment-section #paypal-card-container {
             min-height: 50px;
