@@ -75,6 +75,9 @@
 /melbourne/ /pages/homepage/melbourne.html 200
 /melbourne.html /melbourne/ 301
 
+# Canonical redirects - .html to clean URL (matches page canonical)
+/pages/shipping/shipping-returns.html /pages/shipping/shipping-returns 301
+
 # Clean URL rewrites - serve HTML files without changing browser URL
 /about /pages/about/about.html 200
 /about.html /pages/about/about.html 200
