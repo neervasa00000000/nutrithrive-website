@@ -29,15 +29,6 @@
 </script>
 
 
-<!-- Google tag (gtag.js) -->
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moringa in Melbourne – NutriThrive® Local Superfoods</title>
@@ -51,7 +42,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp">
-    <meta name="msapplication-TileColor" content="#0f6b4d">
+    <meta name="msapplication-TileColor" content="#175c36">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
 
@@ -60,7 +51,6 @@
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/melbourne/">
 
     <link rel="stylesheet" href="/styles/global/style.css">
-    <link rel="stylesheet" href="../blog/blog.css">
 
     <script type="application/ld+json">
     {
@@ -84,334 +74,375 @@
     </script>
     <style>
         .melb-page {
-            max-width: 1120px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: 2.5rem 1.5rem 3rem;
+            padding: 3rem 1.5rem 4rem;
         }
 
         .melb-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .25rem .75rem;
-            border-radius: 999px;
-            background: rgba(15, 107, 77, 0.06);
-            color: #0f6b4d;
-            font-size: .8rem;
+            display: inline-block;
+            font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: .04em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
 
         .melb-hero {
-            display: grid;
-            grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
-            gap: 2.5rem;
-            align-items: center;
-            margin-bottom: 2.75rem;
+            margin-bottom: 3.5rem;
         }
 
         .melb-hero h1 {
-            font-size: clamp(2.1rem, 3vw, 2.6rem);
-            line-height: 1.1;
-            margin: 0.75rem 0 0.75rem;
+            font-size: clamp(1.85rem, 4vw, 2.25rem);
+            line-height: 1.2;
+            margin: 0 0 1rem;
+            font-weight: 700;
+            color: var(--text);
         }
 
         .melb-hero-tagline {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--muted-foreground, #4b5563);
-            margin-bottom: 1.25rem;
+            font-size: 1.0625rem;
+            line-height: 1.65;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
         }
 
         .melb-hero-list {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: .5rem .75rem;
-            margin: 0 0 1.75rem;
-            padding: 0;
             list-style: none;
-            font-size: .95rem;
+            padding: 0;
+            margin: 0 0 1.75rem;
+            font-size: 0.9375rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .melb-hero-list li {
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.4rem;
         }
 
         .melb-hero-list li::before {
-            content: "•";
-            color: #0f6b4d;
-            margin-right: .4rem;
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--primary);
         }
 
         .melb-hero-ctas {
             display: flex;
             flex-wrap: wrap;
-            gap: .75rem;
+            gap: 1rem;
             align-items: center;
-            margin-bottom: 1.25rem;
         }
 
         .melb-primary-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: .7rem 1.4rem;
-            border-radius: 999px;
-            background: #0f6b4d;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: var(--primary);
             color: #fff;
             font-weight: 600;
-            font-size: .95rem;
+            font-size: 0.9375rem;
             border: none;
             text-decoration: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
 
         .melb-primary-btn:hover {
-            background: #0b5039;
+            opacity: 0.92;
+            transform: translateY(-1px);
         }
 
         .melb-secondary-link {
-            font-size: .9rem;
-            color: var(--muted-foreground, #4b5563);
+            font-size: 0.9375rem;
+            color: var(--muted);
             text-decoration: none;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 1px;
         }
 
-        .melb-secondary-link span {
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-
-        .melb-hero-meta {
-            font-size: .85rem;
-            color: var(--muted-foreground, #6b7280);
-            display: flex;
-            flex-wrap: wrap;
-            gap: .5rem 1.5rem;
-        }
-
-        .melb-hero-meta strong {
-            color: #111827;
+        .melb-secondary-link:hover {
+            color: var(--primary);
         }
 
         .melb-hero-card {
-            background: var(--card, #ffffff);
-            border-radius: 1.25rem;
-            padding: 1.5rem 1.75rem;
-            box-shadow: 0 18px 45px rgba(15, 107, 77, 0.11);
-            border: 1px solid rgba(15, 107, 77, 0.06);
+            margin-top: 2rem;
+            padding: 1.5rem 1.5rem 1.25rem;
+            background: var(--card);
+            border-radius: var(--radius);
+            border: 1px solid rgba(23, 92, 54, 0.08);
+            box-shadow: var(--shadow);
         }
 
         .melb-hero-card-title {
-            font-size: 1.05rem;
+            font-size: 0.875rem;
             font-weight: 600;
-            margin: 0 0 .5rem;
+            margin: 0 0 0.75rem;
+            color: var(--text);
         }
 
         .melb-hero-card-list {
             list-style: none;
             padding: 0;
             margin: 0 0 1rem;
-            font-size: .9rem;
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.55;
         }
 
         .melb-hero-card-list li {
             display: flex;
             align-items: flex-start;
-            gap: .4rem;
-            margin-bottom: .35rem;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .melb-hero-card-list li span:first-child {
+            color: var(--primary);
+            flex-shrink: 0;
         }
 
         .melb-hero-card-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: .35rem;
-            padding: .35rem .7rem;
-            border-radius: 999px;
-            background: rgba(15, 107, 77, 0.06);
-            font-size: .8rem;
+            font-size: 0.8125rem;
+            color: var(--muted);
+        }
+
+        .melb-hero-meta {
+            font-size: 0.8125rem;
+            color: var(--muted);
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(23, 92, 54, 0.08);
         }
 
         .melb-section {
-            margin: 0 0 2.5rem;
+            margin: 0 0 3rem;
         }
 
         .melb-section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .melb-section h2 {
-            font-size: 1.35rem;
-            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 0.25rem;
+            color: var(--text);
         }
 
         .melb-section-subtitle {
-            font-size: .9rem;
-            color: var(--muted-foreground, #6b7280);
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0;
         }
 
         .melb-benefits-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
+            grid-template-columns: 1fr;
+            gap: 0;
         }
 
         .melb-card {
-            background: var(--card, #ffffff);
-            border-radius: 1rem;
-            padding: 1.2rem 1.1rem;
-            border: 1px solid rgba(15, 107, 77, 0.06);
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+            background: transparent;
+        }
+
+        .melb-card:last-child {
+            border-bottom: 0;
         }
 
         .melb-card h3 {
             font-size: 1rem;
-            margin: 0 0 .4rem;
+            font-weight: 600;
+            margin: 0 0 0.35rem;
+            color: var(--text);
         }
 
         .melb-card p {
-            font-size: .9rem;
-            color: var(--muted-foreground, #4b5563);
-            margin: 0 0 .5rem;
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0 0 0.5rem;
+            line-height: 1.55;
         }
 
         .melb-chip {
-            display: inline-flex;
-            padding: .2rem .6rem;
-            border-radius: 999px;
-            background: rgba(15, 107, 77, 0.06);
-            font-size: .75rem;
-            color: #0f6b4d;
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--primary);
         }
 
         .melb-two-col {
             display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-            gap: 1.75rem;
-            align-items: flex-start;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .melb-geo {
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0 0 0.75rem;
+            line-height: 1.5;
+        }
+
+        .melb-geo strong {
+            color: var(--text);
         }
 
         .melb-list {
             list-style: none;
             padding: 0;
-            margin: 0;
-            display: grid;
-            gap: .75rem;
+            margin: 0 0 1rem;
+            font-size: 0.9375rem;
+            color: var(--muted);
+            line-height: 1.55;
         }
 
         .melb-list li {
-            font-size: .9rem;
-            color: var(--muted-foreground, #4b5563);
+            margin-bottom: 0.4rem;
         }
 
         .melb-list li strong {
-            color: #111827;
+            color: var(--text);
         }
 
         .melb-badge-row {
             display: flex;
             flex-wrap: wrap;
-            gap: .5rem;
-            margin-top: .75rem;
-        }
-
-        .melb-geo {
-            font-size: .9rem;
-            color: var(--muted-foreground, #4b5563);
-            margin: .35rem 0 0;
+            gap: 0.5rem;
         }
 
         .map-frame {
             width: 100%;
-            height: 260px;
+            height: 220px;
             border: 0;
-            border-radius: 1rem;
-            box-shadow: 0 14px 30px rgba(15, 107, 77, 0.12);
+            border-radius: var(--radius);
+            background: var(--card);
         }
 
         .melb-faq-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .melb-faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+        }
+
+        .melb-faq-item:last-child {
+            border-bottom: 0;
         }
 
         .melb-faq-item h3 {
-            font-size: .98rem;
-            margin: 0 0 .4rem;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin: 0 0 0.35rem;
+            color: var(--text);
         }
 
         .melb-faq-item p {
-            font-size: .9rem;
-            color: var(--muted-foreground, #4b5563);
+            font-size: 0.9375rem;
+            color: var(--muted);
             margin: 0;
+            line-height: 1.55;
         }
 
         .melb-guides ul {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: grid;
-            gap: .5rem;
+        }
+
+        .melb-guides li {
+            border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+        }
+
+        .melb-guides li:last-child {
+            border-bottom: 0;
         }
 
         .melb-guides li a {
-            display: inline-flex;
-            align-items: center;
-            gap: .35rem;
-            padding: .45rem .25rem;
+            display: block;
+            padding: 0.75rem 0;
+            font-size: 0.9375rem;
+            color: var(--text);
             text-decoration: none;
+            transition: color 0.2s ease;
         }
 
-        .melb-guides li a span {
-            text-decoration: underline;
-            text-underline-offset: 2px;
+        .melb-guides li a:hover {
+            color: var(--primary);
         }
 
         .melb-bottom-cta {
             text-align: center;
-            margin-top: .5rem;
+            margin-top: 2rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(23, 92, 54, 0.08);
         }
 
         .melb-bottom-cta p {
-            font-size: .9rem;
-            color: var(--muted-foreground, #4b5563);
-            margin-bottom: .9rem;
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0 0 1rem;
+            line-height: 1.55;
         }
 
         .melb-bottom-cta .melb-primary-btn {
-            padding-inline: 1.8rem;
+            padding: 0.75rem 1.75rem;
         }
 
-        @media (max-width: 900px) {
-            .melb-hero {
-                grid-template-columns: minmax(0, 1fr);
+        @media (min-width: 640px) {
+            .melb-benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .melb-card {
+                padding: 1.5rem;
+                border: 1px solid rgba(23, 92, 54, 0.08);
+                border-radius: var(--radius);
+                background: var(--card);
+            }
+
+            .melb-card:last-child {
+                border-bottom: 1px solid rgba(23, 92, 54, 0.08);
             }
 
             .melb-two-col {
-                grid-template-columns: minmax(0, 1fr);
+                grid-template-columns: 1.2fr 1fr;
+                align-items: start;
             }
 
-            .melb-faq-grid,
-            .melb-benefits-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 640px) {
-            .melb-page {
-                padding-inline: 1.1rem;
+            .map-frame {
+                height: 240px;
             }
 
-            .melb-hero-list {
-                grid-template-columns: minmax(0, 1fr);
+            .melb-faq-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
             }
 
-            .melb-hero-meta {
-                flex-direction: column;
-                align-items: flex-start;
+            .melb-faq-item {
+                padding: 1.25rem;
+                border: 1px solid rgba(23, 92, 54, 0.08);
+                border-radius: var(--radius);
+                background: var(--card);
             }
 
-            .melb-faq-grid,
-            .melb-benefits-grid {
-                grid-template-columns: minmax(0, 1fr);
+            .melb-faq-item:last-child {
+                border-bottom: 1px solid rgba(23, 92, 54, 0.08);
             }
         }
     </style>
@@ -420,15 +451,15 @@
     <header class="site-header">
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo-link">
+                <a href="/" class="logo-link">
                     <img decoding="async" src="/assets/images/logo/LOGO.webp" alt="NutriThrive" width="120" height="120" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                     <span class="brand-name">NutriThrive</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="../products/product-detail">Products</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products/">Products</a></li>
                     <li><a href="/blog/">Blog</a></li>
-                    <li><a href="../contact/contact.html">Contact</a></li>
+                    <li><a href="/contact/">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -436,43 +467,34 @@
 
     <main class="melb-page">
         <section class="melb-hero">
-            <div>
-                <div class="melb-eyebrow">
-                    <span>Melbourne · Local Moringa</span>
-                </div>
-                <h1>Moringa in Melbourne, made simple.</h1>
-                <p class="melb-hero-tagline">
-                    Clean, lab-tested Moringa powder delivered fast across Melbourne – for energy,
-                    gut health, and everyday recovery. No noise, just high-quality greens.
-                </p>
-                <ul class="melb-hero-list">
-                    <li>Premium Moringa Oleifera powder, batch-tested for quality</li>
-                    <li>Fast dispatch from Truganina warehouse (VIC)</li>
-                    <li>Works in smoothies, water, or post-gym shakes</li>
-                    <li>Backed by detailed guides for Melbourne customers</li>
-                </ul>
-                <div class="melb-hero-ctas">
-                    <a class="melb-primary-btn" href="/products/moringa-powder/">Shop Moringa powder</a>
-                    <a class="melb-secondary-link" href="#delivery"><span>See Melbourne delivery details</span></a>
-                </div>
-                <div class="melb-hero-meta">
-                    <span><strong>Based in Truganina</strong> – serving Greater Melbourne</span>
-                    <span>Simple ingredients · No fillers · Small-batch imports</span>
-                </div>
+            <p class="melb-eyebrow">Melbourne · Local Moringa</p>
+            <h1>Moringa in Melbourne, made simple.</h1>
+            <p class="melb-hero-tagline">
+                Clean, lab-tested Moringa powder delivered fast across Melbourne – for energy,
+                gut health, and everyday recovery. No noise, just high-quality greens.
+            </p>
+            <ul class="melb-hero-list">
+                <li>Premium Moringa Oleifera powder, batch-tested for quality</li>
+                <li>Fast dispatch from Truganina warehouse (VIC)</li>
+                <li>Works in smoothies, water, or post-gym shakes</li>
+                <li>Backed by detailed guides for Melbourne customers</li>
+            </ul>
+            <div class="melb-hero-ctas">
+                <a class="melb-primary-btn" href="/products/moringa-powder/">Shop Moringa powder</a>
+                <a class="melb-secondary-link" href="#delivery">See delivery details</a>
             </div>
             <aside class="melb-hero-card" aria-label="At-a-glance overview for Melbourne shoppers">
                 <p class="melb-hero-card-title">What you get with NutriThrive Melbourne</p>
                 <ul class="melb-hero-card-list">
-                    <li><span>✅</span><span>Consistent flavour and texture designed for daily use.</span></li>
-                    <li><span>✅</span><span>Transparent sourcing and storage practices.</span></li>
-                    <li><span>✅</span><span>Support via email if you’re unsure how to start.</span></li>
+                    <li><span>✓</span><span>Consistent flavour and texture designed for daily use.</span></li>
+                    <li><span>✓</span><span>Transparent sourcing and storage practices.</span></li>
+                    <li><span>✓</span><span>Support via email if you’re unsure how to start.</span></li>
                 </ul>
-                <div class="melb-hero-card-pill">
-                    <span>📦 Same‑week dispatch</span>
-                    <span>·</span>
-                    <span>Free delivery offers on select packs</span>
-                </div>
+                <p class="melb-hero-card-pill">Same-week dispatch · Free delivery on select packs</p>
             </aside>
+            <p class="melb-hero-meta">
+                <strong>Based in Truganina</strong> — serving Greater Melbourne. Simple ingredients, no fillers, small-batch imports.
+            </p>
         </section>
 
         <section class="melb-section" aria-labelledby="benefits-heading">
@@ -482,17 +504,17 @@
             </div>
             <div class="melb-benefits-grid">
                 <article class="melb-card">
-                    <h3>🥬 Clean, focused formula</h3>
+                    <h3>Clean, focused formula</h3>
                     <p>No random blends. Just high‑quality Moringa Oleifera, ideal for people who want a simple, repeatable routine.</p>
                     <span class="melb-chip">No artificial sweeteners</span>
                 </article>
                 <article class="melb-card">
-                    <h3>🚚 Built around Melbourne delivery</h3>
+                    <h3>Built for Melbourne delivery</h3>
                     <p>Shipped from Truganina, with reliable delivery across Melbourne suburbs so your greens don’t sit in transit for weeks.</p>
                     <span class="melb-chip">Fast dispatch from VIC</span>
                 </article>
                 <article class="melb-card">
-                    <h3>📖 Education, not hype</h3>
+                    <h3>Education, not hype</h3>
                     <p>Detailed guides on batch codes, storage, and serving sizes – so you can make your own decisions, not guess.</p>
                     <span class="melb-chip">Evidence‑aware content</span>
                 </article>
@@ -528,24 +550,9 @@
                 <p class="melb-section-subtitle">Short, practical articles that answer real questions we get from local customers.</p>
             </div>
             <ul>
-                <li>
-                    <a href="../../blog/curry-leaves-australia-complete-guide-2026.html">
-                        <span>📘</span>
-                        <span>Curry Leaves in Australia – Complete Guide</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../../blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html">
-                        <span>📦</span>
-                        <span>How to Store Dried Curry Leaves (Melbourne Kitchens)</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../../blog/black-tea-health-benefits-melbourne-guide-2026.html">
-                        <span>☕</span>
-                        <span>Black Tea Health Benefits – Melbourne Guide</span>
-                    </a>
-                </li>
+                <li><a href="/blog/curry-leaves-australia-complete-guide-2026.html">Curry Leaves in Australia – Complete Guide</a></li>
+                <li><a href="/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html">How to Store Dried Curry Leaves (Melbourne Kitchens)</a></li>
+                <li><a href="/blog/black-tea-health-benefits-melbourne-guide-2026.html">Black Tea Health Benefits – Melbourne Guide</a></li>
             </ul>
         </section>
 
