@@ -373,11 +373,21 @@
             margin-bottom: 0.75rem;
         }
 
-        .melb-product-card a.hero-btn {
+        .melb-product-card .hero-btn,
+        .melb-product-card button.melb-add-cart {
             padding: 0.5rem 1rem;
             font-size: 0.875rem;
             width: 100%;
             text-align: center;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            font-family: inherit;
+        }
+
+        .melb-product-card button.melb-add-cart:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
         .melb-trust-bar {
@@ -440,20 +450,23 @@
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="/" class="logo-link">
-                    <img decoding="async" src="/assets/images/logo/LOGO.webp" alt="NutriThrive" width="120" height="120" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
-                    <span class="brand-name">NutriThrive</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/products/">Products</a></li>
-                    <li><a href="/blog/">Blog</a></li>
-                    <li><a href="/contact/">Contact</a></li>
-                </ul>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img decoding="async" src="/assets/images/logo/LOGO.webp" alt="NutriThrive" width="120" height="120" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/">Products</a>
+                <a href="/blog/">Blog</a>
+                <a href="/contact/">Contact</a>
             </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
         </div>
     </header>
 
@@ -505,46 +518,60 @@
             <p class="melb-products-sub">100% natural · Vegan · Gluten-free · Shipped from Melbourne</p>
             <div class="melb-product-grid">
                 <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/Bundleoffer.webp" alt="3+1 Moringa" width="120" height="160" loading="lazy">
+                    <h3>3+1 = 400g Moringa</h3>
+                    <span class="price">$31.60</span>
+                    <span class="tag">4 pack · Best value</span>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-400g', '3 + 1 = 400g Moringa', 31.60, '/assets/images/homepage/product-showcase/Bundleoffer.webp')">Add to Cart</button>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/moringasoap_combo.webp" alt="Moringa 100g + Soap 95g" width="120" height="160" loading="lazy">
+                    <h3>Moringa 100g + Soap 95g</h3>
+                    <span class="price">$17.00</span>
+                    <span class="tag">Moringa + Soap bundle</span>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-soap-combo', 'Moringa 100g + Soap 95g', 17.00, '/assets/images/homepage/product-showcase/moringasoap_combo.webp')">Add to Cart</button>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/combo.webp" alt="Premium Combo Pack" width="120" height="160" loading="lazy">
+                    <h3>Premium Combo Pack</h3>
+                    <span class="price">$15.55</span>
+                    <span class="tag">Moringa + Tea + Curry</span>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 15.55, '/assets/images/homepage/product-showcase/combo.webp')">Add to Cart</button>
+                </article>
+                <article class="melb-product-card">
                     <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="Moringa Powder" width="120" height="160" loading="lazy">
                     <h3>Moringa Powder</h3>
                     <span class="price">$10.50</span>
                     <span class="tag">100g · 30 servings</span>
-                    <a href="/products/moringa-powder/" class="hero-btn">Shop</a>
-                </article>
-                <article class="melb-product-card">
-                    <img src="/assets/images/homepage/product-showcase/Bundleoffer.webp" alt="3+1 Moringa" width="120" height="160" loading="lazy">
-                    <h3>3+1 = 400g Moringa</h3>
-                    <span class="price">$31.60</span>
-                    <span class="tag">Best value</span>
-                    <a href="/products/moringa-powder/" class="hero-btn">Shop</a>
-                </article>
-                <article class="melb-product-card">
-                    <img src="/assets/images/homepage/product-showcase/Curry.webp" alt="Dried Curry Leaves" width="120" height="160" loading="lazy">
-                    <h3>Dried Curry Leaves</h3>
-                    <span class="price">$6.45</span>
-                    <span class="tag">30g</span>
-                    <a href="/products/curry-leaves/" class="hero-btn">Shop</a>
-                </article>
-                <article class="melb-product-card">
-                    <img src="/assets/images/homepage/product-showcase/BlackTea.webp" alt="Darjeeling Black Tea" width="120" height="160" loading="lazy">
-                    <h3>Darjeeling Black Tea</h3>
-                    <span class="price">$7.00</span>
-                    <span class="tag">100g</span>
-                    <a href="/products/black-tea/" class="hero-btn">Shop</a>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 10.50, '/assets/images/homepage/product-showcase/Moringa.webp')">Add to Cart</button>
                 </article>
                 <article class="melb-product-card">
                     <img src="/assets/images/homepage/product-showcase/moringa_soap.webp" alt="Moringa Soap" width="120" height="160" loading="lazy">
                     <h3>Moringa Soap</h3>
                     <span class="price">$6.50</span>
                     <span class="tag">95g</span>
-                    <a href="/products/moringa-soap/" class="hero-btn">Shop</a>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 6.50, '/assets/images/homepage/product-showcase/moringa_soap.webp')">Add to Cart</button>
                 </article>
                 <article class="melb-product-card">
-                    <img src="/assets/images/homepage/product-showcase/combo.webp" alt="Combo Pack" width="120" height="160" loading="lazy">
-                    <h3>Premium Combo Pack</h3>
-                    <span class="price">$15.55</span>
-                    <span class="tag">Moringa + Tea + Curry</span>
-                    <a href="/products/combo-pack/" class="hero-btn">Shop</a>
+                    <img src="/assets/images/homepage/product-showcase/BlackTea.webp" alt="Darjeeling Black Tea" width="120" height="160" loading="lazy">
+                    <h3>Darjeeling Black Tea</h3>
+                    <span class="price">$7.00</span>
+                    <span class="tag">100g · Premium grade</span>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.00, '/assets/images/homepage/product-showcase/BlackTea.webp')">Add to Cart</button>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/Curry.webp" alt="Dried Curry Leaves" width="120" height="160" loading="lazy">
+                    <h3>Dried Curry Leaves</h3>
+                    <span class="price">$6.45</span>
+                    <span class="tag">30g</span>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 6.45, '/assets/images/homepage/product-showcase/Curry.webp')">Add to Cart</button>
+                </article>
+                <article class="melb-product-card">
+                    <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="200g Moringa" width="120" height="160" loading="lazy">
+                    <h3>200g Moringa</h3>
+                    <span class="price">$20.49</span>
+                    <span class="tag">60 servings</span>
+                    <button type="button" class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-200g', '200g Moringa', 20.49, '/assets/images/homepage/product-showcase/Moringa.webp')">Add to Cart</button>
                 </article>
             </div>
             <div class="melb-trust-bar">
@@ -663,6 +690,8 @@
         </div>
     </footer>
 
+    <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/cart-header.js"></script>
     <script src="/scripts/global/script.js" defer></script>
 </body>
 </html>
