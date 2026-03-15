@@ -6,6 +6,38 @@
 # Fix /blog without trailing slash
 /blog /blog/ 301
 
+# Fix double .html (typo URLs) - serve canonical single .html so no redirect content
+/blog/nutrithrive-dried-curry-leaves-tradition-health.html.html /blog/nutrithrive-dried-curry-leaves-tradition-health.html 301
+/blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html.html /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html 301
+/blog/grow-moringa-tree-australia.html.html /blog/grow-moringa-tree-australia.html 301
+/blog/moringa-vs-superfoods-comparison-australia-2025.html.html /blog/moringa-vs-superfoods-comparison-australia-2026.html 301
+/blog/best-protein-powder-australia.html.html /blog/best-protein-powder-australia.html 301
+/blog/complete-guide-to-moringa-powder-australia.html.html /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/best-moringa-powder-australia-2025.html.html /blog/best-moringa-powder-australia-2026.html 301
+/blog/how-to-add-moringa-to-diet.html.html /blog/how-to-add-moringa-to-diet.html 301
+/blog/moringa-brands-reviewed-australia-2025-verdict.html.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
+/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html.html /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html 301
+
+# Redirect-only pages - 301 so user never sees "Redirecting..." content
+/blog/superfoods-immunity-boost-australia-winter-2026.html /blog/ 301
+/blog/best-protein-powder-australia-2026-complete-guide.html /blog/best-protein-powder-australia.html 301
+/blog/black-tea-health-benefits-melbourne-guide.html /blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2026.html 301
+/blog/dried-curry-leaves-karipatta-benefits-melbourne-guide.html /blog/curry-leaves-australia-complete-guide-2026.html 301
+/blog/superfoods-wellness-guide-australia-2026.html /blog/australian-milk-tea-recipes-premium-black-tea-guide-2026.html 301
+/pages/contact/index.html /contact 301
+/pages/products/index.html /products/ 301
+/pages/homepage/index.html / 301
+
+# Product detail - point to real product page (moringa powder)
+/pages/products/product-detail /products/moringa-powder/ 301
+/pages/products/product-detail.html /products/moringa-powder/ 301
+/products/product-detail /products/moringa-powder/ 301
+
+# Canonical domain - www and http to https non-www
+https://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
+http://nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
+http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
+
 # Blog redirects - redirect ALL /pages/blog/ to /blog/
 # Fix specific double .html issue first
 /pages/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html 301
@@ -54,7 +86,6 @@
 
 # Fix URLs without .html extension - Product Pages
 /products/product-black-tea /products/product-black-tea.html 301
-/products/product-detail /products/product-detail.html 301
 /products/product-curry-leaves /products/product-curry-leaves.html 301
 
 # Duplicate Content Fixes - Grow Moringa Tree
@@ -102,8 +133,8 @@
 /product-detail.html /products/product-detail.html 301
 /product-black-tea.html /products/product-black-tea.html 301
 /product-curry-leaves.html /products/product-curry-leaves.html 301
-# Product URLs - Netlify rewrites (200 = serve content without changing URL)
-/products/product-detail.html /products/moringa-powder/ 200
+# Product URLs - redirect old product-detail to canonical moringa-powder (no redirect page)
+/products/product-detail.html /products/moringa-powder/ 301
 /products/product-curry-leaves.html /products/curry-leaves/ 200
 /products/product-black-tea.html /products/black-tea/ 200
 /products/product-combo.html /products/combo-pack/ 200
@@ -276,83 +307,83 @@
 /blog/best-clean-protein-powders-moringa-products-australia-2025 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
 /blog/best-clean-protein-powders-moringa-products-australia-2025.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
 
-# Fix 404 errors - Redirect all missing blog posts to moringa-brands-reviewed-australia-2025-verdict
-/blog/adrenal-cocktail-recipe-moringa-cortisol-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-foods-for-weight-loss-australian-dietitian-guide-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-moringa-powder-australia-ultimate-buyers-guide-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-moringa-powder-australia-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-superfoods-immunity-australia-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/chia-seeds-nutritional-information-health-benefits-complete-guide-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/high-protein-snacks-australia-25-options-under-150-calories-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/iron-deficiency-complete-guide-australia-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/melbourne-coffee-alternative-moringa-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/low-calorie-snacks-keep-you-full-22-options-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-benefits-for-men-testosterone-recovery-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
+# Fix 404 errors - Redirect to relevant existing blog (no redirect-only pages)
+/blog/adrenal-cocktail-recipe-moringa-cortisol-2026.html /blog/moringa-adaptogen-stress-relief-cortisol-balance.html 301
+/blog/best-foods-for-weight-loss-australian-dietitian-guide-2026.html /blog/affordable-food-budget-eating-family-australia-complete-guide-2026.html 301
+/blog/best-moringa-powder-australia-ultimate-buyers-guide-2026.html /blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html 301
+/blog/best-moringa-powder-australia-2026.html /blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html 301
+/blog/best-superfoods-immunity-australia-2026.html /blog/gut-health-superfoods-complete-guide-australia-2026.html 301
+/blog/chia-seeds-nutritional-information-health-benefits-complete-guide-2026.html /blog/gut-health-superfoods-complete-guide-australia-2026.html 301
+/blog/high-protein-snacks-australia-25-options-under-150-calories-2026.html /blog/best-protein-powder-australia.html 301
+/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026.html /blog/10-healthiest-foods-world-complete-guide-australia-2026.html 301
+/blog/iron-deficiency-complete-guide-australia-2026.html /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/melbourne-coffee-alternative-moringa-2026.html /blog/moringa-vs-coffee-melbourne-energy-hack.html 301
+/blog/low-calorie-snacks-keep-you-full-22-options-2026.html /blog/best-protein-powder-australia.html 301
+/blog/moringa-benefits-for-men-testosterone-recovery-2026.html /blog/moringa-fitness-athletes-australia-2026.html 301
 /blog/moringa-brands-reviewed-australia-2026-verdict.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-for-gut-health-bloating-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-skin-hair-benefits-australia-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-vs-matcha-what-australians-need-to-know-energy-immunity-weight-loss-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/new-trends-australian-protein-powders-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/plant-based-performance-protein-stack-australia-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/the-truth-about-food-and-mood-7-superfoods-that-really-work-for-australian-stress-and-energy.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/clear-skin-anti-aging-moringa-beauty-superfood.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/7x-vitamin-c-boost-immunity-moringa-powder.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-for-men-stamina-muscle-recovery-vitality.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-time-to-take-moringa-morning-night-expert-guide.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/lowering-blood-sugar-naturally-moringa-insulin-sensitivity.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/can-dogs-eat-moringa-benefits-pets-coat-joints.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/how-to-stop-chrome-from-using-all-your-ram-2026.html /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
+/blog/moringa-for-gut-health-bloating-2026.html /blog/melbourne-gut-hack-internal-shower-moringa-superfood-2026.html 301
+/blog/moringa-skin-hair-benefits-australia-2026.html /blog/moringa-soap-skin-science-australia-2026.html 301
+/blog/moringa-vs-matcha-what-australians-need-to-know-energy-immunity-weight-loss-2026.html /blog/moringa-vs-matcha-energy-metabolism-2026.html 301
+/blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026.html /blog/moringa-for-weight-loss-australia-2026.html 301
+/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2026.html /blog/10-healthiest-foods-world-complete-guide-australia-2026.html 301
+/blog/new-trends-australian-protein-powders-2026.html /blog/best-protein-powder-australia.html 301
+/blog/plant-based-performance-protein-stack-australia-2026.html /blog/complete-vegan-protein-plant-based-eaters-moringa.html 301
+/blog/the-truth-about-food-and-mood-7-superfoods-that-really-work-for-australian-stress-and-energy.html /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html 301
+/blog/clear-skin-anti-aging-moringa-beauty-superfood.html /blog/moringa-soap-skin-science-australia-2026.html 301
+/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html 301
+/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2026.html /blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html 301
+/blog/7x-vitamin-c-boost-immunity-moringa-powder.html /blog/moringa-benefits-australia-2026.html 301
+/blog/moringa-for-men-stamina-muscle-recovery-vitality.html /blog/moringa-fitness-athletes-australia-2026.html 301
+/blog/best-time-to-take-moringa-morning-night-expert-guide.html /blog/how-to-add-moringa-to-diet.html 301
+/blog/lowering-blood-sugar-naturally-moringa-insulin-sensitivity.html /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/can-dogs-eat-moringa-benefits-pets-coat-joints.html /blog/moringa-benefits-australia-2026.html 301
+/blog/how-to-stop-chrome-from-using-all-your-ram-2026.html /blog/ 301
 
-# Fix 404 errors - Redirect URLs without .html extension
-/blog/adrenal-cocktail-recipe-moringa-cortisol-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-foods-for-weight-loss-australian-dietitian-guide-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-moringa-powder-australia-ultimate-buyers-guide-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-moringa-powder-australia-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-superfoods-immunity-australia-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/chia-seeds-nutritional-information-health-benefits-complete-guide-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/high-protein-snacks-australia-25-options-under-150-calories-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/iron-deficiency-complete-guide-australia-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/melbourne-coffee-alternative-moringa-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/low-calorie-snacks-keep-you-full-22-options-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-benefits-for-men-testosterone-recovery-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
+# Fix 404 errors - Redirect URLs without .html extension (same targets as .html versions)
+/blog/adrenal-cocktail-recipe-moringa-cortisol-2026 /blog/moringa-adaptogen-stress-relief-cortisol-balance.html 301
+/blog/best-foods-for-weight-loss-australian-dietitian-guide-2026 /blog/affordable-food-budget-eating-family-australia-complete-guide-2026.html 301
+/blog/best-moringa-powder-australia-ultimate-buyers-guide-2026 /blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html 301
+/blog/best-moringa-powder-australia-2026 /blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html 301
+/blog/best-superfoods-immunity-australia-2026 /blog/gut-health-superfoods-complete-guide-australia-2026.html 301
+/blog/chia-seeds-nutritional-information-health-benefits-complete-guide-2026 /blog/gut-health-superfoods-complete-guide-australia-2026.html 301
+/blog/high-protein-snacks-australia-25-options-under-150-calories-2026 /blog/best-protein-powder-australia.html 301
+/blog/healthy-eating-australia-foods-for-every-age-goal-occasion-2026 /blog/10-healthiest-foods-world-complete-guide-australia-2026.html 301
+/blog/iron-deficiency-complete-guide-australia-2026 /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/melbourne-coffee-alternative-moringa-2026 /blog/moringa-vs-coffee-melbourne-energy-hack.html 301
+/blog/low-calorie-snacks-keep-you-full-22-options-2026 /blog/best-protein-powder-australia.html 301
+/blog/moringa-benefits-for-men-testosterone-recovery-2026 /blog/moringa-fitness-athletes-australia-2026.html 301
 /blog/moringa-brands-reviewed-australia-2026-verdict /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-for-gut-health-bloating-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-skin-hair-benefits-australia-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-vs-matcha-what-australians-need-to-know-energy-immunity-weight-loss-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/new-trends-australian-protein-powders-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/plant-based-performance-protein-stack-australia-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/the-truth-about-food-and-mood-7-superfoods-that-really-work-for-australian-stress-and-energy /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/clear-skin-anti-aging-moringa-beauty-superfood /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/7x-vitamin-c-boost-immunity-moringa-powder /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/moringa-for-men-stamina-muscle-recovery-vitality /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/best-time-to-take-moringa-morning-night-expert-guide /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/lowering-blood-sugar-naturally-moringa-insulin-sensitivity /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/can-dogs-eat-moringa-benefits-pets-coat-joints /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
-/blog/how-to-stop-chrome-from-using-all-your-ram-2026 /blog/moringa-brands-reviewed-australia-2025-verdict.html 301
+/blog/moringa-for-gut-health-bloating-2026 /blog/melbourne-gut-hack-internal-shower-moringa-superfood-2026.html 301
+/blog/moringa-skin-hair-benefits-australia-2026 /blog/moringa-soap-skin-science-australia-2026.html 301
+/blog/moringa-vs-matcha-what-australians-need-to-know-energy-immunity-weight-loss-2026 /blog/moringa-vs-matcha-energy-metabolism-2026.html 301
+/blog/moringa-weight-loss-metabolism-wellness-ultimate-australian-superfood-guide-2026 /blog/moringa-for-weight-loss-australia-2026.html 301
+/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2026 /blog/10-healthiest-foods-world-complete-guide-australia-2026.html 301
+/blog/new-trends-australian-protein-powders-2026 /blog/best-protein-powder-australia.html 301
+/blog/plant-based-performance-protein-stack-australia-2026 /blog/complete-vegan-protein-plant-based-eaters-moringa.html 301
+/blog/the-truth-about-food-and-mood-7-superfoods-that-really-work-for-australian-stress-and-energy /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html 301
+/blog/clear-skin-anti-aging-moringa-beauty-superfood /blog/moringa-soap-skin-science-australia-2026.html 301
+/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html 301
+/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2026 /blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html 301
+/blog/7x-vitamin-c-boost-immunity-moringa-powder /blog/moringa-benefits-australia-2026.html 301
+/blog/moringa-for-men-stamina-muscle-recovery-vitality /blog/moringa-fitness-athletes-australia-2026.html 301
+/blog/best-time-to-take-moringa-morning-night-expert-guide /blog/how-to-add-moringa-to-diet.html 301
+/blog/lowering-blood-sugar-naturally-moringa-insulin-sensitivity /blog/complete-guide-to-moringa-powder-australia.html 301
+/blog/can-dogs-eat-moringa-benefits-pets-coat-joints /blog/moringa-benefits-australia-2026.html 301
+/blog/how-to-stop-chrome-from-using-all-your-ram-2026 /blog/ 301
 
-# Removed blog posts - redirect directly to moringa-brands-comparison-australia-2026 (no double redirect)
-/blog/instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/instagram-worthy-moringa-smoothie-bowls-recipes /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026.html /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026 /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/moringa-for-breastfeeding-mums-natural-lactation-support.html /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/moringa-for-breastfeeding-mums-natural-lactation-support /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/dried-curry-leaf-hair-oil-recipe.html /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/dried-curry-leaf-hair-oil-recipe /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/edible-beauty-summer-glow-moringa-2026.html /blog/moringa-brands-comparison-australia-2026.html 301
-/blog/edible-beauty-summer-glow-moringa-2026 /blog/moringa-brands-comparison-australia-2026.html 301
+# Removed blog posts - redirect to relevant existing blog (real content, no redirect pages)
+/blog/instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/high-protein-moringa-recipes-australia-2026.html 301
+/blog/instagram-worthy-moringa-smoothie-bowls-recipes /blog/high-protein-moringa-recipes-australia-2026.html 301
+/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html /blog/high-protein-moringa-recipes-australia-2026.html 301
+/blog/3-instagram-worthy-moringa-smoothie-bowls-recipes /blog/high-protein-moringa-recipes-australia-2026.html 301
+/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026.html /blog/moringa-powder-victoria-seniors-joint-health.html 301
+/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026 /blog/moringa-powder-victoria-seniors-joint-health.html 301
+/blog/moringa-for-breastfeeding-mums-natural-lactation-support.html /blog/moringa-breastfeeding-mums-natural-lactation-support.html 301
+/blog/moringa-for-breastfeeding-mums-natural-lactation-support /blog/moringa-breastfeeding-mums-natural-lactation-support.html 301
+/blog/dried-curry-leaf-hair-oil-recipe.html /blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html 301
+/blog/dried-curry-leaf-hair-oil-recipe /blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html 301
+/blog/edible-beauty-summer-glow-moringa-2026.html /blog/moringa-soap-skin-science-australia-2026.html 301
+/blog/edible-beauty-summer-glow-moringa-2026 /blog/moringa-soap-skin-science-australia-2026.html 301
 
 # Fix 404 errors - Broken URLs
 /blog/natural-heavy-metal-detox-does-moringa-cleanse-the-body /blog/natural-heavy-metal-detox-moringa-cleanse-body.html 301
