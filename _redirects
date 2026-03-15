@@ -108,7 +108,8 @@
 /products/product-combo/ /products/combo-pack/ 301
 /products/product-moringa-soap.html /products/moringa-soap/ 200
 /blog.html /blog/ 301
-/thank-you.html /pages/contact/thank-you.html 301
+# Order confirmation (cart redirects here with ?orderId=)
+/thank-you.html /pages/shop/thank-you.html 200
 /how-to-use-moringa.html /pages/usage-guide/how-to-use-moringa.html 301
 # /contact.html /pages/contact/contact.html 301 - REMOVED: not needed
 /moringa-benefits.html /pages/usage-guide/how-to-use-moringa.html 301
