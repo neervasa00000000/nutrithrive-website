@@ -219,6 +219,103 @@
             border-radius: 8px;
             font-weight: 600;
         }
+        /* Payment section – professional layout (cart layout unchanged above) */
+        .payment-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+        }
+        .payment-section-inner {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(45, 90, 61, 0.08);
+            border: 1px solid #e8e6e0;
+            max-width: 560px;
+        }
+        .payment-section h2 {
+            color: #2d5a3d;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+        .payment-section .payment-security {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        .payment-section .payment-instruction {
+            margin: 0 0 1.5rem 0;
+            font-size: 0.95rem;
+            color: #374151;
+            line-height: 1.55;
+            max-width: 100%;
+        }
+        .payment-section .payment-instruction strong {
+            color: #1a2e22;
+        }
+        .payment-section .form-group {
+            margin-bottom: 1.75rem;
+        }
+        .payment-section .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1a2e22;
+            font-size: 0.95rem;
+        }
+        .payment-section .form-group select {
+            width: 100%;
+            max-width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #fff;
+            cursor: pointer;
+            color: #1a2e22;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .payment-section .form-group select:hover {
+            border-color: #c5d0c8;
+        }
+        .payment-section .form-group select:focus {
+            outline: none;
+            border-color: #2d5a3d;
+            box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.12);
+        }
+        .payment-section .payment-methods-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .payment-section #applepay-wrapper {
+            margin-bottom: 1.25rem;
+        }
+        .payment-section #applepay-wrapper .applepay-label {
+            margin: 0 0 0.75rem 0;
+            font-weight: 600;
+            color: #1a2e22;
+            font-size: 0.95rem;
+        }
+        .payment-section #paypal-button-container {
+            min-height: 50px;
+        }
+        .payment-section .powered-by {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e8e6e0;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            text-align: center;
+        }
+        .payment-section #paypal-button-container .payment-placeholder {
+            color: #6b7280;
+            font-size: 0.95rem;
+            padding: 0.75rem 0;
+        }
         @media (max-width: 768px) {
             .cart-table-header,
             .cart-item {
@@ -231,6 +328,9 @@
             .item-info {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            .payment-section-inner {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -287,26 +387,29 @@
         </div>
         
         <!-- Payment Section -->
-            <div id="payment-section" class="payment-section" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e0e0e0;">
-            <h2 style="color: #2d5a3d; margin-bottom: 0.75rem; font-size: 2rem;">Payment</h2>
-            <p style="margin: 0 0 1.5rem; font-size: 0.95rem; color: #4b5563; max-width: 560px;">
-                At checkout, PayPal or Apple&nbsp;Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
-                Please review and confirm these details carefully&mdash;your order will be shipped to the address you approve there.
-            </p>
-            <div style="margin-bottom: 2rem;">
-                <label for="cart-shipping-country" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a2e22;">
-                Shipping Country
-                </label>
-                <select id="cart-shipping-country" style="width: 100%; max-width: 400px; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 1rem; background: white; cursor: pointer;" onchange="updateCartShipping()">
-                <option value="">Select your country</option>
-                <!-- Countries will be populated dynamically -->
-                </select>
+        <div id="payment-section" class="payment-section" style="display: none;">
+            <div class="payment-section-inner">
+                <h2>Payment</h2>
+                <p class="payment-security">All transactions are secure and encrypted.</p>
+                <p class="payment-instruction">
+                    At checkout, PayPal or Apple&nbsp;Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
+                    Please review and confirm these details carefully&mdash;your order will be shipped to the address you approve there.
+                </p>
+                <div class="form-group">
+                    <label for="cart-shipping-country">Shipping country</label>
+                    <select id="cart-shipping-country" onchange="updateCartShipping()">
+                        <option value="">Select your country</option>
+                        <!-- Countries will be populated dynamically -->
+                    </select>
+                </div>
+                <span class="payment-methods-label">Choose your payment method</span>
+                <div id="applepay-wrapper" style="display: none;">
+                    <p class="applepay-label">Pay quickly with Apple&nbsp;Pay</p>
+                    <div id="applepay-container" style="display: inline-block;"></div>
+                </div>
+                <div id="paypal-button-container"></div>
+                <p class="powered-by">Powered by PayPal</p>
             </div>
-            <div id="applepay-wrapper" style="margin-bottom: 1.5rem; display: none; text-align: center;">
-                <p style="margin: 0 0 0.75rem; font-weight: 600;">Pay quickly with Apple&nbsp;Pay</p>
-                <div id="applepay-container" style="display: inline-block;"></div>
-            </div>
-            <div id="paypal-button-container"></div>
         </div>
     </div>
     
@@ -505,7 +608,7 @@
                 // Clear PayPal buttons if no country selected
                 const container = document.getElementById('paypal-button-container');
                 if (container) {
-                    container.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country to proceed.</p>';
+                    container.innerHTML = '<p class="payment-placeholder">Please select your shipping country to proceed.</p>';
                 }
                 const appleWrapper = document.getElementById('applepay-wrapper');
                 if (appleWrapper) {
@@ -600,7 +703,7 @@
             
             const cart = window.Cart.get();
             if (!cart || !cart.items || cart.items.length === 0) {
-                container.innerHTML = '<p style="color: #666;">Your cart is empty.</p>';
+                container.innerHTML = '<p class="payment-placeholder">Your cart is empty.</p>';
                 return;
             }
             
@@ -608,7 +711,7 @@
             const countrySelect = document.getElementById('cart-shipping-country');
             const countryCode = countrySelect ? countrySelect.value : '';
             if (!countryCode) {
-                container.innerHTML = '<p style="color: #666; padding: 1rem;">Please select your shipping country to proceed.</p>';
+                container.innerHTML = '<p class="payment-placeholder">Please select your shipping country to proceed.</p>';
                 return;
             }
             
