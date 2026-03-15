@@ -58,15 +58,7 @@ body .faq-item {
     background: #f8f6ef;
 }
 
-/* Ensure FAQ answers are hidden by default - override any other rules */
-.faq-item:not(.active) .faq-answer {
-    max-height: 0 !important;
-    overflow: hidden !important;
-    opacity: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    visibility: hidden !important;
-}
+/* FAQ answers: collapsed by default via grid (see FAQ section below) */
 
 body.no-scroll { /* disabled scroll lock */
     overflow: auto !important;
@@ -2176,52 +2168,62 @@ article h1, section h1, nav h1, aside h1 {
 
 .faq-icon {
     color: #175c36;
-    font-size: 1.5rem;
-    font-weight: 300;
-    transition: transform 0.3s ease, color 0.3s ease;
-    min-width: 24px;
-    text-align: center;
-    line-height: 1;
+    font-size: 1.25rem;
+    font-weight: 400;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(23, 92, 54, 0.08);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease, color 0.2s ease;
     flex-shrink: 0;
+    line-height: 1;
+}
+
+.faq-question:hover .faq-icon {
+    background: rgba(23, 92, 54, 0.14);
 }
 
 .faq-item.active .faq-icon {
     transform: rotate(45deg);
+    background: rgba(23, 92, 54, 0.12);
     color: #175c36;
 }
 
+/* Accordion: only questions visible; answer drops on + click (grid-based smooth animation) */
 .faq-answer {
-    max-height: 0 !important;
-    overflow: hidden !important;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease, opacity 0.3s ease;
-    background: #f8f6ef;
-    opacity: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    visibility: hidden !important;
-    height: 0 !important;
-}
-
-.faq-answer p {
-    display: none !important;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 1000px !important;
-    padding-top: 1rem !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    height: auto !important;
+    grid-template-rows: 1fr;
 }
 
-.faq-item.active .faq-answer p {
-    display: block !important;
+.faq-answer-inner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.faq-answer-inner p {
     color: #374151;
     font-size: 1rem;
     line-height: 1.7;
     margin: 0;
-    padding: 0;
+    padding: 1rem 0 0 0;
+    border-top: 1px solid rgba(23, 92, 54, 0.12);
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+}
+
+.faq-answer-inner p a {
+    color: #1b7f5a;
+    text-decoration: underline;
+    font-weight: 600;
 }
 
 .faq-item.active .faq-question h3 {
@@ -2348,33 +2350,10 @@ article h1, section h1, nav h1, aside h1 {
         min-width: 20px;
     }
     
-    .faq-answer {
-        max-height: 0 !important;
-        overflow: hidden !important;
-        opacity: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        background: transparent;
-    }
-    
-    .faq-answer p {
-        display: none !important;
-    }
-    
-    .faq-item.active .faq-answer {
-        max-height: 2000px !important;
-        padding-top: 0.75rem !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        height: auto !important;
-    }
-    
-    .faq-item.active .faq-answer p {
-        display: block !important;
+    .faq-answer-inner p {
         font-size: 0.95rem;
-        line-height: 1.7;
+        padding-top: 0.75rem;
+        margin-top: 0.5rem;
     }
     
     /* Still Have Questions section mobile */
@@ -2432,7 +2411,7 @@ article h1, section h1, nav h1, aside h1 {
         font-size: 1.2rem;
     }
     
-    .faq-item.active .faq-answer p {
+    .faq-answer-inner p {
         font-size: 0.9rem;
     }
 }

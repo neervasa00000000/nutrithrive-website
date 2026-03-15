@@ -84,6 +84,8 @@
 /faq.html /pages/faq/faq.html 200
 /cart /pages/shop/cart.html 200
 /cart.html /pages/shop/cart.html 200
+/privacy-policy /pages/legal/privacy-policy.html 200
+/privacy-policy.html /pages/legal/privacy-policy.html 200
 
 # Fix alternative pages without .html extension - Blog posts
 /blog/moringa-brands-reviewed-australia-2026-verdict /blog/moringa-brands-reviewed-australia-2026-verdict.html 301
@@ -102,6 +104,8 @@
 /products/product-curry-leaves.html /products/curry-leaves/ 200
 /products/product-black-tea.html /products/black-tea/ 200
 /products/product-combo.html /products/combo-pack/ 200
+/products/product-combo /products/combo-pack/ 301
+/products/product-combo/ /products/combo-pack/ 301
 /products/product-moringa-soap.html /products/moringa-soap/ 200
 /blog.html /blog/ 301
 /thank-you.html /pages/contact/thank-you.html 301
@@ -124,6 +128,9 @@
 # Fix /pages/benefits/moringa-benefits (with and without .html)
 /pages/benefits/moringa-benefits /pages/usage-guide/how-to-use-moringa.html 301
 /pages/benefits/moringa-benefits.html /pages/usage-guide/how-to-use-moringa.html 301
+
+# Fix 404 - NATA lab certificate PDF (request via contact)
+/assets/docs/nata-lab-certificate-moringa-2026.pdf /contact 301
 
 # Fix broken 404 links
 #/homepage/index.html / 301  # REMOVED - no longer redirecting

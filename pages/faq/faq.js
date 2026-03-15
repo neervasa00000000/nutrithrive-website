@@ -389,10 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Open the first FAQ by default for a smoother first impression
-    if (faqItems.length > 0) {
-        faqItems[0].classList.add('active');
-    }
+    // All FAQs start closed; user clicks + to drop down the answer
 });
 
 // Ensure GSAP ScrollTrigger refreshes after all images/fonts/layout are loaded
