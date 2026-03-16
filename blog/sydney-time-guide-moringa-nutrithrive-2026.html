@@ -38,6 +38,21 @@
     .sydney-time-widget select { width: 100%; max-width: 280px; padding: 0.6rem 0.75rem; border-radius: 8px; border: none; font-size: 0.95rem; background: #fff; color: #1a2e22; margin-top: 0.5rem; }
     @media (max-width: 600px) { .sydney-time-value { font-size: 1.5rem; } }
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    /* Product CTAs */
+    .blog-cta-strip { margin: 2rem 0; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, #0f6b4d 0%, #0a4d36 100%); color: #fff; border-radius: 14px; }
+    .blog-cta-strip h3 { margin: 0 0 0.75rem; font-size: 1.05rem; color: #fff; }
+    .blog-cta-strip p { margin: 0 0 1rem; font-size: 0.95rem; opacity: 0.95; }
+    .blog-cta-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .blog-cta-btns a { display: inline-block; padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .blog-cta-btns a.btn-primary { background: #fff; color: #0f6b4d; }
+    .blog-cta-btns a.btn-secondary { background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+    .blog-cta-btns a:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .product-card { padding: 1.1rem; background: #f8faf8; border-radius: 12px; border: 1px solid rgba(23,92,54,0.12); }
+    .product-card h4 { margin: 0 0 0.35rem; font-size: 1rem; color: var(--primary); }
+    .product-card p { margin: 0 0 0.75rem; font-size: 0.88rem; line-height: 1.5; color: var(--text); }
+    .product-card a { display: inline-block; padding: 0.45rem 0.9rem; background: var(--primary); color: #fff; border-radius: 999px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    .product-card a:hover { background: #0f4a2a; }
     </style>
 </head>
 <body class="non-sticky-header blog-sydney-time">
@@ -101,31 +116,76 @@
             <p>The shift is seasonal and strategic. On the first Sunday of April, the city will "fall back" one hour to <strong>Australian Eastern Standard Time (AEST)</strong>, or UTC+10. This transition marks the arrival of crisp, clear autumn mornings, perfect for early coffee runs in Surry Hills or sunrise photography at the Opera House. While the days shorten, the light remains remarkably bright, a hallmark of the Sydney climate that persists even through the winter months.</p>
             <p>For global collaborators and travellers, Sydney's position as one of the first major global cities to greet the new day makes it a hub of early-bird activity. Whether you are managing international business calls or planning a holiday, understanding this shift between UTC+11 and UTC+10 is essential for staying in sync with this fast-paced yet laid-back metropolis.</p>
 
+            <div class="blog-cta-strip">
+                <h3>🌿 Shop Nutri Thrive — natural superfoods, shipped worldwide</h3>
+                <p>Moringa powder, black tea, dried curry leaves, moringa soap and value combo packs. All 100% natural, from our base in Victoria.</p>
+                <div class="blog-cta-btns">
+                    <a href="https://nutrithrive.com.au/products/" class="btn-primary">View All Products</a>
+                    <a href="https://nutrithrive.com.au/products/moringa-powder/" class="btn-secondary">Moringa Powder</a>
+                    <a href="https://nutrithrive.com.au/products/black-tea/" class="btn-secondary">Black Tea</a>
+                    <a href="https://nutrithrive.com.au/products/curry-leaves/" class="btn-secondary">Curry Leaves</a>
+                </div>
+            </div>
+
             <h2>Moringa: The Green Powerhouse for Your Daily Routine</h2>
             <p>At Nutri Thrive, we believe in the power of nature to fuel your modern life. Our Moringa products are 100% natural, designed to bridge the gap between a busy schedule and optimal nutrition. While our products are not "certified organic," they are carefully sourced to provide you with the raw, potent benefits of the "Miracle Tree."</p>
 
             <h3>3 Ways to Use Moringa Every Day</h3>
             <p><strong>The Morning Kickstart:</strong> Swap your second coffee for a Moringa-infused green smoothie. Its high iron and B-vitamin content provides a steady stream of energy without the caffeine crash.</p>
-            <p><strong>The Midday Shield:</strong> With 46 different antioxidants, adding a dash of Moringa powder to your lunch helps your body combat oxidative stress and keeps your immune system resilient.</p>
+            <p><strong>The Midday Shield:</strong> With 46 different antioxidants, adding a dash of <a href="https://nutrithrive.com.au/products/moringa-powder/">Moringa powder</a> to your lunch helps your body combat oxidative stress and keeps your immune system resilient. Pair it with our <a href="https://nutrithrive.com.au/products/black-tea/">black tea</a> for a calm, focused afternoon.</p>
             <p><strong>The Post-Workout Recovery:</strong> Moringa contains all nine essential amino acids, making it a rare plant-based complete protein that aids in muscle repair after a run along the Sydney coast.</p>
 
             <h3>Why Choose Nutri Thrive Moringa?</h3>
             <p>We are a local business with a global reach. Whether you are in Australia or ordering from overseas, we ship our natural supplements worldwide from our base in Victoria. We prioritise transparency and quality, ensuring that every batch of Moringa helps you thrive, no matter what time zone you're in.</p>
+            <p><a href="https://nutrithrive.com.au/products/moringa-powder/" style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--primary); color: #fff; border-radius: 999px; font-weight: 600; text-decoration: none;">🛒 Buy Moringa Powder — 3+1 from $31.60</a></p>
+
+            <h2>The Nutri Thrive Range: More Than Moringa</h2>
+            <p>Nutri Thrive offers a full line of natural, lab-conscious products to support your day from morning to night—whether you're in Sydney or anywhere in the world.</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h4>Moringa Powder</h4>
+                    <p>90+ nutrients, complete plant protein, 46 antioxidants. Morning smoothies, lattes, soups. 3+1 bundle from $31.60.</p>
+                    <a href="https://nutrithrive.com.au/products/moringa-powder/">Buy Moringa</a>
+                </div>
+                <div class="product-card">
+                    <h4>Black Tea</h4>
+                    <p>Premium Darjeeling-style black tea. Focus without jitters, perfect with a dash of moringa for a midday lift.</p>
+                    <a href="https://nutrithrive.com.au/products/black-tea/">Buy Black Tea</a>
+                </div>
+                <div class="product-card">
+                    <h4>Dried Curry Leaves</h4>
+                    <p>Authentic karipatta for curries, dals and bone-friendly cooking. Store in the pantry, add to winter stews.</p>
+                    <a href="https://nutrithrive.com.au/products/curry-leaves/">Buy Curry Leaves</a>
+                </div>
+                <div class="product-card">
+                    <h4>Moringa Soap</h4>
+                    <p>Cold-process moringa soap for skin wellness. Gentle, natural and free from harsh chemicals.</p>
+                    <a href="https://nutrithrive.com.au/products/moringa-soap/">Buy Moringa Soap</a>
+                </div>
+                <div class="product-card">
+                    <h4>Combo Pack</h4>
+                    <p>Bundle our best sellers and save. Moringa, tea and curry leaves together for the full Nutri Thrive routine.</p>
+                    <a href="https://nutrithrive.com.au/products/combo-pack/">Buy Combo Pack</a>
+                </div>
+            </div>
+            <p><a href="https://nutrithrive.com.au/products/">View all products →</a></p>
 
             <h2>The Winter Vitality Ritual: Warming Your Soul with Nutri Thrive Moringa</h2>
             <p>As Sydney transitions to Australian Eastern Standard Time (AEST) and the crisp winter air settles over the harbour, maintaining your internal glow becomes a top priority. While many think of Moringa as a summer smoothie staple, its high iron and Vitamin C content make it an essential winter ally for supporting your immune system against seasonal chills.</p>
 
             <h3>The Moringa Winter Latte</h3>
-            <p>One of the most comforting ways to consume our natural Moringa powder during the cooler months is in a warm botanical latte. Simply whisk one teaspoon of Nutri Thrive Moringa into a cup of steamed oat or almond milk, adding a touch of ginger and local honey. The ginger provides a natural thermogenic effect to warm you from the inside out, while the Moringa delivers a dense profile of 90+ nutrients to keep your energy levels stable even on the shortest days of the year.</p>
+            <p>One of the most comforting ways to consume our natural Moringa powder during the cooler months is in a warm botanical latte. Simply whisk one teaspoon of <a href="https://nutrithrive.com.au/products/moringa-powder/">Nutri Thrive Moringa</a> into a cup of steamed oat or almond milk, adding a touch of ginger and local honey. The ginger provides a natural thermogenic effect to warm you from the inside out, while the Moringa delivers a dense profile of 90+ nutrients to keep your energy levels stable even on the shortest days of the year.</p>
+            <p><a href="https://nutrithrive.com.au/products/moringa-powder/" style="display: inline-block; padding: 0.45rem 1rem; background: rgba(23,92,54,0.12); color: var(--primary); border-radius: 8px; font-weight: 600; text-decoration: none;">Get Moringa for your winter latte →</a></p>
 
             <h3>A Natural Shield for Shorter Days</h3>
-            <p>Winter in the Southern Hemisphere often means less sunlight and a potential dip in mood and energy. Because Moringa is a natural source of magnesium and amino acids, incorporating it into your evening soups or stews helps your body recover from the day's stressors. At Nutri Thrive, we ship our natural Moringa products worldwide, ensuring that whether you're facing a Sydney winter or a northern hemisphere breeze, you have the "Miracle Tree" in your pantry to help you stay resilient and nourished.</p>
+            <p>Winter in the Southern Hemisphere often means less sunlight and a potential dip in mood and energy. Because Moringa is a natural source of magnesium and amino acids, incorporating it into your evening soups or stews—along with our <a href="https://nutrithrive.com.au/products/curry-leaves/">dried curry leaves</a> for warmth and flavour—helps your body recover from the day's stressors. At Nutri Thrive, we ship our natural <a href="https://nutrithrive.com.au/products/moringa-powder/">Moringa</a> and <a href="https://nutrithrive.com.au/products/curry-leaves/">curry leaves</a> worldwide, ensuring that whether you're facing a Sydney winter or a northern hemisphere breeze, you have the "Miracle Tree" in your pantry to help you stay resilient and nourished.</p>
 
             <h2>The Nighttime Anchor: Unwinding with Moringa for Restful Sleep</h2>
             <p>While Moringa is famous for its morning energy boost, it is an incredible tool for your nighttime ritual. Rich in tryptophan—the amino acid your body uses to produce serotonin and melatonin—Moringa acts as a natural signal for your nervous system to transition from the high-paced "Sydney hustle" into a state of deep recovery.</p>
 
             <h3>The Nutri Thrive "Moon-Milk" Recipe</h3>
-            <p>For a calming evening, whisk a half-teaspoon of Nutri Thrive Moringa into warm coconut or almond milk. The high magnesium content in the leaves helps relax tense muscles after a long day of work or exercise, while the 46 antioxidants go to work repairing cellular damage while you sleep. Unlike caffeinated teas, this natural botanical infusion is entirely stimulant-free, making it the perfect "nightcap" for those living in busy time zones.</p>
+            <p>For a calming evening, whisk a half-teaspoon of <a href="https://nutrithrive.com.au/products/moringa-powder/">Nutri Thrive Moringa</a> into warm coconut or almond milk. The high magnesium content in the leaves helps relax tense muscles after a long day of work or exercise, while the 46 antioxidants go to work repairing cellular damage while you sleep. Unlike caffeinated teas, this natural botanical infusion is entirely stimulant-free, making it the perfect "nightcap" for those living in busy time zones. Prefer a cuppa? Try our <a href="https://nutrithrive.com.au/products/black-tea/">black tea</a> earlier in the day and save Moringa for the evening.</p>
+            <p><a href="https://nutrithrive.com.au/products/moringa-powder/" style="display: inline-block; padding: 0.45rem 1rem; background: rgba(23,92,54,0.12); color: var(--primary); border-radius: 8px; font-weight: 600; text-decoration: none;">Buy Moringa for Moon-Milk →</a></p>
 
             <h3>Why Moringa at Night?</h3>
             <ul>
@@ -135,9 +195,18 @@
             </ul>
             <p>At Nutri Thrive, we provide 100% natural Moringa that supports your body's rhythm 24 hours a day. Whether you are winding down in Victoria or anywhere across the globe, our worldwide shipping ensures your nighttime wellness routine is never interrupted.</p>
 
-            <p style="margin-top: 2.5rem; padding: 1.25rem; background: #f3fbf7; border-radius: 12px; border: 1px solid rgba(23,92,54,0.15);">
-                <strong style="color: var(--primary);">Ready to sync your routine?</strong> <a href="https://nutrithrive.com.au/products/moringa-powder/">Shop Nutri Thrive Moringa</a> — 100% natural, shipped worldwide from Victoria. 3+1 bundle from $31.60.
-            </p>
+            <div class="blog-cta-strip" style="margin-top: 2.5rem;">
+                <h3>Ready to sync your routine? Shop the full Nutri Thrive range</h3>
+                <p>100% natural products, shipped worldwide from Victoria. Free shipping on qualifying orders Australia-wide.</p>
+                <div class="blog-cta-btns">
+                    <a href="https://nutrithrive.com.au/products/moringa-powder/" class="btn-primary">🛒 Moringa Powder — from $31.60</a>
+                    <a href="https://nutrithrive.com.au/products/black-tea/" class="btn-secondary">Black Tea</a>
+                    <a href="https://nutrithrive.com.au/products/curry-leaves/" class="btn-secondary">Curry Leaves</a>
+                    <a href="https://nutrithrive.com.au/products/moringa-soap/" class="btn-secondary">Moringa Soap</a>
+                    <a href="https://nutrithrive.com.au/products/combo-pack/" class="btn-secondary">Combo Pack</a>
+                    <a href="https://nutrithrive.com.au/products/" class="btn-secondary">View All</a>
+                </div>
+            </div>
             <p style="margin-top: 1.5rem;"><a href="/blog/index.html">← Back to Blog</a></p>
         </div>
     </article>
