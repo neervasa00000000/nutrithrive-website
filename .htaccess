@@ -189,7 +189,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^faq\.html$ /pages/faq/faq.html [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^thank-you\.html$ /pages/contact/thank-you.html [L]
+    RewriteRule ^thank-you\.html$ /pages/shop/thank-you.html [L]
     
     # Products redirects - redirect all /pages/products/ to /products/ (already handled above, but keeping for fallback)
     
@@ -238,6 +238,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^contact/contact\.html$ /pages/contact/contact.html [R=301,L]
     RewriteRule ^homepage/index\.html$ / [R=301,L]
     RewriteRule ^homepage/?$ / [R=301,L]
+    RewriteRule ^pages/melbourne-page\.html$ /melbourne/ [R=301,L]
     
     # Fix blog redirects
     RewriteRule ^pages/blog/blog\.html$ /blog/ [R=301,L]
@@ -328,6 +329,7 @@ RedirectMatch 301 ^/about/about\.html$ /pages/about/about.html
 RedirectMatch 301 ^/contact/contact\.html$ /pages/contact/contact.html
 RedirectMatch 301 ^/homepage/index\.html$ /
 RedirectMatch 301 ^/homepage/?$ /
+RedirectMatch 301 ^/pages/melbourne-page\.html$ /melbourne/
 
 # Fix blog redirects
 RedirectMatch 301 ^/pages/blog/blog\.html$ /blog/
