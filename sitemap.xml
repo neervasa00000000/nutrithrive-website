@@ -782,5 +782,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- New: Melbourne Food as Medicine map (2026) -->
+  <url>
+    <loc>https://nutrithrive.com.au/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   
 </urlset>
