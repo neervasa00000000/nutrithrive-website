@@ -9,8 +9,6 @@
       content="NutriThrive Labs: a collection of Java PDF utilities for conversion, extraction, manipulation, optimization, security, and annotation."
     />
     <meta name="robots" content="index, follow" />
-
-    <link rel="stylesheet" href="/styles/global/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,366 +23,1104 @@
     <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp" />
     <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp" />
     <meta name="msapplication-TileColor" content="#0f6b4d" />
-    <meta name="theme-color" content="#0f6b4d" />
+    <meta name="theme-color" content="#0b1020" />
 
     <style>
       :root {
-        --labs-max: 1100px;
+        color-scheme: dark;
+        --bg0: #070a14;
+        --bg1: #0b1020;
+        --panel: rgba(255, 255, 255, 0.06);
+        --panel2: rgba(255, 255, 255, 0.08);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --stroke2: rgba(255, 255, 255, 0.16);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted2: rgba(255, 255, 255, 0.52);
+        --brand: #7c3aed;
+        --brand2: #22c55e;
+        --danger: #ef4444;
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        --r: 16px;
+        --max: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        background: radial-gradient(1200px 600px at 25% 10%, rgba(124, 58, 237, 0.35), transparent 60%),
+          radial-gradient(1000px 500px at 80% 35%, rgba(34, 197, 94, 0.22), transparent 55%),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .labs-topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(7, 10, 20, 0.55);
+        border-bottom: 1px solid var(--stroke);
+      }
+
+      .labs-topbar-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0.85rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .labs-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        min-width: 220px;
+      }
+
+      .labs-brand-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(34, 197, 94, 0.8));
+        box-shadow: 0 10px 25px rgba(124, 58, 237, 0.22);
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .labs-brand-mark svg {
+        width: 22px;
+        height: 22px;
+        opacity: 0.95;
+      }
+
+      .labs-brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .labs-brand-text strong {
+        font-size: 0.98rem;
+        letter-spacing: -0.01em;
+      }
+
+      .labs-brand-text span {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .labs-topnav {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .chiplink {
+        padding: 0.5rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        font-weight: 700;
+        font-size: 0.85rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      }
+
+      .chiplink:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .chiplink.primary {
+        border-color: rgba(124, 58, 237, 0.5);
+        background: rgba(124, 58, 237, 0.18);
       }
 
       .labs-shell {
-        max-width: var(--labs-max);
+        max-width: var(--max);
         margin: 0 auto;
-        padding: 2.5rem 1.25rem 3.5rem;
+        padding: 1.4rem 1rem 2.75rem;
       }
 
-      .labs-hero {
+      .hero {
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
-        gap: 1.5rem;
-        align-items: center;
-        background: #ffffff;
-        border: 1px solid rgba(15, 107, 77, 0.12);
-        border-radius: 16px;
-        padding: 1.75rem;
-        box-shadow: 0 8px 20px rgba(15, 107, 77, 0.08);
+        gap: 1rem;
+        align-items: stretch;
       }
 
-      .labs-hero h1 {
+      .hero-card {
+        border-radius: calc(var(--r) + 6px);
+        border: 1px solid var(--stroke);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+        box-shadow: var(--shadow);
+        padding: 1.25rem 1.25rem 1.1rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: -40% -30%;
+        background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.35), transparent 55%),
+          radial-gradient(circle at 75% 45%, rgba(34, 197, 94, 0.22), transparent 52%);
+        filter: blur(22px);
+        opacity: 0.9;
+        pointer-events: none;
+      }
+
+      .hero-card > * {
+        position: relative;
+      }
+
+      .hero h1 {
         margin: 0 0 0.5rem 0;
-        color: var(--primary);
-        font-size: clamp(1.75rem, 2.6vw, 2.4rem);
-        letter-spacing: -0.02em;
-        line-height: 1.15;
+        font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+        letter-spacing: -0.03em;
+        line-height: 1.08;
       }
 
-      .labs-hero p {
-        margin: 0.25rem 0 0 0;
-        color: #1f2937;
+      .hero p {
+        margin: 0;
+        color: var(--muted);
         line-height: 1.75;
         font-size: 1.02rem;
       }
 
-      .labs-hero .labs-meta {
-        margin-top: 1rem;
+      .meta-row {
+        margin-top: 0.9rem;
         display: flex;
-        gap: 0.75rem;
         flex-wrap: wrap;
+        gap: 0.5rem;
       }
 
       .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding: 0.45rem 0.7rem;
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.42rem 0.65rem;
         border-radius: 999px;
-        border: 1px solid rgba(15, 107, 77, 0.18);
-        background: rgba(15, 107, 77, 0.06);
-        color: var(--primary);
-        font-weight: 700;
-        font-size: 0.85rem;
       }
 
-      .labs-actions {
-        display: flex;
-        flex-direction: column;
+      .pill.green {
+        border-color: rgba(34, 197, 94, 0.35);
+        background: rgba(34, 197, 94, 0.12);
+      }
+
+      .pill.purple {
+        border-color: rgba(124, 58, 237, 0.42);
+        background: rgba(124, 58, 237, 0.14);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 0.75rem;
-        align-items: flex-end;
+        margin-top: 1rem;
       }
 
-      .labs-actions a {
-        display: inline-block;
-        padding: 0.9rem 1.1rem;
-        border-radius: 999px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: transform 0.15s ease, opacity 0.15s ease;
-        text-align: center;
-        width: 100%;
-        max-width: 240px;
+      .stat {
+        border-radius: var(--r);
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.75rem;
       }
 
-      .labs-actions a:hover {
-        transform: translateY(-1px);
-        opacity: 0.95;
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: #fff;
-      }
-
-      .btn-secondary {
-        background: #fff;
-        color: var(--primary);
-        border: 1px solid rgba(15, 107, 77, 0.25);
-      }
-
-      .section {
-        margin-top: 2.25rem;
-      }
-
-      .section h2 {
-        margin: 0 0 0.75rem 0;
-        font-size: 1.35rem;
-        color: var(--primary);
+      .stat strong {
+        display: block;
+        font-size: 1.05rem;
         letter-spacing: -0.01em;
       }
 
-      .section .section-desc {
-        margin: 0 0 1.1rem 0;
-        color: #374151;
-        line-height: 1.75;
+      .stat span {
+        display: block;
+        color: var(--muted2);
+        font-size: 0.82rem;
+        margin-top: 0.2rem;
+      }
+
+      .panel {
+        border-radius: calc(var(--r) + 6px);
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+      }
+
+      .layout {
+        margin-top: 1.25rem;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .sidebar h2,
+      .catalog h2 {
+        margin: 0 0 0.65rem 0;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted2);
+      }
+
+      .search {
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .search input {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 0.85rem 0.9rem;
+        color: var(--text);
+        outline: none;
+        font-weight: 700;
+      }
+
+      .search input::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 700;
+      }
+
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        cursor: pointer;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0.48rem 0.65rem;
+        font-weight: 800;
+        font-size: 0.84rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+        user-select: none;
+      }
+
+      .filter-btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+      }
+
+      .filter-btn[data-active="true"] {
+        border-color: rgba(124, 58, 237, 0.6);
+        background: rgba(124, 58, 237, 0.22);
+      }
+
+      .hint {
+        margin-top: 0.7rem;
+        color: var(--muted2);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .catalog-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
+      }
+
+      .catalog-header h2 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: -0.01em;
+        text-transform: none;
+      }
+
+      .count {
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 700;
       }
 
       .tool-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
       }
 
-      .tool-card {
-        background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 14px;
-        padding: 1rem;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      .tool {
+        border-radius: 18px;
+        border: 1px solid var(--stroke);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+        padding: 0.95rem;
+        overflow: hidden;
+      }
+
+      .tool-top {
         display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
+        justify-content: space-between;
+        gap: 0.75rem;
+        align-items: flex-start;
       }
 
-      .tool-card h3 {
+      .tool h3 {
         margin: 0;
-        font-size: 1.02rem;
-        color: #111827;
+        font-size: 1.05rem;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
       }
 
-      .tool-card p {
-        margin: 0;
-        color: #4b5563;
-        line-height: 1.7;
+      .badge {
+        flex: 0 0 auto;
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.78);
+        padding: 0.35rem 0.55rem;
+        border-radius: 999px;
+      }
+
+      .tool p {
+        margin: 0.55rem 0 0 0;
+        color: var(--muted);
+        line-height: 1.65;
         font-size: 0.95rem;
       }
 
-      .tool-card .prompt {
-        background: #0b1220;
-        color: #e5e7eb;
-        border-radius: 10px;
-        padding: 0.75rem;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
-        font-size: 0.85rem;
-        line-height: 1.55;
+      details {
+        margin-top: 0.65rem;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+        overflow: hidden;
+      }
+
+      summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 0.75rem 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        user-select: none;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .prompt {
+        padding: 0 0.8rem 0.85rem;
+        font-family: var(--mono);
+        color: rgba(255, 255, 255, 0.88);
         white-space: pre-wrap;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        line-height: 1.55;
+        font-size: 0.86rem;
+      }
+
+      .tool-actions {
+        margin-top: 0.75rem;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        cursor: pointer;
+        border-radius: 12px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0.55rem 0.7rem;
+        font-weight: 900;
+        font-size: 0.86rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .btn.copy {
+        border-color: rgba(34, 197, 94, 0.35);
+        background: rgba(34, 197, 94, 0.12);
+      }
+
+      .btn.jump {
+        border-color: rgba(124, 58, 237, 0.38);
+        background: rgba(124, 58, 237, 0.14);
+      }
+
+      .toast {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 50;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(12px);
+        padding: 0.85rem 0.95rem;
+        box-shadow: var(--shadow);
+        color: rgba(255, 255, 255, 0.88);
+        font-weight: 800;
+        transform: translateY(10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+
+      .toast[data-show="true"] {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .labs-footer {
-        margin-top: 2.5rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-        color: #6b7280;
-        font-size: 0.95rem;
+        margin-top: 1.25rem;
+        color: var(--muted2);
+        font-weight: 700;
         display: flex;
         justify-content: space-between;
         gap: 1rem;
         flex-wrap: wrap;
+        padding: 0.75rem 0;
       }
 
       @media (max-width: 980px) {
-        .tool-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .labs-hero {
+        .hero {
           grid-template-columns: 1fr;
         }
-        .labs-actions {
-          align-items: flex-start;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .tool-grid {
+        .layout {
           grid-template-columns: 1fr;
         }
-        .labs-shell {
-          padding: 2rem 1rem 3rem;
+        .tool-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="navbar">
-        <a href="/" class="logo">
-          <img
-            src="/assets/images/logo/LOGO.webp"
-            alt="NutriThrive Logo"
-            width="50"
-            height="50"
-            loading="eager"
-            decoding="async"
-            style="height: 1.8rem; width: auto; margin-right: 0.5rem"
-          />
-          NutriThrive Labs
+    <header class="labs-topbar">
+      <div class="labs-topbar-inner">
+        <a class="labs-brand" href="/nutrithrive_labs/">
+          <span class="labs-brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M7 17.5c2.3-3.2 3.7-4.7 6.8-7.7 1.2-1.2 2.8-2.3 5.2-3.3"
+                stroke="rgba(255,255,255,0.92)"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M8.4 8.2c1.4 1.7 2.4 3.6 2.9 5.7"
+                stroke="rgba(255,255,255,0.86)"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M5 12.6c2.1.3 4 .9 5.7 1.9"
+                stroke="rgba(255,255,255,0.78)"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="labs-brand-text">
+            <strong>NutriThrive Labs</strong>
+            <span>PDF utilities · Java tools</span>
+          </span>
         </a>
-        <nav class="nav-links">
-          <a href="/">Main site</a>
-          <a href="#tools" class="active">PDF tools</a>
-          <a href="/blog/">Blog</a>
-          <a href="/contact">Contact</a>
+
+        <nav class="labs-topnav" aria-label="Labs navigation">
+          <a class="chiplink" href="/">Main site</a>
+          <a class="chiplink" href="/blog/">Blog</a>
+          <a class="chiplink" href="/contact">Contact</a>
+          <a class="chiplink primary" href="#catalog">Tool catalog</a>
         </nav>
-        <button
-          class="hamburger"
-          aria-label="Toggle navigation menu"
-          onclick="window.ntToggleMenu && window.ntToggleMenu()"
-        >
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </button>
       </div>
     </header>
 
     <main class="labs-shell">
-      <section class="labs-hero">
-        <div>
-          <h1>PDF Utilities (Java)</h1>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>PDF Tools Catalog</h1>
           <p>
-            A simple homepage for your <strong>NutriThrive Labs</strong> tools list. Each item below is
-            the exact “full working” spec prompt you provided, grouped by category.
+            A purpose-built Labs UI (not the main NutriThrive theme). Search, filter by category, and copy
+            the exact “full working” prompts you provided.
           </p>
-          <div class="labs-meta">
-            <span class="pill">Apache PDFBox</span>
-            <span class="pill">openhtmltopdf</span>
-            <span class="pill">Tabula-java</span>
-            <span class="pill">ZXing</span>
+          <div class="meta-row" aria-label="Tech stack tags">
+            <span class="pill purple">Apache PDFBox</span>
+            <span class="pill purple">openhtmltopdf</span>
+            <span class="pill green">Tabula-java</span>
+            <span class="pill green">ZXing</span>
+          </div>
+          <div class="stats" aria-label="Quick stats">
+            <div class="stat">
+              <strong>20</strong>
+              <span>Utilities listed</span>
+            </div>
+            <div class="stat">
+              <strong>4</strong>
+              <span>Categories</span>
+            </div>
+            <div class="stat">
+              <strong>Copy-ready</strong>
+              <span>Prompts in one click</span>
+            </div>
           </div>
         </div>
-        <div class="labs-actions">
-          <a class="btn-primary" href="#tools">View tool list</a>
-          <a class="btn-secondary" href="/">Back to nutrithrive.com.au</a>
-        </div>
+
+        <aside class="panel" aria-label="Quick links">
+          <div style="display: grid; gap: 0.6rem">
+            <a class="chiplink jump" href="#catalog">Jump to catalog</a>
+            <a class="chiplink" href="https://nutrithrive.com.au/nutrithrive_labs/">Live page</a>
+            <a class="chiplink" href="/">Back to nutrithrive.com.au</a>
+          </div>
+          <div class="hint">
+            Tip: type “PDFBox”, “rotate”, “password”, “QR”, or “table” to instantly filter tools.
+          </div>
+        </aside>
       </section>
 
-      <section id="tools" class="section">
-        <h2>Conversion &amp; Extraction</h2>
-        <p class="section-desc">Convert between formats and extract content (text, images, tables).</p>
-        <div class="tool-grid">
-          <article class="tool-card">
-            <h3>PDF to Text</h3>
-            <div class="prompt">"Create a Java utility using Apache PDFBox that takes a PDF file input and saves all extracted text into a .txt file, preserving basic paragraph spacing."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Image to PDF</h3>
-            <div class="prompt">"Write a Java program that takes a folder of JPG/PNG images and wraps each image into a single multi-page PDF document where each page matches the image dimensions."</div>
-          </article>
-          <article class="tool-card">
-            <h3>PDF to Image</h3>
-            <div class="prompt">"Create a Java tool that renders each page of a PDF as a high-resolution (300 DPI) PNG image saved to a 'conversion' folder."</div>
-          </article>
-          <article class="tool-card">
-            <h3>HTML to PDF</h3>
-            <div class="prompt">"Build a Java utility using the openhtmltopdf library to convert a local HTML file string into a formatted PDF document."</div>
-          </article>
-          <article class="tool-card">
-            <h3>PDF Table Extractor</h3>
-            <div class="prompt">"Develop a Java class using Tabula-java or PDFBox that detects table structures in a PDF and exports the row/column data into a CSV format."</div>
-          </article>
-        </div>
-      </section>
+      <section id="catalog" class="layout" aria-label="Tools catalog">
+        <aside class="panel sidebar">
+          <h2>Search</h2>
+          <div class="search">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search tools… (e.g., rotate, PDFBox, QR)"
+              autocomplete="off"
+            />
+          </div>
 
-      <section class="section">
-        <h2>Manipulation &amp; Organization</h2>
-        <p class="section-desc">Merge, split, reorder, rotate, and remove pages.</p>
-        <div class="tool-grid">
-          <article class="tool-card">
-            <h3>PDF Merger</h3>
-            <div class="prompt">"Create a Java function that accepts a List of File objects and merges them into one single output.pdf using PDFMergerUtility."</div>
-          </article>
-          <article class="tool-card">
-            <h3>PDF Splitter</h3>
-            <div class="prompt">"Write a Java script that splits a large PDF into individual one-page documents and saves them with the naming convention 'page_n.pdf'."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Page Reorder</h3>
-            <div class="prompt">"Build a Java method that takes an existing PDF and an integer array of page indices (e.g., {2, 0, 1}) to create a new PDF in that specific page order."</div>
-          </article>
-          <article class="tool-card">
-            <h3>PDF Rotator</h3>
-            <div class="prompt">"Create a Java utility that iterates through all pages of a PDF and rotates them 90 degrees clockwise before saving."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Page Remover</h3>
-            <div class="prompt">"Write a Java tool that takes a PDF and a 'pagesToRemove' integer list, then generates a new PDF excluding those specific page numbers."</div>
-          </article>
-        </div>
-      </section>
+          <div style="height: 0.9rem"></div>
+          <h2>Category</h2>
+          <div class="filter-row" role="group" aria-label="Category filters">
+            <button class="filter-btn" type="button" data-filter="all" data-active="true">All</button>
+            <button class="filter-btn" type="button" data-filter="conversion">Conversion</button>
+            <button class="filter-btn" type="button" data-filter="manipulation">Manipulation</button>
+            <button class="filter-btn" type="button" data-filter="security">Security</button>
+            <button class="filter-btn" type="button" data-filter="annotation">Annotation</button>
+          </div>
 
-      <section class="section">
-        <h2>Optimization &amp; Security</h2>
-        <p class="section-desc">Reduce size, apply protection, unlock, edit metadata, and convert to grayscale.</p>
-        <div class="tool-grid">
-          <article class="tool-card">
-            <h3>PDF Compressor</h3>
-            <div class="prompt">"Develop a Java tool that reduces PDF size by iterating through all PDImageXObjects and reducing their JPEG quality/sampling rate."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Password Protector</h3>
-            <div class="prompt">"Build a Java utility that applies a user password to a PDF using StandardProtectionPolicy with 256-bit AES encryption."</div>
-          </article>
-          <article class="tool-card">
-            <h3>PDF Unlocker</h3>
-            <div class="prompt">"Write a Java script that takes an encrypted PDF and a password, then saves a new 'unlocked' version with all access permissions enabled."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Metadata Editor</h3>
-            <div class="prompt">"Create a Java class to update the PDDocumentInformation (Title, Author, Subject, Keywords) of an existing PDF file."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Grayscale Converter</h3>
-            <div class="prompt">"Build a Java function that processes a PDF and converts all colored text and images to a grayscale color space to reduce printing costs."</div>
-          </article>
-        </div>
-      </section>
+          <div class="hint">
+            Filters affect the list on the right. Your content stays identical—only the presentation and UX
+            changed.
+          </div>
+        </aside>
 
-      <section class="section">
-        <h2>Content Editing &amp; Annotation</h2>
-        <p class="section-desc">Add watermarks, page numbers, signatures, QR codes, and redact text.</p>
-        <div class="tool-grid">
-          <article class="tool-card">
-            <h3>Watermark Creator</h3>
-            <div class="prompt">"Write a Java program that overlays a semi-transparent 'CONFIDENTIAL' text diagonal across every page of a PDF using a PDPageContentStream."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Page Numberer</h3>
-            <div class="prompt">"Create a Java utility that adds 'Page X of Y' text to the bottom-right corner of every page in a PDF document."</div>
-          </article>
-          <article class="tool-card">
-            <h3>PDF Signer</h3>
-            <div class="prompt">"Build a Java tool that takes an image file (signature.png) and places it at specific X,Y coordinates on the last page of a PDF."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Barcode/QR Generator</h3>
-            <div class="prompt">"Develop a Java tool using ZXing and PDFBox that generates a QR code from a URL and embeds it onto the first page of a PDF."</div>
-          </article>
-          <article class="tool-card">
-            <h3>Text Redactor</h3>
-            <div class="prompt">"Write a Java script that searches for a specific regex (like email addresses) in a PDF and draws a black rectangle over those coordinates to redact them."</div>
-          </article>
-        </div>
-      </section>
+        <section class="panel catalog">
+          <div class="catalog-header">
+            <h2>Tools</h2>
+            <div class="count" id="countLabel">Showing 0</div>
+          </div>
 
-      <div class="labs-footer">
-        <div>© 2026 NutriThrive Labs</div>
-        <div><a href="/" style="color: var(--primary); text-decoration: none; font-weight: 700">Return to main site</a></div>
-      </div>
+          <div class="tool-grid" id="toolGrid">
+            <!-- Conversion & Extraction -->
+            <article class="tool" data-category="conversion" data-title="PDF to Text">
+              <div class="tool-top">
+                <h3>PDF to Text</h3>
+                <span class="badge">conversion</span>
+              </div>
+              <p>Extract text to a .txt file with basic paragraph spacing.</p>
+              <details>
+                <summary>
+                  Prompt
+                  <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span>
+                </summary>
+                <div class="prompt" data-prompt>
+"Create a Java utility using Apache PDFBox that takes a PDF file input and saves all extracted text into a .txt file, preserving basic paragraph spacing."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="conversion" data-title="Image to PDF">
+              <div class="tool-top">
+                <h3>Image to PDF</h3>
+                <span class="badge">conversion</span>
+              </div>
+              <p>Wrap a folder of images into a multi-page PDF with matching dimensions.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Write a Java program that takes a folder of JPG/PNG images and wraps each image into a single multi-page PDF document where each page matches the image dimensions."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="conversion" data-title="PDF to Image">
+              <div class="tool-top">
+                <h3>PDF to Image</h3>
+                <span class="badge">conversion</span>
+              </div>
+              <p>Render each page as 300 DPI PNGs into a conversion folder.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Create a Java tool that renders each page of a PDF as a high-resolution (300 DPI) PNG image saved to a 'conversion' folder."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="conversion" data-title="HTML to PDF">
+              <div class="tool-top">
+                <h3>HTML to PDF</h3>
+                <span class="badge">conversion</span>
+              </div>
+              <p>Convert a local HTML string/file into a formatted PDF with openhtmltopdf.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Build a Java utility using the openhtmltopdf library to convert a local HTML file string into a formatted PDF document."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="conversion" data-title="PDF Table Extractor">
+              <div class="tool-top">
+                <h3>PDF Table Extractor</h3>
+                <span class="badge">conversion</span>
+              </div>
+              <p>Detect tables and export row/column data to CSV.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Develop a Java class using Tabula-java or PDFBox that detects table structures in a PDF and exports the row/column data into a CSV format."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <!-- Manipulation & Organization -->
+            <article class="tool" data-category="manipulation" data-title="PDF Merger">
+              <div class="tool-top">
+                <h3>PDF Merger</h3>
+                <span class="badge">manipulation</span>
+              </div>
+              <p>Merge multiple PDFs into one output file.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Create a Java function that accepts a List of File objects and merges them into one single output.pdf using PDFMergerUtility."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="manipulation" data-title="PDF Splitter">
+              <div class="tool-top">
+                <h3>PDF Splitter</h3>
+                <span class="badge">manipulation</span>
+              </div>
+              <p>Split into one-page PDFs using a predictable naming convention.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Write a Java script that splits a large PDF into individual one-page documents and saves them with the naming convention 'page_n.pdf'."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="manipulation" data-title="Page Reorder">
+              <div class="tool-top">
+                <h3>Page Reorder</h3>
+                <span class="badge">manipulation</span>
+              </div>
+              <p>Create a new PDF with pages arranged by an index array.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Build a Java method that takes an existing PDF and an integer array of page indices (e.g., {2, 0, 1}) to create a new PDF in that specific page order."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="manipulation" data-title="PDF Rotator">
+              <div class="tool-top">
+                <h3>PDF Rotator</h3>
+                <span class="badge">manipulation</span>
+              </div>
+              <p>Rotate all pages 90° clockwise and save.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Create a Java utility that iterates through all pages of a PDF and rotates them 90 degrees clockwise before saving."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="manipulation" data-title="Page Remover">
+              <div class="tool-top">
+                <h3>Page Remover</h3>
+                <span class="badge">manipulation</span>
+              </div>
+              <p>Remove selected pages and output a cleaned PDF.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Write a Java tool that takes a PDF and a 'pagesToRemove' integer list, then generates a new PDF excluding those specific page numbers."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <!-- Optimization & Security -->
+            <article class="tool" data-category="security" data-title="PDF Compressor">
+              <div class="tool-top">
+                <h3>PDF Compressor</h3>
+                <span class="badge">security</span>
+              </div>
+              <p>Reduce PDF size by downsampling / lowering JPEG quality of images.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Develop a Java tool that reduces PDF size by iterating through all PDImageXObjects and reducing their JPEG quality/sampling rate."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="security" data-title="Password Protector">
+              <div class="tool-top">
+                <h3>Password Protector</h3>
+                <span class="badge">security</span>
+              </div>
+              <p>Apply a user password with AES-256 encryption.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Build a Java utility that applies a user password to a PDF using StandardProtectionPolicy with 256-bit AES encryption."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="security" data-title="PDF Unlocker">
+              <div class="tool-top">
+                <h3>PDF Unlocker</h3>
+                <span class="badge">security</span>
+              </div>
+              <p>Save a new unlocked version with all access permissions enabled.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Write a Java script that takes an encrypted PDF and a password, then saves a new 'unlocked' version with all access permissions enabled."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="security" data-title="Metadata Editor">
+              <div class="tool-top">
+                <h3>Metadata Editor</h3>
+                <span class="badge">security</span>
+              </div>
+              <p>Update title/author/subject/keywords metadata on an existing PDF.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Create a Java class to update the PDDocumentInformation (Title, Author, Subject, Keywords) of an existing PDF file."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="security" data-title="Grayscale Converter">
+              <div class="tool-top">
+                <h3>Grayscale Converter</h3>
+                <span class="badge">security</span>
+              </div>
+              <p>Convert colored text/images to grayscale to reduce printing costs.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Build a Java function that processes a PDF and converts all colored text and images to a grayscale color space to reduce printing costs."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <!-- Content Editing & Annotation -->
+            <article class="tool" data-category="annotation" data-title="Watermark Creator">
+              <div class="tool-top">
+                <h3>Watermark Creator</h3>
+                <span class="badge">annotation</span>
+              </div>
+              <p>Overlay a semi-transparent diagonal watermark across every page.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Write a Java program that overlays a semi-transparent 'CONFIDENTIAL' text diagonal across every page of a PDF using a PDPageContentStream."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="annotation" data-title="Page Numberer">
+              <div class="tool-top">
+                <h3>Page Numberer</h3>
+                <span class="badge">annotation</span>
+              </div>
+              <p>Add “Page X of Y” to the bottom-right corner on every page.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Create a Java utility that adds 'Page X of Y' text to the bottom-right corner of every page in a PDF document."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="annotation" data-title="PDF Signer">
+              <div class="tool-top">
+                <h3>PDF Signer</h3>
+                <span class="badge">annotation</span>
+              </div>
+              <p>Place a signature image at X,Y coordinates on the last page.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Build a Java tool that takes an image file (signature.png) and places it at specific X,Y coordinates on the last page of a PDF."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="annotation" data-title="Barcode/QR Generator">
+              <div class="tool-top">
+                <h3>Barcode/QR Generator</h3>
+                <span class="badge">annotation</span>
+              </div>
+              <p>Generate a QR code and embed it onto the first PDF page.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Develop a Java tool using ZXing and PDFBox that generates a QR code from a URL and embeds it onto the first page of a PDF."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+
+            <article class="tool" data-category="annotation" data-title="Text Redactor">
+              <div class="tool-top">
+                <h3>Text Redactor</h3>
+                <span class="badge">annotation</span>
+              </div>
+              <p>Find sensitive text (regex) and redact by drawing black rectangles.</p>
+              <details>
+                <summary>Prompt <span style="color: rgba(255, 255, 255, 0.55); font-weight: 900">click to expand</span></summary>
+                <div class="prompt" data-prompt>
+"Write a Java script that searches for a specific regex (like email addresses) in a PDF and draws a black rectangle over those coordinates to redact them."
+                </div>
+              </details>
+              <div class="tool-actions">
+                <button class="btn copy" type="button" data-copy>Copy prompt</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="labs-footer">
+            <div>© 2026 NutriThrive Labs</div>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap">
+              <a class="chiplink" href="/">Return to main site</a>
+              <a class="chiplink" href="#catalog">Back to top</a>
+            </div>
+          </div>
+        </section>
+      </section>
     </main>
 
-    <script src="/scripts/global/cart.js"></script>
-    <script src="/scripts/global/cart-header.js"></script>
-    <script src="/scripts/global/script.js" defer></script>
+    <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+    <script>
+      (function () {
+        const searchInput = document.getElementById("searchInput");
+        const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+        const tools = Array.from(document.querySelectorAll(".tool"));
+        const countLabel = document.getElementById("countLabel");
+        const toast = document.getElementById("toast");
+
+        let activeFilter = "all";
+        let toastTimer = null;
+
+        function normalize(s) {
+          return (s || "").toLowerCase().trim();
+        }
+
+        function showToast(message) {
+          if (!toast) return;
+          toast.textContent = message;
+          toast.dataset.show = "true";
+          if (toastTimer) window.clearTimeout(toastTimer);
+          toastTimer = window.setTimeout(() => {
+            toast.dataset.show = "false";
+          }, 1400);
+        }
+
+        async function copyText(text) {
+          try {
+            await navigator.clipboard.writeText(text);
+            showToast("Prompt copied");
+            return;
+          } catch (e) {
+            // Fallback for older browsers
+          }
+
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+            showToast("Prompt copied");
+          } catch (e) {
+            showToast("Copy failed");
+          } finally {
+            document.body.removeChild(ta);
+          }
+        }
+
+        function update() {
+          const q = normalize(searchInput ? searchInput.value : "");
+          let shown = 0;
+
+          for (const el of tools) {
+            const cat = el.getAttribute("data-category") || "";
+            const title = el.getAttribute("data-title") || "";
+            const promptEl = el.querySelector("[data-prompt]");
+            const promptText = promptEl ? promptEl.textContent : "";
+            const hay = normalize([cat, title, promptText].join(" "));
+
+            const passFilter = activeFilter === "all" ? true : cat === activeFilter;
+            const passSearch = q.length === 0 ? true : hay.includes(q);
+            const visible = passFilter && passSearch;
+
+            el.style.display = visible ? "" : "none";
+            if (visible) shown++;
+          }
+
+          if (countLabel) {
+            countLabel.textContent = `Showing ${shown} of ${tools.length}`;
+          }
+        }
+
+        if (searchInput) {
+          searchInput.addEventListener("input", update);
+        }
+
+        for (const btn of filterButtons) {
+          btn.addEventListener("click", () => {
+            activeFilter = btn.getAttribute("data-filter") || "all";
+            for (const b of filterButtons) {
+              b.dataset.active = b === btn ? "true" : "false";
+            }
+            update();
+          });
+        }
+
+        document.addEventListener("click", (e) => {
+          const t = e.target;
+          if (!(t instanceof HTMLElement)) return;
+          const copyBtn = t.closest("[data-copy]");
+          if (!copyBtn) return;
+          const tool = t.closest(".tool");
+          const promptEl = tool ? tool.querySelector("[data-prompt]") : null;
+          const text = promptEl ? promptEl.textContent.trim() : "";
+          if (!text) {
+            showToast("Nothing to copy");
+            return;
+          }
+          copyText(text);
+        });
+
+        update();
+      })();
+    </script>
   </body>
 </html>
 
