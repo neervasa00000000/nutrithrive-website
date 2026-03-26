@@ -30,6 +30,8 @@
 
   const regexInput = document.getElementById("regexInput");
 
+  const dedupTextInput = document.getElementById("dedupTextInput");
+
   const toolHint = document.getElementById("toolHint");
   const securityDisabledNote = document.getElementById("securityDisabledNote");
 
@@ -58,7 +60,8 @@
     "fieldSignaturePos",
     "fieldQr",
     "fieldQrPos",
-    "fieldRedactor"
+    "fieldRedactor",
+    "fieldDedupText"
   ];
 
   function $id(id) {
@@ -794,6 +797,10 @@
     pdf_redactor: {
       hint: "Upload 1 PDF. Regex-based (best-effort) redaction for text items.",
       show: ["fieldRedactor"]
+    },
+    dedup_lines: {
+      hint: "Paste text (one line per entry) or upload a .txt file. Removes duplicates while preserving order.",
+      show: ["fieldDedupText"]
     }
   };
 
@@ -987,6 +994,23 @@
         const bytes = await readAsArrayBuffer(pdf);
         const blob = await pdfRedactRegex(bytes, regexText);
         addDownload("Redacted PDF", blob, "redacted.pdf");
+      } else if (tool === "dedup_lines") {
+        // Accept pasted text (textarea) OR an uploaded .txt
+        let inputText = (dedupTextInput && dedupTextInput.value) ? dedupTextInput.value : "";
+
+        const textFile = files.find(
+          (f) => f.name.toLowerCase().endsWith(".txt") || f.type === "text/plain"
+        );
+        if (textFile) {
+          inputText = await readFileText(textFile);
+        }
+
+        const trimmed = (inputText || "").replace(/\r/g, "");
+        if (!trimmed.trim()) throw new Error("Provide text to deduplicate (paste or upload a .txt file).");
+
+        const outText = dedupLinesPreserveOrder(trimmed);
+        const blob = new Blob([outText], { type: "text/plain;charset=utf-8" });
+        addDownload("Deduplicated text", blob, "deduplicated.txt");
       } else {
         throw new Error("Tool not implemented: " + tool);
       }
@@ -1008,10 +1032,26 @@
     mainFileInput.value = "";
     if (signatureFileInput) signatureFileInput.value = "";
     if (htmlTextEl) htmlTextEl.value = "";
+    if (dedupTextInput) dedupTextInput.value = "";
     resetDownloads();
     setStatus("Ready.");
     showToast("Cleared");
   });
+
+  function dedupLinesPreserveOrder(text) {
+    // Remove duplicates while preserving first occurrence order (exact line match).
+    const lines = String(text).split("\n");
+    const seen = new Set();
+    const out = [];
+
+    for (const line of lines) {
+      if (seen.has(line)) continue;
+      seen.add(line);
+      out.push(line);
+    }
+
+    return out.join("\n").trimEnd() + "\n";
+  }
 
   // Init
   applyTool(toolSelect.value);
