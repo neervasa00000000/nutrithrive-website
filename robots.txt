@@ -115,11 +115,6 @@ Sitemap: https://nutrithrive.com.au/sitemap.xml
 # Disallow: /admin/
 # Disallow: /private/
 
-# Disallow old URL structures that redirect (prevent Google from wasting crawl budget)
-Disallow: /pages/blog/
-Disallow: /pages/products/product-
-Disallow: /pages/homepage/
-
 # ====================
 # EXPLICITLY ALLOWED CONTENT
 # ====================

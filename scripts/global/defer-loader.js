@@ -7,6 +7,67 @@
 (function() {
   'use strict';
 
+  const SITE_ORIGIN = 'https://nutrithrive.com.au';
+
+  function ensureViewportMeta() {
+    try {
+      const desired = 'width=device-width, initial-scale=1';
+      let meta = document.querySelector('meta[name="viewport"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', 'viewport');
+        document.head.appendChild(meta);
+      }
+      const current = (meta.getAttribute('content') || '').trim();
+      if (current !== desired) {
+        meta.setAttribute('content', desired);
+      }
+    } catch (e) {
+      // noop
+    }
+  }
+
+  function normalizeCanonicalPath(pathname) {
+    // Always use leading slash.
+    let path = pathname || '/';
+    if (!path.startsWith('/')) path = `/${path}`;
+
+    // Convert /index.html to /
+    if (path.endsWith('/index.html')) path = path.slice(0, -'/index.html'.length) + '/';
+    if (path === '/index.html') path = '/';
+
+    // Ensure directory-style URLs have trailing slash.
+    const lastSegment = path.split('/').filter(Boolean).pop() || '';
+    const hasExtension = /\.[a-z0-9]+$/i.test(lastSegment);
+    if (!hasExtension && !path.endsWith('/')) path += '/';
+
+    // Ensure .html URLs do NOT have a trailing slash.
+    if (path.endsWith('.html/')) path = path.slice(0, -1);
+
+    // Collapse duplicate slashes (but preserve leading //? not applicable here).
+    path = path.replace(/\/{2,}/g, '/');
+
+    return path;
+  }
+
+  function ensureCanonicalLink() {
+    try {
+      const canonicalHref = `${SITE_ORIGIN}${normalizeCanonicalPath(window.location.pathname)}`;
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+      }
+      const current = (link.getAttribute('href') || '').trim();
+      if (current !== canonicalHref) {
+        link.setAttribute('href', canonicalHref);
+      }
+    } catch (e) {
+      // noop
+    }
+  }
+
   // Track loaded scripts to prevent duplicates
   const loadedScripts = new Set();
   const loadedInlines = new Set();
@@ -194,6 +255,96 @@
     }, options);
   }
 
+  function titleToCrumb(title) {
+    return (title || '')
+      .replace(/\s*\|\s*NutriThrive.*$/i, '')
+      .replace(/\s*–\s*NutriThrive.*$/i, '')
+      .trim();
+  }
+
+  function ensureBreadcrumbs() {
+    try {
+      if (document.querySelector('nav[aria-label="Breadcrumb"]')) return;
+
+      const path = normalizeCanonicalPath(window.location.pathname);
+      const isBlog = path.startsWith('/blog/') && path !== '/blog/' && path !== '/blog/index.html';
+      const isProduct = path.startsWith('/products/') && path !== '/products/' && path !== '/products/index.html';
+      if (!isBlog && !isProduct) return;
+
+      const header = document.querySelector('header');
+      const main = document.querySelector('main');
+      if (!header || !main) return;
+
+      const nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Breadcrumb');
+      nav.setAttribute(
+        'style',
+        'max-width:1200px;margin:1rem auto 0;padding:0 1.5rem;font-size:0.95rem;color:#4b5563;'
+      );
+
+      const sep = () => {
+        const s = document.createElement('span');
+        s.setAttribute('aria-hidden', 'true');
+        s.setAttribute('style', 'padding:0 0.5rem;');
+        s.textContent = '>';
+        return s;
+      };
+
+      const link = (href, text) => {
+        const a = document.createElement('a');
+        a.href = href;
+        a.textContent = text;
+        a.setAttribute('style', 'color:inherit;text-decoration:none;');
+        return a;
+      };
+
+      nav.appendChild(link('/', 'Home'));
+      nav.appendChild(sep());
+
+      if (isBlog) {
+        nav.appendChild(link('/blog/', 'Blog'));
+        nav.appendChild(sep());
+        const current = document.createElement('span');
+        current.setAttribute('aria-current', 'page');
+        current.setAttribute('style', 'color:#111827;font-weight:600;');
+        current.textContent = titleToCrumb(document.title) || 'Article';
+        nav.appendChild(current);
+      } else if (isProduct) {
+        nav.appendChild(link('/products/', 'Products'));
+        nav.appendChild(sep());
+        const current = document.createElement('span');
+        current.setAttribute('aria-current', 'page');
+        current.setAttribute('style', 'color:#111827;font-weight:600;');
+        current.textContent = titleToCrumb(document.title) || 'Product';
+        nav.appendChild(current);
+      }
+
+      main.insertBefore(nav, main.firstChild);
+    } catch (e) {
+      // noop
+    }
+  }
+
+  function enforceBlogTitleBrand() {
+    try {
+      const path = normalizeCanonicalPath(window.location.pathname);
+      if (!path.startsWith('/blog/')) return;
+      // Skip blog index pages.
+      if (path === '/blog/' || path === '/blog/index.html') return;
+
+      const brand = 'NutriThrive';
+      const current = (document.title || '').trim();
+      if (!current) return;
+      if (new RegExp(`\\|\\s*${brand}\\s*$`, 'i').test(current)) return;
+
+      // If a brand suffix exists (e.g. "NutriThrive Australia"), replace it.
+      const cleaned = current.replace(/\s*\|\s*NutriThrive(\s+Australia)?\s*$/i, '').trim();
+      document.title = `${cleaned} | ${brand}`;
+    } catch (e) {
+      // noop
+    }
+  }
+
   // Expose API globally
   window.DeferLoader = {
     loadScript,
@@ -205,6 +356,16 @@
     hasInteracted: () => interactionTriggered,
     hasIdled: () => idleTriggered
   };
+
+  // Technical SEO foundations (safe to run multiple times)
+  ensureViewportMeta();
+  ensureCanonicalLink();
+  enforceBlogTitleBrand();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureBreadcrumbs, { once: true });
+  } else {
+    ensureBreadcrumbs();
+  }
 
   // Log initialization (can be removed in production)
   if (window.console && console.log) {
