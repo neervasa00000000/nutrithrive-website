@@ -663,7 +663,10 @@
       // Blackout matched items
       for (const it of items) {
         const str = it.str || "";
-        if (!str || !regex.test(str)) continue;
+        if (!str) continue;
+        // Avoid issues with /g regex state
+        regex.lastIndex = 0;
+        if (!regex.test(str)) continue;
 
         // pdfjs item transform: x=e, y=f in text space (PDF units)
         const xPdf = it.transform[4];
