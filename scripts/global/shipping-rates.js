@@ -712,11 +712,21 @@ function getCountryList() {
     return COUNTRY_LIST;
 }
 
-// Export for use in other scripts
-window.ShippingRates = {
+// Export for use in other scripts (browser) and server-side code (Node).
+const ShippingRates = {
     calculate: calculateShipping,
     getCountryName: getCountryName,
     getWeightRange: getWeightRange,
     getCountryInfo: getCountryInfo,
     getCountryList: getCountryList
 };
+
+if (typeof window !== 'undefined') {
+    window.ShippingRates = ShippingRates;
+}
+
+// CommonJS export for Netlify Functions / server-side usage.
+// (Netlify Functions can load this without requiring a DOM.)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = ShippingRates;
+}

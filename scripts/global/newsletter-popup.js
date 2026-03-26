@@ -25,24 +25,81 @@
     function createPopup() {
         const overlay = document.createElement('div');
         overlay.className = 'newsletter-popup-overlay';
-        overlay.innerHTML = `
-            <div class="newsletter-popup">
-                <button class="newsletter-popup-close" aria-label="Close popup">&times;</button>
-                <h2>🌱 Stay Updated with NutriThrive</h2>
-                <p>Get exclusive health tips, product updates, special offers, and wellness insights delivered to your inbox!</p>
-                <form class="newsletter-popup-form" action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Newsletter Subscription - Blog Popup">
-                    <input type="hidden" name="_next" value="${window.location.href}">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email Address" required>
-                    <button type="submit">Subscribe Now</button>
-                    <div class="newsletter-popup-message"></div>
-                </form>
-                <p style="font-size: 0.85rem; color: #999; margin-top: 1rem; margin-bottom: 0;">We respect your privacy. Unsubscribe anytime.</p>
-            </div>
-        `;
+
+        const popup = document.createElement('div');
+        popup.className = 'newsletter-popup';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'newsletter-popup-close';
+        closeBtn.type = 'button';
+        closeBtn.setAttribute('aria-label', 'Close popup');
+        closeBtn.textContent = '×';
+
+        const title = document.createElement('h2');
+        title.textContent = '🌱 Stay Updated with NutriThrive';
+
+        const desc = document.createElement('p');
+        desc.textContent =
+            'Get exclusive health tips, product updates, special offers, and wellness insights delivered to your inbox!';
+
+        const form = document.createElement('form');
+        form.className = 'newsletter-popup-form';
+        form.action = 'https://formsubmit.co/nutrithrive0@gmail.com';
+        form.method = 'POST';
+
+        const subject = document.createElement('input');
+        subject.type = 'hidden';
+        subject.name = '_subject';
+        subject.value = 'Newsletter Subscription - Blog Popup';
+
+        const next = document.createElement('input');
+        next.type = 'hidden';
+        next.name = '_next';
+        // SECURITY: assign to the input property (not via innerHTML/template strings)
+        next.value = window.location.href;
+
+        const template = document.createElement('input');
+        template.type = 'hidden';
+        template.name = '_template';
+        template.value = 'table';
+
+        const captcha = document.createElement('input');
+        captcha.type = 'hidden';
+        captcha.name = '_captcha';
+        // Keeping existing behavior; consider enabling captcha to reduce spam.
+        captcha.value = 'false';
+
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.name = 'name';
+        nameInput.placeholder = 'Your Name';
+        nameInput.required = true;
+
+        const emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.name = 'email';
+        emailInput.placeholder = 'Your Email Address';
+        emailInput.required = true;
+
+        const submit = document.createElement('button');
+        submit.type = 'submit';
+        submit.textContent = 'Subscribe Now';
+
+        const message = document.createElement('div');
+        message.className = 'newsletter-popup-message';
+
+        // Assemble form
+        form.append(subject, next, template, captcha, nameInput, emailInput, submit, message);
+
+        const privacy = document.createElement('p');
+        privacy.style.fontSize = '0.85rem';
+        privacy.style.color = '#999';
+        privacy.style.marginTop = '1rem';
+        privacy.style.marginBottom = '0';
+        privacy.textContent = 'We respect your privacy. Unsubscribe anytime.';
+
+        popup.append(closeBtn, title, desc, form, privacy);
+        overlay.appendChild(popup);
         document.body.appendChild(overlay);
         return overlay;
     }

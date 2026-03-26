@@ -176,7 +176,7 @@
             console.log('ipapi.co failed, trying alternative...');
             try {
                 // Fallback to ip-api.com (free tier: 45 requests/minute)
-                const response = await fetch('http://ip-api.com/json/');
+                const response = await fetch('https://ip-api.com/json/');
                 const data = await response.json();
                 
                 if (data && data.countryCode) {

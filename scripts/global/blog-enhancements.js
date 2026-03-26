@@ -280,7 +280,51 @@
     bc.style.background = '#f8f5ec';
     bc.style.borderBottom = '1px solid #ece7db';
     bc.style.padding = '0.75rem 1rem';
-    bc.innerHTML = `<nav style="font-size:0.9375rem;color:#666;max-width:1200px;margin:0 auto;"><a href="/index.html" style="color:#2d5a3d;text-decoration:none;">Home</a> <span style="margin:0 0.5rem;color:#999;">›</span> <a href="/blog/index.html" style="color:#2d5a3d;text-decoration:none;">Blog</a> <span style="margin:0 0.5rem;color:#999;">›</span> <span style="color:#333;font-weight:600;">${(h1.textContent||'').slice(0,70)}${h1.textContent.length>70?'…':''}</span></nav>`;
+    const nav = document.createElement('nav');
+    nav.style.fontSize = '0.9375rem';
+    nav.style.color = '#666';
+    nav.style.maxWidth = '1200px';
+    nav.style.margin = '0 auto';
+
+    const home = document.createElement('a');
+    home.href = '/index.html';
+    home.style.color = '#2d5a3d';
+    home.style.textDecoration = 'none';
+    home.textContent = 'Home';
+
+    const sep1 = document.createElement('span');
+    sep1.style.margin = '0 0.5rem';
+    sep1.style.color = '#999';
+    sep1.textContent = '›';
+
+    const blog = document.createElement('a');
+    blog.href = '/blog/index.html';
+    blog.style.color = '#2d5a3d';
+    blog.style.textDecoration = 'none';
+    blog.textContent = 'Blog';
+
+    const sep2 = document.createElement('span');
+    sep2.style.margin = '0 0.5rem';
+    sep2.style.color = '#999';
+    sep2.textContent = '›';
+
+    const titleSpan = document.createElement('span');
+    titleSpan.style.color = '#333';
+    titleSpan.style.fontWeight = '600';
+    const title = (h1.textContent || '').slice(0, 70);
+    titleSpan.textContent = title + ((h1.textContent || '').length > 70 ? '…' : '');
+
+    nav.appendChild(home);
+    nav.append(' ');
+    nav.appendChild(sep1);
+    nav.append(' ');
+    nav.appendChild(blog);
+    nav.append(' ');
+    nav.appendChild(sep2);
+    nav.append(' ');
+    nav.appendChild(titleSpan);
+
+    bc.appendChild(nav);
     header.insertAdjacentElement('afterend', bc);
   }
 

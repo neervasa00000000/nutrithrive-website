@@ -473,66 +473,195 @@
                 cartSummary.style.display = 'none';
                 return;
             }
-            
-            // Render cart items
-            let itemsHTML = `
-                <div class="cart-table">
-                    <div class="cart-table-header">
-                        <div>PRODUCT</div>
-                        <div>QUANTITY</div>
-                        <div>PRICE</div>
-                        <div>TOTAL</div>
-                        <div></div>
-                    </div>
-            `;
-            
-            cart.items.forEach(item => {
-                const itemTotal = (parseFloat(item.price) * parseInt(item.quantity)).toFixed(2);
-                itemsHTML += `
-                    <div class="cart-item" data-product-id="${item.id}">
-                        <div class="item-info">
-                            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="item-image">` : ''}
-                            <div class="item-details">
-                                <h3>${item.name}</h3>
-                                <div class="item-price">$${parseFloat(item.price).toFixed(2)} each</div>
-                            </div>
-                        </div>
-                        <div class="quantity-controls">
-                            <div class="quantity-box">
-                                <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${parseInt(item.quantity) - 1})">-</button>
-                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" 
-                                       onchange="updateQuantity('${item.id}', this.value)">
-                                <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${parseInt(item.quantity) + 1})">+</button>
-                            </div>
-                        </div>
-                        <div style="text-align: left; padding-left: 0.5rem;">$${parseFloat(item.price).toFixed(2)}</div>
-                        <div class="item-total" style="text-align: left; padding-left: 0.5rem;">$${itemTotal}</div>
-                        <button class="remove-btn" onclick="removeItem('${item.id}')" title="Remove item" aria-label="Remove item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                <line x1="10" y1="11" x2="10" y2="17"></line>
-                                <line x1="14" y1="11" x2="14" y2="17"></line>
-                            </svg>
-                        </button>
-                    </div>
-                `;
+
+            function safeId(value) {
+                const s = String(value ?? '').trim();
+                return /^[a-z0-9-]+$/i.test(s) ? s : null;
+            }
+
+            function safeInt(value, min, max) {
+                const n = Number.parseInt(value, 10);
+                if (!Number.isFinite(n)) return null;
+                if (n < min || n > max) return null;
+                return n;
+            }
+
+            function safeMoney(value) {
+                const n = Number.parseFloat(value);
+                if (!Number.isFinite(n)) return null;
+                if (n < 0 || n > 100000) return null;
+                return n;
+            }
+
+            function safeImageSrc(src) {
+                const s = String(src ?? '').trim();
+                if (!s) return '';
+                // Block protocol-based attacks
+                if (/^javascript:/i.test(s)) return '';
+                if (/^data:/i.test(s)) return '';
+
+                // Allow same-origin and relative assets
+                if (s.startsWith('/') || s.startsWith('.')) return s;
+
+                // Allow only known external hosts
+                if (!/^https:\/\//i.test(s)) return '';
+                try {
+                    const u = new URL(s);
+                    const host = u.hostname.toLowerCase();
+                    if (u.protocol !== 'https:') return '';
+                    if (host === 'nutrithrive.com.au' || host === 'www.nutrithrive.com.au') return s;
+                    if (host === 'i.imgur.com') return s;
+                    return '';
+                } catch (e) {
+                    return '';
+                }
+            }
+
+            // Render cart items (XSS-safe)
+            cartContent.replaceChildren();
+
+            let subtotalFromItems = 0;
+
+            const table = document.createElement('div');
+            table.className = 'cart-table';
+
+            const header = document.createElement('div');
+            header.className = 'cart-table-header';
+            ['PRODUCT', 'QUANTITY', 'PRICE', 'TOTAL', ''].forEach(t => {
+                const d = document.createElement('div');
+                d.textContent = t;
+                header.appendChild(d);
             });
-            
-            itemsHTML += '</div>';
-            cartContent.innerHTML = itemsHTML;
+            table.appendChild(header);
+
+            cart.items.forEach(item => {
+                const id = safeId(item?.id);
+                const qty = safeInt(item?.quantity ?? 1, 1, 99);
+                const price = safeMoney(item?.price);
+                if (!id || qty === null || price === null) return;
+
+                subtotalFromItems += price * qty;
+
+                const itemTotal = (price * qty).toFixed(2);
+
+                const row = document.createElement('div');
+                row.className = 'cart-item';
+                row.dataset.productId = id;
+
+                const info = document.createElement('div');
+                info.className = 'item-info';
+
+                const imgSrc = safeImageSrc(item?.image);
+                if (imgSrc) {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = String(item?.name ?? '').slice(0, 120);
+                    img.className = 'item-image';
+                    info.appendChild(img);
+                }
+
+                const details = document.createElement('div');
+                details.className = 'item-details';
+
+                const h3 = document.createElement('h3');
+                h3.textContent = String(item?.name ?? '').slice(0, 120);
+
+                const priceEl = document.createElement('div');
+                priceEl.className = 'item-price';
+                priceEl.textContent = `$${price.toFixed(2)} each`;
+
+                details.appendChild(h3);
+                details.appendChild(priceEl);
+                info.appendChild(details);
+                row.appendChild(info);
+
+                const qtyControls = document.createElement('div');
+                qtyControls.className = 'quantity-controls';
+
+                const qtyBox = document.createElement('div');
+                qtyBox.className = 'quantity-box';
+
+                const dec = document.createElement('button');
+                dec.type = 'button';
+                dec.className = 'quantity-btn';
+                dec.textContent = '-';
+                dec.addEventListener('click', function() {
+                    updateQuantity(id, qty - 1);
+                });
+
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.className = 'quantity-input';
+                input.value = String(qty);
+                input.min = '1';
+                input.addEventListener('change', function() {
+                    updateQuantity(id, input.value);
+                });
+
+                const inc = document.createElement('button');
+                inc.type = 'button';
+                inc.className = 'quantity-btn';
+                inc.textContent = '+';
+                inc.addEventListener('click', function() {
+                    updateQuantity(id, qty + 1);
+                });
+
+                qtyBox.appendChild(dec);
+                qtyBox.appendChild(input);
+                qtyBox.appendChild(inc);
+                qtyControls.appendChild(qtyBox);
+                row.appendChild(qtyControls);
+
+                const unit = document.createElement('div');
+                unit.style.textAlign = 'left';
+                unit.style.paddingLeft = '0.5rem';
+                unit.textContent = `$${price.toFixed(2)}`;
+                row.appendChild(unit);
+
+                const total = document.createElement('div');
+                total.className = 'item-total';
+                total.style.textAlign = 'left';
+                total.style.paddingLeft = '0.5rem';
+                total.textContent = `$${itemTotal}`;
+                row.appendChild(total);
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'remove-btn';
+                removeBtn.title = 'Remove item';
+                removeBtn.setAttribute('aria-label', 'Remove item');
+                removeBtn.addEventListener('click', function() {
+                    removeItem(id);
+                });
+                removeBtn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                `;
+                row.appendChild(removeBtn);
+
+                table.appendChild(row);
+            });
+
+            cartContent.appendChild(table);
             
             // Update summary
-            const subtotal = cart.total || 0;
+            const subtotal = Number((subtotalFromItems || 0).toFixed(2));
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
             
             // Calculate and display discount (15% off)
             // Calculate original total before discount
             let originalTotal = 0;
             cart.items.forEach(item => {
+                const qty = safeInt(item?.quantity ?? 1, 1, 99);
+                const price = safeMoney(item?.price);
+                if (qty === null || price === null) return;
                 // Reverse the 15% discount: discounted_price = original * 0.85, so original = discounted / 0.85
-                const originalItemPrice = parseFloat(item.price) / 0.85;
-                originalTotal += originalItemPrice * parseInt(item.quantity || 1);
+                const originalItemPrice = price / 0.85;
+                originalTotal += originalItemPrice * qty;
             });
             
             const discountAmount = originalTotal - subtotal;
@@ -577,8 +706,27 @@
             }
             
             // Calculate total quantity
-            const totalQuantity = cart.items.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
-            const subtotal = cart.total || 0;
+            const totalQuantity = cart.items.reduce((sum, item) => {
+                const qty = parseInt(item.quantity || 1, 10);
+                return sum + (Number.isFinite(qty) && qty > 0 ? qty : 0);
+            }, 0);
+
+            // Recompute subtotal safely in case cart.total became NaN
+            const subtotal = (() => {
+                let s = 0;
+                cart.items.forEach(item => {
+                    const qty = parseInt(item.quantity || 1, 10);
+                    const price = parseFloat(item.price);
+                    if (!Number.isFinite(qty) || qty <= 0) return;
+                    if (!Number.isFinite(price) || price < 0) return;
+                    s += price * qty;
+                });
+                return Number(s.toFixed(2));
+            })();
+
+            // Keep cart totals consistent for other consumers (PayPal init, etc.)
+            cart.total = subtotal;
+            cart.itemCount = totalQuantity;
             
             // Ensure all cart items have weight data (infer from names if missing)
             cart.items.forEach(item => {
@@ -751,7 +899,18 @@
                 return;
             }
 
-            const subtotal = parseFloat(cart.total || 0);
+            // Recompute subtotal safely in case cart.total was poisoned (NaN) in localStorage.
+            const subtotal = (() => {
+                let s = 0;
+                cart.items.forEach(item => {
+                    const qty = parseInt(item?.quantity || 1, 10);
+                    const price = parseFloat(item?.price);
+                    if (!Number.isFinite(qty) || qty <= 0) return;
+                    if (!Number.isFinite(price) || price < 0) return;
+                    s += price * qty;
+                });
+                return Number(s.toFixed(2));
+            })();
             const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
             const shippingCost = shipping !== null && shipping !== undefined ? parseFloat(shipping) : 0;
             const total = parseFloat(subtotal) + parseFloat(shippingCost);
@@ -766,6 +925,7 @@
                 return;
             }
 
+            var captureToken = null;
             var buttonConfig = {
                 createOrder: function () {
                     var amount = orderTotal.toFixed(2);
@@ -773,21 +933,19 @@
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
-                            amount: amount,
-                            subtotal: subtotal.toFixed(2),
-                            shipping: shippingCost.toFixed(2),
                             items: cart.items.map(function (item) {
                                 return {
                                     id: item.id,
-                                    name: item.name,
-                                    unitPrice: parseFloat(item.price).toFixed(2),
                                     quantity: parseInt(item.quantity || 1, 10)
                                 };
-                            })
+                            }),
+                            countryCode: countryCode
                         })
                     }).then(function (response) {
                         return response.json().then(function (data) {
                             if (!response.ok) throw new Error(data.error || "Failed to create order");
+                            captureToken = data.captureToken;
+                            if (!captureToken) throw new Error("Missing capture token from server");
                             return data.orderID || data.id;
                         });
                     });
@@ -801,7 +959,7 @@
                     fetch("/.netlify/functions/paypal-capture-order", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ orderID: orderID })
+                        body: JSON.stringify({ orderID: orderID, captureToken: captureToken })
                     }).then(function (response) {
                         return response.json().then(function (result) {
                             if (!response.ok) throw new Error(result.error || "Payment failed");
@@ -872,7 +1030,18 @@
                 return;
             }
 
-            const subtotal = parseFloat(cart.total || 0);
+            // Recompute subtotal safely in case cart.total was poisoned (NaN) in localStorage.
+            const subtotal = (() => {
+                let s = 0;
+                cart.items.forEach(item => {
+                    const qty = parseInt(item?.quantity || 1, 10);
+                    const price = parseFloat(item?.price);
+                    if (!Number.isFinite(qty) || qty <= 0) return;
+                    if (!Number.isFinite(price) || price < 0) return;
+                    s += price * qty;
+                });
+                return Number(s.toFixed(2));
+            })();
             const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
             const shippingCost = shipping !== null && shipping !== undefined ? parseFloat(shipping) : 0;
             const total = parseFloat(subtotal) + parseFloat(shippingCost);
@@ -935,17 +1104,13 @@
                                     method: "POST",
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify({
-                                        amount: total.toFixed(2),
-                                        subtotal: subtotal.toFixed(2),
-                                        shipping: shippingCost.toFixed(2),
                                         items: cart.items.map(function (item) {
                                             return {
                                                 id: item.id,
-                                                name: item.name,
-                                                unitPrice: parseFloat(item.price).toFixed(2),
                                                 quantity: parseInt(item.quantity || 1, 10)
                                             };
-                                        })
+                                        }),
+                                        countryCode: countryCode
                                     })
                                 })
                                     .then(function (res) {
@@ -961,6 +1126,10 @@
                                         if (!orderId) {
                                             throw new Error("No order ID returned from server.");
                                         }
+                                        var captureToken = response.data.captureToken;
+                                        if (!captureToken) {
+                                            throw new Error("Missing capture token from server.");
+                                        }
 
                                         return applepay.confirmOrder({
                                             orderId: orderId,
@@ -975,7 +1144,7 @@
                                         return fetch("/.netlify/functions/paypal-capture-order", {
                                             method: "POST",
                                             headers: { "Content-Type": "application/json" },
-                                            body: JSON.stringify({ orderID: orderId })
+                                            body: JSON.stringify({ orderID: orderId, captureToken: captureToken })
                                         }).then(function (res) {
                                             return res.json().then(function (data) {
                                                 if (!res.ok) {

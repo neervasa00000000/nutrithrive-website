@@ -268,7 +268,52 @@
     container.style.left = "-10000px";
     container.style.top = "0";
     container.style.width = "800px";
-    container.innerHTML = htmlString;
+    // SECURITY: sanitize user-provided HTML before injecting into the DOM.
+    // We remove scripts/iframes and strip event handler attributes.
+    const MAX_HTML_LEN = 20000;
+    const dirty = typeof htmlString === "string" ? htmlString : String(htmlString ?? "");
+    const safeInput = dirty.length > MAX_HTML_LEN ? dirty.slice(0, MAX_HTML_LEN) : dirty;
+
+    function sanitizeUserHtmlForPdf(input) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(input, "text/html");
+
+      // Remove active content.
+      doc.querySelectorAll("script, iframe, object, embed, link, meta, style").forEach((n) => n.remove());
+
+      // Remove inline handlers and dangerous URLs.
+      doc.querySelectorAll("*").forEach((el) => {
+        // Copy attrs because we're mutating during iteration.
+        Array.from(el.attributes).forEach((attr) => {
+          const name = (attr.name || "").toLowerCase();
+          const value = String(attr.value || "");
+
+          if (name.startsWith("on")) {
+            el.removeAttribute(attr.name);
+            return;
+          }
+
+          // Block javascript:/data: for URL-ish attributes.
+          if (["src", "href", "xlink:href"].includes(name)) {
+            if (/^(javascript:|data:)/i.test(value)) {
+              el.removeAttribute(attr.name);
+            }
+            return;
+          }
+
+          // Be strict with inline styles: remove if it contains URL() or JS.
+          if (name === "style") {
+            if (/url\(/i.test(value) || /expression\s*\(/i.test(value) || /javascript:/i.test(value)) {
+              el.removeAttribute(attr.name);
+            }
+          }
+        });
+      });
+
+      return doc.body.innerHTML;
+    }
+
+    container.innerHTML = sanitizeUserHtmlForPdf(safeInput);
     document.body.appendChild(container);
 
     setStatus("Rendering HTML to canvas...");
@@ -643,8 +688,34 @@
     const scale = 2.5; // reasonable for redaction accuracy/speed
 
     let regex = null;
+    const rtxt = typeof regexText === "string" ? regexText.trim() : String(regexText ?? "");
+    if (!rtxt) throw new Error("Regex is required.");
+    if (rtxt.length > 80) throw new Error("Regex too long; please simplify.");
+
+    // SECURITY: prevent catastrophic backtracking by rejecting unescaped quantifiers.
+    // This is intentionally conservative: it disallows * + ? { } unless all are escaped.
+    let escaped = false;
+    let hasUnescapedQuantifiers = false;
+    for (let i = 0; i < rtxt.length; i++) {
+      const ch = rtxt[i];
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (ch === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (ch === "*" || ch === "+" || ch === "?" || ch === "{") {
+        hasUnescapedQuantifiers = true;
+        break;
+      }
+    }
+    if (hasUnescapedQuantifiers) {
+      throw new Error("Unsafe regex: quantifiers are not allowed in this lab tool.");
+    }
     try {
-      regex = new RegExp(regexText);
+      regex = new RegExp(rtxt);
     } catch (e) {
       throw new Error("Invalid regex: " + e.message);
     }
@@ -665,7 +736,7 @@
 
       // Blackout matched items
       for (const it of items) {
-        const str = it.str || "";
+        const str = String(it.str || "").slice(0, 2000);
         if (!str) continue;
         // Avoid issues with /g regex state
         regex.lastIndex = 0;
