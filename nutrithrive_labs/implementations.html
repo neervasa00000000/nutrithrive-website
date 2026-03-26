@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriThrive Labs | Working Java Implementations</title>
+    <meta
+      name="description"
+      content="Copy-ready, working Java implementations for PDF tools: PDFBox, openhtmltopdf, Tabula-java, ZXing."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp" />
+    <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp" />
+    <meta name="theme-color" content="#0b1020" />
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg0: #070a14;
+        --bg1: #0b1020;
+        --panel: rgba(255, 255, 255, 0.06);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --stroke2: rgba(255, 255, 255, 0.16);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted2: rgba(255, 255, 255, 0.52);
+        --brand: #7c3aed;
+        --brand2: #22c55e;
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        --r: 16px;
+        --max: 1100px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        background: radial-gradient(1200px 600px at 25% 10%, rgba(124, 58, 237, 0.35), transparent 60%),
+          radial-gradient(1000px 500px at 80% 35%, rgba(34, 197, 94, 0.22), transparent 55%),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(7, 10, 20, 0.6);
+        border-bottom: 1px solid var(--stroke);
+      }
+
+      .topbar-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0.85rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(34, 197, 94, 0.8));
+        box-shadow: 0 10px 25px rgba(124, 58, 237, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 0.98rem;
+        letter-spacing: -0.01em;
+      }
+
+      .brand span {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-top: 0.1rem;
+      }
+
+      .nav {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .chiplink {
+        padding: 0.5rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        font-weight: 800;
+        font-size: 0.85rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      }
+
+      .chiplink:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .chiplink.primary {
+        border-color: rgba(124, 58, 237, 0.55);
+        background: rgba(124, 58, 237, 0.18);
+      }
+
+      .shell {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 1.25rem 1rem 2.75rem;
+      }
+
+      .hero {
+        border-radius: calc(var(--r) + 6px);
+        border: 1px solid var(--stroke);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+        box-shadow: var(--shadow);
+        padding: 1.2rem 1.2rem 1.05rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+      }
+
+      .hero p {
+        margin: 0.6rem 0 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .layout {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .panel {
+        border-radius: calc(var(--r) + 6px);
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+      }
+
+      .toc h2 {
+        margin: 0 0 0.65rem 0;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted2);
+      }
+
+      .toc a {
+        display: block;
+        padding: 0.55rem 0.6rem;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 800;
+        margin-bottom: 0.35rem;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .toc a:hover {
+        border-color: var(--stroke2);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .content h2 {
+        margin: 0 0 0.55rem 0;
+        font-size: 1.15rem;
+        letter-spacing: -0.01em;
+      }
+
+      .content h3 {
+        margin: 1.25rem 0 0.5rem 0;
+        font-size: 1.05rem;
+        letter-spacing: -0.01em;
+      }
+
+      .content p {
+        margin: 0.25rem 0 0.75rem 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      pre {
+        margin: 0.7rem 0 1rem 0;
+        padding: 0.9rem;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(0, 0, 0, 0.35);
+        overflow: auto;
+        font-family: var(--mono);
+        color: rgba(255, 255, 255, 0.88);
+        line-height: 1.55;
+        font-size: 0.86rem;
+      }
+
+      code {
+        font-family: var(--mono);
+      }
+
+      .row {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0.25rem 0 0.9rem 0;
+      }
+
+      .btn {
+        cursor: pointer;
+        border-radius: 12px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0.55rem 0.75rem;
+        font-weight: 900;
+        font-size: 0.86rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .btn.copy {
+        border-color: rgba(34, 197, 94, 0.35);
+        background: rgba(34, 197, 94, 0.12);
+      }
+
+      .btn.purple {
+        border-color: rgba(124, 58, 237, 0.5);
+        background: rgba(124, 58, 237, 0.18);
+      }
+
+      .toast {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 50;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(12px);
+        padding: 0.85rem 0.95rem;
+        box-shadow: var(--shadow);
+        color: rgba(255, 255, 255, 0.88);
+        font-weight: 800;
+        transform: translateY(10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+
+      .toast[data-show="true"] {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/nutrithrive_labs/">
+          <span class="mark" aria-hidden="true"></span>
+          <span>
+            <strong>NutriThrive Labs</strong>
+            <span>Working Java implementations</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Labs navigation">
+          <a class="chiplink" href="/nutrithrive_labs/">Catalog</a>
+          <a class="chiplink primary" href="#getting-started">Getting started</a>
+          <a class="chiplink" href="/">Main site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <h1>Working implementations (all tools)</h1>
+        <p>
+          This page contains copy-ready Java code for every tool in your Labs list. It’s designed to be
+          pasted into a normal Maven project and run from the command line.
+        </p>
+      </section>
+
+      <section class="layout">
+        <aside class="panel toc">
+          <h2>Jump</h2>
+          <a href="#getting-started">Getting started</a>
+          <a href="#conversion">Conversion & Extraction</a>
+          <a href="#manipulation">Manipulation & Organization</a>
+          <a href="#security">Optimization & Security</a>
+          <a href="#annotation">Content Editing & Annotation</a>
+        </aside>
+
+        <section class="panel content">
+          <h2 id="getting-started">Getting started</h2>
+          <p>
+            Create a Maven project. Put the Java files below under <code>src/main/java/com/nutrithrive/labs</code>.
+            Then run the commands shown in each tool section.
+          </p>
+
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pom">Copy pom.xml deps</button>
+            <a class="btn purple" href="#conversion">Go to tools</a>
+          </div>
+
+          <pre id="pom" data-snippet>
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.pdfbox&lt;/groupId&gt;
+    &lt;artifactId&gt;pdfbox&lt;/artifactId&gt;
+    &lt;version&gt;2.0.32&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.github.librepdf&lt;/groupId&gt;
+    &lt;artifactId&gt;openhtmltopdf-pdfbox&lt;/artifactId&gt;
+    &lt;version&gt;1.0.10&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.google.zxing&lt;/groupId&gt;
+    &lt;artifactId&gt;core&lt;/artifactId&gt;
+    &lt;version&gt;3.5.3&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.google.zxing&lt;/groupId&gt;
+    &lt;artifactId&gt;javase&lt;/artifactId&gt;
+    &lt;version&gt;3.5.3&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;technology.tabula&lt;/groupId&gt;
+    &lt;artifactId&gt;tabula&lt;/artifactId&gt;
+    &lt;version&gt;1.0.5&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+          </pre>
+
+          <h3>Shared helpers (paste once)</h3>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#io-utils">Copy IOUtils.java</button>
+          </div>
+          <pre id="io-utils" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public final class IOUtils {
+  private IOUtils() {}
+
+  public static void ensureDir(File dir) throws IOException {
+    if (dir == null) throw new IllegalArgumentException("dir is null");
+    if (dir.exists()) {
+      if (!dir.isDirectory()) throw new IOException("Not a directory: " + dir);
+      return;
+    }
+    Files.createDirectories(dir.toPath());
+  }
+
+  public static void writeUtf8(Path path, String content) throws IOException {
+    Files.createDirectories(path.getParent());
+    Files.write(path, content.getBytes(StandardCharsets.UTF_8));
+  }
+}
+          </pre>
+
+          <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1.25rem 0" />
+
+          <h2 id="conversion">Conversion &amp; Extraction</h2>
+
+          <h3 id="pdf-to-text">PDF to Text (PDFBox)</h3>
+          <p>
+            Create a Java utility using Apache PDFBox that takes a PDF file input and saves all extracted text into a .txt file, preserving basic paragraph spacing.
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-to-text-code">Copy PdfToText.java</button>
+          </div>
+          <pre id="pdf-to-text-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+
+public final class PdfToText {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: PdfToText input.pdf output.txt");
+      System.exit(1);
+    }
+    extract(new File(args[0]), Path.of(args[1]));
+  }
+
+  public static void extract(File inputPdf, Path outputTxt) throws IOException {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      PDFTextStripper stripper = new PDFTextStripper();
+      stripper.setSortByPosition(true);
+      stripper.setAddMoreFormatting(true);
+      // Basic paragraph spacing: preserve line breaks as-is; PDFBox will add them
+      String text = stripper.getText(doc).replaceAll("\\n{3,}", "\n\n").trim() + "\n";
+      IOUtils.writeUtf8(outputTxt, text);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="image-to-pdf">Image to PDF (PDFBox)</h3>
+          <p>
+            Write a Java program that takes a folder of JPG/PNG images and wraps each image into a single multi-page PDF document where each page matches the image dimensions.
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#image-to-pdf-code">Copy ImagesToPdf.java</button>
+          </div>
+          <pre id="image-to-pdf-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+public final class ImagesToPdf {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: ImagesToPdf inputFolder output.pdf");
+      System.exit(1);
+    }
+    createPdfFromFolder(new File(args[0]), new File(args[1]));
+  }
+
+  public static void createPdfFromFolder(File folder, File outPdf) throws IOException {
+    File[] images =
+        folder.listFiles(
+            f -&gt; {
+              String n = f.getName().toLowerCase();
+              return f.isFile() &amp;&amp; (n.endsWith(".jpg") || n.endsWith(".jpeg") || n.endsWith(".png"));
+            });
+    if (images == null || images.length == 0) throw new IOException("No images found in " + folder);
+
+    Arrays.sort(images, Comparator.comparing(File::getName));
+
+    try (PDDocument doc = new PDDocument()) {
+      for (File img : images) {
+        PDImageXObject ximg = PDImageXObject.createFromFileByContent(img, doc);
+        PDRectangle rect = new PDRectangle(ximg.getWidth(), ximg.getHeight());
+        PDPage page = new PDPage(rect);
+        doc.addPage(page);
+
+        try (PDPageContentStream cs = new PDPageContentStream(doc, page)) {
+          cs.drawImage(ximg, 0, 0, rect.getWidth(), rect.getHeight());
+        }
+      }
+      doc.save(outPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="pdf-to-image">PDF to Image 300 DPI (PDFBox)</h3>
+          <p>
+            Create a Java tool that renders each page of a PDF as a high-resolution (300 DPI) PNG image saved to a 'conversion' folder.
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-to-image-code">Copy PdfToImages.java</button>
+          </div>
+          <pre id="pdf-to-image-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.ImageType;
+import org.apache.pdfbox.rendering.PDFRenderer;
+
+public final class PdfToImages {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 1) {
+      System.out.println("Usage: PdfToImages input.pdf [outputFolder]");
+      System.exit(1);
+    }
+    File out = new File(args.length &gt; 1 ? args[1] : "conversion");
+    render(new File(args[0]), out, 300);
+  }
+
+  public static void render(File inputPdf, File outputFolder, int dpi) throws IOException {
+    IOUtils.ensureDir(outputFolder);
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      PDFRenderer renderer = new PDFRenderer(doc);
+      for (int i = 0; i &lt; doc.getNumberOfPages(); i++) {
+        BufferedImage img = renderer.renderImageWithDPI(i, dpi, ImageType.RGB);
+        File out = new File(outputFolder, "page_" + (i + 1) + ".png");
+        ImageIO.write(img, "PNG", out);
+      }
+    }
+  }
+}
+          </pre>
+
+          <h3 id="html-to-pdf">HTML to PDF (openhtmltopdf)</h3>
+          <p>
+            Build a Java utility using the openhtmltopdf library to convert a local HTML file string into a formatted PDF document.
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#html-to-pdf-code">Copy HtmlToPdf.java</button>
+          </div>
+          <pre id="html-to-pdf-code" data-snippet>
+package com.nutrithrive.labs;
+
+import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+
+public final class HtmlToPdf {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: HtmlToPdf input.html output.pdf");
+      System.exit(1);
+    }
+    String html = Files.readString(new File(args[0]).toPath(), StandardCharsets.UTF_8);
+    toPdf(html, new File(args[1]));
+  }
+
+  public static void toPdf(String html, File outPdf) throws Exception {
+    try (FileOutputStream os = new FileOutputStream(outPdf)) {
+      PdfRendererBuilder builder = new PdfRendererBuilder();
+      builder.withHtmlContent(html, null);
+      builder.toStream(os);
+      builder.run();
+    }
+  }
+}
+          </pre>
+
+          <h3 id="pdf-table-extractor">PDF Table Extractor (Tabula-java)</h3>
+          <p>
+            Develop a Java class using Tabula-java or PDFBox that detects table structures in a PDF and exports the row/column data into a CSV format.
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#table-extractor-code">Copy PdfTableToCsv.java</button>
+          </div>
+          <pre id="table-extractor-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.List;
+import technology.tabula.ObjectExtractor;
+import technology.tabula.Page;
+import technology.tabula.Table;
+import technology.tabula.extractors.SpreadsheetExtractionAlgorithm;
+import technology.tabula.writers.CSVWriter;
+
+public final class PdfTableToCsv {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 3) {
+      System.out.println("Usage: PdfTableToCsv input.pdf pageNumber output.csv");
+      System.exit(1);
+    }
+    File pdf = new File(args[0]);
+    int pageNum = Integer.parseInt(args[1]);
+    File csv = new File(args[2]);
+    extract(pdf, pageNum, csv);
+  }
+
+  public static void extract(File inputPdf, int pageNumber1Based, File outputCsv) throws Exception {
+    try (ObjectExtractor oe = new ObjectExtractor(inputPdf)) {
+      Page page = oe.extract(pageNumber1Based);
+      SpreadsheetExtractionAlgorithm sea = new SpreadsheetExtractionAlgorithm();
+      List&lt;Table&gt; tables = sea.extract(page);
+
+      try (FileWriter fw = new FileWriter(outputCsv)) {
+        CSVWriter writer = new CSVWriter();
+        for (Table t : tables) {
+          fw.write(writer.write(t));
+          fw.write("\n");
+        }
+      }
+    }
+  }
+}
+          </pre>
+
+          <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1.25rem 0" />
+
+          <h2 id="manipulation">Manipulation &amp; Organization</h2>
+
+          <h3 id="pdf-merger">PDF Merger (PDFBox)</h3>
+          <p>Create a Java function that accepts a List of File objects and merges them into one single output.pdf using PDFMergerUtility.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-merger-code">Copy PdfMerger.java</button>
+          </div>
+          <pre id="pdf-merger-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.pdfbox.multipdf.PDFMergerUtility;
+
+public final class PdfMerger {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: PdfMerger output.pdf input1.pdf input2.pdf ...");
+      System.exit(1);
+    }
+    File out = new File(args[0]);
+    List&lt;File&gt; inputs = Arrays.stream(Arrays.copyOfRange(args, 1, args.length)).map(File::new).toList();
+    merge(inputs, out);
+  }
+
+  public static void merge(List&lt;File&gt; inputs, File outputPdf) throws Exception {
+    PDFMergerUtility mu = new PDFMergerUtility();
+    for (File f : inputs) mu.addSource(f);
+    mu.setDestinationFileName(outputPdf.getAbsolutePath());
+    mu.mergeDocuments(null);
+  }
+}
+          </pre>
+
+          <h3 id="pdf-splitter">PDF Splitter (PDFBox)</h3>
+          <p>Write a Java script that splits a large PDF into individual one-page documents and saves them with the naming convention 'page_n.pdf'.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-splitter-code">Copy PdfSplitter.java</button>
+          </div>
+          <pre id="pdf-splitter-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.util.List;
+import org.apache.pdfbox.multipdf.Splitter;
+import org.apache.pdfbox.pdmodel.PDDocument;
+
+public final class PdfSplitter {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: PdfSplitter input.pdf outputFolder");
+      System.exit(1);
+    }
+    split(new File(args[0]), new File(args[1]));
+  }
+
+  public static void split(File inputPdf, File outputFolder) throws Exception {
+    IOUtils.ensureDir(outputFolder);
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      Splitter splitter = new Splitter();
+      List&lt;PDDocument&gt; pages = splitter.split(doc);
+      int n = 1;
+      for (PDDocument p : pages) {
+        try (PDDocument pageDoc = p) {
+          pageDoc.save(new File(outputFolder, "page_" + n + ".pdf"));
+        }
+        n++;
+      }
+    }
+  }
+}
+          </pre>
+
+          <h3 id="page-reorder">Page Reorder (PDFBox)</h3>
+          <p>Build a Java method that takes an existing PDF and an integer array of page indices (e.g., {2, 0, 1}) to create a new PDF in that specific page order.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#page-reorder-code">Copy PdfReorderPages.java</button>
+          </div>
+          <pre id="page-reorder-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+
+public final class PdfReorderPages {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 3) {
+      System.out.println("Usage: PdfReorderPages input.pdf output.pdf indicesCommaSeparated (e.g. 2,0,1)");
+      System.exit(1);
+    }
+    int[] indices = parseIndices(args[2]);
+    reorder(new File(args[0]), new File(args[1]), indices);
+  }
+
+  public static void reorder(File inputPdf, File outputPdf, int[] newOrderZeroBased) throws IOException {
+    try (PDDocument in = PDDocument.load(inputPdf); PDDocument out = new PDDocument()) {
+      for (int idx : newOrderZeroBased) {
+        PDPage page = in.getPage(idx);
+        out.addPage(page);
+      }
+      out.save(outputPdf);
+    }
+  }
+
+  private static int[] parseIndices(String csv) {
+    String[] parts = csv.split(",");
+    int[] out = new int[parts.length];
+    for (int i = 0; i &lt; parts.length; i++) out[i] = Integer.parseInt(parts[i].trim());
+    return out;
+  }
+}
+          </pre>
+
+          <h3 id="pdf-rotator">PDF Rotator (PDFBox)</h3>
+          <p>Create a Java utility that iterates through all pages of a PDF and rotates them 90 degrees clockwise before saving.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-rotator-code">Copy PdfRotate90.java</button>
+          </div>
+          <pre id="pdf-rotator-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+
+public final class PdfRotate90 {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: PdfRotate90 input.pdf output.pdf");
+      System.exit(1);
+    }
+    rotateAll(new File(args[0]), new File(args[1]));
+  }
+
+  public static void rotateAll(File inputPdf, File outputPdf) throws IOException {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      for (PDPage page : doc.getPages()) {
+        int r = page.getRotation();
+        page.setRotation((r + 90) % 360);
+      }
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="page-remover">Page Remover (PDFBox)</h3>
+          <p>Write a Java tool that takes a PDF and a 'pagesToRemove' integer list, then generates a new PDF excluding those specific page numbers.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#page-remover-code">Copy PdfRemovePages.java</button>
+          </div>
+          <pre id="page-remover-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+
+public final class PdfRemovePages {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 3) {
+      System.out.println("Usage: PdfRemovePages input.pdf output.pdf pagesToRemove1Based (e.g. 1,3,5)");
+      System.exit(1);
+    }
+    Set&lt;Integer&gt; remove = parsePages(args[2]);
+    removePages(new File(args[0]), new File(args[1]), remove);
+  }
+
+  public static void removePages(File inputPdf, File outputPdf, Set&lt;Integer&gt; pagesToRemove1Based) throws IOException {
+    try (PDDocument in = PDDocument.load(inputPdf); PDDocument out = new PDDocument()) {
+      int pageIndex1 = 1;
+      for (PDPage p : in.getPages()) {
+        if (!pagesToRemove1Based.contains(pageIndex1)) out.addPage(p);
+        pageIndex1++;
+      }
+      out.save(outputPdf);
+    }
+  }
+
+  private static Set&lt;Integer&gt; parsePages(String csv) {
+    Set&lt;Integer&gt; s = new HashSet&lt;&gt;();
+    Arrays.stream(csv.split(",")).map(String::trim).filter(x -&gt; !x.isEmpty()).forEach(x -&gt; s.add(Integer.parseInt(x)));
+    return s;
+  }
+}
+          </pre>
+
+          <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1.25rem 0" />
+
+          <h2 id="security">Optimization &amp; Security</h2>
+
+          <h3 id="pdf-compressor">PDF Compressor (PDFBox)</h3>
+          <p>Develop a Java tool that reduces PDF size by iterating through all PDImageXObjects and reducing their JPEG quality/sampling rate.</p>
+          <p style="color: var(--muted2); margin-top: -0.4rem">
+            Note: PDFBox doesn’t expose “JPEG quality” directly for existing embedded images; the standard approach is to decode images, re-encode (e.g., JPEG) at lower quality, then replace XObjects.
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-compressor-code">Copy PdfCompressImages.java</button>
+          </div>
+          <pre id="pdf-compressor-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
+import org.apache.pdfbox.cos.COSName;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDResources;
+import org.apache.pdfbox.pdmodel.graphics.PDXObject;
+import org.apache.pdfbox.pdmodel.graphics.image.JPEGFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+public final class PdfCompressImages {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 3) {
+      System.out.println("Usage: PdfCompressImages input.pdf output.pdf quality(0.0-1.0)");
+      System.exit(1);
+    }
+    compress(new File(args[0]), new File(args[1]), Float.parseFloat(args[2]));
+  }
+
+  public static void compress(File inputPdf, File outputPdf, float jpegQuality) throws IOException {
+    if (jpegQuality &lt;= 0 || jpegQuality &gt; 1) throw new IllegalArgumentException("quality must be (0,1]");
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      for (PDPage page : doc.getPages()) {
+        PDResources res = page.getResources();
+        if (res == null) continue;
+        for (COSName name : res.getXObjectNames()) {
+          PDXObject xo = res.getXObject(name);
+          if (!(xo instanceof PDImageXObject)) continue;
+          PDImageXObject img = (PDImageXObject) xo;
+          BufferedImage bi = img.getImage();
+          if (bi == null) continue;
+
+          // Re-encode as JPEG with chosen quality
+          PDImageXObject compressed = jpegFromBufferedImage(doc, bi, jpegQuality);
+          res.put(name, compressed);
+        }
+      }
+      doc.save(outputPdf);
+    }
+  }
+
+  private static PDImageXObject jpegFromBufferedImage(PDDocument doc, BufferedImage bi, float quality) throws IOException {
+    // Use ImageIO to write JPEG to memory with a quality parameter, then wrap with JPEGFactory.
+    Iterator&lt;ImageWriter&gt; writers = ImageIO.getImageWritersByFormatName("jpeg");
+    if (!writers.hasNext()) throw new IOException("No JPEG ImageWriter available");
+    ImageWriter writer = writers.next();
+    ImageWriteParam param = writer.getDefaultWriteParam();
+    if (param.canWriteCompressed()) {
+      param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+      param.setCompressionQuality(quality);
+    }
+
+    try (java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+        ImageOutputStream ios = ImageIO.createImageOutputStream(baos)) {
+      writer.setOutput(ios);
+      writer.write(null, new IIOImage(bi, null, null), param);
+      writer.dispose();
+      return JPEGFactory.createFromStream(doc, new java.io.ByteArrayInputStream(baos.toByteArray()));
+    }
+  }
+}
+          </pre>
+
+          <h3 id="password-protector">Password Protector (PDFBox)</h3>
+          <p>Build a Java utility that applies a user password to a PDF using StandardProtectionPolicy with 256-bit AES encryption.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#password-protector-code">Copy PdfPasswordProtect.java</button>
+          </div>
+          <pre id="password-protector-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
+import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
+
+public final class PdfPasswordProtect {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 3) {
+      System.out.println("Usage: PdfPasswordProtect input.pdf output.pdf userPassword");
+      System.exit(1);
+    }
+    protect(new File(args[0]), new File(args[1]), args[2]);
+  }
+
+  public static void protect(File inputPdf, File outputPdf, String userPassword) throws Exception {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      AccessPermission ap = new AccessPermission();
+      StandardProtectionPolicy spp = new StandardProtectionPolicy(userPassword, userPassword, ap);
+      spp.setEncryptionKeyLength(256);
+      spp.setPreferAES(true);
+      doc.protect(spp);
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="pdf-unlocker">PDF Unlocker (PDFBox)</h3>
+          <p>Write a Java script that takes an encrypted PDF and a password, then saves a new 'unlocked' version with all access permissions enabled.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-unlocker-code">Copy PdfUnlock.java</button>
+          </div>
+          <pre id="pdf-unlocker-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import org.apache.pdfbox.pdmodel.PDDocument;
+
+public final class PdfUnlock {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 4) {
+      System.out.println("Usage: PdfUnlock input.pdf output.pdf password ownerPasswordOrBlank");
+      System.exit(1);
+    }
+    String password = args[2];
+    unlock(new File(args[0]), new File(args[1]), password);
+  }
+
+  public static void unlock(File inputPdf, File outputPdf, String password) throws Exception {
+    try (PDDocument doc = PDDocument.load(inputPdf, password)) {
+      doc.setAllSecurityToBeRemoved(true);
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="metadata-editor">Metadata Editor (PDFBox)</h3>
+          <p>Create a Java class to update the PDDocumentInformation (Title, Author, Subject, Keywords) of an existing PDF file.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#metadata-editor-code">Copy PdfMetadataUpdate.java</button>
+          </div>
+          <pre id="metadata-editor-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+
+public final class PdfMetadataUpdate {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 6) {
+      System.out.println("Usage: PdfMetadataUpdate input.pdf output.pdf title author subject keywords");
+      System.exit(1);
+    }
+    update(new File(args[0]), new File(args[1]), args[2], args[3], args[4], args[5]);
+  }
+
+  public static void update(File inputPdf, File outputPdf, String title, String author, String subject, String keywords)
+      throws Exception {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      PDDocumentInformation info = doc.getDocumentInformation();
+      info.setTitle(title);
+      info.setAuthor(author);
+      info.setSubject(subject);
+      info.setKeywords(keywords);
+      doc.setDocumentInformation(info);
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="grayscale-converter">Grayscale Converter (PDFBox)</h3>
+          <p>Build a Java function that processes a PDF and converts all colored text and images to a grayscale color space to reduce printing costs.</p>
+          <p style="color: var(--muted2); margin-top: -0.4rem">
+            Note: full grayscale conversion for “colored text” requires content stream rewriting. Below is a practical version that converts images to grayscale (largest printing cost).
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#grayscale-code">Copy PdfGrayscaleImages.java</button>
+          </div>
+          <pre id="grayscale-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.awt.color.ColorSpace;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorConvertOp;
+import java.io.File;
+import java.io.IOException;
+import org.apache.pdfbox.cos.COSName;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDResources;
+import org.apache.pdfbox.pdmodel.graphics.PDXObject;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+public final class PdfGrayscaleImages {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: PdfGrayscaleImages input.pdf output.pdf");
+      System.exit(1);
+    }
+    convert(new File(args[0]), new File(args[1]));
+  }
+
+  public static void convert(File inputPdf, File outputPdf) throws IOException {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      ColorConvertOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
+      for (PDPage page : doc.getPages()) {
+        PDResources res = page.getResources();
+        if (res == null) continue;
+        for (COSName name : res.getXObjectNames()) {
+          PDXObject xo = res.getXObject(name);
+          if (!(xo instanceof PDImageXObject)) continue;
+          PDImageXObject img = (PDImageXObject) xo;
+          BufferedImage bi = img.getImage();
+          if (bi == null) continue;
+          BufferedImage gray = op.filter(bi, null);
+          PDImageXObject replaced = LosslessFactory.createFromImage(doc, gray);
+          res.put(name, replaced);
+        }
+      }
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1.25rem 0" />
+
+          <h2 id="annotation">Content Editing &amp; Annotation</h2>
+
+          <h3 id="watermark">Watermark Creator (PDFBox)</h3>
+          <p>Write a Java program that overlays a semi-transparent 'CONFIDENTIAL' text diagonal across every page of a PDF using a PDPageContentStream.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#watermark-code">Copy PdfWatermark.java</button>
+          </div>
+          <pre id="watermark-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState;
+
+public final class PdfWatermark {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: PdfWatermark input.pdf output.pdf");
+      System.exit(1);
+    }
+    watermark(new File(args[0]), new File(args[1]), "CONFIDENTIAL");
+  }
+
+  public static void watermark(File inputPdf, File outputPdf, String text) throws IOException {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      PDExtendedGraphicsState gs = new PDExtendedGraphicsState();
+      gs.setNonStrokingAlphaConstant(0.18f);
+
+      for (PDPage page : doc.getPages()) {
+        PDRectangle mb = page.getMediaBox();
+        float centerX = mb.getWidth() / 2f;
+        float centerY = mb.getHeight() / 2f;
+
+        try (PDPageContentStream cs =
+            new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true, true)) {
+          cs.setGraphicsStateParameters(gs);
+          cs.setNonStrokingColor(new Color(10, 10, 10));
+          cs.beginText();
+          cs.setFont(PDType1Font.HELVETICA_BOLD, 72);
+          cs.setTextMatrix(org.apache.pdfbox.util.Matrix.getRotateInstance(Math.toRadians(35), centerX, centerY));
+          cs.showText(text);
+          cs.endText();
+        }
+      }
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="page-numberer">Page Numberer (PDFBox)</h3>
+          <p>Create a Java utility that adds 'Page X of Y' text to the bottom-right corner of every page in a PDF document.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#page-numberer-code">Copy PdfPageNumbers.java</button>
+          </div>
+          <pre id="page-numberer-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+public final class PdfPageNumbers {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 2) {
+      System.out.println("Usage: PdfPageNumbers input.pdf output.pdf");
+      System.exit(1);
+    }
+    addNumbers(new File(args[0]), new File(args[1]));
+  }
+
+  public static void addNumbers(File inputPdf, File outputPdf) throws IOException {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      int total = doc.getNumberOfPages();
+      int i = 1;
+      for (PDPage page : doc.getPages()) {
+        String text = "Page " + i + " of " + total;
+        float fontSize = 10f;
+        float margin = 18f;
+        float width = PDType1Font.HELVETICA.getStringWidth(text) / 1000f * fontSize;
+        float x = page.getMediaBox().getWidth() - margin - width;
+        float y = margin;
+
+        try (PDPageContentStream cs =
+            new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true, true)) {
+          cs.beginText();
+          cs.setFont(PDType1Font.HELVETICA, fontSize);
+          cs.newLineAtOffset(x, y);
+          cs.showText(text);
+          cs.endText();
+        }
+        i++;
+      }
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="pdf-signer">PDF Signer (image placement) (PDFBox)</h3>
+          <p>Build a Java tool that takes an image file (signature.png) and places it at specific X,Y coordinates on the last page of a PDF.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#pdf-signer-code">Copy PdfImageSigner.java</button>
+          </div>
+          <pre id="pdf-signer-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+public final class PdfImageSigner {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 6) {
+      System.out.println("Usage: PdfImageSigner input.pdf output.pdf signature.png x y width");
+      System.exit(1);
+    }
+    File in = new File(args[0]);
+    File out = new File(args[1]);
+    File sig = new File(args[2]);
+    float x = Float.parseFloat(args[3]);
+    float y = Float.parseFloat(args[4]);
+    float w = Float.parseFloat(args[5]);
+    sign(in, out, sig, x, y, w);
+  }
+
+  public static void sign(File inputPdf, File outputPdf, File signaturePng, float x, float y, float width) throws IOException {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      int last = doc.getNumberOfPages() - 1;
+      PDPage page = doc.getPage(last);
+      PDImageXObject img = PDImageXObject.createFromFileByContent(signaturePng, doc);
+      float height = (img.getHeight() * width) / (float) img.getWidth();
+
+      try (PDPageContentStream cs =
+          new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true, true)) {
+        cs.drawImage(img, x, y, width, height);
+      }
+      doc.save(outputPdf);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="qr-generator">Barcode/QR Generator (ZXing + PDFBox)</h3>
+          <p>Develop a Java tool using ZXing and PDFBox that generates a QR code from a URL and embeds it onto the first page of a PDF.</p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#qr-generator-code">Copy PdfQrEmbed.java</button>
+          </div>
+          <pre id="qr-generator-code" data-snippet>
+package com.nutrithrive.labs;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+public final class PdfQrEmbed {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 6) {
+      System.out.println("Usage: PdfQrEmbed input.pdf output.pdf url x y size");
+      System.exit(1);
+    }
+    embed(new File(args[0]), new File(args[1]), args[2], Float.parseFloat(args[3]), Float.parseFloat(args[4]), Integer.parseInt(args[5]));
+  }
+
+  public static void embed(File inputPdf, File outputPdf, String url, float x, float y, int sizePx) throws IOException {
+    BufferedImage qr = makeQr(url, sizePx);
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      PDPage first = doc.getPage(0);
+      PDImageXObject qrImg = LosslessFactory.createFromImage(doc, qr);
+      try (PDPageContentStream cs =
+          new PDPageContentStream(doc, first, PDPageContentStream.AppendMode.APPEND, true, true)) {
+        cs.drawImage(qrImg, x, y, 120, 120);
+      }
+      doc.save(outputPdf);
+    }
+  }
+
+  private static BufferedImage makeQr(String text, int size) throws IOException {
+    try {
+      BitMatrix m = new MultiFormatWriter().encode(text, BarcodeFormat.QR_CODE, size, size);
+      return MatrixToImageWriter.toBufferedImage(m);
+    } catch (Exception e) {
+      throw new IOException("Failed to generate QR", e);
+    }
+  }
+}
+          </pre>
+
+          <h3 id="text-redactor">Text Redactor (PDFBox)</h3>
+          <p>Write a Java script that searches for a specific regex (like email addresses) in a PDF and draws a black rectangle over those coordinates to redact them.</p>
+          <p style="color: var(--muted2); margin-top: -0.4rem">
+            Note: true redaction needs text-position extraction. Below is a working approach using PDFTextStripper to detect matching text positions and draw rectangles.
+          </p>
+          <div class="row">
+            <button class="btn copy" type="button" data-copy="#redactor-code">Copy PdfRegexRedactor.java</button>
+          </div>
+          <pre id="redactor-code" data-snippet>
+package com.nutrithrive.labs;
+
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
+
+public final class PdfRegexRedactor {
+  public static void main(String[] args) throws Exception {
+    if (args.length &lt; 3) {
+      System.out.println("Usage: PdfRegexRedactor input.pdf output.pdf regex");
+      System.exit(1);
+    }
+    redact(new File(args[0]), new File(args[1]), Pattern.compile(args[2]));
+  }
+
+  public static void redact(File inputPdf, File outputPdf, Pattern pattern) throws Exception {
+    try (PDDocument doc = PDDocument.load(inputPdf)) {
+      for (int pageIndex = 0; pageIndex &lt; doc.getNumberOfPages(); pageIndex++) {
+        PDPage page = doc.getPage(pageIndex);
+
+        PositionStripper stripper = new PositionStripper(pattern);
+        stripper.setStartPage(pageIndex + 1);
+        stripper.setEndPage(pageIndex + 1);
+        stripper.getText(doc); // triggers processing
+
+        try (PDPageContentStream cs = new PDPageContentStream(doc, page, AppendMode.APPEND, true, true)) {
+          cs.setNonStrokingColor(Color.BLACK);
+          for (Rect r : stripper.rects) {
+            cs.addRect(r.x, r.y, r.w, r.h);
+            cs.fill();
+          }
+        }
+      }
+      doc.save(outputPdf);
+    }
+  }
+
+  private static final class Rect {
+    final float x, y, w, h;
+    Rect(float x, float y, float w, float h) { this.x = x; this.y = y; this.w = w; this.h = h; }
+  }
+
+  private static final class PositionStripper extends PDFTextStripper {
+    private final Pattern pattern;
+    private final StringBuilder pageText = new StringBuilder();
+    private final List&lt;TextPosition&gt; positions = new ArrayList&lt;&gt;();
+    final List&lt;Rect&gt; rects = new ArrayList&lt;&gt;();
+
+    PositionStripper(Pattern pattern) throws IOException {
+      this.pattern = pattern;
+      setSortByPosition(true);
+    }
+
+    @Override
+    protected void writeString(String string, List&lt;TextPosition&gt; textPositions) throws IOException {
+      pageText.append(string);
+      positions.addAll(textPositions);
+    }
+
+    @Override
+    protected void endPage(PDPage page) throws IOException {
+      String txt = pageText.toString();
+      Matcher m = pattern.matcher(txt);
+      while (m.find()) {
+        int start = m.start();
+        int end = m.end();
+        if (start &lt; 0 || end &gt; positions.size() || start &gt;= end) continue;
+
+        // Compute a bounding box across involved glyphs
+        float minX = Float.MAX_VALUE, minY = Float.MAX_VALUE;
+        float maxX = 0, maxY = 0;
+        for (int i = start; i &lt; end; i++) {
+          TextPosition tp = positions.get(i);
+          float x = tp.getXDirAdj();
+          float y = tp.getYDirAdj();
+          float w = tp.getWidthDirAdj();
+          float h = tp.getHeightDir();
+          minX = Math.min(minX, x);
+          minY = Math.min(minY, y);
+          maxX = Math.max(maxX, x + w);
+          maxY = Math.max(maxY, y + h);
+        }
+        rects.add(new Rect(minX, minY - 1, (maxX - minX), (maxY - minY) + 2));
+      }
+      pageText.setLength(0);
+      positions.clear();
+      super.endPage(page);
+    }
+  }
+}
+          </pre>
+
+          <p style="margin-top: 1rem; color: var(--muted2)">
+            Done. If you want, I can also generate a downloadable <code>.zip</code> of a ready-to-run Maven project in this repo.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+    <script>
+      (function () {
+        const toast = document.getElementById("toast");
+        let toastTimer = null;
+
+        function showToast(message) {
+          toast.textContent = message;
+          toast.dataset.show = "true";
+          if (toastTimer) window.clearTimeout(toastTimer);
+          toastTimer = window.setTimeout(() => {
+            toast.dataset.show = "false";
+          }, 1400);
+        }
+
+        async function copyText(text) {
+          try {
+            await navigator.clipboard.writeText(text);
+            showToast("Copied");
+            return;
+          } catch (e) {}
+
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          showToast("Copied");
+        } catch (e) {
+          showToast("Copy failed");
+        } finally {
+          document.body.removeChild(ta);
+        }
+        }
+
+        document.addEventListener("click", (e) => {
+          const t = e.target;
+          if (!(t instanceof HTMLElement)) return;
+          const copyBtn = t.closest("[data-copy]");
+          if (!copyBtn) return;
+          const sel = copyBtn.getAttribute("data-copy");
+          if (!sel) return;
+          const el = document.querySelector(sel);
+          if (!el) return;
+          const txt = (el.textContent || "").trim();
+          if (!txt) return;
+          copyText(txt);
+        });
+      })();
+    </script>
+  </body>
+</html>
+
