@@ -856,6 +856,53 @@ footer {
     box-shadow: var(--shadow);
 }
 
+/* Simple Guides Container (flat, no border/background) */
+.contact-guides {
+    max-width: 960px;
+    margin: 2.5rem auto;
+    padding: 0 1.35rem;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    line-height: 1.75;
+}
+
+.contact-guides-title {
+    margin-top: 0;
+    color: #1a4d30;
+    font-size: 1.4rem;
+}
+
+.contact-guides-nav {
+    margin-top: 1.5rem;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+}
+
+.contact-guides-nav h3 {
+    margin-top: 0;
+    color: #175c36;
+    font-size: 1.05rem;
+}
+
+.contact-guides-nav p {
+    margin-bottom: 0.85rem;
+    line-height: 1.7;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.contact-guides-links {
+    margin: 0;
+    padding-left: 1.2rem;
+    line-height: 1.85;
+    columns: 2;
+    column-gap: 1.5rem;
+    font-size: 0.88rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
@@ -880,6 +927,14 @@ footer {
         border-radius: 0 !important;
         box-shadow: none !important;
         border: none !important;
+    }
+
+    .contact-guides {
+        padding: 0 1rem;
+    }
+
+    .contact-guides-links {
+        columns: 1;
     }
 
     .nav-links-container {
