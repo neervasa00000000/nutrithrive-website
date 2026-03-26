@@ -23,22 +23,22 @@
     <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp" />
     <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp" />
     <meta name="msapplication-TileColor" content="#0f6b4d" />
-    <meta name="theme-color" content="#0b1020" />
+    <meta name="theme-color" content="#f8fafc" />
 
     <style>
       :root {
-        color-scheme: dark;
-        --bg0: #070a14;
-        --bg1: #0b1020;
-        --panel: rgba(255, 255, 255, 0.09);
-        --stroke: rgba(255, 255, 255, 0.16);
-        --stroke2: rgba(255, 255, 255, 0.22);
-        --text: rgba(255, 255, 255, 0.96);
-        --muted: rgba(255, 255, 255, 0.76);
-        --muted2: rgba(255, 255, 255, 0.6);
-        --brand: #7c3aed;
-        --brand2: #22c55e;
-        --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+        color-scheme: light;
+        --bg0: #f8fafc;
+        --bg1: #eef2ff;
+        --panel: rgba(255, 255, 255, 0.82);
+        --stroke: rgba(15, 23, 42, 0.12);
+        --stroke2: rgba(15, 23, 42, 0.18);
+        --text: rgba(15, 23, 42, 0.92);
+        --muted: rgba(15, 23, 42, 0.68);
+        --muted2: rgba(15, 23, 42, 0.56);
+        --brand: #5b21b6;
+        --brand2: #16a34a;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
         --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
           "Courier New", monospace;
         --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -58,8 +58,8 @@
       body {
         margin: 0;
         font-family: var(--sans);
-        background: radial-gradient(1200px 600px at 25% 10%, rgba(124, 58, 237, 0.35), transparent 60%),
-          radial-gradient(1000px 500px at 80% 35%, rgba(34, 197, 94, 0.22), transparent 55%),
+        background: radial-gradient(900px 450px at 20% 10%, rgba(91, 33, 182, 0.12), transparent 60%),
+          radial-gradient(900px 450px at 80% 20%, rgba(22, 163, 74, 0.1), transparent 60%),
           linear-gradient(180deg, var(--bg0), var(--bg1));
         color: var(--text);
       }
@@ -74,7 +74,7 @@
         top: 0;
         z-index: 20;
         backdrop-filter: blur(12px);
-        background: rgba(7, 10, 20, 0.72);
+        background: rgba(248, 250, 252, 0.78);
         border-bottom: 1px solid var(--stroke);
       }
 
@@ -375,6 +375,17 @@
             <span class="pill">Instant download</span>
           </div>
           <p class="mini">Click to open the deduplicator.</p>
+        </a>
+
+        <a class="poster" href="/nutrithrive_labs/sitemap-generator.html" aria-label="Open Sitemap Generator">
+          <h2>Sitemap Generator</h2>
+          <p>Select a local folder of HTML files and generate a standard <code>sitemap.xml</code>.</p>
+          <div class="kpis" aria-label="Highlights">
+            <span class="pill purple">Folder → sitemap.xml</span>
+            <span class="pill green">No server upload</span>
+            <span class="pill">Copy or download</span>
+          </div>
+          <p class="mini">Click to generate your sitemap.</p>
         </a>
 
         <section class="panel" aria-label="What you can do">
