@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriThrive Labs | File Converter</title>
+    <title>NutriThrive Labs | Home</title>
     <meta
       name="description"
-      content="Upload a file and convert it using NutriThrive Labs tools (client-side): PDF to text, images to PDF, PDF to images, HTML to PDF, merge, split, rotate, and more."
+      content="NutriThrive Labs: simple file conversion tools. Click to open the converter (PDF to text, images to PDF, PDF to images, merge, split, rotate, and more)."
     />
     <meta name="robots" content="index, follow" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,15 +24,6 @@
     <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp" />
     <meta name="msapplication-TileColor" content="#0f6b4d" />
     <meta name="theme-color" content="#0b1020" />
-
-    <!-- Libraries (CDN) -->
-    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/build/pdf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
 
     <style>
       :root {
@@ -165,12 +156,12 @@
         border: 1px solid var(--stroke);
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
         box-shadow: var(--shadow);
-        padding: 1.15rem 1.15rem 1rem;
+        padding: 1.25rem;
       }
 
       h1 {
         margin: 0;
-        font-size: 1.75rem;
+        font-size: clamp(1.9rem, 2.6vw, 2.5rem);
         letter-spacing: -0.02em;
       }
 
@@ -183,7 +174,7 @@
       .grid {
         margin-top: 1rem;
         display: grid;
-        grid-template-columns: 360px 1fr;
+        grid-template-columns: 1.1fr 0.9fr;
         gap: 1rem;
         align-items: start;
       }
@@ -210,53 +201,14 @@
         color: var(--muted2);
       }
 
-      .field {
-        margin-top: 0.85rem;
-        display: grid;
-        gap: 0.45rem;
-      }
-
-      label {
-        font-weight: 800;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.85);
-      }
-
-      input,
-      select,
-      textarea {
-        border-radius: 14px;
-        border: 1px solid var(--stroke);
-        background: rgba(255, 255, 255, 0.04);
-        padding: 0.75rem 0.85rem;
-        color: var(--text);
-        outline: none;
-        font-weight: 700;
-      }
-
-      textarea {
-        min-height: 110px;
-        resize: vertical;
-        font-family: var(--mono);
-        font-weight: 600;
-        font-size: 0.88rem;
-      }
-
-      .filehint {
-        color: var(--muted2);
-        font-size: 0.9rem;
-        line-height: 1.55;
-        margin-top: 0.3rem;
-      }
-
       .btnrow {
         display: flex;
         gap: 0.6rem;
         flex-wrap: wrap;
-        margin-top: 1rem;
+        margin-top: 1.1rem;
       }
 
-      button.btn {
+      .btn {
         cursor: pointer;
         border-radius: 14px;
         border: 1px solid var(--stroke);
@@ -267,104 +219,100 @@
         font-size: 0.92rem;
         transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease,
           opacity 0.12s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      button.btn:hover {
+      .btn:hover {
         transform: translateY(-1px);
         border-color: var(--stroke2);
         background: rgba(255, 255, 255, 0.06);
       }
 
-      button.btn.primary {
+      .btn.primary {
         border-color: rgba(124, 58, 237, 0.55);
         background: rgba(124, 58, 237, 0.18);
       }
 
-      button.btn:disabled {
-        opacity: 0.55;
-        cursor: not-allowed;
-        transform: none;
-      }
-
-      .status {
-        margin-top: 0.8rem;
-        border-radius: 14px;
+      .poster {
+        display: block;
+        border-radius: calc(var(--r) + 10px);
         border: 1px solid var(--stroke);
-        background: rgba(0, 0, 0, 0.25);
-        padding: 0.75rem;
-        color: var(--muted);
-        line-height: 1.6;
-        font-family: var(--mono);
-        font-size: 0.86rem;
-        white-space: pre-wrap;
-        min-height: 50px;
-      }
-
-      .downloads {
-        margin-top: 1rem;
-        display: grid;
-        gap: 0.6rem;
-      }
-
-      .dl {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.8rem;
-        padding: 0.7rem 0.85rem;
-        border-radius: 14px;
-        border: 1px solid var(--stroke);
-        background: rgba(255, 255, 255, 0.04);
-      }
-
-      .dl strong {
-        font-size: 0.95rem;
-      }
-
-      .toast {
-        position: fixed;
-        right: 16px;
-        bottom: 16px;
-        z-index: 50;
-        border-radius: 14px;
-        border: 1px solid var(--stroke);
-        background: rgba(0, 0, 0, 0.55);
-        backdrop-filter: blur(12px);
-        padding: 0.85rem 0.95rem;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
         box-shadow: var(--shadow);
-        color: rgba(255, 255, 255, 0.88);
-        font-weight: 800;
-        transform: translateY(10px);
-        opacity: 0;
+        padding: 1.15rem;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+        min-height: 220px;
+      }
+
+      .poster::before {
+        content: "";
+        position: absolute;
+        inset: -40% -30%;
+        background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.35), transparent 55%),
+          radial-gradient(circle at 75% 45%, rgba(34, 197, 94, 0.22), transparent 52%);
+        filter: blur(22px);
+        opacity: 0.95;
         pointer-events: none;
-        transition: opacity 0.18s ease, transform 0.18s ease;
       }
 
-      .toast[data-show="true"] {
-        opacity: 1;
-        transform: translateY(0);
+      .poster:hover {
+        transform: translateY(-2px);
+        border-color: var(--stroke2);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
       }
 
-      .section-title {
-        margin: 0 0 0.45rem;
+      .poster * {
+        position: relative;
+      }
+
+      .poster h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        letter-spacing: -0.01em;
+      }
+
+      .poster p {
+        margin: 0.55rem 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .poster .kpis {
+        margin-top: 0.9rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .pill {
+        font-size: 0.82rem;
         font-weight: 900;
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.42rem 0.65rem;
+        border-radius: 999px;
       }
 
-      .disabled-note {
-        margin-top: 0.75rem;
-        padding: 0.75rem;
-        border-radius: 14px;
-        border: 1px solid rgba(239, 68, 68, 0.3);
-        background: rgba(239, 68, 68, 0.08);
-        color: rgba(255, 255, 255, 0.9);
+      .pill.purple {
+        border-color: rgba(124, 58, 237, 0.42);
+        background: rgba(124, 58, 237, 0.14);
+      }
+
+      .pill.green {
+        border-color: rgba(34, 197, 94, 0.35);
+        background: rgba(34, 197, 94, 0.12);
+      }
+
+      .mini {
+        margin: 0.15rem 0 0;
+        color: var(--muted2);
+        font-size: 0.9rem;
         line-height: 1.6;
-        font-weight: 700;
-        font-size: 0.92rem;
-      }
-
-      .hidden {
-        display: none !important;
       }
     </style>
   </head>
@@ -375,199 +323,61 @@
           <span class="mark" aria-hidden="true"></span>
           <span>
             <strong>NutriThrive Labs</strong>
-            <span>File converter (client-side)</span>
+            <span>Home</span>
           </span>
         </a>
         <nav class="nav" aria-label="Labs navigation">
           <a class="chiplink" href="/">Main site</a>
           <a class="chiplink" href="/blog/">Blog</a>
           <a class="chiplink" href="/contact">Contact</a>
-          <a class="chiplink primary" href="#converter">Converter</a>
+          <a class="chiplink primary" href="/nutrithrive_labs/converter.html">Open converter</a>
         </nav>
       </div>
     </header>
 
-    <main class="shell" id="converter">
+    <main class="shell">
       <section class="hero">
-        <h1>Upload → Convert → Download</h1>
+        <h1>Fast file conversions, right in your browser</h1>
         <p>
-          Choose a tool, upload the required file(s), and click Convert. Conversions run in your browser.
-          Some security tools (AES-256 protect/unlock) are not supported client-side and will show as disabled.
+          Click the poster below to open the converter. Upload your file, choose a tool, and download the
+          result.
         </p>
+        <div class="btnrow">
+          <a class="btn primary" href="/nutrithrive_labs/converter.html">Start converting</a>
+          <a class="btn" href="/">Back to NutriThrive</a>
+        </div>
       </section>
 
       <div class="grid">
-        <aside class="panel" aria-label="Converter controls">
-          <h2>Tool</h2>
-          <div class="field">
-            <label for="toolSelect">Select tool</label>
-            <select id="toolSelect">
-              <optgroup label="conversion">
-                <option value="pdf_to_text">PDF → Text (.txt)</option>
-                <option value="image_to_pdf">Image folder → PDF</option>
-                <option value="pdf_to_image">PDF → Image (300 DPI PNG)</option>
-                <option value="html_to_pdf">HTML → PDF</option>
-                <option value="pdf_table_csv">PDF table → CSV (best-effort)</option>
-              </optgroup>
-
-              <optgroup label="manipulation">
-                <option value="pdf_merge">PDF Merger</option>
-                <option value="pdf_split">PDF Splitter (one-page PDFs)</option>
-                <option value="pdf_reorder">Page Reorder</option>
-                <option value="pdf_rotate">PDF Rotator (90° clockwise)</option>
-                <option value="pdf_remove">Page Remover</option>
-              </optgroup>
-
-              <optgroup label="security">
-                <option value="pdf_compress">PDF Compressor (image-based)</option>
-                <option value="pdf_encrypt">Password Protector (NOT supported)</option>
-                <option value="pdf_unlock">PDF Unlocker (NOT supported)</option>
-                <option value="pdf_metadata">Metadata Editor</option>
-                <option value="pdf_grayscale">Grayscale Converter (image-based)</option>
-              </optgroup>
-
-              <optgroup label="annotation">
-                <option value="pdf_watermark">Watermark Creator</option>
-                <option value="pdf_number">Page Numberer</option>
-                <option value="pdf_signer">PDF Signer (signature image)</option>
-                <option value="pdf_qr">Barcode/QR Generator (QR)</option>
-                <option value="pdf_redactor">Text Redactor (regex-based)</option>
-              </optgroup>
-            </select>
-            <div class="filehint" id="toolHint">Pick a tool to see required inputs.</div>
+        <a class="poster" href="/nutrithrive_labs/converter.html" aria-label="Open the converter">
+          <h2>Open the Converter</h2>
+          <p>
+            Convert PDF ↔ images, extract text, merge/split pages, add watermarks, embed QR codes, and more.
+          </p>
+          <div class="kpis" aria-label="Highlights">
+            <span class="pill purple">Upload → Convert → Download</span>
+            <span class="pill green">Runs in your browser</span>
+            <span class="pill">No signup</span>
           </div>
+          <p class="mini">Click anywhere on this poster to start.</p>
+        </a>
 
-          <div class="field">
-            <label for="mainFile">Upload file(s)</label>
-            <input
-              id="mainFile"
-              type="file"
-              multiple
-              accept="application/pdf,image/*,text/html,.html,.htm,.png,.jpg,.jpeg"
-            />
-            <div class="filehint">
-              Tip: for image→PDF, select multiple images (PNG/JPG). Folder upload depends on your browser.
-            </div>
-          </div>
-
-          <div id="extraFields">
-            <div class="field hidden" id="fieldHtmlText">
-              <label for="htmlText">HTML content (optional)</label>
-              <textarea id="htmlText" placeholder="Paste HTML here (used for HTML → PDF if no file is uploaded)."></textarea>
-            </div>
-
-            <div class="field hidden" id="fieldIndices">
-              <label for="indicesInput">Page indices</label>
-              <input id="indicesInput" type="text" placeholder="e.g. 2,0,1 (zero-based)" />
-            </div>
-
-            <div class="field hidden" id="fieldRemove">
-              <label for="removeInput">Pages to remove</label>
-              <input id="removeInput" type="text" placeholder="e.g. 1,3,5 (1-based)" />
-            </div>
-
-            <div class="field hidden" id="fieldDpi">
-              <label for="dpiInput">DPI (for image-based tools)</label>
-              <input id="dpiInput" type="number" min="72" max="600" step="1" value="300" />
-            </div>
-
-            <div class="field hidden" id="fieldJpegQuality">
-              <label for="jpegQualityInput">JPEG quality (0.1 - 1.0)</label>
-              <input id="jpegQualityInput" type="number" min="0.1" max="1" step="0.1" value="0.6" />
-            </div>
-
-            <div class="field hidden" id="fieldMetadata">
-              <label for="metaTitle">Title</label>
-              <input id="metaTitle" type="text" placeholder="Document title" />
-            </div>
-            <div class="field hidden" id="fieldMetadataAuthor">
-              <label for="metaAuthor">Author</label>
-              <input id="metaAuthor" type="text" placeholder="Author name" />
-            </div>
-            <div class="field hidden" id="fieldMetadataSubject">
-              <label for="metaSubject">Subject</label>
-              <input id="metaSubject" type="text" placeholder="Subject" />
-            </div>
-            <div class="field hidden" id="fieldMetadataKeywords">
-              <label for="metaKeywords">Keywords</label>
-              <input id="metaKeywords" type="text" placeholder="Comma-separated keywords" />
-            </div>
-
-            <div class="field hidden" id="fieldWatermark">
-              <label for="watermarkText">Watermark text</label>
-              <input id="watermarkText" type="text" value="CONFIDENTIAL" />
-            </div>
-
-            <div class="field hidden" id="fieldWatermarkOpacity">
-              <label for="watermarkOpacity">Opacity (0-1)</label>
-              <input id="watermarkOpacity" type="number" min="0" max="1" step="0.05" value="0.18" />
-            </div>
-
-            <div class="field hidden" id="fieldWatermarkAngle">
-              <label for="watermarkAngle">Angle (degrees)</label>
-              <input id="watermarkAngle" type="number" step="1" value="35" />
-            </div>
-
-            <div class="field hidden" id="fieldSignature">
-              <label for="signatureFile">Upload signature image (PNG/JPG)</label>
-              <input id="signatureFile" type="file" accept="image/*" />
-            </div>
-
-            <div class="field hidden" id="fieldSignaturePos">
-              <label>Signature placement</label>
-              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem">
-                <input id="sigX" type="number" step="0.5" placeholder="X" />
-                <input id="sigY" type="number" step="0.5" placeholder="Y" />
-                <input id="sigW" type="number" step="0.5" placeholder="Width" />
-              </div>
-              <div class="filehint">Coordinates are in PDF points.</div>
-            </div>
-
-            <div class="field hidden" id="fieldQr">
-              <label for="qrUrl">QR URL/text</label>
-              <input id="qrUrl" type="text" placeholder="https://example.com" />
-            </div>
-            <div class="field hidden" id="fieldQrPos">
-              <label>QR placement</label>
-              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem">
-                <input id="qrX" type="number" step="0.5" placeholder="X" />
-                <input id="qrY" type="number" step="0.5" placeholder="Y" />
-                <input id="qrSize" type="number" step="1" placeholder="Size" value="90" />
-              </div>
-            </div>
-
-            <div class="field hidden" id="fieldRedactor">
-              <label for="regexInput">Regex to redact</label>
-              <input
-                id="regexInput"
-                type="text"
-                value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
-              />
-            </div>
-          </div>
-
+        <section class="panel" aria-label="What you can do">
+          <h2>What it does</h2>
+          <p class="mini" style="margin-top: 0">
+            Pick a tool inside the converter. Upload your file(s). Download the result.
+          </p>
           <div class="btnrow">
-            <button class="btn primary" id="convertBtn" type="button">Convert</button>
-            <button class="btn" id="clearBtn" type="button">Clear</button>
+            <a class="btn primary" href="/nutrithrive_labs/converter.html">Start converting</a>
+            <a class="btn" href="/nutrithrive_labs/converter.html#converter">Open converter</a>
           </div>
-
-          <div class="disabled-note hidden" id="securityDisabledNote">
-            This tool requires server-side PDF processing (AES-256 password protect/unlock).
-            It is not supported client-side. Choose another tool.
-          </div>
-        </aside>
-
-        <section class="panel" aria-label="Converter output">
-          <h2>Output</h2>
-          <div class="section-title">Status</div>
-          <div class="status" id="statusBox">Ready.</div>
-          <div class="downloads" id="downloads"></div>
+          <p class="mini">
+            Note: AES-256 password protect/unlock requires a backend and is disabled in the client-side
+            version.
+          </p>
         </section>
       </div>
     </main>
-
-    <div class="toast" id="toast" data-show="false" role="status" aria-live="polite"></div>
-    <script src="/scripts/pages/labs/converter.js"></script>
   </body>
 </html>
 
