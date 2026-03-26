@@ -1,6 +1,23 @@
+import { createHmac, timingSafeEqual } from "crypto";
+
 export async function handler(event) {
+    const requestOrigin = event?.headers?.origin || event?.headers?.Origin || "";
+    const allowedOrigins = new Set([
+        "https://nutrithrive.com.au",
+        "https://www.nutrithrive.com.au",
+    ]);
+
+    // Tighten CORS: only allow our own frontend origin to call this endpoint.
+    if (requestOrigin && !allowedOrigins.has(requestOrigin)) {
+        return {
+            statusCode: 403,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ error: "Origin not allowed" }),
+        };
+    }
+
     const headers = {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": requestOrigin || "https://nutrithrive.com.au",
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Content-Type": "application/json",
@@ -19,8 +36,14 @@ export async function handler(event) {
     }
 
     try {
-        const { orderID } = JSON.parse(event.body || "{}");
-        if (!orderID) {
+        const { orderID, captureToken } = JSON.parse(event.body || "{}");
+        if (
+            !orderID ||
+            typeof orderID !== "string" ||
+            !/^order-[A-Za-z0-9]+$/.test(orderID) ||
+            !captureToken ||
+            typeof captureToken !== "string"
+        ) {
             return {
                 statusCode: 400,
                 headers,
@@ -31,14 +54,6 @@ export async function handler(event) {
         const base = (process.env.PAYPAL_BASE || "https://api-m.paypal.com").replace(/\/$/, "");
         const client = process.env.PAYPAL_CLIENT_ID;
         const secret = process.env.PAYPAL_CLIENT_SECRET;
-
-        // Debug logging
-        console.log("Environment check:", {
-            hasBase: !!process.env.PAYPAL_BASE,
-            hasClient: !!client,
-            hasSecret: !!secret,
-            base: base
-        });
 
         if (!client || !secret) {
             const missing = [];
@@ -52,6 +67,17 @@ export async function handler(event) {
                     missing: missing,
                     hint: "Please check Netlify environment variables and redeploy"
                 }),
+            };
+        }
+
+        // Verify capture token to prevent capturing arbitrary PayPal orders.
+        const expected = createHmac("sha256", secret).update(String(orderID)).digest();
+        const provided = Buffer.from(String(captureToken), "hex");
+        if (provided.length !== expected.length || !timingSafeEqual(provided, expected)) {
+            return {
+                statusCode: 403,
+                headers,
+                body: JSON.stringify({ error: "Invalid capture token" }),
             };
         }
 
@@ -78,15 +104,6 @@ export async function handler(event) {
 
         const capture = await capRes.json();
         if (!capRes.ok) throw new Error(JSON.stringify(capture));
-
-        // Log shipping address and email for verification
-        if (capture.purchase_units && capture.purchase_units[0]) {
-            const shipping = capture.purchase_units[0].shipping;
-            const payer = capture.payer;
-            console.log("Shipping address:", shipping);
-            console.log("Payer email:", payer?.email_address);
-            console.log("Payer name:", payer?.name);
-        }
 
         return {
             statusCode: 200,

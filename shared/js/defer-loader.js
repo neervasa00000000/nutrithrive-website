@@ -75,9 +75,10 @@
     try {
       if (typeof fn === 'function') {
         fn();
-      } else if (typeof fn === 'string') {
-        // Execute as code string
-        new Function(fn)();
+      } else {
+        // SECURITY: disallow string execution (eval-like) to prevent code injection.
+        // This intentionally breaks any call sites that try to pass code strings.
+        console.warn('[DeferLoader] loadInline rejected non-function input');
       }
     } catch (error) {
       console.error('[DeferLoader] Error executing inline code:', error);
