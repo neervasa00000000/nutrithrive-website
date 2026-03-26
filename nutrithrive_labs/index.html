@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriThrive Labs | PDF Tools</title>
+    <meta
+      name="description"
+      content="NutriThrive Labs: a collection of Java PDF utilities for conversion, extraction, manipulation, optimization, security, and annotation."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="stylesheet" href="/styles/global/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp" />
+    <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp" />
+    <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp" />
+    <meta name="msapplication-TileColor" content="#0f6b4d" />
+    <meta name="theme-color" content="#0f6b4d" />
+
+    <style>
+      :root {
+        --labs-max: 1100px;
+      }
+
+      .labs-shell {
+        max-width: var(--labs-max);
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 3.5rem;
+      }
+
+      .labs-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1.5rem;
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid rgba(15, 107, 77, 0.12);
+        border-radius: 16px;
+        padding: 1.75rem;
+        box-shadow: 0 8px 20px rgba(15, 107, 77, 0.08);
+      }
+
+      .labs-hero h1 {
+        margin: 0 0 0.5rem 0;
+        color: var(--primary);
+        font-size: clamp(1.75rem, 2.6vw, 2.4rem);
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+
+      .labs-hero p {
+        margin: 0.25rem 0 0 0;
+        color: #1f2937;
+        line-height: 1.75;
+        font-size: 1.02rem;
+      }
+
+      .labs-hero .labs-meta {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid rgba(15, 107, 77, 0.18);
+        background: rgba(15, 107, 77, 0.06);
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+
+      .labs-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-end;
+      }
+
+      .labs-actions a {
+        display: inline-block;
+        padding: 0.9rem 1.1rem;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+        text-align: center;
+        width: 100%;
+        max-width: 240px;
+      }
+
+      .labs-actions a:hover {
+        transform: translateY(-1px);
+        opacity: 0.95;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-secondary {
+        background: #fff;
+        color: var(--primary);
+        border: 1px solid rgba(15, 107, 77, 0.25);
+      }
+
+      .section {
+        margin-top: 2.25rem;
+      }
+
+      .section h2 {
+        margin: 0 0 0.75rem 0;
+        font-size: 1.35rem;
+        color: var(--primary);
+        letter-spacing: -0.01em;
+      }
+
+      .section .section-desc {
+        margin: 0 0 1.1rem 0;
+        color: #374151;
+        line-height: 1.75;
+      }
+
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .tool-card {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 14px;
+        padding: 1rem;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .tool-card h3 {
+        margin: 0;
+        font-size: 1.02rem;
+        color: #111827;
+      }
+
+      .tool-card p {
+        margin: 0;
+        color: #4b5563;
+        line-height: 1.7;
+        font-size: 0.95rem;
+      }
+
+      .tool-card .prompt {
+        background: #0b1220;
+        color: #e5e7eb;
+        border-radius: 10px;
+        padding: 0.75rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        font-size: 0.85rem;
+        line-height: 1.55;
+        white-space: pre-wrap;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .labs-footer {
+        margin-top: 2.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        color: #6b7280;
+        font-size: 0.95rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 980px) {
+        .tool-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .labs-hero {
+          grid-template-columns: 1fr;
+        }
+        .labs-actions {
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .tool-grid {
+          grid-template-columns: 1fr;
+        }
+        .labs-shell {
+          padding: 2rem 1rem 3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <a href="/" class="logo">
+          <img
+            src="/assets/images/logo/LOGO.webp"
+            alt="NutriThrive Logo"
+            width="50"
+            height="50"
+            loading="eager"
+            decoding="async"
+            style="height: 1.8rem; width: auto; margin-right: 0.5rem"
+          />
+          NutriThrive Labs
+        </a>
+        <nav class="nav-links">
+          <a href="/">Main site</a>
+          <a href="#tools" class="active">PDF tools</a>
+          <a href="/blog/">Blog</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <button
+          class="hamburger"
+          aria-label="Toggle navigation menu"
+          onclick="window.ntToggleMenu && window.ntToggleMenu()"
+        >
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </button>
+      </div>
+    </header>
+
+    <main class="labs-shell">
+      <section class="labs-hero">
+        <div>
+          <h1>PDF Utilities (Java)</h1>
+          <p>
+            A simple homepage for your <strong>NutriThrive Labs</strong> tools list. Each item below is
+            the exact “full working” spec prompt you provided, grouped by category.
+          </p>
+          <div class="labs-meta">
+            <span class="pill">Apache PDFBox</span>
+            <span class="pill">openhtmltopdf</span>
+            <span class="pill">Tabula-java</span>
+            <span class="pill">ZXing</span>
+          </div>
+        </div>
+        <div class="labs-actions">
+          <a class="btn-primary" href="#tools">View tool list</a>
+          <a class="btn-secondary" href="/">Back to nutrithrive.com.au</a>
+        </div>
+      </section>
+
+      <section id="tools" class="section">
+        <h2>Conversion &amp; Extraction</h2>
+        <p class="section-desc">Convert between formats and extract content (text, images, tables).</p>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <h3>PDF to Text</h3>
+            <div class="prompt">"Create a Java utility using Apache PDFBox that takes a PDF file input and saves all extracted text into a .txt file, preserving basic paragraph spacing."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Image to PDF</h3>
+            <div class="prompt">"Write a Java program that takes a folder of JPG/PNG images and wraps each image into a single multi-page PDF document where each page matches the image dimensions."</div>
+          </article>
+          <article class="tool-card">
+            <h3>PDF to Image</h3>
+            <div class="prompt">"Create a Java tool that renders each page of a PDF as a high-resolution (300 DPI) PNG image saved to a 'conversion' folder."</div>
+          </article>
+          <article class="tool-card">
+            <h3>HTML to PDF</h3>
+            <div class="prompt">"Build a Java utility using the openhtmltopdf library to convert a local HTML file string into a formatted PDF document."</div>
+          </article>
+          <article class="tool-card">
+            <h3>PDF Table Extractor</h3>
+            <div class="prompt">"Develop a Java class using Tabula-java or PDFBox that detects table structures in a PDF and exports the row/column data into a CSV format."</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Manipulation &amp; Organization</h2>
+        <p class="section-desc">Merge, split, reorder, rotate, and remove pages.</p>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <h3>PDF Merger</h3>
+            <div class="prompt">"Create a Java function that accepts a List of File objects and merges them into one single output.pdf using PDFMergerUtility."</div>
+          </article>
+          <article class="tool-card">
+            <h3>PDF Splitter</h3>
+            <div class="prompt">"Write a Java script that splits a large PDF into individual one-page documents and saves them with the naming convention 'page_n.pdf'."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Page Reorder</h3>
+            <div class="prompt">"Build a Java method that takes an existing PDF and an integer array of page indices (e.g., {2, 0, 1}) to create a new PDF in that specific page order."</div>
+          </article>
+          <article class="tool-card">
+            <h3>PDF Rotator</h3>
+            <div class="prompt">"Create a Java utility that iterates through all pages of a PDF and rotates them 90 degrees clockwise before saving."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Page Remover</h3>
+            <div class="prompt">"Write a Java tool that takes a PDF and a 'pagesToRemove' integer list, then generates a new PDF excluding those specific page numbers."</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Optimization &amp; Security</h2>
+        <p class="section-desc">Reduce size, apply protection, unlock, edit metadata, and convert to grayscale.</p>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <h3>PDF Compressor</h3>
+            <div class="prompt">"Develop a Java tool that reduces PDF size by iterating through all PDImageXObjects and reducing their JPEG quality/sampling rate."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Password Protector</h3>
+            <div class="prompt">"Build a Java utility that applies a user password to a PDF using StandardProtectionPolicy with 256-bit AES encryption."</div>
+          </article>
+          <article class="tool-card">
+            <h3>PDF Unlocker</h3>
+            <div class="prompt">"Write a Java script that takes an encrypted PDF and a password, then saves a new 'unlocked' version with all access permissions enabled."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Metadata Editor</h3>
+            <div class="prompt">"Create a Java class to update the PDDocumentInformation (Title, Author, Subject, Keywords) of an existing PDF file."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Grayscale Converter</h3>
+            <div class="prompt">"Build a Java function that processes a PDF and converts all colored text and images to a grayscale color space to reduce printing costs."</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Content Editing &amp; Annotation</h2>
+        <p class="section-desc">Add watermarks, page numbers, signatures, QR codes, and redact text.</p>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <h3>Watermark Creator</h3>
+            <div class="prompt">"Write a Java program that overlays a semi-transparent 'CONFIDENTIAL' text diagonal across every page of a PDF using a PDPageContentStream."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Page Numberer</h3>
+            <div class="prompt">"Create a Java utility that adds 'Page X of Y' text to the bottom-right corner of every page in a PDF document."</div>
+          </article>
+          <article class="tool-card">
+            <h3>PDF Signer</h3>
+            <div class="prompt">"Build a Java tool that takes an image file (signature.png) and places it at specific X,Y coordinates on the last page of a PDF."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Barcode/QR Generator</h3>
+            <div class="prompt">"Develop a Java tool using ZXing and PDFBox that generates a QR code from a URL and embeds it onto the first page of a PDF."</div>
+          </article>
+          <article class="tool-card">
+            <h3>Text Redactor</h3>
+            <div class="prompt">"Write a Java script that searches for a specific regex (like email addresses) in a PDF and draws a black rectangle over those coordinates to redact them."</div>
+          </article>
+        </div>
+      </section>
+
+      <div class="labs-footer">
+        <div>© 2026 NutriThrive Labs</div>
+        <div><a href="/" style="color: var(--primary); text-decoration: none; font-weight: 700">Return to main site</a></div>
+      </div>
+    </main>
+
+    <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/cart-header.js"></script>
+    <script src="/scripts/global/script.js" defer></script>
+  </body>
+</html>
+
