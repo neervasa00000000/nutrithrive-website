@@ -37,17 +37,17 @@ export async function handler(event) {
 
     try {
         const { orderID, captureToken } = JSON.parse(event.body || "{}");
+        // PayPal order IDs are typically an opaque alphanumeric string (no "order-" prefix).
+        const orderIdOk = typeof orderID === "string" && /^[A-Za-z0-9]{10,64}$/.test(orderID);
         if (
-            !orderID ||
-            typeof orderID !== "string" ||
-            !/^order-[A-Za-z0-9]+$/.test(orderID) ||
+            !orderIdOk ||
             !captureToken ||
             typeof captureToken !== "string"
         ) {
             return {
                 statusCode: 400,
                 headers,
-                body: JSON.stringify({ error: "Missing orderID" }),
+                body: JSON.stringify({ error: "Missing or invalid orderID/captureToken" }),
             };
         }
 
