@@ -421,6 +421,10 @@
                 <option value="pdf_qr">Barcode/QR Generator (QR)</option>
                 <option value="pdf_redactor">Text Redactor (regex-based)</option>
               </optgroup>
+
+              <optgroup label="text tools">
+                <option value="dedup_lines">Remove Duplicate Lines</option>
+              </optgroup>
             </select>
             <div class="filehint" id="toolHint">Pick a tool to see required inputs.</div>
           </div>
@@ -431,7 +435,7 @@
               id="mainFile"
               type="file"
               multiple
-              accept="application/pdf,image/*,text/html,.html,.htm,.png,.jpg,.jpeg"
+              accept="application/pdf,image/*,text/html,.html,.htm,text/plain,.txt,.png,.jpg,.jpeg"
             />
             <div class="filehint">
               Tip: for image→PDF, you can try selecting a folder (if supported by your browser).
@@ -536,6 +540,18 @@
                 value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
               />
               <div class="filehint">This best-effort redacts text items that match the regex exactly.</div>
+            </div>
+
+            <div class="field hidden" id="fieldDedupText">
+              <label for="dedupTextInput">Text to deduplicate (one line per entry)</label>
+              <textarea
+                id="dedupTextInput"
+                placeholder="Paste your list here.
+One entry per line. Duplicates will be removed while keeping the first occurrence."
+              ></textarea>
+              <div class="filehint">
+                You can also upload a `.txt` file instead of pasting.
+              </div>
             </div>
           </div>
 
