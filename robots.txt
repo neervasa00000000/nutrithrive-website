@@ -127,7 +127,7 @@ Allow: /contact.html
 Allow: /blog/
 Allow: /how-to-use-moringa.html
 Allow: /moringa-benefits.html
-Allow: /product-detail.html
+Allow: /products/moringa-powder/
 Allow: /product-black-tea.html
 Allow: /product-curry-leaves.html
 Allow: /images/

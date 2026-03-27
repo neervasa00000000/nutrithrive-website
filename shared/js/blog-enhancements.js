@@ -62,7 +62,7 @@
     box.innerHTML = [
       btn(PRICES.moringa.url, `Buy Moringa ($${PRICES.moringa.price}/${PRICES.moringa.unit})`, true),
       btn(PRICES.tea.url, `Shop Black Tea ($${PRICES.tea.price}/${PRICES.tea.unit})`, false),
-      btn('https://nutrithrive.com.au/products/product-detail', 'See All Products', false)
+      btn('https://nutrithrive.com.au/products/moringa-powder/', 'See All Products', false)
     ].join('');
 
     target.parentNode.insertBefore(box, target.nextSibling);
@@ -79,7 +79,7 @@
         <strong style="color:#175c36;">Related reads</strong>
         <ul style="margin:8px 0 0 18px;line-height:1.6;">
           <li><a href="../benefits/moringa-benefits.html" style="color:#175c36;text-decoration:none;">Moringa Benefits (Australia)</a></li>
-          <li><a href="https://nutrithrive.com.au/products/product-detail" style="color:#175c36;text-decoration:none;">Compare our products</a></li>
+          <li><a href="https://nutrithrive.com.au/products/moringa-powder/" style="color:#175c36;text-decoration:none;">Compare our products</a></li>
           <li><a href="/blog/index.html" style="color:#175c36;text-decoration:none;">More from the blog</a></li>
         </ul>
       </div>`;

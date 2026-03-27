@@ -81,6 +81,9 @@ DirectoryIndex index.html index.htm
     # Specific product page internal rewrites - exact matches with case-insensitive matching
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^pages/products/product-detail/?$ /products/moringa-powder/ [L,NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^pages/products/product-detail\.html$ /products/moringa-powder/ [L,NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -117,6 +120,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^pages/blog/where-to-buy-dried-curry-leaves-melbourne-ultimate-guide-surprise-tip-2025\.html\}?$ /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html [R=301,L]
     
     # Old/typo blog slugs
+    RewriteRule ^blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-moringa-powder-australia-2026.html [R=301,L]
     RewriteRule ^blog/everything-you-need-know-moringa-2025-faq\.html$ /blog/everything-about-moringa-2025-faq.html [R=301,L]
     RewriteRule ^blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
     RewriteRule ^blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html [R=301,L]
@@ -286,6 +290,7 @@ DirectoryIndex index.html index.htm
 # Fallback Apache redirects (if mod_rewrite is not available)
 # ---- Google Search Console 404 fixes (explicit legacy URL redirects) ----
 RedirectMatch 301 ^/pages/blog/where-to-buy-dried-curry-leaves-melbourne-ultimate-guide-surprise-tip-2025\.html\}?$ /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html
+RedirectMatch 301 ^/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-moringa-powder-australia-2026.html
 RedirectMatch 301 ^/blog/everything-you-need-know-moringa-2025-faq\.html$ /blog/everything-about-moringa-2025-faq.html
 RedirectMatch 301 ^/blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/moringa-eyesight-better-than-carrots.html
 RedirectMatch 301 ^/blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html
@@ -301,18 +306,18 @@ RedirectMatch 301 ^/pages/blog/(.+\.html)$ /blog/$1
 # Then handle URLs without .html extension (add .html)
 RedirectMatch 301 ^/pages/blog/(.+)$ /blog/$1.html
 
-# Products redirects - Force redirect for all /pages/products/ URLs
-RedirectMatch 301 ^/pages/products/product-detail\.html$ /products/moringa-powder/
+# Products redirects - kept for non-product pages only
+# RedirectMatch 301 ^/pages/products/product-detail\.html$ /products/moringa-powder/
 RedirectMatch 301 ^/pages/products/product-curry-leaves\.html$ /products/curry-leaves/
 RedirectMatch 301 ^/pages/products/product-black-tea\.html$ /products/black-tea/
 RedirectMatch 301 ^/pages/products/product-combo\.html$ /products/combo-pack/
-RedirectMatch 301 ^/pages/products/(.*)$ /products/$1
+# RedirectMatch 301 ^/pages/products/(.*)$ /products/$1
 
 # Homepage redirect
 RedirectMatch 301 ^/pages/homepage/(.*)$ /$1
 
 # Fix root-level URLs that Google is trying to access (404 errors)
-RedirectMatch 301 ^/product-detail\.html$ /products/moringa-powder/
+# RedirectMatch 301 ^/product-detail\.html$ /products/moringa-powder/
 RedirectMatch 301 ^/product-black-tea\.html$ /products/black-tea/
 RedirectMatch 301 ^/product-curry-leaves\.html$ /products/curry-leaves/
 # Removed - now handled by internal rewrite above
@@ -338,8 +343,8 @@ RedirectMatch 301 ^/blog/blog\.html\.html$ /blog/
 # Fix double .html.html extensions (Google Search Console errors)
 RedirectMatch 301 ^/(.+)\.html\.html$ /$1.html
 
-# Fix /product-detail without .html - canonical clean URL
-RedirectMatch 301 ^/product-detail/?$ /products/moringa-powder/
+# Fix /product-detail without .html - handled by internal rewrite above
+# RedirectMatch 301 ^/product-detail/?$ /products/moringa-powder/
 
 # Redirect non-existent blog posts to actual files
 RedirectMatch 301 ^/blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html

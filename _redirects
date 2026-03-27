@@ -32,9 +32,9 @@
 /pages/homepage/index.html / 301
 
 # Product detail - point to real product page (moringa powder)
-/pages/products/product-detail /products/moringa-powder/ 301
-/pages/products/product-detail.html /products/moringa-powder/ 301
-/products/product-detail /products/moringa-powder/ 301
+/pages/products/product-detail /products/moringa-powder/ 200
+/pages/products/product-detail.html /products/moringa-powder/ 200
+/products/product-detail /products/moringa-powder/ 200
 
 # Canonical domain - www and http to https non-www
 https://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
@@ -96,9 +96,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /pages/blog/grow-moringa-tree-australia /blog/grow-moringa-tree-australia.html 301
 /pages/blog/grow-moringa-tree-australia.html /blog/grow-moringa-tree-australia.html 301
 
-# Products redirects
-/pages/products/* /products/:splat 301
-/pages/products /products/ 301
+# Products rewrites (serve without redirect)
+/pages/products/* /products/:splat 200
+/pages/products /products/ 200
 
 # Homepage redirects
 /pages/homepage/* /:splat 301
@@ -134,11 +134,11 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /pages/blog/moringa-brands-comparison-australia-2026 /blog/moringa-brands-comparison-australia-2026.html 301
 
 # Fix root-level URLs that Google is trying to access (404 errors)
-/product-detail.html /products/product-detail.html 301
+/product-detail.html /products/moringa-powder/ 200
 /product-black-tea.html /products/product-black-tea.html 301
 /product-curry-leaves.html /products/product-curry-leaves.html 301
 # Product URLs - redirect old product-detail to canonical moringa-powder (no redirect page)
-/products/product-detail.html /products/moringa-powder/ 301
+/products/product-detail.html /products/moringa-powder/ 200
 /products/product-curry-leaves.html /products/curry-leaves/ 200
 /products/product-black-tea.html /products/black-tea/ 200
 /products/product-combo.html /products/combo-pack/ 200
