@@ -6,6 +6,9 @@
 # Fix /blog without trailing slash
 /blog /blog/ 301
 
+# HTML sitemap page removed; use sitemap.xml
+/sitemap.html /sitemap.xml 301
+
 # Fix double .html (typo URLs) - serve canonical single .html so no redirect content
 /blog/nutrithrive-dried-curry-leaves-tradition-health.html.html /blog/nutrithrive-dried-curry-leaves-tradition-health.html 301
 /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html.html /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html 301
