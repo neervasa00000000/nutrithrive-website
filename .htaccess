@@ -133,7 +133,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
     RewriteRule ^about-us/?$ /pages/about/about.html [R=301,L]
     RewriteRule ^reviews/?$ /products/ [R=301,L]
-    RewriteRule ^recipes/high-protein-smoothies\.pdf$ /blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html [R=301,L]
+    RewriteRule ^recipes/high-protein-smoothies\.pdf$ https://nutrithrive.com.au/ [R=301,L]
     
     # Blog redirects - redirect ALL /pages/blog/ to /blog/ (already handled above, but keeping for fallback)
     
@@ -300,7 +300,7 @@ RedirectMatch 301 ^/products/?$ /products/
 RedirectMatch 301 ^/moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.html
 RedirectMatch 301 ^/about-us/?$ /pages/about/about.html
 RedirectMatch 301 ^/reviews/?$ /products/
-RedirectMatch 301 ^/recipes/high-protein-smoothies\.pdf$ /blog/3-instagram-worthy-moringa-smoothie-bowls-recipes.html
+RedirectMatch 301 ^/recipes/high-protein-smoothies\.pdf$ https://nutrithrive.com.au/
 # Blog redirects - handle URLs with .html extension first (exact match)
 RedirectMatch 301 ^/pages/blog/(.+\.html)$ /blog/$1
 # Then handle URLs without .html extension (add .html)
