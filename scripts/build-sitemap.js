@@ -12,6 +12,7 @@ const ROOT = path.resolve(__dirname, "..");
 const BASE = "https://nutrithrive.com.au";
 
 const SKIP_REL = new Set([
+  "blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html",
   "tools/check-paypal-buttons.html",
   "pages/homepage/index.html",
   "pages/contact/index.html",

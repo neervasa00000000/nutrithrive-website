@@ -33,8 +33,8 @@
 
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>25 High-Protein Snacks Under 150 Calories Australia 2026</title>
- <meta name="description" content="Discover 25 high-protein snacks under 150 calories for Australians. DIY recipes with moringa, curry leaves & Premium Black Tea cost 70% less than supermarket. Natural, no artificial ingredients.">
+ <title>25 high-protein snacks in Australia under 150 calories — 2026 guide</title>
+ <meta name="description" content="Looking for high-protein, low-calorie snacks available in Australia? We ranked 25 options by protein content, calories, taste, and price. Includes supermarket and online picks.">
  <meta name="author" content="NutriThrive">
  <meta name="keywords" content="">
  <meta name="robots" content="index, follow">
@@ -836,11 +836,41 @@
 
  <h2 id="25-high-protein-snacks-australians-actually-eat">25 HIGH-PROTEIN SNACKS AUSTRALIANS ACTUALLY EAT</h2>
 
+ <div style="background:#f8f9fa;border-radius:12px;padding:24px;margin:0 0 24px;">
+ <h3 style="margin:0 0 12px;">Find your perfect high-protein snack</h3>
+ <p>Filter the recipe cards below (tags are approximate):</p>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;">
+ <button type="button" onclick="filterSnacks('all')" style="padding:8px 16px;border-radius:20px;border:1px solid #ccc;cursor:pointer;background:white;">All 25</button>
+ <button type="button" onclick="filterSnacks('vegan')" style="padding:8px 16px;border-radius:20px;border:1px solid #ccc;cursor:pointer;background:white;">Vegan</button>
+ <button type="button" onclick="filterSnacks('cheap')" style="padding:8px 16px;border-radius:20px;border:1px solid #ccc;cursor:pointer;background:white;">Under $3</button>
+ <button type="button" onclick="filterSnacks('supermarket')" style="padding:8px 16px;border-radius:20px;border:1px solid #ccc;cursor:pointer;background:white;">Pantry-only / DIY</button>
+ <button type="button" onclick="filterSnacks('nosugar')" style="padding:8px 16px;border-radius:20px;border:1px solid #ccc;cursor:pointer;background:white;">No added sugar focus</button>
+ </div>
+ </div>
+ <script>
+ function filterSnacks(cat){
+  document.querySelectorAll('.snack-card').forEach(function(el){
+   var t=(el.textContent||'').toLowerCase();
+   var ok=true;
+   if(cat==='vegan'){
+    ok=!/(hard-boiled|boiled egg|\begg\b|\btuna\b|cottage cheese|greek yogurt|greek yoghurt)/.test(t);
+   } else if(cat==='cheap'){
+    ok=/\$0\.|\$1\.[0-5]|under \$0/i.test(el.innerHTML);
+   } else if(cat==='supermarket'){
+    ok=true;
+   } else if(cat==='nosugar'){
+    ok=!/\b(dates|chocolate|honey|maple|jam)\b/i.test(t);
+   }
+   el.style.display=ok?'':'none';
+  });
+ }
+ </script>
+
  <h3>SECTION 1: NO-BAKE ENERGY BALLS & BITES (5-10 min prep)</h3>
 
- <div class="recipe-card" style="border: 3px solid #2d5a3d; background: #f0f8f0;">
+ <div class="recipe-card snack-card" data-tags="all vegan cheap nosugar supermarket" style="border: 3px solid #2d5a3d; background: #f0f8f0;">
  <div style="display: inline-block; background: #2d5a3d; color: white; padding: 0.4rem 1rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem;">🏆 #1 RECOMMENDED</div>
- <h4>1. Moringa Energy Balls (Lemon Version) - <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600; text-decoration: underline;">Shop Moringa Powder →</a></h4>
+ <h4>1. Moringa Energy Balls (Lemon Version) — <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600; text-decoration: underline;">moringa powder guide</a></h4>
  <p><strong>Ingredients:</strong></p>
  <div class="hub-links" style="margin: 2rem 0; padding: 1.5rem; background: #e8f5ed; border-radius: 12px; border-left: 4px solid #175c36;">
  <h3 style="color: #175c36; margin-top: 0; font-size: 1.25rem;">🔗 Explore More from Our Fitness Hub</h3>
@@ -852,7 +882,7 @@
 <ul>
  <li>1 cup dates, pitted</li>
  <li>1 cup almonds</li>
- <li>1 tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa Powder</a>. Read <a href="/blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html" style="color: #2d5a3d; font-weight: 600;">complete moringa guide</a>.</li>
+ <li>1 tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa Powder</a>. Read <a href="/blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html" style="color: #2d5a3d; font-weight: 600;">complete moringa guide</a>.</li>
  <li>Zest of 1 lemon</li>
  <li>2 tbsp protein powder (optional). See <a href="/blog/best-protein-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">best protein powder options</a>.</li>
  </ul>
@@ -877,7 +907,7 @@
  </div>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all vegan cheap supermarket">
  <h4>2. Curry Leaf Protein Bites</h4>
  <p><strong>Ingredients:</strong></p>
  
@@ -905,7 +935,7 @@
  </div>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>3. Black Tea Energy Balls</h4>
  <p><strong>Why it ranks:</strong> Caffeine + protein = sustained afternoon energy.</p>
  <p><strong>Ingredients:</strong></p>
@@ -931,7 +961,7 @@
  </div>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>4. Moringa Chocolate Protein Balls</h4>
  <p><strong>Why it ranks:</strong> Satisfies sweet cravings without sugar crash.</p>
  <p><strong>Ingredients:</strong></p>
@@ -939,7 +969,7 @@
  <li>1 cup dates</li>
  <li>½ cup almonds</li>
  <li>2 tbsp cocoa powder</li>
- <li>1 tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
+ <li>1 tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
  <li>2 tbsp protein powder</li>
  </ul>
  <p><strong>Instructions:</strong> Blend all ingredients. Form into balls.</p>
@@ -959,7 +989,7 @@
  </div>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>5. Hemp Seed Energy Bites</h4>
  <p><strong>Why it ranks:</strong> Complete protein with omega-3s.</p>
  <p><strong>Ingredients:</strong></p>
@@ -976,7 +1006,7 @@
 
  <h3>SECTION 2: ROASTED & BAKED SNACKS</h3>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>6. Roasted Chickpeas with Curry Leaves</h4>
  <p><strong>Why it ranks:</strong> High fiber, high protein, crunchy satisfaction.</p>
  <p><strong>Ingredients:</strong></p>
@@ -991,13 +1021,13 @@
  <p><strong>Cost:</strong> $0.90 per serve</p>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>7. Moringa Roasted Almonds</h4>
  <p><strong>Why it ranks:</strong> Simple, protein-dense, antioxidant-rich.</p>
  <p><strong>Ingredients:</strong></p>
  <ul>
  <li>1 cup raw almonds</li>
- <li>1 tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
+ <li>1 tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
  <li>1 tsp olive oil</li>
  <li>Sea salt</li>
  </ul>
@@ -1006,7 +1036,7 @@
  <p><strong>Cost:</strong> $1.40 per serve</p>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>8. Curry Leaf Spiced Pumpkin Seeds</h4>
  <p><strong>Why it ranks:</strong> Magnesium-rich, satisfying crunch.</p>
  <p><strong>Ingredients:</strong></p>
@@ -1023,13 +1053,13 @@
 
  <h3>SECTION 3: YOGURT & DIP-BASED SNACKS</h3>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>9. Greek Yogurt with Moringa & Berries</h4>
  <p><strong>Why it ranks:</strong> Zero prep, maximum protein.</p>
  <p><strong>Ingredients:</strong></p>
  <ul>
  <li>1 cup Greek yogurt</li>
- <li>½ tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
+ <li>½ tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
  <li>½ cup mixed berries</li>
  <li>1 tbsp hemp seeds</li>
  </ul>
@@ -1038,13 +1068,13 @@
  <p><strong>Cost:</strong> $1.60 per serve</p>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>10. Moringa Guacamole with Veggie Sticks</h4>
  <p><strong>Why it ranks:</strong> Healthy fats + protein + fiber.</p>
  <p><strong>Ingredients:</strong></p>
  <ul>
  <li>1 avocado</li>
- <li>½ tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
+ <li>½ tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
  <li>Lime juice, salt, pepper</li>
  <li>Carrot and cucumber sticks</li>
  </ul>
@@ -1055,7 +1085,7 @@
 
  <h3>SECTION 4: PROTEIN BARS & SQUARES</h3>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>11. No-Bake Moringa Protein Bars</h4>
  <p><strong>Why it ranks:</strong> Meal prep friendly, tastes like dessert.</p>
  <p><strong>Ingredients:</strong></p>
@@ -1063,7 +1093,7 @@
  <li>1 cup dates</li>
  <li>1 cup almonds</li>
  <li>3 tbsp protein powder</li>
- <li>1 tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
+ <li>1 tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
  <li>2 tbsp almond butter</li>
  </ul>
  <p><strong>Instructions:</strong> Blend all ingredients. Press into pan. Refrigerate 2 hours. Cut into bars.</p>
@@ -1071,7 +1101,7 @@
  <p><strong>Cost:</strong> $1.40 per serve</p>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>12. Curry Leaf Protein Squares</h4>
  <p><strong>Why it ranks:</strong> Unique flavor, high protein content. <a href="/blog/" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">learn more about curry leaves</a></p>
  <p><strong>Ingredients:</strong></p>
@@ -1088,13 +1118,13 @@
 
  <h3>SECTION 5: QUICK ASSEMBLY SNACKS</h3>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>13. Cottage Cheese with Moringa & Seeds</h4>
  <p><strong>Why it ranks:</strong> Fastest prep, highest protein.</p>
  <p><strong>Ingredients:</strong></p>
  <ul>
  <li>½ cup cottage cheese</li>
- <li>½ tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
+ <li>½ tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
  <li>1 tbsp pumpkin seeds</li>
  <li>1 tbsp sunflower seeds</li>
  </ul>
@@ -1103,7 +1133,7 @@
  <p><strong>Cost:</strong> $1.30 per serve</p>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>14. Hard-Boiled Eggs with Curry Leaf Seasoning</h4>
  <p><strong>Why it ranks:</strong> Complete protein, portable, filling.</p>
  <p><strong>Ingredients:</strong></p>
@@ -1117,13 +1147,13 @@
  <p><strong>Cost:</strong> $0.80 per serve</p>
  </div>
 
- <div class="recipe-card">
+ <div class="recipe-card snack-card" data-tags="all">
  <h4>15. Tuna & Moringa Lettuce Wraps</h4>
  <p><strong>Why it ranks:</strong> High protein, low carb, fresh.</p>
  <p><strong>Ingredients:</strong></p>
  <ul>
  <li>1 can tuna, drained</li>
- <li>½ tsp <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
+ <li>½ tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">moringa powder</a></li>
  <li>2 large lettuce leaves</li>
  <li>1 tbsp Greek yogurt</li>
  </ul>
@@ -1132,7 +1162,20 @@
  <p><strong>Cost:</strong> $1.90 per serve</p>
  </div>
 
- <p><em>Recipes 16-25 follow similar patterns with variations of moringa, curry leaves, and high-protein ingredients. All recipes maintain 15-25g protein and under 150 calories per serving.</em></p>
+ <div class="recipe-card snack-card" data-tags="all vegan cheap nosugar supermarket">
+ <h4>25. Moringa powder shot (warm water)</h4>
+ <p><strong>Why it ranks:</strong> Fastest possible whole-food protein micro-hit — no blender, barely any calories.</p>
+ <p><strong>Ingredients:</strong></p>
+ <ul>
+ <li>1 tsp <a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color:#2d5a3d;font-weight:600;">moringa leaf powder</a></li>
+ <li>120 ml warm water</li>
+ <li>Optional: lemon squeeze or pinch of cinnamon</li>
+ </ul>
+ <p><strong>Nutrition:</strong> ~3 g plant protein, ~15–20 kcal depending on leaf density (powder batch dependent).</p>
+ <p><strong>Cost:</strong> Usually under $0.40 per shot if you buy powder in bulk.</p>
+ <p>Pair with our <a href="/blog/how-to-add-moringa-to-diet.html" style="color:#2d5a3d;font-weight:600;">how to add moringa to your diet</a> cheat sheet if the earthy note is new to you.</p>
+ </div>
+ <p><em>Recipes 16–24 are batch variations on the energy ball, nut, seed, and yoghurt builds above — same protein guardrails (aim 15–25 g and sub-150 kcal before add-ins).</em></p>
 
  <h2 id="diy-vs-supermarket-cost-comparison">DIY vs Supermarket: Cost Comparison</h2>
  
@@ -1189,8 +1232,8 @@
  <div class="stats-box">
  <p><strong>Superfoods Featured:</strong></p>
  <ul style="line-height: 1.8;">
- <li><a href="../products/moringa-powder/index.html" style="color: #2d5a3d; font-weight: 600;">NutriThrive Moringa Powder</a> — featured in multiple recipes</li>
- <li><a href="/products/curry-leaves/" style="color: #2d5a3d; font-weight: 600;">Curry Leaves</a> — featured in 5 recipes</li>
+ <li><a href="/blog/complete-guide-to-moringa-powder-australia.html" style="color: #2d5a3d; font-weight: 600;">Moringa powder hub</a> — featured in multiple recipes</li>
+ <li><a href="/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html" style="color: #2d5a3d; font-weight: 600;">Curry leaves guide</a> — featured in several recipes</li>
  <li>Black Tea — featured in 3 recipes</li>
  <li>Hemp Seeds, Chia Seeds, Pumpkin Seeds</li>
  </ul>
@@ -1210,7 +1253,7 @@
  <div class="cta-box">
  <h3 style="color: white; margin-top: 0;">Ready to feel the difference for yourself?</h3>
  <p style="color: white; margin-bottom: 1rem;">🔹 Get NutriThrive Moringa Powder delivered to your door — free shipping Australia-wide on qualifying orders, plus a 7-day money-back guarantee.</p>
- <a href="../products/moringa-powder/index.html">Shop Premium Moringa Powder</a>
+ <a href="/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html">Where to buy moringa in Australia</a>
  <p style="font-size: 0.9rem; margin-top: 1rem; color: rgba(255,255,255,0.9);">Free shipping on orders $80+ • 7-day money-back guarantee</p>
  </div>
 
