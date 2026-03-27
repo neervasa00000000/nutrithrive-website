@@ -322,3 +322,14 @@ function closeExitPopup() {
     document.getElementById('exitIntentPopup').style.display = 'none';
 }
 window.closeExitPopup = closeExitPopup;
+
+// Editorial helpers (session checklist state) — same directory as this file on /blog/* pages
+(function loadEditorialHelpers() {
+    if (document.querySelector('script[data-nt-blog-editorial]')) return;
+    if ([...document.scripts].some((s) => (s.src || '').includes('blog-editorial'))) return;
+    const s = document.createElement('script');
+    s.src = 'blog-editorial.js';
+    s.defer = true;
+    s.setAttribute('data-nt-blog-editorial', '1');
+    document.body.appendChild(s);
+})();
