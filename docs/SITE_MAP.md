@@ -50,7 +50,7 @@
 
 ### Shipping & Delivery
 - `/pages/shipping/shipping-returns.html` - Shipping & Returns policy
-- `/pages/delivery/victoria-delivery-coverage.html` - Victoria delivery coverage
+- `https://nutrithrive.com.au/` - Victoria delivery coverage
 
 ### Homepage Variants
 - `/pages/homepage/index.html` - Homepage variant
@@ -87,8 +87,8 @@
 - `/blog/melbourne-fitness-gym-guide-2026-nutrition-supplements.html`
 - `/blog/melbourne-gut-hack-internal-shower-moringa-superfood-2026.html`
 - `/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html`
-- `/blog/the-2026-moringa-market-disruption-chemical-free-superfood-power.html`
-- `/blog/gut-health-superfoods-complete-guide-australia-2026.html`
+- `https://nutrithrive.com.au/`
+- `https://nutrithrive.com.au/`
 - `/blog/complete-guide-to-moringa-powder-australia.html`
 - `/blog/clean-label-moringa-australian-fitness-natural-performance-2026.html`
 - `/blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2026.html`
@@ -122,13 +122,13 @@
 - `/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html`
 - `/blog/dried-curry-leaves-karipatta-benefits-melbourne-guide.html`
 - `/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html`
-- `/blog/south-indian-recipes-dried-curry-leaves-melbourne.html`
+- `https://nutrithrive.com.au/`
 - `/blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html`
 - `/blog/nutrithrive-dried-curry-leaves-tradition-health.html`
 - `/blog/american-spice-renaissance-dried-curry-leaves-market-analysis-2026.html`
 
 ### Black Tea Blog Posts
-- `/blog/australian-milk-tea-recipes-premium-black-tea-guide-2026.html`
+- `https://nutrithrive.com.au/`
 
 ### Protein & Fitness Blog Posts
 - `/blog/best-protein-powder-australia.html`
@@ -150,7 +150,7 @@
 - `/blog/superfoods-immunity-boost-australia-winter-2026.html`
 - `/blog/superfoods-wellness-guide-australia-2026.html`
 - `/blog/ultimate-weight-loss-products-guide-australia-2026-pills-powders-shakes-snacks-faqs.html`
-- `/blog/vitamin-a-complete-guide-australia-2026.html`
+- `https://nutrithrive.com.au/`
 - `/blog/keto-atta-moringa-benefits-australia.html`
 - `/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html`
 
@@ -160,8 +160,8 @@
 - `/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html`
 - `/blog/post-animal-economy-vegan-ecosystem-2026.html`
 - `/blog/australian-serum-edit-2026-science-strategy-climate.html`
-- `/blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html`
-- `/blog/state-of-australian-schooling-2026-comprehensive-analysis.html`
+- `https://nutrithrive.com.au/`
+- `https://nutrithrive.com.au/`
 - `/blog/natural-language-calendar-scheduler.html`
 - `/blog/universal-size-converter.html`
 
