@@ -3775,3 +3775,105 @@ article h1, section h1, nav h1, aside h1 {
         font-size: 1.1rem;
     }
 }
+
+/* =========================================================
+   Editorial components (author tips, interactive lists, CTA)
+   ========================================================= */
+.author-insight {
+    margin: 1.75rem 0;
+    padding: 1.15rem 1.25rem;
+    border-radius: var(--radius, 18px);
+    border-left: 4px solid var(--primary, #175c36);
+    background: linear-gradient(135deg, rgba(23, 92, 54, 0.06) 0%, rgba(255, 253, 250, 1) 100%);
+    box-shadow: var(--shadow, 0 4px 24px rgba(23, 92, 54, 0.07));
+}
+
+.author-insight__label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary, #175c36);
+    margin-bottom: 0.45rem;
+}
+
+.author-insight p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--text, #1a2e22);
+}
+
+.blog-interactive-checklist {
+    margin: 1.75rem 0;
+    padding: 1.25rem 1.35rem;
+    border-radius: var(--radius, 18px);
+    background: var(--card, #fffdfa);
+    border: 1px solid var(--border-light, rgba(23, 92, 54, 0.12));
+    box-shadow: var(--shadow, 0 4px 24px rgba(23, 92, 54, 0.07));
+}
+
+.blog-interactive-checklist h3,
+.blog-interactive-checklist .blog-interactive-checklist__title {
+    margin: 0 0 0.85rem 0;
+    font-size: 1.05rem;
+    color: var(--text, #1a2e22);
+}
+
+.blog-interactive-checklist label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    margin-bottom: 0.65rem;
+    cursor: pointer;
+    font-size: 0.96rem;
+    line-height: 1.55;
+    color: #333;
+}
+
+.blog-interactive-checklist label:last-child {
+    margin-bottom: 0;
+}
+
+.blog-interactive-checklist input[type="checkbox"] {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    accent-color: var(--primary, #175c36);
+}
+
+.blog-interactive-checklist__hint {
+    margin: 0.85rem 0 0 0;
+    font-size: 0.88rem;
+    color: var(--muted, #5A6D5D);
+    font-style: italic;
+}
+
+.blog-cta-human {
+    margin-top: 2.5rem;
+    padding: 1.35rem 1.4rem;
+    border-radius: var(--radius, 18px);
+    background: var(--gradient-primary, linear-gradient(135deg, #175c36 0%, #0f4a2a 100%));
+    color: #fff;
+    box-shadow: 0 8px 28px rgba(15, 74, 42, 0.25);
+}
+
+.blog-cta-human p {
+    margin: 0 0 0.85rem 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.blog-cta-human a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.blog-cta-human a:hover {
+    text-decoration: none;
+}
