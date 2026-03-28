@@ -7,6 +7,17 @@
 (function() {
   'use strict';
 
+  (function loadRedditPixel() {
+    try {
+      var s = document.createElement('script');
+      s.src = '/scripts/global/reddit-pixel.js';
+      s.async = false;
+      (document.head || document.getElementsByTagName('head')[0]).appendChild(s);
+    } catch (e) {
+      /* noop */
+    }
+  })();
+
   const SITE_ORIGIN = 'https://nutrithrive.com.au';
 
   function ensureViewportMeta() {
