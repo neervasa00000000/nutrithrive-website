@@ -100,5 +100,12 @@
         <p class="thank-you-message">Your message has been sent successfully. We will get back to you shortly.</p>
         <a href="index.html" class="home-button">Return to Homepage</a>
     </div>
+    <script>
+        (function () {
+            if (typeof window.rdt !== 'function') return;
+            var conversionId = 'lead_contact_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 11);
+            window.rdt('track', 'Lead', { conversionId: conversionId });
+        })();
+    </script>
 </body>
 </html> 

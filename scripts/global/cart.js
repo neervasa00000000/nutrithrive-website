@@ -69,6 +69,24 @@ function calculateCartTotals(cart) {
     return cart;
 }
 
+function trackRedditAddToCart(product, qtyAdded) {
+    if (typeof window.rdt !== 'function' || !product) return;
+    const q = Math.max(1, parseInt(qtyAdded, 10) || 1);
+    const id = String(product.id || 'item').replace(/[^a-zA-Z0-9_-]/g, '') || 'item';
+    const conversionId = 'atc_' + id + '_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 11);
+    try {
+        const value = parseFloat(product.price) * q;
+        const payload = { conversionId: conversionId };
+        if (isFinite(value)) {
+            payload.value = value;
+            payload.currency = 'AUD';
+        }
+        window.rdt('track', 'AddToCart', payload);
+    } catch (e) {
+        /* noop */
+    }
+}
+
 // Add item to cart
 function addToCart(product) {
     const cart = getCart() || { items: [], total: 0, itemCount: 0 };
@@ -93,6 +111,8 @@ function addToCart(product) {
     
     const updatedCart = calculateCartTotals(cart);
     saveCart(updatedCart);
+
+    trackRedditAddToCart(product, parseInt(product.quantity || 1, 10) || 1);
     
     // Show notification
     showCartNotification('Item added to cart!');

@@ -198,6 +198,13 @@
         </div>
     </footer>
 
+    <script>
+        (function () {
+            if (typeof window.rdt !== 'function') return;
+            var conversionId = 'signup_newsletter_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 11);
+            window.rdt('track', 'SignUp', { conversionId: conversionId });
+        })();
+    </script>
     <script src="/scripts/global/script.js" defer></script>
     <script src="/scripts/global/newsletter.js" defer></script>
 </body>
