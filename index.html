@@ -98,6 +98,14 @@
       "name": "NutriThrive Australia",
       "url": "https://nutrithrive.com.au",
       "description": "Premium Moringa powder and superfood supplements. 100% natural, lab-tested products for health and wellness. Australia-wide shipping.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://nutrithrive.com.au/products/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
       "publisher": {
         "@type": "Organization",
         "name": "NutriThrive",
@@ -265,23 +273,6 @@
     }
     </script>
 
-    <!-- WebSite Schema (Sitelinks Search Box eligibility) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "NutriThrive Australia",
-      "url": "https://nutrithrive.com.au",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://nutrithrive.com.au/products/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
     <!-- Organization Schema (Site name / Logo / E-E-A-T) -->
     <script type="application/ld+json">
     {
