@@ -116,15 +116,8 @@ DirectoryIndex index.html index.htm
     RewriteRule ^pages/blog/?$ /blog/ [R=301,L]
     
     # ---- Google Search Console 404 fixes (explicit legacy URL redirects) ----
-    # Old /pages/blog/ slug that no longer exists (and sometimes has a stray "}" at the end)
-    RewriteRule ^pages/blog/where-to-buy-dried-curry-leaves-melbourne-ultimate-guide-surprise-tip-2025\.html\}?$ /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html [R=301,L]
-    
-    # Old/typo blog slugs
+    # Old/typo blog slugs (targets must remain live pages)
     RewriteRule ^blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-moringa-powder-australia-2026.html [R=301,L]
-    RewriteRule ^blog/everything-you-need-know-moringa-2025-faq\.html$ /blog/everything-about-moringa-2025-faq.html [R=301,L]
-    RewriteRule ^blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
-    RewriteRule ^blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html [R=301,L]
-    RewriteRule ^blog/moringa-benefits\.html$ /blog/moringa-benefits-australia-2025.html [R=301,L]
     
     
     # Common wrong paths
@@ -256,11 +249,6 @@ DirectoryIndex index.html index.htm
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^product-detail/?$ /products/moringa-powder/ [L]
     
-    # Redirect non-existent blog posts to actual files
-    RewriteRule ^blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
-    RewriteRule ^blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html [R=301,L]
-    RewriteRule ^blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html [R=301,L]
-    RewriteRule ^blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/moringa-eyesight-better-than-carrots.html [R=301,L]
     
     # Fix broken image URLs (404 errors from Google Search Console)
     # Redirect old Dried_curry_leaves directory paths to random folder
@@ -289,12 +277,7 @@ DirectoryIndex index.html index.htm
 
 # Fallback Apache redirects (if mod_rewrite is not available)
 # ---- Google Search Console 404 fixes (explicit legacy URL redirects) ----
-RedirectMatch 301 ^/pages/blog/where-to-buy-dried-curry-leaves-melbourne-ultimate-guide-surprise-tip-2025\.html\}?$ /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html
 RedirectMatch 301 ^/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-moringa-powder-australia-2026.html
-RedirectMatch 301 ^/blog/everything-you-need-know-moringa-2025-faq\.html$ /blog/everything-about-moringa-2025-faq.html
-RedirectMatch 301 ^/blog/sneak-greens-kids-diet-moringa-hack\.html$ /blog/moringa-eyesight-better-than-carrots.html
-RedirectMatch 301 ^/blog/moringa-magic-natural-glow\.html$ /blog/edible-beauty-summer-glow-moringa-2025.html
-RedirectMatch 301 ^/blog/moringa-benefits\.html$ /blog/moringa-benefits-australia-2025.html
 RedirectMatch 301 ^/blog/blog\.html$ /blog/
 RedirectMatch 301 ^/products/?$ /products/
 RedirectMatch 301 ^/moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.html
@@ -345,12 +328,6 @@ RedirectMatch 301 ^/(.+)\.html\.html$ /$1.html
 
 # Fix /product-detail without .html - handled by internal rewrite above
 # RedirectMatch 301 ^/product-detail/?$ /products/moringa-powder/
-
-# Redirect non-existent blog posts to actual files
-RedirectMatch 301 ^/blog/natural-eye-health-supplements-australia\.html$ /blog/moringa-eyesight-better-than-carrots.html
-RedirectMatch 301 ^/blog/natural-cholesterol-lowering-supplements-australia-moringa\.html$ /blog/lower-cholesterol-naturally-moringa-heart-health.html
-RedirectMatch 301 ^/blog/ultimate-moringa-guide-australia-benefits\.html$ /blog/everything-about-moringa-2025-faq.html
-RedirectMatch 301 ^/blog/hidden-veggies-picky-eaters-kids-immunity\.html$ /blog/moringa-eyesight-better-than-carrots.html
 
 # Fix broken image URLs (404 errors from Google Search Console)
 # Redirect old Dried_curry_leaves directory paths to random folder
