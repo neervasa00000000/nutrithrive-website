@@ -184,6 +184,12 @@
             } else if (line) {
                 line.style.display = 'none';
             }
+            if (typeof window.rdt === 'function') {
+                var conversionId = orderId && String(orderId).length
+                    ? 'purchase_' + String(orderId).replace(/[^a-zA-Z0-9_-]/g, '')
+                    : 'purchase_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 11);
+                window.rdt('track', 'Purchase', { conversionId: conversionId });
+            }
         })();
     </script>
 </body>
