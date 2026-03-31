@@ -48,17 +48,17 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Note: moringa-vs-matcha-superfood-comparison-melbourne-2026.html redirects to working page
 /blog/moringa-vs-matcha-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html 301
 
-# Curry Leaves - consolidate to master guide
-/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html /blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html 301
-/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide /blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html 301
+# Curry Leaves - consolidate to master guide (absolute targets for reliable 301)
+/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html 301
+/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html 301
 
 # Grow moringa tree — legacy URL → honest growing guide (2026)
-/blog/grow-moringa-tree-australia.html /blog/growing-moringa-australia-honest-frost-pots-2026.html 301
-/blog/grow-moringa-tree-australia /blog/growing-moringa-australia-honest-frost-pots-2026.html 301
+/blog/grow-moringa-tree-australia.html https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026.html 301
+/blog/grow-moringa-tree-australia https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026.html 301
 
 # Protein powder — legacy short URL → 2026 complete guide
-/blog/best-protein-powder-australia.html /blog/best-protein-powder-australia-2026-complete-guide.html 301
-/blog/best-protein-powder-australia /blog/best-protein-powder-australia-2026-complete-guide.html 301
+/blog/best-protein-powder-australia.html https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html 301
+/blog/best-protein-powder-australia https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html 301
 
 # Moringa Benefits - consolidate to ultimate guide (removed redirects to allow indexing)
 # /blog/moringa-benefits-protein-powder-australia-2026.html /blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html 301
@@ -75,11 +75,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/buy-moringa-victoria-delivery-guide /blog/buy-moringa-victoria-delivery-guide.html 301
 /blog/best-superfoods-immunity-australia-2026 /blog/best-superfoods-immunity-australia-2026.html 301
 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html 301
-# Removed blog posts (no longer published)
-/blog/dried-curry-leaf-hair-oil-recipe /blog/ 301
-/blog/dried-curry-leaf-hair-oil-recipe.html /blog/ 301
-/blog/moringa-eyesight-better-than-carrots /blog/ 301
-/blog/moringa-eyesight-better-than-carrots.html /blog/ 301
 /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html 301
 /blog/darjeeling-black-tea-melbourne-muscatel-marvel /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html 301
 /blog/iron-deficiency-complete-guide-australia-2026 /blog/iron-deficiency-complete-guide-australia-2026.html 301
