@@ -112,7 +112,7 @@
 - `/blog/moringa-vs-superfoods-comparison-australia-2026.html`
 - `/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html`
 - `/blog/buy-moringa-victoria-delivery-guide.html`
-- `/blog/grow-moringa-tree-australia.html`
+- `/blog/growing-moringa-australia-honest-frost-pots-2026.html` (canonical; old URL `/blog/grow-moringa-tree-australia.html` → 301 here)
 - `/blog/natural-heavy-metal-detox-moringa-cleanse-body.html`
 
 ### Curry Leaves Blog Posts
