@@ -1,6 +1,14 @@
 # NutriThrive URL Structure Consolidation
 # Redirect old /pages/ folders to the new clean structure
 
+# Retired URLs — explicit 404 (content removed; do not redirect elsewhere)
+/blog/moringa-for-weight-loss-australia-2026 /blog/moringa-for-weight-loss-australia-2026 404
+/blog/moringa-for-weight-loss-australia-2026.html /blog/moringa-for-weight-loss-australia-2026.html 404
+/blog/dried-curry-leaf-hair-oil-recipe /blog/dried-curry-leaf-hair-oil-recipe 404
+/blog/dried-curry-leaf-hair-oil-recipe.html /blog/dried-curry-leaf-hair-oil-recipe.html 404
+/blog/moringa-eyesight-better-than-carrots /blog/moringa-eyesight-better-than-carrots 404
+/blog/moringa-eyesight-better-than-carrots.html /blog/moringa-eyesight-better-than-carrots.html 404
+
 # Fix double slash in blog URLs
 /blog// /blog/ 301
 # Fix /blog without trailing slash
