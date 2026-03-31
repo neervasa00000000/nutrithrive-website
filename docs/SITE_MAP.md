@@ -103,7 +103,6 @@
 - `/blog/moringa-benefits-protein-powder-australia-2026.html`
 - `/blog/moringa-adaptogen-stress-relief-cortisol-balance.html`
 - `/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html`
-- `/blog/moringa-eyesight-better-than-carrots.html`
 - `/blog/moringa-breastfeeding-mums-natural-lactation-support.html`
 - `/blog/moringa-vs-matcha-australia-2025.html`
 - `/blog/moringa-vs-matcha-energy-metabolism-2026.html`
