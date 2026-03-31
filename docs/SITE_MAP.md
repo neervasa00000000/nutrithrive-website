@@ -131,7 +131,7 @@
 - `https://nutrithrive.com.au/`
 
 ### Protein & Fitness Blog Posts
-- `/blog/best-protein-powder-australia.html`
+- `/blog/best-protein-powder-australia-2026-complete-guide.html` (canonical; old URL `/blog/best-protein-powder-australia.html` → 301 here)
 - `/blog/best-clean-protein-powders-moringa-products-australia-2026.html`
 - `/blog/complete-vegan-protein-plant-based-eaters-moringa.html`
 - `/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html`
