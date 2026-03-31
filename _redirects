@@ -68,6 +68,10 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/best-protein-powder-australia.html https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html 301
 /blog/best-protein-powder-australia https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html 301
 
+# Retired dosage slug → daily intake visual guide
+/blog/moringa-dosage-guide-australians-2026.html /blog/smart-moringa-daily-intake-australia-visual-guide-2026.html 301
+/blog/moringa-dosage-guide-australians-2026 /blog/smart-moringa-daily-intake-australia-visual-guide-2026.html 301
+
 # Clean protein + moringa (2026) — extensionless URL
 /blog/best-clean-protein-powders-moringa-products-australia-2026 /blog/best-clean-protein-powders-moringa-products-australia-2026.html 301
 
