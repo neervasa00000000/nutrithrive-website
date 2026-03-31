@@ -75,7 +75,11 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/buy-moringa-victoria-delivery-guide /blog/buy-moringa-victoria-delivery-guide.html 301
 /blog/best-superfoods-immunity-australia-2026 /blog/best-superfoods-immunity-australia-2026.html 301
 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html 301
-/blog/dried-curry-leaf-hair-oil-recipe /blog/dried-curry-leaf-hair-oil-recipe.html 301
+# Removed blog posts (no longer published)
+/blog/dried-curry-leaf-hair-oil-recipe /blog/ 301
+/blog/dried-curry-leaf-hair-oil-recipe.html /blog/ 301
+/blog/moringa-eyesight-better-than-carrots /blog/ 301
+/blog/moringa-eyesight-better-than-carrots.html /blog/ 301
 /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html 301
 /blog/darjeeling-black-tea-melbourne-muscatel-marvel /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html 301
 /blog/iron-deficiency-complete-guide-australia-2026 /blog/iron-deficiency-complete-guide-australia-2026.html 301
