@@ -119,7 +119,7 @@
 - `/blog/dried-curry-leaves-melbourne-premium-buyers-guide-benefits-recipes-free-delivery-2026.html`
 - `/blog/dried-curry-leaves-melbourne-buy-online-health-benefits-recipes-2026.html`
 - `/blog/dried-curry-leaves-uses-benefits-how-to-cook-melbourne-2026.html`
-- `/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html`
+- `/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html` (canonical; old URL `/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html` → 301 here)
 - `/blog/dried-curry-leaves-karipatta-benefits-melbourne-guide.html`
 - `/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html`
 - `https://nutrithrive.com.au/`
