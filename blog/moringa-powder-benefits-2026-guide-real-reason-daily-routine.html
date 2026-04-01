@@ -121,6 +121,29 @@
   .faq-q { width: 100%; border: 0; background: #fff; text-align: left; padding: 0.9rem 1rem; cursor: pointer; font-weight: 700; }
   .faq-a { display: none; padding: 0 1rem 1rem; color: #475569; }
   .cta { background: #ecfdf3; border: 1px solid rgba(22, 101, 52, 0.2); padding: 1.1rem; border-radius: 12px; }
+  .hero-image { width: 100%; border-radius: 14px; margin: 1rem 0 0.4rem; display: block; }
+  .img-caption { font-size: 0.9rem; color: #64748b; margin-top: 0; }
+  .visual-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; margin: 1rem 0; }
+  .visual-card { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; background: #fff; }
+  .visual-card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+  .visual-card p { margin: 0; padding: 0.75rem; font-size: 0.92rem; color: #334155; }
+  .buy-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin: 1rem 0; }
+  .buy-btn { display: inline-block; padding: 0.72rem 1rem; border-radius: 9px; text-decoration: none; font-weight: 700; }
+  .buy-btn.primary { background: #166534; color: #fff; }
+  .buy-btn.secondary { border: 1px solid #166534; color: #166534; }
+  .graphic-box { border: 1px solid #dbe5dd; background: #f8fcf9; border-radius: 12px; padding: 1rem; margin: 1rem 0; }
+  .bar { margin: 0.6rem 0; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.2rem; color: #334155; }
+  .bar-track { background: #e5e7eb; border-radius: 999px; height: 10px; overflow: hidden; }
+  .bar-fill { background: #16a34a; height: 10px; }
+  .promo-overlay { position: fixed; inset: 0; background: rgba(2, 6, 23, 0.55); z-index: 9998; display: none; }
+  .promo-modal { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 520px); background: #ffffff; border-radius: 14px; border: 1px solid #d1fae5; box-shadow: 0 24px 60px rgba(2, 6, 23, 0.3); z-index: 9999; display: none; }
+  .promo-body { padding: 1.2rem 1.2rem 1rem; }
+  .promo-tag { display: inline-block; background: #dcfce7; color: #166534; font-size: 0.8rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 999px; margin-bottom: 0.55rem; }
+  .promo-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
+  .promo-close { position: absolute; right: 10px; top: 8px; border: 0; background: transparent; font-size: 1.3rem; cursor: pointer; color: #475569; }
+  .promo-note { font-size: 0.82rem; color: #64748b; margin-top: 0.6rem; }
+  @media (max-width: 900px) { .visual-grid { grid-template-columns: 1fr; } }
   @media (max-width: 768px) { .nav-links { display: none !important; } }
 </style>
 </head>
@@ -165,6 +188,13 @@
           <li>Most people enjoy moringa best in <strong>smoothies, tea, or meals</strong> rather than plain water.</li>
         </ul>
       </div>
+      <img class="hero-image" src="../assets/images/homepage/product-showcase/Moringa.webp" alt="Fresh premium moringa powder by NutriThrive">
+      <p class="img-caption">High-quality moringa is vibrant green, cleanly processed, and easy to add to daily routines.</p>
+
+      <div class="buy-row">
+        <a class="buy-btn primary" href="https://nutrithrive.com.au/products/moringa-powder/">Buy Moringa Powder</a>
+        <a class="buy-btn secondary" href="https://nutrithrive.com.au/products/combo-pack/">View Combo Packs</a>
+      </div>
 
       <p>If you have been searching for <strong>"moringa powder benefits," "moringa near me," or "moringa Melbourne"</strong>, this guide explains what moringa is, why people use it, and how to choose a high-quality product.</p>
 
@@ -174,6 +204,21 @@
       <p>Researchers often highlight moringa for its broad nutrient profile, including naturally occurring nutrients, antioxidant compounds, and all nine essential amino acids.</p>
 
       <h2>The Nutritional Profile of Moringa Leaf Powder</h2>
+      <div class="graphic-box">
+        <h3 style="margin-top:0;">Quick Visual: Why people choose moringa</h3>
+        <div class="bar">
+          <div class="bar-label"><span>Whole-food nutrient density</span><span>Very High</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 92%;"></div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-label"><span>Daily routine convenience</span><span>High</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-label"><span>Caffeine-free energy support</span><span>High</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 86%;"></div></div>
+        </div>
+      </div>
       <table>
         <thead>
           <tr><th>Nutrient</th><th>Why It Matters</th></tr>
@@ -225,8 +270,26 @@
         <li><strong>Trusted by Customers:</strong> 4.9 stars from 512+ reviews.</li>
       </ul>
       <p><a href="https://nutrithrive.com.au/products/moringa-powder/">Explore NutriThrive Moringa Powder</a></p>
+      <div class="buy-row">
+        <a class="buy-btn primary" href="https://nutrithrive.com.au/products/moringa-powder/">Buy Now - Moringa Powder</a>
+        <a class="buy-btn secondary" href="https://nutrithrive.com.au/products/moringa-powder/">See Reviews</a>
+      </div>
 
       <h2>How to Use Moringa Powder (Simple Daily Ideas)</h2>
+      <div class="visual-grid">
+        <figure class="visual-card">
+          <img src="../assets/images/homepage/product-showcase/combo.webp" alt="Moringa smoothie and daily blend idea">
+          <p><strong>Smoothie:</strong> 1 tsp moringa + banana + almond milk for a fast morning blend.</p>
+        </figure>
+        <figure class="visual-card">
+          <img src="../assets/images/homepage/product-showcase/Bundleoffer.webp" alt="Moringa wellness drink routine">
+          <p><strong>Warm drink:</strong> lemon + warm water + 1/2 tsp moringa as a simple daily ritual.</p>
+        </figure>
+        <figure class="visual-card">
+          <img src="../assets/images/homepage/product-showcase/Curry.webp" alt="Moringa added into meals and recipes">
+          <p><strong>Meals:</strong> add small amounts to soups, sauces, and grain bowls.</p>
+        </figure>
+      </div>
       <h3>Morning Smoothie</h3>
       <p>Blend 1 teaspoon moringa powder with banana or mango and almond or coconut milk.</p>
       <h3>Morning Wellness Drink</h3>
@@ -279,6 +342,10 @@
       <div class="cta">
         <p style="margin:0;"><strong>Looking for a lab-tested, pesticide-free option sourced from India?</strong> <a href="https://nutrithrive.com.au/products/moringa-powder/">Explore NutriThrive Moringa Powder</a>.</p>
       </div>
+      <div class="buy-row">
+        <a class="buy-btn primary" href="https://nutrithrive.com.au/products/moringa-powder/">Get Moringa Powder</a>
+        <a class="buy-btn secondary" href="https://nutrithrive.com.au/products/combo-pack/">Shop Moringa Packs</a>
+      </div>
 
       <p style="margin-top: 2rem;"><a href="/blog/" style="text-decoration:none;">&larr; Back to All Articles</a></p>
     </div>
@@ -318,6 +385,21 @@
   </div>
 </footer>
 
+<div id="promoOverlay" class="promo-overlay" aria-hidden="true"></div>
+<div id="promoModal" class="promo-modal" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+  <button type="button" class="promo-close" onclick="closePromo()" aria-label="Close popup">×</button>
+  <div class="promo-body">
+    <span class="promo-tag">LIMITED OFFER</span>
+    <h2 id="promoTitle" style="margin:0.2rem 0 0.5rem;color:#166534;">Save $10 - Moringa Pack for $31 only</h2>
+    <p style="margin:0;color:#334155;">Grab the NutriThrive moringa pack now at a special price. Choose to stay on this guide or jump straight to the product page.</p>
+    <div class="promo-actions">
+      <button type="button" class="buy-btn secondary" onclick="closePromo()" style="cursor:pointer;background:#fff;">Stay on this page</button>
+      <a class="buy-btn primary" href="https://nutrithrive.com.au/products/moringa-powder/">Go to Moringa Product Page</a>
+    </div>
+    <p class="promo-note">Offer shown for this session only.</p>
+  </div>
+</div>
+
 <script src="../scripts/global/cart.js"></script>
 <script src="../scripts/global/cart-header.js"></script>
 <script src="../scripts/global/script.js" defer></script>
@@ -327,6 +409,31 @@
     var ans = btn.nextElementSibling;
     ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
   }
+
+  function closePromo() {
+    var modal = document.getElementById('promoModal');
+    var overlay = document.getElementById('promoOverlay');
+    if (modal) modal.style.display = 'none';
+    if (overlay) overlay.style.display = 'none';
+    try { sessionStorage.setItem('ntMoringaPromoSeen', '1'); } catch (e) {}
+  }
+
+  function openPromo() {
+    var modal = document.getElementById('promoModal');
+    var overlay = document.getElementById('promoOverlay');
+    if (modal) modal.style.display = 'block';
+    if (overlay) overlay.style.display = 'block';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var seen = false;
+    try { seen = sessionStorage.getItem('ntMoringaPromoSeen') === '1'; } catch (e) {}
+    if (!seen) {
+      setTimeout(openPromo, 2200);
+    }
+    var overlay = document.getElementById('promoOverlay');
+    if (overlay) overlay.addEventListener('click', closePromo);
+  });
 </script>
 </body>
 </html>
