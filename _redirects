@@ -86,8 +86,15 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Duplicate Content Fixes - Protein Powder Consolidation
 # Redirect complete guide to main high-traffic page
 
+# Legacy Victoria “buy moringa” slug → live delivery guide
+/blog/buy-moringa-victoria-delivery-guide.html /blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html 301
+/blog/buy-moringa-victoria-delivery-guide /blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html 301
+
+# Legacy Melbourne fitness hub slug → CBD gyms comparison
+/blog/melbourne-fitness-gym-guide-2026-nutrition-supplements.html /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html 301
+/blog/melbourne-fitness-gym-guide-2026-nutrition-supplements /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html 301
+
 # Fix URLs without .html extension - Blog Posts
-/blog/buy-moringa-victoria-delivery-guide /blog/buy-moringa-victoria-delivery-guide.html 301
 /blog/best-superfoods-immunity-australia-2026 /blog/best-superfoods-immunity-australia-2026.html 301
 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html 301
 /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens /blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html 301

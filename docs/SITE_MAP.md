@@ -84,7 +84,7 @@
 - `/blog/moringa-powder-victoria-seniors-joint-health.html`
 - `/blog/moringa-vs-coffee-melbourne-energy-hack.html`
 - `/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html`
-- `/blog/melbourne-fitness-gym-guide-2026-nutrition-supplements.html`
+- `/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html`
 - `/blog/melbourne-gut-hack-internal-shower-moringa-superfood-2026.html`
 - `/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html`
 - `https://nutrithrive.com.au/`
@@ -110,7 +110,7 @@
 - `/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html`
 - `/blog/moringa-vs-superfoods-comparison-australia-2026.html`
 - `/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html`
-- `/blog/buy-moringa-victoria-delivery-guide.html`
+- `/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html` (canonical; old URL `/blog/buy-moringa-victoria-delivery-guide.html` → 301 here)
 - `/blog/growing-moringa-australia-honest-frost-pots-2026.html` (canonical; old URL `/blog/grow-moringa-tree-australia.html` → 301 here)
 - `/blog/natural-heavy-metal-detox-moringa-cleanse-body.html`
 
