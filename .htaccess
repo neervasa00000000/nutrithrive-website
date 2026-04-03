@@ -8,6 +8,15 @@ DirectoryIndex index.html index.htm
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
+
+    # Wrong relative resolution: ../../scripts from /pages//products/... → must land on site-root assets
+    RewriteRule ^pages//scripts/(.*)$ /scripts/$1 [R=301,L,NC]
+    RewriteRule ^pages/scripts/(.*)$ /scripts/$1 [R=301,L,NC]
+    RewriteRule ^pages//styles/(.*)$ /styles/$1 [R=301,L,NC]
+    RewriteRule ^pages/styles/(.*)$ /styles/$1 [R=301,L,NC]
+    RewriteRule ^pages//assets/(.*)$ /assets/$1 [R=301,L,NC]
+    RewriteRule ^pages/assets/(.*)$ /assets/$1 [R=301,L,NC]
+    RewriteRule ^pages//products/(.*)$ /products/$1 [R=301,L,NC]
     
     # Fix double slashes in URLs (must be first to catch all double slashes)
     # This handles any number of consecutive slashes and reduces them to a single slash

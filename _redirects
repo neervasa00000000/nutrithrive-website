@@ -14,6 +14,15 @@
 # Fix /blog without trailing slash
 /blog /blog/ 301
 
+# Broken asset URLs when HTML used ../../ under /pages//products/... (or crawlers hit stale paths)
+/pages//scripts/* /scripts/:splat 301
+/pages//styles/* /styles/:splat 301
+/pages//assets/* /assets/:splat 301
+/pages//products/* /products/:splat 301
+/pages/scripts/* /scripts/:splat 301
+/pages/styles/* /styles/:splat 301
+/pages/assets/* /assets/:splat 301
+
 # HTML sitemap page removed; use sitemap.xml
 /sitemap.html /sitemap.xml 301
 
