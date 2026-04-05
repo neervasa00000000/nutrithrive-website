@@ -373,8 +373,11 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /pages/delivery/victoria-delivery-coverage https://nutrithrive.com.au/ 301
 /blog/natural-joint-pain-relief-moringa-vs-turmeric-2026.html /blog/moringa-powder-victoria-seniors-joint-health.html 301
 /blog/natural-joint-pain-relief-moringa-vs-turmeric-2026 /blog/moringa-powder-victoria-seniors-joint-health.html 301
-/blog/moringa-for-breastfeeding-mums-natural-lactation-support.html /blog/moringa-breastfeeding-mums-natural-lactation-support.html 301
-/blog/moringa-for-breastfeeding-mums-natural-lactation-support /blog/moringa-breastfeeding-mums-natural-lactation-support.html 301
+# Removed breastfeeding lactation post — legacy slugs → blog index
+/blog/moringa-for-breastfeeding-mums-natural-lactation-support.html /blog/ 301
+/blog/moringa-for-breastfeeding-mums-natural-lactation-support /blog/ 301
+/blog/moringa-breastfeeding-mums-natural-lactation-support.html /blog/ 301
+/blog/moringa-breastfeeding-mums-natural-lactation-support /blog/ 301
 /blog/edible-beauty-summer-glow-moringa-2026.html /blog/moringa-soap-skin-science-australia-2026.html 301
 /blog/edible-beauty-summer-glow-moringa-2026 /blog/moringa-soap-skin-science-australia-2026.html 301
 
