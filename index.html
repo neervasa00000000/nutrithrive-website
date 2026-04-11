@@ -131,7 +131,7 @@
         "@type": "ContactPoint",
         "contactType": "customer service",
         "telephone": "+61438201419",
-        "email": "support@nutrithrive.com.au",
+        "email": "nutrithrive0@gmail.com",
         "url": "https://nutrithrive.com.au/contact",
         "availableLanguage": "English",
         "areaServed": [{ "@type": "Country", "name": "Australia" }, { "@type": "Place", "name": "Worldwide" }]
@@ -149,7 +149,13 @@
       "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
       "url": "https://nutrithrive.com.au/",
       "telephone": "+61438201419",
+      "email": "nutrithrive0@gmail.com",
       "description": "Nutri Thrive manufactures moringa-based products in India and distributes them in Australia. The company sells premium moringa powder, Darjeeling black tea, dried curry leaves, and natural soaps including moringa soap and moringa-lavender soap. Customers can visit the Truganina location by calling before arrival. Products are shipped Australia-wide and worldwide.",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "ABN",
+        "value": "32 639 442 616"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Ridley Place",
@@ -168,8 +174,8 @@
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "00:00",
-          "closes": "24:00"
+          "opens": "09:00",
+          "closes": "23:00"
         }
       ],
       "areaServed": [
@@ -198,28 +204,52 @@
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+          },
           "shippingDetails": [
             {
               "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "8.73", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
             },
             {
               "@type": "OfferShippingDetails",
-              "name": "Worldwide shipping",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
             }
           ]
-        },
+},
         {
           "@type": "Offer",
           "url": "https://nutrithrive.com.au/products/moringa-powder/",
@@ -231,28 +261,52 @@
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+          },
           "shippingDetails": [
             {
               "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "13.73", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
             },
             {
               "@type": "OfferShippingDetails",
-              "name": "Worldwide shipping",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
             }
           ]
-        },
+},
         {
           "@type": "Offer",
           "url": "https://nutrithrive.com.au/products/moringa-powder/",
@@ -264,28 +318,52 @@
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+          },
           "shippingDetails": [
             {
               "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "10.04", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
             },
             {
               "@type": "OfferShippingDetails",
-              "name": "Worldwide shipping",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
             }
           ]
-        },
+},
         {
           "@type": "Offer",
           "url": "https://nutrithrive.com.au/products/moringa-powder/",
@@ -297,28 +375,52 @@
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+          },
           "shippingDetails": [
             {
               "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "8.73", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
             },
             {
               "@type": "OfferShippingDetails",
-              "name": "Worldwide shipping",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
             }
           ]
-        },
+},
         {
           "@type": "Offer",
           "url": "https://nutrithrive.com.au/products/moringa-powder/",
@@ -330,28 +432,52 @@
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+          },
           "shippingDetails": [
             {
               "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "10.04", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
             },
             {
               "@type": "OfferShippingDetails",
-              "name": "Worldwide shipping",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
               "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
-              }
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
             }
           ]
-        }
+}
       ]
     },
     {
@@ -373,28 +499,52 @@
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
-        "shippingDetails": [
-          {
-            "@type": "OfferShippingDetails",
-            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-            }
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
           },
-          {
-            "@type": "OfferShippingDetails",
-            "name": "Worldwide shipping",
-            "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+          "shippingDetails": [
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "8.73", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
             }
-          }
-        ]
-      }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
+            }
+          ]
+}
     },
     {
       "@type": "Product",
@@ -415,28 +565,52 @@
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
-        "shippingDetails": [
-          {
-            "@type": "OfferShippingDetails",
-            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-            }
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
           },
-          {
-            "@type": "OfferShippingDetails",
-            "name": "Worldwide shipping",
-            "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+          "shippingDetails": [
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "8.73", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
             }
-          }
-        ]
-      }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
+            }
+          ]
+}
     },
     {
       "@type": "Product",
@@ -457,28 +631,52 @@
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
-        "shippingDetails": [
-          {
-            "@type": "OfferShippingDetails",
-            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-            }
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
           },
-          {
-            "@type": "OfferShippingDetails",
-            "name": "Worldwide shipping",
-            "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+          "shippingDetails": [
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "8.73", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
             }
-          }
-        ]
-      }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
+            }
+          ]
+}
     },
     {
       "@type": "Product",
@@ -499,28 +697,52 @@
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": { "@id": "https://nutrithrive.com.au/#localbusiness" },
-        "shippingDetails": [
-          {
-            "@type": "OfferShippingDetails",
-            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10, "unitCode": "d" }
-            }
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "AU",
+            "returnPolicyCountry": "AU",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
           },
-          {
-            "@type": "OfferShippingDetails",
-            "name": "Worldwide shipping",
-            "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+          "shippingDetails": [
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — from published rate table (example zone 1); free standard shipping on orders AUD 80+",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "8.73", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "d" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "d" }
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
             }
-          }
-        ]
-      }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "Australia — free standard shipping when order total is AUD 80 or more",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 10, "unitCode": "DAY" }
+            }
+            },
+            {
+              "@type": "OfferShippingDetails",
+              "name": "International — from published rate table (varies by country/weight)",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "15.49", "currency": "AUD" },
+              "shippingDestination": { "@type": "DefinedRegion", "name": "Worldwide" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 2, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 21, "unitCode": "DAY" }
+            }
+            }
+          ]
+}
     }
   ]
 }
@@ -586,179 +808,6 @@
         }
       }
     </style>
-<!-- Local Business Schema -->
-<script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://nutrithrive.com.au/#localbusiness",
-      "name": "Nutri Thrive",
-      "description": "Premium moringa powder and superfood supplements from Truganina, Melbourne, Australia. Vegan, lab-tested. Shipped Australia-wide and worldwide.",
-      "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
-      "url": "https://nutrithrive.com.au/",
-      "identifier": {
-        "@type": "PropertyValue",
-        "propertyID": "ABN",
-        "value": "32 639 442 616"
-      },
-      "telephone": "+61438201419",
-      "email": "nutrithrive0@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Ridley Place",
-        "addressLocality": "Truganina",
-        "addressRegion": "VIC",
-        "postalCode": "3029",
-        "addressCountry": "AU"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -37.8172099,
-        "longitude": 144.7513518
-      },
-      "areaServed": ["Melbourne", "Victoria", "Australia"],
-      "makesOffer": {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Product",
-          "name": "Moringa Powder",
-          "brand": { "@type": "Brand", "name": "Nutri Thrive" }
-        }
-      },
-      "openingHoursSpecification": [{
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "09:00",
-        "closes": "23:00"
-      }],
-      "sameAs": [
-        "https://www.facebook.com/share/p/1C5C1NeUCb/",
-        "https://www.instagram.com/nutri__thrive/"
-      ],
-      "review": [
-        {
-          "@type": "Review",
-          "author": "Ayodeji",
-          "reviewBody": "It's good — the real deal"
-        }
-      ],
-      "keywords": "moringa powder Australia, moringa powder, superfoods Australia, health supplements Australia, moringa powder Melbourne, nutrithrive, nutri thrive"
-    }
-    </script>
-<!-- Organization Schema (Site name / Logo / E-E-A-T) -->
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "NutriThrive Australia",
-      "url": "https://nutrithrive.com.au",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+61-438-201-419",
-        "contactType": "customer service",
-        "email": "nutrithrive0@gmail.com",
-        "areaServed": "AU",
-        "availableLanguage": "English"
-      },
-      "sameAs": [
-        "https://www.facebook.com/share/p/1C5C1NeUCb/",
-        "https://www.instagram.com/nutri__thrive/"
-      ]
-    }
-    </script>
-<!-- Product Schema with Star Rating & Merchant Listing -->
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": "Nutri Thrive Pure Moringa Powder",
-      "image": [
-        "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp",
-        "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp"
-      ],
-      "description": "Lab-tested, non-stimulant Moringa Oleifera for elite recovery and metabolic support. 100% natural, packed in Melbourne.",
-      "sku": "NT-MOR-100G",
-      "mpn": "NT-MOR-100G",
-      "brand": {
-        "@type": "Brand",
-        "name": "Nutri Thrive"
-      },
-      "review": {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Sarah J., Sydney"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "156"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://nutrithrive.com.au/products/moringa-powder/",
-        "sku": "NT-MOR-100G",
-        "priceCurrency": "AUD",
-        "price": "10.50",
-        "priceValidUntil": "2026-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0.00",
-            "currency": "AUD"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "AU"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 0,
-              "maxValue": 1,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 3,
-              "maxValue": 10,
-              "unitCode": "DAY"
-            }
-          }
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "AU",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 7,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn"
-        }
-      }
-    }
-    </script>
 </head>
 <body>
 <header>

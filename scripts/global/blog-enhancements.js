@@ -169,89 +169,11 @@
   }
 
   function injectJSONLD() {
-    if (document.getElementById('nt-jsonld-products')) return;
+    if (document.getElementById('nt-jsonld-article')) return;
     const head = document.head || qs('head');
     if (!head) return;
 
-    const scripts = [];
-    // Product entities for key items (used for knowledge/association, not altering page copy)
-    const products = [
-      { name: 'NutriThrive Moringa Powder', price: PRICES.moringa.price, unit: PRICES.moringa.unit, url: PRICES.moringa.url, image: 'https://i.imgur.com/56hwJfZ.png', description: '100% pure Moringa Oleifera leaf powder. Packed with antioxidants, vitamins, and minerals, perfect for boosting energy and supporting a healthy immune system.' },
-      { name: 'NutriThrive Dried Curry Leaves', price: PRICES.curry.price, unit: PRICES.curry.unit, url: PRICES.curry.url, image: 'https://nutrithrive.com.au/assets/images/general/Curry1.png', description: 'Premium dried curry leaves from our own farm. Traditional Indian spice with health benefits. 100% natural, perfect for authentic Indian cooking.' },
-      { name: 'NutriThrive Darjeeling Black Tea', price: PRICES.tea.price, unit: PRICES.tea.unit, url: PRICES.tea.url, image: 'https://i.imgur.com/vn0DO4Q.jpg', description: 'Premium Darjeeling black tea with rich aroma and smooth, balanced taste. Perfect for mornings or afternoon pick-me-up.' }
-    ];
-    const prodLD = {
-      '@context':'https://schema.org',
-      '@graph': products.map(p => ({
-        '@type':'Product',
-        name: p.name,
-        description: p.description,
-        image: p.image,
-        brand: { '@type': 'Brand', name: 'NutriThrive' },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: '150'
-        },
-        review: [
-          {
-            '@type': 'Review',
-            reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-            author: { '@type': 'Person', name: 'Verified Customer' },
-            reviewBody: 'High quality product, exactly as described. Fast shipping and great customer service.'
-          }
-        ],
-        offers: {
-          '@type':'Offer',
-          priceCurrency:'AUD',
-          price: String(p.price),
-          priceValidUntil: '2026-12-31',
-          availability: 'https://schema.org/InStock',
-          url: p.url,
-          hasMerchantReturnPolicy: {
-            '@type': 'MerchantReturnPolicy',
-            applicableCountry: 'AU',
-            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-            merchantReturnDays: 7,
-            returnMethod: 'https://schema.org/ReturnByMail',
-            returnFees: 'https://schema.org/FreeReturn'
-          },
-          shippingDetails: {
-            '@type': 'OfferShippingDetails',
-            shippingRate: {
-              '@type': 'MonetaryAmount',
-              value: '0',
-              currency: 'AUD'
-            },
-            shippingDestination: {
-              '@type': 'DefinedRegion',
-              addressCountry: 'AU'
-            },
-            deliveryTime: {
-              '@type': 'ShippingDeliveryTime',
-              handlingTime: {
-                '@type': 'QuantitativeValue',
-                minValue: 1,
-                maxValue: 2,
-                unitCode: 'DAY'
-              },
-              transitTime: {
-                '@type': 'QuantitativeValue',
-                minValue: 3,
-                maxValue: 10,
-                unitCode: 'DAY'
-              }
-            }
-          }
-        }
-      }))
-    };
-
-    const s = document.createElement('script');
-    s.type = 'application/ld+json';
-    s.id = 'nt-jsonld-products';
-    s.textContent = JSON.stringify(prodLD);
-    head.appendChild(s);
+    // Do not inject extra Product/Review JSON-LD here (duplicates server-side markup and triggered Google rich-result errors).
 
     // Minimal Article schema if missing
     if (!qsa('script[type="application/ld+json"]').some(el => /"@type"\s*:\s*"Article"/i.test(el.textContent))) {

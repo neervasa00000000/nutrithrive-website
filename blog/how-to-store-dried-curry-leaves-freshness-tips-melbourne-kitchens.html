@@ -811,7 +811,7 @@
       ]
     }</script>
 
-<!-- Nutri Thrive LocalBusiness (local SEO) -->
+<!-- Nutri Thrive LocalBusiness (same @id as sitewide graph; valid LocalBusiness fields only) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
@@ -821,7 +821,13 @@
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "description": "Premium moringa powder and natural wellness products from Truganina, Melbourne, Australia. Vegan, lab-tested. Shipped Australia-wide and worldwide.",
+  "email": "nutrithrive0@gmail.com",
+  "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Australia-wide shipping (free standard on orders AUD 80 and over); international shipping from published rate tables at checkout.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ABN",
+    "value": "32 639 442 616"
+  },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Ridley Place",
@@ -835,15 +841,21 @@
     "latitude": -37.8172099,
     "longitude": 144.7513518
   },
-  "areaServed": ["Melbourne", "Victoria", "Australia"],
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Product",
-      "name": "Moringa Powder",
-      "brand": { "@type": "Brand", "name": "Nutri Thrive" }
-    }
-  }
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Ridley+Place%2C+Truganina+VIC+3029%2C+Australia",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "09:00",
+    "closes": "23:00"
+  }],
+  "areaServed": [
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Place", "name": "Worldwide" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/nutrithrive",
+    "https://www.instagram.com/nutri__thrive/"
+  ]
 }
 </script>
 </head>

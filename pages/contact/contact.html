@@ -69,18 +69,23 @@
 <link href="https://nutrithrive.com.au/contact" hreflang="en-AU" rel="alternate"/>
 <link href="https://nutrithrive.com.au/contact" hreflang="x-default" rel="alternate"/>
 
-<!-- Nutri Thrive LocalBusiness (local SEO; @id matches homepage graph) -->
+<!-- Nutri Thrive LocalBusiness (same @id as sitewide graph; valid LocalBusiness fields only) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://nutrithrive.com.au/#localbusiness",
-  "parentOrganization": { "@id": "https://nutrithrive.com.au/#organization" },
   "name": "Nutri Thrive",
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "description": "Nutri Thrive manufactures moringa-based products in India and distributes them in Australia. The company sells premium moringa powder, Darjeeling black tea, dried curry leaves, and natural soaps including moringa soap and moringa-lavender soap. Customers can visit the Truganina location by calling before arrival. Products are shipped Australia-wide and worldwide.",
+  "email": "nutrithrive0@gmail.com",
+  "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Australia-wide shipping (free standard on orders AUD 80 and over); international shipping from published rate tables at checkout.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ABN",
+    "value": "32 639 442 616"
+  },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Ridley Place",
@@ -95,17 +100,19 @@
     "longitude": 144.7513518
   },
   "hasMap": "https://www.google.com/maps/search/?api=1&query=Ridley+Place%2C+Truganina+VIC+3029%2C+Australia",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "24:00"
-    }
-  ],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "09:00",
+    "closes": "23:00"
+  }],
   "areaServed": [
     { "@type": "Country", "name": "Australia" },
     { "@type": "Place", "name": "Worldwide" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/nutrithrive",
+    "https://www.instagram.com/nutri__thrive/"
   ]
 }
 </script>
