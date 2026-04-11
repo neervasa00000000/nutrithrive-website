@@ -54,7 +54,7 @@
 
 ### Homepage Variants
 - `/pages/homepage/index.html` - Homepage variant
-- `/melbourne/` - Melbourne-specific landing page (canonical); `/pages/melbourne-page.html` 301s here
+- `/melbourne/` - Melbourne-specific landing page (served via rewrite to `pages/homepage/melbourne.html`)
 
 ### Products (Pages Directory)
 - `/pages/products/index.html` - Products index
@@ -109,15 +109,15 @@
 - `/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html`
 - `/blog/moringa-vs-superfoods-comparison-australia-2026.html`
 - `/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html`
-- `/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html` (canonical; old URL `/blog/buy-moringa-victoria-delivery-guide.html` → 301 here)
-- `/blog/growing-moringa-australia-honest-frost-pots-2026.html` (canonical; old URL `/blog/grow-moringa-tree-australia.html` → 301 here)
+- `/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html`
+- `/blog/growing-moringa-australia-honest-frost-pots-2026.html`
 - `/blog/natural-heavy-metal-detox-moringa-cleanse-body.html`
 
 ### Curry Leaves Blog Posts
 - `/blog/dried-curry-leaves-melbourne-premium-buyers-guide-benefits-recipes-free-delivery-2026.html`
 - `/blog/dried-curry-leaves-melbourne-buy-online-health-benefits-recipes-2026.html`
 - `/blog/dried-curry-leaves-uses-benefits-how-to-cook-melbourne-2026.html`
-- `/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html` (canonical; old URL `/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html` → 301 here)
+- `/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html`
 - `/blog/dried-curry-leaves-karipatta-benefits-melbourne-guide.html`
 - `/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html`
 - `https://nutrithrive.com.au/`
@@ -129,7 +129,7 @@
 - `https://nutrithrive.com.au/`
 
 ### Protein & Fitness Blog Posts
-- `/blog/best-protein-powder-australia-2026-complete-guide.html` (canonical; old URL `/blog/best-protein-powder-australia.html` → 301 here)
+- `/blog/best-protein-powder-australia-2026-complete-guide.html`
 - `/blog/best-clean-protein-powders-moringa-products-australia-2026.html`
 - `/blog/complete-vegan-protein-plant-based-eaters-moringa.html`
 - `/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html`
@@ -146,7 +146,6 @@
 - `/blog/lower-cholesterol-naturally-moringa-heart-health.html`
 - `/blog/natural-energy-boosters-australia-superfoods-2026.html`
 - `/blog/superfoods-immunity-boost-australia-winter-2026.html`
-- `/blog/superfoods-wellness-guide-australia-2026.html`
 - `/blog/ultimate-weight-loss-products-guide-australia-2026-pills-powders-shakes-snacks-faqs.html`
 - `https://nutrithrive.com.au/`
 - `/blog/keto-atta-moringa-benefits-australia.html`
