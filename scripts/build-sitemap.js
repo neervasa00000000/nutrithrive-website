@@ -3,8 +3,7 @@
  * Regenerates /sitemap.xml from the repo filesystem.
  * Run from repo root: node scripts/build-sitemap.js
  *
- * Excludes: noindex pages, thank-you flows, internal tools, and known
- * redirect-only duplicates (see REDIRECT_SOURCE_BLOCKLIST).
+ * Excludes: noindex pages, thank-you flows, internal tools.
  */
 
 const fs = require("fs");
@@ -24,22 +23,9 @@ const PATH_BLOCKLIST = new Set([
   "pages/homepage/index.html",
   "pages/benefits/moringa-benefits.html",
   "pages/melbourne-page.html",
-  "blog/moringa-vs-spirulina-vs-matcha/index.html",
 ]);
 
-/**
- * HTML files that 301 to another canonical URL — list only the target in sitemap.
- * (Keeps Search Console from seeing chains / duplicate URLs.)
- */
-const REDIRECT_SOURCE_BLOCKLIST = new Set([
-  "blog/moringa-dosage-guide-australians-2026.html",
-  "blog/moringa-chemist-warehouse-australia-worth-it-2026.html",
-  "blog/buy-moringa-victoria-delivery-guide.html",
-  "blog/melbourne-fitness-gym-guide-2026-nutrition-supplements.html",
-  "blog/melbourne-cbd-gyms-moringa-recovery-2026.html",
-  "blog/superfoods-immunity-boost-australia-winter-2026.html",
-  "blog/superfoods-wellness-guide-australia-2026.html",
-]);
+const REDIRECT_SOURCE_BLOCKLIST = new Set([]);
 
 function toPosix(p) {
   return p.split(path.sep).join("/");
