@@ -56,24 +56,6 @@
 <link href="https://nutrithrive.com.au/melbourne/" hreflang="x-default" rel="alternate"/>
 <link href="/styles/global/style.css" rel="stylesheet"/>
 <link href="/blog/blog.css" rel="stylesheet"/>
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "NutriThrive",
-      "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
-      "url": "https://nutrithrive.com.au",
-      "telephone": "+61 438 201 419",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "15 Europe Street",
-        "addressLocality": "Truganina",
-        "postalCode": "3029",
-        "addressRegion": "VIC",
-        "addressCountry": "AU"
-      }
-    }
-    </script>
 <style>
         .melb-page { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
         .melb-hero { text-align: center; padding: 2rem 0 1rem; }
@@ -89,6 +71,42 @@
         .melb-section ul li a { display: inline-block; padding: .5rem .25rem; }
         @media (max-width: 768px) { .melb-grid { grid-template-columns: 1fr; } }
     </style>
+
+<!-- Nutri Thrive LocalBusiness (local SEO) -->
+<script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://nutrithrive.com.au/#localbusiness",
+  "name": "Nutri Thrive",
+  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+  "url": "https://nutrithrive.com.au/",
+  "telephone": "+61438201419",
+  "description": "Premium moringa powder and natural wellness products from Truganina, Melbourne, Australia. Vegan, lab-tested. Shipped Australia-wide and worldwide.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Ridley Place",
+    "addressLocality": "Truganina",
+    "addressRegion": "VIC",
+    "postalCode": "3029",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -37.8172099,
+    "longitude": 144.7513518
+  },
+  "areaServed": ["Melbourne", "Victoria", "Australia"],
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Product",
+      "name": "Moringa Powder",
+      "brand": { "@type": "Brand", "name": "Nutri Thrive" }
+    }
+  }
+}
+</script>
 </head>
 <body>
 <header class="site-header">
