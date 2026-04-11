@@ -69,17 +69,18 @@
 <link href="https://nutrithrive.com.au/contact" hreflang="en-AU" rel="alternate"/>
 <link href="https://nutrithrive.com.au/contact" hreflang="x-default" rel="alternate"/>
 
-<!-- Nutri Thrive LocalBusiness (local SEO) -->
+<!-- Nutri Thrive LocalBusiness (local SEO; @id matches homepage graph) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://nutrithrive.com.au/#localbusiness",
+  "parentOrganization": { "@id": "https://nutrithrive.com.au/#organization" },
   "name": "Nutri Thrive",
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "description": "Premium moringa powder and natural wellness products from Truganina, Melbourne, Australia. Vegan, lab-tested. Shipped Australia-wide and worldwide.",
+  "description": "Nutri Thrive manufactures moringa-based products in India and distributes them in Australia. The company sells premium moringa powder, Darjeeling black tea, dried curry leaves, and natural soaps including moringa soap and moringa-lavender soap. Customers can visit the Truganina location by calling before arrival. Products are shipped Australia-wide and worldwide.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Ridley Place",
@@ -93,15 +94,19 @@
     "latitude": -37.8172099,
     "longitude": 144.7513518
   },
-  "areaServed": ["Melbourne", "Victoria", "Australia"],
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Product",
-      "name": "Moringa Powder",
-      "brand": { "@type": "Brand", "name": "Nutri Thrive" }
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Ridley+Place%2C+Truganina+VIC+3029%2C+Australia",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "24:00"
     }
-  }
+  ],
+  "areaServed": [
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Place", "name": "Worldwide" }
+  ]
 }
 </script>
 </head>
