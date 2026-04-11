@@ -91,9 +91,6 @@
 - `https://nutrithrive.com.au/`
 - `/blog/complete-guide-to-moringa-powder-australia.html`
 - `/blog/clean-label-moringa-australian-fitness-natural-performance-2026.html`
-- `/blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2026.html`
-- `/blog/black-tea-health-benefits-melbourne-guide-2026.html`
-- `/blog/black-tea-health-benefits-melbourne-guide.html`
 - `/blog/curry-leaves-australia-complete-guide-2026.html`
 - `/blog/curry-leaves-health-benefits-science-research-australia-2026.html`
 
