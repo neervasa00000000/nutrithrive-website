@@ -1,86 +1,126 @@
+#!/usr/bin/env node
 /**
- * Regenerates sitemap.xml from HTML files under the repo root.
+ * Regenerates /sitemap.xml from the repo filesystem.
  * Run from repo root: node scripts/build-sitemap.js
  *
- * Skips internal helpers and paths that 301 to canonical URLs (see _redirects).
- * Injects clean URLs for /about, /contact, /cart, etc.
+ * Excludes: noindex pages, thank-you flows, internal tools, and known
+ * redirect-only duplicates (see REDIRECT_SOURCE_BLOCKLIST).
  */
+
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = path.resolve(__dirname, "..");
+const REPO_ROOT = path.resolve(__dirname, "..");
 const BASE = "https://nutrithrive.com.au";
 
-const SKIP_REL = new Set([
-  "blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html",
+/** Paths that must never appear in the sitemap (relative to repo root, posix). */
+const PATH_BLOCKLIST = new Set([
   "tools/check-paypal-buttons.html",
-  "pages/homepage/index.html",
+  "pages/contact/thank-you.html",
+  "pages/newsletter/thank-you.html",
+  "pages/shop/thank-you.html",
   "pages/contact/index.html",
   "pages/products/index.html",
-  "pages/melbourne-page.html",
-  "pages/contact/contact.html",
-  "pages/about/about.html",
-  "pages/homepage/melbourne.html",
-  "pages/shop/cart.html",
-  "pages/faq/faq.html",
-  "pages/legal/privacy-policy.html",
-  "pages/shop/thank-you.html",
-  "pages/shipping/shipping-returns.html",
+  "pages/homepage/index.html",
   "pages/benefits/moringa-benefits.html",
+  "pages/melbourne-page.html",
+  "blog/moringa-vs-spirulina-vs-matcha/index.html",
 ]);
 
-const CANONICAL_EXTRA = [
-  { loc: `${BASE}/contact`, lastmodFile: "pages/contact/contact.html" },
-  { loc: `${BASE}/about`, lastmodFile: "pages/about/about.html" },
-  { loc: `${BASE}/melbourne/`, lastmodFile: "pages/homepage/melbourne.html" },
-  { loc: `${BASE}/cart`, lastmodFile: "pages/shop/cart.html" },
-  { loc: `${BASE}/faq`, lastmodFile: "pages/faq/faq.html" },
-  { loc: `${BASE}/privacy-policy`, lastmodFile: "pages/legal/privacy-policy.html" },
-  { loc: `${BASE}/thank-you.html`, lastmodFile: "pages/shop/thank-you.html" },
-  { loc: `${BASE}/pages/shipping/shipping-returns`, lastmodFile: "pages/shipping/shipping-returns.html" },
-];
+/**
+ * HTML files that 301 to another canonical URL — list only the target in sitemap.
+ * (Keeps Search Console from seeing chains / duplicate URLs.)
+ */
+const REDIRECT_SOURCE_BLOCKLIST = new Set([
+  "blog/moringa-dosage-guide-australians-2026.html",
+  "blog/moringa-chemist-warehouse-australia-worth-it-2026.html",
+  "blog/buy-moringa-victoria-delivery-guide.html",
+  "blog/melbourne-fitness-gym-guide-2026-nutrition-supplements.html",
+  "blog/melbourne-cbd-gyms-moringa-recovery-2026.html",
+  "blog/superfoods-immunity-boost-australia-winter-2026.html",
+  "blog/superfoods-wellness-guide-australia-2026.html",
+]);
 
-function walkHtml(dir, acc = []) {
-  for (const name of fs.readdirSync(dir)) {
-    if (name === "node_modules" || name.startsWith(".")) continue;
-    const full = path.join(dir, name);
-    const st = fs.statSync(full);
-    if (st.isDirectory()) walkHtml(full, acc);
-    else if (name.endsWith(".html")) acc.push(full);
+function toPosix(p) {
+  return p.split(path.sep).join("/");
+}
+
+function walkHtml(dir, out = []) {
+  if (!fs.existsSync(dir)) return out;
+  for (const name of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, name.name);
+    if (name.isDirectory()) {
+      if (name.name === ".git" || name.name === "node_modules") continue;
+      walkHtml(full, out);
+    } else if (name.isFile() && name.name.toLowerCase().endsWith(".html")) {
+      out.push(full);
+    }
   }
-  return acc;
+  return out;
 }
 
-function toUrl(absPath) {
-  const rel = path.relative(ROOT, absPath).replace(/\\/g, "/");
-  if (SKIP_REL.has(rel)) return null;
-
-  if (rel === "index.html") return `${BASE}/`;
-
-  const m = rel.match(/^(.*)\/index\.html$/);
-  if (m) return `${BASE}/${m[1]}/`;
-
-  if (rel.endsWith(".html")) return `${BASE}/${rel}`;
-  return null;
+function hasNoindex(html) {
+  const head = html.slice(0, 12000).toLowerCase();
+  return (
+    /name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(head) ||
+    /content=["'][^"']*noindex[^"']*["'][^>]*name=["']robots["']/i.test(head)
+  );
 }
 
-function lastmodFromFile(relFile) {
-  const abs = path.join(ROOT, relFile);
-  const d = new Date(fs.statSync(abs).mtime);
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  return `${yyyy}-${mm}-${dd}`;
+function fileToUrl(relPosix) {
+  if (relPosix === "index.html") return `${BASE}/`;
+
+  if (relPosix === "blog/index.html") return `${BASE}/blog/`;
+
+  if (relPosix.startsWith("blog/") && relPosix.endsWith(".html")) {
+    return `${BASE}/${relPosix}`;
+  }
+
+  if (relPosix === "products/index.html") return `${BASE}/products/`;
+
+  const prodIdx = /^products\/([^/]+)\/index\.html$/.exec(relPosix);
+  if (prodIdx) return `${BASE}/products/${prodIdx[1]}/`;
+
+  if (relPosix === "pages/about/about.html") return `${BASE}/about`;
+  if (relPosix === "pages/contact/contact.html") return `${BASE}/contact`;
+  if (relPosix === "pages/faq/faq.html") return `${BASE}/faq`;
+  if (relPosix === "pages/legal/privacy-policy.html") return `${BASE}/privacy-policy`;
+  if (relPosix === "pages/shop/cart.html") return `${BASE}/cart`;
+  if (relPosix === "pages/shipping/shipping-returns.html")
+    return `${BASE}/pages/shipping/shipping-returns`;
+
+  if (relPosix === "pages/usage-guide/how-to-use-moringa.html")
+    return `${BASE}/pages/usage-guide/how-to-use-moringa.html`;
+
+  if (relPosix === "pages/newsletter/index.html") return `${BASE}/pages/newsletter/`;
+
+  if (relPosix === "pages/homepage/melbourne.html") return `${BASE}/melbourne/`;
+
+  if (relPosix === "nutrithrive_labs/index.html") return `${BASE}/nutrithrive_labs/`;
+
+  if (relPosix.startsWith("nutrithrive_labs/") && relPosix.endsWith(".html")) {
+    return `${BASE}/${relPosix}`;
+  }
+
+  // Default: served under same path as in repo (e.g. pages/melbourne-page — blocklisted)
+  return `${BASE}/${relPosix}`;
 }
 
 function priorityAndFreq(urlPath) {
-  if (urlPath === "/") return { priority: "1.0", changefreq: "weekly" };
-  if (urlPath.startsWith("/products/")) return { priority: "0.9", changefreq: "weekly" };
-  if (urlPath.startsWith("/blog/")) return { priority: "0.8", changefreq: "weekly" };
-  if (urlPath.startsWith("/nutrithrive_labs/")) return { priority: "0.3", changefreq: "monthly" };
-  if (urlPath.startsWith("/pages/shop/") || urlPath.includes("thank-you"))
-    return { priority: "0.5", changefreq: "monthly" };
+  if (urlPath === `${BASE}/`) return { priority: "1.0", changefreq: "weekly" };
+  if (urlPath.includes("/products/")) return { priority: "0.9", changefreq: "weekly" };
+  if (urlPath.includes("/blog/")) return { priority: "0.8", changefreq: "weekly" };
+  if (urlPath.includes("/nutrithrive_labs/")) return { priority: "0.3", changefreq: "monthly" };
   return { priority: "0.6", changefreq: "monthly" };
+}
+
+function lastmodDate(fileAbs) {
+  const st = fs.statSync(fileAbs);
+  const d = new Date(st.mtimeMs);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }
 
 function escapeXml(s) {
@@ -88,47 +128,63 @@ function escapeXml(s) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
+    .replace(/"/g, "&quot;");
 }
 
-const files = walkHtml(ROOT);
-const entries = [];
+function main() {
+  const files = walkHtml(REPO_ROOT);
+  const entries = [];
 
-for (const f of files) {
-  const u = toUrl(f);
-  if (u) {
-    const rel = path.relative(ROOT, f).replace(/\\/g, "/");
-    entries.push({ loc: u, lastmod: lastmodFromFile(rel) });
+  for (const abs of files) {
+    const rel = toPosix(path.relative(REPO_ROOT, abs));
+    if (PATH_BLOCKLIST.has(rel)) continue;
+    if (REDIRECT_SOURCE_BLOCKLIST.has(rel)) continue;
+
+    let html;
+    try {
+      html = fs.readFileSync(abs, "utf8");
+    } catch {
+      continue;
+    }
+    if (hasNoindex(html)) continue;
+
+    const loc = fileToUrl(rel);
+    const { priority, changefreq } = priorityAndFreq(loc);
+    entries.push({
+      loc,
+      lastmod: lastmodDate(abs),
+      priority,
+      changefreq,
+    });
   }
+
+  const seen = new Set();
+  const unique = [];
+  for (const e of entries.sort((a, b) => a.loc.localeCompare(b.loc))) {
+    if (seen.has(e.loc)) continue;
+    seen.add(e.loc);
+    unique.push(e);
+  }
+
+  const lines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    "<!-- Auto-generated by scripts/build-sitemap.js — run from repo root: node scripts/build-sitemap.js -->",
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ];
+  for (const e of unique) {
+    lines.push("  <url>");
+    lines.push(`    <loc>${escapeXml(e.loc)}</loc>`);
+    lines.push(`    <lastmod>${e.lastmod}</lastmod>`);
+    lines.push(`    <changefreq>${e.changefreq}</changefreq>`);
+    lines.push(`    <priority>${e.priority}</priority>`);
+    lines.push("  </url>");
+  }
+  lines.push("</urlset>");
+  lines.push("");
+
+  const outPath = path.join(REPO_ROOT, "sitemap.xml");
+  fs.writeFileSync(outPath, lines.join("\n"), "utf8");
+  console.log(`Wrote ${unique.length} URLs to sitemap.xml`);
 }
 
-for (const { loc, lastmodFile } of CANONICAL_EXTRA) {
-  entries.push({ loc, lastmod: lastmodFromFile(lastmodFile) });
-}
-
-const byLoc = new Map();
-for (const e of entries) {
-  if (!byLoc.has(e.loc)) byLoc.set(e.loc, e);
-}
-const sorted = [...byLoc.values()].sort((a, b) => a.loc.localeCompare(b.loc));
-
-let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
-for (const { loc, lastmod: lm } of sorted) {
-  const urlPath = new URL(loc).pathname;
-  const { priority, changefreq } = priorityAndFreq(urlPath);
-  xml += `  <url>
-    <loc>${escapeXml(loc)}</loc>
-    <lastmod>${lm}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>
-`;
-}
-xml += `</urlset>
-`;
-
-fs.writeFileSync(path.join(ROOT, "sitemap.xml"), xml, "utf8");
-console.log("Wrote sitemap.xml with", sorted.length, "URLs");
+main();

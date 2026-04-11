@@ -238,11 +238,11 @@ Homepage (/)
 ## 🔍 SEO Considerations
 
 - **Canonical URLs:** Most pages have canonical tags pointing to primary URL
-- **Sitemap:** `/sitemap.xml` - Updated February 9, 2026
+- **Sitemap:** `/sitemap.xml` — regenerate from the repo with `node scripts/build-sitemap.js` (includes all indexable HTML, excludes `noindex`, thank-you pages, and known redirect-only URLs). Last regenerated April 5, 2026.
 - **Robots.txt:** `/robots.txt` - Controls crawler access
 - **Blog Index:** `/blog/index.html` - Lists all blog posts
 
 ---
 
-**Generated:** February 9, 2026  
-**Total Pages Mapped:** 129+ pages
+**Generated:** April 5, 2026  
+**Total URLs in sitemap.xml:** Run `grep -c '<loc>' sitemap.xml` after regenerating (on-disk HTML count drives the file).
