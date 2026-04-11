@@ -29,6 +29,9 @@ const PATH_BLOCKLIST = new Set([
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([]);
 
+/** HTML paths included in the sitemap even when the page has noindex (strategic exceptions). */
+const INCLUDE_DESPITE_NOINDEX = new Set(["blog/index.html"]);
+
 function toPosix(p) {
   return p.split(path.sep).join("/");
 }
@@ -134,7 +137,7 @@ function main() {
     } catch {
       continue;
     }
-    if (hasNoindex(html)) continue;
+    if (hasNoindex(html) && !INCLUDE_DESPITE_NOINDEX.has(rel)) continue;
 
     const loc = fileToUrl(rel);
     const { priority, changefreq } = priorityAndFreq(loc);
