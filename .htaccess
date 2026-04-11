@@ -126,7 +126,8 @@ DirectoryIndex index.html index.htm
     
     # ---- Google Search Console 404 fixes (explicit legacy URL redirects) ----
     # Old/typo blog slugs (targets must remain live pages)
-    RewriteRule ^blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-moringa-powder-australia-2026.html [R=301,L]
+    RewriteRule ^blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html [R=301,L]
+    RewriteRule ^blog/best-moringa-powder-australia-2026\.html$ /blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html [R=301,L]
     
     
     # Common wrong paths
@@ -286,7 +287,8 @@ DirectoryIndex index.html index.htm
 
 # Fallback Apache redirects (if mod_rewrite is not available)
 # ---- Google Search Console 404 fixes (explicit legacy URL redirects) ----
-RedirectMatch 301 ^/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-moringa-powder-australia-2026.html
+RedirectMatch 301 ^/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html
+RedirectMatch 301 ^/blog/best-moringa-powder-australia-2026\.html$ /blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html
 RedirectMatch 301 ^/blog/blog\.html$ /blog/
 RedirectMatch 301 ^/products/?$ /products/
 RedirectMatch 301 ^/moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.html
