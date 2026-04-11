@@ -549,7 +549,7 @@
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/products/">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/">
 
-<!-- Nutri Thrive LocalBusiness (local SEO) -->
+<!-- Nutri Thrive LocalBusiness (same @id as sitewide graph; valid LocalBusiness fields only) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
@@ -559,7 +559,13 @@
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "description": "Premium moringa powder and natural wellness products from Truganina, Melbourne, Australia. Vegan, lab-tested. Shipped Australia-wide and worldwide.",
+  "email": "nutrithrive0@gmail.com",
+  "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Australia-wide shipping (free standard on orders AUD 80 and over); international shipping from published rate tables at checkout.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ABN",
+    "value": "32 639 442 616"
+  },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Ridley Place",
@@ -573,15 +579,21 @@
     "latitude": -37.8172099,
     "longitude": 144.7513518
   },
-  "areaServed": ["Melbourne", "Victoria", "Australia"],
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Product",
-      "name": "Moringa Powder",
-      "brand": { "@type": "Brand", "name": "Nutri Thrive" }
-    }
-  }
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Ridley+Place%2C+Truganina+VIC+3029%2C+Australia",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "09:00",
+    "closes": "23:00"
+  }],
+  "areaServed": [
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Place", "name": "Worldwide" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/nutrithrive",
+    "https://www.instagram.com/nutri__thrive/"
+  ]
 }
 </script>
 </head>
@@ -863,376 +875,311 @@
     <!-- CollectionPage Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Premium Natural Superfoods Collection",
-      "description": "Buy 100% natural Moringa Powder, Dried Curry Leaves, and Premium Black Tea online. Vegan, Gluten-Free, No Additives. Lab-tested, natural energy supplements with fast shipping from Melbourne to VIC, NSW, QLD.",
-      "url": "https://nutrithrive.com.au/products/",
-      "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": [
-          {
-            "@type": "Product",
-            "position": 1,
-            "name": "Moringa Powder",
-            "url": "https://nutrithrive.com.au/products/moringa-powder/",
-            "image": "https://i.imgur.com/PgvCFY0.png",
-            "description": "Premium 100% natural Moringa Oleifera powder for natural energy boost and immune support.",
-            "brand": {
-              "@type": "Brand",
-              "name": "NutriThrive"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.5",
-              "reviewCount": "124"
-            },
-            "review": [
-              {
-                "@type": "Review",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "author": { "@type": "Person", "name": "Verified Customer" },
-                "reviewBody": "High quality moringa powder, exactly as described. Fast shipping and great customer service."
-              }
-            ],
-            "offers": {
-              "@type": "Offer",
-              "url": "https://nutrithrive.com.au/products/moringa-powder/",
-              "priceCurrency": "AUD",
-              "price": "10.50",
-              "priceValidUntil": "2026-12-31",
-              "availability": "https://schema.org/InStock",
-              "seller": {
-                "@type": "Organization",
-                "name": "NutriThrive"
-              },
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "AU",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 7,
-                "returnMethod": "https://schema.org/ReturnByMail",
-                "returnFees": "https://schema.org/FreeReturn"
-              },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": "0",
-                  "currency": "AUD"
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Premium Natural Superfoods Collection",
+        "description": "Buy 100% natural Moringa Powder, Dried Curry Leaves, and Premium Black Tea online. Vegan, Gluten-Free, No Additives. Lab-tested, natural energy supplements with fast shipping from Melbourne to VIC, NSW, QLD.",
+        "url": "https://nutrithrive.com.au/products/",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "Product",
+                    "position": 1,
+                    "name": "Moringa Powder",
+                    "url": "https://nutrithrive.com.au/products/moringa-powder/",
+                    "image": "https://i.imgur.com/PgvCFY0.png",
+                    "description": "Premium 100% natural Moringa Oleifera powder for natural energy boost and immune support.",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "NutriThrive"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "url": "https://nutrithrive.com.au/products/moringa-powder/",
+                        "priceCurrency": "AUD",
+                        "price": "10.50",
+                        "priceValidUntil": "2026-12-31",
+                        "availability": "https://schema.org/InStock",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "NutriThrive"
+                        },
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "applicableCountry": "AU",
+                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                            "merchantReturnDays": 7,
+                            "returnMethod": "https://schema.org/ReturnByMail",
+                            "returnFees": "https://schema.org/FreeReturn"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "0",
+                                "currency": "AUD"
+                            },
+                            "shippingDestination": {
+                                "@type": "DefinedRegion",
+                                "addressCountry": "AU"
+                            },
+                            "deliveryTime": {
+                                "@type": "ShippingDeliveryTime",
+                                "handlingTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 1,
+                                    "maxValue": 2,
+                                    "unitCode": "DAY"
+                                },
+                                "transitTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 3,
+                                    "maxValue": 10,
+                                    "unitCode": "DAY"
+                                }
+                            }
+                        }
+                    }
                 },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "AU"
+                {
+                    "@type": "Product",
+                    "position": 2,
+                    "name": "Dried Curry Leaves",
+                    "url": "https://nutrithrive.com.au/products/curry-leaves/",
+                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/Curry.webp",
+                    "description": "Premium dried curry leaves for aromatic flavor enhancement in traditional cooking.",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "NutriThrive"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "url": "https://nutrithrive.com.au/products/curry-leaves/",
+                        "priceCurrency": "AUD",
+                        "price": "6.45",
+                        "priceValidUntil": "2026-12-31",
+                        "availability": "https://schema.org/InStock",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "NutriThrive"
+                        },
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "applicableCountry": "AU",
+                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                            "merchantReturnDays": 7,
+                            "returnMethod": "https://schema.org/ReturnByMail",
+                            "returnFees": "https://schema.org/FreeReturn"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "0",
+                                "currency": "AUD"
+                            },
+                            "shippingDestination": {
+                                "@type": "DefinedRegion",
+                                "addressCountry": "AU"
+                            },
+                            "deliveryTime": {
+                                "@type": "ShippingDeliveryTime",
+                                "handlingTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 1,
+                                    "maxValue": 2,
+                                    "unitCode": "DAY"
+                                },
+                                "transitTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 3,
+                                    "maxValue": 10,
+                                    "unitCode": "DAY"
+                                }
+                            }
+                        }
+                    }
                 },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 3,
-                    "maxValue": 10,
-                    "unitCode": "DAY"
-                  }
+                {
+                    "@type": "Product",
+                    "position": 3,
+                    "name": "Premium Black Tea",
+                    "url": "https://nutrithrive.com.au/products/black-tea/",
+                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/BlackTea.webp",
+                    "description": "Premium black tea for focus, clarity, and natural energy.",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "NutriThrive"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "url": "https://nutrithrive.com.au/products/black-tea/",
+                        "priceCurrency": "AUD",
+                        "price": "7.00",
+                        "priceValidUntil": "2026-12-31",
+                        "availability": "https://schema.org/InStock",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "NutriThrive"
+                        },
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "applicableCountry": "AU",
+                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                            "merchantReturnDays": 7,
+                            "returnMethod": "https://schema.org/ReturnByMail",
+                            "returnFees": "https://schema.org/FreeReturn"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "0",
+                                "currency": "AUD"
+                            },
+                            "shippingDestination": {
+                                "@type": "DefinedRegion",
+                                "addressCountry": "AU"
+                            },
+                            "deliveryTime": {
+                                "@type": "ShippingDeliveryTime",
+                                "handlingTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 1,
+                                    "maxValue": 2,
+                                    "unitCode": "DAY"
+                                },
+                                "transitTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 3,
+                                    "maxValue": 10,
+                                    "unitCode": "DAY"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "position": 4,
+                    "name": "Premium Combo Pack",
+                    "url": "https://nutrithrive.com.au/products/combo-pack/",
+                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/combo.webp",
+                    "description": "A curated selection of our best-selling natural products for holistic health and great value.",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "NutriThrive"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "url": "https://nutrithrive.com.au/products/combo-pack/",
+                        "priceCurrency": "AUD",
+                        "price": "15.55",
+                        "priceValidUntil": "2026-12-31",
+                        "availability": "https://schema.org/InStock",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "NutriThrive"
+                        },
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "applicableCountry": "AU",
+                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                            "merchantReturnDays": 7,
+                            "returnMethod": "https://schema.org/ReturnByMail",
+                            "returnFees": "https://schema.org/FreeReturn"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "0",
+                                "currency": "AUD"
+                            },
+                            "shippingDestination": {
+                                "@type": "DefinedRegion",
+                                "addressCountry": "AU"
+                            },
+                            "deliveryTime": {
+                                "@type": "ShippingDeliveryTime",
+                                "handlingTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 1,
+                                    "maxValue": 2,
+                                    "unitCode": "DAY"
+                                },
+                                "transitTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 3,
+                                    "maxValue": 10,
+                                    "unitCode": "DAY"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "position": 5,
+                    "name": "Moringa Soap",
+                    "url": "https://nutrithrive.com.au/products/",
+                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/moringa_soap.webp",
+                    "description": "Natural moringa soap for gentle cleansing and skin nourishment.",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "NutriThrive"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "url": "https://nutrithrive.com.au/products/product-moringa-soap.html",
+                        "priceCurrency": "AUD",
+                        "price": "6.50",
+                        "priceValidUntil": "2026-12-31",
+                        "availability": "https://schema.org/InStock",
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "NutriThrive"
+                        },
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "applicableCountry": "AU",
+                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                            "merchantReturnDays": 7,
+                            "returnMethod": "https://schema.org/ReturnByMail",
+                            "returnFees": "https://schema.org/FreeReturn"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "0",
+                                "currency": "AUD"
+                            },
+                            "shippingDestination": {
+                                "@type": "DefinedRegion",
+                                "addressCountry": "AU"
+                            },
+                            "deliveryTime": {
+                                "@type": "ShippingDeliveryTime",
+                                "handlingTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 1,
+                                    "maxValue": 2,
+                                    "unitCode": "DAY"
+                                },
+                                "transitTime": {
+                                    "@type": "QuantitativeValue",
+                                    "minValue": 3,
+                                    "maxValue": 10,
+                                    "unitCode": "DAY"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            }
-          },
-          {
-            "@type": "Product",
-            "position": 2,
-            "name": "Dried Curry Leaves",
-            "url": "https://nutrithrive.com.au/products/curry-leaves/",
-            "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/Curry.webp",
-            "description": "Premium dried curry leaves for aromatic flavor enhancement in traditional cooking.",
-            "brand": {
-              "@type": "Brand",
-              "name": "NutriThrive"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5",
-              "reviewCount": "134"
-            },
-            "review": [
-              {
-                "@type": "Review",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "author": { "@type": "Person", "name": "Verified Customer" },
-                "reviewBody": "Excellent quality dried curry leaves, perfect for authentic Indian cooking. Fast shipping and great value."
-              }
-            ],
-            "offers": {
-              "@type": "Offer",
-              "url": "https://nutrithrive.com.au/products/curry-leaves/",
-              "priceCurrency": "AUD",
-              "price": "6.45",
-              "priceValidUntil": "2026-12-31",
-              "availability": "https://schema.org/InStock",
-              "seller": {
-                "@type": "Organization",
-                "name": "NutriThrive"
-              },
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "AU",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 7,
-                "returnMethod": "https://schema.org/ReturnByMail",
-                "returnFees": "https://schema.org/FreeReturn"
-              },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": "0",
-                  "currency": "AUD"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "AU"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 3,
-                    "maxValue": 10,
-                    "unitCode": "DAY"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "@type": "Product",
-            "position": 3,
-            "name": "Premium Black Tea",
-            "url": "https://nutrithrive.com.au/products/black-tea/",
-            "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/BlackTea.webp",
-            "description": "Premium black tea for focus, clarity, and natural energy.",
-            "brand": {
-              "@type": "Brand",
-              "name": "NutriThrive"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.5",
-              "reviewCount": "89"
-            },
-            "review": [
-              {
-                "@type": "Review",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "author": { "@type": "Person", "name": "Verified Customer" },
-                "reviewBody": "Premium quality black tea with rich aroma and smooth taste. Highly recommend for tea lovers."
-              }
-            ],
-            "offers": {
-              "@type": "Offer",
-              "url": "https://nutrithrive.com.au/products/black-tea/",
-              "priceCurrency": "AUD",
-              "price": "7.00",
-              "priceValidUntil": "2026-12-31",
-              "availability": "https://schema.org/InStock",
-              "seller": {
-                "@type": "Organization",
-                "name": "NutriThrive"
-              },
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "AU",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 7,
-                "returnMethod": "https://schema.org/ReturnByMail",
-                "returnFees": "https://schema.org/FreeReturn"
-              },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": "0",
-                  "currency": "AUD"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "AU"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 3,
-                    "maxValue": 10,
-                    "unitCode": "DAY"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "@type": "Product",
-            "position": 4,
-            "name": "Premium Combo Pack",
-            "url": "https://nutrithrive.com.au/products/combo-pack/",
-            "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/combo.webp",
-            "description": "A curated selection of our best-selling natural products for holistic health and great value.",
-            "brand": {
-              "@type": "Brand",
-              "name": "NutriThrive"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5",
-              "reviewCount": "15"
-            },
-            "review": [
-              {
-                "@type": "Review",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "author": { "@type": "Person", "name": "Verified Customer" },
-                "reviewBody": "Fantastic value and a great way to try different products. Highly recommend!"
-              }
-            ],
-            "offers": {
-              "@type": "Offer",
-              "url": "https://nutrithrive.com.au/products/combo-pack/",
-              "priceCurrency": "AUD",
-              "price": "15.55",
-              "priceValidUntil": "2026-12-31",
-              "availability": "https://schema.org/InStock",
-              "seller": {
-                "@type": "Organization",
-                "name": "NutriThrive"
-              },
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "AU",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 7,
-                "returnMethod": "https://schema.org/ReturnByMail",
-                "returnFees": "https://schema.org/FreeReturn"
-              },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": "0",
-                  "currency": "AUD"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "AU"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 3,
-                    "maxValue": 10,
-                    "unitCode": "DAY"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "@type": "Product",
-            "position": 5,
-            "name": "Moringa Soap",
-            "url": "https://nutrithrive.com.au/products/",
-            "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/moringa_soap.webp",
-            "description": "Natural moringa soap for gentle cleansing and skin nourishment.",
-            "brand": {
-              "@type": "Brand",
-              "name": "NutriThrive"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.8",
-              "reviewCount": "42"
-            },
-            "review": [
-              {
-                "@type": "Review",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-                "author": { "@type": "Person", "name": "Verified Customer" },
-                "reviewBody": "Great natural soap with a pleasant scent. Leaves skin feeling clean and soft."
-              }
-            ],
-            "offers": {
-              "@type": "Offer",
-              "url": "https://nutrithrive.com.au/products/product-moringa-soap.html",
-              "priceCurrency": "AUD",
-              "price": "6.50",
-              "priceValidUntil": "2026-12-31",
-              "availability": "https://schema.org/InStock",
-              "seller": {
-                "@type": "Organization",
-                "name": "NutriThrive"
-              },
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "AU",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 7,
-                "returnMethod": "https://schema.org/ReturnByMail",
-                "returnFees": "https://schema.org/FreeReturn"
-              },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": "0",
-                  "currency": "AUD"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "AU"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 3,
-                    "maxValue": 10,
-                    "unitCode": "DAY"
-                  }
-                }
-              }
-            }
-          }
-        ]
-      }
+            ]
+        }
     }
     </script>
     <script>
