@@ -15,6 +15,8 @@ const BASE = "https://nutrithrive.com.au";
 /** Paths that must never appear in the sitemap (relative to repo root, posix). */
 const PATH_BLOCKLIST = new Set([
   "tools/check-paypal-buttons.html",
+  "scripts/moringa-melbourne-report-head.inc.html",
+  "pages/shop/cart.html",
   "pages/contact/thank-you.html",
   "pages/newsletter/thank-you.html",
   "pages/shop/thank-you.html",
