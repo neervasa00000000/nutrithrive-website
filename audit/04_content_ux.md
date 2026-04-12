@@ -1,7 +1,8 @@
 # Phase 4 — Content & UX audit
 
 **Target:** https://nutrithrive.com.au  
-**Evidence:** Live scrapes (Phase 2) + page structure review.
+**Evidence:** Live scrapes (Phase 2) + page structure review.  
+**Scores:** Previous **72**/100 → Current **73**/100 (see `06_executive_summary.md`; site unchanged between versions).
 
 ---
 

@@ -1,6 +1,9 @@
 # Phase 2 — Raw page data (scraped)
 
-**Source:** Firecrawl MCP `firecrawl_scrape` with structured JSON extraction per URL.  
+**Source:** Firecrawl **`firecrawl_scrape`** (MCP) with structured JSON extraction per URL — one request per URL for all **24** sitemap URLs (under the 50-page cap).
+
+**Extracted per page (per instructions):** page title, meta description, H1 / H2 / H3, approximate word count, internal links, images (src + alt / missing alt), canonical, schema types indicated.
+
 **Note:** `<title>` below prefers HTML `metadata.title` from the scrape when it differed from body-extracted “title”. Word counts are approximate (main content).
 
 ---

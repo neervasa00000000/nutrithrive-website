@@ -1,7 +1,14 @@
 # Phase 1 — Site map
 
 **Target:** https://nutrithrive.com.au  
-**Method:** Canonical list taken from repo `sitemap.xml` (live URLs). Cross-check: Firecrawl `firecrawl_map` with `sitemap: "only"` returned the same set (24 URLs; trailing-slash variants normalised in map output).
+
+**Method (per master instructions):**
+
+- Firecrawl **`firecrawl_map`** on the site root; **`sitemap: "only"`** used to align with the published `sitemap.xml`.
+- Every discovered URL listed and grouped by type below.
+- Total page count recorded.
+
+**Also used:** Canonical list from repo `sitemap.xml` as the source of truth for “live” URLs. Map output matched **24** URLs (trailing-slash variants normalised in map output).
 
 **Total indexed URLs in scope:** 24
 
