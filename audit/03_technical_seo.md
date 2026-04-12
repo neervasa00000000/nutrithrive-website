@@ -1,6 +1,9 @@
 # Phase 3 — Technical SEO audit
 
-**Scope:** 24 URLs from `sitemap.xml`, scraped live via Firecrawl (see `02_raw_pages.md`).
+**Scope:** 24 URLs from `sitemap.xml`, scraped live via Firecrawl (see `02_raw_pages.md`).  
+**Score context:** Previous audit **72**/100 → Current (v2) **73**/100 — same live site; see `06_executive_summary.md` and `AUDIT_INSTRUCTIONS.md` (“Score history”).
+
+This file follows the Phase 3 checklist in `AUDIT_INSTRUCTIONS.md` (titles, meta descriptions, headings, images, internal linking, content quality, URLs, schema).
 
 ---
 

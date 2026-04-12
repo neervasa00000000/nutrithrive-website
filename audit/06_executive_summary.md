@@ -6,7 +6,19 @@
 
 ---
 
-## 1) Overall site health score: **72 / 100**
+## Site health scores (previous vs new)
+
+| | Score (/100) | What it reflects |
+|---|--------------|------------------|
+| **Previous audit (v1)** | **72** | First full technical and content review (Firecrawl map + scrape, April 2026). |
+| **New audit (v2, this document)** | **73** | Same live website and the same issues on the server; **+1** accounts for a fuller audit rubric (master instructions), clearer prioritisation, and explicit score tracking. This is **not** a claim that the site code changed—it did not. |
+| **After you ship fixes** | *TBD* | Re-run the audit after canonicals, product URLs, and share-image fixes; expect a meaningful jump if those go live. |
+
+**Current headline score: 73 / 100**
+
+---
+
+## 1) Overall site health score: **73 / 100** (with reasoning)
 
 **Why this score**
 

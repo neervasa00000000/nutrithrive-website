@@ -2,6 +2,8 @@
 
 Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au unless noted.
 
+Each item includes **Priority timing:** *this week* / *this month* / *this quarter* (per `AUDIT_INSTRUCTIONS.md`).
+
 ---
 
 **[Priority #1] — Fix incorrect canonicals that point to the homepage**
@@ -10,7 +12,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Canonical tags tell search engines these URLs are duplicates of `/`, collapsing rankings for local, about, newsletter, and shop landing pages.  
 - **Fix:** Set `<link rel="canonical">` to each page’s own clean URL (or deliberately choose one URL pattern and 301 the rest).  
 - **Impact:** High | **Effort:** Easy  
-- **Why it matters:** Without correct canonicals, Google may not rank these URLs for their intended queries.
+- **Why it matters:** Without correct canonicals, Google may not rank these URLs for their intended queries.  
+- **Priority timing:** **this week**
 
 ---
 
@@ -20,7 +23,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Canonical slugs (`premium-black-tea`, `premium-wellness-combo-pack`, `dried-curry-leaves`) do not match the live folder URLs.  
 - **Fix:** Either (a) change canonical to the folder URL, or (b) 301 folder URL → canonical slug and update internal links to match **one** system.  
 - **Impact:** High | **Effort:** Medium  
-- **Why it matters:** Prevents duplicate product URLs and protects Product rich-result consistency.
+- **Why it matters:** Prevents duplicate product URLs and protects Product rich-result consistency.  
+- **Priority timing:** **this week**
 
 ---
 
@@ -30,7 +34,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** `og:image` appears malformed (concatenated path/URL in scrape metadata).  
 - **Fix:** Set `og:image` to a valid absolute WebP/JPG on your domain; re-test with a social debugger.  
 - **Impact:** High | **Effort:** Easy  
-- **Why it matters:** Broken previews reduce clicks from shares (SMS, Facebook, Slack).
+- **Why it matters:** Broken previews reduce clicks from shares (SMS, Facebook, Slack).  
+- **Priority timing:** **this week**
 
 ---
 
@@ -40,7 +45,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** `<meta name="description">` missing or empty in extraction while some OG descriptions exist.  
 - **Fix:** Write 1–2 sentence descriptions (unique, non-keyword-stuffed) for each URL.  
 - **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Google often rewrites, but good descriptions still influence snippets and internal tooling.
+- **Why it matters:** Google often rewrites, but good descriptions still influence snippets and internal tooling.  
+- **Priority timing:** **this week**
 
 ---
 
@@ -50,7 +56,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Links may 404 or send users/crawlers to unpublished/off-topic content (e.g. gym guide from a moringa contact page).  
 - **Fix:** Crawl with a link checker; remove/replace with live, on-topic URLs; ensure redirects for renamed posts.  
 - **Impact:** High | **Effort:** Medium  
-- **Why it matters:** Broken links waste crawl budget and harm trust.
+- **Why it matters:** Broken links waste crawl budget and harm trust.  
+- **Priority timing:** **this month**
 
 ---
 
@@ -60,7 +67,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Mixed internal linking patterns increase duplicate URL risk.  
 - **Fix:** Pick one canonical privacy URL;301 the other; update templates.  
 - **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Consolidates signals to one policy URL.
+- **Why it matters:** Consolidates signals to one policy URL.  
+- **Priority timing:** **this month**
 
 ---
 
@@ -70,7 +78,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Third-party image hosting can break, looks less premium, and complicates performance tuning.  
 - **Fix:** Host optimised WebP/AVIF under `/assets/...` and update references.  
 - **Impact:** Medium | **Effort:** Medium  
-- **Why it matters:** More reliable UX and better control of Core Web Vitals.
+- **Why it matters:** More reliable UX and better control of Core Web Vitals.  
+- **Priority timing:** **this month**
 
 ---
 
@@ -80,7 +89,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Canonical points to `/nutrithrive_labs/` instead of the tool.  
 - **Fix:** Self-canonicalise the tool URL or intentionally noindex the tool and remove from sitemap.  
 - **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Prevents the wrong URL representing the tool in search results.
+- **Why it matters:** Prevents the wrong URL representing the tool in search results.  
+- **Priority timing:** **this month**
 
 ---
 
@@ -90,7 +100,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Duplicate question strings as both H2 and H3.  
 - **Fix:** Use H2 for questions; keep answers in panels without extra heading duplication.  
 - **Impact:** Medium | **Effort:** Medium  
-- **Why it matters:** Cleaner accessibility + clearer topical structure for search parsers.
+- **Why it matters:** Cleaner accessibility + clearer topical structure for search parsers.  
+- **Priority timing:** **this month**
 
 ---
 
@@ -100,7 +111,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Very low word count for pages that look indexable.  
 - **Fix:** Add concise FAQs, delivery table, and newsletter value props (what emails contain, frequency, privacy).  
 - **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Thin pages struggle to rank and convert.
+- **Why it matters:** Thin pages struggle to rank and convert.  
+- **Priority timing:** **this quarter**
 
 ---
 
@@ -110,7 +122,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Relative `og:image` path in head.  
 - **Fix:** Use absolute HTTPS image URL.  
 - **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Reliable share cards increase referral traffic.
+- **Why it matters:** Reliable share cards increase referral traffic.  
+- **Priority timing:** **this quarter**
 
 ---
 
@@ -120,7 +133,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Title emphasises specific SKUs; H1 is generic (“Shop Premium Wellness”).  
 - **Fix:** Make H1 match inventory (“Shop moringa, tea, curry leaves & bundles”) or adjust title to match H1 — but stay consistent.  
 - **Impact:** Low–Medium | **Effort:** Easy  
-- **Why it matters:** Reduces bounce from expectation mismatch.
+- **Why it matters:** Reduces bounce from expectation mismatch.  
+- **Priority timing:** **this quarter**
 
 ---
 
@@ -130,7 +144,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Utilities are indexable and may compete with core landing pages for branded queries.  
 - **Fix:** Either lean into Labs as marketing (add copy + schema) or `noindex` + remove from sitemap.  
 - **Impact:** Low–Medium | **Effort:** Easy  
-- **Why it matters:** Focuses Google on revenue URLs.
+- **Why it matters:** Focuses Google on revenue URLs.  
+- **Priority timing:** **this quarter**
 
 ---
 
@@ -140,7 +155,8 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Strong content benefits from visible expertise cues.  
 - **Fix:** Author box with credentials, review policy, and “last updated” prominently on-page.  
 - **Impact:** Medium | **Effort:** Medium  
-- **Why it matters:** Supports trust for health-adjacent queries (E-E-A-T).
+- **Why it matters:** Supports trust for health-adjacent queries (E-E-A-T).  
+- **Priority timing:** **this quarter**
 
 ---
 
@@ -150,4 +166,5 @@ Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au 
 - **Problem:** Mix of slash and non-slash canonical patterns.  
 - **Fix:** Choose one convention; enforce via server + canonical tags.  
 - **Impact:** Low–Medium | **Effort:** Medium  
-- **Why it matters:** Avoids duplicate URL clusters.
+- **Why it matters:** Avoids duplicate URL clusters.  
+- **Priority timing:** **this quarter**
