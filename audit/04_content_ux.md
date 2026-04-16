@@ -1,114 +1,153 @@
-# Phase 4 — Content & UX audit
+# Phase 4 — Content & UX Audit
 
-**Target:** https://nutrithrive.com.au  
-**Evidence:** Live scrapes (Phase 2) + page structure review.  
-**Scores:** Previous **72**/100 → Current **73**/100 (see `06_executive_summary.md`; site unchanged between versions).
-
----
-
-## Homepage (`/`)
-
-**What works**
-
-- H1 clearly states product category and geography (“Melbourne”, “Moringa”).  
-- Product grid exposes multiple SKUs with plain-language labels.  
-- Trust cues appear in copy (lab-tested, vegan, shipping scope).
-
-**Friction**
-
-- **Value proposition** is strong in body copy but ensure above-the-fold mobile layout leads with *one* sentence a first-time visitor can quote (“Australian moringa & superfoods shipped from Melbourne”).  
-- **Internal links** mix pretty URLs and `privacy-policy.html` — minor trust “polish” issue for detail-oriented shoppers.
+**Site:** https://nutrithrive.com.au  
+**Audit date:** 16 April 2026
 
 ---
 
-## Blog / guides
+## A. Homepage — https://nutrithrive.com.au/
 
-**Representative URLs**
+### Does the H1 immediately communicate what the business does?
+**Mostly yes.** H1: "Premium Moringa Powder from Melbourne – Natural Energy with Nutri Thrive" — clearly states the product (moringa powder), location (Melbourne), and brand. However, it misses curry leaves, tea, and soap.
 
-- https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026.html  
-- https://nutrithrive.com.au/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html  
-- https://nutrithrive.com.au/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html  
+### Is there a clear value proposition above the fold?
+**Yes.** Hero section has: "Shop lab-tested Moringa Oleifera supplements, Moringa Soap, Dried Curry Leaves, and Black Tea. 100% vegan, gluten-free, and non-GMO. Fast delivery Australia-wide (Melbourne & Sydney) plus worldwide shipping." — Strong, specific, benefit-driven.
 
-**Strengths**
+### Are the CTAs obvious and action-oriented?
+**Yes.** Two hero CTAs: "Explore Products" and "Learn More". Product cards have "Add to Cart" buttons. Clear and actionable.
 
-- Exceptional depth on comparison and buyer-intent queries.  
-- Clear sectioning via H2s; good candidate pages for evergreen SEO.
+### Does it speak to the target audience's pain points?
+**Partially.** The hero addresses quality (lab-tested), dietary needs (vegan, gluten-free), and delivery speed. However, it doesn't directly call out common pain points like "tired of low-quality moringa?" or "not sure which brand to trust?"
 
-**UX / credibility**
+### Is trust established?
+**Moderate.** Product cards show pricing and bundles. There's a "What Our Customers Say" section with testimonials. However, no trust badges, no "1k+ happy customers" social proof prominently displayed, no certifications visible, no lab test results linked.
 
-- Heavy use of **third-party image hosts** in social/meta imagery — consider hosting key diagrams locally for perceived quality.  
-- **Next-step CTAs** exist on some posts via product links; ensure each long post ends with a *single* primary CTA (“Shop moringa”) plus a secondary (“Read dosage guide”).
-
-**E-E-A-T**
-
-- Author/byline signals appear on some articles in metadata — good. Make **visible** on-page (bio + “why we’re qualified”) for YMYL-adjacent health content.
+**Score: 7/10**
 
 ---
 
-## Product / service pages
+## B. Blog / Content Pages
 
-**Examples**
+### Are posts actually helpful or just thin filler?
+**Mixed.** Key blog posts (moringa vs spirulina vs matcha, brands comparison, where-to-buy guide, dried curry leaves guide) are genuinely helpful with 2,000–7,000 words, comparison tables, and sourced references. However, some posts feel like keyword-targeted filler:
+- Multiple near-duplicate "moringa vs matcha" posts (3+ variations)
+- Multiple "curry leaves Melbourne" buying guides (4+ variations)
+- "Top 20 hiking destinations in Victoria" — off-topic content
+- "Best gyms in Melbourne CBD" — off-topic content
+- "Musashi protein powder guide" — off-topic content
+- "Universal size converter" and "Natural language calendar scheduler" — tools disguised as blog posts
 
-- https://nutrithrive.com.au/products/moringa-powder/  
-- https://nutrithrive.com.au/products/curry-leaves/  
-- https://nutrithrive.com.au/products/black-tea/  
+### Do posts have a clear structure?
+**Generally yes.** Most posts have: intro, table of contents, sections with H2/H3 hierarchy, FAQ, and conclusion. The long-form guides (moringa brands comparison, moringa powder guide) are well-structured with inline navigation.
 
-**Strengths**
+### Are there internal links to related posts and key pages?
+**Partially.** Each blog post links to 2-4 other blog posts and product pages. But cross-linking could be much stronger — related posts at the bottom of each article would help.
 
-- Each page has a tight H1 aligned to the SKU.  
-- FAQs and reviews sections support objection handling.
+### Is there a clear next step for the reader?
+**Varies.** Some posts have "Browse Our Premium Superfoods" sections. Many end with newsletter signup. But some posts just end without a clear CTA.
 
-**Gaps**
+### Are posts optimised for a specific search intent?
+**Mostly yes.** Posts target clear intents: "best moringa powder Australia", "moringa vs spirulina vs matcha", "where to buy moringa", "how to use moringa powder". However, multiple posts target the same intent (cannibalisation risk):
+- 3+ posts targeting "moringa vs matcha Australia"
+- 4+ posts targeting "buy curry leaves Melbourne"
+- 3+ posts targeting "moringa brands comparison"
 
-- **Combo pack** Open Graph image uses a **relative** path in head — social previews may break on some platforms.  
-- **Canonical slugs** do not match folder URLs (see Phase 3) — users may copy URLs from the bar and share inconsistent links.
-
----
-
-## Contact / About / policies
-
-**About (`/about`)**
-
-- Story-driven H1 and section headings read authentic — good for brand.  
-- Fix canonical pointing home so Google credits this URL properly.
-
-**Contact (`/contact`)**
-
-- Clear phone-led support story for AU customers.  
-- Map embed is useful; **empty alts** on tiles are an accessibility nit.
-
-**Privacy / shipping**
-
-- Privacy page content is substantial; add a normal meta description for SERP polish.  
-- Shipping page is practical but short — add scannable tables (metro vs regional) to reduce support load.
+**Score: 6/10**
 
 ---
 
-## Melbourne local landing (`/melbourne/`)
+## C. Product / Service Pages
 
-**Strengths**
+### Does each page target one specific keyword/intent?
+**Mostly yes.** Each product page targets its product: moringa powder, curry leaves, black tea, moringa soap, combo pack. However:
+- Black tea title says "Black Tea" but H1 says "Darjeeling Black Tea" — mixed signals
+- Moringa powder page has an entire "Moringa Brands Comparison" section that belongs on a blog post, not a product page
 
-- Local delivery promise and warehouse framing are clear.  
-- Product shortcuts are sensible.
+### Is the offer clear within 5 seconds?
+**Yes.** Each product page shows: product name, image, price (with strikethrough original), serving size, and "Add to Cart" button. Pricing is transparent.
 
-**Risks**
+### Are objections handled?
+**Partially.** Product pages have FAQ sections answering common questions. However:
+- No comparison to competitors
+- No "why choose us over Chemist Warehouse" section (despite blog posts on this topic)
+- No money-back guarantee prominently displayed
+- Moringa powder page mentions safety notes — good
+- No customer reviews visible above the fold (they're in a carousel below)
 
-- Canonical to homepage **collapses** local landing equity — from a UX/SEO standpoint, shoppers searching “moringa Melbourne” benefit from this URL remaining distinct.
+### Is social proof present?
+**Weak.** Product pages have customer review carousels, but:
+- Reviews appear duplicated (same person appears twice in the carousel)
+- Reviews look generic/templated — no verified purchase indicators
+- No review count/rating shown in schema on some pages
+- No third-party review platform integration (no Trustpilot, Google Reviews, etc.)
+- Homepage has "What Our Customers Say" but no specific numbers
+
+**Score: 5/10**
 
 ---
 
-## Labs (`/nutrithrive_labs/`)
+## D. Contact / About Pages
 
-**UX**
+### Is there a clear, simple contact method?
+**Yes.** Contact page has: phone number (0438 201 419), email (nutrithrive0@gmail.com), physical address, and a contact form. Good coverage.
 
-- Tools are clearly labeled; good for power users.
+### Does the About page build trust and tell a real story?
+**Good.** The About page tells the founder story: started 2020, launched 2024, frustration with stale moringa on Australian shelves, decision to work directly with farms, shade-drying process. It includes:
+- "From farm to pouch" journey
+- "1k+ happy customers" stat
+- "Founded in 2024" credibility
+- Values section
 
-**Brand separation**
+However:
+- No photos of the founder/team
+- No video
+- No certifications or lab test links
+- The "About" is more brand story than founder story
 
-- Utilities are co-branded with the ecommerce header/footer. If unintended, consider a lighter chrome so Labs doesn’t compete with money pages in site navigation mental model.
+### Is there a physical address?
+**Yes.** Multiple mentions of Truganina, Melbourne address. However, there's an **address mismatch**: Schema and some pages say "Ridley Place, Truganina" while the privacy policy and Melbourne page say "15 Europe Street". This needs to be resolved.
+
+**Score: 7/10**
 
 ---
 
-## Overall UX takeaway
+## Cross-Site UX Issues
 
-You already publish **best-in-class long-form guides** for your niche. The biggest UX wins now are **trust polish** (self-hosted assets, consistent URLs), **accessibility on contact**, and **clear CTAs** at the end of every long article.
+### Navigation
+- Main nav: Home, Products, About, Contact, Blog — clean and functional
+- Footer has: About, Shopping, Help & Info, Contact, Business sections — comprehensive
+- Some nav links are inconsistent (About page Contact link goes to /pages/contact/contact.html instead of /contact)
+- No search functionality on the site
+
+### Mobile Experience
+- Homepage product grid has responsive breakpoints (4→3→2→1 columns)
+- Mobile has horizontal scroll for product cards (good touch experience)
+- No mobile-specific issues detected in HTML
+
+### Page Speed Considerations
+- Critical CSS loaded immediately
+- Non-critical CSS deferred (good)
+- Images use lazy loading where appropriate
+- WebP format used for images (good)
+- Google Analytics is deferred to prevent render blocking (good)
+- However, homepage has significant inline CSS and multiple JS files
+
+### Trust Signals Missing
+- No SSL badge display
+- No "lab-tested" or "certified" badges visible on product pages (mentioned in text but not visually reinforced)
+- No money-back guarantee badge
+- No third-party review integration
+- No "as seen in" media logos
+- No ABN/ACN displayed prominently
+
+---
+
+## Content Quality Summary
+
+| Category | Score | Key Issue |
+|----------|-------|-----------|
+| Homepage | 7/10 | Missing trust badges, social proof numbers |
+| Blog content | 6/10 | Keyword cannibalisation, off-topic posts, 10 posts invisible to Google |
+| Product pages | 5/10 | Duplicate/fake reviews, weak objection handling, missing comparison content |
+| Contact/About | 7/10 | Address mismatch, no team photos |
+| **Overall** | **6.25/10** | Content quality is decent but trust signals and review authenticity are major gaps |

@@ -1,170 +1,162 @@
-# Phase 5 — Quick wins (top 15)
+# Phase 5 — Quick Wins (Top 15)
 
-Ranked by **impact × feasibility**. All URLs are on https://nutrithrive.com.au unless noted.
-
-Each item includes **Priority timing:** *this week* / *this month* / *this quarter* (per `AUDIT_INSTRUCTIONS.md`).
-
----
-
-**[Priority #1] — Fix incorrect canonicals that point to the homepage**
-
-- **Page affected:** `/about`, `/melbourne/`, `/pages/newsletter/`, `/products/`  
-- **Problem:** Canonical tags tell search engines these URLs are duplicates of `/`, collapsing rankings for local, about, newsletter, and shop landing pages.  
-- **Fix:** Set `<link rel="canonical">` to each page’s own clean URL (or deliberately choose one URL pattern and 301 the rest).  
-- **Impact:** High | **Effort:** Easy  
-- **Why it matters:** Without correct canonicals, Google may not rank these URLs for their intended queries.  
-- **Priority timing:** **this week**
+**Site:** https://nutrithrive.com.au  
+**Audit date:** 16 April 2026  
+**Ranked by impact × effort**
 
 ---
 
-**[Priority #2] — Align product canonicals with the URLs customers actually share**
-
-- **Page affected:** `/products/black-tea/`, `/products/combo-pack/`, `/products/curry-leaves/`  
-- **Problem:** Canonical slugs (`premium-black-tea`, `premium-wellness-combo-pack`, `dried-curry-leaves`) do not match the live folder URLs.  
-- **Fix:** Either (a) change canonical to the folder URL, or (b) 301 folder URL → canonical slug and update internal links to match **one** system.  
-- **Impact:** High | **Effort:** Medium  
-- **Why it matters:** Prevents duplicate product URLs and protects Product rich-result consistency.  
-- **Priority timing:** **this week**
+**[Priority #1] — Blog index page is noindex — entire blog hub invisible to Google**
+- Page affected: https://nutrithrive.com.au/blog/
+- Problem: `<meta name="robots" content="noindex,follow">` tells Google NOT to index the blog index page. The entire blog hub is excluded from search results.
+- Fix: Change robots meta to `index, follow` in blog/index.html
+- Impact: **High** | Effort: **Easy**
+- Why it matters: The blog index is the gateway to 70+ content pages — without it indexed, Google can't surface any of that content.
 
 ---
 
-**[Priority #3] — Repair broken / risky Open Graph image on the usage guide**
-
-- **Page affected:** `/pages/usage-guide/how-to-use-moringa.html`  
-- **Problem:** `og:image` appears malformed (concatenated path/URL in scrape metadata).  
-- **Fix:** Set `og:image` to a valid absolute WebP/JPG on your domain; re-test with a social debugger.  
-- **Impact:** High | **Effort:** Easy  
-- **Why it matters:** Broken previews reduce clicks from shares (SMS, Facebook, Slack).  
-- **Priority timing:** **this week**
+**[Priority #2] — 10 blog posts have noindex + wrong canonical — invisible to Google**
+- Page affected: 10 blog posts (moringa-powder-benefits-2026, why-i-built-nutrithrive, is-moringa-legit, moringa-benefits-every-day, how-to-use-daily-without-bad-taste, science-shade-drying, moringa-powder-vs-capsules, moringa-soap-skin-science, darjeeling-black-tea-muscatel-marvel, moringa-calm-mind)
+- Problem: All have `robots: noindex,follow` AND canonical points to a different page (moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html). These 10 posts are completely invisible to search engines.
+- Fix: For each post: (1) Change `noindex` to `index, follow`; (2) Set canonical to self-referencing URL
+- Impact: **High** | Effort: **Easy** (search-and-replace in HTML files)
+- Why it matters: 10 entire content pages are wasting their SEO potential — they exist but Google can't see them.
 
 ---
 
-**[Priority #4] — Add real meta descriptions on policy, shipping, and key labs pages**
-
-- **Page affected:** `/privacy-policy`, `/pages/shipping/shipping-returns`, `/nutrithrive_labs/`, `/nutrithrive_labs/dedup-lines.html`, `/nutrithrive_labs/time-converter.html`, `/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html`  
-- **Problem:** `<meta name="description">` missing or empty in extraction while some OG descriptions exist.  
-- **Fix:** Write 1–2 sentence descriptions (unique, non-keyword-stuffed) for each URL.  
-- **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Google often rewrites, but good descriptions still influence snippets and internal tooling.  
-- **Priority timing:** **this week**
+**[Priority #3] — Meta description truncation bug — 7+ pages have broken descriptions**
+- Page affected: /products/moringa-powder, /products/curry-leaves, /products/moringa-soap, /pages/usage-guide/how-to-use-moringa, and 3+ blog posts
+- Problem: A systematic bug truncates descriptions mid-sentence before the brand/shipping boilerplate is appended. Examples: "with antioxidants and.", "with traditional.", "Practical guidance for.", "why quality +."
+- Fix: Fix the description template/concatenation logic so sentences complete before the boilerplate. Each description should read as a complete sentence.
+- Impact: **High** | Effort: **Medium**
+- Why it matters: Broken descriptions in search results look unprofessional and reduce click-through rates.
 
 ---
 
-**[Priority #5] — Audit internal links that point to URLs outside `sitemap.xml`**
-
-- **Page affected:** `/contact` (primary offender), plus `/melbourne/` and product pages linking to extra blog slugs  
-- **Problem:** Links may 404 or send users/crawlers to unpublished/off-topic content (e.g. gym guide from a moringa contact page).  
-- **Fix:** Crawl with a link checker; remove/replace with live, on-topic URLs; ensure redirects for renamed posts.  
-- **Impact:** High | **Effort:** Medium  
-- **Why it matters:** Broken links waste crawl budget and harm trust.  
-- **Priority timing:** **this month**
+**[Priority #4] — 65+ blog posts missing from sitemap.xml**
+- Page affected: https://nutrithrive.com.au/sitemap.xml
+- Problem: Sitemap only lists 5 blog posts out of 70+. Google discovers URLs faster through sitemaps — missing entries means slower/delayed indexing.
+- Fix: Run the build-sitemap script or manually add all blog post URLs to sitemap.xml
+- Impact: **High** | Effort: **Easy** (automated script exists)
+- Why it matters: Without sitemap entries, Google relies solely on crawl discovery which is slower and less reliable for deep content.
 
 ---
 
-**[Priority #6] — Standardise privacy URL (`/privacy-policy` vs `privacy-policy.html`)**
-
-- **Page affected:** Sitewide footer/navigation  
-- **Problem:** Mixed internal linking patterns increase duplicate URL risk.  
-- **Fix:** Pick one canonical privacy URL;301 the other; update templates.  
-- **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Consolidates signals to one policy URL.  
-- **Priority timing:** **this month**
+**[Priority #5] — Address mismatch across site — Ridley Place vs 15 Europe Street**
+- Page affected: Schema on all pages, /privacy-policy, /melbourne/
+- Problem: Schema markup (Organization, LocalBusiness) says "Ridley Place, Truganina" but privacy policy body and Melbourne page say "15 Europe Street". Google may see conflicting NAP data.
+- Fix: Decide on the correct address and update all instances consistently (schema JSON-LD, privacy policy, Melbourne page, contact page)
+- Impact: **High** | Effort: **Easy**
+- Why it matters: Inconsistent NAP (Name, Address, Phone) data hurts local SEO and trust signals.
 
 ---
 
-**[Priority #7] — Replace Imgur-dependent product imagery on money pages**
-
-- **Page affected:** `/products/` (and any other pages using `i.imgur.com`)  
-- **Problem:** Third-party image hosting can break, looks less premium, and complicates performance tuning.  
-- **Fix:** Host optimised WebP/AVIF under `/assets/...` and update references.  
-- **Impact:** Medium | **Effort:** Medium  
-- **Why it matters:** More reliable UX and better control of Core Web Vitals.  
-- **Priority timing:** **this month**
+**[Priority #6] — Duplicate Google Analytics code on multiple pages**
+- Page affected: /products/black-tea, /pages/shipping/shipping-returns, /contact, /melbourne/, and others
+- Problem: Two full gtag.js implementations on the same page — one deferred (lines 7-30) and one inline (lines 33-40). This causes double-counting of pageviews and events.
+- Fix: Remove the duplicate inline gtag block, keeping only the deferred version
+- Impact: **Medium** | Effort: **Easy**
+- Why it matters: Inflated analytics data leads to bad business decisions based on inflated traffic numbers.
 
 ---
 
-**[Priority #8] — Fix Labs dedup tool canonical**
-
-- **Page affected:** `/nutrithrive_labs/dedup-lines.html`  
-- **Problem:** Canonical points to `/nutrithrive_labs/` instead of the tool.  
-- **Fix:** Self-canonicalise the tool URL or intentionally noindex the tool and remove from sitemap.  
-- **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Prevents the wrong URL representing the tool in search results.  
-- **Priority timing:** **this month**
+**[Priority #7] — Missing FAQPage schema on product pages with FAQ sections**
+- Page affected: /products/black-tea, /products/curry-leaves, /products/moringa-soap, /products/combo-pack, /pages/shipping/shipping-returns
+- Problem: These pages have visible FAQ accordion sections but no FAQPage structured data. Google can't show FAQ rich results for them.
+- Fix: Add FAQPage schema (JSON-LD) with the Q&A pairs from each page's FAQ section
+- Impact: **Medium** | Effort: **Easy**
+- Why it matters: FAQPage schema enables FAQ rich results in Google, which increase SERP visibility and CTR.
 
 ---
 
-**[Priority #9] — Tidy FAQ heading semantics**
-
-- **Page affected:** `/faq`  
-- **Problem:** Duplicate question strings as both H2 and H3.  
-- **Fix:** Use H2 for questions; keep answers in panels without extra heading duplication.  
-- **Impact:** Medium | **Effort:** Medium  
-- **Why it matters:** Cleaner accessibility + clearer topical structure for search parsers.  
-- **Priority timing:** **this month**
+**[Priority #8] — Broken internal links on products index page**
+- Page affected: https://nutrithrive.com.au/products/
+- Problem: Black tea card links to "product-black-tea.html" (old URL, 404) and moringa soap card links to "product-moringa-soap.html" (old URL, 404). Correct URLs are /products/black-tea/ and /products/moringa-soap/.
+- Fix: Update the href values in products/index.html to point to the correct URLs
+- Impact: **Medium** | Effort: **Easy**
+- Why it matters: Broken links hurt user experience and waste crawl budget on 404 pages.
 
 ---
 
-**[Priority #10] — Strengthen thin indexable pages**
-
-- **Page affected:** `/pages/newsletter/`, `/pages/shipping/shipping-returns`  
-- **Problem:** Very low word count for pages that look indexable.  
-- **Fix:** Add concise FAQs, delivery table, and newsletter value props (what emails contain, frequency, privacy).  
-- **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Thin pages struggle to rank and convert.  
-- **Priority timing:** **this quarter**
+**[Priority #9] — Wrong image alt text on combo pack cards**
+- Page affected: /products/combo-pack, /products/ (index)
+- Problem: Main product image on combo pack page uses alt="Moringa Powder by Nutri Thrive Melbourne Australia" instead of alt="Combo Pack by Nutri Thrive Melbourne Australia". Same issue on the products index page combo card.
+- Fix: Update alt text to correctly describe the combo pack image
+- Impact: **Low** | Effort: **Easy**
+- Why it matters: Image alt text helps Google Image Search understand and rank images; wrong alt misleads both users and crawlers.
 
 ---
 
-**[Priority #11] — Fix combo pack social sharing metadata**
-
-- **Page affected:** `/products/combo-pack/`  
-- **Problem:** Relative `og:image` path in head.  
-- **Fix:** Use absolute HTTPS image URL.  
-- **Impact:** Medium | **Effort:** Easy  
-- **Why it matters:** Reliable share cards increase referral traffic.  
-- **Priority timing:** **this quarter**
+**[Priority #10] — Title/H1 mismatch on black tea product page**
+- Page affected: https://nutrithrive.com.au/products/black-tea/
+- Problem: Title says "Premium Black Tea" but H1 says "Darjeeling Black Tea". Mixed signal about what the product actually is.
+- Fix: Align both to "Darjeeling Black Tea" since the product is specifically Darjeeling tea
+- Impact: **Medium** | Effort: **Easy**
+- Why it matters: Title and H1 should reinforce the same keyword for clear topical signal to Google.
 
 ---
 
-**[Priority #12] — Align products index title and H1 language**
-
-- **Page affected:** `/products/`  
-- **Problem:** Title emphasises specific SKUs; H1 is generic (“Shop Premium Wellness”).  
-- **Fix:** Make H1 match inventory (“Shop moringa, tea, curry leaves & bundles”) or adjust title to match H1 — but stay consistent.  
-- **Impact:** Low–Medium | **Effort:** Easy  
-- **Why it matters:** Reduces bounce from expectation mismatch.  
-- **Priority timing:** **this quarter**
+**[Priority #11] — Newsletter page missing H1 tag**
+- Page affected: https://nutrithrive.com.au/pages/newsletter/
+- Problem: No H1 tag on the page — only an H2 "Subscribe to Our Newsletter". Every page should have exactly one H1.
+- Fix: Change the H2 to H1 or add an H1 before it
+- Impact: **Low** | Effort: **Easy**
+- Why it matters: Missing H1 is a basic SEO deficiency — Google uses H1 as a primary relevance signal.
 
 ---
 
-**[Priority #13] — Decide indexing strategy for Labs**
-
-- **Page affected:** `/nutrithrive_labs/*`  
-- **Problem:** Utilities are indexable and may compete with core landing pages for branded queries.  
-- **Fix:** Either lean into Labs as marketing (add copy + schema) or `noindex` + remove from sitemap.  
-- **Impact:** Low–Medium | **Effort:** Easy  
-- **Why it matters:** Focuses Google on revenue URLs.  
-- **Priority timing:** **this quarter**
+**[Priority #12] — Blog post keyword cannibalisation — multiple posts targeting same intent**
+- Page affected: 3+ moringa vs matcha posts, 4+ curry leaves buying guides, 3+ Chemist Warehouse comparison posts
+- Problem: Multiple blog posts compete for the same search queries, diluting ranking potential. Google won't rank 3 pages for "moringa vs matcha Australia" — it picks one and ignores the rest.
+- Fix: (1) Consolidate similar posts into one authoritative guide; (2) 301-redirect old posts to the canonical version; (3) Or differentiate each post to target distinct long-tail variations
+- Impact: **Medium** | Effort: **Medium**
+- Why it matters: Keyword cannibalisation means you compete with yourself, splitting backlinks and engagement signals across multiple pages instead of concentrating them.
 
 ---
 
-**[Priority #14] — Add visible author module on flagship health articles**
-
-- **Page affected:** Major blog URLs (brands comparison, powder guide, superfood comparison)  
-- **Problem:** Strong content benefits from visible expertise cues.  
-- **Fix:** Author box with credentials, review policy, and “last updated” prominently on-page.  
-- **Impact:** Medium | **Effort:** Medium  
-- **Why it matters:** Supports trust for health-adjacent queries (E-E-A-T).  
-- **Priority timing:** **this quarter**
+**[Priority #13] — Usage guide page title too short and missing brand name**
+- Page affected: https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html
+- Problem: Title is only 43 chars: "How to Use Moringa Powder | Practical Guide" — missing the brand name, location, and year that other pages include. Doesn't match the H1 which is more descriptive.
+- Fix: Update title to something like "How to Use Moringa Powder Australia 2026 | Nutri Thrive Guide"
+- Impact: **Low** | Effort: **Easy**
+- Why it matters: Title tag is the primary ranking factor — short, generic titles miss ranking opportunities.
 
 ---
 
-**[Priority #15] — Normalise trailing slash policy**
+**[Priority #14] — Schema JSON-LD syntax error on darjeeling blog post**
+- Page affected: /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html
+- Problem: mainEntityOfPage @id has a trailing `}` character inside the URL string, which will break JSON-LD parsing. Google may ignore the entire schema block.
+- Fix: Remove the trailing `}` from the @id URL value in the JSON-LD
+- Impact: **Medium** | Effort: **Easy**
+- Why it matters: Invalid JSON-LD means Google can't read any of the structured data on that page, losing all rich result eligibility.
 
-- **Page affected:** Product canonicals vs directory URLs sitewide  
-- **Problem:** Mix of slash and non-slash canonical patterns.  
-- **Fix:** Choose one convention; enforce via server + canonical tags.  
-- **Impact:** Low–Medium | **Effort:** Medium  
-- **Why it matters:** Avoids duplicate URL clusters.  
-- **Priority timing:** **this quarter**
+---
+
+**[Priority #15] — Privacy policy page should be noindex**
+- Page affected: https://nutrithrive.com.au/privacy-policy.html
+- Problem: Privacy/legal pages are set to `index, follow` but they shouldn't compete for crawl budget or appear in search results. No one searches for "Nutri Thrive privacy policy" and it doesn't help the business rank.
+- Fix: Change robots meta to `noindex, follow` on the privacy policy page
+- Impact: **Low** | Effort: **Easy**
+- Why it matters: Removing low-value pages from the index conserves crawl budget for pages that actually drive business.
+
+---
+
+## Summary Table
+
+| # | Issue | Impact | Effort | Do When |
+|---|-------|--------|--------|---------|
+| 1 | Blog index noindex | High | Easy | This week |
+| 2 | 10 blog posts noindex + wrong canonical | High | Easy | This week |
+| 3 | Meta description truncation bug | High | Medium | This week |
+| 4 | 65+ blog posts missing from sitemap | High | Easy | This week |
+| 5 | Address mismatch (Ridley Place vs Europe St) | High | Easy | This week |
+| 6 | Duplicate GA code | Medium | Easy | This week |
+| 7 | Missing FAQPage schema | Medium | Easy | This month |
+| 8 | Broken internal links on /products/ | Medium | Easy | This week |
+| 9 | Wrong image alt on combo pack | Low | Easy | This month |
+| 10 | Title/H1 mismatch on black tea | Medium | Easy | This week |
+| 11 | Newsletter missing H1 | Low | Easy | This month |
+| 12 | Blog keyword cannibalisation | Medium | Medium | This quarter |
+| 13 | Usage guide title too short | Low | Easy | This month |
+| 14 | Schema syntax error on darjeeling post | Medium | Easy | This week |
+| 15 | Privacy policy should be noindex | Low | Easy | This month |

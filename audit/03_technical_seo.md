@@ -1,190 +1,293 @@
-# Phase 3 — Technical SEO audit
+# Phase 3 — Technical SEO Audit
 
-**Scope:** 24 URLs from `sitemap.xml`, scraped live via Firecrawl (see `02_raw_pages.md`).  
-**Score context:** Previous audit **72**/100 → Current (v2) **73**/100 — same live site; see `06_executive_summary.md` and `AUDIT_INSTRUCTIONS.md` (“Score history”).
-
-This file follows the Phase 3 checklist in `AUDIT_INSTRUCTIONS.md` (titles, meta descriptions, headings, images, internal linking, content quality, URLs, schema).
-
----
-
-## Title tags
-
-**Strengths**
-
-- Most commercial URLs use clear, keyword-aware titles under ~60 characters (e.g. homepage, product URLs, `/contact`, `/faq`).
-
-**Issues**
-
-1. **Title vs on-page brand mismatch risk (About)**  
-   - Page: https://nutrithrive.com.au/about  
-   - The visible hero/title text extracted as “NutriThrive” in one field differs from the strong narrative H1 (“Pure moringa…”). Ensure the `<title>` and H1 tell one coherent story (they currently can feel disconnected).
-
-2. **Emoji in H1 (blog pillar)**  
-   - Page: https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026.html  
-   - H1 begins with an emoji. Not a hard error, but it can affect how snippets render; monitor Search Console CTR.
-
-**Missing titles**
-
-- None observed on sampled pages (all returned HTTP 200 with a `metadata.title`).
-
-**Length checks (rule-of-thumb)**
-
-- **Under 30 characters:** Labs tool pages use short browser titles by design; acceptable for utilities, but they compete in SERPs with your commerce pages if indexed.
-
-**Duplicate titles**
-
-- No exact duplicate `<title>` tags detected across the 24 URLs in scope.
-- **Near-duplication risk:** several pages reuse “NutriThrive” patterns; still distinct enough in metadata.
-
-**Title vs content**
-
-- **Products index** (`/products/`): `<title>` promises “Shop Moringa, Curry Leaves & Black Tea” while H1 is “Shop Premium Wellness” — aligned thematically but not lexically; consider tightening.
+**Site:** https://nutrithrive.com.au  
+**Audit date:** 16 April 2026  
+**Scope:** All discovered URLs (59 from Firecrawl map + local repo analysis)
 
 ---
 
-## Meta descriptions
+## A. Title Tags
 
-**Missing or weak**
+### Missing Title Tags
+None found — every page has a title tag.
 
-| URL | Observation |
-|-----|-------------|
-| https://nutrithrive.com.au/privacy-policy | Extracted meta description empty; Open Graph description exists — add a real `<meta name="description">`. |
-| https://nutrithrive.com.au/pages/shipping/shipping-returns | Same pattern (OG present, meta description missing in extraction). |
-| https://nutrithrive.com.au/nutrithrive_labs/ | No meta description in extraction. |
-| https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html | No meta description in extraction. |
-| https://nutrithrive.com.au/nutrithrive_labs/time-converter.html | No meta description in extraction. |
-| https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html | Meta description empty in extraction; social descriptions present. |
+### Titles Over 60 Characters (will be cut off in Google)
 
-**Length**
+| Page | Title | Length |
+|------|-------|--------|
+| /products/moringa-powder/ | Moringa Powder – 100% Pure Moringa Oleifera \| Nutri Thrive, Melbourne | 68 |
+| /about | About NutriThrive Australia – Superfoods \| Nutri Thrive, Melbourne | 66 |
+| /nutrithrive_labs/dedup-lines.html | NutriThrive Labs \| Remove Duplicate Lines \| Nutri Thrive, Melbourne | 67 |
+| /nutrithrive_labs/sitemap-generator.html | NutriThrive Labs \| Sitemap Generator \| Nutri Thrive, Melbourne | 62 |
 
-- **Products index** meta reads like a shipping promo only (“Free shipping…”) — accurate but under-uses the chance to describe *what* shoppers will find. Consider expanding toward 120–155 characters with product categories.
+### Titles Under 30 Characters
+None found.
 
-**Duplicates**
+### Duplicate Titles
+No exact duplicates found.
 
-- No duplicate meta descriptions found across the 24 URLs.
+### Title Doesn't Match H1 / Page Content
 
----
-
-## Heading structure
-
-1. **Single H1:** All audited pages showed a single primary H1 in extraction — good.
-
-2. **FAQ accordion duplication**  
-   - https://nutrithrive.com.au/faq  
-   - The same question strings appear as both H2 and H3. For users of assistive tech and for semantic outline clarity, prefer **one** heading level for questions (typically H2) and non-heading markup for accordion panels.
-
-3. **Usage guide: heading-like text in H2 list**  
-   - https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html  
-   - Extracted H2 list includes strings prefixed with `###` (markdown artefact) — suggests heading markup or TOC generation worth cleaning in HTML.
-
-4. **Keyword intent**  
-   - Product pages: H1s are clean (“Moringa Powder”, “Dried Curry Leaves”) — strong.
+| Page | Title | H1 | Issue |
+|------|-------|----|-------|
+| /products/black-tea/ | Premium Black Tea \| Rich Aroma & Taste | Darjeeling Black Tea | Title says "Black Tea", H1 says "Darjeeling" |
+| /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html | Moringa vs Spirulina vs Matcha \| Greens Compared (48 chars) | Moringa vs spirulina vs matcha: the complete Australian comparison 2026 | Title too short, missing year/location |
+| /blog/moringa-soap-skin-science-australia-2026.html | Moringa Soap & Skin Science 2026 \| Barrier & Glow, AU | The Death of Ordinary Soap: Why Moringa-Powered Cleansing Is Rewriting Skin Science | H1 is editorial clickbait, title is different tone |
+| /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html | What Is Darjeeling Tea? Champagne of Teas Explained \| AU | Understanding Darjeeling: The Unique Muscatel Flavour Profile | H1 doesn't match title focus |
+| /blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html | Use Moringa Daily Without Bitterness \| AU Tips for 2026 | How to Use Moringa Powder Daily (Without the Bad Taste) | "Bitterness" vs "Bad Taste" |
+| /pages/usage-guide/how-to-use-moringa.html | How to Use Moringa Powder \| Practical Guide (43 chars) | How to Use Moringa Powder: The Complete Australian Guide | Title too short, missing brand |
 
 ---
 
-## Images
+## B. Meta Descriptions
 
-1. **Empty alt on map tiles**  
-   - https://nutrithrive.com.au/contact  
-   - Many Google Maps raster tiles have `alt=""`. For accessibility, hide decorative tiles from screen readers consistently or provide one textual map summary.
+### Missing Meta Descriptions
+None found — every page has a meta description.
 
-2. **External hero/product imagery**  
-   - Homepage product grid uses **`i.imgur.com`** for at least one product image.  
-   - Several blogs use `i.imgur.com` for Open Graph images. Risks: hotlink reliability, brand consistency, and page-speed (third-party). Prefer self-hosted WebP on your CDN.
+### Truncated / Broken Meta Descriptions (most critical issue)
 
-3. **Product card alt consistency**  
-   - Homepage: multiple images reuse file names with different `alt` text — good for uniqueness, but verify each `alt` matches the visible card intent (avoid confusing repeat assets).
+| Page | Description | Issue |
+|------|-------------|-------|
+| /products/moringa-powder/ | "...Naturally packed with antioxidants, vitamins. Nutri Thrive..." | Cuts off mid-sentence ("vitamins" without "& minerals") |
+| /products/curry-leaves/ | "...Natural spice with traditional. Nutri Thrive..." | Cuts off: "with traditional" is incomplete |
+| /products/moringa-soap/ | "...nourishing for skin with antioxidants and. Nutri Thrive..." | Cuts off: "antioxidants and" is incomplete |
+| /pages/usage-guide/how-to-use-moringa.html | "...Practical guidance for. Nutri Thrive..." | Cuts off: "guidance for" is incomplete |
+| /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html | "...why quality +. Nutri Thrive..." | Broken: "quality +" makes no sense |
+| /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html | "...what 'Champagne of Teas'. Nutri Thrive..." | Broken: incomplete sentence |
+| /blog/moringa-soap-skin-science-australia-2026.html | "...cold-process. Nutri Thrive..." | Broken: incomplete sentence |
 
-4. **Broken social image URL**  
-   - https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html  
-   - `og:image` appears malformed (path concatenated with another URL). This hurts sharing previews on WhatsApp, iMessage, Facebook, LinkedIn.
+This is a **systemic bug** — likely a template truncation issue. The pattern is the same: the description body cuts off mid-phrase before the brand/shipping boilerplate gets appended.
 
----
+### Over 160 Characters
+None found — descriptions stay within character limits.
 
-## Internal linking
+### Under 70 Characters
+None found.
 
-**High-risk pattern: links to URLs outside the current sitemap**
+### Duplicate Meta Descriptions
+No exact duplicates, but 15+ pages end with the same boilerplate: "Nutri Thrive, Truganina (Melbourne) — ships AU-wide."
 
-- **Contact** page links to blog posts such as `/blog/moringa-adaptogen-stress-relief-cortisol-balance` and `/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide`. If unpublished, these are **404 traps** and dilute crawl quality.  
-- **Melbourne** page links to `/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens` (not in sitemap).  
-- **Product** pages link to multiple blog slugs not listed in `sitemap.xml`.
+### Generic / Weak Descriptions
 
-**URL inconsistency (`privacy-policy` vs `privacy-policy.html`)**
-
-- Internal links use `https://nutrithrive.com.au/privacy-policy.html` from several templates while the sitemap uses `https://nutrithrive.com.au/privacy-policy`. If both resolve, pick a **single canonical** and redirect the other.
-
-**Legacy product paths**
-
-- `/products/` links include `product-black-tea.html` / `product-moringa-soap.html` style paths while sitemap uses directory URLs — verify redirects and internal link hygiene.
-
-**Orphan risk (within sitemap set)**
-
-- Labs hub pages link to `/nutrithrive_labs/converter` which is **not** in `sitemap.xml` — either add to sitemap or `noindex` if experimental.
+| Page | Description | Issue |
+|------|-------------|-------|
+| /nutrithrive_labs/ | "Free browser tools from Nutri Thrive Labs: PDF to text, images to PDF, line dedupe, time zones..." | Lists features but no benefit CTA |
+| /products/combo-pack/ | 117 chars — too short, wastes space | Should be 150-160 chars |
 
 ---
 
-## Content quality (thin pages)
+## C. Heading Structure
 
-| URL | Approx. words | Note |
-|-----|----------------|------|
-| https://nutrithrive.com.au/pages/newsletter/ | ~98 | Thin if indexed; add trust copy (frequency, sample topics, privacy reassurance). |
-| https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html | ~39 | Utility page; consider `noindex` or richer explanatory copy. |
-| https://nutrithrive.com.au/pages/shipping/shipping-returns | ~262 | Borderline; expand with clear AU delivery table + returns steps. |
+### Pages Missing H1 Tag
 
-**Strong content**
+| Page | Issue |
+|------|-------|
+| /pages/newsletter/ | No H1 — only H2 "Subscribe to Our Newsletter" |
 
-- Pillar blogs (brands comparison, powder guide, superfood comparison) show **very high** word counts and clear H2 structure — excellent for informational intent.
+### Pages with Multiple H1 Tags
+None found.
 
----
+### H1 Doesn't Reflect Main Keyword Intent
 
-## URL structure
+| Page | H1 | Issue |
+|------|----|-------|
+| /blog/ | "Blog" | Too vague — should include "NutriThrive" or "Moringa & Wellness" |
+| /melbourne/ | "Welcome to NutriThrive Melbourne." | Weak, doesn't target "buy moringa Melbourne" intent |
+| /about | "Pure moringa, crafted for real Australian life." | Brand-tone, missing "About NutriThrive" for branded search |
+| /contact | "Contact NutriThrive Australia - Moringa Powder Support" | Keyword-stuffed for a contact page |
+| /products/ | "Shop Premium Wellness" | Vague — "Moringa & Superfoods Shop" would be stronger |
 
-- No uppercase paths observed in sitemap.  
-- Blog filenames are long but descriptive (good for intent).  
-- Mix of trailing slashes (`/products/`) and canonicals without slash (`/products/moringa-powder`) — pick one convention site-wide to avoid duplicate signals.
+### Broken Heading Hierarchy
 
----
+| Page | Issue |
+|------|-------|
+| /products/ | H1 → H2 (product names as H2s) — acceptable but product names would work better as H3s under "Our products" H2 |
+| /blog/ | 82 H2s (every blog post title is an H2) — excessive, dilutes heading hierarchy |
+| /faq | 17 H2s (all FAQ questions as H2s) — FAQ questions should be structured differently |
+| /blog/moringa-brands-comparison-australia-2026.html | 23 H2s + 50 H3s — extremely heavy heading count |
 
-## Canonical tags (critical)
+### Headings That Are Too Vague or Keyword-Free
 
-**Points to wrong URL (consolidation to homepage incorrectly)**
-
-- https://nutrithrive.com.au/about → canonical is homepage  
-- https://nutrithrive.com.au/melbourne/ → canonical is homepage  
-- https://nutrithrive.com.au/pages/newsletter/ → canonical is homepage  
-- https://nutrithrive.com.au/products/ → canonical is homepage  
-
-**Product URL slug mismatch (canonical ≠ user-facing folder)**
-
-- https://nutrithrive.com.au/products/black-tea/ → canonical `.../products/premium-black-tea`  
-- https://nutrithrive.com.au/products/combo-pack/ → canonical `.../products/premium-wellness-combo-pack`  
-- https://nutrithrive.com.au/products/curry-leaves/ → canonical `.../products/dried-curry-leaves`  
-
-**Labs**
-
-- https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html → canonical is the Labs hub, not the tool page.
-
-These issues can cause **wrong URL in index**, **diluted rankings**, and **rich-result validation** headaches for Product schema.
+| Page | Heading | Issue |
+|------|---------|--------|
+| /blog/ | H2: "Find and Explore Our Blogs" | Vague, not keyword-targeted |
+| /blog/moringa-brands-comparison-australia-2026.html | Multiple emoji-prefixed H2s (🏆, 📚, 📋) | Emojis in headings may not render in SERPs; dilutes keyword signal |
 
 ---
 
-## Schema / structured data
+## D. Images
 
-**Positive**
+### Missing Alt Text
 
-- **FAQ** page exposes `FAQPage` — matches intent.  
-- **Product** pages generally indicate `Product` (some add `Review`, `FAQPage`).  
-- **Blog** content indicates `Article` / `BlogPosting`.  
-- Homepage indicates `WebSite` / `Organization` / `Product` mix — typical for SMB ecommerce.
+| Page | Missing alt count | Details |
+|------|-------------------|---------|
+| /contact | 4 | Decorative images with empty alt="" |
+| /melbourne/ | 1 | One image missing alt entirely |
 
-**Gaps / risks**
+### Alt Text That Is Keyword-Stuffed or Misleading
 
-1. **Newsletter** page shows `ContactPage` in extraction — likely incorrect type; use `WebPage` or a dedicated `SubscribeAction` pattern if you keep advanced markup.  
-2. **LocalBusiness:** Melbourne/local intent pages could use more explicit local schema if you want map pack adjacency (evaluate with your legal NAP consistency).  
-3. **Canonical conflicts** (above) can invalidate or confuse Google’s parsing of Product offers.
+| Page | Image alt | Issue |
+|------|-----------|-------|
+| /products/combo-pack/ | "Moringa Powder by Nutri Thrive Melbourne Australia" | Wrong — image is combo pack, not moringa powder |
+| /products/ (index) | "Moringa Powder by Nutri Thrive Melbourne Australia" (combo card) | Wrong — same issue |
+
+### Images Without Lazy Loading
+Homepage hero image uses `loading="eager"` which is correct. All product card images use `loading="lazy"` — good.
+
+### Decorative Images
+Contact page has 4 decorative images with `alt=""` — this is acceptable for decorative images.
 
 ---
 
-## Summary verdict (technical)
+## E. Internal Linking
 
-The site has **strong content depth** and a **sensible IA**, but **canonicalization and URL slug consistency** are the stand-out technical risks. Fixing those plus **meta descriptions on policy/Labs pages** and **cleaning risky internal links** will yield the fastest measurable gains.
+### Pages with Zero Internal Links Pointing TO Them (Orphaned)
+No truly orphaned pages found — the blog index links to all posts, and the nav links to key pages.
+
+### Homepage Linking
+Homepage links to: Products, About, Contact, Blog, FAQ, Shipping, Usage Guide, Privacy, individual product pages, Cart. This is good coverage (16 internal links).
+
+### Broken / Stale Internal Links
+
+| Page | Broken link | Expected target |
+|------|-------------|-----------------|
+| /products/ | product-black-tea.html | /products/black-tea/ |
+| /products/ | product-moringa-soap.html | /products/moringa-soap/ |
+| /products/moringa-soap/ | Logo href points to /products/ instead of / | Should link to homepage |
+| /about | Contact nav link → /pages/contact/contact.html | Should be /contact |
+| /blog/ | /pages/shop/cart | Should be /cart |
+| Multiple pages | /usage-guide/how-to-use-moringa.html | Some link to old path, some to new /pages/ path |
+
+### Blog Posts Not Linking to Related Content
+Many blog posts link to only 2-3 other blog posts. Cross-linking between related topics (e.g., moringa vs matcha post linking to moringa benefits post) is weak.
+
+### Missing Calls-to-Action
+- Blog posts should have CTAs linking to product pages (some do, some don't)
+- Newsletter page has no CTA to products
+- Usage guide has CTA to products (good)
+
+---
+
+## F. Content Quality
+
+### Pages Under 300 Words (Thin Content)
+
+| Page | Word count | Issue |
+|------|-----------|-------|
+| /nutrithrive_labs/dedup-lines.html | ~70 | Extremely thin — unlikely to rank |
+| /nutrithrive_labs/sitemap-generator.html | ~87 | Extremely thin |
+| /nutrithrive_labs/ | ~185 | Thin |
+| /contact | ~250 | Thin — mostly form |
+| /products/ | ~400 | Thin for a category page |
+
+### Potential Duplicate Content
+- Multiple blog posts on similar topics (5+ moringa vs matcha posts, 4+ curry leaves buying guides, 3+ Chemist Warehouse comparison posts)
+- 10 blog posts canonicalise to the same URL, which is technically telling Google they're all the same page
+- Duplicate fake reviews across product pages (same review text+author appears twice in carousels)
+
+### Pages with No Clear Call-to-Action
+- Newsletter page — no CTA beyond the form itself
+- Contact page — no CTA
+- Labs pages — no CTA
+
+### Blog Posts Missing E-E-A-T Signals
+- Some blog posts have author ("NutriThrive Research Team", "NutriThrive Editorial Team") — good
+- Some posts have publish dates — good
+- Missing: no author bios, no credentials, no " medically reviewed by" line
+- Some posts lack dates entirely
+
+---
+
+## G. URL Structure
+
+### URLs with Uppercase Letters
+None found — all URLs are lowercase.
+
+### URLs with Underscores Instead of Hyphens
+None found — all URLs use hyphens.
+
+### URLs Over 75 Characters
+
+| URL | Length |
+|-----|--------|
+| /blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html | ~85 chars path |
+| /blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html | ~80 chars path |
+| /blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html | ~75 chars path |
+| Multiple other blog post URLs | 70-90+ chars |
+
+Many blog post URLs are excessively long. While not a direct ranking penalty, shorter URLs are easier to share and look cleaner in SERPs.
+
+### Dynamic URLs with Parameters
+None found.
+
+### URL Inconsistencies
+- Some pages end with `/` (products, melbourne), some don't (about, faq, contact)
+- Blog posts use `.html` extension, other pages use clean paths
+- Sitemap lists `/pages/usage-guide/how-to-use-moringa.html` but canonical is `/pages/usage-guide/how-to-use-moringa` (no .html)
+- Privacy policy sitemap URL: `/privacy-policy.html` but also accessible at `/pages/legal/privacy-policy`
+
+---
+
+## H. Schema / Structured Data
+
+### Pages WITH Schema Markup
+
+| Page | Schema types |
+|------|-------------|
+| / | WebSite, Organization, LocalBusiness, Product (×7) |
+| /about | LocalBusiness |
+| /blog/ | BreadcrumbList, Blog, ItemList, LocalBusiness |
+| /products/moringa-powder/ | Product, BreadcrumbList, FAQPage, LocalBusiness |
+| /products/black-tea/ | Product, LocalBusiness |
+| /products/curry-leaves/ | Product, BreadcrumbList, LocalBusiness |
+| /products/moringa-soap/ | Product, BreadcrumbList, LocalBusiness |
+| /products/combo-pack/ | Product, BreadcrumbList, LocalBusiness |
+| /products/ | LocalBusiness, CollectionPage (ItemList) |
+| /contact | LocalBusiness |
+| /faq | FAQPage, LocalBusiness |
+| /melbourne/ | LocalBusiness |
+| /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html | BlogPosting, FAQPage, BreadcrumbList, LocalBusiness |
+| /blog/moringa-soap-skin-science-australia-2026.html | BlogPosting, BreadcrumbList, FAQPage, LocalBusiness |
+| /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html | Organization, Product (with reviews), FAQPage, Recipe, HowTo, BlogPosting, LocalBusiness |
+| /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html | Article, FAQPage, BreadcrumbList, LocalBusiness |
+
+### Pages MISSING Schema That Should Have It
+
+| Page | Missing schema | Why it matters |
+|------|---------------|----------------|
+| /products/black-tea/ | BreadcrumbList, FAQPage | Other product pages have both |
+| /products/curry-leaves/ | FAQPage | Has FAQ section on page |
+| /products/moringa-soap/ | FAQPage | Has FAQ section on page |
+| /products/combo-pack/ | FAQPage | Has FAQ section on page |
+| /pages/shipping/shipping-returns | FAQPage | Has FAQ-style content |
+| /pages/usage-guide/how-to-use-moringa.html | Article, HowTo, BreadcrumbList | og:type is "article" but no Article schema |
+| /pages/newsletter/ | Any schema | No structured data at all |
+| /nutrithrive_labs/* | Any schema | No structured data at all |
+| /about | Organization, BreadcrumbList | About page benefits from Organization schema |
+| /privacy-policy | No need for schema | OK to skip |
+
+### Schema Errors / Issues
+
+| Page | Issue |
+|------|-------|
+| /blog/darjeeling-black-tea-melbourne-muscatel-marvel.html | mainEntityOfPage has syntax error: trailing `}` inside the @id URL |
+| /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html | Product schema with fake reviews (Sarah M., James K.) — Google policy violation risk |
+| /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html | Schema is extremely heavy (88 @type instances) — excessive |
+| /products/curry-leaves/ | ShippingDetails uses unitCode "d" instead of "DAY" |
+| /products/moringa-soap/ | Missing itemCondition on Product schema; ShippingDetails unitCode "d" |
+| Multiple product pages | Duplicate/fake reviews (same review+author appears twice) — potential Google policy violation |
+
+---
+
+## Summary: Critical Technical SEO Issues
+
+1. **Blog index is noindex** — entire blog hub excluded from Google indexing
+2. **10 blog posts are noindex + wrong canonical** — completely invisible to search engines
+3. **Systemic meta description truncation bug** — 7+ pages have broken mid-sentence descriptions
+4. **Address mismatch** — Schema says "Ridley Place", privacy policy & melbourne page say "15 Europe Street"
+5. **Missing FAQPage schema** on 5 product/support pages that have FAQ content
+6. **Broken internal links** on products index (2 old .html URLs)
+7. **Wrong image alt text** on combo pack product cards
+8. **Newsletter page missing H1**
+9. **65+ blog posts not in sitemap.xml**
+10. **Brand name inconsistency**: "Nutri Thrive" (with space) vs "NutriThrive" (no space)
