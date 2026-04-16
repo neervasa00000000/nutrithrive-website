@@ -4,3 +4,6 @@ node_modules/
 *.log
 .env
 .env.local
+
+# Firecrawl crawl cache (may contain third-party keys from scraped pages, e.g. Maps URLs)
+.firecrawl/
