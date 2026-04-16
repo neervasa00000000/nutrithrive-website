@@ -171,7 +171,7 @@ def patch_index_graph(text: str) -> str:
             '        "value": "32 639 442 616"\n'
             "      },\n"
             '      "email": "nutrithrive0@gmail.com",\n'
-            '      "hasMap": "https://www.google.com/maps/search/?api=1&query=Ridley+Place%2C+Truganina+VIC+3029%2C+Australia"'
+            '      "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia"'
         )
         graph_inner = graph_inner[: lb.end(1)] + insert + graph_inner[lb.end(1) :]
 
