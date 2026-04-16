@@ -856,6 +856,22 @@ footer {
     box-shadow: var(--shadow);
 }
 
+.map-embed-caption {
+    margin: 0.65rem 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+.map-embed-caption a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.map-embed-caption a:hover {
+    color: var(--accent);
+}
+
 /* Simple Guides Container (flat, no border/background) */
 .contact-guides {
     max-width: 960px;
