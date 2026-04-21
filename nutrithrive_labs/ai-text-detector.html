@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <script src="/scripts/global/reddit-pixel.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriThrive Labs | AI Text Style Analyzer | Nutri Thrive, Melbourne</title>
+    <meta
+      name="description"
+      content="Paste blog text or HTML for stylometry plus blog signals: personal voice, headings, optional SEO checks, fluff, CTAs, and a blended score. Runs locally in your browser."
+    />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://nutrithrive.com.au/nutrithrive_labs/ai-text-detector.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nutrithrive.com.au/nutrithrive_labs/ai-text-detector.html" />
+    <meta property="og:title" content="NutriThrive Labs | AI Text Style Analyzer" />
+    <meta
+      property="og:description"
+      content="Heuristic stylometric analysis for pasted text. Educational only; not proof of authorship."
+    />
+    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp" />
+    <meta property="og:site_name" content="NutriThrive Australia" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp" />
+    <meta name="theme-color" content="#f8fafc" />
+
+    <script src="/nutrithrive_labs/ai-text-detector.js" defer></script>
+
+    <style>
+      :root {
+        color-scheme: light;
+        --bg0: #f8fafc;
+        --bg1: #eef2ff;
+        --stroke: rgba(15, 23, 42, 0.12);
+        --stroke2: rgba(15, 23, 42, 0.18);
+        --text: rgba(15, 23, 42, 0.92);
+        --muted: rgba(15, 23, 42, 0.68);
+        --muted2: rgba(15, 23, 42, 0.56);
+        --accent: #0f6b4d;
+        --warn: #b45309;
+        --bad: #b91c1c;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        --r: 16px;
+        --max: 960px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        background: radial-gradient(900px 450px at 20% 10%, rgba(91, 33, 182, 0.12), transparent 60%),
+          radial-gradient(900px 450px at 80% 20%, rgba(22, 163, 74, 0.1), transparent 60%),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(248, 250, 252, 0.78);
+        border-bottom: 1px solid var(--stroke);
+      }
+
+      .topbar-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0.85rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        object-fit: cover;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 0.98rem;
+        letter-spacing: -0.01em;
+      }
+
+      .brand span {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-top: 0.1rem;
+      }
+
+      .nav {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .chiplink {
+        padding: 0.5rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: #ffffff;
+        color: var(--text);
+        font-weight: 800;
+        font-size: 0.85rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      }
+
+      .chiplink:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: #f3f4f6;
+      }
+
+      .chiplink.primary {
+        border-color: rgba(15, 107, 77, 0.45);
+        background: rgba(15, 107, 77, 0.14);
+        color: rgba(15, 107, 77, 0.98);
+      }
+
+      .shell {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 1.25rem 1rem 3rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.65rem, 2.4vw, 2.1rem);
+        letter-spacing: -0.02em;
+      }
+
+      .lead {
+        margin: 0.6rem 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: 0.98rem;
+      }
+
+      .panel {
+        margin-top: 1rem;
+        border-radius: calc(var(--r) + 6px);
+        border: 1px solid var(--stroke);
+        background: #ffffff;
+        padding: 1.1rem;
+      }
+
+      .panel h2 {
+        margin: 0 0 0.65rem;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted2);
+      }
+
+      label[for="input-text"] {
+        display: block;
+        font-weight: 700;
+        font-size: 0.92rem;
+        margin-bottom: 0.45rem;
+      }
+
+      #input-text {
+        width: 100%;
+        min-height: 220px;
+        padding: 0.85rem;
+        border-radius: 12px;
+        border: 1px solid var(--stroke);
+        font-family: var(--sans);
+        font-size: 0.95rem;
+        line-height: 1.55;
+        resize: vertical;
+      }
+
+      #input-text:focus {
+        outline: 2px solid rgba(15, 107, 77, 0.35);
+        outline-offset: 1px;
+      }
+
+      .btnrow {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-top: 0.85rem;
+      }
+
+      .btn {
+        cursor: pointer;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: #ffffff;
+        color: rgba(15, 23, 42, 0.92);
+        padding: 0.72rem 1rem;
+        font-weight: 800;
+        font-size: 0.92rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: #f3f4f6;
+      }
+
+      .btn.primary {
+        border-color: rgba(15, 107, 77, 0.55);
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .disclaimer {
+        margin: 0.75rem 0 0;
+        font-size: 0.82rem;
+        color: var(--muted2);
+        line-height: 1.55;
+      }
+
+      #results[hidden] {
+        display: none !important;
+      }
+
+      .score-hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .score-num {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+
+      .band {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 800;
+      }
+
+      .band.human {
+        background: rgba(22, 163, 74, 0.15);
+        color: #166534;
+      }
+      .band.maybe {
+        background: rgba(180, 83, 9, 0.15);
+        color: #92400e;
+      }
+      .band.ai {
+        background: rgba(220, 38, 38, 0.12);
+        color: #b91c1c;
+      }
+      .band.ai-strong {
+        background: rgba(185, 28, 28, 0.18);
+        color: #991b1b;
+      }
+
+      table.metrics {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+
+      table.metrics th,
+      table.metrics td {
+        text-align: left;
+        padding: 0.55rem 0.5rem;
+        border-bottom: 1px solid var(--stroke);
+        vertical-align: top;
+      }
+
+      table.metrics th {
+        color: var(--muted2);
+        font-weight: 700;
+        width: 34%;
+      }
+
+      .subgrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 720px) {
+        .subgrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .suspicious-list {
+        margin: 0;
+        padding-left: 1.15rem;
+      }
+
+      .suspicious-list li {
+        margin-bottom: 0.85rem;
+      }
+
+      .suspicious-list q {
+        display: block;
+        font-style: italic;
+        color: rgba(15, 23, 42, 0.88);
+        margin-bottom: 0.25rem;
+      }
+
+      .reasons {
+        margin: 0.25rem 0 0;
+        padding-left: 1rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .kpis {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 0.5rem;
+      }
+
+      .pill {
+        font-size: 0.78rem;
+        font-weight: 800;
+        border: 1px solid var(--stroke);
+        background: rgba(15, 107, 77, 0.08);
+        padding: 0.32rem 0.55rem;
+        border-radius: 999px;
+      }
+
+      .mini {
+        font-size: 0.82rem;
+        color: var(--muted2);
+        line-height: 1.55;
+        margin: 0.5rem 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/nutrithrive_labs/">
+          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="NutriThrive logo" />
+          <span>
+            <strong>NutriThrive</strong>
+            <span>Labs</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Labs navigation">
+          <a class="chiplink" href="/nutrithrive_labs/">Labs home</a>
+          <a class="chiplink" href="/">Main site</a>
+          <a class="chiplink primary" href="/blog/">Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <h1>AI text style analyzer</h1>
+      <p class="lead">
+        Paste blog copy or article HTML for a <strong>local, heuristic</strong> report: core stylometry (entropy,
+        burstiness, TTR, transitions, hedging) plus <strong>blog-specific</strong> signals—personal voice, heading
+        structure, optional SEO keyword checks, fluff, CTAs, and more. Nothing is uploaded; analysis runs in your
+        browser.
+      </p>
+
+      <section class="panel" aria-label="Input">
+        <h2>Your text</h2>
+        <label for="input-text">Paste or type below</label>
+        <textarea
+          id="input-text"
+          placeholder="Paste body copy, or full HTML (headings &lt;h2&gt;/&lt;h3&gt; and &lt;img&gt; are detected). Plain Markdown ## / ### also counts as headings."
+          spellcheck="true"
+        ></textarea>
+        <p class="mini" style="margin: 0.65rem 0 0">
+          <strong>Optional (SEO check):</strong> target phrase for density / repetition, and comma-separated
+          “related” terms to test for overly tidy LSI coverage.
+        </p>
+        <div style="display: grid; gap: 0.55rem; margin-top: 0.5rem; max-width: 100%">
+          <label for="input-keyword" style="font-weight: 700; font-size: 0.88rem">Target keyword / phrase</label>
+          <input
+            id="input-keyword"
+            type="text"
+            placeholder='e.g. best coffee makers (leave empty to skip SEO metrics)'
+            autocomplete="off"
+            style="width: 100%; padding: 0.55rem 0.65rem; border-radius: 10px; border: 1px solid var(--stroke); font-family: var(--sans); font-size: 0.92rem"
+          />
+          <label for="input-lsi" style="font-weight: 700; font-size: 0.88rem">Related terms (LSI check, optional)</label>
+          <input
+            id="input-lsi"
+            type="text"
+            placeholder="e.g. espresso machine, drip brewer, thermal carafe"
+            autocomplete="off"
+            style="width: 100%; padding: 0.55rem 0.65rem; border-radius: 10px; border: 1px solid var(--stroke); font-family: var(--sans); font-size: 0.92rem"
+          />
+        </div>
+        <div class="btnrow">
+          <button type="button" class="btn primary" id="btn-analyze">Analyze text</button>
+          <button type="button" class="btn" id="btn-clear">Clear</button>
+        </div>
+        <p class="disclaimer">
+          This is an educational stylometry toy, not forensic proof of authorship. It uses word statistics and
+          phrase lists—<strong>not</strong> a language-model perplexity score or cloud API.
+        </p>
+      </section>
+
+      <section class="panel" id="results" hidden aria-live="polite">
+        <h2>Report</h2>
+        <div class="score-hero">
+          <span class="score-num" id="out-composite">—</span>
+          <span id="out-band" class="band human"></span>
+        </div>
+        <p class="mini" id="out-wc"></p>
+        <p class="mini" id="out-blend" style="margin-top: 0.35rem"></p>
+
+        <h2 style="margin-top: 1.25rem">Blog-specific metrics</h2>
+        <table class="metrics" id="out-blog">
+          <tbody></tbody>
+        </table>
+
+        <h2 style="margin-top: 1.25rem">Core metric breakdown</h2>
+        <table class="metrics" id="out-metrics">
+          <tbody></tbody>
+        </table>
+
+        <div class="subgrid">
+          <div>
+            <h2>Advanced signals</h2>
+            <table class="metrics" id="out-advanced">
+              <tbody></tbody>
+            </table>
+          </div>
+          <div>
+            <h2>Style fingerprints</h2>
+            <p class="mini" id="out-fingerprints"></p>
+            <div class="kpis" id="out-kpis"></div>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 1rem">Sentences flagged (heuristic)</h2>
+        <ol class="suspicious-list" id="out-suspicious"></ol>
+
+        <h2 style="margin-top: 1rem">Recommendation</h2>
+        <p class="mini" id="out-rec"></p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const $ = (id) => document.getElementById(id);
+        const ta = $("input-text");
+        const results = $("results");
+
+        function tierPerplexity(s) {
+          if (s <= 30) return "Low entropy proxy (more predictable)";
+          if (s <= 60) return "Mixed";
+          return "Higher entropy proxy (less predictable)";
+        }
+
+        function tierBurst(s) {
+          if (s <= 30) return "Low variation (uniform lengths)";
+          if (s <= 60) return "Moderate variation";
+          return "High variation (human-like burst)";
+        }
+
+        function tierTransitions(per500) {
+          if (per500 <= 2) return "0–2 per 500 words (human-like band)";
+          if (per500 <= 5) return "3–5 per 500 words (moderate)";
+          return "6+ per 500 words (strong formal-transition signal)";
+        }
+
+        function renderBlog(r) {
+          const b = r.blog;
+          const rows = [
+            [
+              "Personal voice (pronouns + anecdotes + you + opinions)",
+              b.personalVoice.total +
+                " hits (~" +
+                b.personalVoice.per500.toFixed(1) +
+                " / 500 words). " +
+                b.personalVoice.band +
+                ". Model AI-likelihood from this band: ~" +
+                b.personalVoice.aiLikelihood +
+                "%.",
+            ],
+            [
+              "Heading structure",
+              "H2: " +
+                b.blogStructure.h2 +
+                ", H3: " +
+                b.blogStructure.h3 +
+                ". Intro hook: " +
+                (b.blogStructure.introDetected ? "yes" : "no") +
+                ". Conclusion cues: " +
+                (b.blogStructure.conclusionDetected ? "yes" : "no") +
+                ". “Perfect” H3 = 2×H2: " +
+                (b.blogStructure.perfectHeadingRatio ? "yes (formulaic)" : "no") +
+                ".",
+            ],
+            [
+              "SEO keyword (optional)",
+              b.seo.active
+                ? "Density " +
+                  b.seo.density.toFixed(2) +
+                  "% (" +
+                  b.seo.exactMatches +
+                  " exact). Goldilocks 0.8–2.5%: " +
+                  (b.seo.inGoldilocksBand ? "yes" : "no") +
+                  (b.seo.lsiHitRatio != null
+                    ? ". LSI list coverage: " + Math.round(b.seo.lsiHitRatio * 100) + "%"
+                    : "") +
+                  ". Subscore: " +
+                  b.seo.seoAiSignal +
+                  "/100."
+                : "Skipped (no target keyword). Neutral fill in blog blend.",
+            ],
+            [
+              "Personality (humor / vulnerability / fillers / ? )",
+              "Richness ~" +
+                b.personality.personalityRichness +
+                ". Model AI-likelihood: " +
+                b.personality.aiLikelihood +
+                "/100.",
+            ],
+            [
+              "Blog transitions (formal vs casual)",
+              "Formal-style: " +
+                b.blogTransitions.ai +
+                ", casual-style: " +
+                b.blogTransitions.human +
+                ". Net AI tilt subscore: " +
+                b.blogTransitions.transitionBlogAi +
+                "/100.",
+            ],
+            [
+              "Fluff / padding phrases",
+              b.fluff.hits +
+                " hits (~" +
+                b.fluff.per1000.toFixed(1) +
+                " / 1000 words). Subscore: " +
+                b.fluff.fluffAi +
+                "/100.",
+            ],
+            [
+              "Generic vs specific examples",
+              "Generic cues: " +
+                b.examples.generic +
+                ", specific cues: " +
+                b.examples.specific +
+                ". Subscore: " +
+                b.examples.exampleAi +
+                "/100.",
+            ],
+            [
+              "CTA phrasing",
+              "Formulaic CTAs: " +
+                b.ctas.ai +
+                ", conversational CTAs: " +
+                b.ctas.human +
+                ". Subscore: " +
+                b.ctas.ctaAi +
+                "/100.",
+            ],
+            [
+              "Temporal markers",
+              b.temporal.markers +
+                " hits. Subscore: " +
+                b.temporal.temporalAi +
+                "/100 (higher if no time anchors).",
+            ],
+            [
+              "Images (HTML only)",
+              b.images.note +
+                " Stock hosts: " +
+                b.images.stockCount +
+                "/" +
+                b.images.imageCount +
+                ". Keyword-stuffed alts: " +
+                b.images.seoAltCount +
+                ". Subscore: " +
+                b.images.imageAi +
+                "/100.",
+            ],
+            ["Blog-layer composite (weighted subscores)", r.blogComposite + "/100"],
+          ];
+          const tb = $("out-blog").querySelector("tbody");
+          tb.innerHTML = rows
+            .map(
+              ([a, c]) =>
+                "<tr><th>" + escapeHtml(a) + "</th><td>" + escapeHtml(c) + "</td></tr>"
+            )
+            .join("");
+        }
+
+        function renderMetrics(r) {
+          const rows = [
+            ["Predictability proxy (0–100)", r.perplexityHuman + "/100 — " + tierPerplexity(r.perplexityHuman)],
+            [
+              "Burstiness score (0–100)",
+              r.burstinessHuman +
+                "/100 (σ/μ = " +
+                (r.burstCv != null ? r.burstCv.toFixed(3) : "—") +
+                ") — " +
+                tierBurst(r.burstinessHuman),
+            ],
+            ["Lexical density", r.density.toFixed(1) + "%"],
+            ["Type-token ratio (TTR)", r.ttr.toFixed(1) + "%"],
+            [
+              "Transition phrases",
+              r.transitionHits +
+                " hits (~" +
+                r.transitionPer500.toFixed(1) +
+                " per 500 words) — " +
+                tierTransitions(r.transitionPer500),
+            ],
+            ["Hedging (word share)", r.hedgingPercent.toFixed(1) + "%"],
+            ["Flesch–Kincaid grade (approx.)", r.fkGrade.toFixed(1)],
+            ["AI-flag vocabulary hits", String(r.aiVocabHits) + (r.aiVocabFound.length ? " (" + r.aiVocabFound.join(", ") + ")" : "")],
+          ];
+          const tb = $("out-metrics").querySelector("tbody");
+          tb.innerHTML = rows
+            .map(
+              ([a, b]) =>
+                "<tr><th>" +
+                escapeHtml(a) +
+                "</th><td>" +
+                escapeHtml(b) +
+                "</td></tr>"
+            )
+            .join("");
+
+          const adv = [
+            ["AI-style trigram hits", String(r.ngramHits)],
+            ["Passive-voice heuristics (rough count)", String(r.passiveHits)],
+            ["Vague attribution phrases", String(r.vagueHits)],
+            ["Contractions (informal)", String(r.contractionHits)],
+            ["Expanded formal phrases (it is / do not…)", String(r.formalHits)],
+            ["Authority / opinion markers", String(r.authorityHits)],
+            ["Meta / roadmap signals", String(r.metaHits)],
+            ["Em dashes / long dash (— or --)", String(r.punct.em)],
+            ["Semicolons", String(r.punct.semi)],
+            ["Repeated sentence starters (top)", r.starters.top.join("; ") || "—"],
+          ];
+          const tb2 = $("out-advanced").querySelector("tbody");
+          tb2.innerHTML = adv
+            .map(
+              ([a, b]) =>
+                "<tr><th>" +
+                escapeHtml(a) +
+                "</th><td>" +
+                escapeHtml(String(b)) +
+                "</td></tr>"
+            )
+            .join("");
+        }
+
+        function escapeHtml(s) {
+          return String(s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        function renderFingerprints(r) {
+          const bits = [];
+          if (r.punct.conservative) bits.push("Punctuation profile looks conservative (few em dashes / semicolons).");
+          else bits.push("Punctuation shows more stylistic variety.");
+          if (r.starters.score > 55) bits.push("First words of sentences repeat more than typical.");
+          if (r.contractionHits < 2 && r.wordCount > 80) bits.push("Few contractions relative to length.");
+          if (r.authorityHits > 0) bits.push("Some first-person or strong opinion markers present.");
+          $("out-fingerprints").textContent = bits.join(" ");
+
+          const kpis = $("out-kpis");
+          kpis.innerHTML = "";
+          const addPill = (label) => {
+            const s = document.createElement("span");
+            s.className = "pill";
+            s.textContent = label;
+            kpis.appendChild(s);
+          };
+          if (r.fkGrade >= 10 && r.fkGrade <= 12) addPill("FK grade 10–12 band (often noted for AI-like drafts)");
+          if (r.hedgingPercent > 8) addPill("High hedging density");
+          if (r.transitionPer500 > 5) addPill("Many formal transitions");
+          if (r.aiVocabHits > 2) addPill("AI-flag vocabulary");
+          if (!kpis.children.length) addPill("No strong single-flag pills");
+        }
+
+        function renderSuspicious(r) {
+          const ol = $("out-suspicious");
+          ol.innerHTML = "";
+          for (const s of r.suspicious) {
+            const li = document.createElement("li");
+            const q = document.createElement("q");
+            q.textContent = s.text.length > 280 ? s.text.slice(0, 277) + "…" : s.text;
+            li.appendChild(q);
+            const pct = document.createElement("strong");
+            pct.textContent = " ~" + s.score + "% style risk";
+            li.appendChild(pct);
+            const ul = document.createElement("ul");
+            ul.className = "reasons";
+            for (const reason of s.reasons) {
+              const rli = document.createElement("li");
+              rli.textContent = reason;
+              ul.appendChild(rli);
+            }
+            li.appendChild(ul);
+            ol.appendChild(li);
+          }
+        }
+
+        function renderRec(r) {
+          const p = r.combinedScore;
+          let t =
+            "Treat this as a rough style check. To read more human: add a personal anecdote, swap a few formal blog transitions (“Furthermore”) for casual ones (“Anyway”), tighten fluff, use specific numbers or product names in examples, and add a time anchor (this year, last week) when it fits.";
+          if (p <= 35) t = "Scores look broadly human on these crude metrics. You can still tighten clarity or rhythm without chasing the numbers.";
+          $("out-rec").textContent = t;
+        }
+
+        function run() {
+          const detector = window.NutriThriveAiTextDetector;
+          if (!detector) return;
+          const r = detector.analyze(ta.value, {
+            targetKeyword: $("input-keyword").value,
+            lsiKeywords: $("input-lsi").value,
+          });
+          if (!r) {
+            alert("Please paste some text first.");
+            return;
+          }
+          results.hidden = false;
+          $("out-composite").textContent = r.combinedScore + "%";
+          const b = $("out-band");
+          b.className = "band " + r.band.className.replace("band ", "").trim();
+          b.textContent = r.band.label;
+          $("out-wc").textContent =
+            r.wordCount +
+            " words · " +
+            r.sentenceCount +
+            " sentences · " +
+            r.paragraphCount +
+            " paragraphs" +
+            (r.hadHtmlInput ? " · HTML/Markdown headings detected" : "");
+          $("out-blend").textContent =
+            "Blend: core style " +
+            r.composite +
+            "% + blog heuristics " +
+            r.blogComposite +
+            "% → combined headline (55% blog / 45% core).";
+
+          renderBlog(r);
+          renderMetrics(r);
+          renderFingerprints(r);
+          renderSuspicious(r);
+          renderRec(r);
+        }
+
+        $("btn-analyze").addEventListener("click", run);
+        $("btn-clear").addEventListener("click", () => {
+          ta.value = "";
+          $("input-keyword").value = "";
+          $("input-lsi").value = "";
+          results.hidden = true;
+        });
+      })();
+    </script>
+  </body>
+</html>
