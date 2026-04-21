@@ -370,6 +370,49 @@
         line-height: 1.55;
         margin: 0.5rem 0 0;
       }
+
+      .issue-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+
+      .issue-card {
+        border: 1px solid var(--stroke);
+        border-radius: 12px;
+        padding: 0.75rem 0.85rem;
+        background: rgba(248, 250, 252, 0.9);
+      }
+
+      .issue-card .cat {
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted2);
+        margin-bottom: 0.35rem;
+      }
+
+      .issue-card .flag {
+        font-size: 0.9rem;
+        line-height: 1.55;
+        margin: 0 0 0.45rem;
+      }
+
+      .issue-card .fix-label {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: rgba(15, 107, 77, 0.95);
+        margin-bottom: 0.2rem;
+      }
+
+      .issue-card .fix {
+        font-size: 0.86rem;
+        line-height: 1.55;
+        color: var(--muted);
+        margin: 0;
+      }
     </style>
   </head>
   <body>
@@ -394,9 +437,9 @@
       <h1>AI text style analyzer</h1>
       <p class="lead">
         Paste blog copy or article HTML for a <strong>local, heuristic</strong> report: core stylometry (entropy,
-        burstiness, TTR, transitions, hedging) plus <strong>blog-specific</strong> signals—personal voice, heading
-        structure, optional SEO keyword checks, fluff, CTAs, and more. Nothing is uploaded; analysis runs in your
-        browser.
+        burstiness, TTR, transitions, hedging), <strong>forensic</strong> thresholds (em-dash density, passive %,
+        parallel “twin” phrasing, trigram echo intro→outro, H2 templates), plus blog SEO/voice layers. Nothing is
+        uploaded; analysis runs in your browser.
       </p>
 
       <section class="panel" aria-label="Input">
@@ -447,6 +490,33 @@
         </div>
         <p class="mini" id="out-wc"></p>
         <p class="mini" id="out-blend" style="margin-top: 0.35rem"></p>
+
+        <h2 style="margin-top: 1.25rem">Flagged issues and human fixes</h2>
+        <p class="mini">
+          Stricter checklist: AI verbs, inflated adjectives, filler nouns, passive openings, predictable
+          transitions, flat 15–20 word rhythm, formulaic intro/outro, AU EEAT gaps, and hype tone. Each item
+          includes a rewrite direction (not auto-edited text).
+        </p>
+        <div class="issue-list" id="out-issues"></div>
+
+        <h2 style="margin-top: 1.25rem">Forensic checklist (strict thresholds)</h2>
+        <p class="mini">
+          Tick-style audit: em-dash density, “The” clustering in a paragraph, parallel twin adjectives, passive
+          share, cheerleading, H2 “X for Y” symmetry, consecutive starters, trigram echo, softeners, clichés. If more
+          than ~3 rows fire, treat the draft as high-risk for AI-shaped prose.
+        </p>
+        <table class="metrics" id="out-forensic">
+          <thead>
+            <tr>
+              <th scope="col">Check</th>
+              <th scope="col">Threshold</th>
+              <th scope="col">Status</th>
+              <th scope="col">Reading</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="mini" id="out-forensic-summary"></p>
 
         <h2 style="margin-top: 1.25rem">Blog-specific metrics</h2>
         <table class="metrics" id="out-blog">
@@ -499,9 +569,10 @@
         }
 
         function tierTransitions(per500) {
-          if (per500 <= 2) return "0–2 per 500 words (human-like band)";
-          if (per500 <= 5) return "3–5 per 500 words (moderate)";
-          return "6+ per 500 words (strong formal-transition signal)";
+          if (per500 <= 1) return "≤1 per 500 words (stricter human-like band)";
+          if (per500 <= 3) return "1–3 per 500 words (elevated)";
+          if (per500 <= 5) return "3–5 per 500 words (strong)";
+          return "5+ per 500 words (very high formal-transition signal)";
         }
 
         function renderBlog(r) {
@@ -617,6 +688,13 @@
                 "/100.",
             ],
             ["Blog-layer composite (weighted subscores)", r.blogComposite + "/100"],
+            ["Strict checklist composite", (r.strictComposite != null ? r.strictComposite : "—") + "/100"],
+            [
+              "Sentences in 15–20 word “flat” band",
+              r.flatMidSentenceFraction != null
+                ? Math.round(r.flatMidSentenceFraction * 100) + "% of sentences"
+                : "—",
+            ],
           ];
           const tb = $("out-blog").querySelector("tbody");
           tb.innerHTML = rows
@@ -631,11 +709,13 @@
           const rows = [
             ["Predictability proxy (0–100)", r.perplexityHuman + "/100 — " + tierPerplexity(r.perplexityHuman)],
             [
-              "Burstiness score (0–100)",
+              "Burstiness score (0–100, stricter CV)",
               r.burstinessHuman +
                 "/100 (σ/μ = " +
                 (r.burstCv != null ? r.burstCv.toFixed(3) : "—") +
-                ") — " +
+                "; 15–20w band " +
+                (r.flatMidSentenceFraction != null ? Math.round(r.flatMidSentenceFraction * 100) : "—") +
+                "%) — " +
                 tierBurst(r.burstinessHuman),
             ],
             ["Lexical density", r.density.toFixed(1) + "%"],
@@ -665,6 +745,7 @@
             .join("");
 
           const adv = [
+            ["Strict checklist hits (listed above)", String((r.strictIssues || []).length)],
             ["AI-style trigram hits", String(r.ngramHits)],
             ["Passive-voice heuristics (rough count)", String(r.passiveHits)],
             ["Vague attribution phrases", String(r.vagueHits)],
@@ -695,6 +776,69 @@
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;");
+        }
+
+        function renderForensic(r) {
+          const tb = $("out-forensic").querySelector("tbody");
+          tb.innerHTML = "";
+          const rows = r.forensicChecklist || [];
+          const sum = $("out-forensic-summary");
+          if (!rows.length) {
+            tb.innerHTML =
+              '<tr><td colspan="4" class="mini">No forensic table (analyzer version mismatch).</td></tr>';
+            sum.textContent = "";
+            return;
+          }
+          let fireCount = 0;
+          for (const row of rows) {
+            if (row.triggered) fireCount++;
+            const status = row.triggered ? "FAIL" : "OK";
+            const tr = document.createElement("tr");
+            tr.innerHTML =
+              "<th>" +
+              escapeHtml(row.label) +
+              "</th><td>" +
+              escapeHtml(row.threshold) +
+              "</td><td><strong>" +
+              escapeHtml(status) +
+              "</strong></td><td>" +
+              escapeHtml(String(row.detail || "—")) +
+              "</td>";
+            tb.appendChild(tr);
+          }
+          sum.textContent =
+            "Rows triggered: " +
+            fireCount +
+            " / " +
+            rows.length +
+            (fireCount > 3 ? " — several forensic checks failed; treat as high AI-shape risk." : "");
+        }
+
+        function renderStrictIssues(r) {
+          const el = $("out-issues");
+          el.innerHTML = "";
+          const list = r.strictIssues || [];
+          if (!list.length) {
+            el.innerHTML =
+              '<p class="mini">No strict checklist hits in this sample—or text is too short for document-level rules.</p>';
+            return;
+          }
+          for (const iss of list) {
+            const art = document.createElement("article");
+            art.className = "issue-card";
+            art.innerHTML =
+              '<div class="cat">' +
+              escapeHtml(iss.category) +
+              "</div>" +
+              '<p class="flag"><strong>Flagged:</strong> ' +
+              escapeHtml(iss.flagged) +
+              "</p>" +
+              '<div class="fix-label">Human fix</div>' +
+              '<p class="fix">' +
+              escapeHtml(iss.humanFix) +
+              "</p>";
+            el.appendChild(art);
+          }
         }
 
         function renderFingerprints(r) {
@@ -777,12 +921,16 @@
             " paragraphs" +
             (r.hadHtmlInput ? " · HTML/Markdown headings detected" : "");
           $("out-blend").textContent =
-            "Blend: core style " +
+            "Blend: core " +
             r.composite +
-            "% + blog heuristics " +
+            "% + blog " +
             r.blogComposite +
-            "% → combined headline (55% blog / 45% core).";
+            "% + strict / forensic " +
+            (r.strictComposite != null ? r.strictComposite : "—") +
+            "% → headline (26% / 34% / 40%).";
 
+          renderStrictIssues(r);
+          renderForensic(r);
           renderBlog(r);
           renderMetrics(r);
           renderFingerprints(r);
