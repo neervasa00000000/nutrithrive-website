@@ -33,28 +33,27 @@
 
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp" />
-    <meta name="theme-color" content="#f8fafc" />
+    <meta name="theme-color" content="#f3f4f6" />
 
     <script src="/nutrithrive_labs/ai-text-detector.js" defer></script>
 
     <style>
       :root {
         color-scheme: light;
-        --bg0: #f8fafc;
-        --bg1: #eef2ff;
-        --stroke: rgba(15, 23, 42, 0.12);
-        --stroke2: rgba(15, 23, 42, 0.18);
+        --bg: #f3f4f6;
+        --surface: #ffffff;
+        --stroke: rgba(15, 23, 42, 0.1);
+        --stroke2: rgba(15, 23, 42, 0.16);
         --text: rgba(15, 23, 42, 0.92);
-        --muted: rgba(15, 23, 42, 0.68);
-        --muted2: rgba(15, 23, 42, 0.56);
+        --muted: rgba(15, 23, 42, 0.65);
+        --muted2: rgba(15, 23, 42, 0.5);
         --accent: #0f6b4d;
-        --warn: #b45309;
-        --bad: #b91c1c;
+        --accent-soft: rgba(15, 107, 77, 0.1);
         --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
           "Courier New", monospace;
         --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        --r: 16px;
-        --max: 960px;
+        --r: 12px;
+        --max: 720px;
       }
 
       * {
@@ -64,10 +63,9 @@
       body {
         margin: 0;
         font-family: var(--sans);
-        background: radial-gradient(900px 450px at 20% 10%, rgba(91, 33, 182, 0.12), transparent 60%),
-          radial-gradient(900px 450px at 80% 20%, rgba(22, 163, 74, 0.1), transparent 60%),
-          linear-gradient(180deg, var(--bg0), var(--bg1));
+        background: var(--bg);
         color: var(--text);
+        line-height: 1.5;
       }
 
       a {
@@ -79,15 +77,14 @@
         position: sticky;
         top: 0;
         z-index: 20;
-        backdrop-filter: blur(12px);
-        background: rgba(248, 250, 252, 0.78);
+        background: var(--surface);
         border-bottom: 1px solid var(--stroke);
       }
 
       .topbar-inner {
-        max-width: var(--max);
+        max-width: calc(var(--max) + 2rem);
         margin: 0 auto;
-        padding: 0.85rem 1rem;
+        padding: 0.75rem 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -98,217 +95,447 @@
       .brand {
         display: flex;
         align-items: center;
-        gap: 0.8rem;
+        gap: 0.65rem;
       }
 
       .mark {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        border: 1px solid rgba(15, 23, 42, 0.12);
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        border: 1px solid var(--stroke);
         object-fit: cover;
       }
 
       .brand strong {
         display: block;
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         letter-spacing: -0.01em;
       }
 
       .brand span {
         display: block;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         color: var(--muted);
-        margin-top: 0.1rem;
+        margin-top: 0.05rem;
       }
 
       .nav {
         display: flex;
-        gap: 0.6rem;
+        gap: 0.5rem;
         flex-wrap: wrap;
       }
 
       .chiplink {
-        padding: 0.5rem 0.75rem;
-        border-radius: 999px;
+        padding: 0.45rem 0.7rem;
+        border-radius: 8px;
         border: 1px solid var(--stroke);
-        background: #ffffff;
+        background: var(--surface);
         color: var(--text);
-        font-weight: 800;
-        font-size: 0.85rem;
-        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+        font-weight: 600;
+        font-size: 0.8125rem;
       }
 
       .chiplink:hover {
-        transform: translateY(-1px);
         border-color: var(--stroke2);
-        background: #f3f4f6;
+        background: #f9fafb;
       }
 
       .chiplink.primary {
-        border-color: rgba(15, 107, 77, 0.45);
-        background: rgba(15, 107, 77, 0.14);
-        color: rgba(15, 107, 77, 0.98);
+        border-color: rgba(15, 107, 77, 0.35);
+        background: var(--accent-soft);
+        color: rgba(15, 107, 77, 0.95);
       }
 
       .shell {
-        max-width: var(--max);
+        max-width: calc(var(--max) + 2rem);
         margin: 0 auto;
-        padding: 1.25rem 1rem 3rem;
+        padding: 1.5rem 1rem 2.5rem;
+      }
+
+      .page-intro {
+        margin-bottom: 1.25rem;
       }
 
       h1 {
         margin: 0;
-        font-size: clamp(1.65rem, 2.4vw, 2.1rem);
+        font-size: clamp(1.5rem, 4vw, 1.75rem);
+        font-weight: 700;
         letter-spacing: -0.02em;
+        line-height: 1.2;
       }
 
       .lead {
-        margin: 0.6rem 0 0;
+        margin: 0.5rem 0 0;
         color: var(--muted);
-        line-height: 1.65;
-        font-size: 0.98rem;
+        font-size: 0.9375rem;
+        line-height: 1.55;
+        max-width: 42em;
       }
 
       .panel {
         margin-top: 1rem;
-        border-radius: calc(var(--r) + 6px);
+        border-radius: var(--r);
         border: 1px solid var(--stroke);
-        background: #ffffff;
-        padding: 1.1rem;
+        background: var(--surface);
+        padding: 1.25rem;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
       }
 
-      .panel h2 {
-        margin: 0 0 0.65rem;
-        font-size: 0.82rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--muted2);
+      .panel:first-of-type {
+        margin-top: 0;
       }
 
-      label[for="input-text"] {
+      .panel-title {
+        margin: 0 0 1rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      .field-label {
         display: block;
-        font-weight: 700;
-        font-size: 0.92rem;
-        margin-bottom: 0.45rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-bottom: 0.35rem;
+        color: var(--text);
       }
 
       #input-text {
         width: 100%;
-        min-height: 220px;
-        padding: 0.85rem;
-        border-radius: 12px;
+        min-height: 200px;
+        padding: 0.75rem;
+        border-radius: var(--r);
         border: 1px solid var(--stroke);
         font-family: var(--sans);
-        font-size: 0.95rem;
+        font-size: 0.9375rem;
         line-height: 1.55;
         resize: vertical;
+        background: #fafafa;
       }
 
       #input-text:focus {
-        outline: 2px solid rgba(15, 107, 77, 0.35);
-        outline-offset: 1px;
+        outline: 2px solid rgba(15, 107, 77, 0.3);
+        outline-offset: 0;
+        border-color: rgba(15, 107, 77, 0.35);
+        background: var(--surface);
+      }
+
+      .field-input {
+        width: 100%;
+        padding: 0.5rem 0.65rem;
+        border-radius: var(--r);
+        border: 1px solid var(--stroke);
+        font-family: var(--sans);
+        font-size: 0.875rem;
+        background: var(--surface);
+      }
+
+      .field-input:focus {
+        outline: 2px solid rgba(15, 107, 77, 0.25);
+        outline-offset: 0;
+        border-color: rgba(15, 107, 77, 0.3);
+      }
+
+      .field-stack {
+        display: grid;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+      }
+
+      .optional-block {
+        margin-top: 1rem;
+        border: 1px solid var(--stroke);
+        border-radius: var(--r);
+        background: #fafafa;
+        overflow: hidden;
+      }
+
+      .optional-block > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.65rem 0.85rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: var(--text);
+        user-select: none;
+      }
+
+      .optional-block > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .optional-block > summary::after {
+        content: "";
+        float: right;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-top: 0.35rem;
+        border-right: 2px solid var(--muted2);
+        border-bottom: 2px solid var(--muted2);
+        transform: rotate(45deg);
+        transition: transform 0.15s ease;
+      }
+
+      .optional-block[open] > summary::after {
+        transform: rotate(-135deg);
+        margin-top: 0.5rem;
+      }
+
+      .optional-block > summary:hover {
+        background: #f3f4f6;
+      }
+
+      .optional-inner {
+        padding: 0 0.85rem 0.85rem;
+        border-top: 1px solid var(--stroke);
+      }
+
+      .optional-hint {
+        margin: 0.65rem 0 0;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        line-height: 1.5;
       }
 
       .btnrow {
         display: flex;
-        gap: 0.6rem;
+        gap: 0.5rem;
         flex-wrap: wrap;
-        margin-top: 0.85rem;
+        margin-top: 1rem;
+        align-items: center;
       }
 
       .btn {
         cursor: pointer;
-        border-radius: 14px;
+        border-radius: var(--r);
         border: 1px solid var(--stroke);
-        background: #ffffff;
-        color: rgba(15, 23, 42, 0.92);
-        padding: 0.72rem 1rem;
-        font-weight: 800;
-        font-size: 0.92rem;
-        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+        background: var(--surface);
+        color: var(--text);
+        padding: 0.65rem 1rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        min-height: 44px;
       }
 
       .btn:hover {
-        transform: translateY(-1px);
+        background: #f9fafb;
         border-color: var(--stroke2);
-        background: #f3f4f6;
+      }
+
+      .btn:focus-visible {
+        outline: 2px solid rgba(15, 107, 77, 0.45);
+        outline-offset: 2px;
       }
 
       .btn.primary {
-        border-color: rgba(15, 107, 77, 0.55);
+        border-color: transparent;
         background: var(--accent);
-        color: #ffffff;
+        color: #fff;
+      }
+
+      .btn.primary:hover {
+        filter: brightness(1.05);
+        border-color: transparent;
+      }
+
+      @media (max-width: 480px) {
+        .btn.primary {
+          flex: 1 1 100%;
+          justify-content: center;
+        }
       }
 
       .disclaimer {
-        margin: 0.75rem 0 0;
-        font-size: 0.82rem;
+        margin: 1rem 0 0;
+        font-size: 0.8125rem;
         color: var(--muted2);
-        line-height: 1.55;
+        line-height: 1.5;
       }
 
       #results[hidden] {
         display: none !important;
       }
 
+      .report-top {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--stroke);
+      }
+
       .score-hero {
         display: flex;
         flex-wrap: wrap;
-        align-items: baseline;
-        gap: 0.75rem 1.25rem;
-        margin-bottom: 1rem;
+        align-items: center;
+        gap: 0.65rem 1rem;
+        margin-bottom: 0.5rem;
       }
 
       .score-num {
-        font-size: clamp(2.2rem, 4vw, 3rem);
-        font-weight: 900;
+        font-size: clamp(2rem, 6vw, 2.5rem);
+        font-weight: 800;
         letter-spacing: -0.03em;
         line-height: 1;
+        color: var(--text);
       }
 
       .band {
         display: inline-block;
-        padding: 0.35rem 0.75rem;
+        padding: 0.3rem 0.65rem;
         border-radius: 999px;
-        font-size: 0.85rem;
-        font-weight: 800;
+        font-size: 0.8125rem;
+        font-weight: 600;
       }
 
       .band.human {
-        background: rgba(22, 163, 74, 0.15);
+        background: rgba(22, 163, 74, 0.12);
         color: #166534;
       }
       .band.maybe {
-        background: rgba(180, 83, 9, 0.15);
+        background: rgba(180, 83, 9, 0.12);
         color: #92400e;
       }
       .band.ai {
-        background: rgba(220, 38, 38, 0.12);
+        background: rgba(220, 38, 38, 0.1);
         color: #b91c1c;
       }
       .band.ai-strong {
-        background: rgba(185, 28, 28, 0.18);
+        background: rgba(185, 28, 28, 0.14);
         color: #991b1b;
+      }
+
+      .stat-line {
+        margin: 0;
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+
+      .summary-box {
+        margin-top: 0;
+        padding: 0.85rem 1rem;
+        border-radius: var(--r);
+        background: var(--accent-soft);
+        border: 1px solid rgba(15, 107, 77, 0.15);
+      }
+
+      .summary-box h3 {
+        margin: 0 0 0.35rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: rgba(15, 107, 77, 0.85);
+      }
+
+      .summary-box p {
+        margin: 0;
+        font-size: 0.9375rem;
+        line-height: 1.55;
+        color: var(--text);
+      }
+
+      .section-heading {
+        margin: 1.25rem 0 0.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .section-heading:first-of-type {
+        margin-top: 0;
+      }
+
+      .section-hint {
+        margin: 0 0 0.65rem;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .details-metrics {
+        margin-top: 1rem;
+        border: 1px solid var(--stroke);
+        border-radius: var(--r);
+        background: #fafafa;
+      }
+
+      .details-metrics > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 0.75rem 1rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        user-select: none;
+      }
+
+      .details-metrics > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .details-metrics > summary::after {
+        content: "";
+        float: right;
+        width: 0.45rem;
+        height: 0.45rem;
+        margin-top: 0.35rem;
+        border-right: 2px solid var(--muted2);
+        border-bottom: 2px solid var(--muted2);
+        transform: rotate(45deg);
+        transition: transform 0.15s ease;
+      }
+
+      .details-metrics[open] > summary::after {
+        transform: rotate(-135deg);
+        margin-top: 0.45rem;
+      }
+
+      .details-metrics > summary:hover {
+        background: #f3f4f6;
+      }
+
+      .details-body {
+        padding: 0 1rem 1rem;
+        border-top: 1px solid var(--stroke);
+      }
+
+      .details-body .mini:first-child {
+        margin-top: 0.75rem;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0.5rem 0 0;
+        border-radius: var(--r);
+        border: 1px solid var(--stroke);
+        background: var(--surface);
       }
 
       table.metrics {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.9rem;
+        font-size: 0.8125rem;
+      }
+
+      .table-wrap.forensic-scroll table.metrics {
+        min-width: 520px;
       }
 
       table.metrics th,
       table.metrics td {
         text-align: left;
-        padding: 0.55rem 0.5rem;
+        padding: 0.5rem 0.65rem;
         border-bottom: 1px solid var(--stroke);
         vertical-align: top;
       }
 
+      table.metrics tr:last-child th,
+      table.metrics tr:last-child td {
+        border-bottom: none;
+      }
+
       table.metrics th {
-        color: var(--muted2);
-        font-weight: 700;
+        color: var(--muted);
+        font-weight: 600;
         width: 34%;
       }
 
@@ -319,97 +546,108 @@
         margin-top: 1rem;
       }
 
-      @media (max-width: 720px) {
+      @media (max-width: 640px) {
         .subgrid {
           grid-template-columns: 1fr;
         }
       }
 
+      .subgrid h2,
+      .details-body h2 {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted2);
+      }
+
       .suspicious-list {
-        margin: 0;
-        padding-left: 1.15rem;
+        margin: 0.5rem 0 0;
+        padding-left: 1.1rem;
       }
 
       .suspicious-list li {
-        margin-bottom: 0.85rem;
+        margin-bottom: 0.75rem;
       }
 
       .suspicious-list q {
         display: block;
         font-style: italic;
         color: rgba(15, 23, 42, 0.88);
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.2rem;
       }
 
       .reasons {
-        margin: 0.25rem 0 0;
+        margin: 0.2rem 0 0;
         padding-left: 1rem;
-        font-size: 0.85rem;
+        font-size: 0.8125rem;
         color: var(--muted);
       }
 
       .kpis {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.45rem;
+        gap: 0.35rem;
         margin-top: 0.5rem;
       }
 
       .pill {
-        font-size: 0.78rem;
-        font-weight: 800;
+        font-size: 0.75rem;
+        font-weight: 600;
         border: 1px solid var(--stroke);
-        background: rgba(15, 107, 77, 0.08);
-        padding: 0.32rem 0.55rem;
+        background: var(--accent-soft);
+        padding: 0.25rem 0.5rem;
         border-radius: 999px;
+        color: var(--text);
       }
 
       .mini {
-        font-size: 0.82rem;
-        color: var(--muted2);
-        line-height: 1.55;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        line-height: 1.5;
         margin: 0.5rem 0 0;
       }
 
       .issue-list {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
-        margin-top: 0.5rem;
+        gap: 0.65rem;
+        margin-top: 0.35rem;
       }
 
       .issue-card {
         border: 1px solid var(--stroke);
-        border-radius: 12px;
-        padding: 0.75rem 0.85rem;
-        background: rgba(248, 250, 252, 0.9);
+        border-radius: var(--r);
+        padding: 0.75rem;
+        background: #fafafa;
       }
 
       .issue-card .cat {
-        font-size: 0.72rem;
-        font-weight: 800;
+        font-size: 0.6875rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.05em;
         color: var(--muted2);
-        margin-bottom: 0.35rem;
+        margin-bottom: 0.3rem;
       }
 
       .issue-card .flag {
-        font-size: 0.9rem;
-        line-height: 1.55;
-        margin: 0 0 0.45rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin: 0 0 0.4rem;
       }
 
       .issue-card .fix-label {
-        font-size: 0.72rem;
-        font-weight: 800;
-        color: rgba(15, 107, 77, 0.95);
-        margin-bottom: 0.2rem;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        color: rgba(15, 107, 77, 0.9);
+        margin-bottom: 0.15rem;
       }
 
       .issue-card .fix {
-        font-size: 0.86rem;
-        line-height: 1.55;
+        font-size: 0.8125rem;
+        line-height: 1.5;
         color: var(--muted);
         margin: 0;
       }
@@ -434,119 +672,141 @@
     </header>
 
     <main class="shell">
-      <h1>AI text style analyzer</h1>
-      <p class="lead">
-        Paste blog copy or article HTML for a <strong>local, heuristic</strong> report: core stylometry (entropy,
-        burstiness, TTR, transitions, hedging), <strong>forensic</strong> thresholds (em-dash density, passive %,
-        parallel “twin” phrasing, trigram echo intro→outro, H2 templates), plus blog SEO/voice layers. Nothing is
-        uploaded; analysis runs in your browser.
-      </p>
+      <div class="page-intro">
+        <h1>AI writing style check</h1>
+        <p class="lead">
+          Paste your draft here. You get a quick, <strong>on-device</strong> read on how “AI-shaped” the prose
+          looks—no upload, no API. For a deeper dive, open <strong>All metrics</strong> below the score.
+        </p>
+      </div>
 
       <section class="panel" aria-label="Input">
-        <h2>Your text</h2>
-        <label for="input-text">Paste or type below</label>
+        <h2 class="panel-title">Your text</h2>
+        <label class="field-label" for="input-text">Paste or type</label>
         <textarea
           id="input-text"
-          placeholder="Paste body copy, or full HTML (headings &lt;h2&gt;/&lt;h3&gt; and &lt;img&gt; are detected). Plain Markdown ## / ### also counts as headings."
+          placeholder="Blog copy, HTML, or Markdown. Headings (H2/H3 or ##/###) and images are picked up when present."
           spellcheck="true"
         ></textarea>
-        <p class="mini" style="margin: 0.65rem 0 0">
-          <strong>Optional (SEO check):</strong> target phrase for density / repetition, and comma-separated
-          “related” terms to test for overly tidy LSI coverage.
-        </p>
-        <div style="display: grid; gap: 0.55rem; margin-top: 0.5rem; max-width: 100%">
-          <label for="input-keyword" style="font-weight: 700; font-size: 0.88rem">Target keyword / phrase</label>
-          <input
-            id="input-keyword"
-            type="text"
-            placeholder='e.g. best coffee makers (leave empty to skip SEO metrics)'
-            autocomplete="off"
-            style="width: 100%; padding: 0.55rem 0.65rem; border-radius: 10px; border: 1px solid var(--stroke); font-family: var(--sans); font-size: 0.92rem"
-          />
-          <label for="input-lsi" style="font-weight: 700; font-size: 0.88rem">Related terms (LSI check, optional)</label>
-          <input
-            id="input-lsi"
-            type="text"
-            placeholder="e.g. espresso machine, drip brewer, thermal carafe"
-            autocomplete="off"
-            style="width: 100%; padding: 0.55rem 0.65rem; border-radius: 10px; border: 1px solid var(--stroke); font-family: var(--sans); font-size: 0.92rem"
-          />
-        </div>
+
+        <details class="optional-block">
+          <summary>Optional: keyword &amp; SEO checks</summary>
+          <div class="optional-inner">
+            <p class="optional-hint">
+              Add a target phrase to see density, plus related terms (comma-separated) for a simple “LSI tidy”
+              signal. Leave everything blank to skip this layer.
+            </p>
+            <div class="field-stack">
+              <label class="field-label" for="input-keyword">Target keyword / phrase</label>
+              <input
+                id="input-keyword"
+                class="field-input"
+                type="text"
+                placeholder="e.g. moringa powder benefits (optional)"
+                autocomplete="off"
+              />
+              <label class="field-label" for="input-lsi">Related terms (optional)</label>
+              <input
+                id="input-lsi"
+                class="field-input"
+                type="text"
+                placeholder="e.g. antioxidants, leaf powder, smoothies"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </details>
+
         <div class="btnrow">
-          <button type="button" class="btn primary" id="btn-analyze">Analyze text</button>
+          <button type="button" class="btn primary" id="btn-analyze">Analyze</button>
           <button type="button" class="btn" id="btn-clear">Clear</button>
         </div>
         <p class="disclaimer">
-          This is an educational stylometry toy, not forensic proof of authorship. It uses word statistics and
-          phrase lists—<strong>not</strong> a language-model perplexity score or cloud API.
+          Educational tool only—not proof of who wrote the text. Uses word stats and patterns, not a cloud language
+          model.
         </p>
       </section>
 
       <section class="panel" id="results" hidden aria-live="polite">
-        <h2>Report</h2>
-        <div class="score-hero">
-          <span class="score-num" id="out-composite">—</span>
-          <span id="out-band" class="band human"></span>
-        </div>
-        <p class="mini" id="out-wc"></p>
-        <p class="mini" id="out-blend" style="margin-top: 0.35rem"></p>
+        <h2 class="panel-title">Report</h2>
 
-        <h2 style="margin-top: 1.25rem">Flagged issues and human fixes</h2>
-        <p class="mini">
-          Stricter checklist: AI verbs, inflated adjectives, filler nouns, passive openings, predictable
-          transitions, flat 15–20 word rhythm, formulaic intro/outro, AU EEAT gaps, and hype tone. Each item
-          includes a rewrite direction (not auto-edited text).
+        <div class="report-top">
+          <div class="score-hero">
+            <span class="score-num" id="out-composite">—</span>
+            <span id="out-band" class="band human"></span>
+          </div>
+          <p class="stat-line" id="out-wc"></p>
+        </div>
+
+        <div class="summary-box">
+          <h3>What to do next</h3>
+          <p id="out-rec"></p>
+        </div>
+
+        <h3 class="section-heading">Patterns to fix</h3>
+        <p class="section-hint">
+          Each card flags a pattern and suggests a human rewrite—you still edit the draft yourself.
         </p>
         <div class="issue-list" id="out-issues"></div>
 
-        <h2 style="margin-top: 1.25rem">Forensic checklist (strict thresholds)</h2>
-        <p class="mini">
-          Tick-style audit: em-dash density, “The” clustering in a paragraph, parallel twin adjectives, passive
-          share, cheerleading, H2 “X for Y” symmetry, consecutive starters, trigram echo, softeners, clichés. If more
-          than ~3 rows fire, treat the draft as high-risk for AI-shaped prose.
-        </p>
-        <table class="metrics" id="out-forensic">
-          <thead>
-            <tr>
-              <th scope="col">Check</th>
-              <th scope="col">Threshold</th>
-              <th scope="col">Status</th>
-              <th scope="col">Reading</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <p class="mini" id="out-forensic-summary"></p>
+        <details class="details-metrics">
+          <summary>All metrics &amp; tables</summary>
+          <div class="details-body">
+            <p class="mini" id="out-blend"></p>
 
-        <h2 style="margin-top: 1.25rem">Blog-specific metrics</h2>
-        <table class="metrics" id="out-blog">
-          <tbody></tbody>
-        </table>
+            <h2>Forensic checklist</h2>
+            <p class="mini">
+              Strict pass/fail style checks. If several rows fail, the draft often reads as generic or AI-shaped.
+            </p>
+            <div class="table-wrap forensic-scroll">
+              <table class="metrics" id="out-forensic">
+                <thead>
+                  <tr>
+                    <th scope="col">Check</th>
+                    <th scope="col">Threshold</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Reading</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="mini" id="out-forensic-summary"></p>
 
-        <h2 style="margin-top: 1.25rem">Core metric breakdown</h2>
-        <table class="metrics" id="out-metrics">
-          <tbody></tbody>
-        </table>
+            <h2>Blog-specific metrics</h2>
+            <div class="table-wrap">
+              <table class="metrics" id="out-blog">
+                <tbody></tbody>
+              </table>
+            </div>
 
-        <div class="subgrid">
-          <div>
-            <h2>Advanced signals</h2>
-            <table class="metrics" id="out-advanced">
-              <tbody></tbody>
-            </table>
+            <h2>Core metrics</h2>
+            <div class="table-wrap">
+              <table class="metrics" id="out-metrics">
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="subgrid">
+              <div>
+                <h2>Advanced signals</h2>
+                <div class="table-wrap">
+                  <table class="metrics" id="out-advanced">
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <h2>Style fingerprints</h2>
+                <p class="mini" id="out-fingerprints" style="margin-top: 0"></p>
+                <div class="kpis" id="out-kpis"></div>
+              </div>
+            </div>
+
+            <h2>Sentences flagged</h2>
+            <ol class="suspicious-list" id="out-suspicious"></ol>
           </div>
-          <div>
-            <h2>Style fingerprints</h2>
-            <p class="mini" id="out-fingerprints"></p>
-            <div class="kpis" id="out-kpis"></div>
-          </div>
-        </div>
-
-        <h2 style="margin-top: 1rem">Sentences flagged (heuristic)</h2>
-        <ol class="suspicious-list" id="out-suspicious"></ol>
-
-        <h2 style="margin-top: 1rem">Recommendation</h2>
-        <p class="mini" id="out-rec"></p>
+        </details>
       </section>
     </main>
 
@@ -908,6 +1168,9 @@
             return;
           }
           results.hidden = false;
+          requestAnimationFrame(() => {
+            results.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
           $("out-composite").textContent = r.combinedScore + "%";
           const b = $("out-band");
           b.className = "band " + r.band.className.replace("band ", "").trim();
