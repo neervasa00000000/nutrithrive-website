@@ -6,4 +6,9 @@ node_modules/
 .env.local
 
 # Firecrawl crawl cache (may contain third-party keys from scraped pages, e.g. Maps URLs)
+.firecrawl/.firecrawl
 .firecrawl/
+
+# Python bytecode cache
+__pycache__/
+scripts/__pycache__/
