@@ -6,83 +6,307 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
     <title>Payment | NutriThrive Australia</title>
-    <meta name="description" content="Official NutriThrive payment page. Review your order, confirm shipping country, and complete checkout securely with PayPal or Apple Pay.">
+    <meta name="description" content="NutriThrive payment page. Review your order, confirm shipping country, and complete checkout securely with PayPal or Apple Pay.">
     <link rel="canonical" href="https://nutrithrive.com.au/payment">
     <link rel="stylesheet" href="/styles/global/style.css">
     <style>
-        body { background: #f8f5ec; color: #1a2e22; }
-        .payment-page { max-width: 980px; margin: 2rem auto; padding: 0 1.25rem; }
-        .payment-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
-        .payment-head h1 { margin: 0; color: #2d5a3d; }
-        .back-link { color: #2d5a3d; text-decoration: none; font-weight: 600; }
-        .panel { background: #fff; border: 1px solid #e5e1d8; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
-        .order-item { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid #f0ede5; }
-        .order-item:last-child { border-bottom: none; }
-        .order-item-name { font-weight: 600; }
-        .muted { color: #666; font-size: 0.9rem; }
-        .summary-row { display: flex; justify-content: space-between; padding: 0.55rem 0; border-bottom: 1px solid #f0ede5; }
-        .summary-row:last-child { border-bottom: none; font-weight: 700; color: #2d5a3d; font-size: 1.15rem; }
-        .payment-section h2 { color: #2d5a3d; margin: 0 0 0.5rem 0; }
-        .payment-security { font-size: 0.9rem; color: #666; margin: 0 0 1rem 0; }
-        .form-group { margin: 0 0 1rem 0; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-        .form-group select { width: 100%; max-width: 420px; padding: 0.75rem; border: 1px solid #d4cfc3; border-radius: 8px; background: #f8f5ec; }
-        .payment-placeholder { color: #666; margin: 0.75rem 0; }
-        #paypal-card-container { margin-top: 0.8rem; }
+        :root {
+            --checkout-border: #e6e6e6;
+            --checkout-text: #1f1f1f;
+            --checkout-muted: #666;
+            --checkout-soft: #f7f7f8;
+        }
+        body {
+            background: #fff;
+            color: var(--checkout-text);
+            margin: 0;
+        }
+        .checkout-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 1rem 2rem;
+        }
+        .checkout-header {
+            text-align: center;
+            padding: 1.25rem 0 0.85rem;
+            border-bottom: 1px solid var(--checkout-border);
+            margin-bottom: 1rem;
+        }
+        .checkout-header .logo {
+            color: #2d5a3d;
+            font-size: 2rem;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 400px;
+            gap: 1.5rem;
+            align-items: start;
+        }
+        .checkout-main {
+            max-width: 720px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .checkout-section {
+            margin-bottom: 1.1rem;
+        }
+        .checkout-section h2 {
+            margin: 0 0 0.45rem 0;
+            font-size: 1.7rem;
+            color: #111;
+        }
+        .section-title {
+            margin: 0 0 0.55rem 0;
+            font-size: 1.65rem;
+            color: #111;
+            font-weight: 700;
+        }
+        .section-label {
+            margin: 0 0 0.55rem 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111;
+        }
+        .muted {
+            color: var(--checkout-muted);
+            font-size: 0.92rem;
+        }
+        .express-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.55rem;
+        }
+        .express-btn {
+            border: 1px solid var(--checkout-border);
+            border-radius: 8px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+            background: #fff;
+            color: #222;
+        }
+        .express-btn.shop {
+            background: #5a31f4;
+            color: #fff;
+            border-color: #5a31f4;
+        }
+        .express-btn.gpay {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        .separator-note {
+            margin: 0.75rem 0 0.2rem;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--checkout-muted);
+        }
+        .input, .select {
+            width: 100%;
+            box-sizing: border-box;
+            height: 44px;
+            border: 1px solid var(--checkout-border);
+            border-radius: 8px;
+            padding: 0 0.8rem;
+            font-size: 0.95rem;
+            background: #fff;
+            color: #111;
+        }
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
+            margin-top: 0.55rem;
+        }
+        .radio-card {
+            border: 1px solid #e7c9cd;
+            border-radius: 9px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .radio-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0.85rem;
+            border-bottom: 1px solid var(--checkout-border);
+            font-size: 0.95rem;
+        }
+        .radio-row:last-child {
+            border-bottom: none;
+        }
+        .radio-left {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-weight: 600;
+        }
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid #d7384d;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .dot.active::after {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: #d7384d;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .summary-side {
+            border-left: 1px solid var(--checkout-border);
+            padding-left: 1.25rem;
+            position: sticky;
+            top: 1rem;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--checkout-border);
+        }
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        .order-item-name {
+            font-weight: 600;
+            line-height: 1.35;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--checkout-border);
+        }
+        .summary-row:last-child {
+            border-bottom: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 0.25rem;
+        }
+        .payment-placeholder {
+            color: var(--checkout-muted);
+            margin: 0.75rem 0;
+            font-size: 0.92rem;
+        }
+        #applepay-container apple-pay-button,
+        #nt-applepay-btn {
+            width: 100%;
+            min-height: 44px;
+        }
+        #paypal-card-container {
+            margin-top: 0.8rem;
+        }
+        @media (max-width: 960px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-side {
+                border-left: none;
+                border-top: 1px solid var(--checkout-border);
+                padding-left: 0;
+                padding-top: 1rem;
+                position: static;
+            }
+        }
+        @media (max-width: 640px) {
+            .express-row,
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="navbar">
+    <div class="checkout-wrap">
+        <header class="checkout-header">
             <a href="/" class="logo">
-                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="52" height="52" loading="eager" decoding="async" fetchpriority="high">
                 NutriThrive
             </a>
-            <nav class="nav-links">
-                <a href="/">Home</a>
-                <a href="https://nutrithrive.com.au/products/">Products</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-            </nav>
-            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
-                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
-            </button>
+        </header>
+        <div class="checkout-grid">
+            <main class="checkout-main">
+                <section class="checkout-section">
+                    <h2>Payment</h2>
+                    <div class="express-row">
+                        <button class="express-btn shop" type="button">shop</button>
+                        <button class="express-btn" type="button" onclick="window.scrollTo({ top: document.getElementById('paypal-button-container').offsetTop - 80, behavior: 'smooth' })">PayPal</button>
+                        <button class="express-btn gpay" type="button">G Pay</button>
+                    </div>
+                    <p class="separator-note">Or continue with other payment method</p>
+                </section>
+
+                <section class="checkout-section">
+                    <p class="section-label">Contact</p>
+                    <input class="input" type="email" placeholder="Email" autocomplete="email">
+                </section>
+
+                <section class="checkout-section">
+                    <p class="section-label">Delivery</p>
+                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()">
+                        <option value="">Select your country</option>
+                    </select>
+                    <div class="form-grid-2">
+                        <input class="input" type="text" placeholder="First name">
+                        <input class="input" type="text" placeholder="Last name">
+                    </div>
+                    <input class="input" type="text" placeholder="Address" style="margin-top:0.55rem;">
+                    <div class="form-grid-2">
+                        <input class="input" type="text" placeholder="Suburb">
+                        <input class="input" type="text" placeholder="Postcode">
+                    </div>
+                </section>
+
+                <section class="checkout-section">
+                    <p class="section-label">Payment</p>
+                    <p class="muted" style="margin:0 0 0.6rem 0;">All transactions are secure and encrypted.</p>
+                    <div class="radio-card">
+                        <div class="radio-row">
+                            <div class="radio-left"><span class="dot active"></span><span>Pay with PayPal / Card</span></div>
+                            <span class="muted">Secure</span>
+                        </div>
+                        <div style="padding:0.8rem;">
+                            <div id="applepay-wrapper" style="display:none; margin: 0 0 0.7rem 0;">
+                                <div id="applepay-container"></div>
+                            </div>
+                            <div id="paypal-button-container">
+                                <p class="payment-placeholder">Select shipping country to continue.</p>
+                            </div>
+                            <div id="paypal-card-container"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="summary-side">
+                <p class="section-label" style="margin-bottom:0.7rem;">Order summary</p>
+                <div id="order-items"></div>
+                <div style="margin-top:0.9rem;">
+                    <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+                    <div class="summary-row"><span>Shipping</span><span id="shipping">Select country</span></div>
+                    <div class="summary-row"><span>Total</span><span id="total">$0.00</span></div>
+                </div>
+            </aside>
         </div>
-    </header>
-
-    <main class="payment-page">
-        <div class="payment-head">
-            <h1>Official Payment</h1>
-            <a href="/cart" class="back-link">Back to cart</a>
-        </div>
-
-        <section class="panel">
-            <h2 style="margin:0 0 0.75rem 0; color:#2d5a3d;">Order review</h2>
-            <div id="order-items"></div>
-            <div style="margin-top:0.75rem;">
-                <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-                <div class="summary-row"><span>Shipping</span><span id="shipping">Select country</span></div>
-                <div class="summary-row"><span>Total</span><span id="total">$0.00</span></div>
-            </div>
-        </section>
-
-        <section class="panel payment-section">
-            <h2>Pay securely</h2>
-            <p class="payment-security">All transactions are encrypted and processed through PayPal.</p>
-            <div class="form-group">
-                <label for="shipping-country">Shipping country</label>
-                <select id="shipping-country" onchange="updateShippingAndTotal()">
-                    <option value="">Select your country</option>
-                </select>
-            </div>
-            <div id="applepay-wrapper" style="display:none; margin: 0 0 1rem 0;">
-                <p class="muted" style="margin:0 0 0.5rem 0;">Apple Pay</p>
-                <div id="applepay-container"></div>
-            </div>
-            <div id="paypal-button-container"><p class="payment-placeholder">Select shipping country to continue.</p></div>
-            <div id="paypal-card-container"></div>
-        </section>
-    </main>
+    </div>
 
     <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=buttons,applepay,funding-eligibility"></script>
     <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
