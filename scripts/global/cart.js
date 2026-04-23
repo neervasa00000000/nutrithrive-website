@@ -14,7 +14,7 @@ const CART_STORAGE_KEY = 'nutrithrive_cart';
 //       image: "image-url"
 //     }
 //   ],
-//   total: 20.00,
+//   total: 23.39,
 //   itemCount: 2
 // }
 
@@ -273,7 +273,7 @@ window.Cart = {
 
 // Simple helper for inline "Add to Cart" buttons on pages like the homepage.
 // Example usage in HTML:
-//   onclick="addProductToCart('moringa-powder', 'Moringa Powder', 10.50, 'image-url')"
+//   onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, 'image-url')"
 window.addProductToCart = function(id, name, price, image) {
     if (window.Cart && window.Cart.add) {
         window.Cart.add({
@@ -291,7 +291,7 @@ window.addProductToCart = function(id, name, price, image) {
 // Function to add product to cart and redirect to the modern cart page
 // (which collects buyer info via PayPal / Apple Pay)
 // Example usage in HTML:
-//   onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 10.50, 'image-url')"
+//   onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 11.00, 'image-url')"
 window.addProductToCartAndRedirect = function(id, name, price, image) {
     if (typeof window.Cart === 'undefined' || !window.Cart.add) {
         console.warn('Cart not loaded yet, redirecting to product page');

@@ -213,7 +213,7 @@
         "@type": "Offer",
         "url": "https://nutrithrive.com.au/products/black-tea/",
         "priceCurrency": "AUD",
-        "price": "7.00",
+        "price": "7.50",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "seller": {
@@ -359,8 +359,10 @@
                         <!-- Price -->
                         <div class="product-pricing">
                             <div class="price-row">
-                                <span id="product-price" class="current-price">$7.00 AUD</span>
+                                <span id="product-original-price" class="original-price">$10.00 AUD</span>
+                                <span id="product-price" class="current-price">$7.50 AUD</span>
                             </div>
+                            <p id="product-discount-text" class="discount-text">25% discount ($2.50 AUD off)</p>
                             <p style="font-size: 0.9rem; color: #555; margin-top: 0.25rem;">100g Pack • Premium Grade</p>
                         </div>
                         
@@ -649,7 +651,7 @@
                 window.Cart.add({
                     id: 'black-tea',
                     name: 'Darjeeling Black Tea',
-                    price: 7.00,
+                    price: 7.50,
                     weight: 100, // 100g pack
                     image: '/assets/images/homepage/product-showcase/BlackTea.webp',
                     quantity: quantity
