@@ -225,6 +225,9 @@
             font-size: 1rem;
             text-align: center;
         }
+        #applepay-wrapper {
+            display: none !important;
+        }
         #applepay-container apple-pay-button,
         #nt-applepay-btn {
             width: 100%;
@@ -527,6 +530,8 @@
         }
 
         function setupApplePay() {
+            // Apple Pay intentionally disabled on this page.
+            return;
             const wrapper = document.getElementById('applepay-wrapper');
             const target = document.getElementById('applepay-container');
             if (!wrapper || !target) return;
