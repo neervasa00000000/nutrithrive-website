@@ -73,6 +73,7 @@
             font-size: 1.65rem;
             color: #111;
             font-weight: 700;
+            text-align: center;
         }
         .section-label {
             margin: 0 0 0.45rem 0;
@@ -84,6 +85,11 @@
         .muted {
             color: var(--checkout-muted);
             font-size: 0.92rem;
+        }
+        .payment-intro {
+            margin: 0 0 1rem 0;
+            text-align: center;
+            line-height: 1.55;
         }
         .input, .select {
             width: 100%;
@@ -206,6 +212,20 @@
         .payment-actions {
             padding: 0;
             margin: 0;
+            text-align: center;
+        }
+        .payment-method-heading {
+            margin: 0.8rem 0 0.8rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2d5a3d;
+            text-align: center;
+        }
+        .applepay-label {
+            margin: 0 0 0.4rem 0;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
         }
         #applepay-container apple-pay-button,
         #nt-applepay-btn {
@@ -259,26 +279,28 @@
         <div class="checkout-grid">
             <main class="checkout-main">
                 <section class="checkout-section">
-                    <p class="section-label">Payment</p>
-                    <p class="muted" style="margin:0 0 0.6rem 0;">All transactions are secure and encrypted.</p>
-                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()" style="display:none;">
+                    <h1 class="section-title">Payment</h1>
+                    <p class="muted payment-intro">All transactions are secure and encrypted.</p>
+                    <p class="payment-intro">
+                        At checkout, PayPal or Apple Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
+                        Please review and confirm these details carefully - your order will be shipped to the address you approve there.
+                    </p>
+                    <label for="shipping-country" class="section-label" style="text-align:center;">Shipping country</label>
+                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()">
                         <option value="AU" selected>Australia</option>
                     </select>
                     <div class="radio-card">
-                        <div class="radio-row">
-                            <div class="radio-left"><span class="dot active"></span><span>Pay with PayPal / Card</span></div>
-                            <span class="muted">Secure</span>
-                        </div>
+                        <p class="payment-method-heading">Choose your payment method</p>
                         <div class="payment-actions">
-                            <p class="card-help">Use the buttons below to pay with PayPal, Apple Pay, or Debit/Credit Card.</p>
                             <div id="applepay-wrapper" style="display:none; margin: 0 0 0.7rem 0;">
+                                <p class="applepay-label">Pay quickly with Apple Pay</p>
                                 <div id="applepay-container"></div>
                             </div>
                             <div id="paypal-button-container">
                                 <p class="payment-placeholder">Select shipping country to continue.</p>
                             </div>
-                            <p class="muted" style="margin:0.65rem 0 0.25rem;">Debit / Credit Card</p>
                             <div id="paypal-card-container"></div>
+                            <p class="muted" style="margin-top:0.75rem;">Powered by PayPal</p>
                         </div>
                     </div>
                 </section>
