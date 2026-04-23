@@ -545,7 +545,11 @@
                 if (!btn) return;
                 let isLaunching = false;
                 const launchApplePay = function (event) {
+                    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+                    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
                     if (isLaunching) return;
+                    const proceed = window.confirm('Open Apple Pay now? You can review shipping details and payment card in the Apple Pay sheet before authorizing.');
+                    if (!proceed) return;
                     isLaunching = true;
                     const cart = getCart();
                     if (!cart.items || cart.items.length === 0) {
