@@ -507,7 +507,7 @@
                 <span id="subtotal">$0.00</span>
             </div>
             <div class="summary-row" id="discount-row" style="display: none;">
-                <span style="color: #2d5a3d;">Discount (15% off)</span>
+                <span id="discount-label" style="color: #2d5a3d;">Discount</span>
                 <span id="discount-amount" style="color: #2d5a3d; font-weight: 600;">-$0.00</span>
             </div>
             <div class="summary-row">
@@ -574,6 +574,37 @@
                 `;
                 cartSummary.style.display = 'none';
                 return;
+            }
+
+            const ORIGINAL_PRICE_BY_ID = {
+                'moringa-powder': 14.00,
+                'moringa-200g': 28.00,
+                'moringa-400g': 56.00,
+                'moringa-soap': 9.49,
+                'moringa-soap-combo': 23.39,
+                'curry-leaves': 8.49,
+                'black-tea': 10.00,
+                'combo-pack': 22.49,
+                'moringa-variation-1': 56.00,
+                'moringa-variation-2': 14.00,
+                'moringa-variation-3': 22.49,
+                'moringa-variation-4': 28.00,
+                'moringa-variation-5': 8.49,
+                'moringa-variation-6': 23.39
+            };
+
+            function getOriginalUnitPrice(item, discountedUnitPrice) {
+                const mapped = ORIGINAL_PRICE_BY_ID[item?.id];
+                if (Number.isFinite(mapped) && mapped >= discountedUnitPrice) {
+                    return mapped;
+                }
+
+                const fromItem = Number.parseFloat(item?.originalPrice);
+                if (Number.isFinite(fromItem) && fromItem >= discountedUnitPrice) {
+                    return fromItem;
+                }
+
+                return null;
             }
 
             function safeId(value) {
@@ -754,26 +785,33 @@
             const subtotal = Number((subtotalFromItems || 0).toFixed(2));
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
             
-            // Calculate and display discount (15% off)
-            // Calculate original total before discount
+            // Calculate discount using authoritative original prices per SKU.
             let originalTotal = 0;
             cart.items.forEach(item => {
                 const qty = safeInt(item?.quantity ?? 1, 1, 99);
                 const price = safeMoney(item?.price);
                 if (qty === null || price === null) return;
-                // Reverse the 15% discount: discounted_price = original * 0.85, so original = discounted / 0.85
-                const originalItemPrice = price / 0.85;
+                const originalItemPrice = getOriginalUnitPrice(item, price);
+                if (originalItemPrice === null) return;
                 originalTotal += originalItemPrice * qty;
             });
             
-            const discountAmount = originalTotal - subtotal;
+            const discountAmount = Number((originalTotal - subtotal).toFixed(2));
             const discountRow = document.getElementById('discount-row');
+            const discountLabel = document.getElementById('discount-label');
             const discountAmountElement = document.getElementById('discount-amount');
             
             if (discountAmount > 0.01) { // Only show if discount is significant
+                const discountPercent = Math.ceil((discountAmount / originalTotal) * 100);
+                if (discountLabel) {
+                    discountLabel.textContent = `Discount (${discountPercent}% off)`;
+                }
                 discountRow.style.display = 'flex';
                 discountAmountElement.textContent = `-$${discountAmount.toFixed(2)}`;
             } else {
+                if (discountLabel) {
+                    discountLabel.textContent = 'Discount';
+                }
                 discountRow.style.display = 'none';
             }
             
