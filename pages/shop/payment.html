@@ -545,9 +545,6 @@
                 if (!btn) return;
                 let isLaunching = false;
                 const launchApplePay = function (event) {
-                    if (event && typeof event.preventDefault === 'function') {
-                        event.preventDefault();
-                    }
                     if (isLaunching) return;
                     isLaunching = true;
                     const cart = getCart();
@@ -560,7 +557,8 @@
                     const countryCode = document.getElementById('shipping-country').value;
                     const subtotal = computeSubtotal(cart.items);
                     const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
-                    const total = Number((subtotal + (Number.parseFloat(shipping) || 0)).toFixed(2));
+                    const shippingAmount = Number.parseFloat(shipping) || 0;
+                    const total = Number((subtotal + shippingAmount).toFixed(2));
                     const sessionVersion = ApplePaySession.supportsVersion(4) ? 4 : 3;
 
                     const paymentRequest = {
@@ -568,6 +566,10 @@
                         currencyCode: cfg.currencyCode || 'AUD',
                         merchantCapabilities: cfg.merchantCapabilities || ['supports3DS'],
                         supportedNetworks: cfg.supportedNetworks || ['visa', 'masterCard', 'amex'],
+                        lineItems: [
+                            { label: 'Subtotal', amount: String(subtotal.toFixed(2)) },
+                            { label: 'Shipping', amount: String(shippingAmount.toFixed(2)) }
+                        ],
                         total: {
                             label: 'NutriThrive',
                             amount: String(total.toFixed(2))
@@ -647,7 +649,6 @@
                 };
 
                 btn.addEventListener('click', launchApplePay);
-                btn.addEventListener('touchend', launchApplePay, { passive: false });
             }).catch(() => {});
         }
 
