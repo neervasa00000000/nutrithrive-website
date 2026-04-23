@@ -1,121 +1,122 @@
-# Phase 5 - Quick Wins (Top 15)
+# 05 Quick Wins (Top 15)
 
-**[Priority #1] - Add canonical tags site-wide**
-- Page affected: Multiple pages
-- Problem: 50 audited pages are missing canonical tags.
-- Fix: Add `<link rel="canonical">` on every indexable page with self-referencing canonical.
+
+**[Priority #1] — Rewrite long SEO titles**
+- Page affected: Sitewide high-length URLs
+- Problem: Many titles exceed 60 chars and get truncated in results.
+- Fix: Rewrite each title to 50-60 chars with primary keyword first and brand second.
 - Impact: High | Effort: Easy
-- Why it matters: Prevents duplicate indexing and consolidates ranking signals.
-- Timing: do this week
+- Why it matters: Improves CTR by showing complete, relevant title text.
+- Priority: do this week
 
-**[Priority #2] - Implement Product schema on product URLs**
-- Page affected: /products/*
-- Problem: 5 product pages lack Product schema.
-- Fix: Add JSON-LD Product schema with name, image, description, offers, currency, availability, and brand.
-- Impact: High | Effort: Medium
-- Why it matters: Improves eligibility for rich product snippets in search results.
-- Timing: do this week
-
-**[Priority #3] - Implement Article schema on blog posts**
-- Page affected: /blog/*
-- Problem: 31 blog posts lack Article/BlogPosting schema.
-- Fix: Add Article schema with headline, datePublished, dateModified, author, image, and mainEntityOfPage.
-- Impact: High | Effort: Medium
-- Why it matters: Improves content understanding and rich result potential.
-- Timing: do this week
-
-**[Priority #4] - Fix duplicate title tags**
-- Page affected: Multiple pages
-- Problem: 1 duplicate title groups detected.
-- Fix: Rewrite duplicate titles so each page has a unique, intent-matched title.
+**[Priority #2] — Shorten overlength meta descriptions**
+- Page affected: Sitewide
+- Problem: A large share of meta descriptions exceed 160 chars.
+- Fix: Trim to 120-155 chars with a benefit + CTA.
 - Impact: High | Effort: Easy
-- Why it matters: Unique titles help search engines distinguish pages and improve CTR.
-- Timing: do this week
+- Why it matters: Improves snippet readability and click-through potential.
+- Priority: do this week
 
-**[Priority #5] - Trim overlong title tags**
-- Page affected: Multiple pages
-- Problem: 10 titles exceed 60 characters.
-- Fix: Rewrite titles to 50-60 chars while preserving primary keyword and location intent.
-- Impact: Medium | Effort: Easy
-- Why it matters: Prevents truncation and improves SERP clarity.
-- Timing: do this week
-
-**[Priority #6] - Improve thin content pages**
-- Page affected: Multiple pages
-- Problem: 3 pages are under 300 words.
-- Fix: Expand thin pages with FAQs, use-cases, proof points, and internal links.
+**[Priority #3] — Add canonical tags to all pages**
+- Page affected: Pages missing canonical
+- Problem: Multiple URLs have no canonical set.
+- Fix: Add self-referencing canonical on every indexable page.
 - Impact: High | Effort: Medium
-- Why it matters: Thin pages struggle to rank and convert.
-- Timing: do this month
+- Why it matters: Prevents index duplication and consolidates ranking signals.
+- Priority: do this week
 
-**[Priority #7] - Strengthen contextual internal links in blog**
-- Page affected: /blog/*
-- Problem: Some posts rely heavily on nav/footer links rather than in-body related links.
-- Fix: Add 3-5 contextual links per post to related articles and relevant products.
+**[Priority #4] — Deploy schema templates**
+- Page affected: Blog/product/local pages
+- Problem: Most pages are missing structured data.
+- Fix: Implement Article, Product, and LocalBusiness JSON-LD templates.
 - Impact: High | Effort: Medium
-- Why it matters: Distributes authority and guides users deeper into conversion paths.
-- Timing: do this month
+- Why it matters: Helps search engines understand content and can earn rich results.
+- Priority: do this week
 
-**[Priority #8] - Add author and date consistently on blog**
-- Page affected: /blog/*
-- Problem: 0 blog pages show weak author/date signals.
-- Fix: Display author bio, publish date, and last updated date in the visible article header.
+**[Priority #5] — Fix orphan pages**
+- Page affected: Unlinked discovered URLs
+- Problem: Some mapped pages have no internal links from audited pages.
+- Fix: Add links from homepage/blog hubs and related posts.
+- Impact: High | Effort: Easy
+- Why it matters: Improves crawl discovery and ranking potential for deep pages.
+- Priority: do this week
+
+**[Priority #6] — Add stronger blog CTAs**
+- Page affected: Blog articles
+- Problem: Several posts lack a clear conversion next-step.
+- Fix: Add in-content CTA blocks to product pages and newsletter after first third and at conclusion.
+- Impact: High | Effort: Easy
+- Why it matters: Turns informational traffic into revenue actions.
+- Priority: do this month
+
+**[Priority #7] — Consolidate near-duplicate topic pages**
+- Page affected: Moringa comparison/benefit posts
+- Problem: Many posts overlap intent and compete with each other.
+- Fix: Merge overlapping posts and use 301 redirects to one canonical per keyword intent.
+- Impact: High | Effort: Hard
+- Why it matters: Reduces cannibalization and improves topical authority.
+- Priority: do this month
+
+**[Priority #8] — Strengthen E-E-A-T elements**
+- Page affected: Blog templates
+- Problem: Author/date/expertise context is inconsistent.
+- Fix: Show author bios, credentials, references, and visible publish/update date on every post.
+- Impact: High | Effort: Medium
+- Why it matters: Builds trust and improves quality signals for YMYL-adjacent topics.
+- Priority: do this month
+
+**[Priority #9] — Improve homepage hero specificity**
+- Page affected: https://nutrithrive.com.au
+- Problem: Hero is broad and product-heavy but less problem-outcome focused.
+- Fix: Refine hero copy with one core audience pain point and one proof metric.
 - Impact: Medium | Effort: Easy
-- Why it matters: Improves trust and E-E-A-T perception for readers and search engines.
-- Timing: do this month
+- Why it matters: Improves first-impression relevance and conversion.
+- Priority: do this month
 
-**[Priority #9] - Refine meta descriptions for CTR**
-- Page affected: Multiple pages
-- Problem: 0 short and 4 long meta descriptions found.
-- Fix: Rewrite to 120-155 chars with clear benefit + CTA and avoid duplicates.
+**[Priority #10] — Add FAQ blocks to product pages**
+- Page affected: Product URLs
+- Problem: Objections like dosage, safety, shipping timing are not fully answered on-page.
+- Fix: Embed FAQ accordion with schema on each product page.
 - Impact: Medium | Effort: Easy
-- Why it matters: Better snippets increase click-through rate from search.
-- Timing: do this week
+- Why it matters: Reduces friction and supports long-tail queries.
+- Priority: do this month
 
-**[Priority #10] - Reduce URL length on very long slugs**
+**[Priority #11] — Tune image loading strategy**
+- Page affected: Homepage and content pages
+- Problem: Several images are non-lazy (likely intentional but inconsistent).
+- Fix: Keep hero eager, set all below-fold images to lazy and confirm dimensions are set.
+- Impact: Medium | Effort: Easy
+- Why it matters: Improves Core Web Vitals and mobile speed.
+- Priority: do this month
+
+**[Priority #12] — Create internal linking SOP**
+- Page affected: All new blog content
+- Problem: Internal link depth varies by post.
+- Fix: Require 3-5 contextual links to related posts and 1-2 links to conversion pages in each new article.
+- Impact: Medium | Effort: Easy
+- Why it matters: Builds topical clusters and channel authority to money pages.
+- Priority: do this month
+
+**[Priority #13] — Standardize URL hygiene**
 - Page affected: Long blog URLs
-- Problem: 29 URLs exceed 75 chars.
-- Fix: Shorten slugs while keeping core keyword intent; maintain redirects if changed.
+- Problem: Many URLs are long (>75 chars), reducing readability and shareability.
+- Fix: Use shorter slugs for new posts and map redirect plan for old long slugs only when safe.
+- Impact: Low | Effort: Medium
+- Why it matters: Cleaner URLs improve usability and SERP presentation.
+- Priority: do this quarter
+
+**[Priority #14] — Add product review snippets**
+- Page affected: Product pages
+- Problem: Social proof exists broadly but not always tied to product SKU pages.
+- Fix: Embed SKU-specific ratings/reviews and highlight verified buyer badges.
 - Impact: Medium | Effort: Medium
-- Why it matters: Shorter URLs are easier to read, share, and crawl.
-- Timing: do this month
+- Why it matters: Improves conversion confidence at point of purchase.
+- Priority: do this quarter
 
-**[Priority #11] - Add LocalBusiness schema to core pages**
-- Page affected: Homepage/About/Contact
-- Problem: 4 core pages missing local business schema.
-- Fix: Add LocalBusiness schema with NAP, geo, opening hours, and sameAs profiles.
-- Impact: Medium | Effort: Medium
-- Why it matters: Supports local relevance and map-related trust signals.
-- Timing: do this month
-
-**[Priority #12] - Improve heading hierarchy consistency**
-- Page affected: Multiple pages
-- Problem: 11 pages appear to skip heading levels.
-- Fix: Ensure each page uses H1 -> H2 -> H3 structure without jumps.
+**[Priority #15] — Set monthly technical QA crawl**
+- Page affected: Entire site
+- Problem: No continuous audit process documented in-page.
+- Fix: Schedule monthly crawl checks for titles/meta/canonicals/schema/404s.
 - Impact: Medium | Effort: Easy
-- Why it matters: Clean hierarchy improves accessibility and topical clarity.
-- Timing: do this month
-
-**[Priority #13] - Audit image loading strategy**
-- Page affected: Media-heavy templates
-- Problem: 42 pages include non-lazy images beyond hero contexts.
-- Fix: Keep hero images eager, set below-the-fold images to loading=lazy and define width/height.
-- Impact: Medium | Effort: Easy
-- Why it matters: Improves Core Web Vitals and user-perceived speed.
-- Timing: do this month
-
-**[Priority #14] - Consolidate duplicate/near-duplicate blog intents**
-- Page affected: Blog comparisons
-- Problem: Several posts target overlapping moringa comparison themes.
-- Fix: Merge overlapping articles or differentiate intent and internal-link canonicals clearly.
-- Impact: Medium | Effort: Hard
-- Why it matters: Reduces keyword cannibalization and improves topical authority.
-- Timing: do this quarter
-
-**[Priority #15] - Build orphan-page linking plan**
-- Page affected: Utility and deep content pages
-- Problem: 34 pages have zero inbound internal links in audited set.
-- Fix: Add links from hub pages (homepage/blog/products) and create thematic content clusters.
-- Impact: High | Effort: Medium
-- Why it matters: Unlinked pages are harder for users and crawlers to discover and rank.
-- Timing: do this month
+- Why it matters: Prevents regressions and preserves organic growth.
+- Priority: do this quarter

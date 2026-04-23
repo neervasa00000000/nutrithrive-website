@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <script src="/scripts/global/reddit-pixel.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriThrive Labs | Pomodoro Timer</title>
+    <meta
+      name="description"
+      content="Free Pomodoro timer with break cycles and daily focus tracking. Runs in your browser."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://nutrithrive.com.au/nutrithrive_labs/pomodoro-timer.html" />
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --panel: #fff;
+        --stroke: rgba(15, 23, 42, 0.12);
+        --stroke2: rgba(15, 23, 42, 0.2);
+        --text: #0f172a;
+        --muted: #475569;
+        --accent: #0f6b4d;
+        --accent-soft: rgba(15, 107, 77, 0.12);
+        --max: 900px;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(248, 250, 252, 0.95);
+        border-bottom: 1px solid var(--stroke);
+      }
+
+      .topbar-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0.85rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        font-weight: 900;
+      }
+
+      .nav {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        border: 1px solid var(--stroke);
+        border-radius: 999px;
+        padding: 0.45rem 0.7rem;
+        font-size: 0.82rem;
+        font-weight: 800;
+        background: #fff;
+      }
+
+      .chip.primary {
+        border-color: rgba(15, 107, 77, 0.35);
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 1rem 1rem 2rem;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--stroke);
+        border-radius: 16px;
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+
+      .row {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      select,
+      button {
+        border-radius: 12px;
+        border: 1px solid var(--stroke);
+        padding: 0.65rem 0.8rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      select:focus,
+      button:focus {
+        outline: none;
+        border-color: var(--stroke2);
+      }
+
+      button {
+        cursor: pointer;
+        background: #fff;
+      }
+
+      .primary {
+        background: var(--accent);
+        color: #fff;
+        border-color: rgba(15, 107, 77, 0.45);
+      }
+
+      .clock {
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        margin: 0.5rem 0;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 0.3rem 0.55rem;
+        border: 1px solid var(--stroke);
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+    </style>
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-simple.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/nutrithrive_labs/">NutriThrive Labs</a>
+        <nav class="nav" aria-label="Tools navigation">
+          <a class="chip" href="/">Main site</a>
+          <a class="chip" href="/nutrithrive_labs/">All tools</a>
+          <a class="chip primary" href="/nutrithrive_labs/pomodoro-timer.html">Pomodoro timer</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="card">
+        <h1 style="margin: 0.2rem 0;">Pomodoro Timer</h1>
+        <p class="muted" style="margin: 0;">
+          Focus in short sprints with automatic work/break cycles and daily tracked focus minutes.
+        </p>
+      </section>
+      <section class="card">
+        <div class="row">
+          <label for="preset"><strong>Preset</strong></label>
+          <select id="preset">
+            <option value="25-5">25 min work / 5 min break</option>
+            <option value="50-10">50 min work / 10 min break</option>
+            <option value="15-3">15 min work / 3 min break</option>
+          </select>
+          <span class="pill" id="phasePill">Work</span>
+        </div>
+        <div class="clock" id="clock">25:00</div>
+        <div class="row">
+          <button class="primary" id="startBtn" type="button">Start</button>
+          <button id="pauseBtn" type="button">Pause</button>
+          <button id="resetBtn" type="button">Reset</button>
+          <button id="skipBtn" type="button">Skip phase</button>
+        </div>
+        <p class="muted" id="status" style="margin-top:.8rem;">Ready.</p>
+      </section>
+      <section class="card">
+        <h2 style="margin:.2rem 0;">Today</h2>
+        <p class="muted">Focused minutes: <strong id="todayMinutes">0</strong></p>
+      </section>
+    </main>
+    <script src="/scripts/pages/labs/pomodoro-timer.js"></script>
+  </body>
+</html>
