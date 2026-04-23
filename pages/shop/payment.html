@@ -8,6 +8,10 @@
     <title>Payment | NutriThrive Australia</title>
     <meta name="description" content="NutriThrive payment page. Review your order, confirm shipping country, and complete checkout securely with PayPal or Apple Pay.">
     <link rel="canonical" href="https://nutrithrive.com.au/payment">
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
+    <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
     <link rel="stylesheet" href="/styles/global/style.css">
     <style>
         :root {
@@ -85,38 +89,11 @@
             color: var(--checkout-muted);
             font-size: 0.92rem;
         }
-        .express-row {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.55rem;
-        }
-        .express-btn {
-            border: 1px solid var(--checkout-border);
-            border-radius: 8px;
-            height: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
+        .methods-text {
+            margin: 0;
             font-size: 0.95rem;
-            background: #fff;
-            color: #222;
-        }
-        .express-btn.shop {
-            background: #5a31f4;
-            color: #fff;
-            border-color: #5a31f4;
-        }
-        .express-btn.gpay {
-            background: #000;
-            color: #fff;
-            border-color: #000;
-        }
-        .separator-note {
-            margin: 0.75rem 0 0.2rem;
-            text-align: center;
-            font-size: 0.88rem;
-            color: var(--checkout-muted);
+            color: #333;
+            line-height: 1.45;
         }
         .input, .select {
             width: 100%;
@@ -128,6 +105,10 @@
             font-size: 0.95rem;
             background: #fff;
             color: #111;
+            display: block;
+        }
+        .stack-gap {
+            margin-top: 0.55rem;
         }
         .form-grid-2 {
             display: grid;
@@ -220,6 +201,16 @@
             margin: 0.75rem 0;
             font-size: 0.92rem;
         }
+        .card-help {
+            margin: 0 0 0.65rem 0;
+            padding: 0.6rem 0.7rem;
+            border: 1px solid #d7e7d8;
+            background: #f5fbf5;
+            border-radius: 8px;
+            color: #254b2f;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
         #applepay-container apple-pay-button,
         #nt-applepay-btn {
             width: 100%;
@@ -254,7 +245,6 @@
             }
         }
         @media (max-width: 640px) {
-            .express-row,
             .form-grid-2 {
                 grid-template-columns: 1fr;
             }
@@ -273,12 +263,7 @@
             <main class="checkout-main">
                 <section class="checkout-section">
                     <h2>Payment</h2>
-                    <div class="express-row">
-                        <button class="express-btn shop" type="button">shop</button>
-                        <button class="express-btn" type="button" onclick="window.scrollTo({ top: document.getElementById('paypal-button-container').offsetTop - 80, behavior: 'smooth' })">PayPal</button>
-                        <button class="express-btn gpay" type="button">G Pay</button>
-                    </div>
-                    <p class="separator-note">Or continue with other payment method</p>
+                    <p class="methods-text">Available methods: Debit card, Credit card, Apple Pay, and PayPal.</p>
                 </section>
 
                 <section class="checkout-section">
@@ -295,7 +280,7 @@
                         <input class="input" type="text" placeholder="First name">
                         <input class="input" type="text" placeholder="Last name">
                     </div>
-                    <input class="input" type="text" placeholder="Address" style="margin-top:0.55rem;">
+                    <input class="input stack-gap" type="text" placeholder="Address">
                     <div class="form-grid-2">
                         <input class="input" type="text" placeholder="Suburb">
                         <input class="input" type="text" placeholder="Postcode">
@@ -311,12 +296,14 @@
                             <span class="muted">Secure</span>
                         </div>
                         <div style="padding:0.8rem;">
+                            <p class="card-help">To pay by <strong>debit/credit card</strong>, click the <strong>Debit or Credit Card</strong> button below. A secure card form will open.</p>
                             <div id="applepay-wrapper" style="display:none; margin: 0 0 0.7rem 0;">
                                 <div id="applepay-container"></div>
                             </div>
                             <div id="paypal-button-container">
                                 <p class="payment-placeholder">Select shipping country to continue.</p>
                             </div>
+                            <p class="muted" style="margin:0.65rem 0 0.25rem;">Debit / Credit Card</p>
                             <div id="paypal-card-container"></div>
                         </div>
                     </div>
