@@ -181,10 +181,17 @@
         line-height: 1.7;
       }
 
+      .tools-meta {
+        margin-top: 0.85rem;
+        color: var(--muted2);
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
       .grid {
         margin-top: 1rem;
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
         align-items: start;
       }
@@ -288,6 +295,20 @@
         letter-spacing: -0.01em;
       }
 
+      .poster .type {
+        display: inline-block;
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(15, 107, 77, 0.95);
+        background: rgba(15, 107, 77, 0.1);
+        border: 1px solid rgba(15, 107, 77, 0.25);
+        border-radius: 999px;
+        padding: 0.26rem 0.5rem;
+        margin-bottom: 0.6rem;
+      }
+
       .poster p {
         margin: 0.55rem 0 0;
         color: var(--muted);
@@ -327,7 +348,12 @@
         font-size: 0.9rem;
         line-height: 1.6;
       }
+
+      .full {
+        grid-column: 1 / -1;
+      }
     </style>
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-simple.css" />
   
 <!-- Nutri Thrive LocalBusiness (same @id as sitewide graph; valid LocalBusiness fields only) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
@@ -394,7 +420,7 @@
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/nutrithrive_labs/">
-          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="NutriThrive logo" />
+          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="NutriThrive logo" / loading="lazy">
           <span>
             <strong>NutriThrive</strong>
             <span>Labs</span>
@@ -411,19 +437,21 @@
 
     <main class="shell">
       <section class="hero">
-        <h1>Fast file conversions, right in your browser</h1>
+        <h1>Useful daily tools, right in your browser</h1>
         <p>
-          Click the poster below to open the converter. Upload your file, choose a tool, and download the
-          result.
+          Open any tool below for quick daily tasks: conversions, notes, secure passwords, focus timing, and
+          more.
         </p>
+        <p class="tools-meta">9 tools available. All run in your browser with no sign-up.</p>
         <div class="btnrow">
-          <a class="btn primary" href="/nutrithrive_labs/converter.html">Start converting</a>
+          <a class="btn primary" href="/nutrithrive_labs/converter.html">Open tools</a>
           <a class="btn" href="/">Back to NutriThrive</a>
         </div>
       </section>
 
       <div class="grid">
         <a class="poster" href="/nutrithrive_labs/converter.html" aria-label="Open the converter">
+          <span class="type">File</span>
           <h2>Open the Converter</h2>
           <p>
             Convert PDF ↔ images, extract text, merge/split pages, add watermarks, embed QR codes, and more.
@@ -441,6 +469,7 @@
           href="/nutrithrive_labs/dedup-lines.html"
           aria-label="Open Remove Duplicate Lines tool"
         >
+          <span class="type">Text</span>
           <h2>Remove Duplicate Lines</h2>
           <p>Paste a list (one item per line) and remove duplicates while preserving the original order.</p>
           <div class="kpis" aria-label="Highlights">
@@ -452,6 +481,7 @@
         </a>
 
         <a class="poster" href="/nutrithrive_labs/sitemap-generator.html" aria-label="Open Sitemap Generator">
+          <span class="type">SEO</span>
           <h2>Sitemap Generator</h2>
           <p>Select a local folder of HTML files and generate a standard <code>sitemap.xml</code>.</p>
           <div class="kpis" aria-label="Highlights">
@@ -463,6 +493,7 @@
         </a>
 
         <a class="poster" href="/nutrithrive_labs/time-converter.html" aria-label="Open Time Converter">
+          <span class="type">Time</span>
           <h2>Time Converter</h2>
           <p>Convert any date/time between countries (time zones). DST is handled automatically.</p>
           <div class="kpis" aria-label="Highlights">
@@ -473,11 +504,48 @@
           <p class="mini">Click to convert time zones.</p>
         </a>
 
+        <a class="poster" href="/nutrithrive_labs/pomodoro-timer.html" aria-label="Open Pomodoro Timer">
+          <span class="type">Productivity</span>
+          <h2>Pomodoro Timer</h2>
+          <p>Stay focused with work/break cycles and daily focus-minute tracking stored in your browser.</p>
+          <div class="kpis" aria-label="Highlights">
+            <span class="pill purple">Focus + breaks</span>
+            <span class="pill green">Daily minute tracking</span>
+            <span class="pill">No signup</span>
+          </div>
+          <p class="mini">Click to start a focus session.</p>
+        </a>
+
+        <a class="poster" href="/nutrithrive_labs/password-generator.html" aria-label="Open Password Generator">
+          <span class="type">Security</span>
+          <h2>Password Generator</h2>
+          <p>Create strong random passwords with custom length and character sets, then copy instantly.</p>
+          <div class="kpis" aria-label="Highlights">
+            <span class="pill purple">Secure random</span>
+            <span class="pill green">Strength feedback</span>
+            <span class="pill">Copy in one click</span>
+          </div>
+          <p class="mini">Click to generate secure passwords.</p>
+        </a>
+
+        <a class="poster" href="/nutrithrive_labs/quick-notes.html" aria-label="Open Quick Notes">
+          <span class="type">Notes</span>
+          <h2>Quick Notes</h2>
+          <p>Write quick notes with auto-save in your browser, then copy or download as a text file.</p>
+          <div class="kpis" aria-label="Highlights">
+            <span class="pill purple">Auto-save</span>
+            <span class="pill green">Copy + export</span>
+            <span class="pill">Local-only</span>
+          </div>
+          <p class="mini">Click to open your note pad.</p>
+        </a>
+
         <a
           class="poster"
           href="/nutrithrive_labs/ai-text-detector.html"
           aria-label="Open AI text style analyzer"
         >
+          <span class="type">AI + SEO</span>
           <h2>AI Text Style Analyzer</h2>
           <p>
             Paste blog copy or HTML for burstiness, personal-voice checks, optional SEO keyword density, fluff/CTA
@@ -491,14 +559,15 @@
           <p class="mini">Educational stylometry; not proof of authorship.</p>
         </a>
 
-        <section class="panel" aria-label="What you can do">
+        <section class="panel full" aria-label="What you can do">
           <h2>What it does</h2>
           <p class="mini" style="margin-top: 0">
-            Pick a tool inside the converter. Upload your file(s). Download the result.
+            Pick any tool tile above, finish your task in-browser, then copy or download the result.
           </p>
           <div class="btnrow">
-            <a class="btn primary" href="/nutrithrive_labs/converter.html">Start converting</a>
-            <a class="btn" href="/nutrithrive_labs/converter.html#converter">Open converter</a>
+            <a class="btn primary" href="/nutrithrive_labs/converter.html">Open converter</a>
+            <a class="btn" href="/nutrithrive_labs/pomodoro-timer.html">Open pomodoro timer</a>
+            <a class="btn" href="/nutrithrive_labs/password-generator.html">Open password generator</a>
           </div>
           <p class="mini">
             Note: AES-256 password protect/unlock requires a backend and is disabled in the client-side

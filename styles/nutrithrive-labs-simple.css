@@ -1,0 +1,111 @@
+:root {
+  --labs-bg: #f8fafc;
+  --labs-surface: #ffffff;
+  --labs-text: #0f172a;
+  --labs-muted: #475569;
+  --labs-border: #d6dde7;
+  --labs-accent: #0f6b4d;
+  --labs-accent-soft: #e9f5ef;
+}
+
+html,
+body {
+  background: var(--labs-bg) !important;
+  color: var(--labs-text) !important;
+}
+
+* {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.topbar {
+  backdrop-filter: none !important;
+  background: var(--labs-surface) !important;
+  border-bottom: 1px solid var(--labs-border) !important;
+}
+
+.mark {
+  background: var(--labs-surface) !important;
+  border: 1px solid var(--labs-border) !important;
+}
+
+.hero,
+.panel,
+.card,
+.stat,
+.result,
+.status,
+.toast,
+.dl,
+.poster,
+.optional-block,
+.details-metrics,
+.summary-box,
+.issue-card,
+.table-wrap {
+  background: var(--labs-surface) !important;
+  border-color: var(--labs-border) !important;
+}
+
+.brand span,
+.muted,
+.hint,
+.filehint,
+.mini,
+.stat span,
+.disclaimer,
+.panel-title,
+.section-hint,
+.optional-hint {
+  color: var(--labs-muted) !important;
+}
+
+input,
+select,
+textarea,
+.field-input,
+#input-text {
+  background: var(--labs-surface) !important;
+  color: var(--labs-text) !important;
+  border: 1px solid var(--labs-border) !important;
+}
+
+.chip,
+.chiplink,
+.btn,
+button,
+.pill {
+  background: var(--labs-surface) !important;
+  color: var(--labs-text) !important;
+  border: 1px solid var(--labs-border) !important;
+}
+
+.chip.primary,
+.chiplink.primary,
+.btn.primary,
+button.primary,
+.pill.primary,
+.poster .type {
+  background: var(--labs-accent-soft) !important;
+  color: var(--labs-accent) !important;
+  border-color: #b7d8c8 !important;
+}
+
+.btn.primary,
+button.primary {
+  font-weight: 800 !important;
+}
+
+.chiplink:hover,
+.btn:hover,
+button:hover,
+.poster:hover {
+  transform: none !important;
+  filter: none !important;
+  background: var(--labs-surface) !important;
+}
+
+.toast {
+  color: var(--labs-text) !important;
+}
