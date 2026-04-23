@@ -560,6 +560,26 @@
                     const shippingAmount = Number.parseFloat(shipping) || 0;
                     const total = Number((subtotal + shippingAmount).toFixed(2));
                     const sessionVersion = ApplePaySession.supportsVersion(4) ? 4 : 3;
+                    const buildLineItems = function (shipAmount) {
+                        return [
+                            { label: 'Subtotal', amount: String(subtotal.toFixed(2)) },
+                            { label: 'Shipping', amount: String((Number.parseFloat(shipAmount) || 0).toFixed(2)) }
+                        ];
+                    };
+                    const buildTotal = function (shipAmount) {
+                        const grandTotal = Number((subtotal + (Number.parseFloat(shipAmount) || 0)).toFixed(2));
+                        return {
+                            label: 'NutriThrive',
+                            type: 'final',
+                            amount: String(grandTotal.toFixed(2))
+                        };
+                    };
+                    const initialShippingMethod = {
+                        label: shippingAmount === 0 ? 'Free Shipping' : 'Standard Shipping',
+                        detail: countryCode || 'Shipping',
+                        amount: String(shippingAmount.toFixed(2)),
+                        identifier: 'standard'
+                    };
 
                     const paymentRequest = {
                         countryCode: cfg.countryCode || countryCode || 'AU',
@@ -568,15 +588,9 @@
                         supportedNetworks: cfg.supportedNetworks || ['visa', 'masterCard', 'amex'],
                         requiredShippingContactFields: ['name', 'phone', 'email', 'postalAddress'],
                         requiredBillingContactFields: ['postalAddress'],
-                        lineItems: [
-                            { label: 'Subtotal', amount: String(subtotal.toFixed(2)) },
-                            { label: 'Shipping', amount: String(shippingAmount.toFixed(2)) }
-                        ],
-                        total: {
-                            label: 'NutriThrive',
-                            type: 'final',
-                            amount: String(total.toFixed(2))
-                        }
+                        shippingMethods: [initialShippingMethod],
+                        lineItems: buildLineItems(shippingAmount),
+                        total: buildTotal(shippingAmount)
                     };
 
                     let session;
@@ -599,6 +613,33 @@
                             session.abort();
                             alert('Apple Pay merchant validation failed.');
                         });
+                    };
+
+                    session.onshippingcontactselected = function (event) {
+                        const selectedCountry = (event && event.shippingContact && event.shippingContact.countryCode) || countryCode;
+                        const recalculated = window.ShippingRates ? window.ShippingRates.calculate(selectedCountry, cart.items, subtotal) : 0;
+                        const recalculatedShipping = Number.parseFloat(recalculated) || 0;
+                        const method = [{
+                            label: recalculatedShipping === 0 ? 'Free Shipping' : 'Standard Shipping',
+                            detail: selectedCountry || 'Shipping',
+                            amount: String(recalculatedShipping.toFixed(2)),
+                            identifier: 'standard'
+                        }];
+                        session.completeShippingContactSelection(
+                            ApplePaySession.STATUS_SUCCESS,
+                            method,
+                            buildTotal(recalculatedShipping),
+                            buildLineItems(recalculatedShipping)
+                        );
+                    };
+
+                    session.onshippingmethodselected = function (event) {
+                        const methodAmount = event && event.shippingMethod ? Number.parseFloat(event.shippingMethod.amount) || 0 : shippingAmount;
+                        session.completeShippingMethodSelection(
+                            ApplePaySession.STATUS_SUCCESS,
+                            buildTotal(methodAmount),
+                            buildLineItems(methodAmount)
+                        );
                     };
 
                     session.onpaymentauthorized = function (event) {
