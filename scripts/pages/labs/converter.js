@@ -235,6 +235,51 @@
     return new Blob([pdfBytes], { type: "application/pdf" });
   }
 
+  async function imageFileToWebpBlob(file) {
+    const objectUrl = URL.createObjectURL(file);
+    try {
+      const img = await new Promise((resolve, reject) => {
+        const el = new Image();
+        el.onload = () => resolve(el);
+        el.onerror = () => reject(new Error("Could not read image: " + file.name));
+        el.src = objectUrl;
+      });
+
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth || img.width;
+      canvas.height = img.naturalHeight || img.height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("Canvas is not available in this browser.");
+      ctx.drawImage(img, 0, 0);
+
+      const webpBlob = await new Promise((resolve) => canvas.toBlob(resolve, "image/webp", 0.9));
+      if (!webpBlob) {
+        throw new Error("WebP conversion failed for: " + file.name);
+      }
+      return webpBlob;
+    } finally {
+      URL.revokeObjectURL(objectUrl);
+    }
+  }
+
+  async function imagesToWebp(imageFiles) {
+    const files = imageFiles.slice().sort((a, b) => a.name.localeCompare(b.name));
+    if (!files.length) throw new Error("Upload one or more image files.");
+
+    const outputs = [];
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      setStatus("Converting image " + (i + 1) + "/" + files.length + ": " + file.name);
+      const webpBlob = await imageFileToWebpBlob(file);
+      const baseName = file.name.replace(/\.[^.]+$/, "") || "image_" + (i + 1);
+      outputs.push({
+        filename: baseName + ".webp",
+        blob: webpBlob
+      });
+    }
+    return outputs;
+  }
+
   async function pdfToImagesZip(pdfBytes, dpi) {
     const zip = new JSZip();
     const loadingTask = pdfjsLib.getDocument({ data: pdfBytes });
@@ -795,6 +840,10 @@
       hint: "Upload multiple images (PNG/JPG). Output: multi-page PDF.",
       show: []
     },
+    image_to_webp: {
+      hint: "Upload image file(s). Output: WebP.",
+      show: []
+    },
     pdf_to_image: {
       hint: "Upload 1 PDF. Output: ZIP of 300 DPI PNG pages.",
       show: ["fieldDpi"]
@@ -921,6 +970,20 @@
         if (!images.length) throw new Error("Upload one or more images.");
         const blob = await imagesToPdf(images);
         addDownload("Images → PDF", blob, "images_to_pdf.pdf");
+      } else if (tool === "image_to_webp") {
+        const images = files.filter((f) => f.type.startsWith("image/"));
+        if (!images.length) throw new Error("Upload one or more image files.");
+        const webpFiles = await imagesToWebp(images);
+
+        if (webpFiles.length === 1) {
+          addDownload("WebP file", webpFiles[0].blob, webpFiles[0].filename);
+        } else {
+          setStatus("Creating ZIP...");
+          const zip = new JSZip();
+          webpFiles.forEach((item) => zip.file(item.filename, item.blob));
+          const zipBlob = await zip.generateAsync({ type: "blob" });
+          addDownload("WebP files (ZIP)", zipBlob, "images_to_webp.zip");
+        }
       } else if (tool === "pdf_to_image") {
         const pdf = files[0];
         if (!pdf || (!pdf.type.includes("pdf") && !pdf.name.toLowerCase().endsWith(".pdf"))) {
