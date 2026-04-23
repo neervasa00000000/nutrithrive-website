@@ -1,26 +1,60 @@
 import { createHmac, timingSafeEqual } from "crypto";
 
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 20;
+const requestBuckets = new Map();
+
+function getHeader(event, key) {
+    const headers = event?.headers || {};
+    if (headers[key] !== undefined) return headers[key];
+    const lower = key.toLowerCase();
+    const found = Object.keys(headers).find((name) => name.toLowerCase() === lower);
+    return found ? headers[found] : undefined;
+}
+
+function getClientIp(event) {
+    const forwardedFor = String(getHeader(event, "x-forwarded-for") || "").split(",")[0].trim();
+    const netlifyIp = String(getHeader(event, "x-nf-client-connection-ip") || "").trim();
+    const fallback = String(event?.requestContext?.identity?.sourceIp || "").trim();
+    return forwardedFor || netlifyIp || fallback || "unknown";
+}
+
+function isRateLimited(key, limit = RATE_LIMIT_MAX_REQUESTS, windowMs = RATE_LIMIT_WINDOW_MS) {
+    const now = Date.now();
+    const bucket = requestBuckets.get(key);
+    if (!bucket || now - bucket.windowStart >= windowMs) {
+        requestBuckets.set(key, { count: 1, windowStart: now });
+        return false;
+    }
+    bucket.count += 1;
+    return bucket.count > limit;
+}
+
 export async function handler(event) {
-    const requestOrigin = event?.headers?.origin || event?.headers?.Origin || "";
+    const requestOrigin = String(getHeader(event, "origin") || "");
     const allowedOrigins = new Set([
         "https://nutrithrive.com.au",
         "https://www.nutrithrive.com.au",
     ]);
+    const originAllowed = requestOrigin && allowedOrigins.has(requestOrigin);
+    const baseHeaders = {
+        "Content-Type": "application/json",
+        "Vary": "Origin",
+    };
 
-    // Tighten CORS: only allow our own frontend origin to call this endpoint.
-    if (requestOrigin && !allowedOrigins.has(requestOrigin)) {
+    if (!originAllowed) {
         return {
             statusCode: 403,
-            headers: { "Content-Type": "application/json" },
+            headers: baseHeaders,
             body: JSON.stringify({ error: "Origin not allowed" }),
         };
     }
 
     const headers = {
-        "Access-Control-Allow-Origin": requestOrigin || "https://nutrithrive.com.au",
+        ...baseHeaders,
+        "Access-Control-Allow-Origin": requestOrigin,
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Content-Type": "application/json",
     };
 
     if (event.httpMethod === "OPTIONS") {
@@ -36,6 +70,15 @@ export async function handler(event) {
     }
 
     try {
+        const clientIp = getClientIp(event);
+        if (isRateLimited(`paypal-capture:${clientIp}`)) {
+            return {
+                statusCode: 429,
+                headers,
+                body: JSON.stringify({ error: "Too many requests" }),
+            };
+        }
+
         const { orderID, captureToken } = JSON.parse(event.body || "{}");
         // PayPal order IDs are typically an opaque alphanumeric string (no "order-" prefix).
         const orderIdOk = typeof orderID === "string" && /^[A-Za-z0-9]{10,64}$/.test(orderID);

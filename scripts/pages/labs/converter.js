@@ -297,6 +297,9 @@
       await page.render({ canvasContext: ctx, viewport }).promise;
 
       const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+      if (!blob) {
+        throw new Error("PNG conversion failed for page " + pageNum);
+      }
       zip.file("page_" + pageNum + ".png", blob);
     }
 
@@ -698,6 +701,9 @@
 
       // Convert rendered canvas to JPEG bytes
       const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", jpegQuality));
+      if (!blob) {
+        throw new Error("JPEG conversion failed for page " + pageNum);
+      }
       const bytes = new Uint8Array(await blob.arrayBuffer());
       const embedded = await out.embedJpg(bytes);
 
@@ -805,6 +811,9 @@
       out.addPage([width, height]);
 
       const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", 0.9));
+      if (!blob) {
+        throw new Error("JPEG conversion failed for page " + pageNum);
+      }
       const bytes = new Uint8Array(await blob.arrayBuffer());
       const embedded = await out.embedJpg(bytes);
       const newPage = out.getPages()[out.getPages().length - 1];

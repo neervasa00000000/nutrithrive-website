@@ -12,7 +12,6 @@
   // Unified pricing (confirmed by client)
   const PRICES = {
     moringa: { price: 10, unit: '100g', url: '/products/moringa-powder/' },
-    curry: { price: 6, unit: '30g', url: '/products/curry-leaves/' },
     tea: { price: 7, unit: '100g', url: '/products/black-tea/' }
   };
 

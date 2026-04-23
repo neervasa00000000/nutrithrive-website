@@ -1,4 +1,8 @@
 // Newsletter Popup for Blog Pages
+if (window.__NT_NEWSLETTER_POPUP_INITIALIZED__) {
+    console.log('[NutriThrive] newsletter-popup.js already initialized, skipping duplicate load');
+} else {
+window.__NT_NEWSLETTER_POPUP_INITIALIZED__ = true;
 (function() {
     'use strict';
 
@@ -183,3 +187,4 @@
         initPopup();
     }
 })();
+}

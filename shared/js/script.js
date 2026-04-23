@@ -1,3 +1,7 @@
+if (window.__NT_GLOBAL_SCRIPT_INITIALIZED__) {
+    console.log('[NutriThrive] script.js already initialized, skipping duplicate load');
+} else {
+window.__NT_GLOBAL_SCRIPT_INITIALIZED__ = true;
 console.log('[NutriThrive] script.js loaded');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -392,3 +396,4 @@ window.addEventListener('load', () => {
         loadCountrySelector();
     }
 })();
+}

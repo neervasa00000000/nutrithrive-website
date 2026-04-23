@@ -1,6 +1,11 @@
 // Shopping Cart System
 // Uses localStorage to persist cart across pages
 
+if (window.__NT_CART_INITIALIZED__) {
+    console.log('[NutriThrive] cart.js already initialized, skipping duplicate load');
+} else {
+window.__NT_CART_INITIALIZED__ = true;
+
 const CART_STORAGE_KEY = 'nutrithrive_cart';
 
 // Cart data structure:
@@ -293,3 +298,4 @@ window.addProductToCartAndRedirect = function(id, name, price, image) {
         window.location.href = 'https://nutrithrive.com.au/products/moringa-powder/';
     }
 };
+}

@@ -2,6 +2,13 @@
 // Based on color-coded tables from shipping_rates.xlsx
 // GREEN = Australia, BLUE = International Key Destinations, YELLOW = International Other Destinations
 
+if (typeof window !== 'undefined' && window.__NT_SHIPPING_RATES_INITIALIZED__) {
+    console.log('[NutriThrive] shipping-rates.js already initialized, skipping duplicate load');
+} else {
+if (typeof window !== 'undefined') {
+    window.__NT_SHIPPING_RATES_INITIALIZED__ = true;
+}
+
 // GREEN section - Australia (Domestic)
 const GREEN_RATES = {
     'Up to 250g': { zone1: 8.73, zone2: 9.22, zone3: 9.70 },
@@ -714,3 +721,4 @@ window.ShippingRates = {
     getCountryInfo: getCountryInfo,
     getCountryList: getCountryList
 };
+}
