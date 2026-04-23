@@ -206,6 +206,52 @@
             cursor: pointer;
             margin-top: 1.5rem;
         }
+        .you-also-viewed {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        .you-also-viewed h2 {
+            color: #2d5a3d;
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+        }
+        .also-viewed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 1rem;
+        }
+        .also-viewed-card {
+            border: 1px solid #e5e1d8;
+            border-radius: 10px;
+            padding: 0.75rem;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .also-viewed-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: #f8f5ec;
+        }
+        .also-viewed-card a {
+            color: #1a2e22;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+        .also-viewed-card a:hover {
+            color: #2d5a3d;
+        }
+        .also-viewed-price {
+            color: #2d5a3d;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
         .checkout-btn:hover {
             background: #1f3f2a;
         }
@@ -500,6 +546,11 @@
         <div id="cart-content">
             <!-- Cart items will be loaded here -->
         </div>
+
+        <div id="you-also-viewed" class="you-also-viewed" style="display: none;">
+            <h2>You also viewed</h2>
+            <div id="also-viewed-grid" class="also-viewed-grid"></div>
+        </div>
         
         <div id="cart-summary" class="cart-summary" style="display: none;">
             <div class="summary-row">
@@ -518,6 +569,9 @@
                 <span>Total</span>
                 <span id="total">$0.00</span>
             </div>
+            <a id="proceed-to-payment" class="checkout-btn" href="/payment" style="display: inline-block; text-align: center; text-decoration: none; box-sizing: border-box;">
+                Proceed to Payment
+            </a>
         </div>
         
         <!-- Payment Section -->
@@ -555,6 +609,7 @@
     <!-- Apple Pay JS SDK -->
     <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
     <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/recently-viewed.js"></script>
     <script src="/scripts/global/cart-header.js"></script>
     <script src="/scripts/global/shipping-rates.js"></script>
     <script src="/scripts/global/script.js"></script>
@@ -563,6 +618,7 @@
             const cart = window.Cart.get();
             const cartContent = document.getElementById('cart-content');
             const cartSummary = document.getElementById('cart-summary');
+            const alsoViewedWrap = document.getElementById('you-also-viewed');
             
             if (!cart || !cart.items || cart.items.length === 0) {
                 cartContent.innerHTML = `
@@ -573,6 +629,7 @@
                     </div>
                 `;
                 cartSummary.style.display = 'none';
+                if (alsoViewedWrap) alsoViewedWrap.style.display = 'none';
                 return;
             }
 
@@ -780,6 +837,7 @@
             });
 
             cartContent.appendChild(table);
+            renderAlsoViewed(cart.items);
             
             // Update summary
             const subtotal = Number((subtotalFromItems || 0).toFixed(2));
@@ -817,18 +875,55 @@
             
             // Calculate shipping if country is selected
             updateCartShipping();
-            // Try to set up Apple Pay (only shows on eligible devices)
-            setupApplePay();
-            
-            // Show payment section
-            document.getElementById('payment-section').style.display = 'block';
-            
-            // Initialize PayPal buttons (no country required, will get from PayPal)
-            if (typeof paypal !== 'undefined') {
-                setTimeout(initPayPal, 200);
-            }
-            
             cartSummary.style.display = 'block';
+        }
+
+        function renderAlsoViewed(cartItems) {
+            const wrap = document.getElementById('you-also-viewed');
+            const grid = document.getElementById('also-viewed-grid');
+            if (!wrap || !grid || !window.RecentlyViewed || typeof window.RecentlyViewed.getAll !== 'function') return;
+
+            const cartIds = new Set((cartItems || []).map(item => String(item.id || '')));
+            const items = window.RecentlyViewed.getAll().filter(function (item) {
+                return item && item.id && !cartIds.has(String(item.id));
+            }).slice(0, 4);
+
+            if (items.length === 0) {
+                wrap.style.display = 'none';
+                grid.replaceChildren();
+                return;
+            }
+
+            grid.replaceChildren();
+            items.forEach(function (item) {
+                const card = document.createElement('div');
+                card.className = 'also-viewed-card';
+
+                if (item.image) {
+                    const img = document.createElement('img');
+                    img.src = item.image;
+                    img.alt = String(item.name || '').slice(0, 100);
+                    card.appendChild(img);
+                }
+
+                const link = document.createElement('a');
+                link.href = item.url || '/products/';
+                link.textContent = String(item.name || 'View product').slice(0, 120);
+                card.appendChild(link);
+
+                const price = document.createElement('div');
+                price.className = 'also-viewed-price';
+                const value = Number.parseFloat(item.price);
+                if (Number.isFinite(value)) {
+                    price.textContent = `$${value.toFixed(2)} AUD`;
+                } else {
+                    price.textContent = 'View details';
+                }
+                card.appendChild(price);
+
+                grid.appendChild(card);
+            });
+            wrap.style.display = 'block';
         }
         
         // Update shipping cost on cart page

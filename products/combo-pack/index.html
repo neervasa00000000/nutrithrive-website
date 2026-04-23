@@ -871,6 +871,7 @@
         window.toggleAccordion = toggleAccordion;
     </script>
     <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/recently-viewed.js"></script>
     <script src="/scripts/global/cart-header.js"></script>
     <script src="/scripts/global/script.js"></script>
     <!-- Ensure hamburger menu works - simple inline fallback -->
@@ -931,6 +932,18 @@
       function buyComboPackNow() {
         addComboPackToCart();
         window.location.href = "/cart";
+      }
+    </script>
+
+    <script>
+      if (window.RecentlyViewed && typeof window.RecentlyViewed.track === 'function') {
+        window.RecentlyViewed.track({
+          id: 'combo-pack',
+          name: 'Premium Combo Pack',
+          price: 17.00,
+          image: '/assets/images/homepage/product-showcase/combo.webp',
+          url: window.location.pathname
+        });
       }
     </script>
 </body>

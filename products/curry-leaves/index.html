@@ -476,6 +476,7 @@
     </footer>
 
     <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/recently-viewed.js"></script>
     <script src="/scripts/global/cart-header.js"></script>
     <script src="/scripts/global/script.js"></script>
     <script type="application/ld+json">
@@ -590,6 +591,18 @@
           setupHamburger();
         }
       })();
+    </script>
+
+    <script>
+      if (window.RecentlyViewed && typeof window.RecentlyViewed.track === 'function') {
+        window.RecentlyViewed.track({
+          id: 'curry-leaves',
+          name: 'Dried Curry Leaves',
+          price: 7.00,
+          image: '/assets/images/homepage/product-showcase/Curry.webp',
+          url: window.location.pathname
+        });
+      }
     </script>
 </body>
 </html>
