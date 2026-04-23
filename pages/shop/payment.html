@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="/styles/global/style.css">
     <style>
         :root {
-            --checkout-border: #e6e6e6;
-            --checkout-text: #1f1f1f;
-            --checkout-muted: #666;
-            --checkout-soft: #f7f7f8;
+            --checkout-border: #d7d2c6;
+            --checkout-text: #1f2f26;
+            --checkout-muted: #5f6d63;
+            --checkout-soft: #f4f1ea;
         }
         body {
-            background: #f7f7f7;
+            background: var(--checkout-soft);
             color: var(--checkout-text);
             margin: 0;
         }
@@ -29,7 +29,7 @@
             max-width: 1180px;
             margin: 1rem auto 0;
             padding: 0 1rem 2rem;
-            background: #fff;
+            background: transparent;
             border: none;
             border-radius: 0;
             box-shadow: none;
@@ -37,7 +37,7 @@
         .checkout-header {
             text-align: center;
             padding: 1rem 0 0.8rem;
-            border-bottom: 1px solid var(--checkout-border);
+            border-bottom: 1px solid #d8d3c8;
             margin-bottom: 1rem;
         }
         .checkout-header .logo {
@@ -63,10 +63,10 @@
         }
         .checkout-section {
             margin-bottom: 1.2rem;
-            background: #fff;
+            background: #f8f5ee;
             border: none;
-            border-radius: 0;
-            padding: 0;
+            border-radius: 10px;
+            padding: 1rem;
         }
         .section-title {
             margin: 0 0 0.55rem 0;
@@ -78,7 +78,7 @@
             margin: 0 0 0.45rem 0;
             font-size: 1rem;
             font-weight: 700;
-            color: #111;
+            color: #1f2f26;
             display: block;
         }
         .muted {
@@ -89,12 +89,12 @@
             width: 100%;
             box-sizing: border-box;
             height: 44px;
-            border: 1px solid #d9d9d9;
+            border: 1px solid #cfc7b8;
             border-radius: 6px;
             padding: 0 0.8rem;
             font-size: 0.95rem;
             background: #fff;
-            color: #111;
+            color: #1f2f26;
             display: block;
         }
         .stack-gap {
@@ -135,7 +135,7 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            border: 2px solid #d7384d;
+            border: 2px solid #2d5a3d;
             box-sizing: border-box;
             position: relative;
         }
@@ -143,7 +143,7 @@
             content: "";
             width: 6px;
             height: 6px;
-            background: #d7384d;
+            background: #2d5a3d;
             border-radius: 50%;
             position: absolute;
             top: 50%;
@@ -151,15 +151,15 @@
             transform: translate(-50%, -50%);
         }
         .summary-side {
-            border-left: 1px solid #efefef;
+            border-left: 1px solid #d8d3c8;
             padding-left: 1rem;
             position: sticky;
             top: 1rem;
-            background: #fff;
+            background: #efe8da;
             min-height: calc(100vh - 4rem);
             padding-right: 0;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
         .order-item {
             display: flex;
@@ -199,7 +199,7 @@
             border: none;
             background: transparent;
             border-radius: 0;
-            color: #333;
+            color: #395846;
             font-size: 0.9rem;
             line-height: 1.45;
         }
@@ -231,12 +231,12 @@
             }
             .summary-side {
                 border-left: none;
-                border-top: 1px solid var(--checkout-border);
+                border-top: 1px solid #d8d3c8;
                 padding-left: 0;
                 padding-top: 1rem;
                 position: static;
                 min-height: auto;
-                background: #fff;
+                background: #efe8da;
                 border-radius: 0;
             }
         }
@@ -259,30 +259,11 @@
         <div class="checkout-grid">
             <main class="checkout-main">
                 <section class="checkout-section">
-                    <p class="section-label">Contact</p>
-                    <input class="input" type="email" placeholder="Email" autocomplete="email">
-                </section>
-
-                <section class="checkout-section">
-                    <p class="section-label">Delivery address</p>
-                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()">
-                        <option value="">Select your country</option>
-                    </select>
-                    <div class="form-grid-2">
-                        <input class="input" type="text" placeholder="First name">
-                        <input class="input" type="text" placeholder="Last name">
-                    </div>
-                    <input class="input stack-gap" type="text" placeholder="Address">
-                    <div class="form-grid-3">
-                        <input class="input" type="text" placeholder="City">
-                        <input class="input" type="text" placeholder="State">
-                        <input class="input" type="text" placeholder="Postcode">
-                    </div>
-                </section>
-
-                <section class="checkout-section">
                     <p class="section-label">Payment</p>
                     <p class="muted" style="margin:0 0 0.6rem 0;">All transactions are secure and encrypted.</p>
+                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()" style="display:none;">
+                        <option value="AU" selected>Australia</option>
+                    </select>
                     <div class="radio-card">
                         <div class="radio-row">
                             <div class="radio-left"><span class="dot active"></span><span>Pay with PayPal / Card</span></div>
@@ -344,7 +325,7 @@
             const select = document.getElementById('shipping-country');
             if (!select || !window.ShippingRates || !window.ShippingRates.getCountryList) return;
             const countries = window.ShippingRates.getCountryList();
-            select.innerHTML = '<option value="">Select your country</option>';
+            select.innerHTML = '';
             countries.forEach(country => {
                 const option = document.createElement('option');
                 option.value = country.code;
@@ -352,7 +333,12 @@
                 select.appendChild(option);
             });
             const saved = localStorage.getItem('nutrithrive_shipping_country');
-            if (saved) select.value = saved;
+            if (saved) {
+                select.value = saved;
+            } else if ([...select.options].some(option => option.value === 'AU')) {
+                select.value = 'AU';
+                localStorage.setItem('nutrithrive_shipping_country', 'AU');
+            }
         }
 
         function renderOrderReview() {
