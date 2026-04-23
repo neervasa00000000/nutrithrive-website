@@ -21,7 +21,7 @@
             --checkout-soft: #f7f7f8;
         }
         body {
-            background: #f4f1ea;
+            background: #f7f7f7;
             color: var(--checkout-text);
             margin: 0;
         }
@@ -30,9 +30,9 @@
             margin: 1rem auto 0;
             padding: 0 1rem 2rem;
             background: #fff;
-            border: 1px solid var(--checkout-border);
-            border-radius: 14px;
-            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
         }
         .checkout-header {
             text-align: center;
@@ -51,8 +51,8 @@
         }
         .checkout-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 400px;
-            gap: 0;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 1.5rem;
             align-items: start;
         }
         .checkout-main {
@@ -62,15 +62,15 @@
             padding: 0 1.25rem 1.25rem;
         }
         .checkout-section {
-            margin-bottom: 0.9rem;
+            margin-bottom: 1.2rem;
             background: #fff;
-            border: 1px solid #ece8df;
-            border-radius: 10px;
-            padding: 0.9rem;
+            border: none;
+            border-radius: 0;
+            padding: 0;
         }
         .checkout-section h2 {
-            margin: 0 0 0.45rem 0;
-            font-size: 1.45rem;
+            margin: 0 0 0.35rem 0;
+            font-size: 1.35rem;
             color: #111;
             display: block;
         }
@@ -81,8 +81,8 @@
             font-weight: 700;
         }
         .section-label {
-            margin: 0 0 0.55rem 0;
-            font-size: 1.05rem;
+            margin: 0 0 0.45rem 0;
+            font-size: 1rem;
             font-weight: 700;
             color: #111;
             display: block;
@@ -101,8 +101,8 @@
             width: 100%;
             box-sizing: border-box;
             height: 44px;
-            border: 1px solid var(--checkout-border);
-            border-radius: 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
             padding: 0 0.8rem;
             font-size: 0.95rem;
             background: #fff;
@@ -124,12 +124,7 @@
             gap: 0.55rem;
             margin-top: 0.55rem;
         }
-        .radio-card {
-            border: none;
-            border-radius: 0;
-            background: transparent;
-            overflow: visible;
-        }
+        .radio-card { border: none; }
         .radio-row {
             display: flex;
             justify-content: space-between;
@@ -137,7 +132,7 @@
             padding: 0;
             border-bottom: none;
             font-size: 0.95rem;
-            margin-bottom: 0.45rem;
+            margin-bottom: 0.6rem;
         }
         .radio-row:last-child {
             border-bottom: none;
@@ -168,15 +163,15 @@
             transform: translate(-50%, -50%);
         }
         .summary-side {
-            border-left: 1px solid var(--checkout-border);
-            padding-left: 1.25rem;
+            border-left: 1px solid #efefef;
+            padding-left: 1rem;
             position: sticky;
             top: 1rem;
-            background: #faf9f6;
+            background: #fff;
             min-height: calc(100vh - 4rem);
-            padding-right: 1rem;
-            border-top-right-radius: 14px;
-            border-bottom-right-radius: 14px;
+            padding-right: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
         }
         .order-item {
             display: flex;
@@ -211,25 +206,18 @@
             font-size: 0.92rem;
         }
         .card-help {
-            margin: 0 0 0.65rem 0;
+            margin: 0 0 0.75rem 0;
             padding: 0;
             border: none;
             background: transparent;
             border-radius: 0;
-            color: #254b2f;
+            color: #333;
             font-size: 0.9rem;
             line-height: 1.45;
         }
-        .card-preview {
-            border: none;
-            border-radius: 0;
-            background: transparent;
+        .payment-actions {
             padding: 0;
-            margin: 0 0 0.75rem 0;
-        }
-        .card-preview .section-label {
-            margin-bottom: 0.35rem;
-            font-size: 0.95rem;
+            margin: 0;
         }
         #applepay-container apple-pay-button,
         #nt-applepay-btn {
@@ -284,7 +272,7 @@
             <main class="checkout-main">
                 <section class="checkout-section">
                     <h2>Payment</h2>
-                    <p class="methods-text">Available methods: Debit card, Credit card, Apple Pay, and PayPal.</p>
+                    <p class="methods-text">Pay securely with PayPal, Apple Pay, or Debit/Credit Card.</p>
                 </section>
 
                 <section class="checkout-section">
@@ -302,21 +290,6 @@
                         <input class="input" type="text" placeholder="Last name">
                     </div>
                     <input class="input stack-gap" type="text" placeholder="Address">
-                    <div class="form-grid-2">
-                        <input class="input" type="text" placeholder="Suburb">
-                        <input class="input" type="text" placeholder="Postcode">
-                    </div>
-                </section>
-
-                <section class="checkout-section">
-                    <p class="section-label">Billing address</p>
-                    <p class="muted" style="margin:0 0 0.55rem 0;">Use the cardholder billing details for debit/credit card payments.</p>
-                    <div class="form-grid-2">
-                        <input class="input" type="text" placeholder="First name">
-                        <input class="input" type="text" placeholder="Last name">
-                    </div>
-                    <input class="input stack-gap" type="text" placeholder="Address line 1">
-                    <input class="input stack-gap" type="text" placeholder="Address line 2 (optional)">
                     <div class="form-grid-3">
                         <input class="input" type="text" placeholder="City">
                         <input class="input" type="text" placeholder="State">
@@ -332,17 +305,8 @@
                             <div class="radio-left"><span class="dot active"></span><span>Pay with PayPal / Card</span></div>
                             <span class="muted">Secure</span>
                         </div>
-                        <div style="padding:0.8rem;">
-                            <p class="card-help">To pay by <strong>debit/credit card</strong>, use the <strong>Debit / Credit Card</strong> option below. The secure form stays open in this section.</p>
-                            <div class="card-preview">
-                                <p class="section-label">Card details</p>
-                                <input class="input" type="text" placeholder="Card number">
-                                <div class="form-grid-2">
-                                    <input class="input" type="text" placeholder="Expiry (MM/YY)">
-                                    <input class="input" type="text" placeholder="CVV">
-                                </div>
-                                <input class="input stack-gap" type="text" placeholder="Name on card">
-                            </div>
+                        <div class="payment-actions">
+                            <p class="card-help">Use the buttons below to pay with PayPal, Apple Pay, or Debit/Credit Card.</p>
                             <div id="applepay-wrapper" style="display:none; margin: 0 0 0.7rem 0;">
                                 <div id="applepay-container"></div>
                             </div>
