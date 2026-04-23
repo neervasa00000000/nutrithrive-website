@@ -222,20 +222,22 @@
             gap: 1rem;
         }
         .also-viewed-card {
-            border: 1px solid #e5e1d8;
-            border-radius: 10px;
-            padding: 0.75rem;
-            background: #fff;
+            border: none;
+            border-radius: 0;
+            padding: 0.5rem 0;
+            background: transparent;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            align-items: center;
+            text-align: center;
         }
         .also-viewed-card img {
             width: 100%;
             height: 110px;
             object-fit: contain;
             border-radius: 6px;
-            background: #f8f5ec;
+            background: transparent;
         }
         .also-viewed-card a {
             color: #1a2e22;
@@ -251,6 +253,29 @@
             color: #2d5a3d;
             font-weight: 700;
             font-size: 0.95rem;
+        }
+        .also-viewed-add-btn {
+            margin-top: 0.25rem;
+            width: 100%;
+            padding: 0.5rem 0;
+            min-height: 40px;
+            background: none;
+            border: none;
+            color: #2d5a3d;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            text-decoration: underline;
+        }
+        .also-viewed-add-btn:hover {
+            text-decoration: none;
+            opacity: 0.85;
+        }
+        .also-viewed-add-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            text-decoration: none;
         }
         .checkout-btn:hover {
             background: #1f3f2a;
@@ -618,6 +643,7 @@
             const cart = window.Cart.get();
             const cartContent = document.getElementById('cart-content');
             const cartSummary = document.getElementById('cart-summary');
+            const paymentSection = document.getElementById('payment-section');
             const alsoViewedWrap = document.getElementById('you-also-viewed');
             
             if (!cart || !cart.items || cart.items.length === 0) {
@@ -629,6 +655,7 @@
                     </div>
                 `;
                 cartSummary.style.display = 'none';
+                if (paymentSection) paymentSection.style.display = 'none';
                 if (alsoViewedWrap) alsoViewedWrap.style.display = 'none';
                 return;
             }
@@ -876,6 +903,7 @@
             // Calculate shipping if country is selected
             updateCartShipping();
             cartSummary.style.display = 'block';
+            if (paymentSection) paymentSection.style.display = 'block';
         }
 
         function renderAlsoViewed(cartItems) {
@@ -920,6 +948,33 @@
                     price.textContent = 'View details';
                 }
                 card.appendChild(price);
+
+                const addButton = document.createElement('button');
+                addButton.type = 'button';
+                addButton.className = 'also-viewed-add-btn';
+                addButton.textContent = 'Add to Cart';
+
+                const productId = safeId(item.id);
+                const productName = String(item.name || '').slice(0, 120);
+                const productImage = safeImageSrc(item.image);
+                const productPrice = Number.parseFloat(item.price);
+
+                if (!productId || !productName || !Number.isFinite(productPrice) || productPrice < 0) {
+                    addButton.disabled = true;
+                } else {
+                    addButton.addEventListener('click', function () {
+                        if (!window.Cart || typeof window.Cart.add !== 'function') return;
+                        window.Cart.add({
+                            id: productId,
+                            name: productName,
+                            price: productPrice,
+                            image: productImage,
+                            quantity: 1
+                        });
+                        renderCart();
+                    });
+                }
+                card.appendChild(addButton);
 
                 grid.appendChild(card);
             });
