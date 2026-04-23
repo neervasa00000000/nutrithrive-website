@@ -573,7 +573,7 @@
         </div>
 
         <div id="you-also-viewed" class="you-also-viewed" style="display: none;">
-            <h2>You also viewed</h2>
+            <h2>You may also like</h2>
             <div id="also-viewed-grid" class="also-viewed-grid"></div>
         </div>
         
@@ -906,15 +906,33 @@
             if (paymentSection) paymentSection.style.display = 'block';
         }
 
+        function getFallbackRecommendations() {
+            return [
+                { id: 'moringa-powder', name: 'Moringa Powder', price: 11.00, image: '/assets/images/homepage/product-showcase/Moringa.webp', url: '/products/moringa-powder/' },
+                { id: 'moringa-soap', name: 'Moringa Soap', price: 7.00, image: '/assets/images/homepage/product-showcase/moringa_soap.webp', url: '/products/moringa-soap/' },
+                { id: 'curry-leaves', name: 'Dried Curry Leaves', price: 7.00, image: '/assets/images/homepage/product-showcase/Curry.webp', url: '/products/curry-leaves/' },
+                { id: 'black-tea', name: 'Premium Black Tea', price: 7.50, image: '/assets/images/homepage/product-showcase/BlackTea.webp', url: '/products/black-tea/' }
+            ];
+        }
+
         function renderAlsoViewed(cartItems) {
             const wrap = document.getElementById('you-also-viewed');
             const grid = document.getElementById('also-viewed-grid');
-            if (!wrap || !grid || !window.RecentlyViewed || typeof window.RecentlyViewed.getAll !== 'function') return;
+            if (!wrap || !grid) return;
 
             const cartIds = new Set((cartItems || []).map(item => String(item.id || '')));
-            const items = window.RecentlyViewed.getAll().filter(function (item) {
-                return item && item.id && !cartIds.has(String(item.id));
-            }).slice(0, 4);
+            let items = [];
+            if (window.RecentlyViewed && typeof window.RecentlyViewed.getAll === 'function') {
+                items = window.RecentlyViewed.getAll().filter(function (item) {
+                    return item && item.id && !cartIds.has(String(item.id));
+                }).slice(0, 4);
+            }
+
+            if (items.length === 0) {
+                items = getFallbackRecommendations().filter(function (item) {
+                    return item && item.id && !cartIds.has(String(item.id));
+                }).slice(0, 4);
+            }
 
             if (items.length === 0) {
                 wrap.style.display = 'none';
