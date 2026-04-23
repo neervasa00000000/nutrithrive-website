@@ -78,21 +78,21 @@ export async function handler(event) {
         // Authoritative product catalog for server-side pricing/weighting.
         // SECURITY: Do not trust client-provided prices/names/amounts.
         const PRODUCT_CATALOG = {
-            "moringa-powder": { name: "100g Moringa", price: 10.50, weight: 100 },
-            "moringa-200g": { name: "200g Moringa", price: 20.49, weight: 200 },
-            "moringa-400g": { name: "3 + 1 = 400g Moringa", price: 31.60, weight: 400 },
-            "moringa-soap": { name: "Moringa Soap", price: 6.50, weight: 95 },
+            "moringa-powder": { name: "100g Moringa", price: 11.00, weight: 100 },
+            "moringa-200g": { name: "200g Moringa", price: 21.50, weight: 200 },
+            "moringa-400g": { name: "3 + 1 = 400g Moringa", price: 35.00, weight: 400 },
+            "moringa-soap": { name: "Moringa Soap", price: 7.00, weight: 95 },
             "moringa-soap-combo": { name: "Moringa 100g + Soap 95g", price: 17.00, weight: 195 },
-            "curry-leaves": { name: "Dried Curry Leaves", price: 6.45, weight: 30 },
-            "black-tea": { name: "Darjeeling Black Tea", price: 7.00, weight: 100 },
-            "combo-pack": { name: "Premium Combo Pack", price: 15.55, weight: 130 },
+            "curry-leaves": { name: "Dried Curry Leaves", price: 7.00, weight: 30 },
+            "black-tea": { name: "Darjeeling Black Tea", price: 7.50, weight: 100 },
+            "combo-pack": { name: "Premium Combo Pack", price: 17.00, weight: 130 },
 
             // Product page variations (cart ids are moringa-variation-1..6)
-            "moringa-variation-1": { name: "3 + 1 = 400g Moringa", price: 31.60, weight: 400 },
-            "moringa-variation-2": { name: "100g Moringa", price: 10.50, weight: 100 },
-            "moringa-variation-3": { name: "Combo Moringa + Dried Curry Leaves", price: 15.55, weight: 130 },
-            "moringa-variation-4": { name: "200g Moringa", price: 20.49, weight: 200 },
-            "moringa-variation-5": { name: "30g Dried Curry Leaves", price: 6.45, weight: 30 },
+            "moringa-variation-1": { name: "3 + 1 = 400g Moringa", price: 35.00, weight: 400 },
+            "moringa-variation-2": { name: "100g Moringa", price: 11.00, weight: 100 },
+            "moringa-variation-3": { name: "Combo Moringa + Dried Curry Leaves", price: 17.00, weight: 130 },
+            "moringa-variation-4": { name: "200g Moringa", price: 21.50, weight: 200 },
+            "moringa-variation-5": { name: "30g Dried Curry Leaves", price: 7.00, weight: 30 },
             "moringa-variation-6": { name: "Moringa 100g + Soap 95g", price: 17.00, weight: 195 },
         };
 

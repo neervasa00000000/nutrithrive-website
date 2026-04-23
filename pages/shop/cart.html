@@ -366,11 +366,29 @@
         @media (max-width: 768px) {
             .cart-table-header,
             .cart-item {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr) auto;
                 gap: 1rem;
             }
             .cart-table-header {
                 display: none;
+            }
+            .item-info {
+                grid-column: 1 / -1;
+            }
+            .quantity-controls {
+                grid-column: 1;
+                padding-left: 0;
+            }
+            .remove-btn {
+                grid-column: 2;
+                justify-self: end;
+                align-self: center;
+                margin-left: 1.25rem;
+            }
+            .cart-item > :nth-child(3),
+            .cart-item > :nth-child(4) {
+                grid-column: 1 / -1;
+                padding-left: 0 !important;
             }
             .item-info {
                 flex-direction: column;
