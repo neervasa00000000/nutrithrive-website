@@ -377,10 +377,12 @@
             }
             .quantity-controls {
                 grid-column: 1;
+                grid-row: 2;
                 padding-left: 0;
             }
             .remove-btn {
                 grid-column: 2;
+                grid-row: 2;
                 justify-self: end;
                 align-self: center;
                 margin-left: 1.25rem;
@@ -389,6 +391,12 @@
             .cart-item > :nth-child(4) {
                 grid-column: 1 / -1;
                 padding-left: 0 !important;
+            }
+            .cart-item > :nth-child(3) {
+                grid-row: 3;
+            }
+            .cart-item > :nth-child(4) {
+                grid-row: 4;
             }
             .item-info {
                 flex-direction: column;

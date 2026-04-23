@@ -893,12 +893,12 @@
     <script>
         // Product variations data
         const productVariations = {
-            'variation-1': { originalPrice: 56.00, price: 35.00, discount: 21.00, name: '3 + 1 = 400g Moringa', weight: 400, image: '/assets/images/homepage/product-showcase/thumbs/new3+1.webp' },
-            'variation-2': { originalPrice: 14.00, price: 11.00, discount: 3.00, name: '100g Moringa', weight: 100, image: '/assets/images/homepage/product-showcase/Moringa.webp' },
-            'variation-3': { originalPrice: 22.49, price: 17.00, discount: 5.49, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '/assets/images/homepage/product-showcase/combo.webp' },
-            'variation-4': { originalPrice: 28.00, price: 21.50, discount: 6.50, name: '200g Moringa', weight: 200, image: '/assets/images/homepage/product-showcase/Moringa.webp' },
-            'variation-5': { originalPrice: 8.49, price: 7.00, discount: 1.49, name: '30g Dried Curry Leaves', weight: 30, image: '/assets/images/homepage/product-showcase/Curry.webp' },
-            'variation-6': { originalPrice: 23.39, price: 17.00, discount: 6.39, name: 'Moringa 100g + Soap 95g', weight: 195, image: '/assets/images/homepage/product-showcase/moringasoap_combo.webp' }
+            'variation-1': { originalPrice: 56.00, price: 35.00, name: '3 + 1 = 400g Moringa', weight: 400, image: '/assets/images/homepage/product-showcase/thumbs/new3+1.webp' },
+            'variation-2': { originalPrice: 14.00, price: 11.00, name: '100g Moringa', weight: 100, image: '/assets/images/homepage/product-showcase/Moringa.webp' },
+            'variation-3': { originalPrice: 22.49, price: 17.00, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '/assets/images/homepage/product-showcase/combo.webp' },
+            'variation-4': { originalPrice: 28.00, price: 21.50, name: '200g Moringa', weight: 200, image: '/assets/images/homepage/product-showcase/Moringa.webp' },
+            'variation-5': { originalPrice: 8.49, price: 7.00, name: '30g Dried Curry Leaves', weight: 30, image: '/assets/images/homepage/product-showcase/Curry.webp' },
+            'variation-6': { originalPrice: 23.39, price: 17.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '/assets/images/homepage/product-showcase/moringasoap_combo.webp' }
         };
         
         function updateProductVariation() {
@@ -920,8 +920,9 @@
                     priceElement.textContent = `$${variation.price.toFixed(2)} AUD`;
                 }
                 if (discountTextElement) {
-                    const discountPercent = Math.round((variation.discount / variation.originalPrice) * 100);
-                    discountTextElement.textContent = `${discountPercent}% discount ($${variation.discount.toFixed(2)} AUD off)`;
+                    const discountAmount = Math.ceil((variation.originalPrice - variation.price) * 100) / 100;
+                    const discountPercent = Math.ceil((discountAmount / variation.originalPrice) * 100);
+                    discountTextElement.textContent = `${discountPercent}% discount ($${discountAmount.toFixed(2)} AUD off)`;
                 }
                 
                 const mainImage = document.getElementById('main-product-image');
