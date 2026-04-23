@@ -1,4 +1,8 @@
 // Add cart icon to header on all pages
+if (window.__NT_CART_HEADER_INITIALIZED__) {
+    console.log('[NutriThrive] cart-header.js already initialized, skipping duplicate load');
+} else {
+window.__NT_CART_HEADER_INITIALIZED__ = true;
 (function() {
     function addCartIcon() {
         const navLinks = document.querySelector('.nav-links');
@@ -79,3 +83,4 @@
         addCartIcon();
     }
 })();
+}

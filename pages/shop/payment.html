@@ -387,7 +387,8 @@
         </div>
     </footer>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=buttons,applepay,funding-eligibility"></script>
+    <script src="/scripts/global/paypal-client-config.js"></script>
+    <script src="/scripts/global/paypal-sdk-loader.js"></script>
     <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
     <script src="/scripts/global/cart.js"></script>
     <script src="/scripts/global/cart-header.js"></script>
@@ -447,7 +448,14 @@
                 const row = document.createElement('div');
                 row.className = 'order-item';
                 const left = document.createElement('div');
-                left.innerHTML = `<div class="order-item-name">${String(item.name || '').slice(0, 120)}</div><div class="muted">Qty: ${parseInt(item.quantity || 1, 10)}</div>`;
+                const name = document.createElement('div');
+                name.className = 'order-item-name';
+                name.textContent = String(item.name || '').slice(0, 120);
+                const qty = document.createElement('div');
+                qty.className = 'muted';
+                qty.textContent = 'Qty: ' + parseInt(item.quantity || 1, 10);
+                left.appendChild(name);
+                left.appendChild(qty);
                 const right = document.createElement('div');
                 right.textContent = money((parseFloat(item.price) || 0) * (parseInt(item.quantity || 1, 10) || 1));
                 row.appendChild(left);
@@ -478,16 +486,28 @@
             if (!container || typeof paypal === 'undefined') return;
             container.innerHTML = '';
             if (cardContainer) cardContainer.innerHTML = '';
+            const setPlaceholder = function(message) {
+                container.replaceChildren();
+                const p = document.createElement('p');
+                p.className = 'payment-placeholder';
+                p.textContent = message;
+                container.appendChild(p);
+            };
+            const showCheckoutError = function(err) {
+                const message = err && err.message ? err.message : 'Unable to load payment options right now.';
+                console.error('Checkout initialization error:', err);
+                setPlaceholder(message);
+            };
 
             const cart = getCart();
             if (!cart.items || cart.items.length === 0) {
-                container.innerHTML = '<p class="payment-placeholder">Your cart is empty.</p>';
+                setPlaceholder('Your cart is empty.');
                 return;
             }
 
             const countryCode = document.getElementById('shipping-country').value;
             if (!countryCode) {
-                container.innerHTML = '<p class="payment-placeholder">Select shipping country to continue.</p>';
+                setPlaceholder('Select shipping country to continue.');
                 return;
             }
 
@@ -525,225 +545,48 @@
                 }
             };
 
-            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.PAYPAL }, config)).render('#paypal-button-container');
-            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.CARD }, config)).render('#paypal-card-container');
+            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.PAYPAL }, config))
+                .render('#paypal-button-container')
+                .catch(showCheckoutError);
+            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.CARD }, config))
+                .render('#paypal-card-container')
+                .catch(showCheckoutError);
         }
 
         function setupApplePay() {
-            // Apple Pay intentionally disabled on this page.
-            return;
             const wrapper = document.getElementById('applepay-wrapper');
             const target = document.getElementById('applepay-container');
-            if (!wrapper || !target) return;
-            wrapper.style.display = 'none';
-            target.innerHTML = '';
-
-            if (typeof ApplePaySession === 'undefined' || !ApplePaySession.canMakePayments()) return;
-            if (typeof paypal === 'undefined' || !paypal.Applepay) return;
-            if (!document.getElementById('shipping-country').value) return;
-
-            paypal.Applepay().config().then(cfg => {
-                if (!cfg || !cfg.isEligible) return;
-                wrapper.style.display = 'block';
-                target.innerHTML = '<apple-pay-button id="nt-applepay-btn" buttonstyle="black" type="buy" locale="en"></apple-pay-button>';
-                const btn = document.getElementById('nt-applepay-btn');
-                if (!btn) return;
-                let isLaunching = false;
-                const launchApplePay = function (event) {
-                    if (event && typeof event.preventDefault === 'function') event.preventDefault();
-                    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
-                    if (isLaunching) return;
-                    const proceed = window.confirm('Open Apple Pay now? You can review shipping details and payment card in the Apple Pay sheet before authorizing.');
-                    if (!proceed) return;
-                    isLaunching = true;
-                    const cart = getCart();
-                    if (!cart.items || cart.items.length === 0) {
-                        alert('Your cart is empty.');
-                        isLaunching = false;
-                        return;
-                    }
-
-                    const countryCode = document.getElementById('shipping-country').value;
-                    const subtotal = computeSubtotal(cart.items);
-                    const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
-                    const shippingAmount = Number.parseFloat(shipping) || 0;
-                    let selectedShippingCountry = countryCode;
-                    let selectedShippingAmount = shippingAmount;
-                    const sessionVersion = ApplePaySession.supportsVersion(4) ? 4 : 3;
-                    const buildLineItems = function (shipAmount) {
-                        return [
-                            { label: 'Subtotal', amount: String(subtotal.toFixed(2)) },
-                            { label: 'Shipping', amount: String((Number.parseFloat(shipAmount) || 0).toFixed(2)) }
-                        ];
-                    };
-                    const buildTotal = function (shipAmount) {
-                        const grandTotal = Number((subtotal + (Number.parseFloat(shipAmount) || 0)).toFixed(2));
-                        return {
-                            label: 'NutriThrive',
-                            type: 'final',
-                            amount: String(grandTotal.toFixed(2))
-                        };
-                    };
-                    const initialShippingMethod = {
-                        label: shippingAmount === 0 ? 'Free Shipping' : 'Standard Shipping',
-                        detail: countryCode || 'Shipping',
-                        amount: String(shippingAmount.toFixed(2)),
-                        identifier: 'standard'
-                    };
-
-                    const paymentRequest = {
-                        countryCode: cfg.countryCode || countryCode || 'AU',
-                        currencyCode: cfg.currencyCode || 'AUD',
-                        merchantCapabilities: cfg.merchantCapabilities || ['supports3DS'],
-                        supportedNetworks: cfg.supportedNetworks || ['visa', 'masterCard', 'amex'],
-                        requiredShippingContactFields: ['name', 'phone', 'email', 'postalAddress'],
-                        requiredBillingContactFields: ['postalAddress'],
-                        shippingMethods: [initialShippingMethod],
-                        lineItems: buildLineItems(shippingAmount),
-                        total: buildTotal(shippingAmount)
-                    };
-
-                    let session;
-                    try {
-                        session = new ApplePaySession(sessionVersion, paymentRequest);
-                    } catch (err) {
-                        isLaunching = false;
-                        alert('Apple Pay is not available on this device/browser.');
-                        return;
-                    }
-
-                    session.onvalidatemerchant = function (event) {
-                        paypal.Applepay().validateMerchant({
-                            validationUrl: event.validationURL,
-                            displayName: 'NutriThrive Australia'
-                        }).then(function (merchantSession) {
-                            session.completeMerchantValidation(merchantSession);
-                        }).catch(function () {
-                            isLaunching = false;
-                            session.abort();
-                            alert('Apple Pay merchant validation failed.');
-                        });
-                    };
-
-                    session.onshippingcontactselected = function (event) {
-                        const selectedCountry = (event && event.shippingContact && event.shippingContact.countryCode) || countryCode;
-                        const recalculated = window.ShippingRates ? window.ShippingRates.calculate(selectedCountry, cart.items, subtotal) : 0;
-                        const recalculatedShipping = Number.parseFloat(recalculated) || 0;
-                        selectedShippingCountry = selectedCountry;
-                        selectedShippingAmount = recalculatedShipping;
-                        const methods = [{
-                            label: recalculatedShipping === 0 ? 'Free Shipping' : 'Standard Shipping',
-                            detail: selectedCountry || 'Shipping',
-                            amount: String(recalculatedShipping.toFixed(2)),
-                            identifier: 'standard'
-                        }];
-                        const newTotal = buildTotal(recalculatedShipping);
-                        const newLineItems = buildLineItems(recalculatedShipping);
-                        try {
-                            session.completeShippingContactSelection({
-                                newShippingMethods: methods,
-                                newTotal: newTotal,
-                                newLineItems: newLineItems
-                            });
-                        } catch (err) {
-                            session.completeShippingContactSelection(
-                                ApplePaySession.STATUS_SUCCESS,
-                                methods,
-                                newTotal,
-                                newLineItems
-                            );
-                        }
-                    };
-
-                    session.onshippingmethodselected = function (event) {
-                        const methodAmount = event && event.shippingMethod ? Number.parseFloat(event.shippingMethod.amount) || 0 : shippingAmount;
-                        selectedShippingAmount = methodAmount;
-                        const newTotal = buildTotal(methodAmount);
-                        const newLineItems = buildLineItems(methodAmount);
-                        try {
-                            session.completeShippingMethodSelection({
-                                newTotal: newTotal,
-                                newLineItems: newLineItems
-                            });
-                        } catch (err) {
-                            session.completeShippingMethodSelection(
-                                ApplePaySession.STATUS_SUCCESS,
-                                newTotal,
-                                newLineItems
-                            );
-                        }
-                    };
-
-                    session.onpaymentauthorized = function (event) {
-                        const proceedPayment = window.confirm('Final confirmation: proceed with Apple Pay charge now?');
-                        if (!proceedPayment) {
-                            isLaunching = false;
-                            session.completePayment(ApplePaySession.STATUS_FAILURE);
-                            return;
-                        }
-                        let captureToken = null;
-                        fetch('/.netlify/functions/paypal-create-order', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                items: cart.items.map(item => ({ id: item.id, quantity: parseInt(item.quantity || 1, 10) })),
-                                countryCode: selectedShippingCountry || countryCode
-                            })
-                        }).then(res => res.json().then(data => ({ ok: res.ok, data })))
-                        .then(function (result) {
-                            if (!result.ok) throw new Error(result.data.error || 'Failed to create order');
-                            const orderID = result.data.orderID || result.data.id;
-                            captureToken = result.data.captureToken;
-                            return paypal.Applepay().confirmOrder({
-                                orderId: orderID,
-                                token: event.payment.token,
-                                billingContact: event.payment.billingContact,
-                                shippingContact: event.payment.shippingContact
-                            }).then(function () {
-                                return orderID;
-                            });
-                        })
-                        .then(function (orderID) {
-                            return fetch('/.netlify/functions/paypal-capture-order', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ orderID: orderID, captureToken: captureToken })
-                            }).then(res => res.json().then(payload => ({ ok: res.ok, payload, orderID })));
-                        })
-                        .then(function (result) {
-                            if (!result.ok) throw new Error(result.payload.error || 'Payment failed');
-                            session.completePayment(ApplePaySession.STATUS_SUCCESS);
-                            window.Cart.clear();
-                            window.location.href = '/thank-you.html?orderId=' + result.orderID;
-                        })
-                        .catch(function (err) {
-                            isLaunching = false;
-                            session.completePayment(ApplePaySession.STATUS_FAILURE);
-                            alert('Apple Pay error: ' + (err && err.message ? err.message : 'Unknown error'));
-                        });
-                    };
-
-                    session.oncancel = function () {
-                        isLaunching = false;
-                    };
-
-                    session.begin();
-                };
-
-                btn.addEventListener('click', launchApplePay);
-            }).catch(() => {});
+            if (wrapper) wrapper.style.display = 'none';
+            if (target) target.innerHTML = '<p class="payment-placeholder">Apple Pay is temporarily unavailable.</p>';
         }
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function () {
-                populateCountryDropdown();
-                renderOrderReview();
-                updateShippingAndTotal();
-            });
-        } else {
+        function bootCheckout() {
             populateCountryDropdown();
             renderOrderReview();
             updateShippingAndTotal();
+        }
+        if (typeof window.ntLoadPayPalSdk !== 'function') {
+            console.error('PayPal SDK loader is missing (paypal-sdk-loader.js).');
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', bootCheckout);
+            } else {
+                bootCheckout();
+            }
+        } else {
+            const p = window.ntLoadPayPalSdk({ currency: 'AUD', components: 'buttons,applepay,funding-eligibility' });
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function () {
+                    p.then(bootCheckout).catch(function (err) {
+                        console.error('PayPal SDK failed to load:', err);
+                        bootCheckout();
+                    });
+                });
+            } else {
+                p.then(bootCheckout).catch(function (err) {
+                    console.error('PayPal SDK failed to load:', err);
+                    bootCheckout();
+                });
+            }
         }
     </script>
 </body>

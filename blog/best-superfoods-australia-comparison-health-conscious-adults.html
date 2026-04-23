@@ -1357,4 +1357,25 @@
       <li><a href="/products/curry-leaves/">Shop Dried Curry Leaves</a></li>
   </ul>
 </section>
-</main></body></html>
+</main>
+<script>
+  function toggleFAQ(button) {
+    if (!button) return;
+    var answer = button.nextElementSibling;
+    var icon = button.querySelector('.faq-icon');
+    if (!answer) return;
+    var isOpen = answer.style.display === 'block';
+    answer.style.display = isOpen ? 'none' : 'block';
+    if (icon) {
+      icon.textContent = isOpen ? '+' : '−';
+      icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+  }
+
+  function closeRecipe() {
+    var modal = document.getElementById('recipe-modal');
+    if (modal) modal.style.display = 'none';
+  }
+</script>
+</body>
+</html>

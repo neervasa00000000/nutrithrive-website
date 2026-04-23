@@ -4,6 +4,12 @@
  * Improves PageSpeed by reducing render-blocking and main-thread JS
  */
 
+if (window.__NT_DEFER_LOADER_INITIALIZED__) {
+  if (window.console && console.log) {
+    console.log('[DeferLoader] Already initialized, skipping duplicate load');
+  }
+} else {
+window.__NT_DEFER_LOADER_INITIALIZED__ = true;
 (function() {
   'use strict';
 
@@ -373,3 +379,4 @@
     console.log('[DeferLoader] Initialized - ready to defer non-critical scripts');
   }
 })();
+}

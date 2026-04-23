@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show loading state
             if (submitButton) {
                 submitButton.disabled = true;
-                const originalText = submitButton.textContent;
                 submitButton.textContent = 'Subscribing...';
                 
                 // Track subscription (if analytics available)

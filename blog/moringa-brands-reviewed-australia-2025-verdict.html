@@ -779,15 +779,11 @@
 <p class="footer-nap-standard" style="margin:0 0 0.75rem;line-height:1.6">Nutri Thrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></p>
  2026 NutriThrive. All rights reserved.</p>
 </footer>
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAAvR6DiyzKb15OmvmOef-880T3liGnJna4Ghb_RmwL-CSfDn34xznqYOFvytR6v_DnqMl1THPbxzB-8Pk¤cy=AUD&amp;intent=capture"></script>
+<!-- PayPal SDK (client id: scripts/global/paypal-client-config.js) -->
+<script src="../scripts/global/paypal-client-config.js"></script>
+<script src="../scripts/global/paypal-sdk-loader.js"></script>
 <script>
         function initPayPalButtons() {
-            if (typeof paypal === 'undefined') {
-                setTimeout(initPayPalButtons, 100);
-                return;
-            }
-
             function createPayPalButton(containerId, productName, productId, price, quantity = 1) {
                 // Double-check element exists before proceeding
                 const container = document.getElementById(containerId);
@@ -802,29 +798,25 @@
                     return;
                 }
 
+                let captureToken = null;
                 try {
                     paypal.Buttons({
                         createOrder: async () => {
                             try {
+                                const cc = (typeof localStorage !== "undefined" && localStorage.getItem("nutrithrive_shipping_country")) || "AU";
                                 const response = await fetch("/.netlify/functions/paypal-create-order", {
                                     method: "POST",
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify({
-                                        amount: (price * quantity).toFixed(2),
-                                        subtotal: (price * quantity).toFixed(2),
-                                        shipping: "0.00",
-                                        items: [{
-                                            id: productId,
-                                            name: productName,
-                                            unitPrice: price.toFixed(2),
-                                            quantity: quantity
-                                        }]
+                                        countryCode: cc,
+                                        items: [{ id: productId, quantity: quantity }]
                                     })
                                 });
                                 const data = await response.json();
                                 if (!response.ok) {
                                     throw new Error(data.error || "Failed to create order");
                                 }
+                                captureToken = data.captureToken;
                                 return data.orderID || data.id;
                             } catch (err) {
                                 console.error("Error creating PayPal order:", err);
@@ -841,7 +833,7 @@
                                 const response = await fetch("/.netlify/functions/paypal-capture-order", {
                                     method: "POST",
                                     headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify({ orderID: orderID })
+                                    body: JSON.stringify({ orderID: orderID, captureToken: captureToken })
                                 });
                                 const result = await response.json();
                                 if (!response.ok) {
@@ -870,22 +862,24 @@
             createPayPalButton('paypal-button-brands', 'Moringa Powder', 'moringa-powder', 11.00);
         }
 
-        // Wait for both DOM and PayPal SDK to be ready
         function startInitialization() {
-            if (typeof paypal === 'undefined') {
-                setTimeout(startInitialization, 100);
+            if (typeof window.ntLoadPayPalSdk !== "function") {
+                console.error("PayPal SDK loader missing.");
                 return;
             }
-            
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
+            window.ntLoadPayPalSdk({ currency: "AUD", intent: "capture", components: "buttons" }).then(function () {
+                if (document.readyState === "loading") {
+                    document.addEventListener("DOMContentLoaded", function () {
+                        setTimeout(initPayPalButtons, 100);
+                    });
+                } else {
                     setTimeout(initPayPalButtons, 100);
-                });
-            } else {
-                setTimeout(initPayPalButtons, 100);
-            }
+                }
+            }).catch(function (err) {
+                console.error("PayPal SDK failed to load:", err);
+            });
         }
-        
+
         startInitialization();
     </script>
 
