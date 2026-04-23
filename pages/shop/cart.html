@@ -919,6 +919,26 @@
             const wrap = document.getElementById('you-also-viewed');
             const grid = document.getElementById('also-viewed-grid');
             if (!wrap || !grid) return;
+            const safeIdForReco = function (value) {
+                const s = String(value ?? '').trim();
+                return /^[a-z0-9-]+$/i.test(s) ? s : null;
+            };
+            const safeImageForReco = function (src) {
+                const s = String(src ?? '').trim();
+                if (!s) return '';
+                if (/^javascript:/i.test(s) || /^data:/i.test(s)) return '';
+                if (s.startsWith('/') || s.startsWith('.')) return s;
+                if (!/^https:\/\//i.test(s)) return '';
+                try {
+                    const u = new URL(s);
+                    const host = u.hostname.toLowerCase();
+                    if (u.protocol !== 'https:') return '';
+                    if (host === 'nutrithrive.com.au' || host === 'www.nutrithrive.com.au' || host === 'i.imgur.com') return s;
+                } catch (e) {
+                    return '';
+                }
+                return '';
+            };
 
             const cartIds = new Set((cartItems || []).map(item => String(item.id || '')));
             let items = [];
@@ -972,9 +992,9 @@
                 addButton.className = 'also-viewed-add-btn';
                 addButton.textContent = 'Add to Cart';
 
-                const productId = safeId(item.id);
+                const productId = safeIdForReco(item.id);
                 const productName = String(item.name || '').slice(0, 120);
-                const productImage = safeImageSrc(item.image);
+                const productImage = safeImageForReco(item.image);
                 const productPrice = Number.parseFloat(item.price);
 
                 if (!productId || !productName || !Number.isFinite(productPrice) || productPrice < 0) {
