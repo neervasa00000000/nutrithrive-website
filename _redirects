@@ -47,6 +47,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /faq.html /pages/faq/faq.html 200
 /cart /pages/shop/cart.html 200
 /cart.html /pages/shop/cart.html 200
+/payment /pages/shop/payment.html 200
+/payment.html /pages/shop/payment.html 200
 /privacy-policy /pages/legal/privacy-policy.html 200
 /privacy-policy.html /pages/legal/privacy-policy.html 200
 

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <script src="/scripts/global/reddit-pixel.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Payment | NutriThrive Australia</title>
+    <meta name="description" content="Official NutriThrive payment page. Review your order, confirm shipping country, and complete checkout securely with PayPal or Apple Pay.">
+    <link rel="canonical" href="https://nutrithrive.com.au/payment">
+    <link rel="stylesheet" href="/styles/global/style.css">
+    <style>
+        body { background: #f8f5ec; color: #1a2e22; }
+        .payment-page { max-width: 980px; margin: 2rem auto; padding: 0 1.25rem; }
+        .payment-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+        .payment-head h1 { margin: 0; color: #2d5a3d; }
+        .back-link { color: #2d5a3d; text-decoration: none; font-weight: 600; }
+        .panel { background: #fff; border: 1px solid #e5e1d8; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+        .order-item { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid #f0ede5; }
+        .order-item:last-child { border-bottom: none; }
+        .order-item-name { font-weight: 600; }
+        .muted { color: #666; font-size: 0.9rem; }
+        .summary-row { display: flex; justify-content: space-between; padding: 0.55rem 0; border-bottom: 1px solid #f0ede5; }
+        .summary-row:last-child { border-bottom: none; font-weight: 700; color: #2d5a3d; font-size: 1.15rem; }
+        .payment-section h2 { color: #2d5a3d; margin: 0 0 0.5rem 0; }
+        .payment-security { font-size: 0.9rem; color: #666; margin: 0 0 1rem 0; }
+        .form-group { margin: 0 0 1rem 0; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        .form-group select { width: 100%; max-width: 420px; padding: 0.75rem; border: 1px solid #d4cfc3; border-radius: 8px; background: #f8f5ec; }
+        .payment-placeholder { color: #666; margin: 0.75rem 0; }
+        #paypal-card-container { margin-top: 0.8rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="https://nutrithrive.com.au/products/">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+            </button>
+        </div>
+    </header>
+
+    <main class="payment-page">
+        <div class="payment-head">
+            <h1>Official Payment</h1>
+            <a href="/cart" class="back-link">Back to cart</a>
+        </div>
+
+        <section class="panel">
+            <h2 style="margin:0 0 0.75rem 0; color:#2d5a3d;">Order review</h2>
+            <div id="order-items"></div>
+            <div style="margin-top:0.75rem;">
+                <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+                <div class="summary-row"><span>Shipping</span><span id="shipping">Select country</span></div>
+                <div class="summary-row"><span>Total</span><span id="total">$0.00</span></div>
+            </div>
+        </section>
+
+        <section class="panel payment-section">
+            <h2>Pay securely</h2>
+            <p class="payment-security">All transactions are encrypted and processed through PayPal.</p>
+            <div class="form-group">
+                <label for="shipping-country">Shipping country</label>
+                <select id="shipping-country" onchange="updateShippingAndTotal()">
+                    <option value="">Select your country</option>
+                </select>
+            </div>
+            <div id="applepay-wrapper" style="display:none; margin: 0 0 1rem 0;">
+                <p class="muted" style="margin:0 0 0.5rem 0;">Apple Pay</p>
+                <div id="applepay-container"></div>
+            </div>
+            <div id="paypal-button-container"><p class="payment-placeholder">Select shipping country to continue.</p></div>
+            <div id="paypal-card-container"></div>
+        </section>
+    </main>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AWtclBnz1gQWQne-vS-OnExG1-Rl7Tj01nE8J1j7aZsLItOJvecwRVCpG757OrJ3QCf65w7q9i2bSgVi&currency=AUD&components=buttons,applepay,funding-eligibility"></script>
+    <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
+    <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/cart-header.js"></script>
+    <script src="/scripts/global/shipping-rates.js"></script>
+    <script src="/scripts/global/script.js"></script>
+    <script>
+        function getCart() {
+            return window.Cart && window.Cart.get ? window.Cart.get() : { items: [] };
+        }
+
+        function money(n) {
+            return `$${Number(n || 0).toFixed(2)}`;
+        }
+
+        function computeSubtotal(items) {
+            return Number((items || []).reduce((sum, item) => {
+                const qty = Number.parseInt(item.quantity || 1, 10);
+                const price = Number.parseFloat(item.price);
+                if (!Number.isFinite(qty) || qty <= 0) return sum;
+                if (!Number.isFinite(price) || price < 0) return sum;
+                return sum + (qty * price);
+            }, 0).toFixed(2));
+        }
+
+        function populateCountryDropdown() {
+            const select = document.getElementById('shipping-country');
+            if (!select || !window.ShippingRates || !window.ShippingRates.getCountryList) return;
+            const countries = window.ShippingRates.getCountryList();
+            select.innerHTML = '<option value="">Select your country</option>';
+            countries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.code;
+                option.textContent = country.name;
+                select.appendChild(option);
+            });
+            const saved = localStorage.getItem('nutrithrive_shipping_country');
+            if (saved) select.value = saved;
+        }
+
+        function renderOrderReview() {
+            const cart = getCart();
+            const wrap = document.getElementById('order-items');
+            if (!cart.items || cart.items.length === 0) {
+                wrap.innerHTML = '<p class="muted">Your cart is empty. <a href="/products/">Browse products</a>.</p>';
+                document.getElementById('subtotal').textContent = '$0.00';
+                document.getElementById('total').textContent = '$0.00';
+                return;
+            }
+
+            wrap.replaceChildren();
+            cart.items.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'order-item';
+                const left = document.createElement('div');
+                left.innerHTML = `<div class="order-item-name">${String(item.name || '').slice(0, 120)}</div><div class="muted">Qty: ${parseInt(item.quantity || 1, 10)}</div>`;
+                const right = document.createElement('div');
+                right.textContent = money((parseFloat(item.price) || 0) * (parseInt(item.quantity || 1, 10) || 1));
+                row.appendChild(left);
+                row.appendChild(right);
+                wrap.appendChild(row);
+            });
+
+            const subtotal = computeSubtotal(cart.items);
+            document.getElementById('subtotal').textContent = money(subtotal);
+        }
+
+        function updateShippingAndTotal() {
+            const cart = getCart();
+            const country = document.getElementById('shipping-country').value;
+            if (country) localStorage.setItem('nutrithrive_shipping_country', country);
+            const subtotal = computeSubtotal(cart.items);
+            const shipping = country && window.ShippingRates ? window.ShippingRates.calculate(country, cart.items, subtotal) : null;
+            const shippingValue = shipping === null ? null : Number.parseFloat(shipping) || 0;
+            document.getElementById('shipping').textContent = shippingValue === null ? 'Select country' : (shippingValue === 0 ? 'Free' : money(shippingValue));
+            document.getElementById('total').textContent = money(subtotal + (shippingValue || 0));
+            initPayPal();
+            setupApplePay();
+        }
+
+        function initPayPal() {
+            const container = document.getElementById('paypal-button-container');
+            const cardContainer = document.getElementById('paypal-card-container');
+            if (!container || typeof paypal === 'undefined') return;
+            container.innerHTML = '';
+            if (cardContainer) cardContainer.innerHTML = '';
+
+            const cart = getCart();
+            if (!cart.items || cart.items.length === 0) {
+                container.innerHTML = '<p class="payment-placeholder">Your cart is empty.</p>';
+                return;
+            }
+
+            const countryCode = document.getElementById('shipping-country').value;
+            if (!countryCode) {
+                container.innerHTML = '<p class="payment-placeholder">Select shipping country to continue.</p>';
+                return;
+            }
+
+            let captureToken = null;
+            const config = {
+                createOrder: function () {
+                    return fetch('/.netlify/functions/paypal-create-order', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            items: cart.items.map(item => ({ id: item.id, quantity: parseInt(item.quantity || 1, 10) })),
+                            countryCode: countryCode
+                        })
+                    }).then(res => res.json().then(data => ({ ok: res.ok, data })))
+                    .then(result => {
+                        if (!result.ok) throw new Error(result.data.error || 'Failed to create order');
+                        captureToken = result.data.captureToken;
+                        return result.data.orderID || result.data.id;
+                    });
+                },
+                onApprove: function (data) {
+                    return fetch('/.netlify/functions/paypal-capture-order', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ orderID: data.orderID || data.id, captureToken: captureToken })
+                    }).then(res => res.json().then(payload => ({ ok: res.ok, payload })))
+                    .then(result => {
+                        if (!result.ok) throw new Error(result.payload.error || 'Payment failed');
+                        window.Cart.clear();
+                        window.location.href = '/thank-you.html?orderId=' + (data.orderID || data.id);
+                    }).catch(err => alert('Payment error: ' + err.message));
+                },
+                onError: function (err) {
+                    alert('Payment error: ' + (err.message || 'Unknown error'));
+                }
+            };
+
+            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.PAYPAL }, config)).render('#paypal-button-container');
+            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.CARD }, config)).render('#paypal-card-container');
+        }
+
+        function setupApplePay() {
+            const wrapper = document.getElementById('applepay-wrapper');
+            const target = document.getElementById('applepay-container');
+            if (!wrapper || !target) return;
+            wrapper.style.display = 'none';
+            target.innerHTML = '';
+
+            if (typeof ApplePaySession === 'undefined' || !ApplePaySession.canMakePayments()) return;
+            if (typeof paypal === 'undefined' || !paypal.Applepay) return;
+            if (!document.getElementById('shipping-country').value) return;
+
+            paypal.Applepay().config().then(cfg => {
+                if (!cfg || !cfg.isEligible) return;
+                wrapper.style.display = 'block';
+                target.innerHTML = '<apple-pay-button id="nt-applepay-btn" buttonstyle="black" type="buy" locale="en"></apple-pay-button>';
+            }).catch(() => {});
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () {
+                populateCountryDropdown();
+                renderOrderReview();
+                updateShippingAndTotal();
+            });
+        } else {
+            populateCountryDropdown();
+            renderOrderReview();
+            updateShippingAndTotal();
+        }
+    </script>
+</body>
+</html>
