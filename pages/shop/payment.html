@@ -37,7 +37,7 @@
         header {
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 2147483000;
             background: #f8f5ec;
         }
         .checkout-grid {
@@ -538,6 +538,89 @@
                 if (!cfg || !cfg.isEligible) return;
                 wrapper.style.display = 'block';
                 target.innerHTML = '<apple-pay-button id="nt-applepay-btn" buttonstyle="black" type="buy" locale="en"></apple-pay-button>';
+                const btn = document.getElementById('nt-applepay-btn');
+                if (!btn) return;
+                btn.addEventListener('click', function () {
+                    const cart = getCart();
+                    if (!cart.items || cart.items.length === 0) {
+                        alert('Your cart is empty.');
+                        return;
+                    }
+
+                    const countryCode = document.getElementById('shipping-country').value;
+                    const subtotal = computeSubtotal(cart.items);
+                    const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
+                    const total = Number((subtotal + (Number.parseFloat(shipping) || 0)).toFixed(2));
+
+                    const paymentRequest = {
+                        countryCode: cfg.countryCode || countryCode || 'AU',
+                        currencyCode: cfg.currencyCode || 'AUD',
+                        merchantCapabilities: cfg.merchantCapabilities || ['supports3DS'],
+                        supportedNetworks: cfg.supportedNetworks || ['visa', 'masterCard', 'amex'],
+                        total: {
+                            label: 'NutriThrive',
+                            amount: String(total.toFixed(2))
+                        }
+                    };
+
+                    const session = new ApplePaySession(4, paymentRequest);
+
+                    session.onvalidatemerchant = function (event) {
+                        paypal.Applepay().validateMerchant({
+                            validationUrl: event.validationURL,
+                            displayName: 'NutriThrive Australia'
+                        }).then(function (merchantSession) {
+                            session.completeMerchantValidation(merchantSession);
+                        }).catch(function () {
+                            session.abort();
+                            alert('Apple Pay merchant validation failed.');
+                        });
+                    };
+
+                    session.onpaymentauthorized = function (event) {
+                        let captureToken = null;
+                        fetch('/.netlify/functions/paypal-create-order', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                items: cart.items.map(item => ({ id: item.id, quantity: parseInt(item.quantity || 1, 10) })),
+                                countryCode: countryCode
+                            })
+                        }).then(res => res.json().then(data => ({ ok: res.ok, data })))
+                        .then(function (result) {
+                            if (!result.ok) throw new Error(result.data.error || 'Failed to create order');
+                            const orderID = result.data.orderID || result.data.id;
+                            captureToken = result.data.captureToken;
+                            return paypal.Applepay().confirmOrder({
+                                orderId: orderID,
+                                token: event.payment.token,
+                                billingContact: event.payment.billingContact,
+                                shippingContact: event.payment.shippingContact
+                            }).then(function () {
+                                return orderID;
+                            });
+                        })
+                        .then(function (orderID) {
+                            return fetch('/.netlify/functions/paypal-capture-order', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ orderID: orderID, captureToken: captureToken })
+                            }).then(res => res.json().then(payload => ({ ok: res.ok, payload, orderID })));
+                        })
+                        .then(function (result) {
+                            if (!result.ok) throw new Error(result.payload.error || 'Payment failed');
+                            session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                            window.Cart.clear();
+                            window.location.href = '/thank-you.html?orderId=' + result.orderID;
+                        })
+                        .catch(function (err) {
+                            session.completePayment(ApplePaySession.STATUS_FAILURE);
+                            alert('Apple Pay error: ' + (err && err.message ? err.message : 'Unknown error'));
+                        });
+                    };
+
+                    session.begin();
+                });
             }).catch(() => {});
         }
 
