@@ -562,6 +562,8 @@
                     const subtotal = computeSubtotal(cart.items);
                     const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
                     const shippingAmount = Number.parseFloat(shipping) || 0;
+                    let selectedShippingCountry = countryCode;
+                    let selectedShippingAmount = shippingAmount;
                     const sessionVersion = ApplePaySession.supportsVersion(4) ? 4 : 3;
                     const buildLineItems = function (shipAmount) {
                         return [
@@ -622,6 +624,8 @@
                         const selectedCountry = (event && event.shippingContact && event.shippingContact.countryCode) || countryCode;
                         const recalculated = window.ShippingRates ? window.ShippingRates.calculate(selectedCountry, cart.items, subtotal) : 0;
                         const recalculatedShipping = Number.parseFloat(recalculated) || 0;
+                        selectedShippingCountry = selectedCountry;
+                        selectedShippingAmount = recalculatedShipping;
                         const methods = [{
                             label: recalculatedShipping === 0 ? 'Free Shipping' : 'Standard Shipping',
                             detail: selectedCountry || 'Shipping',
@@ -648,6 +652,7 @@
 
                     session.onshippingmethodselected = function (event) {
                         const methodAmount = event && event.shippingMethod ? Number.parseFloat(event.shippingMethod.amount) || 0 : shippingAmount;
+                        selectedShippingAmount = methodAmount;
                         const newTotal = buildTotal(methodAmount);
                         const newLineItems = buildLineItems(methodAmount);
                         try {
@@ -665,13 +670,19 @@
                     };
 
                     session.onpaymentauthorized = function (event) {
+                        const proceedPayment = window.confirm('Final confirmation: proceed with Apple Pay charge now?');
+                        if (!proceedPayment) {
+                            isLaunching = false;
+                            session.completePayment(ApplePaySession.STATUS_FAILURE);
+                            return;
+                        }
                         let captureToken = null;
                         fetch('/.netlify/functions/paypal-create-order', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
                                 items: cart.items.map(item => ({ id: item.id, quantity: parseInt(item.quantity || 1, 10) })),
-                                countryCode: countryCode
+                                countryCode: selectedShippingCountry || countryCode
                             })
                         }).then(res => res.json().then(data => ({ ok: res.ok, data })))
                         .then(function (result) {
