@@ -558,7 +558,6 @@
                     const subtotal = computeSubtotal(cart.items);
                     const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
                     const shippingAmount = Number.parseFloat(shipping) || 0;
-                    const total = Number((subtotal + shippingAmount).toFixed(2));
                     const sessionVersion = ApplePaySession.supportsVersion(4) ? 4 : 3;
                     const buildLineItems = function (shipAmount) {
                         return [
@@ -619,27 +618,46 @@
                         const selectedCountry = (event && event.shippingContact && event.shippingContact.countryCode) || countryCode;
                         const recalculated = window.ShippingRates ? window.ShippingRates.calculate(selectedCountry, cart.items, subtotal) : 0;
                         const recalculatedShipping = Number.parseFloat(recalculated) || 0;
-                        const method = [{
+                        const methods = [{
                             label: recalculatedShipping === 0 ? 'Free Shipping' : 'Standard Shipping',
                             detail: selectedCountry || 'Shipping',
                             amount: String(recalculatedShipping.toFixed(2)),
                             identifier: 'standard'
                         }];
-                        session.completeShippingContactSelection(
-                            ApplePaySession.STATUS_SUCCESS,
-                            method,
-                            buildTotal(recalculatedShipping),
-                            buildLineItems(recalculatedShipping)
-                        );
+                        const newTotal = buildTotal(recalculatedShipping);
+                        const newLineItems = buildLineItems(recalculatedShipping);
+                        try {
+                            session.completeShippingContactSelection({
+                                newShippingMethods: methods,
+                                newTotal: newTotal,
+                                newLineItems: newLineItems
+                            });
+                        } catch (err) {
+                            session.completeShippingContactSelection(
+                                ApplePaySession.STATUS_SUCCESS,
+                                methods,
+                                newTotal,
+                                newLineItems
+                            );
+                        }
                     };
 
                     session.onshippingmethodselected = function (event) {
                         const methodAmount = event && event.shippingMethod ? Number.parseFloat(event.shippingMethod.amount) || 0 : shippingAmount;
-                        session.completeShippingMethodSelection(
-                            ApplePaySession.STATUS_SUCCESS,
-                            buildTotal(methodAmount),
-                            buildLineItems(methodAmount)
-                        );
+                        const newTotal = buildTotal(methodAmount);
+                        const newLineItems = buildLineItems(methodAmount);
+                        try {
+                            session.completeShippingMethodSelection({
+                                newTotal: newTotal,
+                                newLineItems: newLineItems
+                            });
+                        } catch (err) {
+                            session.completeShippingMethodSelection(
+                                ApplePaySession.STATUS_SUCCESS,
+                                newTotal,
+                                newLineItems
+                            );
+                        }
                     };
 
                     session.onpaymentauthorized = function (event) {
