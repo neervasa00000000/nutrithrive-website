@@ -566,12 +566,15 @@
                         currencyCode: cfg.currencyCode || 'AUD',
                         merchantCapabilities: cfg.merchantCapabilities || ['supports3DS'],
                         supportedNetworks: cfg.supportedNetworks || ['visa', 'masterCard', 'amex'],
+                        requiredShippingContactFields: ['name', 'phone', 'email', 'postalAddress'],
+                        requiredBillingContactFields: ['postalAddress'],
                         lineItems: [
                             { label: 'Subtotal', amount: String(subtotal.toFixed(2)) },
                             { label: 'Shipping', amount: String(shippingAmount.toFixed(2)) }
                         ],
                         total: {
                             label: 'NutriThrive',
+                            type: 'final',
                             amount: String(total.toFixed(2))
                         }
                     };
