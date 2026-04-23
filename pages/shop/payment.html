@@ -72,6 +72,7 @@
             margin: 0 0 0.45rem 0;
             font-size: 1.45rem;
             color: #111;
+            display: block;
         }
         .section-title {
             margin: 0 0 0.55rem 0;
@@ -84,6 +85,7 @@
             font-size: 1.05rem;
             font-weight: 700;
             color: #111;
+            display: block;
         }
         .muted {
             color: var(--checkout-muted);
@@ -113,6 +115,12 @@
         .form-grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
+            margin-top: 0.55rem;
+        }
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 0.55rem;
             margin-top: 0.55rem;
         }
@@ -211,6 +219,17 @@
             font-size: 0.9rem;
             line-height: 1.45;
         }
+        .card-preview {
+            border: 1px solid #e8e2d8;
+            border-radius: 8px;
+            background: #fdfcf9;
+            padding: 0.75rem;
+            margin: 0 0 0.75rem 0;
+        }
+        .card-preview .section-label {
+            margin-bottom: 0.35rem;
+            font-size: 0.95rem;
+        }
         #applepay-container apple-pay-button,
         #nt-applepay-btn {
             width: 100%;
@@ -245,7 +264,8 @@
             }
         }
         @media (max-width: 640px) {
-            .form-grid-2 {
+            .form-grid-2,
+            .form-grid-3 {
                 grid-template-columns: 1fr;
             }
         }
@@ -272,7 +292,7 @@
                 </section>
 
                 <section class="checkout-section">
-                    <p class="section-label">Delivery</p>
+                    <p class="section-label">Delivery address</p>
                     <select id="shipping-country" class="select" onchange="updateShippingAndTotal()">
                         <option value="">Select your country</option>
                     </select>
@@ -288,6 +308,22 @@
                 </section>
 
                 <section class="checkout-section">
+                    <p class="section-label">Billing address</p>
+                    <p class="muted" style="margin:0 0 0.55rem 0;">Use the cardholder billing details for debit/credit card payments.</p>
+                    <div class="form-grid-2">
+                        <input class="input" type="text" placeholder="First name">
+                        <input class="input" type="text" placeholder="Last name">
+                    </div>
+                    <input class="input stack-gap" type="text" placeholder="Address line 1">
+                    <input class="input stack-gap" type="text" placeholder="Address line 2 (optional)">
+                    <div class="form-grid-3">
+                        <input class="input" type="text" placeholder="City">
+                        <input class="input" type="text" placeholder="State">
+                        <input class="input" type="text" placeholder="Postcode">
+                    </div>
+                </section>
+
+                <section class="checkout-section">
                     <p class="section-label">Payment</p>
                     <p class="muted" style="margin:0 0 0.6rem 0;">All transactions are secure and encrypted.</p>
                     <div class="radio-card">
@@ -297,6 +333,15 @@
                         </div>
                         <div style="padding:0.8rem;">
                             <p class="card-help">To pay by <strong>debit/credit card</strong>, click the <strong>Debit or Credit Card</strong> button below. A secure card form will open.</p>
+                            <div class="card-preview">
+                                <p class="section-label">Card details</p>
+                                <input class="input" type="text" placeholder="Card number">
+                                <div class="form-grid-2">
+                                    <input class="input" type="text" placeholder="Expiry (MM/YY)">
+                                    <input class="input" type="text" placeholder="CVV">
+                                </div>
+                                <input class="input stack-gap" type="text" placeholder="Name on card">
+                            </div>
                             <div id="applepay-wrapper" style="display:none; margin: 0 0 0.7rem 0;">
                                 <div id="applepay-container"></div>
                             </div>
