@@ -229,6 +229,9 @@
         #nt-applepay-btn {
             width: 100%;
             min-height: 44px;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
         }
         #paypal-card-container {
             margin-top: 0.8rem;
@@ -540,10 +543,17 @@
                 target.innerHTML = '<apple-pay-button id="nt-applepay-btn" buttonstyle="black" type="buy" locale="en"></apple-pay-button>';
                 const btn = document.getElementById('nt-applepay-btn');
                 if (!btn) return;
-                btn.addEventListener('click', function () {
+                let isLaunching = false;
+                const launchApplePay = function (event) {
+                    if (event && typeof event.preventDefault === 'function') {
+                        event.preventDefault();
+                    }
+                    if (isLaunching) return;
+                    isLaunching = true;
                     const cart = getCart();
                     if (!cart.items || cart.items.length === 0) {
                         alert('Your cart is empty.');
+                        isLaunching = false;
                         return;
                     }
 
@@ -551,6 +561,7 @@
                     const subtotal = computeSubtotal(cart.items);
                     const shipping = window.ShippingRates ? window.ShippingRates.calculate(countryCode, cart.items, subtotal) : 0;
                     const total = Number((subtotal + (Number.parseFloat(shipping) || 0)).toFixed(2));
+                    const sessionVersion = ApplePaySession.supportsVersion(4) ? 4 : 3;
 
                     const paymentRequest = {
                         countryCode: cfg.countryCode || countryCode || 'AU',
@@ -563,7 +574,14 @@
                         }
                     };
 
-                    const session = new ApplePaySession(4, paymentRequest);
+                    let session;
+                    try {
+                        session = new ApplePaySession(sessionVersion, paymentRequest);
+                    } catch (err) {
+                        isLaunching = false;
+                        alert('Apple Pay is not available on this device/browser.');
+                        return;
+                    }
 
                     session.onvalidatemerchant = function (event) {
                         paypal.Applepay().validateMerchant({
@@ -572,6 +590,7 @@
                         }).then(function (merchantSession) {
                             session.completeMerchantValidation(merchantSession);
                         }).catch(function () {
+                            isLaunching = false;
                             session.abort();
                             alert('Apple Pay merchant validation failed.');
                         });
@@ -614,13 +633,21 @@
                             window.location.href = '/thank-you.html?orderId=' + result.orderID;
                         })
                         .catch(function (err) {
+                            isLaunching = false;
                             session.completePayment(ApplePaySession.STATUS_FAILURE);
                             alert('Apple Pay error: ' + (err && err.message ? err.message : 'Unknown error'));
                         });
                     };
 
+                    session.oncancel = function () {
+                        isLaunching = false;
+                    };
+
                     session.begin();
-                });
+                };
+
+                btn.addEventListener('click', launchApplePay);
+                btn.addEventListener('touchend', launchApplePay, { passive: false });
             }).catch(() => {});
         }
 
