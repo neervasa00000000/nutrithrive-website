@@ -75,7 +75,7 @@ function fileToUrl(relPosix) {
   if (relPosix === "pages/about/about.html") return `${BASE}/about`;
   if (relPosix === "pages/contact/contact.html") return `${BASE}/contact`;
   if (relPosix === "pages/faq/faq.html") return `${BASE}/faq`;
-  if (relPosix === "pages/legal/privacy-policy.html") return `${BASE}/privacy-policy.html`;
+  if (relPosix === "pages/legal/privacy-policy.html") return `${BASE}/privacy-policy`;
   if (relPosix === "pages/shop/cart.html") return `${BASE}/cart`;
   if (relPosix === "pages/shipping/shipping-returns.html")
     return `${BASE}/pages/shipping/shipping-returns`;

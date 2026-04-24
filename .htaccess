@@ -174,7 +174,12 @@ DirectoryIndex index.html index.htm
     RewriteRule ^privacy-policy/?$ /pages/legal/privacy-policy.html [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^privacy-policy\.html$ /pages/legal/privacy-policy.html [L]
+    RewriteRule ^privacy-policy\.html$ /privacy-policy [R=301,L]
+
+    # Labs: extensionless → .html (consistent canonicals)
+    RewriteRule ^nutrithrive_labs/dedup-lines$ /nutrithrive_labs/dedup-lines.html [R=301,L]
+    RewriteRule ^nutrithrive_labs/sitemap-generator$ /nutrithrive_labs/sitemap-generator.html [R=301,L]
+    RewriteRule ^nutrithrive_labs/time-converter$ /nutrithrive_labs/time-converter.html [R=301,L]
     
     # Cart: Serve clean URL internally (no redirect) - Internal rewrite to new location
     RewriteCond %{REQUEST_FILENAME} !-f
