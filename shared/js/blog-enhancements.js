@@ -111,7 +111,7 @@
       <div style="background:#f6fbf8;border:1px solid #e2efe6;border-radius:12px;padding:12px;">
         <strong style="color:#175c36;">Questions about products or pricing?</strong>
         <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="/pages/contact/contact.html" style="background:#175c36;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Contact Us</a>
+          <a href="/contact" style="background:#175c36;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Contact Us</a>
           <a href="https://nutrithrive.com.au/products/moringa-powder/" style="border:1px solid #175c36;color:#175c36;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;">Browse Products</a>
         </div>
       </div>`;
@@ -135,7 +135,7 @@
       promo.innerHTML = `
         <strong style="color:#175c36;display:block;margin-bottom:6px;">Need the best protein to pair with your moringa?</strong>
         <span style="display:block;margin-bottom:8px;">Our team blind-tested 9 Australian protein powders for clean ingredients, price, and taste.</span>
-        <a href="/blog/best-protein-powder-australia-2026-complete-guide.html" style="color:#175c36;font-weight:700;text-decoration:none;">Read the protein powder testing guide →</a>
+        <a href="/blog/best-clean-protein-powders-moringa-products-australia-2026.html" style="color:#175c36;font-weight:700;text-decoration:none;">Read the protein powder testing guide →</a>
       `;
       firstParagraph.insertAdjacentElement('afterend', promo);
     } catch (e) {}

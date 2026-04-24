@@ -53,6 +53,12 @@ window.__NT_DEFER_LOADER_INITIALIZED__ = true;
     // Collapse duplicate slashes (but preserve leading //? not applicable here).
     path = path.replace(/\/{2,}/g, '/');
 
+    // Top-level app routes: /cart, /about, /contact, /faq (no trailing slash) — one shape sitewide.
+    const m = path.match(/^\/(cart|about|contact|faq)\/?$/);
+    if (m) {
+      return `/${m[1]}`;
+    }
+
     return path;
   }
 

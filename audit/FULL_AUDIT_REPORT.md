@@ -1,17 +1,36 @@
-# Full Website Audit Report — nutrithrive.com.au
+# Full website audit report — https://nutrithrive.com.au
 
-## Table of Contents
-- [01 Site Map](#01-site-map)
-- [02 Raw Page Data](#02-raw-page-data-firecrawl-scrape)
-- [03 Technical SEO Audit](#03-technical-seo-audit)
-- [04 Content and UX Audit](#04-content-and-ux-audit)
-- [05 Quick Wins](#05-quick-wins-top-15)
-- [06 Executive Summary](#06-executive-summary)
+This document stitches together the phase reports in `audit/` so you can hand off one file. The technical brief’s placeholder domain `https://YOURWEBSITE.com` maps to the live site audited here: **https://nutrithrive.com.au**.
 
+## Table of contents
+
+- [01 — Site map](#01-site-map)
+- [02 — Raw page data (scrape)](#02-raw-page-data-firecrawl-scrape)
+- [03 — Technical SEO](#03-technical-seo-audit)
+- [04 — Content and UX](#04-content-and-ux-audit)
+- [05 — Quick wins (15)](#05-quick-wins-top-15)
+- [06 — Executive summary](#06-executive-summary)
+
+---
 
 # 01 Site Map
 
-Total URLs discovered and audited: **50**
+**Target website:** `https://nutrithrive.com.au` (the brief’s `https://YOURWEBSITE.com` placeholder applies to the live store audited in this project).
+
+**Map sources used**
+
+| Source | Notes |
+|--------|--------|
+| **firecrawl_map** (limit 500) | Discovers in-site links, including some paths **not** listed in `sitemap.xml` (e.g. cart, additional blog posts, extensionless variants). |
+| **https://nutrithrive.com.au/sitemap.xml** | Authoritative for what you submit to search engines; **53** unique `<loc>` URLs (Apr 2026). |
+
+**Depth cap for this audit:** Up to **50** URLs were **scraped in full** for the raw data file (`02_raw_pages.md`). The list below is the **full site map picture**, not only those 50.
+
+**Totals**
+
+- **Sitemap (unique):** 53  
+- **Firecrawl map:** 66+ link records (includes alternates, e.g. same post with/without `.html` in some cases — dedupe in Search Console).  
+- **Recommended:** Align internal linking and canonicals so one preferred URL form exists for each page (trailing slash, `.html` vs clean URLs).
 
 
 ## Homepage (1)
@@ -73,14 +92,92 @@ Total URLs discovered and audited: **50**
 - https://nutrithrive.com.au/pages/shipping/shipping-returns
 - https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa
 
-## Legal pages (1)
-- https://nutrithrive.com.au/privacy-policy.html
+## Legal / policy
+- `https://nutrithrive.com.au/privacy-policy.html` — **Not** present in the current `sitemap.xml` (53 URLs). It still resolves and was included in the 50-URL deep scrape. **Fix:** add it to the generated sitemap so search engines and audits discover it from one source of truth.
 
+---
+
+## Complete `sitemap.xml` URL list (53 unique, Apr 2026)
+
+1. `https://nutrithrive.com.au/`  
+2. `https://nutrithrive.com.au/about`  
+3. `https://nutrithrive.com.au/blog/`  
+4. `https://nutrithrive.com.au/blog/australian-health-consumer-2026-behavioral-psychographics-wellness.html`  
+5. `https://nutrithrive.com.au/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html`  
+6. `https://nutrithrive.com.au/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html`  
+7. `https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html`  
+8. `https://nutrithrive.com.au/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html`  
+9. `https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html`  
+10. `https://nutrithrive.com.au/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html`  
+11. `https://nutrithrive.com.au/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html`  
+12. `https://nutrithrive.com.au/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html`  
+13. `https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html`  
+14. `https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026.html`  
+15. `https://nutrithrive.com.au/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html`  
+16. `https://nutrithrive.com.au/blog/is-moringa-legit-what-science-and-real-users-say-2026.html`  
+17. `https://nutrithrive.com.au/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html`  
+18. `https://nutrithrive.com.au/blog/moringa-benefits-what-happens-when-you-take-it-every-day-2026.html`  
+19. `https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026.html`  
+20. `https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-chinese-review.html`  
+21. `https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html`  
+22. `https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html`  
+23. `https://nutrithrive.com.au/blog/moringa-melbourne-complete-growers-report-2026.html`  
+24. `https://nutrithrive.com.au/blog/moringa-powder-australia-honest-buyers-guide-before-you-buy.html`  
+25. `https://nutrithrive.com.au/blog/moringa-powder-benefits-2026-guide-real-reason-daily-routine.html`  
+26. `https://nutrithrive.com.au/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html`  
+27. `https://nutrithrive.com.au/blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html`  
+28. `https://nutrithrive.com.au/blog/moringa-soap-skin-science-australia-2026.html`  
+29. `https://nutrithrive.com.au/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html`  
+30. `https://nutrithrive.com.au/blog/natural-language-calendar-scheduler.html`  
+31. `https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa.html`  
+32. `https://nutrithrive.com.au/blog/universal-size-converter.html`  
+33. `https://nutrithrive.com.au/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html`  
+34. `https://nutrithrive.com.au/blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder.html`  
+35. `https://nutrithrive.com.au/contact`  
+36. `https://nutrithrive.com.au/faq`  
+37. `https://nutrithrive.com.au/melbourne/`  
+38. `https://nutrithrive.com.au/nutrithrive_labs/`  
+39. `https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html`  
+40. `https://nutrithrive.com.au/nutrithrive_labs/password-generator.html`  
+41. `https://nutrithrive.com.au/nutrithrive_labs/pomodoro-timer.html`  
+42. `https://nutrithrive.com.au/nutrithrive_labs/quick-notes.html`  
+43. `https://nutrithrive.com.au/nutrithrive_labs/sitemap-generator.html`  
+44. `https://nutrithrive.com.au/nutrithrive_labs/time-converter.html`  
+45. `https://nutrithrive.com.au/pages/newsletter/`  
+46. `https://nutrithrive.com.au/pages/shipping/shipping-returns`  
+47. `https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html`  
+48. `https://nutrithrive.com.au/products/`  
+49. `https://nutrithrive.com.au/products/black-tea/`  
+50. `https://nutrithrive.com.au/products/combo-pack/`  
+51. `https://nutrithrive.com.au/products/curry-leaves/`  
+52. `https://nutrithrive.com.au/products/moringa-powder/`  
+53. `https://nutrithrive.com.au/products/moringa-soap/`
+
+## Firecrawl map: examples **beyond** the sitemap (crawlable but not in the 53)
+
+These illustrate why map ≠ sitemap: internal links and legacy paths still exist. Decide whether to **noindex**, **301 merge**, or **add to sitemap** per URL.
+
+- `https://nutrithrive.com.au/cart`  
+- `https://nutrithrive.com.au/blog/...` — additional posts (e.g. `rosabella-moringa-reviews-legit-or-overhyped-2026.html`, `high-protein-snacks-australia-25-options-under-150-calories-2025.html`, `best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html`, and others) appear in the link graph; promote important commercial pages into the sitemap.  
+- Extensionless vs `.html` duplicates for the same content (e.g. usage guide) — use **one** canonical and redirect the other.
+
+
+---
 
 # 02 Raw Page Data (Firecrawl Scrape)
 
-Total pages scraped: **50**
+Total pages scraped: **50** (capped as per instructions; the live site has more pages — see `01_site_map.md`).
 
+## Methodology and limits
+
+- **What was extracted:** For each URL, the Firecrawl `markdown` + `links` flow with `onlyMainContent: true` was used to capture visible body content, from which we derived title-like headings, link lists, and image `alt` where exposed in the slice. This is the right choice for **word count, H1–H3 in main column, and internal links.**
+- **What this mode often misses:** The `<head>` of the document. Per-row lines below that say `Canonical: [Missing]` and `Schema markup present: No` reflect **that extraction gap**, not a guaranteed absence in the real HTML.
+- **HTML source verification (curl, Apr 2026):** On the **homepage** and a **sample blog post** (`.../dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html`), the live HTML **does** include:
+  - `<link rel="canonical" href="...">` (self-referential, with **trailing-slash** preference on some routes such as `https://nutrithrive.com.au/products/curry-leaves/` when requested without a slash);
+  - Multiple `application/ld+json` blocks (e.g. `WebSite`, `Organization`, `LocalBusiness`, `Product` on home; `Article` / `BlogPosting`, `FAQPage`, `BreadcrumbList`, `LocalBusiness` on the blog sample).
+- **Actionable takeaway:** Use **View Source** or **Screaming Frog** “head” view / **URL Inspection** in Search Console to audit canonicals and JSON-LD per template, not the Firecrawl main-body payload alone.
+
+---
 
 ## https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html
 
@@ -733,6 +830,8 @@ Total pages scraped: **50**
 - Schema markup present: No (count=0)
 
 
+---
+
 # 03 Technical SEO Audit
 
 Pages analysed: **50**
@@ -865,8 +964,8 @@ Pages analysed: **50**
 
 ## Content quality — E-E-A-T signals on blog pages
 - Blog pages checked: 32
-- Missing author metadata: 0
-- Missing modified/published date metadata: 31
+- `meta name="author"` / author in JSON-LD: **present on spot-checked blog HTML** (e.g. `NutriThrive Research Team` and Organization author in `Article` schema on the dried curry post).
+- **Dates:** The same posts expose `article:published_time`, `article:modified_time` (Open Graph) and `datePublished` / `dateModified` in JSON-LD. The earlier “31 missing dates” flag came from the **body-only** scrape not reliably surfacing on-page date UI — treat head/meta + schema as the source of truth and spot-check a few URLs in the browser.
 
 ## URLs with uppercase letters (0)
 - None found
@@ -909,93 +1008,33 @@ Pages analysed: **50**
 ## Dynamic URLs with query params (0)
 - None found
 
-## Pages missing canonical tags (50)
-- https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html
-- https://nutrithrive.com.au/products/curry-leaves
-- https://nutrithrive.com.au/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html
-- https://nutrithrive.com.au/nutrithrive_labs
-- https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html
-- https://nutrithrive.com.au/blog/australian-health-consumer-2026-behavioral-psychographics-wellness.html
-- https://nutrithrive.com.au/blog
-- https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026.html
-- https://nutrithrive.com.au/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html
-- https://nutrithrive.com.au
-- https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html
-- https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html
-- https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa.html
-- https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html
-- https://nutrithrive.com.au/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html
-- https://nutrithrive.com.au/products
-- https://nutrithrive.com.au/products/moringa-powder
-- https://nutrithrive.com.au/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html
-- https://nutrithrive.com.au/faq
-- https://nutrithrive.com.au/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html
-- https://nutrithrive.com.au/about
-- https://nutrithrive.com.au/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html
-- https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-chinese-review.html
-- https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html
-- https://nutrithrive.com.au/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html
-- https://nutrithrive.com.au/blog/moringa-powder-australia-honest-buyers-guide-before-you-buy.html
-- https://nutrithrive.com.au/pages/newsletter
-- https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html
-- https://nutrithrive.com.au/contact
-- https://nutrithrive.com.au/blog/universal-size-converter.html
-- https://nutrithrive.com.au/products/moringa-soap
-- https://nutrithrive.com.au/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html
-- https://nutrithrive.com.au/blog/moringa-soap-skin-science-australia-2026.html
-- https://nutrithrive.com.au/blog/is-moringa-legit-what-science-and-real-users-say-2026.html
-- https://nutrithrive.com.au/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html
-- https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026.html
-- https://nutrithrive.com.au/melbourne
-- https://nutrithrive.com.au/products/black-tea
-- https://nutrithrive.com.au/privacy-policy.html
-- https://nutrithrive.com.au/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html
+## Canonical tags — what the data actually shows
 
-## Schema / Structured Data
-- Pages with schema: 0
-- Pages missing schema: 50
-- Missing schema: https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html
-- Missing schema: https://nutrithrive.com.au/products/curry-leaves
-- Missing schema: https://nutrithrive.com.au/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html
-- Missing schema: https://nutrithrive.com.au/nutrithrive_labs
-- Missing schema: https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html
-- Missing schema: https://nutrithrive.com.au/blog/australian-health-consumer-2026-behavioral-psychographics-wellness.html
-- Missing schema: https://nutrithrive.com.au/blog
-- Missing schema: https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html
-- Missing schema: https://nutrithrive.com.au
-- Missing schema: https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html
-- Missing schema: https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa.html
-- Missing schema: https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html
-- Missing schema: https://nutrithrive.com.au/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html
-- Missing schema: https://nutrithrive.com.au/products
-- Missing schema: https://nutrithrive.com.au/products/moringa-powder
-- Missing schema: https://nutrithrive.com.au/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html
-- Missing schema: https://nutrithrive.com.au/faq
-- Missing schema: https://nutrithrive.com.au/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html
-- Missing schema: https://nutrithrive.com.au/about
-- Missing schema: https://nutrithrive.com.au/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-chinese-review.html
-- Missing schema: https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html
-- Missing schema: https://nutrithrive.com.au/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-powder-australia-honest-buyers-guide-before-you-buy.html
-- Missing schema: https://nutrithrive.com.au/pages/newsletter
-- Missing schema: https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html
-- Missing schema: https://nutrithrive.com.au/contact
-- Missing schema: https://nutrithrive.com.au/blog/universal-size-converter.html
-- Missing schema: https://nutrithrive.com.au/products/moringa-soap
-- Missing schema: https://nutrithrive.com.au/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-soap-skin-science-australia-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/is-moringa-legit-what-science-and-real-users-say-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026.html
-- Missing schema: https://nutrithrive.com.au/melbourne
-- Missing schema: https://nutrithrive.com.au/products/black-tea
-- Missing schema: https://nutrithrive.com.au/privacy-policy.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html
-- Recommendation: blog posts should include Article schema, product pages Product schema, and key local pages should include LocalBusiness schema tied to Melbourne address.
+- **Firecrawl main-content scrape (used for 02):** did not surface `<link rel="canonical">`, so every row in `02_raw_pages.md` was marked `[Missing]`.
+- **HTML source check (curl, Apr 2026) — more reliable for this:**  
+  - Homepage: `rel="canonical"` → `https://nutrithrive.com.au/`  
+  - Dried curry blog: → full `.html` URL of that article  
+  - `https://nutrithrive.com.au/products/curry-leaves` (no trailing slash) → canonical → `https://nutrithrive.com.au/products/curry-leaves/` (with slash)  
+  - About: `https://nutrithrive.com.au/about` → canonical → `https://nutrithrive.com.au/about`
 
+**Finding — not “missing canonicals”, but URL consistency:** You **do** use canonicals. The work now is to **align** all internal links, sitemap, and marketing URLs to the **same** host + trailing-slash + file-extension pattern as the canonical so Google does not have to choose between duplicates.
+
+**Pages to monitor for duplicate forms:** any route that can load as both `.../about` and `.../about/`, or `.../blog` vs `.../blog/`, and product paths with/without trailing slash.
+
+## Schema / structured data (corrected from head HTML)
+
+- **Homepage** (`https://nutrithrive.com.au/`) includes a large `@graph` with types such as: `Organization`, `LocalBusiness`, `WebSite` (separate block with `SearchAction`), and **multiple** `Product` + `Offer` nodes (moringa powder, tea, soap, bundles, etc.).
+- **Sample blog** (`dried-curry-leaves-...-2026.html`) includes: `Article`, `BlogPosting` (overlaps `Article` — consider one primary news/blog type to avoid noise), `FAQPage`, `BreadcrumbList`, and a sitewide-style `LocalBusiness` block.
+- **Why 02 said “No schema”:** The extraction pipeline for that run did not parse `<script type="application/ld+json">` in the head.
+
+**Opportunities (not “start from zero”):**  
+- Run every **template** (home, blog, product, FAQ, labs) through Google’s [Rich Results Test](https://search.google.com/test/rich-results) and fix any errors/warnings.  
+- On long articles, you already ship **Article + FAQ**; ensure **each** product **detail** page (not only the home graph) has a clean `Product` + `Offer` that matches the visible price/SKU.  
+- Resolve duplicate `Article` vs `BlogPosting` for the same URL if the validator flags redundancy.  
+- Add `privacy-policy.html` to `sitemap.xml` so it is not only discovered by crawl.
+
+
+---
 
 # 04 Content and UX Audit
 
@@ -1046,6 +1085,8 @@ Pages analysed: **50**
 - Physical address presence: Yes (15 Europe Street, Truganina VIC 3029).
 
 
+---
+
 # 05 Quick Wins (Top 15)
 
 
@@ -1065,20 +1106,20 @@ Pages analysed: **50**
 - Why it matters: Improves snippet readability and click-through potential.
 - Priority: do this week
 
-**[Priority #3] — Add canonical tags to all pages**
-- Page affected: Pages missing canonical
-- Problem: Multiple URLs have no canonical set.
-- Fix: Add self-referencing canonical on every indexable page.
+**[Priority #3] — Align URL shapes with existing canonicals**
+- Page affected: Sitewide (e.g. `/about` vs `/about/`, `/products/curry-leaves` vs `.../curry-leaves/`, `/blog` vs `/blog/`)
+- Problem: Canonical tags **are** present in HTML, but internal links and sitemap sometimes use a different URL form than the canonical target, which forces search engines to reconcile duplicates.
+- Fix: Pick one pattern (trailing slash for sections, consistent product URLs). Update internal links, XML sitemap, and `build-sitemap.js` output to match; 301 only where needed.
 - Impact: High | Effort: Medium
-- Why it matters: Prevents index duplication and consolidates ranking signals.
+- Why it matters: Same as a clean canonical strategy: one clear URL per page and less wasted crawl budget.
 - Priority: do this week
 
-**[Priority #4] — Deploy schema templates**
-- Page affected: Blog/product/local pages
-- Problem: Most pages are missing structured data.
-- Fix: Implement Article, Product, and LocalBusiness JSON-LD templates.
+**[Priority #4] — Validate and tune existing JSON-LD**
+- Page affected: Templates (home, blog, product, FAQ)
+- Problem: Rich schema is already on the homepage and at least one major blog post; the risk is **errors, duplicate types, or product pages that under-specify** compared to the homepage graph.
+- Fix: Run Rich Results Test on each template; dedupe `Article` vs `BlogPosting` if flagged; ensure each product URL has a complete `Product`+`Offer` block matching on-page price/stock.
 - Impact: High | Effort: Medium
-- Why it matters: Helps search engines understand content and can earn rich results.
+- Why it matters: You keep rich-result eligibility without rebuilding what already works.
 - Priority: do this week
 
 **[Priority #5] — Fix orphan pages**
@@ -1170,27 +1211,29 @@ Pages analysed: **50**
 - Priority: do this quarter
 
 
+---
+
 # 06 Executive Summary
 
-## Overall Site Health Score: **72/100**
+## Overall Site Health Score: **78/100**
 
-This site has strong content volume, clear product positioning, and broad coverage across commercial and informational topics. The score is held back by technical consistency issues (title/meta length, missing schema/canonicals on many pages, and internal linking gaps) that reduce how efficiently Google can understand and rank each page.
+This site has strong content volume, clear product positioning, and solid **on-page** technical foundations: live HTML includes canonical links and **JSON-LD** (for example, Organization, LocalBusiness, and Product on the homepage, and Article, FAQ, and BreadcrumbList on a representative blog). The score is held back by **consistency** issues—some titles and meta descriptions are too long for clean snippets, URL variants (with or without a trailing slash) do not always match the canonical, the sitemap omits at least one important page (`privacy-policy.html`), and many similar articles can split ranking between overlapping topics.
 
 ## Top 3 Strengths
 - Clear niche focus: moringa and related superfoods are well-covered across products and blogs.
-- Strong trust signals on core pages: testimonials, business address, and contact details are visible.
-- Large content footprint: many long-form pages can capture broad search demand.
+- Trust and locality are explicit: address, phone, ABN, and social profiles appear, and LocalBusiness-style schema is present on key pages.
+- Structured data is not an empty field: the homepage in particular ships rich `Product` and business markup—worth **validating**, not building from scratch.
 
 ## Top 3 Critical Problems
-- Metadata quality is inconsistent (many overlong titles and descriptions).
-- Structured data and canonical implementation are incomplete across the site.
-- Content cannibalization risk from many overlapping moringa comparison/benefit pages.
+- Snippet metadata is uneven: several titles and meta descriptions are long enough to truncate in search results, which can hide your best words.
+- **URL and index hygiene:** canonicals exist, but internal links, sitemap entries, and “pretty” paths should all agree on one preferred form; add important pages to the sitemap if they are missing.
+- Topic overlap: many moringa guides compete for the same intent—readers and search engines may prefer fewer, stronger pages.
 
 ## 30-Day Action Plan
-- Week 1: Fix all title/meta length issues and add missing canonicals on indexable pages.
-- Week 2: Deploy schema templates (Article/Product/LocalBusiness) and validate in Rich Results Test.
-- Week 3: Improve internal links and add conversion CTAs across top 20 traffic blog posts.
-- Week 4: Consolidate overlapping posts, set redirects, and update homepage/product trust blocks.
+- Week 1: Tighten titles and meta descriptions on high-traffic URLs; list `privacy-policy.html` (and any other indexable stragglers) in the sitemap.
+- Week 2: Run the homepage, a product page, a blog post, and FAQ through the Rich Results Test; fix only what the report flags; align product schema with visible prices and availability.
+- Week 3: Add internal links and clearer “shop” next steps to posts that are strong on information but light on action.
+- Week 4: Map overlapping moringa articles, merge or redirect the weakest, and refresh the homepage to lead with your clearest customer outcome.
 
 ## Tools to Monitor Ongoing Health
 - Google Search Console (coverage, indexing, queries, CTR).
@@ -1198,3 +1241,7 @@ This site has strong content volume, clear product positioning, and broad covera
 - Screaming Frog SEO Spider (monthly technical crawl checks).
 - PageSpeed Insights / Lighthouse (Core Web Vitals and performance).
 - Rich Results Test + Schema validator (structured data health).
+
+
+---
+
