@@ -20,6 +20,18 @@
 /nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 301
 /nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 301
 
+# Hyphen alias → canonical /nutrithrive_labs/ (same files; readability)
+/nutrithrive-labs /nutrithrive_labs/ 301
+/nutrithrive-labs/ /nutrithrive_labs/ 301
+/nutrithrive-labs/dedup-lines /nutrithrive_labs/dedup-lines.html 301
+/nutrithrive-labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 301
+/nutrithrive-labs/time-converter /nutrithrive_labs/time-converter.html 301
+/nutrithrive-labs/converter /nutrithrive_labs/converter.html 301
+/nutrithrive-labs/quick-notes /nutrithrive_labs/quick-notes.html 301
+/nutrithrive-labs/pomodoro-timer /nutrithrive_labs/pomodoro-timer.html 301
+/nutrithrive-labs/ai-text-detector /nutrithrive_labs/ai-text-detector.html 301
+/nutrithrive-labs/password-generator /nutrithrive_labs/password-generator.html 301
+
 # Typo: double slash in blog paths
 /blog// /blog/ 301
 
