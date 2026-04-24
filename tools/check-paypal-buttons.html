@@ -228,61 +228,9 @@
     </div>
 
     <script>
-        // Blog posts with PayPal buttons and their status
-        const blogPosts = [
-            {
-                file: "blog/musashi-protein-powder-australia-comprehensive-guide-2026.html",
-                title: "Musashi Protein Powder Australia Comprehensive Guide 2026",
-                url: "/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html",
-                buttons: [
-                    { id: "ERYQAP7ZAHDDQ", product: "Moringa Powder", count: 6 },
-                    { id: "NJKU46NBZ55JN", product: "Curry Leaves", count: 1 },
-                    { id: "ASMMMWXFS7X84", product: "Combo Pack", count: 1 }
-                ],
-                type: "PayPal Hosted Buttons (form-based)",
-                status: "problem"
-            },
-            {
-                file: "blog/why-australians-cant-sleep-moringa-midnight-reset.html",
-                title: "Why Australians Can't Sleep - Moringa Midnight Reset",
-                url: "/blog/why-australians-cant-sleep-moringa-midnight-reset.html",
-                buttons: [
-                    { id: "ERYQAP7ZAHDDQ", product: "Moringa Powder", count: 5 }
-                ],
-                type: "PayPal Hosted Buttons (form-based)",
-                status: "problem"
-            },
-            {
-                file: "blog/moringa-brands-reviewed-australia-2025-verdict.html",
-                title: "Moringa Brands Reviewed Australia 2025 Verdict",
-                url: "/blog/moringa-brands-reviewed-australia-2025-verdict.html",
-                buttons: [
-                    { id: "ERYQAP7ZAHDDQ", product: "Moringa Powder", count: 1 }
-                ],
-                type: "PayPal Hosted Buttons (form-based)",
-                status: "problem"
-            },
-            {
-                file: "blog/black-tea-benefits-caffeine-australia.html",
-                title: "Black Tea Benefits Caffeine Australia",
-                url: "/blog/black-tea-benefits-caffeine-australia.html",
-                buttons: [
-                    { id: "AMDLXGV7HCKXW", product: "Black Tea", count: 2 }
-                ],
-                type: "PayPal Hosted Buttons (JavaScript API)",
-                status: "problem"
-            },
-            {
-                file: "blog/darjeeling-black-tea-melbourne-muscatel-marvel.html",
-                title: "Darjeeling Black Tea Melbourne Muscatel Marvel",
-                url: "/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html",
-                buttons: [
-                    { id: "AMDLXGV7HCKXW", product: "Black Tea", count: 1 }
-                ],
-                type: "PayPal Hosted Buttons (JavaScript API)",
-                status: "problem"
-            },
-        ];
+        // Pages that embed hosted PayPal buttons (paths must exist in the repo).
+        // Empty until you re-audit: current blog HTML uses checkout links, not hosted embeds.
+        const blogPosts = [];
 
         // Get unique button IDs
         const buttonIds = new Set();

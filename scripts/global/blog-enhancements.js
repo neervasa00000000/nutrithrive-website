@@ -253,7 +253,7 @@
     // Redirect if on the deprecated Usage Guide blog URL
     try {
       const oldPath = '/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html';
-      const newPath = '/pages/usage-guide/how-to-use-moringa.html';
+      const newPath = '/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html';
       if (location.pathname.endsWith(oldPath)) {
         location.replace(newPath);
         return;
@@ -275,7 +275,7 @@
       anchors.forEach(a => {
         const href = a.getAttribute('href') || '';
         if (href.includes('/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html') || href.includes('usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html')) {
-          a.setAttribute('href','../usage-guide/how-to-use-moringa.html');
+          a.setAttribute('href','/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html');
         }
         if (href.includes('benefits/moringa-benefits.html')) {
           // compute relative path to usage guide
