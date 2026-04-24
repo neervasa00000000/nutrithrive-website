@@ -11,6 +11,15 @@
 /blog/moringa-eyesight-better-than-carrots /blog/moringa-eyesight-better-than-carrots 404
 /blog/moringa-eyesight-better-than-carrots.html /blog/moringa-eyesight-better-than-carrots.html 404
 
+# Pretty blog URLs (extensionless) → canonical .html
+/blog/how-to-add-moringa-to-diet /blog/how-to-add-moringa-to-diet.html 301
+/blog/moringa-melbourne-complete-growers-report-2026 /blog/moringa-melbourne-complete-growers-report-2026.html 301
+/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /blog/musashi-protein-powder-australia-comprehensive-guide-2026.html 301
+/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html 301
+/nutrithrive_labs/dedup-lines /nutrithrive_labs/dedup-lines.html 301
+/nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 301
+/nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 301
+
 # Typo: double slash in blog paths
 /blog// /blog/ 301
 
@@ -55,7 +64,7 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /payment /pages/shop/payment.html 200
 /payment.html /pages/shop/payment.html 200
 /privacy-policy /pages/legal/privacy-policy.html 200
-/privacy-policy.html /pages/legal/privacy-policy.html 200
+/privacy-policy.html /privacy-policy 301
 
 /product-detail.html /products/moringa-powder/ 200
 /products/product-detail.html /products/moringa-powder/ 200
