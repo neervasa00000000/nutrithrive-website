@@ -17,20 +17,20 @@
 - Why it matters: Improves snippet readability and click-through potential.
 - Priority: do this week
 
-**[Priority #3] — Add canonical tags to all pages**
-- Page affected: Pages missing canonical
-- Problem: Multiple URLs have no canonical set.
-- Fix: Add self-referencing canonical on every indexable page.
+**[Priority #3] — Align URL shapes with existing canonicals**
+- Page affected: Sitewide (e.g. `/about` vs `/about/`, `/products/curry-leaves` vs `.../curry-leaves/`, `/blog` vs `/blog/`)
+- Problem: Canonical tags **are** present in HTML, but internal links and sitemap sometimes use a different URL form than the canonical target, which forces search engines to reconcile duplicates.
+- Fix: Pick one pattern (trailing slash for sections, consistent product URLs). Update internal links, XML sitemap, and `build-sitemap.js` output to match; 301 only where needed.
 - Impact: High | Effort: Medium
-- Why it matters: Prevents index duplication and consolidates ranking signals.
+- Why it matters: Same as a clean canonical strategy: one clear URL per page and less wasted crawl budget.
 - Priority: do this week
 
-**[Priority #4] — Deploy schema templates**
-- Page affected: Blog/product/local pages
-- Problem: Most pages are missing structured data.
-- Fix: Implement Article, Product, and LocalBusiness JSON-LD templates.
+**[Priority #4] — Validate and tune existing JSON-LD**
+- Page affected: Templates (home, blog, product, FAQ)
+- Problem: Rich schema is already on the homepage and at least one major blog post; the risk is **errors, duplicate types, or product pages that under-specify** compared to the homepage graph.
+- Fix: Run Rich Results Test on each template; dedupe `Article` vs `BlogPosting` if flagged; ensure each product URL has a complete `Product`+`Offer` block matching on-page price/stock.
 - Impact: High | Effort: Medium
-- Why it matters: Helps search engines understand content and can earn rich results.
+- Why it matters: You keep rich-result eligibility without rebuilding what already works.
 - Priority: do this week
 
 **[Priority #5] — Fix orphan pages**

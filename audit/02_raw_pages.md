@@ -1,7 +1,17 @@
 # 02 Raw Page Data (Firecrawl Scrape)
 
-Total pages scraped: **50**
+Total pages scraped: **50** (capped as per instructions; the live site has more pages — see `01_site_map.md`).
 
+## Methodology and limits
+
+- **What was extracted:** For each URL, the Firecrawl `markdown` + `links` flow with `onlyMainContent: true` was used to capture visible body content, from which we derived title-like headings, link lists, and image `alt` where exposed in the slice. This is the right choice for **word count, H1–H3 in main column, and internal links.**
+- **What this mode often misses:** The `<head>` of the document. Per-row lines below that say `Canonical: [Missing]` and `Schema markup present: No` reflect **that extraction gap**, not a guaranteed absence in the real HTML.
+- **HTML source verification (curl, Apr 2026):** On the **homepage** and a **sample blog post** (`.../dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html`), the live HTML **does** include:
+  - `<link rel="canonical" href="...">` (self-referential, with **trailing-slash** preference on some routes such as `https://nutrithrive.com.au/products/curry-leaves/` when requested without a slash);
+  - Multiple `application/ld+json` blocks (e.g. `WebSite`, `Organization`, `LocalBusiness`, `Product` on home; `Article` / `BlogPosting`, `FAQPage`, `BreadcrumbList`, `LocalBusiness` on the blog sample).
+- **Actionable takeaway:** Use **View Source** or **Screaming Frog** “head” view / **URL Inspection** in Search Console to audit canonicals and JSON-LD per template, not the Firecrawl main-body payload alone.
+
+---
 
 ## https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html
 

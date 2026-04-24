@@ -1,24 +1,24 @@
 # 06 Executive Summary
 
-## Overall Site Health Score: **72/100**
+## Overall Site Health Score: **78/100**
 
-This site has strong content volume, clear product positioning, and broad coverage across commercial and informational topics. The score is held back by technical consistency issues (title/meta length, missing schema/canonicals on many pages, and internal linking gaps) that reduce how efficiently Google can understand and rank each page.
+This site has strong content volume, clear product positioning, and solid **on-page** technical foundations: live HTML includes canonical links and **JSON-LD** (for example, Organization, LocalBusiness, and Product on the homepage, and Article, FAQ, and BreadcrumbList on a representative blog). The score is held back by **consistency** issues—some titles and meta descriptions are too long for clean snippets, URL variants (with or without a trailing slash) do not always match the canonical, the sitemap omits at least one important page (`privacy-policy.html`), and many similar articles can split ranking between overlapping topics.
 
 ## Top 3 Strengths
 - Clear niche focus: moringa and related superfoods are well-covered across products and blogs.
-- Strong trust signals on core pages: testimonials, business address, and contact details are visible.
-- Large content footprint: many long-form pages can capture broad search demand.
+- Trust and locality are explicit: address, phone, ABN, and social profiles appear, and LocalBusiness-style schema is present on key pages.
+- Structured data is not an empty field: the homepage in particular ships rich `Product` and business markup—worth **validating**, not building from scratch.
 
 ## Top 3 Critical Problems
-- Metadata quality is inconsistent (many overlong titles and descriptions).
-- Structured data and canonical implementation are incomplete across the site.
-- Content cannibalization risk from many overlapping moringa comparison/benefit pages.
+- Snippet metadata is uneven: several titles and meta descriptions are long enough to truncate in search results, which can hide your best words.
+- **URL and index hygiene:** canonicals exist, but internal links, sitemap entries, and “pretty” paths should all agree on one preferred form; add important pages to the sitemap if they are missing.
+- Topic overlap: many moringa guides compete for the same intent—readers and search engines may prefer fewer, stronger pages.
 
 ## 30-Day Action Plan
-- Week 1: Fix all title/meta length issues and add missing canonicals on indexable pages.
-- Week 2: Deploy schema templates (Article/Product/LocalBusiness) and validate in Rich Results Test.
-- Week 3: Improve internal links and add conversion CTAs across top 20 traffic blog posts.
-- Week 4: Consolidate overlapping posts, set redirects, and update homepage/product trust blocks.
+- Week 1: Tighten titles and meta descriptions on high-traffic URLs; list `privacy-policy.html` (and any other indexable stragglers) in the sitemap.
+- Week 2: Run the homepage, a product page, a blog post, and FAQ through the Rich Results Test; fix only what the report flags; align product schema with visible prices and availability.
+- Week 3: Add internal links and clearer “shop” next steps to posts that are strong on information but light on action.
+- Week 4: Map overlapping moringa articles, merge or redirect the weakest, and refresh the homepage to lead with your clearest customer outcome.
 
 ## Tools to Monitor Ongoing Health
 - Google Search Console (coverage, indexing, queries, CTR).

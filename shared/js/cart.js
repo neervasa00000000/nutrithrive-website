@@ -291,7 +291,7 @@ window.addProductToCartAndRedirect = function(id, name, price, image) {
             quantity: 1
         });
         // Redirect to cart page which has proper PayPal/Apple Pay with buyer info collection
-        window.location.href = '/cart.html';
+        window.location.href = '/cart';
     } catch (error) {
         console.error('Error adding to cart:', error);
         // Fallback: redirect to product page

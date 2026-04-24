@@ -130,8 +130,8 @@ Pages analysed: **50**
 
 ## Content quality — E-E-A-T signals on blog pages
 - Blog pages checked: 32
-- Missing author metadata: 0
-- Missing modified/published date metadata: 31
+- `meta name="author"` / author in JSON-LD: **present on spot-checked blog HTML** (e.g. `NutriThrive Research Team` and Organization author in `Article` schema on the dried curry post).
+- **Dates:** The same posts expose `article:published_time`, `article:modified_time` (Open Graph) and `datePublished` / `dateModified` in JSON-LD. The earlier “31 missing dates” flag came from the **body-only** scrape not reliably surfacing on-page date UI — treat head/meta + schema as the source of truth and spot-check a few URLs in the browser.
 
 ## URLs with uppercase letters (0)
 - None found
@@ -174,89 +174,27 @@ Pages analysed: **50**
 ## Dynamic URLs with query params (0)
 - None found
 
-## Pages missing canonical tags (50)
-- https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html
-- https://nutrithrive.com.au/products/curry-leaves
-- https://nutrithrive.com.au/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html
-- https://nutrithrive.com.au/nutrithrive_labs
-- https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html
-- https://nutrithrive.com.au/blog/australian-health-consumer-2026-behavioral-psychographics-wellness.html
-- https://nutrithrive.com.au/blog
-- https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026.html
-- https://nutrithrive.com.au/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html
-- https://nutrithrive.com.au
-- https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html
-- https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html
-- https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa.html
-- https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html
-- https://nutrithrive.com.au/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html
-- https://nutrithrive.com.au/products
-- https://nutrithrive.com.au/products/moringa-powder
-- https://nutrithrive.com.au/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html
-- https://nutrithrive.com.au/faq
-- https://nutrithrive.com.au/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html
-- https://nutrithrive.com.au/about
-- https://nutrithrive.com.au/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html
-- https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-chinese-review.html
-- https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html
-- https://nutrithrive.com.au/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html
-- https://nutrithrive.com.au/blog/moringa-powder-australia-honest-buyers-guide-before-you-buy.html
-- https://nutrithrive.com.au/pages/newsletter
-- https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html
-- https://nutrithrive.com.au/contact
-- https://nutrithrive.com.au/blog/universal-size-converter.html
-- https://nutrithrive.com.au/products/moringa-soap
-- https://nutrithrive.com.au/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html
-- https://nutrithrive.com.au/blog/moringa-soap-skin-science-australia-2026.html
-- https://nutrithrive.com.au/blog/is-moringa-legit-what-science-and-real-users-say-2026.html
-- https://nutrithrive.com.au/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html
-- https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026.html
-- https://nutrithrive.com.au/melbourne
-- https://nutrithrive.com.au/products/black-tea
-- https://nutrithrive.com.au/privacy-policy.html
-- https://nutrithrive.com.au/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html
+## Canonical tags — what the data actually shows
 
-## Schema / Structured Data
-- Pages with schema: 0
-- Pages missing schema: 50
-- Missing schema: https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html
-- Missing schema: https://nutrithrive.com.au/products/curry-leaves
-- Missing schema: https://nutrithrive.com.au/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html
-- Missing schema: https://nutrithrive.com.au/nutrithrive_labs
-- Missing schema: https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html
-- Missing schema: https://nutrithrive.com.au/blog/australian-health-consumer-2026-behavioral-psychographics-wellness.html
-- Missing schema: https://nutrithrive.com.au/blog
-- Missing schema: https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html
-- Missing schema: https://nutrithrive.com.au
-- Missing schema: https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html
-- Missing schema: https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa.html
-- Missing schema: https://nutrithrive.com.au/blog/best-protein-powder-australia-2026-complete-guide.html
-- Missing schema: https://nutrithrive.com.au/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html
-- Missing schema: https://nutrithrive.com.au/products
-- Missing schema: https://nutrithrive.com.au/products/moringa-powder
-- Missing schema: https://nutrithrive.com.au/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html
-- Missing schema: https://nutrithrive.com.au/faq
-- Missing schema: https://nutrithrive.com.au/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html
-- Missing schema: https://nutrithrive.com.au/about
-- Missing schema: https://nutrithrive.com.au/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-chinese-review.html
-- Missing schema: https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html
-- Missing schema: https://nutrithrive.com.au/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-powder-australia-honest-buyers-guide-before-you-buy.html
-- Missing schema: https://nutrithrive.com.au/pages/newsletter
-- Missing schema: https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html
-- Missing schema: https://nutrithrive.com.au/contact
-- Missing schema: https://nutrithrive.com.au/blog/universal-size-converter.html
-- Missing schema: https://nutrithrive.com.au/products/moringa-soap
-- Missing schema: https://nutrithrive.com.au/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-soap-skin-science-australia-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/is-moringa-legit-what-science-and-real-users-say-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html
-- Missing schema: https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026.html
-- Missing schema: https://nutrithrive.com.au/melbourne
-- Missing schema: https://nutrithrive.com.au/products/black-tea
-- Missing schema: https://nutrithrive.com.au/privacy-policy.html
-- Missing schema: https://nutrithrive.com.au/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html
-- Recommendation: blog posts should include Article schema, product pages Product schema, and key local pages should include LocalBusiness schema tied to Melbourne address.
+- **Firecrawl main-content scrape (used for 02):** did not surface `<link rel="canonical">`, so every row in `02_raw_pages.md` was marked `[Missing]`.
+- **HTML source check (curl, Apr 2026) — more reliable for this:**  
+  - Homepage: `rel="canonical"` → `https://nutrithrive.com.au/`  
+  - Dried curry blog: → full `.html` URL of that article  
+  - `https://nutrithrive.com.au/products/curry-leaves` (no trailing slash) → canonical → `https://nutrithrive.com.au/products/curry-leaves/` (with slash)  
+  - About: `https://nutrithrive.com.au/about` → canonical → `https://nutrithrive.com.au/about`
+
+**Finding — not “missing canonicals”, but URL consistency:** You **do** use canonicals. The work now is to **align** all internal links, sitemap, and marketing URLs to the **same** host + trailing-slash + file-extension pattern as the canonical so Google does not have to choose between duplicates.
+
+**Pages to monitor for duplicate forms:** any route that can load as both `.../about` and `.../about/`, or `.../blog` vs `.../blog/`, and product paths with/without trailing slash.
+
+## Schema / structured data (corrected from head HTML)
+
+- **Homepage** (`https://nutrithrive.com.au/`) includes a large `@graph` with types such as: `Organization`, `LocalBusiness`, `WebSite` (separate block with `SearchAction`), and **multiple** `Product` + `Offer` nodes (moringa powder, tea, soap, bundles, etc.).
+- **Sample blog** (`dried-curry-leaves-...-2026.html`) includes: `Article`, `BlogPosting` (overlaps `Article` — consider one primary news/blog type to avoid noise), `FAQPage`, `BreadcrumbList`, and a sitewide-style `LocalBusiness` block.
+- **Why 02 said “No schema”:** The extraction pipeline for that run did not parse `<script type="application/ld+json">` in the head.
+
+**Opportunities (not “start from zero”):**  
+- Run every **template** (home, blog, product, FAQ, labs) through Google’s [Rich Results Test](https://search.google.com/test/rich-results) and fix any errors/warnings.  
+- On long articles, you already ship **Article + FAQ**; ensure **each** product **detail** page (not only the home graph) has a clean `Product` + `Offer` that matches the visible price/SKU.  
+- Resolve duplicate `Article` vs `BlogPosting` for the same URL if the validator flags redundancy.  
+- Add `privacy-policy.html` to `sitemap.xml` so it is not only discovered by crawl.
