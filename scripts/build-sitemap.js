@@ -3,7 +3,8 @@
  * Regenerates /sitemap.xml from the repo filesystem.
  * Run from repo root: node scripts/build-sitemap.js
  *
- * Excludes: noindex pages, thank-you flows, internal tools.
+ * Excludes: noindex pages (set INCLUDE_NOINDEX=1 to list them anyway), blocklisted paths,
+ * thank-you flows. Run: node scripts/build-sitemap.js
  */
 
 const fs = require("fs");
@@ -28,6 +29,8 @@ const PATH_BLOCKLIST = new Set([
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([]);
+
+const INCLUDE_NOINDEX = process.env.INCLUDE_NOINDEX === "1" || process.argv.includes("--include-noindex");
 
 /** HTML paths included in the sitemap even when the page has noindex (strategic exceptions). */
 const INCLUDE_DESPITE_NOINDEX = new Set(["blog/index.html"]);
@@ -125,6 +128,7 @@ function escapeXml(s) {
 function main() {
   const files = walkHtml(REPO_ROOT);
   const entries = [];
+  const skippedNoindex = [];
 
   for (const abs of files) {
     const rel = toPosix(path.relative(REPO_ROOT, abs));
@@ -137,7 +141,12 @@ function main() {
     } catch {
       continue;
     }
-    if (hasNoindex(html) && !INCLUDE_DESPITE_NOINDEX.has(rel)) continue;
+    if (hasNoindex(html) && !INCLUDE_DESPITE_NOINDEX.has(rel)) {
+      if (!INCLUDE_NOINDEX) {
+        skippedNoindex.push(rel);
+        continue;
+      }
+    }
 
     const loc = fileToUrl(rel);
     const { priority, changefreq } = priorityAndFreq(loc);
@@ -176,6 +185,15 @@ function main() {
   const outPath = path.join(REPO_ROOT, "sitemap.xml");
   fs.writeFileSync(outPath, lines.join("\n"), "utf8");
   console.log(`Wrote ${unique.length} URLs to sitemap.xml`);
+  if (skippedNoindex.length && !INCLUDE_NOINDEX) {
+    console.log(
+      `Skipped ${skippedNoindex.length} noindex file(s) (re-run with INCLUDE_NOINDEX=1 to include):`,
+    );
+    skippedNoindex.sort().forEach((r) => console.log(`  - ${r}`));
+  }
+  if (INCLUDE_NOINDEX) {
+    console.log("Note: noindex URLs are included in the sitemap; crawlers will still respect page robots tags.");
+  }
 }
 
 main();
