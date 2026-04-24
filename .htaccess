@@ -128,6 +128,9 @@ DirectoryIndex index.html index.htm
     # Old/typo blog slugs (targets must remain live pages)
     RewriteRule ^blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness\.html$ /blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html [R=301,L]
     RewriteRule ^blog/best-moringa-powder-australia-2026\.html$ /blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html [R=301,L]
+    # Duplicate routes → canonical .html (parity with Netlify _redirects; extensionless 301s if file exists)
+    RewriteRule ^blog/moringa-melbourne-complete-growers-report-2026/?$ /blog/moringa-melbourne-complete-growers-report-2026.html [R=301,L]
+    RewriteRule ^blog/how-to-add-moringa-to-diet/?$ /blog/how-to-add-moringa-to-diet.html [R=301,L]
     
     
     # Common wrong paths
