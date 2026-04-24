@@ -22,7 +22,7 @@
 ## 3. Top 3 critical problems (do these first)
 
 1. **Same page, two web addresses** — Example: the **Melbourne grower’s report** appears with and without **`.html`**. Search engines may show the wrong version and split your visibility. **Pick one link per page** and redirect the other.  
-2. **Meta descriptions too long and too similar** — Many pages share the same **generic sentence** about “explore practical guidance…” and several metas are **longer than Google typically shows**, so they get **cut off mid-sentence**.  
+2. **Meta descriptions too long and too similar** — On several key URLs (e.g. **contact**, **Melbourne**, multiple **blog** posts), the meta is **over ~155 characters** or repeats a **boilerplate** line—so Google **cuts** the line awkwardly. The **homepage** meta in the latest crawl is a healthy length, but the pattern still hurts inner pages.  
 3. **Privacy / policy links point to different places** — Customers and Google see **more than one** path to your privacy terms. That looks untidy and can **duplicate** content.
 
 ---
@@ -31,7 +31,7 @@
 
 | Week | Actions |
 | --- | --- |
-| **1** | Fix **redirects** for duplicate blog and lab URLs; **unify** privacy page to a single address; **rewrite** homepage meta to one short, clear paragraph. |
+| **1** | Fix **redirects** for duplicate blog and lab URLs; **unify** privacy page to a single address; **rewrite** the **contact** and other **over-long** metas to one clear sentence each. |
 | **2** | **Rewrite** the shared **meta template** — make every important page’s description **unique** in the first sentence; **shorten** any description over about **155 characters**. |
 | **3** | Add **internal links** to your **Melbourne** page and key **language-specific** guides from the blog and footer; fix any **broken** carousel links on the homepage. |
 | **4** | **Check** structured data (Google’s free **Rich Results** tool) for product and article pages; add a **short** intro to the **shop** page and **cart** trust line. |
