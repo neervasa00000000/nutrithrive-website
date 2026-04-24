@@ -176,6 +176,16 @@ DirectoryIndex index.html index.htm
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^privacy-policy\.html$ /privacy-policy [R=301,L]
 
+    # Labs: hyphen alias → same .html (canonical path uses underscores)
+    RewriteRule ^nutrithrive-labs/?$ /nutrithrive_labs/ [R=301,L]
+    RewriteRule ^nutrithrive-labs/dedup-lines$ /nutrithrive_labs/dedup-lines.html [R=301,L]
+    RewriteRule ^nutrithrive-labs/sitemap-generator$ /nutrithrive_labs/sitemap-generator.html [R=301,L]
+    RewriteRule ^nutrithrive-labs/time-converter$ /nutrithrive_labs/time-converter.html [R=301,L]
+    RewriteRule ^nutrithrive-labs/converter$ /nutrithrive_labs/converter.html [R=301,L]
+    RewriteRule ^nutrithrive-labs/quick-notes$ /nutrithrive_labs/quick-notes.html [R=301,L]
+    RewriteRule ^nutrithrive-labs/pomodoro-timer$ /nutrithrive_labs/pomodoro-timer.html [R=301,L]
+    RewriteRule ^nutrithrive-labs/ai-text-detector$ /nutrithrive_labs/ai-text-detector.html [R=301,L]
+    RewriteRule ^nutrithrive-labs/password-generator$ /nutrithrive_labs/password-generator.html [R=301,L]
     # Labs: extensionless → .html (consistent canonicals)
     RewriteRule ^nutrithrive_labs/dedup-lines$ /nutrithrive_labs/dedup-lines.html [R=301,L]
     RewriteRule ^nutrithrive_labs/sitemap-generator$ /nutrithrive_labs/sitemap-generator.html [R=301,L]
