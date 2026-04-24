@@ -74,6 +74,7 @@ const allPostsHtml = `<!DOCTYPE html>
 <link rel="canonical" href="${BASE}/blog/all-posts.html">
 <link rel="icon" type="image/png" href="../assets/images/logo/LOGO.webp" sizes="32x32">
 <link rel="stylesheet" href="../styles/global/style.css">
+</head>
 <body class="all-posts-page" style="font-family: system-ui, sans-serif; line-height: 1.5; color: #1a2e22;">
 <header style="padding: 1rem 1.5rem; border-bottom: 1px solid #e0e7ef;">
   <a href="/" style="font-weight: 700; color: #175c36; text-decoration: none;">Nutri Thrive</a>
