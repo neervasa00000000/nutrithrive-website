@@ -13,12 +13,12 @@ Ranked for **impact vs effort** for [https://nutrithrive.com.au](https://nutrith
 
 ---
 
-**[Priority #2] — Fix homepage meta description (length + copy)**  
-- **Page affected:** [https://nutrithrive.com.au/](https://nutrithrive.com.au/)  
-- **Problem:** Meta is **~340+** characters; includes a **broken merge** (*“d., Shop”*). Truncation and quality hurt clicks.  
-- **Fix:** One **150–160 character** line: offer + who you are + location + 1 CTA; remove duplicate clauses.  
+**[Priority #2] — Fix contact page meta (length + duplicate boilerplate)**  
+- **Page affected:** [https://nutrithrive.com.au/contact](https://nutrithrive.com.au/contact)  
+- **Problem:** Meta description is **~325 characters** and **repeats** the title-style line *and* a second full sentence, so Google will truncate mid-text and the snippet looks messy.  
+- **Fix:** **One** benefit-led sentence (≤155 chars): phone, Melbourne dispatch, and what you help with—no duplicate opener.  
 - **Impact:** High | **Effort:** Easy  
-- **Why it matters:** Snippet is the main ad for organic results.
+- **Why it matters:** The contact page competes for *“nutrithrive contact”* and similar; a clean snippet improves clicks.
 
 ---
 
@@ -41,7 +41,7 @@ Ranked for **impact vs effort** for [https://nutrithrive.com.au](https://nutrith
 ---
 
 **[Priority #5] — Shorten 12 metas that exceed 160 characters**  
-- **Page affected:** Homepage, contact, Melbourne, [how-to-add-moringa](https://nutrithrive.com.au/blog/how-to-add-moringa-to-diet), [moringa brands reviewed](https://nutrithrive.com.au/blog/moringa-brands-reviewed-australia-2025-verdict.html), [moringa vs matcha](https://nutrithrive.com.au/blog/moringa-vs-matcha-energy-metabolism-2026.html), [Musashi](https://nutrithrive.com.au/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html), [heavy metal](https://nutrithrive.com.au/blog/natural-heavy-metal-detox-moringa-cleanse-body.html), [gut health comparison](https://nutrithrive.com.au/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html), [protein bars](https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html), [high-protein snacks](https://nutrithrive.com.au/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html), [shop index](https://nutrithrive.com.au/products/)  
+- **Page affected:** Contact, Melbourne, [how-to-add-moringa](https://nutrithrive.com.au/blog/how-to-add-moringa-to-diet), [moringa brands reviewed](https://nutrithrive.com.au/blog/moringa-brands-reviewed-australia-2025-verdict.html), [moringa vs matcha](https://nutrithrive.com.au/blog/moringa-vs-matcha-energy-metabolism-2026.html), [Musashi](https://nutrithrive.com.au/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html), [heavy metal](https://nutrithrive.com.au/blog/natural-heavy-metal-detox-moringa-cleanse-body.html), [gut health comparison](https://nutrithrive.com.au/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html), [protein bars](https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html), [high-protein snacks](https://nutrithrive.com.au/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html), [shop index](https://nutrithrive.com.au/products/) (homepage meta in the Jan 2026 crawl is **140 chars** and within range)  
 - **Problem:** **Truncated** in Google, often after random mid-sentence.  
 - **Fix:** **≤155** characters with a **complete** sentence.  
 - **Impact:** High | **Effort:** Medium  
@@ -78,7 +78,7 @@ Ranked for **impact vs effort** for [https://nutrithrive.com.au](https://nutrith
 
 **[Priority #9] — Strengthen /products/ intro copy (borderline thin)**  
 - **Page affected:** [https://nutrithrive.com.au/products/](https://nutrithrive.com.au/products/)  
-- **Problem:** **~280** words in sample — serviceable but generic category pages can **under-rank** vs competitors.  
+- **Problem:** **~245** words in sample — serviceable but generic category pages can **under-rank** vs competitors.  
 - **Fix:** 2–3 short paragraphs: who you are, **lab testing**, top categories, link to **usage guide** and **bestseller**.  
 - **Impact:** Medium | **Effort:** Easy  
 - **Why it matters:** Category pages collect **broad** queries.
@@ -143,7 +143,7 @@ Ranked for **impact vs effort** for [https://nutrithrive.com.au](https://nutrith
 
 | When | Item numbers |
 | --- | --- |
-| **This week** | #1, #2, #3, #6, #7, #14 |
+| **This week** | #1, #2, #3, #4, #6, #7, #14 |
 | **This month** | #4, #5, #8, #9, #10, #11, #13 |
 | **This quarter** | #12, #15 (plus ongoing CRO) |
 
