@@ -25,14 +25,14 @@ replace_product_links() {
     
     # Replace "Add to Cart" links for Moringa Powder
     if grep -q 'href="https://nutrithrive.com.au/products/moringa-powder/".*Add to Cart' "$file"; then
-        sed -i.bak 's|<a href="https://nutrithrive.com.au/products/moringa-powder/"[^>]*>Add to Cart</a>|<button type="button" onclick="addProductToCartAndRedirect('\''moringa-powder'\'', '\''Moringa Powder'\'', 10.50, '\''https://i.imgur.com/PgvCFY0.png'\'')" style="background: #16a34a; color: white; padding: 10px 20px; border: none; border-radius: 25px; font-weight: 600; cursor: pointer;">Add to Cart</button>|g' "$file"
+        sed -i.bak 's|<a href="https://nutrithrive.com.au/products/moringa-powder/"[^>]*>Add to Cart</a>|<button type="button" onclick="addProductToCartAndRedirect('\''moringa-powder'\'', '\''Moringa Powder'\'', 10.50, '\''https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png'\'')" style="background: #16a34a; color: white; padding: 10px 20px; border: none; border-radius: 25px; font-weight: 600; cursor: pointer;">Add to Cart</button>|g' "$file"
         rm -f "${file}.bak"
         changed=true
     fi
     
     # Replace "Buy Now" links for Moringa Powder  
     if grep -q 'href="https://nutrithrive.com.au/products/moringa-powder/".*Buy Now' "$file"; then
-        sed -i.bak 's|<a href="https://nutrithrive.com.au/products/moringa-powder/"[^>]*>Buy Now</a>|<button type="button" onclick="addProductToCartAndRedirect('\''moringa-powder'\'', '\''Moringa Powder'\'', 10.50, '\''https://i.imgur.com/PgvCFY0.png'\'')" style="background: #175c36; color: white; padding: 0.8rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer;">Buy Now</button>|g' "$file"
+        sed -i.bak 's|<a href="https://nutrithrive.com.au/products/moringa-powder/"[^>]*>Buy Now</a>|<button type="button" onclick="addProductToCartAndRedirect('\''moringa-powder'\'', '\''Moringa Powder'\'', 10.50, '\''https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png'\'')" style="background: #175c36; color: white; padding: 0.8rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer;">Buy Now</button>|g' "$file"
         rm -f "${file}.bak"
         changed=true
     fi

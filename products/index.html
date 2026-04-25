@@ -37,7 +37,6 @@
     <meta property="twitter:title" content="Shop Moringa, Curry Leaves & Black Tea | Melbourne AU">
     <meta property="twitter:description" content="Buy moringa, tea, curry leaves and soap from Nutri Thrive, Truganina. Lab-checked batches, vegan-friendly. Ships Australia-wide and worldwide.">
     <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp">
-    <link rel="preconnect" href="https://i.imgur.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap">
@@ -546,7 +545,7 @@
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/products/">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/products/">
 
-<!-- Nutri Thrive LocalBusiness (same @id as sitewide graph; valid LocalBusiness fields only) -->
+<!-- Nutri Thrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
@@ -577,28 +576,77 @@
     "longitude": 144.7187983
   },
   "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    "opens": "09:00",
-    "closes": "23:00"
-  }],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
   "areaServed": [
-    { "@type": "City", "name": "Truganina" },
-    { "@type": "City", "name": "Melbourne" },
-    { "@type": "AdministrativeArea", "name": "Victoria" },
-    { "@type": "Country", "name": "Australia" },
-    { "@type": "Place", "name": "Worldwide" }
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    },
+    {
+      "@type": "Place",
+      "name": "Worldwide"
+    }
   ],
   "serviceArea": [
-    { "@type": "City", "name": "Truganina" },
-    { "@type": "City", "name": "Melbourne" },
-    { "@type": "City", "name": "Werribee" },
-    { "@type": "City", "name": "Tarneit" },
-    { "@type": "City", "name": "Point Cook" },
-    { "@type": "City", "name": "Hoppers Crossing" },
-    { "@type": "City", "name": "Laverton" },
-    { "@type": "AdministrativeArea", "name": "Victoria" }
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "City",
+      "name": "Werribee"
+    },
+    {
+      "@type": "City",
+      "name": "Tarneit"
+    },
+    {
+      "@type": "City",
+      "name": "Point Cook"
+    },
+    {
+      "@type": "City",
+      "name": "Hoppers Crossing"
+    },
+    {
+      "@type": "City",
+      "name": "Laverton"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    }
   ],
   "sameAs": [
     "https://www.facebook.com/nutrithrive",
@@ -651,7 +699,7 @@
         <section class="product-grid">
             <article class="product-card">
                 <a class="product-media" href="/products/moringa-powder/">
-                    <img src="https://i.imgur.com/PgvCFY0.png"
+                    <img src="https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png"
                          alt="Moringa Powder by Nutri Thrive Melbourne Australia"
                          width="160" height="240"
                          loading="lazy" decoding="async">
@@ -677,7 +725,7 @@
                     <div class="product-footer">
                         <div class="cta-row">
                             <a class="btn-primary" href="/products/moringa-powder/">View product</a>
-                            <button class="btn-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, 'https://i.imgur.com/PgvCFY0.png')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                            <button class="btn-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, 'https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
                                 Add to Cart
                             </button>
                         </div>
@@ -902,7 +950,7 @@
                     "position": 1,
                     "name": "Moringa Powder",
                     "url": "https://nutrithrive.com.au/products/moringa-powder/",
-                    "image": "https://i.imgur.com/PgvCFY0.png",
+                    "image": "https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png",
                     "description": "Premium 100% natural Moringa Oleifera powder for natural energy boost and immune support.",
                     "brand": {
                         "@type": "Brand",

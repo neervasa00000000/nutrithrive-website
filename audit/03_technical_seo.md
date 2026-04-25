@@ -1,61 +1,118 @@
-# Technical SEO audit — https://nutrithrive.com.au
+# Phase 3 — Technical SEO audit
 
-**Based on:** 50 live scrapes in `02_raw_pages.md` and full map (73 URLs).
+**Site:** [https://nutrithrive.com.au](https://nutrithrive.com.au)  
+**Source:** Scrape batch (`02_raw_pages.md`), [sitemap.xml](../sitemap.xml) (55 `loc` entries), and static HTML in repo (JSON-LD, duplicate scripts).
 
-## Title tags
+---
 
-- No issues flagged in sample.
+## 1. Title tags
 
-## Meta descriptions
+| Check | Finding |
+|--------|--------|
+| **Missing** | None observed in sampled 200-OK pages. |
+| **&gt; 60 characters (truncation risk)** | Homepage vs social: `og:title` can be **longer** than `<title>`; align primary keyword in `<title>` first 60 chars. Pillar pages (e.g. moringa guide) are **long** but generally within a reasonable range — verify in SERP simulator. **How to add moringa:** page title is shorter than `og:title` (“How to Add Moringa to Your Diet (10 Easy Daily Ideas + Dosage Guide)”) — **mismatch** between browser tab title and share title. |
+| **&lt; 30 characters (weak)** | `Contact` is very short; acceptable for a utility page if brand is appended in template — **confirm** format `Contact \| NutriThrive` or similar. |
+| **Duplicates** | No full duplicate &lt;title&gt; in the sample, but many titles share the **“Australia 2026”** pattern — differentiate by **primary entity** in first half of title. |
+| **Title vs content** | Largely aligned; one article (`darjeeling-black-tea…`) contains a visible **“SEO snippets & linking strategy”** line in the body, which can confuse both users and classifiers. |
 
-- **https://nutrithrive.com.au/products/** — Meta description 181 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/contact** — Meta description 325 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/melbourne** — Meta description 313 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/how-to-add-moringa-to-diet** — Meta description 311 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/moringa-brands-reviewed-australia-2025-verdict.html** — Meta description 306 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/moringa-vs-matcha-energy-metabolism-2026.html** — Meta description 306 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html** — Meta description 311 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html** — Meta description 274 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html** — Meta description 280 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/natural-heavy-metal-detox-moringa-cleanse-body.html** — Meta description 288 chars (likely truncated; aim ~150–160 max)
-- **https://nutrithrive.com.au/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html** — Meta description 303 chars (likely truncated; aim ~150–160 max)
+**Actions:** Unify `title` and `og:title` where they diverge; lengthen “Contact” with brand; remove internal SEO-strategy phrasing from public copy.
 
-## Heading structure
+---
 
-- **https://nutrithrive.com.au/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html** — Multiple H1 elements (2)
-- **https://nutrithrive.com.au/products/** — Title tag (*“Shop Moringa, Curry Leaves & Black Tea | Melbourne AU”*) and visible **H1** (*“Shop Premium Wellness”*) don’t share the same primary keywords; align for clearer intent (keep one primary keyword phrase in both where possible).
+## 2. Meta descriptions
 
-## Images & performance hints
+| Check | Finding |
+|--------|--------|
+| **Missing** | None on major templates sampled. |
+| **&gt; 160 characters** | Long pillars may exceed; check **how-to-add** which shows **concatenated / garbled** description text in metadata (`…Australi.,` plus a second sentence) — **template bug**. |
+| **&lt; 70 characters (weak)** | `Contact` and some utility pages: short; add **specific value** (response time, location, hours). |
+| **Duplicates** | **Repeated** ending: “from NutriThrive Australia. Explore practical guidance…” appears across multiple pages — **duplicate meta** risk in search results. |
+| **Generic/weak** | Descriptions that list “blog, products, updates” without a **hook** underperform — tighten with **outcome** + **proof** (Melbourne dispatch, lab-tested). |
 
-(none)
+**Actions:** Fix description merge bug on **how-to-add**; write **unique** 140–155 char descriptions; remove stock suffix across templates.
 
-## Internal linking
+---
 
-(none)
+## 3. Heading structure
 
-- **Orphan / low-discoverability note:** Map shows duplicate paths for the same content (e.g. `moringa-melbourne-complete-growers-report-2026` and `.html`). In-links should consolidate on one **canonical** URL.
+| Check | Finding |
+|--------|--------|
+| **Missing H1** | Tool pages (pomodoro, password generator) are UI-heavy: ensure **one** visible H1 for accessibility and SEO. |
+| **Multiple H1s** | Not flagged strongly in markdown, but some blog pages have very long **TOC** areas — **validate** in DOM. |
+| **H1 vs intent** | Product pages: good (product name). Blog: long questions/s titles match **informational** intent. |
+| **Skips (H1 → H3)** | **how-to-add** and **brands** pages have deep TOC; verify no skipped levels in the **main** article region. |
+| **Vague headings** | Avoid duplicate “Frequently asked questions” blocks with **same** heading level repeated; use unique FAQ subheads or schema-only FAQ. |
 
-## URL structure
+---
 
-- **https://nutrithrive.com.au/nutrithrive_labs/** — Canonical uses underscores: https://nutrithrive.com.au/nutrithrive_labs/
-- **https://nutrithrive.com.au/nutrithrive_labs/dedup-lines** — Canonical uses underscores: https://nutrithrive.com.au/nutrithrive_labs/dedup-lines.html
-- **https://nutrithrive.com.au/nutrithrive_labs/sitemap-generator** — Canonical uses underscores: https://nutrithrive.com.au/nutrithrive_labs/sitemap-generator.html
-- **https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html** — URL path length 87 (often cited comfort zone under ~75 path chars for readability)
-- **https://nutrithrive.com.au/blog/australian-health-consumer-2026-behavioral-psychographics-wellness.html** — URL path length 77 (often cited comfort zone under ~75 path chars for readability)
-- **https://nutrithrive.com.au/nutrithrive_labs/time-converter** — Canonical uses underscores: https://nutrithrive.com.au/nutrithrive_labs/time-converter.html
+## 4. Images
 
-- **Duplicate paths:** e.g. `https://nutrithrive.com.au/blog/…` vs `…html` and `/blog/how-to-add-moringa-to-diet` (clean URL) — ensure 301/rel=canonical to one version.
+| Check | Finding |
+|--------|--------|
+| **Missing alt** | Product and blog rely on `img` in HTML — **spot-check** all templates; marketing screenshots in articles need descriptive alt, not only filenames. |
+| **Keyword-stuffed alt** | Moringa product long-form: dense keyword lists in comparison blocks — can read as **stuffed**; use **natural** phrases. |
+| **Large / lazy load** | Not measured in scrape; add **width/height**, **loading="lazy"** below fold, **srcset** for hero and product images. |
+| **Decorative** | Icons and repeated decorative graphics should use `alt=""` and `aria-hidden` as appropriate. |
+| **Third-party `og` images (imgur)** | Many metas use **i.imgur.com** — if imgur throttles or changes URLs, **social previews break**; self-host on `nutrithrive.com.au`. |
 
-## Content quality (sample)
+---
 
-- **https://nutrithrive.com.au/products/** — Body word count 245 (under 300 — thin for commercial/blog unless intentional)
+## 5. Internal linking
 
-## Schema / structured data (JSON-LD)
+| Check | Finding |
+|--------|--------|
+| **Orphans (nothing links in)** | **Extra blog URLs** not in sitemap and not linked from hub risk low discovery — add from **blog index** and **topic clusters** (e.g. “Protein & fitness” block). **Labs** tools: must link from `/nutrithrive_labs/` and optional footer. |
+| **Homepage** | Good paths to **products** and **blog**; re-check that **key money pages** (moringa powder, brand comparison) appear **above the fold** or in a stable module. |
+| **Blog** | Strong **related guides** and **in-body** links on pillars (e.g. `is-moringa`, moringa guide) — good. |
+| **CTAs to conversion** | Product CTAs are frequent on commercial posts; **non-commercial** local posts (e.g. Melbourne gyms) should still link to **1 relevant product** to pass equity without feeling spammy. |
+| **Broken / inconsistent paths** | Example: `…/usage-guide/how-to-use-moringa.html` vs `…/pages/usage-guide/how-to-use-moringa.html` — **one canonical** + fix internal links. |
 
-**Automated detection in this audit:** The Firecrawl `html` payload used for `02_raw_pages.md` **does not include `<script type="application/ld+json">` blocks** (they are stripped or omitted in the returned document), so the local parser reported **no** JSON-LD for all 50 URLs. This is a **limitation of the extraction step**, not proof that live pages lack schema.
+---
 
-**Spot-check on live HTML:** Use [Google Rich Results Test](https://search.google.com/test/rich-results) on [moringa powder](https://nutrithrive.com.au/products/moringa-powder/), a [long blog post](https://nutrithrive.com.au/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html), and the [homepage](https://nutrithrive.com.au/). Repository source for many posts includes `BlogPosting`, `Article`, `FAQPage`, `BreadcrumbList`, and `LocalBusiness`—validate they still match what is deployed.
+## 6. Content quality
 
-**Codebase risk:** Some templates emit **both** `Article` and `BlogPosting` for one URL; use **one** primary article type to avoid conflicting signals.
+| Check | Finding |
+|--------|--------|
+| **Thin (&lt; 300 words)** | Contact, some Labs tool shells — **acceptable** for intent; add short intro for tools if indexed. |
+| **Duplicates** | Overlapping “best moringa / brands / where to buy” set — you’ve started **merging** into one hub; keep **canonical** choice clear between legacy URLs. |
+| **No CTA** | Some articles end in newsletter/related only — add **one** primary CTA to **moringa powder** or **combo** where relevant. |
+| **E-E-A-T** | **Why I built** and **is moringa legit** include **author/team** lines — good. YMYL-adjacent posts (protein, health consumer) need **date updated**, **byline**, and **citations** (partially present). **Internal “SEO strategy”** text on Darjeeling post **hurts** trust. |
+| **noindex, follow** | Several long articles were observed with **noindex** (e.g. matcha vs moringa energy, some brand-review style posts) — if intentional, document **why**; if not, this **suppresses** valuable traffic. |
 
-**Recommendations:** Keep a coherent `Product` + `Offer` graph on PDPs; on articles use **`BlogPosting` or `Article`** (not both), add `BreadcrumbList`, and add `FAQPage` only when visible FAQ content matches. Add or keep **LocalBusiness** / **Organization** on the homepage if local visibility matters.
+---
+
+## 7. URL structure
+
+| Check | Finding |
+|--------|--------|
+| **Uppercase** | Not an issue in sample. |
+| **Underscores vs hyphens** | `nutrithrive_labs` uses underscores in **path** — minor vs hyphen; consistent internal linking matters more. |
+| **Length** | Some blog URLs **&gt; 75** characters (acceptable for long-tail; ensure canonical is stable). |
+| **Query parameters** | Cart/checkout may use query strings — keep **indexable** pages parameter-free. |
+
+---
+
+## 8. Schema / structured data
+
+| Finding | Detail |
+|--------|--------|
+| **Present** | `WebSite`, `Organization`, `Product` (with reviews on PDP), `LocalBusiness` (repeated in repo across templates — **dedupe** to avoid GSC “duplicate field” noise), `Blog`/`BlogPosting` on blog. |
+| **Gaps** | **Article** on blog posts: confirm **Article** or **BlogPosting** per post with `dateModified`, not only blog index. **FAQ** on `/faq`: ensure **FAQPage** matches on-page Q&amp;A. **BreadcrumbList** is used in places — ensure full trail on PDP and articles. |
+| **Issues** | [blog/index.html](../blog/index.html) contains **two identical** `BlogPosting` JSON-LD blocks for the same blog main page — **remove duplicate script**. **Blog index** is not a single blog *post*; using `BlogPosting` for the listing may be **semantically wrong** — use `WebPage` + `Blog` or `ItemList` for cards. |
+| **Product** | Moringa and line extensions should have `Product` + `Offer` + `AggregateRating` where reviews are real and shown — **align** with visible content. |
+
+---
+
+## Priority technical fixes (condensed)
+
+1. **Sitemap** — include **all** published posts (match crawl); automate in CI from content manifest.  
+2. **noindex** — review each URL set to `noindex`; flip to **index** when content is the marketing asset.  
+3. **Meta** — remove duplicate template suffix; fix **how-to-add** description **glue** bug.  
+4. **Canonicals & paths** — one URL for usage guide; 301/redirect loose paths.  
+5. **JSON-LD** — delete duplicate `BlogPosting` on blog index; consider `ItemList` for post grid.  
+6. **og images** — host on own domain.  
+7. **Internal** — add hub links to **sitemap-missing** articles.
+
+---
+
+*Content and UX nuance: `04_content_ux.md`.*

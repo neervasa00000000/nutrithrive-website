@@ -288,7 +288,7 @@
     }
   </style>
 
-<!-- Nutri Thrive LocalBusiness (same @id as sitewide graph; valid LocalBusiness fields only) -->
+<!-- Nutri Thrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
@@ -319,28 +319,77 @@
     "longitude": 144.7187983
   },
   "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    "opens": "09:00",
-    "closes": "23:00"
-  }],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
   "areaServed": [
-    { "@type": "City", "name": "Truganina" },
-    { "@type": "City", "name": "Melbourne" },
-    { "@type": "AdministrativeArea", "name": "Victoria" },
-    { "@type": "Country", "name": "Australia" },
-    { "@type": "Place", "name": "Worldwide" }
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    },
+    {
+      "@type": "Place",
+      "name": "Worldwide"
+    }
   ],
   "serviceArea": [
-    { "@type": "City", "name": "Truganina" },
-    { "@type": "City", "name": "Melbourne" },
-    { "@type": "City", "name": "Werribee" },
-    { "@type": "City", "name": "Tarneit" },
-    { "@type": "City", "name": "Point Cook" },
-    { "@type": "City", "name": "Hoppers Crossing" },
-    { "@type": "City", "name": "Laverton" },
-    { "@type": "AdministrativeArea", "name": "Victoria" }
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "City",
+      "name": "Werribee"
+    },
+    {
+      "@type": "City",
+      "name": "Tarneit"
+    },
+    {
+      "@type": "City",
+      "name": "Point Cook"
+    },
+    {
+      "@type": "City",
+      "name": "Hoppers Crossing"
+    },
+    {
+      "@type": "City",
+      "name": "Laverton"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    }
   ],
   "sameAs": [
     "https://www.facebook.com/nutrithrive",
