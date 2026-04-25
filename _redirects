@@ -11,6 +11,9 @@
 /blog/moringa-eyesight-better-than-carrots /blog/moringa-eyesight-better-than-carrots 404
 /blog/moringa-eyesight-better-than-carrots.html /blog/moringa-eyesight-better-than-carrots.html 404
 
+# Legacy short path → canonical usage guide (same as sitemap)
+/usage-guide/how-to-use-moringa.html /pages/usage-guide/how-to-use-moringa.html 301
+
 # Pretty blog URLs (extensionless) → canonical .html
 /blog/how-to-add-moringa-to-diet /blog/how-to-add-moringa-to-diet.html 301
 /blog/moringa-melbourne-complete-growers-report-2026 /blog/moringa-melbourne-complete-growers-report-2026.html 301

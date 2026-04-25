@@ -1,0 +1,26 @@
+# Ensures the sitemap generator runs cleanly on each push/PR.
+# If sitemap.xml drifts, run from repo root: node scripts/build-sitemap.js
+name: Sitemap
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Regenerate sitemap
+        run: node scripts/build-sitemap.js
+      - name: Fail if sitemap.xml not committed
+        run: |
+          if ! git diff --quiet -- sitemap.xml; then
+            echo "::error::sitemap.xml is out of date. Run: node scripts/build-sitemap.js"
+            git diff -- sitemap.xml
+            exit 1
+          fi

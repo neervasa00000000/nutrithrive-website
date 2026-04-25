@@ -62,7 +62,6 @@
     <!-- Resource Hints for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://i.imgur.com">
     <link rel="preconnect" href="https://www.paypal.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
@@ -401,7 +400,7 @@
     }
     </script>
 
-<!-- Nutri Thrive LocalBusiness (same @id as sitewide graph; valid LocalBusiness fields only) -->
+<!-- Nutri Thrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
@@ -432,28 +431,77 @@
     "longitude": 144.7187983
   },
   "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    "opens": "09:00",
-    "closes": "23:00"
-  }],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
   "areaServed": [
-    { "@type": "City", "name": "Truganina" },
-    { "@type": "City", "name": "Melbourne" },
-    { "@type": "AdministrativeArea", "name": "Victoria" },
-    { "@type": "Country", "name": "Australia" },
-    { "@type": "Place", "name": "Worldwide" }
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    },
+    {
+      "@type": "Place",
+      "name": "Worldwide"
+    }
   ],
   "serviceArea": [
-    { "@type": "City", "name": "Truganina" },
-    { "@type": "City", "name": "Melbourne" },
-    { "@type": "City", "name": "Werribee" },
-    { "@type": "City", "name": "Tarneit" },
-    { "@type": "City", "name": "Point Cook" },
-    { "@type": "City", "name": "Hoppers Crossing" },
-    { "@type": "City", "name": "Laverton" },
-    { "@type": "AdministrativeArea", "name": "Victoria" }
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "City",
+      "name": "Werribee"
+    },
+    {
+      "@type": "City",
+      "name": "Tarneit"
+    },
+    {
+      "@type": "City",
+      "name": "Point Cook"
+    },
+    {
+      "@type": "City",
+      "name": "Hoppers Crossing"
+    },
+    {
+      "@type": "City",
+      "name": "Laverton"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    }
   ],
   "sameAs": [
     "https://www.facebook.com/nutrithrive",
@@ -495,6 +543,7 @@
                 <div class="product-info-section">
                     <h1 class="product-title">Premium Combo Pack</h1>
                     <p class="product-subtitle">Wellness Collection</p>
+                    <p class="product-hero-savings" style="margin:0.5rem 0 0;font-size:1.05rem;font-weight:700;color:#175c36;">Save <span style="white-space:nowrap">$5.49 AUD</span> vs buying items separately at RRP — bundle <span style="white-space:nowrap">$17.00 AUD</span> (was <span style="text-decoration:line-through;opacity:0.85">$22.49 AUD</span>).</p>
                     
                     <!-- Purchase Section - Right after image -->
                     <div class="product-purchase-section">
