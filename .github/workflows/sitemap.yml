@@ -10,15 +10,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # Opt into Node 24 for actions using JS (checkout/setup-node) per GitHub Actions deprecation timeline.
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
-      - uses: actions/checkout@v4
+      # PRs: check out the PR branch head (same as local `git checkout feature`), not the
+      # ephemeral merge commit — otherwise `git log -- <file>` lastmods won't match a
+      # sitemap regenerated on the branch before push.
+      - uses: actions/checkout@v5
         with:
-          # Full history so `git log -- <file>` lastmod matches local builds (shallow clones break per-file dates).
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+          repository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v5
         with:
           node-version: "24"
       - name: Regenerate sitemap
