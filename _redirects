@@ -13,6 +13,7 @@
 
 # Legacy short path → canonical usage guide (same as sitemap)
 /usage-guide/how-to-use-moringa.html /pages/usage-guide/how-to-use-moringa.html 301
+/pages/benefits/moringa-benefits.html /pages/usage-guide/how-to-use-moringa.html 301
 
 # Pretty blog URLs (extensionless) → canonical .html
 /blog/how-to-add-moringa-to-diet /blog/how-to-add-moringa-to-diet.html 301
