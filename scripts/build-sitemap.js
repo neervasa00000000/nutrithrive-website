@@ -3,8 +3,10 @@
  * Regenerates /sitemap.xml from the repo filesystem.
  * Run from repo root: node scripts/build-sitemap.js
  *
- * lastmod uses the last git commit date per file (fallback: mtime) so CI matches local
- * runs — runner checkout mtimes are not stable.
+ * lastmod uses the last git commit date per file (with git-index path normalisation and
+ * HEAD-date fallback before mtime) so CI matches local — runner mtimes are not stable.
+ * PR builds must use the PR head checkout (see .github/workflows/sitemap.yml), not the
+ * merge commit, or git history for lastmod can differ from what authors regenerate locally.
  *
  * Excludes: noindex pages (set INCLUDE_NOINDEX=1 to list them anyway), blocklisted paths,
  * thank-you flows. Run: node scripts/build-sitemap.js
@@ -112,9 +114,31 @@ function priorityAndFreq(urlPath) {
   return { priority: "0.6", changefreq: "monthly" };
 }
 
+let gitLsFilesLowerToExact = null;
+
+/** Map filesystem rel path to the path git tracks (case/spelling), for stable `git log -- path`. */
+function gitTrackedRel(relPosix) {
+  if (!gitLsFilesLowerToExact) {
+    gitLsFilesLowerToExact = new Map();
+    const r = spawnSync("git", ["ls-files", "-z"], {
+      cwd: REPO_ROOT,
+      encoding: "utf8",
+      maxBuffer: 10 * 1024 * 1024,
+    });
+    if (r.status === 0) {
+      for (const p of String(r.stdout || "").split("\0")) {
+        if (!p) continue;
+        gitLsFilesLowerToExact.set(p.toLowerCase(), p);
+      }
+    }
+  }
+  return gitLsFilesLowerToExact.get(relPosix.toLowerCase()) || relPosix;
+}
+
 /** ISO date (YYYY-MM-DD) of last git commit touching relPosix, or null if unavailable. */
 function lastmodFromGit(relPosix) {
-  const r = spawnSync("git", ["log", "-1", "--format=%cs", "--", relPosix], {
+  const tracked = gitTrackedRel(relPosix);
+  const r = spawnSync("git", ["log", "-1", "--format=%cs", "--", tracked], {
     cwd: REPO_ROOT,
     encoding: "utf8",
     maxBuffer: 1024 * 1024,
@@ -122,6 +146,25 @@ function lastmodFromGit(relPosix) {
   if (r.error || r.status !== 0) return null;
   const out = String(r.stdout || "").trim();
   return /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : null;
+}
+
+let lastmodHeadCommitCache;
+
+/** Commit date (short ISO) of HEAD — stable fallback when per-file log is empty. */
+function lastmodFromHeadCommit() {
+  if (lastmodHeadCommitCache !== undefined) return lastmodHeadCommitCache;
+  const r = spawnSync("git", ["show", "-s", "--format=%cs", "HEAD"], {
+    cwd: REPO_ROOT,
+    encoding: "utf8",
+    maxBuffer: 65536,
+  });
+  if (r.error || r.status !== 0) {
+    lastmodHeadCommitCache = null;
+    return null;
+  }
+  const out = String(r.stdout || "").trim();
+  lastmodHeadCommitCache = /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : null;
+  return lastmodHeadCommitCache;
 }
 
 function lastmodFromMtime(fileAbs) {
@@ -133,9 +176,9 @@ function lastmodFromMtime(fileAbs) {
   return `${y}-${m}-${day}`;
 }
 
-/** Prefer git commit date so CI and local runs match the same tree (mtime differs on runners). */
+/** Prefer git commit date so CI and local runs match; never prefer flaky runner mtime before HEAD. */
 function lastmodDate(fileAbs, relPosix) {
-  return lastmodFromGit(relPosix) || lastmodFromMtime(fileAbs);
+  return lastmodFromGit(relPosix) || lastmodFromHeadCommit() || lastmodFromMtime(fileAbs);
 }
 
 function escapeXml(s) {
