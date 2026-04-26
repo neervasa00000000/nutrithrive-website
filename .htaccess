@@ -280,10 +280,10 @@ DirectoryIndex index.html index.htm
     
     # Fix broken image URLs (404 errors from Google Search Console)
     # Redirect old Dried_curry_leaves directory paths to random folder
-    RewriteRule ^shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/general/CURRY3.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
     RewriteRule ^shared/images/Dried_curry_leaves/Curry2\.png$ /assets/images/general/Curry2.png [R=301,L]
-    RewriteRule ^shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/general/Curry1.png [R=301,L]
-    RewriteRule ^shared/images/Dried_curry_leaves/Curry1 .png$ /assets/images/general/Curry1.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry1 .png$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
     RewriteRule ^shared/images/Dried_curry_leaves/4\.png$ /assets/images/general/4.png [R=301,L]
     RewriteRule ^shared/images/Dried_curry_leaves/energy-boosters\.png$ /assets/images/general/energy-boosters.png [R=301,L]
     # Redirect old Moringa directory paths to random folder
@@ -298,9 +298,9 @@ DirectoryIndex index.html index.htm
     RewriteRule ^blog/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg [R=301,L]
     RewriteRule ^blog/shared/images/Moringa/athletes\.png$ /assets/images/general/athletes.png [R=301,L]
     # Redirect other missing images to appropriate existing images
-    RewriteRule ^shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/general/Curry1.png [R=301,L]
-    RewriteRule ^shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/general/Curry1.png [R=301,L]
-    RewriteRule ^shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/general/Curry1.png [R=301,L]
+    RewriteRule ^shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
+    RewriteRule ^shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
+    RewriteRule ^shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
 </IfModule>
 
 # Fallback Apache redirects (if mod_rewrite is not available)
@@ -360,10 +360,10 @@ RedirectMatch 301 ^/(.+)\.html\.html$ /$1.html
 
 # Fix broken image URLs (404 errors from Google Search Console)
 # Redirect old Dried_curry_leaves directory paths to random folder
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/general/CURRY3.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/homepage/product-showcase/Curry.webp
 RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry2\.png$ /assets/images/general/Curry2.png
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/general/Curry1.png
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1%20\.png$ /assets/images/general/Curry1.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/homepage/product-showcase/Curry.webp
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1%20\.png$ /assets/images/homepage/product-showcase/Curry.webp
 RedirectMatch 301 ^/shared/images/Dried_curry_leaves/4\.png$ /assets/images/general/4.png
 RedirectMatch 301 ^/shared/images/Dried_curry_leaves/energy-boosters\.png$ /assets/images/general/energy-boosters.png
 # Redirect old Moringa directory paths to random folder
@@ -378,6 +378,9 @@ RedirectMatch 301 ^/shared/images/Moringa/athletes\.png$ /assets/images/general/
 RedirectMatch 301 ^/blog/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg
 RedirectMatch 301 ^/blog/shared/images/Moringa/athletes\.png$ /assets/images/general/athletes.png
 # Redirect other missing images to appropriate existing images
-RedirectMatch 301 ^/shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/general/Curry1.png
-RedirectMatch 301 ^/shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/general/Curry1.png
-RedirectMatch 301 ^/shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/general/Curry1.png
+RedirectMatch 301 ^/shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/homepage/product-showcase/Curry.webp
+RedirectMatch 301 ^/shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/homepage/product-showcase/Curry.webp
+RedirectMatch 301 ^/shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/homepage/product-showcase/Curry.webp
+# Heavy legacy PNGs → optimized WebP (same product shot as shop)
+RedirectMatch 301 ^/assets/images/general/Curry1\.png$ /assets/images/homepage/product-showcase/Curry.webp
+RedirectMatch 301 ^/assets/images/general/CURRY3\.png$ /assets/images/homepage/product-showcase/Curry.webp
