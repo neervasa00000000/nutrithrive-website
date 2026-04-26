@@ -15,6 +15,9 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history so `git log -- <file>` lastmod matches local builds (shallow clones break per-file dates).
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
