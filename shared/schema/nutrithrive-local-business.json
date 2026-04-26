@@ -1,12 +1,13 @@
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "HealthFoodStore"],
   "@id": "https://nutrithrive.com.au/#localbusiness",
-  "name": "Nutri Thrive",
+  "name": "NutriThrive",
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
   "email": "nutrithrive0@gmail.com",
+  "priceRange": "$$",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",
@@ -43,12 +44,18 @@
       "closes": "23:00"
     }
   ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": 512
+  },
   "areaServed": [
     { "@type": "City", "name": "Truganina" },
     { "@type": "City", "name": "Melbourne" },
     { "@type": "AdministrativeArea", "name": "Victoria" },
-    { "@type": "Country", "name": "Australia" },
-    { "@type": "Place", "name": "Worldwide" }
+    { "@type": "Country", "name": "Australia" }
   ],
   "serviceArea": [
     { "@type": "City", "name": "Truganina" },
