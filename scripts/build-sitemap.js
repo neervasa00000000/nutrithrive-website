@@ -3,12 +3,16 @@
  * Regenerates /sitemap.xml from the repo filesystem.
  * Run from repo root: node scripts/build-sitemap.js
  *
+ * lastmod uses the last git commit date per file (fallback: mtime) so CI matches local
+ * runs — runner checkout mtimes are not stable.
+ *
  * Excludes: noindex pages (set INCLUDE_NOINDEX=1 to list them anyway), blocklisted paths,
  * thank-you flows. Run: node scripts/build-sitemap.js
  */
 
 const fs = require("fs");
 const path = require("path");
+const { spawnSync } = require("child_process");
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 const BASE = "https://nutrithrive.com.au";
@@ -108,13 +112,30 @@ function priorityAndFreq(urlPath) {
   return { priority: "0.6", changefreq: "monthly" };
 }
 
-function lastmodDate(fileAbs) {
+/** ISO date (YYYY-MM-DD) of last git commit touching relPosix, or null if unavailable. */
+function lastmodFromGit(relPosix) {
+  const r = spawnSync("git", ["log", "-1", "--format=%cs", "--", relPosix], {
+    cwd: REPO_ROOT,
+    encoding: "utf8",
+    maxBuffer: 1024 * 1024,
+  });
+  if (r.error || r.status !== 0) return null;
+  const out = String(r.stdout || "").trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : null;
+}
+
+function lastmodFromMtime(fileAbs) {
   const st = fs.statSync(fileAbs);
   const d = new Date(st.mtimeMs);
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
   return `${y}-${m}-${day}`;
+}
+
+/** Prefer git commit date so CI and local runs match the same tree (mtime differs on runners). */
+function lastmodDate(fileAbs, relPosix) {
+  return lastmodFromGit(relPosix) || lastmodFromMtime(fileAbs);
 }
 
 function escapeXml(s) {
@@ -152,7 +173,7 @@ function main() {
     const { priority, changefreq } = priorityAndFreq(loc);
     entries.push({
       loc,
-      lastmod: lastmodDate(abs),
+      lastmod: lastmodDate(abs, rel),
       priority,
       changefreq,
     });
