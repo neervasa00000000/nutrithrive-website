@@ -3877,3 +3877,159 @@ article h1, section h1, nav h1, aside h1 {
 .blog-cta-human a:hover {
     text-decoration: none;
 }
+
+/* =========================================================
+   Global details/summary FAQ accordion
+   Used by any blog post with class .faq-block
+   ========================================================= */
+.faq-block {
+    border-top: 1px solid #e8e8e8;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+}
+
+.faq-block h2 {
+    margin-top: 0;
+}
+
+.faq-block details {
+    border: 1px solid #e0e6e1;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+.faq-block summary {
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    font-size: 0.97rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    transition: background 0.15s ease;
+}
+
+.faq-block summary::-webkit-details-marker { display: none; }
+
+.faq-block summary::after {
+    content: '+';
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--primary, #175c36);
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.faq-block details[open] > summary::after { content: '\2212'; }
+
+.faq-block details[open] > summary {
+    background: #f6fbf8;
+}
+
+.faq-block .faq-answer {
+    padding: 0.25rem 1.25rem 1rem 1.25rem;
+    color: #444;
+    line-height: 1.7;
+    background: #fff;
+}
+
+.faq-block .faq-answer p {
+    margin: 0.75rem 0 0 0;
+}
+
+.faq-block .faq-answer p:first-child {
+    margin-top: 0;
+}
+
+/* =========================================================
+   Global related-links block
+   ========================================================= */
+.nt-related-links-block {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem 1.25rem;
+    border: 1px solid #e6efe9;
+    border-radius: 12px;
+    background: #f9fcfa;
+}
+
+.nt-related-links-block h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary, #175c36);
+    font-weight: 700;
+}
+
+.nt-related-links-block ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.nt-related-links-block li {
+    font-size: 0.95rem;
+}
+
+.nt-related-links-block a {
+    color: var(--primary, #175c36);
+}
+
+/* =========================================================
+   Blog post reading width — consistent across inline overrides
+   ========================================================= */
+@media (min-width: 900px) {
+    .blog-post-content {
+        font-size: 1.0625rem;
+        line-height: 1.78;
+    }
+}
+
+/* Smooth paragraph spacing for .blog-post-content */
+.blog-post-content p + p {
+    margin-top: 1rem;
+}
+
+.blog-post-content .lead {
+    font-size: 1.075rem;
+    line-height: 1.75;
+    font-weight: 400;
+    color: #2a2a2a;
+}
+
+/* Callout utility — usable across all posts */
+.callout,
+.callout-legal {
+    background: #f0f7f3;
+    border-left: 4px solid var(--primary, #175c36);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.callout-warn {
+    background: #fdf8f0;
+    border-left: 4px solid #b07020;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.callout p:last-child,
+.callout-legal p:last-child,
+.callout-warn p:last-child {
+    margin-bottom: 0;
+}
+
+/* Dose highlight box */
+.dose-box {
+    background: #e8f5ed;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.dose-box strong { color: var(--primary, #175c36); }
