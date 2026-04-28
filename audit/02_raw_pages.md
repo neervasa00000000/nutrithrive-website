@@ -42,7 +42,7 @@
 | 30 | `blog/universal-size-converter.html` | Universal size converter (blog tool) | Interactive AU/US/UK size tool | H1 with tool | 1 | 0 | ~500 | 5+ | — | self | index, follow | WebApplication possible |
 | 31 | `blog/science-shade-drying-vs-sun-drying-moringa.html` | Shade vs sun drying moringa | Processing science, nutrients | H1 | 5+ | 2+ | ~2800+ | 8+ | — | self | index, follow | Article |
 | 32 | `blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html` | Rosabella moringa reviews | Brand review / comparison | H1 | 4+ | 1+ | ~2000+ | 6+ | — | self | noindex, follow (per prior scrape) | verify |
-| 33 | `blog/top-moringa-companies-australia-2026.html` | Top moringa companies | Market map, suppliers | H1 | 5+ | 2+ | ~3500+ | 10+ | — | self | noindex, follow (per prior scrape) | verify |
+| 33 | `blog/top-moringa-companies-australia-2026.html` | **404** — Page not found (Netlify) | *n/a* — URL in crawl map **does not resolve** (`statusCode`: 404, Apr 2026) | none (placeholder) | 0 | 0 | ~40 | 0 | — | *n/a* | *n/a* | **Do not trust prior “full page” assumptions** |
 | 34 | `blog/darjeeling-black-tea-melbourne-muscatel-marvel.html` | Darjeeling black tea (Melbourne) | Tea feature + culture | H1 (story) | 6+ | 2+ | ~2200+ | 6+ | **Body contains “SEO snippets & linking strategy”** (editorial issue) | self | index, follow | Article |
 | 35 | `blog/musashi-protein-powder-australia-comprehensive-guide-2026.html` | Musashi protein (AU guide) | Third-party product guide | H1 | 6+ | 2+ | ~4000+ | 10+ | — | self | noindex, follow (per prior scrape) | verify |
 | 36 | `blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html` | High-protein snacks AU | Snack list, calories | H1 | 5+ | 2+ | ~2800+ | 8+ | — | self | noindex, follow (per prior scrape) | verify |
@@ -69,6 +69,7 @@
 - **Schema:** On-site `index.html` and product `index.html` files include `WebSite`, `Organization`, `Product`, and repeated `LocalBusiness` JSON-LD (see blog `BlogPosting` blocks in [blog/index.html](../blog/index.html) — there is **duplicate** `BlogPosting` script for the same blog index).
 - **Images:** Many articles use `og:image` and sharing images from **i.imgur.com**; verify ownership, hotlinking, and alt text on in-content figures (not all exposed in `links` scrape).
 - **Internal links / broken patterns:** e.g. `is-moringa` article links to `https://nutrithrive.com.au/usage-guide/how-to-use-moringa.html` while sitemap uses `/pages/usage-guide/...` — **URL inconsistency** to fix.
+- **404 (map-listed, no live HTML):** `https://nutrithrive.com.au/blog/top-moringa-companies-australia-2026.html` and `https://nutrithrive.com.au/blog/moringa-fitness-athletes-australia-2026.html` returned **404** with Netlify placeholder (Apr 2026). Remove/map from sitemap-internal links until fixed — see `01_site_map.md`.
 
 ---
 
