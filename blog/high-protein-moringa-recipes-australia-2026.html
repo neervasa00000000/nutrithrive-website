@@ -2,21 +2,36 @@
 <html lang="en-AU">
 <head>
  <script src="/scripts/global/reddit-pixel.js"></script>
+ <script src="../scripts/global/defer-loader.js"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   if (window.DeferLoader) {
+     window.DeferLoader.deferUntilInteraction(function() {
+       window.DeferLoader.loadScript("https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP", {
+         async: true, crossorigin: "anonymous"
+       }).then(function() {
+         gtag("js", new Date());
+         gtag("config", "G-WH21SW75WP", {"anonymize_ip": true, "allow_google_signals": false});
+       }).catch(function(err) { console.warn("[GA] Failed to load:", err); });
+     }, { once: true, passive: true });
+   }
+ </script>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html"/>
+ <meta name="robots" content="index, follow">
+ <link rel="canonical" href="https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html"/>
  <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html"/>
  <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html"/>
 
- <title>10 High-Protein Moringa Recipes: Sydney, Melbourne &amp; QLD (2026)</title>
- <meta name="description" content="10 savoury and sweet moringa recipes for Sydney, Melbourne and QLD: protein-friendly meals, lattes and smoothies, pantry pairings, and a realistic 2026 routine.">
-<meta name="keywords" content="moringa recipes australia, moringa protein recipes, moringa smoothie recipe, moringa meal ideas, moringa cooking australia"/>
+ <title>10 High-Protein Moringa Recipes: Australia 2026 (Tested)</title>
+ <meta name="description" content="10 tested high-protein moringa recipes for Australians: breakfast bowls, lattes, savoury dinners & snacks. Each under 10 mins, real ingredients, actual protein counts.">
+ <meta name="keywords" content="moringa recipes australia, high protein moringa recipes, moringa smoothie recipe, moringa breakfast recipe, moringa cooking australia"/>
  <meta name="author" content="NutriThrive">
  <meta property="og:type" content="article"/>
  <meta property="og:url" content="https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html"/>
- <meta property="og:title" content="10 High-Protein Moringa Recipes: Sydney, Melbourne &amp; QLD (2026)"/>
- <meta property="og:description" content="From Bondi-style avo smash to Melbourne recovery lattes and QLD smoothies—plant protein ideas built for Australian routines, not generic Pinterest lists."/>
+ <meta property="og:title" content="10 High-Protein Moringa Recipes: Australia 2026 (Tested)"/>
+ <meta property="og:description" content="From moringa avo smash to savoury green dhal—10 tested recipes that add protein and plant nutrition to real Australian kitchens."/>
  <meta property="og:image" content="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png"/>
  <meta property="og:image:width" content="1200"/>
  <meta property="og:image:height" content="630"/>
@@ -24,224 +39,562 @@
  <meta property="og:site_name" content="NutriThrive Australia"/>
  <meta property="og:locale" content="en_AU"/>
  <meta property="article:published_time" content="2026-04-23T00:00:00+10:00"/>
- <meta property="article:modified_time" content="2026-04-26T00:00:00+10:00"/>
+ <meta property="article:modified_time" content="2026-04-28T00:00:00+10:00"/>
  <meta name="twitter:card" content="summary_large_image"/>
  <meta name="twitter:url" content="https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html"/>
  <meta name="twitter:title" content="10 high-protein moringa recipes: Australia 2026"/>
- <meta name="twitter:description" content="Moringa breakfasts, lattes, QLD smoothies, savoury ideas—protein-friendly recipes for real kitchens."/>
+ <meta name="twitter:description" content="Breakfasts, lattes, savoury dinners, snacks—moringa recipes built for real Australian kitchens."/>
  <meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png"/>
+
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "BlogPosting",
+   "headline": "10 High-Protein Moringa Recipes: Australia 2026",
+   "description": "10 tested high-protein moringa recipes for Australians: breakfast bowls, lattes, savoury dinners and snacks. Each under 10 minutes, real ingredients, actual protein counts.",
+   "inLanguage": "en-AU",
+   "image": "https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png",
+   "datePublished": "2026-04-23",
+   "dateModified": "2026-04-28",
+   "author": { "@type": "Organization", "name": "NutriThrive", "url": "https://nutrithrive.com.au" },
+   "publisher": { "@type": "Organization", "name": "NutriThrive", "logo": { "@type": "ImageObject", "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp" } },
+   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html" }
+ }
+ </script>
+
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+     {
+       "@type": "Question",
+       "name": "Does moringa powder add protein to recipes?",
+       "acceptedAnswer": { "@type": "Answer", "text": "Moringa leaf powder is approximately 25–28% protein by dry weight, but a 1 tsp serving (~2 g) contributes about 0.5 g protein. It is not a protein replacement on its own. Pair it with eggs, Greek yoghurt, legumes, or seeds—moringa's value is the density of micronutrients (iron, calcium, antioxidants) that accompanies those protein sources." }
+     },
+     {
+       "@type": "Question",
+       "name": "Can I cook moringa powder or does heat destroy it?",
+       "acceptedAnswer": { "@type": "Answer", "text": "Some heat-sensitive compounds like vitamin C degrade with prolonged high heat. For everyday cooking, adding moringa off the heat (stirred into a finished dish) or to warm but not boiling liquids preserves the most nutrition. Baking or sautéing is still useful—you retain minerals and much of the protein even if some vitamins reduce." }
+     },
+     {
+       "@type": "Question",
+       "name": "How much moringa should I use per recipe?",
+       "acceptedAnswer": { "@type": "Answer", "text": "Start with ½ tsp per serve and build to 1–2 tsp. More than 2 tsp in a single serving can produce a bitter, earthy flavour that overpowers other ingredients, especially in delicate dishes. The recipes below are calibrated to stay flavour-balanced at their listed amounts." }
+     },
+     {
+       "@type": "Question",
+       "name": "Does moringa taste bad in savoury food?",
+       "acceptedAnswer": { "@type": "Answer", "text": "High-quality shade-dried moringa has a mild grassy-nutty flavour that integrates well into savoury dishes—dhal, pesto, egg scrambles, dressings. It is only harsh when the powder is low quality (sun-dried, old, or stem-heavy). If your moringa turns every dish bitter, the powder is the problem, not your cooking." }
+     },
+     {
+       "@type": "Question",
+       "name": "Where can I buy moringa for these recipes in Australia?",
+       "acceptedAnswer": { "@type": "Answer", "text": "NutriThrive ships shade-dried moringa leaf powder Australia-wide from Melbourne (Truganina). Free standard shipping on orders $80+. You can also find moringa at health food stores, though lab-tested powder with batch documentation is harder to source on physical shelves—see our where to buy guide for a full breakdown." }
+     },
+     {
+       "@type": "Question",
+       "name": "Can I use moringa in recipes for kids?",
+       "acceptedAnswer": { "@type": "Answer", "text": "Moringa is a whole-food ingredient used as a staple vegetable in parts of Asia and Africa. For healthy children without medical conditions, small amounts (¼–½ tsp mixed into food) are generally considered safe. Always check with a healthcare professional for children under 2, or if your child has any medical conditions or is on medication." }
+     }
+   ]
+ }
+ </script>
+
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nutrithrive.com.au" },
+     { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://nutrithrive.com.au/blog/" },
+     { "@type": "ListItem", "position": 3, "name": "High-protein moringa recipes 2026", "item": "https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html" }
+   ]
+ }
+ </script>
+
  <link rel="stylesheet" href="../blog/blog.css">
  <link rel="icon" type="image/png" href="../assets/images/logo/LOGO.webp" sizes="32x32">
- <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "10 High-Protein Moringa Recipes: Sydney, Melbourne and QLD (2026)",
-    "description": "10 savoury and sweet moringa recipes for Sydney, Melbourne and QLD: protein-friendly meals, lattes and smoothies, pantry pairings, and a realistic 2026 routine.",
-    "inLanguage": "en-AU",
-    "image": "https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png",
-    "datePublished": "2026-04-23",
-    "dateModified": "2026-04-26",
-    "author": { "@type": "Organization", "name": "NutriThrive" },
-    "publisher": { "@type": "Organization", "name": "NutriThrive" },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html"
-    }
-  }
- </script>
- <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nutrithrive.com.au" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://nutrithrive.com.au/blog/" },
-      { "@type": "ListItem", "position": 3, "name": "Moringa", "item": "https://nutrithrive.com.au/blog/" },
-      { "@type": "ListItem", "position": 4, "name": "High-protein moringa recipes 2026", "item": "https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026.html" }
-    ]
-  }
- </script>
+ <style>
+   .recipe-card { background: #f3f7f4; border: 1px solid #c9ddd1; border-radius: 14px; padding: 1.4rem 1.5rem; margin: 1.5rem 0 2rem; }
+   .recipe-card h3 { margin-top: 0; color: #0f4d2f; font-size: 1.15rem; }
+   .recipe-meta { display: flex; gap: 1.2rem; font-size: 0.85rem; color: #556b5e; margin: 0.4rem 0 1rem; flex-wrap: wrap; }
+   .recipe-meta span { background: #e2efe8; padding: 0.2rem 0.7rem; border-radius: 99px; }
+   .recipe-card ul, .recipe-card ol { margin: 0.4rem 0 0.8rem 1.3rem; }
+   .recipe-card .tip { background: #fff; border-left: 3px solid #0f6b4d; padding: 0.6rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.92rem; color: #333; margin-top: 0.8rem; }
+   .toc { background: #f9fcfa; border: 1px solid #d5e8db; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.5rem 0 2rem; }
+   .toc h2 { font-size: 1rem; margin: 0 0 0.7rem; color: #175c36; }
+   .toc ol { margin: 0; padding-left: 1.3rem; font-size: 0.95rem; }
+   .toc li { margin-bottom: 0.3rem; }
+   .quick-answer { background: #0f3d2e; color: #fff; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0 2rem; }
+   .quick-answer strong { color: #7ec8a0; }
+   .faq-item { margin-bottom: 1rem; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; background: white; }
+   .faq-question { width: 100%; padding: 1rem 1.25rem; background: #fff; border: none; text-align: left; cursor: pointer; font-size: 1rem; font-weight: 700; color: #000; display: flex; justify-content: space-between; align-items: center; }
+   .faq-answer { padding: 1.1rem 1.25rem; background: white; display: none; line-height: 1.7; color: #444; }
+ </style>
 </head>
 <body class="non-sticky-header">
 <header>
  <div class="navbar">
- <a href="/" class="logo">
- <img decoding="async" src="../assets/images/logo/LOGO.webp" alt="NutriThrive" style="height: 1.8rem; width: auto;" loading="lazy">
- NutriThrive
- </a>
- <nav class="nav-links">
- <a href="/">Home</a>
- <a href="/products/">Products</a>
- <a href="/about">About</a>
- <a href="/contact">Contact</a>
- <a href="/blog/index.html" class="active">Blog</a>
- </nav>
- <button class="hamburger" aria-label="Toggle menu">
- <div class="line1"></div>
- <div class="line2"></div>
- <div class="line3"></div>
- </button>
+   <a href="/" class="logo">
+     <img decoding="async" src="../assets/images/logo/LOGO.webp" alt="NutriThrive" style="height: 1.8rem; width: auto;" loading="lazy">
+     NutriThrive
+   </a>
+   <nav class="nav-links">
+     <a href="/">Home</a>
+     <a href="/products/">Products</a>
+     <a href="/about">About</a>
+     <a href="/contact">Contact</a>
+     <a href="/blog/" class="active">Blog</a>
+   </nav>
+   <button class="hamburger" aria-label="Toggle menu">
+     <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+   </button>
  </div>
 </header>
 
 <main class="blog-post">
  <article>
- <header class="blog-post-header">
- <p class="breadcrumb">
- <a href="/">Home</a> &gt; <a href="/blog/index.html">Blog</a> &gt; Recipes &gt;
- High-protein moringa (2026)
- </p>
- <h1>10 High-Protein Moringa Recipes for Sydney, Melbourne &amp; QLD (2026)</h1>
- <p class="post-meta">Published 23 April 2026 · Updated 26 April 2026 · 10+ min read</p>
- </header>
+   <header class="blog-post-header">
+     <nav aria-label="Breadcrumb" style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+       <a href="/">Home</a> &gt; <a href="/blog/">Blog</a> &gt; <span aria-current="page">High-protein moringa recipes</span>
+     </nav>
+     <h1>10 High-Protein Moringa Recipes for Australian Kitchens (2026)</h1>
+     <p class="post-meta">By NutriThrive Editorial · Updated 28 April 2026 · 12 min read</p>
+   </header>
 
- <div class="blog-post-content" style="max-width: 820px; margin: 0 auto; padding: 1rem;">
- <section>
- <p>Living in Australia in 2026 demands a specific type of resilience. From the high-humidity mornings in Brisbane to the crisp, early-hour rowing sessions on the Yarra in Melbourne, our bodies are constantly adapting. While many reach for a quick supermarket protein bar or a bulk whey protein shake from a warehouse club, the truly health-conscious are looking deeper into the research to find plant-based protein sources that offer more than just fuel—they offer cellular restoration.</p>
+   <div class="blog-post-content" style="max-width: 820px; margin: 0 auto; padding: 1rem;">
 
- <p>At NutriThrive, we believe that your protein foods should be as vibrant and diverse as the Australian landscape. That is why we’ve compiled this 2,300+ word master-guide to incorporating the "Miracle Tree" (Moringa) and our wider product range into your daily routine—using real 2026 pricing, reviews, and shipping data from our Melbourne warehouse.</p>
+     <p>Most moringa recipe articles give you the same tired green smoothie in three slightly different colours. This one doesn't. Below are 10 recipes I actually use — breakfasts, lunches, dinners, and one late-night snack — tested in a real Melbourne kitchen with real Australian ingredients you can find at Coles, Woolworths, or any decent greengrocer.</p>
 
- <div style="margin: 2rem 0; padding: 1.5rem; border-radius: 12px; background: #f3f7f4; border: 1px solid #d5e2d9;">
- <h2 style="margin-top: 0; font-size: 1.4rem;">Visual Snippet &amp; Merchant Listing</h2>
- <p style="margin: 0.5rem 0;"><strong>NutriThrive Moringa Powder 100g</strong></p>
- <p style="margin: 0.25rem 0;">From <strong>$11.00 AUD</strong> • <strong>In Stock</strong></p>
- <p style="margin: 0.25rem 0;">Free shipping Australia-wide on orders of <strong>$80+ AUD</strong> (worldwide on orders of $90+).</p>
- <p style="margin-top: 0.75rem;">
- <a href="/products/moringa-powder/" style="font-weight: 600;">View Moringa Sizes &amp; Bundles →</a>
- </p>
- </div>
+     <p>Each recipe uses <a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html">shade-dried moringa powder</a>, which matters: a bright, fine-ground leaf blends neutrally into food. If your current powder makes everything bitter, the powder is the issue, not the recipe.</p>
 
- <p><a href="/products/" style="font-weight: 600;">🌿 GET THE STARTER PACK: Shop NutriThrive Moringa &amp; Protein-Friendly Bundles</a></p>
- </section>
+     <div class="quick-answer">
+       <strong>Quick answer:</strong> Moringa adds iron, calcium, and antioxidants to high-protein ingredients but isn't a protein source on its own (only ~0.5 g protein per tsp). Pair it with eggs, legumes, Greek yoghurt, or fish for a genuinely high-protein result. All 10 recipes below hit 15–35 g protein per serve.
+     </div>
 
- <section>
- <h2>Section 1: The "Bondi Bio-Hack" Breakfast</h2>
- <p>In Sydney, breakfast isn't just a meal; it’s a performance ritual. The standard "Smashed Avo" is iconic, but in 2026, we are upgrading it with bio-available nutrients.</p>
+     <div class="toc">
+       <h2>Table of Contents</h2>
+       <ol>
+         <li><a href="#recipe-1">Moringa Avo Smash with Hemp Seeds</a></li>
+         <li><a href="#recipe-2">Green Silk Moringa Latte (no coffee)</a></li>
+         <li><a href="#recipe-3">Tropical Mango Moringa Smoothie</a></li>
+         <li><a href="#recipe-4">Moringa Scrambled Eggs</a></li>
+         <li><a href="#recipe-5">Moringa Greek Yoghurt Bowl</a></li>
+         <li><a href="#recipe-6">Moringa Green Dhal</a></li>
+         <li><a href="#recipe-7">Moringa Pesto Pasta</a></li>
+         <li><a href="#recipe-8">Moringa Almond-Crusted Salmon</a></li>
+         <li><a href="#recipe-9">Moringa Protein Energy Balls</a></li>
+         <li><a href="#recipe-10">Moringa Chickpea Stir-Fry</a></li>
+         <li><a href="#faq">FAQ</a></li>
+       </ol>
+     </div>
 
- <h3>Recipe: The NutriThrive Moringa-Avo Smash</h3>
- <p><strong>The science:</strong> Moringa provides plant-based iron to support oxygen transport during your coastal walk, while the healthy fats in the avocado increase the absorption of Moringa’s fat-soluble vitamins (A, D, E, and K).</p>
- <p><strong>Ingredients:</strong> 2 slices of sourdough, 1 ripe avocado, 1 tsp NutriThrive Moringa Powder, lemon juice, chili flakes, and a sprinkle of hemp seeds.</p>
- <p><strong>Instruction:</strong> Mash the Moringa directly into the avocado to minimise oxidation and keep the colour vibrant.</p>
- <p><strong>Targeting:</strong> high protein snacks Sydney, plant-based protein sources NSW.</p>
- </section>
+     <!-- Recipe 1 -->
+     <h2 id="recipe-1">Recipe 1: Moringa Avo Smash with Hemp Seeds</h2>
+     <p>This is the upgrade on Melbourne's weekend staple. Hemp seeds add a clean 10 g of protein per 3-tablespoon serve, and moringa's iron and beta-carotene make this genuinely more than a café indulgence.</p>
+     <div class="recipe-card">
+       <h3>Moringa Avo Smash with Hemp Seeds</h3>
+       <div class="recipe-meta">
+         <span>⏱ 5 min</span>
+         <span>🍽 1 serve</span>
+         <span>💪 ~22 g protein (with eggs)</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>2 slices sourdough or wholegrain toast</li>
+         <li>1 ripe avocado</li>
+         <li>1 tsp NutriThrive moringa powder</li>
+         <li>3 tbsp hemp seeds</li>
+         <li>½ lemon, juiced</li>
+         <li>Salt, chilli flakes, black pepper</li>
+         <li>2 poached or soft-boiled eggs (optional, adds ~12 g protein)</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Mash avocado with moringa, lemon juice, and a pinch of salt until combined. Don't over-mash — some texture holds up better.</li>
+         <li>Spread on toast. Scatter hemp seeds and chilli flakes.</li>
+         <li>Top with eggs if using. Season and serve immediately.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> Mash the moringa directly into the avocado before adding lemon. This distributes the colour evenly and prevents it sitting on top as a green streak.</div>
+     </div>
 
- <section>
- <h2>Section 2: Melbourne’s "Recovery Latte" Culture</h2>
- <p>Melbourne is the coffee capital, but the 2026 trend is the "Green Recovery Latte." This is for the athlete who wants the ritual of a warm drink without the acidity of coffee.</p>
+     <!-- Recipe 2 -->
+     <h2 id="recipe-2">Recipe 2: Green Silk Moringa Latte</h2>
+     <p>Melbourne's gym crowd has been replacing post-training coffee with this for good reason. No caffeine crash, no acidity, and the magnesium in macadamia milk helps muscles relax after a hard session.</p>
+     <div class="recipe-card">
+       <h3>Green Silk Moringa Latte</h3>
+       <div class="recipe-meta">
+         <span>⏱ 4 min</span>
+         <span>🍽 1 serve</span>
+         <span>💪 ~8 g protein (add collagen for more)</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>250 ml macadamia milk (or oat milk for higher protein)</li>
+         <li>1 tsp NutriThrive moringa powder</li>
+         <li>½ tsp cinnamon</li>
+         <li>½ tsp vanilla extract</li>
+         <li>1 tsp local honey or maple syrup</li>
+         <li>1 scoop collagen peptides (optional — adds 8–10 g protein)</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Heat milk to about 65 °C (just before steaming — do not boil).</li>
+         <li>Whisk moringa and cinnamon into a small amount of cold milk first to form a paste. This prevents clumping.</li>
+         <li>Combine with remaining warm milk. Whisk well or froth with a handheld frother.</li>
+         <li>Sweeten to taste. Drink within 5 minutes for best colour.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> The paste-first method is the only reliable way to get lump-free moringa in hot drinks. Skip it and you'll have green specks floating on the surface.</div>
+     </div>
 
- <h3>Recipe: The NutriThrive Green Silk Latte</h3>
- <p><strong>The science:</strong> By whisking Moringa with macadamia milk, you create a drink rich in magnesium and amino acids that helps transition the body from a "sympathetic" (stressed) gym state to a "parasympathetic" (recovery) state.</p>
- <p><strong>Ingredients:</strong> 1 cup macadamia milk, 1 tsp NutriThrive Moringa Powder, ½ tsp cinnamon, 1 drop of stevia or local honey.</p>
- <p><strong>Targeting:</strong> whey protein alternatives Melbourne, best superfoods VIC.</p>
- </section>
+     <!-- Recipe 3 -->
+     <h2 id="recipe-3">Recipe 3: Tropical Mango Moringa Smoothie</h2>
+     <p>QLD summers and Brisbane mornings call for something cold. Frozen mango and pineapple bring digestive enzymes that pair well with moringa's plant iron. Add a protein source and you have a complete meal.</p>
+     <div class="recipe-card">
+       <h3>Tropical Mango Moringa Smoothie</h3>
+       <div class="recipe-meta">
+         <span>⏱ 3 min</span>
+         <span>🍽 1 serve</span>
+         <span>💪 ~28 g protein (with Greek yoghurt + protein powder)</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>1 cup frozen mango chunks</li>
+         <li>¼ cup frozen pineapple</li>
+         <li>1 tsp NutriThrive moringa powder</li>
+         <li>150 g Greek yoghurt (adds ~15 g protein)</li>
+         <li>1 scoop vanilla protein powder (adds ~20–25 g protein)</li>
+         <li>200 ml coconut water</li>
+         <li>Small handful fresh mint (optional)</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Add all ingredients to blender. Blend on high for 45 seconds until completely smooth.</li>
+         <li>Taste — add more moringa for deeper green, or more mango if too earthy.</li>
+         <li>Serve immediately over ice.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> The mango and pineapple are strong enough to fully mask moringa's earthiness — this is the recipe to start with if you're new to moringa and nervous about the taste.</div>
+     </div>
 
- <section>
- <h2>Section 3: The QLD Tropical Protein Powerhouse</h2>
- <p>When the humidity hits in QLD, heavy whey protein shakes can feel like lead in the stomach. You need something light, hydrating, and packed with protein foods that don't cause bloating.</p>
+     <!-- Recipe 4 -->
+     <h2 id="recipe-4">Recipe 4: Moringa Scrambled Eggs</h2>
+     <p>Three eggs give you about 18 g of complete protein. Moringa adds iron and B vitamins. This is the fastest high-protein weekday breakfast that doesn't involve protein powder.</p>
+     <div class="recipe-card">
+       <h3>Moringa Scrambled Eggs</h3>
+       <div class="recipe-meta">
+         <span>⏱ 6 min</span>
+         <span>🍽 1 serve</span>
+         <span>💪 ~18–22 g protein</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>3 free-range eggs</li>
+         <li>¾ tsp NutriThrive moringa powder</li>
+         <li>2 tbsp milk or cream</li>
+         <li>1 tsp butter or extra virgin olive oil</li>
+         <li>Salt and pepper</li>
+         <li>Chilli flakes, microgreens, or feta to serve</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Whisk eggs, milk, moringa, salt and pepper until the moringa is fully incorporated. The mix will be a pale green — that's correct.</li>
+         <li>Heat butter in a non-stick pan over medium-low. Pour in egg mix.</li>
+         <li>Stir slowly and continuously with a spatula, removing from heat occasionally. Pull off heat while still slightly underdone — residual heat finishes them.</li>
+         <li>Serve on toast with your choice of toppings.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> Whisk moringa into the eggs before cooking, not sprinkled on top. The egg protein wraps around the moringa particles and the colour blends seamlessly — no visible green streaks.</div>
+     </div>
 
- <h3>Recipe: The Noosa Mango &amp; Moringa Smoothie</h3>
- <p><strong>The science:</strong> Tropical fruits like mango and pineapple contain digestive enzymes (like bromelain) that work in synergy with NutriThrive’s plant-based Moringa to support comfortable digestion.</p>
- <p><strong>Ingredients:</strong> 1 cup frozen mango, 1 scoop of your preferred clean protein, 1 tsp NutriThrive Moringa Powder, coconut water, mint leaves.</p>
- <p><strong>Targeting:</strong> non-bloating protein powder QLD, high protein foods Brisbane.</p>
+     <!-- Recipe 5 -->
+     <h2 id="recipe-5">Recipe 5: Moringa Greek Yoghurt Bowl</h2>
+     <p>Greek yoghurt is the most underrated protein food in Australian fridges. 200 g delivers roughly 18 g of protein before you add anything. Moringa turns it into a genuine nutritional powerhouse.</p>
+     <div class="recipe-card">
+       <h3>Moringa Greek Yoghurt Bowl</h3>
+       <div class="recipe-meta">
+         <span>⏱ 3 min</span>
+         <span>🍽 1 serve</span>
+         <span>💪 ~22–28 g protein</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>200 g full-fat Greek yoghurt</li>
+         <li>1 tsp NutriThrive moringa powder</li>
+         <li>1 tbsp nut butter (almond or peanut)</li>
+         <li>1 tsp honey</li>
+         <li>Granola, sliced banana, or berries to top</li>
+         <li>2 tbsp hemp seeds (optional — adds 6 g protein)</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Stir moringa into yoghurt thoroughly. It takes about 30 seconds of vigorous stirring to fully combine — do not rush this step.</li>
+         <li>Transfer to a bowl. Add nut butter, honey, and toppings.</li>
+         <li>Eat immediately or refrigerate for up to 2 hours (colour intensifies over time).</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> Moringa and yoghurt make a surprisingly good savoury dip — skip the honey, add garlic, lemon, and olive oil. Serve with flatbread or veggie sticks.</div>
+     </div>
 
- <p><a href="/products/" style="font-weight: 600;">🛒 BUY NOW: Experience the Non-Bloating Difference – Express AU Shipping</a></p>
- </section>
+     <!-- Recipe 6 -->
+     <h2 id="recipe-6">Recipe 6: Moringa Green Dhal</h2>
+     <p>Dhal is arguably the world's best high-protein, high-iron weeknight dinner. Add moringa off the heat — stirring it into the finished dhal preserves far more of its vitamin C than cooking it in.</p>
+     <div class="recipe-card">
+       <h3>Moringa Green Dhal</h3>
+       <div class="recipe-meta">
+         <span>⏱ 30 min</span>
+         <span>🍽 4 serves</span>
+         <span>💪 ~22 g protein per serve</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>250 g red lentils, rinsed</li>
+         <li>1 can (400 ml) coconut milk</li>
+         <li>400 ml vegetable stock</li>
+         <li>1 onion, diced</li>
+         <li>3 garlic cloves, minced</li>
+         <li>1 tbsp fresh ginger, grated</li>
+         <li>2 tsp ground cumin + 1 tsp turmeric + 1 tsp garam masala</li>
+         <li>1 tbsp olive oil or ghee</li>
+         <li>1½ tsp NutriThrive moringa powder (added off heat)</li>
+         <li>Salt, lime juice, fresh coriander to serve</li>
+         <li>Optional: 1 tsp NutriThrive dried curry leaves in the tempering oil — see our <a href="/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html">curry leaves guide</a> for how</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Heat oil in a heavy pot. Fry onion until golden (7–8 min). Add garlic, ginger, and spices; cook 2 minutes until fragrant.</li>
+         <li>Add lentils, stock, and coconut milk. Bring to a boil, then reduce and simmer 20 min, stirring occasionally, until lentils are completely soft.</li>
+         <li>Remove from heat. Stir in moringa powder and lime juice. Let sit 2 minutes.</li>
+         <li>Serve with rice or flatbread, topped with fresh coriander.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> Always add moringa after removing from heat. Simmering it destroys most of its vitamin C within a few minutes — but the minerals and plant protein survive. The colour stays vivid green rather than turning army-drab.</div>
+     </div>
 
- <section>
- <h2>Section 4: The Human Protein Atlas &amp; Personalised Nutrition</h2>
- <p>In 2026, we no longer guess; we measure. Research and data from large-scale protein mapping projects suggest that active populations in sunny climates require higher-than-average levels of skin-supporting antioxidants. Moringa is unique because it is one of the few plant-based protein sources that contains high concentrations of zeatin, a plant hormone associated with cellular health and delayed skin cell ageing.</p>
- </section>
+     <!-- Recipe 7 -->
+     <h2 id="recipe-7">Recipe 7: Moringa Pesto Pasta</h2>
+     <p>Classic pesto gets an iron and calcium upgrade. Use chickpea or lentil pasta and you're looking at 30+ g of protein in a single bowl without any meat.</p>
+     <div class="recipe-card">
+       <h3>Moringa Pesto Pasta</h3>
+       <div class="recipe-meta">
+         <span>⏱ 15 min</span>
+         <span>🍽 2 serves</span>
+         <span>💪 ~30 g protein per serve (with chickpea pasta)</span>
+       </div>
+       <p><strong>Ingredients (pesto):</strong></p>
+       <ul>
+         <li>1 large bunch fresh basil (about 50 g leaves)</li>
+         <li>1 tsp NutriThrive moringa powder</li>
+         <li>50 g parmesan, grated (adds ~18 g protein)</li>
+         <li>30 g pine nuts or cashews</li>
+         <li>1 small garlic clove</li>
+         <li>80–100 ml extra virgin olive oil</li>
+         <li>Juice of ½ lemon</li>
+         <li>Salt to taste</li>
+       </ul>
+       <p><strong>Ingredients (bowl):</strong></p>
+       <ul>
+         <li>200 g chickpea or lentil pasta (dry weight)</li>
+         <li>Cherry tomatoes, baby spinach, or grilled zucchini to serve</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Cook pasta per packet directions. Reserve ¼ cup pasta water before draining.</li>
+         <li>Blend all pesto ingredients until smooth. Taste — add salt or lemon to balance.</li>
+         <li>Toss warm pasta with pesto, adding pasta water by the tablespoon to loosen.</li>
+         <li>Serve with vegetables and extra parmesan.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> Start with ¾ tsp moringa in the pesto and taste before adding the full teaspoon — basil has varying strength. You want moringa as a background note that deepens the green colour, not a dominant flavour.</div>
+     </div>
 
- <section>
- <h2>Section 5: Beyond the Shake—Moringa in Savoury Cooking</h2>
- <p>Most people think protein powder only goes in sweet dishes. NutriThrive Moringa is different. Because our powder is pure, earth-toned, and finely milled, it can be added to savoury high protein foods at dinner without overpowering the dish.</p>
+     <!-- Recipe 8 -->
+     <h2 id="recipe-8">Recipe 8: Moringa Almond-Crusted Salmon</h2>
+     <p>Salmon is one of the highest-protein, omega-3-dense foods available in Australian supermarkets. The moringa-almond crust adds minerals and a visual green edge that looks far more impressive than it is to make.</p>
+     <div class="recipe-card">
+       <h3>Moringa Almond-Crusted Salmon</h3>
+       <div class="recipe-meta">
+         <span>⏱ 20 min</span>
+         <span>🍽 2 serves</span>
+         <span>💪 ~40 g protein per serve</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>2 salmon fillets (about 180 g each)</li>
+         <li>50 g raw almonds, roughly crushed</li>
+         <li>1 tsp NutriThrive moringa powder</li>
+         <li>1 tbsp fresh parsley or coriander, finely chopped</li>
+         <li>1 tsp lemon zest</li>
+         <li>1 tbsp olive oil</li>
+         <li>Salt and pepper</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Preheat oven to 200°C. Line a baking tray with baking paper.</li>
+         <li>Mix crushed almonds, moringa, parsley, lemon zest, and olive oil in a bowl until combined.</li>
+         <li>Season salmon fillets. Press the moringa-almond mix firmly onto the top surface of each fillet.</li>
+         <li>Bake 12–14 minutes until crust is golden and salmon just flakes. Do not overcook — the crust will look done before the fish does.</li>
+         <li>Serve with roasted vegetables or a green salad.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> The almond crust benefits from pressing it on firmly before baking — if it's loose, it slides off. A brief 2-minute rest after removing from the oven helps it set.</div>
+     </div>
 
- <h3>The "Perth Pesto"</h3>
- <p>Swap a portion of basil for NutriThrive Moringa Powder in your pesto recipe to increase the mineral content of your pasta or zoodles. Start with ½ teaspoon per serve to keep the flavour balanced.</p>
+     <!-- Recipe 9 -->
+     <h2 id="recipe-9">Recipe 9: Moringa Protein Energy Balls</h2>
+     <p>The meal-prep snack that solves the 3 pm problem. These keep in the fridge for a week and freeze for three months. The dates bind everything without refined sugar, and the protein powder + nut butter combination makes them genuinely filling.</p>
+     <div class="recipe-card">
+       <h3>Moringa Protein Energy Balls</h3>
+       <div class="recipe-meta">
+         <span>⏱ 15 min + 30 min chill</span>
+         <span>🍽 Makes 14–16 balls</span>
+         <span>💪 ~7 g protein per 2 balls</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>150 g Medjool dates, pitted</li>
+         <li>80 g rolled oats</li>
+         <li>2 tbsp almond butter or peanut butter</li>
+         <li>1 scoop vanilla protein powder (~25 g)</li>
+         <li>1½ tsp NutriThrive moringa powder</li>
+         <li>2 tbsp desiccated coconut (plus extra for rolling)</li>
+         <li>1–2 tbsp water (if mix is too dry)</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Blend dates alone in a food processor until a paste forms.</li>
+         <li>Add oats, nut butter, protein powder, moringa, and coconut. Pulse until combined — you want a dough that holds together when pressed. Add water a tablespoon at a time if too dry.</li>
+         <li>Roll into golf-ball-sized portions. Roll in extra desiccated coconut.</li>
+         <li>Refrigerate on a tray for at least 30 minutes to firm up.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> Don't over-blend after adding oats — you want some texture from the oats, not a completely smooth paste. The chewiness is part of what makes these satisfying.</div>
+     </div>
 
- <h3>The "Adelaide Almond Crust"</h3>
- <p>Mix NutriThrive Moringa Powder with crushed almonds and herbs to coat salmon or tofu for a crunchy, high-protein finish. Bake until golden for a dinner that supports joints, skin and recovery.</p>
- </section>
+     <!-- Recipe 10 -->
+     <h2 id="recipe-10">Recipe 10: Moringa Chickpea Stir-Fry</h2>
+     <p>Chickpeas are Australia's most underused protein source — 15 g of protein per cup, cheap, and available canned in every supermarket. This stir-fry takes under 15 minutes and works as a side dish or a light main.</p>
+     <div class="recipe-card">
+       <h3>Moringa Chickpea Stir-Fry</h3>
+       <div class="recipe-meta">
+         <span>⏱ 12 min</span>
+         <span>🍽 2 serves as a main, 4 as a side</span>
+         <span>💪 ~20 g protein per main serve</span>
+       </div>
+       <p><strong>Ingredients:</strong></p>
+       <ul>
+         <li>1 can (400 g) chickpeas, drained and patted dry</li>
+         <li>2 tbsp extra virgin olive oil</li>
+         <li>3 garlic cloves, thinly sliced</li>
+         <li>1 tsp ground cumin + 1 tsp smoked paprika</li>
+         <li>100 g baby spinach or kale</li>
+         <li>1 tsp NutriThrive moringa powder (added at end)</li>
+         <li>Juice of ½ lemon</li>
+         <li>Salt and chilli flakes to taste</li>
+         <li>Serve with: flatbread, rice, or poached eggs</li>
+       </ul>
+       <p><strong>Method:</strong></p>
+       <ol>
+         <li>Heat oil in a large pan over medium-high. Add chickpeas in a single layer. Cook undisturbed for 3–4 minutes until one side is golden and slightly crispy.</li>
+         <li>Add garlic, cumin, and paprika. Toss and cook 2 more minutes.</li>
+         <li>Add spinach or kale. Stir until just wilted (1–2 minutes).</li>
+         <li>Remove from heat. Stir in moringa powder and lemon juice. Taste and season.</li>
+         <li>Serve immediately.</li>
+       </ol>
+       <div class="tip"><strong>Pro tip:</strong> Crispy chickpeas are the goal — dry them properly before adding to the pan, and don't stir for the first 3–4 minutes. Wet chickpeas steam instead of crisping and taste completely different.</div>
+     </div>
 
- <section>
- <h2>Section 6: Real 2026 Product Snapshot – All NutriThrive Staples</h2>
- <p>Every price and product below is taken from the live NutriThrive store in March 2026, shipped from our Truganina, Melbourne warehouse.</p>
+     <h2>How to use these recipes as a weekly routine</h2>
+     <p>You don't need all 10 in the same week. A realistic rotation looks like this:</p>
+     <ul>
+       <li><strong>Weekday mornings (5 min):</strong> Moringa scrambled eggs or yoghurt bowl</li>
+       <li><strong>Post-training:</strong> Green silk latte or tropical smoothie</li>
+       <li><strong>Meal-prep Sunday:</strong> Energy balls (14 balls = 7 days of snacks) + green dhal (4 servings)</li>
+       <li><strong>Weekend dinners:</strong> Almond-crusted salmon or moringa pesto pasta</li>
+     </ul>
+     <p>For more on daily habit-building with moringa, see our <a href="/blog/how-to-add-moringa-to-diet.html">complete guide to adding moringa to your diet</a> — it covers timing, dosage, and how different people build the habit differently.</p>
 
- <ul>
- <li><strong>Moringa Powder (100g pack – 30 servings):</strong> $11.00 AUD (was $14.00). Also available in 200g ($21.50), 3 + 1 = 400g bundle ($35.00), and combo sizes directly on our product page.</li>
- <li><strong>Dried Curry Leaves (30g pack):</strong> $7.00 AUD (was $8.49) for a high-potency, aromatic leaf that transforms dals, sambhar and tempering oil.</li>
- <li><strong>Darjeeling Black Tea (100g pack):</strong> $7.50 AUD for a premium-grade black tea that pairs perfectly with morning moringa rituals.</li>
- <li><strong>Premium Combo Pack:</strong> $17.00 AUD (was $22.49) for a curated wellness starter that pairs moringa with other pantry essentials.</li>
- <li><strong>Moringa Soap (95g bar):</strong> $7.00 AUD for a natural, moringa-infused cleansing bar that supports your skin from the outside-in.</li>
- <li><strong>Moringa 100g + Soap 95g bundle:</strong> $17.00 AUD (was $23.39), ideal for those building a "lifestyle protein + clean beauty" stack.</li>
- </ul>
+     <h2>Which moringa powder to use</h2>
+     <p>These recipes are calibrated for <a href="/blog/science-shade-drying-vs-sun-drying-moringa.html">shade-dried, fine-ground moringa leaf powder</a>. Sun-dried or coarsely-ground moringa will be noticeably more bitter, especially in neutral-tasting recipes like scrambled eggs or yoghurt. If you've tried moringa before and found it unpleasant, it's worth trying a different powder before deciding you don't like it — <a href="/blog/moringa-brands-comparison-australia-2026.html">brand quality varies significantly in Australia</a>.</p>
+     <p><a href="/products/moringa-powder/">NutriThrive moringa</a> is shade-dried in-house from single-origin leaf, milled fine, and ships from Truganina (Melbourne). Free standard shipping on orders $80+.</p>
 
- <p>Free shipping Australia-wide applies on orders of $80+ AUD, and worldwide shipping is free on orders of $90+ AUD.</p>
+     <!-- FAQ -->
+     <h2 id="faq">Frequently Asked Questions</h2>
+     <section>
+       <div class="faq-item">
+         <button class="faq-question" type="button" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
+           <span>Does moringa powder add protein to recipes?</span>
+           <span class="faq-icon" style="font-size:1.3rem;font-weight:bold;">+</span>
+         </button>
+         <div class="faq-answer">
+           <p>Moringa leaf powder is approximately 25–28% protein by dry weight, but a 1 tsp serving (~2 g) contributes only about 0.5 g protein. It is not a protein replacement on its own. Pair it with eggs, Greek yoghurt, legumes, or fish — moringa's real value is the density of micronutrients (iron, calcium, antioxidants) that accompanies those protein sources.</p>
+         </div>
+       </div>
+       <div class="faq-item">
+         <button class="faq-question" type="button" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
+           <span>Can I cook moringa powder or does heat destroy it?</span>
+           <span class="faq-icon" style="font-size:1.3rem;font-weight:bold;">+</span>
+         </button>
+         <div class="faq-answer">
+           <p>Some heat-sensitive compounds like vitamin C degrade with prolonged high heat. For everyday cooking, adding moringa off the heat (stirred into a finished dish) or to warm but not boiling liquids preserves the most nutrition. Baking or sautéing is still useful — you retain minerals and much of the protein even if some vitamins reduce.</p>
+         </div>
+       </div>
+       <div class="faq-item">
+         <button class="faq-question" type="button" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
+           <span>How much moringa should I use per recipe?</span>
+           <span class="faq-icon" style="font-size:1.3rem;font-weight:bold;">+</span>
+         </button>
+         <div class="faq-answer">
+           <p>Start with ½ tsp per serve and build to 1–2 tsp. More than 2 tsp in a single serving can produce a bitter, earthy flavour that overpowers other ingredients, especially in delicate dishes. The recipes above are calibrated to stay flavour-balanced at their listed amounts.</p>
+         </div>
+       </div>
+       <div class="faq-item">
+         <button class="faq-question" type="button" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
+           <span>Does moringa taste bad in savoury food?</span>
+           <span class="faq-icon" style="font-size:1.3rem;font-weight:bold;">+</span>
+         </button>
+         <div class="faq-answer">
+           <p>High-quality shade-dried moringa has a mild grassy-nutty flavour that integrates well into savoury dishes — dhal, pesto, egg scrambles, dressings. It is only harsh when the powder is low quality (sun-dried, old, or stem-heavy). If your moringa turns every dish bitter, the powder is the issue, not your cooking.</p>
+         </div>
+       </div>
+       <div class="faq-item">
+         <button class="faq-question" type="button" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
+           <span>Where can I buy moringa for these recipes in Australia?</span>
+           <span class="faq-icon" style="font-size:1.3rem;font-weight:bold;">+</span>
+         </button>
+         <div class="faq-answer">
+           <p>NutriThrive ships shade-dried moringa leaf powder Australia-wide from Melbourne (Truganina). Free standard shipping on orders $80+. You can also find moringa at health food stores, though lab-tested powder with batch documentation is harder to source on physical shelves — see our <a href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">where to buy guide</a> for a full breakdown by state.</p>
+         </div>
+       </div>
+       <div class="faq-item">
+         <button class="faq-question" type="button" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';">
+           <span>Can I use moringa in recipes for kids?</span>
+           <span class="faq-icon" style="font-size:1.3rem;font-weight:bold;">+</span>
+         </button>
+         <div class="faq-answer">
+           <p>Moringa is a whole-food ingredient used as a staple vegetable in parts of Asia and Africa. For healthy children without medical conditions, small amounts (¼–½ tsp mixed into food) are generally considered safe. Always check with a healthcare professional for children under 2, or if your child has any medical conditions or is on medication.</p>
+         </div>
+       </div>
+     </section>
 
- <h3>Dried Curry Leaves – Not Just a Garnish</h3>
- <p>NutriThrive Dried Curry Leaves are shade-dried to preserve aroma and colour, so even a small 30g pack lasts for dozens of meals. In Indian and Sri Lankan cooking, gently frying curry leaves in hot oil at the start of a dish unlocks fat-soluble antioxidants and deeply aromatic essential oils. Added to dal, rasam, or rice, they bring depth, digestion support, and a taste of home to Australian kitchens in Melbourne, Sydney and beyond.</p>
+     <div style="margin: 2rem 0; padding: 1.4rem 1.5rem; background: #0f3d2e; border-radius: 14px; color: #fff;">
+       <p style="margin: 0 0 0.8rem; font-size: 1.05rem;"><strong>Ready to try these recipes?</strong></p>
+       <p style="margin: 0 0 1rem; font-size: 0.95rem; opacity: 0.9;">NutriThrive moringa is shade-dried in Melbourne, fine-milled for recipes, and batch-tested. The 3+1 bundle (400 g) keeps most households stocked for 2–3 months at typical recipe usage.</p>
+       <a href="/products/moringa-powder/" style="background: #7ec8a0; color: #0f3d2e; padding: 0.55rem 1.4rem; border-radius: 99px; font-size: 0.95rem; font-weight: 700; text-decoration: none; display: inline-block;">Shop moringa powder →</a>
+     </div>
 
- <h3>Moringa Soap – Skin Health Meets Superfood</h3>
- <p>Our Moringa Soap bar leverages moringa leaf and nourishing plant oils to support skin health in harsh Australian conditions. Think of it as the topical partner to your daily moringa smoothie—supporting barrier function, reducing the impact of pollution, and gently cleansing without sulphates. Customers across Melbourne and Sydney pair the soap with internal moringa for a "dual-action" glow routine.</p>
-
- <h3>Building a Full Routine With All Products</h3>
- <p>A typical NutriThrive day for busy Australians might look like this: Moringa-Avo Smash for breakfast, a Noosa-style smoothie or Green Silk Latte post-training, a curry-leaf tempered dal for dinner, and a moringa soap cleanse before bed. Every touchpoint uses real, lab-tested products shipped from Melbourne with transparent pricing.</p>
- </section>
-
- <section>
- <h2>Section 7: Strategic Comparison—Why Not Just a "Protein Bar"?</h2>
- <p>When you’re at the checkout in a major Australian supermarket, you might see mainstream protein bars and shakes. While convenient, these often contain:</p>
- <ul>
- <li><strong>Soluble corn fibre:</strong> can cause significant bloating and gas.</li>
- <li><strong>Fractionated palm oil:</strong> often not sustainably sourced and high in certain saturated fats.</li>
- <li><strong>Artificial sweeteners:</strong> sucralose and similar compounds can disrupt the gut microbiome.</li>
- </ul>
- <p>NutriThrive’s range is positioned as the 2026 answer to this—real food, lab-tested, and designed for the discerning Australian consumer who refuses to compromise on quality.</p>
- <p><a href="/products/" style="font-weight: 600;">📦 SHOP BUNDLES: Save with the Moringa + Soap and Premium Combo Packs</a></p>
- </section>
-
- <section>
- <h2>Section 8: The "Aussie Burnout" and Adrenal Support</h2>
- <p>A major reason this guide attracts daily readers is the search for adrenal and stress support. Australians are working harder than ever. Moringa acts as an adaptogenic ally in many routines, helping to support healthy cortisol regulation when paired with sleep, movement, and wholefood meals. This makes it an essential "lifestyle protein" addition for anyone juggling a career in the city with family, commute, and training.</p>
- </section>
-
- <section>
- <h2>Section 9: Sustainability &amp; The 2026 Vision</h2>
- <p>NutriThrive isn't just about personal health; it’s about the health of the continent. Our 2026 mission includes:</p>
- <ul>
- <li><strong>Fast, efficient delivery from Melbourne:</strong> Shipping directly from our Truganina warehouse reduces unnecessary warehousing and shelf time.</li>
- <li><strong>Focused, additive-free formulas:</strong> 100% natural, vegan-friendly, with no preservatives across our moringa and curry leaf range.</li>
- </ul>
- </section>
-
- <section>
- <h2>Strategic FAQ (One-Line Answers)</h2>
- <p><strong>Q: Can I use NutriThrive Moringa in hot coffee?</strong> A: We recommend adding Moringa to lukewarm or cool liquids to preserve heat-sensitive vitamin C and enzymes.</p>
- <p><strong>Q: How many servings of high protein foods do I need daily in Australia?</strong> A: Many active adults aim for around 1.6 g of protein per kg of body weight per day; always adjust to your health professional’s advice.</p>
- <p><strong>Q: Is NutriThrive suitable for children and seniors?</strong> A: Our pure Moringa and plant products are whole-food based; suitability depends on individual needs, so check with a healthcare professional.</p>
- <p><strong>Q: Where can I find more moringa research?</strong> A: Visit our science-focused articles on the NutriThrive blog for 2026 updates on how plant proteins interact with human health.</p>
- <p><strong>Q: Why does some protein powder make me feel heavy?</strong> A: Many mass-market whey proteins contain lactose and gums that are difficult for some digestive systems to process, especially in warm Australian climates.</p>
- <p><strong>Q: How do I store NutriThrive products in QLD humidity?</strong> A: Keep your NutriThrive products in a cool, dry cupboard or the refrigerator to maintain maximum nutrient potency.</p>
- </section>
-
- <p><a href="/blog/index.html">← Back to Blog</a></p>
- </div>
+     <p style="margin-top: 1.5rem;"><a href="/blog/">← Back to blog</a></p>
+   </div>
  </article>
 
-<section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
-  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
-  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
-      <li><a href="/blog/best-clean-protein-powders-moringa-products-australia-2026.html">Best Protein Powder Australia 2026</a></li>
-      <li><a href="/blog/healthy-snack-melbourne-why-everyone-switching-to-moringa-2026.html">Melbourne snacks &amp; moringa (2026)</a></li>
-      <li><a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html">Moringa vs Spirulina vs Matcha</a></li>
-      <li><a href="/products/moringa-powder/">Shop Moringa Powder</a></li>
-      <li><a href="/products/black-tea/">Shop Black Tea</a></li>
-  </ul>
-</section>
+ <section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
+   <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
+   <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
+     <li><a href="/blog/how-to-add-moringa-to-diet.html">How to Add Moringa to Your Diet (complete guide)</a></li>
+     <li><a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html">Using Moringa Daily Without the Bitter Taste</a></li>
+     <li><a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html">Moringa vs Spirulina vs Matcha</a></li>
+     <li><a href="/blog/best-clean-protein-powders-moringa-products-australia-2026.html">Best Protein Powders Australia 2026</a></li>
+     <li><a href="/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html">Dried Curry Leaves: Uses & Storage Guide</a></li>
+     <li><a href="/products/moringa-powder/">Shop Moringa Powder</a></li>
+   </ul>
+ </section>
 </main>
 
 <script src="blog.js" defer></script>
+<script src="blog-editorial.js" defer></script>
 </body>
 </html>
-
