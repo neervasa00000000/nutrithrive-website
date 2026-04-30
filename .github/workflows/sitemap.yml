@@ -48,6 +48,7 @@ jobs:
             echo "Regenerate and commit both files (not random CI noise — the committed"
             echo "sitemap must match what the script produces on this commit):"
             echo "  node scripts/build-sitemap.js"
+            echo "  # or: bash scripts/verify-sitemap.sh"
             echo "  git add sitemap.xml audit/sitemap-urls.txt && git commit -m \"chore: regenerate sitemap\" && git push"
             echo ""
             git diff -- sitemap.xml audit/sitemap-urls.txt || true
