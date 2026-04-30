@@ -4,7 +4,9 @@
  * Run from repo root: node scripts/build-sitemap.js
  *
  * lastmod uses the last git commit date per file (with git-index path normalisation and
- * HEAD-date fallback before mtime) so CI matches local — runner mtimes are not stable.
+ * HEAD-date fallback before mtime). Final mtime fallback uses Australia/Melbourne calendar
+ * dates so CI (UTC) matches local regeneration for .au — runner-local getDate() caused
+ * off-by-one lastmod and flaky `git diff` vs committed sitemap.xml.
  * PR builds must use the PR head checkout (see .github/workflows/sitemap.yml), not the
  * merge commit, or git history for lastmod can differ from what authors regenerate locally.
  *
@@ -167,13 +169,19 @@ function lastmodFromHeadCommit() {
   return lastmodHeadCommitCache;
 }
 
+/** Calendar date in Australia/Melbourne (site TZ) — avoids UTC vs local mismatch on CI runners. */
+function formatDateInMelbourne(epochMs) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Australia/Melbourne",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(epochMs));
+}
+
 function lastmodFromMtime(fileAbs) {
   const st = fs.statSync(fileAbs);
-  const d = new Date(st.mtimeMs);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
+  return formatDateInMelbourne(st.mtimeMs);
 }
 
 /** Prefer git commit date so CI and local runs match; never prefer flaky runner mtime before HEAD. */
