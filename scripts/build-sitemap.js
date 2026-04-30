@@ -169,14 +169,19 @@ function lastmodFromHeadCommit() {
   return lastmodHeadCommitCache;
 }
 
-/** Calendar date in Australia/Melbourne (site TZ) — avoids UTC vs local mismatch on CI runners. */
+/** Calendar date YYYY-MM-DD in Australia/Melbourne — formatToParts avoids ICU `.format()` differences (Mac/Linux, Node versions). */
 function formatDateInMelbourne(epochMs) {
-  return new Intl.DateTimeFormat("en-CA", {
+  const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Australia/Melbourne",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-  }).format(new Date(epochMs));
+  }).formatToParts(new Date(epochMs));
+  const y = parts.find((p) => p.type === "year")?.value;
+  const m = parts.find((p) => p.type === "month")?.value;
+  const d = parts.find((p) => p.type === "day")?.value;
+  if (!y || !m || !d) return "";
+  return `${y}-${m}-${d}`;
 }
 
 function lastmodFromMtime(fileAbs) {
@@ -186,7 +191,15 @@ function lastmodFromMtime(fileAbs) {
 
 /** Prefer git commit date so CI and local runs match; never prefer flaky runner mtime before HEAD. */
 function lastmodDate(fileAbs, relPosix) {
-  return lastmodFromGit(relPosix) || lastmodFromHeadCommit() || lastmodFromMtime(fileAbs);
+  const fromGit = lastmodFromGit(relPosix);
+  const fromHead = lastmodFromHeadCommit();
+  const fromMtime = lastmodFromMtime(fileAbs);
+  const fallback = [fromGit, fromHead, fromMtime].find(Boolean) || "";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(fallback)) {
+    console.error(`Invalid lastmod for ${relPosix}: "${fallback}"`);
+    process.exit(1);
+  }
+  return fallback;
 }
 
 function escapeXml(s) {
