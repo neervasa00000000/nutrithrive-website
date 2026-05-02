@@ -60,7 +60,7 @@ Each phase has a **dedicated** markdown file in this folder with **full** tables
 
 **File:** [02_raw_pages.md](./02_raw_pages.md)
 
-**Contents:** A **table** of **50** URLs with: title, meta (abridged), H1, heading counts, approximate word count, internal link count, image notes, canonical / `og:url` habit, `robots`, and schema where observed. **Cross-cutting** notes: **i.imgur** `og` images, **duplicate** `BlogPosting` on blog index, **broken** internal path risk for `usage-guide`.
+**Contents:** A **table** of **50** URLs with: title, meta (abridged), H1, heading counts, approximate word count, internal link count, image notes, canonical / `og:url` habit, `robots`, and schema where observed. **Cross-cutting** notes: **i.imgur** `og` images, **duplicate** `BlogPosting` on blog index (review periodically).
 
 ---
 
@@ -84,7 +84,7 @@ Each phase has a **dedicated** markdown file in this folder with **full** tables
 
 **File:** [05_quick_wins.md](./05_quick_wins.md)
 
-**Format:** 15 items with **URL**, **problem**, **fix**, **impact/effort**, and **one-line “why it matters”**. Top items: **full sitemap**, **meta** fixes, **noindex** review, **one** usage-guide URL, remove **public SEO meta-jargon** from a tea article, **LocalBusiness/JSON-LD** deduplication, **$80** policy consistency, **og** self-hosting, **H1** on tools, FAQ dedup on `how-to-add`, typos.
+**Format:** 15 items with **URL**, **problem**, **fix**, **impact/effort**, and **one-line “why it matters”**. Top items: **full sitemap**, **meta** fixes, **noindex** review, remove **public SEO meta-jargon** from a tea article, **LocalBusiness/JSON-LD** deduplication, **$80** policy consistency, **og** self-hosting, **H1** on tools, FAQ dedup on `how-to-add`, typos.
 
 **Suggested timing:** **This week** = priorities 1–5, **this month** = 6–12, **this quarter** = 13–15 (adjust as needed).
 

@@ -5,7 +5,7 @@
 
 ### Remediation status (repo, 2026)
 
-Many items below are **addressed in code** since this document was first written: sitemap is regenerated with `node scripts/build-sitemap.js` (dozens of URLs, including blog); key blog `noindex` issues were fixed; usage-guide path has a 301; Chinese guide and shipping copy were aligned; self-hosted social images; JSON-LD deduping and correct canonicals/Article IDs; a single `LocalBusiness` source at `shared/schema/nutrithrive-local-business.json` with `scripts/sync-local-business-jsonld.js`. **Still manual after deploy:** submit sitemap in Google Search Console, spot-check Rich Results, monitor PageSpeed.
+Many items below are **addressed in code** since this document was first written: sitemap is regenerated with `node scripts/build-sitemap.js` (dozens of URLs, including blog); key blog `noindex` issues were fixed; legacy usage-guide paths 301 to the diet how-to article; Chinese guide and shipping copy were aligned; self-hosted social images; JSON-LD deduping and correct canonicals/Article IDs; a single `LocalBusiness` source at `shared/schema/nutrithrive-local-business.json` with `scripts/sync-local-business-jsonld.js`. **Still manual after deploy:** submit sitemap in Google Search Console, spot-check Rich Results, monitor PageSpeed.
 
 ---
 

@@ -51,7 +51,7 @@
 
 - `https://nutrithrive.com.au/pages/shipping/shipping-returns`
 - `https://nutrithrive.com.au/pages/newsletter/`
-- `https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa` (+ legacy `.html` variant referenced in tooling)
+- `https://nutrithrive.com.au/blog/how-to-add-moringa-to-diet.html` (canonical how-to hub; legacy usage-guide URLs 301 here)
 - `https://nutrithrive.com.au/privacy-policy.html` (**redirects/canonical align to** `/privacy-policy` in live scrape)
 
 ### Legal / policy (single combined page on site)

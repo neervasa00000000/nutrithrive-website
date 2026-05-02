@@ -77,7 +77,7 @@
       <div style="background:#fffdfa;border:1px solid #ece7db;border-radius:12px;padding:14px;">
         <strong style="color:#175c36;">Related reads</strong>
         <ul style="margin:8px 0 0 18px;line-height:1.6;">
-          <li><a href="../benefits/moringa-benefits.html" style="color:#175c36;text-decoration:none;">Moringa Benefits (Australia)</a></li>
+          <li><a href="/blog/how-to-add-moringa-to-diet.html" style="color:#175c36;text-decoration:none;">How to add moringa (Australia)</a></li>
           <li><a href="https://nutrithrive.com.au/products/moringa-powder/" style="color:#175c36;text-decoration:none;">Compare our products</a></li>
           <li><a href="/blog/index.html" style="color:#175c36;text-decoration:none;">More from the blog</a></li>
         </ul>
@@ -115,29 +115,6 @@
         </div>
       </div>`;
     article.appendChild(cta);
-  }
-
-  function proteinGuidePromo() {
-    try {
-      const path = window.location.pathname || '';
-      if (!/moringa/i.test(path) || /best-protein-powder/i.test(path)) return;
-      const article = qs('.blog-post-content, article, .blog-content');
-      if (!article || document.getElementById('nt-protein-guide')) return;
-      const firstParagraph = qs('p', article);
-      if (!firstParagraph) return;
-      const promo = document.createElement('div');
-      promo.id = 'nt-protein-guide';
-      promo.style.border = '1px solid #dfeee0';
-      promo.style.borderRadius = '12px';
-      promo.style.padding = '12px 16px';
-      promo.style.margin = '1.25rem 0';
-      promo.innerHTML = `
-        <strong style="color:#175c36;display:block;margin-bottom:6px;">Need the best protein to pair with your moringa?</strong>
-        <span style="display:block;margin-bottom:8px;">Our team blind-tested 9 Australian protein powders for clean ingredients, price, and taste.</span>
-        <a href="/blog/best-clean-protein-powders-moringa-products-australia-2026.html" style="color:#175c36;font-weight:700;text-decoration:none;">Read the protein powder testing guide →</a>
-      `;
-      firstParagraph.insertAdjacentElement('afterend', promo);
-    } catch (e) {}
   }
 
   function stickyShareMobile() {
@@ -264,7 +241,6 @@
     try { relatedLinks(); } catch(e){}
     try { authorBio(); } catch(e){}
     try { contactCTA(); } catch(e){}
-    try { proteinGuidePromo(); } catch(e){}
     try { stickyShareMobile(); } catch(e){}
     try { injectJSONLD(); } catch(e){}
     try { breadcrumbs(); } catch(e){}
@@ -278,22 +254,22 @@
           a.setAttribute('href','/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html');
         }
         if (href.includes('benefits/moringa-benefits.html')) {
-          // compute relative path to usage guide
-          let newHref = href.includes('/pages/') ? href.replace('/pages/benefits/moringa-benefits.html','/pages/usage-guide/how-to-use-moringa.html') : href.replace('benefits/moringa-benefits.html','usage-guide/how-to-use-moringa.html').replace('../usage-guide/','../usage-guide/');
-          // normalize common relative patterns
-          newHref = newHref
-            .replace('../benefits/moringa-benefits.html','../usage-guide/how-to-use-moringa.html')
-            .replace('../pages/benefits/moringa-benefits.html','../pages/usage-guide/how-to-use-moringa.html');
+          let newHref = href
+            .replace('/pages/benefits/moringa-benefits.html', '/blog/how-to-add-moringa-to-diet.html')
+            .replace('benefits/moringa-benefits.html', '/blog/how-to-add-moringa-to-diet.html')
+            .replace('../benefits/moringa-benefits.html', '/blog/how-to-add-moringa-to-diet.html')
+            .replace('../pages/benefits/moringa-benefits.html', '/blog/how-to-add-moringa-to-diet.html');
           a.setAttribute('href', newHref);
           if (/benefits/i.test(a.textContent)) {
             a.textContent = 'Usage & Benefits';
           }
         }
         if (/(^|\/)moringa-benefits\.html$/.test(href)) {
-          a.setAttribute('href','../usage-guide/how-to-use-moringa.html');
+          a.setAttribute('href', '/blog/how-to-add-moringa-to-diet.html');
           if (/benefits/i.test(a.textContent)) a.textContent = 'Usage & Benefits';
         }
-        if (href.includes('/usage-guide/how-to-use-moringa.html') || /usage guide/i.test(a.textContent)) {
+        if (/usage guide/i.test(a.textContent) && !/\/blog\/how-to-add-moringa-to-diet\.html/i.test(href)) {
+          a.setAttribute('href', '/blog/how-to-add-moringa-to-diet.html');
           a.textContent = 'Usage & Benefits';
         }
       });
@@ -308,7 +284,8 @@
           qsa('a', section).forEach(a => {
             const href = a.getAttribute('href') || '';
             const label = (a.textContent || '').trim().toLowerCase();
-            if (href.includes('/usage-guide/how-to-use-moringa.html') || label === 'usage guide') {
+            if (label === 'usage guide') {
+              a.setAttribute('href', '/blog/how-to-add-moringa-to-diet.html');
               a.textContent = 'Usage & Benefits';
             }
             if (label === 'benefits' || href.includes('/benefits/')) {

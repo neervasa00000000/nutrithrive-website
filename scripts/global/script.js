@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (text === 'benefits' || href.includes('/benefits/')) {
                     a.remove();
                 }
-                if (href.includes('/usage-guide/how-to-use-moringa.html') || text === 'usage guide') {
+                if (href.includes('/blog/how-to-add-moringa-to-diet.html') || text === 'usage guide') {
                     a.textContent = 'Usage & Benefits';
                 }
             });
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Array.from(section.querySelectorAll('a')).forEach(a => {
                     const href = a.getAttribute('href') || '';
                     const label = (a.textContent || '').trim().toLowerCase();
-                    if (href.includes('/usage-guide/how-to-use-moringa.html') || label === 'usage guide') {
+                    if (href.includes('/blog/how-to-add-moringa-to-diet.html') || label === 'usage guide') {
                         a.textContent = 'Usage & Benefits';
                     }
                     if (label === 'benefits' || href.includes('/benefits/')) {

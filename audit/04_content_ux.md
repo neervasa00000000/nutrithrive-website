@@ -25,9 +25,9 @@
 |------|------------|
 | **Usefulness** | Pillar **moringa guide**, **brand comparison**, **is moringa legit**, and **diet / how-to** are **substantive** (long, structured) — not thin. |
 | **Structure** | Good use of **TOC**, **tables**, and **FAQs** on commercial guides — improves scanability. **Exception:** the **moringa brands** page is very long; consider **accordions** and **on-page** “jump to” that remain accessible. |
-| **Internal links** | Cross-links to **products** and other guides are **strong** on moringa content — good for UX and SEO. **Broken pattern:** `usage-guide` path inconsistency. |
+| **Internal links** | Cross-links to **products** and other guides are **strong** on moringa content — good for UX and SEO. **Retired:** old `usage-guide` page removed; diet how-to is the single hub. |
 | **Next step** | Many pages end with **newsletter** and “related” — add **one** outcome-focused CTA (e.g. “Order 100g moringa to try the routine”) for readers at decision stage. |
-| **Search intent** | **Gyms Melbourne**, **Darjeeling tea**, **protein** guides serve **diverse** intents — ensure each has a **one-line** “who this is for” intro so the reader doesn’t bounce when they expected only moringa. **Darjeeling** article:** remove **internal “SEO & linking strategy”** language** — it reads as **non-reader** content. |
+| **Search intent** | **Darjeeling tea** and other non-moringa guides (where kept) should open with a **one-line** “who this is for” so readers don’t bounce. **Darjeeling** article: remove **internal “SEO & linking strategy”** language — it reads as non-reader content. |
 | **Language-specific** | **Chinese moringa guide** — check **free shipping** ($30) vs site-wide **$80+** in FAQ: **inconsistency** confuses and erodes trust. |
 | **Editorial** | **“Nutrites”** / similar typos in long posts — run one **pass** in Grammarly/IDE across HTML sources. **how-to-add** is **extremely** long; consider **splitting** into **two** guides (diet + recipes) with a clear hub. |
 

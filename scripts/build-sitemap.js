@@ -91,9 +91,6 @@ function fileToUrl(relPosix) {
   if (relPosix === "pages/shipping/shipping-returns.html")
     return `${BASE}/pages/shipping/shipping-returns`;
 
-  if (relPosix === "pages/usage-guide/how-to-use-moringa.html")
-    return `${BASE}/pages/usage-guide/how-to-use-moringa.html`;
-
   if (relPosix === "pages/newsletter/index.html") return `${BASE}/pages/newsletter/`;
 
   if (relPosix === "pages/homepage/melbourne.html") return `${BASE}/melbourne/`;

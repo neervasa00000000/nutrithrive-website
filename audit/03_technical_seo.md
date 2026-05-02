@@ -65,7 +65,7 @@
 | **Homepage** | Good paths to **products** and **blog**; re-check that **key money pages** (moringa powder, brand comparison) appear **above the fold** or in a stable module. |
 | **Blog** | Strong **related guides** and **in-body** links on pillars (e.g. `is-moringa`, moringa guide) — good. |
 | **CTAs to conversion** | Product CTAs are frequent on commercial posts; **non-commercial** local posts (e.g. Melbourne gyms) should still link to **1 relevant product** to pass equity without feeling spammy. |
-| **Broken / inconsistent paths** | Example: `…/usage-guide/how-to-use-moringa.html` vs `…/pages/usage-guide/how-to-use-moringa.html` — **one canonical** + fix internal links. |
+| **Retired paths** | Legacy usage-guide and removed off-topic blog URLs: handled with **301/404** in `_redirects` / `.htaccess`; internal links point to `/blog/how-to-add-moringa-to-diet.html`. |
 
 ---
 

@@ -11,15 +11,29 @@
 /blog/moringa-eyesight-better-than-carrots /blog/moringa-eyesight-better-than-carrots 404
 /blog/moringa-eyesight-better-than-carrots.html /blog/moringa-eyesight-better-than-carrots.html 404
 
-# Legacy short path → canonical usage guide (same as sitemap)
-/usage-guide/how-to-use-moringa.html /pages/usage-guide/how-to-use-moringa.html 301
-/pages/benefits/moringa-benefits.html /pages/usage-guide/how-to-use-moringa.html 301
+# Usage guide retired → canonical diet how-to (GSC consolidation)
+/usage-guide/how-to-use-moringa.html /blog/how-to-add-moringa-to-diet.html 301
+/pages/usage-guide/how-to-use-moringa /blog/how-to-add-moringa-to-diet.html 301
+/pages/usage-guide/how-to-use-moringa.html /blog/how-to-add-moringa-to-diet.html 301
+/pages/benefits/moringa-benefits.html /blog/how-to-add-moringa-to-diet.html 301
 
 # Pretty blog URLs (extensionless) → canonical .html
 /blog/how-to-add-moringa-to-diet /blog/how-to-add-moringa-to-diet.html 301
 /blog/moringa-melbourne-complete-growers-report-2026 /blog/moringa-melbourne-complete-growers-report-2026.html 301
-/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /blog/musashi-protein-powder-australia-comprehensive-guide-2026.html 301
-/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html 301
+
+# Removed off-topic posts (explicit 404 for legacy / pretty URLs)
+/blog/best-protein-powder-australia /blog/best-protein-powder-australia 404
+/blog/best-protein-powder-australia.html /blog/best-protein-powder-australia.html 404
+/blog/best-protein-powder-australia-2026-complete-guide /blog/best-protein-powder-australia-2026-complete-guide 404
+/blog/best-protein-powder-australia-2026-complete-guide.html /blog/best-protein-powder-australia-2026-complete-guide.html 404
+/blog/moringa-breastfeeding-mums-natural-lactation-support /blog/moringa-breastfeeding-mums-natural-lactation-support 404
+/blog/moringa-breastfeeding-mums-natural-lactation-support.html /blog/moringa-breastfeeding-mums-natural-lactation-support.html 404
+/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /blog/musashi-protein-powder-australia-comprehensive-guide-2026 404
+/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html /blog/musashi-protein-powder-australia-comprehensive-guide-2026.html 404
+/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide 404
+/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html 404
+/blog/best-clean-protein-powders-moringa-products-australia-2026 /blog/best-clean-protein-powders-moringa-products-australia-2026 404
+/blog/best-clean-protein-powders-moringa-products-australia-2026.html /blog/best-clean-protein-powders-moringa-products-australia-2026.html 404
 /nutrithrive_labs/dedup-lines /nutrithrive_labs/dedup-lines.html 301
 /nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 301
 /nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 301
