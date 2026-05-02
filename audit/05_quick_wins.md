@@ -28,7 +28,7 @@
 
 **[Priority #4] — One canonical path for the usage guide**
 
-- **Page affected:** Internal links use `https://nutrithrive.com.au/usage-guide/how-to-use-moringa.html` while sitemap uses `https://nutrithrive.com.au/pages/usage-guide/how-to-use-moringa.html` (or vice versa).  
+- **Resolved (May 2026):** Usage-guide URLs consolidated to `/blog/how-to-add-moringa-to-diet.html` (301s + internal link updates).  
 - **Problem:** **Split** signals, possible 404s, and diluted **link equity**.  
 - **Fix:** Choose **one** URL, add **301** from the other, and **replace** all in-content links.  
 - **Impact:** High | **Effort:** Easy  

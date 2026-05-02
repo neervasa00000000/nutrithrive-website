@@ -136,7 +136,7 @@ DirectoryIndex index.html index.htm
     # Common wrong paths
     RewriteRule ^blog/blog\.html$ /blog/ [R=301,L]
     RewriteRule ^products/?$ /products/ [R=301,L]
-    RewriteRule ^moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
+    RewriteRule ^moringa-benefits/?$ /blog/how-to-add-moringa-to-diet.html [R=301,L]
     RewriteRule ^about-us/?$ /pages/about/about.html [R=301,L]
     RewriteRule ^reviews/?$ /products/ [R=301,L]
     RewriteRule ^recipes/high-protein-smoothies\.pdf$ https://nutrithrive.com.au/ [R=301,L]
@@ -252,10 +252,10 @@ DirectoryIndex index.html index.htm
     # Removed - now handled by internal rewrite above
     RewriteRule ^blog\.html$ /blog/ [R=301,L]
     # Removed - now handled by internal rewrite above
-    RewriteRule ^how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
-    RewriteRule ^how-to-use-moringa/?$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
+    RewriteRule ^how-to-use-moringa\.html$ /blog/how-to-add-moringa-to-diet.html [R=301,L]
+    RewriteRule ^how-to-use-moringa/?$ /blog/how-to-add-moringa-to-diet.html [R=301,L]
     # Removed - now handled by internal rewrite above
-    RewriteRule ^moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html [R=301,L]
+    RewriteRule ^moringa-benefits\.html$ /blog/how-to-add-moringa-to-diet.html [R=301,L]
     RewriteRule ^products\.html$ /products/ [R=301,L]
     
     # Fix incorrect URL paths causing 301 redirects
@@ -309,7 +309,7 @@ RedirectMatch 301 ^/blog/best-moringa-powder-australia-2026-how-to-choose-top-su
 RedirectMatch 301 ^/blog/best-moringa-powder-australia-2026\.html$ /blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html
 RedirectMatch 301 ^/blog/blog\.html$ /blog/
 RedirectMatch 301 ^/products/?$ /products/
-RedirectMatch 301 ^/moringa-benefits/?$ /pages/usage-guide/how-to-use-moringa.html
+RedirectMatch 301 ^/moringa-benefits/?$ /blog/how-to-add-moringa-to-diet.html
 RedirectMatch 301 ^/about-us/?$ /pages/about/about.html
 RedirectMatch 301 ^/reviews/?$ /products/
 RedirectMatch 301 ^/recipes/high-protein-smoothies\.pdf$ https://nutrithrive.com.au/
@@ -335,10 +335,10 @@ RedirectMatch 301 ^/product-curry-leaves\.html$ /products/curry-leaves/
 # Removed - now handled by internal rewrite above
 RedirectMatch 301 ^/blog\.html$ /blog/
 # Removed - now handled by internal rewrite above
-RedirectMatch 301 ^/how-to-use-moringa\.html$ /pages/usage-guide/how-to-use-moringa.html
-RedirectMatch 301 ^/how-to-use-moringa/?$ /pages/usage-guide/how-to-use-moringa.html
+RedirectMatch 301 ^/how-to-use-moringa\.html$ /blog/how-to-add-moringa-to-diet.html
+RedirectMatch 301 ^/how-to-use-moringa/?$ /blog/how-to-add-moringa-to-diet.html
 # Removed - now handled by internal rewrite above
-RedirectMatch 301 ^/moringa-benefits\.html$ /pages/usage-guide/how-to-use-moringa.html
+RedirectMatch 301 ^/moringa-benefits\.html$ /blog/how-to-add-moringa-to-diet.html
 RedirectMatch 301 ^/products\.html$ /products/
 
 # Fix incorrect URL paths causing 301 redirects
