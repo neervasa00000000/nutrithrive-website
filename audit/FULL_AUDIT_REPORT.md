@@ -32,7 +32,7 @@ Full non-technical write-up: **`audit/06_executive_summary.md`**.
 
 ## 2. Site map & URL inventory
 
-- Map-discovered URLs, grouping, and sitemap discrepancies: **`audit/01_site_map.md`**
+- Final indexable URL list (55), grouped by section, plus blocklist and noindex omissions: **`audit/01_site_map.md`** (aligned with `sitemap.xml` / `node scripts/build-sitemap.js`).
 
 **Critical sitemap note:** `https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html` is in `sitemap.xml` but returned **HTTP 404** when scraped.
 
@@ -101,7 +101,7 @@ Ranked list with impact, effort, and timeline: **`audit/05_quick_wins.md`**
 
 | File | Purpose |
 |------|---------|
-| `audit/01_site_map.md` | URL discovery & grouping |
+| `audit/01_site_map.md` | Final site map & sitemap exclusions |
 | `audit/02_raw_pages.md` | 50-page scrape summary table |
 | `audit/03_technical_seo.md` | Technical SEO analysis |
 | `audit/04_content_ux.md` | Content & UX analysis |
