@@ -163,7 +163,7 @@
 
 ### 2. **Numbers** (Proven Performance)
 - "7-Day Moringa Starter Plan"
-- "30-Day Moringa Coffee Reset"
+- "30-Day Moringa Consistency Plan"
 - "10 Ways to Use Moringa"
 
 ### 3. **Comparison** (Commercial Intent)

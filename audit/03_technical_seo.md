@@ -197,7 +197,6 @@ These **hurt indexing** if wrong: Google may drop URLs or merge wrong signals.
 | /blog/rosabella-moringa-reviews… | …/moringa-powder-vs-capsules-which-one-actually-works-better-2026 | **Wrong article** |
 | /blog/moringa-chemist-warehouse… | …/blog/rosabella-vs-nutrithrive | Verify path exists 200 |
 | /blog/best-superfoods… | …/blog/australian-wellness-renaissance-2026 | Verify path |
-| /blog/30-day-moringa-coffee-reset… | …/blog/moringa-coffee | Verify path |
 | /blog/how-to-use-moringa-powder-daily… | …/how-to-add-moringa-to-diet.html | **Different URL** |
 | /blog/growing-moringa-australia… | …/growing-moringa-in-australia | **Non-/blog path** |
 | /blog/healthy-snack-melbourne… | …/melbourne-wellness-trend-functional-snack-shift-2026 | Verify |
