@@ -29,16 +29,7 @@
 
 ---
 
-### 3. **gut-health-meal-plan-australia-7-day-guide-2026.html**
-- **Current:** 71 chars (too long)
-- **New Title:** `7-Day Gut Health Meal Plan Australia 2026`
-- **Length:** 41 chars
-- **Keywords:** gut health meal plan, Australia
-- **Why It Works:** Number in title (proven CTR booster), specific timeframe
-
----
-
-### 4. **moringa-quality-test-shade-dried-vs-retail-australia-2026.html**
+### 3. **moringa-quality-test-shade-dried-vs-retail-australia-2026.html**
 - **Current:** 71 chars (too long)
 - **New Title:** `Moringa Quality Test: Shade-Dried vs Store-Bought`
 - **Length:** 49 chars
@@ -47,7 +38,7 @@
 
 ---
 
-### 5. **moringa-powder-complete-buyers-guide-australia-2026.html**
+### 4. **moringa-powder-complete-buyers-guide-australia-2026.html**
 - **Current:** 69 chars (too long)
 - **New Title:** `Moringa Powder Buyers Guide Australia 2026`
 - **Length:** 42 chars
@@ -56,16 +47,7 @@
 
 ---
 
-### 6. **30-day-moringa-experiment-replaced-supplements-journal-2026.html**
-- **Current:** 68 chars (too long)
-- **New Title:** `I Replaced Supplements With Moringa for 30 Days`
-- **Length:** 47 chars
-- **Keywords:** moringa, supplements, 30 day
-- **Why It Works:** First-person narrative = authenticity, specific timeframe
-
----
-
-### 7. **growing-moringa-australia-honest-frost-pots-2026.html**
+### 5. **growing-moringa-australia-honest-frost-pots-2026.html**
 - **Current:** 64 chars (too long)
 - **New Title:** `Growing Moringa in Australia: Frost & Pot Tips`
 - **Length:** 47 chars
@@ -74,7 +56,7 @@
 
 ---
 
-### 8. **how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html**
+### 6. **how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html**
 - **Current:** 64 chars (too long)
 - **New Title:** `How to Use Moringa Powder Daily (Tastes Better!)`
 - **Length:** 48 chars
@@ -83,7 +65,7 @@
 
 ---
 
-### 9. **moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html**
+### 7. **moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html**
 - **Current:** 64 chars (too long)
 - **New Title:** `Chemist Warehouse vs NutriThrive Moringa: Test`
 - **Length:** 47 chars
@@ -92,7 +74,7 @@
 
 ---
 
-### 10. **does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html**
+### 8. **does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html**
 - **Current:** 63 chars (too long)
 - **New Title:** `Does Moringa Have Caffeine? Energy Truth 2026`
 - **Length:** 45 chars
@@ -101,7 +83,7 @@
 
 ---
 
-### 11. **moringa-brands-comparison-australia-2026.html**
+### 9. **moringa-brands-comparison-australia-2026.html**
 - **Current:** 63 chars (too long)
 - **New Title:** `Best Moringa Brands Australia 2026 Compared`
 - **Length:** 44 chars
@@ -110,7 +92,7 @@
 
 ---
 
-### 12. **moringa-powder-vs-capsules-which-one-actually-works-better-2026.html**
+### 10. **moringa-powder-vs-capsules-which-one-actually-works-better-2026.html**
 - **Current:** 63 chars (too long)
 - **New Title:** `Moringa Powder vs Capsules: Which Works Better?`
 - **Length:** 47 chars
@@ -119,7 +101,7 @@
 
 ---
 
-### 13. **nutrithrive-dried-curry-leaves-tradition-health.html**
+### 11. **nutrithrive-dried-curry-leaves-tradition-health.html**
 - **Current:** 63 chars (too long)
 - **New Title:** `Dried Curry Leaves: Health Benefits & Uses 2026`
 - **Length:** 47 chars
@@ -128,7 +110,7 @@
 
 ---
 
-### 14. **healthy-snack-melbourne-why-everyone-switching-to-moringa-2026.html**
+### 12. **healthy-snack-melbourne-why-everyone-switching-to-moringa-2026.html**
 - **Current:** 62 chars (too long)
 - **New Title:** `Healthy Snacks Melbourne: Why Moringa Is Trending`
 - **Length:** 49 chars
@@ -137,21 +119,12 @@
 
 ---
 
-### 15. **how-to-add-moringa-to-diet.html**
+### 13. **how-to-add-moringa-to-diet.html**
 - **Current:** 62 chars (too long)
 - **New Title:** `How to Add Moringa to Your Diet: Easy Ways 2026`
 - **Length:** 47 chars
 - **Keywords:** how to add moringa to diet
 - **Why It Works:** Actionable, promises simplicity
-
----
-
-### 16. **dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html**
-- **Current:** 61 chars (too long)
-- **New Title:** `Dried Curry Leaves Australia: Complete Guide 2026`
-- **Length:** 49 chars
-- **Keywords:** dried curry leaves Australia
-- **Why It Works:** "Complete guide" = comprehensive resource signal
 
 ---
 
@@ -189,8 +162,8 @@
 - "Which Works Better: Powder or Capsules?"
 
 ### 2. **Numbers** (Proven Performance)
-- "7-Day Gut Health Meal Plan"
-- "30-Day Moringa Experiment"
+- "7-Day Moringa Starter Plan"
+- "30-Day Moringa Coffee Reset"
 - "10 Ways to Use Moringa"
 
 ### 3. **Comparison** (Commercial Intent)
@@ -205,8 +178,8 @@
 
 ### 5. **Benefit-Driven** (Emotional Appeal)
 - "Moringa for Energy (Without Caffeine)"
-- "Natural Heavy Metal Detox with Moringa"
-- "Calm Mind: How Moringa Reduces Stress"
+- "Moringa for Steady Afternoons (Melbourne)"
+- "Joint Comfort Notes for Victorians 60+"
 
 ### 6. **Authority Signals** (Trust Building)
 - "Complete Guide 2026"
@@ -273,20 +246,19 @@
 
 ### High Value (Lower Competition):
 1. growing-moringa-australia
-2. dried-curry-leaves-australia
-3. moringa-melbourne-complete-guide
-4. gut-health-meal-plan-australia
+2. moringa-melbourne-complete-guide
+3. where-to-buy-moringa-australia
 
 ### Brand Authority:
-1. 30-day-moringa-experiment
-2. moringa-quality-test
-3. rosabella-moringa-reviews
+1. moringa-quality-test
+2. rosabella-moringa-reviews
+3. honest-australians-guide-moringa-powder-2026
 
 ---
 
 ## NEXT STEPS
 
-1. **Update titles immediately** for the 16 flagged blogs
+1. **Update titles immediately** for the 13 flagged blogs
 2. **Monitor Search Console** for 2-4 weeks to measure impact
 3. **A/B test variations** on high-traffic pages
 4. **Update meta descriptions** to match new titles
