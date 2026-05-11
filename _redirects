@@ -23,9 +23,10 @@
 /blog/how-to-add-moringa-to-diet /blog/how-to-add-moringa-to-diet.html 301
 /blog/moringa-melbourne-complete-growers-report-2026 /blog/moringa-melbourne-complete-growers-report-2026.html 301
 
+# Pretty blog URL → canonical .html (live post; do not 404)
+/blog/best-protein-powder-australia /blog/best-protein-powder-australia.html 301
+
 # Removed off-topic posts (explicit 404 for legacy / pretty URLs)
-/blog/best-protein-powder-australia /blog/best-protein-powder-australia 404
-/blog/best-protein-powder-australia.html /blog/best-protein-powder-australia.html 404
 /blog/best-protein-powder-australia-2026-complete-guide /blog/best-protein-powder-australia-2026-complete-guide 404
 /blog/best-protein-powder-australia-2026-complete-guide.html /blog/best-protein-powder-australia-2026-complete-guide.html 404
 /blog/moringa-breastfeeding-mums-natural-lactation-support /blog/moringa-breastfeeding-mums-natural-lactation-support 404
