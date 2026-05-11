@@ -457,37 +457,34 @@ body.products-page .hero .hero-btn.alt {
 }
 
 .testimonial-carousel {
-    display: flex;
-    width: fit-content;
-    animation: scroll 35s linear infinite;
-    min-height: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 0;
     contain: layout;
-}
-
-@keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-.testimonials:hover .testimonial-carousel {
-    animation-play-state: paused;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .testimonial-card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 340px;
-    min-height: 340px;
-    max-height: 340px;
+    min-height: 280px;
+    height: auto;
+    max-height: none;
     background: var(--card);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     padding: 2.5rem 2rem;
     border: 1px solid rgba(236, 231, 219, 0.8);
     transition: all var(--transition);
-    width: 350px;
-    margin: 0 1rem;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     flex-shrink: 0;
     contain: layout style;
 }
