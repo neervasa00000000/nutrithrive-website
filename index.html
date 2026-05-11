@@ -781,9 +781,152 @@
 <link as="image" fetchpriority="high" href="/assets/images/general/GC.webp" rel="preload"/>
 <link as="script" href="/scripts/pages/homepage.js" rel="preload"/>
 <style>
+      #our-products {
+        padding: 3rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      #our-products > h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+        letter-spacing: -0.02em;
+      }
       #our-products .home-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; align-items: stretch; max-width: 1200px; margin: 0 auto; }
       /* Desktop/tablet: align card bottoms and Add to Cart buttons; center content */
-      #our-products .home-product-card { align-items: stretch; }
+      #our-products .home-product-card {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--card);
+        border: 1px solid rgba(236, 231, 219, 0.9);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      #our-products .home-product-card__media {
+        padding: 1rem;
+        min-height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, rgba(255,253,250,0.95) 0%, rgba(248,245,236,0.35) 100%);
+      }
+      #our-products .home-product-card__media img {
+        max-height: 160px;
+        width: auto;
+        object-fit: contain;
+      }
+      #our-products .home-product-card__body {
+        padding: 0 1rem 1rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      #our-products .home-product-card__title {
+        margin: 0 0 0.5rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      #our-products .home-product-card__prices {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.25rem;
+        justify-content: center;
+      }
+      #our-products .home-product-card__price--was {
+        text-decoration: line-through;
+        color: var(--muted);
+        font-size: 0.9em;
+        opacity: 0.9;
+      }
+      #our-products .home-product-card__price--now {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 1.2em;
+      }
+      #our-products .home-product-card__tag {
+        margin: 0 0 1rem;
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      #our-products .home-products-footnote {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.55;
+      }
+      .hero-desc--local {
+        margin-top: 0.6rem;
+        font-size: 1.02rem;
+      }
+      .hero-desc--local a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .hero-desc--local a:hover {
+        color: var(--accent);
+      }
+      .home-superfoods {
+        padding: 3rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .home-superfoods__inner {
+        text-align: center;
+        background: var(--card);
+        border: 1px solid rgba(236, 231, 219, 0.9);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2.5rem 1.75rem;
+      }
+      .home-superfoods h2 {
+        color: var(--primary);
+        margin: 0 0 1.75rem 0;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .home-superfoods__prose {
+        font-size: 1.125rem;
+        line-height: 1.85;
+        color: var(--text);
+        margin: 0 auto;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        max-width: 900px;
+        text-align: left;
+      }
+      .home-superfoods__prose + .home-superfoods__prose {
+        margin-top: 1.5rem;
+      }
+      .home-superfoods__prose strong {
+        color: var(--primary);
+        font-weight: 700;
+      }
+      .home-superfoods__prose a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      .home-superfoods__prose a:hover {
+        color: var(--accent);
+      }
       #our-products .home-product-card > div:first-of-type { display: flex; align-items: center; justify-content: center; }
       #our-products .home-product-card > div:last-of-type {
         display: flex;
@@ -900,7 +1043,7 @@ Plant-based wellness products you can trust.
 <span class="feature">✓ Small batches = fresh stock</span>
 </div>
 
-<p class="hero-desc" style="margin-top: 0.6rem; font-size: 1.02rem;">Local guides: <a href="/melbourne" style="color: var(--primary); font-weight: 600; text-decoration: none;">Moringa in Melbourne</a> · <a href="/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">维州与墨尔本 moringa guide (中文)</a>.</p>
+<p class="hero-desc hero-desc--local">Local guides: <a href="/melbourne">Moringa in Melbourne</a>.</p>
 
 <div class="hero-ctas">
 <a href="/products/moringa-powder/" class="btn-primary">Shop Moringa Powder - $11 →</a>
@@ -976,137 +1119,133 @@ Plant-based wellness products you can trust.
 </section>
 
 <!-- Our products - Product cards -->
-<section id="our-products" style="padding: 3rem 1.5rem; max-width: 1200px; margin: 0 auto;">
-<h2 style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 0 0 1.5rem 0; text-align: center;">Our products</h2>
+<section id="our-products">
+<h2>Our products</h2>
 <div class="home-product-grid">
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="NutriThrive 3+1 moringa powder bundle (400g) — Melbourne, Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/new3+1.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="NutriThrive 3+1 moringa powder bundle (400g) — Melbourne, Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/new3+1.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">3 + 1 = 400g Moringa</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$56.00</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$35.00</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">3 + 1 = 400g Moringa</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$56.00</span>
+<span class="home-product-card__price home-product-card__price--now">$35.00</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">4 PACK • BEST VALUE</p>
+<p class="home-product-card__tag">4 PACK • BEST VALUE</p>
 <button onclick="addProductToCart('moringa-400g', '3 + 1 = 400g Moringa', 35.00, '/assets/images/homepage/product-showcase/thumbs/new3+1.webp')" type="button">Add to Cart</button>
 </div>
 </article>
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="NutriThrive moringa powder and soap bundle — 195 g net (100 g + 95 g), Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/moringasoap_combo.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="NutriThrive moringa powder and soap bundle — 195 g net (100 g + 95 g), Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/moringasoap_combo.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">Moringa 100g + Soap 95g</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$23.39</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$17.00</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">Moringa 100g + Soap 95g</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$23.39</span>
+<span class="home-product-card__price home-product-card__price--now">$17.00</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">195 G NET • MORINGA + SOAP</p>
+<p class="home-product-card__tag">195 G NET • MORINGA + SOAP</p>
 <button onclick="addProductToCart('moringa-soap-combo', 'Moringa 100g + Soap 95g', 17.00, '/assets/images/homepage/product-showcase/moringasoap_combo.webp')" type="button">Add to Cart</button>
 </div>
 </article>
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="NutriThrive combo pack — moringa powder with dried curry leaves, Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/combo.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="NutriThrive combo pack — moringa powder with dried curry leaves, Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/combo.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">Premium Combo Pack</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$22.49</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$17.00</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">Premium Combo Pack</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$22.49</span>
+<span class="home-product-card__price home-product-card__price--now">$17.00</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">VARIOUS PACK SIZES • BEST VALUE</p>
+<p class="home-product-card__tag">VARIOUS PACK SIZES • BEST VALUE</p>
 <button onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '/assets/images/homepage/product-showcase/combo.webp')" type="button">Add to Cart</button>
 </div>
 </article>
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">Moringa Powder</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$14.00</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$11.00</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">Moringa Powder</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$14.00</span>
+<span class="home-product-card__price home-product-card__price--now">$11.00</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">100G PACK • 30 SERVINGS</p>
+<p class="home-product-card__tag">100G PACK • 30 SERVINGS</p>
 <button onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, '/assets/images/homepage/product-showcase/Moringa.webp')" type="button">Add to Cart</button>
 </div>
 </article>
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="Moringa Soap by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/moringa_soap.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="Moringa Soap by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/moringa_soap.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">Moringa Soap</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$9.49</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$7.00</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">Moringa Soap</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$9.49</span>
+<span class="home-product-card__price home-product-card__price--now">$7.00</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">95G PACK • NATURAL SOAP</p>
+<p class="home-product-card__tag">95G PACK • NATURAL SOAP</p>
 <button onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '/assets/images/homepage/product-showcase/moringa_soap.webp')" type="button">Add to Cart</button>
 </div>
 </article>
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="Darjeeling Black Tea by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/BlackTea.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="Darjeeling Black Tea by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/BlackTea.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">Darjeeling Black Tea</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$10.00</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$7.50</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">Darjeeling Black Tea</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$10.00</span>
+<span class="home-product-card__price home-product-card__price--now">$7.50</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">100G PACK • PREMIUM GRADE</p>
+<p class="home-product-card__tag">100G PACK • PREMIUM GRADE</p>
 <button onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '/assets/images/homepage/product-showcase/BlackTea.webp')" type="button">Add to Cart</button>
 </div>
 </article>
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="Dried Curry Leaves by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/Curry.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="Dried Curry Leaves by NutriThrive Melbourne Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/Curry.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">Dried Curry Leaves</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$8.49</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$7.00</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">Dried Curry Leaves</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$8.49</span>
+<span class="home-product-card__price home-product-card__price--now">$7.00</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">30G PACK • HIGH POTENCY</p>
+<p class="home-product-card__tag">30G PACK • HIGH POTENCY</p>
 <button onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '/assets/images/homepage/product-showcase/Curry.webp')" type="button">Add to Cart</button>
 </div>
 </article>
-<article class="home-product-card" style="background: transparent; display: flex; flex-direction: column;">
-<div style="padding: 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
-<img alt="NutriThrive 200g moringa powder pack — Melbourne, Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" style="max-height: 160px; width: auto; object-fit: contain;" width="160"/>
+<article class="home-product-card">
+<div class="home-product-card__media">
+<img alt="NutriThrive 200g moringa powder pack — Melbourne, Australia" height="240" loading="lazy" src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" width="160"/>
 </div>
-<div style="padding: 0 0 1rem; flex: 1; display: flex; flex-direction: column;">
-<h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--primary);">200g Moringa</h3>
-<div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
-<span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$28.00</span>
-<span style="font-weight: 700; color: #2d5a3d; font-size: 1.2em;">$21.50</span>
+<div class="home-product-card__body">
+<h3 class="home-product-card__title">200g Moringa</h3>
+<div class="home-product-card__prices">
+<span class="home-product-card__price home-product-card__price--was">$28.00</span>
+<span class="home-product-card__price home-product-card__price--now">$21.50</span>
 </div>
-<p style="margin: 0 0 1rem; font-size: 0.75rem; color: #5A6D5D; text-transform: uppercase; letter-spacing: 0.05em;">200G PACK • 60 SERVINGS</p>
+<p class="home-product-card__tag">200G PACK • 60 SERVINGS</p>
 <button onclick="addProductToCart('moringa-200g', '200g Moringa', 21.50, '/assets/images/homepage/product-showcase/Moringa.webp')" type="button">Add to Cart</button>
 </div>
 </article>
 </div>
-<p style="text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 1.5rem;">All products are shipped from Melbourne across Australia with tracked delivery. We also ship worldwide—wherever you are, we deliver.</p>
+<p class="home-products-footnote">All products are shipped from Melbourne across Australia with tracked delivery. We also ship worldwide—wherever you are, we deliver.</p>
 </section>
 <!-- SEO Power Block -->
-<section style="padding: 4rem 1.5rem; max-width: 1200px; margin: 0 auto;">
-<div style="text-align: center; padding: 0;">
-<!-- Premium Natural Superfoods Collection Heading -->
-<h2 style="color: var(--primary); margin: 0 0 2rem 0; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;">
-                    Premium Natural Superfoods<br/>Collection
-                </h2>
-<!-- Flowing Description with Integrated Benefits -->
-<p style="font-size: 1.125rem; line-height: 1.9; color: #1f2937; margin: 0 auto; font-weight: 400; letter-spacing: 0.01em; max-width: 900px; text-align: left;">
-                    Discover our <strong style="color: var(--primary);">100% natural superfoods</strong> collection designed to boost your natural energy, eliminate bloating, and support your immune system. Our <a href="/products/moringa-powder/" onmouseout="this.style.color='var(--primary)'" onmouseover="this.style.color='var(--accent)'" style="color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s ease;">Moringa Powder</a>, <a href="/products/curry-leaves/" onmouseout="this.style.color='var(--primary)'" onmouseover="this.style.color='var(--accent)'" style="color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s ease;">Dried Curry Leaves</a>, <a href="/products/black-tea/" onmouseout="this.style.color='var(--primary)'" onmouseover="this.style.color='var(--accent)'" style="color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s ease;">Premium Black Tea</a>, and <a href="/products/combo-pack/" onmouseout="this.style.color='var(--primary)'" onmouseover="this.style.color='var(--accent)'" style="color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s ease;">Premium Combo Pack</a> are lab-tested for purity and potency, sourced from trusted suppliers, and delivered fresh from our NutriThrive Melbourne warehouse. Based in Truganina, Melbourne, Victoria, we proudly serve customers across Melbourne, Sydney, and throughout Australia. Fast shipping to all Australian states and territories.
+<section class="home-superfoods">
+<div class="home-superfoods__inner">
+<h2>Premium Natural Superfoods<br/>Collection</h2>
+<p class="home-superfoods__prose">
+                    Discover our <strong>100% natural superfoods</strong> collection designed to boost your natural energy, eliminate bloating, and support your immune system. Our <a href="/products/moringa-powder/">Moringa Powder</a>, <a href="/products/curry-leaves/">Dried Curry Leaves</a>, <a href="/products/black-tea/">Premium Black Tea</a>, and <a href="/products/combo-pack/">Premium Combo Pack</a> are lab-tested for purity and potency, sourced from trusted suppliers, and delivered fresh from our NutriThrive Melbourne warehouse. Based in Truganina, Melbourne, Victoria, we proudly serve customers across Melbourne, Sydney, and throughout Australia. Fast shipping to all Australian states and territories.
                 </p>
-<p style="font-size: 1.125rem; line-height: 1.9; color: #1f2937; margin: 1.5rem auto 0 auto; font-weight: 400; letter-spacing: 0.01em; max-width: 900px; text-align: left;">
-                    All our products are <strong style="color: var(--primary);">vegan</strong>, <strong style="color: var(--primary);">gluten-free</strong>, contain <strong style="color: var(--primary);">no additives</strong>, and have <strong style="color: var(--primary);">no preservatives</strong>. Our nutritionally rich superfoods are packed with antioxidants to increase digestion, boost your metabolism, support healthy joints, and promote glowing skin and hair. Experience the power of nature with NutriThrive's premium collection, trusted by thousands of Australians in Melbourne, Sydney, and across the country.
+<p class="home-superfoods__prose">
+                    All our products are <strong>vegan</strong>, <strong>gluten-free</strong>, contain <strong>no additives</strong>, and have <strong>no preservatives</strong>. Our nutritionally rich superfoods are packed with antioxidants to increase digestion, boost your metabolism, support healthy joints, and promote glowing skin and hair. Experience the power of nature with NutriThrive's premium collection, trusted by thousands of Australians in Melbourne, Sydney, and across the country.
                 </p>
 </div>
 </section>
