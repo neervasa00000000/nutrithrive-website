@@ -3,7 +3,7 @@
 **Generated:** 11 May 2026 (Australia)  
 **Source of truth:** [`sitemap.xml`](../sitemap.xml) and [`audit/sitemap-urls.txt`](sitemap-urls.txt), produced by running `node scripts/build-sitemap.js` from the repository root. That script walks all HTML files, applies the [blocklist and noindex rules](../scripts/build-sitemap.js), and writes canonical `<loc>` URLs.
 
-**Indexable URL count:** **55**
+**Indexable URL count:** **54**
 
 ---
 
@@ -46,13 +46,12 @@
 
 ## 4. Blog
 
-**39 URLs:** `/blog/` index plus **38** article pages.
+**38 URLs:** `/blog/` index plus **37** article pages.
 
 | Public URL |
 |------------|
 | https://nutrithrive.com.au/blog/ |
 | https://nutrithrive.com.au/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026.html |
-| https://nutrithrive.com.au/blog/30-day-moringa-coffee-reset-australia-guide-2026.html |
 | https://nutrithrive.com.au/blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026.html |
 | https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html |
 | https://nutrithrive.com.au/blog/best-protein-powder-australia.html |
