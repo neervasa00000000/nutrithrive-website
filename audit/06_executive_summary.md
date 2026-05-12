@@ -1,33 +1,34 @@
 # Phase 6 — Executive summary (for the business owner)
 
-**Website audited:** https://nutrithrive.com.au (NutriThrive Australia)  
-**Note:** Your brief listed `https://YOURWEBSITE.com`; this report applies to the live NutriThrive site that matches your codebase and sitemap.
+**Website audited:** **https://nutrithrive.com.au** (NutriThrive — moringa and superfoods, Melbourne / Truganina, ships Australia-wide).  
+**How we audited it:** Automated mapping plus detailed reads of **50** important pages (home, shop, products, key blogs, contact, legal, tools).
 
 ---
 
-## 1. Overall site health score: **62 / 100**
+## 1. Overall site health score: **66 / 100**
 
-**Why not higher?**  
-The writing and product story on the site are **strong**—especially the Melbourne angle, lab-tested batches, and long educational articles. But several **behind-the-scenes technical settings** (mainly “canonical” tags that point pages at the wrong address, and one **broken link still listed in your sitemap**) tell Google not to trust or show some of your best pages the way you intend.
+**Why this score:**  
+The writing and product story are **strong**, and many blog articles are **long, useful, and clearly aimed at Australian buyers**. That is a real competitive advantage.
 
-**Why not lower?**  
-You already have **good content depth**, clear shipping and FAQ pages, product detail with reviews blocks, and a coherent brand. Fixing the technical layer is mostly **editing configuration and templates**, not rewriting the whole site.
+The score is held down by **technical housekeeping**: several pages tell Google “the official version of this page is actually the homepage or the moringa product page,” even when the content is **not** the same. A few pages show **broken or placeholder images**, and the homepage uses **too many top-level headings**, which makes the site look less polished to both people and search engines.
+
+Think of it as a **great shop window with tangled signage** — customers can still buy, but you are leaving foot traffic on the table.
 
 ---
 
 ## 2. Top 3 strengths
 
-1. **Clear niche and story** — Shade-dried moringa from Melbourne, small batches, lab transparency. That is easy for a shopper to remember and repeat to a friend.  
-2. **Serious content library** — Long guides (Melbourne safety, where to buy, brand comparisons, spirulina vs matcha) that answer real questions Australians type into Google.  
-3. **Practical trust pages** — FAQ, shipping and returns, contact with a phone number, and product pages structured around objections (taste, safety, shipping).
+1. **Clear Australian positioning** — Melbourne dispatch, lab-tested batches, and plain-language comparisons (including Chemist Warehouse / Rosabella angles) match how people actually shop here.  
+2. **Serious content depth** — many guides are thousands of words with tables, FAQs, and internal links to products; this builds trust for “should I buy moringa?” searches.  
+3. **Product pages answer objections** — FAQs, reviews, shipping hints, and cross-links to educational content are already in place on flagship SKUs.
 
 ---
 
 ## 3. Top 3 critical problems (fix first)
 
-1. **Wrong “canonical” tags on important pages** — In plain English: some pages quietly tell Google, “The real version of this page is the home page” or “is the product page,” even when the reader is reading a **blog article** or the **About** page. That can **hide** those URLs from search or send ranking credit to the wrong place.  
-2. **Product URLs don’t match their canonical addresses** — Example: the curry-leaves page lives at one web address but claims its official address is a **different slug**. That confuses shoppers who copy links and splits your marketing data.  
-3. **Sitemap promises a page that doesn’t exist** — The protein energy bars article address returns a **“page not found”** error but still appears in your sitemap file. That looks sloppy to Google and wastes effort.
+1. **Wrong “official URL” settings (canonical tags)** on important pages such as **About**, **Melbourne landing**, **Newsletter**, and several **blog articles** — many point to the **homepage** or the **moringa product page** instead of themselves. That can hide pages from Google or send rankings to the wrong place.  
+2. **A broken blog link** in your site map (`30-day moringa experiment` article) returns **“page not found”** — customers hit a dead end, and Google wastes time on it.  
+3. **Trust-breaking contact image** — the contact page tries to load a map picture from a **fake example website** (`example.com`). It looks like the site is unfinished.
 
 ---
 
@@ -35,29 +36,24 @@ You already have **good content depth**, clear shipping and FAQ pages, product d
 
 | Week | What to do |
 |------|------------|
-| **Week 1** | Fix canonical tags for **Homepage, About, Melbourne, Shop directory, Soap**, and any blog post pointing at Home or Shop by mistake. Make each page “claim itself” as the official URL. |
-| **Week 1** | Fix product slug mismatches (curry leaves, black tea, combo) so the **link people see** matches the **official canonical** path, with clean redirects if you rename folders. |
-| **Week 1** | Remove or publish the **protein energy bars** page so the sitemap never points to a dead link. |
-| **Week 2** | Fix the **Rosabella** article so the browser tab title, social preview title, and headline all describe the **same** article; fix its canonical to that article’s own link. |
-| **Week 2** | Rewrite the first headline on the **moringa brands comparison** guide so it reads like a real article title, not “What you’ll learn.” |
-| **Week 2** | Double-check the **FAQ** page in “View Source” so title and description are definitely present for Google. |
-| **Week 3** | Pass through the **top 20 money pages** (home, Melbourne, each product, top 10 blog posts) and shorten meta descriptions to **two crisp sentences** with a reason to click. |
-| **Week 3** | Add a visible **“Updated on [date]”** line and author credit on articles—small change, helps trust. |
-| **Week 4** | Add simple **breadcrumb navigation** (“Home → Blog → Article”) on posts and product pages for clarity. |
-| **Week 4** | Run **Google Search Console** “Page indexing” and fix any new canonical or 404 issues flagged after the above changes. |
+| **1** | Fix canonical tags on **About**, **Melbourne**, **Newsletter**, **Moringa soap**, and the worst-offending **blog** URLs; pick **either** `www` **or** non-`www` and stick to it sitewide. |
+| **1** | Replace the **contact map** image with a real map or embed. |
+| **1** | Fix the **404 blog** (publish, redirect, or remove every link to it). |
+| **2** | Clean up **multiple main headings** on the homepage and on a handful of blog posts so each page has **one clear title line**. |
+| **2** | Expand the **main shop page** (`/products`) with a short buyer’s guide and links to shipping and FAQs — still short text, big payoff. |
+| **3** | Add missing **structured data** (simple “article” and “about business” tags) where competitors already have them. |
+| **4** | Tighten **two confusing articles** (Rosabella “reviews” vs capsules content; “what you’ll learn” headline on the big brand comparison) so the **page title matches what the reader sees first**. |
 
 ---
 
 ## 5. Tools to monitor ongoing health
 
-- **Google Search Console** — See which pages Google indexes, what queries show your site, and whether canonicals or mobile issues appear.  
-- **Bing Webmaster Tools** — Secondary search engine; quick extra coverage.  
-- **Analytics (GA4 or privacy-friendly alternative)** — Track which articles actually send add-to-cart and purchases, not just traffic.  
-- **Scheduled technical crawl** (Screaming Frog, Sitebulb, or Ahrefs/Semrush site audit monthly) — Catches **404s**, **redirect chains**, and **missing titles** after each deploy.  
-- **Rich Results Test** (Google) — Paste a few product and FAQ URLs after schema changes to confirm structured data is valid.
+- **Google Search Console** (free) — watch **indexed pages**, **canonical selections**, and **404s** after fixes.  
+- **Bing Webmaster Tools** (free) — secondary index coverage.  
+- **PageSpeed Insights** or **Cloudflare / host Web Analytics** — watch **mobile speed** on long articles and product pages.  
+- **Screaming Frog** (paid, or free up to 500 URLs) — weekly **crawl** to catch broken links, missing titles, and redirect chains.  
+- **Ahrefs / Semrush** (paid) — optional: track **ranking keywords** for pillar guides and product pages.
 
 ---
 
-## Closing (plain language)
-
-You are **not** starting from zero. The site already reads like a serious Australian wellness brand with useful guides. The main gap is **housekeeping in the HTML head**: canonical tags and a few mismatched titles. Fixing those is usually **faster than writing one new long article**, but the payoff in **stable Google visibility** can be much larger.
+You do **not** need a rebuild. This is mostly **configuration and copy tidy-ups** on pages that already sell the story well.

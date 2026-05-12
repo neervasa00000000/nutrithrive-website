@@ -1,112 +1,93 @@
-# NutriThrive — Full SEO & UX audit report
+# NutriThrive — Full website audit report
 
-**Live site audited:** https://nutrithrive.com.au  
-**Audit date:** 2026-05-11  
-**Methods:** Firecrawl `firecrawl_map` + **50×** `firecrawl_scrape` (structured JSON extraction), cross-checked with repository `sitemap.xml`.
+**Domain:** https://nutrithrive.com.au  
+**Audit date:** 12 May 2026  
+**Prepared with:** Firecrawl MCP (`firecrawl_map`, `firecrawl_scrape` on 50 priority URLs + full site map discovery).
 
-**Note on brief:** Instructions referenced `https://YOURWEBSITE.com`; this deliverable applies to **NutriThrive** as deployed and mapped above.
+> **Note on the brief:** The instructions referenced `https://YOURWEBSITE.com`. This repository and live `rel=canonical` tags point to **nutrithrive.com.au**, so the audit was executed against that production site.
 
 ---
 
 ## Table of contents
 
 1. [Executive summary](#1-executive-summary)  
-2. [Site map & URL inventory](#2-site-map--url-inventory)  
-3. [Raw scrape data (50 pages)](#3-raw-scrape-data-50-pages)  
+2. [Site map & inventory](#2-site-map--inventory)  
+3. [Raw scrape methodology & 50-page dataset](#3-raw-scrape-methodology--50-page-dataset)  
 4. [Technical SEO findings](#4-technical-seo-findings)  
 5. [Content & UX findings](#5-content--ux-findings)  
-6. [Quick wins (top 15)](#6-quick-wins-top-15)  
-7. [Appendix: evidence highlights](#7-appendix-evidence-highlights)
+6. [Prioritised quick wins](#6-prioritised-quick-wins)  
+7. [Deliverable files in `/audit`](#7-deliverable-files-in-audit)
 
 ---
 
 ## 1. Executive summary
 
-**Overall health score: 62 / 100** (see `audit/06_executive_summary.md` for reasoning in plain language).
+See **`audit/06_executive_summary.md`** for the non-technical version.
 
-**In one paragraph:** The brand story, Melbourne logistics, and long-form guides are competitive advantages. Technical SEO is held back by **widespread incorrect canonical URLs** (About, Melbourne, shop index, soap, and multiple blog posts canonicalized to the homepage, product page, or wrong article), **product URL vs canonical slug mismatches**, and a **sitemap URL that returns 404**. Resolving canonicals and sitemap integrity is the highest-leverage work before investing in new content.
-
-Full non-technical write-up: **`audit/06_executive_summary.md`**.
+**Score: 66 / 100** — Strong Australian positioning and deep editorial content; held back by canonical/host issues, a 404 article still advertised in discovery, placeholder assets on Contact, and heading hygiene on the homepage and select posts.
 
 ---
 
-## 2. Site map & URL inventory
+## 2. Site map & inventory
 
-- Final indexable URL list (54), grouped by section, plus blocklist and noindex omissions: **`audit/01_site_map.md`** (aligned with `sitemap.xml` / `node scripts/build-sitemap.js`).
+See **`audit/01_site_map.md`** for:
 
-**Critical sitemap note:** `https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html` is in `sitemap.xml` but returned **HTTP 404** when scraped.
+- Full URL list grouped by **homepage**, **blog**, **products**, **landings**, **about/contact/support**, **legal**, **labs/tools**, and **sitemap.xml**.  
+- **~66** URLs from map (including path variants and the XML sitemap).  
+- Notes on **`.html` vs extensionless** duplicates and the **404** journal URL.
 
 ---
 
-## 3. Raw scrape data (50 pages)
+## 3. Raw scrape methodology & 50-page dataset
 
-Per-URL table (title, meta, H1, word count, canonical, schema): **`audit/02_raw_pages.md`**
+See **`audit/02_raw_pages.md`** for:
+
+- The **50 scraped URLs** in one summary table (title, meta length notes, H1 count, canonical, schema types, approximate word count).  
+- Documented **404** on `…/blog/30-day-moringa-experiment-replaced-supplements-journal-2026.html` and the **replacement** scrape used to keep the sample at 50 healthy pages.  
+- **Redirect:** `/pages/usage-guide/how-to-use-moringa` → `/blog/how-to-add-moringa-to-diet.html`.  
+- Internal link and image QA flags.
 
 ---
 
 ## 4. Technical SEO findings
 
-Detailed checklist (titles, metas, headings, images, internal links, canonical matrix, schema): **`audit/03_technical_seo.md`**
+See **`audit/03_technical_seo.md`** for full detail. Highest severity themes:
 
-**Highest-severity pattern (abbreviated):**
-
-| Issue | Example |
-|-------|---------|
-| Canonical → homepage | `/about`, `/melbourne`, `/products`, `/products/moringa-soap/`, `…/nutrithrive-delivers-across-victoria…` |
-| Canonical → blog index | `…/moringa-vs-coffee-melbourne-energy-hack.html` |
-| Canonical → product | Multiple education posts (`is-moringa-legit`, `does-moringa-have-caffeine`, `science-shade-drying`, `batch-codes`, `seniors-joint`, etc.) |
-| Canonical → different article | `rosabella…`, `smart-moringa…`, `moringa-powder-guide…`, `how-to-use-moringa-powder-daily…` |
-| Product slug ≠ canonical slug | Curry leaves, black tea, combo pack |
+- **Canonical chaos** — About, Melbourne, Newsletter, multiple blogs, and some PDPs point canonicals at the **homepage** or **moringa PDP** instead of self.  
+- **`www` vs apex** — `privacy-policy` canonical uses `www.nutrithrive.com.au`.  
+- **Multiple H1** on homepage and several posts.  
+- **Schema gaps** on About, shop hub, some articles; non-standard `Comparison` type on one post.  
+- **Thin** `/products` hub content.  
+- **404** still listed in map for a journal post.
 
 ---
 
 ## 5. Content & UX findings
 
-Homepage, blog, products, Melbourne, contact, FAQ, newsletter, labs: **`audit/04_content_ux.md`**
+See **`audit/04_content_ux.md`**. Highlights:
 
-**Themes:** Strong differentiation and depth; fix **first-screen clarity** on a few pillars (H1 on brands comparison; Rosabella title stack); reduce **user distrust** from URL/canonical inconsistency when sharing links.
-
----
-
-## 6. Quick wins (top 15)
-
-Ranked list with impact, effort, and timeline: **`audit/05_quick_wins.md`**
+- **Value proposition** and **local proof** (Melbourne / Truganina) are compelling.  
+- **Trust risks:** `example.com` map image on Contact; possible broken FAQ images.  
+- **Intent mismatch:** Rosabella “reviews” URL vs capsules-first content; generic blog index meta.
 
 ---
 
-## 7. Appendix: evidence highlights
+## 6. Prioritised quick wins
 
-### Exact problematic canonicals (samples)
-
-- **About:** `https://nutrithrive.com.au/about` → canonical `https://nutrithrive.com.au/`  
-- **Melbourne:** canonical `https://nutrithrive.com.au/`  
-- **Moringa vs coffee article:** canonical `https://nutrithrive.com.au/blog/`  
-- **Curry leaves product:** live under `/products/curry-leaves/` → canonical `https://nutrithrive.com.au/products/dried-curry-leaves`
-
-### Exact title / social mismatch
-
-- **Rosabella URL** `…/rosabella-moringa-reviews-legit-or-overhyped-2026.html`: metadata `title` “Rosabella Moringa Review…” vs `og:title` “Moringa Capsules vs Powder…” (scraped 2026-05-11).
-
-### Exact 404
-
-- `https://nutrithrive.com.au/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html` → `Page not found` (status 404).
-
-### Positive control (self-canonical + strong content)
-
-- e.g. `https://nutrithrive.com.au/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html` — canonical matches URL; Article + BlogPosting schema reported.
+See **`audit/05_quick_wins.md`** for **15** ranked fixes with **impact / effort / priority** and exact URLs.
 
 ---
 
-## Deliverable file index
+## 7. Deliverable files in `/audit`
 
 | File | Purpose |
 |------|---------|
-| `audit/01_site_map.md` | Final site map & sitemap exclusions |
-| `audit/02_raw_pages.md` | 50-page scrape summary table |
-| `audit/03_technical_seo.md` | Technical SEO analysis |
-| `audit/04_content_ux.md` | Content & UX analysis |
-| `audit/05_quick_wins.md` | Prioritized fix list |
-| `audit/06_executive_summary.md` | Owner-friendly summary |
+| `audit/01_site_map.md` | URL inventory from `firecrawl_map` |
+| `audit/02_raw_pages.md` | 50-page scrape summary table + notes |
+| `audit/03_technical_seo.md` | Title, meta, headings, images, links, URLs, schema |
+| `audit/04_content_ux.md` | Homepage, blog, PDP, landings, contact, about |
+| `audit/05_quick_wins.md` | Top 15 fixes ranked |
+| `audit/06_executive_summary.md` | Owner-friendly summary + 30-day plan + tools |
 | `audit/FULL_AUDIT_REPORT.md` | This master document |
 
 ---
