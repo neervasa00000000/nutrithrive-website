@@ -83,6 +83,28 @@
     <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/about">
     <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/about">
 
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nutrithrive.com.au"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About NutriThrive",
+          "item": "https://nutrithrive.com.au/about"
+        }
+      ]
+    }
+</script>
+
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
