@@ -186,6 +186,34 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
     
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nutrithrive.com.au/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": "https://nutrithrive.com.au/products/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Darjeeling Black Tea",
+          "item": "https://nutrithrive.com.au/products/black-tea/"
+        }
+      ]
+    }
+    </script>
+
     <!-- Product Schema -->
     <script type="application/ld+json">
     {
@@ -369,6 +397,15 @@
 </head>
 <body class="product-page-new">
     <header>
+        <div class="urgency-banner">
+            <div class="urgency-content">
+                ⏰ <strong>Order before 2pm for same-day Melbourne dispatch</strong>
+                <span class="separator">•</span>
+                🚚 Free shipping over $80
+                <span class="separator">•</span>
+                📦 Small batches—when we sell out, next batch takes 2–3 weeks
+            </div>
+        </div>
         <div class="navbar">
             <a href="/" class="logo">
                 <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;" loading="lazy">
@@ -430,6 +467,17 @@
                             </select>
                         </div>
                         
+                        <!-- Why Buy Today -->
+                        <div class="why-buy-today">
+                            <h3>Why Buy Today</h3>
+                            <ul>
+                                <li><strong>⏰ Same-Day Dispatch:</strong> Order before 2pm and it ships today from Melbourne</li>
+                                <li><strong>📦 Limited Batch:</strong> Small-batch production—when this batch sells out, next takes 2–3 weeks</li>
+                                <li><strong>🍵 Freshness Guarantee:</strong> Packed this month for peak flavour and aroma</li>
+                                <li><strong>🇦🇺 Shipped from Melbourne:</strong> Fast delivery across Australia, no overseas delays</li>
+                            </ul>
+                        </div>
+
                         <!-- Add to Cart Button -->
                         <button onclick="addBlackTeaToCart()" class="add-to-cart-btn">Add to Cart</button>
                         

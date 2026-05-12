@@ -996,3 +996,60 @@
         font-size: 0.875rem;
     }
 }
+
+/* === Urgency Banner === */
+.urgency-banner {
+    background: linear-gradient(135deg, #0f6b4d 0%, #0a4d36 100%);
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.urgency-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+}
+.urgency-content strong { font-weight: 700; }
+.urgency-content .separator { opacity: 0.5; margin: 0 4px; }
+@media (max-width: 768px) {
+    .urgency-content { flex-direction: column; gap: 3px; font-size: 12px; }
+    .urgency-content .separator { display: none; }
+}
+
+/* === Why Buy Today === */
+.why-buy-today {
+    margin: 1.25rem 0;
+    padding: 1.1rem 1.25rem;
+    background: #f0f7f4;
+    border-radius: 8px;
+    border-left: 3px solid #175c36;
+}
+.why-buy-today h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #175c36;
+    margin: 0 0 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+.why-buy-today ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+.why-buy-today ul li {
+    font-size: 0.88rem;
+    color: #374151;
+    line-height: 1.5;
+}
+.why-buy-today ul li strong { color: #175c36; }
