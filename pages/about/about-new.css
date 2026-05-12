@@ -410,6 +410,22 @@
     padding: 3.4rem 0 0;
 }
 
+.about-cta-v2 > h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text, #1a2e22);
+    margin: 0 0 0.85rem 0;
+}
+
+.about-cta-v2 > p:first-of-type {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--muted, #5A6D5D);
+    margin: 0 0 1.25rem 0;
+    max-width: 40rem;
+}
+
 .about-cta-inner {
     text-align: center;
     background: transparent;
@@ -521,6 +537,10 @@
         font-size: 2.3rem;
     }
 
+    .about-hero-title--seo {
+        font-size: clamp(1.55rem, 5vw, 2.1rem);
+    }
+
     .about-hero-layout {
         padding: 0;
     }
@@ -540,6 +560,10 @@
     .about-guides-links {
         columns: 1;
     }
+
+    .about-price-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
@@ -549,6 +573,10 @@
 
     .about-hero-title {
         font-size: 2rem;
+    }
+
+    .about-hero-title--seo {
+        font-size: 1.55rem;
     }
 
     .about-hero-layout {
@@ -567,5 +595,290 @@
 
     .about-cta-inner {
         padding: 2.3rem 1.6rem 2.5rem;
+    }
+
+    .about-trust-badges {
+        grid-template-columns: 1fr;
+    }
+
+    .about-price-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-learn-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================
+   SEO additions: breadcrumbs, trust, lab, price compare, learn grid
+   ============================ */
+
+.about-breadcrumbs {
+    font-size: 0.9rem;
+    color: var(--muted, #5A6D5D);
+    margin: 0 0 1.5rem 0;
+}
+
+.about-breadcrumbs a {
+    color: var(--primary, #175c36);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.about-breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.about-breadcrumbs-sep {
+    margin: 0 0.35rem;
+    opacity: 0.6;
+}
+
+.about-breadcrumbs-current {
+    color: var(--text, #1a2e22);
+    font-weight: 500;
+}
+
+.about-hero-title--seo {
+    font-size: clamp(1.65rem, 4.2vw, 2.45rem);
+    line-height: 1.22;
+}
+
+.about-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin: 0 0 2.5rem;
+}
+
+.about-trust-badge {
+    padding: 1rem 1rem 1.05rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(23, 92, 54, 0.12);
+    box-shadow: 0 2px 12px rgba(23, 92, 54, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.about-trust-badge strong {
+    font-size: 0.92rem;
+    color: var(--text, #1a2e22);
+}
+
+.about-trust-badge-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-bottom: 0.15rem;
+}
+
+.about-trust-badge-note {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--muted, #5A6D5D);
+}
+
+.about-lab-block {
+    padding: 3.4rem 0 3.2rem;
+    border-top: 1px solid rgba(26, 46, 34, 0.08);
+}
+
+.about-lab-block h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text, #1a2e22);
+    margin: 0 0 1rem 0;
+}
+
+.about-lab-block > p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--muted, #5A6D5D);
+    margin: 0 0 1rem 0;
+    max-width: 46rem;
+}
+
+.about-lab-list {
+    margin: 0 0 1.25rem 1.1rem;
+    padding: 0;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted, #5A6D5D);
+    max-width: 42rem;
+}
+
+.about-lab-list li + li {
+    margin-top: 0.45rem;
+}
+
+.about-lab-block .about-btn-primary {
+    margin-top: 0.35rem;
+}
+
+.about-price-block {
+    padding: 3.5rem 0 3.2rem;
+    border-top: 1px solid rgba(26, 46, 34, 0.08);
+}
+
+.about-price-block h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text, #1a2e22);
+    margin: 0 0 0.6rem 0;
+}
+
+.about-price-intro {
+    font-size: 1.05rem;
+    color: var(--muted, #5A6D5D);
+    margin: 0 0 1.5rem 0;
+    max-width: 40rem;
+}
+
+.about-price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: stretch;
+}
+
+.about-price-card {
+    padding: 1.35rem 1.4rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(23, 92, 54, 0.14);
+    background: rgba(255, 255, 255, 0.85);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.about-price-card--us {
+    border-color: rgba(23, 92, 54, 0.28);
+    box-shadow: 0 4px 22px rgba(23, 92, 54, 0.08);
+}
+
+.about-price-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary, #175c36);
+}
+
+.about-price-tag {
+    margin: 0;
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text, #1a2e22);
+}
+
+.about-price-unit {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--muted, #5A6D5D);
+}
+
+.about-price-list {
+    margin: 0;
+    padding-left: 1.15rem;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--muted, #5A6D5D);
+    flex: 1;
+}
+
+.about-price-list li + li {
+    margin-top: 0.35rem;
+}
+
+.about-price-card .about-btn-primary,
+.about-price-card .about-btn-secondary {
+    align-self: flex-start;
+    margin-top: 0.35rem;
+}
+
+.about-price-footnote {
+    margin: 1.25rem 0 0;
+    font-size: 0.85rem;
+    color: var(--muted, #5A6D5D);
+    max-width: 48rem;
+}
+
+.about-learn-block {
+    padding: 3.5rem 0 3.2rem;
+    border-top: 1px solid rgba(26, 46, 34, 0.08);
+}
+
+.about-learn-block h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text, #1a2e22);
+    margin: 0 0 1.35rem 0;
+}
+
+.about-learn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.about-learn-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.15rem 1.2rem 1.25rem;
+    border-radius: 14px;
+    border: 1px solid rgba(23, 92, 54, 0.12);
+    background: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.about-learn-card:hover {
+    border-color: rgba(23, 92, 54, 0.35);
+    box-shadow: 0 6px 24px rgba(23, 92, 54, 0.1);
+    transform: translateY(-2px);
+}
+
+.about-learn-card strong {
+    font-size: 1rem;
+    color: var(--primary, #175c36);
+}
+
+.about-learn-card span:last-child {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--muted, #5A6D5D);
+}
+
+.about-learn-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+.about-cta-v2 .about-cta-note {
+    margin: 1.25rem 0 0;
+    font-size: 0.95rem;
+    color: var(--muted, #5A6D5D);
+    max-width: 36rem;
+}
+
+.about-cta-v2 .about-cta-note a {
+    color: var(--primary, #175c36);
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .about-trust-badges {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about-learn-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
