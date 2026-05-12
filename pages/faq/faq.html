@@ -210,6 +210,28 @@
     }
     </script>
 
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nutrithrive.com.au"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Frequently Asked Questions",
+          "item": "https://nutrithrive.com.au/faq"
+        }
+      ]
+    }
+</script>
+
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
