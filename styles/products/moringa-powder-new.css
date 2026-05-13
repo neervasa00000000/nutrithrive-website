@@ -1049,8 +1049,9 @@
 
 /* === Urgency Banner === */
 .urgency-banner {
-    background: var(--color-primary);
-    color: white;
+    background-color: var(--color-primary, #0f6b4d);
+    background-image: none;
+    color: #fff;
     padding: 10px 20px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
 }
