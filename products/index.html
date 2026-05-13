@@ -44,7 +44,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="/styles/global/style.css">
-    <link rel="stylesheet" href="/styles/pages/products-listing.css">
     <style>
       :root {
         --forest: var(--primary);
@@ -690,16 +689,13 @@
                 <span class="pill"><i data-lucide="droplet" class="icon"></i>No Additives</span>
                 <span class="pill"><i data-lucide="check-circle" class="icon"></i>Vegan Friendly</span>
             </div>
-            <a class="hero-shop-cta" href="#shop">Browse the range</a>
         </section>
 
-        <div class="products-catalog" id="shop">
-        <header class="products-catalog-head">
-            <h2>Our products</h2>
-            <p>Lab-checked batches, shipped from Melbourne. Tap a card for full details, or add straight to cart.</p>
-        </header>
+        <section class="controls">
+            <h2 style="font-size: 2rem; font-weight: 700; color: #2d5a3d; margin: 0; padding: 1.5rem 0;">Our products</h2>
+        </section>
 
-        <section class="product-grid" aria-label="Product listings">
+        <section class="product-grid">
             <article class="product-card">
                 <a class="product-media" href="/products/moringa-powder/">
                     <img src="https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png"
@@ -727,9 +723,9 @@
                     <p class="meta">100g Pack • 30 Servings</p>
                     <div class="product-footer">
                         <div class="cta-row">
-                            <a class="btn-outline" href="/products/moringa-powder/">Details</a>
-                            <button type="button" class="btn-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, 'https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png')">
-                                Add to cart
+                            <a class="btn-primary" href="/products/moringa-powder/">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, 'https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -763,9 +759,9 @@
                     <p class="meta">30g Pack • High Potency</p>
                     <div class="product-footer">
                         <div class="cta-row">
-                            <a class="btn-outline" href="curry-leaves/">Details</a>
-                            <button type="button" class="btn-add-cart" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '../assets/images/homepage/product-showcase/Curry.webp')">
-                                Add to cart
+                            <a class="btn-primary" href="curry-leaves/">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '../assets/images/homepage/product-showcase/Curry.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -799,9 +795,9 @@
                     <p class="meta">100g Pack • Premium Grade</p>
                     <div class="product-footer">
                         <div class="cta-row">
-                            <a class="btn-outline" href="black-tea/">Details</a>
-                            <button type="button" class="btn-add-cart" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '../assets/images/homepage/product-showcase/BlackTea.webp')">
-                                Add to cart
+                            <a class="btn-primary" href="black-tea/">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '../assets/images/homepage/product-showcase/BlackTea.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -835,9 +831,9 @@
                     <p class="meta">Various Pack Sizes • Best Value</p>
                     <div class="product-footer">
                         <div class="cta-row">
-                            <a class="btn-outline" href="combo-pack/">Details</a>
-                            <button type="button" class="btn-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '../assets/images/homepage/product-showcase/combo.webp')">
-                                Add to cart
+                            <a class="btn-primary" href="combo-pack/">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '../assets/images/homepage/product-showcase/combo.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -871,92 +867,64 @@
                     <p class="meta">95g Pack • Natural Soap</p>
                     <div class="product-footer">
                         <div class="cta-row">
-                            <a class="btn-outline" href="moringa-soap/">Details</a>
-                            <button type="button" class="btn-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '../assets/images/homepage/product-showcase/moringa_soap.webp')">
-                                Add to cart
+                            <a class="btn-primary" href="moringa-soap/">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '../assets/images/homepage/product-showcase/moringa_soap.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #2d5a3d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
             </article>
         </section>
-        </div>
 
         <p class="helper-note">All products are shipped from Melbourne across Australia with tracked delivery. We also ship worldwide—wherever you are, we deliver.</p>
 
-        <section class="products-why">
-          <h2>Why premium buyers choose NutriThrive</h2>
-          <div class="why-grid">
-            <div class="why-card">
-              <h3>Lab-tested every batch</h3>
-              <p>Every batch of moringa is tested by the National Measurement Institute — an Australian Government lab. We publish the results because we have nothing to hide. <a href="/documents/nutrithrive-lab-report-summary.pdf" target="_blank" rel="noopener noreferrer">View our latest lab report (PDF)</a></p>
+        <section class="why-choose" style="margin: 3rem 0; padding: 2.5rem; background: #fff; border-radius: 12px; border: 1px solid #e3dfd6;">
+          <h2 style="font-family: 'Playfair Display', serif; color: var(--forest); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 2rem;">Why Premium Buyers Choose NutriThrive</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+            <div style="padding: 1.25rem; background: var(--sage); border-radius: 8px;">
+              <h3 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 700;">Lab-Tested Every Batch</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Every batch of moringa is tested by the National Measurement Institute — an Australian Government lab. We publish the results because we have nothing to hide. <a href="/documents/nutrithrive-lab-report-summary.pdf" style="color: var(--forest); font-weight: 600;" target="_blank" rel="noopener noreferrer">View our latest lab report (PDF) →</a></p>
             </div>
-            <div class="why-card">
-              <h3>Melbourne warehouse, fast dispatch</h3>
-              <p>Order before 2pm for same-day dispatch from our Truganina warehouse. No long waits from overseas suppliers — your order ships today. <a href="/pages/shipping/shipping-returns">See shipping details</a></p>
+            <div style="padding: 1.25rem; background: var(--sage); border-radius: 8px;">
+              <h3 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 700;">Melbourne Warehouse, Fast Dispatch</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Order before 2pm for same-day dispatch from our Truganina warehouse. No long waits from overseas suppliers — your order ships today. <a href="/pages/shipping/shipping-returns" style="color: var(--forest); font-weight: 600;">See shipping details →</a></p>
             </div>
-            <div class="why-card">
-              <h3>Premium quality, fair price</h3>
-              <p>Our moringa powder is $11 per 100g vs Rosabella at $25 per 100g at Chemist Warehouse. Same lab-tested quality. Better value for premium buyers who research. <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html">See our comparison</a></p>
+            <div style="padding: 1.25rem; background: var(--sage); border-radius: 8px;">
+              <h3 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 700;">Premium Quality, Fair Price</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Our moringa powder is $11 per 100g vs Rosabella at $25 per 100g at Chemist Warehouse. Same lab-tested quality. Better value for premium buyers who research. <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html" style="color: var(--forest); font-weight: 600;">See our comparison →</a></p>
             </div>
-            <div class="why-card">
-              <h3>Small batches = freshness</h3>
-              <p>We don't warehouse massive quantities. Small batches mean you get fresh powder — not 6-month-old stock. Every bag is batch-dated so you know exactly when it was packed.</p>
+            <div style="padding: 1.25rem; background: var(--sage); border-radius: 8px;">
+              <h3 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 700;">Small Batches = Freshness</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">We don't warehouse massive quantities. Small batches mean you get fresh powder — not 6-month-old stock. Every bag is batch-dated so you know exactly when it was packed.</p>
             </div>
           </div>
         </section>
 
-        <section class="products-guide">
-          <h2>How to choose the right product</h2>
-          <div class="guide-grid">
-            <article class="guide-card">
-              <a class="guide-card-media" href="/products/moringa-powder/" aria-hidden="true" tabindex="-1"><img src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" alt="" width="320" height="240" loading="lazy" decoding="async"></a>
-              <div class="guide-card-body">
-                <p><strong>For daily wellness:</strong> Start with our moringa powder. Add 1–2 teaspoons to smoothies, water, or food for a natural nutrient boost.</p>
-                <a class="guide-card-cta" href="/products/moringa-powder/">Shop moringa</a>
-              </div>
-            </article>
-            <article class="guide-card">
-              <a class="guide-card-media" href="/products/curry-leaves/" aria-hidden="true" tabindex="-1"><img src="/assets/images/homepage/product-showcase/thumbs/Curry.webp" alt="" width="320" height="240" loading="lazy" decoding="async"></a>
-              <div class="guide-card-body">
-                <p><strong>For cooking:</strong> Our premium dried curry leaves add authentic South Indian flavour to curries and rice dishes.</p>
-                <a class="guide-card-cta" href="/products/curry-leaves/">Shop curry leaves</a>
-              </div>
-            </article>
-            <article class="guide-card">
-              <a class="guide-card-media" href="/products/black-tea/" aria-hidden="true" tabindex="-1"><img src="/assets/images/homepage/product-showcase/thumbs/BlackTea.webp" alt="" width="320" height="240" loading="lazy" decoding="async"></a>
-              <div class="guide-card-body">
-                <p><strong>For relaxation:</strong> Our Darjeeling black tea offers subtle, complex flavours — perfect for an afternoon break.</p>
-                <a class="guide-card-cta" href="/products/black-tea/">Shop black tea</a>
-              </div>
-            </article>
-            <article class="guide-card">
-              <a class="guide-card-media" href="/products/moringa-soap/" aria-hidden="true" tabindex="-1"><img src="/assets/images/homepage/product-showcase/thumbs/moringa_soap.webp" alt="" width="320" height="240" loading="lazy" decoding="async"></a>
-              <div class="guide-card-body">
-                <p><strong>For skincare:</strong> Our Australian-made moringa soap combines moringa with nourishing oils for a natural cleanse. Not sure? <a href="/contact">Contact us</a> and we'll help.</p>
-                <a class="guide-card-cta" href="/products/moringa-soap/">Shop soap</a>
-              </div>
-            </article>
+        <section class="buying-guide" style="margin: 2rem 0 3rem;">
+          <h2 style="font-family: 'Playfair Display', serif; color: var(--forest); font-size: clamp(1.4rem, 3vw, 1.8rem); margin-bottom: 1.25rem;">How to Choose the Right Product</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">For daily wellness:</strong> Start with our moringa powder. Add 1–2 teaspoons to smoothies, water, or food for a natural nutrient boost.</p>
+            <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">For cooking:</strong> Our premium dried curry leaves add authentic South Indian flavour to curries and rice dishes.</p>
+            <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">For relaxation:</strong> Our Darjeeling black tea offers subtle, complex flavours — perfect for an afternoon break.</p>
+            <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">For skincare:</strong> Our Australian-made moringa soap combines moringa with nourishing oils for a natural cleanse. Not sure? <a href="/contact" style="color: var(--forest); font-weight: 600;">Contact us</a> and we'll help.</p>
           </div>
         </section>
 
-        <section class="products-resources">
-          <h2>Learn more about our products</h2>
-          <div class="resource-grid">
-            <a class="resource-card" href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html">
-              <strong>Lab test comparison</strong>
-              <p>See how our moringa compares to Rosabella (Chemist Warehouse) in independent lab tests</p>
-              <span>Read article</span>
+        <section class="learn-more" style="margin: 2rem 0 3rem; padding: 2rem; background: #fff; border-radius: 12px; border: 1px solid #e3dfd6;">
+          <h2 style="font-family: 'Playfair Display', serif; color: var(--forest); font-size: clamp(1.3rem, 2.5vw, 1.6rem); margin-bottom: 1.25rem;">Learn More About Our Products</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+            <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html" style="display: block; padding: 1.1rem; border: 1px solid #e3dfd6; border-radius: 8px; text-decoration: none; transition: border-color 0.2s;">
+              <strong style="color: var(--forest); font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">Lab Test Comparison</strong>
+              <p style="color: var(--muted); font-size: 0.88rem; margin: 0; line-height: 1.5;">See how our moringa compares to Rosabella (Chemist Warehouse) in independent lab tests</p>
             </a>
-            <a class="resource-card" href="/blog/moringa-brands-comparison-australia-2026.html">
-              <strong>7 brands compared</strong>
-              <p>We tested every major Australian moringa brand. See which ones passed and which ones failed</p>
-              <span>Read article</span>
+            <a href="/blog/moringa-brands-comparison-australia-2026.html" style="display: block; padding: 1.1rem; border: 1px solid #e3dfd6; border-radius: 8px; text-decoration: none; transition: border-color 0.2s;">
+              <strong style="color: var(--forest); font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">7 Brands Compared</strong>
+              <p style="color: var(--muted); font-size: 0.88rem; margin: 0; line-height: 1.5;">We tested every major Australian moringa brand. See which ones passed and which ones failed</p>
             </a>
-            <a class="resource-card" href="/blog/how-to-add-moringa-to-diet.html">
-              <strong>How to use moringa</strong>
-              <p>Simple, practical ways to add moringa to your daily routine without changing your whole diet</p>
-              <span>Read article</span>
+            <a href="/blog/how-to-add-moringa-to-diet.html" style="display: block; padding: 1.1rem; border: 1px solid #e3dfd6; border-radius: 8px; text-decoration: none; transition: border-color 0.2s;">
+              <strong style="color: var(--forest); font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">How to Use Moringa</strong>
+              <p style="color: var(--muted); font-size: 0.88rem; margin: 0; line-height: 1.5;">Simple, practical ways to add moringa to your daily routine without changing your whole diet</p>
             </a>
           </div>
         </section>
@@ -1329,11 +1297,10 @@
     <script>
         // Product weights mapping (from Excel Product Grams sheet)
         const productWeights = {
-            'moringa-powder': 100,
+            'moringa-powder': 100, // Default Moringa is 100g
             'curry-leaves': 30,
             'black-tea': 100,
-            'combo-pack': 325,
-            'moringa-soap': 95
+            'moringa-soap': 95 // Soap is 95g
         };
         
         // Add to Cart function for product listing page
