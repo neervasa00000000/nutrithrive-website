@@ -88,6 +88,9 @@ https://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 http://nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 
+# Legacy lab PDF URL (products page previously pointed here; file was not in repo)
+/assets/lab-report.pdf /documents/nutrithrive-lab-report-summary.pdf 301
+
 # ---200 rewrites (URL in browser unchanged; serves file) ---
 
 /pages/products/product-detail /products/moringa-powder/ 200

@@ -8,14 +8,14 @@ html {
 :root {
     --bg: #f8f5ec;
     --card: #fffdfa;
-    --primary: #175c36;
+    --primary: var(--color-primary);
     --accent: #7B541F;
-    --footer-bg: #175c36;
+    --footer-bg: var(--color-primary);
     --footer-text: #ffffff;
     --text: #1a2e22;
     --muted: #5A6D5D;
     --radius: 18px;
-    --shadow: 0 4px 24px 0 rgba(23,92,54,0.07);
+    --shadow: 0 4px 24px 0 rgba(15,107,77,0.07);
     --transition: 0.4s cubic-bezier(.4,2,.6,1);
 }
 
@@ -274,7 +274,7 @@ body.products-page .hero .hero-btn.alt {
 
 .feature-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 48px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 16px 48px 0 rgba(15,107,77,0.10);
 }
 
 .feature-icon {
@@ -473,7 +473,7 @@ body.products-page .hero .hero-btn.alt {
 
 .testimonial-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 48px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 16px 48px 0 rgba(15,107,77,0.10);
 }
 
 .testimonial-rating {
@@ -556,23 +556,23 @@ body.products-page .hero .hero-btn.alt {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    background: #175c36 !important;
+    background: var(--color-primary) !important;
     color: #fff !important;
-    border: 2px solid #175c36 !important;
+    border: 2px solid var(--color-primary) !important;
     font-weight: 700;
     text-decoration: none !important;
 }
 
 .btn-secondary {
     background: #fffdfa !important;
-    color: #175c36 !important;
-    border: 2px solid #175c36 !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary) !important;
     font-weight: 700;
 }
 
 .btn:hover, .btn-secondary:hover {
     filter: brightness(0.95);
-    box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 2px 8px 0 rgba(15,107,77,0.10);
 }
 
 .add-to-cart-btn {
@@ -931,7 +931,7 @@ footer {
 
     .nav-links a:hover,
     .nav-links a.active {
-        background-color: rgba(23, 92, 54, 0.1);
+        background-color: rgba(15, 107, 77, 0.1);
         color: var(--accent);
     }
 
@@ -1024,7 +1024,7 @@ footer {
     .about-title {
         font-size: 1.45rem;
         font-weight: 900;
-        color: #175c36;
+        color: var(--color-primary);
         margin-bottom: 1.2rem;
         margin-top: 0;
         letter-spacing: -0.5px;
@@ -1056,7 +1056,7 @@ footer {
         width: 100%;
         max-width: 320px;
         border-radius: 12px;
-        box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+        box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
         margin: 0 auto;
         display: block;
     }
@@ -2035,7 +2035,7 @@ body.blog-moringa-tree .btn-secondary:hover {
 .roadmap-title {
   font-size: 3.5rem;
   font-weight: 900;
-  color: #175c36;
+  color: var(--color-primary);
   margin-bottom: 3.5rem;
   text-align: center;
   letter-spacing: -2px;
@@ -2095,7 +2095,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   filter: none;
   font-size: 1.15rem;
   font-weight: 600;
-  color: #175c36;
+  color: var(--color-primary);
   min-width: 220px;
   transition: opacity 0.6s cubic-bezier(.4,2,.6,1), transform 0.6s cubic-bezier(.4,2,.6,1);
 }
@@ -2168,7 +2168,7 @@ body.blog-moringa-tree .btn-secondary:hover {
 .features-section.features-clean .feature h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #175c36;
+  color: var(--color-primary);
   margin-bottom: 0.7rem;
 }
 .features-section.features-clean .feature p {
@@ -2189,8 +2189,8 @@ body.blog-moringa-tree .btn-secondary:hover {
   .features-section.features-clean .feature {
     background: #f8f5ec;
     border-radius: 14px;
-    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
-    border-left: 5px solid #175c36;
+    box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
+    border-left: 5px solid var(--color-primary);
     padding: 1.2rem 1rem 1.2rem 1.3rem;
     margin: 0;
     text-align: left;
@@ -2199,7 +2199,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   .features-section.features-clean .feature h3 {
     font-size: 1.18rem;
     font-weight: 800;
-    color: #175c36;
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
     margin-top: 0;
     letter-spacing: -0.5px;
@@ -2216,7 +2216,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   .about-title {
     font-size: 1.7rem;
     font-weight: 900;
-    color: #175c36;
+    color: var(--color-primary);
     margin-bottom: 1.3rem;
     margin-top: 0;
     letter-spacing: -0.5px;
@@ -2246,7 +2246,7 @@ body.blog-moringa-tree .btn-secondary:hover {
     width: 100%;
     max-width: 320px;
     border-radius: 12px;
-    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+    box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
     margin: 0 auto;
     display: block;
   }

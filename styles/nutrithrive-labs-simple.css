@@ -4,7 +4,7 @@
   --labs-text: #0f172a;
   --labs-muted: #475569;
   --labs-border: #d6dde7;
-  --labs-accent: #0f6b4d;
+  --labs-accent: var(--color-primary);
   --labs-accent-soft: #e9f5ef;
 }
 

@@ -47,7 +47,7 @@
 }
 
 .newsletter-popup h2 {
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
     font-size: 1.8rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -78,11 +78,11 @@
 
 .newsletter-popup-form input:focus {
     outline: none;
-    border-color: var(--primary, #175c36);
+    border-color: var(--primary, var(--color-primary));
 }
 
 .newsletter-popup-form button {
-    background: var(--primary, #175c36);
+    background: var(--primary, var(--color-primary));
     color: #fff;
     border: none;
     padding: 1rem 2rem;
