@@ -1049,7 +1049,7 @@
 
 /* === Urgency Banner === */
 .urgency-banner {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: var(--color-primary);
     color: white;
     padding: 10px 20px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
