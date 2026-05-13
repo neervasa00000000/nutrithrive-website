@@ -405,7 +405,7 @@ body.products-page .hero .hero-btn.alt {
     }
 }
 
-/* Testimonials — roomy grid + optional “show more” list (single column, easy scan) */
+/* Testimonials — single roomy grid (no collapsible block) */
 .testimonials {
     padding: 2rem 1.25rem 2.5rem;
     margin: 1.5rem auto 0;
@@ -443,7 +443,7 @@ body.products-page .hero .hero-btn.alt {
 .testimonial-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem 1.35rem;
+    gap: 1.1rem 1.35rem;
     align-items: start;
     width: 100%;
     margin: 0;
@@ -455,14 +455,6 @@ body.products-page .hero .hero-btn.alt {
     .testimonial-list {
         grid-template-columns: 1fr 1fr;
     }
-}
-
-/* Expanded reviews: one column, centred — easier to read long quotes */
-.testimonial-list--more {
-    grid-template-columns: 1fr;
-    max-width: 38rem;
-    margin: 0 auto;
-    gap: 0.95rem;
 }
 
 .testimonial-item {
@@ -505,47 +497,6 @@ body.products-page .hero .hero-btn.alt {
     font-weight: 400;
     color: var(--muted);
 }
-
-.testimonials-more {
-    margin-top: 1.35rem;
-    border: 0;
-    padding: 0;
-}
-
-.testimonials-more-summary {
-    display: block;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0.55rem 1rem;
-    list-style: none;
-    cursor: pointer;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--primary);
-    text-align: center;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    border-radius: 8px;
-}
-
-.testimonials-more summary::-webkit-details-marker {
-    display: none;
-}
-
-.testimonials-more-summary:hover {
-    color: var(--text);
-}
-
-.testimonials-more-summary:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 3px;
-}
-
-.testimonials-more[open] .testimonials-more-summary {
-    margin-bottom: 1rem;
-}
-
 
 /* Products Section */
 .products-section {
@@ -2125,7 +2076,7 @@ article h1, section h1, nav h1, aside h1 {
 
 /* Urgency Banner */
 .urgency-banner {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: var(--color-primary);
     color: white;
     padding: 10px 20px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
