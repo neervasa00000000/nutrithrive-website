@@ -5,25 +5,6 @@ html {
     box-sizing: inherit;
 }
 
-:root {
-    --bg: #f8f5ec;
-    --card: #fffdfa;
-    --primary: #175c36;
-    --accent: #7B541F;
-    --footer-bg: #175c36;
-    --footer-text: #ffffff;
-    --text: #1a2e22;
-    --muted: #5A6D5D;
-    --radius: 18px;
-    --shadow: 0 4px 24px 0 rgba(23,92,54,0.07);
-    --shadow-hover: 0 8px 32px 0 rgba(23,92,54,0.12);
-    --transition: 0.4s cubic-bezier(.4,2,.6,1);
-    --gradient-primary: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%);
-    --gradient-accent: linear-gradient(135deg, #7B541F 0%, #5a3e15 100%);
-    --border-light: rgba(23,92,54,0.1);
-    --surface-elevated: #ffffff;
-}
-
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -113,7 +94,7 @@ body.blog-moringa-market-report-2026 .blog-post-header {
     text-align: left;
     margin-bottom: 1.75rem;
     padding: 0 0 1.25rem 0;
-    border-bottom: 1px solid rgba(23, 92, 54, 0.15);
+    border-bottom: 1px solid rgba(15, 107, 77, 0.15);
 }
 
 body.blog-moringa-market-report-2026 .blog-post-header h1 {
@@ -166,7 +147,7 @@ body.blog-moringa-market-report-2026 .blog-post-content h2 {
 
 body.blog-moringa-market-report-2026 .blog-post-content hr {
     border: 0;
-    border-top: 1px solid rgba(23, 92, 54, 0.12);
+    border-top: 1px solid rgba(15, 107, 77, 0.12);
     margin: 2rem 0;
 }
 
@@ -293,7 +274,7 @@ body.blog-moringa-market-report-2026 .blog-post-content .product-links a {
 
 .hero-image img {
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(23,92,54,0.15);
+    box-shadow: 0 8px 32px rgba(15,107,77,0.15);
 }
 
 .intro-text {
@@ -318,7 +299,7 @@ body.blog-moringa-market-report-2026 .blog-post-content .product-links a {
     background: var(--surface-elevated);
     padding: 2.5rem;
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(23,92,54,0.06);
+    box-shadow: 0 2px 12px rgba(15,107,77,0.06);
     border: 1px solid var(--border-light);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -341,7 +322,7 @@ body.blog-moringa-market-report-2026 .blog-post-content .product-links a {
 .benefit-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
-    border-color: rgba(23,92,54,0.2);
+    border-color: rgba(15,107,77,0.2);
 }
 
 .benefit-card:hover::before {
@@ -387,7 +368,7 @@ body.blog-moringa-market-report-2026 .blog-post-content .product-links a {
     color: white;
     padding: 3rem 2rem;
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(23,92,54,0.2);
+    box-shadow: 0 8px 32px rgba(15,107,77,0.2);
 }
 
 .cta-box h3 {
@@ -447,7 +428,7 @@ body.blog-moringa-market-report-2026 .blog-post-content .product-links a {
     padding: 2rem;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 16px rgba(23,92,54,0.08);
+    box-shadow: 0 4px 16px rgba(15,107,77,0.08);
     transition: transform 0.3s ease;
 }
 
@@ -496,13 +477,13 @@ body.blog-moringa-market-report-2026 .blog-post-content .product-links a {
     border-radius: 12px;
     border: 1px solid var(--border-light);
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(23,92,54,0.04);
+    box-shadow: 0 2px 8px rgba(15,107,77,0.04);
 }
 
 .faq-item:hover {
-    box-shadow: 0 4px 16px rgba(23,92,54,0.08);
+    box-shadow: 0 4px 16px rgba(15,107,77,0.08);
     transform: translateY(-2px);
-    border-color: rgba(23,92,54,0.2);
+    border-color: rgba(15,107,77,0.2);
 }
 
 .faq-item:last-child {
@@ -1110,7 +1091,7 @@ body.products-page .hero .hero-btn.alt {
 
 .feature-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 48px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 16px 48px 0 rgba(15,107,77,0.10);
 }
 
 .feature-icon {
@@ -1309,7 +1290,7 @@ body.products-page .hero .hero-btn.alt {
 
 .testimonial-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 48px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 16px 48px 0 rgba(15,107,77,0.10);
 }
 
 .testimonial-rating {
@@ -1392,23 +1373,23 @@ body.products-page .hero .hero-btn.alt {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    background: #175c36 !important;
+    background: var(--color-primary) !important;
     color: #fff !important;
-    border: 2px solid #175c36 !important;
+    border: 2px solid var(--color-primary) !important;
     font-weight: 700;
     text-decoration: none !important;
 }
 
 .btn-secondary {
     background: #fffdfa !important;
-    color: #175c36 !important;
-    border: 2px solid #175c36 !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary) !important;
     font-weight: 700;
 }
 
 .btn:hover, .btn-secondary:hover {
     filter: brightness(0.95);
-    box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 2px 8px 0 rgba(15,107,77,0.10);
 }
 
 .add-to-cart-btn {
@@ -1781,7 +1762,7 @@ footer {
 
     .nav-links a:hover,
     .nav-links a.active {
-        background-color: rgba(23, 92, 54, 0.1);
+        background-color: rgba(15, 107, 77, 0.1);
         color: var(--accent);
     }
 
@@ -1865,7 +1846,7 @@ footer {
     .about-title {
         font-size: 1.45rem;
         font-weight: 900;
-        color: #175c36;
+        color: var(--color-primary);
         margin-bottom: 1.2rem;
         margin-top: 0;
         letter-spacing: -0.5px;
@@ -1897,7 +1878,7 @@ footer {
         width: 100%;
         max-width: 320px;
         border-radius: 12px;
-        box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+        box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
         margin: 0 auto;
         display: block;
     }
@@ -2130,7 +2111,7 @@ footer {
 
 .blog-search-input:focus {
     border-color: var(--primary);
-    box-shadow: 0 6px 20px rgba(23,92,54,0.2);
+    box-shadow: 0 6px 20px rgba(15,107,77,0.2);
 }
 
 .blog-search-results {
@@ -2318,7 +2299,7 @@ footer {
     color: var(--primary);
     font-weight: 600;
     text-decoration: underline;
-    text-decoration-color: rgba(23,92,54,0.3);
+    text-decoration-color: rgba(15,107,77,0.3);
     text-underline-offset: 3px;
     transition: all 0.2s ease;
 }
@@ -2368,7 +2349,7 @@ footer {
     width: 100%;
     border-collapse: collapse;
     margin: 2.5rem 0;
-    box-shadow: 0 4px 16px rgba(23,92,54,0.08);
+    box-shadow: 0 4px 16px rgba(15,107,77,0.08);
     border-radius: 12px;
     overflow: hidden;
     background: var(--surface-elevated);
@@ -2396,7 +2377,7 @@ footer {
 
 .blog-post-content table.blog-table tr:hover,
 .blog-content table tr:hover {
-    background: rgba(23,92,54,0.03);
+    background: rgba(15,107,77,0.03);
 }
 
 .cta-box {
@@ -2845,7 +2826,7 @@ body.blog-moringa-tree .btn-secondary:hover {
 .roadmap-title {
   font-size: 3.5rem;
   font-weight: 900;
-  color: #175c36;
+  color: var(--color-primary);
   margin-bottom: 3.5rem;
   text-align: center;
   letter-spacing: -2px;
@@ -2905,7 +2886,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   filter: none;
   font-size: 1.15rem;
   font-weight: 600;
-  color: #175c36;
+  color: var(--color-primary);
   min-width: 220px;
   transition: opacity 0.6s cubic-bezier(.4,2,.6,1), transform 0.6s cubic-bezier(.4,2,.6,1);
 }
@@ -2978,7 +2959,7 @@ body.blog-moringa-tree .btn-secondary:hover {
 .features-section.features-clean .feature h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #175c36;
+  color: var(--color-primary);
   margin-bottom: 0.7rem;
 }
 .features-section.features-clean .feature p {
@@ -2999,8 +2980,8 @@ body.blog-moringa-tree .btn-secondary:hover {
   .features-section.features-clean .feature {
     background: #f8f5ec;
     border-radius: 14px;
-    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
-    border-left: 5px solid #175c36;
+    box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
+    border-left: 5px solid var(--color-primary);
     padding: 1.2rem 1rem 1.2rem 1.3rem;
     margin: 0;
     text-align: left;
@@ -3009,7 +2990,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   .features-section.features-clean .feature h3 {
     font-size: 1.18rem;
     font-weight: 800;
-    color: #175c36;
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
     margin-top: 0;
     letter-spacing: -0.5px;
@@ -3026,7 +3007,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   .about-title {
     font-size: 1.7rem;
     font-weight: 900;
-    color: #175c36;
+    color: var(--color-primary);
     margin-bottom: 1.3rem;
     margin-top: 0;
     letter-spacing: -0.5px;
@@ -3056,7 +3037,7 @@ body.blog-moringa-tree .btn-secondary:hover {
     width: 100%;
     max-width: 320px;
     border-radius: 12px;
-    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+    box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
     margin: 0 auto;
     display: block;
   }
@@ -3213,10 +3194,10 @@ article h1, section h1, nav h1, aside h1 {
     margin-bottom: 3rem;
     margin-top: 2rem;
     padding: 2rem;
-    background: linear-gradient(135deg, rgba(23,92,54,0.03) 0%, rgba(23,92,54,0.01) 100%);
+    background: linear-gradient(135deg, rgba(15,107,77,0.03) 0%, rgba(15,107,77,0.01) 100%);
     border-radius: 16px;
     border-left: 4px solid var(--primary);
-    box-shadow: 0 2px 8px rgba(23,92,54,0.05);
+    box-shadow: 0 2px 8px rgba(15,107,77,0.05);
 }
 
 .cta-box {
@@ -3226,7 +3207,7 @@ article h1, section h1, nav h1, aside h1 {
     border-radius: 20px;
     margin: 3rem 0;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(23,92,54,0.2);
+    box-shadow: 0 8px 24px rgba(15,107,77,0.2);
     position: relative;
     overflow: hidden;
 }
@@ -3783,9 +3764,9 @@ article h1, section h1, nav h1, aside h1 {
     margin: 1.75rem 0;
     padding: 1.15rem 1.25rem;
     border-radius: var(--radius, 18px);
-    border-left: 4px solid var(--primary, #175c36);
-    background: linear-gradient(135deg, rgba(23, 92, 54, 0.06) 0%, rgba(255, 253, 250, 1) 100%);
-    box-shadow: var(--shadow, 0 4px 24px rgba(23, 92, 54, 0.07));
+    border-left: 4px solid var(--primary, var(--color-primary));
+    background: linear-gradient(135deg, rgba(15, 107, 77, 0.06) 0%, rgba(255, 253, 250, 1) 100%);
+    box-shadow: var(--shadow, 0 4px 24px rgba(15, 107, 77, 0.07));
 }
 
 .author-insight__label {
@@ -3794,7 +3775,7 @@ article h1, section h1, nav h1, aside h1 {
     font-weight: 800;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
     margin-bottom: 0.45rem;
 }
 
@@ -3810,8 +3791,8 @@ article h1, section h1, nav h1, aside h1 {
     padding: 1.25rem 1.35rem;
     border-radius: var(--radius, 18px);
     background: var(--card, #fffdfa);
-    border: 1px solid var(--border-light, rgba(23, 92, 54, 0.12));
-    box-shadow: var(--shadow, 0 4px 24px rgba(23, 92, 54, 0.07));
+    border: 1px solid var(--border-light, rgba(15, 107, 77, 0.12));
+    box-shadow: var(--shadow, 0 4px 24px rgba(15, 107, 77, 0.07));
 }
 
 .blog-interactive-checklist h3,
@@ -3841,7 +3822,7 @@ article h1, section h1, nav h1, aside h1 {
     height: 1.15rem;
     margin-top: 0.2rem;
     flex-shrink: 0;
-    accent-color: var(--primary, #175c36);
+    accent-color: var(--primary, var(--color-primary));
 }
 
 .blog-interactive-checklist__hint {
@@ -3855,7 +3836,7 @@ article h1, section h1, nav h1, aside h1 {
     margin-top: 2.5rem;
     padding: 1.35rem 1.4rem;
     border-radius: var(--radius, 18px);
-    background: var(--gradient-primary, linear-gradient(135deg, #175c36 0%, #0f4a2a 100%));
+    background: var(--gradient-primary, linear-gradient(135deg, var(--color-primary) 0%, #0f4a2a 100%));
     color: #fff;
     box-shadow: 0 8px 28px rgba(15, 74, 42, 0.25);
 }
@@ -3918,7 +3899,7 @@ article h1, section h1, nav h1, aside h1 {
     content: '+';
     font-size: 1.3rem;
     font-weight: 400;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
     flex-shrink: 0;
     margin-left: 1rem;
 }
@@ -3959,7 +3940,7 @@ article h1, section h1, nav h1, aside h1 {
 .nt-related-links-block h2 {
     font-size: 1.1rem;
     margin: 0 0 0.75rem;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
     font-weight: 700;
 }
 
@@ -3975,7 +3956,7 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .nt-related-links-block a {
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 /* =========================================================
@@ -4004,7 +3985,7 @@ article h1, section h1, nav h1, aside h1 {
 .callout,
 .callout-legal {
     background: #f0f7f3;
-    border-left: 4px solid var(--primary, #175c36);
+    border-left: 4px solid var(--primary, var(--color-primary));
     padding: 1.25rem 1.5rem;
     margin: 1.5rem 0;
     border-radius: 0 8px 8px 0;
@@ -4032,4 +4013,4 @@ article h1, section h1, nav h1, aside h1 {
     margin: 1.5rem 0;
 }
 
-.dose-box strong { color: var(--primary, #175c36); }
+.dose-box strong { color: var(--primary, var(--color-primary)); }

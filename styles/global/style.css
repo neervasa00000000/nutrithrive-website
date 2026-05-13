@@ -5,82 +5,8 @@ html {
     box-sizing: inherit;
 }
 
-:root {
-    --bg: #f8f5ec;
-    --card: #fffdfa;
-    --primary: #175c36;
-    --accent: #7B541F;
-    --footer-bg: #175c36;
-    --footer-text: #ffffff;
-    --text: #1a2e22;
-    --muted: #5A6D5D;
-    --radius: 18px;
-    --shadow: 0 4px 24px 0 rgba(23,92,54,0.07);
-    --transition: 0.4s cubic-bezier(.4,2,.6,1);
-}
-
 /* Prevent layout shift between pages with/without vertical scrollbar */
 html { overflow-y: scroll; scrollbar-gutter: stable both-edges; }
-
-/* Make major headings readable in dark theme */
-    color: #FFFFFF;
-}
-
-/* Other section headings in dark theme */
-    color: #FFFFFF;
-}
-
-/* Consistent header/nav sizing across all pages */
-header .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.2rem 2rem;
-}
-
-/* Dark theme: make all general text light */
-  --text: #EDEDED;
-  --muted: #D0D0D0;
-}
-  color: var(--text) !important;
-}
-
-/* Dark theme: make FAQ titles/questions green for visibility */
-  color: var(--primary) !important;
-}
-  border-bottom-color: rgba(237,237,237,0.25);
-}
-header .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-header .nav-links a {
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-/* Transparent alt buttons should be legible on dark */
-
-/* All text should be white in alternate theme */
-    color: #FFFFFF !important;
-}
-
-/* Clickable elements with light black background and white text */
-    background-color: #1A1A1A !important;
-    color: #FFFFFF !important;
-    border-color: #333333 !important;
-}
-
-    background-color: #2A2A2A !important;
-    color: #FFFFFF !important;
-}
-
-/* Blog titles should be green for better readability */
-    color: #175c36 !important;
-}
 
 @keyframes float {
     0% { transform: translateY(0px); }
@@ -362,7 +288,7 @@ body.products-page .hero .hero-btn.alt {
 
 .feature-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 48px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 16px 48px 0 rgba(15,107,77,0.10);
 }
 
 .feature-icon {
@@ -561,7 +487,7 @@ body.products-page .hero .hero-btn.alt {
 
 .testimonial-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 48px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 16px 48px 0 rgba(15,107,77,0.10);
 }
 
 .testimonial-rating {
@@ -644,23 +570,23 @@ body.products-page .hero .hero-btn.alt {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    background: #175c36 !important;
+    background: var(--color-primary) !important;
     color: #fff !important;
-    border: 2px solid #175c36 !important;
+    border: 2px solid var(--color-primary) !important;
     font-weight: 700;
     text-decoration: none !important;
 }
 
 .btn-secondary {
     background: #fffdfa !important;
-    color: #175c36 !important;
-    border: 2px solid #175c36 !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary) !important;
     font-weight: 700;
 }
 
 .btn:hover, .btn-secondary:hover {
     filter: brightness(0.95);
-    box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10);
+    box-shadow: 0 2px 8px 0 rgba(15,107,77,0.10);
 }
 
 .add-to-cart-btn {
@@ -1116,7 +1042,7 @@ footer {
 
     .nav-links a:hover,
     .nav-links a.active {
-        background-color: rgba(23, 92, 54, 0.1);
+        background-color: rgba(15, 107, 77, 0.1);
         color: var(--accent);
         text-decoration: none;
         box-shadow: none;
@@ -1212,7 +1138,7 @@ footer {
     .about-title {
         font-size: 1.45rem;
         font-weight: 900;
-        color: #175c36;
+        color: var(--color-primary);
         margin-bottom: 1.2rem;
         margin-top: 0;
         letter-spacing: -0.5px;
@@ -1244,7 +1170,7 @@ footer {
         width: 100%;
         max-width: 320px;
         border-radius: 12px;
-        box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+        box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
         margin: 0 auto;
         display: block;
     }
@@ -1914,7 +1840,7 @@ body.blog-moringa-tree .btn-secondary:hover {
 .roadmap-title {
   font-size: 3.5rem;
   font-weight: 900;
-  color: #175c36;
+  color: var(--color-primary);
   margin-bottom: 3.5rem;
   text-align: center;
   letter-spacing: -2px;
@@ -1974,7 +1900,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   filter: none;
   font-size: 1.15rem;
   font-weight: 600;
-  color: #175c36;
+  color: var(--color-primary);
   min-width: 220px;
   transition: opacity 0.6s cubic-bezier(.4,2,.6,1), transform 0.6s cubic-bezier(.4,2,.6,1);
 }
@@ -2047,7 +1973,7 @@ body.blog-moringa-tree .btn-secondary:hover {
 .features-section.features-clean .feature h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #175c36;
+  color: var(--color-primary);
   margin-bottom: 0.7rem;
 }
 .features-section.features-clean .feature p {
@@ -2068,8 +1994,8 @@ body.blog-moringa-tree .btn-secondary:hover {
   .features-section.features-clean .feature {
     background: #f8f5ec;
     border-radius: 14px;
-    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
-    border-left: 5px solid #175c36;
+    box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
+    border-left: 5px solid var(--color-primary);
     padding: 1.2rem 1rem 1.2rem 1.3rem;
     margin: 0;
     text-align: left;
@@ -2078,7 +2004,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   .features-section.features-clean .feature h3 {
     font-size: 1.18rem;
     font-weight: 800;
-    color: #175c36;
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
     margin-top: 0;
     letter-spacing: -0.5px;
@@ -2095,7 +2021,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   .about-title {
     font-size: 1.7rem;
     font-weight: 900;
-    color: #175c36;
+    color: var(--color-primary);
     margin-bottom: 1.3rem;
     margin-top: 0;
     letter-spacing: -0.5px;
@@ -2125,7 +2051,7 @@ body.blog-moringa-tree .btn-secondary:hover {
     width: 100%;
     max-width: 320px;
     border-radius: 12px;
-    box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+    box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
     margin: 0 auto;
     display: block;
   }

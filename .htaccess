@@ -313,6 +313,7 @@ RedirectMatch 301 ^/moringa-benefits/?$ /blog/how-to-add-moringa-to-diet.html
 RedirectMatch 301 ^/about-us/?$ /pages/about/about.html
 RedirectMatch 301 ^/reviews/?$ /products/
 RedirectMatch 301 ^/recipes/high-protein-smoothies\.pdf$ https://nutrithrive.com.au/
+RedirectMatch 301 ^/assets/lab-report\.pdf$ /documents/nutrithrive-lab-report-summary.pdf
 # Blog redirects - handle URLs with .html extension first (exact match)
 RedirectMatch 301 ^/pages/blog/(.+\.html)$ /blog/$1
 # Then handle URLs without .html extension (add .html)

@@ -5,6 +5,8 @@
     background: #f8f5ec;
     color: #1a2e22;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 .product-main {
@@ -87,10 +89,11 @@
 }
 
 .product-description {
-    font-size: 1.1rem;
-    color: #374151;
-    line-height: 1.7;
+    font-size: 1.0625rem;
+    color: #1f2937;
+    line-height: 1.75;
     margin: 0;
+    letter-spacing: 0.01em;
 }
 
 .product-location {
@@ -301,6 +304,53 @@
     color: #5A6D5D;
 }
 
+/* Lab report — prominent, accessible CTA */
+.lab-report-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(26, 46, 34, 0.1);
+}
+
+.lab-report-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1.25rem;
+    background: #fff;
+    color: #2d5a3d;
+    border: 2px solid #2d5a3d;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.lab-report-btn:hover {
+    background: #2d5a3d;
+    color: #fff;
+}
+
+.lab-report-btn:focus-visible {
+    outline: 2px solid #2d5a3d;
+    outline-offset: 2px;
+}
+
+.lab-report-note {
+    font-size: 0.8125rem;
+    color: #5A6D5D;
+    line-height: 1.45;
+    text-align: center;
+}
+
 /* Reviews Section */
 .reviews-section {
     padding: 3rem 1.5rem;
@@ -408,9 +458,9 @@
 
 .feature-item p {
     margin: 0;
-    color: #374151;
-    line-height: 1.7;
-    font-size: 0.95rem;
+    color: #1f2937;
+    line-height: 1.75;
+    font-size: 1rem;
 }
 
 /* Benefits Section */
@@ -520,9 +570,9 @@
 }
 
 .comparison-cell {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #374151;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #1f2937;
 }
 
 .comparison-cell strong {
@@ -999,7 +1049,7 @@
 
 /* === Urgency Banner === */
 .urgency-banner {
-    background: linear-gradient(135deg, #0f6b4d 0%, #0a4d36 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     padding: 10px 20px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
@@ -1029,12 +1079,12 @@
     padding: 1.1rem 1.25rem;
     background: #f0f7f4;
     border-radius: 8px;
-    border-left: 3px solid #175c36;
+    border-left: 3px solid var(--color-primary);
 }
 .why-buy-today h3 {
     font-size: 0.9rem;
     font-weight: 700;
-    color: #175c36;
+    color: var(--color-primary);
     margin: 0 0 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -1052,4 +1102,4 @@
     color: #374151;
     line-height: 1.5;
 }
-.why-buy-today ul li strong { color: #175c36; }
+.why-buy-today ul li strong { color: var(--color-primary); }

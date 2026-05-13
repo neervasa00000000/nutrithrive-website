@@ -1,0 +1,213 @@
+/*
+  NutriThrive design tokens — aligned with root index homepage (cream UI, Inter, #0f6b4d brand).
+  Load this before /styles/global/style.css and page CSS.
+*/
+
+:root {
+  /* Brand & homepage surfaces */
+  --color-primary: #0f6b4d;
+  --color-primary-dark: #0a4d36;
+  --color-primary-light: #e8f5f1;
+  --color-text: #1a2e22;
+  --color-text-light: #5a6d5d;
+  --color-text-muted: #6c757d;
+  --color-bg: #f8f5ec;
+  --color-bg-alt: #fffdfa;
+  --color-accent: #7b541f;
+  --color-border-soft: #ece7db;
+
+  /* Spacing scale (8 / 16 / 24 / 32 / 48 px) */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Typography — match homepage (Inter) */
+  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  --radius-sm: 0.5rem;
+  --radius: 1.125rem;
+  --radius-lg: 1.125rem;
+  --shadow: 0 4px 24px 0 rgba(15, 107, 77, 0.07);
+  --shadow-hover: 0 8px 32px 0 rgba(15, 107, 77, 0.12);
+  --transition: 0.4s cubic-bezier(0.4, 2, 0.6, 1);
+
+  /* Legacy names used across style.css / homepage.css / blog.css */
+  --bg: var(--color-bg);
+  --card: var(--color-bg-alt);
+  --primary: var(--color-primary);
+  --accent: var(--color-accent);
+  --footer-bg: var(--color-primary);
+  --footer-text: #ffffff;
+  --text: var(--color-text);
+  --muted: var(--color-text-light);
+  --border-light: rgba(15, 107, 77, 0.1);
+  --surface-elevated: #ffffff;
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  --gradient-accent: linear-gradient(135deg, #7b541f 0%, #5a3e15 100%);
+
+  /* Containers */
+  --container-max: 1200px;
+  --container-wide: 1280px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  line-height: 1.6;
+  background: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 2.7rem);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+/* Unified CTAs — homepage + inner pages (avoid bare `button.btn` used in Labs tools) */
+a.btn:not(.btn-secondary):not(.btn-outline):not(.secondary),
+.btn-primary,
+.hero-btn,
+.add-to-cart-btn,
+.checkout-btn,
+.thank-you-btn:not(.secondary),
+.about-btn-primary,
+.btn-solid,
+.btn-shop,
+.hero-ctas__secondary,
+.about-btn-secondary,
+.btn-outline,
+.btn-view-all,
+.lab-report-btn {
+  font-family: var(--font-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+a.btn:not(.btn-secondary):not(.btn-outline):not(.secondary),
+.btn-primary,
+.hero-btn:not(.alt),
+.add-to-cart-btn,
+.checkout-btn,
+.thank-you-btn:not(.secondary),
+.about-btn-primary,
+.btn-solid,
+.btn-shop {
+  padding: 0.875rem 1.75rem;
+  font-weight: 700;
+  background: var(--color-primary);
+  color: #fff;
+  border: 2px solid var(--color-primary);
+}
+
+a.btn:not(.btn-secondary):not(.btn-outline):not(.secondary):hover,
+.btn-primary:hover,
+.hero-btn:not(.alt):hover,
+.add-to-cart-btn:hover,
+.checkout-btn:hover,
+.thank-you-btn:not(.secondary):hover,
+.about-btn-primary:hover,
+.btn-solid:hover,
+.btn-shop:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.hero-ctas__secondary,
+.about-btn-secondary,
+.thank-you-btn.secondary,
+.hero-btn.alt,
+.btn-outline {
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.hero-ctas__secondary:hover,
+.about-btn-secondary:hover,
+.thank-you-btn.secondary:hover,
+.hero-btn.alt:hover,
+.btn-outline:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-view-all {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  font-weight: 600;
+}
+
+.btn-view-all:hover {
+  background: var(--color-primary-light);
+}
+
+.lab-report-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid var(--border-light);
+  font-weight: 600;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.section {
+  padding: var(--spacing-xl) 0;
+}

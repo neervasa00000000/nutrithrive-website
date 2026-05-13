@@ -64,7 +64,7 @@
 }
 
 .about-hero-highlight {
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 .about-hero-subtitle {
@@ -89,19 +89,19 @@
     padding: 0.85rem 1.8rem;
     border-radius: 999px;
     border: none;
-    background: var(--primary, #175c36);
+    background: var(--primary, var(--color-primary));
     color: #fff;
     font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 4px 20px rgba(23, 92, 54, 0.25);
+    box-shadow: 0 4px 20px rgba(15, 107, 77, 0.25);
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .about-btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 28px rgba(23, 92, 54, 0.35);
+    box-shadow: 0 8px 28px rgba(15, 107, 77, 0.35);
     background: #1a6b3d;
 }
 
@@ -111,9 +111,9 @@
     justify-content: center;
     padding: 0.8rem 1.5rem;
     border-radius: 999px;
-    border: 2px solid var(--primary, #175c36);
+    border: 2px solid var(--primary, var(--color-primary));
     background: transparent;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
     font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
@@ -122,7 +122,7 @@
 }
 
 .about-btn-secondary:hover {
-    background: rgba(23, 92, 54, 0.08);
+    background: rgba(15, 107, 77, 0.08);
     transform: translateY(-1px);
 }
 
@@ -137,9 +137,9 @@
     font-weight: 500;
     padding: 0.4rem 0.8rem;
     border-radius: 999px;
-    background: rgba(23, 92, 54, 0.08);
+    background: rgba(15, 107, 77, 0.08);
     color: var(--text, #1a2e22);
-    border: 1px solid rgba(23, 92, 54, 0.15);
+    border: 1px solid rgba(15, 107, 77, 0.15);
 }
 
 .about-hero-aside {
@@ -177,7 +177,7 @@
 
 .about-hero-points strong {
     font-weight: 600;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 /* ============================
@@ -206,7 +206,7 @@
     font-size: 1.05rem;
     font-weight: 600;
     margin: 0 0 0.55rem 0;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 .about-band-item p {
@@ -263,7 +263,7 @@
     font-size: 1.15rem;
     font-weight: 700;
     margin: 0 0 0.8rem 0;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 .about-story-panel ul {
@@ -289,7 +289,7 @@
     position: absolute;
     left: 0;
     top: 0.2rem;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 /* ============================
@@ -336,7 +336,7 @@
     width: 2.1rem;
     height: 2.1rem;
     border-radius: 999px;
-    background: var(--primary, #175c36);
+    background: var(--primary, var(--color-primary));
     color: #fff;
     font-weight: 700;
     font-size: 0.9rem;
@@ -392,7 +392,7 @@
     font-size: 1.02rem;
     font-weight: 700;
     margin: 0 0 0.45rem 0;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 .about-value-col p {
@@ -451,7 +451,7 @@
 }
 
 .about-cta-inner .about-btn-primary {
-    box-shadow: 0 4px 20px rgba(23, 92, 54, 0.25);
+    box-shadow: 0 4px 20px rgba(15, 107, 77, 0.25);
 }
 
 /* ============================
@@ -484,7 +484,7 @@
 
 .about-guides-nav h3 {
     margin-top: 0;
-    color: #175c36;
+    color: var(--color-primary);
     font-size: 1.05rem;
 }
 
@@ -621,7 +621,7 @@
 }
 
 .about-breadcrumbs a {
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
     text-decoration: none;
     font-weight: 600;
 }
@@ -656,8 +656,8 @@
     padding: 1rem 1rem 1.05rem;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(23, 92, 54, 0.12);
-    box-shadow: 0 2px 12px rgba(23, 92, 54, 0.06);
+    border: 1px solid rgba(15, 107, 77, 0.12);
+    box-shadow: 0 2px 12px rgba(15, 107, 77, 0.06);
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -748,7 +748,7 @@
 .about-price-card {
     padding: 1.35rem 1.4rem 1.5rem;
     border-radius: 16px;
-    border: 1px solid rgba(23, 92, 54, 0.14);
+    border: 1px solid rgba(15, 107, 77, 0.14);
     background: rgba(255, 255, 255, 0.85);
     display: flex;
     flex-direction: column;
@@ -756,15 +756,15 @@
 }
 
 .about-price-card--us {
-    border-color: rgba(23, 92, 54, 0.28);
-    box-shadow: 0 4px 22px rgba(23, 92, 54, 0.08);
+    border-color: rgba(15, 107, 77, 0.28);
+    box-shadow: 0 4px 22px rgba(15, 107, 77, 0.08);
 }
 
 .about-price-card h3 {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 .about-price-tag {
@@ -832,7 +832,7 @@
     gap: 0.35rem;
     padding: 1.15rem 1.2rem 1.25rem;
     border-radius: 14px;
-    border: 1px solid rgba(23, 92, 54, 0.12);
+    border: 1px solid rgba(15, 107, 77, 0.12);
     background: rgba(255, 255, 255, 0.75);
     text-decoration: none;
     color: inherit;
@@ -840,14 +840,14 @@
 }
 
 .about-learn-card:hover {
-    border-color: rgba(23, 92, 54, 0.35);
-    box-shadow: 0 6px 24px rgba(23, 92, 54, 0.1);
+    border-color: rgba(15, 107, 77, 0.35);
+    box-shadow: 0 6px 24px rgba(15, 107, 77, 0.1);
     transform: translateY(-2px);
 }
 
 .about-learn-card strong {
     font-size: 1rem;
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
 }
 
 .about-learn-card span:last-child {
@@ -869,7 +869,7 @@
 }
 
 .about-cta-v2 .about-cta-note a {
-    color: var(--primary, #175c36);
+    color: var(--primary, var(--color-primary));
     font-weight: 600;
 }
 
