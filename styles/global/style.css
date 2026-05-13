@@ -58,6 +58,13 @@ header {
     transition: background var(--transition);
 }
 
+/* Top announcement strips — solid brand green (no gradients) */
+header .urgency-banner,
+body.products-page > .promo-bar {
+    background-color: var(--color-primary, #0f6b4d);
+    background-image: none;
+}
+
 .navbar {
     display: flex;
     align-items: center;
