@@ -348,16 +348,16 @@
       }
       .btn-primary {
         width: 100%;
-        background: var(--forest);
-        color: #fff;
+        background: transparent;
+        color: var(--forest);
         font-weight: 800;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        border: none;
+        border: 2px solid var(--forest);
         border-radius: 6px;
         padding: 0.75rem 1rem;
         cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.25s ease, background-color 0.2s ease;
+        transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -366,8 +366,8 @@
         font-size: 0.8rem;
       }
       .btn-primary:hover {
-        background: #0f5230;
-        box-shadow: 0 12px 28px rgba(23, 92, 54, 0.22);
+        background: var(--forest);
+        color: #fff;
         transform: translateY(-1px);
       }
       .qty-badge,
