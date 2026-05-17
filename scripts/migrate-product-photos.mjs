@@ -10,7 +10,8 @@ import { fileURLToPath } from 'url';
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const PRODUCT_REPLACEMENTS = [
-  ['homepage/product-showcase/thumbs/new3+1.webp', 'product_photos/3+1.jpeg'],
+  ['homepage/product-showcase/thumbs/new3+1.webp', 'product_photos/moringa-400g-bundle.jpeg'],
+  ['product_photos/3+1.jpeg', 'product_photos/moringa-400g-bundle.jpeg'],
   ['homepage/product-showcase/thumbs/moringasoap_combo.webp', 'product_photos/moringasoapcombo.jpeg'],
   ['homepage/product-showcase/moringasoap_combo.webp', 'product_photos/moringasoapcombo.jpeg'],
   ['homepage/product-showcase/thumbs/moringa_soap.webp', 'product_photos/soap.jpeg'],
@@ -26,8 +27,8 @@ const PRODUCT_REPLACEMENTS = [
   ['homepage/product-showcase/thumbs/Moringa.webp', 'product_photos/moringa.jpeg'],
   ['homepage/product-showcase/Moringa.webp', 'product_photos/moringa.jpeg'],
   // legacy products folder (if any refs appear later)
-  ['images/products/thumbs/new3+1.webp', 'product_photos/3+1.jpeg'],
-  ['images/products/new3+1.webp', 'product_photos/3+1.jpeg'],
+  ['images/products/thumbs/new3+1.webp', 'product_photos/moringa-400g-bundle.jpeg'],
+  ['images/products/new3+1.webp', 'product_photos/moringa-400g-bundle.jpeg'],
   ['images/products/moringa_soap.webp', 'product_photos/soap.jpeg'],
   ['images/products/Moringa.webp', 'product_photos/moringa.jpeg'],
 ];

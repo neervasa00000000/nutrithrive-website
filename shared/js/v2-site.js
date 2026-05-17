@@ -28,6 +28,10 @@
 
   const D = () => window.NT_SITE_DATA;
   const C = () => window.CartV2;
+  function productImg(src) {
+    const url = D()?.productImageUrl?.(src);
+    return url || src || '';
+  }
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const money = (n) => `$${Number(n).toFixed(2)}`;
@@ -326,7 +330,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
   <div class="relative group">
     <div class="aspect-[4/5] rounded-xl overflow-hidden bg-white shadow-sm border border-forest-deep/5">
-      <img id="nt-pdp-image" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${p.image}" loading="lazy"/>
+      <img id="nt-pdp-image" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${productImg(p.image)}" loading="lazy"/>
     </div>
     ${labBadge}
   </div>
@@ -354,7 +358,7 @@
           <span class="nt-qty-value" data-nt-qty aria-live="polite">1</span>
           <button type="button" data-nt-qty-plus class="nt-qty-btn" aria-label="Increase quantity"><span class="material-symbols-outlined">add</span></button>
         </div>
-        <button type="button" id="nt-pdp-add" data-add-cart="${p.id}" data-name="${escAttr(p.name)}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${escAttr(p.image)}" data-tag="${escAttr(p.tag || '')}" data-weight="${p.weight ?? ''}" class="nt-add-cart-btn flex-1 bg-terracotta-clay text-pure-white font-bold py-4 rounded-lg hover:brightness-110 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer">
+        <button type="button" id="nt-pdp-add" data-add-cart="${p.id}" data-name="${escAttr(p.name)}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${escAttr(productImg(p.image))}" data-tag="${escAttr(p.tag || '')}" data-weight="${p.weight ?? ''}" class="nt-add-cart-btn flex-1 bg-terracotta-clay text-pure-white font-bold py-4 rounded-lg hover:brightness-110 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined pointer-events-none">shopping_cart</span> Add to Cart
         </button>
       </div>
@@ -810,7 +814,7 @@
     return `
 <article id="${p.id}" class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col">
   <a href="${href}" class="block relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
-    <img alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${p.image}" loading="lazy"/>
+    <img alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${productImg(p.image)}" loading="lazy"/>
     <span class="absolute top-4 left-4 bg-moringa-leaf text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">${p.badge || 'New'}</span>
   </a>
   <div class="p-6 flex flex-col flex-grow">
@@ -821,7 +825,7 @@
         <span class="text-terracotta-clay font-bold text-lg">${money(p.price)}</span>
         ${wasBlock}
       </div>
-      <button type="button" data-add-cart="${p.id}" data-name="${cartName.replace(/"/g, '&quot;')}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${p.image}" data-tag="${tag.replace(/"/g, '&quot;')}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart">
+      <button type="button" data-add-cart="${p.id}" data-name="${cartName.replace(/"/g, '&quot;')}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${productImg(p.image)}" data-tag="${tag.replace(/"/g, '&quot;')}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart">
         <span class="material-symbols-outlined text-[20px] pointer-events-none">add_shopping_cart</span>
       </button>
     </div>
@@ -850,7 +854,7 @@
     return `
 <article class="nt-carousel-card group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
   <a href="${href}" class="nt-card-media block relative overflow-hidden bg-surface-variant/20">
-    <img alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${p.image}" loading="lazy"/>
+    <img alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${productImg(p.image)}" loading="lazy"/>
     <span class="absolute top-4 left-4 bg-moringa-leaf text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase z-[1]">${p.badge || 'New'}</span>
   </a>
   <div class="nt-card-body p-6 flex flex-col">
@@ -861,7 +865,7 @@
         <span class="text-terracotta-clay font-bold text-lg leading-tight">${money(p.price)}</span>
         ${wasLine}
       </div>
-      <button type="button" data-add-cart="${p.id}" data-name="${p.name}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${p.image}" data-tag="${p.tag || ''}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors shrink-0 relative z-20 cursor-pointer" aria-label="Add ${p.name} to cart">
+      <button type="button" data-add-cart="${p.id}" data-name="${p.name}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${productImg(p.image)}" data-tag="${p.tag || ''}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors shrink-0 relative z-20 cursor-pointer" aria-label="Add ${p.name} to cart">
         <span class="material-symbols-outlined text-[20px] pointer-events-none">add_shopping_cart</span>
       </button>
     </div>
