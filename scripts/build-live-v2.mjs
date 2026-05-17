@@ -32,8 +32,7 @@ const PAGE_MAP = [
   { test: 'contact-thank-you-test.html', live: 'pages/contact/thank-you.html', blogArticles: false, cart: false },
   { test: 'newsletter-test.html', live: 'pages/newsletter/index.html', blogArticles: false, cart: false, newsletterLive: true },
   { test: 'newsletter-thank-you-test.html', live: 'pages/newsletter/thank-you.html', blogArticles: false, cart: false },
-  { test: 'melbourne-test.html', live: 'pages/homepage/melbourne.html', blogArticles: false, cart: false },
-  { test: 'melbourne-test.html', live: 'pages/melbourne-page.html', blogArticles: false, cart: false },
+  // Melbourne pages use the legacy design-system layout (pages/homepage/melbourne.html) — not v2 shell.
 ];
 
 const REDIRECT_STUB_PAGES = [
