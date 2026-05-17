@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html class="light" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
 <script src="../scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
@@ -43,11 +42,11 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link rel="dns-prefetch" href="https://www.google-analytics.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
- <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
- <link rel="stylesheet" href="../styles/global/style.css">
- <link rel="stylesheet" href="../blog/blog.css">
- <link rel="stylesheet" href="../styles/global/newsletter-popup.css">
+
+ 
+ 
+ 
+ 
  <!-- Favicons - Standardized across all pages -->
  <link rel="icon" type="image/png" href="../assets/images/logo/LOGO.webp" sizes="32x32">
  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/LOGO.webp">
@@ -276,31 +275,89 @@
 }
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"NutriThrive Blog | Moringa, Curry Leaves & AU Wellness","url":"https://nutrithrive.com.au/blog/","isPartOf":{"@type":"WebSite","name":"NutriThrive","url":"https://nutrithrive.com.au/"},"publisher":{"@type":"Organization","name":"NutriThrive","logo":{"@type":"ImageObject","url":"https://nutrithrive.com.au/assets/images/logo/LOGO.webp"}}}</script>
-</head>
-<body class="blog-index-page">
- <header>
- <div class="navbar">
- <a href="/" class="logo">
- <img src="../assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
- NutriThrive
- </a>
- <nav class="nav-links">
- <a href="/">Home</a>
- <a href="/products/">Products</a>
- <a href="/about">About</a>
- <a href="/contact">Contact</a>
- <a href="/blog/" class="active">Blog</a>
- </nav>
- <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
- <div class="line1"></div>
- <div class="line2"></div>
- <div class="line3"></div>
- </button>
- </div>
- </header>
 
- <main>
- <section style="text-align: center; padding: 4rem 2rem 3rem; max-width: 1200px; margin: 0 auto;">
+<!-- Nutri Thrive v2 blog shell -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
+        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
+        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
+        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
+        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
+        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
+        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
+        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
+        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
+        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
+        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
+        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
+        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
+        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
+        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
+        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: {
+        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
+        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
+      },
+      fontFamily: {
+        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
+        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
+      }
+    }
+  }
+};
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+body { background-color: #FDF9EE; color: #1C1C15; -webkit-font-smoothing: antialiased; }
+</style>
+<link href="../blog/blog-v2-index.css" rel="stylesheet"/>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-base" href="/">
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto"/>
+<span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-label-lg text-forest-deep/80 hover:text-moringa-leaf" href="/products/">Shop</a>
+<a class="font-label-lg text-forest-deep/80 hover:text-moringa-leaf" href="/pages/about/about.html">About</a>
+<a class="font-label-lg text-moringa-leaf border-b-2 border-moringa-leaf font-semibold" href="/blog/">Blog</a>
+<a class="font-label-lg text-forest-deep/80 hover:text-moringa-leaf" href="/contact">Contact</a>
+</div>
+<a class="material-symbols-outlined text-forest-deep p-2 rounded-full" href="/pages/shop/cart.html">shopping_bag</a>
+</div>
+</nav>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop blog-v2-index">
+<section class="text-center mb-12">
+<p class="font-label-sm uppercase tracking-wider text-moringa-leaf font-bold mb-3">Wellness Journal</p>
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-4">Find and Explore Our Blogs</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Moringa guides, Melbourne wellness stories, and evidence-led nutrition for Australia.</p>
+</section>
+<section style="text-align: center; padding: 4rem 2rem 3rem; max-width: 1200px; margin: 0 auto;">
  <h1 style="font-size: 3rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem; letter-spacing: -1px;">Blog</h1>
  <h2 style="font-size: 1.5rem; font-weight: 600; color: var(--muted); margin-bottom: 2rem;">Find and Explore Our Blogs</h2>
  <p style="max-width: 760px; margin: 0 auto; color: var(--muted); line-height: 1.7;">
@@ -843,67 +900,14 @@
  <p style="font-size: 0.85rem; color: var(--muted, #5A6D5D); margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
  </form>
  </section>
-
- </main>
-
- <footer>
- <div class="footer-content">
- <div class="footer-section">
- <h3>About NutriThrive</h3>
- <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
- </div>
- <div class="footer-section">
- <h3>Shopping</h3>
- <ul class="footer-links">
- <li><a href="/">Home</a></li>
- <li><a href="/products/">Products</a></li>
- <li><a href="/cart">Cart</a></li>
- <li><a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a></li>
- </ul>
- </div>
- <div class="footer-section">
- <h3>Help &amp; Info</h3>
- <ul class="footer-links">
-<li><a href="/privacy-policy">Privacy Policy</a></li>
- <li><a href="/contact">Contact</a></li>
- <li><a href="/faq">FAQ</a></li>
- <li><a href="/about">About</a></li>
-<li><a href="/melbourne">Moringa in Melbourne</a></li>
-<li><a href="/blog/">Blog</a></li>
-<li><a href="/pages/newsletter/">Newsletter</a></li>
- <li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li>
- <li><a href="/nutrithrive_labs/">NutriThrive Labs (browser tools)</a></li> </ul>
- </div>
- <div class="footer-section">
- <h3>Contact Us</h3>
- <ul class="footer-links">
- <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
- <li><a href="tel:+61438201419">+61 438201419</a></li>
- </ul>
- </div>
- <div class="footer-section">
- <h3>Business Info</h3>
- <ul class="footer-links">
- <li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
-<li>Based in Truganina, Melbourne, VIC (Australia)<br>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br>Worldwide Shipping Available 🌍</li>
- <li>Monday - Sunday</li>
- <li>9:00 AM - 11:00 PM</li>
- </ul>
- </div>
- </div>
- <div class="footer-bottom">
- <div class="footer-bottom-container">
- <p>&copy; 2026 NutriThrive. All rights reserved.</p>
- </div>
- </div>
- </footer>
-
- <script src="../scripts/global/cart.js"></script>
- <script src="../scripts/global/cart-header.js"></script>
- <script src="../scripts/global/script.js" defer></script>
- <script src="../blog/blog.js" defer></script>
- 
- <script>
+</main>
+<footer class="bg-forest-deep text-pure-white pt-section-gap pb-base mt-12">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center text-sm opacity-80">
+<span class="font-display text-headline-md text-primary-fixed block mb-2">Nutri Thrive</span>
+<p>© 2026 Nutri Thrive · Melbourne, Australia</p>
+</div>
+</footer>
+<script>
         // Blog Pagination
         document.addEventListener('DOMContentLoaded', function() {
             // Wait a bit to ensure DOM is fully loaded
@@ -1219,7 +1223,7 @@
             });
         })();
     </script>
- <script>
+<script>
         if (window.DeferLoader) {
             window.DeferLoader.deferUntilIdle(function() {
                 var s = document.createElement('script');
@@ -1234,6 +1238,6 @@
             document.body.appendChild(s);
         }
     </script>
- <script src="../scripts/global/newsletter-popup.js" defer></script>
+<script src="../scripts/global/newsletter-popup.js" defer></script>
 </body>
-</html> 
+</html>

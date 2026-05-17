@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-
-<html lang="en-AU">
+<html class="light" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
 <script src="../scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
@@ -72,589 +70,11 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://www.google-analytics.com" rel="dns-prefetch"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/></noscript>
-<link href="blog.css" rel="stylesheet"/>
+
+
+
 <!-- Medical News Today Style Mobile Responsive -->
-<style>
-        /* Base mobile-first styles */
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        /* Desktop Optimization - Wider content, optimal reading width */
-        @media screen and (min-width: 769px) {
-            .blog-post-content, article {
-                max-width: 900px !important;
-                margin: 0 auto !important;
-                padding: 0 2rem !important;
-            }
-            
-            .blog-post-content p, article p {
-                font-size: 1.125rem !important;
-                line-height: 1.8 !important;
-                max-width: 100% !important;
-                margin-bottom: 1.5rem !important;
-            }
-            
-            h2 {
-                font-size: 2rem !important;
-                line-height: 1.3 !important;
-                margin: 3rem 0 1.5rem 0 !important;
-            }
-            
-            h3 {
-                font-size: 1.5rem !important;
-                line-height: 1.4 !important;
-                margin: 2rem 0 1rem 0 !important;
-            }
-            
-            /* Table of Contents - Clean, no box */
-            #table-of-contents {
-                background: transparent !important;
-                border: none !important;
-                padding: 2rem 0 !important;
-                margin: 2rem 0 !important;
-            }
-            
-            #table-of-contents h2 {
-                color: #1a1a1a !important;
-                font-size: 1.75rem !important;
-            }
-            
-            #table-of-contents h3 {
-                color: #333 !important;
-                font-size: 1.1rem !important;
-            }
-            
-            #table-of-contents a {
-                color: #175c36 !important;
-            }
-        }
-        
-        /* Mobile styles - Medical News Today inspired */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 0;
-                margin: 0;
-            }
-            
-            /* Header mobile */
-            header {
-                padding: 1rem !important;
-                position: sticky;
-                top: 0;
-                background: white;
-                z-index: 100;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
-            
-            .navbar, header .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-            
-            .nav-links, header .nav-links {
-                display: none !important;
-            }
-            
-            /* Blog hero mobile */
-            .blog-hero, .blog-post-header {
-                padding: 1.5rem 1rem !important;
-                margin: 0 !important;
-            }
-            
-            .blog-hero h1, .blog-post-header h1, article h1, .blog-post-content h1 {
-                font-size: 1.75rem !important;
-                line-height: 1.3 !important;
-                font-weight: 700;
-                color: #1a1a1a;
-                margin: 0 0 1rem 0 !important;
-                padding: 0 !important;
-            }
-            
-            /* Content container mobile */
-            .blog-content, .blog-post-content, main article {
-                padding: 0 1rem !important;
-                max-width: 100% !important;
-                margin: 0 auto !important;
-            }
-            
-            /* Paragraphs mobile - Medical News Today style */
-            .blog-content p, .blog-post-content p, article p, main p {
-                font-size: 1.0625rem !important;
-                line-height: 1.75 !important;
-                margin-bottom: 1.25rem !important;
-                color: #333;
-                max-width: 100%;
-                word-wrap: break-word;
-            }
-            
-            .blog-content p strong, .blog-post-content p strong, article p strong {
-                font-weight: 700;
-                color: #1a1a1a;
-            }
-            
-            /* Links mobile */
-            .blog-content a, .blog-post-content a, article a {
-                color: #2d5a3d !important;
-                text-decoration: underline;
-                word-break: break-word;
-            }
-            
-            .blog-content a:hover, .blog-post-content a:hover {
-                color: #1e4029 !important;
-            }
-            
-            /* Headings mobile */
-            h2 {
-                font-size: 1.5rem !important;
-                line-height: 1.3 !important;
-                font-weight: 700 !important;
-                margin: 2rem 0 1rem 0 !important;
-                color: #1a1a1a;
-                padding: 0 !important;
-            }
-            
-            h3 {
-                font-size: 1.25rem !important;
-                line-height: 1.4 !important;
-                font-weight: 600 !important;
-                margin: 1.5rem 0 0.75rem 0 !important;
-                color: #1a1a1a;
-            }
-            
-            h4 {
-                font-size: 1.125rem !important;
-                font-weight: 600 !important;
-                margin: 1rem 0 0.5rem 0 !important;
-            }
-            
-            /* Lists mobile */
-            ul, ol {
-                padding-left: 1.5rem !important;
-                margin: 1rem 0 !important;
-            }
-            
-            li {
-                font-size: 1.0625rem !important;
-                line-height: 1.75 !important;
-                margin-bottom: 0.75rem !important;
-                color: #333;
-            }
-            
-            /* Cards Mobile - Stack vertically */
-            div[style*="grid-template-columns: repeat(auto-fit"] {
-                grid-template-columns: 1fr !important;
-                gap: 1.25rem !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            /* Individual card styling mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"] {
-                padding: 1.5rem 1rem !important;
-                margin: 1rem 0 !important;
-                border-radius: 12px !important;
-            }
-            
-            /* Buttons Mobile - Touch-friendly (minimum 44px) */
-            a[style*="padding: 12px 24px"],
-            a[style*="padding: 15px 30px"],
-            a[style*="padding: 16px 32px"],
-            a[style*="padding: 10px 20px"],
-            a[style*="padding: 8px 16px"],
-            a[style*="padding: 14px"] {
-                padding: 14px 24px !important;
-                font-size: 1rem !important;
-                min-height: 44px !important;
-                width: 100% !important;
-                text-align: center !important;
-                display: block !important;
-                margin: 0.75rem 0 !important;
-                border-radius: 8px !important;
-                font-weight: 600 !important;
-                text-decoration: none !important;
-            }
-            
-            /* Button containers mobile */
-            div[style*="display: flex"]:has(a[style*="padding"]) {
-                flex-direction: column !important;
-                gap: 0.75rem !important;
-            }
-            
-            /* Tables Mobile - Convert to cards */
-            table {
-                display: block !important;
-                width: 100% !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            table thead {
-                display: none !important;
-            }
-            
-            table tbody {
-                display: block !important;
-                width: 100% !important;
-            }
-            
-            table tr {
-                display: block !important;
-                margin-bottom: 1rem !important;
-                background: white !important;
-                border-radius: 8px !important;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-                padding: 1rem !important;
-                border: 1px solid #e0e0e0 !important;
-            }
-            
-            table td {
-                display: block !important;
-                padding: 0.75rem 0 !important;
-                text-align: left !important;
-                border: none !important;
-                font-size: 0.9375rem !important;
-                line-height: 1.5 !important;
-            }
-            
-            table td:not(:first-child):before {
-                content: attr(data-label) ": " !important;
-                font-weight: 600 !important;
-                display: inline !important;
-                color: #2d5a3d !important;
-                font-size: 0.875rem !important;
-                margin-right: 0.5rem !important;
-            }
-            
-            table td:first-child {
-                font-weight: 700 !important;
-                font-size: 1.0625rem !important;
-                color: #2d5a3d !important;
-                margin-bottom: 0.75rem !important;
-                padding-bottom: 0.75rem !important;
-                border-bottom: 2px solid #f0f0f0 !important;
-            }
-            
-            table td:first-child a {
-                font-size: 1.0625rem !important;
-            }
-            
-            /* Post meta mobile */
-            .post-meta {
-                font-size: 0.875rem !important;
-                margin-top: 0.5rem !important;
-            }
-            
-            /* Ensure proper spacing */
-            .blog-content > *,
-            .blog-post-content > *,
-            article > * {
-                max-width: 100% !important;
-                overflow-x: hidden !important;
-            }
-        }
 
-            /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"],
-            div[style*="background: #f8f9fa"],
-            div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
-            div[style*="background: linear-gradient(135deg, #f6fbf8"],
-            div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
-            }
-            
-            /* Remove decorative elements on mobile */
-            div[style*="position: absolute"],
-            div[style*="position:absolute"] {
-                display: none !important;
-            }
-            
-            /* Simplify product buy boxes */
-            div[style*="linear-gradient(135deg, #2d5a3d"] {
-                background: #2d5a3d !important;
-                border: none !important;
-                padding: 1.5rem 1rem !important;
-            }
-            
-            /* Remove borders from cards */
-            div[style*="border-left: 4px"],
-            div[style*="border: 1px"],
-            div[style*="border: 2px"],
-            div[style*="border: 3px"] {
-                border: none !important;
-            }
-
-            /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"],
-            div[style*="background: #f8f9fa"],
-            div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
-            div[style*="background: linear-gradient(135deg, #f6fbf8"],
-            div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
-            }
-            
-            /* Remove decorative elements on mobile */
-            div[style*="position: absolute"],
-            div[style*="position:absolute"] {
-                display: none !important;
-            }
-            
-            /* Simplify product buy boxes */
-            div[style*="linear-gradient(135deg, #2d5a3d"] {
-                background: #2d5a3d !important;
-                border: none !important;
-                padding: 1.5rem 1rem !important;
-            }
-            
-            /* Remove borders from cards */
-            div[style*="border-left: 4px"],
-            div[style*="border: 1px"],
-            div[style*="border: 2px"],
-            div[style*="border: 3px"] {
-                border: none !important;
-            }
-        
-        /* Small mobile devices */
-        @media screen and (max-width: 480px) {
-            .blog-hero h1, .blog-post-header h1, article h1 {
-                font-size: 1.5rem !important;
-            }
-            
-            h2 {
-                font-size: 1.375rem !important;
-            }
-            
-            h3 {
-                font-size: 1.125rem !important;
-            }
-            
-            .blog-content p, .blog-post-content p, article p {
-                font-size: 1rem !important;
-            }
-        }
-    
-        /* Desktop Layout Simplification - Remove excessive boxes, cards, and decorative elements */
-        @media screen and (min-width: 1024px) {
-            /* Remove all gradient backgrounds and decorative boxes */
-            .blog-post-content div[style*="background: linear-gradient"],
-            .blog-post-content div[style*="background: #f6fbf8"],
-            .blog-post-content div[style*="background: #fff3e0"],
-            .blog-post-content div[style*="background: #e8f5e9"],
-            .blog-post-content div[style*="background: #e3f2fd"],
-            .blog-post-content div[style*="background: #fff9c4"],
-            .blog-post-content div[style*="background: #f8f9fa"],
-            .blog-post-content div[style*="background: #fff8f0"],
-            .blog-post-content div[style*="background: rgba("],
-            .blog-post-content div[style*="background-color: #"],
-            .blog-post-content div[style*="background-color: rgba("],
-            .blog-post-content .card,
-            .blog-post-content .box,
-            .blog-post-content .poster,
-            .blog-post-content .food-card,
-            .blog-post-content .recipe-card,
-            .blog-post-content .snack-card,
-            .blog-post-content .benefit-card,
-            .blog-post-content .feature-card,
-            .blog-post-content .cta-box,
-            .blog-post-content .summary-box,
-            .blog-post-content .quick-answer-box,
-            .blog-post-content .highlight-box {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                border-radius: 0 !important;
-                padding: 0 !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            /* Remove nested box styling */
-            .blog-post-content div[style*="box-shadow"] {
-                box-shadow: none !important;
-            }
-            
-            .blog-post-content div[style*="border-left"],
-            .blog-post-content div[style*="border: 1px"],
-            .blog-post-content div[style*="border: 2px"],
-            .blog-post-content div[style*="border: 3px"],
-            .blog-post-content div[style*="border-radius"] {
-                border: none !important;
-                border-radius: 0 !important;
-            }
-            
-            /* Remove decorative pseudo-elements */
-            .blog-post-content div[style*="position: absolute"]::before,
-            .blog-post-content div[style*="position: absolute"]::after,
-            .blog-post-content .card::before,
-            .blog-post-content .card::after,
-            .blog-post-content .food-card::before,
-            .blog-post-content .food-card::after {
-                display: none !important;
-            }
-            
-            /* Ensure all text is readable (dark, not white) */
-            .blog-post-content div[style*="color: white"],
-            .blog-post-content div[style*="color: #fff"],
-            .blog-post-content div[style*="color: rgba(255"],
-            .blog-post-content div[style*="background: linear-gradient"] *,
-            .blog-post-content div[style*="background: rgba("] * {
-                color: #1a2e22 !important;
-            }
-            
-            /* Headings should be readable */
-            .blog-post-content h2[style*="color: white"],
-            .blog-post-content h2[style*="color: #fff"],
-            .blog-post-content h3[style*="color: white"],
-            .blog-post-content h3[style*="color: #fff"],
-            .blog-post-content h4[style*="color: white"],
-            .blog-post-content h4[style*="color: #fff"] {
-                color: #175c36 !important;
-            }
-            
-            /* Simplify tables - clean, flat design */
-            .blog-post-content table.blog-table,
-            .blog-post-content table {
-                width: 100%;
-                border-collapse: collapse;
-                background: transparent !important;
-                box-shadow: none !important;
-                border: 1px solid #e0e0e0 !important;
-                margin: 2rem 0 !important;
-            }
-            
-            .blog-post-content table thead {
-                background: transparent !important;
-                border-bottom: 2px solid #e0e0e0 !important;
-            }
-            
-            .blog-post-content table th {
-                padding: 0.75rem 1rem;
-                text-align: left;
-                font-weight: 700;
-                color: #1a2e22 !important;
-                background: transparent !important;
-            }
-            
-            .blog-post-content table td {
-                padding: 0.75rem 1rem;
-                border-bottom: 1px solid #f0f0f0 !important;
-                color: #1a2e22 !important;
-                background: transparent !important;
-            }
-            
-            /* Remove excessive padding and margins from lists */
-            .blog-post-content ul,
-            .blog-post-content ol {
-                padding-left: 2rem;
-                margin: 1.5rem 0;
-            }
-            
-            .blog-post-content li {
-                margin: 0.5rem 0;
-                line-height: 1.7;
-                color: #1a2e22 !important;
-            }
-            
-            /* Clean paragraph styling */
-            .blog-post-content p {
-                color: #1a2e22 !important;
-                margin: 1.2rem 0;
-                line-height: 1.7;
-            }
-            
-            /* Optimize blog post container for desktop */
-            main.blog-post,
-            .blog-post {
-                max-width: 900px;
-                margin: 2rem auto;
-                padding: 0 2rem;
-            }
-            
-            .blog-post-content {
-                max-width: 100%;
-                width: 100%;
-            }
-            
-            .blog-post-header {
-                max-width: 100%;
-                padding: 2rem 0 1rem 0;
-            }
-            
-            /* Remove hover effects on cards */
-            .blog-post-content div[style*="hover"],
-            .blog-post-content div[style*="transition"],
-            .blog-post-content .card:hover,
-            .blog-post-content .food-card:hover {
-                transform: none !important;
-                box-shadow: none !important;
-            }
-            
-            /* Simplify images */
-            .blog-post-content img {
-                max-width: 100%;
-                height: auto;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                margin: 1.5rem 0;
-            }
-            
-            /* Clean buttons/CTAs - keep functional but simple */
-            .blog-post-content a.btn,
-            .blog-post-content a[style*="padding:"] {
-                display: inline-block;
-                padding: 0.75rem 1.5rem;
-                background: #175c36;
-                color: white !important;
-                text-decoration: none;
-                border-radius: 4px;
-                margin: 1rem 0;
-                box-shadow: none !important;
-            }
-            
-            .blog-post-content a.btn:hover {
-                background: #1b7f5a;
-            }
-        }
-
-        </style>
 <!-- Breadcrumb Schema -->
 <script type="application/ld+json">
     {
@@ -706,46 +126,96 @@
     }
   }
 </script>
+
+<!-- Nutri Thrive v2 blog shell -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
+        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
+        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
+        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
+        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
+        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
+        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
+        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
+        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
+        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
+        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
+        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
+        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
+        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
+        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
+        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: {
+        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
+        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
+      },
+      fontFamily: {
+        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
+        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
+      }
+    }
+  }
+};
+</script>
 </head>
-<body class="non-sticky-header">
-<header>
-<div class="navbar">
-<a class="logo" href="/">
-<img alt="NutriThrive Logo" decoding="async" loading="lazy" src="../assets/images/logo/LOGO.webp" style="height: 1.8rem; width: auto; margin-right: 0.5rem;"/>
- NutriThrive
- </a>
-<nav class="nav-links">
-<a href="/">Home</a>
-<a href="/products/">Products</a>
-<a href="/about">About</a>
-<a href="/contact">Contact</a>
-<a class="active" href="/blog/index.html">Blog</a>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-base" href="/">
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager"/>
+<span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/products/">Shop</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/pages/about/about.html">About</a>
+<a class="font-body-md text-label-lg text-moringa-leaf border-b-2 border-moringa-leaf font-semibold" href="/blog/">Blog</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/contact">Contact</a>
+</div>
+<div class="flex items-center gap-2">
+<a class="material-symbols-outlined text-forest-deep p-2 hover:bg-primary-fixed/10 rounded-full transition-all" href="/pages/shop/cart.html" aria-label="Cart">shopping_bag</a>
+</div>
+</div>
 </nav>
-<button aria-label="Toggle navigation menu" class="hamburger">
-<div class="line1"></div>
-<div class="line2"></div>
-<div class="line3"></div>
-</button>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<article class="lg:col-span-8">
+<header class="mb-12">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Recipes &amp; Nutrition</span>
+<span class="text-on-surface-variant text-label-lg font-body-md">23 April 2026</span>
+</div>
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">How to Add Moringa to Your Diet: Easy Ways 2026</h1>
+<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
+<img alt="" class="w-full h-full object-cover" src="https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg" loading="eager" decoding="async"/>
 </div>
 </header>
-<main class="blog-post">
+<div class="blog-v2-prose prose prose-lg max-w-none">
+<div class="blog-v2-prose prose prose-lg max-w-none">
 <article>
-<header class="blog-post-header">
-<h1>How to Add Moringa to Your Diet: Ideas That Actually Taste Good (2026)</h1>
-<p class="post-meta" style="font-size: 0.95rem; color: #555;">Published 23 April 2026 · Updated 26 April 2026</p>
- </header>
-<!-- Breadcrumb Navigation -->
-<div style="background: #ffffff; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0e0; margin: 0;">
-<nav style="font-size: 0.9375rem; color: #000000;">
-<a href="/" style="color: #2d5a3d; text-decoration: none;">Home</a>
-<span style="margin: 0 0.5rem; color: #999;">›</span>
-<a href="/blog/" style="color: #2d5a3d; text-decoration: none;">Blog</a>
-<span style="margin: 0 0.5rem; color: #999;">›</span>
-<a href="/blog/#moringa-&amp;-superfoods" style="color: #2d5a3d; text-decoration: none;">Moringa &amp; superfoods</a>
-<span style="margin: 0 0.5rem; color: #999;">›</span>
-<span style="color: #333; font-weight: 500;">Add moringa to your diet (2026)</span>
-</nav>
-</div>
+
 <div class="blog-post-content">
 <!-- Hero Introduction -->
 <div style="background: transparent; border: none; padding: 2rem 0; margin: 2rem 0;">
@@ -899,1317 +369,118 @@
 </div>
 </div>
 </div>
-<script>
-                    function calculateDosage() {
-                        const experience = document.getElementById('experience-level').value;
-                        const goal = document.getElementById('goal-select').value;
-                        const result = document.getElementById('dosage-result');
-                        const amount = document.getElementById('dosage-amount');
-                        const timing = document.getElementById('dosage-timing');
-                        const tips = document.getElementById('dosage-tips');
-                        
-                        let dosage = '';
-                        let time = '';
-                        let tip = '';
-                        
-                        if (experience === 'beginner') {
-                            dosage = '1/4 - 1/2 teaspoon daily';
-                            time = 'Best taken: Once daily with breakfast or your first meal';
-                            tip = 'Start with 1/4 teaspoon for the first week, then gradually increase. Mix well with smoothies, yogurt, or water.';
-                        } else if (experience === 'regular') {
-                            dosage = '1/2 - 1 teaspoon daily';
-                            time = 'Best taken: Split into 2 doses (morning with breakfast, evening with dinner)';
-                            tip = 'You can now experiment with different recipes. Try adding to soups, salads, or baked goods for variety.';
-                        } else {
-                            dosage = '1 - 2 teaspoons daily';
-                            time = 'Best taken: 2-3 times daily (morning, pre/post-workout, evening)';
-                            tip = 'Consider stacking with other superfoods like matcha or turmeric for enhanced benefits.';
-                        }
-                        
-                        if (goal === 'athletic') {
-                            tip += ' For athletic performance, take 30 minutes before workouts for optimal energy boost.';
-                        } else if (goal === 'immunity') {
-                            tip += ' For immune support, consistency is key. Take daily for at least 2-4 weeks to see benefits.';
-                        }
-                        
-                        amount.textContent = dosage;
-                        timing.textContent = time;
-                        tips.textContent = tip;
-                        result.style.display = 'block';
-                        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }
-                    </script>
+</div>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
 </section>
-<!-- Product CTA - Strategic Placement -->
-<div style="background: transparent; padding: 2rem 0; margin: 2rem 0; text-align: center; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0;">
-<h3 style="margin-top: 0; color: #000000; font-size: 1.5rem; font-weight: 700;">🌿 Ready to Start Your Moringa Journey?</h3>
-<p style="color: #000000; font-size: 1.1rem; margin-bottom: 1.5rem;">Get lab-tested, 100% natural Moringa Powder delivered fresh from Melbourne. Free shipping Australia-wide on orders over $80.</p>
-<div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-<a href="/products/moringa-powder/" style="color: #0066cc; text-decoration: underline; font-weight: 700; font-size: 1.1rem; display: inline-block;">🛒 Shop Moringa Powder</a>
-<a href="/products/" style="color: #0066cc; text-decoration: underline; font-weight: 700; font-size: 1.1rem; display: inline-block;">View All Products</a>
-</div>
-<p style="margin-top: 1rem; margin-bottom: 0; font-size: 0.9rem; color: #000000;">✓ Lab-tested for purity • ✓ 30-day money-back guarantee • ✓ Fast Melbourne delivery</p>
-</div>
-<section id="morning-routine" style="background:transparent;padding:0;margin:2rem 0;border:none; scroll-margin-top: 80px;">
-<h2>🌅 Morning Routine: 5 Ways to Add Moringa to Breakfast</h2>
-<p>Start your day the Australian way—with a nutrient-packed breakfast that fuels you through our demanding lifestyle. Whether you're preparing for a Melbourne commute, a Brisbane outdoor adventure, or a Sydney workday, these moringa-enhanced breakfasts provide the steady energy without the mid-morning slump.</p>
-<div style="background: transparent; padding: 1.5rem 0; margin: 1.5rem 0; border: none;">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">1. Supercharge Your Morning Smoothie</h3>
-<p><strong>⏱️ Prep time:</strong> 3 minutes | <strong>🍽️ Serves:</strong> 1-2</p>
-<p><strong>Ingredients:</strong></p>
-<ul style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>1 frozen banana</li>
-<li>1 cup mixed berries (fresh or frozen)</li>
-<li>1 cup almond milk (or oat milk)</li>
-<li>1 tsp NutriThrive Moringa Powder</li>
-<li>1 tbsp honey or maple syrup (optional)</li>
-<li>Ice cubes (optional)</li>
-</ul>
-<p><strong>Instructions:</strong></p>
-<ol style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>Add all ingredients to a high-speed blender</li>
-<li>Blend on high for 30-60 seconds until smooth and creamy</li>
-<li>Pour into a glass and enjoy immediately</li>
-</ol>
-<p style="margin-bottom: 0.75rem; font-style: italic; color: #666;"><strong>💡 Pro Tip:</strong> Freeze your banana the night before for an extra creamy texture. This recipe provides 27g of plant protein, 7x vitamin C of oranges, and sustained energy for 4-6 hours.</p>
-<p style="margin: 0; font-size: 0.9rem; color: #333333;">
-<strong>Shop this recipe:</strong>
-<a href="/products/moringa-powder/" style="color: #0f6b4d; text-decoration: underline; font-weight: 600;">NutriThrive Moringa Powder</a>
- for the smoothest, least-bitter blend. </p>
-</div>
-<div style="background: transparent; padding: 1.5rem 0; margin: 1.5rem 0; border: none;">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">2. Moringa Oatmeal Power Bowl</h3>
-<p><strong>⏱️ Prep time:</strong> 5 minutes | <strong>🍽️ Serves:</strong> 1</p>
-<p><strong>Ingredients:</strong></p>
-<ul style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>1/2 cup rolled oats</li>
-<li>1 cup water or milk</li>
-<li>1/2 tsp NutriThrive Moringa Powder</li>
-<li>1/4 cup fresh berries</li>
-<li>1 tbsp chopped nuts (almonds, walnuts)</li>
-<li>1 tsp honey or maple syrup</li>
-<li>Pinch of cinnamon (optional)</li>
-</ul>
-<p><strong>Instructions:</strong></p>
-<ol style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>Cook oats according to package directions</li>
-<li>Stir in moringa powder while oats are still warm</li>
-<li>Top with berries, nuts, honey, and cinnamon</li>
-<li>Enjoy immediately for best texture</li>
-</ol>
-<p style="margin-bottom: 0.75rem; font-style: italic; color: #666;"><strong>💡 Pro Tip:</strong> The warm oats help dissolve the moringa powder completely, eliminating any clumps. This breakfast provides 15g protein and keeps you full until lunch.</p>
-<p style="margin: 0; font-size: 0.9rem; color: #333333;">
-<strong>Make it easy:</strong>
-<a href="/products/moringa-powder/" style="color: #0f6b4d; text-decoration: underline; font-weight: 600;">Add NutriThrive powder to your next oats</a>
- and turn breakfast into a daily moringa habit. </p>
-</div>
-<div style="background: transparent; padding: 1.5rem 0; margin: 1.5rem 0; border: none;">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">3. Moringa Green Tea</h3>
-<p><strong>⏱️ Prep time:</strong> 2 minutes | <strong>🍽️ Serves:</strong> 1</p>
-<p><strong>Ingredients:</strong></p>
-<ul style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>1 cup hot water (just below boiling)</li>
-<li>1/4 tsp NutriThrive Moringa Powder</li>
-<li>1/2 lemon, juiced</li>
-<li>1 tsp honey (optional)</li>
-<li>Fresh mint leaves (optional)</li>
-</ul>
-<p><strong>Instructions:</strong></p>
-<ol style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>Heat water to 80-85°C (just before boiling)</li>
-<li>Add moringa powder and stir well</li>
-<li>Let steep for 2-3 minutes</li>
-<li>Add lemon juice and honey, stir</li>
-<li>Garnish with mint if desired</li>
-</ol>
-<p style="margin-bottom: 0; font-style: italic; color: #666;"><strong>💡 Pro Tip:</strong> Don't use boiling water as it can destroy some nutrients. This tea provides a gentle energy boost without the jitters of coffee.</p>
-</div>
-<div style="background: transparent; padding: 1.5rem 0; margin: 1.5rem 0; border: none;">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">4. Moringa Yogurt Parfait</h3>
-<p><strong>⏱️ Prep time:</strong> 3 minutes | <strong>🍽️ Serves:</strong> 1</p>
-<p><strong>Ingredients:</strong></p>
-<ul style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>1/2 cup Greek yogurt (or plant-based yogurt)</li>
-<li>1/2 tsp NutriThrive Moringa Powder</li>
-<li>1/4 cup granola</li>
-<li>1/4 cup fresh fruits (berries, banana slices)</li>
-<li>1 tsp chia seeds (optional)</li>
-<li>Drizzle of honey</li>
-</ul>
-<p><strong>Instructions:</strong></p>
-<ol style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>Mix moringa powder into yogurt until well combined</li>
-<li>Layer yogurt, granola, and fruits in a glass</li>
-<li>Top with chia seeds and honey</li>
-<li>Serve immediately or refrigerate for up to 2 hours</li>
-</ol>
-<p style="margin-bottom: 0; font-style: italic; color: #666;"><strong>💡 Pro Tip:</strong> Mix the moringa thoroughly with yogurt first to avoid green streaks. This parfait provides 20g protein and probiotics for gut health.</p>
-</div>
-<div style="background: transparent; padding: 1.5rem 0; margin: 1.5rem 0; border: none;">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">5. Moringa Pancakes</h3>
-<p><strong>⏱️ Prep time:</strong> 10 minutes | <strong>🍽️ Serves:</strong> 2-3</p>
-<p><strong>Ingredients:</strong></p>
-<ul style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>1 cup pancake mix (or 1 cup flour + 1 tsp baking powder)</li>
-<li>1 tsp NutriThrive Moringa Powder</li>
-<li>1 cup milk (or plant milk)</li>
-<li>1 egg (or flax egg for vegan)</li>
-<li>1 tbsp oil or melted butter</li>
-<li>1 tbsp honey or maple syrup</li>
-<li>Pinch of salt</li>
-</ul>
-<p><strong>Instructions:</strong></p>
-<ol style="margin: 0.5rem 0 1rem 0; padding-left: 1.5rem;">
-<li>Whisk dry ingredients (pancake mix, moringa, salt) together</li>
-<li>In a separate bowl, mix wet ingredients (milk, egg, oil, honey)</li>
-<li>Combine wet and dry ingredients, stir until just combined</li>
-<li>Cook pancakes on medium heat until bubbles form, then flip</li>
-<li>Serve with fresh berries and maple syrup</li>
-</ol>
-<p style="margin-bottom: 0; font-style: italic; color: #666;"><strong>💡 Pro Tip:</strong> The moringa gives pancakes a beautiful green hue and adds 3g protein per pancake. Kids love the green color!</p>
-</div>
-<!-- Product CTA After Recipes -->
-<div style="background: transparent; padding: 2rem 0; margin: 2rem 0; text-align: center; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0;">
-<h3 style="margin-top: 0; color: #000000; font-size: 1.3rem; font-weight: 700;">🍳 Try These Recipes with Premium Moringa</h3>
-<p style="color: #000000; font-size: 1rem; margin-bottom: 1.5rem;">Our lab-tested moringa powder mixes perfectly in all these recipes. No bitterness, no clumps—just pure nutrition.</p>
-<a href="/products/moringa-powder/" style="color: #0066cc; text-decoration: underline; font-weight: 700; font-size: 1rem; display: inline-block;">Get Moringa Powder - $11.00 →</a>
-<p style="margin-top: 1rem; margin-bottom: 0; font-size: 0.85rem; color: #000000;">✓ Free shipping over $80 • ✓ 30-day guarantee • ✓ Shipped from Melbourne</p>
-</div>
-</section>
-<section id="lunch-dinner" style="background:transparent;padding:0;margin:2rem 0;border:none; scroll-margin-top: 80px;">
-<h2>🍽️ Lunch &amp; Dinner: 5 Savory Ways to Use Moringa</h2>
-<p>Elevate your Australian cuisine with moringa. From Adelaide's Mediterranean-inspired dishes to Darwin's tropical flavors and Hobart's fresh seafood, moringa adds a nutrient boost to our diverse culinary landscape. Perfect for busy weeknights when you need healthy meals that taste amazing and support your active lifestyle. check out our buy curry leaves article</p>
-<div style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; border-radius: 12px; border: 1px dashed #2d5a3d33; background: #f5fbf8;">
-<p style="margin: 0; font-size: 0.95rem; color: #113423;">
-<strong>Chef’s shortcut:</strong> keep a jar of
- <a href="/products/moringa-powder/" style="color: #0f6b4d; text-decoration: underline; font-weight: 600;">NutriThrive Moringa Powder</a>
- on your bench and sprinkle 1/2 tsp over any salad, soup, or curry you cook this week. Tiny habit, big upgrade. </p>
-</div>
-<h3>6. Sprinkle Over Salads and Soups</h3>
-<p>Give your meals a nutritional upgrade by sprinkling Moringa powder over your salads, just as you would with pepper. You can also stir it into soups, stews, or curries right before serving. This is a great way to add nutrients without significantly altering the taste.</p>
-<h3>7. Mix into Dips and Sauces</h3>
-<p>Blend Moringa into your favourite dips like hummus or guacamole for a hidden health kick. It also works well stirred into pasta sauces, dressings, or marinades, adding a subtle depth of flavour and a whole lot of goodness.</p>
-<h3>8. Moringa Guacamole</h3>
-<p>Mash 2 avocados + 1/2 tsp moringa powder + lime juice + salt + cilantro for a superfood guacamole.</p>
-<h3>9. Moringa Pasta Sauce</h3>
-<p>Add 1/2 teaspoon moringa powder to your favorite tomato sauce for an extra nutrient boost.</p>
-<h3>10. Moringa Rice or Quinoa</h3>
-<p>Stir 1/2 teaspoon moringa powder into cooked rice or quinoa for a nutritious side dish.</p>
-</section>
-<!-- Common Mistakes to Avoid -->
-<section style="background:transparent;padding:0;margin:2rem 0;border:none;">
-<h2>⚠️ Common Mistakes When Adding Moringa to Your Diet</h2>
-<p>Avoid these pitfalls to get the most out of your moringa powder:</p>
-<div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid #ffc107; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">❌ Mistake #1: Using Too Much Too Fast</h3>
-<p style="margin-bottom: 0.5rem; color: #000000;"><strong style="color: #000000;">The Problem:</strong> Starting with 2+ teaspoons daily can cause digestive upset.</p>
-<p style="margin-bottom: 0; color: #000000;"><strong style="color: #000000;">✅ The Solution:</strong> Start with 1/4 teaspoon daily for the first week, then gradually increase. Your body needs time to adjust.</p>
-</div>
-<div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid #ffc107; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">❌ Mistake #2: Not Mixing Thoroughly</h3>
-<p style="margin-bottom: 0.5rem; color: #000000;"><strong style="color: #000000;">The Problem:</strong> Clumps of moringa powder create an unpleasant texture and uneven distribution.</p>
-<p style="margin-bottom: 0; color: #000000;"><strong style="color: #000000;">✅ The Solution:</strong> Always use a blender for smoothies, or whisk vigorously in liquids. For yogurt or oatmeal, mix the powder with a small amount of liquid first, then add to the rest.</p>
-</div>
-<div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid #ffc107; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">❌ Mistake #3: Using Low-Quality Powder</h3>
-<p style="margin-bottom: 0.5rem; color: #000000;"><strong style="color: #000000;">The Problem:</strong> Cheap moringa powders often contain stems, fillers, or have been sun-dried (destroying nutrients).</p>
-<p style="margin-bottom: 0; color: #000000;"><strong style="color: #000000;">✅ The Solution:</strong> Choose lab-tested, shade-dried moringa powder like NutriThrive. Look for vibrant green color and fine texture. Our powder is 100% pure leaf, no stems or fillers.</p>
-</div>
-<div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid #ffc107; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">❌ Mistake #4: Taking on Empty Stomach</h3>
-<p style="margin-bottom: 0.5rem; color: #000000;"><strong style="color: #000000;">The Problem:</strong> Some people experience nausea when taking moringa on an empty stomach.</p>
-<p style="margin-bottom: 0; color: #000000;"><strong style="color: #000000;">✅ The Solution:</strong> Always take moringa with food—breakfast smoothie, yogurt, or mixed into meals. This also improves nutrient absorption.</p>
-</div>
-<div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid #ffc107; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">❌ Mistake #5: Inconsistent Use</h3>
-<p style="margin-bottom: 0.5rem; color: #000000;"><strong style="color: #000000;">The Problem:</strong> Taking moringa sporadically won't give you the full benefits.</p>
-<p style="margin-bottom: 0; color: #000000;"><strong style="color: #000000;">✅ The Solution:</strong> Consistency is key. Take moringa daily for at least 2-4 weeks to see noticeable benefits. Set a reminder or add it to your morning routine.</p>
-</div>
-</section>
-<!-- Storage and Preparation Tips -->
-<section style="background:transparent;padding:0;margin:2rem 0;border:none;">
-<h2>💾 How to Store and Prepare Moringa Powder</h2>
-<p>Proper storage and preparation ensure you get maximum nutrition and flavor from your moringa powder.</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
-<div style="background: transparent; padding: 1.5rem 0; border: none;">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">📦 Storage Tips</h3>
-<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-<li>Store in a cool, dry place away from sunlight</li>
-<li>Keep in an airtight container</li>
-<li>Don't store in the refrigerator (moisture can cause clumping)</li>
-<li>Use within 12 months for best quality</li>
-<li>Keep away from heat sources (stove, oven)</li>
-</ul>
-</div>
-<div style="background: transparent; padding: 1.5rem 0; border: none;">
-<h3 style="margin-top: 0; color: #000000; font-weight: 700;">🍳 Preparation Tips</h3>
-<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-<li>Always use a dry spoon (moisture causes clumping)</li>
-<li>Mix with liquids first before adding to solid foods</li>
-<li>For smoothies, add powder last and blend well</li>
-<li>Don't cook at high temperatures (add after cooking)</li>
-<li>Start with small amounts and adjust to taste</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="snacks-drinks" style="background:transparent;padding:0;margin:2rem 0;border:none; scroll-margin-top: 80px;">
-<h2>🥤 Snacks &amp; Drinks: 5 Refreshing Moringa Ideas</h2>
-<p>Aussies love our snacks and drinks culture—from Tim Tam slams to iced coffees. These moringa-infused treats keep you energised during our long days, whether you're at the beach, hiking in the Blue Mountains, or working late in Canberra. Stay refreshed and nourished with these Australian-friendly options.</p>
-<h3>11. Stir into Juices or Water</h3>
-<p>For a quick antioxidant boost, simply stir a teaspoon of Moringa into a glass of water, coconut water, or your favourite fruit juice. Shake or stir well and enjoy a vibrant green drink packed with nutrients.</p>
-<h3>12. Moringa Energy Balls</h3>
-<p>Mix 1 cup dates + 1/2 cup nuts + 1 tbsp moringa powder + 1 tbsp coconut oil. Roll into balls and refrigerate. <a href="/products/black-tea/" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">check our black tea</a></p>
-<h3>13. Moringa Hot Chocolate</h3>
-<p>Add 1/2 teaspoon moringa powder to your hot chocolate for a healthy twist on a comforting drink.</p>
-<h3>14. Moringa Coconut Water</h3>
-<p>Mix 1/2 teaspoon moringa powder into coconut water for a refreshing, electrolyte-rich drink.</p>
-<h3>15. Bake into Your Favourite Treats</h3>
-<p>Yes, you can even bake with it! Add Moringa powder to your recipes for muffins, energy balls, or even homemade bread. It will add a beautiful green hue and a powerful nutritional punch to your baked goods.</p>
-</section>
-<section id="dosage-guide" style="background:transparent;padding:0;margin:2rem 0;border:none; scroll-margin-top: 80px;">
-<h2>📊 Moringa Dosage Guide: How Much Should You Take?</h2>
-<p>Getting the right amount of moringa is key to experiencing its benefits. Here's your complete dosage guide, tailored for Australian lifestyles and TGA safety standards:</p>
-<p>With over 2.5 million Australians dealing with fatigue and 1 in 3 experiencing nutritional deficiencies according to Australian health surveys, finding the right moringa dosage can make a real difference. Whether you're a FIFO worker in remote WA, a Sydney professional with demanding hours, or an active Queenslander in the tropics, these guidelines ensure you get the benefits safely and effectively.</p>
-<h3>Recommended Daily Dosage</h3>
-<table style="width:100%;border-collapse:collapse;margin:1rem 0;">
-<thead>
-<tr style="background:#333333;color:white;">
-<th style="padding:8px;text-align:left;">Experience Level</th>
-<th style="padding:8px;text-align:left;">Daily Amount</th>
-<th style="padding:8px;text-align:left;">Timing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="padding:8px;border-bottom:1px solid #ddd;">Beginner</td>
-<td style="padding:8px;border-bottom:1px solid #ddd;">1/4 - 1/2 teaspoon</td>
-<td style="padding:8px;border-bottom:1px solid #ddd;">Once daily with food</td>
-</tr>
-<tr>
-<td style="padding:8px;border-bottom:1px solid #ddd;">Regular User</td>
-<td style="padding:8px;border-bottom:1px solid #ddd;">1/2 - 1 teaspoon</td>
-<td style="padding:8px;border-bottom:1px solid #ddd;">1-2 times daily</td>
-</tr>
-<tr>
-<td style="padding:8px;border-bottom:1px solid #ddd;">Experienced</td>
-<td style="padding:8px;border-bottom:1px solid #ddd;">1 - 2 teaspoons</td>
-<td style="padding:8px;border-bottom:1px solid #ddd;">2-3 times daily</td>
-</tr>
-</tbody>
-</table>
-<h3>Best Times to Take Moringa</h3>
-<ul>
-<li><strong>Morning:</strong> With breakfast for sustained energy throughout the day</li>
-<li><strong>Pre-workout:</strong> 30 minutes before exercise for energy boost</li>
-<li><strong>Post-workout:</strong> With protein shake for recovery</li>
-<li><strong>Evening:</strong> With dinner for overnight nutrient absorption</li>
-</ul>
-<h3>Tips for Most sensible Absorption</h3>
-<ul>
-<li>Take with food to improve absorption</li>
-<li>Stay hydrated throughout the day</li>
-<li>Be consistent with your routine</li>
-<li>Listen to your body and adjust as needed</li>
-</ul>
-</section>
-<!-- Product Picker: Help readers choose a pack -->
-<section id="moringa-product-picker" style="background:#ffffff;padding:1.75rem 1.25rem;margin:2rem 0;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 2px 10px rgba(0,0,0,0.04);">
-<h2 style="margin-top:0;margin-bottom:0.75rem;font-size:1.45rem;color:#000000;font-weight:700;">Which NutriThrive Moringa Powder Is Best For You?</h2>
-<p style="margin:0 0 1.25rem;font-size:0.98rem;color:#333333;">Use the dosage guide above, then pick the pack that matches how often you want to take moringa.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
-<article style="border-radius:10px;border:1px solid #e0e0e0;padding:1rem 1.1rem;background:#f8faf9;">
-<h3 style="margin-top:0;margin-bottom:0.4rem;font-size:1.1rem;color:#000000;font-weight:700;">Starter Pack – 100g</h3>
-<p style="margin:0 0 0.5rem;font-size:0.95rem;color:#333333;">Best if you're <strong>new to moringa</strong> or just testing your routine.</p>
-<ul style="margin:0 0 0.75rem 1.1rem;padding:0;font-size:0.9rem;color:#333333;">
-<li>~30 days at 1 tsp per day</li>
-<li>Perfect for smoothies, oats, and tea</li>
-<li>Easy way to see how your body responds</li>
-</ul>
-<p style="margin:0 0 0.75rem;font-size:0.95rem;color:#000000;"><strong>From around $11.00 AUD</strong></p>
-<a href="/products/moringa-powder/" style="display:inline-block;padding:0.6rem 1.1rem;border-radius:999px;background:#0f6b4d;color:#ffffff;font-size:0.95rem;font-weight:700;text-decoration:none;">Start with Starter Pack</a>
 </article>
-<article style="border-radius:10px;border:1px solid #e0e0e0;padding:1rem 1.1rem;background:#ffffff;box-shadow:0 0 0 1px rgba(15,107,77,0.08);">
-<h3 style="margin-top:0;margin-bottom:0.4rem;font-size:1.1rem;color:#000000;font-weight:700;">Best Value – 3 + 1 Bundle (400g)</h3>
-<p style="margin:0 0 0.5rem;font-size:0.95rem;color:#333333;">Ideal for <strong>daily users, couples, or families</strong> who want consistent energy and immunity support.</p>
-<ul style="margin:0 0 0.75rem 1.1rem;padding:0;font-size:0.9rem;color:#333333;">
-<li>Up to 3–4 months for one person</li>
-<li>Lower cost per 100g vs single packs</li>
-<li>Great if you already love moringa or share at home</li>
-</ul>
-<p style="margin:0 0 0.75rem;font-size:0.95rem;color:#000000;"><strong>Bundle offer: 3 + 1 for ~$31 AUD</strong></p>
-<a href="/products/moringa-powder/" style="display:inline-block;padding:0.6rem 1.1rem;border-radius:999px;background:#0066cc;color:#ffffff;font-size:0.95rem;font-weight:700;text-decoration:none;">Get the 3 + 1 Bundle</a>
-</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
 </div>
-<p style="margin:1rem 0 0;font-size:0.9rem;color:#555555;">All packs are <strong>lab-tested, 100% pure leaf powder</strong> and ship from our Melbourne warehouse with a money‑back guarantee.</p>
-</section>
-<!-- Moringa vs Other Superfoods Comparison -->
-<section id="comparison" style="background:transparent;padding:0;margin:2rem 0;border:none; scroll-margin-top: 80px;">
-<h2>⚖️ Moringa vs Other Superfoods: Why Australians Choose Moringa</h2>
-<p>With so many superfoods on the market, why is moringa becoming Australia's #1 choice? Here's how it compares to other popular options:</p>
-<div style="overflow-x: auto; margin: 1.5rem 0;">
-<table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-<thead>
-<tr style="background: #175c36; color: white;">
-<th style="padding: 12px; text-align: left; border: 1px solid #0f4a2a;">Superfood</th>
-<th style="padding: 12px; text-align: left; border: 1px solid #0f4a2a;">Iron (per 10g)</th>
-<th style="padding: 12px; text-align: left; border: 1px solid #0f4a2a;">Protein</th>
-<th style="padding: 12px; text-align: left; border: 1px solid #0f4a2a;">Vitamin C</th>
-<th style="padding: 12px; text-align: left; border: 1px solid #0f4a2a;">Cost per 100g</th>
-<th style="padding: 12px; text-align: left; border: 1px solid #0f4a2a;">Taste</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background: #ffffff;">
-<td style="padding: 12px; border: 1px solid #e0e0e0; color: #000000;"><strong style="color: #000000;">🥇 Moringa Powder</strong></td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;"><strong>2.3mg</strong></td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;"><strong>3.2g</strong></td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;"><strong>220mg</strong></td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;"><strong>$10 AUD</strong></td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Mild, earthy</td>
-</tr>
-<tr>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Matcha Powder</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">0.7mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">2.7g</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">60mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">$25-50 AUD</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Bitter, strong</td>
-</tr>
-<tr>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Spirulina</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">2.0mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">6.0g</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">10mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">$15-30 AUD</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Fishy, strong</td>
-</tr>
-<tr>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Wheatgrass</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">0.6mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">2.0g</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">120mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">$20-40 AUD</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Grassy, bitter</td>
-</tr>
-<tr>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Chlorella</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">1.2mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">5.8g</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">10mg</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">$18-35 AUD</td>
-<td style="padding: 12px; border: 1px solid #e0e0e0;">Very bitter</td>
-</tr>
-</tbody>
-</table>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
 </div>
-<div style="background: #ffffff; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; border-left: 4px solid #175c36; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<p style="margin: 0; color: #000000;"><strong style="color: #000000;">🏆 Winner:</strong> Moringa offers the best value with 3x more iron than matcha, 7x more vitamin C than oranges, complete protein profile, and a mild taste that doesn't overpower your recipes. Plus, at $11.00 per 100g, it's the most affordable premium superfood in Australia.</p>
-</div>
-</section>
-<!-- Real User Testimonials -->
-<section style="background:transparent;padding:0;margin:2rem 0;border:none;">
-<h2>⭐ What Real Australians Are Saying</h2>
-<p>Don't just take our word for it. Here's what real customers say about adding moringa to their diet:</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
-<div style="background: transparent; padding: 1.5rem 0; border: none;">
-<div style="color: #fbbf24; font-size: 1.25rem; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
-<p style="font-style: italic; color: #000000; margin-bottom: 1rem;">"I've been adding moringa to my morning smoothie for 3 months now. My energy levels are through the roof, and I haven't had a single afternoon crash. Best $10 I've ever spent!"</p>
-<p style="margin: 0; font-weight: 600; color: #175c36;">— Sarah M., Melbourne</p>
-</div>
-<div style="background: transparent; padding: 1.5rem 0; border: none;">
-<div style="color: #fbbf24; font-size: 1.25rem; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
-<p style="font-style: italic; color: #000000; margin-bottom: 1rem;">"As a busy mum of three, I needed something quick and easy. Moringa in my yogurt every morning has been a genuine difference. My kids don't even notice it's there!"</p>
-<p style="margin: 0; font-weight: 600; color: #175c36;">— Emma T., Sydney</p>
-</div>
-<div style="background: transparent; padding: 1.5rem 0; border: none;">
-<div style="color: #fbbf24; font-size: 1.25rem; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
-<p style="font-style: italic; color: #000000; margin-bottom: 1rem;">"I was skeptical at first, but after 2 weeks of adding moringa to my post-workout shake, my recovery time improved dramatically. No more sore muscles for days!"</p>
-<p style="margin: 0; font-weight: 600; color: #175c36;">— James K., Brisbane</p>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
 </div>
 </div>
-</section>
-<section id="benefits" style="background:transparent;padding:0;margin:2rem 0;border:none; scroll-margin-top: 80px;">
-<h2>🌟 Why Add Moringa to Your Diet? The Benefits Explained</h2>
-<p>Moringa powder isn't just another superfood trend—it's backed by science and tradition. Here's why you should consider adding it to your daily routine:</p>
-<h3>💪 Nutritional Powerhouse</h3>
-<ul>
-<li><strong>Complete Protein:</strong> Contains all 9 essential amino acids</li>
-<li><strong>Vitamin C:</strong> 7x more than oranges for immune support</li>
-<li><strong>Iron:</strong> 3x more than spinach for energy and blood health</li>
-<li><strong>Calcium:</strong> 4x more than milk for bone strength</li>
-<li><strong>Antioxidants:</strong> 46 different compounds for cellular protection</li>
-</ul>
-<h3>🏥 Health Benefits</h3>
-<ul>
-<li><strong>Energy Boost:</strong> Natural source of B vitamins and iron</li>
-<li><strong>Immune Support:</strong> High vitamin C and antioxidant content</li>
-<li><strong>Digestive Health:</strong> Contains fiber and anti-inflammatory compounds</li>
-<li><strong>Blood Sugar Balance:</strong> May help regulate glucose levels</li>
-<li><strong>Anti-Aging:</strong> Antioxidants protect against cellular damage</li>
-</ul>
-<h3>🌱 Easy to Incorporate</h3>
-<ul>
-<li><strong>Versatile:</strong> Can be added to almost any food or drink</li>
-<li><strong>Mild Taste:</strong> Earthy flavor that doesn't overpower dishes</li>
-<li><strong>Convenient:</strong> Powder form makes it easy to use anywhere</li>
-<li><strong>Long Shelf Life:</strong> Stays fresh for months when stored properly</li>
-</ul>
-</section>
-<section id="faq" style="background:transparent;padding:0;margin:2rem 0;border:none;">
-<h2>❓ FAQ Section</h2>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: How much moringa powder should I take daily?</h3>
-<p><strong>A:</strong> Start with 1/4 teaspoon daily and gradually increase to 1-2 teaspoons. Listen to your body and adjust based on how you feel.</p>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
 </div>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: When is the best time to take moringa?</h3>
-<p><strong>A:</strong> You can take moringa at any time, but many people prefer morning with breakfast for sustained energy throughout the day.</p>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
+<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
 </div>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: Does moringa powder have side effects?</h3>
-<p><strong>A:</strong> Moringa is generally safe when taken in recommended amounts. Some people may experience mild digestive upset if they start with too much too quickly.</p>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
 </div>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: Can I take moringa if I'm pregnant or breastfeeding?</h3>
-<p><strong>A:</strong> Consult your healthcare provider before taking moringa during pregnancy or while breastfeeding.</p>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
 </div>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: How long does it take to see benefits from moringa?</h3>
-<p><strong>A:</strong> Some people notice increased energy within a few days, while other benefits may take 2-4 weeks of consistent use.</p>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
 </div>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: Can I cook with moringa powder?</h3>
-<p><strong>A:</strong> Yes! Moringa powder can be added to soups, sauces, baked goods, and other cooked dishes. Add it near the end of cooking to preserve nutrients.</p>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Where to Buy Moringa in Australia</h5>
+<p class="text-xs text-on-surface-variant opacity-70">8 min read</p>
 </div>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: Does moringa powder taste good?</h3>
-<p><strong>A:</strong> Moringa has a mild, earthy taste that pairs well with sweet and savory foods. Many people find it pleasant when mixed with other ingredients.</p>
+</a></div>
 </div>
-<div style="margin-bottom:1.5rem;">
-<h3>Q: How should I store moringa powder?</h3>
-<p><strong>A:</strong> Store in a cool, dry place in an airtight container. Avoid exposure to heat, light, and moisture to maintain freshness.</p>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
 </div>
-</section>
-<hr/>
-<div class="cta-box">
-<p>Ready to get creative? Start with the purest, most vibrant powder on the market. <a href="/blog/moringa-brands-comparison-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">find out more about best moringa</a></p>
-<p><strong>→ <a href="/products/moringa-powder/">Shop NutriThrive's 100% Pure Moringa Powder</a></strong></p>
+</aside>
 </div>
-<!-- NEW: Moringa Powder Uses & How to Consume -->
-<section id="moringa-uses-how-to-consume" style="background:#ffffff;padding:1.5rem 1rem;margin:2rem 0;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 2px 12px 0 rgba(0,0,0,0.05);">
-<h2 style="color: #000000;">Moringa Powder Uses: How to Consume, Drink, and Make</h2>
-<ul>
-<li>Add to smoothies, juices, or water (see recipes above)</li>
-<li>Mix into yogurt, oatmeal, or baked goods</li>
-<li>Sprinkle on salads, soups, or curries</li>
-<li>Make moringa tea: 1/2 tsp powder + hot water + lemon + honey</li>
-<li>Use in face packs or hair masks for beauty benefits</li>
-<li>Start with 1/4 tsp daily and increase gradually</li>
-</ul>
-</section>
-<!-- NEW: Moringa Powder for Weight Loss, Skin, Hair, Height -->
-<section id="moringa-weight-skin-hair-height" style="background:#ffffff;padding:1.5rem 1rem;margin:2rem 0;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 2px 12px 0 rgba(0,0,0,0.05);">
-<h2 style="color: #000000;">Moringa Powder for Weight Loss, Skin, Hair &amp; Height</h2>
-<ul>
-<li><strong>Weight Loss:</strong> Boosts satiety, metabolism, and preserves muscle</li>
-<li><strong>Skin:</strong> Antioxidants and vitamins that support healthy, glowing skin.</li>
-<li><strong>Hair:</strong> Strengthens hair follicles, supports growth</li>
-<li><strong>Height:</strong> Supports healthy growth in children/teens (does not change genetics)</li>
-<li>See Moringa Powder Benefits Guide for more</li>
-</ul>
-</section>
-<!-- NEW: Moringa Powder for Men, Women, Kids, Age Limit, Safety, Side Effects -->
-<section id="moringa-men-women-kids-safety" style="background:#ffffff;padding:1.5rem 1rem;margin:2rem 0;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 2px 12px 0 rgba(0,0,0,0.05);">
-<h2 style="color: #000000;">Moringa Powder for Men, Women, Kids, Age Limit, Safety &amp; Side Effects</h2>
-<ul>
-<li><strong>For Men:</strong> May support testosterone, muscle, energy, heart health</li>
-<li><strong>For Women:</strong> Iron, calcium, skin, hair, hormonal balance</li>
-<li><strong>For Kids:</strong> Safe in small amounts (age 5+), consult pediatrician</li>
-<li><strong>Age Limit:</strong> Safe for kids (5+) and seniors; consult doctor for dosage</li>
-<li><strong>Side Effects:</strong> Rare, mild digestive upset; avoid high doses in pregnancy</li>
-<li><strong>Safety:</strong> Lab-tested, pure brands are safest</li>
-</ul>
-</section>
-<!-- NEW: Moringa Powder in Hindi -->
-<section id="moringa-hindi" style="background:#ffffff;padding:1.5rem 1rem;margin:2rem 0;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 2px 12px 0 rgba(0,0,0,0.05);">
-<h2 style="color: #000000;">मोरिंगा पाउडर के फायदे और उपयोग (Moringa Powder Benefits &amp; Uses in Hindi)</h2>
-<ul>
-<li>ऊर्जा और प्रतिरक्षा बढ़ाता है (Boosts energy &amp; immunity)</li>
-<li>त्वचा और बालों के लिए अच्छा (Good for skin &amp; hair)</li>
-<li>वजन घटाने में सहायक (Helps in weight loss)</li>
-<li>शरीर को पोषण देता है (Nourishes the body)</li>
-</ul>
-<p style="font-size:0.95em;">For more, see <a href="#faq">FAQs</a> or Moringa Powder Benefits Guide.</p>
-</section>
-<!-- NEW: Expanded FAQ Section for Usage, Recipes, Dosage, Benefits -->
-<section id="expanded-faq" style="background:#ffffff;padding:1.5rem 1rem;margin:2rem 0;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 2px 12px 0 rgba(0,0,0,0.05);">
-<h2 style="color: #000000;">FAQs: Moringa Powder Uses, Recipes, Dosage &amp; Benefits</h2>
-<div><strong>Q: How do I use moringa powder for weight loss?</strong><br/>A: Add to smoothies, water, or meals to boost protein and fiber, helping control appetite.</div>
-<div><strong>Q: How do I drink moringa powder?</strong><br/>A: Mix 1/2–1 tsp in water, juice, or tea. Stir well and enjoy.</div>
-<div><strong>Q: How do I make moringa powder at home?</strong><br/>A: Dry moringa leaves in shade, grind to a fine powder, and store in an airtight container.</div>
-<div><strong>Q: What is the best time to take moringa powder?</strong><br/>A: Morning with breakfast for energy, or as needed in meals/snacks.</div>
-<div><strong>Q: What is the recommended dosage?</strong><br/>A: Start with 1/4 tsp daily, increase to 1–2 tsp. Consult your doctor if pregnant or on medication.</div>
-<div><strong>Q: Is moringa powder safe for kids?</strong><br/>A: Yes, in small amounts (age 5+). Consult a pediatrician for dosage.</div>
-<div><strong>Q: Can I use moringa powder for face packs?</strong><br/>A: Yes! Mix with honey/yogurt for a natural face mask.</div>
-<div><strong>Q: Is moringa powder good for hair?</strong><br/>A: Yes, it strengthens hair follicles and supports growth.</div>
-<div><strong>Q: Is moringa powder good for diabetics?</strong><br/>A: Some studies suggest it may help regulate blood sugar. Consult your doctor.</div>
-<div><strong>Q: Does moringa powder have side effects?</strong><br/>A: Rarely, mild digestive upset. Avoid high doses in pregnancy.</div>
-<div><strong>Q: Where can I buy moringa powder?</strong><br/>A: See our <a href="moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html" style="color: #2d5a3d; font-weight: 600;">moringa powder benefits guide</a> or <a href="/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">shop NutriThrive moringa</a>.</div>
-</section>
-</div>
-</article>
-<section id="moringa-final-cta" style="margin-top:2.5rem;margin-bottom:1.5rem;padding:2rem 1.5rem;border-radius:12px;border:1px solid #e0e0e0;background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.05);text-align:center;">
-<h2 style="margin-top:0;margin-bottom:0.75rem;font-size:1.6rem;color:#000000;font-weight:700;">Start Your Moringa Routine Today</h2>
-<p style="margin:0 0 1rem;font-size:1rem;color:#333333;">You’ve seen the recipes, dosage guide, and real results from Australians using moringa. The next step is simple: <strong>try it consistently for the next 30 days.</strong></p>
-<p style="margin:0 0 1.25rem;font-size:0.98rem;color:#333333;">Order <strong>NutriThrive Moringa Powder</strong> and if you don’t feel a difference in your energy and wellbeing within 30 days, email us for a full refund.</p>
-<a href="/products/moringa-powder/" style="display:inline-flex;align-items:center;justify-content:center;padding:0.9rem 1.8rem;border-radius:999px;background:#0f6b4d;color:#ffffff;font-weight:700;font-size:1rem;text-decoration:none;white-space:nowrap;">Get NutriThrive Moringa Powder</a>
-<p style="margin:1rem 0 0;font-size:0.9rem;color:#555555;">Free shipping over $80 • Fast Melbourne dispatch • Secure checkout</p>
-</section>
-<p style="margin-top: 16px;"><a href="/blog/" style="text-decoration: none;">← Back to All Articles</a></p>
-
-<section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
-  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
-  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
-      <li><a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html">Moringa Powder Guide (Australia 2026)</a></li>
-      <li><a href="/blog/moringa-brands-comparison-australia-2026.html">Moringa Brands Compared (2026)</a></li>
-      <li><a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html">Moringa powder guide (Australia)</a></li>
-      <li><a href="/products/moringa-powder/">Shop Moringa Powder</a></li>
-      <li><a href="/products/curry-leaves/">Shop Dried Curry Leaves</a></li>
-  </ul>
-</section>
 </main>
-<div style="margin-top: 3rem; padding: 2rem; background: #ffffff; border-radius: 12px; border-top: 3px solid #2d5a3d; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<h3 style="font-size: 1.5rem; color: #000000; margin-bottom: 1rem; font-weight: 700;">Explore More from NutriThrive</h3>
-<p style="margin-bottom: 1.5rem; color: #000000;">While you’re here:</p>
-<ul style="list-style: none; padding: 0;">
-<li style="margin-bottom: 0.75rem;"><a href="moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Moringa powder guide: benefits, daily use &amp; where to buy</a></li>
-<li style="margin-bottom: 0.75rem;"><a href="moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Ultimate moringa &amp; curry leaves hub (Australia 2026)</a></li>
-<li style="margin-bottom: 0.75rem;"><a href="moringa-brands-comparison-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Best rated moringa capsules &amp; powders (2026)</a></li>
-<li style="margin-bottom: 0.75rem;"><a href="moringa-brands-comparison-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Five Australian moringa brands reviewed</a></li>
-<li style="margin-bottom: 0.75rem;"><a href="moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Moringa powder benefits (2026 daily routine)</a></li>
-<li style="margin-bottom: 0.75rem;"><a href="high-protein-moringa-recipes-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ High-protein moringa recipes</a></li>
-<li style="margin-bottom: 0.75rem;"><a href="moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Moringa powder benefits &amp; buying guide (Australia)</a></li>
-</ul>
-<p style="margin-top: 1.5rem; text-align: center;">
-<a href="/" style="color: #2d5a3d; font-weight: 600; text-decoration: underline;">Visit NutriThrive Homepage</a> | 
- <a href="/blog/" style="color: #2d5a3d; font-weight: 600; text-decoration: underline;">Browse All Articles</a>
-</p>
-<div style="margin-top: 3rem; padding: 2.5rem; background: #ffffff; border-radius: 12px; border-top: 3px solid #2d5a3d; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-<h2 style="font-size: 1.75rem; color: #000000; margin-bottom: 1.5rem; font-weight: 700;">Answers to Common Moringa Questions</h2>
-<div class="faq-section" style="margin-top: 2rem;">
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>What is moringa good for?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Moringa leaves are rich in vitamin C, vitamin A precursors, calcium, iron, and plant antioxidants, which may support overall nutrition, blood sugar and cholesterol control, and anti-inflammatory activity in people with poor diets. "Superfood" or "miracle tree" are marketing-style labels; human clinical data show modest benefits (for example, small improvements in blood sugar or lipids) rather than dramatic cures.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>What moringa contains?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Leaf powder contains protein, fiber, vitamins A, C, E, B vitamins, calcium, potassium, iron, and phytochemicals like flavonoids and glucosinolates; content varies by source and processing. Tea made from leaves mainly provides some antioxidants and small amounts of micronutrients, not full meal-level nutrition.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>How moringa powder is used?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Common uses include adding 1–2 teaspoons to smoothies, yogurt, soups, stews, or baking, or taking as capsules; it is usually not heated for long at high temperatures to preserve some nutrients.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Should I take moringa everyday?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Small food-like amounts (for example, a teaspoon of powder in food) are generally considered acceptable for healthy adults, but there is no standard "must take" recommendation, and long-term high-dose safety is not well defined. Use is optional, not essential; if you do take it daily, choose reputable brands and monitor for side effects like digestive upset or changes in labs.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>What moringa called in Hindi?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Common Hindi names include "sahjan" and "drumstick," while in some Indian languages it is also known as "munga" or similar variants.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Where is moringa powder from?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Leaf powder is usually sourced from India, Africa, or other moringa-growing regions; check the label for country of origin. NutriThrive moringa is packed in Melbourne with lab-backed testing.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Will moringa lower blood pressure?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Small human studies show modest reductions in blood pressure or cholesterol in some participants, but effects are generally mild and not a substitute for prescribed therapy. <a href="/products/curry-leaves/" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">check our curry leaves</a></p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>How does moringa powder taste?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Powder has an earthy, slightly bitter, "green" flavor often compared with spinach, matcha, or fenugreek, and can be strong if used in large quantities.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Are moringa roots invasive?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Moringa has a deep taproot and can self-seed in suitable climates, but it is not classed as a major invasive species in most references; invasiveness depends on local conditions and regulations. Check local weed lists before planting.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Will moringa help with hair growth?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Claims exist due to its nutrients and antioxidants, but solid clinical trials on hair growth are lacking; it may support general nutrition, which indirectly helps hair health.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Why moringa powder doesn't mix with water?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Fine plant fibers and hydrophobic components can make powder clump and float; vigorous shaking or blending helps suspend it more evenly.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Should I drink moringa hot or cold?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Either is fine; hot water makes a tea, while cold water or smoothies are also common; nutrient losses from brief hot steeping are usually modest. discover keto benefits</p>
-</div>
-</div></div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Does moringa help with brain fog or focus?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Some users feel better clarity due to improved energy and micronutrients.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa cause diarrhea?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Yes — especially if you take too much too fast.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Who should not consume moringa?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>If you already feel light-headed between meals or live on the edge of hypotension, moringa is not “just lettuce.” Chat first. <a href="/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive</a> still publishes testing for readers who get the green light.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can I grow moringa in Australia?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Pots let you chase the sun week to week — renters love that flexibility. <a href="/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Kitchen backup: NutriThrive moringa</a>.</p>
-</div>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa help with energy and fatigue?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Yes, many people report improved energy due to iron + vitamins + antioxidants.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa help with anemia?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>It may help mild anemia (nutritional support), but severe anemia needs medical treatment.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa increase appetite?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Sometimes yes (better digestion), but it's not a strong appetite booster.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa help with immunity?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Yes — it's rich in vitamin C, vitamin A, antioxidants that support immune health.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Does moringa help with acid reflux?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>It might help digestion, but some people find it worsens reflux due to bitterness.</p>
-</div>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>How much moringa should a beginner take?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Start with ½–1 teaspoon daily (or 1 capsule). <a href="/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">Shop premium moringa powder</a></p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>What's the difference between moringa powder, capsules, and tea?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Powder: strongest + versatile<br/>Capsules: easiest/no taste<br/>Tea: mildest, lighter effect</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa help with bloating?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>It may help some people by improving digestion, but for others it can cause gas at first.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>How long does moringa take to work?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Some feel benefits in 3–7 days, but full results can take 2–4 weeks.</p>
-</div>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Is moringa safe while breastfeeding?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Some use it traditionally to support milk supply, but safety data is limited — ask a doctor first.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Does Coles sell moringa powder?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>If the shelf tub looks sun-faded, walk. <a href="/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Open a fresh NutriThrive pack</a> instead.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa affect the thyroid?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Possibly — it may interfere with thyroid medication timing (especially levothyroxine).</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>Can moringa help with joint pain or arthritis?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>It may support reduced inflammation, but it's not a cure. Best as a supportive supplement.</p>
-</div>
-</div>
-<div class="faq-item" style="margin-bottom: 1.5rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
-<button class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.faq-icon').textContent = this.nextElementSibling.style.display === 'none' ? '+' : '−';" style="width: 100%; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #e0e0e0; text-align: left; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: #000000; display: flex; justify-content: space-between; align-items: center;">
-<span>What is moringa?</span>
-<span class="faq-icon" style="font-size: 1.5rem; font-weight: bold;">+</span>
-</button>
-<div class="faq-answer" style="padding: 1.5rem; background: white; display: none; line-height: 1.7; color: #555;">
-<p>Fresh leaves lose friends at customs; powder travels. <a href="/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Order NutriThrive</a> when customs is not your hobby.</p>
-</div>
-</div>
-</div>
-<!-- Newsletter Subscription Section -->
-<section class="newsletter-section" style="margin: 4rem auto; max-width: 600px; padding: 3rem 2rem; background: var(--card, #fffdfa); border-radius: var(--radius, 18px); box-shadow: var(--shadow, 0 4px 24px 0 rgba(23,92,54,0.07)); text-align: center;">
-<h2 style="color: var(--primary, #175c36); font-size: 2rem; margin-bottom: 1rem; font-weight: 700;">Stay Informed with NutriThrive</h2>
-<p style="color: var(--muted, #5A6D5D); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">Get the latest health tips, product updates, exclusive offers, and wellness insights delivered to your inbox!</p>
-<form action="https://formsubmit.co/nutrithrive0@gmail.com" class="newsletter-form" method="POST" style="max-width: 500px; margin: 0 auto;">
-<input name="_subject" type="hidden" value="Newsletter Subscription - NutriThrive"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_captcha" type="hidden" value="false"/>
-<div style="display: flex; flex-direction: column; gap: 0.75rem;">
-<div>
-<label for="newsletter-blog-name" style="display: block; margin-bottom: 0.4rem; color: var(--text, #1a2e22); font-weight: 600; font-size: 0.95rem;">Your Name</label>
-<input id="newsletter-blog-name" name="name" placeholder="Enter your name" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;" type="text"/>
-</div>
-<div>
-<label for="newsletter-blog-email" style="display: block; margin-bottom: 0.4rem; color: var(--text, #1a2e22); font-weight: 600; font-size: 0.95rem;">Your Email</label>
-<input id="newsletter-blog-email" name="email" placeholder="Enter your email address" required="" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;" type="email"/>
-</div>
-</div>
-<button class="newsletter-submit-btn" style="width: 100%; margin-top: 0.5rem; background: var(--accent, #7B541F); color: #fff; border: none; border-radius: 8px; padding: 0.75rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.4s cubic-bezier(.4,2,.6,1);" type="submit">Subscribe to Newsletter</button>
-<div class="newsletter-message"></div>
-<p style="font-size: 0.85rem; color: var(--muted, #5A6D5D); margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
-</form>
-</section>
-<footer>
-<div class="footer-content">
-<div class="footer-section">
-<h3>About NutriThrive</h3>
-<p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
-</div>
-<div class="footer-section">
-<h3>Shopping</h3>
-<ul class="footer-links">
-<li><a href="/">Home</a></li>
-<li><a href="/products/">Products</a></li>
-<li><a href="/cart">Cart</a></li>
-<li><a href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
+<footer class="bg-forest-deep text-pure-white w-full pt-section-gap pb-base">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="space-y-6">
+<span class="font-display text-headline-md text-primary-fixed block">Nutri Thrive</span>
+<p class="font-body-md text-surface-variant/70">Purity in every leaf. Melbourne, Australia.</p>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Shop</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/">Shop All</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/moringa-powder/">Moringa Powder</a></li>
 </ul>
 </div>
-<div class="footer-section">
-<h3>Help &amp; Info</h3>
-<ul class="footer-links">
-<li><a href="/privacy-policy">Privacy Policy</a></li>
-<li><a href="/contact">Contact</a></li>
-<li><a href="/faq">FAQ</a></li>
-<li><a href="/about">About</a></li>
-<li><a href="/blog/">Blog</a></li>
-<li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li> </ul>
-</div>
-<div class="footer-section">
-<h3>Contact Us</h3>
-<ul class="footer-links">
-<li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
-<li><a href="tel:+61438201419">+61 438201419</a></li>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Company</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/about/about.html">About</a></li>
+<li><a class="text-primary-fixed underline" href="/blog/">Journal</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/contact">Contact</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
 </ul>
 </div>
-<div class="footer-section">
-<h3>Business Info</h3>
-<ul class="footer-links">
-<li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
-<li>Based in Truganina, Melbourne, VIC (Australia)<br/>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br/>Worldwide Shipping Available 🌍</li>
-<li>Monday - Sunday</li>
-<li>9:00 AM - 11:00 PM</li>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Legal</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
 </ul>
 </div>
 </div>
-<div class="footer-bottom">
-<div class="footer-bottom-container">
-<p>© 2026 NutriThrive. All rights reserved.</p>
-</div>
+<div class="mt-12 border-t border-pure-white/10 pt-base text-center text-xs text-surface-variant/40 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+© 2026 Nutri Thrive. All rights reserved.
 </div>
 </footer>
-<script defer="" src="blog.js"></script>
-<!-- Sticky Urgency Banner -->
-<div id="sticky-urgency" style="position:fixed;top:0;left:0;width:100%;background:#0066cc;color:#fff;font-weight:700;text-align:center;padding:0.7em 0;z-index:9999;box-shadow:0 2px 8px rgba(0,102,204,0.3);">
-<a href="/products/moringa-powder/" style="color:#fff;text-decoration:none;font-weight:700;">
- 3+1 Bundle <span style="text-decoration:line-through;opacity:0.8;">$41</span> <span style="margin-left:0.35em;">Now $31</span>
-</a>
-</div>
-<script>window.addEventListener('scroll',function(){document.getElementById('sticky-urgency').style.top=window.scrollY>40?'0':'0';});</script>
-<!-- Lab-Tested Badge & Warning -->
-<div style="background:#fffbe6;border-left:5px solid #ffb300;padding:1em 1.5em;margin:2em 0;border-radius:1em;font-weight:600;font-size:1.1em;">
-<span style="color:#b80000;font-weight:800;">WARNING:</span> Most Moringa Tastes Bitter! <span style="color:#175c36;">Our Lab-Tested Powder Has 40% Less Bitterness</span> <span style="background:#4ecdc4;color:#fff;padding:0.2em 0.7em;border-radius:1em;margin-left:0.5em;">Lab Verified</span>
-</div>
-<!-- 10 Best Ways to Use Moringa Powder Daily -->
-<h2>10 Best Ways to Use Moringa Powder Daily</h2>
-<ol>
-<li>Blend into smoothies or shakes</li>
-<li>Stir into yogurt or oatmeal</li>
-<li>Sprinkle on salads or soups</li>
-<li>Add to pancake or waffle batter</li>
-<li>Mix into hummus or dips</li>
-<li>Bake into energy balls or bars</li>
-<li>Stir into tea or lattes</li>
-<li>Add to homemade salad dressings</li>
-<li>Mix into guacamole or salsa</li>
-<li>Sprinkle on roasted veggies</li>
-</ol>
-<!-- 7 Quick Moringa Recipes (5-Minute Breakfasts) -->
-<h2>7 Quick Moringa Recipes (5-Minute Breakfasts)</h2>
-<ul>
-<li><b>Moringa Green Smoothie:</b> 1 tsp moringa, banana, spinach, almond milk</li>
-<li><b>Moringa Overnight Oats:</b> 1/2 tsp moringa, oats, chia, almond milk, berries</li>
-<li><b>Moringa Yogurt Bowl:</b> 1/2 tsp moringa, Greek yogurt, honey, granola</li>
-<li><b>Moringa Avocado Toast:</b> 1/2 tsp moringa, mashed avocado, wholegrain bread</li>
-<li><b>Moringa Protein Pancakes:</b> 1 tsp moringa, pancake mix, protein powder</li>
-<li><b>Moringa Energy Balls:</b> 1 tsp moringa, oats, nut butter, dates</li>
-</ul>
-<!-- Moringa vs. <a href="/blog/" style="color: #16a34a; text-decoration: underline;">Moringa vs Matcha</a> Comparison -->
-<div style="background:#eaf7f0;padding:1.5em 1em;border-radius:1em;margin:2em 0;">
-<h3 style="color:#175c36;">Moringa vs. Matcha: Why One Gives 3X More Iron</h3>
-<table style="width:100%;margin:1em 0;">
-<tr><th></th><th>Moringa</th><th>Matcha</th></tr>
-<tr><td>Iron (per 10g)</td><td>2.3mg</td><td>0.7mg</td></tr>
-<tr><td>Protein</td><td>3.2g</td><td>2.7g</td></tr>
-<tr><td>Antioxidants</td><td>46 types</td><td>~12 types</td></tr>
-<tr><td>Bitterness</td><td>Low</td><td>High</td></tr>
-</table>
-<div style="color:#175c36;font-weight:600;">Hint: Not Matcha!</div>
-</div>
-<!-- Interactive Moringa Pairing Generator -->
-<div style="background:#eaf7f0;padding:1.5em 1em;border-radius:1em;margin:2em 0;">
-<h3 style="color:#175c36;">Moringa Pairing Generator</h3>
-<form id="pairing-form" style="display:flex;gap:1em;flex-wrap:wrap;align-items:center;justify-content:center;">
-<input id="food-input" placeholder="Enter a food (e.g. eggs)" style="padding:0.7em 1em;border-radius:2em;border:1px solid #ccc;" type="text"/>
-<button class="custom-btn" type="submit">Get Moringa Hack</button>
-</form>
-<div id="pairing-result" style="margin-top:1em;font-weight:600;color:#175c36;"></div>
 <script>
-        document.getElementById('pairing-form').onsubmit = function(e) {
-          e.preventDefault();
-          var food = document.getElementById('food-input').value.trim().toLowerCase();
-          var hacks = {
-            'eggs': 'Sprinkle 1/2 tsp moringa into scrambled eggs for a green boost!',
-            'oats': 'Stir 1/2 tsp moringa into your morning oats for extra iron.',
-            'smoothie': 'Blend 1 tsp moringa with banana and spinach for a superfood smoothie.',
-            'salad': 'Mix 1/2 tsp moringa into your salad dressing for a nutrient punch.',
-            'toast': 'Add 1/2 tsp moringa to avocado toast for a vibrant color and nutrition.'
-          };
-          document.getElementById('pairing-result').innerText = hacks[food] || 'Try adding 1/2 tsp moringa to ' + food + ' for a healthy twist!';
-        };
-      </script>
-</div>
-<!-- Downloadable Cheat Sheet (Email Gate) -->
-<div style="background:#fffbe6;padding:1.5em 1em;border-radius:1em;margin:2em 0;text-align:center;">
-<h3 style="color:#175c36;">Download: 30 Moringa Hacks Cheat Sheet (PDF)</h3>
-<form action="#" method="post" style="display:flex;gap:1em;flex-wrap:wrap;justify-content:center;align-items:center;">
-<input name="email" placeholder="Your email" required="" style="padding:0.7em 1em;border-radius:2em;border:1px solid #ccc;" type="email"/>
-<button class="custom-btn" type="submit">Get Cheat Sheet</button>
-</form>
-<div style="font-size:0.95em;color:#444;margin-top:0.5em;">No spam. Unsubscribe anytime.</div>
-</div>
-<!-- Best Powder for Each Recipe Section -->
-<h2>Best Powder for Each Recipe</h2>
-<ul>
-<li><b>Smoothies:</b> NutriThrive Natural Moringa Powder (lab-tested, mild taste)</li>
-<li><b>Oats/Breakfasts:</b> NutriThrive for iron and protein</li>
-<li><b>Baking:</b> NutriThrive for color and nutrition</li>
-<li><b>Salads:</b> NutriThrive for easy mixing and no bitterness</li>
-</ul>
-<!-- Internal Link Bomb -->
-<div style="margin:2em 0;">
-<a href="/products/" style="color:#175c36;font-weight:700;text-decoration:underline;">Lab-Tested Moringa Used in These Recipes</a>
-</div>
-<!-- Move this section to the very bottom, near footer scripts. -->
-<div style="background:#f7f5f0;padding:1.5em 1em;border-radius:1em;margin:2em 0;text-align:center;">
-<h3 style="color:#175c36;">What Real Users Say</h3>
-<blockquote style="font-size:1.1em;color:#175c36;font-style:italic;">"This recipe changed my mornings!"<br/>– @SarahTikTok (2M followers)</blockquote>
-<div style="margin-top:1em;">
-<span style="background:#eaf7f0;color:#175c36;padding:0.4em 1em;border-radius:1em;font-weight:700;margin:0 0.5em;">As Featured In</span>
-<span style="background:#eaf7f0;color:#175c36;padding:0.4em 1em;border-radius:1em;font-weight:700;margin:0 0.5em;">Wellness Weekly</span>
-<span style="background:#eaf7f0;color:#175c36;padding:0.4em 1em;border-radius:1em;font-weight:700;margin:0 0.5em;">Vegan Eats</span>
-</div>
-</div>
-<!-- Exit-Intent Popup -->
-<div id="exit-popup" style="display:none;position:fixed;z-index:99999;left:50%;top:12%;transform:translate(-50%,0);background:#fffbe6;border:2px solid #ffb300;padding:2em 2.5em;border-radius:1.5em;box-shadow:0 8px 32px #ffb300cc;text-align:center;min-width:320px;">
-<button aria-label="Close" id="close-exit-popup" style="position:absolute;top:12px;right:18px;background:none;border:none;font-size:1.5em;color:#b80000;cursor:pointer;line-height:1;">×</button>
-<h3 style="color:#b80000;margin-top:0;">Wait! Get 10% OFF + Smoothie Guide</h3>
-<p style="font-size:1.1em;">Enter your email to claim your discount and get our exclusive smoothie guide PDF.</p>
-<form action="#" method="post" style="display:flex;gap:1em;flex-wrap:wrap;justify-content:center;align-items:center;">
-<input name="email" placeholder="Your email" required="" style="padding:0.7em 1em;border-radius:2em;border:1px solid #ccc;" type="email"/>
-<button class="custom-btn" type="submit">Claim Offer</button>
-</form>
-<div style="font-size:0.95em;color:#444;margin-top:0.5em;">No spam. Unsubscribe anytime.</div>
-</div>
-<script>
-      // Exit-intent popup logic
-      let exitPopupShown = false;
-      function showExitPopup() {
-        if (!exitPopupShown) {
-          document.getElementById('exit-popup').style.display = 'block';
-          exitPopupShown = true;
-        }
-      }
-      document.addEventListener('mouseleave', function(e) {
-        if (e.clientY < 10) showExitPopup();
-      });
-      document.getElementById('close-exit-popup').onclick = function(){document.getElementById('exit-popup').style.display='none';};
-    </script>
-<!-- Sticky Bottom Product Bar -->
-<div id="sticky-moringa-bar" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 9998; background: rgba(15,107,77,0.98); color: #ffffff; padding: 0.75rem 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
-<span style="font-size: 0.9rem; font-weight: 600;">
- 🌿 3+1 Moringa Bundle:
- <span style="text-decoration: line-through; opacity: 0.8; margin-left: 0.25rem;">$41</span>
-<span style="margin-left: 0.35rem;">Now $31</span>
-</span>
-<a href="/products/moringa-powder/" style="padding: 0.45rem 1.1rem; border-radius: 999px; background: #ffffff; color: #0f6b4d; font-weight: 700; font-size: 0.9rem; text-decoration: none;">Shop Moringa Powder</a>
-</div>
-<!-- Related Articles Section -->
-<div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 12px; border-top: 3px solid #2d5a3d; max-width: 1200px; margin-left: auto; margin-right: auto;">
-<h3 style="font-size: 1.5rem; color: #2d5a3d; margin-bottom: 1rem; font-weight: 600;">Related Articles</h3>
-<p style="margin-bottom: 1.5rem; color: #555;">Discover more moringa guides and recipes:</p>
-<ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-<li style="margin-bottom: 0.75rem;"><a href="/blog/moringa-brands-comparison-australia-2026.html" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Best Rated Moringa Capsules &amp; Powders 2026</a></li>
-<li style="margin-bottom: 0.75rem;">→ Ultimate Moringa Powder Guide</li>
-<li style="margin-bottom: 0.75rem;">→ Best Time to Take Moringa</li>
-<li style="margin-bottom: 0.75rem;"><a href="/blog/" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">→ Moringa Complete FAQ Guide</a></li>
-</ul>
-<p style="margin-top: 1.5rem; text-align: center;">
-<a href="/blog/" style="color: #2d5a3d; font-weight: 600; text-decoration: underline;">← Back to All Articles</a> | 
- <a href="/" style="color: #2d5a3d; font-weight: 600; text-decoration: underline;">Visit Homepage</a>
-</p>
-</div>
-<footer style="margin-top: 3rem; padding: 2rem; text-align: center; background: #f8f9fa; border-top: 1px solid #e0e0e0;">
-<p>© 2026 NutriThrive. All rights reserved.</p>
-<nav style="margin-top: 1rem;">
-<a href="/" style="margin: 0 1rem; color: #2d5a3d; text-decoration: none;">Home</a>
-<a href="/blog/" style="margin: 0 1rem; color: #2d5a3d; text-decoration: none;">Blog</a>
-<a href="/about" style="margin: 0 1rem; color: #2d5a3d; text-decoration: none;">About</a>
-<a href="/products/" style="margin: 0 1rem; color: #2d5a3d; text-decoration: none;">Products</a>
-</nav>
-</footer>
-<!-- Email Signup Popup -->
-<div id="emailSignupPopup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; justify-content: center; align-items: center; animation: fadeIn 0.3s ease;">
-<div style="background: white; padding: 2.5rem; border-radius: 16px; text-align: center; max-width: 500px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; animation: slideUp 0.3s ease;">
-<button id="closePopupBtn" onclick="closeEmailPopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 2rem; cursor: pointer; color: #888; line-height: 1; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; transition: color 0.2s;">×</button>
-<h3 style="color: #175c36; font-size: 1.75rem; margin-bottom: 0.75rem; font-weight: 700;">Stay Updated with NutriThrive</h3>
-<p style="font-size: 1rem; color: #5A6D5D; margin-bottom: 1.5rem; line-height: 1.6;">Get the latest health tips, product updates, and exclusive offers delivered to your inbox!</p>
-<form id="emailSignupForm" style="max-width: 100%;">
-<input name="_subject" type="hidden" value="Newsletter Subscription - NutriThrive"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_captcha" type="hidden" value="false"/>
-<div style="display: flex; flex-direction: column; gap: 1rem;">
-<input name="name" placeholder="Your Name" style="width: 100%; padding: 0.875rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 1rem; font-family: 'Inter', sans-serif; box-sizing: border-box;" type="text"/>
-<input name="email" placeholder="Enter your email address" required="" style="width: 100%; padding: 0.875rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 1rem; font-family: 'Inter', sans-serif; box-sizing: border-box;" type="email"/>
-</div>
-<button id="submitBtn" style="width: 100%; margin-top: 1rem; background: #7B541F; color: #fff; border: none; border-radius: 8px; padding: 0.875rem 1.5rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;" type="submit">Subscribe</button>
-<div id="popupMessage" style="margin-top: 1rem; font-size: 0.9rem; min-height: 20px;"></div>
-<p style="font-size: 0.8rem; color: #888; margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
-</form>
-</div>
-</div>
-<style>
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-#emailSignupPopup {
-    display: none;
-}
-#emailSignupPopup.show {
-    display: flex !important;
-}
-</style>
-<script>
-(function() {
-    // Check if popup was closed in this session
-    function wasPopupClosed() {
-        return sessionStorage.getItem('emailPopupClosed') === 'true';
-    }
-    
-    // Mark popup as closed
-    function markPopupClosed() {
-        sessionStorage.setItem('emailPopupClosed', 'true');
-    }
-    
-    // Show popup after delay - Increased to 90 seconds to improve UX and engagement
-    function showPopup() {
-        if (!wasPopupClosed()) {
-            setTimeout(function() {
-                var popup = document.getElementById('emailSignupPopup');
-                if (popup) {
-                    popup.style.display = 'flex';
-                    popup.classList.add('show');
-                }
-            }, 90000); // Show after 90 seconds - allows users to read content first
-        }
-    }
-    
-    // Close popup
-    window.closeEmailPopup = function() {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup) {
-            popup.style.display = 'none';
-            popup.classList.remove('show');
-            markPopupClosed();
-        }
-    };
-    
-    // Handle form submission
-    function handleFormSubmit(e) {
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href && href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
         e.preventDefault();
-        var form = e.target;
-        var submitBtn = document.getElementById('submitBtn');
-        var messageDiv = document.getElementById('popupMessage');
-        var formData = new FormData(form);
-        
-        // Add formsubmit endpoint
-        
-        
-        // Disable submit button
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Subscribing...';
-        messageDiv.innerHTML = '';
-        
-        // Submit via AJAX
-        fetch('https://formsubmit.co/ajax/nutrithrive0@gmail.com', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                messageDiv.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Thank you for subscribing!</span>';
-                form.reset();
-                // Close popup after 2 seconds
-                setTimeout(function() {
-                    closeEmailPopup();
-                }, 2000);
-            } else {
-                messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Subscribe';
-            }
-        })
-        .catch(error => {
-            messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Subscribe';
-        });
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            showPopup();
-            var form = document.getElementById('emailSignupForm');
-            if (form) {
-                form.addEventListener('submit', handleFormSubmit);
-            }
-        });
-    } else {
-        showPopup();
-        var form = document.getElementById('emailSignupForm');
-        if (form) {
-            form.addEventListener('submit', handleFormSubmit);
-        }
-    }
-    
-    // Close on background click
-    document.addEventListener('click', function(e) {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup && e.target === popup) {
-            closeEmailPopup();
-        }
-    });
-})();
+  });
+});
 </script>
-<!-- Related Articles Section -->
-<div class="related-articles-section" style="margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 16px; border: 2px solid #2d7a4f;">
-<h2 style="color: #175c36; font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 700;">📚 More Blog Posts to Explore</h2>
-<p style="text-align: center; color: #4a6741; margin-bottom: 2.5rem; font-size: 1.1rem;">Explore more articles about superfoods, health tips, and wellness guides</p>
-<div class="related-articles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-<a class="related-article-card" href="/blog/moringa-vs-coffee-melbourne-energy-hack.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">The $7 Latte Is Over: Why Melbourne Is Switching to This "Green Gold" Energy ...</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-<a class="related-article-card" href="/blog/" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">The Ultimate Guide to Moringa in Australia: Benefits, Uses &amp; Side Effects (2026)</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-<a class="related-article-card" href="/blog/" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Moringa vs. Matcha Australia 2026: Best Energy Boost for Aussies</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-<a class="related-article-card" href="/blog/" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Top 5 Australian Plant-Based Superfoods You Are Missing (2026 List)</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-<a class="related-article-card" href="/blog/moringa-brands-comparison-australia-2026.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">The Definitive Strategic Guide to Moringa Acquisition in the 2026 Australian ...</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-<a class="related-article-card" href="/blog/" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Post-Workout Soreness? Why Athletes Are Adding Moringa to Protein Shakes</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-
-
-<a class="related-article-card" href="/blog/smart-moringa-daily-intake-australia-visual-guide-2026.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23, 92, 54, 0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Smart moringa dosing: charts for Australian adults (2026)</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-
-
-</div>
-</div>
 <script defer="" src="../scripts/global/newsletter-popup.js"></script>
-<!-- Smooth Scroll for Table of Contents -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Add smooth scrolling to all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href.length > 1) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        const headerOffset = 80;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-    });
-    </script>
 </body>
-</html> 
+</html>
