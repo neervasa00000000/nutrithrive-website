@@ -581,3 +581,164 @@ body.blog-story-article {
     padding-bottom: 2rem;
   }
 }
+
+/* Diary-style story posts (90-day sugar quit, etc.) */
+body.blog-story-article .story-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.blog-story-article .story-hero-stats li {
+  flex: 1 1 140px;
+  margin: 0;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f4a2a;
+  background: #f4f8f5;
+  border: 1px solid #e3eee7;
+  border-radius: 8px;
+}
+
+body.blog-story-article .story-progress-block {
+  margin: 2rem 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid #e8f0eb;
+  border-bottom: 1px solid #e8f0eb;
+}
+
+body.blog-story-article .story-progress-block h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #5a6d5d;
+}
+
+body.blog-story-article .story-progress-row {
+  margin: 1rem 0 0;
+}
+
+body.blog-story-article .story-progress-row label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a2e22;
+  margin-bottom: 0.35rem;
+}
+
+body.blog-story-article .story-progress-bar {
+  height: 8px;
+  background: #e8f0eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+body.blog-story-article .story-progress-bar span {
+  display: block;
+  height: 100%;
+  background: #175c36;
+  border-radius: 4px;
+}
+
+body.blog-story-article .story-progress-bar span.bar-energy {
+  background: #6b4fa0;
+  width: 95%;
+}
+
+body.blog-story-article .story-progress-bar span.bar-weight {
+  background: #2d7a4f;
+  width: 81%;
+}
+
+body.blog-story-article .story-progress-bar span.bar-cravings {
+  background: #175c36;
+  width: 2%;
+}
+
+body.blog-story-article .story-timeline {
+  margin: 1.5rem 0 2rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid #d4e8db;
+}
+
+body.blog-story-article .timeline-entry {
+  position: relative;
+  padding: 0 0 1.5rem 1.25rem;
+  margin: 0;
+}
+
+body.blog-story-article .timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -1.62rem;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border: 2px solid #175c36;
+  border-radius: 50%;
+}
+
+body.blog-story-article .timeline-entry h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+body.blog-story-article .timeline-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+body.blog-story-article .timeline-tag--easy {
+  background: #e8f5ed;
+  color: #175c36;
+}
+
+body.blog-story-article .timeline-tag--hell,
+body.blog-story-article .timeline-tag--scary {
+  background: #fff5f5;
+  color: #c53030;
+}
+
+body.blog-story-article .timeline-tag--better {
+  background: #fffbeb;
+  color: #b7791f;
+}
+
+body.blog-story-article .timeline-tag--win {
+  background: #e8f5ed;
+  color: #0f4a2a;
+}
+
+body.blog-story-article .info-box-blue {
+  background: #eef4fc;
+  border-left: 3px solid #3182ce;
+  padding: 1rem 0 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+body.blog-story-article .info-box-blue h3 {
+  margin-top: 0;
+  color: #2c5282;
+}
+
+body.blog-story-article .story-toc .toc-phase {
+  font-size: 0.75rem;
+  color: #5a6d5d;
+  margin-left: 0.35rem;
+}
