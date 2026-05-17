@@ -1,15 +1,9 @@
 {
   "default": {
-    "hero": "/assets/images/blog/hero-moringa-800.webp",
-    "heroFallback": "/assets/images/blog/hero-moringa-800.jpg",
-    "width": 800,
-    "height": 450
+    "hero": "../assets/images/homepage/product-showcase/Moringa.webp"
   },
   "social": {
-    "hero": "/assets/images/blog/hero-social-800.webp",
-    "heroFallback": "/assets/images/blog/hero-social-800.jpg",
-    "width": 800,
-    "height": 450
+    "hero": "../assets/images/homepage/product-showcase/Moringa.webp"
   },
   "moringa-powder-victoria-seniors-joint-health.html": {
     "hero": "/assets/images/blog/moringa-seniors-720.jpg",
