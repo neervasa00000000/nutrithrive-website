@@ -122,12 +122,16 @@
     updateUI: () => window.Cart.updateUI(),
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function refreshCartBadge() {
+    if (!window.Cart?.getItemCount) return;
+    const n = window.Cart.getItemCount();
     document.querySelectorAll('[data-cart-count]').forEach((badge) => {
-      const n = window.Cart.getItemCount();
       badge.textContent = String(n);
       if (n > 0) badge.classList.remove('hidden');
       else badge.classList.add('hidden');
     });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', refreshCartBadge);
+  document.addEventListener('nt-cart-updated', refreshCartBadge);
 })();
