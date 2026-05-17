@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html class="scroll-smooth" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
-    <script src="/scripts/global/reddit-pixel.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, follow">
-    <title>Your Cart | NutriThrive, Melbourne</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Cart | NutriThrive, Melbourne</title>
+<meta name="robots" content="noindex, follow">
+    
     <meta name="description" content="Review your NutriThrive cart — moringa powder, curry leaves, tea &amp; more. Fast shipping from Melbourne, Australia.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nutrithrive.com.au/cart">
@@ -21,332 +20,13 @@
     <meta property="twitter:description" content="Review your NutriThrive cart — moringa powder, curry leaves, tea &amp; more. Fast shipping from Melbourne, Australia.">
     <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp">
     <link rel="canonical" href="https://nutrithrive.com.au/cart">
-<link rel="stylesheet" href="/styles/global/style.css">
+
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #f8f5ec;
-            color: #1a2e22;
-            margin: 0;
-            padding: 0;
-        }
-        .cart-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-        }
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        .cart-header h1 {
-            color: #2d5a3d;
-            margin: 0;
-        }
-        .continue-shopping {
-            color: #2d5a3d;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .cart-table {
-            background: transparent;
-            border-radius: 0;
-            padding: 2rem 0;
-            box-shadow: none;
-        }
-        .cart-table-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr auto;
-            gap: 1rem;
-            padding: 0.75rem 0;
-            border-bottom: 2px solid #e0e0e0;
-            font-weight: 600;
-            color: #2d5a3d;
-            margin-bottom: 0;
-        }
-        .cart-table-header > div:first-child {
-            text-align: left;
-        }
-        .cart-table-header > div:nth-child(2),
-        .cart-table-header > div:nth-child(3),
-        .cart-table-header > div:nth-child(4) {
-            text-align: left;
-            padding-left: 0.5rem;
-        }
-        .cart-item {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr auto;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e0e0e0;
-            align-items: center;
-        }
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-        .item-info {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-        .item-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .item-details h3 {
-            margin: 0 0 0.5rem 0;
-            color: #1a2e22;
-        }
-        .item-price {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-left: 0.5rem;
-        }
-        .quantity-box {
-            display: flex;
-            align-items: center;
-            border: 1px solid #d4cfc3;
-            border-radius: 8px;
-            background: #f8f5ec;
-            overflow: hidden;
-        }
-        .quantity-btn {
-            width: 40px;
-            height: 40px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a2e22;
-            transition: background-color 0.2s ease;
-        }
-        .quantity-btn:hover {
-            background: #ebe7dc;
-        }
-        .quantity-input {
-            width: 50px;
-            padding: 0.5rem;
-            border: none;
-            border-left: 1px solid #d4cfc3;
-            border-right: 1px solid #d4cfc3;
-            text-align: center;
-            font-size: 1rem;
-            background: #f8f5ec;
-            color: #1a2e22;
-        }
-        .quantity-input:focus {
-            outline: none;
-        }
-        .item-total {
-            font-weight: 600;
-            color: #2d5a3d;
-        }
-        .remove-btn {
-            background: none;
-            border: none;
-            color: #c62828;
-            cursor: pointer;
-            padding: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.2s ease;
-        }
-        .remove-btn:hover {
-            color: #a02020;
-        }
-        .remove-btn svg {
-            display: block;
-        }
-        .cart-summary {
-            background: transparent;
-            border-radius: 0;
-            padding: 2rem 0;
-            margin-top: 2rem;
-            box-shadow: none;
-        }
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .summary-row:last-child {
-            border-bottom: none;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #2d5a3d;
-            margin-top: 1rem;
-        }
-        .checkout-btn {
-            width: 100%;
-            padding: 1rem 2rem;
-            background: #2d5a3d;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 1.5rem;
-        }
-        .you-also-viewed {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e0e0e0;
-        }
-        .you-also-viewed h2 {
-            color: #2d5a3d;
-            margin: 0 0 1rem 0;
-            font-size: 1.2rem;
-        }
-        .also-viewed-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-            gap: 1rem;
-        }
-        .also-viewed-card {
-            border: none;
-            border-radius: 0;
-            padding: 0.5rem 0;
-            background: transparent;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            align-items: center;
-            text-align: center;
-        }
-        .also-viewed-card img {
-            width: 100%;
-            height: 110px;
-            object-fit: contain;
-            border-radius: 6px;
-            background: transparent;
-        }
-        .also-viewed-card a {
-            color: #1a2e22;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            line-height: 1.3;
-        }
-        .also-viewed-card a:hover {
-            color: #2d5a3d;
-        }
-        .also-viewed-price {
-            color: #2d5a3d;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-        .also-viewed-add-btn {
-            margin-top: 0.25rem;
-            width: 100%;
-            padding: 0.5rem 0;
-            min-height: 40px;
-            background: none;
-            border: none;
-            color: #2d5a3d;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.03em;
-            text-decoration: underline;
-        }
-        .also-viewed-add-btn:hover {
-            text-decoration: none;
-            opacity: 0.85;
-        }
-        .also-viewed-add-btn:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-            text-decoration: none;
-        }
-        .checkout-btn:hover {
-            background: #1f3f2a;
-        }
-        .checkout-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        .empty-cart {
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-        .empty-cart h2 {
-            color: #2d5a3d;
-            margin-bottom: 1rem;
-        }
-        .empty-cart p {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-        .btn-primary {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: #2d5a3d;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-        @media (max-width: 768px) {
-            .cart-table-header,
-            .cart-item {
-                grid-template-columns: minmax(0, 1fr) auto;
-                gap: 1rem;
-            }
-            .cart-table-header {
-                display: none;
-            }
-            .item-info {
-                grid-column: 1 / -1;
-            }
-            .quantity-controls {
-                grid-column: 1;
-                grid-row: 2;
-                padding-left: 0;
-            }
-            .remove-btn {
-                grid-column: 2;
-                grid-row: 2;
-                justify-self: end;
-                align-self: center;
-                margin-left: 1.25rem;
-            }
-            .cart-item > :nth-child(3),
-            .cart-item > :nth-child(4) {
-                grid-column: 1 / -1;
-                padding-left: 0 !important;
-            }
-            .cart-item > :nth-child(3) {
-                grid-row: 3;
-            }
-            .cart-item > :nth-child(4) {
-                grid-row: 4;
-            }
-            .item-info {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
+    
 
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
@@ -457,515 +137,860 @@
   ]
 }
 </script>
-</head>
-<body>
-    <header>
-        <div class="navbar">
-            <a href="/" class="logo">
-                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
-                NutriThrive
-            </a>
-            <nav class="nav-links">
-                <a href="/">Home</a>
-                <a href="/products/">Products</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/blog/">Blog</a>
-            </nav>
-            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </button>
-        </div>
-    </header>
-    
-    <div class="cart-container">
-        <div class="cart-header">
-            <h1>Your cart</h1>
-            <a href="/products/" class="continue-shopping">Continue shopping</a>
-        </div>
-        <p style="margin: 0 0 1.25rem; color: #4a5d4f; font-size: 0.95rem; line-height: 1.5;">Secure checkout · Dispatched from Truganina, Melbourne · <a href="/pages/shipping/shipping-returns.html" style="color: #2d5a3d; font-weight: 600;">Shipping &amp; returns</a></p>
-        
-        <div id="cart-content">
-            <!-- Cart items will be loaded here -->
-        </div>
 
-        <div id="you-also-viewed" class="you-also-viewed" style="display: none;">
-            <h2>You may also like</h2>
-            <div id="also-viewed-grid" class="also-viewed-grid"></div>
-        </div>
-        
-        <div id="cart-summary" class="cart-summary" style="display: none;">
-            <div class="summary-row">
-                <span>Subtotal</span>
-                <span id="subtotal">$0.00</span>
-            </div>
-            <div class="summary-row" id="discount-row" style="display: none;">
-                <span id="discount-label" style="color: #2d5a3d;">Discount</span>
-                <span id="discount-amount" style="color: #2d5a3d; font-weight: 600;">-$0.00</span>
-            </div>
-            <div class="summary-row">
-                <span>Total</span>
-                <span id="total">$0.00</span>
-            </div>
-            <a id="proceed-to-payment" class="checkout-btn" href="/payment" style="display: inline-block; text-align: center; text-decoration: none; box-sizing: border-box;">
-                Proceed to Payment
-            </a>
-        </div>
-    </div>
-    <script src="/scripts/global/cart.js"></script>
-    <script src="/scripts/global/recently-viewed.js"></script>
-    <script src="/scripts/global/cart-header.js"></script>
-    <script src="/scripts/global/shipping-rates.js"></script>
-    <script src="/scripts/global/script.js"></script>
-    <script>
-        function renderCart() {
-            const cart = window.Cart.get();
-            const cartContent = document.getElementById('cart-content');
-            const cartSummary = document.getElementById('cart-summary');
-            const alsoViewedWrap = document.getElementById('you-also-viewed');
-            
-            if (!cart || !cart.items || cart.items.length === 0) {
-                cartContent.innerHTML = `
-                    <div class="empty-cart">
-                        <h2>Your cart is empty</h2>
-                        <p>Add some products to your cart to get started!</p>
-                        <a href="/products/" class="btn-primary">Shop Now</a>
-                    </div>
-                `;
-                cartSummary.style.display = 'none';
-                if (alsoViewedWrap) alsoViewedWrap.style.display = 'none';
-                return;
-            }
 
-            const ORIGINAL_PRICE_BY_ID = {
-                'moringa-powder': 14.00,
-                'moringa-200g': 28.00,
-                'moringa-400g': 56.00,
-                'moringa-soap': 9.49,
-                'moringa-soap-combo': 23.39,
-                'curry-leaves': 8.49,
-                'black-tea': 10.00,
-                'combo-pack': 22.49,
-                'moringa-variation-1': 56.00,
-                'moringa-variation-2': 14.00,
-                'moringa-variation-3': 22.49,
-                'moringa-variation-4': 28.00,
-                'moringa-variation-5': 8.49,
-                'moringa-variation-6': 23.39
-            };
 
-            function getOriginalUnitPrice(item, discountedUnitPrice) {
-                const mapped = ORIGINAL_PRICE_BY_ID[item?.id];
-                if (Number.isFinite(mapped) && mapped >= discountedUnitPrice) {
-                    return mapped;
-                }
 
-                const fromItem = Number.parseFloat(item?.originalPrice);
-                if (Number.isFinite(fromItem) && fromItem >= discountedUnitPrice) {
-                    return fromItem;
-                }
 
-                return null;
-            }
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
 
-            function safeId(value) {
-                const s = String(value ?? '').trim();
-                return /^[a-z0-9-]+$/i.test(s) ? s : null;
-            }
-
-            function safeInt(value, min, max) {
-                const n = Number.parseInt(value, 10);
-                if (!Number.isFinite(n)) return null;
-                if (n < min || n > max) return null;
-                return n;
-            }
-
-            function safeMoney(value) {
-                const n = Number.parseFloat(value);
-                if (!Number.isFinite(n)) return null;
-                if (n < 0 || n > 100000) return null;
-                return n;
-            }
-
-            function safeImageSrc(src) {
-                const s = String(src ?? '').trim();
-                if (!s) return '';
-                // Block protocol-based attacks
-                if (/^javascript:/i.test(s)) return '';
-                if (/^data:/i.test(s)) return '';
-
-                // Allow same-origin and relative assets
-                if (s.startsWith('/') || s.startsWith('.')) return s;
-
-                // Allow only known external hosts
-                if (!/^https:\/\//i.test(s)) return '';
-                try {
-                    const u = new URL(s);
-                    const host = u.hostname.toLowerCase();
-                    if (u.protocol !== 'https:') return '';
-                    if (host === 'nutrithrive.com.au' || host === 'www.nutrithrive.com.au') return s;
-                    if (host === 'i.imgur.com') return s;
-                    return '';
-                } catch (e) {
-                    return '';
-                }
-            }
-
-            // Render cart items (XSS-safe)
-            cartContent.replaceChildren();
-
-            let subtotalFromItems = 0;
-
-            const table = document.createElement('div');
-            table.className = 'cart-table';
-
-            const header = document.createElement('div');
-            header.className = 'cart-table-header';
-            ['PRODUCT', 'QUANTITY', 'PRICE', 'TOTAL', ''].forEach(t => {
-                const d = document.createElement('div');
-                d.textContent = t;
-                header.appendChild(d);
-            });
-            table.appendChild(header);
-
-            cart.items.forEach(item => {
-                const id = safeId(item?.id);
-                const qty = safeInt(item?.quantity ?? 1, 1, 99);
-                const price = safeMoney(item?.price);
-                if (!id || qty === null || price === null) return;
-
-                subtotalFromItems += price * qty;
-
-                const itemTotal = (price * qty).toFixed(2);
-
-                const row = document.createElement('div');
-                row.className = 'cart-item';
-                row.dataset.productId = id;
-
-                const info = document.createElement('div');
-                info.className = 'item-info';
-
-                const imgSrc = safeImageSrc(item?.image);
-                if (imgSrc) {
-                    const img = document.createElement('img');
-                    img.src = imgSrc;
-                    img.alt = String(item?.name ?? '').slice(0, 120);
-                    img.className = 'item-image';
-                    info.appendChild(img);
-                }
-
-                const details = document.createElement('div');
-                details.className = 'item-details';
-
-                const h3 = document.createElement('h3');
-                h3.textContent = String(item?.name ?? '').slice(0, 120);
-
-                const priceEl = document.createElement('div');
-                priceEl.className = 'item-price';
-                priceEl.textContent = `$${price.toFixed(2)} each`;
-
-                details.appendChild(h3);
-                details.appendChild(priceEl);
-                info.appendChild(details);
-                row.appendChild(info);
-
-                const qtyControls = document.createElement('div');
-                qtyControls.className = 'quantity-controls';
-
-                const qtyBox = document.createElement('div');
-                qtyBox.className = 'quantity-box';
-
-                const dec = document.createElement('button');
-                dec.type = 'button';
-                dec.className = 'quantity-btn';
-                dec.textContent = '-';
-                dec.addEventListener('click', function() {
-                    updateQuantity(id, qty - 1);
-                });
-
-                const input = document.createElement('input');
-                input.type = 'number';
-                input.className = 'quantity-input';
-                input.value = String(qty);
-                input.min = '1';
-                input.addEventListener('change', function() {
-                    updateQuantity(id, input.value);
-                });
-
-                const inc = document.createElement('button');
-                inc.type = 'button';
-                inc.className = 'quantity-btn';
-                inc.textContent = '+';
-                inc.addEventListener('click', function() {
-                    updateQuantity(id, qty + 1);
-                });
-
-                qtyBox.appendChild(dec);
-                qtyBox.appendChild(input);
-                qtyBox.appendChild(inc);
-                qtyControls.appendChild(qtyBox);
-                row.appendChild(qtyControls);
-
-                const unit = document.createElement('div');
-                unit.style.textAlign = 'left';
-                unit.style.paddingLeft = '0.5rem';
-                unit.textContent = `$${price.toFixed(2)}`;
-                row.appendChild(unit);
-
-                const total = document.createElement('div');
-                total.className = 'item-total';
-                total.style.textAlign = 'left';
-                total.style.paddingLeft = '0.5rem';
-                total.textContent = `$${itemTotal}`;
-                row.appendChild(total);
-
-                const removeBtn = document.createElement('button');
-                removeBtn.type = 'button';
-                removeBtn.className = 'remove-btn';
-                removeBtn.title = 'Remove item';
-                removeBtn.setAttribute('aria-label', 'Remove item');
-                removeBtn.addEventListener('click', function() {
-                    removeItem(id);
-                });
-                removeBtn.innerHTML = `
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg>
-                `;
-                row.appendChild(removeBtn);
-
-                table.appendChild(row);
-            });
-
-            cartContent.appendChild(table);
-            renderAlsoViewed(cart.items);
-            
-            // Update summary
-            const subtotal = Number((subtotalFromItems || 0).toFixed(2));
-            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            
-            // Calculate discount using authoritative original prices per SKU.
-            let originalTotal = 0;
-            cart.items.forEach(item => {
-                const qty = safeInt(item?.quantity ?? 1, 1, 99);
-                const price = safeMoney(item?.price);
-                if (qty === null || price === null) return;
-                const originalItemPrice = getOriginalUnitPrice(item, price);
-                if (originalItemPrice === null) return;
-                originalTotal += originalItemPrice * qty;
-            });
-            
-            const discountAmount = Number((originalTotal - subtotal).toFixed(2));
-            const discountRow = document.getElementById('discount-row');
-            const discountLabel = document.getElementById('discount-label');
-            const discountAmountElement = document.getElementById('discount-amount');
-            
-            if (discountAmount > 0.01) { // Only show if discount is significant
-                const discountPercent = Math.ceil((discountAmount / originalTotal) * 100);
-                if (discountLabel) {
-                    discountLabel.textContent = `Discount (${discountPercent}% off)`;
-                }
-                discountRow.style.display = 'flex';
-                discountAmountElement.textContent = `-$${discountAmount.toFixed(2)}`;
-            } else {
-                if (discountLabel) {
-                    discountLabel.textContent = 'Discount';
-                }
-                discountRow.style.display = 'none';
-            }
-            
-            // Cart page only: total is subtotal after discount handling above.
-            document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
-            cartSummary.style.display = 'block';
-        }
-
-        function getFallbackRecommendations() {
-            return [
-                { id: 'moringa-powder', name: 'Moringa Powder', price: 11.00, image: '/assets/images/homepage/product-showcase/Moringa.webp', url: '/products/moringa-powder/' },
-                { id: 'moringa-soap', name: 'Moringa Soap', price: 7.00, image: '/assets/images/homepage/product-showcase/moringa_soap.webp', url: '/products/moringa-soap/' },
-                { id: 'curry-leaves', name: 'Dried Curry Leaves', price: 7.00, image: '/assets/images/homepage/product-showcase/Curry.webp', url: '/products/curry-leaves/' },
-                { id: 'black-tea', name: 'Premium Black Tea', price: 7.50, image: '/assets/images/homepage/product-showcase/BlackTea.webp', url: '/products/black-tea/' }
-            ];
-        }
-
-        function renderAlsoViewed(cartItems) {
-            const wrap = document.getElementById('you-also-viewed');
-            const grid = document.getElementById('also-viewed-grid');
-            if (!wrap || !grid) return;
-            const safeIdForReco = function (value) {
-                const s = String(value ?? '').trim();
-                return /^[a-z0-9-]+$/i.test(s) ? s : null;
-            };
-            const safeImageForReco = function (src) {
-                const s = String(src ?? '').trim();
-                if (!s) return '';
-                if (/^javascript:/i.test(s) || /^data:/i.test(s)) return '';
-                if (s.startsWith('/') || s.startsWith('.')) return s;
-                if (!/^https:\/\//i.test(s)) return '';
-                try {
-                    const u = new URL(s);
-                    const host = u.hostname.toLowerCase();
-                    if (u.protocol !== 'https:') return '';
-                    if (host === 'nutrithrive.com.au' || host === 'www.nutrithrive.com.au' || host === 'i.imgur.com') return s;
-                } catch (e) {
-                    return '';
-                }
-                return '';
-            };
-
-            const cartIds = new Set((cartItems || []).map(item => String(item.id || '')));
-            let items = [];
-            if (window.RecentlyViewed && typeof window.RecentlyViewed.getAll === 'function') {
-                items = window.RecentlyViewed.getAll().filter(function (item) {
-                    return item && item.id && !cartIds.has(String(item.id));
-                }).slice(0, 4);
-            }
-
-            if (items.length === 0) {
-                items = getFallbackRecommendations().filter(function (item) {
-                    return item && item.id && !cartIds.has(String(item.id));
-                }).slice(0, 4);
-            }
-
-            if (items.length === 0) {
-                wrap.style.display = 'none';
-                grid.replaceChildren();
-                return;
-            }
-
-            grid.replaceChildren();
-            items.forEach(function (item) {
-                const card = document.createElement('div');
-                card.className = 'also-viewed-card';
-
-                if (item.image) {
-                    const img = document.createElement('img');
-                    img.src = item.image;
-                    img.alt = String(item.name || '').slice(0, 100);
-                    card.appendChild(img);
-                }
-
-                const link = document.createElement('a');
-                link.href = item.url || '/products/';
-                link.textContent = String(item.name || 'View product').slice(0, 120);
-                card.appendChild(link);
-
-                const price = document.createElement('div');
-                price.className = 'also-viewed-price';
-                const value = Number.parseFloat(item.price);
-                if (Number.isFinite(value)) {
-                    price.textContent = `$${value.toFixed(2)} AUD`;
-                } else {
-                    price.textContent = 'View details';
-                }
-                card.appendChild(price);
-
-                const addButton = document.createElement('button');
-                addButton.type = 'button';
-                addButton.className = 'also-viewed-add-btn';
-                addButton.textContent = 'Add to Cart';
-
-                const productId = safeIdForReco(item.id);
-                const productName = String(item.name || '').slice(0, 120);
-                const productImage = safeImageForReco(item.image);
-                const productPrice = Number.parseFloat(item.price);
-
-                if (!productId || !productName || !Number.isFinite(productPrice) || productPrice < 0) {
-                    addButton.disabled = true;
-                } else {
-                    addButton.addEventListener('click', function () {
-                        if (!window.Cart || typeof window.Cart.add !== 'function') return;
-                        window.Cart.add({
-                            id: productId,
-                            name: productName,
-                            price: productPrice,
-                            image: productImage,
-                            quantity: 1
-                        });
-                        renderCart();
-                    });
-                }
-                card.appendChild(addButton);
-
-                grid.appendChild(card);
-            });
-            wrap.style.display = 'block';
-        }
-        
-        function updateQuantity(productId, quantity) {
-            window.Cart.updateQuantity(productId, parseInt(quantity));
-            renderCart();
-        }
-        
-        function removeItem(productId) {
-            if (confirm('Remove this item from cart?')) {
-                window.Cart.remove(productId);
-                renderCart();
-            }
-        }
-        
-        // Render cart on load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                renderCart();
-            });
-        } else {
-            renderCart();
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
         }
     </script>
-    
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About NutriThrive</h3>
-                <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Shopping</h3>
-                <ul class="footer-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/products/">Products</a></li>
-                    <li><a href="/cart">Cart</a></li>
-                    <li><a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Help &amp; Info</h3>
-                <ul class="footer-links">
-                    <li><a href="/privacy-policy">Privacy Policy</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/blog/">Blog</a></li>
-                    <li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li>                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <ul class="footer-links">
-                    <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
-                    <li><a href="tel:+61438201419">+61 438201419</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Business Info</h3>
-                <ul class="footer-links">
-                    <li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
-<li>Based in Truganina, Melbourne, VIC (Australia)<br>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br>Worldwide Shipping Available 🌍</li>
-                    <li>Monday - Sunday</li>
-                    <li>9:00 AM - 11:00 PM</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-bottom-container">
-                <p>&copy; 2026 NutriThrive. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+
+
+
+
+
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+
+
+
+
+
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+
+
+
+
+
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+
+
+
+
+
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+
+
+
+
+
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+
+
+
+
+
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
+
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .organic-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fdf9ee",
+                      "forest-deep": "#1A2E22",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#bec9c1",
+                      "primary-fixed": "#a1f3cd",
+                      "tertiary-container": "#4e6355",
+                      "surface-tint": "#106b4d",
+                      "on-surface": "#1c1c15",
+                      "secondary-container": "#fe8760",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#97e8c3",
+                      "surface-variant": "#e6e2d7",
+                      "on-tertiary-fixed": "#0b1f14",
+                      "primary-fixed-dim": "#86d7b2",
+                      "primary": "#005139",
+                      "terracotta-clay": "#D66844",
+                      "on-background": "#1c1c15",
+                      "on-secondary-fixed": "#3a0b00",
+                      "tertiary-fixed": "#d0e8d6",
+                      "surface-container-highest": "#e6e2d7",
+                      "on-tertiary-fixed-variant": "#374b3e",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9ee",
+                      "pure-white": "#FFFFFF",
+                      "inverse-on-surface": "#f4f0e6",
+                      "on-primary-fixed-variant": "#005139",
+                      "inverse-primary": "#86d7b2",
+                      "parchment-base": "#F5F1E6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#b5ccbb",
+                      "on-secondary-container": "#732001",
+                      "surface-bright": "#fdf9ee",
+                      "error": "#ba1a1a",
+                      "outline": "#6f7a73",
+                      "tertiary": "#364b3e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002115",
+                      "surface-container-high": "#ece8dd",
+                      "on-surface-variant": "#3f4943",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "on-tertiary-container": "#c6decc",
+                      "moringa-leaf": "#0F6B4D",
+                      "inverse-surface": "#323129",
+                      "surface-container": "#f2eee3",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#a0401f",
+                      "surface-dim": "#dddacf",
+                      "primary-container": "#0f6b4d",
+                      "surface-container-low": "#f7f3e8",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#802909"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display": ["Literata"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Literata"],
+                      "headline-lg": ["Literata"],
+                      "headline-md": ["Literata"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<div class="nt-sticky-top">
+<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
+<header id="nt-header" class="nt-v2-header"></header>
+</div>
+<main id="nt-cart-app" class="pt-40 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto"></main>
+<div id="nt-footer"></div>
+<script src="/scripts/global/defer-loader.js"></script>
+<script src="/scripts/global/reddit-pixel.js"></script>
+<script src="/shared/site-data.js"></script>
+<script src="/scripts/global/shipping-rates.js"></script>
+<script src="/scripts/global/cart.js"></script>
+<script src="/shared/js/cart-v2-ui.js"></script>
+<script src="/shared/js/layout-v2.js"></script>
+<script src="/shared/js/v2-site.js"></script>
+
 </body>
 </html>
