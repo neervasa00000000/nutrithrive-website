@@ -1,12 +1,23 @@
 require('dotenv').config();
 
 const path = require('path');
+const os = require('os');
+
+const isServerless = Boolean(
+  process.env.NETLIFY ||
+    process.env.AWS_LAMBDA_FUNCTION_NAME ||
+    process.env.NETLIFY_DEV
+);
 
 module.exports = {
   port: parseInt(process.env.PORT || '3000', 10),
   db: {
     driver: (process.env.DB_DRIVER || 'sqlite').toLowerCase(),
-    sqlitePath: process.env.SQLITE_PATH || path.join(__dirname, '..', 'data', 'orders.db'),
+    sqlitePath:
+      process.env.SQLITE_PATH ||
+      (isServerless
+        ? path.join(os.tmpdir(), 'nutrithrive-crypto-orders.db')
+        : path.join(__dirname, '..', 'data', 'orders.db')),
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT || '3306', 10),
     user: process.env.DB_USER || 'root',
