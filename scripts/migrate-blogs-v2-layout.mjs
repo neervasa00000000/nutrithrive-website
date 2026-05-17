@@ -270,7 +270,7 @@ ${content}
 <aside class="lg:col-span-4 space-y-12">
 <div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
 <div class="aspect-square bg-surface-container relative">
-<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/product_photos/moringa.jpeg" loading="lazy"/>
 <div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
 </div>
 <div class="p-6">
