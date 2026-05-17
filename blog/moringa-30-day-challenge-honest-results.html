@@ -300,7 +300,7 @@ tailwind.config = {
 <nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
 <div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
 <a class="flex items-center gap-base" href="/">
-<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager"/>
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager" >
 <span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
 </a>
 <div class="hidden md:flex items-center gap-gutter">
@@ -324,10 +324,12 @@ tailwind.config = {
 </div>
 <h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">I Took Moringa Every Day for 30 Days: My Honest Results</h1>
 <div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
-<img alt="" class="w-full h-full object-cover" src="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png" loading="eager" decoding="async"/>
+<picture>
+<source type="image/webp" srcset="/assets/images/blog/hero-moringa-400.webp 400w, /assets/images/blog/hero-social-800.webp 800w" sizes="(max-width: 768px) 100vw, 800px"/>
+<img alt="" class="w-full h-full object-cover" src="/assets/images/blog/hero-social-800.jpg" width="800" height="450" loading="eager" decoding="async" fetchpriority="high" sizes="(max-width: 768px) 100vw, 800px" >
+</picture>
 </div>
 </header>
-<div class="blog-v2-prose prose prose-lg max-w-none">
 <div class="blog-v2-prose prose prose-lg max-w-none">
 <!-- Breadcrumb -->
 <div style="background: #f8f9fa; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0e0; margin: 0;">
@@ -749,6 +751,7 @@ Fresh ginger + squeeze of lemon<br/>
 </ul>
 </div>
 </div>
+</div>
 <section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
 <h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
@@ -761,7 +764,7 @@ Fresh ginger + squeeze of lemon<br/>
 <aside class="lg:col-span-4 space-y-12">
 <div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
 <div class="aspect-square bg-surface-container relative">
-<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy" >
 <div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
 </div>
 <div class="p-6">
@@ -778,7 +781,7 @@ Fresh ginger + squeeze of lemon<br/>
 <h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
 <div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
 <div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
-<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" loading="lazy" decoding="async" >
 </div>
 <div>
 <h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
@@ -787,7 +790,7 @@ Fresh ginger + squeeze of lemon<br/>
 </a>
 <a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
 <div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
-<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" loading="lazy" decoding="async" >
 </div>
 <div>
 <h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
@@ -796,71 +799,7 @@ Fresh ginger + squeeze of lemon<br/>
 </a>
 <a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
 <div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
-<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
-</div>
-<div>
-<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
-<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
-</div>
-</a></div>
-</div>
-<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
-<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
-<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
-<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
-</div>
-</aside>
-</div>
-</main>
-</div>
-<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
-<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
-<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
-<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
-<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
-</form>
-</section>
-</article>
-<aside class="lg:col-span-4 space-y-12">
-<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
-<div class="aspect-square bg-surface-container relative">
-<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
-<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
-</div>
-<div class="p-6">
-<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
-<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
-<div class="flex items-center justify-between mb-6">
-<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
-<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
-</div>
-<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
-</div>
-</div>
-<div class="space-y-6">
-<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
-<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
-<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
-<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
-</div>
-<div>
-<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
-<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
-</div>
-</a>
-<a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
-<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
-<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
-</div>
-<div>
-<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
-<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
-</div>
-</a>
-<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
-<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
-<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/homepage/product-showcase/thumbs/Moringa.webp" loading="lazy" decoding="async" >
 </div>
 <div>
 <h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>

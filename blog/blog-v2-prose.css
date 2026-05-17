@@ -50,11 +50,21 @@
   margin-bottom: 0.5rem;
 }
 
-.blog-v2-prose img {
+.blog-v2-prose img,
+.blog-v2-content-img {
   max-width: 100%;
+  width: 100%;
   height: auto;
+  max-height: 28rem;
+  object-fit: cover;
   border-radius: 0.75rem;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
+  display: block;
+}
+
+.blog-v2-prose img[width="1200"],
+.blog-v2-content-img[width="720"] {
+  max-width: min(720px, 100%);
 }
 
 .blog-v2-prose table {
