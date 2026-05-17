@@ -24,8 +24,8 @@ window.NT_SITE_DATA = {
   },
   assets: {
     logo: '/assets/images/logo/LOGO.webp',
-    hero: '/assets/images/general/GC.webp',
-    moringaHero: '/assets/images/homepage/product-showcase/Moringa.webp',
+    hero: '/assets/images/blog/GC.webp',
+    moringaHero: '/assets/images/product_photos/moringa.jpeg',
     aboutHero: '/assets/images/homepage/product-showcase/aboutpage.png',
     aboutFeature: '/assets/images/homepage/product-showcase/aboutpage2.png',
     aboutVisit: '/assets/images/homepage/product-showcase/aboutpage3.png',
@@ -43,7 +43,7 @@ window.NT_SITE_DATA = {
       price: 11,
       was: 14,
       weight: 100,
-      image: '/assets/images/homepage/product-showcase/thumbs/Moringa.webp',
+      image: '/assets/images/product_photos/moringa.jpeg',
       href: '/products/moringa-powder/',
       description: '100% pure shade-dried moringa leaf powder. Lab-tested in Australia.',
       pdp: {
@@ -76,7 +76,7 @@ window.NT_SITE_DATA = {
       price: 21.5,
       was: 28,
       weight: 200,
-      image: '/assets/images/homepage/product-showcase/Moringa.webp',
+      image: '/assets/images/product_photos/moringa.jpeg',
       href: '/products/moringa-powder/',
       pdp: {
         headline: 'Moringa Powder — 200g',
@@ -106,7 +106,7 @@ window.NT_SITE_DATA = {
       price: 35,
       was: 56,
       weight: 400,
-      image: '/assets/images/homepage/product-showcase/thumbs/new3+1.webp',
+      image: '/assets/images/product_photos/3+1.jpeg',
       href: '/products/moringa-powder/',
       pdp: {
         headline: '3 + 1 = 400g Moringa Bundle',
@@ -136,7 +136,7 @@ window.NT_SITE_DATA = {
       price: 7,
       was: 9.49,
       weight: 95,
-      image: '/assets/images/homepage/product-showcase/thumbs/moringa_soap.webp',
+      image: '/assets/images/product_photos/soap.jpeg',
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa Natural Soap',
@@ -167,7 +167,7 @@ window.NT_SITE_DATA = {
       price: 17,
       was: 22.49,
       weight: 130,
-      image: '/assets/images/homepage/product-showcase/thumbs/combo.webp',
+      image: '/assets/images/product_photos/combo.jpeg',
       href: '/products/combo-pack/',
       pdp: {
         headline: 'Premium Combo Pack',
@@ -197,7 +197,7 @@ window.NT_SITE_DATA = {
       price: 17,
       was: 23.39,
       weight: 195,
-      image: '/assets/images/homepage/product-showcase/thumbs/moringasoap_combo.webp',
+      image: '/assets/images/product_photos/moringasoapcombo.jpeg',
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa 100g + Soap 95g Bundle',
@@ -228,7 +228,7 @@ window.NT_SITE_DATA = {
       price: 7,
       was: 8.49,
       weight: 30,
-      image: '/assets/images/homepage/product-showcase/thumbs/Curry.webp',
+      image: '/assets/images/product_photos/driedcurry.jpeg',
       href: '/products/curry-leaves/',
       pdp: {
         headline: '30g Dried Curry Leaves',
@@ -259,7 +259,7 @@ window.NT_SITE_DATA = {
       price: 7.5,
       was: 10,
       weight: 100,
-      image: '/assets/images/homepage/product-showcase/thumbs/BlackTea.webp',
+      image: '/assets/images/product_photos/blacktea.jpeg',
       href: '/products/black-tea/',
       pdp: {
         headline: 'Darjeeling Black Tea',

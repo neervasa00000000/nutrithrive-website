@@ -60,7 +60,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^shared/images/Home page /webp/(.+)$ /assets/images/homepage/product-showcase/$1 [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^shared/images/random/(.+)$ /assets/images/general/$1 [L]
+    RewriteRule ^shared/images/random/(.+)$ /assets/images/blog/$1 [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^shared/images/(.+)$ /assets/images/$1 [L]
@@ -77,7 +77,7 @@ DirectoryIndex index.html index.htm
     RewriteRule ^assets/images/Home page /webp/(.+)$ /assets/images/homepage/product-showcase/$1 [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^assets/images/random/(.+)$ /assets/images/general/$1 [L]
+    RewriteRule ^assets/images/random/(.+)$ /assets/images/blog/$1 [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^assets/images/Logo%20/(.+)$ /assets/images/logo/$1 [L]
@@ -280,27 +280,27 @@ DirectoryIndex index.html index.htm
     
     # Fix broken image URLs (404 errors from Google Search Console)
     # Redirect old Dried_curry_leaves directory paths to random folder
-    RewriteRule ^shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
-    RewriteRule ^shared/images/Dried_curry_leaves/Curry2\.png$ /assets/images/general/Curry2.png [R=301,L]
-    RewriteRule ^shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
-    RewriteRule ^shared/images/Dried_curry_leaves/Curry1 .png$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
-    RewriteRule ^shared/images/Dried_curry_leaves/4\.png$ /assets/images/general/4.png [R=301,L]
-    RewriteRule ^shared/images/Dried_curry_leaves/energy-boosters\.png$ /assets/images/general/energy-boosters.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/product_photos/driedcurry.jpeg [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry2\.png$ /assets/images/blog/Curry2.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/product_photos/driedcurry.jpeg [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/Curry1 .png$ /assets/images/product_photos/driedcurry.jpeg [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/4\.png$ /assets/images/blog/4.png [R=301,L]
+    RewriteRule ^shared/images/Dried_curry_leaves/energy-boosters\.png$ /assets/images/blog/energy-boosters.png [R=301,L]
     # Redirect old Moringa directory paths to random folder
-    RewriteRule ^shared/images/Moringa%20/Moringa\.png$ /assets/images/general/Moringa.png [R=301,L]
-    RewriteRule ^shared/images/Moringa /Moringa\.png$ /assets/images/general/Moringa.png [R=301,L]
-    RewriteRule ^shared/images/Moringa/Moringa\.png$ /assets/images/general/Moringa.png [R=301,L]
-    RewriteRule ^shared/images/Moringa%20/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg [R=301,L]
-    RewriteRule ^shared/images/Moringa /moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg [R=301,L]
-    RewriteRule ^shared/images/Moringa/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg [R=301,L]
-    RewriteRule ^shared/images/Moringa/athletes\.png$ /assets/images/general/athletes.png [R=301,L]
+    RewriteRule ^shared/images/Moringa%20/Moringa\.png$ /assets/images/blog/Moringa.png [R=301,L]
+    RewriteRule ^shared/images/Moringa /Moringa\.png$ /assets/images/blog/Moringa.png [R=301,L]
+    RewriteRule ^shared/images/Moringa/Moringa\.png$ /assets/images/blog/Moringa.png [R=301,L]
+    RewriteRule ^shared/images/Moringa%20/moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg [R=301,L]
+    RewriteRule ^shared/images/Moringa /moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg [R=301,L]
+    RewriteRule ^shared/images/Moringa/moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg [R=301,L]
+    RewriteRule ^shared/images/Moringa/athletes\.png$ /assets/images/blog/athletes.png [R=301,L]
     # Redirect incorrect /blog/shared/images/ paths
-    RewriteRule ^blog/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg [R=301,L]
-    RewriteRule ^blog/shared/images/Moringa/athletes\.png$ /assets/images/general/athletes.png [R=301,L]
+    RewriteRule ^blog/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg [R=301,L]
+    RewriteRule ^blog/shared/images/Moringa/athletes\.png$ /assets/images/blog/athletes.png [R=301,L]
     # Redirect other missing images to appropriate existing images
-    RewriteRule ^shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
-    RewriteRule ^shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
-    RewriteRule ^shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/homepage/product-showcase/Curry.webp [R=301,L]
+    RewriteRule ^shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/product_photos/driedcurry.jpeg [R=301,L]
+    RewriteRule ^shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/product_photos/driedcurry.jpeg [R=301,L]
+    RewriteRule ^shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/product_photos/driedcurry.jpeg [R=301,L]
 </IfModule>
 
 # Fallback Apache redirects (if mod_rewrite is not available)
@@ -361,27 +361,48 @@ RedirectMatch 301 ^/(.+)\.html\.html$ /$1.html
 
 # Fix broken image URLs (404 errors from Google Search Console)
 # Redirect old Dried_curry_leaves directory paths to random folder
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/homepage/product-showcase/Curry.webp
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry2\.png$ /assets/images/general/Curry2.png
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/homepage/product-showcase/Curry.webp
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1%20\.png$ /assets/images/homepage/product-showcase/Curry.webp
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/4\.png$ /assets/images/general/4.png
-RedirectMatch 301 ^/shared/images/Dried_curry_leaves/energy-boosters\.png$ /assets/images/general/energy-boosters.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry3\.png$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry2\.png$ /assets/images/blog/Curry2.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1\.png$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/Curry1%20\.png$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/4\.png$ /assets/images/blog/4.png
+RedirectMatch 301 ^/shared/images/Dried_curry_leaves/energy-boosters\.png$ /assets/images/blog/energy-boosters.png
 # Redirect old Moringa directory paths to random folder
-RedirectMatch 301 ^/shared/images/Moringa%20/Moringa\.png$ /assets/images/general/Moringa.png
-RedirectMatch 301 ^/shared/images/Moringa /Moringa\.png$ /assets/images/general/Moringa.png
-RedirectMatch 301 ^/shared/images/Moringa/Moringa\.png$ /assets/images/general/Moringa.png
-RedirectMatch 301 ^/shared/images/Moringa%20/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg
-RedirectMatch 301 ^/shared/images/Moringa /moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg
-RedirectMatch 301 ^/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg
-RedirectMatch 301 ^/shared/images/Moringa/athletes\.png$ /assets/images/general/athletes.png
+RedirectMatch 301 ^/shared/images/Moringa%20/Moringa\.png$ /assets/images/blog/Moringa.png
+RedirectMatch 301 ^/shared/images/Moringa /Moringa\.png$ /assets/images/blog/Moringa.png
+RedirectMatch 301 ^/shared/images/Moringa/Moringa\.png$ /assets/images/blog/Moringa.png
+RedirectMatch 301 ^/shared/images/Moringa%20/moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg
+RedirectMatch 301 ^/shared/images/Moringa /moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg
+RedirectMatch 301 ^/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg
+RedirectMatch 301 ^/shared/images/Moringa/athletes\.png$ /assets/images/blog/athletes.png
 # Redirect incorrect /blog/shared/images/ paths
-RedirectMatch 301 ^/blog/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/general/moringa-hero.jpg
-RedirectMatch 301 ^/blog/shared/images/Moringa/athletes\.png$ /assets/images/general/athletes.png
+RedirectMatch 301 ^/blog/shared/images/Moringa/moringa-hero\.jpg$ /assets/images/blog/moringa-hero.jpg
+RedirectMatch 301 ^/blog/shared/images/Moringa/athletes\.png$ /assets/images/blog/athletes.png
 # Redirect other missing images to appropriate existing images
-RedirectMatch 301 ^/shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/homepage/product-showcase/Curry.webp
-RedirectMatch 301 ^/shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/homepage/product-showcase/Curry.webp
-RedirectMatch 301 ^/shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/homepage/product-showcase/Curry.webp
-# Heavy legacy PNGs → optimized WebP (same product shot as shop)
-RedirectMatch 301 ^/assets/images/general/Curry1\.png$ /assets/images/homepage/product-showcase/Curry.webp
-RedirectMatch 301 ^/assets/images/general/CURRY3\.png$ /assets/images/homepage/product-showcase/Curry.webp
+RedirectMatch 301 ^/shared/images/pinterest-diy-hair-growth-oil-australian-ingredients\.jpg$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/shared/images/dried-curry-leaves-cooking-soup\.jpg$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/shared/images/curry-leaf-tea-recipe-australia\.jpg$ /assets/images/product_photos/driedcurry.jpeg
+# Heavy legacy PNGs → product photos (shop)
+RedirectMatch 301 ^/assets/images/general/Curry1\.png$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/assets/images/general/CURRY3\.png$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/assets/images/blog/Curry1\.png$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/assets/images/blog/CURRY3\.png$ /assets/images/product_photos/driedcurry.jpeg
+# Moved general/ → blog/ (legacy bookmarks)
+RedirectMatch 301 ^/assets/images/general/(.+)$ /assets/images/blog/$1
+
+# Product images: legacy product-showcase → product_photos
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/Moringa\.webp$ /assets/images/product_photos/moringa.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/Moringa\.webp$ /assets/images/product_photos/moringa.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/new3\+1\.webp$ /assets/images/product_photos/3%2B1.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/moringa_soap\.webp$ /assets/images/product_photos/soap.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/moringa_soap\.webp$ /assets/images/product_photos/soap.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/combo\.webp$ /assets/images/product_photos/combo.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/combo\.webp$ /assets/images/product_photos/combo.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/moringasoap_combo\.webp$ /assets/images/product_photos/moringasoapcombo.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/moringasoap_combo\.webp$ /assets/images/product_photos/moringasoapcombo.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/Curry\.webp$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/Curry\.webp$ /assets/images/product_photos/driedcurry.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/BlackTea\.webp$ /assets/images/product_photos/blacktea.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/BlackTea\.webp$ /assets/images/product_photos/blacktea.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/Bundleoffer\.webp$ /assets/images/product_photos/GodPack.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/Bundleoffer\.webp$ /assets/images/product_photos/GodPack.jpeg
