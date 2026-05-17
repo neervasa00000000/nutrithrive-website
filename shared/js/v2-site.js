@@ -73,19 +73,41 @@
     p.quantity = qty;
     p.price = price;
     CartV2.add(p);
+    document.dispatchEvent(new CustomEvent('nt-cart-updated'));
+  }
+
+  function getPaymentUrl() {
+    const raw = D()?.paymentUrl || '/payment';
+    try {
+      return new URL(raw, window.location.origin).pathname || '/payment';
+    } catch {
+      return '/payment';
+    }
+  }
+
+  function hasCartItems() {
+    const cart = C()?.get?.() ?? window.Cart?.get?.();
+    return Boolean(cart?.items?.length);
+  }
+
+  function goToPayment() {
+    window.location.assign(getPaymentUrl());
   }
 
   function completeCheckout() {
-    const cart = C().get();
-    if (!cart?.items?.length) {
+    if (!hasCartItems()) {
       alert('Your cart is empty. Add products from the shop first.');
       return;
     }
-    window.location.href = D().paymentUrl || '/payment';
+    goToPayment();
   }
 
   function completeLivePayment() {
-    window.location.href = D().paymentUrl || '/payment';
+    if (!hasCartItems()) {
+      alert('Your cart is empty. Add products from the shop first.');
+      return;
+    }
+    goToPayment();
   }
 
   function bindGlobalClicks() {
@@ -124,8 +146,23 @@
 
       const checkout = e.target.closest('[data-checkout]');
       if (checkout) {
+        if (!hasCartItems()) {
+          e.preventDefault();
+          alert('Your cart is empty. Add products from the shop first.');
+          return;
+        }
+        if (checkout.tagName === 'BUTTON') {
+          e.preventDefault();
+          goToPayment();
+        }
+        return;
+      }
+
+      const addBtn = e.target.closest('[data-add-cart]');
+      if (addBtn) {
         e.preventDefault();
-        completeCheckout();
+        addToCartFromButton(addBtn);
+        return;
       }
     });
   }
@@ -455,7 +492,7 @@
         <div>
           <h5 class="font-label-lg">${p.name}</h5>
           <p class="text-on-surface-variant text-label-sm mb-1">${money(p.price)}</p>
-          <button type="button" class="nt-add-cart-btn text-moringa-leaf text-label-sm font-bold hover:underline cursor-pointer" data-add-cart="${p.id}" data-name="${p.name}" data-price="${p.price}" data-was="${p.was || ''}" data-image="${p.image}" data-tag="${p.tag || ''}" data-weight="${p.weight ?? ''}">Add to Cart +</button>
+          <button type="button" class="nt-add-cart-btn text-moringa-leaf text-label-sm font-bold hover:underline cursor-pointer" data-add-cart="${p.id}" data-name="${p.name.replace(/"/g, '&quot;')}" data-price="${p.price}" data-was="${p.was || ''}" data-image="${p.image}" data-tag="${(p.tag || '').replace(/"/g, '&quot;')}" data-weight="${p.weight ?? ''}">Add to Cart +</button>
         </div>
       </div>`
       )
@@ -525,18 +562,35 @@
               <span class="font-display text-display text-primary-fixed">${money(total)}</span></div>
               <span class="text-label-sm opacity-60">AUD</span>
             </div>
-            <button type="button" data-checkout class="w-full bg-terracotta-clay text-pure-white font-label-lg py-5 rounded-full flex items-center justify-center gap-2 hover:brightness-110 transition-all ${cart.items.length ? '' : 'opacity-50 cursor-not-allowed'}" ${cart.items.length ? '' : 'disabled'}>
-              Proceed to payment <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
+            <a href="${cart.items.length ? getPaymentUrl() : '#'}" data-checkout role="button" class="w-full bg-terracotta-clay text-pure-white font-label-lg py-5 rounded-full flex items-center justify-center gap-2 hover:brightness-110 transition-all no-underline ${cart.items.length ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}" ${cart.items.length ? '' : 'aria-disabled="true" tabindex="-1"'}>
+              Proceed to payment <span class="material-symbols-outlined pointer-events-none">arrow_forward</span>
+            </a>
             <p class="text-center text-[11px] opacity-40 mt-4">${freeShipNote}</p>
           </div>
         </aside>
       </div>`;
 
-    C().updateUI();
+    C()?.updateUI?.();
     bindCartShipping(root);
+    bindCartCheckout(root);
   }
 
+  function bindCartCheckout(root) {
+    const el = root?.querySelector('[data-checkout]');
+    if (!el || el.dataset.ntCheckoutBound === '1') return;
+    el.dataset.ntCheckoutBound = '1';
+    el.addEventListener('click', (e) => {
+      if (!hasCartItems()) {
+        e.preventDefault();
+        alert('Your cart is empty. Add products from the shop first.');
+        return;
+      }
+      if (el.tagName === 'BUTTON') {
+        e.preventDefault();
+        goToPayment();
+      }
+    });
+  }
 
   function renderPaymentPage() {
     if (document.getElementById('paypal-button-container')) return;
