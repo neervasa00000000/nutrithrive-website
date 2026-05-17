@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html class="light" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
 <script src="../scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
 <script>
@@ -157,8 +156,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+
 
 <link rel="icon" type="image/png" href="../assets/images/logo/LOGO.webp" sizes="32x32">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/LOGO.webp">
@@ -166,1032 +165,96 @@
 <meta name="msapplication-TileImage" content="../assets/images/logo/LOGO.webp">
 <meta name="theme-color" content="#0f6b4d">
 
-<style>
-/* ── Design tokens ── */
-:root {
-  --sans: 'Inter', system-ui, sans-serif;
-  --display: 'Playfair Display', Georgia, serif;
-  --green: #0f6b4d;
-  --green-2: #175c36;
-  --green-3: #52b788;
-  --green-pale: #e8f5ed;
-  --green-ultra: #f2faf6;
-  --ink: #1a1a1a;
-  --ink-2: #333;
-  --ink-3: #555;
-  --ink-4: #888;
-  --warm: #fafaf8;
-  --border: #e4e4e0;
-  --amber: #d97706;
-  --amber-pale: #fffbeb;
-  --red: #dc2626;
-  --red-pale: #fef2f2;
-  --blue: #1d4ed8;
-  --blue-pale: #eff6ff;
-}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--sans);
-  background: var(--warm);
-  color: var(--ink-2);
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── Navigation ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-}
-.nav-brand {
-  font-family: var(--sans);
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: var(--green);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.nav-brand img { height: 28px; width: auto; }
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a {
-  font-family: var(--sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--ink-3);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--green); }
-.nav-cta {
-  background: var(--green);
-  color: #fff !important;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-weight: 700 !important;
-  font-size: 0.82rem !important;
-  transition: background 0.15s, transform 0.15s !important;
-}
-.nav-cta:hover { background: var(--green-2) !important; transform: translateY(-1px); }
-
-/* ── Hero ── */
-.hero {
-  background: linear-gradient(135deg, #0a2e1f 0%, #0f4a32 50%, #0d3326 100%);
-  padding: 80px 28px 72px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 60% 0%, rgba(82,183,136,0.18) 0%, transparent 60%),
-              radial-gradient(ellipse at 0% 100%, rgba(82,183,136,0.08) 0%, transparent 50%);
-  pointer-events: none;
-}
-.hero-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  position: relative;
-}
-.hero-eyebrow {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--green-3);
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 2px;
-  background: var(--green-3);
-  border-radius: 2px;
-}
-.hero h1 {
-  font-family: var(--display);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 800;
-  color: #fff;
-  line-height: 1.18;
-  margin-bottom: 22px;
-}
-.hero h1 em {
-  color: var(--green-3);
-  font-style: italic;
-}
-.hero-deck {
-  font-family: var(--sans);
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  color: rgba(255,255,255,0.65);
-  line-height: 1.7;
-  max-width: 680px;
-  margin-bottom: 32px;
-}
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 20px;
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
-}
-.hero-meta strong { color: rgba(255,255,255,0.7); }
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(82,183,136,0.15);
-  border: 1px solid rgba(82,183,136,0.3);
-  border-radius: 99px;
-  padding: 5px 14px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--green-3);
-}
-
-/* ── Breadcrumb ── */
-.breadcrumb {
-  background: #f8f9fa;
-  padding: 12px 28px;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.875rem;
-  color: var(--ink-4);
-}
-.breadcrumb a { color: var(--green); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
-.breadcrumb span { margin: 0 8px; }
-
-/* ── Page layout ── */
-.page {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 40px;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 52px 28px;
-  align-items: start;
-}
-
-/* ── Sidebar ── */
-.sidebar {
-  position: sticky;
-  top: 76px;
-}
-.toc {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 22px 20px;
-  margin-bottom: 20px;
-}
-.toc-title {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 14px;
-}
-.toc ol {
-  list-style: none;
-  counter-reset: toc;
-  padding: 0;
-}
-.toc li {
-  counter-increment: toc;
-  margin-bottom: 2px;
-}
-.toc li::before {
-  content: counter(toc) '.';
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--green-3);
-  margin-right: 6px;
-}
-.toc a {
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: var(--ink-3);
-  text-decoration: none;
-  line-height: 1.5;
-  transition: color 0.15s;
-}
-.toc a:hover { color: var(--green); }
-
-.sidebar-cta {
-  background: linear-gradient(135deg, var(--green) 0%, #0d3320 100%);
-  border-radius: 14px;
-  padding: 22px 20px;
-  text-align: center;
-}
-.sidebar-cta h3 {
-  font-family: var(--display);
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.sidebar-cta p {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 16px;
-  line-height: 1.5;
-}
-.sidebar-cta a {
-  display: block;
-  background: var(--green-3);
-  color: var(--green-2);
-  padding: 10px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-family: var(--sans);
-  font-weight: 700;
-  font-size: 0.82rem;
-  transition: background 0.15s, transform 0.15s;
-}
-.sidebar-cta a:hover { background: #6fcf9a; transform: translateY(-1px); }
-
-/* ── Article content ── */
-article {
-  min-width: 0;
-}
-article h2 {
-  font-family: var(--display);
-  font-size: clamp(1.4rem, 3vw, 1.85rem);
-  font-weight: 800;
-  color: var(--ink);
-  line-height: 1.25;
-  margin: 52px 0 16px;
-  padding-top: 8px;
-  scroll-margin-top: 80px;
-}
-article h2:first-of-type { margin-top: 0; }
-article h3 {
-  font-family: var(--sans);
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 32px 0 10px;
-  scroll-margin-top: 80px;
-}
-article p {
-  font-family: var(--sans);
-  font-size: 0.97rem;
-  color: var(--ink-2);
-  line-height: 1.8;
-  margin-bottom: 16px;
-}
-article ul, article ol {
-  margin: 12px 0 20px 0;
-  padding-left: 1.4rem;
-}
-article li {
-  font-family: var(--sans);
-  font-size: 0.97rem;
-  color: var(--ink-2);
-  line-height: 1.75;
-  margin-bottom: 6px;
-}
-article a { color: var(--green); font-weight: 600; }
-article a:hover { color: var(--green-2); }
-article strong { color: var(--ink); font-weight: 700; }
-
-.lead {
-  font-size: 1.08rem !important;
-  color: var(--ink) !important;
-  line-height: 1.85 !important;
-  font-weight: 400;
-}
-
-hr.sec {
-  border: none;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--border), transparent);
-  margin: 48px 0;
-}
-
-/* ── Stat cards ── */
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin: 28px 0;
-}
-.stat-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 16px;
-  text-align: center;
-}
-.snum {
-  font-family: var(--display);
-  font-size: 2rem;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: 6px;
-  font-weight: 700;
-}
-.snum.red { color: var(--red); }
-.snum.amber { color: var(--amber); }
-.slbl {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--ink-3);
-  line-height: 1.4;
-}
-.ssrc {
-  font-family: var(--sans);
-  font-size: 0.63rem;
-  color: var(--ink-4);
-  margin-top: 6px;
-  line-height: 1.3;
-}
-
-/* ── Callout boxes ── */
-.callout {
-  border-radius: 10px;
-  padding: 18px 22px;
-  margin: 26px 0;
-  border-left: 4px solid;
-}
-.c-data { background: var(--blue-pale); border-color: var(--blue); }
-.c-data p, .c-data strong { color: #1e3a8a; }
-.c-tip { background: var(--green-pale); border-color: var(--green-3); }
-.c-tip p, .c-tip strong { color: var(--green-2); }
-.c-warn { background: var(--amber-pale); border-color: var(--amber); }
-.c-warn p, .c-warn strong { color: #92400e; }
-.c-alarm { background: var(--red-pale); border-color: var(--red); }
-.c-alarm p, .c-alarm strong { color: #7f1d1d; }
-.cl {
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-.callout p {
-  font-size: 0.93rem !important;
-  margin: 0 !important;
-  line-height: 1.65;
-}
-.callout p + p { margin-top: 8px !important; }
-
-/* ── Tables ── */
-.tw {
-  overflow-x: auto;
-  margin: 28px 0;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  min-width: 520px;
-}
-thead { background: var(--ink); }
-thead th {
-  padding: 13px 16px;
-  text-align: left;
-  color: rgba(255,255,255,0.9);
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-tbody td {
-  padding: 12px 16px;
-  font-family: var(--sans);
-  font-size: 0.875rem;
-  color: var(--ink-2);
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-tbody tr:last-child td { border-bottom: none; }
-tbody tr:nth-child(even) td { background: #f9f9f7; }
-td:first-child { font-weight: 600; color: var(--ink); }
-.tk { color: var(--green-2); font-weight: 700; }
-.cr { color: var(--red); font-weight: 700; }
-.md { color: var(--amber); font-weight: 600; }
-.best-value td:first-child::after {
-  content: ' ★';
-  color: var(--amber);
-}
-.best-value { background: var(--green-ultra) !important; }
-.best-value td { background: var(--green-ultra) !important; }
-
-/* ── Price block ── */
-.pb {
-  background: linear-gradient(135deg, var(--green-ultra) 0%, #f0faf5 100%);
-  border: 1px solid #c3e6d0;
-  border-radius: 14px;
-  padding: 24px 26px;
-  margin: 32px 0;
-}
-.pb h3 {
-  font-family: var(--display);
-  font-size: 1.1rem;
-  color: var(--green);
-  margin-bottom: 16px;
-  font-weight: 700;
-}
-.pi {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 11px 14px;
-  background: #fff;
-  border-radius: 8px;
-  border: 1px solid #d4eddd;
-  margin-bottom: 8px;
-  gap: 12px;
-}
-.pi:last-child { margin-bottom: 0; }
-.pi .nm {
-  font-family: var(--sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--ink);
-}
-.pi .nt {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  color: var(--ink-4);
-  margin-top: 2px;
-}
-.pi .pr {
-  font-family: var(--display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.pi.win { border-color: var(--green-3); background: #f2faf6; }
-.pi.win .nm { color: var(--green); }
-.pi.win .pr { color: var(--green); }
-.wb {
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  font-weight: 700;
-  background: var(--green-3);
-  color: var(--green-2);
-  padding: 2px 8px;
-  border-radius: 99px;
-  margin-left: 8px;
-  white-space: nowrap;
-}
-
-/* ── Timeline ── */
-.tl { margin: 28px 0; }
-.tl-i {
-  display: flex;
-  gap: 18px;
-  margin-bottom: 22px;
-  align-items: flex-start;
-}
-.tl-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--green-3);
-  flex-shrink: 0;
-  margin-top: 6px;
-  position: relative;
-}
-.tl-dot::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 12px;
-  width: 2px;
-  height: calc(100% + 14px);
-  background: var(--border);
-}
-.tl-i:last-child .tl-dot::before { display: none; }
-.tl-w {
-  font-family: var(--sans);
-  font-size: 0.69rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--green-2);
-  margin-bottom: 3px;
-}
-.tl-t {
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  color: var(--ink-2);
-  line-height: 1.6;
-}
-
-/* ── Community grid ── */
-.community-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
-  margin: 24px 0;
-}
-.community-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 18px;
-}
-.cc-flag {
-  font-size: 1.4rem;
-  margin-bottom: 8px;
-}
-.cc-title {
-  font-family: var(--sans);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-.cc-name {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--green-2);
-  margin-bottom: 8px;
-}
-.cc-desc {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  color: var(--ink-4);
-  line-height: 1.5;
-}
-
-/* ── Usage methods ── */
-.usage-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 14px;
-  margin: 24px 0;
-}
-.usage-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
-}
-.usage-label {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 6px;
-}
-.usage-title {
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
-.usage-desc {
-  font-family: var(--sans);
-  font-size: 0.82rem;
-  color: var(--ink-3);
-  line-height: 1.55;
-}
-
-/* ── Questions to ask ── */
-.qa-list { margin: 24px 0; }
-.qa-item {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 20px;
-  margin-bottom: 10px;
-  background: #fff;
-}
-.qa-q {
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 6px;
-}
-.qa-a {
-  font-family: var(--sans);
-  font-size: 0.84rem;
-  color: var(--ink-3);
-  line-height: 1.6;
-}
-.qa-a .good { color: var(--green-2); font-weight: 600; }
-.qa-a .bad { color: var(--red); font-weight: 600; }
-
-/* ── Verdict cards ── */
-.verdict-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 28px 0;
-}
-.verdict-card {
-  border-radius: 12px;
-  padding: 22px;
-}
-.verdict-card.yes {
-  background: var(--green-pale);
-  border: 1px solid #c3e6d0;
-}
-.verdict-card.no {
-  background: var(--red-pale);
-  border: 1px solid #fecaca;
-}
-.verdict-header {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.verdict-card.yes .verdict-header { color: var(--green-2); }
-.verdict-card.no .verdict-header { color: var(--red); }
-.verdict-card ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-.verdict-card li {
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  line-height: 1.6;
-  margin-bottom: 5px;
-}
-.verdict-card.yes li { color: var(--green-2); }
-.verdict-card.no li { color: #991b1b; }
-
-/* ── Inline CTA ── */
-.icta {
-  background: linear-gradient(135deg, var(--green) 0%, #0d3320 100%);
-  border-radius: 14px;
-  padding: 28px 26px;
-  margin: 44px 0;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.icta .ct h3 {
-  font-family: var(--display);
-  color: #fff;
-  font-size: 1.12rem;
-  margin-bottom: 6px;
-}
-.icta .ct p {
-  font-family: var(--sans);
-  color: rgba(216,243,220,0.7);
-  font-size: 0.82rem;
-  margin: 0;
-  line-height: 1.5;
-}
-.icta a {
-  background: var(--green-3);
-  color: var(--green-2);
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-family: var(--sans);
-  font-weight: 700;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
-.icta a:hover { background: #6fcf9a; transform: translateY(-1px); }
-
-/* ── FAQ section ── */
-.faq { margin-top: 52px; }
-.faq-title {
-  font-family: var(--display);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--ink);
-  margin-bottom: 24px;
-}
-.faq-item {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  background: #fff;
-}
-.faq-q {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 16px 20px;
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-family: var(--sans);
-  font-size: 0.925rem;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.4;
-}
-.faq-q:hover { color: var(--green); }
-.faq-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--green-pale);
-  border: 1px solid #c3e6d0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 0.9rem;
-  color: var(--green);
-  transition: transform 0.25s;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-a {
-  display: none;
-  padding: 0 20px 16px;
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  color: var(--ink-3);
-  line-height: 1.7;
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-}
-.faq-item.open .faq-a { display: block; }
-
-/* ── Final CTA ── */
-.fcta {
-  background: var(--ink);
-  border-radius: 16px;
-  padding: 52px 36px;
-  margin-top: 60px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.fcta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(82,183,136,0.2) 0%, transparent 60%);
-  pointer-events: none;
-}
-.fcta h2 {
-  font-family: var(--display);
-  color: #fff;
-  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
-  margin-bottom: 12px;
-  position: relative;
-}
-.fcta h2 em { color: var(--green-3); font-style: italic; }
-.fcta p {
-  font-family: var(--sans);
-  color: rgba(255,255,255,0.55);
-  font-size: 0.9rem;
-  margin-bottom: 28px;
-  max-width: 460px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
-  position: relative;
-}
-.fcta a {
-  display: inline-block;
-  background: var(--green-3);
-  color: var(--green-2);
-  padding: 15px 36px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-family: var(--sans);
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: all 0.2s;
-  position: relative;
-}
-.fcta a:hover { background: #6fcf9a; transform: translateY(-2px); }
-.fcta .guar {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.25);
-  margin-top: 16px;
-  position: relative;
-}
-
-/* ── Sources ── */
-.sources {
-  font-size: 0.82rem;
-  color: var(--ink-4);
-  border-top: 1px solid var(--border);
-  padding-top: 20px;
-  margin-top: 40px;
-  line-height: 1.7;
-}
-.sources a { color: var(--green); }
-
-/* ── Footer ── */
-footer {
-  background: var(--ink);
-  padding: 56px 28px 32px;
-  margin-top: 0;
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  max-width: 1140px;
-  margin: 0 auto 40px;
-}
-.footer-brand {
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 10px;
-}
-.footer-blurb {
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.35);
-  line-height: 1.7;
-}
-.footer-col h4 {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 14px;
-}
-.footer-col ul { list-style: none; padding: 0; }
-.footer-col li { margin-bottom: 8px; }
-.footer-col a {
-  font-family: var(--sans);
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.footer-col a:hover { color: var(--green-3); }
-.footer-bottom {
-  max-width: 1140px;
-  margin: 0 auto;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 24px;
-  text-align: center;
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.2);
-}
-
-/* ── Related posts ── */
-.related-block {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 28px 52px;
-}
-.related-block h2 {
-  font-family: var(--display);
-  font-size: 1.4rem;
-  color: var(--ink);
-  margin-bottom: 20px;
-}
-.related-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 14px;
-}
-.related-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); transform: translateY(-2px); }
-.related-card a {
-  font-family: var(--sans);
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  line-height: 1.4;
-}
-.related-card a:hover { color: var(--green); }
-.related-card p {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  color: var(--ink-4);
-  margin-top: 6px;
-  line-height: 1.5;
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .page { grid-template-columns: 1fr; }
-  .sidebar { position: static; }
-  .stat-row { grid-template-columns: 1fr 1fr; }
-  .verdict-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .hero { padding: 52px 20px 48px; }
-  .page { padding: 32px 20px; }
-  .stat-row { grid-template-columns: 1fr; }
-  .breadcrumb { padding: 10px 20px; }
-  .nav-links { display: none; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .icta { flex-direction: column; text-align: center; }
-  .community-grid, .usage-grid { grid-template-columns: 1fr; }
-  .verdict-grid { grid-template-columns: 1fr; }
-  .related-grid { grid-template-columns: 1fr; }
-}
-</style>
+<!-- Nutri Thrive v2 blog shell -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
+        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
+        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
+        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
+        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
+        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
+        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
+        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
+        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
+        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
+        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
+        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
+        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
+        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
+        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
+        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: {
+        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
+        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
+      },
+      fontFamily: {
+        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
+        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
+      }
+    }
+  }
+};
+</script>
 </head>
-
-<body>
-
-<!-- Navigation -->
-<nav>
-  <a href="/" class="nav-brand">
-    <img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" loading="eager" decoding="async">
-    NutriThrive
-  </a>
-  <div class="nav-links">
-    <a href="/products/">Products</a>
-    <a href="/blog/">Blog</a>
-    <a href="/about">About</a>
-    <a href="/products/moringa-powder/" class="nav-cta">Get Moringa →</a>
-  </div>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-base" href="/">
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager"/>
+<span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/products/">Shop</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/pages/about/about.html">About</a>
+<a class="font-body-md text-label-lg text-moringa-leaf border-b-2 border-moringa-leaf font-semibold" href="/blog/">Blog</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/contact">Contact</a>
+</div>
+<div class="flex items-center gap-2">
+<a class="material-symbols-outlined text-forest-deep p-2 hover:bg-primary-fixed/10 rounded-full transition-all" href="/pages/shop/cart.html" aria-label="Cart">shopping_bag</a>
+</div>
+</div>
 </nav>
-
-<!-- Hero -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Melbourne Deep Dive · Updated April 2026 · 18 min read</div>
-    <h1>The Real Story Behind <em>Moringa in Melbourne</em></h1>
-    <p class="hero-deck">Safety issues most local suppliers quietly skip. Drug interactions your GP should know about. A frank breakdown of who should and shouldn't buy it — and exactly where to get it in Melbourne without overpaying.</p>
-    <div class="hero-meta">
-      <span>By <strong>NutriThrive Research Team</strong></span>
-      <span>·</span>
-      <span>Last tested: <strong>April 2026</strong></span>
-      <span>·</span>
-      <span class="hero-badge">Melbourne-specific</span>
-    </div>
-  </div>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<article class="lg:col-span-8">
+<header class="mb-12">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Local Guide</span>
+<span class="text-on-surface-variant text-label-lg font-body-md">27 April 2026</span>
 </div>
-
-<!-- Breadcrumb -->
-<div class="breadcrumb">
-  <a href="/">Home</a>
-  <span>›</span>
-  <a href="/blog/">Blog</a>
-  <span>›</span>
-  Moringa Melbourne: Honest Guide (2026)
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">Moringa Melbourne: Honest Guide + Safety Facts (2026)</h1>
+<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
+<img alt="" class="w-full h-full object-cover" src="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png" loading="eager" decoding="async"/>
 </div>
-
-<!-- Page layout -->
-<div class="page">
-
-  <!-- Main article -->
-  <article>
-
-    <p class="lead">When moringa started appearing in Brunswick cafes a few years ago, it looked like another wellness trend destined for the same bin as detox teas and activated charcoal lattes. After diving deep into the research, talking to local suppliers, consulting with naturopaths in Fitzroy, and testing every brand available from Footscray to Glen Waverley — there's genuinely something here worth your attention. But not for the reasons most Australian websites will tell you.</p>
+</header>
+<div class="blog-v2-prose prose prose-lg max-w-none">
+<div class="blog-v2-prose prose prose-lg max-w-none">
+<p class="lead">When moringa started appearing in Brunswick cafes a few years ago, it looked like another wellness trend destined for the same bin as detox teas and activated charcoal lattes. After diving deep into the research, talking to local suppliers, consulting with naturopaths in Fitzroy, and testing every brand available from Footscray to Glen Waverley — there's genuinely something here worth your attention. But not for the reasons most Australian websites will tell you.</p>
 
     <hr class="sec">
 
@@ -1700,149 +763,182 @@ footer {
         <li><a href="/blog/moringa-vs-coffee-melbourne-energy-hack.html">Moringa vs coffee: Melbourne's green energy hack (2026)</a></li>
       </ul>
     </section>
-
-  </article>
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="toc">
-      <div class="toc-title">Contents</div>
-      <ol>
-        <li><a href="#market">Melbourne's moringa market</a></li>
-        <li><a href="#safety">Safety — what suppliers hide</a></li>
-        <li><a href="#interactions">Drug interactions</a></li>
-        <li><a href="#pregnancy">Pregnancy warning</a></li>
-        <li><a href="#melbourne-health">Melbourne health concerns</a></li>
-        <li><a href="#iron">Iron deficiency strategy</a></li>
-        <li><a href="#sourcing">Australian vs imported</a></li>
-        <li><a href="#usage">How locals use it</a></li>
-        <li><a href="#growing">Growing in Melbourne</a></li>
-        <li><a href="#multicultural">Multicultural perspective</a></li>
-        <li><a href="#timeline">Realistic timeline</a></li>
-        <li><a href="#questions">Questions for suppliers</a></li>
-        <li><a href="#verdict">Is it worth it?</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ol>
-    </div>
-    <div class="sidebar-cta">
-      <h3>Melbourne dispatch · tested leaf powder</h3>
-      <p>Dispatched from Truganina, same or next-day to most Melbourne suburbs.</p>
-      <a href="/products/moringa-powder/">Get moringa powder →</a>
-    </div>
-  </aside>
-
-</div><!-- /page -->
-
-<!-- Related posts -->
-<div class="related-block">
-  <h2>Related guides</h2>
-  <div class="related-grid">
-    <div class="related-card">
-      <a href="/blog/honest-australians-guide-moringa-powder-2026.html">The honest Australian's guide to moringa powder (2026)</a>
-      <p>FSANZ & TGA context, taste tips, and how to spot quality</p>
-    </div>
-    <div class="related-card">
-      <a href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">Where to buy moringa: online vs stores (Australia 2026)</a>
-      <p>Full comparison by state, price, and speed</p>
-    </div>
-    <div class="related-card">
-      <a href="/blog/growing-moringa-australia-honest-frost-pots-2026.html">Growing moringa in Australia: the honest guide</a>
-      <p>What actually works in Melbourne's climate</p>
-    </div>
-    <div class="related-card">
-      <a href="/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html">Does moringa have caffeine? Energy and side effects (2026)</a>
-      <p>Evidence on moringa's adaptogenic effects</p>
-    </div>
-    <div class="related-card">
-      <a href="/blog/moringa-brands-comparison-australia-2026.html">Best moringa brands in Australia (2026) compared</a>
-      <p>Side-by-side testing of the major Australian suppliers</p>
-    </div>
-    <div class="related-card">
-      <a href="/products/moringa-powder/">Shop NutriThrive moringa powder</a>
-      <p>Melbourne-dispatched, TGA-path, batch tested</p>
-    </div>
-  </div>
 </div>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">NutriThrive</div>
-      <p class="footer-blurb">Premium moringa powder, curry leaves, and natural wellness products from Truganina, Melbourne. Lab-tested. Australia-wide delivery. ABN 32 639 442 616.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Shopping</h4>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/products/">Products</a></li>
-        <li><a href="/products/moringa-powder/">Moringa powder</a></li>
-        <li><a href="/pages/shipping/shipping-returns.html">Shipping & returns</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Help & info</h4>
-      <ul>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/privacy-policy">Privacy policy</a></li>
-        <li><a href="/blog/how-to-add-moringa-to-diet.html">Usage guide</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
-        <li><a href="tel:+61438201419">0438 201 419</a></li>
-        <li><a href="#">15 Europe St, Truganina VIC 3029</a></li>
-        <li>Mon–Sun · 9 AM – 11 PM</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 NutriThrive. All rights reserved. · Based in Truganina, Melbourne, VIC · Australia-wide & international shipping</p>
-  </div>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
+<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
+<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
+</main>
+<footer class="bg-forest-deep text-pure-white w-full pt-section-gap pb-base">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="space-y-6">
+<span class="font-display text-headline-md text-primary-fixed block">Nutri Thrive</span>
+<p class="font-body-md text-surface-variant/70">Purity in every leaf. Melbourne, Australia.</p>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Shop</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/">Shop All</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/moringa-powder/">Moringa Powder</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Company</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/about/about.html">About</a></li>
+<li><a class="text-primary-fixed underline" href="/blog/">Journal</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/contact">Contact</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Legal</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-pure-white/10 pt-base text-center text-xs text-surface-variant/40 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+© 2026 Nutri Thrive. All rights reserved.
+</div>
 </footer>
-
-<!-- Scripts -->
-<script src="../scripts/global/cart.js"></script>
-<script src="../scripts/global/cart-header.js"></script>
-<script src="../scripts/global/script.js" defer></script>
 <script>
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilIdle(function() {
-      var s = document.createElement('script');
-      s.src = '../scripts/global/newsletter.js';
-      s.defer = true;
-      document.body.appendChild(s);
-    }, { timeout: 1500 });
-  } else {
-    var s = document.createElement('script');
-    s.src = '../scripts/global/newsletter.js';
-    s.defer = true;
-    document.body.appendChild(s);
-  }
-</script>
-
-<!-- FAQ accordion -->
-<script>
-document.querySelectorAll('.faq-q').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var item = btn.closest('.faq-item');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(el) {
-      el.classList.remove('open');
-      el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href && href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
   });
 });
 </script>
-
+<script defer src="../scripts/global/newsletter-popup.js"></script>
 </body>
 </html>

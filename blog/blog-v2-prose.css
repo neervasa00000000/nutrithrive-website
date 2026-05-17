@@ -1,0 +1,161 @@
+/* Legacy article markup inside Nutri Thrive v2 blog shell */
+.blog-v2-prose {
+  color: #3f4943;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.blog-v2-prose h2,
+.blog-v2-prose h3,
+.blog-v2-prose h4 {
+  color: #1a2e22;
+  font-family: Literata, Georgia, serif;
+  font-weight: 600;
+  scroll-margin-top: 6rem;
+}
+
+.blog-v2-prose h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin: 2.5rem 0 1rem;
+}
+
+.blog-v2-prose h3 {
+  font-size: 1.25rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.blog-v2-prose p {
+  margin: 0 0 1.25rem;
+}
+
+.blog-v2-prose a {
+  color: #0f6b4d;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blog-v2-prose a:hover {
+  color: #1a2e22;
+}
+
+.blog-v2-prose ul,
+.blog-v2-prose ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.blog-v2-prose li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-v2-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.blog-v2-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-v2-prose thead {
+  background: #1a2e22;
+  color: #fff;
+}
+
+.blog-v2-prose th,
+.blog-v2-prose td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e6e2d7;
+  text-align: left;
+}
+
+.blog-v2-prose blockquote,
+.blog-v2-prose .quick-answer,
+.blog-v2-prose .table-of-contents,
+.blog-v2-prose div[style*="background: #f0f8f3"],
+.blog-v2-prose div[style*="background:#f0f9f4"],
+.blog-v2-prose div[style*="background: #f6fbf8"] {
+  background: #f7f3e8 !important;
+  border-left: 4px solid #0f6b4d !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+  padding: 1.25rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+}
+
+.blog-v2-prose .story-buy-inline,
+.blog-v2-prose .cta-banner {
+  background: #f5f1e6;
+  border: 1px solid #bec9c1;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.blog-v2-prose .btn-buy-moringa,
+.blog-v2-prose a[style*="background: #175c36"],
+.blog-v2-prose a[style*="background:#1a5c36"],
+.blog-v2-prose .cta-btn-white {
+  display: inline-block;
+  background: #d66844 !important;
+  color: #fff !important;
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+.blog-v2-prose .story-layout {
+  display: block;
+}
+
+.blog-v2-prose .story-toc {
+  background: #f7f3e8;
+  border: 1px solid #e6e2d7;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.blog-v2-prose .story-toc .toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.blog-v2-prose .story-toc .toc-list a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.blog-v2-prose input[type="email"],
+.blog-v2-prose input[type="text"],
+.blog-v2-prose input[type="number"] {
+  border: 1px solid #bec9c1;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .blog-v2-prose h2 {
+    font-size: 1.35rem;
+  }
+
+  .blog-v2-prose table {
+    font-size: 0.875rem;
+  }
+}

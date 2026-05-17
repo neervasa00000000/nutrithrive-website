@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html class="light" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
- <script src="../scripts/global/defer-loader.js"></script>
+<script src="../scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
  <!-- Google Analytics - Deferred until user interaction -->
  <script>
@@ -61,9 +60,9 @@
  <meta name="twitter:description" content="Cafés, co-ops, bulk stores—practical healthspan eating without hype.">
  <meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
- <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
- <link rel="stylesheet" href="../blog/blog.css">
+
+ 
+ 
  <link rel="icon" type="image/png" href="../assets/images/logo/LOGO.webp" sizes="32x32">
  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/LOGO.webp">
  <link rel="shortcut icon" href="../assets/images/logo/LOGO.webp">
@@ -154,57 +153,96 @@
   }
   </script>
 
- <style>
-    body { font-family: 'Inter', sans-serif; line-height: 1.7; color: #222; }
-    .page-subtitle { color: #4f6a5a; margin-top: 0.25rem; }
-    .review-card { border: 1px solid #e2efe6; border-radius: 14px; padding: 16px; background: #fff; margin: 12px 0; }
-    .stars { color: #f59e0b; letter-spacing: 2px; font-size: 1rem; margin: 4px 0 10px; }
-    .pill { display: inline-block; padding: 6px 10px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; border-radius: 999px; font-weight: 700; font-size: 0.9rem; margin: 6px 6px 0 0; }
-    .map-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
-    .place-card { border: 1px solid #e0e0e0; border-radius: 14px; padding: 14px; background: #fff; }
-    .place-title { margin: 0 0 6px; font-size: 1.1rem; font-weight: 800; color: #175c36; }
-    .place-meta { color: #5a6d5d; font-weight: 600; margin-bottom: 10px; }
-    .place-card ul { margin: 8px 0 0 18px; padding: 0; }
-    details.interactive-tip { margin: 1rem 0; border: 1px dashed #2d5a3d; border-radius: 10px; padding: 0.65rem 1rem; background: #f8fdf9; }
-    details.interactive-tip summary { cursor: pointer; font-weight: 800; color: #175c36; }
-    .goal-box { background: #f8fdf9; border: 1px solid #dff1e6; border-radius: 14px; padding: 14px; }
-    .goal-output { margin-top: 10px; background: #ffffff; border-radius: 12px; padding: 12px; border: 1px solid #e8f5ed; }
-    .faq-item { margin-bottom: 1.0rem; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #fff; }
-    .faq-answer { padding: 1rem 1.15rem; display: none; line-height: 1.65; color: #444; }
-    .ship-banner { background: #f0fdf4; border-bottom: 1px solid #d9f7e6; padding: 10px 14px; color: #14532d; font-weight: 700; text-align: center; }
-    @media (max-width: 600px) { .blog-post-content h1 { font-size: 1.6rem; } }
-  </style>
+ 
+
+<!-- Nutri Thrive v2 blog shell -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
+        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
+        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
+        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
+        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
+        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
+        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
+        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
+        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
+        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
+        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
+        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
+        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
+        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
+        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
+        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: {
+        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
+        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
+      },
+      fontFamily: {
+        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
+        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
+      }
+    }
+  }
+};
+</script>
 </head>
-
-<body class="non-sticky-header">
- <div class="ship-banner" role="note">
- <strong>Free standard shipping Australia-wide</strong> on orders <strong>AU$80+</strong> · <strong>Free worldwide shipping</strong> on orders <strong>AU$90+</strong> · Dispatched from <strong>Truganina, Melbourne</strong>
- </div>
-
- <header>
- <div class="navbar">
- <a href="/" class="logo">
- <img decoding="async" src="../assets/images/logo/LOGO.webp" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;" loading="lazy">
- NutriThrive
- </a>
- <nav class="nav-links">
- <a href="/">Home</a>
- <a href="/products/">Products</a>
- <a href="/about">About</a>
- <a href="/contact">Contact</a>
- <a href="/blog/" class="active">Blog</a>
- </nav>
- <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
- <div class="line1"></div>
- <div class="line2"></div>
- <div class="line3"></div>
- </button>
- </div>
- </header>
-
- <main>
- <article class="blog-post-content">
- <h1>Melbourne Food as Medicine Map (2026): Cafes and Organic Stores for Healthspan Eating</h1>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-base" href="/">
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager"/>
+<span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/products/">Shop</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/pages/about/about.html">About</a>
+<a class="font-body-md text-label-lg text-moringa-leaf border-b-2 border-moringa-leaf font-semibold" href="/blog/">Blog</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/contact">Contact</a>
+</div>
+<div class="flex items-center gap-2">
+<a class="material-symbols-outlined text-forest-deep p-2 hover:bg-primary-fixed/10 rounded-full transition-all" href="/pages/shop/cart.html" aria-label="Cart">shopping_bag</a>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<article class="lg:col-span-8">
+<header class="mb-12">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Recipes &amp; Nutrition</span>
+<span class="text-on-surface-variant text-label-lg font-body-md">23 April 2026</span>
+</div>
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">Melbourne Food as Medicine Map (2026): Cafes and Organic Stores for Healthspan Eating</h1>
+<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
+<img alt="" class="w-full h-full object-cover" src="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png" loading="eager" decoding="async"/>
+</div>
+</header>
+<div class="blog-v2-prose prose prose-lg max-w-none">
+<div class="blog-v2-prose prose prose-lg max-w-none">
+<h1>Melbourne Food as Medicine Map (2026): Cafes and Organic Stores for Healthspan Eating</h1>
  <p class="post-meta">NutriThrive Research Team · Published 23 Apr 2026 · Updated 26 Apr 2026 · Melbourne, Victoria</p>
 
  <nav style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e0e0e0; font-size: 0.95rem;">
@@ -284,333 +322,118 @@
  <div class="goal-output" id="goal-output">
  <strong>Gut comfort:</strong> Prioritise fibre (greens + legumes + whole grains) and include a ferment/yoghurt when possible. Add a small moringa boost later at home. </div>
  </div>
-
- <script>
-        (function(){
-          var output = document.getElementById('goal-output');
-          var rules = {
-            gut: '<strong>Gut comfort:</strong> Prioritise fibre (greens + legumes + whole grains) and include a ferment/yoghurt when possible. Add a small moringa boost later at home.',
-            energy: '<strong>Steady energy + focus:</strong> Pair protein + healthy fats with a high-fibre carb. Keep caffeine steady, and use moringa (1/2-1 tsp) in a post-café smoothie.',
-            metabolic: '<strong>Metabolic stability:</strong> Choose balanced bowls: double veg, steady protein, and less-sugar sides. Curry leaves are an easy way to make vegetables tastier without ultra-processed sauces.'
-          };
-
-          var radios = document.querySelectorAll('input[name="goal"]');
-          radios.forEach(function(r){
-            r.addEventListener('change', function(){
-              if (output && rules[this.value]) output.innerHTML = rules[this.value];
-            });
-          });
-        })();
-      </script>
-
- <h2 id="map">The Melbourne map (cafes + organic stores)</h2>
- <p>These places match the “healthspan eating” idea: whole-food options, ingredient quality, and less reliance on ultra-processed convenience.</p>
-
- <div class="map-grid">
- <div class="place-card">
- <div class="place-title">Serotonin Eatery (Burnley)</div>
- <div class="place-meta">Plant-based, seasonal, “nutrient-dense bowl” culture</div>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">What to expect</p>
- <ul>
- <li>Plant-based, nutrient-dense meals</li>
- <li>Seasonal menus that refresh about every three months</li>
- <li>Staff education (“Serotonin Dealers”) explaining how meals support the body</li>
- <li>“Nutrition Bomb” style bowls: protein + diverse fibres + healthy fats + ferments (when listed)</li>
- </ul>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">How to use for healthspan</p>
- <ul>
- <li>Go after a run or post-yoga brunch to refuel with gut-friendly, fibre-rich food</li>
- <li>Copy the home formula: grain + greens + protein + ferments + healthy fats (then add moringa at home if you want a simple daily boost)</li>
- </ul>
- </div>
-
- <div class="place-card">
- <div class="place-title">Hunter's Harvest (Seddon)</div>
- <div class="place-meta">Customisable bowls for real-life nutrition</div>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">What to expect</p>
- <ul>
- <li>Build-your-own bowls with bases, veggies, proteins and dressings</li>
- <li>Balanced macros: more vegetables, steady protein, and satisfying healthy fats</li>
- <li>Customisable for different health goals (more nutrition per calorie, higher protein or fibre days)</li>
- </ul>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">How to use for healthspan</p>
- <ul>
- <li>Choose a base of mixed greens or grains, then double the vegetables and add a lean protein</li>
- <li>Ask for dressings that include quality fats; note your favourite combo for easy lunch repeats</li>
- <li>For the “home version”, use dried curry leaves to make simple veg and lentils taste richer</li>
- </ul>
- </div>
-
- <div class="place-card">
- <div class="place-title">Terra Madre (Northcote)</div>
- <div class="place-meta">Organic pantry staples for week-long healthspan cooking</div>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">What to expect</p>
- <ul>
- <li>Wide range of certified organic groceries</li>
- <li>Biodynamic meats and dairy (plus organic fruit and vegetables)</li>
- <li>Low-tox household and personal-care options</li>
- <li>Competitive pricing that makes organic and biodynamic shopping more realistic</li>
- </ul>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">How to use for healthspan</p>
- <ul>
- <li>Build your base pantry: organic oats, legumes, whole grains, nuts, seeds and olive oil</li>
- <li>Pick a few biodynamic proteins for the week and pair them with seasonal vegetables</li>
- <li>Swap one highly processed snack each week for a whole-food alternative</li>
- </ul>
- </div>
-
- <div class="place-card">
- <div class="place-title">The Source Bulk Foods (Melbourne)</div>
- <div class="place-meta">Zero-waste refills for grains, nuts, seeds and legumes</div>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">What to expect</p>
- <ul>
- <li>Bulk organic and whole foods with refills and zero-waste principles</li>
- <li>Flours, grains, nuts, seeds and legumes in a “bring your jars” style format</li>
- <li>Freshly ground nut butters and house mixes</li>
- </ul>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">How to use for healthspan</p>
- <ul>
- <li>Stock jars with lentils, chickpeas, whole grains, chia, nuts and seeds</li>
- <li>Build a “longevity breakfast set”: oats or quinoa + mixed seeds + nuts + cinnamon + dried fruit</li>
- <li>Use nut butters and trail mixes as higher-quality alternatives to ultra-processed snacks</li>
- </ul>
- </div>
-
- <div class="place-card">
- <div class="place-title">Friends of the Earth Food Co-op (Collingwood)</div>
- <div class="place-meta">Community, organics, and plant-based meals</div>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">What to expect</p>
- <ul>
- <li>Organic and often biodynamic bulk goods</li>
- <li>Fresh produce and pantry staples</li>
- <li>A vegetarian café with simple, nourishing meals</li>
- <li>Community + climate justice energy (your food spend supports values, not just taste)</li>
- </ul>
- <p style="margin:10px 0 6px; font-weight:800; color:#175c36;">How to use for healthspan</p>
- <ul>
- <li>Refill grains, legumes and nuts to cut packaging waste</li>
- <li>Eat simple plant-based meals at the café as a reset from heavy or processed food</li>
- <li>Use the space as a hub to meet like-minded people focused on health and the planet</li>
- </ul>
- <p style="margin:10px 0 0; color:#5a6d5d; font-weight:700;">Tip: 312 Smith Street, Collingwood.</p>
- </div>
- </div>
-
- <details class="interactive-tip">
- <summary>How to shop smarter (no spreadsheet required)</summary>
- <p style="margin:8px 0 0;">
- When you are planning lunch/dinner, use this pattern: <strong>vegetables + protein + fibre base + healthy fat + flavour</strong>. Then choose your two “flavour boosters” (moringa + curry leaves) to make the meals easy to repeat. </p>
- </details>
-
- <h2 id="pantry-pairing">Bring the café home: moringa powder + curry leaves</h2>
- <p>Moringa powder and dried curry leaves are “small add-ons with big payoff” because they help you eat more whole foods without making your meals complicated.</p>
-
- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0;">
- <div class="place-card">
- <div class="place-title">How to use moringa powder (easy daily)</div>
- <ul>
- <li><strong>Post-workout:</strong> blend into a smoothie (start with 1/2 to 1 teaspoon).</li>
- <li><strong>Lunch boost:</strong> mix into yoghurt or stir into oats.</li>
- <li><strong>Simple rule:</strong> consistency beats “more at once”.</li>
- </ul>
- <p style="margin:10px 0 0;">
- Product: <a href="/products/moringa-powder/" style="color:#175c36;font-weight:800;text-decoration:none;">NutriThrive Moringa Powder</a>
- </p>
- </div>
-
- <div class="place-card">
- <div class="place-title">How to use dried curry leaves (flavour + gut-friendly cooking)</div>
- <ul>
- <li><strong>Tadka:</strong> toast in oil with spices, then pour over rice, dal or roasted veg.</li>
- <li><strong>Soups + lentils:</strong> add a handful early for aroma.</li>
- <li><strong>Tea idea:</strong> steep for a gentle herbal routine.</li>
- </ul>
- <p style="margin:10px 0 0;">
- Product: <a href="/products/curry-leaves/" style="color:#175c36;font-weight:800;text-decoration:none;">NutriThrive Dried Curry Leaves</a>
- </p>
- </div>
- </div>
-
- <h2 id="reviews">Product reviews (moringa + curry leaves)</h2>
- <p>These are simple “buyer-style” notes designed for Melbourne shoppers who want results without fuss.</p>
-
- <div class="review-card" id="moringa-review">
- <div class="stars">★★★★★</div>
- <h3 style="margin:0 0 6px;">NutriThrive Moringa Powder</h3>
- <p style="margin:0;">
- <strong>Verdict:</strong> Best for busy people who want a daily green nutrition habit (smoothies, yoghurt, oats). Customers often focus on the taste and how easy it is to use consistently. </p>
- <p style="margin:10px 0 0;">
- <a href="/products/moringa-powder/" style="color:#175c36;font-weight:900;text-decoration:none;">See moringa powder</a>
- </p>
- </div>
-
- <div class="review-card" id="curry-leaves-review">
- <div class="stars">★★★★☆</div>
- <h3 style="margin:0 0 6px;">NutriThrive Dried Curry Leaves</h3>
- <p style="margin:0;">
- <strong>Verdict:</strong> A pantry hero for flavour. Great for turning simple vegetables, dal and rice into meals you actually want to repeat. It is a cooking staple, not a supplement replacement. </p>
- <p style="margin:10px 0 0;">
- <a href="/products/curry-leaves/" style="color:#175c36;font-weight:900;text-decoration:none;">See dried curry leaves</a>
- </p>
- </div>
-
- <h3>Brand notes: what to check before you buy</h3>
- <div style="overflow-x:auto;">
- <table style="width:100%;border-collapse:collapse;font-size:0.95rem;background:#fff;">
- <thead>
- <tr style="background:#175c36;color:#fff;">
- <th style="padding:10px;text-align:left;">You care about</th>
- <th style="padding:10px;text-align:left;">Moringa powder</th>
- <th style="padding:10px;text-align:left;">Dried curry leaves</th>
- </tr>
- </thead>
- <tbody>
- <tr style="background:#f8f9fa;">
- <td style="padding:10px;border-top:1px solid #eee;"><strong>Freshness</strong></td>
- <td style="padding:10px;border-top:1px solid #eee;">Look for a clear “best by” date; open smell should be fresh/green.</td>
- <td style="padding:10px;border-top:1px solid #eee;">Crush-test: aroma should still be present; replace if it feels flat.</td>
- </tr>
- <tr>
- <td style="padding:10px;border-top:1px solid #eee;"><strong>Quality control</strong></td>
- <td style="padding:10px;border-top:1px solid #eee;">Finer powder tends to mix easier into smoothies and yoghurt.</td>
- <td style="padding:10px;border-top:1px solid #eee;">Leaves should look whole and consistent, not overly broken or dusty.</td>
- </tr>
- <tr style="background:#f8f9fa;">
- <td style="padding:10px;border-top:1px solid #eee;"><strong>Fit for your routine</strong></td>
- <td style="padding:10px;border-top:1px solid #eee;">Choose a size that you can finish before it ages.</td>
- <td style="padding:10px;border-top:1px solid #eee;">Choose packs that match how often you cook (a small daily habit matters).</td>
- </tr>
- </tbody>
- </table>
- </div>
-
- <h2 id="7-day">A realistic 7-day healthspan week</h2>
- <p style="margin-top:0;">Here’s a simple, repeatable 7-day framework using the spots above. The goal is less stress and more “whole-food momentum”.</p>
- <div class="review-card" style="background:#fffdfa;">
- <ul style="margin: 0 0 0 18px; padding:0;">
- <li><strong>Monday:</strong> Terra Madre + home cooking (batch grain + roasted veg + protein).</li>
- <li><strong>Tuesday:</strong> Serotonin brunch (post-run or post-yoga) + choose a bowl with fibre + healthy fats.</li>
- <li><strong>Wednesday:</strong> The Source refills (oats, legumes, nuts, seeds) + prep overnight oats or grain bowls.</li>
- <li><strong>Thursday:</strong> Hunter’s Harvest lunch (build a custom bowl) and save your favourite combo.</li>
- <li><strong>Friday:</strong> Friends of the Earth co-op + café (simple organic plate) and top up pantry staples.</li>
- <li><strong>Saturday:</strong> Cook once: lentils + roasted vegetables, then add curry leaves for aroma.</li>
- <li><strong>Sunday:</strong> Smoothie reset: moringa powder (small daily dose) + fruit + yoghurt.</li>
- </ul>
- <details class="interactive-tip" style="margin-top:14px;">
- <summary>Starter checklist (30 seconds)</summary>
- <ul style="margin:8px 0 0 18px;">
- <li>Protein: include one clear source (beans, eggs, tofu, or yoghurt)</li>
- <li>Fibre: add a whole-food plant (greens, legumes, or whole grains)</li>
- <li>Flavour: use curry leaves in cooking so veg tastes “worth it”</li>
- <li>Optional daily booster: moringa in smoothies or yoghurt</li>
- </ul>
- </details>
- </div>
-
- <h2 id="budget-tips">Tips: healthspan eating on a budget</h2>
- <p style="margin-top:0;">You don’t need expensive “health hacks”. You need repeatable choices that fit your routine and budget.</p>
- <ul>
- <li><strong>Shop bulk for staples, cafés for ideas:</strong> refills for grains/legumes/nuts; cafés to see what balanced bowls look like.</li>
- <li><strong>Prioritise protein, fibre and colour:</strong> aim for protein + at least one fibre element + two or more colours each meal.</li>
- <li><strong>Swap, don’t overhaul:</strong> replace one ultra-processed meal/snack each day with a whole-food option from your pantry or café.</li>
- <li><strong>Use small boosters:</strong> moringa for an easy daily green habit, and dried curry leaves to make veggies taste better.</li>
- </ul>
-
- <h2 id="faq">FAQ</h2>
- <div class="faq-item">
- <button class="faq-question" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';this.querySelector('.faq-icon').textContent=a.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.15rem;background:#f8f9fa;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#2d5a3d;display:flex;justify-content:space-between;align-items:center;">
- <span>What does “food as medicine” mean here?</span>
- <span class="faq-icon" style="font-size:1.35rem;">−</span>
- </button>
- <div class="faq-answer" style="display:block;">
- <p style="margin:0;">Whole-food meals that support gut health and steady energy. In practice, it means choosing fibre + protein + healthy fats and using pantry add-ons (like moringa and curry leaves) to make it easy.</p>
- </div>
- </div>
-
- <div class="faq-item">
- <button class="faq-question" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';this.querySelector('.faq-icon').textContent=a.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.15rem;background:#f8f9fa;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#2d5a3d;display:flex;justify-content:space-between;align-items:center;">
- <span>Can I add moringa and curry leaves if my café doesn't have them?</span>
- <span class="faq-icon" style="font-size:1.35rem;">+</span>
- </button>
- <div class="faq-answer">
- <p style="margin:0;">Yes. Use cafes for the “structure” (vegetables + protein + fibre). Then bring the add-ons home: moringa in smoothies/yoghurt, curry leaves in dal, rice and soups.</p>
- </div>
- </div>
-
- <div class="faq-item">
- <button class="faq-question" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';this.querySelector('.faq-icon').textContent=a.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.15rem;background:#f8f9fa;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#2d5a3d;display:flex;justify-content:space-between;align-items:center;">
- <span>Is dried curry leaves useful for non-Indian cooking?</span>
- <span class="faq-icon" style="font-size:1.35rem;">+</span>
- </button>
- <div class="faq-answer">
- <p style="margin:0;">Absolutely. Add them to soups, lentils, roast vegetables and rice. They mainly add aroma and make veggies taste “richer”.</p>
- </div>
- </div>
-
- <div class="faq-item">
- <button class="faq-question" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';this.querySelector('.faq-icon').textContent=a.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.15rem;background:#f8f9fa;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#2d5a3d;display:flex;justify-content:space-between;align-items:center;">
- <span>How much moringa powder is a good beginner dose?</span>
- <span class="faq-icon" style="font-size:1.35rem;">+</span>
- </button>
- <div class="faq-answer">
- <p style="margin:0;">Start with 1/2 to 1 teaspoon daily in yoghurt or a smoothie. If you take medication, check with your pharmacist or doctor.</p>
- </div>
- </div>
-
- <div class="faq-item">
- <button class="faq-question" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';this.querySelector('.faq-icon').textContent=a.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.15rem;background:#f8f9fa;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#2d5a3d;display:flex;justify-content:space-between;align-items:center;">
- <span>Where can I refill pantry staples in Melbourne?</span>
- <span class="faq-icon" style="font-size:1.35rem;">+</span>
- </button>
- <div class="faq-answer">
- <p style="margin:0;">The Source Bulk Foods is built for refills and tends to have grains, nuts, seeds and legumes. Bring your jars/containers and stock for your “healthspan meals”.</p>
- </div>
- </div>
-
- <div style="background:linear-gradient(135deg,#175c36,#0f4a2a);color:#fff;padding:2rem 1.5rem;border-radius:16px;text-align:center;margin:2.5rem 0;">
- <h2 style="color:#fff;margin:0 0 0.5rem;font-size:1.35rem;">Stock up · get free post</h2>
- <p style="margin:0 0 1rem;opacity:0.95;font-size:0.98rem;">Pair <strong>moringa</strong> + <strong>curry leaves</strong> + whole-food pantry staples to reach <strong>AU$80+</strong> for <strong>free Australia-wide shipping</strong> (and <strong>AU$90+</strong> for free worldwide).</p>
- <button type="button" onclick="addProductToCartAndRedirect('moringa-powder', 'Moringa Powder', 11.00, 'https://nutrithrive.com.au/assets/images/og/moringa-product-thumb.png')" style="background:#fff;color:#175c36;padding:0.8rem 1.6rem;border:none;border-radius:999px;font-weight:900;cursor:pointer;margin:0.25rem;">Buy Moringa Powder</button>
- <button type="button" onclick="addProductToCartAndRedirect('curry-leaves', 'Dried Curry Leaves', 7.00, 'https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp')" style="background:transparent;color:#fff;padding:0.8rem 1.6rem;border:2px solid #fff;border-radius:999px;font-weight:900;cursor:pointer;margin:0.25rem;">Add Curry Leaves</button>
- <p style="margin:1rem 0 0;font-size:0.88rem;opacity:0.9;"><a href="/products/" style="color:#c8f5d2;">Browse all products →</a></p>
- </div>
-
- <h2 id="sources">Sources & references (E-E-A-T)</h2>
- <p style="margin-top:0;">These links are for general learning. This article is wellness information, not medical advice.</p>
- <ol>
- <li>Australian Dietary Guidelines (national nutrition reference, Eat for Health programme).</li>
- <li>Food Standards Australia New Zealand (FSANZ): <a href="https://www.foodstandards.gov.au/" rel="noopener noreferrer">https://www.foodstandards.gov.au/</a></li>
- <li>Healthdirect Australia (evidence-based healthy eating overview): <a href="https://www.healthdirect.gov.au/healthy-eating" rel="noopener noreferrer">Healthy eating (Healthdirect)</a></li>
- <li>PubMed search (moringa / Moringa oleifera reviews): <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Moringa+oleifera+review" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/?term=Moringa+oleifera+review</a></li>
- <li>PubMed search (curry leaves / Murraya koenigii reviews): <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Murraya+koenigii+review" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/?term=Murraya+koenigii+review</a></li>
- </ol>
-
- <p style="margin-top:2rem;"><a href="/blog/" style="text-decoration:none;color:#2d5a3d;font-weight:600;">← Back to all articles</a></p>
- </article>
- 
-<section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
-  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
-  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
-      <li><a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html">Moringa Powder Guide (Australia 2026)</a></li>
-      <li><a href="/blog/moringa-brands-comparison-australia-2026.html">Moringa Brands Compared (2026)</a></li>
-      <li><a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html">Moringa powder guide (Australia)</a></li>
-      <li><a href="/products/moringa-powder/">Shop Moringa Powder</a></li>
-      <li><a href="/products/curry-leaves/">Shop Dried Curry Leaves</a></li>
-  </ul>
+</div>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
 </section>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
+<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
 </main>
-
- <footer>
- <div class="footer-content" style="max-width:1200px;margin:0 auto;padding:2rem 1rem;">
- <p style="text-align:center;color:#555;font-size:0.9rem;">© 2026 NutriThrive · <a href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a> · <a href="/faq">FAQ</a></p>
- </div>
- 
+<footer class="bg-forest-deep text-pure-white w-full pt-section-gap pb-base">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="space-y-6">
+<span class="font-display text-headline-md text-primary-fixed block">Nutri Thrive</span>
+<p class="font-body-md text-surface-variant/70">Purity in every leaf. Melbourne, Australia.</p>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Shop</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/">Shop All</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/moringa-powder/">Moringa Powder</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Company</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/about/about.html">About</a></li>
+<li><a class="text-primary-fixed underline" href="/blog/">Journal</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/contact">Contact</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Legal</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-pure-white/10 pt-base text-center text-xs text-surface-variant/40 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+© 2026 Nutri Thrive. All rights reserved.
+</div>
 </footer>
-
- <script src="../scripts/global/cart.js"></script>
- <script src="../scripts/global/cart-header.js"></script>
- <script src="../scripts/global/script.js" defer></script>
- <script src="../scripts/global/blog-enhancements.js" defer></script>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href && href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  });
+});
+</script>
+<script defer src="../scripts/global/newsletter-popup.js"></script>
 </body>
 </html>
-

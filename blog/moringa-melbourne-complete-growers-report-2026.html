@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html class="light" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
 <script src="../scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
 <script>
@@ -65,97 +64,99 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/LOGO.webp">
 <link rel="shortcut icon" href="../assets/images/logo/LOGO.webp">
 <meta name="theme-color" content="#0f3d2e">
-<style>
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Georgia, 'Times New Roman', serif; font-size: 16px; line-height: 1.75; color: #1a1a1a; background: #fafaf8; }
-  .cover { background: #0f3d2e; color: #fff; padding: 80px 60px 60px; position: relative; overflow: hidden; }
-  .cover::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04); }
-  .cover::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 240px; height: 240px; border-radius: 50%; background: rgba(255,255,255,0.03); }
-  .cover-tag { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #7ec8a0; margin-bottom: 20px; font-weight: 400; }
-  .cover h1 { font-size: 48px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; color: #fff; }
-  .cover h1 span { color: #7ec8a0; }
-  .cover-subtitle { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 40px; max-width: 580px; }
-  .cover-meta { font-family: Arial, sans-serif; font-size: 12px; color: rgba(255,255,255,0.45); border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; }
-  .content { max-width: 860px; margin: 0 auto; padding: 0 40px 80px; }
-  .sources-panel { background: #f0f7f4; border: 1px solid #b8d9c8; border-radius: 10px; padding: 28px 32px; margin: 48px 0 20px; }
-  .sources-panel h2 { font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #2a8a5a; margin-bottom: 16px; font-weight: 600; }
-  .sources-panel ol { padding-left: 20px; columns: 2; column-gap: 24px; }
-  .sources-panel li { margin-bottom: 10px; font-size: 13px; break-inside: avoid; }
-  .sources-panel a { color: #0f3d2e; text-decoration: underline; font-weight: 500; }
-  .toc { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 32px 36px; margin: 24px 0 56px; }
-  .toc h2 { font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-bottom: 20px; font-weight: 400; }
-  .toc ol { padding-left: 20px; }
-  .toc li { margin-bottom: 8px; font-size: 15px; }
-  .toc a { color: #0f3d2e; text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
-  .section { margin-bottom: 64px; }
-  .section-label { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #2a8a5a; margin-bottom: 10px; font-weight: 400; }
-  h2.section-title { font-size: 32px; font-weight: 700; line-height: 1.2; color: #0f3d2e; margin-bottom: 24px; border-bottom: 2px solid #e8f4ed; padding-bottom: 14px; }
-  h3 { font-size: 20px; font-weight: 700; color: #1a3d2b; margin: 32px 0 12px; }
-  p { margin-bottom: 16px; color: #2a2a2a; }
-  a.src { color: #2a8a5a; font-size: 11px; font-family: Arial, sans-serif; text-decoration: none; border-bottom: 1px dotted #2a8a5a; padding: 0 1px; white-space: nowrap; vertical-align: super; line-height: 1; }
-  a.src:hover { color: #0f3d2e; border-bottom-style: solid; }
-  a.src::before { content: '['; }
-  a.src::after { content: ']'; }
-  .highlight-box { background: #e8f4ed; border-left: 4px solid #2a8a5a; border-radius: 4px; padding: 20px 24px; margin: 28px 0; }
-  .highlight-box p { margin-bottom: 0; color: #1a3d2b; }
-  .warning-box { background: #fff8e6; border-left: 4px solid #d4a017; border-radius: 4px; padding: 20px 24px; margin: 28px 0; }
-  .warning-box p { margin-bottom: 0; color: #5a3d00; }
-  .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 28px 0; }
-  .data-card { background: #fff; border: 1px solid #dde8e2; border-radius: 8px; padding: 20px 14px; text-align: center; }
-  .data-card .value { font-size: 24px; font-weight: 700; color: #0f3d2e; line-height: 1.1; margin-bottom: 6px; }
-  .data-card .label { font-family: Arial, sans-serif; font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-  table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
-  th { background: #0f3d2e; color: #fff; padding: 12px 14px; text-align: left; font-family: Arial, sans-serif; font-size: 12px; font-weight: 500; }
-  td { padding: 11px 14px; border-bottom: 1px solid #eee; vertical-align: top; }
-  tr:nth-child(even) td { background: #f7f9f7; }
-  .pest-card { background: #fff; border: 1px solid #dde8e2; border-radius: 8px; padding: 20px 22px; margin-bottom: 16px; }
-  .pest-card h4 { font-size: 15px; font-weight: 700; color: #c0392b; margin-bottom: 6px; }
-  .pest-card .severity { display: inline-block; font-family: Arial, sans-serif; font-size: 10px; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
-  .sev-high { background: #fdf0f0; color: #c0392b; border: 1px solid #e0a0a0; }
-  .sev-med { background: #fff8e6; color: #d4a017; border: 1px solid #e0cc80; }
-  .sev-low { background: #e8f4ed; color: #2a8a5a; border: 1px solid #a0d0b0; }
-  .timeline { border-left: 3px solid #2a8a5a; margin: 28px 0; padding-left: 0; list-style: none; }
-  .timeline li { position: relative; padding: 0 0 28px 32px; }
-  .timeline li::before { content: ''; position: absolute; left: -9px; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: #2a8a5a; border: 3px solid #fafaf8; }
-  .timeline .month { font-family: Arial, sans-serif; font-size: 12px; font-weight: 600; color: #2a8a5a; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
-  .timeline .action { font-size: 15px; font-weight: 700; color: #0f3d2e; margin-bottom: 4px; }
-  .timeline .detail { font-size: 14px; color: #555; }
-  .invest-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
-  .invest-table th { background: #1a3d2b; color: #fff; padding: 12px 14px; text-align: left; }
-  .invest-table td { padding: 10px 14px; border-bottom: 1px solid #dde8e2; }
-  .invest-table tr:last-child td { font-weight: 700; background: #e8f4ed; color: #0f3d2e; border-bottom: none; }
-  .callout { background: #0f3d2e; color: #fff; border-radius: 8px; padding: 28px 32px; margin: 36px 0; }
-  .callout h3 { color: #7ec8a0; margin-top: 0; }
-  .callout p { color: rgba(255,255,255,0.85); margin-bottom: 0; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
-  .col-card { background: #fff; border: 1px solid #dde8e2; border-radius: 8px; padding: 20px; }
-  .col-card h4 { font-size: 11px; font-weight: 700; color: #0f3d2e; margin-bottom: 10px; font-family: Arial, sans-serif; text-transform: uppercase; letter-spacing: 1px; }
-  .col-card ul { padding-left: 18px; font-size: 14px; color: #333; }
-  .col-card ul li { margin-bottom: 6px; }
-  .footer { background: #0f3d2e; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 32px; font-family: Arial, sans-serif; font-size: 12px; }
-  .footer a { color: #7ec8a0; text-decoration: none; }
-  .footer-sources { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 20px; margin-top: 20px; }
-  @media (max-width: 600px) {
-    .cover { padding: 48px 24px 40px; }
-    .cover h1 { font-size: 32px; }
-    .content { padding: 0 20px 60px; }
-    .two-col { grid-template-columns: 1fr; }
-    .sources-panel ol { columns: 1; }
+
+
+<!-- Nutri Thrive v2 blog shell -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
+        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
+        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
+        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
+        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
+        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
+        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
+        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
+        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
+        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
+        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
+        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
+        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
+        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
+        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
+        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: {
+        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
+        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
+      },
+      fontFamily: {
+        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
+        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
+      }
+    }
   }
-
+};
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+body { background-color: #FDF9EE; color: #1C1C15; -webkit-font-smoothing: antialiased; }
 </style>
-
 </head>
-<body>
-
-<div class="cover">
-<div class="cover-tag">Deep Research Report — Melbourne, Victoria, Australia</div>
-<h1>Growing <span>Moringa</span><br/>in Melbourne</h1>
-<p class="cover-subtitle">The complete, science-backed grower's guide — with every fact linked to its original source. Climate, soil, pests, water, investment, timeline, and everything you need to know to successfully cultivate the Miracle Tree in Melbourne.</p>
-<div class="cover-meta">Updated April 2026 • 23 sources cited inline including Wikipedia, Bunnings Australia, AgriFutures Australia, Bureau of Meteorology, NCBI peer-reviewed journals, and Melbourne grower forums</div>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-base" href="/">
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager"/>
+<span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/products/">Shop</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/pages/about/about.html">About</a>
+<a class="font-body-md text-label-lg text-moringa-leaf border-b-2 border-moringa-leaf font-semibold" href="/blog/">Blog</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/contact">Contact</a>
 </div>
+<div class="flex items-center gap-2">
+<a class="material-symbols-outlined text-forest-deep p-2 hover:bg-primary-fixed/10 rounded-full transition-all" href="/pages/shop/cart.html" aria-label="Cart">shopping_bag</a>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<article class="lg:col-span-8">
+<header class="mb-12">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Local Guide</span>
+<span class="text-on-surface-variant text-label-lg font-body-md">23 April 2026</span>
+</div>
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">Growing Moringa in Melbourne</h1>
+<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
+<img alt="" class="w-full h-full object-cover" src="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png" loading="eager" decoding="async"/>
+</div>
+</header>
+<div class="blog-v2-prose prose prose-lg max-w-none">
 <div class="content">
 <div class="sources-panel">
 <h2>All 25 Sources Used in This Report — Click Any to Visit</h2>
@@ -674,111 +675,118 @@
 </div>
 <div style="max-width:860px;margin:0 auto 48px;padding:0 40px;">
 <h2 style="font-size:26px;font-weight:700;color:#0f3d2e;margin-bottom:20px;">Frequently Asked Questions</h2>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Can moringa really survive Melbourne winters?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but with help. Moringa is frost-sensitive and will die back or lose all leaves below 4-5°C. The Melbourne approach is container growing: pot your plant in a 50L+ container, grow it through the Melbourne spring/summer season (October–April), then move it under cover or indoors during the coldest winter months (June–August). In-ground trees can survive mild Melbourne winters if planted in a sheltered north-facing position and protected with frost cloth when temperatures are forecast below 2°C." } },
-    { "@type": "Question", "name": "When is the best time to plant moringa in Melbourne?", "acceptedAnswer": { "@type": "Answer", "text": "Plant seeds indoors in late August or September. Transplant seedlings outdoors once Melbourne night temperatures are reliably above 12°C — typically from mid-October. This gives plants a full Melbourne summer (October to April) to establish and produce leaves before winter." } },
-    { "@type": "Question", "name": "How much moringa can I harvest from a home garden plant in Melbourne?", "acceptedAnswer": { "@type": "Answer", "text": "A healthy home garden moringa in a large pot or in-ground can yield 3–5 leaf harvests per Melbourne growing season (October–April). Each harvest from a mature plant can yield 200–500g of fresh leaves. Year 2 plants with established root systems typically produce 30–50% more than first-year plants." } },
-    { "@type": "Question", "name": "Is it legal to grow moringa in Melbourne and Victoria?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Moringa is legal to grow throughout Australia including Victoria. It is not classified as an invasive weed in any Australian state. Dispose of seeds responsibly to prevent unwanted spread. As a food ingredient, moringa occupies a somewhat complex regulatory status in Australia (classified under novel foods), but home growing is entirely legal and unrestricted." } },
-    { "@type": "Question", "name": "Can I eat the moringa I grow at home in Melbourne?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Home-grown moringa leaves can be eaten fresh in salads, cooked in stir-fries or dhal, or dried and ground into powder. The leaves, flowers, and young pods are all edible. Young leaves are milder and less fibrous than older leaves. If drying and grinding your own powder, shade-dry the leaves at low temperature to preserve the most nutrients — the same principle that makes commercial shade-dried powder better than sun-dried." } },
-    { "@type": "Question", "name": "Where can I buy moringa powder if I don't want to grow it myself?", "acceptedAnswer": { "@type": "Answer", "text": "NutriThrive ships shade-dried moringa leaf powder Australia-wide from Melbourne (Truganina). This is the fastest and most consistent option for Melbourne buyers. For a comparison of online and physical retail options across Australia, see the NutriThrive where to buy guide." } }
-  ]
-}
-</script>
-<div style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;background:white;margin-bottom:12px;">
-  <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('.fi').textContent=this.nextElementSibling.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.25rem;background:#fff;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#000;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;">
-    <span>Can moringa really survive Melbourne winters?</span><span class="fi" style="font-size:1.3rem;font-weight:bold;">+</span>
-  </button>
-  <div style="padding:1.1rem 1.25rem;background:white;display:none;line-height:1.7;color:#444;font-size:15px;">
-    <p>Yes, but with help. Moringa is frost-sensitive and will die back or lose all leaves below 4–5°C. The Melbourne approach is container growing: pot your plant in a 50L+ container, grow it through the Melbourne spring/summer season (October–April), then move it under cover or indoors during the coldest winter months (June–August). In-ground trees can survive mild Melbourne winters if planted in a sheltered north-facing position and protected with frost cloth when temperatures are forecast below 2°C.</p>
-  </div>
 </div>
-<div style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;background:white;margin-bottom:12px;">
-  <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('.fi').textContent=this.nextElementSibling.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.25rem;background:#fff;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#000;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;">
-    <span>When is the best time to plant moringa in Melbourne?</span><span class="fi" style="font-size:1.3rem;font-weight:bold;">+</span>
-  </button>
-  <div style="padding:1.1rem 1.25rem;background:white;display:none;line-height:1.7;color:#444;font-size:15px;">
-    <p>Start seeds indoors in late August or September. Transplant seedlings outdoors once Melbourne night temperatures are reliably above 12°C — typically from mid-October. This gives plants a full Melbourne summer (October to April) to establish and produce leaves before the next winter arrives.</p>
-  </div>
-</div>
-<div style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;background:white;margin-bottom:12px;">
-  <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('.fi').textContent=this.nextElementSibling.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.25rem;background:#fff;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#000;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;">
-    <span>How much moringa can I harvest from a home garden plant in Melbourne?</span><span class="fi" style="font-size:1.3rem;font-weight:bold;">+</span>
-  </button>
-  <div style="padding:1.1rem 1.25rem;background:white;display:none;line-height:1.7;color:#444;font-size:15px;">
-    <p>A healthy home garden moringa in a large pot or in-ground can yield 3–5 leaf harvests per Melbourne growing season (October–April). Each harvest from a mature plant can yield 200–500g of fresh leaves. Year 2 plants with established root systems typically produce 30–50% more than first-year plants.</p>
-  </div>
-</div>
-<div style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;background:white;margin-bottom:12px;">
-  <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('.fi').textContent=this.nextElementSibling.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.25rem;background:#fff;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#000;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;">
-    <span>Is it legal to grow moringa in Melbourne and Victoria?</span><span class="fi" style="font-size:1.3rem;font-weight:bold;">+</span>
-  </button>
-  <div style="padding:1.1rem 1.25rem;background:white;display:none;line-height:1.7;color:#444;font-size:15px;">
-    <p>Yes. Moringa is legal to grow throughout Australia including Victoria. It is not classified as an invasive weed in any Australian state. Dispose of seeds responsibly to prevent unwanted spread. As a food ingredient, moringa occupies a somewhat complex regulatory status in Australia (novel foods), but home growing is entirely legal and unrestricted.</p>
-  </div>
-</div>
-<div style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;background:white;margin-bottom:12px;">
-  <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('.fi').textContent=this.nextElementSibling.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.25rem;background:#fff;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#000;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;">
-    <span>Can I eat the moringa I grow at home in Melbourne?</span><span class="fi" style="font-size:1.3rem;font-weight:bold;">+</span>
-  </button>
-  <div style="padding:1.1rem 1.25rem;background:white;display:none;line-height:1.7;color:#444;font-size:15px;">
-    <p>Yes. Home-grown moringa leaves can be eaten fresh in salads, cooked in stir-fries or dhal, or dried and ground into powder. The leaves, flowers, and young pods are all edible. If drying and grinding your own powder, shade-dry the leaves at low temperature — the same principle that makes commercial shade-dried powder better than sun-dried. For recipe ideas using moringa powder, see the <a href="/blog/how-to-add-moringa-to-diet.html">moringa diet guide</a>.</p>
-  </div>
-</div>
-<div style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;background:white;">
-  <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('.fi').textContent=this.nextElementSibling.style.display==='none'?'+':'−';" style="width:100%;padding:1rem 1.25rem;background:#fff;border:none;text-align:left;cursor:pointer;font-size:1rem;font-weight:700;color:#000;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;">
-    <span>Where can I buy moringa powder if I don't want to grow it myself?</span><span class="fi" style="font-size:1.3rem;font-weight:bold;">+</span>
-  </button>
-  <div style="padding:1.1rem 1.25rem;background:white;display:none;line-height:1.7;color:#444;font-size:15px;">
-    <p>NutriThrive ships shade-dried moringa leaf powder Australia-wide from Melbourne (Truganina) — free standard shipping on orders $80+. For a comparison of online and physical retail options across Australia, see the <a href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">where to buy moringa guide</a>. For a full brand comparison, see <a href="/blog/moringa-brands-comparison-australia-2026.html">moringa brands ranked</a>.</p>
-  </div>
-</div>
-</div>
-
-<div class="footer">
-<p style="font-size:14px; color:rgba(255,255,255,0.85); margin-bottom:8px;">Moringa in Melbourne: The Complete Grower's Report 2026</p>
-<p style="margin-bottom:16px;">All 23 sources cited inline throughout this report — click any [source] tag in the text to visit the original article.</p>
-<div class="footer-sources">
-<a href="https://en.wikipedia.org/wiki/Moringa_oleifera" target="_blank">Wikipedia — Moringa</a>
-<a href="https://www.bunnings.com.au/diy-advice/garden/planting-and-growing/how-to-grow-and-care-for-moringa-trees" target="_blank">Bunnings Australia</a>
-<a href="https://agrifutures.com.au/news/moringa-a-tree-that-presents-a-range-of-opportunities-for-australian-agribusiness/" target="_blank">AgriFutures Australia</a>
-<a href="https://en.wikipedia.org/wiki/Climate_of_Melbourne" target="_blank">Wikipedia — Melbourne Climate</a>
-<a href="https://www.bom.gov.au/climate/averages/tables/cw_086071.shtml" target="_blank">Bureau of Meteorology</a>
-<a href="/blog/growing-moringa-australia-honest-frost-pots-2026.html" target="_blank">NutriThrive AU</a>
-<a href="https://www.the-moringa-shop.com/pages/grow-moringa" target="_blank">The Moringa Shop</a>
-<a href="https://www.theseedcollection.com.au/moringa" target="_blank">The Seed Collection</a>
-<a href="https://completegrow.com.au/garden-plant-care-home/best-fertilizer-for-moringa-trees/" target="_blank">CompleteGrow AU</a>
-<a href="/blog/growing-moringa-australia-honest-frost-pots-2026.html" target="_blank">NutriThrive — cool-climate moringa</a>
-<a href="https://www.agrifarming.in/moringa-pests-diseases-and-control-methods-drumstick" target="_blank">Agri Farming — Pests</a>
-<a href="https://krishijagran.com/agripedia/pest-and-disease-management-in-moringa-drumstick-tree/" target="_blank">Krishi Jagran</a>
-<a href="https://financialmodelslab.com/blogs/startup-costs/moringa-farming" target="_blank">FinancialModelsLab</a>
-<a href="https://www.agrifarming.in/drumstick-farming-project-report-cost-profit" target="_blank">Agri Farming — Project Report</a>
-<a href="https://www.dpi.qld.gov.au/__data/assets/pdf_file/0007/69262/IPA-Horseradish-Tree-Risk-Assessment.pdf" target="_blank">Queensland DPI (PDF)</a>
-<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9865686/" target="_blank">NCBI PMC — Peer Review</a>
-<a href="https://www.mykitchengarden.info/2022/12/moringa-tree-diseases-problems-and-care.html" target="_blank">My Kitchen Garden</a>
-<a href="https://www.entrepreneurindia.co/blogs/moringa-farming-and-powder-production-business/" target="_blank">Entrepreneur India</a>
-<a href="https://www.australia.com/en-us/facts-and-planning/weather-in-australia/melbourne-weather.html" target="_blank">Tourism Australia</a>
-<a href="https://www.feedipedia.org/node/124" target="_blank">Feedipedia — Moringa</a>
-<a href="https://www.actahort.org/books/1158/1158_14.htm" target="_blank">ISHS — diseases &amp; pests of moringa</a>
-<a href="https://www.niir.org/blog/moringa-business-plan-a-complete-guide-for-entrepreneurs/" target="_blank">NIIR — Business Plan</a><a href="https://www.bom.gov.au/climate/current/season/vic/archive/202402.melbourne.shtml" target="_blank">BOM — Melbourne seasonal archive</a></div>
-</div>
-
-<section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
-  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
-  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
-    <li><a href="/blog/growing-moringa-australia-honest-frost-pots-2026.html">Growing moringa in Australia: frosts, pots, and patience</a></li>
-    <li><a href="/blog/moringa-melbourne-complete-guide-2026.html">Complete Melbourne moringa guide (2026)</a></li>
-    <li><a href="/blog/melbourne-premium-buyers-guide-moringa-2026.html">Where to buy moringa in Melbourne — premium buyer's guide</a></li>
-    <li><a href="/blog/science-shade-drying-vs-sun-drying-moringa.html">Shade-dried vs sun-dried moringa: what the science says</a></li>
-    <li><a href="/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html">Moringa quality test: shade-dried vs retail (Australia 2026)</a></li>
-    <li><a href="/blog/verify-moringa-quality-premium-buyers-checklist-2026.html">How to verify moringa quality: 8-point checklist</a></li>
-    <li><a href="/blog/honest-australians-guide-moringa-powder-2026.html">Honest Australian's guide to moringa powder (2026)</a></li>
-  </ul>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
 </section>
-<p style="text-align:center;margin:0;padding:8px 24px 0;font-family:Arial,sans-serif;font-size:13px;background:#fafaf8;color:#555;">Publishing a big static site? These browser tools can help: <a href="/nutrithrive_labs/sitemap-generator.html" style="color:#0f3d2e;">sitemap generator</a> · <a href="/nutrithrive_labs/dedup-lines.html" style="color:#0f3d2e;">remove duplicate lines</a>.</p>
-<p style="text-align:center;margin:0;padding:16px 24px 28px;font-family:Arial,sans-serif;font-size:13px;background:#fafaf8;"><a href="/blog/" style="color:#0f3d2e;">← Back to NutriThrive Blog</a></p>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
+<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
+</main>
+<footer class="bg-forest-deep text-pure-white w-full pt-section-gap pb-base">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="space-y-6">
+<span class="font-display text-headline-md text-primary-fixed block">Nutri Thrive</span>
+<p class="font-body-md text-surface-variant/70">Purity in every leaf. Melbourne, Australia.</p>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Shop</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/">Shop All</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/moringa-powder/">Moringa Powder</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Company</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/about/about.html">About</a></li>
+<li><a class="text-primary-fixed underline" href="/blog/">Journal</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/contact">Contact</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Legal</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-pure-white/10 pt-base text-center text-xs text-surface-variant/40 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+© 2026 Nutri Thrive. All rights reserved.
+</div>
+</footer>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href && href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  });
+});
+</script>
+<script defer src="../scripts/global/newsletter-popup.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html class="light" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
 <script src="../scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
@@ -60,11 +59,11 @@
 <meta name="twitter:description" content="Can't lose weight no matter what? Gut microbiome may be why. Real story: keto fails, Reddit discovery, 18kg lost with moringa and probiotics."/>
 <meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"></noscript>
-<link href="../styles/global/style.css" rel="stylesheet"/>
-<link href="../styles/global/newsletter-popup.css" rel="stylesheet"/>
-<link href="../blog/blog.css" rel="stylesheet"/>
+
+    
+
+
+
 <!-- Favicons -->
 <link href="../assets/images/logo/LOGO.webp" rel="icon" sizes="32x32" type="image/png"/>
 <link href="../assets/images/logo/LOGO.webp" rel="icon" sizes="16x16" type="image/png"/>
@@ -73,147 +72,7 @@
 <meta content="../assets/images/logo/LOGO.webp" name="msapplication-TileImage"/>
 <meta content="#0f6b4d" name="msapplication-TileColor"/>
 <meta content="#0f6b4d" name="theme-color"/>
-<style>
-        :root {
-            --primary: #175c36;
-            --primary-dark: #0f4a2a;
-            --primary-light: #2d7a4f;
-            --accent: #7B541F;
-            --bg-gradient: linear-gradient(135deg, #f5f9f7 0%, #e8f5ed 50%, #f0f8f3 100%);
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --text-primary: #1a2e22;
-            --text-secondary: #4a6741;
-            --text-muted: #6b7d6f;
-            --shadow-sm: 0 2px 8px rgba(23, 92, 54, 0.08);
-            --shadow-md: 0 4px 16px rgba(23, 92, 54, 0.12);
-            --shadow-lg: 0 8px 32px rgba(23, 92, 54, 0.16);
-            --radius: 16px;
-            --radius-lg: 24px;
-        }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.8;
-            color: var(--text-primary);
-            background: var(--bg-gradient);
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Info boxes */
-        .info-box {
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-        }
-        .info-box-green  { background: #e8f5e9; border-left: 4px solid #175c36; }
-        .info-box-blue   { background: #e3f2fd; border-left: 4px solid #1976d2; }
-        .info-box-yellow { background: #fff9c4; border-left: 4px solid #f9a825; }
-        .info-box-orange { background: #fff3e0; border-left: 4px solid #2d5a3d; }
-        .info-box-light  { background: #f6fbf8; border: 1px solid #e3eee7; }
-        .info-box-red    { background: #fff5f5; border-left: 4px solid #e53e3e; }
-
-        /* CTA banner */
-        .cta-banner {
-            background: linear-gradient(135deg, #175c36 0%, #0f4a2a 100%);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            color: white;
-            box-shadow: 0 8px 32px rgba(23, 92, 54, 0.3);
-            margin: 3rem 0;
-        }
-        .cta-banner h3 { color: white; font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700; }
-        .cta-banner p  { color: #e8f5ed; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6; }
-        .cta-btn-white {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: #175c36;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-        .cta-btn-white:hover { transform: translateY(-2px); }
-
-        /* Quick answer box */
-        .quick-answer {
-            background: #f0fdf4;
-            border: 2px solid #16a34a;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 25px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .quick-answer p:first-child { color: #166534; font-size: 1.2rem; font-weight: 700; margin-top: 0; }
-        .quick-answer p:last-child  { color: #15803d; margin-bottom: 0; }
-
-        /* FAQ section */
-        .faq-item {
-            background: #f6fbf8;
-            border: 1px solid #d4e8db;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.25rem 0;
-        }
-        .faq-item h3 { color: #175c36; margin-top: 0; }
-
-        /* Recipe block */
-        .recipe-block {
-            background: #1a2e22;
-            color: #e8f5ed;
-            padding: 1.25rem 1.5rem;
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 0.95rem;
-            line-height: 1.9;
-            margin: 1rem 0;
-        }
-
-        /* Day timeline cards */
-        .day-card {
-            background: white;
-            border-radius: 14px;
-            border-left: 5px solid #175c36;
-            padding: 1.5rem 2rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 2px 8px rgba(23, 92, 54, 0.08);
-        }
-        .day-card h3 { color: #175c36; margin-top: 0; }
-
-        /* Stat highlight */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.25rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(23, 92, 54, 0.1);
-            border-top: 4px solid #175c36;
-        }
-        .stat-card .stat-number { font-size: 2rem; font-weight: 800; color: #175c36; line-height: 1.2; }
-        .stat-card .stat-label  { font-size: 0.85rem; color: #5A6D5D; margin-top: 0.25rem; }
-
-        /* Warning box */
-        .warning-box {
-            background: #fff9c4;
-            border-left: 4px solid #f9a825;
-            padding: 1.25rem 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-</style>
 
 <!-- Article Schema -->
 <script type="application/ld+json">
@@ -325,52 +184,94 @@
   }
 }
 </script>
+
+<!-- Nutri Thrive v2 blog shell -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
+        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
+        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
+        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
+        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
+        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
+        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
+        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
+        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
+        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
+        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
+        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
+        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
+        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
+        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
+        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: {
+        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
+        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
+      },
+      fontFamily: {
+        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
+        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
+      }
+    }
+  }
+};
+</script>
 </head>
-<body class="blog-post-page">
-<header>
-<div class="navbar">
-<a class="logo" href="/">
-<img alt="NutriThrive Logo" decoding="async" loading="lazy" src="../assets/images/logo/LOGO.webp" style="height: 1.8rem; width: auto; margin-right: 0.5rem;"/>NutriThrive
+<body class="font-body-md text-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-base" href="/">
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager"/>
+<span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
 </a>
-<nav class="nav-links">
-<a href="/">Home</a>
-<a href="/products/">Products</a>
-<a class="active" href="/blog/">Blog</a>
-<a href="/contact">Contact</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/products/">Shop</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/pages/about/about.html">About</a>
+<a class="font-body-md text-label-lg text-moringa-leaf border-b-2 border-moringa-leaf font-semibold" href="/blog/">Blog</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/contact">Contact</a>
+</div>
+<div class="flex items-center gap-2">
+<a class="material-symbols-outlined text-forest-deep p-2 hover:bg-primary-fixed/10 rounded-full transition-all" href="/pages/shop/cart.html" aria-label="Cart">shopping_bag</a>
+</div>
+</div>
 </nav>
-<button aria-label="Toggle navigation menu" class="hamburger">
-<div class="line1"></div><div class="line2"></div><div class="line3"></div>
-</button>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<article class="lg:col-span-8">
+<header class="mb-12">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Wellness Story</span>
+<span class="text-on-surface-variant text-label-lg font-body-md">16 May 2026</span>
+</div>
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">I Couldn't Lose Weight No Matter What I Did. Turned Out My Gut Was Broken. (2026)</h1>
+<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
+<img alt="" class="w-full h-full object-cover" src="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png" loading="eager" decoding="async"/>
 </div>
 </header>
-
-<!-- Table of Contents -->
-<div class="table-of-contents" style="background: #f0f8f3; padding: 2rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #175c36;">
-<p class="toc-heading" style="color: #175c36; margin-top: 0; font-size: 1.5rem; font-weight: 700;">Table of Contents</p>
-<ul style="list-style: none; padding-left: 0; margin: 1rem 0;">
-<li><a href="#failed-attempts">What I Tried (And Failed)</a></li>
-<li><a href="#the-problem">Why My Gut Was the Problem</a></li>
-<li><a href="#what-worked">What Actually Worked (3 Phases)</a></li>
-<li><a href="#results">Results</a></li>
-<li><a href="#foods">Foods That Made Me Fat</a></li>
-<li><a href="#science">Gut-Weight Science</a></li>
-<li><a href="#routine">Daily Routine</a></li>
-<li><a href="#faqs">FAQs</a></li>
-<li><a href="#start-today">How to Start</a></li>
-</ul>
-</div>
-
-<article class="blog-post">
-<header class="blog-post-header">
-<h1>I Couldn't Lose Weight No Matter What I Did. Turned Out My Gut Was Broken.</h1>
-<p class="post-meta">By Sarah K., Melbourne &bull; May 2026 &bull; 20 min read</p>
-
-<div class="quick-answer">
-<p>The Short Version</p>
-<p>Two years of failed diets — then <strong>18kg lost in 6 months</strong> by healing my gut: kill bad bacteria, rebuild with probiotics + <strong>2 tsp moringa daily</strong>, cut sugar/dairy/gluten. Ate more, exercised less, kept it off 8+ months. <a href="#what-worked">Jump to the 3-phase plan.</a></p>
-</div>
-</header>
-
+<div class="blog-v2-prose prose prose-lg max-w-none">
+<div class="blog-v2-prose prose prose-lg max-w-none">
 <!-- Breadcrumb -->
 <div style="background: #f8f9fa; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0e0; margin: 0;">
 <nav style="font-size: 0.9375rem; color: #666;">
@@ -539,126 +440,182 @@
 <li><a href="/products/moringa-powder/">Shop NutriThrive Moringa Powder</a></li>
 </ul>
 </div>
-
-</article>
-
-<!-- Footer -->
-<footer>
-<div class="footer-content">
-<div class="footer-section">
-<h3>Products</h3>
-<ul class="footer-links">
-<li><a href="/products/moringa-powder/">Moringa Powder</a></li>
-<li><a href="/products/curry-leaves/">Dried Curry Leaves</a></li>
-</ul>
 </div>
-<div class="footer-section">
-<h3>Shop</h3>
-<ul class="footer-links">
-<li><a href="/products/">All Products</a></li>
-<li><a href="/cart">Cart</a></li>
-<li><a href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
-</ul>
-</div>
-<div class="footer-section">
-<h3>Help &amp; Info</h3>
-<ul class="footer-links">
-<li><a href="/privacy-policy">Privacy Policy</a></li>
-<li><a href="/contact">Contact</a></li>
-<li><a href="/faq">FAQ</a></li>
-<li><a href="/about">About</a></li>
-<li><a href="/blog/">Blog</a></li>
-<li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li>
-</ul>
-</div>
-<div class="footer-section">
-<h3>Contact Us</h3>
-<ul class="footer-links">
-<li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
-<li><a href="tel:+61438201419">+61 438201419</a></li>
-</ul>
-</div>
-<div class="footer-section">
-<h3>Business Info</h3>
-<ul class="footer-links">
-<li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
-<li>Based in Truganina, Melbourne, VIC (Australia)<br/>Fast Shipping Australia-wide — Melbourne, Sydney, Brisbane + all states.<br/>Worldwide Shipping Available 🌍</li>
-<li>Monday - Sunday</li>
-<li>9:00 AM - 11:00 PM</li>
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-<div class="footer-bottom-container">
-<p>© 2026 NutriThrive. All rights reserved.</p>
-</div>
-</div>
-
-<section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
-  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
-  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
-      <li><a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html">Moringa Powder Guide (Australia 2026)</a></li>
-      <li><a href="/blog/moringa-brands-comparison-australia-2026.html">Moringa Brands Compared (2026)</a></li>
-      <li><a href="/blog/high-protein-moringa-recipes-australia-2026.html">High-Protein Moringa Recipes</a></li>
-      <li><a href="/blog/how-to-add-moringa-to-diet.html">How to Add Moringa to Your Diet</a></li>
-      <li><a href="/products/moringa-powder/">Shop Moringa Powder</a></li>
-  </ul>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
 </section>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
+<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/moringa-brands-comparison-australia-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Moringa Brands Australia: Lab Tested &amp; Ranked</h5>
+<p class="text-xs text-on-surface-variant opacity-70">12 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
+</main>
+<footer class="bg-forest-deep text-pure-white w-full pt-section-gap pb-base">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="space-y-6">
+<span class="font-display text-headline-md text-primary-fixed block">Nutri Thrive</span>
+<p class="font-body-md text-surface-variant/70">Purity in every leaf. Melbourne, Australia.</p>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Shop</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/">Shop All</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/moringa-powder/">Moringa Powder</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Company</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/about/about.html">About</a></li>
+<li><a class="text-primary-fixed underline" href="/blog/">Journal</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/contact">Contact</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Legal</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-pure-white/10 pt-base text-center text-xs text-surface-variant/40 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+© 2026 Nutri Thrive. All rights reserved.
+</div>
 </footer>
-
-<script src="../scripts/global/cart.js"></script>
-<script src="../scripts/global/cart-header.js"></script>
-<script defer="" src="../scripts/global/script.js"></script>
 <script>
-    if (window.DeferLoader) {
-        window.DeferLoader.deferUntilIdle(function() {
-            var s = document.createElement('script');
-            s.src = '../scripts/global/newsletter.js';
-            s.defer = true;
-            document.body.appendChild(s);
-        }, { timeout: 1500 });
-    } else {
-        var s = document.createElement('script');
-        s.src = '../scripts/global/newsletter.js';
-        s.defer = true;
-        document.body.appendChild(s);
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href && href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
+  });
+});
 </script>
-
-<!-- Related Articles -->
-<div class="related-articles-section" style="margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, #f0f8f3 0%, #e8f5ed 100%); border-radius: 16px; border: 2px solid #2d7a4f;">
-<h2>More Blog Posts to Explore</h2>
-<p style="text-align: center; color: #4a6741; margin-bottom: 2.5rem; font-size: 1.1rem;">Explore more articles about superfoods, health tips, and wellness guides</p>
-<div class="related-articles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-
-<a class="related-article-card" href="/blog/cant-lose-weight-broken-gut-what-actually-worked-2026.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23,92,54,0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Couldn't Lose Weight Until I Fixed My Gut</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-
-<a class="related-article-card" href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23,92,54,0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">How to Use Moringa Powder Daily Without the Bad Taste</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-
-<a class="related-article-card" href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23,92,54,0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Moringa vs Spirulina vs Matcha: Aussie Superfood Face-Off 2026</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-
-<a class="related-article-card" href="/blog/is-moringa-legit-what-science-and-real-users-say-2026.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23,92,54,0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Is Moringa Legit? What the Science and Real Users Actually Say</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-
-<a class="related-article-card" href="/blog/moringa-brands-comparison-australia-2026.html" style="display: block; padding: 1.5rem; background: white; border-radius: 12px; text-decoration: none; color: #1a2e22; box-shadow: 0 4px 16px rgba(23,92,54,0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #175c36;">
-<h3 style="color: #175c36; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4;">Best Moringa Powder Brands in Australia 2026: Compared &amp; Ranked</h3>
-<span style="color: #7B541F; font-size: 0.9rem; font-weight: 600;">Read Article →</span>
-</a>
-
-</div>
-</div>
-
 <script defer="" src="../scripts/global/newsletter-popup.js"></script>
 </body>
 </html>

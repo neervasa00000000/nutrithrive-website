@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-
-<html lang="en-AU">
+<html class="light" lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
 <script src="../scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
@@ -63,11 +61,11 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://www.google-analytics.com" rel="dns-prefetch"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/></noscript>
-<link href="../styles/global/style.css" rel="stylesheet"/>
-<link href="../styles/global/newsletter-popup.css" rel="stylesheet"/>
-<link href="../blog/blog.css" rel="stylesheet"/>
+
+
+
+
+
 <!-- Favicons - Standardized across all pages -->
 <link href="../assets/images/logo/LOGO.webp" rel="icon" sizes="32x32" type="image/png"/>
 <link href="../assets/images/logo/LOGO.webp" rel="icon" sizes="16x16" type="image/png"/>
@@ -110,561 +108,7 @@
     }
     </script>
 <!-- Medical News Today Style Mobile Responsive -->
-<style>
-        /* Base mobile-first styles */
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        /* Logo size constraints */
-        .logo img {
-            max-width: 50px !important;
-            max-height: 50px !important;
-            width: auto !important;
-            height: auto !important;
-            object-fit: contain !important;
-        }
-        
-        header .logo img {
-            max-width: 50px !important;
-            max-height: 50px !important;
-        }
-        
-        /* Mobile styles - Medical News Today inspired */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 0;
-                margin: 0;
-            }
-            
-            /* Header mobile */
-            header {
-                padding: 1rem !important;
-                position: sticky;
-                top: 0;
-                background: white;
-                z-index: 100;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
-            
-            .navbar, header .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-            
-            .nav-links, header .nav-links {
-                display: none !important;
-            }
-            
-            /* Blog hero mobile */
-            .blog-hero, .blog-post-header {
-                padding: 1.5rem 1rem !important;
-                margin: 0 !important;
-            }
-            
-            .blog-hero h1, .blog-post-header h1, article h1, .blog-post-content h1 {
-                font-size: 1.75rem !important;
-                line-height: 1.3 !important;
-                font-weight: 700;
-                color: #1a1a1a;
-                margin: 0 0 1rem 0 !important;
-                padding: 0 !important;
-            }
-            
-            /* Content container mobile */
-            .blog-content, .blog-post-content, main article {
-                padding: 0 1rem !important;
-                max-width: 100% !important;
-                margin: 0 auto !important;
-            }
-            
-            /* Paragraphs mobile - Medical News Today style */
-            .blog-content p, .blog-post-content p, article p, main p {
-                font-size: 1.0625rem !important;
-                line-height: 1.75 !important;
-                margin-bottom: 1.25rem !important;
-                color: #333;
-                max-width: 100%;
-                word-wrap: break-word;
-            }
-            
-            .blog-content p strong, .blog-post-content p strong, article p strong {
-                font-weight: 700;
-                color: #1a1a1a;
-            }
-            
-            /* Links mobile */
-            .blog-content a, .blog-post-content a, article a {
-                color: #2d5a3d !important;
-                text-decoration: underline;
-                word-break: break-word;
-            }
-            
-            .blog-content a:hover, .blog-post-content a:hover {
-                color: #1e4029 !important;
-            }
-            
-            /* Headings mobile */
-            h2 {
-                font-size: 1.5rem !important;
-                line-height: 1.3 !important;
-                font-weight: 700 !important;
-                margin: 2rem 0 1rem 0 !important;
-                color: #1a1a1a;
-                padding: 0 !important;
-            }
-            
-            h3 {
-                font-size: 1.25rem !important;
-                line-height: 1.4 !important;
-                font-weight: 600 !important;
-                margin: 1.5rem 0 0.75rem 0 !important;
-                color: #1a1a1a;
-            }
-            
-            h4 {
-                font-size: 1.125rem !important;
-                font-weight: 600 !important;
-                margin: 1rem 0 0.5rem 0 !important;
-            }
-            
-            /* Lists mobile */
-            ul, ol {
-                padding-left: 1.5rem !important;
-                margin: 1rem 0 !important;
-            }
-            
-            li {
-                font-size: 1.0625rem !important;
-                line-height: 1.75 !important;
-                margin-bottom: 0.75rem !important;
-                color: #333;
-            }
-            
-            /* Cards Mobile - Stack vertically */
-            div[style*="grid-template-columns: repeat(auto-fit"] {
-                grid-template-columns: 1fr !important;
-                gap: 1.25rem !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            /* Individual card styling mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"] {
-                padding: 1.5rem 1rem !important;
-                margin: 1rem 0 !important;
-                border-radius: 12px !important;
-            }
-            
-            /* Buttons Mobile - Touch-friendly (minimum 44px) */
-            a[style*="padding: 12px 24px"],
-            a[style*="padding: 15px 30px"],
-            a[style*="padding: 16px 32px"],
-            a[style*="padding: 10px 20px"],
-            a[style*="padding: 8px 16px"],
-            a[style*="padding: 14px"] {
-                padding: 14px 24px !important;
-                font-size: 1rem !important;
-                min-height: 44px !important;
-                width: 100% !important;
-                text-align: center !important;
-                display: block !important;
-                margin: 0.75rem 0 !important;
-                border-radius: 8px !important;
-                font-weight: 600 !important;
-                text-decoration: none !important;
-            }
-            
-            /* Button containers mobile */
-            div[style*="display: flex"]:has(a[style*="padding"]) {
-                flex-direction: column !important;
-                gap: 0.75rem !important;
-            }
-            
-            /* Tables Mobile - Convert to cards */
-            table {
-                display: block !important;
-                width: 100% !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            table thead {
-                display: none !important;
-            }
-            
-            table tbody {
-                display: block !important;
-                width: 100% !important;
-            }
-            
-            table tr {
-                display: block !important;
-                margin-bottom: 1rem !important;
-                background: white !important;
-                border-radius: 8px !important;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-                padding: 1rem !important;
-                border: 1px solid #e0e0e0 !important;
-            }
-            
-            table td {
-                display: block !important;
-                padding: 0.75rem 0 !important;
-                text-align: left !important;
-                border: none !important;
-                font-size: 0.9375rem !important;
-                line-height: 1.5 !important;
-            }
-            
-            table td:not(:first-child):before {
-                content: attr(data-label) ": " !important;
-                font-weight: 600 !important;
-                display: inline !important;
-                color: #2d5a3d !important;
-                font-size: 0.875rem !important;
-                margin-right: 0.5rem !important;
-            }
-            
-            table td:first-child {
-                font-weight: 700 !important;
-                font-size: 1.0625rem !important;
-                color: #2d5a3d !important;
-                margin-bottom: 0.75rem !important;
-                padding-bottom: 0.75rem !important;
-                border-bottom: 2px solid #f0f0f0 !important;
-            }
-            
-            table td:first-child a {
-                font-size: 1.0625rem !important;
-            }
-            
-            /* Post meta mobile */
-            .post-meta {
-                font-size: 0.875rem !important;
-                margin-top: 0.5rem !important;
-            }
-            
-            /* Ensure proper spacing */
-            .blog-content > *,
-            .blog-post-content > *,
-            article > * {
-                max-width: 100% !important;
-                overflow-x: hidden !important;
-            }
-        }
 
-            /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"],
-            div[style*="background: #f8f9fa"],
-            div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
-            div[style*="background: linear-gradient(135deg, #f6fbf8"],
-            div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
-            }
-            
-            /* Remove decorative elements on mobile */
-            div[style*="position: absolute"],
-            div[style*="position:absolute"] {
-                display: none !important;
-            }
-            
-            /* Simplify product buy boxes */
-            div[style*="linear-gradient(135deg, #2d5a3d"] {
-                background: #2d5a3d !important;
-                border: none !important;
-                padding: 1.5rem 1rem !important;
-            }
-            
-            /* Remove borders from cards */
-            div[style*="border-left: 4px"],
-            div[style*="border: 1px"],
-            div[style*="border: 2px"],
-            div[style*="border: 3px"] {
-                border: none !important;
-            }
-
-            /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"],
-            div[style*="background: #f8f9fa"],
-            div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
-            div[style*="background: linear-gradient(135deg, #f6fbf8"],
-            div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
-            }
-            
-            /* Remove decorative elements on mobile */
-            div[style*="position: absolute"],
-            div[style*="position:absolute"] {
-                display: none !important;
-            }
-            
-            /* Simplify product buy boxes */
-            div[style*="linear-gradient(135deg, #2d5a3d"] {
-                background: #2d5a3d !important;
-                border: none !important;
-                padding: 1.5rem 1rem !important;
-            }
-            
-            /* Remove borders from cards */
-            div[style*="border-left: 4px"],
-            div[style*="border: 1px"],
-            div[style*="border: 2px"],
-            div[style*="border: 3px"] {
-                border: none !important;
-            }
-        
-        /* Small mobile devices */
-        @media screen and (max-width: 480px) {
-            .blog-hero h1, .blog-post-header h1, article h1 {
-                font-size: 1.5rem !important;
-            }
-            
-            h2 {
-                font-size: 1.375rem !important;
-            }
-            
-            h3 {
-                font-size: 1.125rem !important;
-            }
-            
-            .blog-content p, .blog-post-content p, article p {
-                font-size: 1rem !important;
-            }
-        }
-    
-        /* Desktop Layout Simplification - Remove excessive boxes, cards, and decorative elements */
-        @media screen and (min-width: 1024px) {
-            /* Remove all gradient backgrounds and decorative boxes */
-            .blog-post-content div[style*="background: linear-gradient"],
-            .blog-post-content div[style*="background: #f6fbf8"],
-            .blog-post-content div[style*="background: #fff3e0"],
-            .blog-post-content div[style*="background: #e8f5e9"],
-            .blog-post-content div[style*="background: #e3f2fd"],
-            .blog-post-content div[style*="background: #fff9c4"],
-            .blog-post-content div[style*="background: #f8f9fa"],
-            .blog-post-content div[style*="background: #fff8f0"],
-            .blog-post-content div[style*="background: rgba("],
-            .blog-post-content div[style*="background-color: #"],
-            .blog-post-content div[style*="background-color: rgba("],
-            .blog-post-content .card,
-            .blog-post-content .box,
-            .blog-post-content .poster,
-            .blog-post-content .food-card,
-            .blog-post-content .recipe-card,
-            .blog-post-content .snack-card,
-            .blog-post-content .benefit-card,
-            .blog-post-content .feature-card,
-            .blog-post-content .cta-box,
-            .blog-post-content .summary-box,
-            .blog-post-content .quick-answer-box,
-            .blog-post-content .highlight-box {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                border-radius: 0 !important;
-                padding: 0 !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            /* Remove nested box styling */
-            .blog-post-content div[style*="box-shadow"] {
-                box-shadow: none !important;
-            }
-            
-            .blog-post-content div[style*="border-left"],
-            .blog-post-content div[style*="border: 1px"],
-            .blog-post-content div[style*="border: 2px"],
-            .blog-post-content div[style*="border: 3px"],
-            .blog-post-content div[style*="border-radius"] {
-                border: none !important;
-                border-radius: 0 !important;
-            }
-            
-            /* Remove decorative pseudo-elements */
-            .blog-post-content div[style*="position: absolute"]::before,
-            .blog-post-content div[style*="position: absolute"]::after,
-            .blog-post-content .card::before,
-            .blog-post-content .card::after,
-            .blog-post-content .food-card::before,
-            .blog-post-content .food-card::after {
-                display: none !important;
-            }
-            
-            /* Ensure all text is readable (dark, not white) */
-            .blog-post-content div[style*="color: white"],
-            .blog-post-content div[style*="color: #fff"],
-            .blog-post-content div[style*="color: rgba(255"],
-            .blog-post-content div[style*="background: linear-gradient"] *,
-            .blog-post-content div[style*="background: rgba("] * {
-                color: #1a2e22 !important;
-            }
-            
-            /* Headings should be readable */
-            .blog-post-content h2[style*="color: white"],
-            .blog-post-content h2[style*="color: #fff"],
-            .blog-post-content h3[style*="color: white"],
-            .blog-post-content h3[style*="color: #fff"],
-            .blog-post-content h4[style*="color: white"],
-            .blog-post-content h4[style*="color: #fff"] {
-                color: #175c36 !important;
-            }
-            
-            /* Simplify tables - clean, flat design */
-            .blog-post-content table.blog-table,
-            .blog-post-content table {
-                width: 100%;
-                border-collapse: collapse;
-                background: transparent !important;
-                box-shadow: none !important;
-                border: 1px solid #e0e0e0 !important;
-                margin: 2rem 0 !important;
-            }
-            
-            .blog-post-content table thead {
-                background: transparent !important;
-                border-bottom: 2px solid #e0e0e0 !important;
-            }
-            
-            .blog-post-content table th {
-                padding: 0.75rem 1rem;
-                text-align: left;
-                font-weight: 700;
-                color: #1a2e22 !important;
-                background: transparent !important;
-            }
-            
-            .blog-post-content table td {
-                padding: 0.75rem 1rem;
-                border-bottom: 1px solid #f0f0f0 !important;
-                color: #1a2e22 !important;
-                background: transparent !important;
-            }
-            
-            /* Remove excessive padding and margins from lists */
-            .blog-post-content ul,
-            .blog-post-content ol {
-                padding-left: 2rem;
-                margin: 1.5rem 0;
-            }
-            
-            .blog-post-content li {
-                margin: 0.5rem 0;
-                line-height: 1.7;
-                color: #1a2e22 !important;
-            }
-            
-            /* Clean paragraph styling */
-            .blog-post-content p {
-                color: #1a2e22 !important;
-                margin: 1.2rem 0;
-                line-height: 1.7;
-            }
-            
-            /* Optimize blog post container for desktop */
-            main.blog-post,
-            .blog-post {
-                max-width: 900px;
-                margin: 2rem auto;
-                padding: 0 2rem;
-            }
-            
-            .blog-post-content {
-                max-width: 100%;
-                width: 100%;
-            }
-            
-            .blog-post-header {
-                max-width: 100%;
-                padding: 2rem 0 1rem 0;
-            }
-            
-            /* Remove hover effects on cards */
-            .blog-post-content div[style*="hover"],
-            .blog-post-content div[style*="transition"],
-            .blog-post-content .card:hover,
-            .blog-post-content .food-card:hover {
-                transform: none !important;
-                box-shadow: none !important;
-            }
-            
-            /* Simplify images */
-            .blog-post-content img {
-                max-width: 100%;
-                height: auto;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                margin: 1.5rem 0;
-            }
-            
-            /* Clean buttons/CTAs - keep functional but simple */
-            .blog-post-content a.btn,
-            .blog-post-content a[style*="padding:"] {
-                display: inline-block;
-                padding: 0.75rem 1.5rem;
-                background: #175c36;
-                color: white !important;
-                text-decoration: none;
-                border-radius: 4px;
-                margin: 1rem 0;
-                box-shadow: none !important;
-            }
-            
-            .blog-post-content a.btn:hover {
-                background: #1b7f5a;
-            }
-        }
-
-        
-        /* Related Articles and Product CTAs Hover Effects */
-        .related-article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(23, 92, 54, 0.2) !important;
-        }
-        .cta-button-primary:hover, .cta-button-secondary:hover {
-            transform: translateY(-2px);
-        }
-        .product-card a:hover {
-            background: #0f4a2a !important;
-        }
-    </style>
 <!-- Breadcrumb Schema -->
 <script type="application/ld+json">
     {
@@ -809,36 +253,94 @@
 </script>
 
 
+
+<!-- Nutri Thrive v2 blog shell -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
+        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
+        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
+        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
+        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
+        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
+        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
+        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
+        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
+        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
+        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
+        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
+        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
+        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
+        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
+        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
+      },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+      spacing: {
+        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
+        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
+      },
+      fontFamily: {
+        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
+        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
+      }
+    }
+  }
+};
+</script>
 </head>
-<body class="non-sticky-header">
-<header>
-<div class="navbar">
-<a class="logo" href="/">
-<img alt="NutriThrive Logo" decoding="async" loading="lazy" src="../assets/images/logo/LOGO.webp" style="max-width: 50px; max-height: 50px; width: auto; height: auto; object-fit: contain;"/>
- NutriThrive
- </a>
-<nav class="nav-links">
-<a href="/">Home</a>
-<a href="/products/">Products</a>
-<a href="/about">About</a>
-<a href="/contact">Contact</a>
-<a class="active" href="https://nutrithrive.com.au/blog/">Blog</a>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-base" href="/">
+<img src="../assets/images/logo/LOGO.webp" alt="NutriThrive" width="40" height="40" class="h-9 w-auto" loading="eager"/>
+<span class="font-display text-headline-md text-moringa-leaf">Nutri Thrive</span>
+</a>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/products/">Shop</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/pages/about/about.html">About</a>
+<a class="font-body-md text-label-lg text-moringa-leaf border-b-2 border-moringa-leaf font-semibold" href="/blog/">Blog</a>
+<a class="font-body-md text-label-lg text-forest-deep/80 hover:text-moringa-leaf transition-colors" href="/contact">Contact</a>
+</div>
+<div class="flex items-center gap-2">
+<a class="material-symbols-outlined text-forest-deep p-2 hover:bg-primary-fixed/10 rounded-full transition-all" href="/pages/shop/cart.html" aria-label="Cart">shopping_bag</a>
+</div>
+</div>
 </nav>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<article class="lg:col-span-8">
+<header class="mb-12">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Research Guide</span>
+<span class="text-on-surface-variant text-label-lg font-body-md">23 April 2026</span>
+</div>
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">Best Moringa Brand Australia 2026: 7 Brands Lab-Tested &amp;amp; Ranked (Rosabella vs NutriThrive)</h1>
+<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
+<img alt="" class="w-full h-full object-cover" src="https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg" loading="eager" decoding="async"/>
 </div>
 </header>
-<main class="blog-post" style="max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem;">
-<article class="blog-post-content">
-<!-- Breadcrumb Navigation -->
-<nav style="background: transparent; padding: 1rem 0; margin-bottom: 1.5rem; font-size: 0.9375rem; color: #666;">
-<a href="/" style="color: #2d5a3d; text-decoration: none;">Home</a>
-<span style="margin: 0 0.5rem; color: #999;">›</span>
-<a href="/" style="color: #2d5a3d; text-decoration: none;">Blog</a>
-<span style="margin: 0 0.5rem; color: #999;">›</span>
-<span style="color: #333; font-weight: 500;">Moringa Brands Comparison 2026</span>
-</nav>
-<!-- Hero Section -->
-<header class="blog-post-header" style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid #e0e0e0;">
-<h1 style="font-size: clamp(1.75rem, 4vw, 2.75rem); color: #1a1a1a; margin-bottom: 1rem; font-weight: 700; line-height: 1.3;">7 Moringa Brands Australia 2026: Rosabella vs NutriThrive Lab Tested</h1>
+<div class="blog-v2-prose prose prose-lg max-w-none">
+<div class="blog-v2-prose prose prose-lg max-w-none">
 <p class="post-meta" style="color: #666; font-size: 0.95rem; margin-bottom: 1.5rem;">Published on January 20, 2026 • <strong>Last Updated: May 10, 2026</strong> by NutriThrive Research Team — added Rosabella review + recall notice</p>
 <p style="font-size: 1.125rem; line-height: 1.8; color: #333; max-width: 800px;">We tested and compared 8+ moringa powder brands sold in Australia. In this 2026 guide, we break down lab testing, certifications, pricing, customer feedback, and real-world use so you can pick the right product without guesswork.</p>
 <p style="font-size: 0.9375rem; margin-top: 1.25rem; padding: 0.75rem 1rem; background: #f6fbf8; border-left: 3px solid #2d5a3d; border-radius: 0 6px 6px 0;">Looking for a broader comparison? See our complete guide: <a href="/blog/best-greens-powder-australia-2026.html" style="color: #175c36; font-weight: 600;">Best Greens Powder Australia 2026: Moringa, Spirulina &amp; Super Greens Compared →</a></p>
@@ -1899,279 +1401,183 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 </div>
 </div>
 </section>
-</article>
-
-<section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
-  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
-  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
-      <li><a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html">Moringa powder guide (Australia 2026)</a></li>
-      <li><a href="/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html">Rosabella moringa: honest review for Aussie shoppers (2026)</a></li>
-      <li><a href="/blog/high-protein-moringa-recipes-australia-2026.html">High-protein moringa recipes (Australia)</a></li>
-      <li><a href="/blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder.html">Why we built NutriThrive: a founder story from Melbourne</a></li>
-      <li><a href="/blog/science-shade-drying-vs-sun-drying-moringa.html">Shade-dried vs sun-dried moringa: what colour tells you</a></li>
-      <li><a href="/blog/how-to-read-moringa-batch-codes-freshness.html">How to read moringa batch codes (freshness, Australia)</a></li>
-      <li><a href="/blog/growing-moringa-australia-honest-frost-pots-2026.html">Growing moringa in Australia: frosts, pots, and patience</a></li>
-      <li><a href="/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html">Plant superfoods worth your bench space in Australia (2026)</a></li>
-  </ul>
-</section>
-</main>
-<!-- Newsletter Subscription Section -->
-<section class="newsletter-section" style="margin: 4rem auto; max-width: 600px; padding: 3rem 2rem; background: var(--card, #fffdfa); border-radius: var(--radius, 18px); box-shadow: var(--shadow, 0 4px 24px 0 rgba(23,92,54,0.07)); text-align: center;">
-<h2 id="stay-informed-with-nutrithrive">Stay Informed with NutriThrive</h2>
-<form action="https://formsubmit.co/nutrithrive0@gmail.com" class="newsletter-form" method="POST" style="max-width: 500px; margin: 0 auto;">
-<input name="_subject" type="hidden" value="Newsletter Subscription - NutriThrive"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_captcha" type="hidden" value="false"/>
-<div style="display: flex; flex-direction: column; gap: 0.75rem;">
-<div>
-<label for="newsletter-blog-name" style="display: block; margin-bottom: 0.4rem; color: var(--text, #1a2e22); font-weight: 600; font-size: 0.95rem;">Your Name</label>
-<input id="newsletter-blog-name" name="name" placeholder="Enter your name" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;" type="text"/>
 </div>
-<div>
-<label for="newsletter-blog-email" style="display: block; margin-bottom: 0.4rem; color: var(--text, #1a2e22); font-weight: 600; font-size: 0.95rem;">Your Email</label>
-<input id="newsletter-blog-email" name="email" placeholder="Enter your email address" required="" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;" type="email"/>
-</div>
-</div>
-<button class="newsletter-submit-btn" style="width: 100%; margin-top: 0.5rem; background: var(--accent, #7B541F); color: #fff; border: none; border-radius: 8px; padding: 0.75rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.4s cubic-bezier(.4,2,.6,1);" type="submit">Subscribe to Newsletter</button>
-<div class="newsletter-message"></div>
-<p style="font-size: 0.85rem; color: var(--muted, #5A6D5D); margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
 </form>
 </section>
-<footer>
-<div class="footer-content">
-<div class="footer-section">
-<h3>About NutriThrive</h3>
-<p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
 </div>
-<div class="footer-section">
-<h3>Shopping</h3>
-<ul class="footer-links">
-<li><a href="/">Home</a></li>
-<li><a href="/products/">Products</a></li>
-<li><a href="/cart">Cart</a></li>
-<li><a href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Where to Buy Moringa in Australia</h5>
+<p class="text-xs text-on-surface-variant opacity-70">8 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+<h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+<input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+<button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+</form>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-12">
+<div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+<div class="aspect-square bg-surface-container relative">
+<img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" loading="lazy"/>
+<div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+<div class="flex items-center justify-between mb-6">
+<span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+<span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+</div>
+<a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+<div class="space-y-4"><a class="group flex gap-4 items-center" href="/blog/how-to-add-moringa-to-diet.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">How to Add Moringa to Your Diet</h5>
+<p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">I Quit Sugar for 90 Days: Honest Diary</h5>
+<p class="text-xs text-on-surface-variant opacity-70">26 min read</p>
+</div>
+</a>
+<a class="group flex gap-4 items-center" href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/og/moringa-article-1200.jpg" loading="lazy" decoding="async"/>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Where to Buy Moringa in Australia</h5>
+<p class="text-xs text-on-surface-variant opacity-70">8 min read</p>
+</div>
+</a></div>
+</div>
+<div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+</div>
+</aside>
+</div>
+</main>
+<footer class="bg-forest-deep text-pure-white w-full pt-section-gap pb-base">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="space-y-6">
+<span class="font-display text-headline-md text-primary-fixed block">Nutri Thrive</span>
+<p class="font-body-md text-surface-variant/70">Purity in every leaf. Melbourne, Australia.</p>
+</div>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Shop</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/">Shop All</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/products/moringa-powder/">Moringa Powder</a></li>
 </ul>
 </div>
-<div class="footer-section">
-<h3>Help &amp; Info</h3>
-<ul class="footer-links">
-<li><a href="/privacy-policy">Privacy Policy</a></li>
-<li><a href="/contact">Contact</a></li>
-<li><a href="/faq">FAQ</a></li>
-<li><a href="/about">About</a></li>
-<li><a href="/blog/">Blog</a></li>
-<li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li> </ul>
-</div>
-<div class="footer-section">
-<h3>Contact Us</h3>
-<ul class="footer-links">
-<li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
-<li><a href="tel:+61438201419">+61 438201419</a></li>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Company</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/about/about.html">About</a></li>
+<li><a class="text-primary-fixed underline" href="/blog/">Journal</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/contact">Contact</a></li>
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/shipping/shipping-returns.html">Shipping &amp; Returns</a></li>
 </ul>
 </div>
-<div class="footer-section">
-<h3>Business Info</h3>
-<ul class="footer-links">
-<li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
-<li>Based in Truganina, Melbourne, VIC (Australia)<br/>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br/>Worldwide Shipping Available 🌍</li>
-<li>Monday - Sunday</li>
-<li>9:00 AM - 11:00 PM</li>
+<div class="space-y-4">
+<h6 class="font-label-lg text-label-lg text-pure-white uppercase tracking-widest">Legal</h6>
+<ul class="space-y-2">
+<li><a class="text-surface-variant/70 hover:text-pure-white transition-colors" href="/pages/legal/privacy-policy.html">Privacy Policy</a></li>
 </ul>
 </div>
 </div>
-<div class="footer-bottom">
-<div class="footer-bottom-container">
-<p style="font-size:0.88rem;color:#666;max-width:52rem;margin:0 auto 1rem;line-height:1.55"><strong>Medical disclaimer:</strong> Blog and product information is educational only and not a substitute for professional medical advice. Supplements are not intended to diagnose, treat, cure, or prevent disease. Consult a qualified clinician for personal guidance.</p>
-<p>© 2026 NutriThrive. All rights reserved.</p>
-</div>
+<div class="mt-12 border-t border-pure-white/10 pt-base text-center text-xs text-surface-variant/40 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+© 2026 Nutri Thrive. All rights reserved.
 </div>
 </footer>
-<script defer="" src="blog.js"></script>
-<script src="../scripts/global/cart.js"></script>
-<script src="../scripts/global/cart-header.js"></script>
-<script defer="" src="../scripts/global/script.js"></script>
 <script>
-        if (window.DeferLoader) {
-            window.DeferLoader.deferUntilIdle(function() {
-                var s = document.createElement('script');
-                s.src = '../scripts/global/newsletter.js';
-                s.defer = true;
-                document.body.appendChild(s);
-            }, { timeout: 1500 });
-        } else {
-            var s = document.createElement('script');
-            s.src = '../scripts/global/newsletter.js';
-            s.defer = true;
-            document.body.appendChild(s);
-        }
-    </script>
-<!-- Email Signup Popup -->
-<div id="emailSignupPopup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; justify-content: center; align-items: center; animation: fadeIn 0.3s ease;">
-<div style="background: white; padding: 2.5rem; border-radius: 16px; text-align: center; max-width: 500px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; animation: slideUp 0.3s ease;">
-<button id="closePopupBtn" onclick="closeEmailPopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 2rem; cursor: pointer; color: #888; line-height: 1; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; transition: color 0.2s;">×</button>
-<h3 style="color: #175c36; font-size: 1.75rem; margin-bottom: 0.75rem; font-weight: 700;">Stay Updated with NutriThrive</h3>
-<p style="font-size: 1rem; color: #5A6D5D; margin-bottom: 1.5rem; line-height: 1.6;">Get the latest health tips, product updates, and exclusive offers delivered to your inbox!</p>
-<form id="emailSignupForm" style="max-width: 100%;">
-<input name="_subject" type="hidden" value="Newsletter Subscription - NutriThrive"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_captcha" type="hidden" value="false"/>
-<div style="display: flex; flex-direction: column; gap: 1rem;">
-<input name="name" placeholder="Your Name" style="width: 100%; padding: 0.875rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 1rem; font-family: 'Inter', sans-serif; box-sizing: border-box;" type="text"/>
-<input name="email" placeholder="Enter your email address" required="" style="width: 100%; padding: 0.875rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 1rem; font-family: 'Inter', sans-serif; box-sizing: border-box;" type="email"/>
-</div>
-<button id="submitBtn" style="width: 100%; margin-top: 1rem; background: #7B541F; color: #fff; border: none; border-radius: 8px; padding: 0.875rem 1.5rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;" type="submit">Subscribe</button>
-<div id="popupMessage" style="margin-top: 1rem; font-size: 0.9rem; min-height: 20px;"></div>
-<p style="font-size: 0.8rem; color: #888; margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
-</form>
-</div>
-</div>
-<style>
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-#emailSignupPopup {
-    display: none;
-}
-#emailSignupPopup.show {
-    display: flex !important;
-}
-</style>
-<script>
-(function() {
-    // Check if popup was closed in this session
-    function wasPopupClosed() {
-        return sessionStorage.getItem('emailPopupClosed') === 'true';
-    }
-    
-    // Mark popup as closed
-    function markPopupClosed() {
-        sessionStorage.setItem('emailPopupClosed', 'true');
-    }
-    
-    // Show popup after delay
-    function showPopup() {
-        if (!wasPopupClosed()) {
-            setTimeout(function() {
-                var popup = document.getElementById('emailSignupPopup');
-                if (popup) {
-                    popup.style.display = 'flex';
-                    popup.classList.add('show');
-                }
-            }, 2000); // Show after 2 seconds
-        }
-    }
-    
-    // Close popup
-    window.closeEmailPopup = function() {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup) {
-            popup.style.display = 'none';
-            popup.classList.remove('show');
-            markPopupClosed();
-        }
-    };
-    
-    // Handle form submission
-    function handleFormSubmit(e) {
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href && href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
         e.preventDefault();
-        var form = e.target;
-        var submitBtn = document.getElementById('submitBtn');
-        var messageDiv = document.getElementById('popupMessage');
-        var formData = new FormData(form);
-        
-        // Add formsubmit endpoint
-        
-        
-        // Disable submit button
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Subscribing...';
-        messageDiv.innerHTML = '';
-        
-        // Submit via AJAX
-        fetch('https://formsubmit.co/ajax/nutrithrive0@gmail.com', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                messageDiv.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Thank you for subscribing!</span>';
-                form.reset();
-                // Close popup after 2 seconds
-                setTimeout(function() {
-                    closeEmailPopup();
-                }, 2000);
-            } else {
-                messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Subscribe';
-            }
-        })
-        .catch(error => {
-            messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Subscribe';
-        });
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            showPopup();
-            var form = document.getElementById('emailSignupForm');
-            if (form) {
-                form.addEventListener('submit', handleFormSubmit);
-            }
-        });
-    } else {
-        showPopup();
-        var form = document.getElementById('emailSignupForm');
-        if (form) {
-            form.addEventListener('submit', handleFormSubmit);
-        }
-    }
-    
-    // Close on background click
-    document.addEventListener('click', function(e) {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup && e.target === popup) {
-            closeEmailPopup();
-        }
-    });
-})();
+  });
+});
 </script>
+<script defer="" src="blog.js"></script>
 <script defer="" src="../scripts/global/newsletter-popup.js"></script>
-<!-- Smooth Scrolling for Table of Contents -->
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enable smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href !== '#' && href.length > 1) {
-                        e.preventDefault();
-                        const target = document.querySelector(href);
-                        if (target) {
-                            const headerOffset = 80;
-                            const elementPosition = target.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
