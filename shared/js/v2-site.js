@@ -349,12 +349,12 @@
     <div class="space-y-4 pt-4">
       ${variantHtml}
       <div class="flex flex-col sm:flex-row gap-4">
-        <motion.div class="nt-qty-control border border-outline bg-pure-white shrink-0">
+        <div class="nt-qty-control border border-outline bg-pure-white shrink-0">
           <button type="button" data-nt-qty-minus class="nt-qty-btn" aria-label="Decrease quantity"><span class="material-symbols-outlined">remove</span></button>
           <span class="nt-qty-value" data-nt-qty aria-live="polite">1</span>
           <button type="button" data-nt-qty-plus class="nt-qty-btn" aria-label="Increase quantity"><span class="material-symbols-outlined">add</span></button>
         </div>
-        <button type="button" id="nt-pdp-add" data-add-cart="${p.id}" data-name="${p.name.replace(/"/g, '&quot;')}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${p.image}" data-tag="${(p.tag || '').replace(/"/g, '&quot;')}" class="nt-add-cart-btn flex-1 bg-terracotta-clay text-pure-white font-bold py-4 rounded-lg hover:brightness-110 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer">
+        <button type="button" id="nt-pdp-add" data-add-cart="${p.id}" data-name="${escAttr(p.name)}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${escAttr(p.image)}" data-tag="${escAttr(p.tag || '')}" data-weight="${p.weight ?? ''}" class="nt-add-cart-btn flex-1 bg-terracotta-clay text-pure-white font-bold py-4 rounded-lg hover:brightness-110 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined pointer-events-none">shopping_cart</span> Add to Cart
         </button>
       </div>
@@ -425,6 +425,7 @@
 
     bindPdpActions(root, data);
     bindPdpQty(root);
+    normalizeAddCartButtons(root);
   }
 
   function initProductPage() {
@@ -1123,6 +1124,7 @@
   }
 
   function init() {
+    bindAddToCartClicks();
     bindGlobalClicks();
     try {
       initFaqPage();
