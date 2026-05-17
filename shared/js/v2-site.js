@@ -16,7 +16,14 @@
     return /\/blog\/?$/.test(p) || /\/blog\/index\.html$/.test(p);
   }
   function isProductPdpPage() {
-    return /\/products\/[^/]+\/?$/.test(location.pathname);
+    const parts = location.pathname.split('/').filter(Boolean);
+    const i = parts.indexOf('products');
+    if (i < 0 || !parts[i + 1]) return false;
+    const slug = parts[i + 1].replace(/\.html$/i, '');
+    if (!slug || slug === 'index') return false;
+    const rest = parts.slice(i + 2);
+    if (!rest.length) return true;
+    return rest.length === 1 && /^index\.html$/i.test(rest[0]);
   }
 
   const D = () => window.NT_SITE_DATA;
@@ -24,6 +31,11 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const money = (n) => `$${Number(n).toFixed(2)}`;
+  const escAttr = (value) =>
+    String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;');
   const page = () => {
     let name = location.pathname.split('/').pop() || 'index.html';
     if (!name.includes('.')) name += '.html';
@@ -54,6 +66,13 @@
     };
   }
 
+  function normalizeAddCartButtons(root = document) {
+    $$('[data-add-cart]', root).forEach((btn) => {
+      btn.type = 'button';
+      btn.classList.add('nt-add-cart-btn');
+    });
+  }
+
   function addToCartFromButton(btn) {
     if (typeof window.ntAddToCart === 'function') {
       window.ntAddToCart(btn, btn.dataset.redirectCart === 'true');
@@ -63,7 +82,11 @@
       console.error('[v2] Cart not loaded');
       return;
     }
-    const qty = parseInt($('[data-nt-qty]')?.textContent || btn.dataset.qty || '1', 10);
+    const pdpRoot = btn.closest('#nt-pdp-app');
+    const qty = parseInt(
+      pdpRoot?.querySelector('[data-nt-qty]')?.textContent || btn.dataset.qty || '1',
+      10
+    );
     const p = productFromEl(btn);
     const price = Number(p.price);
     if (!p.id || !p.name || Number.isNaN(price)) {
@@ -73,6 +96,7 @@
     p.quantity = qty;
     p.price = price;
     CartV2.add(p);
+    C()?.updateUI?.();
     document.dispatchEvent(new CustomEvent('nt-cart-updated'));
   }
 
@@ -110,12 +134,28 @@
     goToPayment();
   }
 
+  /** Capture phase so add-to-cart runs before handlers that stop bubbling (carousel, PDP, etc.). */
+  function bindAddToCartClicks() {
+    if (document.documentElement.dataset.ntAddCartBound) return;
+    document.documentElement.dataset.ntAddCartBound = '1';
+    document.addEventListener(
+      'click',
+      (e) => {
+        const addBtn = e.target.closest('[data-add-cart], .nt-add-cart-btn');
+        if (!addBtn) return;
+        e.preventDefault();
+        addToCartFromButton(addBtn);
+      },
+      true
+    );
+  }
+
   function bindGlobalClicks() {
     document.addEventListener('click', (e) => {
       const rm = e.target.closest('[data-cart-remove]');
       if (rm) {
         e.preventDefault();
-        C().remove(rm.dataset.cartRemove);
+        C()?.remove?.(rm.dataset.cartRemove);
         renderCartPage();
         return;
       }
@@ -127,7 +167,7 @@
         const wrap = minus.closest('[data-cart-line]');
         const span = wrap?.querySelector('[data-line-qty]');
         const cur = parseInt(span?.textContent || '1', 10);
-        C().updateQuantity(id, cur - 1);
+        C()?.updateQuantity?.(id, cur - 1);
         renderCartPage();
         return;
       }
@@ -139,7 +179,7 @@
         const wrap = plus.closest('[data-cart-line]');
         const span = wrap?.querySelector('[data-line-qty]');
         const cur = parseInt(span?.textContent || '1', 10);
-        C().updateQuantity(id, cur + 1);
+        C()?.updateQuantity?.(id, cur + 1);
         renderCartPage();
         return;
       }
@@ -155,13 +195,6 @@
           e.preventDefault();
           goToPayment();
         }
-        return;
-      }
-
-      const addBtn = e.target.closest('[data-add-cart]');
-      if (addBtn) {
-        e.preventDefault();
-        addToCartFromButton(addBtn);
         return;
       }
     });
@@ -316,10 +349,10 @@
     <div class="space-y-4 pt-4">
       ${variantHtml}
       <div class="flex flex-col sm:flex-row gap-4">
-        <div class="nt-qty-control flex items-center border border-outline rounded-lg bg-pure-white shrink-0">
-          <button type="button" data-nt-qty-minus class="nt-qty-btn px-4 py-3 hover:bg-surface-container transition-colors" aria-label="Decrease quantity"><span class="material-symbols-outlined text-[20px] pointer-events-none">remove</span></button>
-          <span class="nt-qty-value py-3 font-semibold text-body-md tabular-nums text-center" data-nt-qty aria-live="polite">1</span>
-          <button type="button" data-nt-qty-plus class="nt-qty-btn px-4 py-3 hover:bg-surface-container transition-colors" aria-label="Increase quantity"><span class="material-symbols-outlined text-[20px] pointer-events-none">add</span></button>
+        <motion.div class="nt-qty-control border border-outline bg-pure-white shrink-0">
+          <button type="button" data-nt-qty-minus class="nt-qty-btn" aria-label="Decrease quantity"><span class="material-symbols-outlined">remove</span></button>
+          <span class="nt-qty-value" data-nt-qty aria-live="polite">1</span>
+          <button type="button" data-nt-qty-plus class="nt-qty-btn" aria-label="Increase quantity"><span class="material-symbols-outlined">add</span></button>
         </div>
         <button type="button" id="nt-pdp-add" data-add-cart="${p.id}" data-name="${p.name.replace(/"/g, '&quot;')}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${p.image}" data-tag="${(p.tag || '').replace(/"/g, '&quot;')}" class="nt-add-cart-btn flex-1 bg-terracotta-clay text-pure-white font-bold py-4 rounded-lg hover:brightness-110 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined pointer-events-none">shopping_cart</span> Add to Cart
@@ -391,16 +424,14 @@
     }
 
     bindPdpActions(root, data);
+    bindPdpQty(root);
   }
 
   function initProductPage() {
     const root = $('#nt-pdp-app');
     if (!root) return;
     if (!isProductPdpPage()) return;
-    if (!root.dataset.ntQtyBound) {
-      bindPdpQty(root);
-      root.dataset.ntQtyBound = '1';
-    }
+    bindPdpQty(root);
     renderProductPage(getProductIdFromUrl());
   }
 
@@ -802,6 +833,7 @@
     if (!products.length) return;
     grid.dataset.ntShopReady = '1';
     grid.innerHTML = products.map((p) => shopProductCardHtml(p)).join('');
+    normalizeAddCartButtons(grid);
   }
 
   function productCardHtml(p) {
@@ -894,10 +926,7 @@
       if (viewGuides) viewGuides.href = '/blog/';
     }
 
-    $$('[data-add-cart]').forEach((btn) => {
-      btn.type = 'button';
-      btn.classList.add('nt-add-cart-btn');
-    });
+    normalizeAddCartButtons();
 
     initHomeReviews();
   }
@@ -1135,7 +1164,10 @@
     } catch (err) {
       console.error('[v2] initBlogPage', err);
     }
-    document.addEventListener('nt-cart-updated', renderCartPage);
+    document.addEventListener('nt-cart-updated', () => {
+      renderCartPage();
+      C()?.updateUI?.();
+    });
     C()?.updateUI?.();
   }
 

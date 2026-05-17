@@ -126,6 +126,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /products/product-black-tea.html /products/black-tea/ 200
 /products/product-combo.html /products/combo-pack/ 200
 /products/product-moringa-soap.html /products/moringa-soap/ 200
+/products/moringa-400g/ /products/moringa-powder/index.html 200
+/products/moringa-400g /products/moringa-powder/index.html 200
 /thank-you.html /pages/shop/thank-you.html 200
 
 # Removed blog slugs are not redirected — they 404 (no file, no rule).

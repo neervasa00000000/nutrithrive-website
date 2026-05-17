@@ -300,22 +300,57 @@ details[open] .expand-icon {
   font-size: 0.875rem;
 }
 
-/* PDP quantity — fixed size so 1 → 2 does not stretch the control */
+/* PDP quantity — fixed pill; 1 → 2 must not resize the control */
 .nt-qty-control {
+  display: flex;
+  align-items: stretch;
   flex-shrink: 0;
   width: 8.75rem;
   max-width: 8.75rem;
+  height: 2.75rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
 .nt-qty-value {
   flex: 1 1 auto;
-  min-width: 2.25rem;
-  font-variant-numeric: tabular-nums;
-}
-.nt-qty-btn {
-  flex: 0 0 2.75rem;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+.nt-qty-btn {
+  flex: 0 0 2.75rem;
+  width: 2.75rem;
+  min-width: 0;
+  max-width: 2.75rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+.nt-qty-btn:hover {
+  background-color: #f2eee3;
+}
+.nt-qty-btn .material-symbols-outlined {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: block;
+  pointer-events: none;
 }
 .nt-qty-btn:active {
   transform: none;
