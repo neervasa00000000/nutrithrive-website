@@ -916,6 +916,49 @@
         }
     </style>
 
+    <div class="checkout-wrap">
+        <div class="checkout-grid">
+            <main class="checkout-main">
+                <section class="checkout-section">
+                    <h1 class="section-title">Payment</h1>
+                    <p class="muted payment-intro">All transactions are secure and encrypted.</p>
+                    <p class="payment-intro">
+                        At checkout, PayPal or Apple Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
+                        Please review and confirm these details carefully - your order will be shipped to the address you approve there.
+                    </p>
+                    <label for="shipping-country" class="section-label" style="text-align:center;">Shipping country</label>
+                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()">
+                        <option value="AU" selected>Australia</option>
+                    </select>
+                    <div class="radio-card">
+                        <p class="payment-method-heading">Choose your payment method</p>
+                        <div class="payment-actions">
+                            <div id="applepay-wrapper" style="display:none; margin: 0 0 0.7rem 0;">
+                                <p class="applepay-label">Pay quickly with Apple Pay</p>
+                                <div id="applepay-container"></div>
+                            </div>
+                            <div id="paypal-button-container">
+                                <p class="payment-placeholder">Select shipping country to continue.</p>
+                            </div>
+                            <div id="paypal-card-container"></div>
+                            <p class="muted" style="margin-top:0.75rem;">Powered by PayPal</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="summary-side">
+                <p class="section-label" style="margin-bottom:0.7rem;">Order summary</p>
+                <div id="order-items"></div>
+                <div style="margin-top:0.9rem;">
+                    <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+                    <div class="summary-row"><span>Shipping</span><span id="shipping">Select country</span></div>
+                    <div class="summary-row"><span>Total</span><span id="total">$0.00</span></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
 </main>
 <div id="nt-footer"></div>
 <script src="/scripts/global/defer-loader.js"></script>
@@ -929,53 +972,6 @@
 <script src="/shared/js/cart-v2-ui.js"></script>
 <script src="/shared/js/layout-v2.js"></script>
 <script src="/shared/js/v2-site.js"></script>
-<script src="/scripts/global/paypal-client-config.js"></script>
-<script src="/scripts/global/paypal-sdk-loader.js"></script>
-<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-<script src="/scripts/global/shipping-rates.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
-<script src="/scripts/global/paypal-client-config.js"></script>
-<script src="/scripts/global/paypal-sdk-loader.js"></script>
-<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-<script src="/scripts/global/shipping-rates.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
-<script src="/scripts/global/paypal-client-config.js"></script>
-<script src="/scripts/global/paypal-sdk-loader.js"></script>
-<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-<script src="/scripts/global/shipping-rates.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
-<script src="/scripts/global/paypal-client-config.js"></script>
-<script src="/scripts/global/paypal-sdk-loader.js"></script>
-<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-<script src="/scripts/global/shipping-rates.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
-<script src="/scripts/global/paypal-client-config.js"></script>
-<script src="/scripts/global/paypal-sdk-loader.js"></script>
-<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-<script src="/scripts/global/shipping-rates.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
-<script src="/scripts/global/paypal-client-config.js"></script>
-    <script src="/scripts/global/paypal-sdk-loader.js"></script>
-    <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-    <script src="/scripts/global/cart.js"></script>
-    <script src="/scripts/global/cart-header.js"></script>
-    <script src="/scripts/global/shipping-rates.js"></script>
-    <script src="/scripts/global/script.js"></script>
     <script>
         function getCart() {
             return window.Cart && window.Cart.get ? window.Cart.get() : { items: [] };
@@ -1170,6 +1166,7 @@
                 });
             }
         }
+
     </script>
 </body>
 </html>

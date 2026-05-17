@@ -498,6 +498,7 @@ window.NT_SITE_DATA = {
 
 NT_SITE_DATA.productSlugToId = {
   'moringa-powder': 'moringa-powder-100g',
+  'moringa-400g': 'moringa-400g',
   'curry-leaves': 'curry-leaves-30g',
   'black-tea': 'black-tea',
   'combo-pack': 'combo-pack',

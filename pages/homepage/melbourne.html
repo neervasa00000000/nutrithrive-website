@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en-AU">
+
+<html lang="en-AU">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Moringa Powder Melbourne - Next-Day Delivery from Truganina</title>
+<link rel="stylesheet" href="/assets/css/design-system.css"/>
+<script src="/scripts/global/defer-loader.js"></script>
+<script src="/scripts/global/reddit-pixel.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -29,9 +30,9 @@
     });
   }
 </script>
-
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-
+<title>Moringa Powder Melbourne - Next-Day Delivery from Truganina</title>
 <meta name="description" content="Fresh moringa delivered across Melbourne metro in 24 hours. Dispatched daily from Truganina. Same-day for orders before 2pm. Free shipping over $80."/>
 <meta content="Moringa Melbourne, buy moringa Melbourne, moringa powder Melbourne, local moringa delivery, superfoods Melbourne, NutriThrive Melbourne" name="keywords"/>
 <meta content="index, follow" name="robots"/>
@@ -59,9 +60,425 @@
 <meta property="twitter:title" content="Buy Moringa Powder Melbourne | NutriThrive® — Truganina VIC"/>
 <meta property="twitter:description" content="Buy moringa powder, curry leaves &amp; Darjeeling tea in Melbourne. Lab-tested, shipped from Truganina VIC. Free delivery $80+. Same-week dispatch to all suburbs."/>
 <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp"/>
+<link href="/styles/global/style.css" rel="stylesheet"/>
+<link href="/styles/pages/homepage.css" rel="stylesheet"/>
+<style>
+        .melb-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
 
+        .melb-hero .hero-title { font-size: clamp(2rem, 4vw, 2.5rem); }
+        .melb-hero .hero-desc { font-size: 1.15rem; line-height: 1.65; }
 
+        .melb-welcome-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 2rem 1.5rem;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(23, 92, 54, 0.06);
+        }
 
+        .melb-welcome-strip-item {
+            text-align: center;
+        }
+
+        .melb-welcome-strip-item strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .melb-welcome-strip-item span {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .melb-section {
+            margin: 0 0 3rem;
+        }
+
+        .melb-section-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .melb-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.35rem;
+            color: var(--primary);
+        }
+
+        .melb-section-subtitle {
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .melb-benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .melb-card {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+            background: transparent;
+        }
+
+        .melb-card:last-child {
+            border-bottom: 0;
+        }
+
+        .melb-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.35rem;
+            color: var(--text);
+        }
+
+        .melb-card p {
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0 0 0.5rem;
+            line-height: 1.55;
+        }
+
+        .melb-chip {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .melb-two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .melb-geo {
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0 0 0.75rem;
+            line-height: 1.5;
+        }
+
+        .melb-geo strong {
+            color: var(--text);
+        }
+
+        .melb-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem;
+            font-size: 0.9375rem;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .melb-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        .melb-list li strong {
+            color: var(--text);
+        }
+
+        .melb-badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 220px;
+            border: 0;
+            border-radius: var(--radius);
+            background: var(--card);
+        }
+
+        .melb-faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .melb-faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+        }
+
+        .melb-faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .melb-faq-item h3 {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin: 0 0 0.35rem;
+            color: var(--text);
+        }
+
+        .melb-faq-item p {
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        .melb-guides ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .melb-guides li {
+            border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+        }
+
+        .melb-guides li:last-child {
+            border-bottom: 0;
+        }
+
+        .melb-guides li a {
+            display: block;
+            padding: 0.75rem 0;
+            font-size: 0.9375rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .melb-guides li a:hover {
+            color: var(--primary);
+        }
+
+        .melb-bottom-cta {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2.5rem 1.5rem;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(23, 92, 54, 0.06);
+        }
+
+        .melb-bottom-cta p {
+            font-size: 1.05rem;
+            color: var(--text);
+            margin: 0 0 1.25rem;
+            line-height: 1.6;
+            max-width: 36em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .melb-bottom-cta .hero-btn {
+            padding: 0.9rem 1.75rem;
+        }
+
+        .melb-products {
+            padding: 2rem 0 3rem;
+        }
+
+        .melb-products h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 0.5rem;
+            text-align: center;
+        }
+
+        .melb-products-sub {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--muted);
+            margin: 0 0 1.5rem;
+        }
+
+        .melb-product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.25rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 600px) {
+            .melb-product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .melb-product-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1rem;
+            border: 1px solid rgba(23, 92, 54, 0.08);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .melb-product-card img {
+            max-height: 120px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 0.75rem;
+        }
+
+        .melb-product-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 0.35rem;
+        }
+
+        .melb-product-card .price {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .melb-product-card .tag {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.75rem;
+        }
+
+        .melb-product-card .hero-btn,
+        .melb-product-card button.melb-add-cart {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            font-family: inherit;
+        }
+
+        .melb-product-card button.melb-add-cart:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .melb-trust-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(23, 92, 54, 0.06);
+            border-radius: var(--radius);
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .melb-trust-bar strong { color: var(--primary); }
+
+        .melb-suburbs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .melb-suburbs-col {
+            padding: 1rem 1.25rem;
+            background: var(--card);
+            border: 1px solid rgba(23, 92, 54, 0.08);
+            border-radius: var(--radius);
+        }
+
+        .melb-suburbs-col strong {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .melb-suburbs-col p {
+            font-size: 0.875rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        @media (min-width: 640px) {
+            .melb-suburbs-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .melb-suburbs-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (min-width: 640px) {
+            .melb-benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .melb-card {
+                padding: 1.5rem;
+                border: 1px solid rgba(23, 92, 54, 0.08);
+                border-radius: var(--radius);
+                background: var(--card);
+            }
+
+            .melb-card:last-child {
+                border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+            }
+
+            .melb-two-col {
+                grid-template-columns: 1.2fr 1fr;
+                align-items: start;
+            }
+
+            .map-frame {
+                height: 240px;
+            }
+
+            .melb-faq-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .melb-faq-item {
+                padding: 1.25rem;
+                border: 1px solid rgba(23, 92, 54, 0.08);
+                border-radius: var(--radius);
+                background: var(--card);
+            }
+
+            .melb-faq-item:last-child {
+                border-bottom: 1px solid rgba(23, 92, 54, 0.08);
+            }
+        }
+    </style>
 
 <!-- Breadcrumb Schema -->
 <script type="application/ld+json">
@@ -255,675 +672,284 @@
   ]
 }
 </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .organic-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
 </head>
-<body class="bg-background text-on-background font-body-md overflow-x-hidden">
-<div class="nt-sticky-top">
-<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
-<header id="nt-header" class="nt-v2-header"></header>
+<body>
+<header>
+<div class="navbar">
+<a class="logo" href="/">
+<img alt="NutriThrive" decoding="async" height="120" src="/assets/images/logo/LOGO.webp" style="height: 1.8rem; width: auto; margin-right: 0.5rem;" width="120"/ loading="lazy">
+                NutriThrive
+            </a>
+<nav class="nav-links">
+<a href="/">Home</a>
+<a href="/products/">Products</a>
+<a href="/blog/">Blog</a>
+<a href="/contact">Contact</a>
+</nav>
+<button aria-label="Toggle navigation menu" class="hamburger" onclick="window.ntToggleMenu &amp;&amp; window.ntToggleMenu()">
+<div class="line1"></div>
+<div class="line2"></div>
+<div class="line3"></div>
+</button>
 </div>
-<main class="pt-24 pb-section-gap">
-  <section class="relative h-[360px] flex items-center justify-center overflow-hidden mb-section-gap">
-    <div class="absolute inset-0 bg-forest-deep/50 z-10"></div>
-    <img alt="Melbourne moringa delivery" class="absolute inset-0 w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp"/>
-    <div class="relative z-20 text-center px-margin-mobile max-w-3xl">
-      <h1 class="font-display text-display text-pure-white mb-4">Moringa Powder Melbourne</h1>
-      <p class="font-body-lg text-pure-white/90">Fresh batches dispatched daily from Truganina. Same-day dispatch before 2pm · Free AU shipping $80+</p>
-    </div>
-  </section>
-  <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-gutter">
-    <div class="bg-pure-white p-8 rounded-2xl border border-outline-variant/10">
-      <h2 class="font-display text-headline-md text-forest-deep mb-4">Melbourne metro delivery</h2>
-      <ul class="space-y-3 font-body-md text-on-surface-variant list-disc pl-5">
-        <li>Warehouse: 15 Europe Street, Truganina VIC 3029</li>
-        <li>Same-day dispatch for orders before 2pm AEST</li>
-        <li>Metro delivery typically 1–3 business days</li>
-        <li>Lab-tested moringa, packed fresh in Melbourne</li>
-      </ul>
-    </div>
-    <div class="bg-parchment-base p-8 rounded-2xl flex flex-col justify-center gap-4">
-      <a href="/products/" class="inline-block text-center bg-moringa-leaf text-pure-white px-8 py-4 rounded-full font-label-lg">Shop Melbourne dispatch</a>
-      <a href="/contact" class="inline-block text-center border-2 border-moringa-leaf text-moringa-leaf px-8 py-4 rounded-full font-label-lg">Contact us</a>
-    </div>
-  </section>
+</header>
+<main class="melb-page">
+<section class="hero melb-hero">
+<div class="hero-content">
+<p class="melb-eyebrow" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin: 0 0 0.75rem;">Melbourne · Your local superfoods</p>
+<h1 class="hero-title">Moringa &amp; Superfoods, Delivered Across Melbourne.</h1>
+<p class="hero-desc">
+                    Lab-tested Moringa powder, dried curry leaves, black tea and more — shipped from our Truganina warehouse.
+                    <strong>Free delivery on orders $80+ Australia-wide.</strong> Melbourne metro often in 1–3 business days.
+                </p>
+                <p class="hero-desc" style="margin-top: 0.75rem; font-size: 1.05rem;">
+                    Prefer 中文? Our <a href="/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html" style="color: var(--primary, #175c36); font-weight: 600;">VIC &amp; Melbourne moringa buying guide (中文)</a> covers where to buy, delivery, and what to watch for in retail packs.
+                </p>
+<ul class="melb-hero-list" style="list-style: none; padding: 0; margin: 0 0 1.5rem; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
+<li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>100% natural, vegan, gluten-free — no fillers</li>
+<li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Batch-tested for quality &amp; safety</li>
+<li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Same-week dispatch, tracked shipping</li>
+</ul>
+<div class="hero-cta" style="margin-top: 0;">
+<a class="hero-btn" href="/products/moringa-powder/">Shop Moringa</a>
+<a class="hero-btn alt" href="#delivery">Delivery &amp; location</a>
+</div>
+</div>
+<div class="hero-image">
+<img alt="NutriThrive Moringa Powder — premium greens for Melbourne." decoding="async" height="500" loading="eager" src="/assets/images/general/GC.webp" style="width: 100%; max-width: 420px; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; box-shadow: var(--shadow);" width="500"/>
+</div>
+</section>
+<div aria-label="What you get" class="melb-welcome-strip">
+<div class="melb-welcome-strip-item">
+<strong>Free delivery Australia-wide</strong>
+<span>On orders $80+ — no minimum for Melbourne</span>
+</div>
+<div class="melb-welcome-strip-item">
+<strong>Lab-tested &amp; transparent</strong>
+<span>Batch-level checks, clear sourcing</span>
+</div>
+<div class="melb-welcome-strip-item">
+<strong>Same-week dispatch</strong>
+<span>Tracked shipping from Truganina</span>
+</div>
+<div class="melb-welcome-strip-item">
+<strong>Real support</strong>
+<span>Email or call — we’re here to help</span>
+</div>
+</div>
+<section aria-labelledby="products-heading" class="melb-section melb-products">
+<h2 id="products-heading">Shop our products</h2>
+<p class="melb-products-sub">100% natural · Vegan · Gluten-free · Shipped from Melbourne</p>
+<div class="melb-product-grid">
+<article class="melb-product-card">
+<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Bundleoffer.webp" width="120"/>
+<h3>3+1 = 400g Moringa</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$56.00</span> $35.00</span>
+<span class="tag">4 pack · Best value</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-400g', '3 + 1 = 400g Moringa', 35.00, '/assets/images/homepage/product-showcase/Bundleoffer.webp')" type="button">Add to Cart</button>
+</article>
+<article class="melb-product-card">
+<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/moringasoap_combo.webp" width="120"/>
+<h3>Moringa 100g + Soap 95g</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$23.39</span> $17.00</span>
+<span class="tag">Moringa + Soap bundle</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-soap-combo', 'Moringa 100g + Soap 95g', 17.00, '/assets/images/homepage/product-showcase/moringasoap_combo.webp')" type="button">Add to Cart</button>
+</article>
+<article class="melb-product-card">
+<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/combo.webp" width="120"/>
+<h3>Premium Combo Pack</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$22.49</span> $17.00</span>
+<span class="tag">Moringa + Tea + Curry</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '/assets/images/homepage/product-showcase/combo.webp')" type="button">Add to Cart</button>
+</article>
+<article class="melb-product-card">
+<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" width="120"/>
+<h3>Moringa Powder</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$14.00</span> $11.00</span>
+<span class="tag">100g · 30 servings</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, '/assets/images/homepage/product-showcase/Moringa.webp')" type="button">Add to Cart</button>
+</article>
+<article class="melb-product-card">
+<img alt="Moringa Soap by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/moringa_soap.webp" width="120"/>
+<h3>Moringa Soap</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$9.49</span> $7.00</span>
+<span class="tag">95g</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '/assets/images/homepage/product-showcase/moringa_soap.webp')" type="button">Add to Cart</button>
+</article>
+<article class="melb-product-card">
+<img alt="Darjeeling Black Tea by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/BlackTea.webp" width="120"/>
+<h3>Darjeeling Black Tea</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$10.00</span> $7.50</span>
+<span class="tag">100g · Premium grade</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '/assets/images/homepage/product-showcase/BlackTea.webp')" type="button">Add to Cart</button>
+</article>
+<article class="melb-product-card">
+<img alt="Dried Curry Leaves by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Curry.webp" width="120"/>
+<h3>Dried Curry Leaves</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$8.49</span> $7.00</span>
+<span class="tag">30g</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '/assets/images/homepage/product-showcase/Curry.webp')" type="button">Add to Cart</button>
+</article>
+<article class="melb-product-card">
+<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" width="120"/>
+<h3>200g Moringa</h3>
+<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$28.00</span> $21.50</span>
+<span class="tag">60 servings</span>
+<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-200g', '200g Moringa', 21.50, '/assets/images/homepage/product-showcase/Moringa.webp')" type="button">Add to Cart</button>
+</article>
+</div>
+<div class="melb-trust-bar">
+<span><strong>Free delivery</strong> on orders $80+ Australia-wide</span>
+<span><strong>Tracked shipping</strong> · Same-week dispatch</span>
+<span><strong>Lab-tested</strong> · Vegan · No additives</span>
+</div>
+<p style="text-align: center; margin-top: 1.25rem;"><a class="hero-btn alt" href="/products/" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">View all products</a></p>
+</section>
+<section aria-labelledby="benefits-heading" class="melb-section">
+<div class="melb-section-header">
+<h2 id="benefits-heading">Why Melbourne loves NutriThrive</h2>
+<p class="melb-section-subtitle">Real life — work, training, family, recovery. We’ve got you.</p>
+</div>
+<div class="melb-benefits-grid">
+<article class="melb-card">
+<h3>Clean, focused formula</h3>
+<p>No random blends. Just high‑quality Moringa Oleifera, ideal for people who want a simple, repeatable routine.</p>
+<span class="melb-chip">No artificial sweeteners</span>
+</article>
+<article class="melb-card">
+<h3>Built for Melbourne delivery</h3>
+<p>Shipped from Truganina, with reliable delivery across Melbourne suburbs so your greens don’t sit in transit for weeks.</p>
+<span class="melb-chip">Fast dispatch from VIC</span>
+</article>
+<article class="melb-card">
+<h3>Education, not hype</h3>
+<p>Detailed guides on batch codes, storage, and serving sizes – so you can make your own decisions, not guess.</p>
+<span class="melb-chip">Evidence‑aware content</span>
+</article>
+</div>
+</section>
+<section aria-labelledby="delivery-heading" class="melb-section" id="delivery">
+<div class="melb-section-header">
+<h2 id="delivery-heading">Delivery &amp; shipping</h2>
+<p class="melb-section-subtitle">We ship Australia-wide from Truganina. Free delivery on orders $80+.</p>
+</div>
+<div class="melb-two-col">
+<div>
+<p class="melb-geo"><strong>Warehouse</strong><br/>15 Europe Street, Truganina VIC 3029</p>
+<ul class="melb-list">
+<li><strong>Free delivery Australia-wide</strong> on orders $80 and over. Standard shipping for orders under $80.</li>
+<li><strong>Melbourne metro:</strong> Usually 1–3 business days after dispatch. We ship same week when you order early.</li>
+<li><strong>NSW, QLD, other states:</strong> Typically 3–7 business days. Tracked via Australia Post.</li>
+<li><strong>Order online 24/7</strong> — we dispatch on business days. No minimum for Melbourne; mix and match to hit free shipping Australia-wide.</li>
+</ul>
+<div class="melb-badge-row">
+<span class="melb-chip">Free delivery $80+ AU</span>
+<span class="melb-chip">Tracked shipping</span>
+<span class="melb-chip">Melbourne warehouse</span>
+</div>
+</div>
+<div>
+<iframe class="map-frame" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=144.7108%2C-37.8384%2C144.7268%2C-37.8264&amp;layer=mapnik&amp;marker=-37.8323773%2C144.7187983" style="border:0;width:100%" title="Map — NutriThrive at 15 Europe Street, Truganina VIC 3029"></iframe>
+<p style="margin:0.5rem 0 0;font-size:0.9rem"><a href="https://www.google.com/maps/search/?api=1&amp;query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia" rel="noopener noreferrer" target="_blank">Open in Google Maps</a></p>
+</div>
+</div>
+</section>
+<section aria-labelledby="suburbs-heading" class="melb-section">
+<div class="melb-section-header">
+<h2 id="suburbs-heading">Moringa delivery across Melbourne suburbs</h2>
+<p class="melb-section-subtitle">From our Truganina warehouse to every suburb — same tracked service, same lab-tested quality.</p>
+</div>
+<div class="melb-suburbs-grid">
+<div class="melb-suburbs-col">
+<strong>Inner &amp; CBD</strong>
+<p>Melbourne CBD · South Yarra · Richmond · Prahran · Fitzroy · Collingwood · Carlton · Northcote · St Kilda</p>
+</div>
+<div class="melb-suburbs-col">
+<strong>Western suburbs</strong>
+<p>Truganina · Tarneit · Point Cook · Hoppers Crossing · Werribee · Laverton · Footscray · Sunshine · Altona · Williamstown · Wyndham Vale</p>
+</div>
+<div class="melb-suburbs-col">
+<strong>Northern suburbs</strong>
+<p>Brunswick · Coburg · Preston · Northcote · Heidelberg · Bundoora · Thomastown · Craigieburn · Broadmeadows · Reservoir</p>
+</div>
+<div class="melb-suburbs-col">
+<strong>Eastern suburbs</strong>
+<p>Box Hill · Doncaster · Ringwood · Knox · Rowville · Glen Waverley · Camberwell · Hawthorn · Mitcham</p>
+</div>
+<div class="melb-suburbs-col">
+<strong>Southern suburbs</strong>
+<p>Bayside · Cheltenham · Moorabbin · Frankston · Dandenong · Springvale · Pakenham · Bentleigh · Mentone</p>
+</div>
+</div>
+<p class="melb-geo" style="margin-top: 1rem;">Don't see your suburb? We ship Australia-wide — every parcel is tracked and dispatched same week.</p>
+</section>
+<section aria-labelledby="guides-heading" class="melb-section melb-guides">
+<div class="melb-section-header">
+<h2 id="guides-heading">Read &amp; learn</h2>
+<p class="melb-section-subtitle">Practical guides from our blog — recipes, storage, and more.</p>
+</div>
+<ul>
+<li><a href="/blog/moringa-melbourne-complete-guide-2026.html">Moringa in Melbourne — complete local buyer's guide (2026)</a></li>
+<li><a href="/blog/moringa-vs-coffee-melbourne-energy-hack.html">Moringa vs coffee: the Melbourne energy hack</a></li>
+<li><a href="/blog/healthy-snack-melbourne-why-everyone-switching-to-moringa-2026.html">Why Melbourne is switching to moringa as a daily snack</a></li>
+<li><a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html">Moringa powder in Australia: benefits, daily use &amp; where to buy</a></li>
+<li><a href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">Where to buy moringa in Australia (2026)</a></li>
+<li><a href="/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html">Melbourne food-as-medicine map: cafes, organic stores &amp; healthspan eating</a></li>
+</ul>
+</section>
+<section aria-labelledby="faq-heading" class="melb-section">
+<div class="melb-section-header">
+<h2 id="faq-heading">Common questions</h2>
+</div>
+<div class="melb-faq-grid">
+<article class="melb-faq-item">
+<h3>Is delivery really free?</h3>
+<p>Yes. Orders of $80 or more ship free anywhere in Australia. Under $80, standard shipping applies. Melbourne orders often arrive in 1–3 business days.</p>
+</article>
+<article class="melb-faq-item">
+<h3>Do you deliver across Melbourne and Australia?</h3>
+<p>Yes. We deliver to all Melbourne suburbs and Australia-wide from our Truganina warehouse. Every order is tracked.</p>
+</article>
+<article class="melb-faq-item">
+<h3>Are your products lab-tested?</h3>
+<p>Yes. We run batch-level checks on key products (including Moringa powder) for quality and safety. Vegan, gluten-free, no artificial additives.</p>
+</article>
+<article class="melb-faq-item">
+<h3>Where exactly is NutriThrive based in Melbourne?</h3>
+<p>We're at 15 Europe Street, Truganina VIC 3029 — in Melbourne's western suburbs near Hoppers Crossing and Werribee. All orders ship same-week from this warehouse direct to your door.</p>
+</article>
+<article class="melb-faq-item">
+<h3>Is it better to buy moringa online than from a Melbourne health food store?</h3>
+<p>Ordering direct means you get batch-tested product, full ingredient transparency, and better pricing than most retail. Same-week dispatch to any Melbourne suburb with no retail mark-up.</p>
+</article>
+</div>
+</section>
+<section aria-label="Call to action" class="melb-bottom-cta">
+<p>Order $80+ for free delivery Australia-wide. Lab-tested, 100% natural — Moringa, curry leaves, black tea and more, shipped from Melbourne.</p>
+<div class="hero-cta" style="justify-content: center; flex-wrap: wrap; gap: 0.75rem;">
+<a class="hero-btn" href="/products/moringa-powder/">Shop Moringa</a>
+<a class="hero-btn alt" href="/products/">View all products</a>
+</div>
+</section>
 </main>
-<div id="nt-footer"></div>
-<script src="/scripts/global/defer-loader.js"></script>
-<script src="/scripts/global/reddit-pixel.js"></script>
-<script src="/shared/site-data.js"></script>
+<footer>
+<div class="footer-content">
+<div class="footer-section">
+<h3>About NutriThrive</h3>
+<p>Based in Truganina, Melbourne (Fast Shipping to VIC, NSW, QLD). Premium superfoods and teas delivered across Melbourne and Australia.</p>
+</div>
+<div class="footer-section">
+<h3>Contact</h3>
+<p>📞 0438 201 419</p>
+<p>📧 nutrithrive0@gmail.com</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 NutriThrive. All rights reserved.</p>
+</div>
+</footer>
 <script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
-
+<script src="/scripts/global/cart-header.js"></script>
+<script defer="" src="/scripts/global/script.js"></script>
 </body>
 </html>
