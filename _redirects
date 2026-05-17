@@ -117,6 +117,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /cart.html /pages/shop/cart.html 200
 /payment /pages/shop/payment.html 200
 /payment.html /pages/shop/payment.html 200
+/crypto-pay /pages/shop/crypto-pay.html 200
+/crypto-pay/ /pages/shop/crypto-pay.html 200
 /privacy-policy /pages/legal/privacy-policy.html 200
 /privacy-policy.html /privacy-policy 301
 
