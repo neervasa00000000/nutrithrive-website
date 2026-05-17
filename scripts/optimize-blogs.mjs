@@ -55,16 +55,10 @@ function dedupeShell(html) {
 
 function optimizeHero(html, filename) {
   const cfg = heroForFile(filename, html);
-  const webp = cfg.hero || HEROES.default.hero;
-  const jpg = cfg.heroFallback || HEROES.default.heroFallback || webp;
-  const w = cfg.width || 800;
-  const h = cfg.height || 450;
-
+  const heroSrc =
+    cfg.hero || "../assets/images/homepage/product-showcase/Moringa.webp";
   const heroBlock = `<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
-<picture>
-<source type="image/webp" srcset="/assets/images/blog/hero-moringa-400.webp 400w, ${webp} 800w" sizes="(max-width: 768px) 100vw, 800px"/>
-<img alt="" class="w-full h-full object-cover" src="${jpg}" width="${w}" height="${h}" loading="eager" decoding="async" fetchpriority="high" sizes="(max-width: 768px) 100vw, 800px"/>
-</picture>
+<img alt="NutriThrive Moringa Powder" class="w-full h-full object-cover" src="${heroSrc}" width="800" height="800" loading="eager" decoding="async" fetchpriority="high"/>
 </div>`;
 
   return html.replace(
