@@ -624,7 +624,12 @@
   }
 
   function renderPaymentPage() {
-    if (document.getElementById('paypal-button-container')) return;
+    if (
+      document.getElementById('paypal-button-container') ||
+      document.querySelector('main.nt-payment-live .checkout-wrap')
+    ) {
+      return;
+    }
     const root = $('#nt-payment-app');
     if (!root) return;
 
