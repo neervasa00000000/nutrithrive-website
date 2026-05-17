@@ -32,6 +32,24 @@ window.NT_SITE_DATA = {
     contactHero: '/assets/images/homepage/product-showcase/contact.png',
   },
   labReport: '/documents/nutrithrive-lab-report-summary.pdf',
+  /** Encode path segments so filenames like 3+1.jpeg resolve reliably in img src and cart URLs. */
+  productImageUrl(path) {
+    if (!path) return '';
+    if (/^https?:\/\//i.test(path)) {
+      try {
+        const u = new URL(path);
+        u.pathname = u.pathname
+          .split('/')
+          .map((seg) => (seg ? encodeURIComponent(decodeURIComponent(seg)) : seg))
+          .join('/');
+        return u.href;
+      } catch {
+        return path;
+      }
+    }
+    const segments = path.replace(/^\//, '').split('/');
+    return `/${segments.map((seg) => encodeURIComponent(decodeURIComponent(seg))).join('/')}`;
+  },
   products: [
     {
       id: 'moringa-powder-100g',
@@ -76,7 +94,7 @@ window.NT_SITE_DATA = {
       price: 21.5,
       was: 28,
       weight: 200,
-      image: '/assets/images/product_photos/moringa.jpeg',
+      image: '/assets/images/product_photos/200g.png',
       href: '/products/moringa-powder/',
       pdp: {
         headline: 'Moringa Powder — 200g',
@@ -106,7 +124,7 @@ window.NT_SITE_DATA = {
       price: 35,
       was: 56,
       weight: 400,
-      image: '/assets/images/product_photos/3+1.jpeg',
+      image: '/assets/images/product_photos/moringa-400g-bundle.jpeg',
       href: '/products/moringa-powder/',
       pdp: {
         headline: '3 + 1 = 400g Moringa Bundle',

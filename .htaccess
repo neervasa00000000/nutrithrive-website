@@ -393,7 +393,8 @@ RedirectMatch 301 ^/assets/images/general/(.+)$ /assets/images/blog/$1
 # Product images: legacy product-showcase → product_photos
 RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/Moringa\.webp$ /assets/images/product_photos/moringa.jpeg
 RedirectMatch 301 ^/assets/images/homepage/product-showcase/Moringa\.webp$ /assets/images/product_photos/moringa.jpeg
-RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/new3\+1\.webp$ /assets/images/product_photos/3%2B1.jpeg
+RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/new3\+1\.webp$ /assets/images/product_photos/moringa-400g-bundle.jpeg
+RedirectMatch 301 ^/assets/images/product_photos/3\+1\.jpeg$ /assets/images/product_photos/moringa-400g-bundle.jpeg
 RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/moringa_soap\.webp$ /assets/images/product_photos/soap.jpeg
 RedirectMatch 301 ^/assets/images/homepage/product-showcase/moringa_soap\.webp$ /assets/images/product_photos/soap.jpeg
 RedirectMatch 301 ^/assets/images/homepage/product-showcase/thumbs/combo\.webp$ /assets/images/product_photos/combo.jpeg
