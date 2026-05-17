@@ -7,7 +7,7 @@
   window.__NT_CRYPTO_CHECKOUT_INIT__ = true;
 
   const LOCAL_CHECKOUT = 'http://localhost:3000';
-  const PROD_CHECKOUT = 'https://nutrithrive-crypto-checkout.onrender.com';
+  const PROD_CHECKOUT = 'https://nutrithrive.com.au/crypto-checkout';
 
   function getCheckoutBaseUrl() {
     const host = window.location.hostname;
