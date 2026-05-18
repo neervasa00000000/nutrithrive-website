@@ -82,8 +82,9 @@ function stripStickyHeaderMainOffset(html) {
       .replace(/\bmt-20\b/g, '')
       .replace(/\s+/g, ' ')
       .trim();
-    const nextAttrs = attrs.replace(clsMatch[0], cleaned ? `class=${quote}${cleaned}${quote}` : '');
-    return `<main${nextAttrs}>`;
+    let nextAttrs = attrs.replace(clsMatch[0], cleaned ? `class=${quote}${cleaned}${quote}` : '');
+    nextAttrs = nextAttrs.replace(/\s+/g, ' ').trim();
+    return nextAttrs ? `<main ${nextAttrs}>` : '<main>';
   });
 }
 
