@@ -1,0 +1,382 @@
+/* Products index — self-contained (no Tailwind CDN). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body.nt-shop {
+  margin: 0;
+  background: #fdf9ee;
+  color: #1c1c15;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+a {
+  color: inherit;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.nt-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #fdf9ee;
+}
+.nt-promo-bar {
+  background: #1a2e22;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+.nt-shop-header {
+  background: rgba(253, 249, 238, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(190, 201, 193, 0.3);
+  box-shadow: 0 1px 8px rgba(26, 46, 34, 0.06);
+}
+.nt-shop-nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 5rem;
+  gap: 1rem;
+}
+.nt-shop-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f6b4d;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nt-shop-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nt-shop-links a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(26, 46, 34, 0.85);
+  text-decoration: none;
+}
+.nt-shop-links a.is-active,
+.nt-shop-links a:hover {
+  color: #0f6b4d;
+}
+.nt-shop-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nt-shop-faq {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f6b4d;
+  text-decoration: none;
+}
+.nt-cart-link {
+  position: relative;
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 999px;
+  color: #1a2e22;
+  text-decoration: none;
+}
+.nt-cart-link:hover {
+  background: rgba(161, 243, 205, 0.25);
+}
+.nt-cart-badge {
+  position: absolute;
+  top: 0.15rem;
+  right: 0.15rem;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  background: #d66844;
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nt-cart-badge[hidden] {
+  display: none;
+}
+.nt-menu-btn {
+  display: flex;
+  padding: 0.5rem;
+  border: 0;
+  background: transparent;
+  color: #1a2e22;
+  cursor: pointer;
+}
+.nt-mobile-drawer {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 20px 1.25rem;
+  border-top: 1px solid rgba(190, 201, 193, 0.35);
+  background: #fdf9ee;
+}
+.nt-mobile-drawer.is-open {
+  display: flex;
+}
+.nt-mobile-drawer a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #1a2e22;
+}
+@media (min-width: 768px) {
+  .nt-menu-btn {
+    display: none;
+  }
+  .nt-shop-links {
+    display: flex;
+  }
+  .nt-shop-faq {
+    display: inline;
+  }
+  .nt-mobile-drawer {
+    display: none !important;
+  }
+  .nt-shop-nav {
+    padding: 0 64px;
+  }
+}
+.nt-shop-main {
+  padding: 7rem 20px 5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .nt-shop-main {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+.nt-shop-main h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  font-weight: 600;
+  color: #1a2e22;
+  line-height: 1.2;
+}
+.nt-shop-intro {
+  margin: 0 0 1rem;
+  max-width: 42rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: #3f4943;
+}
+.nt-shop-main h2 {
+  margin: 0 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a2e22;
+}
+.nt-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 1024px) {
+  .nt-shop-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+.nt-shop-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(26, 46, 34, 0.08);
+}
+.nt-shop-card-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  max-height: 11rem;
+  padding: 0.65rem 0.75rem;
+  background: rgba(242, 238, 227, 0.55);
+  text-decoration: none;
+}
+.nt-shop-card-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.nt-shop-badge {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #0f6b4d;
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.nt-shop-card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0.875rem 1rem 1rem;
+}
+.nt-shop-card-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.nt-shop-card-title a {
+  text-decoration: none;
+  color: #1a2e22;
+}
+.nt-shop-card-title a:hover {
+  color: #0f6b4d;
+}
+.nt-shop-card-tag {
+  margin: 0 0 0.75rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #3f4943;
+  line-height: 1.35;
+}
+.nt-shop-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(190, 201, 193, 0.25);
+}
+.nt-shop-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d66844;
+}
+.nt-shop-was {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(63, 73, 67, 0.65);
+  text-decoration: line-through;
+}
+.nt-add-cart-btn {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: #d66844;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nt-add-cart-btn:hover {
+  background: #0f6b4d;
+}
+.nt-shop-note {
+  margin: 3rem 0 0;
+  font-size: 0.875rem;
+  color: #3f4943;
+}
+.nt-shop-footer {
+  background: #1a2e22;
+  color: #fff;
+  padding: 3rem 20px 2rem;
+}
+.nt-shop-footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .nt-shop-footer {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+  .nt-shop-footer-inner {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+}
+.nt-shop-footer a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+.nt-shop-footer a:hover {
+  color: #fff;
+}
+.nt-shop-footer h3 {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #a1f3cd;
+}
+.nt-shop-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.nt-shop-footer-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #a1f3cd;
+  text-decoration: none;
+}
+.nt-shop-footer-tagline {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  opacity: 0.75;
+  max-width: 18rem;
+  line-height: 1.5;
+}
+.nt-shop-footer-copy {
+  max-width: 1280px;
+  margin: 2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.8125rem;
+  opacity: 0.5;
+}
