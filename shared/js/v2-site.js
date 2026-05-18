@@ -835,8 +835,9 @@
 
   function initShopPage() {
     if (!isShopPage()) return;
-    const data = D();
     const grid = $('#nt-shop-grid');
+    if (grid?.dataset.staticShop) return;
+    const data = D();
     if (!grid || !data?.getCatalogProducts) return;
     if (grid.dataset.ntShopReady) return;
     const products = data.getCatalogProducts();
