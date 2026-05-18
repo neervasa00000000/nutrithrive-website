@@ -63,7 +63,7 @@ function write(file, html) {
 function extractTailwindBlock(testHtml) {
   const style = testHtml.match(/<style>[\s\S]*?<\/style>/i)?.[0] || '';
   const config = testHtml.match(/<script id="tailwind-config">[\s\S]*?<\/script>/i)?.[0] || '';
-  return [style, config].filter(Boolean).join('\n');
+  return { style, config };
 }
 
 function extractPreservedHead(liveHtml) {
@@ -91,11 +91,21 @@ function extractPreservedHead(liveHtml) {
   head = head.replace(/<link rel="shortcut icon"[^>]*>/gi, '');
   head = head.replace(/<script defer src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>/gi, '');
   head = head.replace(/<script>\s*window\.dataLayer[\s\S]*?gtag\('config'[^)]*\);[\s\S]*?<\/script>/gi, '');
+  head = head.replace(/<script>\s*window\.addEventListener\(['"]load['"][\s\S]*?googletagmanager\.com\/gtag[\s\S]*?<\/script>/gi, '');
+  head = head.replace(/<!-- Google tag[\s\S]*?<\/script>\s*/gi, '');
+  head = head.replace(/<script[^>]*defer[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
+  head = head.replace(/<link[^>]*rel=["']preload["'][^>]*fonts\.googleapis[^>]*>/gi, '');
+  head = head.replace(/<link[^>]*rel=["']preconnect["'][^>]*fonts\.googleapis[^>]*>/gi, '');
+  head = head.replace(/<link[^>]*rel=["']preconnect["'][^>]*fonts\.gstatic[^>]*>/gi, '');
+  head = head.replace(/<link[^>]*rel=["']preconnect["'][^>]*cdn\.tailwindcss[^>]*>/gi, '');
+  head = head.replace(/<meta[^>]*msapplication-TileImage[^>]*>/gi, '');
+  head = head.replace(/<meta[^>]*msapplication-TileColor[^>]*>/gi, '');
+  head = head.replace(/<!-- Favicons[\s\S]*?-->\s*/gi, '');
   head = head.replace(/<script[^>]*defer-loader\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<script[^>]*reddit-pixel\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<!-- Reddit Pixel[\s\S]*?<\/script>\s*/gi, '');
-  head = head.replace(/<link rel="preconnect" href="https:\/\/cdn\.tailwindcss\.com"[^>]*>/gi, '');
   head = head.replace(/<noscript>\s*<\/noscript>/gi, '');
+  head = head.replace(/^\s+$/gm, '');
   head = head.replace(/\n{3,}/g, '\n\n');
   return head.trim();
 }
@@ -116,18 +126,18 @@ window.addEventListener('load', function () {
 </script>`;
 }
 
-function v2HeadAssets(tailwind) {
-  return `<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-${tailwind}
+function v2HeadAssets({ style = '', config = '' } = {}) {
+  return `<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+${config}
 <script defer src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></noscript>
 <link rel="stylesheet" href="/shared/css/v2-extra.css"/>
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>`;
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+${style}`;
 }
 
 function extractLiveTitle(liveHtml) {
@@ -312,8 +322,8 @@ function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>${title}</title>
 ${preservedHead}
-${analyticsSnippet()}
 ${v2HeadAssets(tailwind)}
+${analyticsSnippet()}
 ${blogCss}
 </head>
 <body class="${bodyClass}">
@@ -586,11 +596,9 @@ patchSiteData();
 if (!onlyFilter) generateBlogArticlesJs();
 
 if (want('payment')) applyPaymentPage();
-if (want('pages')) {
+if (!onlyFilter || want('pages') || onlyFilter.includes('shop')) {
   for (const entry of PAGE_MAP) {
-    if (onlyFilter && onlyFilter.length === 1 && onlyFilter[0] === 'shop') {
-      if (entry.live !== 'products/index.html') continue;
-    }
+    if (onlyFilter?.includes('shop') && entry.live !== 'products/index.html') continue;
     applyPage(entry);
   }
 }
