@@ -814,7 +814,7 @@
     return `
 <article id="${p.id}" class="nt-shop-card group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col">
   <a href="${href}" class="nt-shop-card-media block relative">
-    <img alt="${title}" class="nt-shop-card-img" src="${productImg(p.image)}" loading="lazy" width="400" height="400"/>
+    <img alt="${title}" class="nt-shop-card-img" src="${productImg(p.thumb || p.image)}" loading="lazy" width="400" height="400"/>
     <span class="absolute top-3 left-3 bg-moringa-leaf text-pure-white text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase">${p.badge || 'New'}</span>
   </a>
   <div class="nt-shop-card-body p-4 flex flex-col flex-grow">
@@ -854,7 +854,7 @@
     return `
 <article class="nt-carousel-card group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
   <a href="${href}" class="nt-card-media block relative">
-    <img alt="${p.name}" class="nt-card-img" src="${productImg(p.image)}" loading="lazy" width="320" height="320"/>
+    <img alt="${p.name}" class="nt-card-img" src="${productImg(p.thumb || p.image)}" loading="lazy" width="320" height="320"/>
     <span class="absolute top-2.5 left-2.5 bg-moringa-leaf text-pure-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase z-[1]">${p.badge || 'New'}</span>
   </a>
   <div class="nt-card-body flex flex-col">
