@@ -20,7 +20,7 @@ const TEST_BLOG = path.join(REPO, 'scripts/templates/v2/blog');
 
 const PAGE_MAP = [
   { test: 'home-test.html', live: 'index.html', blogArticles: false, cart: false },
-  /* shop: scripts/generate-shop-page.mjs (static fast /products/) */
+  { test: 'shop-test.html', live: 'products/index.html', blogArticles: false, cart: false },
   { test: 'about-test.html', live: 'pages/about/about.html', blogArticles: false, cart: false },
   { test: 'contact-test.html', live: 'pages/contact/contact.html', blogArticles: false, cart: false },
   { test: 'faq-test.html', live: 'pages/faq/faq.html', blogArticles: false, cart: false },
@@ -85,6 +85,9 @@ function extractPreservedHead(liveHtml) {
   head = head.replace(/<link[^>]*Literata[^>]*>/gi, '');
   head = head.replace(/<link[^>]*Material\+Symbols[^>]*>/gi, '');
   head = head.replace(/<link[^>]*v2-extra\.css[^>]*>/gi, '');
+  head = head.replace(/<link[^>]*shop-page\.css[^>]*>/gi, '');
+  head = head.replace(/<link[^>]*rel=["']preload["'][^>]*as=["']image["'][^>]*>/gi, '');
+  head = head.replace(/<script defer src="\/shared\/js\/shop-page\.js"><\/script>/gi, '');
   head = head.replace(/<style>[\s\S]*?<\/style>/gi, '');
   head = head.replace(/<link rel="icon"[^>]*>/gi, '');
   head = head.replace(/<link rel="apple-touch-icon"[^>]*>/gi, '');
@@ -127,14 +130,13 @@ window.addEventListener('load', function () {
 }
 
 function v2HeadAssets({ style = '', config = '' } = {}) {
-  return `<link rel="preconnect" href="https://fonts.googleapis.com"/>
+  return `<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 ${config}
-<script defer src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></noscript>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/shared/css/v2-extra.css"/>
 <link rel="icon" href="/assets/images/logo/LOGO.webp"/>
 ${style}`;
@@ -231,25 +233,25 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
 
 function liveScripts({ cart = false, blogArticles = false, payment = false }) {
   const lines = [
-    '<script defer src="/scripts/global/defer-loader.js"></script>',
-    '<script defer src="/scripts/global/reddit-pixel.js"></script>',
-    '<script defer src="/shared/site-data.js"></script>',
+    '<script src="/shared/site-data.js"></script>',
   ];
-  if (blogArticles) lines.push('<script defer src="/shared/js/blog-articles.js"></script>');
+  if (blogArticles) lines.push('<script src="/shared/js/blog-articles.js"></script>');
+  lines.push(
+    '<script src="/scripts/global/cart.js"></script>',
+    '<script src="/shared/js/cart-v2-ui.js"></script>',
+    '<script src="/shared/js/layout-v2.js"></script>',
+    '<script src="/shared/js/v2-site.js"></script>',
+    '<script defer src="/scripts/global/defer-loader.js"></script>',
+    '<script defer src="/scripts/global/reddit-pixel.js"></script>'
+  );
   if (payment) {
     lines.push(
-      '<script defer src="/scripts/global/paypal-client-config.js"></script>',
-      '<script defer src="/scripts/global/paypal-sdk-loader.js"></script>',
-      '<script defer src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>'
+      '<script src="/scripts/global/paypal-client-config.js"></script>',
+      '<script src="/scripts/global/paypal-sdk-loader.js"></script>',
+      '<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>'
     );
   }
-  if (cart || payment) lines.push('<script defer src="/scripts/global/shipping-rates.js"></script>');
-  lines.push(
-    '<script defer src="/scripts/global/cart.js"></script>',
-    '<script defer src="/shared/js/cart-v2-ui.js"></script>',
-    '<script defer src="/shared/js/layout-v2.js"></script>',
-    '<script defer src="/shared/js/v2-site.js"></script>'
-  );
+  if (cart || payment) lines.push('<script src="/scripts/global/shipping-rates.js"></script>');
   return lines.join('\n');
 }
 
@@ -624,11 +626,6 @@ console.log(
     ? `\nDone (filter: ${onlyFilter.join(',')}).`
     : `\nDone. ${PAGE_MAP.length} mapped pages, payment + ${REDIRECT_STUB_PAGES.length} redirect stubs, ${PRODUCT_SLUGS.length} PDPs, ${blogCount} blog articles.`
 );
-
-if (!onlyFilter || onlyFilter.includes('shop')) {
-  const { generateShopPage } = await import('./generate-shop-page.mjs');
-  generateShopPage();
-}
 
 if (!onlyFilter) {
   console.log('\nNormalizing live test URLs in HTML…');
