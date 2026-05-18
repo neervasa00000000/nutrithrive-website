@@ -1521,8 +1521,12 @@
         }
     </script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/></noscript></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/></noscript></noscript>
 <link rel="stylesheet" href="/shared/css/v2-extra.css"/>
 
 <link rel="icon" href="/assets/images/logo/LOGO.webp"/>
@@ -1668,7 +1672,7 @@
 </div>
 <div class="relative order-1 md:order-2">
 <div class="absolute -z-10 bg-primary-fixed/30 w-[140%] h-[140%] top-[-20%] left-[-20%] organic-shape animate-pulse-slow"></div>
-<img alt="Nutri Thrive Moringa Powder in its natural raw form within a traditional stone mortar and pestle" class="w-full h-auto drop-shadow-2xl rounded-2xl transform md:rotate-2 hover:rotate-0 transition-transform duration-700" src="/assets/images/blog/GC.webp"/>
+<img alt="Nutri Thrive Moringa Powder in its natural raw form within a traditional stone mortar and pestle" class="w-full h-auto drop-shadow-2xl rounded-2xl transform md:rotate-2 hover:rotate-0 transition-transform duration-700" src="/assets/images/blog/GC.webp" loading="eager" fetchpriority="high"/>
 </div>
 </div>
 </section>
@@ -1681,7 +1685,7 @@
 <span class="material-symbols-outlined" data-icon="eco">eco</span>
 </div>
 <div>
-<h4 class="font-label-lg text-label-lg">100% Pure Moringa</h4>
+<h3 class="font-label-lg text-label-lg">100% Pure Moringa</h3>
 <p class="font-label-sm text-label-sm text-on-surface-variant">No fillers or additives</p>
 </div>
 </div>
@@ -1690,7 +1694,7 @@
 <span class="material-symbols-outlined" data-icon="biotech">biotech</span>
 </div>
 <div>
-<h4 class="font-label-lg text-label-lg">Lab-Tested in AU</h4>
+<h3 class="font-label-lg text-label-lg">Lab-Tested in AU</h3>
 <p class="font-label-sm text-label-sm text-on-surface-variant">Every batch verified</p>
 </div>
 </div>
@@ -1699,7 +1703,7 @@
 <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
 </div>
 <div>
-<h4 class="font-label-lg text-label-lg">Melbourne Stock</h4>
+<h3 class="font-label-lg text-label-lg">Melbourne Stock</h3>
 <p class="font-label-sm text-label-sm text-on-surface-variant">Same-day dispatch</p>
 </div>
 </div>
@@ -1708,7 +1712,7 @@
 <span class="material-symbols-outlined" data-icon="public">public</span>
 </div>
 <div>
-<h4 class="font-label-lg text-label-lg">Small Batches</h4>
+<h3 class="font-label-lg text-label-lg">Small Batches</h3>
 <p class="font-label-sm text-label-sm text-on-surface-variant">Fresh stock rotation</p>
 </div>
 </div>
@@ -1733,7 +1737,7 @@
 <!-- Product 1 -->
 <div class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
 <div class="relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
-<img alt="Premium Moringa Powder 100g pack showing fine bright green powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean product shot of a high-quality brown paper resealable pouch of Moringa Powder. The bag is standing upright against a soft, organic background of fresh moringa leaves. Natural sunlight creates gentle shadows, emphasizing the premium quality and freshness of the product. The overall aesthetic is minimalist, modern, and trustworthy, using the brand's earthy green and parchment color palette." src="/assets/images/product_photos/webp/moringa.webp"/>
+<img alt="Premium Moringa Powder 100g pack showing fine bright green powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean product shot of a high-quality brown paper resealable pouch of Moringa Powder. The bag is standing upright against a soft, organic background of fresh moringa leaves. Natural sunlight creates gentle shadows, emphasizing the premium quality and freshness of the product. The overall aesthetic is minimalist, modern, and trustworthy, using the brand's earthy green and parchment color palette." src="/assets/images/product_photos/webp/moringa.webp" loading="lazy" decoding="async"/>
 <span class="absolute top-4 left-4 bg-moringa-leaf text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">100g Pack</span>
 </div>
 <div class="p-6 flex flex-col flex-grow">
@@ -1751,7 +1755,7 @@
 <!-- Product 2 -->
 <div class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
 <div class="relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
-<img alt="4 Pack Moringa Bundle showing four pouches of premium moringa powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="/assets/images/product_photos/webp/3+1.webp"/>
+<img alt="4 Pack Moringa Bundle showing four pouches of premium moringa powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="/assets/images/product_photos/webp/3+1.webp" loading="lazy" decoding="async"/>
 <span class="absolute top-4 left-4 bg-terracotta-clay text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">Best Value</span>
 </div>
 <div class="p-6 flex flex-col flex-grow">
@@ -1769,7 +1773,7 @@
 <!-- Product 3 -->
 <div class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
 <div class="relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
-<img alt="Moringa Soap bar next to raw moringa powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="/assets/images/product_photos/webp/soap.webp"/>
+<img alt="Moringa Soap bar next to raw moringa powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="/assets/images/product_photos/webp/soap.webp" loading="lazy" decoding="async"/>
 <span class="absolute top-4 left-4 bg-primary-container text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">Eco Friendly</span>
 </div>
 <div class="p-6 flex flex-col flex-grow">

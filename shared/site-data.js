@@ -62,6 +62,7 @@ window.NT_SITE_DATA = {
       was: 14,
       weight: 100,
       image: '/assets/images/product_photos/webp/moringa.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/moringa.jpg',
       href: '/products/moringa-powder/',
       description: '100% pure shade-dried moringa leaf powder. Lab-tested in Australia.',
       pdp: {
@@ -95,6 +96,7 @@ window.NT_SITE_DATA = {
       was: 28,
       weight: 200,
       image: '/assets/images/product_photos/webp/200g.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/200g.jpg',
       href: '/products/moringa-powder/',
       pdp: {
         headline: 'Moringa Powder — 200g',
@@ -125,6 +127,7 @@ window.NT_SITE_DATA = {
       was: 56,
       weight: 400,
       image: '/assets/images/product_photos/webp/3+1.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/3+1.jpg',
       href: '/products/moringa-powder/',
       pdp: {
         headline: '3 + 1 = 400g Moringa Bundle',
@@ -155,6 +158,7 @@ window.NT_SITE_DATA = {
       was: 9.49,
       weight: 95,
       image: '/assets/images/product_photos/webp/soap.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/soap.jpg',
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa Natural Soap',
@@ -186,6 +190,7 @@ window.NT_SITE_DATA = {
       was: 22.49,
       weight: 130,
       image: '/assets/images/product_photos/webp/combo.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/combo.jpg',
       href: '/products/combo-pack/',
       pdp: {
         headline: 'Premium Combo Pack',
@@ -216,6 +221,7 @@ window.NT_SITE_DATA = {
       was: 23.39,
       weight: 195,
       image: '/assets/images/product_photos/webp/moringasoapcombo.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/moringasoapcombo.jpg',
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa 100g + Soap 95g Bundle',
@@ -247,6 +253,7 @@ window.NT_SITE_DATA = {
       was: 8.49,
       weight: 30,
       image: '/assets/images/product_photos/webp/driedcurry.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/driedcurry.jpg',
       href: '/products/curry-leaves/',
       pdp: {
         headline: '30g Dried Curry Leaves',
@@ -278,6 +285,7 @@ window.NT_SITE_DATA = {
       was: 10,
       weight: 100,
       image: '/assets/images/product_photos/webp/blacktea.webp',
+      thumb: '/assets/images/product_photos/webp/thumbs/blacktea.jpg',
       href: '/products/black-tea/',
       pdp: {
         headline: 'Darjeeling Black Tea',
