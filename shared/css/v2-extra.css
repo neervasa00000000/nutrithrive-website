@@ -41,45 +41,8 @@
   border-bottom: 1px solid rgba(190, 201, 193, 0.3);
   box-shadow: 0 1px 8px rgba(26, 46, 34, 0.06);
 }
-/* Sticky promo + nav: in-flow stack (no pt-28 on main). Anchor scroll clears header. */
-html {
-  scroll-padding-top: 8.5rem;
-}
-main.nt-main-below-header,
-.nt-main-below-header {
+body.has-test-banner main {
   padding-top: 0;
-  margin-top: 0;
-}
-body.has-test-banner main.nt-main-below-header,
-body.has-test-banner .nt-main-below-header {
-  padding-top: 0;
-}
-
-/* First content block — small pad so headings are not clipped under sticky bar */
-.nt-shop-page .nt-shop-hero,
-main.nt-main-below-header > section:first-child {
-  scroll-margin-top: 8.5rem;
-}
-.nt-shop-page .nt-shop-hero {
-  padding-top: 1.5rem;
-}
-main.nt-main-below-header > section:first-child h1,
-main.nt-main-below-header > section:first-child h2,
-.nt-blog-main h1 {
-  scroll-margin-top: 8.5rem;
-}
-
-/* Keep page content within design max width (Tailwind max-w-container-max) */
-main.max-w-container-max,
-main > .max-w-container-max,
-.nt-blog-main {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* container-max was only in theme.spacing; max-w-* reads theme.maxWidth */
-.max-w-container-max {
-  max-width: 1280px;
 }
 
 /* Product page — five featured products (matches live /products/ lineup) */
@@ -113,13 +76,13 @@ main > .max-w-container-max,
   min-height: 200px;
   max-height: 200px;
   padding: 0.75rem;
-  background: rgba(242, 238, 227, 0.55);
-  border: 1px solid rgba(190, 201, 193, 0.45);
+  background: #1a2e22;
   border-radius: 0.5rem;
   text-decoration: none;
 }
 .nt-home-feature-card--light .nt-home-feature-media {
   background: #ffffff;
+  border: 1px solid rgba(190, 201, 193, 0.45);
 }
 .nt-home-feature-media img {
   width: 100%;
@@ -168,7 +131,7 @@ main > .max-w-container-max,
 /* Shop carousel cards (if used elsewhere) */
 .nt-products-carousel-wrap {
   position: relative;
-  padding: 0 40px;
+  padding: 0 52px;
 }
 .nt-carousel-viewport {
   overflow: hidden;
@@ -177,8 +140,8 @@ main > .max-w-container-max,
 }
 .nt-carousel-track {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: stretch;
+  gap: 1.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -188,68 +151,17 @@ main > .max-w-container-max,
   scrollbar-color: #0f6b4d #f2eee3;
 }
 .nt-carousel-card {
-  flex: 0 0 200px;
-  width: 200px;
+  flex: 0 0 280px;
+  width: 280px;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   position: relative;
   isolation: isolate;
 }
-.nt-carousel-card .nt-card-media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1;
-  max-height: 9.25rem;
-  padding: 0.5rem 0.6rem;
-  background: rgba(242, 238, 227, 0.55);
-  overflow: hidden;
-}
-.nt-carousel-card .nt-card-img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.35s ease;
-}
-.nt-carousel-card:hover .nt-card-img {
-  transform: scale(1.04);
-}
-.nt-carousel-card .nt-card-body {
-  padding: 0.75rem 0.875rem 0.875rem;
-}
-.nt-carousel-card .nt-card-title {
-  font-size: 0.9375rem;
-  line-height: 1.25;
-  margin: 0 0 0.25rem;
-}
-.nt-carousel-card .nt-card-tag {
-  font-size: 0.625rem;
-  line-height: 1.35;
-  margin: 0 0 0.5rem;
-  letter-spacing: 0.02em;
-}
 .nt-carousel-card .nt-card-footer {
   position: relative;
   z-index: 2;
-  padding-top: 0.625rem;
-}
-.nt-carousel-card .nt-card-price-now {
-  font-size: 0.9375rem;
-}
-.nt-carousel-card .nt-card-was {
-  font-size: 0.75rem;
-}
-.nt-carousel-card .nt-carousel-add-btn {
-  width: 2rem;
-  height: 2rem;
-}
-.nt-carousel-card .nt-carousel-add-btn .material-symbols-outlined {
-  font-size: 1.125rem;
 }
 .nt-carousel-card .nt-card-media,
 .nt-carousel-card .nt-card-title a {
@@ -316,11 +228,8 @@ button[data-add-cart] {
     padding: 0 44px;
   }
   .nt-carousel-card {
-    flex: 0 0 min(168px, 44vw);
-    width: min(168px, 44vw);
-  }
-  .nt-carousel-card .nt-card-media {
-    max-height: 7.5rem;
+    flex: 0 0 min(260px, 78vw);
+    width: min(260px, 78vw);
   }
   .nt-carousel-btn {
     width: 36px;
@@ -486,28 +395,6 @@ details[open] .expand-icon {
   text-decoration: underline;
 }
 
-/* About — hero & visit: full image visible (no crop) */
-.nt-about-hero-media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #0d2818;
-}
-.nt-about-hero-media .nt-about-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-.nt-about-visit-img {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
-}
-
 /* About — botanical illustration: smaller card, full artwork visible */
 .nt-about-feature-col {
   max-width: min(100%, 20rem);
@@ -552,57 +439,6 @@ details[open] .expand-icon {
   .nt-about-visit-wrap .nt-about-visit-media {
     max-width: min(100%, 24rem);
   }
-}
-
-/* Shop grid — compact cards, full product visible */
-#nt-shop-grid {
-  gap: 1rem;
-  min-height: 0;
-}
-@media (min-width: 1024px) {
-  #nt-shop-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-}
-.nt-shop-card-media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1;
-  max-height: 11rem;
-  padding: 0.65rem 0.75rem;
-  background: #f7f3e8;
-  border: 1px solid rgba(190, 201, 193, 0.4);
-  overflow: hidden;
-}
-.nt-shop-card-img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.35s ease;
-}
-.nt-shop-card:hover .nt-shop-card-img {
-  transform: scale(1.04);
-}
-.nt-shop-card-title {
-  font-size: clamp(1rem, 2.2vw, 1.125rem);
-  line-height: 1.25;
-}
-.nt-shop-card-tag {
-  font-size: 0.6875rem;
-  line-height: 1.35;
-}
-.nt-shop-card-price {
-  font-size: 1rem;
-  line-height: 1.2;
-}
-.nt-shop-card-footer .text-sm {
-  font-size: 0.8125rem;
 }
 
 /* Blog articles in v2 test shell */

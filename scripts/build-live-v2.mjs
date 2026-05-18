@@ -60,138 +60,10 @@ function write(file, html) {
   fs.writeFileSync(full, html);
 }
 
-function patchTailwindConfig(configHtml) {
-  if (!configHtml || /"maxWidth"\s*:/.test(configHtml)) return configHtml;
-  return configHtml.replace(
-    /"spacing"\s*:\s*\{/,
-    `"maxWidth": {
-                      "container-max": "1280px"
-              },
-              "spacing": {`
-  );
-}
-
-/** Safe offset below sticky promo + nav; strip legacy huge pt-* on main */
-function ensureMainBelowHeader(html) {
-  return html.replace(/<main\b([^>]*)>/gi, (tag, attrs) => {
-    const clsMatch = attrs.match(/\bclass=(["'])([\s\S]*?)\1/i);
-    if (!clsMatch) return '<main class="nt-main-below-header">';
-    const quote = clsMatch[1];
-    let classes = clsMatch[2]
-      .replace(/\bpt-(24|28|32|40)\b/g, '')
-      .replace(/\bmt-20\b/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-    if (!/\bnt-main-below-header\b/.test(classes)) {
-      classes = classes ? `nt-main-below-header ${classes}` : 'nt-main-below-header';
-    }
-    let nextAttrs = attrs.replace(clsMatch[0], `class=${quote}${classes}${quote}`);
-    nextAttrs = nextAttrs.replace(/\s+/g, ' ').trim();
-    return nextAttrs ? `<main ${nextAttrs}>` : '<main class="nt-main-below-header">';
-  });
-}
-
-function escHtml(s) {
-  return String(s ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/"/g, '&quot;');
-}
-
-function loadSiteDataForBuild() {
-  const src = fs.readFileSync(path.join(REPO, 'shared/site-data.js'), 'utf8');
-  globalThis.window = globalThis;
-  const fn = new Function('globalThis', `${src}\n;return globalThis.NT_SITE_DATA;`);
-  return fn(globalThis);
-}
-
-function staticShopCardHtml(p, data, { lcp = false } = {}) {
-  const href = p.href || data.productPageUrl(p.id);
-  const title = p.shortName || p.name;
-  const cartName = p.cartName || title;
-  const tag = p.tag || '';
-  const img = data.productImageUrl(p.thumb || p.image);
-  const fullImg = data.productImageUrl(p.image);
-  const wasBlock = p.was
-    ? `<span class="text-on-surface-variant/60 line-through text-sm">$${Number(p.was).toFixed(2)}</span>`
-    : '';
-  const imgAttrs = lcp
-    ? 'loading="eager" fetchpriority="high" decoding="async"'
-    : 'loading="lazy" decoding="async"';
-  return `<article id="${escHtml(p.id)}" class="nt-shop-card group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col">
-  <a href="${escHtml(href)}" class="nt-shop-card-media block relative">
-    <img alt="${escHtml(title)}" class="nt-shop-card-img" src="${escHtml(img)}" width="400" height="400" ${imgAttrs}/>
-    <span class="absolute top-3 left-3 bg-moringa-leaf text-pure-white text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase">${escHtml(p.badge || 'New')}</span>
-  </a>
-  <div class="nt-shop-card-body p-4 flex flex-col flex-grow">
-    <h3 class="nt-shop-card-title font-display text-forest-deep mb-1"><a href="${escHtml(href)}" class="hover:text-moringa-leaf">${escHtml(title)}</a></h3>
-    <p class="nt-shop-card-tag font-label-sm text-label-sm text-on-surface-variant mb-3">${escHtml(tag)}</p>
-    <div class="nt-shop-card-footer mt-auto flex items-center justify-between pt-3 border-t border-outline-variant/10">
-      <div class="flex flex-col">
-        <span class="nt-shop-card-price text-terracotta-clay font-bold">$${Number(p.price).toFixed(2)}</span>
-        ${wasBlock}
-      </div>
-      <button type="button" data-add-cart="${escHtml(p.id)}" data-name="${escHtml(cartName)}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${escHtml(fullImg)}" data-tag="${escHtml(tag)}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart">
-        <span class="material-symbols-outlined text-[18px] pointer-events-none">add_shopping_cart</span>
-      </button>
-    </div>
-  </div>
-</article>`;
-}
-
-function injectStaticShopGrid() {
-  const liveFile = path.join(REPO, 'products/index.html');
-  if (!fs.existsSync(liveFile)) return;
-  const data = loadSiteDataForBuild();
-  const products = data.getCatalogProducts?.() || [];
-  if (!products.length) return;
-  let html = fs.readFileSync(liveFile, 'utf8');
-  const cards = products.map((p, i) => staticShopCardHtml(p, data, { lcp: i === 0 })).join('');
-  let next = html.replace(/<div id="nt-shop-grid"([^>]*)>[\s\S]*?<\/div>/i, (_, attrs) => {
-    const cleanAttrs = attrs.replace(/\s*data-static-shop="1"/, '');
-    return `<div id="nt-shop-grid"${cleanAttrs} data-static-shop="1">${cards}</div>`;
-  });
-  if (next === html) {
-    next = html.replace(/<div id="nt-shop-grid"([^>]*)>\s*<\/div>/i, (_, attrs) => {
-      const cleanAttrs = attrs.replace(/\s*data-static-shop="1"/, '');
-      return `<div id="nt-shop-grid"${cleanAttrs} data-static-shop="1">${cards}</div>`;
-    });
-  }
-  if (next === html) {
-    console.warn('Skip static shop — nt-shop-grid placeholder not found');
-    return;
-  }
-  fs.writeFileSync(liveFile, next);
-  console.log(`Injected static shop grid (${products.length} products)`);
-}
-
-/** Lazy-load below-fold images; prioritize first hero/LCP image */
-function optimizeImages(html) {
-  let imgIndex = 0;
-  return html.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, rawAttrs) => {
-    const attrs = rawAttrs.replace(/\/\s*$/, '').trim();
-    imgIndex += 1;
-    if (/\bloading\s*=/.test(attrs)) return full;
-    const src = attrs.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1] || '';
-    const inHero =
-      imgIndex === 1 ||
-      /GC\.webp|aboutpage|contact\.png/i.test(src) ||
-      /\bfetchpriority\s*=\s*["']high["']/i.test(attrs);
-    const dims = /\bwidth\s*=/.test(attrs)
-      ? ''
-      : /product_photos|webp\//i.test(src)
-        ? ' width="400" height="400"'
-        : ' width="800" height="600"';
-    const extra = `${dims} ${inHero ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'} decoding="async"`;
-    return `<img ${attrs} ${extra.trim()}>`;
-  });
-}
-
 function extractTailwindBlock(testHtml) {
   const style = testHtml.match(/<style>[\s\S]*?<\/style>/i)?.[0] || '';
-  let config = testHtml.match(/<script id="tailwind-config">[\s\S]*?<\/script>/i)?.[0] || '';
-  config = patchTailwindConfig(config);
-  return { style, config };
+  const config = testHtml.match(/<script id="tailwind-config">[\s\S]*?<\/script>/i)?.[0] || '';
+  return [style, config].filter(Boolean).join('\n');
 }
 
 function extractPreservedHead(liveHtml) {
@@ -204,70 +76,15 @@ function extractPreservedHead(liveHtml) {
   head = head.replace(/<meta charset="[^"]*"\s*\/?>/gi, '');
   head = head.replace(/<meta name="viewport"[^>]*>/gi, '');
   head = head.replace(/<title>[\s\S]*?<\/title>/gi, '');
-  head = head.replace(/<script id="tailwind-config">[\s\S]*?<\/script>/gi, '');
   head = head.replace(/<script src="https:\/\/cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
-  head = head.replace(/<script[^>]*gsap\.min\.js[^>]*><\/script>/gi, '');
-  head = head.replace(/<script[^>]*ScrollTrigger[^>]*><\/script>/gi, '');
-  head = head.replace(/<link[^>]*fonts\.googleapis\.com[^>]*>/gi, '');
-  head = head.replace(/<noscript>[\s\S]*?fonts\.googleapis[\s\S]*?<\/noscript>/gi, '');
   head = head.replace(/<link[^>]*Literata[^>]*>/gi, '');
   head = head.replace(/<link[^>]*Material\+Symbols[^>]*>/gi, '');
   head = head.replace(/<link[^>]*v2-extra\.css[^>]*>/gi, '');
-  head = head.replace(/<link[^>]*shop-page\.css[^>]*>/gi, '');
-  head = head.replace(/<link[^>]*rel=["']preload["'][^>]*as=["']image["'][^>]*>/gi, '');
-  head = head.replace(/<script defer src="\/shared\/js\/shop-page\.js"><\/script>/gi, '');
   head = head.replace(/<style>[\s\S]*?<\/style>/gi, '');
-  head = head.replace(/<link rel="icon"[^>]*>/gi, '');
-  head = head.replace(/<link rel="apple-touch-icon"[^>]*>/gi, '');
-  head = head.replace(/<link rel="shortcut icon"[^>]*>/gi, '');
-  head = head.replace(/<script defer src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>/gi, '');
-  head = head.replace(/<script>\s*window\.dataLayer[\s\S]*?gtag\('config'[^)]*\);[\s\S]*?<\/script>/gi, '');
-  head = head.replace(/<script>\s*window\.addEventListener\(['"]load['"][\s\S]*?googletagmanager\.com\/gtag[\s\S]*?<\/script>/gi, '');
-  head = head.replace(/<!-- Google tag[\s\S]*?<\/script>\s*/gi, '');
-  head = head.replace(/<script[^>]*defer[^>]*cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
-  head = head.replace(/<link[^>]*rel=["']preload["'][^>]*fonts\.googleapis[^>]*>/gi, '');
-  head = head.replace(/<link[^>]*rel=["']preconnect["'][^>]*fonts\.googleapis[^>]*>/gi, '');
-  head = head.replace(/<link[^>]*rel=["']preconnect["'][^>]*fonts\.gstatic[^>]*>/gi, '');
-  head = head.replace(/<link[^>]*rel=["']preconnect["'][^>]*cdn\.tailwindcss[^>]*>/gi, '');
-  head = head.replace(/<meta[^>]*msapplication-TileImage[^>]*>/gi, '');
-  head = head.replace(/<meta[^>]*msapplication-TileColor[^>]*>/gi, '');
-  head = head.replace(/<!-- Favicons[\s\S]*?-->\s*/gi, '');
   head = head.replace(/<script[^>]*defer-loader\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<script[^>]*reddit-pixel\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<!-- Reddit Pixel[\s\S]*?<\/script>\s*/gi, '');
-  head = head.replace(/<noscript>\s*<\/noscript>/gi, '');
-  head = head.replace(/^\s+$/gm, '');
-  head = head.replace(/\n{3,}/g, '\n\n');
   return head.trim();
-}
-
-function analyticsSnippet() {
-  return `<!-- Google tag (gtag.js) - after load -->
-<script>
-window.addEventListener('load', function () {
-  var s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-  document.head.appendChild(s);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
-});
-</script>`;
-}
-
-function v2HeadAssets({ style = '', config = '' } = {}) {
-  return `<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-${config}
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-${style}`;
 }
 
 function extractLiveTitle(liveHtml) {
@@ -333,8 +150,6 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
     }],
     [/src="\.\.\/\.\.\/assets\//g, 'src="/assets/'],
     [/href="\.\.\/\.\.\/assets\//g, 'href="/assets/'],
-    [/data-image="\.\.\/\.\.\/assets\//g, 'data-image="/assets/'],
-    [/data-image="\.\.\/assets\//g, 'data-image="/assets/'],
     [/src="\.\.\/assets\//g, 'src="/assets/'],
     [/href="\.\.\/assets\//g, 'href="/assets/'],
     [/src="\.\.\/\.\.\/documents\//g, 'src="/documents/'],
@@ -350,8 +165,6 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
 
   for (const [re, rep] of replacements) out = out.replace(re, rep);
 
-  out = ensureMainBelowHeader(out);
-
   if (isBlogArticle) {
     out = out.replace(/href="\/blog\/index\.html"/g, 'href="/blog/"');
     out = out.replace(
@@ -365,17 +178,11 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
 
 function liveScripts({ cart = false, blogArticles = false, payment = false }) {
   const lines = [
+    '<script src="/scripts/global/defer-loader.js"></script>',
+    '<script src="/scripts/global/reddit-pixel.js"></script>',
     '<script src="/shared/site-data.js"></script>',
   ];
   if (blogArticles) lines.push('<script src="/shared/js/blog-articles.js"></script>');
-  lines.push(
-    '<script src="/scripts/global/cart.js"></script>',
-    '<script src="/shared/js/cart-v2-ui.js"></script>',
-    '<script src="/shared/js/layout-v2.js"></script>',
-    '<script src="/shared/js/v2-site.js"></script>',
-    '<script defer src="/scripts/global/defer-loader.js"></script>',
-    '<script defer src="/scripts/global/reddit-pixel.js"></script>'
-  );
   if (payment) {
     lines.push(
       '<script src="/scripts/global/paypal-client-config.js"></script>',
@@ -384,6 +191,12 @@ function liveScripts({ cart = false, blogArticles = false, payment = false }) {
     );
   }
   if (cart || payment) lines.push('<script src="/scripts/global/shipping-rates.js"></script>');
+  lines.push(
+    '<script src="/scripts/global/cart.js"></script>',
+    '<script src="/shared/js/cart-v2-ui.js"></script>',
+    '<script src="/shared/js/layout-v2.js"></script>',
+    '<script src="/shared/js/v2-site.js"></script>'
+  );
   return lines.join('\n');
 }
 
@@ -448,7 +261,6 @@ function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts
   const bodyClass = opts.isBlogArticle
     ? 'bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article'
     : 'bg-background text-on-background font-body-md overflow-x-hidden';
-  const optimizedBody = optimizeImages(body);
 
   return `<!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
@@ -457,12 +269,16 @@ function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>${title}</title>
 ${preservedHead}
-${v2HeadAssets(tailwind)}
-${analyticsSnippet()}
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
 ${blogCss}
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+${tailwind}
 </head>
 <body class="${bodyClass}">
-${optimizedBody}
+${body}
 ${liveScripts(opts)}
 ${footScripts}
 </body>
@@ -481,13 +297,16 @@ function extractPaymentFromLive(liveHtml) {
   const searchFrom = mainIdx >= 0 ? mainIdx : 0;
   const styleMatch = liveHtml.slice(searchFrom).match(/<style>[\s\S]*?<\/style>/i);
   const start = liveHtml.indexOf('<div class="checkout-wrap">', searchFrom);
-  let end = liveHtml.indexOf('<div id="nt-footer">', start);
-  if (end < 0) end = liveHtml.indexOf('<footer>', start);
+  const end = liveHtml.indexOf('<footer>', start);
   const checkout =
     start >= 0 && end > start ? liveHtml.slice(start, end).trim() : '';
-  const inlineScript =
-    liveHtml.match(/<script>\s*function getCart\(\)[\s\S]*?<\/script>/i)?.[0] || '';
-  return { style: styleMatch?.[0] || '', checkout, checkoutScripts: inlineScript };
+  const scriptStart = liveHtml.indexOf('<script src="/scripts/global/paypal-client-config.js">');
+  const scriptEnd = liveHtml.lastIndexOf('</script>', liveHtml.indexOf('</body>'));
+  const checkoutScripts =
+    scriptStart >= 0 && scriptEnd > scriptStart
+      ? liveHtml.slice(scriptStart, scriptEnd + '</script>'.length).trim()
+      : '';
+  return { style: styleMatch?.[0] || '', checkout, checkoutScripts };
 }
 
 function sanitizePaymentStyles(styleHtml) {
@@ -501,7 +320,7 @@ function sanitizePaymentStyles(styleHtml) {
 function paymentLiveBody(liveHtml) {
   const { style, checkout } = extractPaymentFromLive(liveHtml);
   return `${v2ShellPrefix()}
-<main class="nt-main-below-header pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-payment-live">
+<main class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-payment-live">
 ${sanitizePaymentStyles(style)}
 ${checkout}
 </main>
@@ -512,7 +331,7 @@ function redirectStubBody(target, label) {
   const safeTarget = target.replace(/"/g, '&quot;');
   const safeLabel = label.replace(/</g, '&lt;');
   return `${v2ShellPrefix()}
-<main class="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<main class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
   <p class="font-body-lg text-on-surface-variant mb-6">Redirecting to the ${safeLabel}…</p>
   <a href="${safeTarget}" class="inline-block bg-moringa-leaf text-pure-white px-8 py-3 rounded-full font-label-lg">Continue</a>
 </main>
@@ -524,7 +343,7 @@ function productPdpBody() {
 <div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
-<main id="nt-pdp-app" class="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"></main>
+<main id="nt-pdp-app" class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"></main>
 <div id="nt-footer"></div>`;
 }
 
@@ -642,7 +461,7 @@ function applyPaymentPage() {
     body,
     tailwind,
     footScripts: checkoutScripts,
-    opts: { cart: true, blogArticles: false, isBlogArticle: false, payment: true },
+    opts: { cart: false, blogArticles: false, isBlogArticle: false, payment: true },
   });
   write(liveFile, html);
   console.log('Live payment (PayPal preserved):', liveFile);
@@ -720,46 +539,26 @@ function applyBlogArticle(slug) {
   return true;
 }
 
-const onlyArg = process.argv.find((a) => a.startsWith('--only='));
-const onlyFilter = onlyArg ? onlyArg.slice('--only='.length).split(',') : null;
-const want = (key) => !onlyFilter || onlyFilter.includes(key);
-
 patchSiteData();
-if (!onlyFilter) generateBlogArticlesJs();
+generateBlogArticlesJs();
 
-if (want('payment')) applyPaymentPage();
-if (!onlyFilter || want('pages') || onlyFilter.includes('shop')) {
-  for (const entry of PAGE_MAP) {
-    if (onlyFilter?.includes('shop') && entry.live !== 'products/index.html') continue;
-    applyPage(entry);
-  }
-  if (!onlyFilter || onlyFilter.includes('shop')) injectStaticShopGrid();
-}
-if (want('redirects')) {
-  for (const stub of REDIRECT_STUB_PAGES) applyRedirectStub(stub);
-}
-if (want('products')) {
-  for (const slug of PRODUCT_SLUGS) applyProduct(slug);
-}
+applyPaymentPage();
+for (const entry of PAGE_MAP) applyPage(entry);
+for (const stub of REDIRECT_STUB_PAGES) applyRedirectStub(stub);
+for (const slug of PRODUCT_SLUGS) applyProduct(slug);
 
 let blogCount = 0;
-if (want('blog')) {
-  const blogFiles = fs
-    .readdirSync(TEST_BLOG)
-    .filter((f) => f.endsWith('-test.html') && f !== 'index-test.html' && f !== 'blog-test.html');
-  for (const f of blogFiles) {
-    const slug = f.replace(/-test\.html$/, '');
-    if (applyBlogArticle(slug)) blogCount++;
-  }
+const blogFiles = fs
+  .readdirSync(TEST_BLOG)
+  .filter((f) => f.endsWith('-test.html') && f !== 'index-test.html' && f !== 'blog-test.html');
+for (const f of blogFiles) {
+  const slug = f.replace(/-test\.html$/, '');
+  if (applyBlogArticle(slug)) blogCount++;
 }
 console.log(
-  onlyFilter
-    ? `\nDone (filter: ${onlyFilter.join(',')}).`
-    : `\nDone. ${PAGE_MAP.length} mapped pages, payment + ${REDIRECT_STUB_PAGES.length} redirect stubs, ${PRODUCT_SLUGS.length} PDPs, ${blogCount} blog articles.`
+  `\nDone. ${PAGE_MAP.length} mapped pages, payment + ${REDIRECT_STUB_PAGES.length} redirect stubs, ${PRODUCT_SLUGS.length} PDPs, ${blogCount} blog articles.`
 );
 
-if (!onlyFilter) {
-  console.log('\nNormalizing live test URLs in HTML…');
-  const { execSync } = await import('child_process');
-  execSync('node scripts/fix-live-test-links.mjs', { stdio: 'inherit', cwd: REPO });
-}
+console.log('\nNormalizing live test URLs in HTML…');
+const { execSync } = await import('child_process');
+execSync('node scripts/fix-live-test-links.mjs', { stdio: 'inherit', cwd: REPO });

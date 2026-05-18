@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
 <title>NutriThrive | Lab-Tested Moringa Melbourne (Preview)</title>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/></noscript>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/></noscript>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../shared/css/v2-extra.css"/>
 <link rel="icon" href="../../assets/images/logo/LOGO.webp"/>
 <style>
@@ -83,9 +82,6 @@
                       "xl": "0.75rem",
                       "full": "9999px"
               },
-              "maxWidth": {
-                      "container-max": "1280px"
-              },
               "spacing": {
                       "container-max": "1280px",
                       "margin-mobile": "20px",
@@ -118,7 +114,7 @@
           },
         }
     </script>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden has-test-banner">
 <div class="nt-sticky-top">
@@ -126,10 +122,10 @@
 <div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
-<main class="nt-main-below-header">
+<main>
 <!-- Hero Section -->
-<section class="relative py-12 md:py-16 lg:py-20 overflow-hidden bg-parchment-base">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+<section class="relative min-h-[85vh] flex items-center overflow-hidden bg-parchment-base">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full grid md:grid-cols-2 gap-12 items-center">
 <div class="relative z-10 order-2 md:order-1">
 <div class="inline-flex items-center gap-2 bg-moringa-leaf/10 text-moringa-leaf px-4 py-2 rounded-full mb-6">
 <span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
@@ -158,7 +154,7 @@
 </div>
 <div class="relative order-1 md:order-2">
 <div class="absolute -z-10 bg-primary-fixed/30 w-[140%] h-[140%] top-[-20%] left-[-20%] organic-shape animate-pulse-slow"></div>
-<img alt="Nutri Thrive Moringa Powder in its natural raw form within a traditional stone mortar and pestle" class="w-full h-auto drop-shadow-2xl rounded-2xl transform md:rotate-2 hover:rotate-0 transition-transform duration-700" src="../../assets/images/blog/GC.webp" width="800" height="600" loading="eager" fetchpriority="high" decoding="async"/>
+<img alt="Nutri Thrive Moringa Powder in its natural raw form within a traditional stone mortar and pestle" class="w-full h-auto drop-shadow-2xl rounded-2xl transform md:rotate-2 hover:rotate-0 transition-transform duration-700" src="../../assets/images/blog/GC.webp"/>
 </div>
 </div>
 </section>
@@ -219,7 +215,62 @@
                         <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
 </a>
 </div>
-<div id="nt-home-products-mount" class="grid grid-cols-1 md:grid-cols-3 gap-gutter min-h-[12rem]"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Product 1 -->
+<div class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
+<img alt="Premium Moringa Powder 100g pack showing fine bright green powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean product shot of a high-quality brown paper resealable pouch of Moringa Powder. The bag is standing upright against a soft, organic background of fresh moringa leaves. Natural sunlight creates gentle shadows, emphasizing the premium quality and freshness of the product. The overall aesthetic is minimalist, modern, and trustworthy, using the brand's earthy green and parchment color palette." src="../../assets/images/product_photos/moringa.jpeg"/>
+<span class="absolute top-4 left-4 bg-moringa-leaf text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">100g Pack</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-display text-headline-md text-forest-deep mb-2">Moringa Powder</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">100G PACK • 30 SERVINGS</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-terracotta-clay font-bold text-lg">$11.00</span>
+<span class="text-on-surface-variant/60 line-through text-sm">$14.00</span>
+</div>
+<button type="button" data-add-cart="moringa-powder-100g" data-name="Moringa Powder — 100g" data-price="11" data-was="14" data-image="../../assets/images/product_photos/moringa.jpeg" class="nt-add-cart-btn bg-forest-deep text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart"><span class="material-symbols-outlined pointer-events-none">add_shopping_cart</span></button>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
+<img alt="4 Pack Moringa Bundle showing four pouches of premium moringa powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="../../assets/images/product_photos/moringa-400g-bundle.jpeg"/>
+<span class="absolute top-4 left-4 bg-terracotta-clay text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">Best Value</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-display text-headline-md text-forest-deep mb-2">3 + 1 = 400g Bundle</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">4 PACK • BULK SAVINGS</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-terracotta-clay font-bold text-lg">$35.00</span>
+<span class="text-on-surface-variant/60 line-through text-sm">$56.00</span>
+</div>
+<button type="button" data-add-cart="moringa-400g" data-name="3 + 1 = 400g Moringa" data-price="35" data-was="56" data-image="../../assets/images/product_photos/moringa-400g-bundle.jpeg" class="nt-add-cart-btn bg-forest-deep text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart"><span class="material-symbols-outlined pointer-events-none">add_shopping_cart</span></button>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
+<img alt="Moringa Soap bar next to raw moringa powder" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="../../assets/images/product_photos/soap.jpeg"/>
+<span class="absolute top-4 left-4 bg-primary-container text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">Eco Friendly</span>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-display text-headline-md text-forest-deep mb-2">Moringa Soap</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">95G PACK • NATURAL SOAP</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-terracotta-clay font-bold text-lg">$7.00</span>
+<span class="text-on-surface-variant/60 line-through text-sm">$9.49</span>
+</div>
+<button type="button" data-add-cart="moringa-soap" data-name="Moringa Soap" data-price="7" data-was="9.49" data-image="../../assets/images/product_photos/soap.jpeg" class="nt-add-cart-btn bg-forest-deep text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart"><span class="material-symbols-outlined pointer-events-none">add_shopping_cart</span></button>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <!-- Why Nutri Thrive (Comparison) -->
