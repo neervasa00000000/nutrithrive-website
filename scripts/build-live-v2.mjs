@@ -71,20 +71,23 @@ function patchTailwindConfig(configHtml) {
   );
 }
 
-/** Remove legacy fixed-header offsets; header is in-flow in .nt-sticky-top */
-function stripStickyHeaderMainOffset(html) {
+/** Safe offset below sticky promo + nav; strip legacy huge pt-* on main */
+function ensureMainBelowHeader(html) {
   return html.replace(/<main\b([^>]*)>/gi, (tag, attrs) => {
     const clsMatch = attrs.match(/\bclass=(["'])([\s\S]*?)\1/i);
-    if (!clsMatch) return tag;
+    if (!clsMatch) return '<main class="nt-main-below-header">';
     const quote = clsMatch[1];
-    const cleaned = clsMatch[2]
+    let classes = clsMatch[2]
       .replace(/\bpt-(24|28|32|40)\b/g, '')
       .replace(/\bmt-20\b/g, '')
       .replace(/\s+/g, ' ')
       .trim();
-    let nextAttrs = attrs.replace(clsMatch[0], cleaned ? `class=${quote}${cleaned}${quote}` : '');
+    if (!/\bnt-main-below-header\b/.test(classes)) {
+      classes = classes ? `nt-main-below-header ${classes}` : 'nt-main-below-header';
+    }
+    let nextAttrs = attrs.replace(clsMatch[0], `class=${quote}${classes}${quote}`);
     nextAttrs = nextAttrs.replace(/\s+/g, ' ').trim();
-    return nextAttrs ? `<main ${nextAttrs}>` : '<main>';
+    return nextAttrs ? `<main ${nextAttrs}>` : '<main class="nt-main-below-header">';
   });
 }
 
@@ -144,10 +147,16 @@ function injectStaticShopGrid() {
   if (!products.length) return;
   let html = fs.readFileSync(liveFile, 'utf8');
   const cards = products.map((p, i) => staticShopCardHtml(p, data, { lcp: i === 0 })).join('');
-  const next = html.replace(
-    /<div id="nt-shop-grid"([^>]*)>\s*<\/div>/i,
-    `<div id="nt-shop-grid"$1 data-static-shop="1">${cards}</div>`
-  );
+  let next = html.replace(/<div id="nt-shop-grid"([^>]*)>[\s\S]*?<\/div>/i, (_, attrs) => {
+    const cleanAttrs = attrs.replace(/\s*data-static-shop="1"/, '');
+    return `<div id="nt-shop-grid"${cleanAttrs} data-static-shop="1">${cards}</div>`;
+  });
+  if (next === html) {
+    next = html.replace(/<div id="nt-shop-grid"([^>]*)>\s*<\/div>/i, (_, attrs) => {
+      const cleanAttrs = attrs.replace(/\s*data-static-shop="1"/, '');
+      return `<div id="nt-shop-grid"${cleanAttrs} data-static-shop="1">${cards}</div>`;
+    });
+  }
   if (next === html) {
     console.warn('Skip static shop — nt-shop-grid placeholder not found');
     return;
@@ -324,6 +333,8 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
     }],
     [/src="\.\.\/\.\.\/assets\//g, 'src="/assets/'],
     [/href="\.\.\/\.\.\/assets\//g, 'href="/assets/'],
+    [/data-image="\.\.\/\.\.\/assets\//g, 'data-image="/assets/'],
+    [/data-image="\.\.\/assets\//g, 'data-image="/assets/'],
     [/src="\.\.\/assets\//g, 'src="/assets/'],
     [/href="\.\.\/assets\//g, 'href="/assets/'],
     [/src="\.\.\/\.\.\/documents\//g, 'src="/documents/'],
@@ -339,7 +350,7 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
 
   for (const [re, rep] of replacements) out = out.replace(re, rep);
 
-  out = stripStickyHeaderMainOffset(out);
+  out = ensureMainBelowHeader(out);
 
   if (isBlogArticle) {
     out = out.replace(/href="\/blog\/index\.html"/g, 'href="/blog/"');
@@ -490,7 +501,7 @@ function sanitizePaymentStyles(styleHtml) {
 function paymentLiveBody(liveHtml) {
   const { style, checkout } = extractPaymentFromLive(liveHtml);
   return `${v2ShellPrefix()}
-<main class="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-payment-live">
+<main class="nt-main-below-header pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-payment-live">
 ${sanitizePaymentStyles(style)}
 ${checkout}
 </main>
