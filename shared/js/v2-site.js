@@ -838,7 +838,11 @@
     const data = D();
     const grid = $('#nt-shop-grid');
     if (!grid || !data?.getCatalogProducts) return;
-    if (grid.dataset.ntShopReady) return;
+    if (grid.dataset.ntShopReady || grid.children.length > 0) {
+      if (grid.children.length > 0) grid.dataset.ntShopReady = '1';
+      normalizeAddCartButtons(grid);
+      return;
+    }
     const products = data.getCatalogProducts();
     if (!products.length) return;
     grid.dataset.ntShopReady = '1';
