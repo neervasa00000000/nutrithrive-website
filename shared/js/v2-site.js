@@ -885,9 +885,10 @@
       if (viewAll) viewAll.href = '/products/';
 
       const oldGrid = productsSection.querySelector('.grid');
-      if (oldGrid && data.products?.length) {
+      const catalog = data.getCatalogProducts?.() || [];
+      if (oldGrid && catalog.length) {
         productsSection.dataset.ntProductsReady = '1';
-        const cards = data.products.map((p) => productCardHtml(p)).join('');
+        const cards = catalog.map((p) => productCardHtml(p)).join('');
         const wrap = document.createElement('div');
         wrap.className = 'nt-products-carousel-wrap';
         wrap.innerHTML = `

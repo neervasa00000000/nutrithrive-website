@@ -41,23 +41,31 @@
   border-bottom: 1px solid rgba(190, 201, 193, 0.3);
   box-shadow: 0 1px 8px rgba(26, 46, 34, 0.06);
 }
-/* Modest gap below sticky promo + nav (header is in-flow; not the old pt-28) */
+/* Sticky promo + nav: in-flow stack (no pt-28 on main). Anchor scroll clears header. */
+html {
+  scroll-padding-top: 8.5rem;
+}
 main.nt-main-below-header,
 .nt-main-below-header {
-  padding-top: 1rem;
+  padding-top: 0;
   margin-top: 0;
 }
 body.has-test-banner main.nt-main-below-header,
 body.has-test-banner .nt-main-below-header {
-  padding-top: 1.25rem;
+  padding-top: 0;
 }
 
-/* Shop — hero + headings clear sticky bar when scrolling to anchors */
-.nt-shop-page .nt-shop-hero {
+/* First content block — small pad so headings are not clipped under sticky bar */
+.nt-shop-page .nt-shop-hero,
+main.nt-main-below-header > section:first-child {
   scroll-margin-top: 8.5rem;
 }
-.nt-shop-page .nt-shop-hero h1,
-.nt-shop-page .nt-shop-hero h2 {
+.nt-shop-page .nt-shop-hero {
+  padding-top: 1.5rem;
+}
+main.nt-main-below-header > section:first-child h1,
+main.nt-main-below-header > section:first-child h2,
+.nt-blog-main h1 {
   scroll-margin-top: 8.5rem;
 }
 
