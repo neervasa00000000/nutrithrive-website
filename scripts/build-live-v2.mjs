@@ -76,15 +76,58 @@ function extractPreservedHead(liveHtml) {
   head = head.replace(/<meta charset="[^"]*"\s*\/?>/gi, '');
   head = head.replace(/<meta name="viewport"[^>]*>/gi, '');
   head = head.replace(/<title>[\s\S]*?<\/title>/gi, '');
+  head = head.replace(/<script id="tailwind-config">[\s\S]*?<\/script>/gi, '');
   head = head.replace(/<script src="https:\/\/cdn\.tailwindcss\.com[^>]*><\/script>/gi, '');
+  head = head.replace(/<script[^>]*gsap\.min\.js[^>]*><\/script>/gi, '');
+  head = head.replace(/<script[^>]*ScrollTrigger[^>]*><\/script>/gi, '');
+  head = head.replace(/<link[^>]*fonts\.googleapis\.com[^>]*>/gi, '');
+  head = head.replace(/<noscript>[\s\S]*?fonts\.googleapis[\s\S]*?<\/noscript>/gi, '');
   head = head.replace(/<link[^>]*Literata[^>]*>/gi, '');
   head = head.replace(/<link[^>]*Material\+Symbols[^>]*>/gi, '');
   head = head.replace(/<link[^>]*v2-extra\.css[^>]*>/gi, '');
   head = head.replace(/<style>[\s\S]*?<\/style>/gi, '');
+  head = head.replace(/<link rel="icon"[^>]*>/gi, '');
+  head = head.replace(/<link rel="apple-touch-icon"[^>]*>/gi, '');
+  head = head.replace(/<link rel="shortcut icon"[^>]*>/gi, '');
+  head = head.replace(/<script defer src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>/gi, '');
+  head = head.replace(/<script>\s*window\.dataLayer[\s\S]*?gtag\('config'[^)]*\);[\s\S]*?<\/script>/gi, '');
   head = head.replace(/<script[^>]*defer-loader\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<script[^>]*reddit-pixel\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<!-- Reddit Pixel[\s\S]*?<\/script>\s*/gi, '');
+  head = head.replace(/<link rel="preconnect" href="https:\/\/cdn\.tailwindcss\.com"[^>]*>/gi, '');
+  head = head.replace(/<noscript>\s*<\/noscript>/gi, '');
+  head = head.replace(/\n{3,}/g, '\n\n');
   return head.trim();
+}
+
+function analyticsSnippet() {
+  return `<!-- Google tag (gtag.js) - after load -->
+<script>
+window.addEventListener('load', function () {
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP');
+});
+</script>`;
+}
+
+function v2HeadAssets(tailwind) {
+  return `<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+${tailwind}
+<script defer src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></noscript>
+<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
+<link rel="icon" href="/assets/images/logo/LOGO.webp"/>`;
 }
 
 function extractLiveTitle(liveHtml) {
@@ -178,24 +221,24 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
 
 function liveScripts({ cart = false, blogArticles = false, payment = false }) {
   const lines = [
-    '<script src="/scripts/global/defer-loader.js"></script>',
-    '<script src="/scripts/global/reddit-pixel.js"></script>',
-    '<script src="/shared/site-data.js"></script>',
+    '<script defer src="/scripts/global/defer-loader.js"></script>',
+    '<script defer src="/scripts/global/reddit-pixel.js"></script>',
+    '<script defer src="/shared/site-data.js"></script>',
   ];
-  if (blogArticles) lines.push('<script src="/shared/js/blog-articles.js"></script>');
+  if (blogArticles) lines.push('<script defer src="/shared/js/blog-articles.js"></script>');
   if (payment) {
     lines.push(
-      '<script src="/scripts/global/paypal-client-config.js"></script>',
-      '<script src="/scripts/global/paypal-sdk-loader.js"></script>',
-      '<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>'
+      '<script defer src="/scripts/global/paypal-client-config.js"></script>',
+      '<script defer src="/scripts/global/paypal-sdk-loader.js"></script>',
+      '<script defer src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>'
     );
   }
-  if (cart || payment) lines.push('<script src="/scripts/global/shipping-rates.js"></script>');
+  if (cart || payment) lines.push('<script defer src="/scripts/global/shipping-rates.js"></script>');
   lines.push(
-    '<script src="/scripts/global/cart.js"></script>',
-    '<script src="/shared/js/cart-v2-ui.js"></script>',
-    '<script src="/shared/js/layout-v2.js"></script>',
-    '<script src="/shared/js/v2-site.js"></script>'
+    '<script defer src="/scripts/global/cart.js"></script>',
+    '<script defer src="/shared/js/cart-v2-ui.js"></script>',
+    '<script defer src="/shared/js/layout-v2.js"></script>',
+    '<script defer src="/shared/js/v2-site.js"></script>'
   );
   return lines.join('\n');
 }
@@ -269,13 +312,9 @@ function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>${title}</title>
 ${preservedHead}
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
+${analyticsSnippet()}
+${v2HeadAssets(tailwind)}
 ${blogCss}
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-${tailwind}
 </head>
 <body class="${bodyClass}">
 ${body}

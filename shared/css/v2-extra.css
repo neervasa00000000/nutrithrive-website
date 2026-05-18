@@ -520,6 +520,7 @@ details[open] .expand-icon {
 /* Shop grid — compact cards, full product visible */
 #nt-shop-grid {
   gap: 1rem;
+  min-height: 28rem;
 }
 @media (min-width: 1024px) {
   #nt-shop-grid {

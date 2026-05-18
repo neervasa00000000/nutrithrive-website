@@ -1182,6 +1182,14 @@
     C()?.updateUI?.();
   }
 
+  if (isShopPage()) {
+    try {
+      initShopPage();
+    } catch (err) {
+      console.error('[v2] initShopPage (early)', err);
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
