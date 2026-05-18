@@ -12,6 +12,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { transformLiveLinks } from './lib/live-link-transform.mjs';
+import {
+  buildPerfHeadBlock,
+  dedupeTailwindConfig,
+  stripPerfDuplicatesFromPreserved,
+} from './lib/v2-head-perf.mjs';
+import { patchShopGridBody } from './lib/shop-static-html.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
@@ -84,7 +90,8 @@ function extractPreservedHead(liveHtml) {
   head = head.replace(/<script[^>]*defer-loader\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<script[^>]*reddit-pixel\.js[^>]*><\/script>/gi, '');
   head = head.replace(/<!-- Reddit Pixel[\s\S]*?<\/script>\s*/gi, '');
-  return head.trim();
+  head = head.replace(/<script id="tailwind-config">[\s\S]*?<\/script>\s*/gi, '');
+  return stripPerfDuplicatesFromPreserved(head);
 }
 
 function extractLiveTitle(liveHtml) {
@@ -178,8 +185,8 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
 
 function liveScripts({ cart = false, blogArticles = false, payment = false }) {
   const lines = [
-    '<script src="/scripts/global/defer-loader.js"></script>',
-    '<script src="/scripts/global/reddit-pixel.js"></script>',
+    '<script src="/scripts/global/defer-loader.js" defer></script>',
+    '<script src="/scripts/global/reddit-pixel.js" defer></script>',
     '<script src="/shared/site-data.js"></script>',
   ];
   if (blogArticles) lines.push('<script src="/shared/js/blog-articles.js"></script>');
@@ -254,7 +261,7 @@ function patchOrderThankYouBody(body) {
   );
 }
 
-function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts = '' }) {
+function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts = '', isShop = false }) {
   const blogCss = opts.isBlogArticle
     ? '<link rel="stylesheet" href="/blog/blog-v2-prose.css"/>'
     : '';
@@ -268,6 +275,7 @@ function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>${title}</title>
+${buildPerfHeadBlock({ shop: isShop })}
 ${preservedHead}
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -422,17 +430,20 @@ function applyPage(entry) {
   const preserved = extractPreservedHead(liveHtml);
   const title = extractLiveTitle(liveHtml);
   let body = transformToLive(extractV2Body(testHtml));
+  if (liveFile === 'products/index.html') body = patchShopGridBody(body);
   if (entry.newsletterLive) body = patchNewsletterBody(body);
   if (entry.footScripts === 'orderThankYou') body = patchOrderThankYouBody(body);
   const footScripts = entry.footScripts ? FOOT_SCRIPTS[entry.footScripts] || '' : '';
-  const html = buildLivePage({
+  let html = buildLivePage({
     preservedHead: preserved,
     title,
     body,
     tailwind,
     footScripts,
+    isShop: liveFile === 'products/index.html',
     opts: { cart: entry.cart, blogArticles: entry.blogArticles, isBlogArticle: false },
   });
+  html = dedupeTailwindConfig(html);
   write(liveFile, html);
   console.log('Live ← test:', liveFile);
 }
