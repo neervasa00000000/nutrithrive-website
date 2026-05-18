@@ -131,7 +131,7 @@ body.has-test-banner main {
 /* Shop carousel cards (if used elsewhere) */
 .nt-products-carousel-wrap {
   position: relative;
-  padding: 0 52px;
+  padding: 0 40px;
 }
 .nt-carousel-viewport {
   overflow: hidden;
@@ -140,8 +140,8 @@ body.has-test-banner main {
 }
 .nt-carousel-track {
   display: flex;
-  align-items: stretch;
-  gap: 1.5rem;
+  align-items: flex-start;
+  gap: 1rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -151,17 +151,68 @@ body.has-test-banner main {
   scrollbar-color: #0f6b4d #f2eee3;
 }
 .nt-carousel-card {
-  flex: 0 0 280px;
-  width: 280px;
+  flex: 0 0 200px;
+  width: 200px;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   position: relative;
   isolation: isolate;
 }
+.nt-carousel-card .nt-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  max-height: 9.25rem;
+  padding: 0.5rem 0.6rem;
+  background: rgba(242, 238, 227, 0.55);
+  overflow: hidden;
+}
+.nt-carousel-card .nt-card-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+.nt-carousel-card:hover .nt-card-img {
+  transform: scale(1.04);
+}
+.nt-carousel-card .nt-card-body {
+  padding: 0.75rem 0.875rem 0.875rem;
+}
+.nt-carousel-card .nt-card-title {
+  font-size: 0.9375rem;
+  line-height: 1.25;
+  margin: 0 0 0.25rem;
+}
+.nt-carousel-card .nt-card-tag {
+  font-size: 0.625rem;
+  line-height: 1.35;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.02em;
+}
 .nt-carousel-card .nt-card-footer {
   position: relative;
   z-index: 2;
+  padding-top: 0.625rem;
+}
+.nt-carousel-card .nt-card-price-now {
+  font-size: 0.9375rem;
+}
+.nt-carousel-card .nt-card-was {
+  font-size: 0.75rem;
+}
+.nt-carousel-card .nt-carousel-add-btn {
+  width: 2rem;
+  height: 2rem;
+}
+.nt-carousel-card .nt-carousel-add-btn .material-symbols-outlined {
+  font-size: 1.125rem;
 }
 .nt-carousel-card .nt-card-media,
 .nt-carousel-card .nt-card-title a {
@@ -228,8 +279,11 @@ button[data-add-cart] {
     padding: 0 44px;
   }
   .nt-carousel-card {
-    flex: 0 0 min(260px, 78vw);
-    width: min(260px, 78vw);
+    flex: 0 0 min(168px, 44vw);
+    width: min(168px, 44vw);
+  }
+  .nt-carousel-card .nt-card-media {
+    max-height: 7.5rem;
   }
   .nt-carousel-btn {
     width: 36px;
@@ -461,6 +515,55 @@ details[open] .expand-icon {
   .nt-about-visit-wrap .nt-about-visit-media {
     max-width: min(100%, 24rem);
   }
+}
+
+/* Shop grid — compact cards, full product visible */
+#nt-shop-grid {
+  gap: 1rem;
+}
+@media (min-width: 1024px) {
+  #nt-shop-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+.nt-shop-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  max-height: 11rem;
+  padding: 0.65rem 0.75rem;
+  background: rgba(242, 238, 227, 0.55);
+  overflow: hidden;
+}
+.nt-shop-card-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+.nt-shop-card:hover .nt-shop-card-img {
+  transform: scale(1.04);
+}
+.nt-shop-card-title {
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.25;
+}
+.nt-shop-card-tag {
+  font-size: 0.6875rem;
+  line-height: 1.35;
+}
+.nt-shop-card-price {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+.nt-shop-card-footer .text-sm {
+  font-size: 0.8125rem;
 }
 
 /* Blog articles in v2 test shell */
