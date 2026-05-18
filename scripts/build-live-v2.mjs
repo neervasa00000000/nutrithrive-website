@@ -348,16 +348,13 @@ function extractPaymentFromLive(liveHtml) {
   const searchFrom = mainIdx >= 0 ? mainIdx : 0;
   const styleMatch = liveHtml.slice(searchFrom).match(/<style>[\s\S]*?<\/style>/i);
   const start = liveHtml.indexOf('<div class="checkout-wrap">', searchFrom);
-  const end = liveHtml.indexOf('<footer>', start);
+  let end = liveHtml.indexOf('<div id="nt-footer">', start);
+  if (end < 0) end = liveHtml.indexOf('<footer>', start);
   const checkout =
     start >= 0 && end > start ? liveHtml.slice(start, end).trim() : '';
-  const scriptStart = liveHtml.indexOf('<script src="/scripts/global/paypal-client-config.js">');
-  const scriptEnd = liveHtml.lastIndexOf('</script>', liveHtml.indexOf('</body>'));
-  const checkoutScripts =
-    scriptStart >= 0 && scriptEnd > scriptStart
-      ? liveHtml.slice(scriptStart, scriptEnd + '</script>'.length).trim()
-      : '';
-  return { style: styleMatch?.[0] || '', checkout, checkoutScripts };
+  const inlineScript =
+    liveHtml.match(/<script>\s*function getCart\(\)[\s\S]*?<\/script>/i)?.[0] || '';
+  return { style: styleMatch?.[0] || '', checkout, checkoutScripts: inlineScript };
 }
 
 function sanitizePaymentStyles(styleHtml) {
@@ -512,7 +509,7 @@ function applyPaymentPage() {
     body,
     tailwind,
     footScripts: checkoutScripts,
-    opts: { cart: false, blogArticles: false, isBlogArticle: false, payment: true },
+    opts: { cart: true, blogArticles: false, isBlogArticle: false, payment: true },
   });
   write(liveFile, html);
   console.log('Live payment (PayPal preserved):', liveFile);
