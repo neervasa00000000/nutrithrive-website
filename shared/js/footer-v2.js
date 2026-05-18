@@ -33,7 +33,6 @@
         <a class="nt-footer-logo" href="/">${d.brand}</a>
         <p class="nt-footer-tagline">${tagline}</p>
         <div class="nt-footer-socials" aria-label="Social media">
-          <a class="nt-footer-social" href="${d.social.facebook}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
           <a class="nt-footer-social" href="${d.social.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
         </div>
       </div>

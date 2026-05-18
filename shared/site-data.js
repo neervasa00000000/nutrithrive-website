@@ -19,7 +19,6 @@ window.NT_SITE_DATA = {
   },
   rating: { value: '4.9', count: 16 },
   social: {
-    facebook: 'https://www.facebook.com/nutrithrive',
     instagram: 'https://www.instagram.com/nutri__thrive/',
   },
   assets: {
