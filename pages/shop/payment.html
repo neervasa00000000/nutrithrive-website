@@ -8,6 +8,8 @@
 
     <meta name="description" content="NutriThrive payment page. Review your order, confirm shipping country, and complete checkout securely with PayPal or Apple Pay.">
     <link rel="canonical" href="https://nutrithrive.com.au/payment">
+
+<!-- Google tag (gtag.js) - after load -->
 <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -419,15 +421,7 @@ window.addEventListener('load', function () {
 <script src="/scripts/global/paypal-sdk-loader.js"></script>
 <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
 <script src="/scripts/global/shipping-rates.js"></script>
-<script src="/scripts/global/paypal-client-config.js"></script>
-<script src="/scripts/global/paypal-sdk-loader.js"></script>
-<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
-<script src="/scripts/global/shipping-rates.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
-    <script>
+<script>
         function getCart() {
             return window.Cart && window.Cart.get ? window.Cart.get() : { items: [] };
         }
