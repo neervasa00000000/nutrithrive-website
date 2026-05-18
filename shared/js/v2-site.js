@@ -904,6 +904,16 @@
           </button>`;
         oldGrid.replaceWith(wrap);
 
+        const firstCarouselImg = wrap.querySelector('.nt-carousel-card img');
+        if (firstCarouselImg) {
+          firstCarouselImg.loading = 'eager';
+          firstCarouselImg.setAttribute('fetchpriority', 'high');
+          if (!firstCarouselImg.getAttribute('width')) {
+            firstCarouselImg.setAttribute('width', '320');
+            firstCarouselImg.setAttribute('height', '320');
+          }
+        }
+
         const track = wrap.querySelector('#nt-carousel-track');
         const scrollBy = (dir) => {
           if (!track) return;

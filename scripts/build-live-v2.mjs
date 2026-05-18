@@ -88,6 +88,96 @@ function stripStickyHeaderMainOffset(html) {
   });
 }
 
+function escHtml(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/"/g, '&quot;');
+}
+
+function loadSiteDataForBuild() {
+  const src = fs.readFileSync(path.join(REPO, 'shared/site-data.js'), 'utf8');
+  globalThis.window = globalThis;
+  const fn = new Function('globalThis', `${src}\n;return globalThis.NT_SITE_DATA;`);
+  return fn(globalThis);
+}
+
+function staticShopCardHtml(p, data, { lcp = false } = {}) {
+  const href = p.href || data.productPageUrl(p.id);
+  const title = p.shortName || p.name;
+  const cartName = p.cartName || title;
+  const tag = p.tag || '';
+  const img = data.productImageUrl(p.thumb || p.image);
+  const fullImg = data.productImageUrl(p.image);
+  const wasBlock = p.was
+    ? `<span class="text-on-surface-variant/60 line-through text-sm">$${Number(p.was).toFixed(2)}</span>`
+    : '';
+  const imgAttrs = lcp
+    ? 'loading="eager" fetchpriority="high" decoding="async"'
+    : 'loading="lazy" decoding="async"';
+  return `<article id="${escHtml(p.id)}" class="nt-shop-card group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col">
+  <a href="${escHtml(href)}" class="nt-shop-card-media block relative">
+    <img alt="${escHtml(title)}" class="nt-shop-card-img" src="${escHtml(img)}" width="400" height="400" ${imgAttrs}/>
+    <span class="absolute top-3 left-3 bg-moringa-leaf text-pure-white text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase">${escHtml(p.badge || 'New')}</span>
+  </a>
+  <div class="nt-shop-card-body p-4 flex flex-col flex-grow">
+    <h3 class="nt-shop-card-title font-display text-forest-deep mb-1"><a href="${escHtml(href)}" class="hover:text-moringa-leaf">${escHtml(title)}</a></h3>
+    <p class="nt-shop-card-tag font-label-sm text-label-sm text-on-surface-variant mb-3">${escHtml(tag)}</p>
+    <div class="nt-shop-card-footer mt-auto flex items-center justify-between pt-3 border-t border-outline-variant/10">
+      <div class="flex flex-col">
+        <span class="nt-shop-card-price text-terracotta-clay font-bold">$${Number(p.price).toFixed(2)}</span>
+        ${wasBlock}
+      </div>
+      <button type="button" data-add-cart="${escHtml(p.id)}" data-name="${escHtml(cartName)}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${escHtml(fullImg)}" data-tag="${escHtml(tag)}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart">
+        <span class="material-symbols-outlined text-[18px] pointer-events-none">add_shopping_cart</span>
+      </button>
+    </div>
+  </div>
+</article>`;
+}
+
+function injectStaticShopGrid() {
+  const liveFile = path.join(REPO, 'products/index.html');
+  if (!fs.existsSync(liveFile)) return;
+  const data = loadSiteDataForBuild();
+  const products = data.getCatalogProducts?.() || [];
+  if (!products.length) return;
+  let html = fs.readFileSync(liveFile, 'utf8');
+  const cards = products.map((p, i) => staticShopCardHtml(p, data, { lcp: i === 0 })).join('');
+  const next = html.replace(
+    /<div id="nt-shop-grid"([^>]*)>\s*<\/div>/i,
+    `<div id="nt-shop-grid"$1 data-static-shop="1">${cards}</div>`
+  );
+  if (next === html) {
+    console.warn('Skip static shop — nt-shop-grid placeholder not found');
+    return;
+  }
+  fs.writeFileSync(liveFile, next);
+  console.log(`Injected static shop grid (${products.length} products)`);
+}
+
+/** Lazy-load below-fold images; prioritize first hero/LCP image */
+function optimizeImages(html) {
+  let imgIndex = 0;
+  return html.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, rawAttrs) => {
+    const attrs = rawAttrs.replace(/\/\s*$/, '').trim();
+    imgIndex += 1;
+    if (/\bloading\s*=/.test(attrs)) return full;
+    const src = attrs.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1] || '';
+    const inHero =
+      imgIndex === 1 ||
+      /GC\.webp|aboutpage|contact\.png/i.test(src) ||
+      /\bfetchpriority\s*=\s*["']high["']/i.test(attrs);
+    const dims = /\bwidth\s*=/.test(attrs)
+      ? ''
+      : /product_photos|webp\//i.test(src)
+        ? ' width="400" height="400"'
+        : ' width="800" height="600"';
+    const extra = `${dims} ${inHero ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'} decoding="async"`;
+    return `<img ${attrs} ${extra.trim()}>`;
+  });
+}
+
 function extractTailwindBlock(testHtml) {
   const style = testHtml.match(/<style>[\s\S]*?<\/style>/i)?.[0] || '';
   let config = testHtml.match(/<script id="tailwind-config">[\s\S]*?<\/script>/i)?.[0] || '';
@@ -347,6 +437,7 @@ function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts
   const bodyClass = opts.isBlogArticle
     ? 'bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article'
     : 'bg-background text-on-background font-body-md overflow-x-hidden';
+  const optimizedBody = optimizeImages(body);
 
   return `<!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
@@ -360,7 +451,7 @@ ${analyticsSnippet()}
 ${blogCss}
 </head>
 <body class="${bodyClass}">
-${body}
+${optimizedBody}
 ${liveScripts(opts)}
 ${footScripts}
 </body>
@@ -631,6 +722,7 @@ if (!onlyFilter || want('pages') || onlyFilter.includes('shop')) {
     if (onlyFilter?.includes('shop') && entry.live !== 'products/index.html') continue;
     applyPage(entry);
   }
+  if (!onlyFilter || onlyFilter.includes('shop')) injectStaticShopGrid();
 }
 if (want('redirects')) {
   for (const stub of REDIRECT_STUB_PAGES) applyRedirectStub(stub);

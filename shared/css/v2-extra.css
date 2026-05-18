@@ -51,6 +51,14 @@ body.has-test-banner main {
   margin-top: 0 !important;
 }
 
+/* Keep page content within design max width (Tailwind max-w-container-max) */
+main.max-w-container-max,
+main > .max-w-container-max,
+.nt-blog-main {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* container-max was only in theme.spacing; max-w-* reads theme.maxWidth */
 .max-w-container-max {
   max-width: 1280px;
