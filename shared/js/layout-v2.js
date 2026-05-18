@@ -58,60 +58,9 @@
   }
 
   const footer = document.getElementById('nt-footer');
-  if (footer) {
-    const year = new Date().getFullYear();
-    const tagline = d.footerTagline || d.tagline || '';
-    const navCols = (d.footerNav || []).map(
-      (col) => `
-    <div class="nt-footer-col">
-      <h3 class="font-label-lg text-primary-fixed mb-4 uppercase tracking-wider text-sm">${col.title}</h3>
-      <ul class="nt-footer-links flex flex-col gap-2.5 text-sm opacity-85">
-        ${col.links
-          .map((link) => {
-            const href = link.file.startsWith('http') || link.file.startsWith('/')
-              ? link.file
-              : `/${link.file}`;
-            return `<li><a class="hover:text-pure-white transition-colors" href="${href}">${link.label}</a></li>`;
-          })
-          .join('')}
-      </ul>
-    </div>`
-    );
-
-    footer.innerHTML = `
-<div class="bg-forest-deep text-pure-white pt-section-gap pb-base nt-v2-footer">
-  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-      <div class="nt-footer-col sm:col-span-2 lg:col-span-1 flex flex-col gap-5">
-        <a class="font-display text-headline-md text-primary-fixed" href="/">${d.brand}</a>
-        <p class="font-body-md text-sm leading-relaxed opacity-75 max-w-xs">${tagline}</p>
-        <div class="flex gap-3" aria-label="Social media">
-          <a class="nt-footer-social" href="${d.social.facebook}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
-          <a class="nt-footer-social" href="${d.social.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-        </div>
-      </div>
-      ${navCols.join('')}
-      <div class="nt-footer-col">
-        <h3 class="font-label-lg text-primary-fixed mb-4 uppercase tracking-wider text-sm">Contact Us</h3>
-        <ul class="nt-footer-links flex flex-col gap-2.5 text-sm opacity-85">
-          <li><a class="hover:text-pure-white" href="mailto:${d.contact.email}">${d.contact.email}</a></li>
-          <li><a class="hover:text-pure-white" href="tel:${d.contact.phoneTel}">${d.contact.phone}</a></li>
-        </ul>
-      </div>
-      <div class="nt-footer-col sm:col-span-2 lg:col-span-1">
-        <h3 class="font-label-lg text-primary-fixed mb-4 uppercase tracking-wider text-sm">Business Info</h3>
-        <ul class="nt-footer-links flex flex-col gap-2.5 text-sm opacity-85 leading-relaxed">
-          <li><strong class="text-pure-white/90 font-semibold">${d.brand}</strong><br/>${d.contact.address}</li>
-          <li>${d.contact.hours}</li>
-          <li>ABN ${d.contact.abn}</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-12 pt-8 border-t border-pure-white/10 text-center">
-    <p class="font-label-sm opacity-50 text-sm">© ${year} ${d.brand}</p>
-  </div>
-</div>`;
+  if (footer && typeof window.NT_renderFooter === 'function') {
+    footer.dataset.ntFooterReady = '1';
+    window.NT_renderFooter(footer, d);
   }
 
   if (window.Cart) {

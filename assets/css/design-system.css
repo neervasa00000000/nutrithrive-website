@@ -18,6 +18,7 @@
 
   /* Brand & homepage surfaces */
   --color-primary: var(--color-moringa-leaf);
+  --color-primary-fixed: #a1f3cd;
   --color-primary-dark: #005139;
   --color-primary-light: #f7f3e8;
   --color-text: var(--color-forest-deep);
@@ -222,4 +223,158 @@ a.btn:not(.btn-secondary):not(.btn-outline):not(.secondary):hover,
 
 .section {
   padding: var(--spacing-xl) 0;
+}
+
+/* V2 footer — legacy pages (injected via footer-v2.js) */
+#nt-footer {
+  margin-top: auto;
+}
+
+.nt-v2-footer {
+  background: var(--color-forest-deep);
+  color: #fff;
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
+}
+
+.nt-footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .nt-footer-inner {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+.nt-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .nt-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .nt-footer-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+
+  .nt-footer-brand {
+    grid-column: span 1;
+  }
+
+  .nt-footer-business {
+    grid-column: span 1;
+  }
+}
+
+.nt-footer-col-title {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-fixed);
+}
+
+.nt-footer-logo {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary-fixed);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nt-footer-logo:hover {
+  color: #c8f5dc;
+}
+
+.nt-footer-tagline {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 18rem;
+}
+
+.nt-footer-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.nt-footer-social {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.nt-footer-social:hover {
+  background: var(--color-moringa-leaf);
+  border-color: var(--color-moringa-leaf);
+}
+
+.nt-footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+}
+
+.nt-footer-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nt-footer-links a:hover {
+  color: #fff;
+}
+
+.nt-footer-brand-name {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.nt-footer-bar {
+  max-width: var(--container-max);
+  margin: 3rem auto 0;
+  padding: 2rem var(--spacing-sm) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .nt-footer-bar {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+}
+
+.nt-footer-copy {
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
 }
