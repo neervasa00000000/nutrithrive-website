@@ -53,15 +53,15 @@ header {
     top: 0;
     z-index: 2147483000 !important;
     background: var(--bg);
-    border-bottom: 1px solid #ece7db;
+    border-bottom: 1px solid var(--color-border-soft, #e6e2d7);
     color: var(--primary);
     transition: background var(--transition);
 }
 
-/* Top announcement strips — solid brand green (no gradients) */
+/* Top announcement strips — v2 forest-deep promo bar */
 header .urgency-banner,
 body.products-page > .promo-bar {
-    background-color: var(--color-primary, #0f6b4d);
+    background-color: var(--color-promo-bar, #1a2e22);
     background-image: none;
 }
 
@@ -585,7 +585,7 @@ body.products-page .hero .hero-btn.alt {
 }
 
 .btn-secondary {
-    background: #fffdfa !important;
+    background: var(--color-bg-alt, #fdf9ee) !important;
     color: var(--color-primary) !important;
     border: 2px solid var(--color-primary) !important;
     font-weight: 700;
@@ -799,7 +799,7 @@ footer {
 #checkout-form input {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid #ece7db;
+    border: 1px solid #e6e2d7;
     border-radius: var(--radius);
     font-size: 1rem;
     background-color: var(--bg);
@@ -1773,42 +1773,42 @@ footer {
     }
 }
 
-/* Unique color scheme for the grow-moringa-tree-australia blog post */
+/* Unique color scheme for the grow-moringa-tree-australia blog post (v2 palette) */
 body.blog-moringa-tree header,
 body.blog-moringa-tree .navbar {
-  background: linear-gradient(135deg, #43a047, #8bc34a);
+  background: linear-gradient(135deg, #0f6b4d, #1a2e22);
 }
 body.blog-moringa-tree .blog-hero {
-  background: linear-gradient(90deg, #e8f5e9 60%, #c8e6c9 100%);
+  background: linear-gradient(90deg, #f7f3e8 60%, #f5f1e6 100%);
 }
 body.blog-moringa-tree .blog-hero-title,
 body.blog-moringa-tree .blog-hero-desc {
-  color: #2e7d32;
+  color: #1a2e22;
 }
 body.blog-moringa-tree .highlight {
-  background-color: #f1f8e9;
-  border-left: 4px solid #8bc34a;
+  background-color: #f7f3e8;
+  border-left: 4px solid #0f6b4d;
 }
 body.blog-moringa-tree .cta-banner {
-  background: linear-gradient(135deg, #8bc34a, #43a047);
+  background: linear-gradient(135deg, #0f6b4d, #005139);
   color: #fff;
 }
 body.blog-moringa-tree .cta-banner h2 {
   color: #fff;
 }
 body.blog-moringa-tree .btn {
-  background-color: #43a047;
+  background-color: #0f6b4d;
   color: #fff;
 }
 body.blog-moringa-tree .btn:hover {
-  background-color: #2e7d32;
+  background-color: #005139;
 }
 body.blog-moringa-tree .btn-secondary {
   background-color: #fff;
-  color: #43a047;
+  color: #0f6b4d;
 }
 body.blog-moringa-tree .btn-secondary:hover {
-  background-color: #e8f5e9;
+  background-color: #f7f3e8;
 }
 
 .edgy-card {
@@ -1826,10 +1826,10 @@ body.blog-moringa-tree .btn-secondary:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8faf7;
+  background: #f7f3e8;
   border-radius: 2px;
   font-size: 2.2rem;
-  color: #2e7d32;
+  color: #0f6b4d;
   font-weight: 400;
   border: 1px solid #e0e0e0;
   box-shadow: none;
@@ -1876,7 +1876,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   width: 38px;
   height: 38px;
   background: #fff;
-  border: 5px solid #128539;
+  border: 5px solid #0f6b4d;
   border-radius: 50%;
   position: absolute;
   left: -19px;
@@ -1888,13 +1888,13 @@ body.blog-moringa-tree .btn-secondary:hover {
   transition: border-color 0.4s, background 0.4s;
 }
 .roadmap-milestone.active .roadmap-circle {
-  border-color: #1b7f5a;
-  background: #43e97b;
+  border-color: #005139;
+  background: #86d7b2;
 }
 .roadmap-hline {
   height: 4px;
   width: 0;
-  background: #1b7f5a;
+  background: #005139;
   margin-left: 38px;
   margin-right: 24px;
   border-radius: 2px;
@@ -1999,7 +1999,7 @@ body.blog-moringa-tree .btn-secondary:hover {
     max-width: 100%;
   }
   .features-section.features-clean .feature {
-    background: #f8f5ec;
+    background: #f5f1e6;
     border-radius: 14px;
     box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
     border-left: 5px solid var(--color-primary);
@@ -2201,9 +2201,9 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .newsletter-submit-btn:hover:not(:disabled) {
-    background: #8b5f26;
+    background: var(--color-terracotta-dark, #732001);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(123, 84, 31, 0.3);
+    box-shadow: 0 4px 12px rgba(214, 104, 68, 0.35);
 }
 
 .newsletter-submit-btn:disabled {

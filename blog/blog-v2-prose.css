@@ -92,9 +92,9 @@
 .blog-v2-prose blockquote,
 .blog-v2-prose .quick-answer,
 .blog-v2-prose .table-of-contents,
-.blog-v2-prose div[style*="background: #f0f8f3"],
+.blog-v2-prose div[style*="background: #f7f3e8"],
 .blog-v2-prose div[style*="background:#f0f9f4"],
-.blog-v2-prose div[style*="background: #f6fbf8"] {
+.blog-v2-prose div[style*="background: #f7f3e8"] {
   background: #f7f3e8 !important;
   border-left: 4px solid #0f6b4d !important;
   border-radius: 0 0.5rem 0.5rem 0 !important;
@@ -117,7 +117,7 @@
 }
 
 .blog-v2-prose .btn-buy-moringa,
-.blog-v2-prose a[style*="background: #175c36"],
+.blog-v2-prose a[style*="background: #0f6b4d"],
 .blog-v2-prose a[style*="background:#1a5c36"],
 .blog-v2-prose .cta-btn-white {
   display: inline-block;
