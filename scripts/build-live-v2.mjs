@@ -578,26 +578,47 @@ function applyBlogArticle(slug) {
   return true;
 }
 
-patchSiteData();
-generateBlogArticlesJs();
+const onlyArg = process.argv.find((a) => a.startsWith('--only='));
+const onlyFilter = onlyArg ? onlyArg.slice('--only='.length).split(',') : null;
+const want = (key) => !onlyFilter || onlyFilter.includes(key);
 
-applyPaymentPage();
-for (const entry of PAGE_MAP) applyPage(entry);
-for (const stub of REDIRECT_STUB_PAGES) applyRedirectStub(stub);
-for (const slug of PRODUCT_SLUGS) applyProduct(slug);
+patchSiteData();
+if (!onlyFilter) generateBlogArticlesJs();
+
+if (want('payment')) applyPaymentPage();
+if (want('pages')) {
+  for (const entry of PAGE_MAP) {
+    if (onlyFilter && onlyFilter.length === 1 && onlyFilter[0] === 'shop') {
+      if (entry.live !== 'products/index.html') continue;
+    }
+    applyPage(entry);
+  }
+}
+if (want('redirects')) {
+  for (const stub of REDIRECT_STUB_PAGES) applyRedirectStub(stub);
+}
+if (want('products')) {
+  for (const slug of PRODUCT_SLUGS) applyProduct(slug);
+}
 
 let blogCount = 0;
-const blogFiles = fs
-  .readdirSync(TEST_BLOG)
-  .filter((f) => f.endsWith('-test.html') && f !== 'index-test.html' && f !== 'blog-test.html');
-for (const f of blogFiles) {
-  const slug = f.replace(/-test\.html$/, '');
-  if (applyBlogArticle(slug)) blogCount++;
+if (want('blog')) {
+  const blogFiles = fs
+    .readdirSync(TEST_BLOG)
+    .filter((f) => f.endsWith('-test.html') && f !== 'index-test.html' && f !== 'blog-test.html');
+  for (const f of blogFiles) {
+    const slug = f.replace(/-test\.html$/, '');
+    if (applyBlogArticle(slug)) blogCount++;
+  }
 }
 console.log(
-  `\nDone. ${PAGE_MAP.length} mapped pages, payment + ${REDIRECT_STUB_PAGES.length} redirect stubs, ${PRODUCT_SLUGS.length} PDPs, ${blogCount} blog articles.`
+  onlyFilter
+    ? `\nDone (filter: ${onlyFilter.join(',')}).`
+    : `\nDone. ${PAGE_MAP.length} mapped pages, payment + ${REDIRECT_STUB_PAGES.length} redirect stubs, ${PRODUCT_SLUGS.length} PDPs, ${blogCount} blog articles.`
 );
 
-console.log('\nNormalizing live test URLs in HTML…');
-const { execSync } = await import('child_process');
-execSync('node scripts/fix-live-test-links.mjs', { stdio: 'inherit', cwd: REPO });
+if (!onlyFilter) {
+  console.log('\nNormalizing live test URLs in HTML…');
+  const { execSync } = await import('child_process');
+  execSync('node scripts/fix-live-test-links.mjs', { stdio: 'inherit', cwd: REPO });
+}
