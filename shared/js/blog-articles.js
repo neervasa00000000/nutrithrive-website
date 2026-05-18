@@ -108,7 +108,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "high-protein-moringa-recipes-australia-2026",
     "title": "10 High-Protein Moringa Recipes: Australia 2026 (Tested)",
-    "description": "",
+    "description": "10 tested high-protein moringa recipes: breakfast bowls, lattes, savoury dinners and snacks. Under 10 minutes each, real ingredients, actual protein counts.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/high-protein-moringa-recipes-australia-2026.html"
   },
@@ -234,7 +234,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-powder-complete-buyers-guide-australia-2026",
     "title": "Moringa Powder Buyers Guide Australia 2026",
-    "description": "",
+    "description": "Complete 2026 moringa powder guide for Australia: 10 brands compared by price, processing, and quality. What to look for, what to avoid, and where to buy.",
     "category": "Local Guide",
     "href": "/blog/moringa-powder-complete-buyers-guide-australia-2026.html"
   },
@@ -262,7 +262,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-quality-test-shade-dried-vs-retail-australia-2026",
     "title": "Moringa Quality Test: Shade-Dried vs Store-Bought",
-    "description": "",
+    "description": "We tested 8 Australian moringa products side by side: colour, smell, texture, dissolution, and label honesty. The quality gap is bigger than most buyers expect.",
     "category": "Research Guide",
     "href": "/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html"
   },
@@ -353,7 +353,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder",
     "title": "Why I Build NutriThrive: A Melbourne Moringa Story, Told Plainly",
-    "description": "",
+    "description": "Melbourne: moringa leaf powder—shade-dried, fine grind. Not resold import in a new bag. For Australian buyers in 2026, here is the honest backstory.",
     "category": "Wellness Journal",
     "href": "/blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder.html"
   },

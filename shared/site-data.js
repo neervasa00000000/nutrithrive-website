@@ -25,14 +25,14 @@ window.NT_SITE_DATA = {
   assets: {
     logo: '/assets/images/logo/LOGO.webp',
     hero: '/assets/images/blog/GC.webp',
-    moringaHero: '/assets/images/product_photos/webp/moringa.webp',
-    aboutHero: '/assets/images/homepage/product-showcase/webp/aboutpage9.webp',
-    aboutFeature: '/assets/images/homepage/product-showcase/webp/aboutpage2.webp',
-    aboutVisit: '/assets/images/homepage/product-showcase/webp/aboutpage3.webp',
+    moringaHero: '/assets/images/product_photos/moringa.jpeg',
+    aboutHero: '/assets/images/homepage/product-showcase/aboutpage.png',
+    aboutFeature: '/assets/images/homepage/product-showcase/aboutpage2.png',
+    aboutVisit: '/assets/images/homepage/product-showcase/aboutpage3.png',
     contactHero: '/assets/images/homepage/product-showcase/contact.png',
   },
   labReport: '/documents/nutrithrive-lab-report-summary.pdf',
-  /** Encode path segments so filenames like 3+1.webp resolve reliably in img src and cart URLs. */
+  /** Encode path segments so filenames like 3+1.jpeg resolve reliably in img src and cart URLs. */
   productImageUrl(path) {
     if (!path) return '';
     if (/^https?:\/\//i.test(path)) {
@@ -61,8 +61,7 @@ window.NT_SITE_DATA = {
       price: 11,
       was: 14,
       weight: 100,
-      image: '/assets/images/product_photos/webp/moringa.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/moringa.jpg',
+      image: '/assets/images/product_photos/moringa.jpeg',
       href: '/products/moringa-powder/',
       description: '100% pure shade-dried moringa leaf powder. Lab-tested in Australia.',
       pdp: {
@@ -95,8 +94,7 @@ window.NT_SITE_DATA = {
       price: 21.5,
       was: 28,
       weight: 200,
-      image: '/assets/images/product_photos/webp/200g.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/200g.jpg',
+      image: '/assets/images/product_photos/200g.png',
       href: '/products/moringa-powder/',
       pdp: {
         headline: 'Moringa Powder — 200g',
@@ -126,8 +124,7 @@ window.NT_SITE_DATA = {
       price: 35,
       was: 56,
       weight: 400,
-      image: '/assets/images/product_photos/webp/3+1.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/3+1.jpg',
+      image: '/assets/images/product_photos/moringa-400g-bundle.jpeg',
       href: '/products/moringa-powder/',
       pdp: {
         headline: '3 + 1 = 400g Moringa Bundle',
@@ -157,8 +154,7 @@ window.NT_SITE_DATA = {
       price: 7,
       was: 9.49,
       weight: 95,
-      image: '/assets/images/product_photos/webp/soap.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/soap.jpg',
+      image: '/assets/images/product_photos/soap.jpeg',
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa Natural Soap',
@@ -189,8 +185,7 @@ window.NT_SITE_DATA = {
       price: 17,
       was: 22.49,
       weight: 130,
-      image: '/assets/images/product_photos/webp/combo.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/combo.jpg',
+      image: '/assets/images/product_photos/combo.jpeg',
       href: '/products/combo-pack/',
       pdp: {
         headline: 'Premium Combo Pack',
@@ -220,8 +215,7 @@ window.NT_SITE_DATA = {
       price: 17,
       was: 23.39,
       weight: 195,
-      image: '/assets/images/product_photos/webp/moringasoapcombo.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/moringasoapcombo.jpg',
+      image: '/assets/images/product_photos/moringasoapcombo.jpeg',
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa 100g + Soap 95g Bundle',
@@ -252,8 +246,7 @@ window.NT_SITE_DATA = {
       price: 7,
       was: 8.49,
       weight: 30,
-      image: '/assets/images/product_photos/webp/driedcurry.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/driedcurry.jpg',
+      image: '/assets/images/product_photos/driedcurry.jpeg',
       href: '/products/curry-leaves/',
       pdp: {
         headline: '30g Dried Curry Leaves',
@@ -284,8 +277,7 @@ window.NT_SITE_DATA = {
       price: 7.5,
       was: 10,
       weight: 100,
-      image: '/assets/images/product_photos/webp/blacktea.webp',
-      thumb: '/assets/images/product_photos/webp/thumbs/blacktea.jpg',
+      image: '/assets/images/product_photos/blacktea.jpeg',
       href: '/products/black-tea/',
       pdp: {
         headline: 'Darjeeling Black Tea',
