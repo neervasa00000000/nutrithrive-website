@@ -9,7 +9,7 @@ const BLOG = path.join(process.cwd(), "blog");
 const HEROES = JSON.parse(
   fs.readFileSync(path.join(BLOG, "blog-v2-heroes.json"), "utf8")
 );
-const RELATED_THUMB = "/assets/images/product_photos/moringa.jpeg";
+const RELATED_THUMB = "/assets/images/homepage/product-showcase/thumbs/Moringa.webp";
 
 function heroForFile(filename, html) {
   if (HEROES[filename]) return HEROES[filename];
@@ -56,7 +56,7 @@ function dedupeShell(html) {
 function optimizeHero(html, filename) {
   const cfg = heroForFile(filename, html);
   const heroSrc =
-    cfg.hero || "../assets/images/product_photos/moringa.jpeg";
+    cfg.hero || "../assets/images/homepage/product-showcase/Moringa.webp";
   const heroBlock = `<div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
 <img alt="NutriThrive Moringa Powder" class="w-full h-full object-cover" src="${heroSrc}" width="800" height="800" loading="eager" decoding="async" fetchpriority="high"/>
 </div>`;

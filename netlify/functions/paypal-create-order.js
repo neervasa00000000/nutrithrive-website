@@ -119,25 +119,18 @@ export async function handler(event) {
         }
 
         // Authoritative product catalog for server-side pricing/weighting.
-        // IDs must match shared/site-data.js (v2 cart) plus legacy aliases for older carts.
         // SECURITY: Do not trust client-provided prices/names/amounts.
         const PRODUCT_CATALOG = {
-            // v2 site-data.js (canonical)
-            "moringa-powder-100g": { name: "Moringa Powder — 100g", price: 11.00, weight: 100 },
-            "moringa-powder-200g": { name: "Moringa Powder — 200g", price: 21.50, weight: 200 },
+            "moringa-powder": { name: "100g Moringa", price: 11.00, weight: 100 },
+            "moringa-200g": { name: "200g Moringa", price: 21.50, weight: 200 },
             "moringa-400g": { name: "3 + 1 = 400g Moringa", price: 35.00, weight: 400 },
             "moringa-soap": { name: "Moringa Soap", price: 7.00, weight: 95 },
             "moringa-soap-combo": { name: "Moringa 100g + Soap 95g", price: 17.00, weight: 195 },
-            "curry-leaves-30g": { name: "30g Dried Curry Leaves", price: 7.00, weight: 30 },
+            "curry-leaves": { name: "Dried Curry Leaves", price: 7.00, weight: 30 },
             "black-tea": { name: "Darjeeling Black Tea", price: 7.50, weight: 100 },
             "combo-pack": { name: "Premium Combo Pack", price: 17.00, weight: 130 },
 
-            // Legacy cart / PDP ids (pre–site-data v2)
-            "moringa-powder": { name: "100g Moringa", price: 11.00, weight: 100 },
-            "moringa-200g": { name: "200g Moringa", price: 21.50, weight: 200 },
-            "curry-leaves": { name: "Dried Curry Leaves", price: 7.00, weight: 30 },
-
-            // Legacy product-page variation picker ids
+            // Product page variations (cart ids are moringa-variation-1..6)
             "moringa-variation-1": { name: "3 + 1 = 400g Moringa", price: 35.00, weight: 400 },
             "moringa-variation-2": { name: "100g Moringa", price: 11.00, weight: 100 },
             "moringa-variation-3": { name: "Combo Moringa + Dried Curry Leaves", price: 17.00, weight: 130 },

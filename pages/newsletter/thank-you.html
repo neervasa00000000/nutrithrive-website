@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en-AU">
+<html lang="en-AU">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Thank You for Subscribing | NutriThrive, Melbourne</title>
+<link rel="stylesheet" href="/assets/css/design-system.css"/>
+<script src="/scripts/global/defer-loader.js"></script>
+<script src="/scripts/global/reddit-pixel.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -40,10 +40,10 @@
   gtag('config', 'G-WH21SW75WP');
 </script>
 
-    
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="You’re subscribed to NutriThrive. Evidence-led wellness notes; premium moringa shipped Australia-wide from Truganina, Melbourne.">
-    
+    <title>Thank You for Subscribing | NutriThrive, Melbourne</title>
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
     <meta property="og:type" content="website">
@@ -63,13 +63,71 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    
+    <link rel="stylesheet" href="/styles/global/style.css">
     
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
     <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
     
-    
+    <style>
+        .thank-you-section {
+            padding: 4rem 2rem;
+            max-width: 600px;
+            margin: 4rem auto;
+            text-align: center;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .thank-you-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .thank-you-section h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .thank-you-section p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .thank-you-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .thank-you-btn {
+            padding: 0.75rem 2rem;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all var(--transition);
+            display: inline-block;
+        }
+        .thank-you-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(23, 92, 54, 0.3);
+        }
+        .thank-you-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .thank-you-btn.secondary:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+    </style>
 
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
@@ -180,659 +238,100 @@
   ]
 }
 </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .organic-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
 </head>
-<body class="bg-background text-on-background font-body-md overflow-x-hidden">
-<div class="nt-sticky-top">
-<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
-<header id="nt-header" class="nt-v2-header"></header>
-</div>
-<main class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-  <header class="text-center mb-12 max-w-2xl mx-auto">
-    <h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-4">You are on the list</h1>
-    <p class="font-body-lg text-on-surface-variant">Thanks for subscribing to NutriThrive updates.</p>
-  </header>
-  <div class="bg-pure-white rounded-2xl border border-outline-variant/10 shadow-sm p-8 md:p-12 max-w-2xl mx-auto">
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">Watch your inbox for wellness tips and fresh-batch alerts.</p>
-    <a href="/" class="inline-block mt-4 bg-moringa-leaf text-pure-white px-8 py-3 rounded-full font-label-lg hover:brightness-110">Back to home</a></div>
-</main>
-<div id="nt-footer"></div>
-<script src="/scripts/global/defer-loader.js"></script>
-<script src="/scripts/global/reddit-pixel.js"></script>
-<script src="/shared/site-data.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="lazy" decoding="async" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
+        </div>
+    </header>
 
+    <main>
+        <section class="thank-you-section">
+            <div class="thank-you-icon">✓</div>
+            <h1>Thank You for Subscribing!</h1>
+            <p>We're excited to have you join the NutriThrive community! You'll receive our latest health tips, product updates, and exclusive offers straight to your inbox.</p>
+            <p style="font-size: 0.95rem; color: var(--muted);">Please check your email to confirm your subscription.</p>
+            <div class="thank-you-actions">
+                <a href="/" class="thank-you-btn">Back to Home</a>
+                <a href="/products/" class="thank-you-btn secondary">Shop Products</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About NutriThrive</h3>
+                <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Shopping</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products/">Products</a></li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li><a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help &amp; Info</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li>                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
+                    <li><a href="tel:+61438201419">+61 438201419</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Business Info</h3>
+                <ul class="footer-links">
+                    <li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
+<li>Based in Truganina, Melbourne, VIC (Australia)<br>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br>Worldwide Shipping Available 🌍</li>
+                    <li>Monday - Sunday</li>
+                    <li>9:00 AM - 11:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 NutriThrive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            if (typeof window.rdt !== 'function') return;
+            var conversionId = 'signup_newsletter_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 11);
+            window.rdt('track', 'SignUp', { conversionId: conversionId });
+        })();
+    </script>
+    <script src="/scripts/global/script.js" defer></script>
+    <script src="/scripts/global/newsletter.js" defer></script>
 </body>
 </html>
+

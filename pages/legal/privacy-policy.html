@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en-AU">
+<html lang="en-AU">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Privacy Policy & Terms | NutriThrive, Melbourne</title>
+<link rel="stylesheet" href="/assets/css/design-system.css"/>
+<script src="/scripts/global/defer-loader.js"></script>
+<script src="/scripts/global/reddit-pixel.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -30,11 +30,11 @@
   }
 </script>
 
-  
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://nutrithrive.com.au/privacy-policy">
   <meta name="description" content="NutriThrive privacy policy: how we use your data, cookies, orders, and refunds for our Melbourne-based superfoods store with Australia-wide delivery.">
-  
+  <title>Privacy Policy & Terms | NutriThrive, Melbourne</title>
   <meta name="keywords" content="NutriThrive privacy policy, terms of service, refund policy, shipping policy, Australia, Melbourne, moringa powder terms">
   <meta name="robots" content="index, follow">
 
@@ -56,12 +56,116 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-  
+  <link rel="stylesheet" href="/styles/global/style.css">
   <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
   <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
 
-  
+  <style>
+    .policy-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .policy-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .policy-header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+
+    .last-updated {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .policy-section {
+      margin-bottom: 3rem;
+      background: transparent;
+      padding: 2.5rem 0;
+    }
+
+    .policy-section h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .policy-section h3 {
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .policy-section h4 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .policy-section p {
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .policy-section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .policy-section li {
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .policy-section strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+
+    @media (max-width: 768px) {
+      .policy-container {
+        padding: 2rem 1rem;
+      }
+
+      .policy-header h1 {
+        font-size: 2rem;
+      }
+
+      .policy-section {
+        padding: 1.5rem;
+      }
+
+      .policy-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .policy-section h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
@@ -172,933 +276,177 @@
   ]
 }
 </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .organic-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
 </head>
-<body class="bg-background text-on-background font-body-md overflow-x-hidden">
-<div class="nt-sticky-top">
-<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
-<header id="nt-header" class="nt-v2-header"></header>
-</div>
-<main class="pt-28 pb-section-gap nt-legal-page">
-  <div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
-    <header class="text-center mb-10 md:mb-14">
-      <span class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed/30 text-moringa-leaf rounded-full font-label-sm text-label-sm uppercase tracking-wider mb-4">
-        <span class="material-symbols-outlined text-[18px]">gavel</span> Legal
-      </span>
-      <h1 class="font-display text-headline-lg-mobile md:text-headline-lg text-forest-deep mb-3">Privacy Policy, Terms &amp; Conditions</h1>
-      <p class="font-body-md text-on-surface-variant">Last updated: January 19, 2026</p>
-    </header>
-    <nav class="nt-legal-toc grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10" aria-label="On this page">
-      <a href="#privacy" class="rounded-xl border border-outline-variant/20 bg-parchment-base px-4 py-3 font-label-lg text-forest-deep hover:border-moringa-leaf transition-colors">Privacy Policy</a>
-      <a href="#refunds" class="rounded-xl border border-outline-variant/20 bg-parchment-base px-4 py-3 font-label-lg text-forest-deep hover:border-moringa-leaf transition-colors">Refund &amp; Shipping</a>
-      <a href="#terms" class="rounded-xl border border-outline-variant/20 bg-parchment-base px-4 py-3 font-label-lg text-forest-deep hover:border-moringa-leaf transition-colors">Terms of Service</a>
-    </nav>
-    <div class="space-y-8">
-      
-    <section id="privacy" class="nt-legal-section bg-pure-white rounded-2xl border border-outline-variant/10 shadow-sm p-8 md:p-10">
-      <h2 class="font-display text-headline-md text-forest-deep mb-6 pb-4 border-b border-outline-variant/20">Privacy Policy</h2>
-      
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">1. Introduction</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">NutriThrive ("we," "us," or "our") is committed to protecting your personal information in accordance with the Privacy Act 1988 (Cth). This policy outlines how we handle your data.</p>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">Legal Entity:</strong> NutriThrive</p>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">ABN:</strong> 32 639 442 616</p>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">Address:</strong> 15 Europe Street, Truganina VIC 3029, Melbourne, Australia</p>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">Contact:</strong> <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a> | <a href="tel:+61438201419">+61 438 201 419</a></p>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">2. Information We Collect</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">We collect information reasonably necessary for our business functions:</p>
-    <ul class="nt-legal-list list-disc pl-6 mb-6 space-y-2 text-on-surface-variant font-body-md"><li><strong class="text-forest-deep">Identity &amp; Contact:</strong> Name, email, mobile number, and shipping address.</li><li><strong class="text-forest-deep">Technical Data:</strong> Cookies (for cart functionality), IP address, and browser type.</li><li><strong class="text-forest-deep">Payment Data:</strong> We do not store credit card details. All payments are processed via PayPal. We only receive transaction confirmation.</li></ul>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">3. How We Use Your Information</h3>
-    <ul class="nt-legal-list list-disc pl-6 mb-6 space-y-2 text-on-surface-variant font-body-md"><li><strong class="text-forest-deep">Order Fulfillment:</strong> Delivering products via Australia Post or Sendle.</li><li><strong class="text-forest-deep">Marketing:</strong> Sending newsletters and offers via email/SMS (only with your consent).</li><li><strong class="text-forest-deep">Improvement:</strong> Analyzing website usage to improve our service.</li></ul>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">4. Sharing Your Data</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">We do not sell your data. We share necessary data with:</p>
-    <ul class="nt-legal-list list-disc pl-6 mb-6 space-y-2 text-on-surface-variant font-body-md"><li><strong class="text-forest-deep">Shipping Partners:</strong> Sendle, Australia Post, and international couriers for delivery.</li><li><strong class="text-forest-deep">Payment Gateways:</strong> PayPal.</li></ul>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">5. International Transfers</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">As we ship worldwide, your name and address will be transferred to logistics providers in your destination country to facilitate delivery.</p>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">6. Age Restriction</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">You must be 18 years or older to purchase from this website. We do not knowingly collect data from minors.</p>
-    </section>
-      
-    <section id="refunds" class="nt-legal-section bg-pure-white rounded-2xl border border-outline-variant/10 shadow-sm p-8 md:p-10">
-      <h2 class="font-display text-headline-md text-forest-deep mb-6 pb-4 border-b border-outline-variant/20">Refund &amp; Shipping Policy</h2>
-      
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">1. Returns Policy (7 Days)</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">We accept returns for "change of mind" strictly under the following conditions:</p>
-    <ul class="nt-legal-list list-disc pl-6 mb-6 space-y-2 text-on-surface-variant font-body-md"><li><strong class="text-forest-deep">Timeframe:</strong> You must initiate the return within 7 days of delivery.</li><li><strong class="text-forest-deep">Condition:</strong> The item must be unopened, sealed, and in its original packaging.</li><li><strong class="text-forest-deep">Procedure:</strong> Contact <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a> to start the process.</li><li><strong class="text-forest-deep">Cost:</strong> The customer is responsible for all return shipping costs.</li><li><strong class="text-forest-deep">Refund Processing:</strong> Once received and inspected, refunds are processed via PayPal within 5 to 7 business days.</li></ul>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">2. Shipping &amp;amp; Location Liability</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">⚠️ Customer Responsibility:</strong> It is your sole responsibility to select the correct Country and enter the correct Address at checkout.</p>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">Wrong Location Selection:</strong> If you select the wrong country (e.g., selecting "Australia" for a US address) to bypass shipping costs or by error, NutriThrive is not responsible for the order. We reserve the right to cancel the order or refuse delivery. We are not liable for lost goods due to incorrect address details provided by the customer.</p>
-    <p class="mt-4"><a class="text-moringa-leaf font-semibold hover:underline" href="/pages/shipping/shipping-returns.html">Full shipping &amp; returns details →</a></p>
-    </section>
-      
-    <section id="terms" class="nt-legal-section bg-pure-white rounded-2xl border border-outline-variant/10 shadow-sm p-8 md:p-10">
-      <h2 class="font-display text-headline-md text-forest-deep mb-6 pb-4 border-b border-outline-variant/20">Terms of Service &amp; Disclaimer</h2>
-      
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">1. Product Nature (Natural vs. Organic)</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">Natural Product:</strong> NutriThrive products are sold as "Natural" products derived from natural ingredients.</p>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">Not Certified Organic:</strong> We explicitly state that our products are NOT "Certified Organic". We do not hold organic certification.</p>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4"><strong class="text-forest-deep">Waiver of Claims:</strong> NutriThrive makes no representations or warranties that its products are 'Organic.' By purchasing, you acknowledge the product is sold strictly as 'Natural' and agree to release NutriThrive from any liability, claims, or disputes asserting otherwise.</p>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">2. Limitation of Liability</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">To the extent permitted by Australian law, NutriThrive is not liable for any indirect, incidental, or consequential damages arising from the use of our products.</p>
-    <h3 class="font-label-lg text-label-lg text-forest-deep mt-8 mb-3 first:mt-0">3. Governing Law</h3>
-    <p class="font-body-md text-on-surface-variant leading-relaxed mb-4">These terms are governed by the laws of Victoria, Australia.</p>
-    </section>
-      <section class="bg-parchment-base rounded-2xl p-8 md:p-10 text-center border border-outline-variant/10">
-        <h2 class="font-display text-headline-md text-forest-deep mb-3">Questions or concerns?</h2>
-        <p class="font-body-md text-on-surface-variant mb-6 max-w-lg mx-auto">If you have any questions about our Privacy Policy, Terms of Service, or Refund Policy, please contact us.</p>
-        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="/contact" class="inline-block bg-moringa-leaf text-pure-white px-8 py-3 rounded-full font-label-lg hover:brightness-110">Contact us</a>
-          <a href="/pages/legal/privacy-policy.html" class="inline-block border border-moringa-leaf text-moringa-leaf px-8 py-3 rounded-full font-label-lg hover:bg-moringa-leaf/5" target="_blank" rel="noopener noreferrer">View live policy</a>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
         </div>
-        <p class="mt-6 text-sm text-on-surface-variant"><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a> · <a href="tel:+61438201419">+61 438 201 419</a></p>
-      </section>
-    </div>
-  </div>
-</main>
-<div id="nt-footer"></div>
-<script src="/scripts/global/defer-loader.js"></script>
-<script src="/scripts/global/reddit-pixel.js"></script>
-<script src="/shared/site-data.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
+    </header>
 
+    <main>
+        <div class="policy-container">
+            <div class="policy-header">
+                <h1>Privacy Policy, Terms & Conditions</h1>
+                <p class="last-updated">Last Updated: January 19, 2026</p>
+            </div>
+
+            <!-- PRIVACY POLICY SECTION -->
+            <section class="policy-section">
+                <h2>Privacy Policy</h2>
+
+                <h3>1. Introduction</h3>
+                <p>NutriThrive ("we," "us," or "our") is committed to protecting your personal information in accordance with the Privacy Act 1988 (Cth). This policy outlines how we handle your data.</p>
+
+                <p><strong>Legal Entity:</strong> NutriThrive</p>
+                <p><strong>ABN:</strong> 32 639 442 616</p>
+                <p><strong>Address:</strong> 15 Europe Street, Truganina, VIC, Australia</p>
+                <p><strong>Contact:</strong> <a href="mailto:Nutrithrive0@Gmail.com">Nutrithrive0@Gmail.com</a> | <a href="tel:+61438201419">0438 201 419</a></p>
+
+                <h3>2. Information We Collect</h3>
+                <p>We collect information reasonably necessary for our business functions:</p>
+                <ul>
+                    <li><strong>Identity & Contact:</strong> Name, email, mobile number, and shipping address.</li>
+                    <li><strong>Technical Data:</strong> Cookies (for cart functionality), IP address, and browser type.</li>
+                    <li><strong>Payment Data:</strong> We do not store credit card details. All payments are processed via PayPal. We only receive transaction confirmation.</li>
+                </ul>
+
+                <h3>3. How We Use Your Information</h3>
+                <ul>
+                    <li><strong>Order Fulfillment:</strong> Delivering products via Australia Post or Sendle.</li>
+                    <li><strong>Marketing:</strong> Sending newsletters and offers via email/SMS (only with your consent).</li>
+                    <li><strong>Improvement:</strong> Analyzing website usage to improve our service.</li>
+                </ul>
+
+                <h3>4. Sharing Your Data</h3>
+                <p>We do not sell your data. We share necessary data with:</p>
+                <ul>
+                    <li><strong>Shipping Partners:</strong> Sendle, Australia Post, and international couriers for delivery.</li>
+                    <li><strong>Payment Gateways:</strong> PayPal.</li>
+                </ul>
+
+                <h3>5. International Transfers</h3>
+                <p>As we ship worldwide, your name and address will be transferred to logistics providers in your destination country to facilitate delivery.</p>
+
+                <h3>6. Age Restriction</h3>
+                <p>You must be 18 years or older to purchase from this website. We do not knowingly collect data from minors.</p>
+            </section>
+
+            <!-- REFUND & SHIPPING POLICY SECTION -->
+            <section class="policy-section">
+                <h2>Refund & Shipping Policy</h2>
+
+                <h3>1. Returns Policy (7 Days)</h3>
+                <p>We accept returns for "change of mind" strictly under the following conditions:</p>
+                <ul>
+                    <li><strong>Timeframe:</strong> You must initiate the return within 7 days of delivery.</li>
+                    <li><strong>Condition:</strong> The item must be unopened, sealed, and in its original packaging.</li>
+                    <li><strong>Procedure:</strong> Contact <a href="mailto:Nutrithrive0@Gmail.com" style="color: var(--primary); font-weight: 600;">Nutrithrive0@Gmail.com</a> to start the process.</li>
+                    <li><strong>Cost:</strong> The customer is responsible for all return shipping costs.</li>
+                    <li><strong>Refund Processing:</strong> Once received and inspected, refunds are processed via PayPal within 5 to 7 business days.</li>
+                </ul>
+
+                <h3>2. Shipping & Location Liability</h3>
+                
+                <p><strong>⚠️ Customer Responsibility:</strong> It is your sole responsibility to select the correct Country and enter the correct Address at checkout.</p>
+
+                <p><strong>Wrong Location Selection:</strong> If you select the wrong country (e.g., selecting "Australia" for a US address) to bypass shipping costs or by error, NutriThrive is not responsible for the order. We reserve the right to cancel the order or refuse delivery. We are not liable for lost goods due to incorrect address details provided by the customer.</p>
+            </section>
+
+            <!-- TERMS OF SERVICE & DISCLAIMER SECTION -->
+            <section class="policy-section">
+                <h2>Terms of Service & Disclaimer</h2>
+
+                <h3>1. Product Nature (Natural vs. Organic)</h3>
+                
+                <p><strong>Natural Product:</strong> NutriThrive products are sold as "Natural" products derived from natural ingredients.</p>
+
+                <p><strong>Not Certified Organic:</strong> We explicitly state that our products are NOT "Certified Organic". We do not hold organic certification.</p>
+
+                <p><strong>Waiver of Claims:</strong> NutriThrive makes no representations or warranties that its products are 'Organic.' By purchasing, you acknowledge the product is sold strictly as 'Natural' and agree to release NutriThrive from any liability, claims, or disputes asserting otherwise.</p>
+
+                <h3>2. Limitation of Liability</h3>
+                <p>To the extent permitted by Australian law, NutriThrive is not liable for any indirect, incidental, or consequential damages arising from the use of our products.</p>
+
+                <h3>3. Governing Law</h3>
+                <p>These terms are governed by the laws of Victoria, Australia.</p>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="policy-section">
+                <h3>Questions or Concerns?</h3>
+                <p>If you have any questions about our Privacy Policy, Terms of Service, or Refund Policy, please contact us:</p>
+                <p><strong>Email:</strong> <a href="mailto:Nutrithrive0@Gmail.com">Nutrithrive0@Gmail.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+61438201419">0438 201 419</a></p>
+            </section>
+        </div>
+    </main>
+
+        <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About NutriThrive</h3>
+                <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Shopping</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products/">Products</a></li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li><a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help &amp; Info</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li>                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
+                    <li><a href="tel:+61438201419">+61 438201419</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Business Info</h3>
+                <ul class="footer-links">
+                    <li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
+<li>Based in Truganina, Melbourne, VIC (Australia)<br>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br>Worldwide Shipping Available 🌍</li>
+                    <li>Monday - Sunday</li>
+                    <li>9:00 AM - 11:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 NutriThrive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/scripts/global/script.js" defer></script>
+    <script src="/scripts/global/cart-header.js" defer></script>
 </body>
 </html>
