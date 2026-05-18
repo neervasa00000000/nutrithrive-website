@@ -1,9 +1,9 @@
 {
   "default": {
-    "hero": "../assets/images/product_photos/moringa.jpeg"
+    "hero": "../assets/images/product_photos/webp/moringa.webp"
   },
   "social": {
-    "hero": "../assets/images/product_photos/moringa.jpeg"
+    "hero": "../assets/images/product_photos/webp/moringa.webp"
   },
   "moringa-powder-victoria-seniors-joint-health.html": {
     "hero": "/assets/images/blog/moringa-seniors-720.jpg",
@@ -12,7 +12,7 @@
     "height": 480
   },
   "nutrithrive-dried-curry-leaves-tradition-health.html": {
-    "hero": "/assets/images/product_photos/driedcurry.jpeg",
+    "hero": "/assets/images/product_photos/webp/driedcurry.webp",
     "width": 800,
     "height": 800
   }
