@@ -41,14 +41,24 @@
   border-bottom: 1px solid rgba(190, 201, 193, 0.3);
   box-shadow: 0 1px 8px rgba(26, 46, 34, 0.06);
 }
-body.has-test-banner main {
-  padding-top: 0;
+/* Modest gap below sticky promo + nav (header is in-flow; not the old pt-28) */
+main.nt-main-below-header,
+.nt-main-below-header {
+  padding-top: 1rem;
+  margin-top: 0;
+}
+body.has-test-banner main.nt-main-below-header,
+body.has-test-banner .nt-main-below-header {
+  padding-top: 1.25rem;
 }
 
-/* Header sits in-flow inside .nt-sticky-top — do not add fixed-header offset on main */
-.nt-sticky-top + main {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
+/* Shop — hero + headings clear sticky bar when scrolling to anchors */
+.nt-shop-page .nt-shop-hero {
+  scroll-margin-top: 8.5rem;
+}
+.nt-shop-page .nt-shop-hero h1,
+.nt-shop-page .nt-shop-hero h2 {
+  scroll-margin-top: 8.5rem;
 }
 
 /* Keep page content within design max width (Tailwind max-w-container-max) */
@@ -95,13 +105,13 @@ main > .max-w-container-max,
   min-height: 200px;
   max-height: 200px;
   padding: 0.75rem;
-  background: #1a2e22;
+  background: rgba(242, 238, 227, 0.55);
+  border: 1px solid rgba(190, 201, 193, 0.45);
   border-radius: 0.5rem;
   text-decoration: none;
 }
 .nt-home-feature-card--light .nt-home-feature-media {
   background: #ffffff;
-  border: 1px solid rgba(190, 201, 193, 0.45);
 }
 .nt-home-feature-media img {
   width: 100%;
@@ -554,7 +564,8 @@ details[open] .expand-icon {
   aspect-ratio: 1 / 1;
   max-height: 11rem;
   padding: 0.65rem 0.75rem;
-  background: rgba(242, 238, 227, 0.55);
+  background: #f7f3e8;
+  border: 1px solid rgba(190, 201, 193, 0.4);
   overflow: hidden;
 }
 .nt-shop-card-img {

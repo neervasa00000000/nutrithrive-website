@@ -29,19 +29,22 @@ function patchTailwindConfig(html) {
   );
 }
 
-function stripStickyHeaderMainOffset(html) {
+function ensureMainBelowHeader(html) {
   return html.replace(/<main\b([^>]*)>/gi, (tag, attrs) => {
     const clsMatch = attrs.match(/\bclass=(["'])([\s\S]*?)\1/i);
-    if (!clsMatch) return tag;
+    if (!clsMatch) return '<main class="nt-main-below-header">';
     const quote = clsMatch[1];
-    const cleaned = clsMatch[2]
+    let classes = clsMatch[2]
       .replace(/\bpt-(24|28|32|40)\b/g, '')
       .replace(/\bmt-20\b/g, '')
       .replace(/\s+/g, ' ')
       .trim();
-    let nextAttrs = attrs.replace(clsMatch[0], cleaned ? `class=${quote}${cleaned}${quote}` : '');
+    if (!/\bnt-main-below-header\b/.test(classes)) {
+      classes = classes ? `nt-main-below-header ${classes}` : 'nt-main-below-header';
+    }
+    let nextAttrs = attrs.replace(clsMatch[0], `class=${quote}${classes}${quote}`);
     nextAttrs = nextAttrs.replace(/\s+/g, ' ').trim();
-    return nextAttrs ? `<main ${nextAttrs}>` : '<main>';
+    return nextAttrs ? `<main ${nextAttrs}>` : '<main class="nt-main-below-header">';
   });
 }
 
@@ -64,7 +67,7 @@ for (const file of walk(V2)) {
   let html = fs.readFileSync(file, 'utf8');
   const orig = html;
   html = patchTailwindConfig(html);
-  html = stripStickyHeaderMainOffset(html);
+  html = ensureMainBelowHeader(html);
   html = fixHeadOrder(html);
   if (html !== orig) {
     fs.writeFileSync(file, html);
