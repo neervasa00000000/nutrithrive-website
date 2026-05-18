@@ -812,21 +812,21 @@
       ? `<span class="text-on-surface-variant/60 line-through text-sm">${money(p.was)}</span>`
       : '';
     return `
-<article id="${p.id}" class="group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col">
-  <a href="${href}" class="block relative aspect-[4/5] overflow-hidden bg-surface-variant/20">
-    <img alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${productImg(p.image)}" loading="lazy"/>
-    <span class="absolute top-4 left-4 bg-moringa-leaf text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase">${p.badge || 'New'}</span>
+<article id="${p.id}" class="nt-shop-card group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col">
+  <a href="${href}" class="nt-shop-card-media block relative">
+    <img alt="${title}" class="nt-shop-card-img" src="${productImg(p.image)}" loading="lazy" width="400" height="400"/>
+    <span class="absolute top-3 left-3 bg-moringa-leaf text-pure-white text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase">${p.badge || 'New'}</span>
   </a>
-  <div class="p-6 flex flex-col flex-grow">
-    <h3 class="font-display text-headline-md text-forest-deep mb-2"><a href="${href}" class="hover:text-moringa-leaf">${title}</a></h3>
-    <p class="font-label-sm text-label-sm text-on-surface-variant mb-4">${tag}</p>
-    <div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/10">
+  <div class="nt-shop-card-body p-4 flex flex-col flex-grow">
+    <h3 class="nt-shop-card-title font-display text-forest-deep mb-1"><a href="${href}" class="hover:text-moringa-leaf">${title}</a></h3>
+    <p class="nt-shop-card-tag font-label-sm text-label-sm text-on-surface-variant mb-3">${tag}</p>
+    <div class="nt-shop-card-footer mt-auto flex items-center justify-between pt-3 border-t border-outline-variant/10">
       <div class="flex flex-col">
-        <span class="text-terracotta-clay font-bold text-lg">${money(p.price)}</span>
+        <span class="nt-shop-card-price text-terracotta-clay font-bold">${money(p.price)}</span>
         ${wasBlock}
       </div>
-      <button type="button" data-add-cart="${p.id}" data-name="${cartName.replace(/"/g, '&quot;')}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${productImg(p.image)}" data-tag="${tag.replace(/"/g, '&quot;')}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart">
-        <span class="material-symbols-outlined text-[20px] pointer-events-none">add_shopping_cart</span>
+      <button type="button" data-add-cart="${p.id}" data-name="${cartName.replace(/"/g, '&quot;')}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${productImg(p.image)}" data-tag="${tag.replace(/"/g, '&quot;')}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors relative z-20 cursor-pointer" aria-label="Add to cart">
+        <span class="material-symbols-outlined text-[18px] pointer-events-none">add_shopping_cart</span>
       </button>
     </div>
   </div>
@@ -853,20 +853,20 @@
       : '<span class="nt-card-was text-on-surface-variant/60 line-through text-sm invisible" aria-hidden="true">$0.00</span>';
     return `
 <article class="nt-carousel-card group bg-pure-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
-  <a href="${href}" class="nt-card-media block relative overflow-hidden bg-surface-variant/20">
-    <img alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${productImg(p.image)}" loading="lazy"/>
-    <span class="absolute top-4 left-4 bg-moringa-leaf text-pure-white text-[12px] px-3 py-1 rounded-full font-bold uppercase z-[1]">${p.badge || 'New'}</span>
+  <a href="${href}" class="nt-card-media block relative">
+    <img alt="${p.name}" class="nt-card-img" src="${productImg(p.image)}" loading="lazy" width="320" height="320"/>
+    <span class="absolute top-2.5 left-2.5 bg-moringa-leaf text-pure-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase z-[1]">${p.badge || 'New'}</span>
   </a>
-  <div class="nt-card-body p-6 flex flex-col">
-    <h3 class="nt-card-title font-display text-headline-md text-forest-deep mb-2 line-clamp-2"><a href="${href}" class="hover:text-moringa-leaf">${p.shortName || p.name}</a></h3>
-    <p class="nt-card-tag font-label-sm text-label-sm text-on-surface-variant mb-4 line-clamp-2">${p.tag || '&nbsp;'}</p>
-    <div class="nt-card-footer mt-auto flex items-end justify-between gap-3 pt-4 border-t border-outline-variant/10">
-      <div class="nt-card-price flex flex-col justify-end min-h-[2.75rem]">
-        <span class="text-terracotta-clay font-bold text-lg leading-tight">${money(p.price)}</span>
+  <div class="nt-card-body flex flex-col">
+    <h3 class="nt-card-title font-display text-forest-deep line-clamp-2"><a href="${href}" class="hover:text-moringa-leaf">${p.shortName || p.name}</a></h3>
+    <p class="nt-card-tag font-label-sm text-label-sm text-on-surface-variant line-clamp-2">${p.tag || '&nbsp;'}</p>
+    <div class="nt-card-footer mt-auto flex items-end justify-between gap-2 border-t border-outline-variant/10">
+      <div class="nt-card-price flex flex-col justify-end">
+        <span class="nt-card-price-now text-terracotta-clay font-bold leading-tight">${money(p.price)}</span>
         ${wasLine}
       </div>
-      <button type="button" data-add-cart="${p.id}" data-name="${p.name}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${productImg(p.image)}" data-tag="${p.tag || ''}" class="nt-add-cart-btn bg-terracotta-clay text-pure-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors shrink-0 relative z-20 cursor-pointer" aria-label="Add ${p.name} to cart">
-        <span class="material-symbols-outlined text-[20px] pointer-events-none">add_shopping_cart</span>
+      <button type="button" data-add-cart="${p.id}" data-name="${p.name}" data-price="${p.price}" data-was="${p.was ?? ''}" data-image="${productImg(p.image)}" data-tag="${p.tag || ''}" class="nt-add-cart-btn nt-carousel-add-btn bg-terracotta-clay text-pure-white rounded-full flex items-center justify-center hover:bg-moringa-leaf transition-colors shrink-0 relative z-20 cursor-pointer" aria-label="Add ${p.name} to cart">
+        <span class="material-symbols-outlined pointer-events-none">add_shopping_cart</span>
       </button>
     </div>
   </div>
@@ -906,7 +906,7 @@
         const track = wrap.querySelector('#nt-carousel-track');
         const scrollBy = (dir) => {
           if (!track) return;
-          const amount = Math.min(320, track.clientWidth * 0.85) * dir;
+          const amount = Math.min(216, track.clientWidth * 0.85) * dir;
           track.scrollBy({ left: amount, behavior: 'smooth' });
         };
         wrap.querySelector('.nt-carousel-prev')?.addEventListener('click', () => scrollBy(-1));
