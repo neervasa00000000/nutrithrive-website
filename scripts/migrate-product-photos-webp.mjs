@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 /**
  * Point all product image refs at assets/images/product_photos/webp/
- * Leaves about/contact page art and blog heroes under product-showcase.
  */
 import fs from 'fs';
 import path from 'path';
@@ -9,7 +8,18 @@ import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-const PRODUCT_REPLACEMENTS = [
+/** Order: longest / most specific first */
+const REPLACEMENTS = [
+  ['product_photos/moringa-400g-bundle.jpeg', 'product_photos/webp/3+1.webp'],
+  ['product_photos/moringasoapcombo.jpeg', 'product_photos/webp/moringasoapcombo.webp'],
+  ['product_photos/driedcurry.jpeg', 'product_photos/webp/driedcurry.webp'],
+  ['product_photos/blacktea.jpeg', 'product_photos/webp/blacktea.webp'],
+  ['product_photos/moringa.jpeg', 'product_photos/webp/moringa.webp'],
+  ['product_photos/combo.jpeg', 'product_photos/webp/combo.webp'],
+  ['product_photos/soap.jpeg', 'product_photos/webp/soap.webp'],
+  ['product_photos/200g.png', 'product_photos/webp/200g.webp'],
+  ['product_photos/GodPack.jpeg', 'product_photos/webp/3+1.webp'],
+  // legacy showcase → webp (skip if already product_photos/jpeg)
   ['homepage/product-showcase/thumbs/new3+1.webp', 'product_photos/webp/3+1.webp'],
   ['homepage/product-showcase/new3+1.webp', 'product_photos/webp/3+1.webp'],
   ['homepage/product-showcase/thumbs/moringasoap_combo.webp', 'product_photos/webp/moringasoapcombo.webp'],
@@ -26,19 +36,6 @@ const PRODUCT_REPLACEMENTS = [
   ['homepage/product-showcase/combo.webp', 'product_photos/webp/combo.webp'],
   ['homepage/product-showcase/thumbs/Moringa.webp', 'product_photos/webp/moringa.webp'],
   ['homepage/product-showcase/Moringa.webp', 'product_photos/webp/moringa.webp'],
-  ['product_photos/moringa-400g-bundle.jpeg', 'product_photos/webp/3+1.webp'],
-  ['product_photos/moringasoapcombo.jpeg', 'product_photos/webp/moringasoapcombo.webp'],
-  ['product_photos/driedcurry.jpeg', 'product_photos/webp/driedcurry.webp'],
-  ['product_photos/blacktea.jpeg', 'product_photos/webp/blacktea.webp'],
-  ['product_photos/moringa.jpeg', 'product_photos/webp/moringa.webp'],
-  ['product_photos/combo.jpeg', 'product_photos/webp/combo.webp'],
-  ['product_photos/soap.jpeg', 'product_photos/webp/soap.webp'],
-  ['product_photos/200g.png', 'product_photos/webp/200g.webp'],
-  ['product_photos/GodPack.jpeg', 'product_photos/webp/3+1.webp'],
-  ['images/products/thumbs/new3+1.webp', 'product_photos/webp/3+1.webp'],
-  ['images/products/new3+1.webp', 'product_photos/webp/3+1.webp'],
-  ['images/products/moringa_soap.webp', 'product_photos/webp/soap.webp'],
-  ['images/products/Moringa.webp', 'product_photos/webp/moringa.webp'],
 ];
 
 const EXT = new Set(['.html', '.js', '.json', '.mjs', '.css', '.htaccess']);
@@ -48,7 +45,8 @@ function walk(dir, out = []) {
     if (name.name === 'node_modules' || name.name === '.git') continue;
     const p = path.join(dir, name.name);
     if (name.isDirectory()) walk(p, out);
-    else if (EXT.has(path.extname(name.name)) || name.name === '.htaccess') out.push(p);
+    else if (EXT.has(path.extname(name.name)) || name.name === '.htaccess' || name.name === '_redirects')
+      out.push(p);
   }
   return out;
 }
@@ -60,12 +58,14 @@ for (const file of walk(ROOT)) {
   if (file.includes('migrate-product-photos')) continue;
   let text = fs.readFileSync(file, 'utf8');
   let changed = false;
-  for (const [from, to] of PRODUCT_REPLACEMENTS) {
-    for (const pat of [`/assets/images/${from}`, `assets/images/${from}`]) {
-      const next = `/assets/images/${to.replace(/^\/+/, '')}`;
+  for (const [from, to] of REPLACEMENTS) {
+    for (const prefix of ['/assets/images/', 'assets/images/']) {
+      const pat = `${prefix}${from}`;
+      const next = `${prefix}${to}`;
       if (text.includes(pat)) {
-        totalReplacements += text.split(pat).length - 1;
+        const count = text.split(pat).length - 1;
         text = text.split(pat).join(next);
+        totalReplacements += count;
         changed = true;
       }
     }

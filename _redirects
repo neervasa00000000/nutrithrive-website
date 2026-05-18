@@ -91,30 +91,39 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Legacy lab PDF URL (products page previously pointed here; file was not in repo)
 /assets/lab-report.pdf /documents/nutrithrive-lab-report-summary.pdf 301
 
-# Product images: legacy showcase / og / old filenames → product_photos
-/assets/images/homepage/product-showcase/thumbs/Moringa.webp /assets/images/product_photos/moringa.jpeg 301
-/assets/images/homepage/product-showcase/Moringa.webp /assets/images/product_photos/moringa.jpeg 301
-/assets/images/homepage/product-showcase/thumbs/Curry.webp /assets/images/product_photos/driedcurry.jpeg 301
-/assets/images/homepage/product-showcase/Curry.webp /assets/images/product_photos/driedcurry.jpeg 301
-/assets/images/homepage/product-showcase/thumbs/BlackTea.webp /assets/images/product_photos/blacktea.jpeg 301
-/assets/images/homepage/product-showcase/BlackTea.webp /assets/images/product_photos/blacktea.jpeg 301
-/assets/images/homepage/product-showcase/thumbs/combo.webp /assets/images/product_photos/combo.jpeg 301
-/assets/images/homepage/product-showcase/combo.webp /assets/images/product_photos/combo.jpeg 301
-/assets/images/homepage/product-showcase/thumbs/moringa_soap.webp /assets/images/product_photos/soap.jpeg 301
-/assets/images/homepage/product-showcase/moringa_soap.webp /assets/images/product_photos/soap.jpeg 301
-/assets/images/homepage/product-showcase/thumbs/moringasoap_combo.webp /assets/images/product_photos/moringasoapcombo.jpeg 301
-/assets/images/homepage/product-showcase/moringasoap_combo.webp /assets/images/product_photos/moringasoapcombo.jpeg 301
-/assets/images/homepage/product-showcase/thumbs/Bundleoffer.webp /assets/images/product_photos/GodPack.jpeg 301
-/assets/images/homepage/product-showcase/Bundleoffer.webp /assets/images/product_photos/GodPack.jpeg 301
-/assets/images/homepage/product-showcase/thumbs/new3+1.webp /assets/images/product_photos/moringa-400g-bundle.jpeg 301
-/assets/images/homepage/product-showcase/new3+1.webp /assets/images/product_photos/moringa-400g-bundle.jpeg 301
-/assets/images/Home%20page/webp/BlackTea.webp /assets/images/product_photos/blacktea.jpeg 301
-/assets/images/Home%20page/webp/moringasoap.webp /assets/images/product_photos/soap.jpeg 301
-/assets/images/og/black-tea-social-1200.jpg /assets/images/product_photos/blacktea.jpeg 301
-/assets/images/og/moringa-social-1200.png /assets/images/product_photos/moringa.jpeg 301
-/assets/images/og/moringa-product-thumb.png /assets/images/product_photos/moringa.jpeg 301
-/assets/images/og/moringa-article-1200.jpg /assets/images/product_photos/moringa.jpeg 301
-/assets/images/product_photos/3+1.jpeg /assets/images/product_photos/moringa-400g-bundle.jpeg 301
+# Product images: legacy showcase / og / old filenames → product_photos/webp
+/assets/images/homepage/product-showcase/thumbs/Moringa.webp /assets/images/product_photos/webp/moringa.webp 301
+/assets/images/homepage/product-showcase/Moringa.webp /assets/images/product_photos/webp/moringa.webp 301
+/assets/images/homepage/product-showcase/thumbs/Curry.webp /assets/images/product_photos/webp/driedcurry.webp 301
+/assets/images/homepage/product-showcase/Curry.webp /assets/images/product_photos/webp/driedcurry.webp 301
+/assets/images/homepage/product-showcase/thumbs/BlackTea.webp /assets/images/product_photos/webp/blacktea.webp 301
+/assets/images/homepage/product-showcase/BlackTea.webp /assets/images/product_photos/webp/blacktea.webp 301
+/assets/images/homepage/product-showcase/thumbs/combo.webp /assets/images/product_photos/webp/combo.webp 301
+/assets/images/homepage/product-showcase/combo.webp /assets/images/product_photos/webp/combo.webp 301
+/assets/images/homepage/product-showcase/thumbs/moringa_soap.webp /assets/images/product_photos/webp/soap.webp 301
+/assets/images/homepage/product-showcase/moringa_soap.webp /assets/images/product_photos/webp/soap.webp 301
+/assets/images/homepage/product-showcase/thumbs/moringasoap_combo.webp /assets/images/product_photos/webp/moringasoapcombo.webp 301
+/assets/images/homepage/product-showcase/moringasoap_combo.webp /assets/images/product_photos/webp/moringasoapcombo.webp 301
+/assets/images/homepage/product-showcase/thumbs/Bundleoffer.webp /assets/images/product_photos/webp/3+1.webp 301
+/assets/images/homepage/product-showcase/Bundleoffer.webp /assets/images/product_photos/webp/3+1.webp 301
+/assets/images/homepage/product-showcase/thumbs/new3+1.webp /assets/images/product_photos/webp/3+1.webp 301
+/assets/images/homepage/product-showcase/new3+1.webp /assets/images/product_photos/webp/3+1.webp 301
+/assets/images/Home%20page/webp/BlackTea.webp /assets/images/product_photos/webp/blacktea.webp 301
+/assets/images/Home%20page/webp/moringasoap.webp /assets/images/product_photos/webp/soap.webp 301
+/assets/images/og/black-tea-social-1200.jpg /assets/images/product_photos/webp/blacktea.webp 301
+/assets/images/og/moringa-social-1200.png /assets/images/product_photos/webp/moringa.webp 301
+/assets/images/og/moringa-product-thumb.png /assets/images/product_photos/webp/moringa.webp 301
+/assets/images/og/moringa-article-1200.jpg /assets/images/product_photos/webp/moringa.webp 301
+/assets/images/product_photos/moringa.jpeg /assets/images/product_photos/webp/moringa.webp 301
+/assets/images/product_photos/200g.png /assets/images/product_photos/webp/200g.webp 301
+/assets/images/product_photos/moringa-400g-bundle.jpeg /assets/images/product_photos/webp/3+1.webp 301
+/assets/images/product_photos/3+1.jpeg /assets/images/product_photos/webp/3+1.webp 301
+/assets/images/product_photos/soap.jpeg /assets/images/product_photos/webp/soap.webp 301
+/assets/images/product_photos/combo.jpeg /assets/images/product_photos/webp/combo.webp 301
+/assets/images/product_photos/moringasoapcombo.jpeg /assets/images/product_photos/webp/moringasoapcombo.webp 301
+/assets/images/product_photos/driedcurry.jpeg /assets/images/product_photos/webp/driedcurry.webp 301
+/assets/images/product_photos/blacktea.jpeg /assets/images/product_photos/webp/blacktea.webp 301
+/assets/images/product_photos/GodPack.jpeg /assets/images/product_photos/webp/3+1.webp 301
 
 # ---200 rewrites (URL in browser unchanged; serves file) ---
 
