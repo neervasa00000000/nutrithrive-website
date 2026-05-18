@@ -45,6 +45,17 @@ body.has-test-banner main {
   padding-top: 0;
 }
 
+/* Header sits in-flow inside .nt-sticky-top — do not add fixed-header offset on main */
+.nt-sticky-top + main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* container-max was only in theme.spacing; max-w-* reads theme.maxWidth */
+.max-w-container-max {
+  max-width: 1280px;
+}
+
 /* Product page — five featured products (matches live /products/ lineup) */
 .nt-pdp-picker-wrap {
   margin-top: 0.5rem;
@@ -520,7 +531,7 @@ details[open] .expand-icon {
 /* Shop grid — compact cards, full product visible */
 #nt-shop-grid {
   gap: 1rem;
-  min-height: 28rem;
+  min-height: 0;
 }
 @media (min-width: 1024px) {
   #nt-shop-grid {

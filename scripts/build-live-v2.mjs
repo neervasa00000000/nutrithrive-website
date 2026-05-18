@@ -60,9 +60,37 @@ function write(file, html) {
   fs.writeFileSync(full, html);
 }
 
+function patchTailwindConfig(configHtml) {
+  if (!configHtml || /"maxWidth"\s*:/.test(configHtml)) return configHtml;
+  return configHtml.replace(
+    /"spacing"\s*:\s*\{/,
+    `"maxWidth": {
+                      "container-max": "1280px"
+              },
+              "spacing": {`
+  );
+}
+
+/** Remove legacy fixed-header offsets; header is in-flow in .nt-sticky-top */
+function stripStickyHeaderMainOffset(html) {
+  return html.replace(/<main\b([^>]*)>/gi, (tag, attrs) => {
+    const clsMatch = attrs.match(/\bclass=(["'])([\s\S]*?)\1/i);
+    if (!clsMatch) return tag;
+    const quote = clsMatch[1];
+    const cleaned = clsMatch[2]
+      .replace(/\bpt-(24|28|32|40)\b/g, '')
+      .replace(/\bmt-20\b/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const nextAttrs = attrs.replace(clsMatch[0], cleaned ? `class=${quote}${cleaned}${quote}` : '');
+    return `<main${nextAttrs}>`;
+  });
+}
+
 function extractTailwindBlock(testHtml) {
   const style = testHtml.match(/<style>[\s\S]*?<\/style>/i)?.[0] || '';
-  const config = testHtml.match(/<script id="tailwind-config">[\s\S]*?<\/script>/i)?.[0] || '';
+  let config = testHtml.match(/<script id="tailwind-config">[\s\S]*?<\/script>/i)?.[0] || '';
+  config = patchTailwindConfig(config);
   return { style, config };
 }
 
@@ -220,6 +248,8 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
 
   for (const [re, rep] of replacements) out = out.replace(re, rep);
 
+  out = stripStickyHeaderMainOffset(out);
+
   if (isBlogArticle) {
     out = out.replace(/href="\/blog\/index\.html"/g, 'href="/blog/"');
     out = out.replace(
@@ -368,7 +398,7 @@ function sanitizePaymentStyles(styleHtml) {
 function paymentLiveBody(liveHtml) {
   const { style, checkout } = extractPaymentFromLive(liveHtml);
   return `${v2ShellPrefix()}
-<main class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-payment-live">
+<main class="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-payment-live">
 ${sanitizePaymentStyles(style)}
 ${checkout}
 </main>
@@ -379,7 +409,7 @@ function redirectStubBody(target, label) {
   const safeTarget = target.replace(/"/g, '&quot;');
   const safeLabel = label.replace(/</g, '&lt;');
   return `${v2ShellPrefix()}
-<main class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<main class="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
   <p class="font-body-lg text-on-surface-variant mb-6">Redirecting to the ${safeLabel}…</p>
   <a href="${safeTarget}" class="inline-block bg-moringa-leaf text-pure-white px-8 py-3 rounded-full font-label-lg">Continue</a>
 </main>
@@ -391,7 +421,7 @@ function productPdpBody() {
 <div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
-<main id="nt-pdp-app" class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"></main>
+<main id="nt-pdp-app" class="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"></main>
 <div id="nt-footer"></div>`;
 }
 
