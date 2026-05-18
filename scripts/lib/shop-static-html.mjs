@@ -89,11 +89,19 @@ export function shopStaticGridHtml() {
   return CATALOG.map(card).join('\n');
 }
 
+const EMPTY_GRID =
+  '<div id="nt-shop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter"></div>';
+
 export function patchShopGridBody(body) {
-  if (body.includes('data-nt-shop-ready="1"')) return body;
+  if (body.includes('nt-shop-media')) return body;
   const gridInner = shopStaticGridHtml();
-  return body.replace(
-    /<motion.div id="nt-shop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter"><\/motion.div>/,
-    `<div id="nt-shop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter nt-shop-static-grid" data-nt-shop-ready="1">\n${gridInner}\n  </div>`
-  );
+  const filledGrid = `<div id="nt-shop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter nt-shop-static-grid" data-nt-shop-ready="1">\n${gridInner}\n  </div>`;
+  if (body.includes('data-nt-shop-ready="1"')) {
+    return body.replace(
+      /<div id="nt-shop-grid"[^>]*data-nt-shop-ready="1"[^>]*>[\s\S]*?<\/div>\s*(?=\s*<p class="mt-12)/,
+      `${filledGrid}\n  `
+    );
+  }
+  if (body.includes(EMPTY_GRID)) return body.replace(EMPTY_GRID, filledGrid);
+  return body.replace(/<div id="nt-shop-grid"[^>]*>\s*<\/div>/, filledGrid);
 }

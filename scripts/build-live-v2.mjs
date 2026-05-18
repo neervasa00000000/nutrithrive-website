@@ -18,6 +18,7 @@ import {
   stripPerfDuplicatesFromPreserved,
 } from './lib/v2-head-perf.mjs';
 import { patchShopGridBody } from './lib/shop-static-html.mjs';
+import { optimizeProductsPageHtml } from './lib/shop-page-perf.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
@@ -444,6 +445,7 @@ function applyPage(entry) {
     opts: { cart: entry.cart, blogArticles: entry.blogArticles, isBlogArticle: false },
   });
   html = dedupeTailwindConfig(html);
+  if (liveFile === 'products/index.html') html = optimizeProductsPageHtml(html);
   write(liveFile, html);
   console.log('Live ← test:', liveFile);
 }
