@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en-AU">
+<html lang="en-AU">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Premium Wellness Combo Pack | NutriThrive, Melbourne</title>
+<link rel="stylesheet" href="/assets/css/design-system.css"/>
+<script src="/scripts/global/defer-loader.js"></script>
+<script src="/scripts/global/reddit-pixel.js"></script>
+
 <!-- Google tag (gtag.js) - Deferred for performance -->
 <script>
   // Defer Google Analytics to prevent blocking initial render
@@ -24,11 +25,11 @@
   });
 </script>
 
-    
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+    <title>Premium Wellness Combo Pack | NutriThrive, Melbourne</title>
     <meta name="description" content="NutriThrive wellness bundles: lab-tested favourites with fast shipping from Truganina, Melbourne — save vs buying separately.">
     <meta name="keywords" content="combo pack Australia, wellness combo, natural supplements pack, buy health combo, NutriThrive combo, superfood pack, health supplements Australia, combo pack price, Melbourne wellness, Sydney superfoods, Truganina health products, Victoria health combo">
     <meta name="author" content="NutriThrive Australia">
@@ -43,7 +44,7 @@
     <meta property="og:url" content="https://nutrithrive.com.au/products/combo-pack/">
     <meta property="og:title" content="Premium Wellness Combo Pack | NutriThrive">
     <meta property="og:description" content="NutriThrive wellness bundles: lab-tested favourites with fast shipping from Truganina, Melbourne — save vs buying separately.">
-    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/product_photos/combo.jpeg">
+    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/combo.webp">
     <meta property="og:site_name" content="NutriThrive Australia">
     <meta property="og:locale" content="en_AU">
     
@@ -52,7 +53,7 @@
     <meta property="twitter:url" content="https://nutrithrive.com.au/products/combo-pack/">
     <meta property="twitter:title" content="Premium Wellness Combo Pack | NutriThrive Australia">
     <meta property="twitter:description" content="NutriThrive wellness bundles: lab-tested favourites with fast shipping from Truganina, Melbourne — save vs buying separately.">
-    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/product_photos/combo.jpeg">
+    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/combo.webp">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://nutrithrive.com.au/products/combo-pack/">
@@ -66,14 +67,71 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
     <!-- Critical CSS to prevent FOUC -->
-    
+    <style>
+      /* Prevent FOUC - Hide content until CSS loads */
+      html:not(.loaded) { visibility: hidden; opacity: 0; }
+      html.loaded { visibility: visible; opacity: 1; transition: opacity 0.1s; }
+      
+      /* Critical above-the-fold styles */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: #f8f5ec;
+        color: #1a2e22;
+        line-height: 1.6;
+      }
+      
+      /* Header critical styles */
+      header {
+        background: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 100;
+      }
+      
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      /* Logo styles */
+      .logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #175c36;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      
+      /* Nav links */
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .nav-links a {
+        text-decoration: none;
+        color: #1a2e22;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+    </style>
     
     <!-- Load CSS normally (blocking) to prevent FOUC -->
-    
-    
+    <link rel="preload" as="style" href="/styles/global/style.css">
+    <link rel="preload" as="style" href="/styles/products/moringa-powder-new.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    
+    <link rel="stylesheet" href="/styles/global/style.css">
+    <link rel="stylesheet" href="/styles/products/moringa-powder-new.css">
     
     <!-- Mark page as loaded once CSS is ready -->
     <script>
@@ -94,7 +152,159 @@
       })();
     </script>
     
-    
+    <style>
+      /* Accordion smooth animation */
+      .accordion-content {
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out !important;
+        overflow: hidden !important;
+      }
+      
+      .accordion-content.active {
+        display: block !important;
+        max-height: none !important;
+      }
+      
+      /* Benefits Accordion Section */
+      .benefits-accordion-header {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      
+      .benefits-accordion-header:hover {
+        opacity: 0.8;
+      }
+      
+      .benefits-accordion-content {
+        display: block;
+      }
+      
+      @media (max-width: 768px) {
+        .benefits-accordion-header {
+          min-height: 48px;
+          padding: 0.75rem 0;
+        }
+      }
+      
+      /* Mobile navigation - match homepage exactly */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(10px);
+          z-index: 2000;
+          display: none;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+          padding: 2rem 1.5rem 1rem;
+          margin: 0;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          gap: 0.8rem;
+        }
+        
+        .nav-links.nav-active {
+          display: flex !important;
+          transform: translateX(0);
+        }
+        
+        .nav-links a {
+          font-size: 1.5rem !important;
+          margin: 0.2rem 0 !important;
+          padding: 1.2rem 1.5rem !important;
+          border-radius: 12px !important;
+          transition: background-color 0.2s ease !important;
+          text-align: center !important;
+          width: 100% !important;
+          max-width: 300px !important;
+          display: flex !important;
+          text-decoration: none !important;
+          color: var(--primary) !important;
+          font-weight: 600 !important;
+          min-height: 60px !important;
+          align-items: center !important;
+          justify-content: center !important;
+          background: transparent !important;
+          border: none !important;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+          background-color: rgba(23, 92, 54, 0.1) !important;
+          color: var(--accent) !important;
+        }
+        
+        .hamburger {
+          display: block !important;
+          background: none !important;
+          border: none !important;
+          cursor: pointer !important;
+          padding: 10px !important;
+          min-width: 44px !important;
+          min-height: 44px !important;
+          -webkit-tap-highlight-color: transparent !important;
+          touch-action: manipulation !important;
+          z-index: 2001 !important;
+          position: relative !important;
+        }
+        
+        .hamburger div {
+          width: 25px !important;
+          height: 3px !important;
+          background-color: var(--primary) !important;
+          margin: 5px 0 !important;
+          transition: all 0.2s ease !important;
+          pointer-events: none !important;
+        }
+        
+        /* Hamburger close functionality - force perfectly centered X on mobile (match homepage) */
+        .hamburger.toggle {
+          background: none !important;
+          border: none !important;
+        }
+        
+        /* When open, overlay both visible lines in the exact center */
+        .hamburger.toggle div {
+          position: absolute !important;
+          top: 50% !important;
+          left: 50% !important;
+          width: 25px !important;
+          height: 3px !important;
+          margin: 0 !important;
+          transform-origin: center !important;
+        }
+        
+        .hamburger.toggle .line1 {
+          transform: translate(-50%, -50%) rotate(45deg) !important;
+        }
+        
+        .hamburger.toggle .line2 {
+          opacity: 0 !important;
+          visibility: hidden !important;
+          display: none !important;
+        }
+        
+        .hamburger.toggle .line3 {
+          transform: translate(-50%, -50%) rotate(-45deg) !important;
+        }
+      }
+      
+      /* Hide product image/gallery elements on combo page */
+      .product-gallery,
+      .main-image,
+      .product-image,
+      .product-media {
+        display: none !important;
+      }
+    </style>
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
@@ -121,7 +331,7 @@
           "description": "100 g moringa powder + 30 g dried curry leaves"
         }
       ],
-      "image": "https://nutrithrive.com.au/assets/images/product_photos/combo.jpeg",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/combo.webp",
       "brand": {
         "@type": "Brand",
         "name": "NutriThrive"
@@ -307,859 +517,511 @@
   ]
 }
 </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-
-
-
-
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .organic-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "surface": "#fdf9ee",
-                      "forest-deep": "#1A2E22",
-                      "on-primary": "#ffffff",
-                      "outline-variant": "#bec9c1",
-                      "primary-fixed": "#a1f3cd",
-                      "tertiary-container": "#4e6355",
-                      "surface-tint": "#106b4d",
-                      "on-surface": "#1c1c15",
-                      "secondary-container": "#fe8760",
-                      "on-error": "#ffffff",
-                      "on-primary-container": "#97e8c3",
-                      "surface-variant": "#e6e2d7",
-                      "on-tertiary-fixed": "#0b1f14",
-                      "primary-fixed-dim": "#86d7b2",
-                      "primary": "#005139",
-                      "terracotta-clay": "#D66844",
-                      "on-background": "#1c1c15",
-                      "on-secondary-fixed": "#3a0b00",
-                      "tertiary-fixed": "#d0e8d6",
-                      "surface-container-highest": "#e6e2d7",
-                      "on-tertiary-fixed-variant": "#374b3e",
-                      "error-container": "#ffdad6",
-                      "background": "#fdf9ee",
-                      "pure-white": "#FFFFFF",
-                      "inverse-on-surface": "#f4f0e6",
-                      "on-primary-fixed-variant": "#005139",
-                      "inverse-primary": "#86d7b2",
-                      "parchment-base": "#F5F1E6",
-                      "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#b5ccbb",
-                      "on-secondary-container": "#732001",
-                      "surface-bright": "#fdf9ee",
-                      "error": "#ba1a1a",
-                      "outline": "#6f7a73",
-                      "tertiary": "#364b3e",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002115",
-                      "surface-container-high": "#ece8dd",
-                      "on-surface-variant": "#3f4943",
-                      "secondary-fixed-dim": "#ffb59e",
-                      "on-tertiary-container": "#c6decc",
-                      "moringa-leaf": "#0F6B4D",
-                      "inverse-surface": "#323129",
-                      "surface-container": "#f2eee3",
-                      "secondary-fixed": "#ffdbd0",
-                      "on-tertiary": "#ffffff",
-                      "secondary": "#a0401f",
-                      "surface-dim": "#dddacf",
-                      "primary-container": "#0f6b4d",
-                      "surface-container-low": "#f7f3e8",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#802909"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1280px",
-                      "margin-mobile": "20px",
-                      "gutter": "24px",
-                      "section-gap": "80px",
-                      "margin-desktop": "64px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "body-md": ["Plus Jakarta Sans"],
-                      "label-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Plus Jakarta Sans"],
-                      "display": ["Literata"],
-                      "label-sm": ["Plus Jakarta Sans"],
-                      "headline-lg-mobile": ["Literata"],
-                      "headline-lg": ["Literata"],
-                      "headline-md": ["Literata"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-    </script>
 </head>
-<body class="bg-background text-on-background font-body-md overflow-x-hidden">
-<div class="nt-sticky-top">
-<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
-<header id="nt-header" class="nt-v2-header"></header>
-</div>
-<main id="nt-pdp-app" class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"></main>
-<div id="nt-footer"></div>
-<script src="/scripts/global/defer-loader.js"></script>
-<script src="/scripts/global/reddit-pixel.js"></script>
-<script src="/shared/site-data.js"></script>
-<script src="/scripts/global/cart.js"></script>
-<script src="/shared/js/cart-v2-ui.js"></script>
-<script src="/shared/js/layout-v2.js"></script>
-<script src="/shared/js/v2-site.js"></script>
+<body class="product-page-new">
+    <header>
+        <div class="urgency-banner">
+            <div class="urgency-content">
+                ⏰ <strong>Order before 2pm for same-day Melbourne dispatch</strong>
+                <span class="separator">•</span>
+                🚚 Free shipping over $80
+                <span class="separator">•</span>
+                📦 Small batches—when we sell out, next batch takes 2–3 weeks
+            </div>
+        </div>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="29" height="29" style="height: 1.8rem; width: auto; margin-right: 0.5rem;" loading="lazy">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/" class="active">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
+        </div>
+    </header>
 
+    <main class="product-main">
+        <!-- Hero Section -->
+        <section class="product-hero">
+            <div class="product-hero-content">
+                <div class="product-image-section">
+                    <img id="main-product-image" src="/assets/images/homepage/product-showcase/combo.webp" alt="Moringa Powder by NutriThrive Melbourne Australia" class="product-main-image" loading="lazy">
+                </div>
+                
+                <div class="product-info-section">
+                    <h1 class="product-title">Premium Combo Pack</h1>
+                    <p class="product-subtitle">Wellness Collection</p>
+                    <p class="product-hero-savings" style="margin:0.5rem 0 0;font-size:1.05rem;font-weight:700;color:#175c36;">Save <span style="white-space:nowrap">$5.49 AUD</span> vs buying items separately at RRP — bundle <span style="white-space:nowrap">$17.00 AUD</span> (was <span style="text-decoration:line-through;opacity:0.85">$22.49 AUD</span>).</p>
+                    
+                    <!-- Purchase Section - Right after image -->
+                    <div class="product-purchase-section">
+                        <!-- Price -->
+                        <div class="product-pricing">
+                            <div class="price-row">
+                                <span id="product-original-price" class="original-price">$22.49 AUD</span>
+                                <span id="product-price" class="current-price">$17.00 AUD</span>
+                            </div>
+                            <p id="product-discount-text" class="discount-text">25% discount ($5.49 AUD off)</p>
+                        </div>
+                        
+                        <!-- Quantity -->
+                        <div class="product-quantity">
+                            <label for="product-quantity" class="quantity-label">Quantity</label>
+                            <select id="product-quantity" class="quantity-select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Why Buy Today -->
+                        <div class="why-buy-today">
+                            <h3>Why Buy Today</h3>
+                            <ul>
+                                <li><strong>⏰ Same-Day Dispatch:</strong> Order before 2pm and it ships today from Melbourne</li>
+                                <li><strong>📦 Best Value:</strong> Bundle saves you more than buying individually</li>
+                                <li><strong>🔬 Lab-Verified Quality:</strong> Every moringa batch tested by Australian Government lab</li>
+                                <li><strong>🇦🇺 Shipped from Melbourne:</strong> Fast delivery across Australia, no overseas delays</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add to Cart Button -->
+                        <button onclick="addComboPackToCart()" class="add-to-cart-btn">Add to Cart</button>
+                        
+                        <!-- Secure Checkout Button (routes via cart with full address collection) -->
+                        <div class="paypal-section">
+                            <button onclick="buyComboPackNow()" class="add-to-cart-btn" style="margin-top: 0.75rem;">
+                                Buy Now
+                            </button>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #4b5563; line-height: 1.5;">
+                                On the next step, our secure cart will redirect you to PayPal where
+                                your <strong>name, email and full shipping address</strong> are confirmed before paying with PayPal or card.
+                            </p>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="trust-item">
+                                <span class="trust-icon">🚚</span>
+                                <div class="trust-content">
+                                    <strong>Free shipping thresholds</strong>
+                                    <span>Australia: free shipping on orders of AU$80+</span>
+                                    <span>Worldwide: free shipping on orders of AU$90+</span>
+                                </div>
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-icon">🛡️</span>
+                                <div class="trust-content">
+                                    <strong>7-Day Money-Back Guarantee</strong>
+                                    <span>Not satisfied? Full refund, no questions asked!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Description Text - After purchase section -->
+                    <div class="product-description-section">
+                        <p class="product-description">Discover our Premium Wellness Combo Pack, a curated selection of our best-selling natural products for holistic health and great value. This pack is designed to boost your energy, support a healthy immune system, and enhance overall well-being.</p>
+                        
+                        <p class="product-description">Shipped fresh from Truganina, Melbourne to Sydney and across Australia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <p class="reviews-rating">⭐⭐⭐⭐⭐ 5/5 from 15 reviews</p>
+            </div>
+            
+            <div class="reviews-container">
+                <div class="reviews-carousel">
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
+                        <p class="review-author">Olivia C., Perth</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
+                        <p class="review-author">Daniel H., Brisbane</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Amazing value! I've been a long-time customer of NutriThrive, and this combo pack makes it so easy to reorder my essentials. Everything arrived fresh and well-packaged. A must-have for a healthy lifestyle!"</p>
+                        <p class="review-author">Sophie K., Adelaide</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"This combo pack is perfect for daily use. I appreciate the quality and the fact that it's all-natural. My digestion has improved, and I feel more balanced throughout the day. Definitely worth it!"</p>
+                        <p class="review-author">Noah P., Sydney</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Fantastic value and a great way to try different products. Highly recommend!"</p>
+                        <p class="review-author">Verified Customer</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
+                        <p class="review-author">Olivia C., Perth</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
+                        <p class="review-author">Daniel H., Brisbane</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">What Makes NutriThrive Combo Pack Special?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>Complete Wellness</strong>
+                    <p>A curated selection of our best-selling natural products for holistic health and great value. Designed to boost your energy, support a healthy immune system, and enhance overall well-being.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Exceptional Value</strong>
+                    <p>Get premium natural products together at a great price. Perfect for personal wellness or as a thoughtful gift.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Premium Quality</strong>
+                    <p>All products included are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Fresh Delivery</strong>
+                    <p>Sustainably sourced and dispatched fresh from Melbourne. Fast shipping Australia-wide.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Synergistic Benefits</strong>
+                    <p>Pre-selected to offer the best synergistic benefits and value for holistic health support.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>Perfect Gift</strong>
+                    <p>Ideal for introducing someone to natural wellness or as a thoughtful gift for health-conscious individuals.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Benefits of NutriThrive Combo Pack</h2>
+            <ul class="benefits-list">
+                <li>Holistic support for energy, immunity, and digestion</li>
+                <li>Exceptional value with premium natural products</li>
+                <li>Perfect for personal wellness or as a thoughtful gift</li>
+                <li>Sustainably sourced and dispatched fresh from Melbourne</li>
+            </ul>
+        </section>
+
+        <!-- Usage Section -->
+        <section class="usage-section">
+            <h2 class="section-title">How to Use Your Combo Pack Products</h2>
+            <p>Refer to the individual product pages for detailed usage instructions for Moringa Powder, Dried Curry Leaves, and Premium Black Tea. Generally, Moringa powder can be mixed into smoothies or water, Dried Curry Leaves are used in cooking, and Black Tea is brewed as a beverage.</p>
+            <p><strong>Looking to buy natural wellness products in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium combo pack.</p>
+            <p class="product-description" style="margin-top: 1rem;">For meal ideas that use all three pantry staples together, see the <a href="/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html" style="font-weight: 600; text-decoration: underline;">moringa and curry leaves hub</a> and <a href="/blog/high-protein-moringa-recipes-australia-2026.html" style="font-weight: 600; text-decoration: underline;">high-protein moringa recipes</a>.</p>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>What's included in the combo pack?</h3>
+                    <p>The combo pack typically includes our Premium Natural Moringa Powder, Dried Curry Leaves (Premium), and Premium Loose Leaf Black Tea. Please check the product description for current contents.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are the products in the combo pack natural and additive-free?</h3>
+                    <p>Yes, all products included in our combo pack are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I customize the combo pack?</h3>
+                    <p>Currently, our combo packs are pre-selected to offer the best synergistic benefits and value. We do not offer customization options at this time.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Payments & Shipping</h3>
+                    <p>We accept Visa, bank transfer, cash and PayPal. Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+ (dispatch within 2 business days).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About NutriThrive</h3>
+                <p>Dedicated to bringing you the finest natural wellness products for a healthier lifestyle.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Shopping</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products/">Products</a></li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li><a href="/pages/shipping/shipping-returns.html">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help &amp; Info</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/blog/how-to-add-moringa-to-diet.html">Usage &amp; Benefits</a></li>                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
+                    <li><a href="tel:+61438201419">+61 438201419</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Business Info</h3>
+                <ul class="footer-links">
+                    <li class="footer-nap-standard">NutriThrive<br>15 Europe Street, Truganina VIC 3029, Melbourne, Australia<br>Phone: <a href="tel:+61438201419">0438 201 419</a></li>
+<li>Based in Truganina, Melbourne, VIC (Australia)<br>Fast Shipping Australia-wide -Melbourne, Sydney, Brisbane + all states.<br>Worldwide Shipping Available 🌍</li>
+                    <li>Monday - Sunday</li>
+                    <li>9:00 AM - 11:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 NutriThrive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's included in the combo pack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The combo pack typically includes our Premium Natural Moringa Powder, Dried Curry Leaves (Premium), and Premium Loose Leaf Black Tea. Please check the product description for current contents."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the products in the combo pack natural and additive-free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all products included in our combo pack are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize the combo pack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently, our combo packs are pre-selected to offer the best synergistic benefits and value. We do not offer customization options at this time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Payments & Shipping",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We accept Visa, bank transfer, cash and PayPal. Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+ (dispatch within 2 business days)."
+          }
+        }
+      ]
+    }
+    </script>
+    <script>
+        // Add to cart function for Combo Pack
+        function addComboPackToCart() {
+            const quantitySelect = document.getElementById('product-quantity');
+            const quantity = parseInt(quantitySelect ? quantitySelect.value : 1) || 1;
+            
+            if (window.Cart && window.Cart.add) {
+                window.Cart.add({
+                    id: 'combo-pack',
+                    name: 'Premium Combo Pack',
+                    price: 17.00,
+                    weight: 130, // Approximate total weight
+                    image: '/assets/images/homepage/product-showcase/combo.webp',
+                    quantity: quantity
+                });
+            } else {
+                console.error('Cart is not initialized');
+            }
+        }
+        
+        // Accordion functionality - works on all product pages with smooth animation
+        function toggleAccordion(sectionId) {
+            const content = document.getElementById(sectionId);
+            if (!content) {
+                console.error('Accordion content not found:', sectionId);
+                return;
+            }
+            
+            const header = content.previousElementSibling;
+            const icon = header ? header.querySelector('.accordion-icon') : null;
+            const section = content.parentElement;
+            
+            // Check if currently open
+            const isOpen = section.classList.contains('active') || 
+                          content.classList.contains('active') ||
+                          content.style.display === 'block' ||
+                          getComputedStyle(content).display !== 'none';
+            
+            if (isOpen) {
+                // Close - smooth animation
+                const currentHeight = content.scrollHeight + 'px';
+                content.style.maxHeight = currentHeight;
+                content.style.overflow = 'hidden';
+                content.style.opacity = '1';
+                
+                // Force reflow
+                content.offsetHeight;
+                
+                // Animate to 0
+                content.style.maxHeight = '0px';
+                content.style.opacity = '0';
+                
+                setTimeout(() => {
+                    content.style.display = 'none';
+                    content.style.maxHeight = null;
+                    content.style.overflow = null;
+                    content.style.opacity = null;
+                }, 350);
+                
+                if (icon) icon.textContent = '+';
+                section.classList.remove('active');
+                content.classList.remove('active');
+            } else {
+                // Open - smooth animation
+                content.style.display = 'block';
+                content.style.maxHeight = '0px';
+                content.style.overflow = 'hidden';
+                content.style.transition = 'max-height 0.3s ease-out, padding 0.3s ease-out';
+                
+                // Force reflow to ensure transition works
+                content.offsetHeight;
+                
+                // Set to full height
+                const fullHeight = content.scrollHeight + 'px';
+                content.style.maxHeight = fullHeight;
+                
+                setTimeout(() => {
+                    content.style.maxHeight = 'none';
+                    content.style.overflow = null;
+                    content.style.transition = null;
+                }, 300);
+                
+                if (icon) icon.textContent = '−';
+                section.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+        
+        // Make sure function is available globally
+        window.toggleAccordion = toggleAccordion;
+    </script>
+    <script src="/scripts/global/cart.js"></script>
+    <script src="/scripts/global/recently-viewed.js"></script>
+    <script src="/scripts/global/cart-header.js"></script>
+    <script src="/scripts/global/script.js"></script>
+    <!-- Ensure hamburger menu works - simple inline fallback -->
+    <script>
+      // Simple fallback to ensure hamburger works
+      // Simple fallback to ensure hamburger works
+      (function() {
+        function setupHamburger() {
+          const hamburger = document.querySelector('.hamburger');
+          const navLinks = document.querySelector('.nav-links');
+          
+          if (!hamburger || !navLinks) {
+            setTimeout(setupHamburger, 100);
+            return;
+          }
+          
+          // Ensure toggle function exists
+          if (!window.ntToggleMenu) {
+            window.ntToggleMenu = function() {
+              const isOpen = navLinks.classList.contains('nav-active');
+              if (isOpen) {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+                document.body.classList.remove('no-scroll');
+                navLinks.style.display = '';
+              } else {
+                navLinks.classList.add('nav-active');
+                hamburger.classList.add('toggle');
+                document.body.classList.add('no-scroll');
+                navLinks.style.display = 'flex';
+              }
+            };
+          }
+          
+          // Add direct click handler as backup
+          hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.ntToggleMenu();
+          });
+          
+          hamburger.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.ntToggleMenu();
+          }, { passive: false });
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupHamburger);
+        } else {
+          setupHamburger();
+        }
+      })();
+    </script>
+    <script>
+      // Add item to cart and send customer to the main checkout
+      function buyComboPackNow() {
+        addComboPackToCart();
+        window.location.href = "/cart";
+      }
+    </script>
+
+    <script>
+      if (window.RecentlyViewed && typeof window.RecentlyViewed.track === 'function') {
+        window.RecentlyViewed.track({
+          id: 'combo-pack',
+          name: 'Premium Combo Pack',
+          price: 17.00,
+          image: '/assets/images/homepage/product-showcase/combo.webp',
+          url: window.location.pathname
+        });
+      }
+    </script>
 </body>
 </html>
