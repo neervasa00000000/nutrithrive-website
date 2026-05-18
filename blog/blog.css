@@ -847,7 +847,7 @@ body.blog-moringa-market-report-2026 .blog-post-content .product-links a {
 header {
     position: static;
     background: var(--bg);
-    border-bottom: 1px solid #ece7db;
+    border-bottom: 1px solid #e6e2d7;
     color: var(--primary);
     transition: background var(--transition);
 }
@@ -1381,7 +1381,7 @@ body.products-page .hero .hero-btn.alt {
 }
 
 .btn-secondary {
-    background: #fffdfa !important;
+    background: #fdf9ee !important;
     color: var(--color-primary) !important;
     border: 2px solid var(--color-primary) !important;
     font-weight: 700;
@@ -1516,7 +1516,7 @@ footer {
 #checkout-form input {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid #ece7db;
+    border: 1px solid #e6e2d7;
     border-radius: var(--radius);
     font-size: 1rem;
     background-color: var(--bg);
@@ -2636,7 +2636,7 @@ footer {
 .wellness-product-price {
     margin: 0 0 0.75rem;
     font-weight: 600;
-    color: #2d5a3d;
+    color: #0f6b4d;
 }
 
 .blog-applepay-wrapper {
@@ -2755,36 +2755,36 @@ footer {
 /* Unique color scheme for the grow-moringa-tree-australia blog post */
 body.blog-moringa-tree header,
 body.blog-moringa-tree .navbar {
-  background: linear-gradient(135deg, #43a047, #8bc34a);
+  background: linear-gradient(135deg, #0f6b4d, #0f6b4d);
 }
 body.blog-moringa-tree .blog-hero {
   background: linear-gradient(90deg, #e8f5e9 60%, #c8e6c9 100%);
 }
 body.blog-moringa-tree .blog-hero-title,
 body.blog-moringa-tree .blog-hero-desc {
-  color: #2e7d32;
+  color: #005139;
 }
 body.blog-moringa-tree .highlight {
   background-color: #f1f8e9;
-  border-left: 4px solid #8bc34a;
+  border-left: 4px solid #0f6b4d;
 }
 body.blog-moringa-tree .cta-banner {
-  background: linear-gradient(135deg, #8bc34a, #43a047);
+  background: linear-gradient(135deg, #0f6b4d, #0f6b4d);
   color: #fff;
 }
 body.blog-moringa-tree .cta-banner h2 {
   color: #fff;
 }
 body.blog-moringa-tree .btn {
-  background-color: #43a047;
+  background-color: #0f6b4d;
   color: #fff;
 }
 body.blog-moringa-tree .btn:hover {
-  background-color: #2e7d32;
+  background-color: #005139;
 }
 body.blog-moringa-tree .btn-secondary {
   background-color: #fff;
-  color: #43a047;
+  color: #0f6b4d;
 }
 body.blog-moringa-tree .btn-secondary:hover {
   background-color: #e8f5e9;
@@ -2808,7 +2808,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   background: #f8faf7;
   border-radius: 2px;
   font-size: 2.2rem;
-  color: #2e7d32;
+  color: #005139;
   font-weight: 400;
   border: 1px solid #e0e0e0;
   box-shadow: none;
@@ -2855,7 +2855,7 @@ body.blog-moringa-tree .btn-secondary:hover {
   width: 38px;
   height: 38px;
   background: #fff;
-  border: 5px solid #128539;
+  border: 5px solid #0f6b4d;
   border-radius: 50%;
   position: absolute;
   left: -19px;
@@ -2867,13 +2867,13 @@ body.blog-moringa-tree .btn-secondary:hover {
   transition: border-color 0.4s, background 0.4s;
 }
 .roadmap-milestone.active .roadmap-circle {
-  border-color: #1b7f5a;
-  background: #43e97b;
+  border-color: #005139;
+  background: #86d7b2;
 }
 .roadmap-hline {
   height: 4px;
   width: 0;
-  background: #1b7f5a;
+  background: #005139;
   margin-left: 38px;
   margin-right: 24px;
   border-radius: 2px;
@@ -2978,7 +2978,7 @@ body.blog-moringa-tree .btn-secondary:hover {
     max-width: 100%;
   }
   .features-section.features-clean .feature {
-    background: #f8f5ec;
+    background: #f5f1e6;
     border-radius: 14px;
     box-shadow: 0 2px 12px 0 rgba(15,107,77,0.07);
     border-left: 5px solid var(--color-primary);
@@ -3790,7 +3790,7 @@ article h1, section h1, nav h1, aside h1 {
     margin: 1.75rem 0;
     padding: 1.25rem 1.35rem;
     border-radius: var(--radius, 18px);
-    background: var(--card, #fffdfa);
+    background: var(--card, #fdf9ee);
     border: 1px solid var(--border-light, rgba(15, 107, 77, 0.12));
     box-shadow: var(--shadow, 0 4px 24px rgba(15, 107, 77, 0.07));
 }
@@ -3907,7 +3907,7 @@ article h1, section h1, nav h1, aside h1 {
 .faq-block details[open] > summary::after { content: '\2212'; }
 
 .faq-block details[open] > summary {
-    background: #f6fbf8;
+    background: #f7f3e8;
 }
 
 .faq-block .faq-answer {
@@ -4007,7 +4007,7 @@ article h1, section h1, nav h1, aside h1 {
 
 /* Dose highlight box */
 .dose-box {
-    background: #e8f5ed;
+    background: #f7f3e8;
     border-radius: 12px;
     padding: 1.25rem 1.5rem;
     margin: 1.5rem 0;

@@ -27,7 +27,7 @@ body.blog-story-article .story-breadcrumb {
 }
 
 body.blog-story-article .story-breadcrumb a {
-  color: #175c36;
+  color: #0f6b4d;
   text-decoration: none;
   font-weight: 500;
 }
@@ -102,14 +102,14 @@ body.blog-story-article .table-of-contents li {
 
 body.blog-story-article .story-toc a,
 body.blog-story-article .table-of-contents a {
-  color: #2d5a3d;
+  color: #0f6b4d;
   text-decoration: none;
   font-weight: 500;
 }
 
 body.blog-story-article .story-toc a:hover,
 body.blog-story-article .table-of-contents a:hover {
-  color: #175c36;
+  color: #0f6b4d;
   text-decoration: underline;
 }
 
@@ -165,7 +165,7 @@ body.blog-story-article .blog-post-meta span {
 body.blog-story-article .quick-answer {
   background: transparent;
   border: none;
-  border-left: 3px solid #175c36;
+  border-left: 3px solid #0f6b4d;
   border-radius: 0;
   padding: 0 0 0 1.25rem;
   margin: 1.25rem 0 0;
@@ -177,7 +177,7 @@ body.blog-story-article .quick-answer p:first-child {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #175c36;
+  color: #0f6b4d;
   margin-bottom: 0.35rem;
 }
 
@@ -213,7 +213,7 @@ body.blog-story-article .blog-post h2 {
 body.blog-story-article .blog-post h3 {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #175c36;
+  color: #0f6b4d;
   margin: 1.75rem 0 0.5rem;
   line-height: 1.35;
 }
@@ -240,7 +240,7 @@ body.blog-story-article .blog-post li {
 body.blog-story-article .blog-post blockquote {
   margin: 1.5rem 0;
   padding: 0 0 0 1.25rem;
-  border-left: 3px solid #175c36;
+  border-left: 3px solid #0f6b4d;
   background: transparent;
   font-style: italic;
   color: #2d4a38;
@@ -323,7 +323,7 @@ body.blog-story-article .stat-card {
 body.blog-story-article .stat-card .stat-number {
   font-size: 1.35rem;
   font-weight: 800;
-  color: #175c36;
+  color: #0f6b4d;
 }
 
 body.blog-story-article .stat-card .stat-label {
@@ -352,7 +352,7 @@ body.blog-story-article .info-box-green,
 body.blog-story-article .info-box-red {
   background: #f4f8f5;
   border: none;
-  border-left: 3px solid #175c36;
+  border-left: 3px solid #0f6b4d;
   border-radius: 0;
   padding: 1rem 0 1rem 1.25rem;
   margin: 1.5rem 0;
@@ -399,7 +399,7 @@ body.blog-story-article .btn-buy-moringa {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
-  background: #175c36;
+  background: #0f6b4d;
   color: #fff !important;
   text-decoration: none !important;
   font-weight: 700;
@@ -416,18 +416,18 @@ body.blog-story-article .btn-buy-moringa:hover {
 
 body.blog-story-article .btn-buy-moringa--outline {
   background: transparent;
-  color: #175c36 !important;
-  border: 2px solid #175c36;
+  color: #0f6b4d !important;
+  border: 2px solid #0f6b4d;
 }
 
 body.blog-story-article .btn-buy-moringa--outline:hover {
-  background: #175c36;
+  background: #0f6b4d;
   color: #fff !important;
 }
 
 /* Legacy cta-banner → cleaner */
 body.blog-story-article .cta-banner {
-  background: #175c36;
+  background: #0f6b4d;
   border-radius: 10px;
   padding: 2rem 1.5rem;
   margin: 2.5rem 0;
@@ -500,7 +500,7 @@ body.blog-story-article .story-buy-sticky .btn-buy-moringa {
     border: 1px solid #d4e8db;
     border-radius: 12px;
     padding: 1rem 1.25rem;
-    box-shadow: 0 8px 32px rgba(23, 92, 54, 0.15);
+    box-shadow: 0 8px 32px rgba(15, 107, 77, 0.15);
   }
 }
 
@@ -532,7 +532,7 @@ body.blog-story-article .story-related li {
 }
 
 body.blog-story-article .story-related a {
-  color: #175c36;
+  color: #0f6b4d;
   font-weight: 500;
   text-decoration: none;
 }
@@ -559,7 +559,7 @@ body.blog-story-article .related-articles-section {
 body.blog-story-article .related-article-card {
   box-shadow: none !important;
   border: 1px solid #e3eee7 !important;
-  border-left: 3px solid #175c36 !important;
+  border-left: 3px solid #0f6b4d !important;
   border-radius: 8px !important;
 }
 
@@ -642,7 +642,7 @@ body.blog-story-article .story-progress-bar {
 body.blog-story-article .story-progress-bar span {
   display: block;
   height: 100%;
-  background: #175c36;
+  background: #0f6b4d;
   border-radius: 4px;
 }
 
@@ -652,12 +652,12 @@ body.blog-story-article .story-progress-bar span.bar-energy {
 }
 
 body.blog-story-article .story-progress-bar span.bar-weight {
-  background: #2d7a4f;
+  background: #0f6b4d;
   width: 81%;
 }
 
 body.blog-story-article .story-progress-bar span.bar-cravings {
-  background: #175c36;
+  background: #0f6b4d;
   width: 2%;
 }
 
@@ -681,7 +681,7 @@ body.blog-story-article .timeline-entry::before {
   width: 10px;
   height: 10px;
   background: #fff;
-  border: 2px solid #175c36;
+  border: 2px solid #0f6b4d;
   border-radius: 50%;
 }
 
@@ -705,8 +705,8 @@ body.blog-story-article .timeline-tag {
 }
 
 body.blog-story-article .timeline-tag--easy {
-  background: #e8f5ed;
-  color: #175c36;
+  background: #f7f3e8;
+  color: #0f6b4d;
 }
 
 body.blog-story-article .timeline-tag--hell,
@@ -721,7 +721,7 @@ body.blog-story-article .timeline-tag--better {
 }
 
 body.blog-story-article .timeline-tag--win {
-  background: #e8f5ed;
+  background: #f7f3e8;
   color: #0f4a2a;
 }
 

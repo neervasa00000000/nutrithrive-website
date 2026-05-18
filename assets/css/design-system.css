@@ -1,20 +1,32 @@
 /*
-  NutriThrive design tokens — aligned with root index homepage (cream UI, Inter, #0f6b4d brand).
+  NutriThrive design tokens — Website 2.0 palette on legacy layout.
   Load this before /styles/global/style.css and page CSS.
 */
 
 :root {
+  /* V2 palette (tailwind / home-test.html) */
+  --color-forest-deep: #1a2e22;
+  --color-moringa-leaf: #0f6b4d;
+  --color-parchment: #f5f1e6;
+  --color-surface: #fdf9ee;
+  --color-terracotta: #d66844;
+  --color-terracotta-dark: #732001;
+  --color-outline: #bec9c1;
+  --color-surface-variant: #e6e2d7;
+  --color-promo-bar: #1a2e22;
+  --color-test-banner: #732001;
+
   /* Brand & homepage surfaces */
-  --color-primary: #0f6b4d;
-  --color-primary-dark: #0a4d36;
-  --color-primary-light: #e8f5f1;
-  --color-text: #1a2e22;
-  --color-text-light: #5a6d5d;
-  --color-text-muted: #6c757d;
-  --color-bg: #f8f5ec;
-  --color-bg-alt: #fffdfa;
-  --color-accent: #7b541f;
-  --color-border-soft: #ece7db;
+  --color-primary: var(--color-moringa-leaf);
+  --color-primary-dark: #005139;
+  --color-primary-light: #f7f3e8;
+  --color-text: var(--color-forest-deep);
+  --color-text-light: #3f4943;
+  --color-text-muted: #6f7a73;
+  --color-bg: var(--color-parchment);
+  --color-bg-alt: var(--color-surface);
+  --color-accent: var(--color-terracotta);
+  --color-border-soft: var(--color-surface-variant);
 
   /* Spacing scale (8 / 16 / 24 / 32 / 48 px) */
   --spacing-xs: 0.5rem;
@@ -46,14 +58,14 @@
   --card: var(--color-bg-alt);
   --primary: var(--color-primary);
   --accent: var(--color-accent);
-  --footer-bg: var(--color-primary);
+  --footer-bg: var(--color-forest-deep);
   --footer-text: #ffffff;
   --text: var(--color-text);
   --muted: var(--color-text-light);
-  --border-light: rgba(15, 107, 77, 0.1);
+  --border-light: rgba(26, 46, 34, 0.12);
   --surface-elevated: #ffffff;
-  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  --gradient-accent: linear-gradient(135deg, #7b541f 0%, #5a3e15 100%);
+  --gradient-primary: linear-gradient(135deg, var(--color-moringa-leaf) 0%, var(--color-primary-dark) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
 
   /* Containers */
   --container-max: 1200px;
