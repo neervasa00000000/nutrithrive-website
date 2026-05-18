@@ -20,7 +20,7 @@ const TEST_BLOG = path.join(REPO, 'scripts/templates/v2/blog');
 
 const PAGE_MAP = [
   { test: 'home-test.html', live: 'index.html', blogArticles: false, cart: false },
-  { test: 'shop-test.html', live: 'products/index.html', blogArticles: false, cart: false },
+  /* shop: scripts/generate-shop-page.mjs (static fast /products/) */
   { test: 'about-test.html', live: 'pages/about/about.html', blogArticles: false, cart: false },
   { test: 'contact-test.html', live: 'pages/contact/contact.html', blogArticles: false, cart: false },
   { test: 'faq-test.html', live: 'pages/faq/faq.html', blogArticles: false, cart: false },
@@ -624,6 +624,11 @@ console.log(
     ? `\nDone (filter: ${onlyFilter.join(',')}).`
     : `\nDone. ${PAGE_MAP.length} mapped pages, payment + ${REDIRECT_STUB_PAGES.length} redirect stubs, ${PRODUCT_SLUGS.length} PDPs, ${blogCount} blog articles.`
 );
+
+if (!onlyFilter || onlyFilter.includes('shop')) {
+  const { generateShopPage } = await import('./generate-shop-page.mjs');
+  generateShopPage();
+}
 
 if (!onlyFilter) {
   console.log('\nNormalizing live test URLs in HTML…');
