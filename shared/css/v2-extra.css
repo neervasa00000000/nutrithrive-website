@@ -277,13 +277,90 @@ button[data-add-cart] {
 details[open] .expand-icon {
   transform: rotate(180deg);
 }
+/* V2 footer layout (shared with footer-v2.js; legacy uses design-system.css) */
+.nt-v2-footer {
+  background: #1a2e22;
+  color: #fff;
+}
+.nt-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 768px) {
+  .nt-footer-inner {
+    padding: 0 2rem;
+  }
+}
+.nt-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+@media (min-width: 640px) {
+  .nt-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .nt-footer-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+}
+.nt-footer-col-title,
 .nt-v2-footer .nt-footer-col h3 {
-  margin: 0;
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1f3cd;
+}
+.nt-footer-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #a1f3cd;
+  text-decoration: none;
+}
+.nt-footer-tagline {
+  font-size: 0.875rem;
+  opacity: 0.75;
+  line-height: 1.6;
+  max-width: 18rem;
+}
+.nt-footer-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
 }
 .nt-footer-links {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+}
+.nt-footer-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+.nt-footer-links a:hover {
+  color: #fff;
+}
+.nt-footer-bar {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 2rem 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+.nt-footer-copy {
+  margin: 0;
+  font-size: 0.875rem;
+  opacity: 0.5;
 }
 .nt-footer-social {
   width: 2.5rem;
