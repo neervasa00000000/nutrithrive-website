@@ -1,4 +1,4 @@
-/** Auto-generated — 52 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 51 blog articles */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "10-dollar-superfood-replaced-200-supplement-stack-australia-2026",
@@ -20,20 +20,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Compare the best greens powders in Australia 2026. Moringa vs spirulina vs matcha vs complete blends. Real prices, benefits, reviews. Find your perfect green superfood.",
     "category": "Research Guide",
     "href": "/blog/best-greens-powder-australia-2026.html"
-  },
-  {
-    "slug": "best-protein-energy-bars-australia-2026-supermarket-guide",
-    "title": "15 Best Protein Bars Melbourne 2026: Every Coles &amp; Woolworths Option Tested &amp; Ranked",
-    "description": "15 protein bars ranked for Melbourne: Coles vs Woolworths availability, price, protein per 100g, and cost per gram. Includes a simple scoring system + a gut-friendly moringa add-on tip.",
-    "category": "Research Guide",
-    "href": "/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html"
-  },
-  {
-    "slug": "best-protein-powder-australia",
-    "title": "Best Protein Powder Australia 2026: 12 Tested &amp; Ranked (No Bloat)",
-    "description": "12 protein powders tested &amp; ranked. True Protein vs Bulk Nutrients vs Optimum Nutrition compared. Plus $10 moringa hack that stops bloating instantly. Melbourne lab-tested for muscle gain &amp; weight loss.",
-    "category": "Research Guide",
-    "href": "/blog/best-protein-powder-australia.html"
   },
   {
     "slug": "best-superfoods-australia-comparison-health-conscious-adults",
@@ -85,25 +71,18 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html"
   },
   {
+    "slug": "fresh-moringa-leaves-vs-powder-nutrients-2026",
+    "title": "Fresh Moringa Leaves vs Powder: Which Has More Nutrients? (2026)",
+    "description": "Moringa leaves vs powder: nutrient table, 1 tsp powder = 7–10 leaves, why powder wins for daily use in Australia, when fresh is better, taste &amp; FAQ — 2026.",
+    "category": "Nutrition &amp; Comparison",
+    "href": "/blog/fresh-moringa-leaves-vs-powder-nutrients-2026.html"
+  },
+  {
     "slug": "green-superfood-smoothie-recipes-australia-2026",
     "title": "10 Green Superfood Smoothie Recipes: Moringa, Spirulina &amp; Matcha (Australia 2026)",
     "description": "10 easy green superfood smoothie recipes using moringa, spirulina, and matcha. Exact ingredients, Australian prices, nutritional info, and tips to make them taste great.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/green-superfood-smoothie-recipes-australia-2026.html"
-  },
-  {
-    "slug": "growing-moringa-australia-honest-frost-pots-2026",
-    "title": "Growing Moringa in Australia 2026: Melbourne to Brisbane Climate Guide",
-    "description": "Can you grow moringa in Melbourne, Sydney or Brisbane? Frost survival in pots, climate by city, drainage mistakes, and when leaf harvest really starts — honest 2026 guide.",
-    "category": "Local Guide",
-    "href": "/blog/growing-moringa-australia-honest-frost-pots-2026.html"
-  },
-  {
-    "slug": "healthy-snack-melbourne-why-everyone-switching-to-moringa-2026",
-    "title": "Healthy Snacks Melbourne: Why Moringa Is Trending",
-    "description": "Melbourne’s 3pm slump: why grab-and-go bars lose to moringa for calmer focus, what processing quality actually changes, and a simple 2–3 week trial—2026.",
-    "category": "Local Guide",
-    "href": "/blog/healthy-snack-melbourne-why-everyone-switching-to-moringa-2026.html"
   },
   {
     "slug": "high-protein-moringa-recipes-australia-2026",
@@ -120,6 +99,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/honest-australians-guide-moringa-powder-2026.html"
   },
   {
+    "slug": "how-much-moringa-powder-per-day-dosage-guide-2026",
+    "title": "How Much Moringa Powder Per Day? Dosage Guide (2026)",
+    "description": "How much moringa per day? Adults: 1–2 tsp (3–10g). Start with ½ tsp, ramp over 2 weeks. Age chart, too much moringa, timing &amp; FAQ — Australia 2026.",
+    "category": "Dosage &amp; Usage",
+    "href": "/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html"
+  },
+  {
     "slug": "how-to-add-moringa-to-diet",
     "title": "How to Add Moringa to Your Diet: Easy Ways 2026",
     "description": "Add moringa to smoothies, teas, and savoury meals: cut bitterness, build a daily serving habit, and use simple Australian-friendly ideas—practical 2026 guide.",
@@ -132,6 +118,20 @@ window.NT_BLOG_ARTICLES = [
     "description": "Not sure which greens powder to buy? This step-by-step buyer's guide covers goals, ingredients, price per serve, and red flags — so you choose right the first time.",
     "category": "Local Guide",
     "href": "/blog/how-to-choose-greens-powder-australia-2026.html"
+  },
+  {
+    "slug": "how-to-choose-moringa-powder-australia-2026",
+    "title": "How to Choose Moringa Powder in Australia (2026)",
+    "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh — 2026.",
+    "category": "Buyer's Guide",
+    "href": "/blog/how-to-choose-moringa-powder-australia-2026.html"
+  },
+  {
+    "slug": "how-to-grow-moringa-in-australia-complete-guide-2026",
+    "title": "How to Grow Moringa in Australia (Complete Guide 2026)",
+    "description": "How to grow moringa in Australia: climate by state, pots for Melbourne, seed to harvest timeline (8–12 months), frost &amp; watering problems, seeds &amp; FAQ — 2026.",
+    "category": "Growing Guide",
+    "href": "/blog/how-to-grow-moringa-in-australia-complete-guide-2026.html"
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
@@ -148,11 +148,11 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html"
   },
   {
-    "slug": "is-moringa-banned-in-australia-safety-truth-2026",
+    "slug": "is-moringa-banned-australia-truth-2026",
     "title": "Is Moringa Banned in Australia? The Truth About Moringa Safety (2026)",
     "description": "No — moringa is not banned in Australia (2026). What the TGA actually regulates, why the TikTok rumour spread, how to buy safe legal moringa, and NutriThrive compliance explained.",
     "category": "Regulation &amp; Safety",
-    "href": "/blog/is-moringa-banned-in-australia-safety-truth-2026.html"
+    "href": "/blog/is-moringa-banned-australia-truth-2026.html"
   },
   {
     "slug": "is-moringa-legit-what-science-and-real-users-say-2026",
@@ -160,20 +160,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Is moringa legit? What research suggests, what users report, why dose and powder quality matter, and when marketing outruns evidence—2026 guide for Australia.",
     "category": "Wellness Journal",
     "href": "/blog/is-moringa-legit-what-science-and-real-users-say-2026.html"
-  },
-  {
-    "slug": "melbourne-body-burden-report-2026",
-    "title": "Melbourne Body Burden 2026: What the City Steals First",
-    "description": "City stress, iron drain, and burnout: how Melbourne’s pace hits energy and nutrients—and what food-level moringa support can and can’t do in 2026.",
-    "category": "Local Guide",
-    "href": "/blog/melbourne-body-burden-report-2026.html"
-  },
-  {
-    "slug": "melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026",
-    "title": "Melbourne Food as Medicine Map (2026): Cafes and Organic Stores for Healthspan Eating",
-    "description": "Where to eat and shop in Melbourne for gut-friendly, energy-steady meals in 2026—cafés, co-ops, bulk stores, and how to pair pantry staples at home.",
-    "category": "Recipes &amp; Nutrition",
-    "href": "/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html"
   },
   {
     "slug": "melbourne-premium-buyers-guide-moringa-2026",
@@ -190,32 +176,18 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-30-day-challenge-honest-results.html"
   },
   {
-    "slug": "moringa-benefits-women-hormones-energy-skin-2026",
+    "slug": "moringa-benefits-for-women-comprehensive-2026",
     "title": "Moringa Benefits for Women: Hormones, Energy &amp; Clear Skin (Everything You Need to Know)",
     "description": "8 science-backed moringa benefits for women: hormone balance, iron, clear skin, hair, energy, pregnancy, bones &amp; weight. Melbourne woman's 18-month story, dosage &amp; FAQs (May 2026).",
     "category": "Women's Wellness",
-    "href": "/blog/moringa-benefits-women-hormones-energy-skin-2026.html"
+    "href": "/blog/moringa-benefits-for-women-comprehensive-2026.html"
   },
   {
-    "slug": "moringa-brands-comparison-australia-2026",
-    "title": "Best Moringa Brand Australia 2026: 7 Brands Lab-Tested &amp; Ranked (Rosabella vs NutriThrive)",
-    "description": "Which moringa brand is best in Australia 2026? We lab-tested 7 brands including Rosabella from Chemist Warehouse vs NutriThrive. Real quality data, freshness tests, price comparison.",
-    "category": "Research Guide",
-    "href": "/blog/moringa-brands-comparison-australia-2026.html"
-  },
-  {
-    "slug": "moringa-brands-comparison-australia-chinese-review",
-    "title": "2026 澳洲辣木粉避坑指南：NutriThrive vs Rosabella 深度测评",
-    "description": "2026年澳洲辣木粉避坑指南：NutriThrive vs Rosabella深度测评，价格、品质和性价比全方位对比。NutriThrive, Truganina, Melbourne — 澳洲全境配送。中文购买指南。",
-    "category": "Research Guide",
-    "href": "/blog/moringa-brands-comparison-australia-chinese-review.html"
-  },
-  {
-    "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Rosabella Moringa vs NutriThrive: Lab Test Results Shocked Me (2026)",
-    "description": "Rosabella moringa (Chemist Warehouse, $25) lab-tested vs NutriThrive ($11). Shocking results: brown/oxidized vs vibrant green. Photos + full test inside.",
-    "category": "Research Guide",
-    "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html"
+    "slug": "moringa-capsules-vs-powder-which-is-better-2026",
+    "title": "Moringa Capsules vs Powder: Which Is Better? (2026)",
+    "description": "Moringa capsules vs powder: cost per serving, potency, freshness &amp; convenience compared. Why powder wins for most Australians + when capsules make sense. 2026 guide.",
+    "category": "Comparison Guide",
+    "href": "/blog/moringa-capsules-vs-powder-which-is-better-2026.html"
   },
   {
     "slug": "moringa-melbourne-complete-growers-report-2026",
@@ -230,6 +202,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Real talk about moringa in Melbourne: safety issues others hide, where to buy it, who shouldn't use it, and whether Australian-grown is worth the premium.",
     "category": "Local Guide",
     "href": "/blog/moringa-melbourne-complete-guide-2026.html"
+  },
+  {
+    "slug": "moringa-oil-benefits-skin-hair-health-2026",
+    "title": "Moringa Oil Benefits: Uses for Skin, Hair & Health (2026)",
+    "description": "Moringa oil benefits for skin &amp; hair: oleic acid, vitamin E, how to use on face and scalp, oil vs leaf powder, where to buy in Australia &amp; FAQ — 2026 guide.",
+    "category": "Skin &amp; Hair",
+    "href": "/blog/moringa-oil-benefits-skin-hair-health-2026.html"
   },
   {
     "slug": "moringa-powder-complete-buyers-guide-australia-2026",
@@ -253,18 +232,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-powder-victoria-seniors-joint-health.html"
   },
   {
-    "slug": "moringa-powder-vs-capsules-which-one-actually-works-better-2026",
-    "title": "Moringa Powder vs Capsules: Which Works Better?",
-    "description": "We tested 12 moringa capsule brands sold in Australia. Lab results, price comparison, effectiveness rankings. Which brands failed purity tests? Updated May 2026.",
-    "category": "Research Guide",
-    "href": "/blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html"
-  },
-  {
     "slug": "moringa-quality-test-shade-dried-vs-retail-australia-2026",
     "title": "Moringa Quality Test: Shade-Dried vs Store-Bought",
     "description": "We tested 8 Australian moringa products side by side: colour, smell, texture, dissolution, and label honesty. The quality gap is bigger than most buyers expect.",
     "category": "Research Guide",
     "href": "/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html"
+  },
+  {
+    "slug": "moringa-side-effects-what-happens-take-too-much-2026",
+    "title": "Moringa Side Effects: What Happens If You Take Too Much? (2026)",
+    "description": "Side effects of moringa powder: digestive upset, nausea, loose stools &amp; more. Are they serious? Who should avoid it, how to prevent issues, safety research — Australia 2026.",
+    "category": "Safety &amp; Side Effects",
+    "href": "/blog/moringa-side-effects-what-happens-take-too-much-2026.html"
+  },
+  {
+    "slug": "moringa-tea-benefits-how-to-brew-2026-guide",
+    "title": "Moringa Tea Benefits: How to Brew Moringa Tea (2026)",
+    "description": "Moringa tea benefits: antioxidants, caffeine-free energy, digestion support. How to make moringa tea from powder, taste tips, hot vs iced &amp; FAQ — Australia 2026.",
+    "category": "Recipes &amp; Usage",
+    "href": "/blog/moringa-tea-benefits-how-to-brew-2026-guide.html"
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
@@ -309,18 +295,18 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html"
   },
   {
-    "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
-    "title": "Rosabella Moringa Review: Lab Test Results Shocked Me (2026)",
-    "description": "Bought Rosabella moringa from Chemist Warehouse and ran a lab test. Here's what the results showed — and how it compares to NutriThrive's shade-dried powder.",
-    "category": "Research Guide",
-    "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html"
-  },
-  {
     "slug": "science-shade-drying-vs-sun-drying-moringa",
     "title": "Shade- vs Sun-Dried Moringa: Colour &amp; Quality Guide (2026)",
     "description": "Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
     "category": "Research Guide",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa.html"
+  },
+  {
+    "slug": "signs-of-fresh-vs-old-moringa-powder-2026",
+    "title": "Fresh vs Old Moringa Powder: How to Tell the Difference (2026)",
+    "description": "Is your moringa fresh or stale? Green colour, smell, clumping, batch dates, and storage in Australia. Signs of old powder and how to buy fresh — 2026.",
+    "category": "Quality &amp; Freshness",
+    "href": "/blog/signs-of-fresh-vs-old-moringa-powder-2026.html"
   },
   {
     "slug": "smart-moringa-daily-intake-australia-visual-guide-2026",
@@ -335,6 +321,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Don't buy moringa on brand trust alone. Use this 8-point checklist to verify quality before you spend a cent — lab reports, colour, smell, solubility and more.",
     "category": "Wellness Journal",
     "href": "/blog/verify-moringa-quality-premium-buyers-checklist-2026.html"
+  },
+  {
+    "slug": "what-does-moringa-do-for-your-body-complete-guide-2026",
+    "title": "What Does Moringa Do For Your Body? (Complete Guide 2026)",
+    "description": "What does moringa do for your body? Energy, immunity, skin, hormones, bones &amp; more. 10 body systems, timeline for results, science summary &amp; who benefits most — Australia 2026.",
+    "category": "Health Benefits",
+    "href": "/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html"
   },
   {
     "slug": "what-to-eat-when-too-tired-melbourne-2026",
