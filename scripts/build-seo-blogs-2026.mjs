@@ -85,6 +85,7 @@ function articleSchema({ headline, description, url, date, wordCount }) {
 }
 
 function breadcrumb(name, url) {
+  const pageName = name || 'Article';
   return JSON.stringify(
     {
       '@context': 'https://schema.org',
@@ -92,7 +93,7 @@ function breadcrumb(name, url) {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
         { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/blog/` },
-        { '@type': 'ListItem', position: 3, name, item: url },
+        { '@type': 'ListItem', position: 3, name: pageName, item: url },
       ],
     },
     null,
@@ -100,12 +101,35 @@ function breadcrumb(name, url) {
   );
 }
 
+const HEAD_ASSETS = `
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/css/design-system.css"/>
+<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
+<script src="/scripts/global/defer-loader.js"></script>`;
+
+function polishBodyHtml(html) {
+  let out = html.replace(
+    /<h2 id="quick-links">Quick links<\/h2>\s*<ul>([\s\S]*?)<\/ul>/i,
+    '<nav class="article-toc" aria-label="On this page"><h2 id="quick-links">On this page</h2><ul>$1</ul></nav>'
+  );
+  const toc = out.match(/<nav class="article-toc"[\s\S]*?<\/nav>/);
+  const box = out.match(/<div class="featured-snippet-box"[^>]*>[\s\S]*?<\/div>\s*<\/div>/);
+  if (toc && box) {
+    out = out.replace(toc[0], '').replace(box[0], '');
+    out = `${box[0]}\n${toc[0]}\n${out.trim()}`;
+  }
+  return out;
+}
+
 function ctaBlock() {
   return `
-<div style="margin: 2rem 0; padding: 1.5rem; background: #f7f3e8; border-left: 4px solid #0f6b4d; border-radius: 16px;">
-<h3 style="margin-top:0; color:#0f6b4d;">Ready to Try Moringa?</h3>
-<p style="margin-bottom:1rem; color:#5A6D5D;">Shop our <a href="/products/moringa-powder/">100% pure moringa powder</a> — lab-tested, shade-dried, packed fresh in Melbourne. Same-day dispatch.</p>
-<div class="btn-row" style="justify-content:flex-start;">
+<div class="nt-article-cta">
+<h3>Ready to Try Moringa?</h3>
+<p>Shop our <a href="/products/moringa-powder/">100% pure moringa powder</a> — lab-tested, shade-dried, packed fresh in Melbourne. Same-day dispatch.</p>
+<div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop Moringa Powder</a>
 <a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
 </div>
@@ -115,9 +139,9 @@ function ctaBlock() {
 function relatedGuides(links) {
   const items = links.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join('\n    ');
   return `
-<section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
-  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #0f6b4d;">Related guides</h2>
-  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
+<section class="nt-related-links-block">
+  <h2>Related guides</h2>
+  <ul>
     ${items}
   </ul>
 </section>`;
@@ -134,7 +158,8 @@ function buildPage(meta, bodyHtml, faqs) {
     date: meta.date,
     wordCount: meta.wordCount,
   });
-  const bcJson = breadcrumb(meta.breadcrumb, url);
+  const bcJson = breadcrumb(meta.breadcrumb || meta.h1, url);
+  const contentHtml = polishBodyHtml(bodyHtml);
 
   return `<!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
@@ -172,6 +197,7 @@ function buildPage(meta, bodyHtml, faqs) {
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp"/>
 <meta name="theme-color" content="#0f6b4d"/>
 <link rel="stylesheet" href="/blog/blog-v2-prose.css"/>
+${HEAD_ASSETS}
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">${TAILWIND}</script>
 </head>
@@ -180,7 +206,10 @@ function buildPage(meta, bodyHtml, faqs) {
 <div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
-<main class="pt-28 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-blog-main">
+<nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-4 pb-2 text-label-sm" aria-label="Breadcrumb">
+<a class="text-moringa-leaf hover:underline" href="/blog/">← Journal</a>
+</nav>
+<main class="pt-6 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-blog-main">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
 <article class="lg:col-span-8">
 <header class="mb-12">
@@ -195,13 +224,13 @@ function buildPage(meta, bodyHtml, faqs) {
 <img alt="${esc(meta.imageAlt)}" class="w-full h-full object-cover" src="${HERO.replace(BASE, '')}" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high"/>
 </div>
 </header>
-<div class="blog-v2-prose prose prose-lg max-w-none">
-${bodyHtml}
+<div class="blog-v2-prose max-w-none">
+${contentHtml}
 ${ctaBlock()}
 <p class="sources" style="margin-top:2rem;font-size:0.9rem;color:#666;"><em>Disclaimer: General information only, not medical advice. Consult your healthcare provider before starting any supplement, especially if pregnant, breastfeeding, or on medication.</em></p>
 <p style="margin-top: 1rem;"><a href="/blog/">← Back to all articles</a></p>
-</div>
 ${relatedGuides(meta.related)}
+</div>
 </article>
 <aside class="lg:col-span-4 space-y-12">
 <div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
@@ -223,7 +252,6 @@ ${relatedGuides(meta.related)}
 </div>
 </main>
 <div id="nt-footer"></div>
-<script src="/scripts/global/defer-loader.js"></script>
 <script src="/scripts/global/reddit-pixel.js"></script>
 <script src="/shared/site-data.js"></script>
 <script src="/scripts/global/cart.js"></script>
