@@ -3,6 +3,72 @@
 # — 200 rewrites: pretty URLs (no 301s for /cart vs /cart/; use /cart, /about, /contact, /faq everywhere)
 # — Retired blog URLs → 404
 
+# SEO consolidation — canonical breakout blogs (May 2026)
+/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-australia-truth-2026.html 301
+/blog/moringa-benefits-for-women-comprehensive-2026 /blog/moringa-benefits-for-women-comprehensive-2026.html 301
+/blog/is-moringa-banned-in-australia-safety-truth-2026 /blog/is-moringa-banned-australia-truth-2026.html 301
+/blog/is-moringa-banned-in-australia-safety-truth-2026.html /blog/is-moringa-banned-australia-truth-2026.html 301
+/blog/moringa-benefits-women-hormones-energy-skin-2026 /blog/moringa-benefits-for-women-comprehensive-2026.html 301
+/blog/moringa-benefits-women-hormones-energy-skin-2026.html /blog/moringa-benefits-for-women-comprehensive-2026.html 301
+
+# Removed competitor-comparison posts → quality guides / shop
+/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 /blog/how-to-choose-moringa-powder-australia-2026.html 301
+/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html /blog/how-to-choose-moringa-powder-australia-2026.html 301
+/blog/rosabella-moringa-reviews-legit-or-overhyped-2026 /blog/signs-of-fresh-vs-old-moringa-powder-2026.html 301
+/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/signs-of-fresh-vs-old-moringa-powder-2026.html 301
+/blog/how-much-moringa-powder-per-day-dosage-guide-2026 /blog/how-much-moringa-powder-per-day-dosage-guide-2026.html 301
+/blog/how-to-choose-moringa-powder-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026.html 301
+/blog/signs-of-fresh-vs-old-moringa-powder-2026 /blog/signs-of-fresh-vs-old-moringa-powder-2026.html 301
+/blog/moringa-side-effects-what-happens-take-too-much-2026 /blog/moringa-side-effects-what-happens-take-too-much-2026.html 301
+/blog/what-does-moringa-do-for-your-body-complete-guide-2026 /blog/what-does-moringa-do-for-your-body-complete-guide-2026.html 301
+/blog/moringa-capsules-vs-powder-which-is-better-2026 /blog/moringa-capsules-vs-powder-which-is-better-2026.html 301
+/blog/moringa-tea-benefits-how-to-brew-2026-guide /blog/moringa-tea-benefits-how-to-brew-2026-guide.html 301
+/blog/how-to-grow-moringa-in-australia-complete-guide-2026 /blog/how-to-grow-moringa-in-australia-complete-guide-2026.html 301
+/blog/growing-moringa-australia-honest-frost-pots-2026 /blog/how-to-grow-moringa-in-australia-complete-guide-2026.html 301
+/blog/growing-moringa-australia-honest-frost-pots-2026.html /blog/how-to-grow-moringa-in-australia-complete-guide-2026.html 301
+/blog/fresh-moringa-leaves-vs-powder-nutrients-2026 /blog/fresh-moringa-leaves-vs-powder-nutrients-2026.html 301
+/blog/moringa-oil-benefits-skin-hair-health-2026 /blog/moringa-oil-benefits-skin-hair-health-2026.html 301
+/blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026 /blog/moringa-capsules-vs-powder-which-is-better-2026.html 301
+/blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html /blog/moringa-capsules-vs-powder-which-is-better-2026.html 301
+/blog/moringa-brands-comparison-australia-2026 / 301
+/blog/moringa-brands-comparison-australia-2026.html / 301
+/blog/moringa-brands-comparison-australia-chinese-review / 301
+/blog/moringa-brands-comparison-australia-chinese-review.html / 301
+/blog/top-moringa-companies-australia-2026 /products/moringa-powder/ 301
+/blog/top-moringa-companies-australia-2026.html /products/moringa-powder/ 301
+/blog/moringa-at-chemist-warehouse-australia-worth-it-2026 /products/moringa-powder/ 301
+/blog/moringa-at-chemist-warehouse-australia-worth-it-2026.html /products/moringa-powder/ 301
+/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025 /products/moringa-powder/ 301
+/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html /products/moringa-powder/ 301
+
+# Removed off-topic / Melbourne-only posts
+/blog/sydney-time-guide-moringa-nutrithrive-2026 /blog/sydney-time-guide-moringa-nutrithrive-2026 404
+/blog/sydney-time-guide-moringa-nutrithrive-2026.html /blog/sydney-time-guide-moringa-nutrithrive-2026.html 404
+/blog/top-20-hiking-destinations-victoria-australia-ultimate-guide-2026 /blog/top-20-hiking-destinations-victoria-australia-ultimate-guide-2026 404
+/blog/top-20-hiking-destinations-victoria-australia-ultimate-guide-2026.html /blog/top-20-hiking-destinations-victoria-australia-ultimate-guide-2026.html 404
+/blog/melbourne-outdoor-gyms-longevity-training-2026-guide /blog/melbourne-outdoor-gyms-longevity-training-2026-guide 404
+/blog/melbourne-outdoor-gyms-longevity-training-2026-guide.html /blog/melbourne-outdoor-gyms-longevity-training-2026-guide.html 404
+/blog/universal-size-converter /blog/universal-size-converter 404
+/blog/universal-size-converter.html /blog/universal-size-converter.html 404
+/blog/natural-language-calendar-scheduler /blog/natural-language-calendar-scheduler 404
+/blog/natural-language-calendar-scheduler.html /blog/natural-language-calendar-scheduler.html 404
+/blog/definitive-encyclopedia-handcrafted-soap-for-sidney-2026 /blog/definitive-encyclopedia-handcrafted-soap-for-sidney-2026 404
+/blog/definitive-encyclopedia-handcrafted-soap-for-sidney-2026.html /blog/definitive-encyclopedia-handcrafted-soap-for-sidney-2026.html 404
+/blog/best-protein-energy-bars-australia-2026-supermarket-guide /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html 301
+/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html 301
+/blog/best-protein-powder-australia /blog/high-protein-moringa-recipes-australia-2026.html 301
+/blog/best-protein-powder-australia.html /blog/high-protein-moringa-recipes-australia-2026.html 301
+/blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide /blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide 404
+/blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html /blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html 404
+/blog/high-protein-snacks-australia-25-options-under-150-calories-2025 /blog/high-protein-snacks-australia-25-options-under-150-calories-2025 404
+/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html /blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html 404
+/blog/melbourne-body-burden-report-2026 /blog/melbourne-body-burden-report-2026 404
+/blog/melbourne-body-burden-report-2026.html /blog/melbourne-body-burden-report-2026.html 404
+/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026 /blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026 404
+/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html /blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html 404
+/blog/healthy-snack-melbourne-why-everyone-switching-to-moringa-2026 /blog/moringa-vs-coffee-melbourne-energy-hack.html 301
+/blog/healthy-snack-melbourne-why-everyone-switching-to-moringa-2026.html /blog/moringa-vs-coffee-melbourne-energy-hack.html 301
+
 # Retired URLs — explicit 404 (content removed)
 /blog/30-day-moringa-coffee-reset-australia-guide-2026 /blog/30-day-moringa-coffee-reset-australia-guide-2026 404
 /blog/30-day-moringa-coffee-reset-australia-guide-2026.html /blog/30-day-moringa-coffee-reset-australia-guide-2026.html 404

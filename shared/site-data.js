@@ -320,9 +320,9 @@ window.NT_SITE_DATA = {
     { quote: 'Premium Darjeeling tea with rich aroma and smooth taste. The muscatel flavour is perfectly balanced. Highly recommend!', author: 'Helen W.', meta: 'Melbourne, VIC', initials: 'HW', avatarBg: 'bg-tertiary-fixed' },
   ],
   blogGuides: [
-    { category: 'Brand Comparison', title: 'Rosabella Moringa Review: Lab Results vs NutriThrive', readTime: '8 min read', href: '/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html' },
-    { category: 'Lab Testing', title: 'Chemist Warehouse vs NutriThrive: Lab Report', readTime: '6 min read', href: '/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html' },
-    { category: "Buyer's Guide", title: '7 Moringa Brands Australia: Lab Tested & Ranked', readTime: '8 min read', href: '/blog/moringa-brands-comparison-australia-2026.html' },
+    { category: 'Regulation', title: 'Is Moringa Banned in Australia? The Truth (2026)', readTime: '8 min read', href: '/blog/is-moringa-banned-australia-truth-2026.html' },
+    { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026.html' },
+    { category: "Buyer's Guide", title: 'Honest Australian Moringa Powder Guide (2026)', readTime: '8 min read', href: '/blog/honest-australians-guide-moringa-powder-2026.html' },
     { category: 'Shopping', title: 'Where to Buy Moringa: Online vs Stores in AU', readTime: '5 min read', href: '/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html' },
   ],
   cartUrl: '/cart',
