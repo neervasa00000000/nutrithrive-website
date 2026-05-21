@@ -986,6 +986,7 @@ tailwind.config = {
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/shared/css/v2-extra.css"/>
 <link rel="stylesheet" href="/blog/blog-v2-prose.css"/>
+<link rel="stylesheet" href="/shared/css/author-bio.css"/>
 <link rel="icon" href="/assets/images/logo/LOGO.webp"/>
 <style>
         .material-symbols-outlined {
@@ -1126,7 +1127,11 @@ tailwind.config = {
 
   <div class="blog-post-content">
 
-    <p class="lead" style="font-size:1.05rem;">The moringa market in Australia has expanded fast. With that growth comes an uncomfortable reality: many products on shelves and online are lower-quality than their labels suggest. Some brands claim "lab-tested" without publishing results. Others charge premium prices for sun-dried powder that's lost much of its nutritional value. If you're going to spend money on moringa, you deserve to know what you're actually getting. This checklist gives you the tools to find out.</p>
+    <div class="nt-founder-note">
+    <p>I'm Neer Vasavada (NutriThrive, Truganina). Before we sold a single bag, I wanted batch paperwork I could hand to a sceptical customer—NMI report, batch code, shade-dried leaf. "Lab-tested" on a label means nothing without the PDF.</p>
+    <p>Run every brand through this list, including ours. If they won't share current heavy-metal results, walk away. This is buyer education, not medical advice.</p>
+    </div>
+    <p class="lead" style="font-size:1.05rem;">Australia's moringa shelf space grew fast—and so did vague "premium" labels. Some brands claim lab testing without a downloadable certificate; others charge extra for sun-bleached powder. If you're spending on a food supplement, you deserve proof. This eight-point checklist is how we judge incoming stock in our warehouse.</p>
 
     <div class="checklist-summary">
       <strong style="color:#0f6b4d; font-size:1rem;">The 8 checks at a glance:</strong>
@@ -1340,6 +1345,13 @@ tailwind.config = {
     <p class="sources"><strong>Sources:</strong> National Measurement Institute (Australian Government) Report RN1453596 &middot; Fuglie, L.J. (ed.), <em>The Miracle Tree: Moringa oleifera</em> &middot; NutriThrive batch and product data (2026) &middot; <a href="https://ods.od.nih.gov/" rel="noopener noreferrer">NIH Office of Dietary Supplements</a>. This article is general information only, not personal medical or nutritional advice.</p>
 
     <p style="margin-top: 2rem;"><a href="/blog/" style="text-decoration:none;">&larr; Back to all articles</a></p>
+
+    <div class="nt-update-log" role="note">
+    <p><strong>Update log</strong></p>
+    <ul>
+    <li><strong>21 May 2026</strong> — Founder note, intro rewrite, fixed broken brand-comparison links, corrected related-guide anchor text.</li>
+    </ul>
+    </div>
   </div>
 </article>
 
@@ -1347,8 +1359,8 @@ tailwind.config = {
   <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #0f6b4d;">Related guides</h2>
   <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
     <li><a href="/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html">Why premium moringa costs $11, not $25</a></li>
-    <li><a href="/blog/honest-australians-guide-moringa-powder-2026.html">7 moringa brands Australia 2026: lab tested &amp; ranked</a></li>
-    <li><a href="/blog/how-to-read-moringa-batch-codes-freshness.html">Rosabella moringa review: lab test results (2026)</a></li>
+    <li><a href="/blog/how-to-choose-moringa-powder-australia-2026.html">How to choose moringa powder in Australia (2026)</a></li>
+    <li><a href="/blog/how-to-read-moringa-batch-codes-freshness.html">How to read moringa batch codes &amp; freshness</a></li>
     <li><a href="/blog/science-shade-drying-vs-sun-drying-moringa.html">The science of shade-drying vs sun-drying moringa</a></li>
     <li><a href="/blog/how-to-add-moringa-to-diet.html">How to add moringa to your diet</a></li>
     <li><a href="/products/moringa-powder/">Shop NutriThrive moringa powder — $11/100g</a></li>
@@ -1392,7 +1404,7 @@ tailwind.config = {
 <p class="text-xs text-on-surface-variant opacity-70">6 min read</p>
 </div>
 </a>
-<a class="group flex gap-4 items-center" href="/blog/honest-australians-guide-moringa-powder-2026.html">
+<a class="group flex gap-4 items-center" href="/blog/how-to-choose-moringa-powder-australia-2026.html">
 <div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
 <img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/product_photos/moringa.jpeg" loading="lazy" decoding="async" >
 </div>
@@ -1426,6 +1438,7 @@ tailwind.config = {
 <script src="/scripts/global/cart.js"></script>
 <script src="/shared/js/cart-v2-ui.js"></script>
 <script src="/shared/js/footer-v2.js"></script>
+<script src="/shared/js/author-bio.js"></script>
 <script src="/shared/js/layout-v2.js"></script>
 <script src="/shared/js/v2-site.js"></script>
 
