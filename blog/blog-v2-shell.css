@@ -73,3 +73,22 @@
   font-weight: 600;
   background-color: var(--color-promo-bar, #1a2e22);
 }
+
+/*
+ * Blog index loads styles/global/style.css (commit d9ced2c6), whose bare `header`
+ * rule makes every <header> sticky with a huge z-index. Only #nt-header in
+ * .nt-sticky-top should stick — reset the in-main Knowledge Hub hero so the
+ * grid flows below it instead of scrolling underneath.
+ */
+.nt-blog-index main > header {
+  position: static;
+  top: auto;
+  z-index: auto;
+  background: transparent;
+  border-bottom: none;
+}
+
+.nt-blog-index #nt-blog-grid {
+  position: relative;
+  z-index: 0;
+}
