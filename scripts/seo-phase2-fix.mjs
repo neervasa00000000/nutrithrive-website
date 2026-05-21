@@ -221,7 +221,7 @@ function injectRedirectsBlock() {
     '# PHASE 2 — Canonical extensionless blog URLs (auto-generated)',
     '# .html → clean URL (301); clean URL serves .html file (200)',
     ...slugs.flatMap((slug) => [
-      `/blog/${slug}.html /blog/${slug} 301`,
+      `/blog/${slug}.html /blog/${slug} 301!`,
       `/blog/${slug} /blog/${slug}.html 200`,
     ]),
     '',
