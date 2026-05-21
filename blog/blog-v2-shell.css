@@ -1,0 +1,75 @@
+/**
+ * Blog v2 shell — align typography and header with site-wide Inter + design-system.
+ * Loaded via @import from blog-v2-prose.css and blog-v2-index.css (all v2 blog pages).
+ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+/* Inter stack (matches about / products / design-system.css) */
+.nt-blog-article,
+.nt-blog-index,
+.nt-blog-article .nt-blog-main,
+.nt-blog-index main {
+  font-family: var(--font-primary, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+}
+
+/* Override Tailwind v2 token fonts (Literata / Plus Jakarta in inline config) */
+.nt-blog-article .font-display,
+.nt-blog-article .font-headline-md,
+.nt-blog-article .font-headline-lg,
+.nt-blog-article .font-body-md,
+.nt-blog-article .font-body-lg,
+.nt-blog-article .font-label-lg,
+.nt-blog-article .font-label-sm,
+.nt-blog-index .font-display,
+.nt-blog-index .font-headline-md,
+.nt-blog-index .font-headline-lg,
+.nt-blog-index .font-body-md,
+.nt-blog-index .font-body-lg,
+.nt-blog-index .font-label-lg,
+.nt-blog-index .font-label-sm,
+.nt-blog-article [class*="font-display"],
+.nt-blog-article [class*="font-headline"],
+.nt-blog-article [class*="font-body"],
+.nt-blog-article [class*="font-label"],
+.nt-blog-index [class*="font-display"],
+.nt-blog-index [class*="font-headline"],
+.nt-blog-index [class*="font-body"],
+.nt-blog-index [class*="font-label"] {
+  font-family: inherit !important;
+}
+
+/* v2 header nav — match global navbar (Inter, site link sizing) */
+.nt-blog-article #nt-header.nt-v2-header,
+.nt-blog-index #nt-header.nt-v2-header {
+  font-family: var(--font-primary, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+}
+
+.nt-blog-article #nt-header.nt-v2-header nav,
+.nt-blog-index #nt-header.nt-v2-header nav {
+  min-height: 68px;
+}
+
+.nt-blog-article #nt-header.nt-v2-header a.font-display,
+.nt-blog-index #nt-header.nt-v2-header a.font-display {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 1.2;
+}
+
+.nt-blog-article #nt-header.nt-v2-header .font-label-lg,
+.nt-blog-index #nt-header.nt-v2-header .font-label-lg,
+.nt-blog-article #nt-header.nt-v2-header #nt-mobile-drawer a,
+.nt-blog-index #nt-header.nt-v2-header #nt-mobile-drawer a {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Promo bar — same treatment as homepage urgency banner */
+.nt-blog-article .nt-promo-bar,
+.nt-blog-index .nt-promo-bar {
+  font-family: var(--font-primary, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background-color: var(--color-promo-bar, #1a2e22);
+}

@@ -1,3 +1,5 @@
+@import url("/blog/blog-v2-shell.css");
+
 /* Legacy article markup inside Nutri Thrive v2 blog shell */
 .blog-v2-prose {
   color: #3f4943;
@@ -9,7 +11,7 @@
 .blog-v2-prose h3,
 .blog-v2-prose h4 {
   color: #1a2e22;
-  font-family: Literata, Georgia, serif;
+  font-family: var(--font-heading, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
   font-weight: 600;
   scroll-margin-top: 6rem;
 }
