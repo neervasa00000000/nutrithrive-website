@@ -77,7 +77,8 @@ function fileToUrl(relPosix) {
   if (relPosix === "blog/index.html") return `${BASE}/blog/`;
 
   if (relPosix.startsWith("blog/") && relPosix.endsWith(".html")) {
-    return `${BASE}/${relPosix}`;
+    const slug = relPosix.slice("blog/".length, -".html".length);
+    return `${BASE}/blog/${slug}`;
   }
 
   if (relPosix === "products/index.html") return `${BASE}/products/`;

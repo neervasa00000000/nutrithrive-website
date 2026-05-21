@@ -1011,7 +1011,7 @@
 
     if (!articles.length) {
       grid.innerHTML =
-        '<p class="text-on-surface-variant col-span-full">Articles could not load. <a class="text-moringa-leaf underline" href="/blog/index-test.html">View article list</a>.</p>';
+        '<p class="text-on-surface-variant col-span-full">Articles could not load. <a class="text-moringa-leaf underline" href="/blog/index-test">View article list</a>.</p>';
       return;
     }
 
