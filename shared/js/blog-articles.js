@@ -1,4 +1,4 @@
-/** Auto-generated — 51 blog articles */
+/** Auto-generated — 42 blog articles */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "10-dollar-superfood-replaced-200-supplement-stack-australia-2026",
@@ -92,13 +92,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/high-protein-moringa-recipes-australia-2026.html"
   },
   {
-    "slug": "honest-australians-guide-moringa-powder-2026",
-    "title": "The Honest Australian’s Guide to Moringa Powder (2026)",
-    "description": "Moringa powder in Australia: what works, what’s hype, FSANZ &amp; TGA rules, safety, taste tips, and how to pick quality leaf powder—2026 guide.",
-    "category": "Local Guide",
-    "href": "/blog/honest-australians-guide-moringa-powder-2026.html"
-  },
-  {
     "slug": "how-much-moringa-powder-per-day-dosage-guide-2026",
     "title": "How Much Moringa Powder Per Day? Dosage Guide (2026)",
     "description": "How much moringa per day? Adults: 1–2 tsp (3–10g). Start with ½ tsp, ramp over 2 weeks. Age chart, too much moringa, timing &amp; FAQ — Australia 2026.",
@@ -155,20 +148,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/is-moringa-banned-australia-truth-2026.html"
   },
   {
-    "slug": "is-moringa-legit-what-science-and-real-users-say-2026",
-    "title": "Is Moringa Legit? What Science &amp; Real Users Say (2026)",
-    "description": "Is moringa legit? What research suggests, what users report, why dose and powder quality matter, and when marketing outruns evidence—2026 guide for Australia.",
-    "category": "Wellness Journal",
-    "href": "/blog/is-moringa-legit-what-science-and-real-users-say-2026.html"
-  },
-  {
-    "slug": "melbourne-premium-buyers-guide-moringa-2026",
-    "title": "Melbourne Premium Buyer's Guide to Moringa (2026)",
-    "description": "Where to buy moringa in Melbourne in 2026 — Chemist Warehouse, health food stores, and online compared. Prices, quality, and what premium buyers actually choose.",
-    "category": "Local Guide",
-    "href": "/blog/melbourne-premium-buyers-guide-moringa-2026.html"
-  },
-  {
     "slug": "moringa-30-day-challenge-honest-results",
     "title": "I Took Moringa Every Day for 30 Days: My Honest Results",
     "description": "I tried moringa powder daily for 30 days. Here's what happened to my energy, digestion, and sleep. Real results, no BS. Plus recipes that actually work.",
@@ -209,20 +188,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa oil benefits for skin &amp; hair: oleic acid, vitamin E, how to use on face and scalp, oil vs leaf powder, where to buy in Australia &amp; FAQ — 2026 guide.",
     "category": "Skin &amp; Hair",
     "href": "/blog/moringa-oil-benefits-skin-hair-health-2026.html"
-  },
-  {
-    "slug": "moringa-powder-complete-buyers-guide-australia-2026",
-    "title": "Moringa Powder Buyers Guide Australia 2026",
-    "description": "Complete 2026 moringa powder guide for Australia: 10 brands compared by price, processing, and quality. What to look for, what to avoid, and where to buy.",
-    "category": "Local Guide",
-    "href": "/blog/moringa-powder-complete-buyers-guide-australia-2026.html"
-  },
-  {
-    "slug": "moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026",
-    "title": "Moringa Powder Australia 2026: Buy, Dose &amp; Quality Guide",
-    "description": "Moringa powder in Australia: what it is, safe use, quality checks, and where to buy. NutriThrive, Melbourne. Australia-wide delivery.",
-    "category": "Local Guide",
-    "href": "/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html"
   },
   {
     "slug": "moringa-powder-victoria-seniors-joint-health",
@@ -267,25 +232,11 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html"
   },
   {
-    "slug": "nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes",
-    "title": "NutriThrive Delivers Across Victoria: Is Your Town Eligible?",
-    "description": "Does NutriThrive deliver to your Victorian town? Dispatch from Truganina, Melbourne—coverage, typical timeframes, and free-shipping thresholds for VIC in 2026.",
-    "category": "Local Guide",
-    "href": "/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html"
-  },
-  {
     "slug": "nutrithrive-dried-curry-leaves-tradition-health",
     "title": "Natural Curry Leaves Australia: NutriThrive Farm Story &amp; Premium Sourcing",
     "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
     "category": "Wellness Journal",
     "href": "/blog/nutrithrive-dried-curry-leaves-tradition-health.html"
-  },
-  {
-    "slug": "plant-based-functional-foods-australia-wellness-nutrithrive-2026",
-    "title": "Best Protein Powder Australia 2026: Complete Buyer's Guide (Whey, Plant-Based &amp; Weight Loss)",
-    "description": "Find the best protein powder in Australia 2026. Compare whey, plant-based &amp; weight loss options with real prices from Australian retailers. Expert buyer's guide. Updated May 2026.",
-    "category": "Local Guide",
-    "href": "/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html"
   },
   {
     "slug": "quit-sugar-90-days-honest-diary-melbourne-2026",
@@ -300,20 +251,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
     "category": "Research Guide",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa.html"
-  },
-  {
-    "slug": "signs-of-fresh-vs-old-moringa-powder-2026",
-    "title": "Fresh vs Old Moringa Powder: How to Tell the Difference (2026)",
-    "description": "Is your moringa fresh or stale? Green colour, smell, clumping, batch dates, and storage in Australia. Signs of old powder and how to buy fresh — 2026.",
-    "category": "Quality &amp; Freshness",
-    "href": "/blog/signs-of-fresh-vs-old-moringa-powder-2026.html"
-  },
-  {
-    "slug": "smart-moringa-daily-intake-australia-visual-guide-2026",
-    "title": "The smart way to take moringa: dose, safety &amp; benefits",
-    "description": "Moringa dose in Australia (2026): visual guide to daily amounts, meal timing, ~12 weeks consistency, and powder vs extract—wellness context, not medical advice.",
-    "category": "Local Guide",
-    "href": "/blog/smart-moringa-daily-intake-australia-visual-guide-2026.html"
   },
   {
     "slug": "verify-moringa-quality-premium-buyers-checklist-2026",
