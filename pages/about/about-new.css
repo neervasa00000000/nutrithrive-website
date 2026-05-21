@@ -292,6 +292,126 @@
     color: var(--primary, var(--color-primary));
 }
 
+.about-story-layout--stack {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 900px) {
+    .about-story-layout--stack {
+        grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    }
+}
+
+.about-founder-prose .about-story-text h2 {
+    margin-top: 2.2rem;
+}
+
+.about-founder-prose .about-story-text h2:first-of-type {
+    margin-top: 0;
+}
+
+.about-story-bullets {
+    margin: 0 0 1.1rem 0;
+    padding-left: 1.25rem;
+    color: var(--muted, #5A6D5D);
+    font-size: 1.05rem;
+    line-height: 1.85;
+}
+
+.about-story-bullets li + li {
+    margin-top: 0.45rem;
+}
+
+.about-story-panel-note {
+    margin: 1rem 0 0 0;
+    font-size: 0.9rem;
+    color: var(--muted, #5A6D5D);
+    line-height: 1.7;
+}
+
+.about-limits-block {
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(26, 46, 34, 0.08);
+}
+
+.about-limits-block h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem 0;
+    color: var(--text, #1a2e22);
+}
+
+.about-limits-block p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--muted, #5A6D5D);
+    margin: 0 0 1rem 0;
+    max-width: 42rem;
+}
+
+.about-limits-block p:last-child {
+    margin-bottom: 0;
+}
+
+.about-contact-trust {
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid rgba(26, 46, 34, 0.08);
+}
+
+.about-contact-trust h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    color: var(--text, #1a2e22);
+}
+
+.about-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+}
+
+@media (min-width: 720px) {
+    .about-contact-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.about-contact-grid h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem 0;
+    color: var(--primary, var(--color-primary));
+}
+
+.about-contact-grid p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--muted, #5A6D5D);
+}
+
+.about-contact-grid a {
+    color: var(--primary, var(--color-primary));
+    font-weight: 600;
+}
+
+.about-disclaimer {
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.35rem;
+    background: #f9f9f6;
+    border: 1px solid rgba(26, 46, 34, 0.12);
+    border-radius: 8px;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--muted, #5A6D5D);
+}
+
+.about-disclaimer p {
+    margin: 0;
+}
+
 /* ============================
    PROCESS
    ============================ */
