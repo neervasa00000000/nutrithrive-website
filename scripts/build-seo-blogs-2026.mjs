@@ -298,7 +298,7 @@ const DOSAGE_BODY = `
 <tr><td style="padding:0.75rem;border:1px solid #ddd;">60+</td><td style="padding:0.75rem;border:1px solid #ddd;">¼–½ tsp</td><td style="padding:0.75rem;border:1px solid #ddd;">1–2 tsp</td><td style="padding:0.75rem;border:1px solid #ddd;">Check meds (blood thinners, diabetes)</td></tr>
 </tbody>
 </table>
-<p>Women often land at 1–2 tsp daily for hormones and iron support — see our <a href="/blog/moringa-benefits-for-women-comprehensive-2026.html">moringa benefits for women guide</a>.</p>
+<p>Women often land at 1–2 tsp daily for hormones and iron support — see our <a href="/blog/moringa-benefits-for-women-comprehensive-2026">moringa benefits for women guide</a>.</p>
 
 <h2 id="too-much">What happens if you take too much moringa?</h2>
 <p>Moringa is not toxic at normal food doses, but <strong>more is not better</strong>. Common signs you went too fast or too high:</p>
@@ -307,7 +307,7 @@ const DOSAGE_BODY = `
 <li>Loose stools or diarrhoea (moringa is fibre-rich)</li>
 <li>Headache (uncommon; often from taking a large dose on an empty stomach)</li>
 </ul>
-<p>Human studies have used higher amounts under supervision, but for daily home use, staying at or below <strong>2 teaspoons</strong> is the sweet spot for most adults. If symptoms appear, drop back to ½ tsp and take with food. Full breakdown: <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026.html">moringa side effects guide</a>.</p>
+<p>Human studies have used higher amounts under supervision, but for daily home use, staying at or below <strong>2 teaspoons</strong> is the sweet spot for most adults. If symptoms appear, drop back to ½ tsp and take with food. Full breakdown: <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">moringa side effects guide</a>.</p>
 
 <h2 id="how-to-start">How to start: week-by-week ramp</h2>
 <h3>Week 1</h3>
@@ -324,10 +324,10 @@ const DOSAGE_BODY = `
 <li><strong>Morning:</strong> pairs well with routine; supports daytime energy</li>
 <li><strong>Avoid late night</strong> if you are sensitive — a minority report lighter sleep on full doses before bed</li>
 </ul>
-<p>For taste tips, see <a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html">how to use moringa without the bad taste</a>.</p>
+<p>For taste tips, see <a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026">how to use moringa without the bad taste</a>.</p>
 
 <h2 id="powder-vs-capsules-dose">Powder vs capsules: dose comparison</h2>
-<p>Two capsules might only equal ½–1 tsp of powder depending on fill weight. Powder lets you titrate slowly; capsules are convenient but easy to under- or over-shoot. Compare formats in our <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026.html">powder vs capsules guide</a>.</p>
+<p>Two capsules might only equal ½–1 tsp of powder depending on fill weight. Powder lets you titrate slowly; capsules are convenient but easy to under- or over-shoot. Compare formats in our <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules guide</a>.</p>
 
 <h2 id="who-should-adjust">Who should take less (or ask a doctor first)</h2>
 <ul>
@@ -345,7 +345,7 @@ const DOSAGE_BODY = `
 <h3>Can I take moringa every day long-term?</h3>
 <p>Yes — consistency matters. Many Australians take 1 tsp daily for months or years when tolerated well.</p>
 <h3>Is moringa safe in Australia?</h3>
-<p>Yes — it is legal and widely sold. See <a href="/blog/is-moringa-banned-australia-truth-2026.html">is moringa banned in Australia?</a> for the full regulatory picture.</p>
+<p>Yes — it is legal and widely sold. See <a href="/blog/is-moringa-banned-australia-truth-2026">is moringa banned in Australia?</a> for the full regulatory picture.</p>
 `;
 
 const CHOOSE_BODY = `
@@ -368,7 +368,7 @@ const CHOOSE_BODY = `
 
 <h2 id="colour">Why colour matters more than the label</h2>
 <p>Chlorophyll and antioxidants fade when leaves are overheated or stored in clear plastic under shop lights. <strong>Vibrant green powder</strong> usually means gentler drying and better storage. Brown, khaki, or grey powder can still be inside the best-before window but already oxidised.</p>
-<p>Compare shade-dried vs sun-dried processing in our <a href="/blog/science-shade-drying-vs-sun-drying-moringa.html">shade vs sun drying explainer</a>.</p>
+<p>Compare shade-dried vs sun-dried processing in our <a href="/blog/science-shade-drying-vs-sun-drying-moringa">shade vs sun drying explainer</a>.</p>
 
 <h2 id="lab-testing">Lab testing: what to ask for</h2>
 <p>Reputable Australian sellers test for:</p>
@@ -377,7 +377,7 @@ const CHOOSE_BODY = `
 <li>Microbial counts (bacteria, mould)</li>
 <li>Sometimes pesticide panels</li>
 </ul>
-<p>If a brand will not share a certificate of analysis (COA) for the batch you are buying, treat that as a red flag. Our <a href="/blog/verify-moringa-quality-premium-buyers-checklist-2026.html">premium buyers checklist</a> walks through what good paperwork looks like.</p>
+<p>If a brand will not share a certificate of analysis (COA) for the batch you are buying, treat that as a red flag. Our <a href="/blog/verify-moringa-quality-premium-buyers-checklist-2026">premium buyers checklist</a> walks through what good paperwork looks like.</p>
 
 <h2 id="organic">Does organic certification matter?</h2>
 <p>Organic (e.g. ACO in Australia) helps with pesticide risk and traceability, but <strong>organic alone does not guarantee freshness</strong>. A certified organic bag can still be old, sun-damaged, or poorly stored. Use organic as a plus — not the only filter.</p>
@@ -392,7 +392,7 @@ const CHOOSE_BODY = `
 <li><strong>Health food stores</strong> — ask staff when stock arrived; check colour through the bag if possible</li>
 <li><strong>Major retailers</strong> — convenient, but check dates; avoid dusty shelf stock</li>
 </ul>
-<p>See <a href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html">where to buy moringa in Australia</a> for online vs in-store trade-offs.</p>
+<p>See <a href="/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide">where to buy moringa in Australia</a> for online vs in-store trade-offs.</p>
 
 <h2 id="red-flags">Red flags — walk away</h2>
 <ul>
@@ -407,9 +407,9 @@ const CHOOSE_BODY = `
 <h3>Is Australian-grown moringa better than imported?</h3>
 <p>Not automatically — quality depends on drying, testing, and freshness. Imported shade-dried powder from reputable farms can beat stale local stock. Ask about harvest date and tests, not just country of origin.</p>
 <h3>Powder or capsules for first-time buyers?</h3>
-<p>Powder — easier to start at ½ tsp and adjust. See <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026.html">powder vs capsules</a>.</p>
+<p>Powder — easier to start at ½ tsp and adjust. See <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules</a>.</p>
 <h3>How do I check freshness at home?</h3>
-<p>Read our <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026.html">fresh vs old moringa signs guide</a> and <a href="/blog/how-to-read-moringa-batch-codes-freshness.html">batch code guide</a>.</p>
+<p>Read our <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026">fresh vs old moringa signs guide</a> and <a href="/blog/how-to-read-moringa-batch-codes-freshness">batch code guide</a>.</p>
 `;
 
 const FRESH_BODY = `
@@ -461,11 +461,11 @@ const FRESH_BODY = `
 <li><strong>Oxygen</strong> — opened bags age within months</li>
 <li><strong>Humidity</strong> — especially in QLD and NT summers</li>
 </ul>
-<p>Shade-dried, foil-packed powder from high-turnover sellers stays fresher longer. Learn processing details in our <a href="/blog/science-shade-drying-vs-sun-drying-moringa.html">shade vs sun drying article</a>.</p>
+<p>Shade-dried, foil-packed powder from high-turnover sellers stays fresher longer. Learn processing details in our <a href="/blog/science-shade-drying-vs-sun-drying-moringa">shade vs sun drying article</a>.</p>
 
 <h2 id="batch-codes">Batch codes and dates</h2>
 <p>Best-before alone is not enough. Look for <strong>packed-on</strong> or manufacture date. If only best-before is shown and the window is 2–3 years, work backwards — powder packed 18 months ago is already mid-life.</p>
-<p>Full decode guide: <a href="/blog/how-to-read-moringa-batch-codes-freshness.html">how to read moringa batch codes</a>.</p>
+<p>Full decode guide: <a href="/blog/how-to-read-moringa-batch-codes-freshness">how to read moringa batch codes</a>.</p>
 
 <h2 id="storage">How to keep powder fresh after opening</h2>
 <ul>
@@ -484,7 +484,7 @@ const FRESH_BODY = `
 <li>Use opaque, UV-protected packaging</li>
 <li>Do not make illegal cure claims (sign of a compliant, serious operation)</li>
 </ul>
-<p>Ready to compare quality markers? See <a href="/blog/how-to-choose-moringa-powder-australia-2026.html">how to choose moringa powder in Australia</a>.</p>
+<p>Ready to compare quality markers? See <a href="/blog/how-to-choose-moringa-powder-australia-2026">how to choose moringa powder in Australia</a>.</p>
 
 <h2 id="faq">FAQ: fresh vs old moringa</h2>
 <h3>Can fresh powder still look brown?</h3>
@@ -512,23 +512,23 @@ const SIDE_EFFECTS_BODY = `
 <p style="margin:0;"><strong>Most people tolerate moringa powder well.</strong> The most common side effects are mild digestive upset, nausea, or loose stools — usually when you start with too much too fast or take it on an empty stomach. These are not typically serious. Reduce your dose, take with food, and build up slowly. See a doctor if you are pregnant, on blood thinners, or on diabetes medication.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop Lab-Tested Moringa</a>
-<a class="btn-outline" href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">Dosage guide</a>
+<a class="btn-outline" href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">Dosage guide</a>
 </div>
 </div>
 
 <p>Moringa gets marketed as a gentle superfood — and for most Australians, it is. But search interest for &ldquo;moringa side effects&rdquo; and &ldquo;can moringa be harmful&rdquo; has spiked for a reason: some people do react, especially when dose, quality, or medical context is wrong.</p>
-<p>This guide covers what can go wrong, what is normal, what is not, and how to use moringa powder safely in Australia — without scare tactics or fake &ldquo;ban&rdquo; rumours. For legality, see <a href="/blog/is-moringa-banned-australia-truth-2026.html">is moringa banned in Australia?</a></p>
+<p>This guide covers what can go wrong, what is normal, what is not, and how to use moringa powder safely in Australia — without scare tactics or fake &ldquo;ban&rdquo; rumours. For legality, see <a href="/blog/is-moringa-banned-australia-truth-2026">is moringa banned in Australia?</a></p>
 
 <h2 id="common-side-effects">5 common side effects of moringa powder</h2>
 
 <h3>1. Digestive upset (stomach cramps, bloating)</h3>
 <p><strong>Why it happens:</strong> Moringa leaf powder is fibre-rich. A full teaspoon on day one can surprise a gut that is not used to extra plant bulk.</p>
 <p><strong>What it feels like:</strong> Mild cramps, bloating, or a heavy stomach — often within a few hours of your first larger dose.</p>
-<p><strong>What to do:</strong> Drop to ½ teaspoon, take with a meal, and increase over two weeks. See our <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">dosage guide</a>.</p>
+<p><strong>What to do:</strong> Drop to ½ teaspoon, take with a meal, and increase over two weeks. See our <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">dosage guide</a>.</p>
 
 <h3>2. Nausea</h3>
 <p><strong>Why it happens:</strong> Taking moringa on an empty stomach, or using stale/bitter powder, is the usual trigger.</p>
-<p><strong>What to do:</strong> Mix into smoothie, yogurt, or juice with food. If nausea persists, stop for a few days and retry at a lower dose with a fresher batch — see <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026.html">fresh vs old moringa signs</a>.</p>
+<p><strong>What to do:</strong> Mix into smoothie, yogurt, or juice with food. If nausea persists, stop for a few days and retry at a lower dose with a fresher batch — see <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026">fresh vs old moringa signs</a>.</p>
 
 <h3>3. Loose stools or diarrhoea</h3>
 <p><strong>Why it happens:</strong> Too much fibre too fast, or doses above what your body has adapted to (often above 2–3 teaspoons suddenly).</p>
@@ -540,7 +540,7 @@ const SIDE_EFFECTS_BODY = `
 
 <h3>5. Trouble sleeping / feeling wired (uncommon)</h3>
 <p><strong>Why it happens:</strong> Moringa is caffeine-free, but some people feel mildly energised. A late-evening dose can keep sensitive sleepers alert.</p>
-<p><strong>What to do:</strong> Move moringa to morning or lunch only. For energy without caffeine, compare with <a href="/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html">moringa and caffeine</a>.</p>
+<p><strong>What to do:</strong> Move moringa to morning or lunch only. For energy without caffeine, compare with <a href="/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026">moringa and caffeine</a>.</p>
 
 <h2 id="serious">Are moringa side effects serious?</h2>
 <p><strong>For most healthy adults: no.</strong> The effects above are usually mild and reversible when you adjust dose or timing.</p>
@@ -559,7 +559,7 @@ const SIDE_EFFECTS_BODY = `
 <p>Moringa <strong>leaf</strong> powder in small food amounts is traditionally used in many cultures, but high doses and especially <strong>root or bark</strong> are not recommended in pregnancy. Always check with your obstetrician before starting any supplement.</p>
 
 <h3>Breastfeeding women</h3>
-<p>Some cultures use moringa to support milk supply; evidence is mixed. Start with a tiny amount only after professional advice. More in our <a href="/blog/moringa-benefits-for-women-comprehensive-2026.html">moringa benefits for women</a> guide.</p>
+<p>Some cultures use moringa to support milk supply; evidence is mixed. Start with a tiny amount only after professional advice. More in our <a href="/blog/moringa-benefits-for-women-comprehensive-2026">moringa benefits for women</a> guide.</p>
 
 <h3>People on blood thinners (e.g. warfarin)</h3>
 <p>Moringa contains <strong>vitamin K</strong>, which plays a role in clotting. If you are on warfarin or similar drugs, your INR can be affected by large or sudden changes in vitamin K intake. Do not start moringa without your doctor&apos;s input.</p>
@@ -571,14 +571,14 @@ const SIDE_EFFECTS_BODY = `
 <p>High intakes of cruciferous-type plants can affect thyroid function in susceptible people. If you have hypothyroidism or take levothyroxine, ask your doctor before regular high-dose use.</p>
 
 <h3>Children</h3>
-<p>Food amounts in family meals may be fine; concentrated supplement doses should be discussed with a paediatrician. Use lower doses than adults — see the age table in our <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">dosage article</a>.</p>
+<p>Food amounts in family meals may be fine; concentrated supplement doses should be discussed with a paediatrician. Use lower doses than adults — see the age table in our <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">dosage article</a>.</p>
 
 <h2 id="avoid-side-effects">How to avoid moringa side effects</h2>
 <ol>
 <li><strong>Start low:</strong> ½ teaspoon daily for week 1</li>
 <li><strong>Take with food</strong> — not on an empty stomach</li>
 <li><strong>Increase slowly</strong> — 1 tsp week 2, then 1–2 tsp if tolerated</li>
-<li><strong>Buy tested powder</strong> — heavy metals and microbes matter; stale powder tastes worse and upsets more stomachs. Use our <a href="/blog/how-to-choose-moringa-powder-australia-2026.html">buyer guide</a></li>
+<li><strong>Buy tested powder</strong> — heavy metals and microbes matter; stale powder tastes worse and upsets more stomachs. Use our <a href="/blog/how-to-choose-moringa-powder-australia-2026">buyer guide</a></li>
 <li><strong>Stay hydrated</strong> — especially if you notice looser stools</li>
 <li><strong>Morning dosing</strong> — if sleep is sensitive</li>
 <li><strong>Stop if needed</strong> — you can pause and retry later at a lower dose</li>
@@ -590,7 +590,7 @@ const SIDE_EFFECTS_BODY = `
 <ul>
 <li><strong>Root and bark</strong> — different chemistry; not what you get in standard leaf powder</li>
 <li><strong>Contamination</strong> — lead or bacteria from poor sourcing (why lab testing matters)</li>
-<li><strong>Illegal cure claims</strong> — does not mean the plant is banned; see <a href="/blog/is-moringa-banned-australia-truth-2026.html">moringa legal status in Australia</a></li>
+<li><strong>Illegal cure claims</strong> — does not mean the plant is banned; see <a href="/blog/is-moringa-banned-australia-truth-2026">moringa legal status in Australia</a></li>
 <li><strong>Overdose symptoms</strong> — digestive upset from too much too fast, not poisoning</li>
 </ul>
 
@@ -602,10 +602,10 @@ const SIDE_EFFECTS_BODY = `
 <li>Safety reviews noting that adverse effects at typical intakes are usually mild gastrointestinal symptoms</li>
 </ul>
 <p>Research quality varies; moringa is not a drug with one fixed prescription dose. That is why <strong>starting small and using tested products</strong> is the practical Australian approach.</p>
-<p>For evidence vs marketing hype, read <a href="/blog/is-moringa-legit-what-science-and-real-users-say-2026.html">is moringa legit?</a></p>
+<p>For evidence vs marketing hype, read <a href="/blog/is-moringa-legit-what-science-and-real-users-say-2026">is moringa legit?</a></p>
 
 <h2 id="powder-vs-other">Powder vs capsules: any difference in side effects?</h2>
-<p>Same leaf, same rules. Capsules can hide dose (you might take more or less leaf than you think). Powder is easier to titrate slowly. Compare in <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026.html">powder vs capsules</a>.</p>
+<p>Same leaf, same rules. Capsules can hide dose (you might take more or less leaf than you think). Powder is easier to titrate slowly. Compare in <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules</a>.</p>
 
 <h2 id="quality">Can bad moringa cause worse side effects?</h2>
 <p>Yes. Stale, oxidised, or contaminated powder can taste harsh and upset your stomach even at a normal dose. Signs of poor quality:</p>
@@ -614,7 +614,7 @@ const SIDE_EFFECTS_BODY = `
 <li>Musty smell</li>
 <li>No batch code or lab documentation</li>
 </ul>
-<p>Check <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026.html">fresh vs old moringa</a> and <a href="/blog/verify-moringa-quality-premium-buyers-checklist-2026.html">quality checklist</a>.</p>
+<p>Check <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026">fresh vs old moringa</a> and <a href="/blog/verify-moringa-quality-premium-buyers-checklist-2026">quality checklist</a>.</p>
 
 <h2 id="faq">FAQ: moringa side effects</h2>
 <h3>Can moringa hurt your kidneys or liver?</h3>
@@ -626,7 +626,7 @@ const SIDE_EFFECTS_BODY = `
 <h3>Should I stop moringa if I get diarrhoea?</h3>
 <p>Pause, hydrate, restart at ¼–½ teaspoon with food after symptoms clear. If diarrhoea is severe or lasts more than 48 hours, see a doctor.</p>
 <h3>Are moringa side effects worse for women?</h3>
-<p>Women are not more likely to get side effects, but hormone-related goals (periods, pregnancy) mean extra caution. See <a href="/blog/moringa-benefits-for-women-comprehensive-2026.html">moringa for women</a> for benefits and safety context.</p>
+<p>Women are not more likely to get side effects, but hormone-related goals (periods, pregnancy) mean extra caution. See <a href="/blog/moringa-benefits-for-women-comprehensive-2026">moringa for women</a> for benefits and safety context.</p>
 `;
 
 const BODY_GUIDE_BODY = `
@@ -644,7 +644,7 @@ const BODY_GUIDE_BODY = `
 <p style="margin:0;"><strong>Moringa provides vitamins, minerals, plant protein, and antioxidants that support energy, immunity, digestion, skin, hormones, bones, heart health, brain function, blood sugar balance, and inflammation control.</strong> It is not a drug — effects build with daily use at 1–2 teaspoons. Most people notice subtle changes in 1–2 weeks; clearer results often take 4–8 weeks.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Try Lab-Tested Moringa</a>
-<a class="btn-outline" href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">Dosage guide</a>
+<a class="btn-outline" href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">Dosage guide</a>
 </div>
 </div>
 
@@ -666,16 +666,16 @@ const BODY_GUIDE_BODY = `
 
 <h3 id="energy">1. Energy and fatigue</h3>
 <p>Moringa is <strong>caffeine-free</strong> but rich in iron and B-vitamin cofactors that support energy production. Many users report steadier daytime energy without the 3pm crash — especially if they were low in iron. It is not a pre-workout spike; it is more like removing a nutritional handbrake.</p>
-<p>Related: <a href="/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html">does moringa have caffeine?</a></p>
+<p>Related: <a href="/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026">does moringa have caffeine?</a></p>
 
 <h3 id="immune">2. Immune system</h3>
 <p>Vitamins A and C support immune cell function. Antioxidants reduce oxidative stress from pollution, stress, and poor sleep. Moringa will not prevent colds by itself, but adequate micronutrients are foundational for immune resilience.</p>
 
 <h3 id="digestive">3. Digestion and gut health</h3>
-<p>Fibre feeds beneficial gut bacteria and supports regular bowel movements. Some people notice less bloating once their gut adapts — others need to start with a smaller dose to avoid the opposite. Take with food; see <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026.html">side effects</a> if your stomach protests.</p>
+<p>Fibre feeds beneficial gut bacteria and supports regular bowel movements. Some people notice less bloating once their gut adapts — others need to start with a smaller dose to avoid the opposite. Take with food; see <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">side effects</a> if your stomach protests.</p>
 
 <h3 id="skin">4. Skin</h3>
-<p>Vitamin A supports skin repair; vitamin C supports collagen; antioxidants fight free radical damage from sun and stress. Changes are gradual — expect weeks, not overnight. Women often report clearer skin when hormones and nutrition align — see <a href="/blog/moringa-benefits-for-women-comprehensive-2026.html">moringa benefits for women</a>.</p>
+<p>Vitamin A supports skin repair; vitamin C supports collagen; antioxidants fight free radical damage from sun and stress. Changes are gradual — expect weeks, not overnight. Women often report clearer skin when hormones and nutrition align — see <a href="/blog/moringa-benefits-for-women-comprehensive-2026">moringa benefits for women</a>.</p>
 
 <h3 id="hormones">5. Hormones (especially women)</h3>
 <p>Moringa does not contain hormones. It provides magnesium, B6, iron, and antioxidants that support your body&apos;s own hormone balance. Traditional use for menstrual support spans centuries; modern evidence is growing but not definitive for any specific condition.</p>
@@ -708,7 +708,7 @@ const BODY_GUIDE_BODY = `
 <tr><td style="padding:0.75rem;border:1px solid #ddd;"><strong>Months 3+</strong></td><td style="padding:0.75rem;border:1px solid #ddd;">Cumulative nutritional support; habits stick</td></tr>
 </tbody>
 </table>
-<p><strong>Reality check:</strong> If you take moringa once and stop, you will not feel much. Consistency at 1 tsp daily matters. Wrong dose (too much day one) can mean you only feel stomach upset — see <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">dosage guide</a>.</p>
+<p><strong>Reality check:</strong> If you take moringa once and stop, you will not feel much. Consistency at 1 tsp daily matters. Wrong dose (too much day one) can mean you only feel stomach upset — see <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">dosage guide</a>.</p>
 
 <h2 id="science">What scientific studies say (honest summary)</h2>
 <p>Moringa research has expanded, but it is not as large as studies on mainstream vitamins. Highlights often cited:</p>
@@ -720,12 +720,12 @@ const BODY_GUIDE_BODY = `
 <li><strong>Anti-inflammatory:</strong> Animal and lab studies strong; human data still developing</li>
 <li><strong>Safety:</strong> Leaf powder at food doses generally well tolerated in short- and medium-term studies</li>
 </ul>
-<p>For a balanced take on hype vs evidence, read <a href="/blog/is-moringa-legit-what-science-and-real-users-say-2026.html">is moringa legit?</a> We avoid cure claims — illegal in Australia and misleading.</p>
+<p>For a balanced take on hype vs evidence, read <a href="/blog/is-moringa-legit-what-science-and-real-users-say-2026">is moringa legit?</a> We avoid cure claims — illegal in Australia and misleading.</p>
 
 <h2 id="who-benefits">Who benefits most from moringa?</h2>
 
 <h3>Women</h3>
-<p>Iron needs, hormone support, skin, energy — see dedicated guide: <a href="/blog/moringa-benefits-for-women-comprehensive-2026.html">moringa benefits for women</a>.</p>
+<p>Iron needs, hormone support, skin, energy — see dedicated guide: <a href="/blog/moringa-benefits-for-women-comprehensive-2026">moringa benefits for women</a>.</p>
 
 <h3>Seniors</h3>
 <p>Bone nutrients, gentle energy without caffeine, joint inflammation context. Start at ½ tsp; check medications with a GP.</p>
@@ -743,10 +743,10 @@ const BODY_GUIDE_BODY = `
 <p>People already eating diverse, nutrient-rich diets may feel subtle effects only. Moringa fills gaps — it does not supercharge an already optimal diet.</p>
 
 <h2 id="powder-vs-other">How you take it changes what you feel</h2>
-<p><strong>Powder</strong> in smoothies or food — full dose control, best value. <strong>Capsules</strong> — convenient but often lower effective dose. <strong>Tea</strong> — gentler, lower total nutrient intake per cup. Compare <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026.html">powder vs capsules</a>.</p>
+<p><strong>Powder</strong> in smoothies or food — full dose control, best value. <strong>Capsules</strong> — convenient but often lower effective dose. <strong>Tea</strong> — gentler, lower total nutrient intake per cup. Compare <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules</a>.</p>
 
 <h2 id="quality-matters">Why quality changes results</h2>
-<p>Stale brown powder has fewer antioxidants than fresh green shade-dried leaf. Contaminated powder is a health risk, not a benefit. Choose tested, fresh powder — <a href="/blog/how-to-choose-moringa-powder-australia-2026.html">how to choose moringa in Australia</a>.</p>
+<p>Stale brown powder has fewer antioxidants than fresh green shade-dried leaf. Contaminated powder is a health risk, not a benefit. Choose tested, fresh powder — <a href="/blog/how-to-choose-moringa-powder-australia-2026">how to choose moringa in Australia</a>.</p>
 
 <h2 id="faq">FAQ: what does moringa do for your body?</h2>
 <h3>What is moringa good for?</h3>
@@ -758,7 +758,7 @@ const BODY_GUIDE_BODY = `
 <h3>Can moringa replace a multivitamin?</h3>
 <p>It covers many nutrients but not everything (e.g. B12, vitamin D). Think of it as a superfood add-on, not a complete replacement unless your dietitian advises otherwise.</p>
 <h3>Is moringa safe long-term?</h3>
-<p>Food-grade leaf powder at 1–2 tsp daily is commonly used long-term. See <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026.html">side effects</a> and <a href="/blog/is-moringa-banned-australia-truth-2026.html">legal status in Australia</a>.</p>
+<p>Food-grade leaf powder at 1–2 tsp daily is commonly used long-term. See <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">side effects</a> and <a href="/blog/is-moringa-banned-australia-truth-2026">legal status in Australia</a>.</p>
 `;
 
 const CAPSULES_VS_POWDER_BODY = `
@@ -807,19 +807,19 @@ const CAPSULES_VS_POWDER_BODY = `
 <h2 id="why-powder">Why powder is better for most people</h2>
 
 <h3>1. You see what you are buying</h3>
-<p>Open a bag of quality powder and you should see <strong>bright green</strong> leaf — not brown dust. Capsules hide colour, smell, and texture. Stale or oxidised moringa can still look fine in a white capsule. Learn to spot freshness: <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026.html">fresh vs old moringa</a>.</p>
+<p>Open a bag of quality powder and you should see <strong>bright green</strong> leaf — not brown dust. Capsules hide colour, smell, and texture. Stale or oxidised moringa can still look fine in a white capsule. Learn to spot freshness: <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026">fresh vs old moringa</a>.</p>
 
 <h3>2. Better cost per real dose</h3>
 <p>Most adults want roughly <strong>2–3 g of leaf</strong> daily. At NutriThrive&apos;s $11 per 100 g, one teaspoon costs about <strong>40 cents</strong>. Capsule products often need multiple pills to reach the same leaf weight — and retail capsule pricing commonly works out to <strong>$1+ per day</strong>.</p>
 
 <h3>3. Flexible dosing (especially when you are new)</h3>
-<p>Start at ½ teaspoon, increase after a week. That is hard with capsules — you are stuck with whatever each pill contains. See <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">dosage guide</a>.</p>
+<p>Start at ½ teaspoon, increase after a week. That is hard with capsules — you are stuck with whatever each pill contains. See <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">dosage guide</a>.</p>
 
 <h3>4. Fresher supply chain</h3>
 <p>Powder from direct brands often ships in foil pouches from small batches. Capsules add encapsulation steps, bottle storage under shop lights, and longer shelf time before you buy.</p>
 
 <h3>5. Works in food — not just supplements</h3>
-<p>Smoothies, yogurt, oats, soups: powder becomes part of a meal. That can reduce nausea vs taking concentrates on an empty stomach — see <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026.html">side effects</a>.</p>
+<p>Smoothies, yogurt, oats, soups: powder becomes part of a meal. That can reduce nausea vs taking concentrates on an empty stomach — see <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">side effects</a>.</p>
 
 <h2 id="when-capsules">When capsules make sense</h2>
 <p>Capsules are not wrong — they are just often <strong>overpriced for the amount of leaf you get</strong>. Choose capsules when:</p>
@@ -852,7 +852,7 @@ const CAPSULES_VS_POWDER_BODY = `
 <li><strong>Oats</strong> — mix into porridge after cooking</li>
 <li><strong>Capsule hack</strong> — buy empty veggie caps and fill with powder yourself (more work, full control)</li>
 </ol>
-<p>More ideas: <a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html">daily use without the bad taste</a> and <a href="/blog/how-to-add-moringa-to-diet.html">how to add moringa to your diet</a>.</p>
+<p>More ideas: <a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026">daily use without the bad taste</a> and <a href="/blog/how-to-add-moringa-to-diet">how to add moringa to your diet</a>.</p>
 
 <h2 id="choose-quality">Same rules for both formats</h2>
 <p>Whether you choose powder or capsules:</p>
@@ -862,7 +862,7 @@ const CAPSULES_VS_POWDER_BODY = `
 <li>Avoid illegal cure claims</li>
 <li>Check colour (powder) or brand transparency (capsules)</li>
 </ul>
-<p><a href="/blog/how-to-choose-moringa-powder-australia-2026.html">How to choose moringa in Australia</a></p>
+<p><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to choose moringa in Australia</a></p>
 
 <h2 id="verdict">Our verdict (2026)</h2>
 <p><strong>For 80% of Australians:</strong> shade-dried powder, 1 tsp daily, from a tested direct supplier.</p>
@@ -907,13 +907,13 @@ const TEA_BODY = `
 <h2 id="benefits">5 benefits of moringa tea</h2>
 
 <h3>1. Caffeine-free energy support</h3>
-<p>Moringa leaf has <strong>no caffeine</strong>. Many people still feel more alert because of iron, B vitamins, and antioxidants that support normal energy metabolism — not a stimulant spike. Compare: <a href="/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html">does moringa have caffeine?</a></p>
+<p>Moringa leaf has <strong>no caffeine</strong>. Many people still feel more alert because of iron, B vitamins, and antioxidants that support normal energy metabolism — not a stimulant spike. Compare: <a href="/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026">does moringa have caffeine?</a></p>
 
 <h3>2. Antioxidants in every cup</h3>
-<p>Fresh shade-dried leaf is rich in polyphenols and flavonoids. Steeping releases some into the water; you also consume a small amount of leaf sediment if you drink the whole cup. Quality matters — brown stale powder makes weak tea. See <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026.html">fresh vs old moringa</a>.</p>
+<p>Fresh shade-dried leaf is rich in polyphenols and flavonoids. Steeping releases some into the water; you also consume a small amount of leaf sediment if you drink the whole cup. Quality matters — brown stale powder makes weak tea. See <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026">fresh vs old moringa</a>.</p>
 
 <h3>3. Gentle on the stomach (at the right dose)</h3>
-<p>A warm cup with food is easier for sensitive stomachs than a large dry scoop on an empty stomach. Start with ½ tsp per cup. If you get nausea, reduce dose or switch to a smoothie. <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026.html">Side effects guide</a>.</p>
+<p>A warm cup with food is easier for sensitive stomachs than a large dry scoop on an empty stomach. Start with ½ tsp per cup. If you get nausea, reduce dose or switch to a smoothie. <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">Side effects guide</a>.</p>
 
 <h3>4. Hydration ritual</h3>
 <p>Tea fits a low-effort daily habit — morning mug, afternoon reset — without blender cleanup. Consistency beats occasional mega-doses for long-term nutritional support.</p>
@@ -921,7 +921,7 @@ const TEA_BODY = `
 <h3>5. Calorie-light way to add greens</h3>
 <p>Unlike sugary green juices, unsweetened moringa tea adds micronutrients with negligible calories. Good for people watching blood sugar who want something warm instead of a snack.</p>
 
-<p><strong>Honest caveat:</strong> one cup of tea usually contains <strong>less leaf</strong> than 1 tsp stirred into a smoothie. For full daily nutrition goals, many people do tea <em>plus</em> food use, or 2 cups — not tea alone at a tiny pinch. Dosage context: <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">how much moringa per day</a>.</p>
+<p><strong>Honest caveat:</strong> one cup of tea usually contains <strong>less leaf</strong> than 1 tsp stirred into a smoothie. For full daily nutrition goals, many people do tea <em>plus</em> food use, or 2 cups — not tea alone at a tiny pinch. Dosage context: <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">how much moringa per day</a>.</p>
 
 <h2 id="recipe">How to make moringa tea from powder (step-by-step)</h2>
 <p>You do not need special tea bags — any <strong>100% moringa leaf powder</strong> works. Use bright green powder from a tested supplier.</p>
@@ -955,7 +955,7 @@ const TEA_BODY = `
 <li><strong>Cinnamon</strong> — pinch in winter; works with oat milk</li>
 <li><strong>Blend with green tea</strong> — 50/50 if you want familiar tea flavour while introducing moringa</li>
 </ul>
-<p>More ways to use powder without hating the taste: <a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html">daily use without the bad taste</a>.</p>
+<p>More ways to use powder without hating the taste: <a href="/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026">daily use without the bad taste</a>.</p>
 
 <h2 id="hot-vs-iced">Hot vs iced moringa tea</h2>
 <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem;">
@@ -975,18 +975,18 @@ const TEA_BODY = `
 <li><strong>Mid-afternoon:</strong> caffeine-free pick-me-up instead of a second coffee</li>
 <li><strong>Evening:</strong> fine for most people; if you are sensitive, avoid large doses right before bed</li>
 </ul>
-<p>Avoid replacing prescribed medication with tea. Moringa supports nutrition; it does not cure disease. <a href="/blog/is-moringa-banned-australia-truth-2026.html">Legal status in Australia</a>.</p>
+<p>Avoid replacing prescribed medication with tea. Moringa supports nutrition; it does not cure disease. <a href="/blog/is-moringa-banned-australia-truth-2026">Legal status in Australia</a>.</p>
 
 <h2 id="tea-vs-powder">Moringa tea vs powder in smoothies</h2>
 <p>Tea is gentler and lower dose per cup. Smoothies deliver a full <strong>1 tsp+</strong> in one go — better if your goal is daily iron, protein, and fat-soluble vitamin intake from leaf. Many long-term users drink tea on weekdays and use powder in weekend smoothies.</p>
-<p>Capsules are a third option for travel: <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026.html">capsules vs powder</a>.</p>
+<p>Capsules are a third option for travel: <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">capsules vs powder</a>.</p>
 
 <h2 id="choose-powder">Choosing powder for tea</h2>
 <p>Tea exposes bad powder immediately — colour and smell cannot hide in a mug. Buy:</p>
 <ul>
 <li><strong>Bright green</strong> 100% leaf powder</li>
 <li><strong>Lab-tested</strong> for heavy metals</li>
-<li><strong>Recent batch</strong> — <a href="/blog/how-to-choose-moringa-powder-australia-2026.html">how to choose moringa in Australia</a></li>
+<li><strong>Recent batch</strong> — <a href="/blog/how-to-choose-moringa-powder-australia-2026">how to choose moringa in Australia</a></li>
 </ul>
 
 <h2 id="faq">FAQ: moringa tea</h2>
@@ -1103,7 +1103,7 @@ const GROW_BODY = `
 </ul>
 
 <h3>6. Harvest leaves</h3>
-<p>Pick young, tender leaflets and small stems — wash before eating. Do not strip the whole tree at once; harvest up to one-third of growth, let recover. For daily nutrition most Australians use <strong>dried powder</strong> because fresh leaf supply is seasonal — <a href="/blog/fresh-moringa-leaves-vs-powder-nutrients-2026.html">fresh leaves vs powder</a> explains why.</p>
+<p>Pick young, tender leaflets and small stems — wash before eating. Do not strip the whole tree at once; harvest up to one-third of growth, let recover. For daily nutrition most Australians use <strong>dried powder</strong> because fresh leaf supply is seasonal — <a href="/blog/fresh-moringa-leaves-vs-powder-nutrients-2026">fresh leaves vs powder</a> explains why.</p>
 
 <h2 id="problems">Common moringa growing problems in Australia</h2>
 
@@ -1131,12 +1131,12 @@ const GROW_BODY = `
 <ul>
 <li><strong>Bright green</strong> shade-dried leaf powder</li>
 <li><strong>Lab tests</strong> for heavy metals</li>
-<li><strong>Clear batch dates</strong> — <a href="/blog/how-to-choose-moringa-powder-australia-2026.html">how to choose moringa in Australia</a></li>
+<li><strong>Clear batch dates</strong> — <a href="/blog/how-to-choose-moringa-powder-australia-2026">how to choose moringa in Australia</a></li>
 </ul>
 <p>NutriThrive powder is packed in Melbourne with same-day dispatch before 2pm — useful if you are in a cool state and your patio tree is dormant half the year.</p>
 
 <h2 id="melbourne-note">Growing moringa in Melbourne specifically</h2>
-<p>Melbourne summers can be excellent for potted moringa; winters are the killer. Start seeds indoors in October, harden off in November, enjoy rapid summer growth, then move under cover by May. Many locals pair a small potted tree with daily powder — honest expectation, not failure. More local tips: <a href="/blog/moringa-melbourne-complete-guide-2026.html">moringa in Melbourne guide</a>.</p>
+<p>Melbourne summers can be excellent for potted moringa; winters are the killer. Start seeds indoors in October, harden off in November, enjoy rapid summer growth, then move under cover by May. Many locals pair a small potted tree with daily powder — honest expectation, not failure. More local tips: <a href="/blog/moringa-melbourne-complete-guide-2026">moringa in Melbourne guide</a>.</p>
 
 <h2 id="faq">FAQ: growing moringa in Australia</h2>
 <h3>How long does moringa take to grow in Australia?</h3>
@@ -1146,9 +1146,9 @@ const GROW_BODY = `
 <h3>Where can I buy moringa seeds in Australia?</h3>
 <p>Nurseries, online seed suppliers, and fruit-tree specialists (e.g. Daleys). Buy fresh seed and soak before planting.</p>
 <h3>Is it legal to grow moringa in Australia?</h3>
-<p>Yes. Moringa oleifera is commonly grown as a food plant. Leaf powder sold as food must meet normal food-safety rules — see <a href="/blog/is-moringa-banned-australia-truth-2026.html">is moringa banned in Australia?</a></p>
+<p>Yes. Moringa oleifera is commonly grown as a food plant. Leaf powder sold as food must meet normal food-safety rules — see <a href="/blog/is-moringa-banned-australia-truth-2026">is moringa banned in Australia?</a></p>
 <h3>Is home-grown moringa better than powder?</h3>
-<p>Fresh leaves are lovely when in season. Powder is more concentrated, available year-round, and easier to dose — many people use both. <a href="/blog/fresh-moringa-leaves-vs-powder-nutrients-2026.html">Fresh leaves vs powder</a>.</p>
+<p>Fresh leaves are lovely when in season. Powder is more concentrated, available year-round, and easier to dose — many people use both. <a href="/blog/fresh-moringa-leaves-vs-powder-nutrients-2026">Fresh leaves vs powder</a>.</p>
 `;
 
 const LEAVES_VS_POWDER_BODY = `
@@ -1195,7 +1195,7 @@ const LEAVES_VS_POWDER_BODY = `
 <tr><td style="padding:0.65rem;border:1px solid #ddd;">Antioxidants / polyphenols</td><td style="padding:0.65rem;border:1px solid #ddd;">Present</td><td style="padding:0.65rem;border:1px solid #ddd;">Concentrated if shade-dried</td><td style="padding:0.65rem;border:1px solid #ddd;">Depends on powder quality</td></tr>
 </tbody>
 </table>
-<p style="font-size:0.9rem;color:#555;">*Vitamin C drops with heat and long sun-drying. <strong>Shade-dried</strong> powder retains more antioxidants than sun-bleached brown powder. See <a href="/blog/science-shade-drying-vs-sun-drying-moringa.html">shade-dried vs sun-dried</a>.</p>
+<p style="font-size:0.9rem;color:#555;">*Vitamin C drops with heat and long sun-drying. <strong>Shade-dried</strong> powder retains more antioxidants than sun-bleached brown powder. See <a href="/blog/science-shade-drying-vs-sun-drying-moringa">shade-dried vs sun-dried</a>.</p>
 
 <h3>What does &quot;1 tsp powder = 7–10 leaves&quot; mean?</h3>
 <p>One teaspoon of fine powder is about <strong>2–3 grams of dried leaf</strong>. That might come from roughly <strong>20–30 grams of fresh leaf</strong> before water is removed — often quoted as a small handful of leaflets (7–10 tender shoots, depending on size). You do not need to eat a salad bowl of fresh leaves to match a normal supplement dose; powder packs the same leaf matter into a spoon.</p>
@@ -1203,16 +1203,16 @@ const LEAVES_VS_POWDER_BODY = `
 <h2 id="why-powder">Why moringa powder is better for most Australians</h2>
 
 <h3>1. Concentration &amp; consistent dosing</h3>
-<p>Daily routines need a repeatable dose: <strong>½–2 tsp</strong>. Measuring fresh leaf weight at home is messy and inconsistent. Powder lets you follow <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">dosage guides</a> accurately.</p>
+<p>Daily routines need a repeatable dose: <strong>½–2 tsp</strong>. Measuring fresh leaf weight at home is messy and inconsistent. Powder lets you follow <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">dosage guides</a> accurately.</p>
 
 <h3>2. Available year-round</h3>
 <p>Fresh leaves appear at some grocers in summer or when your tree peaks — then disappear. Powder works in Melbourne winter, Perth summer, and everywhere between.</p>
 
 <h3>3. Shelf life &amp; potency you can check</h3>
-<p>Fresh leaves wilt in days. Quality powder in a sealed pouch lasts months if stored cool and dark — and you can judge <strong>colour and smell</strong> before buying. <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026.html">Fresh vs old powder</a>.</p>
+<p>Fresh leaves wilt in days. Quality powder in a sealed pouch lasts months if stored cool and dark — and you can judge <strong>colour and smell</strong> before buying. <a href="/blog/signs-of-fresh-vs-old-moringa-powder-2026">Fresh vs old powder</a>.</p>
 
 <h3>4. Lab testing (heavy metals)</h3>
-<p>Reputable Australian suppliers test dried powder for lead and cadmium — critical for a plant that can absorb soil metals. Random fresh leaves at a market rarely come with batch test data. <a href="/blog/how-to-choose-moringa-powder-australia-2026.html">How to choose moringa powder</a>.</p>
+<p>Reputable Australian suppliers test dried powder for lead and cadmium — critical for a plant that can absorb soil metals. Random fresh leaves at a market rarely come with batch test data. <a href="/blog/how-to-choose-moringa-powder-australia-2026">How to choose moringa powder</a>.</p>
 
 <h3>5. Cost per daily serve</h3>
 <p>A teaspoon from a $11/100 g bag costs about <strong>40 cents</strong>. Fresh leaves sold by the bunch vary; matching the same iron and protein daily from fresh leaf alone often costs more time and money unless you grow at scale.</p>
@@ -1228,7 +1228,7 @@ const LEAVES_VS_POWDER_BODY = `
 <li><strong>You prefer whole-food texture</strong> over powders — and you eat enough leaf volume consistently</li>
 <li><strong>You have a trusted grocer</strong> with same-week harvested leaves (Footscray, Dandenong, etc.)</li>
 </ul>
-<p>Even then, many home growers <strong>dry surplus leaves</strong> at home or keep powder for off-season. Growing guide: <a href="/blog/how-to-grow-moringa-in-australia-complete-guide-2026.html">how to grow moringa in Australia</a>.</p>
+<p>Even then, many home growers <strong>dry surplus leaves</strong> at home or keep powder for off-season. Growing guide: <a href="/blog/how-to-grow-moringa-in-australia-complete-guide-2026">how to grow moringa in Australia</a>.</p>
 
 <h2 id="taste">Taste: fresh leaves vs moringa powder</h2>
 <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem;">
@@ -1238,7 +1238,7 @@ const LEAVES_VS_POWDER_BODY = `
 <tbody>
 <tr><td style="padding:0.75rem;border:1px solid #ddd;"><strong>Fresh leaves</strong></td><td style="padding:0.75rem;border:1px solid #ddd;">Grassy, peppery, like strong rocket or mustard greens</td><td style="padding:0.75rem;border:1px solid #ddd;">Soups, stir-fries, chutneys — cooked</td></tr>
 <tr><td style="padding:0.75rem;border:1px solid #ddd;"><strong>Powder (raw)</strong></td><td style="padding:0.75rem;border:1px solid #ddd;">Earthy, bitter if plain water</td><td style="padding:0.75rem;border:1px solid #ddd;">Smoothies, yogurt, masked drinks</td></tr>
-<tr><td style="padding:0.75rem;border:1px solid #ddd;"><strong>Powder (tea)</strong></td><td style="padding:0.75rem;border:1px solid #ddd;">Milder, herbal</td><td style="padding:0.75rem;border:1px solid #ddd;">Warm cup — <a href="/blog/moringa-tea-benefits-how-to-brew-2026-guide.html">moringa tea guide</a></td></tr>
+<tr><td style="padding:0.75rem;border:1px solid #ddd;"><strong>Powder (tea)</strong></td><td style="padding:0.75rem;border:1px solid #ddd;">Milder, herbal</td><td style="padding:0.75rem;border:1px solid #ddd;">Warm cup — <a href="/blog/moringa-tea-benefits-how-to-brew-2026-guide">moringa tea guide</a></td></tr>
 </tbody>
 </table>
 <p>Most powder haters are tasting <strong>stale brown powder</strong> in water. Fresh green powder in a fruit smoothie tastes nothing like that.</p>
@@ -1253,7 +1253,7 @@ const LEAVES_VS_POWDER_BODY = `
 <p>Bad powder is not &quot;less fresh leaf&quot; — it is damaged leaf. Good powder can beat wilted week-old fresh leaves from a shelf.</p>
 
 <h2 id="capsules-note">What about capsules?</h2>
-<p>Capsules are usually dried leaf too — often less per dollar and hidden from view. Compare: <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026.html">moringa capsules vs powder</a>.</p>
+<p>Capsules are usually dried leaf too — often less per dollar and hidden from view. Compare: <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">moringa capsules vs powder</a>.</p>
 
 <h2 id="verdict">Verdict: leaves or powder in 2026?</h2>
 <p><strong>For daily nutrition across Australia:</strong> shade-dried, lab-tested <strong>powder</strong> — 1 tsp/day, easy dose, year-round.</p>
@@ -1304,7 +1304,7 @@ const OIL_BODY = `
 <li><strong>Key fatty acid:</strong> oleic acid (omega-9) — similar profile to olive oil</li>
 <li><strong>Also contains:</strong> vitamin E, sterols, and behenic acid (used in cosmetics for slip and moisture)</li>
 </ul>
-<p>You apply oil to skin and hair. You do <strong>not</strong> need seed oil to get daily iron, protein, or leaf antioxidants — that is what <a href="/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html">moringa leaf powder</a> is for.</p>
+<p>You apply oil to skin and hair. You do <strong>not</strong> need seed oil to get daily iron, protein, or leaf antioxidants — that is what <a href="/blog/what-does-moringa-do-for-your-body-complete-guide-2026">moringa leaf powder</a> is for.</p>
 
 <h2 id="skin">5 moringa oil benefits for skin</h2>
 
@@ -1384,7 +1384,7 @@ const OIL_BODY = `
 <tr><td style="padding:0.75rem;border:1px solid #ddd;"><strong>Lab tests</strong></td><td style="padding:0.75rem;border:1px solid #ddd;">Cosmetic quality varies</td><td style="padding:0.75rem;border:1px solid #ddd;">Heavy metal tests essential for food powder</td></tr>
 </tbody>
 </table>
-<p>Many Australians use <strong>both</strong>: powder in the morning smoothie, oil on hair or dry skin at night. NutriThrive specialises in <strong>lab-tested leaf powder</strong> — not seed oil — because that is where daily nutrition and our quality controls focus. Compare leaf formats: <a href="/blog/fresh-moringa-leaves-vs-powder-nutrients-2026.html">fresh leaves vs powder</a>.</p>
+<p>Many Australians use <strong>both</strong>: powder in the morning smoothie, oil on hair or dry skin at night. NutriThrive specialises in <strong>lab-tested leaf powder</strong> — not seed oil — because that is where daily nutrition and our quality controls focus. Compare leaf formats: <a href="/blog/fresh-moringa-leaves-vs-powder-nutrients-2026">fresh leaves vs powder</a>.</p>
 
 <h2 id="buy-australia">Where to buy moringa oil in Australia</h2>
 <p>Look for:</p>
@@ -1395,14 +1395,14 @@ const OIL_BODY = `
 <li><strong>Patch-test</strong> before full use</li>
 </ul>
 <p>Available at health stores, chemists with natural ranges, and online cosmetic suppliers. Price varies ($15–40+ for 50–100 ml). For <strong>edible</strong> moringa nutrition, buy <strong>leaf powder</strong> from a food-grade tested brand — not cosmetic oil meant only for skin.</p>
-<p>Choosing powder: <a href="/blog/how-to-choose-moringa-powder-australia-2026.html">how to choose moringa powder in Australia</a>.</p>
+<p>Choosing powder: <a href="/blog/how-to-choose-moringa-powder-australia-2026">how to choose moringa powder in Australia</a>.</p>
 
 <h2 id="safety">Safety &amp; who should be careful</h2>
 <ul>
 <li>Do not ingest cosmetic-grade oil unless the label says food-grade</li>
 <li>Nut allergy cross-reactivity is rare but patch-test if you have multiple seed allergies</li>
 <li>Pregnant women: topical use is commonly discussed as low risk in small amounts, but ask your clinician for personal advice</li>
-<li>For internal supplement questions (dose, meds), see <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026.html">side effects</a> and <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html">dosage guide</a> for <strong>leaf powder</strong></li>
+<li>For internal supplement questions (dose, meds), see <a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">side effects</a> and <a href="/blog/how-much-moringa-powder-per-day-dosage-guide-2026">dosage guide</a> for <strong>leaf powder</strong></li>
 </ul>
 
 <h2 id="faq">FAQ: moringa oil benefits</h2>

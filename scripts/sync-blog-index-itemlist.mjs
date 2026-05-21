@@ -48,7 +48,7 @@ const ordered = [
 const itemListElement = ordered.map((file, i) => ({
   '@type': 'ListItem',
   position: i + 1,
-  url: `${BASE}/blog/${file}`,
+  url: `${BASE}/blog/${file.replace(/\.html$/, '')}`,
 }));
 
 const itemList = {

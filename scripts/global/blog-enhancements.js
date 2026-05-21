@@ -77,9 +77,9 @@
       <div style="background:#fffdfa;border:1px solid #ece7db;border-radius:12px;padding:14px;">
         <strong style="color:#175c36;">Related reads</strong>
         <ul style="margin:8px 0 0 18px;line-height:1.6;">
-          <li><a href="/blog/how-to-add-moringa-to-diet.html" style="color:#175c36;text-decoration:none;">How to add moringa (Australia)</a></li>
+          <li><a href="/blog/how-to-add-moringa-to-diet" style="color:#175c36;text-decoration:none;">How to add moringa (Australia)</a></li>
           <li><a href="https://nutrithrive.com.au/products/moringa-powder/" style="color:#175c36;text-decoration:none;">Compare our products</a></li>
-          <li><a href="/blog/index.html" style="color:#175c36;text-decoration:none;">More from the blog</a></li>
+          <li><a href="/blog/index" style="color:#175c36;text-decoration:none;">More from the blog</a></li>
         </ul>
       </div>`;
     article.appendChild(wrap);

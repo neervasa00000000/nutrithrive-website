@@ -78,9 +78,9 @@
       <div style="background:#fffdfa;border:1px solid #ece7db;border-radius:12px;padding:14px;">
         <strong style="color:#175c36;">Related reads</strong>
         <ul style="margin:8px 0 0 18px;line-height:1.6;">
-          <li><a href="/blog/how-to-add-moringa-to-diet.html" style="color:#175c36;text-decoration:none;">How to add moringa (Australia)</a></li>
+          <li><a href="/blog/how-to-add-moringa-to-diet" style="color:#175c36;text-decoration:none;">How to add moringa (Australia)</a></li>
           <li><a href="https://nutrithrive.com.au/products/moringa-powder/" style="color:#175c36;text-decoration:none;">Compare our products</a></li>
-          <li><a href="/blog/index.html" style="color:#175c36;text-decoration:none;">More from the blog</a></li>
+          <li><a href="/blog/index" style="color:#175c36;text-decoration:none;">More from the blog</a></li>
         </ul>
       </div>`;
     article.appendChild(wrap);
@@ -257,7 +257,7 @@
     bc.style.background = '#f8f5ec';
     bc.style.borderBottom = '1px solid #ece7db';
     bc.style.padding = '0.75rem 1rem';
-    bc.innerHTML = `<nav style="font-size:0.9375rem;color:#666;max-width:1200px;margin:0 auto;"><a href="/index.html" style="color:#2d5a3d;text-decoration:none;">Home</a> <span style="margin:0 0.5rem;color:#999;">›</span> <a href="/blog/index.html" style="color:#2d5a3d;text-decoration:none;">Blog</a> <span style="margin:0 0.5rem;color:#999;">›</span> <span style="color:#333;font-weight:600;">${(h1.textContent||'').slice(0,70)}${h1.textContent.length>70?'…':''}</span></nav>`;
+    bc.innerHTML = `<nav style="font-size:0.9375rem;color:#666;max-width:1200px;margin:0 auto;"><a href="/index.html" style="color:#2d5a3d;text-decoration:none;">Home</a> <span style="margin:0 0.5rem;color:#999;">›</span> <a href="/blog/index" style="color:#2d5a3d;text-decoration:none;">Blog</a> <span style="margin:0 0.5rem;color:#999;">›</span> <span style="color:#333;font-weight:600;">${(h1.textContent||'').slice(0,70)}${h1.textContent.length>70?'…':''}</span></nav>`;
     header.insertAdjacentElement('afterend', bc);
   }
 

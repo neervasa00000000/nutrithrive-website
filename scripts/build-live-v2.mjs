@@ -154,7 +154,7 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
     }],
     [/href="([^"]+)-test\.html"/g, (full, slug) => {
       if (slug.includes('/')) return full;
-      return `href="/blog/${slug}.html"`;
+      return `href="/blog/${slug}"`;
     }],
     [/src="\.\.\/\.\.\/assets\//g, 'src="/assets/'],
     [/href="\.\.\/\.\.\/assets\//g, 'href="/assets/'],
