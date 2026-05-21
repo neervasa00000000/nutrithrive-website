@@ -3,7 +3,7 @@
   var BIO_URL = '/shared/components/author-bio.html';
   var DISCLAIMER_HTML =
     '<div class="nt-global-disclaimer" role="note" data-nt-global-disclaimer>' +
-    '<p><strong>Legal disclaimer:</strong> I\'m Neer Vasavada, founder of NutriThrive. I\'m not a doctor, nutritionist, or health professional. This article is general information and our own operational experience—not medical advice.</p>' +
+    '<p><strong>Legal disclaimer:</strong> I\'m Neer, founder of NutriThrive. I\'m not a doctor, nutritionist, or health professional. This article is general information and our own operational experience—not medical advice.</p>' +
     '<p><strong>These statements have not been evaluated by the TGA.</strong> Moringa powder is sold as a food supplement and is not intended to diagnose, treat, cure, or prevent any disease. If you are pregnant, breastfeeding, or on medication, speak with your GP before use.</p>' +
     '</div>';
 
@@ -58,7 +58,7 @@
         insertBio(
           prose,
           '<div class="nt-author-bio" data-nt-author-bio><div class="nt-author-bio-inner">' +
-            '<div class="nt-author-bio-body"><h2 class="nt-author-bio-name">Written by Neer Vasavada</h2>' +
+            '<div class="nt-author-bio-body"><h2 class="nt-author-bio-name">Written by Neer</h2>' +
             '<p class="nt-author-bio-text">Founder of NutriThrive, Truganina VIC. Not a health professional—see disclaimer below.</p></div></div></div>'
         );
       });
