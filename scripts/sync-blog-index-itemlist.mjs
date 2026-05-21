@@ -20,7 +20,7 @@ const PRIORITY = [
   'what-does-moringa-do-for-your-body-complete-guide-2026.html',
   'moringa-capsules-vs-powder-which-is-better-2026.html',
   'how-to-choose-moringa-powder-australia-2026.html',
-  'signs-of-fresh-vs-old-moringa-powder-2026.html',
+  'verify-moringa-quality-premium-buyers-checklist-2026.html',
   'moringa-tea-benefits-how-to-brew-2026-guide.html',
   'how-to-grow-moringa-in-australia-complete-guide-2026.html',
   'fresh-moringa-leaves-vs-powder-nutrients-2026.html',

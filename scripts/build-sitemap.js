@@ -34,6 +34,8 @@ const PATH_BLOCKLIST = new Set([
   "pages/homepage/index.html",
   "pages/benefits/moringa-benefits.html",
   "pages/melbourne-page.html",
+  "scripts/quit-sugar-article-body.html",
+  "scripts/templates/v2/pages/moringa-powder-test.html",
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([]);

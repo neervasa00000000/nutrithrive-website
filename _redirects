@@ -3,6 +3,42 @@
 # — 200 rewrites: pretty URLs (no 301s for /cart vs /cart/; use /cart, /about, /contact, /faq everywhere)
 # — Retired blog URLs → 404
 
+# PHASE 1 REDIRECTS - Delete Duplicates
+
+# Dosage cannibalization
+/blog/smart-moringa-daily-intake-australia-visual-guide-2026 /blog/how-much-moringa-powder-per-day-dosage-guide-2026.html 301
+/blog/smart-moringa-daily-intake-australia-visual-guide-2026.html /blog/how-much-moringa-powder-per-day-dosage-guide-2026.html 301
+
+# Buyer guide cannibalization
+/blog/signs-of-fresh-vs-old-moringa-powder-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/signs-of-fresh-vs-old-moringa-powder-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/moringa-powder-complete-buyers-guide-australia-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/moringa-powder-complete-buyers-guide-australia-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/honest-australians-guide-moringa-powder-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/honest-australians-guide-moringa-powder-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+
+# Safety cannibalization
+/blog/is-moringa-legit-what-science-and-real-users-say-2026 /blog/is-moringa-banned-australia-truth-2026.html 301
+/blog/is-moringa-legit-what-science-and-real-users-say-2026.html /blog/is-moringa-banned-australia-truth-2026.html 301
+
+# Off-topic protein post
+/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 /blog/high-protein-moringa-recipes-australia-2026.html 301
+/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html /blog/high-protein-moringa-recipes-australia-2026.html 301
+
+# DELETE - Duplicate buyer guides (merge into verify-quality)
+/blog/how-to-read-moringa-batch-codes-freshness /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/how-to-read-moringa-batch-codes-freshness.html /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/melbourne-premium-buyers-guide-moringa-2026 /blog/moringa-melbourne-complete-guide-2026.html 301
+/blog/melbourne-premium-buyers-guide-moringa-2026.html /blog/moringa-melbourne-complete-guide-2026.html 301
+
+# DELETE - Low-value delivery post
+/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes /pages/shipping/shipping-returns 301
+/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html /pages/shipping/shipping-returns 301
+
+# DELETE - Mega-guide splits traffic
+/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026 /blog/what-does-moringa-do-for-your-body-complete-guide-2026.html 301
+/blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html /blog/what-does-moringa-do-for-your-body-complete-guide-2026.html 301
+
 # SEO consolidation — canonical breakout blogs (May 2026)
 /blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-australia-truth-2026.html 301
 /blog/moringa-benefits-for-women-comprehensive-2026 /blog/moringa-benefits-for-women-comprehensive-2026.html 301
@@ -14,11 +50,10 @@
 # Removed competitor-comparison posts → quality guides / shop
 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 /blog/how-to-choose-moringa-powder-australia-2026.html 301
 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html /blog/how-to-choose-moringa-powder-australia-2026.html 301
-/blog/rosabella-moringa-reviews-legit-or-overhyped-2026 /blog/signs-of-fresh-vs-old-moringa-powder-2026.html 301
-/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/signs-of-fresh-vs-old-moringa-powder-2026.html 301
+/blog/rosabella-moringa-reviews-legit-or-overhyped-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
+/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 301
 /blog/how-much-moringa-powder-per-day-dosage-guide-2026 /blog/how-much-moringa-powder-per-day-dosage-guide-2026.html 301
 /blog/how-to-choose-moringa-powder-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026.html 301
-/blog/signs-of-fresh-vs-old-moringa-powder-2026 /blog/signs-of-fresh-vs-old-moringa-powder-2026.html 301
 /blog/moringa-side-effects-what-happens-take-too-much-2026 /blog/moringa-side-effects-what-happens-take-too-much-2026.html 301
 /blog/what-does-moringa-do-for-your-body-complete-guide-2026 /blog/what-does-moringa-do-for-your-body-complete-guide-2026.html 301
 /blog/moringa-capsules-vs-powder-which-is-better-2026 /blog/moringa-capsules-vs-powder-which-is-better-2026.html 301
