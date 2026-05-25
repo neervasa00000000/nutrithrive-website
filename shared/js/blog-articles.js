@@ -1,5 +1,12 @@
-/** Auto-generated — 42 blog articles */
+/** Auto-generated — 43 blog articles */
 window.NT_BLOG_ARTICLES = [
+  {
+    "slug": "magnesium-glycinate-honest-guide-australia-2026",
+    "title": "Magnesium Glycinate: The Honest Guide Australians Actually Need (2026)",
+    "description": "What the clinical evidence actually says about magnesium glycinate — why 75–80% of Australians are deficient, the best form to take, correct dose, timing, and how moringa fits in.",
+    "category": "Research Guide",
+    "href": "/blog/magnesium-glycinate-honest-guide-australia-2026"
+  },
   {
     "slug": "10-dollar-superfood-replaced-200-supplement-stack-australia-2026",
     "title": "$10 Moringa Habit vs $200 Supplements: Australia 2026",
