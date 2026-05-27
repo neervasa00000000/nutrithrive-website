@@ -1,5 +1,12 @@
-/** Auto-generated — 43 blog articles */
+/** Auto-generated — 44 blog articles */
 window.NT_BLOG_ARTICLES = [
+  {
+    "slug": "are-your-supplements-ultra-processed-hidden-fillers-australia-2026",
+    "title": "Ultra-Processed Supplements? Hidden Fillers in Australia (2026)",
+    "description": "A 2026 Australian label-read: common supplement fillers, why capsules can hide stale powder, and the 5 checks to choose single-ingredient products with real batch transparency.",
+    "category": "Research Guide",
+    "href": "/blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026"
+  },
   {
     "slug": "magnesium-glycinate-honest-guide-australia-2026",
     "title": "Magnesium Glycinate: The Honest Guide Australians Actually Need (2026)",
