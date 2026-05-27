@@ -93,7 +93,11 @@
 
 <link rel="preload" as="image" href="/assets/images/blog/pure-moringa-powder-vs-pharmacy-brand-australia.png" fetchpriority="high"/>
 
-<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<meta name="theme-color" content="#0f6b4d">
+<link rel="stylesheet" href="/blog/blog-v2-prose.css"/>
 <script id="tailwind-config">
 tailwind.config = {
   darkMode: "class",
@@ -142,9 +146,22 @@ tailwind.config = {
   }
 };
 </script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
+<link rel="stylesheet" href="/shared/css/author-bio.css"/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
 </head>
-<body class="bg-background text-on-surface">
-<div id="nt-header"></div>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article">
+<div class="nt-sticky-top">
+<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80</div>
+<header id="nt-header" class="nt-v2-header"></header>
+</div>
 
 <main class="pt-28 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-blog-main">
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
@@ -154,9 +171,8 @@ tailwind.config = {
           <span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Research Guide</span>
           <span class="text-on-surface-variant text-label-lg font-body-md">28 May 2026</span>
         </div>
-        <h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-6 leading-tight">Are Your Supplements Ultra‑Processed? The Hidden Fillers Australians Miss (2026)</h1>
-        <p class="text-on-surface-variant text-body-lg font-body-lg max-w-3xl">A practical label‑read for 2026: the common fillers, why capsules can hide stale powder, and the simple checks we use in our Truganina warehouse before we trust a “premium” claim.</p>
-        <div class="w-full aspect-[16/9] rounded-xl overflow-hidden mt-10 shadow-sm bg-surface-container">
+        <h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">Are Your Supplements Ultra‑Processed? The Hidden Fillers Australians Miss (2026)</h1>
+        <div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
           <img alt="A vibrant scoop of NutriThrive bright green Moringa powder next to an Australian physical lab-test certificate." class="w-full h-full object-cover" src="/assets/images/blog/pure-moringa-powder-vs-pharmacy-brand-australia.png" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="high"/>
         </div>
       </header>
@@ -169,6 +185,32 @@ tailwind.config = {
         </div>
 
         <article>
+          <div class="blog-post-content" style="max-width: 860px; margin: 0 auto; padding: 1rem;">
+
+          <p class="blog-intro">A practical label‑read for 2026: the common fillers, why capsules can hide stale powder, and the simple checks we use in our Truganina warehouse before we trust a “premium” claim.</p>
+
+          <div class="disclaimer">
+            <strong>Disclosure:</strong> NutriThrive sells single‑ingredient moringa powder, curry leaves, and tea. This guide is general label advice — not medical or TGA compliance advice. If you take prescription medicines or manage a condition, check changes with your GP or pharmacist.
+          </div>
+
+          <div class="quick-answer">
+            <strong>Quick answer:</strong> Ultra‑processed supplements often hide stale or low‑dose “hero” ingredients behind long filler lists and opaque capsule formats. Before you buy, check whether you can see the powder, verify the dose, find a batch reference, download any lab summary, and prefer one clear ingredient when purity is the goal.
+          </div>
+
+          <div class="toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <li><a href="#what-ultra-processed-means">What “ultra‑processed” means in supplements</a></li>
+              <li><a href="#common-fillers">Common fillers on Australian labels</a></li>
+              <li><a href="#five-checks">The 5 label checks</a></li>
+              <li><a href="#pure-vs-pharmacy">Powder vs pharmacy capsules</a></li>
+              <li><a href="#glp1-gap">GLP‑1 nutrition gap (food framing)</a></li>
+              <li><a href="#fibre">Fibre maxxing without gut upset</a></li>
+              <li><a href="#culinary">Curry leaves &amp; pantry freshness</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ol>
+          </div>
+
           <p>In 2026 Australians are reading labels like detectives. “Food as medicine”, single‑ingredient whole foods, and minimalist ingredient lists are winning — partly because people are tired of paying premium prices for powders that taste like chalk and don’t disclose what’s actually inside.</p>
 
           <p>If you’re Googling <em>ultra processed supplements Australia</em> or <em>fillers to avoid</em>, here’s the uncomfortable truth: a lot of “health” products are closer to <strong>processed flavour systems</strong> than they are to food. And the more layers you add (capsules, blends, “proprietary formulas”), the harder it becomes to judge freshness, purity, or batch traceability.</p>
@@ -262,9 +304,9 @@ tailwind.config = {
 
           <h2 id="culinary">Authentic flavour (curry leaves, tea) is the same trust story</h2>
           <p>Ultra‑processed doesn’t only show up in supplements — it shows up in stale pantry items too. If you’ve ever wondered why supermarket curry leaves taste like nothing, it’s usually age + storage.</p>
-          <figure style="margin:1.5rem 0;">
-            <img alt="Vibrant, authentic dried curry leaves from Melbourne next to pale, stale supermarket curry leaves." class="blog-v2-content-img w-full rounded-xl" decoding="async" height="1024" loading="lazy" src="/assets/images/blog/authentic-vs-supermarket-dried-curry-leaves-australia.png" width="1536"/>
-          </figure>
+          <div class="blog-image">
+            <img alt="Vibrant, authentic dried curry leaves from Melbourne next to pale, stale supermarket curry leaves." class="blog-v2-content-img" decoding="async" height="480" loading="lazy" src="/assets/images/blog/authentic-vs-supermarket-dried-curry-leaves-australia.png" width="720"/>
+          </div>
           <p>We stock <a href="/products/curry-leaves/">dried curry leaves</a> and <a href="/products/black-tea/">black tea</a> because a lot of Australians want <strong>real flavour</strong> without guessing how long it’s been sitting around.</p>
 
           <h2 id="what-we-sell">What NutriThrive sells (simple list)</h2>
@@ -312,38 +354,109 @@ tailwind.config = {
             <a href="/products/moringa-powder/" style="background: #7ec8a0; color: #0f3d2e; padding: 0.55rem 1.4rem; border-radius: 99px; font-size: 0.95rem; font-weight: 700; text-decoration: none; display: inline-block;">Shop moringa powder →</a>
           </div>
 
-          <p style="margin-top: 1.5rem;"><a href="/blog/">← Back to blog</a></p>
+          <p style="margin-top: 1.5rem;"><a href="/blog/" style="text-decoration: none; color: #0f6b4d; font-weight: 600;">← Back to all blog articles</a></p>
+          </div>
         </article>
+
+        <section class="nt-related-links-block" style="max-width: 900px; margin: 2rem auto; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
+          <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #0f6b4d;">Related</h2>
+          <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
+            <li><a href="/blog/verify-moringa-quality-premium-buyers-checklist-2026">8‑Point Moringa Quality Checklist</a></li>
+            <li><a href="/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026">Shade‑Dried vs Store‑Bought: Our Test Results</a></li>
+            <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to Choose Moringa Powder in Australia</a></li>
+            <li><a href="/blog/nutrithrive-dried-curry-leaves-tradition-health">Natural Curry Leaves: Farm Story &amp; Sourcing</a></li>
+            <li><a href="/blog/how-to-read-moringa-batch-codes-freshness">How to Read Batch Codes &amp; Check Freshness</a></li>
+            <li><a href="/products/moringa-powder/">Shop NutriThrive Moringa Powder</a></li>
+          </ul>
+        </section>
       </div>
+      <div class="nt-update-log">
+        <p><strong>Last updated:</strong> 28 May 2026</p>
+        <details>
+          <summary>Update history</summary>
+          <ul>
+            <li><strong>May 2026:</strong> Initial publish — label guide, filler table, and pantry freshness section.</li>
+          </ul>
+        </details>
+      </div>
+      <section class="mt-20 p-8 md:p-12 bg-parchment-base rounded-2xl border border-outline-variant/30 text-center">
+        <h3 class="font-headline-md text-headline-md text-forest-deep mb-4">Stay Vitalized</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto">Get plant-based nutrition tips and exclusive offers from Melbourne.</p>
+        <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" action="/pages/newsletter/" method="get">
+          <input class="flex-grow p-4 rounded-lg border border-outline-variant bg-pure-white focus:outline-none focus:ring-2 focus:ring-moringa-leaf" placeholder="Your email address" type="email" name="email" required/>
+          <button class="bg-moringa-leaf text-pure-white px-8 py-4 rounded-lg font-label-lg text-label-lg hover:bg-forest-deep transition-all" type="submit">Subscribe</button>
+        </form>
+      </section>
     </article>
 
-    <aside class="lg:col-span-4">
-      <div class="sticky top-28 space-y-6">
-        <div class="bg-surface-container rounded-xl p-6 border border-outline-variant/30">
-          <h2 class="font-display text-headline-md text-forest-deep mb-3">Quick links</h2>
-          <ul class="space-y-2 text-body-md">
-            <li><a class="text-moringa-leaf hover:underline" href="#common-fillers">Common fillers</a></li>
-            <li><a class="text-moringa-leaf hover:underline" href="#five-checks">The 5 label checks</a></li>
-            <li><a class="text-moringa-leaf hover:underline" href="#pure-vs-pharmacy">Powder vs capsules</a></li>
-            <li><a class="text-moringa-leaf hover:underline" href="#glp1-gap">GLP‑1 food framing</a></li>
-            <li><a class="text-moringa-leaf hover:underline" href="#fibre">Fibre maxxing</a></li>
-          </ul>
+    <aside class="lg:col-span-4 space-y-12">
+      <div class="bg-pure-white rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
+        <div class="aspect-square bg-surface-container relative">
+          <img alt="NutriThrive Premium Moringa" class="w-full h-full object-cover" src="/assets/images/product_photos/moringa.jpeg" loading="lazy"/>
+          <div class="absolute top-4 right-4 bg-terracotta-clay text-pure-white px-3 py-1 rounded-lg text-label-sm font-label-sm">Best Seller</div>
         </div>
-
-        <div class="bg-surface-container rounded-xl p-6 border border-outline-variant/30">
-          <h2 class="font-display text-headline-md text-forest-deep mb-3">Start here</h2>
-          <p class="text-on-surface-variant text-body-md mb-4">If you only read one thing, make it the checklist — it’s the fastest way to avoid stale or vague “premium” labels.</p>
-          <a class="inline-block bg-moringa-leaf text-white px-5 py-3 rounded-full font-semibold" href="/blog/verify-moringa-quality-premium-buyers-checklist-2026">Open the 8‑point checklist →</a>
+        <div class="p-6">
+          <h4 class="font-headline-md text-headline-md text-forest-deep mb-2">Premium Indian Moringa</h4>
+          <p class="text-on-surface-variant font-body-md text-body-md mb-6">Shade-dried, lab-tested, packed in Victoria.</p>
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
+            <span class="text-label-sm text-on-surface-variant line-through opacity-60">/100g</span>
+          </div>
+          <a class="block w-full text-center bg-terracotta-clay text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop Moringa</a>
         </div>
+      </div>
+      <div class="space-y-6">
+        <h3 class="font-headline-md text-headline-md text-forest-deep border-b-2 border-primary-fixed pb-2">Related Guides</h3>
+        <div class="space-y-4">
+          <a class="group flex gap-4 items-center" href="/blog/verify-moringa-quality-premium-buyers-checklist-2026">
+            <div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+              <img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/product_photos/moringa.jpeg" loading="lazy" decoding="async"/>
+            </div>
+            <div>
+              <h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">8‑Point Moringa Quality Checklist</h5>
+              <p class="text-xs text-on-surface-variant opacity-70">Buyer's guide</p>
+            </div>
+          </a>
+          <a class="group flex gap-4 items-center" href="/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026">
+            <div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+              <img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/product_photos/moringa.jpeg" loading="lazy" decoding="async"/>
+            </div>
+            <div>
+              <h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Shade‑Dried vs Store‑Bought Test</h5>
+              <p class="text-xs text-on-surface-variant opacity-70">Research guide</p>
+            </div>
+          </a>
+          <a class="group flex gap-4 items-center" href="/blog/nutrithrive-dried-curry-leaves-tradition-health">
+            <div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden">
+              <img alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" src="/assets/images/product_photos/driedcurry.jpeg" loading="lazy" decoding="async"/>
+            </div>
+            <div>
+              <h5 class="font-label-lg text-label-lg text-forest-deep group-hover:text-moringa-leaf transition-colors">Natural Curry Leaves: Farm Story</h5>
+              <p class="text-xs text-on-surface-variant opacity-70">Pantry guide</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
       </div>
     </aside>
   </div>
 </main>
 
 <div id="nt-footer"></div>
+<script src="/scripts/global/defer-loader.js"></script>
+<script src="/scripts/global/reddit-pixel.js"></script>
+<script src="/shared/site-data.js"></script>
+<script src="/scripts/global/cart.js"></script>
+<script src="/shared/js/cart-v2-ui.js"></script>
+<script src="/shared/js/footer-v2.js"></script>
+<script src="/shared/js/author-bio.js"></script>
+<script src="/shared/js/layout-v2.js"></script>
+<script src="/shared/js/v2-site.js"></script>
 
-<script defer src="/shared/js/v2-site.js"></script>
-<script defer src="/shared/js/blog-enhancements.js"></script>
 </body>
 </html>
 
