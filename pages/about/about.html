@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-<link rel="stylesheet" href="/assets/css/design-system.css"/>
+<link rel="stylesheet" href="/assets/css/design-system.min.css"/>
 <!-- Defer Loader - Load early to enable script deferral -->
-<script src="/scripts/global/defer-loader.js"></script>
-<script src="/scripts/global/reddit-pixel.js"></script>
+<script src="/scripts/global/defer-loader.min.js"></script>
+<script src="/scripts/global/reddit-pixel.min.js"></script>
 
 <!-- Google Analytics - Deferred until user interaction -->
 <script>
@@ -72,8 +72,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="/styles/global/style.css">
-    <link rel="stylesheet" href="/pages/about/about-new.css">
+    <link rel="stylesheet" href="/styles/global/style.min.css">
+    <link rel="stylesheet" href="/pages/about/about-new.min.css">
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
@@ -532,9 +532,9 @@
         <div id="nt-footer"></div>
 
     <!-- CRITICAL: Core functionality - Load immediately with defer -->
-    <script src="/scripts/global/cart.js"></script>
-    <script src="/scripts/global/cart-header.js"></script>
-    <script src="/scripts/global/script.js" defer></script>
+    <script src="/scripts/global/cart.min.js"></script>
+    <script src="/scripts/global/cart-header.min.js"></script>
+    <script src="/scripts/global/script.min.js" defer></script>
     
     <!-- NON-CRITICAL: Page-specific script - Defer until idle (about.js is mostly duplicate of script.js) -->
     <script>
@@ -542,20 +542,20 @@
       if (window.DeferLoader) {
         window.DeferLoader.deferUntilIdle(function() {
           var script = document.createElement('script');
-          script.src = '/pages/about/about.js';
+          script.src = '/pages/about/about.min.js';
           script.defer = true;
           document.body.appendChild(script);
         }, { timeout: 1000 });
       } else {
         // Fallback: load normally
         var script = document.createElement('script');
-        script.src = '/scripts/pages/about.js';
+        script.src = '/scripts/pages/about.min.js';
         script.defer = true;
         document.body.appendChild(script);
       }
     </script>
     <!-- Updated: 2026-01-27 - Optimized for PageSpeed -->
-<script src="/shared/site-data.js"></script>
-<script src="/shared/js/footer-v2.js"></script>
+<script src="/shared/site-data.min.js"></script>
+<script src="/shared/js/footer-v2.min.js"></script>
 </body>
 </html> 

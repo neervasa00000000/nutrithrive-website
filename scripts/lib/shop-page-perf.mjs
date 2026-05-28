@@ -54,12 +54,6 @@ export function optimizeProductsPageHtml(html) {
     );
   }
 
-  // Non-blocking Tailwind CDN (config stays synchronous, immediately before CDN)
-  out = out.replace(
-    /<script src="https:\/\/cdn\.tailwindcss\.com[^>]*><\/script>/i,
-    '<script defer src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>'
-  );
-
   // Non-blocking v2 fonts
   out = out.replace(
     /<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Literata[^"]+" rel="stylesheet"\/?>/gi,

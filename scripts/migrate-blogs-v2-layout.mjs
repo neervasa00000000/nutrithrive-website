@@ -13,58 +13,11 @@ const RELATED = JSON.parse(
 );
 
 const V2_HEAD = `<!-- Nutri Thrive v2 blog shell -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/css/tailwind-v2.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="../blog/blog-v2-prose.css" rel="stylesheet"/>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "inverse-on-surface": "#f4f0e6", "secondary-fixed": "#ffdbd0", "on-primary": "#ffffff",
-        "outline": "#6f7a73", "terracotta-clay": "#D66844", "on-tertiary-fixed-variant": "#374b3e",
-        "on-primary-fixed": "#002115", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff",
-        "tertiary-fixed-dim": "#b5ccbb", "on-error-container": "#93000a", "primary-fixed": "#a1f3cd",
-        "surface-dim": "#dddacf", "pure-white": "#FFFFFF", "on-secondary-fixed": "#3a0b00",
-        "on-error": "#ffffff", "surface-container-highest": "#e6e2d7", "secondary-container": "#fe8760",
-        "on-tertiary": "#ffffff", "tertiary-fixed": "#d0e8d6", "surface-bright": "#fdf9ee",
-        "surface": "#fdf9ee", "surface-container-low": "#f7f3e8", "surface-container": "#f2eee3",
-        "moringa-leaf": "#0F6B4D", "surface-tint": "#106b4d", "on-surface-variant": "#3f4943",
-        "on-primary-fixed-variant": "#005139", "primary-container": "#0f6b4d", "tertiary-container": "#4e6355",
-        "on-background": "#1c1c15", "surface-container-high": "#ece8dd", "outline-variant": "#bec9c1",
-        "surface-variant": "#e6e2d7", "on-tertiary-container": "#c6decc", "secondary": "#a0401f",
-        "error-container": "#ffdad6", "primary-fixed-dim": "#86d7b2", "parchment-base": "#F5F1E6",
-        "on-secondary-fixed-variant": "#802909", "secondary-fixed-dim": "#ffb59e", "on-tertiary-fixed": "#0b1f14",
-        "on-primary-container": "#97e8c3", "inverse-surface": "#323129", "error": "#ba1a1a",
-        "on-surface": "#1c1c15", "inverse-primary": "#86d7b2", "tertiary": "#364b3e",
-        "forest-deep": "#1A2E22", "primary": "#005139", "on-secondary-container": "#732001", "background": "#fdf9ee"
-      },
-      borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
-      spacing: {
-        gutter: "24px", "section-gap": "80px", "margin-mobile": "20px",
-        "margin-desktop": "64px", "container-max": "1280px", base: "8px"
-      },
-      fontFamily: {
-        "headline-lg": ["Literata"], "headline-md": ["Literata"], "body-lg": ["Plus Jakarta Sans"],
-        "label-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Literata"], "body-md": ["Plus Jakarta Sans"],
-        display: ["Literata"], "label-lg": ["Plus Jakarta Sans"]
-      },
-      fontSize: {
-        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
-        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
-        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
-        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
-        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
-        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
-        display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
-        "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }]
-      }
-    }
-  }
-};
-</script>
+<link href="/blog/blog-v2-prose.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/shared/css/v2-extra.css"/>
 <style>
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
 body { background-color: #FDF9EE; color: #1C1C15; -webkit-font-smoothing: antialiased; }
@@ -290,7 +243,7 @@ ${content}
 <div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
 <div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
 <div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
-<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">100% Organic &amp; Vegan</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Lab-Tested &amp; Vegan</span></div>
 </div>
 </aside>
 </div>

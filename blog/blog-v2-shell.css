@@ -92,3 +92,7 @@
   position: relative;
   z-index: 0;
 }
+
+.nt-blog-index .blog-index-directory summary {
+  outline-offset: 4px;
+}

@@ -1,0 +1,18 @@
+{
+  "name": "nutrithrive-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-assets.mjs",
+    "build:tailwind": "tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify",
+    "build:minify": "node scripts/build-assets.mjs --skip-tailwind"
+  },
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.10",
+    "clean-css": "^5.3.3",
+    "esbuild": "^0.25.0",
+    "fast-glob": "^3.3.3",
+    "tailwindcss": "^3.4.17"
+  }
+}
