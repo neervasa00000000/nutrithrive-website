@@ -16,6 +16,7 @@ import {
   buildPerfHeadBlock,
   dedupeTailwindConfig,
   stripPerfDuplicatesFromPreserved,
+  V2_TAILWIND_BUILT,
 } from './lib/v2-head-perf.mjs';
 import { patchShopGridBody } from './lib/shop-static-html.mjs';
 import { optimizeProductsPageHtml } from './lib/shop-page-perf.mjs';
@@ -68,9 +69,7 @@ function write(file, html) {
 }
 
 function extractTailwindBlock(testHtml) {
-  const style = testHtml.match(/<style>[\s\S]*?<\/style>/i)?.[0] || '';
-  const config = testHtml.match(/<script id="tailwind-config">[\s\S]*?<\/script>/i)?.[0] || '';
-  return [style, config].filter(Boolean).join('\n');
+  return testHtml.match(/<style>[\s\S]*?<\/style>/i)?.[0] || '';
 }
 
 function extractPreservedHead(liveHtml) {
@@ -278,7 +277,7 @@ function buildLivePage({ preservedHead, title, body, tailwind, opts, footScripts
 <title>${title}</title>
 ${buildPerfHeadBlock({ shop: isShop })}
 ${preservedHead}
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+${V2_TAILWIND_BUILT}
 <link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/shared/css/v2-extra.css"/>

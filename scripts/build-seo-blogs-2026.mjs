@@ -198,8 +198,7 @@ function buildPage(meta, bodyHtml, faqs) {
 <meta name="theme-color" content="#0f6b4d"/>
 <link rel="stylesheet" href="/blog/blog-v2-prose.css"/>
 ${HEAD_ASSETS}
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">${TAILWIND}</script>
+<link rel="stylesheet" href="/assets/css/tailwind-v2.min.css"/>
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article">
 <div class="nt-sticky-top">
