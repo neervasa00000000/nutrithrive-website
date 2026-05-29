@@ -127,6 +127,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-to-choose-greens-powder-australia-2026"
   },
   {
+    "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "title": "Moringa Chemist Warehouse Capsules: Quality Test 2026",
+    "description": "We bought moringa capsules from Chemist Warehouse and compared them to NutriThrive shade-dried powder: colour, dose, pharmacy RRP context, and lab transparency.",
+    "category": "Research Guide",
+    "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
+  },
+  {
     "slug": "how-to-choose-moringa-powder-australia-2026",
     "title": "How to Choose Moringa Powder in Australia (2026)",
     "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh — 2026.",
