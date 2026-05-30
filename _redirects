@@ -7,6 +7,11 @@
 /.firecrawl/* /.firecrawl/:splat 404
 /.firecrawl /.firecrawl 404
 
+# Dev / audit paths (must not be crawled or linked as live pages)
+/scripts/* /scripts/:splat 404
+/audit/* /audit/:splat 404
+/.build/* /.build/:splat 404
+
 # PHASE 1 REDIRECTS - Delete Duplicates
 
 # Dosage cannibalization
@@ -56,10 +61,10 @@
 /blog/growing-moringa-australia-honest-frost-pots-2026.html /blog/how-to-grow-moringa-in-australia-complete-guide-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026 /blog/moringa-capsules-vs-powder-which-is-better-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html /blog/moringa-capsules-vs-powder-which-is-better-2026 301
-/blog/moringa-brands-comparison-australia-2026 / 301
-/blog/moringa-brands-comparison-australia-2026.html / 301
-/blog/moringa-brands-comparison-australia-chinese-review / 301
-/blog/moringa-brands-comparison-australia-chinese-review.html / 301
+/blog/moringa-brands-comparison-australia-2026 /blog/best-superfoods-australia-comparison-health-conscious-adults 301
+/blog/moringa-brands-comparison-australia-2026.html /blog/best-superfoods-australia-comparison-health-conscious-adults 301
+/blog/moringa-brands-comparison-australia-chinese-review /blog/buy-moringa-powder-melbourne-victoria-chinese-guide 301
+/blog/moringa-brands-comparison-australia-chinese-review.html /blog/buy-moringa-powder-melbourne-victoria-chinese-guide 301
 /blog/top-moringa-companies-australia-2026 /products/moringa-powder/ 301
 /blog/top-moringa-companies-australia-2026.html /products/moringa-powder/ 301
 /blog/moringa-at-chemist-warehouse-australia-worth-it-2026 /products/moringa-powder/ 301
