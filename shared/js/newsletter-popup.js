@@ -34,8 +34,11 @@ window.__NT_NEWSLETTER_POPUP_INITIALIZED__ = true;
                 <button class="newsletter-popup-close" aria-label="Close popup">&times;</button>
                 <h2>🌱 Stay Updated with NutriThrive</h2>
                 <p>Get exclusive health tips, product updates, special offers, and wellness insights delivered to your inbox!</p>
-                <form class="newsletter-popup-form" action="/pages/newsletter/thank-you.html" data-nt-email-form data-nt-form-type="newsletter" method="POST" name="newsletter">
-                    <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
+                <form class="newsletter-popup-form" action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Newsletter Subscription - Blog Popup">
+                    <input type="hidden" name="_next" value="${window.location.href}">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email Address" required>
                     <button type="submit">Subscribe Now</button>
@@ -103,11 +106,15 @@ window.__NT_NEWSLETTER_POPUP_INITIALIZED__ = true;
         const form = overlay.querySelector('.newsletter-popup-form');
         const message = overlay.querySelector('.newsletter-popup-message');
         
-        form.addEventListener('submit', function() {
+        form.addEventListener('submit', function(e) {
+            // Let the form submit naturally to FormSubmit
+            // After submission, FormSubmit will redirect to _next URL
             message.textContent = 'Subscribing...';
             message.className = 'newsletter-popup-message';
             message.style.display = 'block';
-            setCookie(COOKIE_NAME, 'true', 365);
+            
+            // Set cookie so popup doesn't show again
+            setCookie(COOKIE_NAME, 'true', 365); // Don't show for 1 year after subscription
         });
 
         // Show popup after delay

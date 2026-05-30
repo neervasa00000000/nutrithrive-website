@@ -396,13 +396,4 @@ window.addEventListener('load', () => {
         loadCountrySelector();
     }
 })();
-
-(function loadFormHandler() {
-    if (window.__NT_FORM_HANDLER_INITIALIZED__) return;
-    if (document.querySelector('script[src*="form-handler"]')) return;
-    const s = document.createElement('script');
-    s.src = '/scripts/global/form-handler.min.js';
-    s.defer = true;
-    document.head.appendChild(s);
-})();
 }
