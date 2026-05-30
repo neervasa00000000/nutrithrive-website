@@ -15,6 +15,12 @@
 /scripts/* /scripts/:splat 404!
 /audit/* /audit/:splat 404!
 /.build/* /.build/:splat 404!
+/tools/* /tools/:splat 404!
+
+# Legacy / duplicate stubs
+/shipping-returns.html /pages/shipping/shipping-returns 301
+/pages/homepage/* / 301
+/pages/products/* /products/ 301
 
 # PHASE 1 REDIRECTS - Delete Duplicates
 
