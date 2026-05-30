@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <title>Forms</title>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+  <!-- Netlify form detection (hidden). Submissions also appear in Netlify → Forms when JS fallback runs. -->
+  <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact">
+    <input name="bot-field">
+    <input name="name">
+    <input name="email">
+    <input name="subject">
+    <textarea name="message"></textarea>
+  </form>
+  <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="newsletter">
+    <input name="bot-field">
+    <input name="name">
+    <input name="email">
+  </form>
+</body>
+</html>

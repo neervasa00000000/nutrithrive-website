@@ -218,11 +218,12 @@
                 <li>📚 Educational content about superfoods</li>
                 <li>💚 Moringa powder recipes and usage tips</li>
             </ul>
-            <form class="newsletter-form" action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST" style="max-width: 500px; margin: 0 auto;">
-                <input type="hidden" name="_subject" value="Newsletter Subscription - NutriThrive">
+            <form class="newsletter-form" action="/pages/newsletter/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="newsletter" style="max-width: 500px; margin: 0 auto;">
+                <input type="hidden" name="form-name" value="newsletter">
                 <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
+                <p hidden="">
+                <label>Leave empty: <input name="bot-field" type="text"></label>
+                </p>
                 <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                     <div>
                         <label for="newsletter-page-name" style="display: block; margin-bottom: 0.4rem; color: var(--text); font-weight: 600; font-size: 0.95rem;">Your Name</label>
@@ -254,6 +255,7 @@
     <div id="nt-footer"></div>
 
     <script src="/scripts/global/script.min.js" defer></script>
+    <script src="/scripts/global/form-handler.min.js" defer></script>
     <script src="/scripts/global/newsletter.min.js" defer></script>
 <script src="/shared/site-data.min.js"></script>
 <script src="/shared/js/footer-v2.min.js"></script>
