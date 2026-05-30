@@ -1,6 +1,6 @@
-# Ensures the sitemap generator runs cleanly on each push/PR.
-# If sitemap.xml drifts, run from repo root: node scripts/build-sitemap.cjs
+# Ensures sitemap.xml lists the same URLs as scripts/build-sitemap.cjs (ignores lastmod date drift).
 name: Sitemap
+
 on:
   push:
     branches: [main, master]
@@ -18,39 +18,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # PRs: check out the PR branch head (same as local `git checkout feature`), not the
-      # ephemeral merge commit — otherwise `git log -- <file>` lastmods won't match a
-      # sitemap regenerated on the branch before push.
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           repository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name || github.repository }}
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
-      - name: Regenerate sitemap
+
+      - name: Verify sitemap URL list matches generator
         env:
-          # Align rare mtime fallback with scripts/build-sitemap.js (Melbourne calendar day).
           TZ: Australia/Melbourne
-        run: node scripts/build-sitemap.cjs
-      - name: Fail if sitemap outputs not committed
-        run: |
-          dirty=0
-          for f in sitemap.xml audit/sitemap-urls.txt; do
-            if ! git diff --quiet -- "$f"; then
-              dirty=1
-              echo "::error file=$f::$f differs from generator output."
-            fi
-          done
-          if [[ "$dirty" -ne 0 ]]; then
-            echo ""
-            echo "Regenerate and commit both files (not random CI noise — the committed"
-            echo "sitemap must match what the script produces on this commit):"
-            echo "  node scripts/build-sitemap.cjs"
-            echo "  # or: bash scripts/verify-sitemap.sh"
-            echo "  git add sitemap.xml audit/sitemap-urls.txt && git commit -m \"chore: regenerate sitemap\" && git push"
-            echo ""
-            git diff -- sitemap.xml audit/sitemap-urls.txt || true
-            exit 1
-          fi
+        run: node scripts/verify-sitemap-locs.mjs

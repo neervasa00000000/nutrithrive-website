@@ -1,7 +1,11 @@
-# Builds the site and deploys it to Netlify production on every push to main.
-# Requires two repository secrets (Settings → Secrets and variables → Actions):
-#   NETLIFY_AUTH_TOKEN  — Netlify user access token (User settings → Applications → New access token)
-#   NETLIFY_SITE_ID     — Site API ID (Netlify → Site configuration → General → Site information → API ID)
+# Builds the site and deploys to Netlify production on push to main.
+#
+# ONE-TIME SETUP (required for auto-deploy; without these the deploy step is skipped):
+#   GitHub → repo → Settings → Secrets and variables → Actions → New repository secret
+#   1. NETLIFY_AUTH_TOKEN — https://app.netlify.com/user/applications#personal-access-tokens
+#   2. NETLIFY_SITE_ID     — 8f9a63bc-94a5-4fd9-a304-5246ee9a0b5c (nutrithrive.com.au)
+#
+# Manual deploy (always works): npm run build && npm run deploy:prod
 name: Deploy to Netlify
 
 on:
@@ -23,18 +27,41 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
+          cache: npm
+
       - name: Install dependencies
         run: npm ci
+
       - name: Build assets
         run: npm run build
-      - name: Deploy to Netlify (production)
+
+      - name: Prepare Netlify publish directory
+        run: node scripts/prepare-netlify-publish.mjs
+
+      - name: Check Netlify secrets
+        id: netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          # Build outputs are written in place; node_modules is not part of the static site.
-          rm -rf node_modules .build
-          npx --yes netlify-cli@17 deploy --dir=. --prod --message "GH Actions: ${{ github.sha }}"
+          if [ -n "$NETLIFY_AUTH_TOKEN" ] && [ -n "$NETLIFY_SITE_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Netlify deploy skipped::Add NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID in GitHub repo secrets (see .github/workflows/netlify-deploy.yml). Site still deploys via manual npm run deploy:prod or Netlify UI."
+          fi
+
+      - name: Deploy to Netlify (production)
+        if: steps.netlify.outputs.ready == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npx --yes netlify-cli@17 deploy \
+            --dir=.netlify-publish \
+            --prod \
+            --message "GitHub Actions: ${{ github.sha }}"
