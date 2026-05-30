@@ -17,3 +17,7 @@ scripts/__pycache__/
 # Pokifinder remote monitor local state (optional)
 nutrithrive_labs/extension/pokifinder/remote-monitor/.state.json
 nutrithrive_labs/extension/pokifinder/remote-monitor/config.json
+
+# Local Netlify folder
+.netlify
+.netlify-publish/
