@@ -24,7 +24,15 @@ const REPLACEMENTS = [
   ],
   [
     '/blog/is-moringa-legit-what-science-and-real-users-say-2026',
-    '/blog/is-moringa-banned-australia-truth-2026',
+    '/blog/moringa-honest-truth-science-australia-2026',
+  ],
+  [
+    '/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes',
+    '/pages/shipping/shipping-returns',
+  ],
+  [
+    '/assets/images/product_photos/webp/thumbs/moringa.jpg',
+    '/assets/images/product_photos/moringa.jpeg',
   ],
   [
     'href="/blog/verify-moringa-quality-premium-buyers-checklist-2026">Chemist Warehouse moringa vs NutriThrive: lab report',

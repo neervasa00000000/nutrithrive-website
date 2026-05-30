@@ -7,6 +7,10 @@
 /.firecrawl/* /.firecrawl/:splat 404
 /.firecrawl /.firecrawl 404
 
+# Legacy image path (never published; linked from magnesium guide sidebar)
+/assets/images/product_photos/webp/thumbs/moringa.jpg /assets/images/product_photos/moringa.jpeg 301
+/assets/images/product_photos/webp/thumbs/moringa.webp /assets/images/product_photos/moringa.jpeg 301
+
 # Dev / audit paths (must not be crawled or linked as live pages; ! forces even when file exists)
 /scripts/* /scripts/:splat 404!
 /audit/* /audit/:splat 404!
@@ -27,8 +31,8 @@
 /blog/honest-australians-guide-moringa-powder-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026 301
 
 # Safety cannibalization
-/blog/is-moringa-legit-what-science-and-real-users-say-2026 /blog/is-moringa-banned-australia-truth-2026 301
-/blog/is-moringa-legit-what-science-and-real-users-say-2026.html /blog/is-moringa-banned-australia-truth-2026 301
+/blog/is-moringa-legit-what-science-and-real-users-say-2026 /blog/moringa-honest-truth-science-australia-2026 301
+/blog/is-moringa-legit-what-science-and-real-users-say-2026.html /blog/moringa-honest-truth-science-australia-2026 301
 
 # Off-topic protein post
 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 /blog/high-protein-moringa-recipes-australia-2026 301
