@@ -8,9 +8,6 @@
     "build:tailwind": "tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify",
     "build:minify": "node scripts/build-assets.mjs --skip-tailwind"
   },
-  "dependencies": {
-    "nodemailer": "^6.10.1"
-  },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.10",

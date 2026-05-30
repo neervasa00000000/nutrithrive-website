@@ -48,16 +48,30 @@ window.__NT_NEWSLETTER_POPUP_INITIALIZED__ = true;
 
         const form = document.createElement('form');
         form.className = 'newsletter-popup-form';
-        form.action = '/pages/newsletter/thank-you.html';
+        form.action = 'https://formsubmit.co/nutrithrive0@gmail.com';
         form.method = 'POST';
-        form.name = 'newsletter';
-        form.setAttribute('data-nt-email-form', '');
-        form.setAttribute('data-nt-form-type', 'newsletter');
+
+        const subject = document.createElement('input');
+        subject.type = 'hidden';
+        subject.name = '_subject';
+        subject.value = 'Newsletter Subscription - Blog Popup';
 
         const next = document.createElement('input');
         next.type = 'hidden';
         next.name = '_next';
-        next.value = 'https://nutrithrive.com.au/pages/newsletter/thank-you.html';
+        // SECURITY: assign to the input property (not via innerHTML/template strings)
+        next.value = window.location.href;
+
+        const template = document.createElement('input');
+        template.type = 'hidden';
+        template.name = '_template';
+        template.value = 'table';
+
+        const captcha = document.createElement('input');
+        captcha.type = 'hidden';
+        captcha.name = '_captcha';
+        // Keeping existing behavior; consider enabling captcha to reduce spam.
+        captcha.value = 'false';
 
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
@@ -79,7 +93,7 @@ window.__NT_NEWSLETTER_POPUP_INITIALIZED__ = true;
         message.className = 'newsletter-popup-message';
 
         // Assemble form
-        form.append(next, nameInput, emailInput, submit, message);
+        form.append(subject, next, template, captcha, nameInput, emailInput, submit, message);
 
         const privacy = document.createElement('p');
         privacy.style.fontSize = '0.85rem';
@@ -149,11 +163,15 @@ window.__NT_NEWSLETTER_POPUP_INITIALIZED__ = true;
         const form = overlay.querySelector('.newsletter-popup-form');
         const message = overlay.querySelector('.newsletter-popup-message');
         
-        form.addEventListener('submit', function() {
+        form.addEventListener('submit', function(e) {
+            // Let the form submit naturally to FormSubmit
+            // After submission, FormSubmit will redirect to _next URL
             message.textContent = 'Subscribing...';
             message.className = 'newsletter-popup-message';
             message.style.display = 'block';
-            setCookie(COOKIE_NAME, 'true', 365);
+            
+            // Set cookie so popup doesn't show again
+            setCookie(COOKIE_NAME, 'true', 365); // Don't show for 1 year after subscription
         });
 
         // Show popup after delay
