@@ -134,6 +134,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
   },
   {
+    "slug": "moringa-honest-truth-science-australia-2026",
+    "title": "I Was Sceptical About Moringa — Until I Read 26 Clinical Studies",
+    "description": "An honest, research-grounded look at moringa powder benefits in Australia: what 2025 clinical trials confirmed, what they didn't, and how to actually use it.",
+    "category": "Honest Guide",
+    "href": "/blog/moringa-honest-truth-science-australia-2026"
+  },
+  {
     "slug": "how-to-choose-moringa-powder-australia-2026",
     "title": "How to Choose Moringa Powder in Australia (2026)",
     "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh — 2026.",
