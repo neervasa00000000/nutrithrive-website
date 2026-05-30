@@ -6,7 +6,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 export TZ="${TZ:-Australia/Melbourne}"
-node scripts/build-sitemap.js
+node scripts/build-sitemap.cjs
 if ! git diff --quiet -- sitemap.xml audit/sitemap-urls.txt; then
   echo "" >&2
   echo "sitemap.xml or audit/sitemap-urls.txt does not match the generator; CI will fail." >&2

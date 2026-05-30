@@ -3,6 +3,10 @@
 # — 200 rewrites: pretty URLs (no 301s for /cart vs /cart/; use /cart, /about, /contact, /faq everywhere)
 # — Retired blog URLs → 404
 
+# Firecrawl audit cache (local tooling only — not public pages)
+/.firecrawl/* /.firecrawl/:splat 404
+/.firecrawl /.firecrawl 404
+
 # PHASE 1 REDIRECTS - Delete Duplicates
 
 # Dosage cannibalization

@@ -20,7 +20,6 @@ const JS_GLOBS = [
   'shared/site-data.js',
   'pages/**/*.js',
   'blog/*.js',
-  'netlify/functions/**/*.js',
   'nutrithrive_labs/**/*.js',
 ];
 

@@ -111,6 +111,8 @@ Sitemap: https://nutrithrive.com.au/sitemap.xml
 # ====================
 # DISALLOWED AREAS
 # ====================
+# Local Firecrawl audit snapshots (never public pages)
+Disallow: /.firecrawl/
 # Disallow admin or private areas (if any)
 # Disallow: /admin/
 # Disallow: /private/
