@@ -7,10 +7,10 @@
 /.firecrawl/* /.firecrawl/:splat 404
 /.firecrawl /.firecrawl 404
 
-# Dev / audit paths (must not be crawled or linked as live pages)
-/scripts/* /scripts/:splat 404
-/audit/* /audit/:splat 404
-/.build/* /.build/:splat 404
+# Dev / audit paths (must not be crawled or linked as live pages; ! forces even when file exists)
+/scripts/* /scripts/:splat 404!
+/audit/* /audit/:splat 404!
+/.build/* /.build/:splat 404!
 
 # PHASE 1 REDIRECTS - Delete Duplicates
 
