@@ -232,9 +232,12 @@
 </div>
 </section>
 <section class="contact-section">
-<form action="https://formsubmit.co/nutrithrive0@gmail.com" class="contact-form" method="POST">
+<form action="/pages/contact/thank-you.html" class="contact-form" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="contact">
+<input name="form-name" type="hidden" value="contact"/>
 <input name="_next" type="hidden" value="https://nutrithrive.com.au/pages/contact/thank-you.html"/>
-<input name="_subject" type="hidden" value="New submission from NutriThrive Website!"/>
+<p hidden="">
+<label>Leave empty: <input name="bot-field" type="text"/></label>
+</p>
 <div class="form-group">
 <label for="name">Full Name</label>
 <input id="name" name="name" placeholder="Enter your full name" required="" type="text"/>
@@ -272,6 +275,7 @@
 <script src="/scripts/global/cart.min.js"></script>
 <script src="/scripts/global/cart-header.min.js"></script>
 <script defer="" src="/scripts/global/script.min.js"></script>
+<script defer="" src="/scripts/global/form-handler.min.js"></script>
 <script defer="" src="/scripts/global/newsletter.min.js"></script>
 <script src="/pages/contact/contact.min.js"></script>
 <script src="/shared/site-data.min.js"></script>
