@@ -1,5 +1,5 @@
 # Ensures the sitemap generator runs cleanly on each push/PR.
-# If sitemap.xml drifts, run from repo root: node scripts/build-sitemap.js
+# If sitemap.xml drifts, run from repo root: node scripts/build-sitemap.cjs
 name: Sitemap
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
         env:
           # Align rare mtime fallback with scripts/build-sitemap.js (Melbourne calendar day).
           TZ: Australia/Melbourne
-        run: node scripts/build-sitemap.js
+        run: node scripts/build-sitemap.cjs
       - name: Fail if sitemap outputs not committed
         run: |
           dirty=0
@@ -47,7 +47,7 @@ jobs:
             echo ""
             echo "Regenerate and commit both files (not random CI noise — the committed"
             echo "sitemap must match what the script produces on this commit):"
-            echo "  node scripts/build-sitemap.js"
+            echo "  node scripts/build-sitemap.cjs"
             echo "  # or: bash scripts/verify-sitemap.sh"
             echo "  git add sitemap.xml audit/sitemap-urls.txt && git commit -m \"chore: regenerate sitemap\" && git push"
             echo ""

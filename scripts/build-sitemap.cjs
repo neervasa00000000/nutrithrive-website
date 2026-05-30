@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Regenerates /sitemap.xml from the repo filesystem.
- * Run from repo root: node scripts/build-sitemap.js
+ * Run from repo root: node scripts/build-sitemap.cjs
  *
  * lastmod uses the last git commit date per file (with git-index path normalisation and
  * HEAD-date fallback before mtime). Final mtime fallback uses Australia/Melbourne calendar
@@ -54,7 +54,16 @@ function walkHtml(dir, out = []) {
   for (const name of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, name.name);
     if (name.isDirectory()) {
-      if (name.name === ".git" || name.name === "node_modules") continue;
+      if (
+        name.name === ".git" ||
+        name.name === "node_modules" ||
+        name.name === ".firecrawl" ||
+        name.name === ".netlify" ||
+        name.name === ".build" ||
+        name.name === "audit"
+      ) {
+        continue;
+      }
       walkHtml(full, out);
     } else if (name.isFile() && name.name.toLowerCase().endsWith(".html")) {
       out.push(full);
@@ -234,6 +243,7 @@ function main() {
     }
 
     const loc = fileToUrl(rel);
+    if (loc.includes("/.firecrawl/") || loc.includes("/.netlify/")) continue;
     const { priority, changefreq } = priorityAndFreq(loc);
     entries.push({
       loc,
