@@ -17,6 +17,7 @@ const IGNORE = new Set([
   '.firecrawl',
   '.build',
   'audit',
+  'tools',
 ]);
 
 function shouldIgnore(rel) {
