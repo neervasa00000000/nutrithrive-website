@@ -16,6 +16,7 @@ const IGNORE = new Set([
   'node_modules',
   '.firecrawl',
   '.build',
+  '.netlify-publish',
   'audit',
   'tools',
 ]);

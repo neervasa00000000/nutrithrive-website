@@ -59,6 +59,7 @@ function walkHtml(dir, out = []) {
         name.name === "node_modules" ||
         name.name === ".firecrawl" ||
         name.name === ".netlify" ||
+        name.name === ".netlify-publish" ||
         name.name === ".build" ||
         name.name === "audit"
       ) {
