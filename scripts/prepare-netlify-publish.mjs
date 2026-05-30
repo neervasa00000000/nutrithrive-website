@@ -12,11 +12,12 @@ const OUT = path.join(ROOT, '.netlify-publish');
 
 const IGNORE = new Set([
   '.git',
+  '.github',
+  '.netlify',
   '.netlify-publish',
   'node_modules',
   '.firecrawl',
   '.build',
-  '.netlify-publish',
   'audit',
   'tools',
 ]);

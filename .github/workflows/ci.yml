@@ -1,0 +1,86 @@
+# Single CI workflow — build, sitemap check, optional Netlify deploy.
+# Replaces the old separate "Deploy to Netlify" + "Sitemap" workflows (one run per push, not two).
+#
+# Auto-deploy requires GitHub secrets (one-time setup):
+#   NETLIFY_AUTH_TOKEN — https://app.netlify.com/user/applications#personal-access-tokens
+#   NETLIFY_SITE_ID     — 8f9a63bc-94a5-4fd9-a304-5246ee9a0b5c
+#
+# Without secrets: build + sitemap checks still run and pass; deploy step is skipped.
+# Manual deploy: npm run deploy:prod
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy to Netlify production after validation
+        type: boolean
+        default: true
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          repository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Verify sitemap URL list
+        env:
+          TZ: Australia/Melbourne
+        run: node scripts/verify-sitemap-locs.mjs
+
+      - name: Prepare Netlify publish directory
+        run: node scripts/prepare-netlify-publish.mjs
+
+      - name: Check Netlify deploy credentials
+        id: netlify
+        if: github.event_name != 'pull_request'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          want_deploy=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.deploy }}" != "true" ]; then
+            echo "Manual run: deploy disabled."
+          elif [ -n "$NETLIFY_AUTH_TOKEN" ] && [ -n "$NETLIFY_SITE_ID" ]; then
+            want_deploy=true
+          else
+            echo "::notice title=Netlify deploy skipped::Add NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID in GitHub → Settings → Secrets → Actions to enable auto-deploy on push."
+          fi
+          echo "deploy=$want_deploy" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to Netlify (production)
+        if: steps.netlify.outputs.deploy == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npx --yes netlify-cli@17 deploy \
+            --dir=.netlify-publish \
+            --prod \
+            --message "GitHub Actions: ${{ github.sha }}"

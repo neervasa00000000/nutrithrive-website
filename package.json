@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build-assets.mjs",
+    "ci": "npm run build && node scripts/verify-sitemap-locs.mjs && node scripts/prepare-netlify-publish.mjs",
     "deploy:prod": "node scripts/prepare-netlify-publish.mjs && netlify deploy --dir=.netlify-publish --prod",
     "build:tailwind": "tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify",
     "build:minify": "node scripts/build-assets.mjs --skip-tailwind"
