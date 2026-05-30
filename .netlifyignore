@@ -1,0 +1,6 @@
+# Never publish local tooling, test templates, or audit output
+.firecrawl/
+.build/
+node_modules/
+audit/
+scripts/templates/
