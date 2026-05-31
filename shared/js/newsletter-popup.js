@@ -34,7 +34,8 @@ window.__NT_NEWSLETTER_POPUP_INITIALIZED__ = true;
                 <button class="newsletter-popup-close" aria-label="Close popup">&times;</button>
                 <h2>🌱 Stay Updated with NutriThrive</h2>
                 <p>Get exclusive health tips, product updates, special offers, and wellness insights delivered to your inbox!</p>
-                <form class="newsletter-popup-form" action="/pages/newsletter/thank-you.html" data-nt-email-form data-nt-form-type="newsletter" method="POST" name="newsletter">
+                <form class="newsletter-popup-form" action="/pages/newsletter/thank-you.html" data-nt-email-form data-nt-form-type="newsletter" data-nt-netlify-fallback="true" method="POST" name="newsletter">
+                    <input type="hidden" name="form-name" value="newsletter">
                     <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email Address" required>
