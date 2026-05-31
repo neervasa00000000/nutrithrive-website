@@ -58,16 +58,51 @@
         box.style.marginTop = "0.75rem";
     }
 
+    /** Netlify post-processing strips data-netlify from served HTML; registered forms still work. */
+    function canUseNetlifyFallback(form) {
+        if (form.hasAttribute("data-netlify") || form.hasAttribute("data-nt-netlify-fallback")) {
+            return true;
+        }
+        const name = (form.getAttribute("name") || "").toLowerCase();
+        return name === "contact" || name === "newsletter";
+    }
+
+    function netlifyPostUrl(form) {
+        const name = (form.getAttribute("name") || "").toLowerCase();
+        if (name === "contact") return "/contact";
+        if (name === "newsletter") return "/pages/newsletter/";
+        const action = (form.getAttribute("action") || "").split("?")[0];
+        if (action.startsWith("/") && !/\/thank-you/i.test(action)) return action;
+        return window.location.pathname || "/";
+    }
+
     async function submitNetlifyForm(form) {
         const fd = new FormData(form);
         const formName = form.getAttribute("name") || formTypeFrom(form);
         if (!fd.get("form-name")) fd.set("form-name", formName);
 
-        const res = await fetch("/", {
+        const postUrl = netlifyPostUrl(form);
+        const res = await fetch(postUrl, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(fd).toString(),
         });
+
+        // #region agent log
+        fetch("http://127.0.0.1:7814/ingest/59016125-eaa7-4a70-b09d-96dcad1c64c8", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "53c37e" },
+            body: JSON.stringify({
+                sessionId: "53c37e",
+                hypothesisId: "B",
+                location: "form-handler.js:submitNetlifyForm",
+                message: "Netlify form POST result",
+                data: { postUrl, status: res.status, ok: res.ok, formName },
+                timestamp: Date.now(),
+                runId: "form-fix",
+            }),
+        }).catch(() => {});
+        // #endregion
 
         if (!res.ok) throw new Error("Netlify form submission failed");
         window.location.href = thankYouUrl(form);
@@ -99,14 +134,36 @@
                 return;
             }
 
-            if (res.status === 503 && data.fallback === "netlify-forms" && form.hasAttribute("data-netlify")) {
+            // #region agent log
+            fetch("http://127.0.0.1:7814/ingest/59016125-eaa7-4a70-b09d-96dcad1c64c8", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "53c37e" },
+                body: JSON.stringify({
+                    sessionId: "53c37e",
+                    hypothesisId: "A",
+                    location: "form-handler.js:submitEmailForm",
+                    message: "send-form response",
+                    data: {
+                        status: res.status,
+                        fallback: data.fallback,
+                        canFallback: canUseNetlifyFallback(form),
+                        hasDataNetlify: form.hasAttribute("data-netlify"),
+                        formName: form.getAttribute("name"),
+                    },
+                    timestamp: Date.now(),
+                    runId: "form-fix",
+                }),
+            }).catch(() => {});
+            // #endregion
+
+            if (res.status === 503 && data.fallback === "netlify-forms" && canUseNetlifyFallback(form)) {
                 await submitNetlifyForm(form);
                 return;
             }
 
             throw new Error(data.error || data.detail || "Could not send your message. Please try again or call 0438 201 419.");
         } catch (err) {
-            if (form.hasAttribute("data-netlify")) {
+            if (canUseNetlifyFallback(form)) {
                 try {
                     await submitNetlifyForm(form);
                     return;
