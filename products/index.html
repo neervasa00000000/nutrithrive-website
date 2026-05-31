@@ -2,16 +2,33 @@
 <html lang="en-AU">
 <head>
 <link rel="stylesheet" href="/assets/css/design-system.min.css"/>
-<script src="../scripts/global/defer-loader.min.js" defer></script>
+<script src="/scripts/global/defer-loader.min.js" defer></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
 
-<!-- Google tag (gtag.js) - Deferred to prevent blocking -->
-<script defer src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP');
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP');
+    });
+  }
 </script>
 
     <meta charset="UTF-8">
@@ -537,11 +554,11 @@
       }
     </style>
     <!-- Favicons - Standardized across all pages -->
-    <link rel="icon" type="image/png" href="../assets/images/logo/LOGO.webp" sizes="32x32">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/LOGO.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/LOGO.webp">
-    <link rel="shortcut icon" href="../assets/images/logo/LOGO.webp">
-    <meta name="msapplication-TileImage" content="../assets/images/logo/LOGO.webp">
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
+    <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp">
+    <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -663,7 +680,7 @@
     <header>
         <div class="navbar">
             <a href="/" class="logo">
-                <img src="../assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
                 NutriThrive
             </a>
             <nav class="nav-links">
@@ -736,7 +753,7 @@
 
             <article class="product-card">
                 <a class="product-media" href="/products/curry-leaves/">
-                    <img src="../assets/images/homepage/product-showcase/Curry.webp"
+                    <img src="/assets/images/homepage/product-showcase/Curry.webp"
                          alt="Dried Curry Leaves by NutriThrive Melbourne Australia"
                          width="160" height="240"
                          loading="lazy">
@@ -762,7 +779,7 @@
                     <div class="product-footer">
                         <div class="cta-row">
                             <a class="btn-primary" href="/products/curry-leaves/">View product</a>
-                            <button class="btn-add-cart" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '../assets/images/homepage/product-showcase/Curry.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                            <button class="btn-add-cart" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '/assets/images/homepage/product-showcase/Curry.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
                                 Add to Cart
                             </button>
                         </div>
@@ -772,7 +789,7 @@
 
             <article class="product-card">
                 <a class="product-media" href="/products/black-tea/">
-                    <img src="../assets/images/homepage/product-showcase/BlackTea.webp"
+                    <img src="/assets/images/homepage/product-showcase/BlackTea.webp"
                          alt="Darjeeling Black Tea by NutriThrive Melbourne Australia"
                          width="160" height="240"
                          loading="lazy">
@@ -798,7 +815,7 @@
                     <div class="product-footer">
                         <div class="cta-row">
                             <a class="btn-primary" href="/products/black-tea/">View product</a>
-                            <button class="btn-add-cart" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '../assets/images/homepage/product-showcase/BlackTea.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                            <button class="btn-add-cart" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '/assets/images/homepage/product-showcase/BlackTea.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
                                 Add to Cart
                             </button>
                         </div>
@@ -808,7 +825,7 @@
 
             <article class="product-card">
                 <a class="product-media" href="/products/combo-pack/">
-                    <img src="../assets/images/homepage/product-showcase/combo.webp"
+                    <img src="/assets/images/homepage/product-showcase/combo.webp"
                          alt="Premium Combo Pack by NutriThrive Melbourne Australia"
                          width="160" height="240"
                          loading="lazy">
@@ -834,7 +851,7 @@
                     <div class="product-footer">
                         <div class="cta-row">
                             <a class="btn-primary" href="/products/combo-pack/">View product</a>
-                            <button class="btn-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '../assets/images/homepage/product-showcase/combo.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                            <button class="btn-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '/assets/images/homepage/product-showcase/combo.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
                                 Add to Cart
                             </button>
                         </div>
@@ -844,7 +861,7 @@
 
             <article class="product-card">
                 <a class="product-media" href="/products/moringa-soap/">
-                    <img src="../assets/images/homepage/product-showcase/moringa_soap.webp"
+                    <img src="/assets/images/homepage/product-showcase/moringa_soap.webp"
                          alt="Moringa Soap by NutriThrive Melbourne Australia"
                          width="160" height="240"
                          loading="lazy">
@@ -870,7 +887,7 @@
                     <div class="product-footer">
                         <div class="cta-row">
                             <a class="btn-primary" href="/products/moringa-soap/">View product</a>
-                            <button class="btn-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '../assets/images/homepage/product-showcase/moringa_soap.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                            <button class="btn-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '/assets/images/homepage/product-showcase/moringa_soap.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
                                 Add to Cart
                             </button>
                         </div>
@@ -935,9 +952,9 @@
 
         <div id="nt-footer"></div>
 
-    <script src="../scripts/global/cart.min.js"></script>
-    <script src="../scripts/global/cart-header.min.js"></script>
-    <script src="../scripts/global/script.min.js" defer></script>
+    <script src="/scripts/global/cart.min.js" defer></script>
+    <script src="/scripts/global/cart-header.min.js" defer></script>
+    <script src="/scripts/global/script.min.js" defer></script>
 
     <!-- CollectionPage Schema -->
     <script type="application/ld+json">
