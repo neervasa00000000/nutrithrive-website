@@ -19,7 +19,9 @@
 
 # Legacy / duplicate stubs
 /shipping-returns.html /pages/shipping/shipping-returns 301
-/pages/homepage/* / 301
+/pages/homepage / 301!
+/pages/homepage/ / 301!
+/pages/homepage/* / 301!
 /pages/products /products/ 301!
 /pages/products/ /products/ 301!
 /pages/products/* /products/ 301!
