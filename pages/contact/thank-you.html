@@ -73,11 +73,21 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        .thank-you-main {
+            flex: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             text-align: center;
-            background-color: #f9f9f9;
+            padding: 2rem;
+        }
+        #nt-footer {
+            width: 100%;
         }
         .thank-you-container {
             max-width: 500px;
@@ -220,11 +230,13 @@
 </script>
 </head>
 <body>
+    <main class="thank-you-main">
     <div class="thank-you-container">
         <h1 class="thank-you-title">Thank You!</h1>
         <p class="thank-you-message">Your message has been sent successfully. We will get back to you shortly.</p>
-        <a href="index.html" class="home-button">Return to Homepage</a>
+        <a href="/" class="home-button">Return to Homepage</a>
     </div>
+    </main>
     <script>
         (function () {
             if (typeof window.rdt !== 'function') return;
