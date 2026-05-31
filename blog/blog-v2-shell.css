@@ -96,3 +96,31 @@
 .nt-blog-index .blog-index-directory summary {
   outline-offset: 4px;
 }
+
+/* Sidebar product card — price + unit on one baseline (fixes clipped "/100g") */
+.nt-blog-sidebar-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+.nt-blog-sidebar-price > span:last-child {
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Legacy sidebar markup before nt-blog-sidebar-price class */
+.nt-blog-article aside .p-6 > .flex.items-center.justify-between.mb-6 {
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  overflow: visible;
+}
+
+.nt-blog-article aside .p-6 > .flex.items-center.justify-between.mb-6 span.line-through {
+  text-decoration: none;
+  opacity: 1;
+  line-height: 1.4;
+}
