@@ -190,6 +190,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-berberine-australia-2026"
   },
   {
+    "slug": "moringa-powder-benefits-women-skin-side-effects-australia-2026",
+    "title": "Moringa Powder Benefits for Women: Skin, Weight, Iron &amp; Side Effects (2026)",
+    "description": "The real guide to moringa powder benefits for women in Australia — skin, weight, hormones, iron, and the side effects nobody warns you about. Clinical trial-backed, honest, May 2026.",
+    "category": "Women's Wellness",
+    "href": "/blog/moringa-powder-benefits-women-skin-side-effects-australia-2026"
+  },
+  {
     "slug": "moringa-capsules-vs-powder-which-is-better-2026",
     "title": "Moringa Capsules vs Powder: Which Is Better? (2026)",
     "description": "Moringa capsules vs powder: cost per serving, potency, freshness &amp; convenience compared. Why powder wins for most Australians + when capsules make sense. 2026 guide.",
