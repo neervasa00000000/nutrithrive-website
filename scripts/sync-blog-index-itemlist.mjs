@@ -13,6 +13,7 @@ const BASE = 'https://nutrithrive.com.au';
 
 /** Curated first — breakout SEO posts, then rest alphabetically. */
 const PRIORITY = [
+  'moringa-berberine-australia-2026.html',
   'moringa-benefits-for-women-comprehensive-2026.html',
   'is-moringa-banned-australia-truth-2026.html',
   'how-much-moringa-powder-per-day-dosage-guide-2026.html',
