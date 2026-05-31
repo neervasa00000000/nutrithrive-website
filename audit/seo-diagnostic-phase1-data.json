@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-30T15:25:10.974Z",
+  "generated": "2026-05-31T03:51:04.784Z",
   "pagesScanned": 157,
   "duplicatePairs": [
     {
@@ -441,11 +441,6 @@
     },
     {
       "from": "/scripts/templates/v2/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025-test.html",
-      "to": "/https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026",
-      "text": "Full Australia brand comparison"
-    },
-    {
-      "from": "/scripts/templates/v2/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025-test.html",
       "to": "/https://nutrithrive.com.au/contact",
       "text": "Contact us"
     },
@@ -463,31 +458,6 @@
       "from": "/pages/homepage/",
       "to": "/https://nutrithrive.com.au",
       "text": "go to nutrithrive.com.au"
-    },
-    {
-      "from": "/pages/shipping/shipping-returns.html",
-      "to": "/shipping-returns.html",
-      "text": "Shipping & Returns"
-    },
-    {
-      "from": "/products/",
-      "to": "/curry-leaves/",
-      "text": "View product"
-    },
-    {
-      "from": "/products/",
-      "to": "/black-tea/",
-      "text": "View product"
-    },
-    {
-      "from": "/products/",
-      "to": "/combo-pack/",
-      "text": "View product"
-    },
-    {
-      "from": "/products/",
-      "to": "/moringa-soap/",
-      "text": "View product"
     },
     {
       "from": "/scripts/templates/v2/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026-test.html",
@@ -820,6 +790,11 @@
       "text": "Dried curry leaves: farm story (AU) →"
     },
     {
+      "from": "/scripts/templates/v2/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025-test.html",
+      "to": "/https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026",
+      "text": "Full Australia brand comparison"
+    },
+    {
       "from": "/scripts/templates/v2/blog/moringa-melbourne-complete-growers-report-2026-test.html",
       "to": "/https://nutrithrive.com.au/blog/growing-moringa-australia-honest-frost-pots-2026",
       "text": "Cool-climate grower guide"
@@ -875,11 +850,6 @@
     "/blog/melbourne-food-as-medicine-map-cafes-organic-stores-healthspan-eating-2026.html"
   ],
   "brokenImg": [
-    {
-      "urlPath": "/blog/magnesium-glycinate-honest-guide-australia-2026.html",
-      "src": "/assets/images/product_photos/webp/thumbs/moringa.jpg",
-      "page": "blog/magnesium-glycinate-honest-guide-australia-2026.html"
-    },
     {
       "urlPath": "/scripts/templates/v2/blog/moringa-powder-victoria-seniors-joint-health-test.html",
       "src": "/assets/images/blog/vic-seniors-720.jpg",
@@ -1242,7 +1212,7 @@
     {
       "urlPath": "/products/",
       "wc": 57,
-      "htmlBytes": 57756,
+      "htmlBytes": 57874,
       "ratio": "0.7"
     },
     {
@@ -1254,7 +1224,7 @@
     {
       "urlPath": "/",
       "wc": 262,
-      "htmlBytes": 67583,
+      "htmlBytes": 67498,
       "ratio": "2.5"
     },
     {
@@ -1314,7 +1284,7 @@
     {
       "urlPath": "/pages/shipping/shipping-returns.html",
       "wc": 417,
-      "htmlBytes": 19007,
+      "htmlBytes": 19018,
       "ratio": "13.0"
     },
     {
@@ -1400,16 +1370,16 @@
       "incoming": 0
     },
     {
-      "urlPath": "/blog/moringa-honest-truth-science-australia-2026.html",
-      "incoming": 0
-    },
-    {
       "urlPath": "/pages/newsletter/",
       "incoming": 0
     },
     {
       "urlPath": "/shared/components/author-bio.html",
       "incoming": 0
+    },
+    {
+      "urlPath": "/blog/moringa-honest-truth-science-australia-2026.html",
+      "incoming": 1
     }
   ],
   "badAnchors": [
