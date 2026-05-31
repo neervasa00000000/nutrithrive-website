@@ -11,7 +11,6 @@ import { fileURLToPath } from 'url';
 import crypto from 'crypto';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const LOG_PATH = path.join(ROOT, '.cursor/debug-53c37e.log');
 const SITE = 'https://nutrithrive.com.au';
 const SITEMAP = `${SITE}/sitemap.xml`;
 
@@ -22,24 +21,6 @@ const PRIORITY_URLS = [
   `${SITE}/`,
   `${SITE}/blog/`,
 ];
-
-function agentLog(message, data, hypothesisId = 'SEO') {
-  const line = JSON.stringify({
-    sessionId: '53c37e',
-    hypothesisId,
-    location: 'scripts/seo-notify-search-engines.mjs',
-    message,
-    data,
-    timestamp: Date.now(),
-    runId: 'seo-notify',
-  });
-  try {
-    fs.mkdirSync(path.dirname(LOG_PATH), { recursive: true });
-    fs.appendFileSync(LOG_PATH, `${line}\n`);
-  } catch {
-    /* ignore */
-  }
-}
 
 async function ping(url, label) {
   try {
@@ -103,12 +84,10 @@ async function main() {
   const indexNow = await indexNowSubmit(key, PRIORITY_URLS);
 
   const summary = { pings, indexNow, priorityUrls: PRIORITY_URLS.length, sitemap: SITEMAP };
-  agentLog('search engine notifications sent', summary);
   console.log(JSON.stringify(summary, null, 2));
 }
 
 main().catch((err) => {
-  agentLog('search engine notify failed', { error: err.message });
   console.error(err);
   process.exit(1);
 });

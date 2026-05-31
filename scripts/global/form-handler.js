@@ -88,22 +88,6 @@
             body: new URLSearchParams(fd).toString(),
         });
 
-        // #region agent log
-        fetch("http://127.0.0.1:7814/ingest/59016125-eaa7-4a70-b09d-96dcad1c64c8", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "53c37e" },
-            body: JSON.stringify({
-                sessionId: "53c37e",
-                hypothesisId: "B",
-                location: "form-handler.js:submitNetlifyForm",
-                message: "Netlify form POST result",
-                data: { postUrl, status: res.status, ok: res.ok, formName },
-                timestamp: Date.now(),
-                runId: "form-fix",
-            }),
-        }).catch(() => {});
-        // #endregion
-
         if (!res.ok) throw new Error("Netlify form submission failed");
         window.location.href = thankYouUrl(form);
     }
@@ -133,28 +117,6 @@
                 window.location.href = thankYouUrl(form);
                 return;
             }
-
-            // #region agent log
-            fetch("http://127.0.0.1:7814/ingest/59016125-eaa7-4a70-b09d-96dcad1c64c8", {
-                method: "POST",
-                headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "53c37e" },
-                body: JSON.stringify({
-                    sessionId: "53c37e",
-                    hypothesisId: "A",
-                    location: "form-handler.js:submitEmailForm",
-                    message: "send-form response",
-                    data: {
-                        status: res.status,
-                        fallback: data.fallback,
-                        canFallback: canUseNetlifyFallback(form),
-                        hasDataNetlify: form.hasAttribute("data-netlify"),
-                        formName: form.getAttribute("name"),
-                    },
-                    timestamp: Date.now(),
-                    runId: "form-fix",
-                }),
-            }).catch(() => {});
-            // #endregion
 
             if (res.status === 503 && data.fallback === "netlify-forms" && canUseNetlifyFallback(form)) {
                 await submitNetlifyForm(form);
