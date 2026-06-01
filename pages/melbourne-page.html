@@ -351,10 +351,31 @@
   ]
 }
 </script>
-  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body>
-<div id="site-header"></div>
+
+<!-- Urgency banner -->
+<div class="urgency-banner">
+  <strong>⚡ Melbourne orders placed before 2pm ship today!</strong>
+  <span class="countdown">Next dispatch in <span id="countdown-timer">loading…</span></span>
+</div>
+
+<header class="site-header">
+<div class="container">
+<nav class="navbar">
+<a class="logo-link" href="/">
+<img alt="NutriThrive logo" decoding="async" height="120" src="/assets/images/logo/LOGO.webp" style="height:1.8rem;width:auto;margin-right:0.5rem;" width="120" loading="lazy">
+<span class="brand-name">NutriThrive</span>
+</a>
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/products/moringa-powder/">Products</a></li>
+<li><a href="/blog/index">Blog</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
 
 <main class="melb-page">
 
@@ -852,7 +873,7 @@
   📞 Call Now for Melbourne Orders
 </a>
 
-<div id="site-footer"></div>
+<div id="nt-footer"></div>
 
 <script defer src="/scripts/global/script.min.js"></script>
 <script>
@@ -929,7 +950,6 @@ document.querySelectorAll('.suburb-toggle').forEach(function (btn) {
 })();
 </script>
 <script src="/shared/site-data.min.js"></script>
-
-<script src="/assets/js/site-includes.js" defer></script>
+<script src="/shared/js/footer-v2.min.js"></script>
 </body>
 </html>
