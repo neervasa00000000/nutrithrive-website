@@ -2125,3 +2125,81 @@ article h1, section h1, nav h1, aside h1 {
     border-radius: 0 !important;
     box-shadow: none !important;
 }
+
+/* Contact page — single reading column, left-aligned body copy */
+body.contact-page .contact-main {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+}
+
+body.contact-page .contact-hero {
+    text-align: center;
+    padding: 2.5rem 0 1.5rem;
+}
+
+body.contact-page .contact-hero-title {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+body.contact-page .contact-hero-desc,
+body.contact-page .contact-faq-list p,
+body.contact-page .contact-info p {
+    text-align: left;
+    line-height: 1.65;
+    max-width: 100%;
+}
+
+body.contact-page .contact-hero-desc {
+    margin-bottom: 1rem;
+}
+
+body.contact-page .contact-hero-note {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+body.contact-page .contact-section {
+    max-width: 100%;
+    margin: 0 0 2rem;
+    padding: 0 0 1.5rem;
+    animation: none;
+}
+
+body.contact-page .contact-section-title,
+body.contact-page .contact-info h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 1rem;
+    text-align: left;
+    letter-spacing: -0.02em;
+}
+
+body.contact-page .contact-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+}
+
+body.contact-page .contact-faq-list p {
+    margin: 0;
+}
+
+body.contact-page .contact-info {
+    padding: 2rem 0 0;
+}
+
+body.contact-page .contact-abn-note {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+}
+
+body.contact-page section.contact-hero h1 {
+    max-width: 100%;
+}

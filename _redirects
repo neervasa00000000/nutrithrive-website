@@ -236,6 +236,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /products/product-moringa-soap.html /products/moringa-soap/ 200
 /thank-you.html /pages/shop/thank-you.html 200
 
+/moringa-sydney /moringa-sydney/ 301
+/moringa-brisbane /moringa-brisbane/ 301
+
 # Removed blog slugs are not redirected — they 404 (no file, no rule).
 # PHASE 2 — Canonical extensionless blog URLs (auto-generated)
 # .html → clean URL (301); clean URL serves .html file (200)
