@@ -249,28 +249,10 @@
   }
 }
 </script>
+  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body class="about-page-new">
-    <header>
-        <div class="navbar">
-            <a href="/" class="logo">
-                <img decoding="async" src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" style="height: 1.8rem; width: auto; margin-right: 0.5rem;" loading="lazy">
-                NutriThrive
-            </a>
-            <nav class="nav-links">
-                <a href="/">Home</a>
-                <a href="/products/">Products</a>
-                <a href="/about" class="active">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/blog/">Blog</a>
-            </nav>
-            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </button>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <main class="about-main">
         <section class="about-hero-wow">
@@ -529,7 +511,7 @@
 
     </main>
 
-        <div id="nt-footer"></div>
+        <div id="site-footer"></div>
 
     <!-- CRITICAL: Core functionality - Load immediately with defer -->
     <script src="/scripts/global/cart.min.js"></script>
@@ -556,6 +538,7 @@
     </script>
     <!-- Updated: 2026-01-27 - Optimized for PageSpeed -->
 <script src="/shared/site-data.min.js"></script>
-<script src="/shared/js/footer-v2.min.js"></script>
+
+<script src="/assets/js/site-includes.js" defer></script>
 </body>
 </html> 
