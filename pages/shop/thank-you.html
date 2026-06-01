@@ -2,7 +2,45 @@
 <html lang="en-AU">
 <head>
 <link rel="stylesheet" href="/assets/css/design-system.min.css"/>
+<script src="/scripts/global/defer-loader.min.js"></script>
     <script src="/scripts/global/reddit-pixel.min.js"></script>
+<!-- Google tag (gtag.js) - Deferred for performance -->
+<script>
+  window.addEventListener('load', function() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WH21SW75WP', {
+      'anonymize_ip': true,
+      'allow_google_signals': false
+    });
+
+    // Basic purchase tracking (static thank-you page fallback).
+    // If your checkout provides an order ID/value via query params, this will use them.
+    var params = new URLSearchParams(window.location.search);
+    var orderId = params.get('order_id') || params.get('orderId') || String(Date.now());
+    var value = Number(params.get('value') || params.get('amount') || 11.00);
+    if (!Number.isFinite(value) || value <= 0) value = 11.00;
+
+    gtag('event', 'purchase', {
+      transaction_id: orderId,
+      value: value,
+      currency: 'AUD',
+      items: [{
+        item_id: 'MORINGA-100G',
+        item_name: 'NutriThrive Moringa Powder 100g',
+        price: 11.00,
+        quantity: 1
+      }]
+    });
+  });
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">

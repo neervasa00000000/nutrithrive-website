@@ -215,7 +215,9 @@ window.NT_BLOG_ARTICLES = [
     "title": "I Was Sceptical About Moringa — Until I Read 26 Clinical Studies",
     "description": "Most moringa blogs tell you it cures everything. This one tells you the truth — what the 2025 meta-analyses actually proved, what they didn't, and why Australians are still adding moringa to their morning routine anyway.",
     "category": "Honest Guide",
-    "href": "/blog/moringa-honest-truth-science-australia-2026"
+    "href": "/blog/moringa-honest-truth-science-australia-2026",
+    "image": "/assets/images/general/234.webp",
+    "imageAlt": "Moringa clinical studies review — green superfood bowl; 26 peer-reviewed studies Australia 2026"
   },
   {
     "slug": "moringa-melbourne-complete-growers-report-2026",
