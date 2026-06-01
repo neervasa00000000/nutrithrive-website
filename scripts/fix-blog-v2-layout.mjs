@@ -65,7 +65,7 @@ for (const file of files) {
 
   html = normalizeArticleStyles(html);
 
-  html = html.replace(/(<main[^>]*class="[^"]*)\bpt-28\b/g, '$1pt-6');
+  /* Keep pt-28 — pt-6 caused article titles to sit under sticky site chrome on mobile */
 
   html = html.replace(
     /<\/section>\n<\/div>\n<\/div>\n<section class="mt-20/g,
