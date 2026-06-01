@@ -282,10 +282,28 @@
             }
         }
     </style>
-  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body>
-    <div id="site-header"></div>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
+        </div>
+    </header>
 
     <div class="checkout-wrap">
         <div class="checkout-grid">
@@ -329,7 +347,7 @@
             </aside>
         </div>
     </div>
-    <div id="site-footer"></div>
+    <div id="nt-footer"></div>
 
     <script src="/scripts/global/paypal-client-config.min.js"></script>
     <script src="/scripts/global/paypal-sdk-loader.min.js"></script>
@@ -534,7 +552,6 @@
         }
     </script>
 <script src="/shared/site-data.min.js"></script>
-
-<script src="/assets/js/site-includes.js" defer></script>
+<script src="/shared/js/footer-v2.min.js"></script>
 </body>
 </html>

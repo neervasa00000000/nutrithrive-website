@@ -250,10 +250,28 @@
   ]
 }
 </script>
-  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body>
-    <div id="site-header"></div>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo/LOGO.webp" alt="NutriThrive Logo" width="50" height="50" loading="lazy" decoding="async" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+                NutriThrive
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/products/">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog/">Blog</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
+        </div>
+    </header>
 
     <main class="thank-you-container">
         <div class="thank-you-icon" aria-hidden="true">✓</div>
@@ -267,7 +285,7 @@
         </div>
     </main>
 
-    <div id="site-footer"></div>
+    <div id="nt-footer"></div>
 
     <script src="/scripts/global/script.min.js" defer></script>
     <script>
@@ -290,7 +308,6 @@
         })();
     </script>
 <script src="/shared/site-data.min.js"></script>
-
-<script src="/assets/js/site-includes.js" defer></script>
+<script src="/shared/js/footer-v2.min.js"></script>
 </body>
 </html>

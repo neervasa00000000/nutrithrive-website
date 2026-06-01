@@ -52,10 +52,23 @@
   }
 }
 </script>
-  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body class="non-sticky-header">
-<div id="site-header"></div>
+<header>
+<div class="navbar">
+<a class="logo" href="/">
+<img alt="NutriThrive Logo" decoding="async" loading="lazy" src="/assets/images/logo/LOGO.webp" style="max-width:50px;max-height:50px;width:auto;height:auto;object-fit:contain;">
+NutriThrive
+</a>
+<nav class="nav-links">
+<a href="/">Home</a>
+<a href="/products/">Products</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+<a href="/blog/">Blog</a>
+</nav>
+</div>
+</header>
 
 <main style="max-width:960px;margin:0 auto;padding:2rem 1.5rem;">
 
@@ -207,12 +220,11 @@
 
 </main>
 
-<div id="site-footer"></div>
+<div id="nt-footer"></div>
 <script src="/scripts/global/cart.min.js"></script>
 <script src="/scripts/global/cart-header.min.js"></script>
 <script defer src="/scripts/global/script.min.js"></script>
 <script src="/shared/site-data.min.js"></script>
-
-<script src="/assets/js/site-includes.js" defer></script>
+<script src="/shared/js/footer-v2.min.js"></script>
 </body>
 </html>
