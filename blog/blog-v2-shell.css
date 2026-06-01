@@ -270,6 +270,42 @@
   margin-inline: auto;
 }
 
+/*
+ * Global style.min.css sets every <header> to position:sticky with a huge z-index.
+ * Blog posts use <header class="mb-12"> for the title block — that must stay in flow
+ * so the H1/hero do not slide under the site nav when scrolling (especially mobile).
+ */
+.nt-blog-article article > header.mb-12,
+.nt-blog-article article > header {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+  background: transparent !important;
+  border-bottom: none !important;
+  color: inherit;
+}
+
+/* One sticky stack: .nt-sticky-top only — inner header/navbar must not double-stick */
+.nt-blog-article .nt-sticky-top > header,
+.nt-blog-article .nt-sticky-top #nt-header,
+.nt-blog-article .nt-sticky-top #site-header,
+.nt-blog-article #site-header .site-navbar {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+/* Anchor links and scroll-into-view sit below sticky promo + nav */
+.nt-blog-article {
+  scroll-padding-top: 7.5rem;
+}
+
+@media (max-width: 640px) {
+  .nt-blog-article {
+    scroll-padding-top: 9.5rem;
+  }
+}
+
 /* Cart icon in legacy navbar */
 .nt-blog-article #nt-header .navbar .cart-icon-link {
   display: inline-flex;
