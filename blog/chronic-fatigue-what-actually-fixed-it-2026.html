@@ -217,11 +217,12 @@
 <link rel="stylesheet" href="/blog/blog-v2-prose.min.css"/>
 <link rel="stylesheet" href="/shared/css/v2-extra.min.css"/>
 <link rel="stylesheet" href="/shared/css/author-bio.min.css"/>
+  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article">
 <div class="nt-sticky-top">
 <div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80</div>
-<header id="nt-header" class="nt-v2-header"></header>
+<div id="site-header"></div>
 </div>
 <nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-4 pb-2 text-label-sm"><a class="text-moringa-leaf hover:underline" href="/blog/">← Journal</a></nav><main class="pt-6 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-blog-main">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
@@ -581,16 +582,14 @@
 </aside>
 </div>
 </main>
-<div id="nt-footer"></div>
+<div id="site-footer"></div>
 <script src="/scripts/global/defer-loader.min.js"></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
 <script src="/shared/site-data.min.js"></script>
 <script src="/scripts/global/cart.min.js"></script>
 <script src="/shared/js/cart-v2-ui.min.js"></script>
-<script src="/shared/js/footer-v2.min.js"></script>
 <script src="/shared/js/author-bio.min.js"></script>
-<script src="/shared/js/layout-v2.min.js"></script>
-<script src="/shared/js/v2-site.min.js"></script>
 
+<script src="/assets/js/site-includes.js" defer></script>
 </body>
 </html>

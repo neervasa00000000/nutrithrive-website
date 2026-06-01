@@ -1,0 +1,556 @@
+/* NutriThrive — global site chrome (header, footer, typography, layout, buttons) */
+
+:root {
+  --nt-green: #0f6b4d;
+  --nt-green-dark: #0a4a35;
+  --nt-text: #3a3a3a;
+  --nt-heading: #1a1a1a;
+  --nt-muted: #6b7280;
+  --nt-border: #e5e7eb;
+  --nt-container: 1100px;
+  --nt-article: 760px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--nt-text);
+  background: #fff;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--nt-green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--nt-green-dark);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--nt-heading);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.text-muted,
+.muted {
+  color: var(--nt-muted);
+}
+
+/* —— Site header (matches homepage styles/global/style.css) —— */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 2147483000;
+  width: 100%;
+  background: var(--bg, #fff);
+  border-bottom: 1px solid var(--color-border-soft, #e6e2d7);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+#site-header .urgency-banner {
+  background-color: var(--color-promo-bar, #1a2e22);
+  background-image: none;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+#site-header .urgency-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+#site-header .urgency-content strong {
+  font-weight: 700;
+}
+
+#site-header .separator {
+  opacity: 0.5;
+  margin: 0 4px;
+}
+
+#site-header .navbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  min-height: 68px;
+  color: var(--primary, #1a2e22);
+  background: transparent;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  position: relative;
+}
+
+#site-header .logo {
+  display: flex !important;
+  align-items: center;
+  flex-shrink: 0;
+  font-weight: 800 !important;
+  font-size: 1.5rem !important;
+  color: var(--primary, #1a2e22) !important;
+  text-decoration: none !important;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+#site-header .logo img {
+  height: 1.8rem;
+  width: auto;
+  margin-right: 0.5rem;
+  display: block;
+}
+
+#site-header .nav-links {
+  display: flex !important;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+#site-header .nav-links a {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: var(--primary, #1a2e22) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+  display: inline-flex !important;
+  align-items: center;
+  line-height: 1;
+  height: 44px;
+  white-space: nowrap;
+}
+
+#site-header .nav-links a:hover,
+#site-header .nav-links a.active {
+  color: var(--accent, #d66844) !important;
+}
+
+#site-header .hamburger {
+  display: none;
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 14px;
+  z-index: 2147483001;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  position: relative;
+  flex-shrink: 0;
+}
+
+#site-header .hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary, #1a2e22);
+  margin: 5px 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+#site-header .hamburger:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Blog: prevent style.css bare `header` rule from sticking in-content heroes */
+.nt-blog-index main > header,
+.nt-blog-article main > header:first-of-type {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+  background: transparent !important;
+  border-bottom: none !important;
+}
+
+/* Blog index had pt-32 for old multi-bar sticky chrome — no longer needed */
+.nt-blog-index main.pt-32 {
+  padding-top: 2rem !important;
+}
+
+/* —— Main layout —— */
+.site-container,
+main.site-container,
+.nt-site-container {
+  max-width: var(--nt-container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.site-article,
+.nt-blog-article .article-body,
+.blog-article-content {
+  max-width: var(--nt-article);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* —— Buttons —— */
+.btn-primary,
+button.btn-primary,
+a.btn-primary {
+  display: inline-block;
+  background: var(--nt-green);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.4;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--nt-green-dark);
+  color: #fff !important;
+}
+
+.btn-secondary,
+a.btn-secondary,
+button.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--nt-green) !important;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 11px 26px;
+  border: 1.5px solid var(--nt-green);
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.4;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--nt-green);
+  color: #fff !important;
+}
+
+/* —— Cards —— */
+.nt-card {
+  background: #fff;
+  border: 1px solid var(--nt-border);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* —— Footer —— */
+#site-footer .site-footer {
+  background: var(--nt-green);
+  color: #fff;
+  padding: 48px 24px 32px;
+  margin-top: 48px;
+}
+
+#site-footer .site-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#site-footer .site-footer a:hover {
+  text-decoration: underline;
+  color: #fff;
+  opacity: 0.92;
+}
+
+#site-footer .site-footer__inner {
+  max-width: var(--nt-container);
+  margin: 0 auto;
+}
+
+#site-footer .site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 24px;
+}
+
+#site-footer .site-footer__col h3 {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+  letter-spacing: 0.02em;
+}
+
+#site-footer .site-footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#site-footer .site-footer__col li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#site-footer .site-footer__logo img {
+  height: 36px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  margin-bottom: 12px;
+}
+
+#site-footer .site-footer__tagline {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+  opacity: 0.95;
+}
+
+#site-footer .site-footer__abn {
+  font-size: 13px;
+  opacity: 0.85;
+  margin: 0;
+}
+
+#site-footer .site-footer__legal p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 10px;
+  opacity: 0.9;
+}
+
+#site-footer .site-footer__bar {
+  max-width: var(--nt-container);
+  margin: 32px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* —— Spacing utilities —— */
+.mt-section {
+  margin-top: 48px;
+}
+
+.mb-section {
+  margin-bottom: 48px;
+}
+
+.py-section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+/* —— Breakpoints —— */
+@media (max-width: 1024px) {
+  #site-footer .site-footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+  }
+
+  #site-header .urgency-content {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 12px;
+  }
+
+  #site-header .urgency-content .separator {
+    display: none;
+  }
+
+  #site-header .navbar {
+    padding: 1rem !important;
+  }
+
+  #site-header .hamburger {
+    display: block !important;
+    z-index: 2147483001 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    cursor: pointer !important;
+  }
+
+  #site-header .nav-links {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2147483000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 2rem 1.5rem 1rem !important;
+    margin: 0 !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.8rem !important;
+  }
+
+  #site-header .nav-links.nav-active {
+    display: flex !important;
+    transform: translateX(0);
+  }
+
+  #site-header .nav-links a {
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    margin: 0.2rem 0;
+    padding: 1rem 1.5rem !important;
+    border-radius: 16px;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    min-height: 70px;
+    height: auto !important;
+    justify-content: center;
+    white-space: normal;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  #site-header .nav-links a:hover,
+  #site-header .nav-links a.active {
+    background-color: rgba(15, 107, 77, 0.1) !important;
+    color: var(--accent, #d66844) !important;
+  }
+
+  #site-header .hamburger.toggle {
+    position: relative;
+    z-index: 2147483001;
+    background: none !important;
+    border: none !important;
+  }
+
+  #site-header .hamburger.toggle div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 3px;
+    margin: 0;
+    transform-origin: center;
+  }
+
+  #site-header .hamburger.toggle .line1 {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  #site-header .hamburger.toggle .line2 {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+  #site-header .hamburger.toggle .line3 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .site-container,
+  main.site-container,
+  .nt-site-container {
+    padding: 0 16px;
+  }
+
+  .btn-primary,
+  a.btn-primary,
+  button.btn-primary {
+    font-size: 14px;
+    padding: 11px 20px;
+  }
+
+  .btn-secondary,
+  a.btn-secondary,
+  button.btn-secondary {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  #site-footer .site-footer {
+    padding: 36px 16px 24px;
+  }
+
+  #site-footer .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (min-width: 768px) {
+  #site-header .nav-links {
+    display: flex !important;
+  }
+
+  #site-header .hamburger {
+    display: none !important;
+  }
+}

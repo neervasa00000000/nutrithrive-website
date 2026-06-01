@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <title>Forms</title>
   <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body>
+<div id="site-header"></div>
   <!-- Netlify form detection (hidden). Submissions also appear in Netlify → Forms when JS fallback runs. -->
   <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
     <input type="hidden" name="form-name" value="contact">
@@ -21,5 +23,9 @@
     <input name="name">
     <input name="email">
   </form>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/site-includes.js" defer></script>
 </body>
 </html>

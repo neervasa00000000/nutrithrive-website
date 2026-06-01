@@ -999,37 +999,10 @@
         }
       }
     </style>
+  <link rel="stylesheet" href="/assets/css/global.css"/>
 </head>
 <body>
-<header>
-<div class="urgency-banner">
-<div class="urgency-content">
-⏰ <strong>Order before 2pm for same-day Melbourne dispatch</strong>
-<span class="separator">•</span>
-🚚 Free shipping over $80
-<span class="separator">•</span>
-🔬 NMI Government lab-tested
-</div>
-</div>
-<div class="navbar">
-<a class="logo" href="/">
-<img alt="NutriThrive Logo" decoding="async" fetchpriority="high" height="50" loading="eager" src="/assets/images/logo/LOGO.webp" style="height: 1.8rem; width: auto; margin-right: 0.5rem;" width="50"/>
-                NutriThrive
-            </a>
-<nav class="nav-links">
-<a class="active" href="/">Home</a>
-<a href="/products/">Products</a>
-<a href="/about">About</a>
-<a href="/contact">Contact</a>
-<a href="/blog/">Blog</a>
-</nav>
-<button aria-label="Toggle navigation menu" class="hamburger" onclick="window.ntToggleMenu &amp;&amp; window.ntToggleMenu()">
-<div class="line1"></div>
-<div class="line2"></div>
-<div class="line3"></div>
-</button>
-</div>
-</header>
+<div id="site-header"></div>
 <main>
 <section class="hero">
 <div class="hero-content">
@@ -1365,7 +1338,7 @@ Our <a href="/products/moringa-powder/">moringa powder</a>, <a href="/products/c
 </div>
 </section>
 </main>
-<div id="nt-footer"></div>
+<div id="site-footer"></div>
 <!-- Defer non-critical JavaScript until after page load -->
 <script>
       // Load GSAP and ScrollTrigger after page is interactive
@@ -1389,6 +1362,7 @@ Our <a href="/products/moringa-powder/">moringa powder</a>, <a href="/products/c
 <script defer="" src="/scripts/pages/homepage.min.js"></script>
 <script defer="" src="/scripts/global/newsletter.min.js"></script>
 <script src="/shared/site-data.min.js"></script>
-<script src="/shared/js/footer-v2.min.js"></script>
+
+<script src="/assets/js/site-includes.js" defer></script>
 </body>
 </html>
