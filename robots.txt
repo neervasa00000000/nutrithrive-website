@@ -5,6 +5,7 @@
 # ALL BOTS (General Rule)
 # ====================
 User-agent: *
+Disallow: /nutrithrive_labs/
 Allow: /
 
 # ====================

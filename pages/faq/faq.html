@@ -8,29 +8,12 @@
 <script src="/scripts/global/defer-loader.min.js"></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true, crossorigin: 'anonymous'
-      }).then(function() {
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
-    }, { once: true, passive: true });
-  } else {
-    window.addEventListener('load', function() {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-WH21SW75WP');
-    });
-  }
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
 </script>
 
     <meta name="description" content="NutriThrive FAQ: moringa, curry leaves, tea, orders &amp; shipping — answers for Australians, with dispatch from Truganina, Melbourne.">
@@ -243,7 +226,7 @@
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "email": "nutrithrive0@gmail.com",
+  "email": "hello@nutrithrive.com.au",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",
@@ -366,7 +349,7 @@
 
     <main class="faq-main">
         <div class="faq-container">
-            <h1 class="faq-title">Frequently Asked Questions</h1>
+            <h1 class="faq-title">Moringa and Superfoods FAQ — NutriThrive Australia</h1>
             <p class="faq-intro">
                 Quick answers to the most common questions about NutriThrive products, shipping, safety and how to use them day to day.
             </p>

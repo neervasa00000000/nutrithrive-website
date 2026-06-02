@@ -4,19 +4,12 @@
 <link rel="stylesheet" href="/assets/css/design-system.min.css"/>
 <script src="/scripts/global/defer-loader.min.js"></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true, crossorigin: 'anonymous'
-      }).then(function() {
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
-    }, { once: true, passive: true });
-  }
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +24,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nutrithrive.com.au/buy-moringa-powder-australia/">
 <meta property="og:image" content="https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg">
-<link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630"><link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'" rel="stylesheet">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
 <link href="/styles/global/style.min.css" rel="stylesheet">

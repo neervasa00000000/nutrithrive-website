@@ -3,7 +3,7 @@ window.NT_SITE_DATA = {
   brand: 'NutriThrive',
   tagline: "Australia's freshest lab-tested moringa",
   contact: {
-    email: 'nutrithrive0@gmail.com',
+    email: 'hello@nutrithrive.com.au',
     phone: '+61 438 201 419',
     phoneTel: '+61438201419',
     address: '15 Europe Street, Truganina VIC 3029, Melbourne, Australia',
@@ -24,7 +24,7 @@ window.NT_SITE_DATA = {
   assets: {
     logo: '/assets/images/logo/LOGO.webp',
     hero: '/assets/images/blog/GC.webp',
-    moringaHero: '/assets/images/product_photos/moringa.jpeg',
+    moringaHero: '/assets/images/product_photos/moringa.webp',
     aboutHero: '/assets/images/homepage/product-showcase/aboutpage.png',
     aboutFeature: '/assets/images/homepage/product-showcase/aboutpage2.png',
     aboutVisit: '/assets/images/homepage/product-showcase/aboutpage3.png',
@@ -60,7 +60,7 @@ window.NT_SITE_DATA = {
       price: 11,
       was: 14,
       weight: 100,
-      image: '/assets/images/product_photos/moringa.jpeg',
+      image: '/assets/images/product_photos/moringa.webp',
       href: '/products/moringa-powder/',
       description: '100% pure shade-dried moringa leaf powder. Lab-tested in Australia.',
       pdp: {

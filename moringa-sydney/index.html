@@ -4,19 +4,12 @@
 <link rel="stylesheet" href="/assets/css/design-system.min.css"/>
 <script src="/scripts/global/defer-loader.min.js"></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true, crossorigin: 'anonymous'
-      }).then(function() {
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
-    }, { once: true, passive: true });
-  }
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
 </script>
 
 <meta charset="UTF-8">
@@ -34,6 +27,8 @@
 <meta property="og:title" content="Moringa Powder Sydney — Buy Online, Fast Delivery from Melbourne | NutriThrive">
 <meta property="og:description" content="Buy moringa powder in Sydney from $11/100g. NMI lab-tested, shade-dried moringa shipped from Melbourne. Free shipping over $80.">
 <meta property="og:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="NutriThrive Australia">
 <meta property="og:locale" content="en_AU">
 

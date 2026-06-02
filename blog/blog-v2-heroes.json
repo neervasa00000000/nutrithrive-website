@@ -1,9 +1,9 @@
 {
   "default": {
-    "hero": "../assets/images/product_photos/moringa.jpeg"
+    "hero": "../assets/images/product_photos/moringa.webp"
   },
   "social": {
-    "hero": "../assets/images/product_photos/moringa.jpeg"
+    "hero": "../assets/images/product_photos/moringa.webp"
   },
   "moringa-powder-victoria-seniors-joint-health.html": {
     "hero": "/assets/images/blog/moringa-seniors-720.jpg",

@@ -6,42 +6,12 @@
 <script src="/scripts/global/defer-loader.min.js"></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
 
-<!-- Google Analytics - Deferred until user interaction -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
-  // Initialize dataLayer immediately (lightweight, non-blocking)
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  
-  // Defer actual GA script loading until user interaction
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      // Load GA script
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true,
-        crossorigin: 'anonymous'
-      }).then(function() {
-        // Initialize GA after script loads
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {
-          'anonymize_ip': true,
-          'allow_google_signals': false
-        });
-      }).catch(function(err) {
-        console.warn('[GA] Failed to load:', err);
-      });
-    }, { once: true, passive: true });
-  } else {
-    // Fallback if defer-loader fails to load
-    window.addEventListener('load', function() {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-      script.crossOrigin = 'anonymous';
-      document.head.appendChild(script);
-      gtag('js', new Date());
-      gtag('config', 'G-WH21SW75WP');
-    });
-  }
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
 </script>
 
     <meta charset="UTF-8">
@@ -116,7 +86,7 @@
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "email": "nutrithrive0@gmail.com",
+  "email": "hello@nutrithrive.com.au",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",
@@ -237,7 +207,7 @@
     "slogan": "Lab-tested moringa with published batch summaries",
     "description": "Lab-tested moringa leaf powder, shade-dried and packed in Truganina, Victoria. Published batch testing summaries and Australia-wide shipping.",
     "telephone": "+61438201419",
-    "email": "nutrithrive0@gmail.com",
+    "email": "hello@nutrithrive.com.au",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "15 Europe Street",
