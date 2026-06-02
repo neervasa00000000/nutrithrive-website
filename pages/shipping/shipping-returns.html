@@ -5,29 +5,12 @@
 <script src="/scripts/global/defer-loader.min.js"></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
 <!-- Google Analytics - Deferred until user interaction -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true, crossorigin: 'anonymous'
-      }).then(function() {
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
-    }, { once: true, passive: true });
-  } else {
-    window.addEventListener('load', function() {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-WH21SW75WP');
-    });
-  }
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
 </script>
 
 
@@ -78,7 +61,7 @@
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "email": "nutrithrive0@gmail.com",
+  "email": "hello@nutrithrive.com.au",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",
@@ -206,6 +189,7 @@
             <p class="faq-intro">
                 Dispatch times, free shipping, returns, and payments — straight answers from our Truganina, Melbourne warehouse.
             </p>
+            <p class="faq-intro">All orders for our <a href="/products/moringa-powder/">moringa powder</a>, curry leaves, and tea ship from our Truganina, Melbourne warehouse. See our shipping and returns policy below.</p>
 
             <div class="faq-content">
                 <div class="faq-item">
@@ -253,7 +237,7 @@
                         <h2>How can I contact you?</h2>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer"><div class="faq-answer-inner"><p>Email: <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a> • Phone: <a href="tel:+61438201419">+61 438201419</a></p></div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner"><p>Email: <a href="mailto:hello@nutrithrive.com.au">hello@nutrithrive.com.au</a> • Phone: <a href="tel:+61438201419">+61 438201419</a></p></div></div>
                 </div>
 
                 <h2 class="faq-subsection-heading">More common questions</h2>
@@ -358,7 +342,7 @@
           "name": "How can I contact you?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Email: nutrithrive0@gmail.com. Phone: +61 438201419."
+            "text": "Email: hello@nutrithrive.com.au. Phone: +61 438201419."
           }
         },
         {

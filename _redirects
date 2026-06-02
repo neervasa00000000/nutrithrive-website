@@ -8,8 +8,9 @@
 /.firecrawl /.firecrawl 404
 
 # Legacy image path (never published; linked from magnesium guide sidebar)
-/assets/images/product_photos/webp/thumbs/moringa.jpg /assets/images/product_photos/moringa.jpeg 301
-/assets/images/product_photos/webp/thumbs/moringa.webp /assets/images/product_photos/moringa.jpeg 301
+/assets/images/product_photos/webp/thumbs/moringa.jpg /assets/images/product_photos/moringa.webp 301
+/assets/images/product_photos/webp/thumbs/moringa.webp /assets/images/product_photos/moringa.webp 301
+/assets/images/product_photos/moringa.jpeg /assets/images/product_photos/moringa.webp 301
 
 # Dev / audit paths (must not be crawled or linked as live pages; ! forces even when file exists)
 /scripts/* /scripts/:splat 404!
@@ -69,8 +70,11 @@
 /blog/moringa-benefits-women-hormones-energy-skin-2026.html /blog/moringa-benefits-for-women-comprehensive-2026 301
 
 # Chemist Warehouse comparison — live at slug below (extensionless → .html via global blog rule)
-/blog/rosabella-moringa-reviews-legit-or-overhyped-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026 301
-/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026 301
+/blog/rosabella-moringa-reviews-legit-or-overhyped-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
+/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
+/buy-moringa-powder-australia/ /products/moringa-powder/ 301
+/buy-moringa-powder-australia /products/moringa-powder/ 301
+/buy-moringa-powder-australia/index.html /products/moringa-powder/ 301
 /blog/growing-moringa-australia-honest-frost-pots-2026 /blog/how-to-grow-moringa-in-australia-complete-guide-2026 301
 /blog/growing-moringa-australia-honest-frost-pots-2026.html /blog/how-to-grow-moringa-in-australia-complete-guide-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026 /blog/moringa-capsules-vs-powder-which-is-better-2026 301
@@ -238,6 +242,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 
 /moringa-sydney /moringa-sydney/ 301
 /moringa-brisbane /moringa-brisbane/ 301
+/moringa-perth /moringa-perth/ 301
+/moringa-adelaide /moringa-adelaide/ 301
 
 # Removed blog slugs are not redirected — they 404 (no file, no rule).
 # PHASE 2 — Canonical extensionless blog URLs (auto-generated)

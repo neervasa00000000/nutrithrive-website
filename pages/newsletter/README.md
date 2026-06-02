@@ -6,12 +6,12 @@ Your newsletter subscription system is **already set up and working**!
 
 ### What Happens Now:
 - ✅ Users can subscribe from footer, homepage, or newsletter page
-- ✅ All subscriptions are sent to: **nutrithrive0@gmail.com**
+- ✅ All subscriptions are sent to: **hello@nutrithrive.com.au**
 - ✅ You get an email notification for each subscription
 - ✅ Users see a thank you page after subscribing
 
 ### Where Subscriptions Are Stored:
-**Your email inbox** - All subscription emails go to `nutrithrive0@gmail.com`
+**Your email inbox** - All subscription emails go to `hello@nutrithrive.com.au`
 
 ### To View All Subscribers:
 1. Check your email inbox

@@ -38,6 +38,7 @@ const PATH_BLOCKLIST = new Set([
   "scripts/templates/v2/pages/moringa-powder-test.html",
   "blog/index-directory.partial.html",
   "pages/shop/payment.html",
+  "buy-moringa-powder-australia/index.html",
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([]);
@@ -115,6 +116,9 @@ function fileToUrl(relPosix) {
   if (relPosix === "pages/newsletter/index.html") return `${BASE}/pages/newsletter/`;
 
   if (relPosix === "pages/homepage/melbourne.html") return `${BASE}/melbourne/`;
+
+  const cityIdx = /^moringa-(sydney|brisbane|perth|adelaide)\/index\.html$/.exec(relPosix);
+  if (cityIdx) return `${BASE}/moringa-${cityIdx[1]}/`;
 
   if (relPosix === "nutrithrive_labs/index.html") return `${BASE}/nutrithrive_labs/`;
 

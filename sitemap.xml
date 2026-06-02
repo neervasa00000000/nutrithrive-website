@@ -308,12 +308,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/buy-moringa-powder-australia/index.html</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nutrithrive.com.au/contact</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -332,13 +326,25 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/moringa-brisbane/index.html</loc>
+    <loc>https://nutrithrive.com.au/moringa-adelaide/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/moringa-brisbane/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/moringa-sydney/index.html</loc>
+    <loc>https://nutrithrive.com.au/moringa-perth/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/moringa-sydney/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

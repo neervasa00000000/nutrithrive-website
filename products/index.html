@@ -6,35 +6,18 @@
 <script src="/scripts/global/reddit-pixel.min.js"></script>
 
 <!-- Google Analytics - Deferred until user interaction -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true, crossorigin: 'anonymous'
-      }).then(function() {
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
-    }, { once: true, passive: true });
-  } else {
-    window.addEventListener('load', function() {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-WH21SW75WP');
-    });
-  }
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
 </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="https://nutrithrive.com.au/products/">
-    <title>Shop Moringa, Curry Leaves & Black Tea | Melbourne AU</title>
+    <title>Moringa Powder, Curry Leaves & Superfoods | NutriThrive</title>
        <meta name="description" content="Buy moringa, tea, curry leaves and soap from NutriThrive, Truganina. Lab-checked batches, vegan-friendly. Ships Australia-wide and worldwide.">
     <meta name="robots" content="index, follow">
 
@@ -575,7 +558,7 @@
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "email": "nutrithrive0@gmail.com",
+  "email": "hello@nutrithrive.com.au",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",
@@ -701,7 +684,7 @@
     <main class="products-shell">
         <section class="products-hero">
             <p class="eyebrow">Pure &amp; Potent</p>
-            <h1>Shop Premium Wellness</h1>
+            <h1>Shop Moringa Powder, Curry Leaves and Superfoods</h1>
             <p class="hero-lede">Sourced for purity, our 100% natural range supports immunity, digestion, and balance. Key products are batch-tracked with quality checks you can verify; small-batch made and shipped from Truganina, Melbourne.</p>
             <div class="hero-badges">
                 <span class="pill"><i data-lucide="leaf" class="icon"></i>100% Natural</span>

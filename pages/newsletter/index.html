@@ -5,24 +5,12 @@
 <script src="/scripts/global/defer-loader.min.js"></script>
 <script src="/scripts/global/reddit-pixel.min.js"></script>
 
-<!-- Google tag (gtag.js) - Deferred to prevent blocking render -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
 <script>
-  // Defer Google Analytics to prevent blocking render
-  window.addEventListener('load', function() {
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-    script.crossOrigin = 'anonymous';
-    document.head.appendChild(script);
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WH21SW75WP', {
-      'anonymize_ip': true,
-      'allow_google_signals': false
-    });
-  });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
 </script>
 
     <meta charset="UTF-8">
@@ -37,7 +25,8 @@
     <meta property="og:title" content="Newsletter Subscription | NutriThrive, Melbourne">
     <meta property="og:description" content="Subscribe to NutriThrive newsletter for health tips, product updates, and exclusive offers. Stay updated. NutriThrive, Truganina (Melbourne) — ships AU-wide.">
     <meta property="og:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp">
-    <meta property="og:site_name" content="NutriThrive Australia">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">    <meta property="og:site_name" content="NutriThrive Australia">
     <meta property="og:locale" content="en_AU">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://nutrithrive.com.au/pages/newsletter/">
@@ -85,7 +74,7 @@
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "email": "nutrithrive0@gmail.com",
+  "email": "hello@nutrithrive.com.au",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",

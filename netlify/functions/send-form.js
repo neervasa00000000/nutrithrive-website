@@ -2,10 +2,10 @@
  * Contact + newsletter email delivery.
  *
  * Configure ONE of these in Netlify → Site configuration → Environment variables:
- *   WEB3FORMS_ACCESS_KEY  — from https://web3forms.com (verify nutrithrive0@gmail.com)
- *   SMTP_USER + SMTP_PASS — Gmail app password for nutrithrive0@gmail.com
+ *   WEB3FORMS_ACCESS_KEY  — from https://web3forms.com (verify hello@nutrithrive.com.au)
+ *   SMTP_USER + SMTP_PASS — Gmail app password for hello@nutrithrive.com.au
  *
- * Optional: FORM_EMAIL_TO (defaults to nutrithrive0@gmail.com)
+ * Optional: FORM_EMAIL_TO (defaults to hello@nutrithrive.com.au)
  */
 
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
@@ -198,7 +198,7 @@ export async function handler(event) {
             };
         }
 
-        const toEmail = process.env.FORM_EMAIL_TO || "nutrithrive0@gmail.com";
+        const toEmail = process.env.FORM_EMAIL_TO || "hello@nutrithrive.com.au";
         const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
         const smtpUser = process.env.SMTP_USER;
         const smtpPass = process.env.SMTP_PASS;
