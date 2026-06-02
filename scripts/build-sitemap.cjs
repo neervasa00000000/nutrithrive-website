@@ -36,6 +36,8 @@ const PATH_BLOCKLIST = new Set([
   "pages/melbourne-page.html",
   "scripts/quit-sugar-article-body.html",
   "scripts/templates/v2/pages/moringa-powder-test.html",
+  "blog/index-directory.partial.html",
+  "pages/shop/payment.html",
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([]);
@@ -61,12 +63,18 @@ function walkHtml(dir, out = []) {
         name.name === ".netlify" ||
         name.name === ".netlify-publish" ||
         name.name === ".build" ||
-        name.name === "audit"
+        name.name === "audit" ||
+        name.name === "nutrithrive_labs" ||
+        name.name === "scripts"
       ) {
         continue;
       }
       walkHtml(full, out);
-    } else if (name.isFile() && name.name.toLowerCase().endsWith(".html")) {
+    } else if (
+      name.isFile() &&
+      name.name.toLowerCase().endsWith(".html") &&
+      !name.name.toLowerCase().includes(".partial.")
+    ) {
       out.push(full);
     }
   }
@@ -245,6 +253,8 @@ function main() {
 
     const loc = fileToUrl(rel);
     if (loc.includes("/.firecrawl/") || loc.includes("/.netlify/")) continue;
+    if (loc.includes("/nutrithrive_labs/")) continue;
+    if (rel.includes(".partial.")) continue;
     const { priority, changefreq } = priorityAndFreq(loc);
     entries.push({
       loc,
