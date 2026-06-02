@@ -35,7 +35,7 @@ function hasNoindex(html) {
 
 const all = fs
   .readdirSync(BLOG_DIR)
-  .filter((f) => f.endsWith('.html') && f !== 'index.html')
+  .filter((f) => f.endsWith('.html') && f !== 'index.html' && !f.includes('.partial.'))
   .filter((f) => {
     const html = fs.readFileSync(path.join(BLOG_DIR, f), 'utf8');
     return !hasNoindex(html);

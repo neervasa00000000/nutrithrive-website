@@ -12,6 +12,10 @@
 /assets/images/product_photos/webp/thumbs/moringa.webp /assets/images/product_photos/moringa.webp 301
 /assets/images/product_photos/moringa.jpeg /assets/images/product_photos/moringa.webp 301
 
+# Internal blog partial (was mistakenly published under /blog/)
+/blog/index-directory.partial /blog/ 301!
+/blog/index-directory.partial.html /blog/ 301!
+
 # Dev / audit paths (must not be crawled or linked as live pages; ! forces even when file exists)
 /scripts/* /scripts/:splat 404!
 /audit/* /audit/:splat 404!

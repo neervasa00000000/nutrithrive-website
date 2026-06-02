@@ -359,7 +359,7 @@ function generateBlogArticlesJs() {
   const blogDir = path.join(REPO, 'blog');
   const files = fs
     .readdirSync(blogDir)
-    .filter((f) => f.endsWith('.html') && f !== 'index.html')
+    .filter((f) => f.endsWith('.html') && f !== 'index.html' && !f.includes('.partial.'))
     .sort();
 
   const articles = files.map((file) => {
@@ -377,7 +377,7 @@ function generateBlogArticlesJs() {
     let category = 'Wellness';
     const cat = raw.match(/rounded-full[^>]*font-label-sm[^>]*uppercase[^>]*>([^<]+)</i);
     if (cat) category = cat[1].trim();
-    return { slug, title, description, category, href: `/blog/${file}` };
+    return { slug, title, description, category, href: `/blog/${slug}` };
   });
 
   const js = `/** Auto-generated — ${articles.length} blog articles. Run: node scripts/build-live-v2.mjs */\nwindow.NT_BLOG_ARTICLES = ${JSON.stringify(articles, null, 2)};\n`;

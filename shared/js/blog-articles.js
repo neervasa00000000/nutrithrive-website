@@ -148,13 +148,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026"
   },
   {
-    "slug": "index-directory.partial",
-    "title": "index directory.partial",
-    "description": "",
-    "category": "Wellness",
-    "href": "/blog/index-directory.partial"
-  },
-  {
     "slug": "is-moringa-banned-australia-truth-2026",
     "title": "Is Moringa Banned in Australia? The Truth About Moringa Safety (2026)",
     "description": "No — moringa is not banned in Australia (2026). What the TGA actually regulates, why the TikTok rumour spread, how to buy safe legal moringa, and NutriThrive compliance explained.",
