@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Writes blog/index-directory.partial.html from shared/js/blog-articles.js */
+/** Writes scripts/partials/blog-index-directory.inc.html from shared/js/blog-articles.js (not a public URL) */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -11,6 +11,7 @@ const articles = JSON.parse(json);
 
 const byCat = {};
 for (const a of articles) {
+  if (a.slug.includes('.partial') || a.slug === 'index-directory') continue;
   const cat = a.category.replace(/&amp;/g, '&');
   if (!byCat[cat]) byCat[cat] = [];
   byCat[cat].push(a);
@@ -37,6 +38,8 @@ for (const [cat, items] of Object.entries(byCat).sort(([a], [b]) => a.localeComp
 }
 html += `</section>\n`;
 
-const out = path.join(ROOT, 'blog/index-directory.partial.html');
+const outDir = path.join(ROOT, 'scripts/partials');
+fs.mkdirSync(outDir, { recursive: true });
+const out = path.join(outDir, 'blog-index-directory.inc.html');
 fs.writeFileSync(out, html);
 console.log('Wrote', out, `(${articles.length} articles)`);
