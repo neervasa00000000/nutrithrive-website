@@ -30,8 +30,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "best-superfoods-australia-comparison-health-conscious-adults",
-    "title": "Ten Superfoods Australians Actually Buy — And What I Skip",
-    "description": "Superfoods sell fast in Australia in 2026—which earn shelf space? We compare moringa, spirulina, and matcha on cost per serve, habit fit, and honest limits.",
+    "title": "Best Moringa Powder Australia 2026 — 8 Brands Lab-Tested & Ranked",
+    "description": "We tested 8 Australian moringa brands in 2026 including Rosabella and NutriThrive. Lab results, colour tests, price per 100g, and the honest verdict.",
     "category": "Research Guide",
     "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
   },
@@ -198,8 +198,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Moringa Chemist Warehouse &amp; Capsules: What We Found (2026)",
-    "description": "Bought moringa capsules from Chemist Warehouse and compared them to NutriThrive powder: colour, dose, listed sale price vs RRP context, and lab transparency.",
+    "title": "Moringa Capsules Chemist Warehouse vs NutriThrive — Honest 2026 Test",
+    "description": "We bought Rosabella moringa capsules from Chemist Warehouse (~$25) and tested them against NutriThrive at $11/100g. Colour test, dose maths, lab results, and real cost per day.",
     "category": "Research Guide",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
   },
