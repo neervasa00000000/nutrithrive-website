@@ -93,8 +93,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "high-protein-moringa-recipes-australia-2026",
-    "title": "High-Protein Moringa Meals I Actually Cook in Australia",
-    "description": "10 tested high-protein moringa recipes: breakfast bowls, lattes, savoury dinners and snacks. Under 10 minutes each, real ingredients, actual protein counts.",
+    "title": "Best Moringa Protein Powder Recipes Australia 2026 — 10 High-Protein Meals",
+    "description": "Moringa vs protein powder: 10 tested Australian recipes, 15-40g protein per serve. Plant protein alternative — 25-28% protein, all 9 amino acids, no bloat.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/high-protein-moringa-recipes-australia-2026"
   },
