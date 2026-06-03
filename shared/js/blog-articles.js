@@ -2,8 +2,8 @@
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "10-dollar-superfood-replaced-200-supplement-stack-australia-2026",
-    "title": "How a $10 Moringa Habit Replaced My $200 Supplement Stack",
-    "description": "One $10 moringa habit replaced my $200 monthly stack in 2026: what changed, what flopped, and what Australians should know before they switch.",
+    "title": "Moringa vs AG1 Australia — $11 Alternative to $150/Month Greens (2026)",
+    "description": "AG1 costs $150+/month in Australia. NutriThrive moringa is $11/100g. Honest 3-month comparison: what moringa replaces, what it doesn't, and who should switch.",
     "category": "Local Guide",
     "href": "/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026"
   },
