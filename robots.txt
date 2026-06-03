@@ -7,6 +7,7 @@
 User-agent: *
 Disallow: /nutrithrive_labs/
 Disallow: /nutrithrive-labs/
+Disallow: /crazy-ideas/
 Disallow: /shared/
 Allow: /
 
