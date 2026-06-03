@@ -6,6 +6,8 @@
 # ====================
 User-agent: *
 Disallow: /nutrithrive_labs/
+Disallow: /nutrithrive-labs/
+Disallow: /shared/
 Allow: /
 
 # ====================

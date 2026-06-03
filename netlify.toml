@@ -3,6 +3,16 @@
   publish = ".netlify-publish"
 
 [[headers]]
+  for = "/shared/components/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/nutrithrive_labs/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
   for = "/assets/css/*.min.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

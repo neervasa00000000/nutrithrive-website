@@ -38,6 +38,7 @@ const PATH_BLOCKLIST = new Set([
   "scripts/templates/v2/pages/moringa-powder-test.html",
   "pages/shop/payment.html",
   "buy-moringa-powder-australia/index.html",
+  "shared/components/author-bio.html",
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([]);
@@ -257,6 +258,8 @@ function main() {
     const loc = fileToUrl(rel);
     if (loc.includes("/.firecrawl/") || loc.includes("/.netlify/")) continue;
     if (loc.includes("/nutrithrive_labs/")) continue;
+    if (loc.includes("/shared/")) continue;
+    if (rel.startsWith("shared/")) continue;
     if (rel.includes(".partial.")) continue;
     const { priority, changefreq } = priorityAndFreq(loc);
     entries.push({
