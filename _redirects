@@ -76,9 +76,25 @@
 # Chemist Warehouse comparison — live at slug below (extensionless → .html via global blog rule)
 /blog/rosabella-moringa-reviews-legit-or-overhyped-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
 /blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
-/buy-moringa-powder-australia/ /products/moringa-powder/ 301
-/buy-moringa-powder-australia /products/moringa-powder/ 301
-/buy-moringa-powder-australia/index.html /products/moringa-powder/ 301
+/buy-moringa-powder-australia/ /products/moringa-powder/ 301!
+/buy-moringa-powder-australia /products/moringa-powder/ 301!
+/buy-moringa-powder-australia/index.html /products/moringa-powder/ 301!
+/moringa-brisbane/index.html /moringa-brisbane/ 301!
+/moringa-sydney/index.html /moringa-sydney/ 301!
+/moringa-perth/index.html /moringa-perth/ 301!
+/moringa-adelaide/index.html /moringa-adelaide/ 301!
+
+# Retired blog slugs → live canonical (GSC still shows old URLs)
+/blog/moringa-vs-matcha-energy-metabolism-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/moringa-vs-matcha-energy-metabolism-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/best-protein-powder-australia-2026-complete-guide /blog/high-protein-moringa-recipes-australia-2026 301
+/blog/best-protein-powder-australia-2026-complete-guide.html /blog/high-protein-moringa-recipes-australia-2026 301
 /blog/growing-moringa-australia-honest-frost-pots-2026 /blog/how-to-grow-moringa-in-australia-complete-guide-2026 301
 /blog/growing-moringa-australia-honest-frost-pots-2026.html /blog/how-to-grow-moringa-in-australia-complete-guide-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026 /blog/moringa-capsules-vs-powder-which-is-better-2026 301
@@ -143,8 +159,6 @@
 # Pretty blog URL → canonical .html (live post; do not 404)
 
 # Removed off-topic posts (explicit 404 for legacy / pretty URLs)
-/blog/best-protein-powder-australia-2026-complete-guide /blog/best-protein-powder-australia-2026-complete-guide 404
-/blog/best-protein-powder-australia-2026-complete-guide.html /blog/best-protein-powder-australia-2026-complete-guide.html 404
 /blog/moringa-breastfeeding-mums-natural-lactation-support /blog/moringa-breastfeeding-mums-natural-lactation-support 404
 /blog/moringa-breastfeeding-mums-natural-lactation-support.html /blog/moringa-breastfeeding-mums-natural-lactation-support.html 404
 /blog/musashi-protein-powder-australia-comprehensive-guide-2026 /blog/musashi-protein-powder-australia-comprehensive-guide-2026 404
@@ -171,21 +185,23 @@
 /blog/state-of-australian-schooling-2026-comprehensive-analysis.html /blog/state-of-australian-schooling-2026-comprehensive-analysis.html 404
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods 404
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html 404
-/nutrithrive_labs/dedup-lines /nutrithrive_labs/dedup-lines.html 301
-/nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 301
-/nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 301
+/nutrithrive_labs/dedup-lines /nutrithrive_labs/dedup-lines.html 404!
+/nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 404!
+/nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 404!
+/nutrithrive_labs/* /404.html 404!
+/nutrithrive-labs/* /404.html 404!
 
-# Hyphen alias → canonical /nutrithrive_labs/ (same files; readability)
-/nutrithrive-labs /nutrithrive_labs/ 301
-/nutrithrive-labs/ /nutrithrive_labs/ 301
-/nutrithrive-labs/dedup-lines /nutrithrive_labs/dedup-lines.html 301
-/nutrithrive-labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 301
-/nutrithrive-labs/time-converter /nutrithrive_labs/time-converter.html 301
-/nutrithrive-labs/converter /nutrithrive_labs/converter.html 301
-/nutrithrive-labs/quick-notes /nutrithrive_labs/quick-notes.html 301
-/nutrithrive-labs/pomodoro-timer /nutrithrive_labs/pomodoro-timer.html 301
-/nutrithrive-labs/ai-text-detector /nutrithrive_labs/ai-text-detector.html 301
-/nutrithrive-labs/password-generator /nutrithrive_labs/password-generator.html 301
+# Hyphen alias → blocked (was public dev tools)
+/nutrithrive-labs /404.html 404!
+/nutrithrive-labs/ /404.html 404!
+/nutrithrive-labs/dedup-lines /404.html 404!
+/nutrithrive-labs/sitemap-generator /404.html 404!
+/nutrithrive-labs/time-converter /404.html 404!
+/nutrithrive-labs/converter /404.html 404!
+/nutrithrive-labs/quick-notes /404.html 404!
+/nutrithrive-labs/pomodoro-timer /404.html 404!
+/nutrithrive-labs/ai-text-detector /404.html 404!
+/nutrithrive-labs/password-generator /404.html 404!
 
 # Typo: double slash in blog paths
 /blog// /blog/ 301
