@@ -21,7 +21,7 @@ const slugs = fs
 const H1_OVERRIDES = {
   'best-greens-powder-australia-2026': 'I Compared Greens Powders in Australia — What I’d Buy Again',
   'best-superfoods-australia-comparison-health-conscious-adults':
-    'Ten Superfoods Australians Actually Buy — And What I Skip',
+    'Best Superfoods in Australia 2026: Moringa, Curry Leaves & Black Tea',
   'chronic-fatigue-what-actually-fixed-it-2026':
     'What Helped My Energy After Years of Feeling Flat',
   'cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026':

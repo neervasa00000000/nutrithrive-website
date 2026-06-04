@@ -58,7 +58,7 @@
         insertBio(
           prose,
           '<div class="nt-author-bio" data-nt-author-bio><div class="nt-author-bio-inner">' +
-            '<img class="nt-author-bio-avatar" src="/assets/images/logo/LOGO.webp" alt="Neer, NutriThrive founder" width="80" height="80" loading="lazy" decoding="async"/>' +
+            '<img class="nt-author-bio-avatar" src="/assets/images/logo/LOGO-80.jpg" alt="Neer, NutriThrive founder" width="80" height="80" loading="lazy" decoding="async"/>' +
             '<div class="nt-author-bio-body"><h2 class="nt-author-bio-name">Written by Neer</h2>' +
             '<p class="nt-author-bio-text">Founder of NutriThrive, Truganina VIC. Not a health professional—see disclaimer below.</p></div></div></div>'
         );
