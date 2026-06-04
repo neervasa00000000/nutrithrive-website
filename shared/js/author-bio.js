@@ -39,6 +39,7 @@
   }
 
   function init() {
+    if (document.body && (document.body.dataset.ntSkipAuthorBio === 'true' || document.body.dataset.ntPerfLite === 'true')) return;
     var prose = document.querySelector('article .blog-v2-prose, main .blog-v2-prose');
     if (!prose) return;
 
