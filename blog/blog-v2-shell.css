@@ -1,15 +1,19 @@
 /**
- * Blog v2 shell — align typography and header with site-wide Inter + design-system.
+ * Blog v2 shell — system fonts first; optional Plus Jakarta via page-level async load.
  * Loaded via @import from blog-v2-prose.css and blog-v2-index.css (all v2 blog pages).
  */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
 
-/* Inter stack (matches about / products / design-system.css) */
 .nt-blog-article,
 .nt-blog-index,
 .nt-blog-article .nt-blog-main,
 .nt-blog-index main {
-  font-family: var(--font-primary, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.nt-blog-article.fonts-loaded,
+.nt-blog-article.fonts-loaded .nt-blog-main,
+.nt-blog-index.fonts-loaded {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* Override Tailwind v2 token fonts (Literata / Plus Jakarta in inline config) */
@@ -41,7 +45,7 @@
 /* Blog site header — match global navbar (Inter, legacy nav inside #nt-header) */
 .nt-blog-article #nt-header,
 .nt-blog-index #nt-header {
-  font-family: var(--font-primary, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+  font-family: inherit;
 }
 
 /* Legacy navbar from layout-v2.js — blog pages do not load styles/global/style.css */

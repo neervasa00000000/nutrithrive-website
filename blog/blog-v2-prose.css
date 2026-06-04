@@ -11,7 +11,7 @@
 .blog-v2-prose h3,
 .blog-v2-prose h4 {
   color: #1a2e22;
-  font-family: var(--font-heading, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+  font-family: inherit;
   font-weight: 600;
   scroll-margin-top: 6rem;
 }
