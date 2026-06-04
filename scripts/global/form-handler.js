@@ -133,7 +133,7 @@
                     /* fall through */
                 }
             }
-            showInlineError(form, err.message || "Something went wrong. Please email hello@nutrithrive.com.au directly.");
+            showInlineError(form, err.message || "Something went wrong. Please email nutrithrive0@gmail.com directly.");
         } finally {
             setBusy(form, false);
         }
