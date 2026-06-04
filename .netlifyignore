@@ -6,13 +6,9 @@ audit/
 scripts/templates/
 tools/
 crawl_results.json
-nutrithrive_crawl.js
-nutrithrive_audit.js
-nutrithrive_fixes.js
+audit/crawl_results.json
 issues/
 *.csv
-SECURITY_REPORT.md
-FIX_PRIORITY_LIST.md
-SAFE_ENV_EXAMPLE.md
-SECURITY_HEADERS.md
-RATE_LIMITING_GUIDE.md
+auto_fixes.md
+seo_audit_report.txt
+nutrithrive-seo-diagnostic-report-*.md

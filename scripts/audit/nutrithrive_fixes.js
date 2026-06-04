@@ -1,6 +1,12 @@
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const data = JSON.parse(fs.readFileSync('crawl_results.json', 'utf8'));
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const CRAWL = path.join(ROOT, 'audit', 'crawl_results.json');
+const FIXES = path.join(ROOT, 'audit', 'reports', 'auto_fixes.md');
+
+const data = JSON.parse(fs.readFileSync(CRAWL, 'utf8'));
 const pages = data.data || [];
 
 let fixFile = `# NUTRITHRIVE AUTO-GENERATED FIX FILE
@@ -56,6 +62,7 @@ pages.forEach(page => {
   }
 });
 
-fs.writeFileSync('auto_fixes.md', fixFile);
-console.log('Fix file saved to auto_fixes.md');
+fs.mkdirSync(path.dirname(FIXES), { recursive: true });
+fs.writeFileSync(FIXES, fixFile);
+console.log(`Fix file saved to ${FIXES}`);
 console.log(`Generated fixes for pages with issues`);
