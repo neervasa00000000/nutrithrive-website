@@ -13,6 +13,7 @@ node_modules/
 .firecrawl/.firecrawl
 .firecrawl/
 crawl_results.json
+audit/crawl_results.json
 
 # Python bytecode cache
 __pycache__/

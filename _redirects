@@ -18,7 +18,11 @@
 
 # Local crawl/audit artifacts (must never be public)
 /crawl_results.json /404.html 404!
+/seo_audit_report.txt /404.html 404!
+/auto_fixes.md /404.html 404!
+/nutrithrive_audit.js /404.html 404!
 /nutrithrive_crawl.js /404.html 404!
+/nutrithrive_fixes.js /404.html 404!
 
 # Dev / audit paths (must not be crawled or linked as live pages; ! forces even when file exists)
 /scripts/* /scripts/:splat 404!

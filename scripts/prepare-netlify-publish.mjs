@@ -25,22 +25,17 @@ const IGNORE = new Set([
 
 const IGNORE_FILES = new Set([
   'crawl_results.json',
-  'nutrithrive_crawl.js',
-  'nutrithrive_audit.js',
-  'nutrithrive_fixes.js',
 ]);
 
 function shouldIgnore(rel) {
   if (!rel) return false;
   const parts = rel.split('/');
   if (IGNORE.has(parts[0])) return true;
-  if (parts[0] === 'scripts' && parts[1] === 'templates') return true;
+  if (parts[0] === 'scripts' && (parts[1] === 'templates' || parts[1] === 'audit')) return true;
+  if (parts[0] === 'docs') return true;
   const base = parts[parts.length - 1];
   if (IGNORE_FILES.has(base)) return true;
   if (base.endsWith('.csv')) return true;
-  if (base.startsWith('SECURITY_') || base === 'FIX_PRIORITY_LIST.md' || base === 'SAFE_ENV_EXAMPLE.md' || base === 'RATE_LIMITING_GUIDE.md') {
-    return true;
-  }
   return false;
 }
 

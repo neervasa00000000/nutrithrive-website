@@ -1,6 +1,12 @@
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const data = JSON.parse(fs.readFileSync('crawl_results.json', 'utf8'));
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const CRAWL = path.join(ROOT, 'audit', 'crawl_results.json');
+const REPORT = path.join(ROOT, 'audit', 'reports', 'seo_audit_report.txt');
+
+const data = JSON.parse(fs.readFileSync(CRAWL, 'utf8'));
 const pages = data.data || [];
 
 const issues = {
@@ -237,6 +243,7 @@ issues.good.slice(0, 10).forEach(page => {
   report += `${page.url}\n`;
 });
 
-fs.writeFileSync('seo_audit_report.txt', report);
+fs.mkdirSync(path.dirname(REPORT), { recursive: true });
+fs.writeFileSync(REPORT, report);
 console.log(report);
-console.log('\nFull report saved to seo_audit_report.txt');
+console.log(`\nFull report saved to ${REPORT}`);
