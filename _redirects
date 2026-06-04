@@ -16,6 +16,10 @@
 /blog/index-directory.partial /blog/ 301!
 /blog/index-directory.partial.html /blog/ 301!
 
+# Local crawl/audit artifacts (must never be public)
+/crawl_results.json /404.html 404!
+/nutrithrive_crawl.js /404.html 404!
+
 # Dev / audit paths (must not be crawled or linked as live pages; ! forces even when file exists)
 /scripts/* /scripts/:splat 404!
 /audit/* /audit/:splat 404!

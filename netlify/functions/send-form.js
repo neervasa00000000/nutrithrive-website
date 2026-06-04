@@ -61,6 +61,23 @@ function cleanText(value, maxLen = 5000) {
         .slice(0, maxLen);
 }
 
+async function verifyTurnstile(token, ip) {
+    const secret = process.env.TURNSTILE_SECRET_KEY;
+    if (!secret) return true;
+    if (!token) return false;
+    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+            secret,
+            response: token,
+            remoteip: ip,
+        }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return data.success === true;
+}
+
 async function sendViaWeb3Forms({ accessKey, toEmail, formType, name, email, subject, message, pageUrl }) {
     const emailSubject =
         subject ||
@@ -174,6 +191,29 @@ export async function handler(event) {
         }
 
         const payload = JSON.parse(event.body || "{}");
+
+        if (cleanText(payload.website, 200)) {
+            return {
+                statusCode: 200,
+                headers,
+                body: JSON.stringify({ ok: true }),
+            };
+        }
+
+        const turnstileOk = await verifyTurnstile(
+            cleanText(payload.turnstileToken, 2048),
+            clientIp
+        );
+        if (!turnstileOk) {
+            return {
+                statusCode: 403,
+                headers,
+                body: JSON.stringify({
+                    error: "Verification failed. Please refresh the page and try again.",
+                }),
+            };
+        }
+
         const formType = cleanText(payload.formType, 32) || "contact";
         const name = cleanText(payload.name, 200);
         const email = cleanText(payload.email, 320);
@@ -214,8 +254,7 @@ export async function handler(event) {
                 statusCode: 503,
                 headers,
                 body: JSON.stringify({
-                    error: "Email delivery is not configured on the server",
-                    hint: "Add WEB3FORMS_ACCESS_KEY or SMTP_USER + SMTP_PASS in Netlify environment variables, then redeploy.",
+                    error: "Email delivery is temporarily unavailable. Please try again later.",
                     fallback: "netlify-forms",
                 }),
             };
@@ -232,8 +271,7 @@ export async function handler(event) {
             statusCode: 500,
             headers,
             body: JSON.stringify({
-                error: "Failed to send message",
-                detail: err?.message || "Unknown error",
+                error: "Failed to send message. Please try again or call 0438 201 419.",
             }),
         };
     }
