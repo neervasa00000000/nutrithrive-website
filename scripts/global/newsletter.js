@@ -1,6 +1,6 @@
 // Newsletter Subscription Handler
 document.addEventListener('DOMContentLoaded', function() {
-    // ✅ CURRENT SETUP: Emails are sent to hello@nutrithrive.com.au
+    // ✅ CURRENT SETUP: Emails are sent to nutrithrive0@gmail.com
     // ✅ All subscriptions are stored in your email inbox
     // ✅ You can manually copy emails to Google Sheets if needed
     // 

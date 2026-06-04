@@ -10,6 +10,7 @@
     "build:minify": "node scripts/build-assets.mjs --skip-tailwind"
   },
   "dependencies": {
+    "firecrawl": "^4.25.2",
     "nodemailer": "^6.10.1"
   },
   "devDependencies": {
