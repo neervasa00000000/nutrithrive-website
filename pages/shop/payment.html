@@ -15,6 +15,10 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-WH21SW75WP', { anonymize_ip: true, allow_google_signals: false });
+
+    if (typeof trackBeginCheckout === 'function') {
+      trackBeginCheckout();
+    }
   });
 </script>
     <meta charset="UTF-8">
@@ -379,6 +383,30 @@
             return `$${Number(n || 0).toFixed(2)}`;
         }
 
+        function trackBeginCheckout() {
+            if (window._ntBeginCheckoutSent) return;
+            const cart = getCart();
+            if (!cart.items || cart.items.length === 0) return;
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            const items = cart.items.map(function (item) {
+                return {
+                    item_id: String(item.id || 'MORINGA').slice(0, 50),
+                    item_name: String(item.name || 'NutriThrive Product').slice(0, 100),
+                    item_category: 'Moringa Powder',
+                    price: parseFloat(item.price) || 0,
+                    quantity: parseInt(item.quantity || 1, 10) || 1
+                };
+            });
+            const value = computeSubtotal(cart.items);
+            gtag('event', 'begin_checkout', {
+                currency: 'AUD',
+                value: value,
+                items: items
+            });
+            window._ntBeginCheckoutSent = true;
+        }
+
         function computeSubtotal(items) {
             return Number((items || []).reduce((sum, item) => {
                 const qty = Number.parseInt(item.quantity || 1, 10);
@@ -512,8 +540,45 @@
                     }).then(res => res.json().then(payload => ({ ok: res.ok, payload })))
                     .then(result => {
                         if (!result.ok) throw new Error(result.payload.error || 'Payment failed');
+                        var cart = getCart();
+                        var items = cart.items || [];
+                        var qty = items.reduce(function (sum, item) {
+                            return sum + (parseInt(item.quantity || 1, 10) || 1);
+                        }, 0) || 1;
+                        var itemName = items.length === 1
+                            ? String(items[0].name || 'NutriThrive Moringa Powder')
+                            : items.map(function (i) { return i.name; }).join(', ').slice(0, 120);
+                        var orderValue = computeSubtotal(items);
+                        var shippingText = document.getElementById('shipping');
+                        var totalText = document.getElementById('total');
+                        if (totalText && totalText.textContent) {
+                            var parsedTotal = parseFloat(String(totalText.textContent).replace(/[^0-9.]/g, ''));
+                            if (Number.isFinite(parsedTotal) && parsedTotal > 0) {
+                                orderValue = parsedTotal;
+                            }
+                        }
+                        var capture = result.payload || {};
+                        var captureAmount = capture.purchase_units &&
+                            capture.purchase_units[0] &&
+                            capture.purchase_units[0].payments &&
+                            capture.purchase_units[0].payments.captures &&
+                            capture.purchase_units[0].payments.captures[0] &&
+                            capture.purchase_units[0].payments.captures[0].amount &&
+                            capture.purchase_units[0].payments.captures[0].amount.value;
+                        if (!captureAmount && capture.purchase_units && capture.purchase_units[0] && capture.purchase_units[0].amount) {
+                            captureAmount = capture.purchase_units[0].amount.value;
+                        }
+                        if (captureAmount) {
+                            orderValue = parseFloat(captureAmount) || orderValue;
+                        }
                         window.Cart.clear();
-                        window.location.href = '/thank-you.html?orderId=' + (data.orderID || data.id);
+                        var thankYouParams = new URLSearchParams({
+                            orderId: String(data.orderID || data.id || ''),
+                            value: String(orderValue),
+                            item: itemName,
+                            qty: String(qty)
+                        });
+                        window.location.href = '/thank-you.html?' + thankYouParams.toString();
                     }).catch(err => alert('Payment error: ' + err.message));
                 },
                 onError: function (err) {
@@ -537,6 +602,7 @@
         }
 
         function bootCheckout() {
+            trackBeginCheckout();
             populateCountryDropdown();
             renderOrderReview();
             updateShippingAndTotal();
