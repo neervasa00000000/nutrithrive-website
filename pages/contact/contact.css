@@ -857,6 +857,14 @@ footer {
     box-shadow: var(--shadow);
 }
 
+.google-map iframe,
+.google-map .contact-map-embed {
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    border: 0;
+}
+
 .map-embed-caption {
     margin: 0.65rem 0 0;
     font-size: 0.9rem;
