@@ -30,8 +30,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "best-superfoods-australia-comparison-health-conscious-adults",
-    "title": "Best Moringa Powder Australia 2026 — 8 Brands Lab-Tested & Ranked",
-    "description": "We tested 8 Australian moringa brands in 2026 including Rosabella and NutriThrive. Lab results, colour tests, price per 100g, and the honest verdict.",
+    "title": "Best Superfoods Australia 2026 – Moringa, Spirulina & Tea",
+    "description": "Australia's best superfoods of 2026—moringa, spirulina, curry leaves & black tea compared for busy adults. Trends, L-theanine focus & where to buy locally.",
     "category": "Research Guide",
     "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
   },

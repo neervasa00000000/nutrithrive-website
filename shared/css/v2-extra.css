@@ -108,6 +108,17 @@ body.has-test-banner main {
   align-items: stretch;
   min-width: 0;
 }
+/* Reserve space before header/footer JS injects (blog CLS) */
+.nt-blog-article #nt-header {
+  min-height: 7.5rem;
+}
+.nt-blog-article #nt-footer {
+  min-height: 22rem;
+}
+.nt-blog-article aside.lg\:col-span-4 {
+  min-height: 12rem;
+}
+
 .nt-home-feature-media {
   display: flex;
   align-items: center;
@@ -400,7 +411,7 @@ details[open] .expand-icon {
 .nt-footer-copy {
   margin: 0;
   font-size: 0.875rem;
-  opacity: 0.5;
+  color: #c5d4cb;
 }
 .nt-footer-social {
   width: 2.5rem;
