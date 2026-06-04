@@ -14,7 +14,16 @@
 
     function thankYouUrl(form) {
         const next = form.querySelector('input[name="_next"]');
-        if (next && next.value) return next.value;
+        const raw = next && next.value ? String(next.value).trim() : "";
+        const allowed = new Set([
+            "/pages/newsletter/thank-you.html",
+            "/pages/contact/thank-you.html",
+            "https://nutrithrive.com.au/pages/newsletter/thank-you.html",
+            "https://nutrithrive.com.au/pages/contact/thank-you.html",
+        ]);
+        if (raw && (allowed.has(raw) || raw.startsWith("https://nutrithrive.com.au/"))) {
+            return raw;
+        }
         const name = (form.getAttribute("name") || "").toLowerCase();
         if (name === "newsletter") return "/pages/newsletter/thank-you.html";
         return "/pages/contact/thank-you.html";
@@ -101,6 +110,7 @@
             subject: fd.get("subject") || fd.get("_subject") || "",
             message: fd.get("message") || "",
             pageUrl: window.location.href,
+            website: fd.get("website") || "",
         };
 
         setBusy(form, true);
@@ -139,9 +149,23 @@
         }
     }
 
+    function ensureHoneypot(form) {
+        if (!form || form.querySelector('input[name="website"]')) return;
+        const hp = document.createElement("input");
+        hp.name = "website";
+        hp.type = "text";
+        hp.tabIndex = -1;
+        hp.autocomplete = "off";
+        hp.setAttribute("aria-hidden", "true");
+        hp.style.cssText =
+            "position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;";
+        form.appendChild(hp);
+    }
+
     function bindForm(form) {
         if (!form || form.dataset.ntEmailBound) return;
         form.dataset.ntEmailBound = "1";
+        ensureHoneypot(form);
         form.addEventListener("submit", (e) => {
             e.preventDefault();
             submitEmailForm(form);
@@ -162,4 +186,6 @@
         const observer = new MutationObserver(scan);
         observer.observe(document.body, { childList: true, subtree: true });
     });
+
+    window.__ntBindEmailForms = scan;
 })();

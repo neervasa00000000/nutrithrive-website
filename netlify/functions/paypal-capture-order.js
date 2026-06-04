@@ -99,16 +99,12 @@ export async function handler(event) {
         const secret = process.env.PAYPAL_CLIENT_SECRET;
 
         if (!client || !secret) {
-            const missing = [];
-            if (!client) missing.push("PAYPAL_CLIENT_ID");
-            if (!secret) missing.push("PAYPAL_CLIENT_SECRET");
+            console.error("[paypal-capture-order] PayPal credentials not configured");
             return {
-                statusCode: 500,
+                statusCode: 503,
                 headers,
-                body: JSON.stringify({ 
-                    error: "Missing PayPal environment variables",
-                    missing: missing,
-                    hint: "Please check Netlify environment variables and redeploy"
+                body: JSON.stringify({
+                    error: "Payment is temporarily unavailable. Please try again later.",
                 }),
             };
         }
@@ -154,11 +150,13 @@ export async function handler(event) {
             body: JSON.stringify(capture),
         };
     } catch (err) {
-        console.error("Capture order error:", err);
+        console.error("[paypal-capture-order]", err);
         return {
             statusCode: 500,
             headers,
-            body: JSON.stringify({ error: String(err) }),
+            body: JSON.stringify({
+                error: "Unable to complete payment. Please try again.",
+            }),
         };
     }
 }

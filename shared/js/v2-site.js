@@ -741,15 +741,47 @@
     });
   }
 
-  function initNewsletterForm() {
-    const form = $('#nt-newsletter-form');
-    if (!form) return;
+  function prepareNewsletterForm(form) {
+    if (!form || form.dataset.ntEmailPrepared) return;
     const action = (form.getAttribute('action') || '').toLowerCase();
-    if (action.includes('formsubmit')) return;
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      window.location.href = '/pages/newsletter/thank-you.html';
-    });
+    if (action.includes('formsubmit')) {
+      form.setAttribute('data-nt-email-form', 'true');
+    }
+    form.dataset.ntEmailPrepared = '1';
+    if (!form.getAttribute('name')) form.setAttribute('name', 'newsletter');
+    if (!form.getAttribute('data-nt-form-type')) form.setAttribute('data-nt-form-type', 'newsletter');
+    const emailInput = form.querySelector('input[type="email"]');
+    if (emailInput && !emailInput.getAttribute('name')) {
+      emailInput.setAttribute('name', 'email');
+    }
+    const captchaOff = form.querySelector('input[name="_captcha"][value="false"]');
+    if (captchaOff) captchaOff.remove();
+    if (!form.querySelector('input[name="_next"]')) {
+      const next = document.createElement('input');
+      next.type = 'hidden';
+      next.name = '_next';
+      next.value = 'https://nutrithrive.com.au/pages/newsletter/thank-you.html';
+      form.appendChild(next);
+    }
+    if (!form.querySelector('input[name="website"]')) {
+      const hp = document.createElement('input');
+      hp.name = 'website';
+      hp.type = 'text';
+      hp.tabIndex = -1;
+      hp.autocomplete = 'off';
+      hp.setAttribute('aria-hidden', 'true');
+      hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
+      form.appendChild(hp);
+    }
+  }
+
+  function initNewsletterForm() {
+    const ntForm = $('#nt-newsletter-form');
+    if (ntForm) prepareNewsletterForm(ntForm);
+    document.querySelectorAll('form.newsletter-form').forEach(prepareNewsletterForm);
+    if (typeof window.__ntBindEmailForms === 'function') {
+      window.__ntBindEmailForms();
+    }
   }
 
   const reviewStarsHtml =
@@ -1187,11 +1219,30 @@
   }
 
   function ensureFormHandler() {
-    if (window.__NT_FORM_HANDLER_INITIALIZED__) return;
-    if (document.querySelector('script[src*="form-handler"]')) return;
+    const afterReady = () => {
+      try {
+        initNewsletterForm();
+      } catch (err) {
+        console.error('[v2] initNewsletterForm (after form-handler)', err);
+      }
+    };
+    if (window.__NT_FORM_HANDLER_INITIALIZED__) {
+      afterReady();
+      return;
+    }
+    const existing = document.querySelector('script[src*="form-handler"]');
+    if (existing) {
+      if (window.__NT_FORM_HANDLER_INITIALIZED__) {
+        afterReady();
+      } else {
+        existing.addEventListener('load', afterReady, { once: true });
+      }
+      return;
+    }
     const s = document.createElement('script');
     s.src = '/scripts/global/form-handler.min.js';
     s.defer = true;
+    s.onload = afterReady;
     document.head.appendChild(s);
   }
 

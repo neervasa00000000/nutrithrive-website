@@ -5,3 +5,14 @@ node_modules/
 audit/
 scripts/templates/
 tools/
+crawl_results.json
+nutrithrive_crawl.js
+nutrithrive_audit.js
+nutrithrive_fixes.js
+issues/
+*.csv
+SECURITY_REPORT.md
+FIX_PRIORITY_LIST.md
+SAFE_ENV_EXAMPLE.md
+SECURITY_HEADERS.md
+RATE_LIMITING_GUIDE.md
