@@ -90,15 +90,14 @@ body {
   background: var(--color-bg);
 }
 
-/* In-flow links: text colour, not browser blue/purple — no underlines */
+/* In-flow content links: dark text, not browser blue/purple — no underlines */
 main a:any-link,
 article a:any-link,
 .about-story-text a:any-link,
 .about-story-panel a:any-link,
 .contact-hero-desc a:any-link,
 .contact-hero-note a:any-link,
-.contact-faq-list a:any-link,
-a:not([class]):any-link {
+.contact-faq-list a:any-link {
   color: var(--color-text, #1a2e22);
   text-decoration: none;
 }
@@ -109,14 +108,35 @@ article a:hover,
 .about-story-panel a:hover,
 .contact-hero-desc a:hover,
 .contact-hero-note a:hover,
-.contact-faq-list a:hover,
-a:not([class]):hover {
+.contact-faq-list a:hover {
   color: var(--color-text, #1a2e22);
   opacity: 0.85;
   text-decoration: none;
 }
 
-/* Nav, header, footer, and all other links — never underline */
+/* Footer (#nt-footer is a div, not <footer>) — light links on dark bg */
+#nt-footer a:any-link,
+#nt-footer a:visited,
+.nt-v2-footer .nt-footer-links a:any-link,
+.nt-v2-footer .nt-footer-links a:visited {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  opacity: 1;
+}
+
+#nt-footer .nt-footer-links a:hover,
+.nt-v2-footer .nt-footer-links a:hover {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+#nt-footer .nt-footer-logo:any-link,
+#nt-footer .nt-footer-logo:hover {
+  color: var(--color-primary-fixed, #a1f3cd) !important;
+  opacity: 1;
+}
+
+/* Nav / header — no underline */
 header a:any-link,
 header a:hover,
 .nav-links a:any-link,
@@ -127,10 +147,6 @@ header a:hover,
 #nt-header a:hover,
 .nt-v2-header a:any-link,
 .nt-v2-header a:hover,
-footer a:any-link,
-footer a:hover,
-.nt-footer-links a:any-link,
-.nt-footer-links a:hover,
 a:any-link,
 a:hover,
 a:visited,
