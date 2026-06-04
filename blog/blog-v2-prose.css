@@ -127,6 +127,45 @@
   margin: 0 0 2rem;
 }
 
+/* Contextual buyer path — internal linking module (no JS) */
+.nt-buyer-path,
+.blog-v2-prose .nt-buyer-path,
+.blog-post-content .nt-buyer-path {
+  background: #f9fcfa;
+  border: 1px solid #e6efe9;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin: 1.25rem 0 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.nt-buyer-path-intro {
+  margin: 0 0 0.65rem;
+  color: #444;
+}
+
+.nt-buyer-path ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.nt-buyer-path li {
+  margin: 0.35rem 0;
+}
+
+.nt-buyer-path a {
+  color: #0f6b4d;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.nt-buyer-path a:hover {
+  color: #0a4a36;
+}
+
 .blog-v2-prose .article-toc h2 {
   font-size: 1.05rem;
   margin: 0 0 0.65rem;

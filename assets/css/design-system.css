@@ -90,6 +90,38 @@ body {
   background: var(--color-bg);
 }
 
+/* In-flow links: text colour, not browser blue/purple */
+main a:any-link,
+article a:any-link,
+.about-story-text a:any-link,
+.about-story-panel a:any-link,
+.contact-hero-desc a:any-link,
+.contact-hero-note a:any-link,
+.contact-faq-list a:any-link,
+a:not([class]):any-link {
+  color: var(--color-text, #1a2e22);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+main a:hover,
+article a:hover,
+.about-story-text a:hover,
+.about-story-panel a:hover,
+.contact-hero-desc a:hover,
+.contact-hero-note a:hover,
+.contact-faq-list a:hover,
+a:not([class]):hover {
+  color: var(--color-text, #1a2e22);
+  opacity: 0.85;
+}
+
+/* Legacy inline blue link styles in older articles */
+a[style*="0066cc"],
+a[style*="0066CC"] {
+  color: var(--color-text, #1a2e22) !important;
+}
+
 h1,
 h2,
 h3,
