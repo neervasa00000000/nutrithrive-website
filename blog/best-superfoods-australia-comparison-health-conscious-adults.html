@@ -54,11 +54,9 @@
 <meta name="twitter:title" content="Best Superfoods Australia 2026 – Moringa, Spirulina &amp; Tea"/>
 <meta name="twitter:description" content="Australia's 2026 superfood winners vs spirulina/matcha. Moringa, curry leaves and black tea for health-conscious adults—lab-tested picks &amp; where to buy."/>
 <meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://www.google-analytics.com" rel="dns-prefetch"/>
-<link rel="preload" as="image" href="/assets/images/blog/superfoods-australia-hero-640.jpg" media="(max-width: 1024px)" fetchpriority="high"/>
-<link rel="preload" as="image" href="/assets/images/blog/superfoods-australia-hero-800.jpg" media="(min-width: 1025px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="/assets/images/blog/superfoods-australia-hero-640.jpg" media="(max-width: 768px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="/assets/images/blog/superfoods-australia-hero-800.jpg" media="(min-width: 769px)" fetchpriority="high"/>
 
 
 
@@ -212,53 +210,45 @@
       ]
     }</script>
 
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></noscript>
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
         .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         .organic-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
         body.nt-blog-article { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-        body.nt-blog-article.fonts-loaded { font-family: "Plus Jakarta Sans", system-ui, sans-serif; }
-        .nt-blog-hero-media { aspect-ratio: 16 / 9; width: 100%; }
+        .nt-sticky-top { min-height: 7.5rem; }
+        .nt-blog-article #nt-header { min-height: 7.5rem; }
+        .nt-blog-article #nt-footer { min-height: 22rem; }
+        .nt-blog-main { max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .nt-blog-main > .grid { display: grid; gap: 2rem; width: 100%; }
+        @media (min-width: 1024px) {
+          .nt-blog-main > .grid { grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr); align-items: start; }
+        }
+        .nt-blog-hero-media { aspect-ratio: 16 / 9; width: 100%; contain: layout; }
+        .nt-blog-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .nt-founder-note { min-height: 6.5rem; }
         .nt-blog-article .bg-terracotta-clay.text-pure-white { background-color: #8b3a1f; color: #fff; }
     </style>
-<!-- NutriThrive v2 blog shell — header CSS blocking; rest async -->
-<link rel="stylesheet" href="/assets/css/design-system.min.css"/>
-<link rel="stylesheet" href="/styles/global/style.min.css"/>
+<!-- Critical shell async — inline rules above prevent CLS -->
+<link rel="preload" href="/assets/css/design-system.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="/assets/css/design-system.min.css"/></noscript>
+<link rel="preload" href="/styles/global/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="/styles/global/style.min.css"/></noscript>
 <link rel="preload" href="/assets/css/tailwind-v2.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="/assets/css/tailwind-v2.min.css"/></noscript>
 <link rel="preload" href="/blog/blog-v2-prose.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="/blog/blog-v2-prose.min.css"/></noscript>
 <link rel="preload" href="/shared/css/v2-extra.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="/shared/css/v2-extra.min.css"/></noscript>
-<link rel="preload" href="/shared/css/author-bio.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link rel="stylesheet" href="/shared/css/author-bio.min.css"/></noscript>
 </head>
-<body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article">
+<body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article" data-nt-perf-lite="true">
 <div class="nt-sticky-top">
 <div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
+<nav class="nt-breadcrumb" aria-label="Breadcrumb">
+<a href="/">Home</a><span aria-hidden="true"> › </span>
+<a href="/blog/">Blog</a><span aria-hidden="true"> › </span>
+<span aria-current="page">Best Superfoods Australia 2026</span>
+</nav>
 <main class="pt-6 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-blog-main">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
 <article class="lg:col-span-8">
@@ -269,7 +259,12 @@
 </div>
 <h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-8 leading-tight">Best Superfoods in Australia 2026: Moringa, Curry Leaves &amp; Black Tea</h1>
 <div class="w-full nt-blog-hero-media rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
-<img alt="Comparison chart of Australian superfoods 2026 — moringa, spirulina, matcha and curry leaves" class="w-full h-full object-cover" src="/assets/images/blog/superfoods-australia-hero-640.jpg" srcset="/assets/images/blog/superfoods-australia-hero-480.jpg 480w, /assets/images/blog/superfoods-australia-hero-640.jpg 640w, /assets/images/blog/superfoods-australia-hero-800.jpg 800w, /assets/images/blog/superfoods-australia-hero-1200.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 92vw, 760px" width="1200" height="675" loading="eager" decoding="async" fetchpriority="high"/>
+<picture>
+<source type="image/webp" media="(min-width: 1025px)" srcset="/assets/images/blog/superfoods-australia-hero-1200.webp"/>
+<source media="(min-width: 769px)" srcset="/assets/images/blog/superfoods-australia-hero-800.jpg"/>
+<source media="(max-width: 768px)" srcset="/assets/images/blog/superfoods-australia-hero-480.jpg 480w, /assets/images/blog/superfoods-australia-hero-640.jpg 640w" sizes="100vw"/>
+<img alt="Comparison chart of Australian superfoods 2026 — moringa, spirulina, matcha and curry leaves" src="/assets/images/blog/superfoods-australia-hero-640.jpg" width="1200" height="675" loading="eager" decoding="async" fetchpriority="high"/>
+</picture>
 </div>
 </header>
 <div class="blog-v2-prose prose prose-lg max-w-none">
@@ -682,7 +677,12 @@
 <ul style="margin: 0.5rem 0 0 0; padding-left: 1.5rem; line-height: 2;">
 <li><a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia">Spirulina vs moringa vs matcha (Australia)</a></li>
 <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">Best moringa brands Australia 2026</a></li>
-</ul></div></div>
+</ul></div>
+<div class="nt-global-disclaimer" role="note">
+<p><strong>Legal disclaimer:</strong> I'm Neer, founder of NutriThrive. I'm not a doctor, nutritionist, or health professional. This article is general information and our own operational experience—not medical advice.</p>
+<p><strong>These statements have not been evaluated by the TGA.</strong> Moringa powder is sold as a food supplement and is not intended to diagnose, treat, cure, or prevent any disease. If you are pregnant, breastfeeding, or on medication, speak with your GP before use.</p>
+</div>
+</div>
 </div>
 <div class="nt-update-log">
   <p><strong>Last updated:</strong> 4 June 2026</p>
@@ -751,40 +751,20 @@
 </a></div>
 </div>
 <div class="bg-parchment-base/50 p-6 rounded-xl space-y-4">
-<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">verified_user</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
-<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">local_shipping</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
-<div class="flex items-center gap-3"><span class="material-symbols-outlined text-forest-deep/60">eco</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Lab-Tested &amp; Vegan</span></div>
+<div class="flex items-center gap-3"><span class="nt-trust-icon text-forest-deep/60" aria-hidden="true">✓</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Australian Lab-Tested</span></div>
+<div class="flex items-center gap-3"><span class="nt-trust-icon text-forest-deep/60" aria-hidden="true">🚚</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Express Melbourne Dispatch</span></div>
+<div class="flex items-center gap-3"><span class="nt-trust-icon text-forest-deep/60" aria-hidden="true">🌿</span><span class="text-label-sm font-label-sm text-forest-deep/80 uppercase">Lab-Tested &amp; Vegan</span></div>
 </div>
 </aside>
 </div>
 </main>
 <div id="nt-footer"></div>
-<script defer src="/scripts/global/defer-loader.min.js"></script>
 <script defer src="/shared/site-data.min.js"></script>
 <script defer src="/scripts/global/cart.min.js"></script>
 <script defer src="/shared/js/cart-v2-ui.min.js"></script>
 <script defer src="/shared/js/footer-v2.min.js"></script>
 <script defer src="/shared/js/layout-v2.min.js"></script>
-<script defer src="/shared/js/author-bio.min.js"></script>
-<script defer src="/shared/js/v2-site.min.js"></script>
 <script>
-  (function () {
-    function loadReddit() {
-      if (document.querySelector('script[src*="reddit-pixel"]')) return;
-      var s = document.createElement('script');
-      s.defer = true;
-      s.src = '/scripts/global/reddit-pixel.min.js';
-      document.body.appendChild(s);
-    }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadReddit, { timeout: 4000 });
-    } else {
-      setTimeout(loadReddit, 3000);
-    }
-  })();
-</script>
-<script>
-document.fonts.ready.then(function () { document.body.classList.add('fonts-loaded'); });
 function toggleFAQ(btn) {
   var item = btn.closest('.faq-item');
   if (!item) return;
