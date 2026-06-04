@@ -34,18 +34,15 @@
     <meta property="twitter:description" content="Subscribe for health tips, product updates, and exclusive offers from NutriThrive, Melbourne.">
     <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp">
     
-    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://formsubmit.co">
     
-    <!-- Critical CSS - Load immediately -->
-<link rel="stylesheet" href="/styles/global/style.min.css">
-    <!-- Non-critical CSS - Defer loading -->
+    <link rel="stylesheet" href="/styles/global/style.min.css">
+    <link rel="stylesheet" href="/pages/newsletter/newsletter.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     
-    <!-- Favicons -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp">
@@ -53,7 +50,6 @@
     <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp">
     <meta name="msapplication-TileColor" content="#0f6b4d">
     
-    <!-- Schema.org Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -64,7 +60,6 @@
     }
     </script>
 
-<!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
@@ -112,60 +107,11 @@
     }
   ],
   "areaServed": [
-    {
-      "@type": "City",
-      "name": "Truganina"
-    },
-    {
-      "@type": "City",
-      "name": "Melbourne"
-    },
-    {
-      "@type": "AdministrativeArea",
-      "name": "Victoria"
-    },
-    {
-      "@type": "Country",
-      "name": "Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Worldwide"
-    }
-  ],
-  "serviceArea": [
-    {
-      "@type": "City",
-      "name": "Truganina"
-    },
-    {
-      "@type": "City",
-      "name": "Melbourne"
-    },
-    {
-      "@type": "City",
-      "name": "Werribee"
-    },
-    {
-      "@type": "City",
-      "name": "Tarneit"
-    },
-    {
-      "@type": "City",
-      "name": "Point Cook"
-    },
-    {
-      "@type": "City",
-      "name": "Hoppers Crossing"
-    },
-    {
-      "@type": "City",
-      "name": "Laverton"
-    },
-    {
-      "@type": "AdministrativeArea",
-      "name": "Victoria"
-    }
+    { "@type": "City", "name": "Truganina" },
+    { "@type": "City", "name": "Melbourne" },
+    { "@type": "AdministrativeArea", "name": "Victoria" },
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Place", "name": "Worldwide" }
   ],
   "sameAs": [
     "https://www.facebook.com/nutrithrive",
@@ -174,7 +120,7 @@
 }
 </script>
 </head>
-<body>
+<body class="newsletter-page">
     <header>
         <div class="navbar">
             <a href="/" class="logo">
@@ -197,57 +143,56 @@
     </header>
 
     <main>
-        <section class="newsletter-section" style="margin-top: 4rem;">
+        <section class="newsletter-section">
             <h1>Subscribe to Our Newsletter</h1>
             <p>Join thousands of health-conscious Australians and get:</p>
-            <ul style="text-align: left; max-width: 400px; margin: 1.5rem auto; color: var(--muted); line-height: 1.8;">
+            <ul class="newsletter-benefits">
                 <li>✨ Latest health tips and wellness insights</li>
                 <li>📦 Product updates and new arrivals</li>
                 <li>🎁 Exclusive offers and discounts</li>
                 <li>📚 Educational content about superfoods</li>
                 <li>💚 Moringa powder recipes and usage tips</li>
             </ul>
-            <form class="newsletter-form" action="/pages/newsletter/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="newsletter" style="max-width: 500px; margin: 0 auto;">
+            <form class="newsletter-form" action="/pages/newsletter/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="newsletter">
                 <input type="hidden" name="form-name" value="newsletter">
                 <input type="hidden" name="_next" value="https://nutrithrive.com.au/pages/newsletter/thank-you.html">
                 <p hidden="">
                 <label>Leave empty: <input name="bot-field" type="text"></label>
                 </p>
-                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <div>
-                        <label for="newsletter-page-name" style="display: block; margin-bottom: 0.4rem; color: var(--text); font-weight: 600; font-size: 0.95rem;">Your Name</label>
-                        <input type="text" id="newsletter-page-name" name="name" placeholder="Enter your name" style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;">
-                    </div>
-                    <div>
-                        <label for="newsletter-page-email" style="display: block; margin-bottom: 0.4rem; color: var(--text); font-weight: 600; font-size: 0.95rem;">Your Email</label>
-                        <input type="email" id="newsletter-page-email" name="email" placeholder="Enter your email address" required style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e0e7ef; border-radius: 8px; background: #f1f5f9; font-size: 0.95rem; font-family: 'Inter', sans-serif;">
-                    </div>
+                <div class="newsletter-field">
+                    <label for="newsletter-page-name">Your Name</label>
+                    <input type="text" id="newsletter-page-name" name="name" placeholder="Enter your name" autocomplete="name">
                 </div>
-                <button type="submit" class="newsletter-submit-btn" style="width: 100%; margin-top: 0.5rem;">Subscribe Now</button>
+                <div class="newsletter-field">
+                    <label for="newsletter-page-email">Your Email</label>
+                    <input type="email" id="newsletter-page-email" name="email" placeholder="Enter your email address" required autocomplete="email">
+                </div>
+                <button type="submit" class="newsletter-submit-btn">Subscribe Now</button>
                 <div class="newsletter-message"></div>
-                <p style="font-size: 0.85rem; color: var(--muted); margin-top: 1rem;">
+                <p class="newsletter-privacy-note">
                     We respect your privacy. Unsubscribe at any time.
                 </p>
             </form>
 
-            <div class="newsletter-more" style="max-width: 560px; margin: 2.75rem auto 0; padding: 0 1rem; text-align: left; color: var(--text); line-height: 1.75;">
-                <h2 style="color: var(--primary); font-size: 1.25rem; margin: 0 0 1rem; text-align: center;">What you'll get in your inbox</h2>
-                <p style="margin: 0 0 1.1rem; color: var(--text);">Subscribers receive practical tips for using moringa powder, curry leaves, and tea in everyday Australian kitchens—think simple smoothies, tempering basics, and storage ideas that match how people actually cook at home. We also share short updates when popular lines are back in stock, when we add a new guide on the blog, and occasional subscriber-only offers so you are not paying full retail every time you reorder. Content is written with the same standards we use on the site: clear, honest, and focused on what our Melbourne warehouse team hears from customers across the country.</p>
-                <h2 style="color: var(--primary); font-size: 1.25rem; margin: 1.75rem 0 1rem; text-align: center;">How often we email</h2>
-                <p style="margin: 0 0 1.1rem; color: var(--text);">Most months you will hear from us once or twice. During busy periods—such as a major restock or a limited-time promotion—we may send an extra message so regular buyers are not caught off guard. Frequency can change slightly with the season, but we aim to stay useful rather than noisy. Every email includes a one-click unsubscribe link in the footer if you decide the timing is not right anymore.</p>
-                <h2 style="color: var(--primary); font-size: 1.25rem; margin: 1.75rem 0 1rem; text-align: center;">Privacy in one line</h2>
-                <p style="margin: 0; color: var(--muted); font-size: 0.95rem;">We use your name and email only to send this newsletter and to reply if you contact us about it—we do not sell or rent mailing lists. For full detail on data, cookies, and orders, see our <a href="/privacy-policy" style="color: #005139; font-weight: 600;">Privacy Policy</a>.</p>
+            <div class="newsletter-more">
+                <h2>What you'll get in your inbox</h2>
+                <p>Subscribers receive practical tips for using moringa powder, curry leaves, and tea in everyday Australian kitchens—think simple smoothies, tempering basics, and storage ideas that match how people actually cook at home. We also share short updates when popular lines are back in stock, when we add a new guide on the blog, and occasional subscriber-only offers so you are not paying full retail every time you reorder. Content is written with the same standards we use on the site: clear, honest, and focused on what our Melbourne warehouse team hears from customers across the country.</p>
+                <h2>How often we email</h2>
+                <p>Most months you will hear from us once or twice. During busy periods—such as a major restock or a limited-time promotion—we may send an extra message so regular buyers are not caught off guard. Frequency can change slightly with the season, but we aim to stay useful rather than noisy. Every email includes a one-click unsubscribe link in the footer if you decide the timing is not right anymore.</p>
+                <h2>Privacy in one line</h2>
+                <p>We use your name and email only to send this newsletter and to reply if you contact us about it—we do not sell or rent mailing lists. For full detail on data, cookies, and orders, see our <a href="/privacy-policy">Privacy Policy</a>.</p>
             </div>
         </section>
     </main>
 
     <div id="nt-footer"></div>
 
+    <script src="/scripts/global/cart.min.js"></script>
+    <script src="/scripts/global/cart-header.min.js"></script>
     <script src="/scripts/global/script.min.js" defer></script>
     <script src="/scripts/global/form-handler.min.js" defer></script>
     <script src="/scripts/global/newsletter.min.js" defer></script>
-<script src="/shared/site-data.min.js"></script>
-<script src="/shared/js/footer-v2.min.js"></script>
+    <script src="/shared/site-data.min.js"></script>
+    <script src="/shared/js/footer-v2.min.js"></script>
 </body>
 </html>
-
