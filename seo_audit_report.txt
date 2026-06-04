@@ -1,0 +1,358 @@
+
+═══════════════════════════════════════════════════════════
+NUTRITHRIVE.COM.AU — COMPLETE SEO AUDIT REPORT
+Generated: 2026-06-04T04:45:10.236Z
+Total pages crawled: 71
+═══════════════════════════════════════════════════════════
+
+SUMMARY:
+Critical issues: 1 pages
+High priority: 71 pages  
+Medium priority: 64 pages
+Healthy pages: 0 pages
+
+
+═══ DUPLICATE TITLE TAGS (1 groups) ═══
+
+Title: "Shipping &amp; Returns Australia | NutriThrive, Melbourne"
+Found on:
+  - https://nutrithrive.com.au/pages/shipping/shipping-returns
+  - https://nutrithrive.com.au/pages/shipping/shipping-returns.html
+
+═══ CRITICAL ISSUES — FIX IMMEDIATELY (1 pages) ═══
+
+URL: https://nutrithrive.com.au/documents/nutrithrive-lab-report-summary.pdf
+  ❌ MISSING TITLE TAG
+  ❌ MISSING H1 TAG
+
+═══ HIGH PRIORITY ISSUES (71 pages) ═══
+
+URL: https://nutrithrive.com.au
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/about
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ NO LINK TO PRODUCT PAGE — add buy button
+
+URL: https://nutrithrive.com.au/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026
+  ⚠️ TITLE TOO LONG (93 chars): "Moringa vs AG1 Australia — $11 Alternative to a $150/Month Greens Powder (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026
+  ⚠️ TITLE TOO LONG (68 chars): "Affordable Moringa 2026: Beat Organic Tax in Australia | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ MULTIPLE H1 TAGS (2 found) — should be exactly 1
+
+URL: https://nutrithrive.com.au/blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026
+  ⚠️ TITLE TOO LONG (67 chars): "Ultra-Processed Supplements? Hidden Fillers (AU 2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/best-greens-powder-australia-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults
+  ⚠️ TITLE TOO LONG (83 chars): "Best Moringa Powder Australia 2026 — 8 Brands Lab-Tested &amp; Ranked | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/buy-moringa-powder-melbourne-victoria-chinese-guide
+  ⚠️ TITLE TOO LONG (62 chars): "Buy Moringa Powder Melbourne: Quality Guide 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/cant-lose-weight-broken-gut-what-actually-worked-2026
+  ⚠️ TITLE TOO LONG (63 chars): "Couldn't Lose Weight? My Gut-Healing Diary (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/chronic-fatigue-what-actually-fixed-it-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026
+  ⚠️ TITLE TOO LONG (71 chars): "Cystic Acne &amp; Gut Healing: What Helped My Skin (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/fresh-moringa-leaves-vs-powder-nutrients-2026
+  ⚠️ TITLE TOO LONG (63 chars): "Fresh Moringa Leaves vs Powder — Nutrients (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/green-superfood-smoothie-recipes-australia-2026
+  ⚠️ TITLE TOO LONG (61 chars): "Green Superfood Smoothie Recipes Australia 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026
+  ⚠️ TITLE TOO LONG (95 chars): "Best Moringa Protein Powder Recipes Australia 2026 — 10 Tested High-Protein Meals | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/how-much-moringa-powder-per-day-dosage-guide-2026
+  ⚠️ TITLE TOO LONG (61 chars): "Moringa Dosage Per Day — Australia Guide (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ THIN CONTENT: only 272 words on a blog page
+
+URL: https://nutrithrive.com.au/blog/how-to-add-moringa-to-diet
+  ⚠️ TITLE TOO LONG (61 chars): "How to Add Moringa to Your Diet: Easy Ways 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ THIN CONTENT: only 288 words on a blog page
+
+URL: https://nutrithrive.com.au/blog/how-to-choose-greens-powder-australia-2026
+  ⚠️ TITLE TOO LONG (61 chars): "How to Choose Greens Powder in Australia (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/how-to-choose-moringa-powder-australia-2026
+  ⚠️ TITLE TOO LONG (67 chars): "Choose Moringa Powder in Australia — Buyer Guide 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ THIN CONTENT: only 225 words on a blog page
+
+URL: https://nutrithrive.com.au/blog/how-to-grow-moringa-in-australia-complete-guide-2026
+  ⚠️ TITLE TOO LONG (85 chars): "How to Grow Moringa in Australia (+ Where to Buy While You Wait) | 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026
+  ⚠️ TITLE TOO LONG (62 chars): "How to Use Moringa Powder Daily (Tastes Better!) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/is-moringa-banned-australia-truth-2026
+  ⚠️ TITLE TOO LONG (66 chars): "Is Moringa Banned in Australia? No — Buy Safely 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ 3 images missing alt text
+
+URL: https://nutrithrive.com.au/blog/magnesium-glycinate-honest-guide-australia-2026
+  ⚠️ TITLE TOO LONG (84 chars): "Magnesium Glycinate: The Honest Guide Australians Actually Need (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-30-day-challenge-honest-results
+  ⚠️ TITLE TOO LONG (69 chars): "I Took Moringa Every Day for 30 Days: My Honest Results | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-benefits-for-women-comprehensive-2026
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ 3 images missing alt text
+
+URL: https://nutrithrive.com.au/blog/moringa-vs-coffee-melbourne-energy-hack
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ MULTIPLE H1 TAGS (2 found) — should be exactly 1
+
+URL: https://nutrithrive.com.au/blog/moringa-vs-spirulina-vs-matcha-comparison-australia
+  ⚠️ TITLE TOO LONG (61 chars): "Moringa vs Spirulina vs Matcha (Australia 2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/nutrithrive-dried-curry-leaves-tradition-health
+  ⚠️ TITLE TOO LONG (65 chars): "Dried Curry Leaves: Health Benefits &amp; Uses 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ MULTIPLE H1 TAGS (2 found) — should be exactly 1
+
+URL: https://nutrithrive.com.au/blog/quit-sugar-90-days-honest-diary-melbourne-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa
+  ⚠️ TITLE TOO LONG (63 chars): "Shade- vs Sun-Dried Moringa: Quality Guide (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ THIN CONTENT: only 289 words on a blog page
+
+URL: https://nutrithrive.com.au/blog/verify-moringa-quality-premium-buyers-checklist-2026
+  ⚠️ TITLE TOO LONG (62 chars): "Verify Moringa Quality: 8-Point Checklist (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/how-to-read-moringa-batch-codes-freshness
+  ⚠️ TITLE TOO LONG (67 chars): "Read Moringa Batch Codes &amp; Check Freshness (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/what-does-moringa-do-for-your-body-complete-guide-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/what-to-eat-when-too-tired-melbourne-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide
+  ⚠️ TITLE TOO LONG (68 chars): "Where to Buy Moringa Australia 2026 | Online vs Stores | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder
+  ⚠️ TITLE TOO LONG (71 chars): "Why I Build NutriThrive: Melbourne Moringa, Made Properly | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ MULTIPLE H1 TAGS (2 found) — should be exactly 1
+
+URL: https://nutrithrive.com.au/contact
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/faq
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/melbourne/
+  ⚠️ TITLE TOO LONG (62 chars): "Buy Moringa Powder Melbourne — Same-Day Dispatch | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/moringa-adelaide/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/moringa-brisbane/
+  ⚠️ TITLE TOO LONG (65 chars): "Moringa Powder Brisbane — Buy Online, Fast Delivery | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/moringa-perth/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/moringa-sydney/
+  ⚠️ TITLE TOO LONG (78 chars): "Moringa Powder Sydney — Buy Online, Fast Delivery from Melbourne | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/pages/newsletter/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/pages/shipping/shipping-returns
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/privacy-policy
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/products/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/products/black-tea/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/products/curry-leaves/
+  ⚠️ TITLE TOO LONG (62 chars): "Dried Curry Leaves Australia — Fresh, Lab-Tested | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/products/moringa-powder/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/products/moringa-soap/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/products/combo-pack/
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/cart
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/documents/nutrithrive-lab-report-summary.pdf
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/payment
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/pages/shipping/shipping-returns.html
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-berberine-australia-2026
+  ⚠️ TITLE TOO LONG (71 chars): "Moringa and Berberine Australia — What Research Says 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ 2 images missing alt text
+  ⚠️ THIN CONTENT: only 276 words on a blog page
+
+URL: https://nutrithrive.com.au/blog/moringa-capsules-vs-powder-which-is-better-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025
+  ⚠️ TITLE TOO LONG (82 chars): "Moringa Capsules Chemist Warehouse vs NutriThrive — Honest 2026 Test | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-melbourne-complete-growers-report-2026
+  ⚠️ TITLE TOO LONG (61 chars): "Moringa Leaves Melbourne | Grower's Report 2026 | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-melbourne-complete-guide-2026
+  ⚠️ TITLE TOO LONG (67 chars): "Moringa Melbourne: Honest Guide + Safety Facts (2026) | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-oil-benefits-skin-hair-health-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-powder-benefits-women-skin-side-effects-australia-2026
+  ⚠️ TITLE TOO LONG (81 chars): "Moringa Powder Benefits for Women — Skin, Weight &amp; Side Effects | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ 3 images missing alt text
+  ⚠️ THIN CONTENT: only 287 words on a blog page
+
+URL: https://nutrithrive.com.au/blog/moringa-powder-victoria-seniors-joint-health
+  ⚠️ TITLE TOO LONG (68 chars): "Moringa for Victorian Seniors | Joints 2026, Melbourne | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026
+  ⚠️ TITLE TOO LONG (63 chars): "Moringa Quality Test: Shade-Dried vs Store-Bought | NutriThrive"
+  ⚠️ MISSING META DESCRIPTION
+  ⚠️ THIN CONTENT: only 275 words on a blog page
+
+URL: https://nutrithrive.com.au/blog/moringa-side-effects-what-happens-take-too-much-2026
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-tea-benefits-how-to-brew-2026-guide
+  ⚠️ MISSING META DESCRIPTION
+
+URL: https://nutrithrive.com.au/blog/moringa-honest-truth-science-australia-2026
+  ⚠️ MISSING META DESCRIPTION
+
+═══ MEDIUM PRIORITY ISSUES (64 pages) ═══
+
+URL: https://nutrithrive.com.au/blog/
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/best-greens-powder-australia-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/best-superfoods-australia-comparison-health-conscious-adults
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/buy-moringa-powder-melbourne-victoria-chinese-guide
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/cant-lose-weight-broken-gut-what-actually-worked-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/chronic-fatigue-what-actually-fixed-it-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/fresh-moringa-leaves-vs-powder-nutrients-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/green-superfood-smoothie-recipes-australia-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/high-protein-moringa-recipes-australia-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/how-much-moringa-powder-per-day-dosage-guide-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/how-to-add-moringa-to-diet
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/how-to-choose-greens-powder-australia-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/how-to-choose-moringa-powder-australia-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+URL: https://nutrithrive.com.au/blog/how-to-grow-moringa-in-australia-complete-guide-2026
+  💡 NO SCHEMA MARKUP — add Article or Product schema
+
+═══ HEALTHY PAGES (0 pages) ═══
