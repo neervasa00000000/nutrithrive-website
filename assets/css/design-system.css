@@ -90,7 +90,7 @@ body {
   background: var(--color-bg);
 }
 
-/* In-flow links: text colour, not browser blue/purple */
+/* In-flow links: text colour, not browser blue/purple — no underlines */
 main a:any-link,
 article a:any-link,
 .about-story-text a:any-link,
@@ -100,8 +100,7 @@ article a:any-link,
 .contact-faq-list a:any-link,
 a:not([class]):any-link {
   color: var(--color-text, #1a2e22);
-  text-decoration: underline;
-  text-underline-offset: 0.12em;
+  text-decoration: none;
 }
 
 main a:hover,
@@ -114,6 +113,30 @@ article a:hover,
 a:not([class]):hover {
   color: var(--color-text, #1a2e22);
   opacity: 0.85;
+  text-decoration: none;
+}
+
+/* Nav, header, footer, and all other links — never underline */
+header a:any-link,
+header a:hover,
+.nav-links a:any-link,
+.nav-links a:hover,
+.navbar a:any-link,
+.navbar a:hover,
+#nt-header a:any-link,
+#nt-header a:hover,
+.nt-v2-header a:any-link,
+.nt-v2-header a:hover,
+footer a:any-link,
+footer a:hover,
+.nt-footer-links a:any-link,
+.nt-footer-links a:hover,
+a:any-link,
+a:hover,
+a:visited,
+a:active,
+a:focus {
+  text-decoration: none !important;
 }
 
 /* Legacy inline blue link styles in older articles */

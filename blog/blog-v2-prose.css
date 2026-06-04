@@ -34,8 +34,7 @@
 .blog-v2-prose a {
   color: #0f6b4d;
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .blog-v2-prose a:hover {
@@ -158,8 +157,7 @@
 .nt-buyer-path a {
   color: #0f6b4d;
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .nt-buyer-path a:hover {
@@ -185,7 +183,7 @@
 }
 
 .blog-v2-prose .article-toc a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .nt-blog-article .nt-related-links-block,
