@@ -841,8 +841,7 @@ footer {
 
 .contact-info a:any-link {
     color: var(--text);
-    text-decoration: underline;
-    text-underline-offset: 0.12em;
+    text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
@@ -2210,8 +2209,7 @@ body.contact-page .contact-hero-desc a:any-link,
 body.contact-page .contact-hero-note a:any-link,
 body.contact-page .contact-faq-list a:any-link {
     color: var(--text, #1a2e22);
-    text-decoration: underline;
-    text-underline-offset: 0.12em;
+    text-decoration: none;
 }
 
 body.contact-page .contact-hero-desc a:hover,
