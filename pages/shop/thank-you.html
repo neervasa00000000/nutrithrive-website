@@ -21,22 +21,24 @@
       'allow_google_signals': false
     });
 
-    // Basic purchase tracking (static thank-you page fallback).
-    // If your checkout provides an order ID/value via query params, this will use them.
     var params = new URLSearchParams(window.location.search);
-    var orderId = params.get('order_id') || params.get('orderId') || String(Date.now());
-    var value = Number(params.get('value') || params.get('amount') || 11.00);
-    if (!Number.isFinite(value) || value <= 0) value = 11.00;
+    var orderId = params.get('orderId') || ('NT-' + Date.now());
+    var value = parseFloat(params.get('value')) || 11.00;
+    var itemName = params.get('item') || 'NutriThrive Moringa Powder';
+    var qty = parseInt(params.get('qty'), 10) || 1;
 
     gtag('event', 'purchase', {
       transaction_id: orderId,
       value: value,
       currency: 'AUD',
+      tax: 0,
+      shipping: 0,
       items: [{
-        item_id: 'MORINGA-100G',
-        item_name: 'NutriThrive Moringa Powder 100g',
-        price: 11.00,
-        quantity: 1
+        item_id: 'MORINGA',
+        item_name: itemName,
+        price: value / qty,
+        quantity: qty,
+        item_category: 'Moringa'
       }]
     });
   });
