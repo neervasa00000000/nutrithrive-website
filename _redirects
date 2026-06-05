@@ -236,11 +236,11 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Legacy lab PDF URL (products page previously pointed here; file was not in repo)
 /assets/lab-report.pdf /documents/nutrithrive-lab-report-summary.pdf 301
 
-# ---200 rewrites (URL in browser unchanged; serves file) ---
+# ---Redirect duplicates to single canonical product URL ---
 
-/pages/products/product-detail /products/moringa-powder/ 200
-/pages/products/product-detail.html /products/moringa-powder/ 200
-/products/product-detail /products/moringa-powder/ 200
+/pages/products/product-detail /products/moringa-powder/ 301!
+/pages/products/product-detail.html /products/moringa-powder/ 301!
+/products/product-detail /products/moringa-powder/ 301!
 
 /pages/products/* /products/:splat 200
 /pages/products /products/ 200
@@ -265,8 +265,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /privacy-policy /pages/legal/privacy-policy.html 200
 /privacy-policy.html /privacy-policy 301
 
-/product-detail.html /products/moringa-powder/ 200
-/products/product-detail.html /products/moringa-powder/ 200
+/product-detail.html /products/moringa-powder/ 301!
+/products/product-detail.html /products/moringa-powder/ 301!
 /products/product-curry-leaves.html /products/curry-leaves/ 200
 /products/product-black-tea.html /products/black-tea/ 200
 /products/product-combo.html /products/combo-pack/ 200
