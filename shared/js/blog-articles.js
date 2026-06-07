@@ -30,8 +30,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "best-superfoods-australia-comparison-health-conscious-adults",
-    "title": "Best Superfoods Australia 2026 – Moringa, Spirulina & Tea",
-    "description": "Australia's best superfoods of 2026—moringa, spirulina, curry leaves & black tea compared for busy adults. Trends, L-theanine focus & where to buy locally.",
+    "title": "Best Superfoods Australia 2026 – Moringa, Spirulina & Matcha",
+    "description": "Best superfoods Australia 2026: moringa, spirulina, matcha & curry leaves compared. Nutrients, cost per serve & where to buy locally.",
     "category": "Research Guide",
     "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
   },
@@ -263,8 +263,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "The $7 Latte Is Over: Why Melbourne Is Switching to This &quot;Green Gold&quot; Energy Hack (2026 Guide)",
-    "description": "Coffee prices hit $7 in Melbourne. Discover why Melbournians switch to moringa — caffeine-free, saves $2K/year, fixes cortisol. NutriThrive, Melbourne.",
+    "title": "Melbourne Coffee Alternative: Moringa vs Coffee 2026",
+    "description": "Melbourne coffee alternative 2026: caffeine-free moringa vs the $7 latte. Steady energy, cortisol balance & cost savings.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack"
   },
@@ -281,6 +281,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
     "category": "Wellness Journal",
     "href": "/blog/nutrithrive-dried-curry-leaves-tradition-health"
+  },
+  {
+    "slug": "plant-based-functional-foods-australia-wellness-nutrithrive-2026",
+    "title": "Top 5 Plant-Based Superfoods Australia 2026",
+    "description": "Plant-based diet Australia for beginners: top 5 vegan superfoods, iron-rich whole foods & native picks including moringa and hemp seeds.",
+    "category": "Nutrition Guide",
+    "href": "/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026"
   },
   {
     "slug": "quit-sugar-90-days-honest-diary-melbourne-2026",

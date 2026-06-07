@@ -58,9 +58,8 @@
 /blog/is-moringa-legit-what-science-and-real-users-say-2026 /blog/moringa-honest-truth-science-australia-2026 301
 /blog/is-moringa-legit-what-science-and-real-users-say-2026.html /blog/moringa-honest-truth-science-australia-2026 301
 
-# Off-topic protein post
-/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 /blog/high-protein-moringa-recipes-australia-2026 301
-/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html /blog/high-protein-moringa-recipes-australia-2026 301
+/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 301!
+/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026 /blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html 200
 
 # DELETE - Duplicate buyer guides (merge into verify-quality)
 /blog/how-to-read-moringa-batch-codes-freshness /blog/verify-moringa-quality-premium-buyers-checklist-2026 301
@@ -75,6 +74,10 @@
 # DELETE - Mega-guide splits traffic
 /blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026 /blog/what-does-moringa-do-for-your-body-complete-guide-2026 301
 /blog/moringa-powder-guide-benefits-how-to-use-daily-where-to-buy-australia-2026.html /blog/what-does-moringa-do-for-your-body-complete-guide-2026 301
+
+# Wrong slug (404) → live comparison article
+/blog/moringa-vs-spirulina-vs-matcha-australia-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/moringa-vs-spirulina-vs-matcha-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 
 # SEO consolidation — canonical breakout blogs (May 2026)
 /blog/is-moringa-banned-in-australia-safety-truth-2026 /blog/is-moringa-banned-australia-truth-2026 301
@@ -353,6 +356,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/moringa-tea-benefits-how-to-brew-2026-guide /blog/moringa-tea-benefits-how-to-brew-2026-guide.html 200
 /blog/moringa-vs-coffee-melbourne-energy-hack.html /blog/moringa-vs-coffee-melbourne-energy-hack 301!
 /blog/moringa-vs-coffee-melbourne-energy-hack /blog/moringa-vs-coffee-melbourne-energy-hack.html 200
+/blog/moringa-vs-coffee-melbourne /blog/moringa-vs-coffee-melbourne-energy-hack 301!
+/blog/moringa-vs-coffee-melbourne/ /blog/moringa-vs-coffee-melbourne-energy-hack 301!
 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301!
 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html 200
 /blog/nutrithrive-dried-curry-leaves-tradition-health.html /blog/nutrithrive-dried-curry-leaves-tradition-health 301!
