@@ -9,632 +9,275 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  :root {
-    --green: #00ff41;
-    --green-dim: #00882b;
-    --green-dark: #003d10;
-    --amber: #ffb000;
-    --amber-dim: #cc8800;
-    --red: #ff3a3a;
-    --cyan: #00e5ff;
-    --bg: #060806;
-    --card-bg: #0a120a;
-    --card-border: #1a3a1a;
-    --pixel: 'Press Start 2P', monospace;
-    --mono: 'VT323', monospace;
-  }
+:root{
+  --green:#00ff41;--green-dim:#00882b;--green-dark:#003d10;
+  --amber:#ffb000;--amber-dim:#cc8800;
+  --red:#ff3a3a;--cyan:#00e5ff;
+  --bg:#060806;--card-bg:#0a120a;--card-border:#1a3a1a;
+  --pixel:'Press Start 2P',monospace;--mono:'VT323',monospace;
+}
+body.amber-mode{--green:#ffb000;--green-dim:#cc7700;--green-dark:#3d2200;--cyan:#ff6600;--bg:#0a0600}
+body.cyan-mode{--green:#00e5ff;--green-dim:#0088aa;--green-dark:#002233;--amber:#ff6600;--bg:#00060a}
+body.red-mode{--green:#ff3a3a;--green-dim:#aa1100;--green-dark:#330000;--amber:#ffaa00;--cyan:#ff88aa;--bg:#0a0000}
 
-  html { scroll-behavior: smooth; }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--green);font-family:var(--mono);font-size:18px;line-height:1.5;overflow-x:hidden;min-height:100vh}
 
-  body {
-    background: var(--bg);
-    color: var(--green);
-    font-family: var(--mono);
-    font-size: 18px;
-    line-height: 1.5;
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
+/* CRT overlay */
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.18) 2px,rgba(0,0,0,0.18) 4px);pointer-events:none;z-index:9000}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,0.65) 100%);pointer-events:none;z-index:9001}
 
-  /* ── CRT OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.18) 2px,
-      rgba(0,0,0,0.18) 4px
-    );
-    pointer-events: none;
-    z-index: 9000;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(ellipse at center,
-      transparent 60%,
-      rgba(0,0,0,0.65) 100%
-    );
-    pointer-events: none;
-    z-index: 9001;
-  }
+/* BOOT */
+#boot{position:fixed;inset:0;background:var(--bg);z-index:8000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+#boot-logo{font-family:var(--pixel);font-size:clamp(0.55rem,3vw,1rem);color:var(--green);text-align:center;margin-bottom:3rem;text-shadow:0 0 20px var(--green),0 0 40px rgba(0,255,65,0.3);animation:flicker 4s infinite}
+#boot-log{width:min(640px,90vw);font-size:1rem;color:var(--green-dim);list-style:none;margin-bottom:2.5rem;min-height:200px}
+#boot-log li{margin-bottom:0.3rem}
+#boot-log li.ok::after{content:' [OK]';color:var(--green)}
+#boot-log li.load::after{content:' [LOADING...]';color:var(--amber)}
+#boot-log li.warn::after{content:' [WARN]';color:var(--red)}
+#boot-bar-wrap{width:min(500px,85vw);border:2px solid var(--green-dim);padding:3px;background:var(--green-dark)}
+#boot-bar{height:18px;width:0%;background:linear-gradient(90deg,var(--green-dark),var(--green));transition:width 0.1s linear;box-shadow:0 0 8px var(--green)}
+#boot-pct{text-align:center;margin-top:0.5rem;font-size:0.9rem;color:var(--green-dim)}
 
-  /* ── BOOT SCREEN ── */
-  #boot {
-    position: fixed;
-    inset: 0;
-    background: var(--bg);
-    z-index: 8000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    font-family: var(--mono);
-    font-size: 1.1rem;
-  }
-  #boot-logo {
-    font-family: var(--pixel);
-    font-size: clamp(0.55rem, 3vw, 1rem);
-    color: var(--green);
-    text-align: center;
-    margin-bottom: 3rem;
-    text-shadow: 0 0 20px var(--green), 0 0 40px rgba(0,255,65,0.3);
-    animation: flicker 4s infinite;
-  }
-  #boot-log {
-    width: min(640px, 90vw);
-    font-size: 1rem;
-    color: var(--green-dim);
-    list-style: none;
-    margin-bottom: 2.5rem;
-    min-height: 180px;
-  }
-  #boot-log li { margin-bottom: 0.3rem; }
-  #boot-log li.ok::after { content: ' [OK]'; color: var(--green); }
-  #boot-log li.load::after { content: ' [LOADING...]'; color: var(--amber); }
-  #boot-bar-wrap {
-    width: min(500px, 85vw);
-    border: 2px solid var(--green-dim);
-    padding: 3px;
-    background: var(--green-dark);
-  }
-  #boot-bar {
-    height: 18px;
-    width: 0%;
-    background: linear-gradient(90deg, var(--green-dark), var(--green));
-    transition: width 0.1s linear;
-    box-shadow: 0 0 8px var(--green);
-  }
-  #boot-pct {
-    text-align: center;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--green-dim);
-  }
+/* MAIN */
+#main{display:none}
+#main.visible{display:block;animation:fadeIn 0.6s ease}
 
-  /* ── MAIN WRAPPER ── */
-  #main { display: none; }
-  #main.visible { display: block; animation: fadeIn 0.6s ease; }
+/* STARFIELD */
+#starfield{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.45}
 
-  /* ── MARQUEE STRIP ── */
-  .marquee-strip {
-    background: var(--green-dark);
-    border-top: 2px solid var(--green-dim);
-    border-bottom: 2px solid var(--green-dim);
-    overflow: hidden;
-    padding: 6px 0;
-    white-space: nowrap;
-    font-size: 0.85rem;
-    color: var(--green-dim);
-    letter-spacing: 0.05em;
-  }
-  .marquee-inner {
-    display: inline-block;
-    animation: scroll-left 40s linear infinite;
-  }
-  .marquee-inner span { margin: 0 2.5rem; }
-  .marquee-inner .hi { color: var(--green); }
+/* MARQUEE */
+.marquee-strip{background:var(--green-dark);border-top:2px solid var(--green-dim);border-bottom:2px solid var(--green-dim);overflow:hidden;padding:6px 0;white-space:nowrap;font-size:0.85rem;color:var(--green-dim);letter-spacing:0.05em}
+.marquee-inner{display:inline-block;animation:scroll-left 40s linear infinite}
+.marquee-inner span{margin:0 2.5rem}
+.marquee-inner .hi{color:var(--green)}
 
-  /* ── CANVAS STARS ── */
-  #starfield {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.45;
-  }
+/* PAGE WRAP */
+.page-wrap{position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 1.25rem 4rem}
 
-  /* ── PAGE WRAPPER ── */
-  .page-wrap {
-    position: relative;
-    z-index: 10;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 1.25rem 4rem;
-  }
+/* HERO */
+.hero{text-align:center;padding:3.5rem 1rem 2rem;position:relative}
+.hero-eyebrow{font-family:var(--mono);font-size:1rem;color:var(--amber);letter-spacing:0.2em;margin-bottom:1.25rem;animation:blink 1.2s step-end infinite}
+.hero-title{font-family:var(--pixel);font-size:clamp(1rem,4.5vw,2rem);color:var(--green);text-shadow:0 0 12px var(--green),0 0 30px rgba(0,255,65,0.4);position:relative;display:inline-block;animation:flicker 6s infinite;line-height:1.5}
+.hero-title::before,.hero-title::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;overflow:hidden}
+.hero-title::before{color:var(--cyan);animation:glitch-top 3.5s infinite linear;clip-path:polygon(0 0,100% 0,100% 45%,0 45%);transform:translate(-2px);opacity:0.7}
+.hero-title::after{color:var(--amber);animation:glitch-bot 3.5s infinite linear;clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);transform:translate(2px);opacity:0.7}
+.hero-sub{margin-top:1.25rem;font-size:1.25rem;color:var(--green-dim);letter-spacing:0.05em}
+.hero-sub .cursor{display:inline-block;width:10px;background:var(--green);animation:blink 0.9s step-end infinite;vertical-align:middle;margin-left:2px;height:1.1em}
 
-  /* ── HERO HEADER ── */
-  .hero {
-    text-align: center;
-    padding: 3.5rem 1rem 2rem;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 1rem;
-    color: var(--amber);
-    letter-spacing: 0.2em;
-    margin-bottom: 1.25rem;
-    animation: blink 1.2s step-end infinite;
-  }
-  .hero-title {
-    font-family: var(--pixel);
-    font-size: clamp(1rem, 4.5vw, 2rem);
-    color: var(--green);
-    text-shadow: 0 0 12px var(--green), 0 0 30px rgba(0,255,65,0.4);
-    position: relative;
-    display: inline-block;
-    animation: flicker 6s infinite;
-    line-height: 1.5;
-  }
-  .hero-title::before,
-  .hero-title::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    overflow: hidden;
-  }
-  .hero-title::before {
-    color: var(--cyan);
-    animation: glitch-top 3.5s infinite linear;
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-    transform: translate(-2px);
-    opacity: 0.7;
-  }
-  .hero-title::after {
-    color: var(--amber);
-    animation: glitch-bot 3.5s infinite linear;
-    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
-    transform: translate(2px);
-    opacity: 0.7;
-  }
-  .hero-sub {
-    margin-top: 1.25rem;
-    font-size: 1.25rem;
-    color: var(--green-dim);
-    letter-spacing: 0.05em;
-  }
-  .hero-sub .cursor {
-    display: inline-block;
-    width: 10px;
-    background: var(--green);
-    animation: blink 0.9s step-end infinite;
-    vertical-align: middle;
-    margin-left: 2px;
-    height: 1.1em;
-  }
+/* MODE + SOUND CONTROLS */
+.ctrl-row{display:flex;justify-content:center;align-items:center;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.mode-btn{font-family:var(--pixel);font-size:0.4rem;padding:0.4rem 0.7rem;border:1px solid var(--green-dim);background:transparent;color:var(--green-dim);cursor:pointer;letter-spacing:0.08em;transition:all 0.15s}
+.mode-btn:hover,.mode-btn.active{background:var(--green-dark);border-color:var(--green);color:var(--green);box-shadow:0 0 8px rgba(0,255,65,0.3)}
+.sound-btn{font-family:var(--pixel);font-size:0.4rem;padding:0.4rem 0.7rem;border:1px solid var(--amber-dim);background:transparent;color:var(--amber-dim);cursor:pointer;letter-spacing:0.08em;transition:all 0.15s}
+.sound-btn:hover,.sound-btn.on{border-color:var(--amber);color:var(--amber);box-shadow:0 0 8px rgba(255,176,0,0.25)}
 
-  /* ── SKILL UNLOCK CARD ── */
-  #skill-unlock {
-    border: 3px solid var(--amber);
-    background: #12100a;
-    padding: 1.75rem 2rem;
-    text-align: center;
-    margin: 2.5rem auto;
-    max-width: 680px;
-    position: relative;
-    box-shadow: 0 0 0 1px var(--amber-dim), 0 0 30px rgba(255,176,0,0.2), inset 0 0 20px rgba(255,176,0,0.04);
-    animation: skill-appear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-    animation-delay: 0.3s;
-    transform-origin: center;
-  }
-  #skill-unlock::before {
-    content: '★ ★ ★';
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #12100a;
-    padding: 0 12px;
-    color: var(--amber);
-    font-size: 1.1rem;
-    letter-spacing: 0.4em;
-    text-shadow: 0 0 8px var(--amber);
-  }
-  .skill-tag {
-    font-family: var(--pixel);
-    font-size: 0.5rem;
-    color: var(--amber);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    display: block;
-    text-shadow: 0 0 8px rgba(255,176,0,0.5);
-  }
-  .skill-name {
-    font-family: var(--pixel);
-    font-size: clamp(0.8rem, 3vw, 1.3rem);
-    color: #fff;
-    text-shadow: 0 0 12px var(--amber), 0 0 30px rgba(255,176,0,0.3);
-    margin-bottom: 0.5rem;
-  }
-  .skill-desc {
-    color: #b8a070;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-  }
-  .skill-stars {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    letter-spacing: 0.3em;
-    animation: pulse-amber 2s ease-in-out infinite;
-  }
+/* SKILL UNLOCK */
+#skill-unlock{border:3px solid var(--amber);background:#12100a;padding:1.75rem 2rem;text-align:center;margin:2.5rem auto;max-width:680px;position:relative;box-shadow:0 0 0 1px var(--amber-dim),0 0 30px rgba(255,176,0,0.2),inset 0 0 20px rgba(255,176,0,0.04);animation:skill-appear 0.8s cubic-bezier(0.175,0.885,0.32,1.275) both;animation-delay:0.3s}
+#skill-unlock::before{content:'★ ★ ★';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#12100a;padding:0 12px;color:var(--amber);font-size:1.1rem;letter-spacing:0.4em;text-shadow:0 0 8px var(--amber)}
+.skill-tag{font-family:var(--pixel);font-size:0.5rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;display:block;text-shadow:0 0 8px rgba(255,176,0,0.5)}
+.skill-name{font-family:var(--pixel);font-size:clamp(0.8rem,3vw,1.3rem);color:#fff;text-shadow:0 0 12px var(--amber),0 0 30px rgba(255,176,0,0.3);margin-bottom:0.5rem}
+.skill-desc{color:#b8a070;font-size:1.1rem;margin-top:0.5rem}
+.skill-stars{margin-top:1rem;font-size:1.5rem;letter-spacing:0.3em;animation:pulse-amber 2s ease-in-out infinite}
 
-  /* ── SECTION HEADER ── */
-  .section-header {
-    font-family: var(--pixel);
-    font-size: clamp(0.6rem, 2.2vw, 0.85rem);
-    color: var(--green);
-    text-align: center;
-    margin: 3.5rem 0 2rem;
-    position: relative;
-    letter-spacing: 0.1em;
-  }
-  .section-header::before,
-  .section-header::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 28%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--green-dim));
-  }
-  .section-header::before { right: calc(50% + 1rem); background: linear-gradient(90deg, transparent, var(--green-dim)); }
-  .section-header::after { left: calc(50% + 1rem); background: linear-gradient(90deg, var(--green-dim), transparent); }
+/* SECTION HEADER */
+.section-header{font-family:var(--pixel);font-size:clamp(0.6rem,2.2vw,0.85rem);color:var(--green);text-align:center;margin:3.5rem 0 2rem;position:relative;letter-spacing:0.1em}
+.section-header::before,.section-header::after{content:'';position:absolute;top:50%;width:28%;height:1px}
+.section-header::before{right:calc(50% + 1rem);background:linear-gradient(90deg,transparent,var(--green-dim))}
+.section-header::after{left:calc(50% + 1rem);background:linear-gradient(90deg,var(--green-dim),transparent)}
 
-  /* ── POWER-UP GRID ── */
-  .powerup-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 3rem;
-  }
-  .powerup-card {
-    border: 2px solid var(--card-border);
-    background: var(--card-bg);
-    padding: 1.25rem 1.25rem 1rem;
-    position: relative;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
-    cursor: default;
-  }
-  .powerup-card:hover {
-    border-color: var(--green-dim);
-    box-shadow: 0 0 18px rgba(0,255,65,0.12);
-    transform: translateY(-2px);
-  }
-  .powerup-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: var(--card-level-color, var(--green));
-    box-shadow: 0 0 8px var(--card-level-color, var(--green));
-  }
-  .powerup-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
-  .powerup-name {
-    font-family: var(--pixel);
-    font-size: 0.55rem;
-    color: var(--green);
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.08em;
-  }
-  .powerup-level {
-    font-size: 0.85rem;
-    color: var(--green-dim);
-    margin-bottom: 0.75rem;
-  }
-  .powerup-level span { color: var(--card-level-color, var(--amber)); }
-  .bar-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: var(--green-dim);
-    margin-bottom: 4px;
-  }
-  .bar-track {
-    height: 10px;
-    background: #1a2a1a;
-    border: 1px solid var(--card-border);
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%;
-    width: 0%;
-    background: var(--card-level-color, var(--green));
-    box-shadow: 0 0 6px var(--card-level-color, var(--green));
-    transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .powerup-vs {
-    margin-top: 0.75rem;
-    font-size: 0.85rem;
-    color: #3a6a3a;
-    border-top: 1px solid #1a2a1a;
-    padding-top: 0.5rem;
-  }
-  .powerup-vs strong { color: var(--green-dim); }
+/* POWER-UP GRID */
+.powerup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;margin-bottom:3rem}
+.powerup-card{border:2px solid var(--card-border);background:var(--card-bg);padding:1.25rem 1.25rem 1rem;position:relative;transition:border-color 0.2s,box-shadow 0.2s,transform 0.15s;cursor:default}
+.powerup-card:hover{border-color:var(--green-dim);box-shadow:0 0 18px rgba(0,255,65,0.12);transform:translateY(-2px)}
+.powerup-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--card-level-color,var(--green));box-shadow:0 0 8px var(--card-level-color,var(--green))}
+.powerup-icon{font-size:2rem;margin-bottom:0.5rem;display:block}
+.powerup-name{font-family:var(--pixel);font-size:0.55rem;color:var(--green);margin-bottom:0.4rem;letter-spacing:0.08em}
+.powerup-level{font-size:0.85rem;color:var(--green-dim);margin-bottom:0.75rem}
+.powerup-level span{color:var(--card-level-color,var(--amber))}
+.bar-label{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--green-dim);margin-bottom:4px}
+.bar-track{height:10px;background:#1a2a1a;border:1px solid var(--card-border);overflow:hidden}
+.bar-fill{height:100%;width:0%;background:var(--card-level-color,var(--green));box-shadow:0 0 6px var(--card-level-color,var(--green));transition:width 1.4s cubic-bezier(0.22,1,0.36,1)}
+.powerup-vs{margin-top:0.75rem;font-size:0.85rem;color:#3a6a3a;border-top:1px solid #1a2a1a;padding-top:0.5rem}
+.powerup-vs strong{color:var(--green-dim)}
 
-  /* ── PIXEL MORINGA ASCII ── */
-  .ascii-wrap {
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    padding: 1.75rem;
-    margin: 0 auto 3rem;
-    max-width: 680px;
-    text-align: center;
-  }
-  .ascii-art {
-    font-family: var(--mono);
-    font-size: clamp(0.65rem, 1.4vw, 0.95rem);
-    color: var(--green);
-    line-height: 1.35;
-    white-space: pre;
-    display: inline-block;
-    text-align: left;
-    text-shadow: 0 0 6px rgba(0,255,65,0.5);
-    animation: flicker 8s infinite;
-  }
-  .ascii-label {
-    font-family: var(--pixel);
-    font-size: 0.5rem;
-    color: var(--green-dim);
-    margin-top: 1rem;
-    letter-spacing: 0.15em;
-    display: block;
-  }
+/* ASCII ART */
+.ascii-wrap{background:var(--card-bg);border:2px solid var(--card-border);padding:1.75rem;margin:0 auto 3rem;max-width:680px;text-align:center}
+.ascii-art{font-family:var(--mono);font-size:clamp(0.65rem,1.4vw,0.95rem);color:var(--green);line-height:1.35;white-space:pre;display:inline-block;text-align:left;text-shadow:0 0 6px rgba(0,255,65,0.5);animation:flicker 8s infinite}
+.ascii-label{font-family:var(--pixel);font-size:0.5rem;color:var(--green-dim);margin-top:1rem;letter-spacing:0.15em;display:block}
 
-  /* ── LEADERBOARD ── */
-  .leaderboard {
-    border: 2px solid var(--card-border);
-    background: var(--card-bg);
-    overflow: hidden;
-    margin-bottom: 3rem;
-  }
-  .lb-head {
-    background: var(--green-dark);
-    display: grid;
-    grid-template-columns: 3rem 1fr 6rem 7rem;
-    gap: 0;
-    padding: 0.6rem 1.25rem;
-    font-family: var(--pixel);
-    font-size: 0.45rem;
-    color: var(--green-dim);
-    letter-spacing: 0.1em;
-    border-bottom: 2px solid var(--card-border);
-  }
-  .lb-row {
-    display: grid;
-    grid-template-columns: 3rem 1fr 6rem 7rem;
-    gap: 0;
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-    border-bottom: 1px solid #0f1e0f;
-    align-items: center;
-    transition: background 0.15s;
-  }
-  .lb-row:last-child { border-bottom: none; }
-  .lb-row:hover { background: #0a150a; }
-  .lb-rank { font-family: var(--pixel); font-size: 0.5rem; color: var(--green-dim); }
-  .lb-rank.gold { color: var(--amber); text-shadow: 0 0 6px var(--amber); }
-  .lb-rank.silver { color: #a0a0a0; }
-  .lb-rank.bronze { color: #cd7f32; }
-  .lb-nutrient { font-size: 1.05rem; }
-  .lb-nutrient small { display: block; font-size: 0.8rem; color: #3a6a3a; }
-  .lb-score { font-family: var(--pixel); font-size: 0.5rem; color: var(--cyan); text-shadow: 0 0 6px var(--cyan); text-align: right; }
-  .lb-badge {
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border: 1px solid;
-    text-align: center;
-    margin-left: auto;
-    width: fit-content;
-  }
-  .lb-badge.s-tier { color: var(--amber); border-color: var(--amber); background: rgba(255,176,0,0.08); }
-  .lb-badge.a-tier { color: var(--cyan); border-color: var(--cyan); background: rgba(0,229,255,0.05); }
-  .lb-badge.b-tier { color: var(--green); border-color: var(--green-dim); background: rgba(0,255,65,0.05); }
+/* LEADERBOARD */
+.leaderboard{border:2px solid var(--card-border);background:var(--card-bg);overflow:hidden;margin-bottom:3rem}
+.lb-head{background:var(--green-dark);display:grid;grid-template-columns:3rem 1fr 6rem 7rem;padding:0.6rem 1.25rem;font-family:var(--pixel);font-size:0.45rem;color:var(--green-dim);letter-spacing:0.1em;border-bottom:2px solid var(--card-border)}
+.lb-row{display:grid;grid-template-columns:3rem 1fr 6rem 7rem;padding:0.75rem 1.25rem;font-size:1rem;border-bottom:1px solid #0f1e0f;align-items:center;transition:background 0.15s}
+.lb-row:last-child{border-bottom:none}
+.lb-row:hover{background:#0a150a}
+.lb-rank{font-family:var(--pixel);font-size:0.5rem;color:var(--green-dim)}
+.lb-rank.gold{color:var(--amber);text-shadow:0 0 6px var(--amber)}
+.lb-rank.silver{color:#a0a0a0}
+.lb-rank.bronze{color:#cd7f32}
+.lb-nutrient{font-size:1.05rem}
+.lb-nutrient small{display:block;font-size:0.8rem;color:#3a6a3a}
+.lb-score{font-family:var(--pixel);font-size:0.5rem;color:var(--cyan);text-shadow:0 0 6px var(--cyan);text-align:right}
+.lb-badge{font-size:0.75rem;padding:2px 8px;border:1px solid;text-align:center;margin-left:auto;width:fit-content}
+.lb-badge.s-tier{color:var(--amber);border-color:var(--amber);background:rgba(255,176,0,0.08)}
+.lb-badge.a-tier{color:var(--cyan);border-color:var(--cyan);background:rgba(0,229,255,0.05)}
+.lb-badge.b-tier{color:var(--green);border-color:var(--green-dim);background:rgba(0,255,65,0.05)}
 
-  /* ── STATS ROW ── */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-  .stat-box {
-    border: 2px solid var(--card-border);
-    background: var(--card-bg);
-    padding: 1.25rem 1rem;
-    text-align: center;
-    animation: flicker 10s infinite;
-  }
-  .stat-box:nth-child(2) { animation-delay: 1.5s; }
-  .stat-box:nth-child(3) { animation-delay: 3s; }
-  .stat-box:nth-child(4) { animation-delay: 4.5s; }
-  .stat-num {
-    font-family: var(--pixel);
-    font-size: clamp(0.9rem, 3vw, 1.5rem);
-    color: var(--green);
-    text-shadow: 0 0 12px var(--green);
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .stat-label { font-size: 0.9rem; color: var(--green-dim); letter-spacing: 0.05em; }
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:3rem}
+.stat-box{border:2px solid var(--card-border);background:var(--card-bg);padding:1.25rem 1rem;text-align:center;animation:flicker 10s infinite}
+.stat-box:nth-child(2){animation-delay:1.5s}
+.stat-box:nth-child(3){animation-delay:3s}
+.stat-box:nth-child(4){animation-delay:4.5s}
+.stat-num{font-family:var(--pixel);font-size:clamp(0.9rem,3vw,1.5rem);color:var(--green);text-shadow:0 0 12px var(--green);display:block;margin-bottom:0.5rem}
+.stat-label{font-size:0.9rem;color:var(--green-dim);letter-spacing:0.05em}
 
-  /* ── CTA ── */
-  .cta-wrap {
-    text-align: center;
-    margin: 3rem 0 2rem;
-  }
-  .cta-msg {
-    font-size: 1.2rem;
-    color: var(--green-dim);
-    margin-bottom: 1.5rem;
-    animation: blink 1.8s step-end infinite;
-  }
-  .cta-btn {
-    display: inline-block;
-    font-family: var(--pixel);
-    font-size: clamp(0.55rem, 2vw, 0.75rem);
-    color: var(--bg);
-    background: var(--green);
-    padding: 1rem 2.5rem;
-    text-decoration: none;
-    border: 3px solid var(--green);
-    box-shadow: 4px 4px 0 var(--green-dim);
-    transition: all 0.1s;
-    letter-spacing: 0.08em;
-    text-shadow: none;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
-    transform: translateX(-100%);
-    transition: transform 0.4s;
-  }
-  .cta-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--green-dim); }
-  .cta-btn:hover::after { transform: translateX(100%); }
-  .cta-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--green-dim); }
+/* ── BOSS BATTLE ── */
+.boss-arena{border:2px solid var(--card-border);background:var(--card-bg);padding:1.5rem;margin-bottom:3rem}
+.battle-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.5rem}
+.fighter{text-align:center}
+.fighter-name{font-family:var(--pixel);font-size:0.55rem;margin-bottom:0.6rem;letter-spacing:0.08em}
+.fighter-name.player{color:var(--green);text-shadow:0 0 8px var(--green)}
+.fighter-name.enemy{color:var(--red);text-shadow:0 0 8px var(--red)}
+.fighter-sprite{font-size:3rem;margin-bottom:0.5rem;display:block;animation:bounce 2s ease-in-out infinite}
+.fighter-sprite.enemy{animation-delay:0.5s;filter:hue-rotate(180deg)}
+.hp-wrap{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem}
+.hp-label{font-family:var(--pixel);font-size:0.4rem;color:var(--green-dim);flex-shrink:0;width:2.5rem}
+.hp-track{flex:1;height:14px;background:#1a2a1a;border:1px solid var(--card-border);overflow:hidden}
+.hp-fill{height:100%;transition:width 1s cubic-bezier(0.22,1,0.36,1);box-shadow:0 0 6px currentColor}
+.hp-fill.player{background:var(--green);color:var(--green)}
+.hp-fill.enemy{background:var(--red);color:var(--red)}
+.hp-val{font-family:var(--pixel);font-size:0.4rem;color:var(--green-dim);flex-shrink:0}
+.vs-badge{font-family:var(--pixel);font-size:1rem;color:var(--amber);text-align:center;text-shadow:0 0 12px var(--amber);animation:pulse-amber 1.5s infinite}
+.battle-stats{display:grid;grid-template-columns:1fr 1fr 1fr;font-size:0.88rem;gap:0.4rem;margin-bottom:1.25rem}
+.bstat{border:1px solid var(--card-border);padding:0.5rem;text-align:center;background:#060c06}
+.bstat-lbl{color:var(--green-dim);font-size:0.75rem;margin-bottom:0.2rem}
+.bstat-p{color:var(--green);font-weight:bold}
+.bstat-e{color:var(--red)}
+.battle-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.battle-btn{font-family:var(--pixel);font-size:0.5rem;padding:0.7rem 1.25rem;background:var(--green-dark);border:2px solid var(--green-dim);color:var(--green);cursor:pointer;letter-spacing:0.08em;transition:all 0.15s;box-shadow:3px 3px 0 var(--green-dim)}
+.battle-btn:hover{background:var(--green);color:var(--bg);box-shadow:5px 5px 0 var(--green-dim)}
+.battle-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--green-dim)}
+.battle-btn.red{border-color:var(--red);color:var(--red);box-shadow:3px 3px 0 #660000}
+.battle-btn.red:hover{background:var(--red);color:#fff;box-shadow:5px 5px 0 #660000}
+#battle-log{font-size:0.9rem;color:var(--green-dim);min-height:2.5rem;text-align:center;margin-top:1rem;border-top:1px solid var(--card-border);padding-top:0.75rem}
 
-  /* ── FOOTER ── */
-  .arcade-footer {
-    text-align: center;
-    padding: 1.5rem;
-    border-top: 2px solid var(--green-dark);
-    font-size: 0.85rem;
-    color: #1a3a1a;
-    letter-spacing: 0.08em;
-  }
-  .arcade-footer a { color: var(--green-dim); text-decoration: none; }
-  .arcade-footer a:hover { color: var(--green); }
+/* ── DAILY QUESTS ── */
+.quest-board{border:2px solid var(--card-border);background:var(--card-bg);margin-bottom:3rem;overflow:hidden}
+.quest-header{background:var(--green-dark);padding:0.75rem 1.25rem;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--card-border)}
+.quest-title{font-family:var(--pixel);font-size:0.5rem;color:var(--green);letter-spacing:0.1em}
+.quest-xp-total{font-family:var(--pixel);font-size:0.5rem;color:var(--amber);text-shadow:0 0 6px var(--amber)}
+.quest-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.25rem;border-bottom:1px solid #0f1e0f;transition:background 0.15s;cursor:pointer}
+.quest-item:last-child{border-bottom:none}
+.quest-item:hover{background:#0a150a}
+.quest-item.done{opacity:0.55}
+.quest-item.done .quest-text{text-decoration:line-through;color:var(--green-dim)}
+.quest-check{width:22px;height:22px;border:2px solid var(--green-dim);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s}
+.quest-item.done .quest-check{border-color:var(--green);background:var(--green-dark);color:var(--green)}
+.quest-text{flex:1;font-size:0.95rem}
+.quest-reward{font-family:var(--pixel);font-size:0.38rem;color:var(--amber);flex-shrink:0;text-align:right}
+.quest-reset{font-family:var(--pixel);font-size:0.38rem;color:var(--green-dim);background:none;border:1px solid var(--green-dim);padding:0.3rem 0.6rem;cursor:pointer;transition:all 0.15s}
+.quest-reset:hover{color:var(--green);border-color:var(--green)}
 
-  /* ── ACHIEVEMENT TOAST ── */
-  .toast {
-    position: fixed;
-    bottom: 2rem;
-    right: 1.5rem;
-    background: #0a120a;
-    border: 2px solid var(--green-dim);
-    padding: 0.75rem 1.25rem;
-    font-size: 0.9rem;
-    z-index: 7000;
-    max-width: 280px;
-    box-shadow: 0 0 20px rgba(0,255,65,0.2);
-    transform: translateX(120%);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .toast.show { transform: translateX(0); }
-  .toast-head {
-    font-family: var(--pixel);
-    font-size: 0.4rem;
-    color: var(--green-dim);
-    margin-bottom: 0.3rem;
-    letter-spacing: 0.1em;
-  }
-  .toast-body { color: var(--green); }
+/* ── SNAKE GAME ── */
+.game-section{border:2px solid var(--card-border);background:var(--card-bg);margin-bottom:3rem;overflow:hidden}
+.game-topbar{background:var(--green-dark);padding:0.75rem 1.25rem;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--card-border);flex-wrap:wrap;gap:0.5rem}
+.game-label{font-family:var(--pixel);font-size:0.5rem;color:var(--green);letter-spacing:0.1em}
+.game-scores{display:flex;gap:1.5rem}
+.score-item{font-family:var(--pixel);font-size:0.4rem;color:var(--green-dim)}
+.score-item span{color:var(--cyan);text-shadow:0 0 6px var(--cyan)}
+.game-canvas-wrap{position:relative;display:flex;justify-content:center;padding:1rem;background:#030603}
+#snake-canvas{display:block;background:#030603;image-rendering:pixelated;max-width:100%;border:1px solid var(--green-dark)}
+/* game overlay */
+.game-overlay{position:absolute;inset:1rem;background:rgba(3,6,3,0.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:5}
+.game-overlay.hidden{display:none}
+.overlay-title{font-family:var(--pixel);font-size:clamp(0.65rem,2.5vw,1rem);color:var(--green);text-shadow:0 0 12px var(--green);text-align:center;animation:flicker 3s infinite}
+.overlay-score{font-family:var(--pixel);font-size:0.5rem;color:var(--cyan);text-align:center}
+.overlay-btn{font-family:var(--pixel);font-size:0.5rem;padding:0.75rem 1.5rem;background:var(--green);color:var(--bg);border:none;cursor:pointer;box-shadow:4px 4px 0 var(--green-dim);transition:all 0.1s;letter-spacing:0.08em}
+.overlay-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--green-dim)}
+.overlay-btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--green-dim)}
+.overlay-hint{font-size:0.85rem;color:var(--green-dim);text-align:center}
+/* food effect popup */
+#food-popup{position:absolute;font-family:var(--pixel);font-size:0.45rem;pointer-events:none;z-index:6;transition:opacity 0.4s,transform 0.4s;opacity:0}
+#food-popup.pop{opacity:1;transform:translateY(-20px) !important}
+/* d-pad */
+.dpad{display:flex;flex-direction:column;align-items:center;gap:0;padding:0.75rem 1.25rem 1rem;background:#030603;border-top:1px solid var(--green-dark)}
+.dpad-row{display:flex;gap:0.3rem;justify-content:center;margin:0.15rem 0}
+.dpad-btn{font-family:var(--pixel);font-size:0.6rem;width:44px;height:44px;background:var(--green-dark);border:2px solid var(--green-dim);color:var(--green);cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation;transition:background 0.1s}
+.dpad-btn:active{background:var(--green);color:var(--bg)}
+.dpad-center{width:44px;height:44px;background:#030603;border:none}
+.game-hint{text-align:center;padding:0.6rem 1rem;font-size:0.85rem;color:var(--green-dim);background:#030603;border-top:1px solid var(--green-dark)}
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-  @keyframes flicker {
-    0%, 95%, 100% { opacity: 1; }
-    96% { opacity: 0.85; }
-    97% { opacity: 1; }
-    98% { opacity: 0.7; }
-    99% { opacity: 1; }
-  }
-  @keyframes scroll-left {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @keyframes glitch-top {
-    0%, 85%, 100% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(-2px); }
-    86% { clip-path: polygon(0 12%, 100% 12%, 100% 20%, 0 20%); transform: translate(3px); }
-    88% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(-4px); }
-    90% { clip-path: polygon(0 30%, 100% 30%, 100% 45%, 0 45%); transform: translate(2px); }
-  }
-  @keyframes glitch-bot {
-    0%, 85%, 100% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translate(2px); }
-    87% { clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%); transform: translate(-3px); }
-    89% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translate(4px); }
-    91% { clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); transform: translate(-2px); }
-  }
-  @keyframes skill-appear {
-    from { opacity: 0; transform: scale(0.7) rotate(-2deg); }
-    to { opacity: 1; transform: scale(1) rotate(0deg); }
-  }
-  @keyframes pulse-amber {
-    0%, 100% { opacity: 1; text-shadow: 0 0 8px var(--amber); }
-    50% { opacity: 0.6; text-shadow: 0 0 20px var(--amber); }
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* ── CTA ── */
+.cta-wrap{text-align:center;margin:3rem 0 2rem}
+.cta-msg{font-size:1.2rem;color:var(--green-dim);margin-bottom:1.5rem;animation:blink 1.8s step-end infinite}
+.cta-btn{display:inline-block;font-family:var(--pixel);font-size:clamp(0.55rem,2vw,0.75rem);color:var(--bg);background:var(--green);padding:1rem 2.5rem;text-decoration:none;border:3px solid var(--green);box-shadow:4px 4px 0 var(--green-dim);transition:all 0.1s;letter-spacing:0.08em;position:relative;overflow:hidden}
+.cta-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.15) 50%,transparent 100%);transform:translateX(-100%);transition:transform 0.4s}
+.cta-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--green-dim)}
+.cta-btn:hover::after{transform:translateX(100%)}
+.cta-btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--green-dim)}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .lb-head, .lb-row { grid-template-columns: 2.5rem 1fr 4rem; }
-    .lb-head > *:last-child, .lb-row > *:last-child { display: none; }
-    .powerup-grid { grid-template-columns: 1fr 1fr; }
-    .section-header::before, .section-header::after { width: 18%; }
-  }
-  @media (max-width: 380px) {
-    .powerup-grid { grid-template-columns: 1fr; }
-  }
+/* FOOTER */
+.arcade-footer{text-align:center;padding:1.5rem;border-top:2px solid var(--green-dark);font-size:0.85rem;color:#1a3a1a;letter-spacing:0.08em}
+.arcade-footer a{color:var(--green-dim);text-decoration:none}
+.arcade-footer a:hover{color:var(--green)}
+
+/* TOASTS */
+.toast{position:fixed;bottom:2rem;right:1.5rem;background:#0a120a;border:2px solid var(--green-dim);padding:0.75rem 1.25rem;font-size:0.9rem;z-index:7000;max-width:280px;box-shadow:0 0 20px rgba(0,255,65,0.2);transform:translateX(120%);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1)}
+.toast.show{transform:translateX(0)}
+.toast-head{font-family:var(--pixel);font-size:0.4rem;color:var(--green-dim);margin-bottom:0.3rem;letter-spacing:0.1em}
+.toast-body{color:var(--green)}
+
+/* KEYFRAMES */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes flicker{0%,95%,100%{opacity:1}96%{opacity:0.85}97%{opacity:1}98%{opacity:0.7}99%{opacity:1}}
+@keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes glitch-top{0%,85%,100%{clip-path:polygon(0 0,100% 0,100% 45%,0 45%);transform:translate(-2px)}86%{clip-path:polygon(0 12%,100% 12%,100% 20%,0 20%);transform:translate(3px)}88%{clip-path:polygon(0 0,100% 0,100% 45%,0 45%);transform:translate(-4px)}90%{clip-path:polygon(0 30%,100% 30%,100% 45%,0 45%);transform:translate(2px)}}
+@keyframes glitch-bot{0%,85%,100%{clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);transform:translate(2px)}87%{clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%);transform:translate(-3px)}89%{clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);transform:translate(4px)}91%{clip-path:polygon(0 70%,100% 70%,100% 100%,0 100%);transform:translate(-2px)}}
+@keyframes skill-appear{from{opacity:0;transform:scale(0.7) rotate(-2deg)}to{opacity:1;transform:scale(1) rotate(0deg)}}
+@keyframes pulse-amber{0%,100%{opacity:1;text-shadow:0 0 8px var(--amber)}50%{opacity:0.6;text-shadow:0 0 20px var(--amber)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+@media(max-width:600px){
+  .lb-head,.lb-row{grid-template-columns:2.5rem 1fr 4rem}
+  .lb-head>*:last-child,.lb-row>*:last-child{display:none}
+  .powerup-grid{grid-template-columns:1fr 1fr}
+  .section-header::before,.section-header::after{width:18%}
+  .battle-stats{grid-template-columns:1fr 1fr}
+  .battle-row{grid-template-columns:1fr auto 1fr}
+}
+@media(max-width:380px){.powerup-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- ── BOOT SCREEN ── -->
+<!-- BOOT -->
 <div id="boot">
-  <div id="boot-logo">NUTRITHRIVE&nbsp;OS<br/>v2.6.0-ARCADE</div>
+  <div id="boot-logo">NUTRITHRIVE&nbsp;OS<br/>v3.0.0-ARCADE</div>
   <ul id="boot-log"></ul>
   <div id="boot-bar-wrap"><div id="boot-bar"></div></div>
   <div id="boot-pct">0%</div>
 </div>
 
-<!-- ── CANVAS STARFIELD ── -->
 <canvas id="starfield"></canvas>
 
-<!-- ── MAIN ── -->
 <div id="main">
 
-  <!-- top marquee -->
+  <!-- TOP MARQUEE -->
   <div class="marquee-strip" aria-hidden="true">
     <div class="marquee-inner">
-      <span class="hi">▶ NUTRITHRIVE ARCADE</span>
-      <span>// WELLNESS POWER-UPS LOADED</span>
-      <span class="hi">★ 46 ANTIOXIDANT TYPES DETECTED</span>
-      <span>// MAGNESIUM: CRITICAL STAT BOOST</span>
-      <span class="hi">▶ INSERT COIN TO CONTINUE</span>
-      <span>// MORINGA LEAF: LEGENDARY ITEM</span>
-      <span class="hi">★ PLAYER 1 READY</span>
-      <span>// XP MULTIPLIER ×7</span>
-      <span class="hi">▶ NUTRITHRIVE ARCADE</span>
-      <span>// WELLNESS POWER-UPS LOADED</span>
-      <span class="hi">★ 46 ANTIOXIDANT TYPES DETECTED</span>
-      <span>// MAGNESIUM: CRITICAL STAT BOOST</span>
-      <span class="hi">▶ INSERT COIN TO CONTINUE</span>
-      <span>// MORINGA LEAF: LEGENDARY ITEM</span>
-      <span class="hi">★ PLAYER 1 READY</span>
-      <span>// XP MULTIPLIER ×7</span>
+      <span class="hi">▶ NUTRITHRIVE ARCADE v3.0</span><span>// WELLNESS POWER-UPS LOADED</span>
+      <span class="hi">★ 46 ANTIOXIDANT TYPES DETECTED</span><span>// MAGNESIUM: CRITICAL STAT BOOST</span>
+      <span class="hi">▶ INSERT COIN TO CONTINUE</span><span>// MORINGA LEAF: LEGENDARY ITEM</span>
+      <span class="hi">★ SNAKE GAME UNLOCKED</span><span>// XP MULTIPLIER ×7</span>
+      <span class="hi">▶ NUTRITHRIVE ARCADE v3.0</span><span>// WELLNESS POWER-UPS LOADED</span>
+      <span class="hi">★ 46 ANTIOXIDANT TYPES DETECTED</span><span>// MAGNESIUM: CRITICAL STAT BOOST</span>
+      <span class="hi">▶ INSERT COIN TO CONTINUE</span><span>// MORINGA LEAF: LEGENDARY ITEM</span>
+      <span class="hi">★ SNAKE GAME UNLOCKED</span><span>// XP MULTIPLIER ×7</span>
     </div>
   </div>
 
@@ -645,10 +288,16 @@
       <p class="hero-eyebrow">▶ PLAYER 1 HAS ENTERED ◀</p>
       <h1 class="hero-title" data-text="NUTRITHRIVE ARCADE">NUTRITHRIVE ARCADE</h1>
       <p class="hero-sub">LEVEL UP YOUR WELLNESS&nbsp;<span class="cursor" aria-hidden="true"></span></p>
+      <div class="ctrl-row">
+        <button class="mode-btn active" onclick="setMode('green')" title="Green phosphor">◉ GREEN</button>
+        <button class="mode-btn" onclick="setMode('amber')" title="Amber phosphor">◉ AMBER</button>
+        <button class="mode-btn" onclick="setMode('cyan')"  title="Cyan phosphor">◉ CYAN</button>
+        <button class="sound-btn" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">♪ SOUND: OFF</button>
+      </div>
     </header>
 
     <!-- SKILL UNLOCK -->
-    <div id="skill-unlock" role="status" aria-label="New skill unlocked">
+    <div id="skill-unlock" role="status">
       <span class="skill-tag">⚡ achievement unlocked ⚡</span>
       <div class="skill-name">WELLNESS MASTERY UNLOCKED</div>
       <p class="skill-desc">You discovered the Moringa Leaf — a Legendary superfood with 90+ nutrients, 46 antioxidants, and stats that break the chart.<br/>Your wellness build will never be the same.</p>
@@ -656,109 +305,78 @@
     </div>
 
     <!-- STATS ROW -->
-    <div class="stats-row" id="stats-row">
-      <div class="stat-box">
-        <span class="stat-num" data-count="90">0</span>
-        <span class="stat-label">NUTRIENTS</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num" data-count="46">0</span>
-        <span class="stat-label">ANTIOXIDANTS</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num" data-count="7">0</span>
-        <span class="stat-label">× VIT-C vs ORANGE</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num" data-count="4">0</span>
-        <span class="stat-label">× CALCIUM vs MILK</span>
-      </div>
+    <div class="stats-row">
+      <div class="stat-box"><span class="stat-num" data-count="90">0</span><span class="stat-label">NUTRIENTS</span></div>
+      <div class="stat-box"><span class="stat-num" data-count="46">0</span><span class="stat-label">ANTIOXIDANTS</span></div>
+      <div class="stat-box"><span class="stat-num" data-count="7">0</span><span class="stat-label">× VIT-C vs ORANGE</span></div>
+      <div class="stat-box"><span class="stat-num" data-count="4">0</span><span class="stat-label">× CALCIUM vs MILK</span></div>
     </div>
 
-    <!-- SECTION: POWER-UPS -->
+    <!-- POWER-UPS -->
     <h2 class="section-header">◈ NUTRIENT POWER-UPS ◈</h2>
-
     <div class="powerup-grid" id="powerup-grid">
-
-      <div class="powerup-card" style="--card-level-color: #ffb000;">
-        <span class="powerup-icon">⚡</span>
-        <div class="powerup-name">VITAMIN C</div>
+      <div class="powerup-card" style="--card-level-color:#ffb000">
+        <span class="powerup-icon">⚡</span><div class="powerup-name">VITAMIN C</div>
         <div class="powerup-level">LVL <span>MAX</span> // LEGENDARY</div>
         <div class="bar-label"><span>DENSITY</span><span>×7 vs ORANGE</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="97"></div></div>
         <div class="powerup-vs">IMMUNE SYSTEM +++ <strong>CRITICAL HIT</strong></div>
       </div>
-
-      <div class="powerup-card" style="--card-level-color: #00e5ff;">
-        <span class="powerup-icon">🦴</span>
-        <div class="powerup-name">CALCIUM</div>
+      <div class="powerup-card" style="--card-level-color:#00e5ff">
+        <span class="powerup-icon">🦴</span><div class="powerup-name">CALCIUM</div>
         <div class="powerup-level">LVL <span>89</span> // EPIC</div>
         <div class="bar-label"><span>DENSITY</span><span>×4 vs MILK</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="89"></div></div>
         <div class="powerup-vs">BONE DEFENCE +++ <strong>SHIELD ACTIVE</strong></div>
       </div>
-
-      <div class="powerup-card" style="--card-level-color: #ff3a3a;">
-        <span class="powerup-icon">🩸</span>
-        <div class="powerup-name">IRON</div>
+      <div class="powerup-card" style="--card-level-color:#ff3a3a">
+        <span class="powerup-icon">🩸</span><div class="powerup-name">IRON</div>
         <div class="powerup-level">LVL <span>82</span> // RARE</div>
         <div class="bar-label"><span>DENSITY</span><span>×3 vs SPINACH</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="82"></div></div>
         <div class="powerup-vs">ENERGY REGEN +++ <strong>NO FATIGUE</strong></div>
       </div>
-
-      <div class="powerup-card" style="--card-level-color: #c8ff00;">
-        <span class="powerup-icon">🍌</span>
-        <div class="powerup-name">POTASSIUM</div>
+      <div class="powerup-card" style="--card-level-color:#c8ff00">
+        <span class="powerup-icon">🍌</span><div class="powerup-name">POTASSIUM</div>
         <div class="powerup-level">LVL <span>76</span> // RARE</div>
         <div class="bar-label"><span>DENSITY</span><span>×3 vs BANANA</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="76"></div></div>
         <div class="powerup-vs">HEART RATE CTRL +++ <strong>STEADY RHYTHM</strong></div>
       </div>
-
-      <div class="powerup-card" style="--card-level-color: #b080ff;">
-        <span class="powerup-icon">🧲</span>
-        <div class="powerup-name">MAGNESIUM</div>
+      <div class="powerup-card" style="--card-level-color:#b080ff">
+        <span class="powerup-icon">🧲</span><div class="powerup-name">MAGNESIUM</div>
         <div class="powerup-level">LVL <span>71</span> // RARE</div>
         <div class="bar-label"><span>DENSITY</span><span>35mg / 100g</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="71"></div></div>
         <div class="powerup-vs">SLEEP QUALITY +++ <strong>STRESS -40</strong></div>
       </div>
-
-      <div class="powerup-card" style="--card-level-color: #ff8c00;">
-        <span class="powerup-icon">🥕</span>
-        <div class="powerup-name">VITAMIN A</div>
+      <div class="powerup-card" style="--card-level-color:#ff8c00">
+        <span class="powerup-icon">🥕</span><div class="powerup-name">VITAMIN A</div>
         <div class="powerup-level">LVL <span>94</span> // LEGENDARY</div>
         <div class="bar-label"><span>DENSITY</span><span>×10 vs CARROT</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="94"></div></div>
         <div class="powerup-vs">VISION ENHANCE +++ <strong>NIGHT MODE ON</strong></div>
       </div>
-
-      <div class="powerup-card" style="--card-level-color: #00ff99;">
-        <span class="powerup-icon">💪</span>
-        <div class="powerup-name">PROTEIN</div>
+      <div class="powerup-card" style="--card-level-color:#00ff99">
+        <span class="powerup-icon">💪</span><div class="powerup-name">PROTEIN</div>
         <div class="powerup-level">LVL <span>85</span> // EPIC</div>
         <div class="bar-label"><span>DENSITY</span><span>×2 vs YOGURT</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
         <div class="powerup-vs">MUSCLE BUILD +++ <strong>ALL 9 AMINO</strong></div>
       </div>
-
-      <div class="powerup-card" style="--card-level-color: #00c9ff;">
-        <span class="powerup-icon">🛡️</span>
-        <div class="powerup-name">ANTIOXIDANTS</div>
+      <div class="powerup-card" style="--card-level-color:#00c9ff">
+        <span class="powerup-icon">🛡️</span><div class="powerup-name">ANTIOXIDANTS</div>
         <div class="powerup-level">LVL <span>MAX</span> // LEGENDARY</div>
         <div class="bar-label"><span>TYPES</span><span>46 VARIETIES</span></div>
         <div class="bar-track"><div class="bar-fill" data-width="100"></div></div>
         <div class="powerup-vs">CELL DEFENCE +++ <strong>OXIDATION BLOCKED</strong></div>
       </div>
-
     </div>
 
-    <!-- ASCII MORINGA -->
+    <!-- ASCII ART -->
     <h2 class="section-header">◈ ITEM ACQUIRED ◈</h2>
-
     <div class="ascii-wrap">
-      <div class="ascii-art" aria-label="ASCII art of a moringa leaf">        *
+      <div class="ascii-art" aria-label="ASCII art moringa leaf">        *
        ***
       *****
      *  *  *
@@ -781,290 +399,607 @@
 
     <!-- LEADERBOARD -->
     <h2 class="section-header">◈ NUTRIENT LEADERBOARD ◈</h2>
-
     <div class="leaderboard">
-      <div class="lb-head">
-        <div>RANK</div>
-        <div>NUTRIENT</div>
-        <div style="text-align:right">POWER</div>
-        <div style="text-align:right">TIER</div>
+      <div class="lb-head"><div>RANK</div><div>NUTRIENT</div><div style="text-align:right">POWER</div><div style="text-align:right">TIER</div></div>
+      <div class="lb-row"><div class="lb-rank gold">#01</div><div class="lb-nutrient">VITAMIN A (Beta-Carotene)<small>×10 more than carrot</small></div><div class="lb-score">9,430 XP</div><div><span class="lb-badge s-tier">S-TIER</span></div></div>
+      <div class="lb-row"><div class="lb-rank gold">#02</div><div class="lb-nutrient">ANTIOXIDANTS<small>46 distinct varieties</small></div><div class="lb-score">9,100 XP</div><div><span class="lb-badge s-tier">S-TIER</span></div></div>
+      <div class="lb-row"><div class="lb-rank gold">#03</div><div class="lb-nutrient">VITAMIN C<small>×7 more than orange</small></div><div class="lb-score">8,800 XP</div><div><span class="lb-badge s-tier">S-TIER</span></div></div>
+      <div class="lb-row"><div class="lb-rank silver">#04</div><div class="lb-nutrient">PROTEIN (Complete)<small>All 9 essential amino acids</small></div><div class="lb-score">7,600 XP</div><div><span class="lb-badge a-tier">A-TIER</span></div></div>
+      <div class="lb-row"><div class="lb-rank silver">#05</div><div class="lb-nutrient">CALCIUM<small>×4 more than milk</small></div><div class="lb-score">7,200 XP</div><div><span class="lb-badge a-tier">A-TIER</span></div></div>
+      <div class="lb-row"><div class="lb-rank silver">#06</div><div class="lb-nutrient">IRON<small>×3 more than spinach</small></div><div class="lb-score">6,900 XP</div><div><span class="lb-badge a-tier">A-TIER</span></div></div>
+      <div class="lb-row"><div class="lb-rank bronze">#07</div><div class="lb-nutrient">POTASSIUM<small>×3 more than banana</small></div><div class="lb-score">5,800 XP</div><div><span class="lb-badge b-tier">B-TIER</span></div></div>
+      <div class="lb-row"><div class="lb-rank bronze">#08</div><div class="lb-nutrient">MAGNESIUM<small>35mg per 100g</small></div><div class="lb-score">5,400 XP</div><div><span class="lb-badge b-tier">B-TIER</span></div></div>
+    </div>
+
+    <!-- ══ BOSS BATTLE ══ -->
+    <h2 class="section-header">◈ BOSS BATTLE ◈</h2>
+    <div class="boss-arena">
+      <div class="battle-row">
+        <div class="fighter">
+          <div class="fighter-name player">MORINGA</div>
+          <span class="fighter-sprite">🌿</span>
+          <div class="hp-wrap"><span class="hp-label">HP</span><div class="hp-track"><div class="hp-fill player" id="hp-player" style="width:100%"></div></div><span class="hp-val" id="hp-player-val">100%</span></div>
+          <div style="font-size:0.82rem;color:var(--green-dim)">$0.37 / day</div>
+        </div>
+        <div class="vs-badge">VS</div>
+        <div class="fighter">
+          <div class="fighter-name enemy">AG1</div>
+          <span class="fighter-sprite enemy">💊</span>
+          <div class="hp-wrap"><span class="hp-label">HP</span><div class="hp-track"><div class="hp-fill enemy" id="hp-enemy" style="width:100%"></div></div><span class="hp-val" id="hp-enemy-val">100%</span></div>
+          <div style="font-size:0.82rem;color:var(--red)">$4.97 / day</div>
+        </div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank gold">#01</div>
-        <div class="lb-nutrient">VITAMIN A (Beta-Carotene)<small>×10 more than carrot</small></div>
-        <div class="lb-score">9,430 XP</div>
-        <div><span class="lb-badge s-tier">S-TIER</span></div>
+      <div class="battle-stats">
+        <div class="bstat"><div class="bstat-lbl">NUTRIENTS</div><div class="bstat-p">90+</div><div class="bstat-e">75</div></div>
+        <div class="bstat"><div class="bstat-lbl">COST/MONTH</div><div class="bstat-p">$11</div><div class="bstat-e">$150+</div></div>
+        <div class="bstat"><div class="bstat-lbl">PURE LEAF</div><div class="bstat-p">YES ✓</div><div class="bstat-e">BLEND ✗</div></div>
+        <div class="bstat"><div class="bstat-lbl">LAB-TESTED</div><div class="bstat-p">YES ✓</div><div class="bstat-e">PARTIAL</div></div>
+        <div class="bstat"><div class="bstat-lbl">FILLERS</div><div class="bstat-p">NONE ✓</div><div class="bstat-e">MANY ✗</div></div>
+        <div class="bstat"><div class="bstat-lbl">VALUE SCORE</div><div class="bstat-p">S-TIER</div><div class="bstat-e">D-TIER</div></div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank gold">#02</div>
-        <div class="lb-nutrient">ANTIOXIDANTS<small>46 distinct varieties</small></div>
-        <div class="lb-score">9,100 XP</div>
-        <div><span class="lb-badge s-tier">S-TIER</span></div>
+      <div class="battle-btns">
+        <button class="battle-btn" onclick="battleAttack()">⚔️ ATTACK</button>
+        <button class="battle-btn" onclick="battleSpecial()">⚡ SPECIAL MOVE</button>
+        <button class="battle-btn red" onclick="battleReset()">↺ REMATCH</button>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank gold">#03</div>
-        <div class="lb-nutrient">VITAMIN C<small>×7 more than orange</small></div>
-        <div class="lb-score">8,800 XP</div>
-        <div><span class="lb-badge s-tier">S-TIER</span></div>
+      <div id="battle-log">// SELECT AN ACTION TO BEGIN THE BATTLE</div>
+    </div>
+
+    <!-- ══ DAILY QUESTS ══ -->
+    <h2 class="section-header">◈ DAILY QUESTS ◈</h2>
+    <div class="quest-board">
+      <div class="quest-header">
+        <span class="quest-title">TODAY'S WELLNESS QUESTS</span>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <span class="quest-xp-total">XP EARNED: <span id="quest-xp">0</span></span>
+          <button class="quest-reset" onclick="resetQuests()">RESET</button>
+        </div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank silver">#04</div>
-        <div class="lb-nutrient">PROTEIN (Complete)<small>All 9 essential amino acids</small></div>
-        <div class="lb-score">7,600 XP</div>
-        <div><span class="lb-badge a-tier">A-TIER</span></div>
+      <div id="quest-list">
+        <div class="quest-item" onclick="toggleQuest('q1',200)" data-id="q1"><div class="quest-check" id="qc-q1"></div><span class="quest-text">Add moringa to your morning drink</span><span class="quest-reward">+200 XP</span></div>
+        <div class="quest-item" onclick="toggleQuest('q2',100)" data-id="q2"><div class="quest-check" id="qc-q2"></div><span class="quest-text">Drink 2L of water today</span><span class="quest-reward">+100 XP</span></div>
+        <div class="quest-item" onclick="toggleQuest('q3',150)" data-id="q3"><div class="quest-check" id="qc-q3"></div><span class="quest-text">Read a NutriThrive wellness guide</span><span class="quest-reward">+150 XP</span></div>
+        <div class="quest-item" onclick="toggleQuest('q4',300)" data-id="q4"><div class="quest-check" id="qc-q4"></div><span class="quest-text">Share NutriThrive with a friend</span><span class="quest-reward">+300 XP</span></div>
+        <div class="quest-item" onclick="toggleQuest('q5',250)" data-id="q5"><div class="quest-check" id="qc-q5"></div><span class="quest-text">Check your batch code for freshness</span><span class="quest-reward">+250 XP</span></div>
+        <div class="quest-item" onclick="toggleQuest('q6',500)" data-id="q6"><div class="quest-check" id="qc-q6"></div><span class="quest-text">Try moringa in a new recipe today</span><span class="quest-reward">+500 XP</span></div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank silver">#05</div>
-        <div class="lb-nutrient">CALCIUM<small>×4 more than milk</small></div>
-        <div class="lb-score">7,200 XP</div>
-        <div><span class="lb-badge a-tier">A-TIER</span></div>
+    </div>
+
+    <!-- ══ SNAKE GAME ══ -->
+    <h2 class="section-header">◈ MORINGA SNAKE ◈</h2>
+    <div class="game-section">
+      <div class="game-topbar">
+        <span class="game-label">🐍 MORINGA SNAKE</span>
+        <div class="game-scores">
+          <span class="score-item">SCORE: <span id="score">0</span></span>
+          <span class="score-item">BEST: <span id="hiscore">0</span></span>
+          <span class="score-item">LVL: <span id="gamelevel">1</span></span>
+        </div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank silver">#06</div>
-        <div class="lb-nutrient">IRON<small>×3 more than spinach</small></div>
-        <div class="lb-score">6,900 XP</div>
-        <div><span class="lb-badge a-tier">A-TIER</span></div>
+      <div class="game-canvas-wrap">
+        <canvas id="snake-canvas" width="400" height="300"></canvas>
+        <div class="game-overlay" id="start-overlay">
+          <div class="overlay-title">MORINGA SNAKE</div>
+          <div class="overlay-hint">Guide the snake to eat nutrients<br/>Each one powers up your wellness build!</div>
+          <button class="overlay-btn" onclick="startGame()">▶ START GAME</button>
+          <div class="overlay-hint">ARROW KEYS / WASD · P = PAUSE</div>
+        </div>
+        <div class="game-overlay hidden" id="over-overlay">
+          <div class="overlay-title">GAME OVER</div>
+          <div class="overlay-score" id="final-score"></div>
+          <button class="overlay-btn" onclick="startGame()">▶ PLAY AGAIN</button>
+        </div>
+        <div class="game-overlay hidden" id="pause-overlay">
+          <div class="overlay-title">PAUSED</div>
+          <button class="overlay-btn" onclick="unpause()">▶ RESUME</button>
+        </div>
+        <div id="food-popup" style="position:absolute;top:50%;left:50%"></div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank bronze">#07</div>
-        <div class="lb-nutrient">POTASSIUM<small>×3 more than banana</small></div>
-        <div class="lb-score">5,800 XP</div>
-        <div><span class="lb-badge b-tier">B-TIER</span></div>
+      <div class="dpad" aria-label="Game controls">
+        <div class="dpad-row"><button class="dpad-btn" onclick="dpadPress('up')">▲</button></div>
+        <div class="dpad-row"><button class="dpad-btn" onclick="dpadPress('left')">◄</button><div class="dpad-center"></div><button class="dpad-btn" onclick="dpadPress('right')">►</button></div>
+        <div class="dpad-row"><button class="dpad-btn" onclick="dpadPress('down')">▼</button></div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank bronze">#08</div>
-        <div class="lb-nutrient">MAGNESIUM<small>35mg per 100g</small></div>
-        <div class="lb-score">5,400 XP</div>
-        <div><span class="lb-badge b-tier">B-TIER</span></div>
-      </div>
+      <div class="game-hint">ARROW KEYS / WASD to move · P or SPACE to pause · Eat nutrients to grow!</div>
     </div>
 
     <!-- CTA -->
     <div class="cta-wrap">
       <p class="cta-msg">▶▶ PRESS START TO COLLECT YOUR POWER-UPS ◀◀</p>
-      <a href="/products/" class="cta-btn">ENTER THE SHOP &nbsp;→</a>
+      <a href="/products/" class="cta-btn" onclick="playBeep(880,80)">ENTER THE SHOP &nbsp;→</a>
     </div>
 
-  </div><!-- end page-wrap -->
+  </div><!-- page-wrap -->
 
-  <!-- bottom marquee -->
+  <!-- BOTTOM MARQUEE -->
   <div class="marquee-strip" aria-hidden="true">
-    <div class="marquee-inner" style="animation-direction: reverse; animation-duration: 35s;">
-      <span>SHADE DRIED · NO FILLERS · AUSTRALIAN OWNED ·</span>
-      <span class="hi">★ BATCH TESTED ★</span>
-      <span>MORINGA OLEIFERA · FAMILY FARMED ·</span>
-      <span class="hi">FREE SHIPPING AUS-WIDE</span>
-      <span>90+ NUTRIENTS · 46 ANTIOXIDANTS ·</span>
-      <span class="hi">★ LEGENDARY ITEM ★</span>
-      <span>SHADE DRIED · NO FILLERS · AUSTRALIAN OWNED ·</span>
-      <span class="hi">★ BATCH TESTED ★</span>
-      <span>MORINGA OLEIFERA · FAMILY FARMED ·</span>
-      <span class="hi">FREE SHIPPING AUS-WIDE</span>
-      <span>90+ NUTRIENTS · 46 ANTIOXIDANTS ·</span>
-      <span class="hi">★ LEGENDARY ITEM ★</span>
+    <div class="marquee-inner" style="animation-direction:reverse;animation-duration:35s">
+      <span>SHADE DRIED · NO FILLERS · AUSTRALIAN OWNED ·</span><span class="hi">★ BATCH TESTED ★</span>
+      <span>MORINGA OLEIFERA · FAMILY FARMED ·</span><span class="hi">FREE SHIPPING AUS-WIDE</span>
+      <span>90+ NUTRIENTS · 46 ANTIOXIDANTS ·</span><span class="hi">★ LEGENDARY ITEM ★</span>
+      <span>SHADE DRIED · NO FILLERS · AUSTRALIAN OWNED ·</span><span class="hi">★ BATCH TESTED ★</span>
+      <span>MORINGA OLEIFERA · FAMILY FARMED ·</span><span class="hi">FREE SHIPPING AUS-WIDE</span>
+      <span>90+ NUTRIENTS · 46 ANTIOXIDANTS ·</span><span class="hi">★ LEGENDARY ITEM ★</span>
     </div>
   </div>
 
   <footer class="arcade-footer">
-    <p>© 2026 <a href="/">NUTRITHRIVE AUSTRALIA</a> // ARCADE BUILD v2.6 // ALL STATS EVIDENCE-BASED</p>
+    <p>© 2026 <a href="/">NUTRITHRIVE AUSTRALIA</a> // ARCADE BUILD v3.0 // TIP: TRY THE KONAMI CODE ↑↑↓↓←→←→BA</p>
   </footer>
 
 </div><!-- #main -->
 
-<!-- ACHIEVEMENT TOASTS -->
-<div class="toast" id="toast1">
-  <div class="toast-head">⭐ ACHIEVEMENT UNLOCKED</div>
-  <div class="toast-body">EXPLORER: You found the secret arcade page!</div>
-</div>
-<div class="toast" id="toast2">
-  <div class="toast-head">⚡ COMBO ×3</div>
-  <div class="toast-body">SUPERFOOD SCHOLAR: All power-up cards scanned.</div>
-</div>
-<div class="toast" id="toast3">
-  <div class="toast-head">🏆 LEGENDARY</div>
-  <div class="toast-body">TOP OF THE LEADERBOARD: Now go get yours →</div>
-</div>
+<!-- TOASTS -->
+<div class="toast" id="toast1"><div class="toast-head">⭐ ACHIEVEMENT UNLOCKED</div><div class="toast-body">EXPLORER: You found the secret arcade!</div></div>
+<div class="toast" id="toast2"><div class="toast-head">⚡ COMBO ×3</div><div class="toast-body">SUPERFOOD SCHOLAR: All power-up cards scanned.</div></div>
+<div class="toast" id="toast3"><div class="toast-head">🏆 LEGENDARY</div><div class="toast-body">TOP OF THE LEADERBOARD: Now go get yours →</div></div>
+<div class="toast" id="toast4"><div class="toast-head">🐍 HIGH SCORE!</div><div class="toast-body" id="toast4-body">New personal best!</div></div>
+<div class="toast" id="toast5"><div class="toast-head">✅ QUEST COMPLETE</div><div class="toast-body" id="toast5-body">+XP earned!</div></div>
+<div class="toast" id="toast6"><div class="toast-head">⚔️ CRITICAL HIT!</div><div class="toast-body">MORINGA wins on every metric!</div></div>
 
 <script>
-(function () {
-  'use strict';
+(function(){
+'use strict';
 
-  /* ── STARFIELD CANVAS ── */
-  const canvas = document.getElementById('starfield');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
+/* ── WEB AUDIO ENGINE ── */
+let audioCtx = null;
+let soundOn = false;
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
+function getCtx(){
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
 
-  function initParticles() {
-    particles = [];
-    const count = Math.floor((canvas.width * canvas.height) / 9000);
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.2 + 0.2,
-        speed: Math.random() * 0.3 + 0.05,
-        opacity: Math.random() * 0.6 + 0.1,
-        pulse: Math.random() * Math.PI * 2
-      });
-    }
-  }
+function playTone(freq, dur, type='square', vol=0.18){
+  if(!soundOn) return;
+  try{
+    const ctx = getCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = type; osc.frequency.value = freq;
+    gain.gain.setValueAtTime(vol, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + dur);
+  } catch(e){}
+}
 
-  let animFrame;
-  function drawParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const now = Date.now() / 1000;
-    particles.forEach(p => {
-      const op = p.opacity * (0.6 + 0.4 * Math.sin(now * 1.2 + p.pulse));
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,255,65,${op})`;
-      ctx.fill();
-      p.y -= p.speed;
-      if (p.y < -2) { p.y = canvas.height + 2; p.x = Math.random() * canvas.width; }
-    });
-    animFrame = requestAnimationFrame(drawParticles);
-  }
+window.playBeep = (f=440, d=0.08) => playTone(f, d/1000, 'square', 0.15);
 
-  resizeCanvas();
-  initParticles();
-  drawParticles();
-  window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+function playEat(nutrientIdx){
+  const freqs = [523,587,659,698,784,880,988,1047];
+  const f = freqs[nutrientIdx % freqs.length];
+  playTone(f, 0.12, 'square', 0.2);
+  setTimeout(() => playTone(f*1.5, 0.08, 'square', 0.1), 80);
+}
 
-  /* ── BOOT SEQUENCE ── */
-  const bootMessages = [
-    { text: 'BIOS v2.6 OK', cls: 'ok', delay: 0 },
-    { text: 'Scanning nutrient database... 90 modules', cls: 'ok', delay: 280 },
-    { text: 'Loading antioxidant registry (46 types)', cls: 'ok', delay: 560 },
-    { text: 'Initialising moringa engine', cls: 'ok', delay: 820 },
-    { text: 'Calibrating power-up stats', cls: 'load', delay: 1050 },
-    { text: 'Connecting to wellness leaderboard', cls: 'ok', delay: 1320 },
-    { text: 'Activating CRT display driver', cls: 'ok', delay: 1560 },
-    { text: 'SYSTEM READY — launching ARCADE', cls: 'ok', delay: 1800 }
-  ];
+function playDie(){
+  [400,300,200,150].forEach((f,i) => setTimeout(() => playTone(f, 0.15, 'sawtooth', 0.2), i*120));
+}
 
-  const logEl = document.getElementById('boot-log');
-  const barEl = document.getElementById('boot-bar');
-  const pctEl = document.getElementById('boot-pct');
-  const totalDelay = 2400;
+function playAchievement(){
+  [523,659,784,1047].forEach((f,i) => setTimeout(() => playTone(f, 0.12, 'square', 0.18), i*100));
+}
 
-  bootMessages.forEach(msg => {
-    setTimeout(() => {
-      const li = document.createElement('li');
-      li.textContent = '> ' + msg.text;
-      li.className = msg.cls;
-      logEl.appendChild(li);
-    }, msg.delay);
+function playBattle(){
+  [220,277,330].forEach((f,i) => setTimeout(() => playTone(f, 0.1, 'sawtooth', 0.15), i*80));
+}
+
+window.toggleSound = function(){
+  soundOn = !soundOn;
+  const btn = document.getElementById('sound-toggle');
+  btn.textContent = '♪ SOUND: ' + (soundOn ? 'ON' : 'OFF');
+  btn.classList.toggle('on', soundOn);
+  if(soundOn){ try{ getCtx().resume(); } catch(e){} playBeep(660, 80); }
+};
+
+/* ── PHOSPHOR MODES ── */
+const MODES = ['green','amber','cyan'];
+let currentMode = 'green';
+window.setMode = function(mode){
+  document.body.className = mode === 'green' ? '' : mode + '-mode';
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach((b,i) => b.classList.toggle('active', MODES[i] === mode));
+  playBeep(mode === 'amber' ? 550 : mode === 'cyan' ? 770 : 440, 60);
+};
+
+/* ── STARFIELD ── */
+const cv = document.getElementById('starfield');
+const ctx = cv.getContext('2d');
+let pts = [];
+function resizeStar(){ cv.width = innerWidth; cv.height = innerHeight; }
+function initPts(){
+  pts = [];
+  const n = Math.floor(cv.width * cv.height / 9000);
+  for(let i=0;i<n;i++) pts.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.2+0.2,speed:Math.random()*0.3+0.05,op:Math.random()*0.6+0.1,pulse:Math.random()*Math.PI*2});
+}
+function drawStar(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  const now = Date.now()/1000;
+  pts.forEach(p=>{
+    const op = p.op*(0.6+0.4*Math.sin(now*1.2+p.pulse));
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(0,255,65,${op})`; ctx.fill();
+    p.y -= p.speed;
+    if(p.y<-2){p.y=cv.height+2;p.x=Math.random()*cv.width;}
   });
+  requestAnimationFrame(drawStar);
+}
+resizeStar(); initPts(); drawStar();
+window.addEventListener('resize',()=>{resizeStar();initPts();});
 
-  let pct = 0;
-  const barInterval = setInterval(() => {
-    pct = Math.min(100, pct + Math.random() * 6 + 2);
-    barEl.style.width = pct + '%';
-    pctEl.textContent = Math.floor(pct) + '%';
-    if (pct >= 100) clearInterval(barInterval);
-  }, 80);
+/* ── BOOT SEQUENCE ── */
+const BOOT_MSGS = [
+  {text:'BIOS v3.0 OK', cls:'ok', delay:0},
+  {text:'Scanning nutrient database... 90 modules', cls:'ok', delay:260},
+  {text:'Loading antioxidant registry (46 types)', cls:'ok', delay:520},
+  {text:'Initialising moringa engine', cls:'ok', delay:760},
+  {text:'Loading SNAKE GAME engine', cls:'ok', delay:980},
+  {text:'Calibrating BOSS BATTLE arena', cls:'load', delay:1180},
+  {text:'Loading daily quest board', cls:'ok', delay:1380},
+  {text:'Connecting to wellness leaderboard', cls:'ok', delay:1560},
+  {text:'Activating CRT display driver', cls:'ok', delay:1720},
+  {text:'SYSTEM READY — launching ARCADE v3.0', cls:'ok', delay:1900},
+];
+const logEl = document.getElementById('boot-log');
+const barEl = document.getElementById('boot-bar');
+const pctEl = document.getElementById('boot-pct');
+BOOT_MSGS.forEach(m => setTimeout(()=>{
+  const li=document.createElement('li'); li.textContent='> '+m.text; li.className=m.cls; logEl.appendChild(li);
+}, m.delay));
+let pct=0;
+const biv = setInterval(()=>{
+  pct=Math.min(100,pct+Math.random()*6+2);
+  barEl.style.width=pct+'%'; pctEl.textContent=Math.floor(pct)+'%';
+  if(pct>=100) clearInterval(biv);
+},75);
+setTimeout(()=>{
+  const boot=document.getElementById('boot');
+  boot.style.transition='opacity 0.5s'; boot.style.opacity='0';
+  setTimeout(()=>{
+    boot.style.display='none';
+    const main=document.getElementById('main');
+    main.style.display='block'; main.classList.add('visible');
+    startCounters(); loadQuests(); scheduleToasts();
+  },500);
+},2500);
 
-  setTimeout(() => {
-    const boot = document.getElementById('boot');
-    boot.style.transition = 'opacity 0.5s';
-    boot.style.opacity = '0';
-    setTimeout(() => {
-      boot.style.display = 'none';
-      const main = document.getElementById('main');
-      main.style.display = 'block';
-      main.classList.add('visible');
-      startCounters();
-      scheduleToasts();
-    }, 500);
-  }, totalDelay);
+/* ── STAT COUNTERS ── */
+function startCounters(){
+  document.querySelectorAll('.stat-num[data-count]').forEach(el=>{
+    const t=+el.dataset.count; let c=0;
+    const iv=setInterval(()=>{c=Math.min(t,c+Math.ceil(t/40)); el.textContent=c; if(c>=t)clearInterval(iv);},35);
+  });
+}
 
-  /* ── STAT COUNTERS ── */
-  function startCounters() {
-    document.querySelectorAll('.stat-num[data-count]').forEach(el => {
-      const target = parseInt(el.dataset.count, 10);
-      let current = 0;
-      const step = Math.ceil(target / 40);
-      const iv = setInterval(() => {
-        current = Math.min(target, current + step);
-        el.textContent = current + (el.dataset.suffix || '');
-        if (current >= target) clearInterval(iv);
-      }, 35);
+/* ── HEALTH BARS ── */
+const barObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const fill=e.target;
+    const card=fill.closest('.powerup-card');
+    const color=card?getComputedStyle(card).getPropertyValue('--card-level-color').trim():'#00ff41';
+    fill.style.background=color; fill.style.boxShadow=`0 0 8px ${color}`; fill.style.width=fill.dataset.width+'%';
+    barObs.unobserve(fill);
+  });
+},{threshold:0.3});
+document.querySelectorAll('.bar-fill[data-width]').forEach(b=>barObs.observe(b));
+
+/* ── TOASTS ── */
+function showToast(id,dur=4000){
+  const t=document.getElementById(id); if(!t) return;
+  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),dur);
+}
+function scheduleToasts(){
+  setTimeout(()=>{ playAchievement(); showToast('toast1'); },800);
+  const so=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      if(e.target.id==='powerup-grid') showToast('toast2');
+      if(e.target.classList.contains('leaderboard')) showToast('toast3');
+      so.unobserve(e.target);
     });
+  },{threshold:0.5});
+  so.observe(document.getElementById('powerup-grid'));
+  so.observe(document.querySelector('.leaderboard'));
+}
+
+/* ── BOSS BATTLE ── */
+let playerHP=100, enemyHP=100;
+const attacks = [
+  ['VITAMIN A BLAST','ENEMY -18 HP','VISION +10','CRITICAL HIT!'],
+  ['IRON SURGE','ENEMY -22 HP','ENERGY REGEN','SUPER EFFECTIVE!'],
+  ['ANTIOXIDANT STORM','ENEMY -15 HP','CELL SHIELD UP','IT\'S VERY EFFECTIVE!'],
+  ['CALCIUM FORTRESS','ENEMY -20 HP','BONE WALL RAISED','BLOCKED THE COUNTER!'],
+  ['PROTEIN COMBO','ENEMY -25 HP','MUSCLE BURST','COMBO x3!'],
+];
+const specials = [
+  'MORINGA USED: "VALUE BOMB"! $11/mo vs $150/mo — ENEMY FLINCHES!',
+  'MORINGA USED: "PURITY SHIELD"! No fillers detected — ENEMY CONFUSED!',
+  'MORINGA USED: "LAB PROOF"! Certificate shown — ENEMY RETREATS!',
+  'MORINGA USED: "SINGLE INGREDIENT"! AG1 has 75 ingredients — ENEMY OVERWHELMED!',
+];
+let atkIdx=0,spcIdx=0;
+
+window.battleAttack = function(){
+  if(enemyHP<=0) return;
+  playBattle();
+  const a = attacks[atkIdx++ % attacks.length];
+  const dmg = 15 + Math.floor(Math.random()*15);
+  enemyHP = Math.max(0, enemyHP-dmg);
+  document.getElementById('hp-enemy').style.width = enemyHP+'%';
+  document.getElementById('hp-enemy-val').textContent = enemyHP+'%';
+  document.getElementById('battle-log').innerHTML = `<span style="color:var(--green)">${a[0]}</span> — <span style="color:var(--red)">${a[1]}</span> // ${a[2]} // <span style="color:var(--amber)">${a[3]}</span>`;
+  if(enemyHP<=0){
+    document.getElementById('battle-log').innerHTML='<span style="color:var(--amber)">★ MORINGA WINS! VALUE CHAMPION! ★</span>';
+    playAchievement(); showToast('toast6');
   }
-
-  /* ── HEALTH BAR FILL (IntersectionObserver) ── */
-  const bars = document.querySelectorAll('.bar-fill[data-width]');
-  const barObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const fill = entry.target;
-        const card = fill.closest('.powerup-card');
-        const color = card ? getComputedStyle(card).getPropertyValue('--card-level-color').trim() : '#00ff41';
-        fill.style.background = color;
-        fill.style.boxShadow = `0 0 8px ${color}`;
-        fill.style.width = fill.dataset.width + '%';
-        barObserver.unobserve(fill);
-      }
-    });
-  }, { threshold: 0.3 });
-  bars.forEach(b => barObserver.observe(b));
-
-  /* ── ACHIEVEMENT TOASTS ── */
-  function showToast(id, duration) {
-    const t = document.getElementById(id);
-    if (!t) return;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), duration);
+};
+window.battleSpecial = function(){
+  if(enemyHP<=0) return;
+  playTone(330,0.3,'square',0.2);
+  const s = specials[spcIdx++ % specials.length];
+  const dmg = 30 + Math.floor(Math.random()*20);
+  enemyHP = Math.max(0, enemyHP-dmg);
+  document.getElementById('hp-enemy').style.width=enemyHP+'%';
+  document.getElementById('hp-enemy-val').textContent=enemyHP+'%';
+  document.getElementById('battle-log').innerHTML=`<span style="color:var(--amber)">⚡ SPECIAL! ${s}</span>`;
+  if(enemyHP<=0){
+    document.getElementById('battle-log').innerHTML='<span style="color:var(--amber)">★ MORINGA WINS! VALUE CHAMPION! ★</span>';
+    playAchievement(); showToast('toast6');
   }
+};
+window.battleReset = function(){
+  playBeep(220,80);
+  playerHP=100; enemyHP=100;
+  document.getElementById('hp-player').style.width='100%'; document.getElementById('hp-player-val').textContent='100%';
+  document.getElementById('hp-enemy').style.width='100%'; document.getElementById('hp-enemy-val').textContent='100%';
+  document.getElementById('battle-log').textContent='// REMATCH! SELECT AN ACTION';
+  atkIdx=0; spcIdx=0;
+};
 
-  function scheduleToasts() {
-    setTimeout(() => showToast('toast1', 4000), 800);
-    const scrollObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          if (e.target.id === 'powerup-grid') showToast('toast2', 4000);
-          if (e.target.classList.contains('leaderboard')) showToast('toast3', 5000);
-          scrollObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    const grid = document.getElementById('powerup-grid');
-    const lb = document.querySelector('.leaderboard');
-    if (grid) scrollObserver.observe(grid);
-    if (lb) scrollObserver.observe(lb);
-  }
-
-  /* ── KONAMI CODE EASTER EGG ── */
-  const konami = [38,38,40,40,37,39,37,39,66,65];
-  let konamiPos = 0;
-  document.addEventListener('keydown', e => {
-    if (e.keyCode === konami[konamiPos]) {
-      konamiPos++;
-      if (konamiPos === konami.length) {
-        konamiPos = 0;
-        document.body.style.transition = 'filter 0.3s';
-        document.body.style.filter = 'hue-rotate(90deg)';
-        setTimeout(() => { document.body.style.filter = ''; }, 2000);
-        const t = document.getElementById('toast1');
-        if (t) {
-          t.querySelector('.toast-head').textContent = '🎮 KONAMI CODE!';
-          t.querySelector('.toast-body').textContent = '+30 LIVES ADDED. CHEAT ACTIVATED.';
-          t.classList.add('show');
-          setTimeout(() => t.classList.remove('show'), 4000);
-        }
-      }
-    } else {
-      konamiPos = 0;
+/* ── DAILY QUESTS ── */
+const QUEST_XP = {q1:200,q2:100,q3:150,q4:300,q5:250,q6:500};
+function loadQuests(){
+  let total=0;
+  Object.keys(QUEST_XP).forEach(id=>{
+    const done = localStorage.getItem('nt_quest_'+id) === '1';
+    if(done){
+      const el=document.querySelector(`[data-id="${id}"]`);
+      if(el){ el.classList.add('done'); document.getElementById('qc-'+id).textContent='✓'; total+=QUEST_XP[id]; }
     }
   });
+  document.getElementById('quest-xp').textContent=total;
+}
+window.toggleQuest = function(id,xp){
+  const el=document.querySelector(`[data-id="${id}"]`);
+  const check=document.getElementById('qc-'+id);
+  const done=el.classList.toggle('done');
+  check.textContent=done?'✓':'';
+  localStorage.setItem('nt_quest_'+id, done?'1':'0');
+  let total=0;
+  Object.keys(QUEST_XP).forEach(qid=>{ if(localStorage.getItem('nt_quest_'+qid)==='1') total+=QUEST_XP[qid]; });
+  document.getElementById('quest-xp').textContent=total;
+  if(done){ playEat(2); document.getElementById('toast5-body').textContent=`+${xp} XP EARNED!`; showToast('toast5'); }
+  else { playBeep(200,60); }
+};
+window.resetQuests = function(){
+  Object.keys(QUEST_XP).forEach(id=>{ localStorage.removeItem('nt_quest_'+id); });
+  document.querySelectorAll('.quest-item').forEach(el=>el.classList.remove('done'));
+  document.querySelectorAll('.quest-check').forEach(c=>c.textContent='');
+  document.getElementById('quest-xp').textContent='0';
+  playBeep(300,80);
+};
+
+/* ── SNAKE GAME ── */
+const sc = document.getElementById('snake-canvas');
+const gx = sc.getContext('2d');
+const CELL=20, COLS=20, ROWS=15;
+const FOODS = [
+  {name:'VIT C',    color:'#ffb000', glow:'rgba(255,176,0,0.5)',  xp:150, effect:'IMMUNE +50'},
+  {name:'CALCIUM',  color:'#00e5ff', glow:'rgba(0,229,255,0.5)', xp:120, effect:'BONE +40'},
+  {name:'IRON',     color:'#ff3a3a', glow:'rgba(255,58,58,0.5)', xp:100, effect:'ENERGY +60'},
+  {name:'MAGNES',   color:'#b080ff', glow:'rgba(176,128,255,0.5)',xp:90,  effect:'CALM +30'},
+  {name:'VIT A',    color:'#ff8c00', glow:'rgba(255,140,0,0.5)', xp:130, effect:'VISION +45'},
+  {name:'PROTEIN',  color:'#00ff99', glow:'rgba(0,255,153,0.5)', xp:110, effect:'MUSCLE +35'},
+  {name:'ANTIOXID', color:'#00c9ff', glow:'rgba(0,201,255,0.5)', xp:200, effect:'SHIELD +80'},
+];
+
+let snake, dir, nextDir, food, foodType, score, gameLevel, gameSpeed, gameLoop, gamePaused, gameRunning, eaten;
+let hiScore = +localStorage.getItem('nt_snake_hi')||0;
+document.getElementById('hiscore').textContent=hiScore;
+
+function rnd(n){ return Math.floor(Math.random()*n); }
+function spawnFood(){
+  const pos = {x:rnd(COLS),y:rnd(ROWS)};
+  if(snake.some(s=>s.x===pos.x&&s.y===pos.y)) return spawnFood();
+  food=pos; foodType=FOODS[rnd(FOODS.length)];
+}
+function drawCell(x,y,col,glow,size=1){
+  const px=x*CELL,py=y*CELL,pad=(CELL*(1-size))/2;
+  gx.shadowColor=glow||col; gx.shadowBlur=8;
+  gx.fillStyle=col;
+  gx.fillRect(px+pad+1,py+pad+1,CELL*size-2,CELL*size-2);
+  gx.shadowBlur=0;
+}
+function drawGame(){
+  // bg
+  gx.fillStyle='#030603'; gx.fillRect(0,0,sc.width,sc.height);
+  // grid
+  gx.strokeStyle='#0a1a0a'; gx.lineWidth=0.5;
+  for(let x=0;x<COLS;x++){gx.beginPath();gx.moveTo(x*CELL,0);gx.lineTo(x*CELL,sc.height);gx.stroke();}
+  for(let y=0;y<ROWS;y++){gx.beginPath();gx.moveTo(0,y*CELL);gx.lineTo(sc.width,y*CELL);gx.stroke();}
+  // food
+  if(food){
+    // pulsing ring
+    const pulse = 0.7+0.3*Math.sin(Date.now()/200);
+    gx.shadowColor=foodType.glow; gx.shadowBlur=12*pulse;
+    gx.strokeStyle=foodType.color; gx.lineWidth=1.5;
+    gx.strokeRect(food.x*CELL+2,food.y*CELL+2,CELL-4,CELL-4);
+    gx.shadowBlur=0;
+    drawCell(food.x,food.y,foodType.color,foodType.glow,0.7);
+    // label
+    gx.fillStyle=foodType.color; gx.font='bold 6px monospace';
+    gx.textAlign='center';
+    gx.fillText(foodType.name,food.x*CELL+CELL/2,food.y*CELL+CELL-1);
+  }
+  // snake
+  snake.forEach((seg,i)=>{
+    const t = i===0?1:0.7-i/snake.length*0.35;
+    const col = i===0?'#00ff41':('#00'+(Math.floor(150+t*80)).toString(16).padStart(2,'0')+'28');
+    drawCell(seg.x,seg.y,col,'rgba(0,255,65,0.4)',i===0?1:0.85);
+    // eyes on head
+    if(i===0){
+      gx.fillStyle='#000';
+      const ex=seg.x*CELL+(dir.x===1?14:dir.x===-1?4:CELL/2);
+      const ey=seg.y*CELL+(dir.y===1?14:dir.y===-1?4:CELL/2);
+      gx.fillRect(ex-2,ey-2,3,3);
+    }
+  });
+  // score display
+  gx.fillStyle='rgba(0,255,65,0.15)'; gx.font='bold 10px "Press Start 2P",monospace';
+  gx.textAlign='left'; gx.fillText('XP:'+score,4,12);
+}
+
+function gameTick(){
+  if(gamePaused||!gameRunning) return;
+  dir={...nextDir};
+  const head={x:(snake[0].x+dir.x+COLS)%COLS, y:(snake[0].y+dir.y+ROWS)%ROWS};
+  // self collision
+  if(snake.some(s=>s.x===head.x&&s.y===head.y)){
+    endGame(); return;
+  }
+  snake.unshift(head);
+  if(head.x===food.x&&head.y===food.y){
+    // ate food
+    score+=foodType.xp+(gameLevel-1)*10;
+    eaten++;
+    document.getElementById('score').textContent=score;
+    playEat(FOODS.indexOf(foodType));
+    showFoodPopup(foodType.effect,foodType.color,head.x,head.y);
+    spawnFood();
+    // level up every 5 foods
+    if(eaten%5===0){
+      gameLevel++;
+      document.getElementById('gamelevel').textContent=gameLevel;
+      clearInterval(gameLoop);
+      gameSpeed=Math.max(60,gameSpeed-18);
+      gameLoop=setInterval(gameTick,gameSpeed);
+      playTone(880,0.15,'square',0.25);
+    }
+  } else {
+    snake.pop();
+  }
+  drawGame();
+}
+
+function showFoodPopup(text,color,gx2,gy2){
+  const popup=document.getElementById('food-popup');
+  popup.textContent='+'+text;
+  popup.style.color=color;
+  popup.style.left=(gx2*CELL+CELL/2)+'px';
+  popup.style.top=(gy2*CELL)+'px';
+  popup.style.transform='translateX(-50%)';
+  popup.classList.add('pop');
+  setTimeout(()=>popup.classList.remove('pop'),500);
+}
+
+function endGame(){
+  gameRunning=false;
+  clearInterval(gameLoop);
+  playDie();
+  if(score>hiScore){
+    hiScore=score;
+    localStorage.setItem('nt_snake_hi',hiScore);
+    document.getElementById('hiscore').textContent=hiScore;
+    document.getElementById('toast4-body').textContent='NEW BEST: '+hiScore+' XP!';
+    showToast('toast4'); playAchievement();
+  }
+  document.getElementById('final-score').textContent='SCORE: '+score+' XP // BEST: '+hiScore+' XP';
+  document.getElementById('over-overlay').classList.remove('hidden');
+}
+
+window.startGame = function(){
+  document.getElementById('start-overlay').classList.add('hidden');
+  document.getElementById('over-overlay').classList.add('hidden');
+  snake=[{x:10,y:7},{x:9,y:7},{x:8,y:7}];
+  dir={x:1,y:0}; nextDir={x:1,y:0};
+  score=0; gameLevel=1; gameSpeed=160; eaten=0; gamePaused=false; gameRunning=true;
+  document.getElementById('score').textContent='0';
+  document.getElementById('gamelevel').textContent='1';
+  spawnFood();
+  clearInterval(gameLoop);
+  gameLoop=setInterval(gameTick,gameSpeed);
+  playTone(440,0.1,'square',0.2);
+};
+window.unpause = function(){
+  gamePaused=false;
+  document.getElementById('pause-overlay').classList.add('hidden');
+  playBeep(660,60);
+};
+
+// Keyboard controls
+document.addEventListener('keydown',e=>{
+  if(!gameRunning) return;
+  const k=e.key;
+  if((k==='ArrowUp'||k==='w'||k==='W')&&dir.y!==1)  { nextDir={x:0,y:-1}; e.preventDefault(); }
+  if((k==='ArrowDown'||k==='s'||k==='S')&&dir.y!==-1){ nextDir={x:0,y:1};  e.preventDefault(); }
+  if((k==='ArrowLeft'||k==='a'||k==='A')&&dir.x!==1) { nextDir={x:-1,y:0}; e.preventDefault(); }
+  if((k==='ArrowRight'||k==='d'||k==='D')&&dir.x!==-1){ nextDir={x:1,y:0}; e.preventDefault(); }
+  if(k==='p'||k==='P'||k===' '){
+    e.preventDefault();
+    gamePaused=!gamePaused;
+    document.getElementById('pause-overlay').classList.toggle('hidden',!gamePaused);
+    if(gamePaused) playBeep(330,60); else playBeep(660,60);
+  }
+});
+
+// D-pad
+window.dpadPress = function(d){
+  if(!gameRunning) return;
+  if(d==='up'&&dir.y!==1) nextDir={x:0,y:-1};
+  if(d==='down'&&dir.y!==-1) nextDir={x:0,y:1};
+  if(d==='left'&&dir.x!==1) nextDir={x:-1,y:0};
+  if(d==='right'&&dir.x!==-1) nextDir={x:1,y:0};
+};
+
+// Touch swipe on canvas
+let tx0=0,ty0=0;
+sc.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;ty0=e.touches[0].clientY;},{passive:true});
+sc.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx0, dy=e.changedTouches[0].clientY-ty0;
+  if(!gameRunning) return;
+  if(Math.abs(dx)>Math.abs(dy)){
+    if(dx>20&&dir.x!==-1) nextDir={x:1,y:0};
+    else if(dx<-20&&dir.x!==1) nextDir={x:-1,y:0};
+  } else {
+    if(dy>20&&dir.y!==-1) nextDir={x:0,y:1};
+    else if(dy<-20&&dir.y!==1) nextDir={x:0,y:-1};
+  }
+},{passive:true});
+
+// Initial draw
+gx.fillStyle='#030603'; gx.fillRect(0,0,sc.width,sc.height);
+
+/* ── KONAMI CODE ── */
+const KONAMI=[38,38,40,40,37,39,37,39,66,65];
+let kpos=0;
+document.addEventListener('keydown',e=>{
+  if(e.keyCode===KONAMI[kpos]) kpos++;
+  else kpos=0;
+  if(kpos===KONAMI.length){
+    kpos=0;
+    document.body.style.transition='filter 0.3s';
+    document.body.style.filter='hue-rotate(90deg)';
+    setTimeout(()=>{ document.body.style.filter=''; },3000);
+    setMode('red');
+    const t=document.getElementById('toast1');
+    if(t){ t.querySelector('.toast-head').textContent='🎮 KONAMI!'; t.querySelector('.toast-body').textContent='SECRET MODE ACTIVATED. +99 LIVES!'; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),5000); }
+    playAchievement();
+  }
+});
 
 })();
 </script>
-
 </body>
 </html>
