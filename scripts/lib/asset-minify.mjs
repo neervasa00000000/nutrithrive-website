@@ -15,7 +15,6 @@ export const TAILWIND_LINK_TAG = `<link rel="stylesheet" href="${TAILWIND_BUILT_
 const JS_GLOBS = [
   'scripts/global/**/*.js',
   'scripts/pages/**/*.js',
-  'scripts/products/**/*.js',
   'shared/js/**/*.js',
   'shared/site-data.js',
   'pages/**/*.js',

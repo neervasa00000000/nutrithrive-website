@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-AU">
   <head>
-    <link rel="stylesheet" href="/assets/css/design-system.min.css" />
-    <script src="/scripts/global/reddit-pixel.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
     <title>NutriThrive Labs | Free Browser Tools</title>
     <meta
       name="description"
@@ -19,137 +20,234 @@
       property="og:description"
       content="Free browser tools from NutriThrive Labs: file converter, SOAP notes, AI text analyzer, passwords, focus timer, and more."
     />
-    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp" />
+    <meta property="og:image" content="https://nutrithrive.com.au/nutrithrive_labs/shared/images/logo.webp" />
     <meta property="og:site_name" content="NutriThrive Australia" />
     <meta property="og:locale" content="en_AU" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" />
-    <meta name="theme-color" content="#f4f8f6" />
-    <link rel="stylesheet" href="/styles/nutrithrive-labs-shell.min.css" />
+    <link rel="icon" type="image/png" href="/nutrithrive_labs/shared/images/logo.webp" />
+    <meta name="theme-color" content="#060a08" />
+    <link rel="stylesheet" href="/nutrithrive_labs/shared/css/shell.min.css" />
   </head>
   <body>
+    <div class="labs-ambient" aria-hidden="true"></div>
+
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/nutrithrive_labs/">
-          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="" width="40" height="40" />
+          <img class="mark" src="/nutrithrive_labs/shared/images/logo.webp" alt="" width="42" height="42" />
           <span>
             <strong>NutriThrive Labs</strong>
-            <span>Free browser tools</span>
+            <span>Browser-native utilities</span>
           </span>
         </a>
         <nav class="nav" aria-label="Labs navigation">
           <a class="chiplink" href="/">Main site</a>
           <a class="chiplink" href="/blog/">Blog</a>
-          <a class="chiplink primary" href="/nutrithrive_labs/converter.html">Open converter</a>
+          <a class="chiplink primary" href="/nutrithrive_labs/tools/file/converter/">Launch converter</a>
         </nav>
       </div>
     </header>
 
     <main class="shell">
-      <section class="hero">
-        <span class="labs-badge">No sign-up · Runs locally</span>
-        <h1>Useful daily tools, right in your browser</h1>
-        <p>
-          Conversions, clinical notes, text cleanup, focus timers, and more — pick a tool, finish your task, then
-          copy or download. Nothing uploads to our servers unless you submit a contact form.
-        </p>
-        <p class="tools-meta" id="labsCount">10 tools available. All run in your browser with no sign-up.</p>
+      <section class="labs-hero-spotlight">
+        <div class="labs-hero-panel">
+          <span class="labs-badge">Zero sign-up · 100% local</span>
+          <h1>Powerful tools that never leave <em>your browser</em></h1>
+          <p>
+            Convert files, clean text, generate passwords, run focus sessions, and draft clinical notes — all
+            processed on your device. No uploads. No accounts. Just open and go.
+          </p>
 
-        <div class="labs-toolbar">
-          <div class="labs-search-wrap">
-            <span class="labs-search-icon" aria-hidden="true">⌕</span>
-            <input
-              class="labs-search"
-              id="labsSearch"
-              type="search"
-              placeholder="Search tools… e.g. PDF, password, SOAP"
-              autocomplete="off"
-            />
+          <div class="labs-hero-stats">
+            <div class="labs-stat-item">
+              <strong>10</strong>
+              <span>Free tools</span>
+            </div>
+            <div class="labs-stat-item">
+              <strong>0</strong>
+              <span>Server uploads</span>
+            </div>
+            <div class="labs-stat-item">
+              <strong>∞</strong>
+              <span>Uses per day</span>
+            </div>
           </div>
-          <div class="labs-filters" role="group" aria-label="Filter by category">
-            <button class="labs-filter is-active" type="button" data-filter="all">All</button>
-            <button class="labs-filter" type="button" data-filter="file">File</button>
-            <button class="labs-filter" type="button" data-filter="text">Text</button>
-            <button class="labs-filter" type="button" data-filter="productivity">Focus</button>
-            <button class="labs-filter" type="button" data-filter="ai">AI</button>
-            <button class="labs-filter" type="button" data-filter="health">Health</button>
+
+          <p class="tools-meta" id="labsCount">10 tools available — pick one below.</p>
+
+          <div class="labs-toolbar">
+            <div class="labs-search-wrap">
+              <span class="labs-search-icon" aria-hidden="true">⌕</span>
+              <input
+                class="labs-search"
+                id="labsSearch"
+                type="search"
+                placeholder="Find a tool… PDF, SOAP, password, timer"
+                autocomplete="off"
+              />
+            </div>
+            <div class="labs-filters" role="group" aria-label="Filter by category">
+              <button class="labs-filter is-active" type="button" data-filter="all">All</button>
+              <button class="labs-filter" type="button" data-filter="file">File</button>
+              <button class="labs-filter" type="button" data-filter="text">Text</button>
+              <button class="labs-filter" type="button" data-filter="productivity">Focus</button>
+              <button class="labs-filter" type="button" data-filter="ai">AI</button>
+              <button class="labs-filter" type="button" data-filter="health">Health</button>
+            </div>
+          </div>
+
+          <div class="btnrow">
+            <a class="btn primary" href="/nutrithrive_labs/tools/file/converter/">Open file converter</a>
+            <a class="btn" href="/nutrithrive_labs/mediflow/demo.html">Try SOAP demo</a>
           </div>
         </div>
 
-        <div class="btnrow">
-          <a class="btn primary" href="/nutrithrive_labs/converter.html">Open converter</a>
-          <a class="btn" href="/nutrithrive_labs/mediflow/demo.html">Try SOAP demo</a>
-        </div>
+        <aside class="labs-hero-visual" aria-label="Labs highlights">
+          <div class="labs-hero-visual-inner">
+            <h2>Built for speed</h2>
+            <p class="big-num">Local</p>
+            <p>Every tool runs entirely in your browser. Your data stays on your machine.</p>
+          </div>
+          <div class="labs-hero-chips">
+            <span class="labs-hero-chip"><strong>PDF</strong> convert</span>
+            <span class="labs-hero-chip"><strong>AI</strong> analyze</span>
+            <span class="labs-hero-chip"><strong>SOAP</strong> notes</span>
+            <span class="labs-hero-chip"><strong>Focus</strong> timer</span>
+          </div>
+        </aside>
       </section>
 
-      <div class="grid" id="labsGrid">
-        <a class="poster" href="/nutrithrive_labs/converter.html" data-category="file" aria-label="Open file converter">
-          <span class="poster-icon" aria-hidden="true">📄</span>
-          <span class="type">File</span>
+      <div class="grid labs-bento" id="labsGrid">
+        <a
+          class="poster poster--featured"
+          href="/nutrithrive_labs/tools/file/converter/"
+          data-category="file"
+          aria-label="Open file converter"
+        >
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <path d="M14 2v6h6M8 13h8M8 17h5" />
+            </svg>
+          </div>
+          <span class="type">Featured · File</span>
           <h2>File Converter</h2>
-          <p>PDF ↔ images, merge/split, watermarks, QR embed, text extract, and more.</p>
+          <p>PDF ↔ images, merge &amp; split, watermarks, QR embed, text extraction, and more — the most complete tool in Labs.</p>
           <div class="kpis">
             <span class="pill">Upload → Convert</span>
             <span class="pill">Browser-only</span>
+            <span class="pill">No limits</span>
           </div>
-          <p class="mini">Click to open the converter.</p>
+          <span class="poster-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/dedup-lines.html" data-category="text" aria-label="Remove duplicate lines">
-          <span class="poster-icon" aria-hidden="true">📋</span>
+        <a class="poster" href="/nutrithrive_labs/mediflow/" data-category="health" aria-label="MediFlow AI healthcare assistant">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+          </div>
+          <span class="type">Healthcare</span>
+          <h2>MediFlow AI</h2>
+          <p>Transcript → SOAP clinical note. On-device NLP, zero API keys.</p>
+          <div class="kpis">
+            <span class="pill">SOAP notes</span>
+            <span class="pill">Clinic demo</span>
+          </div>
+          <span class="poster-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="poster" href="/nutrithrive_labs/tools/text/ai-text-detector/" data-category="ai" aria-label="AI text style analyzer">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35M11 8v6M8 11h6" />
+            </svg>
+          </div>
+          <span class="type">AI + SEO</span>
+          <h2>AI Text Analyzer</h2>
+          <p>Burstiness, voice checks, SEO density, fluff signals — computed locally.</p>
+          <div class="kpis">
+            <span class="pill">Paste → analyze</span>
+            <span class="pill">Blog metrics</span>
+          </div>
+          <span class="poster-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="poster" href="/nutrithrive_labs/tools/text/dedup-lines/" data-category="text" aria-label="Remove duplicate lines">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+            </svg>
+          </div>
           <span class="type">Text</span>
-          <h2>Remove Duplicate Lines</h2>
-          <p>Paste a list or upload .txt — duplicates removed, original order kept.</p>
+          <h2>Dedup Lines</h2>
+          <p>Remove duplicates from lists while preserving original order.</p>
           <div class="kpis">
             <span class="pill">Preserves order</span>
             <span class="pill">Instant export</span>
           </div>
-          <p class="mini">Great for SKU lists and email cleanup.</p>
+          <span class="poster-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/sitemap-generator.html" data-category="file" aria-label="Sitemap generator">
-          <span class="poster-icon" aria-hidden="true">🗺️</span>
+        <a class="poster" href="/nutrithrive_labs/tools/file/sitemap-generator/" data-category="file" aria-label="Sitemap generator">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+              <line x1="8" y1="2" x2="8" y2="18" />
+              <line x1="16" y1="6" x2="16" y2="22" />
+            </svg>
+          </div>
           <span class="type">SEO</span>
           <h2>Sitemap Generator</h2>
-          <p>Select a local HTML folder and generate a standard sitemap.xml.</p>
+          <p>Select a local HTML folder and generate sitemap.xml instantly.</p>
           <div class="kpis">
             <span class="pill">Folder → XML</span>
             <span class="pill">No upload</span>
           </div>
-          <p class="mini">Copy or download your sitemap.</p>
+          <span class="poster-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/time-converter.html" data-category="productivity" aria-label="Time zone converter">
-          <span class="poster-icon" aria-hidden="true">🌏</span>
+        <a class="poster" href="/nutrithrive_labs/tools/productivity/time-converter/" data-category="productivity" aria-label="Time zone converter">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+          </div>
           <span class="type">Time</span>
           <h2>Time Converter</h2>
-          <p>Convert any date/time between countries — daylight saving handled automatically.</p>
+          <p>Convert date/time between zones — DST handled automatically.</p>
           <div class="kpis">
             <span class="pill">DST-aware</span>
             <span class="pill">Copy result</span>
           </div>
-          <p class="mini">Melbourne ↔ anywhere.</p>
+          <span class="poster-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/pomodoro-timer.html" data-category="productivity" aria-label="Pomodoro timer">
-          <span class="poster-icon" aria-hidden="true">⏱️</span>
+        <a class="poster" href="/nutrithrive_labs/tools/productivity/pomodoro-timer/" data-category="productivity" aria-label="Pomodoro timer">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <circle cx="12" cy="13" r="8" />
+              <path d="M12 9v4l2 2M9 2h6" />
+            </svg>
+          </div>
           <span class="type">Focus</span>
           <h2>Pomodoro Timer</h2>
-          <p>Work/break cycles with daily focus-minute tracking stored in your browser.</p>
+          <p>Work/break cycles with daily focus-minute tracking in your browser.</p>
           <div class="kpis">
             <span class="pill">25/5 presets</span>
             <span class="pill">Daily stats</span>
           </div>
-          <p class="mini">Start a focus session.</p>
+          <span class="poster-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/password-generator.html" data-category="productivity" aria-label="Password generator">
-          <span class="poster-icon" aria-hidden="true">🔐</span>
+        <a class="poster" href="/nutrithrive_labs/tools/productivity/password-generator/" data-category="productivity" aria-label="Password generator">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
           <span class="type">Security</span>
           <h2>Password Generator</h2>
           <p>Strong random passwords with custom length, symbols, and strength feedback.</p>
@@ -157,11 +255,15 @@
             <span class="pill">Secure random</span>
             <span class="pill">One-click copy</span>
           </div>
-          <p class="mini">Generated locally on your device.</p>
+          <span class="poster-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/quick-notes.html" data-category="text" aria-label="Quick notes">
-          <span class="poster-icon" aria-hidden="true">📝</span>
+        <a class="poster" href="/nutrithrive_labs/tools/text/quick-notes/" data-category="text" aria-label="Quick notes">
+          <div class="poster-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+            </svg>
+          </div>
           <span class="type">Notes</span>
           <h2>Quick Notes</h2>
           <p>Auto-save notes in your browser — copy or download as .txt anytime.</p>
@@ -169,45 +271,21 @@
             <span class="pill">Auto-save</span>
             <span class="pill">Local-only</span>
           </div>
-          <p class="mini">Scratch pad for fast ideas.</p>
+          <span class="poster-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/ai-text-detector.html" data-category="ai" aria-label="AI text style analyzer">
-          <span class="poster-icon" aria-hidden="true">🔍</span>
-          <span class="type">AI + SEO</span>
-          <h2>AI Text Style Analyzer</h2>
-          <p>Burstiness, voice checks, SEO density, fluff signals — all computed locally.</p>
-          <div class="kpis">
-            <span class="pill">Paste → analyze</span>
-            <span class="pill">Blog metrics</span>
-          </div>
-          <p class="mini">Educational stylometry only.</p>
-        </a>
-
-        <a class="poster" href="/nutrithrive_labs/mediflow/" data-category="health" aria-label="MediFlow AI healthcare assistant">
-          <span class="poster-icon" aria-hidden="true">🏥</span>
-          <span class="type">Healthcare</span>
-          <h2>MediFlow AI</h2>
-          <p>Upload a consultation transcript → generate a SOAP clinical note. No API key required.</p>
-          <div class="kpis">
-            <span class="pill">Transcript → SOAP</span>
-            <span class="pill">On-device NLP</span>
-          </div>
-          <p class="mini">Clinic admin prototype — 4 pages.</p>
-        </a>
-
-        <section class="panel full" aria-label="About Labs">
-          <h2>How it works</h2>
-          <p class="mini" style="margin-top: 0">
+        <section class="labs-cta-panel full" aria-label="About Labs">
+          <h2>How NutriThrive Labs works</h2>
+          <p>
             Pick any tool, complete your task in-browser, then copy or download. For lab-tested moringa and
             superfoods, visit the <a class="labs-link" href="/products/">NutriThrive shop</a>.
           </p>
           <div class="btnrow">
-            <a class="btn primary" href="/nutrithrive_labs/converter.html">Open converter</a>
-            <a class="btn" href="/nutrithrive_labs/pomodoro-timer.html">Pomodoro timer</a>
-            <a class="btn" href="/nutrithrive_labs/password-generator.html">Password generator</a>
+            <a class="btn primary" href="/nutrithrive_labs/tools/file/converter/">Open converter</a>
+            <a class="btn" href="/nutrithrive_labs/tools/productivity/pomodoro-timer/">Pomodoro timer</a>
+            <a class="btn" href="/nutrithrive_labs/tools/productivity/password-generator/">Password generator</a>
           </div>
-          <p class="mini" style="margin-top: 0.85rem">
+          <p class="mini" style="margin-top: 0.9rem">
             Note: AES-256 PDF password protect requires a backend and is disabled in the client-side build.
           </p>
         </section>
@@ -219,6 +297,6 @@
       </footer>
     </main>
 
-    <script src="/scripts/pages/labs/labs-shell.min.js" defer></script>
+    <script src="/nutrithrive_labs/shared/js/labs-shell.min.js" defer></script>
   </body>
 </html>
