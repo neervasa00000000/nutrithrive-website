@@ -6,8 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>MediFlow AI | SOAP Note Demo</title>
-    <meta name="description" content="Upload a consultation transcript and generate a SOAP clinical note instantly — free, browser-only, no API key." />
+    <title>MediFlow AI | Clinical Note Demo</title>
+    <meta name="description" content="Upload a consultation transcript and generate a structured clinical note instantly — free, browser-only, no API key." />
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="https://nutrithrive.com.au/nutrithrive_labs/mediflow/demo.html" />
     <link rel="stylesheet" href="/nutrithrive_labs/shared/css/shell.min.css" />
@@ -22,7 +22,7 @@
           <div class="mf-logo" aria-hidden="true">MF</div>
           <span>
             <strong>MediFlow AI</strong>
-            <span>SOAP note demo</span>
+            <span>Clinical note demo</span>
           </span>
         </a>
         <nav class="nav" aria-label="MediFlow navigation">
@@ -38,7 +38,7 @@
     <main class="shell">
       <section class="hero">
         <span class="labs-badge">Live · No API key</span>
-        <h1>Generate a SOAP note from any transcript</h1>
+        <h1>Generate a clinical note from any transcript</h1>
         <p>
           Paste or upload a doctor–patient consultation. MediFlow extracts symptoms, vitals, assessment, and plan
           using on-device NLP — your data never leaves the browser.
@@ -67,8 +67,8 @@
         </section>
 
         <section class="card">
-          <label class="mf-label" for="soapOutput">SOAP clinical note</label>
-          <pre id="soapOutput" class="mf-input mf-output" aria-live="polite"></pre>
+          <label class="mf-label" for="soapOutput">Structured clinical note</label>
+          <pre id="soapOutput" class="mf-input mf-output mf-output-empty" aria-live="polite">Your clinical note will appear here after you generate.</pre>
           <div class="btnrow">
             <button class="btn" id="copyBtn" type="button">Copy note</button>
             <button class="btn" id="downloadBtn" type="button">Download .txt</button>

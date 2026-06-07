@@ -57,6 +57,35 @@ body::before {
   min-height: 280px;
   white-space: pre-wrap;
   background: var(--labs-surface-2);
+  width: 100%;
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid var(--labs-border);
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.mf-output.mf-output-empty {
+  color: var(--labs-muted-2);
+  font-style: italic;
+}
+
+textarea.mf-input,
+textarea#transcript {
+  min-height: 280px;
+  width: 100%;
+}
+
+.mf-disclaimer {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--labs-border);
+  background: var(--labs-gold-soft);
+  color: #6b5420;
+  font-size: 0.86rem;
+  line-height: 1.55;
 }
 
 .mf-contact-form label {
