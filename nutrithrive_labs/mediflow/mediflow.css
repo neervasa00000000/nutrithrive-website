@@ -1,0 +1,156 @@
+/* MediFlow AI — extends NutriThrive Labs shell */
+:root {
+  --labs-accent: #0d9488;
+  --labs-accent-dark: #0f766e;
+  --labs-accent-soft: rgba(13, 148, 136, 0.12);
+  --labs-bg0: #f0f9ff;
+  --labs-bg1: #e0f2f1;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 70% 45% at 5% 0%, rgba(13, 148, 136, 0.12), transparent 55%),
+    radial-gradient(ellipse 50% 35% at 95% 5%, rgba(2, 132, 199, 0.08), transparent 50%),
+    linear-gradient(180deg, var(--labs-bg0) 0%, var(--labs-bg1) 100%);
+}
+
+.mf-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #0d9488, #0284c7);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
+}
+
+.mf-demo-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .mf-demo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mf-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--labs-muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mf-input {
+  font-family: var(--labs-mono);
+}
+
+.mf-output {
+  min-height: 280px;
+  white-space: pre-wrap;
+  background: var(--labs-surface-2);
+}
+
+.mf-contact-form label {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.mf-contact-form input,
+.mf-contact-form textarea,
+.mf-contact-form select {
+  width: 100%;
+  margin-bottom: 0.85rem;
+}
+
+.mf-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--labs-accent-soft);
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.65rem;
+}
+
+.mf-feature-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--labs-muted);
+}
+
+.mf-feature-list li {
+  margin: 0.35rem 0;
+}
+
+.mf-stats {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .mf-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mf-stat {
+  border-radius: var(--labs-radius);
+  border: 1px solid var(--labs-border);
+  background: var(--labs-surface);
+  padding: 0.9rem;
+  text-align: center;
+  box-shadow: var(--labs-shadow-sm);
+}
+
+.mf-stat strong {
+  display: block;
+  font-size: 1.35rem;
+  color: var(--labs-accent-dark);
+}
+
+.mf-stat span {
+  font-size: 0.82rem;
+  color: var(--labs-muted);
+  font-weight: 700;
+}
+
+.mf-disclaimer {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  background: rgba(254, 249, 195, 0.45);
+  color: #713f12;
+  font-size: 0.86rem;
+}
+
+.mf-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .mf-grid {
+    grid-template-columns: 1fr;
+  }
+}

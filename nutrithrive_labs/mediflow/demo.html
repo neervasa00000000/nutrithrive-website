@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediFlow AI | SOAP Note Demo</title>
+    <meta name="description" content="Upload a consultation transcript and generate a SOAP clinical note instantly — free, browser-only, no API key." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://nutrithrive.com.au/nutrithrive_labs/mediflow/demo.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-shell.min.css" />
+    <link rel="stylesheet" href="/nutrithrive_labs/mediflow/mediflow.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" />
+    <script src="/nutrithrive_labs/mediflow/soap-generator.min.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/nutrithrive_labs/mediflow/">
+          <div class="mf-logo" aria-hidden="true">MF</div>
+          <span>
+            <strong>MediFlow AI</strong>
+            <span>SOAP note demo</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="MediFlow navigation">
+          <a class="chiplink" href="/nutrithrive_labs/mediflow/">Home</a>
+          <a class="chiplink" href="/nutrithrive_labs/mediflow/features.html">Features</a>
+          <a class="chiplink primary" href="/nutrithrive_labs/mediflow/demo.html">Demo</a>
+          <a class="chiplink" href="/nutrithrive_labs/mediflow/contact.html">Contact</a>
+          <a class="chiplink" href="/nutrithrive_labs/">All tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <span class="labs-badge">Live · No API key</span>
+        <h1>Generate a SOAP note from any transcript</h1>
+        <p>
+          Paste or upload a doctor–patient consultation. MediFlow extracts symptoms, vitals, assessment, and plan
+          using on-device NLP — your data never leaves the browser.
+        </p>
+      </section>
+
+      <div class="mf-demo-grid">
+        <section class="card">
+          <label class="mf-label" for="transcript">Consultation transcript</label>
+          <textarea
+            id="transcript"
+            class="mf-input"
+            placeholder="Dr. Smith: What brings you in today?&#10;Patient: I've had a headache for 3 days..."
+            spellcheck="false"
+          ></textarea>
+          <div class="btnrow">
+            <button class="btn primary" id="generateBtn" type="button">Generate Clinical Note</button>
+            <button class="btn" id="sampleBtn" type="button">Load sample</button>
+            <label class="btn labs-file-btn">
+              Upload .txt
+              <input id="fileInput" type="file" accept=".txt,text/plain" />
+            </label>
+            <button class="btn" id="clearBtn" type="button">Clear</button>
+          </div>
+          <p class="labs-status" id="status">Ready — paste a transcript or load the sample.</p>
+        </section>
+
+        <section class="card">
+          <label class="mf-label" for="soapOutput">SOAP clinical note</label>
+          <pre id="soapOutput" class="mf-input mf-output" aria-live="polite"></pre>
+          <div class="btnrow">
+            <button class="btn" id="copyBtn" type="button">Copy note</button>
+            <button class="btn" id="downloadBtn" type="button">Download .txt</button>
+          </div>
+        </section>
+      </div>
+
+      <p class="mf-disclaimer">
+        <strong>Clinical disclaimer:</strong> Demo uses rule-based NLP for illustration only. Licensed clinicians
+        must review and approve all notes before they enter a medical record.
+      </p>
+
+      <footer class="labs-footer">
+        <span><a href="/nutrithrive_labs/mediflow/features.html">← All features</a></span>
+        <span><a href="/nutrithrive_labs/">NutriThrive Labs</a></span>
+      </footer>
+    </main>
+    <script src="/scripts/pages/labs/labs-shell.min.js" defer></script>
+  </body>
+</html>

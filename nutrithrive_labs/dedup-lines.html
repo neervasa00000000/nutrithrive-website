@@ -315,7 +315,7 @@
         transform: translateY(0);
       }
     </style>
-    <link rel="stylesheet" href="/styles/nutrithrive-labs-simple.min.css" />
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-shell.min.css" />
   
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
@@ -431,14 +431,14 @@
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/nutrithrive_labs/">
-          <span class="mark" aria-hidden="true"></span>
+          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="" width="40" height="40" />
           <span>
-            <strong>NutriThrive</strong>
+            <strong>NutriThrive Labs</strong>
             <span>Remove Duplicate Lines</span>
           </span>
         </a>
         <nav class="nav" aria-label="Tools navigation">
-          <a class="chiplink" href="/nutrithrive_labs/">Home</a>
+          <a class="chiplink" href="/nutrithrive_labs/">All tools</a>
           <a class="chiplink" href="/nutrithrive_labs/converter.html">Converter</a>
           <a class="chiplink primary" href="#tool">This tool</a>
         </nav>
@@ -447,14 +447,15 @@
 
     <main class="shell" id="tool">
       <section class="hero">
+        <span class="labs-badge">Text · Instant</span>
         <h1>Remove Duplicate Lines</h1>
         <p>
-          Paste text (one item per line) or upload a <code>.txt</code>. We remove duplicates while preserving
+          Paste text (one item per line) or upload a <code>.txt</code>. Duplicates are removed while preserving
           the first occurrence order.
         </p>
-        <p class="labs-crosslink" style="margin: 1rem 0 0; font-size: 0.95rem; color: var(--muted);">
-          Free tool from <a href="/nutrithrive_labs/" style="color: #16a34a; font-weight: 600;">NutriThrive Labs</a>.
-          For lab-tested moringa and superfoods, see the <a href="/products/" style="color: #16a34a; font-weight: 600;">shop</a> (Melbourne dispatch, AU-wide shipping).
+        <p class="labs-crosslink">
+          Free tool from <a class="labs-link" href="/nutrithrive_labs/">NutriThrive Labs</a>. For moringa and
+          superfoods, see the <a class="labs-link" href="/products/">shop</a>.
         </p>
       </section>
 
@@ -500,10 +501,16 @@ banana"
           <button class="btn" id="clearBtn" type="button">Clear</button>
         </div>
       </section>
+
+      <footer class="labs-footer">
+        <span><a href="/nutrithrive_labs/">← All tools</a></span>
+        <span><a href="/products/">NutriThrive shop</a></span>
+      </footer>
     </main>
 
     <div class="toast" id="toast" data-show="false" role="status" aria-live="polite"></div>
     <script src="/scripts/pages/labs/dedup-lines.min.js"></script>
+    <script src="/scripts/pages/labs/labs-shell.min.js" defer></script>
   </body>
 </html>
 

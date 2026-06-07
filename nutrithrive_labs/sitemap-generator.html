@@ -330,7 +330,7 @@
         font-weight: 700;
       }
     </style>
-    <link rel="stylesheet" href="/styles/nutrithrive-labs-simple.min.css" />
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-shell.min.css" />
   
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
@@ -446,14 +446,14 @@
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/nutrithrive_labs/">
-          <span class="mark" aria-hidden="true"></span>
+          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="" width="40" height="40" />
           <span>
-            <strong>NutriThrive</strong>
+            <strong>NutriThrive Labs</strong>
             <span>Sitemap Generator</span>
           </span>
         </a>
         <nav class="nav" aria-label="Tools navigation">
-          <a class="chiplink" href="/nutrithrive_labs/">Home</a>
+          <a class="chiplink" href="/nutrithrive_labs/">All tools</a>
           <a class="chiplink" href="/nutrithrive_labs/converter.html">Converter</a>
           <a class="chiplink primary" href="#tool">This tool</a>
         </nav>
@@ -462,14 +462,15 @@
 
     <main class="shell" id="tool">
       <section class="hero">
+        <span class="labs-badge">SEO · Local folder</span>
         <h1>Sitemap Generator</h1>
         <p>
-          Select a local folder of HTML files, then download a standard <code>sitemap.xml</code>. This runs
-          in your browser—no uploads to a server.
+          Select a local folder of HTML files, then download a standard <code>sitemap.xml</code>. Runs in your
+          browser — no uploads to a server.
         </p>
-        <p class="labs-crosslink" style="margin: 1rem 0 0; font-size: 0.95rem; color: var(--muted2);">
-          Part of <a href="/nutrithrive_labs/" style="color: var(--brand2); font-weight: 600;">NutriThrive Labs</a>.
-          Main store: <a href="/" style="color: var(--brand2); font-weight: 600;">nutrithrive.com.au</a> — moringa &amp; superfoods, shipped Australia-wide.
+        <p class="labs-crosslink">
+          Part of <a class="labs-link" href="/nutrithrive_labs/">NutriThrive Labs</a>. Main store:
+          <a class="labs-link" href="/">nutrithrive.com.au</a>.
         </p>
       </section>
 
@@ -523,10 +524,16 @@
           </div>
         </div>
       </section>
+
+      <footer class="labs-footer">
+        <span><a href="/nutrithrive_labs/">← All tools</a></span>
+        <span><a href="/products/">NutriThrive shop</a></span>
+      </footer>
     </main>
 
     <div class="toast" id="toast" data-show="false" role="status" aria-live="polite"></div>
     <script src="/scripts/pages/labs/sitemap-generator.min.js"></script>
+    <script src="/scripts/pages/labs/labs-shell.min.js" defer></script>
   </body>
 </html>
 
