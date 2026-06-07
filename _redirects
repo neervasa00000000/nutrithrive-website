@@ -201,10 +201,22 @@
 /blog/state-of-australian-schooling-2026-comprehensive-analysis.html /blog/state-of-australian-schooling-2026-comprehensive-analysis.html 404
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods 404
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html 404
-/nutrithrive_labs/dedup-lines /nutrithrive_labs/dedup-lines.html 404!
-/nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 404!
-/nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 404!
-/nutrithrive_labs/* /404.html 404!
+# NutriThrive Labs (public browser tools)
+/nutrithrive_labs /nutrithrive_labs/ 301
+/nutrithrive_labs/converter /nutrithrive_labs/converter.html 200
+/nutrithrive_labs/dedup-lines /nutrithrive_labs/dedup-lines.html 200
+/nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 200
+/nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 200
+/nutrithrive_labs/pomodoro-timer /nutrithrive_labs/pomodoro-timer.html 200
+/nutrithrive_labs/password-generator /nutrithrive_labs/password-generator.html 200
+/nutrithrive_labs/quick-notes /nutrithrive_labs/quick-notes.html 200
+/nutrithrive_labs/ai-text-detector /nutrithrive_labs/ai-text-detector.html 200
+/nutrithrive_labs/mediflow /nutrithrive_labs/mediflow/ 301
+/nutrithrive_labs/mediflow/features /nutrithrive_labs/mediflow/features.html 200
+/nutrithrive_labs/mediflow/demo /nutrithrive_labs/mediflow/demo.html 200
+/nutrithrive_labs/mediflow/contact /nutrithrive_labs/mediflow/contact.html 200
+
+# Hyphen typo alias → blocked
 /nutrithrive-labs/* /404.html 404!
 
 # Hyphen alias → blocked (was public dev tools)
