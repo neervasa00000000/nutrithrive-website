@@ -49,7 +49,7 @@ if (onlyCommitted.length || onlyGenerated.length) {
     console.error("In generator output only (add these):");
     onlyGenerated.forEach((u) => console.error("  +", u));
   }
-  console.error("\nFix: node scripts/build-sitemap.cjs && git add sitemap.xml audit/sitemap-urls.txt");
+  console.error("\nFix: node scripts/build-sitemap.cjs && git add sitemap.xml");
   process.exit(1);
 }
 
