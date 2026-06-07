@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediFlow AI | Contact</title>
+    <meta name="description" content="Contact MediFlow AI — request a demo, partnership, or early access for your clinic." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://nutrithrive.com.au/nutrithrive_labs/mediflow/contact.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-shell.min.css" />
+    <link rel="stylesheet" href="/nutrithrive_labs/mediflow/mediflow.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/nutrithrive_labs/mediflow/">
+          <div class="mf-logo" aria-hidden="true">MF</div>
+          <span>
+            <strong>MediFlow AI</strong>
+            <span>Get in touch</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="MediFlow navigation">
+          <a class="chiplink" href="/nutrithrive_labs/mediflow/">Home</a>
+          <a class="chiplink" href="/nutrithrive_labs/mediflow/features.html">Features</a>
+          <a class="chiplink" href="/nutrithrive_labs/mediflow/demo.html">Demo</a>
+          <a class="chiplink primary" href="/nutrithrive_labs/mediflow/contact.html">Contact</a>
+          <a class="chiplink" href="/nutrithrive_labs/">All tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <span class="labs-badge">Early access</span>
+        <h1>Bring MediFlow to your clinic</h1>
+        <p>
+          Interested in scheduling automation, EHR integrations, or a hosted HIPAA-ready deployment? Send a message
+          — we read every inquiry from the NutriThrive Labs inbox.
+        </p>
+      </section>
+
+      <div class="mf-demo-grid">
+        <section class="card mf-contact-form">
+          <h2 style="margin: 0 0 0.75rem; text-transform: none; letter-spacing: 0; font-size: 1.1rem; color: var(--labs-text)">Send a message</h2>
+          <form id="contactForm" action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="MediFlow AI inquiry" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://nutrithrive.com.au/nutrithrive_labs/mediflow/contact.html?sent=1" />
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Dr. Jane Smith" />
+            <label for="clinic">Clinic / organisation</label>
+            <input id="clinic" name="clinic" type="text" placeholder="Melbourne Family Practice" />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@clinic.com.au" />
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option value="SOAP demo feedback">SOAP demo feedback</option>
+              <option value="Early access">Early access</option>
+              <option value="EHR integration">EHR integration</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Other">Other</option>
+            </select>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your clinic…"></textarea>
+            <button class="btn primary" type="submit">Send message</button>
+          </form>
+          <p class="labs-status done" id="formStatus" hidden></p>
+        </section>
+
+        <section class="card">
+          <h2 style="margin: 0 0 0.75rem; text-transform: none; letter-spacing: 0; font-size: 1.1rem; color: var(--labs-text)">Other ways to reach us</h2>
+          <p class="muted">MediFlow AI is a NutriThrive Labs experiment built in Melbourne.</p>
+          <ul class="mf-feature-list">
+            <li>Email: <a class="labs-link" href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></li>
+            <li>Phone: <a class="labs-link" href="tel:+61438201419">+61 438 201 419</a></li>
+            <li><a class="labs-link" href="/contact">NutriThrive contact page</a></li>
+            <li><a class="labs-link" href="/nutrithrive_labs/mediflow/demo.html">SOAP note demo</a></li>
+          </ul>
+          <div class="btnrow">
+            <a class="btn primary" href="/nutrithrive_labs/mediflow/demo.html">Open demo</a>
+            <a class="btn" href="/nutrithrive_labs/">All Labs tools</a>
+          </div>
+        </section>
+      </div>
+
+      <footer class="labs-footer">
+        <span><a href="/nutrithrive_labs/mediflow/">← MediFlow home</a></span>
+        <span>ABN 32 639 442 616 · Truganina, VIC</span>
+      </footer>
+    </main>
+    <script>
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const el = document.getElementById("formStatus");
+        if (params.get("sent") === "1" && el) {
+          el.hidden = false;
+          el.textContent = "Thanks — your message was sent. We'll reply soon.";
+        }
+      })();
+    </script>
+    <script src="/scripts/pages/labs/labs-shell.min.js" defer></script>
+  </body>
+</html>

@@ -653,33 +653,35 @@
         margin: 0;
       }
     </style>
-    <link rel="stylesheet" href="/styles/nutrithrive-labs-simple.min.css" />
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-shell.min.css" />
   </head>
   <body>
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/nutrithrive_labs/">
-          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="NutriThrive logo" / loading="lazy">
+          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="" width="40" height="40" />
           <span>
-            <strong>NutriThrive</strong>
+            <strong>NutriThrive Labs</strong>
+            <span>AI Text Analyzer</span>
           </span>
         </a>
         <nav class="nav" aria-label="Tools navigation">
-          <a class="chiplink" href="/nutrithrive_labs/">Home</a>
+          <a class="chiplink" href="/nutrithrive_labs/">All tools</a>
           <a class="chiplink" href="/">Main site</a>
-          <a class="chiplink primary" href="/blog/">Blog</a>
+          <a class="chiplink primary" href="/nutrithrive_labs/ai-text-detector.html">This tool</a>
         </nav>
       </div>
     </header>
 
     <main class="shell">
-      <div class="page-intro">
+      <section class="hero page-intro">
+        <span class="labs-badge">On-device · No API</span>
         <h1>AI writing style check</h1>
         <p class="lead">
-          Paste your draft here. You get a quick, <strong>on-device</strong> read on how “AI-shaped” the prose
-          looks—no upload, no API. For a deeper dive, open <strong>All metrics</strong> below the score.
+          Paste your draft for a quick, <strong>on-device</strong> read on how “AI-shaped” the prose looks — no
+          upload, no API. Open <strong>All metrics</strong> below the score for the full report.
         </p>
-      </div>
+      </section>
 
       <section class="panel" aria-label="Input">
         <h2 class="panel-title">Your text</h2>
@@ -809,8 +811,14 @@
           </div>
         </details>
       </section>
+
+      <footer class="labs-footer">
+        <span><a href="/nutrithrive_labs/">← All tools</a></span>
+        <span><a href="/blog/">NutriThrive blog</a></span>
+      </footer>
     </main>
 
+    <script src="/scripts/pages/labs/labs-shell.min.js" defer></script>
     <script>
       (function () {
         const $ = (id) => document.getElementById(id);

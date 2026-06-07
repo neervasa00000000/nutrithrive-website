@@ -1,484 +1,50 @@
 <!DOCTYPE html>
 <html lang="en-AU">
   <head>
-<link rel="stylesheet" href="/assets/css/design-system.min.css"/>
+    <link rel="stylesheet" href="/assets/css/design-system.min.css" />
     <script src="/scripts/global/reddit-pixel.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriThrive Labs | Home | NutriThrive, Melbourne</title>
-    <meta name="description" content="Free browser tools from NutriThrive Labs: PDF to text, images to PDF, line dedupe, time zones, and more—built for quick everyday tasks.">
-    <meta name="robots" content="index, follow" />
+    <title>NutriThrive Labs | Free Browser Tools</title>
+    <meta
+      name="description"
+      content="Free browser tools from NutriThrive Labs: file converter, SOAP notes, AI text analyzer, passwords, focus timer, and more — no sign-up."
+    />
+    <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="https://nutrithrive.com.au/nutrithrive_labs/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nutrithrive.com.au/nutrithrive_labs/" />
-    <meta property="og:title" content="NutriThrive Labs | Home | NutriThrive, Melbourne" />
-    <meta property="og:description" content="Free browser tools from NutriThrive Labs: PDF to text, images to PDF, line dedupe, time zones, and more—built for quick everyday tasks." />
+    <meta property="og:title" content="NutriThrive Labs | Free Browser Tools" />
+    <meta
+      property="og:description"
+      content="Free browser tools from NutriThrive Labs: file converter, SOAP notes, AI text analyzer, passwords, focus timer, and more."
+    />
     <meta property="og:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp" />
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">    <meta property="og:site_name" content="NutriThrive Australia" />
+    <meta property="og:site_name" content="NutriThrive Australia" />
     <meta property="og:locale" content="en_AU" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://nutrithrive.com.au/nutrithrive_labs/" />
-    <meta property="twitter:title" content="NutriThrive Labs | Home | NutriThrive, Melbourne" />
-    <meta property="twitter:description" content="Free browser tools from NutriThrive Labs: PDF to text, images to PDF, line dedupe, time zones, and more—built for quick everyday tasks." />
-    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp" />
-    <link rel="shortcut icon" href="/assets/images/logo/LOGO.webp" />
-    <meta name="msapplication-TileImage" content="/assets/images/logo/LOGO.webp" />
-    <meta name="msapplication-TileColor" content="#0f6b4d" />
-    <meta name="theme-color" content="#f8fafc" />
-
-    <style>
-      :root {
-        color-scheme: light;
-        --bg0: #f8fafc;
-        --bg1: #eef2ff;
-        --panel: rgba(255, 255, 255, 0.82);
-        --stroke: rgba(15, 23, 42, 0.12);
-        --stroke2: rgba(15, 23, 42, 0.18);
-        --text: rgba(15, 23, 42, 0.92);
-        --muted: rgba(15, 23, 42, 0.68);
-        --muted2: rgba(15, 23, 42, 0.56);
-        --accent: #0f6b4d;
-        --brand: var(--accent);
-        --brand2: var(--accent);
-        --shadow: none;
-        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
-        --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        --r: 16px;
-        --max: 1100px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        margin: 0;
-        font-family: var(--sans);
-        background: var(--bg0);
-        color: var(--text);
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        backdrop-filter: blur(12px);
-        background: rgba(248, 250, 252, 0.95);
-        border-bottom: 1px solid var(--stroke);
-      }
-
-      .topbar-inner {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0.85rem 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-      }
-
-      .mark {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        border: 1px solid rgba(15, 23, 42, 0.12);
-        object-fit: cover;
-      }
-
-      .brand strong {
-        display: block;
-        font-size: 0.98rem;
-        letter-spacing: -0.01em;
-      }
-
-      .brand span {
-        display: block;
-        font-size: 0.82rem;
-        color: var(--muted);
-        margin-top: 0.1rem;
-      }
-
-      .nav {
-        display: flex;
-        gap: 0.6rem;
-        flex-wrap: wrap;
-      }
-
-      .chiplink {
-        padding: 0.5rem 0.75rem;
-        border-radius: 999px;
-        border: 1px solid var(--stroke);
-        background: #ffffff;
-        color: var(--text);
-        font-weight: 800;
-        font-size: 0.85rem;
-        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
-      }
-
-      .chiplink:hover {
-        transform: translateY(-1px);
-        border-color: var(--stroke2);
-        background: #f3f4f6;
-      }
-
-      .chiplink.primary {
-        border-color: rgba(15, 107, 77, 0.45);
-        background: rgba(15, 107, 77, 0.14);
-        color: rgba(15, 107, 77, 0.98);
-      }
-
-      .shell {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 1.25rem 1rem 2.75rem;
-      }
-
-      .hero {
-        border-radius: calc(var(--r) + 6px);
-        border: 1px solid var(--stroke);
-        background: #ffffff;
-        box-shadow: var(--shadow);
-        padding: 1.25rem;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: clamp(1.9rem, 2.6vw, 2.5rem);
-        letter-spacing: -0.02em;
-      }
-
-      .hero p {
-        margin: 0.65rem 0 0;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .tools-meta {
-        margin-top: 0.85rem;
-        color: var(--muted2);
-        font-size: 0.92rem;
-        font-weight: 700;
-      }
-
-      .grid {
-        margin-top: 1rem;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-        align-items: start;
-      }
-
-      @media (max-width: 980px) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .panel {
-        border-radius: calc(var(--r) + 6px);
-        border: 1px solid var(--stroke);
-        background: #ffffff;
-        box-shadow: var(--shadow);
-        padding: 1rem;
-      }
-
-      .panel h2 {
-        margin: 0 0 0.7rem;
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--muted2);
-      }
-
-      .btnrow {
-        display: flex;
-        gap: 0.6rem;
-        flex-wrap: wrap;
-        margin-top: 1.1rem;
-      }
-
-      .btn {
-        cursor: pointer;
-        border-radius: 14px;
-        border: 1px solid var(--stroke);
-        background: #ffffff;
-        color: rgba(15, 23, 42, 0.92);
-        padding: 0.75rem 0.9rem;
-        font-weight: 900;
-        font-size: 0.92rem;
-        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease,
-          opacity 0.12s ease;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .btn:hover {
-        transform: translateY(-1px);
-        border-color: var(--stroke2);
-        background: #f3f4f6;
-      }
-
-      .btn.primary {
-        border-color: rgba(15, 107, 77, 0.55);
-        background: var(--accent);
-        color: rgba(15, 107, 77, 0.98);
-        color: #ffffff;
-        box-shadow: none;
-      }
-
-      .poster {
-        display: block;
-        border-radius: calc(var(--r) + 10px);
-        border: 1px solid rgba(15, 107, 77, 0.25);
-        background: #ffffff;
-        box-shadow: var(--shadow);
-        padding: 1.15rem;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
-        min-height: 220px;
-      }
-
-      .poster::before {
-        content: "";
-        display: none;
-        position: absolute;
-        inset: -40% -30%;
-        background: radial-gradient(circle at 20% 20%, rgba(15, 107, 77, 0.18), transparent 58%);
-        filter: blur(22px);
-        opacity: 0.95;
-        pointer-events: none;
-      }
-
-      .poster:hover {
-        transform: translateY(-2px);
-        border-color: var(--stroke2);
-        background: #ffffff;
-      }
-
-      .poster * {
-        position: relative;
-      }
-
-      .poster h2 {
-        margin: 0;
-        font-size: 1.25rem;
-        letter-spacing: -0.01em;
-      }
-
-      .poster .type {
-        display: inline-block;
-        font-size: 0.76rem;
-        font-weight: 900;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(15, 107, 77, 0.95);
-        background: rgba(15, 107, 77, 0.1);
-        border: 1px solid rgba(15, 107, 77, 0.25);
-        border-radius: 999px;
-        padding: 0.26rem 0.5rem;
-        margin-bottom: 0.6rem;
-      }
-
-      .poster p {
-        margin: 0.55rem 0 0;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .poster .kpis {
-        margin-top: 0.9rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .pill {
-        font-size: 0.82rem;
-        font-weight: 900;
-        color: rgba(15, 23, 42, 0.92);
-        border: 1px solid var(--stroke);
-        background: rgba(15, 107, 77, 0.08);
-        padding: 0.42rem 0.65rem;
-        border-radius: 999px;
-      }
-
-      .pill.purple {
-        border-color: rgba(15, 107, 77, 0.28);
-        background: rgba(15, 107, 77, 0.10);
-      }
-
-      .pill.green {
-        border-color: rgba(15, 107, 77, 0.28);
-        background: rgba(15, 107, 77, 0.10);
-      }
-
-      .mini {
-        margin: 0.15rem 0 0;
-        color: var(--muted2);
-        font-size: 0.9rem;
-        line-height: 1.6;
-      }
-
-      .full {
-        grid-column: 1 / -1;
-      }
-    </style>
-    <link rel="stylesheet" href="/styles/nutrithrive-labs-simple.min.css" />
-  
-<!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
-<script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://nutrithrive.com.au/#localbusiness",
-  "name": "NutriThrive",
-  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
-  "url": "https://nutrithrive.com.au/",
-  "telephone": "+61438201419",
-  "email": "nutrithrive0@gmail.com",
-  "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
-  "identifier": {
-    "@type": "PropertyValue",
-    "propertyID": "ABN",
-    "value": "32 639 442 616"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "15 Europe Street",
-    "addressLocality": "Truganina",
-    "addressRegion": "VIC",
-    "postalCode": "3029",
-    "addressCountry": "AU"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -37.8323773,
-    "longitude": 144.7187983
-  },
-  "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ],
-      "opens": "09:00",
-      "closes": "23:00"
-    }
-  ],
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Truganina"
-    },
-    {
-      "@type": "City",
-      "name": "Melbourne"
-    },
-    {
-      "@type": "AdministrativeArea",
-      "name": "Victoria"
-    },
-    {
-      "@type": "Country",
-      "name": "Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Worldwide"
-    }
-  ],
-  "serviceArea": [
-    {
-      "@type": "City",
-      "name": "Truganina"
-    },
-    {
-      "@type": "City",
-      "name": "Melbourne"
-    },
-    {
-      "@type": "City",
-      "name": "Werribee"
-    },
-    {
-      "@type": "City",
-      "name": "Tarneit"
-    },
-    {
-      "@type": "City",
-      "name": "Point Cook"
-    },
-    {
-      "@type": "City",
-      "name": "Hoppers Crossing"
-    },
-    {
-      "@type": "City",
-      "name": "Laverton"
-    },
-    {
-      "@type": "AdministrativeArea",
-      "name": "Victoria"
-    }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/nutrithrive",
-    "https://www.instagram.com/nutri__thrive/"
-  ]
-}
-</script>
-<meta name="robots" content="noindex, nofollow">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" />
+    <meta name="theme-color" content="#f4f8f6" />
+    <link rel="stylesheet" href="/styles/nutrithrive-labs-shell.min.css" />
+  </head>
   <body>
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/nutrithrive_labs/">
-          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="NutriThrive logo" / loading="lazy">
+          <img class="mark" src="/assets/images/logo/LOGO.webp" alt="" width="40" height="40" />
           <span>
-            <strong>NutriThrive</strong>
+            <strong>NutriThrive Labs</strong>
+            <span>Free browser tools</span>
           </span>
         </a>
-        <nav class="nav" aria-label="Tools navigation">
+        <nav class="nav" aria-label="Labs navigation">
           <a class="chiplink" href="/">Main site</a>
           <a class="chiplink" href="/blog/">Blog</a>
-          <a class="chiplink" href="/contact">Contact</a>
           <a class="chiplink primary" href="/nutrithrive_labs/converter.html">Open converter</a>
         </nav>
       </div>
@@ -486,145 +52,173 @@
 
     <main class="shell">
       <section class="hero">
+        <span class="labs-badge">No sign-up · Runs locally</span>
         <h1>Useful daily tools, right in your browser</h1>
         <p>
-          Open any tool below for quick daily tasks: conversions, notes, secure passwords, focus timing, and
-          more.
+          Conversions, clinical notes, text cleanup, focus timers, and more — pick a tool, finish your task, then
+          copy or download. Nothing uploads to our servers unless you submit a contact form.
         </p>
-        <p class="tools-meta">9 tools available. All run in your browser with no sign-up.</p>
+        <p class="tools-meta" id="labsCount">10 tools available. All run in your browser with no sign-up.</p>
+
+        <div class="labs-toolbar">
+          <div class="labs-search-wrap">
+            <span class="labs-search-icon" aria-hidden="true">⌕</span>
+            <input
+              class="labs-search"
+              id="labsSearch"
+              type="search"
+              placeholder="Search tools… e.g. PDF, password, SOAP"
+              autocomplete="off"
+            />
+          </div>
+          <div class="labs-filters" role="group" aria-label="Filter by category">
+            <button class="labs-filter is-active" type="button" data-filter="all">All</button>
+            <button class="labs-filter" type="button" data-filter="file">File</button>
+            <button class="labs-filter" type="button" data-filter="text">Text</button>
+            <button class="labs-filter" type="button" data-filter="productivity">Focus</button>
+            <button class="labs-filter" type="button" data-filter="ai">AI</button>
+            <button class="labs-filter" type="button" data-filter="health">Health</button>
+          </div>
+        </div>
+
         <div class="btnrow">
-          <a class="btn primary" href="/nutrithrive_labs/converter.html">Open tools</a>
-          <a class="btn" href="/">Back to NutriThrive</a>
+          <a class="btn primary" href="/nutrithrive_labs/converter.html">Open converter</a>
+          <a class="btn" href="/nutrithrive_labs/mediflow/demo.html">Try SOAP demo</a>
         </div>
       </section>
 
-      <div class="grid">
-        <a class="poster" href="/nutrithrive_labs/converter.html" aria-label="Open the converter">
+      <div class="grid" id="labsGrid">
+        <a class="poster" href="/nutrithrive_labs/converter.html" data-category="file" aria-label="Open file converter">
+          <span class="poster-icon" aria-hidden="true">📄</span>
           <span class="type">File</span>
-          <h2>Open the Converter</h2>
-          <p>
-            Convert PDF ↔ images, extract text, merge/split pages, add watermarks, embed QR codes, and more.
-          </p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">Upload → Convert → Download</span>
-            <span class="pill green">Runs in your browser</span>
-            <span class="pill">No signup</span>
+          <h2>File Converter</h2>
+          <p>PDF ↔ images, merge/split, watermarks, QR embed, text extract, and more.</p>
+          <div class="kpis">
+            <span class="pill">Upload → Convert</span>
+            <span class="pill">Browser-only</span>
           </div>
-          <p class="mini">Click anywhere on this poster to start.</p>
+          <p class="mini">Click to open the converter.</p>
         </a>
 
-        <a
-          class="poster"
-          href="/nutrithrive_labs/dedup-lines.html"
-          aria-label="Open Remove Duplicate Lines tool"
-        >
+        <a class="poster" href="/nutrithrive_labs/dedup-lines.html" data-category="text" aria-label="Remove duplicate lines">
+          <span class="poster-icon" aria-hidden="true">📋</span>
           <span class="type">Text</span>
           <h2>Remove Duplicate Lines</h2>
-          <p>Paste a list (one item per line) and remove duplicates while preserving the original order.</p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">Preserves order</span>
-            <span class="pill green">Paste or upload .txt</span>
-            <span class="pill">Instant download</span>
+          <p>Paste a list or upload .txt — duplicates removed, original order kept.</p>
+          <div class="kpis">
+            <span class="pill">Preserves order</span>
+            <span class="pill">Instant export</span>
           </div>
-          <p class="mini">Click to open the deduplicator.</p>
+          <p class="mini">Great for SKU lists and email cleanup.</p>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/sitemap-generator.html" aria-label="Open Sitemap Generator">
+        <a class="poster" href="/nutrithrive_labs/sitemap-generator.html" data-category="file" aria-label="Sitemap generator">
+          <span class="poster-icon" aria-hidden="true">🗺️</span>
           <span class="type">SEO</span>
           <h2>Sitemap Generator</h2>
-          <p>Select a local folder of HTML files and generate a standard <code>sitemap.xml</code>.</p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">Folder → sitemap.xml</span>
-            <span class="pill green">No server upload</span>
-            <span class="pill">Copy or download</span>
+          <p>Select a local HTML folder and generate a standard sitemap.xml.</p>
+          <div class="kpis">
+            <span class="pill">Folder → XML</span>
+            <span class="pill">No upload</span>
           </div>
-          <p class="mini">Click to generate your sitemap.</p>
+          <p class="mini">Copy or download your sitemap.</p>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/time-converter.html" aria-label="Open Time Converter">
+        <a class="poster" href="/nutrithrive_labs/time-converter.html" data-category="productivity" aria-label="Time zone converter">
+          <span class="poster-icon" aria-hidden="true">🌏</span>
           <span class="type">Time</span>
           <h2>Time Converter</h2>
-          <p>Convert any date/time between countries (time zones). DST is handled automatically.</p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">From → To</span>
-            <span class="pill green">DST-aware</span>
+          <p>Convert any date/time between countries — daylight saving handled automatically.</p>
+          <div class="kpis">
+            <span class="pill">DST-aware</span>
             <span class="pill">Copy result</span>
           </div>
-          <p class="mini">Click to convert time zones.</p>
+          <p class="mini">Melbourne ↔ anywhere.</p>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/pomodoro-timer.html" aria-label="Open Pomodoro Timer">
-          <span class="type">Productivity</span>
+        <a class="poster" href="/nutrithrive_labs/pomodoro-timer.html" data-category="productivity" aria-label="Pomodoro timer">
+          <span class="poster-icon" aria-hidden="true">⏱️</span>
+          <span class="type">Focus</span>
           <h2>Pomodoro Timer</h2>
-          <p>Stay focused with work/break cycles and daily focus-minute tracking stored in your browser.</p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">Focus + breaks</span>
-            <span class="pill green">Daily minute tracking</span>
-            <span class="pill">No signup</span>
+          <p>Work/break cycles with daily focus-minute tracking stored in your browser.</p>
+          <div class="kpis">
+            <span class="pill">25/5 presets</span>
+            <span class="pill">Daily stats</span>
           </div>
-          <p class="mini">Click to start a focus session.</p>
+          <p class="mini">Start a focus session.</p>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/password-generator.html" aria-label="Open Password Generator">
+        <a class="poster" href="/nutrithrive_labs/password-generator.html" data-category="productivity" aria-label="Password generator">
+          <span class="poster-icon" aria-hidden="true">🔐</span>
           <span class="type">Security</span>
           <h2>Password Generator</h2>
-          <p>Create strong random passwords with custom length and character sets, then copy instantly.</p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">Secure random</span>
-            <span class="pill green">Strength feedback</span>
-            <span class="pill">Copy in one click</span>
+          <p>Strong random passwords with custom length, symbols, and strength feedback.</p>
+          <div class="kpis">
+            <span class="pill">Secure random</span>
+            <span class="pill">One-click copy</span>
           </div>
-          <p class="mini">Click to generate secure passwords.</p>
+          <p class="mini">Generated locally on your device.</p>
         </a>
 
-        <a class="poster" href="/nutrithrive_labs/quick-notes.html" aria-label="Open Quick Notes">
+        <a class="poster" href="/nutrithrive_labs/quick-notes.html" data-category="text" aria-label="Quick notes">
+          <span class="poster-icon" aria-hidden="true">📝</span>
           <span class="type">Notes</span>
           <h2>Quick Notes</h2>
-          <p>Write quick notes with auto-save in your browser, then copy or download as a text file.</p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">Auto-save</span>
-            <span class="pill green">Copy + export</span>
+          <p>Auto-save notes in your browser — copy or download as .txt anytime.</p>
+          <div class="kpis">
+            <span class="pill">Auto-save</span>
             <span class="pill">Local-only</span>
           </div>
-          <p class="mini">Click to open your note pad.</p>
+          <p class="mini">Scratch pad for fast ideas.</p>
         </a>
 
-        <a
-          class="poster"
-          href="/nutrithrive_labs/ai-text-detector.html"
-          aria-label="Open AI text style analyzer"
-        >
+        <a class="poster" href="/nutrithrive_labs/ai-text-detector.html" data-category="ai" aria-label="AI text style analyzer">
+          <span class="poster-icon" aria-hidden="true">🔍</span>
           <span class="type">AI + SEO</span>
           <h2>AI Text Style Analyzer</h2>
-          <p>
-            Paste blog copy or HTML for burstiness, personal-voice checks, optional SEO keyword density, fluff/CTA
-            signals, and a blended score—all computed locally in your browser.
-          </p>
-          <div class="kpis" aria-label="Highlights">
-            <span class="pill purple">Paste → analyze</span>
-            <span class="pill green">No upload</span>
-            <span class="pill">Blog + core metrics</span>
+          <p>Burstiness, voice checks, SEO density, fluff signals — all computed locally.</p>
+          <div class="kpis">
+            <span class="pill">Paste → analyze</span>
+            <span class="pill">Blog metrics</span>
           </div>
-          <p class="mini">Educational stylometry; not proof of authorship.</p>
+          <p class="mini">Educational stylometry only.</p>
         </a>
 
-        <section class="panel full" aria-label="What you can do">
-          <h2>What it does</h2>
+        <a class="poster" href="/nutrithrive_labs/mediflow/" data-category="health" aria-label="MediFlow AI healthcare assistant">
+          <span class="poster-icon" aria-hidden="true">🏥</span>
+          <span class="type">Healthcare</span>
+          <h2>MediFlow AI</h2>
+          <p>Upload a consultation transcript → generate a SOAP clinical note. No API key required.</p>
+          <div class="kpis">
+            <span class="pill">Transcript → SOAP</span>
+            <span class="pill">On-device NLP</span>
+          </div>
+          <p class="mini">Clinic admin prototype — 4 pages.</p>
+        </a>
+
+        <section class="panel full" aria-label="About Labs">
+          <h2>How it works</h2>
           <p class="mini" style="margin-top: 0">
-            Pick any tool tile above, finish your task in-browser, then copy or download the result.
+            Pick any tool, complete your task in-browser, then copy or download. For lab-tested moringa and
+            superfoods, visit the <a class="labs-link" href="/products/">NutriThrive shop</a>.
           </p>
           <div class="btnrow">
             <a class="btn primary" href="/nutrithrive_labs/converter.html">Open converter</a>
-            <a class="btn" href="/nutrithrive_labs/pomodoro-timer.html">Open pomodoro timer</a>
-            <a class="btn" href="/nutrithrive_labs/password-generator.html">Open password generator</a>
+            <a class="btn" href="/nutrithrive_labs/pomodoro-timer.html">Pomodoro timer</a>
+            <a class="btn" href="/nutrithrive_labs/password-generator.html">Password generator</a>
           </div>
-          <p class="mini">
-            Note: AES-256 password protect/unlock requires a backend and is disabled in the client-side
-            version.
+          <p class="mini" style="margin-top: 0.85rem">
+            Note: AES-256 PDF password protect requires a backend and is disabled in the client-side build.
           </p>
         </section>
       </div>
+
+      <footer class="labs-footer">
+        <span>© NutriThrive · Truganina, Melbourne</span>
+        <span><a href="/">Main site</a> · <a href="/contact">Contact</a></span>
+      </footer>
     </main>
+
+    <script src="/scripts/pages/labs/labs-shell.min.js" defer></script>
   </body>
 </html>
-
