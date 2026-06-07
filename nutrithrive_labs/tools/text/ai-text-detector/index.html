@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>NutriThrive Labs | AI Text Style Analyzer</title>
     <meta
       name="description"
@@ -31,32 +31,32 @@
 
     <link rel="icon" type="image/png" href="/nutrithrive_labs/shared/images/logo.webp" sizes="32x32" />
     <link rel="icon" type="image/png" sizes="16x16" href="/nutrithrive_labs/shared/images/logo.webp" />
-    <meta name="theme-color" content="#060a08" />
+    <meta name="theme-color" content="#faf7f2" />
 
     <script src="ai-text-detector.min.js" defer></script>
 
     <style>
       :root {
-        color-scheme: dark;
-        --bg0: #060a08;
-        --bg1: #0c1410;
-        --panel: rgba(255, 255, 255, 0.04);
-        --surface: rgba(255, 255, 255, 0.04);
-        --stroke: rgba(255, 255, 255, 0.08);
-        --stroke2: rgba(255, 255, 255, 0.14);
-        --text: #edf7f2;
-        --muted: rgba(237, 247, 242, 0.62);
-        --muted2: rgba(237, 247, 242, 0.38);
-        --accent: #2ef2a8;
-        --accent-soft: rgba(46, 242, 168, 0.12);
-        --bg: #060a08;
-        --sans: "Outfit", system-ui, sans-serif;
-        --mono: "JetBrains Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+        color-scheme: light;
+        --bg0: #faf7f2;
+        --bg1: #f0ebe3;
+        --panel: #ffffff;
+        --surface: #ffffff;
+        --stroke: rgba(28, 43, 36, 0.1);
+        --stroke2: rgba(28, 43, 36, 0.18);
+        --text: #1c2b24;
+        --muted: #5a6b62;
+        --muted2: #8a9a90;
+        --accent: #1a6b4a;
+        --accent-soft: rgba(26, 107, 74, 0.1);
+        --bg: #faf7f2;
+        --sans: "Plus Jakarta Sans", system-ui, sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
         --r: 16px;
         --max: 1100px;
-        --brand: #8b7dff;
-        --brand2: #2ef2a8;
-        --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+        --brand: #7c5295;
+        --brand2: #1a6b4a;
+        --shadow: 0 12px 36px rgba(28, 43, 36, 0.09);
       }
 
       * {
@@ -80,7 +80,7 @@
         position: sticky;
         top: 0;
         z-index: 20;
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
         border-bottom: 1px solid var(--stroke);
       }
 
@@ -132,7 +132,7 @@
         padding: 0.45rem 0.7rem;
         border-radius: 8px;
         border: 1px solid var(--stroke);
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
         color: var(--text);
         font-weight: 600;
         font-size: 0.8125rem;
@@ -179,7 +179,7 @@
         margin-top: 1rem;
         border-radius: var(--r);
         border: 1px solid var(--stroke);
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
         padding: 1.25rem;
         box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
       }
@@ -213,14 +213,14 @@
         font-size: 0.9375rem;
         line-height: 1.55;
         resize: vertical;
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
       }
 
       #input-text:focus {
         outline: 2px solid rgba(15, 107, 77, 0.3);
         outline-offset: 0;
         border-color: rgba(15, 107, 77, 0.35);
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
       }
 
       .field-input {
@@ -230,7 +230,7 @@
         border: 1px solid var(--stroke);
         font-family: var(--sans);
         font-size: 0.875rem;
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
       }
 
       .field-input:focus {
@@ -249,7 +249,7 @@
         margin-top: 1rem;
         border: 1px solid var(--stroke);
         border-radius: var(--r);
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
         overflow: hidden;
       }
 
@@ -312,7 +312,7 @@
         cursor: pointer;
         border-radius: var(--r);
         border: 1px solid var(--stroke);
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
         color: var(--text);
         padding: 0.65rem 1rem;
         font-weight: 600;
@@ -391,15 +391,15 @@
 
       .band.human {
         background: rgba(46, 242, 168, 0.15);
-        color: #2ef2a8;
+        color: #1a6b4a;
       }
       .band.maybe {
         background: rgba(255, 200, 87, 0.15);
-        color: #ffc857;
+        color: #c9922a;
       }
       .band.ai {
         background: rgba(255, 107, 157, 0.15);
-        color: #ff6b9d;
+        color: #d4623c;
       }
       .band.ai-strong {
         background: rgba(185, 28, 28, 0.14);
@@ -458,7 +458,7 @@
         margin-top: 1rem;
         border: 1px solid var(--stroke);
         border-radius: var(--r);
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
       }
 
       .details-metrics > summary {
@@ -510,7 +510,7 @@
         margin: 0.5rem 0 0;
         border-radius: var(--r);
         border: 1px solid var(--stroke);
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
       }
 
       table.metrics {
@@ -623,7 +623,7 @@
         border: 1px solid var(--stroke);
         border-radius: var(--r);
         padding: 0.75rem;
-        background: rgba(0, 0, 0, 0.35);
+        background: #f5f2ec;
       }
 
       .issue-card .cat {
@@ -644,7 +644,7 @@
       .issue-card .fix-label {
         font-size: 0.6875rem;
         font-weight: 700;
-        color: #2ef2a8;
+        color: #1a6b4a;
         margin-bottom: 0.15rem;
       }
 
