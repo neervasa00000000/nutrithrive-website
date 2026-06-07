@@ -72,7 +72,7 @@ Your Google Sheet: https://docs.google.com/spreadsheets/d/124i9E9BZWU8CZO_JKbIeS
 ## What Happens Now?
 
 ✅ Every newsletter subscription will:
-- Be sent to your email (hello@nutrithrive.com.au) - for notifications
+- Be sent to your email (nutrithrive0@gmail.com) - for notifications
 - Be automatically saved to your Google Sheet - for storage and management
 
 You can now:
