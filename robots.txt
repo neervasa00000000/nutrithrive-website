@@ -8,6 +8,7 @@ User-agent: *
 Disallow: /nutrithrive_labs/
 Disallow: /nutrithrive-labs/
 Disallow: /crazy-ideas/
+Disallow: /documents/
 Disallow: /shared/
 Allow: /
 
@@ -134,7 +135,6 @@ Allow: /pages/
 Allow: /about.html
 Allow: /contact.html
 Allow: /blog/
-Allow: /documents/
 Allow: /how-to-use-moringa.html
 Allow: /moringa-benefits.html
 Allow: /products/moringa-powder/

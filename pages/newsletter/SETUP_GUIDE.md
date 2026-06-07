@@ -9,7 +9,7 @@ The newsletter subscription system is now set up and ready to use! Subscribers c
 ## How It Works
 
 ### Current Setup (FormSubmit.co)
-The forms currently use **FormSubmit.co** (same as your contact form) to send subscription emails to `nutrithrive0@gmail.com`. Each subscription will arrive as an email with the subscriber's email address and name (if provided).
+The forms currently use **FormSubmit.co** (same as your contact form) to send subscription emails to `hello@nutrithrive.com.au`. Each subscription will arrive as an email with the subscriber's email address and name (if provided).
 
 ### Storing Subscriber Emails
 
@@ -87,7 +87,7 @@ Update the form action URL in:
 - `/pages/newsletter/index.html`
 - All other pages with footer forms
 
-Change: `action="https://formsubmit.co/nutrithrive0@gmail.com"`
+Change: `action="https://formsubmit.co/hello@nutrithrive.com.au"`
 
 ### Change Thank You Page
 Update the `_next` hidden input in all forms:
