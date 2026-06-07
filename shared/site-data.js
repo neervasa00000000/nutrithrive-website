@@ -3,7 +3,7 @@ window.NT_SITE_DATA = {
   brand: 'NutriThrive',
   tagline: "Australia's freshest lab-tested moringa",
   contact: {
-    email: 'nutrithrive0@gmail.com',
+    email: 'hello@nutrithrive.com.au',
     phone: '+61 438 201 419',
     phoneTel: '+61438201419',
     address: '15 Europe Street, Truganina VIC 3029, Melbourne, Australia',

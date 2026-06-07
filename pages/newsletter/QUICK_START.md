@@ -1,7 +1,7 @@
 # Quick Start: Auto-Save Emails to Google Sheets
 
 ## Current Status
-Right now, newsletter subscriptions are **only sent to your email inbox** (`nutrithrive0@gmail.com`). They are **NOT automatically saved** to a file or spreadsheet.
+Right now, newsletter subscriptions are **only sent to your email inbox** (`hello@nutrithrive.com.au`). They are **NOT automatically saved** to a file or spreadsheet.
 
 ## To Enable Auto-Save to Google Sheets:
 
