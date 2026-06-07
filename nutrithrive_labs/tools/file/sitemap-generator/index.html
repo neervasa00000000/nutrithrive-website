@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head><meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <title>NutriThrive Labs | Sitemap Generator</title>
+    <meta name="description" content="Generate sitemap.xml from a folder of HTML files in your browser—no server upload. Free tool from NutriThrive Labs, Melbourne.">
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://nutrithrive.com.au/nutrithrive_labs/tools/file/sitemap-generator/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nutrithrive.com.au/nutrithrive_labs/tools/file/sitemap-generator/" />
+    <meta property="og:title" content="NutriThrive Labs | Sitemap Generator | NutriThrive, Melbourne" />
+    <meta property="og:description" content="Generate sitemap.xml from a folder of HTML files in your browser—no server upload. Free tool from NutriThrive Labs, Melbourne." />
+    <meta property="og:image" content="https://nutrithrive.com.au/nutrithrive_labs/shared/images/logo.webp" />
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">    <meta property="og:site_name" content="NutriThrive Australia" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nutrithrive.com.au/nutrithrive_labs/tools/file/sitemap-generator/" />
+    <meta property="twitter:title" content="NutriThrive Labs | Sitemap Generator | NutriThrive, Melbourne" />
+    <meta property="twitter:description" content="Generate sitemap.xml from a folder of HTML files in your browser—no server upload. Free tool from NutriThrive Labs, Melbourne." />
+    <meta property="twitter:image" content="https://nutrithrive.com.au/nutrithrive_labs/shared/images/logo.webp" />
+
+    <noscript></noscript>
+
+    <link rel="icon" type="image/png" href="/nutrithrive_labs/shared/images/logo.webp" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/nutrithrive_labs/shared/images/logo.webp" />
+    <meta name="theme-color" content="#060a08" />
+
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg0: #060a08;
+        --bg1: #0c1410;
+        --panel: rgba(255, 255, 255, 0.04);
+        --surface: rgba(255, 255, 255, 0.04);
+        --stroke: rgba(255, 255, 255, 0.08);
+        --stroke2: rgba(255, 255, 255, 0.14);
+        --text: #edf7f2;
+        --muted: rgba(237, 247, 242, 0.62);
+        --muted2: rgba(237, 247, 242, 0.38);
+        --accent: #2ef2a8;
+        --accent-soft: rgba(46, 242, 168, 0.12);
+        --bg: #060a08;
+        --sans: "Outfit", system-ui, sans-serif;
+        --mono: "JetBrains Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+        --r: 16px;
+        --max: 1100px;
+        --brand: #8b7dff;
+        --brand2: #2ef2a8;
+        --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        background: radial-gradient(900px 450px at 20% 10%, rgba(91, 33, 182, 0.12), transparent 60%),
+          radial-gradient(900px 450px at 80% 20%, rgba(22, 163, 74, 0.1), transparent 60%),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(248, 250, 252, 0.78);
+        border-bottom: 1px solid var(--stroke);
+      }
+
+      .topbar-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0.85rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(91, 33, 182, 0.9), rgba(22, 163, 74, 0.85));
+        box-shadow: 0 10px 25px rgba(91, 33, 182, 0.14);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 0.98rem;
+        letter-spacing: -0.01em;
+      }
+
+      .brand span {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-top: 0.1rem;
+      }
+
+      .nav {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .chiplink {
+        padding: 0.5rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--text);
+        font-weight: 800;
+        font-size: 0.85rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      }
+
+      .chiplink:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .chiplink.primary {
+        border-color: rgba(91, 33, 182, 0.28);
+        background: rgba(91, 33, 182, 0.12);
+      }
+
+      .shell {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 1.25rem 1rem 2.5rem;
+      }
+
+      .hero {
+        border-radius: calc(var(--r) + 6px);
+        border: 1px solid var(--stroke);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78));
+        box-shadow: var(--shadow);
+        padding: 1.1rem 1.15rem 1rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+        letter-spacing: -0.02em;
+      }
+
+      .hero p {
+        margin: 0.6rem 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .panel {
+        margin-top: 1rem;
+        border-radius: calc(var(--r) + 6px);
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .field {
+        margin-top: 0.85rem;
+        display: grid;
+        gap: 0.45rem;
+      }
+
+      label {
+        font-weight: 900;
+        font-size: 0.92rem;
+        color: rgba(15, 23, 42, 0.92);
+      }
+
+      input,
+      textarea {
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 0.85rem 0.9rem;
+        color: var(--text);
+        outline: none;
+        font-weight: 700;
+      }
+
+      textarea {
+        min-height: 240px;
+        resize: vertical;
+        font-family: var(--mono);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .hint {
+        color: var(--muted2);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .row {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .btn {
+        cursor: pointer;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.86);
+        color: rgba(15, 23, 42, 0.92);
+        padding: 0.75rem 0.9rem;
+        font-weight: 900;
+        font-size: 0.92rem;
+        transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease,
+          opacity 0.12s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--stroke2);
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      .btn.primary {
+        border-color: rgba(91, 33, 182, 0.28);
+        background: rgba(91, 33, 182, 0.12);
+      }
+
+      .btn:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .stats {
+        margin-top: 0.9rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.65rem;
+      }
+
+      @media (max-width: 720px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .stat {
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.88);
+        padding: 0.75rem;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.05rem;
+        letter-spacing: -0.01em;
+      }
+
+      .stat span {
+        display: block;
+        color: var(--muted2);
+        font-size: 0.86rem;
+        margin-top: 0.2rem;
+      }
+
+      .toast {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 50;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        padding: 0.85rem 0.95rem;
+        box-shadow: var(--shadow);
+        color: rgba(15, 23, 42, 0.9);
+        font-weight: 900;
+        transform: translateY(10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+
+      .toast[data-show="true"] {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      code {
+        font-family: var(--mono);
+        font-weight: 700;
+      }
+    </style>
+    <link rel="stylesheet" href="/nutrithrive_labs/shared/css/shell.min.css" />
+  
+<!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
+<script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://nutrithrive.com.au/#localbusiness",
+  "name": "NutriThrive",
+  "image": "https://nutrithrive.com.au/nutrithrive_labs/shared/images/logo.webp",
+  "url": "https://nutrithrive.com.au/",
+  "telephone": "+61438201419",
+  "email": "nutrithrive0@gmail.com",
+  "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ABN",
+    "value": "32 639 442 616"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Europe Street",
+    "addressLocality": "Truganina",
+    "addressRegion": "VIC",
+    "postalCode": "3029",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -37.8323773,
+    "longitude": 144.7187983
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    },
+    {
+      "@type": "Place",
+      "name": "Worldwide"
+    }
+  ],
+  "serviceArea": [
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "City",
+      "name": "Werribee"
+    },
+    {
+      "@type": "City",
+      "name": "Tarneit"
+    },
+    {
+      "@type": "City",
+      "name": "Point Cook"
+    },
+    {
+      "@type": "City",
+      "name": "Hoppers Crossing"
+    },
+    {
+      "@type": "City",
+      "name": "Laverton"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/nutrithrive",
+    "https://www.instagram.com/nutri__thrive/"
+  ]
+}
+</script>
+</head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/nutrithrive_labs/">
+          <img class="mark" src="/nutrithrive_labs/shared/images/logo.webp" alt="" width="40" height="40" />
+          <span>
+            <strong>NutriThrive Labs</strong>
+            <span>Sitemap Generator</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Tools navigation">
+          <a class="chiplink" href="/nutrithrive_labs/">All tools</a>
+          <a class="chiplink" href="/nutrithrive_labs/tools/file/converter/">Converter</a>
+          <a class="chiplink primary" href="#tool">This tool</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell" id="tool">
+      <section class="hero">
+        <span class="labs-badge">SEO · Local folder</span>
+        <h1>Sitemap Generator</h1>
+        <p>
+          Select a local folder of HTML files, then download a standard <code>sitemap.xml</code>. Runs in your
+          browser — no uploads to a server.
+        </p>
+        <p class="labs-crosslink">
+          Part of <a class="labs-link" href="/nutrithrive_labs/">NutriThrive Labs</a>. Main store:
+          <a class="labs-link" href="/">nutrithrive.com.au</a>.
+        </p>
+      </section>
+
+      <section class="panel" aria-label="Sitemap generator">
+        <div class="grid">
+          <div>
+            <div class="field">
+              <label for="baseUrl">Base URL</label>
+              <input id="baseUrl" type="url" value="https://nutrithrive.com.au" />
+              <div class="hint">Used to build full URLs like <code>https://yourdomain.com/path</code>.</div>
+            </div>
+
+            <div class="field">
+              <label for="folderInput">Select folder of HTML files</label>
+              <input id="folderInput" type="file" multiple webkitdirectory />
+              <div class="hint">
+                Choose your site folder. We’ll include <code>.html</code> files and generate a URL per file.
+              </div>
+            </div>
+
+            <div class="stats" aria-label="Stats">
+              <div class="stat">
+                <strong id="statFiles">0</strong>
+                <span>HTML files found</span>
+              </div>
+              <div class="stat">
+                <strong id="statUrls">0</strong>
+                <span>URLs in sitemap</span>
+              </div>
+              <div class="stat">
+                <strong id="statLastmod">Off</strong>
+                <span>Lastmod</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn primary" id="generateBtn" type="button">Generate sitemap.xml</button>
+              <button class="btn" id="downloadBtn" type="button" disabled>Download</button>
+              <button class="btn" id="copyBtn" type="button" disabled>Copy</button>
+              <button class="btn" id="clearBtn" type="button">Clear</button>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 0">
+            <label for="output">Preview (sitemap.xml)</label>
+            <textarea id="output" readonly placeholder="Your sitemap.xml will appear here…"></textarea>
+            <div class="hint">
+              Rules: <code>index.html</code> becomes <code>/</code>, other <code>.html</code> becomes clean
+              paths (e.g. <code>/pages/about/</code>).
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="labs-footer">
+        <span><a href="/nutrithrive_labs/">← All tools</a></span>
+        <span><a href="/products/">NutriThrive shop</a></span>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" data-show="false" role="status" aria-live="polite"></div>
+    <script src="sitemap-generator.min.js"></script>
+    <script src="/nutrithrive_labs/shared/js/labs-shell.min.js" defer></script>
+  </body>
+</html>
+

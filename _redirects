@@ -201,20 +201,41 @@
 /blog/state-of-australian-schooling-2026-comprehensive-analysis.html /blog/state-of-australian-schooling-2026-comprehensive-analysis.html 404
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods 404
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html 404
-# NutriThrive Labs (public browser tools)
+# NutriThrive Labs (self-contained browser tools)
 /nutrithrive_labs /nutrithrive_labs/ 301
-/nutrithrive_labs/converter /nutrithrive_labs/converter.html 200
-/nutrithrive_labs/dedup-lines /nutrithrive_labs/dedup-lines.html 200
-/nutrithrive_labs/sitemap-generator /nutrithrive_labs/sitemap-generator.html 200
-/nutrithrive_labs/time-converter /nutrithrive_labs/time-converter.html 200
-/nutrithrive_labs/pomodoro-timer /nutrithrive_labs/pomodoro-timer.html 200
-/nutrithrive_labs/password-generator /nutrithrive_labs/password-generator.html 200
-/nutrithrive_labs/quick-notes /nutrithrive_labs/quick-notes.html 200
-/nutrithrive_labs/ai-text-detector /nutrithrive_labs/ai-text-detector.html 200
+# File tools
+/nutrithrive_labs/tools/file/converter /nutrithrive_labs/tools/file/converter/ 301
+/nutrithrive_labs/tools/file/sitemap-generator /nutrithrive_labs/tools/file/sitemap-generator/ 301
+# Text tools
+/nutrithrive_labs/tools/text/dedup-lines /nutrithrive_labs/tools/text/dedup-lines/ 301
+/nutrithrive_labs/tools/text/quick-notes /nutrithrive_labs/tools/text/quick-notes/ 301
+/nutrithrive_labs/tools/text/ai-text-detector /nutrithrive_labs/tools/text/ai-text-detector/ 301
+# Productivity tools
+/nutrithrive_labs/tools/productivity/time-converter /nutrithrive_labs/tools/productivity/time-converter/ 301
+/nutrithrive_labs/tools/productivity/pomodoro-timer /nutrithrive_labs/tools/productivity/pomodoro-timer/ 301
+/nutrithrive_labs/tools/productivity/password-generator /nutrithrive_labs/tools/productivity/password-generator/ 301
+# MediFlow healthcare sub-app
 /nutrithrive_labs/mediflow /nutrithrive_labs/mediflow/ 301
 /nutrithrive_labs/mediflow/features /nutrithrive_labs/mediflow/features.html 200
 /nutrithrive_labs/mediflow/demo /nutrithrive_labs/mediflow/demo.html 200
 /nutrithrive_labs/mediflow/contact /nutrithrive_labs/mediflow/contact.html 200
+# Legacy flat URLs → new organized paths
+/nutrithrive_labs/converter /nutrithrive_labs/tools/file/converter/ 301
+/nutrithrive_labs/converter.html /nutrithrive_labs/tools/file/converter/ 301
+/nutrithrive_labs/dedup-lines /nutrithrive_labs/tools/text/dedup-lines/ 301
+/nutrithrive_labs/dedup-lines.html /nutrithrive_labs/tools/text/dedup-lines/ 301
+/nutrithrive_labs/sitemap-generator /nutrithrive_labs/tools/file/sitemap-generator/ 301
+/nutrithrive_labs/sitemap-generator.html /nutrithrive_labs/tools/file/sitemap-generator/ 301
+/nutrithrive_labs/time-converter /nutrithrive_labs/tools/productivity/time-converter/ 301
+/nutrithrive_labs/time-converter.html /nutrithrive_labs/tools/productivity/time-converter/ 301
+/nutrithrive_labs/pomodoro-timer /nutrithrive_labs/tools/productivity/pomodoro-timer/ 301
+/nutrithrive_labs/pomodoro-timer.html /nutrithrive_labs/tools/productivity/pomodoro-timer/ 301
+/nutrithrive_labs/password-generator /nutrithrive_labs/tools/productivity/password-generator/ 301
+/nutrithrive_labs/password-generator.html /nutrithrive_labs/tools/productivity/password-generator/ 301
+/nutrithrive_labs/quick-notes /nutrithrive_labs/tools/text/quick-notes/ 301
+/nutrithrive_labs/quick-notes.html /nutrithrive_labs/tools/text/quick-notes/ 301
+/nutrithrive_labs/ai-text-detector /nutrithrive_labs/tools/text/ai-text-detector/ 301
+/nutrithrive_labs/ai-text-detector.html /nutrithrive_labs/tools/text/ai-text-detector/ 301
 
 # Hyphen typo alias → blocked
 /nutrithrive-labs/* /404.html 404!
