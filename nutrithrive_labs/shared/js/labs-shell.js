@@ -75,8 +75,11 @@
   }
 
   function initReveal() {
+    const grid = document.getElementById("labsGrid");
+    if (!grid) return;
+
     const targets = document.querySelectorAll(
-      ".poster, .labs-poster, .labs-hero-panel, .labs-hero-visual, .hero, .labs-cta-panel, .panel.full"
+      "#labsGrid .poster, #labsGrid .labs-poster, .labs-hero-panel, .labs-hero-visual, .labs-cta-panel"
     );
     if (!targets.length) return;
 
@@ -90,11 +93,9 @@
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
-          const siblings = [...el.parentElement.children].filter(
-            (c) =>
-              c.matches(".poster, .labs-poster, .labs-hero-panel, .labs-hero-visual, .hero, .labs-cta-panel, .panel.full") &&
-              !c.classList.contains("is-visible")
-          );
+          const siblings = [...document.querySelectorAll(
+            "#labsGrid .poster, #labsGrid .labs-poster, .labs-hero-panel, .labs-hero-visual, .labs-cta-panel"
+          )].filter((c) => !c.classList.contains("is-visible"));
           const idx = siblings.indexOf(el);
           const delay = Math.max(0, idx) * 60;
           setTimeout(() => el.classList.add("is-visible"), delay);
