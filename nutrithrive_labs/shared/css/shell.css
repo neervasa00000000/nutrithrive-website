@@ -477,8 +477,10 @@ img { max-width: 100%; height: auto; }
   letter-spacing: -0.02em;
 }
 
-/* Bento grid */
-.grid, .labs-grid, .labs-bento {
+/* Bento grid (index hub only — do not use bare .grid on tool pages) */
+.labs-grid,
+.labs-bento,
+#labsGrid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1rem;
@@ -616,18 +618,19 @@ img { max-width: 100%; height: auto; }
 }
 
 @media (max-width: 680px) {
-  .grid, .labs-grid, .labs-bento { grid-template-columns: 1fr; }
+  .labs-grid, .labs-bento, #labsGrid { grid-template-columns: 1fr; }
   .poster, .labs-poster, .poster--featured { grid-column: span 1; min-height: 200px; }
 }
 
-.poster, .labs-poster, .labs-hero-panel, .labs-hero-visual, .hero, .panel.full, .labs-cta-panel {
+/* Scroll reveal — index hub only */
+.labs-hero-panel, .labs-hero-visual, #labsGrid .poster, .labs-cta-panel {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.poster.is-visible, .labs-poster.is-visible, .labs-hero-panel.is-visible,
-.labs-hero-visual.is-visible, .hero.is-visible, .panel.full.is-visible, .labs-cta-panel.is-visible {
+.labs-hero-panel.is-visible, .labs-hero-visual.is-visible,
+#labsGrid .poster.is-visible, .labs-cta-panel.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -950,7 +953,7 @@ label:has(input[type="checkbox"]) {
 }
 
 .page-intro .lead, .lead { margin: 0.7rem 0 0; color: var(--labs-muted); line-height: 1.65; max-width: 62ch; }
-.panel .grid { margin-top: 0; }
+.panel .tool-layout { margin-top: 0; }
 
 .result {
   padding: 0.95rem 1.05rem;
@@ -976,12 +979,12 @@ label:has(input[type="checkbox"]) {
   line-height: 1.55;
 }
 
-.shell > .grid { margin-top: 0; }
+#labsGrid { margin-top: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  .poster, .labs-poster, .labs-hero-panel, .labs-hero-visual, .hero, .panel.full, .labs-cta-panel {
+  .labs-hero-panel, .labs-hero-visual, #labsGrid .poster, .labs-cta-panel {
     opacity: 1; transform: none;
   }
 }
