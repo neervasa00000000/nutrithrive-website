@@ -609,6 +609,38 @@ details[open] .expand-icon {
   white-space: nowrap;
 }
 
+/* Sidebar product card — price + /100g on one baseline (fixes clipped money) */
+.nt-blog-sidebar-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+.nt-blog-sidebar-price > span:first-child {
+  line-height: 1.2;
+}
+
+.nt-blog-sidebar-price > span:last-child {
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Legacy sidebar markup before nt-blog-sidebar-price class */
+.nt-blog-article aside .p-6 > .flex.items-center.justify-between.mb-6 {
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  overflow: visible;
+}
+
+.nt-blog-article aside .p-6 > .flex.items-center.justify-between.mb-6 span.line-through {
+  text-decoration: none;
+  opacity: 1;
+  line-height: 1.4;
+}
+
 /* Blog journal pagination */
 .nt-blog-pagination__btn,
 .nt-blog-pagination__num {
