@@ -1,0 +1,320 @@
+/**
+ * Blog v2 shell — system fonts first; optional Plus Jakarta via page-level async load.
+ * Loaded via @import from blog-v2-prose.css and blog-v2-index.css (all v2 blog pages).
+ */
+
+.nt-blog-article,
+.nt-blog-index,
+.nt-blog-article .nt-blog-main,
+.nt-blog-index main {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.nt-blog-article.fonts-loaded,
+.nt-blog-article.fonts-loaded .nt-blog-main,
+.nt-blog-index.fonts-loaded {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Override Tailwind v2 token fonts (Literata / Plus Jakarta in inline config) */
+.nt-blog-article .font-display,
+.nt-blog-article .font-headline-md,
+.nt-blog-article .font-headline-lg,
+.nt-blog-article .font-body-md,
+.nt-blog-article .font-body-lg,
+.nt-blog-article .font-label-lg,
+.nt-blog-article .font-label-sm,
+.nt-blog-index .font-display,
+.nt-blog-index .font-headline-md,
+.nt-blog-index .font-headline-lg,
+.nt-blog-index .font-body-md,
+.nt-blog-index .font-body-lg,
+.nt-blog-index .font-label-lg,
+.nt-blog-index .font-label-sm,
+.nt-blog-article [class*="font-display"],
+.nt-blog-article [class*="font-headline"],
+.nt-blog-article [class*="font-body"],
+.nt-blog-article [class*="font-label"],
+.nt-blog-index [class*="font-display"],
+.nt-blog-index [class*="font-headline"],
+.nt-blog-index [class*="font-body"],
+.nt-blog-index [class*="font-label"] {
+  font-family: inherit !important;
+}
+
+/* Blog site header — match global navbar (Inter, legacy nav inside #nt-header) */
+.nt-blog-article #nt-header,
+.nt-blog-index #nt-header {
+  font-family: inherit;
+}
+
+/* Legacy navbar from layout-v2.js — blog pages do not load styles/global/style.css */
+.nt-blog-article #nt-header .navbar,
+.nt-blog-index #nt-header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  min-height: 68px;
+  color: var(--primary, #1a2e22);
+  background: transparent;
+}
+
+.nt-blog-article #nt-header .logo,
+.nt-blog-index #nt-header .logo {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--primary, #1a2e22);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nt-blog-article #nt-header .nav-links,
+.nt-blog-index #nt-header .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nt-blog-article #nt-header .nav-links a,
+.nt-blog-index #nt-header .nav-links a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary, #1a2e22);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  height: 44px;
+  white-space: nowrap;
+}
+
+.nt-blog-article #nt-header .nav-links a:hover,
+.nt-blog-article #nt-header .nav-links a.active,
+.nt-blog-index #nt-header .nav-links a:hover,
+.nt-blog-index #nt-header .nav-links a.active {
+  color: var(--accent, #d66844);
+}
+
+.nt-blog-article #nt-header .hamburger,
+.nt-blog-index #nt-header .hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px;
+  z-index: 2147483001;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  position: relative;
+}
+
+.nt-blog-article #nt-header .hamburger div,
+.nt-blog-index #nt-header .hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary, #1a2e22);
+  margin: 5px 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .nt-blog-article #nt-header .navbar,
+  .nt-blog-index #nt-header .navbar {
+    padding: 1rem;
+  }
+
+  .nt-blog-article #nt-header .nav-links,
+  .nt-blog-index #nt-header .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 2147483000;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 2rem 1.5rem 1rem;
+    margin: 0;
+    overflow-y: auto;
+    gap: 0.8rem;
+  }
+
+  .nt-blog-article #nt-header .nav-links.nav-active,
+  .nt-blog-index #nt-header .nav-links.nav-active {
+    display: flex !important;
+    transform: translateX(0);
+  }
+
+  .nt-blog-article #nt-header .nav-links a,
+  .nt-blog-index #nt-header .nav-links a {
+    font-size: 2.4rem;
+    margin: 0.2rem 0;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    font-weight: 700;
+    min-height: 70px;
+    justify-content: center;
+    height: auto;
+  }
+
+  .nt-blog-article #nt-header .nav-links a:hover,
+  .nt-blog-article #nt-header .nav-links a.active,
+  .nt-blog-index #nt-header .nav-links a:hover,
+  .nt-blog-index #nt-header .nav-links a.active {
+    background-color: rgba(15, 107, 77, 0.1);
+    color: var(--accent, #d66844);
+  }
+
+  .nt-blog-article #nt-header .hamburger,
+  .nt-blog-index #nt-header .hamburger {
+    display: block !important;
+  }
+}
+
+/*
+ * Blog index loads styles/global/style.css (commit d9ced2c6), whose bare `header`
+ * rule makes every <header> sticky with a huge z-index. Only #nt-header in
+ * .nt-sticky-top should stick — reset the in-main Knowledge Hub hero so the
+ * grid flows below it instead of scrolling underneath.
+ */
+.nt-blog-index main > header {
+  position: static;
+  top: auto;
+  z-index: auto;
+  background: transparent;
+  border-bottom: none;
+}
+
+.nt-blog-index #nt-blog-grid {
+  position: relative;
+  z-index: 0;
+}
+
+.nt-blog-index .blog-index-directory summary {
+  outline-offset: 4px;
+}
+
+/* Sidebar product card — price + unit on one baseline (fixes clipped "/100g") */
+.nt-blog-sidebar-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+.nt-blog-sidebar-price > span:last-child {
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Legacy sidebar markup before nt-blog-sidebar-price class */
+.nt-blog-article aside .p-6 > .flex.items-center.justify-between.mb-6 {
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  overflow: visible;
+}
+
+.nt-blog-article aside .p-6 > .flex.items-center.justify-between.mb-6 span.line-through {
+  text-decoration: none;
+  opacity: 1;
+  line-height: 1.4;
+}
+
+/* Article + sidebar grid — fallback if Tailwind col utilities fail */
+.nt-blog-article .nt-blog-main > .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .nt-blog-article .nt-blog-main > .grid {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    align-items: start;
+  }
+
+  .nt-blog-article .nt-blog-main > .grid > article {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  .nt-blog-article .nt-blog-main > .grid > aside {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .nt-blog-article .nt-blog-main > .grid > section.mt-20 {
+    grid-column: 1;
+  }
+}
+
+.nt-blog-article .nt-blog-main {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/*
+ * Global style.min.css sets every <header> to position:sticky with a huge z-index.
+ * Blog posts use <header class="mb-12"> for the title block — that must stay in flow
+ * so the H1/hero do not slide under the site nav when scrolling (especially mobile).
+ */
+.nt-blog-article article > header.mb-12,
+.nt-blog-article article > header {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+  background: transparent !important;
+  border-bottom: none !important;
+  color: inherit;
+}
+
+/* One sticky stack: .nt-sticky-top only — inner header/navbar must not double-stick */
+.nt-blog-article .nt-sticky-top > header,
+.nt-blog-article .nt-sticky-top #nt-header,
+.nt-blog-article .nt-sticky-top #site-header,
+.nt-blog-article #site-header .site-navbar {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+/* Anchor links and scroll-into-view sit below sticky promo + nav */
+.nt-blog-article {
+  scroll-padding-top: 7.5rem;
+}
+
+@media (max-width: 640px) {
+  .nt-blog-article {
+    scroll-padding-top: 9.5rem;
+  }
+}
+
+/* Cart icon in legacy navbar */
+.nt-blog-article #nt-header .navbar .cart-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  text-decoration: none;
+}
