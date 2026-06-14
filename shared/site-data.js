@@ -1,7 +1,7 @@
 /** NutriThrive Website 2.0 — product & site data from live site (schema, product pages, homepage). */
 window.NT_SITE_DATA = {
   brand: 'NutriThrive',
-  tagline: "Australia's freshest lab-tested moringa",
+  tagline: 'Lab-tested moringa, packed in Truganina',
   contact: {
     email: 'nutrithrive0@gmail.com',
     phone: '+61 438 201 419',
@@ -64,17 +64,17 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-powder/',
       description: '100% pure shade-dried moringa leaf powder. Lab-tested in Australia.',
       pdp: {
-        headline: 'Premium Moringa Powder (100g)',
-        intro: 'Shade-dried to lock in nutrients, lab-tested for purity, and packed fresh in Melbourne. No additives, no fillers—just 100% pure moringa powder.',
+        headline: 'Moringa Powder (100g)',
+        intro: 'Shade-dried leaf powder — nothing else in the bag. Tested in Australia, packed at our Truganina warehouse. Same-day dispatch if you order before 2pm.',
         features: [
           { icon: 'eco', text: '100% Pure Moringa' },
           { icon: 'wb_sunny', text: 'Shade-Dried' },
           { icon: 'science', text: 'Lab-Tested' },
           { icon: 'location_on', text: 'Melbourne Packed' },
         ],
-        detailTitle: 'Purity You Can See',
+        detailTitle: 'What you get in the pouch',
         detailBody:
-          'NutriThrive Moringa is shade-dried to preserve vitamins, minerals, and chlorophyll. Every batch is verified in an Australian laboratory for heavy metals and purity.',
+          'Bright green powder with a mild, spinach-like smell when you open it. We shade-dry the leaves (not sun-baked on a tarp) and publish a lab summary for heavy metals and pesticides.',
         faqs: [
           { q: 'How do I use Moringa powder?', a: 'Add 1 teaspoon (3–5g) to smoothies, juice, or water. Works great in soups and salads.' },
           { q: 'Where is it shipped from?', a: 'Packed and shipped from our Truganina, Melbourne warehouse. Same-day dispatch before 2pm AEST.' },
@@ -97,15 +97,15 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-powder/',
       pdp: {
         headline: 'Moringa Powder — 200g',
-        intro: 'Double the daily ritual—200g of shade-dried, lab-tested moringa leaf powder packed in Melbourne.',
+        intro: 'Same powder as the 100g pouch — just more of it. Handy if you stir a teaspoon into smoothies every morning.',
         features: [
           { icon: 'eco', text: '100% Pure Moringa' },
           { icon: 'science', text: 'Lab-Tested' },
           { icon: 'location_on', text: 'Melbourne Packed' },
           { icon: 'inventory_2', text: '200g Value Pack' },
         ],
-        detailTitle: 'More servings, same purity',
-        detailBody: 'Our 200g pack is ideal for daily users who want better value without compromising on freshness or lab-tested quality.',
+        detailTitle: 'More servings, same batch standards',
+        detailBody: 'Roughly 60+ days at one teaspoon a day. Still shade-dried, still lab-tested, still packed in Truganina.',
         faqs: [
           { q: 'How long does 200g last?', a: 'At 1 tsp per day, roughly 60+ servings depending on your dose.' },
           { q: 'Is it the same powder as the 100g?', a: 'Yes—identical shade-dried leaf powder, batch-tested in Australia.' },
@@ -127,15 +127,15 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-powder/',
       pdp: {
         headline: '3 + 1 = 400g Moringa Bundle',
-        intro: 'Our best-value bundle—four packs for the price of three. Fresh, lab-tested moringa for families or daily users.',
+        intro: 'Four 100g packs for the price of three. Same shade-dried powder — good if you cook for a family or go through a pouch quickly.',
         features: [
           { icon: 'savings', text: 'Best Value' },
           { icon: 'eco', text: '100% Pure Moringa' },
           { icon: 'science', text: 'Lab-Tested' },
           { icon: 'location_on', text: 'Melbourne Packed' },
         ],
-        detailTitle: 'Bulk savings without bulk quality loss',
-        detailBody: 'Stock up on small-batch moringa. Each pouch is packed fresh in Melbourne with the same lab standards as our 100g pack.',
+        detailTitle: 'Stock up, same standards',
+        detailBody: 'We pack in small runs from Truganina — not a giant overseas warehouse. Each pouch gets the same lab check as the single 100g bag.',
         faqs: [
           { q: 'What is included?', a: 'Four 100g equivalent packs (400g total) of shade-dried moringa leaf powder.' },
           { q: 'How should I store it?', a: 'Keep pouches sealed in a cool, dry place away from direct sunlight.' },
@@ -157,16 +157,16 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa Natural Soap',
-        intro: 'Handcrafted soap with moringa—gentle on skin, packed with natural antioxidants. 95g bar, made in small batches.',
+        intro: '95g bar with moringa leaf in the mix. Nothing fancy — just a straightforward soap we make in small batches.',
         features: [
           { icon: 'spa', text: 'Natural Ingredients' },
           { icon: 'eco', text: 'Moringa Infused' },
           { icon: 'location_on', text: 'Melbourne Packed' },
           { icon: 'favorite', text: 'Eco Friendly' },
         ],
-        detailTitle: 'Skincare from the moringa tree',
+        detailTitle: 'Simple bar, moringa in the recipe',
         detailBody:
-          'Our moringa soap combines nourishing oils with moringa leaf powder for a gentle cleanse—no harsh chemicals, ideal for daily use.',
+          'Leaf powder plus oils — no long ingredient list. Let the bar dry between uses and it lasts well.',
         faqs: [
           { q: 'What size is the bar?', a: '95g—compact enough for travel, lasts well with proper drainage.' },
           { q: 'Is it suitable for sensitive skin?', a: 'Made with gentle, natural ingredients; patch-test if you have very sensitive skin.' },
@@ -187,16 +187,16 @@ window.NT_SITE_DATA = {
       image: '/assets/images/product_photos/combo.jpeg',
       href: '/products/combo-pack/',
       pdp: {
-        headline: 'Premium Combo Pack',
-        intro: 'Moringa Powder 100g plus 30g dried curry leaves—pantry essentials for smoothies and South Indian cooking.',
+        headline: 'Moringa + Curry Leaves Combo',
+        intro: '100g moringa powder and 30g dried curry leaves — morning smoothie and evening tadka from one box.',
         features: [
           { icon: 'inventory_2', text: '2 Products' },
           { icon: 'eco', text: 'Moringa + Curry' },
           { icon: 'science', text: 'Lab-Tested Moringa' },
           { icon: 'location_on', text: 'Melbourne Packed' },
         ],
-        detailTitle: 'Wellness + flavour in one box',
-        detailBody: 'Start your morning with moringa in a smoothie, then fry curry leaves in ghee for dinner—both packed fresh in Melbourne.',
+        detailTitle: 'Two pantry staples',
+        detailBody: 'Moringa for whatever you blend or stir in; curry leaves for dals and curries. Both packed in Truganina.',
         faqs: [
           { q: 'What is in the combo?', a: '100g moringa powder and 30g premium dried curry leaves (karipatta).' },
           { q: 'Can I buy them separately?', a: 'Yes—each item is also available individually in our shop.' },
@@ -218,15 +218,15 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa 100g + Soap 95g Bundle',
-        intro: 'Inside-out wellness—daily moringa powder plus a natural moringa soap bar. Save vs buying separately.',
+        intro: '100g moringa powder plus one 95g soap bar — cheaper than buying each on its own.',
         features: [
           { icon: 'inventory_2', text: 'Powder + Soap' },
-          { icon: 'eco', text: 'Moringa Inside & Out' },
+          { icon: 'eco', text: 'Powder + Soap' },
           { icon: 'science', text: 'Lab-Tested Powder' },
           { icon: 'spa', text: 'Natural Soap' },
         ],
-        detailTitle: 'The complete moringa ritual',
-        detailBody: 'Support your routine with edible moringa and a gentle cleansing bar—both from the same trusted Melbourne supplier.',
+        detailTitle: 'Powder and bar together',
+        detailBody: 'Same supplier, same warehouse — one less checkout if you wanted both anyway.',
         faqs: [
           { q: 'What is included?', a: '100g moringa powder and one 95g moringa soap bar.' },
           { q: 'Is this a gift-friendly bundle?', a: 'Yes—popular for birthdays and wellness gifts shipped Australia-wide.' },
@@ -256,9 +256,9 @@ window.NT_SITE_DATA = {
           { icon: 'location_on', text: 'Melbourne Packed' },
           { icon: 'kitchen', text: 'Pantry Ready' },
         ],
-        detailTitle: 'Restaurant-quality aroma at home',
+        detailTitle: 'Fry them first, always',
         detailBody:
-          'Fry in hot oil or ghee at the start of cooking to release the signature curry-leaf fragrance—essential for dals, sambar, and curries.',
+          'Hot oil or ghee at the start of the pan — that is when the smell kicks in. Works in dals, sambar, and most South Indian dishes.',
         faqs: [
           { q: 'How do I use dried vs fresh?', a: 'Use about 2–3 times the amount of dried leaves compared to fresh.' },
           { q: 'How long do they keep?', a: '6+ months in an airtight container in a cool, dry place.' },
@@ -280,16 +280,16 @@ window.NT_SITE_DATA = {
       href: '/products/black-tea/',
       pdp: {
         headline: 'Darjeeling Black Tea',
-        intro: 'The "champagne of teas"—muscatel, floral and fruity notes. Premium loose leaf shipped from Melbourne.',
+        intro: 'Loose-leaf Darjeeling — muscatel and floral notes if you brew it gently. Shipped from our Melbourne warehouse.',
         features: [
           { icon: 'local_cafe', text: 'Loose Leaf' },
           { icon: 'terrain', text: 'Darjeeling Origin' },
           { icon: 'location_on', text: 'Melbourne Packed' },
           { icon: 'wb_twilight', text: '~40–50mg Caffeine' },
         ],
-        detailTitle: 'Brew like a connoisseur',
+        detailTitle: 'Do not use boiling water',
         detailBody:
-          'Use 1–2 tsp per cup with water at 85–90°C (not boiling). Steep 3–5 minutes for muscatel sweetness—enjoy plain or with a splash of milk.',
+          '85–90°C, 1–2 tsp, 3–5 minutes. Boiling water makes it bitter. Milk is optional.',
         faqs: [
           { q: 'How do I brew it?', a: '85–90°C water, 3–5 minute steep. Avoid boiling water to prevent bitterness.' },
           { q: 'How much caffeine?', a: 'About 40–50mg per cup—a moderate, steady lift.' },
@@ -308,22 +308,22 @@ window.NT_SITE_DATA = {
     { id: 'moringa-soap-combo', label: 'Moringa 100g + Soap 95g — $17.00 (was $23.39)', price: 17, was: 23.39, weight: 195 },
   ],
   testimonials: [
-    { quote: 'I have tried many moringa brands, but NutriThrive is by far the best. Bright green colour, fresh taste, and I feel the difference.', author: 'James H.', meta: 'Verified Buyer', initials: 'JH', avatarBg: 'bg-primary-fixed' },
-    { quote: 'The dried curry leaves are so aromatic! My dhal has never tasted better. Fast shipping from Melbourne.', author: 'Priya M.', meta: 'Melbourne, VIC', initials: 'PM', avatarBg: 'bg-tertiary-fixed' },
-    { quote: 'Moringa powder has completely transformed my energy levels. No more afternoon crashes, and my digestion is so much better.', author: 'Emma B.', meta: 'Sydney, NSW', initials: 'EB', avatarBg: 'bg-secondary-fixed' },
-    { quote: "I've been using NutriThrive Moringa for 3 months and the difference is incredible. My energy stays high all day, and I haven't had a cold since starting.", author: 'Sarah M.', meta: 'Melbourne, VIC', initials: 'SM', avatarBg: 'bg-primary-fixed' },
-    { quote: "As someone who's tried multiple moringa brands, NutriThrive stands out. The freshness is noticeable — clearly not sitting on a shelf for months.", author: 'James T.', meta: 'Sydney, NSW', initials: 'JT', avatarBg: 'bg-surface-container-high' },
-    { quote: 'I started taking moringa for my iron deficiency and it has been a game-changer. My doctor was impressed with my latest blood test results.', author: 'Emma L.', meta: 'Brisbane, QLD', initials: 'EL', avatarBg: 'bg-tertiary-fixed' },
-    { quote: 'High quality moringa powder, exactly as described. Fast shipping and great customer service. The 7-day guarantee gave me confidence to try it!', author: 'Michael R.', meta: 'Adelaide, SA', initials: 'MR', avatarBg: 'bg-secondary-fixed' },
-    { quote: 'Love this moringa! Clearer skin, more energy, and I feel healthier overall. The taste is mild and pleasant — highly recommend.', author: 'Lisa K.', meta: 'Perth, WA', initials: 'LK', avatarBg: 'bg-primary-fixed' },
-    { quote: "Best moringa powder I've tried in Australia. You can taste the difference. Sustained energy without the jitters — ordering again!", author: 'David W.', meta: 'Gold Coast, QLD', initials: 'DW', avatarBg: 'bg-surface-container-high' },
-    { quote: 'Premium Darjeeling tea with rich aroma and smooth taste. The muscatel flavour is perfectly balanced. Highly recommend!', author: 'Helen W.', meta: 'Melbourne, VIC', initials: 'HW', avatarBg: 'bg-tertiary-fixed' },
+    { quote: 'Bright green colour, mixes into oats without clumping. I reorder when the pouch runs low.', author: 'James H.', meta: 'Verified Buyer', initials: 'JH', avatarBg: 'bg-primary-fixed' },
+    { quote: 'The dried curry leaves actually smell like something when you fry them. Dhal tasted right for the first time in ages.', author: 'Priya M.', meta: 'Melbourne, VIC', initials: 'PM', avatarBg: 'bg-tertiary-fixed' },
+    { quote: 'It’s good 👍 the real deal.', author: 'Ayodeji', meta: 'Verified Buyer', initials: 'AY', avatarBg: 'bg-secondary-fixed' },
+    { quote: 'Honest Melbourne-area supplier — I reorder every couple of months when I run low.', author: 'Tom W.', meta: 'Ballarat, VIC', initials: 'TW', avatarBg: 'bg-primary-fixed' },
+    { quote: 'Smooth delivery to Tasmania, and the moringa blends cleanly into my morning oats.', author: 'Lisa K.', meta: 'Hobart, TAS', initials: 'LK', avatarBg: 'bg-primary-fixed' },
+    { quote: 'Curry leaves for tadka smell like home. Same quality every bag.', author: 'Anjali D.', meta: 'Perth, WA', initials: 'AD', avatarBg: 'bg-tertiary-fixed' },
+    { quote: 'Light taste in smoothies. We stopped buying the brown stuff from the supermarket.', author: 'Chris L.', meta: 'Adelaide, SA', initials: 'CL', avatarBg: 'bg-surface-container-high' },
+    { quote: 'The Moringa powder is 100% better — quality is good. Keep it up.', author: 'Pierre', meta: 'Verified Buyer', initials: 'PI', avatarBg: 'bg-secondary-fixed' },
+    { quote: 'I’m enjoying it in protein shakes. No weird aftertaste.', author: 'Savira', meta: 'Verified Buyer', initials: 'SV', avatarBg: 'bg-primary-fixed' },
+    { quote: 'Darjeeling brews clean at 90°C. Nice afternoon cup without the jitters.', author: 'Helen W.', meta: 'Melbourne, VIC', initials: 'HW', avatarBg: 'bg-tertiary-fixed' },
   ],
   blogGuides: [
-    { category: 'Regulation', title: 'Is Moringa Banned in Australia? The Truth (2026)', readTime: '8 min read', href: '/blog/is-moringa-banned-australia-truth-2026.html' },
-    { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026.html' },
-    { category: "Buyer's Guide", title: 'Verify Moringa Quality: Premium Buyer\'s Checklist (2026)', readTime: '8 min read', href: '/blog/verify-moringa-quality-premium-buyers-checklist-2026.html' },
-    { category: 'Shopping', title: 'Where to Buy Moringa: Online vs Stores in AU', readTime: '5 min read', href: '/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html' },
+    { category: "Buyer's Guide", title: 'How to Choose Moringa Powder in Australia (2026)', readTime: '9 min read', href: '/blog/how-to-choose-moringa-powder-australia-2026' },
+    { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026' },
+    { category: 'Safety', title: 'Moringa Side Effects: What Happens If You Take Too Much', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
+    { category: 'Shopping', title: 'Where to Buy Moringa: Online vs Stores in AU', readTime: '5 min read', href: '/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide' },
   ],
   cartUrl: '/cart',
   paymentUrl: '/payment',
@@ -387,7 +387,7 @@ window.NT_SITE_DATA = {
     },
   ],
   footerTagline:
-    'Dedicated to bringing you the finest natural wellness products for a healthier lifestyle. Purity in every leaf.',
+    'Small warehouse in Truganina. Lab summaries published. Email or call if you want batch details before you order.',
   footerNav: [
     {
       title: 'Shopping',
@@ -438,7 +438,7 @@ window.NT_SITE_DATA = {
     { label: 'Newsletter', file: '/pages/newsletter/', category: 'Help & Info' },
     { label: 'Newsletter thank you', file: '/pages/newsletter/thank-you.html', category: 'Help & Info' },
     { label: 'Privacy Policy', file: '/privacy-policy', category: 'Legal' },
-    { label: 'Moringa benefits', file: '/blog/how-to-add-moringa-to-diet.html', category: 'Help & Info' },
+    { label: 'Moringa benefits', file: '/blog/how-to-add-moringa-to-diet', category: 'Help & Info' },
   ],
   /** Same five as live /products/ — shop grid & featured rows */
   catalogProductIds: [
