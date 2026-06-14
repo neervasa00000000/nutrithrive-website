@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hard redirect if user lands on deprecated Usage Guide blog URL
     try {
         const oldPath = '/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html';
-        const newPath = '/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html';
+        const newPath = '/blog/how-to-add-moringa-to-diet';
         if (location.pathname.endsWith(oldPath)) {
             location.replace(newPath);
             return; // stop further scripts on this page
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const absolute = href.startsWith('http') ? href : new URL(cleanHref, baseUrl).pathname;
                     const isAbsoluteOld = absolute.endsWith('/pages/usage-guide/blog/moringa-powder-benefits-ultimate-guide-2024.html');
                     if (isAbsoluteOld) {
-                        a.setAttribute('href', '/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html');
+                        a.setAttribute('href', '/blog/how-to-add-moringa-to-diet');
                     }
                 }
                 if (text === 'benefits' || href.includes('/benefits/')) {
