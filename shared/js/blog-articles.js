@@ -1,25 +1,67 @@
-/** Auto-generated — 15 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 19 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
+    "slug": "moringa-brands-reviewed-australia-2025-verdict",
+    "title": "5 Australian Moringa Brands Tested — 2026 Verdict",
+    "description": "Hands-on Australian moringa review: sensory cues (colour, smell, texture), supply chain freshness, TGA/FSANZ label literacy, and brand-by-brand verdict.",
+    "category": "Research Guide",
+    "href": "/blog/moringa-brands-reviewed-australia-2025-verdict"
+  },
+  {
+    "slug": "moringa-brands-comparison-australia-2026",
+    "title": "Best Moringa Brand Australia 2026: 7 Brands Ranked (Rosabella vs NutriThrive)",
+    "description": "Which moringa brand is best in Australia? We tested 7 brands including Rosabella from Chemist Warehouse vs NutriThrive. Lab results, price comparison, freshness tests.",
+    "category": "Research Guide",
+    "href": "/blog/moringa-brands-comparison-australia-2026"
+  },
+  {
+    "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "title": "Moringa Chemist Warehouse vs NutriThrive — Honest 2026 Comparison",
+    "description": "Rosabella Chemist Warehouse moringa vs NutriThrive powder: colour test, dose maths, lab transparency, and cost per day. Honest 2026 AU comparison.",
+    "category": "Research Guide",
+    "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
+  },
+  {
+    "slug": "grow-moringa-tree-australia",
+    "title": "How to Grow a Moringa Tree in Australia (2026 Expert Guide)",
+    "description": "Complete 2026 guide to growing moringa tree in Australia: frost protection, pots, soil, pruning and harvesting. Covers Melbourne, Sydney, Brisbane, Perth.",
+    "category": "Growing Guide",
+    "href": "/blog/grow-moringa-tree-australia"
+  },
+  {
+    "slug": "best-rated-moringa-capsules-powders-australia-2026-ultimate-guide",
+    "title": "Best Moringa Capsules & Powder in Australia (2026 Ultimate Guide)",
+    "description": "Best moringa capsules and powder in Australia 2026: ranked by quality, price and bioavailability. Compare Wild Earth, Rosabella, NutriThrive and more.",
+    "category": "Buyer's Guide",
+    "href": "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide"
+  },
+  {
     "slug": "best-greens-powder-australia-2026",
-    "title": "I Compared Greens Powders in Australia — What I’d Buy Again",
+    "title": "I Compared Greens Powders in Australia — What I'd Buy Again",
     "description": "Compare the best greens powders in Australia 2026: moringa vs spirulina vs matcha vs complete blends. Real prices, benefits, reviews. Find your best fit.",
     "category": "Research Guide",
     "href": "/blog/best-greens-powder-australia-2026"
   },
   {
     "slug": "best-superfoods-australia-comparison-health-conscious-adults",
-    "title": "Best Superfoods Australia 2026 – Moringa, Spirulina &amp; Matcha Compared",
-    "description": "Best superfoods Australia 2026: moringa, spirulina, matcha &amp; curry leaves compared. Nutrients, cost per serve &amp; where to buy — discover your pick.",
+    "title": "Best Superfoods Australia 2026: Moringa, Spirulina &amp; More Compared",
+    "description": "The best superfoods in Australia 2026 compared: moringa, spirulina, matcha, turmeric and curry leaves. Nutrition data, price-per-serve and who each suits.",
     "category": "Research Guide",
     "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
   },
   {
-    "slug": "high-protein-moringa-recipes-australia-2026",
-    "title": "Moringa Protein Powder Recipes Australia — 10 High-Protein Meals (15–40g Protein Each)",
-    "description": "6 high-protein moringa recipes for Australian athletes and busy cooks. Each has macros listed. Real food, no protein powder gimmicks.",
-    "category": "Recipes &amp; Nutrition",
-    "href": "/blog/high-protein-moringa-recipes-australia-2026"
+    "slug": "moringa-vs-spirulina-vs-matcha-comparison-australia",
+    "title": "Moringa vs Spirulina vs Matcha: Which is Best? (Australia 2026)",
+    "description": "Moringa vs spirulina vs matcha: a real comparison of energy, protein, iron, antioxidants and price per serve. Which superfood should Australians buy in 2026?",
+    "category": "Research Guide",
+    "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+  },
+  {
+    "slug": "moringa-powder-victoria-seniors-joint-health",
+    "title": "Moringa for Victorian Seniors — Joints, Energy & Safe Use",
+    "description": "Moringa for Victorian seniors: joint comfort, safe use, and dosage context. Practical 2026 guide from NutriThrive, Truganina — ships Australia-wide.",
+    "category": "Local Guide",
+    "href": "/blog/moringa-powder-victoria-seniors-joint-health"
   },
   {
     "slug": "how-to-add-moringa-to-diet",
@@ -37,52 +79,24 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-benefits-for-women-comprehensive-2026",
-    "title": "Moringa Benefits for Women: Hormones, Energy &amp; Clear Skin (Everything You Need to Know)",
+    "title": "Moringa Benefits for Women: Hormones, Energy &amp; Clear Skin",
     "description": "8 science-backed moringa benefits for women: hormone balance, iron, clear skin, hair, energy &amp; pregnancy. Melbourne woman's honest 18-month story. (2026)",
     "category": "Women's Wellness",
     "href": "/blog/moringa-benefits-for-women-comprehensive-2026"
   },
   {
-    "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Moringa Capsules at Chemist Warehouse vs NutriThrive — Honest 2026 Comparison",
-    "description": "Rosabella Chemist Warehouse moringa vs NutriThrive powder: colour test, dose maths, lab transparency, and cost per day. Honest 2026 AU comparison.",
-    "category": "Research Guide",
-    "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
-  },
-  {
-    "slug": "moringa-powder-victoria-seniors-joint-health",
-    "title": "Moringa for Victorian Seniors",
-    "description": "Moringa for Victorian seniors: joint comfort, safe use, and dosage context. Practical 2026 guide from NutriThrive, Truganina — ships Australia-wide.",
-    "category": "Local Guide",
-    "href": "/blog/moringa-powder-victoria-seniors-joint-health"
-  },
-  {
     "slug": "moringa-side-effects-what-happens-take-too-much-2026",
-    "title": "Moringa Side Effects: What Happens If You Take Too Much? (2026)",
-    "description": "What happens if you take too much moringa? Honest guide to realistic side effects, safe daily doses, and who should check with a doctor first.",
+    "title": "Moringa Side Effects Australia: Safe Dose & What Too Much Does",
+    "description": "Moringa side effects explained: safe daily dose, what happens if you take too much, interactions with medication and pregnancy safety. Evidence-based 2026 guide.",
     "category": "Safety &amp; Side Effects",
     "href": "/blog/moringa-side-effects-what-happens-take-too-much-2026"
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "Melbourne Coffee Alternative: Moringa vs Coffee 2026",
-    "description": "Melbourne coffee alternative 2026: swap the $7 latte for caffeine-free moringa energy. Compare cortisol, cost &amp; the Green Gold latte — learn more.",
+    "title": "Moringa vs Coffee: Better Energy Without the Crash (Australia 2026)",
+    "description": "Moringa vs coffee energy comparison: caffeine levels, crash risk, iron vs cortisol. Why Melbourne professionals are switching their morning routine.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack"
-  },
-  {
-    "slug": "moringa-vs-spirulina-vs-matcha-comparison-australia",
-    "title": "Moringa vs Spirulina vs Matcha — Side-by-Side in Australia",
-    "description": "Moringa vs spirulina vs matcha — full Australian comparison 2026. Nutrition, taste, cost per serve, and which one fits your health goal best.",
-    "category": "Research Guide",
-    "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
-  },
-  {
-    "slug": "nutrithrive-dried-curry-leaves-tradition-health",
-    "title": "Natural Curry Leaves Australia: NutriThrive Farm Story &amp; Premium Sourcing",
-    "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
-    "category": "Wellness Journal",
-    "href": "/blog/nutrithrive-dried-curry-leaves-tradition-health"
   },
   {
     "slug": "science-shade-drying-vs-sun-drying-moringa",
@@ -92,8 +106,22 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
   },
   {
+    "slug": "high-protein-moringa-recipes-australia-2026",
+    "title": "High-Protein Moringa Recipes for Australian Fitness (2026)",
+    "description": "6 high-protein moringa recipes for Australian athletes and busy cooks. Each has macros listed. Real food, no protein powder gimmicks.",
+    "category": "Recipes &amp; Nutrition",
+    "href": "/blog/high-protein-moringa-recipes-australia-2026"
+  },
+  {
+    "slug": "nutrithrive-dried-curry-leaves-tradition-health",
+    "title": "Natural Curry Leaves Australia: NutriThrive Farm Story &amp; Premium Sourcing",
+    "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
+    "category": "Wellness Journal",
+    "href": "/blog/nutrithrive-dried-curry-leaves-tradition-health"
+  },
+  {
     "slug": "where-to-buy-moringa-in-australia-online-vs-stores-2026-guide",
-    "title": "Where to Buy Moringa Australia 2026",
+    "title": "Where to Buy Moringa Australia 2026 — Online vs Stores",
     "description": "Where to buy moringa in Australia: online vs stores. Quality signals, delivery and price comparison for Aussies. NutriThrive, Melbourne — ships AU-wide.",
     "category": "Research Guide",
     "href": "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide"
