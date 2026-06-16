@@ -1,5 +1,12 @@
-/** Auto-generated — 16 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 17 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
+  {
+    "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
+    "title": "Rosabella Moringa Review 2026 — Is It Worth $25 at Chemist Warehouse?",
+    "description": "Honest Rosabella moringa review: dose maths (800mg vs clinical 2,000mg+), February 2026 Salmonella recall, cost per effective mg, and better alternatives in Australia.",
+    "category": "Brand Review",
+    "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026"
+  },
   {
     "slug": "moringa-brands-reviewed-australia-2025-verdict",
     "title": "5 Australian Moringa Brands Tested — 2026 Verdict",
@@ -58,8 +65,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-add-moringa-to-diet",
-    "title": "How I Actually Get Moringa Into Meals (Without Gagging)",
-    "description": "Add moringa to smoothies, teas, and savoury meals: cut bitterness, build a daily serving habit, and use simple Australian-friendly ideas—practical 2026 guide.",
+    "title": "How to Add Moringa Powder to Your Diet — Easy Australian Ideas",
+    "description": "How to add moringa to smoothies, meals and drinks without the bitterness: easy Australian recipes, correct daily dose, and simple serving habits. 2026 guide.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/how-to-add-moringa-to-diet"
   },
