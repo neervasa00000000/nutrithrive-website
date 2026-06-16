@@ -1,4 +1,4 @@
-/** Auto-generated — 19 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 16 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-brands-reviewed-australia-2025-verdict",
@@ -34,13 +34,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Best moringa capsules and powder in Australia 2026: ranked by quality, price and bioavailability. Compare Wild Earth, Rosabella, NutriThrive and more.",
     "category": "Buyer's Guide",
     "href": "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide"
-  },
-  {
-    "slug": "best-greens-powder-australia-2026",
-    "title": "I Compared Greens Powders in Australia — What I'd Buy Again",
-    "description": "Compare the best greens powders in Australia 2026: moringa vs spirulina vs matcha vs complete blends. Real prices, benefits, reviews. Find your best fit.",
-    "category": "Research Guide",
-    "href": "/blog/best-greens-powder-australia-2026"
   },
   {
     "slug": "best-superfoods-australia-comparison-health-conscious-adults",
@@ -106,13 +99,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
   },
   {
-    "slug": "high-protein-moringa-recipes-australia-2026",
-    "title": "High-Protein Moringa Recipes for Australian Fitness (2026)",
-    "description": "6 high-protein moringa recipes for Australian athletes and busy cooks. Each has macros listed. Real food, no protein powder gimmicks.",
-    "category": "Recipes &amp; Nutrition",
-    "href": "/blog/high-protein-moringa-recipes-australia-2026"
-  },
-  {
     "slug": "nutrithrive-dried-curry-leaves-tradition-health",
     "title": "Natural Curry Leaves Australia: NutriThrive Farm Story &amp; Premium Sourcing",
     "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
@@ -126,11 +112,4 @@ window.NT_BLOG_ARTICLES = [
     "category": "Research Guide",
     "href": "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide"
   },
-  {
-    "slug": "why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder",
-    "title": "Why I Build NutriThrive: A Melbourne Moringa Story, Told Plainly",
-    "description": "Melbourne: moringa leaf powder—shade-dried, fine grind. Not resold import in a new bag. For Australian buyers in 2026, here is the honest backstory.",
-    "category": "Wellness Journal",
-    "href": "/blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder"
-  }
 ];
