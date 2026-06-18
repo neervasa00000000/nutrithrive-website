@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+<title>Morimura Village — NutriThrive</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0604;overflow:hidden;font-family:'Georgia',serif}
+canvas{display:block;position:fixed;inset:0}
+
+#ui{position:fixed;inset:0;pointer-events:none;z-index:100}
+
+#topbar{position:absolute;top:0;left:0;right:0;padding:0.7rem 1.4rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent)}
+#logo-link{color:#f5e8d0;font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,0.9);pointer-events:all;text-decoration:none}
+#logo-link:hover{color:#ffb7c5}
+#sub-title{color:rgba(255,230,200,0.65);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase}
+
+#story-wrap{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.5rem 1.8rem;text-align:center;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);transition:opacity 0.9s ease}
+#story-text{color:#fff8ee;font-size:1.05rem;line-height:1.75;max-width:580px;margin:0 auto;text-shadow:0 1px 8px rgba(0,0,0,0.95);font-style:italic}
+#story-sub{color:rgba(255,190,140,0.75);font-size:0.68rem;letter-spacing:0.22em;margin-top:0.35rem;text-transform:uppercase}
+
+#hint{position:absolute;top:3.8rem;right:1.4rem;color:rgba(255,235,200,0.7);font-size:0.65rem;letter-spacing:0.12em;line-height:2.1;text-align:right;text-shadow:0 1px 5px rgba(0,0,0,0.9);transition:opacity 1.4s ease}
+
+#compass{position:absolute;top:3.8rem;left:1.4rem;width:46px;height:46px;border:1px solid rgba(255,200,150,0.35);border-radius:50%;background:rgba(0,0,0,0.25)}
+#cneedle{width:2px;height:17px;background:linear-gradient(to top,#cc3300,rgba(255,255,255,0.75));transform-origin:50% 100%;position:absolute;bottom:50%;left:50%;transform:translateX(-50%)}
+
+#dpad{position:absolute;bottom:4.5rem;right:1.2rem;pointer-events:all;display:none}
+@media(pointer:coarse){#dpad{display:block}}
+.db{width:50px;height:50px;background:rgba(255,255,255,0.13);border:1.5px solid rgba(255,255,255,0.28);color:rgba(255,255,255,0.85);font-size:1.15rem;display:flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation;border-radius:8px;backdrop-filter:blur(4px);user-select:none}
+.db:active{background:rgba(255,255,255,0.32)}
+.dbr{display:flex;gap:4px;justify-content:center;margin:4px 0}
+.dbspc{width:50px;height:50px}
+
+#loading{position:fixed;inset:0;background:#100806;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.8rem;transition:opacity 1.2s}
+#loading.gone{opacity:0;pointer-events:none}
+#lt{color:#f5c07a;font-size:1.5rem;letter-spacing:0.5em;text-transform:uppercase}
+#ls{color:rgba(255,180,100,0.55);font-size:0.65rem;letter-spacing:0.35em;animation:lp 1.5s ease-in-out infinite}
+@keyframes lp{0%,100%{opacity:0.3}50%{opacity:1}}
+#lbar{width:220px;height:2px;background:rgba(255,255,255,0.1);margin-top:0.4rem}
+#lfill{height:100%;width:0%;background:#f5c07a;transition:width 0.15s linear}
+
+#minimap{position:absolute;top:3.8rem;left:1.4rem;width:46px;height:46px;display:none}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div id="lt">村 MORIMURA</div>
+  <div id="ls">Entering the village · · ·</div>
+  <div id="lbar"><div id="lfill"></div></div>
+</div>
+
+<div id="ui">
+  <div id="topbar">
+    <a href="/arcade/" id="logo-link">← NUTRITHRIVE &nbsp;·&nbsp; Morimura Village</a>
+    <div id="sub-title">Japanese Wellness Journey</div>
+  </div>
+  <div id="compass"><div id="cneedle"></div></div>
+  <div id="hint">
+    W / ↑ &nbsp; Forward<br/>
+    S / ↓ &nbsp; Backward<br/>
+    A / ← &nbsp; Turn left<br/>
+    D / → &nbsp; Turn right
+  </div>
+  <div id="story-wrap">
+    <div id="story-text">In the mist of dawn, a wanderer arrives in Morimura…<br/>the scent of moringa mingles with falling cherry blossoms.</div>
+    <div id="story-sub">◦ &nbsp; explore the village &nbsp; ◦</div>
+  </div>
+  <div id="dpad">
+    <div class="dbr"><div class="db" id="d-up">▲</div></div>
+    <div class="dbr"><div class="db" id="d-left">◄</div><div class="dbspc"></div><div class="db" id="d-right">►</div></div>
+    <div class="dbr"><div class="db" id="d-down">▼</div></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+
+// ── RENDERER ──
+const isMobile = window.innerWidth < 768;
+const renderer = new THREE.WebGLRenderer({ antialias: !isMobile });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.25;
+document.body.appendChild(renderer.domElement);
+
+// ── SCENE ──
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0xffd8b0, 0.013);
+scene.background = new THREE.Color(0xffd0a0);
+
+const camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.1, 200);
+
+// ── LIGHTS ──
+const sun = new THREE.DirectionalLight(0xffcc88, 1.7);
+sun.position.set(28, 50, 18);
+sun.castShadow = true;
+sun.shadow.mapSize.set(isMobile ? 1024 : 2048, isMobile ? 1024 : 2048);
+sun.shadow.camera.near = 0.5;
+sun.shadow.camera.far = 160;
+sun.shadow.camera.left  = -50; sun.shadow.camera.right = 50;
+sun.shadow.camera.top   =  50; sun.shadow.camera.bottom= -50;
+sun.shadow.bias = -0.001;
+scene.add(sun);
+scene.add(new THREE.AmbientLight(0xffe0c0, 0.5));
+scene.add(new THREE.HemisphereLight(0xfff0d8, 0x4a7c3f, 0.38));
+
+// sunrise rim light
+const rim = new THREE.DirectionalLight(0xff8833, 0.4);
+rim.position.set(-20, 10, 30);
+scene.add(rim);
+
+// ── MATERIALS ──
+const M = {
+  ground:   new THREE.MeshLambertMaterial({ color: 0x3d7030 }),
+  path:     new THREE.MeshLambertMaterial({ color: 0xc0a460 }),
+  moss:     new THREE.MeshLambertMaterial({ color: 0x2e5e1a }),
+  wood:     new THREE.MeshLambertMaterial({ color: 0x6b4226 }),
+  darkWood: new THREE.MeshLambertMaterial({ color: 0x2c1a0c }),
+  wall:     new THREE.MeshLambertMaterial({ color: 0xf2e4cc }),
+  wallB:    new THREE.MeshLambertMaterial({ color: 0xe0d0b0 }),
+  roof:     new THREE.MeshLambertMaterial({ color: 0x1c1c2a }),
+  roofB:    new THREE.MeshLambertMaterial({ color: 0x3a2510 }),
+  torii:    new THREE.MeshLambertMaterial({ color: 0xcc2400 }),
+  stone:    new THREE.MeshLambertMaterial({ color: 0x8a8878 }),
+  stoneDk:  new THREE.MeshLambertMaterial({ color: 0x55554e }),
+  bark:     new THREE.MeshLambertMaterial({ color: 0x5a3018 }),
+  blossom:  new THREE.MeshLambertMaterial({ color: 0xffaabf, transparent:true, opacity:0.88 }),
+  blossomB: new THREE.MeshLambertMaterial({ color: 0xff88aa, transparent:true, opacity:0.80 }),
+  leaf:     new THREE.MeshLambertMaterial({ color: 0x2a8832 }),
+  water:    new THREE.MeshLambertMaterial({ color: 0x5098cc, transparent:true, opacity:0.70 }),
+  gold:     new THREE.MeshLambertMaterial({ color: 0xc8960a, emissive:0x332200, emissiveIntensity:0.35 }),
+  lanPaper: new THREE.MeshLambertMaterial({ color: 0xfff4d0, emissive:0xff8800, emissiveIntensity:0.7, transparent:true, opacity:0.92 }),
+  skin:     new THREE.MeshLambertMaterial({ color: 0xf5c07a }),
+  kimono:   new THREE.MeshLambertMaterial({ color: 0xfdfaf4 }),
+  kimonoR:  new THREE.MeshLambertMaterial({ color: 0x8b1515 }),
+  hair:     new THREE.MeshLambertMaterial({ color: 0x18100a }),
+  bamboo:   new THREE.MeshLambertMaterial({ color: 0x70a035 }),
+  bamNode:  new THREE.MeshLambertMaterial({ color: 0x4a7020 }),
+  paper:    new THREE.MeshLambertMaterial({ color: 0xfff8e8, transparent:true, opacity:0.82 }),
+  bush:     new THREE.MeshLambertMaterial({ color: 0x2e6e1e }),
+  mtn:      new THREE.MeshLambertMaterial({ color: 0x8090a8 }),
+  mtn2:     new THREE.MeshLambertMaterial({ color: 0x607090 }),
+  mtnSnow:  new THREE.MeshLambertMaterial({ color: 0xdde8f0 }),
+};
+
+// ── GEOMETRY HELPERS ──
+const sh = (castShadow, receiveShadow, mesh) => { mesh.castShadow = castShadow; mesh.receiveShadow = receiveShadow; return mesh; };
+const box = (w,h,d,mat,cs=true,rs=true) => sh(cs, rs, new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat));
+const cyl = (rt,rb,h,seg,mat,cs=true,rs=true) => sh(cs, rs, new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,seg), mat));
+const sph = (r,ws,hs,mat,cs=true,rs=true) => sh(cs, rs, new THREE.Mesh(new THREE.SphereGeometry(r,ws,hs), mat));
+
+function grp(...children){ const g = new THREE.Group(); children.forEach(c=>c&&g.add(c)); return g; }
+
+// ── GROUND ──
+const ground = sh(false, true, new THREE.Mesh(new THREE.PlaneGeometry(200,200), M.ground));
+ground.rotation.x = -Math.PI/2;
+scene.add(ground);
+
+// Paths
+function addPath(x,z,w,d){ const p = box(w,0.025,d,M.path,false,true); p.position.set(x,0.012,z); scene.add(p); }
+addPath(0, 5, 2.8, 28);
+addPath(0,-15, 2.8, 28);
+addPath(-7,-2, 18, 2.8);
+addPath(10, 2, 2.8, 18);
+
+// Stepping stones along main path
+for(let zi = -22; zi < 20; zi += 2.6){
+  const s = box(0.95,0.07,0.95,M.stone,false,true);
+  s.position.set((Math.random()-0.5)*0.5, 0.035, zi);
+  scene.add(s);
+}
+
+// ── MOUNTAINS ──
+function buildMountains(){
+  const peaks = [
+    [-38,0,-68,24], [-18,0,-75,30], [6,0,-70,20], [28,0,-66,26],
+    [50,0,-72,22], [-58,0,-62,17], [62,0,-62,19], [-5,0,-80,35],
+  ];
+  peaks.forEach(([x,y,z,h])=>{
+    const mt = cyl(0, h*0.5+2, h, 8, z<-72?M.mtn2:M.mtn, false, false);
+    mt.position.set(x, h/2-1, z);
+    mt.rotation.y = Math.random()*Math.PI;
+    scene.add(mt);
+    // Snow cap
+    if(h > 22){
+      const snow = cyl(0, h*0.2, h*0.25, 8, M.mtnSnow, false, false);
+      snow.position.set(x, h*0.87, z);
+      snow.rotation.y = Math.random()*Math.PI;
+      scene.add(snow);
+    }
+  });
+}
+buildMountains();
+
+// ── TORII GATE ──
+function buildTorii(x, z, scale=1){
+  const g = new THREE.Group();
+  const W = 2.8*scale, H = 5.5*scale;
+
+  // Columns
+  const c1 = cyl(0.24*scale,0.29*scale,H,8,M.torii); c1.position.set(-W/2, H/2, 0); g.add(c1);
+  const c2 = cyl(0.24*scale,0.29*scale,H,8,M.torii); c2.position.set( W/2, H/2, 0); g.add(c2);
+
+  // Top beam (kasagi) with upturned tips
+  const beam = box((W+1.8)*scale,0.32*scale,0.45*scale,M.torii);
+  beam.position.y = H + 0.16*scale; g.add(beam);
+  [-1,1].forEach(s=>{
+    const tip = box(0.55*scale,0.18*scale,0.45*scale,M.torii);
+    tip.position.set(s*(W/2+0.9+0.275)*scale, H+0.22*scale, 0);
+    tip.rotation.z = -s*0.18; g.add(tip);
+  });
+
+  // Lower beam (nuki)
+  const nuki = box((W+1.0)*scale,0.24*scale,0.38*scale,M.torii);
+  nuki.position.y = H-0.9*scale; g.add(nuki);
+
+  // Column caps
+  [-W/2, W/2].forEach(ex=>{
+    const cap = cyl(0.3*scale,0.3*scale,0.22*scale,8,M.darkWood);
+    cap.position.set(ex, H+0.11*scale, 0); g.add(cap);
+  });
+
+  // Stone bases
+  [-W/2, W/2].forEach(ex=>{
+    const base = box(scale,0.35*scale,scale,M.stone);
+    base.position.set(ex,0.175*scale,0); g.add(base);
+  });
+
+  g.position.set(x, 0, z);
+  scene.add(g);
+}
+
+// ── LANTERN ──
+function makeLantern(postH, addLight=true){
+  const g = new THREE.Group();
+  const post = cyl(0.055,0.055,postH,6,M.stone); post.position.y=postH/2; g.add(post);
+  const base = box(0.55,0.22,0.55,M.stone); base.position.y=0.11; g.add(base);
+  const mid  = box(0.45,0.1,0.45,M.stone); mid.position.y=postH-0.1; g.add(mid);
+  const body = box(0.42,0.52,0.42,M.lanPaper); body.position.y=postH+0.26; g.add(body);
+  const cap  = cyl(0,0.32,0.22,4,M.stone); cap.position.y=postH+0.63; cap.rotation.y=Math.PI/4; g.add(cap);
+  if(addLight){ const pl=new THREE.PointLight(0xff9933,1.4,5.5); pl.position.y=postH+0.26; g.add(pl); }
+  return g;
+}
+function placeLanternPair(x,z,h=1.9){ const a=makeLantern(h); a.position.set(x-1.3,0,z); scene.add(a); const b=makeLantern(h); b.position.set(x+1.3,0,z); scene.add(b); }
+
+// ── PAGODA ──
+function buildPagoda(x, z){
+  const g = new THREE.Group();
+  const TIERS = 5;
+
+  for(let i=0; i<TIERS; i++){
+    const w = 4.2 - i*0.56;
+    const bH = 1.15;
+    const yBase = i*(bH+0.62);
+
+    const body = box(w, bH, w, M.wall); body.position.y = yBase+bH/2; g.add(body);
+
+    // Horizontal wood trim below roof
+    const trim = box(w+0.14,0.16,w+0.14,M.wood); trim.position.y=yBase+bH-0.08; g.add(trim);
+
+    // Pyramid roof
+    const rW = w+0.9;
+    const roof = cyl(0, rW*0.56, rW*0.48, 4, M.roof);
+    roof.position.y = yBase+bH+rW*0.24;
+    roof.rotation.y = Math.PI/4; g.add(roof);
+
+    // Eave sweeps (4 sides)
+    for(let side=0; side<4; side++){
+      const ang = side*Math.PI/2;
+      const ew = rW*0.52;
+      const eave = box(ew, 0.08, 0.22, M.roof);
+      eave.position.set(Math.sin(ang)*rW*0.4, yBase+bH+0.08, Math.cos(ang)*rW*0.4);
+      eave.rotation.y = ang; eave.rotation.x = -0.38; g.add(eave);
+    }
+
+    // Window/door on front
+    if(i===0){
+      const door = box(0.8,1.0,0.1,M.paper); door.position.set(0,yBase+0.5,w/2+0.06); g.add(door);
+    }
+  }
+
+  // Spire
+  const spireH = 4.0;
+  const spire = cyl(0.055,0.055,spireH,6,M.gold);
+  spire.position.y = TIERS*1.77+2.0; g.add(spire);
+  [0,0.5,1.0,1.5,1.9].forEach(oy=>{
+    const ring = cyl(0.18,0.18,0.13,8,M.gold);
+    ring.position.y = spire.position.y+0.25+oy; g.add(ring);
+  });
+
+  // Stone platform
+  const plat = box(6,0.45,6,M.stone); plat.position.y=0.225; g.add(plat);
+
+  g.position.set(x,0,z);
+  scene.add(g);
+}
+
+// ── SHRINE ──
+function buildShrine(x, z){
+  const g = new THREE.Group();
+
+  // Steps
+  [[5.5,3.5,0.32],[4.8,3.0,0.32]].forEach(([sw,sd,sh],i)=>{
+    const step = box(sw,0.32,sd,M.stone); step.position.y=i*0.32+0.16; g.add(step);
+  });
+
+  // Main body
+  const body = box(7.5,3.8,5.2,M.wall); body.position.y=2.54; g.add(body);
+
+  // Dark-wood structural pillars
+  [-3.75,3.75].forEach(ex=>{
+    const p=cyl(0.18,0.2,3.8,8,M.darkWood); p.position.set(ex,2.54,0); g.add(p);
+  });
+  [-2.6,2.6].forEach(ez=>{
+    const rail=box(7.8,0.16,0.18,M.darkWood); rail.position.set(0,3.1,ez); g.add(rail);
+  });
+
+  // Shoji doors
+  [-0.78,0.78].forEach(ex=>{
+    const d=box(1.5,2.4,0.08,M.paper); d.position.set(ex,1.84,2.62); g.add(d);
+  });
+  // Grid lines on shoji
+  [-0.78,0.78].forEach(ex=>{
+    for(let r=0;r<3;r++){
+      const bar=box(1.5,0.05,0.09,M.darkWood); bar.position.set(ex,1.0+r*0.7,2.63); g.add(bar);
+    }
+  });
+
+  // Main roof
+  const rW=10.0;
+  const mainRoof=cyl(0,rW*0.52,rW*0.42,4,M.roof);
+  mainRoof.position.y=5.3; mainRoof.rotation.y=Math.PI/4; g.add(mainRoof);
+  const roofTrim=box(9.4,0.32,6.6,M.wood); roofTrim.position.y=4.55; g.add(roofTrim);
+
+  // Ridge decoration
+  const ridge=box(7.5,0.2,0.28,M.gold); ridge.position.y=8.65; g.add(ridge);
+  const knob=sph(0.2,6,4,M.gold); knob.position.y=8.9; g.add(knob);
+
+  // Porch roof
+  const pRoof=cyl(0,5.8,1.9,4,M.roof);
+  pRoof.position.set(0,3.55,2.2); pRoof.rotation.y=Math.PI/4; g.add(pRoof);
+  const pTrim=box(6.2,0.2,0.2,M.wood); pTrim.position.set(0,2.72,2.6); g.add(pTrim);
+  [-2.6,2.6].forEach(ex=>{
+    const pc=cyl(0.15,0.18,2.0,8,M.wood); pc.position.set(ex,1.64,2.6); g.add(pc);
+  });
+
+  // Shimenawa (sacred rope)
+  const rope=box(7.8,0.14,0.14,M.roofB); rope.position.set(0,1.0,2.75); g.add(rope);
+  // Paper streamers
+  for(let i=-3;i<4;i+=1.2){
+    const str=box(0.12,0.55,0.04,M.paper); str.position.set(i,0.65,2.75); g.add(str);
+  }
+
+  // Porch lanterns
+  [[-1.8,0,2.5],[1.8,0,2.5]].forEach(([lx,ly,lz])=>{
+    const lan=makeLantern(2.3, false); lan.position.set(lx,ly,lz); g.add(lan);
+  });
+
+  g.position.set(x,0,z);
+  scene.add(g);
+}
+
+// ── HOUSE ──
+function buildHouse(x,z,rot=0,w=4.2,d=3.6,wallMat=M.wall){
+  const g = new THREE.Group();
+  const wH = 2.4;
+
+  const base = box(w+0.5,0.32,d+0.5,M.stone); base.position.y=0.16; g.add(base);
+  const walls= box(w,wH,d,wallMat); walls.position.y=0.32+wH/2; g.add(walls);
+
+  // Corner beams
+  [[-w/2,-d/2],[w/2,-d/2],[-w/2,d/2],[w/2,d/2]].forEach(([bx,bz])=>{
+    const b=cyl(0.1,0.12,wH,6,M.darkWood); b.position.set(bx,0.32+wH/2,bz); g.add(b);
+  });
+  const topRail=box(w+0.1,0.16,d+0.1,M.wood); topRail.position.y=0.32+wH-0.08; g.add(topRail);
+
+  // Roof
+  const rW=w+1.1, rD=d+0.85;
+  const roof=cyl(0,rW*0.52,rW*0.44,4,M.roof);
+  roof.position.y=0.32+wH+rW*0.22; roof.rotation.y=Math.PI/4; g.add(roof);
+  const eaveBase=box(rW+0.1,0.22,rD,M.darkWood); eaveBase.position.y=0.32+wH+0.11; g.add(eaveBase);
+
+  // Windows
+  [-0.9,0.9].forEach(ex=>{ const win=box(0.8,0.65,0.1,M.paper); win.position.set(ex,0.32+wH*0.55,d/2+0.06); g.add(win); });
+
+  // Door
+  const door=box(0.85,1.5,0.08,M.paper); door.position.set(0,0.32+0.75,d/2+0.06); g.add(door);
+
+  g.position.set(x,0,z); g.rotation.y=rot;
+  scene.add(g);
+}
+
+// ── CHERRY BLOSSOM TREE ──
+function buildTree(x,z,big=false,type=0){
+  const g = new THREE.Group();
+  const h = big?7.0:4.8, r = big?3.5:2.4;
+  const blMat = type===1?M.blossomB:M.blossom;
+
+  const trunk=cyl(big?0.22:0.16, big?0.32:0.22, h, 7, M.bark);
+  trunk.position.y=h/2; g.add(trunk);
+
+  // Branch stubs
+  if(big){
+    [[0.6,h*0.65,0.3],[-0.6,h*0.7,0.3],[0.3,h*0.6,-0.4]].forEach(([bx,by,bz])=>{
+      const br=cyl(0.06,0.1,1.1,5,M.bark); br.position.set(bx,by,bz);
+      br.rotation.z=(bx>0?0.6:-0.6); g.add(br);
+    });
+  }
+
+  // Blossom cloud (multiple spheres)
+  const pts=[
+    [0,h+r*0.6,0,1.0],[r*0.5,h+r*0.35,r*0.3,0.85],[-r*0.5,h+r*0.3,r*0.2,0.8],
+    [r*0.35,h+r*0.3,-r*0.4,0.82],[-r*0.3,h+r*0.28,-r*0.38,0.78],
+    [0,h+r*0.18,r*0.6,0.75],[0,h+r*0.18,-r*0.55,0.72],
+    [r*0.6,h+r*0.1,0,0.7],[-r*0.55,h+r*0.12,0,0.68],
+  ];
+  pts.forEach(([ox,oy,oz,sr])=>{
+    const bs=sph(r*sr*0.52,6,5,blMat); bs.position.set(ox,oy,oz); g.add(bs);
+  });
+
+  g.position.set(x,0,z);
+  scene.add(g);
+}
+
+// ── BAMBOO GROVE ──
+function buildBamboo(cx,cz,n=14){
+  for(let i=0;i<n;i++){
+    const g=new THREE.Group();
+    const h=5.5+Math.random()*4.5;
+    const x=cx+(Math.random()-0.5)*7, z=cz+(Math.random()-0.5)*5;
+    const stalk=cyl(0.07,0.09,h,6,M.bamboo); stalk.position.y=h/2; g.add(stalk);
+    for(let nY=0.7;nY<h;nY+=0.55+Math.random()*0.45){
+      const nd=cyl(0.1,0.1,0.1,6,M.bamNode); nd.position.y=nY; g.add(nd);
+    }
+    const leafM=new THREE.MeshLambertMaterial({color:0x4a8c28});
+    for(let l=0;l<4;l++){
+      const lf=box(0.9+Math.random()*0.5,0.05,0.13,leafM);
+      lf.position.set((Math.random()-0.5)*0.6, h-0.5-l*0.55, 0);
+      lf.rotation.y=Math.random()*Math.PI; lf.rotation.z=(Math.random()-0.5)*0.7;
+      g.add(lf);
+    }
+    g.position.set(x,0,z); g.rotation.y=Math.random()*Math.PI*2;
+    scene.add(g);
+  }
+}
+
+// ── POND ──
+function buildPond(x,z){
+  const pond=sh(false,true,new THREE.Mesh(new THREE.CircleGeometry(5.5,32),M.water));
+  pond.rotation.x=-Math.PI/2; pond.position.set(x,0.022,z); scene.add(pond);
+  // Lily pads
+  const lpM=new THREE.MeshLambertMaterial({color:0x3a8a30});
+  for(let i=0;i<6;i++){
+    const lp=sh(false,false,new THREE.Mesh(new THREE.CircleGeometry(0.38,8),lpM));
+    lp.rotation.x=-Math.PI/2; lp.position.set(x+(Math.random()-0.5)*4.5,0.03,z+(Math.random()-0.5)*4.5);
+    scene.add(lp);
+  }
+  // Rocks
+  for(let i=0;i<9;i++){
+    const ang=i/9*Math.PI*2, d=5.3+Math.random()*0.5;
+    const rk=sph(0.27+Math.random()*0.2,5,4,M.stone);
+    rk.position.set(x+Math.sin(ang)*d,0.12,z+Math.cos(ang)*d);
+    rk.scale.y=0.5; scene.add(rk);
+  }
+  const pl=new THREE.PointLight(0x4488ff,0.45,9); pl.position.set(x,0.8,z); scene.add(pl);
+}
+
+// ── STONE WALL SEGMENT ──
+function buildWall(x,z,w,rot=0){
+  const g=new THREE.Group(), stones=Math.floor(w/0.95);
+  for(let i=0;i<stones;i++){
+    const s=box(0.88+Math.random()*0.12,0.52+Math.random()*0.18,0.52,M.stone);
+    s.position.set(i*0.92-w/2,0.32,0); g.add(s);
+    if(Math.random()>0.32){ const s2=box(0.85,0.46,0.52,M.stoneDk); s2.position.set(i*0.92-w/2+0.46,0.78,0); g.add(s2); }
+  }
+  g.position.set(x,0,z); g.rotation.y=rot; scene.add(g);
+}
+
+// ── TORII BRIDGE (decorative) ──
+function buildArchBridge(x,z){
+  // Small arched bridge over a stream hint
+  const g=new THREE.Group();
+  const plank=box(2.2,0.14,4.5,M.wood); plank.position.y=0.55; g.add(plank);
+  [-1.1,1.1].forEach(ex=>{
+    const rail=box(0.1,0.6,4.5,M.darkWood); rail.position.set(ex,0.92,0); g.add(rail);
+    for(let bi=-2;bi<2.5;bi+=1.1){
+      const bar=box(0.08,0.55,0.08,M.darkWood); bar.position.set(ex,0.9,bi); g.add(bar);
+    }
+  });
+  g.position.set(x,0,z); scene.add(g);
+}
+
+// ── SAKURA PETALS ──
+const PCOUNT = isMobile ? 250 : 650;
+const petalG = new THREE.PlaneGeometry(0.1,0.13);
+const petalM = new THREE.MeshBasicMaterial({ color:0xffb7c5, side:THREE.DoubleSide, transparent:true, opacity:0.78 });
+const petals = new THREE.InstancedMesh(petalG, petalM, PCOUNT);
+scene.add(petals);
+
+const pData=[], pDummy=new THREE.Object3D();
+for(let i=0;i<PCOUNT;i++){
+  pData.push({
+    x:(Math.random()-0.5)*65, y:Math.random()*18, z:(Math.random()-0.5)*65,
+    vx:(Math.random()-0.5)*0.012, vy:-(0.02+Math.random()*0.022), vz:(Math.random()-0.5)*0.012,
+    rx:Math.random()*Math.PI*2, ry:Math.random()*Math.PI*2, rz:Math.random()*Math.PI*2,
+    vrx:(Math.random()-0.5)*0.065, vrz:(Math.random()-0.5)*0.04,
+  });
+}
+
+function updatePetals(t){
+  pData.forEach((p,i)=>{
+    p.x += p.vx + Math.sin(t*0.28+i*0.08)*0.007;
+    p.y += p.vy;
+    p.z += p.vz + Math.cos(t*0.22+i*0.1)*0.006;
+    p.rx+=p.vrx; p.rz+=p.vrz;
+    if(p.y<-0.5){ p.y=16+Math.random()*7; p.x=(Math.random()-0.5)*65; p.z=(Math.random()-0.5)*65; }
+    pDummy.position.set(p.x,p.y,p.z);
+    pDummy.rotation.set(p.rx,p.ry,p.rz);
+    pDummy.updateMatrix();
+    petals.setMatrixAt(i,pDummy.matrix);
+  });
+  petals.instanceMatrix.needsUpdate=true;
+}
+
+// ── CHARACTER ──
+const charGroup = new THREE.Group();
+const charBody  = new THREE.Group();
+charGroup.add(charBody);
+scene.add(charGroup);
+
+// Build figure
+function mkM(mesh){ mesh.castShadow=true; mesh.receiveShadow=true; return mesh; }
+
+const HEAD = mkM(sph(0.305,8,6,M.skin)); HEAD.position.y=1.6; charBody.add(HEAD);
+const hair = mkM(sph(0.32,8,6,M.hair)); hair.position.set(0,1.69,-0.04); hair.scale.set(1,0.6,1); charBody.add(hair);
+const bun  = mkM(sph(0.13,6,5,M.hair)); bun.position.set(0,1.93,-0.05); charBody.add(bun);
+
+// Eyes
+[[-0.105,1.565,0.285],[0.105,1.565,0.285]].forEach(([ex,ey,ez])=>{
+  const eye=mkM(sph(0.038,4,4,M.hair)); eye.position.set(ex,ey,ez); charBody.add(eye);
+});
+// Blush
+const blushM=new THREE.MeshLambertMaterial({color:0xff9999,transparent:true,opacity:0.5});
+[[-0.17,1.545,0.28],[0.17,1.545,0.28]].forEach(([bx,by,bz])=>{
+  const bl=mkM(sph(0.055,4,4,blushM)); bl.position.set(bx,by,bz); charBody.add(bl);
+});
+
+const TORSO=mkM(box(0.52,0.72,0.3,M.kimono)); TORSO.position.y=1.06; charBody.add(TORSO);
+const sash =mkM(box(0.54,0.17,0.31,M.kimonoR)); sash.position.y=0.88; charBody.add(sash);
+const lower=mkM(box(0.48,0.58,0.28,M.kimono)); lower.position.y=0.41; charBody.add(lower);
+
+// Arms (pivot at shoulder)
+const LARM=mkM(box(0.14,0.55,0.14,M.kimono)); LARM.position.set(-0.35,1.04,0); LARM.geometry.translate(0,-0.275,0); charBody.add(LARM);
+const RARM=mkM(box(0.14,0.55,0.14,M.kimono)); RARM.position.set( 0.35,1.04,0); RARM.geometry.translate(0,-0.275,0); charBody.add(RARM);
+
+// Legs (pivot at hip)
+const LLEG=mkM(box(0.21,0.58,0.21,M.darkWood)); LLEG.position.set(-0.14,0.13,0); LLEG.geometry.translate(0,-0.29,0); charBody.add(LLEG);
+const RLEG=mkM(box(0.21,0.58,0.21,M.darkWood)); RLEG.position.set( 0.14,0.13,0); RLEG.geometry.translate(0,-0.29,0); charBody.add(RLEG);
+
+// Staff
+const staff=mkM(cyl(0.028,0.028,1.5,6,M.darkWood)); staff.position.set(-0.48,0.95,0); staff.rotation.z=0.1; charBody.add(staff);
+
+charGroup.position.set(0,0,20);
+
+// ── POPULATE WORLD ──
+// Torii gates (second larger one near shrine)
+buildTorii(0, 1, 1.0);
+buildTorii(0,-17, 0.9);
+placeLanternPair(0, 4, 1.9);
+placeLanternPair(0,-14, 1.9);
+placeLanternPair(0,-10, 1.9);
+
+// Shrine
+buildShrine(0,-23);
+
+// Shrine walls
+buildWall(-5.5,-14.5, 8, 0);
+buildWall( 5.5,-14.5, 8, 0);
+buildWall(-10,-20.5, 12, Math.PI/2);
+buildWall( 10,-20.5, 12, Math.PI/2);
+
+// Pagoda
+buildPagoda(18,-11);
+const lanP=makeLantern(1.8); lanP.position.set(15,-0,-8.5); scene.add(lanP);
+const lanP2=makeLantern(1.8); lanP2.position.set(15,0,-13.5); scene.add(lanP2);
+
+// Houses
+buildHouse(-12, 6, 0.25, 4.5, 3.6);
+buildHouse(-15,-4, 0.18, 4.2, 3.4);
+buildHouse( 11, 9, -0.2, 4.2, 3.6);
+buildHouse( 13, 3,  0.0, 3.8, 3.2);
+buildHouse( -9,13,  0.4, 4.8, 3.8);
+buildHouse(  9,15, -0.3, 4.2, 3.4);
+buildHouse(-17,-15, 0.1, 5.0, 4.0, M.wallB);
+buildHouse( 15,-20, 0.5, 4.0, 3.2);
+buildHouse( -4, 18, -0.2,3.6, 3.0);
+
+// Village lanterns
+const lanVil=[[-6,8],[6,8],[-11,1],[-4,-5],[4,-5]];
+lanVil.forEach(([lx,lz])=>{ const l=makeLantern(1.8); l.position.set(lx,0,lz); scene.add(l); });
+
+// Cherry blossom trees
+[
+  [-6, 5,false,0],[6, 4,false,1],[-4,-8,true,0],[4,-8,false,0],
+  [-18,2,true,1],[21,9,false,0],[-11,-20,false,1],[9,-18,false,0],
+  [0, 13,true,0],[-5,16,false,1],[5,15,false,0],[13,-13,false,1],
+  [-2,-4,false,0],[21,-18,false,1],[-20,12,true,0],[3,-12,false,1],
+  [14,-6,false,0],[-8,-10,false,1],
+].forEach(([x,z,big,t])=>buildTree(x,z,big,t));
+
+// Bamboo
+buildBamboo(-21,-11,16);
+buildBamboo(-18, 10, 6);
+
+// Pond
+buildPond(-13,-3);
+
+// Decorative bridge
+buildArchBridge(-7,-1);
+
+// Scatter rocks & bushes
+const rng=(a,b)=>a+(b-a)*Math.random();
+for(let i=0;i<25;i++){
+  const bush=sph(0.5+Math.random()*0.45,5,4,M.bush);
+  bush.position.set(rng(-38,38),0.32,rng(-38,38)); bush.scale.y=0.62; scene.add(bush);
+}
+for(let i=0;i<18;i++){
+  const rock=sph(0.2+Math.random()*0.25,5,4,M.stone);
+  rock.position.set(rng(-38,38),0.1,rng(-38,38)); rock.scale.y=0.5; scene.add(rock);
+}
+
+// ── STORY SYSTEM ──
+const storyEl=document.getElementById('story-text');
+const storySub=document.getElementById('story-sub');
+const storyWrap=document.getElementById('story-wrap');
+const seen=new Set(['start']);
+
+const STORIES=[
+  {id:'torii',  pos:new THREE.Vector3(0,0,1),   dist:6,
+   text:'The sacred Torii gate stands sentinel between worlds.<br/>To pass through is to leave the ordinary far behind…', sub:'◦ &nbsp; the shrine lies ahead &nbsp; ◦'},
+  {id:'shrine', pos:new THREE.Vector3(0,0,-23),  dist:9,
+   text:'The Ancient Moringa Shrine. Here the first leaf was discovered —<br/>90 nutrients, 46 antioxidants, unchanged for ten centuries.', sub:'◦ &nbsp; a legendary wellness secret &nbsp; ◦'},
+  {id:'pagoda', pos:new THREE.Vector3(18,0,-11), dist:9,
+   text:'Five tiers reach toward heaven — one for each generation<br/>that has cultivated this sacred plant in reverent silence.', sub:'◦ &nbsp; wisdom of the ages &nbsp; ◦'},
+  {id:'pond',   pos:new THREE.Vector3(-13,0,-3), dist:7,
+   text:'Still waters reflect the cherry blossoms above.<br/>Take a moment. Breathe. This is what wellness truly feels like.', sub:'◦ &nbsp; be still &nbsp; ◦'},
+  {id:'bamboo', pos:new THREE.Vector3(-21,0,-11),dist:8,
+   text:'The bamboo grove whispers of strength through flexibility —<br/>a lesson from nature that moringa has always understood.', sub:'◦ &nbsp; ancient wisdom &nbsp; ◦'},
+  {id:'hill',   pos:new THREE.Vector3(-15,0,10), dist:7,
+   text:'A wandering monk once planted the first moringa seed here,<br/>knowing nothing of the legend it would become.', sub:'◦ &nbsp; the origin story &nbsp; ◦'},
+];
+
+function checkStory(){
+  const cp=charGroup.position;
+  for(const s of STORIES){
+    if(seen.has(s.id)) continue;
+    if(cp.distanceTo(s.pos)<s.dist){ seen.add(s.id); fadeStory(s.text,s.sub); break; }
+  }
+}
+function fadeStory(text,sub){
+  storyWrap.style.opacity='0';
+  setTimeout(()=>{ storyEl.innerHTML=text; if(sub)storySub.innerHTML=sub; storyWrap.style.opacity='1'; },600);
+}
+
+// ── CONTROLS ──
+const keys={};
+document.addEventListener('keydown',e=>{ keys[e.key]=true; if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key)) e.preventDefault(); });
+document.addEventListener('keyup',  e=>{ keys[e.key]=false; });
+
+['up','down','left','right'].forEach(dir=>{
+  const el=document.getElementById('d-'+dir); if(!el) return;
+  el.addEventListener('touchstart',e=>{ keys['_'+dir]=true; e.preventDefault(); },{passive:false});
+  el.addEventListener('touchend',  ()=>keys['_'+dir]=false);
+  el.addEventListener('mousedown', ()=>keys['_'+dir]=true);
+  el.addEventListener('mouseup',   ()=>keys['_'+dir]=false);
+  el.addEventListener('mouseleave',()=>keys['_'+dir]=false);
+});
+
+// ── WALK ANIMATION ──
+let walkT=0;
+function animChar(moving){
+  if(moving) walkT+=0.16;
+  const sw=Math.sin(walkT)*0.46;
+  LLEG.rotation.x= sw; RLEG.rotation.x=-sw;
+  LARM.rotation.x=-sw*0.5; RARM.rotation.x= sw*0.5;
+  charBody.position.y=moving?Math.abs(Math.sin(walkT))*0.045:0;
+}
+
+// ── CAMERA ──
+const CAM_OFF=new THREE.Vector3(0,3.8,8.2);
+const camLookTarget=new THREE.Vector3();
+const camWishPos=new THREE.Vector3();
+
+// ── CLOCK ──
+const clock=new THREE.Clock();
+
+// ── LOOP ──
+const SPEED=0.092, TURN=0.046, BOUNDS=36;
+
+function animate(){
+  requestAnimationFrame(animate);
+  const t=clock.getElapsedTime();
+
+  const fw=keys['ArrowUp']   ||keys['w']||keys['W']||keys['_up'];
+  const bk=keys['ArrowDown'] ||keys['s']||keys['S']||keys['_down'];
+  const lt=keys['ArrowLeft'] ||keys['a']||keys['A']||keys['_left'];
+  const rt=keys['ArrowRight']||keys['d']||keys['D']||keys['_right'];
+
+  if(lt) charGroup.rotation.y+=TURN;
+  if(rt) charGroup.rotation.y-=TURN;
+
+  const moving=fw||bk;
+  if(fw){ charGroup.position.x-=Math.sin(charGroup.rotation.y)*SPEED; charGroup.position.z-=Math.cos(charGroup.rotation.y)*SPEED; }
+  if(bk){ charGroup.position.x+=Math.sin(charGroup.rotation.y)*SPEED*0.6; charGroup.position.z+=Math.cos(charGroup.rotation.y)*SPEED*0.6; }
+
+  charGroup.position.x=Math.max(-BOUNDS,Math.min(BOUNDS,charGroup.position.x));
+  charGroup.position.z=Math.max(-BOUNDS,Math.min(BOUNDS,charGroup.position.z));
+
+  animChar(moving);
+
+  // Camera follow
+  const off=CAM_OFF.clone().applyEuler(new THREE.Euler(0,charGroup.rotation.y,0));
+  camWishPos.copy(charGroup.position).add(off);
+  camWishPos.y=Math.max(1.2,camWishPos.y);
+  camera.position.lerp(camWishPos,0.1);
+  camLookTarget.set(charGroup.position.x, charGroup.position.y+1.5, charGroup.position.z);
+  camera.lookAt(camLookTarget);
+
+  // Compass
+  document.getElementById('cneedle').style.transform=`translateX(-50%) rotate(${charGroup.rotation.y*180/Math.PI}deg)`;
+
+  // Gentle sun bob (time of day)
+  sun.intensity=1.5+Math.sin(t*0.04)*0.2;
+
+  updatePetals(t);
+  checkStory();
+
+  renderer.render(scene,camera);
+}
+
+// ── RESIZE ──
+window.addEventListener('resize',()=>{
+  camera.aspect=window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth,window.innerHeight);
+});
+
+// ── FADE HINT ──
+setTimeout(()=>{ const h=document.getElementById('hint'); if(h){h.style.opacity='0';} },7000);
+
+// ── LOADING BAR + START ──
+const lfill=document.getElementById('lfill');
+let lp=0;
+const lv=setInterval(()=>{ lp=Math.min(100,lp+4); lfill.style.width=lp+'%'; if(lp>=100)clearInterval(lv); },30);
+setTimeout(()=>{
+  const loading=document.getElementById('loading');
+  loading.classList.add('gone');
+  setTimeout(()=>loading.style.display='none',1300);
+  animate();
+},900);
+
+})();
+</script>
+</body>
+</html>
