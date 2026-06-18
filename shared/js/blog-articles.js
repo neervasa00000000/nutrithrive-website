@@ -1,5 +1,19 @@
-/** Auto-generated — 17 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 19 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
+  {
+    "slug": "moringa-patches-australia-review-do-they-work",
+    "title": "Moringa Patches Australia Review 2026 — Do They Actually Work?",
+    "description": "Glorenda, Healrize, Clearena moringa berberine patches reviewed: what transdermal science actually says, TGA status, drug interaction risks, and what actually works instead.",
+    "category": "Brand Review",
+    "href": "/blog/moringa-patches-australia-review-do-they-work"
+  },
+  {
+    "slug": "is-moringa-banned-in-australia",
+    "title": "Is Moringa Banned in Australia? What the 2026 Recall Actually Means",
+    "description": "Moringa is not banned in Australia. One brand recalled specific capsule lots in February 2026 for Salmonella contamination. Full explanation of Australian food law and what is safe to buy.",
+    "category": "Safety & Regulation",
+    "href": "/blog/is-moringa-banned-in-australia"
+  },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
     "title": "Rosabella Moringa Review 2026 — Is It Worth $25 at Chemist Warehouse?",

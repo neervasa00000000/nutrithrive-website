@@ -78,10 +78,16 @@
 /blog/moringa-vs-spirulina-vs-matcha-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 
 # SEO consolidation — canonical breakout blogs (May 2026)
-/blog/is-moringa-banned-australia-truth-2026.html /404.html 410
-/blog/is-moringa-banned-australia-truth-2026 /404.html 410
+/blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-in-australia 301
+/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-in-australia 301
+/blog/is-moringa-banned-in-australia.html /blog/is-moringa-banned-in-australia 301!
+/blog/is-moringa-banned-in-australia /blog/is-moringa-banned-in-australia.html 200
 /blog/moringa-benefits-women-hormones-energy-skin-2026 /blog/moringa-benefits-for-women-comprehensive-2026 301
 /blog/moringa-benefits-women-hormones-energy-skin-2026.html /blog/moringa-benefits-for-women-comprehensive-2026 301
+
+# Moringa patches review (new June 2026)
+/blog/moringa-patches-australia-review-do-they-work.html /blog/moringa-patches-australia-review-do-they-work 301!
+/blog/moringa-patches-australia-review-do-they-work /blog/moringa-patches-australia-review-do-they-work.html 200
 
 # Rosabella review — live page (restored June 2026)
 /blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/rosabella-moringa-reviews-legit-or-overhyped-2026 301!
