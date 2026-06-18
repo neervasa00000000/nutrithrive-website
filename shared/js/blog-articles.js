@@ -1,5 +1,12 @@
-/** Auto-generated — 19 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 20 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
+  {
+    "slug": "moringa-and-berberine-australia-what-science-says-2026",
+    "title": "Moringa and Berberine Together — What the Science Says (Australia 2026)",
+    "description": "Can you take moringa and berberine together? What each plant actually does, the clinical evidence, drug interactions with metformin and warfarin, correct dosage, and why patches don't work. 2026 AU guide.",
+    "category": "Research Guide",
+    "href": "/blog/moringa-and-berberine-australia-what-science-says-2026"
+  },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
     "title": "Moringa Patches Australia Review 2026 — Do They Actually Work?",
