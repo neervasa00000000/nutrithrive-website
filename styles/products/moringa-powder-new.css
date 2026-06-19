@@ -48,18 +48,18 @@
 .nt-pdp-gallery__frame {
   background: #1b3022;
   border-radius: 12px;
-  padding: 2rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  display: block;
   overflow: hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+  width: 100%;
 }
 .nt-pdp-gallery__frame img {
   width: 100%;
-  max-width: 520px;
-  height: auto;
-  max-height: none;
-  object-fit: contain;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
   object-position: center;
   display: block;
 }
@@ -682,7 +682,7 @@
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .nt-pdp-hero__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .nt-pdp-gallery__frame { padding: 1.5rem 1rem; }
+  .nt-pdp-gallery__frame { max-height: 420px; }
   .nt-pdp-features__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .nt-pdp-about__grid { grid-template-columns: 1fr; }
   .nt-pdp-how__cards { grid-template-columns: 1fr; }
