@@ -539,226 +539,128 @@
     </header>
 
     <main class="product-main">
-        <!-- Hero Section -->
-        <section class="product-hero">
-            <div class="product-hero-content">
-                <div class="product-image-section">
-                    <img id="main-product-image" src="/assets/images/homepage/product-showcase/combo.webp" alt="Moringa Powder by NutriThrive Melbourne Australia" class="product-main-image" loading="lazy">
+        <nav aria-label="Breadcrumb" class="nt-pdp-crumb">
+            <a href="/">Home</a><span class="sep" aria-hidden="true">›</span>
+            <a href="/products/">Products</a><span class="sep" aria-hidden="true">›</span>
+            <span aria-current="page">Premium Combo Pack</span>
+        </nav>
+
+        <section class="nt-pdp-hero" aria-label="Product details">
+            <div class="nt-pdp-hero__grid">
+                <div class="nt-pdp-gallery">
+                    <div class="nt-pdp-badges"><span class="nt-pdp-badge nt-pdp-badge--seller">Best value</span><span class="nt-pdp-badge nt-pdp-badge--sale">24% off</span></div>
+                    <div class="nt-pdp-gallery__frame">
+                        <img id="main-product-image" src="/assets/images/homepage/product-showcase/combo.webp" alt="NutriThrive premium combo pack — moringa, tea, curry leaves" width="600" height="600" loading="eager" decoding="async" fetchpriority="high">
+                    </div>
                 </div>
                 
-                <div class="product-info-section">
-                    <h1 class="product-title">Premium Combo Pack</h1>
-                    <p class="product-subtitle">Wellness Collection</p>
-                    <p class="product-hero-savings" style="margin:0.5rem 0 0;font-size:1.05rem;font-weight:700;color:#0f6b4d;">Save <span style="white-space:nowrap">$5.49 AUD</span> vs buying items separately at RRP — bundle <span style="white-space:nowrap">$17.00 AUD</span> (was <span style="text-decoration:line-through;opacity:0.85">$22.49 AUD</span>).</p>
-                    
-                    <!-- Purchase Section - Right after image -->
-                    <div class="product-purchase-section">
-                        <!-- Price -->
-                        <div class="product-pricing">
-                            <div class="price-row">
-                                <span id="product-original-price" class="original-price">$22.49 AUD</span>
-                                <span id="product-price" class="current-price">$17.00 AUD</span>
-                            </div>
-                            <p id="product-discount-text" class="discount-text">25% discount ($5.49 AUD off)</p>
-                        </div>
-                        
-                        <!-- Quantity -->
-                        <div class="product-quantity">
-                            <label for="product-quantity" class="quantity-label">Quantity</label>
-                            <select id="product-quantity" class="quantity-select">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Why Buy Today -->
-                        <div class="why-buy-today">
-                            <h3>Why Buy Today</h3>
-                            <ul>
-                                <li><strong>⏰ Same-Day Dispatch:</strong> Order before 2pm and it ships today from Melbourne</li>
-                                <li><strong>📦 Best Value:</strong> Bundle saves you more than buying individually</li>
-                                <li><strong>🔬 Lab-Verified Quality:</strong> Every moringa batch tested by Australian Government lab</li>
-                                <li><strong>🇦🇺 Shipped from Melbourne:</strong> Fast delivery across Australia, no overseas delays</li>
-                            </ul>
-                        </div>
-
-                        <!-- Add to Cart Button -->
-                        <button onclick="addComboPackToCart()" class="add-to-cart-btn">Add to Cart</button>
-                        
-                        <!-- Secure Checkout Button (routes via cart with full address collection) -->
-                        <div class="paypal-section">
-                            <button onclick="buyComboPackNow()" class="add-to-cart-btn" style="margin-top: 0.75rem;">
-                                Buy Now
-                            </button>
-                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #4b5563; line-height: 1.5;">
-                                On the next step, our secure cart will redirect you to PayPal where
-                                your <strong>name, email and full shipping address</strong> are confirmed before paying with PayPal or card.
-                            </p>
-                        </div>
-                        
-                        <!-- Trust Badges -->
-                        <div class="trust-badges">
-                            <div class="trust-item">
-                                <span class="trust-icon">🚚</span>
-                                <div class="trust-content">
-                                    <strong>Free shipping thresholds</strong>
-                                    <span>Australia: free shipping on orders of AU$80+</span>
-                                    <span>Worldwide: free shipping on orders of AU$90+</span>
-                                </div>
-                            </div>
-                            <div class="trust-item">
-                                <span class="trust-icon">🛡️</span>
-                                <div class="trust-content">
-                                    <strong>7-Day Money-Back Guarantee</strong>
-                                    <span>Not satisfied? Full refund, no questions asked!</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="nt-pdp-buybox">
+                    <h1>Premium Combo Pack — Moringa, Tea & Curry Leaves</h1>
+                    <div class="nt-pdp-pricing">
+                        <span class="nt-pdp-price">$17.00</span>
+                        <span class="nt-pdp-was">$22.49</span>
+                        <span class="nt-pdp-save">Save $5.49</span>
                     </div>
-                    
-                    <!-- Description Text - After purchase section -->
-                    <div class="product-description-section">
-                        <p class="product-description">Discover our Premium Wellness Combo Pack, a curated selection of our best-selling natural products for holistic health and great value. This pack is designed to boost your energy, support a healthy immune system, and enhance overall well-being.</p>
-                        
-                        <p class="product-description">Shipped fresh from Truganina, Melbourne to Sydney and across Australia.</p>
+                    <p class="nt-pdp-perday">Best value · save $5.49 vs buying separately</p>
+                    <div class="nt-pdp-trust-row"><span class="nt-pdp-trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Melbourne Packed</span>
+<span class="nt-pdp-trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Same Day Dispatch</span>
+<span class="nt-pdp-trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>Free Shipping Over $80</span></div>
+                    <div class="nt-pdp-actions">
+                        <div class="nt-pdp-qty" aria-label="Quantity">
+                            <button type="button" id="qty-minus" aria-label="Decrease quantity">−</button>
+                            <input type="number" id="product-quantity" value="1" min="1" max="10" aria-label="Quantity">
+                            <button type="button" id="qty-plus" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button type="button" onclick="addComboPackToCart()" class="add-to-cart-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                    <button type="button" onclick="buyComboPackNow()" class="nt-pdp-buy-now">Buy now — go to checkout</button>
+                    <div class="nt-pdp-guarantees">
+                        <span>🛡️ 7-day guarantee</span>
+                        <span>📦 Melbourne dispatch before 2pm</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Reviews Section -->
-        <section class="reviews-section">
-            <div class="reviews-header">
-                <h2>Customer Reviews</h2>
-                <p class="reviews-rating">⭐⭐⭐⭐⭐ 5/5 from 15 reviews</p>
-            </div>
-            
-            <div class="reviews-container">
-                <div class="reviews-carousel">
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
-                        <p class="review-author">Olivia C., Perth</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
-                        <p class="review-author">Daniel H., Brisbane</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Amazing value! I've been a long-time customer of NutriThrive, and this combo pack makes it so easy to reorder my essentials. Everything arrived fresh and well-packaged. A must-have for a healthy lifestyle!"</p>
-                        <p class="review-author">Sophie K., Adelaide</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"This combo pack is perfect for daily use. I appreciate the quality and the fact that it's all-natural. My digestion has improved, and I feel more balanced throughout the day. Definitely worth it!"</p>
-                        <p class="review-author">Noah P., Sydney</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Fantastic value and a great way to try different products. Highly recommend!"</p>
-                        <p class="review-author">Verified Customer</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"The combo pack is fantastic! I love having all my favorite NutriThrive products together. The value is incredible, and I've noticed a significant improvement in my energy and overall well-being. Fast shipping to Perth, too!"</p>
-                        <p class="review-author">Olivia C., Perth</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"I bought this as a gift for my partner, and she absolutely loves it! The quality of each product is top-notch, and it's such a thoughtful way to introduce someone to natural wellness. Highly recommended for anyone in Australia."</p>
-                        <p class="review-author">Daniel H., Brisbane</p>
-                    </div>
+        <section class="nt-pdp-features" aria-label="Product highlights">
+            <div class="nt-pdp-features__grid"><div class="nt-pdp-feature">
+<svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+<h3>Three Pantry Staples</h3><p>100g moringa, 100g Darjeeling tea, 30g curry leaves.</p></div>
+<div class="nt-pdp-feature">
+<svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
+<h3>Lab-Tested Moringa</h3><p>Shade-dried moringa with NMI summary on file.</p></div>
+<div class="nt-pdp-feature">
+<svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+<h3>Real Kari Leaf</h3><p>Aromatic dried curry leaves for tadka and dals.</p></div>
+<div class="nt-pdp-feature">
+<svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+<h3>Premium Tea</h3><p>Loose-leaf Darjeeling for daily cups.</p></div></div>
+        </section>
+
+        <section class="nt-pdp-about" aria-label="About this product">
+            <div class="nt-pdp-about__grid">
+                <aside class="nt-pdp-lab-card"><h3>What's in the box</h3><p><strong>100g</strong> moringa powder · <strong>100g</strong> Darjeeling black tea · <strong>30g</strong> dried curry leaves. One shipment, three staples.</p><span class="lab-report-note">Bundle price $17.00 (RRP $22.49)</span></aside>
+                <div class="nt-pdp-about__content">
+                    <h2>About the Combo Pack</h2>
+                    <p>Morning smoothie moringa, afternoon Darjeeling, evening tadka with kari leaf — one box covers the basics without three separate orders.</p>
+<p>Moringa is NMI lab-tested; tea and curry leaves are packed in the same Truganina warehouse. See <a href="/blog/high-protein-moringa-recipes-australia-2026">moringa recipes</a> and our <a href="/blog/nutrithrive-dried-curry-leaves-tradition-health">curry leaf guide</a> to get started.</p>
+                    <dl class="nt-pdp-meta"><div><dt>Best for</dt><dd>New customers sampling the range, or gifts for health-conscious cooks.</dd></div>
+<div><dt>Dispatch</dt><dd>Same-day Melbourne dispatch before 2pm on business days.</dd></div></dl>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features-section">
-            <h2 class="section-title">What Makes NutriThrive Combo Pack Special?</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <strong>Complete Wellness</strong>
-                    <p>A curated selection of our best-selling natural products for holistic health and great value. Designed to boost your energy, support a healthy immune system, and enhance overall well-being.</p>
-                </div>
-                <div class="feature-item">
-                    <strong>Exceptional Value</strong>
-                    <p>Get premium natural products together at a great price. Perfect for personal wellness or as a thoughtful gift.</p>
-                </div>
-                <div class="feature-item">
-                    <strong>Premium Quality</strong>
-                    <p>All products included are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives.</p>
-                </div>
-                <div class="feature-item">
-                    <strong>Fresh Delivery</strong>
-                    <p>Sustainably sourced and dispatched fresh from Melbourne. Fast shipping Australia-wide.</p>
-                </div>
-                <div class="feature-item">
-                    <strong>Synergistic Benefits</strong>
-                    <p>Pre-selected to offer the best synergistic benefits and value for holistic health support.</p>
-                </div>
-                <div class="feature-item">
-                    <strong>Perfect Gift</strong>
-                    <p>Ideal for introducing someone to natural wellness or as a thoughtful gift for health-conscious individuals.</p>
-                </div>
+        <section class="nt-pdp-how" aria-label="How to use">
+            <div class="nt-pdp-how__inner">
+                <h2>How to Use the Pack</h2>
+                <p class="nt-pdp-how__sub">A simple weekly rhythm most customers follow.</p>
+                <div class="nt-pdp-how__cards"><article class="nt-pdp-how-card"><span class="nt-pdp-how-card__num">01</span><h3>Morning</h3><p>½–1 tsp moringa in a smoothie or juice.</p></article>
+<article class="nt-pdp-how-card"><span class="nt-pdp-how-card__num">02</span><h3>Afternoon</h3><p>Steep Darjeeling at 85–90°C for a muscatel cup.</p></article>
+<article class="nt-pdp-how-card"><span class="nt-pdp-how-card__num">03</span><h3>Evening</h3><p>Fry curry leaves in ghee for dal, rice, or vegetable dishes.</p></article></div>
             </div>
         </section>
 
-        <!-- Benefits Section -->
-        <section class="benefits-section">
-            <h2 class="section-title">Benefits of NutriThrive Combo Pack</h2>
-            <ul class="benefits-list">
-                <li>Holistic support for energy, immunity, and digestion</li>
-                <li>Exceptional value with premium natural products</li>
-                <li>Perfect for personal wellness or as a thoughtful gift</li>
-                <li>Sustainably sourced and dispatched fresh from Melbourne</li>
-            </ul>
+        <section class="nt-pdp-reviews" aria-label="Customer reviews">
+            <div class="nt-pdp-reviews__head"><div><h2>Customer Reviews</h2><p class="nt-pdp-reviews__rating"><span class="nt-pdp-stars" aria-hidden="true">★★★★★</span> 5/5 from verified buyers</p></div></div>
+            <div class="nt-pdp-reviews__grid"><article class="nt-pdp-review">
+<div class="nt-pdp-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+<blockquote>"Fantastic value — all my NutriThrive staples in one box. Fast shipping to Perth."</blockquote>
+<div class="nt-pdp-review__author"><span class="nt-pdp-avatar">OC</span><div>
+<div class="nt-pdp-review__name">Olivia C.</div><div class="nt-pdp-review__meta">Perth, WA</div></div></div></article>
+<article class="nt-pdp-review">
+<div class="nt-pdp-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+<blockquote>"Bought as a gift — quality of each product is top-notch. Great introduction to the range."</blockquote>
+<div class="nt-pdp-review__author"><span class="nt-pdp-avatar">DH</span><div>
+<div class="nt-pdp-review__name">Daniel H.</div><div class="nt-pdp-review__meta">Brisbane, QLD</div></div></div></article>
+<article class="nt-pdp-review">
+<div class="nt-pdp-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+<blockquote>"Amazing value for reordering essentials. Everything arrived fresh and well-packaged."</blockquote>
+<div class="nt-pdp-review__author"><span class="nt-pdp-avatar">SK</span><div>
+<div class="nt-pdp-review__name">Sophie K.</div><div class="nt-pdp-review__meta">Adelaide, SA</div></div></div></article></div>
+            <p class="nt-pdp-reviews__note">Individual experiences only. Not medical advice.</p>
         </section>
 
-        <!-- Usage Section -->
-        <section class="usage-section">
-            <h2 class="section-title">How to Use Your Combo Pack Products</h2>
-            <p>Refer to the individual product pages for detailed usage instructions for Moringa Powder, Dried Curry Leaves, and Premium Black Tea. Generally, Moringa powder can be mixed into smoothies or water, Dried Curry Leaves are used in cooking, and Black Tea is brewed as a beverage.</p>
-            <p><strong>Looking to buy natural wellness products in Australia?</strong> NutriThrive offers fast shipping Australia-wide with our premium combo pack.</p>
-            <p class="product-description" style="margin-top: 1rem;">For meal ideas that use all three pantry staples together, see the moringa and curry leaves hub and <a href="/blog/high-protein-moringa-recipes-australia-2026" style="font-weight: 600; text-decoration: underline;">high-protein moringa recipes</a>.</p>
+        <section class="nt-pdp-guides" aria-label="Related guides">
+            <h2>Guides &amp; related products</h2>
+            <ul><li><a href="/blog/high-protein-moringa-recipes-australia-2026">High-protein moringa recipes</a></li>
+<li><a href="/blog/nutrithrive-dried-curry-leaves-tradition-health">Curry leaves guide</a></li>
+<li><a href="/products/moringa-powder/">Moringa powder (single)</a></li>
+<li><a href="/products/black-tea/">Darjeeling tea (single)</a></li></ul>
         </section>
 
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <h3>What's included in the combo pack?</h3>
-                    <p>The combo pack typically includes our Premium Natural Moringa Powder, Dried Curry Leaves (Premium), and Premium Loose Leaf Black Tea. Please check the product description for current contents.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Are the products in the combo pack natural and additive-free?</h3>
-                    <p>Yes, all products included in our combo pack are 100% natural, vegan-friendly, gluten-free, and contain no additives or preservatives.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Can I customize the combo pack?</h3>
-                    <p>Currently, our combo packs are pre-selected to offer the best synergistic benefits and value. We do not offer customization options at this time.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Payments & Shipping</h3>
-                    <p>We accept Visa, bank transfer, cash and PayPal. Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+ (dispatch within 2 business days).</p>
-                </div>
-            </div>
+        <section class="nt-pdp-faq" aria-label="Frequently asked questions">
+            <h2>Frequently Asked Questions</h2>
+            <div class="nt-pdp-faq__list"><details><summary>What is included?</summary><p>100g moringa powder, 100g Darjeeling black tea, and 30g dried curry leaves.</p></details>
+<details><summary>How much do I save?</summary><p>$5.49 vs buying each item at listed RRP ($22.49 → $17.00).</p></details>
+<details><summary>Is the moringa lab-tested?</summary><p>Yes — NMI heavy-metal summary available on the moringa product page and PDF.</p></details>
+<details><summary>Payments & shipping?</summary><p>Free AU shipping on orders $80+. Dispatch within 2 business days from Melbourne.</p></details></div>
         </section>
 
-        <section class="product-legal-disclaimer" style="max-width:900px;margin:2.5rem auto 0;padding:1.25rem 1.35rem;background:#f9f9f6;border:1px solid #e5e5e5;border-radius:8px;font-size:0.9rem;line-height:1.75;color:#555;">
-            <p style="margin:0 0 0.65rem 0;"><strong>Legal disclaimer:</strong> NutriThrive is operated by Neer from Truganina, VIC (ABN 32 639 442 616). We are not doctors or health practitioners.</p>
-            <p style="margin:0;"><strong>These statements have not been evaluated by the TGA.</strong> Products in this pack are foods and ingredients and are not intended to diagnose, treat, cure, or prevent any disease. Consult your GP before use if you are pregnant, breastfeeding, or taking medication.</p>
-        </section>
+        <div class="nt-pdp-disclaimer"><p><strong>Legal disclaimer:</strong> NutriThrive is operated from Truganina, VIC (ABN 32 639 442 616).</p>
+<p><strong>These statements have not been evaluated by the TGA.</strong> Products are food ingredients, not intended to treat disease.</p></div>
     </main>
 
     <div id="nt-footer"></div>
@@ -897,6 +799,7 @@
     <script src="/scripts/global/cart.min.js"></script>
     <script src="/scripts/global/recently-viewed.min.js"></script>
     <script src="/scripts/global/cart-header.min.js"></script>
+    <script src="/shared/js/product-pdp-ui.min.js"></script>
     <script src="/scripts/global/script.min.js"></script>
     <!-- Ensure hamburger menu works - simple inline fallback -->
     <script>

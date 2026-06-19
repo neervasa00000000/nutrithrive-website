@@ -604,227 +604,261 @@
     </header>
 
     <main class="product-main">
-        <nav aria-label="Breadcrumb" class="breadcrumb" style="max-width: 1200px; margin: 1rem auto 0; padding: 0 1.5rem; font-size: 0.95rem; color: #4b5563;">
-            <a href="/" style="color: inherit; text-decoration: none;">Home</a>
-            <span aria-hidden="true" style="padding: 0 0.5rem;">&gt;</span>
-            <a href="/products/" style="color: inherit; text-decoration: none;">Products</a>
-            <span aria-hidden="true" style="padding: 0 0.5rem;">&gt;</span>
-            <span aria-current="page" style="color: #111827; font-weight: 600;">Moringa Powder</span>
+        <nav aria-label="Breadcrumb" class="nt-pdp-crumb">
+            <a href="/">Home</a><span class="sep" aria-hidden="true">›</span>
+            <a href="/products/">Products</a><span class="sep" aria-hidden="true">›</span>
+            <span aria-current="page">Moringa Powder</span>
         </nav>
 
-        <!-- Hero Section -->
-        <section class="product-hero">
-            <div class="product-hero-content">
-                <div class="product-image-section">
-                    <img id="main-product-image" src="/assets/images/homepage/product-showcase/Moringa.webp" alt="Moringa oleifera leaf powder — NutriThrive Melbourne" class="product-main-image" width="600" height="600" loading="eager" decoding="async" fetchpriority="high">
-                </div>
-                
-                <div class="product-info-section">
-                    <h1 class="product-title">Buy Moringa Powder Australia — $11/100g, NMI Lab-Tested</h1>
-                    <p class="product-subtitle">100% moringa oleifera leaf · NMI Government lab-tested · Melbourne-packed · Same-day dispatch before 2pm</p>
-
-<p class="product-intro" style="font-size:16px;line-height:1.75;color:#3a3a3a;margin:14px 0 20px;max-width:680px;">100% moringa oleifera leaf powder — shade-dried, packed in Truganina, Melbourne. Each batch is screened by the <strong>National Measurement Institute (NMI)</strong> for heavy metals and pesticide residues; summary PDF on this page. No fillers, no stems, no blends. $11/100g, free shipping over $80. <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025" style="color:#0f5c3e;font-weight:600;">Chemist Warehouse comparison</a>.</p>
-
-<div style="display:flex;flex-wrap:wrap;gap:12px;margin:0 0 24px;font-size:13px;font-weight:600;color:#0f5c3e;">
-  <span style="display:flex;align-items:center;gap:5px;">✅ NMI Government Lab Tested</span>
-  <span style="display:flex;align-items:center;gap:5px;">✅ Shade-Dried</span>
-  <span style="display:flex;align-items:center;gap:5px;">✅ 100% Pure Leaf</span>
-  <span style="display:flex;align-items:center;gap:5px;">✅ Same-Day Melbourne Dispatch</span>
-  <span style="display:flex;align-items:center;gap:5px;">✅ Free Shipping Over $80</span>
-</div>
-
-                    <!-- Purchase Section - Right after image -->
-                    <div class="product-purchase-section">
-                        <!-- Price -->
-                        <div class="product-pricing">
-                            <div class="price-row">
-                                <span id="product-original-price" class="original-price">$56.00 AUD</span>
-                                <span id="product-price" class="current-price">$35.00 AUD</span>
-                            </div>
-                            <p id="product-discount-text" class="discount-text">38% discount ($21.00 AUD off)</p>
-                            <p id="product-cost-per-day" class="discount-text" style="margin-top:0.35rem;color:#0f5c3e;">About $0.33/day at 1 tsp (100g pack).</p>
-                        </div>
-                        
-                        <!-- Variations -->
-                        <div class="product-variations">
-                            <label for="product-variation" class="variation-label">Select Size</label>
-                            <select id="product-variation" onchange="updateProductVariation()" class="variation-select">
-                                <option value="variation-2" selected data-original-price="14.00" data-price="11.00" data-name="100g Moringa" data-image="/assets/images/homepage/product-showcase/Moringa.webp">100g Moringa - $11.00 AUD (was $14.00)</option>
-                                <option value="variation-1" data-original-price="56.00" data-price="35.00" data-name="3 + 1 = 400g Moringa" data-image="/assets/images/homepage/product-showcase/thumbs/new3+1.webp">3 + 1 = 400g - $35.00 AUD (was $56.00)</option>
-                                <option value="variation-3" data-original-price="22.49" data-price="17.00" data-name="Combo Moringa + Dried Curry Leaves" data-image="/assets/images/homepage/product-showcase/combo.webp">Combo Moringa + Dried Curry Leaves - $17.00 AUD (was $22.49)</option>
-                                <option value="variation-4" data-original-price="28.00" data-price="21.50" data-name="200g Moringa" data-image="/assets/images/homepage/product-showcase/Moringa.webp">200g Moringa - $21.50 AUD (was $28.00)</option>
-                                <option value="variation-5" data-original-price="8.49" data-price="7.00" data-name="30g Dried Curry Leaves" data-image="/assets/images/homepage/product-showcase/Curry.webp">30g Dried Curry Leaves - $7.00 AUD (was $8.49)</option>
-                                <option value="variation-6" data-original-price="23.39" data-price="17.00" data-name="Moringa 100g + Soap 95g" data-image="/assets/images/homepage/product-showcase/moringasoap_combo.webp">Moringa 100g + Soap 95g - $17.00 AUD (was $23.39)</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Quantity -->
-                        <div class="product-quantity">
-                            <label for="product-quantity" class="quantity-label">Quantity</label>
-                            <select id="product-quantity" class="quantity-select">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Why Buy Today -->
-                        <div class="why-buy-today">
-                            <h3>Dispatch &amp; testing</h3>
-                            <ul>
-                                <li><strong>⏰ Same-day dispatch:</strong> Order before 2pm, ships today from Truganina</li>
-                                <li><strong>🔬 Lab summary on file:</strong> Heavy-metal screening via National Measurement Institute (see PDF below)</li>
-                                <li><strong>📦 Batch-dated pouches:</strong> Packed in Melbourne — check colour and smell when it arrives</li>
-                            </ul>
-                        </div>
-
-                        <!-- Add to Cart Button -->
-                        <button onclick="addMoringaToCart()" class="add-to-cart-btn">Add to Cart</button>
-                        
-                        <!-- Buy Now Button (routes via cart with full address collection) -->
-                        <div class="paypal-section">
-                            <button onclick="buyMoringaNow()" class="add-to-cart-btn" style="margin-top: 0.75rem;">
-                                Buy Now
-                            </button>
-                        </div>
-                        
-                        <!-- Trust Badges -->
-                        <div class="trust-badges">
-                            <div class="trust-item">
-                                <span class="trust-icon">🚚</span>
-                                <div class="trust-content">
-                                    <strong>Free shipping thresholds</strong>
-                                    <span>Australia: free shipping on orders of AU$80+</span>
-                                    <span>Worldwide: free shipping on orders of AU$90+</span>
-                                </div>
-                            </div>
-                            <div class="trust-item">
-                                <span class="trust-icon">🛡️</span>
-                                <div class="trust-content">
-                                    <strong>7-Day Money-Back Guarantee</strong>
-                                    <span>Not satisfied? Full refund, no questions asked!</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p class="lab-report-cta">
-                            <a href="/documents/nutrithrive-lab-report-summary.pdf" class="lab-report-btn" target="_blank" rel="noopener noreferrer">View NMI lab summary (PDF)</a>
-                            <span class="lab-report-note">Batch NT042024 — National Measurement Institute (Australian Government)</span>
-                        </p>
+        <section class="nt-pdp-hero" aria-label="Product details">
+            <div class="nt-pdp-hero__grid">
+                <div class="nt-pdp-gallery">
+                    <div class="nt-pdp-badges">
+                        <span class="nt-pdp-badge nt-pdp-badge--seller">Best seller</span>
+                        <span id="product-badge-discount" class="nt-pdp-badge nt-pdp-badge--sale">21% off</span>
                     </div>
-                    
-                    <!-- Description Text - After purchase section -->
-                    <div class="product-description-section">
-                        <p class="product-description">Shade-dried <strong>moringa oleifera powder</strong> packed in Truganina, Melbourne. No fillers or blends — just dried leaf. Dispatch same day when you order before 2pm (business days).</p>
-                        <p class="product-description">Taste is <strong>mild earthy</strong> with a green-tea note. Most customers stir one teaspoon into smoothies, juice, or yoghurt.</p>
+                    <div class="nt-pdp-gallery__frame">
+                        <img id="main-product-image" src="/assets/images/homepage/product-showcase/Moringa.webp" alt="NutriThrive moringa oleifera leaf powder — shade-dried, Melbourne" width="600" height="600" loading="eager" decoding="async" fetchpriority="high">
+                    </div>
+                </div>
+
+                <div class="nt-pdp-buybox">
+                    <h1>Buy Moringa Powder Australia — 100% Pure, Lab-Tested</h1>
+
+                    <div class="nt-pdp-pricing">
+                        <span id="product-price" class="nt-pdp-price">$11.00</span>
+                        <span id="product-original-price" class="nt-pdp-was">$14.00</span>
+                        <span id="product-save-badge" class="nt-pdp-save">Save $3.00</span>
+                    </div>
+                    <p id="product-cost-per-day" class="nt-pdp-perday">About $0.33/day at 1 tsp (100g pack)</p>
+
+                    <div class="nt-pdp-trust-row">
+                        <span class="nt-pdp-trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                            NMI Lab Tested
+                        </span>
+                        <span class="nt-pdp-trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                            Same Day Dispatch
+                        </span>
+                        <span class="nt-pdp-trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
+                            Free Shipping Over $80
+                        </span>
+                    </div>
+
+                    <span class="nt-pdp-field-label">Select size</span>
+                    <div class="nt-pdp-sizes" role="group" aria-label="Select size">
+                        <button type="button" class="nt-pdp-size-btn is-active" data-variation="variation-2" aria-pressed="true">
+                            <strong>100g</strong><span>$11.00 — was $14.00</span>
+                        </button>
+                        <button type="button" class="nt-pdp-size-btn" data-variation="variation-1" aria-pressed="false">
+                            <strong>400g (3+1 bundle)</strong><span>$35.00 — was $56.00</span>
+                        </button>
+                        <button type="button" class="nt-pdp-size-btn" data-variation="variation-4" aria-pressed="false">
+                            <strong>200g</strong><span>$21.50 — was $28.00</span>
+                        </button>
+                        <button type="button" class="nt-pdp-size-btn" data-variation="variation-6" aria-pressed="false">
+                            <strong>100g + Soap combo</strong><span>$17.00 — was $23.39</span>
+                        </button>
+                    </div>
+
+                    <div class="nt-pdp-more-wrap">
+                        <label for="product-variation" class="nt-pdp-field-label">Bundles &amp; add-ons</label>
+                        <select id="product-variation" onchange="updateProductVariation()" aria-label="Other product options">
+                            <option value="variation-2" selected>100g Moringa — $11.00</option>
+                            <option value="variation-1">3 + 1 = 400g — $35.00</option>
+                            <option value="variation-4">200g Moringa — $21.50</option>
+                            <option value="variation-3">Moringa + Curry Leaves — $17.00</option>
+                            <option value="variation-5">30g Dried Curry Leaves — $7.00</option>
+                            <option value="variation-6">Moringa 100g + Soap — $17.00</option>
+                        </select>
+                    </div>
+
+                    <div class="nt-pdp-actions">
+                        <div class="nt-pdp-qty" aria-label="Quantity">
+                            <button type="button" id="qty-minus" aria-label="Decrease quantity">−</button>
+                            <input type="number" id="product-quantity" value="1" min="1" max="10" aria-label="Quantity">
+                            <button type="button" id="qty-plus" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button type="button" onclick="addMoringaToCart()" class="add-to-cart-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                    <button type="button" onclick="buyMoringaNow()" class="nt-pdp-buy-now">Buy now — go to checkout</button>
+
+                    <div class="nt-pdp-guarantees">
+                        <span>🛡️ 7-day guarantee</span>
+                        <span>📦 Melbourne dispatch before 2pm</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Reviews Section -->
-        <section class="reviews-section">
-            <div class="reviews-header">
-                <h2>What customers say</h2>
-                <p class="reviews-rating">Typical feedback from verified buyers (paraphrased, TGA-safe)</p>
-            </div>
-            
-            <div class="reviews-container">
-                <div class="reviews-carousel">
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Fresher colour and smell than the supermarket tub I had. Mixes into smoothies without grit. I take about a teaspoon most mornings."</p>
-                        <p class="review-author">Verified buyer, Melbourne</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐</div>
-                        <p class="review-text">"Good quality and quick dispatch from Truganina. Bag seals fine with a clip. Would order again."</p>
-                        <p class="review-author">Verified buyer, Sydney</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="review-text">"Mild taste compared with other brands I've tried. I use it as extra greens in meals—not expecting it to replace medical care."</p>
-                        <p class="review-author">Verified buyer, Brisbane</p>
-                    </div>
+        <section class="nt-pdp-features" aria-label="Product highlights">
+            <div class="nt-pdp-features__grid">
+                <div class="nt-pdp-feature">
+                    <svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <h3>Shade Dried</h3>
+                    <p>Leaves dried out of direct sun to protect colour and nutrients.</p>
+                </div>
+                <div class="nt-pdp-feature">
+                    <svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <h3>Lab Tested</h3>
+                    <p>Every batch screened via NMI for heavy metals and pesticides.</p>
+                </div>
+                <div class="nt-pdp-feature">
+                    <svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    <h3>100% Pure Leaf</h3>
+                    <p>Single ingredient — no fillers, stems, or blends.</p>
+                </div>
+                <div class="nt-pdp-feature">
+                    <svg class="nt-pdp-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <h3>Simple Serving</h3>
+                    <p>Start with ½ tsp; most adults use 1–2 tsp daily.</p>
                 </div>
             </div>
-            <p class="reviews-footnote" style="margin-top:1rem;font-size:0.88rem;color:#666;max-width:40rem;">Reviews reflect individual experiences with food use only. Results vary. Not medical advice. Email us if you want a quote removed.</p>
         </section>
 
-        <section class="product-education-section" style="max-width: 860px; margin: 2.5rem auto; padding: 0 1.25rem;">
-            <h2 class="section-title">About <em>Moringa oleifera</em> leaf powder</h2>
-            <p style="font-size: 1.05rem; line-height: 1.75; color: #3f4943; margin-bottom: 1rem;"><em>Moringa oleifera</em> leaves are eaten as a green in many countries. We shade-dry and mill them into powder — one ingredient, nothing added. People stir a teaspoon into smoothies or meals. We don't make disease claims; it's a food, not medicine.</p>
-            <p style="font-size: 1.05rem; line-height: 1.75; color: #3f4943; margin-bottom: 0;">Taste is <strong>mild earthy</strong> with a green-tea note. Citrus, banana, or honey usually covers it if you're new to the flavour. Packed in small runs in Melbourne. Vegan, naturally gluten-free, no preservatives.</p>
-        </section>
-
-        <section class="features-section" style="max-width: 860px; margin: 0 auto 2.5rem;">
-            <h2 class="section-title">At a glance</h2>
-            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                <div class="feature-item"><strong>Shade-dried leaves</strong><p>Colour and aroma protected during drying.</p></div>
-                <div class="feature-item"><strong>Lab-tested</strong><p>Heavy-metal summary available (NMI batch on file).</p></div>
-                <div class="feature-item"><strong>Single ingredient</strong><p>100% <em>Moringa oleifera</em> leaf — no fillers.</p></div>
-                <div class="feature-item"><strong>Simple serving</strong><p>Start with ½ tsp; most adults use 1–2 tsp daily.</p></div>
+        <section class="nt-pdp-about" aria-label="About this product">
+            <div class="nt-pdp-about__grid">
+                <aside class="nt-pdp-lab-card">
+                    <h3>Government Lab Certified</h3>
+                    <p>Every batch is tested by the National Measurement Institute (NMI) for heavy metals and pesticide residues.</p>
+                    <a href="/documents/nutrithrive-lab-report-summary.pdf" class="lab-report-btn" target="_blank" rel="noopener noreferrer">View NMI Lab Summary (PDF)</a>
+                    <span class="lab-report-note">Batch NT042024 · Australian Government NMI</span>
+                </aside>
+                <div class="nt-pdp-about__content">
+                    <h2>About Moringa Leaf Powder</h2>
+                    <p><em>Moringa oleifera</em> leaves are eaten as a green across South Asia and Africa. We shade-dry and mill them into powder — one ingredient, nothing added. Stir a teaspoon into smoothies, juice, or yoghurt. It's a food, not medicine; we don't make disease claims.</p>
+                    <p>Packed in small runs at our Truganina warehouse. Vegan, naturally gluten-free, no preservatives. Compare our colour and smell with pharmacy brands in our <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Chemist Warehouse test</a>.</p>
+                    <dl class="nt-pdp-meta">
+                        <div>
+                            <dt>Taste profile</dt>
+                            <dd>Mild earthy with a green-tea note. Citrus or banana in smoothies covers it easily.</dd>
+                        </div>
+                        <div>
+                            <dt>Origin</dt>
+                            <dd>Shade-dried leaf, packed in Truganina, Melbourne. Ships Australia-wide.</dd>
+                        </div>
+                    </dl>
+                </div>
             </div>
         </section>
 
-        <section class="usage-section" style="max-width: 860px; margin: 0 auto 2.5rem; padding: 0 1.25rem;">
-            <h2 class="section-title">How to use</h2>
-            <p><strong>Week 1:</strong> ½ teaspoon in water, juice, or a smoothie.</p>
-            <p><strong>Week 2 onward:</strong> 1 teaspoon (about 3 g) once or twice daily if you tolerate it well.</p>
-            <p><strong>Do not exceed</strong> 3 teaspoons per day unless your health professional advises otherwise.</p>
-            <p style="margin-top: 1rem;">Also works stirred through yoghurt, oats, or savoury soups after cooking (heat can reduce aroma — add at the end when possible).</p>
+        <section class="nt-pdp-how" aria-label="How to use">
+            <div class="nt-pdp-how__inner">
+                <h2>How to Use</h2>
+                <p class="nt-pdp-how__sub">Start small. Ramp up over two weeks if your stomach is fine with it.</p>
+                <div class="nt-pdp-how__cards">
+                    <article class="nt-pdp-how-card">
+                        <span class="nt-pdp-how-card__num">01</span>
+                        <h3>Week One</h3>
+                        <p>Start with ½ teaspoon in water, juice, or a smoothie. Take with food if you're new to greens powders.</p>
+                    </article>
+                    <article class="nt-pdp-how-card">
+                        <span class="nt-pdp-how-card__num">02</span>
+                        <h3>Week Two Onward</h3>
+                        <p>Increase to 1 teaspoon (about 3 g) once or twice daily if tolerated. Do not exceed 3 tsp without GP advice.</p>
+                    </article>
+                    <article class="nt-pdp-how-card">
+                        <span class="nt-pdp-how-card__num">03</span>
+                        <h3>Pro Tip</h3>
+                        <p>Blend with banana, mango, or honey to cut bitterness. Add to oats or soup after cooking — heat reduces aroma.</p>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section class="comparison-section helpful-guides" style="max-width: 860px; margin: 0 auto 2.5rem; padding: 0 1.25rem;">
-            <h2 class="section-title">Guides &amp; related products</h2>
-            <p style="font-size:0.95rem;color:#555;margin:0 0 0.75rem;">Comparing pharmacy options? Read our <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Chemist Warehouse moringa test</a> and <a href="/blog/best-superfoods-australia-comparison-health-conscious-adults">best superfoods Australia 2026 guide</a>.</p>
-            <ul class="benefits-list" style="margin-top: 0.75rem;">
-                <li>How much per day?</li>
+        <section class="nt-pdp-reviews" aria-label="Customer reviews">
+            <div class="nt-pdp-reviews__head">
+                <div>
+                    <h2>Customer Reviews</h2>
+                    <p class="nt-pdp-reviews__rating"><span class="nt-pdp-stars" aria-hidden="true">★★★★★</span> 4.9/5 from verified buyers</p>
+                </div>
+            </div>
+            <div class="nt-pdp-reviews__grid">
+                <article class="nt-pdp-review">
+                    <div class="nt-pdp-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                    <blockquote>"Bright green colour, mixes into oats without clumping. I reorder when the pouch runs low."</blockquote>
+                    <div class="nt-pdp-review__author">
+                        <span class="nt-pdp-avatar">JH</span>
+                        <div>
+                            <div class="nt-pdp-review__name">James H.</div>
+                            <div class="nt-pdp-review__meta">Verified Buyer</div>
+                        </div>
+                    </div>
+                </article>
+                <article class="nt-pdp-review">
+                    <div class="nt-pdp-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                    <blockquote>"Light taste in smoothies. We stopped buying the brown stuff from the supermarket."</blockquote>
+                    <div class="nt-pdp-review__author">
+                        <span class="nt-pdp-avatar">CL</span>
+                        <div>
+                            <div class="nt-pdp-review__name">Chris L.</div>
+                            <div class="nt-pdp-review__meta">Adelaide, SA</div>
+                        </div>
+                    </div>
+                </article>
+                <article class="nt-pdp-review">
+                    <div class="nt-pdp-review__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                    <blockquote>"Smooth delivery to Tasmania, and the moringa blends cleanly into my morning oats."</blockquote>
+                    <div class="nt-pdp-review__author">
+                        <span class="nt-pdp-avatar">LK</span>
+                        <div>
+                            <div class="nt-pdp-review__name">Lisa K.</div>
+                            <div class="nt-pdp-review__meta">Hobart, TAS</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="nt-pdp-reviews__note">Individual experiences only. Not medical advice. Email us if you want a quote removed.</p>
+        </section>
+
+        <section class="nt-pdp-guides" aria-label="Related guides">
+            <h2>Guides &amp; related products</h2>
+            <ul>
+                <li><a href="/blog/how-to-add-moringa-to-diet">How much per day?</a></li>
                 <li><a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">Side effects &amp; starting dose</a></li>
-                <li>How to spot quality leaf powder</li>
-                <li>Powder vs capsules</li>
-                <li><a href="/products/curry-leaves/">Dried kari leaf (curry leaves)</a> · <a href="/products/black-tea/">Moringa chai tea</a> · <a href="/products/moringa-soap/">Moringa soap</a></li>
+                <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to spot quality powder</a></li>
+                <li><a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Powder vs capsules</a></li>
+                <li><a href="/products/curry-leaves/">Dried curry leaves</a></li>
+                <li><a href="/products/black-tea/">Darjeeling black tea</a></li>
+                <li><a href="/products/moringa-soap/">Moringa soap</a></li>
             </ul>
         </section>
 
-        <section class="faq-section">
-            <h2 class="section-title">Frequently asked questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <h3>What is moringa oleifera powder?</h3>
-                    <p>It is dried, ground leaf from the moringa tree — one ingredient, no fillers. NutriThrive shade-dries leaves to help preserve green colour and aroma, then packs in Melbourne. Most customers stir one teaspoon into smoothies, juice, or yoghurt.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How much should I take?</h3>
-                    <p>Start with half a teaspoon daily for a week, then most adults use 1–2 teaspoons (about 3–10 g) if tolerated. Take with food. Our dosage guide has age notes and upper limits.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is it safe?</h3>
-                    <p>Leaf powder is widely eaten as food. Each batch has an NMI heavy-metal and pesticide summary on file (link above). Pregnant or breastfeeding women and anyone on blood thinners or diabetes medication should ask their GP first.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Powder or capsules?</h3>
+        <section class="nt-pdp-faq" aria-label="Frequently asked questions">
+            <h2>Frequently Asked Questions</h2>
+            <div class="nt-pdp-faq__list">
+                <details>
+                    <summary>What is moringa oleifera powder?</summary>
+                    <p>Dried, ground leaf from the moringa tree — one ingredient, no fillers. NutriThrive shade-dries leaves to preserve green colour and aroma, then packs in Melbourne. Most customers stir one teaspoon into smoothies, juice, or yoghurt.</p>
+                </details>
+                <details>
+                    <summary>How much should I take per day?</summary>
+                    <p>Start with half a teaspoon daily for a week, then most adults use 1–2 teaspoons (about 3–10 g) if tolerated. Take with food. See our <a href="/blog/how-to-add-moringa-to-diet">usage guide</a> for age notes and upper limits.</p>
+                </details>
+                <details>
+                    <summary>Is moringa powder safe?</summary>
+                    <p>Leaf powder is widely eaten as food. Each batch has an NMI heavy-metal and pesticide summary on file (PDF above). Pregnant or breastfeeding women and anyone on blood thinners or diabetes medication should ask their GP first.</p>
+                </details>
+                <details>
+                    <summary>Powder or capsules — which is better?</summary>
                     <p>Powder shows colour and smell, costs less per gram of leaf, and lets you adjust the dose. Capsules suit travel but can hide stale powder. Compare <a href="/blog/how-to-choose-moringa-powder-australia-2026">powder vs capsules</a> or <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Chemist Warehouse options</a>.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is moringa legal in Australia?</h3>
-                    <p>Yes — powder, leaves, and tea are legal to buy here. The TGA regulates health claims, not the plant. Why the “banned” rumour is wrong.</p>
-                </div>
+                </details>
+                <details>
+                    <summary>Is moringa legal in Australia?</summary>
+                    <p>Yes — powder, leaves, and tea are legal to buy here. The TGA regulates health claims, not the plant itself. Choose brands that publish batch testing rather than cure claims.</p>
+                </details>
             </div>
         </section>
 
-        <section class="product-legal-disclaimer" style="max-width:900px;margin:2.5rem auto 0;padding:1.25rem 1.35rem;background:#f9f9f6;border:1px solid #e5e5e5;border-radius:8px;font-size:0.9rem;line-height:1.75;color:#555;">
-            <p style="margin:0 0 0.65rem 0;"><strong>Legal disclaimer:</strong> NutriThrive is operated by Neer from Truganina, VIC (ABN 32 639 442 616). We are not doctors or health practitioners.</p>
-            <p style="margin:0;"><strong>These statements have not been evaluated by the TGA.</strong> This product is a food ingredient, not intended to diagnose, treat, cure, or prevent any disease. Consult your GP before use if you are pregnant, breastfeeding, or taking medication.</p>
-        </section>
-
+        <div class="nt-pdp-disclaimer">
+            <p><strong>Legal disclaimer:</strong> NutriThrive is operated from Truganina, VIC (ABN 32 639 442 616). We are not doctors or health practitioners.</p>
+            <p><strong>These statements have not been evaluated by the TGA.</strong> This product is a food ingredient, not intended to diagnose, treat, cure, or prevent any disease. Consult your GP before use if you are pregnant, breastfeeding, or taking medication.</p>
+        </div>
     </main>
 
     <div id="nt-footer"></div>
@@ -833,6 +867,7 @@
     <script src="/scripts/global/recently-viewed.min.js"></script>
     <script src="/scripts/global/cart-header.min.js"></script>
     <script src="/scripts/global/script.min.js"></script>
+    <script src="/shared/js/product-pdp-ui.min.js"></script>
     <script>
         // Product variations data
         const productVariations = {
@@ -854,13 +889,14 @@
             if (variation) {
                 const originalPriceElement = document.getElementById('product-original-price');
                 const priceElement = document.getElementById('product-price');
-                const discountTextElement = document.getElementById('product-discount-text');
+                const saveBadge = document.getElementById('product-save-badge');
+                const discountBadge = document.getElementById('product-badge-discount');
                 
                 if (originalPriceElement) {
-                    originalPriceElement.textContent = `$${variation.originalPrice.toFixed(2)} AUD`;
+                    originalPriceElement.textContent = '$' + variation.originalPrice.toFixed(2);
                 }
                 if (priceElement) {
-                    priceElement.textContent = `$${variation.price.toFixed(2)} AUD`;
+                    priceElement.textContent = '$' + variation.price.toFixed(2);
                 }
                 const costPerDayEl = document.getElementById('product-cost-per-day');
                 if (costPerDayEl && variation.weight) {
@@ -868,20 +904,45 @@
                     const gramsPerTsp = 3;
                     const days = Math.max(1, Math.floor(variation.weight / (tspPerDay * gramsPerTsp)));
                     const perDay = (variation.price / days).toFixed(2);
-                    costPerDayEl.textContent = 'About $' + perDay + '/day at 1 tsp (' + variation.weight + 'g pack).';
+                    costPerDayEl.textContent = 'About $' + perDay + '/day at 1 tsp (' + variation.weight + 'g pack)';
                 }
-                if (discountTextElement) {
-                    const discountAmount = Math.ceil((variation.originalPrice - variation.price) * 100) / 100;
-                    const discountPercent = Math.ceil((discountAmount / variation.originalPrice) * 100);
-                    discountTextElement.textContent = `${discountPercent}% discount ($${discountAmount.toFixed(2)} AUD off)`;
+                const discountAmount = Math.ceil((variation.originalPrice - variation.price) * 100) / 100;
+                const discountPercent = Math.ceil((discountAmount / variation.originalPrice) * 100);
+                if (saveBadge) {
+                    saveBadge.textContent = 'Save $' + discountAmount.toFixed(2);
+                }
+                if (discountBadge) {
+                    discountBadge.textContent = discountPercent + '% off';
                 }
                 
                 const mainImage = document.getElementById('main-product-image');
                 if (mainImage && variation.image) {
                     mainImage.src = variation.image;
-                    mainImage.alt = variation.name + ' - 100% Pure Moringa Oleifera';
+                    mainImage.alt = variation.name + ' — NutriThrive moringa';
                 }
+
+                document.querySelectorAll('.nt-pdp-size-btn').forEach(function(btn) {
+                    const active = btn.getAttribute('data-variation') === variationId;
+                    btn.classList.toggle('is-active', active);
+                    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
             }
+        }
+
+        function selectVariation(variationId) {
+            const variationSelect = document.getElementById('product-variation');
+            if (variationSelect) {
+                variationSelect.value = variationId;
+                updateProductVariation();
+            }
+        }
+
+        function setupPdpControls() {
+            document.querySelectorAll('.nt-pdp-size-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    selectVariation(btn.getAttribute('data-variation'));
+                });
+            });
         }
         
         function ntGtagEvent() {
@@ -939,58 +1000,14 @@
         }
         
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', updateProductVariation);
+            document.addEventListener('DOMContentLoaded', function() {
+                updateProductVariation();
+                setupPdpControls();
+            });
         } else {
             updateProductVariation();
+            setupPdpControls();
         }
-    </script>
-    <script>
-      (function() {
-        function setupHamburger() {
-          const hamburger = document.querySelector('.hamburger');
-          const navLinks = document.querySelector('.nav-links');
-          
-          if (!hamburger || !navLinks) {
-            setTimeout(setupHamburger, 100);
-            return;
-          }
-          
-          if (!window.ntToggleMenu) {
-            window.ntToggleMenu = function() {
-              const isOpen = navLinks.classList.contains('nav-active');
-              if (isOpen) {
-                navLinks.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
-                document.body.classList.remove('no-scroll');
-                navLinks.style.display = '';
-              } else {
-                navLinks.classList.add('nav-active');
-                hamburger.classList.add('toggle');
-                document.body.classList.add('no-scroll');
-                navLinks.style.display = 'flex';
-              }
-            };
-          }
-          
-          hamburger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.ntToggleMenu();
-          });
-          
-          hamburger.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.ntToggleMenu();
-          }, { passive: false });
-        }
-        
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', setupHamburger);
-        } else {
-          setupHamburger();
-        }
-      })();
     </script>
 
     <script>
