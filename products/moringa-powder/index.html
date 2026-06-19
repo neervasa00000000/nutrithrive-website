@@ -46,7 +46,7 @@
     <meta property="og:url" content="https://nutrithrive.com.au/products/moringa-powder/">
     <meta property="og:title" content="Buy Moringa Powder Australia — $11/100g | NMI Lab-Tested | NutriThrive">
     <meta property="og:description" content="Lab-tested moringa oleifera leaf powder from Melbourne. Shade-dried, no fillers. From $11/100g with Australia-wide shipping.">
-    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g.png">
+    <meta property="og:image" content="https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">    <meta property="og:site_name" content="NutriThrive Australia">
     <meta property="og:locale" content="en_AU">
@@ -56,7 +56,7 @@
     <meta property="twitter:url" content="https://nutrithrive.com.au/products/moringa-powder/">
     <meta property="twitter:title" content="Buy Moringa Powder Australia — $11/100g | NutriThrive Melbourne">
     <meta property="twitter:description" content="Buy moringa powder Australia from $11/100g. NMI Government lab-tested, shade-dried, same-day Melbourne dispatch. Free shipping over $80.">
-    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g.png">
+    <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://nutrithrive.com.au/products/moringa-powder/">
@@ -94,7 +94,7 @@
       "mpn": "NT-MOR-100G",
       "description": "100% pure moringa oleifera leaf powder, shade-dried and NMI Government lab-tested for heavy metals and pesticide residues. No fillers. $11 per 100g. Same-day dispatch from Melbourne.",
       "image": [
-        "https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g.png",
+        "https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png",
         "https://nutrithrive.com.au/assets/images/og/moringa-social-1200.png"
       ],
       "category": "DietarySupplement",
@@ -618,7 +618,7 @@
                         <span id="product-badge-discount" class="nt-pdp-badge nt-pdp-badge--sale">21% off</span>
                     </div>
                     <div class="nt-pdp-gallery__frame">
-                        <img id="main-product-image" src="/assets/images/products/moringa-powder/moringa-powder-product-100g.png" alt="NutriThrive moringa oleifera leaf powder — shade-dried, Melbourne" width="531" height="440" loading="eager" decoding="async" fetchpriority="high">
+                        <img id="main-product-image" src="/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png" alt="NutriThrive moringa oleifera leaf powder — shade-dried, Melbourne" width="560" height="700" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
 
@@ -872,9 +872,9 @@
         // Product variations data
         const productVariations = {
             'variation-1': { originalPrice: 56.00, price: 35.00, name: '3 + 1 = 400g Moringa', weight: 400, image: '/assets/images/homepage/product-showcase/thumbs/new3+1.webp' },
-            'variation-2': { originalPrice: 14.00, price: 11.00, name: '100g Moringa', weight: 100, image: '/assets/images/products/moringa-powder/moringa-powder-product-100g.png' },
+            'variation-2': { originalPrice: 14.00, price: 11.00, name: '100g Moringa', weight: 100, image: '/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png' },
             'variation-3': { originalPrice: 22.49, price: 17.00, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '/assets/images/homepage/product-showcase/combo.webp' },
-            'variation-4': { originalPrice: 28.00, price: 21.50, name: '200g Moringa', weight: 200, image: '/assets/images/products/moringa-powder/moringa-powder-product-100g.png' },
+            'variation-4': { originalPrice: 28.00, price: 21.50, name: '200g Moringa', weight: 200, image: '/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png' },
             'variation-5': { originalPrice: 8.49, price: 7.00, name: '30g Dried Curry Leaves', weight: 30, image: '/assets/images/homepage/product-showcase/Curry.webp' },
             'variation-6': { originalPrice: 23.39, price: 17.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '/assets/images/homepage/product-showcase/moringasoap_combo.webp' }
         };
@@ -919,6 +919,13 @@
                 if (mainImage && variation.image) {
                     mainImage.src = variation.image;
                     mainImage.alt = variation.name + ' — NutriThrive moringa';
+                    if (variation.image.indexOf('100g-hero') !== -1) {
+                        mainImage.width = 560;
+                        mainImage.height = 700;
+                    } else {
+                        mainImage.removeAttribute('width');
+                        mainImage.removeAttribute('height');
+                    }
                 }
 
                 document.querySelectorAll('.nt-pdp-size-btn').forEach(function(btn) {
@@ -987,7 +994,7 @@
                     id: 'moringa-powder',
                     name: 'Moringa Powder',
                     price: 10.00,
-                    image: '/assets/images/products/moringa-powder/moringa-powder-product-100g.png',
+                    image: '/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png',
                     quantity: quantity
                 });
             }
@@ -1016,7 +1023,7 @@
           id: 'moringa-powder',
           name: 'Moringa Powder',
           price: 11.00,
-          image: '/assets/images/products/moringa-powder/moringa-powder-product-100g.png',
+          image: '/assets/images/products/moringa-powder/moringa-powder-product-100g-hero.png',
           url: window.location.pathname
         });
       }
