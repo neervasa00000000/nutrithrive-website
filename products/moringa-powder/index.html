@@ -75,7 +75,7 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/styles/global/style.min.css">
-    <link rel="stylesheet" href="/styles/products/moringa-powder-new.min.css?v=20260619">
+    <link rel="stylesheet" href="/styles/products/moringa-powder-new.min.css?v=2">
     <style>
       /* Inline overrides — beat stale cached gallery CSS */
       .nt-pdp-gallery__frame {
@@ -643,7 +643,7 @@
                         <span id="product-badge-discount" class="nt-pdp-badge nt-pdp-badge--sale">21% off</span>
                     </div>
                     <div class="nt-pdp-gallery__frame">
-                        <img id="main-product-image" src="/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=20260619" alt="NutriThrive moringa oleifera leaf powder — shade-dried, Melbourne" width="600" height="750" loading="eager" decoding="async" fetchpriority="high">
+                        <img id="main-product-image" src="/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=2" alt="NutriThrive moringa oleifera leaf powder — shade-dried, Melbourne" width="563" height="482" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
 
@@ -897,9 +897,9 @@
         // Product variations data
         const productVariations = {
             'variation-1': { originalPrice: 56.00, price: 35.00, name: '3 + 1 = 400g Moringa', weight: 400, image: '/assets/images/homepage/product-showcase/thumbs/new3+1.webp' },
-            'variation-2': { originalPrice: 14.00, price: 11.00, name: '100g Moringa', weight: 100, image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=20260619' },
+            'variation-2': { originalPrice: 14.00, price: 11.00, name: '100g Moringa', weight: 100, image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=2' },
             'variation-3': { originalPrice: 22.49, price: 17.00, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '/assets/images/homepage/product-showcase/combo.webp' },
-            'variation-4': { originalPrice: 28.00, price: 21.50, name: '200g Moringa', weight: 200, image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=20260619' },
+            'variation-4': { originalPrice: 28.00, price: 21.50, name: '200g Moringa', weight: 200, image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=2' },
             'variation-5': { originalPrice: 8.49, price: 7.00, name: '30g Dried Curry Leaves', weight: 30, image: '/assets/images/homepage/product-showcase/Curry.webp' },
             'variation-6': { originalPrice: 23.39, price: 17.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '/assets/images/homepage/product-showcase/moringasoap_combo.webp' }
         };
@@ -945,8 +945,8 @@
                     mainImage.src = variation.image;
                     mainImage.alt = variation.name + ' — NutriThrive moringa';
                     if (variation.image.indexOf('pdp-hero') !== -1) {
-                        mainImage.width = 600;
-                        mainImage.height = 750;
+                        mainImage.width = 563;
+                        mainImage.height = 482;
                     } else {
                         mainImage.removeAttribute('width');
                         mainImage.removeAttribute('height');
@@ -1019,7 +1019,7 @@
                     id: 'moringa-powder',
                     name: 'Moringa Powder',
                     price: 10.00,
-                    image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=20260619',
+                    image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=2',
                     quantity: quantity
                 });
             }
@@ -1048,7 +1048,7 @@
           id: 'moringa-powder',
           name: 'Moringa Powder',
           price: 11.00,
-          image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=20260619',
+          image: '/assets/images/products/moringa-powder/moringa-powder-pdp-hero.webp?v=2',
           url: window.location.pathname
         });
       }
