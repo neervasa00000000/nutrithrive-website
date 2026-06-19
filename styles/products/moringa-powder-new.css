@@ -48,17 +48,19 @@
 .nt-pdp-gallery__frame {
   background: #1b3022;
   border-radius: 12px;
-  padding: 2.5rem 2rem;
+  padding: 2rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
+  overflow: hidden;
 }
 .nt-pdp-gallery__frame img {
   width: 100%;
-  max-width: 340px;
+  max-width: 520px;
   height: auto;
+  max-height: none;
   object-fit: contain;
+  object-position: center;
   display: block;
 }
 .nt-pdp-badges {
@@ -680,7 +682,7 @@
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .nt-pdp-hero__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .nt-pdp-gallery__frame { min-height: 320px; padding: 2rem 1.5rem; }
+  .nt-pdp-gallery__frame { padding: 1.5rem 1rem; }
   .nt-pdp-features__grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .nt-pdp-about__grid { grid-template-columns: 1fr; }
   .nt-pdp-how__cards { grid-template-columns: 1fr; }
