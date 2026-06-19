@@ -186,6 +186,60 @@
   text-decoration: none;
 }
 
+.blog-v2-prose .article-toc a.toc-active,
+.blog-v2-prose .table-of-contents.nt-sticky-toc a.toc-active {
+  color: #0f6b4d;
+  font-weight: 700;
+}
+
+/* Sticky TOC on mobile — stays below promo + nav (see blog-v2-shell.css scroll-padding-top) */
+@media (max-width: 768px) {
+  .blog-v2-prose .article-toc.nt-sticky-toc,
+  .blog-v2-prose .table-of-contents.nt-sticky-toc {
+    position: sticky;
+    top: 9.5rem;
+    z-index: 25;
+    max-height: min(40vh, 16rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 4px 20px rgba(15, 107, 77, 0.1);
+    background: rgba(249, 252, 250, 0.98);
+  }
+
+  .blog-v2-prose .table-of-contents.nt-sticky-toc {
+    padding: 1rem 1.25rem !important;
+    margin: 1rem 0 1.5rem !important;
+  }
+
+  .blog-v2-prose .table-of-contents.nt-sticky-toc > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .blog-v2-prose .table-of-contents.nt-sticky-toc h2 {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .blog-v2-prose .table-of-contents.nt-sticky-toc h4 {
+    font-size: 1rem !important;
+  }
+
+  .blog-v2-prose .table-of-contents.nt-sticky-toc p {
+    display: none;
+  }
+
+  .blog-v2-prose .table-of-contents.nt-sticky-toc a[href^="#"] {
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 .nt-blog-article .nt-related-links-block,
 .blog-v2-prose .nt-related-links-block {
   margin: 2.5rem 0 0 !important;
@@ -278,5 +332,31 @@
 
   .blog-v2-prose table {
     font-size: 0.875rem;
+  }
+
+  .blog-v2-prose .btn-row a,
+  .blog-v2-prose .featured-snippet-box .btn-row a,
+  .blog-v2-prose .cta-button-primary,
+  .blog-v2-prose a[style*="border-radius: 50px"],
+  .blog-v2-prose a[style*="border-radius:50px"],
+  .blog-v2-prose a[style*="padding: 10px 20px"],
+  .blog-v2-prose a[style*="padding:10px 20px"],
+  .blog-v2-prose a[style*="padding: 1rem 2rem"],
+  .blog-v2-prose a[style*="padding: 0.75rem 1.5rem"] {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .blog-v2-prose .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .blog-v2-prose .btn-row a {
+    width: 100%;
+    text-align: center;
   }
 }
