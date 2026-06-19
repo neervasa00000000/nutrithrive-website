@@ -45,24 +45,20 @@
 .nt-pdp-gallery {
   position: relative;
 }
+.nt-pdp-gallery__img,
+.nt-pdp-gallery__frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
 .nt-pdp-gallery__frame {
   background: #1b3022;
   border-radius: 12px;
   padding: 0;
   display: block;
   width: 100%;
-  overflow: hidden;
   line-height: 0;
-}
-.nt-pdp-gallery__frame img {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-  max-height: none !important;
-  aspect-ratio: auto !important;
-  object-fit: unset !important;
-  display: block !important;
-  margin: 0 !important;
 }
 .nt-pdp-badges {
   position: absolute;
