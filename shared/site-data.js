@@ -17,7 +17,7 @@ window.NT_SITE_DATA = {
     defaultAuRate: 8.73,
     dispatchNote: 'Order before 2pm for same-day Melbourne dispatch',
   },
-  rating: { value: '4.9', count: 16 },
+  rating: { value: '4.9', count: 47 },
   social: {
     instagram: 'https://www.instagram.com/nutri__thrive/',
   },
@@ -398,6 +398,16 @@ window.NT_SITE_DATA = {
         { label: 'Payment', file: '/payment' },
         { label: 'Shipping & Returns', file: '/pages/shipping/shipping-returns.html' },
         { label: 'Melbourne delivery', file: '/melbourne' },
+      ],
+    },
+    {
+      title: 'Locations / Deliver to',
+      links: [
+        { label: 'Melbourne', file: '/melbourne' },
+        { label: 'Sydney', file: '/moringa-sydney' },
+        { label: 'Brisbane', file: '/moringa-brisbane' },
+        { label: 'Perth', file: '/moringa-perth' },
+        { label: 'Adelaide', file: '/moringa-adelaide' },
       ],
     },
     {

@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
 <head>
+<script src="/scripts/global/defer-loader.min.js" defer></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Shade- vs Sun-Dried Moringa: Quality Guide (2026)</title>
 <!-- Google Analytics - Deferred until user interaction -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+    });
+  }
 </script>
 <link rel="preconnect" href="https://www.googletagmanager.com"/>
 <link rel="dns-prefetch" href="https://www.google-analytics.com"/>
@@ -20,8 +39,7 @@
 <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa"/>
 <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa"/>
  <meta name="description" content="Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).">
-<meta name="keywords" content="shade dried moringa, moringa processing quality, sun dried moringa vs shade dried, moringa nutrient preservation, best moringa processing"/>
- <meta name="author" content="NutriThrive">
+<meta name="author" content="NutriThrive">
  <meta property="og:type" content="article">
  <meta property="og:url" content="https://nutrithrive.com.au/blog/science-shade-drying-vs-sun-drying-moringa">
  <meta property="og:title" content="Shade- vs Sun-Dried Moringa: Quality Guide (2026)">
@@ -393,7 +411,6 @@ I Quit Sugar for 90 Days: Honest Diary
 </div>
 </main>
 <div id="nt-footer"></div>
-<script src="/scripts/global/defer-loader.min.js" defer></script>
 <script src="/scripts/global/reddit-pixel.min.js" defer></script>
 <script src="/shared/site-data.min.js" defer></script>
 <script src="/scripts/global/cart.min.js" defer></script>

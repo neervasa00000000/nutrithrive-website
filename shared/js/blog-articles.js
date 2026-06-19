@@ -3,7 +3,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-rated-moringa-capsules-powders-australia-2026-ultimate-guide",
     "title": "Best Moringa Capsules & Powder in Australia (2026 Ultimate Guide)",
-    "description": "Best moringa capsules and powder in Australia 2026: ranked by quality, price and bioavailability. Nutri Thrive, Melbourne — ships AU-wide.",
+    "description": "Best moringa capsules and powder in Australia 2026: ranked by quality, price and bioavailability. NutriThrive, Melbourne — ships AU-wide.",
     "category": "Wellness",
     "href": "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide"
   },

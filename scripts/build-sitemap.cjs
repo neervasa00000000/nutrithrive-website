@@ -39,6 +39,7 @@ const PATH_BLOCKLIST = new Set([
   "pages/shop/payment.html",
   "buy-moringa-powder-australia/index.html",
   "shared/components/author-bio.html",
+  "arcade/japan.html",
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([]);

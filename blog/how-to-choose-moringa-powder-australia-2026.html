@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
 <head>
+<script src="/scripts/global/defer-loader.min.js" defer></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>How to Choose Moringa Powder in Australia (2026 Buyer Guide)</title>
 <!-- Google Analytics - Deferred until user interaction -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+    });
+  }
 </script>
 <link rel="canonical" href="https://nutrithrive.com.au/blog/how-to-choose-moringa-powder-australia-2026"/>
 <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/how-to-choose-moringa-powder-australia-2026"/>
 <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/how-to-choose-moringa-powder-australia-2026"/>
 <meta name="description" content="How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh — 2026."/>
-<meta name="keywords" content="how to choose moringa powder, best moringa powder australia, organic moringa powder australia, buy moringa powder australia"/>
 <meta name="author" content="NutriThrive"/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content="https://nutrithrive.com.au/blog/how-to-choose-moringa-powder-australia-2026"/>
@@ -124,7 +142,6 @@
 <link rel="dns-prefetch" href="https://www.redditstatic.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet"/>
-<script src="/scripts/global/defer-loader.min.js" defer></script>
 <!-- NutriThrive v2 blog shell -->
 <link rel="stylesheet" href="/assets/css/design-system.min.css"/>
 <link rel="stylesheet" href="/styles/global/style.min.css"/>

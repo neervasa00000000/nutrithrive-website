@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
 <head>
+<script src="/scripts/global/defer-loader.min.js" defer></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Moringa Patches Australia Review 2026 — Do They Actually Work? (Glorenda, Healrize, Clearena)</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+    });
+  }
 </script>
 <link rel="preconnect" href="https://www.googletagmanager.com"/>
 <meta name="robots" content="index, follow"/>
@@ -17,7 +36,6 @@
 <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/moringa-patches-australia-review-do-they-work"/>
 <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/moringa-patches-australia-review-do-they-work"/>
 <meta name="description" content="Moringa patches Australia review 2026: what Glorenda, Healrize, Clearena and moringa berberine patches actually are, what the science says about transdermal moringa delivery, and why powder remains the only evidence-backed route. Honest guide."/>
-<meta name="keywords" content="moringa patches australia, moringa patches review, glorenda moringa patch review, moringa berberine patches australia, moringa patch chemist warehouse, moringa berberine patch, healrize moringa patch reviews"/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content="https://nutrithrive.com.au/blog/moringa-patches-australia-review-do-they-work"/>
 <meta property="og:title" content="Moringa Patches Australia Review 2026 — Do They Actually Work?"/>
@@ -35,7 +53,11 @@
   "description": "An evidence-based review of moringa patches sold in Australia in 2026: Glorenda, Healrize, Clearena, moringa berberine patches. What transdermal science actually says, what the TGA says about patch claims, and what actually works.",
   "datePublished": "2026-06-18",
   "dateModified": "2026-06-18",
-  "author": {"@type": "Person", "@id": "https://nutrithrive.com.au/#person-neer", "name": "Neer", "jobTitle": "Moringa Producer, NutriThrive Truganina"},
+  "author": {
+  "@type": "Person",
+  "@id": "https://nutrithrive.com.au/#person-neer",
+  "name": "Neer"
+},
   "publisher": {"@type": "Organization", "name": "NutriThrive", "logo": {"@type": "ImageObject", "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"}},
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://nutrithrive.com.au/blog/moringa-patches-australia-review-do-they-work"}
 }</script>
@@ -95,7 +117,6 @@
   ]
 }</script>
 <link rel="icon" href="/assets/images/logo/LOGO.webp"/>
-<script src="/scripts/global/defer-loader.min.js" defer></script>
 <script src="/scripts/global/reddit-pixel.min.js" defer></script>
 <style>
 .verdict-red { background:#fef2f2; border:2px solid #ef4444; border-radius:12px; padding:1.5rem; margin:1.5rem 0; }
@@ -111,6 +132,7 @@
 <link rel="stylesheet" href="/assets/css/tailwind-v2.min.css"/>
 <link rel="stylesheet" href="/blog/blog-v2-prose.min.css"/>
 <link rel="stylesheet" href="/shared/css/v2-extra.min.css"/>
+<link rel="stylesheet" href="/shared/css/author-bio.min.css"/>
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article">
 <div class="nt-sticky-top">
@@ -269,5 +291,6 @@
 </main>
 <footer class="nt-v2-footer"></footer>
 <script src="/scripts/global/main.min.js" defer></script>
+<script src="/shared/js/author-bio.min.js" defer></script>
 </body>
 </html>

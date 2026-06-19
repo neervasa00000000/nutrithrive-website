@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
 <head>
+<script src="/scripts/global/defer-loader.min.js" defer></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Moringa Side Effects Australia: Safe Dose & What Too Much Does (2026)</title>
 <!-- Google Analytics - Deferred until user interaction -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+    });
+  }
 </script>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://nutrithrive.com.au/blog/moringa-side-effects-what-happens-take-too-much-2026"/>
 <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/moringa-side-effects-what-happens-take-too-much-2026"/>
 <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/moringa-side-effects-what-happens-take-too-much-2026"/>
 <meta name="description" content="Moringa side effects explained: safe daily dose, what happens if you take too much, interactions with medication and pregnancy safety. Evidence-based guide for Australians."/>
-<meta name="keywords" content="side effects of moringa powder, moringa side effects, moringa powder side effects, can moringa be harmful, moringa dangers australia"/>
 <meta name="author" content="NutriThrive"/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content="https://nutrithrive.com.au/blog/moringa-side-effects-what-happens-take-too-much-2026"/>
@@ -141,7 +159,6 @@
 <link rel="dns-prefetch" href="https://www.redditstatic.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet"/>
-<script src="/scripts/global/defer-loader.min.js" defer></script>
 <!-- NutriThrive v2 blog shell -->
 <link rel="stylesheet" href="/assets/css/design-system.min.css"/>
 <link rel="stylesheet" href="/styles/global/style.min.css"/>
