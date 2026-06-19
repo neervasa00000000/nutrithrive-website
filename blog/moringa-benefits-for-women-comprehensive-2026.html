@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
 <head>
+<script src="/scripts/global/defer-loader.min.js" defer></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Moringa Benefits for Women: Iron, Hormones & Skin (Australia 2026)</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
+<!-- Google Analytics - Deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+  if (window.DeferLoader) {
+    window.DeferLoader.deferUntilInteraction(function() {
+      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+        async: true, crossorigin: 'anonymous'
+      }).then(function() {
+        gtag('js', new Date());
+        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+    }, { once: true, passive: true });
+  } else {
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+    });
+  }
 </script>
 <link rel="preconnect" href="https://www.googletagmanager.com"/>
 <link rel="dns-prefetch" href="https://www.google-analytics.com"/>
@@ -21,7 +40,6 @@
 <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/moringa-benefits-for-women-comprehensive-2026"/>
 <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/moringa-benefits-for-women-comprehensive-2026"/>
 <meta name="description" content="Moringa benefits for women: boosts iron for anaemia, balances hormones, clears skin and supports milk supply. Evidence-backed guide with dosage tips for Australian women. (2026)"/>
-<meta name="keywords" content="moringa benefits for women, moringa hormones women, moringa period pain, moringa hormonal acne, moringa iron women, moringa menopause australia, moringa pregnancy, moringa energy women melbourne"/>
 <meta name="author" content="NutriThrive"/>
 
 <meta property="og:type" content="article"/>
@@ -449,7 +467,6 @@ Cortisol belly fat story
 </div>
 </main>
 <div id="nt-footer"></div>
-<script src="/scripts/global/defer-loader.min.js" defer></script>
 <script src="/scripts/global/reddit-pixel.min.js" defer></script>
 <script src="/shared/site-data.min.js" defer></script>
 <script src="/scripts/global/cart.min.js" defer></script>

@@ -283,7 +283,7 @@ const products = [
     aboutTitle: 'About the Combo Pack',
     aboutParas: [
       'Morning smoothie moringa, afternoon Darjeeling, evening tadka with kari leaf — one box covers the basics without three separate orders.',
-      'Moringa is NMI lab-tested; tea and curry leaves are packed in the same Truganina warehouse. See <a href="/blog/high-protein-moringa-recipes-australia-2026">moringa recipes</a> and our <a href="/blog/nutrithrive-dried-curry-leaves-tradition-health">curry leaf guide</a> to get started.',
+      'Moringa is NMI lab-tested; tea and curry leaves are packed in the same Truganina warehouse. See <a href="/blog/how-to-add-moringa-to-diet">moringa recipes</a> and our <a href="/blog/nutrithrive-dried-curry-leaves-tradition-health">curry leaf guide</a> to get started.',
     ],
     meta: [
       { dt: 'Best for', dd: 'New customers sampling the range, or gifts for health-conscious cooks.' },
@@ -304,7 +304,7 @@ const products = [
     ],
     reviewsNote: 'Individual experiences only. Not medical advice.',
     guides: [
-      { href: '/blog/high-protein-moringa-recipes-australia-2026', label: 'High-protein moringa recipes' },
+      { href: '/blog/how-to-add-moringa-to-diet', label: 'How to add moringa to your diet' },
       { href: '/blog/nutrithrive-dried-curry-leaves-tradition-health', label: 'Curry leaves guide' },
       { href: '/products/moringa-powder/', label: 'Moringa powder (single)' },
       { href: '/products/black-tea/', label: 'Darjeeling tea (single)' },
