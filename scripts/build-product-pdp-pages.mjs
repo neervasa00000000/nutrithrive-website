@@ -88,7 +88,7 @@ function buildMain(p) {
                 <div class="nt-pdp-gallery">
                     <div class="nt-pdp-badges">${badgeSeller}<span class="nt-pdp-badge nt-pdp-badge--sale">${discountPct}% off</span></div>
                     <div class="nt-pdp-gallery__frame">
-                        <img id="main-product-image" src="${p.image}" alt="${p.imageAlt}" width="600" height="600" loading="eager" decoding="async" fetchpriority="high">
+                        <img id="main-product-image" src="${p.image}" alt="${p.imageAlt}" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
                 ${buybox(p)}
