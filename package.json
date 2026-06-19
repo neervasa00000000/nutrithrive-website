@@ -4,14 +4,14 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build-assets.mjs",
-    "ci": "npm run build && node scripts/verify-sitemap-locs.mjs && node scripts/prepare-netlify-publish.mjs",
+    "ci": "npm run build:minify && node scripts/verify-sitemap-locs.mjs && node scripts/prepare-netlify-publish.mjs",
     "deploy:prod": "node scripts/prepare-netlify-publish.mjs && netlify deploy --dir=.netlify-publish --prod",
     "build:tailwind": "tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify",
     "build:minify": "node scripts/build-assets.mjs --skip-tailwind"
   },
   "dependencies": {
     "firecrawl": "^4.25.2",
-    "nodemailer": "^8.0.10"
+    "nodemailer": "^9.0.1"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",

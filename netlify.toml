@@ -1,5 +1,5 @@
 [build]
-  command = "npm ci && npm run build && node scripts/prepare-netlify-publish.mjs"
+  command = "npm ci && npm run build:minify && node scripts/prepare-netlify-publish.mjs"
   publish = ".netlify-publish"
 
 [[headers]]
