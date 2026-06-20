@@ -1,4 +1,4 @@
-/** Auto-generated — 21 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 23 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-rated-moringa-capsules-powders-australia-2026-ultimate-guide",
@@ -22,6 +22,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/cortisol-cocktail-trend-explained-moringa-2026"
   },
   {
+    "slug": "glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
+    "title": "What to Eat on Ozempic or Other GLP-1 Medications (2026): Closing the Nutrition Gaps",
+    "description": "GLP-1 medications mean eating less — which can mean missing nutrients. A practical, GP-aligned guide to the nutrition gaps GLP-1 users face and where moringa fits as a daily nutrient top-up.",
+    "category": "Nutrition",
+    "href": "/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026"
+  },
+  {
     "slug": "grow-moringa-tree-australia",
     "title": "How to Grow Moringa Tree in Australia (2026) | Melbourne, Pots, Frost & Expert Tips",
     "description": "Moringa tree Australia: which states it grows in, frost survival, pots vs ground, seed germination, pruning, and the fastest way to your first leaf harvest. Melbourne-based NutriThrive guide.",
@@ -41,6 +48,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh — 2026.",
     "category": "Buyer's Guide",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026"
+  },
+  {
+    "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
+    "title": "Iron Deficiency in Australian Women (2026): Symptoms, Causes & Plant-Based Food Sources",
+    "description": "1.1 million Australians are iron deficient and most don't know the symptoms. A clear, GP-reviewed breakdown of signs, causes, and the best plant-based iron foods — including moringa.",
+    "category": "Health",
+    "href": "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
   },
   {
     "slug": "is-moringa-banned-in-australia",
