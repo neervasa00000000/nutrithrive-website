@@ -1,5 +1,12 @@
-/** Auto-generated — 23 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 24 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
+  {
+    "slug": "ag1-alternative-australia-moringa-comparison-2026",
+    "title": "AG1 Alternative Australia (2026): Is a $150 Greens Powder Worth It, or Is Moringa Enough?",
+    "description": "AG1 costs $150+ a month in Australia. We break down what's actually in it, what moringa alone covers, and where simple beats stacked for most people's budgets.",
+    "category": "Comparison",
+    "href": "/blog/ag1-alternative-australia-moringa-comparison-2026"
+  },
   {
     "slug": "best-rated-moringa-capsules-powders-australia-2026-ultimate-guide",
     "title": "Best Moringa Capsules & Powder in Australia (2026 Ultimate Guide)",
