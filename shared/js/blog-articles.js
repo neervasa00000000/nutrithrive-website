@@ -1,4 +1,4 @@
-/** Auto-generated — 20 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 21 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-rated-moringa-capsules-powders-australia-2026-ultimate-guide",
@@ -13,6 +13,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Discover Australia's top superfoods for 2026 – moringa, spirulina, matcha, curry leaves &amp; more. Lab-tested insights on nutrition, caffeine &amp; wellness. Find your best green boost.",
     "category": "Research Guide",
     "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
+  },
+  {
+    "slug": "cortisol-cocktail-trend-explained-moringa-2026",
+    "title": "The Cortisol Cocktail Trend, Explained: What Actually Helps (And Where Moringa Fits)",
+    "description": "Cortisol cocktails are everywhere on TikTok. We break down what's evidence-based, what's hype, and why moringa — not a $50 powder blend — might be the simpler answer. Melbourne lab-tested.",
+    "category": "Wellness",
+    "href": "/blog/cortisol-cocktail-trend-explained-moringa-2026"
   },
   {
     "slug": "grow-moringa-tree-australia",
