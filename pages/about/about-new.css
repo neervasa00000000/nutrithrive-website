@@ -25,6 +25,10 @@
 }
 
 .about-hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 2.5rem;
+    align-items: center;
     position: relative;
     border-radius: 0;
     padding: 0;
@@ -40,9 +44,23 @@
 }
 
 .about-hero-main {
-    max-width: 560px;
     position: relative;
     z-index: 1;
+}
+
+.about-hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-hero-visual img {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(15, 107, 77, 0.12);
 }
 
 .about-hero-kicker {
@@ -628,15 +646,24 @@
    RESPONSIVE
    ============================ */
 
+@media (max-width: 900px) {
+    .about-hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0;
+    }
+
+    .about-hero-visual img {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 1024px) {
     .about-hero-aside {
         position: static;
         width: 100%;
         margin-top: 1.9rem;
-    }
-
-    .about-hero-layout {
-        padding: 0;
     }
 
     .about-process-steps {
