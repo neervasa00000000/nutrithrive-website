@@ -1,8 +1,8 @@
-/** Auto-generated — 25 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 28 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
-    "title": "AG1 Alternative Australia (2026): Is a $150 Greens Powder Worth It, or Is Moringa Enough?",
+    "title": "AG1 Alternative Australia (2026): Is Moringa Enough?",
     "description": "AG1 costs $150+ a month in Australia. We break down what's actually in it, what moringa alone covers, and where simple beats stacked for most people's budgets.",
     "category": "Comparison",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026"
@@ -23,21 +23,21 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "cortisol-cocktail-trend-explained-moringa-2026",
-    "title": "The Cortisol Cocktail Trend, Explained: What Actually Helps (And Where Moringa Fits)",
+    "title": "Cortisol Cocktail Trend Explained: What Helps (2026)",
     "description": "Cortisol cocktails: what's evidence-based, what's hype, and why moringa may be the simpler answer than a $50 powder blend. Melbourne lab-tested.",
     "category": "Wellness",
     "href": "/blog/cortisol-cocktail-trend-explained-moringa-2026"
   },
   {
     "slug": "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
-    "title": "Darjeeling Black Tea Australia: First Flush vs Second Flush Guide (2026)",
-    "description": "Darjeeling tea in Australia: first flush vs second flush explained, caffeine content, proper brewing, and how to spot real Darjeeling from blended fakes. Melbourne dispatch.",
+    "title": "Darjeeling Tea Australia: First Flush vs Second Flush (2026)",
+    "description": "Darjeeling in Australia: first vs second flush, caffeine levels, brewing tips, and how to spot real tea from supermarket blends. Melbourne dispatch.",
     "category": "Tea Guide",
     "href": "/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026"
   },
   {
     "slug": "glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
-    "title": "What to Eat on Ozempic or Other GLP-1 Medications (2026): Closing the Nutrition Gaps",
+    "title": "What to Eat on Ozempic &amp; GLP-1 Medications (2026)",
     "description": "GLP-1 medications reduce intake and nutrients. A GP-aligned guide to the nutrition gaps Ozempic users face and where moringa fits as a daily top-up.",
     "category": "Nutrition",
     "href": "/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026"
@@ -48,6 +48,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Grow moringa in Australia: which states it survives in, frost tips, pots vs ground, seed germination, pruning and your first leaf harvest.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia"
+  },
+  {
+    "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
+    "title": "How Long Does Moringa Powder Last? Storage &amp; Shelf Life Guide (2026)",
+    "description": "How long does moringa powder last? Properly stored, 12-24 months unopened, 6-12 months at best potency once opened. The exact storage mistakes that cut shelf life short.",
+    "category": "Guides",
+    "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026"
   },
   {
     "slug": "how-to-add-moringa-to-diet",
@@ -65,7 +72,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
-    "title": "Iron Deficiency in Australian Women (2026): Symptoms, Causes & Plant-Based Food Sources",
+    "title": "Iron Deficiency in Australian Women: Symptoms (2026)",
     "description": "1.1 million Australians are iron deficient and most don't know it. GP-reviewed: signs, causes and the best plant-based iron foods, including moringa.",
     "category": "Health",
     "href": "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
@@ -78,11 +85,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/is-moringa-banned-in-australia"
   },
   {
+    "slug": "is-moringa-safe-for-dogs-benefits-dosage-australia-2026",
+    "title": "Is Moringa Safe for Dogs? Benefits, Dosage &amp; What to Watch For (2026)",
+    "description": "Is moringa safe for dogs? Yes, in moderation. A vet-aware guide to benefits, dosage by weight, mixing methods, and the one health condition that changes the answer.",
+    "category": "Pets",
+    "href": "/blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026"
+  },
+  {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
     "title": "Moringa and Berberine Together — What the Science Actually Says (Australia 2026)",
     "description": "Moringa and berberine combined: what the research says, drug interactions to know, dosage guidance and whether patches or powder make more sense.",
     "category": "Research Guide",
     "href": "/blog/moringa-and-berberine-australia-what-science-says-2026"
+  },
+  {
+    "slug": "moringa-and-blood-sugar-diabetes-research-2026",
+    "title": "Moringa and Blood Sugar: What the Research Actually Shows (2026)",
+    "description": "Does moringa help blood sugar? The honest answer: research is mixed. Some studies show promise, others show no effect. What this means if you have diabetes.",
+    "category": "Health",
+    "href": "/blog/moringa-and-blood-sugar-diabetes-research-2026"
   },
   {
     "slug": "moringa-benefits-for-women-comprehensive-2026",
