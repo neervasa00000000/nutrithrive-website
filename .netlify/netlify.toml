@@ -1,0 +1,4139 @@
+functionsDirectory = "/Users/neervasa/Desktop/Website/netlify/functions"
+functionsDirectoryOrigin = "default"
+headersOrigin = "config"
+plugins = []
+
+[build]
+publish = "/Users/neervasa/Desktop/Website/.netlify-publish"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npm ci && npm run build:minify && node scripts/prepare-netlify-publish.mjs"
+functions = "/Users/neervasa/Desktop/Website/netlify/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[functions]
+
+[functions."*"]
+
+[[headers]]
+for = "/shared/components/*"
+
+[headers.values]
+X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+for = "/nutrithrive_labs/*"
+
+[headers.values]
+X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+for = "/assets/images/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/assets/images/**/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/assets/css/*.min.css"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/**/*.min.js"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/**/*.min.css"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(self https://www.paypal.com)"
+Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.paypal.com https://www.paypalobjects.com https://www.googletagmanager.com https://www.google-analytics.com https://www.redditstatic.com https://applepay.cdn-apple.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.paypal.com https://api-m.paypal.com https://api-m.sandbox.paypal.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://ipapi.co https://ip-api.com https://www.redditstatic.com https://pixel-config.reddit.com https://conversions-config.reddit.com https://challenges.cloudflare.com; frame-src https://www.paypal.com https://challenges.cloudflare.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests"
+Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.paypal.com https://www.paypalobjects.com https://www.googletagmanager.com https://www.google-analytics.com https://www.redditstatic.com https://applepay.cdn-apple.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.paypal.com https://api-m.paypal.com https://api-m.sandbox.paypal.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://ipapi.co https://ip-api.com https://www.redditstatic.com https://pixel-config.reddit.com https://conversions-config.reddit.com https://challenges.cloudflare.com; frame-src https://www.paypal.com https://challenges.cloudflare.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co"
+
+[[redirects]]
+from = "/.firecrawl/*"
+to = "/.firecrawl/:splat"
+status = 404.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/.firecrawl"
+to = "/.firecrawl"
+status = 404.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/assets/images/product_photos/webp/thumbs/moringa.jpg"
+to = "/assets/images/product_photos/moringa.webp"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/assets/images/product_photos/webp/thumbs/moringa.webp"
+to = "/assets/images/product_photos/moringa.webp"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/assets/images/product_photos/moringa.jpeg"
+to = "/assets/images/product_photos/moringa.webp"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/index-directory.partial"
+to = "/blog/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/index-directory.partial.html"
+to = "/blog/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/crawl_results.json"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/seo_audit_report.txt"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/auto_fixes.md"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_audit.js"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_crawl.js"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_fixes.js"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/scripts/*"
+to = "/scripts/:splat"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/audit/*"
+to = "/audit/:splat"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/.build/*"
+to = "/.build/:splat"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/tools/*"
+to = "/tools/:splat"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/shipping-returns.html"
+to = "/pages/shipping/shipping-returns"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/shipping/shipping-returns.html"
+to = "/pages/shipping/shipping-returns"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/homepage"
+to = "/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/homepage/"
+to = "/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/homepage/*"
+to = "/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/products"
+to = "/products/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/products/"
+to = "/products/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/products/*"
+to = "/products/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-much-moringa-powder-per-day-dosage-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-much-moringa-powder-per-day-dosage-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/verify-moringa-quality-premium-buyers-checklist-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/verify-moringa-quality-premium-buyers-checklist-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-honest-truth-science-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-honest-truth-science-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-benefits-women-skin-side-effects-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-benefits-women-skin-side-effects-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/plant-based-functional-foods-australia-wellness-nutrithrive-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-melbourne-complete-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-melbourne-complete-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes"
+to = "/pages/shipping/shipping-returns"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html"
+to = "/pages/shipping/shipping-returns"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/what-does-moringa-do-for-your-body-complete-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-spirulina-vs-matcha-australia-2026"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-spirulina-vs-matcha-australia-2026.html"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/natural-energy-boosters-australia-superfoods-2026.html"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/natural-energy-boosters-australia-superfoods-2026"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-benefits-uses-how-to-choose-best-one-australia-2026.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-benefits-uses-how-to-choose-best-one-australia-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/ultimate-guide-moringa-curry-leaves-australia-2026.html"
+to = "/blog/nutrithrive-dried-curry-leaves-tradition-health"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/ultimate-guide-moringa-curry-leaves-australia-2026"
+to = "/blog/nutrithrive-dried-curry-leaves-tradition-health"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/is-moringa-banned-in-australia.html"
+to = "/blog/is-moringa-banned-in-australia"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/is-moringa-banned-in-australia"
+to = "/blog/is-moringa-banned-in-australia.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-benefits-women-hormones-energy-skin-2026"
+to = "/blog/moringa-benefits-for-women-comprehensive-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-benefits-women-hormones-energy-skin-2026.html"
+to = "/blog/moringa-benefits-for-women-comprehensive-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-and-berberine-australia-what-science-says-2026.html"
+to = "/blog/moringa-and-berberine-australia-what-science-says-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-and-berberine-australia-what-science-says-2026"
+to = "/blog/moringa-and-berberine-australia-what-science-says-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-patches-australia-review-do-they-work.html"
+to = "/blog/moringa-patches-australia-review-do-they-work"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-patches-australia-review-do-they-work"
+to = "/blog/moringa-patches-australia-review-do-they-work.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html"
+to = "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026"
+to = "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cortisol-cocktail-trend-explained-moringa-2026.html"
+to = "/blog/cortisol-cocktail-trend-explained-moringa-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cortisol-cocktail-trend-explained-moringa-2026"
+to = "/blog/cortisol-cocktail-trend-explained-moringa-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/ag1-alternative-australia-moringa-comparison-2026.html"
+to = "/blog/ag1-alternative-australia-moringa-comparison-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/ag1-alternative-australia-moringa-comparison-2026"
+to = "/blog/ag1-alternative-australia-moringa-comparison-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026.html"
+to = "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
+to = "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026.html"
+to = "/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026"
+to = "/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/buy-moringa-powder-australia/"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/buy-moringa-powder-australia"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/buy-moringa-powder-australia/index.html"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-brisbane/index.html"
+to = "/moringa-brisbane/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-sydney/index.html"
+to = "/moringa-sydney/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-perth/index.html"
+to = "/moringa-perth/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-adelaide/index.html"
+to = "/moringa-adelaide/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-matcha-energy-metabolism-2026"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-matcha-energy-metabolism-2026.html"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026.html"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-powder-australia-2026-complete-guide"
+to = "/blog/high-protein-moringa-recipes-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-powder-australia-2026-complete-guide.html"
+to = "/blog/high-protein-moringa-recipes-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-grow-moringa-in-australia-complete-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-grow-moringa-in-australia-complete-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-capsules-vs-powder-which-is-better-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-capsules-vs-powder-which-is-better-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/buy-moringa-powder-melbourne-victoria-chinese-guide"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/top-moringa-companies-australia-2026"
+to = "/products/moringa-powder/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/top-moringa-companies-australia-2026.html"
+to = "/products/moringa-powder/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-at-chemist-warehouse-australia-worth-it-2026"
+to = "/products/moringa-powder/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-at-chemist-warehouse-australia-worth-it-2026.html"
+to = "/products/moringa-powder/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025"
+to = "/products/moringa-powder/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html"
+to = "/products/moringa-powder/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/sydney-time-guide-moringa-nutrithrive-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/sydney-time-guide-moringa-nutrithrive-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/top-20-hiking-destinations-victoria-australia-ultimate-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/top-20-hiking-destinations-victoria-australia-ultimate-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/melbourne-outdoor-gyms-longevity-training-2026-guide"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/melbourne-outdoor-gyms-longevity-training-2026-guide.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/universal-size-converter"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/universal-size-converter.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/natural-language-calendar-scheduler"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/natural-language-calendar-scheduler.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/definitive-encyclopedia-handcrafted-soap-for-sidney-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/definitive-encyclopedia-handcrafted-soap-for-sidney-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-energy-bars-australia-2026-supermarket-guide"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-energy-bars-australia-2026-supermarket-guide.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-powder-australia"
+to = "/blog/high-protein-moringa-recipes-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-powder-australia.html"
+to = "/blog/high-protein-moringa-recipes-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/high-protein-snacks-australia-25-options-under-150-calories-2025"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/melbourne-body-burden-report-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/melbourne-body-burden-report-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/healthy-snack-melbourne-why-everyone-switching-to-moringa-2026"
+to = "/blog/moringa-vs-coffee-melbourne-energy-hack"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/healthy-snack-melbourne-why-everyone-switching-to-moringa-2026.html"
+to = "/blog/moringa-vs-coffee-melbourne-energy-hack"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/30-day-moringa-coffee-reset-australia-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/30-day-moringa-coffee-reset-australia-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-for-weight-loss-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-for-weight-loss-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/dried-curry-leaf-hair-oil-recipe"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/dried-curry-leaf-hair-oil-recipe.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-eyesight-better-than-carrots"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-eyesight-better-than-carrots.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/usage-guide/how-to-use-moringa.html"
+to = "/blog/how-to-add-moringa-to-diet"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/usage-guide/how-to-use-moringa"
+to = "/blog/how-to-add-moringa-to-diet"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/usage-guide/how-to-use-moringa.html"
+to = "/blog/how-to-add-moringa-to-diet"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/benefits/moringa-benefits.html"
+to = "/blog/how-to-add-moringa-to-diet"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-breastfeeding-mums-natural-lactation-support"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-breastfeeding-mums-natural-lactation-support.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/musashi-protein-powder-australia-comprehensive-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-clean-protein-powders-moringa-products-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-clean-protein-powders-moringa-products-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/gut-health-meal-plan-australia-7-day-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/gut-health-meal-plan-australia-7-day-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/30-day-moringa-experiment-replaced-supplements-journal-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/30-day-moringa-experiment-replaced-supplements-journal-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/natural-heavy-metal-detox-moringa-cleanse-body"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/natural-heavy-metal-detox-moringa-cleanse-body.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/dried-curry-leaves-australia-uses-storage-health-benefits-cooking-guide-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/american-spice-renaissance-dried-curry-leaves-market-analysis-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/american-spice-renaissance-dried-curry-leaves-market-analysis-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/darjeeling-black-tea-melbourne-muscatel-marvel"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/darjeeling-black-tea-melbourne-muscatel-marvel.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/state-of-australian-schooling-2026-comprehensive-analysis"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/state-of-australian-schooling-2026-comprehensive-analysis.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs"
+to = "/nutrithrive_labs/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/file/converter"
+to = "/nutrithrive_labs/tools/file/converter/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/file/sitemap-generator"
+to = "/nutrithrive_labs/tools/file/sitemap-generator/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/text/dedup-lines"
+to = "/nutrithrive_labs/tools/text/dedup-lines/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/text/quick-notes"
+to = "/nutrithrive_labs/tools/text/quick-notes/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/text/ai-text-detector"
+to = "/nutrithrive_labs/tools/text/ai-text-detector/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/productivity/time-converter"
+to = "/nutrithrive_labs/tools/productivity/time-converter/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/productivity/pomodoro-timer"
+to = "/nutrithrive_labs/tools/productivity/pomodoro-timer/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/tools/productivity/password-generator"
+to = "/nutrithrive_labs/tools/productivity/password-generator/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/mediflow"
+to = "/nutrithrive_labs/mediflow/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/mediflow/features"
+to = "/nutrithrive_labs/mediflow/features.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/mediflow/demo"
+to = "/nutrithrive_labs/mediflow/demo.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/mediflow/contact"
+to = "/nutrithrive_labs/mediflow/contact.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/converter"
+to = "/nutrithrive_labs/tools/file/converter/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/converter.html"
+to = "/nutrithrive_labs/tools/file/converter/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/dedup-lines"
+to = "/nutrithrive_labs/tools/text/dedup-lines/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/dedup-lines.html"
+to = "/nutrithrive_labs/tools/text/dedup-lines/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/sitemap-generator"
+to = "/nutrithrive_labs/tools/file/sitemap-generator/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/sitemap-generator.html"
+to = "/nutrithrive_labs/tools/file/sitemap-generator/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/time-converter"
+to = "/nutrithrive_labs/tools/productivity/time-converter/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/time-converter.html"
+to = "/nutrithrive_labs/tools/productivity/time-converter/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/pomodoro-timer"
+to = "/nutrithrive_labs/tools/productivity/pomodoro-timer/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/pomodoro-timer.html"
+to = "/nutrithrive_labs/tools/productivity/pomodoro-timer/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/password-generator"
+to = "/nutrithrive_labs/tools/productivity/password-generator/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/password-generator.html"
+to = "/nutrithrive_labs/tools/productivity/password-generator/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/quick-notes"
+to = "/nutrithrive_labs/tools/text/quick-notes/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/quick-notes.html"
+to = "/nutrithrive_labs/tools/text/quick-notes/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/ai-text-detector"
+to = "/nutrithrive_labs/tools/text/ai-text-detector/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive_labs/ai-text-detector.html"
+to = "/nutrithrive_labs/tools/text/ai-text-detector/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/*"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/dedup-lines"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/sitemap-generator"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/time-converter"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/converter"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/quick-notes"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/pomodoro-timer"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/ai-text-detector"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/nutrithrive-labs/password-generator"
+to = "/404.html"
+status = 404.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog//"
+to = "/blog/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages//scripts/*"
+to = "/scripts/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages//styles/*"
+to = "/styles/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages//assets/*"
+to = "/assets/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages//products/*"
+to = "/products/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/scripts/*"
+to = "/scripts/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/styles/*"
+to = "/styles/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/assets/*"
+to = "/assets/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "https://www.nutrithrive.com.au/*"
+to = "https://nutrithrive.com.au/:splat"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "http://nutrithrive.com.au/*"
+to = "https://nutrithrive.com.au/:splat"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "http://www.nutrithrive.com.au/*"
+to = "https://nutrithrive.com.au/:splat"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/assets/lab-report.pdf"
+to = "/documents/nutrithrive-lab-report-summary.pdf"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/products/product-detail"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/products/product-detail.html"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/products/product-detail"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/products/*"
+to = "/products/:splat"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/products"
+to = "/products/"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/melbourne"
+to = "/pages/homepage/melbourne.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/melbourne/"
+to = "/pages/homepage/melbourne.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/about"
+to = "/pages/about/about.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/about/"
+to = "/pages/about/about.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/about.html"
+to = "/pages/about/about.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/contact"
+to = "/pages/contact/contact.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/contact/"
+to = "/pages/contact/contact.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/contact.html"
+to = "/pages/contact/contact.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/faq"
+to = "/pages/faq/faq.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/faq/"
+to = "/pages/faq/faq.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/faq.html"
+to = "/pages/faq/faq.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/cart"
+to = "/pages/shop/cart.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/cart/"
+to = "/pages/shop/cart.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/cart.html"
+to = "/pages/shop/cart.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/payment"
+to = "/pages/shop/payment.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/payment.html"
+to = "/pages/shop/payment.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/privacy-policy"
+to = "/pages/legal/privacy-policy.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/legal/privacy-policy"
+to = "/privacy-policy"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/pages/legal/privacy-policy.html"
+to = "/privacy-policy"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/privacy-policy.html"
+to = "/privacy-policy"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/product-detail.html"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/products/product-detail.html"
+to = "/products/moringa-powder/"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/products/product-curry-leaves.html"
+to = "/products/curry-leaves/"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/products/product-black-tea.html"
+to = "/products/black-tea/"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/products/product-combo.html"
+to = "/products/combo-pack/"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/products/product-moringa-soap.html"
+to = "/products/moringa-soap/"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/thank-you.html"
+to = "/pages/shop/thank-you.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-sydney"
+to = "/moringa-sydney/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-brisbane"
+to = "/moringa-brisbane/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-perth"
+to = "/moringa-perth/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/moringa-adelaide"
+to = "/moringa-adelaide/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-greens-powder-australia-2026.html"
+to = "/blog/best-greens-powder-australia-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-greens-powder-australia-2026"
+to = "/blog/best-greens-powder-australia-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-superfoods-australia-comparison-health-conscious-adults.html"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-superfoods-australia-comparison-health-conscious-adults"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cant-lose-weight-broken-gut-what-actually-worked-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cant-lose-weight-broken-gut-what-actually-worked-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/chronic-fatigue-what-actually-fixed-it-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/chronic-fatigue-what-actually-fixed-it-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/fresh-moringa-leaves-vs-powder-nutrients-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/fresh-moringa-leaves-vs-powder-nutrients-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/green-superfood-smoothie-recipes-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/green-superfood-smoothie-recipes-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/high-protein-moringa-recipes-australia-2026.html"
+to = "/blog/high-protein-moringa-recipes-australia-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/high-protein-moringa-recipes-australia-2026"
+to = "/blog/high-protein-moringa-recipes-australia-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-add-moringa-to-diet.html"
+to = "/blog/how-to-add-moringa-to-diet"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-add-moringa-to-diet"
+to = "/blog/how-to-add-moringa-to-diet.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-choose-greens-powder-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-choose-greens-powder-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-choose-moringa-powder-australia-2026.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-choose-moringa-powder-australia-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-read-moringa-batch-codes-freshness.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-read-moringa-batch-codes-freshness"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-30-day-challenge-honest-results.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-30-day-challenge-honest-results"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-benefits-for-women-comprehensive-2026.html"
+to = "/blog/moringa-benefits-for-women-comprehensive-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-benefits-for-women-comprehensive-2026"
+to = "/blog/moringa-benefits-for-women-comprehensive-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-melbourne-complete-growers-report-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-melbourne-complete-growers-report-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-oil-benefits-skin-hair-health-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-oil-benefits-skin-hair-health-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-victoria-seniors-joint-health.html"
+to = "/blog/moringa-powder-victoria-seniors-joint-health"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-powder-victoria-seniors-joint-health"
+to = "/blog/moringa-powder-victoria-seniors-joint-health.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-side-effects-what-happens-take-too-much-2026.html"
+to = "/blog/moringa-side-effects-what-happens-take-too-much-2026"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-side-effects-what-happens-take-too-much-2026"
+to = "/blog/moringa-side-effects-what-happens-take-too-much-2026.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-tea-benefits-how-to-brew-2026-guide.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-tea-benefits-how-to-brew-2026-guide"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-coffee-melbourne-energy-hack.html"
+to = "/blog/moringa-vs-coffee-melbourne-energy-hack"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-coffee-melbourne-energy-hack"
+to = "/blog/moringa-vs-coffee-melbourne-energy-hack.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-coffee-melbourne"
+to = "/blog/moringa-vs-coffee-melbourne-energy-hack"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-coffee-melbourne/"
+to = "/blog/moringa-vs-coffee-melbourne-energy-hack"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/nutrithrive-dried-curry-leaves-tradition-health.html"
+to = "/blog/nutrithrive-dried-curry-leaves-tradition-health"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/nutrithrive-dried-curry-leaves-tradition-health"
+to = "/blog/nutrithrive-dried-curry-leaves-tradition-health.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/quit-sugar-90-days-honest-diary-melbourne-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/quit-sugar-90-days-honest-diary-melbourne-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/science-shade-drying-vs-sun-drying-moringa.html"
+to = "/blog/science-shade-drying-vs-sun-drying-moringa"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/science-shade-drying-vs-sun-drying-moringa"
+to = "/blog/science-shade-drying-vs-sun-drying-moringa.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/what-to-eat-when-too-tired-melbourne-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/what-to-eat-when-too-tired-melbourne-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-greens-powder-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-greens-powder-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/high-protein-moringa-recipes-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/high-protein-moringa-recipes-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/magnesium-glycinate-honest-guide-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/magnesium-glycinate-honest-guide-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-berberine-australia-2026.html"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-berberine-australia-2026"
+to = "/404.html"
+status = 410.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-brands-reviewed-australia-2025-verdict.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-brands-reviewed-australia-2025-verdict"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-brands-comparison-australia-2026.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/moringa-brands-comparison-australia-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/grow-moringa-tree-australia.html"
+to = "/blog/grow-moringa-tree-australia"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/grow-moringa-tree-australia"
+to = "/blog/grow-moringa-tree-australia.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
