@@ -77,9 +77,20 @@
 /blog/moringa-vs-spirulina-vs-matcha-australia-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/moringa-vs-spirulina-vs-matcha-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 
+# PHASE 1 — Zombie 404s still indexed in Google (GSC recrawl after deploy)
+/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/natural-energy-boosters-australia-superfoods-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/natural-energy-boosters-australia-superfoods-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/moringa-powder-benefits-uses-how-to-choose-best-one-australia-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/moringa-powder-benefits-uses-how-to-choose-best-one-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/ultimate-guide-moringa-curry-leaves-australia-2026.html /blog/nutrithrive-dried-curry-leaves-tradition-health 301
+/blog/ultimate-guide-moringa-curry-leaves-australia-2026 /blog/nutrithrive-dried-curry-leaves-tradition-health 301
+
 # SEO consolidation — canonical breakout blogs (May 2026)
-/blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-in-australia 301
-/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-in-australia 301
+# HOLD: content requires legal review re: FSANZ A1294 — activate redirect only after lawyer-reviewed content is live on destination
+# /blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-in-australia 301
+# /blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-in-australia 301
 /blog/is-moringa-banned-in-australia.html /blog/is-moringa-banned-in-australia 301!
 /blog/is-moringa-banned-in-australia /blog/is-moringa-banned-in-australia.html 200
 /blog/moringa-benefits-women-hormones-energy-skin-2026 /blog/moringa-benefits-for-women-comprehensive-2026 301
@@ -401,8 +412,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/science-shade-drying-vs-sun-drying-moringa /blog/science-shade-drying-vs-sun-drying-moringa.html 200
 /blog/what-to-eat-when-too-tired-melbourne-2026.html /404.html 410
 /blog/what-to-eat-when-too-tired-melbourne-2026 /404.html 410
-/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html /blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide 301!
-/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide /blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html 200
+# where-to-buy consolidated into how-to-choose hub (noindex + 301; file retained 4 weeks)
+/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder.html /404.html 410
 /blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder /404.html 410
 /blog/best-greens-powder-australia-2026.html /404.html 410

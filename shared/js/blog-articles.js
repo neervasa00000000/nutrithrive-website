@@ -1,4 +1,4 @@
-/** Auto-generated — 24 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 20 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -6,13 +6,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "AG1 costs $150+ a month in Australia. We break down what's actually in it, what moringa alone covers, and where simple beats stacked for most people's budgets.",
     "category": "Comparison",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026"
-  },
-  {
-    "slug": "best-rated-moringa-capsules-powders-australia-2026-ultimate-guide",
-    "title": "Best Moringa Capsules & Powder in Australia (2026 Ultimate Guide)",
-    "description": "Best moringa capsules and powder in Australia 2026: ranked by quality, price and bioavailability. NutriThrive, Melbourne — ships AU-wide.",
-    "category": "Wellness",
-    "href": "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide"
   },
   {
     "slug": "best-superfoods-australia-comparison-health-conscious-adults",
@@ -52,7 +45,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
     "title": "How to Choose Moringa Powder in Australia (2026)",
-    "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh — 2026.",
+    "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, where to buy, capsules vs powder, brand price snapshot — 2026 buyer guide.",
     "category": "Buyer's Guide",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026"
   },
@@ -83,20 +76,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa benefits for women: boosts iron for anaemia, balances hormones, clears skin and supports milk supply. Evidence-backed guide with dosage tips for Australian women. (2026)",
     "category": "Women's Wellness",
     "href": "/blog/moringa-benefits-for-women-comprehensive-2026"
-  },
-  {
-    "slug": "moringa-brands-comparison-australia-2026",
-    "title": "Best Moringa Brand Australia 2026: 7 Brands Lab-Tested &amp; Ranked (Rosabella vs NutriThrive)",
-    "description": "Which moringa brand is best in Australia? We tested 7 brands including Rosabella (Chemist Warehouse) vs NutriThrive. Lab results, price-per-100g, freshness tests — 2026.",
-    "category": "Research Guide",
-    "href": "/blog/moringa-brands-comparison-australia-2026"
-  },
-  {
-    "slug": "moringa-brands-reviewed-australia-2025-verdict",
-    "title": "I Opened Five Bags of Moringa in Morning Light: Here Is What Actually Mattered",
-    "description": "We opened and tested 5 Australian moringa brands side-by-side: NutriThrive, Rosabella, Wild Earth, Forever Foods, Amazonia. Colour test, smell, price per mg, and lab result transparency. 2026 verdict.",
-    "category": "Wellness",
-    "href": "/blog/moringa-brands-reviewed-australia-2025-verdict"
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
@@ -160,12 +139,5 @@ window.NT_BLOG_ARTICLES = [
     "description": "Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
     "category": "Research Guide",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
-  },
-  {
-    "slug": "where-to-buy-moringa-in-australia-online-vs-stores-2026-guide",
-    "title": "Where to Buy Moringa Australia 2026",
-    "description": "Where to buy moringa in Australia: online vs stores. Quality signals, delivery and price comparison for Aussies. NutriThrive, Melbourne — ships AU-wide.",
-    "category": "Research Guide",
-    "href": "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide"
   }
 ];

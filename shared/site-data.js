@@ -323,7 +323,7 @@ window.NT_SITE_DATA = {
     { category: "Buyer's Guide", title: 'How to Choose Moringa Powder in Australia (2026)', readTime: '9 min read', href: '/blog/how-to-choose-moringa-powder-australia-2026' },
     { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026' },
     { category: 'Safety', title: 'Moringa Side Effects: What Happens If You Take Too Much', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
-    { category: 'Shopping', title: 'Where to Buy Moringa: Online vs Stores in AU', readTime: '5 min read', href: '/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide' },
+    { category: 'Shopping', title: 'Chemist Warehouse Moringa vs NutriThrive', readTime: '8 min read', href: '/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025' },
   ],
   cartUrl: '/cart',
   paymentUrl: '/payment',
