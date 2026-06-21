@@ -1,4 +1,4 @@
-/** Auto-generated — 20 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 19 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -6,13 +6,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "AG1 costs $150+ a month in Australia. We break down what's actually in it, what moringa alone covers, and where simple beats stacked for most people's budgets.",
     "category": "Comparison",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026"
-  },
-  {
-    "slug": "best-superfoods-australia-comparison-health-conscious-adults",
-    "title": "Australia's Best Superfoods 2026: Moringa, Matcha, Spirulina &amp; More",
-    "description": "Discover Australia's top superfoods for 2026 – moringa, spirulina, matcha, curry leaves &amp; more. Lab-tested insights on nutrition, caffeine &amp; wellness. Find your best green boost.",
-    "category": "Research Guide",
-    "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
   },
   {
     "slug": "cortisol-cocktail-trend-explained-moringa-2026",
@@ -73,7 +66,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-benefits-for-women-comprehensive-2026",
     "title": "Moringa Benefits for Women: Iron, Hormones &amp; Skin (Australia 2026)",
-    "description": "Moringa benefits for women: boosts iron for anaemia, balances hormones, clears skin and supports milk supply. Evidence-backed guide with dosage tips for Australian women. (2026)",
+    "description": "Moringa for women: nutrients as part of diet, may support hormonal health, skin and general wellbeing. Evidence-backed dosage guide for Australian women. (2026)",
     "category": "Women's Wellness",
     "href": "/blog/moringa-benefits-for-women-comprehensive-2026"
   },
