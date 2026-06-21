@@ -1,5 +1,6 @@
 # Nutrithrive.com.au - Robots.txt
 # We welcome all search engines and AI crawlers!
+# AI-readable content index: https://nutrithrive.com.au/llms.txt
 
 # ====================
 # ALL BOTS (General Rule)
