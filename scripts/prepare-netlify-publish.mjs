@@ -21,6 +21,7 @@ const IGNORE = new Set([
   'audit',
   'tools',
   'issues',
+  'arkive',
 ]);
 
 const IGNORE_FILES = new Set([

@@ -7,7 +7,8 @@
     "ci": "npm run build:minify && node scripts/verify-sitemap-locs.mjs && node scripts/prepare-netlify-publish.mjs",
     "deploy:prod": "node scripts/prepare-netlify-publish.mjs && netlify deploy --dir=.netlify-publish --prod",
     "build:tailwind": "tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify",
-    "build:minify": "node scripts/build-assets.mjs --skip-tailwind"
+    "build:minify": "node scripts/build-assets.mjs --skip-tailwind",
+    "build:arkive-preview": "node scripts/build-arkive-preview.mjs"
   },
   "dependencies": {
     "firecrawl": "^4.25.2",
