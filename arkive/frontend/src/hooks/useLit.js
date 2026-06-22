@@ -9,6 +9,7 @@ export function useLit() {
   const [decrypting, setDecrypting] = useState(false)
 
   async function encryptFile(file) {
+    if (!address) throw new Error('WALLET_NOT_CONNECTED')
     setEncrypting(true)
     try {
       const client = await getLitClient()

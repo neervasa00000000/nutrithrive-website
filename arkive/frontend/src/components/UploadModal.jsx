@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { X, Upload, Lock } from 'lucide-react'
 import { useVault } from '../hooks/useVault'
+import { vaultErrorMessage } from '../lib/setupStatus'
 import toast from 'react-hot-toast'
 
 export default function UploadModal({ onClose, onSuccess }) {
@@ -28,7 +29,7 @@ export default function UploadModal({ onClose, onSuccess }) {
       toast.success('File encrypted and stored permanently on Arweave')
       onSuccess?.()
     } catch (error) {
-      toast.error('Upload failed. Check your wallet connection.')
+      toast.error(vaultErrorMessage(error))
     }
   }
 

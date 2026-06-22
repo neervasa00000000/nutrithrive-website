@@ -11,6 +11,9 @@ export function useArweave() {
     try {
       const { TurboFactory } = await import('@ardrive/turbo-sdk')
       const jwk = JSON.parse(import.meta.env.VITE_ARWEAVE_KEY || '{}')
+      if (!jwk.kty && !jwk.n) {
+        throw new Error('ARWEAVE_NOT_CONFIGURED')
+      }
 
       const turbo = TurboFactory.authenticated({ privateKey: jwk })
 
