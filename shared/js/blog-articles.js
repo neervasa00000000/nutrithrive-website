@@ -1,4 +1,4 @@
-/** Auto-generated — 28 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 31 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -20,6 +20,20 @@ window.NT_BLOG_ARTICLES = [
     "description": "Australia&#39;s top superfoods 2026: moringa, spirulina, matcha and curry leaves compared. Lab-tested insights on nutrition, caffeine and wellness.",
     "category": "Research Guide",
     "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
+  },
+  {
+    "slug": "best-time-to-take-moringa-powder-morning-or-night-2026",
+    "title": "Best Time to Take Moringa Powder: Does It Matter? (2026)",
+    "description": "Morning, night, or with food? An honest look at whether moringa timing actually matters, what's evidence and what's wellness-blog filler.",
+    "category": "Guides",
+    "href": "/blog/best-time-to-take-moringa-powder-morning-or-night-2026"
+  },
+  {
+    "slug": "can-you-use-dried-curry-leaves-for-hair-2026",
+    "title": "Can You Use Dried Curry Leaves for Hair? (2026 Guide)",
+    "description": "Most guides say fresh curry leaves only. Here's what actually changes with dried leaves, and three ways to use them for hair anyway.",
+    "category": "Guides",
+    "href": "/blog/can-you-use-dried-curry-leaves-for-hair-2026"
   },
   {
     "slug": "cortisol-cocktail-trend-explained-moringa-2026",
@@ -153,6 +167,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa side effects: safe daily dose, what happens with too much, medication interactions and pregnancy safety. Evidence-based Australian guide.",
     "category": "Safety &amp; Side Effects",
     "href": "/blog/moringa-side-effects-what-happens-take-too-much-2026"
+  },
+  {
+    "slug": "moringa-soap-benefits-for-skin-2026",
+    "title": "Moringa Soap Benefits for Skin: What's Real (2026)",
+    "description": "Moringa soap gets bold acne and anti-aging claims online. Here's a more honest look at what moringa actually offers skin, and what's marketing.",
+    "category": "Guides",
+    "href": "/blog/moringa-soap-benefits-for-skin-2026"
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
