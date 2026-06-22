@@ -44,8 +44,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/curry-leaves-health-benefits-what-the-evidence-says-2026</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026</loc>
     <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026</loc>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112,6 +124,12 @@
   <url>
     <loc>https://nutrithrive.com.au/blog/moringa-benefits-for-women-comprehensive-2026</loc>
     <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/moringa-for-breastfeeding-milk-supply-2026</loc>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

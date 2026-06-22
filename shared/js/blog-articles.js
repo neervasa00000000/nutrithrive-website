@@ -1,4 +1,4 @@
-/** Auto-generated — 31 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 34 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -43,6 +43,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/cortisol-cocktail-trend-explained-moringa-2026"
   },
   {
+    "slug": "curry-leaves-health-benefits-what-the-evidence-says-2026",
+    "title": "What Do Curry Leaves Actually Do for Your Health? (2026)",
+    "description": "Curry leaves: what's real, what's overstated, and how much benefit you're getting whether you eat them or just use them for flavour and remove them before eating.",
+    "category": "Guides",
+    "href": "/blog/curry-leaves-health-benefits-what-the-evidence-says-2026"
+  },
+  {
     "slug": "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
     "title": "Darjeeling Tea Australia: First Flush vs Second Flush (2026)",
     "description": "Darjeeling in Australia: first vs second flush, caffeine levels, brewing tips, and how to spot real tea from supermarket blends. Melbourne dispatch.",
@@ -69,6 +76,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "How long does moringa powder last? Properly stored, 12-24 months unopened, 6-12 months at best potency once opened. The exact storage mistakes that cut shelf life short.",
     "category": "Guides",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026"
+  },
+  {
+    "slug": "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+    "title": "How Much Caffeine in Darjeeling Tea? Compared to Coffee and Green Tea",
+    "description": "Darjeeling black tea has 14-70mg caffeine per cup — noticeably less than coffee's 95-200mg. What affects it, how it compares, and whether it's a good morning coffee swap.",
+    "category": "Tea Guide",
+    "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"
   },
   {
     "slug": "how-to-add-moringa-to-diet",
@@ -146,6 +160,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa Chemist Warehouse vs NutriThrive: colour, grind, smell and lab results compared. Covers Rosabella too. Honest Australian quality test.",
     "category": "Research Guide",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
+  },
+  {
+    "slug": "moringa-for-breastfeeding-milk-supply-2026",
+    "title": "Moringa for Breastfeeding: Does It Help with Milk Supply? (2026)",
+    "description": "A 2025 systematic review found moringa leaf increased breast milk volume by up to 400mL per day. What the research says, what's safe, and what to ask your midwife.",
+    "category": "Health",
+    "href": "/blog/moringa-for-breastfeeding-milk-supply-2026"
   },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
