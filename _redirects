@@ -302,6 +302,7 @@
 
 # ARKIVE private preview (unlisted SPA — no site links; password + noindex in netlify.toml)
 /private/arkive-preview /private/arkive-preview/ 301!
+/private/arkive-preview/ /private/arkive-preview/index.html 200
 /private/arkive-preview/* /private/arkive-preview/index.html 200
 
 # Hyphen typo alias → blocked
