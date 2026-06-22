@@ -1,0 +1,150 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/neervasa/Desktop/Website/arkive/contracts/contracts/PointsSystem.sol": {
+      "lastModificationDate": 1782126274363,
+      "contentHash": "dde9e0a15d9af38203c23e2fbd0c2b30",
+      "sourceName": "contracts/PointsSystem.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "PointsSystem"
+      ]
+    },
+    "/Users/neervasa/Desktop/Website/arkive/contracts/contracts/PostRegistry.sol": {
+      "lastModificationDate": 1782126281078,
+      "contentHash": "1224ad86290cc4f2a14be440a4688ca8",
+      "sourceName": "contracts/PostRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "IPointsSystem",
+        "PostRegistry"
+      ]
+    },
+    "/Users/neervasa/Desktop/Website/arkive/contracts/contracts/UserRegistry.sol": {
+      "lastModificationDate": 1782126269683,
+      "contentHash": "6f9e1076dffaf760ae8c23a27ca67d63",
+      "sourceName": "contracts/UserRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "UserRegistry"
+      ]
+    },
+    "/Users/neervasa/Desktop/Website/arkive/contracts/contracts/VaultRegistry.sol": {
+      "lastModificationDate": 1782126286975,
+      "contentHash": "07f8c74785fa352fcad9b81a8c4730a6",
+      "sourceName": "contracts/VaultRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "VaultRegistry"
+      ]
+    }
+  }
+}

@@ -12,6 +12,14 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+# ARKIVE private preview — unlisted, noindex, HTTP basic auth (Netlify Pro+)
+[[headers]]
+  for = "/private/arkive-preview/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Basic-Auth = "nt-preview:arkive-test-2026"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; frame-src https:; object-src 'none'; base-uri 'self'"
+
 [[headers]]
   for = "/assets/images/*"
   [headers.values]

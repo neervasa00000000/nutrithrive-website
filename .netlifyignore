@@ -1,3 +1,6 @@
+# ARKIVE source (built preview lives under private/arkive-preview/)
+arkive/
+
 # Never publish local tooling, test templates, or audit output
 .firecrawl/
 .build/

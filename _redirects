@@ -152,9 +152,9 @@
 /blog/best-time-to-take-moringa-powder-morning-or-night-2026.html /blog/best-time-to-take-moringa-powder-morning-or-night-2026 301!
 /blog/best-time-to-take-moringa-powder-morning-or-night-2026 /blog/best-time-to-take-moringa-powder-morning-or-night-2026.html 200
 
-# Darjeeling tea caffeine guide (new June 2026)
-/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026.html /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
-/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026.html 200
+# Darjeeling first/second flush brewing guide (new June 2026)
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026.html /blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026 301!
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026 /blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026.html 200
 
 # Moringa for breastfeeding milk supply guide (new June 2026)
 /blog/moringa-for-breastfeeding-milk-supply-2026.html /blog/moringa-for-breastfeeding-milk-supply-2026 301!
@@ -299,6 +299,10 @@
 /nutrithrive_labs/quick-notes.html /nutrithrive_labs/tools/text/quick-notes/ 301
 /nutrithrive_labs/ai-text-detector /nutrithrive_labs/tools/text/ai-text-detector/ 301
 /nutrithrive_labs/ai-text-detector.html /nutrithrive_labs/tools/text/ai-text-detector/ 301
+
+# ARKIVE private preview (unlisted SPA — no site links; password + noindex in netlify.toml)
+/private/arkive-preview /private/arkive-preview/ 301!
+/private/arkive-preview/* /private/arkive-preview/index.html 200
 
 # Hyphen typo alias → blocked
 /nutrithrive-labs/* /404.html 404!
