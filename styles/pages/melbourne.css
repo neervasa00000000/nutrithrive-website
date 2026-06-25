@@ -1,0 +1,61 @@
+/* Melbourne landing page — overrides footer form styles & global link rules */
+
+body.melbourne-page {
+  background: var(--bg, #f5f1e6);
+}
+
+body.melbourne-page main a:any-link:not(.hero-btn):not(.logo) {
+  color: var(--text, #1a2e22);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+body.melbourne-page main a:not(.hero-btn):not(.logo):hover {
+  color: var(--text, #1a2e22);
+  opacity: 0.85;
+}
+
+body.melbourne-page .melb-guides li a:any-link {
+  color: var(--text, #1a2e22);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+body.melbourne-page .melb-guides li a:hover {
+  color: var(--primary, #0f6b4d);
+}
+
+body.melbourne-page .melb-product-card .melb-add-cart.hero-btn {
+  background: var(--primary, #0f6b4d);
+  color: #fff !important;
+  border: 2px solid var(--primary, #0f6b4d);
+}
+
+body.melbourne-page .melb-product-card .melb-add-cart.hero-btn:hover {
+  background: var(--color-primary-dark, #005139);
+  color: #fff !important;
+  border-color: var(--color-primary-dark, #005139);
+  transform: translateY(-2px);
+}
+
+body.melbourne-page .melb-hero .hero-btn.alt:hover {
+  color: var(--primary, #0f6b4d);
+}
+
+@media (max-width: 768px) {
+  body.melbourne-page .melb-hero.hero {
+    flex-direction: column;
+    padding: 2rem 1.25rem;
+    margin: 1.5rem auto;
+    gap: 1.5rem;
+  }
+
+  body.melbourne-page .melb-hero .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.melbourne-page .melb-hero .hero-btn {
+    text-align: center;
+  }
+}

@@ -404,10 +404,10 @@ window.NT_SITE_DATA = {
       title: 'Locations / Deliver to',
       links: [
         { label: 'Melbourne', file: '/melbourne' },
-        { label: 'Sydney', file: '/moringa-sydney' },
-        { label: 'Brisbane', file: '/moringa-brisbane' },
-        { label: 'Perth', file: '/moringa-perth' },
-        { label: 'Adelaide', file: '/moringa-adelaide' },
+        { label: 'Sydney', file: '/moringa-sydney/' },
+        { label: 'Brisbane', file: '/moringa-brisbane/' },
+        { label: 'Perth', file: '/moringa-perth/' },
+        { label: 'Adelaide', file: '/moringa-adelaide/' },
       ],
     },
     {
