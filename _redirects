@@ -33,12 +33,12 @@
 # Legacy / duplicate stubs
 /shipping-returns.html /pages/shipping/shipping-returns 301
 /pages/shipping/shipping-returns.html /pages/shipping/shipping-returns 301!
+/pages/homepage/melbourne.html /melbourne/ 301!
+/pages/homepage/melbourne.min.css /styles/pages/melbourne.min.css 301!
+/pages/homepage/melbourne.css /styles/pages/melbourne.css 301!
 /pages/homepage / 301!
 /pages/homepage/ / 301!
 /pages/homepage/* / 301!
-/pages/products /products/ 301!
-/pages/products/ /products/ 301!
-/pages/products/* /products/ 301!
 
 # PHASE 1 REDIRECTS - Delete Duplicates
 
@@ -46,13 +46,13 @@
 /blog/how-much-moringa-powder-per-day-dosage-guide-2026.html /404.html 410
 /blog/how-much-moringa-powder-per-day-dosage-guide-2026 /404.html 410
 
-# Buyer guide cannibalization
-/blog/verify-moringa-quality-premium-buyers-checklist-2026.html /404.html 410
-/blog/verify-moringa-quality-premium-buyers-checklist-2026 /404.html 410
+# Buyer guide cannibalization → canonical buyer guide
+/blog/verify-moringa-quality-premium-buyers-checklist-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/verify-moringa-quality-premium-buyers-checklist-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
 
-# Safety cannibalization
-/blog/moringa-honest-truth-science-australia-2026.html /404.html 410
-/blog/moringa-honest-truth-science-australia-2026 /404.html 410
+# Safety cannibalization → canonical buyer guide
+/blog/moringa-honest-truth-science-australia-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/moringa-honest-truth-science-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
 
 # Women posts cannibalization (two pages competing for same keyword — merge into comprehensive post)
 /blog/moringa-powder-benefits-women-skin-side-effects-australia-2026.html /404.html 410
@@ -174,8 +174,8 @@
 /blog/moringa-vs-matcha-superfood-comparison-melbourne-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/best-protein-powder-australia-2026-complete-guide /blog/high-protein-moringa-recipes-australia-2026 301
-/blog/best-protein-powder-australia-2026-complete-guide.html /blog/high-protein-moringa-recipes-australia-2026 301
+/blog/best-protein-powder-australia-2026-complete-guide /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/best-protein-powder-australia-2026-complete-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/how-to-grow-moringa-in-australia-complete-guide-2026.html /404.html 410
 /blog/how-to-grow-moringa-in-australia-complete-guide-2026 /404.html 410
 /blog/moringa-capsules-vs-powder-which-is-better-2026.html /404.html 410
@@ -206,8 +206,8 @@
 /blog/best-protein-energy-bars-australia-2026-supermarket-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/best-protein-powder-australia /blog/high-protein-moringa-recipes-australia-2026 301
-/blog/best-protein-powder-australia.html /blog/high-protein-moringa-recipes-australia-2026 301
+/blog/best-protein-powder-australia /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/best-protein-powder-australia.html /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide /404.html 410
 /blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html /404.html 410
 /blog/high-protein-snacks-australia-25-options-under-150-calories-2025 /404.html 410
@@ -335,14 +335,27 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Legacy lab PDF URL (products page previously pointed here; file was not in repo)
 /assets/lab-report.pdf /documents/nutrithrive-lab-report-summary.pdf 301
 
-# ---Redirect duplicates to single canonical product URL ---
-
+# --- Legacy /pages/products and flat product URLs → single canonical /products/* (301, one hop) ---
+/pages/products/products.html /products/ 301!
+/pages/products/product-black-tea.html /products/black-tea/ 301!
+/pages/products/product-curry-leaves.html /products/curry-leaves/ 301!
+/pages/products/product-combo.html /products/combo-pack/ 301!
+/pages/products/product-moringa-soap.html /products/moringa-soap/ 301!
 /pages/products/product-detail /products/moringa-powder/ 301!
 /pages/products/product-detail.html /products/moringa-powder/ 301!
+/pages/products /products/ 301!
+/pages/products/ /products/ 301!
+/product-detail.html /products/moringa-powder/ 301!
 /products/product-detail /products/moringa-powder/ 301!
+/products/product-detail.html /products/moringa-powder/ 301!
+/products/product-curry-leaves.html /products/curry-leaves/ 301!
+/products/product-black-tea.html /products/black-tea/ 301!
+/products/product-combo.html /products/combo-pack/ 301!
+/products/product-moringa-soap.html /products/moringa-soap/ 301!
 
-/pages/products/* /products/:splat 200
-/pages/products /products/ 200
+/moringa-benefits /blog/how-to-add-moringa-to-diet 301
+/moringa-benefits/ /blog/how-to-add-moringa-to-diet 301
+/moringa-benefits.html /blog/how-to-add-moringa-to-diet 301
 
 /melbourne /pages/homepage/melbourne.html 200
 /melbourne/ /pages/homepage/melbourne.html 200
@@ -366,30 +379,24 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /pages/legal/privacy-policy.html /privacy-policy 301!
 /privacy-policy.html /privacy-policy 301
 
-/product-detail.html /products/moringa-powder/ 301!
-/products/product-detail.html /products/moringa-powder/ 301!
-/products/product-curry-leaves.html /products/curry-leaves/ 200
-/products/product-black-tea.html /products/black-tea/ 200
-/products/product-combo.html /products/combo-pack/ 200
-/products/product-moringa-soap.html /products/moringa-soap/ 200
 /thank-you.html /pages/shop/thank-you.html 200
 
-/moringa-sydney /moringa-sydney/ 301
-/moringa-brisbane /moringa-brisbane/ 301
-/moringa-perth /moringa-perth/ 301
-/moringa-adelaide /moringa-adelaide/ 301
+/moringa-sydney /moringa-sydney/index.html 200
+/moringa-brisbane /moringa-brisbane/index.html 200
+/moringa-perth /moringa-perth/index.html 200
+/moringa-adelaide /moringa-adelaide/index.html 200
 
 # Removed blog slugs are not redirected — they 404 (no file, no rule).
 # PHASE 2 — Canonical extensionless blog URLs (auto-generated)
 # .html → clean URL (301); clean URL serves .html file (200)
-/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026.html /404.html 410
-/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026 /404.html 410
+/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/australia-summer-2026-trends-travel-shopping-wellness-guide.html /404.html 410
+/blog/australia-summer-2026-trends-travel-shopping-wellness-guide /404.html 410
 /blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026.html /404.html 410
 /blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026 /404.html 410
 /blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026.html /404.html 410
 /blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026 /404.html 410
-/blog/best-greens-powder-australia-2026.html /blog/best-greens-powder-australia-2026 301!
-/blog/best-greens-powder-australia-2026 /blog/best-greens-powder-australia-2026.html 200
 /blog/best-superfoods-australia-comparison-health-conscious-adults.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/best-superfoods-australia-comparison-health-conscious-adults /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/cant-lose-weight-broken-gut-what-actually-worked-2026.html /404.html 410
@@ -398,6 +405,10 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/chronic-fatigue-what-actually-fixed-it-2026 /404.html 410
 /blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026.html /404.html 410
 /blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026 /404.html 410
+/blog/best-greens-powder-australia-2026.html /404.html 410
+/blog/best-greens-powder-australia-2026 /404.html 410
+/blog/high-protein-moringa-recipes-australia-2026.html /404.html 410
+/blog/high-protein-moringa-recipes-australia-2026 /404.html 410
 /blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026.html /404.html 410
 /blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026 /404.html 410
 /blog/does-moringa-have-caffeine-truth-about-energy-focus-side-effects-2026.html /404.html 410
@@ -406,8 +417,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/fresh-moringa-leaves-vs-powder-nutrients-2026 /404.html 410
 /blog/green-superfood-smoothie-recipes-australia-2026.html /404.html 410
 /blog/green-superfood-smoothie-recipes-australia-2026 /404.html 410
-/blog/high-protein-moringa-recipes-australia-2026.html /blog/high-protein-moringa-recipes-australia-2026 301!
-/blog/high-protein-moringa-recipes-australia-2026 /blog/high-protein-moringa-recipes-australia-2026.html 200
 /blog/how-to-add-moringa-to-diet.html /blog/how-to-add-moringa-to-diet 301!
 /blog/how-to-add-moringa-to-diet /blog/how-to-add-moringa-to-diet.html 200
 /blog/how-to-choose-greens-powder-australia-2026.html /404.html 410
@@ -455,10 +464,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder.html /404.html 410
 /blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder /404.html 410
-/blog/best-greens-powder-australia-2026.html /404.html 410
-/blog/best-greens-powder-australia-2026 /404.html 410
-/blog/high-protein-moringa-recipes-australia-2026.html /404.html 410
-/blog/high-protein-moringa-recipes-australia-2026 /404.html 410
 /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html /404.html 410
 /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026 /404.html 410
 /blog/magnesium-glycinate-honest-guide-australia-2026.html /404.html 410
