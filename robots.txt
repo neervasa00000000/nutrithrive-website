@@ -129,24 +129,15 @@ Disallow: /.build/
 # ====================
 # EXPLICITLY ALLOWED CONTENT
 # ====================
-# Allow all important pages
-Allow: /index.html
 Allow: /products/
-Allow: /pages/
-Allow: /about.html
-Allow: /contact.html
 Allow: /blog/
-Allow: /how-to-use-moringa.html
-Allow: /moringa-benefits.html
-Allow: /products/moringa-powder/
-Allow: /product-black-tea.html
-Allow: /product-curry-leaves.html
+Allow: /melbourne/
+Allow: /moringa-sydney/
+Allow: /moringa-brisbane/
+Allow: /moringa-perth/
+Allow: /moringa-adelaide/
 Allow: /images/
 Allow: /favicon.ico
-
-# Allow CSS and JS for better crawling
-Allow: /*.css
-Allow: /*.js
 
 # ====================
 # CRAWL RATE (Optional)

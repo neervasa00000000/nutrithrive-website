@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nutrithrive.com.au/</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,13 +15,7 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/</loc>
-    <lastmod>2026-06-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nutrithrive.com.au/blog/best-time-to-take-moringa-powder-morning-or-night-2026</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -32,13 +26,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/cortisol-cocktail-trend-explained-moringa-2026</loc>
-    <lastmod>2026-06-21</lastmod>
+    <loc>https://nutrithrive.com.au/blog/best-time-to-take-moringa-powder-morning-or-night-2026</loc>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/can-you-use-dried-curry-leaves-for-hair-2026</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/cortisol-cocktail-trend-explained-moringa-2026</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -56,12 +56,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://nutrithrive.com.au/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -69,13 +63,19 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/grow-moringa-tree-australia</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026</loc>
     <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026</loc>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -128,14 +128,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/moringa-for-breastfeeding-milk-supply-2026</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025</loc>
-    <lastmod>2026-06-21</lastmod>
+    <loc>https://nutrithrive.com.au/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -152,14 +158,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/moringa-pregnancy-safe-australia-trimester-guide-2026</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/moringa-side-effects-what-happens-take-too-much-2026</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/moringa-smoothie-recipes-australia-easy-2026</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/moringa-soap-benefits-for-skin-2026</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -206,8 +224,26 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/gas-guardian/.next/server/app/_global-error.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/gas-guardian/.next/server/app/index.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/gas-guardian/.next/server/pages/500.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/melbourne/</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

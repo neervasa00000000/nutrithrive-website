@@ -362,7 +362,12 @@ function generateBlogArticlesJs() {
     .filter((f) => f.endsWith('.html') && f !== 'index.html' && !f.includes('.partial.'))
     .sort();
 
-  const articles = files.map((file) => {
+  const articles = files
+    .filter((file) => {
+      const raw = read(path.join('blog', file));
+      return !/meta\s+name="robots"\s+content="noindex/i.test(raw);
+    })
+    .map((file) => {
     const raw = read(path.join('blog', file));
     const slug = file.replace(/\.html$/, '');
     let title = slug.replace(/-/g, ' ');
