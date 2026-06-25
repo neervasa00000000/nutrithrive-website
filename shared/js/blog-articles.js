@@ -1,4 +1,4 @@
-/** Auto-generated — 34 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 32 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -6,20 +6,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "AG1 costs $150+ a month in Australia. We break down what's actually in it, what moringa alone covers, and where simple beats stacked for most people's budgets.",
     "category": "Comparison",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026"
-  },
-  {
-    "slug": "best-rated-moringa-capsules-powders-australia-2026-ultimate-guide",
-    "title": "Best Moringa Capsules & Powder in Australia (2026 Ultimate Guide)",
-    "description": "Best moringa capsules and powder in Australia 2026: ranked by quality, price and bioavailability. NutriThrive, Melbourne — ships AU-wide.",
-    "category": "Wellness",
-    "href": "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide"
-  },
-  {
-    "slug": "best-superfoods-australia-comparison-health-conscious-adults",
-    "title": "Australia's Best Superfoods 2026: Moringa, Matcha, Spirulina &amp; More",
-    "description": "Australia&#39;s top superfoods 2026: moringa, spirulina, matcha and curry leaves compared. Lab-tested insights on nutrition, caffeine and wellness.",
-    "category": "Research Guide",
-    "href": "/blog/best-superfoods-australia-comparison-health-conscious-adults"
   },
   {
     "slug": "best-time-to-take-moringa-powder-morning-or-night-2026",
@@ -141,20 +127,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-benefits-for-women-comprehensive-2026"
   },
   {
-    "slug": "moringa-brands-comparison-australia-2026",
-    "title": "Best Moringa Brand Australia 2026: 7 Brands Lab-Tested &amp; Ranked (Rosabella vs NutriThrive)",
-    "description": "Which moringa brand is best in Australia? We tested 7 brands including Rosabella (Chemist Warehouse) vs NutriThrive. Lab results, price-per-100g, freshness tests — 2026.",
-    "category": "Research Guide",
-    "href": "/blog/moringa-brands-comparison-australia-2026"
-  },
-  {
-    "slug": "moringa-brands-reviewed-australia-2025-verdict",
-    "title": "I Opened Five Bags of Moringa in Morning Light: Here Is What Actually Mattered",
-    "description": "We opened and tested 5 Australian moringa brands side-by-side: NutriThrive, Rosabella, Wild Earth, Forever Foods, Amazonia. Colour test, smell, price per mg, and lab result transparency. 2026 verdict.",
-    "category": "Wellness",
-    "href": "/blog/moringa-brands-reviewed-australia-2025-verdict"
-  },
-  {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "title": "Moringa Capsules at Chemist Warehouse vs NutriThrive — Honest 2026 Comparison",
     "description": "Moringa Chemist Warehouse vs NutriThrive: colour, grind, smell and lab results compared. Covers Rosabella too. Honest Australian quality test.",
@@ -167,6 +139,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "A 2025 systematic review found moringa leaf increased breast milk volume by up to 400mL per day. What the research says, what's safe, and what to ask your midwife.",
     "category": "Health",
     "href": "/blog/moringa-for-breastfeeding-milk-supply-2026"
+  },
+  {
+    "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
+    "title": "Moringa Heavy Metals Lab Testing Australia: What to Look For (2026)",
+    "description": "Moringa is a hyper-accumulator — lead and cadmium matter. How to read a CoA in Australia, what NMI testing shows, and red flags when a brand won't share batch results (2026).",
+    "category": "Buyer's Guide",
+    "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026"
   },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
@@ -183,11 +162,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-powder-victoria-seniors-joint-health"
   },
   {
+    "slug": "moringa-pregnancy-safe-australia-trimester-guide-2026",
+    "title": "Is Moringa Safe During Pregnancy? Australia Trimester Guide (2026)",
+    "description": "Is moringa safe during pregnancy in Australia? Leaf powder vs root, trimester cautions, iron &amp; folate context, and when to ask your GP — not a substitute for medical advice (2026).",
+    "category": "Health",
+    "href": "/blog/moringa-pregnancy-safe-australia-trimester-guide-2026"
+  },
+  {
     "slug": "moringa-side-effects-what-happens-take-too-much-2026",
     "title": "Moringa Side Effects: What Happens If You Take Too Much? (2026)",
     "description": "Moringa side effects: safe daily dose, what happens with too much, medication interactions and pregnancy safety. Evidence-based Australian guide.",
     "category": "Safety &amp; Side Effects",
     "href": "/blog/moringa-side-effects-what-happens-take-too-much-2026"
+  },
+  {
+    "slug": "moringa-smoothie-recipes-australia-easy-2026",
+    "title": "Moringa Smoothie Recipes Australia: Easy 2026 Guide",
+    "description": "Three easy moringa smoothie recipes for Australia: dosage in teaspoons, how to avoid clumping, and morning blends that hide the grassy taste (2026).",
+    "category": "Recipes",
+    "href": "/blog/moringa-smoothie-recipes-australia-easy-2026"
   },
   {
     "slug": "moringa-soap-benefits-for-skin-2026",
@@ -230,12 +223,5 @@ window.NT_BLOG_ARTICLES = [
     "description": "Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
     "category": "Research Guide",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
-  },
-  {
-    "slug": "where-to-buy-moringa-in-australia-online-vs-stores-2026-guide",
-    "title": "Where to Buy Moringa Australia 2026",
-    "description": "Where to buy moringa in Australia: online vs stores. Quality signals, delivery and price comparison for Aussies. NutriThrive, Melbourne — ships AU-wide.",
-    "category": "Research Guide",
-    "href": "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide"
   }
 ];
