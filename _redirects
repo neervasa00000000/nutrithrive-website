@@ -91,6 +91,8 @@
 # HOLD: content requires legal review re: FSANZ A1294 — activate redirect only after lawyer-reviewed content is live on destination
 # /blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-in-australia 301
 # /blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-in-australia 301
+/blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-australia-truth-2026 301!
+/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-australia-truth-2026.html 200
 /blog/is-moringa-banned-in-australia.html /blog/is-moringa-banned-in-australia 301!
 /blog/is-moringa-banned-in-australia /blog/is-moringa-banned-in-australia.html 200
 /blog/moringa-benefits-women-hormones-energy-skin-2026 /blog/moringa-benefits-for-women-comprehensive-2026 301
