@@ -39,6 +39,8 @@ const PATH_BLOCKLIST = new Set([
   "pages/shop/payment.html",
   "buy-moringa-powder-australia/index.html",
   "shared/components/author-bio.html",
+  "assets/includes/header.html",
+  "assets/includes/footer.html",
   "arcade/japan.html",
 ]);
 

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Optional local hook (install: node scripts/install-git-hooks.mjs)
+set -e
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR)
+if ! printf '%s\n' "$STAGED" | grep -qE '^(blog/|sitemap\.xml|_redirects)'; then
+  exit 0
+fi
+export TZ=Australia/Melbourne
+node scripts/verify-sitemap-locs.mjs
+node scripts/verify-blog-itemlist.mjs
+node scripts/blog-duplicate-scan.mjs
