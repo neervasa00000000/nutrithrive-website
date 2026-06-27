@@ -67,6 +67,9 @@ function walkHtml(dir, out = []) {
         name.name === ".build" ||
         name.name === "audit" ||
         name.name === "nutrithrive_labs" ||
+        name.name === "gas-guardian" ||
+        name.name === "arkive" ||
+        name.name === "private" ||
         name.name === "scripts"
       ) {
         continue;
@@ -258,6 +261,7 @@ function main() {
 
     const loc = fileToUrl(rel);
     if (loc.includes("/.firecrawl/") || loc.includes("/.netlify/")) continue;
+    if (loc.includes("/gas-guardian/") || loc.includes("/arkive/") || loc.includes("/private/")) continue;
     if (loc.includes("/nutrithrive_labs/")) continue;
     if (loc.includes("/shared/")) continue;
     if (rel.startsWith("shared/")) continue;
