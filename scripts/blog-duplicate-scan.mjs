@@ -172,6 +172,11 @@ function main() {
       console.log(`${p.sim}%  ${p.a}  <->  ${p.b}`);
     }
   }
+
+  if (pairs.length > 0) {
+    console.error(`\nDuplicate blog body copy detected (>= ${THRESHOLD * 100}%). Fix or differentiate posts before commit.`);
+    process.exit(1);
+  }
 }
 
 main();

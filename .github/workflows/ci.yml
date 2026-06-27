@@ -57,6 +57,12 @@ jobs:
           TZ: Australia/Melbourne
         run: node scripts/verify-sitemap-locs.mjs
 
+      - name: Verify blog ItemList JSON-LD
+        run: node scripts/verify-blog-itemlist.mjs
+
+      - name: Blog duplicate body scan
+        run: node scripts/blog-duplicate-scan.mjs
+
       - name: Prepare Netlify publish directory
         run: node scripts/prepare-netlify-publish.mjs
 
