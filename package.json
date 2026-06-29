@@ -9,7 +9,8 @@
     "build:tailwind": "tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify",
     "build:minify": "node scripts/build-assets.mjs --skip-tailwind",
     "build:arkive-preview": "node scripts/build-arkive-preview.mjs",
-    "hooks:install": "node scripts/install-git-hooks.mjs"
+    "hooks:install": "node scripts/install-git-hooks.mjs",
+    "blog:launch:apply": "node scripts/apply-blog-launch-schedule.mjs"
   },
   "dependencies": {
     "firecrawl": "^4.25.2",
