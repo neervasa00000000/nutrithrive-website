@@ -1,4 +1,4 @@
-/** Auto-generated — 73 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 58 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -13,13 +13,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Morning, night, or with food? An honest look at whether moringa timing actually matters, what's evidence and what's wellness-blog filler.",
     "category": "Guides",
     "href": "/blog/best-time-to-take-moringa-powder-morning-or-night-2026"
-  },
-  {
-    "slug": "can-you-drink-darjeeling-tea-every-day-2026",
-    "title": "Can You Drink Darjeeling Tea Every Day? Benefits and Limits (2026)",
-    "description": "Yes, daily Darjeeling tea is fine for most people. What to know about caffeine limits, tannins and iron absorption, and the specific groups who should be more careful.",
-    "category": "Tea Guide",
-    "href": "/blog/can-you-drink-darjeeling-tea-every-day-2026"
   },
   {
     "slug": "can-you-use-dried-curry-leaves-for-hair-2026",
@@ -43,25 +36,11 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/curry-leaves-health-benefits-what-the-evidence-says-2026"
   },
   {
-    "slug": "curry-leaves-heart-health-cholesterol-evidence-2026",
-    "title": "Curry Leaves for Heart Health and Cholesterol: What the Research Shows (2026)",
-    "description": "Curry leaves have been studied for effects on LDL cholesterol, triglycerides, and blood pressure. What the research actually shows and how it applies to everyday cooking.",
-    "category": "Health",
-    "href": "/blog/curry-leaves-heart-health-cholesterol-evidence-2026"
-  },
-  {
     "slug": "curry-leaves-in-australian-cooking-how-to-use-2026",
     "title": "Curry Leaves in Australian Cooking: 10 Ways to Use Them Beyond Curry (2026)",
     "description": "Most Australian home cooks only use curry leaves in South Asian dishes. Ten practical ways to use them in everyday cooking — pasta, eggs, roasted vegetables, and more.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-in-australian-cooking-how-to-use-2026"
-  },
-  {
-    "slug": "curry-leaves-substitute-what-to-use-2026",
-    "title": "Curry Leaves Substitute: What to Use When You Don't Have Them (2026)",
-    "description": "Don't have curry leaves for a recipe? The honest guide to substitutes that work, substitutes that sort of work, and the ones to skip entirely.",
-    "category": "Guides",
-    "href": "/blog/curry-leaves-substitute-what-to-use-2026"
   },
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
@@ -71,13 +50,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026"
   },
   {
-    "slug": "curry-leaves-vs-curry-powder-difference-explained-2026",
-    "title": "Curry Leaves vs Curry Powder: They Are Not the Same Thing",
-    "description": "Curry leaves and curry powder are completely different ingredients that happen to share a name. What each actually is, why you can't swap one for the other, and what to use instead.",
-    "category": "Guides",
-    "href": "/blog/curry-leaves-vs-curry-powder-difference-explained-2026"
-  },
-  {
     "slug": "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
     "title": "Darjeeling Tea Australia: First Flush vs Second Flush (2026)",
     "description": "Darjeeling in Australia: first vs second flush, caffeine levels, brewing tips, and how to spot real tea from supermarket blends. Melbourne dispatch.",
@@ -85,32 +57,11 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026"
   },
   {
-    "slug": "darjeeling-tea-coffee-replacement-honest-assessment-2026",
-    "title": "Is Darjeeling Tea a Good Coffee Replacement? An Honest Assessment (2026)",
-    "description": "People switch from coffee to Darjeeling for a lot of reasons. Whether it actually works as a replacement depends entirely on why you're making the switch.",
-    "category": "Tea Guide",
-    "href": "/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026"
-  },
-  {
     "slug": "darjeeling-tea-health-benefits-research-2026",
     "title": "Darjeeling Tea Health Benefits: What the Research Shows (2026)",
     "description": "Darjeeling tea health benefits: antioxidants, gut bacteria, stress, bone density — what's backed by research and what's generic black tea claims repackaged as Darjeeling-specific.",
     "category": "Tea",
     "href": "/blog/darjeeling-tea-health-benefits-research-2026"
-  },
-  {
-    "slug": "darjeeling-tea-vs-english-breakfast-comparison-2026",
-    "title": "Darjeeling Tea vs English Breakfast: What Is Actually Different? (2026)",
-    "description": "Both are black teas. But Darjeeling and English Breakfast are completely different drinking experiences. A clear comparison on flavour, caffeine, strength, and when to use each.",
-    "category": "Tea Guide",
-    "href": "/blog/darjeeling-tea-vs-english-breakfast-comparison-2026"
-  },
-  {
-    "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
-    "title": "Fresh vs Dried Curry Leaves: Which Is Better for Cooking? (2026)",
-    "description": "Fresh curry leaves taste stronger. Dried are more convenient. Which actually matters depends on what you're cooking. A practical comparison for Australian home cooks.",
-    "category": "Guides",
-    "href": "/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026"
   },
   {
     "slug": "glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
@@ -218,13 +169,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026"
   },
   {
-    "slug": "is-moringa-worth-it-cost-value-australia-2026",
-    "title": "Is Moringa Worth It? An Honest Cost-Per-Nutrient Breakdown for Australians (2026)",
-    "description": "$11 for 100g — is moringa actually good value compared to a multivitamin, greens powder, or iron tablet? A real cost comparison of what you're getting per dollar.",
-    "category": "Guides",
-    "href": "/blog/is-moringa-worth-it-cost-value-australia-2026"
-  },
-  {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
     "title": "Moringa and Berberine Together — What the Science Actually Says (Australia 2026)",
     "description": "Moringa and berberine combined: what the research says, drug interactions to know, dosage guidance and whether patches or powder make more sense.",
@@ -237,13 +181,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Does moringa help blood sugar? The honest answer: research is mixed. Some studies show promise, others show no effect. What this means if you have diabetes.",
     "category": "Health",
     "href": "/blog/moringa-and-blood-sugar-diabetes-research-2026"
-  },
-  {
-    "slug": "moringa-before-after-workout-timing-guide-2026",
-    "title": "Moringa Before or After a Workout: What Actually Makes Sense (2026)",
-    "description": "When's the best time to take moringa around exercise? The iron and antioxidant angles are real. The pre-workout energy claim isn't. Here's what actually makes sense.",
-    "category": "Guides",
-    "href": "/blog/moringa-before-after-workout-timing-guide-2026"
   },
   {
     "slug": "moringa-benefits-for-women-comprehensive-2026",
@@ -267,32 +204,11 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-detox-what-is-real-2026"
   },
   {
-    "slug": "moringa-energy-what-happens-week-by-week-2026",
-    "title": "Moringa for Energy: What Actually Happens Week by Week (2026)",
-    "description": "Moringa doesn't give you immediate energy like caffeine. Here's the honest week-by-week picture of what actually changes, and why it takes longer than you expect.",
-    "category": "Guides",
-    "href": "/blog/moringa-energy-what-happens-week-by-week-2026"
-  },
-  {
-    "slug": "moringa-for-anxiety-stress-evidence-2026",
-    "title": "Moringa for Anxiety: What the Evidence Shows (Honest 2026 Guide)",
-    "description": "Moringa isn't a proven anxiety treatment. But some of its nutritional properties are genuinely relevant to stress and anxiety. Here's the honest breakdown.",
-    "category": "Health",
-    "href": "/blog/moringa-for-anxiety-stress-evidence-2026"
-  },
-  {
     "slug": "moringa-for-breastfeeding-milk-supply-2026",
     "title": "Moringa for Breastfeeding: Does It Help with Milk Supply? (2026)",
     "description": "A 2025 systematic review found moringa leaf increased breast milk volume by up to 400mL per day. What the research says, what's safe, and what to ask your midwife.",
     "category": "Health",
     "href": "/blog/moringa-for-breastfeeding-milk-supply-2026"
-  },
-  {
-    "slug": "moringa-for-cholesterol-heart-health-research-2026",
-    "title": "Moringa for Cholesterol: What the Research Says (2026)",
-    "description": "Moringa and cholesterol — what animal and human research shows, what's still preliminary, and how it fits into a broader heart-healthy diet.",
-    "category": "Health",
-    "href": "/blog/moringa-for-cholesterol-heart-health-research-2026"
   },
   {
     "slug": "moringa-for-hair-growth-eating-evidence-2026",
@@ -435,13 +351,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-soap-benefits-for-skin-2026"
   },
   {
-    "slug": "moringa-soap-vs-regular-soap-comparison-2026",
-    "title": "Moringa Soap vs Regular Soap: What's Actually Different? (2026)",
-    "description": "Moringa soap versus standard commercial soap — what the actual differences are, what claims are real, and whether the premium is worth it for most people.",
-    "category": "Guides",
-    "href": "/blog/moringa-soap-vs-regular-soap-comparison-2026"
-  },
-  {
     "slug": "moringa-thyroid-hashimotos-hypothyroidism-2026",
     "title": "Moringa and Thyroid: Should People with Thyroid Conditions Avoid It? (2026)",
     "description": "Moringa and Hashimoto's / hypothyroidism — what's actually known, the goitrogenic question, and whether you need to avoid it or just be aware of it.",
@@ -477,13 +386,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-vs-whey-protein-comparison-2026"
   },
   {
-    "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
-    "title": "Why You Should Take Moringa with Vitamin C (and How To)",
-    "description": "Moringa is iron-rich but plant-based iron absorbs poorly without vitamin C. The simple pairing that doubles how much iron you actually get from each teaspoon.",
-    "category": "Guides",
-    "href": "/blog/moringa-with-vitamin-c-iron-absorption-guide-2026"
-  },
-  {
     "slug": "nutrithrive-dried-curry-leaves-tradition-health",
     "title": "Natural Curry Leaves Australia: NutriThrive Farm Story &amp; Premium Sourcing",
     "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
@@ -503,12 +405,5 @@ window.NT_BLOG_ARTICLES = [
     "description": "Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
     "category": "Research Guide",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
-  },
-  {
-    "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "title": "What Does Moringa Powder Taste Like? (Honest Guide + How to Hide It)",
-    "description": "Moringa powder tastes earthy, slightly bitter, sometimes peppery. An honest description plus exactly which foods and recipes mask it best — and which make it worse.",
-    "category": "Guides",
-    "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026"
   }
 ];

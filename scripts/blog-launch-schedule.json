@@ -1,0 +1,108 @@
+{
+  "description": "Staged launch for untitled-batch posts: 5 live on anchor date, then 5 every 5 days.",
+  "anchorDate": "2026-06-29",
+  "timezone": "Australia/Melbourne",
+  "batchIntervalDays": 5,
+  "posts": [
+    {
+      "slug": "moringa-for-pcos-polycystic-ovary-syndrome-2026",
+      "launchDate": "2026-06-29",
+      "batch": 1
+    },
+    {
+      "slug": "moringa-for-high-blood-pressure-hypertension-2026",
+      "launchDate": "2026-06-29",
+      "batch": 1
+    },
+    {
+      "slug": "moringa-for-sleep-quality-insomnia-2026",
+      "launchDate": "2026-06-29",
+      "batch": 1
+    },
+    {
+      "slug": "moringa-for-period-pain-pms-menstrual-health-2026",
+      "launchDate": "2026-06-29",
+      "batch": 1
+    },
+    {
+      "slug": "moringa-powder-vs-capsules-comparison-2026",
+      "launchDate": "2026-06-29",
+      "batch": 1
+    },
+    {
+      "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
+      "launchDate": "2026-07-04",
+      "batch": 2
+    },
+    {
+      "slug": "moringa-for-cholesterol-heart-health-research-2026",
+      "launchDate": "2026-07-04",
+      "batch": 2
+    },
+    {
+      "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
+      "launchDate": "2026-07-04",
+      "batch": 2
+    },
+    {
+      "slug": "moringa-energy-what-happens-week-by-week-2026",
+      "launchDate": "2026-07-04",
+      "batch": 2
+    },
+    {
+      "slug": "moringa-before-after-workout-timing-guide-2026",
+      "launchDate": "2026-07-04",
+      "batch": 2
+    },
+    {
+      "slug": "moringa-for-anxiety-stress-evidence-2026",
+      "launchDate": "2026-07-09",
+      "batch": 3
+    },
+    {
+      "slug": "curry-leaves-vs-curry-powder-difference-explained-2026",
+      "launchDate": "2026-07-09",
+      "batch": 3
+    },
+    {
+      "slug": "curry-leaves-substitute-what-to-use-2026",
+      "launchDate": "2026-07-09",
+      "batch": 3
+    },
+    {
+      "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
+      "launchDate": "2026-07-09",
+      "batch": 3
+    },
+    {
+      "slug": "curry-leaves-heart-health-cholesterol-evidence-2026",
+      "launchDate": "2026-07-09",
+      "batch": 3
+    },
+    {
+      "slug": "darjeeling-tea-vs-english-breakfast-comparison-2026",
+      "launchDate": "2026-07-14",
+      "batch": 4
+    },
+    {
+      "slug": "darjeeling-tea-coffee-replacement-honest-assessment-2026",
+      "launchDate": "2026-07-14",
+      "batch": 4
+    },
+    {
+      "slug": "can-you-drink-darjeeling-tea-every-day-2026",
+      "launchDate": "2026-07-14",
+      "batch": 4
+    },
+    {
+      "slug": "moringa-soap-vs-regular-soap-comparison-2026",
+      "launchDate": "2026-07-14",
+      "batch": 4
+    },
+    {
+      "slug": "is-moringa-worth-it-cost-value-australia-2026",
+      "launchDate": "2026-07-14",
+      "batch": 4
+    }
+  ]
+}

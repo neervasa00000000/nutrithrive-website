@@ -1,0 +1,44 @@
+# Applies scripts/blog-launch-schedule.json daily so staged posts go live on schedule.
+# Manual: Actions → Blog launch schedule → Run workflow
+# Or locally: node scripts/apply-blog-launch-schedule.mjs
+name: Blog launch schedule
+
+on:
+  schedule:
+    # 00:05 Australia/Melbourne (14:05 UTC during AEST; close enough year-round)
+    - cron: '5 14 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply blog launch schedule
+        env:
+          TZ: Australia/Melbourne
+        run: node scripts/apply-blog-launch-schedule.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog/ shared/js/blog-articles.js shared/js/blog-articles.min.js blog/index.html sitemap.xml llms.txt
+          if git diff --staged --quiet; then
+            echo "No launch changes today."
+          else
+            git commit -m "chore: apply blog launch schedule ($(date +%Y-%m-%d))"
+            git push
+          fi
