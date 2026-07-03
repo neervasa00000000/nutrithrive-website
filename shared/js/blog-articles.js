@@ -1,4 +1,4 @@
-/** Auto-generated — 58 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 63 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -183,6 +183,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-and-blood-sugar-diabetes-research-2026"
   },
   {
+    "slug": "moringa-before-after-workout-timing-guide-2026",
+    "title": "Moringa Before or After a Workout: What Actually Makes Sense (2026)",
+    "description": "When's the best time to take moringa around exercise? The iron and antioxidant angles are real. The pre-workout energy claim isn't. Here's what actually makes sense.",
+    "category": "Guides",
+    "href": "/blog/moringa-before-after-workout-timing-guide-2026"
+  },
+  {
     "slug": "moringa-benefits-for-women-comprehensive-2026",
     "title": "Moringa Benefits for Women: Iron, Hormones &amp; Skin (Australia 2026)",
     "description": "Moringa for women: iron and nutrients as part of diet, may support hormonal health, skin and milk supply. Evidence-backed dosage guide for Australian women.",
@@ -204,11 +211,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-detox-what-is-real-2026"
   },
   {
+    "slug": "moringa-energy-what-happens-week-by-week-2026",
+    "title": "Moringa for Energy: What Actually Happens Week by Week (2026)",
+    "description": "Moringa doesn't give you immediate energy like caffeine. Here's the honest week-by-week picture of what actually changes, and why it takes longer than you expect.",
+    "category": "Guides",
+    "href": "/blog/moringa-energy-what-happens-week-by-week-2026"
+  },
+  {
     "slug": "moringa-for-breastfeeding-milk-supply-2026",
     "title": "Moringa for Breastfeeding: Does It Help with Milk Supply? (2026)",
     "description": "A 2025 systematic review found moringa leaf increased breast milk volume by up to 400mL per day. What the research says, what's safe, and what to ask your midwife.",
     "category": "Health",
     "href": "/blog/moringa-for-breastfeeding-milk-supply-2026"
+  },
+  {
+    "slug": "moringa-for-cholesterol-heart-health-research-2026",
+    "title": "Moringa for Cholesterol: What the Research Says (2026)",
+    "description": "Moringa and cholesterol — what animal and human research shows, what's still preliminary, and how it fits into a broader heart-healthy diet.",
+    "category": "Health",
+    "href": "/blog/moringa-for-cholesterol-heart-health-research-2026"
   },
   {
     "slug": "moringa-for-hair-growth-eating-evidence-2026",
@@ -386,6 +407,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-vs-whey-protein-comparison-2026"
   },
   {
+    "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
+    "title": "Why You Should Take Moringa with Vitamin C (and How To)",
+    "description": "Moringa is iron-rich but plant-based iron absorbs poorly without vitamin C. The simple pairing that doubles how much iron you actually get from each teaspoon.",
+    "category": "Guides",
+    "href": "/blog/moringa-with-vitamin-c-iron-absorption-guide-2026"
+  },
+  {
     "slug": "nutrithrive-dried-curry-leaves-tradition-health",
     "title": "Natural Curry Leaves Australia: NutriThrive Farm Story &amp; Premium Sourcing",
     "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
@@ -405,5 +433,12 @@ window.NT_BLOG_ARTICLES = [
     "description": "Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
     "category": "Research Guide",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
+  },
+  {
+    "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
+    "title": "What Does Moringa Powder Taste Like? (Honest Guide + How to Hide It)",
+    "description": "Moringa powder tastes earthy, slightly bitter, sometimes peppery. An honest description plus exactly which foods and recipes mask it best — and which make it worse.",
+    "category": "Guides",
+    "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026"
   }
 ];
