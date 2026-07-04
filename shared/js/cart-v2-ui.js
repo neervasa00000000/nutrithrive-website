@@ -4,7 +4,8 @@
 (function () {
   if (window.CartV2) return;
 
-  const COUNTRY_KEY = 'nutrithrive_country';
+  const COUNTRY_KEY = 'nutrithrive_shipping_country';
+  const LEGACY_COUNTRY_KEY = 'nutrithrive_country';
 
   function getCart() {
     return window.Cart?.get?.() || null;
@@ -12,7 +13,11 @@
 
   function getShippingCountry() {
     try {
-      return (localStorage.getItem(COUNTRY_KEY) || 'AU').toUpperCase();
+      return (
+        localStorage.getItem(COUNTRY_KEY) ||
+        localStorage.getItem(LEGACY_COUNTRY_KEY) ||
+        'AU'
+      ).toUpperCase();
     } catch {
       return 'AU';
     }
@@ -22,6 +27,7 @@
     const cc = String(code || 'AU').toUpperCase();
     try {
       localStorage.setItem(COUNTRY_KEY, cc);
+      localStorage.setItem(LEGACY_COUNTRY_KEY, cc);
     } catch {
       /* ignore */
     }

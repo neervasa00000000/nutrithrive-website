@@ -1,13 +1,57 @@
 /**
  * Loads the PayPal JS SDK once. The client id comes from paypal-client-config.js.
  * @param {Record<string, string>|string} [params] - Extra query params, e.g. { currency: "AUD", components: "buttons" }.
+ * @param {{ forceReload?: boolean }} [options] - Pass forceReload to swap locale/country after country changes.
  * @returns {Promise<void>}
  */
 (function (global) {
     "use strict";
 
+    /** PayPal SDK query param locales (underscore). AU first — primary market. */
+    var LOCALE_BY_COUNTRY = {
+        AU: "en_AU",
+        NZ: "en_NZ",
+        US: "en_US",
+        GB: "en_GB",
+        CA: "en_CA",
+        IE: "en_IE",
+        SG: "en_SG",
+        IN: "en_IN",
+        DE: "de_DE",
+        FR: "fr_FR",
+        JP: "ja_JP",
+        CN: "zh_CN",
+        HK: "en_HK",
+        MY: "en_MY",
+        PH: "en_PH",
+        TH: "en_TH",
+        AE: "en_AE",
+    };
+
+    global.ntPayPalLocaleForCountry = function (countryCode) {
+        var cc = String(countryCode || "AU").trim().toUpperCase();
+        return LOCALE_BY_COUNTRY[cc] || "en_AU";
+    };
+
+    /** BCP-47 locale for PayPal Orders API application_context (hyphen). */
+    global.ntPayPalApplicationLocale = function (countryCode) {
+        return global.ntPayPalLocaleForCountry(countryCode).replace("_", "-");
+    };
+
     function getClientId() {
         return String(global.NUTRITHRIVE_PAYPAL_CLIENT_ID || "").trim();
+    }
+
+    function clearLoadedSdk() {
+        try {
+            delete global.paypal;
+        } catch (e) {
+            global.paypal = undefined;
+        }
+        var scripts = document.querySelectorAll('script[data-nt-paypal-sdk], script[src*="www.paypal.com/sdk/js"]');
+        for (var i = 0; i < scripts.length; i++) {
+            scripts[i].parentNode && scripts[i].parentNode.removeChild(scripts[i]);
+        }
     }
 
     function applyParams(sp, input) {
@@ -41,12 +85,16 @@
         return null;
     }
 
-    global.ntLoadPayPalSdk = function (params) {
+    global.ntLoadPayPalSdk = function (params, options) {
+        options = options || {};
+        if (options.forceReload) {
+            clearLoadedSdk();
+        }
         var url = buildUrl(params);
         if (!url) {
             return Promise.reject(new Error("NUTRITHRIVE_PAYPAL_CLIENT_ID is not set"));
         }
-        if (global.paypal && global.paypal.version) {
+        if (!options.forceReload && global.paypal && global.paypal.version) {
             return Promise.resolve();
         }
         var existing = findScriptWithUrl(url);
