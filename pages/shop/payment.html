@@ -439,6 +439,30 @@
             }, 0).toFixed(2));
         }
 
+        function getSelectedCountryCode() {
+            const select = document.getElementById('shipping-country');
+            return select && select.value ? select.value.toUpperCase() : 'AU';
+        }
+
+        function paypalSdkParams(countryCode) {
+            const locale = window.ntPayPalLocaleForCountry
+                ? window.ntPayPalLocaleForCountry(countryCode)
+                : 'en_AU';
+            return {
+                currency: 'AUD',
+                locale: locale,
+                components: 'buttons,applepay,funding-eligibility',
+            };
+        }
+
+        function loadPayPalSdkForCheckout(countryCode, forceReload) {
+            const params = paypalSdkParams(countryCode);
+            if (typeof window.ntLoadPayPalSdk !== 'function') {
+                return Promise.reject(new Error('PayPal SDK loader is missing'));
+            }
+            return window.ntLoadPayPalSdk(params, forceReload ? { forceReload: true } : undefined);
+        }
+
         function populateCountryDropdown() {
             const select = document.getElementById('shipping-country');
             if (!select || !window.ShippingRates || !window.ShippingRates.getCountryList) return;
@@ -450,12 +474,15 @@
                 option.textContent = country.name;
                 select.appendChild(option);
             });
-            const saved = localStorage.getItem('nutrithrive_shipping_country');
+            const saved =
+                localStorage.getItem('nutrithrive_shipping_country') ||
+                localStorage.getItem('nutrithrive_country');
             if (saved) {
                 select.value = saved;
             } else if ([...select.options].some(option => option.value === 'AU')) {
                 select.value = 'AU';
                 localStorage.setItem('nutrithrive_shipping_country', 'AU');
+                localStorage.setItem('nutrithrive_country', 'AU');
             }
         }
 
@@ -495,15 +522,26 @@
 
         function updateShippingAndTotal() {
             const cart = getCart();
-            const country = document.getElementById('shipping-country').value;
-            if (country) localStorage.setItem('nutrithrive_shipping_country', country);
+            const country = getSelectedCountryCode();
+            if (country) {
+                localStorage.setItem('nutrithrive_shipping_country', country);
+                localStorage.setItem('nutrithrive_country', country);
+            }
             const subtotal = computeSubtotal(cart.items);
             const shipping = country && window.ShippingRates ? window.ShippingRates.calculate(country, cart.items, subtotal) : null;
             const shippingValue = shipping === null ? null : Number.parseFloat(shipping) || 0;
             document.getElementById('shipping').textContent = shippingValue === null ? 'Select country' : (shippingValue === 0 ? 'Free' : money(shippingValue));
             document.getElementById('total').textContent = money(subtotal + (shippingValue || 0));
-            initPayPal();
-            setupApplePay();
+            loadPayPalSdkForCheckout(country, true)
+                .then(function () {
+                    initPayPal();
+                    setupApplePay();
+                })
+                .catch(function (err) {
+                    console.error('PayPal SDK reload failed:', err);
+                    initPayPal();
+                    setupApplePay();
+                });
         }
 
         function initPayPal() {
@@ -531,7 +569,7 @@
                 return;
             }
 
-            const countryCode = document.getElementById('shipping-country').value;
+            const countryCode = getSelectedCountryCode();
             if (!countryCode) {
                 setPlaceholder('Select shipping country to continue.');
                 return;
@@ -636,21 +674,10 @@
             } else {
                 bootCheckout();
             }
+        } else if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootCheckout);
         } else {
-            const p = window.ntLoadPayPalSdk({ currency: 'AUD', components: 'buttons,applepay,funding-eligibility' });
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function () {
-                    p.then(bootCheckout).catch(function (err) {
-                        console.error('PayPal SDK failed to load:', err);
-                        bootCheckout();
-                    });
-                });
-            } else {
-                p.then(bootCheckout).catch(function (err) {
-                    console.error('PayPal SDK failed to load:', err);
-                    bootCheckout();
-                });
-            }
+            bootCheckout();
         }
     </script>
 <script src="/shared/site-data.min.js"></script>
