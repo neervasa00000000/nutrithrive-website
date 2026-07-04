@@ -21,7 +21,6 @@ const IGNORE = new Set([
   'audit',
   'tools',
   'issues',
-  'arkive',
   'gas-guardian',
 ]);
 

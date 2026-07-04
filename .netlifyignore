@@ -1,5 +1,5 @@
-# ARKIVE source (built preview lives under private/arkive-preview/)
-arkive/
+# Local Next.js experiment (never deploy)
+gas-guardian/
 
 # Never publish local tooling, test templates, or audit output
 .firecrawl/
