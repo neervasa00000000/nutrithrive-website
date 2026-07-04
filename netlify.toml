@@ -2,18 +2,6 @@
   command = "npm ci && npm run build:minify && node scripts/prepare-netlify-publish.mjs"
   publish = ".netlify-publish"
 
-# ARKIVE private preview — SPA routing (force=false serves static index.html at /private/arkive-preview/)
-[[redirects]]
-  from = "/private/arkive-preview"
-  to = "/private/arkive-preview/"
-  status = 301
-
-[[redirects]]
-  from = "/private/arkive-preview/*"
-  to = "/private/arkive-preview/index.html"
-  status = 200
-  force = false
-
 [[headers]]
   for = "/shared/components/*"
   [headers.values]
@@ -23,28 +11,6 @@
   for = "/nutrithrive_labs/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-
-# ARKIVE private preview — unlisted, noindex, HTTP basic auth (Netlify Pro+)
-[[headers]]
-  for = "/private/arkive-preview"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-    Basic-Auth = "nt-preview:arkive-test-2026"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; frame-src https:; object-src 'none'; base-uri 'self'"
-
-[[headers]]
-  for = "/private/arkive-preview/"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-    Basic-Auth = "nt-preview:arkive-test-2026"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; frame-src https:; object-src 'none'; base-uri 'self'"
-
-[[headers]]
-  for = "/private/arkive-preview/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-    Basic-Auth = "nt-preview:arkive-test-2026"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; frame-src https:; object-src 'none'; base-uri 'self'"
 
 [[headers]]
   for = "/assets/images/*"
