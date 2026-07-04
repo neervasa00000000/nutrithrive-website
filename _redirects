@@ -69,9 +69,9 @@
 /blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes /pages/shipping/shipping-returns 301
 /blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html /pages/shipping/shipping-returns 301
 
-# DELETE - Mega-guide splits traffic
-/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html /404.html 410
-/blog/what-does-moringa-do-for-your-body-complete-guide-2026 /404.html 410
+# DELETE - Mega-guide splits traffic → canonical diet/benefits hub
+/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html /blog/how-to-add-moringa-to-diet 301
+/blog/what-does-moringa-do-for-your-body-complete-guide-2026 /blog/how-to-add-moringa-to-diet 301
 
 # Wrong slug (404) → live comparison article
 /blog/moringa-vs-spirulina-vs-matcha-australia-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
@@ -187,10 +187,10 @@
 /blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/best-protein-powder-australia-2026-complete-guide /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/best-protein-powder-australia-2026-complete-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/how-to-grow-moringa-in-australia-complete-guide-2026.html /404.html 410
-/blog/how-to-grow-moringa-in-australia-complete-guide-2026 /404.html 410
-/blog/moringa-capsules-vs-powder-which-is-better-2026.html /404.html 410
-/blog/moringa-capsules-vs-powder-which-is-better-2026 /404.html 410
+/blog/how-to-grow-moringa-in-australia-complete-guide-2026.html /blog/grow-moringa-tree-australia 301
+/blog/how-to-grow-moringa-in-australia-complete-guide-2026 /blog/grow-moringa-tree-australia 301
+/blog/moringa-capsules-vs-powder-which-is-better-2026.html /blog/moringa-powder-vs-capsules-comparison-2026 301
+/blog/moringa-capsules-vs-powder-which-is-better-2026 /blog/moringa-powder-vs-capsules-comparison-2026 301
 /blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html /404.html 410
 /blog/buy-moringa-powder-melbourne-victoria-chinese-guide /404.html 410
 /blog/top-moringa-companies-australia-2026 /products/moringa-powder/ 301
@@ -243,6 +243,16 @@
 /pages/usage-guide/how-to-use-moringa /blog/how-to-add-moringa-to-diet 301
 /pages/usage-guide/how-to-use-moringa.html /blog/how-to-add-moringa-to-diet 301
 /pages/benefits/moringa-benefits.html /blog/how-to-add-moringa-to-diet 301
+
+# Blog category hubs (breadcrumbs link here; serve index.html)
+/blog/category/guides /blog/category/guides/index.html 200
+/blog/category/guides/ /blog/category/guides/index.html 200
+/blog/category/tea /blog/category/tea/index.html 200
+/blog/category/tea/ /blog/category/tea/index.html 200
+/blog/category/health /blog/category/health/index.html 200
+/blog/category/health/ /blog/category/health/index.html 200
+/blog/category/pets /blog/category/pets/index.html 200
+/blog/category/pets/ /blog/category/pets/index.html 200
 
 # Pretty blog URLs (extensionless) → canonical .html
 
@@ -436,8 +446,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/how-to-choose-moringa-powder-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026.html 200
 /blog/how-to-read-moringa-batch-codes-freshness.html /404.html 410
 /blog/how-to-read-moringa-batch-codes-freshness /404.html 410
-/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html /404.html 410
-/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026 /404.html 410
+/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html /blog/what-does-moringa-powder-taste-like-honest-guide-2026 301
+/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026 /blog/what-does-moringa-powder-taste-like-honest-guide-2026 301
 /blog/moringa-30-day-challenge-honest-results.html /404.html 410
 /blog/moringa-30-day-challenge-honest-results /404.html 410
 /blog/moringa-benefits-for-women-comprehensive-2026.html /blog/moringa-benefits-for-women-comprehensive-2026 301!

@@ -790,7 +790,7 @@
   <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #175c36;">Related Guides</h2>
   <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
       <li><a href="/blog/how-to-add-moringa-to-diet">Moringa Powder Guide (Australia 2026)</a></li>
-      <li><a href="/blog/moringa-brands-comparison-australia-2026.html">Moringa Brands Compared (2026)</a></li>
+      <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">Moringa Brands Compared (2026)</a></li>
       <li><a href="/blog/nutrithrive-dried-curry-leaves-tradition-health">Dried Curry Leaves Australia: NutriThrive Farm Story</a></li>
       <li><a href="/products/moringa-powder/">Shop Moringa Powder</a></li>
       <li><a href="/products/curry-leaves/">Shop Dried Curry Leaves</a></li>
@@ -889,7 +889,7 @@
                 console.error("PayPal SDK loader missing.");
                 return;
             }
-            window.ntLoadPayPalSdk({ currency: "AUD", intent: "capture", components: "buttons" }).then(function () {
+            window.ntLoadPayPalSdk({ currency: "AUD", intent: "capture", locale: "en_AU", components: "buttons" }).then(function () {
                 if (document.readyState === "loading") {
                     document.addEventListener("DOMContentLoaded", function () {
                         setTimeout(initPayPalButtons, 100);
