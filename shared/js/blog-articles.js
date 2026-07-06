@@ -1,4 +1,4 @@
-/** Auto-generated — 63 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 73 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -8,11 +8,32 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026"
   },
   {
+    "slug": "best-anti-inflammatory-foods-australia-daily-guide-2026",
+    "title": "The Best Anti-Inflammatory Foods to Eat Every Day (Australian Guide 2026)",
+    "description": "Chronic inflammation drives most of the major diseases Australians face. These are the foods with real, documented anti-inflammatory effects — and the ones that are hype.",
+    "category": "Health",
+    "href": "/blog/best-anti-inflammatory-foods-australia-daily-guide-2026"
+  },
+  {
+    "slug": "best-plant-based-iron-foods-australia-absorption-guide-2026",
+    "title": "The Best Plant-Based Iron Foods for Australians (And How to Absorb Them Better)",
+    "description": "Iron deficiency is one of the most common nutritional problems in Australia. For people eating less meat, knowing which plant foods actually deliver — and what to eat with them — matters.",
+    "category": "Health",
+    "href": "/blog/best-plant-based-iron-foods-australia-absorption-guide-2026"
+  },
+  {
     "slug": "best-time-to-take-moringa-powder-morning-or-night-2026",
     "title": "Best Time to Take Moringa Powder: Does It Matter? (2026)",
     "description": "Morning, night, or with food? An honest look at whether moringa timing actually matters, what's evidence and what's wellness-blog filler.",
     "category": "Guides",
     "href": "/blog/best-time-to-take-moringa-powder-morning-or-night-2026"
+  },
+  {
+    "slug": "blood-sugar-spikes-how-to-avoid-through-food-2026",
+    "title": "Blood Sugar Spikes: What They Are and How to Avoid Them Through Food (2026)",
+    "description": "Blood sugar spikes don't only affect diabetics. They affect everyone's energy, mood, hunger, and long-term health. What causes them and the simple food habits that help.",
+    "category": "Health",
+    "href": "/blog/blood-sugar-spikes-how-to-avoid-through-food-2026"
   },
   {
     "slug": "can-you-use-dried-curry-leaves-for-hair-2026",
@@ -92,6 +113,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"
   },
   {
+    "slug": "how-much-water-per-day-australians-honest-guide-2026",
+    "title": "How Much Water Should You Actually Drink Per Day? (The Honest Answer for Australians)",
+    "description": "The &quot;eight glasses a day&quot; rule has almost no scientific basis. Here's what the actual evidence says about daily water intake, what counts toward it, and the signs you need more.",
+    "category": "Health",
+    "href": "/blog/how-much-water-per-day-australians-honest-guide-2026"
+  },
+  {
     "slug": "how-to-add-moringa-to-diet",
     "title": "How to Add Moringa Powder to Your Diet — Easy Australian Ideas",
     "description": "Add moringa to smoothies, teas, and savoury meals: cut bitterness, build a daily serving habit, and use simple Australian-friendly ideas—practical 2026 guide.",
@@ -111,6 +139,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh — 2026.",
     "category": "Buyer's Guide",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026"
+  },
+  {
+    "slug": "how-to-eat-more-vegetables-practical-guide-australia-2026",
+    "title": "How to Eat More Vegetables Without Changing Your Whole Diet (2026)",
+    "description": "Most Australians don't eat enough vegetables. The good news is you don't need a meal plan or a new lifestyle. Practical ways to add vegetables to meals you already cook.",
+    "category": "Health",
+    "href": "/blog/how-to-eat-more-vegetables-practical-guide-australia-2026"
   },
   {
     "slug": "how-to-make-moringa-tea-recipes-2026",
@@ -414,6 +449,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-with-vitamin-c-iron-absorption-guide-2026"
   },
   {
+    "slug": "morning-routine-health-tips-australia-2026",
+    "title": "How to Build a Morning Routine That Actually Improves Your Health (2026)",
+    "description": "A morning routine doesn't have to take an hour. What the research supports, what's overrated, and a realistic version for people who are not morning people.",
+    "category": "Health",
+    "href": "/blog/morning-routine-health-tips-australia-2026"
+  },
+  {
     "slug": "nutrithrive-dried-curry-leaves-tradition-health",
     "title": "Natural Curry Leaves Australia: NutriThrive Farm Story &amp; Premium Sourcing",
     "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
@@ -435,10 +477,38 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
   },
   {
+    "slug": "signs-magnesium-deficiency-australia-what-to-eat-2026",
+    "title": "Signs You Might Be Magnesium Deficient (Most Australians Are)",
+    "description": "Up to 80% of Australians may be magnesium deficient. The symptoms are easy to miss because they look like stress, poor sleep, and being busy. Here's what to look for.",
+    "category": "Health",
+    "href": "/blog/signs-magnesium-deficiency-australia-what-to-eat-2026"
+  },
+  {
+    "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
+    "title": "Ultra-Processed Food in Australia: What It Actually Is and How Much You're Eating",
+    "description": "Most Australians eat more ultra-processed food than they realise — and most don't know what the term actually means. A clear, non-preachy guide to what counts and what the research shows.",
+    "category": "Health",
+    "href": "/blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026"
+  },
+  {
+    "slug": "vitamin-d-deficiency-australia-sunny-country-paradox-2026",
+    "title": "Vitamin D Deficiency in Australia: The Paradox of the Sunniest Country (2026)",
+    "description": "One in four Australians is vitamin D deficient in winter despite living in one of the sunniest countries on earth. Why this happens and what to do about it.",
+    "category": "Health",
+    "href": "/blog/vitamin-d-deficiency-australia-sunny-country-paradox-2026"
+  },
+  {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
     "title": "What Does Moringa Powder Taste Like? (Honest Guide + How to Hide It)",
     "description": "Moringa powder tastes earthy, slightly bitter, sometimes peppery. An honest description plus exactly which foods and recipes mask it best — and which make it worse.",
     "category": "Guides",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026"
+  },
+  {
+    "slug": "why-always-tired-nutritional-deficiencies-australia-2026",
+    "title": "Why You're Always Tired: 7 Nutritional Deficiencies That Cause Fatigue in Australians",
+    "description": "Persistent tiredness that sleep doesn't fix is often nutritional. Seven common deficiencies that cause fatigue in Australians — and how to identify which one applies to you.",
+    "category": "Health",
+    "href": "/blog/why-always-tired-nutritional-deficiencies-australia-2026"
   }
 ];
