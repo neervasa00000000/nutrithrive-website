@@ -34,6 +34,25 @@ function isRateLimited(key, limit = RATE_LIMIT_MAX_REQUESTS, windowMs = RATE_LIM
     return bucket.count > limit;
 }
 
+function formatMoney(amount) {
+    return Number(amount).toFixed(2);
+}
+
+function sumPayPalItemsTotal(paypalItems) {
+    let total = 0;
+    for (const item of paypalItems) {
+        total += parseFloat(item.unit_amount.value) * parseInt(item.quantity, 10);
+    }
+    return Number(total.toFixed(2));
+}
+
+function moneyField(currency, amount) {
+    return {
+        currency_code: currency,
+        value: formatMoney(amount),
+    };
+}
+
 export async function handler(event) {
     const requestOrigin = String(getHeader(event, "origin") || "");
     const allowedOrigins = new Set([
@@ -200,14 +219,12 @@ export async function handler(event) {
                 paypalItems.push({
                     name: String(product.name).substring(0, 127),
                     quantity: String(quantity),
-                    unit_amount: {
-                        currency_code: currency,
-                        value: product.price.toFixed(2),
-                    },
+                    category: "PHYSICAL_GOODS",
+                    unit_amount: moneyField(currency, product.price),
                 });
             }
 
-            computedSubtotal = Number(computedSubtotal.toFixed(2));
+            computedSubtotal = sumPayPalItemsTotal(paypalItems);
             if (computedSubtotal <= 0 || paypalItems.length === 0) {
                 return {
                     statusCode: 400,
@@ -224,22 +241,13 @@ export async function handler(event) {
             const totalNum = Number((computedSubtotal + shippingCost).toFixed(2));
 
             purchaseUnit = {
+                invoice_id: `NT-${Date.now()}-${randomBytes(4).toString("hex")}`,
                 amount: {
                     currency_code: currency,
-                    value: totalNum.toFixed(2),
+                    value: formatMoney(totalNum),
                     breakdown: {
-                        item_total: {
-                            currency_code: currency,
-                            value: computedSubtotal.toFixed(2),
-                        },
-                        ...(shippingCost > 0
-                            ? {
-                                  shipping: {
-                                      currency_code: currency,
-                                      value: shippingCost.toFixed(2),
-                                  },
-                              }
-                            : {}),
+                        item_total: moneyField(currency, computedSubtotal),
+                        shipping: moneyField(currency, shippingCost),
                     },
                 },
                 items: paypalItems,
@@ -252,24 +260,28 @@ export async function handler(event) {
             };
         }
 
-        // Create order with application_context to require shipping address and email
         const orderRes = await fetch(`${base}/v2/checkout/orders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${tokenData.access_token}`,
+                "Prefer": "return=representation",
             },
             body: JSON.stringify({
                 intent: "CAPTURE",
                 purchase_units: [purchaseUnit],
-                application_context: {
-                    shipping_preference: "GET_FROM_FILE", // Requires buyer to provide shipping address
-                    user_action: "PAY_NOW", // Shows "Pay Now" button instead of "Continue"
-                    payment_method: {
-                        payer_selected: "PAYPAL",
-                        payee_preferred: "IMMEDIATE_PAYMENT_REQUIRED"
-                    }
-                }
+                payment_source: {
+                    paypal: {
+                        experience_context: {
+                            payment_method_preference: "IMMEDIATE_PAYMENT_REQUIRED",
+                            landing_page: "LOGIN",
+                            shipping_preference: "GET_FROM_FILE",
+                            user_action: "PAY_NOW",
+                            return_url: CHECKOUT_RETURN_URL,
+                            cancel_url: CHECKOUT_CANCEL_URL,
+                        },
+                    },
+                },
             }),
         });
 

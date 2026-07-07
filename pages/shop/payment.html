@@ -578,12 +578,23 @@
             let captureToken = null;
             const config = {
                 createOrder: function () {
+                    const orderItems = cart.items
+                        .map(function (item) {
+                            const id = String(item.id || '').trim();
+                            const quantity = parseInt(item.quantity || 1, 10);
+                            if (!id || !Number.isFinite(quantity) || quantity < 1) return null;
+                            return { id: id, quantity: quantity };
+                        })
+                        .filter(Boolean);
+                    if (!orderItems.length) {
+                        return Promise.reject(new Error('Your cart is empty.'));
+                    }
                     return fetch('/.netlify/functions/paypal-create-order', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
-                            items: cart.items.map(item => ({ id: item.id, quantity: parseInt(item.quantity || 1, 10) })),
-                            countryCode: countryCode
+                            countryCode: countryCode,
+                            items: orderItems
                         })
                     }).then(res => res.json().then(data => ({ ok: res.ok, data })))
                     .then(result => {
