@@ -1,32 +1,23 @@
 import { createHmac } from "crypto";
-import { readFileSync } from "fs";
-import { dirname, join } from "path";
+import { createRequire } from "module";
 import { fileURLToPath } from "url";
-import vm from "vm";
+
+function createModuleRequire() {
+    if (typeof __filename !== "undefined") {
+        return createRequire(__filename);
+    }
+    if (typeof import.meta !== "undefined" && import.meta.url) {
+        return createRequire(fileURLToPath(import.meta.url));
+    }
+    return createRequire(process.argv[1] || "/var/task/netlify/functions/paypal-create-order.js");
+}
+
+const require = createModuleRequire();
+const ShippingRates = require("../../scripts/global/shipping-rates-node.cjs");
 
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
 const requestBuckets = new Map();
-
-let cachedShippingRates = null;
-
-function resolveFunctionDir() {
-    if (typeof __dirname !== "undefined") return __dirname;
-    if (typeof import.meta !== "undefined" && import.meta.url) {
-        return dirname(fileURLToPath(import.meta.url));
-    }
-    return process.cwd();
-}
-
-function getShippingRates() {
-    if (cachedShippingRates) return cachedShippingRates;
-    const ratesPath = join(resolveFunctionDir(), "../../scripts/global/shipping-rates.js");
-    const src = readFileSync(ratesPath, "utf8");
-    const sandbox = { module: { exports: {} }, window: undefined, console };
-    vm.runInNewContext(src, sandbox);
-    cachedShippingRates = sandbox.module.exports;
-    return cachedShippingRates;
-}
 
 function getHeader(event, key) {
     const headers = event?.headers || {};
@@ -160,7 +151,6 @@ export async function handler(event) {
         };
 
         // Import shipping rates shared logic (Node-safe export).
-        const ShippingRates = getShippingRates();
         if (!ShippingRates || typeof ShippingRates.calculate !== "function") {
             console.error("[paypal-create-order] ShippingRates module unavailable");
             return {
