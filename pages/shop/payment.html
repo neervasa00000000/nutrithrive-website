@@ -356,7 +356,7 @@
                         Please review and confirm these details carefully - your order will be shipped to the address you approve there.
                     </p>
                     <label for="shipping-country" class="section-label" style="text-align:center;">Shipping country</label>
-                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()">
+                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal(true)">
                         <option value="AU" selected>Australia</option>
                     </select>
                     <div class="radio-card">
@@ -520,7 +520,7 @@
             document.getElementById('subtotal').textContent = money(subtotal);
         }
 
-        function updateShippingAndTotal() {
+        function updateShippingAndTotal(forceSdkReload) {
             const cart = getCart();
             const country = getSelectedCountryCode();
             if (country) {
@@ -532,7 +532,7 @@
             const shippingValue = shipping === null ? null : Number.parseFloat(shipping) || 0;
             document.getElementById('shipping').textContent = shippingValue === null ? 'Select country' : (shippingValue === 0 ? 'Free' : money(shippingValue));
             document.getElementById('total').textContent = money(subtotal + (shippingValue || 0));
-            loadPayPalSdkForCheckout(country, true)
+            loadPayPalSdkForCheckout(country, !!forceSdkReload)
                 .then(function () {
                     initPayPal();
                     setupApplePay();
@@ -665,8 +665,18 @@
             trackBeginCheckout();
             populateCountryDropdown();
             renderOrderReview();
-            updateShippingAndTotal();
+            updateShippingAndTotal(false);
         }
+
+        function startCheckout() {
+            loadPayPalSdkForCheckout(getSelectedCountryCode(), false)
+                .then(bootCheckout)
+                .catch(function (err) {
+                    console.error('PayPal SDK failed to load:', err);
+                    bootCheckout();
+                });
+        }
+
         if (typeof window.ntLoadPayPalSdk !== 'function') {
             console.error('PayPal SDK loader is missing (paypal-sdk-loader.js).');
             if (document.readyState === 'loading') {
@@ -675,9 +685,9 @@
                 bootCheckout();
             }
         } else if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', bootCheckout);
+            document.addEventListener('DOMContentLoaded', startCheckout);
         } else {
-            bootCheckout();
+            startCheckout();
         }
     </script>
 <script src="/shared/site-data.min.js"></script>

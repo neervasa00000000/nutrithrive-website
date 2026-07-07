@@ -1,33 +1,12 @@
 import { createHmac } from "crypto";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const ShippingRates = require("../../scripts/global/shipping-rates-node.cjs");
 
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
 const requestBuckets = new Map();
-
-const PAYPAL_LOCALE_BY_COUNTRY = {
-    AU: "en-AU",
-    NZ: "en-NZ",
-    US: "en-US",
-    GB: "en-GB",
-    CA: "en-CA",
-    IE: "en-IE",
-    SG: "en-SG",
-    IN: "en-IN",
-    DE: "de-DE",
-    FR: "fr-FR",
-    JP: "ja-JP",
-    CN: "zh-CN",
-    HK: "en-HK",
-    MY: "en-MY",
-    PH: "en-PH",
-    TH: "th-TH",
-    AE: "en-AE",
-};
-
-function paypalApplicationLocale(countryCode) {
-    const cc = String(countryCode || "AU").trim().toUpperCase();
-    return PAYPAL_LOCALE_BY_COUNTRY[cc] || "en-AU";
-}
 
 function getHeader(event, key) {
     const headers = event?.headers || {};
@@ -130,7 +109,6 @@ export async function handler(event) {
         }
 
         const cc = countryCode.trim().toUpperCase();
-        const paypalLocale = paypalApplicationLocale(cc);
 
         if (!Array.isArray(items) || items.length < 1) {
             return {
@@ -162,8 +140,16 @@ export async function handler(event) {
         };
 
         // Import shipping rates shared logic (Node-safe export).
-        const shippingRatesModule = await import("../../scripts/global/shipping-rates.js");
-        const ShippingRates = shippingRatesModule.default ?? shippingRatesModule;
+        if (!ShippingRates || typeof ShippingRates.calculate !== "function") {
+            console.error("[paypal-create-order] ShippingRates module unavailable");
+            return {
+                statusCode: 503,
+                headers,
+                body: JSON.stringify({
+                    error: "Payment is temporarily unavailable. Please try again later.",
+                }),
+            };
+        }
 
         // Get access token
         const tokenRes = await fetch(`${base}/v1/oauth2/token`, {
@@ -257,11 +243,6 @@ export async function handler(event) {
                     },
                 },
                 items: paypalItems,
-                shipping: {
-                    address: {
-                        country_code: cc,
-                    },
-                },
             };
         } else {
             return {
@@ -284,7 +265,6 @@ export async function handler(event) {
                 application_context: {
                     shipping_preference: "GET_FROM_FILE", // Requires buyer to provide shipping address
                     user_action: "PAY_NOW", // Shows "Pay Now" button instead of "Continue"
-                    locale: paypalLocale,
                     payment_method: {
                         payer_selected: "PAYPAL",
                         payee_preferred: "IMMEDIATE_PAYMENT_REQUIRED"
