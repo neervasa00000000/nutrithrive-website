@@ -1,4 +1,4 @@
-/** Auto-generated — 73 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 73 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
