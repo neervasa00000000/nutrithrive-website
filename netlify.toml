@@ -2,6 +2,9 @@
   command = "npm ci && npm run build:minify && node scripts/prepare-netlify-publish.mjs"
   publish = ".netlify-publish"
 
+[functions]
+  included_files = ["scripts/global/shipping-rates.js", "scripts/global/shipping-rates-node.cjs"]
+
 [[headers]]
   for = "/shared/components/*"
   [headers.values]

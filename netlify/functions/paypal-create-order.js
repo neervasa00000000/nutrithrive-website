@@ -1,32 +1,12 @@
-import { createHmac } from "crypto";
-import { readFileSync } from "fs";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
-import vm from "vm";
+import { createHmac, randomBytes } from "crypto";
+import ShippingRates from "../../scripts/global/shipping-rates-node.cjs";
+
+const CHECKOUT_RETURN_URL = "https://nutrithrive.com.au/payment";
+const CHECKOUT_CANCEL_URL = "https://nutrithrive.com.au/payment";
 
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
 const requestBuckets = new Map();
-
-let cachedShippingRates = null;
-
-function resolveFunctionDir() {
-    if (typeof __dirname !== "undefined") return __dirname;
-    if (typeof import.meta !== "undefined" && import.meta.url) {
-        return dirname(fileURLToPath(import.meta.url));
-    }
-    return process.cwd();
-}
-
-function getShippingRates() {
-    if (cachedShippingRates) return cachedShippingRates;
-    const ratesPath = join(resolveFunctionDir(), "../../scripts/global/shipping-rates.js");
-    const src = readFileSync(ratesPath, "utf8");
-    const sandbox = { module: { exports: {} }, window: undefined, console };
-    vm.runInNewContext(src, sandbox);
-    cachedShippingRates = sandbox.module.exports;
-    return cachedShippingRates;
-}
 
 function getHeader(event, key) {
     const headers = event?.headers || {};
@@ -138,18 +118,6 @@ export async function handler(event) {
             };
         }
 
-        const ShippingRates = getShippingRates();
-        if (!ShippingRates || typeof ShippingRates.calculate !== "function") {
-            console.error("[paypal-create-order] ShippingRates module unavailable");
-            return {
-                statusCode: 503,
-                headers,
-                body: JSON.stringify({
-                    error: "Payment is temporarily unavailable. Please try again later.",
-                }),
-            };
-        }
-
         // Authoritative product catalog for server-side pricing/weighting.
         // SECURITY: Do not trust client-provided prices/names/amounts.
         const PRODUCT_CATALOG = {
@@ -171,6 +139,18 @@ export async function handler(event) {
             "moringa-variation-6": { name: "Moringa 100g + Soap 95g", price: 17.00, weight: 195 },
         };
 
+        // Import shipping rates shared logic (Node-safe export).
+        if (!ShippingRates || typeof ShippingRates.calculate !== "function") {
+            console.error("[paypal-create-order] ShippingRates module unavailable");
+            return {
+                statusCode: 503,
+                headers,
+                body: JSON.stringify({
+                    error: "Payment is temporarily unavailable. Please try again later.",
+                }),
+            };
+        }
+
         // Get access token
         const tokenRes = await fetch(`${base}/v1/oauth2/token`, {
             method: "POST",
@@ -183,79 +163,96 @@ export async function handler(event) {
         const tokenData = await tokenRes.json();
         if (!tokenRes.ok) throw new Error(JSON.stringify(tokenData));
 
+        // Build purchase unit with optional item and breakdown details
         const currency = "AUD";
-        let computedSubtotal = 0;
-        const cartItemsForShipping = [];
-        const paypalItems = [];
 
-        for (const item of items) {
-            const id = String(item?.id ?? "").trim();
-            const quantity = parseInt(item?.quantity ?? 1, 10);
-            if (!id || !Number.isFinite(quantity) || quantity < 1 || quantity > 99) continue;
+        let purchaseUnit;
 
-            const product = PRODUCT_CATALOG[id];
-            if (!product) {
+        // Build purchase unit using authoritative server-side pricing + shipping.
+        // SECURITY: ignore client-provided amount/subtotal/shipping/unit prices.
+        if (Array.isArray(items) && items.length > 0) {
+            let computedSubtotal = 0;
+            const cartItemsForShipping = [];
+            const paypalItems = [];
+
+            for (const item of items) {
+                const id = String(item?.id ?? "").trim();
+                const quantity = parseInt(item?.quantity ?? 1, 10);
+                if (!id || !Number.isFinite(quantity) || quantity < 1 || quantity > 99) continue;
+
+                const product = PRODUCT_CATALOG[id];
+                if (!product) {
+                    return {
+                        statusCode: 400,
+                        headers,
+                        body: JSON.stringify({ error: "Invalid item id" }),
+                    };
+                }
+
+                computedSubtotal += product.price * quantity;
+                cartItemsForShipping.push({
+                    id,
+                    name: product.name,
+                    weight: product.weight,
+                    quantity: quantity,
+                });
+
+                paypalItems.push({
+                    name: String(product.name).substring(0, 127),
+                    quantity: String(quantity),
+                    unit_amount: {
+                        currency_code: currency,
+                        value: product.price.toFixed(2),
+                    },
+                });
+            }
+
+            computedSubtotal = Number(computedSubtotal.toFixed(2));
+            if (computedSubtotal <= 0 || paypalItems.length === 0) {
                 return {
                     statusCode: 400,
                     headers,
-                    body: JSON.stringify({ error: "Invalid item id" }),
+                    body: JSON.stringify({ error: "Invalid cart" }),
                 };
             }
 
-            computedSubtotal += product.price * quantity;
-            cartItemsForShipping.push({
-                id,
-                name: product.name,
-                weight: product.weight,
-                quantity,
-            });
+            const shippingCostRaw =
+                ShippingRates && typeof ShippingRates.calculate === "function"
+                    ? ShippingRates.calculate(cc, cartItemsForShipping, computedSubtotal)
+                    : null;
+            const shippingCost = shippingCostRaw === null || shippingCostRaw === undefined ? 0 : Number(shippingCostRaw);
+            const totalNum = Number((computedSubtotal + shippingCost).toFixed(2));
 
-            paypalItems.push({
-                name: String(product.name).substring(0, 127),
-                quantity: String(quantity),
-                unit_amount: {
+            purchaseUnit = {
+                amount: {
                     currency_code: currency,
-                    value: product.price.toFixed(2),
+                    value: totalNum.toFixed(2),
+                    breakdown: {
+                        item_total: {
+                            currency_code: currency,
+                            value: computedSubtotal.toFixed(2),
+                        },
+                        ...(shippingCost > 0
+                            ? {
+                                  shipping: {
+                                      currency_code: currency,
+                                      value: shippingCost.toFixed(2),
+                                  },
+                              }
+                            : {}),
+                    },
                 },
-            });
-        }
-
-        computedSubtotal = Number(computedSubtotal.toFixed(2));
-        if (computedSubtotal <= 0 || paypalItems.length === 0) {
+                items: paypalItems,
+            };
+        } else {
             return {
                 statusCode: 400,
                 headers,
-                body: JSON.stringify({ error: "Invalid cart" }),
+                body: JSON.stringify({ error: "Missing items" }),
             };
         }
 
-        const shippingCostRaw = ShippingRates.calculate(cc, cartItemsForShipping, computedSubtotal);
-        const shippingCost =
-            shippingCostRaw === null || shippingCostRaw === undefined ? 0 : Number(shippingCostRaw);
-        const totalNum = Number((computedSubtotal + shippingCost).toFixed(2));
-
-        const purchaseUnit = {
-            amount: {
-                currency_code: currency,
-                value: totalNum.toFixed(2),
-                breakdown: {
-                    item_total: {
-                        currency_code: currency,
-                        value: computedSubtotal.toFixed(2),
-                    },
-                    ...(shippingCost > 0
-                        ? {
-                              shipping: {
-                                  currency_code: currency,
-                                  value: shippingCost.toFixed(2),
-                              },
-                          }
-                        : {}),
-                },
-            },
-            items: paypalItems,
-        };
-
+        // Create order with application_context to require shipping address and email
         const orderRes = await fetch(`${base}/v2/checkout/orders`, {
             method: "POST",
             headers: {
@@ -266,13 +263,13 @@ export async function handler(event) {
                 intent: "CAPTURE",
                 purchase_units: [purchaseUnit],
                 application_context: {
-                    shipping_preference: "GET_FROM_FILE",
-                    user_action: "PAY_NOW",
+                    shipping_preference: "GET_FROM_FILE", // Requires buyer to provide shipping address
+                    user_action: "PAY_NOW", // Shows "Pay Now" button instead of "Continue"
                     payment_method: {
                         payer_selected: "PAYPAL",
-                        payee_preferred: "IMMEDIATE_PAYMENT_REQUIRED",
-                    },
-                },
+                        payee_preferred: "IMMEDIATE_PAYMENT_REQUIRED"
+                    }
+                }
             }),
         });
 
