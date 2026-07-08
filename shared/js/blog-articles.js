@@ -1,4 +1,4 @@
-/** Auto-generated — 73 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 78 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -57,6 +57,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/curry-leaves-health-benefits-what-the-evidence-says-2026"
   },
   {
+    "slug": "curry-leaves-heart-health-cholesterol-evidence-2026",
+    "title": "Curry Leaves for Heart Health and Cholesterol: What the Research Shows (2026)",
+    "description": "Curry leaves have been studied for effects on LDL cholesterol, triglycerides, and blood pressure. What the research actually shows and how it applies to everyday cooking.",
+    "category": "Health",
+    "href": "/blog/curry-leaves-heart-health-cholesterol-evidence-2026"
+  },
+  {
     "slug": "curry-leaves-in-australian-cooking-how-to-use-2026",
     "title": "Curry Leaves in Australian Cooking: 10 Ways to Use Them Beyond Curry (2026)",
     "description": "Most Australian home cooks only use curry leaves in South Asian dishes. Ten practical ways to use them in everyday cooking — pasta, eggs, roasted vegetables, and more.",
@@ -64,11 +71,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/curry-leaves-in-australian-cooking-how-to-use-2026"
   },
   {
+    "slug": "curry-leaves-substitute-what-to-use-2026",
+    "title": "Curry Leaves Substitute: What to Use When You Don't Have Them (2026)",
+    "description": "Don't have curry leaves for a recipe? The honest guide to substitutes that work, substitutes that sort of work, and the ones to skip entirely.",
+    "category": "Guides",
+    "href": "/blog/curry-leaves-substitute-what-to-use-2026"
+  },
+  {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
     "title": "Curry Leaves Tea: How to Make It and Why People Drink It (2026)",
     "description": "Curry leaves tea is a traditional drink used for digestion, blood sugar, and hair health. How to make it with fresh or dried leaves — and what's actually known about whether it works.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026"
+  },
+  {
+    "slug": "curry-leaves-vs-curry-powder-difference-explained-2026",
+    "title": "Curry Leaves vs Curry Powder: They Are Not the Same Thing",
+    "description": "Curry leaves and curry powder are completely different ingredients that happen to share a name. What each actually is, why you can't swap one for the other, and what to use instead.",
+    "category": "Guides",
+    "href": "/blog/curry-leaves-vs-curry-powder-difference-explained-2026"
   },
   {
     "slug": "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
@@ -83,6 +104,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Darjeeling tea health benefits: antioxidants, gut bacteria, stress, bone density — what's backed by research and what's generic black tea claims repackaged as Darjeeling-specific.",
     "category": "Tea",
     "href": "/blog/darjeeling-tea-health-benefits-research-2026"
+  },
+  {
+    "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
+    "title": "Fresh vs Dried Curry Leaves: Which Is Better for Cooking? (2026)",
+    "description": "Fresh curry leaves taste stronger. Dried are more convenient. Which actually matters depends on what you're cooking. A practical comparison for Australian home cooks.",
+    "category": "Guides",
+    "href": "/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026"
   },
   {
     "slug": "glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
@@ -251,6 +279,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa doesn't give you immediate energy like caffeine. Here's the honest week-by-week picture of what actually changes, and why it takes longer than you expect.",
     "category": "Guides",
     "href": "/blog/moringa-energy-what-happens-week-by-week-2026"
+  },
+  {
+    "slug": "moringa-for-anxiety-stress-evidence-2026",
+    "title": "Moringa for Anxiety: What the Evidence Shows (Honest 2026 Guide)",
+    "description": "Moringa isn't a proven anxiety treatment. But some of its nutritional properties are genuinely relevant to stress and anxiety. Here's the honest breakdown.",
+    "category": "Health",
+    "href": "/blog/moringa-for-anxiety-stress-evidence-2026"
   },
   {
     "slug": "moringa-for-breastfeeding-milk-supply-2026",
