@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 /**
- * Generate lifestyle health blog posts 1–10 from untitled folder/1.md and 2.md.
+ * Generate lifestyle health blog posts from untitled folder drafts.
  * Run: node scripts/generate-blogs-lifestyle-health.mjs
+ *      node scripts/generate-blogs-lifestyle-health.mjs --batch=2
+ * Batch 1 = 1.md+2.md (posts 1–10). Batch 2 = 3.md+4.md (posts 1–10).
+ * Batch 2 defaults to noindex (daily launch schedule flips to index).
  */
 import fs from 'fs';
 import path from 'path';
@@ -11,12 +14,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
 const BLOG_DIR = path.join(REPO, 'blog');
 const DRAFT_DIR = path.join(REPO, 'untitled folder');
-const DRAFT_FILES = ['1.md', '2.md'];
 const TOTAL = 10;
 
+const batchArg = process.argv.find((a) => a.startsWith('--batch='));
+const BATCH = batchArg ? Number(batchArg.split('=')[1]) : 1;
+const DRAFT_FILES = BATCH === 2 ? ['3.md', '4.md'] : ['1.md', '2.md'];
+const START_NOINDEX = BATCH === 2 || process.argv.includes('--noindex');
+
 const BASE = 'https://nutrithrive.com.au';
-const DATE = '7 Jul 2026';
-const DATE_ISO = '2026-07-07';
+const DATE = BATCH === 2 ? '13 Jul 2026' : '7 Jul 2026';
+const DATE_ISO = BATCH === 2 ? '2026-07-13' : '2026-07-07';
 const AUTHOR_SCHEMA = 'Neer';
 const AUTHOR_BYLINE = 'Neer, NutriThrive Truganina';
 
@@ -95,6 +102,66 @@ const RELATED_BY_SLUG = {
     { href: '/blog/morning-routine-health-tips-australia-2026', label: 'Morning routine for health' },
     { href: '/blog/how-to-eat-more-vegetables-practical-guide-australia-2026', label: 'How to eat more vegetables' },
     { href: '/blog/signs-magnesium-deficiency-australia-what-to-eat-2026', label: 'Signs of magnesium deficiency' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'fibre-deficiency-australia-bowel-cancer-risk-2026': [
+    { href: '/blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026', label: 'Ultra-processed food Australia' },
+    { href: '/blog/how-to-eat-more-vegetables-practical-guide-australia-2026', label: 'How to eat more vegetables' },
+    { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Best anti-inflammatory foods' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'how-much-protein-australian-women-need-honest-guide-2026': [
+    { href: '/blog/fibre-deficiency-australia-bowel-cancer-risk-2026', label: 'Fibre deficiency Australia' },
+    { href: '/blog/why-always-tired-nutritional-deficiencies-australia-2026', label: 'Why you\'re always tired' },
+    { href: '/blog/best-plant-based-iron-foods-australia-absorption-guide-2026', label: 'Best plant-based iron foods' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'gut-brain-connection-digestion-mood-mental-health-2026': [
+    { href: '/blog/fibre-deficiency-australia-bowel-cancer-risk-2026', label: 'Fibre deficiency Australia' },
+    { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Best anti-inflammatory foods' },
+    { href: '/blog/30-different-plants-per-week-gut-health-microbiome-2026', label: '30 plants per week for gut health' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'stress-weight-gain-cortisol-mechanism-what-to-do-2026': [
+    { href: '/blog/blood-sugar-spikes-how-to-avoid-through-food-2026', label: 'Blood sugar spikes' },
+    { href: '/blog/morning-routine-health-tips-australia-2026', label: 'Morning routine for health' },
+    { href: '/blog/cortisol-cocktail-trend-explained-moringa-2026', label: 'Cortisol cocktail trend explained' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'seed-oils-bad-for-you-honest-research-australia-2026': [
+    { href: '/blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026', label: 'Ultra-processed food Australia' },
+    { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Best anti-inflammatory foods' },
+    { href: '/blog/omega-3-deficiency-australia-inflammation-food-sources-2026', label: 'Omega-3 deficiency in Australia' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'strength-training-women-over-35-why-it-matters-2026': [
+    { href: '/blog/how-much-protein-australian-women-need-honest-guide-2026', label: 'How much protein women need' },
+    { href: '/blog/moringa-for-menopause-symptoms-hormones-2026', label: 'Moringa for menopause' },
+    { href: '/blog/why-always-tired-nutritional-deficiencies-australia-2026', label: 'Why you\'re always tired' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'stop-eating-ultra-processed-food-30-days-what-happens-2026': [
+    { href: '/blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026', label: 'What ultra-processed food actually is' },
+    { href: '/blog/gut-brain-connection-digestion-mood-mental-health-2026', label: 'Gut-brain connection' },
+    { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Best anti-inflammatory foods' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'how-to-build-balanced-plate-no-calorie-counting-2026': [
+    { href: '/blog/how-to-eat-more-vegetables-practical-guide-australia-2026', label: 'How to eat more vegetables' },
+    { href: '/blog/blood-sugar-spikes-how-to-avoid-through-food-2026', label: 'Blood sugar spikes' },
+    { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Best anti-inflammatory foods' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  'omega-3-deficiency-australia-inflammation-food-sources-2026': [
+    { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Best anti-inflammatory foods' },
+    { href: '/blog/why-always-tired-nutritional-deficiencies-australia-2026', label: 'Why you\'re always tired' },
+    { href: '/blog/seed-oils-bad-for-you-honest-research-australia-2026', label: 'Seed oils honest guide' },
+    { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
+  ],
+  '30-different-plants-per-week-gut-health-microbiome-2026': [
+    { href: '/blog/gut-brain-connection-digestion-mood-mental-health-2026', label: 'Gut-brain connection' },
+    { href: '/blog/fibre-deficiency-australia-bowel-cancer-risk-2026', label: 'Fibre deficiency Australia' },
+    { href: '/blog/how-to-eat-more-vegetables-practical-guide-australia-2026', label: 'How to eat more vegetables' },
     { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
   ],
 };
@@ -317,7 +384,7 @@ function buildHtml(post) {
     });
   }
 </script>
-<meta name="robots" content="index, follow"/>
+<meta name="robots" content="${START_NOINDEX ? 'noindex, follow' : 'index, follow'}"/>
 <link rel="canonical" href="${canonical}"/>
 <link rel="alternate" type="text/plain" href="${BASE}/llms.txt" title="LLMs.txt">
 <link rel="alternate" hreflang="en-AU" href="${canonical}"/>
@@ -564,12 +631,16 @@ function main() {
     console.log('No new posts created.');
     return;
   }
-  generateBlogArticlesJs();
   appendRedirects(posts);
-  appendLlmsTxt(posts);
-  updateHealthCategory(posts);
-  console.log(`\nDone: ${posts.length} new lifestyle health posts`);
-  console.log('Next: node scripts/build-sitemap.cjs && npm run build:minify && node scripts/regenerate-blog-itemlist.mjs');
+  if (!START_NOINDEX) {
+    generateBlogArticlesJs();
+    appendLlmsTxt(posts);
+    updateHealthCategory(posts);
+  } else {
+    console.log('Staged as noindex — skipping blog-articles / llms / category until launch schedule applies');
+  }
+  console.log(`\nDone: ${posts.length} new lifestyle health posts (batch ${BATCH}${START_NOINDEX ? ', noindex' : ''})`);
+  console.log('Next: update blog-launch-schedule.json then node scripts/apply-blog-launch-schedule.mjs');
 }
 
 main();

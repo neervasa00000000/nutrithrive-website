@@ -23,10 +23,16 @@ const TZ = 'Australia/Melbourne';
 
 const LAUNCHED_SECTION = '## Untitled batch (June 2026)';
 const SCHEDULED_SECTION = '## Untitled batch — scheduled';
+const LIFESTYLE_SECTION = '## Lifestyle health guides (July 2026)';
+const LIFESTYLE_SCHEDULED_SECTION = '## Lifestyle health — scheduled';
 
 function todayInMelbourne() {
   if (process.env.BLOG_LAUNCH_DATE) return process.env.BLOG_LAUNCH_DATE;
   return new Intl.DateTimeFormat('en-CA', { timeZone: TZ }).format(new Date());
+}
+
+function seriesOf(post) {
+  return post.series === 'lifestyle-health' ? 'lifestyle-health' : 'untitled';
 }
 
 function formatDisplayDate(isoDate) {
@@ -140,32 +146,65 @@ function llmsLineFromPost(post) {
   return `- [${displayTitle}](${BASE}/blog/${post.slug}): ${description}`;
 }
 
+function replaceLlmsBlock(content, startMarker, endMarkers, body) {
+  const startIdx = content.indexOf(startMarker);
+  if (startIdx === -1) return null;
+  let endIdx = content.length;
+  for (const marker of endMarkers) {
+    const idx = content.indexOf(marker, startIdx + startMarker.length);
+    if (idx !== -1 && idx < endIdx) endIdx = idx;
+  }
+  return content.slice(0, startIdx) + body + content.slice(endIdx);
+}
+
 function updateLlmsTxt(schedule, today) {
   let content = fs.readFileSync(LLMS_PATH, 'utf8');
-  const nextSection = '\n## Optional';
-  const launched = schedule.posts.filter((p) => isLaunched(p.launchDate, today));
-  const upcoming = schedule.posts.filter((p) => !isLaunched(p.launchDate, today));
+  const untitled = schedule.posts.filter((p) => seriesOf(p) === 'untitled');
+  const lifestyle = schedule.posts.filter((p) => seriesOf(p) === 'lifestyle-health');
 
-  const launchedLines = launched.map((p) => llmsLineFromPost(p)).join('\n');
-  let scheduledBlock = '';
-  if (upcoming.length) {
-    const scheduledLines = upcoming
+  const untitledLive = untitled.filter((p) => isLaunched(p.launchDate, today));
+  const untitledUpcoming = untitled.filter((p) => !isLaunched(p.launchDate, today));
+  const lifestyleLive = lifestyle.filter((p) => isLaunched(p.launchDate, today));
+  const lifestyleUpcoming = lifestyle.filter((p) => !isLaunched(p.launchDate, today));
+
+  let untitledBlock = `${LAUNCHED_SECTION}\n${untitledLive.map(llmsLineFromPost).join('\n')}`;
+  if (untitledUpcoming.length) {
+    untitledBlock += `\n\n${SCHEDULED_SECTION}\nPosts below are noindex until their launch date; URLs exist for preview only.\n`;
+    untitledBlock += untitledUpcoming
       .map((p) => `${llmsLineFromPost(p)} _(launches ${formatDisplayDate(p.launchDate)})_`)
       .join('\n');
-    scheduledBlock = `\n\n${SCHEDULED_SECTION}\nPosts below are noindex until their launch date; URLs exist for preview only.\n${scheduledLines}`;
   }
+  untitledBlock += '\n\n';
 
-  const replacement = `${LAUNCHED_SECTION}\n${launchedLines}${scheduledBlock}\n`;
-
-  const launchedIdx = content.indexOf(LAUNCHED_SECTION);
-  const optionalIdx = content.indexOf(nextSection);
-  if (launchedIdx === -1 || optionalIdx === -1) {
-    console.warn('llms.txt section markers not found; skipping llms.txt update');
+  const afterUntitled = replaceLlmsBlock(content, LAUNCHED_SECTION, [LIFESTYLE_SECTION, '\n## Optional'], untitledBlock);
+  if (!afterUntitled) {
+    console.warn('llms.txt untitled section not found; skipping llms.txt update');
     return;
   }
-  content = content.slice(0, launchedIdx) + replacement + content.slice(optionalIdx);
+  content = afterUntitled;
+
+  let lifestyleBlock = `${LIFESTYLE_SECTION}\n${lifestyleLive.map(llmsLineFromPost).join('\n')}`;
+  if (lifestyleUpcoming.length) {
+    lifestyleBlock += `\n\n${LIFESTYLE_SCHEDULED_SECTION}\nPosts below are noindex until their launch date; URLs exist for preview only.\n`;
+    lifestyleBlock += lifestyleUpcoming
+      .map((p) => `${llmsLineFromPost(p)} _(launches ${formatDisplayDate(p.launchDate)})_`)
+      .join('\n');
+  }
+  lifestyleBlock += '\n\n';
+
+  if (content.includes(LIFESTYLE_SECTION)) {
+    content = replaceLlmsBlock(content, LIFESTYLE_SECTION, ['\n## Optional'], lifestyleBlock) || content;
+  } else {
+    const optionalIdx = content.indexOf('\n## Optional');
+    if (optionalIdx !== -1) {
+      content = content.slice(0, optionalIdx) + '\n' + lifestyleBlock + content.slice(optionalIdx);
+    }
+  }
+
   fs.writeFileSync(LLMS_PATH, content);
-  console.log(`Updated llms.txt: ${launched.length} live, ${upcoming.length} scheduled`);
+  console.log(
+    `Updated llms.txt: untitled ${untitledLive.length} live / ${untitledUpcoming.length} scheduled; lifestyle ${lifestyleLive.length} live / ${lifestyleUpcoming.length} scheduled`,
+  );
 }
 
 function runChild(scriptName) {
