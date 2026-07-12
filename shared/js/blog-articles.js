@@ -1,4 +1,4 @@
-/** Auto-generated — 78 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 79 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -104,6 +104,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Darjeeling tea health benefits: antioxidants, gut bacteria, stress, bone density — what's backed by research and what's generic black tea claims repackaged as Darjeeling-specific.",
     "category": "Tea",
     "href": "/blog/darjeeling-tea-health-benefits-research-2026"
+  },
+  {
+    "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
+    "title": "Fibre Deficiency in Australia: The Cancer Risk Most People Don't Know About",
+    "description": "Almost 20% of bowel cancers in Australia are attributable to insufficient fibre intake. Most Australians eat about half of what they need. What fibre actually does and how to get more of it.",
+    "category": "Health",
+    "href": "/blog/fibre-deficiency-australia-bowel-cancer-risk-2026"
   },
   {
     "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
