@@ -1,4 +1,4 @@
-/** Auto-generated — 79 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 85 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -34,6 +34,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Blood sugar spikes don't only affect diabetics. They affect everyone's energy, mood, hunger, and long-term health. What causes them and the simple food habits that help.",
     "category": "Health",
     "href": "/blog/blood-sugar-spikes-how-to-avoid-through-food-2026"
+  },
+  {
+    "slug": "can-you-drink-darjeeling-tea-every-day-2026",
+    "title": "Can You Drink Darjeeling Tea Every Day? Benefits and Limits (2026)",
+    "description": "Yes, daily Darjeeling tea is fine for most people. What to know about caffeine limits, tannins and iron absorption, and the specific groups who should be more careful.",
+    "category": "Tea Guide",
+    "href": "/blog/can-you-drink-darjeeling-tea-every-day-2026"
   },
   {
     "slug": "can-you-use-dried-curry-leaves-for-hair-2026",
@@ -99,11 +106,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026"
   },
   {
+    "slug": "darjeeling-tea-coffee-replacement-honest-assessment-2026",
+    "title": "Is Darjeeling Tea a Good Coffee Replacement? An Honest Assessment (2026)",
+    "description": "People switch from coffee to Darjeeling for a lot of reasons. Whether it actually works as a replacement depends entirely on why you're making the switch.",
+    "category": "Tea Guide",
+    "href": "/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026"
+  },
+  {
     "slug": "darjeeling-tea-health-benefits-research-2026",
     "title": "Darjeeling Tea Health Benefits: What the Research Shows (2026)",
     "description": "Darjeeling tea health benefits: antioxidants, gut bacteria, stress, bone density — what's backed by research and what's generic black tea claims repackaged as Darjeeling-specific.",
     "category": "Tea",
     "href": "/blog/darjeeling-tea-health-benefits-research-2026"
+  },
+  {
+    "slug": "darjeeling-tea-vs-english-breakfast-comparison-2026",
+    "title": "Darjeeling Tea vs English Breakfast: What Is Actually Different? (2026)",
+    "description": "Both are black teas. But Darjeeling and English Breakfast are completely different drinking experiences. A clear comparison on flavour, caffeine, strength, and when to use each.",
+    "category": "Tea Guide",
+    "href": "/blog/darjeeling-tea-vs-english-breakfast-comparison-2026"
   },
   {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
@@ -146,6 +167,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Darjeeling black tea has 14-70mg caffeine per cup — noticeably less than coffee's 95-200mg. What affects it, how it compares, and whether it's a good morning coffee swap.",
     "category": "Tea Guide",
     "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"
+  },
+  {
+    "slug": "how-much-protein-australian-women-need-honest-guide-2026",
+    "title": "How Much Protein Do Australian Women Actually Need? (Honest Guide 2026)",
+    "description": "TikTok says 130g per day. Dietitians Australia says most women already eat enough. A new CSIRO report says something more nuanced. Here's the actual answer by life stage.",
+    "category": "Health",
+    "href": "/blog/how-much-protein-australian-women-need-honest-guide-2026"
   },
   {
     "slug": "how-much-water-per-day-australians-honest-guide-2026",
@@ -237,6 +265,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Is moringa safe for dogs? Yes, in moderation. A vet-aware guide to benefits, dosage by weight, mixing methods, and the one health condition that changes the answer.",
     "category": "Pets",
     "href": "/blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026"
+  },
+  {
+    "slug": "is-moringa-worth-it-cost-value-australia-2026",
+    "title": "Is Moringa Worth It? An Honest Cost-Per-Nutrient Breakdown for Australians (2026)",
+    "description": "$11 for 100g — is moringa actually good value compared to a multivitamin, greens powder, or iron tablet? A real cost comparison of what you're getting per dollar.",
+    "category": "Guides",
+    "href": "/blog/is-moringa-worth-it-cost-value-australia-2026"
   },
   {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
@@ -447,6 +482,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa soap gets bold acne and anti-aging claims online. Here's a more honest look at what moringa actually offers skin, and what's marketing.",
     "category": "Guides",
     "href": "/blog/moringa-soap-benefits-for-skin-2026"
+  },
+  {
+    "slug": "moringa-soap-vs-regular-soap-comparison-2026",
+    "title": "Moringa Soap vs Regular Soap: What's Actually Different? (2026)",
+    "description": "Moringa soap versus standard commercial soap — what the actual differences are, what claims are real, and whether the premium is worth it for most people.",
+    "category": "Guides",
+    "href": "/blog/moringa-soap-vs-regular-soap-comparison-2026"
   },
   {
     "slug": "moringa-thyroid-hashimotos-hypothyroidism-2026",
