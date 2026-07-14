@@ -1,4 +1,4 @@
-/** Auto-generated — 85 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 86 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -153,6 +153,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Grow moringa in Australia: which states it survives in, frost tips, pots vs ground, seed germination, pruning and your first leaf harvest.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia"
+  },
+  {
+    "slug": "gut-brain-connection-digestion-mood-mental-health-2026",
+    "title": "The Gut-Brain Connection: Why Your Digestion Affects Your Mood (2026)",
+    "description": "90% of the body's serotonin is made in the gut. The link between gut health and mental health is one of the most significant developments in recent nutrition research. What it means in practice.",
+    "category": "Health",
+    "href": "/blog/gut-brain-connection-digestion-mood-mental-health-2026"
   },
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
