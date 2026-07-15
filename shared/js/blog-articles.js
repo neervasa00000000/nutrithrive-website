@@ -1,4 +1,4 @@
-/** Auto-generated — 86 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 87 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -573,6 +573,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Up to 80% of Australians may be magnesium deficient. The symptoms are easy to miss because they look like stress, poor sleep, and being busy. Here's what to look for.",
     "category": "Health",
     "href": "/blog/signs-magnesium-deficiency-australia-what-to-eat-2026"
+  },
+  {
+    "slug": "stress-weight-gain-cortisol-mechanism-what-to-do-2026",
+    "title": "Why Chronic Stress Makes You Gain Weight (And What to Do About It)",
+    "description": "Stress weight gain isn't about eating more. There's a specific hormonal mechanism that stores fat differently when cortisol is chronically elevated. Here's what's actually happening.",
+    "category": "Health",
+    "href": "/blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026"
   },
   {
     "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
