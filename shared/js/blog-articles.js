@@ -1,4 +1,4 @@
-/** Auto-generated — 87 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 88 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -150,7 +150,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "grow-moringa-tree-australia",
     "title": "How to Grow Moringa Tree in Australia (2026) | Melbourne, Pots, Frost & Expert Tips",
-    "description": "Grow moringa in Australia: which states it survives in, frost tips, pots vs ground, seed germination, pruning and your first leaf harvest.",
+    "description": "Step-by-step guide to growing moringa (drumstick tree) in Australia — Melbourne pots, QLD in-ground, Perth, frost protection, fertilising, where to buy seeds & seedlings. 2026.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia"
   },
@@ -566,6 +566,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Shade- vs sun-dried moringa: what colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
     "category": "Research Guide",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
+  },
+  {
+    "slug": "seed-oils-bad-for-you-honest-research-australia-2026",
+    "title": "Seed Oils: Are They Actually Bad for You? The Honest Australian Answer (2026)",
+    "description": "One side says seed oils are slowly killing us. Mainstream dietitians say they're fine. The honest answer is more nuanced than either camp will admit. Here's what the research actually shows.",
+    "category": "Health",
+    "href": "/blog/seed-oils-bad-for-you-honest-research-australia-2026"
   },
   {
     "slug": "signs-magnesium-deficiency-australia-what-to-eat-2026",
