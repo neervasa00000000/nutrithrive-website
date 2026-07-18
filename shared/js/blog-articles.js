@@ -1,4 +1,4 @@
-/** Auto-generated — 89 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 90 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -580,6 +580,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Up to 80% of Australians may be magnesium deficient. The symptoms are easy to miss because they look like stress, poor sleep, and being busy. Here's what to look for.",
     "category": "Health",
     "href": "/blog/signs-magnesium-deficiency-australia-what-to-eat-2026"
+  },
+  {
+    "slug": "stop-eating-ultra-processed-food-30-days-what-happens-2026",
+    "title": "What Happens to Your Body When You Stop Eating Ultra-Processed Food for 30 Days",
+    "description": "The changes aren't as dramatic as social media makes out, and some are harder than expected. A realistic, research-based look at what actually shifts when you cut out ultra-processed food.",
+    "category": "Health",
+    "href": "/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026"
   },
   {
     "slug": "strength-training-women-over-35-why-it-matters-2026",
