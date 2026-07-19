@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9. 144,600;1,9. 144,600&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>NutriThrive Labs | AI Text Style Analyzer</title>
     <meta
       name="description"
@@ -62,7 +62,7 @@
         <span class="labs-badge">On-device · No API</span>
         <h1>AI writing style check</h1>
         <p class="lead">
-          Paste your draft for a quick, <strong>on-device</strong> read on how “AI-shaped” the prose looks — no
+          Paste your draft for a quick, <strong>on-device</strong> read on how “AI-shaped” the prose looks: no
           upload, no API. Open <strong>All metrics</strong> below the score for the full report.
         </p>
       </section>
@@ -109,7 +109,7 @@
           <button type="button" class="btn" id="btn-clear">Clear</button>
         </div>
         <p class="disclaimer">
-          Educational tool only—not proof of who wrote the text. Uses word stats and patterns, not a cloud language
+          Educational tool only, not proof of who wrote the text. Uses word stats and patterns, not a cloud language
           model.
         </p>
       </section>
@@ -119,7 +119,7 @@
 
         <div class="report-top">
           <div class="score-hero">
-            <span class="score-num" id="out-composite">—</span>
+            <span class="score-num" id="out-composite">: </span>
             <span id="out-band" class="band human"></span>
           </div>
           <p class="stat-line" id="out-wc"></p>
@@ -132,7 +132,7 @@
 
         <h3 class="section-heading">Patterns to fix</h3>
         <p class="section-hint">
-          Each card flags a pattern and suggests a human rewrite—you still edit the draft yourself.
+          Each card flags a pattern and suggests a human rewrite: you still edit the draft yourself.
         </p>
         <div class="issue-list" id="out-issues"></div>
 
@@ -341,12 +341,12 @@
                 "/100.",
             ],
             ["Blog-layer composite (weighted subscores)", r.blogComposite + "/100"],
-            ["Strict checklist composite", (r.strictComposite != null ? r.strictComposite : "—") + "/100"],
+            ["Strict checklist composite", (r.strictComposite != null ? r.strictComposite : ": ") + "/100"],
             [
               "Sentences in 15–20 word “flat” band",
               r.flatMidSentenceFraction != null
                 ? Math.round(r.flatMidSentenceFraction * 100) + "% of sentences"
-                : "—",
+                : ": ",
             ],
           ];
           const tb = $("out-blog").querySelector("tbody");
@@ -360,15 +360,15 @@
 
         function renderMetrics(r) {
           const rows = [
-            ["Predictability proxy (0–100)", r.perplexityHuman + "/100 — " + tierPerplexity(r.perplexityHuman)],
+            ["Predictability proxy (0–100)", r.perplexityHuman + "/100: " + tierPerplexity(r.perplexityHuman)],
             [
               "Burstiness score (0–100, stricter CV)",
               r.burstinessHuman +
                 "/100 (σ/μ = " +
-                (r.burstCv != null ? r.burstCv.toFixed(3) : "—") +
+                (r.burstCv != null ? r.burstCv.toFixed(3) : ": ") +
                 "; 15–20w band " +
-                (r.flatMidSentenceFraction != null ? Math.round(r.flatMidSentenceFraction * 100) : "—") +
-                "%) — " +
+                (r.flatMidSentenceFraction != null ? Math.round(r.flatMidSentenceFraction * 100) : ": ") +
+                "%): " +
                 tierBurst(r.burstinessHuman),
             ],
             ["Lexical density", r.density.toFixed(1) + "%"],
@@ -378,11 +378,11 @@
               r.transitionHits +
                 " hits (~" +
                 r.transitionPer500.toFixed(1) +
-                " per 500 words) — " +
+                " per 500 words): " +
                 tierTransitions(r.transitionPer500),
             ],
             ["Hedging (word share)", r.hedgingPercent.toFixed(1) + "%"],
-            ["Flesch–Kincaid grade (approx.)", r.fkGrade.toFixed(1)],
+            ["Flesch. Kincaid grade (approx.)", r.fkGrade.toFixed(1)],
             ["AI-flag vocabulary hits", String(r.aiVocabHits) + (r.aiVocabFound.length ? " (" + r.aiVocabFound.join(", ") + ")" : "")],
           ];
           const tb = $("out-metrics").querySelector("tbody");
@@ -406,9 +406,9 @@
             ["Expanded formal phrases (it is / do not…)", String(r.formalHits)],
             ["Authority / opinion markers", String(r.authorityHits)],
             ["Meta / roadmap signals", String(r.metaHits)],
-            ["Em dashes / long dash (— or --)", String(r.punct.em)],
+            ["Em dashes / long dash (, or --)", String(r.punct.em)],
             ["Semicolons", String(r.punct.semi)],
-            ["Repeated sentence starters (top)", r.starters.top.join("; ") || "—"],
+            ["Repeated sentence starters (top)", r.starters.top.join("; ") || ": "],
           ];
           const tb2 = $("out-advanced").querySelector("tbody");
           tb2.innerHTML = adv
@@ -455,7 +455,7 @@
               "</td><td><strong>" +
               escapeHtml(status) +
               "</strong></td><td>" +
-              escapeHtml(String(row.detail || "—")) +
+              escapeHtml(String(row.detail || ": ")) +
               "</td>";
             tb.appendChild(tr);
           }
@@ -464,7 +464,7 @@
             fireCount +
             " / " +
             rows.length +
-            (fireCount > 3 ? " — several forensic checks failed; treat as high AI-shape risk." : "");
+            (fireCount > 3 ? ": several forensic checks failed; treat as high AI-shape risk." : "");
         }
 
         function renderStrictIssues(r) {
@@ -473,7 +473,7 @@
           const list = r.strictIssues || [];
           if (!list.length) {
             el.innerHTML =
-              '<p class="mini">No strict checklist hits in this sample—or text is too short for document-level rules.</p>';
+              '<p class="mini">No strict checklist hits in this sample, or text is too short for document-level rules.</p>';
             return;
           }
           for (const iss of list) {
@@ -582,7 +582,7 @@
             "% + blog " +
             r.blogComposite +
             "% + strict / forensic " +
-            (r.strictComposite != null ? r.strictComposite : "—") +
+            (r.strictComposite != null ? r.strictComposite : ": ") +
             "% → headline (26% / 34% / 40%).";
 
           renderStrictIssues(r);

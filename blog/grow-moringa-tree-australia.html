@@ -5,28 +5,28 @@
 <script src="/scripts/global/reddit-pixel.min.js" defer></script>
 <!-- Google Analytics - Deferred until user interaction -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  if (window.DeferLoader) {
-    window.DeferLoader.deferUntilInteraction(function() {
-      window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
-        async: true, crossorigin: 'anonymous'
-      }).then(function() {
-        gtag('js', new Date());
-        gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-      }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
-    }, { once: true, passive: true });
-  } else {
-    window.addEventListener('load', function() {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-WH21SW75WP');
-    });
-  }
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ if (window.DeferLoader) {
+ window.DeferLoader.deferUntilInteraction(function() {
+ window.DeferLoader.loadScript('https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP', {
+ async: true, crossorigin: 'anonymous'
+ }).then(function() {
+ gtag('js', new Date());
+ gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
+ }).catch(function(err) { console.warn('[GA] Failed to load:', err); });
+ }, { once: true, passive: true });
+ } else {
+ window.addEventListener('load', function() {
+ var s = document.createElement('script');
+ s.async = true;
+ s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
+ s.crossOrigin = 'anonymous';
+ document.head.appendChild(s);
+ gtag('js', new Date());
+ gtag('config', 'G-WH21SW75WP');
+ });
+ }
 </script>
 
 
@@ -35,12 +35,12 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Grow Moringa Tree in Australia (2026): Melbourne, QLD, WA, Perth, Drumstick Tree Guide</title>
- <meta name="description" content="Step-by-step guide to growing moringa (drumstick tree) in Australia — Melbourne pots, QLD in-ground, Perth, frost protection, fertilising, where to buy seeds & seedlings. 2026.">
+ <meta name="description" content="Step-by-step guide to growing moringa (drumstick tree) in Australia. Melbourne pots, QLD in-ground, Perth, frost protection, fertilising, where to buy seeds & seedlings. 2026.">
 <!-- Open Graph / Facebook -->
  <meta property="og:type" content="article">
  <meta property="og:url" content="https://nutrithrive.com.au/blog/grow-moringa-tree-australia">
  <meta property="og:title" content="How to Grow Moringa Tree in Australia (2026) | Melbourne, Pots, Frost & Expert Tips">
- <meta property="og:description" content="Complete guide to growing moringa tree in Australia: frost protection, pots, soil, pruning and harvesting. Covers Melbourne, Sydney, Brisbane, Perth — 2026.">
+ <meta property="og:description" content="Complete guide to growing moringa tree in Australia: frost protection, pots, soil, pruning and harvesting. Covers Melbourne, Sydney, Brisbane, Perth: 2026.">
  <meta property="og:image" content="https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg">
  <meta property="og:site_name" content="NutriThrive">
  
@@ -53,7 +53,7 @@
  
  <!-- Canonical URL -->
  <link rel="canonical" href="https://nutrithrive.com.au/blog/grow-moringa-tree-australia">
-    <link rel="alternate" type="text/plain" href="https://nutrithrive.com.au/llms.txt" title="LLMs.txt">
+ <link rel="alternate" type="text/plain" href="https://nutrithrive.com.au/llms.txt" title="LLMs.txt">
  <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/grow-moringa-tree-australia">
  <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/grow-moringa-tree-australia">
  
@@ -85,747 +85,621 @@
  <meta name="msapplication-TileColor" content="#0f6b4d">
  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
  <style>
-        /* Modern Blog Redesign for Grow Moringa Tree Australia */
-        body { background: #f6f8fa; font-family: 'Inter', Arial, sans-serif; color: #1a2e22; margin: 0; }
-        .custom-hero {
-            background: linear-gradient(120deg, #175c36 0%, #4ecdc4 100%);
-            color: #fff;
-            padding: 3.5rem 1.5rem 2.5rem 1.5rem;
-            text-align: center;
-            border-radius: 0 0 2.5rem 2.5rem;
-            box-shadow: 0 8px 32px 0 rgba(23,92,54,0.12);
-            margin-bottom: 2.5rem;
-        }
-        .custom-hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .custom-hero p { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.5rem; }
-        .custom-badge { display: inline-block; background: #006d5f; color: #fff; font-weight: 700; border-radius: 1.5em; padding: 0.3em 1em; font-size: 1em; margin: 0.2em 0.3em; letter-spacing: 0.5px; }
-        .custom-section { background: #fff; border-radius: 1.5rem; box-shadow: 0 2px 16px 0 rgba(23,92,54,0.07); padding: 2rem 1.5rem; margin-bottom: 2.5rem; }
-        .custom-section h2 { color: #175c36; font-size: 2rem; font-weight: 700; margin-top: 0; }
-        .custom-section h3 { color: #006d5f; font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; }
-        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: #f7f5f0; border-radius: 1rem; overflow: hidden; }
-        .custom-table th, .custom-table td { padding: 1rem; text-align: left; }
-        .custom-table th { background: #eaf7f0; color: #175c36; font-weight: 700; }
-        .custom-table tr:nth-child(even) { background: #f0f7ea; }
-        .custom-toc {
-            position: sticky;
-            top: 5.5rem;
-            background: #fff;
-            border-radius: 1em;
-            box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
-            padding: 1.2rem 1rem;
-            margin-bottom: 2rem;
-            z-index: 10;
-            max-width: 320px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .custom-toc h4 { margin: 0 0 0.7em 0; color: #175c36; font-size: 1.1em; }
-        .custom-toc ul { list-style: none; padding: 0; margin: 0; }
-        .custom-toc li { margin-bottom: 0.5em; }
-        .custom-toc a { color: #006d5f; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-        .custom-toc a:hover { color: #d14500; }
-        .custom-callout { background: #eaf7f0; color: #175c36; border-left: 5px solid #4ecdc4; border-radius: 1em; padding: 1.2em 1em; margin: 1.5em 0; font-size: 1.1em; }
-        .custom-cta-box { background: linear-gradient(90deg, #175c36 60%, #4ecdc4 100%); color: #fff; border-radius: 1.5em; padding: 2em 1.5em; text-align: center; font-size: 1.2em; margin: 2.5em 0 0 0; box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07); }
-        .custom-cta-box a { color: #fff; text-decoration: underline; font-weight: 700; }
-        .custom-btn { display: inline-block; background: #175c36; color: #fff; font-weight: 700; border-radius: 2em; padding: 0.7em 2em; font-size: 1.1em; margin: 1em 0; text-decoration: none; box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10); transition: background 0.2s; }
-        .custom-btn:hover { background: #006d5f; }
-        .custom-poll { background: #f0f7ea; border-radius: 1em; padding: 1.2em 1em; margin: 1.5em 0; }
-        .custom-faq { margin: 2em 0; }
-        .custom-faq-item { background: #f7f5f0; border-radius: 1em; margin-bottom: 1em; padding: 1em; cursor: pointer; transition: box-shadow 0.2s; }
-        .custom-faq-item:hover { box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10); }
-        .custom-faq-question { font-weight: 700; color: #175c36; }
-        .custom-faq-answer { display: none; margin-top: 0.5em; color: #1a2e22; }
-        .custom-faq-item.active .custom-faq-answer { display: block; }
-        @media (max-width: 700px) {
-            .custom-hero h1 { font-size: 2rem; }
-            .custom-section { padding: 1.2rem 0.7rem; }
-            .custom-toc { max-width: 100%; padding: 1em 0.5em; }
-        }
-    </style>
+ /* Modern Blog Redesign for Grow Moringa Tree Australia */
+ body { background: #f6f8fa; font-family: 'Inter', Arial, sans-serif; color: #1a2e22; margin: 0; }.custom-hero {
+ background: linear-gradient(120deg, #175c36 0%, #4ecdc4 100%);
+ color: #fff;
+ padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+ text-align: center;
+ border-radius: 0 0 2.5rem 2.5rem;
+ box-shadow: 0 8px 32px 0 rgba(23,92,54,0.12);
+ margin-bottom: 2.5rem;
+ }.custom-hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -1px; }.custom-hero p { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.5rem; }.custom-badge { display: inline-block; background: #006d5f; color: #fff; font-weight: 700; border-radius: 1.5em; padding: 0.3em 1em; font-size: 1em; margin: 0.2em 0.3em; letter-spacing: 0.5px; }.custom-section { background: #fff; border-radius: 1.5rem; box-shadow: 0 2px 16px 0 rgba(23,92,54,0.07); padding: 2rem 1.5rem; margin-bottom: 2.5rem; }.custom-section h2 { color: #175c36; font-size: 2rem; font-weight: 700; margin-top: 0; }.custom-section h3 { color: #006d5f; font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; }.custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: #f7f5f0; border-radius: 1rem; overflow: hidden; }.custom-table th,.custom-table td { padding: 1rem; text-align: left; }.custom-table th { background: #eaf7f0; color: #175c36; font-weight: 700; }.custom-table tr:nth-child(even) { background: #f0f7ea; }.custom-toc {
+ position: sticky;
+ top: 5.5rem;
+ background: #fff;
+ border-radius: 1em;
+ box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07);
+ padding: 1.2rem 1rem;
+ margin-bottom: 2rem;
+ z-index: 10;
+ max-width: 320px;
+ margin-left: auto;
+ margin-right: auto;
+ }.custom-toc h4 { margin: 0 0 0.7em 0; color: #175c36; font-size: 1.1em; }.custom-toc ul { list-style: none; padding: 0; margin: 0; }.custom-toc li { margin-bottom: 0.5em; }.custom-toc a { color: #006d5f; text-decoration: none; font-weight: 600; transition: color 0.2s; }.custom-toc a:hover { color: #d14500; }.custom-callout { background: #eaf7f0; color: #175c36; border-left: 5px solid #4ecdc4; border-radius: 1em; padding: 1.2em 1em; margin: 1.5em 0; font-size: 1.1em; }.custom-cta-box { background: linear-gradient(90deg, #175c36 60%, #4ecdc4 100%); color: #fff; border-radius: 1.5em; padding: 2em 1.5em; text-align: center; font-size: 1.2em; margin: 2.5em 0 0 0; box-shadow: 0 2px 12px 0 rgba(23,92,54,0.07); }.custom-cta-box a { color: #fff; text-decoration: underline; font-weight: 700; }.custom-btn { display: inline-block; background: #175c36; color: #fff; font-weight: 700; border-radius: 2em; padding: 0.7em 2em; font-size: 1.1em; margin: 1em 0; text-decoration: none; box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10); transition: background 0.2s; }.custom-btn:hover { background: #006d5f; }.custom-poll { background: #f0f7ea; border-radius: 1em; padding: 1.2em 1em; margin: 1.5em 0; }.custom-faq { margin: 2em 0; }.custom-faq-item { background: #f7f5f0; border-radius: 1em; margin-bottom: 1em; padding: 1em; cursor: pointer; transition: box-shadow 0.2s; }.custom-faq-item:hover { box-shadow: 0 2px 8px 0 rgba(23,92,54,0.10); }.custom-faq-question { font-weight: 700; color: #175c36; }.custom-faq-answer { display: none; margin-top: 0.5em; color: #1a2e22; }.custom-faq-item.active.custom-faq-answer { display: block; }
+ @media (max-width: 700px) {.custom-hero h1 { font-size: 2rem; }.custom-section { padding: 1.2rem 0.7rem; }.custom-toc { max-width: 100%; padding: 1em 0.5em; }
+ }
+ </style>
  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type": "Question","name": "Can I grow moringa in pots in Australia?","acceptedAnswer": {"@type": "Answer","text": "Yes! Moringa thrives in large pots (50L+) and can be moved indoors during winter in cooler regions."}},
-        {"@type": "Question","name": "How fast does moringa grow in Australia?","acceptedAnswer": {"@type": "Answer","text": "With the right conditions, moringa can grow 2-3m in its first year!"}},
-        {"@type": "Question","name": "Is moringa drought-tolerant?","acceptedAnswer": {"@type": "Answer","text": "Yes, once established, moringa is very drought-tolerant and needs minimal watering."}},
-        {"@type": "Question","name": "What are the health benefits of moringa leaves?","acceptedAnswer": {"@type": "Answer","text": "Moringa leaves are rich in vitamins, minerals, antioxidants, and protein. They support immunity, energy, and overall wellness."}},
-        {"@type": "Question","name": "Where can I buy moringa seeds in Australia?","acceptedAnswer": {"@type": "Answer","text": "Australian gardeners can buy moringa oleifera seeds online from suppliers such as Happy Valley Seeds, Seeds N Beyond, Herbalistics, and The Moringa Shop. Seedlings are available from Mudbrick Herb Cottage, Ladybird Nursery, Fruitopia Nursery, and local Gumtree or Facebook Marketplace sellers. Always check WA and TAS biosecurity shipping rules."}},
-        {"@type": "Question","name": "Can I grow moringa in Perth, WA?","acceptedAnswer": {"@type": "Answer","text": "Yes. Perth's Mediterranean climate suits moringa in suburban gardens. Occasional light frosts mean pot growing is safer in coastal hills and southern suburbs. Confirm seed suppliers can ship to WA under biosecurity rules."}},
-        {"@type": "Question","name": "Can I grow moringa in Darwin?","acceptedAnswer": {"@type": "Answer","text": "Yes. Darwin's tropical climate is near-perfect for moringa, with year-round growth as a permanent food tree."}},
-        {"@type": "Question","name": "What is the difference between moringa and the drumstick tree?","acceptedAnswer": {"@type": "Answer","text": "There is no difference — drumstick tree, horseradish tree, ben oil tree, and malunggay are all common names for Moringa oleifera."}},
-        {"@type": "Question","name": "How long does a moringa tree live in Australia?","acceptedAnswer": {"@type": "Answer","text": "In frost-free tropical and subtropical areas, moringa can live many years as a perennial. In cooler southern states grown in pots, trees often behave as warm-season plants and regrow from the base each spring if protected from hard frost."}},
-        {"@type": "Question","name": "What is the best fertilizer for moringa trees in Australia?","acceptedAnswer": {"@type": "Answer","text": "Compost is the safest base feed. Established trees benefit from controlled-release fertiliser in late winter and late summer, plus fortnightly liquid seaweed or fish emulsion in the growing season. Avoid heavy nitrogen-only fertilisers."}},
-        {"@type": "Question","name": "Is it legal to grow moringa at home in Australia?","acceptedAnswer": {"@type": "Answer","text": "Yes. Growing Moringa oleifera at home for personal use is legal in all Australian states. Commercial advertising and food-sale rules are separate — see foodstandards.gov.au and NutriThrive's legality guides for current commercial context."}},
-        {"@type": "Question","name": "Can moringa grow in Canberra?","acceptedAnswer": {"@type": "Answer","text": "Yes, as a warm-season pot plant. Start seeds indoors in August–September, grow in a 60L+ pot, and bring indoors before the first frost (usually April)."}},
-        {"@type": "Question","name": "What is PKM-1 moringa?","acceptedAnswer": {"@type": "Answer","text": "PKM-1 is a popular cultivated variety of Moringa oleifera often preferred for pots and home gardens because it stays more compact than standard types."}},
-        {"@type": "Question","name": "Can I grow moringa from a cutting vs seed — which is faster?","acceptedAnswer": {"@type": "Answer","text": "Cuttings are usually faster: rooted cuttings can establish in 2–3 weeks, while seeds take 7–21 days to germinate plus extra weeks to reach transplant size."}},
-        {"@type": "Question","name": "What size pot is best for growing moringa in Melbourne?","acceptedAnswer": {"@type": "Answer","text": "Use 50L+ pots in Melbourne (60L is a common grower recommendation) so you can move trees indoors during frost."}},
-        {"@type": "Question","name": "Can moringa grow in a small backyard?","acceptedAnswer": {"@type": "Answer","text": "Yes. Grow in a large pot, prune regularly to keep height manageable, or choose a dwarf/PKM-1 type for smaller spaces."}}
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+ {"@type": "Question","name": "Can I grow moringa in pots in Australia?","acceptedAnswer": {"@type": "Answer","text": "Yes! Moringa thrives in large pots (50L+) and can be moved indoors during winter in cooler regions."}},
+ {"@type": "Question","name": "How fast does moringa grow in Australia?","acceptedAnswer": {"@type": "Answer","text": "With the right conditions, moringa can grow 2-3m in its first year!"}},
+ {"@type": "Question","name": "Is moringa drought-tolerant?","acceptedAnswer": {"@type": "Answer","text": "Yes, once established, moringa is very drought-tolerant and needs minimal watering."}},
+ {"@type": "Question","name": "What are the health benefits of moringa leaves?","acceptedAnswer": {"@type": "Answer","text": "Moringa leaves are rich in vitamins, minerals, antioxidants, and protein. They support immunity, energy, and overall wellness."}},
+ {"@type": "Question","name": "Where can I buy moringa seeds in Australia?","acceptedAnswer": {"@type": "Answer","text": "Australian gardeners can buy moringa oleifera seeds online from suppliers such as Happy Valley Seeds, Seeds N Beyond, Herbalistics, and The Moringa Shop. Seedlings are available from Mudbrick Herb Cottage, Ladybird Nursery, Fruitopia Nursery, and local Gumtree or Facebook Marketplace sellers. Always check WA and TAS biosecurity shipping rules."}},
+ {"@type": "Question","name": "Can I grow moringa in Perth, WA?","acceptedAnswer": {"@type": "Answer","text": "Yes. Perth's Mediterranean climate suits moringa in suburban gardens. Occasional light frosts mean pot growing is safer in coastal hills and southern suburbs. Confirm seed suppliers can ship to WA under biosecurity rules."}},
+ {"@type": "Question","name": "Can I grow moringa in Darwin?","acceptedAnswer": {"@type": "Answer","text": "Yes. Darwin's tropical climate is near-perfect for moringa, with year-round growth as a permanent food tree."}},
+ {"@type": "Question","name": "What is the difference between moringa and the drumstick tree?","acceptedAnswer": {"@type": "Answer","text": "There is no difference: drumstick tree, horseradish tree, ben oil tree, and malunggay are all common names for Moringa oleifera."}},
+ {"@type": "Question","name": "How long does a moringa tree live in Australia?","acceptedAnswer": {"@type": "Answer","text": "In frost-free tropical and subtropical areas, moringa can live many years as a perennial. In cooler southern states grown in pots, trees often behave as warm-season plants and regrow from the base each spring if protected from hard frost."}},
+ {"@type": "Question","name": "What is the best fertilizer for moringa trees in Australia?","acceptedAnswer": {"@type": "Answer","text": "Compost is the safest base feed. Established trees benefit from controlled-release fertiliser in late winter and late summer, plus fortnightly liquid seaweed or fish emulsion in the growing season. Avoid heavy nitrogen-only fertilisers."}},
+ {"@type": "Question","name": "Is it legal to grow moringa at home in Australia?","acceptedAnswer": {"@type": "Answer","text": "Yes. Growing Moringa oleifera at home for personal use is legal in all Australian states. Commercial advertising and food-sale rules are separate: see foodstandards.gov.au and NutriThrive's legality guides for current commercial context."}},
+ {"@type": "Question","name": "Can moringa grow in Canberra?","acceptedAnswer": {"@type": "Answer","text": "Yes, as a warm-season pot plant. Start seeds indoors in August–September, grow in a 60L+ pot, and bring indoors before the first frost (usually April)."}},
+ {"@type": "Question","name": "What is PKM-1 moringa?","acceptedAnswer": {"@type": "Answer","text": "PKM-1 is a popular cultivated variety of Moringa oleifera often preferred for pots and home gardens because it stays more compact than standard types."}},
+ {"@type": "Question","name": "Can I grow moringa from a cutting vs seed, which is faster?","acceptedAnswer": {"@type": "Answer","text": "Cuttings are usually faster: rooted cuttings can establish in 2–3 weeks, while seeds take 7–21 days to germinate plus extra weeks to reach transplant size."}},
+ {"@type": "Question","name": "What size pot is best for growing moringa in Melbourne?","acceptedAnswer": {"@type": "Answer","text": "Use 50L+ pots in Melbourne (60L is a common grower recommendation) so you can move trees indoors during frost."}},
+ {"@type": "Question","name": "Can moringa grow in a small backyard?","acceptedAnswer": {"@type": "Answer","text": "Yes. Grow in a large pot, prune regularly to keep height manageable, or choose a dwarf/PKM-1 type for smaller spaces."}}
+ ]
+ }
+ </script>
  <!-- HowTo Schema -->
  <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Grow a Moringa Tree in Australia",
-  "description": "Step-by-step guide to growing moringa in any Australian climate — from seed germination to first harvest.",
-  "image": "https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg",
-  "totalTime": "P8M",
-  "estimatedCost": {
-    "@type": "MonetaryAmount",
-    "currency": "AUD",
-    "value": "20"
-  },
-  "tool": [
-    {"@type": "HowToTool", "name": "50L+ pot (for southern states)"},
-    {"@type": "HowToTool", "name": "Frost cloth or hessian"},
-    {"@type": "HowToTool", "name": "Well-draining potting mix"},
-    {"@type": "HowToTool", "name": "Coarse sand or perlite"},
-    {"@type": "HowToTool", "name": "Compost or well-rotted manure"}
-  ],
-  "supply": [
-    {"@type": "HowToSupply", "name": "Moringa oleifera seeds or seedlings"},
-    {"@type": "HowToSupply", "name": "Sandy or loamy potting soil"}
-  ],
-  "step": [
-    {
-      "@type": "HowToStep",
-      "name": "Choose Your Climate Strategy",
-      "text": "In warm climates (QLD, NT, WA), plant directly in-ground year-round with full sun. In cooler climates (VIC, SA, TAS), use 50L+ pots and move indoors during winter. Place against north-facing walls for extra warmth.",
-      "position": 1
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Prepare Soil and Germinate Seeds",
-      "text": "Mix 60% potting mix, 30% coarse sand or perlite, 10% compost. Soak moringa seeds in warm water for 12–24 hours, then plant 2cm deep. Maintain soil temperature 25–30°C. Seeds germinate in 7–21 days.",
-      "position": 2
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Water and Care for Young Seedlings",
-      "text": "Water deeply 2–3 times per week for the first 3 months. Keep soil moist but not waterlogged. Once established, reduce to once per week — moringa is drought-tolerant.",
-      "position": 3
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Prune for Bushy Growth",
-      "text": "When the main stem reaches 1–1.5m, prune the top to encourage side branches and more leaves. Regular harvesting from the top 30cm also encourages new growth.",
-      "position": 4
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Protect from Frost",
-      "text": "In VIC, SA, TAS, and inland NSW: move pots indoors or under cover when temperatures drop below 5°C. Use frost cloth to wrap the tree on cold nights. Moringa may lose leaves and look dead in winter — this is normal dormancy. It will regrow from the base in spring.",
-      "position": 5
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Harvest Your First Leaves",
-      "text": "First harvest is typically 6–8 months after planting. Pick young, tender leaves from the top 30cm for highest nutrient density. Harvest every 2–4 weeks to encourage new growth. Dry leaves at 40°C to make moringa powder at home.",
-      "position": 6
-    }
-  ]
+ "@context": "https://schema.org",
+ "@type": "HowTo",
+ "name": "How to Grow a Moringa Tree in Australia",
+ "description": "Step-by-step guide to growing moringa in any Australian climate, from seed germination to first harvest.",
+ "image": "https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg",
+ "totalTime": "P8M",
+ "estimatedCost": {
+ "@type": "MonetaryAmount",
+ "currency": "AUD",
+ "value": "20"
+ },
+ "tool": [
+ {"@type": "HowToTool", "name": "50L+ pot (for southern states)"},
+ {"@type": "HowToTool", "name": "Frost cloth or hessian"},
+ {"@type": "HowToTool", "name": "Well-draining potting mix"},
+ {"@type": "HowToTool", "name": "Coarse sand or perlite"},
+ {"@type": "HowToTool", "name": "Compost or well-rotted manure"}
+ ],
+ "supply": [
+ {"@type": "HowToSupply", "name": "Moringa oleifera seeds or seedlings"},
+ {"@type": "HowToSupply", "name": "Sandy or loamy potting soil"}
+ ],
+ "step": [
+ {
+ "@type": "HowToStep",
+ "name": "Choose Your Climate Strategy",
+ "text": "In warm climates (QLD, NT, WA), plant directly in-ground year-round with full sun. In cooler climates (VIC, SA, TAS), use 50L+ pots and move indoors during winter. Place against north-facing walls for extra warmth.",
+ "position": 1
+ },
+ {
+ "@type": "HowToStep",
+ "name": "Prepare Soil and Germinate Seeds",
+ "text": "Mix 60% potting mix, 30% coarse sand or perlite, 10% compost. Soak moringa seeds in warm water for 12–24 hours, then plant 2cm deep. Maintain soil temperature 25–30°C. Seeds germinate in 7–21 days.",
+ "position": 2
+ },
+ {
+ "@type": "HowToStep",
+ "name": "Water and Care for Young Seedlings",
+ "text": "Water deeply 2–3 times per week for the first 3 months. Keep soil moist but not waterlogged. Once established, reduce to once per week: moringa is drought-tolerant.",
+ "position": 3
+ },
+ {
+ "@type": "HowToStep",
+ "name": "Prune for Bushy Growth",
+ "text": "When the main stem reaches 1–1.5m, prune the top to encourage side branches and more leaves. Regular harvesting from the top 30cm also encourages new growth.",
+ "position": 4
+ },
+ {
+ "@type": "HowToStep",
+ "name": "Protect from Frost",
+ "text": "In VIC, SA, TAS, and inland NSW: move pots indoors or under cover when temperatures drop below 5°C. Use frost cloth to wrap the tree on cold nights. Moringa may lose leaves and look dead in winter: this is normal dormancy. It will regrow from the base in spring.",
+ "position": 5
+ },
+ {
+ "@type": "HowToStep",
+ "name": "Harvest Your First Leaves",
+ "text": "First harvest is typically 6–8 months after planting. Pick young, tender leaves from the top 30cm for highest nutrient density. Harvest every 2–4 weeks to encourage new growth. Dry leaves at 40°C to make moringa powder at home.",
+ "position": 6
+ }
+ ]
 }
 </script>
  <!-- Medical News Today Style Mobile Responsive -->
  <style>
-        /* Base mobile-first styles */
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        /* Mobile styles - Medical News Today inspired */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 0;
-                margin: 0;
-            }
-            
-            /* Header mobile */
-            header {
-                padding: 1rem !important;
-                position: sticky;
-                top: 0;
-                background: white;
-                z-index: 100;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
-            
-            .navbar, header .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-            
-            .nav-links, header .nav-links {
-                display: none !important;
-            }
-            
-            /* Blog hero mobile */
-            .blog-hero, .blog-post-header {
-                padding: 1.5rem 1rem !important;
-                margin: 0 !important;
-            }
-            
-            .blog-hero h1, .blog-post-header h1, article h1, .blog-post-content h1 {
-                font-size: 1.75rem !important;
-                line-height: 1.3 !important;
-                font-weight: 700;
-                color: #1a1a1a;
-                margin: 0 0 1rem 0 !important;
-                padding: 0 !important;
-            }
-            
-            /* Content container mobile */
-            .blog-content, .blog-post-content, main article {
-                padding: 0 1rem !important;
-                max-width: 100% !important;
-                margin: 0 auto !important;
-            }
-            
-            /* Paragraphs mobile - Medical News Today style */
-            .blog-content p, .blog-post-content p, article p, main p {
-                font-size: 1.0625rem !important;
-                line-height: 1.75 !important;
-                margin-bottom: 1.25rem !important;
-                color: #333;
-                max-width: 100%;
-                word-wrap: break-word;
-            }
-            
-            .blog-content p strong, .blog-post-content p strong, article p strong {
-                font-weight: 700;
-                color: #1a1a1a;
-            }
-            
-            /* Links mobile */
-            .blog-content a, .blog-post-content a, article a {
-                color: #2d5a3d !important;
-                text-decoration: underline;
-                word-break: break-word;
-            }
-            
-            .blog-content a:hover, .blog-post-content a:hover {
-                color: #1e4029 !important;
-            }
-            
-            /* Headings mobile */
-            h2 {
-                font-size: 1.5rem !important;
-                line-height: 1.3 !important;
-                font-weight: 700 !important;
-                margin: 2rem 0 1rem 0 !important;
-                color: #1a1a1a;
-                padding: 0 !important;
-            }
-            
-            h3 {
-                font-size: 1.25rem !important;
-                line-height: 1.4 !important;
-                font-weight: 600 !important;
-                margin: 1.5rem 0 0.75rem 0 !important;
-                color: #1a1a1a;
-            }
-            
-            h4 {
-                font-size: 1.125rem !important;
-                font-weight: 600 !important;
-                margin: 1rem 0 0.5rem 0 !important;
-            }
-            
-            /* Lists mobile */
-            ul, ol {
-                padding-left: 1.5rem !important;
-                margin: 1rem 0 !important;
-            }
-            
-            li {
-                font-size: 1.0625rem !important;
-                line-height: 1.75 !important;
-                margin-bottom: 0.75rem !important;
-                color: #333;
-            }
-            
-            /* Cards Mobile - Stack vertically */
-            div[style*="grid-template-columns: repeat(auto-fit"] {
-                grid-template-columns: 1fr !important;
-                gap: 1.25rem !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            /* Individual card styling mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"] {
-                padding: 1.5rem 1rem !important;
-                margin: 1rem 0 !important;
-                border-radius: 12px !important;
-            }
-            
-            /* Buttons Mobile - Touch-friendly (minimum 44px) */
-            a[style*="padding: 12px 24px"],
-            a[style*="padding: 15px 30px"],
-            a[style*="padding: 16px 32px"],
-            a[style*="padding: 10px 20px"],
-            a[style*="padding: 8px 16px"],
-            a[style*="padding: 14px"] {
-                padding: 14px 24px !important;
-                font-size: 1rem !important;
-                min-height: 44px !important;
-                width: 100% !important;
-                text-align: center !important;
-                display: block !important;
-                margin: 0.75rem 0 !important;
-                border-radius: 8px !important;
-                font-weight: 600 !important;
-                text-decoration: none !important;
-            }
-            
-            /* Button containers mobile */
-            div[style*="display: flex"]:has(a[style*="padding"]) {
-                flex-direction: column !important;
-                gap: 0.75rem !important;
-            }
-            
-            /* Tables Mobile - Convert to cards */
-            table {
-                display: block !important;
-                width: 100% !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            table thead {
-                display: none !important;
-            }
-            
-            table tbody {
-                display: block !important;
-                width: 100% !important;
-            }
-            
-            table tr {
-                display: block !important;
-                margin-bottom: 1rem !important;
-                background: white !important;
-                border-radius: 8px !important;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-                padding: 1rem !important;
-                border: 1px solid #e0e0e0 !important;
-            }
-            
-            table td {
-                display: block !important;
-                padding: 0.75rem 0 !important;
-                text-align: left !important;
-                border: none !important;
-                font-size: 0.9375rem !important;
-                line-height: 1.5 !important;
-            }
-            
-            table td:not(:first-child):before {
-                content: attr(data-label) ": " !important;
-                font-weight: 600 !important;
-                display: inline !important;
-                color: #2d5a3d !important;
-                font-size: 0.875rem !important;
-                margin-right: 0.5rem !important;
-            }
-            
-            table td:first-child {
-                font-weight: 700 !important;
-                font-size: 1.0625rem !important;
-                color: #2d5a3d !important;
-                margin-bottom: 0.75rem !important;
-                padding-bottom: 0.75rem !important;
-                border-bottom: 2px solid #f0f0f0 !important;
-            }
-            
-            table td:first-child a {
-                font-size: 1.0625rem !important;
-            }
-            
-            /* Post meta mobile */
-            .post-meta {
-                font-size: 0.875rem !important;
-                margin-top: 0.5rem !important;
-            }
-            
-            /* Ensure proper spacing */
-            .blog-content > *,
-            .blog-post-content > *,
-            article > * {
-                max-width: 100% !important;
-                overflow-x: hidden !important;
-            }
-        }
+ /* Base mobile-first styles */
+ * {
+ box-sizing: border-box;
+ }
+ 
+ body {
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+ line-height: 1.6;
+ color: #333;
+ }
+ 
+ /* Mobile styles - Medical News Today inspired */
+ @media screen and (max-width: 768px) {
+ body {
+ padding: 0;
+ margin: 0;
+ }
+ 
+ /* Header mobile */
+ header {
+ padding: 1rem !important;
+ position: sticky;
+ top: 0;
+ background: white;
+ z-index: 100;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+ }.navbar, header.navbar {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+ }.nav-links, header.nav-links {
+ display: none !important;
+ }
+ 
+ /* Blog hero mobile */.blog-hero,.blog-post-header {
+ padding: 1.5rem 1rem !important;
+ margin: 0 !important;
+ }.blog-hero h1,.blog-post-header h1, article h1,.blog-post-content h1 {
+ font-size: 1.75rem !important;
+ line-height: 1.3 !important;
+ font-weight: 700;
+ color: #1a1a1a;
+ margin: 0 0 1rem 0 !important;
+ padding: 0 !important;
+ }
+ 
+ /* Content container mobile */.blog-content,.blog-post-content, main article {
+ padding: 0 1rem !important;
+ max-width: 100% !important;
+ margin: 0 auto !important;
+ }
+ 
+ /* Paragraphs mobile - Medical News Today style */.blog-content p,.blog-post-content p, article p, main p {
+ font-size: 1.0625rem !important;
+ line-height: 1.75 !important;
+ margin-bottom: 1.25rem !important;
+ color: #333;
+ max-width: 100%;
+ word-wrap: break-word;
+ }.blog-content p strong,.blog-post-content p strong, article p strong {
+ font-weight: 700;
+ color: #1a1a1a;
+ }
+ 
+ /* Links mobile */.blog-content a,.blog-post-content a, article a {
+ color: #2d5a3d !important;
+ text-decoration: underline;
+ word-break: break-word;
+ }.blog-content a:hover,.blog-post-content a:hover {
+ color: #1e4029 !important;
+ }
+ 
+ /* Headings mobile */
+ h2 {
+ font-size: 1.5rem !important;
+ line-height: 1.3 !important;
+ font-weight: 700 !important;
+ margin: 2rem 0 1rem 0 !important;
+ color: #1a1a1a;
+ padding: 0 !important;
+ }
+ 
+ h3 {
+ font-size: 1.25rem !important;
+ line-height: 1.4 !important;
+ font-weight: 600 !important;
+ margin: 1.5rem 0 0.75rem 0 !important;
+ color: #1a1a1a;
+ }
+ 
+ h4 {
+ font-size: 1.125rem !important;
+ font-weight: 600 !important;
+ margin: 1rem 0 0.5rem 0 !important;
+ }
+ 
+ /* Lists mobile */
+ ul, ol {
+ padding-left: 1.5rem !important;
+ margin: 1rem 0 !important;
+ }
+ 
+ li {
+ font-size: 1.0625rem !important;
+ line-height: 1.75 !important;
+ margin-bottom: 0.75rem !important;
+ color: #333;
+ }
+ 
+ /* Cards Mobile - Stack vertically */
+ div[style*="grid-template-columns: repeat(auto-fit"] {
+ grid-template-columns: 1fr !important;
+ gap: 1.25rem !important;
+ margin: 1.5rem 0 !important;
+ }
+ 
+ /* Individual card styling mobile */
+ div[style*="background: linear-gradient"],
+ div[style*="background: #f6fbf8"],
+ div[style*="background: #fff3e0"],
+ div[style*="background: #e8f5e9"],
+ div[style*="background: #e3f2fd"],
+ div[style*="background: #fff9c4"] {
+ padding: 1.5rem 1rem !important;
+ margin: 1rem 0 !important;
+ border-radius: 12px !important;
+ }
+ 
+ /* Buttons Mobile - Touch-friendly (minimum 44px) */
+ a[style*="padding: 12px 24px"],
+ a[style*="padding: 15px 30px"],
+ a[style*="padding: 16px 32px"],
+ a[style*="padding: 10px 20px"],
+ a[style*="padding: 8px 16px"],
+ a[style*="padding: 14px"] {
+ padding: 14px 24px !important;
+ font-size: 1rem !important;
+ min-height: 44px !important;
+ width: 100% !important;
+ text-align: center !important;
+ display: block !important;
+ margin: 0.75rem 0 !important;
+ border-radius: 8px !important;
+ font-weight: 600 !important;
+ text-decoration: none !important;
+ }
+ 
+ /* Button containers mobile */
+ div[style*="display: flex"]:has(a[style*="padding"]) {
+ flex-direction: column !important;
+ gap: 0.75rem !important;
+ }
+ 
+ /* Tables Mobile - Convert to cards */
+ table {
+ display: block !important;
+ width: 100% !important;
+ overflow-x: auto !important;
+ -webkit-overflow-scrolling: touch !important;
+ margin: 1.5rem 0 !important;
+ }
+ 
+ table thead {
+ display: none !important;
+ }
+ 
+ table tbody {
+ display: block !important;
+ width: 100% !important;
+ }
+ 
+ table tr {
+ display: block !important;
+ margin-bottom: 1rem !important;
+ background: white !important;
+ border-radius: 8px !important;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+ padding: 1rem !important;
+ border: 1px solid #e0e0e0 !important;
+ }
+ 
+ table td {
+ display: block !important;
+ padding: 0.75rem 0 !important;
+ text-align: left !important;
+ border: none !important;
+ font-size: 0.9375rem !important;
+ line-height: 1.5 !important;
+ }
+ 
+ table td:not(:first-child):before {
+ content: attr(data-label) ": " !important;
+ font-weight: 600 !important;
+ display: inline !important;
+ color: #2d5a3d !important;
+ font-size: 0.875rem !important;
+ margin-right: 0.5rem !important;
+ }
+ 
+ table td:first-child {
+ font-weight: 700 !important;
+ font-size: 1.0625rem !important;
+ color: #2d5a3d !important;
+ margin-bottom: 0.75rem !important;
+ padding-bottom: 0.75rem !important;
+ border-bottom: 2px solid #f0f0f0 !important;
+ }
+ 
+ table td:first-child a {
+ font-size: 1.0625rem !important;
+ }
+ 
+ /* Post meta mobile */.post-meta {
+ font-size: 0.875rem !important;
+ margin-top: 0.5rem !important;
+ }
+ 
+ /* Ensure proper spacing */.blog-content > *,.blog-post-content > *,
+ article > * {
+ max-width: 100% !important;
+ overflow-x: hidden !important;
+ }
+ }
 
-            /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"],
-            div[style*="background: #f8f9fa"],
-            div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
-            div[style*="background: linear-gradient(135deg, #f6fbf8"],
-            div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
-            }
-            
-            /* Remove decorative elements on mobile */
-            div[style*="position: absolute"],
-            div[style*="position:absolute"] {
-                display: none !important;
-            }
-            
-            /* Simplify product buy boxes */
-            div[style*="linear-gradient(135deg, #2d5a3d"] {
-                background: #2d5a3d !important;
-                border: none !important;
-                padding: 1.5rem 1rem !important;
-            }
-            
-            /* Remove borders from cards */
-            div[style*="border-left: 4px"],
-            div[style*="border: 1px"],
-            div[style*="border: 2px"],
-            div[style*="border: 3px"] {
-                border: none !important;
-            }
+ /* Hide/simplify boxes and cards on mobile */
+ div[style*="background: linear-gradient"],
+ div[style*="background: #f6fbf8"],
+ div[style*="background: #fff3e0"],
+ div[style*="background: #e8f5e9"],
+ div[style*="background: #e3f2fd"],
+ div[style*="background: #fff9c4"],
+ div[style*="background: #f8f9fa"],
+ div[style*="background: #fff8f0"],
+ div[style*="background: linear-gradient(135deg, #2d5a3d"],
+ div[style*="background: linear-gradient(135deg, #f6fbf8"],
+ div[style*="background: linear-gradient(135deg, #fff8f0"],
+ div[style*="background: linear-gradient(135deg, #e8f5e9"] {
+ background: transparent !important;
+ box-shadow: none !important;
+ border: none !important;
+ padding: 1rem !important;
+ border-radius: 0 !important;
+ margin: 1rem 0 !important;
+ }
+ 
+ /* Remove decorative elements on mobile */
+ div[style*="position: absolute"],
+ div[style*="position:absolute"] {
+ display: none !important;
+ }
+ 
+ /* Simplify product buy boxes */
+ div[style*="linear-gradient(135deg, #2d5a3d"] {
+ background: #2d5a3d !important;
+ border: none !important;
+ padding: 1.5rem 1rem !important;
+ }
+ 
+ /* Remove borders from cards */
+ div[style*="border-left: 4px"],
+ div[style*="border: 1px"],
+ div[style*="border: 2px"],
+ div[style*="border: 3px"] {
+ border: none !important;
+ }
 
-            /* Hide/simplify boxes and cards on mobile */
-            div[style*="background: linear-gradient"],
-            div[style*="background: #f6fbf8"],
-            div[style*="background: #fff3e0"],
-            div[style*="background: #e8f5e9"],
-            div[style*="background: #e3f2fd"],
-            div[style*="background: #fff9c4"],
-            div[style*="background: #f8f9fa"],
-            div[style*="background: #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #2d5a3d"],
-            div[style*="background: linear-gradient(135deg, #f6fbf8"],
-            div[style*="background: linear-gradient(135deg, #fff8f0"],
-            div[style*="background: linear-gradient(135deg, #e8f5e9"] {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding: 1rem !important;
-                border-radius: 0 !important;
-                margin: 1rem 0 !important;
-            }
-            
-            /* Remove decorative elements on mobile */
-            div[style*="position: absolute"],
-            div[style*="position:absolute"] {
-                display: none !important;
-            }
-            
-            /* Simplify product buy boxes */
-            div[style*="linear-gradient(135deg, #2d5a3d"] {
-                background: #2d5a3d !important;
-                border: none !important;
-                padding: 1.5rem 1rem !important;
-            }
-            
-            /* Remove borders from cards */
-            div[style*="border-left: 4px"],
-            div[style*="border: 1px"],
-            div[style*="border: 2px"],
-            div[style*="border: 3px"] {
-                border: none !important;
-            }
-        
-        /* Small mobile devices */
-        @media screen and (max-width: 480px) {
-            .blog-hero h1, .blog-post-header h1, article h1 {
-                font-size: 1.5rem !important;
-            }
-            
-            h2 {
-                font-size: 1.375rem !important;
-            }
-            
-            h3 {
-                font-size: 1.125rem !important;
-            }
-            
-            .blog-content p, .blog-post-content p, article p {
-                font-size: 1rem !important;
-            }
-        }
-    
-        /* Desktop Layout Simplification - Remove excessive boxes, cards, and decorative elements */
-        @media screen and (min-width: 1024px) {
-            /* Remove all gradient backgrounds and decorative boxes */
-            .blog-post-content div[style*="background: linear-gradient"],
-            .blog-post-content div[style*="background: #f6fbf8"],
-            .blog-post-content div[style*="background: #fff3e0"],
-            .blog-post-content div[style*="background: #e8f5e9"],
-            .blog-post-content div[style*="background: #e3f2fd"],
-            .blog-post-content div[style*="background: #fff9c4"],
-            .blog-post-content div[style*="background: #f8f9fa"],
-            .blog-post-content div[style*="background: #fff8f0"],
-            .blog-post-content div[style*="background: rgba("],
-            .blog-post-content div[style*="background-color: #"],
-            .blog-post-content div[style*="background-color: rgba("],
-            .blog-post-content .card,
-            .blog-post-content .box,
-            .blog-post-content .poster,
-            .blog-post-content .food-card,
-            .blog-post-content .recipe-card,
-            .blog-post-content .snack-card,
-            .blog-post-content .benefit-card,
-            .blog-post-content .feature-card,
-            .blog-post-content .cta-box,
-            .blog-post-content .summary-box,
-            .blog-post-content .quick-answer-box,
-            .blog-post-content .highlight-box {
-                background: transparent !important;
-                box-shadow: none !important;
-                border: none !important;
-                border-radius: 0 !important;
-                padding: 0 !important;
-                margin: 1.5rem 0 !important;
-            }
-            
-            /* Remove nested box styling */
-            .blog-post-content div[style*="box-shadow"] {
-                box-shadow: none !important;
-            }
-            
-            .blog-post-content div[style*="border-left"],
-            .blog-post-content div[style*="border: 1px"],
-            .blog-post-content div[style*="border: 2px"],
-            .blog-post-content div[style*="border: 3px"],
-            .blog-post-content div[style*="border-radius"] {
-                border: none !important;
-                border-radius: 0 !important;
-            }
-            
-            /* Remove decorative pseudo-elements */
-            .blog-post-content div[style*="position: absolute"]::before,
-            .blog-post-content div[style*="position: absolute"]::after,
-            .blog-post-content .card::before,
-            .blog-post-content .card::after,
-            .blog-post-content .food-card::before,
-            .blog-post-content .food-card::after {
-                display: none !important;
-            }
-            
-            /* Ensure all text is readable (dark, not white) */
-            .blog-post-content div[style*="color: white"],
-            .blog-post-content div[style*="color: #fff"],
-            .blog-post-content div[style*="color: rgba(255"],
-            .blog-post-content div[style*="background: linear-gradient"] *,
-            .blog-post-content div[style*="background: rgba("] * {
-                color: #1a2e22 !important;
-            }
-            
-            /* Headings should be readable */
-            .blog-post-content h2[style*="color: white"],
-            .blog-post-content h2[style*="color: #fff"],
-            .blog-post-content h3[style*="color: white"],
-            .blog-post-content h3[style*="color: #fff"],
-            .blog-post-content h4[style*="color: white"],
-            .blog-post-content h4[style*="color: #fff"] {
-                color: #175c36 !important;
-            }
-            
-            /* Simplify tables - clean, flat design */
-            .blog-post-content table.blog-table,
-            .blog-post-content table {
-                width: 100%;
-                border-collapse: collapse;
-                background: transparent !important;
-                box-shadow: none !important;
-                border: 1px solid #e0e0e0 !important;
-                margin: 2rem 0 !important;
-            }
-            
-            .blog-post-content table thead {
-                background: transparent !important;
-                border-bottom: 2px solid #e0e0e0 !important;
-            }
-            
-            .blog-post-content table th {
-                padding: 0.75rem 1rem;
-                text-align: left;
-                font-weight: 700;
-                color: #1a2e22 !important;
-                background: transparent !important;
-            }
-            
-            .blog-post-content table td {
-                padding: 0.75rem 1rem;
-                border-bottom: 1px solid #f0f0f0 !important;
-                color: #1a2e22 !important;
-                background: transparent !important;
-            }
-            
-            /* Remove excessive padding and margins from lists */
-            .blog-post-content ul,
-            .blog-post-content ol {
-                padding-left: 2rem;
-                margin: 1.5rem 0;
-            }
-            
-            .blog-post-content li {
-                margin: 0.5rem 0;
-                line-height: 1.7;
-                color: #1a2e22 !important;
-            }
-            
-            /* Clean paragraph styling */
-            .blog-post-content p {
-                color: #1a2e22 !important;
-                margin: 1.2rem 0;
-                line-height: 1.7;
-            }
-            
-            /* Optimize blog post container for desktop */
-            main.blog-post,
-            .blog-post {
-                max-width: 900px;
-                margin: 2rem auto;
-                padding: 0 2rem;
-            }
-            
-            .blog-post-content {
-                max-width: 100%;
-                width: 100%;
-            }
-            
-            .blog-post-header {
-                max-width: 100%;
-                padding: 2rem 0 1rem 0;
-            }
-            
-            /* Remove hover effects on cards */
-            .blog-post-content div[style*="hover"],
-            .blog-post-content div[style*="transition"],
-            .blog-post-content .card:hover,
-            .blog-post-content .food-card:hover {
-                transform: none !important;
-                box-shadow: none !important;
-            }
-            
-            /* Simplify images */
-            .blog-post-content img {
-                max-width: 100%;
-                height: auto;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                margin: 1.5rem 0;
-            }
-            
-            /* Clean buttons/CTAs - keep functional but simple */
-            .blog-post-content a.btn,
-            .blog-post-content a[style*="padding:"] {
-                display: inline-block;
-                padding: 0.75rem 1.5rem;
-                background: #175c36;
-                color: white !important;
-                text-decoration: none;
-                border-radius: 4px;
-                margin: 1rem 0;
-                box-shadow: none !important;
-            }
-            
-            .blog-post-content a.btn:hover {
-                background: #1b7f5a;
-            }
-        }
+ /* Hide/simplify boxes and cards on mobile */
+ div[style*="background: linear-gradient"],
+ div[style*="background: #f6fbf8"],
+ div[style*="background: #fff3e0"],
+ div[style*="background: #e8f5e9"],
+ div[style*="background: #e3f2fd"],
+ div[style*="background: #fff9c4"],
+ div[style*="background: #f8f9fa"],
+ div[style*="background: #fff8f0"],
+ div[style*="background: linear-gradient(135deg, #2d5a3d"],
+ div[style*="background: linear-gradient(135deg, #f6fbf8"],
+ div[style*="background: linear-gradient(135deg, #fff8f0"],
+ div[style*="background: linear-gradient(135deg, #e8f5e9"] {
+ background: transparent !important;
+ box-shadow: none !important;
+ border: none !important;
+ padding: 1rem !important;
+ border-radius: 0 !important;
+ margin: 1rem 0 !important;
+ }
+ 
+ /* Remove decorative elements on mobile */
+ div[style*="position: absolute"],
+ div[style*="position:absolute"] {
+ display: none !important;
+ }
+ 
+ /* Simplify product buy boxes */
+ div[style*="linear-gradient(135deg, #2d5a3d"] {
+ background: #2d5a3d !important;
+ border: none !important;
+ padding: 1.5rem 1rem !important;
+ }
+ 
+ /* Remove borders from cards */
+ div[style*="border-left: 4px"],
+ div[style*="border: 1px"],
+ div[style*="border: 2px"],
+ div[style*="border: 3px"] {
+ border: none !important;
+ }
+ 
+ /* Small mobile devices */
+ @media screen and (max-width: 480px) {.blog-hero h1,.blog-post-header h1, article h1 {
+ font-size: 1.5rem !important;
+ }
+ 
+ h2 {
+ font-size: 1.375rem !important;
+ }
+ 
+ h3 {
+ font-size: 1.125rem !important;
+ }.blog-content p,.blog-post-content p, article p {
+ font-size: 1rem !important;
+ }
+ }
+ 
+ /* Desktop Layout Simplification - Remove excessive boxes, cards, and decorative elements */
+ @media screen and (min-width: 1024px) {
+ /* Remove all gradient backgrounds and decorative boxes */.blog-post-content div[style*="background: linear-gradient"],.blog-post-content div[style*="background: #f6fbf8"],.blog-post-content div[style*="background: #fff3e0"],.blog-post-content div[style*="background: #e8f5e9"],.blog-post-content div[style*="background: #e3f2fd"],.blog-post-content div[style*="background: #fff9c4"],.blog-post-content div[style*="background: #f8f9fa"],.blog-post-content div[style*="background: #fff8f0"],.blog-post-content div[style*="background: rgba("],.blog-post-content div[style*="background-color: #"],.blog-post-content div[style*="background-color: rgba("],.blog-post-content.card,.blog-post-content.box,.blog-post-content.poster,.blog-post-content.food-card,.blog-post-content.recipe-card,.blog-post-content.snack-card,.blog-post-content.benefit-card,.blog-post-content.feature-card,.blog-post-content.cta-box,.blog-post-content.summary-box,.blog-post-content.quick-answer-box,.blog-post-content.highlight-box {
+ background: transparent !important;
+ box-shadow: none !important;
+ border: none !important;
+ border-radius: 0 !important;
+ padding: 0 !important;
+ margin: 1.5rem 0 !important;
+ }
+ 
+ /* Remove nested box styling */.blog-post-content div[style*="box-shadow"] {
+ box-shadow: none !important;
+ }.blog-post-content div[style*="border-left"],.blog-post-content div[style*="border: 1px"],.blog-post-content div[style*="border: 2px"],.blog-post-content div[style*="border: 3px"],.blog-post-content div[style*="border-radius"] {
+ border: none !important;
+ border-radius: 0 !important;
+ }
+ 
+ /* Remove decorative pseudo-elements */.blog-post-content div[style*="position: absolute"]::before,.blog-post-content div[style*="position: absolute"]::after,.blog-post-content.card::before,.blog-post-content.card::after,.blog-post-content.food-card::before,.blog-post-content.food-card::after {
+ display: none !important;
+ }
+ 
+ /* Ensure all text is readable (dark, not white) */.blog-post-content div[style*="color: white"],.blog-post-content div[style*="color: #fff"],.blog-post-content div[style*="color: rgba(255"],.blog-post-content div[style*="background: linear-gradient"] *,.blog-post-content div[style*="background: rgba("] * {
+ color: #1a2e22 !important;
+ }
+ 
+ /* Headings should be readable */.blog-post-content h2[style*="color: white"],.blog-post-content h2[style*="color: #fff"],.blog-post-content h3[style*="color: white"],.blog-post-content h3[style*="color: #fff"],.blog-post-content h4[style*="color: white"],.blog-post-content h4[style*="color: #fff"] {
+ color: #175c36 !important;
+ }
+ 
+ /* Simplify tables - clean, flat design */.blog-post-content table.blog-table,.blog-post-content table {
+ width: 100%;
+ border-collapse: collapse;
+ background: transparent !important;
+ box-shadow: none !important;
+ border: 1px solid #e0e0e0 !important;
+ margin: 2rem 0 !important;
+ }.blog-post-content table thead {
+ background: transparent !important;
+ border-bottom: 2px solid #e0e0e0 !important;
+ }.blog-post-content table th {
+ padding: 0.75rem 1rem;
+ text-align: left;
+ font-weight: 700;
+ color: #1a2e22 !important;
+ background: transparent !important;
+ }.blog-post-content table td {
+ padding: 0.75rem 1rem;
+ border-bottom: 1px solid #f0f0f0 !important;
+ color: #1a2e22 !important;
+ background: transparent !important;
+ }
+ 
+ /* Remove excessive padding and margins from lists */.blog-post-content ul,.blog-post-content ol {
+ padding-left: 2rem;
+ margin: 1.5rem 0;
+ }.blog-post-content li {
+ margin: 0.5rem 0;
+ line-height: 1.7;
+ color: #1a2e22 !important;
+ }
+ 
+ /* Clean paragraph styling */.blog-post-content p {
+ color: #1a2e22 !important;
+ margin: 1.2rem 0;
+ line-height: 1.7;
+ }
+ 
+ /* Optimize blog post container for desktop */
+ main.blog-post,.blog-post {
+ max-width: 900px;
+ margin: 2rem auto;
+ padding: 0 2rem;
+ }.blog-post-content {
+ max-width: 100%;
+ width: 100%;
+ }.blog-post-header {
+ max-width: 100%;
+ padding: 2rem 0 1rem 0;
+ }
+ 
+ /* Remove hover effects on cards */.blog-post-content div[style*="hover"],.blog-post-content div[style*="transition"],.blog-post-content.card:hover,.blog-post-content.food-card:hover {
+ transform: none !important;
+ box-shadow: none !important;
+ }
+ 
+ /* Simplify images */.blog-post-content img {
+ max-width: 100%;
+ height: auto;
+ border-radius: 0 !important;
+ box-shadow: none !important;
+ margin: 1.5rem 0;
+ }
+ 
+ /* Clean buttons/CTAs - keep functional but simple */.blog-post-content a.btn,.blog-post-content a[style*="padding:"] {
+ display: inline-block;
+ padding: 0.75rem 1.5rem;
+ background: #175c36;
+ color: white !important;
+ text-decoration: none;
+ border-radius: 4px;
+ margin: 1rem 0;
+ box-shadow: none !important;
+ }.blog-post-content a.btn:hover {
+ background: #1b7f5a;
+ }
+ }
 
-        </style>
+ </style>
  <!-- BlogPosting Schema -->
  
  <!-- Breadcrumb Schema -->
  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://nutrithrive.com.au"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": "https://nutrithrive.com.au/blog/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Moringa &amp; Superfoods",
-          "item": "https://nutrithrive.com.au/blog/#moringa-&-superfoods"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Grow Moringa Tree Australia",
-          "item": "https://nutrithrive.com.au/blog/grow-moringa-tree-australia.html"
-        }
-      ]
-    }</script>
+ {
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+ {
+ "@type": "ListItem",
+ "position": 1,
+ "name": "Home",
+ "item": "https://nutrithrive.com.au"
+ },
+ {
+ "@type": "ListItem",
+ "position": 2,
+ "name": "Blog",
+ "item": "https://nutrithrive.com.au/blog/"
+ },
+ {
+ "@type": "ListItem",
+ "position": 3,
+ "name": "Moringa &amp; Superfoods",
+ "item": "https://nutrithrive.com.au/blog/#moringa-&-superfoods"
+ },
+ {
+ "@type": "ListItem",
+ "position": 4,
+ "name": "Grow Moringa Tree Australia",
+ "item": "https://nutrithrive.com.au/blog/grow-moringa-tree-australia.html"
+ }
+ ]
+ }</script>
  <!-- BlogPosting Schema -->
  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "How to Grow Moringa Tree in Australia 2026 | Expert Guide",
-      "description": "Struggling to grow Moringa in the cold? Learn about frost zones in Victoria and why buying fresh 100% natural powder is the faster, easier solution.",
-      "image": [
-        "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"
-      ],
-      "datePublished": "2026-01-18",
-      "dateModified": "2026-06-21",
-      "author": {
-        "@type": "Person",
-        "@id": "https://nutrithrive.com.au/#person-neer",
-        "name": "Neer"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "NutriThrive",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://nutrithrive.com.au/blog/grow-moringa-tree-australia.html"
-      }
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@type": "BlogPosting",
+ "headline": "How to Grow Moringa Tree in Australia 2026 | Expert Guide",
+ "description": "Struggling to grow Moringa in the cold? Learn about frost zones in Victoria and why buying fresh 100% natural powder is the faster, easier solution.",
+ "image": [
+ "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"
+ ],
+ "datePublished": "2026-01-18",
+ "dateModified": "2026-06-21",
+ "author": {
+ "@type": "Person",
+ "@id": "https://nutrithrive.com.au/#person-neer",
+ "name": "Neer"
+ },
+ "publisher": {
+ "@type": "Organization",
+ "name": "NutriThrive",
+ "logo": {
+ "@type": "ImageObject",
+ "url": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp"
+ }
+ },
+ "mainEntityOfPage": {
+ "@type": "WebPage",
+ "@id": "https://nutrithrive.com.au/blog/grow-moringa-tree-australia.html"
+ }
+ }
+ </script>
  </head>
 <body class="non-sticky-header blog-moringa-tree">
  <!-- Sticky Sale Banner -->
@@ -939,11 +813,11 @@
  <section class="blog-hero">
  <div class="container">
  <h1 class="blog-hero-title">How to Grow Moringa Tree in Australia (2026) | Melbourne, Pots, Frost & Expert Tips</h1>
- <p class="blog-hero-desc">Let's be honest: growing a tropical 'Miracle Tree' in Melbourne's unpredictable weather is a nightmare. While Moringa thrives in humid climates, one frosty Victorian night can kill months of hard work. But don't worry. If you don't have the time (or the greenhouse) to nurse a tree for years, there is a much faster way to get your daily harvest right now. <a href="/blog/how-to-choose-moringa-powder-australia-2026" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">how to choose moringa powder in Australia</a></p>
+ <p class="blog-hero-desc">Growing tropical moringa outdoors in Melbourne is hard: one frosty night can undo months of work. If you do not have a greenhouse or the time to nurse a tree, powder from shade-dried leaf is the faster way to use moringa daily. <a href="/blog/how-to-choose-moringa-powder-australia-2026" style="color: #2d5a3d; font-weight: 600; text-decoration: none;">How to choose moringa powder in Australia</a></p>
 
 <div style="background-color: #f0fdf4; border: 2px solid #16a34a; padding: 20px; border-radius: 10px; margin: 25px 0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
  <h3 style="margin-top: 0; color: #166534; font-size: 1.2rem;">🌿 Don't just read about it; feel the difference.</h3>
- <p style="margin-bottom: 15px; color: #15803d;">Pantry staples minus the junk — moringa leaf powder plus dried curry leaf, delivered with tracking you can stalk. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Browse NutriThrive</a>.</p>
+ <p style="margin-bottom: 15px; color: #15803d;">Pantry staples minus the junk: moringa leaf powder plus dried curry leaf, delivered with tracking you can stalk. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Browse NutriThrive</a>.</p>
  <a href="https://nutrithrive.com.au/products/" style="background-color: #16a34a; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; display: inline-block; transition: background 0.3s;">Shop Best Sellers &rarr;</a>
 </div>
 
@@ -983,16 +857,16 @@
  </nav>
  <!-- Featured Image -->
  <div class="featured-image-placeholder" style="margin-bottom: 32px; position:relative; display:inline-block; max-width:600px; width:100%;">
- <img loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" alt="Moringa oleifera (drumstick tree) leaf powder — grow your own or buy premium powder in Australia" width="600" height="400" style="width:100%;max-width:600px;border-radius:12px;box-shadow:0 2px 12px 0 rgba(23,92,54,0.07);" decoding="async">
+ <img loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" alt="Moringa oleifera (drumstick tree) leaf powder: grow your own or buy premium powder in Australia" width="600" height="400" style="width:100%;max-width:600px;border-radius:12px;box-shadow:0 2px 12px 0 rgba(23,92,54,0.07);" decoding="async">
  <a href="https://pinterest.com/pin/create/button/?url=https://nutrithrive.com.au/blog/grow-moringa-tree-australia&media=https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg&description=How+to+Grow+Moringa+in+Australia+%F0%9F%8C%BF+Pots%2C+Frost%2C+Melbourne+%26+More"
-  data-pin-do="buttonBookmark"
-  target="_blank" rel="noopener"
-  style="position:absolute;top:10px;right:10px;background:#e60023;color:white;padding:6px 12px;border-radius:20px;font-size:0.8rem;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:6px;">
-  📌 Save
+ data-pin-do="buttonBookmark"
+ target="_blank" rel="noopener"
+ style="position:absolute;top:10px;right:10px;background:#e60023;color:white;padding:6px 12px;border-radius:20px;font-size:0.8rem;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:6px;">
+ 📌 Save
  </a>
  </div>
  <div style="text-align: center; margin: 1.5rem 0;">
- <img src="../assets/images/general/tree.webp" alt="Moringa tree growing in pot in Melbourne backyard — frost protection guide for VIC gardeners" style="max-width: 180px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+ <img src=". /assets/images/general/tree.webp" alt="Moringa tree growing in pot in Melbourne backyard: frost protection guide for VIC gardeners" style="max-width: 180px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
  </div>
  <section id="melbourne" style="background:#eaf7f0;padding:2rem 1.5rem;margin-bottom:2rem;border-radius:12px;box-shadow:0 2px 12px 0 rgba(23,92,54,0.07);">
  <h2>Growing Moringa in Melbourne & Southern Australia (Frost, Pots & Microclimates)</h2>
@@ -1012,66 +886,65 @@
  <li><strong>Best Varieties:</strong> All moringa oleifera types work, but dwarf or "PKM-1" is best for pots.</li>
  <li><strong>Indoor Growing:</strong> In coldest areas, grow moringa indoors in Australia as a houseplant in a sunny window or heated greenhouse.</li>
  <li><strong>Moringa pot size Australia:</strong> 50L+ is the minimum for Melbourne; many growers prefer 60L so roots stay cooler and the pot is easier to wheel indoors.</li>
- <li><strong>Real Grower Tip:</strong> "I keep my moringa in a 60L pot on my north-facing patio in Melbourne. It drops leaves in July but bounces back every spring!" – <em>Sam, VIC</em></li>
+ <li><strong>Real Grower Tip:</strong> "I keep my moringa in a 60L pot on my north-facing patio in Melbourne. It drops leaves in July but bounces back every spring!", <em>Sam, VIC</em></li>
  </ul>
  <p>For more tips, see <a href="https://www.daleysfruit.com.au/forum/growing-moringa-odrumstick-tree-in-melbourne8/" target="_blank" rel="noopener noreferrer nofollow">this popular drumstick tree Melbourne forum</a> and <a href="https://agriculture.vic.gov.au/" target="_blank" rel="noopener noreferrer nofollow">Agriculture Victoria</a>.</p>
  </section>
 
 <section id="state-guide">
-  <h2>🗺️ Moringa Growing by State: What to Expect</h2>
+ <h2>🗺️ Moringa Growing by State. What to Expect</h2>
 
-  <h3>Queensland (Brisbane, Cairns, Townsville, Gold Coast)</h3>
-  <p>QLD is the easiest state for moringa in Australia. Plant year-round, in-ground or in pots.
-  Tropical and subtropical QLD (Cairns, Townsville, Mackay) can grow moringa as a true perennial —
-  trees can reach 4m+ in a single season and produce leaves year-round. Brisbane and the Gold Coast
-  experience mild winters with minimal frost risk in most suburbs. Key tips:</p>
-  <ul>
-    <li>Plant direct in ground for fastest growth</li>
-    <li>Water deeply through dry season; drainage is critical in monsoon season</li>
-    <li>Prune aggressively — in QLD heat, moringa can outgrow your reach fast</li>
-    <li>Harvest pods (drumsticks) before they mature for the best eating</li>
-  </ul>
+ <h3>Queensland (Brisbane, Cairns, Townsville, Gold Coast)</h3>
+ <p>QLD is the easiest state for moringa in Australia. Plant year-round, in-ground or in pots.
+ Tropical and subtropical QLD (Cairns, Townsville, Mackay) can grow moringa as a true perennial. Trees can reach 4m+ in a single season and produce leaves year-round. Brisbane and the Gold Coast
+ experience mild winters with minimal frost risk in most suburbs. Key tips:</p>
+ <ul>
+ <li>Plant direct in ground for fastest growth</li>
+ <li>Water deeply through dry season; drainage is critical in monsoon season</li>
+ <li>Prune aggressively: in QLD heat, moringa can outgrow your reach fast</li>
+ <li>Harvest pods (drumsticks) before they mature for the best eating</li>
+ </ul>
 
-  <h3>Northern Territory (Darwin, Alice Springs)</h3>
-  <p>Darwin is near-perfect moringa country. The tropical climate means year-round growth;
-  many Darwin gardeners treat moringa as a permanent food tree. Alice Springs is hotter and
-  drier — moringa handles the heat and drought well once established, but will need irrigation
-  during the dry season. Plant after the wet season for best establishment.</p>
+ <h3>Northern Territory (Darwin, Alice Springs)</h3>
+ <p>Darwin is near-perfect moringa country. The tropical climate means year-round growth;
+ many Darwin gardeners treat moringa as a permanent food tree. Alice Springs is hotter and
+ drier: moringa handles the heat and drought well once established, but will need irrigation
+ during the dry season. Plant after the wet season for best establishment.</p>
 
-  <h3>Western Australia (Perth, Broome, Geraldton)</h3>
-  <p>Perth's Mediterranean climate (warm, dry summers; mild winters) suits moringa well in
-  suburban gardens. Most Perth suburbs experience light frosts occasionally — pot growing is
-  safer for coastal hills and southern suburbs. Broome and the Kimberley (Kununurra) are
-  ideal tropical conditions. Key WA note: <strong>biosecurity restrictions mean some online
-  seed suppliers cannot ship to WA</strong>. Source seeds locally or through approved suppliers
-  who confirm WA compliance.</p>
+ <h3>Western Australia (Perth, Broome, Geraldton)</h3>
+ <p>Perth's Mediterranean climate (warm, dry summers; mild winters) suits moringa well in
+ suburban gardens. Most Perth suburbs experience light frosts occasionally: pot growing is
+ safer for coastal hills and southern suburbs. Broome and the Kimberley (Kununurra) are
+ ideal tropical conditions. Key WA note: <strong>biosecurity restrictions mean some online
+ seed suppliers cannot ship to WA</strong>. Source seeds locally or through approved suppliers
+ who confirm WA compliance.</p>
 
-  <h3>New South Wales (Sydney, Newcastle, Byron Bay)</h3>
-  <p>Coastal NSW from Byron Bay south to Sydney is excellent moringa territory. Sydney's
-  winters are mild enough for in-ground growing in most suburbs, especially northern Sydney.
-  Inland NSW (Wagga Wagga, Dubbo, Orange) can frost hard — pot growing recommended.
-  The Hunter Valley and Northern Rivers region of NSW are among the best moringa growing
-  areas in the country outside Queensland.</p>
+ <h3>New South Wales (Sydney, Newcastle, Byron Bay)</h3>
+ <p>Coastal NSW from Byron Bay south to Sydney is excellent moringa territory. Sydney's
+ winters are mild enough for in-ground growing in most suburbs, especially northern Sydney.
+ Inland NSW (Wagga Wagga, Dubbo, Orange) can frost hard: pot growing recommended.
+ The Hunter Valley and Northern Rivers region of NSW are among the best moringa growing
+ areas in the country outside Queensland.</p>
 
-  <h3>South Australia (Adelaide, Barossa, Clare Valley)</h3>
-  <p>Adelaide's climate is similar to Perth — warm summers, cool winters. Moringa can be
-  grown outdoors but will need frost protection from June–August, especially in hills suburbs.
-  Use large pots (50L+) and move to a sheltered north-facing position in winter.
-  The Barossa and Clare Valley wine regions can experience harder frosts — pot growing is
-  essential. Trees will go dormant (lose leaves) but bounce back in spring.</p>
+ <h3>South Australia (Adelaide, Barossa, Clare Valley)</h3>
+ <p>Adelaide's climate is similar to Perth: warm summers, cool winters. Moringa can be
+ grown outdoors but will need frost protection from June–August, especially in hills suburbs.
+ Use large pots (50L+) and move to a sheltered north-facing position in winter.
+ The Barossa and Clare Valley wine regions can experience harder frosts: pot growing is
+ essential. Trees will go dormant (lose leaves) but bounce back in spring.</p>
 
-  <h3>Tasmania (Hobart, Launceston, Devonport)</h3>
-  <p>Tasmania is the most challenging state for moringa. Winters are cold and frost is reliable.
-  Growing in pots in a heated greenhouse, sunroom, or indoors is the only reliable approach.
-  Some Tasmanian growers successfully overwinter moringa indoors near a north-facing window.
-  Note: many online plant suppliers cannot ship to Tasmania due to biosecurity rules.
-  Source locally through Gumtree or Facebook groups, or grow from seed in a heated propagator.</p>
+ <h3>Tasmania (Hobart, Launceston, Devonport)</h3>
+ <p>Tasmania is the most challenging state for moringa. Winters are cold and frost is reliable.
+ Growing in pots in a heated greenhouse, sunroom, or indoors is the only reliable approach.
+ Some Tasmanian growers successfully overwinter moringa indoors near a north-facing window.
+ Note: many online plant suppliers cannot ship to Tasmania due to biosecurity rules.
+ Source locally through Gumtree or Facebook groups, or grow from seed in a heated propagator.</p>
 
-  <h3>ACT (Canberra)</h3>
-  <p>Canberra experiences cold winters with reliable frost — one of the harder Australian
-  capitals for moringa. Treat it as a warm-season annual: start seeds indoors in August–September,
-  grow in a 60L+ pot on a sunny deck or courtyard, and bring inside before first frost (usually
-  April). You can get a good harvest before the growing season ends.</p>
+ <h3>ACT (Canberra)</h3>
+ <p>Canberra experiences cold winters with reliable frost: one of the harder Australian
+ capitals for moringa. Treat it as a warm-season annual: start seeds indoors in August–September,
+ grow in a 60L+ pot on a sunny deck or courtyard, and bring inside before first frost (usually
+ April). You can get a good harvest before the growing season ends.</p>
 </section>
 
  <div class="content">
@@ -1090,38 +963,38 @@
  </div>
 
 <section id="where-to-buy-seeds" style="background:#f8fdf6;border-left:4px solid #0f6b4d;padding:1.5rem 2rem;margin:2rem 0;border-radius:8px;">
-  <h2>🌱 Where to Buy Moringa Seeds &amp; Seedlings in Australia</h2>
-  <p>Before you can grow, you need to source. Here are the main options available to Australian gardeners in 2026:</p>
+ <h2>🌱 Where to Buy Moringa Seeds &amp; Seedlings in Australia</h2>
+ <p>Before you can grow, you need to source. Here are the main options available to Australian gardeners in 2026:</p>
 
-  <h3>Online Seed Suppliers (Ship Nationally)</h3>
-  <ul>
-    <li><strong>Happy Valley Seeds</strong> — Packets of 15, 75 or 300 seeds. Include a detailed germination guide by Australian climate zone. Note: some WA restrictions apply.</li>
-    <li><strong>Seeds N Beyond</strong> — Non-GMO moringa oleifera seeds, ships nationally. Seeds are fungicide-treated — do not consume.</li>
-    <li><strong>Herbalistics</strong> — Moringa oleifera seeds, online nursery.</li>
-    <li><strong>The Moringa Shop</strong> — PKM-1 and standard varieties plus germination kits with heat mat for cooler climates. Great if you want a moringa tree for sale as seed kits rather than bare seed only.</li>
-  </ul>
+ <h3>Online Seed Suppliers (Ship Nationally)</h3>
+ <ul>
+ <li><strong>Happy Valley Seeds</strong>. Packets of 15, 75 or 300 seeds. Include a detailed germination guide by Australian climate zone. Note: some WA restrictions apply.</li>
+ <li><strong>Seeds N Beyond</strong>. Non-GMO moringa oleifera seeds, ships nationally. Seeds are fungicide-treated: do not consume.</li>
+ <li><strong>Herbalistics</strong>. Moringa oleifera seeds, online nursery.</li>
+ <li><strong>The Moringa Shop</strong>. PKM-1 and standard varieties plus germination kits with heat mat for cooler climates. Great if you want a moringa tree for sale as seed kits rather than bare seed only.</li>
+ </ul>
 
-  <h3>Seedlings &amp; Potted Plants (Ready to Plant)</h3>
-  <ul>
-    <li><strong>Mudbrick Herb Cottage</strong> — Organically grown 50mm tube plants. Ships Mon/Tue via Express Post to QLD, NSW, VIC, SA and ACT only (not WA, NT, or TAS).</li>
-    <li><strong>Ladybird Nursery</strong> — 140mm pot plants. Fast, well-packaged delivery.</li>
-    <li><strong>Fruitopia Nursery</strong> — 30cm seedlings ready to plant out.</li>
-    <li><strong>Mother Earth Nursery</strong> — 140mm pots, available in spring.</li>
-    <li><strong>Gumtree / Facebook Marketplace</strong> — Local sellers often list moringa plants, cuttings, and seeds. Search your city + "moringa" for pickup options — often the cheapest route for moringa plant for sale Australia listings.</li>
-  </ul>
+ <h3>Seedlings &amp; Potted Plants (Ready to Plant)</h3>
+ <ul>
+ <li><strong>Mudbrick Herb Cottage</strong>. Organically grown 50mm tube plants. Ships Mon/Tue via Express Post to QLD, NSW, VIC, SA and ACT only (not WA, NT, or TAS).</li>
+ <li><strong>Ladybird Nursery</strong>: 140mm pot plants. Fast, well-packaged delivery.</li>
+ <li><strong>Fruitopia Nursery</strong>: 30cm seedlings ready to plant out.</li>
+ <li><strong>Mother Earth Nursery</strong>: 140mm pots, available in spring.</li>
+ <li><strong>Gumtree / Facebook Marketplace</strong>. Local sellers often list moringa plants, cuttings, and seeds. Search your city + "moringa" for pickup options: often the cheapest route for moringa plant for sale Australia listings.</li>
+ </ul>
 
-  <h3>Important: WA &amp; TAS Biosecurity</h3>
-  <p>Western Australia and Tasmania have biosecurity restrictions on certain plant materials. Some suppliers cannot ship seeds or seedlings to WA or TAS — always confirm with the seller before ordering. Check the <a href="https://www.agric.wa.gov.au/biosecurity-quarantine" target="_blank" rel="noopener noreferrer">WA Agriculture biosecurity page</a> for current rules.</p>
+ <h3>Important: WA &amp; TAS Biosecurity</h3>
+ <p>Western Australia and Tasmania have biosecurity restrictions on certain plant materials. Some suppliers cannot ship seeds or seedlings to WA or TAS: always confirm with the seller before ordering. Check the <a href="https://www.agric.wa.gov.au/biosecurity-quarantine" target="_blank" rel="noopener noreferrer">WA Agriculture biosecurity page</a> for current rules.</p>
 
-  <h3>Germination Requirements</h3>
-  <ul>
-    <li><strong>Optimal soil temperature:</strong> 25–30°C (will germinate from 20°C but slowly)</li>
-    <li><strong>Germination time:</strong> 7–21 days (faster when warmer)</li>
-    <li><strong>Tip for cooler climates:</strong> Use a heat mat set to 27°C until germination. Critical for Melbourne, Adelaide, and Hobart growers starting seeds in spring.</li>
-  </ul>
+ <h3>Germination Requirements</h3>
+ <ul>
+ <li><strong>Optimal soil temperature:</strong> 25–30°C (will germinate from 20°C but slowly)</li>
+ <li><strong>Germination time:</strong> 7–21 days (faster when warmer)</li>
+ <li><strong>Tip for cooler climates:</strong> Use a heat mat set to 27°C until germination. Critical for Melbourne, Adelaide, and Hobart growers starting seeds in spring.</li>
+ </ul>
 
-  <p><strong>💡 Can't source seeds quickly, or want guaranteed quality while you wait?</strong>
-  <a href="https://nutrithrive.com.au/products/moringa-powder/">NutriThrive's moringa powder</a> is lab-tested, Melbourne-packed, and ships same week — no 6-month wait.</p>
+ <p><strong>💡 Can't source seeds quickly, or want guaranteed quality while you wait?</strong>
+ <a href="https://nutrithrive.com.au/products/moringa-powder/">NutriThrive's moringa powder</a> is lab-tested, Melbourne-packed, and ships same week: no 6-month wait.</p>
 </section>
 
  <!-- Buy Now Button Section -->
@@ -1139,7 +1012,7 @@
  </div>
 
  <h2 id="why-grow">Why Grow a Moringa Tree in Australia?</h2>
- <p>The <strong>moringa tree</strong> (Moringa oleifera) is a nutritional powerhouse and perfect for Australian moringa growing. Native to tropical regions, it's well-suited to Australia's diverse climates. With leaves containing <strong>7x more vitamin C than oranges</strong>, <strong>3x more iron than spinach</strong>, and <strong>complete protein with all 9 essential amino acids</strong> — see our <a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia" style="color: #0066cc; font-weight: 600; text-decoration: underline;">moringa vs spirulina vs matcha comparison</a> — growing your own moringa means:</p>
+ <p>The <strong>moringa tree</strong> (Moringa oleifera) is a nutritional powerhouse and perfect for Australian moringa growing. Native to tropical regions, it's well-suited to Australia's diverse climates. With leaves containing <strong>7x more vitamin C than oranges</strong>, <strong>3x more iron than spinach</strong>, and <strong>complete protein with all 9 essential amino acids</strong>: see our <a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia" style="color: #0066cc; font-weight: 600; text-decoration: underline;">moringa vs spirulina vs matcha comparison</a>: growing your own moringa means:</p>
  <ul style="line-height:1.8;">
  <li><strong>Fresh superfood leaves</strong> for smoothies, salads, teas, and curries, with maximum nutrient density</li>
  <li><strong>Cost savings</strong> vs. store-bought powder over the long term</li>
@@ -1151,27 +1024,27 @@
  <p style="margin-top:1rem;padding:1rem;background:#e8f5e9;border-radius:8px;"><strong>🌿 Australian Success Story:</strong> Moringa cultivation is growing rapidly across Australia, from backyard gardens in Brisbane to pot-grown trees in Melbourne. Many successful growers combine fresh leaves with premium powder for year-round benefits.</p>
 
 <section id="drumstick-tree">
-  <h2>🥢 Drumstick Tree, Horseradish Tree, Ben Oil Tree — Same Plant</h2>
-  <p>Moringa oleifera goes by many names in Australia. If you've searched for any of these,
-  you've found the right page:</p>
-  <ul>
-    <li><strong>Drumstick tree</strong> — named for its long, slender seed pods that resemble drumsticks;
-    a staple ingredient in Indian and Sri Lankan curries (sambar, dal). Also searched as drumstick tree Australia.</li>
-    <li><strong>Horseradish tree</strong> — because the root has a similar sharp, pungent flavour
-    to horseradish (note: root use is not recommended for general eating). Often listed as horseradish tree Australia in older garden books.</li>
-    <li><strong>Ben oil tree</strong> or <strong>Benzolive tree</strong> — named for the high-quality
-    edible oil pressed from the seeds</li>
-    <li><strong>Miracle tree</strong> or <strong>Tree of Life</strong> — common marketing names
-    referencing its nutritional density</li>
-    <li><strong>Malunggay</strong> — the Filipino name; many Filipino-Australians grow this tree
-    as a food staple (search: malunggay Australia)</li>
-  </ul>
-  <p>In Australian garden centres and nurseries, you'll most often see it labelled as
-  <em>Moringa oleifera</em>, "Drumstick Tree," or simply "Moringa." All the same plant.</p>
+ <h2>🥢 Drumstick Tree, Horseradish Tree, Ben Oil Tree. Same Plant</h2>
+ <p>Moringa oleifera goes by many names in Australia. If you've searched for any of these,
+ you've found the right page:</p>
+ <ul>
+ <li><strong>Drumstick tree</strong>: named for its long, slender seed pods that resemble drumsticks;
+ a staple ingredient in Indian and Sri Lankan curries (sambar, dal). Also searched as drumstick tree Australia.</li>
+ <li><strong>Horseradish tree</strong>, because the root has a similar sharp, pungent flavour
+ to horseradish (note: root use is not recommended for general eating). Often listed as horseradish tree Australia in older garden books.</li>
+ <li><strong>Ben oil tree</strong> or <strong>Benzolive tree</strong>: named for the high-quality
+ edible oil pressed from the seeds</li>
+ <li><strong>Miracle tree</strong> or <strong>Tree of Life</strong>: common marketing names
+ referencing its nutritional density</li>
+ <li><strong>Malunggay</strong>: the Filipino name; many Filipino-Australians grow this tree
+ as a food staple (search: malunggay Australia)</li>
+ </ul>
+ <p>In Australian garden centres and nurseries, you'll most often see it labelled as
+ <em>Moringa oleifera</em>, "Drumstick Tree," or simply "Moringa." All the same plant.</p>
 </section>
 
  <section id="moringa-benefits" style="background:#f7f5f0;padding:1.5rem 1rem;margin:2rem 0;border-radius:12px;box-shadow:0 2px 12px 0 rgba(23,92,54,0.07);">
- <h2>🌿 Moringa Tree Benefits: Why This "Miracle Tree" is Worth Growing</h2>
+ <h2>Moringa tree benefits: why it is worth growing</h2>
  
  <h3>💪 Nutritional Powerhouse</h3>
  <ul>
@@ -1199,7 +1072,7 @@
 
  <h3>🏥 Health Benefits</h3>
  <ul>
- <li><strong>Immune support:</strong> High vitamin C and antioxidants — and for women-specific iron, hormones and skin context, see our <a href="/blog/moringa-benefits-for-women-comprehensive-2026" style="color: #0066cc; font-weight: 600; text-decoration: underline;">moringa benefits for women guide</a></li>
+ <li><strong>Immune support:</strong> High vitamin C and antioxidants, and for women-specific iron, hormones and skin context, see our <a href="/blog/moringa-benefits-for-women-comprehensive-2026" style="color: #0066cc; font-weight: 600; text-decoration: underline;">moringa benefits for women guide</a></li>
  <li><strong>Energy boost:</strong> Natural source of iron and B vitamins</li>
  <li><strong>Anti-inflammatory:</strong> Contains natural anti-inflammatory compounds</li>
  <li><strong>Blood sugar support:</strong> May help regulate glucose levels</li>
@@ -1295,44 +1168,43 @@
  </section>
 
 <section id="fertilising-moringa-australia">
-  <h2>🌿 Fertilising Moringa Trees in Australia</h2>
-  <p>Moringa is drought-tolerant and can survive in poor soil — but if you want maximum
-  leaf production, fertilising correctly makes a real difference.</p>
+ <h2>🌿 Fertilising Moringa Trees in Australia</h2>
+ <p>Moringa is drought-tolerant and can survive in poor soil, but if you want maximum
+ leaf production, fertilising correctly makes a real difference.</p>
 
-  <h3>Basic Rule: Less Is More at First</h3>
-  <p>Young moringa (under 12 months) does NOT need heavy feeding. Overfeeding nitrogen
-  in the first year causes tall, lanky growth that snaps in wind.
-  Focus on soil structure and drainage first.</p>
+ <h3>Basic Rule: Less Is More at First</h3>
+ <p>Young moringa (under 12 months) does NOT need heavy feeding. Overfeeding nitrogen
+ in the first year causes tall, lanky growth that snaps in wind.
+ Focus on soil structure and drainage first.</p>
 
-  <h3>What to Use</h3>
-  <ul>
-    <li><strong>Compost:</strong> The safest and best option for all stages. Add a generous
-    layer of compost around the base (not touching the stem) in spring. Available from
-    any Bunnings or garden centre.</li>
-    <li><strong>Controlled-release fertiliser (e.g. Osmocote):</strong> Apply once in late
-    winter and once in late summer for established trees. Follow label rates.</li>
-    <li><strong>Liquid fertiliser:</strong> From spring through late summer, a fortnightly
-    application of liquid seaweed or fish emulsion boosts leaf production without burning roots.</li>
-    <li><strong>Avoid:</strong> Heavy nitrogen-only fertilisers (e.g. urea, ammonium sulfate) —
-    these produce leafy growth that is soft and pest-prone.</li>
-  </ul>
+ <h3>What to Use</h3>
+ <ul>
+ <li><strong>Compost:</strong> The safest and best option for all stages. Add a generous
+ layer of compost around the base (not touching the stem) in spring. Available from
+ any Bunnings or garden centre.</li>
+ <li><strong>Controlled-release fertiliser (e.g. Osmocote):</strong> Apply once in late
+ winter and once in late summer for established trees. Follow label rates.</li>
+ <li><strong>Liquid fertiliser:</strong> From spring through late summer, a fortnightly
+ application of liquid seaweed or fish emulsion boosts leaf production without burning roots.</li>
+ <li><strong>Avoid:</strong> Heavy nitrogen-only fertilisers (e.g. urea, ammonium sulfate), these produce leafy growth that is soft and pest-prone.</li>
+ </ul>
 
-  <h3>Fertilising Schedule by Season</h3>
-  <table class="custom-table">
-    <thead>
-      <tr><th>Season</th><th>Action</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Spring (Sep–Nov)</td><td>Apply compost + controlled-release fertiliser when new shoots appear</td></tr>
-      <tr><td>Summer (Dec–Feb)</td><td>Liquid seaweed fortnightly; deep water once per week</td></tr>
-      <tr><td>Autumn (Mar–May)</td><td>Reduce feeding as growth slows; compost mulch around base</td></tr>
-      <tr><td>Winter (Jun–Aug)</td><td>No fertiliser; minimal water; let tree rest</td></tr>
-    </tbody>
-  </table>
+ <h3>Fertilising Schedule by Season</h3>
+ <table class="custom-table">
+ <thead>
+ <tr><th>Season</th><th>Action</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>Spring (Sep–Nov)</td><td>Apply compost + controlled-release fertiliser when new shoots appear</td></tr>
+ <tr><td>Summer (Dec–Feb)</td><td>Liquid seaweed fortnightly; deep water once per week</td></tr>
+ <tr><td>Autumn (Mar–May)</td><td>Reduce feeding as growth slows; compost mulch around base</td></tr>
+ <tr><td>Winter (Jun–Aug)</td><td>No fertiliser; minimal water; let tree rest</td></tr>
+ </tbody>
+ </table>
 
-  <p><em>Tip: Pot-grown moringa needs more frequent feeding than in-ground trees,
-  as nutrients leach out with each watering. Use a slow-release pellet every 6 months
-  as a base, topped up with liquid feeds in summer. This is the practical answer to searches for moringa fertilizer Australia.</em></p>
+ <p><em>Tip: Pot-grown moringa needs more frequent feeding than in-ground trees,
+ as nutrients leach out with each watering. Use a slow-release pellet every 6 months
+ as a base, topped up with liquid feeds in summer. This is the practical answer to searches for moringa fertilizer Australia.</em></p>
 </section>
 
  <section style="background:transparent;padding:1.5rem 0;margin:2rem 0;border-bottom:2px solid #e0e0e0;">
@@ -1364,35 +1236,34 @@
  </section>
 
 <section id="companion-planting">
-  <h2>🌻 Moringa Companion Planting in Australian Gardens</h2>
-  <p>Moringa's deep taproot, nitrogen-fixing properties, and natural insect-repelling compounds
-  make it a useful companion in food gardens and permaculture systems. Looking for moringa companion plants? Start here.</p>
+ <h2>🌻 Moringa Companion Planting in Australian Gardens</h2>
+ <p>Moringa's deep taproot, nitrogen-fixing properties, and natural insect-repelling compounds
+ make it a useful companion in food gardens and permaculture systems. Looking for moringa companion plants? Start here.</p>
 
-  <h3>Good Companions for Moringa</h3>
-  <ul>
-    <li><strong>Turmeric &amp; ginger</strong> — Thrive in the dappled shade moringa provides;
-    they share similar water needs and soil preferences.</li>
-    <li><strong>Curry leaf tree</strong> — Another tropical food tree that benefits from
-    similar conditions; can be planted 2–3m from moringa.
-    (<a href="https://nutrithrive.com.au/products/curry-leaves/">NutriThrive also sells dried curry leaves</a> if you can't grow them yet.)</li>
-    <li><strong>Sweet potato</strong> — Ground cover beneath moringa; benefits from the
-    nitrogen-rich leaf drop.</li>
-    <li><strong>Lemongrass</strong> — Forms a protective windbreak ring around moringa
-    and shares drought tolerance.</li>
-    <li><strong>Banana</strong> — In tropical/subtropical zones, banana and moringa planted
-    together create a productive food guild.</li>
-  </ul>
+ <h3>Good Companions for Moringa</h3>
+ <ul>
+ <li><strong>Turmeric &amp; ginger</strong>. Thrive in the dappled shade moringa provides;
+ they share similar water needs and soil preferences.</li>
+ <li><strong>Curry leaf tree</strong>. Another tropical food tree that benefits from
+ similar conditions; can be planted 2–3m from moringa.
+ (<a href="https://nutrithrive.com.au/products/curry-leaves/">NutriThrive also sells dried curry leaves</a> if you can't grow them yet.)</li>
+ <li><strong>Sweet potato</strong>. Ground cover beneath moringa; benefits from the
+ nitrogen-rich leaf drop.</li>
+ <li><strong>Lemongrass</strong>. Forms a protective windbreak ring around moringa
+ and shares drought tolerance.</li>
+ <li><strong>Banana</strong>. In tropical/subtropical zones, banana and moringa planted
+ together create a productive food guild.</li>
+ </ul>
 
-  <h3>Avoid Planting Moringa Near</h3>
-  <ul>
-    <li>Heavy feeders like corn or pumpkin (compete for nutrients in poor soil)</li>
-    <li>Shallow-rooted plants directly under the canopy (moringa root systems are competitive)</li>
-    <li>Moisture-loving plants in the same pot (moringa needs to dry out between waterings)</li>
-  </ul>
+ <h3>Avoid Planting Moringa Near</h3>
+ <ul>
+ <li>Heavy feeders like corn or pumpkin (compete for nutrients in poor soil)</li>
+ <li>Shallow-rooted plants directly under the canopy (moringa root systems are competitive)</li>
+ <li>Moisture-loving plants in the same pot (moringa needs to dry out between waterings)</li>
+ </ul>
 
-  <p>In permaculture systems, moringa is often used as a "chop and drop" mulch tree —
-  trimming branches and leaving them on the soil surface as a nutrient-rich mulch.
-  The leaves decompose quickly and return nitrogen to the soil.</p>
+ <p>In permaculture systems, moringa is often used as a "chop and drop" mulch tree, trimming branches and leaving them on the soil surface as a nutrient-rich mulch.
+ The leaves decompose quickly and return nitrogen to the soil.</p>
 </section>
 
  <h2 id="troubleshooting">Troubleshooting Common Moringa Growing Issues</h2>
@@ -1539,7 +1410,7 @@
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">When can I harvest moringa leaves?</div>
- <div class="custom-faq-answer">First harvest is typically 6-8 months after planting. Pick young, tender leaves (top 30cm) for highest nutrient density. Harvest regularly to encourage new growth—moringa responds well to frequent harvesting. You can harvest leaves year-round in warm climates, or seasonally in cooler areas. For consistent supply, consider supplementing with <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #0066cc; font-weight: 600; text-decoration: underline;">premium moringa powder</a> during off-seasons.</div>
+ <div class="custom-faq-answer">First harvest is typically 6-8 months after planting. Pick young, tender leaves (top 30cm) for highest nutrient density. Harvest regularly to encourage new growth: moringa responds well to frequent harvesting. You can harvest leaves year-round in warm climates, or seasonally in cooler areas. For consistent supply, consider supplementing with <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #0066cc; font-weight: 600; text-decoration: underline;">premium moringa powder</a> during off-seasons.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">Can moringa grow in Sydney's climate?</div>
@@ -1563,7 +1434,7 @@
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">What's the difference between growing moringa vs buying powder?</div>
- <div class="custom-faq-answer">Growing moringa is rewarding but takes 6-8 months for first harvest, requires ongoing care, and may have seasonal gaps. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #0066cc; font-weight: 600; text-decoration: underline;">Buying lab-tested moringa powder</a> ensures year-round supply, consistent quality, purity guarantee (no pesticides/heavy metals), and convenience. Many successful growers use both—grow fresh leaves when available and supplement with premium powder for consistency.</div>
+ <div class="custom-faq-answer">Growing moringa is rewarding but takes 6-8 months for first harvest, requires ongoing care, and may have seasonal gaps. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #0066cc; font-weight: 600; text-decoration: underline;">Buying lab-tested moringa powder</a> ensures year-round supply, consistent quality, purity guarantee (no pesticides/heavy metals), and convenience. Many successful growers use both: grow fresh leaves when available and supplement with premium powder for consistency.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">How do I make moringa powder from fresh leaves?</div>
@@ -1576,15 +1447,15 @@
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">Can I grow moringa in Perth, WA?</div>
- <div class="custom-faq-answer">Yes — grow moringa Perth gardens handle Mediterranean summers well. Occasional light frosts mean pot culture is safer in hills and cooler southern suburbs. Broome and the Kimberley are ideal. Confirm your seed supplier can ship to WA. See the <a href="#state-guide" style="color: #0066cc; font-weight: 600; text-decoration: underline;">state-by-state guide</a>.</div>
+ <div class="custom-faq-answer">Yes. Grow moringa Perth gardens handle Mediterranean summers well. Occasional light frosts mean pot culture is safer in hills and cooler southern suburbs. Broome and the Kimberley are ideal. Confirm your seed supplier can ship to WA. See the <a href="#state-guide" style="color: #0066cc; font-weight: 600; text-decoration: underline;">state-by-state guide</a>.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">Can I grow moringa in Darwin?</div>
- <div class="custom-faq-answer">Yes. Grow moringa Darwin conditions are near-perfect — tropical heat and humidity support year-round leaf growth as a permanent food tree. Alice Springs works too with dry-season irrigation.</div>
+ <div class="custom-faq-answer">Yes. Grow moringa Darwin conditions are near-perfect: tropical heat and humidity support year-round leaf growth as a permanent food tree. Alice Springs works too with dry-season irrigation.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">What is the difference between moringa and the drumstick tree?</div>
- <div class="custom-faq-answer">None — drumstick tree Australia searches and moringa searches are the same plant (Moringa oleifera). Other names include horseradish tree, ben oil tree, and malunggay. See <a href="#drumstick-tree" style="color: #0066cc; font-weight: 600; text-decoration: underline;">Drumstick Tree names</a>.</div>
+ <div class="custom-faq-answer">None: drumstick tree Australia searches and moringa searches are the same plant (Moringa oleifera). Other names include horseradish tree, ben oil tree, and malunggay. See <a href="#drumstick-tree" style="color: #0066cc; font-weight: 600; text-decoration: underline;">Drumstick Tree names</a>.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">How long does a moringa tree live in Australia?</div>
@@ -1596,7 +1467,7 @@
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">Is it legal to grow moringa at home in Australia?</div>
- <div class="custom-faq-answer">Yes — growing Moringa oleifera in your garden or pots is legal in all Australian states for personal use. Home growing is not the same as commercial food-sale or advertising rules. For current commercial/legal context, read our <a href="/blog/is-moringa-banned-australia-truth-2026" style="color: #0066cc; font-weight: 600; text-decoration: underline;">is moringa banned in Australia?</a> guide and check <a href="https://www.foodstandards.gov.au" target="_blank" rel="noopener noreferrer">foodstandards.gov.au</a>.</div>
+ <div class="custom-faq-answer">Yes. Growing Moringa oleifera in your garden or pots is legal in all Australian states for personal use. Home growing is not the same as commercial food-sale or advertising rules. For current commercial/legal context, read our <a href="/blog/is-moringa-banned-australia-truth-2026" style="color: #0066cc; font-weight: 600; text-decoration: underline;">is moringa banned in Australia?</a> guide and check <a href="https://www.foodstandards.gov.au" target="_blank" rel="noopener noreferrer">foodstandards.gov.au</a>.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">Can moringa grow in Canberra?</div>
@@ -1607,8 +1478,8 @@
  <div class="custom-faq-answer">PKM-1 moringa is a cultivated Moringa oleifera variety popular for home gardens and pots because it stays more compact than standard types. Several Australian seed sellers list PKM-1 alongside standard moringa oleifera seeds.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
- <div class="custom-faq-question">Can I grow moringa from a cutting vs seed — which is faster?</div>
- <div class="custom-faq-answer">Moringa cutting vs seed: cuttings usually win on speed — roots in about 2–3 weeks — while seeds take 7–21 days to germinate plus time to reach transplant size. Seeds are often easier to buy nationally; cuttings preserve a known variety.</div>
+ <div class="custom-faq-question">Can I grow moringa from a cutting vs seed, which is faster?</div>
+ <div class="custom-faq-answer">Moringa cutting vs seed: cuttings usually win on speed: roots in about 2–3 weeks, while seeds take 7–21 days to germinate plus time to reach transplant size. Seeds are often easier to buy nationally; cuttings preserve a known variety.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">What size pot is best for growing moringa in Melbourne?</div>
@@ -1616,7 +1487,7 @@
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">Can moringa grow in a small backyard?</div>
- <div class="custom-faq-answer">Yes — moringa small garden setups work well in large pots with regular pruning, or with PKM-1/dwarf types. Keep height in check by tip-pruning and harvesting the top 30cm often.</div>
+ <div class="custom-faq-answer">Yes. Moringa small garden setups work well in large pots with regular pruning, or with PKM-1/dwarf types. Keep height in check by tip-pruning and harvesting the top 30cm often.</div>
  </div>
  <div class="custom-faq-item" onclick="this.classList.toggle('active')">
  <div class="custom-faq-question">What is the best time of day to take moringa?</div>
@@ -1653,7 +1524,7 @@
  <span class="faq-icon" style="font-size:1.5rem;font-weight:bold;">+</span>
  </button>
  <div class="faq-answer" style="padding:1.5rem;background:white;display:none;line-height:1.7;color:#555;">
- <p>If you only take moringa when you remember, you will still absorb something — but the glowing emails we see usually come from boring consistency: same yoghurt bowl, same post-gym shake. Melbourne summers can sap appetite; a mild greens powder can fill the gap without caffeine. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">See NutriThrive&rsquo;s powder</a> for batch-dated, lab-tested leaf.</p>
+ <p>If you only take moringa when you remember, you will still absorb something, but the glowing emails we see usually come from boring consistency: same yoghurt bowl, same post-gym shake. Melbourne summers can sap appetite; a mild greens powder can fill the gap without caffeine. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">See NutriThrive&rsquo;s powder</a> for batch-dated, lab-tested leaf.</p>
  </div>
  </div>
  <div class="faq-item" style="margin-bottom:1.5rem;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;background:white;">
@@ -1698,7 +1569,7 @@
  <span class="faq-icon" style="font-size:1.5rem;font-weight:bold;">+</span>
  </button>
  <div class="faq-answer" style="padding:1.5rem;background:white;display:none;line-height:1.7;color:#555;">
- <p>Australian clients often like moringa while trimming ultra-processed snacks — the bitterness cues richness, the minerals backfill holes left by aggressive dieting. None of that replaces a calorie deficit you can sustain. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive&rsquo;s shade-dried option</a> mixes into savoury dishes so compliance is easier.</p>
+ <p>Australian clients often like moringa while trimming ultra-processed snacks: the bitterness cues richness, the minerals backfill holes left by aggressive dieting. None of that replaces a calorie deficit you can sustain. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive&rsquo;s shade-dried option</a> mixes into savoury dishes so compliance is easier.</p>
  </div>
  </div>
  <div class="faq-item" style="margin-bottom:1.5rem;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;background:white;">
@@ -1716,7 +1587,7 @@
  <span class="faq-icon" style="font-size:1.5rem;font-weight:bold;">+</span>
  </button>
  <div class="faq-answer" style="padding:1.5rem;background:white;display:none;line-height:1.7;color:#555;">
- <p>Rotate, do not cult-follow one ingredient forever — diversity still wins. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Anchor weeks with NutriThrive moringa</a>, sprinkle spirulina when oceans feel trustworthy.</p>
+ <p>Rotate, do not cult-follow one ingredient forever: diversity still wins. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">Anchor weeks with NutriThrive moringa</a>, sprinkle spirulina when oceans feel trustworthy.</p>
  </div>
  </div>
  <div class="faq-item" style="margin-bottom:1.5rem;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;background:white;">
@@ -1743,7 +1614,7 @@
  <span class="faq-icon" style="font-size:1.5rem;font-weight:bold;">+</span>
  </button>
  <div class="faq-answer" style="padding:1.5rem;background:white;display:none;line-height:1.7;color:#555;">
- <p>Apples and oranges: one feeds chemistry, one modulates perception of stress — oversimplified but directionally fair. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive</a> keeps moringa single-ingredient so stacking stays legible.</p>
+ <p>Apples and oranges: one feeds chemistry, one modulates perception of stress: oversimplified but directionally fair. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive</a> keeps moringa single-ingredient so stacking stays legible.</p>
  </div>
  </div>
  <div class="faq-item" style="margin-bottom:1.5rem;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;background:white;">
@@ -1752,7 +1623,7 @@
  <span class="faq-icon" style="font-size:1.5rem;font-weight:bold;">+</span>
  </button>
  <div class="faq-answer" style="padding:1.5rem;background:white;display:none;line-height:1.7;color:#555;">
- <p>Cost-per-nutrient usually favours bulk powder over encapsulated equivalents unless you value stealth above all else. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive</a> keeps packaging honest so you are not paying for fairy dust fillers.</p>
+ <p>Cost-per-nutrient usually favours bulk powder over capsules unless you prefer capsules for convenience. <a href="https://nutrithrive.com.au/products/moringa-powder/" style="color: #2d5a3d; font-weight: 600;">NutriThrive</a> packs leaf-only powder with no fillers.</p>
  </div>
  </div>
  <div class="faq-item" style="margin-bottom:1.5rem;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;background:white;">
@@ -1778,25 +1649,25 @@
 
 
 <section id="free-calendar" style="background:linear-gradient(135deg,#0f6b4d,#2d9e72);color:white;padding:2.5rem;border-radius:12px;text-align:center;margin:2rem 0;">
-  <h2 style="color:white;">📅 Free: 2026 Moringa Growing Calendar (Printable PDF)</h2>
-  <p>Month-by-month tasks for every Australian state — Melbourne, Sydney, Brisbane, Perth &amp; Darwin. Perfect if you searched for a moringa growing calendar.</p>
-  <p>Enter your email and we'll send it straight to your inbox.</p>
-  <form action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;">
-    <input type="hidden" name="_subject" value="Moringa Growing Calendar Lead Magnet">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="lead_magnet" value="2026 Moringa Growing Calendar">
-    <input type="email" name="email" placeholder="your@email.com" required
-      style="padding:0.75rem 1rem;border:none;border-radius:6px;font-size:1rem;min-width:260px;" />
-    <button type="submit"
-      style="background:#f59e0b;color:#1a1a1a;font-weight:700;padding:0.75rem 1.5rem;border:none;border-radius:6px;cursor:pointer;font-size:1rem;">
-      Send Me the Calendar →
-    </button>
-  </form>
-  <p style="font-size:0.85rem;margin-top:0.75rem;opacity:0.85;">
-    No spam. Unsubscribe anytime.
-    Includes bonus: our 3+1 moringa powder deal while your tree grows 🌿
-  </p>
+ <h2 style="color:white;">📅 Free: 2026 Moringa Growing Calendar (Printable PDF)</h2>
+ <p>Month-by-month tasks for every Australian state. Melbourne, Sydney, Brisbane, Perth &amp; Darwin. Perfect if you searched for a moringa growing calendar.</p>
+ <p>Enter your email and we'll send it straight to your inbox.</p>
+ <form action="https://formsubmit.co/nutrithrive0@gmail.com" method="POST" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;">
+ <input type="hidden" name="_subject" value="Moringa Growing Calendar Lead Magnet">
+ <input type="hidden" name="_template" value="table">
+ <input type="hidden" name="_captcha" value="false">
+ <input type="hidden" name="lead_magnet" value="2026 Moringa Growing Calendar">
+ <input type="email" name="email" placeholder="your@email.com" required
+ style="padding:0.75rem 1rem;border:none;border-radius:6px;font-size:1rem;min-width:260px;" />
+ <button type="submit"
+ style="background:#f59e0b;color:#1a1a1a;font-weight:700;padding:0.75rem 1.5rem;border:none;border-radius:6px;cursor:pointer;font-size:1rem;">
+ Send Me the Calendar →
+ </button>
+ </form>
+ <p style="font-size:0.85rem;margin-top:0.75rem;opacity:0.85;">
+ No spam. Unsubscribe anytime.
+ Includes bonus: our 3+1 moringa powder deal while your tree grows 🌿
+ </p>
 </section>
 
 <!-- Newsletter Subscription Section -->
@@ -1892,38 +1763,38 @@
  </div>
 
  <script>
-        // FAQ toggle functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                answer.classList.toggle('active');
-                // Close other FAQs
-                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
-                    if (otherAnswer !== answer && otherAnswer.classList.contains('active')) {
-                        otherAnswer.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
- <script src="../scripts/global/cart.min.js"></script>
- <script src="../scripts/global/cart-header.min.js"></script>
- <script src="../scripts/global/script.min.js" defer></script>
+ // FAQ toggle functionality
+ document.querySelectorAll('.faq-question').forEach(question => {
+ question.addEventListener('click', () => {
+ const answer = question.nextElementSibling;
+ answer.classList.toggle('active');
+ // Close other FAQs
+ document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+ if (otherAnswer !== answer && otherAnswer.classList.contains('active')) {
+ otherAnswer.classList.remove('active');
+ }
+ });
+ });
+ });
+ </script>
+ <script src=". /scripts/global/cart.min.js"></script>
+ <script src=". /scripts/global/cart-header.min.js"></script>
+ <script src=". /scripts/global/script.min.js" defer></script>
  <script>
-        if (window.DeferLoader) {
-            window.DeferLoader.deferUntilIdle(function() {
-                var s = document.createElement('script');
-                s.src = '../scripts/global/newsletter.min.js';
-                s.defer = true;
-                document.body.appendChild(s);
-            }, { timeout: 1500 });
-        } else {
-            var s = document.createElement('script');
-            s.src = '../scripts/global/newsletter.min.js';
-            s.defer = true;
-            document.body.appendChild(s);
-        }
-    </script>
+ if (window.DeferLoader) {
+ window.DeferLoader.deferUntilIdle(function() {
+ var s = document.createElement('script');
+ s.src = '. /scripts/global/newsletter.min.js';
+ s.defer = true;
+ document.body.appendChild(s);
+ }, { timeout: 1500 });
+ } else {
+ var s = document.createElement('script');
+ s.src = '. /scripts/global/newsletter.min.js';
+ s.defer = true;
+ document.body.appendChild(s);
+ }
+ </script>
 
 <!-- Email Signup Popup -->
 <div id="emailSignupPopup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; justify-content: center; align-items: center; animation: fadeIn 0.3s ease;">
@@ -1948,188 +1819,185 @@
 
 <style>
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+ from { opacity: 0; }
+ to { opacity: 1; }
 }
 @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+ from { transform: translateY(20px); opacity: 0; }
+ to { transform: translateY(0); opacity: 1; }
 }
 #emailSignupPopup {
-    display: none;
+ display: none;
 }
 #emailSignupPopup.show {
-    display: flex !important;
+ display: flex !important;
 }
 </style>
 
 <script>
 (function() {
-    // Check if popup was closed in this session
-    function wasPopupClosed() {
-        return sessionStorage.getItem('emailPopupClosed') === 'true';
-    }
-    
-    // Mark popup as closed
-    function markPopupClosed() {
-        sessionStorage.setItem('emailPopupClosed', 'true');
-    }
-    
-    // Show popup after delay
-    function showPopup() {
-        if (!wasPopupClosed()) {
-            setTimeout(function() {
-                var popup = document.getElementById('emailSignupPopup');
-                if (popup) {
-                    popup.style.display = 'flex';
-                    popup.classList.add('show');
-                }
-            }, 90000); // Show after 90 seconds (reduced interruption)
-        }
-    }
-    
-    // Close popup
-    window.closeEmailPopup = function() {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup) {
-            popup.style.display = 'none';
-            popup.classList.remove('show');
-            markPopupClosed();
-        }
-    };
-    
-    // Handle form submission
-    function handleFormSubmit(e) {
-        e.preventDefault();
-        var form = e.target;
-        var submitBtn = document.getElementById('submitBtn');
-        var messageDiv = document.getElementById('popupMessage');
-        var formData = new FormData(form);
-        
-        // Add formsubmit endpoint
-        
-        
-        // Disable submit button
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Subscribing...';
-        messageDiv.innerHTML = '';
-        
-        // Submit via AJAX
-        fetch('https://formsubmit.co/ajax/nutrithrive0@gmail.com', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                messageDiv.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Thank you for subscribing!</span>';
-                form.reset();
-                // Close popup after 2 seconds
-                setTimeout(function() {
-                    closeEmailPopup();
-                }, 2000);
-            } else {
-                messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Subscribe';
-            }
-        })
-        .catch(error => {
-            messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Subscribe';
-        });
-    }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            showPopup();
-            var form = document.getElementById('emailSignupForm');
-            if (form) {
-                form.addEventListener('submit', handleFormSubmit);
-            }
-        });
-    } else {
-        showPopup();
-        var form = document.getElementById('emailSignupForm');
-        if (form) {
-            form.addEventListener('submit', handleFormSubmit);
-        }
-    }
-    
-    // Close on background click
-    document.addEventListener('click', function(e) {
-        var popup = document.getElementById('emailSignupPopup');
-        if (popup && e.target === popup) {
-            closeEmailPopup();
-        }
-    });
+ // Check if popup was closed in this session
+ function wasPopupClosed() {
+ return sessionStorage.getItem('emailPopupClosed') === 'true';
+ }
+ 
+ // Mark popup as closed
+ function markPopupClosed() {
+ sessionStorage.setItem('emailPopupClosed', 'true');
+ }
+ 
+ // Show popup after delay
+ function showPopup() {
+ if (!wasPopupClosed()) {
+ setTimeout(function() {
+ var popup = document.getElementById('emailSignupPopup');
+ if (popup) {
+ popup.style.display = 'flex';
+ popup.classList.add('show');
+ }
+ }, 90000); // Show after 90 seconds (reduced interruption)
+ }
+ }
+ 
+ // Close popup
+ window.closeEmailPopup = function() {
+ var popup = document.getElementById('emailSignupPopup');
+ if (popup) {
+ popup.style.display = 'none';
+ popup.classList.remove('show');
+ markPopupClosed();
+ }
+ };
+ 
+ // Handle form submission
+ function handleFormSubmit(e) {
+ e.preventDefault();
+ var form = e.target;
+ var submitBtn = document.getElementById('submitBtn');
+ var messageDiv = document.getElementById('popupMessage');
+ var formData = new FormData(form);
+ 
+ // Add formsubmit endpoint
+ 
+ 
+ // Disable submit button
+ submitBtn.disabled = true;
+ submitBtn.textContent = 'Subscribing. .';
+ messageDiv.innerHTML = '';
+ 
+ // Submit via AJAX
+ fetch('https://formsubmit.co/ajax/nutrithrive0@gmail.com', {
+ method: 'POST',
+ body: formData,
+ headers: {
+ 'Accept': 'application/json'
+ }
+ }).then(response => response.json()).then(data => {
+ if (data.success) {
+ messageDiv.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Thank you for subscribing!</span>';
+ form.reset();
+ // Close popup after 2 seconds
+ setTimeout(function() {
+ closeEmailPopup();
+ }, 2000);
+ } else {
+ messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
+ submitBtn.disabled = false;
+ submitBtn.textContent = 'Subscribe';
+ }
+ }).catch(error => {
+ messageDiv.innerHTML = '<span style="color: #dc2626;">Something went wrong. Please try again.</span>';
+ submitBtn.disabled = false;
+ submitBtn.textContent = 'Subscribe';
+ });
+ }
+ 
+ // Initialize when DOM is ready
+ if (document.readyState === 'loading') {
+ document.addEventListener('DOMContentLoaded', function() {
+ showPopup();
+ var form = document.getElementById('emailSignupForm');
+ if (form) {
+ form.addEventListener('submit', handleFormSubmit);
+ }
+ });
+ } else {
+ showPopup();
+ var form = document.getElementById('emailSignupForm');
+ if (form) {
+ form.addEventListener('submit', handleFormSubmit);
+ }
+ }
+ 
+ // Close on background click
+ document.addEventListener('click', function(e) {
+ var popup = document.getElementById('emailSignupPopup');
+ if (popup && e.target === popup) {
+ closeEmailPopup();
+ }
+ });
 })();
 </script>
 
 <div class="nt-author-bio" data-nt-author-bio>
-  <div class="nt-author-bio-inner">
-    <img
-      class="nt-author-bio-avatar"
-      src="/assets/images/logo/LOGO-80.jpg"
-      alt="Neer, NutriThrive founder"
-      width="80"
-      height="80"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="nt-author-bio-body">
-      <h2 class="nt-author-bio-name">Written by Neer</h2>
-      <p class="nt-author-bio-text">
-        Founder of NutriThrive, based in Truganina (Melbourne west). I've been sourcing and checking moringa batches since we started in 2020 and opened to customers in 2024, mostly because I couldn't find leaf powder in Australia that stayed fresh once opened.
-      </p>
-      <p class="nt-author-bio-text">
-        <strong>Not a health professional.</strong> What I write comes from our warehouse handling, published lab summaries, and customer questions, not clinical advice. If you're pregnant, on medication, or managing a diagnosed condition, check with your GP first.
-      </p>
-      <p class="nt-author-bio-meta"><strong>Last updated:</strong> <time datetime="2026-07-16">16 July 2026</time></p>
-    </div>
-  </div>
+ <div class="nt-author-bio-inner">
+ <img
+ class="nt-author-bio-avatar"
+ src="/assets/images/logo/LOGO-80.jpg"
+ alt="Neer, NutriThrive founder"
+ width="80"
+ height="80"
+ loading="lazy"
+ decoding="async"
+ />
+ <div class="nt-author-bio-body">
+ <h2 class="nt-author-bio-name">Written by Neer</h2>
+ <p class="nt-author-bio-text">
+ Founder of NutriThrive, based in Truganina (Melbourne west). I've been sourcing and checking moringa batches since we started in 2020 and opened to customers in 2024, mostly because I couldn't find leaf powder in Australia that stayed fresh once opened.
+ </p>
+ <p class="nt-author-bio-text">
+ <strong>Not a health professional.</strong> What I write comes from our warehouse handling, published lab summaries, and customer questions, not clinical advice. If you're pregnant, on medication, or managing a diagnosed condition, check with your GP first.
+ </p>
+ <p class="nt-author-bio-meta"><strong>Last updated:</strong> <time datetime="2026-07-16">16 July 2026</time></p>
+ </div>
+ </div>
 </div>
 
  <!-- Related Articles Section -->
  <section class="nt-related-links-block" style="max-width: 900px; margin: 3rem 0; padding: 1rem 1.25rem; border: 1px solid #e6efe9; border-radius: 12px; background: #f9fcfa;">
  <h2 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #0f6b4d;">Related guides</h2>
  <ul style="margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem;">
-  <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to Choose Moringa Powder in Australia (2026)</a></li>
-  <li><a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Moringa Chemist Warehouse vs NutriThrive — Honest Comparison</a></li>
-  <li><a href="/blog/how-to-add-moringa-to-diet">How to Add Moringa Powder to Your Diet</a></li>
-  <li><a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia">Moringa vs Spirulina vs Matcha — Side-by-Side</a></li>
-  <li><a href="/blog/moringa-benefits-for-women-comprehensive-2026">Moringa Benefits for Women: Iron, Hormones &amp; Skin</a></li>
+ <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to Choose Moringa Powder in Australia (2026)</a></li>
+ <li><a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Moringa Chemist Warehouse vs NutriThrive. Comparison</a></li>
+ <li><a href="/blog/how-to-add-moringa-to-diet">How to Add Moringa Powder to Your Diet</a></li>
+ <li><a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia">Moringa vs Spirulina vs Matcha. Side-by-Side</a></li>
+ <li><a href="/blog/moringa-benefits-for-women-comprehensive-2026">Moringa Benefits for Women: Iron, Hormones &amp; Skin</a></li>
  </ul>
  </section>
  <!-- Smooth Scroll for Table of Contents -->
  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Add smooth scrolling to all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href.length > 1) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        const headerOffset = 100;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+ document.addEventListener('DOMContentLoaded', function() {
+ // Add smooth scrolling to all anchor links
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+ anchor.addEventListener('click', function (e) {
+ const href = this.getAttribute('href');
+ if (href !== '#' && href.length > 1) {
+ e.preventDefault();
+ const target = document.querySelector(href);
+ if (target) {
+ const headerOffset = 100;
+ const elementPosition = target.getBoundingClientRect().top;
+ const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-    });
-    </script>
+ window.scrollTo({
+ top: offsetPosition,
+ behavior: 'smooth'
+ });
+ }
+ }
+ });
+ });
+ });
+ </script>
 </body>
 </html> 

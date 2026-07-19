@@ -26,3 +26,6 @@ nutrithrive_labs/extension/pokifinder/remote-monitor/config.json
 # SEO audit crawler output
 tools/seo-audit/output/
 .netlify-publish/
+
+# Local experiments (not part of nutrithrive.com.au)
+gas-guardian/
