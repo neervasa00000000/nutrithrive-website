@@ -353,7 +353,7 @@
                     <p class="muted payment-intro">All transactions are secure and encrypted.</p>
                     <p class="payment-intro">
                         At checkout, PayPal or Apple Pay will show you the exact <strong>name, email and full shipping address</strong> stored in your wallet.
-                        Please review and confirm these details carefully - your order will be shipped to the address you approve there.
+                        Please review and confirm these details carefully. Your order will be shipped to the address you approve there.
                     </p>
                     <label for="shipping-country" class="section-label" style="text-align:center;">Shipping country</label>
                     <select id="shipping-country" class="select" onchange="updateShippingAndTotal(true)">
@@ -479,7 +479,7 @@
                 localStorage.getItem('nutrithrive_country');
             if (saved) {
                 select.value = saved;
-            } else if ([...select.options].some(option => option.value === 'AU')) {
+            } else if ([. .select.options].some(option => option.value === 'AU')) {
                 select.value = 'AU';
                 localStorage.setItem('nutrithrive_shipping_country', 'AU');
                 localStorage.setItem('nutrithrive_country', 'AU');
