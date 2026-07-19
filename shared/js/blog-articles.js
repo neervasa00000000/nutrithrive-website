@@ -1,4 +1,4 @@
-/** Auto-generated — 87 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 90 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -150,7 +150,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "grow-moringa-tree-australia",
     "title": "How to Grow Moringa Tree in Australia (2026) | Melbourne, Pots, Frost & Expert Tips",
-    "description": "Grow moringa in Australia: which states it survives in, frost tips, pots vs ground, seed germination, pruning and your first leaf harvest.",
+    "description": "Step-by-step guide to growing moringa (drumstick tree) in Australia — Melbourne pots, QLD in-ground, Perth, frost protection, fertilising, where to buy seeds & seedlings. 2026.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia"
   },
@@ -568,11 +568,32 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa"
   },
   {
+    "slug": "seed-oils-bad-for-you-honest-research-australia-2026",
+    "title": "Seed Oils: Are They Actually Bad for You? The Honest Australian Answer (2026)",
+    "description": "One side says seed oils are slowly killing us. Mainstream dietitians say they're fine. The honest answer is more nuanced than either camp will admit. Here's what the research actually shows.",
+    "category": "Health",
+    "href": "/blog/seed-oils-bad-for-you-honest-research-australia-2026"
+  },
+  {
     "slug": "signs-magnesium-deficiency-australia-what-to-eat-2026",
     "title": "Signs You Might Be Magnesium Deficient (Most Australians Are)",
     "description": "Up to 80% of Australians may be magnesium deficient. The symptoms are easy to miss because they look like stress, poor sleep, and being busy. Here's what to look for.",
     "category": "Health",
     "href": "/blog/signs-magnesium-deficiency-australia-what-to-eat-2026"
+  },
+  {
+    "slug": "stop-eating-ultra-processed-food-30-days-what-happens-2026",
+    "title": "What Happens to Your Body When You Stop Eating Ultra-Processed Food for 30 Days",
+    "description": "The changes aren't as dramatic as social media makes out, and some are harder than expected. A realistic, research-based look at what actually shifts when you cut out ultra-processed food.",
+    "category": "Health",
+    "href": "/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026"
+  },
+  {
+    "slug": "strength-training-women-over-35-why-it-matters-2026",
+    "title": "Strength Training for Women Over 35: Why the Evidence Has Shifted Away from Cardio",
+    "description": "For women over 35, strength training protects bone density, maintains metabolic rate, and manages menopausal symptoms more effectively than cardio alone. What changed in the research.",
+    "category": "Health",
+    "href": "/blog/strength-training-women-over-35-why-it-matters-2026"
   },
   {
     "slug": "stress-weight-gain-cortisol-mechanism-what-to-do-2026",
