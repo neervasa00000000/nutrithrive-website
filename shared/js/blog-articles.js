@@ -268,8 +268,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
-    "title": "Can Children Have Moringa? Safe Doses and What to Know (2026)",
-    "description": "Is moringa safe for kids? Yes, in small food amounts - but there's a dose and form question parents should understand before adding it to their child's food.",
+    "title": "Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)",
+    "description": "Is moringa safe for children in Australia? Age-by-age doses, real paediatric research, iron for picky eaters, and what to ask your GP before you start.",
     "category": "Health",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026"
   },
