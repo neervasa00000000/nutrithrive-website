@@ -1,4 +1,4 @@
-/** Auto-generated — 91 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 92 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -559,6 +559,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Dried curry leaves: South Asian tradition, everyday cooking uses, and what to expect from shade-dried leaves packed in Melbourne (2026).",
     "category": "Wellness Journal",
     "href": "/blog/nutrithrive-dried-curry-leaves-tradition-health"
+  },
+  {
+    "slug": "omega-3-deficiency-australia-inflammation-food-sources-2026",
+    "title": "Omega-3 Deficiency in Australia: The Silent Driver of Inflammation (2026)",
+    "description": "Omega-3 deficiency is common in Australia as fish consumption declines and processed food rises. What omega-3 actually does, who's most at risk, and the best food sources for Australians.",
+    "category": "Health",
+    "href": "/blog/omega-3-deficiency-australia-inflammation-food-sources-2026"
   },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
