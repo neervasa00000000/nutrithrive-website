@@ -1,10 +1,176 @@
-<!DOCTYPE html>
+#!/usr/bin/env node
+/** One-off builder for is-moringa-safe-for-children-kids-dosage-2026.html */
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const OUT = path.join(REPO, 'blog/is-moringa-safe-for-children-kids-dosage-2026.html');
+const BASE = 'https://nutrithrive.com.au';
+const SLUG = 'is-moringa-safe-for-children-kids-dosage-2026';
+const CANONICAL = `${BASE}/blog/${SLUG}`;
+const DATE_DISPLAY = '20 Jul 2026';
+const DATE_ISO = '2026-07-20';
+const TITLE =
+  'Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research &amp; Picky-Eater Tricks (2026)';
+const TITLE_PLAIN =
+  'Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)';
+const META =
+  'Is moringa safe for children in Australia? Age-by-age doses, real paediatric research, iron for picky eaters, and what to ask your GP before you start.';
+
+const faqs = [
+  {
+    q: 'Is moringa safe for children?',
+    a: 'At small food-level amounts using leaf powder only, the published safety profile is reassuring and traditional use is extensive. No adverse effects have been reported in children at food-level doses in published literature. Use leaf powder only, start small, and get GP input for children under 2 or with health conditions.',
+  },
+  {
+    q: 'What age can children start having moringa?',
+    a: 'There is no established minimum age. Conservative practice is after 12 months once solids are well established. For children 6 to 12 months, iron needs are best met through iron-rich weaning foods per NHMRC infant feeding guidelines.',
+  },
+  {
+    q: 'How much moringa can a 2-year-old have?',
+    a: 'Start with a pinch (0.3 to 0.5g, roughly 1/8 teaspoon) mixed into food. If well tolerated after 1 to 2 weeks, up to 1/4 teaspoon per day is a reasonable food-level amount for a 2-year-old.',
+  },
+  {
+    q: "Can moringa help with a picky eater's nutrition?",
+    a: 'Moringa does not fix picky eating, but a quarter teaspoon in a fruit smoothie can provide iron, calcium, vitamin A, and protein in a form children will eat when they refuse meat, greens, or legumes.',
+  },
+  {
+    q: "What's the difference between moringa and children's multivitamins?",
+    a: 'Multivitamins deliver synthetic isolated nutrients. Moringa delivers nutrients in a whole food matrix alongside vitamin C, which can support non-haem iron absorption. Neither replaces the other; they are different tools.',
+  },
+  {
+    q: 'Does moringa have more iron than spinach?',
+    a: 'Dried moringa leaf has roughly 10 times more iron per 100g than fresh spinach (about 28 to 54mg vs about 2.7mg). The "25 times" figure online often compares dried leaf to fresh spinach incorrectly.',
+  },
+  {
+    q: 'Can moringa cause any side effects in children?',
+    a: 'At food-level amounts, no adverse effects have been reported in published literature. Digestive upset is the most common response when starting too much too fast in adults, which is why a slow introduction is advised.',
+  },
+  {
+    q: 'Is moringa TGA-approved for children in Australia?',
+    a: 'Moringa leaf powder is regulated as a food in Australia, not as a medicine. No TGA approval is required for food use. Therapeutic claims for children would require a different regulatory pathway.',
+  },
+  {
+    q: 'What about moringa and breastfed babies?',
+    a: 'Research on moringa in lactating mothers is separate from giving moringa directly to infants. For breastfed babies under 6 months, NHMRC guidelines recommend breast milk only with no supplementation.',
+  },
+  {
+    q: 'How does moringa compare to iron drops prescribed for children?',
+    a: 'Iron drops are therapeutic treatment for diagnosed deficiency at mg/kg doses. Moringa at a quarter teaspoon delivers roughly 0.7 to 1.4mg of non-haem iron. They are not interchangeable.',
+  },
+  {
+    q: 'Can I give moringa every day?',
+    a: 'Daily use at food-level amounts matches traditional use and paediatric studies that followed children for months. There is no published evidence of harm from daily food-level leaf powder consumption.',
+  },
+  {
+    q: 'Does the colour of the moringa powder matter?',
+    a: 'Yes. Bright green shade-dried powder indicates well preserved nutrients. Brownish powder suggests heat damage and lower vitamin C and beta-carotene content.',
+  },
+];
+
+const faqJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+});
+
+const howToJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to introduce moringa leaf powder to children by age',
+  description:
+    'Conservative food-level amounts of moringa leaf powder for Australian children, by age group.',
+  step: [
+    {
+      '@type': 'HowToStep',
+      name: 'Under 6 months',
+      text: 'Breast or formula milk only per NHMRC infant feeding guidelines. Do not add moringa.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '6 to 12 months',
+      text: 'Not recommended without paediatrician guidance. Prioritise iron-rich weaning foods and fortified cereals.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '1 to 2 years',
+      text: 'After solids are established, start with a pinch (0.3 to 0.5g) in food. GP conversation first. Up to 1/8 tsp if well tolerated.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '2 to 5 years',
+      text: 'Start with 1/8 teaspoon in food. Over 2 weeks, up to 1/4 tsp daily if tolerated.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: '5 to 12 years',
+      text: 'Start with 1/4 teaspoon. Up to 1/2 tsp daily in smoothies, sauces, or baked goods.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Teenagers (13+)',
+      text: 'Start with 1/2 teaspoon. Up to 1 tsp daily, matching adult low-end food use.',
+    },
+  ],
+});
+
+const articleJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: TITLE_PLAIN,
+  description: META,
+  author: { '@type': 'Person', '@id': `${BASE}/#person-neer`, name: 'Neer' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'NutriThrive',
+    logo: { '@type': 'ImageObject', url: `${BASE}/assets/images/logo/LOGO.webp` },
+  },
+  datePublished: DATE_ISO,
+  dateModified: DATE_ISO,
+  image: `${BASE}/assets/images/og/moringa-article-1200.jpg`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': CANONICAL },
+  wordCount: 3400,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#children-moringa-faq h3', '#children-moringa-faq p'],
+  },
+});
+
+const breadcrumbJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/blog/` },
+    { '@type': 'ListItem', position: 3, name: TITLE_PLAIN, item: CANONICAL },
+  ],
+});
+
+const cta = (heading = 'Ready to Try Moringa?') => `<div class="nt-article-cta">
+<h3>${heading}</h3>
+<p>Shop our <a href="/products/moringa-powder/">100% pure moringa leaf powder</a> (shade-dried, <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab tested</a>, packed in Melbourne). Same-day dispatch.</p>
+<div class="btn-row">
+<a class="btn-solid" href="/products/moringa-powder/">Shop Moringa Powder</a>
+<a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
+</div>
+</div>`;
+
+const faqHtml = faqs
+  .map(({ q, a }) => `<h3>${q}</h3>\n<p>${a}</p>`)
+  .join('\n');
+
+const html = `<!DOCTYPE html>
 <html class="scroll-smooth" lang="en-AU">
 <head>
 <script src="/scripts/global/defer-loader.min.js" defer></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research &amp; Picky-Eater Tricks (2026)</title>
+<title>${TITLE}</title>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -30,32 +196,32 @@
   }
 </script>
 <meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://nutrithrive.com.au/blog/is-moringa-safe-for-children-kids-dosage-2026"/>
-<link rel="alternate" type="text/plain" href="https://nutrithrive.com.au/llms.txt" title="LLMs.txt">
-<link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/is-moringa-safe-for-children-kids-dosage-2026"/>
-<link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/blog/is-moringa-safe-for-children-kids-dosage-2026"/>
-<meta name="description" content="Is moringa safe for children in Australia? Age-by-age doses, real paediatric research, iron for picky eaters, and what to ask your GP before you start."/>
+<link rel="canonical" href="${CANONICAL}"/>
+<link rel="alternate" type="text/plain" href="${BASE}/llms.txt" title="LLMs.txt">
+<link rel="alternate" hreflang="en-AU" href="${CANONICAL}"/>
+<link rel="alternate" hreflang="x-default" href="${CANONICAL}"/>
+<meta name="description" content="${META}"/>
 <meta name="author" content="NutriThrive Australia"/>
 <meta property="og:type" content="article"/>
-<meta property="og:url" content="https://nutrithrive.com.au/blog/is-moringa-safe-for-children-kids-dosage-2026"/>
-<meta property="og:title" content="Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research &amp; Picky-Eater Tricks (2026)"/>
-<meta property="og:description" content="Is moringa safe for children in Australia? Age-by-age doses, real paediatric research, iron for picky eaters, and what to ask your GP before you start."/>
-<meta property="og:image" content="https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg"/>
+<meta property="og:url" content="${CANONICAL}"/>
+<meta property="og:title" content="${TITLE}"/>
+<meta property="og:description" content="${META}"/>
+<meta property="og:image" content="${BASE}/assets/images/og/moringa-article-1200.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:site_name" content="NutriThrive Australia"/>
 <meta property="og:locale" content="en_AU"/>
-<meta property="article:published_time" content="2026-07-20T00:00:00+10:00"/>
-<meta property="article:modified_time" content="2026-07-20T00:00:00+10:00"/>
+<meta property="article:published_time" content="${DATE_ISO}T00:00:00+10:00"/>
+<meta property="article:modified_time" content="${DATE_ISO}T00:00:00+10:00"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:url" content="https://nutrithrive.com.au/blog/is-moringa-safe-for-children-kids-dosage-2026"/>
-<meta name="twitter:title" content="Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research &amp; Picky-Eater Tricks (2026)"/>
-<meta name="twitter:description" content="Is moringa safe for children in Australia? Age-by-age doses, real paediatric research, iron for picky eaters, and what to ask your GP before you start."/>
-<meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)","description":"Is moringa safe for children in Australia? Age-by-age doses, real paediatric research, iron for picky eaters, and what to ask your GP before you start.","author":{"@type":"Person","@id":"https://nutrithrive.com.au/#person-neer","name":"Neer"},"publisher":{"@type":"Organization","name":"NutriThrive","logo":{"@type":"ImageObject","url":"https://nutrithrive.com.au/assets/images/logo/LOGO.webp"}},"datePublished":"2026-07-20","dateModified":"2026-07-20","image":"https://nutrithrive.com.au/assets/images/og/moringa-article-1200.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://nutrithrive.com.au/blog/is-moringa-safe-for-children-kids-dosage-2026"},"wordCount":3400,"speakable":{"@type":"SpeakableSpecification","cssSelector":["#children-moringa-faq h3","#children-moringa-faq p"]}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is moringa safe for children?","acceptedAnswer":{"@type":"Answer","text":"At small food-level amounts using leaf powder only, the published safety profile is reassuring and traditional use is extensive. No adverse effects have been reported in children at food-level doses in published literature. Use leaf powder only, start small, and get GP input for children under 2 or with health conditions."}},{"@type":"Question","name":"What age can children start having moringa?","acceptedAnswer":{"@type":"Answer","text":"There is no established minimum age. Conservative practice is after 12 months once solids are well established. For children 6 to 12 months, iron needs are best met through iron-rich weaning foods per NHMRC infant feeding guidelines."}},{"@type":"Question","name":"How much moringa can a 2-year-old have?","acceptedAnswer":{"@type":"Answer","text":"Start with a pinch (0.3 to 0.5g, roughly 1/8 teaspoon) mixed into food. If well tolerated after 1 to 2 weeks, up to 1/4 teaspoon per day is a reasonable food-level amount for a 2-year-old."}},{"@type":"Question","name":"Can moringa help with a picky eater's nutrition?","acceptedAnswer":{"@type":"Answer","text":"Moringa does not fix picky eating, but a quarter teaspoon in a fruit smoothie can provide iron, calcium, vitamin A, and protein in a form children will eat when they refuse meat, greens, or legumes."}},{"@type":"Question","name":"What's the difference between moringa and children's multivitamins?","acceptedAnswer":{"@type":"Answer","text":"Multivitamins deliver synthetic isolated nutrients. Moringa delivers nutrients in a whole food matrix alongside vitamin C, which can support non-haem iron absorption. Neither replaces the other; they are different tools."}},{"@type":"Question","name":"Does moringa have more iron than spinach?","acceptedAnswer":{"@type":"Answer","text":"Dried moringa leaf has roughly 10 times more iron per 100g than fresh spinach (about 28 to 54mg vs about 2.7mg). The \"25 times\" figure online often compares dried leaf to fresh spinach incorrectly."}},{"@type":"Question","name":"Can moringa cause any side effects in children?","acceptedAnswer":{"@type":"Answer","text":"At food-level amounts, no adverse effects have been reported in published literature. Digestive upset is the most common response when starting too much too fast in adults, which is why a slow introduction is advised."}},{"@type":"Question","name":"Is moringa TGA-approved for children in Australia?","acceptedAnswer":{"@type":"Answer","text":"Moringa leaf powder is regulated as a food in Australia, not as a medicine. No TGA approval is required for food use. Therapeutic claims for children would require a different regulatory pathway."}},{"@type":"Question","name":"What about moringa and breastfed babies?","acceptedAnswer":{"@type":"Answer","text":"Research on moringa in lactating mothers is separate from giving moringa directly to infants. For breastfed babies under 6 months, NHMRC guidelines recommend breast milk only with no supplementation."}},{"@type":"Question","name":"How does moringa compare to iron drops prescribed for children?","acceptedAnswer":{"@type":"Answer","text":"Iron drops are therapeutic treatment for diagnosed deficiency at mg/kg doses. Moringa at a quarter teaspoon delivers roughly 0.7 to 1.4mg of non-haem iron. They are not interchangeable."}},{"@type":"Question","name":"Can I give moringa every day?","acceptedAnswer":{"@type":"Answer","text":"Daily use at food-level amounts matches traditional use and paediatric studies that followed children for months. There is no published evidence of harm from daily food-level leaf powder consumption."}},{"@type":"Question","name":"Does the colour of the moringa powder matter?","acceptedAnswer":{"@type":"Answer","text":"Yes. Bright green shade-dried powder indicates well preserved nutrients. Brownish powder suggests heat damage and lower vitamin C and beta-carotene content."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to introduce moringa leaf powder to children by age","description":"Conservative food-level amounts of moringa leaf powder for Australian children, by age group.","step":[{"@type":"HowToStep","name":"Under 6 months","text":"Breast or formula milk only per NHMRC infant feeding guidelines. Do not add moringa."},{"@type":"HowToStep","name":"6 to 12 months","text":"Not recommended without paediatrician guidance. Prioritise iron-rich weaning foods and fortified cereals."},{"@type":"HowToStep","name":"1 to 2 years","text":"After solids are established, start with a pinch (0.3 to 0.5g) in food. GP conversation first. Up to 1/8 tsp if well tolerated."},{"@type":"HowToStep","name":"2 to 5 years","text":"Start with 1/8 teaspoon in food. Over 2 weeks, up to 1/4 tsp daily if tolerated."},{"@type":"HowToStep","name":"5 to 12 years","text":"Start with 1/4 teaspoon. Up to 1/2 tsp daily in smoothies, sauces, or baked goods."},{"@type":"HowToStep","name":"Teenagers (13+)","text":"Start with 1/2 teaspoon. Up to 1 tsp daily, matching adult low-end food use."}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nutrithrive.com.au/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://nutrithrive.com.au/blog/"},{"@type":"ListItem","position":3,"name":"Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)","item":"https://nutrithrive.com.au/blog/is-moringa-safe-for-children-kids-dosage-2026"}]}</script>
+<meta name="twitter:url" content="${CANONICAL}"/>
+<meta name="twitter:title" content="${TITLE}"/>
+<meta name="twitter:description" content="${META}"/>
+<meta name="twitter:image" content="${BASE}/assets/images/og/moringa-article-1200.jpg"/>
+<script type="application/ld+json">${articleJson}</script>
+<script type="application/ld+json">${faqJson}</script>
+<script type="application/ld+json">${howToJson}</script>
+<script type="application/ld+json">${breadcrumbJson}</script>
 <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp"/>
 <meta name="theme-color" content="#0f6b4d"/>
@@ -78,7 +244,7 @@
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
 <nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-4 pb-2 text-label-sm" aria-label="Breadcrumb">
-<ol class="flex flex-wrap items-center gap-1 list-none m-0 p-0"><li><a class="text-moringa-leaf hover:underline" href="/">Home</a></li><li class="text-on-surface-variant" aria-hidden="true">&#x203A;</li><li><a class="text-moringa-leaf hover:underline" href="/blog/">Blog</a></li><li class="text-on-surface-variant" aria-hidden="true">&#x203A;</li><li class="text-on-surface" aria-current="page">Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)</li></ol>
+<ol class="flex flex-wrap items-center gap-1 list-none m-0 p-0"><li><a class="text-moringa-leaf hover:underline" href="/">Home</a></li><li class="text-on-surface-variant" aria-hidden="true">&#x203A;</li><li><a class="text-moringa-leaf hover:underline" href="/blog/">Blog</a></li><li class="text-on-surface-variant" aria-hidden="true">&#x203A;</li><li class="text-on-surface" aria-current="page">${TITLE_PLAIN}</li></ol>
 </nav>
 <main class="pt-6 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop nt-blog-main">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
@@ -86,13 +252,13 @@
 <header class="mb-12">
 <div class="flex flex-wrap items-center gap-2 mb-4">
 <span class="bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold">Health</span>
-<span class="text-on-surface-variant text-label-lg font-body-md">20 Jul 2026</span>
+<span class="text-on-surface-variant text-label-lg font-body-md">${DATE_DISPLAY}</span>
 <span class="text-on-surface-variant text-label-lg font-body-md">&#183; 12 min read</span>
 </div>
-<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-4 leading-tight">Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)</h1>
-<p class="text-on-surface-variant text-body-md mb-8"><strong>By Neer, NutriThrive Truganina</strong> &#183; Last updated: 20 Jul 2026</p>
+<h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-4 leading-tight">${TITLE_PLAIN}</h1>
+<p class="text-on-surface-variant text-body-md mb-8"><strong>By Neer, NutriThrive Truganina</strong> &#183; Last updated: ${DATE_DISPLAY}</p>
 <div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
-<img alt="Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high"/>
+<img alt="${TITLE_PLAIN}" class="w-full h-full object-cover" src="/assets/images/homepage/product-showcase/Moringa.webp" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high"/>
 </div>
 </header>
 <div class="blog-v2-prose max-w-none">
@@ -139,14 +305,7 @@
 <p>At NutriThrive, a level teaspoon is approximately 3g. A quarter teaspoon (a starter dose for a child aged 2 to 5) can deliver roughly 10 to 15% of daily iron needs from a single, tasteless addition to a smoothie or sauce.</p>
 <p><strong>Sources:</strong> <a href="https://www.echocommunity.org/en/resources/d98f8a44-1849-4753-abc2-ce22c843518c" rel="noopener noreferrer">ECHO Community nutrient report</a>; Christian Health Service Corps childhood malnutrition summary.</p>
 
-<div class="nt-article-cta">
-<h3>Shop shade-dried moringa for family smoothies</h3>
-<p>Shop our <a href="/products/moringa-powder/">100% pure moringa leaf powder</a> (shade-dried, <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab tested</a>, packed in Melbourne). Same-day dispatch.</p>
-<div class="btn-row">
-<a class="btn-solid" href="/products/moringa-powder/">Shop Moringa Powder</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
-</div>
-</div>
+${cta('Shop shade-dried moringa for family smoothies')}
 
 <h2>What the research shows in children</h2>
 <p>Most moringa articles make claims without citations. These are published studies on children.</p>
@@ -209,14 +368,7 @@
 
 <p><strong>General rules:</strong> introduce slowly over 1 to 2 weeks; always combine with food; stop if persistent digestive upset or unusual symptoms; consult your GP if your child has health conditions or takes medication.</p>
 
-<div class="nt-article-cta">
-<h3>Start with a quarter teaspoon in smoothies</h3>
-<p>Shop our <a href="/products/moringa-powder/">100% pure moringa leaf powder</a> (shade-dried, <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab tested</a>, packed in Melbourne). Same-day dispatch.</p>
-<div class="btn-row">
-<a class="btn-solid" href="/products/moringa-powder/">Shop Moringa Powder</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
-</div>
-</div>
+${cta('Start with a quarter teaspoon in smoothies')}
 
 <h2>How to get kids to actually take it</h2>
 <p>The taste is earthy and mildly bitter. These methods pair moringa with foods that dominate the flavour profile:</p>
@@ -260,30 +412,7 @@
 <p>Related: <a href="/blog/is-moringa-safe-during-pregnancy-2026">is moringa safe during pregnancy?</a></p>
 
 <h2 id="children-moringa-faq">FAQ</h2>
-<h3>Is moringa safe for children?</h3>
-<p>At small food-level amounts using leaf powder only, the published safety profile is reassuring and traditional use is extensive. No adverse effects have been reported in children at food-level doses in published literature. Use leaf powder only, start small, and get GP input for children under 2 or with health conditions.</p>
-<h3>What age can children start having moringa?</h3>
-<p>There is no established minimum age. Conservative practice is after 12 months once solids are well established. For children 6 to 12 months, iron needs are best met through iron-rich weaning foods per NHMRC infant feeding guidelines.</p>
-<h3>How much moringa can a 2-year-old have?</h3>
-<p>Start with a pinch (0.3 to 0.5g, roughly 1/8 teaspoon) mixed into food. If well tolerated after 1 to 2 weeks, up to 1/4 teaspoon per day is a reasonable food-level amount for a 2-year-old.</p>
-<h3>Can moringa help with a picky eater's nutrition?</h3>
-<p>Moringa does not fix picky eating, but a quarter teaspoon in a fruit smoothie can provide iron, calcium, vitamin A, and protein in a form children will eat when they refuse meat, greens, or legumes.</p>
-<h3>What's the difference between moringa and children's multivitamins?</h3>
-<p>Multivitamins deliver synthetic isolated nutrients. Moringa delivers nutrients in a whole food matrix alongside vitamin C, which can support non-haem iron absorption. Neither replaces the other; they are different tools.</p>
-<h3>Does moringa have more iron than spinach?</h3>
-<p>Dried moringa leaf has roughly 10 times more iron per 100g than fresh spinach (about 28 to 54mg vs about 2.7mg). The "25 times" figure online often compares dried leaf to fresh spinach incorrectly.</p>
-<h3>Can moringa cause any side effects in children?</h3>
-<p>At food-level amounts, no adverse effects have been reported in published literature. Digestive upset is the most common response when starting too much too fast in adults, which is why a slow introduction is advised.</p>
-<h3>Is moringa TGA-approved for children in Australia?</h3>
-<p>Moringa leaf powder is regulated as a food in Australia, not as a medicine. No TGA approval is required for food use. Therapeutic claims for children would require a different regulatory pathway.</p>
-<h3>What about moringa and breastfed babies?</h3>
-<p>Research on moringa in lactating mothers is separate from giving moringa directly to infants. For breastfed babies under 6 months, NHMRC guidelines recommend breast milk only with no supplementation.</p>
-<h3>How does moringa compare to iron drops prescribed for children?</h3>
-<p>Iron drops are therapeutic treatment for diagnosed deficiency at mg/kg doses. Moringa at a quarter teaspoon delivers roughly 0.7 to 1.4mg of non-haem iron. They are not interchangeable.</p>
-<h3>Can I give moringa every day?</h3>
-<p>Daily use at food-level amounts matches traditional use and paediatric studies that followed children for months. There is no published evidence of harm from daily food-level leaf powder consumption.</p>
-<h3>Does the colour of the moringa powder matter?</h3>
-<p>Yes. Bright green shade-dried powder indicates well preserved nutrients. Brownish powder suggests heat damage and lower vitamin C and beta-carotene content.</p>
+${faqHtml}
 
 <h2>The bottom line for Australian parents</h2>
 <p>Moringa leaf is a genuinely nutrient-dense food with a safety profile backed by traditional use and an emerging body of research in children. At amounts appropriate for children, it provides meaningful contributions to iron, calcium, vitamin A, and protein without the taste battles that leafy greens typically create.</p>
@@ -309,21 +438,14 @@
 <li><a href="https://www.health.qld.gov.au/__data/assets/pdf_file/0026/147149/paeds_iron.pdf" rel="noopener noreferrer">QLD Health paediatric iron guide</a></li>
 </ol>
 
-<div class="nt-article-cta">
-<h3>Ready to Try Moringa?</h3>
-<p>Shop our <a href="/products/moringa-powder/">100% pure moringa leaf powder</a> (shade-dried, <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab tested</a>, packed in Melbourne). Same-day dispatch.</p>
-<div class="btn-row">
-<a class="btn-solid" href="/products/moringa-powder/">Shop Moringa Powder</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
-</div>
-</div>
+${cta()}
 
 <p style="margin-top: 1rem;"><a href="/blog/">&larr; Back to all articles</a></p>
 <div class="nt-update-log" role="note">
 <p><strong>Update log</strong></p>
 <ul>
 <li><strong>27 Jun 2026:</strong> Article published.</li>
-<li><strong>20 Jul 2026:</strong> Major expansion: Australian iron statistics, paediatric research, age-by-age dosage table, 12-question FAQ, and safety references.</li>
+<li><strong>${DATE_DISPLAY}:</strong> Major expansion: Australian iron statistics, paediatric research, age-by-age dosage table, 12-question FAQ, and safety references.</li>
 </ul>
 </div>
 <section class="nt-related-links-block">
@@ -369,3 +491,7 @@
 <script src="/shared/js/v2-site.min.js" defer></script>
 </body>
 </html>
+`;
+
+fs.writeFileSync(OUT, html);
+console.log('Wrote', OUT);
