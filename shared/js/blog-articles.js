@@ -1,4 +1,4 @@
-/** Auto-generated — 93 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 93 blog articles. */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -86,8 +86,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
-    "title": "Curry Leaves Substitute. What to Use When You Don't Have Them (2026)",
-    "description": "Don't have curry leaves for a recipe? A practical guide to substitutes that work, substitutes that sort of work, and the ones to skip entirely.",
+    "title": "7 Best Curry Leaves Substitutes (What to Use and What to Avoid) (2026)",
+    "description": "No curry leaves? Use kaffir lime leaves, lemon zest, or bay leaves. Exact swap ratios for each substitute and why curry powder will not work as a replacement.",
     "category": "Guides",
     "href": "/blog/curry-leaves-substitute-what-to-use-2026"
   },
@@ -156,8 +156,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "grow-moringa-tree-australia",
-    "title": "How to Grow Moringa Tree in Australia (2026) | Melbourne, Pots, Frost & Expert Tips",
-    "description": "Step-by-step guide to growing moringa (drumstick tree) in Australia. Melbourne pots, QLD in-ground, Perth, frost protection, fertilising, where to buy seeds & seedlings. 2026.",
+    "title": "How to Grow Moringa Tree in Australia (2026): Climate Zones, Winter Care & Pruning",
+    "description": "How to grow moringa (drumstick tree) in Australia by climate zone. Melbourne frost and pot care, July to August winter tasks, pruning, when to plant, and city-by-city success tips. Updated 2026.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia"
   },
@@ -170,8 +170,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
-    "title": "How Long Does Moringa Powder Last? Storage &amp; Shelf Life Guide (2026)",
-    "description": "How long does moringa powder last? Properly stored, 12-24 months unopened, 6-12 months at best potency once opened. The exact storage mistakes that cut shelf life short.",
+    "title": "How Long Does Moringa Powder Last? 12 to 24 Months Shelf Life Guide (2026)",
+    "description": "Moringa powder lasts 12 to 24 months unopened and 6 to 12 months once opened when stored cool, dark, and dry. Signs it has gone bad, Australian heat tips, and common storage mistakes.",
     "category": "Guides",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026"
   },
@@ -219,8 +219,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
-    "title": "How to Choose Moringa Powder in Australia (2026)",
-    "description": "How to choose moringa powder in Australia: colour, lab tests, shade-dried vs sun-dried, red flags, fair price per 100g, and where to buy fresh: 2026.",
+    "title": "How to Choose Moringa Powder in Australia: Colour, Lab Tests and Red Flags (2026)",
+    "description": "Choose quality moringa powder in Australia: bright green colour, single-ingredient labels, shade-dried leaf, batch lab tests, price traps, and powder vs capsules. Updated 2026 buyer guide.",
     "category": "Buyer's Guide",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026"
   },
@@ -275,8 +275,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
-    "title": "Is Moringa Safe for Children? Australian Parent Guide: Dosage, Real Research & Picky-Eater Tricks (2026)",
-    "description": "Is moringa safe for children in Australia? Age-by-age doses, real paediatric research, iron for picky eaters, and what to ask your GP before you start.",
+    "title": "Is Moringa Safe for Children? Dosage, Safety Research and GP Guide (2026)",
+    "description": "Is moringa safe for children? Yes at small food-level doses using leaf powder only. Age-by-age amounts, paediatric research, iron for picky eaters, and when to ask your GP first.",
     "category": "Health",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026"
   },
@@ -324,8 +324,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Moringa Capsules at Chemist Warehouse vs NutriThrive | 2026 Comparison",
-    "description": "Moringa Chemist Warehouse vs NutriThrive: colour, grind, smell and lab results compared. Covers Rosabella too. Australian quality test.",
+    "title": "Does Chemist Warehouse Sell Moringa? Brand and Quality Comparison (2026)",
+    "description": "Does Chemist Warehouse sell moringa in 2026? Yes: Rosabella and Indus Farms capsules. Compare price per 100g, lab testing, dose maths, and quality signals vs NutriThrive powder.",
     "category": "Research Guide",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
   },
@@ -450,8 +450,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
-    "title": "Moringa Patches Australia Review 2026. Do They Actually Work? (Glorenda, Healrize, Clearena)",
-    "description": "Moringa patches Australia 2026: Glorenda, Healrize and Clearena patches explained, transdermal delivery science, and why powder is the evidence-backed route.",
+    "title": "Moringa Patches Australia 2026: Do They Work or Is It a Scam? (Glorenda, Healrize Review)",
+    "description": "Moringa patches Australia 2026: do Glorenda, Healrize and Clearena patches work or is it a scam? Transdermal science, TGA status, patches vs powder table, and buyer mistakes to avoid.",
     "category": "Brand Review",
     "href": "/blog/moringa-patches-australia-review-do-they-work"
   },
@@ -520,22 +520,22 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-ashwagandha-comparison-2026",
-    "title": "Moringa vs Ashwagandha, Which One Is Right for You? (2026)",
-    "description": "Both are adaptogens. Both are trending. Moringa vs ashwagandha compared honestly - what each actually does, who each suits, and whether you need both.",
+    "title": "Moringa vs Ashwagandha: Daily Nutrient Leaf vs Stress Adaptogen (2026)",
+    "description": "Moringa is a daily nutrient leaf for iron and vitamins. Ashwagandha is a stress adaptogen for cortisol and sleep. Compare benefits, timing, who each suits, and a simple decision tree.",
     "category": "Health",
     "href": "/blog/moringa-vs-ashwagandha-comparison-2026"
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "Moringa vs Coffee Melbourne: Caffeine-Free Energy Australia 2026",
-    "description": "Moringa vs coffee Melbourne: caffeine levels, crash risk, cortisol and cost compared. Why Melbourne professionals choose moringa over the $7 latte.",
+    "title": "Moringa vs Coffee for Energy (Caffeine-Free, No Crash) Australia 2026",
+    "description": "Honest moringa vs coffee comparison for energy in Australia. Coffee gives a fast caffeine spike; moringa offers caffeine-free nutrients (iron, B vitamins) without the afternoon crash. Decision guide for 2026.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack"
   },
   {
     "slug": "moringa-vs-spirulina-vs-matcha-comparison-australia",
-    "title": "Plant-Based Superfoods Australia 2026: Moringa vs Spirulina vs Matcha",
-    "description": "Plant based superfoods Australia 2026: moringa vs spirulina vs matcha compared. Iron-rich vegan foods, protein, energy and price per serve for Australian diets.",
+    "title": "Moringa vs Spirulina vs Matcha: Which Superfood Powder Is Best? (Australia 2026)",
+    "description": "Moringa vs spirulina vs matcha compared for Australian diets: protein, iron, caffeine, taste, and cost per serve. See who should pick which and common mistakes to avoid.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
   },
@@ -576,8 +576,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
-    "title": "Rosabella Moringa Review (2026): We Opened Three Bottles. Here Is What We Found",
-    "description": "Rosabella moringa review: dose maths, 2026 Salmonella recall, cost per effective mg, UV packaging issue and what Trustpilot reviews miss.",
+    "title": "Rosabella Moringa Review (2026): Lab Transparency, Cost Comparison and Chemist Warehouse Verdict",
+    "description": "Rosabella moringa review 2026: lab transparency gap, cost per gram and per month vs powder, February recall, dose maths, and who should choose pure powder instead.",
     "category": "Brand Review",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026"
   },
