@@ -1,5 +1,12 @@
-/** Auto-generated — 92 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 93 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
+  {
+    "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
+    "title": "How to Eat 30 Different Plants Per Week (And Why It Matters for Gut Health)",
+    "description": "Research from the American Gut Project found people eating 30+ different plants per week had significantly more diverse microbiomes. What counts, why diversity matters, and how to get there without overhauling your diet.",
+    "category": "Health",
+    "href": "/blog/30-different-plants-per-week-gut-health-microbiome-2026"
+  },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
     "title": "AG1 Alternative Australia (2026): Is Moringa Enough?",
