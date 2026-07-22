@@ -253,13 +253,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
   },
   {
-    "slug": "is-moringa-banned-australia-truth-2026",
-    "title": "Is Moringa Banned in Australia? The Truth About Moringa Safety (2026)",
-    "description": "Moringa is not banned in Australia. The TGA regulates health claims, not the plant. How to buy legal, lab-tested powder in 2026: plain facts.",
-    "category": "Regulation &amp; Safety",
-    "href": "/blog/is-moringa-banned-australia-truth-2026"
-  },
-  {
     "slug": "is-moringa-banned-in-australia",
     "title": "Is Moringa Banned in Australia? What the 2026 Recall Actually Means",
     "description": "Is moringa banned in Australia? No. It&#x27;s legal food. The February 2026 recall was a Rosabella capsule Salmonella issue, not a moringa ban. Full explanation.",
@@ -323,9 +316,16 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-benefits-for-women-comprehensive-2026"
   },
   {
+    "slug": "moringa-brands-comparison-australia-2026",
+    "title": "Best Moringa Brands Australia 2026: Ranked by Lab, Dose & $/100g",
+    "description": "7 Australian moringa options ranked: lab transparency, freshness, dose maths, price per 100g. Rosabella capsules vs powder brands — who passes?",
+    "category": "Research Guide",
+    "href": "/blog/moringa-brands-comparison-australia-2026"
+  },
+  {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Does Chemist Warehouse Sell Moringa? Brand and Quality Comparison (2026)",
-    "description": "Does Chemist Warehouse sell moringa in 2026? Yes: Rosabella and Indus Farms capsules. Compare price per 100g, lab testing, dose maths, and quality signals vs NutriThrive powder.",
+    "title": "Chemist Warehouse Moringa: Brands, Price & Lab Reality (2026)",
+    "description": "Yes — CW stocks Rosabella & Indus Farms capsules. 2026 prices, dose maths, recall check, and how lab-tested powder compares.",
     "category": "Research Guide",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
   },
