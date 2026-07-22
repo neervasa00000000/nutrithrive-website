@@ -406,8 +406,13 @@
         "ratingValue": "4.9",
         "bestRating": "5",
         "worstRating": "1",
-        "reviewCount": "47"
-      }
+        "reviewCount": "3"
+      },
+      "review": [
+        {"@type":"Review","author":{"@type":"Person","name":"James H."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Bright green colour, mixes into oats without clumping. I reorder when the pouch runs low."},
+        {"@type":"Review","author":{"@type":"Person","name":"Chris L."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Light taste in smoothies. We stopped buying the brown stuff from the supermarket."},
+        {"@type":"Review","author":{"@type":"Person","name":"Lisa K."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Smooth delivery to Tasmania, and the moringa blends cleanly into my morning oats."}
+      ]
     }
     </script>
     <script type="application/ld+json">
@@ -728,10 +733,10 @@
         <section class="nt-pdp-about" aria-label="About this product">
             <div class="nt-pdp-about__grid">
                 <aside class="nt-pdp-lab-card">
-                    <h3>Government Lab Certified</h3>
-                    <p>Every batch is tested by the National Measurement Institute (NMI) for heavy metals and pesticide residues.</p>
+                    <h3>What the NMI lab summary means</h3>
+                    <p>We publish a batch summary from Australia’s National Measurement Institute covering heavy metals and pesticide residues. That is a food-quality screen, not a medical claim. Ask any seller for a recent CoA before you buy.</p>
                     <a href="/documents/nutrithrive-lab-report-summary.pdf" class="lab-report-btn" target="_blank" rel="noopener noreferrer">View NMI Lab Summary (PDF)</a>
-                    <span class="lab-report-note">Batch NT042024 · Australian Government NMI</span>
+                    <span class="lab-report-note">Example batch NT042024 · Australian Government NMI · Ask for your pack’s batch ID</span>
                 </aside>
                 <div class="nt-pdp-about__content">
                     <h2>About Moringa Leaf Powder</h2>
@@ -748,6 +753,27 @@
                         </div>
                     </dl>
                 </div>
+            </div>
+        </section>
+
+        
+        <section class="nt-pdp-about" aria-label="Powder vs Chemist Warehouse capsules" style="padding-top:0;">
+            <div class="nt-pdp-about__content" style="max-width:900px;margin:0 auto;padding:0 1.25rem 2rem;">
+                <h2>Powder vs Chemist Warehouse capsules</h2>
+                <p>Same plant, different product. CW usually stocks capsule brands (e.g. Rosabella). Loose powder lets you see colour, smell freshness, and hit ~1.5–3 g oral-trial ranges without swallowing 5 capsules.</p>
+                <div style="overflow-x:auto;margin:1rem 0 1.25rem;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.92rem;min-width:420px;">
+                <thead><tr style="background:#0f6b4d;color:#fff;">
+                <th style="padding:0.55rem 0.7rem;text-align:left;">Factor</th>
+                <th style="padding:0.55rem 0.7rem;text-align:left;">Typical CW capsules</th>
+                <th style="padding:0.55rem 0.7rem;text-align:left;">NutriThrive powder</th>
+                </tr></thead>
+                <tbody>
+                <tr><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">Dose at ~2 g</td><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">Often 4–5 caps if label serve is 800 mg</td><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">~1 tsp</td></tr>
+                <tr style="background:#fafcfa;"><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">Public lab summary</td><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">Often none published</td><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">NMI PDF on this page</td></tr>
+                <tr><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">Approx $/day at ~2–3 g</td><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">Often ~$1–$2+</td><td style="padding:0.55rem 0.7rem;border:1px solid #e6efe9;">~$0.22–$0.33 from $11/100g</td></tr>
+                </tbody></table></div>
+                <p style="margin:0;font-size:0.92rem;">Full in-store test: <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Chemist Warehouse vs NutriThrive</a>. Brand ranking table: <a href="/blog/moringa-brands-comparison-australia-2026">best moringa brands Australia</a>.</p>
             </div>
         </section>
 
@@ -779,7 +805,7 @@
             <div class="nt-pdp-reviews__head">
                 <div>
                     <h2>Customer Reviews</h2>
-                    <p class="nt-pdp-reviews__rating"><span class="nt-pdp-stars" aria-hidden="true">★★★★★</span> 4.9/5 from verified buyers</p>
+                    <p class="nt-pdp-reviews__rating"><span class="nt-pdp-stars" aria-hidden="true">★★★★★</span> 4.9/5 · 3 verified reviews shown on this page</p>
                 </div>
             </div>
             <div class="nt-pdp-reviews__grid">
@@ -823,14 +849,18 @@
         <section class="nt-pdp-guides" aria-label="Related guides">
             <h2>Guides &amp; related products</h2>
             <ul>
-                <li><a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia">Superfood guides: best greens in Australia</a></li>
-                <li><a href="/blog/how-to-add-moringa-to-diet">How much per day?</a></li>
-                <li><a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">Side effects &amp; starting dose</a></li>
+                <li><a href="/blog/how-to-add-moringa-to-diet">Dosage: how to add moringa to your diet</a></li>
+                <li><a href="/blog/what-does-moringa-powder-taste-like-honest-guide-2026">What does moringa powder taste like?</a></li>
+                <li><a href="/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026">Shelf life &amp; storage (12–24 months)</a></li>
+                <li><a href="/blog/science-shade-drying-vs-sun-drying-moringa">Shade-dried vs sun-dried: why colour matters</a></li>
+                <li><a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Chemist Warehouse capsules vs powder</a></li>
+                <li><a href="/blog/moringa-brands-comparison-australia-2026">Best moringa brands Australia (ranking)</a></li>
+                <li><a href="/blog/moringa-patches-australia-review-do-they-work">Moringa patches: do they work?</a></li>
                 <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to spot quality powder</a></li>
-                <li><a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Powder vs capsules</a></li>
+                <li><a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">Side effects &amp; starting dose</a></li>
+                <li><a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia">Moringa vs spirulina vs matcha</a></li>
                 <li><a href="/products/curry-leaves/">Dried curry leaves</a></li>
                 <li><a href="/products/black-tea/">Darjeeling black tea</a></li>
-                <li><a href="/products/moringa-soap/">Moringa soap</a></li>
             </ul>
         </section>
 

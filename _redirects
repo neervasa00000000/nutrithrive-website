@@ -91,8 +91,8 @@
 # HOLD: content requires legal review re: FSANZ A1294 — activate redirect only after lawyer-reviewed content is live on destination
 # /blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-in-australia 301
 # /blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-in-australia 301
-/blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-australia-truth-2026 301!
-/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-australia-truth-2026.html 200
+/blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-in-australia 301!
+/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-in-australia 301!
 /blog/is-moringa-banned-in-australia.html /blog/is-moringa-banned-in-australia 301!
 /blog/is-moringa-banned-in-australia /blog/is-moringa-banned-in-australia.html 200
 /blog/moringa-benefits-women-hormones-energy-skin-2026 /blog/moringa-benefits-for-women-comprehensive-2026 301
@@ -196,12 +196,12 @@
 /blog/moringa-capsules-vs-powder-which-is-better-2026 /blog/moringa-powder-vs-capsules-comparison-2026 301
 /blog/buy-moringa-powder-melbourne-victoria-chinese-guide.html /404.html 410
 /blog/buy-moringa-powder-melbourne-victoria-chinese-guide /404.html 410
-/blog/top-moringa-companies-australia-2026 /products/moringa-powder/ 301
-/blog/top-moringa-companies-australia-2026.html /products/moringa-powder/ 301
-/blog/moringa-at-chemist-warehouse-australia-worth-it-2026 /products/moringa-powder/ 301
-/blog/moringa-at-chemist-warehouse-australia-worth-it-2026.html /products/moringa-powder/ 301
-/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025 /products/moringa-powder/ 301
-/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html /products/moringa-powder/ 301
+/blog/top-moringa-companies-australia-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
+/blog/top-moringa-companies-australia-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
+/blog/moringa-at-chemist-warehouse-australia-worth-it-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
+/blog/moringa-at-chemist-warehouse-australia-worth-it-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
+/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
+/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301
 
 # Removed off-topic / Melbourne-only posts
 /blog/sydney-time-guide-moringa-nutrithrive-2026 /404.html 410
@@ -429,8 +429,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/chronic-fatigue-what-actually-fixed-it-2026 /404.html 410
 /blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026.html /404.html 410
 /blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026 /404.html 410
-/blog/best-greens-powder-australia-2026.html /404.html 410
-/blog/best-greens-powder-australia-2026 /404.html 410
+/blog/best-greens-powder-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/best-greens-powder-australia-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/high-protein-moringa-recipes-australia-2026.html /404.html 410
 /blog/high-protein-moringa-recipes-australia-2026 /404.html 410
 /blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026.html /404.html 410
@@ -494,14 +494,15 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/magnesium-glycinate-honest-guide-australia-2026 /404.html 410
 /blog/moringa-berberine-australia-2026.html /404.html 410
 /blog/moringa-berberine-australia-2026 /404.html 410
-/blog/moringa-brands-reviewed-australia-2025-verdict.html /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/moringa-brands-reviewed-australia-2025-verdict /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/moringa-brands-comparison-australia-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/moringa-brands-comparison-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
+# Brands cluster IA (22 Jul 2026): brands-comparison owns ranking; legacy lists 301 here; how-to-choose owns checklist
+/blog/moringa-brands-comparison-australia-2026.html /blog/moringa-brands-comparison-australia-2026 301!
+/blog/moringa-brands-comparison-australia-2026 /blog/moringa-brands-comparison-australia-2026.html 200
+/blog/moringa-brands-reviewed-australia-2025-verdict.html /blog/moringa-brands-comparison-australia-2026 301
+/blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-comparison-australia-2026 301
+/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html /blog/moringa-brands-comparison-australia-2026 301
+/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide /blog/moringa-brands-comparison-australia-2026 301
 /blog/grow-moringa-tree-australia.html /blog/grow-moringa-tree-australia 301!
 /blog/grow-moringa-tree-australia /blog/grow-moringa-tree-australia.html 200
-/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide /blog/how-to-choose-moringa-powder-australia-2026 301
 
 # === untitled batch posts ===
 # Moringa for PCOS: What the Research Actually Shows (new June 2026)
