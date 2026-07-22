@@ -3,7 +3,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
     "title": "How to Eat 30 Different Plants Per Week (And Why It Matters for Gut Health)",
-    "description": "Research from the American Gut Project found people eating 30+ different plants per week had significantly more diverse microbiomes. What counts, why diversity matters, and how to get there without overhauling your diet.",
+    "description": "Eating 30+ different plants a week links to richer gut microbiomes. What counts, why diversity matters, and how to get there simply.",
     "category": "Health",
     "href": "/blog/30-different-plants-per-week-gut-health-microbiome-2026"
   },
@@ -17,14 +17,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-anti-inflammatory-foods-australia-daily-guide-2026",
     "title": "The Best Anti-Inflammatory Foods to Eat Every Day (Australian Guide 2026)",
-    "description": "Chronic inflammation drives most of the major diseases Australians face. These are the foods with real, documented anti-inflammatory effects, and the ones that are hype.",
+    "description": "Anti-inflammatory foods with real evidence for Australians — plus which “superfood” claims are mostly marketing hype.",
     "category": "Health",
     "href": "/blog/best-anti-inflammatory-foods-australia-daily-guide-2026"
   },
   {
     "slug": "best-plant-based-iron-foods-australia-absorption-guide-2026",
     "title": "The Best Plant-Based Iron Foods for Australians (And How to Absorb Them Better)",
-    "description": "Iron deficiency is one of the most common nutritional problems in Australia. For people eating less meat, knowing which plant foods actually deliver, and what to eat with them: matters.",
+    "description": "Best plant iron foods for Australians, plus what to eat with them so you absorb more — practical for lower-meat diets.",
     "category": "Health",
     "href": "/blog/best-plant-based-iron-foods-australia-absorption-guide-2026"
   },
@@ -38,14 +38,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "blood-sugar-spikes-how-to-avoid-through-food-2026",
     "title": "Blood Sugar Spikes. What They Are and How to Avoid Them Through Food (2026)",
-    "description": "Blood sugar spikes don't only affect diabetics. They affect everyone's energy, mood, hunger, and long-term health. What causes them and the simple food habits that help.",
+    "description": "Blood sugar spikes affect energy, mood and hunger for everyone — not only diabetics. Causes and simple food habits that help.",
     "category": "Health",
     "href": "/blog/blood-sugar-spikes-how-to-avoid-through-food-2026"
   },
   {
     "slug": "can-you-drink-darjeeling-tea-every-day-2026",
     "title": "Can You Drink Darjeeling Tea Every Day? Benefits and Limits (2026)",
-    "description": "Yes, daily Darjeeling tea is fine for most people. What to know about caffeine limits, tannins and iron absorption, and the specific groups who should be more careful.",
+    "description": "Daily Darjeeling is fine for most people. Caffeine limits, tannins and iron absorption, and who should be more careful.",
     "category": "Tea Guide",
     "href": "/blog/can-you-drink-darjeeling-tea-every-day-2026"
   },
@@ -66,21 +66,21 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "curry-leaves-health-benefits-what-the-evidence-says-2026",
     "title": "What Do Curry Leaves Actually Do for Your Health? (2026)",
-    "description": "Curry leaves. What's real, what's overstated, and how much benefit you're getting whether you eat them or just use them for flavour and remove them before eating.",
+    "description": "Curry leaf health claims: what’s backed by evidence, what’s overstated, and what you get if you only fry them for flavour.",
     "category": "Guides",
     "href": "/blog/curry-leaves-health-benefits-what-the-evidence-says-2026"
   },
   {
     "slug": "curry-leaves-heart-health-cholesterol-evidence-2026",
     "title": "Curry Leaves for Heart Health and Cholesterol. What the Research Shows (2026)",
-    "description": "Curry leaves have been studied for effects on LDL cholesterol, triglycerides, and blood pressure. What the research actually shows and how it applies to everyday cooking.",
+    "description": "Curry leaves and heart markers: LDL, triglycerides and blood pressure — what studies show and how it applies to cooking.",
     "category": "Health",
     "href": "/blog/curry-leaves-heart-health-cholesterol-evidence-2026"
   },
   {
     "slug": "curry-leaves-in-australian-cooking-how-to-use-2026",
     "title": "Curry Leaves in Australian Cooking: 10 Ways to Use Them Beyond Curry (2026)",
-    "description": "Most Australian home cooks only use curry leaves in South Asian dishes. Ten practical ways to use them in everyday cooking: pasta, eggs, roasted vegetables, and more.",
+    "description": "Ten practical ways Aussie cooks can use curry leaves beyond curry: pasta, eggs, roasted veg, and more everyday meals.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-in-australian-cooking-how-to-use-2026"
   },
@@ -94,14 +94,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
     "title": "Curry Leaves Tea. How to Make It and Why People Drink It (2026)",
-    "description": "Curry leaves tea is a traditional drink used for digestion, blood sugar, and hair health. How to make it with fresh or dried leaves, and what's actually known about whether it works.",
+    "description": "How to make curry leaf tea with fresh or dried leaves — and what’s known (vs assumed) about digestion, blood sugar and hair claims.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026"
   },
   {
     "slug": "curry-leaves-vs-curry-powder-difference-explained-2026",
     "title": "Curry Leaves vs Curry Powder: They Are Not the Same Thing",
-    "description": "Curry leaves and curry powder are completely different ingredients that happen to share a name. What each actually is, why you can't swap one for the other, and what to use instead.",
+    "description": "Curry leaves and curry powder share a name, not an ingredient. What each is, why you can’t swap them, and what to use instead.",
     "category": "Guides",
     "href": "/blog/curry-leaves-vs-curry-powder-difference-explained-2026"
   },
@@ -122,28 +122,28 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "darjeeling-tea-health-benefits-research-2026",
     "title": "Darjeeling Tea Health Benefits. What the Research Shows (2026)",
-    "description": "Darjeeling tea health benefits: antioxidants, gut bacteria, stress, bone density. What's backed by research and what's generic black tea claims repackaged as Darjeeling-specific.",
+    "description": "Darjeeling tea benefits: antioxidants, gut, stress, bones — what’s researched vs generic black-tea claims sold as Darjeeling-specific.",
     "category": "Tea",
     "href": "/blog/darjeeling-tea-health-benefits-research-2026"
   },
   {
     "slug": "darjeeling-tea-vs-english-breakfast-comparison-2026",
     "title": "Darjeeling Tea vs English Breakfast. What Is Actually Different? (2026)",
-    "description": "Both are black teas. But Darjeeling and English Breakfast are completely different drinking experiences. A clear comparison on flavour, caffeine, strength, and when to use each.",
+    "description": "Darjeeling vs English Breakfast: both black teas, very different cups. Flavour, caffeine, strength, and when to drink each.",
     "category": "Tea Guide",
     "href": "/blog/darjeeling-tea-vs-english-breakfast-comparison-2026"
   },
   {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
     "title": "Fibre Deficiency in Australia: The Cancer Risk Most People Don't Know About",
-    "description": "Almost 20% of bowel cancers in Australia are attributable to insufficient fibre intake. Most Australians eat about half of what they need. What fibre actually does and how to get more of it.",
+    "description": "Low fibre is linked to a large share of bowel cancers in Australia. What fibre does, how much you need, and easy ways to eat more.",
     "category": "Health",
     "href": "/blog/fibre-deficiency-australia-bowel-cancer-risk-2026"
   },
   {
     "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
     "title": "Fresh vs Dried Curry Leaves, Which Is Better for Cooking? (2026)",
-    "description": "Fresh curry leaves taste stronger. Dried are more convenient. Which actually matters depends on what you're cooking. A practical comparison for Australian home cooks.",
+    "description": "Fresh curry leaves taste stronger; dried are convenient. Which wins depends on the dish — a practical AU home-cook comparison.",
     "category": "Guides",
     "href": "/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026"
   },
@@ -157,14 +157,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "grow-moringa-tree-australia",
     "title": "How to Grow Moringa Tree in Australia (2026): Climate Zones, Winter Care & Pruning",
-    "description": "How to grow moringa (drumstick tree) in Australia by climate zone. Melbourne frost and pot care, July to August winter tasks, pruning, when to plant, and city-by-city success tips. Updated 2026.",
+    "description": "Grow moringa in Australia by climate zone: Melbourne frost and pots, winter care, pruning, planting times, and city tips (2026).",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia"
   },
   {
     "slug": "gut-brain-connection-digestion-mood-mental-health-2026",
     "title": "The Gut-Brain Connection. Why Your Digestion Affects Your Mood (2026)",
-    "description": "90% of the body's serotonin is made in the gut. The link between gut health and mental health is one of the most significant developments in recent nutrition research. What it means in practice.",
+    "description": "Gut health and mood are linked — including serotonin made in the gut. What the research means for everyday Australian eating.",
     "category": "Health",
     "href": "/blog/gut-brain-connection-digestion-mood-mental-health-2026"
   },
@@ -178,21 +178,21 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
     "title": "How Much Caffeine in Darjeeling Tea? Compared to Coffee and Green Tea",
-    "description": "Darjeeling black tea has 14-70mg caffeine per cup: noticeably less than coffee's 95-200mg. What affects it, how it compares, and whether it's a good morning coffee swap.",
+    "description": "Darjeeling has ~14–70mg caffeine per cup vs coffee’s 95–200mg. What changes the dose, and whether it’s a good morning swap.",
     "category": "Tea Guide",
     "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"
   },
   {
     "slug": "how-much-protein-australian-women-need-honest-guide-2026",
     "title": "How Much Protein Do Australian Women Actually Need? (2026 Guide)",
-    "description": "TikTok says 130g per day. Dietitians Australia says most women already eat enough. A new CSIRO report says something more nuanced. Here's the actual answer by life stage.",
+    "description": "How much protein Australian women need by life stage — past TikTok extremes and one-size dietitian soundbites (2026).",
     "category": "Health",
     "href": "/blog/how-much-protein-australian-women-need-honest-guide-2026"
   },
   {
     "slug": "how-much-water-per-day-australians-honest-guide-2026",
     "title": "How Much Water Should You Actually Drink Per Day? (Guide for Australians)",
-    "description": "The &quot;eight glasses a day&quot; rule has almost no scientific basis. What the evidence says about daily water intake, what counts toward it, and the signs you need more.",
+    "description": "“Eight glasses a day” isn’t strong science. What evidence says about daily fluid needs for Australians — and what actually counts.",
     "category": "Health",
     "href": "/blog/how-much-water-per-day-australians-honest-guide-2026"
   },
@@ -206,28 +206,28 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-brew-darjeeling-tea-perfectly-2026",
     "title": "How to Brew Darjeeling Tea Perfectly: Temperature, Time and Ratios (2026)",
-    "description": "Darjeeling tea brewed wrong turns astringent and flat. The right temperature, steeping time, leaf-to-water ratio, and whether milk belongs in it: a complete brewing guide.",
+    "description": "Brew Darjeeling without astringency: temperature, steep time, leaf-to-water ratio, and whether milk belongs in the cup.",
     "category": "Tea",
     "href": "/blog/how-to-brew-darjeeling-tea-perfectly-2026"
   },
   {
     "slug": "how-to-build-balanced-plate-no-calorie-counting-2026",
     "title": "How to Build a Balanced Plate at Every Meal (No Calorie Counting)",
-    "description": "Calorie counting works for some people and exhausts most people. A simpler framework for building nutritionally balanced meals using the plate method: practical for everyday Australian eating.",
+    "description": "Build balanced meals without calorie counting. A simple plate method that works for everyday Australian eating.",
     "category": "Health",
     "href": "/blog/how-to-build-balanced-plate-no-calorie-counting-2026"
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
     "title": "How to Choose Moringa Powder in Australia: Colour, Lab Tests and Red Flags (2026)",
-    "description": "Choose quality moringa powder in Australia: bright green colour, single-ingredient labels, shade-dried leaf, batch lab tests, price traps, and powder vs capsules. Updated 2026 buyer guide.",
+    "description": "How to choose moringa powder in Australia: bright green colour, single-ingredient labels, shade-dried leaf, lab tests, and price traps.",
     "category": "Buyer's Guide",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026"
   },
   {
     "slug": "how-to-eat-more-vegetables-practical-guide-australia-2026",
     "title": "How to Eat More Vegetables Without Changing Your Whole Diet (2026)",
-    "description": "Most Australians don't eat enough vegetables. The good news is you don't need a meal plan or a new lifestyle. Practical ways to add vegetables to meals you already cook.",
+    "description": "Most Australians undershoot vegetables. Practical ways to add more to meals you already cook — no meal plan required.",
     "category": "Health",
     "href": "/blog/how-to-eat-more-vegetables-practical-guide-australia-2026"
   },
@@ -241,7 +241,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-store-curry-leaves-fresh-dried-australia-2026",
     "title": "How to Store Curry Leaves: Fresh and Dried (Australian Guide 2026)",
-    "description": "Fresh curry leaves last 2 weeks in the fridge if done right. Dried curry leaves last months. Exact storage methods for both. So you stop wasting half the packet.",
+    "description": "Fresh curry leaves last ~2 weeks in the fridge if stored right. Dried last months. Exact methods so you stop wasting half the packet.",
     "category": "Guides",
     "href": "/blog/how-to-store-curry-leaves-fresh-dried-australia-2026"
   },
@@ -262,28 +262,28 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "is-moringa-safe-during-pregnancy-2026",
     "title": "Is Moringa Safe During Pregnancy? What You Need to Know (2026)",
-    "description": "Moringa leaf in food amounts is generally considered safe in pregnancy. Moringa root and seeds are not. The distinction that matters, with questions to ask your midwife.",
+    "description": "Moringa leaf in food amounts is generally considered safer in pregnancy; root and seeds are not. Questions to ask your midwife.",
     "category": "Health",
     "href": "/blog/is-moringa-safe-during-pregnancy-2026"
   },
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
     "title": "Is Moringa Safe for Children? Dosage, Safety Research and GP Guide (2026)",
-    "description": "Is moringa safe for children? Yes at small food-level doses using leaf powder only. Age-by-age amounts, paediatric research, iron for picky eaters, and when to ask your GP first.",
+    "description": "Is moringa safe for kids? Yes at small food-level leaf-powder doses. Age-by-age amounts, research notes, and when to ask a GP.",
     "category": "Health",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026"
   },
   {
     "slug": "is-moringa-safe-for-dogs-benefits-dosage-australia-2026",
     "title": "Is Moringa Safe for Dogs? Benefits, Dosage &amp; What to Watch For (2026)",
-    "description": "Is moringa safe for dogs? Yes, in moderation. A vet-aware guide to benefits, dosage by weight, mixing methods, and the one health condition that changes the answer.",
+    "description": "Is moringa safe for dogs? Usually in moderation. Dosage by weight, mixing tips, and the health condition that changes the answer.",
     "category": "Pets",
     "href": "/blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026"
   },
   {
     "slug": "is-moringa-worth-it-cost-value-australia-2026",
     "title": "Is Moringa Worth It? A Cost-Per-Nutrient Breakdown for Australians (2026)",
-    "description": "$11 for 100g: is moringa actually good value compared to a multivitamin, greens powder, or iron tablet? A real cost comparison of what you're getting per dollar.",
+    "description": "$11/100g moringa vs a multivitamin, greens powder or iron tablet — a cost-per-nutrient breakdown for Australians.",
     "category": "Guides",
     "href": "/blog/is-moringa-worth-it-cost-value-australia-2026"
   },
@@ -332,7 +332,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-detox-what-is-real-2026",
     "title": "Moringa Detox. What's Real and What's Marketing (2026)",
-    "description": "&quot;Moringa detox&quot; is everywhere. What moringa actually does that relates to detoxification, what your liver already does that moringa can't replace, and the one real benefit worth knowing.",
+    "description": "“Moringa detox” marketing vs reality: what moringa may support, what your liver already does, and the one benefit worth knowing.",
     "category": "Health",
     "href": "/blog/moringa-detox-what-is-real-2026"
   },
@@ -353,7 +353,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-for-breastfeeding-milk-supply-2026",
     "title": "Moringa for Breastfeeding: Does It Help with Milk Supply? (2026)",
-    "description": "A 2025 systematic review found moringa leaf increased breast milk volume by up to 400mL per day. What the research says, what's safe, and what to ask your midwife.",
+    "description": "Moringa and milk supply: what reviews report on volume, what’s known about safety, and what to ask your midwife first.",
     "category": "Health",
     "href": "/blog/moringa-for-breastfeeding-milk-supply-2026"
   },
@@ -367,14 +367,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-for-hair-growth-eating-evidence-2026",
     "title": "Moringa for Hair Growth: Does Eating It Help? (2026)",
-    "description": "Can eating moringa powder improve hair growth? The nutrients that matter for hair, what moringa provides, and how long you'd need to take it before seeing any difference.",
+    "description": "Can eating moringa help hair growth? Key nutrients for hair, what moringa provides, and how long before you’d notice any change.",
     "category": "Health",
     "href": "/blog/moringa-for-hair-growth-eating-evidence-2026"
   },
   {
     "slug": "moringa-for-high-blood-pressure-hypertension-2026",
     "title": "Moringa for High Blood Pressure. What the Evidence Shows (2026)",
-    "description": "Some research suggests moringa may mildly reduce blood pressure. What the evidence shows, what it does not, and the specific interaction that matters if you're on medication.",
+    "description": "Moringa and blood pressure: what evidence suggests, what it doesn’t prove, and the medication interaction you must know.",
     "category": "Health",
     "href": "/blog/moringa-for-high-blood-pressure-hypertension-2026"
   },
@@ -402,7 +402,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-for-pcos-polycystic-ovary-syndrome-2026",
     "title": "Moringa for PCOS. What the Research Actually Shows (2026)",
-    "description": "A 2026 study explored moringa leaf extracts and PCOS. What the animal research found, what's still unproven in humans, and what PCOS symptoms moringa might support.",
+    "description": "Moringa and PCOS: what animal and early research shows, what’s unproven in humans, and which symptoms it might support.",
     "category": "Health",
     "href": "/blog/moringa-for-pcos-polycystic-ovary-syndrome-2026"
   },
@@ -416,7 +416,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-for-skin-eating-benefits-glow-2026",
     "title": "Moringa for Skin: Does Eating It Actually Help? (2026)",
-    "description": "Can eating moringa powder improve your skin? The nutrients are real. The glow claims are often overstated. Here's an breakdown of what moringa contributes from the inside.",
+    "description": "Can eating moringa improve skin? The nutrients are real; “glow” claims are often overstated. What’s fair to expect from inside out.",
     "category": "Health",
     "href": "/blog/moringa-for-skin-eating-benefits-glow-2026"
   },
@@ -444,14 +444,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "title": "Moringa Heavy Metals Lab Testing Australia. What to Look For (2026)",
-    "description": "Moringa is a hyper-accumulator: lead and cadmium matter. How to read a CoA in Australia, what NMI testing shows, and red flags when a brand won't share batch results (2026).",
+    "description": "Moringa can accumulate lead and cadmium. How to read an Australian CoA, what NMI testing covers, and red flags when brands hide results.",
     "category": "Buyer's Guide",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026"
   },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
     "title": "Moringa Patches Australia 2026: Do They Work or Is It a Scam? (Glorenda, Healrize Review)",
-    "description": "Moringa patches Australia 2026: do Glorenda, Healrize and Clearena patches work or is it a scam? Transdermal science, TGA status, patches vs powder table, and buyer mistakes to avoid.",
+    "description": "Do Glorenda, Healrize and Clearena moringa patches work? Transdermal science, TGA/ARTG status, and patches vs powder (2026).",
     "category": "Brand Review",
     "href": "/blog/moringa-patches-australia-review-do-they-work"
   },
@@ -465,14 +465,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-powder-vs-capsules-comparison-2026",
     "title": "Moringa Powder vs Moringa Capsules, Which Form Is Better? (2026)",
-    "description": "Should you buy moringa powder or capsules? They're the same ingredient in different formats. What's actually different, which is better value, and when each makes sense.",
+    "description": "Moringa powder vs capsules: same leaf, different format. Value, dose control, taste, and when each option makes sense.",
     "category": "Guides",
     "href": "/blog/moringa-powder-vs-capsules-comparison-2026"
   },
   {
     "slug": "moringa-pregnancy-safe-australia-trimester-guide-2026",
     "title": "Is Moringa Safe During Pregnancy? Australia Trimester Guide (2026)",
-    "description": "Is moringa safe during pregnancy in Australia? Leaf powder vs root, trimester cautions, iron &amp; folate context, and when to ask your GP, not a substitute for medical advice (2026).",
+    "description": "Is moringa safe in pregnancy in Australia? Leaf powder vs root, trimester cautions, iron/folate context — ask your GP (not medical advice).",
     "category": "Health",
     "href": "/blog/moringa-pregnancy-safe-australia-trimester-guide-2026"
   },
@@ -528,7 +528,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
     "title": "Moringa vs Coffee for Energy (Caffeine-Free, No Crash) Australia 2026",
-    "description": "Honest moringa vs coffee comparison for energy in Australia. Coffee gives a fast caffeine spike; moringa offers caffeine-free nutrients (iron, B vitamins) without the afternoon crash. Decision guide for 2026.",
+    "description": "Coffee gives a fast caffeine spike. Moringa is caffeine-free with iron and B vitamins — and no afternoon crash. AU energy comparison.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack"
   },
@@ -542,7 +542,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-vs-whey-protein-comparison-2026",
     "title": "Moringa vs Whey Protein, Which Is Better for Your Goals? (2026)",
-    "description": "Moringa and whey both get used as daily powder habits. They're doing completely different things. A clear comparison for people who want to know if moringa can replace protein powder.",
+    "description": "Moringa vs whey: same daily-powder habit, different jobs. Clear comparison if you’re wondering whether moringa can replace protein.",
     "category": "Health",
     "href": "/blog/moringa-vs-whey-protein-comparison-2026"
   },
@@ -570,14 +570,14 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "omega-3-deficiency-australia-inflammation-food-sources-2026",
     "title": "Omega-3 Deficiency in Australia: The Silent Driver of Inflammation (2026)",
-    "description": "Omega-3 deficiency is common in Australia as fish consumption declines and processed food rises. What omega-3 actually does, who's most at risk, and the best food sources for Australians.",
+    "description": "Omega-3 deficiency is common as fish intake falls. What omega-3 does, who’s at risk in Australia, and the best food sources.",
     "category": "Health",
     "href": "/blog/omega-3-deficiency-australia-inflammation-food-sources-2026"
   },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
     "title": "Rosabella Moringa Review (2026): Lab Transparency, Cost Comparison and Chemist Warehouse Verdict",
-    "description": "Rosabella moringa review 2026: lab transparency gap, cost per gram and per month vs powder, February recall, dose maths, and who should choose pure powder instead.",
+    "description": "Rosabella moringa review 2026: lab gaps, cost per gram vs powder, February recall, dose maths, and when pure powder is smarter.",
     "category": "Brand Review",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026"
   },
@@ -605,28 +605,28 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "stop-eating-ultra-processed-food-30-days-what-happens-2026",
     "title": "What Happens to Your Body When You Stop Eating Ultra-Processed Food for 30 Days",
-    "description": "The changes aren't as dramatic as social media makes out, and some are harder than expected. A realistic, research-based look at what actually shifts when you cut out ultra-processed food.",
+    "description": "What actually changes in 30 days off ultra-processed food — realistic, research-based, and less dramatic than social media claims.",
     "category": "Health",
     "href": "/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026"
   },
   {
     "slug": "strength-training-women-over-35-why-it-matters-2026",
     "title": "Strength Training for Women Over 35. Why the Evidence Has Shifted Away from Cardio",
-    "description": "For women over 35, strength training protects bone density, maintains metabolic rate, and manages menopausal symptoms more effectively than cardio alone. What changed in the research.",
+    "description": "For women over 35, strength training protects bone, metabolism and menopause symptoms better than cardio alone — what shifted.",
     "category": "Health",
     "href": "/blog/strength-training-women-over-35-why-it-matters-2026"
   },
   {
     "slug": "stress-weight-gain-cortisol-mechanism-what-to-do-2026",
     "title": "Why Chronic Stress Makes You Gain Weight (And What to Do About It)",
-    "description": "Stress weight gain isn't about eating more. There's a specific hormonal mechanism that stores fat differently when cortisol is chronically elevated. What the evidence says is happening.",
+    "description": "Stress weight gain isn’t only “eating more.” How chronic cortisol shifts fat storage — and what evidence-based steps help.",
     "category": "Health",
     "href": "/blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026"
   },
   {
     "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "title": "Ultra-Processed Food in Australia. What It Actually Is and How Much You're Eating",
-    "description": "Most Australians eat more ultra-processed food than they realise, and most don't know what the term actually means. A clear, non-preachy guide to what counts and what the research shows.",
+    "description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows — without the lecture.",
     "category": "Health",
     "href": "/blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026"
   },
@@ -647,7 +647,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "why-always-tired-nutritional-deficiencies-australia-2026",
     "title": "Why You're Always Tired: 7 Nutritional Deficiencies That Cause Fatigue in Australians",
-    "description": "Persistent tiredness that sleep doesn't fix is often nutritional. Seven common deficiencies that cause fatigue in Australians, and how to identify which one applies to you.",
+    "description": "Always tired despite sleep? Seven common nutritional deficiencies linked to fatigue in Australians — and how to spot which fits.",
     "category": "Health",
     "href": "/blog/why-always-tired-nutritional-deficiencies-australia-2026"
   }
