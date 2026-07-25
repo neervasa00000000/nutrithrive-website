@@ -1,4 +1,4 @@
-/** Auto-generated — 93 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 94 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -643,6 +643,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Earthy, slightly bitter, faintly peppery (like strong spinach/matcha). Don’t drink it in water. Banana, mango, cacao, or oat milk hide it. What makes it worse.",
     "category": "Guides",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026"
+  },
+  {
+    "slug": "what-to-eat-perimenopause-diet-australia-2026",
+    "title": "What to Eat During Perimenopause: A Guide for Australian Women (2026)",
+    "description": "Brain fog, hot flushes, stubborn weight. What you eat during perimenopause genuinely matters. A GP-aligned guide to the best foods for Australian women in their 40s and 50s.",
+    "category": "Health",
+    "href": "/blog/what-to-eat-perimenopause-diet-australia-2026"
   },
   {
     "slug": "why-always-tired-nutritional-deficiencies-australia-2026",
