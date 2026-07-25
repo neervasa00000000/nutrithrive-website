@@ -15,7 +15,7 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -75,13 +75,19 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/category/health/index</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/category/pets/index</loc>
     <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/category/recipes/index</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -512,6 +518,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/moringa-wellness-shot-recipe-winter-2026</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/moringa-with-vitamin-c-iron-absorption-guide-2026</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -597,7 +609,7 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/what-to-eat-perimenopause-diet-australia-2026</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -705,19 +717,19 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/teleprompter-recorder-extension/popup.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/teleprompter-recorder-extension/recorder.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://nutrithrive.com.au/teleprompter-recorder-extension/teleprompter.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
