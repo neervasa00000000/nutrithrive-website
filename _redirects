@@ -645,3 +645,22 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # How to Age Well in Your 40s: Science-Backed Guide (seo health Jul 2026)
 /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026.html /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026 301!
 /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026 /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026.html 200
+
+/blog/category/recipes /blog/category/recipes/index.html 200
+/blog/category/recipes/ /blog/category/recipes/index.html 200
+# === recipe sales batch (Jul 2026) ===
+# Moringa Wellness Shot: The 2-Minute Winter Morning Ritual (recipe sales jul 2026)
+/blog/moringa-wellness-shot-recipe-winter-2026.html /blog/moringa-wellness-shot-recipe-winter-2026 301!
+/blog/moringa-wellness-shot-recipe-winter-2026 /blog/moringa-wellness-shot-recipe-winter-2026.html 200
+# 30-Minute Curry Leaves Dahl: The Easiest Healthy Dinner (recipe sales jul 2026)
+/blog/curry-leaves-dahl-recipe-30-minutes-australia-2026.html /blog/curry-leaves-dahl-recipe-30-minutes-australia-2026 301!
+/blog/curry-leaves-dahl-recipe-30-minutes-australia-2026 /blog/curry-leaves-dahl-recipe-30-minutes-australia-2026.html 200
+# Darjeeling Chai Latte Recipe: The Winter Coffee Alternative (recipe sales jul 2026)
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 301!
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html 200
+# Moringa Energy Bites for Kids: No-Bake Lunchbox Recipe (recipe sales jul 2026)
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026.html /blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026 301!
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026 /blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026.html 200
+# Moringa Avocado Toast: The Anti-Inflammatory Breakfast (recipe sales jul 2026)
+/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026.html /blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026 301!
+/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026 /blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026.html 200

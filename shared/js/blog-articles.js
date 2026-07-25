@@ -1,4 +1,4 @@
-/** Auto-generated — 94 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 95 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -545,6 +545,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa vs whey: same daily-powder habit, different jobs. Clear comparison if you’re wondering whether moringa can replace protein.'re doing completely different things. A clear comparison for people who want to know if moringa can replace protein powder.",
     "category": "Health",
     "href": "/blog/moringa-vs-whey-protein-comparison-2026"
+  },
+  {
+    "slug": "moringa-wellness-shot-recipe-winter-2026",
+    "title": "Moringa Wellness Shot: The 2-Minute Winter Morning Ritual (2026)",
+    "description": "One moringa wellness shot takes 2 minutes and replaces three separate supplements. The recipe, the why, and what to expect after a week of daily use.",
+    "category": "Recipes",
+    "href": "/blog/moringa-wellness-shot-recipe-winter-2026"
   },
   {
     "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
