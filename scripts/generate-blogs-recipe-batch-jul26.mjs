@@ -160,7 +160,7 @@ const POSTS = [
     ],
     related: [
       { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
-      { href: '/blog/moringa-smoothie-recipes-australia-2026', label: 'Moringa smoothie recipes' },
+      { href: '/blog/moringa-smoothie-recipes-australia-easy-2026', label: 'Moringa smoothie recipes' },
       { href: '/blog/moringa-with-vitamin-c-iron-absorption-guide-2026', label: 'Moringa and vitamin C for iron' },
       { href: '/blog/how-to-strengthen-immune-system-naturally-australia-2026', label: 'Strengthen immunity naturally' },
     ],
@@ -458,12 +458,12 @@ const POSTS = [
     inlineLinks: [
       { href: '/products/moringa-powder/', label: 'Get NutriThrive Moringa — $11/100g' },
       { href: '/blog/is-moringa-safe-for-children-kids-dosage-2026', label: 'Can children have moringa?' },
-      { href: '/blog/moringa-smoothie-recipes-australia-2026', label: 'More moringa recipes' },
+      { href: '/blog/moringa-smoothie-recipes-australia-easy-2026', label: 'More moringa recipes' },
     ],
     related: [
       { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
       { href: '/blog/is-moringa-safe-for-children-kids-dosage-2026', label: 'Is moringa safe for children?' },
-      { href: '/blog/moringa-smoothie-recipes-australia-2026', label: 'Moringa smoothie recipes' },
+      { href: '/blog/moringa-smoothie-recipes-australia-easy-2026', label: 'Moringa smoothie recipes' },
       { href: '/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026', label: 'Moringa avocado toast' },
     ],
     ctaExtra: 'One tub makes about 30 batches of these bites. Lab-tested, shade-dried, packed in Melbourne.',
@@ -563,7 +563,7 @@ const POSTS = [
       { href: '/products/moringa-powder/', label: 'Shop moringa powder' },
       { href: '/blog/moringa-with-vitamin-c-iron-absorption-guide-2026', label: 'Moringa and vitamin C' },
       { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Anti-inflammatory foods' },
-      { href: '/blog/moringa-smoothie-recipes-australia-2026', label: 'More moringa recipes' },
+      { href: '/blog/moringa-smoothie-recipes-australia-easy-2026', label: 'More moringa recipes' },
     ],
     ctaExtra: 'From 33 cents per day. Lab-tested, shade-dried, packed in Melbourne. Free shipping over $80.',
   },
@@ -933,7 +933,7 @@ function writeRecipesCategory(posts) {
 </header>
 <ul class="grid gap-3 list-none m-0 p-0">
 ${items}
-<li><a class="text-moringa-leaf hover:underline" href="/blog/moringa-smoothie-recipes-australia-2026">5 Moringa Smoothie Recipes That Don't Taste Like Grass (2026)</a></li>
+<li><a class="text-moringa-leaf hover:underline" href="/blog/moringa-smoothie-recipes-australia-easy-2026">5 Moringa Smoothie Recipes That Don't Taste Like Grass (2026)</a></li>
 </ul>
 <p class="mt-10"><a class="text-moringa-leaf hover:underline" href="/blog/">← All journal articles</a></p>
 </main>

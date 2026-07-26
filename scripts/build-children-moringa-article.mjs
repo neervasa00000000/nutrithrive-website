@@ -374,7 +374,7 @@ ${cta('Start with a quarter teaspoon in smoothies')}
 <p>The taste is earthy and mildly bitter. These methods pair moringa with foods that dominate the flavour profile:</p>
 
 <h3>The &#8220;Hulk Smoothie&#8221; (most reliable for under 5s)</h3>
-<p>Blend: 1 frozen banana + 1/2 cup frozen mango + 1/2 cup oat milk or coconut water + 1/8 tsp moringa. Banana and mango overpower the moringa completely. See our <a href="/blog/moringa-smoothie-recipes-australia-2026">moringa smoothie recipes</a> for more ideas.</p>
+<p>Blend: 1 frozen banana + 1/2 cup frozen mango + 1/2 cup oat milk or coconut water + 1/8 tsp moringa. Banana and mango overpower the moringa completely. See our <a href="/blog/moringa-smoothie-recipes-australia-easy-2026">moringa smoothie recipes</a> for more ideas.</p>
 
 <h3>Chocolate milk or cacao oat milk</h3>
 <p>Stir a tiny amount into chocolate oat milk. Cacao dominates the flavour. Works for the 1/8 to 1/4 tsp range.</p>
@@ -409,7 +409,7 @@ ${cta('Start with a quarter teaspoon in smoothies')}
 <h2>What to say to your GP or paediatrician</h2>
 <blockquote><p>&#8220;I&#8217;m considering adding a small amount of moringa leaf powder to my child&#8217;s diet as a nutritional top-up, specifically for iron and vitamin A. It&#8217;s 100% dried leaf, not an extract. Given our health history, is there any reason to avoid this, or anything I should monitor?&#8221;</p></blockquote>
 <p>If your GP asks for sources, share the Tanzania paediatric study (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6694432/" rel="noopener noreferrer">PMC6694432</a>), the Stohs &amp; Hartman safety review, and the ECHO Community nutrient data for children aged 1 to 3.</p>
-<p>Related: <a href="/blog/is-moringa-safe-during-pregnancy-2026">is moringa safe during pregnancy?</a></p>
+<p>Related: <a href="/blog/moringa-pregnancy-safe-australia-trimester-guide-2026">is moringa safe during pregnancy?</a></p>
 
 <h2 id="children-moringa-faq">FAQ</h2>
 ${faqHtml}
@@ -451,9 +451,9 @@ ${cta()}
 <section class="nt-related-links-block">
   <h2>Related guides</h2>
   <ul>
-    <li><a href="/blog/is-moringa-safe-during-pregnancy-2026">Is moringa safe during pregnancy?</a></li>
+    <li><a href="/blog/moringa-pregnancy-safe-australia-trimester-guide-2026">Is moringa safe during pregnancy?</a></li>
     <li><a href="/blog/moringa-side-effects-what-happens-take-too-much-2026">Moringa side effects: safe dose and drug interactions</a></li>
-    <li><a href="/blog/moringa-smoothie-recipes-australia-2026">5 moringa smoothie recipes for the whole family</a></li>
+    <li><a href="/blog/moringa-smoothie-recipes-australia-easy-2026">5 moringa smoothie recipes for the whole family</a></li>
     <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to choose moringa powder in Australia (2026 buyer guide)</a></li>
     <li><a href="/blog/how-to-add-moringa-to-diet">How to add moringa to your diet</a></li>
     <li><a href="/products/moringa-powder/">Shop moringa powder</a></li>

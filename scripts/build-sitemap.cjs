@@ -53,6 +53,8 @@ const REDIRECT_SOURCE_BLOCKLIST = new Set([
   'blog/moringa-brands-reviewed-australia-2025-verdict.html',
   'blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html',
   'blog/is-moringa-banned-australia-truth-2026.html',
+  'blog/moringa-smoothie-recipes-australia-2026.html',
+  'blog/is-moringa-safe-during-pregnancy-2026.html',
 ]);
 
 const INCLUDE_NOINDEX = process.env.INCLUDE_NOINDEX === "1" || process.argv.includes("--include-noindex");
