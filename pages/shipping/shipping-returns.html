@@ -60,13 +60,17 @@
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HealthFoodStore"],
+  "@type": [
+    "LocalBusiness",
+    "HealthFoodStore"
+  ],
   "@id": "https://nutrithrive.com.au/#localbusiness",
   "name": "NutriThrive",
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
   "email": "nutrithrive0@gmail.com",
+  "priceRange": "$",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",
@@ -103,6 +107,13 @@
       "closes": "23:00"
     }
   ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": 11
+  },
   "areaServed": [
     {
       "@type": "City",
@@ -119,10 +130,6 @@
     {
       "@type": "Country",
       "name": "Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Worldwide"
     }
   ],
   "serviceArea": [
@@ -234,7 +241,7 @@
                         <h2>Which payment methods do you accept?</h2>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer"><div class="faq-answer-inner"><p>We accept Visa, bank transfer, cash and PayPal.</p></div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner"><p>We accept Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup only.</p></div></div>
                 </div>
 
                 <div class="faq-item">
@@ -331,7 +338,7 @@
           "name": "Do you offer a money-back guarantee?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes - 7-day money-back guarantee from delivery date. Original shipping costs are not refunded."
+            "text": "Yes - 7-day return policy (unopened packs only) from delivery date. Original shipping costs are not refunded."
           }
         },
         {
@@ -339,7 +346,7 @@
           "name": "Which payment methods do you accept?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We accept Visa, bank transfer, cash and PayPal."
+            "text": "We accept Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup only."
           }
         },
         {
