@@ -421,8 +421,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026 /404.html 410
 /blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026.html /404.html 410
 /blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026 /404.html 410
-/blog/best-superfoods-australia-comparison-health-conscious-adults.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/best-superfoods-australia-comparison-health-conscious-adults /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/best-superfoods-australia-comparison-health-conscious-adults.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301!
+/blog/best-superfoods-australia-comparison-health-conscious-adults /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301!
 /blog/cant-lose-weight-broken-gut-what-actually-worked-2026.html /404.html 410
 /blog/cant-lose-weight-broken-gut-what-actually-worked-2026 /404.html 410
 /blog/chronic-fatigue-what-actually-fixed-it-2026.html /404.html 410
@@ -484,8 +484,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/what-to-eat-when-too-tired-melbourne-2026.html /404.html 410
 /blog/what-to-eat-when-too-tired-melbourne-2026 /404.html 410
 # where-to-buy consolidated into how-to-choose hub (noindex + 301; file retained 4 weeks)
-/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301!
+/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide /blog/how-to-choose-moringa-powder-australia-2026 301!
 /blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder.html /404.html 410
 /blog/why-i-built-nutrithrive-moringa-real-story-finest-moringa-powder /404.html 410
 /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html /404.html 410
@@ -497,10 +497,10 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Brands cluster IA (22 Jul 2026): brands-comparison owns ranking; legacy lists 301 here; how-to-choose owns checklist
 /blog/moringa-brands-comparison-australia-2026.html /blog/moringa-brands-comparison-australia-2026 301!
 /blog/moringa-brands-comparison-australia-2026 /blog/moringa-brands-comparison-australia-2026.html 200
-/blog/moringa-brands-reviewed-australia-2025-verdict.html /blog/moringa-brands-comparison-australia-2026 301
-/blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-comparison-australia-2026 301
-/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html /blog/moringa-brands-comparison-australia-2026 301
-/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide /blog/moringa-brands-comparison-australia-2026 301
+/blog/moringa-brands-reviewed-australia-2025-verdict.html /blog/moringa-brands-comparison-australia-2026 301!
+/blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-comparison-australia-2026 301!
+/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html /blog/moringa-brands-comparison-australia-2026 301!
+/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide /blog/moringa-brands-comparison-australia-2026 301!
 /blog/grow-moringa-tree-australia.html /blog/grow-moringa-tree-australia 301!
 /blog/grow-moringa-tree-australia /blog/grow-moringa-tree-australia.html 200
 
@@ -664,3 +664,67 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Moringa Avocado Toast: The Anti-Inflammatory Breakfast (recipe sales jul 2026)
 /blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026.html /blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026 301!
 /blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026 /blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026.html 200
+
+# === Missing .html → clean force redirects (Jul 2026 SEO dup fix) ===
+/blog/curry-leaves-in-australian-cooking-how-to-use-2026.html /blog/curry-leaves-in-australian-cooking-how-to-use-2026 301!
+/blog/curry-leaves-in-australian-cooking-how-to-use-2026 /blog/curry-leaves-in-australian-cooking-how-to-use-2026.html 200
+/blog/curry-leaves-tea-how-to-make-benefits-2026.html /blog/curry-leaves-tea-how-to-make-benefits-2026 301!
+/blog/curry-leaves-tea-how-to-make-benefits-2026 /blog/curry-leaves-tea-how-to-make-benefits-2026.html 200
+/blog/darjeeling-tea-health-benefits-research-2026.html /blog/darjeeling-tea-health-benefits-research-2026 301!
+/blog/darjeeling-tea-health-benefits-research-2026 /blog/darjeeling-tea-health-benefits-research-2026.html 200
+/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026.html /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
+/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026.html 200
+/blog/how-to-brew-darjeeling-tea-perfectly-2026.html /blog/how-to-brew-darjeeling-tea-perfectly-2026 301!
+/blog/how-to-brew-darjeeling-tea-perfectly-2026 /blog/how-to-brew-darjeeling-tea-perfectly-2026.html 200
+/blog/how-to-make-moringa-tea-recipes-2026.html /blog/how-to-make-moringa-tea-recipes-2026 301!
+/blog/how-to-make-moringa-tea-recipes-2026 /blog/how-to-make-moringa-tea-recipes-2026.html 200
+/blog/how-to-store-curry-leaves-fresh-dried-australia-2026.html /blog/how-to-store-curry-leaves-fresh-dried-australia-2026 301!
+/blog/how-to-store-curry-leaves-fresh-dried-australia-2026 /blog/how-to-store-curry-leaves-fresh-dried-australia-2026.html 200
+/blog/is-moringa-safe-during-pregnancy-2026.html /blog/is-moringa-safe-during-pregnancy-2026 301!
+/blog/is-moringa-safe-during-pregnancy-2026 /blog/is-moringa-safe-during-pregnancy-2026.html 200
+/blog/is-moringa-safe-for-children-kids-dosage-2026.html /blog/is-moringa-safe-for-children-kids-dosage-2026 301!
+/blog/is-moringa-safe-for-children-kids-dosage-2026 /blog/is-moringa-safe-for-children-kids-dosage-2026.html 200
+/blog/moringa-detox-what-is-real-2026.html /blog/moringa-detox-what-is-real-2026 301!
+/blog/moringa-detox-what-is-real-2026 /blog/moringa-detox-what-is-real-2026.html 200
+/blog/moringa-for-hair-growth-eating-evidence-2026.html /blog/moringa-for-hair-growth-eating-evidence-2026 301!
+/blog/moringa-for-hair-growth-eating-evidence-2026 /blog/moringa-for-hair-growth-eating-evidence-2026.html 200
+/blog/moringa-for-inflammation-anti-inflammatory-research-2026.html /blog/moringa-for-inflammation-anti-inflammatory-research-2026 301!
+/blog/moringa-for-inflammation-anti-inflammatory-research-2026 /blog/moringa-for-inflammation-anti-inflammatory-research-2026.html 200
+/blog/moringa-for-men-testosterone-energy-prostate-2026.html /blog/moringa-for-men-testosterone-energy-prostate-2026 301!
+/blog/moringa-for-men-testosterone-energy-prostate-2026 /blog/moringa-for-men-testosterone-energy-prostate-2026.html 200
+/blog/moringa-for-menopause-symptoms-hormones-2026.html /blog/moringa-for-menopause-symptoms-hormones-2026 301!
+/blog/moringa-for-menopause-symptoms-hormones-2026 /blog/moringa-for-menopause-symptoms-hormones-2026.html 200
+/blog/moringa-for-skin-eating-benefits-glow-2026.html /blog/moringa-for-skin-eating-benefits-glow-2026 301!
+/blog/moringa-for-skin-eating-benefits-glow-2026 /blog/moringa-for-skin-eating-benefits-glow-2026.html 200
+/blog/moringa-for-weight-loss-evidence-2026.html /blog/moringa-for-weight-loss-evidence-2026 301!
+/blog/moringa-for-weight-loss-evidence-2026 /blog/moringa-for-weight-loss-evidence-2026.html 200
+/blog/moringa-gut-health-digestion-evidence-2026.html /blog/moringa-gut-health-digestion-evidence-2026 301!
+/blog/moringa-gut-health-digestion-evidence-2026 /blog/moringa-gut-health-digestion-evidence-2026.html 200
+/blog/moringa-smoothie-recipes-australia-2026.html /blog/moringa-smoothie-recipes-australia-2026 301!
+/blog/moringa-smoothie-recipes-australia-2026 /blog/moringa-smoothie-recipes-australia-2026.html 200
+/blog/moringa-thyroid-hashimotos-hypothyroidism-2026.html /blog/moringa-thyroid-hashimotos-hypothyroidism-2026 301!
+/blog/moringa-thyroid-hashimotos-hypothyroidism-2026 /blog/moringa-thyroid-hashimotos-hypothyroidism-2026.html 200
+/blog/moringa-vs-ashwagandha-comparison-2026.html /blog/moringa-vs-ashwagandha-comparison-2026 301!
+/blog/moringa-vs-ashwagandha-comparison-2026 /blog/moringa-vs-ashwagandha-comparison-2026.html 200
+/blog/moringa-vs-whey-protein-comparison-2026.html /blog/moringa-vs-whey-protein-comparison-2026 301!
+/blog/moringa-vs-whey-protein-comparison-2026 /blog/moringa-vs-whey-protein-comparison-2026.html 200
+
+# Trailing-slash → no-slash canonical (blog)
+/blog/grow-moringa-tree-australia/ /blog/grow-moringa-tree-australia 301!
+/blog/how-to-add-moringa-to-diet/ /blog/how-to-add-moringa-to-diet 301!
+
+# Soft-404 indexed URLs → Gone (GSC cleanup)
+/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html /404.html 410
+/blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy /404.html 410
+/blog/natural-pre-workout-moringa-australia-2026.html /404.html 410
+/blog/natural-pre-workout-moringa-australia-2026 /404.html 410
+/blog/melbourne-cbd-gyms-moringa-recovery-2026.html /404.html 410
+/blog/melbourne-cbd-gyms-moringa-recovery-2026 /404.html 410
+/blog/australian-superfood-revolution-moringa-precision-nutrition-2026.html /404.html 410
+/blog/australian-superfood-revolution-moringa-precision-nutrition-2026 /404.html 410
+/blog/is-moringa-banned-in-australia-safety-truth-2026.html /404.html 410
+/blog/is-moringa-banned-in-australia-safety-truth-2026 /404.html 410
+/blog/moringa-adaptogen-stress-relief-cortisol-balance.html /404.html 410
+/blog/moringa-adaptogen-stress-relief-cortisol-balance /404.html 410
+/blog/moringa-powder-complete-buyers-guide-australia-2026.html /404.html 410
+/blog/moringa-powder-complete-buyers-guide-australia-2026 /404.html 410

@@ -42,9 +42,18 @@ const PATH_BLOCKLIST = new Set([
   "assets/includes/header.html",
   "assets/includes/footer.html",
   "arcade/japan.html",
+  "teleprompter-recorder-extension/popup.html",
+  "teleprompter-recorder-extension/recorder.html",
+  "teleprompter-recorder-extension/teleprompter.html",
 ]);
 
-const REDIRECT_SOURCE_BLOCKLIST = new Set([]);
+const REDIRECT_SOURCE_BLOCKLIST = new Set([
+  'blog/best-superfoods-australia-comparison-health-conscious-adults.html',
+  'blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html',
+  'blog/moringa-brands-reviewed-australia-2025-verdict.html',
+  'blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html',
+  'blog/is-moringa-banned-australia-truth-2026.html',
+]);
 
 const INCLUDE_NOINDEX = process.env.INCLUDE_NOINDEX === "1" || process.argv.includes("--include-noindex");
 
@@ -100,6 +109,10 @@ function fileToUrl(relPosix) {
   if (relPosix === "index.html") return `${BASE}/`;
 
   if (relPosix === "blog/index.html") return `${BASE}/blog/`;
+
+  // Category hubs: /blog/category/{name}/index.html → /blog/category/{name}/
+  const blogCat = /^blog\/category\/([^/]+)\/index\.html$/.exec(relPosix);
+  if (blogCat) return `${BASE}/blog/category/${blogCat[1]}/`;
 
   if (relPosix.startsWith("blog/") && relPosix.endsWith(".html")) {
     const slug = relPosix.slice("blog/".length, -".html".length);

@@ -400,8 +400,8 @@
       </ul>
     </div>
     <div class="bg-primary-fixed/20 p-8 rounded-xl border border-moringa-leaf/10 relative overflow-hidden">
-      <p class="font-body-md text-body-md text-forest-deep italic relative z-10 mb-4">"I've tried many moringa brands, but NutriThrive is by far the best. Bright green colour, fresh taste, and I feel the difference."</p>
-      <p class="font-label-lg text-label-lg text-moringa-leaf relative z-10">— James H.</p>
+      <p class="font-body-md text-body-md text-forest-deep italic relative z-10 mb-4">"I have used various brands of moringa powder but the powder from Nutri-Thrive is the greenest in color and tastes way better than the other moringa powder in the market. The pricing is very reasonable and the shipping was also very quick!!"</p>
+      <p class="font-label-lg text-label-lg text-moringa-leaf relative z-10">— Jay Turakhia · via Google Reviews</p>
     </div>
   </aside>
 </div>
