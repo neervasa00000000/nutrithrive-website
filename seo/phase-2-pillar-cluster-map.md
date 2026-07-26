@@ -6,11 +6,11 @@
 
 | What happens | Count (approx) |
 |---|---|
-| Stay as **spoke** posts (own URL, own ranking) | ~100+ |
-| Already **301’d** into a stronger URL (duplicates) | Handful (brands-reviewed, best-rated, banned-truth, etc.) |
-| New merges this phase | **None without your OK** — we only consolidate clear duplicates |
+| Stay as **spoke** posts (own URL, own ranking) | **108** live HTML posts (all mapped into a cluster) |
+| Already **301’d** into a stronger URL (duplicates) | Handful (brands-reviewed, best-rated, banned-truth, smoothie duplicate, pregnancy duplicate, etc.) |
+| New merges this phase | Only clear keyword fights — not for “wiring” |
 
-Spokes still exist in Google and on the site. They gain a clear “parent” pillar link so authority flows through the cluster instead of 100 isolated pages.
+**Wiring remaining blogs** = add hub↔spoke links only. No deletes.
 
 ---
 
