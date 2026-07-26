@@ -479,7 +479,7 @@
                 localStorage.getItem('nutrithrive_country');
             if (saved) {
                 select.value = saved;
-            } else if ([. .select.options].some(option => option.value === 'AU')) {
+            } else if ([...select.options].some(option => option.value === 'AU')) {
                 select.value = 'AU';
                 localStorage.setItem('nutrithrive_shipping_country', 'AU');
                 localStorage.setItem('nutrithrive_country', 'AU');
