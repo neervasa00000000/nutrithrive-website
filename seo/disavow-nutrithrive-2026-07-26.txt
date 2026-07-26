@@ -1,0 +1,94 @@
+# NutriThrive disavow file — nutrithrive.com.au
+# Prepared 2026-07-26 from Ahrefs Referring Domains export (91 domains).
+# KEEP (do not disavow): thryv.com, yellowpages.com.au, connectively.us,
+#   truelocal.com.au, accio.com, factually.co
+# DISAVOW: SEO marketplace .shop spam, mass-linker junk, and zero-quality dumps
+#   (incl. scintilla.world = 108 links from DR0; datadrivenpick.com mass linker).
+# Upload at: Google Search Console → Removals → Disavow links
+# Format: https://support.google.com/webmasters/answer/2648487
+
+domain:trafficspike.shop
+domain:datadrivenpick.com
+domain:seolinkkart.shop
+domain:rankdeals.shop
+domain:backlinkzeno.shop
+domain:primebacklinks.shop
+domain:seotrove.shop
+domain:seowagon.shop
+domain:seobits.shop
+domain:seomart.shop
+domain:linkwares.shop
+domain:backlinkorbit.shop
+domain:seooutlet.shop
+domain:seocartly.shop
+domain:seoloot.shop
+domain:seogear.shop
+domain:seoprime.shop
+domain:rankchest.shop
+domain:rankwares.shop
+domain:rankcart.shop
+domain:seowares.shop
+domain:seogo.shop
+domain:rankgoods.shop
+domain:rankdepot.shop
+domain:seodepot.shop
+domain:rankbundle.shop
+domain:rankstash.shop
+domain:ranktrove.shop
+domain:seofinds.shop
+domain:rankstock.shop
+domain:seopicks.shop
+domain:seoedge.shop
+domain:rankwagon.shop
+domain:rankfinds.shop
+domain:seokart.shop
+domain:rankoutlet.shop
+domain:seosupply.shop
+domain:seobundle.shop
+domain:rankloot.shop
+domain:seostock.shop
+domain:seocrate.shop
+domain:rankseohub.shop
+domain:rankcrate.shop
+domain:rankgear.shop
+domain:seostash.shop
+domain:linksnexa.shop
+domain:nexabacklinks.shop
+domain:evanyaorganics.com
+domain:pageseopartners.shop
+domain:seolinkcentral.shop
+domain:domainrankresults.shop
+domain:linkgrowthsource.shop
+domain:pageseotoolkit.shop
+domain:scintilla.world
+domain:linkgrowthinsights.shop
+domain:organicrankdirect.shop
+domain:seolinktoolkit.shop
+domain:organicranksystems.shop
+domain:linkcollective.shop
+domain:rankgrowthgroup.shop
+domain:domainrankacademy.shop
+domain:linkgrowthstudio.shop
+domain:siteranksolutions.shop
+domain:rankseojunction.shop
+domain:linkseoalliance.shop
+domain:webrankresults.shop
+domain:pageseoexpress.shop
+domain:domainrankteam.shop
+domain:searchrankgroup.shop
+domain:seolinkfactory.shop
+domain:seoboostsystems.shop
+domain:rankgrowthmasters.shop
+domain:rankseocollective.shop
+domain:siterankbuilders.shop
+domain:webrankinsights.shop
+domain:searchrankbuilders.shop
+domain:seoboostagency.shop
+domain:backlinkmasters.shop
+domain:siterankacademy.shop
+domain:toprankacademy.shop
+domain:toprankservice.shop
+domain:pageseoresults.shop
+domain:serpcollective.shop
+domain:rankseomasters.shop
+domain:siterankservice.shop
