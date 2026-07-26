@@ -170,110 +170,117 @@
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
- "@context": "https://schema.org",
- "@type": ["LocalBusiness", "HealthFoodStore"],
- "@id": "https://nutrithrive.com.au/#localbusiness",
- "name": "NutriThrive",
- "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
- "url": "https://nutrithrive.com.au/",
- "telephone": "+61438201419",
- "email": "nutrithrive0@gmail.com",
- "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
- "identifier": {
- "@type": "PropertyValue",
- "propertyID": "ABN",
- "value": "32 639 442 616"
- },
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "15 Europe Street",
- "addressLocality": "Truganina",
- "addressRegion": "VIC",
- "postalCode": "3029",
- "addressCountry": "AU"
- },
- "geo": {
- "@type": "GeoCoordinates",
- "latitude": -37.8323773,
- "longitude": 144.7187983
- },
- "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
- "openingHoursSpecification": [
- {
- "@type": "OpeningHoursSpecification",
- "dayOfWeek": [
- "Monday",
- "Tuesday",
- "Wednesday",
- "Thursday",
- "Friday",
- "Saturday",
- "Sunday"
- ],
- "opens": "09:00",
- "closes": "23:00"
- }
- ],
- "areaServed": [
- {
- "@type": "City",
- "name": "Truganina"
- },
- {
- "@type": "City",
- "name": "Melbourne"
- },
- {
- "@type": "AdministrativeArea",
- "name": "Victoria"
- },
- {
- "@type": "Country",
- "name": "Australia"
- },
- {
- "@type": "Place",
- "name": "Worldwide"
- }
- ],
- "serviceArea": [
- {
- "@type": "City",
- "name": "Truganina"
- },
- {
- "@type": "City",
- "name": "Melbourne"
- },
- {
- "@type": "City",
- "name": "Werribee"
- },
- {
- "@type": "City",
- "name": "Tarneit"
- },
- {
- "@type": "City",
- "name": "Point Cook"
- },
- {
- "@type": "City",
- "name": "Hoppers Crossing"
- },
- {
- "@type": "City",
- "name": "Laverton"
- },
- {
- "@type": "AdministrativeArea",
- "name": "Victoria"
- }
- ],
- "sameAs": [
- "https://www.facebook.com/nutrithrive",
- "https://www.instagram.com/nutri__thrive/"
- ]
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "HealthFoodStore"
+  ],
+  "@id": "https://nutrithrive.com.au/#localbusiness",
+  "name": "NutriThrive",
+  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+  "url": "https://nutrithrive.com.au/",
+  "telephone": "+61438201419",
+  "email": "nutrithrive0@gmail.com",
+  "priceRange": "$",
+  "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ABN",
+    "value": "32 639 442 616"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Europe Street",
+    "addressLocality": "Truganina",
+    "addressRegion": "VIC",
+    "postalCode": "3029",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -37.8323773,
+    "longitude": 144.7187983
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": 11
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    }
+  ],
+  "serviceArea": [
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "City",
+      "name": "Werribee"
+    },
+    {
+      "@type": "City",
+      "name": "Tarneit"
+    },
+    {
+      "@type": "City",
+      "name": "Point Cook"
+    },
+    {
+      "@type": "City",
+      "name": "Hoppers Crossing"
+    },
+    {
+      "@type": "City",
+      "name": "Laverton"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/nutrithrive",
+    "https://www.instagram.com/nutri__thrive/"
+  ]
 }
 </script>
 
@@ -325,6 +332,11 @@
 
 <div class="nt-founder-note" style="margin:1.25rem 0;padding:1rem 1.25rem;background:#f7f3e8;border-left:4px solid #0f6b4d;border-radius:8px;font-size:0.95rem;"><p style="margin:0 0 0.75rem 0;">Neer, NutriThrive, Truganina. Written for Victorian seniors curious about moringa in meals, not arthritis treatment.</p><p style="margin:0 0 0.75rem 0;">Stiff joints need your GP, physio, and prescribed care. Leaf powder is food you can add to tea or soup.</p><p style="margin:0;">No promises about pain scores or walking further; individual results vary.</p></div>
 <div class="blog-post-content">
+
+<div class="answer-box">
+<h2>Quick Answer</h2>
+<p style="margin:0;">Moringa has natural hypotensive (blood pressure lowering) properties. If you are already taking medication for hypertension, adding Moringa could cause your blood pressure to drop too low. Consult your GP before taking Moringa if you're on blood pressure medication.</p>
+</div>
 <p>For many seniors from Werribee to frost-prone Truganina, stiff joints flare when the weather turns. Cold and pressure shifts can make tissues feel tighter; that's common feedback, not something a green powder treats.</p>
 <p><strong><a href="https://nutrithrive.com.au/products/moringa-powder/">Buy moringa powder Australia. NutriThrive $11/100g, NMI lab-tested, same-day Melbourne dispatch →</a></strong></p>
 <div class="hub-links" style="margin: 2rem 0; padding: 1.5rem; background: #f7f3e8; border-radius: 12px; border-left: 4px solid #0f6b4d;">
@@ -564,7 +576,7 @@
 <li><strong>Colour:</strong> Good Moringa powder is bright green. Brown or yellowish powder often means the nutrients have oxidized and lost potency.</li>
 <li><strong>Lab testing:</strong> Look for brands that test for heavy metals and pesticides. Seniors are especially vulnerable to contaminants.</li>
 <li><strong>Origin and freshness:</strong> Powder that sits in shipping containers for weeks can degrade. Locally stocked product (like NutriThrive in Truganina) is usually fresher.</li>
-<li><strong>Organic certification:</strong> Organic Moringa is grown without synthetic pesticides, which is better for your body and the environment.</li>
+<li><strong>Lab testing &amp; purity:</strong> Prefer sellers who publish heavy-metal and pesticide screens. NutriThrive is natural pure leaf (not certified organic) with NMI lab summaries available on request.</li>
 <li><strong>No fillers:</strong> The ingredient list should say "100% Moringa" or "Moringa leaf powder" only. Avoid products with added starch, maltodextrin, or other fillers.</li>
 </ul>
 <p>If a product is cheap but has no lab reports and looks brown, it's likely poor quality. Investing in a good brand pays off in results and safety.</p>
@@ -716,7 +728,7 @@
 <a href="/products/moringa-powder/" style="background: white; color: #0f6b4d; padding: 18px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 1.2rem; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
  Get Pain-Free Today. Shop Local →
  </a>
-<p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.9;">✅ Free shipping Australia-wide on orders of AU$80+ • ✅ Free worldwide shipping on orders of AU$90+ • ✅ 7-day money-back guarantee • ✅ Lab-tested quality • ✅ Fresh from Truganina, VIC</p>
+<p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.9;">✅ Free shipping Australia-wide on orders of AU$80+ • ✅ Free worldwide shipping on orders of AU$90+ • ✅ 7-day return policy (unopened packs only) • ✅ Lab-tested quality • ✅ Fresh from Truganina, VIC</p>
 </div>
 <div class="nt-update-log">
  <p><strong>Last updated:</strong> 21 May 2026</p>

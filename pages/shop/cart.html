@@ -228,6 +228,38 @@
             padding-top: 1rem;
             border-top: 1px solid #e0e0e0;
         }
+        .cart-combo-upsell {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border: 1px solid #d7e5dc;
+            border-radius: 12px;
+            background: #f7fbf8;
+        }
+        .cart-combo-upsell h2 {
+            color: #0f6b4d;
+            margin: 0 0 0.4rem 0;
+            font-size: 1.15rem;
+        }
+        .cart-combo-upsell p {
+            margin: 0 0 0.9rem;
+            color: #4a5d4f;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+        .cart-combo-upsell__row {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .cart-combo-upsell__row img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #fff;
+        }
         .you-also-viewed h2 {
             color: #0f6b4d;
             margin: 0 0 1rem 0;
@@ -368,13 +400,17 @@
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HealthFoodStore"],
+  "@type": [
+    "LocalBusiness",
+    "HealthFoodStore"
+  ],
   "@id": "https://nutrithrive.com.au/#localbusiness",
   "name": "NutriThrive",
   "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
   "email": "nutrithrive0@gmail.com",
+  "priceRange": "$",
   "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
   "identifier": {
     "@type": "PropertyValue",
@@ -411,6 +447,13 @@
       "closes": "23:00"
     }
   ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": 11
+  },
   "areaServed": [
     {
       "@type": "City",
@@ -427,10 +470,6 @@
     {
       "@type": "Country",
       "name": "Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Worldwide"
     }
   ],
   "serviceArea": [
@@ -507,6 +546,20 @@
             <!-- Cart items will be loaded here -->
         </div>
 
+        <div id="cart-combo-upsell" class="cart-combo-upsell" style="display: none;" hidden>
+            <h2>Save with the combo pack</h2>
+            <p>Buying moringa powder? Add the moringa + curry leaves combo for $17.00 (was $22.49).</p>
+            <div class="cart-combo-upsell__row">
+                <img src="/assets/images/homepage/product-showcase/combo.webp" alt="NutriThrive combo pack" width="72" height="72" loading="lazy">
+                <div>
+                    <strong>Combo Pack</strong>
+                    <div class="also-viewed-price">$17.00 AUD</div>
+                </div>
+                <button type="button" class="also-viewed-add-btn" id="cart-combo-upsell-add">Add combo</button>
+            </div>
+            <a href="/products/combo-pack/" style="font-size:0.9rem;color:#0f6b4d;font-weight:600;">View combo details →</a>
+        </div>
+
         <div id="you-also-viewed" class="you-also-viewed" style="display: none;">
             <h2>You may also like</h2>
             <div id="also-viewed-grid" class="also-viewed-grid"></div>
@@ -541,6 +594,7 @@
             const cartContent = document.getElementById('cart-content');
             const cartSummary = document.getElementById('cart-summary');
             const alsoViewedWrap = document.getElementById('you-also-viewed');
+            const comboUpsell = document.getElementById('cart-combo-upsell');
             
             if (!cart || !cart.items || cart.items.length === 0) {
                 cartContent.innerHTML = `
@@ -552,6 +606,10 @@
                 `;
                 cartSummary.style.display = 'none';
                 if (alsoViewedWrap) alsoViewedWrap.style.display = 'none';
+                if (comboUpsell) {
+                    comboUpsell.style.display = 'none';
+                    comboUpsell.setAttribute('hidden', '');
+                }
                 return;
             }
 
@@ -760,6 +818,7 @@
 
             cartContent.appendChild(table);
             renderAlsoViewed(cart.items);
+            renderComboUpsell(cart.items);
             
             // Update summary
             const subtotal = Number((subtotalFromItems || 0).toFixed(2));
@@ -911,6 +970,45 @@
                 grid.appendChild(card);
             });
             wrap.style.display = 'block';
+        }
+
+        function renderComboUpsell(cartItems) {
+            const wrap = document.getElementById('cart-combo-upsell');
+            const addBtn = document.getElementById('cart-combo-upsell-add');
+            if (!wrap) return;
+
+            const ids = (cartItems || []).map(function (item) {
+                return String(item.id || '');
+            });
+            const hasMoringaOnly = ids.some(function (id) {
+                return id === 'moringa-powder' || id.indexOf('moringa-powder') === 0 || id.indexOf('moringa-variation-2') === 0 || id.indexOf('moringa-variation-4') === 0 || id === 'moringa-200g' || id === 'moringa-400g';
+            });
+            const hasCombo = ids.some(function (id) {
+                return id === 'combo-pack' || id.indexOf('moringa-variation-3') === 0;
+            });
+
+            if (!hasMoringaOnly || hasCombo) {
+                wrap.style.display = 'none';
+                wrap.setAttribute('hidden', '');
+                return;
+            }
+
+            wrap.style.display = 'block';
+            wrap.removeAttribute('hidden');
+            if (addBtn && !addBtn.dataset.bound) {
+                addBtn.dataset.bound = '1';
+                addBtn.addEventListener('click', function () {
+                    if (!window.Cart || typeof window.Cart.add !== 'function') return;
+                    window.Cart.add({
+                        id: 'combo-pack',
+                        name: 'Combo Pack (Moringa + Curry Leaves)',
+                        price: 17.00,
+                        image: '/assets/images/homepage/product-showcase/combo.webp',
+                        quantity: 1
+                    });
+                    renderCart();
+                });
+            }
         }
         
         function updateQuantity(productId, quantity) {
