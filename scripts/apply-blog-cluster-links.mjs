@@ -46,18 +46,18 @@ function ensurePillarLink(html, pillarSlug, pillarTitle) {
 
   const hubLi = ` <li><strong>Cluster hub:</strong> <a href="${pillarHref}">${escapeHtml(pillarTitle)}</a></li>\n`;
 
-  if (/<section class="nt-related-links-block"[\s\S]*?<ul>/i.test(html)) {
+  if (/<section class="nt-related-links-block"[\s\S]*?<ul[^>]*>/i.test(html)) {
     const next = html.replace(
-      /(<section class="nt-related-links-block"[\s\S]*?<ul>\s*)/i,
+      /(<section class="nt-related-links-block"[\s\S]*?<ul[^>]*>\s*)/i,
       `$1${hubLi}`
     );
     return { html: next, changed: next !== html, reason: 'related-ul' };
   }
 
   // Inline "Related guides" without section class
-  if (/<h2[^>]*>Related guides<\/h2>\s*<ul>/i.test(html)) {
+  if (/<h2[^>]*>Related guides<\/h2>\s*<ul[^>]*>/i.test(html)) {
     const next = html.replace(
-      /(<h2[^>]*>Related guides<\/h2>\s*<ul>\s*)/i,
+      /(<h2[^>]*>Related guides<\/h2>\s*<ul[^>]*>\s*)/i,
       `$1${hubLi}`
     );
     return { html: next, changed: next !== html, reason: 'h2-ul' };
