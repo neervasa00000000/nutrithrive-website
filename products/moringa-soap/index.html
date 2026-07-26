@@ -433,9 +433,20 @@
                     </div>
                     <button type="button" onclick="buySoapNow()" class="nt-pdp-buy-now">Buy now, go to checkout</button>
                     <div class="nt-pdp-guarantees">
-                        <span>🛡️ 7-day guarantee</span>
+                        <span>🛡️ 7-day returns (unopened packs)</span>
                         <span>📦 Melbourne dispatch before 2pm</span>
                     </div>
+                    <div class="nt-pdp-payments" aria-label="Accepted payment methods">
+                        <span class="nt-pdp-payments__label">Secure checkout</span>
+                        <ul class="nt-pdp-payments__list">
+                            <li>Visa</li>
+                            <li>Mastercard</li>
+                            <li>PayPal</li>
+                            <li>Bank transfer</li>
+                            <li>Cash</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -566,7 +577,7 @@
           "name": "Payments & Shipping",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We accept Visa, bank transfer, cash and PayPal. Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+ (dispatch within 2 business days)."
+            "text": "We accept Visa, Mastercard, PayPal, bank transfer, and cash. Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+ (dispatch within 2 business days)."
           }
         }
       ]
@@ -661,5 +672,6 @@
     </script>
 <script src="/shared/site-data.min.js"></script>
 <script src="/shared/js/footer-v2.min.js"></script>
+<script src="/shared/js/exit-intent-email.min.js" defer></script>
 </body>
 </html>
