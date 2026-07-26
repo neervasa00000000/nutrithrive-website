@@ -148,110 +148,117 @@
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
 {
- "@context": "https://schema.org",
- "@type": ["LocalBusiness", "HealthFoodStore"],
- "@id": "https://nutrithrive.com.au/#localbusiness",
- "name": "NutriThrive",
- "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
- "url": "https://nutrithrive.com.au/",
- "telephone": "+61438201419",
- "email": "nutrithrive0@gmail.com",
- "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
- "identifier": {
- "@type": "PropertyValue",
- "propertyID": "ABN",
- "value": "32 639 442 616"
- },
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "15 Europe Street",
- "addressLocality": "Truganina",
- "addressRegion": "VIC",
- "postalCode": "3029",
- "addressCountry": "AU"
- },
- "geo": {
- "@type": "GeoCoordinates",
- "latitude": -37.8323773,
- "longitude": 144.7187983
- },
- "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
- "openingHoursSpecification": [
- {
- "@type": "OpeningHoursSpecification",
- "dayOfWeek": [
- "Monday",
- "Tuesday",
- "Wednesday",
- "Thursday",
- "Friday",
- "Saturday",
- "Sunday"
- ],
- "opens": "09:00",
- "closes": "23:00"
- }
- ],
- "areaServed": [
- {
- "@type": "City",
- "name": "Truganina"
- },
- {
- "@type": "City",
- "name": "Melbourne"
- },
- {
- "@type": "AdministrativeArea",
- "name": "Victoria"
- },
- {
- "@type": "Country",
- "name": "Australia"
- },
- {
- "@type": "Place",
- "name": "Worldwide"
- }
- ],
- "serviceArea": [
- {
- "@type": "City",
- "name": "Truganina"
- },
- {
- "@type": "City",
- "name": "Melbourne"
- },
- {
- "@type": "City",
- "name": "Werribee"
- },
- {
- "@type": "City",
- "name": "Tarneit"
- },
- {
- "@type": "City",
- "name": "Point Cook"
- },
- {
- "@type": "City",
- "name": "Hoppers Crossing"
- },
- {
- "@type": "City",
- "name": "Laverton"
- },
- {
- "@type": "AdministrativeArea",
- "name": "Victoria"
- }
- ],
- "sameAs": [
- "https://www.facebook.com/nutrithrive",
- "https://www.instagram.com/nutri__thrive/"
- ]
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "HealthFoodStore"
+  ],
+  "@id": "https://nutrithrive.com.au/#localbusiness",
+  "name": "NutriThrive",
+  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+  "url": "https://nutrithrive.com.au/",
+  "telephone": "+61438201419",
+  "email": "nutrithrive0@gmail.com",
+  "priceRange": "$",
+  "description": "Premium moringa powder, Darjeeling black tea, dried curry leaves and natural soaps from Truganina, Melbourne. Lab-tested, vegan-friendly. Local support for Truganina and greater Melbourne, plus Australia-wide shipping (free standard on orders AUD 80 and over) and international shipping from published rate tables at checkout.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ABN",
+    "value": "32 639 442 616"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Europe Street",
+    "addressLocality": "Truganina",
+    "addressRegion": "VIC",
+    "postalCode": "3029",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -37.8323773,
+    "longitude": 144.7187983
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": 11
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    }
+  ],
+  "serviceArea": [
+    {
+      "@type": "City",
+      "name": "Truganina"
+    },
+    {
+      "@type": "City",
+      "name": "Melbourne"
+    },
+    {
+      "@type": "City",
+      "name": "Werribee"
+    },
+    {
+      "@type": "City",
+      "name": "Tarneit"
+    },
+    {
+      "@type": "City",
+      "name": "Point Cook"
+    },
+    {
+      "@type": "City",
+      "name": "Hoppers Crossing"
+    },
+    {
+      "@type": "City",
+      "name": "Laverton"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Victoria"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/nutrithrive",
+    "https://www.instagram.com/nutri__thrive/"
+  ]
 }
 </script>
 
@@ -611,16 +618,16 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <h3 style="color: #000000; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem;">Real Customer Reviews</h3>
 <div style="margin: 2rem 0;">
 <div style="background: transparent; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0066cc;">
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.5rem;"><strong>Sarah M., Melbourne ⭐⭐⭐⭐⭐</strong></p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">"I've tried 3 different moringa brands, and NutriThrive is by far the best. The color is vibrant green, it tastes fresh (not bitter), and I actually feel more energetic. Plus, the price is unbeatable. Ordered Tuesday, arrived Thursday. Highly recommend!"</p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.5rem;"><strong>Jay Turakhia — via Google Reviews ⭐⭐⭐⭐⭐</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">"I have used various brands of moringa powder but the powder from Nutri-Thrive is the greenest in color and tastes way better than the other moringa powder in the market. The pricing is very reasonable and the shipping was also very quick!!"</p>
 </div>
 <div style="background: transparent; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0066cc;">
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.5rem;"><strong>James K., Sydney ⭐⭐⭐⭐⭐</strong></p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">"Finally found a moringa brand that's actually affordable and high quality. The lab testing certificate gave me confidence, and the taste is much smoother than other powders I've tried. Great value for money."</p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.5rem;"><strong>chizaram olanma — via Google Reviews ⭐⭐⭐⭐⭐</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">"I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved, and I love adding it to my morning smoothies. It blends well and doesn't have an overpowering taste. Plus, knowing I'm getting a powerhouse of vitamins, iron, and antioxidants makes it worth it. Highly recommend"</p>
 </div>
 <div style="background: transparent; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0066cc;">
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.5rem;"><strong>Emma L., Brisbane ⭐⭐⭐⭐⭐</strong></p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">"I've been taking NutriThrive moringa for 3 months now. My energy levels are so much better, especially in the afternoon. No more 3pm crashes! The powder mixes easily in my smoothies and doesn't have that awful bitter taste. Best $11.00 I've spent on supplements."</p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.5rem;"><strong>Bindu — via Google Reviews ⭐⭐⭐⭐⭐</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">"Tried Moringa powder daily for 30 days. Helps with bloating and slight increase in stamina. good natural supplement."</p>
 </div>
 </div>
 </section>
@@ -630,39 +637,39 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <p style="line-height:1.7;margin:0 0 0.75rem;">We sell shade-dried leaf powder ($11/100g) with a published NMI lab summary. Score us with the same criteria as every other row: lab transparency, freshness signals, dose maths, $/100g. Product details: <a href="/products/moringa-powder/">moringa powder PDP</a>.</p>
 </section>
 
-id="customer-reviews" style="margin: 4rem 0; scroll-margin-top: 80px;">
-<h2 style="color: #000000; font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">💬 What Australian Customers Are Saying</h2>
-<p style="font-size: 1.125rem; line-height: 1.8; color: #333; margin-bottom: 2rem;">Real reviews from verified NutriThrive customers across Australia:</p>
+<section id="customer-reviews" style="margin: 4rem 0; scroll-margin-top: 80px;">
+<h2 style="color: #000000; font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">What Australian customers are saying</h2>
+<p style="font-size: 1.125rem; line-height: 1.8; color: #333; margin-bottom: 2rem;">Real quotes from our <a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7" target="_blank" rel="noopener">Google Business Profile</a> (4.9★ from 11 reviews):</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 <div style="background: transparent; padding: 1.5rem; border-left: 4px solid #0066cc;">
 <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"I've been using NutriThrive moringa for 6 months now. My energy levels are consistently better, and I haven't been sick once. The price is unbeatable, and the quality is excellent. Highly recommend!"</p>
-<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>. Lisa W., Perth</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"I have used various brands of moringa powder but the powder from Nutri-Thrive is the greenest in color and tastes way better than the other moringa powder in the market. The pricing is very reasonable and the shipping was also very quick!!"</p>
+<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>Jay Turakhia — via Google Reviews</strong></p>
 </div>
 <div style="background: transparent; padding: 1.5rem; border-left: 4px solid #0066cc;">
 <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"NutriThrive moringa has far better quality and taste than other brands I've tried, at a much better price. The lab testing certificate gave me confidence. Will never go back!"</p>
-<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>. David R., Adelaide</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved, and I love adding it to my morning smoothies. It blends well and doesn't have an overpowering taste. Plus, knowing I'm getting a powerhouse of vitamins, iron, and antioxidants makes it worth it. Highly recommend"</p>
+<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>chizaram olanma — via Google Reviews</strong></p>
 </div>
 <div style="background: transparent; padding: 1.5rem; border-left: 4px solid #0066cc;">
 <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"The combo pack is amazing value! I use moringa in my morning smoothie, curry leaves in my cooking, and black tea for afternoon pick-me-up. All products are fresh and high quality. Fast shipping too!"</p>
-<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>. Rachel K., Melbourne</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"Tried Moringa powder daily for 30 days. Helps with bloating and slight increase in stamina. good natural supplement."</p>
+<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>Bindu — via Google Reviews</strong></p>
 </div>
 <div style="background: transparent; padding: 1.5rem; border-left: 4px solid #0066cc;">
 <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"Finally found a moringa that doesn't taste bitter! The NutriThrive powder is so smooth and actually pleasant to drink. My skin has improved too. Great product at a great price."</p>
-<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>. Sophie M., Gold Coast</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"Moringa has been a game-changer! Better focus, natural energy, and overall wellness boost in just 30 days. Will keep using!"</p>
+<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>Jay Vasa — via Google Reviews</strong></p>
 </div>
 <div style="background: transparent; padding: 1.5rem; border-left: 4px solid #0066cc;">
 <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"I'm a fitness enthusiast and tried many protein powders. NutriThrive moringa is the perfect addition - no bloating, great nutrition, and affordable. Best $11.00 I've spent!"</p>
-<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>. Tom H., Sydney</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"This product is healthy, of excellent quality, and very affordable. Highly recommend!"</p>
+<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>reetysha ramjee — via Google Reviews</strong></p>
 </div>
 <div style="background: transparent; padding: 1.5rem; border-left: 4px solid #0066cc;">
 <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</p>
-<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"The curry leaves are so fresh and aromatic! Perfect for my South Indian recipes. Combined with moringa, I feel like I'm getting complete nutrition. Love that it's all from one trusted Australian brand."</p>
-<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>. Anjali P., Melbourne</strong></p>
+<p style="font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 0.75rem;">"Friendly people and good quality products and most of all pretty cheap. Love that!!"</p>
+<p style="font-size: 0.9rem; color: #666; margin: 0;"><strong>Siv Mey — via Google Reviews</strong></p>
 </div>
 </div>
 </section>
