@@ -369,7 +369,7 @@ window.NT_SITE_DATA = {
       title: 'Orders & Shipping',
       icon: 'local_shipping',
       items: [
-        { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash.' },
+        { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup only.' },
         { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order or checking free shipping eligibility.' },
         { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+.' },
         { q: 'How fast is shipping from Melbourne to Sydney/Brisbane?', a: 'Dispatch within 2 business days (no Sunday dispatch). Metro delivery typically 3–4 days; rural up to 10 days from our Truganina warehouse.' },
