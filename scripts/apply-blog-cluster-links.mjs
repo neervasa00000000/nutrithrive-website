@@ -40,9 +40,8 @@ function extractTitle(html, slug) {
 
 function ensurePillarLink(html, pillarSlug, pillarTitle) {
   const pillarHref = `/blog/${pillarSlug}`;
-  if (html.includes(`href="${pillarHref}"`) || html.includes(`href="${pillarHref}/"`)) {
-    // Still ensure it's labeled as hub if related block exists
-    return { html, changed: false, reason: 'already-links' };
+  if (html.includes('Cluster hub:')) {
+    return { html, changed: false, reason: 'already-hub-label' };
   }
 
   const hubLi = ` <li><strong>Cluster hub:</strong> <a href="${pillarHref}">${escapeHtml(pillarTitle)}</a></li>\n`;

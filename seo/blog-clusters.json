@@ -1,6 +1,6 @@
 {
   "version": "2026-07-26",
-  "note": "Phase 2 pillar/spoke map. Almost all posts stay live as spokes. Only thin duplicates use merge+301 (already mostly done in _redirects).",
+  "note": "Phase 2 pillar/spoke map. Almost all posts stay live as spokes. Only thin duplicates use merge+301 (already mostly done in _redirects). Wiring = hub links only; no deletes.",
   "pillars": [
     {
       "id": "buy-quality",
@@ -20,7 +20,15 @@
         "where-to-buy-moringa-in-australia-online-vs-stores-2026-guide",
         "moringa-energy-what-happens-week-by-week-2026",
         "moringa-before-after-workout-timing-guide-2026",
-        "moringa-with-vitamin-c-iron-absorption-guide-2026"
+        "moringa-with-vitamin-c-iron-absorption-guide-2026",
+        "grow-moringa-tree-australia",
+        "moringa-powder-vs-capsules-comparison-2026",
+        "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
+        "moringa-energy-bites-kids-lunchbox-recipe-australia-2026",
+        "moringa-wellness-shot-recipe-winter-2026",
+        "moringa-soap-benefits-for-skin-2026",
+        "moringa-soap-vs-regular-soap-comparison-2026",
+        "moringa-for-men-testosterone-energy-prostate-2026"
       ],
       "redirectedIntoCluster": [
         "moringa-smoothie-recipes-australia-2026"
@@ -89,7 +97,13 @@
         "moringa-for-high-blood-pressure-hypertension-2026",
         "moringa-for-cholesterol-heart-health-research-2026",
         "moringa-powder-victoria-seniors-joint-health",
-        "iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
+        "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
+        "moringa-for-hair-growth-eating-evidence-2026",
+        "moringa-for-menopause-symptoms-hormones-2026",
+        "moringa-for-pcos-polycystic-ovary-syndrome-2026",
+        "moringa-for-period-pain-pms-menstrual-health-2026",
+        "moringa-for-weight-loss-evidence-2026",
+        "moringa-for-inflammation-anti-inflammatory-research-2026"
       ]
     },
     {
@@ -148,7 +162,14 @@
         "strength-training-women-over-35-why-it-matters-2026",
         "how-to-age-well-in-your-40s-healthy-ageing-australia-2026",
         "longevity-foods-australia-what-to-eat-live-longer-2026",
-        "stress-weight-gain-cortisol-mechanism-what-to-do-2026"
+        "stress-weight-gain-cortisol-mechanism-what-to-do-2026",
+        "blood-sugar-spikes-how-to-avoid-through-food-2026",
+        "fibre-deficiency-australia-bowel-cancer-risk-2026",
+        "glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
+        "gut-brain-connection-digestion-mood-mental-health-2026",
+        "how-to-eat-more-vegetables-practical-guide-australia-2026",
+        "omega-3-deficiency-australia-inflammation-food-sources-2026",
+        "why-always-tired-nutritional-deficiencies-australia-2026"
       ]
     }
   ]
