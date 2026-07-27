@@ -408,9 +408,9 @@ force = false
 
 [[redirects]]
 from = "/blog/verify-moringa-quality-premium-buyers-checklist-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/verify-moringa-quality-premium-buyers-checklist-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -420,8 +420,8 @@ force = false
 
 [[redirects]]
 from = "/blog/verify-moringa-quality-premium-buyers-checklist-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/verify-moringa-quality-premium-buyers-checklist-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -432,8 +432,8 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-honest-truth-science-australia-2026.html"
-to = "/404.html"
-status = 410.0
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -444,8 +444,8 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-honest-truth-science-australia-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -552,8 +552,8 @@ force = false
 
 [[redirects]]
 from = "/blog/what-does-moringa-do-for-your-body-complete-guide-2026.html"
-to = "/404.html"
-status = 410.0
+to = "/blog/how-to-add-moringa-to-diet"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -564,8 +564,8 @@ force = false
 
 [[redirects]]
 from = "/blog/what-does-moringa-do-for-your-body-complete-guide-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/how-to-add-moringa-to-diet"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -1068,7 +1068,7 @@ force = false
 
 [[redirects]]
 from = "/blog/best-protein-powder-australia-2026-complete-guide"
-to = "/blog/high-protein-moringa-recipes-australia-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
 status = 301.0
 force = false
 
@@ -1080,7 +1080,7 @@ force = false
 
 [[redirects]]
 from = "/blog/best-protein-powder-australia-2026-complete-guide.html"
-to = "/blog/high-protein-moringa-recipes-australia-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
 status = 301.0
 force = false
 
@@ -1092,8 +1092,8 @@ force = false
 
 [[redirects]]
 from = "/blog/how-to-grow-moringa-in-australia-complete-guide-2026.html"
-to = "/404.html"
-status = 410.0
+to = "/blog/grow-moringa-tree-australia"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -1104,8 +1104,8 @@ force = false
 
 [[redirects]]
 from = "/blog/how-to-grow-moringa-in-australia-complete-guide-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/grow-moringa-tree-australia"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -1116,9 +1116,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-capsules-vs-powder-which-is-better-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/moringa-capsules-vs-powder-which-is-better-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -1128,8 +1128,8 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-capsules-vs-powder-which-is-better-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/moringa-capsules-vs-powder-which-is-better-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -1164,7 +1164,7 @@ force = false
 
 [[redirects]]
 from = "/blog/top-moringa-companies-australia-2026"
-to = "/products/moringa-powder/"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
 status = 301.0
 force = false
 
@@ -1176,7 +1176,7 @@ force = false
 
 [[redirects]]
 from = "/blog/top-moringa-companies-australia-2026.html"
-to = "/products/moringa-powder/"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
 status = 301.0
 force = false
 
@@ -1188,7 +1188,7 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-at-chemist-warehouse-australia-worth-it-2026"
-to = "/products/moringa-powder/"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
 status = 301.0
 force = false
 
@@ -1200,7 +1200,7 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-at-chemist-warehouse-australia-worth-it-2026.html"
-to = "/products/moringa-powder/"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
 status = 301.0
 force = false
 
@@ -1212,7 +1212,7 @@ force = false
 
 [[redirects]]
 from = "/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025"
-to = "/products/moringa-powder/"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
 status = 301.0
 force = false
 
@@ -1224,7 +1224,7 @@ force = false
 
 [[redirects]]
 from = "/blog/where-to-buy-moringa-australia-chemist-warehouse-woolworths-nutrithrive-2025.html"
-to = "/products/moringa-powder/"
+to = "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
 status = 301.0
 force = false
 
@@ -1428,7 +1428,7 @@ force = false
 
 [[redirects]]
 from = "/blog/best-protein-powder-australia"
-to = "/blog/high-protein-moringa-recipes-australia-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
 status = 301.0
 force = false
 
@@ -1440,7 +1440,7 @@ force = false
 
 [[redirects]]
 from = "/blog/best-protein-powder-australia.html"
-to = "/blog/high-protein-moringa-recipes-australia-2026"
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
 status = 301.0
 force = false
 
@@ -1860,8 +1860,8 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -1872,9 +1872,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -1956,9 +1956,9 @@ force = false
 
 [[redirects]]
 from = "/blog/state-of-australian-schooling-2026-comprehensive-analysis"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -1968,9 +1968,9 @@ force = false
 
 [[redirects]]
 from = "/blog/state-of-australian-schooling-2026-comprehensive-analysis.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -2677,8 +2677,8 @@ force = false
 [[redirects]]
 from = "/pages/products"
 to = "/products/"
-status = 200.0
-force = false
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -2953,8 +2953,8 @@ force = true
 [[redirects]]
 from = "/products/product-curry-leaves.html"
 to = "/products/curry-leaves/"
-status = 200.0
-force = false
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -2965,8 +2965,8 @@ force = false
 [[redirects]]
 from = "/products/product-black-tea.html"
 to = "/products/black-tea/"
-status = 200.0
-force = false
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -2977,8 +2977,8 @@ force = false
 [[redirects]]
 from = "/products/product-combo.html"
 to = "/products/combo-pack/"
-status = 200.0
-force = false
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -2989,8 +2989,8 @@ force = false
 [[redirects]]
 from = "/products/product-moringa-soap.html"
 to = "/products/moringa-soap/"
-status = 200.0
-force = false
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3012,8 +3012,8 @@ force = false
 
 [[redirects]]
 from = "/moringa-sydney"
-to = "/moringa-sydney/"
-status = 301.0
+to = "/moringa-sydney/index.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3024,8 +3024,8 @@ force = false
 
 [[redirects]]
 from = "/moringa-brisbane"
-to = "/moringa-brisbane/"
-status = 301.0
+to = "/moringa-brisbane/index.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3036,8 +3036,8 @@ force = false
 
 [[redirects]]
 from = "/moringa-perth"
-to = "/moringa-perth/"
-status = 301.0
+to = "/moringa-perth/index.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3048,8 +3048,8 @@ force = false
 
 [[redirects]]
 from = "/moringa-adelaide"
-to = "/moringa-adelaide/"
-status = 301.0
+to = "/moringa-adelaide/index.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3060,8 +3060,8 @@ force = false
 
 [[redirects]]
 from = "/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026.html"
-to = "/404.html"
-status = 410.0
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -3072,8 +3072,8 @@ force = false
 
 [[redirects]]
 from = "/blog/10-dollar-superfood-replaced-200-supplement-stack-australia-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/how-to-choose-moringa-powder-australia-2026"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -3132,9 +3132,9 @@ force = false
 
 [[redirects]]
 from = "/blog/best-greens-powder-australia-2026.html"
-to = "/blog/best-greens-powder-australia-2026"
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
 status = 301.0
-force = true
+force = false
 
 [redirects.query]
 
@@ -3144,8 +3144,8 @@ force = true
 
 [[redirects]]
 from = "/blog/best-greens-powder-australia-2026"
-to = "/blog/best-greens-powder-australia-2026.html"
-status = 200.0
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -3158,7 +3158,7 @@ force = false
 from = "/blog/best-superfoods-australia-comparison-health-conscious-adults.html"
 to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -3170,7 +3170,7 @@ force = false
 from = "/blog/best-superfoods-australia-comparison-health-conscious-adults"
 to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -3204,9 +3204,9 @@ force = false
 
 [[redirects]]
 from = "/blog/chronic-fatigue-what-actually-fixed-it-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/chronic-fatigue-what-actually-fixed-it-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3216,8 +3216,8 @@ force = false
 
 [[redirects]]
 from = "/blog/chronic-fatigue-what-actually-fixed-it-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/chronic-fatigue-what-actually-fixed-it-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3228,9 +3228,9 @@ force = false
 
 [[redirects]]
 from = "/blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3240,9 +3240,9 @@ force = false
 
 [[redirects]]
 from = "/blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3252,9 +3252,9 @@ force = false
 
 [[redirects]]
 from = "/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3264,8 +3264,8 @@ force = false
 
 [[redirects]]
 from = "/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3444,9 +3444,9 @@ force = false
 
 [[redirects]]
 from = "/blog/how-to-read-moringa-batch-codes-freshness.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/how-to-read-moringa-batch-codes-freshness"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3456,8 +3456,8 @@ force = false
 
 [[redirects]]
 from = "/blog/how-to-read-moringa-batch-codes-freshness"
-to = "/404.html"
-status = 410.0
+to = "/blog/how-to-read-moringa-batch-codes-freshness.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3468,8 +3468,8 @@ force = false
 
 [[redirects]]
 from = "/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026.html"
-to = "/404.html"
-status = 410.0
+to = "/blog/what-does-moringa-powder-taste-like-honest-guide-2026"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -3480,8 +3480,8 @@ force = false
 
 [[redirects]]
 from = "/blog/how-to-use-moringa-powder-daily-without-the-bad-taste-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/what-does-moringa-powder-taste-like-honest-guide-2026"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -3588,9 +3588,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-oil-benefits-skin-hair-health-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/moringa-oil-benefits-skin-hair-health-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3600,8 +3600,8 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-oil-benefits-skin-hair-health-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/moringa-oil-benefits-skin-hair-health-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3636,9 +3636,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/verify-moringa-quality-premium-buyers-checklist-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3648,9 +3648,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/verify-moringa-quality-premium-buyers-checklist-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3878,7 +3878,7 @@ force = false
 from = "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html"
 to = "/blog/how-to-choose-moringa-powder-australia-2026"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -3890,7 +3890,7 @@ force = false
 from = "/blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide"
 to = "/blog/how-to-choose-moringa-powder-australia-2026"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -3924,8 +3924,8 @@ force = false
 
 [[redirects]]
 from = "/blog/best-greens-powder-australia-2026.html"
-to = "/404.html"
-status = 410.0
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -3936,8 +3936,8 @@ force = false
 
 [[redirects]]
 from = "/blog/best-greens-powder-australia-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+status = 301.0
 force = false
 
 [redirects.query]
@@ -3948,9 +3948,9 @@ force = false
 
 [[redirects]]
 from = "/blog/high-protein-moringa-recipes-australia-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/high-protein-moringa-recipes-australia-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3960,8 +3960,8 @@ force = false
 
 [[redirects]]
 from = "/blog/high-protein-moringa-recipes-australia-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/high-protein-moringa-recipes-australia-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -3972,9 +3972,9 @@ force = false
 
 [[redirects]]
 from = "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html"
-to = "/404.html"
-status = 410.0
-force = false
+to = "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026"
+status = 301.0
+force = true
 
 [redirects.query]
 
@@ -3984,8 +3984,8 @@ force = false
 
 [[redirects]]
 from = "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026"
-to = "/404.html"
-status = 410.0
+to = "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -4044,9 +4044,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-brands-reviewed-australia-2025-verdict.html"
-to = "/blog/how-to-choose-moringa-powder-australia-2026"
+to = "/blog/moringa-brands-comparison-australia-2026"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -4056,9 +4056,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-brands-reviewed-australia-2025-verdict"
-to = "/blog/how-to-choose-moringa-powder-australia-2026"
+to = "/blog/moringa-brands-comparison-australia-2026"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -4068,9 +4068,9 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-brands-comparison-australia-2026.html"
-to = "/blog/how-to-choose-moringa-powder-australia-2026"
+to = "/blog/moringa-brands-comparison-australia-2026"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -4080,8 +4080,8 @@ force = false
 
 [[redirects]]
 from = "/blog/moringa-brands-comparison-australia-2026"
-to = "/blog/how-to-choose-moringa-powder-australia-2026"
-status = 301.0
+to = "/blog/moringa-brands-comparison-australia-2026.html"
+status = 200.0
 force = false
 
 [redirects.query]
@@ -4116,9 +4116,9 @@ force = false
 
 [[redirects]]
 from = "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html"
-to = "/blog/how-to-choose-moringa-powder-australia-2026"
+to = "/blog/moringa-brands-comparison-australia-2026"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
@@ -4128,9 +4128,9 @@ force = false
 
 [[redirects]]
 from = "/blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide"
-to = "/blog/how-to-choose-moringa-powder-australia-2026"
+to = "/blog/moringa-brands-comparison-australia-2026"
 status = 301.0
-force = false
+force = true
 
 [redirects.query]
 
