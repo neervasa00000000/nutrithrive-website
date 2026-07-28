@@ -39,11 +39,7 @@
     header.innerHTML =
       '<div class="urgency-banner">' +
       '<div class="urgency-content">' +
-      '<strong>Order before 2pm for same-day Melbourne dispatch</strong>' +
-      '<span class="separator">·</span>' +
-      'Free shipping over $80' +
-      '<span class="separator">·</span>' +
-      'NMI Government lab-tested' +
+      'Order before 2pm for same-day Melbourne dispatch · Free shipping over $80 · NMI Government lab-tested' +
       '</div></div>' +
       '<div class="navbar">' +
       '<a class="logo" href="/">' +
