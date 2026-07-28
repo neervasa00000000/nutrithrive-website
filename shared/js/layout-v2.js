@@ -26,16 +26,24 @@
   const header = document.getElementById('nt-header');
   if (header) {
     header.closest('.nt-sticky-top')?.querySelector('.nt-promo-bar')?.remove();
+    // Remove any leftover static promo strip above the injected header
+    const prev = header.previousElementSibling;
+    if (prev && prev.classList && prev.classList.contains('nt-promo-bar')) {
+      prev.remove();
+    }
+    document.querySelectorAll('.nt-promo-bar').forEach(function (el) {
+      el.remove();
+    });
     header.classList.remove('nt-v2-header');
 
     header.innerHTML =
       '<div class="urgency-banner">' +
       '<div class="urgency-content">' +
-      '⏰ <strong>Order before 2pm for same-day Melbourne dispatch</strong>' +
-      '<span class="separator">•</span>' +
-      '🚚 Free shipping over $80' +
-      '<span class="separator">•</span>' +
-      '🔬 NMI Government lab-tested' +
+      '<strong>Order before 2pm for same-day Melbourne dispatch</strong>' +
+      '<span class="separator">·</span>' +
+      'Free shipping over $80' +
+      '<span class="separator">·</span>' +
+      'NMI Government lab-tested' +
       '</div></div>' +
       '<div class="navbar">' +
       '<a class="logo" href="/">' +
