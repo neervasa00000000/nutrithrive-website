@@ -46,6 +46,7 @@
 
 <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
 <link href="/styles/global/style.min.css" rel="stylesheet">
+<link href="/styles/pages/city-landing.min.css" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -123,6 +124,46 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "HealthFoodStore"
+  ],
+  "@id": "https://nutrithrive.com.au/#localbusiness-moringa-brisbane",
+  "name": "NutriThrive",
+  "url": "https://nutrithrive.com.au/",
+  "telephone": "+61438201419",
+  "email": "nutrithrive0@gmail.com",
+  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Europe Street",
+    "addressLocality": "Truganina",
+    "addressRegion": "VIC",
+    "postalCode": "3029",
+    "addressCountry": "AU"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Brisbane",
+      "addressRegion": "QLD",
+      "addressCountry": "AU"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "QLD"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    }
+  ],
+  "description": "NMI lab-tested moringa powder shipped from Truganina, Melbourne to Brisbane. Typical metro delivery 2–4 business days."
+}
+</script>
 </head>
 <body class="non-sticky-header">
 <header>
@@ -141,14 +182,24 @@ NutriThrive
 </div>
 </header>
 
-<main style="max-width:960px;margin:0 auto;padding:2rem 1.5rem;">
-<nav style="font-size:0.9rem;color:#666;margin-bottom:1.5rem;">
+<main class="city-landing">
+<nav class="city-crumb" aria-label="Breadcrumb">
 <a href="/" style="color:#1a5c36;">Home</a> › Moringa Powder Brisbane
 </nav>
 
 <h1>Buy Moringa Powder in Brisbane: $11/100g, Delivered from Melbourne</h1>
 
-<p>NutriThrive ships lab-tested, shade-dried moringa leaf powder from Truganina, Melbourne to Brisbane every business day. Orders placed before 2pm dispatch same day; most Brisbane metro addresses receive parcels in 2–4 business days. Free shipping on orders over $80. In humid Queensland weather, keep the pouch sealed tight after opening.</p>
+
+<div class="city-delivery-strip" role="status">
+  <span class="city-delivery-strip__icon" aria-hidden="true">🚚</span>
+  <div>
+    <strong>Order by 2pm</strong> → same-day dispatch from Truganina, Melbourne
+    <span class="city-delivery-strip__time">Typical arrival in Brisbane: 2–4 business days</span>
+  </div>
+</div>
+<span class="city-trust-badge" aria-label="Ships from Australia">🇦🇺 Ships from Melbourne, Australia</span>
+
+<p class="lead">NutriThrive ships lab-tested, shade-dried moringa leaf powder from Truganina, Melbourne to Brisbane every business day. Orders placed before 2pm dispatch same day; most Brisbane metro addresses receive parcels in 2–4 business days. Free shipping on orders over $80. In humid Queensland weather, keep the pouch sealed tight after opening.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;background:#f0f9f4;border-radius:10px;padding:2rem;">
   <div>
@@ -252,6 +303,12 @@ NutriThrive
   </div>
 </section>
 
+<section class="city-review" aria-label="Customer review">
+  <h2>What customers say</h2>
+  <blockquote>"Tried Moringa powder daily for 30 days. Helps with bloating and slight increase in stamina. good natural supplement."</blockquote>
+  <cite>— Bindu · via <a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7" rel="noopener" target="_blank">Google Reviews</a></cite>
+</section>
+
 <section style="margin:2.5rem 0;">
   <h2 style="font-size:1.35rem;margin-bottom:0.75rem;">Brisbane moringa FAQ</h2>
 
@@ -291,6 +348,12 @@ NutriThrive
 </div>
 
 </main>
+
+<section class="city-section city-guide-links" aria-label="Related guides">
+  <h2>Related guides</h2>
+  <ul><li><a href="/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026">Storage & shelf life in humid climates</a></li>
+<li><a href="/blog/grow-moringa-tree-australia">Growing moringa in subtropical QLD</a></li></ul>
+</section>
 
 <div id="nt-footer"></div>
 <script src="/shared/site-data.min.js"></script>

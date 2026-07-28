@@ -46,6 +46,7 @@
 
 <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
 <link href="/styles/global/style.min.css" rel="stylesheet">
+<link href="/styles/pages/city-landing.min.css" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -123,6 +124,46 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "HealthFoodStore"
+  ],
+  "@id": "https://nutrithrive.com.au/#localbusiness-moringa-adelaide",
+  "name": "NutriThrive",
+  "url": "https://nutrithrive.com.au/",
+  "telephone": "+61438201419",
+  "email": "nutrithrive0@gmail.com",
+  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Europe Street",
+    "addressLocality": "Truganina",
+    "addressRegion": "VIC",
+    "postalCode": "3029",
+    "addressCountry": "AU"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Adelaide",
+      "addressRegion": "SA",
+      "addressCountry": "AU"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "SA"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    }
+  ],
+  "description": "NMI lab-tested moringa powder shipped from Truganina, Melbourne to Adelaide. Typical metro delivery 2–4 business days."
+}
+</script>
 </head>
 <body class="non-sticky-header">
 <header>
@@ -141,14 +182,24 @@ NutriThrive
 </div>
 </header>
 
-<main style="max-width:960px;margin:0 auto;padding:2rem 1.5rem;">
-<nav style="font-size:0.9rem;color:#666;margin-bottom:1.5rem;">
+<main class="city-landing">
+<nav class="city-crumb" aria-label="Breadcrumb">
 <a href="/" style="color:#1a5c36;">Home</a> › Moringa Powder Adelaide
 </nav>
 
 <h1>Buy Moringa Powder in Adelaide: $11/100g, Delivered from Melbourne</h1>
 
-<p>NutriThrive ships lab-tested, shade-dried moringa leaf powder from Truganina, Melbourne to Adelaide every business day. Orders placed before 2pm dispatch same day; most Adelaide metro addresses receive parcels in 2–4 business days. Free shipping on orders over $80.</p>
+
+<div class="city-delivery-strip" role="status">
+  <span class="city-delivery-strip__icon" aria-hidden="true">🚚</span>
+  <div>
+    <strong>Order by 2pm</strong> → same-day dispatch from Truganina, Melbourne
+    <span class="city-delivery-strip__time">Typical arrival in Adelaide: 2–4 business days</span>
+  </div>
+</div>
+<span class="city-trust-badge" aria-label="Ships from Australia">🇦🇺 Ships from Melbourne, Australia</span>
+
+<p class="lead">NutriThrive ships lab-tested, shade-dried moringa leaf powder from Truganina, Melbourne to Adelaide every business day. Orders placed before 2pm dispatch same day; most Adelaide metro addresses receive parcels in 2–4 business days. Free shipping on orders over $80.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;background:#f0f9f4;border-radius:10px;padding:2rem;">
   <div>
@@ -258,6 +309,12 @@ NutriThrive
   </div>
 </section>
 
+<section class="city-review" aria-label="Customer review">
+  <h2>What customers say</h2>
+  <blockquote>"This product is healthy, of excellent quality, and very affordable. Highly recommend!"</blockquote>
+  <cite>— reetysha ramjee · via <a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7" rel="noopener" target="_blank">Google Reviews</a></cite>
+</section>
+
 <section style="margin:2.5rem 0;">
   <h2 style="font-size:1.35rem;margin-bottom:0.75rem;">Adelaide moringa FAQ</h2>
 
@@ -297,6 +354,12 @@ NutriThrive
 </div>
 
 </main>
+
+<section class="city-section city-guide-links" aria-label="Related guides">
+  <h2>Related guides</h2>
+  <ul><li><a href="/blog/how-to-choose-moringa-powder-australia-2026">Moringa buyer's guide</a></li>
+<li><a href="/blog/moringa-brands-comparison-australia-2026">Best moringa brands Australia (2026)</a></li></ul>
+</section>
 
 <div id="nt-footer"></div>
 <script src="/shared/site-data.min.js"></script>
