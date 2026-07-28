@@ -5,14 +5,14 @@
     <script src="/scripts/global/reddit-pixel.min.js"></script>
 <!-- Google tag (gtag.js) - G-WH21SW75WP -->
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
   window.addEventListener('load', function() {
     var script = document.createElement('script');
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP';
     script.crossOrigin = 'anonymous';
     document.head.appendChild(script);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-WH21SW75WP', { anonymize_ip: true, allow_google_signals: false });
 
@@ -387,8 +387,7 @@
             if (window._ntBeginCheckoutSent) return;
             const cart = getCart();
             if (!cart.items || cart.items.length === 0) return;
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            if (typeof gtag !== 'function') return;
             const items = cart.items.map(function (item) {
                 return {
                     item_id: String(item.id || 'MORINGA').slice(0, 50),
@@ -642,10 +641,12 @@
         }
 
         function bootCheckout() {
-            trackBeginCheckout();
             populateCountryDropdown();
             renderOrderReview();
             updateShippingAndTotal(false);
+            if (document.readyState === 'complete' && typeof trackBeginCheckout === 'function') {
+                trackBeginCheckout();
+            }
         }
 
         function startCheckout() {
