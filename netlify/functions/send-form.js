@@ -78,6 +78,55 @@ async function verifyTurnstile(token, ip) {
     return data.success === true;
 }
 
+const CONTACT_AUTORESPONDER_SUBJECT = "We received your message — NutriThrive";
+
+function contactAutoresponderBody(name) {
+    const greeting = name ? `Hi ${name},\n\n` : "";
+    return (
+        `${greeting}Thanks for reaching out — we've received your message and usually reply within 1–2 business days.\n\n` +
+        "For urgent order issues, call 0438 201 419.\n\n" +
+        "— NutriThrive Australia\nhttps://nutrithrive.com.au"
+    );
+}
+
+async function sendContactAutoresponderViaWeb3Forms({ accessKey, name, email }) {
+    const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+            access_key: accessKey,
+            subject: CONTACT_AUTORESPONDER_SUBJECT,
+            from_name: "NutriThrive Australia",
+            email: process.env.FORM_EMAIL_TO || "nutrithrive0@gmail.com",
+            message: contactAutoresponderBody(name),
+            to: email,
+        }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.success === false) {
+        throw new Error(data.message || `Web3Forms autoresponder error (${res.status})`);
+    }
+    return data;
+}
+
+async function sendContactAutoresponderViaSmtp({ smtpUser, smtpPass, name, email }) {
+    const nodemailer = await import("nodemailer");
+    const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || "smtp.gmail.com",
+        port: Number(process.env.SMTP_PORT || 465),
+        secure: process.env.SMTP_SECURE !== "false",
+        auth: { user: smtpUser, pass: smtpPass },
+    });
+
+    await transporter.sendMail({
+        from: `"NutriThrive Australia" <${smtpUser}>`,
+        to: email,
+        replyTo: smtpUser,
+        subject: CONTACT_AUTORESPONDER_SUBJECT,
+        text: contactAutoresponderBody(name),
+    });
+}
+
 async function sendViaWeb3Forms({ accessKey, toEmail, formType, name, email, subject, message, pageUrl }) {
     const emailSubject =
         subject ||
@@ -247,8 +296,22 @@ export async function handler(event) {
 
         if (web3Key) {
             await sendViaWeb3Forms({ accessKey: web3Key, ...mailPayload });
+            if (formType === "contact") {
+                try {
+                    await sendContactAutoresponderViaWeb3Forms({ accessKey: web3Key, name, email });
+                } catch (autoErr) {
+                    console.error("[send-form] autoresponder (web3forms)", autoErr);
+                }
+            }
         } else if (smtpUser && smtpPass) {
             await sendViaSmtp({ smtpUser, smtpPass, ...mailPayload });
+            if (formType === "contact") {
+                try {
+                    await sendContactAutoresponderViaSmtp({ smtpUser, smtpPass, name, email });
+                } catch (autoErr) {
+                    console.error("[send-form] autoresponder (smtp)", autoErr);
+                }
+            }
         } else {
             return {
                 statusCode: 503,
