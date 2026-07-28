@@ -540,13 +540,6 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-powder-victoria-seniors-joint-health"
   },
   {
-    "slug": "moringa-powder-vs-capsules-comparison-2026",
-    "title": "Moringa Powder vs Moringa Capsules, Which Form Is Better? (2026)",
-    "description": "Moringa powder vs capsules: same leaf, different format. Value, dose control, taste, and when each option makes sense.",
-    "category": "Guides",
-    "href": "/blog/moringa-powder-vs-capsules-comparison-2026"
-  },
-  {
     "slug": "moringa-pregnancy-safe-australia-trimester-guide-2026",
     "title": "Is Moringa Safe During Pregnancy? Australia Trimester Guide (2026)",
     "description": "Is moringa safe in pregnancy in Australia? Leaf powder vs root, trimester cautions, iron/folate context — ask your GP (not medical advice).",
