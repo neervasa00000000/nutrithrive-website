@@ -1,4 +1,4 @@
-/** Auto-generated — 109 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 110 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -295,6 +295,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-to-store-curry-leaves-fresh-dried-australia-2026"
   },
   {
+    "slug": "how-to-strengthen-immune-system-naturally-australia-2026",
+    "title": "How to Strengthen Your Immune System Naturally: What the Evidence Actually Shows (2026)",
+    "description": "What actually works for immune health, and what's marketing. An honest look at the evidence for food, sleep, and lifestyle, written for Australian winters and conditions.",
+    "category": "Health",
+    "href": "/blog/how-to-strengthen-immune-system-naturally-australia-2026"
+  },
+  {
     "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
     "title": "Iron Deficiency in Women: Signs and Plant Sources",
     "description": "Common signs of iron deficiency in Australian women, and the best plant-based sources — including how moringa compares.",
@@ -405,6 +412,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Does moringa actually &quot;detox&quot; your body? Here's an honest look at what the science supports and what's just supplement marketing.",
     "category": "Health",
     "href": "/blog/moringa-detox-what-is-real-2026"
+  },
+  {
+    "slug": "moringa-energy-bites-kids-lunchbox-recipe-australia-2026",
+    "title": "Moringa Energy Bites for Kids: No-Bake Lunchbox Recipe (2026)",
+    "description": "Three ingredients, no baking, 15 minutes. These no-bake moringa energy bites are the lunchbox snack Australian parents are making instead of buying processed muesli bars.",
+    "category": "Recipes",
+    "href": "/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026"
   },
   {
     "slug": "moringa-energy-what-happens-week-by-week-2026",
