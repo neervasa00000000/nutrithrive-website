@@ -46,6 +46,7 @@
 
 <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
 <link href="/styles/global/style.min.css" rel="stylesheet">
+<link href="/styles/pages/city-landing.min.css" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -123,6 +124,46 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "HealthFoodStore"
+  ],
+  "@id": "https://nutrithrive.com.au/#localbusiness-moringa-perth",
+  "name": "NutriThrive",
+  "url": "https://nutrithrive.com.au/",
+  "telephone": "+61438201419",
+  "email": "nutrithrive0@gmail.com",
+  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Europe Street",
+    "addressLocality": "Truganina",
+    "addressRegion": "VIC",
+    "postalCode": "3029",
+    "addressCountry": "AU"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Perth",
+      "addressRegion": "WA",
+      "addressCountry": "AU"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "WA"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    }
+  ],
+  "description": "NMI lab-tested moringa powder shipped from Truganina, Melbourne to Perth. Typical metro delivery 3–5 business days."
+}
+</script>
 </head>
 <body class="non-sticky-header">
 <header>
@@ -141,14 +182,24 @@ NutriThrive
 </div>
 </header>
 
-<main style="max-width:960px;margin:0 auto;padding:2rem 1.5rem;">
-<nav style="font-size:0.9rem;color:#666;margin-bottom:1.5rem;">
+<main class="city-landing">
+<nav class="city-crumb" aria-label="Breadcrumb">
 <a href="/" style="color:#1a5c36;">Home</a> › Moringa Powder Perth
 </nav>
 
 <h1>Buy Moringa Powder in Perth: $11/100g, Delivered from Melbourne</h1>
 
-<p>NutriThrive ships lab-tested, shade-dried moringa leaf powder from Truganina, Melbourne to Perth every business day. Orders placed before 2pm dispatch same day; Perth metro addresses typically receive parcels in 3–5 business days (longer than east coast due to distance). Free shipping on orders over $80.</p>
+
+<div class="city-delivery-strip" role="status">
+  <span class="city-delivery-strip__icon" aria-hidden="true">🚚</span>
+  <div>
+    <strong>Order by 2pm</strong> → same-day dispatch from Truganina, Melbourne
+    <span class="city-delivery-strip__time">Typical arrival in Perth: 3–5 business days</span>
+  </div>
+</div>
+<span class="city-trust-badge" aria-label="Ships from Australia">🇦🇺 Ships from Melbourne, Australia</span>
+
+<p class="lead">NutriThrive ships lab-tested, shade-dried moringa leaf powder from Truganina, Melbourne to Perth every business day. Orders placed before 2pm dispatch same day; Perth metro addresses typically receive parcels in 3–5 business days (longer than east coast due to distance). Free shipping on orders over $80.</p>
 
 <div style="background:#fff9e6;border:1px solid #e6c853;border-radius:8px;padding:1rem 1.25rem;margin:1rem 0 2rem;">
   <strong>Perth buyers note:</strong> We recommend ordering the 200g or 3+1 bundle to minimise cross-country shipping frequency. The 3+1 bundle (400g effective, $35) ships free, which removes the $8.73 freight cost entirely.
@@ -263,6 +314,12 @@ NutriThrive
   </div>
 </section>
 
+<section class="city-review" aria-label="Customer review">
+  <h2>What customers say</h2>
+  <blockquote>"I have used various brands of moringa powder but the powder from Nutri-Thrive is the greenest in color and tastes way better than the other moringa powder in the market. The pricing is very reasonable and the shipping was also very quick!!"</blockquote>
+  <cite>— Jay Turakhia · via <a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7" rel="noopener" target="_blank">Google Reviews</a></cite>
+</section>
+
 <section style="margin:2.5rem 0;">
   <h2 style="font-size:1.35rem;margin-bottom:0.75rem;">Perth moringa FAQ</h2>
 
@@ -303,6 +360,12 @@ NutriThrive
 </div>
 
 </main>
+
+<section class="city-section city-guide-links" aria-label="Related guides">
+  <h2>Related guides</h2>
+  <ul><li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to choose quality moringa powder</a></li>
+<li><a href="/pages/shipping/shipping-returns.html">WA shipping times & free shipping over $80</a></li></ul>
+</section>
 
 <div id="nt-footer"></div>
 <script src="/shared/site-data.min.js"></script>
