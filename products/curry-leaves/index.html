@@ -76,7 +76,7 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/styles/global/style.min.css">
-    <link rel="stylesheet" href="/styles/products/moringa-powder-new.min.css">
+    <link rel="stylesheet" href="/styles/products/moringa-powder-new.min.css?v=7">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
@@ -442,7 +442,7 @@
 
     <div id="nt-footer"></div>
 
-    <script src="/scripts/global/cart.min.js"></script>
+        <script src="/scripts/global/cart.min.js"></script>
     <script src="/scripts/global/recently-viewed.min.js"></script>
     <script src="/scripts/global/cart-header.min.js"></script>
     <script src="/shared/js/product-pdp-ui.min.js"></script>
@@ -520,55 +520,6 @@
             window.location.href = "/cart";
         }
     </script>
-    <script>
-      (function() {
-        function setupHamburger() {
-          const hamburger = document.querySelector('.hamburger');
-          const navLinks = document.querySelector('.nav-links');
-          
-          if (!hamburger || !navLinks) {
-            setTimeout(setupHamburger, 100);
-            return;
-          }
-          
-          if (!window.ntToggleMenu) {
-            window.ntToggleMenu = function() {
-              const isOpen = navLinks.classList.contains('nav-active');
-              if (isOpen) {
-                navLinks.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
-                document.body.classList.remove('no-scroll');
-                navLinks.style.display = '';
-              } else {
-                navLinks.classList.add('nav-active');
-                hamburger.classList.add('toggle');
-                document.body.classList.add('no-scroll');
-                navLinks.style.display = 'flex';
-              }
-            };
-          }
-          
-          hamburger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.ntToggleMenu();
-          });
-          
-          hamburger.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.ntToggleMenu();
-          }, { passive: false });
-        }
-        
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', setupHamburger);
-        } else {
-          setupHamburger();
-        }
-      })();
-    </script>
-
     <script>
       if (window.RecentlyViewed && typeof window.RecentlyViewed.track === 'function') {
         window.RecentlyViewed.track({

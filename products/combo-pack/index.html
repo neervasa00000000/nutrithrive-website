@@ -60,244 +60,13 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
     <!-- Critical CSS to prevent FOUC -->
-    <style>
-      /* Prevent FOUC - Hide content until CSS loads */
-      html:not(.loaded) { visibility: hidden; opacity: 0; }
-      html.loaded { visibility: visible; opacity: 1; transition: opacity 0.1s; }
-      
-      /* Critical above-the-fold styles */
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        background: #f5f1e6;
-        color: #1a2e22;
-        line-height: 1.6;
-      }
-      
-      /* Header critical styles */
-      header {
-        background: white;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        position: relative;
-        z-index: 100;
-      }
-      
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      
-      /* Logo styles */
-      .logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: #0f6b4d;
-        font-weight: 700;
-        font-size: 1.5rem;
-      }
-      
-      /* Nav links */
-      .nav-links {
-        display: flex;
-        gap: 1.5rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      
-      .nav-links a {
-        text-decoration: none;
-        color: #1a2e22;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-    </style>
-    
     <!-- Load CSS normally (blocking) to prevent FOUC -->
     <link rel="preload" as="style" href="/styles/global/style.min.css">
     <link rel="preload" as="style" href="/styles/products/moringa-powder-new.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/global/style.min.css">
-    <link rel="stylesheet" href="/styles/products/moringa-powder-new.min.css">
+    <link rel="stylesheet" href="/styles/products/moringa-powder-new.min.css?v=7">
     
-    <!-- Mark page as loaded once CSS is ready -->
-    <script>
-      // Prevent FOUC - mark page as loaded once CSS is ready
-      (function() {
-        function markLoaded() {
-          document.documentElement.classList.add('loaded');
-        }
-        
-        // If CSS is already loaded
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-          setTimeout(markLoaded, 0);
-        } else {
-          window.addEventListener('load', markLoaded);
-          // Fallback timeout
-          setTimeout(markLoaded, 100);
-        }
-      })();
-    </script>
-    
-    <style>
-      /* Accordion smooth animation */
-      .accordion-content {
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out !important;
-        overflow: hidden !important;
-      }
-      
-      .accordion-content.active {
-        display: block !important;
-        max-height: none !important;
-      }
-      
-      /* Benefits Accordion Section */
-      .benefits-accordion-header {
-        user-select: none;
-        -webkit-user-select: none;
-      }
-      
-      .benefits-accordion-header:hover {
-        opacity: 0.8;
-      }
-      
-      .benefits-accordion-content {
-        display: block;
-      }
-      
-      @media (max-width: 768px) {
-        .benefits-accordion-header {
-          min-height: 48px;
-          padding: 0.75rem 0;
-        }
-      }
-      
-      /* Mobile navigation - match homepage exactly */
-      @media (max-width: 768px) {
-        .nav-links {
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(10px);
-          z-index: 2000;
-          display: none;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: center;
-          transform: translateX(-100%);
-          transition: transform 0.3s ease-in-out;
-          padding: 2rem 1.5rem 1rem;
-          margin: 0;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-          gap: 0.8rem;
-        }
-        
-        .nav-links.nav-active {
-          display: flex !important;
-          transform: translateX(0);
-        }
-        
-        .nav-links a {
-          font-size: 1.5rem !important;
-          margin: 0.2rem 0 !important;
-          padding: 1.2rem 1.5rem !important;
-          border-radius: 12px !important;
-          transition: background-color 0.2s ease !important;
-          text-align: center !important;
-          width: 100% !important;
-          max-width: 300px !important;
-          display: flex !important;
-          text-decoration: none !important;
-          color: var(--primary) !important;
-          font-weight: 600 !important;
-          min-height: 60px !important;
-          align-items: center !important;
-          justify-content: center !important;
-          background: transparent !important;
-          border: none !important;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-          background-color: rgba(15, 107, 77, 0.1) !important;
-          color: var(--accent) !important;
-        }
-        
-        .hamburger {
-          display: block !important;
-          background: none !important;
-          border: none !important;
-          cursor: pointer !important;
-          padding: 10px !important;
-          min-width: 44px !important;
-          min-height: 44px !important;
-          -webkit-tap-highlight-color: transparent !important;
-          touch-action: manipulation !important;
-          z-index: 2001 !important;
-          position: relative !important;
-        }
-        
-        .hamburger div {
-          width: 25px !important;
-          height: 3px !important;
-          background-color: var(--primary) !important;
-          margin: 5px 0 !important;
-          transition: all 0.2s ease !important;
-          pointer-events: none !important;
-        }
-        
-        /* Hamburger close functionality - force perfectly centered X on mobile (match homepage) */
-        .hamburger.toggle {
-          background: none !important;
-          border: none !important;
-        }
-        
-        /* When open, overlay both visible lines in the exact center */
-        .hamburger.toggle div {
-          position: absolute !important;
-          top: 50% !important;
-          left: 50% !important;
-          width: 25px !important;
-          height: 3px !important;
-          margin: 0 !important;
-          transform-origin: center !important;
-        }
-        
-        .hamburger.toggle .line1 {
-          transform: translate(-50%, -50%) rotate(45deg) !important;
-        }
-        
-        .hamburger.toggle .line2 {
-          opacity: 0 !important;
-          visibility: hidden !important;
-          display: none !important;
-        }
-        
-        .hamburger.toggle .line3 {
-          transform: translate(-50%, -50%) rotate(-45deg) !important;
-        }
-      }
-      
-      /* Hide product image/gallery elements on combo page */
-      .product-gallery,
-      .main-image,
-      .product-image,
-      .product-media {
-        display: none !important;
-      }
-    </style>
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
@@ -687,9 +456,12 @@
 
     <div id="nt-footer"></div>
 
+    <script src="/scripts/global/cart.min.js"></script>
+    <script src="/scripts/global/recently-viewed.min.js"></script>
+    <script src="/scripts/global/cart-header.min.js"></script>
+    <script src="/shared/js/product-pdp-ui.min.js"></script>
+    <script src="/scripts/global/script.min.js"></script>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
         {
@@ -728,7 +500,6 @@
     }
     </script>
     <script>
-        // Add to cart function for Combo Pack
         function addComboPackToCart() {
             const quantitySelect = document.getElementById('product-quantity');
             const quantity = parseInt(quantitySelect ? quantitySelect.value : 1) || 1;
@@ -738,7 +509,7 @@
                     id: 'combo-pack',
                     name: 'Premium Combo Pack',
                     price: 17.00,
-                    weight: 130, // Approximate total weight
+                    weight: 130,
                     image: '/assets/images/homepage/product-showcase/combo.webp',
                     quantity: quantity
                 });
@@ -747,141 +518,10 @@
             }
         }
         
-        // Accordion functionality - works on all product pages with smooth animation
-        function toggleAccordion(sectionId) {
-            const content = document.getElementById(sectionId);
-            if (!content) {
-                console.error('Accordion content not found:', sectionId);
-                return;
-            }
-            
-            const header = content.previousElementSibling;
-            const icon = header ? header.querySelector('.accordion-icon') : null;
-            const section = content.parentElement;
-            
-            // Check if currently open
-            const isOpen = section.classList.contains('active') || 
-                          content.classList.contains('active') ||
-                          content.style.display === 'block' ||
-                          getComputedStyle(content).display !== 'none';
-            
-            if (isOpen) {
-                // Close - smooth animation
-                const currentHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = currentHeight;
-                content.style.overflow = 'hidden';
-                content.style.opacity = '1';
-                
-                // Force reflow
-                content.offsetHeight;
-                
-                // Animate to 0
-                content.style.maxHeight = '0px';
-                content.style.opacity = '0';
-                
-                setTimeout(() => {
-                    content.style.display = 'none';
-                    content.style.maxHeight = null;
-                    content.style.overflow = null;
-                    content.style.opacity = null;
-                }, 350);
-                
-                if (icon) icon.textContent = '+';
-                section.classList.remove('active');
-                content.classList.remove('active');
-            } else {
-                // Open - smooth animation
-                content.style.display = 'block';
-                content.style.maxHeight = '0px';
-                content.style.overflow = 'hidden';
-                content.style.transition = 'max-height 0.3s ease-out, padding 0.3s ease-out';
-                
-                // Force reflow to ensure transition works
-                content.offsetHeight;
-                
-                // Set to full height
-                const fullHeight = content.scrollHeight + 'px';
-                content.style.maxHeight = fullHeight;
-                
-                setTimeout(() => {
-                    content.style.maxHeight = 'none';
-                    content.style.overflow = null;
-                    content.style.transition = null;
-                }, 300);
-                
-                if (icon) icon.textContent = '−';
-                section.classList.add('active');
-                content.classList.add('active');
-            }
+        function buyComboPackNow() {
+            addComboPackToCart();
+            window.location.href = "/cart";
         }
-        
-        // Make sure function is available globally
-        window.toggleAccordion = toggleAccordion;
-    </script>
-    <script src="/scripts/global/cart.min.js"></script>
-    <script src="/scripts/global/recently-viewed.min.js"></script>
-    <script src="/scripts/global/cart-header.min.js"></script>
-    <script src="/shared/js/product-pdp-ui.min.js"></script>
-    <script src="/scripts/global/script.min.js"></script>
-    <!-- Ensure hamburger menu works - simple inline fallback -->
-    <script>
-      // Simple fallback to ensure hamburger works
-      // Simple fallback to ensure hamburger works
-      (function() {
-        function setupHamburger() {
-          const hamburger = document.querySelector('.hamburger');
-          const navLinks = document.querySelector('.nav-links');
-          
-          if (!hamburger || !navLinks) {
-            setTimeout(setupHamburger, 100);
-            return;
-          }
-          
-          // Ensure toggle function exists
-          if (!window.ntToggleMenu) {
-            window.ntToggleMenu = function() {
-              const isOpen = navLinks.classList.contains('nav-active');
-              if (isOpen) {
-                navLinks.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
-                document.body.classList.remove('no-scroll');
-                navLinks.style.display = '';
-              } else {
-                navLinks.classList.add('nav-active');
-                hamburger.classList.add('toggle');
-                document.body.classList.add('no-scroll');
-                navLinks.style.display = 'flex';
-              }
-            };
-          }
-          
-          // Add direct click handler as backup
-          hamburger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.ntToggleMenu();
-          });
-          
-          hamburger.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.ntToggleMenu();
-          }, { passive: false });
-        }
-        
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', setupHamburger);
-        } else {
-          setupHamburger();
-        }
-      })();
-    </script>
-    <script>
-      // Add item to cart and send customer to the main checkout
-      function buyComboPackNow() {
-        addComboPackToCart();
-        window.location.href = "/cart";
-      }
     </script>
 
     <script>
