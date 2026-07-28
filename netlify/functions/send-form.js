@@ -64,7 +64,11 @@ function cleanText(value, maxLen = 5000) {
 async function verifyTurnstile(token, ip) {
     const secret = process.env.TURNSTILE_SECRET_KEY;
     if (!secret) return true;
-    if (!token) return false;
+    if (!token) {
+        // Contact page has no Turnstile widget yet — do not block owner email.
+        console.warn("[send-form] TURNSTILE_SECRET_KEY set but no turnstileToken; skipping verify");
+        return true;
+    }
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -87,6 +91,45 @@ function contactAutoresponderBody(name) {
         "For urgent order issues, call 0438 201 419.\n\n" +
         "— NutriThrive Australia\nhttps://nutrithrive.com.au"
     );
+}
+
+async function deliverOwnerEmail({ web3Key, smtpUser, smtpPass, mailPayload }) {
+    const attempts = [];
+
+    if (smtpUser && smtpPass) {
+        attempts.push(async () => {
+            await sendViaSmtp({ smtpUser, smtpPass, ...mailPayload });
+            return "smtp";
+        });
+    }
+    if (web3Key) {
+        attempts.push(async () => {
+            await sendViaWeb3Forms({ accessKey: web3Key, ...mailPayload });
+            return "web3forms";
+        });
+    }
+
+    let lastErr;
+    for (const attempt of attempts) {
+        try {
+            return await attempt();
+        } catch (err) {
+            lastErr = err;
+            console.error("[send-form] owner notify attempt failed", err);
+        }
+    }
+    if (lastErr) throw lastErr;
+    return null;
+}
+
+async function deliverContactAutoresponder({ web3Key, smtpUser, smtpPass, name, email }) {
+    if (smtpUser && smtpPass) {
+        await sendContactAutoresponderViaSmtp({ smtpUser, smtpPass, name, email });
+        return;
+    }
+    if (web3Key) {
+        await sendContactAutoresponderViaWeb3Forms({ accessKey: web3Key, name, email });
+    }
 }
 
 async function sendContactAutoresponderViaWeb3Forms({ accessKey, name, email }) {
@@ -294,25 +337,8 @@ export async function handler(event) {
 
         const mailPayload = { toEmail, formType, name, email, subject, message, pageUrl };
 
-        if (web3Key) {
-            await sendViaWeb3Forms({ accessKey: web3Key, ...mailPayload });
-            if (formType === "contact") {
-                try {
-                    await sendContactAutoresponderViaWeb3Forms({ accessKey: web3Key, name, email });
-                } catch (autoErr) {
-                    console.error("[send-form] autoresponder (web3forms)", autoErr);
-                }
-            }
-        } else if (smtpUser && smtpPass) {
-            await sendViaSmtp({ smtpUser, smtpPass, ...mailPayload });
-            if (formType === "contact") {
-                try {
-                    await sendContactAutoresponderViaSmtp({ smtpUser, smtpPass, name, email });
-                } catch (autoErr) {
-                    console.error("[send-form] autoresponder (smtp)", autoErr);
-                }
-            }
-        } else {
+        const deliveredVia = await deliverOwnerEmail({ web3Key, smtpUser, smtpPass, mailPayload });
+        if (!deliveredVia) {
             return {
                 statusCode: 503,
                 headers,
@@ -323,10 +349,18 @@ export async function handler(event) {
             };
         }
 
+        if (formType === "contact") {
+            try {
+                await deliverContactAutoresponder({ web3Key, smtpUser, smtpPass, name, email });
+            } catch (autoErr) {
+                console.error("[send-form] autoresponder", autoErr);
+            }
+        }
+
         return {
             statusCode: 200,
             headers,
-            body: JSON.stringify({ ok: true }),
+            body: JSON.stringify({ ok: true, via: deliveredVia }),
         };
     } catch (err) {
         console.error("[send-form]", err);
