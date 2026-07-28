@@ -777,25 +777,27 @@ html.nt-exit-open { overflow: hidden; }
   border: 0;
 }
 
-/* ── Urgency banner (unchanged) ── */
+/* ── Urgency banner — shared sitewide thickness ── */
 .urgency-banner {
-  background-color: #1b3022;
+  background-color: var(--color-promo-bar, #1a2e22);
   color: #fff;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
 }
 .urgency-content {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.35;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.35rem 0.5rem;
 }
 .urgency-content strong { font-weight: 700; }
-.urgency-content .separator { opacity: 0.5; margin: 0 4px; }
+.urgency-content .separator { opacity: 0.55; margin: 0 0.15rem; }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
@@ -813,6 +815,6 @@ html.nt-exit-open { overflow: hidden; }
   .nt-pdp-meta { grid-template-columns: 1fr; }
   .nt-pdp-features__grid { grid-template-columns: 1fr 1fr; }
   .nt-pdp-trust-row { gap: 0.75rem; }
-  .urgency-content { flex-direction: column; gap: 3px; font-size: 12px; }
+  .urgency-content { flex-direction: column; gap: 0.15rem; font-size: 0.75rem; }
   .urgency-content .separator { display: none; }
 }
