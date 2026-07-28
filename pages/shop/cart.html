@@ -212,22 +212,83 @@
             margin-top: 1rem;
         }
         .free-shipping-nudge {
-            margin-top: 0.75rem;
-            padding: 0.75rem 1rem;
-            background: #eef7f2;
-            border: 1px solid #c8e6d4;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #1a2e22;
-            line-height: 1.45;
+            margin: 1.25rem 0 0.5rem;
+            padding: 1rem 1.15rem 1.1rem;
+            background: #fff;
+            border: 1px solid #e3ddd0;
+            border-radius: 12px;
+            box-shadow: 0 1px 2px rgba(26, 46, 34, 0.04);
         }
-        .free-shipping-nudge strong {
+        .free-shipping-nudge__header {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+        }
+        .free-shipping-nudge__icon {
+            flex-shrink: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background: #f0f7f3;
             color: #0f6b4d;
         }
+        .free-shipping-nudge__icon svg {
+            display: block;
+            width: 1.15rem;
+            height: 1.15rem;
+        }
+        .free-shipping-nudge__copy {
+            flex: 1;
+            min-width: 0;
+        }
+        .free-shipping-nudge__title {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1a2e22;
+            line-height: 1.4;
+        }
+        .free-shipping-nudge__title strong {
+            color: #0f6b4d;
+            font-weight: 700;
+        }
+        .free-shipping-nudge__meta {
+            margin: 0.2rem 0 0;
+            font-size: 0.8rem;
+            color: #6b7c72;
+            line-height: 1.35;
+        }
+        .free-shipping-nudge__amounts {
+            flex-shrink: 0;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #6b7c72;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            padding-top: 0.15rem;
+        }
+        .free-shipping-nudge__track {
+            width: 100%;
+            height: 6px;
+            border-radius: 999px;
+            background: #ebe6da;
+            overflow: hidden;
+        }
+        .free-shipping-nudge__fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #0f6b4d 0%, #1a8f66 100%);
+            transition: width 0.35s ease;
+            min-width: 4px;
+        }
         .cart-shipping-note {
-            margin: 0.35rem 0 0;
-            font-size: 0.85rem;
-            color: #666;
+            margin: 0.25rem 0 0;
+            font-size: 0.8rem;
+            color: #8a948c;
             line-height: 1.4;
         }
         .checkout-btn {
@@ -952,13 +1013,69 @@
                 if (subtotal >= threshold) {
                     freeShippingNudge.style.display = 'none';
                     freeShippingNudge.setAttribute('hidden', '');
-                    freeShippingNudge.textContent = '';
+                    freeShippingNudge.replaceChildren();
                 } else {
                     const away = Number((threshold - subtotal).toFixed(2));
-                    const thresholdLabel = countryCode === 'AU'
-                        ? `$${threshold.toFixed(0)}`
-                        : `$${threshold.toFixed(0)} order value`;
-                    freeShippingNudge.textContent = `Add $${away.toFixed(2)} more for free shipping (${thresholdLabel}+).`;
+                    const pct = Math.min(100, Math.max(4, Math.round((subtotal / threshold) * 100)));
+                    const subtotalLabel = `$${subtotal.toFixed(2)}`;
+                    const thresholdLabel = `$${threshold.toFixed(0)}`;
+                    const awayLabel = `$${away.toFixed(2)}`;
+                    const titleText = countryCode === 'AU'
+                        ? `You're ${awayLabel} away from free Australian shipping`
+                        : `You're ${awayLabel} away from free worldwide shipping`;
+                    const metaText = countryCode === 'AU'
+                        ? `Complimentary standard shipping on orders ${thresholdLabel}+`
+                        : `Complimentary shipping on international orders ${thresholdLabel}+`;
+
+                    freeShippingNudge.replaceChildren();
+
+                    const header = document.createElement('div');
+                    header.className = 'free-shipping-nudge__header';
+
+                    const icon = document.createElement('span');
+                    icon.className = 'free-shipping-nudge__icon';
+                    icon.setAttribute('aria-hidden', 'true');
+                    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 9h3.5L21 12v3h-7V9z"/><circle cx="7" cy="17" r="1.75"/><circle cx="17" cy="17" r="1.75"/></svg>';
+
+                    const copy = document.createElement('div');
+                    copy.className = 'free-shipping-nudge__copy';
+
+                    const title = document.createElement('p');
+                    title.className = 'free-shipping-nudge__title';
+                    const titleStrong = document.createElement('strong');
+                    titleStrong.textContent = awayLabel;
+                    title.append('You\u2019re ', titleStrong, ` away from free ${countryCode === 'AU' ? 'Australian ' : ''}shipping`);
+
+                    const meta = document.createElement('p');
+                    meta.className = 'free-shipping-nudge__meta';
+                    meta.textContent = metaText;
+
+                    copy.appendChild(title);
+                    copy.appendChild(meta);
+
+                    const amounts = document.createElement('span');
+                    amounts.className = 'free-shipping-nudge__amounts';
+                    amounts.textContent = `${subtotalLabel} / ${thresholdLabel}`;
+
+                    header.appendChild(icon);
+                    header.appendChild(copy);
+                    header.appendChild(amounts);
+
+                    const track = document.createElement('div');
+                    track.className = 'free-shipping-nudge__track';
+                    track.setAttribute('role', 'progressbar');
+                    track.setAttribute('aria-valuemin', '0');
+                    track.setAttribute('aria-valuemax', String(threshold));
+                    track.setAttribute('aria-valuenow', String(subtotal));
+                    track.setAttribute('aria-label', titleText);
+
+                    const fill = document.createElement('div');
+                    fill.className = 'free-shipping-nudge__fill';
+                    fill.style.width = `${pct}%`;
+
+                    track.appendChild(fill);
+                    freeShippingNudge.appendChild(header);
+                    freeShippingNudge.appendChild(track);
                     freeShippingNudge.style.display = 'block';
                     freeShippingNudge.removeAttribute('hidden');
                 }
