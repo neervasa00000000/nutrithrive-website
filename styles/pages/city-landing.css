@@ -1,0 +1,240 @@
+/* NutriThrive city landing pages — shared template */
+.city-landing {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.city-landing .city-crumb {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1.25rem;
+}
+
+.city-landing .city-crumb a {
+  color: #1a5c36;
+  text-decoration: none;
+}
+
+.city-landing h1 {
+  font-size: clamp(1.65rem, 4vw, 2.1rem);
+  line-height: 1.25;
+  color: #1b3022;
+  margin: 0 0 1rem;
+}
+
+.city-landing > p.lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #374151;
+  margin: 0 0 1.25rem;
+}
+
+.city-delivery-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #f0f9f4;
+  border: 1px solid rgba(15, 107, 77, 0.15);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  margin: 0 0 1.5rem;
+}
+
+.city-delivery-strip__icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.city-delivery-strip strong {
+  color: #1b3022;
+}
+
+.city-delivery-strip__time {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  color: #0f6b4d;
+  font-weight: 600;
+}
+
+.city-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #1b3022;
+  background: #fff;
+  border: 1px solid #d1cfc7;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.city-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0 2rem;
+  background: #f0f9f4;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.city-hero-grid img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.city-hero-checklist p {
+  margin: 0.35rem 0;
+  font-size: 1rem;
+}
+
+.city-hero-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1a5c36;
+  margin: 1.25rem 0 0.25rem;
+}
+
+.city-hero-perday {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}
+
+.city-cta-btn {
+  display: block;
+  background: #1a5c36;
+  color: #fff !important;
+  text-align: center;
+  padding: 0.85rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+
+.city-cta-btn:hover {
+  background: #0f6b4d;
+}
+
+.city-hero-note {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+.city-section {
+  margin: 2.5rem 0;
+}
+
+.city-section h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+  color: #1b3022;
+}
+
+.city-section h3 {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 0.35rem;
+}
+
+.city-section p,
+.city-section li {
+  line-height: 1.75;
+}
+
+.city-callout {
+  background: #fff9e6;
+  border: 1px solid #e6c853;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 2rem;
+}
+
+.city-review {
+  background: #fff;
+  border: 1px solid #e6e2d7;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.city-review blockquote {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #1b3022;
+}
+
+.city-review cite {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: normal;
+}
+
+.city-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.city-product-card {
+  background: #f0f9f4;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.city-product-card a {
+  color: #1a5c36;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.city-pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.city-pricing-table thead tr {
+  background: #1a5c36;
+  color: #fff;
+}
+
+.city-pricing-table th,
+.city-pricing-table td {
+  padding: 0.65rem 1rem;
+  text-align: left;
+}
+
+.city-pricing-table th:not(:first-child),
+.city-pricing-table td:not(:first-child) {
+  text-align: center;
+}
+
+.city-guide-links {
+  line-height: 2;
+}
+
+.city-guide-links a {
+  color: #1a5c36;
+}
+
+@media (max-width: 768px) {
+  .city-hero-grid {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+  }
+
+  .city-landing {
+    padding: 1.25rem 1rem 3rem;
+  }
+}
