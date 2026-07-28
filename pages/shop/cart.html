@@ -204,12 +204,31 @@
             padding: 0.75rem 0;
             border-bottom: 1px solid #e0e0e0;
         }
-        .summary-row:last-child {
+        .summary-row--total {
             border-bottom: none;
             font-size: 1.2rem;
             font-weight: 700;
             color: #0f6b4d;
             margin-top: 1rem;
+        }
+        .free-shipping-nudge {
+            margin-top: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #eef7f2;
+            border: 1px solid #c8e6d4;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #1a2e22;
+            line-height: 1.45;
+        }
+        .free-shipping-nudge strong {
+            color: #0f6b4d;
+        }
+        .cart-shipping-note {
+            margin: 0.35rem 0 0;
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
         }
         .checkout-btn {
             width: 100%;
@@ -574,7 +593,13 @@
                 <span id="discount-label" style="color: #0f6b4d;">Discount</span>
                 <span id="discount-amount" style="color: #0f6b4d; font-weight: 600;">-$0.00</span>
             </div>
-            <div class="summary-row">
+            <div class="summary-row" id="shipping-row">
+                <span id="shipping-label">Shipping</span>
+                <span id="shipping-amount">—</span>
+            </div>
+            <p class="cart-shipping-note" id="cart-shipping-note">Estimated for Australia. Confirm shipping country at payment.</p>
+            <div id="free-shipping-nudge" class="free-shipping-nudge" style="display: none;" hidden></div>
+            <div class="summary-row summary-row--total">
                 <span>Total</span>
                 <span id="total">$0.00</span>
             </div>
@@ -589,6 +614,29 @@
     <script src="/scripts/global/shipping-rates.min.js"></script>
     <script src="/scripts/global/script.min.js"></script>
     <script>
+        function getShippingCountryCode() {
+            try {
+                return (
+                    localStorage.getItem('nutrithrive_shipping_country') ||
+                    localStorage.getItem('nutrithrive_country') ||
+                    'AU'
+                ).toUpperCase();
+            } catch (e) {
+                return 'AU';
+            }
+        }
+
+        function getFreeShippingThreshold(countryCode) {
+            return (countryCode || 'AU').toUpperCase() === 'AU' ? 80 : 90;
+        }
+
+        function computeCartShipping(cartItems, subtotal, countryCode) {
+            if (!window.ShippingRates || typeof window.ShippingRates.calculate !== 'function') {
+                return null;
+            }
+            return window.ShippingRates.calculate(countryCode, cartItems, subtotal);
+        }
+
         function renderCart() {
             const cart = window.Cart.get();
             const cartContent = document.getElementById('cart-content');
@@ -854,8 +902,68 @@
                 discountRow.style.display = 'none';
             }
             
-            // Cart page only: total is subtotal after discount handling above.
-            document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
+            const countryCode = getShippingCountryCode();
+            const countryName = window.ShippingRates && window.ShippingRates.getCountryName
+                ? window.ShippingRates.getCountryName(countryCode)
+                : countryCode;
+            const shippingValue = computeCartShipping(cart.items, subtotal, countryCode);
+            const shippingLabel = document.getElementById('shipping-label');
+            const shippingAmount = document.getElementById('shipping-amount');
+            const shippingNote = document.getElementById('cart-shipping-note');
+            const freeShippingNudge = document.getElementById('free-shipping-nudge');
+            const threshold = getFreeShippingThreshold(countryCode);
+
+            if (shippingLabel) {
+                shippingLabel.textContent = countryCode === 'AU'
+                    ? 'Shipping (Australia est.)'
+                    : `Shipping (${countryName} est.)`;
+            }
+            if (shippingAmount) {
+                if (shippingValue === null || shippingValue === undefined) {
+                    if (countryCode === 'AU') {
+                        shippingAmount.textContent = 'from $8.73';
+                    } else {
+                        shippingAmount.textContent = 'Calculated at payment';
+                    }
+                } else if (shippingValue === 0) {
+                    shippingAmount.textContent = 'Free';
+                } else {
+                    shippingAmount.textContent = `$${Number(shippingValue).toFixed(2)}`;
+                }
+            }
+            if (shippingNote) {
+                shippingNote.textContent = countryCode === 'AU'
+                    ? 'Estimated for Australia. Confirm shipping country at payment.'
+                    : `Estimated for ${countryName}. Confirm shipping country at payment.`;
+            }
+
+            let shippingCost = 0;
+            if (shippingValue === null || shippingValue === undefined) {
+                shippingCost = countryCode === 'AU' ? 8.73 : 0;
+            } else {
+                shippingCost = Number(shippingValue) || 0;
+            }
+            const orderTotal = Number((subtotal + shippingCost).toFixed(2));
+            document.getElementById('total').textContent = shippingValue === null && countryCode !== 'AU'
+                ? `$${subtotal.toFixed(2)}`
+                : `$${orderTotal.toFixed(2)}`;
+
+            if (freeShippingNudge) {
+                if (subtotal >= threshold) {
+                    freeShippingNudge.style.display = 'none';
+                    freeShippingNudge.setAttribute('hidden', '');
+                    freeShippingNudge.textContent = '';
+                } else {
+                    const away = Number((threshold - subtotal).toFixed(2));
+                    const thresholdLabel = countryCode === 'AU'
+                        ? `$${threshold.toFixed(0)}`
+                        : `$${threshold.toFixed(0)} order value`;
+                    freeShippingNudge.textContent = `Add $${away.toFixed(2)} more for free shipping (${thresholdLabel}+).`;
+                    freeShippingNudge.style.display = 'block';
+                    freeShippingNudge.removeAttribute('hidden');
+                }
+            }
+
             cartSummary.style.display = 'block';
         }
 
