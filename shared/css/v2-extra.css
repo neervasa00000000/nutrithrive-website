@@ -27,14 +27,16 @@
   text-decoration: underline;
 }
 .nt-promo-bar {
-  background: var(--color-promo-bar, #1a2e22);
-  color: #fff;
+  background: var(--color-promo-bar, #1a2e22) !important;
+  color: #fff !important;
   text-align: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.8125rem;
-  line-height: 1.35;
-  font-weight: 500;
-  box-shadow: none;
+  padding: 0.45rem 1rem !important;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.01em;
+  box-shadow: none !important;
 }
 
 /* Blog header — match homepage / product pages (legacy nav inside #nt-header) */
@@ -46,44 +48,45 @@
 }
 
 #nt-header .urgency-banner {
-  background-color: var(--color-promo-bar, #1a2e22);
-  background-image: none;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  box-shadow: none;
+  background-color: var(--color-promo-bar, #1a2e22) !important;
+  background-image: none !important;
+  color: #fff !important;
+  padding: 0.45rem 1rem !important;
+  box-shadow: none !important;
 }
 
 #nt-header .urgency-content {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto !important;
+  padding: 0 !important;
   text-align: center;
-  font-size: 0.8125rem;
-  line-height: 1.35;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.5rem;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.01em;
+  color: #fff !important;
+  display: block !important;
 }
 
 #nt-header .urgency-content strong {
-  font-weight: 700;
+  font-weight: 500 !important;
 }
 
 #nt-header .separator {
-  opacity: 0.55;
-  margin: 0 0.15rem;
+  opacity: 1 !important;
+  margin: 0 0.35em !important;
+  font-weight: 500 !important;
 }
 
 @media (max-width: 600px) {
   #nt-header .urgency-content {
-    flex-direction: column;
-    gap: 0.15rem;
-    font-size: 0.75rem;
+    font-size: 0.75rem !important;
+    line-height: 1.45 !important;
   }
 
   #nt-header .urgency-content .separator {
-    display: none;
+    display: inline !important;
   }
 }
 body.has-test-banner main {
