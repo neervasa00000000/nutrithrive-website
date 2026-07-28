@@ -58,58 +58,63 @@ header {
     transition: background var(--transition);
 }
 
-/* Top announcement strips — one shared height/style sitewide */
+/* Top announcement strips — identical size/weight/spacing sitewide */
 .urgency-banner,
 .nt-promo-bar,
 body.products-page > .promo-bar,
-header .urgency-banner {
-    background-color: var(--color-promo-bar, #1a2e22);
-    background-image: none;
-    color: #fff;
+header .urgency-banner,
+#nt-header .urgency-banner {
+    background-color: var(--color-promo-bar, #1a2e22) !important;
+    background-image: none !important;
+    color: #fff !important;
     text-align: center;
-    padding: 0.5rem 1rem;
-    box-shadow: none;
+    padding: 0.45rem 1rem !important;
+    box-shadow: none !important;
     min-height: 0;
+    border: 0;
 }
 
-.urgency-content {
+.urgency-content,
+#nt-header .urgency-content,
+.nt-promo-bar,
+body.products-page > .promo-bar {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto !important;
+    padding: 0 !important;
     text-align: center;
-    font-size: 0.8125rem;
-    line-height: 1.35;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.5rem;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.01em;
+    color: #fff !important;
+    display: block !important;
+    white-space: normal;
 }
 
-.urgency-content strong {
-    font-weight: 700;
+.urgency-content strong,
+#nt-header .urgency-content strong,
+.urgency-banner strong,
+.promo-bar strong {
+    font-weight: 500 !important;
 }
 
 .urgency-content .separator,
+#nt-header .separator,
+.urgency-banner .separator,
 .separator {
-    opacity: 0.55;
-    margin: 0 0.15rem;
-}
-
-.nt-promo-bar {
-    font-size: 0.8125rem;
-    line-height: 1.35;
-    font-weight: 500;
+    opacity: 1 !important;
+    margin: 0 0.35em !important;
+    font-weight: 500 !important;
 }
 
 @media (max-width: 600px) {
-    .urgency-content {
-        flex-direction: column;
-        gap: 0.15rem;
-        font-size: 0.75rem;
-    }
-    .urgency-content .separator,
-    .separator {
-        display: none;
+    .urgency-content,
+    #nt-header .urgency-content,
+    .nt-promo-bar,
+    body.products-page > .promo-bar {
+        font-size: 0.75rem !important;
+        line-height: 1.45 !important;
     }
 }
 
