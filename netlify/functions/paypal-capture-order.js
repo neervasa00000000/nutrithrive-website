@@ -1,4 +1,5 @@
 import { createHmac, timingSafeEqual } from "crypto";
+import { sendOrderConfirmationEmails } from "./order-email.js";
 
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
@@ -143,6 +144,11 @@ export async function handler(event) {
 
         const capture = await capRes.json();
         if (!capRes.ok) throw new Error(JSON.stringify(capture));
+
+        const emailResult = await sendOrderConfirmationEmails(capture, orderID);
+        if (emailResult.errors.length) {
+            console.warn("[paypal-capture-order] order email partial failure", emailResult);
+        }
 
         return {
             statusCode: 200,
