@@ -2107,25 +2107,26 @@ article h1, section h1, nav h1, aside h1 {
    HOMEPAGE OPTIMIZATION — urgency, trust, lab badge, guides
    ============================================================ */
 
-/* Urgency Banner */
+/* Urgency Banner — shared sitewide thickness (see styles/global/style.css) */
 .urgency-banner {
-    background-color: var(--color-primary, #0f6b4d);
+    background-color: var(--color-promo-bar, #1a2e22);
     background-image: none;
     color: #fff;
-    padding: 10px 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    padding: 0.5rem 1rem;
+    box-shadow: none;
 }
 
 .urgency-content {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    font-size: 13px;
+    font-size: 0.8125rem;
+    line-height: 1.35;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 0.35rem 0.5rem;
 }
 
 .urgency-content strong {
@@ -2133,8 +2134,8 @@ article h1, section h1, nav h1, aside h1 {
 }
 
 .separator {
-    opacity: 0.5;
-    margin: 0 4px;
+    opacity: 0.55;
+    margin: 0 0.15rem;
 }
 
 /* Hero subhead */
@@ -2545,8 +2546,8 @@ article h1, section h1, nav h1, aside h1 {
 @media (max-width: 768px) {
     .urgency-content {
         flex-direction: column;
-        gap: 4px;
-        font-size: 12px;
+        gap: 0.15rem;
+        font-size: 0.75rem;
     }
 
     .separator {
