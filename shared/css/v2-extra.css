@@ -27,11 +27,14 @@
   text-decoration: underline;
 }
 .nt-promo-bar {
-  background: #1a2e22;
+  background: var(--color-promo-bar, #1a2e22);
   color: #fff;
   text-align: center;
   padding: 0.5rem 1rem;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  font-weight: 500;
+  box-shadow: none;
 }
 
 /* Blog header — match homepage / product pages (legacy nav inside #nt-header) */
@@ -46,19 +49,21 @@
   background-color: var(--color-promo-bar, #1a2e22);
   background-image: none;
   color: #fff;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
 }
 
 #nt-header .urgency-content {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.35;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.35rem 0.5rem;
 }
 
 #nt-header .urgency-content strong {
@@ -66,15 +71,15 @@
 }
 
 #nt-header .separator {
-  opacity: 0.5;
-  margin: 0 4px;
+  opacity: 0.55;
+  margin: 0 0.15rem;
 }
 
 @media (max-width: 600px) {
   #nt-header .urgency-content {
     flex-direction: column;
-    gap: 3px;
-    font-size: 12px;
+    gap: 0.15rem;
+    font-size: 0.75rem;
   }
 
   #nt-header .urgency-content .separator {
