@@ -1,4 +1,4 @@
-/** Auto-generated — 110 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 112 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -239,6 +239,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-to-add-moringa-to-diet"
   },
   {
+    "slug": "how-to-age-well-in-your-40s-healthy-ageing-australia-2026",
+    "title": "How to Age Well in Your 40s: The Habits That Will Matter in Your 60s (2026)",
+    "description": "The habits you build in your 40s determine how your 60s feel. The science on what actually matters for healthy ageing: practical for Australian lives, not aspirational.",
+    "category": "Health",
+    "href": "/blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026"
+  },
+  {
     "slug": "how-to-balance-hormones-naturally-food-australia-2026",
     "title": "How to Balance Hormones Naturally Through Food: What Actually Works (2026)",
     "description": "Hormone balance is one of the most searched health terms in Australia. Here's what food actually does, and does not, to your hormones, based on real research.",
@@ -363,6 +370,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Does moringa help blood sugar? The short answer: research is mixed. Some studies show promise, others show no effect. What this means if you have diabetes.",
     "category": "Health",
     "href": "/blog/moringa-and-blood-sugar-diabetes-research-2026"
+  },
+  {
+    "slug": "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
+    "title": "Moringa Avocado Toast: The Anti-Inflammatory Breakfast (2026)",
+    "description": "Avocado toast upgraded: moringa stirred into the smash adds iron, vitamin A, and antioxidants. A 3-minute recipe that looks great, tastes better, and actually does something.",
+    "category": "Recipes",
+    "href": "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026"
   },
   {
     "slug": "moringa-before-after-workout-timing-guide-2026",
