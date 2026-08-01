@@ -1,4 +1,4 @@
-/** Auto-generated — 117 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 115 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -328,20 +328,6 @@ window.NT_BLOG_ARTICLES = [
     "description": "Common signs of iron deficiency in Australian women, and the best plant-based sources — including how moringa compares.",
     "category": "Health",
     "href": "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
-  },
-  {
-    "slug": "is-moringa-banned-australia-what-fsanz-says-2026",
-    "title": "Is Moringa Banned in Australia? What FSANZ Actually Says (2026)",
-    "description": "FSANZ rejected moringa's novel food application in Nov 2025. Here's exactly what that means, straight from the primary source. No spin.",
-    "category": "Guides",
-    "href": "/blog/is-moringa-banned-australia-what-fsanz-says-2026"
-  },
-  {
-    "slug": "is-moringa-banned-in-australia",
-    "title": "Is Moringa Banned in Australia? What the 2026 Recall Actually Means",
-    "description": "Is moringa banned in Australia? No. It&#x27;s legal food. The February 2026 recall was a Rosabella capsule Salmonella issue, not a moringa ban. Full explanation.",
-    "category": "Safety &amp; Regulation",
-    "href": "/blog/is-moringa-banned-in-australia"
   },
   {
     "slug": "is-moringa-safe-during-pregnancy-2026",

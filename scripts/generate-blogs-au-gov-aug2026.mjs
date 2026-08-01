@@ -143,7 +143,7 @@ const POSTS = [
         body: [
           'In early 2026, specific Rosabella moringa capsule lots were recalled over Salmonella contamination. That was a microbiological food safety failure on named products, investigated through the food recall system.',
           'A Salmonella recall is not the same legal mechanism as a novel food rejection. One is about unsafe batches on the market now. The other is about whether the ingredient category is permitted at all under the Code.',
-          'Our separate <a href="/blog/is-moringa-banned-in-australia">Rosabella recall timeline</a> covers that incident. This article focuses on FSANZ\'s November 2025 novel food decision and primary sources.',
+          'Our separate <a href="/blog/rosabella-moringa-reviews-legit-or-overhyped-2026">Rosabella recall timeline</a> covers that incident. This article focuses on FSANZ\'s November 2025 novel food decision and primary sources.',
         ],
       },
       {
@@ -495,7 +495,7 @@ const POSTS = [
         body: [
           'A product is not both a generic food and a listed medicine in the same presentation. Packaging, claims, and ingredients determine classification.',
           'FSANZ sets food standards including novel food rules. The TGA regulates therapeutic goods. A powder sold as a cooking ingredient follows a different framework from capsules with therapeutic claims and an AUST L number.',
-          'Recent FSANZ decisions on ingredients such as moringa sit in the food lane. See our <a href="/blog/is-moringa-banned-australia-what-fsanz-says-2026">FSANZ moringa explainer</a> for that separate question. An AUST L moringa capsule and a moringa leaf powder sachet are not regulated identically.',
+          'Recent FSANZ decisions on ingredients such as moringa sit in the food lane. See our <a href="/blog/how-to-choose-moringa-powder-australia-2026">FSANZ moringa explainer</a> for that separate question. An AUST L moringa capsule and a moringa leaf powder sachet are not regulated identically.',
         ],
       },
       {

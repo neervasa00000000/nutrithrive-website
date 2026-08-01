@@ -92,10 +92,10 @@
 # HOLD: content requires legal review re: FSANZ A1294 — activate redirect only after lawyer-reviewed content is live on destination
 # /blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-in-australia 301
 # /blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-in-australia 301
-/blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-australia-what-fsanz-says-2026 301!
-/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-australia-what-fsanz-says-2026 301!
-/blog/is-moringa-banned-in-australia.html /blog/is-moringa-banned-in-australia 301!
-/blog/is-moringa-banned-in-australia /blog/is-moringa-banned-in-australia.html 200
+/blog/is-moringa-banned-australia-truth-2026.html /404.html 410
+/blog/is-moringa-banned-australia-truth-2026 /404.html 410
+/blog/is-moringa-banned-in-australia.html /404.html 410
+/blog/is-moringa-banned-in-australia /404.html 410
 /blog/moringa-benefits-women-hormones-energy-skin-2026 /blog/moringa-benefits-for-women-comprehensive-2026 301
 /blog/moringa-benefits-women-hormones-energy-skin-2026.html /blog/moringa-benefits-for-women-comprehensive-2026 301
 
@@ -737,8 +737,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 
 # === au gov batch (Aug 2026) ===
 # Is Moringa Banned in Australia? What FSANZ Actually Says (au gov Aug 2026)
-/blog/is-moringa-banned-australia-what-fsanz-says-2026.html /blog/is-moringa-banned-australia-what-fsanz-says-2026 301!
-/blog/is-moringa-banned-australia-what-fsanz-says-2026 /blog/is-moringa-banned-australia-what-fsanz-says-2026.html 200
+/blog/is-moringa-banned-australia-what-fsanz-says-2026.html /404.html 410
+/blog/is-moringa-banned-australia-what-fsanz-says-2026 /404.html 410
 # Vitamin D Deficiency in Australia: The Sunny Country Paradox (au gov Aug 2026)
 /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026.html /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026 301!
 /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026 /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026.html 200
@@ -752,5 +752,13 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/what-does-aust-l-mean-supplement-label-australia-2026.html /blog/what-does-aust-l-mean-supplement-label-australia-2026 301!
 /blog/what-does-aust-l-mean-supplement-label-australia-2026 /blog/what-does-aust-l-mean-supplement-label-australia-2026.html 200
 # truth-2026 → FSANZ explainer (au gov Aug 2026)
-/blog/is-moringa-banned-australia-truth-2026.html /blog/is-moringa-banned-australia-what-fsanz-says-2026 301!
-/blog/is-moringa-banned-australia-truth-2026 /blog/is-moringa-banned-australia-what-fsanz-says-2026 301!
+/blog/is-moringa-banned-australia-truth-2026.html /404.html 410
+/blog/is-moringa-banned-australia-truth-2026 /404.html 410
+
+# === permanently removed negative banned/FSANZ posts (Aug 2026) ===
+/blog/is-moringa-banned-australia-what-fsanz-says-2026 /404.html 410
+/blog/is-moringa-banned-australia-what-fsanz-says-2026.html /404.html 410
+/blog/is-moringa-banned-australia-truth-2026 /404.html 410
+/blog/is-moringa-banned-australia-truth-2026.html /404.html 410
+/blog/is-moringa-banned-in-australia /404.html 410
+/blog/is-moringa-banned-in-australia.html /404.html 410
