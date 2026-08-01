@@ -172,8 +172,8 @@
           "@type": "Offer",
           "url": "https://nutrithrive.com.au/products/moringa-powder/",
           "sku": "NT-MOR-400G",
-          "name": "Moringa powder — 400 g net (3+1 bundle)",
-          "description": "Promotional bundle: four 100 g packs (3+1): 400 g moringa powder total.",
+          "name": "Moringa powder — 400 g net bundle",
+          "description": "400 g moringa powder bundle (four 100 g packs).",
           "priceCurrency": "AUD",
           "price": "35.00",
           "priceValidUntil": "2027-12-31",
@@ -629,7 +629,6 @@
                 <div class="nt-pdp-gallery">
                     <div class="nt-pdp-badges">
                         <span class="nt-pdp-badge nt-pdp-badge--seller">Best seller</span>
-                        <span id="product-badge-discount" class="nt-pdp-badge nt-pdp-badge--sale">21% off</span>
                     </div>
                     <img id="main-product-image" class="nt-pdp-gallery__img" src="/assets/images/products/moringa-powder/moringa-powder-product-100g.webp" alt="NutriThrive moringa oleifera leaf powder 100g, shade-dried, Melbourne" loading="eager" decoding="async" fetchpriority="high" width="682" height="1024" style="width:100%;height:auto;max-width:100%;display:block;border-radius:12px;">
                 </div>
@@ -640,7 +639,6 @@
                     <div class="nt-pdp-pricing">
                         <span id="product-price" class="nt-pdp-price">$11.00</span>
                         <span id="product-original-price" class="nt-pdp-was">$14.00</span>
-                        <span id="product-save-badge" class="nt-pdp-save">Save $3.00</span>
                     </div>
                     <p id="product-cost-per-day" class="nt-pdp-perday">About $0.33/day at 1 tsp (100g pack)</p>
 
@@ -662,16 +660,16 @@
                     <span class="nt-pdp-field-label">Select size</span>
                     <div class="nt-pdp-sizes" role="group" aria-label="Select size">
                         <button type="button" class="nt-pdp-size-btn is-active" data-variation="variation-2" aria-pressed="true">
-                            <strong>100g</strong><span>$11.00 (was $14.00)</span>
+                            <strong>100g</strong><span>$11.00</span>
                         </button>
                         <button type="button" class="nt-pdp-size-btn" data-variation="variation-1" aria-pressed="false">
-                            <strong>400g (3+1 bundle)</strong><span>$35.00 (was $56.00)</span>
+                            <strong>400g Bundle</strong><span>$35.00</span>
                         </button>
                         <button type="button" class="nt-pdp-size-btn" data-variation="variation-4" aria-pressed="false">
-                            <strong>200g</strong><span>$21.50 (was $28.00)</span>
+                            <strong>200g</strong><span>$21.50</span>
                         </button>
                         <button type="button" class="nt-pdp-size-btn" data-variation="variation-6" aria-pressed="false">
-                            <strong>100g + Soap combo</strong><span>$17.00 (was $23.39)</span>
+                            <strong>100g + Soap combo</strong><span>$17.00</span>
                         </button>
                     </div>
 
@@ -679,7 +677,7 @@
                         <label for="product-variation" class="nt-pdp-field-label">Bundles &amp; add-ons</label>
                         <select id="product-variation" onchange="updateProductVariation()" aria-label="Other product options">
                             <option value="variation-2" selected>100g Moringa, $11.00</option>
-                            <option value="variation-1">3 + 1 = 400g, $35.00</option>
+                            <option value="variation-1">400g Moringa Bundle, $35.00</option>
                             <option value="variation-4">200g Moringa, $21.50</option>
                             <option value="variation-3">Moringa + Curry Leaves, $17.00</option>
                             <option value="variation-5">30g Dried Curry Leaves, $7.00</option>
@@ -917,12 +915,12 @@
     <script>
         // Product variations data
         const productVariations = {
-            'variation-1': { originalPrice: 56.00, price: 35.00, name: '3 + 1 = 400g Moringa', weight: 400, image: '/assets/images/homepage/product-showcase/thumbs/new3+1.webp' },
-            'variation-2': { originalPrice: 14.00, price: 11.00, name: '100g Moringa', weight: 100, image: '/assets/images/products/moringa-powder/moringa-powder-product-100g.webp' },
-            'variation-3': { originalPrice: 22.49, price: 17.00, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '/assets/images/homepage/product-showcase/combo.webp' },
-            'variation-4': { originalPrice: 28.00, price: 21.50, name: '200g Moringa', weight: 200, image: '/assets/images/products/moringa-powder/moringa-powder-product-200g.webp' },
-            'variation-5': { originalPrice: 8.49, price: 7.00, name: '30g Dried Curry Leaves', weight: 30, image: '/assets/images/homepage/product-showcase/Curry.webp' },
-            'variation-6': { originalPrice: 23.39, price: 17.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '/assets/images/homepage/product-showcase/moringasoap_combo.webp' }
+            'variation-1': { originalPrice: 35.00, price: 35.00, name: '400g Moringa Bundle', weight: 400, image: '/assets/images/homepage/product-showcase/thumbs/new3+1.webp' },
+            'variation-2': { originalPrice: 11.00, price: 11.00, name: '100g Moringa', weight: 100, image: '/assets/images/products/moringa-powder/moringa-powder-product-100g.webp' },
+            'variation-3': { originalPrice: 17.00, price: 17.00, name: 'Combo Moringa + Dried Curry Leaves', weight: 130, image: '/assets/images/homepage/product-showcase/combo.webp' },
+            'variation-4': { originalPrice: 21.50, price: 21.50, name: '200g Moringa', weight: 200, image: '/assets/images/products/moringa-powder/moringa-powder-product-200g.webp' },
+            'variation-5': { originalPrice: 7.00, price: 7.00, name: '30g Dried Curry Leaves', weight: 30, image: '/assets/images/homepage/product-showcase/Curry.webp' },
+            'variation-6': { originalPrice: 17.00, price: 17.00, name: 'Moringa 100g + Soap 95g', weight: 195, image: '/assets/images/homepage/product-showcase/moringasoap_combo.webp' }
         };
         
         function updateProductVariation() {
@@ -935,11 +933,15 @@
             if (variation) {
                 const originalPriceElement = document.getElementById('product-original-price');
                 const priceElement = document.getElementById('product-price');
-                const saveBadge = document.getElementById('product-save-badge');
-                const discountBadge = document.getElementById('product-badge-discount');
                 
                 if (originalPriceElement) {
-                    originalPriceElement.textContent = '$' + variation.originalPrice.toFixed(2);
+                    if (variation.originalPrice > variation.price) {
+                        originalPriceElement.textContent = '$' + variation.originalPrice.toFixed(2);
+                        originalPriceElement.style.display = '';
+                    } else {
+                        originalPriceElement.textContent = '';
+                        originalPriceElement.style.display = 'none';
+                    }
                 }
                 if (priceElement) {
                     priceElement.textContent = '$' + variation.price.toFixed(2);
@@ -951,14 +953,6 @@
                     const days = Math.max(1, Math.floor(variation.weight / (tspPerDay * gramsPerTsp)));
                     const perDay = (variation.price / days).toFixed(2);
                     costPerDayEl.textContent = 'About $' + perDay + '/day at 1 tsp (' + variation.weight + 'g pack)';
-                }
-                const discountAmount = Math.ceil((variation.originalPrice - variation.price) * 100) / 100;
-                const discountPercent = Math.ceil((discountAmount / variation.originalPrice) * 100);
-                if (saveBadge) {
-                    saveBadge.textContent = 'Save $' + discountAmount.toFixed(2);
-                }
-                if (discountBadge) {
-                    discountBadge.textContent = discountPercent + '% off';
                 }
                 
                 const mainImage = document.getElementById('main-product-image');

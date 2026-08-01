@@ -213,11 +213,11 @@
         }
         .free-shipping-nudge {
             margin: 1.25rem 0 0.5rem;
-            padding: 1rem 1.15rem 1.1rem;
-            background: #fff;
-            border: 1px solid #e3ddd0;
-            border-radius: 12px;
-            box-shadow: 0 1px 2px rgba(26, 46, 34, 0.04);
+            padding: 0.85rem 0 0.5rem;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
         }
         .free-shipping-nudge__header {
             display: flex;
@@ -728,13 +728,13 @@
             const ORIGINAL_PRICE_BY_ID = {
                 'moringa-powder': 14.00,
                 'moringa-200g': 28.00,
-                'moringa-400g': 56.00,
+                'moringa-400g': 35.00,
                 'moringa-soap': 9.49,
                 'moringa-soap-combo': 23.39,
                 'curry-leaves': 8.49,
                 'black-tea': 10.00,
                 'combo-pack': 22.49,
-                'moringa-variation-1': 56.00,
+                'moringa-variation-1': 35.00,
                 'moringa-variation-2': 14.00,
                 'moringa-variation-3': 22.49,
                 'moringa-variation-4': 28.00,
@@ -953,9 +953,8 @@
             const discountAmountElement = document.getElementById('discount-amount');
             
             if (discountAmount > 0.01) { // Only show if discount is significant
-                const discountPercent = Math.ceil((discountAmount / originalTotal) * 100);
                 if (discountLabel) {
-                    discountLabel.textContent = `Discount (${discountPercent}% off)`;
+                    discountLabel.textContent = 'Discount';
                 }
                 discountRow.style.display = 'flex';
                 discountAmountElement.textContent = `-$${discountAmount.toFixed(2)}`;
