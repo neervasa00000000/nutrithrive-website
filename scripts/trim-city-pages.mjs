@@ -44,7 +44,7 @@ const CITIES = [
       },
       {
         q: 'What\'s the best value for Sydney buyers?',
-        a: 'The 3+1 bundle (400g, $35) ships free and works out to about $0.26/day. Under $80, standard shipping is $8.73.',
+        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80, shipping is $8.73.',
       },
       {
         q: 'Is NutriThrive affected by the 2026 moringa recall?',
@@ -85,7 +85,7 @@ const CITIES = [
       },
       {
         q: 'What\'s the cheapest way to order?',
-        a: '3+1 bundle ($35, 400g) ships free Australia-wide. Single 100g is $11 + $8.73 shipping if under $80.',
+        a: 'The 400g bundle is $35. Single 100g is $11 + $8.73 shipping if your order is under $80. Free shipping from $80.',
       },
       {
         q: 'Why is my powder clumping?',
@@ -112,7 +112,7 @@ const CITIES = [
       'Order before 2pm for same-day dispatch from Truganina, Melbourne. Perth metro typically 3–5 business days—the longest domestic route from our warehouse.',
     imgAlt: 'NutriThrive moringa powder delivered to Perth',
     callout:
-      '<div class="city-callout"><strong>Perth tip:</strong> Order the 3+1 bundle ($35)—it ships free and saves repeat $8.73 freight from Melbourne.</div>',
+      '<div class="city-callout"><strong>Perth tip:</strong> The 400g bundle is $35. Free shipping from $80 — useful if you want fewer Melbourne freight runs.</div>',
     localTitle: 'Why Perth buyers order from Melbourne',
     localBody:
       'Loose moringa powder is hard to find in WA retail. We ship the same NMI-tested batches as east-coast customers. In summer heat, store sealed in a cool cupboard or fridge after opening.',
@@ -131,7 +131,7 @@ const CITIES = [
       },
       {
         q: 'Best value for regular Perth orders?',
-        a: 'The 3+1 bundle ($35, 400g) ships free—about 4 months at 1 tsp/day and no freight on each order.',
+        a: 'The 400g bundle is $35 — about 4 months at 1 tsp/day. Free shipping starts at $80.',
       },
     ],
     review: {
@@ -169,7 +169,7 @@ const CITIES = [
       },
       {
         q: 'Cheapest way to order to Adelaide?',
-        a: '3+1 bundle ($35, 400g) ships free. Otherwise $11/100g + $8.73 shipping on orders under $80.',
+        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80 shipping is $8.73. Otherwise $11/100g + $8.73 under $80.',
       },
       {
         q: 'Chemist Warehouse vs ordering direct?',
@@ -205,8 +205,8 @@ function faqSchema(faqs) {
 
 function pricingRows(cityName, highlight) {
   const bundleRow = highlight
-    ? `<tr class="is-highlight"><td>Moringa 3+1 Bundle (400g)</td><td class="price-cell price-cell--accent">$35.00</td><td>Free</td></tr>`
-    : `<tr><td>Moringa 3+1 Bundle (400g)</td><td class="price-cell price-cell--accent">$35.00</td><td>Free</td></tr>`;
+    ? `<tr class="is-highlight"><td>400g Moringa Bundle</td><td class="price-cell price-cell--accent">$35.00</td><td>From $8.73*</td></tr>`
+    : `<tr><td>400g Moringa Bundle</td><td class="price-cell price-cell--accent">$35.00</td><td>From $8.73*</td></tr>`;
   return `<section class="city-section">
   <h2>Prices delivered to ${cityName}</h2>
   <div class="city-table-wrap"><table class="city-pricing-table">
@@ -217,7 +217,7 @@ function pricingRows(cityName, highlight) {
       ${bundleRow}
     </tbody>
   </table></div>
-  <p class="city-table-note">*Free shipping on orders $80+. Bundle always ships free.</p>
+  <p class="city-table-note">*Free shipping on orders $80+. Under $80, Australia shipping from $8.73.</p>
 </section>`;
 }
 
