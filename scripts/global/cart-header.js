@@ -63,9 +63,12 @@ window.__NT_CART_HEADER_INITIALIZED__ = true;
             ">0</span>
         `;
         
-        // Insert before hamburger button or at end of nav
+        // Prefer dedicated end slot so nav stays centered; fall back to navbar / nav-links
+        const navbarEnd = document.querySelector('.navbar-end');
         const hamburger = document.querySelector('.hamburger');
-        if (hamburger && hamburger.parentNode) {
+        if (navbarEnd) {
+            navbarEnd.insertBefore(cartLink, hamburger || null);
+        } else if (hamburger && hamburger.parentNode) {
             hamburger.parentNode.insertBefore(cartLink, hamburger);
         } else {
             navLinks.appendChild(cartLink);
