@@ -762,3 +762,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/is-moringa-banned-australia-truth-2026.html /404.html 410
 /blog/is-moringa-banned-in-australia /404.html 410
 /blog/is-moringa-banned-in-australia.html /404.html 410
+
+# Dal protein + high-protein curry leaf recipes (Aug 2026)
+/blog/which-dal-has-the-most-protein-2026.html /blog/which-dal-has-the-most-protein-2026 301!
+/blog/which-dal-has-the-most-protein-2026 /blog/which-dal-has-the-most-protein-2026.html 200
+/blog/high-protein-curry-leaf-recipes-2026.html /blog/high-protein-curry-leaf-recipes-2026 301!
+/blog/high-protein-curry-leaf-recipes-2026 /blog/high-protein-curry-leaf-recipes-2026.html 200
