@@ -130,6 +130,19 @@ body.products-page > .promo-bar {
     background: transparent;
 }
 
+/* Lock chrome typography so every page matches homepage */
+header,
+header .navbar,
+header .logo,
+header .nav-links a,
+#nt-header,
+#nt-header .navbar,
+#nt-header .logo,
+#nt-header .nav-links a,
+body.products-page > .promo-bar {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
 .logo {
     display: flex;
     align-items: center;

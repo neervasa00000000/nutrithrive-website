@@ -43,7 +43,7 @@
       '</div></div>' +
       '<div class="navbar">' +
       '<a class="logo" href="/">' +
-      '<img alt="NutriThrive Logo" decoding="async" height="50" width="50" loading="lazy" src="/assets/images/logo/LOGO-50.jpg" style="height: 1.8rem; width: auto; margin-right: 0.5rem;"/>' +
+      '<img alt="NutriThrive Logo" decoding="async" height="50" width="50" loading="eager" src="/assets/images/logo/LOGO-120.webp" style="height: 1.8rem; width: auto; margin-right: 0.5rem;"/>' +
       d.brand +
       '</a>' +
       '<nav class="nav-links">' +

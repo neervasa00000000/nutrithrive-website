@@ -42,13 +42,41 @@
   font-family: inherit !important;
 }
 
-/* Blog site header — match global navbar (Inter, legacy nav inside #nt-header) */
+/* Blog site header — lock Inter to match homepage/products (not Plus Jakarta) */
 .nt-blog-article #nt-header,
-.nt-blog-index #nt-header {
-  font-family: inherit;
+.nt-blog-index #nt-header,
+.nt-blog-article #nt-header .logo,
+.nt-blog-index #nt-header .logo,
+.nt-blog-article #nt-header .nav-links a,
+.nt-blog-index #nt-header .nav-links a,
+.nt-blog-article #nt-header .urgency-content,
+.nt-blog-index #nt-header .urgency-content {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
 }
 
-/* Legacy navbar from layout-v2.js — blog pages do not load styles/global/style.css */
+.nt-blog-article #nt-header .urgency-banner,
+.nt-blog-index #nt-header .urgency-banner {
+  background-color: var(--color-promo-bar, #1a2e22) !important;
+  color: #fff !important;
+  text-align: center;
+  padding: 0.45rem 1rem !important;
+  box-shadow: none !important;
+}
+
+.nt-blog-article #nt-header .urgency-content,
+.nt-blog-index #nt-header .urgency-content {
+  max-width: 1200px;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.01em;
+  color: #fff !important;
+  display: block !important;
+}
+
+/* Legacy navbar from layout-v2.js — match styles/global/style.css exactly */
 .nt-blog-article #nt-header .navbar,
 .nt-blog-index #nt-header .navbar {
   display: flex;
@@ -58,7 +86,7 @@
   margin: 0 auto;
   padding: 1.2rem 2rem;
   min-height: 68px;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   background: transparent;
 }
 
@@ -68,9 +96,9 @@
   align-items: center;
   font-weight: 800;
   font-size: 1.5rem;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -1px;
 }
 
 .nt-blog-article #nt-header .nav-links,
@@ -84,7 +112,7 @@
 .nt-blog-index #nt-header .nav-links a {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   text-decoration: none;
   transition: color 0.2s ease;
   display: inline-flex;

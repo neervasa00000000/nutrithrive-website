@@ -1,7 +1,7 @@
 :root{--color-forest-deep:#1a2e22;--color-moringa-leaf:#0f6b4d;--color-parchment:#f5f1e6;--color-surface:#fdf9ee;--color-terracotta:#d66844;--color-terracotta-dark:#732001;--color-outline:#bec9c1;--color-surface-variant:#e6e2d7;--color-promo-bar:#1a2e22;--color-test-banner:#732001;--color-primary:var(--color-moringa-leaf);--color-primary-fixed:#a1f3cd;--color-primary-dark:#005139;--color-primary-light:#f7f3e8;--color-text:var(--color-forest-deep);--color-text-light:#3f4943;--color-text-muted:#6f7a73;--color-bg:var(--color-parchment);--color-bg-alt:var(--color-surface);--color-accent:var(--color-terracotta);--color-border-soft:var(--color-surface-variant);--spacing-xs:0.5rem;--spacing-sm:1rem;--spacing-md:1.5rem;--spacing-lg:2rem;--spacing-xl:3rem;--font-primary:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;--font-heading:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;--text-sm:0.875rem;--text-base:1rem;--text-lg:1.125rem;--text-xl:1.25rem;--text-2xl:1.5rem;--text-3xl:1.875rem;--text-4xl:2.25rem;--radius-sm:0.5rem;--radius:1.125rem;--radius-lg:1.125rem;--shadow:0 4px 24px 0 rgba(15, 107, 77, 0.07);--shadow-hover:0 8px 32px 0 rgba(15, 107, 77, 0.12);--transition:0.4s cubic-bezier(0.4, 2, 0.6, 1);--bg:var(--color-bg);--card:var(--color-bg-alt);--primary:var(--color-primary);--accent:var(--color-accent);--footer-bg:var(--color-forest-deep);--footer-text:#ffffff;--text:var(--color-text);--muted:var(--color-text-light);--border-light:rgba(26, 46, 34, 0.12);--surface-elevated:#ffffff;--gradient-primary:linear-gradient(135deg, var(--color-moringa-leaf) 0%, var(--color-primary-dark) 100%);--gradient-accent:linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);--container-max:1200px;--container-wide:1280px}html{box-sizing:border-box}*,::after,::before{box-sizing:inherit}body{font-family:var(--font-primary);color:var(--color-text);line-height:1.6;background:var(--color-bg)}
 
-.nt-sticky-top{position:sticky;top:0;z-index:1000;width:100%;background:#fdf9ee}
-.nt-promo-bar{background:#1a2e22;color:#fff;text-align:center;padding:.5rem 1rem;font-size:.75rem}
+.nt-sticky-top{position:sticky;top:0;z-index:1000;width:100%;background:var(--bg,#f5f1e6)}
+.nt-promo-bar{background:#1a2e22;color:#fff;text-align:center;padding:.45rem 1rem;font-size:.8125rem;font-weight:500;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
 #nt-header{position:relative;width:100%;background:var(--bg,#f5f1e6);border-bottom:1px solid var(--color-border-soft,#e6e2d7)}
 
 /**
@@ -48,13 +48,41 @@
   font-family: inherit !important;
 }
 
-/* Blog site header — match global navbar (Inter, legacy nav inside #nt-header) */
+/* Blog site header — lock Inter to match homepage/products (not Plus Jakarta) */
 .nt-blog-article #nt-header,
-.nt-blog-index #nt-header {
-  font-family: inherit;
+.nt-blog-index #nt-header,
+.nt-blog-article #nt-header .logo,
+.nt-blog-index #nt-header .logo,
+.nt-blog-article #nt-header .nav-links a,
+.nt-blog-index #nt-header .nav-links a,
+.nt-blog-article #nt-header .urgency-content,
+.nt-blog-index #nt-header .urgency-content {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
 }
 
-/* Legacy navbar from layout-v2.js — blog pages do not load styles/global/style.css */
+.nt-blog-article #nt-header .urgency-banner,
+.nt-blog-index #nt-header .urgency-banner {
+  background-color: var(--color-promo-bar, #1a2e22) !important;
+  color: #fff !important;
+  text-align: center;
+  padding: 0.45rem 1rem !important;
+  box-shadow: none !important;
+}
+
+.nt-blog-article #nt-header .urgency-content,
+.nt-blog-index #nt-header .urgency-content {
+  max-width: 1200px;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.01em;
+  color: #fff !important;
+  display: block !important;
+}
+
+/* Legacy navbar from layout-v2.js — match styles/global/style.css exactly */
 .nt-blog-article #nt-header .navbar,
 .nt-blog-index #nt-header .navbar {
   display: flex;
@@ -64,7 +92,7 @@
   margin: 0 auto;
   padding: 1.2rem 2rem;
   min-height: 68px;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   background: transparent;
 }
 
@@ -74,9 +102,9 @@
   align-items: center;
   font-weight: 800;
   font-size: 1.5rem;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -1px;
 }
 
 .nt-blog-article #nt-header .nav-links,
@@ -90,7 +118,7 @@
 .nt-blog-index #nt-header .nav-links a {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   text-decoration: none;
   transition: color 0.2s ease;
   display: inline-flex;
