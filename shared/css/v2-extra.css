@@ -744,17 +744,17 @@ details[open] .expand-icon {
  * Matches styles/global/style.css; !important beats Tailwind preflight order issues.
  */
 #nt-header .navbar {
-  display: flex !important;
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
   align-items: center !important;
-  justify-content: space-between !important;
+  column-gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.2rem 2rem;
   min-height: 68px;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   background: transparent;
-  flex-wrap: nowrap;
-  gap: 1rem;
+  position: relative;
 }
 
 #nt-header .logo {
@@ -763,25 +763,35 @@ details[open] .expand-icon {
   flex-shrink: 0;
   font-weight: 800;
   font-size: 1.5rem;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -1px;
+  grid-column: 1;
+  z-index: 1;
+}
+
+#nt-header .logo img {
+  background: transparent !important;
+  border-radius: 50%;
+  display: block;
 }
 
 #nt-header .nav-links {
   display: flex !important;
   align-items: center;
+  justify-content: center !important;
   gap: 2rem;
-  flex: 1 1 auto;
-  justify-content: flex-end;
+  grid-column: 2;
+  justify-self: center;
   margin: 0;
   padding: 0;
+  flex: initial;
 }
 
 #nt-header .nav-links a {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--primary, #1a2e22);
+  color: var(--primary, #0f6b4d);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -795,12 +805,21 @@ details[open] .expand-icon {
   color: var(--accent, #d66844);
 }
 
+#nt-header .navbar-end {
+  grid-column: 3;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  z-index: 1;
+}
+
 #nt-header .navbar .cart-icon-link {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-left: 0.25rem;
+  margin-left: 0;
   text-decoration: none;
 }
 

@@ -119,15 +119,17 @@ body.products-page > .promo-bar {
 }
 
 .navbar {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
+    column-gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
     padding: 1.2rem 2rem; /* horizontal spacing */
     min-height: 68px;     /* normalize bar height across pages */
     color: var(--primary);
     background: transparent;
+    position: relative;
 }
 
 /* Lock chrome typography so every page matches homepage */
@@ -151,8 +153,15 @@ body.products-page > .promo-bar {
     color: var(--primary);
     text-decoration: none;
     letter-spacing: -1px;
+    grid-column: 1;
+    z-index: 1;
 }
 
+.logo img {
+    background: transparent !important;
+    border-radius: 50%;
+    display: block;
+}
 
 .logo-emoji {
     font-size: 1.8rem;
@@ -160,10 +169,22 @@ body.products-page > .promo-bar {
     line-height: 1;
 }
 
+.navbar-end {
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    z-index: 1;
+}
+
 .nav-links {
     display: flex;
     align-items: center; /* keep text vertically centered */
+    justify-content: center;
     gap: 2rem;
+    grid-column: 2;
+    justify-self: center;
 }
 
 .nav-links a {
