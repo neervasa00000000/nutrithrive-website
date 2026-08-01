@@ -50,426 +50,7 @@
 <meta name="twitter:description" content="Buy moringa powder, curry leaves &amp; Darjeeling tea in Melbourne. Lab-tested, shipped from Truganina VIC. Free delivery $80+. Same-week dispatch to all suburbs."/>
 <meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/logo/LOGO.webp"/>
 <link href="/styles/global/style.min.css" rel="stylesheet"/>
-<link href="/styles/pages/homepage.min.css" rel="stylesheet"/>
-<link href="/styles/pages/melbourne.min.css" rel="stylesheet"/>
 <link href="/styles/pages/city-landing.min.css" rel="stylesheet"/>
-<style>
-        .melb-page {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem 4rem;
-        }
-
-        .melb-hero .hero-title { font-size: clamp(2rem, 4vw, 2.5rem); }
-        .melb-hero .hero-desc { font-size: 1.15rem; line-height: 1.65; }
-
-        .melb-welcome-strip {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.25rem;
-            max-width: 1200px;
-            margin: 0 auto 3rem;
-            padding: 2rem 1.5rem;
-            background: var(--card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(15, 107, 77, 0.06);
-        }
-
-        .melb-welcome-strip-item {
-            text-align: center;
-        }
-
-        .melb-welcome-strip-item strong {
-            display: block;
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .melb-welcome-strip-item span {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.4;
-        }
-
-        .melb-section {
-            margin: 0 0 3rem;
-        }
-
-        .melb-section-header {
-            margin-bottom: 1.25rem;
-        }
-
-        .melb-section h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 0.35rem;
-            color: var(--primary);
-        }
-
-        .melb-section-subtitle {
-            font-size: 0.9375rem;
-            color: var(--muted);
-            margin: 0;
-        }
-
-        .melb-benefits-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
-
-        .melb-card {
-            padding: 1.25rem 0;
-            border-bottom: 1px solid rgba(15, 107, 77, 0.08);
-            background: transparent;
-        }
-
-        .melb-card:last-child {
-            border-bottom: 0;
-        }
-
-        .melb-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0 0 0.35rem;
-            color: var(--text);
-        }
-
-        .melb-card p {
-            font-size: 0.9375rem;
-            color: var(--muted);
-            margin: 0 0 0.5rem;
-            line-height: 1.55;
-        }
-
-        .melb-chip {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .melb-two-col {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .melb-geo {
-            font-size: 0.9375rem;
-            color: var(--muted);
-            margin: 0 0 0.75rem;
-            line-height: 1.5;
-        }
-
-        .melb-geo strong {
-            color: var(--text);
-        }
-
-        .melb-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1rem;
-            font-size: 0.9375rem;
-            color: var(--muted);
-            line-height: 1.55;
-        }
-
-        .melb-list li {
-            margin-bottom: 0.4rem;
-        }
-
-        .melb-list li strong {
-            color: var(--text);
-        }
-
-        .melb-badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .map-frame {
-            width: 100%;
-            height: 220px;
-            border: 0;
-            border-radius: var(--radius);
-            background: var(--card);
-        }
-
-        .melb-faq-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
-
-        .melb-faq-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(15, 107, 77, 0.08);
-        }
-
-        .melb-faq-item:last-child {
-            border-bottom: 0;
-        }
-
-        .melb-faq-item h3 {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            margin: 0 0 0.35rem;
-            color: var(--text);
-        }
-
-        .melb-faq-item p {
-            font-size: 0.9375rem;
-            color: var(--muted);
-            margin: 0;
-            line-height: 1.55;
-        }
-
-        .melb-guides ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .melb-guides li {
-            border-bottom: 1px solid rgba(15, 107, 77, 0.08);
-        }
-
-        .melb-guides li:last-child {
-            border-bottom: 0;
-        }
-
-        .melb-guides li a {
-            display: block;
-            padding: 0.75rem 0;
-            font-size: 0.9375rem;
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .melb-guides li a:hover {
-            color: var(--primary);
-        }
-
-        .melb-bottom-cta {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 2.5rem 1.5rem;
-            background: var(--card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(15, 107, 77, 0.06);
-        }
-
-        .melb-bottom-cta p {
-            font-size: 1.05rem;
-            color: var(--text);
-            margin: 0 0 1.25rem;
-            line-height: 1.6;
-            max-width: 36em;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .melb-bottom-cta .hero-btn {
-            padding: 0.9rem 1.75rem;
-        }
-
-        .melb-products {
-            padding: 2rem 0 3rem;
-        }
-
-        .melb-products h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0 0 0.5rem;
-            text-align: center;
-        }
-
-        .melb-products-sub {
-            text-align: center;
-            font-size: 1rem;
-            color: var(--muted);
-            margin: 0 0 1.5rem;
-        }
-
-        .melb-product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1.25rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 600px) {
-            .melb-product-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .melb-product-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 1rem;
-            border: 1px solid rgba(15, 107, 77, 0.08);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .melb-product-card img {
-            max-height: 120px;
-            width: auto;
-            object-fit: contain;
-            margin-bottom: 0.75rem;
-        }
-
-        .melb-product-card h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0 0 0.35rem;
-        }
-
-        .melb-product-card .price {
-            font-weight: 700;
-            color: var(--text);
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .melb-product-card .tag {
-            font-size: 0.7rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-bottom: 0.75rem;
-        }
-
-        .melb-product-card .hero-btn,
-        .melb-product-card button.melb-add-cart {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            width: 100%;
-            text-align: center;
-            cursor: pointer;
-            border: 2px solid var(--primary);
-            font-family: inherit;
-        }
-
-        .melb-product-card button.melb-add-cart:hover {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
-
-        .melb-trust-bar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem 1.5rem;
-            padding: 1rem 1.5rem;
-            background: rgba(15, 107, 77, 0.06);
-            border-radius: var(--radius);
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--muted);
-        }
-
-        .melb-trust-bar strong { color: var(--primary); }
-
-        .melb-suburbs-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .melb-suburbs-col {
-            padding: 1rem 1.25rem;
-            background: var(--card);
-            border: 1px solid rgba(15, 107, 77, 0.08);
-            border-radius: var(--radius);
-        }
-
-        .melb-suburbs-col strong {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .melb-suburbs-col p {
-            font-size: 0.875rem;
-            color: var(--muted);
-            margin: 0;
-            line-height: 1.55;
-        }
-
-        @media (min-width: 640px) {
-            .melb-suburbs-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (min-width: 900px) {
-            .melb-suburbs-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-
-        @media (min-width: 640px) {
-            .melb-benefits-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-
-            .melb-card {
-                padding: 1.5rem;
-                border: 1px solid rgba(15, 107, 77, 0.08);
-                border-radius: var(--radius);
-                background: var(--card);
-            }
-
-            .melb-card:last-child {
-                border-bottom: 1px solid rgba(15, 107, 77, 0.08);
-            }
-
-            .melb-two-col {
-                grid-template-columns: 1.2fr 1fr;
-                align-items: start;
-            }
-
-            .map-frame {
-                height: 240px;
-            }
-
-            .melb-faq-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-
-            .melb-faq-item {
-                padding: 1.25rem;
-                border: 1px solid rgba(15, 107, 77, 0.08);
-                border-radius: var(--radius);
-                background: var(--card);
-            }
-
-            .melb-faq-item:last-child {
-                border-bottom: 1px solid rgba(15, 107, 77, 0.08);
-            }
-        }
-    </style>
 
 <!-- NutriThrive LocalBusiness — source: shared/schema/nutrithrive-local-business.json (sync: node scripts/sync-local-business-jsonld.js) -->
 <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">
@@ -646,7 +227,7 @@
 }
 </script>
 </head>
-<body class="melbourne-page">
+<body class="melbourne-page city-hub-body">
 <header>
 <div class="urgency-banner">
 <div class="urgency-content">Order before 2pm for same-day Melbourne dispatch · Free shipping over $80 · NMI Government lab-tested</div>
@@ -670,190 +251,189 @@
 </button>
 </div>
 </header>
-<main class="melb-page">
-<nav class="city-locations" aria-label="Deliver to">
-  <span class="city-locations__label">Deliver to</span>
-  <ul class="city-locations__list"><li><a href="/melbourne/" class="city-locations__link is-active" aria-current="page">Melbourne</a></li>
-<li><a href="/moringa-sydney/" class="city-locations__link">Sydney</a></li>
-<li><a href="/moringa-brisbane/" class="city-locations__link">Brisbane</a></li>
-<li><a href="/moringa-perth/" class="city-locations__link">Perth</a></li>
-<li><a href="/moringa-adelaide/" class="city-locations__link">Adelaide</a></li>
+<main class="city-hub">
+<nav class="city-loc" aria-label="Deliver to">
+  <span class="city-loc__label">Deliver to</span>
+  <ul class="city-loc__list">
+    <li><a href="/melbourne/" class="city-loc__link is-active" aria-current="page">Melbourne</a></li>
+    <li><a href="/moringa-sydney/" class="city-loc__link">Sydney</a></li>
+    <li><a href="/moringa-brisbane/" class="city-loc__link">Brisbane</a></li>
+    <li><a href="/moringa-perth/" class="city-loc__link">Perth</a></li>
+    <li><a href="/moringa-adelaide/" class="city-loc__link">Adelaide</a></li>
   </ul>
 </nav>
-<section class="hero melb-hero">
-<div class="hero-content">
-<p class="melb-eyebrow" style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin: 0 0 0.75rem;">Melbourne · Packed in Truganina</p>
-<h1 class="hero-title">Moringa &amp; superfoods from Truganina</h1>
-<p class="hero-desc">
-                    Packed at 15 Europe Street, Truganina. <strong>Same-day dispatch before 2pm.</strong> Melbourne metro often 1–3 days. Free delivery $80+.
-                </p>
-<ul class="melb-hero-list" style="list-style: none; padding: 0; margin: 0 0 1.5rem; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
-<li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Leaf-only moringa, no fillers</li>
-<li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Lab report on the product page</li>
-<li style="padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem;"><span style="position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary);"></span>Same-day dispatch before 2pm</li>
-</ul>
-<div class="hero-cta" style="margin-top: 0;">
-<a class="hero-btn" href="/products/moringa-powder/">Shop Moringa</a>
-<a class="hero-btn alt" href="#delivery">Delivery &amp; location</a>
-</div>
-</div>
-<div class="hero-image">
-<img alt="NutriThrive moringa powder: shade-dried, packed in Truganina for Melbourne delivery." decoding="async" height="500" loading="eager" src="/assets/images/general/GC.webp" style="width: 100%; max-width: 420px; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; box-shadow: var(--shadow);" width="500"/>
-</div>
+
+<section class="city-hub-hero">
+  <div>
+    <p class="city-hub-eyebrow">Melbourne · VIC · Home warehouse</p>
+    <h1 class="city-hub-title">Moringa &amp; superfoods from <em>Truganina</em></h1>
+    <p class="city-hub-lead">Packed at 15 Europe Street. <strong>Same-day dispatch before 2pm.</strong> Melbourne metro often <strong>1–3 business days</strong>. Free delivery on orders $80+.</p>
+    <div class="city-hub-actions">
+      <a class="city-btn city-btn--solid" href="/products/moringa-powder/">Shop this hub</a>
+      <a class="city-btn city-btn--ghost" href="#delivery">Delivery &amp; location</a>
+    </div>
+  </div>
+  <div class="city-hub-media">
+    <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="NutriThrive moringa powder packed in Truganina for Melbourne" width="460" height="460" loading="eager">
+    <aside class="city-hub-float">
+      <p class="city-hub-float__kicker">Certified purity</p>
+      <p class="city-hub-float__title">NMI lab-tested</p>
+      <p class="city-hub-float__text">Batch screening for heavy metals &amp; pesticides — summary on the product page.</p>
+    </aside>
+  </div>
 </section>
-<div aria-label="What you get" class="melb-welcome-strip">
-<div class="melb-welcome-strip-item">
-<strong>Free delivery Australia-wide</strong>
-<span>On orders $80+, no minimum for Melbourne</span>
-</div>
-<div class="melb-welcome-strip-item">
-<strong>NMI lab summary online</strong>
-<span>Heavy metals &amp; pesticides; ask for the latest PDF</span>
-</div>
-<div class="melb-welcome-strip-item">
-<strong>Dispatch before 2pm</strong>
-<span>Same-day packing from Truganina</span>
-</div>
-<div class="melb-welcome-strip-item">
-<strong>Questions?</strong>
-<span>Same warehouse that packs your order; email or call</span>
-</div>
-</div>
-<section aria-labelledby="products-heading" class="melb-section melb-products">
-<h2 id="products-heading">Shop our products</h2>
-<p class="melb-products-sub">Packed in Truganina · Lab-tested moringa · Shipped Australia-wide</p>
-<div class="melb-product-grid">
-<article class="melb-product-card">
-<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Bundleoffer.webp" width="120"/>
-<h3>3+1 = 400g Moringa</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$56.00</span> $35.00</span>
-<span class="tag">4 pack · Best value</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-400g', '3 + 1 = 400g Moringa', 35.00, '/assets/images/homepage/product-showcase/Bundleoffer.webp')" type="button">Add to Cart</button>
-</article>
-<article class="melb-product-card">
-<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/moringasoap_combo.webp" width="120"/>
-<h3>Moringa 100g + Soap 95g</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$23.39</span> $17.00</span>
-<span class="tag">Moringa + Soap bundle</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-soap-combo', 'Moringa 100g + Soap 95g', 17.00, '/assets/images/homepage/product-showcase/moringasoap_combo.webp')" type="button">Add to Cart</button>
-</article>
-<article class="melb-product-card">
-<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/combo.webp" width="120"/>
-<h3>Premium Combo Pack</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$22.49</span> $17.00</span>
-<span class="tag">Moringa + Tea + Curry</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '/assets/images/homepage/product-showcase/combo.webp')" type="button">Add to Cart</button>
-</article>
-<article class="melb-product-card">
-<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" width="120"/>
-<h3>Moringa Powder</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$14.00</span> $11.00</span>
-<span class="tag">100g · 30 servings</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, '/assets/images/homepage/product-showcase/Moringa.webp')" type="button">Add to Cart</button>
-</article>
-<article class="melb-product-card">
-<img alt="Moringa Soap by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/moringa_soap.webp" width="120"/>
-<h3>Moringa Soap</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$9.49</span> $7.00</span>
-<span class="tag">95g</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '/assets/images/homepage/product-showcase/moringa_soap.webp')" type="button">Add to Cart</button>
-</article>
-<article class="melb-product-card">
-<img alt="Darjeeling Black Tea by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/BlackTea.webp" width="120"/>
-<h3>Darjeeling Black Tea</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$10.00</span> $7.50</span>
-<span class="tag">100g · Premium grade</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '/assets/images/homepage/product-showcase/BlackTea.webp')" type="button">Add to Cart</button>
-</article>
-<article class="melb-product-card">
-<img alt="Dried Curry Leaves by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Curry.webp" width="120"/>
-<h3>Dried Curry Leaves</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$8.49</span> $7.00</span>
-<span class="tag">30g</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '/assets/images/homepage/product-showcase/Curry.webp')" type="button">Add to Cart</button>
-</article>
-<article class="melb-product-card">
-<img alt="Moringa Powder by NutriThrive Melbourne Australia" height="160" loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" width="120"/>
-<h3>200g Moringa</h3>
-<span class="price"><span style="text-decoration:line-through;color:#555;font-size:0.85em;">$28.00</span> $21.50</span>
-<span class="tag">60 servings</span>
-<button class="hero-btn melb-add-cart" onclick="addProductToCart('moringa-200g', '200g Moringa', 21.50, '/assets/images/homepage/product-showcase/Moringa.webp')" type="button">Add to Cart</button>
-</article>
-</div>
-<div class="melb-trust-bar">
-<span><strong>Free delivery</strong> on orders $80+ Australia-wide</span>
-<span><strong>Tracked shipping</strong> · Same-week dispatch</span>
-<span><strong>Lab-tested</strong> · Vegan · No additives</span>
-</div>
-<p style="text-align: center; margin-top: 1.25rem;"><a class="hero-btn alt" href="/products/" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">View all products</a></p>
+
+<section class="city-hub-section">
+  <div class="city-hub-section__head">
+    <p class="city-hub-kicker">Sourcing excellence</p>
+    <h2>Local packing. <em>Clear testing.</em></h2>
+  </div>
+  <div class="city-hub-split">
+    <div class="city-hub-split__photo">
+      <img src="/assets/images/homepage/product-showcase/Bundleoffer.webp" alt="NutriThrive warehouse packing" loading="lazy">
+      <div class="city-hub-split__caption">
+        <strong>Dispatch before 2pm</strong>
+        <span>Same-day from Truganina on business days</span>
+      </div>
+    </div>
+    <div class="city-hub-split__stat">
+      <p class="stat-num">1–3</p>
+      <p class="stat-label">Days to Melbourne metro</p>
+      <p>We&apos;re down the road in Truganina — the shortest route of any capital. Free shipping Australia-wide over $80.</p>
+    </div>
+  </div>
+  <div class="city-hub-icons">
+    <div class="city-hub-icon">
+      <div class="city-hub-icon__mark" aria-hidden="true">✓</div>
+      <h3>Leaf only</h3>
+      <p>Shade-dried moringa with no fillers or proprietary blends.</p>
+    </div>
+    <div class="city-hub-icon">
+      <div class="city-hub-icon__mark" aria-hidden="true">→</div>
+      <h3>Melbourne first</h3>
+      <p>Home turf delivery — metro often next business day after dispatch.</p>
+    </div>
+    <div class="city-hub-icon">
+      <div class="city-hub-icon__mark" aria-hidden="true">◎</div>
+      <h3>Pickup option</h3>
+      <p>Arrange collection at 15 Europe Street, Truganina by contacting us.</p>
+    </div>
+  </div>
 </section>
-<section aria-labelledby="delivery-heading" class="melb-section" id="delivery">
-<div class="melb-section-header">
-<h2 id="delivery-heading">Delivery &amp; shipping</h2>
-<p class="melb-section-subtitle">We ship Australia-wide from Truganina. Free delivery on orders $80+.</p>
-</div>
-<div class="melb-two-col">
-<div>
-<p class="melb-geo"><strong>Warehouse</strong><br/>15 Europe Street, Truganina VIC 3029</p>
-<ul class="melb-list">
-<li><strong>Free delivery Australia-wide</strong> on orders $80 and over. Standard shipping for orders under $80.</li>
-<li><strong>Melbourne metro:</strong> Usually 1–3 business days after dispatch. We ship same week when you order early.</li>
-<li><strong>NSW, QLD, other states:</strong> Typically 3–7 business days. Tracked via Australia Post.</li>
-<li><strong>Order online 24/7</strong>; we dispatch on business days. No minimum for Melbourne; mix and match to hit free shipping Australia-wide.</li>
-</ul>
-<div class="melb-badge-row">
-<span class="melb-chip">Free delivery $80+ AU</span>
-<span class="melb-chip">Tracked shipping</span>
-<span class="melb-chip">Melbourne warehouse</span>
-</div>
-</div>
-<div>
-<iframe allowfullscreen="" class="map-frame" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.045053676239!2d144.7551061763261!3d-37.83584877196947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad689725f19034f%3A0xc47e30d17e5a873f!2s15%20Europe%20St%2C%20Truganina%20VIC%203029%2C%20Australia!5e0!3m2!1sen!2sau!4v1715629120000!5m2!1sen!2sau" style="border:0;width:100%" title="Map: NutriThrive at 15 Europe Street, Truganina VIC 3029"></iframe>
-<p style="margin:0.5rem 0 0;font-size:0.9rem"><a href="https://www.google.com/maps/search/?api=1&amp;query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia" rel="noopener noreferrer" target="_blank">Open in Google Maps</a></p>
-</div>
-</div>
+
+<section class="city-hub-section" id="products" aria-labelledby="products-heading">
+  <div class="city-hub-products-head">
+    <div>
+      <p class="city-hub-kicker">The essentials</p>
+      <h2 id="products-heading">Shop our <em>products</em></h2>
+    </div>
+    <a href="/products/">View all</a>
+  </div>
+  <div class="city-hub-products">
+    <article class="city-hub-card city-hub-card--feature">
+      <h3>3+1 = 400g Moringa</h3>
+      <span class="price"><s>$56.00</s> $35.00 · Free shipping</span>
+      <button class="city-btn city-btn--solid" type="button" onclick="addProductToCart('moringa-400g', '3 + 1 = 400g Moringa', 35.00, '/assets/images/homepage/product-showcase/Bundleoffer.webp')">Add to bag</button>
+    </article>
+    <article class="city-hub-card">
+      <img alt="Moringa Powder 100g" height="140" loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" width="120"/>
+      <h3>Moringa Powder</h3>
+      <span class="price"><s>$14.00</s> $11.00</span>
+      <button class="city-btn city-btn--ghost" type="button" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, '/assets/images/homepage/product-showcase/Moringa.webp')">Add to bag</button>
+    </article>
+    <article class="city-hub-card">
+      <img alt="200g Moringa" height="140" loading="lazy" src="/assets/images/homepage/product-showcase/Moringa.webp" width="120"/>
+      <h3>200g Moringa</h3>
+      <span class="price"><s>$28.00</s> $21.50</span>
+      <button class="city-btn city-btn--ghost" type="button" onclick="addProductToCart('moringa-200g', '200g Moringa', 21.50, '/assets/images/homepage/product-showcase/Moringa.webp')">Add to bag</button>
+    </article>
+    <article class="city-hub-card">
+      <img alt="Dried Curry Leaves" height="140" loading="lazy" src="/assets/images/homepage/product-showcase/Curry.webp" width="120"/>
+      <h3>Curry Leaves</h3>
+      <span class="price"><s>$8.49</s> $7.00</span>
+      <button class="city-btn city-btn--ghost" type="button" onclick="addProductToCart('curry-leaves', 'Dried Curry Leaves', 7.00, '/assets/images/homepage/product-showcase/Curry.webp')">Add to bag</button>
+    </article>
+    <article class="city-hub-card">
+      <img alt="Darjeeling Black Tea" height="140" loading="lazy" src="/assets/images/homepage/product-showcase/BlackTea.webp" width="120"/>
+      <h3>Darjeeling Tea</h3>
+      <span class="price"><s>$10.00</s> $7.50</span>
+      <button class="city-btn city-btn--ghost" type="button" onclick="addProductToCart('black-tea', 'Premium Black Tea', 7.50, '/assets/images/homepage/product-showcase/BlackTea.webp')">Add to bag</button>
+    </article>
+    <article class="city-hub-card">
+      <img alt="Moringa Soap" height="140" loading="lazy" src="/assets/images/homepage/product-showcase/moringa_soap.webp" width="120"/>
+      <h3>Moringa Soap</h3>
+      <span class="price"><s>$9.49</s> $7.00</span>
+      <button class="city-btn city-btn--ghost" type="button" onclick="addProductToCart('moringa-soap', 'Moringa Soap', 7.00, '/assets/images/homepage/product-showcase/moringa_soap.webp')">Add to bag</button>
+    </article>
+    <article class="city-hub-card">
+      <img alt="Combo Pack" height="140" loading="lazy" src="/assets/images/homepage/product-showcase/combo.webp" width="120"/>
+      <h3>Combo Pack</h3>
+      <span class="price"><s>$22.49</s> $17.00</span>
+      <button class="city-btn city-btn--ghost" type="button" onclick="addProductToCart('combo-pack', 'Combo Pack', 17.00, '/assets/images/homepage/product-showcase/combo.webp')">Add to bag</button>
+    </article>
+    <article class="city-hub-card">
+      <img alt="Moringa Soap Combo" height="140" loading="lazy" src="/assets/images/homepage/product-showcase/moringasoap_combo.webp" width="120"/>
+      <h3>Moringa + Soap</h3>
+      <span class="price"><s>$23.39</s> $17.00</span>
+      <button class="city-btn city-btn--ghost" type="button" onclick="addProductToCart('moringa-soap-combo', 'Moringa 100g + Soap 95g', 17.00, '/assets/images/homepage/product-showcase/moringasoap_combo.webp')">Add to bag</button>
+    </article>
+  </div>
 </section>
-<section aria-labelledby="suburbs-heading" class="melb-section">
-<div class="melb-section-header">
-<h2 id="suburbs-heading">Melbourne delivery</h2>
-</div>
-<p class="melb-geo">We ship to all Melbourne suburbs from Truganina—CBD, west (Werribee, Point Cook), north, east, and south. Metro usually 1–3 business days after dispatch. <a href="/pages/shipping/shipping-returns.html">Australia-wide shipping</a>.</p>
+
+<section class="city-hub-band" id="delivery">
+  <div class="city-hub-band__inner">
+    <div>
+      <h2>Our Melbourne warehouse</h2>
+      <ol>
+        <li><div><strong>15 Europe Street, Truganina VIC 3029</strong><span>Western suburbs near Hoppers Crossing &amp; Werribee.</span></div></li>
+        <li><div><strong>Order by 2pm</strong><span>Same-day dispatch on business days. Metro often 1–3 days.</span></div></li>
+        <li><div><strong>Free shipping $80+</strong><span>Tracked Australia Post. Pickup by arrangement.</span></div></li>
+      </ol>
+      <a class="city-btn city-btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=15+Europe+Street%2C+Truganina+VIC+3029" rel="noopener noreferrer" target="_blank">Open in Google Maps</a>
+    </div>
+    <div class="city-hub-map">
+      <iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.045053676239!2d144.7551061763261!3d-37.83584877196947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad689725f19034f%3A0xc47e30d17e5a873f!2s15%20Europe%20St%2C%20Truganina%20VIC%203029%2C%20Australia!5e0!3m2!1sen!2sau!4v1715629120000!5m2!1sen!2sau" title="Map: NutriThrive at 15 Europe Street, Truganina VIC 3029"></iframe>
+    </div>
+  </div>
 </section>
-<section aria-labelledby="guides-heading" class="melb-section melb-guides">
-<div class="melb-section-header">
-<h2 id="guides-heading">Learn more</h2>
-</div>
-<ul>
-<li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to choose moringa powder</a></li>
-<li><a href="/blog/moringa-vs-coffee-melbourne-energy-hack">Moringa vs coffee in Melbourne</a></li>
-</ul>
+
+<section class="city-hub-section">
+  <div class="city-hub-section__head">
+    <p class="city-hub-kicker">Guidance</p>
+    <h2>Common <em>questions</em></h2>
+  </div>
+  <div class="city-hub-faq">
+    <details>
+      <summary>How fast is Melbourne delivery?</summary>
+      <p>Order before 2pm for same-day dispatch from Truganina. Metro Melbourne is usually 1–3 business days. Free shipping on orders $80+.</p>
+    </details>
+    <details>
+      <summary>Where are you based?</summary>
+      <p>15 Europe Street, Truganina VIC 3029. Online-first — pickup by arrangement. All orders ship from this warehouse.</p>
+    </details>
+    <details>
+      <summary>Is the moringa lab-tested?</summary>
+      <p>Yes — NMI batch screening with summaries on the product page. Shade-dried leaf only, no fillers.</p>
+    </details>
+  </div>
 </section>
-<section aria-labelledby="faq-heading" class="melb-section">
-<div class="melb-section-header">
-<h2 id="faq-heading">Common questions</h2>
-</div>
-<div class="melb-faq-grid">
-<article class="melb-faq-item">
-<h3>How fast is Melbourne delivery?</h3>
-<p>Order before 2pm for same-day dispatch from Truganina. Metro Melbourne is usually 1–3 business days. Free shipping on orders $80+.</p>
-</article>
-<article class="melb-faq-item">
-<h3>Where are you based?</h3>
-<p>15 Europe Street, Truganina VIC 3029. Online-only—no retail shop, but you can pick up by arrangement. All orders ship from this warehouse.</p>
-</article>
-<article class="melb-faq-item">
-<h3>Is the moringa lab-tested?</h3>
-<p>Yes—NMI batch screening with summaries on the product page. Shade-dried leaf only, no fillers.</p>
-</article>
-</div>
+
+<section class="city-hub-section">
+  <div class="city-hub-section__head">
+    <p class="city-hub-kicker">Guides</p>
+    <h2>Learn <em>more</em></h2>
+  </div>
+  <ul class="city-hub-guides">
+    <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to choose moringa powder</a></li>
+    <li><a href="/blog/moringa-vs-coffee-melbourne-energy-hack">Moringa vs coffee in Melbourne</a></li>
+  </ul>
 </section>
-<section aria-label="Call to action" class="melb-bottom-cta">
-<p>Order $80+ for free delivery Australia-wide. Lab-tested, 100% natural: moringa, curry leaves, black tea and more, shipped from Melbourne.</p>
-<div class="hero-cta" style="justify-content: center; flex-wrap: wrap; gap: 0.75rem;">
-<a class="hero-btn" href="/products/moringa-powder/">Shop Moringa</a>
-<a class="hero-btn alt" href="/products/">View all products</a>
+
+<div class="city-hub-cta">
+  <h2>Order from Melbourne</h2>
+  <p>From $11/100g · NMI-tested · Free shipping $80+</p>
+  <a class="city-btn city-btn--solid" href="/products/moringa-powder/">Shop moringa</a>
 </div>
-</section>
 </main>
 <div id="nt-footer"></div>
 <script src="/scripts/global/cart.min.js"></script>
@@ -863,7 +443,7 @@
 <script src="/shared/js/footer-v2.min.js"></script>
 <div class="city-mobile-bar" role="complementary" aria-label="Quick shop">
   <div class="city-mobile-bar__price">From $11 / 100g<span>Free shipping over $80</span></div>
-  <a href="/products/moringa-powder/" class="city-cta-btn">Shop now</a>
+  <a href="/products/moringa-powder/" class="city-btn city-btn--solid">Shop</a>
 </div>
 </body>
 </html>
