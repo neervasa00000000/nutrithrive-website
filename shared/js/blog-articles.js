@@ -1,4 +1,4 @@
-/** Auto-generated — 112 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 117 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -218,6 +218,13 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"
   },
   {
+    "slug": "how-much-caffeine-safe-per-day-australia-fsanz-2026",
+    "title": "How Much Caffeine Is Safe Per Day? FSANZ Guidelines (2026)",
+    "description": "FSANZ's official safe caffeine limit is 400mg/day for adults, 200mg for pregnant women. Here's what that looks like in real drinks.",
+    "category": "Health",
+    "href": "/blog/how-much-caffeine-safe-per-day-australia-fsanz-2026"
+  },
+  {
     "slug": "how-much-protein-australian-women-need-honest-guide-2026",
     "title": "How Much Protein Do Australian Women Actually Need? (2026 Guide)",
     "description": "How much protein Australian women need by life stage — past TikTok extremes and one-size dietitian soundbites (2026).'s the actual answer by life stage.",
@@ -309,11 +316,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-to-strengthen-immune-system-naturally-australia-2026"
   },
   {
+    "slug": "iron-deficiency-australian-women-abs-real-numbers-2026",
+    "title": "Iron Deficiency in Australian Women: The Real Numbers (2026)",
+    "description": "1 in 4 Australian women don't get enough iron from food, 8x the rate for men. Real ABS data on why, and what helps.",
+    "category": "Health",
+    "href": "/blog/iron-deficiency-australian-women-abs-real-numbers-2026"
+  },
+  {
     "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
     "title": "Iron Deficiency in Women: Signs and Plant Sources",
     "description": "Common signs of iron deficiency in Australian women, and the best plant-based sources — including how moringa compares.",
     "category": "Health",
     "href": "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026"
+  },
+  {
+    "slug": "is-moringa-banned-australia-what-fsanz-says-2026",
+    "title": "Is Moringa Banned in Australia? What FSANZ Actually Says (2026)",
+    "description": "FSANZ rejected moringa's novel food application in Nov 2025. Here's exactly what that means, straight from the primary source. No spin.",
+    "category": "Guides",
+    "href": "/blog/is-moringa-banned-australia-what-fsanz-says-2026"
   },
   {
     "slug": "is-moringa-banned-in-australia",
@@ -750,11 +771,25 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/verify-moringa-quality-premium-buyers-checklist-2026"
   },
   {
+    "slug": "vitamin-d-deficiency-australia-abs-sunny-country-2026",
+    "title": "Vitamin D Deficiency in Australia: Why the Sunny Country Numbers Don't Add Up (2026)",
+    "description": "1 in 5 Australian adults is vitamin D deficient, worse for under-30s. Real ABS data on why, and what actually helps.",
+    "category": "Health",
+    "href": "/blog/vitamin-d-deficiency-australia-abs-sunny-country-2026"
+  },
+  {
     "slug": "vitamin-d-deficiency-australia-sunny-country-paradox-2026",
     "title": "Vitamin D Deficiency in Australia: Why So Common?",
     "description": "Why do so many Australians have vitamin D deficiency despite all the sunshine? Here's the surprising explanation.",
     "category": "Health",
     "href": "/blog/vitamin-d-deficiency-australia-sunny-country-paradox-2026"
+  },
+  {
+    "slug": "what-does-aust-l-mean-supplement-label-australia-2026",
+    "title": "What Does AUST L Mean on a Supplement? (Australian Guide)",
+    "description": "AUST L vs AUST R: what's the real difference between listed and registered complementary medicines in Australia, and how to check the ARTG.",
+    "category": "Guides",
+    "href": "/blog/what-does-aust-l-mean-supplement-label-australia-2026"
   },
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
