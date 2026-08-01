@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build quiet-luxury city hub pages (Verdant-style).
+ * Build city hubs using Verdant-structure layout (NutriThrive brand).
  * Unique local angle per city — no multi-city body lists.
  */
 import fs from 'fs';
@@ -20,35 +20,25 @@ const CITIES = [
     description:
       'Shade-dried moringa from $11/100g, NMI tested. Ships from Melbourne to Sydney metro in 2–4 days. Free shipping $80+.',
     delivery: '2–4 business days',
-    h1: 'Moringa powder for <em>Sydney</em>',
+    util: 'Order before 2pm · Sydney metro usually 2–4 days · Free shipping over $80',
+    eyebrow: 'Sydney · Ships from Truganina',
+    h1: 'Moringa powder<br>for <em>Sydney</em>',
     lead:
-      'NMI lab-tested leaf, packed in Truganina. <strong>Order by 2pm</strong> for same-day dispatch — most Sydney metro addresses in <strong>2–4 business days</strong>.',
-    floatTitle: 'Visible quality',
-    floatText: 'Loose powder you can see and smell — not opaque capsules.',
+      'NMI lab-tested leaf, packed in Melbourne. <strong>Order by 2pm</strong> for same-day dispatch — most Sydney metro addresses in <strong>2–4 business days</strong>.',
+    floatKicker: 'Visible quality',
+    floatTitle: 'Loose leaf',
+    floatText: 'Powder you can see and smell — not opaque capsules.',
     tipTitle: 'Why order direct in Sydney',
     tipBody:
       'Most Sydney retailers stock capsules only. NutriThrive is shade-dried leaf with a batch lab summary on every lot — from $11/100g.',
     faqs: [
-      {
-        q: 'How long to Sydney?',
-        a: 'Same-day dispatch from Melbourne before 2pm on business days. Most Sydney metro postcodes: 2–4 business days.',
-      },
-      {
-        q: 'Shop in Sydney?',
-        a: 'No retail store — we pack at 15 Europe Street, Truganina VIC and ship Australia-wide.',
-      },
-      {
-        q: 'Best value?',
-        a: 'The 3+1 bundle ($35, 400g) ships free — about $0.26/day. Under $80, shipping is $8.73.',
-      },
-      {
-        q: '2026 recall?',
-        a: 'Not affected. That recall was Rosabella capsules. We sell leaf powder with NMI screening.',
-      },
+      { q: 'How long to Sydney?', a: 'Same-day dispatch from Melbourne before 2pm on business days. Most Sydney metro postcodes: 2–4 business days.' },
+      { q: 'Shop in Sydney?', a: 'No retail store — we pack at 15 Europe Street, Truganina VIC and ship Australia-wide.' },
+      { q: 'Best value?', a: 'The 3+1 bundle ($35, 400g) ships free — about $0.26/day. Under $80, shipping is $8.73.' },
+      { q: '2026 recall?', a: 'Not affected. That recall was Rosabella capsules. We sell leaf powder with NMI screening.' },
     ],
     review: {
-      quote:
-        "I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved.",
+      quote: "I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved.",
       name: 'chizaram olanma',
     },
     guides: [
@@ -67,35 +57,25 @@ const CITIES = [
     description:
       'Shade-dried moringa from $11/100g, NMI tested. Brisbane metro usually 2–4 days from Melbourne. Free shipping $80+.',
     delivery: '2–4 business days',
-    h1: 'Moringa powder for <em>Brisbane</em>',
+    util: 'Order before 2pm · Brisbane metro usually 2–4 days · Free shipping over $80',
+    eyebrow: 'Brisbane · Ships from Truganina',
+    h1: 'Moringa powder<br>for <em>Brisbane</em>',
     lead:
       'Packed in Melbourne, delivered across SEQ. <strong>Order by 2pm</strong> — Brisbane metro typically <strong>2–4 business days</strong>. Free shipping over $80.',
-    floatTitle: 'Humid-climate ready',
-    floatText: 'Seal tight after opening — QLD wet season tips below.',
+    floatKicker: 'QLD climate',
+    floatTitle: 'Seal tight',
+    floatText: 'Humid kitchens: keep the pouch sealed after opening.',
     tipTitle: 'Storage tip for humid QLD',
     tipBody:
       'Once open, keep the pouch sealed away from the stove. Refrigerate in wet season (Nov–Mar). <a href="/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026">Full storage guide</a>.',
     faqs: [
-      {
-        q: 'How long to Brisbane?',
-        a: 'Same-day Melbourne dispatch before 2pm. Brisbane metro, Gold Coast and Sunshine Coast: usually 2–4 business days.',
-      },
-      {
-        q: 'Shop in Brisbane?',
-        a: 'No — we ship from Truganina, Melbourne to all QLD postcodes. No Brisbane pickup.',
-      },
-      {
-        q: 'Cheapest way to order?',
-        a: '3+1 bundle ($35, 400g) ships free. Single 100g is $11 + $8.73 if under $80.',
-      },
-      {
-        q: 'Why is powder clumping?',
-        a: 'Humidity moisture, not a defect. Seal tightly and refrigerate in wet season. Warm the bag before opening.',
-      },
+      { q: 'How long to Brisbane?', a: 'Same-day Melbourne dispatch before 2pm. Brisbane metro, Gold Coast and Sunshine Coast: usually 2–4 business days.' },
+      { q: 'Shop in Brisbane?', a: 'No — we ship from Truganina, Melbourne to all QLD postcodes. No Brisbane pickup.' },
+      { q: 'Cheapest way to order?', a: '3+1 bundle ($35, 400g) ships free. Single 100g is $11 + $8.73 if under $80.' },
+      { q: 'Why is powder clumping?', a: 'Humidity moisture, not a defect. Seal tightly and refrigerate in wet season. Warm the bag before opening.' },
     ],
     review: {
-      quote:
-        'Tried Moringa powder daily for 30 days. Helps with bloating and slight increase in stamina. good natural supplement.',
+      quote: 'Tried Moringa powder daily for 30 days. Helps with bloating and slight increase in stamina. good natural supplement.',
       name: 'Bindu',
     },
     guides: [
@@ -114,35 +94,25 @@ const CITIES = [
     description:
       'NMI-tested moringa from $11/100g. Perth metro typically 3–5 days from Melbourne. Free shipping on the 3+1 bundle.',
     delivery: '3–5 business days',
-    h1: 'Moringa powder for <em>Perth</em>',
+    util: 'Order before 2pm · Perth metro usually 3–5 days · Bundle ships free',
+    eyebrow: 'Perth · Ships from Truganina',
+    h1: 'Moringa powder<br>for <em>Perth</em>',
     lead:
       'Furthest capital from our warehouse — still tracked Australia Post. <strong>Order by 2pm</strong> for same-day dispatch. Perth metro: <strong>3–5 business days</strong>.',
-    floatTitle: 'Ship smarter',
-    floatText: '3+1 bundle ships free — skip repeat $8.73 freight.',
+    floatKicker: 'Ship smarter',
+    floatTitle: 'Bundle free',
+    floatText: '3+1 at $35 ships free — skip repeat freight.',
     tipTitle: 'Why Perth buyers order the bundle',
     tipBody:
-      'Loose powder is scarce in WA retail. The 3+1 ($35, 400g) ships free and lasts ~4 months at 1 tsp/day — fewer cross-country parcels. Store sealed and cool in summer heat.',
+      'Loose powder is scarce in WA retail. The 3+1 ($35, 400g) ships free and lasts ~4 months at 1 tsp/day — fewer cross-country parcels.',
     faqs: [
-      {
-        q: 'How long to Perth?',
-        a: '3–5 business days to most Perth metro postcodes. Regional WA: 6–9 days. Express Post available at checkout.',
-      },
-      {
-        q: 'Shop in Perth?',
-        a: 'No WA store. All orders pack at 15 Europe Street, Truganina VIC.',
-      },
-      {
-        q: 'Why slower than the east coast?',
-        a: 'Perth is ~2,700 km from our Melbourne warehouse — Australia Post standard times reflect that.',
-      },
-      {
-        q: 'Best value for Perth?',
-        a: '3+1 bundle ($35) ships free — best way to avoid paying freight on every reorder.',
-      },
+      { q: 'How long to Perth?', a: '3–5 business days to most Perth metro postcodes. Regional WA: 6–9 days. Express Post available at checkout.' },
+      { q: 'Shop in Perth?', a: 'No WA store. All orders pack at 15 Europe Street, Truganina VIC.' },
+      { q: 'Why slower than the east coast?', a: 'Perth is ~2,700 km from our Melbourne warehouse — Australia Post standard times reflect that.' },
+      { q: 'Best value for Perth?', a: '3+1 bundle ($35) ships free — best way to avoid paying freight on every reorder.' },
     ],
     review: {
-      quote:
-        'The powder from Nutri-Thrive is the greenest in color and tastes way better than other moringa. Pricing is reasonable and shipping was quick!!',
+      quote: 'The powder from Nutri-Thrive is the greenest in color and tastes way better than other moringa. Pricing is reasonable and shipping was quick!!',
       name: 'Jay Turakhia',
     },
     guides: [
@@ -161,31 +131,22 @@ const CITIES = [
     description:
       'Shade-dried moringa from $11/100g with NMI batch tests. Adelaide metro usually 2–4 days. Free shipping $80+.',
     delivery: '2–4 business days',
-    h1: 'Moringa powder for <em>Adelaide</em>',
+    util: 'Order before 2pm · Adelaide metro usually 2–4 days · Free shipping over $80',
+    eyebrow: 'Adelaide · Ships from Truganina',
+    h1: 'Moringa powder<br>for <em>Adelaide</em>',
     lead:
       'Clear pricing, batch lab summaries, shade-dried leaf. <strong>Order by 2pm</strong> — Adelaide metro usually <strong>2–4 business days</strong> from Melbourne.',
-    floatTitle: 'Lab-backed',
-    floatText: 'NMI screening on every batch — PDF on the product page.',
+    floatKicker: 'Lab-backed',
+    floatTitle: 'Batch PDF',
+    floatText: 'NMI screening on every lot — summary on the product page.',
     tipTitle: 'Quality you can assess',
     tipBody:
-      'Adelaide shops mostly sell capsules. Our powder is vivid green, leaf-only, and priced from $11/100g with batch summaries online before you reorder.',
+      'Adelaide shops mostly sell capsules. Our powder is vivid green, leaf-only, and priced from $11/100g with batch summaries online.',
     faqs: [
-      {
-        q: 'How long to Adelaide?',
-        a: 'Same-day Melbourne dispatch before 2pm. Adelaide metro: 2–4 business days. Regional SA may add a day or two.',
-      },
-      {
-        q: 'Shop in Adelaide?',
-        a: 'Online only — packed in Truganina VIC. We ship to all SA postcodes.',
-      },
-      {
-        q: 'Cheapest order?',
-        a: '3+1 bundle ($35, 400g) ships free. Otherwise $11/100g + $8.73 under $80.',
-      },
-      {
-        q: 'Chemist Warehouse vs direct?',
-        a: 'CW stocks Rosabella capsules. We sell loose powder with visible quality and NMI testing.',
-      },
+      { q: 'How long to Adelaide?', a: 'Same-day Melbourne dispatch before 2pm. Adelaide metro: 2–4 business days. Regional SA may add a day or two.' },
+      { q: 'Shop in Adelaide?', a: 'Online only — packed in Truganina VIC. We ship to all SA postcodes.' },
+      { q: 'Cheapest order?', a: '3+1 bundle ($35, 400g) ships free. Otherwise $11/100g + $8.73 under $80.' },
+      { q: 'Chemist Warehouse vs direct?', a: 'CW stocks Rosabella capsules. We sell loose powder with visible quality and NMI testing.' },
     ],
     review: {
       quote: 'This product is healthy, of excellent quality, and very affordable. Highly recommend!',
@@ -200,21 +161,22 @@ const CITIES = [
 ];
 
 function locNav(active) {
-  const items = [
-    ['melbourne', '/melbourne/', 'Melbourne'],
-    ['moringa-sydney', '/moringa-sydney/', 'Sydney'],
-    ['moringa-brisbane', '/moringa-brisbane/', 'Brisbane'],
-    ['moringa-perth', '/moringa-perth/', 'Perth'],
-    ['moringa-adelaide', '/moringa-adelaide/', 'Adelaide'],
-  ]
-    .map(([id, href, label]) => {
-      const on = id === active;
-      return `<li><a href="${href}" class="city-loc__link${on ? ' is-active' : ''}"${on ? ' aria-current="page"' : ''}>${label}</a></li>`;
-    })
-    .join('\n');
   return `<nav class="city-loc" aria-label="Deliver to">
   <span class="city-loc__label">Deliver to</span>
-  <ul class="city-loc__list">${items}</ul>
+  <ul class="city-loc__list">
+    ${[
+      ['melbourne', '/melbourne/', 'Melbourne'],
+      ['moringa-sydney', '/moringa-sydney/', 'Sydney'],
+      ['moringa-brisbane', '/moringa-brisbane/', 'Brisbane'],
+      ['moringa-perth', '/moringa-perth/', 'Perth'],
+      ['moringa-adelaide', '/moringa-adelaide/', 'Adelaide'],
+    ]
+      .map(([id, href, label]) => {
+        const on = id === active;
+        return `<li><a href="${href}" class="city-loc__link${on ? ' is-active' : ''}"${on ? ' aria-current="page"' : ''}>${label}</a></li>`;
+      })
+      .join('\n    ')}
+  </ul>
 </nav>`;
 }
 
@@ -234,42 +196,24 @@ function faqSchema(faqs) {
   );
 }
 
-function pricing(c) {
-  const bundle = c.highlightBundle
-    ? `<tr class="is-best"><td>3+1 Bundle 400g</td><td class="amt">$35</td><td>Free</td></tr>`
-    : `<tr><td>3+1 Bundle 400g</td><td class="amt">$35</td><td>Free</td></tr>`;
-  return `<section class="city-hub-section">
-  <div class="city-hub-section__head">
-    <p class="city-hub-kicker">Pricing</p>
-    <h2>Delivered to <em>${c.city}</em></h2>
-  </div>
-  <table class="city-hub-table">
-    <thead><tr><th>Size</th><th>Price</th><th>Shipping</th></tr></thead>
-    <tbody>
-      <tr><td>100g</td><td class="amt">$11</td><td>$8.73*</td></tr>
-      <tr><td>200g</td><td class="amt">$21.50</td><td>$8.73*</td></tr>
-      ${bundle}
-    </tbody>
-  </table>
-  <p class="city-hub-note">*Free shipping on orders $80+. Bundle always free.</p>
-</section>`;
-}
-
-function pageHtml(c, headInner) {
+function pageHtml(c, head) {
   const faqs = c.faqs
     .map(
-      (f) => `<details>
+      (f, i) => `<details${i === 0 ? ' open' : ''}>
       <summary>${f.q}</summary>
       <p>${f.a}</p>
     </details>`
     )
     .join('\n');
   const guides = c.guides.map((g) => `<li><a href="${g.href}">${g.label}</a></li>`).join('\n');
+  const bundleRow = c.highlightBundle
+    ? `<tr><td>3+1 Bundle 400g</td><td class="amt">$35</td><td>Free</td></tr>`
+    : `<tr><td>3+1 Bundle 400g</td><td class="amt">$35</td><td>Free</td></tr>`;
 
   return `<!DOCTYPE html>
 <html lang="en-AU">
 <head>
-${headInner}
+${head}
 </head>
 <body class="non-sticky-header city-hub-body">
 <header>
@@ -288,12 +232,14 @@ NutriThrive
 </div>
 </header>
 
+<div class="city-util" role="status"><p>${c.util}</p></div>
+
 <main class="city-hub">
 ${locNav(c.slug)}
 
-<section class="city-hub-hero">
+<header class="city-hub-hero">
   <div>
-    <p class="city-hub-eyebrow">${c.city} · ${c.state}</p>
+    <p class="city-hub-eyebrow">${c.eyebrow}</p>
     <h1 class="city-hub-title">${c.h1}</h1>
     <p class="city-hub-lead">${c.lead}</p>
     <div class="city-hub-actions">
@@ -302,54 +248,71 @@ ${locNav(c.slug)}
     </div>
   </div>
   <div class="city-hub-media">
-    <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="NutriThrive moringa powder for ${c.city}" loading="eager" width="460" height="460">
+    <div class="city-hub-media__frame">
+      <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="NutriThrive moringa powder for ${c.city}" width="440" height="550" loading="eager">
+    </div>
     <aside class="city-hub-float">
-      <p class="city-hub-float__kicker">${c.delivery}</p>
+      <p class="city-hub-float__kicker">${c.floatKicker}</p>
       <p class="city-hub-float__title">${c.floatTitle}</p>
       <p class="city-hub-float__text">${c.floatText}</p>
     </aside>
   </div>
-</section>
+</header>
 
-<section class="city-hub-section">
+<section class="city-hub-section city-hub-section--flush">
   <div class="city-hub-section__head">
-    <p class="city-hub-kicker">From our warehouse</p>
-    <h2>Ships from <em>Truganina</em></h2>
+    <h2>Sourcing excellence</h2>
+    <p class="city-hub-kicker" style="margin-top:1rem">Ships from our Truganina warehouse</p>
   </div>
-  <div class="city-hub-split">
-    <div class="city-hub-split__photo">
-      <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="" loading="lazy">
-      <div class="city-hub-split__caption">
-        <strong>Order by 2pm</strong>
-        <span>Same-day dispatch · Australia Post tracked</span>
+  <div class="city-bento">
+    <div class="city-bento__lg">
+      <div>
+        <span class="city-hub-kicker city-hub-kicker--terracotta">01. ${c.city} delivery</span>
+        <h3>Typical arrival: ${c.delivery}</h3>
+        <p>Order by 2pm for same-day Melbourne dispatch. Free shipping over $80. Tracked Australia Post.</p>
       </div>
+      <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="" loading="lazy">
     </div>
-    <div class="city-hub-split__stat">
-      <p class="stat-num">$11</p>
-      <p class="stat-label">Per 100g from</p>
-      <p>NMI government lab screening on every batch. Shade-dried leaf only — no blends, no fillers.</p>
+    <div class="city-bento__sm">
+      <span class="city-hub-kicker">Lab analysis</span>
+      <div class="city-bento__stat"><p class="num">NMI</p><p class="lbl">Government lab batch screening</p></div>
+      <hr>
+      <div class="city-bento__stat"><p class="num">$11</p><p class="lbl">From / 100g shade-dried leaf</p></div>
+      <a href="/documents/nutrithrive-lab-report-summary.pdf" target="_blank" rel="noopener">Latest lab PDF →</a>
     </div>
-  </div>
-  <div class="city-hub-icons">
-    <div class="city-hub-icon">
-      <div class="city-hub-icon__mark" aria-hidden="true">✓</div>
-      <h3>Lab-tested</h3>
-      <p>Batch summary PDF on the product page for heavy metals and pesticides.</p>
+    <div class="city-bento__third">
+      <span class="ico" aria-hidden="true">◈</span>
+      <h4>Leaf-only</h4>
+      <p>Shade-dried moringa leaf. No fillers, no blends.</p>
     </div>
-    <div class="city-hub-icon">
-      <div class="city-hub-icon__mark" aria-hidden="true">→</div>
-      <h3>${c.city} delivery</h3>
-      <p>Typical metro arrival: ${c.delivery}. Free shipping over $80.</p>
+    <div class="city-bento__third">
+      <span class="ico" aria-hidden="true">→</span>
+      <h4>${c.city} shipping</h4>
+      <p>Metro usually ${c.delivery}. Bundle always ships free.</p>
     </div>
-    <div class="city-hub-icon">
-      <div class="city-hub-icon__mark" aria-hidden="true">◎</div>
-      <h3>Australian packed</h3>
+    <div class="city-bento__third">
+      <span class="ico" aria-hidden="true">◎</span>
+      <h4>AU packed</h4>
       <p>15 Europe Street, Truganina VIC — not an overseas marketplace seller.</p>
     </div>
   </div>
 </section>
 
-<div id="pricing">${pricing(c)}</div>
+<section class="city-hub-section" id="pricing">
+  <div class="city-hub-section__head">
+    <p class="city-hub-kicker city-hub-kicker--terracotta">Pricing</p>
+    <h2>Delivered to <em>${c.city}</em></h2>
+  </div>
+  <table class="city-hub-table">
+    <thead><tr><th>Size</th><th>Price</th><th>Shipping</th></tr></thead>
+    <tbody>
+      <tr><td>100g</td><td class="amt">$11</td><td>$8.73*</td></tr>
+      <tr><td>200g</td><td class="amt">$21.50</td><td>$8.73*</td></tr>
+      ${bundleRow}
+    </tbody>
+  </table>
+  <p class="city-hub-note">*Free shipping on orders $80+. Bundle always free.</p>
+</section>
 
 <aside class="city-hub-tip">
   <h2>${c.tipTitle}</h2>
@@ -362,10 +325,9 @@ ${locNav(c.slug)}
   <cite>— ${c.review.name} · <a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7" rel="noopener" target="_blank">Google Reviews</a></cite>
 </section>
 
-<section class="city-hub-section">
+<section class="city-hub-section city-hub-section--soft">
   <div class="city-hub-section__head">
-    <p class="city-hub-kicker">${c.city} buyers</p>
-    <h2>Common <em>questions</em></h2>
+    <h2>${c.city} questions</h2>
   </div>
   <div class="city-hub-faq">${faqs}</div>
 </section>
@@ -401,7 +363,6 @@ ${locNav(c.slug)}
 }
 
 function buildHead(c) {
-  const faq = faqSchema(c.faqs);
   return `<link rel="stylesheet" href="/assets/css/design-system.min.css"/>
 <link rel="preload" href="/styles/global/style.min.css" as="style">
 <script src="/scripts/global/defer-loader.min.js" defer></script>
@@ -415,30 +376,18 @@ function buildHead(c) {
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>${c.title}</title>
 <meta name="description" content="${c.description}">
 <link rel="canonical" href="https://nutrithrive.com.au/${c.slug}/">
-<link rel="alternate" type="text/plain" href="https://nutrithrive.com.au/llms.txt" title="LLMs.txt">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="${c.stateCode}">
 <meta name="geo.placename" content="${c.geo.placename}">
-<meta name="geo.position" content="${c.geo.pos}">
-<meta name="ICBM" content="${c.geo.icbm}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nutrithrive.com.au/${c.slug}/">
 <meta property="og:title" content="${c.title}">
 <meta property="og:description" content="${c.description}">
 <meta property="og:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:site_name" content="NutriThrive Australia">
 <meta property="og:locale" content="en_AU">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${c.title}">
-<meta name="twitter:description" content="${c.description}">
-<meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp">
 <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
 <link href="/styles/global/style.min.css" rel="stylesheet">
 <link href="/styles/pages/city-landing.min.css" rel="stylesheet">
@@ -453,7 +402,7 @@ function buildHead(c) {
 }
 </script>
 <script type="application/ld+json">
-${faq}
+${faqSchema(c.faqs)}
 </script>
 <script type="application/ld+json">
 {
@@ -463,8 +412,6 @@ ${faq}
   "name": "NutriThrive",
   "url": "https://nutrithrive.com.au/",
   "telephone": "+61438201419",
-  "email": "nutrithrive0@gmail.com",
-  "image": "https://nutrithrive.com.au/assets/images/logo/LOGO.webp",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "15 Europe Street",
@@ -475,7 +422,6 @@ ${faq}
   },
   "areaServed": [
     {"@type": "City", "name": "${c.city}", "addressRegion": "${c.state}", "addressCountry": "AU"},
-    {"@type": "AdministrativeArea", "name": "${c.state}"},
     {"@type": "Country", "name": "Australia"}
   ],
   "description": "NMI lab-tested moringa powder shipped from Truganina to ${c.city}. Typical metro delivery ${c.delivery}."
@@ -484,11 +430,7 @@ ${faq}
 }
 
 for (const c of CITIES) {
-  const html = pageHtml(c, buildHead(c));
-  const dir = path.join(ROOT, c.slug);
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  fs.writeFileSync(path.join(ROOT, c.slug, 'index.html'), pageHtml(c, buildHead(c)));
   console.log('Built', c.slug);
 }
-
 console.log('Done.');
