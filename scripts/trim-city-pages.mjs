@@ -48,7 +48,7 @@ const CITIES = [
       },
       {
         q: 'Is NutriThrive affected by the 2026 moringa recall?',
-        a: 'No. The recall was Rosabella capsules only. We sell leaf powder with NMI screening. <a href="/blog/is-moringa-banned-in-australia">Details</a>.',
+        a: 'No. The recall was Rosabella capsules only. We sell leaf powder with NMI screening. <a href="/blog/rosabella-moringa-reviews-legit-or-overhyped-2026">Details</a>.',
       },
     ],
     review: {
