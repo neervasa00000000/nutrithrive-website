@@ -92,8 +92,8 @@ const DESIGN_TOKENS = fs.readFileSync(path.join(REPO, 'assets/css/design-system.
   .split('}').slice(0, 4).join('}') + '}'; // :root + html + *, body only — trim footer bloat
 
 const V2_EXTRA_CRITICAL = `
-.nt-sticky-top{position:sticky;top:0;z-index:1000;width:100%;background:#fdf9ee}
-.nt-promo-bar{background:#1a2e22;color:#fff;text-align:center;padding:.5rem 1rem;font-size:.75rem}
+.nt-sticky-top{position:sticky;top:0;z-index:1000;width:100%;background:var(--bg,#f5f1e6)}
+.nt-promo-bar{background:#1a2e22;color:#fff;text-align:center;padding:.45rem 1rem;font-size:.8125rem;font-weight:500;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
 #nt-header{position:relative;width:100%;background:var(--bg,#f5f1e6);border-bottom:1px solid var(--color-border-soft,#e6e2d7)}
 `;
 
