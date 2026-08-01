@@ -1,6 +1,18 @@
 /** Auto-generated — 115 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
+    "slug": "high-protein-curry-leaf-recipes-2026",
+    "title": "5 High-Protein Curry Leaf Recipes That Deliver",
+    "date": "2026-08-01",
+    "href": "/blog/high-protein-curry-leaf-recipes-2026"
+  },
+  {
+    "slug": "which-dal-has-the-most-protein-2026",
+    "title": "Which Dal Has the Most Protein? A Ranked Guide",
+    "date": "2026-08-01",
+    "href": "/blog/which-dal-has-the-most-protein-2026"
+  },
+  {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
     "title": "The 30-Plants-a-Week Gut Health Rule, Explained",
     "description": "The &quot;30 plants a week&quot; gut health trend explained — what the microbiome research actually shows, and an easy way to track it.",
