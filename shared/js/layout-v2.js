@@ -43,7 +43,7 @@
       '</div></div>' +
       '<div class="navbar">' +
       '<a class="logo" href="/">' +
-      '<img alt="NutriThrive Logo" decoding="async" height="50" width="50" loading="eager" src="/assets/images/logo/LOGO-120.webp" style="height: 1.8rem; width: auto; margin-right: 0.5rem;"/>' +
+      '<img alt="NutriThrive Logo" decoding="async" height="50" width="50" loading="eager" src="/assets/images/logo/LOGO-120.webp?v=2" style="height: 1.8rem; width: auto; margin-right: 0.5rem;"/>' +
       d.brand +
       '</a>' +
       '<nav class="nav-links">' +
@@ -63,9 +63,10 @@
       navClass('/blog/') +
       '">Blog</a>' +
       '</nav>' +
+      '<div class="navbar-end">' +
       '<button type="button" class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu &amp;&amp; window.ntToggleMenu()">' +
       '<div class="line1"></div><div class="line2"></div><div class="line3"></div>' +
-      '</button></div>';
+      '</button></div></div>';
 
     loadScriptOnce('/scripts/global/script.min.js');
     loadScriptOnce('/scripts/global/cart-header.min.js');

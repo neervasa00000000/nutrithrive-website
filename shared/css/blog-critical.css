@@ -85,15 +85,17 @@
 /* Legacy navbar from layout-v2.js — match styles/global/style.css exactly */
 .nt-blog-article #nt-header .navbar,
 .nt-blog-index #nt-header .navbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
+  column-gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.2rem 2rem;
   min-height: 68px;
   color: var(--primary, #0f6b4d);
   background: transparent;
+  position: relative;
 }
 
 .nt-blog-article #nt-header .logo,
@@ -105,13 +107,35 @@
   color: var(--primary, #0f6b4d);
   text-decoration: none;
   letter-spacing: -1px;
+  grid-column: 1;
+  z-index: 1;
+}
+
+.nt-blog-article #nt-header .logo img,
+.nt-blog-index #nt-header .logo img {
+  background: transparent !important;
+  border-radius: 50%;
+  display: block;
+}
+
+.nt-blog-article #nt-header .navbar-end,
+.nt-blog-index #nt-header .navbar-end {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  z-index: 1;
 }
 
 .nt-blog-article #nt-header .nav-links,
 .nt-blog-index #nt-header .nav-links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
+  grid-column: 2;
+  justify-self: center;
 }
 
 .nt-blog-article #nt-header .nav-links a,
