@@ -49,7 +49,6 @@ const PATH_BLOCKLIST = new Set([
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([
   'blog/best-superfoods-australia-comparison-health-conscious-adults.html',
-  'blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html',
   'blog/moringa-brands-reviewed-australia-2025-verdict.html',
   'blog/best-rated-moringa-capsules-powders-australia-2026-ultimate-guide.html',
   'blog/is-moringa-banned-australia-truth-2026.html',
