@@ -49,452 +49,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="/styles/global/style.min.css">
-    <style>
-      :root {
-        --forest: #0f6b4d;
-        --moringa: #0f6b4d;
-        --gold: #d66844;
-        --sage: #f8faf7;
-        --sand: #fff;
-      }
-      body.products-page {
-        background: var(--bg, #fff);
-        color: var(--text, #1a2e22);
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      }
-      .promo-bar {
-        background-color: var(--color-promo-bar, #1a2e22) !important;
-        background-image: none !important;
-        color: #fff !important;
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
-        font-weight: 500 !important;
-        font-size: 0.8125rem !important;
-        line-height: 1.4 !important;
-        letter-spacing: 0.01em;
-        text-align: center;
-        padding: 0.45rem 1rem !important;
-        box-shadow: none !important;
-        text-transform: none;
-      }
-      .products-shell {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 3rem;
-      }
-      .products-hero {
-        text-align: center;
-        padding: 1.5rem 0 1rem;
-      }
-      .products-hero .eyebrow {
-        display: none;
-      }
-      .products-hero h1 {
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        font-size: clamp(1.9rem, 4vw, 2.5rem);
-        font-weight: 800;
-        color: var(--primary, #0f6b4d);
-        margin: 0 auto 0.85rem;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        text-align: center;
-        width: 100%;
-        max-width: 900px;
-      }
-      .hero-lede {
-        max-width: 720px;
-        margin: 0 auto 1.25rem;
-        color: var(--muted, #555);
-        font-size: 1.05rem;
-        line-height: 1.65;
-        font-weight: 400;
-      }
-      .hero-badges {
-        display: flex;
-        justify-content: center;
-        gap: 1.25rem;
-        flex-wrap: wrap;
-        margin-bottom: 0.5rem;
-      }
-      .icon {
-        width: 18px;
-        height: 18px;
-        color: var(--primary, #0f6b4d);
-      }
-      .hero-badges .pill {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        border: none;
-        background: transparent;
-        color: var(--primary, #0f6b4d);
-        font-weight: 600;
-        font-size: 0.95rem;
-        padding: 0;
-        border-radius: 0;
-        box-shadow: none;
-      }
-      .controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 1.25rem 0 1.5rem;
-        padding-bottom: 0;
-        border-bottom: none;
-      }
-      .controls h2 {
-        font-size: 2rem !important;
-        font-weight: 700 !important;
-        color: var(--primary, #0f6b4d) !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        text-align: center;
-        letter-spacing: -0.02em;
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
-      }
-      .controls .helper {
-        color: var(--muted, #555);
-        font-style: italic;
-        font-size: 0.95rem;
-        margin: 0;
-      }
-      .product-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem;
-        align-items: stretch;
-      }
-      @media (max-width: 1200px) {
-        .product-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      @media (max-width: 900px) {
-        .product-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 768px) {
-        .product-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      body.products-page .product-card {
-        background: var(--card, #fff) !important;
-        border: 1px solid rgba(236, 231, 219, 0.9) !important;
-        border-radius: 12px !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
-        position: relative;
-        overflow: hidden;
-        display: flex !important;
-        flex-direction: column !important;
-        height: 100%;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        align-items: stretch;
-        padding: 0 !important;
-        flex: none !important;
-      }
-      body.products-page .product-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 28px rgba(15, 107, 77, 0.12) !important;
-      }
-      .urgency-tag {
-        display: none;
-      }
-      .product-media {
-        position: relative;
-        background: linear-gradient(180deg, rgba(255,253,250,0.95) 0%, rgba(248,245,236,0.35) 100%);
-        height: 200px;
-        min-height: 200px;
-        max-height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-bottom: none;
-        padding: 1rem;
-      }
-      .product-media img {
-        width: auto;
-        height: 100%;
-        max-height: 160px;
-        object-fit: contain;
-      }
-      .media-label {
-        display: none;
-      }
-      .product-body {
-        padding: 0 1rem 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        flex: 1;
-        background: transparent;
-        min-height: 0;
-        text-align: center;
-        align-items: center;
-      }
-      .product-header {
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-      }
-      .product-title {
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        color: var(--primary, #0f6b4d);
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin: 0.25rem 0 0;
-        line-height: 1.3;
-        min-height: auto;
-        text-align: center;
-      }
-      .product-price {
-        text-align: center;
-        width: 100%;
-      }
-      .price {
-        color: var(--primary, #0f6b4d);
-        font-weight: 700;
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.4rem;
-      }
-      .rating {
-        display: none;
-      }
-      .meta {
-        color: var(--muted, #6f7a73);
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        font-weight: 600;
-        margin: 0 0 0.5rem;
-        min-height: auto;
-        text-align: center;
-      }
-      .why-box,
-      .why-title,
-      .why-list,
-      .chips,
-      .chip {
-        display: none;
-      }
-      .cta-row {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        width: 100%;
-      }
-      .btn-primary {
-        width: 100%;
-        background: transparent;
-        color: var(--primary, #0f6b4d);
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: none;
-        border: 1.5px solid var(--primary, #0f6b4d);
-        border-radius: 8px;
-        padding: 0.65rem 1rem;
-        cursor: pointer;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.4rem;
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
-      .btn-primary:hover {
-        background: var(--primary, #0f6b4d);
-        color: #fff;
-        transform: none;
-      }
-      body.products-page .btn-add-cart {
-        width: 100% !important;
-        padding: 0.65rem 1rem !important;
-        min-height: 44px;
-        background: var(--primary, #0f6b4d) !important;
-        color: #fff !important;
-        border: none !important;
-        border-radius: 8px !important;
-        cursor: pointer;
-        font-weight: 700 !important;
-        text-transform: none !important;
-        letter-spacing: 0.02em !important;
-        font-size: 0.95rem !important;
-      }
-      body.products-page .btn-add-cart:hover {
-        opacity: 0.92;
-      }
-      .qty-badge,
-      .stock-note,
-      .stock-dot {
-        display: none;
-      }
-      .product-footer {
-        margin-top: auto;
-        width: 100%;
-        padding-top: 0.25rem;
-      }
-      .helper-note {
-        color: var(--muted, #555);
-        font-size: 0.95rem;
-        text-align: center;
-        margin-top: 1.5rem;
-        line-height: 1.55;
-      }
-      .icon-star {
-        width: 14px;
-        height: 14px;
-        color: var(--gold);
-        fill: currentColor;
-      }
-      .products-section-title {
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
-        color: var(--primary, #0f6b4d) !important;
-        font-weight: 700 !important;
-      }
-      @media (max-width: 768px) {
-        .products-shell {
-          padding: 1.25rem 1rem 3rem;
-        }
-        .product-header {
-          align-items: center;
-          text-align: center;
-        }
-        .product-title,
-        .product-price,
-        .meta {
-          text-align: center;
-        }
-        .price {
-          justify-content: center;
-        }
-        .hero-badges {
-          gap: 0.75rem;
-          flex-wrap: wrap;
-        }
-        .hero-badges .pill {
-          font-size: 0.85rem;
-        }
-        .hero-badges .pill .icon {
-          width: 14px;
-          height: 14px;
-        }
-        .products-hero {
-          padding: 1.25rem 0 0.75rem;
-        }
-        .product-grid {
-          grid-template-columns: 1fr;
-          align-items: stretch;
-        }
-        .product-card {
-          height: auto;
-        }
-        .product-media {
-          height: 180px;
-          min-height: 180px;
-          max-height: 180px;
-        }
-      }
-      /* Mobile navigation - match homepage exactly */
-      @media (max-width: 768px) {
-        .nav-links {
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(10px);
-          z-index: 2000;
-          display: none;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: center;
-          transform: translateX(-100%);
-          transition: transform 0.3s ease-in-out;
-          padding: 2rem 1.5rem 1rem;
-          margin: 0;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-          gap: 0.8rem;
-        }
-        .nav-links.nav-active {
-          display: flex !important;
-          transform: translateX(0);
-        }
-        .nav-links a {
-          font-size: 1.5rem !important;
-          margin: 0.2rem 0 !important;
-          padding: 1.2rem 1.5rem !important;
-          border-radius: 12px !important;
-          transition: background-color 0.2s ease !important;
-          text-align: center !important;
-          width: 100% !important;
-          max-width: 300px !important;
-          display: flex !important;
-          text-decoration: none !important;
-          color: var(--primary) !important;
-          font-weight: 600 !important;
-          min-height: 60px !important;
-          align-items: center !important;
-          justify-content: center !important;
-          background: transparent !important;
-          border: none !important;
-        }
-        .nav-links a:hover,
-        .nav-links a.active {
-          background-color: rgba(15, 107, 77, 0.1) !important;
-          color: var(--accent) !important;
-        }
-        .hamburger {
-          min-width: 48px !important;
-          min-height: 48px !important;
-          padding: 12px !important;
-          -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
-          touch-action: manipulation !important;
-          cursor: pointer !important;
-        }
-        
-        /* Hamburger close functionality - force perfectly centered X on mobile (match homepage) */
-        .hamburger.toggle {
-          background: none !important;
-          border: none !important;
-        }
-        
-        /* When open, overlay both visible lines in the exact center */
-        .hamburger.toggle div {
-          position: absolute !important;
-          top: 50% !important;
-          left: 50% !important;
-          width: 25px !important;
-          height: 3px !important;
-          margin: 0 !important;
-          transform-origin: center !important;
-        }
-        
-        .hamburger.toggle .line1 {
-          transform: translate(-50%, -50%) rotate(45deg) !important;
-        }
-        
-        .hamburger.toggle .line2 {
-          opacity: 0 !important;
-          visibility: hidden !important;
-          display: none !important;
-        }
-        
-        .hamburger.toggle .line3 {
-          transform: translate(-50%, -50%) rotate(-45deg) !important;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/styles/products/index.min.css">
     <!-- Favicons - Standardized across all pages -->
     <link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo/LOGO.webp">
@@ -560,7 +115,7 @@
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.9",
+    "ratingValue": 4.9,
     "bestRating": "5",
     "worstRating": "1",
     "reviewCount": 11
@@ -623,6 +178,416 @@
   ]
 }
 </script>
+<!-- Products listing schema — source: shared/schema/products-listing.json (sync: node scripts/sync-products-listing-schema.mjs) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/moringa-powder/#product",
+  "name": "NutriThrive Moringa Powder",
+  "sku": "NT-MOR-100G",
+  "url": "https://nutrithrive.com.au/products/moringa-powder/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g.png"
+  ],
+  "description": "100% pure shade-dried moringa oleifera leaf powder. NMI lab-tested in Australia. $11 per 100g pouch.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/moringa-powder/",
+    "sku": "NT-MOR-100G",
+    "priceCurrency": "AUD",
+    "price": "11.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 8.73,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/curry-leaves/#product",
+  "name": "NutriThrive Dried Curry Leaves",
+  "sku": "NT-CL-30G",
+  "url": "https://nutrithrive.com.au/products/curry-leaves/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp"
+  ],
+  "description": "Premium dried curry leaves for aromatic tadka in curries, dals, and rice dishes.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/curry-leaves/",
+    "sku": "NT-CL-30G",
+    "priceCurrency": "AUD",
+    "price": "7.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 8.73,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/black-tea/#product",
+  "name": "NutriThrive Darjeeling Black Tea",
+  "sku": "NT-BT-100G",
+  "url": "https://nutrithrive.com.au/products/black-tea/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/BlackTea.webp"
+  ],
+  "description": "Premium Darjeeling loose-leaf black tea for a smooth, focused cup without the coffee jitters.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/black-tea/",
+    "sku": "NT-BT-100G",
+    "priceCurrency": "AUD",
+    "price": "7.50",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 8.73,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/combo-pack/#product",
+  "name": "NutriThrive Premium Combo Pack",
+  "sku": "NT-COMBO-MC-130G",
+  "url": "https://nutrithrive.com.au/products/combo-pack/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/combo.webp"
+  ],
+  "description": "100g moringa powder plus 30g dried curry leaves — morning smoothie and evening tadka from one box.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/combo-pack/",
+    "sku": "NT-COMBO-MC-130G",
+    "priceCurrency": "AUD",
+    "price": "17.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 8.73,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/moringa-soap/#product",
+  "name": "NutriThrive Moringa Soap",
+  "sku": "NT-SOAP-95G",
+  "url": "https://nutrithrive.com.au/products/moringa-soap/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/moringa_soap.webp"
+  ],
+  "description": "95g natural moringa soap bar, handmade in small batches with moringa leaf and gentle oils.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/moringa-soap/",
+    "sku": "NT-SOAP-95G",
+    "priceCurrency": "AUD",
+    "price": "7.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 8.73,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Moringa, Curry Leaves & Superfoods | NutriThrive",
+  "description": "Moringa powder ($11/100g), dried curry leaves, Darjeeling tea, and soap, packed in Truganina, Melbourne. Lab-tested moringa. Ships Australia-wide.",
+  "url": "https://nutrithrive.com.au/products/",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/moringa-powder/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/curry-leaves/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/black-tea/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/combo-pack/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/moringa-soap/#product"
+        }
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body class="products-page">
     <header>
@@ -652,7 +617,7 @@
     <main class="products-shell">
         <section class="products-hero">
             <h1>Shop Moringa Powder, Curry Leaves and Superfoods</h1>
-            <p class="hero-lede">Moringa powder ($11/100g), dried curry leaves, Darjeeling tea, and soap, packed at 15 Europe Street, Truganina. Each moringa batch is lab-tested in Australia; see the report on the product page. Same-day dispatch before 2pm on business days.</p>
+            <p class="hero-lede">NutriThrive is a Melbourne small business packing shade-dried moringa leaf powder, dried curry leaves, Darjeeling black tea, and natural moringa soap from our warehouse at 15 Europe Street, Truganina. We are not a drop-shipper: every pouch is filled here, with batch dates on the label so you can check colour and smell when it arrives. Moringa batches are screened by the National Measurement Institute; the summary PDF is linked from each product page. We ship Australia-wide and internationally with tracked delivery. Free standard shipping on Australian orders over $80. Order before 2pm on business days for same-day dispatch from Truganina.</p>
             <div class="hero-badges">
                 <span class="pill"><i data-lucide="leaf" class="icon"></i>Shade-dried leaf</span>
                 <span class="pill"><i data-lucide="droplet" class="icon"></i>No fillers</span>
@@ -905,350 +870,8 @@
     <script src="/scripts/global/cart.min.js" defer></script>
     <script src="/scripts/global/cart-header.min.js" defer></script>
     <script src="/scripts/global/script.min.js" defer></script>
+    <script src="/scripts/pages/products-listing.min.js" defer></script>
 
-    <!-- CollectionPage Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Moringa, Curry Leaves & Superfoods | NutriThrive",
-        "description": "Moringa powder ($11/100g), dried curry leaves, Darjeeling tea, and soap, packed in Truganina, Melbourne. Lab-tested moringa. Ships Australia-wide.",
-        "url": "https://nutrithrive.com.au/products/",
-        "mainEntity": {
-            "@type": "ItemList",
-            "itemListElement": [
-                {
-                    "@type": "Product",
-                    "position": 1,
-                    "name": "Moringa Powder",
-                    "sku": "NT-MORINGA-50G",
-                    "url": "https://nutrithrive.com.au/products/moringa-powder/",
-                    "image": "https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g.png",
-                    "description": "Premium 100% natural Moringa Oleifera powder for natural energy boost and immune support.",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "NutriThrive"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "url": "https://nutrithrive.com.au/products/moringa-powder/",
-                        "priceCurrency": "AUD",
-                        "price": "11.00",
-                        "priceValidUntil": "2026-12-31",
-                        "availability": "https://schema.org/InStock",
-                        "seller": {
-                            "@type": "Organization",
-                            "name": "NutriThrive"
-                        },
-                        "hasMerchantReturnPolicy": {
-                            "@type": "MerchantReturnPolicy",
-                            "applicableCountry": "AU",
-                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                            "merchantReturnDays": 7,
-                            "returnMethod": "https://schema.org/ReturnByMail",
-                            "returnFees": "https://schema.org/FreeReturn"
-                        },
-                        "shippingDetails": {
-                            "@type": "OfferShippingDetails",
-                            "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "AUD"
-                            },
-                            "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "AU"
-                            },
-                            "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 1,
-                                    "maxValue": 2,
-                                    "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 3,
-                                    "maxValue": 10,
-                                    "unitCode": "DAY"
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "@type": "Product",
-                    "position": 2,
-                    "name": "Dried Curry Leaves",
-                    "sku": "NT-CURRY-15G",
-                    "url": "https://nutrithrive.com.au/products/curry-leaves/",
-                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/Curry.webp",
-                    "description": "Premium dried curry leaves for aromatic flavor enhancement in traditional cooking.",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "NutriThrive"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "url": "https://nutrithrive.com.au/products/curry-leaves/",
-                        "priceCurrency": "AUD",
-                        "price": "7.00",
-                        "priceValidUntil": "2026-12-31",
-                        "availability": "https://schema.org/InStock",
-                        "seller": {
-                            "@type": "Organization",
-                            "name": "NutriThrive"
-                        },
-                        "hasMerchantReturnPolicy": {
-                            "@type": "MerchantReturnPolicy",
-                            "applicableCountry": "AU",
-                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                            "merchantReturnDays": 7,
-                            "returnMethod": "https://schema.org/ReturnByMail",
-                            "returnFees": "https://schema.org/FreeReturn"
-                        },
-                        "shippingDetails": {
-                            "@type": "OfferShippingDetails",
-                            "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "AUD"
-                            },
-                            "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "AU"
-                            },
-                            "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 1,
-                                    "maxValue": 2,
-                                    "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 3,
-                                    "maxValue": 10,
-                                    "unitCode": "DAY"
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "@type": "Product",
-                    "position": 3,
-                    "name": "Premium Black Tea",
-                    "sku": "NT-BLACKTEA-50G",
-                    "url": "https://nutrithrive.com.au/products/black-tea/",
-                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/BlackTea.webp",
-                    "description": "Premium black tea for focus, clarity, and natural energy.",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "NutriThrive"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "url": "https://nutrithrive.com.au/products/black-tea/",
-                        "priceCurrency": "AUD",
-                        "price": "7.50",
-                        "priceValidUntil": "2026-12-31",
-                        "availability": "https://schema.org/InStock",
-                        "seller": {
-                            "@type": "Organization",
-                            "name": "NutriThrive"
-                        },
-                        "hasMerchantReturnPolicy": {
-                            "@type": "MerchantReturnPolicy",
-                            "applicableCountry": "AU",
-                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                            "merchantReturnDays": 7,
-                            "returnMethod": "https://schema.org/ReturnByMail",
-                            "returnFees": "https://schema.org/FreeReturn"
-                        },
-                        "shippingDetails": {
-                            "@type": "OfferShippingDetails",
-                            "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "AUD"
-                            },
-                            "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "AU"
-                            },
-                            "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 1,
-                                    "maxValue": 2,
-                                    "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 3,
-                                    "maxValue": 10,
-                                    "unitCode": "DAY"
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "@type": "Product",
-                    "position": 4,
-                    "name": "Premium Combo Pack",
-                    "sku": "NT-COMBO-STARTER",
-                    "url": "https://nutrithrive.com.au/products/combo-pack/",
-                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/combo.webp",
-                    "description": "A curated selection of our best-selling natural products for holistic health and great value.",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "NutriThrive"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "url": "https://nutrithrive.com.au/products/combo-pack/",
-                        "priceCurrency": "AUD",
-                        "price": "17.00",
-                        "priceValidUntil": "2026-12-31",
-                        "availability": "https://schema.org/InStock",
-                        "seller": {
-                            "@type": "Organization",
-                            "name": "NutriThrive"
-                        },
-                        "hasMerchantReturnPolicy": {
-                            "@type": "MerchantReturnPolicy",
-                            "applicableCountry": "AU",
-                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                            "merchantReturnDays": 7,
-                            "returnMethod": "https://schema.org/ReturnByMail",
-                            "returnFees": "https://schema.org/FreeReturn"
-                        },
-                        "shippingDetails": {
-                            "@type": "OfferShippingDetails",
-                            "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "AUD"
-                            },
-                            "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "AU"
-                            },
-                            "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 1,
-                                    "maxValue": 2,
-                                    "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 3,
-                                    "maxValue": 10,
-                                    "unitCode": "DAY"
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "@type": "Product",
-                    "position": 5,
-                    "name": "Moringa Soap",
-                    "sku": "NT-SOAP-MORINGA",
-                    "url": "https://nutrithrive.com.au/products/moringa-soap/",
-                    "image": "https://nutrithrive.com.au/assets/images/Home%20page/webp/moringa_soap.webp",
-                    "description": "Natural moringa soap for gentle cleansing and skin nourishment.",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "NutriThrive"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "url": "https://nutrithrive.com.au/products/moringa-soap/",
-                        "priceCurrency": "AUD",
-                        "price": "7.00",
-                        "priceValidUntil": "2026-12-31",
-                        "availability": "https://schema.org/InStock",
-                        "seller": {
-                            "@type": "Organization",
-                            "name": "NutriThrive"
-                        },
-                        "hasMerchantReturnPolicy": {
-                            "@type": "MerchantReturnPolicy",
-                            "applicableCountry": "AU",
-                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                            "merchantReturnDays": 7,
-                            "returnMethod": "https://schema.org/ReturnByMail",
-                            "returnFees": "https://schema.org/FreeReturn"
-                        },
-                        "shippingDetails": {
-                            "@type": "OfferShippingDetails",
-                            "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "AUD"
-                            },
-                            "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "AU"
-                            },
-                            "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 1,
-                                    "maxValue": 2,
-                                    "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                    "@type": "QuantitativeValue",
-                                    "minValue": 3,
-                                    "maxValue": 10,
-                                    "unitCode": "DAY"
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    }
-    </script>
-    <script>
-        // Product weights mapping (from Excel Product Grams sheet)
-        const productWeights = {
-            'moringa-powder': 100, // Default Moringa is 100g
-            'curry-leaves': 30,
-            'black-tea': 100,
-            'moringa-soap': 95 // Soap is 95g
-        };
-        
-        // Add to Cart function for product listing page
-        function addProductToCart(id, name, price, image) {
-            if (window.Cart && window.Cart.add) {
-                // Get weight for this product
-                const weight = productWeights[id] || 100; // Default to 100g if not found
-                
-                window.Cart.add({
-                    id: id,
-                    name: name,
-                    price: price,
-                    weight: weight, // Add weight data
-                    image: image,
-                    quantity: 1
-                });
-            } else {
-                console.error('Cart is not initialized');
-            }
-        }
-    </script>
 <script src="/shared/site-data.min.js"></script>
 <script src="/shared/js/footer-v2.min.js"></script>
 </body>
