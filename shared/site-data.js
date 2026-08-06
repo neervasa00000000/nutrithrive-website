@@ -373,9 +373,9 @@ window.NT_SITE_DATA = {
         { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup only.' },
         { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order or checking free shipping eligibility.' },
         { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+.' },
-        { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Dispatch within 2 business days (no Sunday dispatch). Metro delivery typically 3–4 days; rural up to 10 days. See /pages/shipping/shipping-returns.html or /melbourne/ for estimates.' },
+        { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Orders placed before 2pm on business days usually leave Truganina the same day; otherwise within 2 business days (no Sunday dispatch). Melbourne metro is often 1–3 business days after dispatch; other metro areas typically 3–4 days; some rural locations up to 10 days. See /pages/shipping/shipping-returns.html or /melbourne/ for estimates.' },
         { q: 'Do you offer a money-back guarantee?', a: 'Yes—7-day return policy (unopened packs only). Shipping costs are not refunded.' },
-        { q: 'Where is my order dispatched from?', a: 'All orders ship from our warehouse in Truganina, Melbourne—same-day dispatch for orders before 2pm.' },
+        { q: 'Where is my order dispatched from?', a: 'All orders ship from our warehouse in Truganina, Melbourne. Order before 2pm on a business day for same-day dispatch when we can.' },
       ],
     },
     {
