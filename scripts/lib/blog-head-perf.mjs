@@ -21,13 +21,9 @@ export function readBlogCriticalCss() {
   return cachedCriticalCss;
 }
 
-export function buildBlogPerfHead(criticalCss) {
-  const inlineCritical = criticalCss
-    ? `<style>${criticalCss}</style>`
-    : '<link rel="stylesheet" href="/shared/css/blog-critical.min.css"/>';
-
+export function buildBlogPerfHead(_criticalCss) {
   return `<!-- Blog perf: critical CSS + deferred styles + self-hosted fonts -->
-${inlineCritical}
+<link rel="stylesheet" href="/shared/css/blog-critical.min.css"/>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin/>
 ${DEFER_STYLESHEET('/shared/css/fonts-local.min.css')}
 ${DEFER_STYLESHEET('/assets/css/design-system.min.css')}
