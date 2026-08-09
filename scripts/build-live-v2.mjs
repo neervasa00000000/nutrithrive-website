@@ -382,7 +382,18 @@ function generateBlogArticlesJs() {
     let category = 'Wellness';
     const cat = raw.match(/rounded-full[^>]*font-label-sm[^>]*uppercase[^>]*>([^<]+)</i);
     if (cat) category = cat[1].trim();
-    return { slug, title, description, category, href: `/blog/${slug}` };
+    let image = '';
+    const ogImage = raw.match(/property="og:image"\s+content="([^"]+)"/i)
+      || raw.match(/content="([^"]+)"\s+property="og:image"/i);
+    if (ogImage) {
+      image = ogImage[1].replace(/^https:\/\/nutrithrive\.com\.au/i, '');
+    } else {
+      const heroImg = raw.match(/src="(\/assets\/images\/blog\/[^"]+-hero\.[^"]+)"/i);
+      if (heroImg) image = heroImg[1];
+    }
+    const meta = { slug, title, description, category, href: `/blog/${slug}` };
+    if (image) meta.image = image;
+    return meta;
   });
 
   const js = `/** Auto-generated — ${articles.length} blog articles. Run: node scripts/build-live-v2.mjs */\nwindow.NT_BLOG_ARTICLES = ${JSON.stringify(articles, null, 2)};\n`;

@@ -988,16 +988,24 @@
       ? `<p class="font-body-md text-on-surface-variant mb-4 line-clamp-3 flex-1">${article.description}</p>`
       : '';
     const cat = article.category || 'Article';
+    const image = article.image
+      ? `<div class="aspect-[16/10] overflow-hidden bg-surface-container">
+          <img src="${article.image}" alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" width="640" height="400" loading="lazy" decoding="async"/>
+        </div>`
+      : '';
     return `
     <article class="group glass-card rounded-xl overflow-hidden hover:shadow-xl transition-all flex flex-col h-full">
-      <a href="${article.href}" class="p-6 md:p-8 flex flex-col flex-1 no-underline text-inherit">
-        <span class="inline-block self-start bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full text-label-sm font-label-sm uppercase mb-3">${cat}</span>
-        <h3 class="font-display text-headline-md text-forest-deep mb-3 group-hover:text-moringa-leaf transition-colors line-clamp-3">${title}</h3>
-        ${desc}
-        <span class="inline-flex items-center gap-2 text-moringa-leaf font-label-lg mt-auto pt-2">
-          Read article
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-        </span>
+      <a href="${article.href}" class="flex flex-col flex-1 no-underline text-inherit">
+        ${image}
+        <div class="p-6 md:p-8 flex flex-col flex-1">
+          <span class="inline-block self-start bg-primary-fixed/30 text-moringa-leaf px-3 py-1 rounded-full text-label-sm font-label-sm uppercase mb-3">${cat}</span>
+          <h3 class="font-display text-headline-md text-forest-deep mb-3 group-hover:text-moringa-leaf transition-colors line-clamp-3">${title}</h3>
+          ${desc}
+          <span class="inline-flex items-center gap-2 text-moringa-leaf font-label-lg mt-auto pt-2">
+            Read article
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </span>
+        </div>
       </a>
     </article>`;
   }
