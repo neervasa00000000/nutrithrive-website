@@ -306,6 +306,121 @@
         color: var(--primary, #0f6b4d) !important;
         font-weight: 700 !important;
       }
+      /* Soft parchment panels — sit slightly above page cream, not stark white */
+      .content-panel {
+        margin: 2.25rem 0 0;
+        padding: 1.75rem 1.5rem;
+        background: #faf8f2;
+        border: 1px solid #e8e4da;
+        border-radius: 12px;
+      }
+      .why-choose {
+        margin-top: 3rem;
+      }
+      .why-choose__title {
+        font-size: clamp(1.5rem, 3vw, 2rem) !important;
+        margin: 0 0 1.5rem !important;
+      }
+      .buying-guide__title {
+        font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
+        margin: 0 0 1.25rem !important;
+      }
+      .learn-more {
+        margin-bottom: 3rem;
+      }
+      .learn-more__title {
+        font-size: clamp(1.3rem, 2.5vw, 1.6rem) !important;
+        margin: 0 0 1.25rem !important;
+      }
+      .why-choose__grid,
+      .buying-guide__grid,
+      .learn-more__grid {
+        display: grid;
+        gap: 0.85rem;
+        align-items: stretch;
+      }
+      .why-choose__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .buying-guide__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .learn-more__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .content-panel__item {
+        margin: 0;
+        padding: 1rem 1.1rem;
+        background: #f8f6ee;
+        border: 1px solid #ebe6db;
+        border-radius: 8px;
+        color: var(--text, #1a2e22);
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+      .why-choose .content-panel__item h3 {
+        color: var(--forest, #0f6b4d);
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0 0 0.45rem;
+      }
+      .why-choose .content-panel__item p {
+        color: var(--muted, #555);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .content-panel__item strong {
+        color: var(--forest, #0f6b4d);
+        font-weight: 700;
+      }
+      .content-panel__item a {
+        color: var(--forest, #0f6b4d);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .content-panel__item a:hover {
+        text-decoration: underline;
+      }
+      .learn-more__link {
+        display: block;
+        text-decoration: none;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+      }
+      .learn-more__link:hover {
+        background: #f5f2e8;
+        border-color: #e0dbd0;
+        text-decoration: none;
+      }
+      .learn-more__link strong {
+        display: block;
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+      }
+      .learn-more__link p {
+        color: var(--muted, #555);
+        font-size: 0.88rem;
+        margin: 0;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+      @media (max-width: 900px) {
+        .buying-guide__grid,
+        .learn-more__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 640px) {
+        .content-panel {
+          padding: 1.35rem 1.1rem;
+        }
+        .why-choose__grid,
+        .buying-guide__grid,
+        .learn-more__grid {
+          grid-template-columns: 1fr;
+        }
+      }
       @media (max-width: 768px) {
         .products-shell {
           padding: 1.25rem 1rem 3rem;
