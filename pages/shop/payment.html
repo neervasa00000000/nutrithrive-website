@@ -342,7 +342,7 @@
                         Please review and confirm these details carefully. Your order will be shipped to the address you approve there.
                     </p>
                     <label for="shipping-country" class="section-label" style="text-align:center;">Shipping country</label>
-                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal(true)">
+                    <select id="shipping-country" class="select" onchange="updateShippingAndTotal()">
                         <option value="AU" selected>Australia</option>
                     </select>
                     <div class="radio-card">
@@ -424,23 +424,22 @@
             return select && select.value ? select.value.toUpperCase() : 'AU';
         }
 
-        function paypalSdkParams(countryCode) {
-            const locale = window.ntPayPalLocaleForCountry
-                ? window.ntPayPalLocaleForCountry(countryCode)
-                : 'en_AU';
+        // Merchant settles in AUD from Australia. Keep SDK locale stable — reloading
+        // with buyer-country locales (en_NZ, en_US, …) makes Smart Buttons ineligible
+        // and leaves the payment area blank for non-AU shipping destinations.
+        function paypalSdkParams() {
             return {
                 currency: 'AUD',
-                locale: locale,
+                locale: 'en_AU',
                 components: 'buttons,funding-eligibility',
             };
         }
 
-        function loadPayPalSdkForCheckout(countryCode, forceReload) {
-            const params = paypalSdkParams(countryCode);
+        function loadPayPalSdkForCheckout() {
             if (typeof window.ntLoadPayPalSdk !== 'function') {
                 return Promise.reject(new Error('PayPal SDK loader is missing'));
             }
-            return window.ntLoadPayPalSdk(params, forceReload ? { forceReload: true } : undefined);
+            return window.ntLoadPayPalSdk(paypalSdkParams());
         }
 
         function populateCountryDropdown() {
@@ -500,7 +499,7 @@
             document.getElementById('subtotal').textContent = money(subtotal);
         }
 
-        function updateShippingAndTotal(forceSdkReload) {
+        function updateShippingAndTotal() {
             const cart = getCart();
             const country = getSelectedCountryCode();
             if (country) {
@@ -512,12 +511,13 @@
             const shippingValue = shipping === null ? null : Number.parseFloat(shipping) || 0;
             document.getElementById('shipping').textContent = shippingValue === null ? 'Select country' : (shippingValue === 0 ? 'Free' : money(shippingValue));
             document.getElementById('total').textContent = money(subtotal + (shippingValue || 0));
-            loadPayPalSdkForCheckout(country, !!forceSdkReload)
+            // Do not force-reload the PayPal SDK on country change — only re-render buttons.
+            loadPayPalSdkForCheckout()
                 .then(function () {
                     initPayPal();
                 })
                 .catch(function (err) {
-                    console.error('PayPal SDK reload failed:', err);
+                    console.error('PayPal SDK load failed:', err);
                     initPayPal();
                 });
         }
@@ -635,25 +635,48 @@
                 }
             };
 
-            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.PAYPAL }, config))
-                .render('#paypal-button-container')
-                .catch(showCheckoutError);
-            paypal.Buttons(Object.assign({ fundingSource: paypal.FUNDING.CARD }, config))
-                .render('#paypal-card-container')
-                .catch(showCheckoutError);
+            function renderFunding(funding, selector) {
+                try {
+                    const buttons = paypal.Buttons(Object.assign({ fundingSource: funding }, config));
+                    if (typeof buttons.isEligible === 'function' && !buttons.isEligible()) {
+                        return Promise.resolve(false);
+                    }
+                    return buttons.render(selector).then(function () { return true; }).catch(function (err) {
+                        console.warn('PayPal funding render skipped:', funding, err && err.message);
+                        return false;
+                    });
+                } catch (err) {
+                    console.warn('PayPal funding init skipped:', funding, err && err.message);
+                    return Promise.resolve(false);
+                }
+            }
+
+            Promise.all([
+                renderFunding(paypal.FUNDING.PAYPAL, '#paypal-button-container'),
+                cardContainer
+                    ? renderFunding(paypal.FUNDING.CARD, '#paypal-card-container')
+                    : Promise.resolve(false)
+            ]).then(function (results) {
+                const anyRendered = results.some(Boolean);
+                if (anyRendered) return;
+                // Fallback: let PayPal pick any eligible Smart Buttons for this merchant.
+                paypal.Buttons(config)
+                    .render('#paypal-button-container')
+                    .catch(showCheckoutError);
+            });
         }
 
         function bootCheckout() {
             populateCountryDropdown();
             renderOrderReview();
-            updateShippingAndTotal(false);
+            updateShippingAndTotal();
             if (document.readyState === 'complete' && typeof trackBeginCheckout === 'function') {
                 trackBeginCheckout();
             }
         }
 
         function startCheckout() {
-            loadPayPalSdkForCheckout(getSelectedCountryCode(), false)
+            loadPayPalSdkForCheckout()
                 .then(bootCheckout)
                 .catch(function (err) {
                     console.error('PayPal SDK failed to load:', err);
