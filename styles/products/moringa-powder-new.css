@@ -453,10 +453,10 @@ html.nt-exit-open { overflow: hidden; }
   align-items: start;
 }
 .nt-pdp-lab-card {
-  background: #fff;
-  border: 1px solid #e8e4da;
-  border-radius: 10px;
-  padding: 1.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
 .nt-pdp-lab-card h3 {
   font-size: 1rem;
@@ -536,12 +536,13 @@ html.nt-exit-open { overflow: hidden; }
   line-height: 1.5;
 }
 
-/* ── How to use (dark band) ── */
+/* ── How to use ── */
 .nt-pdp-how {
-  background: #1b3022;
-  color: #fff;
-  margin: 0 -1.5rem;
-  padding: 3rem 1.5rem;
+  background: transparent;
+  color: #1b3022;
+  margin: 0;
+  padding: 3rem 0;
+  border-top: 1px solid #e8e4da;
 }
 .nt-pdp-how__inner {
   max-width: 1120px;
@@ -552,10 +553,12 @@ html.nt-exit-open { overflow: hidden; }
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 0.35rem;
+  color: #1b3022;
 }
 .nt-pdp-how__sub {
   font-size: 0.9375rem;
-  opacity: 0.75;
+  color: #5a6d5d;
+  opacity: 1;
   margin: 0 0 2rem;
 }
 .nt-pdp-how__cards {
@@ -565,10 +568,10 @@ html.nt-exit-open { overflow: hidden; }
   text-align: left;
 }
 .nt-pdp-how-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 10px;
-  padding: 1.35rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
 .nt-pdp-how-card__num {
   display: inline-flex;
@@ -577,7 +580,8 @@ html.nt-exit-open { overflow: hidden; }
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 50%;
-  background: rgba(255,255,255,0.15);
+  background: #1b3022;
+  color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
@@ -586,10 +590,12 @@ html.nt-exit-open { overflow: hidden; }
   font-size: 0.9375rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
+  color: #1b3022;
 }
 .nt-pdp-how-card p {
   font-size: 0.8125rem;
-  opacity: 0.85;
+  color: #5a6d5d;
+  opacity: 1;
   line-height: 1.6;
   margin: 0;
 }
@@ -815,7 +821,7 @@ html.nt-exit-open { overflow: hidden; }
 
 @media (max-width: 640px) {
   .product-main { padding: 0 1rem 3rem; }
-  .nt-pdp-how { margin: 0 -1rem; padding: 2.5rem 1rem; }
+  .nt-pdp-how { margin: 0; padding: 2.5rem 0; }
   .nt-pdp-sizes { grid-template-columns: 1fr; }
   .nt-pdp-meta { grid-template-columns: 1fr; }
   .nt-pdp-features__grid { grid-template-columns: 1fr 1fr; }
