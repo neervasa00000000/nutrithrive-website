@@ -47,7 +47,8 @@ window.NT_BLOG_ARTICLES = [
     "title": "When to Stop Caffeine for Better Sleep",
     "description": "The real science on caffeine cutoff timing for sleep — how many hours it actually takes to clear your system, and what to drink instead in the afternoon.",
     "category": "Health",
-    "href": "/blog/caffeine-cutoff-time-sleep-black-tea-2026"
+    "href": "/blog/caffeine-cutoff-time-sleep-black-tea-2026",
+    "image": "/assets/images/blog/caffeine-cutoff-time-sleep-black-tea-2026-hero.webp"
   },
   {
     "slug": "can-you-drink-darjeeling-tea-every-day-2026",
@@ -110,7 +111,8 @@ window.NT_BLOG_ARTICLES = [
     "title": "5 Ways to Use Curry Leaves Beyond Dal",
     "description": "Five real ways to use dried curry leaves beyond dal tadka — from rice to eggs to a quick chutney — with simple steps for each.",
     "category": "Recipes",
-    "href": "/blog/curry-leaves-recipes-beyond-dal"
+    "href": "/blog/curry-leaves-recipes-beyond-dal",
+    "image": "/assets/images/blog/curry-leaves-recipes-beyond-dal-hero.webp"
   },
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
@@ -180,7 +182,8 @@ window.NT_BLOG_ARTICLES = [
     "title": "Diwali Gift Ideas: Curry Leaves &amp; Tea",
     "description": "Simple, useful Diwali gift ideas for the home cook or tea drinker in your life — real pantry staples, not another box of sweets.",
     "category": "Guides",
-    "href": "/blog/diwali-gift-guide-curry-leaves-tea-australia"
+    "href": "/blog/diwali-gift-guide-curry-leaves-tea-australia",
+    "image": "/assets/images/blog/diwali-gift-guide-curry-leaves-tea-australia-hero.webp"
   },
   {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
@@ -320,7 +323,8 @@ window.NT_BLOG_ARTICLES = [
     "title": "How to Read a Soap Label (Plain English Guide)",
     "description": "What's actually in a bar of soap, decoded in plain English — the ingredients worth knowing, what &quot;natural&quot; legally means, and what to skip.",
     "category": "Guides",
-    "href": "/blog/how-to-read-a-soap-ingredient-label"
+    "href": "/blog/how-to-read-a-soap-ingredient-label",
+    "image": "/assets/images/blog/how-to-read-a-soap-ingredient-label-hero.webp"
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
