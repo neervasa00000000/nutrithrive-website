@@ -1,4 +1,4 @@
-/** Auto-generated — 115 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 119 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -41,6 +41,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Simple food-order and pairing tricks to avoid blood sugar spikes — based on the glucose-tracking trend, explained simply.",
     "category": "Health",
     "href": "/blog/blood-sugar-spikes-how-to-avoid-through-food-2026"
+  },
+  {
+    "slug": "caffeine-cutoff-time-sleep-black-tea-2026",
+    "title": "When to Stop Caffeine for Better Sleep",
+    "description": "The real science on caffeine cutoff timing for sleep — how many hours it actually takes to clear your system, and what to drink instead in the afternoon.",
+    "category": "Health",
+    "href": "/blog/caffeine-cutoff-time-sleep-black-tea-2026"
   },
   {
     "slug": "can-you-drink-darjeeling-tea-every-day-2026",
@@ -97,6 +104,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Ten practical ways Aussie cooks can use curry leaves beyond curry: pasta, eggs, roasted veg, and more everyday meals.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-in-australian-cooking-how-to-use-2026"
+  },
+  {
+    "slug": "curry-leaves-recipes-beyond-dal",
+    "title": "5 Ways to Use Curry Leaves Beyond Dal",
+    "description": "Five real ways to use dried curry leaves beyond dal tadka — from rice to eggs to a quick chutney — with simple steps for each.",
+    "category": "Recipes",
+    "href": "/blog/curry-leaves-recipes-beyond-dal"
   },
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
@@ -160,6 +174,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "Darjeeling vs English Breakfast: both black teas, very different cups. Flavour, caffeine, strength, and when to drink each.",
     "category": "Tea Guide",
     "href": "/blog/darjeeling-tea-vs-english-breakfast-comparison-2026"
+  },
+  {
+    "slug": "diwali-gift-guide-curry-leaves-tea-australia",
+    "title": "Diwali Gift Ideas: Curry Leaves &amp; Tea",
+    "description": "Simple, useful Diwali gift ideas for the home cook or tea drinker in your life — real pantry staples, not another box of sweets.",
+    "category": "Guides",
+    "href": "/blog/diwali-gift-guide-curry-leaves-tea-australia"
   },
   {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
@@ -293,6 +314,13 @@ window.NT_BLOG_ARTICLES = [
     "description": "3 simple moringa tea recipes for Australians — hot, iced, and a bedtime version. Ready in under 5 minutes each.",
     "category": "Recipes",
     "href": "/blog/how-to-make-moringa-tea-recipes-2026"
+  },
+  {
+    "slug": "how-to-read-a-soap-ingredient-label",
+    "title": "How to Read a Soap Label (Plain English Guide)",
+    "description": "What's actually in a bar of soap, decoded in plain English — the ingredients worth knowing, what &quot;natural&quot; legally means, and what to skip.",
+    "category": "Guides",
+    "href": "/blog/how-to-read-a-soap-ingredient-label"
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
