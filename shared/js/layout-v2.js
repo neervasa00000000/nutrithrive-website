@@ -36,10 +36,19 @@
     });
     header.classList.remove('nt-v2-header');
 
+    const freeShipBanner =
+      (d.shipping && typeof d.shipping.getFreeShippingBannerText === 'function'
+        ? d.shipping.getFreeShippingBannerText()
+        : null) ||
+      (window.ShippingRates && typeof window.ShippingRates.getAuFreeShippingBannerText === 'function'
+        ? window.ShippingRates.getAuFreeShippingBannerText()
+        : null) ||
+      'Free shipping over $80';
+
     header.innerHTML =
       '<div class="urgency-banner">' +
       '<div class="urgency-content">' +
-      'Order before 2pm for same-day Melbourne dispatch · Free shipping over $80 · NMI Government lab-tested' +
+      'Order before 2pm for same-day Melbourne dispatch · ' + freeShipBanner + ' · NMI Government lab-tested' +
       '</div></div>' +
       '<div class="navbar">' +
       '<a class="logo" href="/">' +
