@@ -45,9 +45,9 @@
     <meta property="twitter:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="/styles/global/style.min.css">
     <style>
       :root {
@@ -563,7 +563,7 @@
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": 11
+    "reviewCount": 12
   },
   "areaServed": [
     {
@@ -623,31 +623,443 @@
   ]
 }
 </script>
+<!-- Products listing schema — source: shared/schema/products-listing.json (sync: node scripts/sync-products-listing-schema.mjs) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/moringa-powder/#product",
+  "name": "NutriThrive Moringa Powder",
+  "sku": "NT-MOR-100G",
+  "url": "https://nutrithrive.com.au/products/moringa-powder/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g.png"
+  ],
+  "description": "100% pure shade-dried moringa oleifera leaf powder. NMI lab-tested in Australia. $11 per 100g pouch.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/moringa-powder/",
+    "sku": "NT-MOR-100G",
+    "priceCurrency": "AUD",
+    "price": "11.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 9.69,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/curry-leaves/#product",
+  "name": "NutriThrive Dried Curry Leaves",
+  "sku": "NT-CL-30G",
+  "url": "https://nutrithrive.com.au/products/curry-leaves/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp"
+  ],
+  "description": "Premium dried curry leaves for aromatic tadka in curries, dals, and rice dishes.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/curry-leaves/",
+    "sku": "NT-CL-30G",
+    "priceCurrency": "AUD",
+    "price": "7.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 9.69,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/black-tea/#product",
+  "name": "NutriThrive Darjeeling Black Tea",
+  "sku": "NT-BT-100G",
+  "url": "https://nutrithrive.com.au/products/black-tea/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/BlackTea.webp"
+  ],
+  "description": "Premium Darjeeling loose-leaf black tea for a smooth, focused cup without the coffee jitters.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/black-tea/",
+    "sku": "NT-BT-100G",
+    "priceCurrency": "AUD",
+    "price": "7.50",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 9.69,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/combo-pack/#product",
+  "name": "NutriThrive Premium Combo Pack",
+  "sku": "NT-COMBO-MC-130G",
+  "url": "https://nutrithrive.com.au/products/combo-pack/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/combo.webp"
+  ],
+  "description": "100g moringa powder plus 30g dried curry leaves — morning smoothie and evening tadka from one box.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/combo-pack/",
+    "sku": "NT-COMBO-MC-130G",
+    "priceCurrency": "AUD",
+    "price": "17.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 9.69,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/moringa-soap/#product",
+  "name": "NutriThrive Moringa Soap",
+  "sku": "NT-SOAP-95G",
+  "url": "https://nutrithrive.com.au/products/moringa-soap/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/moringa_soap.webp"
+  ],
+  "description": "95g natural moringa soap bar, handmade in small batches with moringa leaf and gentle oils.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/moringa-soap/",
+    "sku": "NT-SOAP-95G",
+    "priceCurrency": "AUD",
+    "price": "7.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 9.69,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Moringa, Curry Leaves & Superfoods | NutriThrive",
+  "description": "Moringa powder ($11/100g), dried curry leaves, Darjeeling tea, and soap, packed in Truganina, Melbourne. Lab-tested moringa. Ships Australia-wide.",
+  "url": "https://nutrithrive.com.au/products/",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/moringa-powder/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/curry-leaves/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/black-tea/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/combo-pack/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@id": "https://nutrithrive.com.au/products/moringa-soap/#product"
+        }
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body class="products-page">
-    <header>
-        <div class="urgency-banner">
-            <div class="urgency-content">Order before 2pm for same-day Melbourne dispatch · Free shipping over $80 · NMI Government lab-tested</div>
-        </div>
-        <div class="navbar">
-            <a href="/" class="logo">
-                <img src="/assets/images/logo/LOGO-120.webp?v=2" alt="NutriThrive Logo" width="50" height="50" loading="eager" decoding="async" fetchpriority="high" style="height: 1.8rem; width: auto; margin-right: 0.5rem;">
+<header>
+<div class="urgency-banner">
+<div class="urgency-content">Order before 2pm for same-day Melbourne dispatch · Free shipping over $80 · NMI Government lab-tested</div>
+</div>
+<div class="navbar">
+<a class="logo" href="/">
+<img alt="NutriThrive Logo" decoding="async" fetchpriority="high" height="50" loading="eager" src="/assets/images/logo/LOGO-120.webp?v=2" style="height: 1.8rem; width: auto; margin-right: 0.5rem;" width="50"/>
                 NutriThrive
             </a>
-            <nav class="nav-links">
-                <a href="/">Home</a>
-                <a href="/products/" class="active">Products</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/blog/">Blog</a>
-            </nav>
-            <div class="navbar-end"><button class="hamburger" aria-label="Toggle navigation menu" onclick="window.ntToggleMenu && window.ntToggleMenu()">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </button></div>
-        </div>
-    </header>
+<nav class="nav-links">
+<a href="/">Home</a>
+<a class="active" href="/products/">Products</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+<a href="/blog/">Blog</a>
+</nav>
+<div class="navbar-end">
+<button aria-label="Toggle navigation menu" class="hamburger" onclick="window.ntToggleMenu &amp;&amp; window.ntToggleMenu()">
+<div class="line1"></div>
+<div class="line2"></div>
+<div class="line3"></div>
+</button>
+</div>
+</div>
+</header>
 
     <main class="products-shell">
         <section class="products-hero">
@@ -861,7 +1273,7 @@
             </div>
             <div style="padding: 1.25rem; background: var(--sage); border-radius: 8px;">
               <h3 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 700;">$11/100g moringa</h3>
-              <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Our moringa is about $11/100g vs ~$25/100g for Rosabella at Chemist Warehouse. Same category, different price and transparency. <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025" style="color: var(--forest); font-weight: 600;">Chemist Warehouse comparison →</a></p>
+              <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Our moringa is about $11/100g. Capsule brands sold online often land around AU$21–29/bottle — different form, dose maths, and lab transparency. <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025" style="color: var(--forest); font-weight: 600;">Capsule vs powder checklist →</a></p>
             </div>
             <div style="padding: 1.25rem; background: var(--sage); border-radius: 8px;">
               <h3 style="color: var(--forest); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 700;">Small-batch packing</h3>
@@ -884,8 +1296,8 @@
           <h2 class="products-section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.6rem); margin-bottom: 1.25rem;">Learn More About Our Products</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
             <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025" style="display: block; padding: 1.1rem; border: 1px solid #e3dfd6; border-radius: 8px; text-decoration: none; transition: border-color 0.2s;">
-              <strong style="color: var(--forest); font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">Chemist Warehouse Lab Test</strong>
-              <p style="color: var(--muted); font-size: 0.88rem; margin: 0; line-height: 1.5;">See how our moringa compares to Rosabella (Chemist Warehouse) in our in-store test</p>
+              <strong style="color: var(--forest); font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">Capsule vs powder checklist</strong>
+              <p style="color: var(--muted); font-size: 0.88rem; margin: 0; line-height: 1.5;">Dose maths, recall framing, and lab-transparency checks before you buy capsules</p>
             </a>
             <a href="/blog/moringa-vs-spirulina-vs-matcha-comparison-australia" style="display: block; padding: 1.1rem; border: 1px solid #e3dfd6; border-radius: 8px; text-decoration: none; transition: border-color 0.2s;">
               <strong style="color: var(--forest); font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">Superfoods Compared</strong>

@@ -30,7 +30,7 @@ const CITIES = [
       'Order before 2pm for same-day dispatch from Truganina, Melbourne. Most Sydney metro postcodes arrive in 2–4 business days via Australia Post.',
     imgAlt: 'NutriThrive moringa powder delivered to Sydney',
     callout: '',
-    localTitle: 'Why order direct instead of Chemist Warehouse?',
+    localTitle: 'Why Sydney buyers order direct from Melbourne',
     localBody:
       'Most Sydney shops sell capsules—you can\'t see or smell the powder inside. NutriThrive is loose shade-dried leaf with NMI batch testing on every lot, from $11/100g.',
     faqs: [
@@ -44,11 +44,11 @@ const CITIES = [
       },
       {
         q: 'What\'s the best value for Sydney buyers?',
-        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80, shipping is $8.73.',
+        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80, shipping is $9.69.',
       },
       {
-        q: 'Is NutriThrive affected by the 2026 moringa recall?',
-        a: 'No. The recall was Rosabella capsules only. We sell leaf powder with NMI screening. <a href="/blog/rosabella-moringa-reviews-legit-or-overhyped-2026">Details</a>.',
+        q: 'Any safety tip for capsules?',
+        a: 'If you buy any capsule brand, always check the lot number against current recall notices before use, and ask the seller for a batch lab summary when available. We sell leaf powder with NMI screening.',
       },
     ],
     review: {
@@ -85,7 +85,7 @@ const CITIES = [
       },
       {
         q: 'What\'s the cheapest way to order?',
-        a: 'The 400g bundle is $35. Single 100g is $11 + $8.73 shipping if your order is under $80. Free shipping from $80.',
+        a: 'The 400g bundle is $35. Single 100g is $11 + $9.69 shipping if your order is under $80. Free shipping from $80.',
       },
       {
         q: 'Why is my powder clumping?',
@@ -169,11 +169,11 @@ const CITIES = [
       },
       {
         q: 'Cheapest way to order to Adelaide?',
-        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80 shipping is $8.73. Otherwise $11/100g + $8.73 under $80.',
+        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80 shipping is $9.69. Otherwise $11/100g + $9.69 under $80.',
       },
       {
-        q: 'Chemist Warehouse vs ordering direct?',
-        a: 'CW stocks Rosabella capsules. We sell loose powder with visible quality and NMI testing. <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">Compare</a>.',
+        q: 'How do Adelaide orders ship?',
+        a: 'We pack in Truganina, Melbourne and ship Australia Post to Adelaide. Metro is usually 2–4 business days when you order before 2pm for same-day dispatch. Free shipping on Australian orders $80+.',
       },
     ],
     review: {
@@ -205,19 +205,19 @@ function faqSchema(faqs) {
 
 function pricingRows(cityName, highlight) {
   const bundleRow = highlight
-    ? `<tr class="is-highlight"><td>400g Moringa Bundle</td><td class="price-cell price-cell--accent">$35.00</td><td>From $8.73*</td></tr>`
-    : `<tr><td>400g Moringa Bundle</td><td class="price-cell price-cell--accent">$35.00</td><td>From $8.73*</td></tr>`;
+    ? `<tr class="is-highlight"><td>400g Moringa Bundle</td><td class="price-cell price-cell--accent">$35.00</td><td>From $9.69*</td></tr>`
+    : `<tr><td>400g Moringa Bundle</td><td class="price-cell price-cell--accent">$35.00</td><td>From $9.69*</td></tr>`;
   return `<section class="city-section">
   <h2>Prices delivered to ${cityName}</h2>
   <div class="city-table-wrap"><table class="city-pricing-table">
     <thead><tr><th>Size</th><th>Price</th><th>Shipping</th></tr></thead>
     <tbody>
-      <tr><td>100g</td><td class="price-cell">$11.00</td><td>$8.73*</td></tr>
-      <tr><td>200g</td><td class="price-cell">$21.50</td><td>$8.73*</td></tr>
+      <tr><td>100g</td><td class="price-cell">$11.00</td><td>$9.69*</td></tr>
+      <tr><td>200g</td><td class="price-cell">$21.50</td><td>$9.69*</td></tr>
       ${bundleRow}
     </tbody>
   </table></div>
-  <p class="city-table-note">*Free shipping on orders $80+. Under $80, Australia shipping from $8.73.</p>
+  <p class="city-table-note">*Free shipping on orders $80+. Under $80, Australia shipping from $9.69.</p>
 </section>`;
 }
 

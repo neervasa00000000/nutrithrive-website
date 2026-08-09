@@ -1,6 +1,8 @@
 // Shipping Rates Configuration
-// Based on color-coded tables from shipping_rates.xlsx
-// GREEN = Australia, BLUE = International Key Destinations, YELLOW = International Other Destinations
+// Source: products/data/shipping_rates_updated.xlsx — MyPost Business Band 1 (July 2026)
+// GREEN = Australia Parcel Post, BLUE = International Express key destinations,
+// YELLOW = International Express other destinations
+// Australia checkout uses Zone 2 rates by weight (national mid-rate).
 
 if (typeof window !== 'undefined' && window.__NT_SHIPPING_RATES_INITIALIZED__) {
     console.log('[NutriThrive] shipping-rates.js already initialized, skipping duplicate load');
@@ -9,39 +11,40 @@ if (typeof window !== 'undefined') {
     window.__NT_SHIPPING_RATES_INITIALIZED__ = true;
 }
 
-// GREEN section - Australia (Domestic)
+// GREEN section - Australia (Domestic Parcel Post, Band 1)
 const GREEN_RATES = {
-    'Up to 250g': { zone1: 8.73, zone2: 9.22, zone3: 9.70 },
-    '251g-500g': { zone1: 10.04, zone2: 10.59, zone3: 11.15 },
-    '501g-1kg': { zone1: 13.73, zone2: 14.49, zone3: 15.25 },
-    '1.001kg-1.5kg': { zone1: 17.37, zone2: 18.34, zone3: 19.30 },
-    '1.501kg-2kg': { zone1: 20.97, zone2: 22.14, zone3: 23.30 }
+    'Up to 250g': { zone1: 9.18, zone2: 9.69, zone3: 10.2 },
+    '251g-500g': { zone1: 10.53, zone2: 11.12, zone3: 11.7 },
+    '501g-1kg': { zone1: 14.4, zone2: 15.2, zone3: 16 },
+    '1.001kg-3kg': { zone1: 18.23, zone2: 19.24, zone3: 20.25 },
+    '3.001kg-5kg': { zone1: 22.01, zone2: 23.23, zone3: 24.45 }
 };
 
 // BLUE section - International Key Destinations (NZ, China, USA & Canada, UK & Ireland)
 const BLUE_RATES = {
-    'Up to 250g': { zone1: 15.49, zone2: 18.95, zone3: 21.19, zone4: 26.13 },
-    '251g-500g': { zone1: 18.67, zone2: 24.70, zone3: 27.55, zone4: 32.68 },
-    '501g-1kg': { zone1: 25.08, zone2: 36.24, zone3: 40.09, zone4: 45.89 },
-    '1.001kg-1.5kg': { zone1: 31.49, zone2: 47.79, zone3: 52.77, zone4: 59.04 },
-    '1.501kg-2kg': { zone1: 37.91, zone2: 59.33, zone3: 65.41, zone4: 72.20 }
+    'Up to 250g': { zone1: 17.01, zone2: 19.57, zone3: 21.9, zone4: 26.98 },
+    '251g-500g': { zone1: 20.52, zone2: 25.51, zone3: 28.45, zone4: 33.77 },
+    '501g-1kg': { zone1: 27.55, zone2: 37.43, zone3: 41.42, zone4: 47.41 },
+    '1.001kg-1.5kg': { zone1: 34.58, zone2: 49.35, zone3: 54.53, zone4: 60.99 },
+    '1.501kg-2kg': { zone1: 41.61, zone2: 61.28, zone3: 67.55, zone4: 74.58 }
 };
 
 // YELLOW section - International Other Destinations
+// zone2 = Rest of Asia / Pacific, zone4 = Major Europe, zone5 = Rest of World 2
 const YELLOW_RATES = {
-    'Up to 250g': { zone2: 18.95, zone4: 26.13, zone5: 31.68 },
-    '251g-500g': { zone2: 24.70, zone4: 32.68, zone5: 40.28 },
-    '501g-1kg': { zone2: 36.24, zone4: 45.89, zone5: 57.48 },
-    '1.001kg-1.5kg': { zone2: 47.79, zone4: 59.04, zone5: 74.62 },
-    '1.501kg-2kg': { zone2: 59.33, zone4: 72.20, zone5: 91.82 }
+    'Up to 250g': { zone2: 19.57, zone4: 26.98, zone5: 32.73 },
+    '251g-500g': { zone2: 25.51, zone4: 33.77, zone5: 41.61 },
+    '501g-1kg': { zone2: 37.43, zone4: 47.41, zone5: 59.38 },
+    '1.001kg-1.5kg': { zone2: 49.35, zone4: 60.99, zone5: 77.09 },
+    '1.501kg-2kg': { zone2: 61.28, zone4: 74.58, zone5: 94.81 }
 };
 
 // Country to zone and color mapping - 230 countries from Country Master List
 // Zone 1 = NZ (BLUE), Zone 2 = China/Asia Pacific (BLUE/YELLOW), Zone 3 = USA & Canada (BLUE)
 // Zone 4 = UK & Ireland/UK & Europe (BLUE/YELLOW), Zone 5 = Rest of World (YELLOW)
 const COUNTRY_MAPPING = {
-    // Australia - GREEN (uses Zone 1, 2, or 3 from GREEN table)
-    'AU': { zone: 1, color: 'GREEN', freeShippingThreshold: 80 },
+    // Australia - GREEN Zone 2 (national mid-rate from rate card)
+    'AU': { zone: 2, color: 'GREEN', freeShippingThreshold: 80 },
     
     // Zone 1 - NZ (BLUE)
     'NZ': { zone: 1, color: 'BLUE' },
@@ -545,8 +548,17 @@ const COUNTRY_LIST = [
     { code: 'MN', name: 'Mongolia', group: 'Other' }
 ];
 
-// Map weight in grams to weight range category
-function getWeightRange(totalWeightGrams) {
+// Map weight in grams to weight range category.
+// Domestic (GREEN) uses Parcel Post size bands up to 5kg; international stays on Express tiers to 2kg.
+function getWeightRange(totalWeightGrams, color) {
+    if (color === 'GREEN') {
+        if (totalWeightGrams <= 250) return 'Up to 250g';
+        if (totalWeightGrams <= 500) return '251g-500g';
+        if (totalWeightGrams <= 1000) return '501g-1kg';
+        if (totalWeightGrams <= 3000) return '1.001kg-3kg';
+        return '3.001kg-5kg';
+    }
+
     if (totalWeightGrams <= 250) {
         return 'Up to 250g';
     } else if (totalWeightGrams <= 500) {
@@ -558,7 +570,7 @@ function getWeightRange(totalWeightGrams) {
     } else if (totalWeightGrams <= 2000) {
         return '1.501kg-2kg';
     } else {
-        // For weights over 2kg, use the highest tier
+        // For weights over 2kg, use the highest international Express tier
         return '1.501kg-2kg';
     }
 }
@@ -649,9 +661,9 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     console.log(`Total cart weight: ${totalWeightGrams}g`);
     
     // Get weight range
-    const weightRange = getWeightRange(totalWeightGrams);
     const zone = countryInfo.zone;
     const color = countryInfo.color;
+    const weightRange = getWeightRange(totalWeightGrams, color);
     
     console.log(`Shipping calculation: weight=${totalWeightGrams}g, range=${weightRange}, country=${countryCode}, zone=${zone}, color=${color}`);
     
@@ -659,10 +671,10 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     let shippingCost = null;
     
     if (color === 'GREEN') {
-        // Australia - use GREEN rates
+        // Australia - use GREEN rates (checkout uses Zone 2)
         const rates = GREEN_RATES[weightRange];
         if (rates) {
-            shippingCost = rates[`zone${zone}`] || rates.zone1;
+            shippingCost = rates[`zone${zone}`] || rates.zone2;
             console.log(`GREEN rates for ${weightRange}, zone${zone}: ${shippingCost}`);
         }
     } else if (color === 'BLUE') {
@@ -692,7 +704,7 @@ function calculateShipping(countryCode, cartItems, subtotal) {
         console.warn(`No shipping rate found for country ${countryCode}, zone ${zone}, color ${color}, weight ${totalWeightGrams}g`);
         // Use highest tier as fallback
         if (color === 'GREEN') {
-            shippingCost = GREEN_RATES['1.501kg-2kg'].zone3;
+            shippingCost = GREEN_RATES['3.001kg-5kg'].zone2;
         } else if (color === 'BLUE') {
             shippingCost = BLUE_RATES['1.501kg-2kg'].zone4;
         } else {
