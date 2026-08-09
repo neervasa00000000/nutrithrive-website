@@ -12,6 +12,7 @@ const PRODUCT_ID_TO_SLUG = {
   'curry-leaves-30g': 'curry-leaves',
   'black-tea': 'black-tea',
   'combo-pack': 'combo-pack',
+  'gift-pack': 'gift-pack',
   'moringa-soap': 'moringa-soap',
   'moringa-soap-combo': 'moringa-soap',
 };

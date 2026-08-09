@@ -159,14 +159,9 @@
       }
       .product-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1.5rem;
         align-items: stretch;
-      }
-      @media (max-width: 1200px) {
-        .product-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
       }
       @media (max-width: 900px) {
         .product-grid {
@@ -916,6 +911,78 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
+  "@id": "https://nutrithrive.com.au/products/gift-pack/#product",
+  "name": "NutriThrive Gift Pack",
+  "sku": "NT-GIFT-325G",
+  "url": "https://nutrithrive.com.au/products/gift-pack/",
+  "image": [
+    "https://nutrithrive.com.au/assets/images/homepage/product-showcase/gift.png"
+  ],
+  "description": "Gift pack with 100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap.",
+  "brand": {
+    "@type": "Brand",
+    "name": "NutriThrive",
+    "url": "https://nutrithrive.com.au/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://nutrithrive.com.au/products/gift-pack/",
+    "sku": "NT-GIFT-325G",
+    "priceCurrency": "AUD",
+    "price": "35.00",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "NutriThrive",
+      "url": "https://nutrithrive.com.au"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "AU",
+      "returnPolicyCountry": "AU",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "returnPolicyUrl": "https://nutrithrive.com.au/pages/shipping/shipping-returns"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "name": "Australia — standard shipping from published rate table; free on orders AUD 80+",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 9.69,
+        "currency": "AUD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "AU"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 10,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
   "@id": "https://nutrithrive.com.au/products/moringa-soap/#product",
   "name": "NutriThrive Moringa Soap",
   "sku": "NT-SOAP-95G",
@@ -1026,6 +1093,13 @@
         "@type": "ListItem",
         "position": 5,
         "item": {
+          "@id": "https://nutrithrive.com.au/products/gift-pack/#product"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
           "@id": "https://nutrithrive.com.au/products/moringa-soap/#product"
         }
       }
@@ -1106,6 +1180,42 @@
                         <div class="cta-row">
                             <a class="btn-primary" href="/products/moringa-powder/">View product</a>
                             <button class="btn-add-cart" onclick="addProductToCart('moringa-powder', 'Moringa Powder', 11.00, '/assets/images/products/moringa-powder/moringa-powder-product-100g.png?v=6')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <a class="product-media" href="/products/moringa-powder/">
+                    <img src="/assets/images/homepage/product-showcase/thumbs/new3+1.webp"
+                         alt="NutriThrive buy 3 get 1 moringa bundle, 400g, Melbourne Australia"
+                         width="160" height="240"
+                         loading="lazy">
+                </a>
+                <div class="product-body">
+                    <div class="product-header">
+                        <h2 class="product-title">Buy 3 Get 1 Moringa</h2>
+                        <div class="product-price">
+                            <div class="price" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                <span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$44.00</span>
+                                <span style="font-weight: 700; color: #0f6b4d; font-size: 1.2em;">$35.00</span>
+                            </div>
+                            <div class="rating">
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="meta">400g Bundle • 4 × 100g Packs</p>
+                    <div class="product-footer">
+                        <div class="cta-row">
+                            <a class="btn-primary" href="/products/moringa-powder/">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('moringa-400g', '400g Moringa Bundle', 35.00, '/assets/images/homepage/product-showcase/thumbs/new3+1.webp')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
                                 Add to Cart
                             </button>
                         </div>
@@ -1222,6 +1332,42 @@
             </article>
 
             <article class="product-card">
+                <a class="product-media" href="/products/gift-pack/">
+                    <img src="/assets/images/homepage/product-showcase/gift.png"
+                         alt="NutriThrive Gift Pack: moringa, black tea, curry leaves, and moringa lavender soap"
+                         width="160" height="240"
+                         loading="lazy">
+                </a>
+                <div class="product-body">
+                    <div class="product-header">
+                        <h2 class="product-title">Gift Pack</h2>
+                        <div class="product-price">
+                            <div class="price" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                <span style="text-decoration: line-through; color: #555; font-size: 0.9em;">$41.98</span>
+                                <span style="font-weight: 700; color: #0f6b4d; font-size: 1.2em;">$35.00</span>
+                            </div>
+                            <div class="rating">
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                                <i data-lucide="star" class="icon-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="meta">Moringa + Tea + Curry + Soap</p>
+                    <div class="product-footer">
+                        <div class="cta-row">
+                            <a class="btn-primary" href="/products/gift-pack/">View product</a>
+                            <button class="btn-add-cart" onclick="addProductToCart('gift-pack', 'Gift Pack', 35.00, '/assets/images/homepage/product-showcase/gift.png')" style="width: 100%; padding: 0.75rem 1rem; background: #0f6b4d; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
                 <a class="product-media" href="/products/moringa-soap/">
                     <img src="/assets/images/homepage/product-showcase/moringa_soap.webp"
                          alt="Moringa Soap by NutriThrive Melbourne Australia"
@@ -1286,8 +1432,10 @@
           <h2 class="products-section-title" style="font-size: clamp(1.4rem, 3vw, 1.8rem); margin-bottom: 1.25rem;">Not sure which product?</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
             <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">Moringa powder:</strong> Shade-dried leaf, $11/100g. Stir ½–1 tsp into smoothies or water.</p>
+            <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">Buy 3 Get 1:</strong> Four 100g packs (400g) for $35 — best value if you use moringa daily.</p>
             <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">Curry leaves:</strong> Dried kari leaf for tadka: fry in oil at the start of curries and dals.</p>
             <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">Darjeeling tea:</strong> Loose black tea. Steep 3–5 min at 85–90°C.</p>
+            <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">Gift Pack:</strong> Moringa, tea, curry leaves, and soap in one set — $35.</p>
             <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin: 0;"><strong style="color: var(--forest);">Moringa soap:</strong> Handmade bar with moringa and oils. Questions? <a href="/contact" style="color: var(--forest); font-weight: 600;">Contact us</a>.</p>
           </div>
         </section>
@@ -1314,6 +1462,7 @@
 
         <div id="nt-footer"></div>
 
+    <script src="/scripts/global/shipping-rates.min.js" defer></script>
     <script src="/scripts/global/cart.min.js" defer></script>
     <script src="/scripts/global/cart-header.min.js" defer></script>
     <script src="/scripts/global/script.min.js" defer></script>
@@ -1637,8 +1786,11 @@
         // Product weights mapping (from Excel Product Grams sheet)
         const productWeights = {
             'moringa-powder': 100, // Default Moringa is 100g
+            'moringa-400g': 400,
             'curry-leaves': 30,
             'black-tea': 100,
+            'combo-pack': 130,
+            'gift-pack': 325,
             'moringa-soap': 95 // Soap is 95g
         };
         
