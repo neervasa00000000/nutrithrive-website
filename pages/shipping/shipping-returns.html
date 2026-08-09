@@ -112,7 +112,7 @@
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": 11
+    "reviewCount": 12
   },
   "areaServed": [
     {
@@ -212,7 +212,7 @@
                         <h2>What is the free shipping threshold?</h2>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer"><div class="faq-answer-inner"><p>Free shipping Australia-wide on orders of AU$80 and above, and free worldwide shipping on orders of AU$90 and above.</p></div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner"><p id="nt-free-shipping-faq">Free shipping Australia-wide on orders of AU$80 and above, and free worldwide shipping on orders of AU$90 and above.</p></div></div>
                 </div>
 
                 <div class="faq-item">
@@ -402,6 +402,24 @@
         }
       ]
     }
+    </script>
+    <script src="/scripts/global/shipping-rates.min.js"></script>
+    <script>
+      (function () {
+        function applyPromoCopy() {
+          var el = document.getElementById('nt-free-shipping-faq');
+          if (!el || !window.ShippingRates || !window.ShippingRates.getAuFreeShippingThreshold) return;
+          var rule = window.ShippingRates.getAuFreeShippingThreshold();
+          if (rule && rule.mode === 'gt') {
+            el.textContent = 'Limited offer through 16 Aug 2026: free Australia-wide shipping on orders over AU$45 (not AU$45 exactly — e.g. AU$45.01+). From 17 Aug this reverts to AU$80 and above. Free worldwide shipping remains AU$90 and above.';
+          }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', applyPromoCopy);
+        } else {
+          applyPromoCopy();
+        }
+      })();
     </script>
     <script src="/shared/site-data.min.js"></script>
 <script src="/shared/js/footer-v2.min.js"></script>
