@@ -44,6 +44,9 @@
 
 .nt-pdp-gallery {
   position: relative;
+  background: #1b3022;
+  border-radius: 12px;
+  overflow: hidden;
 }
 .nt-pdp-gallery__img,
 .nt-pdp-gallery__frame img {
@@ -51,6 +54,7 @@
   height: auto;
   display: block;
   border-radius: 12px;
+  background: #1b3022;
 }
 .nt-pdp-gallery__frame {
   background: #1b3022;

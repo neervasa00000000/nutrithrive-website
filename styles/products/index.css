@@ -150,7 +150,7 @@
       }
       .product-media {
         position: relative;
-        background: linear-gradient(180deg, rgba(255,253,250,0.95) 0%, rgba(248,245,236,0.35) 100%);
+        background: #1b3022;
         height: 200px;
         min-height: 200px;
         max-height: 200px;
