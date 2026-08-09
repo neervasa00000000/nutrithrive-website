@@ -532,7 +532,7 @@
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "reviewCount": 11
+    "reviewCount": 12
   },
   "areaServed": [
     {
@@ -984,7 +984,7 @@
             if (shippingAmount) {
                 if (shippingValue === null || shippingValue === undefined) {
                     if (countryCode === 'AU') {
-                        shippingAmount.textContent = 'from $8.73';
+                        shippingAmount.textContent = 'from $9.69';
                     } else {
                         shippingAmount.textContent = 'Calculated at payment';
                     }
@@ -1002,7 +1002,7 @@
 
             let shippingCost = 0;
             if (shippingValue === null || shippingValue === undefined) {
-                shippingCost = countryCode === 'AU' ? 8.73 : 0;
+                shippingCost = countryCode === 'AU' ? 9.69 : 0;
             } else {
                 shippingCost = Number(shippingValue) || 0;
             }
