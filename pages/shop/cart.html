@@ -691,7 +691,39 @@
         }
 
         function getFreeShippingThreshold(countryCode) {
-            return (countryCode || 'AU').toUpperCase() === 'AU' ? 80 : 90;
+            const cc = (countryCode || 'AU').toUpperCase();
+            if (cc === 'AU') {
+                if (window.ShippingRates && typeof window.ShippingRates.getAuFreeShippingProgressTarget === 'function') {
+                    return window.ShippingRates.getAuFreeShippingProgressTarget();
+                }
+                if (window.NT_SITE_DATA?.shipping?.getFreeAuThreshold) {
+                    return window.NT_SITE_DATA.shipping.getFreeAuThreshold();
+                }
+                return 80;
+            }
+            return 90;
+        }
+
+        function getFreeShippingMetaText(countryCode) {
+            const cc = (countryCode || 'AU').toUpperCase();
+            if (cc === 'AU') {
+                const rule = window.ShippingRates && typeof window.ShippingRates.getAuFreeShippingThreshold === 'function'
+                    ? window.ShippingRates.getAuFreeShippingThreshold()
+                    : null;
+                if (rule && rule.mode === 'gt') {
+                    return 'Complimentary standard shipping on orders over $45 (ends 16 Aug)';
+                }
+                return 'Complimentary standard shipping on orders $80+';
+            }
+            return 'Complimentary shipping on international orders $90+';
+        }
+
+        function qualifiesForFreeShippingDisplay(subtotal, countryCode) {
+            const cc = (countryCode || 'AU').toUpperCase();
+            if (cc === 'AU' && window.ShippingRates && typeof window.ShippingRates.qualifiesForAuFreeShipping === 'function') {
+                return window.ShippingRates.qualifiesForAuFreeShipping(subtotal);
+            }
+            return Number(subtotal) >= getFreeShippingThreshold(cc);
         }
 
         function computeCartShipping(cartItems, subtotal, countryCode) {
@@ -1012,7 +1044,7 @@
                 : `$${orderTotal.toFixed(2)}`;
 
             if (freeShippingNudge) {
-                if (subtotal >= threshold) {
+                if (qualifiesForFreeShippingDisplay(subtotal, countryCode)) {
                     freeShippingNudge.style.display = 'none';
                     freeShippingNudge.setAttribute('hidden', '');
                     freeShippingNudge.replaceChildren();
@@ -1020,14 +1052,17 @@
                     const away = Number((threshold - subtotal).toFixed(2));
                     const pct = Math.min(100, Math.max(4, Math.round((subtotal / threshold) * 100)));
                     const subtotalLabel = `$${subtotal.toFixed(2)}`;
-                    const thresholdLabel = `$${threshold.toFixed(0)}`;
+                    const auRule = window.ShippingRates && typeof window.ShippingRates.getAuFreeShippingThreshold === 'function'
+                        ? window.ShippingRates.getAuFreeShippingThreshold()
+                        : null;
+                    const thresholdLabel = countryCode === 'AU' && auRule && auRule.mode === 'gt'
+                        ? `$${auRule.amount.toFixed(0)}`
+                        : `$${Number(threshold).toFixed(0)}`;
                     const awayLabel = `$${away.toFixed(2)}`;
                     const titleText = countryCode === 'AU'
                         ? `You're ${awayLabel} away from free Australian shipping`
                         : `You're ${awayLabel} away from free worldwide shipping`;
-                    const metaText = countryCode === 'AU'
-                        ? `Complimentary standard shipping on orders ${thresholdLabel}+`
-                        : `Complimentary shipping on international orders ${thresholdLabel}+`;
+                    const metaText = getFreeShippingMetaText(countryCode);
 
                     freeShippingNudge.replaceChildren();
 
