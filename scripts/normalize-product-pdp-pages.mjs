@@ -14,6 +14,7 @@ const FILES = [
   'products/curry-leaves/index.html',
   'products/black-tea/index.html',
   'products/combo-pack/index.html',
+  'products/gift-pack/index.html',
   'products/moringa-soap/index.html',
 ];
 

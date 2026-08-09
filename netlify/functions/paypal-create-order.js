@@ -148,6 +148,7 @@ export async function handler(event) {
             "curry-leaves": { name: "Dried Curry Leaves", price: 7.00, weight: 30 },
             "black-tea": { name: "Darjeeling Black Tea", price: 7.50, weight: 100 },
             "combo-pack": { name: "Premium Combo Pack", price: 17.00, weight: 130 },
+            "gift-pack": { name: "Gift Pack", price: 35.00, weight: 325 },
 
             // Product page variations (cart ids are moringa-variation-1..6)
             "moringa-variation-1": { name: "400g Moringa Bundle", price: 35.00, weight: 400 },
