@@ -102,7 +102,7 @@
     if (subtotal >= threshold) {
       return { cost: 0, weightGrams, countryCode: cc, tierLabel: weightTierLabel(weightGrams) };
     }
-    const fallback = window.NT_SITE_DATA?.shipping?.defaultAuRate ?? 8.73;
+    const fallback = window.NT_SITE_DATA?.shipping?.defaultAuRate ?? 9.69;
     return { cost: fallback, weightGrams, countryCode: cc, tierLabel: weightTierLabel(weightGrams) };
   }
 

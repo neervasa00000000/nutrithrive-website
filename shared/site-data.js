@@ -14,10 +14,10 @@ window.NT_SITE_DATA = {
     freeAuThreshold: 80,
     freeWorldThreshold: 90,
     /** Fallback only if shipping-rates.js fails to load */
-    defaultAuRate: 8.73,
+    defaultAuRate: 9.69,
     dispatchNote: 'Order before 2pm for same-day Melbourne dispatch',
   },
-  rating: { value: '4.9', count: 11 },
+  rating: { value: '4.9', count: 12 },
   social: {
     instagram: 'https://www.instagram.com/nutri__thrive/',
   },
@@ -314,6 +314,7 @@ window.NT_SITE_DATA = {
     { quote: "I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved, and I love adding it to my morning smoothies. It blends well and doesn't have an overpowering taste. Plus, knowing I'm getting a powerhouse of vitamins, iron, and antioxidants makes it worth it. Highly recommend", author: "chizaram olanma", meta: 'via Google Reviews', initials: "CO", avatarBg: 'bg-secondary-fixed' },
     { quote: "love it, This Moringa powder has been a game-changer for my gut health. I mix it with warm water and lemon every morning, and my digestion has never been better. I also noticed I've been getting sick less often—must be the immune-boosting properties! The quality is top-notch, and I love that it's organic. Will definitely repurchase", author: "Dimple Szhane", meta: 'via Google Reviews', initials: "DS", avatarBg: 'bg-primary-fixed' },
     { quote: "Tried Moringa powder daily for 30 days. Helps with bloating and slight increase in stamina. good natural supplement.", author: "Bindu", meta: 'via Google Reviews', initials: "BI", avatarBg: 'bg-tertiary-fixed' },
+    { quote: "Honestly wasn't expecting much on the taste front, most powders like this are a chore to get down. NutriThrive actually surprised me. I've been having the moringa powder daily for a while now, and recently added the black tea into my routine too. Both have genuinely become part of my day rather than something I'm forcing myself to do. Good quality, easy to stick with.", author: "buket", meta: 'via Google Reviews', initials: "BU", avatarBg: 'bg-secondary-fixed' },
     { quote: "Moringa has been a game-changer! Better focus, natural energy, and overall wellness boost in just 30 days. Will keep using!", author: "Jay Vasa", meta: 'via Google Reviews', initials: "JV", avatarBg: 'bg-secondary-fixed' },
     { quote: "This product is healthy, of excellent quality, and very affordable. Highly recommend!", author: "reetysha ramjee", meta: 'via Google Reviews', initials: "RR", avatarBg: 'bg-primary-fixed' },
     { quote: "The product is very good and have been using it over 5 months. It's very helpful if you are on a weight loss journey.", author: "Shaily Vasa", meta: 'via Google Reviews', initials: "SV", avatarBg: 'bg-tertiary-fixed' },
