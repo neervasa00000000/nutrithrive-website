@@ -34,8 +34,8 @@ const CITIES = [
     faqs: [
       { q: 'How long to Sydney?', a: 'Same-day dispatch from Melbourne before 2pm on business days. Most Sydney metro postcodes: 2–4 business days.' },
       { q: 'Shop in Sydney?', a: 'No retail store — we pack at 15 Europe Street, Truganina VIC and ship Australia-wide.' },
-      { q: 'Best value?', a: 'The 3+1 bundle ($35, 400g) ships free — about $0.26/day. Under $80, shipping is $8.73.' },
-      { q: '2026 recall?', a: 'Not affected. That recall was Rosabella capsules. We sell leaf powder with NMI screening.' },
+      { q: 'Best value?', a: 'The 3+1 bundle ($35, 400g) ships free — about $0.26/day. Under $80, shipping is $9.69.' },
+      { q: 'Any safety tip for capsules?', a: 'If you buy any capsule brand, always check the lot number against current recall notices before use, and ask the seller for a batch lab summary when available. We sell leaf powder with NMI screening.' },
     ],
     review: {
       quote: "I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved.",
@@ -71,7 +71,7 @@ const CITIES = [
     faqs: [
       { q: 'How long to Brisbane?', a: 'Same-day Melbourne dispatch before 2pm. Brisbane metro, Gold Coast and Sunshine Coast: usually 2–4 business days.' },
       { q: 'Shop in Brisbane?', a: 'No — we ship from Truganina, Melbourne to all QLD postcodes. No Brisbane pickup.' },
-      { q: 'Cheapest way to order?', a: '3+1 bundle ($35, 400g) ships free. Single 100g is $11 + $8.73 if under $80.' },
+      { q: 'Cheapest way to order?', a: '3+1 bundle ($35, 400g) ships free. Single 100g is $11 + $9.69 if under $80.' },
       { q: 'Why is powder clumping?', a: 'Humidity moisture, not a defect. Seal tightly and refrigerate in wet season. Warm the bag before opening.' },
     ],
     review: {
@@ -145,8 +145,8 @@ const CITIES = [
     faqs: [
       { q: 'How long to Adelaide?', a: 'Same-day Melbourne dispatch before 2pm. Adelaide metro: 2–4 business days. Regional SA may add a day or two.' },
       { q: 'Shop in Adelaide?', a: 'Online only — packed in Truganina VIC. We ship to all SA postcodes.' },
-      { q: 'Cheapest order?', a: '3+1 bundle ($35, 400g) ships free. Otherwise $11/100g + $8.73 under $80.' },
-      { q: 'Chemist Warehouse vs direct?', a: 'CW stocks Rosabella capsules. We sell loose powder with visible quality and NMI testing.' },
+      { q: 'Cheapest order?', a: '3+1 bundle ($35, 400g) ships free. Otherwise $11/100g + $9.69 under $80.' },
+      { q: 'How do Adelaide orders ship?', a: 'We pack in Truganina, Melbourne and ship Australia Post to Adelaide. Metro is usually 2–4 business days when you order before 2pm for same-day dispatch. Free shipping on Australian orders $80+.' },
     ],
     review: {
       quote: 'This product is healthy, of excellent quality, and very affordable. Highly recommend!',
@@ -306,8 +306,8 @@ ${locNav(c.slug)}
   <table class="city-hub-table">
     <thead><tr><th>Size</th><th>Price</th><th>Shipping</th></tr></thead>
     <tbody>
-      <tr><td>100g</td><td class="amt">$11</td><td>$8.73*</td></tr>
-      <tr><td>200g</td><td class="amt">$21.50</td><td>$8.73*</td></tr>
+      <tr><td>100g</td><td class="amt">$11</td><td>$9.69*</td></tr>
+      <tr><td>200g</td><td class="amt">$21.50</td><td>$9.69*</td></tr>
       ${bundleRow}
     </tbody>
   </table>
