@@ -227,6 +227,41 @@ window.NT_SITE_DATA = {
       },
     },
     {
+      id: 'gift-pack',
+      sku: 'NT-GIFT-325G',
+      name: 'Gift Pack',
+      tag: 'MORINGA + TEA + CURRY + SOAP',
+      badge: 'Gift',
+      price: 35,
+      was: 41.98,
+      weight: 325,
+      image: '/assets/images/homepage/product-showcase/gift.webp',
+      href: '/products/gift-pack/',
+      pdp: {
+        headline: 'Gift Pack',
+        intro:
+          '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap — ready to gift.',
+        features: [
+          { icon: 'inventory_2', text: '4 Products' },
+          { icon: 'card_giftcard', text: 'Gift Ready' },
+          { icon: 'science', text: 'Lab-Tested Moringa' },
+          { icon: 'location_on', text: 'Melbourne Packed' },
+        ],
+        detailTitle: 'The full NutriThrive lineup',
+        detailBody:
+          'Powder, tea, curry leaves, and soap in one box. Packed in Truganina for birthdays, host gifts, and wellness baskets.',
+        faqs: [
+          {
+            q: 'What is included?',
+            a: '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and one 95g moringa lavender soap.',
+          },
+          { q: 'Can I buy items separately?', a: 'Yes—each product is also available individually in our shop.' },
+        ],
+        showLabBadge: true,
+        variantPicker: false,
+      },
+    },
+    {
       id: 'moringa-soap-combo',
       sku: 'NT-MOR-SOAP',
       name: 'Moringa 100g + Soap 95g',
@@ -456,6 +491,7 @@ window.NT_SITE_DATA = {
     { label: 'Curry leaves', file: '/products/curry-leaves/', category: 'Products' },
     { label: 'Darjeeling tea', file: '/products/black-tea/', category: 'Products' },
     { label: 'Combo pack', file: '/products/combo-pack/', category: 'Products' },
+    { label: 'Gift pack', file: '/products/gift-pack/', category: 'Products' },
     { label: 'Moringa soap', file: '/products/moringa-soap/', category: 'Products' },
     { label: 'Cart', file: '/cart', category: 'Checkout' },
     { label: 'Payment', file: '/payment', category: 'Checkout' },
@@ -478,6 +514,7 @@ window.NT_SITE_DATA = {
     'curry-leaves-30g',
     'black-tea',
     'combo-pack',
+    'gift-pack',
     'moringa-soap',
   ],
   catalogDisplay: {
@@ -500,6 +537,11 @@ window.NT_SITE_DATA = {
       title: 'Premium Combo Pack',
       meta: 'Various Pack Sizes • Best Value',
       badge: 'Combo',
+    },
+    'gift-pack': {
+      title: 'Gift Pack',
+      meta: 'Moringa + Tea + Curry + Soap',
+      badge: 'Gift',
     },
     'moringa-soap': {
       title: 'Moringa Soap',
@@ -551,5 +593,6 @@ NT_SITE_DATA.productSlugToId = {
   'curry-leaves': 'curry-leaves-30g',
   'black-tea': 'black-tea',
   'combo-pack': 'combo-pack',
+  'gift-pack': 'gift-pack',
   'moringa-soap': 'moringa-soap',
 };

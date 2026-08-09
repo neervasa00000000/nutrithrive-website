@@ -1,0 +1,76 @@
+{
+  "collectionPage": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Moringa, Curry Leaves & Superfoods | NutriThrive",
+    "description": "Moringa powder ($11/100g), dried curry leaves, Darjeeling tea, and soap, packed in Truganina, Melbourne. Lab-tested moringa. Ships Australia-wide.",
+    "url": "https://nutrithrive.com.au/products/",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@id": "https://nutrithrive.com.au/products/moringa-powder/#product" } },
+        { "@type": "ListItem", "position": 2, "item": { "@id": "https://nutrithrive.com.au/products/curry-leaves/#product" } },
+        { "@type": "ListItem", "position": 3, "item": { "@id": "https://nutrithrive.com.au/products/black-tea/#product" } },
+        { "@type": "ListItem", "position": 4, "item": { "@id": "https://nutrithrive.com.au/products/combo-pack/#product" } },
+        { "@type": "ListItem", "position": 5, "item": { "@id": "https://nutrithrive.com.au/products/gift-pack/#product" } },
+        { "@type": "ListItem", "position": 6, "item": { "@id": "https://nutrithrive.com.au/products/moringa-soap/#product" } }
+      ]
+    }
+  },
+  "products": [
+    {
+      "@id": "https://nutrithrive.com.au/products/moringa-powder/#product",
+      "name": "NutriThrive Moringa Powder",
+      "sku": "NT-MOR-100G",
+      "url": "https://nutrithrive.com.au/products/moringa-powder/",
+      "image": "https://nutrithrive.com.au/assets/images/products/moringa-powder/moringa-powder-product-100g.png",
+      "description": "100% pure shade-dried moringa oleifera leaf powder. NMI lab-tested in Australia. $11 per 100g pouch.",
+      "price": "11.00"
+    },
+    {
+      "@id": "https://nutrithrive.com.au/products/curry-leaves/#product",
+      "name": "NutriThrive Dried Curry Leaves",
+      "sku": "NT-CL-30G",
+      "url": "https://nutrithrive.com.au/products/curry-leaves/",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp",
+      "description": "Premium dried curry leaves for aromatic tadka in curries, dals, and rice dishes.",
+      "price": "7.00"
+    },
+    {
+      "@id": "https://nutrithrive.com.au/products/black-tea/#product",
+      "name": "NutriThrive Darjeeling Black Tea",
+      "sku": "NT-BT-100G",
+      "url": "https://nutrithrive.com.au/products/black-tea/",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/BlackTea.webp",
+      "description": "Premium Darjeeling loose-leaf black tea for a smooth, focused cup without the coffee jitters.",
+      "price": "7.50"
+    },
+    {
+      "@id": "https://nutrithrive.com.au/products/combo-pack/#product",
+      "name": "NutriThrive Premium Combo Pack",
+      "sku": "NT-COMBO-MC-130G",
+      "url": "https://nutrithrive.com.au/products/combo-pack/",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/combo.webp",
+      "description": "100g moringa powder plus 30g dried curry leaves — morning smoothie and evening tadka from one box.",
+      "price": "17.00"
+    },
+    {
+      "@id": "https://nutrithrive.com.au/products/gift-pack/#product",
+      "name": "NutriThrive Gift Pack",
+      "sku": "NT-GIFT-325G",
+      "url": "https://nutrithrive.com.au/products/gift-pack/",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/gift.webp",
+      "description": "Gift pack with 100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap.",
+      "price": "35.00"
+    },
+    {
+      "@id": "https://nutrithrive.com.au/products/moringa-soap/#product",
+      "name": "NutriThrive Moringa Soap",
+      "sku": "NT-SOAP-95G",
+      "url": "https://nutrithrive.com.au/products/moringa-soap/",
+      "image": "https://nutrithrive.com.au/assets/images/homepage/product-showcase/moringa_soap.webp",
+      "description": "95g natural moringa soap bar, handmade in small batches with moringa leaf and gentle oils.",
+      "price": "7.00"
+    }
+  ]
+}

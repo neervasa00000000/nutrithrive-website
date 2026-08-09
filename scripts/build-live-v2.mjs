@@ -55,6 +55,7 @@ const PRODUCT_SLUGS = [
   'curry-leaves',
   'black-tea',
   'combo-pack',
+  'gift-pack',
   'moringa-soap',
 ];
 
@@ -146,6 +147,7 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
           'curry-leaves': 'curry-leaves-30g',
           'black-tea': 'black-tea',
           'combo-pack': 'combo-pack',
+          'gift-pack': 'gift-pack',
           'moringa-soap': 'moringa-soap',
         }).find(([, v]) => v === id)?.[0] ||
         (id.startsWith('moringa') ? 'moringa-powder' : id);
@@ -403,6 +405,7 @@ function patchSiteData() {
       'curry-leaves-30g': 'curry-leaves',
       'black-tea': 'black-tea',
       'combo-pack': 'combo-pack',
+      'gift-pack': 'gift-pack',
       'moringa-soap': 'moringa-soap',
       'moringa-soap-combo': 'moringa-soap',
     };

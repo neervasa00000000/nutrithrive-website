@@ -42,6 +42,16 @@ const CATALOG = [
     img: '/assets/images/product_photos/webp/combo.webp',
   },
   {
+    id: 'gift-pack',
+    title: 'Gift Pack',
+    tag: 'Moringa + Tea + Curry + Soap',
+    badge: 'Gift',
+    price: 35,
+    was: 41.98,
+    href: '/products/gift-pack/',
+    img: '/assets/images/homepage/product-showcase/gift.webp',
+  },
+  {
     id: 'moringa-soap',
     title: 'Moringa Soap',
     tag: '95g Pack • Natural Soap',
