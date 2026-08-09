@@ -453,7 +453,7 @@
       countryCode,
       tierLabel: null,
     };
-    const threshold = C().freeShippingThreshold?.(countryCode) ?? data.shipping.freeAuThreshold;
+    const threshold = C().freeShippingThreshold?.(countryCode) ?? data.shipping.getFreeAuThreshold?.() ?? data.shipping.freeAuThreshold;
     const subtotal = cart.total;
     const shipping = ship.cost;
     const away = Math.max(0, threshold - subtotal);
@@ -464,9 +464,12 @@
       countryCode === 'AU'
         ? 'Shipping (Australia est.)'
         : `Shipping (${countryName} est.)`;
+    const auRule = window.ShippingRates?.getAuFreeShippingThreshold?.();
     const freeShipNote =
       countryCode === 'AU'
-        ? `Free AU shipping ${money(threshold)}+`
+        ? auRule?.mode === 'gt'
+          ? 'Free AU shipping on orders over $45 (ends 16 Aug)'
+          : `Free AU shipping ${money(data.shipping.freeAuThreshold ?? 80)}+`
         : `Free worldwide shipping ${money(data.shipping.freeWorldThreshold ?? 90)}+`;
     const popularCountries = ['AU', 'NZ', 'US', 'GB', 'CA', 'SG', 'IN'];
     const countryList = window.ShippingRates?.getCountryList?.() || [];

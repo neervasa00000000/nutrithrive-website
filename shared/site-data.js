@@ -11,11 +11,31 @@ window.NT_SITE_DATA = {
     abn: '32 639 442 616',
   },
   shipping: {
+    /** Standard AU free-shipping threshold after any dated promo ends. */
     freeAuThreshold: 80,
     freeWorldThreshold: 90,
     /** Fallback only if shipping-rates.js fails to load */
     defaultAuRate: 9.69,
     dispatchNote: 'Order before 2pm for same-day Melbourne dispatch',
+    /** Live AU threshold (promo-aware). Prefer ShippingRates helpers when available. */
+    getFreeAuThreshold() {
+      if (window.ShippingRates?.getAuFreeShippingProgressTarget) {
+        return window.ShippingRates.getAuFreeShippingProgressTarget();
+      }
+      return this.freeAuThreshold;
+    },
+    qualifiesForFreeAuShipping(subtotal) {
+      if (window.ShippingRates?.qualifiesForAuFreeShipping) {
+        return window.ShippingRates.qualifiesForAuFreeShipping(subtotal);
+      }
+      return Number(subtotal) >= this.freeAuThreshold;
+    },
+    getFreeShippingBannerText() {
+      if (window.ShippingRates?.getAuFreeShippingBannerText) {
+        return window.ShippingRates.getAuFreeShippingBannerText();
+      }
+      return 'Free shipping over $80';
+    },
   },
   rating: { value: '4.9', count: 12 },
   social: {

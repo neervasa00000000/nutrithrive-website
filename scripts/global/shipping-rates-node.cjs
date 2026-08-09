@@ -33,6 +33,7 @@ const YELLOW_RATES = {
 // Zone 4 = UK & Ireland/UK & Europe (BLUE/YELLOW), Zone 5 = Rest of World (YELLOW)
 const COUNTRY_MAPPING = {
     // Australia - GREEN Zone 2 (national mid-rate from rate card)
+    // freeShippingThreshold is the standard ($80). Limited promos are applied in calculateShipping.
     'AU': { zone: 2, color: 'GREEN', freeShippingThreshold: 80 },
     
     // Zone 1 - NZ (BLUE)
@@ -579,6 +580,57 @@ function getCountryInfo(countryCode) {
     return { zone: 5, color: 'YELLOW' };
 }
 
+/**
+ * Limited AU free Parcel Post promo.
+ * - Free when order subtotal is STRICTLY above $45 (e.g. $45.01+ / $46 — not $45.00).
+ * - Valid through end of 16 Aug 2026 AEST; from 17 Aug 2026 00:00 AEST reverts to $80 automatically.
+ */
+const AU_FREE_SHIPPING_STANDARD = 80;
+const AU_FREE_SHIPPING_PROMO = {
+    minExclusive: 45,
+    endsAtMs: Date.parse('2026-08-17T00:00:00+10:00')
+};
+
+function isAuFreeShippingPromoActive(now) {
+    const t = now instanceof Date ? now.getTime() : Date.now();
+    return Number.isFinite(AU_FREE_SHIPPING_PROMO.endsAtMs) && t < AU_FREE_SHIPPING_PROMO.endsAtMs;
+}
+
+function getAuFreeShippingThreshold(now) {
+    if (isAuFreeShippingPromoActive(now)) {
+        return {
+            amount: AU_FREE_SHIPPING_PROMO.minExclusive,
+            mode: 'gt',
+            label: 'over $45',
+            banner: 'Free shipping on orders over $45 (ends 16 Aug)',
+            endsAtMs: AU_FREE_SHIPPING_PROMO.endsAtMs
+        };
+    }
+    return {
+        amount: AU_FREE_SHIPPING_STANDARD,
+        mode: 'gte',
+        label: 'over $80',
+        banner: 'Free shipping over $80',
+        endsAtMs: null
+    };
+}
+
+function qualifiesForAuFreeShipping(subtotal, now) {
+    const rule = getAuFreeShippingThreshold(now);
+    const n = Number(subtotal);
+    if (!Number.isFinite(n)) return false;
+    return rule.mode === 'gt' ? n > rule.amount : n >= rule.amount;
+}
+
+function getAuFreeShippingBannerText(now) {
+    return getAuFreeShippingThreshold(now).banner;
+}
+
+function getAuFreeShippingProgressTarget(now) {
+    const rule = getAuFreeShippingThreshold(now);
+    return rule.mode === 'gt' ? Number((rule.amount + 0.01).toFixed(2)) : rule.amount;
+}
+
 // Calculate shipping cost based on country, weight, and color-coded tables
 function calculateShipping(countryCode, cartItems, subtotal) {
     if (!countryCode) {
@@ -589,14 +641,15 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     if (!countryInfo) {
         return null;
     }
+
+    const upperCountryCode = countryCode.toUpperCase();
     
-    // Check for free shipping thresholds
-    // 1) Australia: free from configured threshold (currently $80)
-    if (countryInfo.freeShippingThreshold && subtotal >= countryInfo.freeShippingThreshold) {
+    // Free shipping thresholds
+    // 1) Australia: dated promo (> $45 through 16 Aug 2026 AEST) then automatic revert to $80+
+    if (upperCountryCode === 'AU' && qualifiesForAuFreeShipping(subtotal)) {
         return 0;
     }
     // 2) All other countries: free shipping at $90+ order value
-    const upperCountryCode = countryCode.toUpperCase();
     if (upperCountryCode !== 'AU' && subtotal >= 90) {
         return 0;
     }
@@ -726,7 +779,12 @@ const ShippingRates = {
     getCountryName: getCountryName,
     getWeightRange: getWeightRange,
     getCountryInfo: getCountryInfo,
-    getCountryList: getCountryList
+    getCountryList: getCountryList,
+    isAuFreeShippingPromoActive: isAuFreeShippingPromoActive,
+    getAuFreeShippingThreshold: getAuFreeShippingThreshold,
+    qualifiesForAuFreeShipping: qualifiesForAuFreeShipping,
+    getAuFreeShippingBannerText: getAuFreeShippingBannerText,
+    getAuFreeShippingProgressTarget: getAuFreeShippingProgressTarget
 };
 
 if (typeof window !== 'undefined') {

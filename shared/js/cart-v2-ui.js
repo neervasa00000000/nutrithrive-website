@@ -59,7 +59,12 @@
   function freeShippingThreshold(countryCode) {
     const d = window.NT_SITE_DATA?.shipping;
     const cc = (countryCode || getShippingCountry()).toUpperCase();
-    if (cc === 'AU') return d?.freeAuThreshold ?? 80;
+    if (cc === 'AU') {
+      if (window.ShippingRates?.getAuFreeShippingProgressTarget) {
+        return window.ShippingRates.getAuFreeShippingProgressTarget();
+      }
+      return d?.getFreeAuThreshold?.() ?? d?.freeAuThreshold ?? 80;
+    }
     return d?.freeWorldThreshold ?? 90;
   }
 
@@ -98,6 +103,9 @@
       }
     }
 
+    if (cc === 'AU' && window.ShippingRates?.qualifiesForAuFreeShipping?.(subtotal)) {
+      return { cost: 0, weightGrams, countryCode: cc, tierLabel: weightTierLabel(weightGrams) };
+    }
     const threshold = freeShippingThreshold(cc);
     if (subtotal >= threshold) {
       return { cost: 0, weightGrams, countryCode: cc, tierLabel: weightTierLabel(weightGrams) };
