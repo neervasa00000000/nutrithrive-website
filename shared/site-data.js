@@ -227,6 +227,41 @@ window.NT_SITE_DATA = {
       },
     },
     {
+      id: 'gift-pack',
+      sku: 'NT-GIFT-325G',
+      name: 'Gift Pack',
+      tag: 'MORINGA + TEA + CURRY + SOAP',
+      badge: 'Gift',
+      price: 35,
+      was: 41.98,
+      weight: 325,
+      image: '/assets/images/homepage/product-showcase/gift.png',
+      href: '/products/gift-pack/',
+      pdp: {
+        headline: 'Gift Pack',
+        intro:
+          '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap — ready to gift.',
+        features: [
+          { icon: 'inventory_2', text: '4 Products' },
+          { icon: 'card_giftcard', text: 'Gift Ready' },
+          { icon: 'science', text: 'Lab-Tested Moringa' },
+          { icon: 'location_on', text: 'Melbourne Packed' },
+        ],
+        detailTitle: 'The full NutriThrive lineup',
+        detailBody:
+          'Powder, tea, curry leaves, and soap in one box. Packed in Truganina for birthdays, host gifts, and wellness baskets.',
+        faqs: [
+          {
+            q: 'What is included?',
+            a: '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and one 95g moringa lavender soap.',
+          },
+          { q: 'Can I buy items separately?', a: 'Yes—each product is also available individually in our shop.' },
+        ],
+        showLabBadge: true,
+        variantPicker: false,
+      },
+    },
+    {
       id: 'moringa-soap-combo',
       sku: 'NT-MOR-SOAP',
       name: 'Moringa 100g + Soap 95g',
@@ -394,9 +429,9 @@ window.NT_SITE_DATA = {
         { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup only.' },
         { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order or checking free shipping eligibility.' },
         { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+.' },
-        { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Dispatch within 2 business days (no Sunday dispatch). Metro delivery typically 3–4 days; rural up to 10 days. See /pages/shipping/shipping-returns.html or /melbourne/ for estimates.' },
+        { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Orders placed before 2pm on business days usually leave Truganina the same day; otherwise within 2 business days (no Sunday dispatch). Melbourne metro is often 1–3 business days after dispatch; other metro areas typically 3–4 days; some rural locations up to 10 days. See /pages/shipping/shipping-returns.html or /melbourne/ for estimates.' },
         { q: 'Do you offer a money-back guarantee?', a: 'Yes—7-day return policy (unopened packs only). Shipping costs are not refunded.' },
-        { q: 'Where is my order dispatched from?', a: 'All orders ship from our warehouse in Truganina, Melbourne—same-day dispatch for orders before 2pm.' },
+        { q: 'Where is my order dispatched from?', a: 'All orders ship from our warehouse in Truganina, Melbourne. Order before 2pm on a business day for same-day dispatch when we can.' },
       ],
     },
     {
@@ -456,6 +491,7 @@ window.NT_SITE_DATA = {
     { label: 'Curry leaves', file: '/products/curry-leaves/', category: 'Products' },
     { label: 'Darjeeling tea', file: '/products/black-tea/', category: 'Products' },
     { label: 'Combo pack', file: '/products/combo-pack/', category: 'Products' },
+    { label: 'Gift pack', file: '/products/gift-pack/', category: 'Products' },
     { label: 'Moringa soap', file: '/products/moringa-soap/', category: 'Products' },
     { label: 'Cart', file: '/cart', category: 'Checkout' },
     { label: 'Payment', file: '/payment', category: 'Checkout' },
@@ -472,12 +508,13 @@ window.NT_SITE_DATA = {
     { label: 'Privacy Policy', file: '/privacy-policy', category: 'Legal' },
     { label: 'Moringa benefits', file: '/blog/how-to-add-moringa-to-diet', category: 'Help & Info' },
   ],
-  /** Same five as live /products/ — shop grid & featured rows */
+  /** Shop grid & featured rows (includes gift pack) */
   catalogProductIds: [
     'moringa-powder-100g',
     'curry-leaves-30g',
     'black-tea',
     'combo-pack',
+    'gift-pack',
     'moringa-soap',
   ],
   catalogDisplay: {
@@ -500,6 +537,11 @@ window.NT_SITE_DATA = {
       title: 'Premium Combo Pack',
       meta: 'Various Pack Sizes • Best Value',
       badge: 'Combo',
+    },
+    'gift-pack': {
+      title: 'Gift Pack',
+      meta: 'Moringa + Tea + Curry + Soap',
+      badge: 'Gift',
     },
     'moringa-soap': {
       title: 'Moringa Soap',
@@ -551,5 +593,6 @@ NT_SITE_DATA.productSlugToId = {
   'curry-leaves': 'curry-leaves-30g',
   'black-tea': 'black-tea',
   'combo-pack': 'combo-pack',
+  'gift-pack': 'gift-pack',
   'moringa-soap': 'moringa-soap',
 };
