@@ -603,8 +603,8 @@ const AU_FREE_SHIPPING_PROMO = {
 };
 
 function isAuFreeShippingPromoActive(now) {
-    const t = now instanceof Date ? now.getTime() : Date.now();
-    return Number.isFinite(AU_FREE_SHIPPING_PROMO.endsAtMs) && t < AU_FREE_SHIPPING_PROMO.endsAtMs;
+    // Promo disabled — standing free-shipping threshold is a flat $80.
+    return false;
 }
 
 function getAuFreeShippingThreshold(now) {

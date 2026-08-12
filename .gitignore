@@ -27,5 +27,8 @@ nutrithrive_labs/extension/pokifinder/remote-monitor/config.json
 tools/seo-audit/output/
 .netlify-publish/
 
+# Netlify CLI local state and function build output (regenerated on deploy)
+.netlify/
+
 # Local experiments (not part of nutrithrive.com.au)
 gas-guardian/
