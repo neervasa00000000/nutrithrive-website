@@ -40,6 +40,17 @@
 /pages/homepage/ / 301!
 /pages/homepage/* / 301!
 
+# Old /pages/blog/ URLs still indexed by Google — send to current equivalents
+/pages/blog/moringa-brands-reviewed-australia-2025-verdict /blog/moringa-brands-comparison-australia-2026 301!
+/pages/blog/moringa-brands-reviewed-australia-2025-verdict.html /blog/moringa-brands-comparison-australia-2026 301!
+/pages/blog/complete-guide-to-moringa-powder-australia /blog/how-to-choose-moringa-powder-australia-2026 301!
+/pages/blog/complete-guide-to-moringa-powder-australia.html /blog/how-to-choose-moringa-powder-australia-2026 301!
+/pages/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2025 /blog/ 301!
+/pages/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2025.html /blog/ 301!
+/pages/blog/high-protein-snacks-australia-25-options-under-150-calories-2025 /404.html 410!
+/pages/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html /404.html 410!
+/pages/blog/* /blog/ 301!
+
 # PHASE 1 REDIRECTS - Delete Duplicates
 
 # Dosage cannibalization
@@ -762,3 +773,13 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/is-moringa-banned-australia-truth-2026.html /404.html 410
 /blog/is-moringa-banned-in-australia /404.html 410
 /blog/is-moringa-banned-in-australia.html /404.html 410
+
+# Explicit pairs for Aug 9 2026 batch (previously relied on Netlify's implicit clean-URL fallback)
+/blog/caffeine-cutoff-time-sleep-black-tea-2026.html /blog/caffeine-cutoff-time-sleep-black-tea-2026 301!
+/blog/caffeine-cutoff-time-sleep-black-tea-2026 /blog/caffeine-cutoff-time-sleep-black-tea-2026.html 200
+/blog/curry-leaves-recipes-beyond-dal.html /blog/curry-leaves-recipes-beyond-dal 301!
+/blog/curry-leaves-recipes-beyond-dal /blog/curry-leaves-recipes-beyond-dal.html 200
+/blog/diwali-gift-guide-curry-leaves-tea-australia.html /blog/diwali-gift-guide-curry-leaves-tea-australia 301!
+/blog/diwali-gift-guide-curry-leaves-tea-australia /blog/diwali-gift-guide-curry-leaves-tea-australia.html 200
+/blog/how-to-read-a-soap-ingredient-label.html /blog/how-to-read-a-soap-ingredient-label 301!
+/blog/how-to-read-a-soap-ingredient-label /blog/how-to-read-a-soap-ingredient-label.html 200
