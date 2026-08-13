@@ -57,10 +57,6 @@ const AD_SLOT_MAP = [
 
 const ASIDE_RE = /<aside class="lg:col-span-4[^"]*"[\s\S]*?<\/aside>/;
 
-function stripSidebar(html) {
-  return html.replace(ASIDE_RE, '');
-}
-
 function patchAdSlots(html) {
   let changed = false;
   for (const { pattern, replacement } of AD_SLOT_MAP) {
@@ -74,23 +70,12 @@ function patchAdSlots(html) {
 }
 
 function patchFile(filePath) {
-  const base = path.basename(filePath);
   let html = fs.readFileSync(filePath, 'utf8');
   let changed = false;
 
   const adPatch = patchAdSlots(html);
   html = adPatch.html;
   changed = adPatch.changed;
-
-  if (SKIP_SIDEBAR.has(base)) {
-    const stripped = stripSidebar(html);
-    if (stripped !== html) {
-      html = stripped;
-      changed = true;
-    }
-    if (changed) fs.writeFileSync(filePath, html);
-    return changed;
-  }
 
   if (ASIDE_RE.test(html)) {
     const next = html.replace(ASIDE_RE, SIDEBAR);
@@ -115,9 +100,6 @@ function patchFile(filePath) {
   }
   return changed;
 }
-
-/** Product-free posts — no sidebar promo injection. */
-const SKIP_SIDEBAR = new Set(['quick-healthy-meal-ideas-15-minutes-australia.html']);
 
 const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith('.html') && f !== 'index.html');
 let patched = 0;
