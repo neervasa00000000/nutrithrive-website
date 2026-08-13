@@ -657,6 +657,7 @@
                 <span id="discount-label" style="color: #0f6b4d;">Discount</span>
                 <span id="discount-amount" style="color: #0f6b4d; font-weight: 600;">-$0.00</span>
             </div>
+            <p id="bundle-400g-nudge" style="display:none; margin: 0 0 0.75rem; padding: 0.6rem 0.85rem; background: #f7f3e8; border-left: 3px solid #0f6b4d; border-radius: 6px; font-size: 0.85rem; color: #175c36; font-weight: 600;"></p>
             <div class="summary-row" id="shipping-row">
                 <span id="shipping-label">Shipping</span>
                 <span id="shipping-amount">—</span>
@@ -981,21 +982,51 @@
             });
             
             const discountAmount = Number((originalTotal - subtotal).toFixed(2));
+
+            // Promo: 400g Moringa Bundle — buy 3, get the 4th free. Mirrors the
+            // authoritative server-side calculation in paypal-create-order.js so
+            // what the customer sees here matches what they're actually charged.
+            const BUNDLE_400G_IDS = new Set(['moringa-400g', 'moringa-variation-1']);
+            const bundle400gQty = cart.items.reduce((sum, item) => {
+                if (!BUNDLE_400G_IDS.has(item?.id)) return sum;
+                const q = safeInt(item?.quantity ?? 1, 1, 99);
+                return sum + (q || 0);
+            }, 0);
+            const bundle400gFreeUnits = Math.floor(bundle400gQty / 4);
+            const bundleDiscount = Number((bundle400gFreeUnits * 35).toFixed(2));
+
+            const totalDiscountAmount = Number((discountAmount + bundleDiscount).toFixed(2));
             const discountRow = document.getElementById('discount-row');
             const discountLabel = document.getElementById('discount-label');
             const discountAmountElement = document.getElementById('discount-amount');
-            
-            if (discountAmount > 0.01) { // Only show if discount is significant
+
+            if (totalDiscountAmount > 0.01) { // Only show if discount is significant
                 if (discountLabel) {
-                    discountLabel.textContent = 'Discount';
+                    discountLabel.textContent = bundleDiscount > 0 && discountAmount <= 0.01
+                        ? 'Buy 3, get 1 free'
+                        : 'Discount';
                 }
                 discountRow.style.display = 'flex';
-                discountAmountElement.textContent = `-$${discountAmount.toFixed(2)}`;
+                discountAmountElement.textContent = `-$${totalDiscountAmount.toFixed(2)}`;
             } else {
                 if (discountLabel) {
                     discountLabel.textContent = 'Discount';
                 }
                 discountRow.style.display = 'none';
+            }
+
+            const bundleNudge = document.getElementById('bundle-400g-nudge');
+            if (bundleNudge) {
+                const remainder = bundle400gQty % 4;
+                if (bundle400gQty > 0 && remainder > 0) {
+                    const need = 4 - remainder;
+                    bundleNudge.textContent = need === 1
+                        ? 'Add 1 more 400g Bundle to get it FREE'
+                        : `Add ${need} more 400g Bundles to get one FREE`;
+                    bundleNudge.style.display = 'block';
+                } else {
+                    bundleNudge.style.display = 'none';
+                }
             }
             
             const countryCode = getShippingCountryCode();
@@ -1039,9 +1070,9 @@
             } else {
                 shippingCost = Number(shippingValue) || 0;
             }
-            const orderTotal = Number((subtotal + shippingCost).toFixed(2));
+            const orderTotal = Number((subtotal + shippingCost - bundleDiscount).toFixed(2));
             document.getElementById('total').textContent = shippingValue === null && countryCode !== 'AU'
-                ? `$${subtotal.toFixed(2)}`
+                ? `$${(subtotal - bundleDiscount).toFixed(2)}`
                 : `$${orderTotal.toFixed(2)}`;
 
             if (freeShippingNudge) {
