@@ -69,7 +69,7 @@
   }
 
   function init() {
-    if (document.querySelector('[data-nt-b3g1-promo]')) return;
+    if (document.querySelector('[data-nt-b3g1-promo], .nt-blog-sidebar-promo')) return;
 
     var aside = document.querySelector('aside.lg\\:col-span-4, aside[class*="col-span-4"]');
     if (!aside) return;
