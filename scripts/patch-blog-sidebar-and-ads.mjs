@@ -13,30 +13,45 @@ const SIDEBAR = fs
   .readFileSync(path.join(BLOG_DIR, 'partials/blog-sidebar.html'), 'utf8')
   .trim();
 
+const AD_SLOT_INLINE = `<!-- Product promo slot (blog-ad-promo.js) -->
+<div class="nt-ad-slot" data-ad-slot="SLOT" data-nt-ad-promo></div>`;
+
 const AD_SLOT_MAP = [
   {
     pattern:
       /<!-- \[AD SLOT — in-content, after intro\] -->\s*<p class="nt-ad-slot"[^>]*>\[AD SLOT — in-content, after intro\]<\/p>/g,
-    replacement: `<!-- AD SLOT: in-content, after intro -->
-<div class="nt-ad-slot" data-ad-slot="in-content-after-intro" aria-hidden="true">
-<span class="nt-ad-slot__label">Advertisement</span>
-</div>`,
+    replacement: AD_SLOT_INLINE.replace('SLOT', 'in-content-after-intro'),
   },
   {
     pattern:
       /<!-- \[AD SLOT — in-content, after recipes\] -->\s*<p class="nt-ad-slot"[^>]*>\[AD SLOT — in-content, after recipes\]<\/p>/g,
-    replacement: `<!-- AD SLOT: in-content, after recipes -->
-<div class="nt-ad-slot" data-ad-slot="in-content-after-recipes" aria-hidden="true">
-<span class="nt-ad-slot__label">Advertisement</span>
-</div>`,
+    replacement: AD_SLOT_INLINE.replace('SLOT', 'in-content-after-recipes'),
   },
   {
     pattern:
       /<!-- \[AD SLOT — end of post, before footer\] -->\s*<p class="nt-ad-slot"[^>]*>\[AD SLOT — end of post, before footer\]<\/p>/g,
-    replacement: `<!-- AD SLOT: end of post, before footer -->
-<div class="nt-ad-slot" data-ad-slot="end-of-post" aria-hidden="true">
-<span class="nt-ad-slot__label">Advertisement</span>
-</div>`,
+    replacement: AD_SLOT_INLINE.replace('SLOT', 'end-of-post'),
+  },
+  {
+    pattern:
+      /<!-- AD SLOT: in-content, after intro -->\s*<div class="nt-ad-slot" data-ad-slot="in-content-after-intro"[^>]*>\s*<span class="nt-ad-slot__label">Advertisement<\/span>\s*<\/div>/g,
+    replacement: AD_SLOT_INLINE.replace('SLOT', 'in-content-after-intro'),
+  },
+  {
+    pattern:
+      /<!-- AD SLOT: in-content, after recipes -->\s*<div class="nt-ad-slot" data-ad-slot="in-content-after-recipes"[^>]*>\s*<span class="nt-ad-slot__label">Advertisement<\/span>\s*<\/div>/g,
+    replacement: AD_SLOT_INLINE.replace('SLOT', 'in-content-after-recipes'),
+  },
+  {
+    pattern:
+      /<!-- AD SLOT: end of post, before footer -->\s*<div class="nt-ad-slot" data-ad-slot="end-of-post"[^>]*>\s*<span class="nt-ad-slot__label">Advertisement<\/span>\s*<\/div>/g,
+    replacement: AD_SLOT_INLINE.replace('SLOT', 'end-of-post'),
+  },
+  {
+    pattern:
+      /<!-- AD SLOT: sidebar -->\s*<div class="nt-ad-slot nt-ad-slot--sidebar" data-ad-slot="sidebar"[^>]*>\s*<span class="nt-ad-slot__label">Advertisement<\/span>\s*<\/div>/g,
+    replacement: `<!-- Product promo slot: curry leaves or moringa soap (blog-ad-promo.js) -->
+<div class="nt-ad-slot nt-ad-slot--sidebar" data-ad-slot="sidebar" data-nt-ad-promo></div>`,
   },
 ];
 

@@ -382,6 +382,17 @@ window.__NT_DEFER_LOADER_INITIALIZED__ = true;
     }
   }
 
+  function ensureBlogAdPromo() {
+    try {
+      const path = normalizeCanonicalPath(window.location.pathname);
+      if (!path.startsWith('/blog/') || path === '/blog/' || path === '/blog/index.html') return;
+      if (!document.querySelector('.nt-ad-slot')) return;
+      loadScript('/shared/js/blog-ad-promo.min.js');
+    } catch (e) {
+      // noop
+    }
+  }
+
   // Technical SEO foundations (safe to run multiple times)
   ensureViewportMeta();
   ensureCanonicalLink();
@@ -389,9 +400,11 @@ window.__NT_DEFER_LOADER_INITIALIZED__ = true;
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', ensureBreadcrumbs, { once: true });
     document.addEventListener('DOMContentLoaded', ensureBlogSidebarPromo, { once: true });
+    document.addEventListener('DOMContentLoaded', ensureBlogAdPromo, { once: true });
   } else {
     ensureBreadcrumbs();
     ensureBlogSidebarPromo();
+    ensureBlogAdPromo();
   }
 
   // Log initialization (can be removed in production)

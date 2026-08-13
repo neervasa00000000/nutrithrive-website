@@ -382,6 +382,31 @@ window.NT_SITE_DATA = {
     { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026' },
     { category: 'Safety', title: 'Moringa Side Effects: What Happens If You Take Too Much', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
   ],
+  /** In-content & sidebar ad slots — random curry leaves / moringa soap (see shared/js/blog-ad-promo.js). */
+  blogAdPromo: {
+    products: [
+      {
+        id: 'curry-leaves-30g',
+        headline: '30g Dried Curry Leaves',
+        tagline: 'Pantry staple for tadka',
+        price: 7,
+        unit: '30g',
+        image: '/assets/images/product_photos/driedcurry.jpeg',
+        href: '/products/curry-leaves/',
+        cta: 'Shop →',
+      },
+      {
+        id: 'moringa-soap',
+        headline: 'Moringa Soap 95g',
+        tagline: 'Natural bar, Melbourne packed',
+        price: 7,
+        unit: '95g',
+        image: '/assets/images/product_photos/soap.jpeg',
+        href: '/products/moringa-soap/',
+        cta: 'Shop →',
+      },
+    ],
+  },
   /** Right-sidebar promo card injected on blog articles (see shared/js/blog-sidebar-promo.js). */
   blogSidebarPromo: {
     excludeSlugs: ['quick-healthy-meal-ideas-15-minutes-australia'],
