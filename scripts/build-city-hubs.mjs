@@ -388,7 +388,10 @@ function buildHead(c) {
 <meta property="og:description" content="${c.description}">
 <meta property="og:image" content="https://nutrithrive.com.au/assets/images/homepage/product-showcase/Moringa.webp">
 <meta property="og:locale" content="en_AU">
-<link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/images/logo/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/logo/favicon-96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/apple-touch-icon.png">
 <link href="/styles/global/style.min.css" rel="stylesheet">
 <link href="/styles/pages/city-landing.min.css" rel="stylesheet">
 <script type="application/ld+json">

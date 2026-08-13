@@ -20,19 +20,12 @@ const MATERIAL_FONTS =
 export function optimizeProductsPageHtml(html) {
   let out = html;
 
-  // Strip duplicate perf / tailwind blocks from preserved SEO head
+  // Strip duplicate perf / tailwind blocks from <head> (icons may be first)
   const headEnd = out.indexOf('</head>');
   if (headEnd > 0) {
     const head = out.slice(0, headEnd);
     const rest = out.slice(headEnd);
-    const preservedEnd = head.indexOf('<link rel="icon"');
-    if (preservedEnd > 0) {
-      const before = head.slice(0, preservedEnd);
-      const after = head.slice(preservedEnd);
-      out = stripPerfDuplicatesFromPreserved(before) + after + rest;
-    } else {
-      out = stripPerfDuplicatesFromPreserved(head) + rest;
-    }
+    out = stripPerfDuplicatesFromPreserved(head) + rest;
   }
 
   out = dedupeTailwindConfig(out);

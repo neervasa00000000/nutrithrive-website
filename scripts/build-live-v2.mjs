@@ -284,7 +284,10 @@ ${V2_TAILWIND_BUILT}
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/shared/css/v2-extra.css"/>
 ${blogCss}
-<link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/images/logo/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/logo/favicon-96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/apple-touch-icon.png">
 ${tailwind}
 </head>
 <body class="${bodyClass}">
