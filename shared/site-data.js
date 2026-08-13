@@ -235,7 +235,7 @@ window.NT_SITE_DATA = {
       price: 35,
       was: 41.98,
       weight: 325,
-      image: '/assets/images/homepage/product-showcase/gift.png',
+      image: '/assets/images/homepage/product-showcase/gift.webp',
       href: '/products/gift-pack/',
       pdp: {
         headline: 'Gift Pack',

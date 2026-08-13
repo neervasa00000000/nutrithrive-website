@@ -327,7 +327,7 @@ const products = [
     price: 35, was: 41.98,
     packLine: 'Ready to gift · save $6.98 vs buying separately',
     badgeSeller: 'Gift set',
-    image: '/assets/images/homepage/product-showcase/gift.png',
+    image: '/assets/images/homepage/product-showcase/gift.webp',
     imageAlt: 'NutriThrive Gift Pack: moringa powder, black tea, dried curry leaves, and moringa lavender soap',
     addFn: 'addGiftPackToCart', buyFn: 'buyGiftPackNow',
     features: [

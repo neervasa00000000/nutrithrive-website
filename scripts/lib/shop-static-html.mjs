@@ -49,7 +49,7 @@ const CATALOG = [
     price: 35,
     was: 41.98,
     href: '/products/gift-pack/',
-    img: '/assets/images/homepage/product-showcase/gift.png',
+    img: '/assets/images/homepage/product-showcase/gift.webp',
   },
   {
     id: 'moringa-soap',
