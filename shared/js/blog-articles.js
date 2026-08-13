@@ -1,4 +1,4 @@
-/** Auto-generated — 123 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 124 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -855,6 +855,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Health",
     "href": "/blog/omega-3-deficiency-australia-inflammation-food-sources-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "quick-healthy-meal-ideas-15-minutes-australia",
+    "title": "3 Quick Healthy Meal Ideas Ready in 15 Minutes",
+    "description": "Three genuinely quick, healthy dinner ideas you can make in 15 minutes with everyday ingredients — no fancy equipment, no long shopping list.",
+    "category": "Recipes",
+    "href": "/blog/quick-healthy-meal-ideas-15-minutes-australia",
+    "image": "/assets/images/blog/quick-healthy-chicken-veggie-stir-fry-australia.webp"
   },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
