@@ -382,6 +382,21 @@ window.NT_SITE_DATA = {
     { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026' },
     { category: 'Safety', title: 'Moringa Side Effects: What Happens If You Take Too Much', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
   ],
+  /** Right-sidebar promo card injected on blog articles (see shared/js/blog-sidebar-promo.js). */
+  blogSidebarPromo: {
+    excludeSlugs: ['quick-healthy-meal-ideas-15-minutes-australia'],
+    moringa400g: {
+      badge: 'Buy 3 Get 1',
+      headline: '400g Moringa Bundle',
+      description: 'Four 100g packs — save vs buying singles. Same shade-dried, NMI lab-tested powder.',
+      price: 35,
+      compareAt: 44,
+      unit: '/400g',
+      image: '/assets/images/product_photos/moringa-400g-bundle.jpeg',
+      href: '/products/moringa-powder/',
+      cta: 'Shop 400g Bundle →',
+    },
+  },
   cartUrl: '/cart',
   paymentUrl: '/payment',
   orderThankYouUrl: '/thank-you.html',
