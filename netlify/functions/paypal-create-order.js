@@ -234,12 +234,26 @@ export async function handler(event) {
                 };
             }
 
+            // Promo: 400g Moringa Bundle — buy 3, get the 4th free (applies across
+            // both catalog ids that map to the same physical product, since the
+            // homepage/shop grid adds it as "moringa-400g" while the product page's
+            // variant selector adds it as "moringa-variation-1").
+            const BUNDLE_400G_IDS = new Set(["moringa-400g", "moringa-variation-1"]);
+            const bundle400gQty = items.reduce((sum, item) => {
+                const id = String(item?.id ?? "").trim();
+                if (!BUNDLE_400G_IDS.has(id)) return sum;
+                const q = parseInt(item?.quantity ?? 1, 10);
+                return sum + (Number.isFinite(q) && q > 0 ? q : 0);
+            }, 0);
+            const bundle400gFreeUnits = Math.floor(bundle400gQty / 4);
+            const bundleDiscount = Number((bundle400gFreeUnits * PRODUCT_CATALOG["moringa-400g"].price).toFixed(2));
+
             const shippingCostRaw =
                 ShippingRates && typeof ShippingRates.calculate === "function"
                     ? ShippingRates.calculate(cc, cartItemsForShipping, computedSubtotal)
                     : null;
             const shippingCost = shippingCostRaw === null || shippingCostRaw === undefined ? 0 : Number(shippingCostRaw);
-            const totalNum = Number((computedSubtotal + shippingCost).toFixed(2));
+            const totalNum = Number((computedSubtotal + shippingCost - bundleDiscount).toFixed(2));
 
             purchaseUnit = {
                 invoice_id: `NT-${Date.now()}-${randomBytes(4).toString("hex")}`,
@@ -249,6 +263,7 @@ export async function handler(event) {
                     breakdown: {
                         item_total: moneyField(currency, computedSubtotal),
                         shipping: moneyField(currency, shippingCost),
+                        ...(bundleDiscount > 0 ? { discount: moneyField(currency, bundleDiscount) } : {}),
                     },
                 },
                 items: paypalItems,
