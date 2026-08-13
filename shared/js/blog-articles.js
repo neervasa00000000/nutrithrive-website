@@ -566,7 +566,7 @@ window.NT_BLOG_ARTICLES = [
     "description": "How to use moringa powder on your face — a 3-minute green gel mask for sensitive and dry skin, plus the 60-second lather trick. Made in Melbourne, from $7.",
     "category": "Guides",
     "href": "/blog/moringa-face-mask-australia-glow-ritual",
-    "image": "/assets/images/og/moringa-article-1200.jpg"
+    "image": "/assets/images/blog/moringa-face-mask-glow-ritual-australia.webp"
   },
   {
     "slug": "moringa-for-anxiety-stress-evidence-2026",
