@@ -330,8 +330,10 @@ function buildHtml(blog, cfg) {
 <script type="application/ld+json">${articleSchema(title, meta, slug)}</script>
 ${faqJson ? `<script type="application/ld+json">${faqJson}</script>` : ''}
 <script type="application/ld+json">${shellBreadcrumbJson(title, slug)}</script>
-<link rel="icon" type="image/png" href="/assets/images/logo/LOGO.webp" sizes="32x32"/>
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/LOGO.webp"/>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/images/logo/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/logo/favicon-96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#0f6b4d"/>
 <link rel="preconnect" href="https://www.googletagmanager.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
