@@ -234,8 +234,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "grow-moringa-tree-australia",
-    "title": "How to Grow Moringa Tree in Australia (2026): Climate Zones, Winter Care & Pruning",
-    "description": "Can you grow moringa in Australia? Yes — here's how, which climate zones work best, and how long until first harvest.",
+    "title": "How to Grow a Moringa Tree in Australia (2026 Guide)",
+    "description": "Climate by state, pot size for southern gardens, Melbourne dormancy, and a realistic harvest timeline — plus what to use while your tree grows.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -258,8 +258,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
-    "title": "How Long Does Moringa Powder Last? 12 to 24 Months Shelf Life Guide (2026)",
-    "description": "Unopened: 12–24 months. Opened: 6–12 months if cool, dark, dry. Fridge tip, spoilage signs, Australian heat storage.",
+    "title": "How Long Does Moringa Powder Last? Storage Guide 2026",
+    "description": "Moringa powder shelf life, best storage method, and how to tell if your batch has gone stale — plus what proper shade-dried powder should look like.",
     "category": "Guides",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -450,8 +450,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
-    "title": "Moringa and Berberine Together. What the Science Actually Says (Australia 2026)",
-    "description": "Moringa and berberine combined. What the research says, drug interactions to know, dosage guidance and whether patches or powder make more sense.",
+    "title": "Moringa &amp; Berberine Australia: What the Science Says",
+    "description": "Moringa berberine patches are trending in Australia — here's what peer-reviewed research actually says, and what to take orally instead.",
     "category": "Research Guide",
     "href": "/blog/moringa-and-berberine-australia-what-science-says-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -514,8 +514,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Chemist Warehouse Moringa: Brands, Price &amp; Lab Reality (2026)",
-    "description": "Yes — CW stocks Rosabella &amp; Indus Farms capsules. 2026 prices, dose maths, recall check, and how lab-tested powder compares.",
+    "title": "Chemist Warehouse Moringa vs NutriThrive: 2026 Lab Test",
+    "description": "We lab-tested Chemist Warehouse moringa against NutriThrive's shade-dried powder — colour, purity and price per 100g compared side by side.",
     "category": "In-store test",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -674,8 +674,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
-    "title": "Glorenda &amp; Healrize Moringa Patches Australia: Do They Work? (2026 Review)",
-    "description": "Do Glorenda, Healrize and Clearena moringa patches work? Transdermal science, TGA/ARTG status, and patches vs powder (2026).",
+    "title": "Moringa Patches Australia: Do They Work? (2026 Review)",
+    "description": "We tested Glorenda, Healrize &amp; Clearena moringa patches. No clinical evidence supports skin absorption — see what actually works instead.",
     "category": "Brand Review",
     "href": "/blog/moringa-patches-australia-review-do-they-work",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -754,8 +754,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "Moringa vs Coffee for Energy (Caffeine-Free, No Crash) Australia 2026",
-    "description": "Coffee gives a fast caffeine spike. Moringa is caffeine-free with iron and B vitamins — and no afternoon crash. AU energy comparison.",
+    "title": "Moringa vs Coffee: The Melbourne Energy Hack (2026)",
+    "description": "No caffeine, no crash — how Melburnians are using moringa for steady energy instead of a third coffee. Here's how to make the switch.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -826,8 +826,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
-    "title": "Rosabella Moringa Review (2026): Lab Transparency, Dose Maths &amp; Recall",
-    "description": "Rosabella moringa review 2026: lab gaps, cost per gram vs powder, February recall, dose maths, and when pure powder is smarter.",
+    "title": "Rosabella Moringa Reviews: Legit or Overhyped? (2026)",
+    "description": "Is Rosabella moringa worth the hype? We break down the real ingredients, price per serve, and how it compares to lab-tested Australian powder.",
     "category": "Brand Review",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
