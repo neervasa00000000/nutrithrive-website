@@ -1,4 +1,4 @@
-/** Auto-generated — 119 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 122 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -169,6 +169,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/black-tea-social-1200.jpg"
   },
   {
+    "slug": "darjeeling-black-tea-australia-guide",
+    "title": "Darjeeling Black Tea Australia: Buying &amp; Brewing Guide (2026)",
+    "description": "How to choose, brew, and store Darjeeling black tea in Australia — plus how it compares to English Breakfast and where to buy loose leaf online.",
+    "category": "Tea",
+    "href": "/blog/darjeeling-black-tea-australia-guide",
+    "image": "/assets/images/og/black-tea-social-1200.jpg"
+  },
+  {
     "slug": "darjeeling-chai-latte-recipe-winter-coffee-alternative-2026",
     "title": "Darjeeling Chai Latte Recipe: The Winter Coffee Alternative (2026)",
     "description": "Darjeeling chai latte: all the warmth of your morning coffee at half the caffeine. A 5-minute recipe that's better than anything from a cafe, and why Australians are making the switch this winter.",
@@ -207,6 +215,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Guides",
     "href": "/blog/diwali-gift-guide-curry-leaves-tea-australia",
     "image": "/assets/images/blog/diwali-gift-guide-curry-leaves-tea-australia-hero.webp"
+  },
+  {
+    "slug": "dried-curry-leaves-australia-guide",
+    "title": "Dried Curry Leaves Australia: Buy, Store &amp; Use Guide (2026)",
+    "description": "Everything to know about dried curry leaves in Australia — how to store them, how to temper them, and where to buy fresh-tasting leaves online.",
+    "category": "Guides",
+    "href": "/blog/dried-curry-leaves-australia-guide",
+    "image": "/assets/images/homepage/product-showcase/Curry.webp"
   },
   {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
@@ -726,6 +742,14 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa soap gets bold acne and anti-aging claims online. Here's a more look at what moringa actually offers skin, and what's marketing.",
     "category": "Guides",
     "href": "/blog/moringa-soap-benefits-for-skin-2026",
+    "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
+  },
+  {
+    "slug": "moringa-soap-benefits-skin-guide",
+    "title": "Moringa Soap: Benefits for Skin &amp; How to Choose (2026)",
+    "description": "What moringa soap actually does for skin, how to pick a genuine cold-process bar, and what to check on the label before you buy.",
+    "category": "Guides",
+    "href": "/blog/moringa-soap-benefits-skin-guide",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
   },
   {
