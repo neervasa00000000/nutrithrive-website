@@ -370,14 +370,28 @@ window.__NT_DEFER_LOADER_INITIALIZED__ = true;
     hasIdled: () => idleTriggered
   };
 
+  function ensureBlogSidebarPromo() {
+    try {
+      const path = normalizeCanonicalPath(window.location.pathname);
+      if (!path.startsWith('/blog/') || path === '/blog/' || path === '/blog/index.html') return;
+      if (path.includes('quick-healthy-meal-ideas-15-minutes-australia')) return;
+      if (!document.querySelector('aside.lg\\:col-span-4, aside[class*="col-span-4"]')) return;
+      loadScript('/shared/js/blog-sidebar-promo.min.js');
+    } catch (e) {
+      // noop
+    }
+  }
+
   // Technical SEO foundations (safe to run multiple times)
   ensureViewportMeta();
   ensureCanonicalLink();
   enforceBlogTitleBrand();
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', ensureBreadcrumbs, { once: true });
+    document.addEventListener('DOMContentLoaded', ensureBlogSidebarPromo, { once: true });
   } else {
     ensureBreadcrumbs();
+    ensureBlogSidebarPromo();
   }
 
   // Log initialization (can be removed in production)
