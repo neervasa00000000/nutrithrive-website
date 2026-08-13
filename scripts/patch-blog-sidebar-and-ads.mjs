@@ -61,26 +61,35 @@ function stripSidebar(html) {
   return html.replace(ASIDE_RE, '');
 }
 
-function patchFile(filePath) {
-  const base = path.basename(filePath);
-  let html = fs.readFileSync(filePath, 'utf8');
+function patchAdSlots(html) {
   let changed = false;
-
-  if (SKIP_SIDEBAR.has(base)) {
-    const stripped = stripSidebar(html);
-    if (stripped !== html) {
-      fs.writeFileSync(filePath, stripped);
-      return true;
-    }
-    return false;
-  }
-
   for (const { pattern, replacement } of AD_SLOT_MAP) {
     if (pattern.test(html)) {
       html = html.replace(pattern, replacement);
       changed = true;
     }
     pattern.lastIndex = 0;
+  }
+  return { html, changed };
+}
+
+function patchFile(filePath) {
+  const base = path.basename(filePath);
+  let html = fs.readFileSync(filePath, 'utf8');
+  let changed = false;
+
+  const adPatch = patchAdSlots(html);
+  html = adPatch.html;
+  changed = adPatch.changed;
+
+  if (SKIP_SIDEBAR.has(base)) {
+    const stripped = stripSidebar(html);
+    if (stripped !== html) {
+      html = stripped;
+      changed = true;
+    }
+    if (changed) fs.writeFileSync(filePath, html);
+    return changed;
   }
 
   if (ASIDE_RE.test(html)) {
