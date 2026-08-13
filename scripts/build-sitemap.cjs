@@ -45,6 +45,7 @@ const PATH_BLOCKLIST = new Set([
   "teleprompter-recorder-extension/popup.html",
   "teleprompter-recorder-extension/recorder.html",
   "teleprompter-recorder-extension/teleprompter.html",
+  "blog/partials/blog-sidebar.html",
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([

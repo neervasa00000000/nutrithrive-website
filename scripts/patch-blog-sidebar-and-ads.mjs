@@ -61,7 +61,7 @@ function patchFile(filePath) {
       changed = true;
     }
   } else if (
-    html.includes('class="nt-blog-article"') &&
+    html.includes('nt-blog-article') &&
     html.includes('lg:grid-cols-12') &&
     html.includes('</article>')
   ) {
