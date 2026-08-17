@@ -54,7 +54,7 @@ def fix_file(filepath):
 
     # ──────────────────────────────────────────
     # 1. Remove duplicate bare icon tags
-    # Bare form: <link rel="icon" href="/assets/images/logo/LOGO.webp"/>
+    # Bare form: <link rel="icon" href="/assets/images/logo/logo-112.png"/>
     # (no type=, no sizes=, no ?v=3 query string)
     # ──────────────────────────────────────────
     bare_icon_re = re.compile(

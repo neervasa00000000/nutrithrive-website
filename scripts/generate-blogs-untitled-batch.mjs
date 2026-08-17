@@ -325,7 +325,7 @@ function articleSchema(title, meta, slug, ogImage) {
     publisher: {
       '@type': 'Organization',
       name: 'NutriThrive',
-      logo: { '@type': 'ImageObject', url: `${BASE}/assets/images/logo/LOGO.webp` },
+      logo: { '@type': 'ImageObject', url: `${BASE}/assets/images/logo/logo-112.png` },
     },
     datePublished: DATE_ISO,
     dateModified: DATE_ISO,
@@ -400,10 +400,13 @@ function buildHtml(post) {
 <meta name="twitter:image" content="${ogImage}"/>
 <script type="application/ld+json">${articleSchema(title, meta, slug, ogImage)}</script>
 ${breadcrumbJson ? `<script type="application/ld+json">${breadcrumbJson}</script>\n` : ''}${faqJson ? `<script type="application/ld+json">${faqJson}</script>` : ''}
-<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/logo/favicon-48.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/logo/favicon-96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/assets/images/logo/apple-touch-icon.png">
+<meta name="msapplication-TileColor" content="#0f6b4d">
 <meta name="theme-color" content="#0f6b4d"/>
 <link rel="preconnect" href="https://www.googletagmanager.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>

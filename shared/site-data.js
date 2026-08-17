@@ -42,7 +42,7 @@ window.NT_SITE_DATA = {
     instagram: 'https://www.instagram.com/nutri__thrive/',
   },
   assets: {
-    logo: '/assets/images/logo/LOGO.webp',
+    logo: '/assets/images/logo/logo-112.png',
     hero: '/assets/images/blog/GC.webp',
     moringaHero: '/assets/images/product_photos/moringa.webp',
     aboutHero: '/assets/images/homepage/product-showcase/aboutpage.png',

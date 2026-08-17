@@ -138,6 +138,8 @@ Allow: /moringa-perth/
 Allow: /moringa-adelaide/
 Allow: /images/
 Allow: /favicon.ico
+Allow: /site.webmanifest
+Allow: /assets/images/logo/
 
 # ====================
 # CRAWL RATE (Optional)

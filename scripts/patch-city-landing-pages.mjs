@@ -79,7 +79,7 @@ function localBusinessJson(c) {
     url: `${BASE}/`,
     telephone: '+61438201419',
     email: 'nutrithrive0@gmail.com',
-    image: `${BASE}/assets/images/logo/LOGO.webp`,
+    image: `${BASE}/assets/images/logo/logo-112.png`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: '15 Europe Street',
