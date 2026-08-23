@@ -3,6 +3,9 @@
 # — 200 rewrites: pretty URLs (no 301s for /cart vs /cart/; use /cart, /about, /contact, /faq everywhere)
 # — Retired blog URLs → 404
 
+# Favicon — legacy /favicon.ico requests → assets folder
+/favicon.ico /assets/images/logo/favicon.ico 301!
+
 # Firecrawl audit cache (local tooling only — not public pages)
 /.firecrawl/* /.firecrawl/:splat 404
 /.firecrawl /.firecrawl 404

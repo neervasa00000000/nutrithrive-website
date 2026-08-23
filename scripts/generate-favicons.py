@@ -8,7 +8,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets/images/logo/LOGO-120.webp"
 OUT_DIR = ROOT / "assets/images/logo"
-ICO_PATH = ROOT / "favicon.ico"
+ICO_PATH = OUT_DIR / "favicon.ico"
 
 SIZES = {
     "favicon-48.png": 48,

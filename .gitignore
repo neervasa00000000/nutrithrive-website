@@ -32,3 +32,8 @@ tools/seo-audit/output/
 
 # Local experiments (not part of nutrithrive.com.au)
 gas-guardian/
+
+# Local SEO spreadsheets and draft folders (not site content)
+NutriThrive_*.xlsx
+untitled folder/
+untitled folder 2/
