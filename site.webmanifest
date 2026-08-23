@@ -9,6 +9,12 @@
   "theme_color": "#0f6b4d",
   "icons": [
     {
+      "src": "/assets/images/logo/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
       "src": "/assets/images/logo/favicon-48.png",
       "sizes": "48x48",
       "type": "image/png",

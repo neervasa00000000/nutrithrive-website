@@ -223,7 +223,7 @@ const html = `<!DOCTYPE html>
 <script type="application/ld+json">${howToJson}</script>
 <script type="application/ld+json">${breadcrumbJson}</script>
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/logo/favicon-48.png">
-<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/images/logo/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/logo/favicon-96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
