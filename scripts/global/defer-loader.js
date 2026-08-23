@@ -407,9 +407,5 @@ window.__NT_DEFER_LOADER_INITIALIZED__ = true;
     ensureBlogAdPromo();
   }
 
-  // Log initialization (can be removed in production)
-  if (window.console && console.log) {
-    console.log('[DeferLoader] Initialized - ready to defer non-critical scripts');
-  }
 })();
 }
