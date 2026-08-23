@@ -31,7 +31,7 @@
         var s = d.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(t, s);
       }
-    })(window, document);
+    }(window, document);
     window.rdt("init", "a2_ihc1rio99viy");
     window.rdt("track", "PageVisit");
   }
