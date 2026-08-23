@@ -1,9 +1,9 @@
-/** Auto-generated — 124 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 127 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
-    "title": "The 30-Plants-a-Week Gut Health Rule, Explained",
-    "description": "The &quot;30 plants a week&quot; gut health trend explained — what the microbiome research actually shows, and an easy way to track it.",
+    "title": "The 30-Plants-a-Week Gut Health Rule",
+    "description": "The 30-plants-a-week gut health trend explained. What the microbiome research actually shows.",
     "category": "Health",
     "href": "/blog/30-different-plants-per-week-gut-health-microbiome-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -35,7 +35,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-time-to-take-moringa-powder-morning-or-night-2026",
     "title": "Moringa: Morning or Night? The Honest Answer",
-    "description": "Morning or night — when should you actually take moringa powder? Here's the honest answer based on how it affects energy and sleep.",
+    "description": "Morning or night — when should you actually take moringa powder? The honest answer based on energy and sleep effects.",
     "category": "Guides",
     "href": "/blog/best-time-to-take-moringa-powder-morning-or-night-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -50,8 +50,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "caffeine-cutoff-time-sleep-black-tea-2026",
-    "title": "When to Stop Caffeine for Better Sleep",
-    "description": "The real science on caffeine cutoff timing for sleep — how many hours it actually takes to clear your system, and what to drink instead in the afternoon.",
+    "title": "Caffeine Cutoff Time for Black Tea",
+    "description": "Caffeine's half-life means timing matters. Here's when to have your last cup of black tea if you want to sleep well.",
     "category": "Health",
     "href": "/blog/caffeine-cutoff-time-sleep-black-tea-2026",
     "image": "/assets/images/blog/caffeine-cutoff-time-sleep-black-tea-2026-hero.webp"
@@ -59,7 +59,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "can-you-drink-darjeeling-tea-every-day-2026",
     "title": "Can You Drink Darjeeling Tea Every Day?",
-    "description": "Is it safe to drink Darjeeling tea daily? Here's the honest answer on caffeine limits and who should be more cautious.",
+    "description": "Is it safe to drink Darjeeling tea daily? The honest answer on caffeine limits and who should be more cautious.",
     "category": "Tea Guide",
     "href": "/blog/can-you-drink-darjeeling-tea-every-day-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
@@ -67,15 +67,23 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "can-you-use-dried-curry-leaves-for-hair-2026",
     "title": "Curry Leaves for Hair: What Actually Works",
-    "description": "Curry leaves are a traditional hair remedy — here's what actually has evidence behind it and how to use dried leaves for a hair rinse.",
+    "description": "Curry leaves are a traditional hair remedy. Here's what actually has evidence behind it and how to use dried leaves.",
     "category": "Guides",
     "href": "/blog/can-you-use-dried-curry-leaves-for-hair-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "cant-lose-weight-broken-gut-what-actually-worked-2026",
+    "title": "Couldn't Lose Weight? What Actually Worked",
+    "description": "I couldn't lose weight until I fixed my gut health first. Here's what actually worked, in plain terms.",
+    "category": "Wellness Story",
+    "href": "/blog/cant-lose-weight-broken-gut-what-actually-worked-2026",
+    "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
     "slug": "chronic-fatigue-what-actually-fixed-it-2026",
     "title": "Chronic Fatigue: What Actually Fixed It",
-    "description": "I struggled with chronic fatigue for years — here's what actually helped, and what turned out to be a waste of money.",
+    "description": "I struggled with chronic fatigue for years. Here's what actually helped, and what turned out to be a waste of money.",
     "category": "Wellness Story",
     "href": "/blog/chronic-fatigue-what-actually-fixed-it-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -83,15 +91,15 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "cortisol-cocktail-trend-explained-moringa-2026",
     "title": "The Cortisol Cocktail Trend, Explained",
-    "description": "The cortisol cocktail trend is everywhere — here's how moringa compares to the TikTok-famous mocktail, and whether it actually helps.",
+    "description": "The cortisol cocktail trend is everywhere. Here's how moringa compares to the TikTok-famous mocktail.",
     "category": "Wellness",
     "href": "/blog/cortisol-cocktail-trend-explained-moringa-2026",
     "image": "/assets/images/blog/stress.webp"
   },
   {
     "slug": "curry-leaves-dahl-recipe-30-minutes-australia-2026",
-    "title": "30-Minute Curry Leaves Dahl: The Easiest Healthy Dinner (2026)",
-    "description": "A proper South Indian-style dahl using dried curry leaves, done in 30 minutes, one pot, freezer-friendly. Why this meal is one of the most nutritious things an Australian can cook.",
+    "title": "30-Minute Curry Leaf Dal Recipe",
+    "description": "A genuinely 30-minute dal recipe with real curry leaf tempering. Simple, high-protein, and actually tastes right.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-dahl-recipe-30-minutes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -99,7 +107,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "curry-leaves-health-benefits-what-the-evidence-says-2026",
     "title": "Curry Leaves Health Benefits: The Evidence",
-    "description": "Curry leaves have real nutritional benefits beyond flavour — here's what's actually backed by evidence versus traditional claims.",
+    "description": "Curry leaves have real nutritional benefits beyond flavour. Here's what's actually backed by evidence.",
     "category": "Guides",
     "href": "/blog/curry-leaves-health-benefits-what-the-evidence-says-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
@@ -122,8 +130,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-recipes-beyond-dal",
-    "title": "5 Ways to Use Curry Leaves Beyond Dal",
-    "description": "Five real ways to use dried curry leaves beyond dal tadka — from rice to eggs to a quick chutney — with simple steps for each.",
+    "title": "5 Curry Leaf Recipes Beyond Dal",
+    "description": "Curry leaves aren't just for dal. 5 real recipes that put them to work in ways you might not have tried.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-recipes-beyond-dal",
     "image": "/assets/images/blog/curry-leaves-recipes-beyond-dal-hero.webp"
@@ -138,32 +146,32 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
-    "title": "Curry Leaves Tea. How to Make It and Why People Drink It (2026)",
-    "description": "How to make curry leaf tea with fresh or dried leaves — and what’s known (vs assumed) about digestion, blood sugar and hair claims.'s actually known about whether it works.",
+    "title": "Curry Leaf Tea: How to Make It + Real Benefits",
+    "description": "How to make curry leaf tea step by step, plus what the evidence actually says about its benefits — not just tradition.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
   },
   {
     "slug": "curry-leaves-vs-curry-powder-difference-explained-2026",
-    "title": "Curry Leaves vs Curry Powder: Not the Same Thing",
-    "description": "Curry leaves and curry powder are not the same thing — here's the real difference in flavour, use, and why recipes specify one or the other.",
+    "title": "Curry Leaves vs Curry Powder: Not the Same",
+    "description": "Curry leaves and curry powder aren't the same thing. Here's the real difference in flavour, use, and why recipes specify one.",
     "category": "Guides",
     "href": "/blog/curry-leaves-vs-curry-powder-difference-explained-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
   },
   {
     "slug": "cystic-acne-gut-healing-what-actually-cleared-skin-2026",
-    "title": "Cystic Acne and Gut Health: My Real Experience",
-    "description": "My honest experience linking gut health to cystic acne — what actually helped, with the caveat that everyone's skin is different.",
+    "title": "Cystic Acne and Gut Health: My Experience",
+    "description": "My honest experience linking gut health to cystic acne, what actually helped, and what didn't.",
     "category": "Wellness Story",
     "href": "/blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
-    "title": "Darjeeling Tea Australia: First Flush vs Second Flush (2026)",
-    "description": "Darjeeling in Australia: first vs second flush, caffeine levels, brewing tips, and how to spot real tea from supermarket blends. Melbourne dispatch.",
+    "title": "First Flush vs Second Flush Darjeeling Tea",
+    "description": "First flush or second flush Darjeeling — what's actually different, and which should you buy? A clear guide for Australians.",
     "category": "Tea Guide",
     "href": "/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
@@ -178,8 +186,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "darjeeling-chai-latte-recipe-winter-coffee-alternative-2026",
-    "title": "Darjeeling Chai Latte Recipe: The Winter Coffee Alternative (2026)",
-    "description": "Darjeeling chai latte: all the warmth of your morning coffee at half the caffeine. A 5-minute recipe that's better than anything from a cafe, and why Australians are making the switch this winter.",
+    "title": "Darjeeling Chai Latte (Winter Coffee Alternative)",
+    "description": "A warming Darjeeling chai latte recipe — a genuine winter coffee alternative, ready in 10 minutes.",
     "category": "Recipes",
     "href": "/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
@@ -187,7 +195,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "darjeeling-tea-coffee-replacement-honest-assessment-2026",
     "title": "Can Darjeeling Tea Replace Your Coffee?",
-    "description": "Thinking of swapping coffee for Darjeeling tea? Here's an honest comparison of energy, caffeine, and what to actually expect.",
+    "description": "Thinking of swapping coffee for Darjeeling tea? An honest comparison of energy, caffeine, and what to expect.",
     "category": "Tea Guide",
     "href": "/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
@@ -242,8 +250,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
-    "title": "What to Eat on Ozempic &amp; GLP-1 Medications (2026)",
-    "description": "GLP-1 medications reduce intake and nutrients. A GP-aligned guide to the nutrition gaps Ozempic users face and where moringa fits as a daily top-up.",
+    "title": "GLP-1 / Ozempic: Closing the Nutrition Gaps",
+    "description": "GLP-1 medications like Ozempic can create real nutrition gaps as appetite drops. Here's what to actually eat to protect muscle and energy.",
     "category": "Nutrition",
     "href": "/blog/glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
     "image": "/assets/images/blog/superfoods-australia-hero-1200.webp"
@@ -266,8 +274,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "high-protein-moringa-recipes-australia-2026",
-    "title": "10 High-Protein Moringa Recipes (Tested)",
-    "description": "10 tested high-protein recipes using moringa powder, from 15g to 40g protein per serve — faster and cheaper than whey.",
+    "title": "10 High-Protein Moringa Recipes",
+    "description": "10 tested high-protein recipes using moringa powder, from 15g to 40g protein per serve.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/high-protein-moringa-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -275,7 +283,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "title": "How Long Does Moringa Powder Last? 12 to 24 Months Shelf Life Guide (2026)",
-    "description": "Moringa powder shelf life, best storage method, and how to tell if your batch has gone stale — plus what proper shade-dried powder should look like.",
+    "description": "Unopened: 12–24 months. Opened: 6–12 months if cool, dark, dry. Fridge tip, spoilage signs, and Australian heat storage advice.",
     "category": "Guides",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -283,7 +291,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
     "title": "Darjeeling Tea Caffeine: vs Coffee &amp; Green Tea",
-    "description": "How much caffeine is really in Darjeeling tea compared to coffee and green tea? Here's the direct comparison in mg.",
+    "description": "How much caffeine is really in Darjeeling tea compared to coffee and green tea? The direct mg comparison, explained simply.",
     "category": "Tea Guide",
     "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
@@ -339,7 +347,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-brew-darjeeling-tea-perfectly-2026",
     "title": "How to Brew Darjeeling Tea Perfectly",
-    "description": "Water temperature, steep time, and the one mistake that ruins Darjeeling tea — here's how to brew it perfectly every time.",
+    "description": "Water temperature, steep time, and the one mistake that ruins Darjeeling tea. Brew it perfectly every time.",
     "category": "Tea",
     "href": "/blog/how-to-brew-darjeeling-tea-perfectly-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
@@ -351,6 +359,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Health",
     "href": "/blog/how-to-build-balanced-plate-no-calorie-counting-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "how-to-choose-good-face-wash-skin-type-australia-2026",
+    "title": "How to Choose a Good Face Wash for Your Skin Type",
+    "description": "Salicylic acid, sensitive skin, oily vs dry — here's how to actually choose the right face wash, plus an honest look at natural soap.",
+    "category": "Guides",
+    "href": "/blog/how-to-choose-good-face-wash-skin-type-australia-2026",
+    "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
@@ -378,16 +394,16 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-read-a-soap-ingredient-label",
-    "title": "How to Read a Soap Label (Plain English Guide)",
-    "description": "What's actually in a bar of soap, decoded in plain English — the ingredients worth knowing, what &quot;natural&quot; legally means, and what to skip.",
+    "title": "How to Read a Soap Ingredient Label",
+    "description": "What's actually in your soap? A simple guide to reading ingredient labels and spotting what to avoid.",
     "category": "Guides",
     "href": "/blog/how-to-read-a-soap-ingredient-label",
     "image": "/assets/images/blog/how-to-read-a-soap-ingredient-label-hero.webp"
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
-    "title": "How to Read Your Moringa Batch Code",
-    "description": "Every NutriThrive pack has a batch code — here's exactly how to read it to check freshness before you buy or use it.",
+    "title": "How to Read a Moringa Batch Code",
+    "description": "Every NutriThrive pack has a batch code. Here's exactly how to read it to check freshness before you buy or use it.",
     "category": "Wellness Journal",
     "href": "/blog/how-to-read-moringa-batch-codes-freshness",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -410,7 +426,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "iron-deficiency-australian-women-abs-real-numbers-2026",
-    "title": "Iron Deficiency in Australian Women: The Real Numbers (2026)",
+    "title": "Iron Deficiency in Women: The Real Numbers",
     "description": "1 in 4 Australian women don't get enough iron from food, 8x the rate for men. Real ABS data on why, and what helps.",
     "category": "Health",
     "href": "/blog/iron-deficiency-australian-women-abs-real-numbers-2026",
@@ -418,16 +434,16 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
-    "title": "Iron Deficiency in Women: Signs and Plant Sources",
-    "description": "Common signs of iron deficiency in Australian women, and the best plant-based sources — including how moringa compares.",
+    "title": "Iron Deficiency: Symptoms and Plant Sources",
+    "description": "Common signs of iron deficiency in Australian women, and the best plant-based sources to fix it.",
     "category": "Health",
     "href": "/blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
     "image": "/assets/images/blog/moringa-benefits-women-hormones-radiance.png"
   },
   {
     "slug": "is-moringa-safe-during-pregnancy-2026",
-    "title": "Is Moringa Safe During Pregnancy? What You Need to Know (2026)",
-    "description": "Moringa leaf in food amounts is generally considered safer in pregnancy; root and seeds are not. Questions to ask your midwife.",
+    "title": "Moringa and Pregnancy: A Clear Answer",
+    "description": "Is moringa safe in pregnancy? Here's a clear, consistent answer based on the evidence — always confirm with your GP first.",
     "category": "Health",
     "href": "/blog/is-moringa-safe-during-pregnancy-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -465,6 +481,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "moringa-30-day-challenge-honest-results",
+    "title": "30 Days of Moringa: My Honest Results",
+    "description": "I tried moringa daily for 30 days. Real results on energy, digestion, and sleep, no exaggeration.",
+    "category": "Wellness Story",
+    "href": "/blog/moringa-30-day-challenge-honest-results",
+    "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
     "title": "Moringa and Berberine Together. What the Science Actually Says (Australia 2026)",
     "description": "Moringa berberine patches are trending in Australia — here's what peer-reviewed research actually says, and what to take orally instead.",
@@ -474,24 +498,24 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-and-blood-sugar-diabetes-research-2026",
-    "title": "Moringa and Blood Sugar. What the Research Actually Shows (2026)",
-    "description": "Does moringa help blood sugar? The short answer: research is mixed. Some studies show promise, others show no effect. What this means if you have diabetes.",
+    "title": "Moringa and Blood Sugar: What Research Shows",
+    "description": "Does moringa help manage blood sugar? Real research on moringa and diabetes, plus medication interaction warnings.",
     "category": "Health",
     "href": "/blog/moringa-and-blood-sugar-diabetes-research-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
-    "title": "Moringa Avocado Toast: The Anti-Inflammatory Breakfast (2026)",
-    "description": "Avocado toast upgraded: moringa stirred into the smash adds iron, vitamin A, and antioxidants. A 3-minute recipe that looks great, tastes better, and actually does something.",
+    "title": "Moringa Avocado Toast (5-Minute Recipe)",
+    "description": "A simple moringa avocado toast recipe — an easy, genuinely anti-inflammatory breakfast ready in 5 minutes.",
     "category": "Recipes",
     "href": "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-before-after-workout-timing-guide-2026",
-    "title": "Moringa Before or After a Workout. What Actually Makes Sense (2026)",
-    "description": "When's the best time to take moringa around exercise? The iron and antioxidant angles are real. The pre-workout energy claim isn't. What actually makes sense.",
+    "title": "Moringa Before or After Your Workout?",
+    "description": "Take moringa before or after training? Here's the honest answer on timing, energy, and recovery for Australian gym-goers.",
     "category": "Guides",
     "href": "/blog/moringa-before-after-workout-timing-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -509,12 +533,11 @@ window.NT_BLOG_ARTICLES = [
     "title": "Best Moringa Brands Australia 2026: Ranked by Lab, Dose &amp; $/100g",
     "description": "7 Australian moringa options ranked: lab transparency, freshness, dose maths, price per 100g. Rosabella capsules vs powder brands — who passes?",
     "category": "Research Guide",
-    "href": "/blog/moringa-brands-comparison-australia-2026",
-    "image": "/assets/images/og/moringa-article-1200.jpg"
+    "href": "/blog/moringa-brands-comparison-australia-2026"
   },
   {
     "slug": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
-    "title": "Moringa, Cortisol &amp; Brain Fog: What the Science Says",
+    "title": "Moringa, Cortisol &amp; Brain Fog: What Science Says",
     "description": "Can moringa help manage cortisol, stress, and brain fog? Here's the real science, separated from wellness-trend hype.",
     "category": "Health",
     "href": "/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
@@ -531,7 +554,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "title": "Chemist Warehouse Moringa: Brands, Price &amp; Lab Reality (2026)",
-    "description": "We lab-tested Chemist Warehouse moringa against NutriThrive's shade-dried powder — colour, purity and price per 100g compared side by side.",
+    "description": "Yes — CW stocks Rosabella &amp; Indus Farms capsules. 2026 prices, dose maths, recall check, and how lab-tested powder compares.",
     "category": "In-store test",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -539,15 +562,15 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-detox-what-is-real-2026",
     "title": "Moringa Detox Claims: Fact-Checked",
-    "description": "Does moringa actually &quot;detox&quot; your body? Here's an honest look at what the science supports and what's just supplement marketing.",
+    "description": "Does moringa actually 'detox' your body? An honest look at what the science supports and what's just marketing.",
     "category": "Health",
     "href": "/blog/moringa-detox-what-is-real-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-energy-bites-kids-lunchbox-recipe-australia-2026",
-    "title": "Moringa Energy Bites for Kids: No-Bake Lunchbox Recipe (2026)",
-    "description": "Three ingredients, no baking, 15 minutes. These no-bake moringa energy bites are the lunchbox snack Australian parents are making instead of buying processed muesli bars.",
+    "title": "Moringa Energy Bites (Kids' Lunchbox Recipe)",
+    "description": "A simple moringa energy bites recipe kids actually like — no-bake, lunchbox-ready, and easy to make ahead.",
     "category": "Recipes",
     "href": "/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -594,24 +617,24 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-for-hair-growth-eating-evidence-2026",
-    "title": "Moringa for Hair Growth: What the Evidence Shows",
-    "description": "Can eating moringa powder support hair growth? Real evidence on biotin, iron, and zinc content — plus how to actually use it.",
+    "title": "Moringa for Hair Growth: What Evidence Shows",
+    "description": "Can eating moringa powder support hair growth? Real evidence on biotin, iron, and zinc content, and how to use it.",
     "category": "Health",
     "href": "/blog/moringa-for-hair-growth-eating-evidence-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-for-high-blood-pressure-hypertension-2026",
-    "title": "Moringa for High Blood Pressure. What the Evidence Shows (2026)",
-    "description": "Moringa and blood pressure: what evidence suggests, what it doesn’t prove, and the medication interaction you must know.'re on medication.",
+    "title": "Moringa and Blood Pressure: The Evidence",
+    "description": "Can moringa help lower blood pressure? What studies actually show, and why to talk to your doctor before combining with BP meds.",
     "category": "Health",
     "href": "/blog/moringa-for-high-blood-pressure-hypertension-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-for-inflammation-anti-inflammatory-research-2026",
-    "title": "Moringa for Inflammation. What the Research Says (2026)",
-    "description": "Moringa contains real anti-inflammatory compounds - but 'reduces inflammation' is one of the most overused phrases in wellness. What the evidence shows.",
+    "title": "Moringa and Inflammation: The Research",
+    "description": "Is moringa actually anti-inflammatory? What the research supports, separated from supplement marketing claims.",
     "category": "Health",
     "href": "/blog/moringa-for-inflammation-anti-inflammatory-research-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -626,39 +649,39 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-for-menopause-symptoms-hormones-2026",
-    "title": "Moringa for Menopause: Hormones, Hot Flushes and What's Actually Known (2026)",
-    "description": "Moringa gets recommended for menopause symptoms increasingly. What the research shows, what's promising, and what's still unproven:.",
+    "title": "Moringa for Menopause: What the Evidence Says",
+    "description": "Can moringa ease menopause symptoms? Here's an honest look at the hormone and nutrient evidence, not just marketing claims.",
     "category": "Health",
     "href": "/blog/moringa-for-menopause-symptoms-hormones-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-for-pcos-polycystic-ovary-syndrome-2026",
-    "title": "Moringa for PCOS. What the Research Actually Shows (2026)",
-    "description": "Moringa and PCOS: what animal and early research shows, what’s unproven in humans, and which symptoms it might support.'s still unproven in humans, and what PCOS symptoms moringa might support.",
+    "title": "Moringa and PCOS: The Evidence",
+    "description": "Can moringa help manage PCOS symptoms? Here's what the research actually says, separated from supplement marketing hype.",
     "category": "Health",
     "href": "/blog/moringa-for-pcos-polycystic-ovary-syndrome-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-for-period-pain-pms-menstrual-health-2026",
-    "title": "Moringa for Period Pain and PMS. What Helps and What Doesn't (2026)",
-    "description": "Can moringa reduce period pain or PMS symptoms? The iron and magnesium angle is real. The &quot;hormone balancing&quot; claims are overstated. The breakdown:",
+    "title": "Moringa for Period Pain &amp; PMS: The Evidence",
+    "description": "Can moringa ease period pain and PMS symptoms? Here's what the evidence shows, and how to actually use it if you try.",
     "category": "Health",
     "href": "/blog/moringa-for-period-pain-pms-menstrual-health-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-for-skin-eating-benefits-glow-2026",
-    "title": "Moringa for Skin: The Real Story on the &quot;Glow&quot;",
-    "description": "Does eating moringa powder actually improve skin? Antioxidant and vitamin content explained, plus realistic timeframes.",
+    "title": "Moringa for Skin: The Real Story",
+    "description": "Does eating moringa powder actually improve skin? Antioxidant and vitamin content explained, with realistic timeframes.",
     "category": "Health",
     "href": "/blog/moringa-for-skin-eating-benefits-glow-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-for-sleep-quality-insomnia-2026",
-    "title": "Does Moringa Help You Sleep Better?",
+    "title": "Moringa for Sleep: What the Evidence Shows",
     "description": "Can moringa improve sleep quality? Here's the real evidence, best time to take it, and what it won't do for insomnia.",
     "category": "Health",
     "href": "/blog/moringa-for-sleep-quality-insomnia-2026",
@@ -667,15 +690,15 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-for-weight-loss-evidence-2026",
     "title": "Moringa for Weight Loss: The Honest Evidence",
-    "description": "Does moringa help with weight loss? Real evidence, not hype — what it can and can't do, and how to use it if you're trying.",
+    "description": "Does moringa help with weight loss? Real evidence, not hype — what it can and can't do, and how to use it.",
     "category": "Health",
     "href": "/blog/moringa-for-weight-loss-evidence-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-gut-health-digestion-evidence-2026",
-    "title": "Moringa for Gut Health and Digestion. What the Evidence Shows (2026)",
-    "description": "Moringa contains fibre, antioxidants, and plant compounds studied for gut-related effects. What's actually shown and what's still in the preliminary stages.",
+    "title": "Moringa and Gut Health: The Evidence",
+    "description": "Does moringa actually support gut health and digestion? Here's what the research says, without the overreach.",
     "category": "Health",
     "href": "/blog/moringa-gut-health-digestion-evidence-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -714,8 +737,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-pregnancy-safe-australia-trimester-guide-2026",
-    "title": "Is Moringa Safe During Pregnancy? Australia Trimester Guide (2026)",
-    "description": "Is moringa safe in pregnancy in Australia? Leaf powder vs root, trimester cautions, iron/folate context — ask your GP (not medical advice).",
+    "title": "Moringa and Pregnancy: A Trimester Guide",
+    "description": "Is moringa safe by trimester? What's known, and why most experts advise caution. Always talk to your GP first.",
     "category": "Health",
     "href": "/blog/moringa-pregnancy-safe-australia-trimester-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -723,7 +746,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-side-effects-what-happens-take-too-much-2026",
     "title": "Moringa Side Effects. What Happens If You Take Too Much? (2026)",
-    "description": "Moringa side effects: safe daily dose, what happens with too much, medication interactions and pregnancy safety. Evidence-based Australian guide.",
+    "description": "Side effects of moringa powder: digestive upset, nausea, loose stools &amp; more. Are they serious? Who should avoid it, how to prevent issues, safety research. Australia 2026.",
     "category": "Safety &amp; Side Effects",
     "href": "/blog/moringa-side-effects-what-happens-take-too-much-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -754,8 +777,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-soap-benefits-skin-guide",
-    "title": "Moringa Soap: Benefits for Skin &amp; How to Choose (2026)",
-    "description": "What moringa soap actually does for skin, how to pick a genuine cold-process bar, and what to check on the label before you buy.",
+    "title": "Moringa Soap for Skin: The Real Benefits",
+    "description": "What does moringa soap actually do for your skin? Real benefits, who it suits, and how it compares to regular soap.",
     "category": "Guides",
     "href": "/blog/moringa-soap-benefits-skin-guide",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
@@ -763,7 +786,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-soap-vs-regular-soap-comparison-2026",
     "title": "Moringa Soap vs Regular Soap: The Difference",
-    "description": "Is moringa soap actually better than regular soap? Here's what's in it, the real skin benefits, and who should try it.",
+    "description": "Is moringa soap actually better than regular soap? What's in it, the real skin benefits, and who should try it.",
     "category": "Guides",
     "href": "/blog/moringa-soap-vs-regular-soap-comparison-2026",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
@@ -778,8 +801,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-ashwagandha-comparison-2026",
-    "title": "Moringa vs Ashwagandha: Daily Nutrient Leaf vs Stress Adaptogen (2026)",
-    "description": "Moringa = daily nutrients (iron, vitamins). Ashwagandha = stress/sleep adaptogen. Who should take which, timing, and when both make sense.",
+    "title": "Moringa vs Ashwagandha: Which Wins?",
+    "description": "Moringa vs ashwagandha compared — energy, stress, and what each actually does. A clear breakdown for Australians choosing between them.",
     "category": "Health",
     "href": "/blog/moringa-vs-ashwagandha-comparison-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -797,8 +820,7 @@ window.NT_BLOG_ARTICLES = [
     "title": "Moringa vs Spirulina vs Matcha: Which Wins?",
     "description": "Moringa vs spirulina vs matcha compared on price, taste, and results for Australians. Which superfood actually wins? See the breakdown.",
     "category": "Research Guide",
-    "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia",
-    "image": "/assets/images/og/moringa-article-1200.jpg"
+    "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
   },
   {
     "slug": "moringa-vs-whey-protein-comparison-2026",
@@ -834,8 +856,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "natural-pre-workout-moringa-australia-2026",
-    "title": "Moringa as a Natural Pre-Workout: The Evidence",
-    "description": "Can moringa replace your pre-workout supplement? Here's an honest look at the energy and performance evidence.",
+    "title": "Moringa as a Natural Pre-Workout",
+    "description": "Can moringa replace your pre-workout? An honest look at the energy and performance evidence before you swap.",
     "category": "Wellness",
     "href": "/blog/natural-pre-workout-moringa-australia-2026",
     "image": "/assets/images/homepage/product-showcase/Moringa.webp"
@@ -867,7 +889,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
     "title": "Rosabella Moringa Review (2026): Lab Transparency, Dose Maths &amp; Recall",
-    "description": "Is Rosabella moringa worth the hype? We break down the real ingredients, price per serve, and how it compares to lab-tested Australian powder.",
+    "description": "Rosabella moringa review for Australians in 2026: lab transparency gap, cost per gram and per month vs powder, February Salmonella recall, dose maths, and who should choose pure powder instead.",
     "category": "Brand Review",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -954,8 +976,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "what-does-aust-l-mean-supplement-label-australia-2026",
-    "title": "What Does AUST L Mean on a Supplement? (Australian Guide)",
-    "description": "AUST L vs AUST R: what's the real difference between listed and registered complementary medicines in Australia, and how to check the ARTG.",
+    "title": "What Does AUST L Mean? A TGA Guide",
+    "description": "AUST L vs AUST R — what's the real difference, and what it means for the supplements you buy. Straight from the TGA.",
     "category": "Guides",
     "href": "/blog/what-does-aust-l-mean-supplement-label-australia-2026",
     "image": "/assets/images/og/aust-l-supplement-label-australia-1200.jpg"
@@ -963,7 +985,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
     "title": "What Does Moringa Actually Taste Like?",
-    "description": "Moringa tastes like warm hay and split peas — not sweet like a green smoothie. What to expect and four ways to mask it.",
+    "description": "Moringa tastes earthy and grassy, not sweet like a green smoothie. Here's exactly what to expect and how to make it taste better.",
     "category": "Guides",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -979,7 +1001,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "why-always-tired-nutritional-deficiencies-australia-2026",
     "title": "Why Am I Always Tired? The Nutritional Causes",
-    "description": "Always tired despite sleeping enough? These are the most common nutritional deficiencies behind fatigue in Australians.",
+    "description": "Always tired despite sleeping enough? The most common nutritional deficiencies behind fatigue in Australians.",
     "category": "Health",
     "href": "/blog/why-always-tired-nutritional-deficiencies-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
