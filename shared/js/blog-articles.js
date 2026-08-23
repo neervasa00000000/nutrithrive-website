@@ -1,4 +1,4 @@
-/** Auto-generated — 127 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 127 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -533,7 +533,8 @@ window.NT_BLOG_ARTICLES = [
     "title": "Best Moringa Brands Australia 2026: Ranked by Lab, Dose &amp; $/100g",
     "description": "7 Australian moringa options ranked: lab transparency, freshness, dose maths, price per 100g. Rosabella capsules vs powder brands — who passes?",
     "category": "Research Guide",
-    "href": "/blog/moringa-brands-comparison-australia-2026"
+    "href": "/blog/moringa-brands-comparison-australia-2026",
+    "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
@@ -820,7 +821,8 @@ window.NT_BLOG_ARTICLES = [
     "title": "Moringa vs Spirulina vs Matcha: Which Wins?",
     "description": "Moringa vs spirulina vs matcha compared on price, taste, and results for Australians. Which superfood actually wins? See the breakdown.",
     "category": "Research Guide",
-    "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia"
+    "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia",
+    "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-vs-whey-protein-comparison-2026",
