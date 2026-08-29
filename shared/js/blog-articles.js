@@ -1,4 +1,4 @@
-/** Auto-generated — 127 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 128 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -231,6 +231,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Guides",
     "href": "/blog/dried-curry-leaves-australia-guide",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
+  },
+  {
+    "slug": "fathers-day-gift-under-40",
+    "title": "Last-Minute Father's Day Gift Under $40, Packed in Truganina",
+    "description": "Father's Day is Sunday 6 Sep 2026. This weekend is the interstate cutoff. I pack a $35 set in Truganina: moringa, Darjeeling, curry leaves, soap.",
+    "category": "Guides",
+    "href": "/blog/fathers-day-gift-under-40",
+    "image": "/assets/images/homepage/product-showcase/gift.webp"
   },
   {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
