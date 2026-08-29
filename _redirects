@@ -36,6 +36,8 @@
 # Legacy / duplicate stubs
 /shipping-returns.html /pages/shipping/shipping-returns 301
 /pages/shipping/shipping-returns.html /pages/shipping/shipping-returns 301!
+/pages/homepage/melbourne /melbourne/ 301!
+/pages/homepage/melbourne/ /melbourne/ 301!
 /pages/homepage/melbourne.html /melbourne/ 301!
 /pages/homepage/melbourne.min.css /styles/pages/melbourne.min.css 301!
 /pages/homepage/melbourne.css /styles/pages/melbourne.css 301!
@@ -200,8 +202,8 @@
 /blog/moringa-vs-matcha-superfood-comparison-melbourne-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/best-protein-powder-australia-2026-complete-guide /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/best-protein-powder-australia-2026-complete-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/best-protein-powder-australia-2026-complete-guide /blog/moringa-vs-whey-protein-comparison-2026 301
+/blog/best-protein-powder-australia-2026-complete-guide.html /blog/moringa-vs-whey-protein-comparison-2026 301
 /blog/how-to-grow-moringa-in-australia-complete-guide-2026.html /blog/grow-moringa-tree-australia 301
 /blog/how-to-grow-moringa-in-australia-complete-guide-2026 /blog/grow-moringa-tree-australia 301
 # Cannibalization fix — May 2026 duplicate growing guide → canonical grow guide
@@ -237,8 +239,8 @@
 /blog/best-protein-energy-bars-australia-2026-supermarket-guide.html /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/moringa-powder-vs-capsules-which-one-actually-works-better-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/best-protein-powder-australia /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/best-protein-powder-australia.html /blog/how-to-choose-moringa-powder-australia-2026 301
+/blog/best-protein-powder-australia /blog/moringa-vs-whey-protein-comparison-2026 301
+/blog/best-protein-powder-australia.html /blog/moringa-vs-whey-protein-comparison-2026 301
 /blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide /404.html 410
 /blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html /404.html 410
 /blog/high-protein-snacks-australia-25-options-under-150-calories-2025 /404.html 410
@@ -788,6 +790,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/how-to-read-a-soap-ingredient-label /blog/how-to-read-a-soap-ingredient-label.html 200
 /blog/how-to-choose-good-face-wash-skin-type-australia-2026.html /blog/how-to-choose-good-face-wash-skin-type-australia-2026 301!
 /blog/how-to-choose-good-face-wash-skin-type-australia-2026 /blog/how-to-choose-good-face-wash-skin-type-australia-2026.html 200
+/blog/fathers-day-gift-under-40.html /blog/fathers-day-gift-under-40 301!
+/blog/fathers-day-gift-under-40 /blog/fathers-day-gift-under-40.html 200
 
 # Pillar guides (2026-08-13)
 /blog/dried-curry-leaves-australia-guide.html /blog/dried-curry-leaves-australia-guide 301!
