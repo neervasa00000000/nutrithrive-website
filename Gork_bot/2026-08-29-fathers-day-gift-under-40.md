@@ -58,7 +58,6 @@ Live product page, audited 29 August 2026: [Gift Pack](https://nutrithrive.com.a
 | Darjeeling black tea | 100 g | Loose leaf, packed here. About 50 cups at 2 tsp per pot. | [$7.50](https://nutrithrive.com.au/products/black-tea/) |
 | Dried curry leaves | 30 g | Whole kari leaf (*Murraya koenigii*) for tadka. Not curry powder. | [$7](https://nutrithrive.com.au/products/curry-leaves/) |
 | Moringa lavender soap | 95 g | Handmade Australian bar. Everyday wash, not a skin treatment. | [$7](https://nutrithrive.com.au/products/moringa-soap/) |
-| **Singles total** | **325 g** | Four SKUs, four add-to-carts | **$32.50** |
 | **Gift pack** | **325 g** | One SKU, packed as a set | **$35.00** |
 
 At today's locked prices the four singles add to **$32.50**. The pack is **$2.50 more** because it is one gift-ready SKU. The product page still shows compare-at **$41.98** / "save $6.98". That is the page's listed RRP, not the current singles sum. Want those four items without a gift box? Buy the singles. Want one parcel that looks like a gift? Buy the pack.
