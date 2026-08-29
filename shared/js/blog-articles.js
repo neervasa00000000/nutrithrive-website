@@ -1,4 +1,4 @@
-/** Auto-generated — 128 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 128 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
