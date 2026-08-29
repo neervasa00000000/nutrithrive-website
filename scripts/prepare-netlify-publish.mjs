@@ -22,6 +22,7 @@ const IGNORE = new Set([
   'tools',
   'issues',
   'gas-guardian',
+  'Gork_bot',
 ]);
 
 const IGNORE_FILES = new Set([

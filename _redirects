@@ -10,6 +10,11 @@
 /.firecrawl/* /.firecrawl/:splat 404
 /.firecrawl /.firecrawl 404
 
+# Local agent notes — never a public page
+/Gork_bot /Gork_bot 404
+/Gork_bot/ /Gork_bot/ 404
+/Gork_bot/* /Gork_bot/:splat 404
+
 # Legacy image path (never published; linked from magnesium guide sidebar)
 /assets/images/product_photos/webp/thumbs/moringa.jpg /assets/images/product_photos/moringa.webp 301
 /assets/images/product_photos/webp/thumbs/moringa.webp /assets/images/product_photos/moringa.webp 301
