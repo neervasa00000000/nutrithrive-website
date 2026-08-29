@@ -6,6 +6,7 @@ gas-guardian/
 .build/
 node_modules/
 audit/
+Gork_bot/
 scripts/templates/
 tools/
 crawl_results.json
