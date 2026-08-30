@@ -14,7 +14,7 @@ window.NT_BLOG_ARTICLES = [
     "description": "Wildcard weekend is done. Week 2 starts Thursday. I fry dried kari leaf in ghee over nuts or popcorn. 30g, Truganina, $7.",
     "category": "Recipes",
     "href": "/blog/afl-finals-snacks-curry-leaf-tadka",
-    "image": "/assets/images/homepage/product-showcase/Curry.webp"
+    "image": "/assets/images/blog/AFL.webp"
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
