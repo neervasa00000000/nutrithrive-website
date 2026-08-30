@@ -1,4 +1,4 @@
-/** Auto-generated — 128 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 129 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -7,6 +7,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Health",
     "href": "/blog/30-different-plants-per-week-gut-health-microbiome-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "afl-finals-snacks-curry-leaf-tadka",
+    "title": "AFL Finals Snacks: Curry-Leaf Tadka, Not Party Pies",
+    "description": "Wildcard weekend is done. Week 2 starts Thursday. I fry dried kari leaf in ghee over nuts or popcorn. 30g, Truganina, $7.",
+    "category": "Recipes",
+    "href": "/blog/afl-finals-snacks-curry-leaf-tadka",
+    "image": "/assets/images/homepage/product-showcase/Curry.webp"
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
