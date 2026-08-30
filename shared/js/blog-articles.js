@@ -10,7 +10,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "afl-finals-snacks-curry-leaf-tadka",
-    "title": "AFL Finals Snacks: Curry-Leaf Tadka, Not Party Pies",
+    "title": "AFL Finals Snacks: Curry-Leaf Tadka, Packed in Truganina",
     "description": "Wildcard weekend is done. Week 2 starts Thursday. I fry dried kari leaf in ghee over nuts or popcorn. 30g, Truganina, $7.",
     "category": "Recipes",
     "href": "/blog/afl-finals-snacks-curry-leaf-tadka",
