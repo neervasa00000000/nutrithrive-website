@@ -21,8 +21,8 @@ META = (
 )
 DATE = "2026-08-30"
 DATE_DISPLAY = "30 Aug 2026"
-HERO = "/assets/images/homepage/product-showcase/Curry.webp"
-OG = "https://nutrithrive.com.au/assets/images/homepage/product-showcase/Curry.webp"
+HERO = "/assets/images/blog/AFL.webp"
+OG = "https://nutrithrive.com.au/assets/images/blog/AFL.webp"
 CATEGORY = "Recipes"
 CATEGORY_HREF = "https://nutrithrive.com.au/blog/category/recipes/"
 MIN_READ = "13 min read"
