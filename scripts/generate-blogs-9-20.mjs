@@ -180,7 +180,7 @@ function markdownToHtml(md) {
       i += 1;
       while (i < lines.length && !lines[i].trim()) i += 1;
       if (lines[i]?.trim().startsWith('*Written by')) {
-        const written = lines[i].trim().replace(/\*Written by Goose Vasavada/, '*Written by Neer Vasa');
+        const written = lines[i].trim().replace(/^\*Written by [^,.]+/, '*Written by Neer');
         out.push(`<p style="margin-top:2rem; font-style:italic; color:#555;"><em>${inlineMd(written.replace(/^\*|\*$/g, ''))}</em></p>`);
         i += 1;
       }
@@ -233,7 +233,7 @@ function articleSchema(title, meta, slug) {
     '@type': 'Article',
     headline: title,
     description: meta,
-    author: { '@type': 'Person', '@id': `${BASE}/#person-neer`, name: 'Neer Vasa' },
+    author: { '@type': 'Person', '@id': `${BASE}/#person-neer`, name: 'Neer' },
     publisher: {
       '@type': 'Organization',
       name: 'NutriThrive',
@@ -310,7 +310,7 @@ function buildHtml(blog, cfg) {
 <link rel="alternate" hreflang="en-AU" href="${canonical}"/>
 <link rel="alternate" hreflang="x-default" href="${canonical}"/>
 <meta name="description" content="${escHtml(meta)}"/>
-<meta name="author" content="Neer Vasa, NutriThrive"/>
+<meta name="author" content="Neer, NutriThrive"/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content="${canonical}"/>
 <meta property="og:title" content="${escHtml(title)}"/>
@@ -369,7 +369,7 @@ ${faqJson ? `<script type="application/ld+json">${faqJson}</script>` : ''}
 <span class="text-on-surface-variant text-label-lg font-body-md">&#183; ${cfg.readMin} min read</span>
 </div>
 <h1 class="font-display text-headline-lg md:text-display text-forest-deep mb-4 leading-tight">${escHtml(title)}</h1>
-<p class="text-on-surface-variant text-body-md mb-8"><strong>By Neer Vasa, NutriThrive Truganina</strong> &#183; Last updated: ${DATE}</p>
+<p class="text-on-surface-variant text-body-md mb-8"><strong>By Neer, NutriThrive Truganina</strong> &#183; Last updated: ${DATE}</p>
 <div class="w-full aspect-[16/9] rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container">
 <img alt="${escHtml(title)}" class="w-full h-full object-cover" src="${prod.hero}" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high"/>
 </div>

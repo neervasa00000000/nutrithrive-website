@@ -281,7 +281,7 @@ function markdownToHtml(md) {
         const written = lines[i]
           .trim()
           .replace(/^\*|\*$/g, '')
-          .replace(/Goose Vasavada/g, AUTHOR_SCHEMA)
+          .replace(/Written by [^,.]+/, `Written by ${AUTHOR_SCHEMA}`)
           .replace(/Founder, NutriThrive Australia\.?/, 'NutriThrive Australia.');
         out.push(`<p style="margin-top:2rem; font-style:italic; color:#555;"><em>${inlineMd(written)}</em></p>`);
         i += 1;
