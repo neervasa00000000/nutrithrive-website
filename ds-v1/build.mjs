@@ -6,13 +6,15 @@ import { PRODUCTS, REVIEWS, costNote } from "./js/data.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = __dirname;
-const ASSET_VERSION = "20260831-4";
+const ASSET_VERSION = "20260831-5";
 const LIVE_MODE = process.env.DS_V1_LIVE === "1";
+const PAYMENT_ONLY = process.env.DS_V1_PAYMENT_ONLY === "1";
 const CSS_HREF = LIVE_MODE ? "/assets/css/ds-v1-system.css" : "/css/system.css";
 const CATALOG_SRC = LIVE_MODE ? "/scripts/global/ds-v1-catalog.js" : "/js/catalog.js";
 const SEARCH_SRC = LIVE_MODE ? "/scripts/global/ds-v1-search-index.js" : "/js/search-index.js";
 const SITE_SRC = LIVE_MODE ? "/scripts/global/ds-v1-site.js" : "/js/site.js";
 const CART_PAGE_SRC = LIVE_MODE ? "/scripts/global/ds-v1-cart-page.js" : "/js/cart-page.js";
+const PAYMENT_PAGE_SRC = LIVE_MODE ? "/scripts/global/ds-v1-payment-page.js" : "/js/payment-page.js";
 
 const CONTRACT = `<!--
 THESIS: A calm Australian wellness storefront that proves lab-tested moringa with published evidence, refusing marketplace clutter and decorative green wash.
@@ -1644,6 +1646,64 @@ function cartPage() {
   });
 }
 
+function paymentPage() {
+  const r = routes();
+  const paypalScripts = LIVE_MODE
+    ? `<script src="/scripts/global/paypal-client-config.min.js?v=${ASSET_VERSION}" defer></script>
+<script src="/scripts/global/paypal-sdk-loader.min.js?v=${ASSET_VERSION}" defer></script>
+`
+    : "";
+  return layout({
+    title: "Payment | NutriThrive Australia",
+    description: "Review your NutriThrive order, confirm shipping country, and complete checkout securely with PayPal or card.",
+    canonicalPath: "/payment",
+    current: "",
+    preserveTitle: true,
+    extraFoot: `${paypalScripts}<script src="${PAYMENT_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+    robots: "noindex, follow",
+    main: `
+      <section class="page-intro wrap cart-intro">
+        <h1>Payment</h1>
+        <p><a href="${r.cart}">Back to cart</a></p>
+      </section>
+      <section class="wrap cart-layout" id="pay-layout">
+        <div>
+          <div class="empty-state" id="pay-empty" hidden>
+            <h2>Your cart is empty</h2>
+            <p>Add something from the shop, then return here to pay with PayPal.</p>
+            <a class="btn btn-primary" href="${r.shop}">Continue shopping</a>
+          </div>
+          <div id="pay-form" class="pay-form">
+            <p class="pay-copy">All transactions are secure and encrypted.</p>
+            <p class="pay-copy">At checkout, PayPal will show the exact <strong>name, email and full shipping address</strong> stored in your wallet. Review those details carefully. We ship to the address you approve there.</p>
+            <div class="field">
+              <label for="shipping-country">Shipping country</label>
+              <select id="shipping-country">
+                <option value="AU" selected>Australia</option>
+              </select>
+            </div>
+            <div class="pay-box">
+              <h2>Choose your payment method</h2>
+              <div id="paypal-button-container">
+                <p class="payment-placeholder">Select a shipping country to continue.</p>
+              </div>
+              <div id="paypal-card-container"></div>
+              <p class="pay-powered">Powered by PayPal</p>
+              <p class="pay-status" id="pay-status" role="status"></p>
+            </div>
+          </div>
+        </div>
+        <aside class="summary" id="pay-summary">
+          <h2>Order summary</h2>
+          <div id="order-items"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+          <div class="summary-row"><span>Shipping</span><span id="shipping">Select country</span></div>
+          <div class="summary-row total"><span>Total</span><span id="total">$0.00</span></div>
+        </aside>
+      </section>`,
+  });
+}
+
 function notFoundPage() {
   return layout({
     title: "Page Not Found | NutriThrive Australia",
@@ -2099,6 +2159,7 @@ function writeGeneratedJs(search) {
     fs.copyFileSync(path.join(OUT, "css/system.css"), path.join(ROOT, "assets/css/ds-v1-system.css"));
     fs.copyFileSync(path.join(OUT, "js/site.js"), path.join(ROOT, "scripts/global/ds-v1-site.js"));
     fs.copyFileSync(path.join(OUT, "js/cart-page.js"), path.join(ROOT, "scripts/global/ds-v1-cart-page.js"));
+    fs.copyFileSync(path.join(OUT, "js/payment-page.js"), path.join(ROOT, "scripts/global/ds-v1-payment-page.js"));
   }
 }
 
@@ -2124,7 +2185,21 @@ function appendLiveRedirects() {
   }
 }
 
+function copyLivePaymentAssets() {
+  fs.mkdirSync(path.join(ROOT, "scripts/global"), { recursive: true });
+  fs.mkdirSync(path.join(ROOT, "assets/css"), { recursive: true });
+  fs.copyFileSync(path.join(OUT, "css/system.css"), path.join(ROOT, "assets/css/ds-v1-system.css"));
+  fs.copyFileSync(path.join(OUT, "js/payment-page.js"), path.join(ROOT, "scripts/global/ds-v1-payment-page.js"));
+}
+
 function main() {
+  if (LIVE_MODE && PAYMENT_ONLY) {
+    copyLivePaymentAssets();
+    emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
+    console.log("Wrote live PayPal /payment with the storefront UI.");
+    return;
+  }
+
   const r = routes();
   const articles = loadArticles().map((article) => ({ ...article, image: articleImage(article) }));
   const activeArticles = LIVE_MODE ? articles : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug]);
@@ -2156,6 +2231,7 @@ function main() {
     emit("shipping/index.html", shippingPage(), "pages/shipping/shipping-returns.html");
     emit("privacy/index.html", privacyPage(), "pages/legal/privacy-policy.html");
     emit("cart/index.html", cartPage(), "pages/shop/cart.html");
+    emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
     emit("404.html", notFoundPage());
     emit("melbourne/index.html", cityPage("Melbourne", "melbourne"), "pages/homepage/melbourne.html");
     emit("moringa-sydney/index.html", cityPage("Sydney", "sydney"));
@@ -2185,7 +2261,7 @@ function main() {
       wrapped += 1;
     }
     appendLiveRedirects();
-    console.log(`Wrote live ds-v1 pages to site root (${wrapped} ranking /blog articles). PayPal /payment was not overwritten.`);
+    console.log(`Wrote live ds-v1 pages to site root (${wrapped} ranking /blog articles), including PayPal /payment.`);
     return;
   }
 
@@ -2200,6 +2276,7 @@ function main() {
   writePage("shipping/index.html", shippingPage());
   writePage("privacy/index.html", privacyPage());
   writePage("cart/index.html", cartPage());
+  writePage("payment/index.html", paymentPage());
   writePage("checkout/index.html", checkoutPage());
   writePage("thank-you/index.html", thankYouPage());
   writePage("404.html", notFoundPage());
