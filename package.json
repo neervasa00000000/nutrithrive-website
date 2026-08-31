@@ -9,6 +9,8 @@
     "build:tailwind": "tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify",
     "build:minify": "node scripts/build-assets.mjs --skip-tailwind",
     "hooks:install": "node scripts/install-git-hooks.mjs",
+    "ds-v1:preview": "node ds-v1/build.mjs",
+    "ds-v1:live": "DS_V1_LIVE=1 node ds-v1/build.mjs && node scripts/verify-ds-v1-live.mjs",
     "blog:launch:apply": "node scripts/apply-blog-launch-schedule.mjs"
   },
   "dependencies": {
