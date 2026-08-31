@@ -611,10 +611,12 @@ if (document.readyState === "loading") {
     bindPdpVariant();
     bindGrowthFeatures();
     bindJournalSearch();
+    setTimeout(() => emitCartChange(), 0);
   });
 } else {
   bindHeader();
   bindPdpVariant();
   bindGrowthFeatures();
   bindJournalSearch();
+  setTimeout(() => emitCartChange(), 0);
 }

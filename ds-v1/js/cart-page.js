@@ -1,4 +1,6 @@
+(() => {
 const CART_KEY = "nt-ds-v1-cart";
+const LIVE_CART_KEY = "nutrithrive_cart";
 const VIEWED_KEY = "nt-ds-v1-viewed";
 
 const PAIRS = {
@@ -38,11 +40,44 @@ function checkoutPath() {
   return isLiveSite() ? "/payment" : "/checkout/";
 }
 
+function mapCartItems(items) {
+  return (Array.isArray(items) ? items : [])
+    .map((item) => {
+      if (!item || !item.id) return null;
+      const qty = Number(item.qty || item.quantity || 1);
+      if (!Number.isFinite(qty) || qty <= 0) return null;
+      const catalogItem = catalog().find((product) => product.id === item.id);
+      return {
+        ...item,
+        qty,
+        price: Number(item.price || catalogItem?.price || 0),
+        image: item.image || catalogItem?.image || "",
+        name: item.name || catalogItem?.name || "NutriThrive product",
+        variant: item.variant || catalogItem?.variant || "",
+      };
+    })
+    .filter(Boolean);
+}
+
 function readCart() {
-  if (window.NT?.readCart) return window.NT.readCart();
   try {
-    return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-  } catch {
+    const liveRaw = localStorage.getItem(LIVE_CART_KEY);
+    if (liveRaw) {
+      const data = JSON.parse(liveRaw);
+      const mapped = mapCartItems(Array.isArray(data) ? data : data?.items);
+      if (mapped.length) return mapped;
+    }
+    if (window.Cart?.get) {
+      const mapped = mapCartItems((window.Cart.get() || {}).items);
+      if (mapped.length) return mapped;
+    }
+    if (window.NT?.readCart) {
+      const mapped = mapCartItems(window.NT.readCart());
+      if (mapped.length) return mapped;
+    }
+    return mapCartItems(JSON.parse(localStorage.getItem(CART_KEY) || "[]"));
+  } catch (err) {
+    console.error("Cart read failed", err);
     return [];
   }
 }
@@ -178,35 +213,37 @@ function renderCart() {
   const lines = document.getElementById("cart-lines");
   const summary = document.getElementById("cart-summary");
   if (!lines || !summary) return;
-  const items = readCart();
-  const sub = items.reduce((n, i) => n + i.price * i.qty, 0);
-  if (!items.length) {
-    setLayout(true);
-    lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Moringa, tea, curry leaves and soap, all packed in Truganina.</p><a class="btn btn-primary" href="${shopPath()}">Shop the range</a></div>`;
-    summary.innerHTML = "";
-    renderRecs([], 0);
-    return;
-  }
-  setLayout(false);
-  lines.innerHTML = items
-    .map(
-      (item) => `<article class="cart-line">
+  try {
+    const items = readCart();
+    const sub = items.reduce((n, i) => n + Number(i.price || 0) * Number(i.qty || 1), 0);
+    if (!items.length) {
+      setLayout(true);
+      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Moringa, tea, curry leaves and soap, all packed in Truganina.</p><a class="btn btn-primary" href="${shopPath()}">Shop the range</a></div>`;
+      summary.innerHTML = "";
+      renderRecs([], 0);
+      return;
+    }
+    setLayout(false);
+    lines.innerHTML = items
+      .map((item) => {
+        const qty = Number(item.qty || 1);
+        return `<article class="cart-line">
         <img src="${esc(item.image)}" alt="" width="96" height="96">
         <div>
           <h2>${esc(item.name)}${item.variant ? ` · ${esc(item.variant)}` : ""}</h2>
           <div class="qty-ctrl">
-            <button type="button" data-set="${esc(item.id)}" data-qty="${item.qty - 1}" aria-label="Decrease">−</button>
-            <input value="${item.qty}" readonly aria-label="Quantity">
-            <button type="button" data-set="${esc(item.id)}" data-qty="${item.qty + 1}" aria-label="Increase">+</button>
+            <button type="button" data-set="${esc(item.id)}" data-qty="${qty - 1}" aria-label="Decrease">−</button>
+            <input value="${qty}" readonly aria-label="Quantity">
+            <button type="button" data-set="${esc(item.id)}" data-qty="${qty + 1}" aria-label="Increase">+</button>
           </div>
           <button class="remove-btn" type="button" data-remove="${esc(item.id)}">Remove</button>
         </div>
-        <div class="line-price">${money(item.price * item.qty)}</div>
-      </article>`
-    )
-    .join("");
-  const ship = shippingFor(items, sub);
-  summary.innerHTML = `
+        <div class="line-price">${money(item.price * qty)}</div>
+      </article>`;
+      })
+      .join("");
+    const ship = shippingFor(items, sub);
+    summary.innerHTML = `
     <h2>Summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
     <div class="summary-row"><span>Shipping</span><span>${ship === 0 ? "Free" : money(ship)}</span></div>
@@ -214,38 +251,48 @@ function renderCart() {
     <p class="hint" style="font-size:14px;color:var(--color-text-secondary);margin:12px 0 20px">${sub >= 80 ? "Free Australian shipping applied." : `Add ${money(80 - sub)} for free Australian shipping.`}${isLiveSite() ? " Final shipping and total are calculated at PayPal checkout." : ""}</p>
     <a class="btn btn-primary btn-block" href="${checkoutPath()}">Checkout</a>
   `;
-  lines.querySelectorAll("[data-set]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const id = btn.getAttribute("data-set");
-      const qty = parseInt(btn.getAttribute("data-qty"), 10);
-      if (qty < 1) {
+    lines.querySelectorAll("[data-set]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-set");
+        const qty = parseInt(btn.getAttribute("data-qty"), 10);
+        if (qty < 1) {
+          if (window.NT?.remove) window.NT.remove(id);
+          else writeCart(readCart().filter((i) => i.id !== id));
+          return;
+        }
+        if (window.NT?.setQty) window.NT.setQty(id, qty);
+        else {
+          writeCart(readCart().map((i) => (i.id === id ? { ...i, qty } : i)));
+        }
+      });
+    });
+    lines.querySelectorAll("[data-remove]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-remove");
         if (window.NT?.remove) window.NT.remove(id);
         else writeCart(readCart().filter((i) => i.id !== id));
-        return;
-      }
-      if (window.NT?.setQty) window.NT.setQty(id, qty);
-      else {
-        writeCart(readCart().map((i) => (i.id === id ? { ...i, qty } : i)));
-      }
+      });
     });
-  });
-  lines.querySelectorAll("[data-remove]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const id = btn.getAttribute("data-remove");
-      if (window.NT?.remove) window.NT.remove(id);
-      else writeCart(readCart().filter((i) => i.id !== id));
-    });
-  });
-  renderRecs(items, sub);
+    renderRecs(items, sub);
+  } catch (err) {
+    console.error("Cart render failed", err);
+    setLayout(true);
+    lines.innerHTML = `<div class="empty-state"><h2>We could not load your cart</h2><p>Refresh the page. If that does not work, open the shop and add the items again.</p><a class="btn btn-primary" href="${shopPath()}">Shop the range</a></div>`;
+  }
 }
 
 function bootCartPage() {
   renderCart();
 }
 
+window.NT = window.NT || {};
+window.NT.renderCart = renderCart;
 window.addEventListener("nt-cart-change", renderCart);
+window.addEventListener("pageshow", renderCart);
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", bootCartPage);
 } else {
   bootCartPage();
 }
+setTimeout(bootCartPage, 0);
+})();
