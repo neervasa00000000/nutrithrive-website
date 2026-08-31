@@ -175,6 +175,7 @@ const PRODUCT_GUIDES = {
   "moringa-powder": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
     ["How to take moringa powder", "how-to-add-moringa-to-diet"],
+    ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
   ],
   "curry-leaves": [
@@ -197,6 +198,88 @@ const PRODUCT_GUIDES = {
 function productGuideLinks(slug) {
   const guides = PRODUCT_GUIDES[slug] || PRODUCT_GUIDES["moringa-powder"];
   return guides.map(([label, articleSlug]) => `<li><a href="/journal/${articleSlug}/">${esc(label)}</a></li>`).join("");
+}
+
+function faqDetails(faqs) {
+  return faqs
+    .map(([q, a]) => {
+      const body = a && typeof a === "object" && a.html ? a.html : esc(a);
+      return `<details><summary>${esc(q)}</summary><p>${body}</p></details>`;
+    })
+    .join("");
+}
+
+const MORINGA_FEATURED_REVIEW_NAMES = [
+  "Jay Turakhia",
+  "buket",
+  "reetysha ramjee",
+  "Siv Mey",
+  "chizaram olanma",
+  "Jay Rohit Sharma",
+  "Priyankari Nath",
+];
+
+function moringaEducationHtml() {
+  const r = routes();
+  const taste = r.article("what-does-moringa-powder-taste-like-honest-guide-2026");
+  const use = r.article("how-to-add-moringa-to-diet");
+  const choose = r.article("how-to-choose-moringa-powder-australia-2026");
+  const store = r.article("how-long-does-moringa-powder-last-storage-shelf-life-2026");
+  return `
+          <section class="pdp-educate" aria-labelledby="why-nutrithrive-moringa">
+            <h2 id="why-nutrithrive-moringa">Why choose NutriThrive moringa powder?</h2>
+            <div class="pdp-why">
+              <div>
+                <h3>Farm grown</h3>
+                <p>Our moringa is grown on our own farm and processed by NutriThrive from leaf to finished powder.</p>
+              </div>
+              <div>
+                <h3>Shade-dried</h3>
+                <p>The leaves are shade-dried as part of our production process before being milled into powder.</p>
+              </div>
+              <div>
+                <h3>Australian lab tested</h3>
+                <p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a>.</p>
+              </div>
+              <div>
+                <h3>Nothing unnecessary</h3>
+                <p>The product contains moringa leaf powder without unnecessary fillers or additives.</p>
+              </div>
+              <div>
+                <h3>Packed in Melbourne</h3>
+                <p>Orders are packed in Truganina, Victoria, with Australia-wide delivery.</p>
+              </div>
+            </div>
+          </section>
+          <section class="pdp-educate" aria-labelledby="how-to-use-moringa">
+            <h2 id="how-to-use-moringa">How to use moringa powder</h2>
+            <p>Moringa powder has a naturally earthy, leafy flavour. Start with a small amount and adjust it to your taste.</p>
+            <p>Try adding it to:</p>
+            <ul>
+              <li>smoothies</li>
+              <li>juice or water</li>
+              <li>yoghurt</li>
+              <li>soups</li>
+              <li>savoury meals</li>
+            </ul>
+            <p><a href="${use}">See how to add moringa to your diet</a>.</p>
+          </section>
+          <section class="pdp-educate" aria-labelledby="moringa-taste">
+            <h2 id="moringa-taste">What does moringa powder taste like?</h2>
+            <p>Moringa has an earthy, green and slightly bitter flavour. Some people enjoy it simply mixed into drinks, while others prefer combining it with stronger flavours such as fruit, yoghurt or smoothies.</p>
+            <p><a href="${taste}">Read our complete guide to what moringa powder tastes like →</a></p>
+          </section>
+          <section class="pdp-educate" aria-labelledby="buy-moringa-australia">
+            <h2 id="buy-moringa-australia">Where to buy moringa powder in Australia</h2>
+            <p>NutriThrive moringa powder can be ordered directly online in Australia. Our moringa is grown on our farm, Australian lab tested and packed in Truganina, Victoria.</p>
+            <p>Orders are available for Australia-wide delivery, with same-day weekday dispatch for eligible orders placed before 2pm.</p>
+            <p><a href="#pdp-buy">Choose your size →</a></p>
+          </section>
+          <section class="pdp-educate" aria-labelledby="choose-moringa">
+            <h2 id="choose-moringa">What to look for when choosing moringa powder</h2>
+            <p>A useful starting point is the ingredient list: look for a single ingredient rather than a blend with fillers. Testing information, drying method, origin and how the seller packs and stores the powder all help you judge freshness and transparency.</p>
+            <p><a href="${choose}">Read our guide to choosing moringa powder in Australia →</a> For storage after opening, see our <a href="${store}">shelf-life guide</a>.</p>
+          </section>`;
 }
 
 function esc(s) {
@@ -469,7 +552,7 @@ function layout({
     gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
   </script>` : "";
   const newsletterBlock = LIVE_MODE
-    ? `<div class="footer-newsletter-copy"><h2>Occasional updates, no daily drip</h2><p>Guides, dispatch notes and product news from Truganina. Unsubscribe any time.</p></div>
+    ? `<div class="footer-newsletter-copy"><p class="kicker">Farm notes</p><h2>Occasional updates, no daily drip</h2><p>Guides, dispatch notes and product news from Truganina. Unsubscribe any time.</p></div>
       <form class="newsletter-form newsletter-inline" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/pages/newsletter/thank-you.html">
         <input type="hidden" name="form-name" value="newsletter">
         <p class="visually-hidden"><label>Don’t fill this in <input name="bot-field"></label></p>
@@ -859,15 +942,33 @@ function shopPage() {
 
 const PDP = {
   "moringa-powder": {
-    title: "Farm-Grown Moringa Powder Australia | NutriThrive",
-    description: "Buy farm-grown, lab-tested moringa powder from $11 per 100g. Shade-dried, manufactured with care and dispatched from Truganina, Melbourne.",
+    title: "Moringa Powder Australia | From $11 | NutriThrive",
+    description:
+      "Shop NutriThrive moringa powder from $11/100g. Grown on our farm, shade-dried, Australian lab tested and packed in Melbourne. Australia-wide delivery.",
+    forceSeo: true,
     current: "Moringa",
     product: PRODUCTS[0],
     variants: PRODUCTS.filter((p) =>
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack"].includes(p.id)
     ),
+    variantLabels: {
+      "moringa-powder": "100g — $11 · Good for trying NutriThrive",
+      "moringa-200g": "200g — $21.50",
+      "moringa-400g": "400g — $35 · BEST VALUE · $8.75 per 100g",
+      "combo-pack": "Combo pack — $17 · Moringa + curry leaves",
+    },
+    variantHint: "The 400g option saves $9 compared with four 100g packs.",
     intro:
-      "Grown on our own farm, shade-dried and manufactured by NutriThrive. Tested in Australia and packed in Truganina.",
+      "Pure moringa leaf powder grown on our farm, shade-dried as part of our production process, Australian lab tested and packed in Melbourne.",
+    freezeHeroCopy: true,
+    proofs: [
+      "100% moringa leaf — no fillers",
+      { html: `<a href="/documents/nutrithrive-lab-report-summary.pdf">Australian lab tested</a>` },
+      "Grown on our farm",
+      "Packed in Melbourne",
+      "Same-day weekday dispatch before 2pm",
+    ],
+    reviews: REVIEWS.filter((review) => MORINGA_FEATURED_REVIEW_NAMES.includes(review.name)),
     gallery: [
       ["/assets/images/product_webp/moringa-powder-100g-main.webp", "NutriThrive 100g moringa powder pouch with a bowl of green powder"],
       ["/assets/images/photos/compressed/moringa-powder-200g-main-square.webp", "NutriThrive 200g moringa powder pouch with a bowl of green powder"],
@@ -888,9 +989,29 @@ const PDP = {
     what: "Bright green powder with a mild, spinach-like smell when you open it. We shade-dry the leaves and publish a lab summary for heavy metals and pesticides.",
     use: "Add 1 teaspoon (about 3 to 5 grams) to smoothies, juice, or water. Works in soups and salads. Straight in water, most people dislike the flavour. Mixed into food, most people barely notice it.",
     faqs: [
-      ["How do I use Moringa powder?", "Add 1 teaspoon (about 3 to 5 grams) to smoothies, juice, or water. Works well in soups and salads."],
-      ["Where is it shipped from?", "Packed and shipped from Truganina, Melbourne. Orders placed before 2pm Monday to Friday are usually dispatched the same day."],
-      ["Is it lab tested?", "Yes. Our moringa is tested in Australia. You can read the available summary PDF on this page or ask us for testing details."],
+      [
+        "Where can I buy moringa powder in Australia?",
+        "NutriThrive moringa powder can be ordered directly through our Australian online store. It is grown on our farm, Australian lab tested and packed in Truganina, Victoria, with delivery available across Australia.",
+      ],
+      [
+        "What is in NutriThrive moringa powder?",
+        "NutriThrive Moringa Powder contains 100% moringa leaf powder with no unnecessary fillers or additives.",
+      ],
+      [
+        "What does moringa powder taste like?",
+        "Moringa powder has an earthy, leafy and slightly bitter flavour. Many people mix it into smoothies, yoghurt, juice or meals to combine it with other flavours.",
+      ],
+      [
+        "How should I store moringa powder?",
+        "Store sealed in a dry environment away from humidity. Use within 18 months after opening.",
+      ],
+      ["Where is NutriThrive moringa powder packed?", "NutriThrive moringa powder is packed in Truganina, Victoria."],
+      [
+        "Is NutriThrive moringa powder tested in Australia?",
+        {
+          html: `Yes. NutriThrive provides Australian testing information for its moringa. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a>.`,
+        },
+      ],
     ],
   },
   "curry-leaves": {
@@ -1017,61 +1138,110 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
-  const liveSeo = LIVE_MODE ? extractSeo(path.join(ROOT, "products", slug, "index.html")) : null;
+  const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(ROOT, "products", slug, "index.html")) : null;
   const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
   const related = PRODUCTS.filter(
     (item) => item.id !== p.id && item.href !== p.href
   ).slice(0, 3);
+  const reviews = d.reviews || REVIEWS;
+  const freezeHero = Boolean(d.freezeHeroCopy);
   const variantSelect = d.variants
     ? `<label class="field" for="variant">Size
         <select class="variant-select" id="variant">${d.variants
-          .map(
-            (v) =>
-              `<option value="${v.id}" ${v.id === p.id ? "selected" : ""}>${esc(v.name)} ${esc(v.variant)}, ${money(v.price)}</option>`
-          )
+          .map((v) => {
+            const label = d.variantLabels?.[v.id] || `${v.name} ${v.variant}, ${money(v.price)}`;
+            return `<option value="${v.id}" ${v.id === p.id ? "selected" : ""}>${esc(label)}</option>`;
+          })
           .join("")}</select>
       </label>`
     : "";
-  const proofs = [
+  const variantHint = d.variantHint
+    ? `<p class="pdp-variant-hint">${esc(d.variantHint)}</p>`
+    : "";
+  const proofItems = d.proofs || [
     "Australian lab tested",
     "Packed in Melbourne",
     "Australia-wide delivery",
-  ]
-    .map((t) => `<li>${check()} ${t}</li>`)
+  ];
+  const proofs = proofItems
+    .map((t) => `<li>${check()} ${typeof t === "object" && t.html ? t.html : esc(t)}</li>`)
     .join("");
+  const valueCompare =
+    slug === "moringa-powder"
+      ? `<section class="pdp-value" aria-labelledby="moringa-value">
+            <h2 id="moringa-value">More moringa, lower cost</h2>
+            <div class="pdp-value-rows">
+              <div class="pdp-value-row">
+                <p class="pdp-value-size">100g</p>
+                <p class="pdp-value-price">$11</p>
+                <p class="pdp-value-unit">$11.00 per 100g</p>
+              </div>
+              <div class="pdp-value-row is-best">
+                <p class="pdp-value-size">400g</p>
+                <p class="pdp-value-price">$35 <span class="pdp-value-flag">BEST VALUE</span></p>
+                <p class="pdp-value-unit">$8.75 per 100g</p>
+              </div>
+            </div>
+            <p class="pdp-value-note">The 400g option saves $9 compared with buying four 100g packs.</p>
+          </section>`
+      : "";
+  const education =
+    slug === "moringa-powder"
+      ? moringaEducationHtml()
+      : `<h2>What it is</h2><p>${esc(d.what)}</p>
+          <h2>How to use</h2><p>${esc(d.use)}</p>
+          ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a> or contact us for current testing details.</p>` : ""}`;
+  const offerUrl = `${LIVE}/products/${slug}${slug === "moringa-powder" ? "/" : ""}`;
+  const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.name,
+    description: d.description,
+    image: gallery.map(([src]) => absUrl(src)),
+    brand: { "@type": "Brand", name: "NutriThrive" },
+  };
+  if (slug === "moringa-powder") {
+    productSchema.offers = PRODUCTS.filter((item) =>
+      ["moringa-powder", "moringa-200g", "moringa-400g"].includes(item.id)
+    ).map((item) => ({
+      "@type": "Offer",
+      name: item.variant,
+      sku: item.sku,
+      url: offerUrl,
+      priceCurrency: "AUD",
+      price: String(item.price),
+      availability: "https://schema.org/InStock",
+      seller: { "@id": `${LIVE}/#localbusiness` },
+    }));
+  } else {
+    productSchema.sku = p.sku;
+    productSchema.offers = {
+      "@type": "Offer",
+      url: offerUrl,
+      priceCurrency: "AUD",
+      price: String(p.price),
+      availability: "https://schema.org/InStock",
+      seller: { "@id": `${LIVE}/#localbusiness` },
+    };
+  }
   return layout({
-    title: liveSeo?.title || d.title,
-    description: liveSeo?.description || d.description,
+    title: d.forceSeo ? d.title : liveSeo?.title || d.title,
+    description: d.forceSeo ? d.description : liveSeo?.description || d.description,
     canonicalPath: `/products/${slug}/`,
     current: d.current,
-    preserveTitle: Boolean(liveSeo?.title),
-    preserveDescription: Boolean(liveSeo?.description),
+    preserveTitle: d.forceSeo ? true : Boolean(liveSeo?.title),
+    preserveDescription: d.forceSeo ? true : Boolean(liveSeo?.description),
     ogType: "product",
     ogImage: p.image,
     ogImageWidth: 900,
     ogImageHeight: 900,
-    extraHead: jsonLd({
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: p.name,
-      description: d.description,
-      image: gallery.map(([src]) => absUrl(src)),
-      sku: p.sku,
-      brand: { "@type": "Brand", name: "NutriThrive" },
-      offers: {
-        "@type": "Offer",
-        url: `${LIVE}/products/${slug}`,
-        priceCurrency: "AUD",
-        price: String(p.price),
-        availability: "https://schema.org/InStock",
-        seller: { "@id": `${LIVE}/#localbusiness` },
-      },
-    }) +
+    extraHead: jsonLd(productSchema) +
       jsonLd(
         breadcrumbSchema([
           { name: "Home", item: `${LIVE}/` },
           { name: "Shop", item: `${LIVE}${LIVE_MODE ? "/products/" : "/shop"}` },
-          { name: p.name, item: `${LIVE}/products/${slug}` },
+          { name: p.name, item: `${LIVE}/products/${slug}/` },
         ])
       ),
     main: `
@@ -1084,14 +1254,15 @@ function pdpPage(slug, d) {
             <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" data-pdp-image>
           </div>
         </div>
-        <div class="pdp-buy">
+        <div class="pdp-buy" id="pdp-buy">
           <p class="pdp-eyebrow">NutriThrive · farm to pouch</p>
-          <h1 data-pdp-title>${esc(p.name)}</h1>
+          <h1${freezeHero ? "" : " data-pdp-title"}>${esc(p.name)}</h1>
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(p.price)}${p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : ""}</p>
           <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
-          <p data-pdp-intro>${esc(d.intro)}</p>
+          <p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>
           ${variantSelect}
+          ${variantHint}
           <div class="purchase-panel">
             <div class="qty">
               <label for="qty">Quantity</label>
@@ -1110,10 +1281,12 @@ function pdpPage(slug, d) {
           <ul class="pdp-proof">${proofs}</ul>
           <p style="margin-top:16px;font-size:14px;color:var(--color-text-secondary)">Same-day dispatch before 2pm, Monday to Friday. Seven-day returns on unopened products.</p>
           <p style="font-size:14px;color:var(--color-text-secondary)">Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup</p>
+          ${valueCompare}
         </div>
       </section>
       <section class="prose-block">
         <div class="wrap pdp-content">
+          ${education}
           <div class="product-facts">
             <section><h2>Ingredients</h2><p>${esc(d.ingredients)}</p></section>
             <section><h2>Origin</h2><p>${esc(d.origin)}</p></section>
@@ -1130,9 +1303,6 @@ function pdpPage(slug, d) {
               <figcaption>${esc(d.detailCaption)}</figcaption>
             </figure>` : ""}
           </div>` : ""}
-          <h2>What it is</h2><p>${esc(d.what)}</p>
-          <h2>How to use</h2><p>${esc(d.use)}</p>
-          ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a> or contact us for current testing details.</p>` : ""}
           <div class="pdp-support-grid">
             <div class="safety-note"><h2>Safety information</h2><p>${esc(d.safety)}</p></div>
             <section class="delivery-card">
@@ -1148,14 +1318,14 @@ function pdpPage(slug, d) {
             </section>
           </div>
           <section class="pdp-faq">
-            <h2>Frequently asked questions</h2>
+            <h2>${esc(faqHeading)}</h2>
             <div class="faq-list">
-              ${d.faqs.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}
+              ${faqDetails(d.faqs)}
             </div>
           </section>
           <section class="pdp-reviews">
             <div class="reviews-head"><h2>What customers say</h2>${stars()} <span>from 12 Google reviews</span></div>
-            <div class="review-grid review-scroll" aria-label="Google reviews">${REVIEWS.map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
+            <div class="review-grid review-scroll" aria-label="Google reviews">${reviews.map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
             <p><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all Google reviews</a></p>
           </section>
           <section class="product-guides" aria-labelledby="product-guides-${esc(slug)}">
@@ -2302,6 +2472,13 @@ function main() {
     if (LIVE_PAGES.has("newsletter")) {
       emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");
       emit("newsletter/thank-you.html", newsletterThanksPage(), "pages/newsletter/thank-you.html");
+    }
+    for (const slug of LIVE_PAGES) {
+      if (PDP[slug]) {
+        const html = pdpPage(slug, PDP[slug]);
+        emit(`products/${slug}/index.html`, html);
+        writePage(`products/${slug}/index.html`, html, OUT);
+      }
     }
     console.log(`Wrote live storefront pages: ${[...LIVE_PAGES].join(", ")}.`);
     return;
