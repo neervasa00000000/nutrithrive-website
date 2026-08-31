@@ -1,4 +1,4 @@
-/** Auto-generated — 128 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 129 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -87,6 +87,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Wellness Story",
     "href": "/blog/cant-lose-weight-broken-gut-what-actually-worked-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "chemist-warehouse-greens-vs-moringa-powder-2026",
+    "title": "Chemist Warehouse Greens vs $11 Moringa, Australia",
+    "description": "Vital Organic Greens is $22.99/200g at CW. I pack one shade-dried leaf at $11/100g with an NMI PDF. Label walk-through, not a cure pitch.",
+    "category": "Comparison",
+    "href": "/blog/chemist-warehouse-greens-vs-moringa-powder-2026",
+    "image": "/assets/images/product_photos/moringa-powder-australia-lab-tested.jpg"
   },
   {
     "slug": "chronic-fatigue-what-actually-fixed-it-2026",
