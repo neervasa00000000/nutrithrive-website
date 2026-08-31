@@ -9,7 +9,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
-const BLOG_DIR = path.join(REPO, 'blog');
+const SITE = path.join(REPO, 'site');
+const BLOG_DIR = path.join(SITE, 'blog');
 const DRAFT_DIR = path.join(REPO, 'untitled folder');
 const DRAFT_FILES = [
   'new-batch-A-posts-1to5.md',
@@ -532,12 +533,12 @@ function generateBlogArticlesJs() {
     });
 
   const js = `/** Auto-generated — ${articles.length} blog articles. Run: node scripts/build-live-v2.mjs */\nwindow.NT_BLOG_ARTICLES = ${JSON.stringify(articles, null, 2)};\n`;
-  fs.writeFileSync(path.join(REPO, 'shared/js/blog-articles.js'), js);
+  fs.writeFileSync(path.join(SITE, 'shared/js/blog-articles.js'), js);
   console.log(`Wrote shared/js/blog-articles.js (${articles.length} articles)`);
 }
 
 function appendRedirects(posts) {
-  const redirectsPath = path.join(REPO, '_redirects');
+  const redirectsPath = path.join(SITE, '_redirects');
   let content = fs.readFileSync(redirectsPath, 'utf8');
   const blocks = posts.map((p) => {
     const short = p.title.replace(/ \(2026\)$/, '').slice(0, 60);
@@ -554,7 +555,7 @@ function appendRedirects(posts) {
 }
 
 function appendLlmsTxt(posts) {
-  const llmsPath = path.join(REPO, 'llms.txt');
+  const llmsPath = path.join(SITE, 'llms.txt');
   let content = fs.readFileSync(llmsPath, 'utf8');
   const marker = '\n## Untitled batch (June 2026)\n';
   if (content.includes(marker)) {

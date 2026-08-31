@@ -6,9 +6,9 @@
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
-import { fileURLToPath } from "url";
+import { REPO_ROOT, SITE_ROOT } from "./lib/paths.mjs";
 
-const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = REPO_ROOT;
 
 function extractLocs(xml) {
   return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
@@ -16,7 +16,7 @@ function extractLocs(xml) {
     .sort();
 }
 
-const committedPath = path.join(ROOT, "sitemap.xml");
+const committedPath = path.join(SITE_ROOT, "sitemap.xml");
 const committed = fs.readFileSync(committedPath, "utf8");
 const committedLocs = extractLocs(committed);
 
@@ -49,7 +49,7 @@ if (onlyCommitted.length || onlyGenerated.length) {
     console.error("In generator output only (add these):");
     onlyGenerated.forEach((u) => console.error("  +", u));
   }
-  console.error("\nFix: node scripts/build-sitemap.cjs && git add sitemap.xml");
+  console.error("\nFix: node scripts/build-sitemap.cjs && git add site/sitemap.xml");
   process.exit(1);
 }
 

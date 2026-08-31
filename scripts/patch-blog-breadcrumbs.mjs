@@ -9,7 +9,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
-const BLOG_DIR = path.join(REPO, 'blog');
+const SITE = path.join(REPO, 'site');
+const BLOG_DIR = path.join(SITE, 'blog');
 
 const OLD_NAV_RE =
   /<nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-4 pb-2 text-label-sm" aria-label="Breadcrumb">\s*<a class="text-moringa-leaf hover:underline" href="\/blog\/">← Journal<\/a>\s*<\/nav>/g;

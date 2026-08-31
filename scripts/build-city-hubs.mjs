@@ -8,6 +8,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 
 const CITIES = [
   {
@@ -436,7 +437,7 @@ ${faqSchema(c.faqs)}
 }
 
 for (const c of CITIES) {
-  fs.writeFileSync(path.join(ROOT, c.slug, 'index.html'), pageHtml(c, buildHead(c)));
+  fs.writeFileSync(path.join(SITE, c.slug, 'index.html'), pageHtml(c, buildHead(c)));
   console.log('Built', c.slug);
 }
 console.log('Done.');

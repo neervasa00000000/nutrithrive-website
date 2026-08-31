@@ -5,12 +5,11 @@
  */
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
+import { SITE_ROOT } from "./lib/paths.mjs";
 
-const REPO = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "https://nutrithrive.com.au";
-const BLOG_INDEX = path.join(REPO, "blog/index.html");
-const BLOG_DIR = path.join(REPO, "blog");
+const BLOG_INDEX = path.join(SITE_ROOT, "blog/index.html");
+const BLOG_DIR = path.join(SITE_ROOT, "blog");
 
 function isLivePost(filePath) {
   const raw = fs.readFileSync(filePath, "utf8");
@@ -35,8 +34,13 @@ function itemListUrls(html) {
     } catch {
       continue;
     }
-    if (data["@type"] !== "ItemList") continue;
-    return (data.itemListElement || [])
+    const itemList = data["@type"] === "ItemList"
+      ? data
+      : data.mainEntity?.["@type"] === "ItemList"
+        ? data.mainEntity
+        : null;
+    if (!itemList) continue;
+    return (itemList.itemListElement || [])
       .map((item) => item.url)
       .filter(Boolean)
       .sort();
@@ -62,7 +66,7 @@ if (onlyExpected.length || onlyListed.length) {
     console.error("ItemList entries with no live post:");
     onlyListed.forEach((u) => console.error("  -", u));
   }
-  console.error("\nFix: node scripts/regenerate-blog-itemlist.mjs && git add blog/index.html");
+  console.error("\nFix: node scripts/regenerate-blog-itemlist.mjs && git add site/blog/index.html");
   process.exit(1);
 }
 

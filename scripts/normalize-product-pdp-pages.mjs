@@ -8,6 +8,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 const PDP_CSS = '/styles/products/moringa-powder-new.min.css?v=7';
 
 const FILES = [
@@ -73,7 +74,7 @@ function normalizeScriptBlock(html) {
 }
 
 for (const rel of FILES) {
-  const filePath = path.join(ROOT, rel);
+  const filePath = path.join(SITE, rel);
   let html = fs.readFileSync(filePath, 'utf8');
   html = stripFoucScript(html);
   html = stripInlineStyles(html);

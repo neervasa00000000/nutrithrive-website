@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 const BASE = 'https://nutrithrive.com.au';
 
 const CITIES = [
@@ -125,7 +126,7 @@ function guideSection(c) {
 }
 
 for (const c of CITIES) {
-  const fp = path.join(ROOT, c.slug, 'index.html');
+  const fp = path.join(SITE, c.slug, 'index.html');
   let html = fs.readFileSync(fp, 'utf8');
 
   if (!html.includes('city-landing.min.css')) {
@@ -169,7 +170,7 @@ for (const c of CITIES) {
   console.log('Patched', c.slug);
 }
 
-const melb = path.join(ROOT, 'pages/homepage/melbourne.html');
+const melb = path.join(SITE, 'pages/homepage/melbourne.html');
 if (fs.existsSync(melb)) {
   let html = fs.readFileSync(melb, 'utf8');
   if (!html.includes('city-delivery-strip')) {

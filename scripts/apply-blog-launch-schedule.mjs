@@ -13,11 +13,12 @@ import { spawnSync } from 'child_process';
 import esbuild from 'esbuild';
 import { fileURLToPath } from 'url';
 
+import { REPO_ROOT as REPO, SITE_ROOT as SITE } from './lib/paths.mjs';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const REPO = path.resolve(__dirname, '..');
 const SCHEDULE_PATH = path.join(__dirname, 'blog-launch-schedule.json');
-const BLOG_DIR = path.join(REPO, 'blog');
-const LLMS_PATH = path.join(REPO, 'llms.txt');
+const BLOG_DIR = path.join(SITE, 'blog');
+const LLMS_PATH = path.join(SITE, 'llms.txt');
 const BASE = 'https://nutrithrive.com.au';
 const TZ = 'Australia/Melbourne';
 
@@ -132,12 +133,12 @@ function generateBlogArticlesJs() {
       return extractArticleMeta(raw, slug);
     });
 
-  const jsPath = path.join(REPO, 'shared/js/blog-articles.js');
+  const jsPath = path.join(SITE, 'shared/js/blog-articles.js');
   const js = `/** Auto-generated — ${articles.length} blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */\nwindow.NT_BLOG_ARTICLES = ${JSON.stringify(articles, null, 2)};\n`;
   fs.writeFileSync(jsPath, js);
   console.log(`Wrote shared/js/blog-articles.js (${articles.length} articles)`);
 
-  const minPath = path.join(REPO, 'shared/js/blog-articles.min.js');
+  const minPath = path.join(SITE, 'shared/js/blog-articles.min.js');
   esbuild.buildSync({
     entryPoints: [jsPath],
     outfile: minPath,

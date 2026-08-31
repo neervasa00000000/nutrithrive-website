@@ -1,20 +1,19 @@
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { fileURLToPath } from 'url';
 import fg from 'fast-glob';
 import esbuild from 'esbuild';
 import CleanCSS from 'clean-css';
+import { REPO_ROOT, SITE_ROOT } from './paths.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-export const ROOT = path.resolve(__dirname, '../..');
+export const ROOT = REPO_ROOT;
+export const SITE = SITE_ROOT;
 
 export const TAILWIND_BUILT_HREF = '/assets/css/tailwind-v2.min.css';
 export const TAILWIND_LINK_TAG = `<link rel="stylesheet" href="${TAILWIND_BUILT_HREF}"/>`;
 
-const JS_GLOBS = [
-  'scripts/global/**/*.js',
-  'scripts/pages/**/*.js',
+const SITE_JS_GLOBS = [
+  'assets/js/storefront/**/*.js',
   'shared/js/**/*.js',
   'shared/site-data.js',
   'pages/**/*.js',
@@ -22,7 +21,12 @@ const JS_GLOBS = [
   'nutrithrive_labs/**/*.js',
 ];
 
-const CSS_GLOBS = [
+const ROOT_JS_GLOBS = [
+  'scripts/global/**/*.js',
+  'scripts/pages/**/*.js',
+];
+
+const SITE_CSS_GLOBS = [
   'assets/css/**/*.css',
   'shared/css/**/*.css',
   'styles/**/*.css',
@@ -50,24 +54,31 @@ export function minPath(file) {
   return `${base}.min${ext}`;
 }
 
+/** Repo-relative path → public URL path (site/ is stripped at deploy). */
+function publicUrl(repoRel) {
+  const posix = repoRel.replace(/\\/g, '/');
+  if (posix.startsWith('site/')) return `/${posix.slice(5)}`;
+  return `/${posix}`;
+}
+
 export async function buildTailwind() {
   execSync(
-    'npx tailwindcss -i ./assets/css/tailwind-v2-source.css -o ./assets/css/tailwind-v2.min.css --minify',
+    'npx tailwindcss -i ./site/assets/css/tailwind-v2-source.css -o ./site/assets/css/tailwind-v2.min.css --minify',
     { cwd: ROOT, stdio: 'inherit' }
   );
 }
 
-export async function minifyJsFiles() {
-  const files = await fg(JS_GLOBS, {
-    cwd: ROOT,
+async function minifyJsIn(cwd, globs) {
+  const files = await fg(globs, {
+    cwd,
     ignore: SKIP_JS,
     onlyFiles: true,
   });
   const out = [];
   for (const rel of files) {
-    const src = path.join(ROOT, rel);
+    const src = path.join(cwd, rel);
     const destRel = minPath(rel);
-    const dest = path.join(ROOT, destRel);
+    const dest = path.join(cwd, destRel);
     await esbuild.build({
       entryPoints: [src],
       outfile: dest,
@@ -76,30 +87,43 @@ export async function minifyJsFiles() {
       target: ['es2018'],
       bundle: false,
     });
-    out.push({ from: rel, to: destRel });
+    out.push({
+      from: path.relative(ROOT, src).replace(/\\/g, '/'),
+      to: path.relative(ROOT, dest).replace(/\\/g, '/'),
+    });
   }
   return out;
 }
 
+export async function minifyJsFiles() {
+  return [
+    ...(await minifyJsIn(SITE, SITE_JS_GLOBS)),
+    ...(await minifyJsIn(ROOT, ROOT_JS_GLOBS)),
+  ];
+}
+
 export async function minifyCssFiles() {
   const cleaner = new CleanCSS({ level: 2 });
-  const files = await fg(CSS_GLOBS, {
-    cwd: ROOT,
+  const files = await fg(SITE_CSS_GLOBS, {
+    cwd: SITE,
     ignore: SKIP_CSS,
     onlyFiles: true,
   });
   const out = [];
   for (const rel of files) {
-    const src = path.join(ROOT, rel);
+    const src = path.join(SITE, rel);
     const destRel = minPath(rel);
-    const dest = path.join(ROOT, destRel);
+    const dest = path.join(SITE, destRel);
     const { styles, errors } = cleaner.minify(fs.readFileSync(src, 'utf8'));
     if (errors?.length) {
       console.warn('[css]', rel, errors.join('; '));
     }
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.writeFileSync(dest, styles);
-    out.push({ from: rel, to: destRel });
+    out.push({
+      from: path.relative(ROOT, src).replace(/\\/g, '/'),
+      to: path.relative(ROOT, dest).replace(/\\/g, '/'),
+    });
   }
   return out;
 }
@@ -131,8 +155,8 @@ export function replaceTailwindCdn(html) {
 export function patchAssetRefs(html, manifestEntries) {
   let out = html;
   for (const { from, to } of manifestEntries) {
-    const fromUrl = `/${from.replace(/\\/g, '/')}`;
-    const toUrl = `/${to.replace(/\\/g, '/')}`;
+    const fromUrl = publicUrl(from);
+    const toUrl = publicUrl(to);
     if (fromUrl === toUrl) continue;
     const esc = fromUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     out = out.replace(new RegExp(esc, 'g'), toUrl);
@@ -142,13 +166,13 @@ export function patchAssetRefs(html, manifestEntries) {
 
 export async function patchHtmlFiles(manifestEntries) {
   const htmlFiles = await fg(['**/*.html'], {
-    cwd: ROOT,
+    cwd: SITE,
     ignore: ['**/node_modules/**'],
     onlyFiles: true,
   });
   let changed = 0;
   for (const rel of htmlFiles) {
-    const fp = path.join(ROOT, rel);
+    const fp = path.join(SITE, rel);
     const before = fs.readFileSync(fp, 'utf8');
     let after = replaceTailwindCdn(before);
     after = patchAssetRefs(after, manifestEntries);

@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 
 const LOCATIONS_NAV = `<nav class="city-locations" aria-label="Deliver to">
   <span class="city-locations__label">Deliver to</span>
@@ -319,7 +320,7 @@ ${guidesHtml(c.guides)}
 }
 
 for (const c of CITIES) {
-  const fp = path.join(ROOT, c.slug, 'index.html');
+  const fp = path.join(SITE, c.slug, 'index.html');
   let html = fs.readFileSync(fp, 'utf8');
 
   html = html.replace(
