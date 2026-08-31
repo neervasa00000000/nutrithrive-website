@@ -100,17 +100,22 @@ function addToCart(product) {
     const existingIndex = cart.items.findIndex(item => item.id === product.id);
     
     if (existingIndex >= 0) {
-        // Update quantity
         cart.items[existingIndex].quantity = parseInt(cart.items[existingIndex].quantity) + parseInt(product.quantity || 1);
+        if (product.variant) cart.items[existingIndex].variant = product.variant;
+        if (product.href) cart.items[existingIndex].href = product.href;
+        if (product.weight) cart.items[existingIndex].weight = parseFloat(product.weight);
+        if (product.image) cart.items[existingIndex].image = product.image;
     } else {
         // Add new item
         cart.items.push({
             id: product.id,
             name: product.name,
             price: parseFloat(product.price),
-            weight: parseFloat(product.weight || 0), // Store weight in grams
+            weight: parseFloat(product.weight || 0),
             quantity: parseInt(product.quantity || 1),
-            image: product.image || ''
+            image: product.image || '',
+            variant: product.variant || '',
+            href: product.href || ''
         });
     }
     
@@ -185,8 +190,13 @@ function updateCartUI() {
     // Update cart badge
     const cartBadges = document.querySelectorAll('.cart-badge, [data-cart-count]');
     cartBadges.forEach(badge => {
-        badge.textContent = itemCount;
-        badge.style.display = itemCount > 0 ? 'flex' : 'none';
+        badge.textContent = String(itemCount);
+        if (badge.hasAttribute('data-cart-count')) {
+            badge.setAttribute('data-empty', itemCount === 0 ? 'true' : 'false');
+            badge.style.removeProperty('display');
+        } else {
+            badge.style.display = itemCount > 0 ? 'flex' : 'none';
+        }
     });
     
     // Update cart link text if exists

@@ -218,23 +218,34 @@ function renderCart() {
     btn.addEventListener("click", () => {
       const id = btn.getAttribute("data-set");
       const qty = parseInt(btn.getAttribute("data-qty"), 10);
-      const next = readCart()
-        .map((i) => (i.id === id ? { ...i, qty } : i))
-        .filter((i) => i.qty > 0);
-      writeCart(next);
+      if (qty < 1) {
+        if (window.NT?.remove) window.NT.remove(id);
+        else writeCart(readCart().filter((i) => i.id !== id));
+        return;
+      }
+      if (window.NT?.setQty) window.NT.setQty(id, qty);
+      else {
+        writeCart(readCart().map((i) => (i.id === id ? { ...i, qty } : i)));
+      }
     });
   });
   lines.querySelectorAll("[data-remove]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      writeCart(readCart().filter((i) => i.id !== btn.getAttribute("data-remove")));
+      const id = btn.getAttribute("data-remove");
+      if (window.NT?.remove) window.NT.remove(id);
+      else writeCart(readCart().filter((i) => i.id !== id));
     });
   });
   renderRecs(items, sub);
 }
 
+function bootCartPage() {
+  renderCart();
+}
+
 window.addEventListener("nt-cart-change", renderCart);
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", renderCart);
+  document.addEventListener("DOMContentLoaded", bootCartPage);
 } else {
-  renderCart();
+  bootCartPage();
 }
