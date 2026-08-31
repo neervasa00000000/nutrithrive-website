@@ -2008,6 +2008,67 @@ a.product-card:hover {
   max-width: 38rem;
 }
 
+.order-thanks {
+  padding-bottom: var(--space-11);
+}
+
+.order-thanks-list {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-8);
+  padding: var(--space-6) 0;
+  border-block: 1px solid var(--color-border);
+}
+
+.order-thanks-list[hidden] {
+  display: none;
+}
+
+.order-thanks-row {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.order-thanks-row dt {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.order-thanks-row dd {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.order-thanks-row[hidden] {
+  display: none;
+}
+
+.order-thanks-note {
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-6);
+  max-width: 38rem;
+}
+
+.order-thanks-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+@media (max-width: 860px) {
+  .order-thanks-actions {
+    display: grid;
+  }
+
+  .order-thanks-actions .btn {
+    width: 100%;
+  }
+}
+
 .search-panel[hidden],
 .nav-mobile[hidden] {
   display: none !important;
