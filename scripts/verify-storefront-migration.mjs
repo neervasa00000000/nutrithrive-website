@@ -80,7 +80,7 @@ try {
       cwd: ROOT,
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"],
-    }).trim().split("\n").filter((rel) => rel.endsWith(".html"));
+    }).trim().split("\n").filter((rel) => rel.endsWith(".html") && !rel.includes("/category/") && !rel.includes("/partials/"));
     if (listed.length) {
       trackedBlogs = listed.map((rel) => rel.replace(/^site\//, ""));
       break;
@@ -177,6 +177,15 @@ if (blogIndex) {
   mustNotInclude("blog/index.html", 'href="/journal/"', "blog index still linking to /journal/");
   const blogH1 = blogIndex.match(/<h1>([^<]*)<\/h1>/i)?.[1];
   if (blogH1 !== "Blog") errors.push(`blog/index.html H1 is "${blogH1}"`);
+  mustInclude("blog/index.html", "journal-grid--preview", "blog index topic previews");
+  mustInclude("blog/index.html", "Explore all", "blog index explore-more links");
+  mustInclude("blog/index.html", "data-journal-extra hidden", "extra blog cards stay collapsed");
+}
+
+const moringaGuides = read("blog/category/moringa-guides/index.html");
+if (moringaGuides) {
+  mustInclude("blog/category/moringa-guides/index.html", "<h1>Moringa guides</h1>", "moringa guides category heading");
+  mustInclude("blog/category/moringa-guides/index.html", 'rel="canonical" href="https://nutrithrive.com.au/blog/category/moringa-guides/"', "moringa guides canonical");
 }
 
 const pdp = read("products/moringa-powder/index.html");

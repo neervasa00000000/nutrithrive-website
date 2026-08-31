@@ -792,8 +792,11 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/is-moringa-banned-in-australia.html /404.html 410
 
 # Explicit pairs for Aug 9 2026 batch (previously relied on Netlify's implicit clean-URL fallback)
-/blog/caffeine-cutoff-time-sleep-black-tea-2026.html /blog/caffeine-cutoff-time-sleep-black-tea-2026 301!
-/blog/caffeine-cutoff-time-sleep-black-tea-2026 /blog/caffeine-cutoff-time-sleep-black-tea-2026.html 200
+/blog/caffeine-cutoff-time-sleep-black-tea-2026.html /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
+/blog/caffeine-cutoff-time-sleep-black-tea-2026 /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
+/journal/caffeine-cutoff-time-sleep-black-tea-2026 /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
+/journal/caffeine-cutoff-time-sleep-black-tea-2026/ /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
+/journal/caffeine-cutoff-time-sleep-black-tea-2026.html /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
 /blog/curry-leaves-recipes-beyond-dal.html /blog/curry-leaves-recipes-beyond-dal 301!
 /blog/curry-leaves-recipes-beyond-dal /blog/curry-leaves-recipes-beyond-dal.html 200
 /blog/diwali-gift-guide-curry-leaves-tea-australia.html /blog/diwali-gift-guide-curry-leaves-tea-australia 301!
@@ -829,6 +832,14 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /journal/index.html /blog/ 301
 /journal/:slug /blog/:slug 301
 /journal/:slug/ /blog/:slug 301
+/blog/category/moringa-guides /blog/category/moringa-guides/index.html 200
+/blog/category/moringa-guides/ /blog/category/moringa-guides/index.html 200
+/blog/category/ways-to-use-it /blog/category/ways-to-use-it/index.html 200
+/blog/category/ways-to-use-it/ /blog/category/ways-to-use-it/index.html 200
+/blog/category/curry-leaves /blog/category/curry-leaves/index.html 200
+/blog/category/curry-leaves/ /blog/category/curry-leaves/index.html 200
+/blog/category/soap-skin /blog/category/soap-skin/index.html 200
+/blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
 /privacy /privacy-policy 301

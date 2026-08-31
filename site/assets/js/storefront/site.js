@@ -581,18 +581,22 @@ function bindJournalSearch() {
   const update = () => {
     const query = input.value.trim();
     const terms = termsFor(query);
+    const searching = query.length > 0;
+    document.body.classList.toggle("journal-searching", searching);
     let count = 0;
     cards.forEach((card) => {
       const text = card.dataset.searchText || "";
-      const direct = !terms.length || terms.some((term) => text.includes(term));
-      card.hidden = !direct;
-      if (direct) count += 1;
+      const extra = card.hasAttribute("data-journal-extra");
+      const match = !terms.length || terms.some((term) => text.includes(term));
+      const visible = searching ? match : !extra;
+      card.hidden = !visible;
+      if (visible) count += 1;
     });
-    sections.forEach((section) => { section.hidden = query.length > 0 && !section.querySelector("[data-journal-card]:not([hidden])"); });
-    if (feature) feature.hidden = query.length > 0;
-    if (empty) empty.hidden = !query || count > 0;
-    clear.hidden = !query;
-    status.textContent = query ? `${count} ${count === 1 ? "guide" : "guides"} found for “${query}”.` : `Search all ${cards.length + (feature ? 1 : 0)} NutriThrive guides by question, topic or ingredient.`;
+    sections.forEach((section) => { section.hidden = searching && !section.querySelector("[data-journal-card]:not([hidden])"); });
+    if (feature) feature.hidden = searching;
+    if (empty) empty.hidden = !searching || count > 0;
+    clear.hidden = !searching;
+    status.textContent = searching ? `${count} ${count === 1 ? "guide" : "guides"} found for “${query}”.` : `Search all ${cards.length + (feature ? 1 : 0)} NutriThrive guides by question, topic or ingredient.`;
     const url = new URL(location.href);
     if (query) url.searchParams.set("q", query); else url.searchParams.delete("q");
     history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);

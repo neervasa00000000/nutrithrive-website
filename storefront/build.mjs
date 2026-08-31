@@ -155,6 +155,23 @@ function journalTopic(article) {
   return "Moringa guides";
 }
 
+const JOURNAL_TOPICS = [
+  { name: "Moringa guides", slug: "moringa-guides" },
+  { name: "Ways to use it", slug: "ways-to-use-it" },
+  { name: "Curry leaves", slug: "curry-leaves" },
+  { name: "Darjeeling tea", slug: "tea" },
+  { name: "Soap & skin", slug: "soap-skin" },
+];
+const JOURNAL_PREVIEW_LIMIT = 6;
+
+function topicHref(slug) {
+  return LIVE_MODE ? `/blog/category/${slug}/` : `/journal/category/${slug}/`;
+}
+
+function topicAnchor(name) {
+  return name.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-");
+}
+
 function journalProduct(article) {
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return PRODUCTS.find((p) => p.id === "curry-leaves");
@@ -2144,49 +2161,54 @@ function cityPage(city, slug) {
 }
 
 function journalIndex(articles, opts = {}) {
+  const topicFilter = opts.topic || null;
   const bySlug = new Map(articles.map((article) => [article.slug, article]));
   const ordered = [
     ...JOURNAL_PRIORITY.map((slug) => bySlug.get(slug)).filter(Boolean),
     ...articles.filter((article) => !JOURNAL_PRIORITY.includes(article.slug)),
   ].filter((article) => !JOURNAL_REDIRECTS[article.slug]);
-  const featured = ordered[0];
-  const visible = ordered.slice(1);
-  const groups = ["Moringa guides", "Ways to use it", "Curry leaves", "Darjeeling tea", "Soap & skin"];
-  const groupCards = (topic) => visible.filter((article) => journalTopic(article) === topic);
+  const featured = topicFilter ? null : ordered[0];
+  const visible = topicFilter
+    ? ordered.filter((article) => journalTopic(article) === topicFilter.name)
+    : ordered.slice(1);
+  const groups = topicFilter ? [topicFilter] : JOURNAL_TOPICS;
+  const groupCards = (topic) => visible.filter((article) => journalTopic(article) === topic.name);
   const liveSeo = opts.seoFile ? extractSeo(opts.seoFile) : null;
   const r = routes();
   const canonicalPath = opts.canonicalPath || (LIVE_MODE ? "/blog/" : "/journal");
-  const articleCard = (article) => `<a class="article-card" href="${r.article(article.slug)}" data-journal-card data-journal-topic="${esc(journalTopic(article))}" data-search-text="${esc(`${stripTags(article.title)} ${stripTags(article.description)} ${article.category} ${journalTopic(article)} ${article.slug}`.toLowerCase())}">
+  const listArticles = topicFilter ? visible : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug]);
+  const articleCard = (article, extra = false) => `<a class="article-card" href="${r.article(article.slug)}" data-journal-card data-journal-topic="${esc(journalTopic(article))}"${extra ? " data-journal-extra hidden" : ""} data-search-text="${esc(`${stripTags(article.title)} ${stripTags(article.description)} ${article.category} ${journalTopic(article)} ${article.slug}`.toLowerCase())}">
     <div class="article-card-media"><img src="${article.image}" alt="${esc(humanCopy(stripTags(article.title)))}" width="800" height="450" loading="lazy"></div>
     <div class="cat">${esc(journalTopic(article))}</div>
     <h3>${esc(humanCopy(stripTags(article.title)))}</h3>
     <p>${esc(humanCopy(stripTags(article.description)))}</p>
     <span class="article-link">Read guide <span aria-hidden="true">→</span></span>
   </a>`;
+  const crumbs = [{ name: "Home", item: `${LIVE}/` }, { name: "Blog", item: `${LIVE}/blog` }];
+  if (topicFilter) crumbs.push({ name: topicFilter.name, item: `${LIVE}${canonicalPath.replace(/\/$/, "")}` });
   return layout({
-    title: liveSeo?.title || "Moringa, Curry Leaves & Tea Blog | NutriThrive",
-    description: liveSeo?.description || "Practical Australian guides to choosing and using moringa, curry leaves and Darjeeling tea, from the NutriThrive farming and manufacturing team.",
+    title: topicFilter
+      ? `${topicFilter.name} | NutriThrive Blog`
+      : liveSeo?.title || "Moringa, Curry Leaves & Tea Blog | NutriThrive",
+    description: topicFilter
+      ? `All ${topicFilter.name.toLowerCase()} guides from NutriThrive — practical Australian notes on choosing, using and storing what we grow and pack.`
+      : liveSeo?.description || "Practical Australian guides to choosing and using moringa, curry leaves and Darjeeling tea, from the NutriThrive farming and manufacturing team.",
     canonicalPath,
     current: "Blog",
-    preserveTitle: Boolean(liveSeo?.title),
-    preserveDescription: Boolean(liveSeo?.description),
+    preserveTitle: Boolean(!topicFilter && liveSeo?.title),
+    preserveDescription: Boolean(!topicFilter && liveSeo?.description),
     extraHead:
-      jsonLd(
-        breadcrumbSchema([
-          { name: "Home", item: `${LIVE}/` },
-          { name: "Blog", item: `${LIVE}${canonicalPath.replace(/\/$/, "") || "/blog"}` },
-        ])
-      ) +
+      jsonLd(breadcrumbSchema(crumbs)) +
       jsonLd({
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        name: liveSeo?.title || "NutriThrive Blog",
+        name: topicFilter ? `${topicFilter.name} | NutriThrive Blog` : liveSeo?.title || "NutriThrive Blog",
         url: `${LIVE}${canonicalPath}`,
         isPartOf: { "@id": `${LIVE}/#website` },
         mainEntity: itemListSchema(
-          "Blog articles",
+          topicFilter ? topicFilter.name : "Blog articles",
           `${LIVE}${canonicalPath}`,
-          articles.map((a) => ({
+          listArticles.map((a) => ({
             name: humanCopy(stripTags(a.title)),
             url: routes().articleAbs(a.slug),
           }))
@@ -2194,8 +2216,10 @@ function journalIndex(articles, opts = {}) {
       }),
     main: `
       <section class="page-intro wrap">
-        <h1>Blog</h1>
-        <p class="lede">Clear answers about choosing, using and storing our products—from the team that grows and manufactures our moringa and curry leaves.</p>
+        <h1>${topicFilter ? esc(topicFilter.name) : "Blog"}</h1>
+        <p class="lede">${topicFilter
+          ? `Every ${esc(topicFilter.name.toLowerCase())} guide, in one place.`
+          : "Clear answers about choosing, using and storing our products—from the team that grows and manufactures our moringa and curry leaves."}</p>
         <form class="journal-search" role="search" data-journal-search-form>
           <label for="journal-search">What would you like to know?</label>
           <div class="journal-search-box">
@@ -2203,10 +2227,14 @@ function journalIndex(articles, opts = {}) {
             <input id="journal-search" data-journal-search type="search" name="q" autocomplete="off" placeholder="For example: How much moringa should I take?">
             <button type="button" data-journal-search-clear hidden>Clear</button>
           </div>
-          <p class="journal-search-status" data-journal-search-status role="status">Search all ${articles.length} NutriThrive guides by question, topic or ingredient.</p>
+          <p class="journal-search-status" data-journal-search-status role="status">Search ${topicFilter ? `these ${visible.length}` : `all ${articles.length}`} NutriThrive guides by question, topic or ingredient.</p>
         </form>
         <nav class="journal-topics" aria-label="Blog topics">
-          ${groups.map((topic) => `<a href="#${topic.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}">${esc(topic)}</a>`).join("")}
+          ${JOURNAL_TOPICS.map((topic) => {
+            const href = topicFilter ? topicHref(topic.slug) : `#${topicAnchor(topic.name)}`;
+            const current = topicFilter && topic.slug === topicFilter.slug;
+            return `<a href="${href}"${current ? ' aria-current="page"' : ""}>${esc(topic.name)}</a>`;
+          }).join("")}
         </nav>
         <div class="journal-empty" data-journal-empty hidden>
           <h2>We could not find that answer yet.</h2>
@@ -2216,7 +2244,7 @@ function journalIndex(articles, opts = {}) {
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap">
-          <a class="article-card featured journal-feature" href="${r.article(featured.slug)}" data-journal-feature data-search-text="${esc(`${stripTags(featured.title)} ${stripTags(featured.description)} ${featured.category} ${journalTopic(featured)} ${featured.slug}`.toLowerCase())}">
+          ${featured ? `<a class="article-card featured journal-feature" href="${r.article(featured.slug)}" data-journal-feature data-search-text="${esc(`${stripTags(featured.title)} ${stripTags(featured.description)} ${featured.category} ${journalTopic(featured)} ${featured.slug}`.toLowerCase())}">
             <div class="article-card-media" style="margin:0"><img src="${featured.image}" alt="${esc(humanCopy(stripTags(featured.title)))}" width="1200" height="675"></div>
             <div>
               <div class="cat">${esc(humanCopy(featured.category))}</div>
@@ -2224,14 +2252,20 @@ function journalIndex(articles, opts = {}) {
               <p>${esc(humanCopy(stripTags(featured.description)))}</p>
               <span class="article-link">Read our most-visited guide <span aria-hidden="true">→</span></span>
             </div>
-          </a>
+          </a>` : ""}
           ${groups.map((topic) => {
             const cards = groupCards(topic);
             if (!cards.length) return "";
-            const id = topic.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-");
+            const id = topicAnchor(topic.name);
+            const total = ordered.filter((article) => journalTopic(article) === topic.name).length;
+            const preview = !topicFilter && cards.length > JOURNAL_PREVIEW_LIMIT;
+            const shown = preview ? cards.slice(0, JOURNAL_PREVIEW_LIMIT) : cards;
+            const extra = preview ? cards.slice(JOURNAL_PREVIEW_LIMIT) : [];
+            const moreHref = topicHref(topic.slug);
             return `<section class="journal-section" aria-labelledby="${id}">
-              <div class="section-head"><div><p class="kicker">Browse by topic</p><h2 id="${id}">${esc(topic)}</h2></div></div>
-              <div class="journal-grid">${cards.map(articleCard).join("")}</div>
+              <div class="section-head"><div><p class="kicker">${topicFilter ? "All guides" : "Browse by topic"}</p><h2 id="${id}">${esc(topic.name)}</h2></div>${preview ? `<a href="${moreHref}">Explore all ${total}</a>` : ""}</div>
+              <div class="journal-grid${preview ? " journal-grid--preview" : ""}">${shown.map((article) => articleCard(article)).join("")}${extra.map((article) => articleCard(article, true)).join("")}</div>
+              ${preview ? `<p class="journal-more"><a class="btn btn-secondary" href="${moreHref}">Explore all ${total} guides</a></p>` : ""}
             </section>`;
           }).join("")}
           <aside class="journal-principle">
@@ -2526,6 +2560,14 @@ function appendLiveRedirects() {
 /journal/index.html /blog/ 301
 /journal/:slug /blog/:slug 301
 /journal/:slug/ /blog/:slug 301
+/blog/category/moringa-guides /blog/category/moringa-guides/index.html 200
+/blog/category/moringa-guides/ /blog/category/moringa-guides/index.html 200
+/blog/category/ways-to-use-it /blog/category/ways-to-use-it/index.html 200
+/blog/category/ways-to-use-it/ /blog/category/ways-to-use-it/index.html 200
+/blog/category/curry-leaves /blog/category/curry-leaves/index.html 200
+/blog/category/curry-leaves/ /blog/category/curry-leaves/index.html 200
+/blog/category/soap-skin /blog/category/soap-skin/index.html 200
+/blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
 /privacy /privacy-policy 301
@@ -2626,6 +2668,16 @@ function main() {
       }),
       "blog/index.html"
     );
+    for (const topic of JOURNAL_TOPICS) {
+      emit(
+        `blog/category/${topic.slug}/index.html`,
+        journalIndex(activeArticles, {
+          topic,
+          canonicalPath: `/blog/category/${topic.slug}/`,
+        }),
+        `blog/category/${topic.slug}/index.html`
+      );
+    }
 
     let wrapped = 0;
     for (const meta of articles) {
@@ -2684,6 +2736,12 @@ function main() {
   }));
 
   writePage("journal/index.html", journalIndex(activeArticles));
+  for (const topic of JOURNAL_TOPICS) {
+    writePage(`journal/category/${topic.slug}/index.html`, journalIndex(activeArticles, {
+      topic,
+      canonicalPath: `/journal/category/${topic.slug}/`,
+    }));
+  }
 
   let wrapped = 0;
   for (const meta of articles) {
