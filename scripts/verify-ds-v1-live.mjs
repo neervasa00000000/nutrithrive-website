@@ -98,6 +98,15 @@ if (cart) {
   mustNotInclude("pages/shop/cart.html", 'href="/checkout/"', "preview checkout on live cart");
 }
 
+const newsletter = read("pages/newsletter/index.html");
+if (newsletter) {
+  mustInclude("pages/newsletter/index.html", "/assets/css/ds-v1-system", "newsletter new UI CSS");
+  mustInclude("pages/newsletter/index.html", 'data-nt-live="1"', "live flag");
+  mustInclude("pages/newsletter/index.html", 'name="newsletter"', "Netlify newsletter form");
+  mustNotInclude("pages/newsletter/index.html", "design-system.min.css", "old design system CSS");
+  mustNotInclude("pages/newsletter/index.html", "Join thousands", "old newsletter pitch");
+}
+
 const payment = read("pages/shop/payment.html");
 if (payment) {
   if (!/noindex/i.test(payment)) errors.push("payment page must stay noindex");
@@ -127,6 +136,7 @@ if (redirects) {
   if (redirects.includes("/blog/ /journal/")) errors.push("_redirects must not send /blog/ to /journal/");
   if (!redirects.includes("/cart /pages/shop/cart.html 200")) errors.push("_redirects lost /cart rewrite");
   if (!redirects.includes("/payment /pages/shop/payment.html 200")) errors.push("_redirects lost /payment rewrite");
+  if (!redirects.includes("/newsletter /pages/newsletter/ 301")) errors.push("_redirects missing /newsletter → /pages/newsletter/");
 }
 
 for (const asset of [

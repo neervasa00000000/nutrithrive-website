@@ -6,9 +6,15 @@ import { PRODUCTS, REVIEWS, costNote } from "./js/data.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = __dirname;
-const ASSET_VERSION = "20260831-5";
+const ASSET_VERSION = "20260831-6";
 const LIVE_MODE = process.env.DS_V1_LIVE === "1";
 const PAYMENT_ONLY = process.env.DS_V1_PAYMENT_ONLY === "1";
+const LIVE_PAGES = new Set(
+  (process.env.DS_V1_PAGES || (PAYMENT_ONLY ? "payment" : ""))
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean)
+);
 const CSS_HREF = LIVE_MODE ? "/assets/css/ds-v1-system.css" : "/css/system.css";
 const CATALOG_SRC = LIVE_MODE ? "/scripts/global/ds-v1-catalog.js" : "/js/catalog.js";
 const SEARCH_SRC = LIVE_MODE ? "/scripts/global/ds-v1-search-index.js" : "/js/search-index.js";
@@ -462,7 +468,7 @@ function layout({
     gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
   </script>` : "";
   const newsletterBlock = LIVE_MODE
-    ? `<div class="footer-newsletter-copy"><p class="kicker">Farm notes</p><h2>Occasional updates, no daily drip</h2><p>Guides, dispatch notes and product news from Truganina. Unsubscribe any time.</p></div>
+    ? `<div class="footer-newsletter-copy"><h2>Occasional updates, no daily drip</h2><p>Guides, dispatch notes and product news from Truganina. Unsubscribe any time.</p></div>
       <form class="newsletter-form newsletter-inline" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/pages/newsletter/thank-you.html">
         <input type="hidden" name="form-name" value="newsletter">
         <p class="visually-hidden"><label>Don’t fill this in <input name="bot-field"></label></p>
@@ -473,7 +479,7 @@ function layout({
         </div>
         <p class="form-note">We do not sell your personal information. See our <a href="${r.privacy}">privacy policy</a>.</p>
       </form>`
-    : `<div class="footer-newsletter-copy"><p class="kicker">A small welcome</p><h2>Take 5% off your first order</h2><p>New customers can join for occasional farm notes, useful guides and product offers.</p></div>
+    : `<div class="footer-newsletter-copy"><h2>Take 5% off your first order</h2><p>New customers can join for occasional farm notes, useful guides and product offers.</p></div>
       <form class="newsletter-inline" data-newsletter-form data-source="footer" novalidate>
         <label for="footer-newsletter-email">Email address</label>
         <div class="newsletter-inline-row">
@@ -1629,7 +1635,8 @@ function cartPage() {
       : "Review products, quantities, delivery estimates and your NutriThrive order subtotal before continuing to the local preview checkout.",
     canonicalPath: "/cart",
     current: "",
-    extraFoot: `<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+    extraFoot: `<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>
+<script defer>document.addEventListener("DOMContentLoaded",function(){if(window.NT&&typeof window.NT.renderCart==="function")window.NT.renderCart();});</script>`,
     robots: "noindex, nofollow",
     main: `
       <section class="page-intro wrap cart-intro">
@@ -1638,7 +1645,7 @@ function cartPage() {
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div>
-          <div id="cart-lines"></div>
+          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Moringa, tea, curry leaves and soap, all packed in Truganina.</p><a class="btn btn-primary" href="/shop/">Shop the range</a></div></div>
           <div id="cart-recs"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
@@ -1701,6 +1708,58 @@ function paymentPage() {
           <div class="summary-row total"><span>Total</span><span id="total">$0.00</span></div>
         </aside>
       </section>`,
+  });
+}
+
+function newsletterPage() {
+  const r = routes();
+  const liveForm = `<form class="form newsletter-page-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/pages/newsletter/thank-you.html">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p class="visually-hidden"><label>Don’t fill this in <input name="bot-field"></label></p>
+        <div class="field"><label for="newsletter-email">Email address</label><input id="newsletter-email" name="email" type="email" autocomplete="email" required></div>
+        <p class="form-note">Guides, dispatch notes and product news. Unsubscribe any time. We do not sell your personal information. See our <a href="${r.privacy}">privacy policy</a>.</p>
+        <button class="btn btn-primary" type="submit">Join the list</button>
+      </form>`;
+  const previewForm = `<form class="form newsletter-page-form" data-newsletter-form data-source="newsletter-page" novalidate>
+        <div class="field"><label for="newsletter-email">Email address</label><input id="newsletter-email" name="email" type="email" autocomplete="email" required></div>
+        <label class="consent-check"><input name="marketingConsent" type="checkbox" required> <span>Yes, email me my new-customer code and occasional NutriThrive farm notes, guides and offers. I can unsubscribe at any time.</span></label>
+        <p class="form-note">We store your email and consent record to send these messages. We do not sell your personal information. New customers receive 5% off their first order. See our <a href="${r.privacy}">privacy policy</a>.</p>
+        <button class="btn btn-primary" type="submit">Join and get 5% off</button>
+        <p class="form-status" data-newsletter-status role="status"></p>
+      </form>`;
+  return layout({
+    title: LIVE_MODE ? "Farm notes newsletter | NutriThrive Australia" : "NutriThrive Farm Notes and Product Newsletter",
+    description: "Subscribe for occasional NutriThrive farm updates, product information, dispatch notes and new practical guides. No daily emails.",
+    canonicalPath: LIVE_MODE ? "/pages/newsletter/" : "/newsletter",
+    current: "",
+    preserveTitle: Boolean(LIVE_MODE),
+    robots: LIVE_MODE ? "index, follow" : "noindex, nofollow",
+    main: `<section class="page-intro wrap-narrow newsletter-page">
+      <h1>${LIVE_MODE ? "Farm notes" : "Notes from the warehouse"}</h1>
+      <p class="lede">${LIVE_MODE ? "Occasional product and journal updates from Truganina. No daily drip." : "Occasional product and journal updates. No daily drip."}</p>
+      ${LIVE_MODE ? liveForm : previewForm}
+      <div class="newsletter-facts">
+        <div><h2>What you get</h2><p>Tips for using moringa, curry leaves and tea at home, plus restock notes when something is back.</p></div>
+        <div><h2>How often</h2><p>Most months, once or twice. We may send an extra note for a restock. Every email has an unsubscribe link.</p></div>
+        <div><h2>Privacy</h2><p>We use your email only to send this list and to reply if you write to us about it. We do not sell mailing lists.</p></div>
+      </div>
+    </section>`,
+  });
+}
+
+function newsletterThanksPage() {
+  return layout({
+    title: "You're on the NutriThrive list",
+    description: "You're subscribed to occasional NutriThrive farm notes from Truganina. Unsubscribe any time from any email.",
+    canonicalPath: "/pages/newsletter/thank-you.html",
+    current: "",
+    preserveTitle: true,
+    robots: "noindex, follow",
+    main: `<section class="page-intro wrap-narrow newsletter-page">
+      <h1>You're on the list</h1>
+      <p class="lede">We'll send occasional farm notes to that address. You can unsubscribe from any email.</p>
+      <div class="not-found-actions"><a class="btn btn-primary" href="/products/">Shop the range</a><a class="btn btn-secondary" href="/">Back home</a></div>
+    </section>`,
   });
 }
 
@@ -2175,6 +2234,8 @@ function appendLiveRedirects() {
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
 /privacy /privacy-policy 301
+/newsletter /pages/newsletter/ 301
+/newsletter/ /pages/newsletter/ 301
 `;
   const file = path.join(ROOT, "_redirects");
   const current = fs.readFileSync(file, "utf8");
@@ -2185,18 +2246,25 @@ function appendLiveRedirects() {
   }
 }
 
-function copyLivePaymentAssets() {
+function copyLiveUiAssets() {
   fs.mkdirSync(path.join(ROOT, "scripts/global"), { recursive: true });
   fs.mkdirSync(path.join(ROOT, "assets/css"), { recursive: true });
   fs.copyFileSync(path.join(OUT, "css/system.css"), path.join(ROOT, "assets/css/ds-v1-system.css"));
+  fs.copyFileSync(path.join(OUT, "js/site.js"), path.join(ROOT, "scripts/global/ds-v1-site.js"));
+  fs.copyFileSync(path.join(OUT, "js/cart-page.js"), path.join(ROOT, "scripts/global/ds-v1-cart-page.js"));
   fs.copyFileSync(path.join(OUT, "js/payment-page.js"), path.join(ROOT, "scripts/global/ds-v1-payment-page.js"));
 }
 
 function main() {
-  if (LIVE_MODE && PAYMENT_ONLY) {
-    copyLivePaymentAssets();
-    emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
-    console.log("Wrote live PayPal /payment with the storefront UI.");
+  if (LIVE_MODE && LIVE_PAGES.size) {
+    copyLiveUiAssets();
+    if (LIVE_PAGES.has("payment")) emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
+    if (LIVE_PAGES.has("cart")) emit("cart/index.html", cartPage(), "pages/shop/cart.html");
+    if (LIVE_PAGES.has("newsletter")) {
+      emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");
+      emit("newsletter/thank-you.html", newsletterThanksPage(), "pages/newsletter/thank-you.html");
+    }
+    console.log(`Wrote live storefront pages: ${[...LIVE_PAGES].join(", ")}.`);
     return;
   }
 
@@ -2285,24 +2353,7 @@ function main() {
   writePage("moringa-brisbane/index.html", cityPage("Brisbane", "brisbane"));
   writePage("moringa-perth/index.html", cityPage("Perth", "perth"));
   writePage("moringa-adelaide/index.html", cityPage("Adelaide", "adelaide"));
-  writePage("newsletter/index.html", layout({
-    title: "NutriThrive Farm Notes and Product Newsletter",
-    description: "Subscribe for occasional NutriThrive farm updates, product information, dispatch notes and new practical guides. No daily emails or unnecessary noise.",
-    canonicalPath: "/newsletter",
-    current: "",
-    robots: "noindex, nofollow",
-    main: `<section class="page-intro wrap-narrow">
-      <h1>Notes from the warehouse</h1>
-      <p>Occasional product and journal updates. No daily drip.</p>
-      <form class="form" data-newsletter-form data-source="newsletter-page" novalidate>
-        <div class="field"><label for="newsletter-email">Email address</label><input id="newsletter-email" name="email" type="email" autocomplete="email" required></div>
-        <label class="consent-check"><input name="marketingConsent" type="checkbox" required> <span>Yes, email me my new-customer code and occasional NutriThrive farm notes, guides and offers. I can unsubscribe at any time.</span></label>
-        <p class="form-note">We store your email and consent record to send these messages. We do not sell your personal information. New customers receive 5% off their first order. See our <a href="/privacy/">privacy policy</a>.</p>
-        <button class="btn btn-primary" type="submit">Join and get 5% off</button>
-        <p class="form-status" data-newsletter-status role="status"></p>
-      </form>
-    </section>`,
-  }));
+  writePage("newsletter/index.html", newsletterPage());
   writePage("unsubscribe/index.html", layout({
     title: "Unsubscribe from NutriThrive Marketing Emails",
     description: "Stop NutriThrive marketing emails without signing in or creating an account. Submit the email address you previously subscribed with.",
