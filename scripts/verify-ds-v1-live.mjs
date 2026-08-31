@@ -129,6 +129,28 @@ if (paymentJs) {
   if (!paymentJs.includes("ntLoadPayPalSdk")) errors.push("payment page script lost PayPal SDK loader");
 }
 
+const thanks = read("pages/shop/thank-you.html");
+if (thanks) {
+  if (!/noindex/i.test(thanks)) errors.push("order thank-you page must stay noindex");
+  mustInclude("pages/shop/thank-you.html", "/assets/css/ds-v1-system", "new UI CSS");
+  mustInclude("pages/shop/thank-you.html", 'data-nt-live="1"', "live flag");
+  mustInclude("pages/shop/thank-you.html", "ds-v1-thank-you-page", "order thank-you script");
+  mustInclude("pages/shop/thank-you.html", 'id="order-id"', "order reference");
+  mustInclude("pages/shop/thank-you.html", "G-WH21SW75WP", "GA");
+  mustNotInclude("pages/shop/thank-you.html", "design-system.min.css", "old design system CSS");
+  mustNotInclude("pages/shop/thank-you.html", "footer-v2", "old footer");
+  mustNotInclude("pages/shop/thank-you.html", "thank-you-icon", "old checkmark block");
+}
+const thanksJs = read("scripts/global/ds-v1-thank-you-page.js");
+if (thanksJs) {
+  if (!thanksJs.includes('gtag("event", "purchase"') && !thanksJs.includes("gtag('event', 'purchase'")) {
+    errors.push("thank-you page script lost GA purchase event");
+  }
+  if (!thanksJs.includes('track", "Purchase') && !thanksJs.includes("track', 'Purchase")) {
+    errors.push("thank-you page script lost Reddit Purchase event");
+  }
+}
+
 const redirects = read("_redirects");
 if (redirects) {
   if (!redirects.includes("/shop /products/ 301")) errors.push("_redirects missing /shop → /products/");
@@ -136,6 +158,7 @@ if (redirects) {
   if (redirects.includes("/blog/ /journal/")) errors.push("_redirects must not send /blog/ to /journal/");
   if (!redirects.includes("/cart /pages/shop/cart.html 200")) errors.push("_redirects lost /cart rewrite");
   if (!redirects.includes("/payment /pages/shop/payment.html 200")) errors.push("_redirects lost /payment rewrite");
+  if (!redirects.includes("/thank-you.html /pages/shop/thank-you.html 200")) errors.push("_redirects lost /thank-you.html rewrite");
   if (!redirects.includes("/newsletter /pages/newsletter/ 301")) errors.push("_redirects missing /newsletter → /pages/newsletter/");
 }
 
@@ -146,6 +169,7 @@ for (const asset of [
   "scripts/global/ds-v1-search-index.js",
   "scripts/global/ds-v1-cart-page.js",
   "scripts/global/ds-v1-payment-page.js",
+  "scripts/global/ds-v1-thank-you-page.js",
   "scripts/global/cart.min.js",
   "scripts/global/paypal-client-config.min.js",
   "scripts/global/paypal-sdk-loader.min.js",

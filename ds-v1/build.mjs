@@ -6,7 +6,7 @@ import { PRODUCTS, REVIEWS, costNote } from "./js/data.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = __dirname;
-const ASSET_VERSION = "20260831-6";
+const ASSET_VERSION = "20260831-7";
 const LIVE_MODE = process.env.DS_V1_LIVE === "1";
 const PAYMENT_ONLY = process.env.DS_V1_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
@@ -21,6 +21,7 @@ const SEARCH_SRC = LIVE_MODE ? "/scripts/global/ds-v1-search-index.js" : "/js/se
 const SITE_SRC = LIVE_MODE ? "/scripts/global/ds-v1-site.js" : "/js/site.js";
 const CART_PAGE_SRC = LIVE_MODE ? "/scripts/global/ds-v1-cart-page.js" : "/js/cart-page.js";
 const PAYMENT_PAGE_SRC = LIVE_MODE ? "/scripts/global/ds-v1-payment-page.js" : "/js/payment-page.js";
+const THANK_YOU_PAGE_SRC = LIVE_MODE ? "/scripts/global/ds-v1-thank-you-page.js" : "/js/thank-you-page.js";
 
 const CONTRACT = `<!--
 THESIS: A calm Australian wellness storefront that proves lab-tested moringa with published evidence, refusing marketplace clutter and decorative green wash.
@@ -1814,16 +1815,49 @@ function checkoutPage() {
 }
 
 function thankYouPage() {
-  return layout({
-    title: "Preview Order Confirmation | NutriThrive",
-    description: "View the local NutriThrive confirmation-page design after testing the preview checkout. No payment is taken and no real order is created.",
-    canonicalPath: "/thank-you",
-    current: "",
-    robots: "noindex, nofollow",
-    main: `<section class="page-intro wrap-narrow">
+  const r = routes();
+  if (!LIVE_MODE) {
+    return layout({
+      title: "Preview Order Confirmation | NutriThrive",
+      description: "View the local NutriThrive confirmation-page design after testing the preview checkout. No payment is taken and no real order is created.",
+      canonicalPath: "/thank-you",
+      current: "",
+      robots: "noindex, nofollow",
+      extraFoot: `<script src="${THANK_YOU_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+      main: `<section class="page-intro wrap-narrow order-thanks">
       <h1>Received in this preview</h1>
-      <p>Nothing was charged. To place a real order, use nutrithrive.com.au or call +61 438 201 419.</p>
-      <a class="btn btn-primary" href="/shop/">Back to shop</a>
+      <p class="lede">Nothing was charged. To place a real order, use nutrithrive.com.au or call +61 438 201 419.</p>
+      <dl class="order-thanks-list" id="order-facts" hidden>
+        <div class="order-thanks-row" id="order-id-row" hidden><dt>Order reference</dt><dd id="order-id"></dd></div>
+        <div class="order-thanks-row" id="order-item-row" hidden><dt>Item</dt><dd id="order-item"></dd></div>
+        <div class="order-thanks-row" id="order-total-row" hidden><dt>Paid</dt><dd id="order-total"></dd></div>
+      </dl>
+      <div class="order-thanks-actions"><a class="btn btn-primary" href="/shop/">Back to shop</a></div>
+    </section>`,
+    });
+  }
+  return layout({
+    title: "Order confirmed | NutriThrive Australia",
+    description: "Thank you for your NutriThrive order. We are packing it in Truganina, Melbourne, and will email confirmation shortly.",
+    canonicalPath: "/thank-you.html",
+    current: "",
+    preserveTitle: true,
+    preserveDescription: true,
+    robots: "noindex, follow",
+    extraFoot: `<script src="${THANK_YOU_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+    main: `<section class="page-intro wrap-narrow order-thanks">
+      <h1>Order confirmed</h1>
+      <p class="lede">We've received your payment. A confirmation email is on the way.</p>
+      <dl class="order-thanks-list" id="order-facts" hidden>
+        <div class="order-thanks-row" id="order-id-row" hidden><dt>Order reference</dt><dd id="order-id"></dd></div>
+        <div class="order-thanks-row" id="order-item-row" hidden><dt>Item</dt><dd id="order-item"></dd></div>
+        <div class="order-thanks-row" id="order-total-row" hidden><dt>Paid</dt><dd id="order-total"></dd></div>
+      </dl>
+      <p class="order-thanks-note">We'll pack this in Truganina and ship as soon as we can. Questions? <a href="${r.contact}">Contact us</a> with your order reference.</p>
+      <div class="order-thanks-actions">
+        <a class="btn btn-primary" href="${r.shop}">Continue shopping</a>
+        <a class="btn btn-secondary" href="/">Back home</a>
+      </div>
     </section>`,
   });
 }
@@ -2219,6 +2253,7 @@ function writeGeneratedJs(search) {
     fs.copyFileSync(path.join(OUT, "js/site.js"), path.join(ROOT, "scripts/global/ds-v1-site.js"));
     fs.copyFileSync(path.join(OUT, "js/cart-page.js"), path.join(ROOT, "scripts/global/ds-v1-cart-page.js"));
     fs.copyFileSync(path.join(OUT, "js/payment-page.js"), path.join(ROOT, "scripts/global/ds-v1-payment-page.js"));
+    fs.copyFileSync(path.join(OUT, "js/thank-you-page.js"), path.join(ROOT, "scripts/global/ds-v1-thank-you-page.js"));
   }
 }
 
@@ -2253,12 +2288,14 @@ function copyLiveUiAssets() {
   fs.copyFileSync(path.join(OUT, "js/site.js"), path.join(ROOT, "scripts/global/ds-v1-site.js"));
   fs.copyFileSync(path.join(OUT, "js/cart-page.js"), path.join(ROOT, "scripts/global/ds-v1-cart-page.js"));
   fs.copyFileSync(path.join(OUT, "js/payment-page.js"), path.join(ROOT, "scripts/global/ds-v1-payment-page.js"));
+  fs.copyFileSync(path.join(OUT, "js/thank-you-page.js"), path.join(ROOT, "scripts/global/ds-v1-thank-you-page.js"));
 }
 
 function main() {
   if (LIVE_MODE && LIVE_PAGES.size) {
     copyLiveUiAssets();
     if (LIVE_PAGES.has("payment")) emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
+    if (LIVE_PAGES.has("thank-you")) emit("thank-you/index.html", thankYouPage(), "pages/shop/thank-you.html");
     if (LIVE_PAGES.has("cart")) emit("cart/index.html", cartPage(), "pages/shop/cart.html");
     if (LIVE_PAGES.has("newsletter")) {
       emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");
@@ -2300,6 +2337,7 @@ function main() {
     emit("privacy/index.html", privacyPage(), "pages/legal/privacy-policy.html");
     emit("cart/index.html", cartPage(), "pages/shop/cart.html");
     emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
+    emit("thank-you/index.html", thankYouPage(), "pages/shop/thank-you.html");
     emit("404.html", notFoundPage());
     emit("melbourne/index.html", cityPage("Melbourne", "melbourne"), "pages/homepage/melbourne.html");
     emit("moringa-sydney/index.html", cityPage("Sydney", "sydney"));
