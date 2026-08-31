@@ -44,6 +44,7 @@ if (home) {
   }
   if (!/content="index,\s*follow"/i.test(home)) errors.push("homepage is not index,follow");
   mustInclude("index.html", 'rel="canonical" href="https://nutrithrive.com.au/"', "homepage canonical");
+  mustInclude("index.html", "/assets/images/og/nutrithrive-share-1200x630.jpg", "share image");
   mustInclude("index.html", "/assets/css/ds-v1-system", "new UI CSS");
   mustInclude("index.html", "/scripts/global/cart.min.js", "production cart");
   mustInclude("index.html", 'data-nt-live="1"', "live flag");

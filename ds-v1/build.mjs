@@ -283,7 +283,7 @@ function productCard(p) {
 }
 
 const LIVE = "https://nutrithrive.com.au";
-const OG_IMAGE = `${LIVE}/assets/images/og/moringa-social-1200.png`;
+const OG_IMAGE = `${LIVE}/assets/images/og/nutrithrive-share-1200x630.jpg`;
 
 const ORG_SCHEMA = JSON.parse(
   fs.readFileSync(path.join(ROOT, "shared/schema/nutrithrive-local-business.json"), "utf8")
@@ -446,7 +446,7 @@ function layout({
 }) {
   const r = routes();
   const canonical = `${LIVE}${canonicalPath}`;
-  const image = absUrl(ogImage);
+  const image = OG_IMAGE;
   const seoTitle = preserveTitle ? title : fitSeoTitle(title);
   const seoDescription = preserveDescription ? description : fitMetaDescription(description);
   const robotsContent = robots || (LIVE_MODE ? "index, follow" : "noindex, nofollow");
@@ -534,8 +534,10 @@ function layout({
   <meta property="og:title" content="${esc(seoTitle)}">
   <meta property="og:description" content="${esc(seoDescription)}">
   <meta property="og:image" content="${esc(image)}">
-  <meta property="og:image:width" content="${ogImageWidth}">
-  <meta property="og:image:height" content="${ogImageHeight}">
+  <meta property="og:image:secure_url" content="${esc(image)}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="${esc(seoTitle)}">
   <meta property="og:locale" content="en_AU">
   <meta property="og:site_name" content="NutriThrive Australia">
