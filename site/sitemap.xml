@@ -62,12 +62,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutrithrive.com.au/blog/caffeine-cutoff-time-sleep-black-tea-2026</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://nutrithrive.com.au/blog/can-you-drink-darjeeling-tea-every-day-2026</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -86,6 +80,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/category/curry-leaves/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/category/guides/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -93,6 +93,12 @@
   </url>
   <url>
     <loc>https://nutrithrive.com.au/blog/category/health/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/category/moringa-guides/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -110,7 +116,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nutrithrive.com.au/blog/category/soap-skin/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nutrithrive.com.au/blog/category/tea/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrithrive.com.au/blog/category/ways-to-use-it/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
