@@ -44,7 +44,7 @@ if (home) {
   }
   if (!/content="index,\s*follow"/i.test(home)) errors.push("homepage is not index,follow");
   mustInclude("index.html", 'rel="canonical" href="https://nutrithrive.com.au/"', "homepage canonical");
-  mustInclude("index.html", "/assets/css/ds-v1-system.css", "new UI CSS");
+  mustInclude("index.html", "/assets/css/ds-v1-system", "new UI CSS");
   mustInclude("index.html", "/scripts/global/cart.min.js", "production cart");
   mustInclude("index.html", 'data-nt-live="1"', "live flag");
   mustNotInclude("index.html", "This is a design preview", "preview footer");
@@ -64,7 +64,7 @@ if (article) {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
-  mustInclude(articleRel, "/assets/css/ds-v1-system.css", "article new UI");
+  mustInclude(articleRel, "/assets/css/ds-v1-system", "article new UI");
   mustNotInclude(articleRel, 'href="/journal/how-to-add-moringa-to-diet/', "journal slug link on ranking article");
   if (!article.includes("Melbourne Morning Smoothie") && !article.includes("Quick Answer")) {
     errors.push(`${articleRel}: article body looks truncated; original prose is missing`);
@@ -93,15 +93,31 @@ if (pdp) {
 const cart = read("pages/shop/cart.html");
 if (cart) {
   if (!/noindex/i.test(cart)) errors.push("cart page must stay noindex");
-  mustInclude("pages/shop/cart.html", "/scripts/global/ds-v1-cart-page.js", "new cart UI script");
+  mustInclude("pages/shop/cart.html", "/scripts/global/ds-v1-cart-page", "new cart UI script");
   mustInclude("pages/shop/cart.html", "/scripts/global/cart.min.js", "production cart");
   mustNotInclude("pages/shop/cart.html", 'href="/checkout/"', "preview checkout on live cart");
 }
 
 const payment = read("pages/shop/payment.html");
 if (payment) {
-  if (!/paypal/i.test(payment)) errors.push("payment.html lost PayPal");
-  if (!/noindex/i.test(payment) && !payment.includes("payment")) notes.push("payment robots not checked");
+  if (!/noindex/i.test(payment)) errors.push("payment page must stay noindex");
+  mustInclude("pages/shop/payment.html", "/assets/css/ds-v1-system", "new UI CSS");
+  mustInclude("pages/shop/payment.html", 'data-nt-live="1"', "live flag");
+  mustInclude("pages/shop/payment.html", "/scripts/global/cart.min.js", "production cart");
+  mustInclude("pages/shop/payment.html", "paypal-client-config", "PayPal client config");
+  mustInclude("pages/shop/payment.html", "paypal-sdk-loader", "PayPal SDK loader");
+  mustInclude("pages/shop/payment.html", "ds-v1-payment-page", "new payment UI script");
+  mustInclude("pages/shop/payment.html", 'id="paypal-button-container"', "PayPal buttons mount");
+  mustInclude("pages/shop/payment.html", 'id="shipping-country"', "shipping country select");
+  mustNotInclude("pages/shop/payment.html", "design-system.min.css", "old design system CSS");
+  mustNotInclude("pages/shop/payment.html", "footer-v2", "old footer");
+  mustNotInclude("pages/shop/payment.html", 'href="/checkout/"', "preview checkout on payment");
+}
+const paymentJs = read("scripts/global/ds-v1-payment-page.js");
+if (paymentJs) {
+  if (!paymentJs.includes("paypal-create-order")) errors.push("payment page script lost PayPal create-order");
+  if (!paymentJs.includes("paypal-capture-order")) errors.push("payment page script lost PayPal capture-order");
+  if (!paymentJs.includes("ntLoadPayPalSdk")) errors.push("payment page script lost PayPal SDK loader");
 }
 
 const redirects = read("_redirects");
@@ -119,7 +135,10 @@ for (const asset of [
   "scripts/global/ds-v1-catalog.js",
   "scripts/global/ds-v1-search-index.js",
   "scripts/global/ds-v1-cart-page.js",
+  "scripts/global/ds-v1-payment-page.js",
   "scripts/global/cart.min.js",
+  "scripts/global/paypal-client-config.min.js",
+  "scripts/global/paypal-sdk-loader.min.js",
   "netlify/functions/paypal-create-order.js",
   "netlify/functions/paypal-capture-order.js",
 ]) {
