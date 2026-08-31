@@ -813,3 +813,14 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/moringa-face-mask-australia-glow-ritual /blog/moringa-face-mask-australia-glow-ritual.html 200
 /blog/quick-healthy-meal-ideas-15-minutes-australia.html /blog/quick-healthy-meal-ideas-15-minutes-australia 301!
 /blog/quick-healthy-meal-ideas-15-minutes-australia /blog/quick-healthy-meal-ideas-15-minutes-australia.html 200
+
+# === ds-v1 live routes (keep ranking /blog URLs) ===
+/shop /products/ 301
+/shop/ /products/ 301
+/journal /journal/index.html 200
+/journal/ /journal/index.html 200
+/journal/:slug /blog/:slug 301
+/journal/:slug/ /blog/:slug 301
+/shipping /pages/shipping/shipping-returns.html 200
+/shipping/ /pages/shipping/shipping-returns.html 200
+/privacy /privacy-policy 301
