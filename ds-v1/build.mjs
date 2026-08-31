@@ -6,7 +6,7 @@ import { PRODUCTS, REVIEWS, costNote } from "./js/data.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = __dirname;
-const ASSET_VERSION = "20260831-3";
+const ASSET_VERSION = "20260831-4";
 const LIVE_MODE = process.env.DS_V1_LIVE === "1";
 const CSS_HREF = LIVE_MODE ? "/assets/css/ds-v1-system.css" : "/css/system.css";
 const CATALOG_SRC = LIVE_MODE ? "/scripts/global/ds-v1-catalog.js" : "/js/catalog.js";
@@ -426,6 +426,7 @@ function layout({
   current,
   main,
   extraHead = "",
+  extraFoot = "",
   ogType = "website",
   ogImage,
   ogImageWidth = 1200,
@@ -542,7 +543,7 @@ function layout({
   <link rel="preload" href="/assets/fonts/fraunces-latin-500-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${CSS_HREF}">
-  <script src="${CATALOG_SRC}" defer></script>
+  <script src="${CATALOG_SRC}?v=${ASSET_VERSION}" defer></script>
   <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">${JSON.stringify(ORG_SCHEMA)}</script>
   ${liveAnalytics}
   ${extraHead}
@@ -663,9 +664,11 @@ ${welcomeOffer}
 </section>
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
-${LIVE_MODE ? '<script src="/scripts/global/cart.min.js" defer></script>\n<script src="/scripts/global/shipping-rates.min.js" defer></script>' : ""}
-<script src="${SEARCH_SRC}" defer></script>
-<script src="${SITE_SRC}" defer></script>
+${LIVE_MODE ? `<script src="/scripts/global/cart.min.js?v=${ASSET_VERSION}" defer></script>` : ""}
+<script src="${SEARCH_SRC}?v=${ASSET_VERSION}" defer></script>
+<script src="${SITE_SRC}?v=${ASSET_VERSION}" defer></script>
+${LIVE_MODE ? `<script src="/scripts/global/shipping-rates.min.js?v=${ASSET_VERSION}" defer></script>` : ""}
+${extraFoot}
 </body>
 </html>`;
 }
@@ -1624,7 +1627,7 @@ function cartPage() {
       : "Review products, quantities, delivery estimates and your NutriThrive order subtotal before continuing to the local preview checkout.",
     canonicalPath: "/cart",
     current: "",
-    extraHead: `<script src="${CART_PAGE_SRC}" defer></script>`,
+    extraFoot: `<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
     robots: "noindex, nofollow",
     main: `
       <section class="page-intro wrap cart-intro">
