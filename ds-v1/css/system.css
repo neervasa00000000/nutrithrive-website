@@ -1048,10 +1048,25 @@ a.product-card:hover {
 .modal-close:hover { background: var(--color-bg-soft); }
 .offer-decline { display: block; margin: 16px auto 0; font-size: 14px; }
 
-.cookie-banner { position: fixed; z-index: 950; left: 20px; right: 20px; bottom: 20px; margin: auto; width: min(1180px, calc(100% - 40px)); display: flex; align-items: center; justify-content: space-between; gap: 28px; background: #fffdf8; border: 1px solid var(--color-border); border-radius: 20px; padding: 20px 22px; box-shadow: 0 18px 60px rgba(12, 22, 16, .18); }
-.cookie-banner h2 { font-size: 20px; margin: 0 0 4px; }
-.cookie-banner p { margin: 0; color: var(--color-text-secondary); max-width: 720px; }
-.cookie-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.cookie-banner {
+  position: fixed;
+  z-index: 950;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  left: auto;
+  width: min(360px, calc(100% - 32px));
+  display: grid;
+  gap: 10px;
+  background: #fffdf8;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: 0 10px 32px rgba(12, 22, 16, .16);
+}
+.cookie-banner h2 { font-size: var(--text-sm); margin: 0 0 2px; }
+.cookie-banner p { margin: 0; color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.4; max-width: none; }
+.cookie-actions { display: flex; gap: 6px; flex-wrap: nowrap; }
+.cookie-banner .btn { flex: 1; min-width: 0; padding: 0 8px; font-size: var(--text-sm); min-height: var(--touch); }
 .cookie-choice { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 16px 0; border-top: 1px solid var(--color-border); }
 .cookie-choice span { display: grid; gap: 3px; }
 .cookie-choice small { color: var(--color-text-secondary); }
@@ -1070,10 +1085,8 @@ a.product-card:hover {
 .not-found-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 
 @media (max-width: 680px) {
-  .cookie-banner { left: 10px; right: 10px; bottom: 10px; width: calc(100% - 20px); display: block; padding: 18px; }
-  .cookie-actions { display: grid; grid-template-columns: 1fr 1fr; margin-top: 16px; }
-  .cookie-actions [data-cookie-accept] { grid-column: 1 / -1; grid-row: 1; }
-  .cookie-actions .btn { width: 100%; }
+  .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; padding: 12px; }
+  .cookie-actions { margin-top: 0; }
   .welcome-offer, .cookie-modal { align-items: end; padding: 0; }
   .welcome-card, .cookie-card { width: 100%; max-height: 92dvh; border-radius: 24px 24px 0 0; padding: 28px 20px 24px; }
   .newsletter-inline-row, .discount-form > div { align-items: stretch; }

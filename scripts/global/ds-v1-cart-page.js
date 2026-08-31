@@ -68,9 +68,18 @@ function catalog() {
   return window.NT_PRODUCTS || [];
 }
 
-function shippingFor(subtotal) {
+function shippingFor(items, subtotal) {
   if (subtotal >= 80) return 0;
-  if (subtotal === 0) return 0;
+  if (!items.length || subtotal === 0) return 0;
+  if (window.ShippingRates?.calculate) {
+    const payload = items.map((item) => ({
+      name: item.name,
+      weight: Number(item.weight || 0),
+      quantity: Number(item.qty || item.quantity || 1),
+    }));
+    const cost = window.ShippingRates.calculate("AU", payload, subtotal);
+    if (typeof cost === "number" && !Number.isNaN(cost)) return cost;
+  }
   return 9.69;
 }
 
@@ -196,7 +205,7 @@ function renderCart() {
       </article>`
     )
     .join("");
-  const ship = shippingFor(sub);
+  const ship = shippingFor(items, sub);
   summary.innerHTML = `
     <h2>Summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
@@ -223,5 +232,9 @@ function renderCart() {
   renderRecs(items, sub);
 }
 
-renderCart();
 window.addEventListener("nt-cart-change", renderCart);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderCart);
+} else {
+  renderCart();
+}

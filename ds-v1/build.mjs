@@ -6,7 +6,7 @@ import { PRODUCTS, REVIEWS, costNote } from "./js/data.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUT = __dirname;
-const ASSET_VERSION = "20260831-2";
+const ASSET_VERSION = "20260831-3";
 const LIVE_MODE = process.env.DS_V1_LIVE === "1";
 const CSS_HREF = LIVE_MODE ? "/assets/css/ds-v1-system.css" : "/css/system.css";
 const CATALOG_SRC = LIVE_MODE ? "/scripts/global/ds-v1-catalog.js" : "/js/catalog.js";
@@ -646,8 +646,8 @@ ${CONTRACT}
 </footer>
 ${welcomeOffer}
 <section class="cookie-banner" data-cookie-banner hidden aria-label="Cookie preferences">
-  <div><h2>Your privacy choices</h2><p>We use necessary browser storage for the cart and preferences. With your permission, optional analytics and marketing tools can help us improve the store. You can reject them and still shop.</p></div>
-  <div class="cookie-actions"><button class="btn btn-secondary" type="button" data-cookie-reject>Reject optional</button><button class="btn btn-secondary" type="button" data-cookie-manage>Manage</button><button class="btn btn-primary" type="button" data-cookie-accept>Accept optional</button></div>
+  <div><h2>Cookies</h2><p>Cart storage stays on. Optional analytics need your OK.</p></div>
+  <div class="cookie-actions"><button class="btn btn-secondary" type="button" data-cookie-reject>Reject</button><button class="btn btn-secondary" type="button" data-cookie-manage>Manage</button><button class="btn btn-primary" type="button" data-cookie-accept>Accept</button></div>
 </section>
 <section class="cookie-modal" data-cookie-modal hidden>
   <button class="modal-backdrop" type="button" data-cookie-close aria-label="Close cookie settings"></button>
@@ -663,7 +663,7 @@ ${welcomeOffer}
 </section>
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
-${LIVE_MODE ? '<script src="/scripts/global/cart.min.js" defer></script>' : ""}
+${LIVE_MODE ? '<script src="/scripts/global/cart.min.js" defer></script>\n<script src="/scripts/global/shipping-rates.min.js" defer></script>' : ""}
 <script src="${SEARCH_SRC}" defer></script>
 <script src="${SITE_SRC}" defer></script>
 </body>
