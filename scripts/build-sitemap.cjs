@@ -85,7 +85,8 @@ function walkHtml(dir, out = []) {
         name.name === "gas-guardian" ||
         name.name === "arkive" ||
         name.name === "private" ||
-        name.name === "scripts"
+        name.name === "scripts" ||
+        name.name === "ds-v1"
       ) {
         continue;
       }
@@ -113,6 +114,7 @@ function fileToUrl(relPosix) {
   if (relPosix === "index.html") return `${BASE}/`;
 
   if (relPosix === "blog/index.html") return `${BASE}/blog/`;
+  if (relPosix === "journal/index.html") return `${BASE}/journal/`;
 
   // Category hubs: /blog/category/{name}/index.html → /blog/category/{name}/
   const blogCat = /^blog\/category\/([^/]+)\/index\.html$/.exec(relPosix);

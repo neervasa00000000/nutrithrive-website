@@ -10,6 +10,7 @@ Disallow: /nutrithrive_labs/
 Disallow: /nutrithrive-labs/
 Disallow: /crazy-ideas/
 Disallow: /Gork_bot/
+Disallow: /ds-v1/
 Disallow: /documents/
 Allow: /documents/nutrithrive-lab-report-summary.pdf
 Disallow: /shared/

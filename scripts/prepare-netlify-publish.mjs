@@ -21,6 +21,7 @@ const IGNORE = new Set([
   'audit',
   'tools',
   'issues',
+  'ds-v1',
   'gas-guardian',
   'Gork_bot',
 ]);
