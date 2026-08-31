@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog/ shared/js/blog-articles.js shared/js/blog-articles.min.js blog/index.html sitemap.xml llms.txt
+          git add site/blog/ site/shared/js/blog-articles.js site/shared/js/blog-articles.min.js site/blog/index.html site/sitemap.xml site/llms.txt
           if git diff --staged --quiet; then
             echo "No launch changes today."
           else

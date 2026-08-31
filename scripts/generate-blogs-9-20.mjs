@@ -9,7 +9,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
-const BLOG_DIR = path.join(REPO, 'blog');
+const SITE = path.join(REPO, 'site');
+const BLOG_DIR = path.join(SITE, 'blog');
 const TRANSCRIPT = path.join(
   process.env.HOME,
   '.cursor/projects/Users-neervasa-Desktop-Website/agent-transcripts/49ff2f0b-bac9-4b0b-a408-426257982d85/49ff2f0b-bac9-4b0b-a408-426257982d85.jsonl',

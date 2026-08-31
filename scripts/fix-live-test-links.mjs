@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 import { transformLiveLinks } from './lib/live-link-transform.mjs';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(REPO, 'site');
 
 function walkHtml(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
@@ -24,10 +25,10 @@ function walkHtml(dir, acc = []) {
 }
 
 const targets = [
-  path.join(REPO, 'index.html'),
-  ...walkHtml(path.join(REPO, 'blog')),
-  ...walkHtml(path.join(REPO, 'pages')),
-  ...walkHtml(path.join(REPO, 'products')),
+  path.join(SITE, 'index.html'),
+  ...walkHtml(path.join(SITE, 'blog')),
+  ...walkHtml(path.join(SITE, 'pages')),
+  ...walkHtml(path.join(SITE, 'products')),
 ];
 
 let changed = 0;

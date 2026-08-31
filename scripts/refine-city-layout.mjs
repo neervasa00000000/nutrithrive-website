@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 
 const CITY_SLUGS = ['moringa-sydney', 'moringa-brisbane', 'moringa-perth', 'moringa-adelaide'];
 
@@ -85,7 +86,7 @@ for (const slug of CITY_SLUGS) {
   console.log('Refined:', slug);
 }
 
-const melb = path.join(ROOT, 'pages/homepage/melbourne.html');
+const melb = path.join(SITE, 'pages/homepage/melbourne.html');
 if (fs.existsSync(melb)) {
   let html = fs.readFileSync(melb, 'utf8');
   if (!html.includes('city-mobile-bar')) {

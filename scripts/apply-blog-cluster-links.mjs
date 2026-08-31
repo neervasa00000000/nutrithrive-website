@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.join(__dirname, '..');
+const SITE = path.join(REPO, 'site');
 const clusters = JSON.parse(
   fs.readFileSync(path.join(REPO, 'seo/blog-clusters.json'), 'utf8')
 );
@@ -18,7 +19,7 @@ const clusters = JSON.parse(
 const titleCache = new Map();
 
 function blogPath(slug) {
-  return path.join(REPO, 'blog', `${slug}.html`);
+  return path.join(SITE, 'blog', `${slug}.html`);
 }
 
 function extractTitle(html, slug) {

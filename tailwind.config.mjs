@@ -5,12 +5,12 @@ import containerQueries from '@tailwindcss/container-queries';
 export default {
   darkMode: 'class',
   content: [
-    './blog/**/*.html',
-    './index.html',
-    './products/**/*.html',
-    './pages/**/*.html',
-    './buy-moringa-powder-australia/**/*.html',
-    './shared/js/**/*.js',
+    './site/blog/**/*.html',
+    './site/index.html',
+    './site/products/**/*.html',
+    './site/pages/**/*.html',
+    './site/buy-moringa-powder-australia/**/*.html',
+    './site/shared/js/**/*.js',
     './scripts/templates/v2/**/*.html',
   ],
   theme: {

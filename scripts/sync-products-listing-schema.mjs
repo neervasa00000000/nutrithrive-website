@@ -10,8 +10,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SCHEMA_PATH = path.join(ROOT, 'shared/schema/products-listing.json');
-const HTML_PATH = path.join(ROOT, 'products/index.html');
+const SITE = path.join(ROOT, 'site');
+const SCHEMA_PATH = path.join(SITE, 'shared/schema/products-listing.json');
+const HTML_PATH = path.join(SITE, 'products/index.html');
 
 const RETURN_POLICY = {
   '@type': 'MerchantReturnPolicy',

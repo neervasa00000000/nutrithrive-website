@@ -1,8 +1,11 @@
 # Local Next.js experiment (never deploy)
 gas-guardian/
 
-# Design-system preview (published via DS_V1_LIVE into root paths, not as /ds-v1/)
-ds-v1/
+# Repo layout folders that are not the public site (publish copies site/ only)
+docs/
+storefront/
+seo/
+scripts/
 
 # Never publish local tooling, test templates, or audit output
 .firecrawl/

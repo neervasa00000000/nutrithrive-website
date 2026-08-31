@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 
 const REPLACEMENTS = [
   {
@@ -70,7 +71,7 @@ for (const { file, from, to, note } of REPLACEMENTS) {
 }
 
 // shipping: replace multi-city with general + link to melbourne hub
-const shipFile = path.join(ROOT, 'pages/shipping/shipping-returns.html');
+const shipFile = path.join(SITE, 'pages/shipping/shipping-returns.html');
 if (fs.existsSync(shipFile)) {
   let html = fs.readFileSync(shipFile, 'utf8');
   const old =
@@ -95,7 +96,7 @@ if (fs.existsSync(shipFile)) {
 }
 
 // nutrithrive-dried-curry-leaves — online first, one city link max in FAQ
-const curryBlog = path.join(ROOT, 'blog/nutrithrive-dried-curry-leaves-tradition-health.html');
+const curryBlog = path.join(SITE, 'blog/nutrithrive-dried-curry-leaves-tradition-health.html');
 if (fs.existsSync(curryBlog)) {
   let html = fs.readFileSync(curryBlog, 'utf8');
   const old =
@@ -111,7 +112,7 @@ if (fs.existsSync(curryBlog)) {
 }
 
 // grow-moringa footer
-const grow = path.join(ROOT, 'blog/grow-moringa-tree-australia.html');
+const grow = path.join(SITE, 'blog/grow-moringa-tree-australia.html');
 if (fs.existsSync(grow)) {
   let html = fs.readFileSync(grow, 'utf8');
   const old =
@@ -230,7 +231,7 @@ if (fs.existsSync(curryBlog)) {
 }
 
 // blog hub grow card
-const blogIndex = path.join(ROOT, 'blog/index.html');
+const blogIndex = path.join(SITE, 'blog/index.html');
 if (fs.existsSync(blogIndex)) {
   let html = fs.readFileSync(blogIndex, 'utf8');
   const old = 'Frost, pots, soil and harvest from Melbourne to Brisbane and beyond.';
@@ -244,7 +245,7 @@ if (fs.existsSync(blogIndex)) {
 }
 
 // where-to-buy retail paragraph
-const whereBuy = path.join(ROOT, 'blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html');
+const whereBuy = path.join(SITE, 'blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html');
 if (fs.existsSync(whereBuy)) {
   let html = fs.readFileSync(whereBuy, 'utf8');
   const old =

@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 
 const LOCATIONS = [
   { slug: 'melbourne', href: '/melbourne/', label: 'Melbourne', eyebrow: 'Melbourne · Victoria' },
@@ -213,7 +214,7 @@ for (const loc of LOCATIONS.filter((l) => l.slug !== 'melbourne')) {
   console.log('Premium layout:', loc.slug);
 }
 
-const melb = path.join(ROOT, 'pages/homepage/melbourne.html');
+const melb = path.join(SITE, 'pages/homepage/melbourne.html');
 if (fs.existsSync(melb)) {
   let html = fs.readFileSync(melb, 'utf8');
   if (!html.includes('city-locations')) {

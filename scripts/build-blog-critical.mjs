@@ -10,6 +10,7 @@ import CleanCSS from 'clean-css';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
+const SITE = path.join(REPO, 'site');
 
 const ABOVE_FOLD_UTILITIES = `
 /* Above-fold Tailwind token utilities (blog article shell) */
@@ -88,7 +89,7 @@ const ABOVE_FOLD_UTILITIES = `
 }
 `;
 
-const DESIGN_TOKENS = fs.readFileSync(path.join(REPO, 'assets/css/design-system.min.css'), 'utf8')
+const DESIGN_TOKENS = fs.readFileSync(path.join(SITE, 'assets/css/design-system.min.css'), 'utf8')
   .split('}').slice(0, 4).join('}') + '}'; // :root + html + *, body only — trim footer bloat
 
 const V2_EXTRA_CRITICAL = `
@@ -97,18 +98,18 @@ const V2_EXTRA_CRITICAL = `
 #nt-header{position:relative;width:100%;background:var(--bg,#f5f1e6);border-bottom:1px solid var(--color-border-soft,#e6e2d7)}
 `;
 
-const shell = fs.readFileSync(path.join(REPO, 'blog/blog-v2-shell.css'), 'utf8');
+const shell = fs.readFileSync(path.join(SITE, 'blog/blog-v2-shell.css'), 'utf8');
 const combined = [DESIGN_TOKENS, V2_EXTRA_CRITICAL, shell, ABOVE_FOLD_UTILITIES].join('\n');
 const minified = new CleanCSS({ level: 2 }).minify(combined).styles;
 
-const outPath = path.join(REPO, 'shared/css/blog-critical.min.css');
-const outSource = path.join(REPO, 'shared/css/blog-critical.css');
+const outPath = path.join(SITE, 'shared/css/blog-critical.min.css');
+const outSource = path.join(SITE, 'shared/css/blog-critical.css');
 fs.writeFileSync(outSource, combined);
 fs.writeFileSync(outPath, minified);
 console.log(`Wrote ${outPath} (${minified.length} bytes)`);
 
 const fontsMin = new CleanCSS().minify(
-  fs.readFileSync(path.join(REPO, 'shared/css/fonts-local.css'), 'utf8')
+  fs.readFileSync(path.join(SITE, 'shared/css/fonts-local.css'), 'utf8')
 ).styles;
-fs.writeFileSync(path.join(REPO, 'shared/css/fonts-local.min.css'), fontsMin);
+fs.writeFileSync(path.join(SITE, 'shared/css/fonts-local.min.css'), fontsMin);
 console.log(`Wrote shared/css/fonts-local.min.css (${fontsMin.length} bytes)`);

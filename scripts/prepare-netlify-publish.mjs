@@ -1,64 +1,36 @@
 #!/usr/bin/env node
 /**
- * Copy site to .netlify-publish/ excluding paths in .netlifyignore (for CLI deploy).
+ * Copy public files from site/ into .netlify-publish/ (flattened to the deploy root).
+ * Live URLs stay /blog/..., /products/..., /robots.txt — not /site/...
  * Run: node scripts/prepare-netlify-publish.mjs && netlify deploy --dir=.netlify-publish --prod
  */
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { SITE_ROOT, REPO_ROOT } from './lib/paths.mjs';
 
-const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = path.join(ROOT, '.netlify-publish');
+const OUT = path.join(REPO_ROOT, '.netlify-publish');
 
-const IGNORE = new Set([
-  '.git',
-  '.github',
-  '.netlify',
-  '.netlify-publish',
-  'node_modules',
-  '.firecrawl',
-  '.build',
-  'audit',
-  'tools',
-  'issues',
-  'ds-v1',
-  'gas-guardian',
-  'Gork_bot',
-]);
-
-const IGNORE_FILES = new Set([
-  'crawl_results.json',
-]);
-
-function shouldIgnore(rel) {
-  if (!rel) return false;
-  const parts = rel.split('/');
-  if (IGNORE.has(parts[0])) return true;
-  if (parts[0] === 'scripts' && (parts[1] === 'templates' || parts[1] === 'audit')) return true;
-  if (parts[0] === 'docs') return true;
-  const base = parts[parts.length - 1];
-  if (IGNORE_FILES.has(base)) return true;
-  if (base.endsWith('.csv')) return true;
-  return false;
-}
-
-function copyDir(src, dest, rel = '') {
+function copyDir(src, dest) {
+  fs.mkdirSync(dest, { recursive: true });
   for (const name of fs.readdirSync(src)) {
-    const relChild = rel ? `${rel}/${name}` : name;
-    if (shouldIgnore(relChild)) continue;
+    if (name === '.DS_Store') continue;
     const from = path.join(src, name);
     const to = path.join(dest, name);
     const st = fs.statSync(from);
     if (st.isDirectory()) {
-      fs.mkdirSync(to, { recursive: true });
-      copyDir(from, to, relChild);
+      copyDir(from, to);
     } else {
       fs.copyFileSync(from, to);
     }
   }
 }
 
+if (!fs.existsSync(SITE_ROOT)) {
+  console.error('Missing site/ — public website files live there.');
+  process.exit(1);
+}
+
 if (fs.existsSync(OUT)) fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
-copyDir(ROOT, OUT);
-console.log('Prepared', OUT);
+copyDir(SITE_ROOT, OUT);
+console.log('Prepared', OUT, 'from', SITE_ROOT);

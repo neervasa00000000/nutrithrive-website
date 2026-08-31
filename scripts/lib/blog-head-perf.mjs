@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..', '..');
+const SITE = path.join(REPO, 'site');
 
 const DEFER_STYLESHEET = (href) =>
   `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'"/>\n<noscript><link rel="stylesheet" href="${href}"/></noscript>`;
@@ -16,7 +17,7 @@ let cachedCriticalCss = null;
 
 export function readBlogCriticalCss() {
   if (cachedCriticalCss !== null) return cachedCriticalCss;
-  const file = path.join(REPO, 'shared/css/blog-critical.min.css');
+  const file = path.join(SITE, 'shared/css/blog-critical.min.css');
   cachedCriticalCss = fs.existsSync(file) ? fs.readFileSync(file, 'utf8').trim() : '';
   return cachedCriticalCss;
 }

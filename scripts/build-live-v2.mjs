@@ -23,6 +23,7 @@ import { optimizeProductsPageHtml } from './lib/shop-page-perf.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
+const SITE = path.join(REPO, 'site');
 const TEST_PAGES = path.join(REPO, 'scripts/templates/v2/pages');
 const TEST_BLOG = path.join(REPO, 'scripts/templates/v2/blog');
 
@@ -60,11 +61,11 @@ const PRODUCT_SLUGS = [
 ];
 
 function read(file) {
-  return fs.readFileSync(path.join(REPO, file), 'utf8');
+  return fs.readFileSync(path.join(SITE, file), 'utf8');
 }
 
 function write(file, html) {
-  const full = path.join(REPO, file);
+  const full = path.join(SITE, file);
   fs.mkdirSync(path.dirname(full), { recursive: true });
   fs.writeFileSync(full, html);
 }
@@ -364,7 +365,7 @@ function productPdpBody() {
 }
 
 function generateBlogArticlesJs() {
-  const blogDir = path.join(REPO, 'blog');
+  const blogDir = path.join(SITE, 'blog');
   const files = fs
     .readdirSync(blogDir)
     .filter((f) => f.endsWith('.html') && f !== 'index.html' && !f.includes('.partial.'))
@@ -410,7 +411,7 @@ function generateBlogArticlesJs() {
 }
 
 function patchSiteData() {
-  const file = path.join(REPO, 'shared/site-data.js');
+  const file = path.join(SITE, 'shared/site-data.js');
   let js = fs.readFileSync(file, 'utf8');
   js = js.replace(/\.\.\/\.\.\/assets\//g, '/assets/');
   js = js.replace(/\.\.\/\.\.\/documents\//g, '/documents/');
@@ -444,7 +445,7 @@ function applyPage(entry) {
     console.warn('Skip (missing test):', entry.test);
     return;
   }
-  if (!fs.existsSync(path.join(REPO, liveFile))) {
+  if (!fs.existsSync(path.join(SITE, liveFile))) {
     console.warn('Skip (missing live):', liveFile);
     return;
   }
@@ -477,7 +478,7 @@ function applyPage(entry) {
 function applyPaymentPage() {
   const liveFile = 'pages/shop/payment.html';
   const testFile = path.join(TEST_PAGES, 'payment-test.html');
-  if (!fs.existsSync(path.join(REPO, liveFile)) || !fs.existsSync(testFile)) {
+  if (!fs.existsSync(path.join(SITE, liveFile)) || !fs.existsSync(testFile)) {
     console.warn('Skip payment (missing files)');
     return;
   }
@@ -505,7 +506,7 @@ function applyPaymentPage() {
 }
 
 function applyRedirectStub({ live, target, label }) {
-  if (!fs.existsSync(path.join(REPO, live))) {
+  if (!fs.existsSync(path.join(SITE, live))) {
     console.warn('Skip redirect stub (missing):', live);
     return;
   }
@@ -533,7 +534,7 @@ function applyRedirectStub({ live, target, label }) {
 
 function applyProduct(slug) {
   const liveFile = `products/${slug}/index.html`;
-  if (!fs.existsSync(path.join(REPO, liveFile))) {
+  if (!fs.existsSync(path.join(SITE, liveFile))) {
     console.warn('Skip product:', liveFile);
     return;
   }
@@ -557,7 +558,7 @@ function applyProduct(slug) {
 function applyBlogArticle(slug) {
   const testFile = path.join(TEST_BLOG, `${slug}-test.html`);
   const liveFile = `blog/${slug}.html`;
-  if (!fs.existsSync(testFile) || !fs.existsSync(path.join(REPO, liveFile))) return false;
+  if (!fs.existsSync(testFile) || !fs.existsSync(path.join(SITE, liveFile))) return false;
 
   const testHtml = fs.readFileSync(testFile, 'utf8');
   const liveHtml = read(liveFile);

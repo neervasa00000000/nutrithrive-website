@@ -52,9 +52,8 @@ async function main() {
   const htmlChanged = await patchHtmlFiles(manifestEntries);
   console.log(`   ${htmlChanged} HTML files updated`);
 
-  const twSize = fs.existsSync(path.join(ROOT, 'assets/css/tailwind-v2.min.css'))
-    ? fs.statSync(path.join(ROOT, 'assets/css/tailwind-v2.min.css')).size
-    : 0;
+  const twCss = path.join(ROOT, 'site/assets/css/tailwind-v2.min.css');
+  const twSize = fs.existsSync(twCss) ? fs.statSync(twCss).size : 0;
   console.log(`\nDone. tailwind-v2.min.css ${(twSize / 1024).toFixed(1)} KiB`);
 }
 
