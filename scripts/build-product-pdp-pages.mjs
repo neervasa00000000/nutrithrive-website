@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = path.join(ROOT, 'site');
 
 const TRUST_SVG = {
   lab: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>',
@@ -438,7 +439,7 @@ const products = [
 ];
 
 for (const p of products) {
-  const filePath = path.join(ROOT, p.file);
+  const filePath = path.join(SITE, p.file);
   let html = fs.readFileSync(filePath, 'utf8');
   const mainRe = /<main class="product-main">[\s\S]*?<\/main>/;
   if (!mainRe.test(html)) {

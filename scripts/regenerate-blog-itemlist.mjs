@@ -9,9 +9,10 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
+const SITE = path.join(REPO, 'site');
 const BASE = 'https://nutrithrive.com.au';
-const BLOG_INDEX = path.join(REPO, 'blog/index.html');
-const BLOG_DIR = path.join(REPO, 'blog');
+const BLOG_INDEX = path.join(SITE, 'blog/index.html');
+const BLOG_DIR = path.join(SITE, 'blog');
 
 function isLivePost(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');

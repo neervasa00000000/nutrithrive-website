@@ -5,10 +5,9 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { SITE_ROOT } from './lib/paths.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const BLOG_DIR = path.resolve(__dirname, '../blog');
+const BLOG_DIR = path.join(SITE_ROOT, 'blog');
 const THRESHOLD = 0.7;
 
 function stripHtml(html) {

@@ -8,7 +8,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const BLOG_DIR = path.join(ROOT, 'blog');
+const SITE = path.join(ROOT, 'site');
+const BLOG_DIR = path.join(SITE, 'blog');
 const SIDEBAR = fs
   .readFileSync(path.join(BLOG_DIR, 'partials/blog-sidebar.html'), 'utf8')
   .trim();

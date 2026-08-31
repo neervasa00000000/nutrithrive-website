@@ -5,7 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = path.join(REPO, 'blog/is-moringa-safe-for-children-kids-dosage-2026.html');
+const SITE = path.join(REPO, 'site');
+const OUT = path.join(SITE, 'blog/is-moringa-safe-for-children-kids-dosage-2026.html');
 const BASE = 'https://nutrithrive.com.au';
 const SLUG = 'is-moringa-safe-for-children-kids-dosage-2026';
 const CANONICAL = `${BASE}/blog/${SLUG}`;

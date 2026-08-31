@@ -17,8 +17,8 @@
 const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
+const { REPO_ROOT, SITE_ROOT } = require("./lib/paths.cjs");
 
-const REPO_ROOT = path.resolve(__dirname, "..");
 const BASE = "https://nutrithrive.com.au";
 
 /** Paths that must never appear in the sitemap (relative to repo root, posix). */
@@ -37,6 +37,7 @@ const PATH_BLOCKLIST = new Set([
   "scripts/quit-sugar-article-body.html",
   "scripts/templates/v2/pages/moringa-powder-test.html",
   "pages/shop/payment.html",
+  "journal/index.html",
   "buy-moringa-powder-australia/index.html",
   "shared/components/author-bio.html",
   "assets/includes/header.html",
@@ -86,7 +87,7 @@ function walkHtml(dir, out = []) {
         name.name === "arkive" ||
         name.name === "private" ||
         name.name === "scripts" ||
-        name.name === "ds-v1"
+        name.name === "storefront"
       ) {
         continue;
       }
@@ -114,7 +115,6 @@ function fileToUrl(relPosix) {
   if (relPosix === "index.html") return `${BASE}/`;
 
   if (relPosix === "blog/index.html") return `${BASE}/blog/`;
-  if (relPosix === "journal/index.html") return `${BASE}/journal/`;
 
   // Category hubs: /blog/category/{name}/index.html → /blog/category/{name}/
   const blogCat = /^blog\/category\/([^/]+)\/index\.html$/.exec(relPosix);
@@ -181,7 +181,11 @@ function gitTrackedRel(relPosix) {
       }
     }
   }
-  return gitLsFilesLowerToExact.get(relPosix.toLowerCase()) || relPosix;
+  for (const candidate of [`site/${relPosix}`, relPosix]) {
+    const exact = gitLsFilesLowerToExact.get(candidate.toLowerCase());
+    if (exact) return exact;
+  }
+  return `site/${relPosix}`;
 }
 
 /** ISO date (YYYY-MM-DD) of last git commit touching relPosix, or null if unavailable. */
@@ -258,12 +262,12 @@ function escapeXml(s) {
 }
 
 function main() {
-  const files = walkHtml(REPO_ROOT);
+  const files = walkHtml(SITE_ROOT);
   const entries = [];
   const skippedNoindex = [];
 
   for (const abs of files) {
-    const rel = toPosix(path.relative(REPO_ROOT, abs));
+    const rel = toPosix(path.relative(SITE_ROOT, abs));
     if (PATH_BLOCKLIST.has(rel)) continue;
     if (REDIRECT_SOURCE_BLOCKLIST.has(rel)) continue;
 
@@ -320,9 +324,9 @@ function main() {
   lines.push("</urlset>");
   lines.push("");
 
-  const outPath = path.join(REPO_ROOT, "sitemap.xml");
+  const outPath = path.join(SITE_ROOT, "sitemap.xml");
   fs.writeFileSync(outPath, lines.join("\n"), "utf8");
-  console.log(`Wrote ${unique.length} URLs to sitemap.xml`);
+  console.log(`Wrote ${unique.length} URLs to site/sitemap.xml`);
   if (skippedNoindex.length && !INCLUDE_NOINDEX) {
     console.log(
       `Skipped ${skippedNoindex.length} noindex file(s) (re-run with INCLUDE_NOINDEX=1 to include):`,

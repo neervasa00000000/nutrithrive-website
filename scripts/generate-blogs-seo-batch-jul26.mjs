@@ -10,7 +10,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
-const BLOG_DIR = path.join(REPO, 'blog');
+const SITE = path.join(REPO, 'site');
+const BLOG_DIR = path.join(SITE, 'blog');
 const BASE = 'https://nutrithrive.com.au';
 const AUTHOR_SCHEMA = 'Neer';
 const AUTHOR_BYLINE = 'Neer, NutriThrive Truganina';
@@ -879,7 +880,7 @@ ${relatedHtml}
 }
 
 function appendRedirects(posts) {
-  const redirectsPath = path.join(REPO, '_redirects');
+  const redirectsPath = path.join(SITE, '_redirects');
   let content = fs.readFileSync(redirectsPath, 'utf8');
   const marker = '\n# === seo health batch (Jul 2026) ===';
   if (!content.includes(marker)) {

@@ -1,0 +1,150 @@
+# Nutrithrive.com.au - Robots.txt
+# We welcome all search engines and AI crawlers!
+# AI-readable content index: https://nutrithrive.com.au/llms.txt
+
+# ====================
+# ALL BOTS (General Rule)
+# ====================
+User-agent: *
+Disallow: /nutrithrive_labs/
+Disallow: /nutrithrive-labs/
+Disallow: /crazy-ideas/
+Disallow: /Gork_bot/
+Disallow: /documents/
+Allow: /documents/nutrithrive-lab-report-summary.pdf
+Disallow: /shared/
+Allow: /
+
+# ====================
+# SEARCH ENGINE BOTS
+# ====================
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# ====================
+# AI CRAWLERS & LLMs
+# ====================
+
+# OpenAI ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# OpenAI SearchGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: Claude-Web
+Allow: /
+
+# Anthropic (alternative)
+User-agent: anthropic-ai
+Allow: /
+
+# Google Gemini/Bard AI Training
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl (used by many AI companies)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Meta AI (alternative)
+User-agent: meta-externalagent
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+# Amazon Alexa
+User-agent: ia_archiver
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# AI2 (Allen Institute)
+User-agent: AI2Bot
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# YouBot (You.com AI)
+User-agent: YouBot
+Allow: /
+
+# ====================
+# SITEMAPS
+# ====================
+Sitemap: https://nutrithrive.com.au/sitemap.xml
+
+# ====================
+# DISALLOWED AREAS
+# ====================
+# Local Firecrawl audit snapshots and dev tooling (never public pages)
+Disallow: /.firecrawl/
+Disallow: /scripts/
+Disallow: /audit/
+Disallow: /.build/
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# ====================
+# EXPLICITLY ALLOWED CONTENT
+# ====================
+Allow: /products/
+Allow: /blog/
+Allow: /melbourne/
+Allow: /moringa-sydney/
+Allow: /moringa-brisbane/
+Allow: /moringa-perth/
+Allow: /moringa-adelaide/
+Allow: /images/
+Allow: /favicon.ico
+Allow: /site.webmanifest
+Allow: /assets/images/logo/
+
+# ====================
+# CRAWL RATE (Optional)
+# ====================
+# Request delay: 1 second between requests (adjust as needed)
+# Crawl-delay: 1
