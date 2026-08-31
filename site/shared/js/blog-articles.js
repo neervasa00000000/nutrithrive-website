@@ -57,14 +57,6 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
-    "slug": "caffeine-cutoff-time-sleep-black-tea-2026",
-    "title": "Caffeine Cutoff Time for Black Tea",
-    "description": "Caffeine's half-life means timing matters. Here's when to have your last cup of black tea if you want to sleep well.",
-    "category": "Health",
-    "href": "/blog/caffeine-cutoff-time-sleep-black-tea-2026",
-    "image": "/assets/images/blog/caffeine-cutoff-time-sleep-black-tea-2026-hero.webp"
-  },
-  {
     "slug": "can-you-drink-darjeeling-tea-every-day-2026",
     "title": "Can You Drink Darjeeling Tea Every Day?",
     "description": "Is it safe to drink Darjeeling tea daily? The honest answer on caffeine limits and who should be more cautious.",
