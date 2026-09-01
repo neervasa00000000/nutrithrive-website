@@ -65,7 +65,7 @@ FAQS = [
     ),
     (
         "What does it cost with shipping?",
-        "$35 + $9.69 = $44.69 if the order is under $80. Free shipping at $80+. Pickup is $35.",
+        "$35 + $9.69 = $44.69 if the order is under $49. Free shipping at $49+. Pickup is $35.",
     ),
     (
         "What is the return policy?",
@@ -329,7 +329,7 @@ def main() -> None:
 <span class="text-2xl font-bold text-moringa-leaf">$35.00</span>
 <span class="text-sm text-on-surface-variant">/325g set</span>
 </div>
-<p class="text-body-sm text-on-surface-variant mb-6">Free shipping over $80 · Pickup by arrangement</p>
+<p class="text-body-sm text-on-surface-variant mb-6">Free shipping over $49 · Pickup by arrangement</p>
 <a class="block w-full text-center bg-moringa-leaf text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/gift-pack/">Shop Gift Pack →</a>
 </div>
 </div>

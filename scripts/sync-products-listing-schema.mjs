@@ -27,7 +27,7 @@ const RETURN_POLICY = {
 
 const AU_SHIPPING = {
   '@type': 'OfferShippingDetails',
-  name: 'Australia — standard shipping from published rate table; free on orders AUD 80+',
+  name: 'Australia — standard shipping from published rate table; free on orders AUD 49+',
   shippingRate: { '@type': 'MonetaryAmount', value: 9.69, currency: 'AUD' },
   shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'AU' },
   deliveryTime: {
