@@ -17,6 +17,7 @@ const LIVE_PAGES = new Set(
     .map((value) => value.trim())
     .filter(Boolean)
 );
+const LIVE_ARTICLE = (process.env.STOREFRONT_ARTICLE || "").trim();
 const CSS_HREF = LIVE_MODE ? "/assets/css/storefront-system.css" : "/css/system.css";
 const CATALOG_SRC = LIVE_MODE ? "/assets/js/storefront/catalog.js" : "/js/catalog.js";
 const SEARCH_SRC = LIVE_MODE ? "/assets/js/storefront/search-index.js" : "/js/search-index.js";
@@ -98,6 +99,7 @@ const JOURNAL_PRIORITY = [
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
   "dried-curry-leaves-australia-guide",
   "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
+  "cold-brew-darjeeling-australian-spring-2026",
   "darjeeling-tea-vs-english-breakfast-comparison-2026",
   "how-to-brew-darjeeling-tea-perfectly-2026",
   "moringa-soap-benefits-skin-guide",
@@ -143,6 +145,11 @@ const CURATED_RELATED = {
     "science-shade-drying-vs-sun-drying-moringa",
     "how-to-read-moringa-batch-codes-freshness",
     "how-to-choose-moringa-powder-australia-2026",
+  ],
+  "cold-brew-darjeeling-australian-spring-2026": [
+    "how-to-brew-darjeeling-tea-perfectly-2026",
+    "darjeeling-chai-latte-recipe-winter-coffee-alternative-2026",
+    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
   ],
 };
 
@@ -387,13 +394,13 @@ function shopHref(p) {
   return p.href;
 }
 
-function productCard(p) {
+function productCard(p, priority = false) {
   const was =
     p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : "";
   const href = shopHref(p);
   return `<article class="product-card">
     <a class="product-card-media" href="${href}" aria-label="${esc(p.name)} ${esc(p.variant)}">
-      <img src="${p.image}" alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" loading="lazy">
+      <img src="${p.image}" alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
     </a>
     <div class="product-card-body">
       <h3><a href="${href}" style="color:inherit;text-decoration:none">${esc(p.name)}</a></h3>
@@ -855,7 +862,6 @@ ${welcomeOffer}
 ${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-cart.js?v=${ASSET_VERSION}" defer></script>` : ""}
 <script src="${SEARCH_SRC}?v=${ASSET_VERSION}" defer></script>
 <script src="${SITE_SRC}?v=${ASSET_VERSION}" defer></script>
-${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}
 ${extraFoot}
 </body>
 </html>`;
@@ -918,7 +924,7 @@ function homepage() {
       </div>
       <a href="/shop/">Shop all</a>
     </div>
-    <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map(productCard).join("")}</div>
+    <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map((product, index) => productCard(product, index === 0)).join("")}</div>
   </div>
 </section>
 <section class="section band proof-story">
@@ -1029,7 +1035,7 @@ function shopPage() {
         <p>Everything we pack in Truganina. Same card structure, same price placement, same add-to-cart language.</p>
       </section>
       <section class="section" style="padding-top:0">
-        <div class="wrap product-grid">${PRODUCTS.map(productCard).join("")}</div>
+        <div class="wrap product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0)).join("")}</div>
       </section>`,
   });
 }
@@ -1901,7 +1907,7 @@ function cartPage() {
       : "Review products, quantities, delivery estimates and your NutriThrive order subtotal before continuing to the local preview checkout.",
     canonicalPath: "/cart",
     current: "",
-    extraFoot: `<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>
+    extraFoot: `${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>
 <script defer>document.addEventListener("DOMContentLoaded",function(){if(window.NT&&typeof window.NT.renderCart==="function")window.NT.renderCart();});</script>`,
     robots: "noindex, nofollow",
     main: `
@@ -1932,7 +1938,7 @@ function paymentPage() {
     canonicalPath: "/payment",
     current: "",
     preserveTitle: true,
-    extraFoot: `${paypalScripts}<script src="${PAYMENT_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+    extraFoot: `${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
     robots: "noindex, follow",
     main: `
       <section class="page-intro wrap cart-intro">
@@ -2637,6 +2643,40 @@ function main() {
     })),
   ];
   writeGeneratedJs(search);
+
+  if (LIVE_MODE && LIVE_ARTICLE) {
+    const meta = articles.find((article) => article.slug === LIVE_ARTICLE);
+    if (!meta) {
+      throw new Error(`STOREFRONT_ARTICLE not in blog-articles.js: ${LIVE_ARTICLE}`);
+    }
+    emit(
+      "blog/index.html",
+      journalIndex(activeArticles, {
+        canonicalPath: "/blog/",
+        seoFile: path.join(SITE, "blog/index.html"),
+      }),
+      "blog/index.html"
+    );
+    for (const topic of JOURNAL_TOPICS) {
+      emit(
+        `blog/category/${topic.slug}/index.html`,
+        journalIndex(activeArticles, {
+          topic,
+          canonicalPath: `/blog/category/${topic.slug}/`,
+        }),
+        `blog/category/${topic.slug}/index.html`
+      );
+    }
+    const file = path.join(SITE, "blog", `${meta.slug}.html`);
+    const liveSeo = extractSeo(file);
+    const prose = extractArticleProse(
+      meta.slug,
+      `<p>${esc(humanCopy(stripTags(meta.description)))}</p><p><a href="/products/black-tea/">Shop Darjeeling tea</a></p>`
+    );
+    emit(`blog/${meta.slug}.html`, articlePage(meta, prose, activeArticles, liveSeo), `blog/${meta.slug}.html`);
+    console.log(`Wrote production article ${LIVE_ARTICLE} plus blog index and category pages.`);
+    return;
+  }
 
   if (LIVE_MODE) {
     emit("index.html", homepage());
