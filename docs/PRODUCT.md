@@ -24,7 +24,7 @@ Single-ingredient shade-dried moringa leaf powder, batch-tested in Australia, pa
 
 ## Operating Context
 
-Ecommerce storefront plus journal. Orders before 2pm on business days aim for same-day Melbourne dispatch. Free standard shipping on Australian orders AU$80+ and worldwide on AU$90+. Pickup/visit at 15 Europe Street, Truganina VIC 3029 by calling first. Hours listed as daily 9:00 AM – 11:00 PM AEST.
+Ecommerce storefront plus journal. Orders before 2pm on business days aim for same-day Melbourne dispatch. Free standard shipping on Australian orders AU$49+ and worldwide on AU$90+. Pickup/visit at 15 Europe Street, Truganina VIC 3029 by calling first. Hours listed as daily 9:00 AM – 11:00 PM AEST.
 
 ## Capabilities and Constraints
 

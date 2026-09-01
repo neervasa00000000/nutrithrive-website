@@ -19,9 +19,9 @@ const CITIES = [
     geo: { placename: 'Sydney NSW', pos: '-33.8688;151.2093', icbm: '-33.8688, 151.2093' },
     title: 'Moringa Powder Sydney | Lab-Tested | NutriThrive',
     description:
-      'Shade-dried moringa from $11/100g, NMI tested. Ships from Melbourne to Sydney metro in 2–4 days. Free shipping $80+.',
+      'Shade-dried moringa from $11/100g, NMI tested. Ships from Melbourne to Sydney metro in 2–4 days. Free shipping $49+.',
     delivery: '2–4 business days',
-    util: 'Order before 2pm · Sydney metro usually 2–4 days · Free shipping over $80',
+    util: 'Order before 2pm · Sydney metro usually 2–4 days · Free shipping over $49',
     eyebrow: 'Sydney · Ships from Truganina',
     h1: 'Moringa powder<br>for <em>Sydney</em>',
     lead:
@@ -35,7 +35,7 @@ const CITIES = [
     faqs: [
       { q: 'How long to Sydney?', a: 'Same-day dispatch from Melbourne before 2pm on business days. Most Sydney metro postcodes: 2–4 business days.' },
       { q: 'Shop in Sydney?', a: 'No retail store — we pack at 15 Europe Street, Truganina VIC and ship Australia-wide.' },
-      { q: 'Best value?', a: 'The 3+1 bundle ($35, 400g) ships free — about $0.26/day. Under $80, shipping is $9.69.' },
+      { q: 'Best value?', a: 'The 3+1 bundle is $35 for 400g. About $0.26/day. Free shipping from $49. Under $49, shipping is $9.69.' },
       { q: 'Any safety tip for capsules?', a: 'If you buy any capsule brand, always check the lot number against current recall notices before use, and ask the seller for a batch lab summary when available. We sell leaf powder with NMI screening.' },
     ],
     review: {
@@ -56,13 +56,13 @@ const CITIES = [
     geo: { placename: 'Brisbane QLD', pos: '-27.4705;153.0260', icbm: '-27.4705, 153.0260' },
     title: 'Moringa Powder Brisbane | Shade-Dried | NutriThrive',
     description:
-      'Shade-dried moringa from $11/100g, NMI tested. Brisbane metro usually 2–4 days from Melbourne. Free shipping $80+.',
+      'Shade-dried moringa from $11/100g, NMI tested. Brisbane metro usually 2–4 days from Melbourne. Free shipping $49+.',
     delivery: '2–4 business days',
-    util: 'Order before 2pm · Brisbane metro usually 2–4 days · Free shipping over $80',
+    util: 'Order before 2pm · Brisbane metro usually 2–4 days · Free shipping over $49',
     eyebrow: 'Brisbane · Ships from Truganina',
     h1: 'Moringa powder<br>for <em>Brisbane</em>',
     lead:
-      'Packed in Melbourne, delivered across SEQ. <strong>Order by 2pm</strong> — Brisbane metro typically <strong>2–4 business days</strong>. Free shipping over $80.',
+      'Packed in Melbourne, delivered across SEQ. <strong>Order by 2pm</strong> — Brisbane metro typically <strong>2–4 business days</strong>. Free shipping over $49.',
     floatKicker: 'QLD climate',
     floatTitle: 'Seal tight',
     floatText: 'Humid kitchens: keep the pouch sealed after opening.',
@@ -72,7 +72,7 @@ const CITIES = [
     faqs: [
       { q: 'How long to Brisbane?', a: 'Same-day Melbourne dispatch before 2pm. Brisbane metro, Gold Coast and Sunshine Coast: usually 2–4 business days.' },
       { q: 'Shop in Brisbane?', a: 'No — we ship from Truganina, Melbourne to all QLD postcodes. No Brisbane pickup.' },
-      { q: 'Cheapest way to order?', a: '3+1 bundle ($35, 400g) ships free. Single 100g is $11 + $9.69 if under $80.' },
+      { q: 'Cheapest way to order?', a: '3+1 bundle is $35 for 400g. Single 100g is $11 + $9.69 if under $49.' },
       { q: 'Why is powder clumping?', a: 'Humidity moisture, not a defect. Seal tightly and refrigerate in wet season. Warm the bag before opening.' },
     ],
     review: {
@@ -93,24 +93,24 @@ const CITIES = [
     geo: { placename: 'Perth WA', pos: '-31.9505;115.8605', icbm: '-31.9505, 115.8605' },
     title: 'Moringa Powder Perth | Ships from Melbourne | NutriThrive',
     description:
-      'NMI-tested moringa from $11/100g. Perth metro typically 3–5 days from Melbourne. Free shipping on the 3+1 bundle.',
+      'NMI-tested moringa from $11/100g. Perth metro typically 3–5 days from Melbourne. Free shipping from $49.',
     delivery: '3–5 business days',
-    util: 'Order before 2pm · Perth metro usually 3–5 days · Bundle ships free',
+    util: 'Order before 2pm · Perth metro usually 3–5 days · Free shipping from $49',
     eyebrow: 'Perth · Ships from Truganina',
     h1: 'Moringa powder<br>for <em>Perth</em>',
     lead:
       'Furthest capital from our warehouse — still tracked Australia Post. <strong>Order by 2pm</strong> for same-day dispatch. Perth metro: <strong>3–5 business days</strong>.',
     floatKicker: 'Ship smarter',
-    floatTitle: 'Bundle free',
-    floatText: '3+1 at $35 ships free — skip repeat freight.',
+    floatTitle: 'Free from $49',
+    floatText: 'Free Australia-wide shipping from $49. The 3+1 bundle is $35, so add another item to clear postage.',
     tipTitle: 'Why Perth buyers order the bundle',
     tipBody:
-      'Loose powder is scarce in WA retail. The 3+1 ($35, 400g) ships free and lasts ~4 months at 1 tsp/day — fewer cross-country parcels.',
+      'Loose powder is scarce in WA retail. The 3+1 ($35, 400g) lasts ~4 months at 1 tsp/day. Free shipping from $49, so add a small SKU if you want postage off.',
     faqs: [
       { q: 'How long to Perth?', a: '3–5 business days to most Perth metro postcodes. Regional WA: 6–9 days. Express Post available at checkout.' },
       { q: 'Shop in Perth?', a: 'No WA store. All orders pack at 15 Europe Street, Truganina VIC.' },
       { q: 'Why slower than the east coast?', a: 'Perth is ~2,700 km from our Melbourne warehouse — Australia Post standard times reflect that.' },
-      { q: 'Best value for Perth?', a: '3+1 bundle ($35) ships free — best way to avoid paying freight on every reorder.' },
+      { q: 'Best value for Perth?', a: '3+1 bundle is $35 for 400g. Free shipping from $49, so add a small SKU if you want postage off.' },
     ],
     review: {
       quote: 'The powder from Nutri-Thrive is the greenest in color and tastes way better than other moringa. Pricing is reasonable and shipping was quick!!',
@@ -130,9 +130,9 @@ const CITIES = [
     geo: { placename: 'Adelaide SA', pos: '-34.9285;138.6007', icbm: '-34.9285, 138.6007' },
     title: 'Moringa Powder Adelaide | Lab-Tested | NutriThrive',
     description:
-      'Shade-dried moringa from $11/100g with NMI batch tests. Adelaide metro usually 2–4 days. Free shipping $80+.',
+      'Shade-dried moringa from $11/100g with NMI batch tests. Adelaide metro usually 2–4 days. Free shipping $49+.',
     delivery: '2–4 business days',
-    util: 'Order before 2pm · Adelaide metro usually 2–4 days · Free shipping over $80',
+    util: 'Order before 2pm · Adelaide metro usually 2–4 days · Free shipping over $49',
     eyebrow: 'Adelaide · Ships from Truganina',
     h1: 'Moringa powder<br>for <em>Adelaide</em>',
     lead:
@@ -146,8 +146,8 @@ const CITIES = [
     faqs: [
       { q: 'How long to Adelaide?', a: 'Same-day Melbourne dispatch before 2pm. Adelaide metro: 2–4 business days. Regional SA may add a day or two.' },
       { q: 'Shop in Adelaide?', a: 'Online only — packed in Truganina VIC. We ship to all SA postcodes.' },
-      { q: 'Cheapest order?', a: '3+1 bundle ($35, 400g) ships free. Otherwise $11/100g + $9.69 under $80.' },
-      { q: 'How do Adelaide orders ship?', a: 'We pack in Truganina, Melbourne and ship Australia Post to Adelaide. Metro is usually 2–4 business days when you order before 2pm for same-day dispatch. Free shipping on Australian orders $80+.' },
+      { q: 'Cheapest order?', a: '3+1 bundle is $35 for 400g. Otherwise $11/100g + $9.69 under $49.' },
+      { q: 'How do Adelaide orders ship?', a: 'We pack in Truganina, Melbourne and ship Australia Post to Adelaide. Metro is usually 2–4 business days when you order before 2pm for same-day dispatch. Free shipping on Australian orders $49+.' },
     ],
     review: {
       quote: 'This product is healthy, of excellent quality, and very affordable. Highly recommend!',
@@ -270,7 +270,7 @@ ${locNav(c.slug)}
       <div>
         <span class="city-hub-kicker city-hub-kicker--terracotta">01. ${c.city} delivery</span>
         <h3>Typical arrival: ${c.delivery}</h3>
-        <p>Order by 2pm for same-day Melbourne dispatch. Free shipping over $80. Tracked Australia Post.</p>
+        <p>Order by 2pm for same-day Melbourne dispatch. Free shipping over $49. Tracked Australia Post.</p>
       </div>
       <img src="/assets/images/homepage/product-showcase/Moringa.webp" alt="" loading="lazy">
     </div>
@@ -289,7 +289,7 @@ ${locNav(c.slug)}
     <div class="city-bento__third">
       <span class="ico" aria-hidden="true">→</span>
       <h4>${c.city} shipping</h4>
-      <p>Metro usually ${c.delivery}. Bundle always ships free.</p>
+      <p>Metro usually ${c.delivery}. Free shipping from $49.</p>
     </div>
     <div class="city-bento__third">
       <span class="ico" aria-hidden="true">◎</span>
@@ -312,7 +312,7 @@ ${locNav(c.slug)}
       ${bundleRow}
     </tbody>
   </table>
-  <p class="city-hub-note">*Free shipping on orders $80+. Bundle always free.</p>
+  <p class="city-hub-note">*Free shipping on orders $49+. Free shipping from $49.</p>
 </section>
 
 <aside class="city-hub-tip">
@@ -343,7 +343,7 @@ ${locNav(c.slug)}
 
 <div class="city-hub-cta">
   <h2>Order to ${c.city}</h2>
-  <p>From $11/100g · NMI-tested · Free shipping $80+</p>
+  <p>From $11/100g · NMI-tested · Free shipping $49+</p>
   <a class="city-btn city-btn--solid" href="/products/moringa-powder/">Shop now</a>
 </div>
 </main>
@@ -356,7 +356,7 @@ ${locNav(c.slug)}
 <script src="/shared/js/layout-v2.min.js"></script>
 <script src="/shared/js/v2-site.min.js"></script>
 <div class="city-mobile-bar" role="complementary" aria-label="Quick shop">
-  <div class="city-mobile-bar__price">From $11 / 100g<span>Free shipping over $80</span></div>
+  <div class="city-mobile-bar__price">From $11 / 100g<span>Free shipping over $49</span></div>
   <a href="/products/moringa-powder/" class="city-btn city-btn--solid">Shop</a>
 </div>
 </body>

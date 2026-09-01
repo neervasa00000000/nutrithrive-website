@@ -43,7 +43,7 @@
       (window.ShippingRates && typeof window.ShippingRates.getAuFreeShippingBannerText === 'function'
         ? window.ShippingRates.getAuFreeShippingBannerText()
         : null) ||
-      'Free shipping over $80';
+      'Free shipping over $49';
 
     header.innerHTML =
       '<div class="urgency-banner">' +

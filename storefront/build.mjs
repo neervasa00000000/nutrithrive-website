@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20260831-7";
+const ASSET_VERSION = "20260902-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
@@ -532,10 +532,13 @@ function extractSeo(filePath) {
   const description = descTag.match(/content=["']([^"']*)["']/i)?.[1];
   const robotsTag = html.match(/<meta[^>]*name=["']robots["'][^>]*>/i)?.[0] || "";
   const robots = robotsTag.match(/content=["']([^"']*)["']/i)?.[1];
+  const canonical = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1]
+    || html.match(/<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["']/i)?.[1];
   return {
     title: title ? decodeEntities(title) : null,
     description: description ? decodeEntities(description) : null,
     robots: robots || null,
+    canonical: canonical || null,
     h1: extractH1(html),
   };
 }
@@ -566,9 +569,12 @@ function extractTrackedSeo(relativePath) {
   const title = html.match(/<title>([^<]*)<\/title>/i)?.[1];
   const descTag = html.match(/<meta[^>]*name=["']description["'][^>]*>/i)?.[0] || "";
   const description = descTag.match(/content=["']([^"']*)["']/i)?.[1];
+  const canonical = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1]
+    || html.match(/<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["']/i)?.[1];
   return {
     title: title ? decodeEntities(title) : null,
     description: description ? decodeEntities(description) : null,
+    canonical: canonical || null,
     h1: extractH1(html),
   };
 }
@@ -630,7 +636,7 @@ function layout({
 }) {
   const r = routes();
   const canonical = `${LIVE}${canonicalPath}`;
-  const image = OG_IMAGE;
+  const image = ogImage ? absUrl(ogImage) : OG_IMAGE;
   const seoTitle = preserveTitle ? title : fitSeoTitle(title);
   const seoDescription = preserveDescription ? description : fitMetaDescription(description);
   const robotsContent = robots || (LIVE_MODE ? "index, follow" : "noindex, nofollow");
@@ -641,17 +647,7 @@ function layout({
   const liveAnalytics = LIVE_MODE ? `
   <meta name="google-site-verification" content="Ei4OAxJbWPsT7qaeosUpRUONNj37_r_Xe1xFPI6R_M0">
   <link rel="alternate" hreflang="en-AU" href="${esc(canonical)}">
-  <link rel="alternate" hreflang="x-default" href="${esc(canonical)}">
-  <script>
-!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_ihc1rio99viy",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt("init","a2_ihc1rio99viy");rdt("track","PageVisit");
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WH21SW75WP', {'anonymize_ip': true, 'allow_google_signals': false});
-  </script>` : "";
+  <link rel="alternate" hreflang="x-default" href="${esc(canonical)}">` : "";
   const newsletterBlock = LIVE_MODE
     ? `<div class="footer-newsletter-copy"><p class="kicker">Farm notes</p><h2>Occasional updates, no daily drip</h2><p>Guides, dispatch notes and product news from Truganina. Unsubscribe any time.</p></div>
       <form class="newsletter-form newsletter-inline" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/pages/newsletter/thank-you.html">
@@ -746,7 +742,7 @@ function layout({
 <body>
 ${CONTRACT}
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="announce"><span class="announce-full">Order before 2pm Monday–Friday for same-day dispatch · Free shipping over $80</span><span class="announce-short">Weekday dispatch before 2pm · Free over $80</span></div>
+<div class="announce"><span class="announce-full">Order before 2pm Monday–Friday for same-day dispatch · Free shipping over $49</span><span class="announce-short">Weekday dispatch before 2pm · Free over $49</span></div>
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
@@ -913,7 +909,7 @@ function homepage() {
     <div class="trust-item">${check()}<div><strong>Australian testing</strong><span>Published information when available.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Manufacturer-direct</strong><span>We grow it and make it.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Single-ingredient</strong><span>Leaf powder. No fillers.</span></div></div>
-    <div class="trust-item">${check()}<div><strong>Tracked shipping</strong><span>Australia-wide. Free over $80.</span></div></div>
+    <div class="trust-item">${check()}<div><strong>Tracked shipping</strong><span>Australia-wide. Free over $49.</span></div></div>
   </div>
 </div>
 <section class="section">
@@ -1336,7 +1332,8 @@ function pdpPage(slug, d) {
     ogImage: p.image,
     ogImageWidth: 900,
     ogImageHeight: 900,
-    extraHead: jsonLd(productSchema) +
+    extraHead: `<link rel="preload" as="image" href="${gallery[0][0]}" fetchpriority="high">` +
+      jsonLd(productSchema) +
       jsonLd(
         breadcrumbSchema([
           { name: "Home", item: `${LIVE}/` },
@@ -1351,7 +1348,7 @@ function pdpPage(slug, d) {
       <section class="wrap pdp">
         <div class="pdp-gallery-wrap">
           <div class="pdp-gallery">
-            <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" data-pdp-image>
+            <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
           </div>
         </div>
         <div class="pdp-buy" id="pdp-buy">
@@ -1548,7 +1545,9 @@ function contactPage() {
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap split-2">
-          <form class="form" action="/thank-you/" method="get">
+          <form class="form" name="contact" action="/pages/contact/thank-you.html" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p class="visually-hidden"><label>Don’t fill this in <input name="bot-field"></label></p>
             <div class="field">
               <label for="name">Name</label>
               <input id="name" name="name" autocomplete="name" required>
@@ -1560,7 +1559,7 @@ function contactPage() {
             <div class="field">
               <label for="message">Message</label>
               <textarea id="message" name="message" required></textarea>
-              <span class="hint">This local preview does not send email. The live site does.</span>
+              <span class="hint">We use these details only to answer your message. We usually reply within 1–2 business days.</span>
             </div>
             <button class="btn btn-primary" type="submit">Send message</button>
           </form>
@@ -1642,7 +1641,7 @@ function faqPage() {
       items: [
         {
           q: "What is the free shipping threshold?",
-          a: "Free standard shipping on Australian orders of $80 and over, and worldwide on orders of $90 and over. If you think your order should qualify, call +61 438 201 419 and we can process it for you.",
+          a: "Free standard shipping on Australian orders of $49 and over, and worldwide on orders of $90 and over. If you think your order should qualify, call +61 438 201 419 and we can process it for you.",
         },
         {
           q: "How fast is shipping from Melbourne?",
@@ -1759,7 +1758,7 @@ function faqPage() {
 function shippingPage() {
   return layout({
     title: "Shipping, Delivery and Returns | NutriThrive",
-    description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping over $80 and our seven-day returns information.",
+    description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping over $49 and our seven-day returns information.",
     canonicalPath: "/shipping",
     extraHead: jsonLd(
       breadcrumbSchema([
@@ -1774,7 +1773,7 @@ function shippingPage() {
       </nav>
       <section class="page-intro wrap-narrow">
         <h1>Shipping and returns</h1>
-        <p class="lede">Orders leave Truganina. Free standard shipping on Australian orders of $80 and over, and worldwide on $90 and over.</p>
+        <p class="lede">Orders leave Truganina. Free standard shipping on Australian orders of $49 and over, and worldwide on $90 and over.</p>
         <h2>Dispatch</h2>
         <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. If you think your order should receive free shipping, call +61 438 201 419 and we can process it for you.</p>
         <h2>Timing after dispatch</h2>
@@ -2488,9 +2487,12 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   });
 }
 
-function redirectPage(fromSlug, toSlug) {
-  const destination = `/journal/${toSlug}/`;
-  return `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><link rel="canonical" href="${LIVE}/journal/${toSlug}"><meta http-equiv="refresh" content="0;url=${destination}"><title>Guide moved | NutriThrive</title></head><body><main><h1>This guide has moved</h1><p>We combined overlapping information into one clearer guide.</p><p><a href="${destination}">Read the updated guide</a></p></main></body></html>`;
+function redirectPage(fromSlug, toSlug, seo = {}) {
+  const destination = LIVE_MODE ? `/blog/${toSlug}` : `/journal/${toSlug}/`;
+  const title = seo.title || "Guide moved | NutriThrive";
+  const description = seo.description || "This guide has moved to a clearer, consolidated NutriThrive article.";
+  const canonical = seo.canonical || `${LIVE}/blog/${toSlug}`;
+  return `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="noindex,follow"><link rel="canonical" href="${esc(canonical)}"><link rel="icon" href="/assets/images/logo/favicon.ico" sizes="any"><meta http-equiv="refresh" content="0;url=${destination}"></head><body><main><h1>This guide has moved</h1><p>We combined overlapping information into one clearer guide.</p><p><a href="${destination}">Read the updated guide</a></p></main></body></html>`;
 }
 
 function stripTags(s) {
@@ -2500,7 +2502,29 @@ function stripTags(s) {
 function loadArticles() {
   const src = fs.readFileSync(path.join(SITE, "shared/js/blog-articles.js"), "utf8");
   const json = src.replace(/^[\s\S]*?window\.NT_BLOG_ARTICLES = /, "").replace(/;\s*$/, "");
-  return JSON.parse(json);
+  const articles = JSON.parse(json);
+  const known = new Set(articles.map((article) => article.slug));
+  for (const name of fs.readdirSync(path.join(SITE, "blog"))) {
+    if (!name.endsWith(".html") || name === "index.html" || name.includes(".partial.")) continue;
+    const slug = name.replace(/\.html$/, "");
+    if (known.has(slug)) continue;
+    const html = fs.readFileSync(path.join(SITE, "blog", name), "utf8");
+    if (/meta\s+name=["']robots["']\s+content=["']noindex/i.test(html)) continue;
+    const seo = extractSeo(path.join(SITE, "blog", name));
+    const image = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)?.[1]
+      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i)?.[1]
+      || "";
+    articles.push({
+      slug,
+      title: seo.title || slug.replaceAll("-", " "),
+      seoTitle: seo.title || "",
+      description: seo.description || "Practical NutriThrive guide for Australian readers.",
+      category: "Guide",
+      image: image.replace(LIVE, ""),
+      url: `${LIVE}/blog/${slug}`,
+    });
+  }
+  return articles;
 }
 
 function articleImage(article) {
@@ -2724,6 +2748,11 @@ function main() {
       const slug = meta.slug;
       const file = path.join(SITE, "blog", `${slug}.html`);
       const liveSeo = extractTrackedSeo(`blog/${slug}.html`) || extractSeo(file);
+      if (JOURNAL_REDIRECTS[slug]) {
+        emit(`blog/${slug}.html`, redirectPage(slug, JOURNAL_REDIRECTS[slug], liveSeo), `blog/${slug}.html`);
+        wrapped += 1;
+        continue;
+      }
       const prose = extractArticleProse(
         slug,
         `<p>${esc(humanCopy(stripTags(meta.description)))}</p><p><a href="/products/">Shop the range</a></p>`

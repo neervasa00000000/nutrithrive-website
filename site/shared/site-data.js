@@ -12,7 +12,7 @@ window.NT_SITE_DATA = {
   },
   shipping: {
     /** Standard AU free-shipping threshold after any dated promo ends. */
-    freeAuThreshold: 80,
+    freeAuThreshold: 49,
     freeWorldThreshold: 90,
     /** Fallback only if shipping-rates.js fails to load */
     defaultAuRate: 9.69,
@@ -34,7 +34,7 @@ window.NT_SITE_DATA = {
       if (window.ShippingRates?.getAuFreeShippingBannerText) {
         return window.ShippingRates.getAuFreeShippingBannerText();
       }
-      return 'Free shipping over $80';
+      return 'Free shipping over $49';
     },
   },
   rating: { value: '4.9', count: 12 },
@@ -147,7 +147,7 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-powder/',
       pdp: {
         headline: '400g Moringa Bundle',
-        intro: 'Four 100g packs of the same shade-dried powder — useful if you cook for a family or go through a pouch quickly. Free shipping on orders $80+.',
+        intro: 'Four 100g packs of the same shade-dried powder — useful if you cook for a family or go through a pouch quickly. Free shipping on orders $49+.',
         features: [
           { icon: 'savings', text: '400g Bundle' },
           { icon: 'eco', text: '100% Pure Moringa' },
@@ -159,7 +159,7 @@ window.NT_SITE_DATA = {
         faqs: [
           { q: 'What is included?', a: 'Four 100g packs (400g total) of shade-dried moringa leaf powder.' },
           { q: 'How should I store it?', a: 'Keep pouches sealed in a cool, dry place away from direct sunlight.' },
-          { q: 'Is shipping free?', a: 'Free shipping on Australian orders $80+. A $35 order is under that threshold, so standard shipping applies at checkout.' },
+          { q: 'Is shipping free?', a: 'Free shipping on Australian orders $49+. A $35 order is under that threshold, so standard shipping applies at checkout.' },
         ],
         showLabBadge: true,
         variantPicker: true,
@@ -468,7 +468,7 @@ window.NT_SITE_DATA = {
       items: [
         { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup only.' },
         { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order or checking free shipping eligibility.' },
-        { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$80+ and free worldwide shipping on orders of AU$90+.' },
+        { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$49+ and free worldwide shipping on orders of AU$90+.' },
         { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Orders placed before 2pm on business days usually leave Truganina the same day; otherwise within 2 business days (no Sunday dispatch). Melbourne metro is often 1–3 business days after dispatch; other metro areas typically 3–4 days; some rural locations up to 10 days. See /pages/shipping/shipping-returns.html or /melbourne/ for estimates.' },
         { q: 'Do you offer a money-back guarantee?', a: 'Yes—7-day return policy (unopened packs only). Shipping costs are not refunded.' },
         { q: 'Where is my order dispatched from?', a: 'All orders ship from our warehouse in Truganina, Melbourne. Order before 2pm on a business day for same-day dispatch when we can.' },
