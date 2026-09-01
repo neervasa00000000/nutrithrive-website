@@ -44,8 +44,8 @@ const YELLOW_RATES = {
 // Zone 4 = UK & Ireland/UK & Europe (BLUE/YELLOW), Zone 5 = Rest of World (YELLOW)
 const COUNTRY_MAPPING = {
     // Australia — GREEN Zone 2 (national mid-rate from rate card)
-    // freeShippingThreshold is the standard ($80). Limited promos are applied in calculateShipping.
-    'AU': { zone: 2, color: 'GREEN', freeShippingThreshold: 80 },
+    // freeShippingThreshold is the standard ($49). Limited promos are applied in calculateShipping.
+    'AU': { zone: 2, color: 'GREEN', freeShippingThreshold: 49 },
     
     // Zone 1 - NZ (BLUE)
     'NZ': { zone: 1, color: 'BLUE' },
@@ -592,18 +592,17 @@ function getCountryInfo(countryCode) {
 }
 
 /**
- * Limited AU free Parcel Post promo.
- * - Free when order subtotal is STRICTLY above $45 (e.g. $45.01+ / $46 — not $45.00).
- * - Valid through end of 16 Aug 2026 AEST; from 17 Aug 2026 00:00 AEST reverts to $80 automatically.
+ * Limited AU free Parcel Post promo (currently disabled).
+ * Standing Australian free-shipping threshold is $49.
  */
-const AU_FREE_SHIPPING_STANDARD = 80;
+const AU_FREE_SHIPPING_STANDARD = 49;
 const AU_FREE_SHIPPING_PROMO = {
     minExclusive: 45,
     endsAtMs: Date.parse('2026-08-17T00:00:00+10:00')
 };
 
 function isAuFreeShippingPromoActive(now) {
-    // Promo disabled — standing free-shipping threshold is a flat $80.
+    // Promo disabled — standing free-shipping threshold is a flat $49.
     return false;
 }
 
@@ -620,8 +619,8 @@ function getAuFreeShippingThreshold(now) {
     return {
         amount: AU_FREE_SHIPPING_STANDARD,
         mode: 'gte',
-        label: 'over $80',
-        banner: 'Free shipping over $80',
+        label: 'over $49',
+        banner: 'Free shipping over $49',
         endsAtMs: null
     };
 }
@@ -651,7 +650,8 @@ function applyFreeShippingPromoBanners() {
         if (!/Free shipping/i.test(raw)) return;
         el.textContent = raw
             .replace(/Free shipping on orders over \$45 \(ends 16 Aug\)/gi, banner)
-            .replace(/Free shipping over \$80/gi, banner);
+            .replace(/Free shipping over \$80/gi, banner)
+            .replace(/Free shipping over \$49/gi, banner);
     });
 }
 
@@ -669,7 +669,7 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     const upperCountryCode = countryCode.toUpperCase();
     
     // Free shipping thresholds
-    // 1) Australia: dated promo (> $45 through 16 Aug 2026 AEST) then automatic revert to $80+
+    // 1) Australia: free standard shipping on orders of $49+
     if (upperCountryCode === 'AU' && qualifiesForAuFreeShipping(subtotal)) {
         return 0;
     }

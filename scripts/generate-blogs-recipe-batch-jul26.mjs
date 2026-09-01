@@ -165,7 +165,7 @@ const POSTS = [
       { href: '/blog/moringa-with-vitamin-c-iron-absorption-guide-2026', label: 'Moringa and vitamin C for iron' },
       { href: '/blog/how-to-strengthen-immune-system-naturally-australia-2026', label: 'Strengthen immunity naturally' },
     ],
-    ctaExtra: 'Lab-tested, shade-dried, packed in Melbourne. Free shipping over $80.',
+    ctaExtra: 'Lab-tested, shade-dried, packed in Melbourne. Free shipping over $49.',
   },
   {
     slug: 'curry-leaves-dahl-recipe-30-minutes-australia-2026',
@@ -271,7 +271,7 @@ const POSTS = [
       { href: '/blog/curry-leaves-health-benefits-what-the-evidence-says-2026', label: 'Curry leaves health benefits' },
       { href: '/blog/curry-leaves-substitute-what-to-use-2026', label: 'Curry leaves substitutes' },
     ],
-    ctaExtra: 'Shade-dried, packed in Melbourne. Free shipping over $80.',
+    ctaExtra: 'Shade-dried, packed in Melbourne. Free shipping over $49.',
   },
   {
     slug: 'darjeeling-chai-latte-recipe-winter-coffee-alternative-2026',
@@ -566,7 +566,7 @@ const POSTS = [
       { href: '/blog/best-anti-inflammatory-foods-australia-daily-guide-2026', label: 'Anti-inflammatory foods' },
       { href: '/blog/moringa-smoothie-recipes-australia-easy-2026', label: 'More moringa recipes' },
     ],
-    ctaExtra: 'From 33 cents per day. Lab-tested, shade-dried, packed in Melbourne. Free shipping over $80.',
+    ctaExtra: 'From 33 cents per day. Lab-tested, shade-dried, packed in Melbourne. Free shipping over $49.',
   },
 ];
 
@@ -777,7 +777,7 @@ function buildHtml(post) {
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article">
 <div class="nt-sticky-top">
-<div class="nt-promo-bar">&#x23F0; Order before 2pm for same-day Melbourne dispatch &#x2022; &#x1F69A; Free shipping over $80</div>
+<div class="nt-promo-bar">&#x23F0; Order before 2pm for same-day Melbourne dispatch &#x2022; &#x1F69A; Free shipping over $49</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
 <nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-4 pb-2 text-label-sm" aria-label="Breadcrumb">

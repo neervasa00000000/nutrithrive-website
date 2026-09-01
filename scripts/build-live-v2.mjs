@@ -304,7 +304,7 @@ ${footScripts}
 
 function v2ShellPrefix() {
   return `<div class="nt-sticky-top">
-<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
+<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $49 • 📦 Small batches—fresh stock guaranteed</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>`;
 }
@@ -357,7 +357,7 @@ function redirectStubBody(target, label) {
 
 function productPdpBody() {
   return `<div class="nt-sticky-top">
-<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $80 • 📦 Small batches—fresh stock guaranteed</div>
+<div class="nt-promo-bar">⏰ Order before 2pm for same-day Melbourne dispatch • 🚚 Free shipping over $49 • 📦 Small batches—fresh stock guaranteed</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
 <main id="nt-pdp-app" class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"></main>

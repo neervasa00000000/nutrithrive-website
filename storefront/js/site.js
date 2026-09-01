@@ -515,6 +515,38 @@ function readConsent() {
   try { return JSON.parse(localStorage.getItem(CONSENT_KEY) || "null"); } catch { return null; }
 }
 
+function loadOptionalScript(src, id) {
+  if (document.getElementById(id)) return;
+  const script = document.createElement("script");
+  script.id = id;
+  script.src = src;
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+function applyOptionalConsent(consent) {
+  if (consent?.analytics) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", "G-WH21SW75WP", { anonymize_ip: true, allow_google_signals: false });
+    loadOptionalScript("https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP", "nt-google-analytics");
+  } else if (window.gtag) {
+    window.gtag("consent", "update", { analytics_storage: "denied", ad_storage: "denied" });
+  }
+  if (consent?.marketing && !window.rdt) {
+    const rdt = function () {
+      if (rdt.sendEvent) rdt.sendEvent.apply(rdt, arguments);
+      else rdt.callQueue.push(arguments);
+    };
+    rdt.callQueue = [];
+    window.rdt = rdt;
+    loadOptionalScript("https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_ihc1rio99viy", "nt-reddit-pixel");
+    window.rdt("init", "a2_ihc1rio99viy");
+    window.rdt("track", "PageVisit");
+  }
+}
+
 function bindCookieChoices() {
   const banner = document.querySelector("[data-cookie-banner]");
   const modal = document.querySelector("[data-cookie-modal]");
@@ -523,7 +555,9 @@ function bindCookieChoices() {
   const marketing = modal.querySelector("[data-cookie-marketing]");
   let lastFocus = null;
   const save = (analyticsValue, marketingValue) => {
-    localStorage.setItem(CONSENT_KEY, JSON.stringify({ necessary: true, analytics: analyticsValue, marketing: marketingValue, savedAt: new Date().toISOString(), version: 1 }));
+    const next = { necessary: true, analytics: analyticsValue, marketing: marketingValue, savedAt: new Date().toISOString(), version: 1 };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(next));
+    applyOptionalConsent(next);
     banner.hidden = true;
     modal.hidden = true;
     document.body.classList.remove("modal-open");
@@ -549,7 +583,9 @@ function bindCookieChoices() {
     document.body.classList.remove("modal-open");
     lastFocus?.focus?.();
   }));
-  if (!readConsent()) banner.hidden = false;
+  const existing = readConsent();
+  if (!existing) banner.hidden = false;
+  else applyOptionalConsent(existing);
 }
 
 function isLiveSite() {

@@ -469,7 +469,7 @@
       countryCode === 'AU'
         ? auRule?.mode === 'gt'
           ? 'Free AU shipping on orders over $45 (ends 16 Aug)'
-          : `Free AU shipping ${money(data.shipping.freeAuThreshold ?? 80)}+`
+          : `Free AU shipping ${money(data.shipping.freeAuThreshold ?? 49)}+`
         : `Free worldwide shipping ${money(data.shipping.freeWorldThreshold ?? 90)}+`;
     const popularCountries = ['AU', 'NZ', 'US', 'GB', 'CA', 'SG', 'IN'];
     const countryList = window.ShippingRates?.getCountryList?.() || [];
