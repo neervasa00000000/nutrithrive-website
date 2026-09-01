@@ -52,7 +52,7 @@ const CITIES = [
     },
     guideLinks: [
       { href: '/blog/how-to-choose-moringa-powder-australia-2026', label: 'How to choose quality moringa powder' },
-      { href: '/pages/shipping/shipping-returns.html', label: 'WA shipping times & free shipping over $80' },
+      { href: '/pages/shipping/shipping-returns.html', label: 'WA shipping times & free shipping over $49' },
     ],
   },
   {

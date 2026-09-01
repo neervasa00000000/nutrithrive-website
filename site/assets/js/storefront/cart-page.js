@@ -104,7 +104,7 @@ function catalog() {
 }
 
 function shippingFor(items, subtotal) {
-  if (subtotal >= 80) return 0;
+  if (subtotal >= 49) return 0;
   if (!items.length || subtotal === 0) return 0;
   if (window.ShippingRates?.calculate) {
     const payload = items.map((item) => ({
@@ -131,7 +131,7 @@ function pickRecs(cartItems, subtotal) {
     (PAIRS[item.id] || []).forEach((id, i) => bump(id, 40 - i * 4));
   });
   POPULAR.forEach((id, i) => bump(id, 8 - i));
-  const remaining = Math.max(0, 80 - subtotal);
+  const remaining = Math.max(0, 49 - subtotal);
   return [...score.entries()]
     .map(([id, s]) => {
       const p = catalog().find((x) => x.id === id);
@@ -248,7 +248,7 @@ function renderCart() {
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
     <div class="summary-row"><span>Shipping</span><span>${ship === 0 ? "Free" : money(ship)}</span></div>
     <div class="summary-row total"><span>Total</span><span>${money(sub + ship)}</span></div>
-    <p class="hint" style="font-size:14px;color:var(--color-text-secondary);margin:12px 0 20px">${sub >= 80 ? "Free Australian shipping applied." : `Add ${money(80 - sub)} for free Australian shipping.`}${isLiveSite() ? " Final shipping and total are calculated at PayPal checkout." : ""}</p>
+    <p class="hint" style="font-size:14px;color:var(--color-text-secondary);margin:12px 0 20px">${sub >= 49 ? "Free Australian shipping applied." : `Add ${money(49 - sub)} for free Australian shipping.`}${isLiveSite() ? " Final shipping and total are calculated at PayPal checkout." : ""}</p>
     <a class="btn btn-primary btn-block" href="${checkoutPath()}">Checkout</a>
   `;
     lines.querySelectorAll("[data-set]").forEach((btn) => {

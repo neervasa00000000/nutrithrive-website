@@ -794,7 +794,7 @@ function buildHtml(post) {
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden nt-blog-article">
 <div class="nt-sticky-top">
-<div class="nt-promo-bar">&#x23F0; Order before 2pm for same-day Melbourne dispatch &#x2022; &#x1F69A; Free shipping over $80</div>
+<div class="nt-promo-bar">&#x23F0; Order before 2pm for same-day Melbourne dispatch &#x2022; &#x1F69A; Free shipping over $49</div>
 <header id="nt-header" class="nt-v2-header"></header>
 </div>
 <nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-4 pb-2 text-label-sm" aria-label="Breadcrumb">

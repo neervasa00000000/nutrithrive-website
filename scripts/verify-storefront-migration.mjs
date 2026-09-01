@@ -245,7 +245,7 @@ if (thanks) {
   mustInclude("pages/shop/thank-you.html", 'data-nt-live="1"', "live flag");
   mustInclude("pages/shop/thank-you.html", "/assets/js/storefront/thank-you-page", "order thank-you script");
   mustInclude("pages/shop/thank-you.html", 'id="order-id"', "order reference");
-  mustInclude("pages/shop/thank-you.html", "G-WH21SW75WP", "GA");
+  mustNotInclude("pages/shop/thank-you.html", "googletagmanager.com/gtag", "analytics loaded before consent");
   mustNotInclude("pages/shop/thank-you.html", "design-system.min.css", "old design system CSS");
   mustNotInclude("pages/shop/thank-you.html", "footer-v2", "old footer");
   mustNotInclude("pages/shop/thank-you.html", "thank-you-icon", "old checkmark block");
@@ -306,7 +306,11 @@ for (const id of paypalIds) {
   if (catalog && !catalog.includes(`"id":"${id}"`)) errors.push(`catalog missing PayPal id ${id}`);
 }
 
-mustInclude("index.html", "G-WH21SW75WP", "GA");
+const storefrontSiteJs = read("assets/js/storefront/site.js");
+if (!storefrontSiteJs.includes("G-WH21SW75WP") || !storefrontSiteJs.includes("applyOptionalConsent")) {
+  errors.push("consent-aware GA loader is missing from storefront site script");
+}
+mustNotInclude("index.html", "googletagmanager.com/gtag", "analytics loaded before consent");
 mustNotInclude("pages/shop/payment.html", "storefront-checkout", "preview checkout on payment");
 
 if (fs.existsSync(path.join(SITE_ROOT, "journal/how-to-add-moringa-to-diet/index.html"))) {

@@ -39,7 +39,7 @@ function faq(summary, body) {
 function buybox(p) {
   const perDay = p.perDay ? `<p class="nt-pdp-perday">${p.perDay}</p>` : '';
   const packLine = p.packLine ? `<p class="nt-pdp-perday">${p.packLine}</p>` : perDay;
-  const trust = (p.trust || ['Melbourne Packed', 'Same Day Dispatch', 'Free Shipping Over $80'])
+  const trust = (p.trust || ['Melbourne Packed', 'Same Day Dispatch', 'Free Shipping Over $49'])
     .map((t, i) => trustItem(['lab', 'ship', 'free'][i] || 'lab', t)).join('\n');
   return `
                 <div class="nt-pdp-buybox">
@@ -160,7 +160,7 @@ const products = [
     image: '/assets/images/homepage/product-showcase/Curry.webp',
     imageAlt: 'Dried kari leaf curry leaves — NutriThrive Melbourne',
     addFn: 'addCurryLeavesToCart', buyFn: 'buyCurryLeavesNow',
-    trust: ['Shade-Dried Leaves', 'Same Day Dispatch', 'Free Shipping Over $80'],
+    trust: ['Shade-Dried Leaves', 'Same Day Dispatch', 'Free Shipping Over $49'],
     features: [
       { icon: ICONS.leaf, title: 'Shade-Dried', text: 'Gentle drying keeps colour and citrus-nut aroma.' },
       { icon: ICONS.check, title: 'True Kari Leaf', text: 'Murraya koenigii — not curry powder or curry plant.' },
@@ -257,7 +257,7 @@ const products = [
       { q: 'What makes Darjeeling special?', a: 'High-altitude Himalayan gardens give a unique muscatel flavour — often called the champagne of teas.' },
       { q: 'How much caffeine?', a: 'About 40–50 mg per cup — a gentle lift without the coffee crash for most people.' },
       { q: 'Can I add milk?', a: 'Yes. Darjeeling works plain or with milk as a breakfast-style cup.' },
-      { q: 'Payments & shipping?', a: 'Visa, bank transfer, cash, and PayPal. Free AU shipping on orders $80+. Dispatch within 2 business days.' },
+      { q: 'Payments & shipping?', a: 'Visa, bank transfer, cash, and PayPal. Free AU shipping on orders $49+. Dispatch within 2 business days.' },
     ],
     disclaimer: [
       '<strong>Legal disclaimer:</strong> NutriThrive is operated from Truganina, VIC (ABN 32 639 442 616).',
@@ -314,7 +314,7 @@ const products = [
       { q: 'What is included?', a: '100g moringa powder, 100g Darjeeling black tea, and 30g dried curry leaves.' },
       { q: 'How much do I save?', a: '$5.49 vs buying each item at listed RRP ($22.49 → $17.00).' },
       { q: 'Is the moringa lab-tested?', a: 'Yes — NMI heavy-metal summary available on the moringa product page and PDF.' },
-      { q: 'Payments & shipping?', a: 'Free AU shipping on orders $80+. Dispatch within 2 business days from Melbourne.' },
+      { q: 'Payments & shipping?', a: 'Free AU shipping on orders $49+. Dispatch within 2 business days from Melbourne.' },
     ],
     disclaimer: [
       '<strong>Legal disclaimer:</strong> NutriThrive is operated from Truganina, VIC (ABN 32 639 442 616).',
@@ -373,7 +373,7 @@ const products = [
       { q: 'What is included?', a: '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and one 95g moringa lavender soap.' },
       { q: 'How much do I save?', a: '$6.98 vs buying each item at listed RRP ($41.98 → $35.00).' },
       { q: 'Is the moringa lab-tested?', a: 'Yes. The NMI heavy-metal summary is on the moringa product page and PDF.' },
-      { q: 'Payments & shipping?', a: 'Free AU shipping on orders $80+. Same-day dispatch before 2pm on business days when possible; otherwise within 2 business days from Melbourne.' },
+      { q: 'Payments & shipping?', a: 'Free AU shipping on orders $49+. Same-day dispatch before 2pm on business days when possible; otherwise within 2 business days from Melbourne.' },
     ],
     disclaimer: [
       '<strong>Legal disclaimer:</strong> NutriThrive is operated from Truganina, VIC (ABN 32 639 442 616).',

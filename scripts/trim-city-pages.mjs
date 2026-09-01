@@ -45,7 +45,7 @@ const CITIES = [
       },
       {
         q: 'What\'s the best value for Sydney buyers?',
-        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80, shipping is $9.69.',
+        a: 'The 400g bundle is $35. Free shipping on orders $49+; under $49, shipping is $9.69.',
       },
       {
         q: 'Any safety tip for capsules?',
@@ -86,7 +86,7 @@ const CITIES = [
       },
       {
         q: 'What\'s the cheapest way to order?',
-        a: 'The 400g bundle is $35. Single 100g is $11 + $9.69 shipping if your order is under $80. Free shipping from $80.',
+        a: 'The 400g bundle is $35. Single 100g is $11 + $9.69 shipping if your order is under $49. Free shipping from $49.',
       },
       {
         q: 'Why is my powder clumping?',
@@ -113,7 +113,7 @@ const CITIES = [
       'Order before 2pm for same-day dispatch from Truganina, Melbourne. Perth metro typically 3–5 business days—the longest domestic route from our warehouse.',
     imgAlt: 'NutriThrive moringa powder delivered to Perth',
     callout:
-      '<div class="city-callout"><strong>Perth tip:</strong> The 400g bundle is $35. Free shipping from $80 — useful if you want fewer Melbourne freight runs.</div>',
+      '<div class="city-callout"><strong>Perth tip:</strong> The 400g bundle is $35. Free shipping from $49 — useful if you want fewer Melbourne freight runs.</div>',
     localTitle: 'Why Perth buyers order from Melbourne',
     localBody:
       'Loose moringa powder is hard to find in WA retail. We ship the same NMI-tested batches as east-coast customers. In summer heat, store sealed in a cool cupboard or fridge after opening.',
@@ -132,7 +132,7 @@ const CITIES = [
       },
       {
         q: 'Best value for regular Perth orders?',
-        a: 'The 400g bundle is $35 — about 4 months at 1 tsp/day. Free shipping starts at $80.',
+        a: 'The 400g bundle is $35 — about 4 months at 1 tsp/day. Free shipping starts at $49.',
       },
     ],
     review: {
@@ -142,7 +142,7 @@ const CITIES = [
     },
     guides: [
       { href: '/blog/how-to-choose-moringa-powder-australia-2026', label: 'How to choose moringa powder' },
-      { href: '/pages/shipping/shipping-returns.html', label: 'Shipping times & free shipping $80+' },
+      { href: '/pages/shipping/shipping-returns.html', label: 'Shipping times & free shipping $49+' },
     ],
     bundleHighlight: true,
   },
@@ -170,11 +170,11 @@ const CITIES = [
       },
       {
         q: 'Cheapest way to order to Adelaide?',
-        a: 'The 400g bundle is $35. Free shipping on orders $80+; under $80 shipping is $9.69. Otherwise $11/100g + $9.69 under $80.',
+        a: 'The 400g bundle is $35. Free shipping on orders $49+; under $49 shipping is $9.69. Otherwise $11/100g + $9.69 under $49.',
       },
       {
         q: 'How do Adelaide orders ship?',
-        a: 'We pack in Truganina, Melbourne and ship Australia Post to Adelaide. Metro is usually 2–4 business days when you order before 2pm for same-day dispatch. Free shipping on Australian orders $80+.',
+        a: 'We pack in Truganina, Melbourne and ship Australia Post to Adelaide. Metro is usually 2–4 business days when you order before 2pm for same-day dispatch. Free shipping on Australian orders $49+.',
       },
     ],
     review: {
@@ -218,7 +218,7 @@ function pricingRows(cityName, highlight) {
       ${bundleRow}
     </tbody>
   </table></div>
-  <p class="city-table-note">*Free shipping on orders $80+. Under $80, Australia shipping from $9.69.</p>
+  <p class="city-table-note">*Free shipping on orders $49+. Under $49, Australia shipping from $9.69.</p>
 </section>`;
 }
 
@@ -283,7 +283,7 @@ ${c.callout}
     <ul class="city-hero-checklist">
       <li>NMI lab-tested · batch summary online</li>
       <li>Shade-dried leaf only — no fillers</li>
-      <li>Free shipping over $80 Australia-wide</li>
+      <li>Free shipping over $49 Australia-wide</li>
     </ul>
     <p class="city-hero-price">From $11.00 / 100g</p>
     <p class="city-hero-perday">~33 servings at 1 tsp/day</p>
@@ -312,7 +312,7 @@ ${guidesHtml(c.guides)}
 
 <div class="city-bottom-cta">
   <p class="city-bottom-cta__title">Order moringa to ${cityName}</p>
-  <p class="city-bottom-cta__sub">From $11/100g · NMI-tested · Free shipping $80+</p>
+  <p class="city-bottom-cta__sub">From $11/100g · NMI-tested · Free shipping $49+</p>
   <a href="/products/moringa-powder/" class="city-bottom-cta__btn">Shop now</a>
 </div>
 

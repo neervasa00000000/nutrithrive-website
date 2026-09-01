@@ -12,7 +12,7 @@ const SITE = path.join(ROOT, 'site');
 const CITY_SLUGS = ['moringa-sydney', 'moringa-brisbane', 'moringa-perth', 'moringa-adelaide'];
 
 const MOBILE_BAR = `<div class="city-mobile-bar" role="complementary" aria-label="Quick shop">
-  <div class="city-mobile-bar__price">From $11 / 100g<span>Free shipping over $80</span></div>
+  <div class="city-mobile-bar__price">From $11 / 100g<span>Free shipping over $49</span></div>
   <a href="/products/moringa-powder/" class="city-cta-btn">Shop now</a>
 </div>`;
 
