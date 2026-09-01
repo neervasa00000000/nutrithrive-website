@@ -18,6 +18,80 @@ function money(n) {
   return `$${Number(n).toFixed(2)}`;
 }
 
+function analyticsItem(item, quantity) {
+  if (!item) return null;
+  const qty = Number(quantity || item.qty || item.quantity || 1);
+  return {
+    item_id: String(item.sku || item.id || "nutrithrive-product").slice(0, 100),
+    item_name: String(item.name || "NutriThrive product").slice(0, 100),
+    item_brand: "NutriThrive",
+    item_variant: String(item.variant || "").slice(0, 100),
+    price: Number(item.price || 0),
+    quantity: Number.isFinite(qty) && qty > 0 ? qty : 1,
+  };
+}
+
+function analyticsItems(items) {
+  return (Array.isArray(items) ? items : [])
+    .map((item) => analyticsItem(item))
+    .filter(Boolean);
+}
+
+function trackEvent(name, params = {}) {
+  const consent = readConsent();
+  if (!consent?.analytics || typeof window.gtag !== "function") return false;
+  window.gtag("event", name, params);
+  return true;
+}
+
+function trackEcommerce(name, items, extra = {}) {
+  const rows = analyticsItems(items);
+  const value = rows.reduce((total, item) => total + item.price * item.quantity, 0);
+  return trackEvent(name, {
+    currency: "AUD",
+    value: Number(value.toFixed(2)),
+    items: rows,
+    ...extra,
+  });
+}
+
+function trackCurrentCommercePage() {
+  const listedProducts = [];
+  const listedIds = new Set();
+  document.querySelectorAll(".product-card [data-add]").forEach((button) => {
+    try {
+      const product = JSON.parse(button.getAttribute("data-add") || "null");
+      if (product?.id && !listedIds.has(product.id)) {
+        listedIds.add(product.id);
+        listedProducts.push(product);
+      }
+    } catch {
+      /* ignore malformed product data */
+    }
+  });
+  if (listedProducts.length && !window._ntItemListViewSent) {
+    const sent = trackEcommerce("view_item_list", listedProducts, {
+      item_list_id: location.pathname === "/" ? "homepage-products" : "product-list",
+      item_list_name: location.pathname === "/" ? "Homepage products" : "Products",
+    });
+    if (sent) window._ntItemListViewSent = true;
+  }
+
+  if (location.pathname.includes("/products/")) {
+    const addBtn = document.querySelector(".pdp [data-add]");
+    if (!addBtn) return;
+    try {
+      const product = JSON.parse(addBtn.getAttribute("data-add") || "null");
+      const key = product?.id || "product";
+      if (window._ntItemViewSent !== key && trackEcommerce("view_item", [product])) {
+        window._ntItemViewSent = key;
+      }
+    } catch {
+      /* ignore malformed product data */
+    }
+  }
+}
+
 function readCart() {
   if (window.Cart?.get) {
     const cart = window.Cart.get() || { items: [] };
@@ -98,6 +172,9 @@ function updateCartCount() {
 
 window.NT = {
   money,
+  analyticsItem,
+  trackEvent,
+  trackEcommerce,
   readCart,
   writeCart,
   addToCart(product, qty = 1) {
@@ -113,6 +190,7 @@ window.NT = {
       updateCartCount();
       emitCartChange();
       announce(`${product.name} added to cart`);
+      trackEcommerce("add_to_cart", [{ ...product, quantity: qty }]);
       return;
     }
     const items = readCart();
@@ -121,6 +199,7 @@ window.NT = {
     else items.push({ ...product, qty });
     writeCart(items);
     announce(`${product.name} added to cart`);
+    trackEcommerce("add_to_cart", [{ ...product, quantity: qty }]);
   },
   setQty(id, qty) {
     if (window.Cart?.updateQuantity) {
@@ -135,13 +214,16 @@ window.NT = {
     writeCart(items);
   },
   remove(id) {
+    const existing = readCart().find((item) => item.id === id);
     if (window.Cart?.remove) {
       window.Cart.remove(id);
       updateCartCount();
       emitCartChange();
+      if (existing) trackEcommerce("remove_from_cart", [existing]);
       return;
     }
     writeCart(readCart().filter((i) => i.id !== id));
+    if (existing) trackEcommerce("remove_from_cart", [existing]);
   },
   subtotal() {
     return readCart().reduce((n, i) => n + i.price * i.qty, 0);
@@ -282,6 +364,34 @@ function bindHeader() {
     });
   });
 
+  trackCurrentCommercePage();
+  window.addEventListener("nt-analytics-ready", trackCurrentCommercePage);
+  document.querySelectorAll(".product-card a[href]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const button = link.closest(".product-card")?.querySelector("[data-add]");
+      if (!button) return;
+      try {
+        const product = JSON.parse(button.getAttribute("data-add") || "null");
+        trackEcommerce("select_item", [product], {
+          item_list_id: location.pathname === "/" ? "homepage-products" : "product-list",
+          item_list_name: location.pathname === "/" ? "Homepage products" : "Products",
+        });
+      } catch {
+        /* ignore malformed product data */
+      }
+    });
+  });
+
+  document.querySelectorAll("[data-funnel-event]").forEach((element) => {
+    element.addEventListener("click", () => {
+      trackEvent(element.dataset.funnelEvent, {
+        article_slug: element.dataset.article || undefined,
+        product_id: element.dataset.product || undefined,
+        link_url: element.getAttribute("href") || undefined,
+      });
+    });
+  });
+
   document.querySelectorAll("[data-buy-now]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const raw = btn.getAttribute("data-buy-now");
@@ -337,7 +447,8 @@ function bindHeader() {
     const addBtn = document.querySelector("[data-add]");
     if (addBtn) {
       try {
-        recordViewed(JSON.parse(addBtn.getAttribute("data-add")));
+        const product = JSON.parse(addBtn.getAttribute("data-add"));
+        recordViewed(product);
       } catch {
         /* ignore */
       }
@@ -409,6 +520,7 @@ function applyPdpVariant(id, writeUrl) {
     const url = new URL(location.href);
     url.searchParams.set("v", p.id);
     history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    trackEcommerce("view_item", [p]);
   }
 }
 
@@ -558,6 +670,7 @@ function bindCookieChoices() {
     const next = { necessary: true, analytics: analyticsValue, marketing: marketingValue, savedAt: new Date().toISOString(), version: 1 };
     localStorage.setItem(CONSENT_KEY, JSON.stringify(next));
     applyOptionalConsent(next);
+    window.dispatchEvent(new CustomEvent("nt-analytics-ready"));
     banner.hidden = true;
     modal.hidden = true;
     document.body.classList.remove("modal-open");

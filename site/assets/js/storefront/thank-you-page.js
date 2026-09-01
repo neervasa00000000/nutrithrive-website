@@ -41,27 +41,57 @@
 
   if (!orderId) return;
 
-  if (typeof window.gtag === "function") {
-    window.gtag("event", "purchase", {
-      transaction_id: orderId,
-      value: hasValue ? value : 11,
-      currency: "AUD",
-      tax: 0,
-      shipping: 0,
-      items: [
-        {
-          item_id: "MORINGA",
-          item_name: itemName || "NutriThrive Moringa Powder",
-          price: hasValue && hasQty ? value / qty : hasValue ? value : 11,
-          quantity: hasQty ? qty : 1,
-          item_category: "Moringa",
-        },
-      ],
-    });
+  function readPurchaseSnapshot() {
+    try {
+      const snapshot = JSON.parse(sessionStorage.getItem("nt-purchase-snapshot") || "null");
+      return snapshot?.transactionId === orderId ? snapshot : null;
+    } catch {
+      return null;
+    }
   }
 
-  if (typeof window.rdt === "function") {
-    const conversionId = `purchase_${String(orderId).replace(/[^a-zA-Z0-9_-]/g, "")}`;
-    window.rdt("track", "Purchase", { conversionId });
+  function sendPurchase() {
+    const dedupeKey = `nt-purchase-sent-${orderId}`;
+    if (localStorage.getItem(dedupeKey)) return;
+    const snapshot = readPurchaseSnapshot();
+    const fallbackItems = [{
+      id: "MORINGA",
+      name: itemName || "NutriThrive Moringa Powder",
+      price: hasValue && hasQty ? value / qty : hasValue ? value : 11,
+      quantity: hasQty ? qty : 1,
+      variant: "",
+    }];
+    const items = snapshot?.items?.length ? snapshot.items : fallbackItems;
+    const purchaseValue = Number(snapshot?.value || (hasValue ? value : 11));
+    const shippingValue = Number(snapshot?.shipping || 0);
+    let analyticsSent = false;
+
+    if (window.NT?.trackEcommerce) {
+      analyticsSent = window.NT.trackEcommerce("purchase", items, {
+        transaction_id: orderId,
+        value: purchaseValue,
+        tax: 0,
+        shipping: shippingValue,
+      });
+    } else if (typeof window.gtag === "function") {
+      window.gtag("event", "purchase", {
+        transaction_id: orderId,
+        value: purchaseValue,
+        currency: "AUD",
+        tax: 0,
+        shipping: shippingValue,
+        items: items,
+      });
+      analyticsSent = true;
+    }
+
+    if (typeof window.rdt === "function") {
+      const conversionId = `purchase_${String(orderId).replace(/[^a-zA-Z0-9_-]/g, "")}`;
+      window.rdt("track", "Purchase", { conversionId });
+    }
+    if (analyticsSent) localStorage.setItem(dedupeKey, new Date().toISOString());
   }
+
+  sendPurchase();
+  window.addEventListener("nt-analytics-ready", sendPurchase);
 })();
