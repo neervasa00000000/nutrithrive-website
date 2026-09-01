@@ -97,6 +97,15 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "cold-brew-darjeeling-australian-spring-2026",
+    "title": "Cold-Brew Darjeeling Tea for Australian Spring 2026",
+    "h1": "Cold-Brew Darjeeling for Australian Spring, From Truganina",
+    "description": "Wattle Day fridge method for first-flush Darjeeling. Ratios, Melbourne tap, why hot-brew-then-ice goes bitter, $7.50/100g from Truganina.",
+    "category": "Tea",
+    "href": "/blog/cold-brew-darjeeling-australian-spring-2026",
+    "image": "/assets/images/og/black-tea-social-1200.jpg"
+  },
+  {
     "slug": "cortisol-cocktail-trend-explained-moringa-2026",
     "title": "The Cortisol Cocktail Trend, Explained",
     "description": "The cortisol cocktail trend is everywhere. Here's how moringa compares to the TikTok-famous mocktail.",

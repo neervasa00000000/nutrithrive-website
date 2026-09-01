@@ -33,4 +33,11 @@ if (!fs.existsSync(SITE_ROOT)) {
 if (fs.existsSync(OUT)) fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 copyDir(SITE_ROOT, OUT);
+// A small number of preserved ranking pages still use the legacy shared
+// storefront scripts. They live outside site/ because they are also build
+// inputs, so explicitly publish the browser-ready global bundle they reference.
+const GLOBAL_SCRIPTS = path.join(REPO_ROOT, 'scripts', 'global');
+if (fs.existsSync(GLOBAL_SCRIPTS)) {
+  copyDir(GLOBAL_SCRIPTS, path.join(OUT, 'scripts', 'global'));
+}
 console.log('Prepared', OUT, 'from', SITE_ROOT);
