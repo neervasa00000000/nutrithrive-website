@@ -243,12 +243,22 @@ function renderCart() {
       })
       .join("");
     const ship = shippingFor(items, sub);
+    const freeShippingPercent = Math.min(100, Math.max(0, (sub / 49) * 100));
+    const freeShippingMessage = sub >= 49
+      ? "Free Australian shipping unlocked"
+      : `${money(49 - sub)} away from free Australian shipping`;
     summary.innerHTML = `
     <h2>Summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
     <div class="summary-row"><span>Shipping</span><span>${ship === 0 ? "Free" : money(ship)}</span></div>
     <div class="summary-row total"><span>Total</span><span>${money(sub + ship)}</span></div>
-    <p class="hint" style="font-size:14px;color:var(--color-text-secondary);margin:12px 0 20px">${sub >= 49 ? "Free Australian shipping applied." : `Add ${money(49 - sub)} for free Australian shipping.`}${isLiveSite() ? " Final shipping and total are calculated at PayPal checkout." : ""}</p>
+    <div class="shipping-progress ${sub >= 49 ? "is-complete" : ""}">
+      <div class="shipping-progress__copy"><strong>${freeShippingMessage}</strong><span>$49 target</span></div>
+      <div class="shipping-progress__track" role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="49" aria-valuenow="${Math.min(49, Number(sub.toFixed(2)))}" aria-valuetext="${freeShippingMessage}">
+        <span style="width:${freeShippingPercent.toFixed(2)}%"></span>
+      </div>
+    </div>
+    ${isLiveSite() ? '<p class="hint cart-checkout-note">Final shipping and total are confirmed at checkout.</p>' : ""}
     <a class="btn btn-primary btn-block" href="${checkoutPath()}">Checkout</a>
   `;
     lines.querySelectorAll("[data-set]").forEach((btn) => {
@@ -281,13 +291,23 @@ function renderCart() {
   }
 }
 
+function trackCartView() {
+  const items = readCart();
+  if (!items.length || window._ntViewCartSent) return;
+  if (window.NT?.trackEcommerce?.("view_cart", items)) {
+    window._ntViewCartSent = true;
+  }
+}
+
 function bootCartPage() {
   renderCart();
+  trackCartView();
 }
 
 window.NT = window.NT || {};
 window.NT.renderCart = renderCart;
 window.addEventListener("nt-cart-change", renderCart);
+window.addEventListener("nt-analytics-ready", trackCartView);
 window.addEventListener("pageshow", renderCart);
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", bootCartPage);

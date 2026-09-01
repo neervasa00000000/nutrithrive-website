@@ -956,7 +956,7 @@ function homepage() {
         (r) => `<blockquote class="review-card"><p title="${esc(r.text)}">“${esc(r.text)}”</p><div class="review-meta"><strong>${esc(r.name)}</strong>Verified Google review</div></blockquote>`
       ).join("")}
     </div>
-    <p class="review-disclosure">Reviews are from our Google Business Profile and reflect individual customer experiences. NutriThrive is not certified organic.</p>
+    <p class="review-disclosure">These are genuine reviews from our Google Business Profile. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
     <p style="margin-top:16px"><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all reviews</a></p>
   </div>
 </section>
@@ -1422,6 +1422,7 @@ function pdpPage(slug, d) {
           <section class="pdp-reviews">
             <div class="reviews-head"><h2>What customers say</h2>${stars()} <span>from 12 Google reviews</span></div>
             <div class="review-grid review-scroll" aria-label="Google reviews">${reviews.map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
+            <p class="review-disclosure">These are genuine reviews from our Google Business Profile. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
             <p><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all Google reviews</a></p>
           </section>
           <section class="product-guides" aria-labelledby="product-guides-${esc(slug)}">
@@ -2399,7 +2400,12 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const priorityArticle = JOURNAL_PRIORITY.map((slug) => topicArticles.find((article) => article.slug === slug))
     .find((article) => article && article.slug !== meta.slug);
   const curatedRelated = (CURATED_RELATED[meta.slug] || []).map((slug) => allArticles.find((article) => article.slug === slug)).filter(Boolean);
-  const relatedArticles = [...curatedRelated, priorityArticle, ...nextArticles]
+  const globalRelated = JOURNAL_PRIORITY.map((slug) => allArticles.find((article) => article.slug === slug)).filter(Boolean);
+  const currentGlobalIndex = allArticles.findIndex((article) => article.slug === meta.slug);
+  const neighboringArticles = allArticles.length > 1
+    ? [allArticles[(currentGlobalIndex + 1) % allArticles.length], allArticles[(currentGlobalIndex + 2) % allArticles.length]]
+    : [];
+  const relatedArticles = [...curatedRelated, priorityArticle, ...nextArticles, ...globalRelated, ...neighboringArticles]
     .filter((article, index, list) => article && article.slug !== meta.slug && list.findIndex((item) => item?.slug === article.slug) === index)
     .slice(0, 3);
   return layout({
@@ -2445,6 +2451,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <h1>${esc(displayH1)}</h1>
           <p class="lede">${esc(description)}</p>
           <div class="article-hero"><img src="${meta.image}" alt="${esc(title)}" width="1200" height="675" fetchpriority="high"></div>
+          <aside class="article-quick-product" aria-label="Related NutriThrive product">
+            <div><span>Related product</span><strong>${esc(shop.name)} · ${money(shop.price)} ${esc(shop.unit || "")}</strong></div>
+            <a href="${productHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
+          </aside>
           <div class="prose">${prose}</div>
           ${isHealth ? `<aside class="article-safety"><h2>Food guidance, not medical advice</h2><p>This article is general information. NutriThrive products are foods, not treatments. Speak with a qualified healthcare professional if you are pregnant, breastfeeding, managing a health condition or taking medication.</p></aside>` : ""}
           <section class="article-conversion" aria-labelledby="article-product-${esc(meta.slug)}">

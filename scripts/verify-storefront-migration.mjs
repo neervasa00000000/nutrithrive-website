@@ -128,6 +128,14 @@ for (const rel of generatedHtml) {
   }
   if (rel !== "404.html" && !html.includes('rel="icon"')) errors.push(`${rel}: missing favicon`);
   if (/<img\b(?![^>]*\balt=)[^>]*>/i.test(html)) errors.push(`${rel}: image missing alt text`);
+  if (/(?:free (?:AU |Australian )?shipping)[^<\n]{0,45}(?:\$|AUD\s*)80|(?:under|clear(?:s|ing)?)\s+(?:AU)?\$80/i.test(html)) {
+    errors.push(`${rel}: stale $80 free-shipping threshold`);
+  }
+  if (/^blog\/[^/]+\.html$/.test(rel) && rel !== "blog/index.html" && /content="index,\s*follow"/i.test(html)) {
+    if (!html.includes("article-quick-product")) errors.push(`${rel}: missing early article-to-product path`);
+    if (!html.includes("article-conversion")) errors.push(`${rel}: missing article product conversion section`);
+    if (!html.includes("article-related")) errors.push(`${rel}: missing related article navigation`);
+  }
 }
 
 const home = read("index.html");
@@ -236,6 +244,9 @@ if (paymentJs) {
   if (!paymentJs.includes("paypal-create-order")) errors.push("payment page script lost PayPal create-order");
   if (!paymentJs.includes("paypal-capture-order")) errors.push("payment page script lost PayPal capture-order");
   if (!paymentJs.includes("ntLoadPayPalSdk")) errors.push("payment page script lost PayPal SDK loader");
+  for (const eventName of ["begin_checkout", "add_shipping_info", "add_payment_info"]) {
+    if (!paymentJs.includes(eventName)) errors.push(`payment page script lost GA ${eventName} event`);
+  }
 }
 
 const thanks = read("pages/shop/thank-you.html");
@@ -310,6 +321,12 @@ const storefrontSiteJs = read("assets/js/storefront/site.js");
 if (!storefrontSiteJs.includes("G-WH21SW75WP") || !storefrontSiteJs.includes("applyOptionalConsent")) {
   errors.push("consent-aware GA loader is missing from storefront site script");
 }
+for (const eventName of ["view_item_list", "select_item", "view_item", "add_to_cart", "remove_from_cart"]) {
+  if (!storefrontSiteJs.includes(eventName)) errors.push(`storefront site script lost GA ${eventName} event`);
+}
+const cartJs = read("assets/js/storefront/cart-page.js");
+if (!cartJs.includes("view_cart")) errors.push("cart page script lost GA view_cart event");
+if (!cartJs.includes("shipping-progress")) errors.push("cart page script lost free-shipping progress indicator");
 mustNotInclude("index.html", "googletagmanager.com/gtag", "analytics loaded before consent");
 mustNotInclude("pages/shop/payment.html", "storefront-checkout", "preview checkout on payment");
 
