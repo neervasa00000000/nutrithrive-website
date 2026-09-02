@@ -251,7 +251,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "fathers-day-gift-under-40",
-    "title": "Last-Minute Father's Day Gift Under $40, Packed in Truganina",
+    "title": "Last-Minute Father's Day Gift Pack $35 From Melbourne",
     "description": "Father's Day is Sunday 6 Sep 2026. This weekend is the interstate cutoff. I pack a $35 set in Truganina: moringa, Darjeeling, curry leaves, soap.",
     "category": "Guides",
     "href": "/blog/fathers-day-gift-under-40",
