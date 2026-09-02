@@ -180,6 +180,7 @@ function topicAnchor(name) {
 }
 
 function journalProduct(article) {
+  if (article.slug === "fathers-day-gift-under-40") return PRODUCTS.find((p) => p.id === "gift-pack");
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return PRODUCTS.find((p) => p.id === "curry-leaves");
   if (topic === "Darjeeling tea") return PRODUCTS.find((p) => p.id === "black-tea");
@@ -188,6 +189,7 @@ function journalProduct(article) {
 }
 
 function journalCta(article, product) {
+  if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";
   if (topic === "Darjeeling tea") return "Try Darjeeling tea";
@@ -1783,13 +1785,13 @@ function shippingPage() {
         <h2>Dispatch</h2>
         <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. If you think your order should receive free shipping, call +61 438 201 419 and we can process it for you.</p>
         <h2>Timing after dispatch</h2>
-        <p>Melbourne metro is often 1 to 3 business days. Other metro areas typically 3 to 4 days. Some rural locations take up to 10 days. City guides on this preview give a closer picture.</p>
+        <p>Melbourne metro is often 1 to 3 business days. Other metro areas typically 3 to 4 days. Some rural locations take up to 10 days.</p>
         <h2>Tracking</h2>
         <p>When the parcel leaves the warehouse you should get a confirmation email with tracking, if the carrier provides it. If nothing arrives within a couple of business days after dispatch, check spam or email us with your order details.</p>
         <h2>Returns</h2>
         <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
         <h2>Payments</h2>
-        <p>On the live site: Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup. This preview does not take payment.</p>
+        <p>Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup.</p>
         <p><a href="/privacy/">Privacy policy</a> · <a href="/faq/">FAQ</a> · <a href="/contact/">Contact</a></p>
       </section>`,
   });
@@ -2399,6 +2401,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const topic = journalTopic(meta);
   const cta = journalCta(meta, shop);
   const productHref = shopHref(shop);
+  const quickProductLabel = meta.slug === "fathers-day-gift-under-40"
+    ? "Gift Pack · $35"
+    : `${shop.name} · ${money(shop.price)} ${shop.unit || ""}`;
   const isHealth = /health|pregnan|children|dog|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm/i.test(`${meta.slug} ${category}`);
   const topicArticles = allArticles.filter((article) => journalTopic(article) === topic);
   const currentIndex = topicArticles.findIndex((article) => article.slug === meta.slug);
@@ -2460,7 +2465,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <p class="lede">${esc(description)}</p>
           <div class="article-hero"><img src="${meta.image}" alt="${esc(title)}" width="1200" height="675" fetchpriority="high"></div>
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
-            <div><span>Related product</span><strong>${esc(shop.name)} · ${money(shop.price)} ${esc(shop.unit || "")}</strong></div>
+            <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong></div>
             <a href="${productHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
           </aside>
           <div class="prose">${prose}</div>
