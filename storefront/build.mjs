@@ -1234,6 +1234,11 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
+  const purchaseNote = slug === "gift-pack"
+    ? "Taxes included. This pack is $35, so Australian postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 and get free AU shipping. Or add the $17 moringa + curry combo (cart $52). A single $11 powder bag only gets to $46 — still not free shipping."
+    : slug === "moringa-powder"
+      ? "Taxes included. 100g ($11), 200g ($21.50) and 400g ($35) are all under $49, so AU postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping."
+      : "Taxes included. Shipping calculated at checkout.";
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
   const related = PRODUCTS.filter(
@@ -1373,7 +1378,7 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
-            <p class="purchase-note">Taxes included. Shipping calculated at checkout.</p>
+            <p class="purchase-note${slug === "gift-pack" || slug === "moringa-powder" ? " shipping-path" : ""}">${esc(purchaseNote)}</p>
           </div>
           <ul class="pdp-proof">${proofs}</ul>
           <p class="pdp-service-note">Same-day dispatch before 2pm, Monday to Friday. Seven-day returns on unopened products.</p>
@@ -1912,15 +1917,18 @@ function cartPage() {
     robots: "noindex, nofollow",
     main: `
       <section class="page-intro wrap cart-intro">
-        <h1>Cart</h1>
-        <p><a href="/shop/">Continue shopping</a></p>
+        <div>
+          <p class="eyebrow">Your order</p>
+          <h1>Shopping cart</h1>
+        </div>
+        <a class="cart-continue" href="/shop/">Continue shopping <span aria-hidden="true">→</span></a>
       </section>
       <section class="wrap cart-layout" id="cart-layout">
-        <div>
+        <div class="cart-main">
           <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Moringa, tea, curry leaves and soap, all packed in Truganina.</p><a class="btn btn-primary" href="/shop/">Shop the range</a></div></div>
-          <div id="cart-recs"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
+        <div id="cart-recs"></div>
       </section>`,
   });
 }
