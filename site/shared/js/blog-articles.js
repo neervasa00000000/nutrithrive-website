@@ -573,9 +573,10 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Chemist Warehouse Moringa: Brands, Price &amp; Lab Reality (2026)",
-    "description": "Yes — CW stocks Rosabella &amp; Indus Farms capsules. 2026 prices, dose maths, recall check, and how lab-tested powder compares.",
-    "category": "In-store test",
+    "title": "Moringa Chemist Warehouse: Capsules vs Powder 2026",
+    "h1": "Moringa Chemist Warehouse: Capsules vs Truganina Powder",
+    "description": "Searching moringa chemist warehouse? CW lists Forest Super Foods 120 caps at $79. I pack shade-dried powder from $11/100g with an NMI PDF in Truganina.",
+    "category": "Comparison",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
   },

@@ -127,8 +127,8 @@ const CURATED_RELATED = {
     "what-does-moringa-powder-taste-like-honest-guide-2026",
   ],
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": [
-    "rosabella-moringa-reviews-legit-or-overhyped-2026",
-    "moringa-brands-comparison-australia-2026",
+    "chemist-warehouse-greens-vs-moringa-powder-2026",
+    "moringa-capsules-vs-powder-which-is-better-2026",
     "how-to-choose-moringa-powder-australia-2026",
   ],
   "is-moringa-safe-for-children-kids-dosage-2026": [
