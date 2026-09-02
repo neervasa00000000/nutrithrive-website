@@ -40,7 +40,7 @@ export const PRODUCTS = [
     variant: "4 × 100g",
     benefit: "Four pouches. Same batch standards.",
     price: 35,
-    was: 56,
+    was: 44,
     weight: 400,
     image: "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp",
     href: "/products/moringa-powder/",
@@ -48,7 +48,7 @@ export const PRODUCTS = [
     lab: true,
     serving: { grams: 3, pack: "400g bundle" },
     detail:
-      "Four 100g pouches of our farm-grown moringa. Save $21 compared with buying four separately. Manufactured by NutriThrive and packed in Truganina.",
+      "Four 100g pouches of our farm-grown moringa. Save $9 compared with buying four separately. Manufactured by NutriThrive and packed in Truganina.",
   },
   {
     id: "curry-leaves",

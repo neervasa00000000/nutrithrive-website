@@ -95,15 +95,18 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </div>
 <main id="main">
       <section class="page-intro wrap cart-intro">
-        <h1>Cart</h1>
-        <p><a href="/products/">Continue shopping</a></p>
+        <div>
+          <p class="eyebrow">Your order</p>
+          <h1>Shopping cart</h1>
+        </div>
+        <a class="cart-continue" href="/products/">Continue shopping <span aria-hidden="true">→</span></a>
       </section>
       <section class="wrap cart-layout" id="cart-layout">
-        <div>
+        <div class="cart-main">
           <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Moringa, tea, curry leaves and soap, all packed in Truganina.</p><a class="btn btn-primary" href="/products/">Shop the range</a></div></div>
-          <div id="cart-recs"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
+        <div id="cart-recs"></div>
       </section></main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
