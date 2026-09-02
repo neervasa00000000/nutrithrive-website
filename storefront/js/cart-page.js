@@ -228,17 +228,24 @@ function renderCart() {
       .map((item) => {
         const qty = Number(item.qty || 1);
         return `<article class="cart-line">
-        <img src="${esc(item.image)}" alt="" width="96" height="96">
-        <div>
-          <h2>${esc(item.name)}${item.variant ? ` · ${esc(item.variant)}` : ""}</h2>
-          <div class="qty-ctrl">
-            <button type="button" data-set="${esc(item.id)}" data-qty="${qty - 1}" aria-label="Decrease">−</button>
-            <input value="${qty}" readonly aria-label="Quantity">
-            <button type="button" data-set="${esc(item.id)}" data-qty="${qty + 1}" aria-label="Increase">+</button>
+        <a class="cart-line__media" href="${esc(item.href || shopPath())}" aria-label="View ${esc(item.name)}">
+          <img src="${esc(item.image)}" alt="" width="112" height="112">
+        </a>
+        <div class="cart-line__content">
+          <div class="cart-line__heading">
+            <h2>${esc(item.name)}</h2>
+            <strong class="line-price">${money(item.price * qty)}</strong>
           </div>
-          <button class="remove-btn" type="button" data-remove="${esc(item.id)}">Remove</button>
+          ${item.variant ? `<p class="cart-line__variant">${esc(item.variant)}</p>` : ""}
+          <div class="cart-line__actions">
+            <div class="qty-ctrl" aria-label="Quantity for ${esc(item.name)}">
+            <button type="button" data-set="${esc(item.id)}" data-qty="${qty - 1}" aria-label="Decrease ${esc(item.name)} quantity">−</button>
+            <input value="${qty}" readonly aria-label="${esc(item.name)} quantity">
+            <button type="button" data-set="${esc(item.id)}" data-qty="${qty + 1}" aria-label="Increase ${esc(item.name)} quantity">+</button>
+            </div>
+            <button class="remove-btn" type="button" data-remove="${esc(item.id)}">Remove</button>
+          </div>
         </div>
-        <div class="line-price">${money(item.price * qty)}</div>
       </article>`;
       })
       .join("");
@@ -248,10 +255,10 @@ function renderCart() {
       ? "Free Australian shipping unlocked"
       : `${money(49 - sub)} away from free Australian shipping`;
     summary.innerHTML = `
-    <h2>Summary</h2>
+    <h2>Order summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
     <div class="summary-row"><span>Shipping</span><span>${ship === 0 ? "Free" : money(ship)}</span></div>
-    <div class="summary-row total"><span>Total</span><span>${money(sub + ship)}</span></div>
+    <div class="summary-row total"><span>Estimated total</span><span>${money(sub + ship)}</span></div>
     <div class="shipping-progress ${sub >= 49 ? "is-complete" : ""}">
       <div class="shipping-progress__copy"><strong>${freeShippingMessage}</strong><span>$49 target</span></div>
       <div class="shipping-progress__track" role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="49" aria-valuenow="${Math.min(49, Number(sub.toFixed(2)))}" aria-valuetext="${freeShippingMessage}">
@@ -259,7 +266,12 @@ function renderCart() {
       </div>
     </div>
     ${isLiveSite() ? '<p class="hint cart-checkout-note">Final shipping and total are confirmed at checkout.</p>' : ""}
-    <a class="btn btn-primary btn-block" href="${checkoutPath()}">Checkout</a>
+    <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Continue to secure checkout <span aria-hidden="true">→</span></a>
+    <ul class="cart-assurances" aria-label="Checkout information">
+      <li>Secure PayPal and card payment</li>
+      <li>Seven-day returns on unopened products</li>
+      <li>Weekday dispatch before 2pm</li>
+    </ul>
   `;
     lines.querySelectorAll("[data-set]").forEach((btn) => {
       btn.addEventListener("click", () => {
