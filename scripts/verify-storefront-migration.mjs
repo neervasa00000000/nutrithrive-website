@@ -12,6 +12,11 @@ const ROOT = REPO_ROOT;
 const LIVE = "https://nutrithrive.com.au";
 const errors = [];
 const notes = [];
+const approvedSeoChanges = {
+  "blog/fathers-day-gift-under-40.html": {
+    title: "Last-Minute Father's Day Gift Pack $35 From Melbourne",
+  },
+};
 
 function resolveFile(rel) {
   if (rel.startsWith("netlify/") || rel.startsWith("scripts/")) {
@@ -94,6 +99,8 @@ for (const rel of trackedBlogs) {
   const after = seoFields(read(rel));
   for (const field of ["title", "description", "canonical"]) {
     if (before[field] !== after[field]) {
+      const approvedValue = approvedSeoChanges[rel]?.[field];
+      if (approvedValue === after[field]) continue;
       const renamedJournal =
         field === "title" &&
         String(before[field] || "").replace(/Journal/g, "Blog") === String(after[field] || "");

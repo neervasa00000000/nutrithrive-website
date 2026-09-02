@@ -14,8 +14,8 @@ OUT = ROOT / "blog/fathers-day-gift-under-40.html"
 
 SLUG = "fathers-day-gift-under-40"
 URL = f"https://nutrithrive.com.au/blog/{SLUG}"
-TITLE = "Last-Minute Father's Day Gift Under $40 From Melbourne"
-H1 = "Last-Minute Father's Day Gift Under $40, Packed in Truganina"
+TITLE = "Last-Minute Father's Day Gift Pack $35 From Melbourne"
+H1 = "Last-Minute Father's Day Gift Pack $35 From Melbourne"
 META = (
     "Father's Day is Sunday 6 Sep 2026. This weekend is the interstate cutoff. "
     "I pack a $35 set in Truganina: moringa, Darjeeling, curry leaves, soap."
