@@ -4,13 +4,13 @@ const LIVE_CART_KEY = "nutrithrive_cart";
 const VIEWED_KEY = "nt-storefront-viewed";
 
 const PAIRS = {
-  "moringa-powder": ["curry-leaves", "black-tea", "moringa-soap", "combo-pack"],
-  "moringa-200g": ["curry-leaves", "black-tea", "moringa-soap"],
+  "moringa-powder": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap", "combo-pack"],
+  "moringa-200g": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap"],
   "moringa-400g": ["curry-leaves", "black-tea", "moringa-soap"],
   "curry-leaves": ["moringa-powder", "black-tea", "combo-pack"],
   "black-tea": ["moringa-powder", "curry-leaves", "moringa-soap"],
   "moringa-soap": ["moringa-powder", "black-tea", "gift-pack"],
-  "combo-pack": ["black-tea", "moringa-soap"],
+  "combo-pack": ["moringa-400g", "black-tea", "moringa-soap"],
   "gift-pack": ["moringa-200g"],
 };
 
@@ -132,7 +132,7 @@ function pickRecs(cartItems, subtotal) {
   });
   POPULAR.forEach((id, i) => bump(id, 8 - i));
   const remaining = Math.max(0, 49 - subtotal);
-  return [...score.entries()]
+  const recs = [...score.entries()]
     .map(([id, s]) => {
       const p = catalog().find((x) => x.id === id);
       if (!p) return null;
@@ -148,6 +148,15 @@ function pickRecs(cartItems, subtotal) {
     .filter(Boolean)
     .sort((a, b) => b.score - a.score)
     .slice(0, 4);
+  const comboInCart = cartItems.some((item) => item.id === "combo-pack");
+  if (comboInCart) {
+    const bundleAt = recs.findIndex((item) => item.id === "moringa-400g");
+    if (bundleAt > 0) {
+      const [bundle] = recs.splice(bundleAt, 1);
+      recs.unshift(bundle);
+    }
+  }
+  return recs;
 }
 
 function recHeading(cartItems, recs) {
@@ -254,6 +263,9 @@ function renderCart() {
     const freeShippingMessage = sub >= 49
       ? "Free Australian shipping unlocked"
       : `${money(49 - sub)} away from free Australian shipping`;
+    const freeShipPathNote = sub >= 17 && sub <= 46
+      ? `<p class="purchase-note shipping-path">To unlock free AU shipping: 400g bundle $35 + curry $7 + tea $7.50 = $49.50. Combo $17 needs the 400g bundle ($52).</p>`
+      : "";
     summary.innerHTML = `
     <h2>Order summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
@@ -265,6 +277,7 @@ function renderCart() {
         <span style="width:${freeShippingPercent.toFixed(2)}%"></span>
       </div>
     </div>
+    ${freeShipPathNote}
     ${isLiveSite() ? '<p class="hint cart-checkout-note">Final shipping and total are confirmed at checkout.</p>' : ""}
     <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Continue to secure checkout <span aria-hidden="true">→</span></a>
     <ul class="cart-assurances" aria-label="Checkout information">

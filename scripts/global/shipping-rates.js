@@ -592,30 +592,15 @@ function getCountryInfo(countryCode) {
 }
 
 /**
- * Limited AU free Parcel Post promo (currently disabled).
  * Standing Australian free-shipping threshold is $49.
  */
 const AU_FREE_SHIPPING_STANDARD = 49;
-const AU_FREE_SHIPPING_PROMO = {
-    minExclusive: 45,
-    endsAtMs: Date.parse('2026-08-17T00:00:00+10:00')
-};
 
-function isAuFreeShippingPromoActive(now) {
-    // Promo disabled — standing free-shipping threshold is a flat $49.
+function isAuFreeShippingPromoActive() {
     return false;
 }
 
-function getAuFreeShippingThreshold(now) {
-    if (isAuFreeShippingPromoActive(now)) {
-        return {
-            amount: AU_FREE_SHIPPING_PROMO.minExclusive,
-            mode: 'gt',
-            label: 'over $45',
-            banner: 'Free shipping on orders over $45 (ends 16 Aug)',
-            endsAtMs: AU_FREE_SHIPPING_PROMO.endsAtMs
-        };
-    }
+function getAuFreeShippingThreshold() {
     return {
         amount: AU_FREE_SHIPPING_STANDARD,
         mode: 'gte',
@@ -625,21 +610,18 @@ function getAuFreeShippingThreshold(now) {
     };
 }
 
-function qualifiesForAuFreeShipping(subtotal, now) {
-    const rule = getAuFreeShippingThreshold(now);
+function qualifiesForAuFreeShipping(subtotal) {
     const n = Number(subtotal);
     if (!Number.isFinite(n)) return false;
-    return rule.mode === 'gt' ? n > rule.amount : n >= rule.amount;
+    return n >= AU_FREE_SHIPPING_STANDARD;
 }
 
-function getAuFreeShippingBannerText(now) {
-    return getAuFreeShippingThreshold(now).banner;
+function getAuFreeShippingBannerText() {
+    return getAuFreeShippingThreshold().banner;
 }
 
-function getAuFreeShippingProgressTarget(now) {
-    const rule = getAuFreeShippingThreshold(now);
-    // Cart progress bars use >= target; for exclusive >$45 use $45.01 so $45.00 still shows as short.
-    return rule.mode === 'gt' ? Number((rule.amount + 0.01).toFixed(2)) : rule.amount;
+function getAuFreeShippingProgressTarget() {
+    return AU_FREE_SHIPPING_STANDARD;
 }
 
 function applyFreeShippingPromoBanners() {
@@ -648,10 +630,7 @@ function applyFreeShippingPromoBanners() {
     document.querySelectorAll('.urgency-content').forEach(function (el) {
         const raw = el.textContent || '';
         if (!/Free shipping/i.test(raw)) return;
-        el.textContent = raw
-            .replace(/Free shipping on orders over \$45 \(ends 16 Aug\)/gi, banner)
-            .replace(/Free shipping over \$80/gi, banner)
-            .replace(/Free shipping over \$49/gi, banner);
+        el.textContent = raw.replace(/Free shipping over \$\d+/gi, banner);
     });
 }
 
