@@ -396,9 +396,9 @@ function shopHref(p) {
   return p.href;
 }
 
-function productCard(p, priority = false) {
+function productCard(p, priority = false, opts = {}) {
   const was =
-    p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : "";
+    !opts.hideWas && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : "";
   const href = shopHref(p);
   return `<article class="product-card">
     <a class="product-card-media" href="${href}" aria-label="${esc(p.name)} ${esc(p.variant)}">
@@ -897,6 +897,7 @@ function homepage() {
       <p class="lede">Farm-grown, shade-dried and manufactured by us, with Australian testing information published when available. Packed in Truganina.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
+        <a class="btn btn-secondary" href="/products/gift-pack/">Shop Gift Pack $35</a>
         <a class="btn btn-secondary" href="/documents/nutrithrive-lab-report-summary.pdf">See our lab report</a>
       </div>
       ${stars()} <span style="font-size:14px;color:var(--color-text-secondary)">from Google reviews</span>
@@ -922,7 +923,8 @@ function homepage() {
       </div>
       <a href="/shop/">Shop all</a>
     </div>
-    <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map((product, index) => productCard(product, index === 0)).join("")}</div>
+    <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
+    <p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping from $49. Fastest cart: 400g moringa $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift pack $35 needs the same add-on.</p>
   </div>
 </section>
 <section class="section band proof-story">
