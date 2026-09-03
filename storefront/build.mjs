@@ -1189,7 +1189,7 @@ const PDP = {
   },
   "combo-pack": {
     title: "Moringa + Curry Leaves Combo | NutriThrive",
-    description: "Save with 100g moringa powder and 30g dried curry leaves in one affordable combination. Farm-to-customer products packed in Truganina for $17.",
+    description: "100g moringa powder plus 30g dried curry leaves for $17. Packed in Truganina. AU postage still applies under $49.",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "combo-pack"),
     intro: "100g moringa powder and 30g dried curry leaves. Morning smoothie and evening tadka from one box.",
@@ -1236,11 +1236,22 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
-  const purchaseNote = slug === "gift-pack"
-    ? "Taxes included. This pack is $35, so Australian postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 and get free AU shipping. Or add the $17 moringa + curry combo (cart $52). A single $11 powder bag only gets to $46 — still not free shipping."
-    : slug === "moringa-powder"
-      ? "Taxes included. 100g ($11), 200g ($21.50) and 400g ($35) are all under $49, so AU postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping."
-      : "Taxes included. Shipping calculated at checkout.";
+  const purchaseNotes = {
+    "gift-pack":
+      "Taxes included. This pack is $35, so Australian postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 and get free AU shipping. Or add the $17 moringa + curry combo (cart $52). A single $11 powder bag only gets to $46 — still not free shipping.",
+    "moringa-powder":
+      "Taxes included. 100g ($11), 200g ($21.50) and 400g ($35) are all under $49, so AU postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping.",
+    "combo-pack":
+      "Taxes included. Shipping calculated at checkout. This combo is $17, so Australian postage still applies. Fastest free-ship cart: add the 400g moringa bundle ($35) to reach $52.",
+    "curry-leaves":
+      "Taxes included. Shipping calculated at checkout. This pack is $7, so AU postage still applies. Add 400g moringa ($35) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping.",
+    "black-tea":
+      "Taxes included. Shipping calculated at checkout. This pack is $7.50, so AU postage still applies. Add 400g moringa ($35) and dried curry leaves ($7) to reach $49.50 free AU shipping.",
+    "moringa-soap":
+      "Taxes included. Shipping calculated at checkout. This bar is $7, so AU postage still applies. Add 400g moringa ($35) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping.",
+  };
+  const purchaseNote = purchaseNotes[slug] || "Taxes included. Shipping calculated at checkout.";
+  const shippingPath = Boolean(purchaseNotes[slug]);
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
   const related = PRODUCTS.filter(
@@ -1380,7 +1391,7 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
-            <p class="purchase-note${slug === "gift-pack" || slug === "moringa-powder" ? " shipping-path" : ""}">${esc(purchaseNote)}</p>
+            <p class="purchase-note${shippingPath ? " shipping-path" : ""}">${esc(purchaseNote)}</p>
           </div>
           <ul class="pdp-proof">${proofs}</ul>
           <p class="pdp-service-note">Same-day dispatch before 2pm, Monday to Friday. Seven-day returns on unopened products.</p>
