@@ -328,6 +328,10 @@ const storefrontSiteJs = read("assets/js/storefront/site.js");
 if (!storefrontSiteJs.includes("G-WH21SW75WP") || !storefrontSiteJs.includes("applyOptionalConsent")) {
   errors.push("consent-aware GA loader is missing from storefront site script");
 }
+if (!storefrontSiteJs.includes('window.gtag("consent", "default"') ||
+    !storefrontSiteJs.includes('analytics_storage: "granted"')) {
+  errors.push("Google Consent Mode default/granted transition is missing");
+}
 for (const eventName of ["view_item_list", "select_item", "view_item", "add_to_cart", "remove_from_cart"]) {
   if (!storefrontSiteJs.includes(eventName)) errors.push(`storefront site script lost GA ${eventName} event`);
 }
