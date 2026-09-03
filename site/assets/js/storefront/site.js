@@ -1,6 +1,18 @@
 const CART_KEY = "nt-storefront-cart";
 const VIEWED_KEY = "nt-storefront-viewed";
 const ASSET_VERSION = "20260831-2";
+const GOOGLE_MEASUREMENT_ID = "G-WH21SW75WP";
+
+// Queue Consent Mode before any Google measurement command. The external tag
+// remains blocked until the visitor explicitly enables analytics.
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+window.gtag("consent", "default", {
+  analytics_storage: "denied",
+  ad_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied",
+});
 
 function freshAsset(url) {
   if (!url || !url.startsWith("/assets/") || url.includes("?v=")) return url;
@@ -638,13 +650,22 @@ function loadOptionalScript(src, id) {
 
 function applyOptionalConsent(consent) {
   if (consent?.analytics) {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+    window.gtag("consent", "update", {
+      analytics_storage: "granted",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
     window.gtag("js", new Date());
-    window.gtag("config", "G-WH21SW75WP", { anonymize_ip: true, allow_google_signals: false });
-    loadOptionalScript("https://www.googletagmanager.com/gtag/js?id=G-WH21SW75WP", "nt-google-analytics");
-  } else if (window.gtag) {
-    window.gtag("consent", "update", { analytics_storage: "denied", ad_storage: "denied" });
+    window.gtag("config", GOOGLE_MEASUREMENT_ID, { anonymize_ip: true, allow_google_signals: false });
+    loadOptionalScript(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`, "nt-google-analytics");
+  } else {
+    window.gtag("consent", "update", {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
   }
   if (consent?.marketing && !window.rdt) {
     const rdt = function () {
