@@ -380,7 +380,7 @@ window.NT_SITE_DATA = {
   blogGuides: [
     { category: "Buyer's Guide", title: 'How to Choose Moringa Powder in Australia (2026)', readTime: '9 min read', href: '/blog/how-to-choose-moringa-powder-australia-2026' },
     { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026' },
-    { category: 'Safety', title: 'Moringa Side Effects: What Happens If You Take Too Much', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
+    { category: 'Safety', title: 'Moringa Powder Side Effects: A Practical Start-Small Guide (Australia)', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
   ],
   /** In-content & sidebar ad slots — random curry leaves / moringa soap (see shared/js/blog-ad-promo.js). */
   blogAdPromo: {
