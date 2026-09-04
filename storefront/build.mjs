@@ -58,7 +58,7 @@ function routes() {
     journal: "/blog/",
     cart: "/cart",
     privacy: "/privacy-policy",
-    shipping: "/pages/shipping/shipping-returns",
+    shipping: "/shipping",
     article: (slug) => `/blog/${slug}`,
     articleAbs: (slug) => `${LIVE}/blog/${slug}`,
   };
@@ -1035,7 +1035,8 @@ function shopPage() {
         <p>Everything we pack in Truganina. Same card structure, same price placement, same add-to-cart language.</p>
       </section>
       <section class="section" style="padding-top:0">
-        <div class="wrap product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0)).join("")}</div>
+        <div class="wrap product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
+        <div class="wrap"><p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping from $49. Fastest cart: 400g $35 + curry $7 + tea $7.50 = $49.50.</p></div>
       </section>`,
   });
 }
@@ -2316,8 +2317,8 @@ function rewriteLinks(html) {
       .replaceAll('href="/shop/"', 'href="/products/"')
       .replaceAll('href="/shop"', 'href="/products/"')
       .replaceAll('href="/privacy-policy"', 'href="/privacy-policy"')
-      .replaceAll('href="/pages/shipping/shipping-returns.html"', 'href="/pages/shipping/shipping-returns"')
-      .replaceAll('href="/pages/shipping/shipping-returns"', 'href="/pages/shipping/shipping-returns"');
+      .replaceAll('href="/shipping"', 'href="/shipping"')
+      .replaceAll('href="/shipping"', 'href="/shipping"');
   } else {
     out = out
       .replaceAll(/href="\/blog\/([^"#]+?)(?:\.html)?(#[^"]*)?"/g, 'href="/journal/$1/$2"')
@@ -2328,8 +2329,8 @@ function rewriteLinks(html) {
       .replaceAll('href="/cart"', 'href="/cart/"')
       .replaceAll('href="/products/"', 'href="/shop/"')
       .replaceAll('href="/privacy-policy"', 'href="/privacy/"')
-      .replaceAll('href="/pages/shipping/shipping-returns.html"', 'href="/shipping/"')
-      .replaceAll('href="/pages/shipping/shipping-returns"', 'href="/shipping/"');
+      .replaceAll('href="/shipping"', 'href="/shipping/"')
+      .replaceAll('href="/shipping"', 'href="/shipping/"');
   }
   return out
     .replaceAll(/style="[^"]*"/g, "")
@@ -2634,8 +2635,8 @@ function appendLiveRedirects() {
 /blog/category/curry-leaves/ /blog/category/curry-leaves/index.html 200
 /blog/category/soap-skin /blog/category/soap-skin/index.html 200
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
-/shipping /pages/shipping/shipping-returns.html 200
-/shipping/ /pages/shipping/shipping-returns.html 200
+/shipping /shipping 200
+/shipping/ /shipping 200
 /privacy /privacy-policy 301
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301

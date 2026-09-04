@@ -157,7 +157,7 @@ const cta = (heading = 'Ready to Try Moringa?') => `<div class="nt-article-cta">
 <p>Shop our <a href="/products/moringa-powder/">100% pure moringa leaf powder</a> (shade-dried, <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab tested</a>, packed in Melbourne). Same-day dispatch.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop Moringa Powder</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>`;
 

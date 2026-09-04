@@ -106,7 +106,7 @@ BODY_TAIL = """
 <p>Loose leaf packed in Truganina. Posted $7.50 + $9.69 under $49, or pickup by arrangement. Same-day dispatch before 2pm on business days. This page is the fridge method, not the winter chai latte.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/black-tea/">Shop Darjeeling tea — $7.50</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>
 
