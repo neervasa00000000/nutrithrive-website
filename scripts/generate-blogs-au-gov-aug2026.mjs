@@ -668,7 +668,7 @@ function buildCtaBlock(post, prod) {
 <p>${softText}</p>
 <div class="btn-row">
 <a class="btn-solid" href="${prod.shopHref}">${prod.ctaBtn}</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>`;
 }

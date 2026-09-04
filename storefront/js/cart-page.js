@@ -40,6 +40,58 @@ function checkoutPath() {
   return isLiveSite() ? "/payment" : "/checkout/";
 }
 
+function cartIdSet(items) {
+  return new Set(items.map((item) => item.id));
+}
+
+function onlyIds(ids, expected) {
+  if (ids.size !== expected.length) return false;
+  return expected.every((id) => ids.has(id));
+}
+
+function freeShipPathCopy(items, subtotal) {
+  if (subtotal >= 49) return "";
+  const ids = cartIdSet(items);
+  const away = money(49 - subtotal);
+  if (onlyIds(ids, ["moringa-400g", "curry-leaves"])) {
+    return "Add Darjeeling tea $7.50 to reach $49.50.";
+  }
+  if (onlyIds(ids, ["moringa-400g", "black-tea"])) {
+    return "Add curry leaves $7 to reach $49.50.";
+  }
+  if (onlyIds(ids, ["moringa-400g"])) {
+    return "Add curry $7 and Darjeeling $7.50 to reach $49.50 and drop postage.";
+  }
+  if (onlyIds(ids, ["gift-pack", "moringa-powder"])) {
+    return "Still $3 short. Add soap $7 (or 200g instead of 100g) to clear $49.";
+  }
+  if (onlyIds(ids, ["gift-pack"])) {
+    return "Add 200g moringa $21.50 to reach $56.50. Curry and tea are already in the pack.";
+  }
+  if (onlyIds(ids, ["combo-pack", "black-tea", "moringa-soap"])) {
+    return "Still under $49. Add the 400g bundle $35 to reach $52.";
+  }
+  if (onlyIds(ids, ["combo-pack"])) {
+    return "Add the 400g bundle $35 to reach $52.";
+  }
+  if (onlyIds(ids, ["moringa-powder"])) {
+    return "The $11 bag pays postage. Add 400g $35 + curry $7 + tea $7.50.";
+  }
+  if (onlyIds(ids, ["moringa-200g"])) {
+    return "Add the 400g bundle $35 to reach $56.50.";
+  }
+  if (onlyIds(ids, ["curry-leaves"])) {
+    return "Add 400g $35 and Darjeeling $7.50 to reach $49.50.";
+  }
+  if (onlyIds(ids, ["black-tea"])) {
+    return "Add 400g $35 and curry $7 to reach $49.50.";
+  }
+  if (onlyIds(ids, ["moringa-soap"])) {
+    return "Add 400g $35 and Darjeeling $7.50 to reach $49.50.";
+  }
+  return `You're ${away} from free AU shipping.`;
+}
+
 function mapCartItems(items) {
   return (Array.isArray(items) ? items : [])
     .map((item) => {
@@ -263,8 +315,9 @@ function renderCart() {
     const freeShippingMessage = sub >= 49
       ? "Free Australian shipping unlocked"
       : `${money(49 - sub)} away from free Australian shipping`;
-    const freeShipPathNote = sub >= 17 && sub <= 46
-      ? `<p class="purchase-note shipping-path">To unlock free AU shipping: 400g bundle $35 + curry $7 + tea $7.50 = $49.50. Combo $17 needs the 400g bundle ($52).</p>`
+    const pathCopy = freeShipPathCopy(items, sub);
+    const freeShipPathNote = pathCopy
+      ? `<p class="purchase-note shipping-path">${esc(pathCopy)}</p>`
       : "";
     summary.innerHTML = `
     <h2>Order summary</h2>

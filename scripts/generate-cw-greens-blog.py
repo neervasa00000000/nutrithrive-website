@@ -100,7 +100,7 @@ BODY_TAIL = """
 <p>One leaf, packed in Truganina. Posted $11 + $9.69 under $49, or pickup by arrangement. Same-day dispatch before 2pm on business days. NMI summary on the product page.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop moringa powder — $11</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>
 

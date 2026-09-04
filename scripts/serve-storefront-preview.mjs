@@ -13,7 +13,7 @@ const rewrites = new Map([
   ["/cart", "pages/shop/cart.html"],
   ["/payment", "pages/shop/payment.html"],
   ["/privacy-policy", "pages/legal/privacy-policy.html"],
-  ["/pages/shipping/shipping-returns", "pages/shipping/shipping-returns.html"],
+  ["/shipping", "pages/shipping/shipping-returns.html"],
   ["/thank-you.html", "pages/shop/thank-you.html"],
 ]);
 const types = {

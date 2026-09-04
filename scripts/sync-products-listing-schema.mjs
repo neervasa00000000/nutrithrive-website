@@ -22,7 +22,7 @@ const RETURN_POLICY = {
   merchantReturnDays: 7,
   returnMethod: 'https://schema.org/ReturnByMail',
   returnFees: 'https://schema.org/FreeReturn',
-  returnPolicyUrl: 'https://nutrithrive.com.au/pages/shipping/shipping-returns',
+  returnPolicyUrl: 'https://nutrithrive.com.au/shipping',
 };
 
 const AU_SHIPPING = {

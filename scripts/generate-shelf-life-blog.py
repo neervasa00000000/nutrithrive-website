@@ -108,7 +108,7 @@ BODY_TAIL = """
 <p>100% leaf, packed in Truganina. Use within 18 months after opening if you keep it sealed, cool and dry. Same-day weekday dispatch before 2pm. Free AU shipping from $49.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop moringa powder — $11</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>
 

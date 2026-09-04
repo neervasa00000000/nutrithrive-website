@@ -126,7 +126,7 @@ BODY_TAIL = """
 <p>Packed in Truganina: 100g moringa, 100g Darjeeling, 30g curry leaves, 95g soap. Same-day dispatch before 2pm on business days.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/gift-pack/">Shop Gift Pack — $35</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>
 

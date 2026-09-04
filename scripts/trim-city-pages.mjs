@@ -41,7 +41,7 @@ const CITIES = [
       },
       {
         q: 'Do you have a shop in Sydney?',
-        a: 'No physical store—we pack at 15 Europe Street, Truganina VIC and ship Australia-wide. <a href="/pages/shipping/shipping-returns.html">Shipping details</a>.',
+        a: 'No physical store—we pack at 15 Europe Street, Truganina VIC and ship Australia-wide. <a href="/shipping">Shipping details</a>.',
       },
       {
         q: 'What\'s the best value for Sydney buyers?',
@@ -142,7 +142,7 @@ const CITIES = [
     },
     guides: [
       { href: '/blog/how-to-choose-moringa-powder-australia-2026', label: 'How to choose moringa powder' },
-      { href: '/pages/shipping/shipping-returns.html', label: 'Shipping times & free shipping $49+' },
+      { href: '/shipping', label: 'Shipping times & free shipping $49+' },
     ],
     bundleHighlight: true,
   },
