@@ -1007,7 +1007,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "title": "Does Moringa Powder Taste Bad? What It Actually Tastes Like",
+    "title": "What Moringa Powder Tastes Like (And How to Mix It)",
     "description": "Does moringa taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
     "category": "Guides",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026",
