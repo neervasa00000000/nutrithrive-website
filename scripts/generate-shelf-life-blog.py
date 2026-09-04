@@ -96,7 +96,7 @@ RELATED_NAV = (
     "<ul>"
     '<li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to Choose Moringa Powder in Australia: Buyer’s Guide</a></li>'
     '<li><a href="/blog/how-to-read-moringa-batch-codes-freshness">How to Read a Moringa Batch Code</a></li>'
-    '<li><a href="/blog/what-does-moringa-powder-taste-like-honest-guide-2026">Does Moringa Powder Taste Bad? What It Actually Tastes Like</a></li>'
+    '<li><a href="/blog/what-does-moringa-powder-taste-like-honest-guide-2026">What Moringa Powder Tastes Like (And How to Mix It)</a></li>'
     "</ul>"
 )
 
