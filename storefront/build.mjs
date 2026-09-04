@@ -375,6 +375,25 @@ function check() {
   return `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7"/></svg>`;
 }
 
+function googleReviewsSection() {
+  return `<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <span class="reviews-score">4.9</span>
+      ${stars()}
+      <span style="color:var(--color-text-secondary)">Google reviews</span>
+    </div>
+    <div class="review-grid review-scroll" aria-label="Google reviews">
+      ${REVIEWS.map(
+        (r) => `<blockquote class="review-card"><p title="${esc(r.text)}">“${esc(r.text)}”</p><div class="review-meta"><strong>${esc(r.name)}</strong>Verified Google review</div></blockquote>`
+      ).join("")}
+    </div>
+    <p class="review-disclosure">These are genuine reviews from our Google Business Profile. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
+    <p style="margin-top:16px"><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all reviews</a></p>
+  </div>
+</section>`;
+}
+
 function productPayload(p) {
   return esc(
     JSON.stringify({
@@ -948,22 +967,7 @@ function homepage() {
     </div>
   </div>
 </section>
-<section class="section" id="reviews">
-  <div class="wrap">
-    <div class="reviews-head">
-      <span class="reviews-score">4.9</span>
-      ${stars()}
-      <span style="color:var(--color-text-secondary)">Google reviews</span>
-    </div>
-    <div class="review-grid review-scroll" aria-label="Google reviews">
-      ${REVIEWS.map(
-        (r) => `<blockquote class="review-card"><p title="${esc(r.text)}">“${esc(r.text)}”</p><div class="review-meta"><strong>${esc(r.name)}</strong>Verified Google review</div></blockquote>`
-      ).join("")}
-    </div>
-    <p class="review-disclosure">These are genuine reviews from our Google Business Profile. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
-    <p style="margin-top:16px"><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all reviews</a></p>
-  </div>
-</section>
+${googleReviewsSection()}
 <section class="section" style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
@@ -1037,15 +1041,16 @@ function shopPage() {
       <section class="section" style="padding-top:0">
         <div class="wrap product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
         <div class="wrap"><p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping from $49. Fastest cart: 400g $35 + curry $7 + tea $7.50 = $49.50.</p></div>
-      </section>`,
+      </section>
+      ${googleReviewsSection()}`,
   });
 }
 
 const PDP = {
   "moringa-powder": {
-    title: "Moringa Powder Australia | From $11 | NutriThrive",
+    title: "Moringa Powder Australia — NMI Lab-Tested, Shade-Dried | From $11",
     description:
-      "Shop NutriThrive moringa powder from $11/100g. Grown on our farm, shade-dried, Australian lab tested and packed in Melbourne. Australia-wide delivery.",
+      "Buy moringa powder Australia from $11/100g. NMI lab-tested, shade-dried leaf, packed in Truganina Melbourne. 100g pays postage; free AU ship at $49.50 (400g + curry + tea).",
     forceSeo: true,
     current: "Moringa",
     product: PRODUCTS[0],
