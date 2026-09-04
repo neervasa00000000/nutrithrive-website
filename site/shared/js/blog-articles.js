@@ -18,7 +18,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
-    "title": "AG1 Alternative Australia: Is Moringa Enough? Cost &amp; What It Covers",
+    "title": "AG1 Alternative Australia: Compare Cost, Ingredients &amp; Taste",
     "description": "AG1 is $150+/month in Australia. What you actually get vs moringa leaf powder alone — cost, nutrients, and when a stack is worth it.",
     "category": "Comparison",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026",
@@ -155,7 +155,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
-    "title": "Curry Leaves Substitute: What Actually Works (Ranked)",
+    "title": "Best Curry Leaf Substitutes in Australia: 7 Options Ranked",
     "description": "No curry leaves? Here are 7 real substitutes ranked by how close they taste, plus what NOT to use. Tested for Australian kitchens.",
     "category": "Guides",
     "href": "/blog/curry-leaves-substitute-what-to-use-2026",
@@ -477,7 +477,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "is-moringa-safe-for-dogs-benefits-dosage-australia-2026",
-    "title": "Is Moringa Safe for Dogs? Benefits, Dosage &amp; What to Watch For (2026)",
+    "title": "Moringa Powder for Dogs in Australia: Mixing Guide &amp; Vet Checklist",
     "description": "Is moringa safe for dogs? Usually in moderation. Dosage by weight, mixing tips, and the health condition that changes the answer.",
     "category": "Pets",
     "href": "/blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026",
@@ -751,7 +751,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-powder-victoria-seniors-joint-health",
-    "title": "Moringa for Seniors: A Joint Health Guide",
+    "title": "How Victorian Seniors Add Moringa Powder to Everyday Meals",
     "description": "Can moringa help with joint health as you age? A guide for Victorian seniors on dosage, benefits, and what to expect.",
     "category": "Local Guide",
     "href": "/blog/moringa-powder-victoria-seniors-joint-health",
@@ -767,7 +767,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-side-effects-what-happens-take-too-much-2026",
-    "title": "Moringa Side Effects. What Happens If You Take Too Much? (2026)",
+    "title": "Moringa Powder Side Effects: A Practical Start-Small Guide (Australia)",
     "description": "Side effects of moringa powder: digestive upset, nausea, loose stools &amp; more. Are they serious? Who should avoid it, how to prevent issues, safety research. Australia 2026.",
     "category": "Safety &amp; Side Effects",
     "href": "/blog/moringa-side-effects-what-happens-take-too-much-2026",
@@ -839,7 +839,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-spirulina-vs-matcha-comparison-australia",
-    "title": "Moringa vs Spirulina vs Matcha: Which Wins?",
+    "title": "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha",
     "description": "Moringa vs spirulina vs matcha compared on price, taste, and results for Australians. Which superfood actually wins? See the breakdown.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia",

@@ -16,6 +16,24 @@ const approvedSeoChanges = {
   "blog/fathers-day-gift-under-40.html": {
     title: "Last-Minute Father's Day Gift Pack $35 From Melbourne",
   },
+  "blog/curry-leaves-substitute-what-to-use-2026.html": {
+    title: "Best Curry Leaf Substitutes in Australia: 7 Options Ranked",
+  },
+  "blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html": {
+    title: "Moringa Powder for Dogs in Australia: Mixing Guide &amp; Vet Checklist",
+  },
+  "blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html": {
+    title: "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha",
+  },
+  "blog/moringa-side-effects-what-happens-take-too-much-2026.html": {
+    title: "Moringa Powder Side Effects: A Practical Start-Small Guide (Australia)",
+  },
+  "blog/moringa-powder-victoria-seniors-joint-health.html": {
+    title: "How Victorian Seniors Add Moringa Powder to Everyday Meals",
+  },
+  "blog/ag1-alternative-australia-moringa-comparison-2026.html": {
+    title: "AG1 Alternative Australia: Compare Cost, Ingredients &amp; Taste",
+  },
 };
 
 function resolveFile(rel) {
@@ -161,6 +179,30 @@ if (home) {
   mustNotInclude("index.html", 'href="/checkout/"', "preview checkout link");
   mustNotInclude("index.html", 'href="/journal/"', "homepage still linking to /journal/");
   if (!home.includes('href="/blog/">Blog')) errors.push("homepage missing Blog nav link to /blog/");
+}
+
+const startHere = [
+  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Best Curry Leaf Substitutes in Australia: 7 Options Ranked", "$49.50"],
+  ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Moringa Powder for Dogs in Australia: Mixing Guide & Vet Checklist", null],
+  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$49.50"],
+  ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Powder Side Effects: A Practical Start-Small Guide (Australia)", null],
+  ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$49.50"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Compare Cost, Ingredients & Taste", "$49.50"],
+];
+for (const [rel, expected, postage] of startHere) {
+  const html = read(rel);
+  if (!html) continue;
+  const h1 = html.match(/<h1[^>]*>([^<]*)<\/h1>/i)?.[1]?.replaceAll("&amp;", "&");
+  if (h1 !== expected) errors.push(`${rel}: H1 is "${h1}"`);
+  if (postage && !html.includes(postage)) errors.push(`${rel}: missing ${postage}`);
+}
+const teaHtml = read("products/black-tea/index.html");
+if (teaHtml && !teaHtml.includes("<title>Darjeeling Black Tea Australia — First Flush | $7.50 | NutriThrive</title>")) {
+  errors.push("products/black-tea/index.html: title not updated");
+}
+const curryHtml = read("products/curry-leaves/index.html");
+if (curryHtml && !curryHtml.includes("<title>Dried Curry Leaves Australia — Shade-Dried Kari Leaf | $7</title>")) {
+  errors.push("products/curry-leaves/index.html: title not updated");
 }
 
 const articleRel = "blog/how-to-add-moringa-to-diet.html";
