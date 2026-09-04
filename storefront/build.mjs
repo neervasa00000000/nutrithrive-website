@@ -1121,8 +1121,10 @@ const PDP = {
     ],
   },
   "curry-leaves": {
-    title: "Farm-Grown Dried Curry Leaves | NutriThrive",
-    description: "Buy aromatic dried curry leaves for tadka, curries and everyday cooking. Carefully prepared and packed in Truganina, Melbourne, from $7.",
+    title: "Dried Curry Leaves Australia — Shade-Dried Kari Leaf | $7",
+    description:
+      "Buy dried curry leaves Australia $7/30g. Shade-dried kari leaf, packed in Truganina. Pair with 400g moringa $35 + Darjeeling $7.50 = $49.50 free AU ship.",
+    forceSeo: true,
     current: "Curry Leaves",
     product: PRODUCTS.find((p) => p.id === "curry-leaves"),
     intro: "Karipatta grown on our own farm. Aromatic, pantry-ready and packed in Melbourne. Use about 2 to 3 times as much as fresh in tadka.",
@@ -1146,8 +1148,10 @@ const PDP = {
     ],
   },
   "black-tea": {
-    title: "Darjeeling Family-Farm Black Tea | NutriThrive",
-    description: "Shop loose-leaf Darjeeling black tea with a floral, muscatel character. Packed in Truganina and shipped across Australia from $7.50.",
+    title: "Darjeeling Black Tea Australia — First Flush | $7.50 | NutriThrive",
+    description:
+      "Buy first-flush Darjeeling black tea Australia $7.50/100g. Packed in Truganina Melbourne. Add 400g moringa $35 + curry $7 to hit $49.50 free AU shipping.",
+    forceSeo: true,
     current: "Tea",
     product: PRODUCTS.find((p) => p.id === "black-tea"),
     intro: "Loose-leaf tea sourced from a family farm in Darjeeling, with muscatel and floral notes when brewed gently. Packed in Truganina and shipped Australia-wide.",
