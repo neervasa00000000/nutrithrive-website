@@ -18,12 +18,12 @@ const REPLACEMENTS = [
   {
     file: 'index.html',
     from: '<p class="hero-desc hero-desc--local">Local guides: <a href="/melbourne">Moringa in Melbourne</a>, <a href="/moringa-sydney/">Sydney</a>, <a href="/moringa-brisbane/">Brisbane</a>, <a href="/moringa-perth/">Perth</a>, <a href="/moringa-adelaide/">Adelaide</a>.</p>',
-    to: '<p class="hero-desc hero-desc--local">Ships Australia-wide from Melbourne. <a href="/melbourne/">Melbourne delivery guide</a> · <a href="/pages/shipping/shipping-returns.html">Shipping &amp; delivery times</a></p>',
+    to: '<p class="hero-desc hero-desc--local">Ships Australia-wide from Melbourne. <a href="/melbourne/">Melbourne delivery guide</a> · <a href="/shipping">Shipping &amp; delivery times</a></p>',
   },
   {
     file: 'blog/how-to-choose-moringa-powder-australia-2026.html',
     from: ' <li>Fast delivery: <a href="/melbourne/">Melbourne</a>, <a href="/moringa-sydney/">Sydney</a>, <a href="/moringa-brisbane/">Brisbane</a>, <a href="/moringa-perth/">Perth</a>, <a href="/moringa-adelaide/">Adelaide</a></li>',
-    to: ' <li>Fast delivery: <a href="/melbourne/">Melbourne metro guide</a> (same-day dispatch from Truganina) · <a href="/pages/shipping/shipping-returns.html">Australia-wide shipping times</a></li>',
+    to: ' <li>Fast delivery: <a href="/melbourne/">Melbourne metro guide</a> (same-day dispatch from Truganina) · <a href="/shipping">Australia-wide shipping times</a></li>',
   },
   {
     file: 'blog/moringa-powder-victoria-seniors-joint-health.html',
@@ -33,12 +33,12 @@ const REPLACEMENTS = [
   {
     file: 'blog/moringa-powder-victoria-seniors-joint-health.html',
     from: 'Get the freshest <a href="/products/moringa-powder/" style="color:#0f6b4d;font-weight:600;">Moringa in Victoria, Melbourne, Sydney, and across Australia</a>, delivered from our door in Truganina, Melbourne to yours. Fast shipping available to all major cities including Melbourne CBD, Sydney, and regional areas throughout Australia.',
-    to: 'Get the freshest <a href="/products/moringa-powder/" style="color:#0f6b4d;font-weight:600;">moringa powder in Victoria</a>, packed in Truganina and shipped Australia-wide. See <a href="/melbourne/" style="color:#0f6b4d;font-weight:600;">Melbourne delivery times</a> or our <a href="/pages/shipping/shipping-returns.html" style="color:#0f6b4d;font-weight:600;">shipping page</a> for other states.',
+    to: 'Get the freshest <a href="/products/moringa-powder/" style="color:#0f6b4d;font-weight:600;">moringa powder in Victoria</a>, packed in Truganina and shipped Australia-wide. See <a href="/melbourne/" style="color:#0f6b4d;font-weight:600;">Melbourne delivery times</a> or our <a href="/shipping" style="color:#0f6b4d;font-weight:600;">shipping page</a> for other states.',
   },
   {
     file: 'buy-moringa-powder-australia/index.html',
     from: '15 Europe Street, Truganina. Sydney and Brisbane usually 2–4 days; Perth 3–5.',
-    to: '15 Europe Street, Truganina. Metro delivery is usually a few business days — see our <a href="/pages/shipping/shipping-returns.html">shipping page</a> or your <a href="/melbourne/">local delivery guide</a>.',
+    to: '15 Europe Street, Truganina. Metro delivery is usually a few business days — see our <a href="/shipping">shipping page</a> or your <a href="/melbourne/">local delivery guide</a>.',
   },
   {
     file: 'pages/shipping/shipping-returns.html',
@@ -164,7 +164,7 @@ const faqReplacements = [
       ],
       [
         'Typical delivery: 3–4 days to metro/suburban areas like Sydney and Brisbane; up to 10 days for rural areas. Fast shipping from our Melbourne warehouse.',
-        'Typical delivery: 3–4 days to most metro and suburban areas; up to 10 days for rural areas. See our <a href="/pages/shipping/shipping-returns.html">shipping page</a> or your <a href="/melbourne/">city delivery guide</a>.',
+        'Typical delivery: 3–4 days to most metro and suburban areas; up to 10 days for rural areas. See our <a href="/shipping">shipping page</a> or your <a href="/melbourne/">city delivery guide</a>.',
       ],
     ],
   },
@@ -177,7 +177,7 @@ const faqReplacements = [
       ],
       [
         'Dispatch within 2 business days (no Sunday dispatch). Metro delivery typically 3–4 days; rural up to 10 days from our Truganina warehouse.',
-        'Dispatch within 2 business days (no Sunday dispatch). Metro delivery typically 3–4 days; rural up to 10 days. See /pages/shipping/shipping-returns.html or /melbourne/ for estimates.',
+        'Dispatch within 2 business days (no Sunday dispatch). Metro delivery typically 3–4 days; rural up to 10 days. See /shipping or /melbourne/ for estimates.',
       ],
     ],
   },

@@ -454,7 +454,7 @@ ${bodyHtml}
 <p>Shop our <a href="${prod.shopHref}">${prod.ctaProduct}</a> — packed fresh in Melbourne. Same-day dispatch.</p>
 <div class="btn-row">
 <a class="btn-solid" href="${prod.shopHref}">${prod.ctaBtn}</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns.html">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>
 <p style="margin-top: 1rem;"><a href="/blog/">&larr; Back to all articles</a></p>

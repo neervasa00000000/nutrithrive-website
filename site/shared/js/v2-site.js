@@ -226,7 +226,7 @@
   function bindPdpActions(root, data) {
     if (!root || !data) return;
     const labHref = resolveHref(data.labReport);
-    const shipHref = resolveHref('/pages/shipping/shipping-returns.html');
+    const shipHref = resolveHref('/shipping');
 
     const labLink = root.querySelector('#nt-pdp-lab');
     if (labLink) {
@@ -317,7 +317,7 @@
       : '';
 
     const labHref = resolveHref(data.labReport);
-    const shipHref = resolveHref('/pages/shipping/shipping-returns.html');
+    const shipHref = resolveHref('/shipping');
 
     root.innerHTML = `
 <nav class="mb-8 flex items-center gap-2 text-label-sm font-label-sm text-outline flex-wrap">

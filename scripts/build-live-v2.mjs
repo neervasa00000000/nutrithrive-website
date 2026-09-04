@@ -129,7 +129,7 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
     [/href="about-test\.html"/g, 'href="/about"'],
     [/href="contact-test\.html"/g, 'href="/contact"'],
     [/href="faq-test\.html"/g, 'href="/faq"'],
-    [/href="shipping-test\.html"/g, 'href="/pages/shipping/shipping-returns.html"'],
+    [/href="shipping-test\.html"/g, 'href="/shipping"'],
     [/href="cart-test\.html"/g, 'href="/cart"'],
     [/href="payment-test\.html"/g, 'href="/payment"'],
     [/href="privacy-test\.html"/g, 'href="/privacy-policy"'],

@@ -118,7 +118,7 @@ const CITIES = [
     },
     guides: [
       { href: '/blog/how-to-choose-moringa-powder-australia-2026', label: 'How to choose quality moringa' },
-      { href: '/pages/shipping/shipping-returns.html', label: 'Shipping times & free shipping' },
+      { href: '/shipping', label: 'Shipping times & free shipping' },
     ],
     highlightBundle: true,
   },

@@ -149,7 +149,7 @@ That is why $7 is the unit. You are not buying a one-night garnish. You are buyi
 
 ## Posted $7 is not $7 at the door
 
-Locked 30 August 2026: curry leaves **30 g = $7**. Default AU shipping under $49 is **$9.69**. Landed **$16.69**. Pickup by arrangement is **$7**. Free Australia-wide shipping at **AU$49 and above**. Full policy: [Shipping & Returns](/pages/shipping/shipping-returns).
+Locked 30 August 2026: curry leaves **30 g = $7**. Default AU shipping under $49 is **$9.69**. Landed **$16.69**. Pickup by arrangement is **$7**. Free Australia-wide shipping at **AU$49 and above**. Full policy: [Shipping & Returns](/shipping).
 
 I will not hide the postage. A $7 bag on its own does not clear $49. People get angry when a "cheap snack" becomes $16.69. The maths is on the shipping page. I am repeating it here so you do not have to hunt.
 
@@ -184,7 +184,7 @@ A Sunday 30 August order: first possible dispatch **Monday 31 August before 2pm*
 | Melbourne metro, Friday night | Often 1–3 business days after Monday dispatch. Roughly Tue 1 – Thu 3 Sep. | [Melbourne](/melbourne/) |
 | Sydney metro, Saturday SCG | Most postcodes 2–4 business days. Roughly Wed 2 – Fri 4 Sep. | [Sydney](/moringa-sydney/) |
 | Brisbane / Gold Coast, Saturday | Usually 2–4 business days. | [Brisbane](/moringa-brisbane/) |
-| Adelaide metro, Saturday night | Same 3–4 day shipping-page band. Do not cut it to Friday. | [Shipping](/pages/shipping/shipping-returns) |
+| Adelaide metro, Saturday night | Same 3–4 day shipping-page band. Do not cut it to Friday. | [Shipping](/shipping) |
 | Perth metro, Thursday Optus | Typically 3–5 business days. Regional WA 6–9. Thursday 3 Sep is the optimistic end of that band, not a booking. | [Perth](/moringa-perth/) |
 | Rural AU | Up to 10 days. Do not use this bag as a Thursday surprise. | Shipping page |
 
@@ -242,7 +242,7 @@ Yes, **by arrangement**. 15 Europe Street, Truganina VIC 3029. Cash for pickup o
 $7 + $9.69 = **$16.69** if the order is under $49. Free shipping at **$49+**. Pickup is $7.
 
 **What is the return policy?**
-7 days from delivery, unopened packs. Original shipping is not refunded. Policy: [Shipping & Returns](/pages/shipping/shipping-returns).
+7 days from delivery, unopened packs. Original shipping is not refunded. Policy: [Shipping & Returns](/shipping).
 
 **Do you dispatch on Sunday?**
 No. Same-day dispatch is before 2pm on business days. A Saturday or Sunday order waits for Monday.
@@ -263,7 +263,7 @@ BODY_TAIL = """
 <p>Whole kari leaf, packed in Truganina. Posted $7 + $9.69 under $49, or pickup by arrangement. Same-day dispatch before 2pm on business days.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/curry-leaves/">Shop curry leaves — $7</a>
-<a class="btn-outline" href="/pages/shipping/shipping-returns">Shipping &amp; returns</a>
+<a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
 </div>
 </div>
 

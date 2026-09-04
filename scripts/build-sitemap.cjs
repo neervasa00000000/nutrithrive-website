@@ -136,7 +136,7 @@ function fileToUrl(relPosix) {
   if (relPosix === "pages/legal/privacy-policy.html") return `${BASE}/privacy-policy`;
   if (relPosix === "pages/shop/cart.html") return `${BASE}/cart`;
   if (relPosix === "pages/shipping/shipping-returns.html")
-    return `${BASE}/pages/shipping/shipping-returns`;
+    return `${BASE}/shipping`;
 
   if (relPosix === "pages/newsletter/index.html") return `${BASE}/pages/newsletter/`;
 
