@@ -348,7 +348,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-add-moringa-to-diet",
-    "title": "5 Easy Ways to Add Moringa to Your Diet",
+    "title": "How to Use Moringa Powder Daily (Smoothies, Meals & Taste)",
     "description": "5 simple ways to add moringa powder to your daily diet without the bitter taste — smoothies, meals, and easy swaps.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/how-to-add-moringa-to-diet",

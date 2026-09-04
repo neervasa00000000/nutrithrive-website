@@ -172,7 +172,7 @@ if (article) {
     errors.push(`${articleRel}: canonical is "${canonical}"`);
   }
   const title = attr(article, /<title>([^<]*)<\/title>/i);
-  if (title !== "5 Easy Ways to Add Moringa to Your Diet") {
+  if (title !== "How to Use Moringa Powder Daily (Smoothies, Meals & Taste)") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
