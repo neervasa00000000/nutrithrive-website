@@ -851,8 +851,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/category/curry-leaves/ /blog/category/curry-leaves/index.html 200
 /blog/category/soap-skin /blog/category/soap-skin/index.html 200
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
-/shipping /pages/shipping/shipping-returns.html 200
-/shipping/ /pages/shipping/shipping-returns.html 200
+/shipping /shipping 200
+/shipping/ /shipping 200
 /privacy /privacy-policy 301
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
