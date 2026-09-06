@@ -17,8 +17,8 @@ URL = f"https://nutrithrive.com.au/blog/{SLUG}"
 TITLE = "Cold-Brew Darjeeling Tea for Australian Spring 2026"
 H1 = "Cold-Brew Darjeeling for Australian Spring, From Truganina"
 META = (
-    "Wattle Day fridge method for first-flush Darjeeling. Ratios, Melbourne tap, "
-    "why hot-brew-then-ice goes bitter, $7.50/100g from Truganina."
+    "Cold-brew Darjeeling tea for Australian spring: fridge method, brew ratios, "
+    "Melbourne tap tips, and why hot-brew-then-ice goes bitter ($7.50/100g)."
 )
 DATE = "2026-09-01"
 DATE_DISPLAY = "1 Sep 2026"
@@ -31,7 +31,7 @@ SIDEBAR_IMG = "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp"
 
 assert len(TITLE) == 51, len(TITLE)
 assert len(H1) == 58, len(H1)
-assert len(META) == 137, len(META)
+assert len(META) == 147, len(META)
 
 FAQS = [
     (
@@ -76,7 +76,7 @@ FAQS = [
     ),
     (
         "What does 100 g cost posted?",
-        "About $7.50 + ~$9.69 zone-1 example ≈ $17.19 under the $49 free-ship line. Free shipping at $49+.",
+        "About $7.50 + ~$9.69 zone-1 example ≈ $17.19 under the $49.50 free-ship line. Free shipping at $49.50+.",
     ),
     (
         "If I order today, when does it leave Truganina?",
@@ -103,7 +103,7 @@ BODY_TAIL = """
 
 <div class="nt-article-cta">
 <h3>Order first-flush Darjeeling — $7.50 / 100g</h3>
-<p>Loose leaf packed in Truganina. Posted $7.50 + $9.69 under $49, or pickup by arrangement. Same-day dispatch before 2pm on business days. This page is the fridge method, not the winter chai latte.</p>
+<p>Loose leaf packed in Truganina. Posted $7.50 + $9.69 under $49.50, or pickup by arrangement. Same-day dispatch before 2pm on business days. This page is the fridge method, not the winter chai latte.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/black-tea/">Shop Darjeeling tea — $7.50</a>
 <a class="btn-outline" href="/shipping">Shipping &amp; returns</a>

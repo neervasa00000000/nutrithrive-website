@@ -16,8 +16,8 @@ URL = f"https://nutrithrive.com.au/blog/{SLUG}"
 TITLE = "AFL Finals Snacks: Curry-Leaf Tadka, Not Party Pies"
 H1 = "AFL Finals Snacks: Curry-Leaf Tadka, Packed in Truganina"
 META = (
-    "Wildcard weekend is done. Week 2 starts Thursday. "
-    "I fry dried kari leaf in ghee over nuts or popcorn. 30g, Truganina, $7."
+    "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. "
+    "Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday."
 )
 DATE = "2026-08-30"
 DATE_DISPLAY = "30 Aug 2026"
@@ -29,7 +29,7 @@ MIN_READ = "13 min read"
 
 assert len(TITLE) == 51, len(TITLE)
 assert len(H1) == 56, len(H1)
-assert len(META) == 121, len(META)
+assert len(META) == 148, len(META)
 
 FAQS = [
     (
@@ -47,8 +47,8 @@ FAQS = [
     ),
     (
         "What does posted 30g curry leaves cost?",
-        "The bag is $7. Under $49, default AU shipping is $9.69. Landed $16.69. Pickup by arrangement is $7. "
-        "Free shipping at $49+.",
+        "The bag is $7. Under $49.50, default AU shipping is $9.69. Landed $16.69. Pickup by arrangement is $7. "
+        "Free shipping at $49.50+.",
     ),
     (
         "Is this curry powder?",
@@ -80,7 +80,7 @@ FAQS = [
 ]
 
 BODY_MD = r"""
-I'm Neer. I pack NutriThrive orders at 15 Europe Street, Truganina VIC 3029. Wildcard weekend is finished. [AFL.com.au](https://www.afl.com.au/news/1597385/finals-fixture-ticket-details-schedule-confirmed-for-week-two-of-the-2026-finals-series) has Week 2 locked: it starts **Thursday 3 September 2026**. I fry dried kari leaf in ghee and pour it over nuts or popcorn. The bag I sell is **30 g**, SKU **NT-CL-30G**, **$7**. Posted it is **$7 + $9.69** unless you pick up or the cart clears **$49**.
+I'm Neer. I pack NutriThrive orders at 15 Europe Street, Truganina VIC 3029. Wildcard weekend is finished. [AFL.com.au](https://www.afl.com.au/news/1597385/finals-fixture-ticket-details-schedule-confirmed-for-week-two-of-the-2026-finals-series) has Week 2 locked: it starts **Thursday 3 September 2026**. I fry dried kari leaf in ghee and pour it over nuts or popcorn. The bag I sell is **30 g**, SKU **NT-CL-30G**, **$7**. Posted it is **$7 + $9.69** unless you pick up or the cart clears **$49.50**.
 
 ## Week 2 is Thursday. The calendar does not care about your oven
 
@@ -149,9 +149,9 @@ That is why $7 is the unit. You are not buying a one-night garnish. You are buyi
 
 ## Posted $7 is not $7 at the door
 
-Locked 30 August 2026: curry leaves **30 g = $7**. Default AU shipping under $49 is **$9.69**. Landed **$16.69**. Pickup by arrangement is **$7**. Free Australia-wide shipping at **AU$49 and above**. Full policy: [Shipping & Returns](/shipping).
+Locked 30 August 2026: curry leaves **30 g = $7**. Default AU shipping under $49.50 is **$9.69**. Landed **$16.69**. Pickup by arrangement is **$7**. Free Australia-wide shipping at **AU$49.50 and above**. Full policy: [Shipping & Returns](/shipping).
 
-I will not hide the postage. A $7 bag on its own does not clear $49. People get angry when a "cheap snack" becomes $16.69. The maths is on the shipping page. I am repeating it here so you do not have to hunt.
+I will not hide the postage. A $7 bag on its own does not clear $49.50. People get angry when a "cheap snack" becomes $16.69. The maths is on the shipping page. I am repeating it here so you do not have to hunt.
 
 | Cart | Sum | Shipping | Landed |
 | --- | ---: | ---: | ---: |
@@ -200,7 +200,7 @@ Returns: **7 days**, unopened packs. Original shipping is not refunded. Visa, Ma
 
 If the brief is "something for dad on Sunday 6 September," that is the [gift pack post](/blog/fathers-day-gift-under-40), not this snack. Father's Day and Week 2 overlap on the calendar. They are different SKUs.
 
-## What this snack is not
+## What this AFL finals snack is not
 
 Not party pies. Not a $159 hamper. Not beer. Not a TGA medicine. Not an immunity, metabolism, antioxidant, "boost," cholesterol, or skin-treatment product. Not a Chemist Warehouse greens tin. That piece is Monday's job.
 
@@ -212,7 +212,7 @@ You do not have to wait for a bounce. The same bag is the tempering on [dal](/bl
 
 If the leaves smell like dust, they are tired. If they smell like a citrus hedge in ghee, they are still working. Mustard seeds and chilli are optional. Neutral oil works if you do not keep ghee. Butter browns too fast for a first attempt at 8.05pm. The sound is the teacher: leaves should shout, then quiet. If the pan is smoking, dump the fat and restart. A 30 g bag can absorb one mistake, not five.
 
-## FAQ
+## FAQ: curry-leaf tadka for AFL Week 2
 
 **When does AFL finals Week 2 start in 2026?**
 Thursday 3 September 2026. AFL.com.au: Fremantle v Hawthorn at Optus Stadium, 8.10pm AEST. Friday Geelong v Carlton at the MCG, 7.40pm. Saturday Sydney v Brisbane at the SCG, 3.15pm, then Adelaide v Western Bulldogs at Adelaide Oval, 7.35pm AEST.
@@ -239,7 +239,7 @@ No.
 Yes, **by arrangement**. 15 Europe Street, Truganina VIC 3029. Cash for pickup only. Call [+61 438 201 419](tel:+61438201419) or email [nutrithrive0@gmail.com](mailto:nutrithrive0@gmail.com) first.
 
 **What does it cost with shipping?**
-$7 + $9.69 = **$16.69** if the order is under $49. Free shipping at **$49+**. Pickup is $7.
+$7 + $9.69 = **$16.69** if the order is under $49.50. Free shipping at **$49.50+**. Pickup is $7.
 
 **What is the return policy?**
 7 days from delivery, unopened packs. Original shipping is not refunded. Policy: [Shipping & Returns](/shipping).
@@ -247,7 +247,7 @@ $7 + $9.69 = **$16.69** if the order is under $49. Free shipping at **$49+**. Pi
 **Do you dispatch on Sunday?**
 No. Same-day dispatch is before 2pm on business days. A Saturday or Sunday order waits for Monday.
 
-## Order the leaf, or call me
+## Order the 30g curry leaf, or call me in Truganina
 
 [Dried curry leaves, 30 g, $7](/products/curry-leaves/). I pack it in Truganina. Phone **[+61 438 201 419](tel:+61438201419)**. Email **[nutrithrive0@gmail.com](mailto:nutrithrive0@gmail.com)**. If you are in Melbourne and you want it before Friday night, do not hope a courier invents a shortcut. Call. We set a pickup time.
 
@@ -260,7 +260,7 @@ BODY_TAIL = """
 
 <div class="nt-article-cta">
 <h3>Order dried curry leaves — $7 / 30g</h3>
-<p>Whole kari leaf, packed in Truganina. Posted $7 + $9.69 under $49, or pickup by arrangement. Same-day dispatch before 2pm on business days.</p>
+<p>Whole kari leaf, packed in Truganina. Posted $7 + $9.69 under $49.50, or pickup by arrangement. Same-day dispatch before 2pm on business days.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/curry-leaves/">Shop curry leaves — $7</a>
 <a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
@@ -273,7 +273,7 @@ BODY_TAIL = """
 <ul><li><strong>30 Aug 2026:</strong> Published for AFL finals Week 2 2026 (from Thu 3 Sep).</li></ul>
 </div>
 <section class="nt-related-links-block">
-<h2>Related guides</h2>
+<h2>Related guides on dried curry leaves and tadka</h2>
 <ul>
 <li><a href="/products/curry-leaves/">Shop dried curry leaves</a></li>
 <li><a href="/blog/curry-leaves-dahl-recipe-30-minutes-australia-2026">30-minute curry leaf dal</a></li>
@@ -300,7 +300,7 @@ def wrap_answer_box(html: str) -> str:
     rest = html[m.end() :]
     box = (
         '<div class="answer-box">\n'
-        "<h2>Quick Answer</h2>\n"
+        "<h2>Quick answer: AFL finals snacks with curry-leaf tadka</h2>\n"
         f'<p style="margin:0;">{m.group(1)}</p>\n'
         "</div>\n"
     )
@@ -508,7 +508,7 @@ def main() -> None:
 <span class="text-2xl font-bold text-moringa-leaf">$7.00</span>
 <span class="text-sm text-on-surface-variant">/30g</span>
 </div>
-<p class="text-body-sm text-on-surface-variant mb-6">Posted +$9.69 under $49 · Pickup $7</p>
+<p class="text-body-sm text-on-surface-variant mb-6">Posted +$9.69 under $49.50 · Pickup $7</p>
 <a class="block w-full text-center bg-moringa-leaf text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/curry-leaves/">Shop curry leaves →</a>
 </div>
 </div>
