@@ -3,6 +3,7 @@ const CART_KEY = "nt-storefront-cart";
 const LIVE_CART_KEY = "nutrithrive_cart";
 const VIEWED_KEY = "nt-storefront-viewed";
 
+const AU_FREE_SHIP = 49.5;
 const PAIRS = {
   "moringa-powder": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap", "combo-pack"],
   "moringa-200g": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap"],
@@ -50,9 +51,9 @@ function onlyIds(ids, expected) {
 }
 
 function freeShipPathCopy(items, subtotal) {
-  if (subtotal >= 49) return "";
+  if (subtotal >= AU_FREE_SHIP) return "";
   const ids = cartIdSet(items);
-  const away = money(49 - subtotal);
+  const away = money(AU_FREE_SHIP - subtotal);
   if (onlyIds(ids, ["moringa-400g", "curry-leaves"])) {
     return "Add Darjeeling tea $7.50 to reach $49.50.";
   }
@@ -63,13 +64,13 @@ function freeShipPathCopy(items, subtotal) {
     return "Add curry $7 and Darjeeling $7.50 to reach $49.50 and drop postage.";
   }
   if (onlyIds(ids, ["gift-pack", "moringa-powder"])) {
-    return "Still $3 short. Add soap $7 (or 200g instead of 100g) to clear $49.";
+    return "Still $3.50 short. Add soap $7 (or 200g instead of 100g) to clear $49.50.";
   }
   if (onlyIds(ids, ["gift-pack"])) {
     return "Add 200g moringa $21.50 to reach $56.50. Curry and tea are already in the pack.";
   }
   if (onlyIds(ids, ["combo-pack", "black-tea", "moringa-soap"])) {
-    return "Still under $49. Add the 400g bundle $35 to reach $52.";
+    return "Still under $49.50. Add the 400g bundle $35 to reach $52.";
   }
   if (onlyIds(ids, ["combo-pack"])) {
     return "Add the 400g bundle $35 to reach $52.";
@@ -156,7 +157,7 @@ function catalog() {
 }
 
 function shippingFor(items, subtotal) {
-  if (subtotal >= 49) return 0;
+  if (subtotal >= AU_FREE_SHIP) return 0;
   if (!items.length || subtotal === 0) return 0;
   if (window.ShippingRates?.calculate) {
     const payload = items.map((item) => ({
@@ -183,7 +184,7 @@ function pickRecs(cartItems, subtotal) {
     (PAIRS[item.id] || []).forEach((id, i) => bump(id, 40 - i * 4));
   });
   POPULAR.forEach((id, i) => bump(id, 8 - i));
-  const remaining = Math.max(0, 49 - subtotal);
+  const remaining = Math.max(0, AU_FREE_SHIP - subtotal);
   const recs = [...score.entries()]
     .map(([id, s]) => {
       const p = catalog().find((x) => x.id === id);
@@ -311,10 +312,10 @@ function renderCart() {
       })
       .join("");
     const ship = shippingFor(items, sub);
-    const freeShippingPercent = Math.min(100, Math.max(0, (sub / 49) * 100));
-    const freeShippingMessage = sub >= 49
+    const freeShippingPercent = Math.min(100, Math.max(0, (sub / AU_FREE_SHIP) * 100));
+    const freeShippingMessage = sub >= AU_FREE_SHIP
       ? "Free Australian shipping unlocked"
-      : `${money(49 - sub)} away from free Australian shipping`;
+      : `${money(AU_FREE_SHIP - sub)} away from free Australian shipping`;
     const pathCopy = freeShipPathCopy(items, sub);
     const freeShipPathNote = pathCopy
       ? `<p class="purchase-note shipping-path">${esc(pathCopy)}</p>`
@@ -324,9 +325,9 @@ function renderCart() {
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
     <div class="summary-row"><span>Shipping</span><span>${ship === 0 ? "Free" : money(ship)}</span></div>
     <div class="summary-row total"><span>Estimated total</span><span>${money(sub + ship)}</span></div>
-    <div class="shipping-progress ${sub >= 49 ? "is-complete" : ""}">
-      <div class="shipping-progress__copy"><strong>${freeShippingMessage}</strong><span>$49 target</span></div>
-      <div class="shipping-progress__track" role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="49" aria-valuenow="${Math.min(49, Number(sub.toFixed(2)))}" aria-valuetext="${freeShippingMessage}">
+    <div class="shipping-progress ${sub >= AU_FREE_SHIP ? "is-complete" : ""}">
+      <div class="shipping-progress__copy"><strong>${freeShippingMessage}</strong><span>$49.50 target</span></div>
+      <div class="shipping-progress__track" role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="49.5" aria-valuenow="${Math.min(AU_FREE_SHIP, Number(sub.toFixed(2)))}" aria-valuetext="${freeShippingMessage}">
         <span style="width:${freeShippingPercent.toFixed(2)}%"></span>
       </div>
     </div>

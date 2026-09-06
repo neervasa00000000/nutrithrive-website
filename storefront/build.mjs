@@ -900,6 +900,7 @@ function homepage() {
         <a class="btn btn-secondary" href="/products/gift-pack/">Shop Gift Pack $35</a>
         <a class="btn btn-secondary" href="/documents/nutrithrive-lab-report-summary.pdf">See our lab report</a>
       </div>
+      <p class="purchase-note shipping-path">Free AU shipping at $49.50 — easiest cart: 400g powder $35 + curry $7 + tea $7.50.</p>
       ${stars()} <span style="font-size:14px;color:var(--color-text-secondary)">from Google reviews</span>
     </div>
     <div class="hero-photo">
@@ -912,7 +913,7 @@ function homepage() {
     <div class="trust-item">${check()}<div><strong>Australian testing</strong><span>Published information when available.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Manufacturer-direct</strong><span>We grow it and make it.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Single-ingredient</strong><span>Leaf powder. No fillers.</span></div></div>
-    <div class="trust-item">${check()}<div><strong>Tracked shipping</strong><span>Australia-wide. Free over $49.</span></div></div>
+    <div class="trust-item">${check()}<div><strong>Tracked shipping</strong><span>Australia-wide. Free over $49.50.</span></div></div>
   </div>
 </div>
 <section class="section">
@@ -1235,9 +1236,9 @@ function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNotes = {
     "gift-pack":
-      "Taxes included. This pack is $35, so Australian postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 and get free AU shipping. Or add the $17 moringa + curry combo (cart $52). A single $11 powder bag only gets to $46 — still not free shipping.",
+      "Taxes included. This pack is $35, so Australian postage still applies. Free AU ship from $49.50: add the 400g moringa bundle ($35) for a $70 cart, or add a second Gift Pack. Do not add curry or tea alone — both are already in this pack.",
     "moringa-powder":
-      "Taxes included. 100g ($11), 200g ($21.50) and 400g ($35) are all under $49, so AU postage still applies. Add dried curry leaves ($7) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping.",
+      "Taxes included.",
     "combo-pack":
       "Taxes included. Shipping calculated at checkout. This combo is $17, so Australian postage still applies. Fastest free-ship cart: add the 400g moringa bundle ($35) to reach $52.",
     "curry-leaves":
@@ -1375,6 +1376,7 @@ function pdpPage(slug, d) {
           <p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>
           ${variantSelect}
           ${variantHint}
+          ${slug === "moringa-powder" ? `<p class="purchase-note shipping-path">100g $11 and 200g $21.50 pay AU postage. Free AU ship at $49.50: choose 400g $35 and add curry $7 + tea $7.50 in cart — or Gift Pack $35 + 200g.</p>` : ""}
           <div class="purchase-panel">
             <div class="qty">
               <label for="qty">Quantity</label>
