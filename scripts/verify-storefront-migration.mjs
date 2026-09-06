@@ -34,6 +34,48 @@ const approvedSeoChanges = {
   "blog/ag1-alternative-australia-moringa-comparison-2026.html": {
     title: "AG1 Alternative Australia: Compare Cost, Ingredients &amp; Taste",
   },
+  "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
+    title: "Moringa vs Coffee Melbourne: Energy Without the Crash (2026)",
+  },
+  "blog/science-shade-drying-vs-sun-drying-moringa.html": {
+    title: "Shade-Dried vs Sun-Dried Moringa: Which Keeps More Nutrients?",
+  },
+  "blog/moringa-brands-comparison-australia-2026.html": {
+    title: "Best Moringa Brands Australia 2026: Lab Tests, Dose &amp; $/100g",
+  },
+  "blog/how-to-choose-moringa-powder-australia-2026.html": {
+    title: "How to Choose Moringa Powder in Australia (Lab Tests &amp; Red Flags)",
+  },
+  "blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html": {
+    title: "Fresh vs Dried Curry Leaves Australia: Which Wins in the Pan?",
+  },
+  "blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026.html": {
+    title: "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
+  },
+  "blog/darjeeling-tea-vs-english-breakfast-comparison-2026.html": {
+    title: "Darjeeling vs English Breakfast Tea: Flavour, Strength &amp; Caffeine",
+  },
+  "blog/moringa-before-after-workout-timing-guide-2026.html": {
+    title: "Moringa Before or After Workout? Timing Guide (Australia)",
+  },
+  "blog/moringa-vs-whey-protein-comparison-2026.html": {
+    title: "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
+  },
+  "blog/moringa-vs-ashwagandha-comparison-2026.html": {
+    title: "Moringa vs Ashwagandha: Differences, Stacking &amp; Who Each Suits",
+  },
+  "blog/moringa-soap-benefits-skin-guide.html": {
+    title: "Moringa Soap Benefits for Skin: What's Real vs Marketing (2026)",
+  },
+  "blog/curry-leaves-tea-how-to-make-benefits-2026.html": {
+    title: "Curry Leaf Tea Australia: How to Brew Dried Leaves",
+  },
+  "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
+    title: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
+  },
+  "blog/moringa-for-breastfeeding-milk-supply-2026.html": {
+    title: "Moringa While Breastfeeding: What Evidence Says (Australia)",
+  },
 };
 
 function resolveFile(rel) {

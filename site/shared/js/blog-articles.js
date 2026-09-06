@@ -163,7 +163,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
-    "title": "Curry Leaf Tea: How to Make It + Real Benefits",
+    "title": "Curry Leaf Tea Australia: How to Brew Dried Leaves",
     "description": "How to make curry leaf tea step by step, plus what the evidence actually says about its benefits — not just tradition.",
     "category": "Recipes",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026",
@@ -227,7 +227,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "darjeeling-tea-vs-english-breakfast-comparison-2026",
-    "title": "Darjeeling Tea vs English Breakfast. What Is Actually Different? (2026)",
+    "title": "Darjeeling vs English Breakfast Tea: Flavour, Strength &amp; Caffeine",
     "description": "Darjeeling vs English Breakfast: both black teas, very different cups. Flavour, caffeine, strength, and when to drink each.",
     "category": "Tea Guide",
     "href": "/blog/darjeeling-tea-vs-english-breakfast-comparison-2026",
@@ -267,7 +267,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
-    "title": "Fresh vs Dried Curry Leaves: Which Wins?",
+    "title": "Fresh vs Dried Curry Leaves Australia: Which Wins in the Pan?",
     "description": "Fresh or dried curry leaves — which actually works better in your cooking? Flavour, shelf life, and when each one wins.",
     "category": "Guides",
     "href": "/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026",
@@ -316,7 +316,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
-    "title": "Darjeeling Tea Caffeine: vs Coffee &amp; Green Tea",
+    "title": "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
     "description": "How much caffeine is really in Darjeeling tea compared to coffee and green tea? The direct mg comparison, explained simply.",
     "category": "Tea Guide",
     "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
@@ -388,7 +388,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
-    "title": "How to Choose Moringa Powder in Australia: Buyer’s Guide",
+    "title": "How to Choose Moringa Powder in Australia (Lab Tests &amp; Red Flags)",
     "h1": "How to Choose Moringa Powder in Australia",
     "description": "Learn how to compare moringa powder in Australia by ingredients, testing, origin, colour, drying method, freshness and value before you buy.",
     "category": "Buyer's Guide",
@@ -533,7 +533,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-before-after-workout-timing-guide-2026",
-    "title": "Moringa Before or After Your Workout?",
+    "title": "Moringa Before or After Workout? Timing Guide (Australia)",
     "description": "Take moringa before or after training? Here's the honest answer on timing, energy, and recovery for Australian gym-goers.",
     "category": "Guides",
     "href": "/blog/moringa-before-after-workout-timing-guide-2026",
@@ -549,8 +549,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-brands-comparison-australia-2026",
-    "title": "Moringa Brands Australia: What to Compare Before You Buy",
-    "h1": "Moringa Brands in Australia: What to Compare Before You Buy",
+    "title": "Best Moringa Brands Australia 2026: Lab Tests, Dose &amp; $/100g",
+    "h1": "Best Moringa Brands Australia 2026: Lab Tests, Dose &amp; $/100g",
     "description": "Compare moringa brands in Australia by testing, origin, processing, ingredients and value. See what to check before choosing a moringa powder.",
     "category": "Research Guide",
     "href": "/blog/moringa-brands-comparison-australia-2026",
@@ -623,7 +623,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-for-breastfeeding-milk-supply-2026",
-    "title": "Moringa for Breastfeeding: What the Research Says",
+    "title": "Moringa While Breastfeeding: What Evidence Says (Australia)",
     "description": "Does moringa really increase breast milk supply? Here's what the actual research says, safe dosage, and when to check with your doctor.",
     "category": "Health",
     "href": "/blog/moringa-for-breastfeeding-milk-supply-2026",
@@ -727,7 +727,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
-    "title": "Moringa Heavy Metals Lab Testing Australia. What to Look For (2026)",
+    "title": "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
     "description": "Moringa can accumulate lead and cadmium. How to read an Australian CoA, what NMI testing covers, and red flags when brands hide results.'t share batch results (2026).",
     "category": "Buyer's Guide",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
@@ -799,7 +799,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-soap-benefits-skin-guide",
-    "title": "Moringa Soap for Skin: The Real Benefits",
+    "title": "Moringa Soap Benefits for Skin: What's Real vs Marketing (2026)",
     "description": "What does moringa soap actually do for your skin? Real benefits, who it suits, and how it compares to regular soap.",
     "category": "Guides",
     "href": "/blog/moringa-soap-benefits-skin-guide",
@@ -823,7 +823,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-ashwagandha-comparison-2026",
-    "title": "Moringa vs Ashwagandha: Which Wins?",
+    "title": "Moringa vs Ashwagandha: Differences, Stacking &amp; Who Each Suits",
     "description": "Moringa vs ashwagandha compared — energy, stress, and what each actually does. A clear breakdown for Australians choosing between them.",
     "category": "Health",
     "href": "/blog/moringa-vs-ashwagandha-comparison-2026",
@@ -847,7 +847,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-whey-protein-comparison-2026",
-    "title": "Moringa vs Whey Protein, Which Is Better for Your Goals? (2026)",
+    "title": "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
     "description": "Moringa vs whey: same daily-powder habit, different jobs. Clear comparison if you’re wondering whether moringa can replace protein.'re doing completely different things. A clear comparison for people who want to know if moringa can replace protein powder.",
     "category": "Health",
     "href": "/blog/moringa-vs-whey-protein-comparison-2026",
