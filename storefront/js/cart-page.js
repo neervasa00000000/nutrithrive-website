@@ -280,7 +280,7 @@ function renderCart() {
     const sub = items.reduce((n, i) => n + Number(i.price || 0) * Number(i.qty || 1), 0);
     if (!items.length) {
       setLayout(true);
-      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Moringa, tea, curry leaves and soap, all packed in Truganina.</p><a class="btn btn-primary" href="${shopPath()}">Shop the range</a></div>`;
+      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Fastest free AU shipping at $49.50: 400g moringa $35 + curry $7 + Darjeeling $7.50. Or start with Gift Pack $35 (postage still applies until you add on).</p><a class="btn btn-primary" href="${shopPath()}moringa-powder/?v=moringa-400g">Build the $49.50 cart</a> <a class="btn btn-secondary" href="${shopPath()}gift-pack/">Shop Gift Pack $35</a><p><a href="${shopPath()}">Shop the range</a></p><p>Pay with PayPal or card at checkout.</p></div>`;
       summary.innerHTML = "";
       renderRecs([], 0);
       return;

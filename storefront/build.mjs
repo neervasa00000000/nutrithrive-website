@@ -925,7 +925,7 @@ function homepage() {
       <a href="/shop/">Shop all</a>
     </div>
     <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
-    <p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping from $49.50. Fastest cart: 400g moringa $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift pack $35 needs the same add-on.</p>
+    <p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping at $49.50. Fastest cart: 400g moringa $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift Pack $35 still pays postage. Free AU ship: add 200g moringa ($21.50) or a second Gift Pack — curry and tea are already inside.</p>
   </div>
 </section>
 <section class="section band proof-story">
@@ -1022,7 +1022,7 @@ function shopPage() {
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
-        <div class="wrap"><p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping from $49.50. Fastest cart: 400g $35 + curry $7 + tea $7.50 = $49.50.</p></div>
+        <div class="wrap"><p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping at $49.50. Fastest cart: 400g $35 + curry $7 + tea $7.50 = $49.50.</p></div>
       </section>
       ${googleReviewsSection()}`,
   });
@@ -1047,7 +1047,7 @@ const PDP = {
     },
     variantHint: "The 400g option saves $9 compared with four 100g packs.",
     intro:
-      "Pure moringa leaf powder grown on our farm, shade-dried as part of our production process, Australian lab tested and packed in Melbourne.",
+      "Pure moringa powder from our farm — shade-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne.",
     freezeHeroCopy: true,
     proofs: [
       "100% moringa leaf — no fillers",
@@ -1097,7 +1097,7 @@ const PDP = {
       [
         "Is NutriThrive moringa powder tested in Australia?",
         {
-          html: `Yes. NutriThrive provides Australian testing information for its moringa. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a>.`,
+          html: `Yes. Our moringa powder is NMI lab-tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the lab summary PDF</a> on this page. Packed in Truganina, VIC.`,
         },
       ],
     ],
@@ -1236,7 +1236,7 @@ function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNotes = {
     "gift-pack":
-      "Taxes included. This pack is $35, so Australian postage still applies. Free AU ship from $49.50: add the 400g moringa bundle ($35) for a $70 cart, or add a second Gift Pack. Do not add curry or tea alone — both are already in this pack.",
+      "Taxes included. This pack is $35, so Australian postage still applies. Free AU ship at $49.50: add the 400g moringa bundle ($35) for a $70 cart, or add a second Gift Pack. Do not add curry or tea alone — both are already in this pack.",
     "moringa-powder":
       "Taxes included.",
     "combo-pack":
@@ -1252,9 +1252,11 @@ function pdpPage(slug, d) {
   const shippingPath = Boolean(purchaseNotes[slug]);
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
-  const related = PRODUCTS.filter(
-    (item) => item.id !== p.id && item.href !== p.href
-  ).slice(0, 3);
+  const related = PRODUCTS.filter((item) => {
+    if (item.id === p.id || item.href === p.href) return false;
+    if (slug === "gift-pack" && item.id === "moringa-powder") return false;
+    return true;
+  }).slice(0, 3);
   const reviews = d.reviews || REVIEWS;
   const freezeHero = Boolean(d.freezeHeroCopy);
   const variantSelect = d.variants
@@ -1616,7 +1618,7 @@ function faqPage() {
         },
         {
           q: "Is it lab tested?",
-          a: "Yes. Our moringa is tested in Australia. You can read the available summary PDF on the product page or contact us for testing details.",
+          a: "Yes. Our moringa powder is NMI lab-tested in Australia. Lab summary PDF is on the moringa powder product page.",
         },
       ],
     },
@@ -1671,7 +1673,7 @@ function faqPage() {
         },
         {
           q: "Which payment methods do you accept?",
-          a: "On the live site: Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup. This local preview does not take payment.",
+          a: "Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup. Checkout is live PayPal/card on nutrithrive.com.au.",
         },
         {
           q: "Can I place an order by phone?",
@@ -1776,7 +1778,7 @@ function faqPage() {
 function shippingPage() {
   return layout({
     title: "Shipping, Delivery and Returns | NutriThrive",
-    description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping over $49 and our seven-day returns information.",
+    description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping over $49.50 and our seven-day returns information.",
     canonicalPath: "/shipping",
     extraHead: jsonLd(
       breadcrumbSchema([
@@ -1918,6 +1920,7 @@ function privacyPage() {
 }
 
 function cartPage() {
+  const shop = LIVE_MODE ? "/products/" : "/shop/";
   return layout({
     title: "Review Your NutriThrive Shopping Cart | NutriThrive",
     description: LIVE_MODE
@@ -1938,7 +1941,7 @@ function cartPage() {
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
-          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Moringa, tea, curry leaves and soap, all packed in Truganina.</p><a class="btn btn-primary" href="/shop/">Shop the range</a></div></div>
+          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Fastest free AU shipping at $49.50: 400g moringa $35 + curry $7 + Darjeeling $7.50. Or start with Gift Pack $35 (postage still applies until you add on).</p><a class="btn btn-primary" href="${shop}moringa-powder/?v=moringa-400g">Build the $49.50 cart</a> <a class="btn btn-secondary" href="${shop}gift-pack/">Shop Gift Pack $35</a><p><a href="${shop}">Shop the range</a></p><p>Pay with PayPal or card at checkout.</p></div></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
         <div id="cart-recs"></div>
@@ -2218,7 +2221,7 @@ function cityPage(city, slug) {
           <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
           <a class="btn btn-secondary" href="/shipping">Shipping times</a>
         </div>
-        <p>Sizes: $11/100g · $21.50/200g · 400g $35. Under $49.50 still pays AU postage. Free AU ship: 400g $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift Pack $35 is the same path.</p>
+        <p>Sizes: $11/100g · $21.50/200g · 400g $35. Under $49.50 still pays AU postage. Free AU ship: 400g $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift Pack $35 still pays postage. Free AU ship: add 200g moringa ($21.50) or a second Gift Pack — curry and tea are already inside.</p>
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap-narrow">

@@ -72,7 +72,7 @@ FAQS = [
     ),
     (
         "When is shipping free?",
-        "Free Australia-wide standard shipping on orders $49 and over, per the live site today.",
+        "Free Australia-wide standard shipping on orders $49.50 and over, per the live site today.",
     ),
     (
         "Is NutriThrive certified organic?",
@@ -105,7 +105,7 @@ BODY_TAIL = """
 
 <div class="nt-article-cta">
 <h3>Fresh shade-dried powder — from $11 / 100g</h3>
-<p>100% leaf, packed in Truganina. Use within 18 months after opening if you keep it sealed, cool and dry. Same-day weekday dispatch before 2pm. Free AU shipping from $49.</p>
+<p>100% leaf, packed in Truganina. Use within 18 months after opening if you keep it sealed, cool and dry. Same-day weekday dispatch before 2pm. Free AU shipping at $49.50.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop moringa powder — $11</a>
 <a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
@@ -116,7 +116,7 @@ BODY_TAIL = """
 <div class="nt-update-log" role="note">
 <p><strong>Update log</strong></p>
 <ul>
-<li><strong>3 Sep 2026:</strong> Shelf-life refresh on this same URL. Opened window aligned to the live PDP (use within 18 months). Australian spring heat, fridge condensation, pack dates from Truganina. Free AU shipping from $49.</li>
+<li><strong>3 Sep 2026:</strong> Shelf-life refresh on this same URL. Opened window aligned to the live PDP (use within 18 months). Australian spring heat, fridge condensation, pack dates from Truganina. Free AU shipping at $49.50.</li>
 <li><strong>Earlier 2026:</strong> This URL previously used a 6–12 month opened window as the main number. Peak green still often sits in that first stretch; the pack rule is 18 months if sealed and dry.</li>
 </ul>
 </div>

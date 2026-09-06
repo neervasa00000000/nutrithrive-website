@@ -12,7 +12,7 @@ window.NT_SITE_DATA = {
   },
   shipping: {
     /** Standard AU free-shipping threshold after any dated promo ends. */
-    freeAuThreshold: 49,
+    freeAuThreshold: 49.5,
     freeWorldThreshold: 90,
     /** Fallback only if shipping-rates.js fails to load */
     defaultAuRate: 9.69,
@@ -147,7 +147,7 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-powder/',
       pdp: {
         headline: '400g Moringa Bundle',
-        intro: 'Four 100g packs of the same shade-dried powder — useful if you cook for a family or go through a pouch quickly. Free shipping on orders $49+.',
+        intro: 'Four 100g packs of the same shade-dried powder — useful if you cook for a family or go through a pouch quickly. Free shipping on orders $49.50+.',
         features: [
           { icon: 'savings', text: '400g Bundle' },
           { icon: 'eco', text: '100% Pure Moringa' },
@@ -159,7 +159,7 @@ window.NT_SITE_DATA = {
         faqs: [
           { q: 'What is included?', a: 'Four 100g packs (400g total) of shade-dried moringa leaf powder.' },
           { q: 'How should I store it?', a: 'Keep pouches sealed in a cool, dry place away from direct sunlight.' },
-          { q: 'Is shipping free?', a: 'Free shipping on Australian orders $49+. A $35 order is under that threshold, so standard shipping applies at checkout.' },
+          { q: 'Is shipping free?', a: 'Free shipping on Australian orders $49.50+. A $35 order is under that threshold, so standard shipping applies at checkout.' },
         ],
         showLabBadge: true,
         variantPicker: true,
@@ -378,9 +378,9 @@ window.NT_SITE_DATA = {
     { quote: "I liked it a lot! You should definitely go for it without a second thought", author: "Priyankari Nath", meta: 'via Google Reviews', initials: "PN", avatarBg: 'bg-primary-fixed' }
   ],
   blogGuides: [
-    { category: "Buyer's Guide", title: 'How to Choose Moringa Powder in Australia (2026)', readTime: '9 min read', href: '/blog/how-to-choose-moringa-powder-australia-2026' },
+    { category: "Buyer's Guide", title: 'How to Choose Moringa Powder Australia — Lab Guide', readTime: '9 min read', href: '/blog/how-to-choose-moringa-powder-australia-2026' },
     { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026' },
-    { category: 'Safety', title: 'Moringa Powder Side Effects: A Practical Start-Small Guide (Australia)', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
+    { category: 'Safety', title: 'Moringa Side Effects in Australia: Start-Small Guide', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
   ],
   /** In-content & sidebar ad slots — random curry leaves / moringa soap (see shared/js/blog-ad-promo.js). */
   blogAdPromo: {
@@ -437,7 +437,7 @@ window.NT_SITE_DATA = {
         { q: 'How much Moringa powder should I take daily?', a: 'Start with 1/2 tsp per day for a week, then increase to 1 tsp (2–3g) as desired. Mix into smoothies, water, or yogurt.', link: { text: 'Shop Moringa Powder', href: '/products/moringa-powder/' } },
         { q: 'Any safety notes?', a: 'If you have low blood levels or thin blood, avoid use. If you are pregnant, nursing or on medication, seek advice from your healthcare provider.' },
         { q: 'What does Moringa powder taste like?', a: 'Mild, earthy, spinach-like flavour that blends well with smoothies, juices, and meals—not overpowering.', link: { text: 'Shop Moringa Powder', href: '/products/moringa-powder/' } },
-        { q: 'Is it lab tested?', a: 'Yes. Every batch is tested in Australia for purity, heavy metals, and microbial safety.', link: { text: 'View lab report', href: '/documents/nutrithrive-lab-report-summary.pdf', external: true } },
+        { q: 'Is it lab tested?', a: 'Yes. Our moringa powder is NMI lab-tested in Australia. Lab summary PDF is on the moringa powder product page.', link: { text: 'View lab report', href: '/documents/nutrithrive-lab-report-summary.pdf', external: true } },
         { q: 'How is the Moringa processed?', a: 'Shade-dried to lock in nutrients and keep the powder vibrant green. We avoid high-heat drying that destroys vitamins.' },
       ],
     },
@@ -466,9 +466,9 @@ window.NT_SITE_DATA = {
       title: 'Orders & Shipping',
       icon: 'local_shipping',
       items: [
-        { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup only.' },
+        { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup. Checkout is live PayPal/card on nutrithrive.com.au.' },
         { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order or checking free shipping eligibility.' },
-        { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$49+ and free worldwide shipping on orders of AU$90+.' },
+        { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$49.50+ and free worldwide shipping on orders of AU$90+.' },
         { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Orders placed before 2pm on business days usually leave Truganina the same day; otherwise within 2 business days (no Sunday dispatch). Melbourne metro is often 1–3 business days after dispatch; other metro areas typically 3–4 days; some rural locations up to 10 days. See /shipping or /melbourne/ for estimates.' },
         { q: 'Do you offer a money-back guarantee?', a: 'Yes—7-day return policy (unopened packs only). Shipping costs are not refunded.' },
         { q: 'Where is my order dispatched from?', a: 'All orders ship from our warehouse in Truganina, Melbourne. Order before 2pm on a business day for same-day dispatch when we can.' },

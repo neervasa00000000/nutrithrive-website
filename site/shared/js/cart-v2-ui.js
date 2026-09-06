@@ -63,7 +63,7 @@
       if (window.ShippingRates?.getAuFreeShippingProgressTarget) {
         return window.ShippingRates.getAuFreeShippingProgressTarget();
       }
-      return d?.getFreeAuThreshold?.() ?? d?.freeAuThreshold ?? 49;
+      return d?.getFreeAuThreshold?.() ?? d?.freeAuThreshold ?? 49.5;
     }
     return d?.freeWorldThreshold ?? 90;
   }

@@ -209,6 +209,10 @@
 /blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
 /blog/best-protein-powder-australia-2026-complete-guide /blog/moringa-vs-whey-protein-comparison-2026 301
 /blog/best-protein-powder-australia-2026-complete-guide.html /blog/moringa-vs-whey-protein-comparison-2026 301
+/blog/nutri-thrive-clean-moringa-protein-2026-guide /blog/moringa-vs-whey-protein-comparison-2026 301!
+/blog/nutri-thrive-clean-moringa-protein-2026-guide.html /blog/moringa-vs-whey-protein-comparison-2026 301!
+/journal/nutri-thrive-clean-moringa-protein-2026-guide /blog/moringa-vs-whey-protein-comparison-2026 301!
+/journal/nutri-thrive-clean-moringa-protein-2026-guide.html /blog/moringa-vs-whey-protein-comparison-2026 301!
 /blog/how-to-grow-moringa-in-australia-complete-guide-2026.html /blog/grow-moringa-tree-australia 301
 /blog/how-to-grow-moringa-in-australia-complete-guide-2026 /blog/grow-moringa-tree-australia 301
 # Cannibalization fix — May 2026 duplicate growing guide → canonical grow guide
@@ -299,8 +303,8 @@
 /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html /404.html 410
 /blog/best-clean-protein-powders-moringa-products-australia-2026 /404.html 410
 /blog/best-clean-protein-powders-moringa-products-australia-2026.html /404.html 410
-/blog/gut-health-meal-plan-australia-7-day-guide-2026 /404.html 410
-/blog/gut-health-meal-plan-australia-7-day-guide-2026.html /404.html 410
+/blog/gut-health-meal-plan-australia-7-day-guide-2026 /blog/how-to-add-moringa-to-diet 301!
+/blog/gut-health-meal-plan-australia-7-day-guide-2026.html /blog/how-to-add-moringa-to-diet 301!
 /blog/30-day-moringa-experiment-replaced-supplements-journal-2026 /404.html 410
 /blog/30-day-moringa-experiment-replaced-supplements-journal-2026.html /404.html 410
 /blog/natural-heavy-metal-detox-moringa-cleanse-body /404.html 410
@@ -403,6 +407,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /products/product-detail.html /products/moringa-powder/ 301!
 /products/product-curry-leaves.html /products/curry-leaves/ 301!
 /products/product-black-tea.html /products/black-tea/ 301!
+/products/darjeeling-tea /products/black-tea/ 301!
+/products/darjeeling-tea/ /products/black-tea/ 301!
 /products/product-combo.html /products/combo-pack/ 301!
 /products/product-moringa-soap.html /products/moringa-soap/ 301!
 
@@ -425,6 +431,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /cart /pages/shop/cart.html 200
 /cart/ /pages/shop/cart.html 200
 /cart.html /pages/shop/cart.html 200
+/checkout /payment 301!
+/checkout/ /payment 301!
+/checkout.html /payment 301!
 /payment /pages/shop/payment.html 200
 /payment.html /pages/shop/payment.html 200
 /privacy-policy /pages/legal/privacy-policy.html 200
@@ -760,8 +769,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026 /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026 301!
 /blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026 301!
 /blog/moringa-quality-test-shade-dried-vs-retail-australia-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026 301!
-/blog/moringa-powder-complete-buyers-guide-australia-2026.html /404.html 410
-/blog/moringa-powder-complete-buyers-guide-australia-2026 /404.html 410
+/blog/moringa-powder-complete-buyers-guide-australia-2026.html /products/moringa-powder/ 301!
+/blog/moringa-powder-complete-buyers-guide-australia-2026 /products/moringa-powder/ 301!
 
 # === au gov batch (Aug 2026) ===
 # Is Moringa Banned in Australia? What FSANZ Actually Says (au gov Aug 2026)
