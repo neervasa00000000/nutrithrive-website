@@ -630,7 +630,7 @@ function applyFreeShippingPromoBanners() {
     document.querySelectorAll('.urgency-content').forEach(function (el) {
         const raw = el.textContent || '';
         if (!/Free shipping/i.test(raw)) return;
-        el.textContent = raw.replace(/Free shipping over \$\d+/gi, banner);
+        el.textContent = raw.replace(/Free shipping over \$\d+(?:\.\d+)?/gi, banner);
     });
 }
 

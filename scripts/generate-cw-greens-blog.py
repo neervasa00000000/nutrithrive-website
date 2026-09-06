@@ -17,8 +17,8 @@ URL = f"https://nutrithrive.com.au/blog/{SLUG}"
 TITLE = "Chemist Warehouse Greens vs $11 Moringa, Australia"
 H1 = "Chemist Warehouse Greens vs $11 Moringa, Packed in Truganina"
 META = (
-    "Vital Organic Greens is $22.99/200g at CW. I pack one shade-dried leaf at "
-    "$11/100g with an NMI PDF. Label walk-through, not a cure pitch."
+    "Chemist Warehouse Vital Organic Greens vs $11 moringa: label walk-through, "
+    "$/100g maths, and when one shade-dried leaf from Truganina is enough."
 )
 DATE = "2026-08-31"
 DATE_DISPLAY = "31 Aug 2026"
@@ -48,7 +48,7 @@ FAQS = [
     ),
     (
         "How much is NutriThrive moringa?",
-        "$11.00 / 100 g, $21.50 / 200 g, $35.00 / 400 g bundle. Free AU shipping from $49.",
+        "$11.00 / 100 g, $21.50 / 200 g, $35.00 / 400 g bundle. Free AU shipping at $49.50.",
     ),
     (
         "Is NutriThrive certified organic?",
@@ -81,8 +81,8 @@ FAQS = [
     ),
     (
         "What does 100g cost posted?",
-        "$11.00 plus about $9.69 zone-1 example equals $20.69 under $49. 200 g: $21.50 plus "
-        "about $10.04 equals $31.54. Pickup by arrangement is goods only, cash. Free shipping at $49+.",
+        "$11.00 plus about $9.69 zone-1 example equals $20.69 under $49.50. 200 g: $21.50 plus "
+        "about $10.04 equals $31.54. Pickup by arrangement is goods only, cash. Free shipping at $49.50+.",
     ),
     (
         "Can I pick up in Truganina?",
@@ -97,7 +97,7 @@ BODY_TAIL = """
 
 <div class="nt-article-cta">
 <h3>Order shade-dried moringa — $11 / 100g</h3>
-<p>One leaf, packed in Truganina. Posted $11 + $9.69 under $49, or pickup by arrangement. Same-day dispatch before 2pm on business days. NMI summary on the product page.</p>
+<p>One leaf, packed in Truganina. Posted $11 + $9.69 under $49.50, or pickup by arrangement. Same-day dispatch before 2pm on business days. NMI summary on the product page.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop moringa powder — $11</a>
 <a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
@@ -341,7 +341,7 @@ def main() -> None:
 <span class="text-2xl font-bold text-moringa-leaf">$11.00</span>
 <span class="text-sm text-on-surface-variant">/100g</span>
 </div>
-<p class="text-body-sm text-on-surface-variant mb-6">Posted +$9.69 under $49 · Pickup $11</p>
+<p class="text-body-sm text-on-surface-variant mb-6">Posted +$9.69 under $49.50 · Pickup $11</p>
 <a class="block w-full text-center bg-moringa-leaf text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop moringa powder →</a>
 </div>
 </div>

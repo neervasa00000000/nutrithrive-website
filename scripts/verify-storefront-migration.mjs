@@ -15,36 +15,45 @@ const notes = [];
 const approvedSeoChanges = {
   "blog/fathers-day-gift-under-40.html": {
     title: "Last-Minute Father's Day Gift Pack $35 From Melbourne",
+    description: "Last-minute Father&#39;s Day gift under $40 from Melbourne: $35 gift pack with honest shipping maths and same-day weekday dispatch from Truganina.",
   },
   "blog/curry-leaves-substitute-what-to-use-2026.html": {
     title: "Best Curry Leaf Substitutes in Australia: 7 Options Ranked",
+    description: "No curry leaves at home? Seven real substitutes ranked by how close they taste for Australian kitchens — plus what you should never use instead.",
   },
   "blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html": {
-    title: "Moringa Powder for Dogs in Australia: Mixing Guide &amp; Vet Checklist",
+    title: "Is Moringa Powder Safe for Dogs? AU Dose Checklist",
+    description: "Is moringa safe for dogs in Australia? Usually in moderation. Dosage by weight, mixing tips, a simple vet checklist, and when to skip leaf powder.",
   },
   "blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html": {
     title: "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha",
+    description: "Moringa vs spirulina vs matcha for Australians: price, taste, and everyday results compared — which greens powder actually earns a spot in the pantry?",
   },
   "blog/moringa-side-effects-what-happens-take-too-much-2026.html": {
-    title: "Moringa Powder Side Effects: A Practical Start-Small Guide (Australia)",
+    title: "Moringa Side Effects in Australia: Start-Small Guide",
+    description: "Moringa powder side effects in Australia: digestive upset, nausea, loose stools — who should avoid it, how to start small, and what the safety research says.",
   },
   "blog/moringa-powder-victoria-seniors-joint-health.html": {
     title: "How Victorian Seniors Add Moringa Powder to Everyday Meals",
+    description: "How Victorian seniors add moringa powder to everyday meals: gentle food-level doses, joint-health context, and what to expect from Melbourne-packed leaf.",
   },
   "blog/ag1-alternative-australia-moringa-comparison-2026.html": {
     title: "AG1 Alternative Australia: Compare Cost, Ingredients &amp; Taste",
+    description: "AG1 alternative in Australia: $150+/month vs shade-dried moringa leaf powder — cost, ingredients, taste, and when a simple pouch beats a stack.",
   },
   "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
     title: "Moringa vs Coffee Melbourne: Energy Without the Crash (2026)",
+    description: "Moringa vs coffee Melbourne: no caffeine crash — how locals use shade-dried leaf powder for steady energy instead of a third long black this spring.",
   },
   "blog/science-shade-drying-vs-sun-drying-moringa.html": {
-    title: "Shade-Dried vs Sun-Dried Moringa: Which Keeps More Nutrients?",
+    title: "Shade vs Sun-Dried Moringa: Which Keeps Nutrients?",
   },
   "blog/moringa-brands-comparison-australia-2026.html": {
     title: "Best Moringa Brands Australia 2026: Lab Tests, Dose &amp; $/100g",
   },
   "blog/how-to-choose-moringa-powder-australia-2026.html": {
-    title: "How to Choose Moringa Powder in Australia (Lab Tests &amp; Red Flags)",
+    title: "How to Choose Moringa Powder Australia — Lab Guide",
+    description: "How to choose moringa powder in Australia: bright green colour, single-ingredient labels, shade-dried leaf, lab tests, price traps, and clear red flags.",
   },
   "blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html": {
     title: "Fresh vs Dried Curry Leaves Australia: Which Wins in the Pan?",
@@ -65,7 +74,8 @@ const approvedSeoChanges = {
     title: "Moringa vs Ashwagandha: Differences, Stacking &amp; Who Each Suits",
   },
   "blog/moringa-soap-benefits-skin-guide.html": {
-    title: "Moringa Soap Benefits for Skin: What's Real vs Marketing (2026)",
+    title: "Moringa Soap Benefits: Real vs Marketing (AU 2026)",
+    description: "Moringa soap for skin in Australia: what&#39;s genuinely useful vs marketing hype, who it suits, and how a Melbourne-made bar compares to regular soap.",
   },
   "blog/curry-leaves-tea-how-to-make-benefits-2026.html": {
     title: "Curry Leaf Tea Australia: How to Brew Dried Leaves",
@@ -75,6 +85,44 @@ const approvedSeoChanges = {
   },
   "blog/moringa-for-breastfeeding-milk-supply-2026.html": {
     title: "Moringa While Breastfeeding: What Evidence Says (Australia)",
+  },
+  "blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html": {
+    title: "How Long Does Moringa Powder Last? AU Storage Guide",
+    description: "How long does moringa powder last in Australia? Unopened 12–24 months; opened ~18 months sealed and cool. Spring heat, fridge mistakes, Truganina dates.",
+  },
+  "blog/is-moringa-safe-for-children-kids-dosage-2026.html": {
+    title: "Moringa Dosage for Children Australia — Safe Age Limits (2026)",
+    description: "Moringa dosage for children by age — babies vs kids, powder amounts, age limits, and when to ask a GP. Free AU ship at $49.50 on NutriThrive powder.",
+  },
+  "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
+    description: "Moringa and berberine in Australia: what the science says on patches vs oral leaf powder, interaction risk, TGA context, and when to ask your GP.",
+  },
+  "blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html": {
+    title: "Rosabella Moringa Reviews 2026: Lab Gaps &amp; Dose Maths",
+    description: "Rosabella moringa reviews (AU 2026): lab transparency gap, $/gram vs powder, Salmonella recall notes, dose maths, and when pure leaf powder is the better buy.",
+  },
+  "blog/afl-finals-snacks-curry-leaf-tadka.html": {
+    description: "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday.",
+  },
+  "blog/chemist-warehouse-greens-vs-moringa-powder-2026.html": {
+    description: "Chemist Warehouse Vital Organic Greens vs $11 moringa: label walk-through, $/100g maths, and when one shade-dried leaf from Truganina is enough.",
+  },
+  "blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026.html": {
+    description: "Moringa avocado toast recipe for Australia: an easy anti-inflammatory breakfast in about 5 minutes, with shade-dried leaf powder tips from Melbourne.",
+  },
+  "blog/cold-brew-darjeeling-australian-spring-2026.html": {
+    description: "Cold-brew Darjeeling tea for Australian spring: fridge method, brew ratios, Melbourne tap tips, and why hot-brew-then-ice goes bitter ($7.50/100g).",
+  },
+  "blog/high-protein-moringa-recipes-australia-2026.html": {
+    description: "Ten high-protein moringa recipes (15–40g protein per serve) for Australia — tested shakes, bowls, and meals using shade-dried leaf powder daily.",
+  },
+  "blog/nutrithrive-dried-curry-leaves-tradition-health.html": {
+    title: "Dried Curry Leaves: Health Benefits &amp; Uses in Australia",
+    description: "Dried curry leaves for Australian cooks: tradition, everyday uses, storage tips, and what to expect from shade-dried leaves packed in Melbourne (2026).",
+  },
+  "blog/grow-moringa-tree-australia.html": {
+    title: "Moringa Tree Australia — Grow in Pots, Melbourne &amp; Perth (2026)",
+    description: "Grow a moringa tree in Australia — pots, Melbourne dormancy, Perth tips, spacing. Use NMI powder while it grows; free AU ship at $49.50.",
   },
 };
 
@@ -225,9 +273,9 @@ if (home) {
 
 const startHere = [
   ["blog/curry-leaves-substitute-what-to-use-2026.html", "Best Curry Leaf Substitutes in Australia: 7 Options Ranked", "$49.50"],
-  ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Moringa Powder for Dogs in Australia: Mixing Guide & Vet Checklist", null],
+  ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
   ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$49.50"],
-  ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Powder Side Effects: A Practical Start-Small Guide (Australia)", null],
+  ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
   ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$49.50"],
   ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Compare Cost, Ingredients & Taste", "$49.50"],
 ];
@@ -374,6 +422,30 @@ if (redirects) {
   if (!redirects.includes("/payment /pages/shop/payment.html 200")) errors.push("_redirects lost /payment rewrite");
   if (!redirects.includes("/thank-you.html /pages/shop/thank-you.html 200")) errors.push("_redirects lost /thank-you.html rewrite");
   if (!redirects.includes("/newsletter /pages/newsletter/ 301")) errors.push("_redirects missing /newsletter → /pages/newsletter/");
+  if (!redirects.includes("/blog/moringa-powder-complete-buyers-guide-australia-2026 /products/moringa-powder/ 301")) {
+    errors.push("_redirects missing D1 buyers-guide → powder PDP");
+  }
+  if (!redirects.includes("/products/darjeeling-tea/ /products/black-tea/ 301")) errors.push("_redirects missing D4 darjeeling-tea → black-tea");
+  if (!redirects.includes("/checkout /payment 301")) errors.push("_redirects missing D5 /checkout → /payment");
+  if (!redirects.includes("/blog/nutri-thrive-clean-moringa-protein-2026-guide /blog/moringa-vs-whey-protein-comparison-2026 301")) {
+    errors.push("_redirects missing D6 protein guide → whey compare");
+  }
+  if (!redirects.includes("/blog/gut-health-meal-plan-australia-7-day-guide-2026 /blog/how-to-add-moringa-to-diet 301")) {
+    errors.push("_redirects missing D7 gut-plan → how-to-add");
+  }
+  if (!redirects.includes("/blog/is-moringa-banned-australia-truth-2026 /404.html 410")) {
+    errors.push("_redirects lost D2 banned-truth 410 HOLD");
+  }
+  if (!redirects.includes("/blog/is-moringa-banned-in-australia /404.html 410")) {
+    errors.push("_redirects lost D3 banned-in-australia 410 HOLD");
+  }
+  if (!redirects.includes("/blog/moringa-eyesight-better-than-carrots /404.html 410")) {
+    errors.push("_redirects lost eyesight 410");
+  }
+  if (redirects.includes("/products/patches/") && /\/products\/patches\/\s+\S+\s+301/.test(redirects)) {
+    errors.push("_redirects must not 301 /products/patches/");
+  }
+  if (/edible-beauty[^\n]*301/.test(redirects)) errors.push("_redirects must not 301 edible-beauty");
 }
 
 for (const asset of [
@@ -428,6 +500,7 @@ mustNotInclude("index.html", "googletagmanager.com/gtag", "inline analytics tag"
 mustNotInclude("index.html", "data-cookie-banner", "cookie banner");
 mustNotInclude("index.html", "data-cookie-settings", "cookie settings");
 mustNotInclude("pages/shop/payment.html", "storefront-checkout", "preview checkout on payment");
+mustNotInclude("pages/shop/payment.html", "PayPal may open a new tab", "frozen PayPal handoff copy");
 
 if (fs.existsSync(path.join(SITE_ROOT, "journal/how-to-add-moringa-to-diet/index.html"))) {
   notes.push("preview journal article folders still exist under /journal/; Netlify ignore should keep storefront unpublished, and /journal/:slug 301s to /blog/:slug");

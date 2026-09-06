@@ -17,8 +17,8 @@ URL = f"https://nutrithrive.com.au/blog/{SLUG}"
 TITLE = "Last-Minute Father's Day Gift Pack $35 From Melbourne"
 H1 = "Last-Minute Father's Day Gift Pack $35 From Melbourne"
 META = (
-    "Father's Day is Sunday 6 Sep 2026. This weekend is the interstate cutoff. "
-    "I pack a $35 set in Truganina: moringa, Darjeeling, curry leaves, soap."
+    "Last-minute Father&#39;s Day gift under $40 from Melbourne: $35 gift pack with "
+    "honest shipping maths and same-day weekday dispatch from Truganina."
 )
 DATE = "2026-08-29"
 DATE_DISPLAY = "29 Aug 2026"
@@ -65,7 +65,7 @@ FAQS = [
     ),
     (
         "What does it cost with shipping?",
-        "$35 + $9.69 = $44.69 if the order is under $49. Free shipping at $49+. Pickup is $35.",
+        "$35 + $9.69 = $44.69 if the order is under $49.50. Free shipping at $49.50+. Pickup is $35.",
     ),
     (
         "What is the return policy?",
@@ -109,7 +109,7 @@ def wrap_answer_box(html: str) -> str:
     rest = html[m.end() :]
     box = (
         '<div class="answer-box">\n'
-        "<h2>Quick Answer</h2>\n"
+        "<h2>Quick answer: last-minute Father's Day gift under $40 from Melbourne</h2>\n"
         f'<p style="margin:0;">{m.group(1)}</p>\n'
         "</div>\n"
     )
@@ -136,7 +136,7 @@ BODY_TAIL = """
 <ul><li><strong>29 Aug 2026:</strong> Article published for Father's Day 2026 (Sunday 6 Sep).</li></ul>
 </div>
 <section class="nt-related-links-block">
-<h2>Related guides</h2>
+<h2>Related guides on Melbourne gifts and pantry packs</h2>
 <ul>
 <li><a href="/products/gift-pack/">Shop gift pack</a></li>
 <li><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></li>
@@ -329,7 +329,7 @@ def main() -> None:
 <span class="text-2xl font-bold text-moringa-leaf">$35.00</span>
 <span class="text-sm text-on-surface-variant">/325g set</span>
 </div>
-<p class="text-body-sm text-on-surface-variant mb-6">Free shipping over $49 · Pickup by arrangement</p>
+<p class="text-body-sm text-on-surface-variant mb-6">Free shipping over $49.50 · Pickup by arrangement</p>
 <a class="block w-full text-center bg-moringa-leaf text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/gift-pack/">Shop Gift Pack →</a>
 </div>
 </div>
