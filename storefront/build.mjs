@@ -2817,7 +2817,7 @@ function main() {
     for (const meta of articles) {
       const slug = meta.slug;
       const file = path.join(SITE, "blog", `${slug}.html`);
-      const liveSeo = extractTrackedSeo(`blog/${slug}.html`) || extractSeo(file);
+      const liveSeo = extractTrackedSeo(`blog/${slug}.html`) || extractSeo(file) || {};
       if (JOURNAL_REDIRECTS[slug]) {
         emit(`blog/${slug}.html`, redirectPage(slug, JOURNAL_REDIRECTS[slug], liveSeo), `blog/${slug}.html`);
         wrapped += 1;
