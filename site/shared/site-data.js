@@ -34,7 +34,7 @@ window.NT_SITE_DATA = {
       if (window.ShippingRates?.getAuFreeShippingBannerText) {
         return window.ShippingRates.getAuFreeShippingBannerText();
       }
-      return 'Free shipping over $49';
+      return 'Free AU shipping at $49.50';
     },
   },
   rating: { value: '4.9', count: 12 },
