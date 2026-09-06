@@ -3,16 +3,27 @@ const VIEWED_KEY = "nt-storefront-viewed";
 const ASSET_VERSION = "20260831-2";
 const GOOGLE_MEASUREMENT_ID = "G-WH21SW75WP";
 
-// Queue Consent Mode before any Google measurement command. The external tag
-// remains blocked until the visitor explicitly enables analytics.
 window.dataLayer = window.dataLayer || [];
 window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
-window.gtag("consent", "default", {
-  analytics_storage: "denied",
-  ad_storage: "denied",
-  ad_user_data: "denied",
-  ad_personalization: "denied",
-});
+
+function loadOptionalScript(src, id) {
+  if (document.getElementById(id)) return;
+  const script = document.createElement("script");
+  script.id = id;
+  script.src = src;
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+function loadGoogleAnalytics() {
+  if (document.getElementById("nt-google-analytics")) return;
+  window.gtag("js", new Date());
+  window.gtag("config", GOOGLE_MEASUREMENT_ID, { anonymize_ip: true, allow_google_signals: false });
+  loadOptionalScript(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`, "nt-google-analytics");
+  window.dispatchEvent(new CustomEvent("nt-analytics-ready"));
+}
+
+loadGoogleAnalytics();
 
 function freshAsset(url) {
   if (!url || !url.startsWith("/assets/") || url.includes("?v=")) return url;
@@ -50,8 +61,7 @@ function analyticsItems(items) {
 }
 
 function trackEvent(name, params = {}) {
-  const consent = readConsent();
-  if (!consent?.analytics || typeof window.gtag !== "function") return false;
+  if (typeof window.gtag !== "function") return false;
   window.gtag("event", name, params);
   return true;
 }
@@ -557,7 +567,6 @@ function bindPdpVariant() {
   applyPdpVariant(select.value, false);
 }
 
-const CONSENT_KEY = "nt-storefront-cookie-consent";
 const OFFER_KEY = "nt-storefront-welcome-offer";
 const SIGNUP_KEY = "nt-storefront-newsletter-signup";
 
@@ -635,93 +644,6 @@ function bindWelcomeOffer() {
   }, 7000);
 }
 
-function readConsent() {
-  try { return JSON.parse(localStorage.getItem(CONSENT_KEY) || "null"); } catch { return null; }
-}
-
-function loadOptionalScript(src, id) {
-  if (document.getElementById(id)) return;
-  const script = document.createElement("script");
-  script.id = id;
-  script.src = src;
-  script.async = true;
-  document.head.appendChild(script);
-}
-
-function applyOptionalConsent(consent) {
-  if (consent?.analytics) {
-    window.gtag("consent", "update", {
-      analytics_storage: "granted",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
-    window.gtag("js", new Date());
-    window.gtag("config", GOOGLE_MEASUREMENT_ID, { anonymize_ip: true, allow_google_signals: false });
-    loadOptionalScript(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`, "nt-google-analytics");
-  } else {
-    window.gtag("consent", "update", {
-      analytics_storage: "denied",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
-  }
-  if (consent?.marketing && !window.rdt) {
-    const rdt = function () {
-      if (rdt.sendEvent) rdt.sendEvent.apply(rdt, arguments);
-      else rdt.callQueue.push(arguments);
-    };
-    rdt.callQueue = [];
-    window.rdt = rdt;
-    loadOptionalScript("https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_ihc1rio99viy", "nt-reddit-pixel");
-    window.rdt("init", "a2_ihc1rio99viy");
-    window.rdt("track", "PageVisit");
-  }
-}
-
-function bindCookieChoices() {
-  const banner = document.querySelector("[data-cookie-banner]");
-  const modal = document.querySelector("[data-cookie-modal]");
-  if (!banner || !modal) return;
-  const analytics = modal.querySelector("[data-cookie-analytics]");
-  const marketing = modal.querySelector("[data-cookie-marketing]");
-  let lastFocus = null;
-  const save = (analyticsValue, marketingValue) => {
-    const next = { necessary: true, analytics: analyticsValue, marketing: marketingValue, savedAt: new Date().toISOString(), version: 1 };
-    localStorage.setItem(CONSENT_KEY, JSON.stringify(next));
-    applyOptionalConsent(next);
-    window.dispatchEvent(new CustomEvent("nt-analytics-ready"));
-    banner.hidden = true;
-    modal.hidden = true;
-    document.body.classList.remove("modal-open");
-    announce("Cookie choices saved");
-    lastFocus?.focus?.();
-  };
-  const open = (trigger) => {
-    const current = readConsent();
-    analytics.checked = Boolean(current?.analytics);
-    marketing.checked = Boolean(current?.marketing);
-    lastFocus = trigger || document.activeElement;
-    modal.hidden = false;
-    document.body.classList.add("modal-open");
-    modal.querySelector("[data-cookie-save]")?.focus();
-  };
-  document.querySelectorAll("[data-cookie-settings]").forEach((button) => button.addEventListener("click", () => open(button)));
-  banner.querySelector("[data-cookie-reject]")?.addEventListener("click", () => save(false, false));
-  banner.querySelector("[data-cookie-accept]")?.addEventListener("click", () => save(true, true));
-  banner.querySelector("[data-cookie-manage]")?.addEventListener("click", (event) => open(event.currentTarget));
-  modal.querySelector("[data-cookie-save]")?.addEventListener("click", () => save(analytics.checked, marketing.checked));
-  modal.querySelectorAll("[data-cookie-close]").forEach((button) => button.addEventListener("click", () => {
-    modal.hidden = true;
-    document.body.classList.remove("modal-open");
-    lastFocus?.focus?.();
-  }));
-  const existing = readConsent();
-  if (!existing) banner.hidden = false;
-  else applyOptionalConsent(existing);
-}
-
 function isLiveSite() {
   return document.documentElement.dataset.ntLive === "1";
 }
@@ -732,7 +654,6 @@ function bindGrowthFeatures() {
     bindUnsubscribeForm();
     bindWelcomeOffer();
   }
-  bindCookieChoices();
 }
 
 function bindJournalSearch() {
