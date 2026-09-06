@@ -476,7 +476,7 @@ function fitSeoTitle(value) {
 function fitMetaDescription(value) {
   let description = humanCopy(stripTags(value))
     .replace(/\s+/g, " ")
-    .replace(/\.['’]?t\s+(?:know|share|eat|re|s)\b.*$/i, ".")
+    .replace(/\.\s+(?:Don't|Won't|Can't)\s+(?:know|share|eat)\b.*$/i, ".")
     .trim();
   if (description.length < 120) {
     const lower = description.toLowerCase();
@@ -2206,7 +2206,7 @@ function cityPage(city, slug) {
           <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
           <a class="btn btn-secondary" href="/shipping">Shipping times</a>
         </div>
-        <p>Sizes: $11/100g · $21.50/200g · 400g $35. Free AU shipping at $49.50.</p>
+        <p>Free AU shipping at $49.50.</p>
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap-narrow">
