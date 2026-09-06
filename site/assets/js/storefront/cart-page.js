@@ -41,57 +41,6 @@ function checkoutPath() {
   return isLiveSite() ? "/payment" : "/checkout/";
 }
 
-function cartIdSet(items) {
-  return new Set(items.map((item) => item.id));
-}
-
-function onlyIds(ids, expected) {
-  if (ids.size !== expected.length) return false;
-  return expected.every((id) => ids.has(id));
-}
-
-function freeShipPathCopy(items, subtotal) {
-  if (subtotal >= AU_FREE_SHIP) return "";
-  const ids = cartIdSet(items);
-  const away = money(AU_FREE_SHIP - subtotal);
-  if (onlyIds(ids, ["moringa-400g", "curry-leaves"])) {
-    return "Add Darjeeling tea $7.50 to reach $49.50.";
-  }
-  if (onlyIds(ids, ["moringa-400g", "black-tea"])) {
-    return "Add curry leaves $7 to reach $49.50.";
-  }
-  if (onlyIds(ids, ["moringa-400g"])) {
-    return "Add curry $7 and Darjeeling $7.50 to reach $49.50 and drop postage.";
-  }
-  if (onlyIds(ids, ["gift-pack", "moringa-powder"])) {
-    return "Still $3.50 short. Add soap $7 (or 200g instead of 100g) to clear $49.50.";
-  }
-  if (onlyIds(ids, ["gift-pack"])) {
-    return "Add 200g moringa $21.50 to reach $56.50. Curry and tea are already in the pack.";
-  }
-  if (onlyIds(ids, ["combo-pack", "black-tea", "moringa-soap"])) {
-    return "Still under $49.50. Add the 400g bundle $35 to reach $52.";
-  }
-  if (onlyIds(ids, ["combo-pack"])) {
-    return "Add the 400g bundle $35 to reach $52.";
-  }
-  if (onlyIds(ids, ["moringa-powder"])) {
-    return "The $11 bag pays postage. Add 400g $35 + curry $7 + tea $7.50.";
-  }
-  if (onlyIds(ids, ["moringa-200g"])) {
-    return "Add the 400g bundle $35 to reach $56.50.";
-  }
-  if (onlyIds(ids, ["curry-leaves"])) {
-    return "Add 400g $35 and Darjeeling $7.50 to reach $49.50.";
-  }
-  if (onlyIds(ids, ["black-tea"])) {
-    return "Add 400g $35 and curry $7 to reach $49.50.";
-  }
-  if (onlyIds(ids, ["moringa-soap"])) {
-    return "Add 400g $35 and Darjeeling $7.50 to reach $49.50.";
-  }
-  return `You're ${away} from free AU shipping.`;
-}
 
 function mapCartItems(items) {
   return (Array.isArray(items) ? items : [])
@@ -280,7 +229,7 @@ function renderCart() {
     const sub = items.reduce((n, i) => n + Number(i.price || 0) * Number(i.qty || 1), 0);
     if (!items.length) {
       setLayout(true);
-      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Fastest free AU shipping at $49.50: 400g moringa $35 + curry $7 + Darjeeling $7.50. Or start with Gift Pack $35 (postage still applies until you add on).</p><a class="btn btn-primary" href="${shopPath()}moringa-powder/?v=moringa-400g">Build the $49.50 cart</a> <a class="btn btn-secondary" href="${shopPath()}gift-pack/">Shop Gift Pack $35</a><p><a href="${shopPath()}">Shop the range</a></p><p>Pay with PayPal or card at checkout.</p></div>`;
+      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free AU shipping at $49.50.</p><a class="btn btn-primary" href="${shopPath()}">Shop the range</a> <a class="btn btn-secondary" href="${shopPath()}moringa-powder/">Shop moringa</a><p>Pay with PayPal or card at checkout.</p></div>`;
       summary.innerHTML = "";
       renderRecs([], 0);
       return;
@@ -316,10 +265,6 @@ function renderCart() {
     const freeShippingMessage = sub >= AU_FREE_SHIP
       ? "Free Australian shipping unlocked"
       : `${money(AU_FREE_SHIP - sub)} away from free Australian shipping`;
-    const pathCopy = freeShipPathCopy(items, sub);
-    const freeShipPathNote = pathCopy
-      ? `<p class="purchase-note shipping-path">${esc(pathCopy)}</p>`
-      : "";
     summary.innerHTML = `
     <h2>Order summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
@@ -331,7 +276,6 @@ function renderCart() {
         <span style="width:${freeShippingPercent.toFixed(2)}%"></span>
       </div>
     </div>
-    ${freeShipPathNote}
     ${isLiveSite() ? '<p class="hint cart-checkout-note">Final shipping and total are confirmed at checkout.</p>' : ""}
     <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Continue to secure checkout <span aria-hidden="true">→</span></a>
     <ul class="cart-assurances" aria-label="Checkout information">
