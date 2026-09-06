@@ -900,7 +900,7 @@ function homepage() {
         <a class="btn btn-secondary" href="/products/gift-pack/">Shop Gift Pack $35</a>
         <a class="btn btn-secondary" href="/documents/nutrithrive-lab-report-summary.pdf">See our lab report</a>
       </div>
-      <p class="purchase-note shipping-path">Free AU shipping at $49.50 — easiest cart: 400g powder $35 + curry $7 + tea $7.50.</p>
+      <p class="purchase-note">Free AU shipping at $49.50.</p>
       ${stars()} <span style="font-size:14px;color:var(--color-text-secondary)">from Google reviews</span>
     </div>
     <div class="hero-photo">
@@ -925,7 +925,7 @@ function homepage() {
       <a href="/shop/">Shop all</a>
     </div>
     <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
-    <p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping at $49.50. Fastest cart: 400g moringa $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift Pack $35 still pays postage. Free AU ship: add 200g moringa ($21.50) or a second Gift Pack — curry and tea are already inside.</p>
+    <p class="purchase-note" style="margin-top:16px">Free AU shipping at $49.50.</p>
   </div>
 </section>
 <section class="section band proof-story">
@@ -1022,7 +1022,7 @@ function shopPage() {
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
-        <div class="wrap"><p class="purchase-note shipping-path" style="margin-top:16px">Free AU shipping at $49.50. Fastest cart: 400g $35 + curry $7 + tea $7.50 = $49.50.</p></div>
+        <div class="wrap"><p class="purchase-note" style="margin-top:16px">Free AU shipping at $49.50.</p></div>
       </section>
       ${googleReviewsSection()}`,
   });
@@ -1032,7 +1032,7 @@ const PDP = {
   "moringa-powder": {
     title: "Moringa Powder Australia — NMI Lab-Tested, Shade-Dried | From $11",
     description:
-      "Buy moringa powder Australia from $11/100g. NMI lab-tested, shade-dried leaf, packed in Truganina Melbourne. 100g pays postage; free AU ship at $49.50 (400g + curry + tea).",
+      "Buy moringa powder Australia from $11/100g. NMI lab-tested, shade-dried leaf, packed in Truganina Melbourne. Free AU shipping at $49.50.",
     forceSeo: true,
     current: "Moringa",
     product: PRODUCTS[0],
@@ -1105,7 +1105,7 @@ const PDP = {
   "curry-leaves": {
     title: "Dried Curry Leaves Australia — Shade-Dried Kari Leaf | $7",
     description:
-      "Buy dried curry leaves Australia $7/30g. Shade-dried kari leaf, packed in Truganina. Pair with 400g moringa $35 + Darjeeling $7.50 = $49.50 free AU ship.",
+      "Buy dried curry leaves Australia $7/30g. Shade-dried kari leaf, packed in Truganina. Free AU shipping at $49.50.",
     forceSeo: true,
     current: "Curry Leaves",
     product: PRODUCTS.find((p) => p.id === "curry-leaves"),
@@ -1132,7 +1132,7 @@ const PDP = {
   "black-tea": {
     title: "Darjeeling Black Tea Australia — First Flush | $7.50 | NutriThrive",
     description:
-      "Buy first-flush Darjeeling black tea Australia $7.50/100g. Packed in Truganina Melbourne. Add 400g moringa $35 + curry $7 to hit $49.50 free AU shipping.",
+      "Buy first-flush Darjeeling black tea Australia $7.50/100g. Packed in Truganina Melbourne. Free AU shipping at $49.50.",
     forceSeo: true,
     current: "Tea",
     product: PRODUCTS.find((p) => p.id === "black-tea"),
@@ -1159,7 +1159,7 @@ const PDP = {
   "moringa-soap": {
     title: "Moringa Soap Australia — Handmade $7 | NutriThrive",
     description:
-      "Handmade moringa soap $7 from Truganina. Add into a $49.50 free-ship cart (400g powder + curry + tea) or Gift Pack $35.",
+      "Handmade moringa soap $7 from Truganina. Free AU shipping at $49.50.",
     forceSeo: true,
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "moringa-soap"),
@@ -1186,7 +1186,7 @@ const PDP = {
   "combo-pack": {
     title: "Combo Pack $17 — 100g Moringa + 30g Curry (No Tea) | NutriThrive",
     description:
-      "Combo $17 = 100g moringa + 30g curry leaves — no tea. Postage under $49.50; add 400g ($35) to hit $52 free AU ship.",
+      "Combo $17 = 100g moringa + 30g curry leaves — no tea. Packed in Truganina. Free AU shipping at $49.50.",
     forceSeo: true,
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "combo-pack"),
@@ -1234,22 +1234,7 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
-  const purchaseNotes = {
-    "gift-pack":
-      "Taxes included. This pack is $35, so Australian postage still applies. Free AU ship at $49.50: add the 400g moringa bundle ($35) for a $70 cart, or add a second Gift Pack. Do not add curry or tea alone — both are already in this pack.",
-    "moringa-powder":
-      "Taxes included.",
-    "combo-pack":
-      "Taxes included. Shipping calculated at checkout. This combo is $17, so Australian postage still applies. Fastest free-ship cart: add the 400g moringa bundle ($35) to reach $52.",
-    "curry-leaves":
-      "Taxes included. Shipping calculated at checkout. This pack is $7, so AU postage still applies. Add 400g moringa ($35) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping.",
-    "black-tea":
-      "Taxes included. Shipping calculated at checkout. This pack is $7.50, so AU postage still applies. Add 400g moringa ($35) and dried curry leaves ($7) to reach $49.50 free AU shipping.",
-    "moringa-soap":
-      "Taxes included. Shipping calculated at checkout. This bar is $7, so AU postage still applies. Add 400g moringa ($35) and Darjeeling tea ($7.50) to reach $49.50 free AU shipping.",
-  };
-  const purchaseNote = purchaseNotes[slug] || "Taxes included. Shipping calculated at checkout.";
-  const shippingPath = Boolean(purchaseNotes[slug]);
+  const purchaseNote = "Taxes included. Shipping calculated at checkout.";
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
   const related = PRODUCTS.filter((item) => {
@@ -1378,7 +1363,7 @@ function pdpPage(slug, d) {
           <p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>
           ${variantSelect}
           ${variantHint}
-          ${slug === "moringa-powder" ? `<p class="purchase-note shipping-path">100g $11 and 200g $21.50 pay AU postage. Free AU ship at $49.50: choose 400g $35 and add curry $7 + tea $7.50 in cart — or Gift Pack $35 + 200g.</p>` : ""}
+          ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $49.50.</p>` : ""}
           <div class="purchase-panel">
             <div class="qty">
               <label for="qty">Quantity</label>
@@ -1392,7 +1377,7 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
-            <p class="purchase-note${shippingPath ? " shipping-path" : ""}">${esc(purchaseNote)}</p>
+            <p class="purchase-note">${esc(purchaseNote)}</p>
           </div>
           <ul class="pdp-proof">${proofs}</ul>
           <p class="pdp-service-note">Same-day dispatch before 2pm, Monday to Friday. Seven-day returns on unopened products.</p>
@@ -1941,7 +1926,7 @@ function cartPage() {
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
-          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Fastest free AU shipping at $49.50: 400g moringa $35 + curry $7 + Darjeeling $7.50. Or start with Gift Pack $35 (postage still applies until you add on).</p><a class="btn btn-primary" href="${shop}moringa-powder/?v=moringa-400g">Build the $49.50 cart</a> <a class="btn btn-secondary" href="${shop}gift-pack/">Shop Gift Pack $35</a><p><a href="${shop}">Shop the range</a></p><p>Pay with PayPal or card at checkout.</p></div></div>
+          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $49.50.</p><a class="btn btn-primary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa</a><p>Pay with PayPal or card at checkout.</p></div></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
         <div id="cart-recs"></div>
@@ -2173,27 +2158,27 @@ function cityPage(city, slug) {
     Melbourne: {
       title: "Moringa Powder Melbourne — Packed in Truganina | From $11",
       h1: "Moringa Powder for Melbourne",
-      description: "Buy moringa powder Melbourne from $11/100g. NMI lab-tested, shade-dried, packed Truganina VIC. Free AU ship at $49.50 (400g + curry + tea).",
+      description: "Buy moringa powder Melbourne from $11/100g. NMI lab-tested, shade-dried, packed Truganina VIC. Free AU ship at $49.50.",
     },
     Sydney: {
       title: "Moringa Powder Sydney — AU Shipping from Truganina | From $11",
       h1: "Moringa Powder for Sydney",
-      description: "Order moringa powder to Sydney from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+      description: "Order moringa powder to Sydney from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50.",
     },
     Perth: {
       title: "Moringa Powder Perth — Shipped from Truganina | From $11",
       h1: "Moringa Powder for Perth",
-      description: "Order moringa powder to Perth from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+      description: "Order moringa powder to Perth from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50.",
     },
     Brisbane: {
       title: "Moringa Powder Brisbane — Shipped from Truganina | From $11",
       h1: "Moringa Powder for Brisbane",
-      description: "Order moringa powder to Brisbane from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+      description: "Order moringa powder to Brisbane from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50.",
     },
     Adelaide: {
       title: "Moringa Powder Adelaide — Shipped from Truganina | From $11",
       h1: "Moringa Powder for Adelaide",
-      description: "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+      description: "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50.",
     },
   }[city];
   const pouchLine = city === "Melbourne"
@@ -2221,7 +2206,7 @@ function cityPage(city, slug) {
           <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
           <a class="btn btn-secondary" href="/shipping">Shipping times</a>
         </div>
-        <p>Sizes: $11/100g · $21.50/200g · 400g $35. Under $49.50 still pays AU postage. Free AU ship: 400g $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift Pack $35 still pays postage. Free AU ship: add 200g moringa ($21.50) or a second Gift Pack — curry and tea are already inside.</p>
+        <p>Sizes: $11/100g · $21.50/200g · 400g $35. Free AU shipping at $49.50.</p>
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap-narrow">
