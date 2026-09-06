@@ -347,7 +347,7 @@ if (thanks) {
   mustInclude("pages/shop/thank-you.html", 'data-nt-live="1"', "live flag");
   mustInclude("pages/shop/thank-you.html", "/assets/js/storefront/thank-you-page", "order thank-you script");
   mustInclude("pages/shop/thank-you.html", 'id="order-id"', "order reference");
-  mustNotInclude("pages/shop/thank-you.html", "googletagmanager.com/gtag", "analytics loaded before consent");
+  mustNotInclude("pages/shop/thank-you.html", "googletagmanager.com/gtag", "inline analytics tag");
   mustNotInclude("pages/shop/thank-you.html", "design-system.min.css", "old design system CSS");
   mustNotInclude("pages/shop/thank-you.html", "footer-v2", "old footer");
   mustNotInclude("pages/shop/thank-you.html", "thank-you-icon", "old checkmark block");
@@ -409,12 +409,14 @@ for (const id of paypalIds) {
 }
 
 const storefrontSiteJs = read("assets/js/storefront/site.js");
-if (!storefrontSiteJs.includes("G-WH21SW75WP") || !storefrontSiteJs.includes("applyOptionalConsent")) {
-  errors.push("consent-aware GA loader is missing from storefront site script");
+if (!storefrontSiteJs.includes("G-WH21SW75WP") || !storefrontSiteJs.includes("loadGoogleAnalytics")) {
+  errors.push("GA loader is missing from storefront site script");
 }
-if (!storefrontSiteJs.includes('window.gtag("consent", "default"') ||
-    !storefrontSiteJs.includes('analytics_storage: "granted"')) {
-  errors.push("Google Consent Mode default/granted transition is missing");
+if (storefrontSiteJs.includes("bindCookieChoices") || storefrontSiteJs.includes("applyOptionalConsent")) {
+  errors.push("cookie consent gate is still in the storefront site script");
+}
+if (!storefrontSiteJs.includes("googletagmanager.com/gtag/js")) {
+  errors.push("storefront site script no longer loads the Google tag");
 }
 for (const eventName of ["view_item_list", "select_item", "view_item", "add_to_cart", "remove_from_cart"]) {
   if (!storefrontSiteJs.includes(eventName)) errors.push(`storefront site script lost GA ${eventName} event`);
@@ -422,7 +424,9 @@ for (const eventName of ["view_item_list", "select_item", "view_item", "add_to_c
 const cartJs = read("assets/js/storefront/cart-page.js");
 if (!cartJs.includes("view_cart")) errors.push("cart page script lost GA view_cart event");
 if (!cartJs.includes("shipping-progress")) errors.push("cart page script lost free-shipping progress indicator");
-mustNotInclude("index.html", "googletagmanager.com/gtag", "analytics loaded before consent");
+mustNotInclude("index.html", "googletagmanager.com/gtag", "inline analytics tag");
+mustNotInclude("index.html", "data-cookie-banner", "cookie banner");
+mustNotInclude("index.html", "data-cookie-settings", "cookie settings");
 mustNotInclude("pages/shop/payment.html", "storefront-checkout", "preview checkout on payment");
 
 if (fs.existsSync(path.join(SITE_ROOT, "journal/how-to-add-moringa-to-diet/index.html"))) {

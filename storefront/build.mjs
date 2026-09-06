@@ -710,12 +710,9 @@ function layout({
     <button class="offer-decline" type="button" data-offer-close>No thanks, continue shopping</button>
   </div>
 </section>`;
-  const cookieNote = LIVE_MODE
-    ? "Analytics and marketing tools run only with your permission."
-    : "No optional analytics or marketing scripts are connected in this local preview.";
   const footerNote = LIVE_MODE
-    ? `<a href="${r.privacy}">Privacy policy</a> · <button class="footer-text-button" type="button" data-cookie-settings>Cookie settings</button>`
-    : `<a href="${r.privacy}">Privacy policy</a> · <button class="footer-text-button" type="button" data-cookie-settings>Cookie settings</button>. This is a design preview, not the live store.`;
+    ? `<a href="${r.privacy}">Privacy policy</a>`
+    : `<a href="${r.privacy}">Privacy policy</a>. This is a design preview, not the live store.`;
 
   return `<!DOCTYPE html>
 <html lang="en-AU"${LIVE_MODE ? ' data-nt-live="1"' : ""}>
@@ -858,22 +855,6 @@ ${CONTRACT}
   </div>
 </footer>
 ${welcomeOffer}
-<section class="cookie-banner" data-cookie-banner hidden aria-label="Cookie preferences">
-  <div><h2>Cookies</h2><p>Cart storage stays on. Optional analytics need your OK.</p></div>
-  <div class="cookie-actions"><button class="btn btn-secondary" type="button" data-cookie-reject>Reject</button><button class="btn btn-secondary" type="button" data-cookie-manage>Manage</button><button class="btn btn-primary" type="button" data-cookie-accept>Accept</button></div>
-</section>
-<section class="cookie-modal" data-cookie-modal hidden>
-  <button class="modal-backdrop" type="button" data-cookie-close aria-label="Close cookie settings"></button>
-  <div class="cookie-card" role="dialog" aria-modal="true" aria-labelledby="cookie-title">
-    <button class="modal-close" type="button" data-cookie-close aria-label="Close cookie settings">×</button><h2 id="cookie-title">Cookie settings</h2>
-    <p>Choose which optional technologies we may use. Your cart and basic preferences need essential browser storage and cannot be switched off.</p>
-    <div class="cookie-choice"><span><strong>Necessary</strong><small>Cart, checkout and privacy preferences</small></span><strong>Always on</strong></div>
-    <label class="cookie-choice"><span><strong>Analytics</strong><small>Helps us understand visits and improve pages</small></span><input type="checkbox" data-cookie-analytics></label>
-    <label class="cookie-choice"><span><strong>Marketing</strong><small>Supports relevant offers and campaign measurement</small></span><input type="checkbox" data-cookie-marketing></label>
-    <p class="form-note">${cookieNote}</p>
-    <button class="btn btn-primary btn-block" type="button" data-cookie-save>Save my choices</button>
-  </div>
-</section>
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 ${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-cart.js?v=${ASSET_VERSION}" defer></script>` : ""}
@@ -1828,7 +1809,7 @@ function privacyPage() {
   return layout({
     title: "Privacy Policy and Website Terms | NutriThrive",
     description:
-      "NutriThrive privacy policy. How we use your data, cookies, orders, and refunds for our Melbourne-based superfoods store with Australia-wide delivery.",
+      "NutriThrive privacy policy. How we use your data, orders, and refunds for our Melbourne-based superfoods store with Australia-wide delivery.",
     canonicalPath: "/privacy",
     extraHead: jsonLd(
       breadcrumbSchema([
@@ -1843,7 +1824,7 @@ function privacyPage() {
       </nav>
       <article class="page-intro wrap-narrow policy-doc">
         <h1>Privacy Policy, Terms and Conditions</h1>
-        <p class="updated">Last updated 31 August 2026</p>
+        <p class="updated">Last updated 6 September 2026</p>
 
         <h2>Privacy Policy</h2>
         <h3>1. Introduction</h3>
@@ -1857,7 +1838,7 @@ function privacyPage() {
         <p>We collect information reasonably necessary for our business functions:</p>
         <ul>
           <li><strong>Identity and contact:</strong> Name, email, mobile number, and shipping address.</li>
-          <li><strong>Technical data:</strong> Cookies (for cart functionality), IP address, and browser type.</li>
+          <li><strong>Technical data:</strong> Browser storage for your cart, IP address, browser type, and Google Analytics usage data.</li>
           <li><strong>Marketing preferences:</strong> Your email address, consent choice, signup source, and the date and time you subscribed.</li>
           <li><strong>Payment data:</strong> We do not store credit card details. All payments are processed via PayPal. We only receive transaction confirmation.</li>
         </ul>
@@ -1869,14 +1850,15 @@ function privacyPage() {
           <li><strong>Improvement:</strong> Analyzing website usage to improve our service.</li>
         </ul>
 
-        <h3>4. Cookies and similar storage</h3>
-        <p>Necessary browser storage remembers your cart and privacy choices. Optional analytics or marketing technologies are used only according to the choices you make in Cookie settings. You can change those choices at any time from the footer. Rejecting optional technologies does not prevent you from shopping.</p>
+        <h3>4. Browser storage and analytics</h3>
+        <p>Your cart is stored in your browser on this device so items stay while you shop. We use Google Analytics to measure visits, page views, and checkout steps. Google may set its own analytics cookies. We do not show a cookie banner and we do not use advertising pixels. You can block analytics cookies in your browser settings if you prefer.</p>
 
         <h3>5. Sharing your data</h3>
         <p>We do not sell your data. We share necessary data with:</p>
         <ul>
           <li><strong>Shipping partners:</strong> Sendle, Australia Post, and international couriers for delivery.</li>
           <li><strong>Payment gateways:</strong> PayPal.</li>
+          <li><strong>Analytics:</strong> Google Analytics, to understand how the website is used.</li>
           <li><strong>Email service providers:</strong> Only to manage subscriptions, deliver messages, record consent, and process unsubscribes.</li>
         </ul>
 
@@ -2170,6 +2152,17 @@ function thankYouPage() {
   });
 }
 
+function cityEtaLine(city) {
+  const parts = [
+    { city: "Melbourne", label: "Metro Melb 1–2 days" },
+    { city: "Sydney", label: "Sydney 2–4" },
+    { city: "Brisbane", label: "Brisbane 2–4" },
+    { city: "Adelaide", label: "Adelaide 2–4" },
+    { city: "Perth", label: "Perth 4–6" },
+  ];
+  return parts.map((part) => (part.city === city ? `<strong>${part.label}</strong>` : part.label)).join(" · ");
+}
+
 function cityPage(city, slug) {
   const citySeo = {
     Melbourne: {
@@ -2180,18 +2173,27 @@ function cityPage(city, slug) {
     Sydney: {
       title: "Moringa Powder Sydney — AU Shipping from Truganina | From $11",
       h1: "Moringa Powder for Sydney",
-      description: "Order moringa powder to Sydney from $11/100g. Packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+      description: "Order moringa powder to Sydney from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
     },
     Perth: {
       title: "Moringa Powder Perth — Shipped from Truganina | From $11",
       h1: "Moringa Powder for Perth",
-      description: "Order moringa powder to Perth from $11/100g. Packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+      description: "Order moringa powder to Perth from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
     },
-  }[city] || {
-    title: `Buy Moringa Powder in ${city} | NutriThrive`,
-    h1: `Moringa Powder for ${city}`,
-    description: `Buy farm-grown, lab-tested moringa powder delivered to ${city}. Shade-dried, packed in Truganina and shipped with tracking from $11 per 100g.`,
-  };
+    Brisbane: {
+      title: "Moringa Powder Brisbane — Shipped from Truganina | From $11",
+      h1: "Moringa Powder for Brisbane",
+      description: "Order moringa powder to Brisbane from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+    },
+    Adelaide: {
+      title: "Moringa Powder Adelaide — Shipped from Truganina | From $11",
+      h1: "Moringa Powder for Adelaide",
+      description: "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50 (400g + curry + tea).",
+    },
+  }[city];
+  const pouchLine = city === "Melbourne"
+    ? "Melbourne customers get the same pouch we ship Australia-wide — one Truganina warehouse, one batch record, no contract-pack swap."
+    : `${city} customers get the same pouch as Melbourne, not a different contract pack.`;
   const canonicalPath = slug === "melbourne" ? "/melbourne" : `/moringa-${slug}`;
   return layout({
     title: citySeo.title,
@@ -2210,20 +2212,24 @@ function cityPage(city, slug) {
       <section class="city-hero wrap">
         <h1>${citySeo.h1}</h1>
         <p class="lede">Packed in Truganina, Melbourne, and sent with tracking. Same powder, same lab summary, same $11/100g.</p>
-        <p>Free AU shipping at $49.50: 400g moringa $35 + curry $7 + Darjeeling tea $7.50.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
-          <a class="btn btn-secondary" href="/shipping/">Shipping times</a>
+          <a class="btn btn-secondary" href="/shipping">Shipping times</a>
         </div>
+        <p>Sizes: $11/100g · $21.50/200g · 400g $35. Under $49.50 still pays AU postage. Free AU ship: 400g $35 + curry $7 + Darjeeling $7.50 = $49.50. Gift Pack $35 is the same path.</p>
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap-narrow">
           <h2>What arrives</h2>
-          <p>Farm-grown, shade-dried moringa leaf powder manufactured by NutriThrive and tested in Australia. Order before 2pm Melbourne time Monday to Friday for same-day dispatch.</p>
+          <p>What arrives: resealable pouch of shade-dried moringa leaf powder, packed in Truganina VIC. NMI lab summary available on the product page. Ingredient line: 100% moringa leaf — no fillers.</p>
+          <h2>Shipping times</h2>
+          <p>Dispatch: before 2pm Mon–Fri Melbourne time (same-day handoff when carriers allow).</p>
+          <p>Typical AU transit after dispatch: ${cityEtaLine(city)}. Tracking on every order.</p>
           <h2>Why not a local warehouse?</h2>
-          <p>One warehouse keeps batch records honest. ${city} customers get the same pouch as Melbourne, not a different contract pack.</p>
+          <p>One warehouse keeps batch records honest. ${pouchLine}</p>
         </div>
-      </section>`,
+      </section>
+      ${googleReviewsSection()}`,
   });
 }
 
