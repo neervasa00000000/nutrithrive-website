@@ -7,6 +7,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { REPO_ROOT, SITE_ROOT } from "./lib/paths.mjs";
+import {
+  looksTruncatedMeta,
+  metaContent,
+  naiveMetaContent,
+  normalizeMetaText,
+  sameSeoText,
+  visibleLength,
+} from "./lib/seo-meta.mjs";
 
 const ROOT = REPO_ROOT;
 const LIVE = "https://nutrithrive.com.au";
@@ -87,12 +95,16 @@ const approvedSeoChanges = {
     title: "Moringa While Breastfeeding: What Evidence Says (Australia)",
   },
   "blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html": {
-    title: "How Long Does Moringa Powder Last? AU Storage Guide",
-    description: "How long does moringa powder last in Australia? Unopened 12–24 months; opened ~18 months sealed and cool. Spring heat, fridge mistakes, Truganina dates.",
+    title: "How Long Does Moringa Powder Last in Australia? (Opened + Sealed)",
+    description: "How long does moringa powder last in Australia? Unopened 12–24 months; opened ~18 months if sealed and cool, spring heat, fridge mistakes, Truganina pack dates.",
   },
   "blog/is-moringa-safe-for-children-kids-dosage-2026.html": {
-    title: "Moringa Dosage for Children Australia — Safe Age Limits (2026)",
-    description: "Moringa dosage for children by age — babies vs kids, powder amounts, age limits, and when to ask a GP. Free AU ship at $49.50 on NutriThrive powder.",
+    title: "Is Moringa Safe for Kids in Australia? Dosage by Age",
+    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $49.50.",
+  },
+  "blog/how-to-add-moringa-to-diet.html": {
+    title: "How to Add Moringa Powder to Food (Taste Tips AU)",
+    description: "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
   },
   "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
     description: "Moringa and berberine in Australia: what the science says on patches vs oral leaf powder, interaction risk, TGA context, and when to ask your GP.",
@@ -176,10 +188,12 @@ function original(rel) {
 }
 
 function seoFields(html) {
+  const title = html.match(/<title>([^<]*)<\/title>/i)?.[1] || "";
   return {
-    title: attr(html, /<title>([^<]*)<\/title>/i),
-    description: attr(html, /<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)/i),
-    canonical: attr(html, /<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']*)/i),
+    title: normalizeMetaText(title),
+    description: normalizeMetaText(metaContent(html, "description") || ""),
+    canonical: attr(html, /<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']*)/i)
+      || attr(html, /<link[^>]*href=["']([^"']*)["'][^>]*rel=["']canonical["']/i),
   };
 }
 
@@ -206,14 +220,24 @@ for (const rel of trackedBlogs) {
   const before = seoFields(original(rel));
   const after = seoFields(read(rel));
   for (const field of ["title", "description", "canonical"]) {
-    if (before[field] !== after[field]) {
-      const approvedValue = approvedSeoChanges[rel]?.[field];
-      if (approvedValue === after[field]) continue;
-      const renamedJournal =
-        field === "title" &&
-        String(before[field] || "").replace(/Journal/g, "Blog") === String(after[field] || "");
-      if (!renamedJournal) errors.push(`${rel}: ${field} changed during migration`);
+    if (sameSeoText(before[field], after[field])) continue;
+    const approvedValue = approvedSeoChanges[rel]?.[field];
+    if (approvedValue != null && sameSeoText(approvedValue, after[field])) continue;
+    const renamedJournal =
+      field === "title" &&
+      String(before[field] || "").replace(/Journal/g, "Blog") === String(after[field] || "");
+    if (renamedJournal) continue;
+    if (field === "description") {
+      const originalHtml = original(rel);
+      const naiveBefore = normalizeMetaText(naiveMetaContent(originalHtml));
+      const repaired =
+        (looksTruncatedMeta(before[field]) || looksTruncatedMeta(naiveBefore) || naiveBefore !== normalizeMetaText(before[field])) &&
+        !looksTruncatedMeta(after[field]) &&
+        visibleLength(after[field]) >= 120 &&
+        visibleLength(after[field]) <= 160;
+      if (repaired) continue;
     }
+    errors.push(`${rel}: ${field} changed during migration`);
   }
 }
 
@@ -303,8 +327,8 @@ if (article) {
   if (canonical !== `${LIVE}/blog/how-to-add-moringa-to-diet`) {
     errors.push(`${articleRel}: canonical is "${canonical}"`);
   }
-  const title = attr(article, /<title>([^<]*)<\/title>/i);
-  if (title !== "How to Use Moringa Powder Daily (Smoothies, Meals & Taste)") {
+  const title = normalizeMetaText(attr(article, /<title>([^<]*)<\/title>/i));
+  if (title !== "How to Add Moringa Powder to Food (Taste Tips AU)") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
@@ -422,6 +446,10 @@ if (redirects) {
   if (!redirects.includes("/payment /pages/shop/payment.html 200")) errors.push("_redirects lost /payment rewrite");
   if (!redirects.includes("/thank-you.html /pages/shop/thank-you.html 200")) errors.push("_redirects lost /thank-you.html rewrite");
   if (!redirects.includes("/newsletter /pages/newsletter/ 301")) errors.push("_redirects missing /newsletter → /pages/newsletter/");
+  if (redirects.includes("/shipping /shipping 200")) errors.push("_redirects /shipping is a self-loop 404");
+  if (!redirects.includes("/shipping /pages/shipping/shipping-returns.html 200")) {
+    errors.push("_redirects lost /shipping rewrite");
+  }
   if (!redirects.includes("/blog/moringa-powder-complete-buyers-guide-australia-2026 /products/moringa-powder/ 301")) {
     errors.push("_redirects missing D1 buyers-guide → powder PDP");
   }
@@ -504,6 +532,21 @@ mustNotInclude("pages/shop/payment.html", "PayPal may open a new tab", "frozen P
 
 if (fs.existsSync(path.join(SITE_ROOT, "journal/how-to-add-moringa-to-diet/index.html"))) {
   notes.push("preview journal article folders still exist under /journal/; Netlify ignore should keep storefront unpublished, and /journal/:slug 301s to /blog/:slug");
+}
+
+for (const rel of trackedBlogs) {
+  if (!/^blog\/[^/]+\.html$/.test(rel) || rel === "blog/index.html") continue;
+  const html = read(rel);
+  if (!html || /http-equiv=["']refresh["']/i.test(html) || /content=["']noindex/i.test(html)) continue;
+  const description = normalizeMetaText(metaContent(html, "description") || "");
+  const naive = normalizeMetaText(naiveMetaContent(html));
+  if (looksTruncatedMeta(description) || naive !== description) {
+    errors.push(`${rel}: meta description still truncates at an apostrophe or mid-sentence ("${naive || description}")`);
+  }
+  const length = visibleLength(description);
+  if (length && (length < 120 || length > 160)) {
+    errors.push(`${rel}: description length ${length}`);
+  }
 }
 
 if (errors.length) {

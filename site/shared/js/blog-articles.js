@@ -292,7 +292,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "gut-brain-connection-digestion-mood-mental-health-2026",
     "title": "The Gut-Brain Connection. Why Your Digestion Affects Your Mood (2026)",
-    "description": "Gut health and mood are linked — including serotonin made in the gut. What the research means for everyday Australian eating.'s serotonin is made in the gut. The link between gut health and mental health is one of the most significant developments in recent nutrition research. What it means in practice.",
+    "description": "Gut health and mood are linked, including serotonin made in the gut. What the research means for everyday Australian eating.",
     "category": "Health",
     "href": "/blog/gut-brain-connection-digestion-mood-mental-health-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -307,9 +307,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
-    "title": "How Long Does Moringa Powder Last in Australia?",
-    "h1": "How Long Does Moringa Powder Last After Opening?",
-    "description": "Unopened 12–24 months; opened use within 18 months if sealed, cool and dry. Spring heat, fridge mistakes, and Truganina pack dates.",
+    "title": "How Long Does Moringa Powder Last in Australia? (Opened + Sealed)",
+    "h1": "How Long Does Moringa Powder Last in Australia?",
+    "description": "How long does moringa powder last in Australia? Unopened 12–24 months; opened ~18 months if sealed and cool, spring heat, fridge mistakes, Truganina pack dates.",
     "category": "Guides",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -333,7 +333,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-much-protein-australian-women-need-honest-guide-2026",
     "title": "How Much Protein Do Australian Women Actually Need? (2026 Guide)",
-    "description": "How much protein Australian women need by life stage — past TikTok extremes and one-size dietitian soundbites (2026).'s the actual answer by life stage.",
+    "description": "How much protein Australian women need by life stage, past TikTok extremes and one-size dietitian soundbites (2026). Read the practical NutriThrive guide.",
     "category": "Health",
     "href": "/blog/how-much-protein-australian-women-need-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -348,8 +348,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-add-moringa-to-diet",
-    "title": "How to Use Moringa Powder Daily (Smoothies, Meals & Taste)",
-    "description": "5 simple ways to add moringa powder to your daily diet without the bitter taste — smoothies, meals, and easy swaps.",
+    "title": "How to Add Moringa Powder to Food (Taste Tips AU)",
+    "description": "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/how-to-add-moringa-to-diet",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -398,7 +398,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-eat-more-vegetables-practical-guide-australia-2026",
     "title": "How to Eat More Vegetables Without Changing Your Whole Diet (2026)",
-    "description": "Most Australians undershoot vegetables. Practical ways to add more to meals you already cook — no meal plan required.'t eat enough vegetables. The good news is you don't need a meal plan or a new lifestyle. Practical ways to add vegetables to meals you already cook.",
+    "description": "Most Australians undershoot vegetables. Practical ways to add more to meals you already cook, no meal plan required. Read the practical NutriThrive guide.",
     "category": "Health",
     "href": "/blog/how-to-eat-more-vegetables-practical-guide-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -469,8 +469,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
-    "title": "Moringa Dosage for Children Australia — Safe Age Limits (2026)",
-    "description": "Moringa dosage for children by age — babies vs kids, powder amounts, age limits, and when to ask a GP. Free AU ship at $49.50 on NutriThrive powder.",
+    "title": "Is Moringa Safe for Kids in Australia? Dosage by Age",
+    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $49.50.",
     "category": "Health",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -486,7 +486,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "is-moringa-worth-it-cost-value-australia-2026",
     "title": "Is Moringa Worth It? A Cost-Per-Nutrient Breakdown for Australians (2026)",
-    "description": "$11/100g moringa vs a multivitamin, greens powder or iron tablet — a cost-per-nutrient breakdown for Australians.'re getting per dollar.",
+    "description": "$11/100g moringa vs a multivitamin, greens powder or iron tablet, a cost-per-nutrient breakdown for Australians. Practical Australian guidance from NutriThrive.",
     "category": "Guides",
     "href": "/blog/is-moringa-worth-it-cost-value-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -616,7 +616,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-for-anxiety-stress-evidence-2026",
     "title": "Moringa for Anxiety. What the Evidence Shows (2026 Guide)",
-    "description": "Moringa isn't a proven anxiety treatment. But some of its nutritional properties are genuinely relevant to stress and anxiety. The breakdown:",
+    "description": "Moringa isn't a proven anxiety treatment. But some of its nutritional properties are genuinely relevant to stress and anxiety. Read the evidence breakdown.",
     "category": "Health",
     "href": "/blog/moringa-for-anxiety-stress-evidence-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -728,7 +728,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "title": "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
-    "description": "Moringa can accumulate lead and cadmium. How to read an Australian CoA, what NMI testing covers, and red flags when brands hide results.'t share batch results (2026).",
+    "description": "Moringa can accumulate lead and cadmium. How to read an Australian CoA, what NMI testing covers, and red flags when brands hide results.",
     "category": "Buyer's Guide",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -832,7 +832,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
     "title": "Moringa vs Coffee for Energy (Caffeine-Free, No Crash) Australia 2026",
-    "description": "No caffeine, no crash — how Melburnians are using moringa for steady energy instead of a third coffee. Here's how to make the switch.",
+    "description": "Moringa vs coffee Melbourne: no caffeine crash — how locals use shade-dried leaf powder for steady energy instead of a third long black this spring.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -848,7 +848,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-vs-whey-protein-comparison-2026",
     "title": "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
-    "description": "Moringa vs whey: same daily-powder habit, different jobs. Clear comparison if you’re wondering whether moringa can replace protein.'re doing completely different things. A clear comparison for people who want to know if moringa can replace protein powder.",
+    "description": "Moringa vs whey: same daily-powder habit, different jobs. Clear comparison if you're wondering whether moringa can replace protein.",
     "category": "Health",
     "href": "/blog/moringa-vs-whey-protein-comparison-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -896,7 +896,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "omega-3-deficiency-australia-inflammation-food-sources-2026",
     "title": "Omega-3 Deficiency in Australia: The Silent Driver of Inflammation (2026)",
-    "description": "Omega-3 deficiency is common as fish intake falls. What omega-3 does, who’s at risk in Australia, and the best food sources.'s most at risk, and the best food sources for Australians.",
+    "description": "Omega-3 deficiency is common as fish intake falls. What omega-3 does, who's at risk in Australia, and the best food sources.",
     "category": "Health",
     "href": "/blog/omega-3-deficiency-australia-inflammation-food-sources-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -968,7 +968,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "title": "Ultra-Processed Food in Australia. What It Actually Is and How Much You're Eating",
-    "description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows — without the lecture.'t know what the term actually means. A clear, non-preachy guide to what counts and what the research shows.",
+    "description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows, without the lecture.",
     "category": "Health",
     "href": "/blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"

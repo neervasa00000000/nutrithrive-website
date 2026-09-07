@@ -39,8 +39,9 @@
 /tools/* /tools/:splat 404!
 
 # Legacy / duplicate stubs
-/shipping-returns.html /pages/shipping/shipping-returns 301
-/pages/shipping/shipping-returns.html /pages/shipping/shipping-returns 301!
+/shipping-returns.html /shipping 301
+/pages/shipping/shipping-returns /shipping 301!
+/pages/shipping/shipping-returns/ /shipping 301!
 /pages/homepage/melbourne /melbourne/ 301!
 /pages/homepage/melbourne/ /melbourne/ 301!
 /pages/homepage/melbourne.html /melbourne/ 301!
@@ -88,8 +89,8 @@
 /blog/moringa-melbourne-complete-guide-2026 /404.html 410
 
 # DELETE - Low-value delivery post
-/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes /pages/shipping/shipping-returns 301
-/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html /pages/shipping/shipping-returns 301
+/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes /shipping 301
+/blog/nutrithrive-delivers-across-victoria-is-your-town-eligible-hint-yes.html /shipping 301
 
 # DELETE - Mega-guide splits traffic → canonical diet/benefits hub
 /blog/what-does-moringa-do-for-your-body-complete-guide-2026.html /blog/how-to-add-moringa-to-diet 301
@@ -428,6 +429,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /faq /pages/faq/faq.html 200
 /faq/ /pages/faq/faq.html 200
 /faq.html /pages/faq/faq.html 200
+/shipping /pages/shipping/shipping-returns.html 200
+/shipping/ /pages/shipping/shipping-returns.html 200
+/shipping.html /pages/shipping/shipping-returns.html 200
 /cart /pages/shop/cart.html 200
 /cart/ /pages/shop/cart.html 200
 /cart.html /pages/shop/cart.html 200
@@ -851,8 +855,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/category/curry-leaves/ /blog/category/curry-leaves/index.html 200
 /blog/category/soap-skin /blog/category/soap-skin/index.html 200
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
-/shipping /shipping 200
-/shipping/ /shipping 200
+/shipping /pages/shipping/shipping-returns.html 200
+/shipping/ /pages/shipping/shipping-returns.html 200
 /privacy /privacy-policy 301
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
