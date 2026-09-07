@@ -348,7 +348,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-add-moringa-to-diet",
-    "title": "How to Add Moringa Powder to Food (Taste Tips AU)",
+    "title": "How to Add Moringa Powder to Food Without Bitterness",
     "description": "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
     "category": "Recipes &amp; Nutrition",
     "href": "/blog/how-to-add-moringa-to-diet",

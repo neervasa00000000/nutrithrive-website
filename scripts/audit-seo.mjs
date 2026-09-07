@@ -39,7 +39,7 @@ function pageFile(url) {
     faq: "pages/faq/faq.html",
     melbourne: "pages/homepage/melbourne.html",
     shipping: "pages/shipping/shipping-returns.html",
-    "privacy-policy": "pages/legal/privacy-policy.html",
+    "privacy": "pages/legal/privacy-policy.html",
   };
   if (rewrites[bare]) return path.join(site, rewrites[bare]);
   const direct = path.join(site, `${bare}.html`);

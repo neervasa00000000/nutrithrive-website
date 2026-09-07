@@ -108,7 +108,7 @@ const approvedSeoChanges = {
     description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $49.50.",
   },
   "blog/how-to-add-moringa-to-diet.html": {
-    title: "How to Add Moringa Powder to Food (Taste Tips AU)",
+    title: "How to Add Moringa Powder to Food Without Bitterness",
     description: "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
   },
   "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
@@ -333,7 +333,7 @@ if (article) {
     errors.push(`${articleRel}: canonical is "${canonical}"`);
   }
   const title = normalizeMetaText(attr(article, /<title>([^<]*)<\/title>/i));
-  if (title !== "How to Add Moringa Powder to Food (Taste Tips AU)") {
+  if (title !== "How to Add Moringa Powder to Food Without Bitterness") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
@@ -454,6 +454,22 @@ if (redirects) {
   if (redirects.includes("/shipping /shipping 200")) errors.push("_redirects /shipping is a self-loop 404");
   if (!redirects.includes("/shipping /pages/shipping/shipping-returns.html 200")) {
     errors.push("_redirects lost /shipping rewrite");
+  }
+  if (redirects.includes("/privacy /privacy-policy 301")) errors.push("_redirects still 301 /privacy to /privacy-policy");
+  if (redirects.includes("/privacy-policy /privacy 301")) errors.push("_redirects must not 301 /privacy-policy to /privacy");
+  if (!redirects.includes("/privacy /pages/legal/privacy-policy.html 200")) {
+    errors.push("_redirects lost /privacy rewrite");
+  }
+  if (!redirects.includes("/privacy-policy /404.html 404")) errors.push("_redirects lost /privacy-policy 404");
+  const privacyHtml = read("pages/legal/privacy-policy.html");
+  if (privacyHtml) {
+    const privacyCanon = attr(privacyHtml, /<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)
+      || attr(privacyHtml, /<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["']/i);
+    if (privacyCanon !== `${LIVE}/privacy`) errors.push(`privacy canonical is "${privacyCanon}"`);
+    if (!privacyHtml.includes('property="og:url" content="https://nutrithrive.com.au/privacy"')) {
+      errors.push("privacy og:url is not /privacy");
+    }
+    if (privacyHtml.includes("/privacy-policy")) errors.push("privacy page still references /privacy-policy");
   }
   if (!redirects.includes("/blog/moringa-powder-complete-buyers-guide-australia-2026 /products/moringa-powder/ 301")) {
     errors.push("_redirects missing D1 buyers-guide → powder PDP");
