@@ -132,7 +132,7 @@ function transformToLive(html, { isBlogArticle = false } = {}) {
     [/href="shipping-test\.html"/g, 'href="/shipping"'],
     [/href="cart-test\.html"/g, 'href="/cart"'],
     [/href="payment-test\.html"/g, 'href="/payment"'],
-    [/href="privacy-test\.html"/g, 'href="/privacy-policy"'],
+    [/href="privacy-test\.html"/g, 'href="/privacy"'],
     [/href="blog-test\.html"/g, 'href="/blog/"'],
     [/href="newsletter-test\.html"/g, 'href="/pages/newsletter/"'],
     [/href="newsletter-thank-you-test\.html"/g, 'href="/pages/newsletter/thank-you.html"'],
@@ -243,7 +243,7 @@ function newsletterLiveFormHtml() {
     <label class="block text-left"><span class="font-label-lg text-on-surface-variant block mb-2">Email</span>
       <input required type="email" name="email" class="w-full rounded-lg border border-outline-variant/40 px-4 py-3" placeholder="you@example.com"/></label>
     <button type="submit" class="w-full bg-moringa-leaf text-pure-white py-4 rounded-full font-label-lg hover:brightness-110">Subscribe</button>
-    <p class="text-label-sm text-on-surface-variant text-center">We respect your privacy. Unsubscribe at any time. See our <a class="text-moringa-leaf underline" href="/privacy-policy">Privacy Policy</a>.</p>
+    <p class="text-label-sm text-on-surface-variant text-center">We respect your privacy. Unsubscribe at any time. See our <a class="text-moringa-leaf underline" href="/privacy">Privacy Policy</a>.</p>
   </form>`;
 }
 
@@ -432,7 +432,7 @@ function patchSiteData() {
   });
   js = js.replace(/products-test\.html/g, '/products/');
   js = js.replace(/file: 'benefits-test\.html'/g, "file: '/blog/how-to-add-moringa-to-diet.html'");
-  js = js.replace(/liveUrl: '\.\.\/\.\.\/pages\/legal\/privacy-policy\.html'/, "liveUrl: '/privacy-policy'");
+  js = js.replace(/liveUrl: '\.\.\/\.\.\/pages\/legal\/privacy-policy\.html'/, "liveUrl: '/privacy'");
   js = js.replace(/testCartUrl:[^\n]*\n/g, '');
   fs.writeFileSync(file, js);
   console.log('Patched shared/site-data.js paths');

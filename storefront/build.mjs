@@ -65,7 +65,7 @@ function routes() {
     faq: "/faq",
     journal: "/blog/",
     cart: "/cart",
-    privacy: "/privacy-policy",
+    privacy: "/privacy",
     shipping: "/shipping",
     article: (slug) => `/blog/${slug}`,
     articleAbs: (slug) => `${LIVE}/blog/${slug}`,
@@ -1755,7 +1755,7 @@ function shippingPage() {
         <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
         <h2>Payments</h2>
         <p>Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup.</p>
-        <p><a href="/privacy-policy">Privacy policy</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></p>
+        <p><a href="/privacy">Privacy policy</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></p>
       </section>`,
   });
 }
@@ -1765,11 +1765,11 @@ function privacyPage() {
     title: "Privacy Policy and Website Terms | NutriThrive",
     description:
       "NutriThrive privacy policy. How we use your data, orders, and refunds for our Melbourne-based superfoods store with Australia-wide delivery.",
-    canonicalPath: "/privacy-policy",
+    canonicalPath: "/privacy",
     extraHead: jsonLd(
       breadcrumbSchema([
         { name: "Home", item: `${LIVE}/` },
-        { name: "Privacy policy", item: `${LIVE}/privacy-policy` },
+        { name: "Privacy policy", item: `${LIVE}/privacy` },
       ])
     ),
     current: "",
@@ -2315,7 +2315,7 @@ function rewriteLinks(html) {
     out = out
       .replaceAll('href="/shop/"', 'href="/products/"')
       .replaceAll('href="/shop"', 'href="/products/"')
-      .replaceAll('href="/privacy-policy"', 'href="/privacy-policy"')
+      .replaceAll('href="/privacy-policy"', 'href="/privacy"')
       .replaceAll('href="/shipping"', 'href="/shipping"')
       .replaceAll('href="/shipping"', 'href="/shipping"');
     const replacements = {
@@ -2337,6 +2337,7 @@ function rewriteLinks(html) {
       .replaceAll('href="/cart"', 'href="/cart/"')
       .replaceAll('href="/products/"', 'href="/shop/"')
       .replaceAll('href="/privacy-policy"', 'href="/privacy/"')
+      .replaceAll('href="/privacy"', 'href="/privacy/"')
       .replaceAll('href="/shipping"', 'href="/shipping/"')
       .replaceAll('href="/shipping"', 'href="/shipping/"');
   }
@@ -2647,7 +2648,8 @@ function appendLiveRedirects() {
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
-/privacy /privacy-policy 301
+/privacy /pages/legal/privacy-policy.html 200
+/privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
 `;
