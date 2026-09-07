@@ -440,10 +440,14 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /checkout.html /payment 301!
 /payment /pages/shop/payment.html 200
 /payment.html /pages/shop/payment.html 200
-/privacy-policy /pages/legal/privacy-policy.html 200
-/pages/legal/privacy-policy /privacy-policy 301!
-/pages/legal/privacy-policy.html /privacy-policy 301!
-/privacy-policy.html /privacy-policy 301
+/privacy /pages/legal/privacy-policy.html 200
+/privacy/ /pages/legal/privacy-policy.html 200
+/privacy.html /pages/legal/privacy-policy.html 200
+/privacy-policy /404.html 404!
+/privacy-policy/ /404.html 404!
+/privacy-policy.html /404.html 404!
+/pages/legal/privacy-policy /404.html 404!
+/pages/legal/privacy-policy/ /404.html 404!
 
 /thank-you.html /pages/shop/thank-you.html 200
 
@@ -857,6 +861,7 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
-/privacy /privacy-policy 301
+/privacy /pages/legal/privacy-policy.html 200
+/privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301

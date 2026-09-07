@@ -12,7 +12,7 @@ const rewrites = new Map([
   ["/faq", "pages/faq/faq.html"],
   ["/cart", "pages/shop/cart.html"],
   ["/payment", "pages/shop/payment.html"],
-  ["/privacy-policy", "pages/legal/privacy-policy.html"],
+  ["/privacy", "pages/legal/privacy-policy.html"],
   ["/shipping", "pages/shipping/shipping-returns.html"],
   ["/thank-you.html", "pages/shop/thank-you.html"],
 ]);

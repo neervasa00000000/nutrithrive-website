@@ -515,13 +515,13 @@ window.NT_SITE_DATA = {
         { label: 'FAQ', file: '/faq' },
         { label: 'Contact', file: '/contact' },
         { label: 'Newsletter', file: '/pages/newsletter/' },
-        { label: 'Privacy Policy', file: '/privacy-policy' },
+        { label: 'Privacy Policy', file: '/privacy' },
       ],
     },
   ],
   privacyPolicy: {
     lastUpdated: 'January 19, 2026',
-    liveUrl: '/privacy-policy',
+    liveUrl: '/privacy',
   },
   /** Flat list for hub index and tooling */
   pages: [
@@ -545,7 +545,7 @@ window.NT_SITE_DATA = {
     { label: 'Contact thank you', file: '/pages/contact/thank-you.html', category: 'Help & Info' },
     { label: 'Newsletter', file: '/pages/newsletter/', category: 'Help & Info' },
     { label: 'Newsletter thank you', file: '/pages/newsletter/thank-you.html', category: 'Help & Info' },
-    { label: 'Privacy Policy', file: '/privacy-policy', category: 'Legal' },
+    { label: 'Privacy Policy', file: '/privacy', category: 'Legal' },
     { label: 'Moringa benefits', file: '/blog/how-to-add-moringa-to-diet', category: 'Help & Info' },
   ],
   /** Shop grid & featured rows (includes gift pack) */
