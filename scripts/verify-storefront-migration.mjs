@@ -55,8 +55,8 @@ const approvedSeoChanges = {
     description: "AG1 alternative in Australia: $150+/month vs shade-dried moringa leaf powder — cost, ingredients, taste, and when a simple pouch beats a stack.",
   },
   "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
-    title: "Moringa vs Coffee Melbourne: Energy Without the Crash (2026)",
-    description: "Moringa vs coffee Melbourne: no caffeine crash — how locals use shade-dried leaf powder for steady energy instead of a third long black this spring.",
+    title: "Does Moringa Have Caffeine? Moringa vs Coffee",
+    description: "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
   },
   "blog/science-shade-drying-vs-sun-drying-moringa.html": {
     title: "Shade vs Sun-Dried Moringa: Which Keeps Nutrients?",
