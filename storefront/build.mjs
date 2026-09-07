@@ -118,6 +118,7 @@ const JOURNAL_PRIORITY = [
 const JOURNAL_REDIRECTS = {
   "is-moringa-safe-during-pregnancy-2026": "moringa-pregnancy-safe-australia-trimester-guide-2026",
   "moringa-smoothie-recipes-australia-easy-2026": "moringa-smoothie-recipes-australia-2026",
+  "stress-weight-gain-cortisol-mechanism-what-to-do-2026": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
   "vitamin-d-deficiency-australia-sunny-country-paradox-2026": "vitamin-d-deficiency-australia-abs-sunny-country-2026",
   "iron-deficiency-australian-women-abs-real-numbers-2026": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
   "moringa-soap-benefits-for-skin-2026": "moringa-soap-benefits-skin-guide",
@@ -442,7 +443,6 @@ const OG_IMAGE = `${LIVE}/assets/images/og/nutrithrive-share-1200x630.jpg`;
 const ORG_SCHEMA = JSON.parse(
   fs.readFileSync(path.join(SITE, "shared/schema/nutrithrive-local-business.json"), "utf8")
 );
-if (ORG_SCHEMA.aggregateRating) ORG_SCHEMA.aggregateRating.reviewCount = 12;
 ORG_SCHEMA.description =
   "NutriThrive is a farmer and manufacturer. We grow moringa and curry leaves on our own farm, source tea from a Darjeeling family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.";
 
@@ -1755,7 +1755,7 @@ function shippingPage() {
         <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
         <h2>Payments</h2>
         <p>Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup.</p>
-        <p><a href="/privacy/">Privacy policy</a> · <a href="/faq/">FAQ</a> · <a href="/contact/">Contact</a></p>
+        <p><a href="/privacy-policy">Privacy policy</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></p>
       </section>`,
   });
 }
@@ -1765,11 +1765,11 @@ function privacyPage() {
     title: "Privacy Policy and Website Terms | NutriThrive",
     description:
       "NutriThrive privacy policy. How we use your data, orders, and refunds for our Melbourne-based superfoods store with Australia-wide delivery.",
-    canonicalPath: "/privacy",
+    canonicalPath: "/privacy-policy",
     extraHead: jsonLd(
       breadcrumbSchema([
         { name: "Home", item: `${LIVE}/` },
-        { name: "Privacy policy", item: `${LIVE}/privacy` },
+        { name: "Privacy policy", item: `${LIVE}/privacy-policy` },
       ])
     ),
     current: "",
@@ -2318,6 +2318,15 @@ function rewriteLinks(html) {
       .replaceAll('href="/privacy-policy"', 'href="/privacy-policy"')
       .replaceAll('href="/shipping"', 'href="/shipping"')
       .replaceAll('href="/shipping"', 'href="/shipping"');
+    const replacements = {
+      ...JOURNAL_REDIRECTS,
+      "how-to-use-moringa-powder-daily-without-the-bad-taste-2026": "what-does-moringa-powder-taste-like-honest-guide-2026",
+      "best-greens-powder-australia-2026": "moringa-vs-spirulina-vs-matcha-comparison-australia",
+      "caffeine-cutoff-time-sleep-black-tea-2026": "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+    };
+    for (const [fromSlug, toSlug] of Object.entries(replacements)) {
+      out = out.replaceAll(`/blog/${fromSlug}`, `/blog/${toSlug}`);
+    }
   } else {
     out = out
       .replaceAll(/href="\/blog\/([^"#]+?)(?:\.html)?(#[^"]*)?"/g, 'href="/journal/$1/$2"')
@@ -2369,7 +2378,7 @@ function extractArticleProse(slug, fallbackHtml) {
     if (extracted.trim().length > 200) return rewriteLinks(extracted);
   }
   const migrated = html.match(/<div class="prose">([\s\S]*?)<\/div>\s*(?:<aside class="article-safety"|<section class="article-conversion")/);
-  if (migrated && migrated[1].trim().length > 400) return migrated[1];
+  if (migrated && migrated[1].trim().length > 400) return rewriteLinks(migrated[1]);
   return fallbackHtml;
 }
 
@@ -2689,7 +2698,7 @@ function main() {
 
   const r = routes();
   const articles = loadArticles().map((article) => ({ ...article, image: articleImage(article) }));
-  const activeArticles = LIVE_MODE ? articles : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug]);
+  const activeArticles = articles.filter((article) => !JOURNAL_REDIRECTS[article.slug]);
   const search = [
     ...PRODUCTS.map((p) => ({
       title: `${p.name} ${p.variant}`,
@@ -2798,7 +2807,9 @@ function main() {
         }),
       };
       if (JOURNAL_REDIRECTS[slug]) {
-        emit(`blog/${slug}.html`, redirectPage(slug, JOURNAL_REDIRECTS[slug], liveSeo), `blog/${slug}.html`);
+        // Redirect stubs are deliberately noindex. Keep their generic metadata
+        // stable instead of inheriting SEO copy from the retired article.
+        emit(`blog/${slug}.html`, redirectPage(slug, JOURNAL_REDIRECTS[slug]), `blog/${slug}.html`);
         wrapped += 1;
         continue;
       }
