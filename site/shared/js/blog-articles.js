@@ -831,8 +831,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "Moringa vs Coffee for Energy (Caffeine-Free, No Crash) Australia 2026",
-    "description": "Moringa vs coffee Melbourne: no caffeine crash — how locals use shade-dried leaf powder for steady energy instead of a third long black this spring.",
+    "title": "Does Moringa Have Caffeine? Moringa vs Coffee",
+    "description": "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
     "category": "Research Guide",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack",
     "image": "/assets/images/og/moringa-article-1200.jpg"
