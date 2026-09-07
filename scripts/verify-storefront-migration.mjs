@@ -21,6 +21,11 @@ const LIVE = "https://nutrithrive.com.au";
 const errors = [];
 const notes = [];
 const approvedSeoChanges = {
+  "blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026.html": {
+    title: "Guide moved | NutriThrive",
+    description: "This guide has moved to a clearer, consolidated NutriThrive article.",
+    canonical: "https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
+  },
   "blog/fathers-day-gift-under-40.html": {
     title: "Last-Minute Father's Day Gift Pack $35 From Melbourne",
     description: "Last-minute Father&#39;s Day gift under $40 from Melbourne: $35 gift pack with honest shipping maths and same-day weekday dispatch from Truganina.",

@@ -12,6 +12,7 @@
     "storefront:preview": "npm run ci",
     "storefront:migrate": "STOREFRONT_PRODUCTION=1 node storefront/build.mjs && node scripts/verify-storefront-migration.mjs",
     "storefront:verify": "node scripts/verify-storefront-migration.mjs",
+    "seo:audit": "node scripts/audit-seo.mjs",
     "storefront:serve": "node scripts/serve-storefront-preview.mjs",
     "blog:launch:apply": "node scripts/apply-blog-launch-schedule.mjs"
   },

@@ -35,9 +35,9 @@
   <link rel="alternate" type="text/plain" href="https://nutrithrive.com.au/llms.txt" title="llms.txt">
   <link rel="preload" href="/assets/fonts/fraunces-latin-500-600.woff2?v=20260902-2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2?v=20260902-2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/storefront-system.css?v=20260902-2">
-  <script src="/assets/js/storefront/catalog.js?v=20260902-2" defer></script>
-  <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">{"@context":"https://schema.org","@type":["LocalBusiness","HealthFoodStore"],"@id":"https://nutrithrive.com.au/#localbusiness","name":"NutriThrive","image":"https://nutrithrive.com.au/assets/images/logo/logo-112.png","url":"https://nutrithrive.com.au/","telephone":"+61438201419","email":"nutrithrive0@gmail.com","priceRange":"$$","description":"NutriThrive is a farmer and manufacturer. We grow moringa and curry leaves on our own farm, source tea from a Darjeeling family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.","identifier":{"@type":"PropertyValue","propertyID":"ABN","value":"32 639 442 616"},"address":{"@type":"PostalAddress","streetAddress":"15 Europe Street","addressLocality":"Truganina","addressRegion":"VIC","postalCode":"3029","addressCountry":"AU"},"geo":{"@type":"GeoCoordinates","latitude":-37.8323773,"longitude":144.7187983},"hasMap":"https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"23:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5","worstRating":"1","reviewCount":12},"areaServed":[{"@type":"City","name":"Truganina"},{"@type":"City","name":"Melbourne"},{"@type":"AdministrativeArea","name":"Victoria"},{"@type":"Country","name":"Australia"}],"serviceArea":[{"@type":"City","name":"Truganina"},{"@type":"City","name":"Melbourne"},{"@type":"City","name":"Werribee"},{"@type":"City","name":"Tarneit"},{"@type":"City","name":"Point Cook"},{"@type":"City","name":"Hoppers Crossing"},{"@type":"City","name":"Laverton"},{"@type":"AdministrativeArea","name":"Victoria"}],"sameAs":["https://www.facebook.com/nutrithrive","https://www.instagram.com/nutri__thrive/"]}</script>
+  <link rel="stylesheet" href="/assets/css/storefront-system.min.css?v=20260902-2">
+  <script src="/assets/js/storefront/catalog.min.js?v=20260902-2" defer></script>
+  <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">{"@context":"https://schema.org","@type":["LocalBusiness","HealthFoodStore"],"@id":"https://nutrithrive.com.au/#localbusiness","name":"NutriThrive","image":"https://nutrithrive.com.au/assets/images/logo/logo-112.png","url":"https://nutrithrive.com.au/","telephone":"+61438201419","email":"nutrithrive0@gmail.com","priceRange":"$$","description":"NutriThrive is a farmer and manufacturer. We grow moringa and curry leaves on our own farm, source tea from a Darjeeling family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.","identifier":{"@type":"PropertyValue","propertyID":"ABN","value":"32 639 442 616"},"address":{"@type":"PostalAddress","streetAddress":"15 Europe Street","addressLocality":"Truganina","addressRegion":"VIC","postalCode":"3029","addressCountry":"AU"},"geo":{"@type":"GeoCoordinates","latitude":-37.8323773,"longitude":144.7187983},"hasMap":"https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"23:00"}],"areaServed":[{"@type":"City","name":"Truganina"},{"@type":"City","name":"Melbourne"},{"@type":"AdministrativeArea","name":"Victoria"},{"@type":"Country","name":"Australia"}],"sameAs":["https://www.facebook.com/nutrithrive","https://www.instagram.com/nutri__thrive/"]}</script>
   
   <meta name="google-site-verification" content="Ei4OAxJbWPsT7qaeosUpRUONNj37_r_Xe1xFPI6R_M0">
   <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/blog/moringa-brands-comparison-australia-2026">
@@ -159,7 +159,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <h2 >Moringa Cost Calculator, Which Brand Saves You Money?</h2>
 <label >Your daily dosage (teaspoons):</label>
 <input type="number" id="moringa-dosage" value="1" min="0.5" max="3" step="0.5" >
-<button onclick="(function(){var d=parseFloat(document.getElementById('moringa-dosage').value);var gPerTsp=3;var gPerDay=d*gPerTsp;var days=30;var gPerMonth=gPerDay*days;var brands=[{name:'NutriThrive 100g',price:11.00,grams:100,potency:1.0},{name:'NutriThrive 200g',price:21.50,grams:200,potency:1.0},{name:'Generic retail ~$15',price:15,grams:100,potency:0.5},{name:'Generic retail ~$20',price:20,grams:100,potency:0.5}];var html='<div class="table-scroll"><table style=\'width:100%;border-collapse:collapse;margin-top:1rem;\'>'+' <tr style=\'background:#1a5c36;color:#fff;\'><th style=\'padding:0.5rem;\'>Brand</th><th style=\'padding:0.5rem;\'>Monthly cost</th><th style=\'padding:0.5rem;\'>Effective cost*</th></tr>';brands.forEach(function(b,i){var bags=Math.ceil(gPerMonth/b.grams);var cost=(bags*b.price).toFixed(2);var effectiveCost=(bags*b.price/b.potency).toFixed(2);html+='<tr style=\'background:'+(i%2===0?'#fff':'#f9f9f9')+';\'>'+' <td style=\'padding:0.5rem;border:1px solid #ddd;\'>'+b.name+'</td>'+' <td style=\'padding:0.5rem;border:1px solid #ddd;\'>$'+cost+'</td>'+' <td style=\'padding:0.5rem;border:1px solid #ddd;\'>$'+effectiveCost+'</td>'+'</tr>';});html+='</table></div><p style=\'font-size:0.85rem;color:#666;margin-top:0.5rem;\'>*Effective cost adjusts for potency loss in poorly-packaged powder.</p>';document.getElementById('moringa-calc-results').innerHTML=html;})()" >Calculate Monthly Cost</button>
+<button onclick="(function(){var d=parseFloat(document.getElementById('moringa-dosage').value);var gPerTsp=3;var gPerDay=d*gPerTsp;var days=30;var gPerMonth=gPerDay*days;var brands=[{name:'NutriThrive 100g',price:11.00,grams:100,potency:1.0},{name:'NutriThrive 200g',price:21.50,grams:200,potency:1.0},{name:'Generic retail ~$15',price:15,grams:100,potency:0.5},{name:'Generic retail ~$20',price:20,grams:100,potency:0.5}];var html='<div class="table-scroll"><div class="table-scroll"><table style=\'width:100%;border-collapse:collapse;margin-top:1rem;\'>'+' <tr style=\'background:#1a5c36;color:#fff;\'><th style=\'padding:0.5rem;\'>Brand</th><th style=\'padding:0.5rem;\'>Monthly cost</th><th style=\'padding:0.5rem;\'>Effective cost*</th></tr>';brands.forEach(function(b,i){var bags=Math.ceil(gPerMonth/b.grams);var cost=(bags*b.price).toFixed(2);var effectiveCost=(bags*b.price/b.potency).toFixed(2);html+='<tr style=\'background:'+(i%2===0?'#fff':'#f9f9f9')+';\'>'+' <td style=\'padding:0.5rem;border:1px solid #ddd;\'>'+b.name+'</td>'+' <td style=\'padding:0.5rem;border:1px solid #ddd;\'>$'+cost+'</td>'+' <td style=\'padding:0.5rem;border:1px solid #ddd;\'>$'+effectiveCost+'</td>'+'</tr>';});html+='</table></div></div><p style=\'font-size:0.85rem;color:#666;margin-top:0.5rem;\'>*Effective cost adjusts for potency loss in poorly-packaged powder.</p>';document.getElementById('moringa-calc-results').innerHTML=html;})()" >Calculate Monthly Cost</button>
 <div id="moringa-calc-results" ></div>
 </section>
 
@@ -296,7 +296,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <h2 >📊 Complete Brand Comparison Table</h2>
 <p >Normalising to dollars per 100&nbsp;g lets you compare a 100&nbsp;g pouch with a 500&nbsp;g bag. Figures reflect typical public list or promo prices we saw in early 2026; recheck before you checkout.</p>
 <div >
-<div class="table-scroll"><table >
+<div class="table-scroll"><div class="table-scroll"><table >
 <thead>
 <tr >
 <th >Brand</th>
@@ -317,7 +317,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <tr ><td >Organic Moringa Australia</td><td >powder</td><td >quote / cart</td><td >: </td><td >Often quote-led; heavy organic-cert messaging.</td></tr>
 <tr ><td ><strong>Rosabella</strong> &#9888;</td><td >60 capsules (800mg)</td><td >~$24.99</td><td >~$15 to 20 equiv.</td><td >Chemist Warehouse; no lab results; Feb 2026 recall. <a href="/blog/rosabella-moringa-reviews-legit-or-overhyped-2026" >Full Rosabella review →</a></td></tr>
 </tbody>
-</table></div>
+</table></div></div>
 </div>
 <p >Cheapest $/100&nbsp;g is not automatically &quot;best.&quot; Compare organic status, lab testing, harvest freshness, Australian-grown vs imported origin, and FSANZ-compliant labelling.</p>
 <figure  aria-label="Approximate retail dollars per 100 grams for selected powder listings">
@@ -345,7 +345,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <h3 >Lab-tested quality snapshot (NutriThrive)</h3>
 <p >The grid below shows our at-a-glance lab and rating view, now placed beside the market-wide $/100&nbsp;g table.</p>
 <div >
-<div class="table-scroll"><table >
+<div class="table-scroll"><div class="table-scroll"><table >
 <thead>
 <tr >
 <th >Brand</th>
@@ -374,7 +374,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <td >3/10</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 </div>
 <p >*Prices and availability may vary. Always check current pricing before purchase. &#9888; Rosabella subject to February 2026 recall; verify lot number before consuming.</p>
 </section>
@@ -542,7 +542,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <h3 >Annual Cost Comparison (Daily Use)</h3>
 <p >If you take moringa daily (2g serving = 1 teaspoon):</p>
 <div >
-<div class="table-scroll"><table >
+<div class="table-scroll"><div class="table-scroll"><table >
 <thead>
 <tr >
 <th >Brand</th>
@@ -561,7 +561,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <td >: </td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 </div>
 <p >*Based on 2g daily serving (1 teaspoon) for 365 days</p>
 <p >Choosing <a href="/products/moringa-powder/" >NutriThrive</a> as your daily moringa can save you hundreds of dollars per year compared with many premium options, while still getting lab-tested, high-quality moringa powder.</p>
@@ -611,7 +611,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <h3 id="powder-price-per-100g-landscape" >Powder: approximate cost per 100&nbsp;g (AUD)</h3>
 <p >Normalising to dollars per 100&nbsp;g lets you compare a 100&nbsp;g pouch with a 500&nbsp;g bag. Figures below reflect typical public list or promo prices we saw in early 2026; recheck before you checkout.</p>
 <div >
-<div class="table-scroll"><table >
+<div class="table-scroll"><div class="table-scroll"><table >
 <thead>
 <tr >
 <th >Brand / listing</th>
@@ -631,14 +631,14 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <tr ><td ><a href="https://moringaproducts.com.au/" >Moringa Products Australia</a></td><td >powder</td><td >varies</td><td >varies</td><td >QLD + India leaf mix; compare in cart to our $/100&nbsp;g.</td></tr>
 <tr ><td >Organic Moringa Australia</td><td >powder</td><td >quote / cart</td><td >: </td><td >Often quote-led; heavy organic-cert messaging.</td></tr>
 </tbody>
-</table></div>
+</table></div></div>
 </div>
 <p >Cheapest $/100&nbsp;g is not automatically &quot;best.&quot; Check organic status, lab testing, harvest freshness, Australian-grown vs imported origin, and FSANZ-compliant labelling.</p>
 
 <h3 id="capsule-price-landscape" >Capsules: indicative prices for common pack sizes</h3>
 <p >Capsules are harder to compare than powder because mg per cap, fill and &quot;organic&quot; claims differ. Adjust if formulas change.</p>
 <div >
-<div class="table-scroll"><table >
+<div class="table-scroll"><div class="table-scroll"><table >
 <thead>
 <tr >
 <th >Brand / channel</th>
@@ -655,7 +655,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <tr ><td >Nutra Nourished (other retailers)</td><td >tablets / caps</td><td >from ~$64.90</td><td >Check pack count and mg vs powder.</td></tr>
 <tr ><td ><strong><a href="/products/moringa-powder/" >NutriThrive</a></strong></td><td >powder (no capsule SKU)</td><td >$11.00 / 100&nbsp;g</td><td >Many buyers open caps or mix powder: see product page.</td></tr>
 </tbody>
-</table></div>
+</table></div></div>
 </div>
 
 <h3 id="company-profiles-australia" >Australian moringa producers and suppliers (profiles)</h3>
@@ -751,7 +751,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <h3 id="supplier-sources-citations" >Sources &amp; citations</h3>
 <p >Primary pages I used for roles, products and pricing context (URLs and offers may change).</p>
 <div >
-<div class="table-scroll"><table >
+<div class="table-scroll"><div class="table-scroll"><table >
 <thead>
 <tr >
 <th >Company (location)</th>
@@ -772,7 +772,7 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 <tr ><td >Medikonda</td><td >Blog / pricing context</td><td >Moringa pellets 1&nbsp;kg price</td><td >Pricing blog (verify independently)</td></tr>
 <tr ><td >Orgo All-Natural (India)</td><td >Exporter / retailer</td><td >Company site (wholesale positioning)</td><td >India exporter (verify independently)</td></tr>
 </tbody>
-</table></div>
+</table></div></div>
 </div>
 
 <p ><strong>Related on this site:</strong> you are already on the <a href="/blog/moringa-brands-comparison-australia-2026" >brand comparison hub</a>; for usage see the <a href="/blog/how-to-add-moringa-to-diet" >powder guide</a>; for retail channels see <a href="/blog/how-to-choose-moringa-powder-australia-2026" >where to buy</a>.</p>
@@ -1121,9 +1121,9 @@ We disclose that this guide is published by NutriThrive. We include our own prod
 
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
-<script src="/assets/js/storefront/runtime-cart.js?v=20260902-2" defer></script>
-<script src="/assets/js/storefront/search-index.js?v=20260902-2" defer></script>
-<script src="/assets/js/storefront/site.js?v=20260902-2" defer></script>
+<script src="/assets/js/storefront/runtime-cart.min.js?v=20260902-2" defer></script>
+<script src="/assets/js/storefront/search-index.min.js?v=20260902-2" defer></script>
+<script src="/assets/js/storefront/site.min.js?v=20260902-2" defer></script>
 
 </body>
 </html>
