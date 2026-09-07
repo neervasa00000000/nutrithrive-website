@@ -11,7 +11,7 @@ export const META_DESCRIPTION_MAX = 160;
 
 export const META_OVERRIDES = {
   "moringa-vs-coffee-melbourne-energy-hack":
-    "Moringa vs coffee Melbourne: no caffeine crash — how locals use shade-dried leaf powder for steady energy instead of a third long black this spring.",
+    "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
   "moringa-for-anxiety-stress-evidence-2026":
     "Moringa isn't a proven anxiety treatment. But some of its nutritional properties are genuinely relevant to stress and anxiety. Read the evidence breakdown.",
 };

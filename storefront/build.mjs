@@ -2362,8 +2362,10 @@ function rewriteLinks(html) {
     .replaceAll(/Gujarat farm/gi, "own farm")
     .replace(/<h1(\s[^>]*)?>/gi, "<h2$1>")
     .replace(/<\/h1>/gi, "</h2>")
-    .replace(/<table(\s[^>]*)?>/gi, '<div class="table-scroll"><table$1>')
-    .replace(/<\/table>/gi, "</table></div>");
+    // Only add the responsive wrapper when the source table is not already
+    // wrapped. This keeps repeated production builds idempotent.
+    .replace(/(?<!<div class="table-scroll">)<table(\s[^>]*)?>/gi, '<div class="table-scroll"><table$1>')
+    .replace(/<\/table>(?!<\/div>)/gi, "</table></div>");
 }
 
 function extractArticleProse(slug, fallbackHtml) {
