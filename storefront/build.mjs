@@ -3,6 +3,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { PRODUCTS, REVIEWS, costNote } from "./js/data.js";
+import {
+  decodeEntities,
+  escapeAttr,
+  extractQuotedAttr,
+  fitMetaDescription,
+  metaContent,
+  pickSeoDescription,
+} from "../scripts/lib/seo-meta.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -331,11 +339,7 @@ function moringaEducationHtml() {
 }
 
 function esc(s) {
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+  return escapeAttr(s);
 }
 
 function humanCopy(s) {
@@ -473,36 +477,8 @@ function fitSeoTitle(value) {
   return fitted.length < 40 && branded.length <= 60 ? branded : fitted;
 }
 
-function fitMetaDescription(value) {
-  let description = humanCopy(stripTags(value))
-    .replace(/\s+/g, " ")
-    .replace(/\.\s+(?:Don't|Won't|Can't)\s+(?:know|share|eat)\b.*$/i, ".")
-    .trim();
-  if (description.length < 120) {
-    const lower = description.toLowerCase();
-    const topicSuffix = lower.includes("curry")
-      ? " Practical preparation, storage and cooking guidance from NutriThrive."
-      : lower.includes("tea") || lower.includes("darjeeling") || lower.includes("caffeine")
-        ? " Practical guidance for choosing, brewing and enjoying tea from NutriThrive."
-        : lower.includes("soap") || lower.includes("skin")
-          ? " Clear guidance on ingredients, everyday use and important limitations."
-          : lower.includes("moringa")
-            ? " Evidence-aware guidance, practical use and important safety considerations."
-            : " Evidence-aware, practical Australian guidance from NutriThrive.";
-    const candidates = [
-      topicSuffix,
-      " Practical Australian guidance from NutriThrive.",
-      " Read the practical NutriThrive guide.",
-    ];
-    const addition = candidates.find((suffix) => description.length + suffix.length <= 160);
-    if (addition) description = `${description.replace(/\.$/, "")}.${addition}`;
-  }
-  if (description.length <= 160) return description;
-
-  const sentence = description.slice(0, 161).match(/^(.{90,160}[.!?])(?:\s|$)/)?.[1];
-  if (sentence) return sentence;
-  const shortened = trimAtWord(description, 157);
-  return `${shortened.replace(/[.!?]+$/, "")}.`;
+function fitPageDescription(value) {
+  return fitMetaDescription(humanCopy(stripTags(value)));
 }
 
 function websiteSchema() {
@@ -533,28 +509,17 @@ function itemListSchema(name, url, items) {
   };
 }
 
-function decodeEntities(value) {
-  return String(value || "")
-    .replaceAll("&amp;", "&")
-    .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">")
-    .replaceAll("&quot;", '"')
-    .replaceAll("&#39;", "'")
-    .replaceAll("&apos;", "'");
-}
-
 function extractSeo(filePath) {
   if (!fs.existsSync(filePath)) return null;
   const html = fs.readFileSync(filePath, "utf8");
   const title = html.match(/<title>([^<]*)<\/title>/i)?.[1];
-  const descTag = html.match(/<meta[^>]*name=["']description["'][^>]*>/i)?.[0]
-    || html.match(/<meta[^>]*content=["'][^"']*["'][^>]*name=["']description["'][^>]*>/i)?.[0]
-    || "";
-  const description = descTag.match(/content=["']([^"']*)["']/i)?.[1];
+  const description = metaContent(html, "description");
   const robotsTag = html.match(/<meta[^>]*name=["']robots["'][^>]*>/i)?.[0] || "";
-  const robots = robotsTag.match(/content=["']([^"']*)["']/i)?.[1];
-  const canonical = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1]
-    || html.match(/<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["']/i)?.[1];
+  const robots = extractQuotedAttr(robotsTag, "content");
+  const canonicalTag = html.match(/<link[^>]*rel=["']canonical["'][^>]*>/i)?.[0]
+    || html.match(/<link[^>]*href=["'][^"']+["'][^>]*rel=["']canonical["'][^>]*>/i)?.[0]
+    || "";
+  const canonical = extractQuotedAttr(canonicalTag, "href");
   return {
     title: title ? decodeEntities(title) : null,
     description: description ? decodeEntities(description) : null,
@@ -588,10 +553,11 @@ function extractTrackedSeo(relativePath) {
   const html = gitShowHead(relativePath);
   if (!html) return null;
   const title = html.match(/<title>([^<]*)<\/title>/i)?.[1];
-  const descTag = html.match(/<meta[^>]*name=["']description["'][^>]*>/i)?.[0] || "";
-  const description = descTag.match(/content=["']([^"']*)["']/i)?.[1];
-  const canonical = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1]
-    || html.match(/<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["']/i)?.[1];
+  const description = metaContent(html, "description");
+  const canonicalTag = html.match(/<link[^>]*rel=["']canonical["'][^>]*>/i)?.[0]
+    || html.match(/<link[^>]*href=["'][^"']+["'][^>]*rel=["']canonical["'][^>]*>/i)?.[0]
+    || "";
+  const canonical = extractQuotedAttr(canonicalTag, "href");
   return {
     title: title ? decodeEntities(title) : null,
     description: description ? decodeEntities(description) : null,
@@ -659,7 +625,7 @@ function layout({
   const canonical = `${LIVE}${canonicalPath}`;
   const image = ogImage ? absUrl(ogImage) : OG_IMAGE;
   const seoTitle = preserveTitle ? title : fitSeoTitle(title);
-  const seoDescription = preserveDescription ? description : fitMetaDescription(description);
+  const seoDescription = preserveDescription ? description : fitPageDescription(description);
   const robotsContent = robots || (LIVE_MODE ? "index, follow" : "noindex, nofollow");
   const nav = navItems().map((item) => {
     const on = current === item.label;
@@ -2440,7 +2406,11 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const catalogTitle = humanCopy(stripTags(meta.seoTitle || meta.title));
   const title = liveSeo?.title || catalogTitle;
   const displayH1 = articleDisplayH1(meta, liveSeo, title);
-  const description = liveSeo?.description || humanCopy(stripTags(meta.description));
+  const description = pickSeoDescription({
+    file: liveSeo?.description,
+    catalog: meta.description,
+    slug: meta.slug,
+  });
   const r = routes();
   const url = r.articleAbs(meta.slug);
   const image = absUrl(meta.image);
@@ -2474,7 +2444,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     canonicalPath: LIVE_MODE ? `/blog/${meta.slug}` : `/journal/${meta.slug}`,
     current: "Blog",
     preserveTitle: Boolean(liveSeo?.title),
-    preserveDescription: Boolean(liveSeo?.description),
+    preserveDescription: true,
     ogType: "article",
     ogImage: meta.image,
     ogImageWidth: 1200,
@@ -2581,9 +2551,7 @@ function loadArticles() {
     const html = fs.readFileSync(path.join(SITE, "blog", name), "utf8");
     if (/meta\s+name=["']robots["']\s+content=["']noindex/i.test(html)) continue;
     const seo = extractSeo(path.join(SITE, "blog", name));
-    const image = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)?.[1]
-      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i)?.[1]
-      || "";
+    const image = metaContent(html, "og:image") || "";
     articles.push({
       slug,
       title: seo.title || slug.replaceAll("-", " "),
@@ -2668,8 +2636,8 @@ function appendLiveRedirects() {
 /blog/category/curry-leaves/ /blog/category/curry-leaves/index.html 200
 /blog/category/soap-skin /blog/category/soap-skin/index.html 200
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
-/shipping /shipping 200
-/shipping/ /shipping 200
+/shipping /pages/shipping/shipping-returns.html 200
+/shipping/ /pages/shipping/shipping-returns.html 200
 /privacy /privacy-policy 301
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
@@ -2817,7 +2785,18 @@ function main() {
     for (const meta of articles) {
       const slug = meta.slug;
       const file = path.join(SITE, "blog", `${slug}.html`);
-      const liveSeo = extractTrackedSeo(`blog/${slug}.html`) || extractSeo(file) || {};
+      const fileSeo = extractSeo(file) || {};
+      const trackedSeo = extractTrackedSeo(`blog/${slug}.html`) || {};
+      const liveSeo = {
+        ...trackedSeo,
+        ...fileSeo,
+        description: pickSeoDescription({
+          file: fileSeo.description,
+          live: trackedSeo.description,
+          catalog: meta.description,
+          slug,
+        }),
+      };
       if (JOURNAL_REDIRECTS[slug]) {
         emit(`blog/${slug}.html`, redirectPage(slug, JOURNAL_REDIRECTS[slug], liveSeo), `blog/${slug}.html`);
         wrapped += 1;
@@ -2941,8 +2920,8 @@ function scanSeo() {
       if (!title?.[1]) issues.push(`${rel}: missing title`);
       if (!desc?.[1]) issues.push(`${rel}: missing description`);
       if (!canonical) issues.push(`${rel}: missing canonical`);
-      const titleLength = title?.[1]?.replace(/&amp;/g, "&").length || 0;
-      const descriptionLength = desc?.[1]?.replace(/&amp;/g, "&").length || 0;
+      const titleLength = decodeEntities(title?.[1] || "").length;
+      const descriptionLength = decodeEntities(desc?.[1] || "").length;
       if (titleLength && (titleLength < 30 || titleLength > 60)) issues.push(`${rel}: title length ${titleLength}`);
       if (descriptionLength && (descriptionLength < 120 || descriptionLength > 160)) issues.push(`${rel}: description length ${descriptionLength}`);
       remember(seenTitles, title?.[1], rel, "title");
