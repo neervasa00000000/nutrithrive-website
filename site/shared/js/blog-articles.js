@@ -306,8 +306,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
-    "title": "How Long Does Moringa Powder Last in Australia?",
-    "description": "How long does moringa powder last in Australia? Unopened 12–24 months; opened ~18 months if sealed and cool, spring heat, fridge mistakes, Truganina pack dates.",
+    "title": "Does Moringa Powder Expire? Shelf Life in Australia",
+    "description": "Does moringa powder expire? See opened and sealed shelf life, simple Australian storage tips and NutriThrive's current 18-month opened guidance.",
     "category": "Wellness",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
