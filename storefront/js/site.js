@@ -700,12 +700,34 @@ function bindJournalSearch() {
   if (initial) { input.value = initial; update(); }
 }
 
+function bindArticleReadingDepth() {
+  const article = document.querySelector("article[data-article-slug]");
+  if (!article) return;
+  const slug = article.dataset.articleSlug || location.pathname.split("/").filter(Boolean).at(-1) || "article";
+  const sent = new Set();
+  const measure = () => {
+    const rect = article.getBoundingClientRect();
+    const articleTop = window.scrollY + rect.top;
+    const readable = Math.max(1, article.offsetHeight - window.innerHeight);
+    const depth = Math.max(0, Math.min(100, ((window.scrollY - articleTop + window.innerHeight) / readable) * 100));
+    [50, 90].forEach((percent) => {
+      if (depth < percent || sent.has(percent)) return;
+      sent.add(percent);
+      trackEvent("article_read_depth", { article_slug: slug, percent_scrolled: percent });
+    });
+    if (sent.size === 2) window.removeEventListener("scroll", measure);
+  };
+  window.addEventListener("scroll", measure, { passive: true });
+  measure();
+}
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     bindHeader();
     bindPdpVariant();
     bindGrowthFeatures();
     bindJournalSearch();
+    bindArticleReadingDepth();
     setTimeout(() => emitCartChange(), 0);
   });
 } else {
@@ -713,5 +735,6 @@ if (document.readyState === "loading") {
   bindPdpVariant();
   bindGrowthFeatures();
   bindJournalSearch();
+  bindArticleReadingDepth();
   setTimeout(() => emitCartChange(), 0);
 }
