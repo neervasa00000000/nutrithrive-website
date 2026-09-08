@@ -188,6 +188,86 @@ const CURATED_RELATED = {
   ],
 };
 
+// Conversion paths for the ten pages already earning meaningful Search Console
+// clicks. These keep the next step aligned with the reader's query instead of
+// repeating one generic sales message across every guide.
+const ARTICLE_CONVERSION_PATHS = {
+  "moringa-patches-australia-review-do-they-work": {
+    kicker: "After the patch comparison",
+    title: "Compare with single-ingredient moringa powder",
+    body: "Check the ingredient, Australian testing summary, pouch sizes and current price before deciding which format suits you.",
+    cta: "View powder and testing",
+    links: [["Read the berberine interaction guide", "moringa-and-berberine-australia-what-science-says-2026"]],
+    methodology: true,
+  },
+  "how-long-does-moringa-powder-last-storage-shelf-life-2026": {
+    kicker: "Choose for your routine",
+    title: "Choose a pouch size you can keep fresh",
+    body: "Compare 100g, 200g and 400g options, then store the pouch sealed in a cool, dry place away from humidity.",
+    cta: "Compare moringa sizes",
+    links: [["How to read a NutriThrive batch code", "how-to-read-moringa-batch-codes-freshness"]],
+  },
+  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
+    kicker: "Compare the evidence",
+    title: "See the pouch, price and testing summary",
+    body: "Review our single-ingredient powder, current cost per 100g and the Australian laboratory summary before comparing it with capsules.",
+    cta: "View powder and testing",
+    links: [["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"]],
+    methodology: true,
+  },
+  "is-moringa-safe-for-children-kids-dosage-2026": {
+    kicker: "Safety before shopping",
+    title: "Check the product details with your health professional",
+    body: "Read the ingredient, testing and safety information first. Ask a GP or paediatrician before giving a concentrated powder to a child.",
+    cta: "View product details",
+    links: [["Read moringa side effects and cautions", "moringa-side-effects-what-happens-take-too-much-2026"]],
+  },
+  "grow-moringa-tree-australia": {
+    kicker: "While your tree grows",
+    title: "Use farm-grown moringa leaf powder",
+    body: "A moringa tree takes time to establish. Our powder is grown on our farm, shade-dried and packed in Truganina.",
+    cta: "See farm-grown moringa",
+    links: [["How shade-drying affects moringa", "science-shade-drying-vs-sun-drying-moringa"]],
+  },
+  "moringa-and-berberine-australia-what-science-says-2026": {
+    kicker: "Check interactions first",
+    title: "Review the single-ingredient product information",
+    body: "NutriThrive moringa powder does not contain berberine. Check the ingredient and testing information, and speak with your pharmacist or GP about interactions.",
+    cta: "View product details",
+    links: [["Read moringa side effects and cautions", "moringa-side-effects-what-happens-take-too-much-2026"]],
+  },
+  "rosabella-moringa-reviews-legit-or-overhyped-2026": {
+    kicker: "Compare before buying",
+    title: "Compare with a single-ingredient powder",
+    body: "Check NutriThrive's ingredient, cost per 100g, pouch sizes and Australian testing summary alongside the review evidence.",
+    cta: "Compare our moringa",
+    links: [["Powder versus capsules explained", "moringa-capsules-vs-powder-which-is-better-2026"]],
+    methodology: true,
+  },
+  "moringa-brands-comparison-australia-2026": {
+    kicker: "Compare our product",
+    title: "See exactly what is in the NutriThrive pouch",
+    body: "Review the ingredient, origin, current price, available testing summary and sizes without relying on a brand claim alone.",
+    cta: "View powder and testing",
+    links: [["Use the moringa quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"]],
+    methodology: true,
+  },
+  "science-shade-drying-vs-sun-drying-moringa": {
+    kicker: "See the finished product",
+    title: "Try our shade-dried moringa powder",
+    body: "Our moringa is grown on our farm, shade-dried as part of our process, tested in Australia and packed in Truganina.",
+    cta: "See shade-dried moringa",
+    links: [["What to check when choosing moringa", "how-to-choose-moringa-powder-australia-2026"]],
+  },
+  "how-to-add-moringa-to-diet": {
+    kicker: "Use it in these recipes",
+    title: "Choose moringa powder for your kitchen",
+    body: "Start with the 100g pouch or compare larger sizes if moringa is already part of your regular cooking routine.",
+    cta: "Get moringa for these recipes",
+    links: [["Try ten high-protein moringa recipes", "high-protein-moringa-recipes-australia-2026"]],
+  },
+};
+
 function journalTopic(article) {
   const value = `${article.slug} ${article.title} ${article.category}`.toLowerCase();
   if (/curry|karipatta|tadka|dahl|diwali/.test(value)) return "Curry leaves";
@@ -2534,6 +2614,11 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     .slice(0, 3);
   const dates = articleDates(prose);
   const enhancedProse = articleProseWithContents(prose, meta.slug);
+  const conversionPath = ARTICLE_CONVERSION_PATHS[meta.slug] || {};
+  const conversionCta = conversionPath.cta || cta;
+  const conversionLinks = (conversionPath.links || [])
+    .map(([label, slug]) => `<li><a href="${r.article(slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(label)}</a></li>`)
+    .join("");
   return layout({
     title,
     description,
@@ -2584,19 +2669,24 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             <a href="${productHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
           </aside>
           ${enhancedProse.contents}
-          <div class="prose">${enhancedProse.html}</div>
+          ${conversionPath.methodology ? `<aside class="article-methodology" aria-labelledby="method-${esc(meta.slug)}">
+            <h2 id="method-${esc(meta.slug)}">How we made this comparison</h2>
+            <p>We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions.</p>
+          </aside>
+          ` : ""}<div class="prose">${enhancedProse.html}</div>
           ${isHealth ? `<aside class="article-safety"><h2>Food guidance, not medical advice</h2><p>This article is general information. NutriThrive products are foods, not treatments. Speak with a qualified healthcare professional if you are pregnant, breastfeeding, managing a health condition or taking medication.</p></aside>` : ""}
           <section class="article-conversion" aria-labelledby="article-product-${esc(meta.slug)}">
             <img src="${shop.image}" alt="${esc(shop.name)} ${esc(shop.variant)}" width="240" height="300" loading="lazy">
             <div>
-              <p class="kicker">A practical next step</p>
-              <h2 id="article-product-${esc(meta.slug)}">${esc(shop.name)}</h2>
-              <p>${esc(shop.detail || shop.benefit)}</p>
+              <p class="kicker">${esc(conversionPath.kicker || "A practical next step")}</p>
+              <h2 id="article-product-${esc(meta.slug)}">${esc(conversionPath.title || shop.name)}</h2>
+              <p>${esc(conversionPath.body || shop.detail || shop.benefit)}</p>
               <p class="price">${money(shop.price)} ${esc(shop.unit || "")}</p>
               <div class="btn-row">
-                <a class="btn btn-primary" href="${productHref}" data-funnel-event="article_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
+                <a class="btn btn-primary" href="${productHref}" data-funnel-event="article_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(conversionCta)}</a>
                 <a class="btn btn-secondary" href="/shipping/" data-funnel-event="article_shipping_click">Delivery & returns</a>
-              </div>
+              </div>${conversionLinks ? `
+              <ul class="article-context-links">${conversionLinks}</ul>` : ""}
             </div>
           </section>
           ${relatedArticles.length ? `<nav class="article-related" aria-labelledby="related-${esc(meta.slug)}">
