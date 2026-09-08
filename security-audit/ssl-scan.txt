@@ -1,0 +1,17 @@
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.11.1
+
+		projectdiscovery.io
+
+[[34mINF[0m] Current nuclei version: v3.11.1 ([92mlatest[0m)
+[[34mINF[0m] Current nuclei-templates version: v10.4.8 ([92mlatest[0m)
+[[34mINF[0m] New templates added in latest release: 112
+[[34mINF[0m] Templates loaded for current scan: 39
+[[34mINF[0m] Executing 39 signed templates from projectdiscovery/nuclei-templates
+[[34mINF[0m] Targets loaded for current scan: 1
+[[34mINF[0m] Templates clustered: 32 (Reduced 32 Requests)
+[[34mINF[0m] Scan completed in 42.543496458s. No results found.
