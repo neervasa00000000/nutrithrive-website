@@ -18,8 +18,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
-    "title": "AG1 Alternative Australia: Compare Cost, Ingredients &amp; Taste",
-    "description": "AG1 alternative in Australia: $150+/month vs shade-dried moringa leaf powder, cost, ingredients, taste, and when a simple pouch beats a stack.",
+    "title": "AG1 vs Moringa Powder: Is Moringa an Alternative?",
+    "description": "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
     "category": "Wellness",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026",
     "image": "/assets/images/blog/moringa-replaces-200-supplement-stack-australia-2026.webp"
@@ -154,8 +154,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
-    "title": "Best Curry Leaf Substitutes in Australia: 7 Options Ranked",
-    "description": "No curry leaves at home? Seven real substitutes ranked by how close they taste for Australian kitchens, plus what you should never use instead.",
+    "title": "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
+    "description": "No curry leaves? Compare dried curry leaves, makrut lime leaves, citrus zest and four other substitutes, with practical swap ratios for Australian cooks.",
     "category": "Wellness",
     "href": "/blog/curry-leaves-substitute-what-to-use-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
@@ -266,8 +266,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
-    "title": "Fresh vs Dried Curry Leaves Australia: Which Wins in the Pan?",
-    "description": "Fresh or dried curry leaves, which actually works better in your cooking? Flavour, shelf life, and when each one wins. Read the practical NutriThrive guide.",
+    "title": "Fresh vs Dried Curry Leaves: What Changes in Cooking?",
+    "description": "Fresh vs dried curry leaves compared for flavour, tempering, storage and swap ratios, with practical advice for Australian home cooks.",
     "category": "Wellness",
     "href": "/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
@@ -282,8 +282,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "grow-moringa-tree-australia",
-    "title": "Moringa Tree Australia, Grow in Pots, Melbourne &amp; Perth (2026)",
-    "description": "Grow a moringa tree in Australia, pots, Melbourne dormancy, Perth tips, spacing. Use NMI powder while it grows; free AU ship at $49.50.",
+    "title": "Grow a Moringa Tree in Australia: Pots &amp; Climate Guide",
+    "description": "Learn how to grow moringa in Australia, including pot size, germination, winter dormancy and climate tips for Melbourne, Perth and warmer regions.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -307,7 +307,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "title": "Does Moringa Powder Expire? Shelf Life in Australia",
-    "description": "Does moringa powder expire? See opened and sealed shelf life, simple Australian storage tips and NutriThrive's current 18-month opened guidance.",
+    "description": "Does moringa powder expire? See opened and sealed shelf life, simple Australian storage tips and NutriThrive&#39;s current 18-month opened guidance.",
     "category": "Wellness",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
