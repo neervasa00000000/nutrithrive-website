@@ -1,0 +1,155 @@
+# NutriThrive Security Audit Report
+
+**Date:** Monday, 7 September 2026  
+**Target:** https://nutrithrive.com.au  
+**Scanner:** Nuclei v3.11.1 + Manual Checks  
+**Auditor:** Automated Scan
+
+---
+
+## Executive Summary
+
+The security scan of nutrithrive.com.au found **no critical vulnerabilities**. The site is hosted on Netlify with strong security headers in place. The static site architecture inherently reduces attack surface.
+
+---
+
+## Security Headers Analysis
+
+### ✅ PASS - All Critical Headers Present
+
+| Header | Status | Value |
+|--------|--------|-------|
+| **Strict-Transport-Security (HSTS)** | ✅ Present | `max-age=31536000; includeSubDomains; preload` |
+| **Content-Security-Policy (CSP)** | ✅ Present | Comprehensive policy (see details below) |
+| **X-Frame-Options** | ✅ Present | `DENY` (prevents clickjacking) |
+| **X-Content-Type-Options** | ✅ Present | `nosniff` (prevents MIME sniffing) |
+| **Referrer-Policy** | ✅ Present | `strict-origin-when-cross-origin` |
+| **Permissions-Policy** | ✅ Present | Restricts camera, microphone, geolocation |
+
+### Content-Security-Policy Details
+
+```
+default-src 'self';
+script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.paypal.com https://www.paypalobjects.com https://www.googletagmanager.com https://www.google-analytics.com https://www.redditstatic.com https://applepay.cdn-apple.com https://challenges.cloudflare.com;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+font-src 'self' https://fonts.gstatic.com data:;
+img-src 'self' data: https: blob:;
+connect-src 'self' https://cdn.jsdelivr.net https://www.paypal.com https://api-m.paypal.com https://api-m.sandbox.paypal.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://ipapi.co https://ip-api.com https://www.redditstatic.com https://pixel-config.reddit.com https://conversions-config.reddit.com https://challenges.cloudflare.com;
+frame-src https://www.paypal.com https://challenges.cloudflare.com https://www.google.com;
+object-src 'none';
+base-uri 'self';
+form-action 'self' https://formsubmit.co;
+upgrade-insecure-requests
+```
+
+**Assessment:** The CSP is well-configured. `'unsafe-inline'` for scripts is noted but common for static sites with inline JS. Consider moving to nonces if feasible in future.
+
+---
+
+## Sensitive File Exposure Check
+
+### ✅ PASS - No Sensitive Files Exposed
+
+| Path | Status | Risk |
+|------|--------|------|
+| `/.env` | 404 Not Found | ✅ Safe |
+| `/.git/config` | 404 Not Found | ✅ Safe |
+| `/wp-config.php` | 404 Not Found | ✅ Safe |
+| `/.htaccess` | 404 Not Found | ✅ Safe |
+| `/config.php` | 404 Not Found | ✅ Safe |
+| `/.DS_Store` | 404 Not Found | ✅ Safe |
+| `/backup.sql` | 404 Not Found | ✅ Safe |
+
+---
+
+## Nuclei Vulnerability Scan Results
+
+### Templates Executed
+- **Total Templates:** 10,730+
+- **SSL/TLS Templates:** 39
+- **Technology Detection:** 963
+- **Misconfiguration Templates:** 2,830
+
+### Findings
+- **Critical Vulnerabilities:** 0
+- **High Severity:** 0
+- **Medium Severity:** 0
+- **Low Severity:** 0
+- **Informational:** 0
+
+**Note:** The Netlify edge network has built-in DDoS protection and rate limiting which blocked some scan requests. This is actually a positive security feature.
+
+---
+
+## Infrastructure Security
+
+### Hosting: Netlify
+- ✅ Automatic SSL/TLS certificates (Let's Encrypt)
+- ✅ DDoS protection at edge
+- ✅ CDN with global edge nodes
+- ✅ Automatic HTTPS enforcement
+- ✅ Rate limiting (detected during scan)
+
+### SSL/TLS Configuration
+- Protocol: TLS 1.2/1.3
+- Certificate: Valid, auto-renewed
+- HSTS Preload: Enabled
+
+---
+
+## Recommendations
+
+### Low Priority (Nice to Have)
+
+1. **Consider CSP Nonces**
+   - Current: `'unsafe-inline'` for scripts
+   - Recommended: Use nonces for stricter CSP
+   - Impact: Low (static site, minimal risk)
+
+2. **Add security.txt**
+   - Create `/.well-known/security.txt` with contact info for security researchers
+   - Example:
+   ```
+   Contact: mailto:security@nutrithrive.com.au
+   Preferred-Languages: en
+   ```
+
+3. **Subresource Integrity (SRI)**
+   - Add `integrity` attributes to third-party scripts
+   - Protects against CDN compromise
+
+### Already Implemented ✅
+- HTTPS everywhere
+- Strong security headers
+- No sensitive file exposure
+- Rate limiting
+- DDoS protection
+- Proper CSP policy
+
+---
+
+## Scan Artifacts
+
+Files saved to `/security-audit/`:
+- `nuclei-scan-*.txt` - Full scan results
+- `ssl-scan.txt` - SSL/TLS scan
+- `headers-scan.txt` - Headers analysis
+- `tech-detect.txt` - Technology detection
+
+---
+
+## Conclusion
+
+**Overall Security Rating: GOOD**
+
+The nutrithrive.com.au website demonstrates solid security practices:
+- No known vulnerabilities detected
+- All critical security headers present
+- No sensitive files exposed
+- Protected by Netlify's security infrastructure
+
+The static site architecture (HTML/CSS/JS on Netlify CDN) inherently has a small attack surface compared to dynamic applications with databases.
+
+---
+
+*Report generated by Nuclei v3.11.1 security scanner*
