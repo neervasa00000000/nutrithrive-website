@@ -162,8 +162,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
-    "title": "Curry Leaf Tea Australia: How to Brew Dried Leaves",
-    "description": "How to make curry leaf tea step by step, plus what the evidence actually says about its benefits, not just tradition. Read the practical NutriThrive guide.",
+    "title": "How to Make Curry Leaf Tea in Australia (Dried)",
+    "description": "How to make curry leaf tea with dried kari leaves: simple AU method, flavour tips, storage, and the $7 dried curry leaf pack from Truganina.",
     "category": "Wellness",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
@@ -769,8 +769,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-soap-benefits-skin-guide",
-    "title": "Moringa Soap Benefits: Real vs Marketing (AU 2026)",
-    "description": "Moringa soap for skin in Australia: what&#39;s genuinely useful vs marketing hype, who it suits, and how a Melbourne-made bar compares to regular soap.",
+    "title": "Moringa Soap Australia: $7 Bar vs Skin Hype",
+    "description": "Moringa soap in Australia: what a Melbourne-made $7 bar actually does versus marketing claims, who it suits, and how it compares to regular soap.",
     "category": "Wellness",
     "href": "/blog/moringa-soap-benefits-skin-guide",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
@@ -793,8 +793,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-ashwagandha-comparison-2026",
-    "title": "Moringa vs Ashwagandha: Differences, Stacking &amp; Who Each Suits",
-    "description": "Moringa vs ashwagandha compared, energy, stress, and what each actually does. A clear breakdown for Australians choosing between them.",
+    "title": "Moringa vs Ashwagandha Australia: What's Different",
+    "description": "Moringa vs ashwagandha for Australian kitchens: what each plant is, how people use the leaf powder, and when a $11 shade-dried pouch is the simpler buy.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-ashwagandha-comparison-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
