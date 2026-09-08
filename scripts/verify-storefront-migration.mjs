@@ -31,8 +31,8 @@ const approvedSeoChanges = {
     description: "Last-minute Father&#39;s Day gift under $40 from Melbourne: $35 gift pack with honest shipping maths and same-day weekday dispatch from Truganina.",
   },
   "blog/curry-leaves-substitute-what-to-use-2026.html": {
-    title: "Best Curry Leaf Substitutes in Australia: 7 Options Ranked",
-    description: "No curry leaves at home? Seven real substitutes ranked by how close they taste for Australian kitchens — plus what you should never use instead.",
+    title: "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
+    description: "No curry leaves? Compare dried curry leaves, makrut lime leaves, citrus zest and four other substitutes, with practical swap ratios for Australian cooks.",
   },
   "blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html": {
     title: "Is Moringa Powder Safe for Dogs? AU Dose Checklist",
@@ -84,14 +84,16 @@ const approvedSeoChanges = {
     title: "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
   },
   "blog/moringa-vs-ashwagandha-comparison-2026.html": {
-    title: "Moringa vs Ashwagandha: Differences, Stacking &amp; Who Each Suits",
+    title: "Moringa vs Ashwagandha: Key Differences Explained",
+    description: "Compare moringa and ashwagandha, including what they are, common uses, evidence limits, side effects and when to speak with a health professional.",
   },
   "blog/moringa-soap-benefits-skin-guide.html": {
     title: "Moringa Soap Benefits: Real vs Marketing (AU 2026)",
     description: "Moringa soap for skin in Australia: what&#39;s genuinely useful vs marketing hype, who it suits, and how a Melbourne-made bar compares to regular soap.",
   },
   "blog/curry-leaves-tea-how-to-make-benefits-2026.html": {
-    title: "Curry Leaf Tea Australia: How to Brew Dried Leaves",
+    title: "How to Make Curry Leaf Tea with Dried Leaves",
+    description: "Learn how to make curry leaf tea with dried leaves, including a simple recipe, flavour tips, storage guidance and realistic evidence on health claims.",
   },
   "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
     title: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
@@ -138,8 +140,8 @@ const approvedSeoChanges = {
     description: "Dried curry leaves for Australian cooks: tradition, everyday uses, storage tips, and what to expect from shade-dried leaves packed in Melbourne (2026).",
   },
   "blog/grow-moringa-tree-australia.html": {
-    title: "Moringa Tree Australia — Grow in Pots, Melbourne &amp; Perth (2026)",
-    description: "Grow a moringa tree in Australia — pots, Melbourne dormancy, Perth tips, spacing. Use NMI powder while it grows; free AU ship at $49.50.",
+    title: "Grow a Moringa Tree in Australia: Pots &amp; Climate Guide",
+    description: "Learn how to grow moringa in Australia, including pot size, germination, winter dormancy and climate tips for Melbourne, Perth and warmer regions.",
   },
 };
 
@@ -301,7 +303,7 @@ if (home) {
 }
 
 const startHere = [
-  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Best Curry Leaf Substitutes in Australia: 7 Options Ranked", "$49.50"],
+  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens", "$49.50"],
   ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
   ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$49.50"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
