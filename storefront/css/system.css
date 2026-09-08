@@ -3295,6 +3295,38 @@ select {
   font-weight: 700;
 }
 
+.article-context-links {
+  border-top: 1px solid var(--color-border);
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) 0 0;
+}
+
+.article-context-links a {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.article-methodology {
+  background: var(--color-bg-soft);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  margin: 0 0 var(--space-7);
+  padding: var(--space-5);
+}
+
+.article-methodology h2 {
+  font-size: 20px;
+  margin: 0 0 var(--space-2);
+}
+
+.article-methodology p {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
 .article-author,
 .article-safety {
   border-top: 1px solid var(--color-border);
