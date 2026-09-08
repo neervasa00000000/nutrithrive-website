@@ -51,8 +51,8 @@ const approvedSeoChanges = {
     description: "How Victorian seniors add moringa powder to everyday meals: gentle food-level doses, joint-health context, and what to expect from Melbourne-packed leaf.",
   },
   "blog/ag1-alternative-australia-moringa-comparison-2026.html": {
-    title: "AG1 Alternative Australia: Compare Cost, Ingredients &amp; Taste",
-    description: "AG1 alternative in Australia: $150+/month vs shade-dried moringa leaf powder — cost, ingredients, taste, and when a simple pouch beats a stack.",
+    title: "AG1 Alternative Australia: AG1 vs Moringa Compared",
+    description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
   },
   "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
     title: "Does Moringa Have Caffeine? Moringa vs Coffee",
@@ -69,7 +69,8 @@ const approvedSeoChanges = {
     description: "How to choose moringa powder in Australia: bright green colour, single-ingredient labels, shade-dried leaf, lab tests, price traps, and clear red flags.",
   },
   "blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html": {
-    title: "Fresh vs Dried Curry Leaves Australia: Which Wins in the Pan?",
+    title: "Fresh vs Dried Curry Leaves: Taste, Use &amp; Storage",
+    description: "Fresh vs dried curry leaves compared for flavour, tempering, storage and swap ratios, with practical advice for Australian home cooks.",
   },
   "blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026.html": {
     title: "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
@@ -308,7 +309,7 @@ const startHere = [
   ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$49.50"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
   ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$49.50"],
-  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Compare Cost, Ingredients & Taste", "$49.50"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 vs Moringa Powder: Is Moringa an Alternative?", "$49.50"],
 ];
 for (const [rel, expected, postage] of startHere) {
   const html = read(rel);
