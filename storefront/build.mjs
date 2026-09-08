@@ -1473,7 +1473,7 @@ function aboutPage() {
         </div>
         <p style="font-size:14px;color:var(--color-text-secondary)">Farm grown · Manufacturer direct · Australian testing information · Packed in Truganina</p>
       </section>
-      <section class="section band">
+      <section class="section band" id="founder">
         <div class="wrap split-2">
           <div>
             <h2>Why we started NutriThrive</h2>
@@ -2439,6 +2439,61 @@ function extractInnerByClass(html, className) {
   return html.slice(start);
 }
 
+const ARTICLE_MONTHS = {
+  jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+  jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
+};
+
+function articleDates(prose) {
+  const records = [...String(prose).matchAll(/<strong>\s*(\d{1,2})\s+([A-Z][a-z]{2})\s+(20\d{2}):\s*<\/strong>\s*([^<]{0,140})/g)]
+    .map((match) => {
+      const month = ARTICLE_MONTHS[match[2].toLowerCase()];
+      if (month === undefined) return null;
+      const value = new Date(Date.UTC(Number(match[3]), month, Number(match[1])));
+      return Number.isNaN(value.getTime()) ? null : { value, note: match[4].trim() };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.value - b.value);
+  const published = records.find((record) => /\b(publish|published|created)\b/i.test(record.note))?.value || null;
+  const modified = records.at(-1)?.value || published;
+  const iso = (date) => date.toISOString().slice(0, 10);
+  const display = (date) => new Intl.DateTimeFormat("en-AU", {
+    day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
+  }).format(date);
+  return {
+    publishedIso: published ? iso(published) : "",
+    modifiedIso: modified ? iso(modified) : "",
+    publishedLabel: published ? display(published) : "",
+    modifiedLabel: modified ? display(modified) : "",
+  };
+}
+
+function articleProseWithContents(prose, slug) {
+  const used = new Set();
+  const headings = [];
+  const html = String(prose).replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/gi, (match, attrs, inner) => {
+    const label = decodeEntities(stripTags(inner)).replace(/\s+/g, " ").trim();
+    if (!label) return match;
+    const existing = attrs.match(/\bid=["']([^"']+)["']/i)?.[1];
+    const base = (existing || label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "section").slice(0, 72);
+    let id = base;
+    let suffix = 2;
+    while (used.has(id)) id = `${base}-${suffix++}`;
+    used.add(id);
+    headings.push({ id, label });
+    return `<h2${existing ? attrs : `${attrs} id="${esc(id)}"`}>${inner}</h2>`;
+  });
+  if (headings.length < 4) return { html, contents: "" };
+  const visibleHeadings = headings.slice(0, 8);
+  return {
+    html,
+    contents: `<nav class="article-toc" aria-labelledby="contents-${esc(slug)}">
+      <h2 id="contents-${esc(slug)}">On this page</h2>
+      <ol>${visibleHeadings.map(({ id, label }) => `<li><a href="#${esc(id)}" data-funnel-event="article_contents_click" data-article="${esc(slug)}">${esc(label)}</a></li>`).join("")}${headings.length > visibleHeadings.length ? `<li class="article-toc-more">${headings.length - visibleHeadings.length} more sections follow</li>` : ""}</ol>
+    </nav>`,
+  };
+}
+
 function articlePage(meta, prose, allArticles, liveSeo = null) {
   const shop = journalProduct(meta) || PRODUCTS[0];
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
@@ -2477,6 +2532,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const relatedArticles = [...curatedRelated, priorityArticle, ...nextArticles, ...globalRelated, ...neighboringArticles]
     .filter((article, index, list) => article && article.slug !== meta.slug && list.findIndex((item) => item?.slug === article.slug) === index)
     .slice(0, 3);
+  const dates = articleDates(prose);
+  const enhancedProse = articleProseWithContents(prose, meta.slug);
   return layout({
     title,
     description,
@@ -2498,8 +2555,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     description,
     image: [image],
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    author: { "@type": "Person", name: "Neer Vasa" },
+    author: { "@type": "Person", name: "Neer Vasa", url: `${LIVE}/about#founder` },
     publisher: { "@id": `${LIVE}/#localbusiness` },
+    ...(dates.publishedIso ? { datePublished: dates.publishedIso } : {}),
+    ...(dates.modifiedIso ? { dateModified: dates.modifiedIso } : {}),
     articleSection: category,
     inLanguage: "en-AU",
   })}
@@ -2515,8 +2574,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         <a href="/">Home</a> / <a href="${r.journal}">Blog</a> / <span>${esc(title)}</span>
       </nav>
       <section class="wrap article-layout">
-        <article>
-          <p class="meta-line">${esc(topic)} · Reviewed Aug 2026 · By Neer Vasa</p>
+        <article data-article-slug="${esc(meta.slug)}">
+          <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>
           <p class="lede">${esc(description)}</p>
           <div class="article-hero"><img src="${meta.image}" alt="${esc(title)}" width="1200" height="675" fetchpriority="high"></div>
@@ -2524,7 +2583,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong></div>
             <a href="${productHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
           </aside>
-          <div class="prose">${prose}</div>
+          ${enhancedProse.contents}
+          <div class="prose">${enhancedProse.html}</div>
           ${isHealth ? `<aside class="article-safety"><h2>Food guidance, not medical advice</h2><p>This article is general information. NutriThrive products are foods, not treatments. Speak with a qualified healthcare professional if you are pregnant, breastfeeding, managing a health condition or taking medication.</p></aside>` : ""}
           <section class="article-conversion" aria-labelledby="article-product-${esc(meta.slug)}">
             <img src="${shop.image}" alt="${esc(shop.name)} ${esc(shop.variant)}" width="240" height="300" loading="lazy">
@@ -2546,7 +2606,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           </nav>` : ""}
           <aside class="article-author">
             <p class="kicker">About the author</p>
-            <h2>Neer Vasa, NutriThrive founder</h2>
+            <h2><a href="${r.about}#founder" rel="author">Neer Vasa, NutriThrive founder</a></h2>
             <p>Neer works across NutriThrive’s farming, manufacturing and Melbourne fulfilment. NutriThrive grows moringa and curry leaves on its own farm, sources tea from a Darjeeling family farm, and handmakes moringa soap in Australia.</p>
           </aside>
         </article>
