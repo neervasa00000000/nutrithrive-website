@@ -115,6 +115,32 @@ const JOURNAL_PRIORITY = [
   "how-to-read-a-soap-ingredient-label",
 ];
 
+// Search Console opportunity updates approved after reviewing the 7 September
+// exports. Keep this explicit so every other ranking article continues to use
+// its committed title, description and H1 during storefront migrations.
+const ARTICLE_SEO_OVERRIDES = {
+  "curry-leaves-substitute-what-to-use-2026": {
+    title: "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
+    description: "No curry leaves? Compare dried curry leaves, makrut lime leaves, citrus zest and four other substitutes, with practical swap ratios for Australian cooks.",
+    h1: "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
+  },
+  "curry-leaves-tea-how-to-make-benefits-2026": {
+    title: "How to Make Curry Leaf Tea with Dried Leaves",
+    description: "Learn how to make curry leaf tea with dried leaves, including a simple recipe, flavour tips, storage guidance and realistic evidence on health claims.",
+    h1: "How to Make Curry Leaf Tea with Dried Leaves",
+  },
+  "grow-moringa-tree-australia": {
+    title: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
+    description: "Learn how to grow moringa in Australia, including pot size, germination, winter dormancy and climate tips for Melbourne, Perth and warmer regions.",
+    h1: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
+  },
+  "moringa-vs-ashwagandha-comparison-2026": {
+    title: "Moringa vs Ashwagandha: Key Differences Explained",
+    description: "Compare moringa and ashwagandha, including what they are, common uses, evidence limits, side effects and when to speak with a health professional.",
+    h1: "Moringa vs Ashwagandha: Key Differences Explained",
+  },
+};
+
 const JOURNAL_REDIRECTS = {
   "is-moringa-safe-during-pregnancy-2026": "moringa-pregnancy-safe-australia-trimester-guide-2026",
   "moringa-smoothie-recipes-australia-easy-2026": "moringa-smoothie-recipes-australia-2026",
@@ -2415,14 +2441,15 @@ function extractInnerByClass(html, className) {
 
 function articlePage(meta, prose, allArticles, liveSeo = null) {
   const shop = journalProduct(meta) || PRODUCTS[0];
+  const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
   const catalogTitle = humanCopy(stripTags(meta.seoTitle || meta.title));
-  const title = liveSeo?.title || catalogTitle;
-  const displayH1 = articleDisplayH1(meta, liveSeo, title);
-  const description = pickSeoDescription({
-    file: liveSeo?.description,
-    catalog: meta.description,
-    slug: meta.slug,
-  });
+  const title = seoOverride?.title || liveSeo?.title || catalogTitle;
+  const displayH1 = seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
+  const description = seoOverride?.description || pickSeoDescription({
+      file: liveSeo?.description,
+      catalog: meta.description,
+      slug: meta.slug,
+    });
   const r = routes();
   const url = r.articleAbs(meta.slug);
   const image = absUrl(meta.image);
