@@ -139,6 +139,16 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Compare moringa and ashwagandha, including what they are, common uses, evidence limits, side effects and when to speak with a health professional.",
     h1: "Moringa vs Ashwagandha: Key Differences Explained",
   },
+  "fresh-vs-dried-curry-leaves-cooking-comparison-2026": {
+    title: "Fresh vs Dried Curry Leaves: Taste, Use & Storage",
+    description: "Fresh vs dried curry leaves compared for flavour, tempering, storage and swap ratios, with practical advice for Australian home cooks.",
+    h1: "Fresh vs Dried Curry Leaves: What Changes in Cooking?",
+  },
+  "ag1-alternative-australia-moringa-comparison-2026": {
+    title: "AG1 Alternative Australia: AG1 vs Moringa Compared",
+    description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
+    h1: "AG1 vs Moringa Powder: Is Moringa an Alternative?",
+  },
 };
 
 const JOURNAL_REDIRECTS = {
@@ -1340,20 +1350,25 @@ function pdpPage(slug, d) {
   const valueCompare =
     slug === "moringa-powder"
       ? `<section class="pdp-value" aria-labelledby="moringa-value">
-            <h2 id="moringa-value">More moringa, lower cost</h2>
+            <h2 id="moringa-value">Compare sizes and price per 100g</h2>
             <div class="pdp-value-rows">
               <div class="pdp-value-row">
                 <p class="pdp-value-size">100g</p>
                 <p class="pdp-value-price">$11</p>
                 <p class="pdp-value-unit">$11.00 per 100g</p>
               </div>
+              <div class="pdp-value-row">
+                <p class="pdp-value-size">200g</p>
+                <p class="pdp-value-price">$21.50</p>
+                <p class="pdp-value-unit">$10.75 per 100g · save $0.50</p>
+              </div>
               <div class="pdp-value-row is-best">
                 <p class="pdp-value-size">400g</p>
                 <p class="pdp-value-price">$35 <span class="pdp-value-flag">BEST VALUE</span></p>
-                <p class="pdp-value-unit">$8.75 per 100g</p>
+                <p class="pdp-value-unit">$8.75 per 100g · save $9</p>
               </div>
             </div>
-            <p class="pdp-value-note">The 400g option saves $9 compared with buying four 100g packs.</p>
+            <p class="pdp-value-note">Savings compare each larger option with the same weight bought as 100g pouches.</p>
           </section>`
       : "";
   const education =
@@ -2477,10 +2492,10 @@ function rewriteLinks(html) {
 function extractArticleProse(slug, fallbackHtml) {
   const file = path.join(SITE, "blog", `${slug}.html`);
   let html = "";
-  if (LIVE_MODE) {
-    html = gitShowHead(`blog/${slug}.html`);
-  }
-  if (!html && fs.existsSync(file)) html = fs.readFileSync(file, "utf8");
+  // Prefer intentional working-tree edits. Git HEAD remains a fallback for a
+  // migration where the production article does not exist in the worktree.
+  if (fs.existsSync(file)) html = fs.readFileSync(file, "utf8");
+  if (!html && LIVE_MODE) html = gitShowHead(`blog/${slug}.html`);
   if (!html) return fallbackHtml;
   for (const cls of ["blog-v2-prose", "main-content", "blog-post-content", "content-wrapper"]) {
     const extracted = extractInnerByClass(html, cls);
