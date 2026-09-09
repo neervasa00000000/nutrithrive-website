@@ -149,6 +149,15 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
     h1: "AG1 vs Moringa Powder: Is Moringa an Alternative?",
   },
+  "what-does-moringa-powder-taste-like-honest-guide-2026": {
+    title: "What Does Moringa Powder Taste Like? Honest Mix Guide",
+    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
+    h1: "What Does Moringa Powder Taste Like? Honest Mix Guide",
+  },
+  "natural-pre-workout-moringa-australia-2026": {
+    title: "Moringa as a Natural Pre-Workout in Australia (2026)",
+    h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
+  },
 };
 
 const JOURNAL_REDIRECTS = {
@@ -315,6 +324,10 @@ function journalProduct(article) {
 
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
+  if ([
+    "chemist-warehouse-greens-vs-moringa-powder-2026",
+    "moringa-patches-australia-review-do-they-work",
+  ].includes(article.slug)) return "Shop moringa powder";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";
   if (topic === "Darjeeling tea") return "Try Darjeeling tea";
