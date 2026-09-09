@@ -162,8 +162,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
-    "title": "How to Make Curry Leaf Tea in Australia (Dried)",
-    "description": "How to make curry leaf tea with dried kari leaves: simple AU method, flavour tips, storage, and the $7 dried curry leaf pack from Truganina.",
+    "title": "How to Make Curry Leaf Tea with Dried Leaves",
+    "description": "Learn how to make curry leaf tea with dried leaves, including a simple recipe, flavour tips, storage guidance and realistic evidence on health claims.",
     "category": "Wellness",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
@@ -793,8 +793,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-ashwagandha-comparison-2026",
-    "title": "Moringa vs Ashwagandha Australia: What's Different",
-    "description": "Moringa vs ashwagandha for Australian kitchens: what each plant is, how people use the leaf powder, and when a $11 shade-dried pouch is the simpler buy.",
+    "title": "Moringa vs Ashwagandha: Key Differences Explained",
+    "description": "Compare moringa and ashwagandha, including what they are, common uses, evidence limits, side effects and when to speak with a health professional.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-ashwagandha-comparison-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -849,7 +849,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "natural-pre-workout-moringa-australia-2026",
-    "title": "Moringa as a Natural Pre-Workout",
+    "title": "Moringa as a Natural Pre-Workout in Australia (2026)",
     "description": "Can moringa replace your pre-workout? An honest look at the energy and performance evidence before you swap. Practical Australian guidance from NutriThrive.",
     "category": "Wellness",
     "href": "/blog/natural-pre-workout-moringa-australia-2026",
