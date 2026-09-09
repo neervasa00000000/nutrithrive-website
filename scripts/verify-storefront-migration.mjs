@@ -54,6 +54,13 @@ const approvedSeoChanges = {
     title: "AG1 Alternative Australia: AG1 vs Moringa Compared",
     description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
   },
+  "blog/what-does-moringa-powder-taste-like-honest-guide-2026.html": {
+    title: "What Does Moringa Powder Taste Like? Honest Mix Guide",
+    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
+  },
+  "blog/natural-pre-workout-moringa-australia-2026.html": {
+    title: "Moringa as a Natural Pre-Workout in Australia (2026)",
+  },
   "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
     title: "Does Moringa Have Caffeine? Moringa vs Coffee",
     description: "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
