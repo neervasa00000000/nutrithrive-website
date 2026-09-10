@@ -566,7 +566,7 @@ function productPayload(p) {
 }
 
 function shopHref(p) {
-  if (["moringa-powder", "moringa-200g", "moringa-400g"].includes(p.id)) {
+  if (p.id === "moringa-200g" || p.id === "moringa-400g") {
     return `/products/moringa-powder/?v=${encodeURIComponent(p.id)}`;
   }
   return p.href;
@@ -1482,6 +1482,7 @@ function pdpPage(slug, d) {
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(p.name)}</h1>
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(p.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack"].includes(slug) && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : ""}</p>
+          ${slug === "moringa-powder" ? `<p class="pdp-review-link"><a href="#reviews">Google reviews</a></p>` : ""}
           <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
           <p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>
           ${variantSelect}
@@ -1546,7 +1547,7 @@ function pdpPage(slug, d) {
               ${faqDetails(d.faqs)}
             </div>
           </section>
-          <section class="pdp-reviews">
+          <section class="pdp-reviews" id="reviews">
             <div class="reviews-head"><h2>What customers say</h2>${stars()} <span>from 12 Google reviews</span></div>
             <div class="review-grid review-scroll" aria-label="Google reviews">${reviews.map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
             <p class="review-disclosure">These are genuine reviews from our Google Business Profile. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
