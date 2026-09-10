@@ -2277,7 +2277,24 @@ function cityEtaLine(city) {
   return parts.map((part) => (part.city === city ? `<strong>${part.label}</strong>` : part.label)).join(" · ");
 }
 
+function emitCityLandings() {
+  emit("melbourne/index.html", cityPage("Melbourne", "melbourne"), "pages/homepage/melbourne.html");
+  emit("moringa-sydney/index.html", cityPage("Sydney", "sydney"));
+  emit("moringa-brisbane/index.html", cityPage("Brisbane", "brisbane"));
+  emit("moringa-perth/index.html", cityPage("Perth", "perth"));
+  emit("moringa-adelaide/index.html", cityPage("Adelaide", "adelaide"));
+}
+
 function cityPage(city, slug) {
+  const r = routes();
+  const powderHref = "/products/moringa-powder/";
+  const giftHref = "/products/gift-pack/";
+  const storeHref = r.article("how-long-does-moringa-powder-last-storage-shelf-life-2026");
+  const addHref = r.article("how-to-add-moringa-to-diet");
+  const tasteHref = r.article("what-does-moringa-powder-taste-like-honest-guide-2026");
+  const chooseHref = r.article("how-to-choose-moringa-powder-australia-2026");
+  const coffeeHref = r.article("moringa-vs-coffee-melbourne-energy-hack");
+  const treeHref = r.article("grow-moringa-tree-australia");
   const citySeo = {
     Melbourne: {
       title: "Moringa Powder Melbourne — Packed in Truganina | From $11",
@@ -2305,9 +2322,54 @@ function cityPage(city, slug) {
       description: "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50.",
     },
   }[city];
+  const transitLine = {
+    Melbourne: "Metro Melbourne typically 1–2 days after dispatch.",
+    Sydney: "Sydney typically 2–4 days after dispatch from Truganina.",
+    Brisbane: "Brisbane typically 2–4 days after dispatch from Truganina.",
+    Adelaide: "Adelaide typically 2–4 days after dispatch from Truganina.",
+    Perth: "Perth typically 4–6 days after dispatch from Truganina.",
+  }[city];
+  const uniqueLine = {
+    Melbourne: "Packed here in Truganina — fastest metro transit on our list (1–2 days).",
+    Sydney: "Same pouch as Melbourne; typical Sydney transit 2–4 days from Truganina.",
+    Perth: "Same pouch as Melbourne; allow <strong>4–6 days</strong> after dispatch for Perth — tracked.",
+    Brisbane: `Same pouch as Melbourne; typical Brisbane transit 2–4 days. For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
+    Adelaide: "Same pouch as Melbourne; typical Adelaide transit 2–4 days from Truganina.",
+  }[city];
   const pouchLine = city === "Melbourne"
-    ? "Melbourne customers get the same pouch we ship Australia-wide — one Truganina warehouse, one batch record, no contract-pack swap."
-    : `${city} customers get the same pouch as Melbourne, not a different contract pack.`;
+    ? "Melbourne customers get the same pouch we ship Australia-wide — not a different contract pack."
+    : `${city} customers get the same pouch as Melbourne — not a different contract pack.`;
+  const faqs = [
+    [
+      `How long does shipping take to ${city}?`,
+      {
+        html: `${esc(transitLine)} Dispatch is before 2pm Monday–Friday Melbourne time, with tracking on every order. See <a href="${r.shipping}">shipping times</a>.`,
+        text: `${transitLine} Dispatch is before 2pm Monday–Friday Melbourne time, with tracking on every order.`,
+      },
+    ],
+    [
+      `Is the powder different for ${city}?`,
+      "No — same Truganina batch as Melbourne.",
+    ],
+    ["When is shipping free?", "Free AU shipping at $49.50."],
+    ["Where is it packed?", "Truganina, Melbourne VIC."],
+  ];
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: typeof a === "object" ? a.text : a,
+      },
+    })),
+  };
+  const melbourneGuides = city === "Melbourne"
+    ? `<li><a href="${coffeeHref}">Moringa vs coffee in Melbourne</a></li>
+            <li><a href="${treeHref}">Grow a moringa tree in Australia</a></li>`
+    : "";
   const canonicalPath = slug === "melbourne" ? "/melbourne" : `/moringa-${slug}`;
   return layout({
     title: citySeo.title,
@@ -2320,27 +2382,42 @@ function cityPage(city, slug) {
         { name: "Home", item: `${LIVE}/` },
         { name: city, item: `${LIVE}${canonicalPath}` },
       ])
-    ),
+    ) + jsonLd(faqSchema),
     current: "",
     main: `
       <section class="city-hero wrap">
         <h1>${citySeo.h1}</h1>
-        <p class="lede">Packed in Truganina, Melbourne, and sent with tracking. Same powder, same lab summary, same $11/100g.</p>
+        <p class="lede">Packed in Truganina, Melbourne · shade-dried · NMI lab-tested · sizes 100g $11 · 200g $21.50 · 400g $35 · Free AU shipping at $49.50.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
-          <a class="btn btn-secondary" href="/shipping">Shipping times</a>
+          <a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a>
+          <a class="btn btn-secondary" href="${r.shipping}">Shipping times</a>
         </div>
-        <p>Free AU shipping at $49.50.</p>
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap-narrow">
+          <h2>Shipping to ${city}</h2>
+          <p>${uniqueLine}</p>
+          <p>${esc(transitLine)} Dispatch: before 2pm Mon–Fri Melbourne time (same-day handoff when carriers allow). Tracking on every order. Details: <a href="${r.shipping}">shipping</a>.</p>
+          <p>Typical AU transit after dispatch: ${cityEtaLine(city)}.</p>
           <h2>What arrives</h2>
-          <p>What arrives: resealable pouch of shade-dried moringa leaf powder, packed in Truganina VIC. NMI lab summary available on the product page. Ingredient line: 100% moringa leaf — no fillers.</p>
-          <h2>Shipping times</h2>
-          <p>Dispatch: before 2pm Mon–Fri Melbourne time (same-day handoff when carriers allow).</p>
-          <p>Typical AU transit after dispatch: ${cityEtaLine(city)}. Tracking on every order.</p>
-          <h2>Why not a local warehouse?</h2>
+          <p>Resealable pouch of shade-dried moringa leaf powder, packed in Truganina VIC. NMI lab summary is on the <a href="${powderHref}">product page</a>. Ingredient line: 100% moringa leaf — no fillers.</p>
+          <h2>Why one warehouse</h2>
           <p>One warehouse keeps batch records honest. ${pouchLine}</p>
+          <h2>Sizes and free AU shipping</h2>
+          <p>Live sizes: <a href="${powderHref}">100g $11 · 200g $21.50 · 400g $35</a>. Single pouches sit under free shipping — <strong>Free AU shipping at $49.50</strong>. The 400g pouch is best value at $35 ($8.75/100g). Or add a <a href="${giftHref}">Gift Pack ($35)</a> if you want a tracked bundle. Details: <a href="${r.shipping}">shipping</a>.</p>
+          <h2>Helpful guides</h2>
+          <ul>
+            <li><a href="${powderHref}">Shop moringa powder</a> — live sizes from $11</li>
+            <li><a href="${r.shipping}">Shipping times</a> to ${city}</li>
+            <li><a href="${storeHref}">How long moringa powder lasts</a></li>
+            <li><a href="${addHref}">How to add moringa without bitterness</a></li>
+            <li><a href="${tasteHref}">What moringa powder tastes like</a></li>
+            <li><a href="${chooseHref}">How to choose moringa powder in Australia</a></li>${melbourneGuides}
+          </ul>
+          <h2>FAQ</h2>
+          <div class="faq-list">
+            ${faqDetails(faqs)}
+          </div>
         </div>
       </section>
       ${googleReviewsSection()}`,
@@ -2909,6 +2986,12 @@ function copyLiveUiAssets() {
 }
 
 function main() {
+  if (LIVE_PAGES.has("cities")) {
+    emitCityLandings();
+    console.log("Wrote city landing pages.");
+    return;
+  }
+
   if (LIVE_MODE && LIVE_PAGES.size) {
     copyLiveUiAssets();
     if (LIVE_PAGES.has("payment")) emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
@@ -2997,11 +3080,7 @@ function main() {
     emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
     emit("thank-you/index.html", thankYouPage(), "pages/shop/thank-you.html");
     emit("404.html", notFoundPage());
-    emit("melbourne/index.html", cityPage("Melbourne", "melbourne"), "pages/homepage/melbourne.html");
-    emit("moringa-sydney/index.html", cityPage("Sydney", "sydney"));
-    emit("moringa-brisbane/index.html", cityPage("Brisbane", "brisbane"));
-    emit("moringa-perth/index.html", cityPage("Perth", "perth"));
-    emit("moringa-adelaide/index.html", cityPage("Adelaide", "adelaide"));
+    emitCityLandings();
     emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");
     emit("newsletter/thank-you.html", newsletterThanksPage(), "pages/newsletter/thank-you.html");
     emit(
