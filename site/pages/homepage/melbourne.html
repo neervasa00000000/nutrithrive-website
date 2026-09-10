@@ -35,14 +35,14 @@
   <link rel="alternate" type="text/plain" href="https://nutrithrive.com.au/llms.txt" title="llms.txt">
   <link rel="preload" href="/assets/fonts/fraunces-latin-500-600.woff2?v=20260902-2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2?v=20260902-2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/storefront-system.min.css?v=20260902-2">
-  <script src="/assets/js/storefront/catalog.min.js?v=20260902-2" defer></script>
+  <link rel="stylesheet" href="/assets/css/storefront-system.css?v=20260902-2">
+  <script src="/assets/js/storefront/catalog.js?v=20260902-2" defer></script>
   <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">{"@context":"https://schema.org","@type":["LocalBusiness","HealthFoodStore"],"@id":"https://nutrithrive.com.au/#localbusiness","name":"NutriThrive","image":"https://nutrithrive.com.au/assets/images/logo/logo-112.png","url":"https://nutrithrive.com.au/","telephone":"+61438201419","email":"nutrithrive0@gmail.com","priceRange":"$$","description":"NutriThrive is a farmer and manufacturer. We grow moringa and curry leaves on our own farm, source tea from a Darjeeling family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.","identifier":{"@type":"PropertyValue","propertyID":"ABN","value":"32 639 442 616"},"address":{"@type":"PostalAddress","streetAddress":"15 Europe Street","addressLocality":"Truganina","addressRegion":"VIC","postalCode":"3029","addressCountry":"AU"},"geo":{"@type":"GeoCoordinates","latitude":-37.8323773,"longitude":144.7187983},"hasMap":"https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"23:00"}],"areaServed":[{"@type":"City","name":"Truganina"},{"@type":"City","name":"Melbourne"},{"@type":"AdministrativeArea","name":"Victoria"},{"@type":"Country","name":"Australia"}],"sameAs":["https://www.facebook.com/nutrithrive","https://www.instagram.com/nutri__thrive/"]}</script>
   
   <meta name="google-site-verification" content="Ei4OAxJbWPsT7qaeosUpRUONNj37_r_Xe1xFPI6R_M0">
   <link rel="alternate" hreflang="en-AU" href="https://nutrithrive.com.au/melbourne">
   <link rel="alternate" hreflang="x-default" href="https://nutrithrive.com.au/melbourne">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nutrithrive.com.au/"},{"@type":"ListItem","position":2,"name":"Melbourne","item":"https://nutrithrive.com.au/melbourne"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nutrithrive.com.au/"},{"@type":"ListItem","position":2,"name":"Melbourne","item":"https://nutrithrive.com.au/melbourne"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does shipping take to Melbourne?","acceptedAnswer":{"@type":"Answer","text":"Metro Melbourne typically 1–2 days after dispatch. Dispatch is before 2pm Monday–Friday Melbourne time, with tracking on every order."}},{"@type":"Question","name":"Is the powder different for Melbourne?","acceptedAnswer":{"@type":"Answer","text":"No — same Truganina batch as Melbourne."}},{"@type":"Question","name":"When is shipping free?","acceptedAnswer":{"@type":"Answer","text":"Free AU shipping at $49.50."}},{"@type":"Question","name":"Where is it packed?","acceptedAnswer":{"@type":"Answer","text":"Truganina, Melbourne VIC."}}]}</script>
 </head>
 <body>
 <!--
@@ -96,22 +96,38 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <main id="main">
       <section class="city-hero wrap">
         <h1>Moringa Powder for Melbourne</h1>
-        <p class="lede">Packed in Truganina, Melbourne, and sent with tracking. Same powder, same lab summary, same $11/100g.</p>
+        <p class="lede">Packed in Truganina, Melbourne · shade-dried · NMI lab-tested · sizes 100g $11 · 200g $21.50 · 400g $35 · Free AU shipping at $49.50.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
+          <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
           <a class="btn btn-secondary" href="/shipping">Shipping times</a>
         </div>
-        <p>Free AU shipping at $49.50.</p>
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap-narrow">
+          <h2>Shipping to Melbourne</h2>
+          <p>Packed here in Truganina — fastest metro transit on our list (1–2 days).</p>
+          <p>Metro Melbourne typically 1–2 days after dispatch. Dispatch: before 2pm Mon–Fri Melbourne time (same-day handoff when carriers allow). Tracking on every order. Details: <a href="/shipping">shipping</a>.</p>
+          <p>Typical AU transit after dispatch: <strong>Metro Melb 1–2 days</strong> · Sydney 2–4 · Brisbane 2–4 · Adelaide 2–4 · Perth 4–6.</p>
           <h2>What arrives</h2>
-          <p>What arrives: resealable pouch of shade-dried moringa leaf powder, packed in Truganina VIC. NMI lab summary available on the product page. Ingredient line: 100% moringa leaf — no fillers.</p>
-          <h2>Shipping times</h2>
-          <p>Dispatch: before 2pm Mon–Fri Melbourne time (same-day handoff when carriers allow).</p>
-          <p>Typical AU transit after dispatch: <strong>Metro Melb 1–2 days</strong> · Sydney 2–4 · Brisbane 2–4 · Adelaide 2–4 · Perth 4–6. Tracking on every order.</p>
-          <h2>Why not a local warehouse?</h2>
-          <p>One warehouse keeps batch records honest. Melbourne customers get the same pouch we ship Australia-wide — one Truganina warehouse, one batch record, no contract-pack swap.</p>
+          <p>Resealable pouch of shade-dried moringa leaf powder, packed in Truganina VIC. NMI lab summary is on the <a href="/products/moringa-powder/">product page</a>. Ingredient line: 100% moringa leaf — no fillers.</p>
+          <h2>Why one warehouse</h2>
+          <p>One warehouse keeps batch records honest. Melbourne customers get the same pouch we ship Australia-wide — not a different contract pack.</p>
+          <h2>Sizes and free AU shipping</h2>
+          <p>Live sizes: <a href="/products/moringa-powder/">100g $11 · 200g $21.50 · 400g $35</a>. Single pouches sit under free shipping — <strong>Free AU shipping at $49.50</strong>. The 400g pouch is best value at $35 ($8.75/100g). Or add a <a href="/products/gift-pack/">Gift Pack ($35)</a> if you want a tracked bundle. Details: <a href="/shipping">shipping</a>.</p>
+          <h2>Helpful guides</h2>
+          <ul>
+            <li><a href="/products/moringa-powder/">Shop moringa powder</a> — live sizes from $11</li>
+            <li><a href="/shipping">Shipping times</a> to Melbourne</li>
+            <li><a href="/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026">How long moringa powder lasts</a></li>
+            <li><a href="/blog/how-to-add-moringa-to-diet">How to add moringa without bitterness</a></li>
+            <li><a href="/blog/what-does-moringa-powder-taste-like-honest-guide-2026">What moringa powder tastes like</a></li>
+            <li><a href="/blog/how-to-choose-moringa-powder-australia-2026">How to choose moringa powder in Australia</a></li><li><a href="/blog/moringa-vs-coffee-melbourne-energy-hack">Moringa vs coffee in Melbourne</a></li>
+            <li><a href="/blog/grow-moringa-tree-australia">Grow a moringa tree in Australia</a></li>
+          </ul>
+          <h2>FAQ</h2>
+          <div class="faq-list">
+            <details><summary>How long does shipping take to Melbourne?</summary><p>Metro Melbourne typically 1–2 days after dispatch. Dispatch is before 2pm Monday–Friday Melbourne time, with tracking on every order. See <a href="/shipping">shipping times</a>.</p></details><details><summary>Is the powder different for Melbourne?</summary><p>No — same Truganina batch as Melbourne.</p></details><details><summary>When is shipping free?</summary><p>Free AU shipping at $49.50.</p></details><details><summary>Where is it packed?</summary><p>Truganina, Melbourne VIC.</p></details>
+          </div>
         </div>
       </section>
       <section class="section" id="reviews">
@@ -195,9 +211,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
-<script src="/assets/js/storefront/runtime-cart.min.js?v=20260902-2" defer></script>
-<script src="/assets/js/storefront/search-index.min.js?v=20260902-2" defer></script>
-<script src="/assets/js/storefront/site.min.js?v=20260902-2" defer></script>
+<script src="/assets/js/storefront/runtime-cart.js?v=20260902-2" defer></script>
+<script src="/assets/js/storefront/search-index.js?v=20260902-2" defer></script>
+<script src="/assets/js/storefront/site.js?v=20260902-2" defer></script>
 
 </body>
 </html>
