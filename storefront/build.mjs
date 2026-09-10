@@ -131,8 +131,13 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "grow-moringa-tree-australia": {
     title: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
-    description: "Learn how to grow moringa in Australia, including pot size, germination, winter dormancy and climate tips for Melbourne, Perth and warmer regions.",
+    description: "How to grow a moringa tree in Australia: pot size, germination, winter dormancy and climate tips for Melbourne, Perth, Qld and warmer AU zones.",
     h1: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
+  },
+  "moringa-and-berberine-australia-what-science-says-2026": {
+    title: "Moringa and Berberine Together (Australia 2026)",
+    description: "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context — not medical advice. Ask your GP.",
+    h1: "Moringa and Berberine Together (Australia 2026)",
   },
   "moringa-vs-ashwagandha-comparison-2026": {
     title: "Moringa vs Ashwagandha: Key Differences Explained",
@@ -157,6 +162,21 @@ const ARTICLE_SEO_OVERRIDES = {
   "natural-pre-workout-moringa-australia-2026": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
     h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
+  },
+  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
+    title: "Chemist Warehouse Moringa vs NutriThrive Powder",
+    description: "Searching Chemist Warehouse for moringa? CW lists capsules; NutriThrive packs shade-dried leaf powder from $11/100g with NMI PDF. Compare quality & AU value.",
+    h1: "Chemist Warehouse Moringa vs NutriThrive Powder",
+  },
+  "moringa-brands-comparison-australia-2026": {
+    title: "Best Moringa Brands Australia 2026 Compared",
+    description: "Compare Australian moringa brands on lab testing, origin, processing, ingredients and $/100g. Clear checklist before you buy leaf powder in AU.",
+    h1: "Best Moringa Brands Australia 2026 Compared",
+  },
+  "rosabella-moringa-reviews-legit-or-overhyped-2026": {
+    title: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
+    description: "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
+    h1: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
   },
 };
 
@@ -259,7 +279,7 @@ const ARTICLE_CONVERSION_PATHS = {
     kicker: "Compare before buying",
     title: "Compare with a single-ingredient powder",
     body: "Check NutriThrive's ingredient, cost per 100g, pouch sizes and Australian testing summary alongside the review evidence.",
-    cta: "Compare our moringa",
+    cta: "Shop moringa powder",
     links: [["Powder versus capsules explained", "moringa-capsules-vs-powder-which-is-better-2026"]],
     methodology: true,
   },
@@ -327,6 +347,9 @@ function journalCta(article, product) {
   if ([
     "chemist-warehouse-greens-vs-moringa-powder-2026",
     "moringa-patches-australia-review-do-they-work",
+    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "moringa-brands-comparison-australia-2026",
+    "rosabella-moringa-reviews-legit-or-overhyped-2026",
   ].includes(article.slug)) return "Shop moringa powder";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";

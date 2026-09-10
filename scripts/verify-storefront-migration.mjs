@@ -69,7 +69,8 @@ const approvedSeoChanges = {
     title: "Shade vs Sun-Dried Moringa: Which Keeps Nutrients?",
   },
   "blog/moringa-brands-comparison-australia-2026.html": {
-    title: "Best Moringa Brands Australia 2026: Lab Tests, Dose &amp; $/100g",
+    title: "Best Moringa Brands Australia 2026 Compared",
+    description: "Compare Australian moringa brands on lab testing, origin, processing, ingredients and $/100g. Clear checklist before you buy leaf powder in AU.",
   },
   "blog/how-to-choose-moringa-powder-australia-2026.html": {
     title: "How to Choose Moringa Powder Australia — Lab Guide",
@@ -122,11 +123,16 @@ const approvedSeoChanges = {
     description: "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
   },
   "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
-    description: "Moringa and berberine in Australia: what the science says on patches vs oral leaf powder, interaction risk, TGA context, and when to ask your GP.",
+    title: "Moringa and Berberine Together (Australia 2026)",
+    description: "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context — not medical advice. Ask your GP.",
   },
   "blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html": {
-    title: "Rosabella Moringa Reviews 2026: Lab Gaps &amp; Dose Maths",
-    description: "Rosabella moringa reviews (AU 2026): lab transparency gap, $/gram vs powder, Salmonella recall notes, dose maths, and when pure leaf powder is the better buy.",
+    title: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
+    description: "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
+  },
+  "blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html": {
+    title: "Chemist Warehouse Moringa vs NutriThrive Powder",
+    description: "Searching Chemist Warehouse for moringa? CW lists capsules; NutriThrive packs shade-dried leaf powder from $11/100g with NMI PDF. Compare quality &amp; AU value.",
   },
   "blog/afl-finals-snacks-curry-leaf-tadka.html": {
     description: "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday.",
@@ -149,7 +155,7 @@ const approvedSeoChanges = {
   },
   "blog/grow-moringa-tree-australia.html": {
     title: "Grow a Moringa Tree in Australia: Pots &amp; Climate Guide",
-    description: "Learn how to grow moringa in Australia, including pot size, germination, winter dormancy and climate tips for Melbourne, Perth and warmer regions.",
+    description: "How to grow a moringa tree in Australia: pot size, germination, winter dormancy and climate tips for Melbourne, Perth, Qld and warmer AU zones.",
   },
 };
 

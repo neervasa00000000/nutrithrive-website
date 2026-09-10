@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run storefront:migrate && node scripts/build-assets.mjs --skip-tailwind",
     "ci": "npm run build && node scripts/verify-storefront-migration.mjs && node scripts/verify-sitemap-locs.mjs && node scripts/verify-blog-itemlist.mjs && node scripts/blog-duplicate-scan.mjs && node scripts/prepare-netlify-publish.mjs",
-    "deploy:prod": "npm run ci && netlify deploy --dir=.netlify-publish --prod",
+    "deploy:prod": "npm run ci && netlify deploy --site=8f9a63bc-94a5-4fd9-a304-5246ee9a0b5c --dir=.netlify-publish --prod",
     "build:tailwind": "tailwindcss -i ./site/assets/css/tailwind-v2-source.css -o ./site/assets/css/tailwind-v2.min.css --minify",
     "build:minify": "node scripts/build-assets.mjs --skip-tailwind",
     "hooks:install": "node scripts/install-git-hooks.mjs",
