@@ -2378,7 +2378,11 @@ function cityPage(city, slug) {
     ["Perth", "/moringa-perth/"],
     ["Adelaide", "/moringa-adelaide/"],
   ];
-  const citySwitcher = cityLinks.map(([name, href]) => name === city
+  const orderedCityLinks = [
+    ...cityLinks.filter(([name]) => name === city),
+    ...cityLinks.filter(([name]) => name !== city),
+  ];
+  const citySwitcher = orderedCityLinks.map(([name, href]) => name === city
     ? `<li><span class="city-switcher__current" aria-current="page">${name}<small>Current</small></span></li>`
     : `<li><a href="${href}">${name}</a></li>`).join("");
   return layout({
