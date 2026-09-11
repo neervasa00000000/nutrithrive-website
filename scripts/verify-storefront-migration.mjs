@@ -124,7 +124,7 @@ const approvedSeoChanges = {
     description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $49.50.",
   },
   "blog/how-to-add-moringa-to-diet.html": {
-    title: "How to Add Moringa Powder to Food Without Bitterness",
+    title: "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
     description: "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
   },
   "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
@@ -354,7 +354,7 @@ if (article) {
     errors.push(`${articleRel}: canonical is "${canonical}"`);
   }
   const title = normalizeMetaText(attr(article, /<title>([^<]*)<\/title>/i));
-  if (title !== "How to Add Moringa Powder to Food Without Bitterness") {
+  if (title !== "How to Use Moringa Powder Daily (Eat, Mix & Dose)") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
