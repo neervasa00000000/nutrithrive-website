@@ -62,8 +62,12 @@ const approvedSeoChanges = {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
   },
   "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
-    title: "Does Moringa Have Caffeine? Moringa vs Coffee",
+    title: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
     description: "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
+  },
+  "blog/how-much-caffeine-safe-per-day-australia-fsanz-2026.html": {
+    title: "How Much Caffeine Per Day in Australia? FSANZ Guide",
+    description: "Compare caffeine in coffee and tea using FSANZ maximum levels, serving context and NutriThrive Darjeeling tea details.",
   },
   "blog/science-shade-drying-vs-sun-drying-moringa.html": {
     title: "Shade vs Sun-Dried Moringa: Which Keeps Nutrients?",

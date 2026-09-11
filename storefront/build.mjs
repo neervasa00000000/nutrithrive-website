@@ -179,6 +179,15 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
     h1: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
   },
+  "how-much-caffeine-safe-per-day-australia-fsanz-2026": {
+    title: "How Much Caffeine Per Day in Australia? FSANZ Guide",
+    description: "Compare caffeine in coffee and tea using FSANZ maximum levels, serving context and NutriThrive Darjeeling tea details.",
+    h1: "How Much Caffeine Per Day in Australia? FSANZ Guide",
+  },
+  "moringa-vs-coffee-melbourne-energy-hack": {
+    title: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
+    h1: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
+  },
 };
 
 const JOURNAL_REDIRECTS = {
@@ -1491,7 +1500,7 @@ function pdpPage(slug, d) {
           <p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>
           ${variantSelect}
           ${variantHint}
-          ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $49.50.</p>` : ""}
+          ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $49.50. 100g/200g pay postage — 400g is best value at $35 ($8.75/100g).</p>` : ""}
           <div class="purchase-panel">
             <div class="qty">
               <label for="qty">Quantity</label>
