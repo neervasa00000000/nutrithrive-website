@@ -17,6 +17,7 @@ const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20260902-2";
+const CSS_ASSET_VERSION = "20260911-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
@@ -987,7 +988,10 @@ function writePage(rel, html, destRoot = OUT) {
   html = applyLivePaths(html);
   const file = path.join(destRoot, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  const cacheBusted = html.replace(/(src|href)="(\/assets\/[^"?#]+)(?:\?[^"#]*)?"/g, `$1="$2?v=${ASSET_VERSION}"`);
+  const cacheBusted = html.replace(
+    /(src|href)="(\/assets\/[^"?#]+)(?:\?[^"#]*)?"/g,
+    (_match, attribute, assetPath) => `${attribute}="${assetPath}?v=${assetPath.includes("/assets/css/storefront-system") ? CSS_ASSET_VERSION : ASSET_VERSION}"`
+  );
   fs.writeFileSync(file, cacheBusted);
 }
 
