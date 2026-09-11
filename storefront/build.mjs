@@ -452,7 +452,7 @@ function moringaEducationHtml() {
             </div>
             <div class="pdp-guide-grid">
               <details class="pdp-guide">
-                <summary><span id="how-to-use-moringa">How to use moringa powder</span><small>Simple everyday ideas</small></summary>
+                <summary><span class="pdp-guide-copy"><span id="how-to-use-moringa">How to use moringa powder</span><small>Simple everyday ideas</small></span><span class="pdp-guide-toggle" aria-hidden="true"></span></summary>
                 <div class="pdp-guide-body">
                   <p>Moringa powder has a naturally earthy, leafy flavour. Start with a small amount and adjust it to your taste.</p>
                   <p>Try adding it to:</p>
@@ -467,14 +467,14 @@ function moringaEducationHtml() {
                 </div>
               </details>
               <details class="pdp-guide">
-                <summary><span id="moringa-taste">What does moringa powder taste like?</span><small>Flavour and pairing</small></summary>
+                <summary><span class="pdp-guide-copy"><span id="moringa-taste">What does moringa powder taste like?</span><small>Flavour and pairing</small></span><span class="pdp-guide-toggle" aria-hidden="true"></span></summary>
                 <div class="pdp-guide-body">
                   <p>Moringa has an earthy, green and slightly bitter flavour. Some people enjoy it simply mixed into drinks, while others prefer combining it with stronger flavours such as fruit, yoghurt or smoothies.</p>
                   <p><a href="${taste}">Read our complete guide to what moringa powder tastes like →</a></p>
                 </div>
               </details>
               <details class="pdp-guide">
-                <summary><span id="buy-moringa-australia">Where to buy moringa powder in Australia</span><small>Ordering and dispatch</small></summary>
+                <summary><span class="pdp-guide-copy"><span id="buy-moringa-australia">Where to buy in Australia</span><small>Ordering and dispatch</small></span><span class="pdp-guide-toggle" aria-hidden="true"></span></summary>
                 <div class="pdp-guide-body">
                   <p>NutriThrive moringa powder can be ordered directly online in Australia. Our moringa is grown on our farm, Australian lab tested and packed in Truganina, Victoria.</p>
                   <p>Orders are available for Australia-wide delivery, with same-day weekday dispatch for eligible orders placed before 2pm.</p>
@@ -482,7 +482,7 @@ function moringaEducationHtml() {
                 </div>
               </details>
               <details class="pdp-guide">
-                <summary><span id="choose-moringa">What to look for when choosing moringa powder</span><small>Ingredients and transparency</small></summary>
+                <summary><span class="pdp-guide-copy"><span id="choose-moringa">How to choose moringa powder</span><small>Ingredients and transparency</small></span><span class="pdp-guide-toggle" aria-hidden="true"></span></summary>
                 <div class="pdp-guide-body">
                   <p>A useful starting point is the ingredient list: look for a single ingredient rather than a blend with fillers. Testing information, drying method, origin and how the seller packs and stores the powder all help you judge freshness and transparency.</p>
                   <p><a href="${choose}">Read our guide to choosing moringa powder in Australia →</a> For storage after opening, see our <a href="${store}">shelf-life guide</a>.</p>
