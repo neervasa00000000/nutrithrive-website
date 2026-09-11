@@ -71,6 +71,7 @@ const approvedSeoChanges = {
   },
   "blog/science-shade-drying-vs-sun-drying-moringa.html": {
     title: "Shade vs Sun-Dried Moringa: Which Keeps Nutrients?",
+    description: "Shade-dried vs sun-dried moringa powder: colour, aroma, heat damage clues, and how to spot better leaf powder in Australia (2026).",
   },
   "blog/moringa-brands-comparison-australia-2026.html": {
     title: "Best Moringa Brands Australia 2026 Compared",

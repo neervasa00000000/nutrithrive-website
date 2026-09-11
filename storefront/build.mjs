@@ -2309,8 +2309,8 @@ function cityPage(city, slug) {
       description: "Order moringa powder to Sydney from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50.",
     },
     Perth: {
-      title: "Moringa Powder Perth — Shipped from Truganina | From $11",
-      h1: "Moringa Powder for Perth",
+      title: "Moringa Powder Perth",
+      h1: "Moringa Powder Perth",
       description: "Order moringa powder to Perth from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $49.50.",
     },
     Brisbane: {
@@ -2448,7 +2448,7 @@ function cityPage(city, slug) {
         <section class="city-local-section city-local-section--delivery" id="delivery-${slug}" aria-labelledby="delivery-heading-${slug}">
           <div class="wrap">
             <div class="city-local-section__head">
-              <div><p class="city-local-kicker">Your ${city} order</p><h2 id="delivery-heading-${slug}">The useful details, upfront</h2></div>
+              <div><p class="city-local-kicker">Your ${city} order</p><h2 id="delivery-heading-${slug}">Shipping to ${city}</h2></div>
               <p>${uniqueLine}</p>
             </div>
             <div class="city-info-grid">
