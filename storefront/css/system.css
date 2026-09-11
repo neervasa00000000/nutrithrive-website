@@ -1643,7 +1643,7 @@ body.journal-searching .section-head > a {
 
 .pdp-section-heading { max-width: 720px; margin-bottom: var(--space-5); }
 .pdp-section-heading .kicker { margin-bottom: var(--space-2); }
-.pdp-section-heading h2 { margin: 0; }
+.pdp-section-heading h2 { margin: 0; text-wrap: wrap; }
 
 .pdp-why {
   display: grid;
@@ -1676,40 +1676,60 @@ body.journal-searching .section-head > a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
+  align-items: start;
 }
 
 .pdp-guide {
-  align-self: start;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  max-width: 100%;
+  min-width: 0;
   overflow: clip;
 }
 
 .pdp-guide summary {
+  align-items: center;
   cursor: pointer;
-  display: grid;
-  gap: 3px;
+  display: flex;
+  gap: var(--space-4);
   list-style: none;
-  min-height: 72px;
-  padding: var(--space-4) 52px var(--space-4) var(--space-4);
-  position: relative;
+  min-height: 5.5rem;
+  min-width: 0;
+  padding: var(--space-4);
+  width: 100%;
 }
 
 .pdp-guide summary::-webkit-details-marker { display: none; }
-.pdp-guide summary::after {
-  content: "+";
-  font-size: 24px;
-  font-weight: 400;
-  position: absolute;
-  right: var(--space-4);
-  top: 50%;
-  transform: translateY(-50%);
+
+.pdp-guide-copy {
+  display: grid;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
 }
-.pdp-guide[open] summary::after { content: "−"; }
+
+.pdp-guide-toggle {
+  color: var(--color-text-secondary);
+  flex: 0 0 auto;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  width: 1.25rem;
+}
+
+.pdp-guide-toggle::before { content: "+"; }
+.pdp-guide[open] .pdp-guide-toggle::before { content: "−"; }
+.pdp-guide summary:hover { background: var(--color-bg-warm); }
 .pdp-guide summary:focus-visible { outline: 3px solid var(--color-focus); outline-offset: -3px; }
-.pdp-guide summary span { font-family: var(--font-display); font-size: 22px; line-height: 1.15; }
-.pdp-guide summary small { color: var(--color-text-secondary); font-size: 12px; }
+.pdp-guide-copy > span {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+.pdp-guide summary small { color: var(--color-text-secondary); font-size: var(--text-xs); }
 
 .pdp-guide-body {
   border-top: 1px solid var(--color-border);
@@ -4032,8 +4052,8 @@ select {
   .pdp-why > div { scroll-snap-align: start; }
   .pdp-overview,
   .pdp-guide-section { margin-bottom: 40px; }
-  .pdp-guide summary { min-height: 64px; padding-block: var(--space-3); }
-  .pdp-guide summary span { font-size: 20px; }
+  .pdp-guide-grid { gap: var(--space-2); }
+  .pdp-guide summary { min-height: 4.75rem; padding: var(--space-3) var(--space-4); }
 
   .pdp-content .product-facts {
     grid-auto-columns: minmax(240px, 82vw);
