@@ -160,6 +160,10 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
     h1: "What Does Moringa Powder Taste Like? Honest Mix Guide",
   },
+  "how-to-add-moringa-to-diet": {
+    title: "How to Use Moringa Powder Daily (Eat, Mix & Dose)",
+    h1: "How to Use Moringa Powder Daily (Eat, Mix & Dose)",
+  },
   "natural-pre-workout-moringa-australia-2026": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
     h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
@@ -1366,6 +1370,11 @@ const PDP = {
 function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNote = "Taxes included. Shipping calculated at checkout.";
+  const shippingPurchaseNote = {
+    "black-tea": "Free AU shipping at $49.50. This $7.50 pack pays postage alone.",
+    "curry-leaves": "Free AU shipping at $49.50. This $7 pack pays postage alone.",
+    "gift-pack": "Free AU shipping at $49.50. Gift Pack $35 still pays postage — add 200g moringa ($21.50) or a second pack (curry/tea already inside).",
+  }[slug];
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
   const related = PRODUCTS.filter((item) => {
@@ -1514,6 +1523,7 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
+            ${shippingPurchaseNote ? `<p class="purchase-note">${esc(shippingPurchaseNote)}</p>` : ""}
             <p class="purchase-note">${esc(purchaseNote)}</p>
           </div>
           <ul class="pdp-proof">${proofs}</ul>
