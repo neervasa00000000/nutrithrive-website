@@ -2266,17 +2266,6 @@ function thankYouPage() {
   });
 }
 
-function cityEtaLine(city) {
-  const parts = [
-    { city: "Melbourne", label: "Metro Melb 1–2 days" },
-    { city: "Sydney", label: "Sydney 2–4" },
-    { city: "Brisbane", label: "Brisbane 2–4" },
-    { city: "Adelaide", label: "Adelaide 2–4" },
-    { city: "Perth", label: "Perth 4–6" },
-  ];
-  return parts.map((part) => (part.city === city ? `<strong>${part.label}</strong>` : part.label)).join(" · ");
-}
-
 function emitCityLandings() {
   emit("melbourne/index.html", cityPage("Melbourne", "melbourne"), "pages/homepage/melbourne.html");
   emit("moringa-sydney/index.html", cityPage("Sydney", "sydney"));
@@ -2329,6 +2318,13 @@ function cityPage(city, slug) {
     Adelaide: "Adelaide typically 2–4 days after dispatch from Truganina.",
     Perth: "Perth typically 4–6 days after dispatch from Truganina.",
   }[city];
+  const transitLabel = {
+    Melbourne: "1–2 days",
+    Sydney: "2–4 days",
+    Brisbane: "2–4 days",
+    Adelaide: "2–4 days",
+    Perth: "4–6 days",
+  }[city];
   const uniqueLine = {
     Melbourne: "Packed here in Truganina — fastest metro transit on our list (1–2 days).",
     Sydney: "Same pouch as Melbourne; typical Sydney transit 2–4 days from Truganina.",
@@ -2367,10 +2363,20 @@ function cityPage(city, slug) {
     })),
   };
   const melbourneGuides = city === "Melbourne"
-    ? `<li><a href="${coffeeHref}">Moringa vs coffee in Melbourne</a></li>
-            <li><a href="${treeHref}">Grow a moringa tree in Australia</a></li>`
+    ? `<li><a href="${coffeeHref}"><span>Comparison</span>Moringa vs coffee in Melbourne</a></li>
+            <li><a href="${treeHref}"><span>Growing</span>Grow a moringa tree in Australia</a></li>`
     : "";
-  const canonicalPath = slug === "melbourne" ? "/melbourne" : `/moringa-${slug}`;
+  const canonicalPath = slug === "melbourne" ? "/melbourne/" : `/moringa-${slug}/`;
+  const cityLinks = [
+    ["Melbourne", "/melbourne/"],
+    ["Sydney", "/moringa-sydney/"],
+    ["Brisbane", "/moringa-brisbane/"],
+    ["Perth", "/moringa-perth/"],
+    ["Adelaide", "/moringa-adelaide/"],
+  ];
+  const citySwitcher = cityLinks.map(([name, href]) => name === city
+    ? `<li><span class="city-switcher__current" aria-current="page">${name}<small>Current</small></span></li>`
+    : `<li><a href="${href}">${name}</a></li>`).join("");
   return layout({
     title: citySeo.title,
     description: citySeo.description,
@@ -2385,42 +2391,119 @@ function cityPage(city, slug) {
     ) + jsonLd(faqSchema),
     current: "",
     main: `
-      <section class="city-hero wrap">
-        <h1>${citySeo.h1}</h1>
-        <p class="lede">Packed in Truganina, Melbourne · shade-dried · NMI lab-tested · sizes 100g $11 · 200g $21.50 · 400g $35 · Free AU shipping at $49.50.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a>
-          <a class="btn btn-secondary" href="${r.shipping}">Shipping times</a>
-        </div>
-      </section>
-      <section class="section" style="padding-top:0">
-        <div class="wrap-narrow">
-          <h2>Shipping to ${city}</h2>
-          <p>${uniqueLine}</p>
-          <p>${esc(transitLine)} Dispatch: before 2pm Mon–Fri Melbourne time (same-day handoff when carriers allow). Tracking on every order. Details: <a href="${r.shipping}">shipping</a>.</p>
-          <p>Typical AU transit after dispatch: ${cityEtaLine(city)}.</p>
-          <h2>What arrives</h2>
-          <p>Resealable pouch of shade-dried moringa leaf powder, packed in Truganina VIC. NMI lab summary is on the <a href="${powderHref}">product page</a>. Ingredient line: 100% moringa leaf — no fillers.</p>
-          <h2>Why one warehouse</h2>
-          <p>One warehouse keeps batch records honest. ${pouchLine}</p>
-          <h2>Sizes and free AU shipping</h2>
-          <p>Live sizes: <a href="${powderHref}">100g $11 · 200g $21.50 · 400g $35</a>. Single pouches sit under free shipping — <strong>Free AU shipping at $49.50</strong>. The 400g pouch is best value at $35 ($8.75/100g). Or add a <a href="${giftHref}">Gift Pack ($35)</a> if you want a tracked bundle. Details: <a href="${r.shipping}">shipping</a>.</p>
-          <h2>Helpful guides</h2>
-          <ul>
-            <li><a href="${powderHref}">Shop moringa powder</a> — live sizes from $11</li>
-            <li><a href="${r.shipping}">Shipping times</a> to ${city}</li>
-            <li><a href="${storeHref}">How long moringa powder lasts</a></li>
-            <li><a href="${addHref}">How to add moringa without bitterness</a></li>
-            <li><a href="${tasteHref}">What moringa powder tastes like</a></li>
-            <li><a href="${chooseHref}">How to choose moringa powder in Australia</a></li>${melbourneGuides}
-          </ul>
-          <h2>FAQ</h2>
-          <div class="faq-list">
-            ${faqDetails(faqs)}
+      <div class="city-page" data-city="${slug}">
+        <nav class="city-switcher" aria-label="Choose delivery city">
+          <div class="wrap city-switcher__inner">
+            <p>Delivery guides</p>
+            <ul>${citySwitcher}</ul>
           </div>
-        </div>
-      </section>
-      ${googleReviewsSection()}`,
+        </nav>
+
+        <section class="city-local-hero">
+          <div class="wrap city-local-hero__grid">
+            <div class="city-local-hero__copy">
+              <p class="city-local-kicker">Packed in Melbourne · delivered to ${city}</p>
+              <h1>${citySeo.h1}</h1>
+              <p class="city-local-lead">Farm-grown, shade-dried moringa leaf powder packed in Truganina and sent directly to ${city}. Choose 100g, 200g or our best-value 400g option.</p>
+              <div class="city-local-actions">
+                <a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a>
+                <a class="btn btn-secondary" href="#delivery-${slug}">See ${city} delivery</a>
+              </div>
+              <ul class="city-local-proof" aria-label="Product highlights">
+                <li><strong>100%</strong><span>moringa leaf</span></li>
+                <li><strong>From $11</strong><span>three sizes</span></li>
+                <li><strong>Tracked</strong><span>Australia-wide</span></li>
+              </ul>
+            </div>
+            <figure class="city-local-visual">
+              <div class="city-local-visual__image">
+                <img src="/assets/images/product_webp/moringa-powder-100g-main.webp" alt="NutriThrive 100g moringa powder pouch available for delivery to ${city}" width="1254" height="1254" fetchpriority="high">
+              </div>
+              <figcaption>
+                <span>Typical metro transit</span>
+                <strong>${transitLabel} after dispatch</strong>
+                <small>Dispatched from Truganina with tracking</small>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="city-local-section city-local-section--delivery" id="delivery-${slug}" aria-labelledby="delivery-heading-${slug}">
+          <div class="wrap">
+            <div class="city-local-section__head">
+              <div><p class="city-local-kicker">Your ${city} order</p><h2 id="delivery-heading-${slug}">The useful details, upfront</h2></div>
+              <p>${uniqueLine}</p>
+            </div>
+            <div class="city-info-grid">
+              <article class="city-info-card city-info-card--accent">
+                <span class="city-info-card__number">01</span>
+                <h3>Delivery to ${city}</h3>
+                <p>${esc(transitLine)} Orders placed before 2pm Monday–Friday are eligible for same-day dispatch. Every order includes tracking.</p>
+                <a href="${r.shipping}">View full shipping information <span aria-hidden="true">→</span></a>
+              </article>
+              <article class="city-info-card">
+                <span class="city-info-card__number">02</span>
+                <h3>One ingredient</h3>
+                <p>A resealable pouch of 100% moringa leaf powder with no fillers. We grow, shade-dry and manufacture it, then pack it in Truganina.</p>
+                <a href="${powderHref}">See product and lab information <span aria-hidden="true">→</span></a>
+              </article>
+              <article class="city-info-card">
+                <span class="city-info-card__number">03</span>
+                <h3>Clear value</h3>
+                <p>100g $11 · 200g $21.50 · 400g $35. The 400g option works out to $8.75 per 100g. Free AU shipping starts at $49.50.</p>
+                <a href="${powderHref}">Compare all three sizes <span aria-hidden="true">→</span></a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="city-local-section city-local-section--support" aria-labelledby="support-heading-${slug}">
+          <div class="wrap city-support-grid">
+            <article class="city-support-story">
+              <p class="city-local-kicker">Why NutriThrive</p>
+              <h2 id="support-heading-${slug}">The same accountable pouch, wherever you live</h2>
+              <p>One packing location keeps product information and batch handling consistent. ${pouchLine}</p>
+              <ul class="city-check-list">
+                <li>Grown on our own farm</li>
+                <li>Shade-dried and manufactured by us</li>
+                <li>Tested in Australia</li>
+                <li>Packed in Truganina, Melbourne</li>
+              </ul>
+              <a class="btn btn-secondary" href="${chooseHref}">How to choose moringa</a>
+            </article>
+            <aside class="city-guide-card" aria-labelledby="guide-heading-${slug}">
+              <p class="city-local-kicker">Helpful before ordering</p>
+              <h2 id="guide-heading-${slug}">Quick moringa guides</h2>
+              <ul>
+                <li><a href="${storeHref}"><span>Storage</span>How long moringa powder lasts</a></li>
+                <li><a href="${addHref}"><span>Using it</span>How to mix moringa without bitterness</a></li>
+                <li><a href="${tasteHref}"><span>Taste</span>What moringa powder tastes like</a></li>
+                <li><a href="${r.shipping}"><span>Delivery</span>Shipping times for ${city}</a></li>${melbourneGuides}
+              </ul>
+            </aside>
+          </div>
+        </section>
+
+        <section class="city-local-section city-local-section--faq" aria-labelledby="faq-heading-${slug}">
+          <div class="wrap city-faq-layout">
+            <div class="city-faq-intro">
+              <p class="city-local-kicker">Quick answers</p>
+              <h2 id="faq-heading-${slug}">Ordering moringa in ${city}</h2>
+              <p>Everything most customers need before choosing a pouch. For anything else, see our complete shipping information.</p>
+            </div>
+            <div class="faq-list city-faq-list">${faqDetails(faqs)}</div>
+          </div>
+        </section>
+
+        <section class="city-local-cta" aria-labelledby="city-cta-${slug}">
+          <div class="wrap city-local-cta__inner">
+            <div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Moringa powder delivered to ${city}</h2><p>Start with 100g for $11 or compare larger sizes before adding to cart.</p></div>
+            <div><a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div>
+          </div>
+        </section>
+
+        ${googleReviewsSection()}
+      </div>`,
   });
 }
 
