@@ -386,8 +386,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
-    "title": "How to Choose Moringa Powder Australia — Lab Guide",
-    "description": "How to choose moringa powder in Australia: bright green colour, single-ingredient labels, shade-dried leaf, lab tests, price traps, and clear red flags.",
+    "title": "How to Choose Moringa Powder in Australia | Lab Checklist",
+    "description": "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
     "category": "Wellness",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -944,8 +944,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "verify-moringa-quality-premium-buyers-checklist-2026",
-    "title": "Moringa Quality Checklist: 5 Things to Check",
-    "description": "5 things to check before buying moringa powder in Australia, colour, smell, batch dates, and lab testing red flags. Read the practical NutriThrive guide.",
+    "title": "Moringa Quality Checklist Australia | 5 Checks Before You Buy",
+    "description": "5 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
     "category": "Wellness",
     "href": "/blog/verify-moringa-quality-premium-buyers-checklist-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"

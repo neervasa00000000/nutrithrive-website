@@ -198,6 +198,16 @@ const ARTICLE_SEO_OVERRIDES = {
     title: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
     h1: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
   },
+  "how-to-choose-moringa-powder-australia-2026": {
+    title: "How to Choose Moringa Powder in Australia | Lab Checklist",
+    description: "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
+    h1: "How to Choose Moringa Powder in Australia | Lab Checklist",
+  },
+  "verify-moringa-quality-premium-buyers-checklist-2026": {
+    title: "Moringa Quality Checklist Australia | 5 Checks Before You Buy",
+    description: "5 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
+    h1: "Moringa Quality Checklist Australia | 5 Checks Before You Buy",
+  },
 };
 
 const JOURNAL_REDIRECTS = {
@@ -1248,15 +1258,19 @@ const PDP = {
       ],
       [
         "Why isn’t NutriThrive the cheapest moringa powder?",
-        "Some packs cost less per 100g. NutriThrive publishes an NMI lab summary, shade-dries its farm-grown leaf and packs in Truganina. Prices start at $11 per 100g, with free Australian shipping from $49.50.",
+        {
+          html: `Some Melbourne packs sit around $7–8/100g. We publish an <strong>NMI lab summary</strong>, shade-dry the leaf, and pack in Truganina. From <strong>$11/100g</strong>. Free AU shipping at <strong>$49.50</strong>.`,
+        },
       ],
       [
         "Does Chemist Warehouse sell moringa powder?",
-        "Chemist Warehouse currently lists moringa in capsules rather than a NutriThrive loose powder pouch. Loose powder can be measured by teaspoon and ordered directly from NutriThrive.",
+        {
+          html: `CW mainly lists <strong>capsules</strong>. For teaspoon dosing, buy loose powder — see our <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules guide</a>.`,
+        },
       ],
       [
-        "Is NutriThrive moringa powder certified organic?",
-        "No. NutriThrive does not display an ACO organic certification badge. We publish an NMI lab summary so shoppers can compare testing, ingredients, origin and price per 100g.",
+        "Are you certified organic?",
+        "No ACO badge. Farm leaf plus Australian NMI testing. If you need a certification label, buy certified — then compare price per 100g and certificates of analysis.",
       ],
       [
         "Does NutriThrive offer free shipping?",
