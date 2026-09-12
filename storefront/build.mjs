@@ -209,10 +209,10 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
   },
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": {
-    title: "Moringa Heavy Metals Testing Australia | CoA Guide",
+    title: "Moringa Heavy Metals Lab Testing Australia | What to Look For",
   },
   "is-moringa-worth-it-cost-value-australia-2026": {
-    title: "Is Moringa Worth It? Cost and Value Guide Australia",
+    title: "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
   },
 };
 

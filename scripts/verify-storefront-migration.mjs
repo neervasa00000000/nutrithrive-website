@@ -114,10 +114,10 @@ const approvedSeoChanges = {
     description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $49.50.",
   },
   "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
-    title: "Moringa Heavy Metals Testing Australia | CoA Guide",
+    title: "Moringa Heavy Metals Lab Testing Australia | What to Look For",
   },
   "blog/is-moringa-worth-it-cost-value-australia-2026.html": {
-    title: "Is Moringa Worth It? Cost and Value Guide Australia",
+    title: "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
   },
   "blog/moringa-for-breastfeeding-milk-supply-2026.html": {
     title: "Moringa While Breastfeeding: What Evidence Says (Australia)",
