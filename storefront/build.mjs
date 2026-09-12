@@ -126,8 +126,8 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
   },
   "curry-leaves-tea-how-to-make-benefits-2026": {
-    title: "How to Make Curry Leaf Tea with Dried Leaves",
-    description: "Learn how to make curry leaf tea with dried leaves, including a simple recipe, flavour tips, storage guidance and realistic evidence on health claims.",
+    title: "How to Make Curry Leaf Tea (Dried Leaves) | Australia",
+    description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $49.50.",
     h1: "How to Make Curry Leaf Tea with Dried Leaves",
   },
   "grow-moringa-tree-australia": {
@@ -162,7 +162,13 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "how-to-add-moringa-to-diet": {
     title: "How to Use Moringa Powder Daily (Eat, Mix & Dose)",
+    description: "How to use moringa powder daily in Australia — eat, mix and dose tips, taste fixes, and shade-dried leaf from $11/100g.",
     h1: "How to Use Moringa Powder Daily (Eat, Mix & Dose)",
+  },
+  "science-shade-drying-vs-sun-drying-moringa": {
+    title: "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
+    description: "Shade-dried vs sun-dried moringa powder in Australia: colour, aroma and heat clues that mark better leaf. How NutriThrive shade-dries before the $11/100g pack.",
+    h1: "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
   },
   "natural-pre-workout-moringa-australia-2026": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
