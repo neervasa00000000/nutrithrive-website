@@ -204,9 +204,15 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "How to Choose Moringa Powder in Australia | Lab Checklist",
   },
   "verify-moringa-quality-premium-buyers-checklist-2026": {
-    title: "Moringa Quality Checklist Australia | 5 Checks Before You Buy",
-    description: "5 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
-    h1: "Moringa Quality Checklist Australia | 5 Checks Before You Buy",
+    title: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
+    description: "8 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
+    h1: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
+  },
+  "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": {
+    title: "Moringa Heavy Metals Testing Australia | CoA Guide",
+  },
+  "is-moringa-worth-it-cost-value-australia-2026": {
+    title: "Is Moringa Worth It? Cost and Value Guide Australia",
   },
 };
 
@@ -394,7 +400,7 @@ const PRODUCT_GUIDES = {
   "moringa-powder": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
     ["How shade-drying compares with sun-drying", "science-shade-drying-vs-sun-drying-moringa"],
-    ["Five checks before you buy", "verify-moringa-quality-premium-buyers-checklist-2026"],
+    ["Eight checks before you buy", "verify-moringa-quality-premium-buyers-checklist-2026"],
     ["Moringa capsules versus powder", "moringa-capsules-vs-powder-which-is-better-2026"],
     ["Chemist Warehouse moringa versus NutriThrive powder", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"],
     ["How to take moringa powder", "how-to-add-moringa-to-diet"],
@@ -415,6 +421,15 @@ const PRODUCT_GUIDES = {
     ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
     ["Moringa soap versus regular soap", "moringa-soap-vs-regular-soap-comparison-2026"],
     ["How to read a soap ingredient label", "how-to-read-a-soap-ingredient-label"],
+  ],
+  "combo-pack": [
+    ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
+    ["How shade-drying compares with sun-drying", "science-shade-drying-vs-sun-drying-moringa"],
+    ["Eight checks before you buy", "verify-moringa-quality-premium-buyers-checklist-2026"],
+    ["Moringa capsules versus powder", "moringa-capsules-vs-powder-which-is-better-2026"],
+    ["How to take moringa powder", "how-to-add-moringa-to-diet"],
+    ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
+    ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
   ],
 };
 
