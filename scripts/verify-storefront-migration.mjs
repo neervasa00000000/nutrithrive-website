@@ -82,8 +82,8 @@ const approvedSeoChanges = {
     description: "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
   },
   "blog/verify-moringa-quality-premium-buyers-checklist-2026.html": {
-    title: "Moringa Quality Checklist Australia | 5 Checks Before You Buy",
-    description: "5 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
+    title: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
+    description: "8 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
   },
   "blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html": {
     title: "Fresh vs Dried Curry Leaves: Taste, Use &amp; Storage",
@@ -114,7 +114,10 @@ const approvedSeoChanges = {
     description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $49.50.",
   },
   "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
-    title: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
+    title: "Moringa Heavy Metals Testing Australia | CoA Guide",
+  },
+  "blog/is-moringa-worth-it-cost-value-australia-2026.html": {
+    title: "Is Moringa Worth It? Cost and Value Guide Australia",
   },
   "blog/moringa-for-breastfeeding-milk-supply-2026.html": {
     title: "Moringa While Breastfeeding: What Evidence Says (Australia)",
