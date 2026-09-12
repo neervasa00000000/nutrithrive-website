@@ -383,6 +383,10 @@ function journalCta(article, product) {
 const PRODUCT_GUIDES = {
   "moringa-powder": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
+    ["How shade-drying compares with sun-drying", "science-shade-drying-vs-sun-drying-moringa"],
+    ["Five checks before you buy", "verify-moringa-quality-premium-buyers-checklist-2026"],
+    ["Moringa capsules versus powder", "moringa-capsules-vs-powder-which-is-better-2026"],
+    ["Chemist Warehouse moringa versus NutriThrive powder", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"],
     ["How to take moringa powder", "how-to-add-moringa-to-diet"],
     ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
@@ -1176,6 +1180,7 @@ const PDP = {
       "Buy moringa powder Australia from $11/100g. NMI lab-tested, shade-dried leaf, packed in Truganina Melbourne. Free AU shipping at $49.50.",
     forceSeo: true,
     current: "Moringa",
+    h1: "Moringa Powder Australia",
     product: PRODUCTS[0],
     variants: PRODUCTS.filter((p) =>
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack"].includes(p.id)
@@ -1240,6 +1245,22 @@ const PDP = {
         {
           html: `Yes. Our moringa powder is NMI lab-tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the lab summary PDF</a> on this page. Packed in Truganina, VIC.`,
         },
+      ],
+      [
+        "Why isn’t NutriThrive the cheapest moringa powder?",
+        "Some packs cost less per 100g. NutriThrive publishes an NMI lab summary, shade-dries its farm-grown leaf and packs in Truganina. Prices start at $11 per 100g, with free Australian shipping from $49.50.",
+      ],
+      [
+        "Does Chemist Warehouse sell moringa powder?",
+        "Chemist Warehouse currently lists moringa in capsules rather than a NutriThrive loose powder pouch. Loose powder can be measured by teaspoon and ordered directly from NutriThrive.",
+      ],
+      [
+        "Is NutriThrive moringa powder certified organic?",
+        "No. NutriThrive does not display an ACO organic certification badge. We publish an NMI lab summary so shoppers can compare testing, ingredients, origin and price per 100g.",
+      ],
+      [
+        "Does NutriThrive offer free shipping?",
+        "Free Australian shipping starts at $49.50. Moringa powder sizes are 100g for $11, 200g for $21.50 and 400g for $35; curry leaves or Darjeeling tea can be added to reach the threshold.",
       ],
     ],
   },
@@ -1464,6 +1485,13 @@ function pdpPage(slug, d) {
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
     }));
+    productSchema.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "12",
+      bestRating: "5",
+      worstRating: "1",
+    };
   } else {
     productSchema.sku = p.sku;
     productSchema.offers = {
@@ -1488,6 +1516,20 @@ function pdpPage(slug, d) {
     ogImageHeight: 900,
     extraHead: `<link rel="preload" as="image" href="${gallery[0][0]}" fetchpriority="high">` +
       jsonLd(productSchema) +
+      (slug === "moringa-powder"
+        ? jsonLd({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: d.faqs.map(([question, answer]) => ({
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: stripTags(answer && typeof answer === "object" ? answer.html : answer),
+              },
+            })),
+          })
+        : "") +
       jsonLd(
         breadcrumbSchema([
           { name: "Home", item: `${LIVE}/` },
@@ -1507,12 +1549,13 @@ function pdpPage(slug, d) {
         </div>
         <div class="pdp-buy" id="pdp-buy">
           <p class="pdp-eyebrow">NutriThrive · farm to pouch</p>
-          <h1${freezeHero ? "" : " data-pdp-title"}>${esc(p.name)}</h1>
+          <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(p.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack"].includes(slug) && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : ""}</p>
           ${slug === "moringa-powder" ? `<p class="pdp-review-link"><a href="#reviews">Google reviews</a></p>` : ""}
           <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
           <p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>
+          ${slug === "moringa-powder" ? `<p class="pdp-review-link"><a href="/documents/nutrithrive-lab-report-summary.pdf"><strong>View the NMI lab summary PDF</strong></a></p>` : ""}
           ${variantSelect}
           ${variantHint}
           ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $49.50. 100g/200g pay postage — 400g is best value at $35 ($8.75/100g).</p>` : ""}
