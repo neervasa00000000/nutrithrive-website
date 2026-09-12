@@ -473,7 +473,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "is-moringa-worth-it-cost-value-australia-2026",
-    "title": "Is Moringa Worth It? Cost and Value Guide Australia",
+    "title": "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
     "description": "$11/100g moringa vs a multivitamin, greens powder or iron tablet, a cost-per-nutrient breakdown for Australians. Practical Australian guidance from NutriThrive.",
     "category": "Wellness",
     "href": "/blog/is-moringa-worth-it-cost-value-australia-2026",
@@ -713,7 +713,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
-    "title": "Moringa Heavy Metals Testing Australia | CoA Guide",
+    "title": "Moringa Heavy Metals Lab Testing Australia | What to Look For",
     "description": "Moringa can accumulate lead and cadmium. How to read an Australian CoA, what NMI testing covers, and red flags when brands hide results.",
     "category": "Wellness",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
