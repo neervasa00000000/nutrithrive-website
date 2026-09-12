@@ -70,8 +70,8 @@ const approvedSeoChanges = {
     description: "Compare caffeine in coffee and tea using FSANZ maximum levels, serving context and NutriThrive Darjeeling tea details.",
   },
   "blog/science-shade-drying-vs-sun-drying-moringa.html": {
-    title: "Shade vs Sun-Dried Moringa: Which Keeps Nutrients?",
-    description: "Shade-dried vs sun-dried moringa powder: colour, aroma, heat damage clues, and how to spot better leaf powder in Australia (2026).",
+    title: "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
+    description: "Shade-dried vs sun-dried moringa powder in Australia: colour, aroma and heat clues that mark better leaf. How NutriThrive shade-dries before the $11/100g pack.",
   },
   "blog/moringa-brands-comparison-australia-2026.html": {
     title: "Best Moringa Brands Australia 2026 Compared",
@@ -106,8 +106,8 @@ const approvedSeoChanges = {
     description: "Moringa soap for skin in Australia: what&#39;s genuinely useful vs marketing hype, who it suits, and how a Melbourne-made bar compares to regular soap.",
   },
   "blog/curry-leaves-tea-how-to-make-benefits-2026.html": {
-    title: "How to Make Curry Leaf Tea with Dried Leaves",
-    description: "Learn how to make curry leaf tea with dried leaves, including a simple recipe, flavour tips, storage guidance and realistic evidence on health claims.",
+    title: "How to Make Curry Leaf Tea (Dried Leaves) | Australia",
+    description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $49.50.",
   },
   "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
     title: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
@@ -125,7 +125,7 @@ const approvedSeoChanges = {
   },
   "blog/how-to-add-moringa-to-diet.html": {
     title: "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
-    description: "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
+    description: "How to use moringa powder daily in Australia — eat, mix and dose tips, taste fixes, and shade-dried leaf from $11/100g.",
   },
   "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
     title: "Moringa and Berberine Together (Australia 2026)",
