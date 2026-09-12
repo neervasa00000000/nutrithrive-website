@@ -78,8 +78,12 @@ const approvedSeoChanges = {
     description: "Compare Australian moringa brands on lab testing, origin, processing, ingredients and $/100g. Clear checklist before you buy leaf powder in AU.",
   },
   "blog/how-to-choose-moringa-powder-australia-2026.html": {
-    title: "How to Choose Moringa Powder Australia — Lab Guide",
-    description: "How to choose moringa powder in Australia: bright green colour, single-ingredient labels, shade-dried leaf, lab tests, price traps, and clear red flags.",
+    title: "How to Choose Moringa Powder in Australia | Lab Checklist",
+    description: "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
+  },
+  "blog/verify-moringa-quality-premium-buyers-checklist-2026.html": {
+    title: "Moringa Quality Checklist Australia | 5 Checks Before You Buy",
+    description: "5 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
   },
   "blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html": {
     title: "Fresh vs Dried Curry Leaves: Taste, Use &amp; Storage",
