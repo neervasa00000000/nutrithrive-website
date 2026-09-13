@@ -3,16 +3,23 @@ const CART_KEY = "nt-storefront-cart";
 const LIVE_CART_KEY = "nutrithrive_cart";
 const VIEWED_KEY = "nt-storefront-viewed";
 
-const AU_FREE_SHIP = 49.5;
+function auFreeShip() {
+  const fromRetention = window.NTRetention?.auThreshold?.();
+  if (Number.isFinite(fromRetention) && fromRetention > 0) return fromRetention;
+  const fromRates = window.ShippingRates?.getAuFreeShippingProgressTarget?.();
+  if (Number.isFinite(fromRates) && fromRates > 0) return fromRates;
+  return 79;
+}
+
 const PAIRS = {
   "moringa-powder": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap", "combo-pack"],
   "moringa-200g": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap"],
   "moringa-400g": ["curry-leaves", "black-tea", "moringa-soap"],
-  "curry-leaves": ["moringa-powder", "black-tea", "combo-pack"],
-  "black-tea": ["moringa-powder", "curry-leaves", "moringa-soap"],
-  "moringa-soap": ["moringa-powder", "black-tea", "gift-pack"],
-  "combo-pack": ["moringa-400g", "black-tea", "moringa-soap"],
-  "gift-pack": ["moringa-200g"],
+  "curry-leaves": ["black-tea", "combo-pack", "gift-pack"],
+  "black-tea": ["curry-leaves", "gift-pack", "moringa-soap"],
+  "moringa-soap": ["gift-pack", "black-tea", "curry-leaves"],
+  "combo-pack": ["black-tea", "moringa-soap", "gift-pack"],
+  "gift-pack": ["curry-leaves", "black-tea"],
 };
 
 const POPULAR = ["moringa-powder", "curry-leaves", "black-tea", "moringa-soap"];
@@ -106,7 +113,7 @@ function catalog() {
 }
 
 function shippingFor(items, subtotal) {
-  if (subtotal >= AU_FREE_SHIP) return 0;
+  if (subtotal >= auFreeShip()) return 0;
   if (!items.length || subtotal === 0) return 0;
   if (window.ShippingRates?.calculate) {
     const payload = items.map((item) => ({
@@ -133,7 +140,7 @@ function pickRecs(cartItems, subtotal) {
     (PAIRS[item.id] || []).forEach((id, i) => bump(id, 40 - i * 4));
   });
   POPULAR.forEach((id, i) => bump(id, 8 - i));
-  const remaining = Math.max(0, AU_FREE_SHIP - subtotal);
+  const remaining = Math.max(0, auFreeShip() - subtotal);
   const recs = [...score.entries()]
     .map(([id, s]) => {
       const p = catalog().find((x) => x.id === id);
@@ -229,9 +236,10 @@ function renderCart() {
     const sub = items.reduce((n, i) => n + Number(i.price || 0) * Number(i.qty || 1), 0);
     if (!items.length) {
       setLayout(true);
-      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free AU shipping at $49.50.</p><a class="btn btn-primary" href="${shopPath()}">Shop the range</a> <a class="btn btn-secondary" href="${shopPath()}moringa-powder/">Shop moringa</a><p>Pay with PayPal or card at checkout.</p></div>`;
+      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free AU shipping at ${money(auFreeShip())}.</p><a class="btn btn-primary" href="${shopPath()}">Shop the range</a> <a class="btn btn-secondary" href="${shopPath()}moringa-powder/">Shop moringa</a><p>Pay with PayPal or card at checkout.</p></div>`;
       summary.innerHTML = "";
       renderRecs([], 0);
+      window.NTRetention?.renderBuyAgain?.(document.getElementById("cart-buy-again"), { source: "cart" });
       return;
     }
     setLayout(false);
@@ -261,21 +269,26 @@ function renderCart() {
       })
       .join("");
     const ship = shippingFor(items, sub);
-    const freeShippingPercent = Math.min(100, Math.max(0, (sub / AU_FREE_SHIP) * 100));
-    const freeShippingMessage = sub >= AU_FREE_SHIP
-      ? "Free Australian shipping unlocked"
-      : `${money(AU_FREE_SHIP - sub)} away from free Australian shipping`;
+    const progress = window.NTRetention?.shippingProgress?.(sub) || {
+      threshold: auFreeShip(),
+      unlocked: sub >= auFreeShip(),
+      percent: Math.min(100, Math.max(0, (sub / auFreeShip()) * 100)),
+      message: sub >= auFreeShip()
+        ? "You've unlocked free Australian shipping"
+        : `${money(auFreeShip() - sub)} away from free Australian shipping`,
+    };
+    const progressHtml = window.NTRetention?.progressHtml?.(sub, { track: true }) || `<div class="shipping-progress ${progress.unlocked ? "is-complete" : ""}">
+      <div class="shipping-progress__copy"><strong>${esc(progress.message)}</strong><span>${money(progress.threshold)} target</span></div>
+      <div class="shipping-progress__track" role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="${progress.threshold}" aria-valuenow="${Math.min(progress.threshold, Number(sub.toFixed(2)))}" aria-valuetext="${esc(progress.message)}">
+        <span style="width:${Number(progress.percent).toFixed(2)}%"></span>
+      </div>
+    </div>`;
     summary.innerHTML = `
     <h2>Order summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
     <div class="summary-row"><span>Shipping</span><span>${ship === 0 ? "Free" : money(ship)}</span></div>
     <div class="summary-row total"><span>Estimated total</span><span>${money(sub + ship)}</span></div>
-    <div class="shipping-progress ${sub >= AU_FREE_SHIP ? "is-complete" : ""}">
-      <div class="shipping-progress__copy"><strong>${freeShippingMessage}</strong><span>$49.50 target</span></div>
-      <div class="shipping-progress__track" role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="49.5" aria-valuenow="${Math.min(AU_FREE_SHIP, Number(sub.toFixed(2)))}" aria-valuetext="${freeShippingMessage}">
-        <span style="width:${freeShippingPercent.toFixed(2)}%"></span>
-      </div>
-    </div>
+    ${progressHtml}
     ${isLiveSite() ? '<p class="hint cart-checkout-note">Final shipping and total are confirmed at checkout.</p>' : ""}
     <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Continue to secure checkout <span aria-hidden="true">→</span></a>
     <ul class="cart-assurances" aria-label="Checkout information">
@@ -307,6 +320,7 @@ function renderCart() {
       });
     });
     renderRecs(items, sub);
+    window.NTRetention?.renderBuyAgain?.(document.getElementById("cart-buy-again"), { source: "cart" });
   } catch (err) {
     console.error("Cart render failed", err);
     setLayout(true);

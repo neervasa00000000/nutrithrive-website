@@ -14,7 +14,7 @@ function readCart() {
 }
 
 function shippingFor(subtotal) {
-  if (subtotal >= 49.5) return 0;
+  if (subtotal >= 79) return 0;
   if (subtotal === 0) return 0;
   return 9.69;
 }
