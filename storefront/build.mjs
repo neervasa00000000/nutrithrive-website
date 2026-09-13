@@ -16,8 +16,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20260902-2";
-const CSS_ASSET_VERSION = "20260911-1";
+const ASSET_VERSION = "20260913-2";
+const CSS_ASSET_VERSION = "20260913-2";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
@@ -34,6 +34,15 @@ const SITE_SRC = LIVE_MODE ? "/assets/js/storefront/site.js" : "/js/site.js";
 const CART_PAGE_SRC = LIVE_MODE ? "/assets/js/storefront/cart-page.js" : "/js/cart-page.js";
 const PAYMENT_PAGE_SRC = LIVE_MODE ? "/assets/js/storefront/payment-page.js" : "/js/payment-page.js";
 const THANK_YOU_PAGE_SRC = LIVE_MODE ? "/assets/js/storefront/thank-you-page.js" : "/js/thank-you-page.js";
+const RETENTION_SRC = LIVE_MODE ? "/assets/js/storefront/retention.js" : "/js/retention.js";
+const RETENTION_PAGES_SRC = LIVE_MODE ? "/assets/js/storefront/retention-pages.js" : "/js/retention-pages.js";
+
+function retentionFoot(extra = "") {
+  const rates = LIVE_MODE
+    ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>`
+    : "";
+  return `${rates}<script src="${RETENTION_SRC}?v=${ASSET_VERSION}" defer></script>${extra}`;
+}
 
 const CONTRACT = `<!--
 THESIS: A calm Australian wellness storefront that proves lab-tested moringa with published evidence, refusing marketplace clutter and decorative green wash.
@@ -1072,6 +1081,15 @@ function homepage() {
       </div>
       <p class="purchase-note">Free AU shipping at $49.50.</p>
       ${stars()} <span style="font-size:14px;color:var(--color-text-secondary)">from Google reviews</span>
+      <nav class="hero-range" aria-label="Also from NutriThrive">
+        <p class="hero-range__label">Also from our farm and kitchen</p>
+        <ul class="hero-range__list">
+          <li><a href="/products/curry-leaves/" data-select-item="curry-leaves">Dried Curry Leaves · $7</a></li>
+          <li><a href="/products/black-tea/" data-select-item="black-tea">Darjeeling Black Tea · $7.50</a></li>
+          <li><a href="/products/moringa-soap/" data-select-item="moringa-soap">Moringa Soap · $7</a></li>
+          <li><a href="/products/moringa-powder/" data-select-item="moringa-powder">Moringa Powder · from $11</a></li>
+        </ul>
+      </nav>
     </div>
     <div class="hero-photo">
       <img src="/assets/images/product_webp/moringa-powder-100g-main.webp" alt="NutriThrive 100g moringa powder pouch with moringa leaves and a bowl of powder" width="1254" height="1254" fetchpriority="high">
@@ -1300,7 +1318,12 @@ const PDP = {
     forceSeo: true,
     current: "Curry Leaves",
     product: PRODUCTS.find((p) => p.id === "curry-leaves"),
-    intro: "Karipatta grown on our own farm. Aromatic, pantry-ready and packed in Melbourne. Use about 2 to 3 times as much as fresh in tadka.",
+    intro: "Grown on NutriThrive’s farm in Gujarat and packed in Melbourne. Aromatic, pantry-ready karipatta. Use about 2 to 3 times as much as fresh in tadka.",
+    proofs: [
+      "Grown on our farm in Gujarat",
+      "Packed in Melbourne",
+      "Australia-wide delivery",
+    ],
     gallery: [
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive 30g dried curry leaves pouch with whole leaves"],
       ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves in a ceramic bowl"],
@@ -1309,8 +1332,8 @@ const PDP = {
     detailAlt: "Whole dried curry leaves in a ceramic bowl",
     detailCaption: "Whole dried leaves with their naturally curled, pantry-ready texture.",
     ingredients: "100% dried curry leaves (karipatta). Nothing added.",
-    origin: "Grown on our own farm. Packed in Truganina, Melbourne.",
-    process: "We grow and harvest the leaves on our farm, dry them carefully, then pack them in Truganina.",
+    origin: "Grown on NutriThrive’s farm in Gujarat, India. Packed in Truganina, Melbourne.",
+    process: "We grow and harvest the leaves on our farm in Gujarat, dry them carefully, then pack them in Truganina.",
     storage: "Keep sealed in a dry environment away from humidity. Use within 18 months after opening.",
     safety: "For culinary use. Check the leaves before use and stop using the product if its aroma, colour or condition changes unexpectedly.",
     what: "Hot oil or ghee at the start of the pan. That is when the smell kicks in. Works in dals, sambar, and most South Indian dishes.",
@@ -1328,6 +1351,11 @@ const PDP = {
     current: "Tea",
     product: PRODUCTS.find((p) => p.id === "black-tea"),
     intro: "Loose-leaf tea sourced from a family farm in Darjeeling, with muscatel and floral notes when brewed gently. Packed in Truganina and shipped Australia-wide.",
+    proofs: [
+      "Family-farm Darjeeling",
+      "Packed in Melbourne",
+      "Australia-wide delivery",
+    ],
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Amber Darjeeling black tea with loose leaves in a wooden spoon"],
@@ -1355,6 +1383,11 @@ const PDP = {
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "moringa-soap"),
     intro: "A 95g moringa soap bar handmade by us in Australia. Straightforward, small-batch production with moringa leaf in the mix.",
+    proofs: [
+      "Handmade in Australia",
+      "Packed in Melbourne",
+      "Australia-wide delivery",
+    ],
     gallery: [
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
       ["/assets/images/product_webp/moringa-soap-texture.webp", "Handmade moringa soap on a stone dish with lavender and foam"],
@@ -1382,11 +1415,16 @@ const PDP = {
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "combo-pack"),
     intro: "100g moringa powder and 30g dried curry leaves. Morning smoothie and evening tadka from one box.",
+    proofs: [
+      { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
+      "Farm-grown curry leaves",
+      "Packed in Melbourne",
+    ],
     gallery: [
       ["/assets/images/product_webp/moringa-curry-leaves-combo-main.webp", "NutriThrive 100g moringa powder and 30g dried curry leaves combo"],
     ],
     ingredients: "100% moringa leaf powder and 100% dried curry leaves. Nothing added.",
-    origin: "Both products are grown on our own farm and packed in Truganina.",
+    origin: "Both products are grown on our own farm in Gujarat and packed in Truganina.",
     process: "We grow and process both products, arrange Australian testing for the moringa, and pack the combination in Truganina.",
     storage: "Keep both packs sealed in a dry environment away from humidity. Use within 18 months after opening.",
     safety: "Follow the individual product directions. Seek professional advice before regular moringa use if you are pregnant, breastfeeding, taking medication or managing a health condition.",
@@ -1404,6 +1442,11 @@ const PDP = {
     product: PRODUCTS.find((p) => p.id === "gift-pack"),
     intro:
       "100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap. Ready to gift.",
+    proofs: [
+      { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
+      "Handmade soap · family-farm tea",
+      "Packed in Melbourne",
+    ],
     gallery: [
       ["/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "NutriThrive gift pack with moringa powder, curry leaves, Darjeeling tea and moringa soap"],
     ],
@@ -1454,7 +1497,6 @@ function pdpPage(slug, d) {
     ? `<p class="pdp-variant-hint">${esc(d.variantHint)}</p>`
     : "";
   const proofItems = d.proofs || [
-    "Australian lab tested",
     "Packed in Melbourne",
     "Australia-wide delivery",
   ];
@@ -1586,13 +1628,10 @@ function pdpPage(slug, d) {
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(p.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack"].includes(slug) && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : ""}</p>
-          ${slug === "moringa-powder" ? `<p class="pdp-review-link"><a href="#reviews">Google reviews</a></p>` : ""}
-          <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
-          <p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>
-          ${slug === "moringa-powder" ? `<p class="pdp-review-link"><a href="/documents/nutrithrive-lab-report-summary.pdf"><strong>View the NMI lab summary PDF</strong></a></p>` : ""}
+          ${slug === "moringa-powder" ? `<p class="pdp-review-link"><a href="#reviews">Google reviews</a> · <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab summary PDF</a></p>` : ""}
+          ${slug === "moringa-powder" ? "" : `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>`}
           ${variantSelect}
           ${variantHint}
-          ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $49.50. 100g/200g pay postage — 400g is best value at $35 ($8.75/100g).</p>` : ""}
           <div class="purchase-panel">
             <div class="qty">
               <label for="qty">Quantity</label>
@@ -1606,9 +1645,12 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
+            <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
+            ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $49.50. 100g/200g pay postage — 400g is best value at $35 ($8.75/100g).</p>` : ""}
             ${shippingPurchaseNote ? `<p class="purchase-note">${esc(shippingPurchaseNote)}</p>` : ""}
             <p class="purchase-note">${esc(purchaseNote)}</p>
           </div>
+          ${slug === "moringa-powder" ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
           <ul class="pdp-proof">${proofs}</ul>
           <p class="pdp-service-note">Same-day dispatch before 2pm, Monday to Friday. Seven-day returns on unopened products.</p>
           <p class="pdp-payment-note">Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup</p>
@@ -1655,9 +1697,9 @@ function pdpPage(slug, d) {
             </div>
           </section>
           <section class="pdp-reviews" id="reviews">
-            <div class="reviews-head"><h2>What customers say</h2>${stars()} <span>from 12 Google reviews</span></div>
-            <div class="review-grid review-scroll" aria-label="Google reviews">${reviews.map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
-            <p class="review-disclosure">These are genuine reviews from our Google Business Profile. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
+            <div class="reviews-head"><h2>Google reviews of NutriThrive</h2>${stars()} <span>from 12 Google reviews</span></div>
+            <div class="review-grid review-scroll" aria-label="Google reviews of NutriThrive">${reviews.map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
+            <p class="review-disclosure">These are genuine reviews from our Google Business Profile about NutriThrive. They are not product-specific ratings for this item. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
             <p><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all Google reviews</a></p>
           </section>
           <section class="product-guides" aria-labelledby="product-guides-${esc(slug)}">
@@ -2176,7 +2218,7 @@ function cartPage() {
       : "Review products, quantities, delivery estimates and your NutriThrive order subtotal before continuing to the local preview checkout.",
     canonicalPath: "/cart",
     current: "",
-    extraFoot: `${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>
+    extraFoot: `${retentionFoot(`<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`)}
 <script defer>document.addEventListener("DOMContentLoaded",function(){if(window.NT&&typeof window.NT.renderCart==="function")window.NT.renderCart();});</script>`,
     robots: "noindex, nofollow",
     main: `
@@ -2185,11 +2227,12 @@ function cartPage() {
           <p class="eyebrow">Your order</p>
           <h1>Shopping cart</h1>
         </div>
-        <a class="cart-continue" href="/shop/">Continue shopping <span aria-hidden="true">→</span></a>
+        <a class="cart-continue" href="${shop}">Continue shopping <span aria-hidden="true">→</span></a>
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
           <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $49.50.</p><a class="btn btn-primary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa</a><p>Pay with PayPal or card at checkout.</p></div></div>
+          <div id="cart-buy-again"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
         <div id="cart-recs"></div>
@@ -2359,6 +2402,22 @@ function checkoutPage() {
 
 function thankYouPage() {
   const r = routes();
+  const nextSteps = `<section class="retention-block retention-next" aria-labelledby="order-next">
+        <h2 id="order-next">What happens next</h2>
+        <ol>
+          <li>We've received your payment.</li>
+          <li>We pack orders in Truganina, Melbourne.</li>
+          <li>Orders placed before 2pm Monday to Friday are eligible for same-day dispatch.</li>
+          <li>You should get a confirmation email, then tracking once the parcel leaves if the carrier provides it.</li>
+        </ol>
+        <p>Typical metro times after dispatch are on our <a href="${r.shipping}">shipping page</a>.</p>
+      </section>`;
+  const support = `<section class="retention-block" aria-labelledby="order-support">
+        <h2 id="order-support">Need help?</h2>
+        <p>If something looks wrong, contact us with your order reference. Call <a href="tel:+61438201419">+61 438 201 419</a> or email <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a>.</p>
+        <p><a href="${r.contact}">Contact form</a> · <a href="${r.shipping}">Shipping and returns</a> · <a href="/order-help/">Order help</a></p>
+      </section>`;
+  const extraFoot = retentionFoot(`<script src="${THANK_YOU_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`);
   if (!LIVE_MODE) {
     return layout({
       title: "Preview Order Confirmation | NutriThrive",
@@ -2366,7 +2425,7 @@ function thankYouPage() {
       canonicalPath: "/thank-you",
       current: "",
       robots: "noindex, nofollow",
-      extraFoot: `<script src="${THANK_YOU_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+      extraFoot,
       main: `<section class="page-intro wrap-narrow order-thanks">
       <h1>Received in this preview</h1>
       <p class="lede">Nothing was charged. To place a real order, use nutrithrive.com.au or call +61 438 201 419.</p>
@@ -2375,6 +2434,14 @@ function thankYouPage() {
         <div class="order-thanks-row" id="order-item-row" hidden><dt>Item</dt><dd id="order-item"></dd></div>
         <div class="order-thanks-row" id="order-total-row" hidden><dt>Paid</dt><dd id="order-total"></dd></div>
       </dl>
+      <div class="retention-stack">
+        ${nextSteps}
+        <div id="order-help-blocks"></div>
+        ${support}
+        <div id="order-review"></div>
+        <div id="order-complements"></div>
+        <div id="order-buy-again"></div>
+      </div>
       <div class="order-thanks-actions"><a class="btn btn-primary" href="/shop/">Back to shop</a></div>
     </section>`,
     });
@@ -2387,19 +2454,79 @@ function thankYouPage() {
     preserveTitle: true,
     preserveDescription: true,
     robots: "noindex, follow",
-    extraFoot: `<script src="${THANK_YOU_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+    extraFoot,
     main: `<section class="page-intro wrap-narrow order-thanks">
       <h1>Order confirmed</h1>
-      <p class="lede">We've received your payment. A confirmation email is on the way.</p>
+      <p class="lede">Thank you — we've received your payment. A confirmation email is on the way.</p>
       <dl class="order-thanks-list" id="order-facts" hidden>
         <div class="order-thanks-row" id="order-id-row" hidden><dt>Order reference</dt><dd id="order-id"></dd></div>
         <div class="order-thanks-row" id="order-item-row" hidden><dt>Item</dt><dd id="order-item"></dd></div>
         <div class="order-thanks-row" id="order-total-row" hidden><dt>Paid</dt><dd id="order-total"></dd></div>
       </dl>
-      <p class="order-thanks-note">We'll pack this in Truganina and ship as soon as we can. Questions? <a href="${r.contact}">Contact us</a> with your order reference.</p>
+      <div class="retention-stack">
+        ${nextSteps}
+        <div id="order-help-blocks"></div>
+        ${support}
+        <div id="order-review"></div>
+        <div id="order-complements"></div>
+        <div id="order-buy-again"></div>
+      </div>
       <div class="order-thanks-actions">
         <a class="btn btn-primary" href="${r.shop}">Continue shopping</a>
-        <a class="btn btn-secondary" href="/">Back home</a>
+        <a class="btn btn-secondary" href="/reorder/">Buy again</a>
+      </div>
+    </section>`,
+  });
+}
+
+function orderHelpPage() {
+  const r = routes();
+  return layout({
+    title: "Order help | NutriThrive Australia",
+    description: "Storage, brewing and packing notes for your NutriThrive order, plus a way to contact us if something is not right.",
+    canonicalPath: "/order-help/",
+    current: "",
+    robots: "noindex, follow",
+    extraFoot: retentionFoot(`<script src="${RETENTION_PAGES_SRC}?v=${ASSET_VERSION}" defer></script>`),
+    main: `<section class="page-intro wrap-narrow order-thanks" id="order-help-app">
+      <h1>Help with your order</h1>
+      <p class="lede">Use this page after delivery. It is for storage, brewing, packing notes, and getting in touch — not a medical or treatment guide.</p>
+      <div class="retention-stack">
+        <div id="order-help-blocks"></div>
+        <section class="retention-block" aria-labelledby="order-help-support">
+          <h2 id="order-help-support">If something is wrong</h2>
+          <p>Call <a href="tel:+61438201419">+61 438 201 419</a>, email <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a>, or use the <a href="${r.contact}">contact form</a>. Include your order reference if you have it.</p>
+          <p><a href="${r.shipping}">Shipping and returns</a></p>
+        </section>
+        <div id="order-help-review"></div>
+        <div id="order-help-buy-again"></div>
+        <div id="order-help-complements"></div>
+      </div>
+    </section>`,
+  });
+}
+
+function reorderPage() {
+  const r = routes();
+  return layout({
+    title: "Buy again | NutriThrive Australia",
+    description: "Reorder products from a previous NutriThrive order in this browser, using current prices.",
+    canonicalPath: "/reorder/",
+    current: "",
+    robots: "noindex, follow",
+    extraFoot: retentionFoot(`<script src="${RETENTION_PAGES_SRC}?v=${ASSET_VERSION}" defer></script>`),
+    main: `<section class="page-intro wrap-narrow order-thanks" id="reorder-app">
+      <h1>Buy again</h1>
+      <p class="lede">This page can refill your cart with products from the last order placed in this browser. Prices are always the current store prices. You still review the cart before paying.</p>
+      <div id="reorder-empty" hidden>
+        <p>We can only show a previous order on the same browser you used at checkout. There is no customer account, so we do not look up orders by email.</p>
+        <p><a class="btn btn-primary" href="${r.shop}">Shop the range</a></p>
+      </div>
+      <div id="reorder-filled" hidden>
+        <div id="reorder-buy-again"></div>
+        <div id="reorder-progress"></div>
+        <div id="reorder-complements"></div>
+        <p><a class="btn btn-primary" href="${r.cart}">Review cart</a></p>
       </div>
     </section>`,
   });
@@ -3165,6 +3292,8 @@ function writeGeneratedJs(search) {
     fs.copyFileSync(path.join(OUT, "js/cart-page.js"), path.join(SITE, "assets/js/storefront/cart-page.js"));
     fs.copyFileSync(path.join(OUT, "js/payment-page.js"), path.join(SITE, "assets/js/storefront/payment-page.js"));
     fs.copyFileSync(path.join(OUT, "js/thank-you-page.js"), path.join(SITE, "assets/js/storefront/thank-you-page.js"));
+    fs.copyFileSync(path.join(OUT, "js/retention.js"), path.join(SITE, "assets/js/storefront/retention.js"));
+    fs.copyFileSync(path.join(OUT, "js/retention-pages.js"), path.join(SITE, "assets/js/storefront/retention-pages.js"));
     fs.copyFileSync(path.join(ROOT, "scripts/global/cart.js"), path.join(SITE, "assets/js/storefront/runtime-cart.js"));
     fs.copyFileSync(path.join(ROOT, "scripts/global/shipping-rates.js"), path.join(SITE, "assets/js/storefront/runtime-shipping-rates.js"));
     fs.copyFileSync(path.join(ROOT, "scripts/global/paypal-client-config.js"), path.join(SITE, "assets/js/storefront/runtime-paypal-client-config.js"));
@@ -3192,6 +3321,10 @@ function appendLiveRedirects() {
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
+/order-help /pages/shop/order-help.html 200
+/order-help/ /pages/shop/order-help.html 200
+/reorder /pages/shop/reorder.html 200
+/reorder/ /pages/shop/reorder.html 200
 /privacy /pages/legal/privacy-policy.html 200
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
@@ -3215,6 +3348,8 @@ function copyLiveUiAssets() {
   fs.copyFileSync(path.join(OUT, "js/cart-page.js"), path.join(SITE, "assets/js/storefront/cart-page.js"));
   fs.copyFileSync(path.join(OUT, "js/payment-page.js"), path.join(SITE, "assets/js/storefront/payment-page.js"));
   fs.copyFileSync(path.join(OUT, "js/thank-you-page.js"), path.join(SITE, "assets/js/storefront/thank-you-page.js"));
+  fs.copyFileSync(path.join(OUT, "js/retention.js"), path.join(SITE, "assets/js/storefront/retention.js"));
+  fs.copyFileSync(path.join(OUT, "js/retention-pages.js"), path.join(SITE, "assets/js/storefront/retention-pages.js"));
   fs.copyFileSync(path.join(ROOT, "scripts/global/cart.js"), path.join(SITE, "assets/js/storefront/runtime-cart.js"));
   fs.copyFileSync(path.join(ROOT, "scripts/global/shipping-rates.js"), path.join(SITE, "assets/js/storefront/runtime-shipping-rates.js"));
   fs.copyFileSync(path.join(ROOT, "scripts/global/paypal-client-config.js"), path.join(SITE, "assets/js/storefront/runtime-paypal-client-config.js"));
@@ -3237,9 +3372,14 @@ function main() {
 
   if (LIVE_MODE && LIVE_PAGES.size) {
     copyLiveUiAssets();
+    if (LIVE_PAGES.has("home") || LIVE_PAGES.has("index") || LIVE_PAGES.has("homepage")) {
+      emit("index.html", homepage());
+    }
     if (LIVE_PAGES.has("payment")) emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
     if (LIVE_PAGES.has("thank-you")) emit("thank-you/index.html", thankYouPage(), "pages/shop/thank-you.html");
     if (LIVE_PAGES.has("cart")) emit("cart/index.html", cartPage(), "pages/shop/cart.html");
+    if (LIVE_PAGES.has("order-help")) emit("order-help/index.html", orderHelpPage(), "pages/shop/order-help.html");
+    if (LIVE_PAGES.has("reorder")) emit("reorder/index.html", reorderPage(), "pages/shop/reorder.html");
     if (LIVE_PAGES.has("newsletter")) {
       emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");
       emit("newsletter/thank-you.html", newsletterThanksPage(), "pages/newsletter/thank-you.html");
@@ -3325,6 +3465,8 @@ function main() {
     emit("cart/index.html", cartPage(), "pages/shop/cart.html");
     emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
     emit("thank-you/index.html", thankYouPage(), "pages/shop/thank-you.html");
+    emit("order-help/index.html", orderHelpPage(), "pages/shop/order-help.html");
+    emit("reorder/index.html", reorderPage(), "pages/shop/reorder.html");
     emit("404.html", notFoundPage());
     emitCityLandings();
     emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");
@@ -3397,6 +3539,8 @@ function main() {
   writePage("payment/index.html", paymentPage());
   writePage("checkout/index.html", checkoutPage());
   writePage("thank-you/index.html", thankYouPage());
+  writePage("order-help/index.html", orderHelpPage());
+  writePage("reorder/index.html", reorderPage());
   writePage("404.html", notFoundPage());
   writePage("melbourne/index.html", cityPage("Melbourne", "melbourne"));
   writePage("moringa-sydney/index.html", cityPage("Sydney", "sydney"));
