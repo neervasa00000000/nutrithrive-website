@@ -111,7 +111,7 @@ const approvedSeoChanges = {
   },
   "blog/curry-leaves-tea-how-to-make-benefits-2026.html": {
     title: "How to Make Curry Leaf Tea (Dried Leaves) | Australia",
-    description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $49.50.",
+    description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $79.",
   },
   "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
     title: "Moringa Heavy Metals Lab Testing Australia | What to Look For",
@@ -128,7 +128,7 @@ const approvedSeoChanges = {
   },
   "blog/is-moringa-safe-for-children-kids-dosage-2026.html": {
     title: "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $49.50.",
+    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $79.",
   },
   "blog/how-to-add-moringa-to-diet.html": {
     title: "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
@@ -286,6 +286,8 @@ const generatedHtml = [
   "pages/shop/cart.html",
   "pages/shop/payment.html",
   "pages/shop/thank-you.html",
+  "pages/shop/order-help.html",
+  "pages/shop/reorder.html",
   "pages/newsletter/index.html",
   ...trackedBlogs.filter((rel) => !rel.includes("/partials/")),
 ];
@@ -329,12 +331,12 @@ if (home) {
 }
 
 const startHere = [
-  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens", "$49.50"],
+  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens", "$79"],
   ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
-  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$49.50"],
+  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$79"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
-  ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$49.50"],
-  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 vs Moringa Powder: Is Moringa an Alternative?", "$49.50"],
+  ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$79"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 vs Moringa Powder: Is Moringa an Alternative?", "$79"],
 ];
 for (const [rel, expected, postage] of startHere) {
   const html = read(rel);
@@ -408,6 +410,7 @@ if (cart) {
   if (!/noindex/i.test(cart)) errors.push("cart page must stay noindex");
   mustInclude("pages/shop/cart.html", "/assets/js/storefront/cart-page", "new cart UI script");
   mustInclude("pages/shop/cart.html", "/assets/js/storefront/runtime-cart", "production cart");
+  mustInclude("pages/shop/cart.html", "/assets/js/storefront/retention", "retention config");
   mustNotInclude("pages/shop/cart.html", 'href="/checkout/"', "preview checkout on live cart");
 }
 
@@ -451,12 +454,30 @@ if (thanks) {
   mustInclude("pages/shop/thank-you.html", "/assets/css/storefront-system", "new UI CSS");
   mustInclude("pages/shop/thank-you.html", 'data-nt-live="1"', "live flag");
   mustInclude("pages/shop/thank-you.html", "/assets/js/storefront/thank-you-page", "order thank-you script");
+  mustInclude("pages/shop/thank-you.html", "/assets/js/storefront/retention", "retention config");
   mustInclude("pages/shop/thank-you.html", 'id="order-id"', "order reference");
+  mustInclude("pages/shop/thank-you.html", "What happens next", "post-purchase next steps");
   mustNotInclude("pages/shop/thank-you.html", "googletagmanager.com/gtag", "inline analytics tag");
   mustNotInclude("pages/shop/thank-you.html", "design-system.min.css", "old design system CSS");
   mustNotInclude("pages/shop/thank-you.html", "footer-v2", "old footer");
   mustNotInclude("pages/shop/thank-you.html", "thank-you-icon", "old checkmark block");
 }
+
+const orderHelp = read("pages/shop/order-help.html");
+if (orderHelp) {
+  if (!/noindex/i.test(orderHelp)) errors.push("order-help page must stay noindex");
+  mustInclude("pages/shop/order-help.html", "/assets/js/storefront/retention", "retention config");
+  mustInclude("pages/shop/order-help.html", 'id="order-help-app"', "order-help app");
+  mustNotInclude("pages/shop/order-help.html", "googletagmanager.com/gtag", "inline analytics tag");
+}
+const reorderPage = read("pages/shop/reorder.html");
+if (reorderPage) {
+  if (!/noindex/i.test(reorderPage)) errors.push("reorder page must stay noindex");
+  mustInclude("pages/shop/reorder.html", "/assets/js/storefront/retention", "retention config");
+  mustInclude("pages/shop/reorder.html", 'id="reorder-app"', "reorder app");
+  mustNotInclude("pages/shop/reorder.html", "googletagmanager.com/gtag", "inline analytics tag");
+}
+
 const thanksJs = read("assets/js/storefront/thank-you-page.js");
 if (thanksJs) {
   if (!thanksJs.includes('gtag("event", "purchase"') && !thanksJs.includes("gtag('event', 'purchase'")) {
@@ -478,6 +499,8 @@ if (redirects) {
   if (!redirects.includes("/cart /pages/shop/cart.html 200")) errors.push("_redirects lost /cart rewrite");
   if (!redirects.includes("/payment /pages/shop/payment.html 200")) errors.push("_redirects lost /payment rewrite");
   if (!redirects.includes("/thank-you.html /pages/shop/thank-you.html 200")) errors.push("_redirects lost /thank-you.html rewrite");
+  if (!redirects.includes("/order-help /pages/shop/order-help.html 200")) errors.push("_redirects lost /order-help rewrite");
+  if (!redirects.includes("/reorder /pages/shop/reorder.html 200")) errors.push("_redirects lost /reorder rewrite");
   if (!redirects.includes("/newsletter /pages/newsletter/ 301")) errors.push("_redirects missing /newsletter → /pages/newsletter/");
   if (redirects.includes("/shipping /shipping 200")) errors.push("_redirects /shipping is a self-loop 404");
   if (!redirects.includes("/shipping /pages/shipping/shipping-returns.html 200")) {
@@ -533,6 +556,8 @@ for (const asset of [
   "assets/js/storefront/cart-page.js",
   "assets/js/storefront/payment-page.js",
   "assets/js/storefront/thank-you-page.js",
+  "assets/js/storefront/retention.js",
+  "assets/js/storefront/retention-pages.js",
   "assets/js/storefront/runtime-cart.js",
   "assets/js/storefront/runtime-paypal-client-config.js",
   "assets/js/storefront/runtime-paypal-sdk-loader.js",
