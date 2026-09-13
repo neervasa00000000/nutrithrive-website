@@ -341,11 +341,16 @@ function bindHeader() {
         results.innerHTML = "";
         return;
       }
-      const hits = (window.NT_SEARCH || []).filter(
-        (item) =>
-          item.title.toLowerCase().includes(q) ||
-          (item.blurb || "").toLowerCase().includes(q)
-      );
+      const extraNeedle =
+        q === "curry" || q === "karipatta" || q.includes("curry leaf")
+          ? "dried curry leaves"
+          : q === "darjeeling" || q.includes("darjeeling")
+            ? "darjeeling black tea"
+            : "";
+      const hits = (window.NT_SEARCH || []).filter((item) => {
+        const hay = `${item.title} ${item.blurb || ""}`.toLowerCase();
+        return hay.includes(q) || (extraNeedle && hay.includes(extraNeedle));
+      });
       results.replaceChildren();
       if (hits.length) {
         hits.slice(0, 8).forEach((item) => {
@@ -404,6 +409,18 @@ function bindHeader() {
     });
   });
 
+  document.querySelectorAll("[data-select-item]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("data-select-item");
+      const product = (window.NT_PRODUCTS || []).find((item) => item.id === id);
+      if (!product) return;
+      trackEcommerce("select_item", [product], {
+        item_list_id: "homepage-range",
+        item_list_name: "Homepage range",
+      });
+    });
+  });
+
   document.querySelectorAll("[data-funnel-event]").forEach((element) => {
     element.addEventListener("click", () => {
       trackEvent(element.dataset.funnelEvent, {
@@ -413,6 +430,52 @@ function bindHeader() {
       });
     });
   });
+
+  function productIdFromHref(href) {
+    try {
+      const path = new URL(href, location.origin).pathname.replace(/\/+$/, "") || "/";
+      const map = {
+        "/products/moringa-powder": "moringa-powder",
+        "/products/curry-leaves": "curry-leaves",
+        "/products/black-tea": "black-tea",
+        "/products/moringa-soap": "moringa-soap",
+        "/products/gift-pack": "gift-pack",
+        "/products/combo-pack": "combo-pack",
+        "/products": "shop",
+      };
+      return map[path] || "";
+    } catch {
+      return "";
+    }
+  }
+
+  function bindBlogProductClicks() {
+    if (!location.pathname.includes("/blog/")) return;
+    document.addEventListener("click", (event) => {
+      const link = event.target?.closest?.("a[href]");
+      if (!link || link.hasAttribute("data-funnel-event")) return;
+      const href = link.getAttribute("href") || "";
+      if (!/\/products(\/|$|\?)/.test(href)) return;
+      if (link.closest("footer, header, .nav-mobile, .announce, .nav-primary")) return;
+      if (!link.closest("main")) return;
+      const destination_product = productIdFromHref(href);
+      if (!destination_product) return;
+      const text = (link.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+      let anchor_text_category = "contextual";
+      if (/shop|buy|get |try |order/.test(text)) anchor_text_category = "commercial";
+      else if (/review/.test(text)) anchor_text_category = "review";
+      else if (/storage|store|brew|recipe|guide/.test(text)) anchor_text_category = "informational";
+      trackEvent("blog_product_click", {
+        source_page: location.pathname.slice(0, 200),
+        destination_url: href.split("?")[0].slice(0, 200),
+        destination_product,
+        cta_location: "article_body",
+        cta_type: link.classList.contains("btn") ? "button" : "text_link",
+        anchor_text_category,
+      });
+    });
+  }
+  bindBlogProductClicks();
 
   document.querySelectorAll("[data-buy-now]").forEach((btn) => {
     btn.addEventListener("click", () => {
