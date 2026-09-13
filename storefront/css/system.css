@@ -536,6 +536,41 @@ textarea {
   margin-bottom: var(--space-6);
 }
 
+.hero-range {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  max-width: min(36rem, 100%);
+}
+
+.hero-range__label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.hero-range__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.hero-range__list a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero-range__list a:hover,
+.hero-range__list a:focus-visible {
+  color: var(--color-brand);
+}
+
 .hero-photo {
   background: #1a241c;
   border-radius: var(--radius-xl);
@@ -2508,6 +2543,141 @@ body.journal-searching .section-head > a {
   }
 }
 
+.retention-stack {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.retention-block {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+}
+
+.retention-block h2 {
+  font-size: var(--heading-sm);
+  margin: 0 0 var(--space-3);
+}
+
+.retention-block p,
+.retention-note {
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
+  max-width: 40rem;
+}
+
+.retention-links {
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.retention-links a,
+.retention-card__actions a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.retention-card-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.retention-card {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: var(--space-4);
+  background: var(--color-bg);
+}
+
+.retention-card__media {
+  display: block;
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--color-bg-soft);
+}
+
+.retention-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.retention-card__body h3 {
+  font-size: var(--text-md);
+  margin: 0 0 var(--space-1);
+}
+
+.retention-card__body p {
+  margin: 0 0 var(--space-3);
+}
+
+.retention-qty {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  margin: 0 0 var(--space-3);
+}
+
+.retention-qty input {
+  width: 4.5rem;
+  min-height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0 var(--space-3);
+  font: inherit;
+}
+
+.retention-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.retention-card__actions .btn {
+  min-height: 44px;
+}
+
+.retention-next ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 430px) {
+  .cart-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .retention-card {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .retention-card__media,
+  .retention-card__media img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .retention-card__actions .btn,
+  .retention-card__actions a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .search-panel[hidden],
 .nav-mobile[hidden] {
   display: none !important;
@@ -3656,7 +3826,56 @@ select {
   }
 
   .pdp-gallery img {
-    max-height: 320px;
+    max-height: 220px;
+  }
+
+  .pdp {
+    gap: 20px;
+    padding-block: 16px 48px;
+  }
+
+  .pdp-buy h1 {
+    font-size: clamp(28px, 7.2vw, 40px);
+    margin-bottom: 10px;
+  }
+
+  .pdp-eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .stock-status {
+    margin-bottom: 10px;
+  }
+
+  .pdp-price {
+    margin-block: 8px 10px;
+    font-size: clamp(26px, 6vw, 34px);
+  }
+
+  .pdp-intro {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .pdp-review-link {
+    margin: 0 0 8px;
+  }
+
+  .purchase-panel {
+    margin-top: 14px;
+  }
+
+  .purchase-panel .qty {
+    margin-bottom: 12px;
+  }
+
+  .pdp-variant-hint {
+    margin-bottom: 10px;
+  }
+
+  .pdp .field {
+    margin-bottom: 10px;
   }
 
   .product-card-body {
@@ -4096,20 +4315,24 @@ select {
   .related-products .product-card { scroll-snap-align: start; }
 
   .pdp-gallery { border-radius: 18px; box-shadow: none; }
-  .pdp-gallery img { max-height: 440px; }
+  .pdp-gallery img { max-height: 190px; }
   .pdp-buy { padding-top: 0; }
 
   .pdp-buy h1 {
-    font-size: 40px;
-    margin-bottom: 14px;
+    font-size: clamp(26px, 7vw, 34px);
+    margin-bottom: 8px;
   }
 
-  .pdp-eyebrow { font-size: 10px; margin-bottom: 10px; }
-  .stock-status { font-size: 13px; margin-bottom: 18px; }
-  .pdp-price { font-size: 34px; margin-block: 14px; }
+  .pdp-eyebrow { font-size: 10px; margin-bottom: 6px; }
+  .stock-status { font-size: 13px; margin-bottom: 8px; }
+  .pdp-price { font-size: 28px; margin-block: 6px 8px; }
 
   .purchase-panel {
-    margin-top: 22px;
+    margin-top: 12px;
+  }
+
+  .purchase-panel .cost-note {
+    margin: 10px 0 0;
   }
 
   .pdp-value-row {
