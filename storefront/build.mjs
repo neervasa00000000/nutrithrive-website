@@ -1491,6 +1491,11 @@ function pdpPage(slug, d) {
       : `<h2>What it is</h2><p>${esc(d.what)}</p>
           <h2>How to use</h2><p>${esc(d.use)}</p>
           ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a> or contact us for current testing details.</p>` : ""}`;
+  const shipLadder = {
+    "moringa-soap": `<p>Pair with <a href="/products/moringa-powder/">moringa powder</a> — free AU shipping over <strong>$49.50</strong>.</p>`,
+    "curry-leaves": `<p>Free AU shipping over <strong>$49.50</strong> — add <a href="/products/moringa-powder/">moringa powder</a> or <a href="/products/black-tea/">Darjeeling tea</a>.</p>`,
+    "black-tea": `<p>Free AU shipping over <strong>$49.50</strong> — add <a href="/products/moringa-powder/">moringa powder</a> or <a href="/products/curry-leaves/">dried curry leaves</a>.</p>`,
+  }[slug] || "";
   const offerUrl = `${LIVE}/products/${slug}${slug === "moringa-powder" ? "/" : ""}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
   const productSchema = {
@@ -1613,6 +1618,7 @@ function pdpPage(slug, d) {
         <div class="wrap pdp-content">
           ${valueCompare}
           ${education}
+          ${shipLadder}
           <div class="product-facts">
             <section><h2>Ingredients</h2><p>${esc(d.ingredients)}</p></section>
             <section><h2>Origin</h2><p>${esc(d.origin)}</p></section>
@@ -1986,11 +1992,41 @@ function faqPage() {
 }
 
 function shippingPage() {
+  const shippingFaqs = [
+    [
+      "Where do you ship moringa powder from?",
+      "We pack and dispatch from Truganina, Melbourne. Australia-wide tracked shipping.",
+    ],
+    [
+      "How do I get free shipping?",
+      {
+        html: `Free Australia-wide shipping on orders over <strong>$49.50</strong>. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.`,
+        text: "Free Australia-wide shipping on orders over $49.50. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.",
+      },
+    ],
+    [
+      "Can I buy / pick up in Melbourne?",
+      {
+        html: `Online 24/7. Local pickup from Truganina by arrangement — see our <a href="/melbourne/">Melbourne page</a>.`,
+        text: "Online 24/7. Local pickup from Truganina by arrangement — see our Melbourne page.",
+      },
+    ],
+  ];
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: shippingFaqs.map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: typeof a === "object" ? a.text : a },
+    })),
+  };
   return layout({
-    title: "Shipping, Delivery and Returns | NutriThrive",
+    title: "Shipping & Free Delivery Australia | Over $49.50 | NutriThrive",
     description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping over $49.50 and our seven-day returns information.",
+    preserveTitle: true,
     canonicalPath: "/shipping",
-    extraHead: jsonLd(
+    extraHead: jsonLd(faqSchema) + jsonLd(
       breadcrumbSchema([
         { name: "Home", item: `${LIVE}/` },
         { name: "Shipping and returns", item: `${LIVE}/shipping` },
@@ -2014,6 +2050,8 @@ function shippingPage() {
         <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
         <h2>Payments</h2>
         <p>Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup.</p>
+        <h2>Shipping FAQ</h2>
+        <div class="faq-list">${faqDetails(shippingFaqs)}</div>
         <p><a href="/privacy">Privacy policy</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></p>
       </section>`,
   });
@@ -2385,6 +2423,9 @@ function cityPage(city, slug) {
   const chooseHref = r.article("how-to-choose-moringa-powder-australia-2026");
   const coffeeHref = r.article("moringa-vs-coffee-melbourne-energy-hack");
   const treeHref = r.article("grow-moringa-tree-australia");
+  const verifyHref = r.article("verify-moringa-quality-premium-buyers-checklist-2026");
+  const shadeHref = r.article("science-shade-drying-vs-sun-drying-moringa");
+  const capsHref = r.article("moringa-capsules-vs-powder-which-is-better-2026");
   const citySeo = {
     Melbourne: {
       title: "Moringa Powder Melbourne — Packed in Truganina | From $11",
@@ -2464,8 +2505,14 @@ function cityPage(city, slug) {
     })),
   };
   const melbourneGuides = city === "Melbourne"
-    ? `<li><a href="${coffeeHref}"><span>Comparison</span>Moringa vs coffee in Melbourne</a></li>
+    ? `<li><a href="${verifyHref}"><span>Quality</span>Verify checklist</a></li>
+            <li><a href="${shadeHref}"><span>Drying</span>Shade-dried leaf</a></li>
+            <li><a href="${capsHref}"><span>Format</span>Powder vs capsules</a></li>
+            <li><a href="${coffeeHref}"><span>Comparison</span>Moringa vs coffee in Melbourne</a></li>
             <li><a href="${treeHref}"><span>Growing</span>Grow a moringa tree in Australia</a></li>`
+    : "";
+  const melbourneQuality = city === "Melbourne"
+    ? `<p>Melbourne buyers comparing quality: <a href="${verifyHref}">verify checklist</a> · <a href="${shadeHref}">shade-dried leaf</a> · <a href="${capsHref}">powder vs capsules</a>. Pickup by arrangement from Truganina. Free AU shipping at $49.50.</p>`
     : "";
   const canonicalPath = slug === "melbourne" ? "/melbourne/" : `/moringa-${slug}/`;
   const cityLinks = [
@@ -2568,6 +2615,7 @@ function cityPage(city, slug) {
               <p class="city-local-kicker">Why NutriThrive</p>
               <h2 id="support-heading-${slug}">The same accountable pouch, wherever you live</h2>
               <p>One packing location keeps product information and batch handling consistent. ${pouchLine}</p>
+              ${melbourneQuality}
               <ul class="city-check-list">
                 <li>Grown on our own farm</li>
                 <li>Shade-dried and manufactured by us</li>
@@ -3174,10 +3222,17 @@ function copyLiveUiAssets() {
 }
 
 function main() {
-  if (LIVE_PAGES.has("cities")) {
-    emitCityLandings();
-    console.log("Wrote city landing pages.");
-    return;
+  if (LIVE_PAGES.has("cities") || LIVE_PAGES.has("shipping")) {
+    if (LIVE_PAGES.has("cities")) {
+      emitCityLandings();
+      console.log("Wrote city landing pages.");
+    }
+    if (LIVE_PAGES.has("shipping")) {
+      emit("shipping/index.html", shippingPage(), "pages/shipping/shipping-returns.html");
+      console.log("Wrote shipping page.");
+    }
+    const leftover = [...LIVE_PAGES].filter((p) => p !== "cities" && p !== "shipping");
+    if (!leftover.length) return;
   }
 
   if (LIVE_MODE && LIVE_PAGES.size) {
@@ -3188,6 +3243,9 @@ function main() {
     if (LIVE_PAGES.has("newsletter")) {
       emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");
       emit("newsletter/thank-you.html", newsletterThanksPage(), "pages/newsletter/thank-you.html");
+    }
+    if (LIVE_PAGES.has("shipping")) {
+      emit("shipping/index.html", shippingPage(), "pages/shipping/shipping-returns.html");
     }
     for (const slug of LIVE_PAGES) {
       if (PDP[slug]) {
