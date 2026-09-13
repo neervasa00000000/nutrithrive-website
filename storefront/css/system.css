@@ -1329,7 +1329,7 @@ body.journal-searching .section-head > a {
 }
 
 .stock-status span { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
-.cost-note { color: var(--color-text-secondary); font-size: var(--text-sm); margin: var(--space-3) 0 var(--space-4); }
+.cost-note { color: var(--color-text-secondary); font-size: var(--text-sm); margin: calc(var(--space-3) * -1) 0 var(--space-4); }
 .pdp-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
 
 .purchase-panel {
