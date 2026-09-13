@@ -76,7 +76,7 @@ FAQS = [
     ),
     (
         "What does 100 g cost posted?",
-        "About $7.50 + ~$9.69 zone-1 example ≈ $17.19 under the $49.50 free-ship line. Free shipping at $49.50+.",
+        "About $7.50 + ~$9.69 zone-1 example ≈ $17.19 under the $79 free-ship line. Free shipping at $79+.",
     ),
     (
         "If I order today, when does it leave Truganina?",
@@ -103,7 +103,7 @@ BODY_TAIL = """
 
 <div class="nt-article-cta">
 <h3>Order first-flush Darjeeling — $7.50 / 100g</h3>
-<p>Loose leaf packed in Truganina. Posted $7.50 + $9.69 under $49.50, or pickup by arrangement. Same-day dispatch before 2pm on business days. This page is the fridge method, not the winter chai latte.</p>
+<p>Loose leaf packed in Truganina. Posted $7.50 + $9.69 under $79, or pickup by arrangement. Same-day dispatch before 2pm on business days. This page is the fridge method, not the winter chai latte.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/black-tea/">Shop Darjeeling tea — $7.50</a>
 <a class="btn-outline" href="/shipping">Shipping &amp; returns</a>

@@ -61,7 +61,7 @@ FAQS = [
     ),
     (
         "How much is NutriThrive free shipping?",
-        "Free standard Australia-wide shipping at $49.50. Worldwide free from $90. A single $11 pouch sits under the threshold unless you add more or pick up.",
+        "Free standard Australia-wide shipping at $79. Worldwide free from $90. A single $11 pouch sits under the threshold unless you add more or pick up.",
     ),
     (
         "If I order today, when does it leave Truganina?",
@@ -87,7 +87,7 @@ QUICK_HTML = (
     "this morning (2 Sep 2026) is Forest Super Foods Pure Organic Moringa "
     "<strong>120 capsules at $79.00</strong> (4 caps / 2000 mg, about 30 serves). "
     "I pack shade-dried <strong>100% leaf powder from $11 / 100 g</strong> in "
-    "Truganina with an NMI PDF. Free AU shipping from <strong>$49.50</strong>."
+    "Truganina with an NMI PDF. Free AU shipping from <strong>$79</strong>."
 )
 
 BODY_TAIL = """
@@ -96,7 +96,7 @@ BODY_TAIL = """
 
 <div class="nt-article-cta">
 <h3>Order shade-dried moringa — $11 / 100g</h3>
-<p>One leaf, packed in Truganina. Free AU shipping at $49.50, or pickup by arrangement. Same-day weekday dispatch before 2pm. NMI summary on the product page.</p>
+<p>One leaf, packed in Truganina. Free AU shipping at $79, or pickup by arrangement. Same-day weekday dispatch before 2pm. NMI summary on the product page.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/moringa-powder/">Shop moringa powder — $11</a>
 <a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
@@ -107,7 +107,7 @@ BODY_TAIL = """
 <div class="nt-update-log" role="note">
 <p><strong>Update log</strong></p>
 <ul>
-<li><strong>2 Sep 2026:</strong> Capsule vs powder refresh on this same URL. Live Forest Super Foods 120-cap Chemist Warehouse listing at $79. NutriThrive powder from $11/100g. Free AU shipping at $49.50.</li>
+<li><strong>2 Sep 2026:</strong> Capsule vs powder refresh on this same URL. Live Forest Super Foods 120-cap Chemist Warehouse listing at $79. NutriThrive powder from $11/100g. Free AU shipping at $79.</li>
 <li><strong>Earlier 2026:</strong> This URL previously covered in-store Rosabella and Indus Farms capsule checks. Those brands can still appear on shelves; the <a href="/blog/rosabella-moringa-reviews-legit-or-overhyped-2026">Rosabella review</a> stays the deep dive.</li>
 </ul>
 </div>
@@ -205,7 +205,7 @@ def md_to_html(md: str) -> str:
 </tr>
 </tbody>
 </table></div>
-<p>In stock. Same-day weekday dispatch before <strong>2pm</strong>. Free Australia-wide standard shipping on orders <strong>$49.50 and over</strong>. NutriThrive is <strong>not</strong> certified organic.</p>""",
+<p>In stock. Same-day weekday dispatch before <strong>2pm</strong>. Free Australia-wide standard shipping on orders <strong>$79 and over</strong>. NutriThrive is <strong>not</strong> certified organic.</p>""",
     )
     html = html.replace("</table>", "</table></div>")
     html = html.replace(

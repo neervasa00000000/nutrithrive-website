@@ -1,4 +1,4 @@
-/** Auto-generated — 126 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 123 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -26,7 +26,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "best-anti-inflammatory-foods-australia-daily-guide-2026",
-    "title": "The Best Anti-Inflammatory Foods to Eat Every Day (Australian Guide 2026)",
+    "title": "Anti-Inflammatory Foods Australia | Daily Plate Guide",
     "description": "Anti-inflammatory foods with real evidence for Australians, plus which “superfood” claims are mostly marketing hype. Read the practical NutriThrive guide.",
     "category": "Wellness",
     "href": "/blog/best-anti-inflammatory-foods-australia-daily-guide-2026",
@@ -163,7 +163,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
     "title": "How to Make Curry Leaf Tea with Dried Leaves",
-    "description": "Learn how to make curry leaf tea with dried leaves, including a simple recipe, flavour tips, storage guidance and realistic evidence on health claims.",
+    "description": "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $79.",
     "category": "Wellness",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
@@ -283,7 +283,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "grow-moringa-tree-australia",
     "title": "Grow a Moringa Tree in Australia: Pots &amp; Climate Guide",
-    "description": "Learn how to grow moringa in Australia, including pot size, germination, winter dormancy and climate tips for Melbourne, Perth and warmer regions.",
+    "description": "How to grow a moringa tree in Australia: pot size, germination, winter dormancy and climate tips for Melbourne, Perth, Qld and warmer AU zones.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -322,8 +322,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-much-caffeine-safe-per-day-australia-fsanz-2026",
-    "title": "How Much Caffeine Is Safe Per Day? FSANZ Guidelines (2026)",
-    "description": "FSANZ&#39;s official safe caffeine limit is 400mg/day for adults, 200mg for pregnant women. Here&#39;s what that looks like in real drinks.",
+    "title": "How Much Caffeine Per Day in Australia? FSANZ Guide",
+    "description": "Compare caffeine in coffee and tea using FSANZ maximum levels, serving context and NutriThrive Darjeeling tea details.",
     "category": "Wellness",
     "href": "/blog/how-much-caffeine-safe-per-day-australia-fsanz-2026",
     "image": "/assets/images/og/caffeine-safe-per-day-australia-fsanz-1200.jpg"
@@ -346,8 +346,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-add-moringa-to-diet",
-    "title": "How to Add Moringa Powder to Food Without Bitterness",
-    "description": "How to add moringa powder to smoothies and meals without bitterness — 5 AU kitchen methods, taste fixes, and when to buy shade-dried leaf from $11/100g.",
+    "title": "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
+    "description": "How to use moringa powder daily in Australia — eat, mix and dose tips, taste fixes, and shade-dried leaf from $11/100g.",
     "category": "Wellness",
     "href": "/blog/how-to-add-moringa-to-diet",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -418,7 +418,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
-    "title": "How to Read a Moringa Batch Code",
+    "title": "How to Read a Moringa Batch Code | Freshness Check Australia",
     "description": "Every NutriThrive pack has a batch code. Here&#39;s exactly how to read it to check freshness before you buy or use it. Read the practical NutriThrive guide.",
     "category": "Wellness",
     "href": "/blog/how-to-read-moringa-batch-codes-freshness",
@@ -441,13 +441,6 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
-    "slug": "iron-deficiency-australian-women-abs-real-numbers-2026",
-    "title": "This guide has moved",
-    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
-    "category": "Wellness",
-    "href": "/blog/iron-deficiency-australian-women-abs-real-numbers-2026"
-  },
-  {
     "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
     "title": "Iron Deficiency: Symptoms and Plant Sources",
     "description": "Common signs of iron deficiency in Australian women, and the best plant-based sources to fix it. Evidence-aware, practical Australian guidance from NutriThrive.",
@@ -458,7 +451,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
     "title": "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $49.50.",
+    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $79.",
     "category": "Wellness",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -473,7 +466,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "is-moringa-worth-it-cost-value-australia-2026",
-    "title": "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
+    "title": "Is Moringa Worth It? A Cost-Per-Nutrient Breakdown for Australians (2026)",
     "description": "$11/100g moringa vs a multivitamin, greens powder or iron tablet, a cost-per-nutrient breakdown for Australians. Practical Australian guidance from NutriThrive.",
     "category": "Wellness",
     "href": "/blog/is-moringa-worth-it-cost-value-australia-2026",
@@ -497,8 +490,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
-    "title": "Moringa and Berberine Together. What the Science Actually Says (Australia 2026)",
-    "description": "Moringa and berberine in Australia: what the science says on patches vs oral leaf powder, interaction risk, TGA context, and when to ask your GP.",
+    "title": "Moringa and Berberine Together (Australia 2026)",
+    "description": "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context — not medical advice. Ask your GP.",
     "category": "Wellness",
     "href": "/blog/moringa-and-berberine-australia-what-science-says-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -537,8 +530,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-brands-comparison-australia-2026",
-    "title": "Best Moringa Brands Australia 2026: Lab Tests, Dose &amp; $/100g",
-    "description": "Compare moringa brands in Australia by testing, origin, processing, ingredients and value. See what to check before choosing a moringa powder.",
+    "title": "Best Moringa Brands Australia 2026 Compared",
+    "description": "Compare Australian moringa brands on lab testing, origin, processing, ingredients and $/100g. Clear checklist before you buy leaf powder in AU.",
     "category": "Wellness",
     "href": "/blog/moringa-brands-comparison-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -561,8 +554,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Moringa Chemist Warehouse: Capsules vs Truganina Powder",
-    "description": "Searching moringa chemist warehouse? CW lists Forest Super Foods 120 caps at $79. I pack shade-dried powder from $11/100g with an NMI PDF in Truganina.",
+    "title": "Chemist Warehouse Moringa vs NutriThrive Powder",
+    "description": "Searching Chemist Warehouse for moringa? CW lists capsules; NutriThrive packs shade-dried leaf powder from $11/100g with NMI PDF. Compare quality &amp; AU value.",
     "category": "Wellness",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -713,7 +706,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
-    "title": "Moringa Heavy Metals Lab Testing Australia | What to Look For",
+    "title": "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
     "description": "Moringa can accumulate lead and cadmium. How to read an Australian CoA, what NMI testing covers, and red flags when brands hide results.",
     "category": "Wellness",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
@@ -801,7 +794,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "Does Moringa Have Caffeine? Moringa vs Coffee",
+    "title": "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
     "description": "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack",
@@ -825,15 +818,15 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-wellness-shot-recipe-winter-2026",
-    "title": "Moringa Wellness Shot: The 2-Minute Winter Morning Ritual (2026)",
-    "description": "One moringa wellness shot takes 2 minutes and replaces three separate supplements. The recipe, the why, and what to expect after a week of daily use.",
+    "title": "Moringa Wellness Shot Recipe (2 Minutes) | Australia",
+    "description": "Make a 2-minute moringa wellness shot for Australian mornings, with simple ratios, taste tips, mixing steps and powder-versus-capsule context.",
     "category": "Wellness",
     "href": "/blog/moringa-wellness-shot-recipe-winter-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
-    "title": "How Moringa&#39;s Vitamin C Boosts Iron Absorption",
+    "title": "Moringa Vitamin C &amp; Iron Absorption | Australia Guide",
     "description": "Moringa is high in vitamin C, which helps iron absorb better. Here&#39;s how to pair it with iron-rich foods for maximum benefit.",
     "category": "Wellness",
     "href": "/blog/moringa-with-vitamin-c-iron-absorption-guide-2026",
@@ -881,16 +874,16 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
-    "title": "Rosabella Moringa Reviews 2026: Lab Gaps &amp; Dose Maths",
-    "description": "Rosabella moringa reviews (AU 2026): lab transparency gap, $/gram vs powder, Salmonella recall notes, dose maths, and when pure leaf powder is the better buy.",
+    "title": "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
+    "description": "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
     "category": "Wellness",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
   },
   {
     "slug": "science-shade-drying-vs-sun-drying-moringa",
-    "title": "Shade vs Sun-Dried Moringa: Which Keeps Nutrients?",
-    "description": "Shade- vs sun-dried moringa. What colour and aroma suggest about heat damage, and practical signals for better leaf powder in Australia (2026).",
+    "title": "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
+    "description": "Shade-dried vs sun-dried moringa powder in Australia: colour, aroma and heat clues that mark better leaf. How NutriThrive shade-dries before the $11/100g pack.",
     "category": "Wellness",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -928,13 +921,6 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
-    "slug": "stress-weight-gain-cortisol-mechanism-what-to-do-2026",
-    "title": "This guide has moved",
-    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
-    "category": "Wellness",
-    "href": "/blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026"
-  },
-  {
     "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "title": "Ultra-Processed Food in Australia. What It Actually Is and How Much You&#39;re Eating",
     "description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows, without the lecture.",
@@ -959,15 +945,8 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/vitamin-d-deficiency-australia-abs-1200.jpg"
   },
   {
-    "slug": "vitamin-d-deficiency-australia-sunny-country-paradox-2026",
-    "title": "This guide has moved",
-    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
-    "category": "Wellness",
-    "href": "/blog/vitamin-d-deficiency-australia-sunny-country-paradox-2026"
-  },
-  {
     "slug": "what-does-aust-l-mean-supplement-label-australia-2026",
-    "title": "What Does AUST L Mean? A TGA Guide",
+    "title": "What Does AUST L Mean on Supplements? TGA Guide Australia",
     "description": "AUST L vs AUST R, what&#39;s the real difference, and what it means for the supplements you buy. Straight from the TGA. Read the practical NutriThrive guide.",
     "category": "Wellness",
     "href": "/blog/what-does-aust-l-mean-supplement-label-australia-2026",
@@ -975,8 +954,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "title": "What Moringa Powder Tastes Like (And How to Mix It)",
-    "description": "Does moringa taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
+    "title": "What Does Moringa Powder Taste Like? Honest Mix Guide",
+    "description": "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
     "category": "Wellness",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"

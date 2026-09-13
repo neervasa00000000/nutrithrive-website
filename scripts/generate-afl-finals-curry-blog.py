@@ -47,8 +47,8 @@ FAQS = [
     ),
     (
         "What does posted 30g curry leaves cost?",
-        "The bag is $7. Under $49.50, default AU shipping is $9.69. Landed $16.69. Pickup by arrangement is $7. "
-        "Free shipping at $49.50+.",
+        "The bag is $7. Under $79, default AU shipping is $9.69. Landed $16.69. Pickup by arrangement is $7. "
+        "Free shipping at $79+.",
     ),
     (
         "Is this curry powder?",
@@ -80,7 +80,7 @@ FAQS = [
 ]
 
 BODY_MD = r"""
-I'm Neer. I pack NutriThrive orders at 15 Europe Street, Truganina VIC 3029. Wildcard weekend is finished. [AFL.com.au](https://www.afl.com.au/news/1597385/finals-fixture-ticket-details-schedule-confirmed-for-week-two-of-the-2026-finals-series) has Week 2 locked: it starts **Thursday 3 September 2026**. I fry dried kari leaf in ghee and pour it over nuts or popcorn. The bag I sell is **30 g**, SKU **NT-CL-30G**, **$7**. Posted it is **$7 + $9.69** unless you pick up or the cart clears **$49.50**.
+I'm Neer. I pack NutriThrive orders at 15 Europe Street, Truganina VIC 3029. Wildcard weekend is finished. [AFL.com.au](https://www.afl.com.au/news/1597385/finals-fixture-ticket-details-schedule-confirmed-for-week-two-of-the-2026-finals-series) has Week 2 locked: it starts **Thursday 3 September 2026**. I fry dried kari leaf in ghee and pour it over nuts or popcorn. The bag I sell is **30 g**, SKU **NT-CL-30G**, **$7**. Posted it is **$7 + $9.69** unless you pick up or the cart clears **$79**.
 
 ## Week 2 is Thursday. The calendar does not care about your oven
 
@@ -149,9 +149,9 @@ That is why $7 is the unit. You are not buying a one-night garnish. You are buyi
 
 ## Posted $7 is not $7 at the door
 
-Locked 30 August 2026: curry leaves **30 g = $7**. Default AU shipping under $49.50 is **$9.69**. Landed **$16.69**. Pickup by arrangement is **$7**. Free Australia-wide shipping at **AU$49.50 and above**. Full policy: [Shipping & Returns](/shipping).
+Locked 30 August 2026: curry leaves **30 g = $7**. Default AU shipping under $79 is **$9.69**. Landed **$16.69**. Pickup by arrangement is **$7**. Free Australia-wide shipping at **AU$79 and above**. Full policy: [Shipping & Returns](/shipping).
 
-I will not hide the postage. A $7 bag on its own does not clear $49.50. People get angry when a "cheap snack" becomes $16.69. The maths is on the shipping page. I am repeating it here so you do not have to hunt.
+I will not hide the postage. A $7 bag on its own does not clear $79. People get angry when a "cheap snack" becomes $16.69. The maths is on the shipping page. I am repeating it here so you do not have to hunt.
 
 | Cart | Sum | Shipping | Landed |
 | --- | ---: | ---: | ---: |
@@ -239,7 +239,7 @@ No.
 Yes, **by arrangement**. 15 Europe Street, Truganina VIC 3029. Cash for pickup only. Call [+61 438 201 419](tel:+61438201419) or email [nutrithrive0@gmail.com](mailto:nutrithrive0@gmail.com) first.
 
 **What does it cost with shipping?**
-$7 + $9.69 = **$16.69** if the order is under $49.50. Free shipping at **$49.50+**. Pickup is $7.
+$7 + $9.69 = **$16.69** if the order is under $79. Free shipping at **$79+**. Pickup is $7.
 
 **What is the return policy?**
 7 days from delivery, unopened packs. Original shipping is not refunded. Policy: [Shipping & Returns](/shipping).
@@ -260,7 +260,7 @@ BODY_TAIL = """
 
 <div class="nt-article-cta">
 <h3>Order dried curry leaves — $7 / 30g</h3>
-<p>Whole kari leaf, packed in Truganina. Posted $7 + $9.69 under $49.50, or pickup by arrangement. Same-day dispatch before 2pm on business days.</p>
+<p>Whole kari leaf, packed in Truganina. Posted $7 + $9.69 under $79, or pickup by arrangement. Same-day dispatch before 2pm on business days.</p>
 <div class="btn-row">
 <a class="btn-solid" href="/products/curry-leaves/">Shop curry leaves — $7</a>
 <a class="btn-outline" href="/shipping">Shipping &amp; returns</a>
@@ -508,7 +508,7 @@ def main() -> None:
 <span class="text-2xl font-bold text-moringa-leaf">$7.00</span>
 <span class="text-sm text-on-surface-variant">/30g</span>
 </div>
-<p class="text-body-sm text-on-surface-variant mb-6">Posted +$9.69 under $49.50 · Pickup $7</p>
+<p class="text-body-sm text-on-surface-variant mb-6">Posted +$9.69 under $79 · Pickup $7</p>
 <a class="block w-full text-center bg-moringa-leaf text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/curry-leaves/">Shop curry leaves →</a>
 </div>
 </div>
