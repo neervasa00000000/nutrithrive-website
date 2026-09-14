@@ -2975,7 +2975,10 @@ function extractArticleProse(slug, fallbackHtml) {
   if (fs.existsSync(file)) html = fs.readFileSync(file, "utf8");
   if (!html && LIVE_MODE) html = gitShowHead(`blog/${slug}.html`);
   if (!html) return fallbackHtml;
-  for (const cls of ["blog-v2-prose", "main-content", "blog-post-content", "content-wrapper"]) {
+  // Production articles are already wrapped in `.prose`. Use the balanced
+  // extractor for that wrapper too; the old non-greedy fallback stopped at
+  // the first nested </div> and could collapse a long article to its lede.
+  for (const cls of ["blog-v2-prose", "main-content", "blog-post-content", "content-wrapper", "prose"]) {
     const extracted = extractInnerByClass(html, cls);
     if (extracted.trim().length > 200) return rewriteLinks(extracted);
   }
