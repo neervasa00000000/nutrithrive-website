@@ -163,11 +163,11 @@ const ARTICLE_SEO_OVERRIDES = {
   "ag1-alternative-australia-moringa-comparison-2026": {
     title: "AG1 Alternative Australia: AG1 vs Moringa Compared",
     description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
-    h1: "AG1 vs Moringa Powder: Is Moringa an Alternative?",
+    h1: "AG1 Alternative Australia: AG1 vs Moringa Compared",
   },
   "what-does-moringa-powder-taste-like-honest-guide-2026": {
     title: "What Does Moringa Powder Taste Like? Honest Mix Guide",
-    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
+    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it — mix it and the flavour mostly disappears.",
     h1: "What Does Moringa Powder Taste Like? Honest Mix Guide",
   },
   "how-to-add-moringa-to-diet": {
@@ -390,19 +390,13 @@ function journalProduct(article) {
 
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
-  if ([
-    "chemist-warehouse-greens-vs-moringa-powder-2026",
-    "moringa-patches-australia-review-do-they-work",
-    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "moringa-brands-comparison-australia-2026",
-    "rosabella-moringa-reviews-legit-or-overhyped-2026",
-  ].includes(article.slug)) return "Shop moringa powder";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";
   if (topic === "Darjeeling tea") return "Try Darjeeling tea";
   if (topic === "Soap & skin") return "See handmade soap";
-  if (/recipe|smoothie|diet|how-to-add/.test(article.slug)) return "Get moringa for this guide";
-  if (/comparison|brands|chemist|rosabella|patches/.test(article.slug)) return "Compare our moringa";
+  // Powder articles use one stable, purchase-clear CTA. Several manual SEO/CRO
+  // fixes were previously lost because rebuilds regenerated weaker labels.
+  if (product?.id === "moringa-powder") return "Shop moringa powder";
   return "Shop moringa powder";
 }
 
