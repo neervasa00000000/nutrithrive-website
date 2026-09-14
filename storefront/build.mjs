@@ -16,8 +16,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20260913-4";
-const CSS_ASSET_VERSION = "20260913-4";
+const ASSET_VERSION = "20260915-1";
+const CSS_ASSET_VERSION = "20260915-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
@@ -38,11 +38,10 @@ const RETENTION_SRC = LIVE_MODE ? "/assets/js/storefront/retention.js" : "/js/re
 const RETENTION_PAGES_SRC = LIVE_MODE ? "/assets/js/storefront/retention-pages.js" : "/js/retention-pages.js";
 
 function retentionFoot(extra = "") {
-  // Shipping rates only for now — retention scripts ship in a separate approved batch.
   const rates = LIVE_MODE
     ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>`
     : "";
-  return `${rates}${extra}`;
+  return `${rates}<script src="${RETENTION_SRC}?v=${ASSET_VERSION}" defer></script>${extra}`;
 }
 
 const CONTRACT = `<!--
@@ -3319,6 +3318,10 @@ function appendLiveRedirects() {
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
+/order-help /pages/shop/order-help.html 200
+/order-help/ /pages/shop/order-help.html 200
+/reorder /pages/shop/reorder.html 200
+/reorder/ /pages/shop/reorder.html 200
 /privacy /pages/legal/privacy-policy.html 200
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
@@ -3459,6 +3462,8 @@ function main() {
     emit("cart/index.html", cartPage(), "pages/shop/cart.html");
     emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
     emit("thank-you/index.html", thankYouPage(), "pages/shop/thank-you.html");
+    emit("order-help/index.html", orderHelpPage(), "pages/shop/order-help.html");
+    emit("reorder/index.html", reorderPage(), "pages/shop/reorder.html");
     emit("404.html", notFoundPage());
     emitCityLandings();
     emit("newsletter/index.html", newsletterPage(), "pages/newsletter/index.html");

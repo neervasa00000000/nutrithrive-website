@@ -862,6 +862,10 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/category/soap-skin/ /blog/category/soap-skin/index.html 200
 /shipping /pages/shipping/shipping-returns.html 200
 /shipping/ /pages/shipping/shipping-returns.html 200
+/order-help /pages/shop/order-help.html 200
+/order-help/ /pages/shop/order-help.html 200
+/reorder /pages/shop/reorder.html 200
+/reorder/ /pages/shop/reorder.html 200
 /privacy /pages/legal/privacy-policy.html 200
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
