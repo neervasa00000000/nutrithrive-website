@@ -56,7 +56,7 @@ const approvedSeoChanges = {
   },
   "blog/what-does-moringa-powder-taste-like-honest-guide-2026.html": {
     title: "What Does Moringa Powder Taste Like? Honest Mix Guide",
-    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
+    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it — mix it and the flavour mostly disappears.",
   },
   "blog/natural-pre-workout-moringa-australia-2026.html": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
@@ -305,10 +305,16 @@ for (const rel of generatedHtml) {
   if (/(?:free (?:AU |Australian )?shipping)[^<\n]{0,45}(?:\$|AUD\s*)80|(?:under|clear(?:s|ing)?)\s+(?:AU)?\$80/i.test(html)) {
     errors.push(`${rel}: stale $80 free-shipping threshold`);
   }
+  if (/\$49\.50|\b49\.5\b/.test(html)) {
+    errors.push(`${rel}: stale $49.50 free-shipping threshold`);
+  }
   if (/^blog\/[^/]+\.html$/.test(rel) && rel !== "blog/index.html" && /content="index,\s*follow"/i.test(html)) {
     if (!html.includes("article-quick-product")) errors.push(`${rel}: missing early article-to-product path`);
     if (!html.includes("article-conversion")) errors.push(`${rel}: missing article product conversion section`);
     if (!html.includes("article-related")) errors.push(`${rel}: missing related article navigation`);
+    if (/Compare our moringa|Get moringa for this guide/.test(html)) {
+      errors.push(`${rel}: weak moringa CTA label returned`);
+    }
   }
 }
 
@@ -336,7 +342,7 @@ const startHere = [
   ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$79"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
   ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$79"],
-  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 vs Moringa Powder: Is Moringa an Alternative?", "$79"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: AG1 vs Moringa Compared", "$79"],
 ];
 for (const [rel, expected, postage] of startHere) {
   const html = read(rel);
@@ -344,6 +350,15 @@ for (const [rel, expected, postage] of startHere) {
   const h1 = html.match(/<h1[^>]*>([^<]*)<\/h1>/i)?.[1]?.replaceAll("&amp;", "&");
   if (h1 !== expected) errors.push(`${rel}: H1 is "${h1}"`);
   if (postage && !html.includes(postage)) errors.push(`${rel}: missing ${postage}`);
+}
+
+const restoredArticleMarkers = [
+  ["blog/grow-moringa-tree-australia.html", "Germination Requirements"],
+  ["blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html", "What our live pack and product page say"],
+  ["blog/moringa-wellness-shot-recipe-winter-2026.html", "The Recipe: Moringa Winter Wellness Shot"],
+];
+for (const [rel, marker] of restoredArticleMarkers) {
+  mustInclude(rel, marker, "restored full article body");
 }
 const teaHtml = read("products/black-tea/index.html");
 if (teaHtml && !teaHtml.includes("<title>Darjeeling Black Tea Australia — First Flush | $7.50 | NutriThrive</title>")) {
