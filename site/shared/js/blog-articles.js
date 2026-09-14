@@ -1,4 +1,4 @@
-/** Auto-generated — 123 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 126 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -18,7 +18,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
-    "title": "AG1 vs Moringa Powder: Is Moringa an Alternative?",
+    "title": "AG1 Alternative Australia: AG1 vs Moringa Compared",
     "description": "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
     "category": "Wellness",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026",
@@ -439,6 +439,13 @@ window.NT_BLOG_ARTICLES = [
     "category": "Wellness",
     "href": "/blog/how-to-strengthen-immune-system-naturally-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "iron-deficiency-australian-women-abs-real-numbers-2026",
+    "title": "This guide has moved",
+    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
+    "category": "Wellness",
+    "href": "/blog/iron-deficiency-australian-women-abs-real-numbers-2026"
   },
   {
     "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
@@ -921,6 +928,13 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "stress-weight-gain-cortisol-mechanism-what-to-do-2026",
+    "title": "This guide has moved",
+    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
+    "category": "Wellness",
+    "href": "/blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026"
+  },
+  {
     "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "title": "Ultra-Processed Food in Australia. What It Actually Is and How Much You&#39;re Eating",
     "description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows, without the lecture.",
@@ -945,6 +959,13 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/vitamin-d-deficiency-australia-abs-1200.jpg"
   },
   {
+    "slug": "vitamin-d-deficiency-australia-sunny-country-paradox-2026",
+    "title": "This guide has moved",
+    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
+    "category": "Wellness",
+    "href": "/blog/vitamin-d-deficiency-australia-sunny-country-paradox-2026"
+  },
+  {
     "slug": "what-does-aust-l-mean-supplement-label-australia-2026",
     "title": "What Does AUST L Mean on Supplements? TGA Guide Australia",
     "description": "AUST L vs AUST R, what&#39;s the real difference, and what it means for the supplements you buy. Straight from the TGA. Read the practical NutriThrive guide.",
@@ -955,7 +976,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
     "title": "What Does Moringa Powder Taste Like? Honest Mix Guide",
-    "description": "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it. Mix it and the flavour mostly disappears.",
+    "description": "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it — mix it and the flavour mostly disappears.",
     "category": "Wellness",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
