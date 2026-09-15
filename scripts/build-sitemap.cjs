@@ -50,6 +50,9 @@ const PATH_BLOCKLIST = new Set([
 ]);
 
 const REDIRECT_SOURCE_BLOCKLIST = new Set([
+  'blog/fathers-day-gift-under-40.html',
+  'blog/iron-deficiency-australian-women-abs-real-numbers-2026.html',
+  'blog/vitamin-d-deficiency-australia-sunny-country-paradox-2026.html',
   'blog/best-superfoods-australia-comparison-health-conscious-adults.html',
   'blog/where-to-buy-moringa-in-australia-online-vs-stores-2026-guide.html',
   'blog/moringa-brands-reviewed-australia-2025-verdict.html',

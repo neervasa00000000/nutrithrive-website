@@ -4314,8 +4314,16 @@ select {
 
   .related-products .product-card { scroll-snap-align: start; }
 
-  .pdp-gallery { border-radius: 18px; box-shadow: none; }
-  .pdp-gallery img { max-height: 190px; }
+  .pdp-gallery {
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    box-shadow: none;
+  }
+  .pdp-gallery img {
+    height: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
   .pdp-buy { padding-top: 0; }
 
   .pdp-buy h1 {

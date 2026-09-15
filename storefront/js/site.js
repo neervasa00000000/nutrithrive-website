@@ -613,7 +613,8 @@ function bindPdpVariant() {
   const select = document.getElementById("variant");
   if (!select) return;
   const requested = new URLSearchParams(location.search).get("v");
-  if (requested && [...select.options].some((opt) => opt.value === requested)) {
+  const hasRequestedVariant = requested && [...select.options].some((opt) => opt.value === requested);
+  if (hasRequestedVariant) {
     select.value = requested;
   }
   select.addEventListener("change", () => {
@@ -627,7 +628,10 @@ function bindPdpVariant() {
       }
     }
   });
-  applyPdpVariant(select.value, false);
+  // The server-rendered default is already complete. Rewriting the same hero
+  // image during startup creates a second LCP candidate on mobile, delaying
+  // the product image even though the asset has already downloaded.
+  if (hasRequestedVariant) applyPdpVariant(select.value, false);
 }
 
 const OFFER_KEY = "nt-storefront-welcome-offer";

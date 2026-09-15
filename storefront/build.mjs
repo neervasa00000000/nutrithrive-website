@@ -234,6 +234,12 @@ const JOURNAL_REDIRECTS = {
   "moringa-soap-benefits-for-skin-2026": "moringa-soap-benefits-skin-guide",
 };
 
+// Retired seasonal articles that now lead directly to a product rather than
+// another article. Keep them out of blog feeds, search and ItemList schema.
+const JOURNAL_EXTERNAL_REDIRECTS = {
+  "fathers-day-gift-under-40": "/products/gift-pack/",
+};
+
 const CURATED_RELATED = {
   "moringa-patches-australia-review-do-they-work": [
     "moringa-and-berberine-australia-what-science-says-2026",
@@ -2787,7 +2793,7 @@ function journalIndex(articles, opts = {}) {
   const ordered = [
     ...JOURNAL_PRIORITY.map((slug) => bySlug.get(slug)).filter(Boolean),
     ...articles.filter((article) => !JOURNAL_PRIORITY.includes(article.slug)),
-  ].filter((article) => !JOURNAL_REDIRECTS[article.slug]);
+  ].filter((article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug]);
   const featured = topicFilter ? null : ordered[0];
   const visible = topicFilter
     ? ordered.filter((article) => journalTopic(article) === topicFilter.name)
@@ -2797,7 +2803,9 @@ function journalIndex(articles, opts = {}) {
   const liveSeo = opts.seoFile ? extractSeo(opts.seoFile) : null;
   const r = routes();
   const canonicalPath = opts.canonicalPath || (LIVE_MODE ? "/blog/" : "/journal");
-  const listArticles = topicFilter ? visible : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug]);
+  const listArticles = topicFilter
+    ? visible
+    : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug]);
   const articleCard = (article, extra = false) => `<a class="article-card" href="${r.article(article.slug)}" data-journal-card data-journal-topic="${esc(journalTopic(article))}"${extra ? " data-journal-extra hidden" : ""} data-search-text="${esc(`${stripTags(article.title)} ${stripTags(article.description)} ${article.category} ${journalTopic(article)} ${article.slug}`.toLowerCase())}">
     <div class="article-card-media"><img src="${article.image}" alt="${esc(humanCopy(stripTags(article.title)))}" width="800" height="450" loading="lazy"></div>
     <div class="cat">${esc(journalTopic(article))}</div>
@@ -2918,6 +2926,11 @@ function rewriteLinks(html) {
     };
     for (const [fromSlug, toSlug] of Object.entries(replacements)) {
       out = out.replaceAll(`/blog/${fromSlug}`, `/blog/${toSlug}`);
+    }
+    for (const [fromSlug, destination] of Object.entries(JOURNAL_EXTERNAL_REDIRECTS)) {
+      out = out
+        .replaceAll(`/blog/${fromSlug}.html`, destination)
+        .replaceAll(`/blog/${fromSlug}`, destination);
     }
   } else {
     out = out
@@ -3213,6 +3226,11 @@ function redirectPage(fromSlug, toSlug, seo = {}) {
   return `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="noindex,follow"><link rel="canonical" href="${esc(canonical)}"><link rel="icon" href="/assets/images/logo/favicon.ico" sizes="any"><meta http-equiv="refresh" content="0;url=${destination}"></head><body><main><h1>This guide has moved</h1><p>We combined overlapping information into one clearer guide.</p><p><a href="${destination}">Read the updated guide</a></p></main></body></html>`;
 }
 
+function externalRedirectPage(destination) {
+  const canonical = `${LIVE}${destination}`;
+  return `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page moved | NutriThrive</title><meta name="description" content="This seasonal page now leads to the current NutriThrive product."><meta name="robots" content="noindex,follow"><link rel="canonical" href="${canonical}"><link rel="icon" href="/assets/images/logo/favicon.ico" sizes="any"><meta http-equiv="refresh" content="0;url=${destination}"></head><body><main><h1>This page has moved</h1><p><a href="${destination}">View the current product</a></p></main></body></html>`;
+}
+
 function stripTags(s) {
   return String(s).replace(/<[^>]+>/g, "").replaceAll("&amp;", "&");
 }
@@ -3397,7 +3415,9 @@ function main() {
 
   const r = routes();
   const articles = loadArticles().map((article) => ({ ...article, image: articleImage(article) }));
-  const activeArticles = articles.filter((article) => !JOURNAL_REDIRECTS[article.slug]);
+  const activeArticles = articles.filter(
+    (article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug]
+  );
   const search = [
     ...PRODUCTS.map((p) => ({
       title: `${p.name} ${p.variant}`,
@@ -3507,6 +3527,11 @@ function main() {
         // Redirect stubs are deliberately noindex. Keep their generic metadata
         // stable instead of inheriting SEO copy from the retired article.
         emit(`blog/${slug}.html`, redirectPage(slug, JOURNAL_REDIRECTS[slug]), `blog/${slug}.html`);
+        wrapped += 1;
+        continue;
+      }
+      if (JOURNAL_EXTERNAL_REDIRECTS[slug]) {
+        emit(`blog/${slug}.html`, externalRedirectPage(JOURNAL_EXTERNAL_REDIRECTS[slug]), `blog/${slug}.html`);
         wrapped += 1;
         continue;
       }
