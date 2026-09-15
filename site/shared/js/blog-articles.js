@@ -1,4 +1,4 @@
-/** Auto-generated — 126 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 125 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -247,14 +247,6 @@ window.NT_BLOG_ARTICLES = [
     "category": "Wellness",
     "href": "/blog/dried-curry-leaves-australia-guide",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
-  },
-  {
-    "slug": "fathers-day-gift-under-40",
-    "title": "Last-Minute Father&#39;s Day Gift Pack $35 From Melbourne",
-    "description": "Last-minute Father&#39;s Day gift under $40 from Melbourne: $35 gift pack with honest shipping maths and same-day weekday dispatch from Truganina.",
-    "category": "Wellness",
-    "href": "/blog/fathers-day-gift-under-40",
-    "image": "/assets/images/homepage/product-showcase/gift.webp"
   },
   {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
