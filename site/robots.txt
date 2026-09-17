@@ -51,21 +51,28 @@ Allow: /
 # AI CRAWLERS & LLMs
 # ====================
 
-# OpenAI ChatGPT
+# OpenAI model-training crawler (effective access unchanged)
 User-agent: GPTBot
 Allow: /
 
-# OpenAI SearchGPT
+# OpenAI user-requested retrieval (robots rules may not apply to user actions)
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic Claude
-User-agent: Claude-Web
+# OpenAI ChatGPT Search discovery
+User-agent: OAI-SearchBot
 Allow: /
 
-# Anthropic (alternative)
-User-agent: anthropic-ai
+# Anthropic Claude search discovery
+User-agent: Claude-SearchBot
 Allow: /
+
+# Anthropic Claude user-requested retrieval
+User-agent: Claude-User
+Allow: /
+
+# ClaudeBot training access continues to follow the general rule above.
+# Changing training access requires a separate founder policy decision.
 
 # Google Gemini/Bard AI Training
 User-agent: Google-Extended
@@ -73,6 +80,10 @@ Allow: /
 
 # Perplexity AI
 User-agent: PerplexityBot
+Allow: /
+
+# Perplexity user-requested retrieval
+User-agent: Perplexity-User
 Allow: /
 
 # Common Crawl (used by many AI companies)

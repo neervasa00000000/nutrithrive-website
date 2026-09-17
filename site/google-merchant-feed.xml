@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+  <channel>
+    <title>NutriThrive products</title>
+    <link>https://nutrithrive.com.au/products/</link>
+    <description>NutriThrive product feed for Google Merchant Center</description>
+    <item>
+      <g:id>moringa-powder-100g</g:id>
+      <g:title>NutriThrive Moringa Powder 100g</g:title>
+      <g:description>Farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
+      <g:link>https://nutrithrive.com.au/products/moringa-powder/?v=moringa-powder</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/moringa-powder-100g-main.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>11.00 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:item_group_id>moringa-powder</g:item_group_id>
+      <g:size>100g</g:size>
+    </item>
+    <item>
+      <g:id>moringa-powder-200g</g:id>
+      <g:title>NutriThrive Moringa Powder 200g</g:title>
+      <g:description>Farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
+      <g:link>https://nutrithrive.com.au/products/moringa-powder/?v=moringa-200g</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/photos/compressed/moringa-powder-200g-main-square.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>21.50 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:item_group_id>moringa-powder</g:item_group_id>
+      <g:size>200g</g:size>
+    </item>
+    <item>
+      <g:id>moringa-powder-400g</g:id>
+      <g:title>NutriThrive Moringa Powder 400g Bundle</g:title>
+      <g:description>Four 100g pouches of farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
+      <g:link>https://nutrithrive.com.au/products/moringa-powder/?v=moringa-400g</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/moringa-powder-400g-bundle-main.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>35.00 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:item_group_id>moringa-powder</g:item_group_id>
+      <g:size>400g</g:size>
+      <g:multipack>4</g:multipack>
+    </item>
+    <item>
+      <g:id>dried-curry-leaves-30g</g:id>
+      <g:title>NutriThrive Dried Curry Leaves 30g</g:title>
+      <g:description>Whole dried curry leaves grown on our farm and packed in Truganina for curries, dal and tadka.</g:description>
+      <g:link>https://nutrithrive.com.au/products/curry-leaves/</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/dried-curry-leaves-30g-main.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>7.00 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>darjeeling-black-tea-100g</g:id>
+      <g:title>NutriThrive Darjeeling Black Tea 100g</g:title>
+      <g:description>Loose-leaf Darjeeling black tea sourced from a family farm and packed in Truganina.</g:description>
+      <g:link>https://nutrithrive.com.au/products/black-tea/</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/darjeeling-black-tea-100g-main.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>7.50 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>moringa-soap-95g</g:id>
+      <g:title>NutriThrive Moringa Soap 95g</g:title>
+      <g:description>Handmade moringa soap made in Australia and packed in Truganina.</g:description>
+      <g:link>https://nutrithrive.com.au/products/moringa-soap/</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/moringa-soap-95g-main.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>7.00 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>moringa-curry-combo-pack</g:id>
+      <g:title>NutriThrive Moringa and Curry Leaves Combo Pack</g:title>
+      <g:description>A 100g moringa powder pouch and a 30g dried curry leaves pack, packed together in Truganina.</g:description>
+      <g:link>https://nutrithrive.com.au/products/combo-pack/</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/moringa-curry-leaves-combo-main.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>17.00 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:is_bundle>yes</g:is_bundle>
+    </item>
+    <item>
+      <g:id>nutrithrive-gift-pack</g:id>
+      <g:title>NutriThrive Four Product Gift Pack</g:title>
+      <g:description>Moringa powder, Darjeeling tea, dried curry leaves and handmade moringa soap in one gift pack.</g:description>
+      <g:link>https://nutrithrive.com.au/products/gift-pack/</g:link>
+      <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>35.00 AUD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>NutriThrive</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:is_bundle>yes</g:is_bundle>
+    </item>
+  </channel>
+</rss>

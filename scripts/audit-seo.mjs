@@ -100,6 +100,16 @@ for (const url of urls) {
     }
   }
 
+  for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
+    const tag = match[0];
+    const src = decode(tag.match(/\bsrc=["']([^"']*)["']/i)?.[1] || "");
+    const alt = tag.match(/\balt=["']([^"']*)["']/i);
+    if (!alt) add(url, "missing-image-alt", src || "inline image");
+    if (!/\bwidth=["']\d+["']/i.test(tag) || !/\bheight=["']\d+["']/i.test(tag)) {
+      add(url, "missing-image-dimensions", src || "inline image");
+    }
+  }
+
   for (const match of html.matchAll(/<(?:img|source)\b[^>]*(?:src|srcset)=["']([^"']+)["']/gi)) {
     for (const asset of match[1].split(",").map((part) => part.trim().split(/\s+/)[0])) {
       if (!asset.startsWith("/") || asset.startsWith("//")) continue;

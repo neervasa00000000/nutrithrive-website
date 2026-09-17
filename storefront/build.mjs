@@ -1561,13 +1561,6 @@ function pdpPage(slug, d) {
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
     }));
-    productSchema.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "12",
-      bestRating: "5",
-      worstRating: "1",
-    };
   } else {
     productSchema.sku = p.sku;
     productSchema.offers = {
@@ -3036,8 +3029,15 @@ function articleDates(prose) {
     })
     .filter(Boolean)
     .sort((a, b) => a.value - b.value);
-  const published = records.find((record) => /\b(publish|published|created)\b/i.test(record.note))?.value || null;
-  const modified = records.at(-1)?.value || published;
+  const originalPublished = String(prose).match(/<time\b[^>]*datetime=["'](20\d{2}-\d{2}-\d{2})["'][^>]*>\s*Published\b/i)?.[1] || "";
+  const originalUpdated = String(prose).match(/\bUpdated\s+(\d{1,2})\s+([A-Z][a-z]{2})\s+(20\d{2})\b/i);
+  const published = records.find((record) => /\b(publish|published|created)\b/i.test(record.note))?.value
+    || (originalPublished ? new Date(`${originalPublished}T00:00:00Z`) : null);
+  const modified = records.at(-1)?.value
+    || (originalUpdated && ARTICLE_MONTHS[originalUpdated[2].toLowerCase()] !== undefined
+      ? new Date(Date.UTC(Number(originalUpdated[3]), ARTICLE_MONTHS[originalUpdated[2].toLowerCase()], Number(originalUpdated[1])))
+      : null)
+    || published;
   const iso = (date) => date.toISOString().slice(0, 10);
   const display = (date) => new Intl.DateTimeFormat("en-AU", {
     day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
