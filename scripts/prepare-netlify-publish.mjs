@@ -33,6 +33,16 @@ if (!fs.existsSync(SITE_ROOT)) {
 if (fs.existsSync(OUT)) fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 copyDir(SITE_ROOT, OUT);
+// IndexNow requires a public UTF-8 root file whose name and content match.
+// Publishing the key does not submit URLs; submissions remain a separate step.
+const indexNowKeyPath = path.join(REPO_ROOT, '.indexnow-key');
+if (fs.existsSync(indexNowKeyPath)) {
+  const key = fs.readFileSync(indexNowKeyPath, 'utf8').trim();
+  if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) {
+    throw new Error('Invalid IndexNow key; refusing to publish a malformed verification file.');
+  }
+  fs.writeFileSync(path.join(OUT, `${key}.txt`), key, 'utf8');
+}
 // A small number of preserved ranking pages still use the legacy shared
 // storefront scripts. They live outside site/ because they are also build
 // inputs, so explicitly publish the browser-ready global bundle they reference.

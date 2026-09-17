@@ -1,0 +1,13 @@
+PAGE,QUERY,EVIDENCE_NEEDED,WHY_COMPETITORS_CANNOT_COPY_IT,FOUNDER_ACTION,PHOTO_REQUIRED,VIDEO_REQUIRED,TEST_REQUIRED,DATE_REQUIRED,SAFE_TO_PUBLISH,EXPECTED_SEARCH_VALUE,EXPECTED_CONVERSION_VALUE
+Curry PDP,buy dried curry leaves Australia,Actual pouch front/back and leaves,Unique product and pack,Photograph current stock in neutral light,YES,NO,NO,YES,YES after factual review,HIGH,HIGH
+Fresh vs dried curry guide,fresh vs dried curry leaves,Controlled side-by-side tempering notes,First-party cooking result,Cook same recipe with weighed fresh/dried leaf and record method,YES,YES,YES,YES,YES with method and limitations,HIGH,MEDIUM
+Curry storage guide,how to store curry leaves,Real storage sequence over time,Owned time-series evidence,Record sealed/open storage conditions and dated observations,YES,NO,YES,YES,YES without unsupported shelf-life claims,MEDIUM,MEDIUM
+Curry recipes,curry leaf recipes,Complete tested recipes and quantities,Founder kitchen method,Cook; weigh; time; photograph each finished recipe,YES,YES,YES,YES,YES,MEDIUM,MEDIUM
+Curry broad guide,dried curry leaves Australia,Farm harvest/drying/packing evidence,Unique supply chain,Capture real farm through packing workflow,YES,YES,NO,YES,YES if documentary,HIGH,HIGH
+Darjeeling PDP,buy Darjeeling tea Australia,Actual pouch; dry leaf; brewed liquor,Unique stocked product,Photograph current pack and brew consistently,YES,YES,YES,YES,YES,HIGH,HIGH
+Darjeeling source guide,Darjeeling tea Australia,Supplier/farm provenance records,Supplier relationship evidence,Obtain permission and original records/photos,YES,NO,NO,YES,ONLY after source verification,HIGH,HIGH
+Darjeeling brew guide,how to brew Darjeeling tea,Measured temperature/time tasting test,First-party repeatable method,Test 3 temperatures and steep times with same tea mass,YES,YES,YES,YES,YES with method,MEDIUM,MEDIUM
+Soap PDP,moringa soap Australia,Actual bar and making/packing evidence,Unique handmade process,Photograph real process and verified ingredients,YES,YES,NO,YES,YES after ingredient check,MEDIUM,HIGH
+Moringa PDP,moringa powder Australia,Actual pouch front/back; powder texture; NMI report context,Unique product/testing evidence,Photograph current stock and explain current report scope,YES,YES,NO,YES,YES after compliance review,HIGH,HIGH
+All PDPs,NutriThrive reviews,Product-specific review permissions/source,Cannot be copied legitimately,Collect product-linked reviews with date and source consent,NO,NO,NO,YES,YES if authentic and attributable,MEDIUM,HIGH
+Entity pages,NutriThrive Truganina,Founder identity and verified business hours,Unique business facts,Confirm name/role/hours against GBP and operations,YES,NO,NO,YES,YES,MEDIUM,MEDIUM

@@ -17,8 +17,13 @@ function loadOptionalScript(src, id) {
 
 function loadGoogleAnalytics() {
   if (document.getElementById("nt-google-analytics")) return;
+  const debugMode = new URLSearchParams(window.location.search).get("debug_mode") === "1";
   window.gtag("js", new Date());
-  window.gtag("config", GOOGLE_MEASUREMENT_ID, { anonymize_ip: true, allow_google_signals: false });
+  window.gtag("config", GOOGLE_MEASUREMENT_ID, {
+    anonymize_ip: true,
+    allow_google_signals: false,
+    ...(debugMode ? { debug_mode: true } : {}),
+  });
   loadOptionalScript(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`, "nt-google-analytics");
   window.dispatchEvent(new CustomEvent("nt-analytics-ready"));
 }
@@ -790,16 +795,16 @@ function bindArticleReadingDepth() {
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
-    bindHeader();
     bindPdpVariant();
+    bindHeader();
     bindGrowthFeatures();
     bindJournalSearch();
     bindArticleReadingDepth();
     setTimeout(() => emitCartChange(), 0);
   });
 } else {
-  bindHeader();
   bindPdpVariant();
+  bindHeader();
   bindGrowthFeatures();
   bindJournalSearch();
   bindArticleReadingDepth();
