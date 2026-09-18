@@ -41,7 +41,16 @@ if (fs.existsSync(indexNowKeyPath)) {
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) {
     throw new Error('Invalid IndexNow key; refusing to publish a malformed verification file.');
   }
+  // Option 1 (recommended by IndexNow): https://<host>/<key>.txt
   fs.writeFileSync(path.join(OUT, `${key}.txt`), key, 'utf8');
+
+  // Option 2 (also valid): https://<host>/.well-known/indexnow-key.txt (body is the key only)
+  const wellKnownDir = path.join(OUT, '.well-known');
+  fs.mkdirSync(wellKnownDir, { recursive: true });
+  fs.writeFileSync(path.join(wellKnownDir, 'indexnow-key.txt'), key, 'utf8');
+
+  // Convenience URL: https://<host>/indexnow-key.txt (some tooling checks this)
+  fs.writeFileSync(path.join(OUT, 'indexnow-key.txt'), key, 'utf8');
 }
 // A small number of preserved ranking pages still use the legacy shared
 // storefront scripts. They live outside site/ because they are also build
