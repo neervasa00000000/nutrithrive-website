@@ -36,8 +36,18 @@ copyDir(SITE_ROOT, OUT);
 // IndexNow requires a public UTF-8 root file whose name and content match.
 // Publishing the key does not submit URLs; submissions remain a separate step.
 const indexNowKeyPath = path.join(REPO_ROOT, '.indexnow-key');
-if (fs.existsSync(indexNowKeyPath)) {
-  const key = fs.readFileSync(indexNowKeyPath, 'utf8').trim();
+{
+  // Prefer a local file for developer convenience; fall back to env var for CI/Netlify builds
+  // because `.indexnow-key` is intentionally gitignored.
+  const key =
+    (fs.existsSync(indexNowKeyPath) ? fs.readFileSync(indexNowKeyPath, 'utf8') : '').trim() ||
+    (process.env.INDEXNOW_KEY || '').trim();
+
+  if (!key) {
+    console.warn(
+      'IndexNow key not found (missing .indexnow-key and INDEXNOW_KEY env var). Skipping publishing IndexNow verification files.',
+    );
+  } else {
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) {
     throw new Error('Invalid IndexNow key; refusing to publish a malformed verification file.');
   }
@@ -51,6 +61,7 @@ if (fs.existsSync(indexNowKeyPath)) {
 
   // Convenience URL: https://<host>/indexnow-key.txt (some tooling checks this)
   fs.writeFileSync(path.join(OUT, 'indexnow-key.txt'), key, 'utf8');
+  }
 }
 // A small number of preserved ranking pages still use the legacy shared
 // storefront scripts. They live outside site/ because they are also build
