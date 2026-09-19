@@ -184,9 +184,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
   },
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
-    title: "Chemist Warehouse Moringa vs NutriThrive Powder",
-    description: "Searching Chemist Warehouse for moringa? CW lists capsules; NutriThrive packs shade-dried leaf powder from $11/100g with NMI PDF. Compare quality & AU value.",
-    h1: "Chemist Warehouse Moringa vs NutriThrive Powder",
+    title: "Chemist Warehouse Moringa Capsules & Tablets vs NutriThrive Powder",
+    description: "Chemist Warehouse moringa capsules and tablets vs NutriThrive powder — dose maths, quality signals, and when Truganina leaf powder wins in Australia.",
+    h1: "Chemist Warehouse Moringa Capsules & Tablets vs NutriThrive Powder",
   },
   "moringa-brands-comparison-australia-2026": {
     title: "Best Moringa Brands Australia 2026 Compared",
@@ -1639,7 +1639,7 @@ function pdpPage(slug, d) {
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
             <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
-            ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $79. 100g/200g pay postage — 400g is best value at $35 ($8.75/100g).</p>` : ""}
+            ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $79. Every size alone still pays postage — 400g is best value at $35 ($8.75/100g). Clear path: two 400g + 100g = $81 (or two 400g + curry $7 + tea $7.50 = $84.50).</p>` : ""}
             ${shippingPurchaseNote ? `<p class="purchase-note">${esc(shippingPurchaseNote)}</p>` : ""}
             <p class="purchase-note">${esc(purchaseNote)}</p>
           </div>

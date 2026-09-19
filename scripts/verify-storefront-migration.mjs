@@ -144,8 +144,8 @@ const approvedSeoChanges = {
     description: "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
   },
   "blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html": {
-    title: "Chemist Warehouse Moringa vs NutriThrive Powder",
-    description: "Searching Chemist Warehouse for moringa? CW lists capsules; NutriThrive packs shade-dried leaf powder from $11/100g with NMI PDF. Compare quality &amp; AU value.",
+    title: "Chemist Warehouse Moringa Capsules &amp; Tablets vs NutriThrive Powder",
+    description: "Chemist Warehouse moringa capsules and tablets vs NutriThrive powder — dose maths, quality signals, and when Truganina leaf powder wins in Australia.",
   },
   "blog/afl-finals-snacks-curry-leaf-tadka.html": {
     description: "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday.",
