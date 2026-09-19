@@ -298,6 +298,7 @@
 
 # Pretty blog URL → canonical .html (live post; do not 404)
 /blog/musashi-protein-powder-australia-comprehensive-guide-2026 /blog/musashi-protein-powder-australia-comprehensive-guide-2026.html 200
+/blog/fresh-vs-dried-curry-leaves-substitute-guide /blog/fresh-vs-dried-curry-leaves-substitute-guide.html 200
 
 # Removed off-topic posts (explicit 404 for legacy / pretty URLs)
 /blog/moringa-breastfeeding-mums-natural-lactation-support /404.html 410
