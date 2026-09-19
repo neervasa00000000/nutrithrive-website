@@ -3,8 +3,20 @@ import fs from "node:fs";
 import path from "node:path";
 import { REPO_ROOT } from "./lib/paths.mjs";
 
-const key = fs.readFileSync(path.join(REPO_ROOT, ".indexnow-key"), "utf8").trim();
+const publicKeyFile = "71b34d12-30bc-4b7f-9604-9d5541c6ad39.txt";
+const keyCandidates = [
+  fs.readFileSync(path.join(REPO_ROOT, "site", publicKeyFile), "utf8"),
+  process.env.INDEXNOW_KEY || "",
+  fs.existsSync(path.join(REPO_ROOT, ".indexnow-key"))
+    ? fs.readFileSync(path.join(REPO_ROOT, ".indexnow-key"), "utf8")
+    : "",
+].map((value) => value.trim());
+
+const key = keyCandidates.find(Boolean);
 if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) throw new Error("Invalid IndexNow key.");
+if (key !== publicKeyFile.replace(/\.txt$/, "")) {
+  throw new Error("IndexNow key does not match the public verification filename.");
+}
 
 const host = "nutrithrive.com.au";
 const urlList = [
@@ -15,7 +27,7 @@ const urlList = [
 const body = {
   host,
   key,
-  keyLocation: `https://${host}/${key}.txt`,
+  keyLocation: `https://${host}/${publicKeyFile}`,
   urlList,
 };
 

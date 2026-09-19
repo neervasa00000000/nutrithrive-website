@@ -1268,7 +1268,15 @@ const PDP = {
     faqs: [
       [
         "Where can I buy moringa powder in Australia?",
-        "NutriThrive moringa powder can be ordered directly through our Australian online store. It is grown on our farm, Australian lab tested and packed in Truganina, Victoria, with delivery available across Australia.",
+        "You can buy NutriThrive moringa powder directly from our Australian online store. It is grown on our farm, shade-dried, NMI lab-tested in Australia, and packed in Truganina, Victoria. Sizes start at $11 for 100g, with delivery across Australia and free AU shipping from $79.",
+      ],
+      [
+        "Can I buy NutriThrive moringa powder online?",
+        "Yes. Order online from this product page for Australia-wide delivery. The current powder sizes are 100g for $11, 200g for $21.50 and 400g for $35.",
+      ],
+      [
+        "Where is NutriThrive moringa powder shipped from?",
+        "Orders are packed and shipped from Truganina, Melbourne. Local pickup can be arranged from Truganina, and online orders ship across Australia.",
       ],
       [
         "What is in NutriThrive moringa powder?",
@@ -1683,7 +1691,7 @@ function pdpPage(slug, d) {
               </ul>
             </div></details>
           </div>
-          <section class="pdp-faq">
+          <section class="pdp-faq" id="${slug === "moringa-powder" ? "moringa-powder-faq" : `${slug}-faq`}">
             <h2>${esc(faqHeading)}</h2>
             <div class="faq-list">
               ${faqDetails(d.faqs)}
