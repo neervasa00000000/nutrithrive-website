@@ -297,12 +297,11 @@
 # Pretty blog URLs (extensionless) → canonical .html
 
 # Pretty blog URL → canonical .html (live post; do not 404)
+/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /blog/musashi-protein-powder-australia-comprehensive-guide-2026.html 200
 
 # Removed off-topic posts (explicit 404 for legacy / pretty URLs)
 /blog/moringa-breastfeeding-mums-natural-lactation-support /404.html 410
 /blog/moringa-breastfeeding-mums-natural-lactation-support.html /404.html 410
-/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /404.html 410
-/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html /404.html 410
 /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide /404.html 410
 /blog/best-gyms-melbourne-cbd-2026-complete-comparison-guide.html /404.html 410
 /blog/best-clean-protein-powders-moringa-products-australia-2026 /404.html 410
