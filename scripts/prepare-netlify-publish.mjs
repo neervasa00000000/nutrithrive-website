@@ -36,12 +36,15 @@ copyDir(SITE_ROOT, OUT);
 // IndexNow requires a public UTF-8 root file whose name and content match.
 // Publishing the key does not submit URLs; submissions remain a separate step.
 const indexNowKeyPath = path.join(REPO_ROOT, '.indexnow-key');
+const publicIndexNowKeyFile = '71b34d12-30bc-4b7f-9604-9d5541c6ad39.txt';
+const publicIndexNowKeyPath = path.join(SITE_ROOT, publicIndexNowKeyFile);
 {
-  // Prefer a local file for developer convenience; fall back to env var for CI/Netlify builds
-  // because `.indexnow-key` is intentionally gitignored.
+  // The committed public key is the source of truth for the published keyLocation.
+  // Env/local fallbacks remain only for emergency private builds without that file.
   const key =
-    (fs.existsSync(indexNowKeyPath) ? fs.readFileSync(indexNowKeyPath, 'utf8') : '').trim() ||
-    (process.env.INDEXNOW_KEY || '').trim();
+    (fs.existsSync(publicIndexNowKeyPath) ? fs.readFileSync(publicIndexNowKeyPath, 'utf8') : '').trim() ||
+    (process.env.INDEXNOW_KEY || '').trim() ||
+    (fs.existsSync(indexNowKeyPath) ? fs.readFileSync(indexNowKeyPath, 'utf8') : '').trim();
 
   if (!key) {
     console.warn(
@@ -50,6 +53,9 @@ const indexNowKeyPath = path.join(REPO_ROOT, '.indexnow-key');
   } else {
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) {
     throw new Error('Invalid IndexNow key; refusing to publish a malformed verification file.');
+  }
+  if (key !== publicIndexNowKeyFile.replace(/\.txt$/, '')) {
+    throw new Error('IndexNow key does not match the public verification filename.');
   }
   // Option 1 (recommended by IndexNow): https://<host>/<key>.txt
   fs.writeFileSync(path.join(OUT, `${key}.txt`), key, 'utf8');
