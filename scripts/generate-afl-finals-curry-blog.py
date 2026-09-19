@@ -80,13 +80,13 @@ FAQS = [
 ]
 
 BODY_MD = r"""
-I'm Neer. I pack NutriThrive orders at 15 Europe Street, Truganina VIC 3029. Wildcard weekend is finished. [AFL.com.au](https://www.afl.com.au/news/1597385/finals-fixture-ticket-details-schedule-confirmed-for-week-two-of-the-2026-finals-series) has Week 2 locked: it starts **Thursday 3 September 2026**. I fry dried kari leaf in ghee and pour it over nuts or popcorn. The bag I sell is **30 g**, SKU **NT-CL-30G**, **$7**. Posted it is **$7 + $9.69** unless you pick up or the cart clears **$79**.
+I'm Neer. I pack NutriThrive orders at 15 Europe Street, Truganina VIC 3029. Wildcard weekend is finished. AFL.com.au has Week 2 locked: it starts **Thursday 3 September 2026**. I fry dried kari leaf in ghee and pour it over nuts or popcorn. The bag I sell is **30 g**, SKU **NT-CL-30G**, **$7**. Posted it is **$7 + $9.69** unless you pick up or the cart clears **$79**.
 
 ## Week 2 is Thursday. The calendar does not care about your oven
 
 Today is Sunday 30 August. The first bag I can hand to Australia Post is **Monday 31 August**, and only if the order is in before 2pm. I do not dispatch on Sunday. Australia Post does not run a standard parcel on Sunday either. That is the same rule I used on the [Father's Day gift cutoff](/blog/fathers-day-gift-under-40). Different product. Same warehouse clock.
 
-[AFL.com.au's Week 2 fixture](https://www.afl.com.au/news/1597385/finals-fixture-ticket-details-schedule-confirmed-for-week-two-of-the-2026-finals-series) (confirmed after the second wildcard on Saturday night) is:
+AFL.com.au's Week 2 fixture (confirmed after the second wildcard on Saturday night) is:
 
 | Night | Match | Venue | Start |
 | --- | --- | --- | --- |
