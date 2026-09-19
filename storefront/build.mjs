@@ -86,7 +86,7 @@ function navItems() {
   const r = routes();
   return [
     { href: r.shop, label: "Shop" },
-    { href: "/products/moringa-powder/", label: "Moringa" },
+    { href: "/products/moringa-powder/", label: "Moringa powder" },
     { href: "/products/black-tea/", label: "Tea" },
     { href: "/products/curry-leaves/", label: "Curry Leaves" },
     { href: r.about, label: "About" },
@@ -1075,7 +1075,7 @@ function homepage() {
       <h1>Pure moringa. Nothing unnecessary.</h1>
       <p class="lede">Farm-grown, shade-dried and manufactured by us, with Australian testing information published when available. Packed in Truganina.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
+        <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
         <a class="btn btn-secondary" href="/products/gift-pack/">Shop Gift Pack $35</a>
         <a class="btn btn-secondary" href="/documents/nutrithrive-lab-report-summary.pdf">See our lab report</a>
       </div>
@@ -1173,7 +1173,7 @@ ${googleReviewsSection()}
   <div class="wrap">
     <h2>Start with the 100g pouch</h2>
     <p>Lab-tested, shade-dried, packed in Truganina. $11.</p>
-    <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa</a>
+    <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
   </div>
 </section>`,
   });
@@ -2232,7 +2232,7 @@ function cartPage() {
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
-          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79.</p><a class="btn btn-primary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa</a><p>Pay with PayPal or card at checkout.</p></div></div>
+          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79.</p><a class="btn btn-primary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div></div>
           <div id="cart-buy-again"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
