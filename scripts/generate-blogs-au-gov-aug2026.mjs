@@ -212,9 +212,9 @@ const POSTS = [
       {
         h2: 'What the latest ABS data shows',
         body: [
-          'Australia markets itself as the sunburnt country, yet vitamin D deficiency remains common. The <a href="https://www.abs.gov.au/statistics/health/health-conditions-and-risks/national-health-measures-survey/latest-release" target="_blank" rel="noopener noreferrer">ABS National Health Measures Survey latest release</a> reports biomedical results from the 2022 to 2024 cycle.',
+          'Australia markets itself as the sunburnt country, yet vitamin D deficiency remains common. The ABS National Health Measures Survey latest release reports biomedical results from the 2022 to 2024 cycle.',
           'In that cycle, 20.6% of adults were vitamin D deficient. That is an improvement from 23.8% in the 2011 to 2012 survey, but it still means roughly one in five adults do not have adequate serum 25-hydroxyvitamin D.',
-          'Detailed nutrient tables on the ABS <a href="https://www.abs.gov.au/statistics/health/health-conditions-and-risks/national-health-measures-survey/2022-2024-financial-year/biomedical-nutrients" target="_blank" rel="noopener noreferrer">biomedical nutrients page</a> break results down by age, sex, and state. The sunny country paradox is real in the data, not just wellness marketing.',
+          'Detailed nutrient tables on the ABS biomedical nutrients page break results down by age, sex, and state. The sunny country paradox is real in the data, not just wellness marketing.',
         ],
       },
       {
