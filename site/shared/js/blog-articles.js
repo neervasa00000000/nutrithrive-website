@@ -1,4 +1,4 @@
-/** Auto-generated — 125 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 127 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -262,6 +262,14 @@ window.NT_BLOG_ARTICLES = [
     "description": "Fresh vs dried curry leaves compared for flavour, tempering, storage and swap ratios, with practical advice for Australian home cooks.",
     "category": "Wellness",
     "href": "/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026",
+    "image": "/assets/images/homepage/product-showcase/Curry.webp"
+  },
+  {
+    "slug": "fresh-vs-dried-curry-leaves-substitute-guide",
+    "title": "Can You Use Dried Curry Leaves Instead of Fresh?",
+    "description": "Out of fresh curry leaves in Australia? Use this fresh-to-dried conversion chart and tadka method, plus shade-dried curry leaves shipped from Melbourne.",
+    "category": "Wellness",
+    "href": "/blog/fresh-vs-dried-curry-leaves-substitute-guide",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
   },
   {
@@ -553,8 +561,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Chemist Warehouse Moringa vs NutriThrive Powder",
-    "description": "Searching Chemist Warehouse for moringa? CW lists capsules; NutriThrive packs shade-dried leaf powder from $11/100g with NMI PDF. Compare quality &amp; AU value.",
+    "title": "Chemist Warehouse Moringa Capsules &amp; Tablets vs NutriThrive Powder",
+    "description": "Chemist Warehouse moringa capsules and tablets vs NutriThrive powder — dose maths, quality signals, and when Truganina leaf powder wins in Australia.",
     "category": "Wellness",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -838,6 +846,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Wellness",
     "href": "/blog/morning-routine-health-tips-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "musashi-protein-powder-australia-comprehensive-guide-2026",
+    "title": "Protein Powder vs Moringa: What Each One Actually Does",
+    "description": "Which protein powder is actually worth it in Australia? We compare whey vs plant vs moringa for purity, value &amp; results. Updated May 2026 with lab data.",
+    "category": "Wellness",
+    "href": "/blog/musashi-protein-powder-australia-comprehensive-guide-2026",
+    "image": "/assets/images/og/moringa-social-1200.png"
   },
   {
     "slug": "natural-pre-workout-moringa-australia-2026",
