@@ -298,14 +298,11 @@
 /pages/benefits/moringa-benefits.html /blog/how-to-add-moringa-to-diet 301
 
 # Blog category hubs (breadcrumbs link here; serve index.html)
-/blog/category/guides /blog/category/guides/index.html 200
-/blog/category/guides/ /blog/category/guides/index.html 200
+# NOTE: /blog/category/guides/, /blog/category/pets/, /blog/category/recipes/ are now 301 redirects (see SEO Category Consolidation section above)
 /blog/category/tea /blog/category/tea/index.html 200
 /blog/category/tea/ /blog/category/tea/index.html 200
 /blog/category/health /blog/category/health/index.html 200
 /blog/category/health/ /blog/category/health/index.html 200
-/blog/category/pets /blog/category/pets/index.html 200
-/blog/category/pets/ /blog/category/pets/index.html 200
 
 # Pretty blog URLs (extensionless) → canonical .html
 
@@ -703,8 +700,7 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026.html /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026 301!
 /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026 /blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026.html 200
 
-/blog/category/recipes /blog/category/recipes/index.html 200
-/blog/category/recipes/ /blog/category/recipes/index.html 200
+# NOTE: /blog/category/recipes/ is now a 301 redirect to /blog/category/ways-to-use-it/ (see SEO Category Consolidation section above)
 # === recipe sales batch (Jul 2026) ===
 # Moringa Wellness Shot: The 2-Minute Winter Morning Ritual (recipe sales jul 2026)
 /blog/moringa-wellness-shot-recipe-winter-2026.html /blog/moringa-wellness-shot-recipe-winter-2026 301!
