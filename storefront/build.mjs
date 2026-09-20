@@ -1335,6 +1335,9 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive 30g dried curry leaves pouch with whole leaves"],
       ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves in a ceramic bowl"],
+      ["/assets/images/homepage/product-showcase/Curry.webp", "Dried curry leaves product showcase"],
+      ["/assets/images/product_photos/driedcurry.jpeg", "Close-up of shade-dried curry leaves"],
+      ["/assets/images/general/CURRY3.png", "Aromatic dried curry leaves ready for tempering"],
     ],
     detailImage: "/assets/images/product_webp/dried-curry-leaves-texture.webp",
     detailAlt: "Whole dried curry leaves in a ceramic bowl",
@@ -1367,6 +1370,9 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Amber Darjeeling black tea with loose leaves in a wooden spoon"],
+      ["/assets/images/homepage/product-showcase/BlackTea.webp", "Darjeeling black tea product showcase"],
+      ["/assets/images/product_photos/blacktea.jpeg", "Loose-leaf Darjeeling tea from family farm"],
+      ["/assets/images/products/BlackTea.webp", "NutriThrive Darjeeling black tea pouch"],
     ],
     detailImage: "/assets/images/product_webp/darjeeling-black-tea-brewed.webp",
     detailAlt: "Amber Darjeeling black tea with loose tea leaves in a wooden spoon",
@@ -1399,6 +1405,9 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
       ["/assets/images/product_webp/moringa-soap-texture.webp", "Handmade moringa soap on a stone dish with lavender and foam"],
+      ["/assets/images/homepage/product-showcase/moringa_soap.webp", "Moringa soap product showcase"],
+      ["/assets/images/product_photos/soap.jpeg", "Handmade moringa lavender soap bar"],
+      ["/assets/images/products/moringa_soap.webp", "NutriThrive moringa soap with natural ingredients"],
     ],
     detailImage: "/assets/images/product_webp/moringa-soap-texture.webp",
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
@@ -1430,6 +1439,10 @@ const PDP = {
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-curry-leaves-combo-main.webp", "NutriThrive 100g moringa powder and 30g dried curry leaves combo"],
+      ["/assets/images/homepage/product-showcase/combo.webp", "Moringa and curry leaves combo pack showcase"],
+      ["/assets/images/product_photos/combo.jpeg", "Combo pack with moringa powder and dried curry leaves"],
+      ["/assets/images/product_webp/moringa-powder-100g-main.webp", "100g moringa powder included in combo"],
+      ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "30g dried curry leaves included in combo"],
     ],
     ingredients: "100% moringa leaf powder and 100% dried curry leaves. Nothing added.",
     origin: "Both products are grown on our own farm in Gujarat and packed in Truganina.",
@@ -1457,6 +1470,11 @@ const PDP = {
     ],
     gallery: [
       ["/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "NutriThrive gift pack with moringa powder, curry leaves, Darjeeling tea and moringa soap"],
+      ["/assets/images/homepage/product-showcase/gift.webp", "Natural wellness gift pack showcase"],
+      ["/assets/images/product_webp/moringa-powder-100g-main.webp", "100g moringa powder included in gift pack"],
+      ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "100g Darjeeling tea included in gift pack"],
+      ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "30g dried curry leaves included in gift pack"],
+      ["/assets/images/product_webp/moringa-soap-95g-main.webp", "95g moringa soap included in gift pack"],
     ],
     ingredients: "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with soap base, moringa, lavender fragrance and lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
