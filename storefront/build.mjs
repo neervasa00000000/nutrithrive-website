@@ -276,6 +276,56 @@ const CURATED_RELATED = {
     "darjeeling-chai-latte-recipe-winter-coffee-alternative-2026",
     "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
   ],
+  "what-does-moringa-powder-taste-like-honest-guide-2026": [
+    "how-to-add-moringa-to-diet",
+    "moringa-smoothie-recipes-australia-2026",
+    "how-to-choose-moringa-powder-australia-2026",
+  ],
+  "moringa-capsules-vs-powder-which-is-better-2026": [
+    "how-to-choose-moringa-powder-australia-2026",
+    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "how-to-add-moringa-to-diet",
+  ],
+  "how-to-choose-moringa-powder-australia-2026": [
+    "verify-moringa-quality-premium-buyers-checklist-2026",
+    "science-shade-drying-vs-sun-drying-moringa",
+    "moringa-capsules-vs-powder-which-is-better-2026",
+  ],
+  "moringa-smoothie-recipes-australia-2026": [
+    "what-does-moringa-powder-taste-like-honest-guide-2026",
+    "how-to-add-moringa-to-diet",
+    "how-long-does-moringa-powder-last-storage-shelf-life-2026",
+  ],
+  "best-time-to-take-moringa-powder-morning-or-night-2026": [
+    "how-to-add-moringa-to-diet",
+    "what-does-moringa-powder-taste-like-honest-guide-2026",
+    "moringa-energy-what-happens-week-by-week-2026",
+  ],
+  "dried-curry-leaves-australia-guide": [
+    "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
+    "how-to-store-curry-leaves-fresh-dried-australia-2026",
+    "curry-leaves-in-australian-cooking-how-to-use-2026",
+  ],
+  "curry-leaves-in-australian-cooking-how-to-use-2026": [
+    "dried-curry-leaves-australia-guide",
+    "curry-leaves-dahl-recipe-30-minutes-australia-2026",
+    "curry-leaves-recipes-beyond-dal",
+  ],
+  "how-to-brew-darjeeling-tea-perfectly-2026": [
+    "darjeeling-black-tea-australia-guide",
+    "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
+    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+  ],
+  "darjeeling-black-tea-australia-guide": [
+    "how-to-brew-darjeeling-tea-perfectly-2026",
+    "darjeeling-tea-vs-english-breakfast-comparison-2026",
+    "can-you-drink-darjeeling-tea-every-day-2026",
+  ],
+  "moringa-soap-benefits-skin-guide": [
+    "moringa-soap-vs-regular-soap-comparison-2026",
+    "how-to-read-a-soap-ingredient-label",
+    "moringa-face-mask-australia-glow-ritual",
+  ],
 };
 
 // Conversion paths for the ten pages already earning meaningful Search Console
@@ -356,6 +406,77 @@ const ARTICLE_CONVERSION_PATHS = {
     cta: "Get moringa for these recipes",
     links: [["Try ten high-protein moringa recipes", "high-protein-moringa-recipes-australia-2026"]],
   },
+  "what-does-moringa-powder-taste-like-honest-guide-2026": {
+    kicker: "Ready to try it",
+    title: "See current sizes and pricing",
+    body: "If the taste tips sound workable, compare the 100g, 200g and 400g pouches packed in Truganina.",
+    cta: "View current sizes and pricing",
+    links: [["How to mix moringa into food", "how-to-add-moringa-to-diet"]],
+  },
+  "moringa-capsules-vs-powder-which-is-better-2026": {
+    kicker: "Prefer powder?",
+    title: "Compare our leaf powder sizes",
+    body: "NutriThrive sells single-ingredient leaf powder, not capsules. Check sizes, price and the Australian lab summary.",
+    cta: "See the moringa powder sizes",
+    links: [["How to choose moringa powder in Australia", "how-to-choose-moringa-powder-australia-2026"]],
+  },
+  "how-to-choose-moringa-powder-australia-2026": {
+    kicker: "Apply the checklist",
+    title: "Our Australian moringa powder",
+    body: "Grown on our farm, shade-dried, NMI lab-tested in Australia and packed in Truganina. Start at $11 for 100g.",
+    cta: "our moringa powder",
+    links: [["Use the eight-point quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"]],
+    methodology: true,
+  },
+  "moringa-smoothie-recipes-australia-2026": {
+    kicker: "For these recipes",
+    title: "Keep shade-dried powder on hand",
+    body: "A small pouch is enough to test the smoothie recipes. Larger sizes suit daily use once you know the mix you like.",
+    cta: "Australian moringa powder",
+    links: [["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"]],
+  },
+  "best-time-to-take-moringa-powder-morning-or-night-2026": {
+    kicker: "Once timing is clear",
+    title: "Choose a pouch that fits your routine",
+    body: "Pick a size you can finish while it stays fresh, then keep the pouch sealed in a cool, dry place.",
+    cta: "Compare moringa pouch sizes",
+    links: [["How long moringa powder lasts", "how-long-does-moringa-powder-last-storage-shelf-life-2026"]],
+  },
+  "dried-curry-leaves-australia-guide": {
+    kicker: "Ready for the pantry",
+    title: "Dried curry leaves from our farm",
+    body: "30g of shade-dried kari leaf, grown on our farm in Gujarat and packed in Truganina. Use about 2 to 3 times as much as fresh.",
+    cta: "Buy dried curry leaves",
+    links: [["Fresh versus dried curry leaves", "fresh-vs-dried-curry-leaves-cooking-comparison-2026"]],
+  },
+  "curry-leaves-in-australian-cooking-how-to-use-2026": {
+    kicker: "Keep leaves on hand",
+    title: "Pantry-ready dried curry leaves",
+    body: "Whole dried leaves for tadka, dals and South Indian cooking. Packed in Melbourne from our farm harvest.",
+    cta: "See dried curry leaves",
+    links: [["30-minute curry leaf dal", "curry-leaves-dahl-recipe-30-minutes-australia-2026"]],
+  },
+  "how-to-brew-darjeeling-tea-perfectly-2026": {
+    kicker: "Brew what you buy",
+    title: "First-flush Darjeeling from a family farm",
+    body: "100g of Darjeeling black tea, packed in Truganina. Use the brew times from this guide with the pouch you order.",
+    cta: "View Darjeeling black tea",
+    links: [["Darjeeling buying and brewing guide", "darjeeling-black-tea-australia-guide"]],
+  },
+  "darjeeling-black-tea-australia-guide": {
+    kicker: "Shop the tea",
+    title: "Order Darjeeling black tea in Australia",
+    body: "Family-farm Darjeeling, packed in Truganina. Free AU shipping from $79 when you combine with other products.",
+    cta: "Buy Darjeeling tea",
+    links: [["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"]],
+  },
+  "moringa-soap-benefits-skin-guide": {
+    kicker: "See the bar",
+    title: "Handmade moringa soap from Truganina",
+    body: "A $7 handmade bar made by us in Australia. Read the ingredient list and compare it with regular soap before you buy.",
+    cta: "View moringa soap",
+    links: [["Moringa soap versus regular soap", "moringa-soap-vs-regular-soap-comparison-2026"]],
+  },
 };
 
 function journalTopic(article) {
@@ -419,10 +540,14 @@ const PRODUCT_GUIDES = {
   "curry-leaves": [
     ["Dried curry leaves buying and use guide", "dried-curry-leaves-australia-guide"],
     ["Fresh versus dried curry leaves", "fresh-vs-dried-curry-leaves-cooking-comparison-2026"],
+    ["How to use curry leaves in Australian cooking", "curry-leaves-in-australian-cooking-how-to-use-2026"],
+    ["How to store curry leaves", "how-to-store-curry-leaves-fresh-dried-australia-2026"],
     ["30-minute curry leaf dal recipe", "curry-leaves-dahl-recipe-30-minutes-australia-2026"],
   ],
   "black-tea": [
+    ["Darjeeling black tea buying guide", "darjeeling-black-tea-australia-guide"],
     ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
+    ["First flush versus second flush", "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026"],
     ["Darjeeling versus English Breakfast", "darjeeling-tea-vs-english-breakfast-comparison-2026"],
     ["Can you drink Darjeeling tea every day?", "can-you-drink-darjeeling-tea-every-day-2026"],
   ],
@@ -430,6 +555,7 @@ const PRODUCT_GUIDES = {
     ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
     ["Moringa soap versus regular soap", "moringa-soap-vs-regular-soap-comparison-2026"],
     ["How to read a soap ingredient label", "how-to-read-a-soap-ingredient-label"],
+    ["Moringa face mask ritual", "moringa-face-mask-australia-glow-ritual"],
   ],
   "combo-pack": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
@@ -1180,15 +1306,19 @@ ${googleReviewsSection()}
 }
 
 function shopPage() {
-  const liveSeo = LIVE_MODE ? extractSeo(path.join(SITE, "products/index.html")) : null;
   const shopPath = LIVE_MODE ? "/products/" : "/shop";
+  const curry = PRODUCTS.find((p) => p.id === "curry-leaves");
+  const tea = PRODUCTS.find((p) => p.id === "black-tea");
+  const soap = PRODUCTS.find((p) => p.id === "moringa-soap");
+  const combo = PRODUCTS.find((p) => p.id === "combo-pack");
+  const gift = PRODUCTS.find((p) => p.id === "gift-pack");
   return layout({
-    title: liveSeo?.title || "Shop Moringa, Tea & Curry Leaves | NutriThrive",
-    description: liveSeo?.description || "Shop farm-grown moringa powder, dried curry leaves, Darjeeling tea, natural soap and affordable gift packs, packed in Truganina, Melbourne.",
+    title: "Moringa Powder, Curry Leaves, Darjeeling Tea & Moringa Soap | NutriThrive",
+    description: "Shop NutriThrive from Truganina: moringa powder from $11, dried curry leaves $7, Darjeeling tea $7.50, moringa soap $7, plus combo and gift packs. Free AU shipping at $79.",
     canonicalPath: shopPath,
     current: "Shop",
-    preserveTitle: Boolean(liveSeo?.title),
-    preserveDescription: Boolean(liveSeo?.description),
+    preserveTitle: true,
+    preserveDescription: true,
     extraHead:
       jsonLd(
         breadcrumbSchema([
@@ -1205,12 +1335,40 @@ function shopPage() {
       ),
     main: `
       <section class="page-intro wrap">
-        <h1>Shop</h1>
-        <p>Everything we pack in Truganina. Same card structure, same price placement, same add-to-cart language.</p>
+        <h1>Moringa Powder, Curry Leaves, Darjeeling Tea &amp; Moringa Soap</h1>
+        <p>We grow moringa and curry leaves on our own farm, source Darjeeling tea from a family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.</p>
+        <p class="purchase-note" style="margin-top:12px">Free AU shipping at $79.</p>
       </section>
-      <section class="section" style="padding-top:0">
-        <div class="wrap product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
-        <div class="wrap"><p class="purchase-note" style="margin-top:16px">Free AU shipping at $79.</p></div>
+      <section class="section" style="padding-top:0" aria-labelledby="shop-moringa">
+        <div class="wrap">
+          <div class="section-head"><div><p class="kicker">Leaf powder</p><h2 id="shop-moringa"><a href="/products/moringa-powder/" style="color:inherit;text-decoration:none">Moringa Powder</a></h2><p>Shade-dried leaf powder. NMI lab-tested in Australia. From $11.</p></div><a href="/products/moringa-powder/">See sizes and pricing</a></div>
+          <div class="product-grid">${PRODUCTS.filter((p) => ["moringa-powder", "moringa-200g", "moringa-400g"].includes(p.id)).map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
+        </div>
+      </section>
+      <section class="section" style="padding-top:0" aria-labelledby="shop-curry">
+        <div class="wrap">
+          <div class="section-head"><div><p class="kicker">Karipatta</p><h2 id="shop-curry"><a href="/products/curry-leaves/" style="color:inherit;text-decoration:none">Dried Curry Leaves</a></h2><p>Farm-grown kari leaf, packed in Truganina. $7 for 30g.</p></div><a href="/products/curry-leaves/">Buy dried curry leaves</a></div>
+          <div class="product-grid">${productCard(curry, false, { hideWas: true })}</div>
+        </div>
+      </section>
+      <section class="section" style="padding-top:0" aria-labelledby="shop-tea">
+        <div class="wrap">
+          <div class="section-head"><div><p class="kicker">Black tea</p><h2 id="shop-tea"><a href="/products/black-tea/" style="color:inherit;text-decoration:none">Darjeeling Black Tea</a></h2><p>From a Darjeeling family farm. $7.50 for 100g.</p></div><a href="/products/black-tea/">Buy Darjeeling tea</a></div>
+          <div class="product-grid">${productCard(tea, false, { hideWas: true })}</div>
+        </div>
+      </section>
+      <section class="section" style="padding-top:0" aria-labelledby="shop-soap">
+        <div class="wrap">
+          <div class="section-head"><div><p class="kicker">Handmade</p><h2 id="shop-soap"><a href="/products/moringa-soap/" style="color:inherit;text-decoration:none">Moringa Soap</a></h2><p>Handmade by us in Australia. $7 for 95g.</p></div><a href="/products/moringa-soap/">View moringa soap</a></div>
+          <div class="product-grid">${productCard(soap, false, { hideWas: true })}</div>
+        </div>
+      </section>
+      <section class="section" style="padding-top:0" aria-labelledby="shop-bundles">
+        <div class="wrap">
+          <div class="section-head"><div><p class="kicker">Save a step</p><h2 id="shop-bundles">Bundles &amp; Gifts</h2><p>Combo and gift packs packed in Truganina.</p></div></div>
+          <div class="product-grid">${[combo, gift].filter(Boolean).map((product) => productCard(product, false, { hideWas: true })).join("")}</div>
+          <p class="purchase-note" style="margin-top:16px">Free AU shipping at $79.</p>
+        </div>
       </section>
       ${googleReviewsSection()}`,
   });
@@ -2339,7 +2497,7 @@ function newsletterPage() {
     canonicalPath: LIVE_MODE ? "/pages/newsletter/" : "/newsletter",
     current: "",
     preserveTitle: Boolean(LIVE_MODE),
-    robots: LIVE_MODE ? "index, follow" : "noindex, nofollow",
+    robots: LIVE_MODE ? "noindex, follow" : "noindex, nofollow",
     main: `<section class="page-intro wrap-narrow newsletter-page">
       <h1>${LIVE_MODE ? "Farm notes" : "Notes from the warehouse"}</h1>
       <p class="lede">${LIVE_MODE ? "Occasional product and blog updates from Truganina. No daily drip." : "Occasional product and blog updates. No daily drip."}</p>
