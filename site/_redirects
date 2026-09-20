@@ -41,6 +41,19 @@
 /.build/* /.build/:splat 404!
 /tools/* /tools/:splat 404!
 
+# SEO Category Consolidation (September 2026)
+# Recipes → Ways to use it (recipe content is subset of usage guides)
+/blog/category/recipes/ /blog/category/ways-to-use-it/ 301!
+/blog/category/recipes /blog/category/ways-to-use-it/ 301!
+
+# Guides → Blog (generic guides adds no unique search value; articles stay at existing URLs)
+/blog/category/guides/ /blog/ 301!
+/blog/category/guides /blog/ 301!
+
+# Pets category → Blog (single article; article stays at existing URL; category adds no value)
+/blog/category/pets/ /blog/ 301!
+/blog/category/pets /blog/ 301!
+
 # Legacy / duplicate stubs
 /shipping-returns.html /shipping 301
 /pages/shipping/shipping-returns /shipping 301!
