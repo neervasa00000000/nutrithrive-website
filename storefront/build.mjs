@@ -1654,8 +1654,8 @@ function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNote = "Taxes included. Shipping calculated at checkout.";
   const shippingPurchaseNote = {
-    "black-tea": "Free AU shipping at $79. This $7.50 pack pays postage alone.",
-    "curry-leaves": "Free AU shipping at $79. This $7 pack pays postage alone.",
+    "black-tea": "Free AU shipping at $79. This $7.50 pack alone still pays postage. Clear path: two 400g powder + curry + this tea = $84.50 (or two 400g + 100g powder = $81).",
+    "curry-leaves": "Free AU shipping at $79. This $7 pack alone still pays postage. Clear path: two 400g powder + this curry + tea = $84.50 (or two 400g + 100g powder = $81).",
     "gift-pack": "Free AU shipping at $79. Gift Pack $35 still pays postage — add 200g moringa ($21.50) or a second pack (curry/tea already inside).",
   }[slug];
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
