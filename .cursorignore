@@ -1,0 +1,20 @@
+# Disposable / generated noise only.
+# Source, content, assets, blogs, scripts, and docs stay accessible.
+
+# Dependencies & caches
+node_modules/
+__pycache__/
+**/__pycache__/
+*.log
+.DS_Store
+
+# Local build / deploy / crawl caches (prefer storefront/ and site/ as source)
+.build/
+.netlify/
+.netlify-publish/
+.firecrawl/
+
+# Backup / minified noise
+**/*.min.js
+**/*.min.css
+storefront/build.mjs.bak
