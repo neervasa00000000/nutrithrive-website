@@ -1402,6 +1402,7 @@ const PDP = {
       "Grown on our farm",
       "Packed in Melbourne",
       "Same-day weekday dispatch before 2pm",
+      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     reviews: REVIEWS.filter((review) => MORINGA_FEATURED_REVIEW_NAMES.includes(review.name)),
     gallery: [
@@ -1489,6 +1490,7 @@ const PDP = {
       "Grown on our farm in Gujarat",
       "Packed in Melbourne",
       "Australia-wide delivery",
+      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive 30g dried curry leaves pouch with whole leaves"],
@@ -1524,6 +1526,7 @@ const PDP = {
       "Family-farm Darjeeling",
       "Packed in Melbourne",
       "Australia-wide delivery",
+      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
@@ -1559,6 +1562,7 @@ const PDP = {
       "Handmade in Australia",
       "Packed in Melbourne",
       "Australia-wide delivery",
+      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
@@ -1594,6 +1598,7 @@ const PDP = {
       { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
       "Farm-grown curry leaves",
       "Packed in Melbourne",
+      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-curry-leaves-combo-main.webp", "NutriThrive 100g moringa powder and 30g dried curry leaves combo"],
@@ -1625,6 +1630,7 @@ const PDP = {
       { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
       "Handmade soap · family-farm tea",
       "Packed in Melbourne",
+      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
       ["/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "NutriThrive gift pack with moringa powder, curry leaves, Darjeeling tea and moringa soap"],
@@ -1654,9 +1660,10 @@ function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNote = "Taxes included. Shipping calculated at checkout.";
   const shippingPurchaseNote = {
-    "black-tea": "Free AU shipping at $79. This $7.50 pack alone still pays postage. Clear path: two 400g powder + curry + this tea = $84.50 (or two 400g + 100g powder = $81).",
-    "curry-leaves": "Free AU shipping at $79. This $7 pack alone still pays postage. Clear path: two 400g powder + this curry + tea = $84.50 (or two 400g + 100g powder = $81).",
-    "gift-pack": "Free AU shipping at $79. Gift Pack $35 still pays postage — add 200g moringa ($21.50) or a second pack (curry/tea already inside).",
+    "moringa-powder": "Free AU shipping at $79. 400g is best value at $35 ($8.75/100g).",
+    "black-tea": "Free AU shipping at $79. This pack can be combined with other products to reach the threshold.",
+    "curry-leaves": "Free AU shipping at $79. This pack can be combined with other products to reach the threshold.",
+    "gift-pack": "Free AU shipping at $79. Add another product or a second pack to reach the threshold.",
   }[slug];
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
@@ -1823,14 +1830,12 @@ function pdpPage(slug, d) {
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
             <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
-            ${slug === "moringa-powder" ? `<p class="purchase-note">Free AU shipping at $79. Every size alone still pays postage — 400g is best value at $35 ($8.75/100g). Clear path: two 400g + 100g = $81 (or two 400g + curry $7 + tea $7.50 = $84.50).</p>` : ""}
             ${shippingPurchaseNote ? `<p class="purchase-note">${esc(shippingPurchaseNote)}</p>` : ""}
             <p class="purchase-note">${esc(purchaseNote)}</p>
           </div>
           ${slug === "moringa-powder" ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
           <ul class="pdp-proof">${proofs}</ul>
-          <p class="pdp-service-note">Same-day dispatch before 2pm, Monday to Friday. Seven-day returns on unopened products.</p>
-          <p class="pdp-payment-note">Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup</p>
+          <p class="pdp-service-note">Seven-day returns on unopened products.</p>
         </div>
       </section>
       <section class="prose-block">

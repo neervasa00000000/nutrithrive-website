@@ -1556,15 +1556,18 @@ body.journal-searching .section-head > a {
 .pdp-proof li {
   display: flex;
   gap: var(--space-3);
-  align-items: center;
+  align-items: flex-start;
   font-size: var(--text-sm);
+  line-height: 1.45;
   padding: var(--space-2) 0;
 }
 
 .pdp-proof svg {
+  flex: 0 0 18px;
   color: var(--color-success);
   width: 18px;
   height: 18px;
+  margin-top: 1px;
 }
 
 .variant-select {
