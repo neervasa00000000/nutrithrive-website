@@ -386,8 +386,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
-    "title": "How to Choose Moringa Powder in Australia | Lab Checklist",
-    "description": "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
+    "title": "How to Choose Moringa Powder in Australia (2026 Buyer Checklist)",
+    "description": "How to choose moringa powder in Australia: colour, single-ingredient label, lab tests, shade-dried leaf. Packed in Truganina — shop when you are ready.",
     "category": "Wellness",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -521,8 +521,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-before-after-workout-timing-guide-2026",
-    "title": "Moringa Before or After Workout? Timing Guide (Australia)",
-    "description": "Take moringa before or after training? Here&#39;s the honest answer on timing, energy, and recovery for Australian gym-goers.",
+    "title": "Moringa Before or After Workout? Timing Guide (AU)",
+    "description": "Before or after training? Practical timing for moringa powder for Australian gym-goers — energy habits, not miracle claims.",
     "category": "Wellness",
     "href": "/blog/moringa-before-after-workout-timing-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -553,8 +553,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-capsules-vs-powder-which-is-better-2026",
-    "title": "Moringa Powder vs Capsules: Which Should You Buy?",
-    "description": "Moringa powder vs capsules: same leaf, different format. Value, dose control, taste, and when each option makes sense. Read the practical NutriThrive guide.",
+    "title": "Moringa Capsules vs Powder: Which Is Better in Australia?",
+    "description": "Capsules vs powder: dose, value, taste, and when powder wins for everyday use. Practical Australia guide — then shop shade-dried powder if that fits.",
     "category": "Wellness",
     "href": "/blog/moringa-capsules-vs-powder-which-is-better-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -809,16 +809,16 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-spirulina-vs-matcha-comparison-australia",
-    "title": "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha",
-    "description": "Moringa vs spirulina vs matcha for Australians: price, taste, and everyday results compared, which greens powder actually earns a spot in the pantry?",
+    "title": "Moringa vs Spirulina vs Matcha (Australia Comparison)",
+    "description": "Compare moringa, spirulina and matcha for everyday use in Australia — taste, caffeine, and when a single-ingredient leaf powder is enough.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-vs-whey-protein-comparison-2026",
-    "title": "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
-    "description": "Moringa vs whey: same daily-powder habit, different jobs. Clear comparison if you&#39;re wondering whether moringa can replace protein.",
+    "title": "Moringa vs Whey Protein (Australia) — Different Jobs",
+    "description": "Moringa vs whey: same daily-powder habit, different jobs. Clear on protein amounts — moringa is not a whey replacement.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-whey-protein-comparison-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -983,8 +983,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "title": "What Does Moringa Powder Taste Like? Honest Mix Guide",
-    "description": "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it — mix it and the flavour mostly disappears.",
+    "title": "What Does Moringa Powder Taste Like? (And How to Mix It)",
+    "description": "Honest taste guide: earthy and mildly bitter in water — easy in smoothie, yoghurt, or food. How Australians actually use moringa powder daily.",
     "category": "Wellness",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
