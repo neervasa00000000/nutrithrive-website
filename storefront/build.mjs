@@ -766,6 +766,7 @@ function productCard(p, priority = false, opts = {}) {
     </a>
     <div class="product-card-body">
       <h3><a href="${href}" style="color:inherit;text-decoration:none">${esc(p.name)}</a></h3>
+      ${opts.showVariant ? `<p class="product-card-variant">${esc(p.variant)}</p>` : ""}
       <p class="benefit">${esc(p.benefit)}</p>
       <p class="price">${money(p.price)}${p.unit ? ` <span style="font-weight:400;color:var(--color-text-secondary);font-size:14px">${esc(p.unit)}</span>` : ""}${was}</p>
       <button class="btn btn-primary" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
@@ -1307,11 +1308,6 @@ ${googleReviewsSection()}
 
 function shopPage() {
   const shopPath = LIVE_MODE ? "/products/" : "/shop";
-  const curry = PRODUCTS.find((p) => p.id === "curry-leaves");
-  const tea = PRODUCTS.find((p) => p.id === "black-tea");
-  const soap = PRODUCTS.find((p) => p.id === "moringa-soap");
-  const combo = PRODUCTS.find((p) => p.id === "combo-pack");
-  const gift = PRODUCTS.find((p) => p.id === "gift-pack");
   return layout({
     title: "Moringa Powder, Curry Leaves, Darjeeling Tea & Moringa Soap | NutriThrive",
     description: "Shop NutriThrive from Truganina: moringa powder from $11, dried curry leaves $7, Darjeeling tea $7.50, moringa soap $7, plus combo and gift packs. Free AU shipping at $79.",
@@ -1334,40 +1330,15 @@ function shopPage() {
         )
       ),
     main: `
-      <section class="page-intro wrap">
-        <h1>Moringa Powder, Curry Leaves, Darjeeling Tea &amp; Moringa Soap</h1>
-        <p>We grow moringa and curry leaves on our own farm, source Darjeeling tea from a family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.</p>
-        <p class="purchase-note" style="margin-top:12px">Free AU shipping at $79.</p>
+      <section class="page-intro shop-intro wrap">
+        <p class="kicker">Farm grown · Australian packed</p>
+        <h1>Shop NutriThrive</h1>
+        <p>Moringa, curry leaves, Darjeeling tea and handmade soap. Free AU shipping at $79.</p>
       </section>
-      <section class="section" style="padding-top:0" aria-labelledby="shop-moringa">
+      <section class="section shop-catalog" style="padding-top:0" aria-labelledby="shop-products">
         <div class="wrap">
-          <div class="section-head"><div><p class="kicker">Leaf powder</p><h2 id="shop-moringa"><a href="/products/moringa-powder/" style="color:inherit;text-decoration:none">Moringa Powder</a></h2><p>Shade-dried leaf powder. NMI lab-tested in Australia. From $11.</p></div><a href="/products/moringa-powder/">See sizes and pricing</a></div>
-          <div class="product-grid">${PRODUCTS.filter((p) => ["moringa-powder", "moringa-200g", "moringa-400g"].includes(p.id)).map((product, index) => productCard(product, index === 0, { hideWas: true })).join("")}</div>
-        </div>
-      </section>
-      <section class="section" style="padding-top:0" aria-labelledby="shop-curry">
-        <div class="wrap">
-          <div class="section-head"><div><p class="kicker">Karipatta</p><h2 id="shop-curry"><a href="/products/curry-leaves/" style="color:inherit;text-decoration:none">Dried Curry Leaves</a></h2><p>Farm-grown kari leaf, packed in Truganina. $7 for 30g.</p></div><a href="/products/curry-leaves/">Buy dried curry leaves</a></div>
-          <div class="product-grid">${productCard(curry, false, { hideWas: true })}</div>
-        </div>
-      </section>
-      <section class="section" style="padding-top:0" aria-labelledby="shop-tea">
-        <div class="wrap">
-          <div class="section-head"><div><p class="kicker">Black tea</p><h2 id="shop-tea"><a href="/products/black-tea/" style="color:inherit;text-decoration:none">Darjeeling Black Tea</a></h2><p>From a Darjeeling family farm. $7.50 for 100g.</p></div><a href="/products/black-tea/">Buy Darjeeling tea</a></div>
-          <div class="product-grid">${productCard(tea, false, { hideWas: true })}</div>
-        </div>
-      </section>
-      <section class="section" style="padding-top:0" aria-labelledby="shop-soap">
-        <div class="wrap">
-          <div class="section-head"><div><p class="kicker">Handmade</p><h2 id="shop-soap"><a href="/products/moringa-soap/" style="color:inherit;text-decoration:none">Moringa Soap</a></h2><p>Handmade by us in Australia. $7 for 95g.</p></div><a href="/products/moringa-soap/">View moringa soap</a></div>
-          <div class="product-grid">${productCard(soap, false, { hideWas: true })}</div>
-        </div>
-      </section>
-      <section class="section" style="padding-top:0" aria-labelledby="shop-bundles">
-        <div class="wrap">
-          <div class="section-head"><div><p class="kicker">Save a step</p><h2 id="shop-bundles">Bundles &amp; Gifts</h2><p>Combo and gift packs packed in Truganina.</p></div></div>
-          <div class="product-grid">${[combo, gift].filter(Boolean).map((product) => productCard(product, false, { hideWas: true })).join("")}</div>
-          <p class="purchase-note" style="margin-top:16px">Free AU shipping at $79.</p>
+          <h2 id="shop-products" class="visually-hidden">All products</h2>
+          <div class="product-grid shop-product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0, { hideWas: true, showVariant: true })).join("")}</div>
         </div>
       </section>
       ${googleReviewsSection()}`,
