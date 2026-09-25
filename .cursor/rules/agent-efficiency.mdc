@@ -1,0 +1,8 @@
+---
+description: Source trees versus generated output in this repo
+alwaysApply: true
+---
+
+# Repository source
+
+Prefer `storefront/` and `site/` over generated copies such as `.netlify-publish/`.
