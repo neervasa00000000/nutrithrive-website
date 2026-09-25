@@ -298,8 +298,8 @@ const CURATED_RELATED = {
   ],
   "best-time-to-take-moringa-powder-morning-or-night-2026": [
     "how-to-add-moringa-to-diet",
+    "verify-moringa-quality-premium-buyers-checklist-2026",
     "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "moringa-energy-what-happens-week-by-week-2026",
   ],
   "dried-curry-leaves-australia-guide": [
     "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
@@ -439,8 +439,11 @@ const ARTICLE_CONVERSION_PATHS = {
     kicker: "Once timing is clear",
     title: "Choose a pouch that fits your routine",
     body: "Pick a size you can finish while it stays fresh, then keep the pouch sealed in a cool, dry place.",
-    cta: "Compare moringa pouch sizes",
-    links: [["How long moringa powder lasts", "how-long-does-moringa-powder-last-storage-shelf-life-2026"]],
+    cta: "Shop moringa powder",
+    links: [
+      ["How to add moringa to your diet", "how-to-add-moringa-to-diet"],
+      ["Verify moringa quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"],
+    ],
   },
   "dried-curry-leaves-australia-guide": {
     kicker: "Ready for the pantry",
