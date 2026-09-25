@@ -952,8 +952,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "verify-moringa-quality-premium-buyers-checklist-2026",
-    "title": "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
-    "description": "8 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
+    "title": "Moringa Quality Checklist Australia (8 Checks Before You Buy)",
+    "description": "8 checks before you buy moringa powder in Australia: lab report, colour, smell, batch date, shade-dried single-ingredient leaf. Organic badge vs quality proof.",
     "category": "Wellness",
     "href": "/blog/verify-moringa-quality-premium-buyers-checklist-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
