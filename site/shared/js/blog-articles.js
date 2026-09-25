@@ -18,8 +18,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
-    "title": "AG1 Alternative Australia: AG1 vs Moringa Compared",
-    "description": "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
+    "title": "AG1 Alternative Australia: Moringa vs AG1 (Honest Compare)",
+    "description": "Looking for an AG1 alternative in Australia? Compare ingredients, purpose, taste and cost with simple moringa powder — not a one-to-one swap.",
     "category": "Wellness",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026",
     "image": "/assets/images/blog/moringa-replaces-200-supplement-stack-australia-2026.webp"
@@ -43,7 +43,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-time-to-take-moringa-powder-morning-or-night-2026",
     "title": "Moringa: Morning or Night? The Honest Answer",
-    "description": "Morning or night for moringa powder? Timing matters less than consistency. How to take and use leaf powder in food — practical AU guide from NutriThrive.",
+    "description": "Morning or night for moringa powder? Timing matters less than consistency. How to take and use leaf powder in food - practical AU guide from NutriThrive.",
     "category": "Wellness",
     "href": "/blog/best-time-to-take-moringa-powder-morning-or-night-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -347,7 +347,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-add-moringa-to-diet",
     "title": "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
-    "description": "How to use moringa powder daily in Australia — eat, mix and dose tips, taste fixes, and shade-dried leaf from $11/100g.",
+    "description": "How to add moringa powder to your diet — mix, take &amp; dose tips (½ tsp start). Everyday food uses, taste honesty. Free AU shipping from $79.",
     "category": "Wellness",
     "href": "/blog/how-to-add-moringa-to-diet",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -522,7 +522,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-before-after-workout-timing-guide-2026",
     "title": "Moringa Before or After Workout? Timing Guide (AU)",
-    "description": "Before or after training? Practical timing for moringa powder for Australian gym-goers — energy habits, not miracle claims.",
+    "description": "Before or after training? Practical moringa powder timing for Australian gym-goers — daily habit, not a stimulant pre-workout.",
     "category": "Wellness",
     "href": "/blog/moringa-before-after-workout-timing-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -561,8 +561,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Chemist Warehouse Moringa Capsules &amp; Tablets vs NutriThrive Powder",
-    "description": "Chemist Warehouse moringa capsules and tablets vs NutriThrive powder — dose maths, quality signals, and when Truganina leaf powder wins in Australia.",
+    "title": "Chemist Warehouse Moringa Powder, Capsules &amp; Tablets vs NutriThrive (AU)",
+    "description": "Chemist Warehouse moringa powder, capsules and tablets vs NutriThrive leaf powder — label checks, format maths, and when Truganina powder is the better buy in Australia.",
     "category": "Wellness",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -770,7 +770,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-soap-benefits-skin-guide",
     "title": "Moringa Soap Australia: $7 Bar vs Skin Hype",
-    "description": "Moringa soap in Australia: what a Melbourne-made $7 bar actually does versus marketing claims, who it suits, and how it compares to regular soap.",
+    "description": "Moringa soap benefits for skin and face in Australia: what a Melbourne-made $7 bar actually does versus skin hype. Cleanser framing — not a medical treatment.",
     "category": "Wellness",
     "href": "/blog/moringa-soap-benefits-skin-guide",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
@@ -802,7 +802,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
     "title": "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
-    "description": "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
+    "description": "Does moringa have caffeine? Leaf powder is not a caffeine product. Honest moringa vs coffee comparison for Melbourne routines — different jobs, soft powder CTA.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -890,7 +890,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
     "title": "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
-    "description": "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
+    "description": "Rosabella moringa reviews Australia 2026: is Rosabella legit, capsules vs powder maths, Chemist Warehouse availability, and when single-ingredient leaf powder is the calmer buy.",
     "category": "Wellness",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
