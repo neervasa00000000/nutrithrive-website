@@ -43,7 +43,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-time-to-take-moringa-powder-morning-or-night-2026",
     "title": "Moringa: Morning or Night? The Honest Answer",
-    "description": "Morning or night, when should you actually take moringa powder? The honest answer based on energy and sleep effects. Read the practical NutriThrive guide.",
+    "description": "Morning or night for moringa powder? Timing matters less than consistency. How to take and use leaf powder in food — practical AU guide from NutriThrive.",
     "category": "Wellness",
     "href": "/blog/best-time-to-take-moringa-powder-morning-or-night-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -738,7 +738,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-powder-victoria-seniors-joint-health",
     "title": "How Victorian Seniors Add Moringa Powder to Everyday Meals",
-    "description": "How Victorian seniors add moringa powder to everyday meals: gentle food-level doses, joint-health context, and what to expect from Melbourne-packed leaf.",
+    "description": "How Victorian seniors mix moringa powder into everyday meals: teaspoon starts, winter kitchen ideas, Truganina packing, Melbourne shipping.",
     "category": "Wellness",
     "href": "/blog/moringa-powder-victoria-seniors-joint-health",
     "image": "/assets/images/og/moringa-article-1200.jpg"
