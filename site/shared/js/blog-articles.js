@@ -402,8 +402,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-make-moringa-tea-recipes-2026",
-    "title": "How to Make Moringa Tea (3 Easy Recipes)",
-    "description": "How to make moringa tea from powder: lemon, ginger-honey, and latte recipes, plus a no-boil tip and FAQ. Soft next step — Shop moringa powder. AU guide from NutriThrive.",
+    "title": "How to Make Moringa Tea (3 Easy Recipes) — Powder Amounts",
+    "description": "Three AU kitchen moringa tea recipes with exact powder amounts, water temperature, and taste tips — hot lemon, ginger honey, and latte.",
     "category": "Wellness",
     "href": "/blog/how-to-make-moringa-tea-recipes-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -713,8 +713,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
-    "title": "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
-    "description": "How to read a moringa CoA in Australia: Pb, Cd, As, Hg and microbes pass/fail columns, what “lab tested” does not prove, and how NMI summaries fit.",
+    "title": "Moringa Heavy Metals Lab Testing Australia — How to Read a CoA",
+    "description": "How to read a moringa CoA in Australia: Pb/Cd/As/Hg + microbes, NMI/NATA vs vague “lab tested”, and what to ask the seller before you buy.",
     "category": "Wellness",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -825,8 +825,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-wellness-shot-recipe-winter-2026",
-    "title": "Moringa Wellness Shot Recipe (2 Minutes) | Australia",
-    "description": "2-minute moringa wellness shot recipe: exact ratios, lemon and ginger variations, and how to use leaf powder as a morning habit. Practical AU kitchen guide.",
+    "title": "Moringa Wellness Shot Recipe (2 Minutes) — Exact Ratios",
+    "description": "Exact powder-to-liquid ratios, taste fixes, and make-ahead vs stir-fresh steps for a 2-minute moringa wellness shot in Australia.",
     "category": "Wellness",
     "href": "/blog/moringa-wellness-shot-recipe-winter-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
