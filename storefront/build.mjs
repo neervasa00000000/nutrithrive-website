@@ -181,6 +181,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "natural-pre-workout-moringa-australia-2026": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
+    description: "Natural pre-workout habit for Australia: moringa has no caffeine, kitchen mixes before training, start small with food. Soft powder CTA from Truganina.",
     h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
   },
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
@@ -218,7 +219,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
   },
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": {
-    title: "Moringa Heavy Metals Lab Testing Australia | What to Look For",
+    title: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
+    description: "How to read a moringa CoA in Australia: Pb, Cd, As, Hg and microbes pass/fail columns, what “lab tested” does not prove, and how NMI summaries fit.",
+    h1: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
   },
   "is-moringa-worth-it-cost-value-australia-2026": {
     title: "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
@@ -291,6 +294,11 @@ const CURATED_RELATED = {
     "science-shade-drying-vs-sun-drying-moringa",
     "moringa-capsules-vs-powder-which-is-better-2026",
   ],
+  "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": [
+    "verify-moringa-quality-premium-buyers-checklist-2026",
+    "how-to-choose-moringa-powder-australia-2026",
+    "moringa-brands-comparison-australia-2026",
+  ],
   "moringa-smoothie-recipes-australia-2026": [
     "what-does-moringa-powder-taste-like-honest-guide-2026",
     "how-to-add-moringa-to-diet",
@@ -300,6 +308,11 @@ const CURATED_RELATED = {
     "how-to-add-moringa-to-diet",
     "verify-moringa-quality-premium-buyers-checklist-2026",
     "what-does-moringa-powder-taste-like-honest-guide-2026",
+  ],
+  "natural-pre-workout-moringa-australia-2026": [
+    "moringa-before-after-workout-timing-guide-2026",
+    "how-to-add-moringa-to-diet",
+    "moringa-vs-coffee-melbourne-energy-hack",
   ],
   "dried-curry-leaves-australia-guide": [
     "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
@@ -406,6 +419,16 @@ const ARTICLE_CONVERSION_PATHS = {
     cta: "Get moringa for these recipes",
     links: [["Try ten high-protein moringa recipes", "high-protein-moringa-recipes-australia-2026"]],
   },
+  "how-to-make-moringa-tea-recipes-2026": {
+    kicker: "For these cups",
+    title: "Shop moringa powder for tea and lattes",
+    body: "Shade-dried leaf powder for lemon tea, ginger cups, and the paste-first latte. Packed in Truganina. Free AU shipping from $79.",
+    cta: "Shop moringa powder",
+    links: [
+      ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
+      ["How to add moringa to your diet", "how-to-add-moringa-to-diet"],
+    ],
+  },
   "what-does-moringa-powder-taste-like-honest-guide-2026": {
     kicker: "Ready to try it",
     title: "See current sizes and pricing",
@@ -443,6 +466,16 @@ const ARTICLE_CONVERSION_PATHS = {
     links: [
       ["How to add moringa to your diet", "how-to-add-moringa-to-diet"],
       ["Verify moringa quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"],
+    ],
+  },
+  "natural-pre-workout-moringa-australia-2026": {
+    kicker: "Soft next step",
+    title: "Shop moringa powder",
+    body: "Shade-dried leaf for kitchen mixes before training. Free AU shipping from $79. Packed in Truganina.",
+    cta: "Shop moringa powder",
+    links: [
+      ["How to add moringa to your diet", "how-to-add-moringa-to-diet"],
+      ["Before or after workout timing", "moringa-before-after-workout-timing-guide-2026"],
     ],
   },
   "dried-curry-leaves-australia-guide": {
@@ -3260,7 +3293,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const quickProductLabel = meta.slug === "fathers-day-gift-under-40"
     ? "Gift Pack · $35"
     : `${shop.name} · ${money(shop.price)} ${shop.unit || ""}`;
-  const isHealth = /health|pregnan|children|dog|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm/i.test(`${meta.slug} ${category}`);
+  const isHealth = /health|pregnan|children|dog|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout/i.test(`${meta.slug} ${category}`);
   const topicArticles = allArticles.filter((article) => journalTopic(article) === topic);
   const currentIndex = topicArticles.findIndex((article) => article.slug === meta.slug);
   const nextArticles = topicArticles.length > 1

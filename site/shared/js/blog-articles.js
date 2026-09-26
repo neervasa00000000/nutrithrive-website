@@ -403,7 +403,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-make-moringa-tea-recipes-2026",
     "title": "How to Make Moringa Tea (3 Easy Recipes)",
-    "description": "3 simple moringa tea recipes for Australians, hot, iced, and a bedtime version. Ready in under 5 minutes each. Practical Australian guidance from NutriThrive.",
+    "description": "How to make moringa tea from powder: lemon, ginger-honey, and latte recipes, plus a no-boil tip and FAQ. Soft next step — Shop moringa powder. AU guide from NutriThrive.",
     "category": "Wellness",
     "href": "/blog/how-to-make-moringa-tea-recipes-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -714,7 +714,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "title": "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
-    "description": "Moringa can accumulate lead and cadmium. How to read an Australian CoA, what NMI testing covers, and red flags when brands hide results.",
+    "description": "How to read a moringa CoA in Australia: Pb, Cd, As, Hg and microbes pass/fail columns, what “lab tested” does not prove, and how NMI summaries fit.",
     "category": "Wellness",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -826,7 +826,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-wellness-shot-recipe-winter-2026",
     "title": "Moringa Wellness Shot Recipe (2 Minutes) | Australia",
-    "description": "Make a 2-minute moringa wellness shot for Australian mornings, with simple ratios, taste tips, mixing steps and powder-versus-capsule context.",
+    "description": "2-minute moringa wellness shot recipe: exact ratios, lemon and ginger variations, and how to use leaf powder as a morning habit. Practical AU kitchen guide.",
     "category": "Wellness",
     "href": "/blog/moringa-wellness-shot-recipe-winter-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -858,7 +858,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "natural-pre-workout-moringa-australia-2026",
     "title": "Moringa as a Natural Pre-Workout in Australia (2026)",
-    "description": "Can moringa replace your pre-workout? An honest look at the energy and performance evidence before you swap. Practical Australian guidance from NutriThrive.",
+    "description": "Natural pre-workout habit for Australia: moringa has no caffeine, kitchen mixes before training, start small with food. Soft powder CTA from Truganina.",
     "category": "Wellness",
     "href": "/blog/natural-pre-workout-moringa-australia-2026",
     "image": "/assets/images/homepage/product-showcase/Moringa.webp"
@@ -976,7 +976,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "what-does-aust-l-mean-supplement-label-australia-2026",
     "title": "What Does AUST L Mean on Supplements? TGA Guide Australia",
-    "description": "AUST L vs AUST R, what&#39;s the real difference, and what it means for the supplements you buy. Straight from the TGA. Read the practical NutriThrive guide.",
+    "description": "What AUST L means on AU labels: listed medicines vs food powder, when CoA/lab summaries matter, and how to check ARTG. Honest NutriThrive guide.",
     "category": "Wellness",
     "href": "/blog/what-does-aust-l-mean-supplement-label-australia-2026",
     "image": "/assets/images/og/aust-l-supplement-label-australia-1200.jpg"
