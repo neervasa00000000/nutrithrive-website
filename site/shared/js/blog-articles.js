@@ -825,7 +825,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-wellness-shot-recipe-winter-2026",
-    "title": "Moringa Wellness Shot Recipe (2 Minutes) — Exact Ratios",
+    "title": "Moringa Wellness Shot Recipe Australia — Exact Ratios",
     "description": "Exact powder-to-liquid ratios, taste fixes, and make-ahead vs stir-fresh steps for a 2-minute moringa wellness shot in Australia.",
     "category": "Wellness",
     "href": "/blog/moringa-wellness-shot-recipe-winter-2026",
