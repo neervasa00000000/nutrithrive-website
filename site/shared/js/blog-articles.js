@@ -897,8 +897,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "science-shade-drying-vs-sun-drying-moringa",
-    "title": "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
-    "description": "Shade-dried vs sun-dried moringa powder in Australia: colour, aroma and heat clues that mark better leaf. How NutriThrive shade-dries before the $11/100g pack.",
+    "title": "Shade-Dried vs Sun-Dried Moringa Powder — Buyer Clues AU",
+    "description": "What shade-dried means on a moringa label, plus colour and aroma clues you can check at home. Shop moringa powder from Truganina.",
     "category": "Wellness",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa",
     "image": "/assets/images/og/moringa-article-1200.jpg"
