@@ -1537,6 +1537,79 @@ body.journal-searching .section-head > a {
   text-underline-offset: 2px;
 }
 
+.pdp-proof-strip {
+  align-items: center;
+  background: var(--color-bg-brand);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  justify-content: space-between;
+  margin: -4px 0 var(--space-4);
+  padding: 10px 12px;
+}
+
+.pdp-proof-rating {
+  align-items: center;
+  color: var(--color-text);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.pdp-proof-rating:hover,
+.pdp-proof-see-all:hover,
+.pdp-lab-control a:hover {
+  text-decoration: underline;
+}
+
+.pdp-proof-see-all {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.pdp-lab-control {
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 12px;
+}
+
+.pdp-lab-control span,
+.pdp-lab-control a {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.pdp-lab-control span {
+  color: var(--color-text-secondary);
+}
+
+.pdp-lab-control a {
+  color: var(--color-brand);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.pdp-buybox-value-flag {
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.pdp-buybox-value-flag[hidden] {
+  display: none;
+}
+
 .qty {
   display: flex;
   align-items: center;
@@ -4369,6 +4442,10 @@ select {
   .pdp-eyebrow { font-size: 10px; margin-bottom: 6px; }
   .stock-status { font-size: 13px; margin-bottom: 8px; }
   .pdp-price { font-size: 28px; margin-block: 6px 8px; }
+  .pdp-proof-strip {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
   .purchase-panel {
     margin-top: 12px;
