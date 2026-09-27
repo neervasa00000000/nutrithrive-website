@@ -306,8 +306,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-long-does-moringa-powder-last-storage-shelf-life-2026",
-    "title": "Does Moringa Powder Expire? Shelf Life in Australia",
-    "description": "Does moringa powder expire? See opened and sealed shelf life, simple Australian storage tips and NutriThrive&#39;s current 18-month opened guidance.",
+    "title": "Does Moringa Powder Expire? Shelf Life &amp; Storage (Australia)",
+    "description": "Does moringa powder expire? Opened vs sealed shelf life, AU heat storage tips, and when to restock. Shop moringa powder from Truganina.",
     "category": "Wellness",
     "href": "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -801,8 +801,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
-    "description": "Does moringa have caffeine? Leaf powder is not a caffeine product. Honest moringa vs coffee comparison for Melbourne routines — different jobs, soft powder CTA.",
+    "title": "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
+    "description": "Does moringa have caffeine? No — not a coffee-style stimulant. Mix moringa powder with coffee or a morning smoothie as a leaf habit. Shop moringa powder.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -825,7 +825,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-wellness-shot-recipe-winter-2026",
-    "title": "Moringa Wellness Shot Recipe Australia — Exact Ratios",
+    "title": "Moringa Wellness Shot Recipe (2 Minutes) — Exact Ratios",
     "description": "Exact powder-to-liquid ratios, taste fixes, and make-ahead vs stir-fresh steps for a 2-minute moringa wellness shot in Australia.",
     "category": "Wellness",
     "href": "/blog/moringa-wellness-shot-recipe-winter-2026",
@@ -833,8 +833,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
-    "title": "Moringa Vitamin C &amp; Iron Absorption | Australia Guide",
-    "description": "Moringa is high in vitamin C, which helps iron absorb better. Here&#39;s how to pair it with iron-rich foods for maximum benefit.",
+    "title": "Moringa with Vitamin C for Iron Absorption: AU Food Pairing Guide",
+    "description": "How to pair moringa leaf powder with vitamin-C foods for plant iron absorption in Australian kitchens. Food guidance — then Shop moringa powder.",
     "category": "Wellness",
     "href": "/blog/moringa-with-vitamin-c-iron-absorption-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -857,8 +857,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "natural-pre-workout-moringa-australia-2026",
-    "title": "Moringa as a Natural Pre-Workout in Australia (2026)",
-    "description": "Natural pre-workout habit for Australia: moringa has no caffeine, kitchen mixes before training, start small with food. Soft powder CTA from Truganina.",
+    "title": "Natural Pre-Workout Habit: Moringa Powder Australia (Honest)",
+    "description": "No caffeine stimulant scoop. Kitchen mixes before training with food; start ½ tsp. Soft next step: Shop moringa powder from Truganina.",
     "category": "Wellness",
     "href": "/blog/natural-pre-workout-moringa-australia-2026",
     "image": "/assets/images/homepage/product-showcase/Moringa.webp"
@@ -975,8 +975,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "what-does-aust-l-mean-supplement-label-australia-2026",
-    "title": "What Does AUST L Mean on Supplements? TGA Guide Australia",
-    "description": "What AUST L means on AU labels: listed medicines vs food powder, when CoA/lab summaries matter, and how to check ARTG. Honest NutriThrive guide.",
+    "title": "What Does AUST L Mean? Food Powder vs Listed Medicines AU",
+    "description": "AUST L vs food on AU labels — when a CoA/lab summary matters instead of a medicine badge. Then Shop moringa powder.",
     "category": "Wellness",
     "href": "/blog/what-does-aust-l-mean-supplement-label-australia-2026",
     "image": "/assets/images/og/aust-l-supplement-label-australia-1200.jpg"
