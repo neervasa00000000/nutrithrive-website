@@ -565,6 +565,7 @@ function applyPdpVariant(id, writeUrl) {
   const crumb = document.querySelector("[data-pdp-crumb]");
   const addBtn = document.querySelector(".pdp [data-add]");
   const buyBtn = document.querySelector(".pdp [data-buy-now]");
+  const bestValueBadge = document.querySelector("[data-best-value-badge]");
   const gallery = document.querySelector(".pdp-gallery");
   if (img) {
     img.src = p.image;
@@ -606,6 +607,7 @@ function applyPdpVariant(id, writeUrl) {
       })
     );
   }
+  if (bestValueBadge) bestValueBadge.hidden = id !== "moringa-400g";
   if (writeUrl) {
     const url = new URL(location.href);
     url.searchParams.set("v", p.id);
