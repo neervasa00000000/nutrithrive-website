@@ -1692,7 +1692,7 @@ function pdpPage(slug, d) {
       </label>`
     : "";
   const variantHint = d.variantHint
-    ? `<p class="pdp-variant-hint">${esc(d.variantHint)}</p>`
+    ? `<p class="pdp-variant-hint">${esc(d.variantHint)}${slug === "moringa-powder" ? ` <span class="pdp-value-flag pdp-buybox-value-flag" data-best-value-badge hidden>Best value</span>` : ""}</p>`
     : "";
   const proofItems = d.proofs || [
     "Packed in Melbourne",
@@ -1819,7 +1819,10 @@ function pdpPage(slug, d) {
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(p.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack"].includes(slug) && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : ""}</p>
-          ${slug === "moringa-powder" ? `<p class="pdp-review-link"><a href="#reviews">Google reviews</a> · <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab summary PDF</a></p>` : ""}
+          <div class="pdp-proof-strip" aria-label="Proof and reviews">
+            <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
+            <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
+          </div>
           ${slug === "moringa-powder" ? "" : `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>`}
           ${variantSelect}
           ${variantHint}
@@ -1836,6 +1839,10 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
             </div>
+            ${slug === "moringa-powder" ? `<div class="pdp-lab-control">
+              <span>Third-party tested — NMI lab report</span>
+              <a href="/documents/nutrithrive-lab-report-summary.pdf" target="_blank" rel="noopener">View lab report (NMI)</a>
+            </div>` : ""}
             <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
             ${shippingPurchaseNote ? `<p class="purchase-note">${esc(shippingPurchaseNote)}</p>` : ""}
             <p class="purchase-note">${esc(purchaseNote)}</p>
