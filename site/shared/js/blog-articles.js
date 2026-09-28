@@ -418,7 +418,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
-    "title": "How to Read a Moringa Batch Code | Freshness Check Australia",
+    "title": "How to Read Moringa Batch Codes — Freshness Check AU",
     "description": "Every NutriThrive pack has a batch code. Here&#39;s exactly how to read it to check freshness before you buy or use it. Read the practical NutriThrive guide.",
     "category": "Wellness",
     "href": "/blog/how-to-read-moringa-batch-codes-freshness",
@@ -513,8 +513,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
-    "title": "Moringa Avocado Toast (5-Minute Recipe)",
-    "description": "Moringa avocado toast recipe for Australia: an easy anti-inflammatory breakfast in about 5 minutes, with shade-dried leaf powder tips from Melbourne.",
+    "title": "Moringa Avocado Toast Recipe Australia — 5 Minutes",
+    "description": "Moringa avocado toast recipe for Australia: a bright weekday breakfast in about 5 minutes, with shade-dried leaf powder tips from Melbourne.",
     "category": "Wellness",
     "href": "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -761,7 +761,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-smoothie-recipes-australia-2026",
-    "title": "5 Moringa Smoothie Recipes That Don&#39;t Taste Like Grass (2026)",
+    "title": "Moringa Smoothie Recipes Australia — Exact Powder Amounts",
     "description": "Five actual moringa smoothie recipes that taste good - the banana mango trick, the peanut butter cover-up, and three others tested to hide the earthy bite.",
     "category": "Wellness",
     "href": "/blog/moringa-smoothie-recipes-australia-2026",
