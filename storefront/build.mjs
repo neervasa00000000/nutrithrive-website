@@ -130,9 +130,9 @@ const JOURNAL_PRIORITY = [
 // its committed title, description and H1 during storefront migrations.
 const ARTICLE_SEO_OVERRIDES = {
   "curry-leaves-substitute-what-to-use-2026": {
-    title: "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
-    description: "No curry leaves? Compare dried curry leaves, makrut lime leaves, citrus zest and four other substitutes, with practical swap ratios for Australian cooks.",
-    h1: "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
+    title: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
+    description: "Curry leaf substitute Australia: 7 swaps with ratios. When zest or lime leaf is not enough, shop dried curry leaves for pantry tadka.",
+    h1: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
   },
   "curry-leaves-tea-how-to-make-benefits-2026": {
     title: "How to Make Curry Leaf Tea (Dried Leaves) | Australia",
@@ -580,6 +580,7 @@ function journalProduct(article) {
 
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
+  if (article.slug === "curry-leaves-substitute-what-to-use-2026") return "Shop dried curry leaves";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";
   if (topic === "Darjeeling tea") return "Try Darjeeling tea";
