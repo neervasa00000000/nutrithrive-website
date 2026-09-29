@@ -35,6 +35,10 @@ const approvedSeoChanges = {
     title: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
     description: "Curry leaf substitute Australia: 7 swaps with ratios. When zest or lime leaf is not enough, shop dried curry leaves for pantry tadka.",
   },
+  "blog/how-to-brew-darjeeling-tea-perfectly-2026.html": {
+    title: "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
+    description: "Water temp, steep time, and leaf ratio for Darjeeling in Australian kitchens. Soft next step: Shop Darjeeling black tea.",
+  },
   "blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html": {
     title: "Is Moringa Powder Safe for Dogs? AU Dose Checklist",
     description: "Is moringa safe for dogs in Australia? Usually in moderation. Dosage by weight, mixing tips, a simple vet checklist, and when to skip leaf powder.",
@@ -105,6 +109,10 @@ const approvedSeoChanges = {
   "blog/moringa-vs-ashwagandha-comparison-2026.html": {
     title: "Moringa vs Ashwagandha: Key Differences Explained",
     description: "Compare moringa and ashwagandha, including what they are, common uses, evidence limits, side effects and when to speak with a health professional.",
+  },
+  "blog/moringa-soap-vs-regular-soap-comparison-2026.html": {
+    title: "Moringa Soap vs Regular Soap Australia — Honest Compare",
+    description: "Moringa soap vs regular soap in Australia: ingredients, who it&#39;s for, and when supermarket soap is fine. Soft next step: Shop moringa soap.",
   },
   "blog/moringa-soap-benefits-skin-guide.html": {
     title: "Moringa Soap Benefits: Real vs Marketing (AU 2026)",
