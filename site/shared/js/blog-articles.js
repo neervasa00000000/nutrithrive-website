@@ -154,8 +154,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
-    "title": "Curry Leaf Substitute: 7 Best Swaps for Australian Kitchens",
-    "description": "No curry leaves? Compare dried curry leaves, makrut lime leaves, citrus zest and four other substitutes, with practical swap ratios for Australian cooks.",
+    "title": "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
+    "description": "Curry leaf substitute Australia: 7 swaps with ratios. When zest or lime leaf is not enough, shop dried curry leaves for pantry tadka.",
     "category": "Wellness",
     "href": "/blog/curry-leaves-substitute-what-to-use-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
@@ -370,8 +370,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-brew-darjeeling-tea-perfectly-2026",
-    "title": "How to Brew Darjeeling Tea Perfectly",
-    "description": "Water temperature, steep time, and the one mistake that ruins Darjeeling tea. Brew it perfectly every time. Practical Australian guidance from NutriThrive.",
+    "title": "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
+    "description": "Water temp, steep time, and leaf ratio for Darjeeling in Australian kitchens. Soft next step: Shop Darjeeling black tea.",
     "category": "Wellness",
     "href": "/blog/how-to-brew-darjeeling-tea-perfectly-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
