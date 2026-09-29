@@ -777,8 +777,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-soap-vs-regular-soap-comparison-2026",
-    "title": "Moringa Soap vs Regular Soap: The Difference",
-    "description": "Is moringa soap actually better than regular soap? What&#39;s in it, the real skin benefits, and who should try it. Practical Australian guidance from NutriThrive.",
+    "title": "Moringa Soap vs Regular Soap Australia — Honest Compare",
+    "description": "Moringa soap vs regular soap in Australia: ingredients, who it&#39;s for, and when supermarket soap is fine. Soft next step: Shop moringa soap.",
     "category": "Wellness",
     "href": "/blog/moringa-soap-vs-regular-soap-comparison-2026",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
