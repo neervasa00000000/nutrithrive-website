@@ -155,9 +155,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa vs Ashwagandha: Key Differences Explained",
   },
   "fresh-vs-dried-curry-leaves-cooking-comparison-2026": {
-    title: "Fresh vs Dried Curry Leaves: Taste, Use & Storage",
-    description: "Fresh vs dried curry leaves compared for flavour, tempering, storage and swap ratios, with practical advice for Australian home cooks.",
-    h1: "Fresh vs Dried Curry Leaves: What Changes in Cooking?",
+    title: "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
+    description: "Fresh vs dried curry leaves Australia: when dried wins, freeze vs dry, tempering ratios and storage. Shop dried curry leaves for pantry tadka.",
+    h1: "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
   },
   "ag1-alternative-australia-moringa-comparison-2026": {
     title: "AG1 Alternative Australia: AG1 vs Moringa Compared",

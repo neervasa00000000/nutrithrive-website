@@ -91,8 +91,8 @@ const approvedSeoChanges = {
     description: "8 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
   },
   "blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html": {
-    title: "Fresh vs Dried Curry Leaves: Taste, Use &amp; Storage",
-    description: "Fresh vs dried curry leaves compared for flavour, tempering, storage and swap ratios, with practical advice for Australian home cooks.",
+    title: "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
+    description: "Fresh vs dried curry leaves Australia: when dried wins, freeze vs dry, tempering ratios and storage. Shop dried curry leaves for pantry tadka.",
   },
   "blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026.html": {
     title: "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
