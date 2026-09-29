@@ -170,9 +170,34 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "What Does Moringa Powder Taste Like? Honest Mix Guide",
   },
   "how-to-add-moringa-to-diet": {
-    title: "How to Use Moringa Powder Daily (Eat, Mix & Dose)",
-    description: "How to use moringa powder daily in Australia — eat, mix and dose tips, taste fixes, and shade-dried leaf from $11/100g.",
-    h1: "How to Use Moringa Powder Daily (Eat, Mix & Dose)",
+    title: "How to Add Moringa Powder to Your Diet (Australia)",
+    description: "How to add moringa powder to your diet in Australia — how to use, eat, and mix leaf powder from ½ tsp in everyday food.",
+    h1: "How to Add Moringa Powder to Your Diet (Australia)",
+  },
+  "moringa-smoothie-recipes-australia-2026": {
+    title: "Moringa Smoothie Recipes Australia — Exact Powder Amounts",
+    description: "Moringa smoothie recipes Australia with exact tsp amounts — banana mango, peanut butter cacao, and three more.",
+    h1: "Moringa Smoothie Recipes Australia — Exact Powder Amounts",
+  },
+  "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026": {
+    title: "Moringa Avocado Toast Recipe Australia — 5 Minutes",
+    description: "Moringa avocado toast recipe Australia — exact ½ tsp leaf powder, lemon, salt, 5 minutes.",
+    h1: "Moringa Avocado Toast Recipe Australia — 5 Minutes",
+  },
+  "how-to-read-moringa-batch-codes-freshness": {
+    title: "How to Read Moringa Batch Codes — Freshness Check AU",
+    description: "How to read moringa batch codes on Australian pouches — find the lot stamp, match lab paperwork, and spot freshness red flags.",
+    h1: "How to Read Moringa Batch Codes — Freshness Check AU",
+  },
+  "why-premium-moringa-costs-11-not-25-value-vs-markup-2026": {
+    title: "Moringa Powder Price Australia — Why $11 vs $25",
+    description: "Moringa powder price in Australia: why $11/100g vs $25 at pharmacy shelves — markup vs value.",
+    h1: "Moringa Powder Price Australia — Why $11 vs $25",
+  },
+  "high-protein-moringa-recipes-australia-2026": {
+    title: "High-Protein Moringa Recipes Australia (Leaf Powder)",
+    description: "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
+    h1: "High-Protein Moringa Recipes Australia (Leaf Powder)",
   },
   "science-shade-drying-vs-sun-drying-moringa": {
     title: "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
@@ -413,11 +438,14 @@ const ARTICLE_CONVERSION_PATHS = {
     links: [["What to check when choosing moringa", "how-to-choose-moringa-powder-australia-2026"]],
   },
   "how-to-add-moringa-to-diet": {
-    kicker: "Use it in these recipes",
-    title: "Choose moringa powder for your kitchen",
-    body: "Start with the 100g pouch or compare larger sizes if moringa is already part of your regular cooking routine.",
-    cta: "Get moringa for these recipes",
-    links: [["Try ten high-protein moringa recipes", "high-protein-moringa-recipes-australia-2026"]],
+    kicker: "Use it in these mixes",
+    title: "NutriThrive Moringa Powder",
+    body: "Australian-packed leaf powder for everyday food mixing. Free AU shipping from $79.",
+    cta: "Shop moringa powder",
+    links: [
+      ["What does moringa powder taste like?", "what-does-moringa-powder-taste-like-honest-guide-2026"],
+      ["High-protein moringa recipes Australia", "high-protein-moringa-recipes-australia-2026"],
+    ],
   },
   "how-to-make-moringa-tea-recipes-2026": {
     kicker: "For these cups",
@@ -453,9 +481,9 @@ const ARTICLE_CONVERSION_PATHS = {
   },
   "moringa-smoothie-recipes-australia-2026": {
     kicker: "For these recipes",
-    title: "Keep shade-dried powder on hand",
-    body: "A small pouch is enough to test the smoothie recipes. Larger sizes suit daily use once you know the mix you like.",
-    cta: "Australian moringa powder",
+    title: "NutriThrive Moringa Powder",
+    body: "Australian-packed leaf powder for the smoothies above. Stock the pouch.",
+    cta: "Shop moringa powder",
     links: [["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"]],
   },
   "best-time-to-take-moringa-powder-morning-or-night-2026": {
