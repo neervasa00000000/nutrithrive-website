@@ -229,6 +229,11 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Compare caffeine in coffee and tea using FSANZ maximum levels, serving context and NutriThrive Darjeeling tea details.",
     h1: "How Much Caffeine Per Day in Australia? FSANZ Guide",
   },
+  "how-to-brew-darjeeling-tea-perfectly-2026": {
+    title: "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
+    description: "Water temp, steep time, and leaf ratio for Darjeeling in Australian kitchens. Soft next step: Shop Darjeeling black tea.",
+    h1: "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
+  },
   "moringa-vs-coffee-melbourne-energy-hack": {
     title: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
     h1: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
@@ -250,6 +255,11 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "is-moringa-worth-it-cost-value-australia-2026": {
     title: "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
+  },
+  "moringa-soap-vs-regular-soap-comparison-2026": {
+    title: "Moringa Soap vs Regular Soap Australia — Honest Compare",
+    description: "Moringa soap vs regular soap in Australia: ingredients, who it's for, and when supermarket soap is fine. Soft next step: Shop moringa soap.",
+    h1: "Moringa Soap vs Regular Soap Australia — Honest Compare",
   },
 };
 
@@ -524,7 +534,7 @@ const ARTICLE_CONVERSION_PATHS = {
     kicker: "Brew what you buy",
     title: "First-flush Darjeeling from a family farm",
     body: "100g of Darjeeling black tea, packed in Truganina. Use the brew times from this guide with the pouch you order.",
-    cta: "View Darjeeling black tea",
+    cta: "Shop Darjeeling black tea",
     links: [["Darjeeling buying and brewing guide", "darjeeling-black-tea-australia-guide"]],
   },
   "darjeeling-black-tea-australia-guide": {
@@ -538,8 +548,15 @@ const ARTICLE_CONVERSION_PATHS = {
     kicker: "See the bar",
     title: "Handmade moringa soap from Truganina",
     body: "A $7 handmade bar made by us in Australia. Read the ingredient list and compare it with regular soap before you buy.",
-    cta: "View moringa soap",
+    cta: "Shop moringa soap",
     links: [["Moringa soap versus regular soap", "moringa-soap-vs-regular-soap-comparison-2026"]],
+  },
+  "moringa-soap-vs-regular-soap-comparison-2026": {
+    kicker: "See the bar",
+    title: "Handmade moringa soap from Truganina",
+    body: "A $7 handmade bar made by us in Australia. Cleanser job only — compare the label with regular soap before you buy.",
+    cta: "Shop moringa soap",
+    links: [["Moringa soap benefits for skin", "moringa-soap-benefits-skin-guide"]],
   },
 };
 
@@ -581,10 +598,11 @@ function journalProduct(article) {
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
   if (article.slug === "curry-leaves-substitute-what-to-use-2026") return "Shop dried curry leaves";
+  if (article.slug === "how-to-brew-darjeeling-tea-perfectly-2026") return "Shop Darjeeling black tea";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";
   if (topic === "Darjeeling tea") return "Try Darjeeling tea";
-  if (topic === "Soap & skin") return "See handmade soap";
+  if (topic === "Soap & skin") return "Shop moringa soap";
   // Powder articles use one stable, purchase-clear CTA. Several manual SEO/CRO
   // fixes were previously lost because rebuilds regenerated weaker labels.
   if (product?.id === "moringa-powder") return "Shop moringa powder";
