@@ -40,8 +40,8 @@ const approvedSeoChanges = {
     description: "Is moringa safe for dogs in Australia? Usually in moderation. Dosage by weight, mixing tips, a simple vet checklist, and when to skip leaf powder.",
   },
   "blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html": {
-    title: "Moringa vs Spirulina vs Matcha (Australia Comparison)",
-    description: "Compare moringa, spirulina and matcha for everyday use in Australia — taste, caffeine, and when a single-ingredient leaf powder is enough.",
+    title: "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha",
+    description: "Moringa vs spirulina vs matcha for Australians: price, taste, and everyday results compared — which greens powder actually earns a spot in the pantry?",
   },
   "blog/moringa-side-effects-what-happens-take-too-much-2026.html": {
     title: "Moringa Side Effects in Australia: Start-Small Guide",
@@ -61,7 +61,6 @@ const approvedSeoChanges = {
   },
   "blog/natural-pre-workout-moringa-australia-2026.html": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
-    description: "Natural pre-workout habit for Australia: moringa has no caffeine, kitchen mixes before training, start small with food. Soft powder CTA from Truganina.",
   },
   "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
     title: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
@@ -116,8 +115,7 @@ const approvedSeoChanges = {
     description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $79.",
   },
   "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
-    title: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
-    description: "How to read a moringa CoA in Australia: Pb, Cd, As, Hg and microbes pass/fail columns, what “lab tested” does not prove, and how NMI summaries fit.",
+    title: "Moringa Heavy Metals Lab Testing Australia | What to Look For",
   },
   "blog/is-moringa-worth-it-cost-value-australia-2026.html": {
     title: "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
@@ -134,8 +132,8 @@ const approvedSeoChanges = {
     description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $79.",
   },
   "blog/how-to-add-moringa-to-diet.html": {
-    title: "How to Add Moringa Powder to Your Diet (Australia)",
-    description: "How to add moringa powder to your diet in Australia — how to use, eat, and mix leaf powder from ½ tsp in everyday food.",
+    title: "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
+    description: "How to use moringa powder daily in Australia — eat, mix and dose tips, taste fixes, and shade-dried leaf from $11/100g.",
   },
   "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
     title: "Moringa and Berberine Together (Australia 2026)",
@@ -156,23 +154,13 @@ const approvedSeoChanges = {
     description: "Chemist Warehouse Vital Organic Greens vs $11 moringa: label walk-through, $/100g maths, and when one shade-dried leaf from Truganina is enough.",
   },
   "blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026.html": {
-    title: "Moringa Avocado Toast Recipe Australia — 5 Minutes",
-    description: "Moringa avocado toast recipe Australia — exact ½ tsp leaf powder, lemon and wholegrain toast in 5 minutes, with simple serving tips.",
+    description: "Moringa avocado toast recipe for Australia: an easy anti-inflammatory breakfast in about 5 minutes, with shade-dried leaf powder tips from Melbourne.",
   },
   "blog/cold-brew-darjeeling-australian-spring-2026.html": {
     description: "Cold-brew Darjeeling tea for Australian spring: fridge method, brew ratios, Melbourne tap tips, and why hot-brew-then-ice goes bitter ($7.50/100g).",
   },
   "blog/high-protein-moringa-recipes-australia-2026.html": {
-    description: "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
-  },
-  "blog/how-to-read-moringa-batch-codes-freshness.html": {
-    description: "How to read moringa batch codes on Australian pouches — find the lot stamp, match lab paperwork, and spot freshness red flags.",
-  },
-  "blog/moringa-smoothie-recipes-australia-2026.html": {
-    description: "Moringa smoothie recipes Australia with exact tsp amounts — banana mango, peanut butter cacao, and three more.",
-  },
-  "blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html": {
-    description: "Moringa powder price Australia: why $11/100g can differ from $25 pharmacy packs, what markups cover, and how to compare lab testing and value.",
+    description: "Ten high-protein moringa recipes (15–40g protein per serve) for Australia — tested shakes, bowls, and meals using shade-dried leaf powder daily.",
   },
   "blog/nutrithrive-dried-curry-leaves-tradition-health.html": {
     title: "Dried Curry Leaves: Health Benefits &amp; Uses in Australia",
@@ -181,10 +169,6 @@ const approvedSeoChanges = {
   "blog/grow-moringa-tree-australia.html": {
     title: "Grow a Moringa Tree in Australia: Pots &amp; Climate Guide",
     description: "How to grow a moringa tree in Australia: pot size, germination, winter dormancy and climate tips for Melbourne, Perth, Qld and warmer AU zones.",
-  },
-  "blog/how-to-brew-darjeeling-tea-perfectly-2026.html": {
-    title: "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
-    description: "Water temp, steep time, and leaf ratio for Darjeeling in Australian kitchens. Soft next step: Shop Darjeeling black tea.",
   },
 };
 
@@ -356,7 +340,7 @@ if (home) {
 const startHere = [
   ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)", "$79"],
   ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
-  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Moringa vs Spirulina vs Matcha (Australia Comparison)", "$79"],
+  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$79"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
   ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$79"],
   ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: AG1 vs Moringa Compared", "$79"],
@@ -372,7 +356,7 @@ for (const [rel, expected, postage] of startHere) {
 const restoredArticleMarkers = [
   ["blog/grow-moringa-tree-australia.html", "Germination Requirements"],
   ["blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html", "What our live pack and product page say"],
-  ["blog/moringa-wellness-shot-recipe-winter-2026.html", "The recipe: exact ingredients and steps"],
+  ["blog/moringa-wellness-shot-recipe-winter-2026.html", "The Recipe: Moringa Winter Wellness Shot"],
 ];
 for (const [rel, marker] of restoredArticleMarkers) {
   mustInclude(rel, marker, "restored full article body");
