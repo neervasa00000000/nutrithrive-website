@@ -258,8 +258,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
-    "title": "Fresh vs Dried Curry Leaves: What Changes in Cooking?",
-    "description": "Fresh vs dried curry leaves compared for flavour, tempering, storage and swap ratios, with practical advice for Australian home cooks.",
+    "title": "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
+    "description": "Fresh vs dried curry leaves Australia: when dried wins, freeze vs dry, tempering ratios and storage. Shop dried curry leaves for pantry tadka.",
     "category": "Wellness",
     "href": "/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
