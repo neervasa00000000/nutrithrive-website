@@ -1695,7 +1695,8 @@ function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNote = "Taxes included. Shipping calculated at checkout.";
   const shippingPurchaseNote = {
-    "moringa-powder": "Free AU shipping at $79. 400g is best value at $35 ($8.75/100g).",
+    "moringa-powder":
+      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     "black-tea": "Free AU shipping at $79. This pack can be combined with other products to reach the threshold.",
     "curry-leaves": "Free AU shipping at $79. This pack can be combined with other products to reach the threshold.",
     "gift-pack": "Free AU shipping at $79. Add another product or a second pack to reach the threshold.",
