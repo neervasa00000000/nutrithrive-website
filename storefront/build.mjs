@@ -256,6 +256,11 @@ const ARTICLE_SEO_OVERRIDES = {
   "is-moringa-worth-it-cost-value-australia-2026": {
     title: "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
   },
+  "moringa-soap-benefits-skin-guide": {
+    title: "Moringa Soap Benefits Australia — $7 Bar vs Skin Hype",
+    description: "Honest moringa soap for face and skin in Australia: a $7 bar is a cleanser, not a treatment. Shop moringa soap. Soft eat option: shop moringa powder.",
+    h1: "Moringa Soap Benefits Australia — $7 Bar vs Skin Hype",
+  },
   "moringa-soap-vs-regular-soap-comparison-2026": {
     title: "Moringa Soap vs Regular Soap Australia — Honest Compare",
     description: "Moringa soap vs regular soap in Australia: ingredients, who it's for, and when supermarket soap is fine. Soft next step: Shop moringa soap.",

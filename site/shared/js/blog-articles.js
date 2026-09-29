@@ -769,8 +769,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-soap-benefits-skin-guide",
-    "title": "Moringa Soap Australia: $7 Bar vs Skin Hype",
-    "description": "Moringa soap benefits for skin and face in Australia: what a Melbourne-made $7 bar actually does versus skin hype. Cleanser framing — not a medical treatment.",
+    "title": "Moringa Soap Benefits Australia — $7 Bar vs Skin Hype",
+    "description": "Honest moringa soap for face and skin in Australia: a $7 bar is a cleanser, not a treatment. Shop moringa soap. Soft eat option: shop moringa powder.",
     "category": "Wellness",
     "href": "/blog/moringa-soap-benefits-skin-guide",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
