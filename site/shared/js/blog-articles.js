@@ -299,7 +299,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "high-protein-moringa-recipes-australia-2026",
     "title": "High-Protein Moringa Recipes Australia (Leaf Powder)",
-    "description": "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
+    "description": "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve. How to use moringa powder in everyday cooking.",
     "category": "Wellness",
     "href": "/blog/high-protein-moringa-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -347,7 +347,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-add-moringa-to-diet",
     "title": "How to Add Moringa Powder to Your Diet (Australia)",
-    "description": "How to add moringa powder to your diet in Australia — how to use, eat, and mix leaf powder from ½ tsp in everyday food.",
+    "description": "How to add moringa powder to your diet in Australia — how to use, eat, and mix leaf powder from &#189; tsp in everyday food. Shade-dried powder from $11/100g.",
     "category": "Wellness",
     "href": "/blog/how-to-add-moringa-to-diet",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -419,7 +419,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
     "title": "How to Read Moringa Batch Codes — Freshness Check AU",
-    "description": "How to read moringa batch codes on Australian pouches — find the lot stamp, match lab paperwork, and spot freshness red flags.",
+    "description": "How to read moringa batch codes on Australian pouches — lot numbers, best-before dates, and freshness checks when you buy moringa powder online.",
     "category": "Wellness",
     "href": "/blog/how-to-read-moringa-batch-codes-freshness",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -514,7 +514,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "title": "Moringa Avocado Toast Recipe Australia — 5 Minutes",
-    "description": "Moringa avocado toast recipe Australia — exact ½ tsp leaf powder, lemon, salt, 5 minutes.",
+    "description": "Moringa avocado toast recipe for Australia — exact &#189; tsp leaf powder on wholegrain toast in 5 minutes. How to eat moringa powder at breakfast.",
     "category": "Wellness",
     "href": "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -762,7 +762,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-smoothie-recipes-australia-2026",
     "title": "Moringa Smoothie Recipes Australia — Exact Powder Amounts",
-    "description": "Moringa smoothie recipes Australia with exact tsp amounts — banana mango, peanut butter cacao, and three more.",
+    "description": "Moringa smoothie recipes Australia with exact tsp amounts — banana mango, peanut butter cacao, and three more. How to use moringa powder without the grassy bite.",
     "category": "Wellness",
     "href": "/blog/moringa-smoothie-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -1008,7 +1008,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "title": "Moringa Powder Price Australia — Why $11 vs $25",
-    "description": "Moringa powder price in Australia: why $11/100g vs $25 at pharmacy shelves — markup vs value.",
+    "description": "Moringa powder price in Australia: why NutriThrive is $11/100g vs $25 at pharmacy shelves — markup vs value, lab data, and where to buy moringa powder online.",
     "category": "Wellness",
     "href": "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
