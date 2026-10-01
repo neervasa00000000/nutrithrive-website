@@ -631,8 +631,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/moringa-soap-vs-regular-soap-comparison-2026.html /blog/moringa-soap-vs-regular-soap-comparison-2026 301!
 /blog/moringa-soap-vs-regular-soap-comparison-2026 /blog/moringa-soap-vs-regular-soap-comparison-2026.html 200
 # Is Moringa Worth It? An Honest Cost-Per-Nutrient Breakdown f (new June 2026)
-/blog/is-moringa-worth-it-cost-value-australia-2026.html /blog/is-moringa-worth-it-cost-value-australia-2026 301!
-/blog/is-moringa-worth-it-cost-value-australia-2026 /blog/is-moringa-worth-it-cost-value-australia-2026.html 200
 
 # === lifestyle health batch (Jul 2026) ===
 # Ultra-Processed Food in Australia: What It Actually Is and H (lifestyle health Jul 2026)
@@ -917,3 +915,7 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/cold-brew-darjeeling-australian-spring-2026 /blog/how-to-brew-darjeeling-tea-perfectly-2026 301!
 /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html /blog/how-to-brew-darjeeling-tea-perfectly-2026 301!
 /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 /blog/how-to-brew-darjeeling-tea-perfectly-2026 301!
+
+# Merge 3
+/blog/is-moringa-worth-it-cost-value-australia-2026.html /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026 301!
+/blog/is-moringa-worth-it-cost-value-australia-2026 /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026 301!
