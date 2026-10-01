@@ -919,3 +919,11 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Merge 3
 /blog/is-moringa-worth-it-cost-value-australia-2026.html /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026 301!
 /blog/is-moringa-worth-it-cost-value-australia-2026 /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026 301!
+
+# Recipes cluster
+/blog/morning-routine-health-tips-australia-2026.html /blog/how-to-add-moringa-to-diet 301!
+/blog/morning-routine-health-tips-australia-2026 /blog/how-to-add-moringa-to-diet 301!
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026.html /blog/moringa-smoothie-recipes-australia-2026 301!
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026 /blog/moringa-smoothie-recipes-australia-2026 301!
+/blog/moringa-face-mask-australia-glow-ritual.html /blog/moringa-soap-benefits-skin-guide 301!
+/blog/moringa-face-mask-australia-glow-ritual /blog/moringa-soap-benefits-skin-guide 301!
