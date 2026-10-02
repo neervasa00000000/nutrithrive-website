@@ -159,6 +159,11 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Fresh vs dried curry leaves Australia: when dried wins, freeze vs dry, tempering ratios and storage. Shop dried curry leaves for pantry tadka.",
     h1: "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
   },
+  "dried-curry-leaves-quality-guide-how-to-use": {
+    title: "Dried Curry Leaves: How to Judge Quality & Get Real Flavour",
+    description: "Dried curry leaves tasting of nothing? How to spot a good pack by colour and aroma, how many to use, how to bloom them in oil and store them in Australia.",
+    h1: "Dried Curry Leaves That Actually Taste of Something: A Buyer's Guide",
+  },
   "ag1-alternative-australia-moringa-comparison-2026": {
     title: "AG1 Alternative Australia: AG1 vs Moringa Compared",
     description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
@@ -355,9 +360,14 @@ const CURATED_RELATED = {
     "moringa-vs-coffee-melbourne-energy-hack",
   ],
   "dried-curry-leaves-australia-guide": [
+    "dried-curry-leaves-quality-guide-how-to-use",
     "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
     "how-to-store-curry-leaves-fresh-dried-australia-2026",
-    "curry-leaves-in-australian-cooking-how-to-use-2026",
+  ],
+  "dried-curry-leaves-quality-guide-how-to-use": [
+    "dried-curry-leaves-australia-guide",
+    "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
+    "how-to-store-curry-leaves-fresh-dried-australia-2026",
   ],
   "curry-leaves-in-australian-cooking-how-to-use-2026": [
     "dried-curry-leaves-australia-guide",
@@ -528,6 +538,13 @@ const ARTICLE_CONVERSION_PATHS = {
     cta: "Buy dried curry leaves",
     links: [["Fresh versus dried curry leaves", "fresh-vs-dried-curry-leaves-cooking-comparison-2026"]],
   },
+  "dried-curry-leaves-quality-guide-how-to-use": {
+    kicker: "After the crush test",
+    title: "Shade-dried curry leaves from our farm",
+    body: "Whole leaflets, shade-dried and packed in small batches in Truganina. Crush-test a leaf when your pack arrives.",
+    cta: "Shop dried curry leaves",
+    links: [["Dried curry leaves buy and store guide", "dried-curry-leaves-australia-guide"]],
+  },
   "curry-leaves-in-australian-cooking-how-to-use-2026": {
     kicker: "Keep leaves on hand",
     title: "Pantry-ready dried curry leaves",
@@ -603,6 +620,7 @@ function journalProduct(article) {
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
   if (article.slug === "curry-leaves-substitute-what-to-use-2026") return "Shop dried curry leaves";
+  if (article.slug === "dried-curry-leaves-quality-guide-how-to-use") return "Shop dried curry leaves";
   if (article.slug === "how-to-brew-darjeeling-tea-perfectly-2026") return "Shop Darjeeling black tea";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";
@@ -626,6 +644,7 @@ const PRODUCT_GUIDES = {
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
   ],
   "curry-leaves": [
+    ["How to judge dried curry leaf quality", "dried-curry-leaves-quality-guide-how-to-use"],
     ["Dried curry leaves buying and use guide", "dried-curry-leaves-australia-guide"],
     ["Fresh versus dried curry leaves", "fresh-vs-dried-curry-leaves-cooking-comparison-2026"],
     ["How to use curry leaves in Australian cooking", "curry-leaves-in-australian-cooking-how-to-use-2026"],
@@ -3211,9 +3230,6 @@ function rewriteLinks(html) {
     .replaceAll(/lab-tested every batch/gi, "testing information published when available")
     .replaceAll(/we grow and process moringa powder in Truganina,? Melbourne/gi, "we grow and manufacture moringa on our own farm, and pack it in Truganina, Melbourne")
     .replaceAll(/grown and processed in Truganina,? Melbourne/gi, "grown and manufactured on our own farm, then packed in Truganina, Melbourne")
-    .replaceAll(/ in Gujarat(?:, India)?/gi, "")
-    .replaceAll(/ from Gujarat(?:, India)?/gi, "")
-    .replaceAll(/Gujarat farm/gi, "own farm")
     .replace(/<h1(\s[^>]*)?>/gi, "<h2$1>")
     .replace(/<\/h1>/gi, "</h2>")
     // Only add the responsive wrapper when the source table is not already
@@ -3519,6 +3535,9 @@ function loadArticles() {
 
 function articleImage(article) {
   const source = article.image || "";
+  if (article.slug === "dried-curry-leaves-quality-guide-how-to-use") {
+    return "/assets/images/blog/dried-curry-leaves-quality-guide-how-to-use-hero.webp";
+  }
   if (source.startsWith("/assets/") && fs.existsSync(path.join(SITE, source.slice(1)))) return source;
   if (source.startsWith("/storefront/") && fs.existsSync(path.join(ROOT, source.slice(1)))) return source.replace(/^\/storefront/, "");
   const topic = journalTopic(article);
