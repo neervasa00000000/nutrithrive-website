@@ -1,4 +1,4 @@
-/** Auto-generated — 127 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 125 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -18,8 +18,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
-    "title": "AG1 Alternative Australia: Moringa vs AG1 (Honest Compare)",
-    "description": "Looking for an AG1 alternative in Australia? Compare ingredients, purpose, taste and cost with simple moringa powder — not a one-to-one swap.",
+    "title": "AG1 Alternative Australia: AG1 vs Moringa Compared",
+    "description": "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
     "category": "Wellness",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026",
     "image": "/assets/images/blog/moringa-replaces-200-supplement-stack-australia-2026.webp"
@@ -249,6 +249,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
   },
   {
+    "slug": "dried-curry-leaves-quality-guide-how-to-use",
+    "title": "Dried Curry Leaves That Actually Taste of Something: A Buyer's Guide",
+    "description": "Dried curry leaves tasting of nothing? How to spot a good pack by colour and aroma, how many to use, how to bloom them in oil and store them in Australia.",
+    "category": "Wellness",
+    "href": "/blog/dried-curry-leaves-quality-guide-how-to-use",
+    "image": "/assets/images/blog/dried-curry-leaves-quality-guide-how-to-use-hero.webp"
+  },
+  {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
     "title": "Fibre Deficiency in Australia: The Cancer Risk Most People Don&#39;t Know About",
     "description": "Low fibre is linked to a large share of bowel cancers in Australia. What fibre does, how much you need, and easy ways to eat more.",
@@ -299,7 +307,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "high-protein-moringa-recipes-australia-2026",
     "title": "High-Protein Moringa Recipes Australia (Leaf Powder)",
-    "description": "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve. How to use moringa powder in everyday cooking.",
+    "description": "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
     "category": "Wellness",
     "href": "/blog/high-protein-moringa-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -347,7 +355,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-add-moringa-to-diet",
     "title": "How to Add Moringa Powder to Your Diet (Australia)",
-    "description": "How to add moringa powder to your diet in Australia — how to use, eat, and mix leaf powder from &#189; tsp in everyday food. Shade-dried powder from $11/100g.",
+    "description": "How to add moringa powder to your diet in Australia — how to use, eat, and mix leaf powder from ½ tsp in everyday food.",
     "category": "Wellness",
     "href": "/blog/how-to-add-moringa-to-diet",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -386,8 +394,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
-    "title": "How to Choose Moringa Powder in Australia (2026 Buyer Checklist)",
-    "description": "How to choose moringa powder in Australia: colour, single-ingredient label, lab tests, shade-dried leaf. Packed in Truganina — shop when you are ready.",
+    "title": "How to Choose Moringa Powder in Australia | Lab Checklist",
+    "description": "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
     "category": "Wellness",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -419,7 +427,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
     "title": "How to Read Moringa Batch Codes — Freshness Check AU",
-    "description": "How to read moringa batch codes on Australian pouches — lot numbers, best-before dates, and freshness checks when you buy moringa powder online.",
+    "description": "How to read moringa batch codes on Australian pouches — find the lot stamp, match lab paperwork, and spot freshness red flags.",
     "category": "Wellness",
     "href": "/blog/how-to-read-moringa-batch-codes-freshness",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -439,13 +447,6 @@ window.NT_BLOG_ARTICLES = [
     "category": "Wellness",
     "href": "/blog/how-to-strengthen-immune-system-naturally-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
-  },
-  {
-    "slug": "iron-deficiency-australian-women-abs-real-numbers-2026",
-    "title": "This guide has moved",
-    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
-    "category": "Wellness",
-    "href": "/blog/iron-deficiency-australian-women-abs-real-numbers-2026"
   },
   {
     "slug": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
@@ -473,7 +474,7 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "is-moringa-worth-it-cost-value-australia-2026",
-    "title": "Is Moringa Worth It? A Cost-Per-Nutrient Breakdown for Australians (2026)",
+    "title": "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
     "description": "$11/100g moringa vs a multivitamin, greens powder or iron tablet, a cost-per-nutrient breakdown for Australians. Practical Australian guidance from NutriThrive.",
     "category": "Wellness",
     "href": "/blog/is-moringa-worth-it-cost-value-australia-2026",
@@ -514,7 +515,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "title": "Moringa Avocado Toast Recipe Australia — 5 Minutes",
-    "description": "Moringa avocado toast recipe for Australia — exact &#189; tsp leaf powder on wholegrain toast in 5 minutes. How to eat moringa powder at breakfast.",
+    "description": "Moringa avocado toast recipe Australia — exact ½ tsp leaf powder, lemon, salt, 5 minutes.",
     "category": "Wellness",
     "href": "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -561,8 +562,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Chemist Warehouse Moringa Powder, Capsules &amp; Tablets vs NutriThrive (AU)",
-    "description": "Chemist Warehouse moringa powder, capsules and tablets vs NutriThrive leaf powder — label checks, format maths, and when Truganina powder is the better buy in Australia.",
+    "title": "Chemist Warehouse Moringa Capsules &amp; Tablets vs NutriThrive Powder",
+    "description": "Chemist Warehouse moringa capsules and tablets vs NutriThrive powder — dose maths, quality signals, and when Truganina leaf powder wins in Australia.",
     "category": "Wellness",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -713,8 +714,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
-    "title": "Moringa Heavy Metals Lab Testing Australia — How to Read a CoA",
-    "description": "How to read a moringa CoA in Australia: Pb/Cd/As/Hg + microbes, NMI/NATA vs vague “lab tested”, and what to ask the seller before you buy.",
+    "title": "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
+    "description": "How to read a moringa CoA in Australia: Pb, Cd, As, Hg and microbes pass/fail columns, what “lab tested” does not prove, and how NMI summaries fit.",
     "category": "Wellness",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -762,7 +763,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-smoothie-recipes-australia-2026",
     "title": "Moringa Smoothie Recipes Australia — Exact Powder Amounts",
-    "description": "Moringa smoothie recipes Australia with exact tsp amounts — banana mango, peanut butter cacao, and three more. How to use moringa powder without the grassy bite.",
+    "description": "Moringa smoothie recipes Australia with exact tsp amounts — banana mango, peanut butter cacao, and three more.",
     "category": "Wellness",
     "href": "/blog/moringa-smoothie-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -801,8 +802,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
-    "title": "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
-    "description": "Does moringa have caffeine? No — not a coffee-style stimulant. Mix moringa powder with coffee or a morning smoothie as a leaf habit. Shop moringa powder.",
+    "title": "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
+    "description": "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-coffee-melbourne-energy-hack",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -857,8 +858,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "natural-pre-workout-moringa-australia-2026",
-    "title": "Natural Pre-Workout Habit: Moringa Powder Australia (Honest)",
-    "description": "No caffeine stimulant scoop. Kitchen mixes before training with food; start ½ tsp. Soft next step: Shop moringa powder from Truganina.",
+    "title": "Moringa as a Natural Pre-Workout in Australia (2026)",
+    "description": "Natural pre-workout habit for Australia: moringa has no caffeine, kitchen mixes before training, start small with food. Soft powder CTA from Truganina.",
     "category": "Wellness",
     "href": "/blog/natural-pre-workout-moringa-australia-2026",
     "image": "/assets/images/homepage/product-showcase/Moringa.webp"
@@ -890,15 +891,15 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
     "title": "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
-    "description": "Rosabella moringa reviews Australia 2026: is Rosabella legit, capsules vs powder maths, Chemist Warehouse availability, and when single-ingredient leaf powder is the calmer buy.",
+    "description": "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
     "category": "Wellness",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
   },
   {
     "slug": "science-shade-drying-vs-sun-drying-moringa",
-    "title": "Shade-Dried vs Sun-Dried Moringa Powder — Buyer Clues AU",
-    "description": "What shade-dried means on a moringa label, plus colour and aroma clues you can check at home. Shop moringa powder from Truganina.",
+    "title": "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
+    "description": "Shade-dried vs sun-dried moringa powder in Australia: colour, aroma and heat clues that mark better leaf. How NutriThrive shade-dries before the $11/100g pack.",
     "category": "Wellness",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -936,13 +937,6 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
-    "slug": "stress-weight-gain-cortisol-mechanism-what-to-do-2026",
-    "title": "This guide has moved",
-    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
-    "category": "Wellness",
-    "href": "/blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026"
-  },
-  {
     "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "title": "Ultra-Processed Food in Australia. What It Actually Is and How Much You&#39;re Eating",
     "description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows, without the lecture.",
@@ -952,8 +946,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "verify-moringa-quality-premium-buyers-checklist-2026",
-    "title": "Moringa Quality Checklist Australia (8 Checks Before You Buy)",
-    "description": "8 checks before you buy moringa powder in Australia: lab report, colour, smell, batch date, shade-dried single-ingredient leaf. Organic badge vs quality proof.",
+    "title": "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
+    "description": "8 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
     "category": "Wellness",
     "href": "/blog/verify-moringa-quality-premium-buyers-checklist-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -967,13 +961,6 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/vitamin-d-deficiency-australia-abs-1200.jpg"
   },
   {
-    "slug": "vitamin-d-deficiency-australia-sunny-country-paradox-2026",
-    "title": "This guide has moved",
-    "description": "This guide has moved to a clearer, consolidated NutriThrive article.",
-    "category": "Wellness",
-    "href": "/blog/vitamin-d-deficiency-australia-sunny-country-paradox-2026"
-  },
-  {
     "slug": "what-does-aust-l-mean-supplement-label-australia-2026",
     "title": "What Does AUST L Mean? Food Powder vs Listed Medicines AU",
     "description": "AUST L vs food on AU labels — when a CoA/lab summary matters instead of a medicine badge. Then Shop moringa powder.",
@@ -983,8 +970,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "title": "What Does Moringa Powder Taste Like? (And How to Mix It)",
-    "description": "Honest taste guide: earthy and mildly bitter in water — easy in smoothie, yoghurt, or food. How Australians actually use moringa powder daily.",
+    "title": "What Does Moringa Powder Taste Like? Honest Mix Guide",
+    "description": "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it — mix it and the flavour mostly disappears.",
     "category": "Wellness",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -1008,7 +995,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "title": "Moringa Powder Price Australia — Why $11 vs $25",
-    "description": "Moringa powder price in Australia: why NutriThrive is $11/100g vs $25 at pharmacy shelves — markup vs value, lab data, and where to buy moringa powder online.",
+    "description": "Moringa powder price in Australia: why $11/100g vs $25 at pharmacy shelves — markup vs value.",
     "category": "Wellness",
     "href": "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
