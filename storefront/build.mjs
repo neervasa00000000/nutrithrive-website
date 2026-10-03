@@ -126,24 +126,23 @@ const JOURNAL_PRIORITY = [
 // its committed title, description and H1 during storefront migrations.
 const ARTICLE_SEO_OVERRIDES = {
   "moringa-patches-australia-review-do-they-work": {
-    title: "Glorenda & Healrize Moringa Patches Australia: Do They Work? (2026 Claims Review)",
-    h1: "Glorenda & Healrize Moringa Patches Australia: Do They Work? (2026 Claims Review)",
-    description: "We did not buy or lab-test Glorenda, Healrize or Clearena moringa patches. This is a claims review, not a wear test. NutriThrive does not sell patches. Moringa powder from $11 (100g).",
-    ledeHtml: "We did not buy Glorenda, Healrize or Clearena moringa patches, and we did not lab-test the packs. This page reviews their public claims against published work on whether moringa leaf compounds cross the skin. NutriThrive does not sell patches. If you want single-ingredient moringa powder instead, sizes on the product page are 100g $11, 200g $21.50 and 400g $35, with free AU shipping at $79: <a href=\"/products/moringa-powder/\">nutrithrive.com.au/products/moringa-powder</a>",
+    title: "Glorenda & Healrize Moringa Patches Australia: Do They Work?",
+    description: "We do not sell Glorenda, Healrize, or any moringa patch. Honest Glorenda and Healrize review, then NutriThrive leaf powder from $11.",
+    h1: "Glorenda & Healrize Moringa Patches Australia: Do They Work?",
   },
   "curry-leaves-substitute-what-to-use-2026": {
-    title: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
-    description: "Curry leaf substitute Australia: 7 swaps with ratios. When zest or lime leaf is not enough, shop dried curry leaves for pantry tadka.",
-    h1: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
+    title: "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead",
+    description: "Curry leaf substitute options in Australia: kaffir lime leaf, lemon zest, and when dried leaves beat every swap. Dried pouch $7. Free AU shipping at $79.",
+    h1: "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead",
   },
   "curry-leaves-tea-how-to-make-benefits-2026": {
-    title: "How to Make Curry Leaf Tea (Dried Leaves) | Australia",
-    description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $79.",
-    h1: "How to Make Curry Leaf Tea with Dried Leaves",
+    title: "How to Make Curry Leaf Tea from Dried Leaves (Australia)",
+    description: "Steep dried curry leaves for a simple herbal cup. NutriThrive dried leaves are $7, with free AU shipping from $79.",
+    h1: "How to Make Curry Leaf Tea from Dried Leaves (Australia)",
   },
   "grow-moringa-tree-australia": {
     title: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
-    description: "How to grow a moringa tree in Australia: pot size, germination, winter dormancy and climate tips for Melbourne, Perth, Qld and warmer AU zones.",
+    description: "How to grow a moringa tree in Australia: pots, germination, winter, and climate. We do not sell trees, seeds, or seedlings.",
     h1: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
   },
   "moringa-and-berberine-australia-what-science-says-2026": {
@@ -162,18 +161,18 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Dried Curry Leaves That Actually Taste of Something: A Buyer's Guide",
   },
   "ag1-alternative-australia-moringa-comparison-2026": {
-    title: "AG1 Alternative Australia: AG1 vs Moringa Compared",
-    description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
-    h1: "AG1 Alternative Australia: AG1 vs Moringa Compared",
+    title: "AG1 Alternative Australia: Plain Moringa Powder vs AG1",
+    description: "AG1 is a multi-ingredient greens scoop; NutriThrive sells plain moringa powder from $11. Compare purpose and price, not a clone. Free AU shipping from $79.",
+    h1: "AG1 Alternative Australia: Plain Moringa Powder vs AG1",
   },
   "what-does-moringa-powder-taste-like-honest-guide-2026": {
-    title: "What Does Moringa Powder Taste Like? Honest Mix Guide",
-    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it — mix it and the flavour mostly disappears.",
-    h1: "What Does Moringa Powder Taste Like? Honest Mix Guide",
+    title: "What Does Moringa Powder Taste Like? Mix It, Then Buy a Pouch",
+    description: "What does moringa powder taste like? Earthy and a touch bitter in plain water; milder in smoothies and savoury food. NutriThrive powder: 100g $11, 200g $21.50, 400g $35.",
+    h1: "What Does Moringa Powder Taste Like? Mix It, Then Buy a Pouch",
   },
   "how-to-add-moringa-to-diet": {
     title: "How to Add Moringa Powder to Your Diet (Australia)",
-    description: "How to add moringa powder to your diet in Australia — how to use, eat, and mix leaf powder from ½ tsp in everyday food.",
+    description: "Everyday ways to eat moringa powder in food you already make. Sizes 100g $11, 200g $21.50, 400g $35.",
     h1: "How to Add Moringa Powder to Your Diet (Australia)",
   },
   "moringa-smoothie-recipes-australia-2026": {
@@ -202,9 +201,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "High-Protein Moringa Recipes Australia (Leaf Powder)",
   },
   "science-shade-drying-vs-sun-drying-moringa": {
-    title: "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
-    description: "Shade-dried vs sun-dried moringa powder in Australia: colour, aroma and heat clues that mark better leaf. How NutriThrive shade-dries before the $11/100g pack.",
-    h1: "Shade-Dried vs Sun-Dried Moringa Powder (Australia)",
+    title: "Shade-Dried vs Sun-Dried Moringa Powder: What to Check Before You Buy",
+    description: "Shade dried meaning, sun vs shade clues, and whether you can dry moringa leaves in sunlight. Powder from $11. Free AU shipping at $79.",
+    h1: "Shade-Dried vs Sun-Dried Moringa Powder: What to Check Before You Buy",
   },
   "natural-pre-workout-moringa-australia-2026": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
@@ -212,24 +211,24 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
   },
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
-    title: "Chemist Warehouse Moringa Capsules & Tablets vs NutriThrive Powder",
-    description: "Chemist Warehouse moringa capsules and tablets vs NutriThrive powder — dose maths, quality signals, and when Truganina leaf powder wins in Australia.",
-    h1: "Chemist Warehouse Moringa Capsules & Tablets vs NutriThrive Powder",
+    title: "Chemist Warehouse Moringa Powder, Capsules & Tablets vs NutriThrive Powder (AU)",
+    description: "Shopping Chemist Warehouse for moringa powder, capsules, or tablets? We sell leaf powder only: 100g $11, 200g $21.50, 400g $35.",
+    h1: "Chemist Warehouse Moringa Powder, Capsules & Tablets vs NutriThrive Powder (AU)",
   },
   "moringa-brands-comparison-australia-2026": {
     title: "Moringa Brands Compared Australia 2026",
-    description: "Compare Australian moringa brands on lab testing, origin, processing, ingredients and $/100g. Clear checklist before you buy leaf powder in AU.",
+    description: "Compare moringa brands in Australia on origin, processing, and price, then the NutriThrive powder pouch we sell.",
     h1: "Moringa Brands Compared Australia 2026",
   },
   "moringa-capsules-vs-powder-which-is-better-2026": {
     title: "Best Moringa Capsules Australia? We Sell Powder, Not Capsules",
-    description: "Looking for the best moringa capsules in Australia? We sell leaf powder instead: 100g $11, 200g $21.50, 400g $35. Free AU shipping from $79. Packed in Truganina, Melbourne.",
+    description: "Comparing moringa capsules with powder? We sell leaf powder, not capsules. 100g $11, 200g $21.50, 400g $35.",
     h1: "Best Moringa Capsules Australia? We Sell Powder, Not Capsules",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
-    title: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
-    description: "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
-    h1: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
+    title: "Rosabella Moringa Reviews Australia 2026: We Sell Powder, Not Rosabella",
+    description: "Australian Rosabella moringa review. We do not sell Rosabella. Buy path is NutriThrive leaf powder from $11.",
+    h1: "Rosabella Moringa Reviews Australia 2026: We Sell Powder, Not Rosabella",
   },
   "how-much-caffeine-safe-per-day-australia-fsanz-2026": {
     title: "How Much Caffeine Per Day in Australia? FSANZ Guide",
@@ -237,36 +236,87 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "How Much Caffeine Per Day in Australia? FSANZ Guide",
   },
   "how-to-brew-darjeeling-tea-perfectly-2026": {
-    title: "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
-    description: "Water temp, steep time, and leaf ratio for Darjeeling in Australian kitchens. Soft next step: Shop Darjeeling black tea.",
-    h1: "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
+    title: "How to Brew Darjeeling Tea (Temp, Time, Leaf): Then Buy the Leaf",
+    description: "Water temperature, steep time, and leaf amount for Darjeeling. Loose leaf $7.50 at /products/black-tea/.",
+    h1: "How to Brew Darjeeling Tea (Temp, Time, Leaf): Then Buy the Leaf",
   },
   "moringa-vs-coffee-melbourne-energy-hack": {
-    title: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
-    h1: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
+    title: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
+    description: "Does moringa have caffeine? No for leaf powder. How to stir moringa into coffee, with powder from $11.",
+    h1: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
   },
   "how-to-choose-moringa-powder-australia-2026": {
     title: "Buy Moringa Powder Australia | Best Powder & Where to Shop",
-    description: "Buy moringa powder in Australia: 100g $11, 200g $21.50, 400g $35. Free AU shipping from $79 (one 100g jar does not qualify). Packed in Truganina, Melbourne.",
+    description: "Where to buy moringa powder in Australia and how to choose a pouch. NutriThrive 100g $11, 200g $21.50, 400g $35.",
     h1: "Buy Moringa Powder Australia | Best Powder & Where to Shop",
   },
   "verify-moringa-quality-premium-buyers-checklist-2026": {
     title: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
-    description: "8 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
+    description: "Eight checks before you buy moringa powder in Australia, then the pouch we pack: 100g $11, 200g $21.50, 400g $35.",
     h1: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
   },
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": {
-    title: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
-    description: "How to read a moringa CoA in Australia: Pb, Cd, As, Hg and microbes pass/fail columns, what “lab tested” does not prove, and how NMI summaries fit.",
-    h1: "Moringa Heavy Metals Lab Testing Australia: How to Read a CoA",
+    title: "Moringa Heavy Metals Lab Testing Australia: CoA Checklist Before You Buy",
+    description: "How to read a moringa certificate of analysis before you pay, then powder at 100g $11, 200g $21.50, 400g $35.",
+    h1: "Moringa Heavy Metals Lab Testing Australia: CoA Checklist Before You Buy",
   },
   "is-moringa-worth-it-cost-value-australia-2026": {
     title: "Is Moringa Worth It? Cost-Per-Nutrient Breakdown for Australians",
   },
   "moringa-soap-benefits-skin-guide": {
-    title: "Moringa Soap Benefits Australia — $7 Bar vs Skin Hype",
-    description: "Honest moringa soap for face and skin in Australia: a $7 bar is a cleanser, not a treatment. Shop moringa soap. Soft eat option: shop moringa powder.",
-    h1: "Moringa Soap Benefits Australia — $7 Bar vs Skin Hype",
+    title: "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
+    description: "Moringa soap benefits for skin mean a plain wash, not a treatment. NutriThrive herbal bar is $7. Free AU shipping at $79.",
+    h1: "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
+  },
+  "how-long-does-moringa-powder-last-storage-shelf-life-2026": {
+    title: "Does Moringa Powder Expire? Shelf Life, Storage, and When to Buy",
+    description: "Does moringa powder expire? Shelf life, storage tips for Australia, signs it has gone off, and when to restock from $11.",
+    h1: "Does Moringa Powder Expire? Shelf Life, Storage, and When to Buy",
+  },
+  "darjeeling-tea-vs-english-breakfast-comparison-2026": {
+    title: "Darjeeling vs English Breakfast Tea: Which Cup to Buy",
+    description: "Darjeeling and English Breakfast are both black teas and different cups. Choose, then buy our Darjeeling loose leaf at $7.50.",
+    h1: "Darjeeling vs English Breakfast Tea: Which Cup to Buy",
+  },
+  "moringa-vs-whey-protein-comparison-2026": {
+    title: "Moringa vs Whey Protein Australia: Not a Whey Substitute",
+    description: "Moringa powder is not a whey replacement. How to add leaf powder to a protein shake, with sizes from $11.",
+    h1: "Moringa vs Whey Protein Australia: Not a Whey Substitute",
+  },
+  "moringa-before-after-workout-timing-guide-2026": {
+    title: "Moringa Before or After Workout? Timing Guide (AU)",
+    description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $21.50, 400g $35. Free AU shipping at $79.",
+    h1: "Moringa Before or After Workout? Timing Guide (AU)",
+  },
+  "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026": {
+    title: "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
+    description: "Darjeeling black tea usually has less caffeine than a typical coffee. NutriThrive loose leaf is $7.50 per 100g; free AU shipping from $79.",
+    h1: "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
+  },
+  "curry-leaves-recipes-beyond-dal": {
+    title: "5 Curry Leaf Recipes Beyond Dal: Dried Leaves $7",
+    description: "Five curry leaf recipes beyond dal: tadka lemon rice, chutney, eggs, potatoes, and finishing oil. Use dried leaves, not curry powder. $7 pouch. Free AU shipping at $79.",
+    h1: "5 Curry Leaf Recipes Beyond Dal: Dried Leaves $7",
+  },
+  "moringa-vs-spirulina-vs-matcha-comparison-australia": {
+    title: "Moringa vs Spirulina vs Matcha (Australia): We Sell Moringa Powder",
+    description: "Moringa vs spirulina vs matcha for everyday use in Australia. We sell moringa powder only: 100g $11, 200g $21.50, 400g $35.",
+    h1: "Moringa vs Spirulina vs Matcha (Australia): We Sell Moringa Powder",
+  },
+  "curry-leaves-vs-curry-powder-difference-explained-2026": {
+    title: "Curry Leaves vs Curry Powder: Buy the Leaves, Not the Mix",
+    description: "Curry leaves and curry powder are not the same. If the recipe wants the leaf, dried curry leaves are $7.",
+    h1: "Curry Leaves vs Curry Powder: Buy the Leaves, Not the Mix",
+  },
+  "moringa-wellness-shot-recipe-winter-2026": {
+    title: "Moringa Shot Recipe Australia: Powder You Mix, Not a Shot We Sell",
+    description: "A small drink you mix at home from moringa powder. We do not sell shots. Powder 100g $11, 200g $21.50, 400g $35.",
+    h1: "Moringa Shot Recipe Australia: Powder You Mix, Not a Shot We Sell",
+  },
+  "what-does-aust-l-mean-supplement-label-australia-2026": {
+    title: "What Does AUST L Mean? Food Powder vs Listed Medicines (AU)",
+    description: "AUST L is a listed-medicine mark, not a quality stamp on a food powder. NutriThrive moringa is a food powder.",
+    h1: "What Does AUST L Mean? Food Powder vs Listed Medicines (AU)",
   },
 };
 
