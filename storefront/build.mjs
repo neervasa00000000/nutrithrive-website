@@ -109,20 +109,16 @@ const JOURNAL_PRIORITY = [
   "how-to-add-moringa-to-diet",
   "moringa-smoothie-recipes-australia-2026",
   "high-protein-moringa-recipes-australia-2026",
-  "best-time-to-take-moringa-powder-morning-or-night-2026",
   "how-to-make-moringa-tea-recipes-2026",
   "moringa-brands-comparison-australia-2026",
   "moringa-vs-spirulina-vs-matcha-comparison-australia",
   "how-to-choose-moringa-powder-australia-2026",
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
   "dried-curry-leaves-australia-guide",
-  "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
   "cold-brew-darjeeling-australian-spring-2026",
   "darjeeling-tea-vs-english-breakfast-comparison-2026",
   "how-to-brew-darjeeling-tea-perfectly-2026",
   "moringa-soap-benefits-skin-guide",
-  "moringa-soap-vs-regular-soap-comparison-2026",
-  "how-to-read-a-soap-ingredient-label",
 ];
 
 // Search Console opportunity updates approved after reviewing the 7 September
@@ -153,11 +149,6 @@ const ARTICLE_SEO_OVERRIDES = {
     title: "Moringa vs Ashwagandha: Key Differences Explained",
     description: "Compare moringa and ashwagandha, including what they are, common uses, evidence limits, side effects and when to speak with a health professional.",
     h1: "Moringa vs Ashwagandha: Key Differences Explained",
-  },
-  "fresh-vs-dried-curry-leaves-cooking-comparison-2026": {
-    title: "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
-    description: "Fresh vs dried curry leaves Australia: when dried wins, freeze vs dry, tempering ratios and storage. Shop dried curry leaves for pantry tadka.",
-    h1: "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
   },
   "dried-curry-leaves-quality-guide-how-to-use": {
     title: "Dried Curry Leaves: How to Judge Quality & Get Real Flavour",
@@ -220,9 +211,14 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Chemist Warehouse Moringa Capsules & Tablets vs NutriThrive Powder",
   },
   "moringa-brands-comparison-australia-2026": {
-    title: "Best Moringa Brands Australia 2026 Compared",
+    title: "Moringa Brands Compared Australia 2026",
     description: "Compare Australian moringa brands on lab testing, origin, processing, ingredients and $/100g. Clear checklist before you buy leaf powder in AU.",
-    h1: "Best Moringa Brands Australia 2026 Compared",
+    h1: "Moringa Brands Compared Australia 2026",
+  },
+  "moringa-capsules-vs-powder-which-is-better-2026": {
+    title: "Best Moringa Capsules Australia? We Sell Powder, Not Capsules",
+    description: "Looking for the best moringa capsules in Australia? We sell leaf powder instead: 100g $11, 200g $21.50, 400g $35. Free AU shipping from $79. Packed in Truganina, Melbourne.",
+    h1: "Best Moringa Capsules Australia? We Sell Powder, Not Capsules",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
     title: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
@@ -244,9 +240,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
   },
   "how-to-choose-moringa-powder-australia-2026": {
-    title: "How to Choose Moringa Powder in Australia | Lab Checklist",
-    description: "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
-    h1: "How to Choose Moringa Powder in Australia | Lab Checklist",
+    title: "Buy Moringa Powder Australia | Best Powder & Where to Shop",
+    description: "Buy moringa powder in Australia: 100g $11, 200g $21.50, 400g $35. Free AU shipping from $79 (one 100g jar does not qualify). Packed in Truganina, Melbourne.",
+    h1: "Buy Moringa Powder Australia | Best Powder & Where to Shop",
   },
   "verify-moringa-quality-premium-buyers-checklist-2026": {
     title: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
@@ -266,11 +262,6 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Honest moringa soap for face and skin in Australia: a $7 bar is a cleanser, not a treatment. Shop moringa soap. Soft eat option: shop moringa powder.",
     h1: "Moringa Soap Benefits Australia — $7 Bar vs Skin Hype",
   },
-  "moringa-soap-vs-regular-soap-comparison-2026": {
-    title: "Moringa Soap vs Regular Soap Australia — Honest Compare",
-    description: "Moringa soap vs regular soap in Australia: ingredients, who it's for, and when supermarket soap is fine. Soft next step: Shop moringa soap.",
-    h1: "Moringa Soap vs Regular Soap Australia — Honest Compare",
-  },
 };
 
 const JOURNAL_REDIRECTS = {
@@ -280,6 +271,13 @@ const JOURNAL_REDIRECTS = {
   "vitamin-d-deficiency-australia-sunny-country-paradox-2026": "vitamin-d-deficiency-australia-abs-sunny-country-2026",
   "iron-deficiency-australian-women-abs-real-numbers-2026": "iron-deficiency-australian-women-symptoms-plant-based-sources-2026",
   "moringa-soap-benefits-for-skin-2026": "moringa-soap-benefits-skin-guide",
+  "curry-leaves-in-australian-cooking-how-to-use-2026": "curry-leaves-recipes-beyond-dal",
+  "fresh-vs-dried-curry-leaves-cooking-comparison-2026": "dried-curry-leaves-australia-guide",
+  "moringa-soap-vs-regular-soap-comparison-2026": "moringa-soap-benefits-skin-guide",
+  "how-to-read-a-soap-ingredient-label": "moringa-soap-benefits-skin-guide",
+  "moringa-for-anxiety-stress-evidence-2026": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
+  "cortisol-cocktail-trend-explained-moringa-2026": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
+  "best-time-to-take-moringa-powder-morning-or-night-2026": "moringa-before-after-workout-timing-guide-2026",
 };
 
 // Retired seasonal articles that now lead directly to a product rather than
@@ -349,11 +347,6 @@ const CURATED_RELATED = {
     "how-to-add-moringa-to-diet",
     "how-long-does-moringa-powder-last-storage-shelf-life-2026",
   ],
-  "best-time-to-take-moringa-powder-morning-or-night-2026": [
-    "how-to-add-moringa-to-diet",
-    "verify-moringa-quality-premium-buyers-checklist-2026",
-    "what-does-moringa-powder-taste-like-honest-guide-2026",
-  ],
   "natural-pre-workout-moringa-australia-2026": [
     "moringa-before-after-workout-timing-guide-2026",
     "how-to-add-moringa-to-diet",
@@ -361,18 +354,13 @@ const CURATED_RELATED = {
   ],
   "dried-curry-leaves-australia-guide": [
     "dried-curry-leaves-quality-guide-how-to-use",
-    "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
-    "how-to-store-curry-leaves-fresh-dried-australia-2026",
+    "curry-leaves-recipes-beyond-dal",
+    "curry-leaves-substitute-what-to-use-2026",
   ],
   "dried-curry-leaves-quality-guide-how-to-use": [
     "dried-curry-leaves-australia-guide",
-    "fresh-vs-dried-curry-leaves-cooking-comparison-2026",
-    "how-to-store-curry-leaves-fresh-dried-australia-2026",
-  ],
-  "curry-leaves-in-australian-cooking-how-to-use-2026": [
-    "dried-curry-leaves-australia-guide",
-    "curry-leaves-dahl-recipe-30-minutes-australia-2026",
     "curry-leaves-recipes-beyond-dal",
+    "curry-leaves-substitute-what-to-use-2026",
   ],
   "how-to-brew-darjeeling-tea-perfectly-2026": [
     "darjeeling-black-tea-australia-guide",
@@ -385,9 +373,9 @@ const CURATED_RELATED = {
     "can-you-drink-darjeeling-tea-every-day-2026",
   ],
   "moringa-soap-benefits-skin-guide": [
-    "moringa-soap-vs-regular-soap-comparison-2026",
-    "how-to-read-a-soap-ingredient-label",
     "moringa-face-mask-australia-glow-ritual",
+    "how-to-choose-moringa-powder-australia-2026",
+    "what-does-moringa-powder-taste-like-honest-guide-2026",
   ],
 };
 
@@ -511,16 +499,6 @@ const ARTICLE_CONVERSION_PATHS = {
     cta: "Shop moringa powder",
     links: [["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"]],
   },
-  "best-time-to-take-moringa-powder-morning-or-night-2026": {
-    kicker: "Once timing is clear",
-    title: "Choose a pouch that fits your routine",
-    body: "Pick a size you can finish while it stays fresh, then keep the pouch sealed in a cool, dry place.",
-    cta: "Shop moringa powder",
-    links: [
-      ["How to add moringa to your diet", "how-to-add-moringa-to-diet"],
-      ["Verify moringa quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"],
-    ],
-  },
   "natural-pre-workout-moringa-australia-2026": {
     kicker: "Soft next step",
     title: "Shop moringa powder",
@@ -536,7 +514,7 @@ const ARTICLE_CONVERSION_PATHS = {
     title: "Dried curry leaves from our farm",
     body: "30g of shade-dried kari leaf, grown on our farm in Gujarat and packed in Truganina. Use about 2 to 3 times as much as fresh.",
     cta: "Buy dried curry leaves",
-    links: [["Fresh versus dried curry leaves", "fresh-vs-dried-curry-leaves-cooking-comparison-2026"]],
+    links: [["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"]],
   },
   "dried-curry-leaves-quality-guide-how-to-use": {
     kicker: "After the crush test",
@@ -544,13 +522,6 @@ const ARTICLE_CONVERSION_PATHS = {
     body: "Whole leaflets, shade-dried and packed in small batches in Truganina. Crush-test a leaf when your pack arrives.",
     cta: "Shop dried curry leaves",
     links: [["Dried curry leaves buy and store guide", "dried-curry-leaves-australia-guide"]],
-  },
-  "curry-leaves-in-australian-cooking-how-to-use-2026": {
-    kicker: "Keep leaves on hand",
-    title: "Pantry-ready dried curry leaves",
-    body: "Whole dried leaves for tadka, dals and South Indian cooking. Packed in Melbourne from our farm harvest.",
-    cta: "See dried curry leaves",
-    links: [["30-minute curry leaf dal", "curry-leaves-dahl-recipe-30-minutes-australia-2026"]],
   },
   "how-to-brew-darjeeling-tea-perfectly-2026": {
     kicker: "Brew what you buy",
@@ -571,14 +542,7 @@ const ARTICLE_CONVERSION_PATHS = {
     title: "Handmade moringa soap from Truganina",
     body: "A $7 handmade bar made by us in Australia. Read the ingredient list and compare it with regular soap before you buy.",
     cta: "Shop moringa soap",
-    links: [["Moringa soap versus regular soap", "moringa-soap-vs-regular-soap-comparison-2026"]],
-  },
-  "moringa-soap-vs-regular-soap-comparison-2026": {
-    kicker: "See the bar",
-    title: "Handmade moringa soap from Truganina",
-    body: "A $7 handmade bar made by us in Australia. Cleanser job only — compare the label with regular soap before you buy.",
-    cta: "Shop moringa soap",
-    links: [["Moringa soap benefits for skin", "moringa-soap-benefits-skin-guide"]],
+    links: [["Moringa face mask ritual", "moringa-face-mask-australia-glow-ritual"]],
   },
 };
 
@@ -646,9 +610,8 @@ const PRODUCT_GUIDES = {
   "curry-leaves": [
     ["How to judge dried curry leaf quality", "dried-curry-leaves-quality-guide-how-to-use"],
     ["Dried curry leaves buying and use guide", "dried-curry-leaves-australia-guide"],
-    ["Fresh versus dried curry leaves", "fresh-vs-dried-curry-leaves-cooking-comparison-2026"],
-    ["How to use curry leaves in Australian cooking", "curry-leaves-in-australian-cooking-how-to-use-2026"],
-    ["How to store curry leaves", "how-to-store-curry-leaves-fresh-dried-australia-2026"],
+    ["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"],
+    ["Curry leaves substitute guide", "curry-leaves-substitute-what-to-use-2026"],
     ["30-minute curry leaf dal recipe", "curry-leaves-dahl-recipe-30-minutes-australia-2026"],
   ],
   "black-tea": [
@@ -660,8 +623,6 @@ const PRODUCT_GUIDES = {
   ],
   "moringa-soap": [
     ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
-    ["Moringa soap versus regular soap", "moringa-soap-vs-regular-soap-comparison-2026"],
-    ["How to read a soap ingredient label", "how-to-read-a-soap-ingredient-label"],
     ["Moringa face mask ritual", "moringa-face-mask-australia-glow-ritual"],
   ],
   "combo-pack": [
