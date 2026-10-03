@@ -125,6 +125,12 @@ const JOURNAL_PRIORITY = [
 // exports. Keep this explicit so every other ranking article continues to use
 // its committed title, description and H1 during storefront migrations.
 const ARTICLE_SEO_OVERRIDES = {
+  "moringa-patches-australia-review-do-they-work": {
+    title: "Glorenda & Healrize Moringa Patches Australia: Do They Work? (2026 Claims Review)",
+    h1: "Glorenda & Healrize Moringa Patches Australia: Do They Work? (2026 Claims Review)",
+    description: "We did not buy or lab-test Glorenda, Healrize or Clearena moringa patches. This is a claims review, not a wear test. NutriThrive does not sell patches. Moringa powder from $11 (100g).",
+    ledeHtml: "We did not buy Glorenda, Healrize or Clearena moringa patches, and we did not lab-test the packs. This page reviews their public claims against published work on whether moringa leaf compounds cross the skin. NutriThrive does not sell patches. If you want single-ingredient moringa powder instead, sizes on the product page are 100g $11, 200g $21.50 and 400g $35, with free AU shipping at $79: <a href=\"/products/moringa-powder/\">nutrithrive.com.au/products/moringa-powder</a>",
+  },
   "curry-leaves-substitute-what-to-use-2026": {
     title: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
     description: "Curry leaf substitute Australia: 7 swaps with ratios. When zest or lime leaf is not enough, shop dried curry leaves for pantry tadka.",
@@ -3320,6 +3326,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
       catalog: meta.description,
       slug: meta.slug,
     });
+  const ledeHtml = seoOverride?.ledeHtml || esc(description);
   const r = routes();
   const url = r.articleAbs(meta.slug);
   const image = absUrl(meta.image);
@@ -3397,7 +3404,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         <article data-article-slug="${esc(meta.slug)}">
           <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>
-          <p class="lede">${esc(description)}</p>
+          <p class="lede">${ledeHtml}</p>
           <div class="article-hero"><img src="${meta.image}" alt="${esc(title)}" width="1200" height="675" fetchpriority="high"></div>
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
             <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong></div>
