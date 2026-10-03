@@ -730,8 +730,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
-    "title": "Glorenda &amp; Healrize Moringa Patches Australia: Do They Work? (2026 Review)",
-    "description": "We tested Glorenda, Healrize &amp; Clearena moringa patches. No clinical evidence supports skin absorption, see what actually works instead.",
+    "title": "Glorenda &amp; Healrize Moringa Patches Australia: Do They Work? (2026 Claims Review)",
+    "description": "We did not buy or lab-test Glorenda, Healrize or Clearena moringa patches. This is a claims review, not a wear test. NutriThrive does not sell patches. Moringa powder from $11 (100g).",
     "category": "Wellness",
     "href": "/blog/moringa-patches-australia-review-do-they-work",
     "image": "/assets/images/og/moringa-article-1200.jpg"
