@@ -885,3 +885,18 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
+
+# Restored consolidation redirects (Oct 2026)
+/blog/can-you-drink-darjeeling-tea-every-day-2026  /blog/darjeeling-tea-vs-english-breakfast-comparison-2026  301
+/blog/cold-brew-darjeeling-australian-spring-2026  /blog/how-to-brew-darjeeling-tea-perfectly-2026  301
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026  /blog/darjeeling-black-tea-australia-guide  301
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026  /blog/how-to-brew-darjeeling-tea-perfectly-2026  301
+/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026  /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026  301
+/blog/darjeeling-tea-health-benefits-research-2026  /blog/darjeeling-black-tea-australia-guide  301
+/blog/is-moringa-worth-it-cost-value-australia-2026  /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026  301
+/blog/moringa-30-day-challenge-honest-results  /blog/moringa-vs-coffee-melbourne-energy-hack  301
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026  /blog/moringa-smoothie-recipes-australia-2026  301
+/blog/moringa-energy-what-happens-week-by-week-2026  /blog/moringa-vs-coffee-melbourne-energy-hack  301
+/blog/moringa-face-mask-australia-glow-ritual  /blog/how-to-add-moringa-to-diet  301
+/blog/morning-routine-health-tips-australia-2026  /blog/how-to-add-moringa-to-diet  301
+/blog/natural-pre-workout-moringa-australia-2026  /blog/moringa-before-after-workout-timing-guide-2026  301
