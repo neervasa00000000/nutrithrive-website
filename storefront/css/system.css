@@ -1493,28 +1493,36 @@ body.journal-searching .section-head > a {
 
 .pdp-support-card summary {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.25;
   list-style: none;
-  min-height: 52px;
-  padding-right: 32px;
+  min-height: var(--touch);
+  padding: 0;
   position: relative;
 }
 
 .pdp-support-card summary::-webkit-details-marker { display: none; }
 .pdp-support-card summary::after {
   content: "+";
+  flex: 0 0 auto;
   font-family: var(--font-body);
   font-size: 22px;
   font-weight: 400;
-  position: absolute;
-  right: 0;
-  top: 0;
+  line-height: 1;
 }
 .pdp-support-card[open] summary::after { content: "−"; }
+.pdp-support-card[open] summary { margin-bottom: var(--space-3); }
 .pdp-support-card summary:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
-.pdp-support-card p { margin-bottom: 0; }
+.pdp-support-card > div { margin: 0; padding: 0; }
+.pdp-support-card p,
+.pdp-support-card ul { margin: 0; }
+.pdp-support-card ul { padding-left: 1.15em; }
 .pdp-reviews,
 .related-products { margin-top: var(--space-9); padding-top: var(--space-7); border-top: 1px solid var(--color-border); }
 
@@ -1902,6 +1910,7 @@ body.journal-searching .section-head > a {
 .pdp-support-grid .delivery-card {
   margin-top: 0;
   height: auto;
+  border-left: 0;
 }
 
 .pdp-faq,
