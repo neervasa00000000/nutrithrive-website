@@ -137,7 +137,7 @@ export const PRODUCTS = [
     sku: "NT-GIFT-325G",
     name: "Gift Pack",
     variant: "4 products",
-    benefit: "Powder, tea, curry leaves, and soap.",
+    benefit: "Diwali gift pack: powder, tea, curry leaves, and soap.",
     price: 35,
     was: null,
     weight: 325,

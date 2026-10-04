@@ -1427,14 +1427,15 @@ function homepage() {
       <p class="lede">Farm-grown, shade-dried and manufactured by us, with Australian testing information published when available. Packed in Truganina.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
-        <a class="btn btn-secondary" href="/products/gift-pack/">Shop Gift Pack $35</a>
+        <a class="btn btn-secondary" href="/products/diwali-gift-box/">Diwali Gift Box $20</a>
         <a class="btn btn-secondary" href="/documents/nutrithrive-lab-report-summary.pdf">See our lab report</a>
       </div>
-      <p class="purchase-note">Free AU shipping at $79.</p>
+      <p class="purchase-note">Free AU shipping at $79. <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>
       ${stars()} <span style="font-size:14px;color:var(--color-text-secondary)">from Google reviews</span>
       <nav class="hero-range" aria-label="Also from NutriThrive">
         <p class="hero-range__label">Also from our farm and kitchen</p>
         <ul class="hero-range__list">
+          <li><a href="/products/diwali-gift-box/" data-select-item="diwali-gift-box">Diwali Gift Box · $20</a></li>
           <li><a href="/products/curry-leaves/" data-select-item="curry-leaves">Dried Curry Leaves · $7</a></li>
           <li><a href="/products/black-tea/" data-select-item="black-tea">Darjeeling Black Tea · $7.50</a></li>
           <li><a href="/products/moringa-soap/" data-select-item="moringa-soap">Moringa Soap · $7</a></li>
@@ -1557,7 +1558,7 @@ function shopPage() {
       <section class="page-intro shop-intro wrap">
         <p class="kicker">Farm grown · Australian packed</p>
         <h1>Shop NutriThrive</h1>
-        <p>Moringa, curry leaves, Darjeeling tea and handmade soap. Free AU shipping at $79.</p>
+        <p>Moringa, curry leaves, Darjeeling tea and handmade soap. Free AU shipping at $79. For Diwali: the <a href="/products/diwali-gift-box/">$20 gift box</a> (no moringa) or the <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>
       </section>
       <section class="section shop-catalog" style="padding-top:0" aria-labelledby="shop-products">
         <div class="wrap">
@@ -1720,7 +1721,7 @@ const PDP = {
     h1: "Darjeeling Loose Leaf Black Tea",
     current: "Tea",
     product: PRODUCTS.find((p) => p.id === "black-tea"),
-    intro: "Loose-leaf tea sourced from a family farm in Darjeeling, with muscatel and floral notes when brewed gently. Packed in Truganina and shipped Australia-wide.",
+    intro: "Loose-leaf tea sourced from a family farm in Darjeeling, with muscatel and floral notes when brewed gently. Packed in Truganina and shipped Australia-wide. For a ready Diwali or host gift, see the tea + curry + soap gift box.",
     proofs: [
       "Family-farm Darjeeling",
       "Packed in Melbourne",
@@ -1757,7 +1758,7 @@ const PDP = {
     h1: "Handmade Moringa & Lavender Soap Bar",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "moringa-soap"),
-    intro: "A handmade soap and lavender soap bar with moringa leaf in the mix — 95g, made by us in Australia. Straightforward small-batch production, not a skin treatment.",
+    intro: "A handmade soap and lavender soap bar with moringa leaf in the mix — 95g, made by us in Australia. Straightforward small-batch production, not a skin treatment. Works as a Diwali stocking-filler or small thank-you gift under $10.",
     proofs: [
       "Handmade in Australia",
       "Packed in Melbourne",
@@ -1866,14 +1867,15 @@ const PDP = {
     ],
   },
   "gift-pack": {
-    title: "Tea, Curry Leaf & Soap Gift Pack Australia | $35",
-    description: "Darjeeling tea, dried curry leaves, handmade lavender soap and moringa powder in one gift pack from Truganina for $35.",
+    title: "Diwali Gift Pack Australia | Tea, Curry Leaf, Soap & Moringa $35",
+    description:
+      "Diwali gift pack with moringa powder, Darjeeling tea, dried curry leaves and handmade lavender soap for $35 from Truganina. Prefer no moringa? See the $20 Diwali gift box.",
     forceSeo: true,
-    h1: "Darjeeling Tea, Curry Leaf & Soap Gift Pack",
+    h1: "Diwali Gift Pack: Tea, Curry Leaf, Soap & Moringa",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "gift-pack"),
     intro:
-      "100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade moringa lavender soap. Ready to gift.",
+      "A Diwali gift pack with 100g moringa powder (disclosed), 100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade moringa lavender soap. Ready to gift. Want tea, curry leaves and soap only? Choose the $20 Diwali gift box instead.",
     proofs: [
       { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
       "Handmade soap · family-farm tea",
@@ -1893,12 +1895,18 @@ const PDP = {
     process: "We bring together our farm-grown, family-farm and Australian handmade products, then prepare the gift pack in Truganina.",
     storage: "Keep every product in a dry environment away from humidity. Food products should be used within 18 months after opening; keep the soap dry between uses.",
     safety: "Follow the directions and safety information for each included product. Soap is for external use only and the tea contains caffeine.",
-    what: "Powder, tea, curry leaves, and soap in one box. Packed in Truganina for birthdays, host gifts, and wellness baskets.",
-    use: "Each product is also available individually.",
+    what: "A four-product Diwali gift pack: moringa powder, tea, curry leaves, and soap. Packed in Truganina for birthdays, host gifts, and festival baskets.",
+    use: "Each product is also available individually. For a moringa-free Diwali hamper, choose the $20 Diwali gift box.",
     faqs: [
       [
         "What is included?",
-        "100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and one 95g moringa lavender soap.",
+        "100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and one 95g moringa lavender soap. This Diwali gift pack includes moringa powder.",
+      ],
+      [
+        "Is there a Diwali option without moringa?",
+        {
+          html: `Yes. The <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> has Darjeeling tea, dried curry leaves and handmade lavender soap only — no moringa powder.`,
+        },
       ],
     ],
   },
@@ -1921,16 +1929,17 @@ function pdpPage(slug, d) {
     "moringa-powder":
       "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     "black-tea":
-      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+      "Free AU shipping at $79. Add curry leaves, handmade soap, or the Diwali gift box to reach the threshold.",
     "curry-leaves":
       "Free AU shipping at $79. Add Darjeeling tea, handmade soap, or the Diwali gift box to reach the threshold.",
     "combo-pack":
       "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     "moringa-soap":
-      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+      "Free AU shipping at $79. Add Darjeeling tea, curry leaves, or the Diwali gift box to reach the threshold.",
     "diwali-gift-box":
       "Free AU shipping at $79. Add another gift box, the $35 gift pack, or tea/curry singles to reach the threshold.",
-    "gift-pack": "Free AU shipping at $79. Add another product or a second pack to reach the threshold.",
+    "gift-pack":
+      "Free AU shipping at $79. Add another product, a second pack, or the $20 Diwali gift box to reach the threshold.",
   }[slug];
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const buyProduct =
@@ -1998,10 +2007,11 @@ function pdpPage(slug, d) {
           <h2>How to use</h2><p>${esc(d.use)}</p>
           ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a> or contact us for current testing details.</p>` : ""}`;
   const shipLadder = {
-    "moringa-soap": `<p>Pair with <a href="/products/moringa-powder/">moringa powder</a> — free AU shipping over <strong>$79</strong>.</p>`,
+    "moringa-soap": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/black-tea/">Darjeeling tea</a>, <a href="/products/curry-leaves/">dried curry leaves</a>, or the <a href="/products/diwali-gift-box/">Diwali gift box</a>. Also see the <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
     "curry-leaves": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/black-tea/">Darjeeling tea</a>, <a href="/products/moringa-soap/">handmade soap</a>, or the <a href="/products/diwali-gift-box/">Diwali gift box</a>.</p>`,
-    "black-tea": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/moringa-powder/">moringa powder</a> or <a href="/products/curry-leaves/">dried curry leaves</a>.</p>`,
-    "diwali-gift-box": `<p>Free AU shipping over <strong>$79</strong> — add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa).</p>`,
+    "black-tea": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/curry-leaves/">dried curry leaves</a>, <a href="/products/moringa-soap/">handmade soap</a>, or the <a href="/products/diwali-gift-box/">Diwali gift box</a>. Read the <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
+    "diwali-gift-box": `<p>Free AU shipping over <strong>$79</strong> — add a second box or the <a href="/products/gift-pack/">$35 Diwali gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
+    "gift-pack": `<p>This pack includes moringa powder. Prefer no moringa? Shop the <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> (tea, curry leaves &amp; soap). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
   }[slug] || "";
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
   const offerUrl = `${LIVE}${canonicalPath}`;
@@ -3011,6 +3021,12 @@ function cityPage(city, slug) {
   const r = routes();
   const powderHref = "/products/moringa-powder/";
   const giftHref = "/products/gift-pack/";
+  const curryHref = "/products/curry-leaves/";
+  const teaHref = "/products/black-tea/";
+  const soapHref = "/products/moringa-soap/";
+  const diwaliHref = "/products/diwali-gift-box/";
+  const diwaliGuideHref = r.article("diwali-gift-guide-curry-leaves-tea-australia");
+  const curryGuideHref = r.article("dried-curry-leaves-australia-guide");
   const storeHref = r.article("how-long-does-moringa-powder-last-storage-shelf-life-2026");
   const addHref = r.article("how-to-add-moringa-to-diet");
   const tasteHref = r.article("what-does-moringa-powder-taste-like-honest-guide-2026");
@@ -3108,6 +3124,61 @@ function cityPage(city, slug) {
   const melbourneQuality = city === "Melbourne"
     ? `<p>Melbourne buyers comparing quality: <a href="${verifyHref}">verify checklist</a> · <a href="${shadeHref}">shade-dried leaf</a> · <a href="${capsHref}">powder vs capsules</a>. Pickup by arrangement from Truganina. Free AU shipping at $79.</p>`
     : "";
+  const melbourneCurrySection = city === "Melbourne"
+    ? `<section class="city-local-section" id="curry-leaves-melbourne" aria-labelledby="curry-leaves-melbourne-heading">
+          <div class="wrap">
+            <div class="city-local-section__head">
+              <div><p class="city-local-kicker">Melbourne pantry staples</p><h2 id="curry-leaves-melbourne-heading">Dried curry leaves in Melbourne</h2></div>
+              <p>Farm-grown curry patta / kadi patta, packed in Truganina for metro Melbourne cooks who want dried leaves on hand between Woolworths or Coles fresh punnets.</p>
+            </div>
+            <div class="city-info-grid">
+              <article class="city-info-card city-info-card--accent">
+                <span class="city-info-card__number">01</span>
+                <h3>Dried curry leaves · $7 / 30g</h3>
+                <p>Whole shade-dried leaflets for tadka. Also called karipatta, curry patta and kadi patta. Pickup from Truganina by arrangement, or tracked metro delivery in 1–2 days.</p>
+                <a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a>
+              </article>
+              <article class="city-info-card">
+                <span class="city-info-card__number">02</span>
+                <h3>Darjeeling tea &amp; handmade soap</h3>
+                <p>Family-farm Darjeeling loose leaf ($7.50 / 100g) and a handmade lavender soap bar with moringa ($7 / 95g), packed with the same Truganina dispatch window.</p>
+                <a href="${teaHref}">Shop Darjeeling tea <span aria-hidden="true">→</span></a>
+              </article>
+              <article class="city-info-card">
+                <span class="city-info-card__number">03</span>
+                <h3>Diwali gift box · $20</h3>
+                <p>Tea, curry leaves and soap with no moringa powder. Truganina pickup or Australia-wide shipping. Order-by dates are in the Diwali gift guide.</p>
+                <a href="${diwaliHref}">Shop the Diwali gift box <span aria-hidden="true">→</span></a>
+              </article>
+            </div>
+            <p style="margin-top:20px"><a href="${curryGuideHref}">Where to buy dried curry leaves in Australia</a> · <a href="${diwaliGuideHref}">Diwali gifts in Melbourne</a> · <a href="${soapHref}">Handmade soap</a></p>
+          </div>
+        </section>`
+    : "";
+  const melbourneHeroLead = city === "Melbourne"
+    ? "Dried curry leaves, Darjeeling loose leaf tea and handmade lavender soap packed in Truganina. Metro Melbourne delivery is usually 1–2 days after dispatch; local pickup by arrangement."
+    : `Farm-grown, shade-dried moringa leaf powder packed in Truganina and sent directly to ${city}. Choose 100g, 200g or our best-value 400g option.`;
+  const melbourneHeroActions = city === "Melbourne"
+    ? `<a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
+                <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
+                <a class="btn btn-secondary" href="#curry-leaves-melbourne">Melbourne pantry staples</a>`
+    : `<a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a>
+                <a class="btn btn-secondary" href="#delivery-${slug}">See ${city} delivery</a>`;
+  const melbourneProof = city === "Melbourne"
+    ? `<li><strong>$7</strong><span>curry leaves 30g</span></li>
+                <li><strong>$7.50</strong><span>Darjeeling 100g</span></li>
+                <li><strong>$20</strong><span>Diwali gift box</span></li>`
+    : `<li><strong>100%</strong><span>moringa leaf</span></li>
+                <li><strong>From $11</strong><span>three sizes</span></li>
+                <li><strong>Tracked</strong><span>Australia-wide</span></li>`;
+  const melbourneHeroImage = city === "Melbourne"
+    ? { src: "/assets/images/product_webp/dried-curry-leaves-30g-main.webp", alt: "NutriThrive 30g dried curry leaves pouch packed in Truganina for Melbourne" }
+    : { src: "/assets/images/product_webp/moringa-powder-100g-main.webp", alt: `NutriThrive 100g moringa powder pouch available for delivery to ${city}` };
+  const melbourneCta = city === "Melbourne"
+    ? `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Curry leaves, tea and soap from Truganina</h2><p>Shop dried curry leaves, Darjeeling tea, handmade soap, or the $20 Diwali gift box. Free AU shipping at $79.</p></div>
+            <div><a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a><a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a><a class="btn btn-secondary" href="${giftHref}">Gift pack $35</a></div>`
+    : `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Moringa powder delivered to ${city}</h2><p>Start with 100g for $11 or compare larger sizes before adding to cart.</p></div>
+            <div><a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div>`;
   const canonicalPath = slug === "melbourne" ? "/melbourne/" : `/moringa-${slug}/`;
   const cityLinks = [
     ["Melbourne", "/melbourne/"],
@@ -3150,20 +3221,17 @@ function cityPage(city, slug) {
             <div class="city-local-hero__copy">
               <p class="city-local-kicker">Packed in Melbourne · delivered to ${city}</p>
               <h1>${citySeo.h1}</h1>
-              <p class="city-local-lead">Farm-grown, shade-dried moringa leaf powder packed in Truganina and sent directly to ${city}. Choose 100g, 200g or our best-value 400g option.</p>
+              <p class="city-local-lead">${melbourneHeroLead}</p>
               <div class="city-local-actions">
-                <a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a>
-                <a class="btn btn-secondary" href="#delivery-${slug}">See ${city} delivery</a>
+                ${melbourneHeroActions}
               </div>
               <ul class="city-local-proof" aria-label="Product highlights">
-                <li><strong>100%</strong><span>moringa leaf</span></li>
-                <li><strong>From $11</strong><span>three sizes</span></li>
-                <li><strong>Tracked</strong><span>Australia-wide</span></li>
+                ${melbourneProof}
               </ul>
             </div>
             <figure class="city-local-visual">
               <div class="city-local-visual__image">
-                <img src="/assets/images/product_webp/moringa-powder-100g-main.webp" alt="NutriThrive 100g moringa powder pouch available for delivery to ${city}" width="1254" height="1254" fetchpriority="high">
+                <img src="${melbourneHeroImage.src}" alt="${esc(melbourneHeroImage.alt)}" width="1254" height="1254" fetchpriority="high">
               </div>
               <figcaption>
                 <span>Typical metro transit</span>
@@ -3202,6 +3270,8 @@ function cityPage(city, slug) {
             </div>
           </div>
         </section>
+
+        ${melbourneCurrySection}
 
         <section class="city-local-section city-local-section--support" aria-labelledby="support-heading-${slug}">
           <div class="wrap city-support-grid">
@@ -3244,8 +3314,7 @@ function cityPage(city, slug) {
 
         <section class="city-local-cta" aria-labelledby="city-cta-${slug}">
           <div class="wrap city-local-cta__inner">
-            <div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Moringa powder delivered to ${city}</h2><p>Start with 100g for $11 or compare larger sizes before adding to cart.</p></div>
-            <div><a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div>
+            ${melbourneCta}
           </div>
         </section>
 
@@ -3316,6 +3385,7 @@ function journalIndex(articles, opts = {}) {
         <p class="lede">${topicFilter
           ? `Every ${esc(topicFilter.name.toLowerCase())} guide, in one place.`
           : "Clear answers about choosing, using and storing our products—from the team that grows and manufactures our moringa and curry leaves."}</p>
+        ${topicFilter ? "" : `<p class="purchase-note">Diwali 2026 (Sun 8 Nov): <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> · <a href="${r.article("diwali-gift-guide-curry-leaves-tea-australia")}">Diwali gift guide</a>.</p>`}
         <form class="journal-search" role="search" data-journal-search-form>
           <label for="journal-search">What would you like to know?</label>
           <div class="journal-search-box">
