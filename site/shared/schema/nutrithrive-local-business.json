@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HealthFoodStore"],
+  "@type": ["LocalBusiness", "Store"],
   "@id": "https://nutrithrive.com.au/#localbusiness",
   "name": "NutriThrive",
   "image": "https://nutrithrive.com.au/assets/images/logo/logo-112.png",

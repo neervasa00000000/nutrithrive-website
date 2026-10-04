@@ -89,6 +89,7 @@ function navItems() {
     { href: "/products/moringa-powder/", label: "Moringa powder" },
     { href: "/products/black-tea/", label: "Tea" },
     { href: "/products/curry-leaves/", label: "Curry Leaves" },
+    { href: "/products/diwali-gift-box/", label: "Diwali Gift Box" },
     { href: r.about, label: "About" },
     { href: r.journal, label: "Blog" },
   ];
@@ -125,6 +126,21 @@ const JOURNAL_PRIORITY = [
 // exports. Keep this explicit so every other ranking article continues to use
 // its committed title, description and H1 during storefront migrations.
 const ARTICLE_SEO_OVERRIDES = {
+  "dried-curry-leaves-australia-guide": {
+    title: "Curry Leaves at Woolworths, Coles & Aldi: Where to Buy",
+    description: "Can you buy curry leaves at Woolworths, Coles or Aldi? What each listed in Oct 2026 (fresh punnets, dried packs), Indian grocers, online and storage tips.",
+    h1: "Where to Buy Curry Leaves in Australia: Woolworths, Coles, Aldi and Online",
+  },
+  "darjeeling-black-tea-australia-guide": {
+    title: "Where to Buy Darjeeling Tea in Australia (2026 Guide)",
+    description: "Where to buy Darjeeling tea in Australia: Twinings at Coles and Woolworths, T2, specialist loose leaf and our 100g pouch, with prices per 100g (Oct 2026).",
+    h1: "Where to Buy Darjeeling Tea in Australia (2026 Guide)",
+  },
+  "diwali-gift-guide-curry-leaves-tea-australia": {
+    title: "Diwali Gift Ideas Australia 2026: Tea, Spice & Soap Gifts",
+    description: "Diwali is Sun 8 Nov 2026. Tea, curry leaf and soap gift ideas, a ready Diwali gift box, small hampers and order-by dates for every state.",
+    h1: "Diwali Gift Ideas Australia 2026: Tea, Spice & Soap Gifts",
+  },
   "moringa-patches-australia-review-do-they-work": {
     title: "Glorenda & Healrize Moringa Patches Australia: Do They Work?",
     description: "We do not sell Glorenda, Healrize, or any moringa patch. Honest Glorenda and Healrize review, then NutriThrive leaf powder from $11.",
@@ -584,14 +600,14 @@ const ARTICLE_CONVERSION_PATHS = {
   "dried-curry-leaves-australia-guide": {
     kicker: "Ready for the pantry",
     title: "Dried curry leaves from our farm",
-    body: "30g of shade-dried kari leaf, grown on our farm in Gujarat and packed in Truganina. Use about 2 to 3 times as much as fresh.",
+    body: "30g of whole dried kari leaf, grown on our farm in Gujarat and packed in Truganina. Use about 2 to 3 times as much as fresh.",
     cta: "Buy dried curry leaves",
     links: [["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"]],
   },
   "dried-curry-leaves-quality-guide-how-to-use": {
     kicker: "After the crush test",
-    title: "Shade-dried curry leaves from our farm",
-    body: "Whole leaflets, shade-dried and packed in small batches in Truganina. Crush-test a leaf when your pack arrives.",
+    title: "Dried curry leaves from our farm",
+    body: "Whole leaflets, dried and packed in small batches in Truganina. Crush-test a leaf when your pack arrives.",
     cta: "Shop dried curry leaves",
     links: [["Dried curry leaves buy and store guide", "dried-curry-leaves-australia-guide"]],
   },
@@ -705,10 +721,10 @@ const PRODUCT_GUIDES = {
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
   ],
   "curry-leaves": [
-    ["How to judge dried curry leaf quality", "dried-curry-leaves-quality-guide-how-to-use"],
-    ["Dried curry leaves buying and use guide", "dried-curry-leaves-australia-guide"],
+    ["buy dried curry leaves online", "dried-curry-leaves-australia-guide"],
+    ["buy our dried curry leaves", "dried-curry-leaves-quality-guide-how-to-use"],
+    ["buy curry leaves online", "curry-leaves-substitute-what-to-use-2026"],
     ["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"],
-    ["Curry leaves substitute guide", "curry-leaves-substitute-what-to-use-2026"],
     ["30-minute curry leaf dal recipe", "curry-leaves-dahl-recipe-30-minutes-australia-2026"],
   ],
   "black-tea": [
@@ -725,15 +741,15 @@ const PRODUCT_GUIDES = {
   ],
   "gift-pack": [
     ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
-    ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
+    ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
+    ["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"],
     ["Darjeeling buying guide", "darjeeling-black-tea-australia-guide"],
-    ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
   ],
   "diwali-gift-box": [
     ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
     ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
     ["Darjeeling buying guide", "darjeeling-black-tea-australia-guide"],
-    ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
+    ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
   ],
   "combo-pack": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
@@ -762,12 +778,8 @@ function faqDetails(faqs) {
 }
 
 const MORINGA_FEATURED_REVIEW_NAMES = [
-  "Jay Turakhia",
-  "buket",
-  "reetysha ramjee",
+  "Mai Anh Trần Thúy",
   "Siv Mey",
-  "chizaram olanma",
-  "Jay Rohit Sharma",
   "Priyankari Nath",
 ];
 
@@ -1347,6 +1359,7 @@ ${CONTRACT}
         <li><a href="/products/moringa-powder/">Moringa powder</a></li>
         <li><a href="/products/black-tea/">Darjeeling tea</a></li>
         <li><a href="/products/curry-leaves/">Curry leaves</a></li>
+        <li><a href="/products/diwali-gift-box/">Diwali Gift Box</a></li>
         <li><a href="/products/gift-pack/">Gift pack</a></li>
       </ul>
     </div>
@@ -1676,14 +1689,15 @@ const PDP = {
     ],
   },
   "curry-leaves": {
-    title: "Buy Dried Curry Leaves Online Australia | Curry Patta / Kadi Patta $7",
+    title: "Buy Dried Curry Leaves Online Australia | 30g $7",
     description:
-      "Buy dried curry leaves (curry patta / kadi patta) online Australia $7/30g. Shade-dried whole leaves, packed in Truganina. Free AU shipping at $79.",
+      "Buy dried curry leaves online: whole leaves (karipatta, curry patta, kadi patta), 30g for $7. Grown on our Gujarat farm, packed in Melbourne.",
     forceSeo: true,
-    h1: "Dried Curry Leaves (Curry Patta / Kadi Patta)",
+    h1: "Dried Curry Leaves: Buy Online in Australia",
     current: "Curry Leaves",
     product: PRODUCTS.find((p) => p.id === "curry-leaves"),
-    intro: "Grown on NutriThrive’s farm in Gujarat and packed in Melbourne. Aromatic, pantry-ready curry patta / kadi patta (karipatta). Use about 2 to 3 times as much as fresh in tadka.",
+    intro:
+      "Buy dried curry leaves online from the people who grow them. Our whole curry leaves (also called karipatta, curry patta or kadi patta) are grown on our family farm in Gujarat, dried, and packed in 30g pouches in Truganina, Melbourne. They're made for tadka: drop a small handful into hot oil or ghee with mustard seeds and the aroma carries through dal, sambar, rasam, lemon rice and curries. Dried leaves are quieter than fresh until they hit the oil, so use about two to three times the amount a recipe gives for fresh. $7 for 30g, posted Australia-wide.",
     proofs: [
       "Grown on our farm in Gujarat",
       "Packed in Melbourne",
@@ -1691,37 +1705,63 @@ const PDP = {
       "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
-      ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive 30g dried curry leaves pouch with whole leaves"],
-      ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves in a ceramic bowl"],
+      ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive dried curry leaves 30g pouch with whole leaves"],
+      ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves (karipatta) in a ceramic bowl"],
       ["/assets/images/homepage/product-showcase/Curry.webp", "Dried curry leaves product showcase"],
-      ["/assets/images/product_photos/driedcurry.jpeg", "Close-up of shade-dried curry leaves"],
+      ["/assets/images/product_photos/driedcurry.jpeg", "Close-up of whole dried curry leaves"],
       ["/assets/images/general/CURRY3.png", "Aromatic dried curry leaves ready for tempering"],
     ],
     detailImage: "/assets/images/product_webp/dried-curry-leaves-texture.webp",
-    detailAlt: "Whole dried curry leaves in a ceramic bowl",
+    detailAlt: "Whole dried curry leaves (karipatta) in a ceramic bowl",
     detailCaption: "Whole dried leaves with their naturally curled, pantry-ready texture.",
     ingredients: "100% dried curry leaves (curry patta / kadi patta / karipatta). Nothing added.",
     origin: "Grown on NutriThrive’s farm in Gujarat, India. Packed in Truganina, Melbourne.",
-    process: "We grow and harvest the leaves on our farm in Gujarat, dry them carefully, then pack them in Truganina.",
-    storage: "Keep sealed in a dry environment away from humidity. Use within 18 months after opening.",
+    process: "We grow and harvest the leaves on our farm in Gujarat, dry them, then pack them in Truganina.",
+    storage:
+      "Keep the pouch sealed in a cool, dry, dark cupboard, away from the stove. Dried leaves don't spoil quickly when kept dry, but their aroma fades, so use an opened pouch within 6–12 months for the best flavour. Check the best-before date on the pouch.",
     safety: "For culinary use. Check the leaves before use and stop using the product if its aroma, colour or condition changes unexpectedly.",
-    what: "Whole dried curry patta / kadi patta for tadka. Hot oil or ghee at the start of the pan is when the smell kicks in. Works in dals, sambar, and most South Indian dishes.",
-    use: "Use about 2 to 3 times the amount of dried leaves compared to fresh. Keep sealed in a cool, dry place.",
+    what: "Whole dried leaves of the curry tree (Murraya koenigii), the leaf used for tempering across South Indian, Sri Lankan and Gujarati cooking. It isn't curry powder and doesn't taste like it. The leaf has its own warm, citrusy aroma that comes alive in hot fat. Each pouch holds whole leaves, not crushed powder.",
+    useHtml: `<ol>
+              <li>Heat 1–2 tbsp oil or ghee until a mustard seed sizzles straight away.</li>
+              <li>Add mustard or cumin seeds and let them pop.</li>
+              <li>Add 8–15 dried curry leaves for a pot of dal for 3–4. They should sizzle and darken within 10–20 seconds.</li>
+              <li>Pour the whole tadka over dal, sambar, rasam, vegies or rice. Recipe written for fresh leaves? Use two to three times the volume in dried. Avoid cold oil and long frying, which turns them bitter.</li>
+            </ol>`,
     faqs: [
-      ["Is curry patta the same as kadi patta?", "Yes. Curry patta, kadi patta, kari leaf and karipatta are common names for curry leaves (Murraya koenigii)."],
-      ["How do I use dried vs fresh?", "Use about 2 to 3 times the amount of dried leaves compared to fresh."],
-      ["How long do they keep?", "6 months or more in an airtight container in a cool, dry place."],
+      [
+        "How many dried curry leaves equal fresh?",
+        "About two to three times the volume. Dried leaves are milder until fried in hot oil.",
+      ],
+      [
+        "Are curry leaves the same as curry powder?",
+        "No. Curry powder is a spice blend (turmeric, coriander, cumin, chilli) and normally contains no curry leaves.",
+      ],
+      [
+        "Are curry patta, kadi patta and karipatta the same?",
+        "Yes. They're the same leaf in different Indian languages: kadi patta in Hindi, karipatta and karuveppilai in the South, and karapincha in Sinhala.",
+      ],
+      [
+        "Do Woolworths and Coles sell curry leaves?",
+        {
+          html: `On 5 Oct 2026, Coles listed a 10g fresh punnet, and Woolworths a 5g fresh punnet and a 5g dried pack. Stock varies. See <a href="/blog/dried-curry-leaves-australia-guide">Where to buy curry leaves in Australia</a>.`,
+        },
+      ],
+      [
+        "How should I store dried curry leaves?",
+        "Sealed, in a cool, dark cupboard away from steam. Use within 6–12 months of opening.",
+      ],
     ],
   },
   "black-tea": {
     title: "Darjeeling Loose Leaf Black Tea Australia | 100g $7.50",
     description:
-      "Buy Darjeeling loose leaf black tea Australia $7.50/100g. Family-farm leaf, packed in Truganina Melbourne. Free AU shipping at $79.",
+      "Darjeeling loose leaf black tea, 100g for $7.50 (about 50 cups). From a family farm in Darjeeling, India, packed in Melbourne and posted Australia-wide.",
     forceSeo: true,
     h1: "Darjeeling Loose Leaf Black Tea",
     current: "Tea",
     product: PRODUCTS.find((p) => p.id === "black-tea"),
-    intro: "Loose-leaf tea sourced from a family farm in Darjeeling, with muscatel and floral notes when brewed gently. Packed in Truganina and shipped Australia-wide. For a ready Diwali or host gift, see the tea + curry + soap gift box.",
+    intro:
+      "This is Darjeeling loose leaf black tea from a family farm in the Darjeeling district of India, packed in 100g pouches in Truganina, Melbourne. Brewed gently at 85–90°C, it makes a bright amber cup with floral, muscatel notes, lighter and less malty than an English Breakfast blend. A 100g pouch makes about 50 cups at roughly 2g a cup. Drink it plain, or add a splash of milk. Because it's loose leaf, you'll need an infuser, strainer or teapot. $7.50 for 100g, posted Australia-wide.",
     proofs: [
       "Family-farm Darjeeling",
       "Packed in Melbourne",
@@ -1738,27 +1778,50 @@ const PDP = {
     detailImage: "/assets/images/product_webp/darjeeling-black-tea-brewed.webp",
     detailAlt: "Amber Darjeeling black tea with loose tea leaves in a wooden spoon",
     detailCaption: "Loose Darjeeling leaves and the warm amber colour of a gently brewed cup.",
-    ingredients: "100% loose-leaf Darjeeling black tea.",
+    ingredients: "100% loose leaf Darjeeling black tea.",
     origin: "Sourced from a family farm in Darjeeling, India. Packed in Truganina, Melbourne.",
-    process: "Produced by a Darjeeling family farm, selected by NutriThrive and packed in small runs in Truganina.",
-    storage: "Keep sealed in a dry environment away from humidity and strong aromas. Use within 18 months after opening.",
+    process:
+      "Darjeeling is picked in several harvests, or flushes: a light spring first flush, a fuller summer second flush and a darker autumn flush. Ask us which harvest your pouch is from. Packed in small runs in Truganina.",
+    storage:
+      "Keep sealed in a dry environment away from humidity and strong aromas. Use an opened pouch within 6–12 months for the best aroma.",
     safety: "Contains caffeine. Consider your total daily caffeine intake and seek professional advice if you are pregnant, breastfeeding or sensitive to caffeine.",
-    what: "Loose-leaf Darjeeling from a family farm. Muscatel and floral notes when brewed gently. About 40 to 50 mg caffeine per cup.",
-    use: "Do not use boiling water. 85 to 90°C, 1 to 2 teaspoons, 3 to 5 minutes. Boiling water makes it bitter. Milk is optional.",
+    what: "100% loose leaf Darjeeling black tea, grown in the hill district of Darjeeling, West Bengal. Expect a lighter body than Assam-based breakfast teas, a floral aroma and the grape-like muscatel note Darjeeling is known for, especially brewed below boiling.",
+    useHeading: "How to brew",
+    useHtml: `<ul>
+              <li><strong>One cup:</strong> 2g, 85–90°C, 3–4 min</li>
+              <li><strong>Teapot (1L):</strong> 8g, 85–90°C, 3–5 min</li>
+              <li><strong>With milk:</strong> 3g, 90–95°C, 4–5 min</li>
+              <li><strong>Iced:</strong> 4g in 150ml hot water, 4 min, then pour over ice</li>
+            </ul>
+            <p>Boiling water makes Darjeeling harsh. Good leaf gives a second, shorter steep. Read <a href="/blog/darjeeling-black-tea-australia-guide#first-flush-vs-second-flush">first flush vs second flush</a>.</p>`,
     faqs: [
-      ["How do I brew it?", "85 to 90°C water, 3 to 5 minute steep. Avoid boiling water to prevent bitterness."],
-      ["How much caffeine?", "About 40 to 50 mg per cup."],
+      [
+        "First or second flush?",
+        "Contact us and we'll tell you which harvest your pouch is from.",
+      ],
+      ["How many cups does 100g make?", "About 50."],
+      ["Can I add milk?", "Yes. Use a little more tea and 90–95°C water."],
+      [
+        "Caffeine?",
+        "About 40–50mg per cup; coffee usually has more. Seek advice if you're pregnant, breastfeeding or sensitive to caffeine.",
+      ],
+      [
+        "Darjeeling vs English Breakfast?",
+        "English Breakfast is an Assam-led blend for a strong cup with milk. Darjeeling is single-region, lighter and more aromatic.",
+      ],
+      ["Loose leaf or bags?", "Loose leaf only."],
     ],
   },
   "moringa-soap": {
     title: "Handmade Lavender Soap Bar with Moringa | 95g $7",
     description:
-      "Handmade lavender soap bar with moringa, 95g for $7 from Truganina. Free AU shipping at $79.",
+      "Moringa and lavender soap bar, 95g, $7. Melt-and-pour soap base with moringa leaf, lavender fragrance and dried lavender flowers. Handmade in Australia.",
     forceSeo: true,
     h1: "Handmade Moringa & Lavender Soap Bar",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "moringa-soap"),
-    intro: "A handmade soap and lavender soap bar with moringa leaf in the mix — 95g, made by us in Australia. Straightforward small-batch production, not a skin treatment. Works as a Diwali stocking-filler or small thank-you gift under $10.",
+    intro:
+      "Our moringa soap is a handmade lavender soap bar, made by us in small batches in Australia. Each 95g bar starts with a melt-and-pour soap base. We add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand and pack them in Truganina, Melbourne. It's an everyday hand and body bar with a gentle lavender scent, compact enough for a travel bag or a guest basin, and it makes an easy small gift. $7 a bar, posted Australia-wide.",
     proofs: [
       "Handmade in Australia",
       "Packed in Melbourne",
@@ -1775,16 +1838,33 @@ const PDP = {
     detailImage: "/assets/images/product_webp/moringa-soap-texture.webp",
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
     detailCaption: "A closer look at the handmade bar, lavender flowers and lather.",
-    ingredients: "Soap base, moringa, lavender fragrance and lavender flowers.",
+    ingredients:
+      "Melt-and-pour soap base (supplier full list to be confirmed), moringa leaf, lavender fragrance (parfum), dried lavender flowers.",
     origin: "Handmade by NutriThrive in Australia and packed in Truganina, Melbourne.",
-    process: "We combine the soap base with moringa, lavender fragrance and lavender flowers, then handmake the bars in small batches in Australia.",
+    process:
+      "We start with a melt-and-pour soap base, add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand in small batches in Australia.",
     storage: "Keep in a dry, well-drained area away from humidity between uses. Continue using until the bar is finished.",
     safety: "For external use only. Avoid contact with eyes. Patch-test before use if you have sensitive skin and stop use if irritation occurs.",
-    what: "Leaf powder plus oils. No long ingredient list. Let the bar dry between uses and it lasts well.",
-    use: "Patch-test if you have very sensitive skin.",
+    what: "A 95g handmade soap bar for hands and body. It's a melt-and-pour soap: we start with a ready-made soap base and add moringa leaf for colour and flecks, lavender fragrance, and dried lavender flowers on top. It's a wash. It cleans and rinses off, and we don't make skin-care claims for it.",
+    use: "Lather with wet hands, wash and rinse. Let it dry on a draining dish between uses. External use only; avoid eyes. Patch-test if you have sensitive skin.",
     faqs: [
-      ["What size is the bar?", "95g. Compact enough for travel, lasts well with proper drainage."],
-      ["Is it suitable for sensitive skin?", "Patch-test if you have very sensitive skin."],
+      [
+        "What's it made from?",
+        "A melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
+      ],
+      [
+        "Is it natural, organic or cold process?",
+        "No. It's melt-and-pour, not certified organic, and we don't call it natural or cold process.",
+      ],
+      ["What does it smell like?", "Gentle lavender."],
+      ["Sensitive skin?", "Patch-test first; stop if irritation occurs."],
+      ["How long does a bar last?", "Longer on a draining dish, out of the shower stream."],
+      [
+        "Good gift?",
+        {
+          html: `Yes. It's also in the <a href="/products/diwali-gift-box/">Diwali Gift Box</a>.`,
+        },
+      ],
     ],
   },
   "combo-pack": {
@@ -1821,97 +1901,110 @@ const PDP = {
     ],
   },
   "diwali-gift-box": {
-    title: "Diwali Gift Box Australia | Tea, Curry Leaves & Soap $20",
+    title: "Diwali Gift Box: Darjeeling Tea, Curry Leaves & Soap | $20",
     description:
-      "Moringa-free Diwali gift box: Darjeeling tea, dried curry leaves and handmade lavender soap for $20. Packed in Melbourne. Free AU shipping at $79.",
+      "Diwali gift box with Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap. No moringa powder. Packed in Melbourne.",
     forceSeo: true,
-    h1: "Diwali Gift Box: Tea, Curry Leaves & Soap",
+    h1: "Diwali Gift Box: Darjeeling Tea, Curry Leaves and Lavender Soap",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "diwali-gift-box"),
     intro:
-      "Three products sold together for Diwali — not a decorative gift box. You get 100g Darjeeling black tea, 30g dried curry leaves (curry patta), and one 95g handmade lavender soap bar, packed for shipping in Truganina. No moringa powder. Singles add up to $21.50; this set is $20.",
+      "Our Diwali gift box brings together three things people use long after the sweets are gone: 100g of Darjeeling loose leaf black tea from a family farm in Darjeeling, 30g of whole dried curry leaves from our farm in Gujarat, and a 95g moringa and lavender soap bar we handmake in Australia. There's no moringa powder in this box. We pack it in Truganina, Melbourne, ready to give to family, hosts, neighbours or colleagues this Diwali, Sunday 8 November 2026. Order before 2pm on a weekday for same-day dispatch, posted Australia-wide or picked up in Truganina by arrangement.",
     proofs: [
-      "Products only — not a decorative box",
-      "No moringa — tea, curry leaves, soap",
-      "Packed in Melbourne for shipping",
-      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
+      "No moringa powder",
+      "Handmade soap",
+      "family-farm tea",
+      "Packed in Melbourne",
     ],
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "Darjeeling tea included in the Diwali gift box"],
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "Dried curry leaves included in the Diwali gift box"],
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "Handmade lavender soap included in the Diwali gift box"],
-      ["/assets/images/homepage/product-showcase/gift.webp", "NutriThrive pantry gift box packed in Melbourne"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Brewed Darjeeling from the Diwali gift box"],
     ],
+    underCartNote:
+      "Melbourne metro: order by Mon 2 Nov (before 2pm) for Diwali. Other states: see the dates below.",
+    whatHeading: "What's in the box",
     ingredients:
-      "Includes Darjeeling black tea, dried curry leaves (curry patta / kadi patta), and soap made with soap base, moringa, lavender fragrance and lavender flowers.",
+      "Includes Darjeeling black tea, dried curry leaves (curry patta / kadi patta), and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Family-farm tea from Darjeeling, farm-grown curry leaves, and soap handmade by us in Australia. Packed in Truganina, Melbourne.",
-    process: "We pack the three products together in Truganina as one shipping parcel. This is a product set, not a decorated presentation box — no moringa powder included.",
-    storage: "Keep tea and curry leaves sealed and dry. Keep the soap dry between uses.",
-    safety: "Soap is for external use only. Tea contains caffeine. Follow each product’s directions.",
-    what: "Three products sold as a Diwali set: Darjeeling tea, curry patta, and a handmade lavender soap bar. Not a decorative gift box — you receive the products packed for shipping. No moringa powder.",
-    use: "Give the three products as a pantry gift, or wrap them yourself if you want presentation packaging. Each item is also sold separately.",
+    process:
+      "We pack all three in one box, with the soap wrapped separately so the tea doesn't take on its scent. Packed in Truganina. No moringa powder included.",
+    storage: "Keep the tea and curry sealed and dry. The tea contains caffeine. Keep the soap dry between uses.",
+    safety: "Soap is for external use only; patch-test if your skin is sensitive. Tea contains caffeine. Follow each product’s directions.",
+    whatHtml: `<ul>
+              <li><strong>Darjeeling loose leaf black tea, 100g:</strong> about 50 cups. Floral, muscatel notes at 85–90°C. Contains caffeine (about 40–50mg a cup).</li>
+              <li><strong>Dried curry leaves, 30g:</strong> whole leaves for tadka. Use two to three times the fresh amount.</li>
+              <li><strong>Handmade moringa &amp; lavender soap, 95g:</strong> melt-and-pour base, moringa leaf, lavender fragrance, dried lavender flowers.</li>
+            </ul>
+            <p>Who it's for: relatives you're visiting, a host who has plenty of mithai, neighbours, teachers and colleagues. For bulk orders, contact us.</p>
+            <p><strong>Order by:</strong> VIC metro Mon 2 Nov · NSW/ACT/QLD/SA/TAS Fri 30 Oct · WA/NT Wed 28 Oct · regional Mon 26 Oct · no dispatch Tue 3 Nov.</p>`,
+    use: "Give the three products as a pantry gift. Each item is also sold separately. Prefer a version with moringa powder? See the four-item gift pack.",
     faqs: [
+      ["What's inside?", "Tea, curry leaves and soap."],
       [
-        "What is in the Diwali gift box?",
-        "100g Darjeeling black tea, 30g dried curry leaves, and one 95g handmade lavender soap. Products only, packed together for shipping — not a decorative gift box. No moringa powder.",
+        "Does it contain moringa powder?",
+        {
+          html: `No. The only moringa is the leaf in the soap. For powder, see the <a href="/products/gift-pack/">four-item gift pack</a>.`,
+        },
       ],
       [
-        "Is this a decorative gift box?",
-        "No. You receive the three products packed for shipping. There is no fancy presentation box or decorative packaging included.",
+        "Order-by dates?",
+        "VIC metro Mon 2 Nov · NSW/ACT/QLD/SA/TAS Fri 30 Oct · WA/NT Wed 28 Oct · regional Mon 26 Oct · no dispatch Tue 3 Nov.",
       ],
-      [
-        "How is this different from the $35 gift pack?",
-        "This $20 set skips moringa. The $35 gift pack adds 100g moringa powder for households that want powder too. Both are product bundles, not decorative boxes.",
-      ],
-      [
-        "When should I order for Diwali 2026?",
-        "Diwali is Sunday 8 November 2026. Use the order-by dates in our Diwali gift guide; no dispatch on Melbourne Cup Day (Tue 3 Nov).",
-      ],
+      ["Pickup?", "Yes, from Truganina by arrangement."],
+      ["Gift message?", "Add a note at checkout or email us after you order."],
+      ["Bulk?", "Yes, ideally by Fri 23 Oct. Contact us with numbers, postcodes and dates."],
     ],
   },
   "gift-pack": {
-    title: "Diwali Gift Pack Australia | Tea, Curry Leaf, Soap & Moringa $35",
+    title: "Tea, Curry Leaf, Soap & Moringa Gift Pack | $35",
     description:
-      "Diwali gift pack with moringa powder, Darjeeling tea, dried curry leaves and handmade lavender soap for $35 from Truganina. Prefer no moringa? See the $20 Diwali gift box.",
+      "Gift pack: Darjeeling tea 100g, dried curry leaves 30g, handmade lavender soap 95g and moringa powder 100g, $35. Want it without moringa? See our gift box.",
     forceSeo: true,
-    h1: "Diwali Gift Pack: Tea, Curry Leaf, Soap & Moringa",
+    h1: "Gift Pack: Darjeeling Tea, Curry Leaves, Soap and Moringa Powder",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "gift-pack"),
     intro:
-      "A Diwali gift pack with 100g moringa powder (disclosed), 100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade moringa lavender soap. Ready to gift. Want tea, curry leaves and soap only? Choose the $20 Diwali gift box instead.",
+      "This gift pack puts four NutriThrive products in one parcel: 100g Darjeeling loose leaf black tea, 30g dried curry leaves, a 95g handmade moringa and lavender soap bar, and 100g moringa leaf powder. It's packed in Truganina, Melbourne and posted Australia-wide, ready to hand over as a Diwali gift pack, a housewarming present or a thank-you. If you'd like a gift without moringa powder, choose our Diwali Gift Box. $35. Each product is also sold on its own.",
     proofs: [
-      { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
-      "Handmade soap · family-farm tea",
+      "Four products, one parcel",
+      "Handmade soap",
+      "family-farm tea",
       "Packed in Melbourne",
-      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
       ["/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "NutriThrive gift pack with moringa powder, curry leaves, Darjeeling tea and moringa soap"],
-      ["/assets/images/homepage/product-showcase/gift.webp", "Natural wellness gift pack showcase"],
       ["/assets/images/product_webp/moringa-powder-100g-main.webp", "100g moringa powder included in gift pack"],
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "100g Darjeeling tea included in gift pack"],
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "30g dried curry leaves included in gift pack"],
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "95g moringa soap included in gift pack"],
     ],
-    ingredients: "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with soap base, moringa, lavender fragrance and lavender flowers.",
+    ingredients:
+      "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
     process: "We bring together our farm-grown, family-farm and Australian handmade products, then prepare the gift pack in Truganina.",
-    storage: "Keep every product in a dry environment away from humidity. Food products should be used within 18 months after opening; keep the soap dry between uses.",
+    storage: "Keep every product in a dry environment away from humidity. Food products: use an opened pouch within 6–12 months for best aroma; keep the soap dry between uses.",
     safety: "Follow the directions and safety information for each included product. Soap is for external use only and the tea contains caffeine.",
-    what: "A four-product Diwali gift pack: moringa powder, tea, curry leaves, and soap. Packed in Truganina for birthdays, host gifts, and festival baskets.",
-    use: "Each product is also available individually. For a moringa-free Diwali hamper, choose the $20 Diwali gift box.",
+    what: "A four-product gift pack: Darjeeling tea, curry leaves, handmade lavender soap, and moringa powder. Packed in Truganina for Diwali, housewarmings and thank-yous.",
+    use: "Each product is also available individually. For a gift without moringa powder, choose the Diwali Gift Box.",
     faqs: [
       [
-        "What is included?",
-        "100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and one 95g moringa lavender soap. This Diwali gift pack includes moringa powder.",
+        "What's inside?",
+        "Tea 100g, curry leaves 30g, soap 95g and moringa powder 100g.",
       ],
       [
-        "Is there a Diwali option without moringa?",
+        "Is there a version without moringa?",
         {
-          html: `Yes. The <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> has Darjeeling tea, dried curry leaves and handmade lavender soap only — no moringa powder.`,
+          html: `Yes, the <a href="/products/diwali-gift-box/">Diwali Gift Box</a>.`,
         },
       ],
+      [
+        "Diwali order-by?",
+        "VIC Mon 2 Nov · NSW/ACT/QLD/SA/TAS Fri 30 Oct · WA/NT Wed 28 Oct · regional Mon 26 Oct · no dispatch Tue 3 Nov.",
+      ],
+      ["Gift message?", "Add a note at checkout or email us after you order."],
+      ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
     ],
   },
 };
@@ -1923,14 +2016,9 @@ function pdpPage(slug, d) {
   const buyProduct =
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
   const gallery = d.gallery?.length ? d.gallery : [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`]];
-  const related = PRODUCTS.filter((item) => {
-    if (item.id === p.id || item.href === p.href) return false;
-    if (slug === "gift-pack" && item.id === "moringa-powder") return false;
-    if (slug === "diwali-gift-box" && ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack"].includes(item.id)) {
-      return false;
-    }
-    return true;
-  }).slice(0, 3);
+  const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
+    .map((id) => PRODUCTS.find((item) => item.id === id))
+    .filter((item) => item && item.id !== p.id && item.href !== p.href);
   const reviews = d.reviews || REVIEWS;
   const freezeHero = Boolean(d.freezeHeroCopy);
   const selectedVariantId = buyProduct.id;
@@ -1981,14 +2069,11 @@ function pdpPage(slug, d) {
   const education =
     slug === "moringa-powder"
       ? moringaEducationHtml()
-      : `<h2>What it is</h2><p>${esc(d.what)}</p>
-          <h2>How to use</h2><p>${esc(d.use)}</p>
+      : `${d.whatHtml ? `<h2>${esc(d.whatHeading || "What it is")}</h2>${d.whatHtml}` : d.what ? `<h2>What it is</h2><p>${esc(d.what)}</p>` : ""}
+          ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : d.use ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : ""}
           ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a> or contact us for current testing details.</p>` : ""}`;
   const shipLadder = {
-    "moringa-soap": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/black-tea/">Darjeeling tea</a>, <a href="/products/curry-leaves/">dried curry leaves</a>, or the <a href="/products/diwali-gift-box/">Diwali gift box</a>. Also see the <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
-    "curry-leaves": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/black-tea/">Darjeeling tea</a>, <a href="/products/moringa-soap/">handmade soap</a>, or the <a href="/products/diwali-gift-box/">Diwali gift box</a>.</p>`,
-    "black-tea": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/curry-leaves/">dried curry leaves</a>, <a href="/products/moringa-soap/">handmade soap</a>, or the <a href="/products/diwali-gift-box/">Diwali gift box</a>. Read the <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
-    "diwali-gift-box": `<p>Free AU shipping over <strong>$79</strong> — add a second box or the <a href="/products/gift-pack/">$35 Diwali gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
+    "diwali-gift-box": `<p>Free AU shipping over <strong>$79</strong> — add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
     "gift-pack": `<p>This pack includes moringa powder. Prefer no moringa? Shop the <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> (tea, curry leaves &amp; soap). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
   }[slug] || "";
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
@@ -2048,7 +2133,7 @@ function pdpPage(slug, d) {
     ogImageHeight: 900,
     extraHead: `<link rel="preload" as="image" href="${gallery[0][0]}" fetchpriority="high">` +
       jsonLd(productSchema) +
-      (slug === "moringa-powder"
+      (d.faqs?.length
         ? jsonLd({
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -2104,6 +2189,7 @@ function pdpPage(slug, d) {
             </div>` : ""}
             <p class="cost-note" data-pdp-cost>${esc(costNote(buyProduct))}</p>
             <p class="purchase-note">${esc(purchaseNote)}</p>
+            ${d.underCartNote ? `<p class="purchase-note">${esc(d.underCartNote)}</p>` : ""}
           </div>
           ${slug === "moringa-powder" ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
           <ul class="pdp-proof">${proofs}</ul>
@@ -2166,7 +2252,7 @@ function pdpPage(slug, d) {
           </section>
           <section class="related-products">
             <div class="section-head"><div><h2>You may also like</h2><p>More products from the NutriThrive range.</p></div><a href="/shop/">Shop all</a></div>
-            <div class="product-grid">${related.map((item) => productCard(item, false, { hideWas: ["curry-leaves","black-tea","moringa-soap","combo-pack","diwali-gift-box","gift-pack"].includes(slug) })).join("")}</div>
+            <div class="product-grid">${related.map((item) => productCard(item, false, { hideWas: true })).join("")}</div>
           </section>
         </div>
       </section>`,
@@ -2987,11 +3073,172 @@ function reorderPage() {
 }
 
 function emitCityLandings() {
-  emit("melbourne/index.html", cityPage("Melbourne", "melbourne"), "pages/homepage/melbourne.html");
+  emit("melbourne/index.html", melbournePage(), "pages/homepage/melbourne.html");
   emit("moringa-sydney/index.html", cityPage("Sydney", "sydney"));
   emit("moringa-brisbane/index.html", cityPage("Brisbane", "brisbane"));
   emit("moringa-perth/index.html", cityPage("Perth", "perth"));
   emit("moringa-adelaide/index.html", cityPage("Adelaide", "adelaide"));
+}
+
+function melbournePage() {
+  const r = routes();
+  const curryHref = "/products/curry-leaves/";
+  const teaHref = "/products/black-tea/";
+  const soapHref = "/products/moringa-soap/";
+  const diwaliHref = "/products/diwali-gift-box/";
+  const faqs = [
+    [
+      "Where can I buy curry leaves in Melbourne?",
+      "Fresh punnets are at some Woolworths, Coles and Indian grocers. For dried, we pack 30g pouches in Truganina and deliver across Melbourne.",
+    ],
+    ["Do you sell fresh curry leaves?", "No, only dried."],
+    ["Can I pick up?", "Yes, from Truganina by arrangement."],
+    ["How long is delivery?", "Usually 1–3 business days after dispatch."],
+    ["When do I order for Diwali?", "By Mon 2 Nov, 2pm. No dispatch on Tue 3 Nov."],
+    ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
+  ];
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+  const cityLinks = [
+    ["Melbourne", "/melbourne/"],
+    ["Sydney", "/moringa-sydney/"],
+    ["Brisbane", "/moringa-brisbane/"],
+    ["Perth", "/moringa-perth/"],
+    ["Adelaide", "/moringa-adelaide/"],
+  ]
+    .map(([name, href]) =>
+      name === "Melbourne"
+        ? `<li><span class="city-switcher__current" aria-current="page">${name}<small>Current</small></span></li>`
+        : `<li><a href="${href}">${name}</a></li>`
+    )
+    .join("");
+  return layout({
+    title: "Curry Leaves, Darjeeling Tea & Soap Melbourne | NutriThrive",
+    description:
+      "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Diwali gift box, packed in Truganina. Melbourne metro 1–3 business days.",
+    preserveTitle: true,
+    preserveDescription: true,
+    canonicalPath: "/melbourne/",
+    extraHead:
+      jsonLd(
+        breadcrumbSchema([
+          { name: "Home", item: `${LIVE}/` },
+          { name: "Melbourne", item: `${LIVE}/melbourne/` },
+        ])
+      ) + jsonLd(faqSchema),
+    current: "",
+    main: `
+      <div class="city-page" data-city="melbourne">
+        <nav class="city-switcher" aria-label="Choose delivery city">
+          <div class="wrap city-switcher__inner">
+            <p>Delivery guides</p>
+            <ul>${cityLinks}</ul>
+          </div>
+        </nav>
+
+        <section class="city-local-hero">
+          <div class="wrap city-local-hero__grid">
+            <div class="city-local-hero__copy">
+              <p class="city-local-kicker">Packed in Truganina · Melbourne west</p>
+              <h1>Curry Leaves, Darjeeling Tea &amp; Soap in Melbourne</h1>
+              <p class="city-local-lead">Looking for curry leaves in Melbourne? We pack whole dried curry leaves, Darjeeling loose leaf black tea and handmade lavender soap bars in Truganina, in Melbourne's west, and deliver across the city, usually within 1–3 business days of dispatch. Our curry leaves come from our family farm in Gujarat and the tea from a family farm in Darjeeling, and we handmake the soap ourselves in small batches. Order online before 2pm on a weekday for same-day dispatch, or arrange a pickup from Truganina. For Diwali, our tea, curry leaf and soap gift box is ready to give.</p>
+              <div class="city-local-actions">
+                <a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
+                <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
+              </div>
+              <ul class="city-local-proof" aria-label="Melbourne delivery highlights">
+                <li><strong>Truganina</strong><span>packed in VIC</span></li>
+                <li><strong>1–3 days</strong><span>Melbourne metro</span></li>
+                <li><strong>Pickup</strong><span>by arrangement</span></li>
+              </ul>
+            </div>
+            <figure class="city-local-visual">
+              <div class="city-local-visual__image">
+                <img src="/assets/images/product_webp/dried-curry-leaves-30g-main.webp" alt="NutriThrive 30g dried curry leaves pouch packed in Truganina for Melbourne" width="1254" height="1254" fetchpriority="high">
+              </div>
+              <figcaption>
+                <span>Typical metro transit</span>
+                <strong>1–3 business days after dispatch</strong>
+                <small>Dispatched from Truganina with tracking</small>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="city-local-section" id="what-we-pack" aria-labelledby="what-we-pack-heading">
+          <div class="wrap">
+            <div class="city-local-section__head">
+              <div><p class="city-local-kicker">From Truganina</p><h2 id="what-we-pack-heading">What we pack in Truganina</h2></div>
+            </div>
+            <div class="city-info-grid">
+              <article class="city-info-card city-info-card--accent">
+                <span class="city-info-card__number">01</span>
+                <h3>Dried curry leaves · 30g · $7</h3>
+                <p>Whole leaves (karipatta / kadi patta) from our farm in Gujarat for tadka, dal, sambar and curries.</p>
+                <a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a>
+              </article>
+              <article class="city-info-card">
+                <span class="city-info-card__number">02</span>
+                <h3>Darjeeling loose leaf black tea · 100g · $7.50</h3>
+                <p>From a family farm in Darjeeling, about 50 cups a pouch. Brew at 85–90°C for 3–5 minutes.</p>
+                <a href="${teaHref}">Shop Darjeeling tea <span aria-hidden="true">→</span></a>
+              </article>
+              <article class="city-info-card">
+                <span class="city-info-card__number">03</span>
+                <h3>Handmade moringa &amp; lavender soap · 95g · $7</h3>
+                <p>Handmade by us in small batches from a melt-and-pour soap base with moringa leaf, lavender fragrance and dried lavender flowers.</p>
+                <a href="${soapHref}">Shop handmade soap <span aria-hidden="true">→</span></a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="city-local-section" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
+          <div class="wrap">
+            <div class="city-local-section__head">
+              <div><p class="city-local-kicker">Festival gifts</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2></div>
+            </div>
+            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade lavender soap bar, with no moringa powder, for $20. For Melbourne metro delivery, order by Mon 2 Nov before 2pm. We don't dispatch on Melbourne Cup Day (Tue 3 Nov). Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
+            <p style="margin-top:16px"><a class="btn btn-primary" href="${diwaliHref}">Shop the Diwali Gift Box</a></p>
+          </div>
+        </section>
+
+        <section class="city-local-section city-local-section--delivery" id="delivery-melbourne" aria-labelledby="delivery-heading-melbourne">
+          <div class="wrap">
+            <div class="city-local-section__head">
+              <div><p class="city-local-kicker">Your Melbourne order</p><h2 id="delivery-heading-melbourne">Delivery to Melbourne and pickup</h2></div>
+            </div>
+            <p>Orders before 2pm Monday to Friday usually leave Truganina the same day. Melbourne metro is usually 1–3 business days after dispatch. Free shipping on orders of $79 or more; $9.69 under $79. Pickup from Truganina by arrangement; we don't have a shopfront.</p>
+          </div>
+        </section>
+
+        <section class="city-local-section city-local-section--faq" aria-labelledby="faq-heading-melbourne">
+          <div class="wrap city-faq-layout">
+            <div class="city-faq-intro">
+              <p class="city-local-kicker">Quick answers</p>
+              <h2 id="faq-heading-melbourne">Melbourne FAQs</h2>
+            </div>
+            <div class="faq-list city-faq-list">${faqDetails(faqs)}</div>
+          </div>
+        </section>
+
+        <section class="city-local-cta" aria-labelledby="city-cta-melbourne">
+          <div class="wrap city-local-cta__inner">
+            <div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-melbourne">Curry leaves, tea and soap from Truganina</h2><p>Shop dried curry leaves, Darjeeling tea, handmade soap, or the $20 Diwali gift box. Free AU shipping at $79.</p></div>
+            <div><a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a><a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a></div>
+          </div>
+        </section>
+
+        ${googleReviewsSection()}
+      </div>`,
+  });
 }
 
 function cityPage(city, slug) {
