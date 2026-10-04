@@ -63,7 +63,8 @@ export const PRODUCTS = [
     href: "/products/curry-leaves/",
     unit: "/ 30g",
     lab: false,
-    costCopy: "$7 for a 30g pack of whole dried leaves.",
+    costCopy:
+      "Free shipping on Australian orders of $79 or more. Under $79, standard shipping is $9.69.",
   },
   {
     id: "black-tea",
@@ -78,7 +79,8 @@ export const PRODUCTS = [
     href: "/products/black-tea/",
     unit: "/ 100g",
     lab: false,
-    serving: { grams: 2, unit: "cup", pack: "100g pack" },
+    costCopy:
+      "Free shipping on Australian orders of $79 or more. Under $79, standard shipping is $9.69.",
   },
   {
     id: "moringa-soap",
@@ -93,7 +95,8 @@ export const PRODUCTS = [
     href: "/products/moringa-soap/",
     unit: "/ 95g",
     lab: false,
-    costCopy: "$7 for one handmade 95g bar.",
+    costCopy:
+      "Free shipping on Australian orders of $79 or more. Under $79, standard shipping is $9.69.",
   },
   {
     id: "combo-pack",
@@ -130,7 +133,7 @@ export const PRODUCTS = [
     href: "/products/diwali-gift-box/",
     unit: "",
     lab: false,
-    costCopy: "$20 for tea, curry leaves, and soap products packed together (singles $21.50). Not a decorative box.",
+    costCopy: "$20 for tea, curry leaves, and soap products packed together in Truganina.",
   },
   {
     id: "gift-pack",
@@ -144,7 +147,7 @@ export const PRODUCTS = [
     image: "/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp",
     href: "/products/gift-pack/",
     unit: "",
-    lab: true,
+    lab: false,
     costCopy: "$35 for four products packed together in Truganina.",
   },
 ];
@@ -165,36 +168,8 @@ export function costNote(p) {
 
 export const REVIEWS = [
   {
-    name: "Jay Turakhia",
-    text: "I have used various brands of moringa powder but the powder from Nutri-Thrive is the greenest in color and tastes way better than the other moringa powder in the market. The pricing is very reasonable and the shipping was also very quick!!",
-  },
-  {
-    name: "chizaram olanma",
-    text: "I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved, and I love adding it to my morning smoothies. It blends well and doesn't have an overpowering taste.",
-  },
-  {
     name: "Mai Anh Trần Thúy",
     text: "Black tea is my fav product here!! I usually use their black tea to make roasted milk tea which is fantastic for such hot summer in Melbourne!",
-  },
-  {
-    name: "buket",
-    text: "Honestly wasn't expecting much on the taste front, most powders like this are a chore to get down. NutriThrive actually surprised me. I've been having the moringa powder daily for a while now, and recently added the black tea into my routine too. Both have genuinely become part of my day rather than something I'm forcing myself to do. Good quality, easy to stick with.",
-  },
-  {
-    name: "Jay Vasa",
-    text: "Moringa has been a game-changer! Better focus, natural energy, and overall wellness boost in just 30 days. Will keep using!",
-  },
-  {
-    name: "reetysha ramjee",
-    text: "This product is healthy, of excellent quality, and very affordable. Highly recommend!",
-  },
-  {
-    name: "Shaily Vasa",
-    text: "The product is very good and have been using it over 5 months. It's very helpful if you are on a weight loss journey.",
-  },
-  {
-    name: "Jay Rohit Sharma",
-    text: "The product is super good and healthy I would definitely like to buy more and again!! Thanks for amazing product it helped me.",
   },
   {
     name: "Siv Mey",

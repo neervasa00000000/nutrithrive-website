@@ -147,7 +147,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "darjeeling-black-tea-australia-guide",
     "title": "Where to Buy Darjeeling Tea in Australia (2026 Guide)",
-    "description": "Where to buy Darjeeling tea in Australia in 2026: loose leaf vs Woolworths, Coles and T2, plus brew tips. Our pouch is $7.50/100g from Melbourne.",
+    "description": "Where to buy Darjeeling tea in Australia: Twinings at Coles and Woolworths, T2, specialist loose leaf and our 100g pouch, with prices per 100g (Oct 2026).",
     "category": "Wellness",
     "href": "/blog/darjeeling-black-tea-australia-guide",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
@@ -162,16 +162,16 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "diwali-gift-guide-curry-leaves-tea-australia",
-    "title": "Diwali Gift Box & Hamper Ideas Australia 2026",
-    "description": "Diwali gift box Australia $20: Darjeeling, curry leaves and handmade soap (no moringa). Hampers under $40, Melbourne gifts, Cup Day order-by dates.",
+    "title": "Diwali Gift Ideas Australia 2026: Tea, Spice & Soap Gifts",
+    "description": "Diwali is Sun 8 Nov 2026. Tea, curry leaf and soap gift ideas, a ready Diwali gift box, small hampers and order-by dates for every state.",
     "category": "Wellness",
     "href": "/blog/diwali-gift-guide-curry-leaves-tea-australia",
     "image": "/assets/images/blog/diwali-gift-guide-curry-leaves-tea-australia-hero.webp"
   },
   {
     "slug": "dried-curry-leaves-australia-guide",
-    "title": "Where to Buy Dried Curry Leaves in Australia: Coles vs Web",
-    "description": "Where to buy dried curry leaves in Australia: Coles, Woolworths, Indian grocers vs online. Storage, tempering, and a $7/30g Melbourne pouch.",
+    "title": "Curry Leaves at Woolworths, Coles & Aldi: Where to Buy",
+    "description": "Can you buy curry leaves at Woolworths, Coles or Aldi? What each listed in Oct 2026 (fresh punnets, dried packs), Indian grocers, online and storage tips.",
     "category": "Wellness",
     "href": "/blog/dried-curry-leaves-australia-guide",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"
