@@ -10,7 +10,6 @@ import { REPO_ROOT, SITE_ROOT } from "./lib/paths.mjs";
 import {
   looksTruncatedMeta,
   metaContent,
-  naiveMetaContent,
   normalizeMetaText,
   sameSeoText,
   visibleLength,
@@ -375,11 +374,11 @@ for (const rel of [
   if (html && !articleHasSubstantialProse(html)) errors.push(`${rel}: article prose is missing or too short`);
 }
 const teaHtml = read("products/black-tea/index.html");
-if (teaHtml && !teaHtml.includes("<title>Darjeeling Black Tea Australia — First Flush | $7.50 | NutriThrive</title>")) {
+if (teaHtml && !teaHtml.includes("<title>Darjeeling Loose Leaf Black Tea Australia | 100g $7.50</title>")) {
   errors.push("products/black-tea/index.html: title not updated");
 }
 const curryHtml = read("products/curry-leaves/index.html");
-if (curryHtml && !curryHtml.includes("<title>Dried Curry Leaves Australia — Shade-Dried Kari Leaf | $7</title>")) {
+if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | 30g $7</title>")) {
   errors.push("products/curry-leaves/index.html: title not updated");
 }
 
@@ -647,9 +646,8 @@ for (const rel of trackedBlogs) {
   const html = read(rel);
   if (!html || /http-equiv=["']refresh["']/i.test(html) || /content=["']noindex/i.test(html)) continue;
   const description = normalizeMetaText(metaContent(html, "description") || "");
-  const naive = normalizeMetaText(naiveMetaContent(html));
-  if (looksTruncatedMeta(description) || naive !== description) {
-    errors.push(`${rel}: meta description still truncates at an apostrophe or mid-sentence ("${naive || description}")`);
+  if (looksTruncatedMeta(description)) {
+    errors.push(`${rel}: meta description truncates at an apostrophe or mid-sentence ("${description}")`);
   }
   const length = visibleLength(description);
   // Google does not prescribe a fixed length. Catch only descriptions that

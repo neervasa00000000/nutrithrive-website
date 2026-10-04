@@ -1,4 +1,4 @@
-/** Auto-generated — 86 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Auto-generated — 87 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
@@ -81,6 +81,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "curry-leaf-podi-recipe-dried-curry-leaves",
+    "title": "Curry Leaf Podi Recipe (With Dried Curry Leaves)",
+    "description": "Make curry leaf podi with 10 g dried curry leaves, roasted dals and spices. About 15 minutes active plus cooling, with six serving ideas beyond rice.",
+    "category": "Food",
+    "href": "/blog/curry-leaf-podi-recipe-dried-curry-leaves",
+    "image": "/assets/images/blog/curry-leaf-podi-spices.webp"
+  },
+  {
     "slug": "curry-leaves-dahl-recipe-30-minutes-australia-2026",
     "title": "30-Minute Curry Leaf Dal \u2014 Dried Leaves $7",
     "description": "A genuinely 30-minute dal recipe with real curry leaf tempering. Simple, high-protein, and actually tastes right. Read the practical NutriThrive guide.",
@@ -154,8 +162,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "diwali-gift-guide-curry-leaves-tea-australia",
-    "title": "Diwali Gift Ideas Australia 2026: Tea, Spice &amp; Soap Gifts",
-    "description": "Diwali is Sun 8 Nov 2026. Tea, curry leaf and handmade soap gift ideas under $40, posted from Melbourne. Order-by dates for every state.",
+    "title": "Diwali Gift Box & Hamper Ideas Australia 2026",
+    "description": "Diwali gift box Australia $20: Darjeeling, curry leaves and handmade soap (no moringa). Hampers under $40, Melbourne gifts, Cup Day order-by dates.",
     "category": "Wellness",
     "href": "/blog/diwali-gift-guide-curry-leaves-tea-australia",
     "image": "/assets/images/blog/diwali-gift-guide-curry-leaves-tea-australia-hero.webp"
