@@ -1884,13 +1884,13 @@ body.journal-searching .section-head > a {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: var(--space-4);
   margin-top: var(--space-8);
-  align-items: stretch;
+  align-items: start;
 }
 
 .pdp-support-grid .safety-note,
 .pdp-support-grid .delivery-card {
   margin-top: 0;
-  height: 100%;
+  height: auto;
 }
 
 .pdp-faq,
