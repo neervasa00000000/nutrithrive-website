@@ -461,7 +461,7 @@ def build_post(post: dict, head_shell: str, footer: str) -> str:
 <span class="text-2xl font-bold text-moringa-leaf">$35.00</span>
 <span class="text-sm text-on-surface-variant">/400g</span>
 </div>
-<p class="text-body-sm text-on-surface-variant mb-6">$44.00 as four singles — save $9.00</p>
+<p class="text-body-sm text-on-surface-variant mb-6">$56.00 as four at $14 original — save $21.00</p>
 <a class="block w-full text-center bg-moringa-leaf text-pure-white py-4 rounded-lg font-label-lg text-label-lg hover:scale-[1.02] transition-transform" href="/products/moringa-powder/">Shop 400g Bundle →</a>
 </div>
 </div>
