@@ -1574,7 +1574,7 @@ const PDP = {
   "moringa-powder": {
     title: "Buy Moringa Powder Australia | 400g $35 | Free Shipping Over $79 | NutriThrive",
     description:
-      "Buy moringa powder Australia. 400g best value at $35. NMI lab tested. Free AU shipping from $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+      "Buy moringa powder Australia. 400g best value at $35. NMI lab tested. Free AU shipping from $79.",
     forceSeo: true,
     current: "Moringa",
     h1: "Moringa Powder Australia",
@@ -1919,22 +1919,6 @@ const PDP = {
 function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNote = "Taxes included. Shipping calculated at checkout.";
-  const shippingPurchaseNote = {
-    "moringa-powder":
-      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
-    "black-tea":
-      "Free AU shipping at $79. Add curry leaves, handmade soap, or the Diwali gift box to reach the threshold.",
-    "curry-leaves":
-      "Free AU shipping at $79. Add Darjeeling tea, handmade soap, or the Diwali gift box to reach the threshold.",
-    "combo-pack":
-      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
-    "moringa-soap":
-      "Free AU shipping at $79. Add Darjeeling tea, curry leaves, or the Diwali gift box to reach the threshold.",
-    "diwali-gift-box":
-      "Free AU shipping at $79. Add another gift box, the $35 gift pack, or tea/curry singles to reach the threshold.",
-    "gift-pack":
-      "Free AU shipping at $79. Add another product, a second pack, or the $20 Diwali gift box to reach the threshold.",
-  }[slug];
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const buyProduct =
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
@@ -2119,7 +2103,6 @@ function pdpPage(slug, d) {
               <a href="/documents/nutrithrive-lab-report-summary.pdf" target="_blank" rel="noopener">View lab report (NMI)</a>
             </div>` : ""}
             <p class="cost-note" data-pdp-cost>${esc(costNote(buyProduct))}</p>
-            ${shippingPurchaseNote ? `<p class="purchase-note">${esc(shippingPurchaseNote)}</p>` : ""}
             <p class="purchase-note">${esc(purchaseNote)}</p>
           </div>
           ${slug === "moringa-powder" ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
@@ -2702,7 +2685,7 @@ function cartPage() {
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
-          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.</p><a class="btn btn-primary" href="${shop}moringa-powder/">Shop 400g best value ($35)</a> <a class="btn btn-secondary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div></div>
+          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79.</p><a class="btn btn-primary" href="${shop}moringa-powder/">Shop 400g best value ($35)</a> <a class="btn btn-secondary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div></div>
           <div id="cart-buy-again"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
