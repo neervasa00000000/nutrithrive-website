@@ -465,11 +465,11 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /privacy /pages/legal/privacy-policy.html 200
 /privacy/ /pages/legal/privacy-policy.html 200
 /privacy.html /pages/legal/privacy-policy.html 200
-/privacy-policy /404.html 404!
-/privacy-policy/ /404.html 404!
-/privacy-policy.html /404.html 404!
-/pages/legal/privacy-policy /404.html 404!
-/pages/legal/privacy-policy/ /404.html 404!
+/privacy-policy /privacy 301!
+/privacy-policy/ /privacy 301!
+/privacy-policy.html /privacy 301!
+/pages/legal/privacy-policy /privacy 301!
+/pages/legal/privacy-policy/ /privacy 301!
 
 /thank-you.html /pages/shop/thank-you.html 200
 

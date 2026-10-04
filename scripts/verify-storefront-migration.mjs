@@ -531,11 +531,18 @@ if (redirects) {
     errors.push("_redirects lost /shipping rewrite");
   }
   if (redirects.includes("/privacy /privacy-policy 301")) errors.push("_redirects still 301 /privacy to /privacy-policy");
-  if (redirects.includes("/privacy-policy /privacy 301")) errors.push("_redirects must not 301 /privacy-policy to /privacy");
+  if (!redirects.includes("/privacy-policy /privacy 301")) {
+    errors.push("_redirects lost /privacy-policy 301 to /privacy");
+  }
+  if (!redirects.includes("/pages/legal/privacy-policy /privacy 301")) {
+    errors.push("_redirects lost /pages/legal/privacy-policy 301 to /privacy");
+  }
   if (!redirects.includes("/privacy /pages/legal/privacy-policy.html 200")) {
     errors.push("_redirects lost /privacy rewrite");
   }
-  if (!redirects.includes("/privacy-policy /404.html 404")) errors.push("_redirects lost /privacy-policy 404");
+  if (redirects.includes("/privacy-policy /404.html 404")) {
+    errors.push("_redirects still 404s /privacy-policy; must 301 to /privacy");
+  }
   const privacyHtml = read("pages/legal/privacy-policy.html");
   if (privacyHtml) {
     const privacyCanon = attr(privacyHtml, /<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)

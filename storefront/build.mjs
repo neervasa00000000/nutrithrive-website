@@ -171,9 +171,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "What Does Moringa Powder Taste Like? Mix It, Then Buy a Pouch",
   },
   "how-to-add-moringa-to-diet": {
-    title: "How to Add Moringa Powder to Your Diet (Australia)",
+    title: "How to Use Moringa Powder | Add It to Food You Already Eat",
     description: "Everyday ways to eat moringa powder in food you already make. Sizes 100g $11, 200g $21.50, 400g $35.",
-    h1: "How to Add Moringa Powder to Your Diet (Australia)",
+    h1: "How to Use Moringa Powder | Add It to Food You Already Eat",
   },
   "moringa-smoothie-recipes-australia-2026": {
     title: "Moringa Smoothie Recipes Australia — Exact Powder Amounts",
@@ -221,9 +221,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa Brands Compared Australia 2026",
   },
   "moringa-capsules-vs-powder-which-is-better-2026": {
-    title: "Best Moringa Capsules Australia? We Sell Powder, Not Capsules",
+    title: "Moringa Powder vs Capsules | We Sell the Powder",
     description: "Comparing moringa capsules with powder? We sell leaf powder, not capsules. 100g $11, 200g $21.50, 400g $35.",
-    h1: "Best Moringa Capsules Australia? We Sell Powder, Not Capsules",
+    h1: "Moringa Powder vs Capsules | We Sell the Powder",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
     title: "Rosabella Moringa Reviews Australia 2026: We Sell Powder, Not Rosabella",
@@ -246,9 +246,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
   },
   "how-to-choose-moringa-powder-australia-2026": {
-    title: "Buy Moringa Powder Australia | Best Powder & Where to Shop",
+    title: "How to Choose Moringa Powder in Australia",
     description: "Where to buy moringa powder in Australia and how to choose a pouch. NutriThrive 100g $11, 200g $21.50, 400g $35.",
-    h1: "Buy Moringa Powder Australia | Best Powder & Where to Shop",
+    h1: "How to Choose Moringa Powder in Australia",
   },
   "verify-moringa-quality-premium-buyers-checklist-2026": {
     title: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
@@ -1473,7 +1473,7 @@ const PDP = {
   "moringa-powder": {
     title: "Buy Moringa Powder Australia | 400g $35 | Free Shipping Over $79 | NutriThrive",
     description:
-      "Buy moringa powder Australia. 400g best value at $35. Free AU shipping over $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+      "Buy moringa powder Australia. 400g best value at $35. NMI lab tested. Free AU shipping over $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     forceSeo: true,
     current: "Moringa",
     h1: "Moringa Powder Australia",
