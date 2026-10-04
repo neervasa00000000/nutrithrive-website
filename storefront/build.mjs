@@ -1471,13 +1471,14 @@ function shopPage() {
 
 const PDP = {
   "moringa-powder": {
-    title: "Moringa Powder Australia — NMI Lab-Tested, Shade-Dried | From $11",
+    title: "Buy Moringa Powder Australia | 400g $35 | Free Shipping Over $79 | NutriThrive",
     description:
-      "Buy moringa powder Australia from $11/100g. NMI lab-tested, shade-dried leaf, packed in Truganina Melbourne. Free AU shipping at $79.",
+      "Buy moringa powder Australia. 400g best value at $35. Free AU shipping over $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     forceSeo: true,
     current: "Moringa",
     h1: "Moringa Powder Australia",
     product: PRODUCTS[0],
+    defaultVariantId: "moringa-400g",
     variants: PRODUCTS.filter((p) =>
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack"].includes(p.id)
     ),
@@ -1501,12 +1502,12 @@ const PDP = {
     ],
     reviews: REVIEWS.filter((review) => MORINGA_FEATURED_REVIEW_NAMES.includes(review.name)),
     gallery: [
+      ["/assets/images/product_webp/moringa-powder-400g-bundle-main.webp", "Four NutriThrive 100g moringa powder pouches in the 400g bundle"],
       ["/assets/images/product_webp/moringa-powder-100g-main.webp", "NutriThrive 100g moringa powder pouch with a bowl of green powder"],
       ["/assets/images/photos/compressed/moringa-powder-200g-main-square.webp", "NutriThrive 200g moringa powder pouch with a bowl of green powder"],
       ["/assets/images/photos/compressed/moringa-powder-200g-editorial-desktop.webp", "NutriThrive 200g moringa powder pouch in warm botanical light"],
       ["/assets/images/photos/compressed/moringa-powder-200g-lifestyle-desktop.webp", "NutriThrive 200g moringa powder pouch with a wooden bowl and measuring spoon"],
       ["/assets/images/photos/compressed/moringa-powder-detail-light.webp", "Finely milled moringa leaf powder in a ceramic bowl and wooden spoon"],
-      ["/assets/images/product_webp/moringa-powder-400g-bundle-main.webp", "Four NutriThrive 100g moringa powder pouches in the 400g bundle"],
       ["/assets/images/product_webp/moringa-powder-texture.webp", "Finely milled green moringa leaf powder in a ceramic bowl"],
     ],
     detailImage: "/assets/images/photos/compressed/moringa-powder-detail-light.webp",
@@ -1757,12 +1758,16 @@ function pdpPage(slug, d) {
   const shippingPurchaseNote = {
     "moringa-powder":
       "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
-    "black-tea": "Free AU shipping at $79. This pack can be combined with other products to reach the threshold.",
-    "curry-leaves": "Free AU shipping at $79. This pack can be combined with other products to reach the threshold.",
+    "black-tea":
+      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+    "curry-leaves":
+      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     "gift-pack": "Free AU shipping at $79. Add another product or a second pack to reach the threshold.",
   }[slug];
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
-  const gallery = d.gallery?.length ? d.gallery : [[p.image, `${p.name} ${p.variant}`]];
+  const buyProduct =
+    (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
+  const gallery = d.gallery?.length ? d.gallery : [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`]];
   const related = PRODUCTS.filter((item) => {
     if (item.id === p.id || item.href === p.href) return false;
     if (slug === "gift-pack" && item.id === "moringa-powder") return false;
@@ -1770,12 +1775,13 @@ function pdpPage(slug, d) {
   }).slice(0, 3);
   const reviews = d.reviews || REVIEWS;
   const freezeHero = Boolean(d.freezeHeroCopy);
+  const selectedVariantId = buyProduct.id;
   const variantSelect = d.variants
     ? `<label class="field" for="variant">Size
         <select class="variant-select" id="variant">${d.variants
           .map((v) => {
             const label = d.variantLabels?.[v.id] || `${v.name} ${v.variant}, ${money(v.price)}`;
-            return `<option value="${v.id}" ${v.id === p.id ? "selected" : ""}>${esc(label)}</option>`;
+            return `<option value="${v.id}" ${v.id === selectedVariantId ? "selected" : ""}>${esc(label)}</option>`;
           })
           .join("")}</select>
       </label>`
@@ -1867,7 +1873,7 @@ function pdpPage(slug, d) {
     preserveTitle: d.forceSeo ? true : Boolean(liveSeo?.title),
     preserveDescription: d.forceSeo ? true : Boolean(liveSeo?.description),
     ogType: "product",
-    ogImage: p.image,
+    ogImage: buyProduct.image,
     ogImageWidth: 900,
     ogImageHeight: 900,
     extraHead: `<link rel="preload" as="image" href="${gallery[0][0]}" fetchpriority="high">` +
@@ -1899,7 +1905,7 @@ function pdpPage(slug, d) {
       </nav>
       <section class="wrap pdp">
         <div class="pdp-gallery-wrap">
-          <div class="pdp-gallery">
+          <div class="pdp-gallery${buyProduct.id === "moringa-400g" || buyProduct.id === "combo-pack" ? " is-wide" : ""}">
             <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
           </div>
         </div>
@@ -1907,7 +1913,7 @@ function pdpPage(slug, d) {
           <p class="pdp-eyebrow">NutriThrive · farm to pouch</p>
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
-          <p class="pdp-price" data-pdp-price>${money(p.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack"].includes(slug) && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : ""}</p>
+          <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack"].includes(slug) && buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
             <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
@@ -1925,14 +1931,14 @@ function pdpPage(slug, d) {
               </div>
             </div>
             <div class="pdp-actions">
-              <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(p)}" data-label="Add to cart">Add to cart</button>
-              <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(p)}">Buy now</button>
+              <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(buyProduct)}" data-label="Add to cart">Add to cart</button>
+              <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(buyProduct)}">Buy now</button>
             </div>
             ${slug === "moringa-powder" ? `<div class="pdp-lab-control">
               <span>Third-party tested — NMI lab report</span>
               <a href="/documents/nutrithrive-lab-report-summary.pdf" target="_blank" rel="noopener">View lab report (NMI)</a>
             </div>` : ""}
-            <p class="cost-note" data-pdp-cost>${esc(costNote(p))}</p>
+            <p class="cost-note" data-pdp-cost>${esc(costNote(buyProduct))}</p>
             ${shippingPurchaseNote ? `<p class="purchase-note">${esc(shippingPurchaseNote)}</p>` : ""}
             <p class="purchase-note">${esc(purchaseNote)}</p>
           </div>
@@ -2327,8 +2333,8 @@ function shippingPage() {
     [
       "How do I get free shipping?",
       {
-        html: `Free Australia-wide shipping on orders over <strong>$79</strong>. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.`,
-        text: "Free Australia-wide shipping on orders over $79. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.",
+        html: `Free Australia-wide shipping on orders over <strong>$79</strong>. Under <strong>$79</strong>, Australia standard shipping is <strong>$9.69</strong> at checkout. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.`,
+        text: "Free Australia-wide shipping on orders over $79. Under $79, Australia standard shipping is $9.69 at checkout. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.",
       },
     ],
     [
@@ -2366,7 +2372,7 @@ function shippingPage() {
       </nav>
       <section class="page-intro wrap-narrow">
         <h1>Shipping and returns</h1>
-        <p class="lede">Orders leave Truganina. Free standard shipping on Australian orders of $79 and over, and worldwide on $90 and over.</p>
+        <p class="lede">Orders leave Truganina. Australia standard shipping is <strong>$9.69</strong> under <strong>$79</strong>. Free on Australian orders of <strong>$79</strong> and over, and worldwide on <strong>$90</strong> and over.</p>
         <h2>Dispatch</h2>
         <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. If you think your order should receive free shipping, call +61 438 201 419 and we can process it for you.</p>
         <h2>Timing after dispatch</h2>
