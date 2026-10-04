@@ -378,7 +378,7 @@ if (teaHtml && !teaHtml.includes("<title>Darjeeling Loose Leaf Black Tea Austral
   errors.push("products/black-tea/index.html: title not updated");
 }
 const curryHtml = read("products/curry-leaves/index.html");
-if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | 30g $7</title>")) {
+if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | Curry Patta / Kadi Patta $7</title>")) {
   errors.push("products/curry-leaves/index.html: title not updated");
 }
 
