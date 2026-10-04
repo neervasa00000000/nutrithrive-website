@@ -556,7 +556,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301!
 /blog/nutrithrive-dried-curry-leaves-tradition-health.html /blog/dried-curry-leaves-australia-guide 301!
 /blog/nutrithrive-dried-curry-leaves-tradition-health /blog/dried-curry-leaves-australia-guide 301!
-/blog/nutrithrive-dried-curry-leaves-tradition-health /blog/nutrithrive-dried-curry-leaves-tradition-health.html 200
 /blog/quit-sugar-90-days-honest-diary-melbourne-2026.html /404.html 410
 /blog/quit-sugar-90-days-honest-diary-melbourne-2026 /404.html 410
 /blog/science-shade-drying-vs-sun-drying-moringa.html /blog/science-shade-drying-vs-sun-drying-moringa 301!
@@ -747,7 +746,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/how-to-make-moringa-tea-recipes-2026.html /blog/how-to-make-moringa-tea-recipes-2026 301!
 /blog/how-to-store-curry-leaves-fresh-dried-australia-2026.html /blog/dried-curry-leaves-australia-guide 301!
 /blog/how-to-store-curry-leaves-fresh-dried-australia-2026 /blog/dried-curry-leaves-australia-guide 301!
-/blog/how-to-store-curry-leaves-fresh-dried-australia-2026 /blog/how-to-store-curry-leaves-fresh-dried-australia-2026.html 200
 # Pregnancy cannibalization merge (26 Jul 2026): trimester guide keeps; generic pregnancy 301!
 /blog/is-moringa-safe-during-pregnancy-2026.html /blog/moringa-pregnancy-safe-australia-trimester-guide-2026 301!
 /blog/is-moringa-safe-during-pregnancy-2026 /blog/moringa-pregnancy-safe-australia-trimester-guide-2026 301!
@@ -871,22 +869,38 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/darjeeling-black-tea-australia-guide.html /blog/darjeeling-black-tea-australia-guide 301!
 /blog/darjeeling-black-tea-australia-guide /blog/darjeeling-black-tea-australia-guide.html 200
 # Darjeeling cluster rewrite pairs (were 404 without 200 rules; Oct 2026)
-/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026.html /blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026 301!
-/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026 /blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026.html 200
-/blog/cold-brew-darjeeling-australian-spring-2026.html /blog/cold-brew-darjeeling-australian-spring-2026 301!
-/blog/cold-brew-darjeeling-australian-spring-2026 /blog/cold-brew-darjeeling-australian-spring-2026.html 200
-/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 301!
-/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html 200
-/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026.html /blog/darjeeling-tea-coffee-replacement-honest-assessment-2026 301!
-/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026 /blog/darjeeling-tea-coffee-replacement-honest-assessment-2026.html 200
-/blog/darjeeling-tea-health-benefits-research-2026.html /blog/darjeeling-tea-health-benefits-research-2026 301!
-/blog/darjeeling-tea-health-benefits-research-2026 /blog/darjeeling-tea-health-benefits-research-2026.html 200
-/blog/can-you-drink-darjeeling-tea-every-day-2026.html /blog/can-you-drink-darjeeling-tea-every-day-2026 301!
-/blog/can-you-drink-darjeeling-tea-every-day-2026 /blog/can-you-drink-darjeeling-tea-every-day-2026.html 200
 /blog/moringa-soap-benefits-skin-guide.html /blog/moringa-soap-benefits-skin-guide 301!
 /blog/moringa-soap-benefits-skin-guide /blog/moringa-soap-benefits-skin-guide.html 200
 /blog/quick-healthy-meal-ideas-15-minutes-australia.html /blog/quick-healthy-meal-ideas-15-minutes-australia 301!
 /blog/quick-healthy-meal-ideas-15-minutes-australia /blog/quick-healthy-meal-ideas-15-minutes-australia.html 200
+
+# Thin shell posts → canonical guides (force 301!; Oct 2026)
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026.html /blog/darjeeling-black-tea-australia-guide 301!
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026 /blog/darjeeling-black-tea-australia-guide 301!
+/blog/cold-brew-darjeeling-australian-spring-2026.html /blog/darjeeling-black-tea-australia-guide 301!
+/blog/cold-brew-darjeeling-australian-spring-2026 /blog/darjeeling-black-tea-australia-guide 301!
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html /blog/darjeeling-black-tea-australia-guide 301!
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 /blog/darjeeling-black-tea-australia-guide 301!
+/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026.html /blog/darjeeling-black-tea-australia-guide 301!
+/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026 /blog/darjeeling-black-tea-australia-guide 301!
+/blog/darjeeling-tea-health-benefits-research-2026.html /blog/darjeeling-black-tea-australia-guide 301!
+/blog/darjeeling-tea-health-benefits-research-2026 /blog/darjeeling-black-tea-australia-guide 301!
+/blog/can-you-drink-darjeeling-tea-every-day-2026.html /blog/darjeeling-black-tea-australia-guide 301!
+/blog/can-you-drink-darjeeling-tea-every-day-2026 /blog/darjeeling-black-tea-australia-guide 301!
+/blog/is-moringa-worth-it-cost-value-australia-2026.html /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026 301!
+/blog/is-moringa-worth-it-cost-value-australia-2026 /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026 301!
+/blog/moringa-30-day-challenge-honest-results.html /blog/how-to-add-moringa-to-diet 301!
+/blog/moringa-30-day-challenge-honest-results /blog/how-to-add-moringa-to-diet 301!
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026.html /blog/moringa-smoothie-recipes-australia-2026 301!
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026 /blog/moringa-smoothie-recipes-australia-2026 301!
+/blog/moringa-energy-what-happens-week-by-week-2026.html /blog/how-to-add-moringa-to-diet 301!
+/blog/moringa-energy-what-happens-week-by-week-2026 /blog/how-to-add-moringa-to-diet 301!
+/blog/moringa-face-mask-australia-glow-ritual.html /blog/moringa-soap-benefits-skin-guide 301!
+/blog/moringa-face-mask-australia-glow-ritual /blog/moringa-soap-benefits-skin-guide 301!
+/blog/natural-pre-workout-moringa-australia-2026.html /blog/moringa-before-after-workout-timing-guide-2026 301!
+/blog/natural-pre-workout-moringa-australia-2026 /blog/moringa-before-after-workout-timing-guide-2026 301!
+/blog/morning-routine-health-tips-australia-2026.html /blog/how-to-add-moringa-to-diet 301!
+/blog/morning-routine-health-tips-australia-2026 /blog/how-to-add-moringa-to-diet 301!
 
 # === storefront production routes (keep ranking /blog URLs) ===
 /shop /products/ 301

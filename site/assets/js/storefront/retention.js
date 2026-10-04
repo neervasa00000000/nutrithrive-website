@@ -39,8 +39,8 @@
       heading: "Using your dried curry leaves",
       intro: "Keep the pouch sealed and dry. Whole dried leaves go into hot oil or ghee at the start of the pan.",
       links: [
-        { href: "/blog/how-to-store-curry-leaves-fresh-dried-australia-2026", label: "How to store curry leaves" },
-        { href: "/blog/curry-leaves-in-australian-cooking-how-to-use-2026", label: "Cooking with dried curry leaves" },
+        { href: "/blog/dried-curry-leaves-australia-guide", label: "How to store curry leaves" },
+        { href: "/blog/curry-leaves-recipes-beyond-dal", label: "Cooking with dried curry leaves" },
         { href: "/blog/curry-leaves-dahl-recipe-30-minutes-australia-2026", label: "30-minute dahl recipe" },
       ],
     },
@@ -49,8 +49,8 @@
       intro: "Use water at 85 to 90°C, not a rolling boil. 1 to 2 teaspoons, 3 to 5 minutes. Boiling water makes it bitter.",
       links: [
         { href: "/blog/how-to-brew-darjeeling-tea-perfectly-2026", label: "How to brew Darjeeling" },
-        { href: "/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026", label: "First flush vs second flush" },
-        { href: "/blog/cold-brew-darjeeling-australian-spring-2026", label: "Cold-brew Darjeeling" },
+        { href: "/blog/darjeeling-black-tea-australia-guide", label: "First flush vs second flush" },
+        { href: "/blog/darjeeling-black-tea-australia-guide", label: "Cold-brew Darjeeling" },
       ],
     },
     "moringa-soap": {
@@ -74,7 +74,7 @@
       heading: "Your combo pack",
       intro: "Keep both pouches sealed and dry, away from humidity. Dried curry leaves go into hot oil or ghee at the start of the pan.",
       links: [
-        { href: "/blog/how-to-store-curry-leaves-fresh-dried-australia-2026", label: "Curry leaf storage" },
+        { href: "/blog/dried-curry-leaves-australia-guide", label: "Curry leaf storage" },
         { href: "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026", label: "Powder storage" },
       ],
       legalReview: true,
@@ -84,7 +84,7 @@
       intro: "Four products, four simple jobs: keep powder and curry leaves dry, brew tea below boiling, and let the soap dry between uses.",
       links: [
         { href: "/blog/how-to-brew-darjeeling-tea-perfectly-2026", label: "Brew the tea" },
-        { href: "/blog/how-to-store-curry-leaves-fresh-dried-australia-2026", label: "Store the curry leaves" },
+        { href: "/blog/dried-curry-leaves-australia-guide", label: "Store the curry leaves" },
         { href: "/products/gift-pack/", label: "What's in the pack" },
       ],
     },
