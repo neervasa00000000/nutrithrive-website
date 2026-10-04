@@ -136,9 +136,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead",
   },
   "curry-leaves-tea-how-to-make-benefits-2026": {
-    title: "How to Make Curry Leaf Tea from Dried Leaves (Australia)",
-    description: "Steep dried curry leaves for a simple herbal cup. NutriThrive dried leaves are $7, with free AU shipping from $79.",
-    h1: "How to Make Curry Leaf Tea from Dried Leaves (Australia)",
+    title: "Curry Leaf Tea: How to Make It with Dried Leaves",
+    description: "Make curry leaf tea from dried leaves: how many to use, steep time, pairings (ginger, lemon, honey) and how to store the pouch so it stays fragrant.",
+    h1: "Curry Leaf Tea: How to Make It with Dried Leaves",
   },
   "grow-moringa-tree-australia": {
     title: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
@@ -232,15 +232,10 @@ const ARTICLE_SEO_OVERRIDES = {
     description: "Australian Rosabella moringa review. We do not sell Rosabella. Buy path is NutriThrive leaf powder from $11.",
     h1: "Rosabella Moringa Reviews Australia 2026: We Sell Powder, Not Rosabella",
   },
-  "how-much-caffeine-safe-per-day-australia-fsanz-2026": {
-    title: "How Much Caffeine Per Day in Australia? FSANZ Guide",
-    description: "Compare caffeine in coffee and tea using FSANZ maximum levels, serving context and NutriThrive Darjeeling tea details.",
-    h1: "How Much Caffeine Per Day in Australia? FSANZ Guide",
-  },
   "how-to-brew-darjeeling-tea-perfectly-2026": {
-    title: "How to Brew Darjeeling Tea (Temp, Time, Leaf): Then Buy the Leaf",
-    description: "Water temperature, steep time, and leaf amount for Darjeeling. Loose leaf $7.50 at /products/black-tea/.",
-    h1: "How to Brew Darjeeling Tea (Temp, Time, Leaf): Then Buy the Leaf",
+    title: "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
+    description: "Brew Darjeeling loose leaf right: 85–95°C water, 3–4 min, 2–2.5 g per cup. Milk or not, iced and pot ratios, and where to buy in Australia.",
+    h1: "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
   },
   "moringa-vs-coffee-melbourne-energy-hack": {
     title: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
@@ -276,9 +271,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Does Moringa Powder Expire? Shelf Life, Storage, and When to Buy",
   },
   "darjeeling-tea-vs-english-breakfast-comparison-2026": {
-    title: "Darjeeling vs English Breakfast Tea: Which Cup to Buy",
-    description: "Darjeeling and English Breakfast are both black teas and different cups. Choose, then buy our Darjeeling loose leaf at $7.50.",
-    h1: "Darjeeling vs English Breakfast Tea: Which Cup to Buy",
+    title: "Darjeeling vs English Breakfast Tea: Taste, Caffeine, Price",
+    description: "Darjeeling vs English Breakfast: flavour, strength, caffeine, milk or not, and cost per cup. Plus where to buy Darjeeling loose leaf in Australia.",
+    h1: "Darjeeling vs English Breakfast Tea: Taste, Caffeine, Price",
   },
   "moringa-vs-whey-protein-comparison-2026": {
     title: "Moringa vs Whey Protein Australia: Not a Whey Substitute",
@@ -291,14 +286,14 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa Before or After Workout? Timing Guide (AU)",
   },
   "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026": {
-    title: "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
-    description: "Darjeeling black tea usually has less caffeine than a typical coffee. NutriThrive loose leaf is $7.50 per 100g; free AU shipping from $79.",
-    h1: "How Much Caffeine in Darjeeling Tea vs Coffee (Australia)",
+    title: "Darjeeling Tea Caffeine: mg per Cup vs Coffee & Green Tea",
+    description: "How much caffeine is in Darjeeling tea? Per-cup ranges vs coffee, green and English Breakfast, FSANZ daily guidance, and how to brew a lighter cup.",
+    h1: "Darjeeling Tea Caffeine: mg per Cup vs Coffee & Green Tea",
   },
   "curry-leaves-recipes-beyond-dal": {
-    title: "5 Curry Leaf Recipes Beyond Dal: Dried Leaves $7",
-    description: "Five curry leaf recipes beyond dal: tadka lemon rice, chutney, eggs, potatoes, and finishing oil. Use dried leaves, not curry powder. $7 pouch. Free AU shipping at $79.",
-    h1: "5 Curry Leaf Recipes Beyond Dal: Dried Leaves $7",
+    title: "How to Use Dried Curry Leaves: 6 Recipes Beyond Dal",
+    description: "How to cook with dried curry leaves: tadka basics, how many to use, and 6 recipes from lemon rice to curry leaf oil. Shade-dried 30g pouch from Melbourne.",
+    h1: "How to Use Dried Curry Leaves: 6 Recipes Beyond Dal",
   },
   "moringa-vs-spirulina-vs-matcha-comparison-australia": {
     title: "Moringa vs Spirulina vs Matcha (Australia): We Sell Moringa Powder",
@@ -306,9 +301,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa vs Spirulina vs Matcha (Australia): We Sell Moringa Powder",
   },
   "curry-leaves-vs-curry-powder-difference-explained-2026": {
-    title: "Curry Leaves vs Curry Powder: Buy the Leaves, Not the Mix",
-    description: "Curry leaves and curry powder are not the same. If the recipe wants the leaf, dried curry leaves are $7.",
-    h1: "Curry Leaves vs Curry Powder: Buy the Leaves, Not the Mix",
+    title: "Curry Leaves vs Curry Powder: Different Things, Not Swaps",
+    description: "Curry leaves and curry powder aren't interchangeable. What each is, when to use them, how many dried leaves equal fresh, and where to buy in Australia.",
+    h1: "Curry Leaves vs Curry Powder: Different Things, Not Swaps",
   },
   "moringa-wellness-shot-recipe-winter-2026": {
     title: "Moringa Shot Recipe Australia: Powder You Mix, Not a Shot We Sell",
@@ -336,6 +331,8 @@ const JOURNAL_REDIRECTS = {
   "moringa-for-anxiety-stress-evidence-2026": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
   "cortisol-cocktail-trend-explained-moringa-2026": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
   "best-time-to-take-moringa-powder-morning-or-night-2026": "moringa-before-after-workout-timing-guide-2026",
+  "how-much-caffeine-safe-per-day-australia-fsanz-2026": "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+  "curry-leaves-heart-health-cholesterol-evidence-2026": "curry-leaves-health-benefits-what-the-evidence-says-2026",
 };
 
 // Retired seasonal articles that now lead directly to a product rather than
@@ -343,6 +340,11 @@ const JOURNAL_REDIRECTS = {
 const JOURNAL_EXTERNAL_REDIRECTS = {
   "fathers-day-gift-under-40": "/products/gift-pack/",
 };
+
+const REDIRECTED_JOURNAL_SLUGS = new Set(
+  [...fs.readFileSync(path.join(SITE, "_redirects"), "utf8").matchAll(/^\/blog\/([^\s/*.]+)\s+\S+\s+30[1278]!?(?:\s|$)/gm)]
+    .map((match) => match[1])
+);
 
 const CURATED_RELATED = {
   "moringa-patches-australia-review-do-they-work": [
@@ -927,9 +929,17 @@ function productCard(p, priority = false, opts = {}) {
   const was =
     !opts.hideWas && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : "";
   const href = shopHref(p);
+  const cardImage = {
+    "/assets/images/photos/compressed/moringa-powder-200g-main-square.webp": "/assets/images/photos/compressed/moringa-powder-200g-main-square-card-640.webp",
+    "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp": "/assets/images/product_webp/moringa-powder-400g-bundle-main-card-640.webp",
+    "/assets/images/product_webp/dried-curry-leaves-30g-main.webp": "/assets/images/product_webp/dried-curry-leaves-30g-main-card-640.webp",
+  }[p.image];
+  const responsive = cardImage
+    ? `srcset="${cardImage} 640w, ${cardImage.replace("-card-640", "-card-960")} 960w, ${p.image} 1254w" sizes="(max-width: 760px) 70vw, 25vw"`
+    : "";
   return `<article class="product-card">
     <a class="product-card-media" href="${href}" aria-label="${esc(p.name)} ${esc(p.variant)}">
-      <img src="${p.image}" alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
+      <img src="${p.image}" ${responsive ? `${responsive} ` : ""}alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
     </a>
     <div class="product-card-body">
       <h3><a href="${href}" style="color:inherit;text-decoration:none">${esc(p.name)}</a></h3>
@@ -1230,7 +1240,7 @@ function layout({
 <body>
 ${CONTRACT}
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="announce"><span class="announce-full">Order before 2pm Monday–Friday for same-day dispatch · Free AU shipping at $79</span><span class="announce-short">Weekday dispatch before 2pm · Free over $79</span></div>
+<div class="announce"><span class="announce-full">Order before 2pm Monday–Friday for same-day dispatch · Free AU shipping at $79</span><span class="announce-short">Weekday dispatch before 2pm · Free from $79</span></div>
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
@@ -1395,7 +1405,7 @@ function homepage() {
     <div class="trust-item">${check()}<div><strong>Australian testing</strong><span>Published information when available.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Manufacturer-direct</strong><span>We grow it and make it.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Single-ingredient</strong><span>Leaf powder. No fillers.</span></div></div>
-    <div class="trust-item">${check()}<div><strong>Tracked shipping</strong><span>Australia-wide. Free over $79.</span></div></div>
+    <div class="trust-item">${check()}<div><strong>Tracked shipping</strong><span>Australia-wide. Free from $79.</span></div></div>
   </div>
 </div>
 <section class="section">
@@ -1449,7 +1459,7 @@ ${googleReviewsSection()}
         <p>Earthy and slightly bitter in water. Mixed into food, most people barely notice it.</p>
       </a>
       <a class="article-card" href="${routes().article("how-to-choose-moringa-powder-australia-2026")}">
-        <div class="article-card-media"><img src="/assets/images/blog/moringa-honest-truth-science-australia-2026-hero.webp" alt="How to choose moringa powder in Australia" width="800" height="450" loading="lazy"></div>
+        <div class="article-card-media"><img src="/assets/images/blog/moringa-honest-truth-science-australia-2026-hero.webp" srcset="/assets/images/blog/moringa-honest-truth-science-australia-2026-hero-card-640.webp 640w, /assets/images/blog/moringa-honest-truth-science-australia-2026-hero-card-960.webp 960w, /assets/images/blog/moringa-honest-truth-science-australia-2026-hero.webp 1536w" sizes="(max-width: 760px) 90vw, 33vw" alt="How to choose moringa powder in Australia" width="1536" height="1024" loading="lazy"></div>
         <div class="cat">Buyer’s guide</div>
         <h3>How to choose moringa powder in Australia</h3>
         <p>Colour, drying method, and whether a lab report is published.</p>
@@ -1516,7 +1526,7 @@ const PDP = {
   "moringa-powder": {
     title: "Buy Moringa Powder Australia | 400g $35 | Free Shipping Over $79 | NutriThrive",
     description:
-      "Buy moringa powder Australia. 400g best value at $35. NMI lab tested. Free AU shipping over $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+      "Buy moringa powder Australia. 400g best value at $35. NMI lab tested. Free AU shipping from $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     forceSeo: true,
     current: "Moringa",
     h1: "Moringa Powder Australia",
@@ -1618,10 +1628,11 @@ const PDP = {
     ],
   },
   "curry-leaves": {
-    title: "Dried Curry Leaves Australia — Shade-Dried Kari Leaf | $7",
+    title: "Buy Dried Curry Leaves Online Australia | 30g $7",
     description:
-      "Buy dried curry leaves Australia $7/30g. Shade-dried kari leaf, packed in Truganina. Free AU shipping at $79.",
+      "Buy dried curry leaves online Australia $7/30g. Shade-dried whole leaves, packed in Truganina. Free AU shipping at $79.",
     forceSeo: true,
+    h1: "Dried Curry Leaves: Buy Online in Australia",
     current: "Curry Leaves",
     product: PRODUCTS.find((p) => p.id === "curry-leaves"),
     intro: "Grown on NutriThrive’s farm in Gujarat and packed in Melbourne. Aromatic, pantry-ready karipatta. Use about 2 to 3 times as much as fresh in tadka.",
@@ -1654,10 +1665,11 @@ const PDP = {
     ],
   },
   "black-tea": {
-    title: "Darjeeling Black Tea Australia — First Flush | $7.50 | NutriThrive",
+    title: "Darjeeling Loose Leaf Black Tea Australia | 100g $7.50",
     description:
-      "Buy first-flush Darjeeling black tea Australia $7.50/100g. Packed in Truganina Melbourne. Free AU shipping at $79.",
+      "Buy Darjeeling loose leaf black tea Australia $7.50/100g. Family-farm leaf, packed in Truganina Melbourne. Free AU shipping at $79.",
     forceSeo: true,
+    h1: "Darjeeling Loose Leaf Black Tea",
     current: "Tea",
     product: PRODUCTS.find((p) => p.id === "black-tea"),
     intro: "Loose-leaf tea sourced from a family farm in Darjeeling, with muscatel and floral notes when brewed gently. Packed in Truganina and shipped Australia-wide.",
@@ -1690,10 +1702,11 @@ const PDP = {
     ],
   },
   "moringa-soap": {
-    title: "Moringa Soap Australia — Handmade $7 | NutriThrive",
+    title: "Handmade Lavender Soap Bar with Moringa | 95g $7",
     description:
-      "Handmade moringa soap $7 from Truganina. Free AU shipping at $79.",
+      "Handmade lavender soap bar with moringa, 95g for $7 from Truganina. Free AU shipping at $79.",
     forceSeo: true,
+    h1: "Handmade Moringa & Lavender Soap Bar",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "moringa-soap"),
     intro: "A 95g moringa soap bar handmade by us in Australia. Straightforward, small-batch production with moringa leaf in the mix.",
@@ -1759,8 +1772,10 @@ const PDP = {
     ],
   },
   "gift-pack": {
-    title: "Natural Wellness Gift Pack | NutriThrive",
-    description: "Give moringa powder, Darjeeling tea, dried curry leaves and natural soap in one practical wellness gift pack, prepared in Truganina for $35.",
+    title: "Tea, Curry Leaf & Soap Gift Pack Australia | $35",
+    description: "Darjeeling tea, dried curry leaves, handmade lavender soap and moringa powder in one gift pack from Truganina for $35.",
+    forceSeo: true,
+    h1: "Darjeeling Tea, Curry Leaf & Soap Gift Pack",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "gift-pack"),
     intro:
@@ -2394,7 +2409,7 @@ function shippingPage() {
       "How do I get free shipping?",
       {
         html: `Free Australia-wide shipping on orders over <strong>$79</strong>. Under <strong>$79</strong>, Australia standard shipping is <strong>$9.69</strong> at checkout. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.`,
-        text: "Free Australia-wide shipping on orders over $79. Under $79, Australia standard shipping is $9.69 at checkout. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.",
+        text: "Free Australia-wide shipping on orders from $79. Under $79, Australia standard shipping is $9.69 at checkout. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.",
       },
     ],
     [
@@ -2416,7 +2431,7 @@ function shippingPage() {
   };
   return layout({
     title: "Shipping & Free Delivery Australia | Over $79 | NutriThrive",
-    description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping over $79 and our seven-day returns information.",
+    description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping from $79 and our seven-day returns information.",
     preserveTitle: true,
     canonicalPath: "/shipping",
     extraHead: jsonLd(faqSchema) + jsonLd(
@@ -2906,9 +2921,9 @@ function cityPage(city, slug) {
   const capsHref = r.article("moringa-capsules-vs-powder-which-is-better-2026");
   const citySeo = {
     Melbourne: {
-      title: "Moringa Powder Melbourne — Packed in Truganina | From $11",
-      h1: "Moringa Powder for Melbourne",
-      description: "Buy moringa powder Melbourne from $11/100g. NMI lab-tested, shade-dried, packed Truganina VIC. Free AU ship at $79.",
+      title: "Curry Leaves, Darjeeling Tea & Soap Melbourne | NutriThrive",
+      h1: "Curry Leaves, Darjeeling Tea & Soap in Melbourne",
+      description: "Buy dried curry leaves, Darjeeling loose leaf tea and handmade lavender soap in Melbourne. Packed in Truganina. Free AU shipping at $79.",
     },
     Sydney: {
       title: "Moringa Powder Sydney — AU Shipping from Truganina | From $11",
@@ -3144,7 +3159,7 @@ function journalIndex(articles, opts = {}) {
   const ordered = [
     ...JOURNAL_PRIORITY.map((slug) => bySlug.get(slug)).filter(Boolean),
     ...articles.filter((article) => !JOURNAL_PRIORITY.includes(article.slug)),
-  ].filter((article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug]);
+  ].filter((article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug));
   const featured = topicFilter ? null : ordered[0];
   const visible = topicFilter
     ? ordered.filter((article) => journalTopic(article) === topicFilter.name)
@@ -3156,7 +3171,7 @@ function journalIndex(articles, opts = {}) {
   const canonicalPath = opts.canonicalPath || (LIVE_MODE ? "/blog/" : "/journal");
   const listArticles = topicFilter
     ? visible
-    : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug]);
+    : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug));
   const articleCard = (article, extra = false) => `<a class="article-card" href="${r.article(article.slug)}" data-journal-card data-journal-topic="${esc(journalTopic(article))}"${extra ? " data-journal-extra hidden" : ""} data-search-text="${esc(`${stripTags(article.title)} ${stripTags(article.description)} ${article.category} ${journalTopic(article)} ${article.slug}`.toLowerCase())}">
     <div class="article-card-media"><img src="${article.image}" alt="${esc(humanCopy(stripTags(article.title)))}" width="800" height="450" loading="lazy"></div>
     <div class="cat">${esc(journalTopic(article))}</div>
@@ -3749,6 +3764,16 @@ function main() {
     if (LIVE_PAGES.has("home") || LIVE_PAGES.has("index") || LIVE_PAGES.has("homepage")) {
       emit("index.html", homepage());
     }
+    if (LIVE_PAGES.has("journal")) {
+      const articles = loadArticles().map((article) => ({ ...article, image: articleImage(article) }));
+      const active = articles.filter(
+        (article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug)
+      );
+      emit("blog/index.html", journalIndex(active, { canonicalPath: "/blog/", seoFile: path.join(SITE, "blog/index.html") }), "blog/index.html");
+      for (const topic of JOURNAL_TOPICS) {
+        emit(`blog/category/${topic.slug}/index.html`, journalIndex(active, { topic, canonicalPath: `/blog/category/${topic.slug}/` }), `blog/category/${topic.slug}/index.html`);
+      }
+    }
     if (LIVE_PAGES.has("payment")) emit("payment/index.html", paymentPage(), "pages/shop/payment.html");
     if (LIVE_PAGES.has("thank-you")) emit("thank-you/index.html", thankYouPage(), "pages/shop/thank-you.html");
     if (LIVE_PAGES.has("cart")) emit("cart/index.html", cartPage(), "pages/shop/cart.html");
@@ -3782,7 +3807,7 @@ function main() {
   const r = routes();
   const articles = loadArticles().map((article) => ({ ...article, image: articleImage(article) }));
   const activeArticles = articles.filter(
-    (article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug]
+    (article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug)
   );
   const search = [
     ...PRODUCTS.map((p) => ({

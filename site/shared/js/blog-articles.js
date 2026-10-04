@@ -163,7 +163,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
     "title": "How to Make Curry Leaf Tea with Dried Leaves",
-    "description": "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $79.",
+    "description": "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping from $79.",
     "category": "Wellness",
     "href": "/blog/curry-leaves-tea-how-to-make-benefits-2026",
     "image": "/assets/images/homepage/product-showcase/Curry.webp"

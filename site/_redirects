@@ -631,9 +631,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Fresh vs dried curry leaves → dried curry leaves guide (Oct 2026)
 /blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html /blog/dried-curry-leaves-australia-guide 301!
 /blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026 /blog/dried-curry-leaves-australia-guide 301!
-# Curry Leaves for Heart Health and Cholesterol: What the Rese (new June 2026)
-/blog/curry-leaves-heart-health-cholesterol-evidence-2026.html /blog/curry-leaves-heart-health-cholesterol-evidence-2026 301!
-/blog/curry-leaves-heart-health-cholesterol-evidence-2026 /blog/curry-leaves-heart-health-cholesterol-evidence-2026.html 200
+# Curry Leaves for Heart Health → health benefits evidence guide (Oct 2026 merge)
+/blog/curry-leaves-heart-health-cholesterol-evidence-2026.html /blog/curry-leaves-health-benefits-what-the-evidence-says-2026 301!
+/blog/curry-leaves-heart-health-cholesterol-evidence-2026 /blog/curry-leaves-health-benefits-what-the-evidence-says-2026 301!
 # Darjeeling Tea vs English Breakfast: What Is Actually Differ (new June 2026)
 /blog/darjeeling-tea-vs-english-breakfast-comparison-2026.html /blog/darjeeling-tea-vs-english-breakfast-comparison-2026 301!
 /blog/darjeeling-tea-vs-english-breakfast-comparison-2026 /blog/darjeeling-tea-vs-english-breakfast-comparison-2026.html 200
@@ -822,9 +822,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Vitamin D Deficiency in Australia: The Sunny Country Paradox (au gov Aug 2026)
 /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026.html /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026 301!
 /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026 /blog/vitamin-d-deficiency-australia-abs-sunny-country-2026.html 200
-# How Much Caffeine Is Safe Per Day? FSANZ Guidelines (au gov Aug 2026)
-/blog/how-much-caffeine-safe-per-day-australia-fsanz-2026.html /blog/how-much-caffeine-safe-per-day-australia-fsanz-2026 301!
-/blog/how-much-caffeine-safe-per-day-australia-fsanz-2026 /blog/how-much-caffeine-safe-per-day-australia-fsanz-2026.html 200
+# How Much Caffeine Is Safe Per Day? → Darjeeling caffeine guide (Oct 2026 merge)
+/blog/how-much-caffeine-safe-per-day-australia-fsanz-2026.html /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
+/blog/how-much-caffeine-safe-per-day-australia-fsanz-2026 /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026 301!
 # Iron deficiency: consolidated into symptoms/sources guide (Sep 2026)
 /blog/iron-deficiency-australian-women-abs-real-numbers-2026.html /blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026 301!
 /blog/iron-deficiency-australian-women-abs-real-numbers-2026 /blog/iron-deficiency-australian-women-symptoms-plant-based-sources-2026 301!
@@ -870,6 +870,19 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/dried-curry-leaves-australia-guide /blog/dried-curry-leaves-australia-guide.html 200
 /blog/darjeeling-black-tea-australia-guide.html /blog/darjeeling-black-tea-australia-guide 301!
 /blog/darjeeling-black-tea-australia-guide /blog/darjeeling-black-tea-australia-guide.html 200
+# Darjeeling cluster rewrite pairs (were 404 without 200 rules; Oct 2026)
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026.html /blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026 301!
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026 /blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026.html 200
+/blog/cold-brew-darjeeling-australian-spring-2026.html /blog/cold-brew-darjeeling-australian-spring-2026 301!
+/blog/cold-brew-darjeeling-australian-spring-2026 /blog/cold-brew-darjeeling-australian-spring-2026.html 200
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 301!
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026 /blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026.html 200
+/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026.html /blog/darjeeling-tea-coffee-replacement-honest-assessment-2026 301!
+/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026 /blog/darjeeling-tea-coffee-replacement-honest-assessment-2026.html 200
+/blog/darjeeling-tea-health-benefits-research-2026.html /blog/darjeeling-tea-health-benefits-research-2026 301!
+/blog/darjeeling-tea-health-benefits-research-2026 /blog/darjeeling-tea-health-benefits-research-2026.html 200
+/blog/can-you-drink-darjeeling-tea-every-day-2026.html /blog/can-you-drink-darjeeling-tea-every-day-2026 301!
+/blog/can-you-drink-darjeeling-tea-every-day-2026 /blog/can-you-drink-darjeeling-tea-every-day-2026.html 200
 /blog/moringa-soap-benefits-skin-guide.html /blog/moringa-soap-benefits-skin-guide 301!
 /blog/moringa-soap-benefits-skin-guide /blog/moringa-soap-benefits-skin-guide.html 200
 /blog/quick-healthy-meal-ideas-15-minutes-australia.html /blog/quick-healthy-meal-ideas-15-minutes-australia 301!

@@ -61,6 +61,8 @@ function add(url, kind, detail) {
 }
 
 for (const url of urls) {
+  const sitemapRule = redirectSources.get(new URL(url).pathname);
+  if (sitemapRule) add(url, "sitemap-redirect", sitemapRule.to);
   const file = pageFile(url);
   if (!fs.existsSync(file)) {
     add(url, "missing-sitemap-file", path.relative(repo, file));
@@ -72,6 +74,22 @@ for (const url of urls) {
   const robots = meta(html, "robots").toLowerCase();
   const canonical = decode(html.match(/<link\s+[^>]*rel=["']canonical["'][^>]*>/i)?.[0].match(/href=["']([^"']+)/i)?.[1] || "");
   const h1Count = (html.match(/<h1\b/gi) || []).length;
+  const ids = new Set();
+  for (const match of html.matchAll(/\sid=["']([^"']+)["']/gi)) {
+    const id = decode(match[1]);
+    if (ids.has(id)) add(url, "duplicate-id", id);
+    ids.add(id);
+  }
+  for (const match of html.matchAll(/<a\b[^>]*\shref=["']#([^"']+)["']/gi)) {
+    let id;
+    try {
+      id = decodeURIComponent(decode(match[1]));
+    } catch {
+      add(url, "invalid-hash", `#${match[1]}`);
+      continue;
+    }
+    if (!ids.has(id)) add(url, "missing-hash-target", `#${id}`);
+  }
 
   if (!title) add(url, "missing-title", "");
   if (!description) add(url, "missing-description", "");

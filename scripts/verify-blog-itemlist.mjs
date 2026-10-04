@@ -10,6 +10,10 @@ import { SITE_ROOT } from "./lib/paths.mjs";
 const BASE = "https://nutrithrive.com.au";
 const BLOG_INDEX = path.join(SITE_ROOT, "blog/index.html");
 const BLOG_DIR = path.join(SITE_ROOT, "blog");
+const redirected = new Set(
+  [...fs.readFileSync(path.join(SITE_ROOT, "_redirects"), "utf8").matchAll(/^\/blog\/([^\s/*.]+)\s+\S+\s+30[1278]!?(?:\s|$)/gm)]
+    .map((match) => match[1])
+);
 
 function isLivePost(filePath) {
   const raw = fs.readFileSync(filePath, "utf8");
@@ -20,6 +24,7 @@ function expectedUrls() {
   return fs
     .readdirSync(BLOG_DIR)
     .filter((f) => f.endsWith(".html") && f !== "index.html" && !f.includes(".partial."))
+    .filter((f) => !redirected.has(f.replace(/\.html$/, "")))
     .filter((f) => isLivePost(path.join(BLOG_DIR, f)))
     .map((f) => `${BASE}/blog/${f.replace(/\.html$/, "")}`)
     .sort();
