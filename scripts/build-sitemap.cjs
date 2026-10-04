@@ -67,6 +67,20 @@ const INCLUDE_NOINDEX = process.env.INCLUDE_NOINDEX === "1" || process.argv.incl
 /** HTML paths included in the sitemap even when the page has noindex (strategic exceptions). */
 const INCLUDE_DESPITE_NOINDEX = new Set(["blog/index.html"]);
 
+function redirectSources() {
+  const file = path.join(SITE_ROOT, "_redirects");
+  if (!fs.existsSync(file)) return new Set();
+  const sources = new Set();
+  for (const line of fs.readFileSync(file, "utf8").split(/\r?\n/)) {
+    const [from, , rawStatus] = line.replace(/#.*/, "").trim().split(/\s+/);
+    const status = Number.parseInt(rawStatus, 10);
+    if (from?.startsWith("/") && !from.includes("*") && status >= 300 && status < 400) {
+      sources.add(from);
+    }
+  }
+  return sources;
+}
+
 function toPosix(p) {
   return p.split(path.sep).join("/");
 }
@@ -268,6 +282,7 @@ function escapeXml(s) {
 
 function main() {
   const files = walkHtml(SITE_ROOT);
+  const redirected = redirectSources();
   const entries = [];
   const skippedNoindex = [];
 
@@ -290,6 +305,7 @@ function main() {
     }
 
     const loc = fileToUrl(rel);
+    if (redirected.has(new URL(loc).pathname)) continue;
     if (loc.includes("/.firecrawl/") || loc.includes("/.netlify/")) continue;
     if (loc.includes("/gas-guardian/") || loc.includes("/arkive/") || loc.includes("/private/")) continue;
     if (loc.includes("/nutrithrive_labs/")) continue;

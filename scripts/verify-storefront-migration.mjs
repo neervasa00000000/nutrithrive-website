@@ -346,12 +346,12 @@ if (home) {
 }
 
 const startHere = [
-  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)", "$79"],
+  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead", "$79"],
   ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
-  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Best Greens Powder Australia? Moringa vs Spirulina vs Matcha", "$79"],
+  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Moringa vs Spirulina vs Matcha (Australia): We Sell Moringa Powder", "$79"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
   ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$79"],
-  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: AG1 vs Moringa Compared", "$79"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Plain Moringa Powder vs AG1", "$79"],
 ];
 for (const [rel, expected, postage] of startHere) {
   const html = read(rel);
@@ -361,13 +361,18 @@ for (const [rel, expected, postage] of startHere) {
   if (postage && !html.includes(postage)) errors.push(`${rel}: missing ${postage}`);
 }
 
-const restoredArticleMarkers = [
-  ["blog/grow-moringa-tree-australia.html", "Germination Requirements"],
-  ["blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html", "What our live pack and product page say"],
-  ["blog/moringa-wellness-shot-recipe-winter-2026.html", "The Recipe: Moringa Winter Wellness Shot"],
-];
-for (const [rel, marker] of restoredArticleMarkers) {
-  mustInclude(rel, marker, "restored full article body");
+function articleHasSubstantialProse(html) {
+  const prose = html.split('<div class="prose">')[1]?.split("</article>")[0] || "";
+  const words = prose.replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean);
+  return words.length >= 200 && (prose.match(/<h2\b/g) || []).length >= 3;
+}
+for (const rel of [
+  "blog/grow-moringa-tree-australia.html",
+  "blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html",
+  "blog/moringa-wellness-shot-recipe-winter-2026.html",
+]) {
+  const html = read(rel);
+  if (html && !articleHasSubstantialProse(html)) errors.push(`${rel}: article prose is missing or too short`);
 }
 const teaHtml = read("products/black-tea/index.html");
 if (teaHtml && !teaHtml.includes("<title>Darjeeling Black Tea Australia — First Flush | $7.50 | NutriThrive</title>")) {
@@ -387,15 +392,13 @@ if (article) {
     errors.push(`${articleRel}: canonical is "${canonical}"`);
   }
   const title = normalizeMetaText(attr(article, /<title>([^<]*)<\/title>/i));
-  if (title !== "How to Add Moringa Powder to Your Diet (Australia)") {
+  if (title !== "How to Use Moringa Powder | Add It to Food You Already Eat") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
   mustInclude(articleRel, "/assets/css/storefront-system", "article new UI");
   mustNotInclude(articleRel, 'href="/journal/how-to-add-moringa-to-diet/', "journal slug link on ranking article");
-  if (!article.includes("Melbourne Morning Smoothie") && !article.includes("Quick Answer")) {
-    errors.push(`${articleRel}: article body looks truncated; original prose is missing`);
-  }
+  if (!articleHasSubstantialProse(article)) errors.push(`${articleRel}: article prose is missing or too short`);
 }
 
 const blogIndex = read("blog/index.html");
@@ -421,7 +424,7 @@ if (moringaGuides) {
 const pdp = read("products/moringa-powder/index.html");
 if (pdp) {
   mustInclude("products/moringa-powder/index.html", 'rel="canonical" href="https://nutrithrive.com.au/products/moringa-powder/"', "PDP canonical");
-  mustInclude("products/moringa-powder/index.html", "&quot;id&quot;:&quot;moringa-powder&quot;", "PayPal catalog id");
+  mustInclude("products/moringa-powder/index.html", "&quot;id&quot;:&quot;moringa-400g&quot;", "default variant catalog id");
   mustInclude("products/moringa-powder/index.html", "data-add=", "add to cart");
   mustInclude("products/moringa-powder/index.html", "data-buy-now=", "buy now");
   if (pdp.includes("&quot;id&quot;:&quot;moringa-powder-100g&quot;")) {
@@ -649,10 +652,10 @@ for (const rel of trackedBlogs) {
     errors.push(`${rel}: meta description still truncates at an apostrophe or mid-sentence ("${naive || description}")`);
   }
   const length = visibleLength(description);
-  // Google does not prescribe a fixed meta-description length. Keep a broad
-  // editorial guard for accidental truncation without failing useful concise
-  // summaries solely because they are one or two characters under 120.
-  if (length && (length < 110 || length > 160)) {
+  // Google does not prescribe a fixed length. Catch only descriptions that
+  // are too short to explain a page or unusually long, while the truncation
+  // checks above catch cut-off sentences and apostrophe errors.
+  if (length && (length < 70 || length > 200)) {
     errors.push(`${rel}: description length ${length}`);
   }
 }

@@ -13,6 +13,10 @@ const SITE = path.join(REPO, 'site');
 const BASE = 'https://nutrithrive.com.au';
 const BLOG_INDEX = path.join(SITE, 'blog/index.html');
 const BLOG_DIR = path.join(SITE, 'blog');
+const redirected = new Set(
+  [...fs.readFileSync(path.join(SITE, '_redirects'), 'utf8').matchAll(/^\/blog\/([^\s/*.]+)\s+\S+\s+30[1278]!?(?:\s|$)/gm)]
+    .map((match) => match[1])
+);
 
 function isLivePost(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
@@ -23,6 +27,7 @@ function collectLiveSlugs() {
   return fs
     .readdirSync(BLOG_DIR)
     .filter((f) => f.endsWith('.html') && f !== 'index.html' && !f.includes('.partial.'))
+    .filter((f) => !redirected.has(f.replace(/\.html$/, '')))
     .filter((f) => isLivePost(path.join(BLOG_DIR, f)))
     .map((f) => f.replace(/\.html$/, ''))
     .sort();

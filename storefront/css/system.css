@@ -1585,6 +1585,26 @@ body.journal-searching .section-head > a {
   padding: 0;
 }
 
+.pdp-proof-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: var(--space-3) 0 var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.pdp-proof-rating {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdp-proof-see-all {
+  white-space: nowrap;
+}
+
 .pdp-proof li {
   display: flex;
   gap: var(--space-3);

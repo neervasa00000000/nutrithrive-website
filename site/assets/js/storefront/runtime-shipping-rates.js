@@ -604,8 +604,8 @@ function getAuFreeShippingThreshold() {
     return {
         amount: AU_FREE_SHIPPING_STANDARD,
         mode: 'gte',
-        label: 'over $79',
-        banner: 'Free shipping over $79',
+        label: 'from $79',
+        banner: 'Free shipping from $79',
         endsAtMs: null
     };
 }
@@ -630,7 +630,7 @@ function applyFreeShippingPromoBanners() {
     document.querySelectorAll('.urgency-content').forEach(function (el) {
         const raw = el.textContent || '';
         if (!/Free shipping/i.test(raw)) return;
-        el.textContent = raw.replace(/Free shipping over \$\d+(?:\.\d+)?/gi, "Free shipping over \$79");
+        el.textContent = raw.replace(/Free shipping (?:over|from) \$\d+(?:\.\d+)?/gi, banner);
     });
 }
 
