@@ -227,6 +227,44 @@ window.NT_SITE_DATA = {
       },
     },
     {
+      id: 'diwali-gift-box',
+      sku: 'NT-DIWALI-BOX',
+      name: 'Diwali Gift Box',
+      tag: 'TEA + CURRY + SOAP · NO MORINGA',
+      badge: 'Diwali',
+      price: 20,
+      was: null,
+      weight: 225,
+      image: '/assets/images/product_webp/darjeeling-black-tea-100g-main.webp',
+      href: '/products/diwali-gift-box/',
+      pdp: {
+        headline: 'Diwali Gift Box',
+        intro:
+          '100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade lavender soap — no moringa. $20 from Melbourne.',
+        features: [
+          { icon: 'card_giftcard', text: 'Diwali Ready' },
+          { icon: 'inventory_2', text: '3 Products' },
+          { icon: 'spa', text: 'Handmade Soap' },
+          { icon: 'location_on', text: 'Melbourne Packed' },
+        ],
+        detailTitle: 'Moringa-free Diwali hamper',
+        detailBody:
+          'Tea, curry patta and a lavender soap bar in one parcel. Singles add up to $21.50; the box is $20.',
+        faqs: [
+          {
+            q: 'What is included?',
+            a: '100g Darjeeling black tea, 30g dried curry leaves, and one 95g handmade lavender soap. No moringa powder.',
+          },
+          {
+            q: 'How is this different from the $35 gift pack?',
+            a: 'This box skips moringa. The $35 gift pack adds 100g moringa powder.',
+          },
+        ],
+        showLabBadge: false,
+        variantPicker: false,
+      },
+    },
+    {
       id: 'gift-pack',
       sku: 'NT-GIFT-325G',
       name: 'Gift Pack',
@@ -552,6 +590,7 @@ window.NT_SITE_DATA = {
     'curry-leaves-30g',
     'black-tea',
     'combo-pack',
+    'diwali-gift-box',
     'gift-pack',
     'moringa-soap',
   ],
@@ -575,6 +614,11 @@ window.NT_SITE_DATA = {
       title: 'Premium Combo Pack',
       meta: 'Various Pack Sizes • Best Value',
       badge: 'Combo',
+    },
+    'diwali-gift-box': {
+      title: 'Diwali Gift Box',
+      meta: 'Tea + Curry + Soap · No Moringa',
+      badge: 'Diwali',
     },
     'gift-pack': {
       title: 'Gift Pack',
@@ -631,6 +675,7 @@ NT_SITE_DATA.productSlugToId = {
   'curry-leaves': 'curry-leaves-30g',
   'black-tea': 'black-tea',
   'combo-pack': 'combo-pack',
+  'diwali-gift-box': 'diwali-gift-box',
   'gift-pack': 'gift-pack',
   'moringa-soap': 'moringa-soap',
 };
