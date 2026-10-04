@@ -507,7 +507,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-soap-benefits-skin-guide",
     "title": "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
-    "description": "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping at $79. Australia standard shipping is $9.69 under $79.",
+    "description": "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping at $79.",
     "category": "Wellness",
     "href": "/blog/moringa-soap-benefits-skin-guide",
     "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
