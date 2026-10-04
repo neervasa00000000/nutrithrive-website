@@ -262,7 +262,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "moringa-soap-benefits-skin-guide": {
     title: "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
-    description: "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping at $79. Australia standard shipping is $9.69 under $79.",
+    description: "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping at $79.",
     h1: "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
   },
   "how-long-does-moringa-powder-last-storage-shelf-life-2026": {
@@ -1918,17 +1918,7 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
-  const rateNotePages = new Set([
-    "moringa-powder",
-    "black-tea",
-    "curry-leaves",
-    "combo-pack",
-    "moringa-soap",
-    "diwali-gift-box",
-  ]);
-  const purchaseNote = rateNotePages.has(slug)
-    ? "Australia standard shipping is $9.69 under $79."
-    : "Taxes included. Shipping calculated at checkout.";
+  const purchaseNote = "Taxes included. Shipping calculated at checkout.";
   const shippingPurchaseNote = {
     "moringa-powder":
       "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
@@ -2712,7 +2702,7 @@ function cartPage() {
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
-          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.</p><p>Australia standard shipping is $9.69 under $79.</p><a class="btn btn-primary" href="${shop}moringa-powder/">Shop 400g best value ($35)</a> <a class="btn btn-secondary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div></div>
+          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.</p><a class="btn btn-primary" href="${shop}moringa-powder/">Shop 400g best value ($35)</a> <a class="btn btn-secondary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div></div>
           <div id="cart-buy-again"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
