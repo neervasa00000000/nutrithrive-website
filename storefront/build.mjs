@@ -626,7 +626,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "diwali-gift-guide-curry-leaves-tea-australia": {
     kicker: "Ready Diwali hamper",
     title: "Diwali gift box — tea, curry leaves & soap",
-    body: "Moringa-free Diwali gift box for $20: Darjeeling, dried curry patta, and handmade lavender soap. Packed in Melbourne.",
+    body: "Three products for $20 (not a decorative box): Darjeeling, dried curry patta, and handmade lavender soap, packed for shipping in Melbourne.",
     cta: "Shop Diwali gift box",
     links: [
       ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
@@ -1829,11 +1829,11 @@ const PDP = {
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "diwali-gift-box"),
     intro:
-      "A moringa-free Diwali hamper: 100g Darjeeling black tea, 30g dried curry leaves (curry patta), and one 95g handmade lavender soap bar. Singles add up to $21.50; the box is $20, packed in Truganina for Deepavali gifting.",
+      "Three products sold together for Diwali — not a decorative gift box. You get 100g Darjeeling black tea, 30g dried curry leaves (curry patta), and one 95g handmade lavender soap bar, packed for shipping in Truganina. No moringa powder. Singles add up to $21.50; this set is $20.",
     proofs: [
-      "No moringa — tea, curry leaves, soap only",
-      "Handmade lavender soap · family-farm tea",
-      "Packed in Melbourne",
+      "Products only — not a decorative box",
+      "No moringa — tea, curry leaves, soap",
+      "Packed in Melbourne for shipping",
       "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
     ],
     gallery: [
@@ -1846,19 +1846,23 @@ const PDP = {
     ingredients:
       "Includes Darjeeling black tea, dried curry leaves (curry patta / kadi patta), and soap made with soap base, moringa, lavender fragrance and lavender flowers.",
     origin: "Family-farm tea from Darjeeling, farm-grown curry leaves, and soap handmade by us in Australia. Packed in Truganina, Melbourne.",
-    process: "We pack the three pantry and soap items together in Truganina for one clean Diwali parcel — no moringa powder in this box.",
+    process: "We pack the three products together in Truganina as one shipping parcel. This is a product set, not a decorated presentation box — no moringa powder included.",
     storage: "Keep tea and curry leaves sealed and dry. Keep the soap dry between uses.",
     safety: "Soap is for external use only. Tea contains caffeine. Follow each product’s directions.",
-    what: "A ready Diwali gift box and small hamper: Darjeeling, curry patta, and a handmade lavender soap bar. No moringa powder.",
-    use: "Gift as-is, or add a diya or card. Each item is also sold separately.",
+    what: "Three products sold as a Diwali set: Darjeeling tea, curry patta, and a handmade lavender soap bar. Not a decorative gift box — you receive the products packed for shipping. No moringa powder.",
+    use: "Give the three products as a pantry gift, or wrap them yourself if you want presentation packaging. Each item is also sold separately.",
     faqs: [
       [
         "What is in the Diwali gift box?",
-        "100g Darjeeling black tea, 30g dried curry leaves, and one 95g handmade lavender soap. No moringa powder.",
+        "100g Darjeeling black tea, 30g dried curry leaves, and one 95g handmade lavender soap. Products only, packed together for shipping — not a decorative gift box. No moringa powder.",
+      ],
+      [
+        "Is this a decorative gift box?",
+        "No. You receive the three products packed for shipping. There is no fancy presentation box or decorative packaging included.",
       ],
       [
         "How is this different from the $35 gift pack?",
-        "This $20 box skips moringa. The $35 gift pack adds 100g moringa powder for households that want powder too.",
+        "This $20 set skips moringa. The $35 gift pack adds 100g moringa powder for households that want powder too. Both are product bundles, not decorative boxes.",
       ],
       [
         "When should I order for Diwali 2026?",
