@@ -122,7 +122,7 @@ export const PRODUCTS = [
     sku: "NT-DIWALI-BOX",
     name: "Diwali Gift Box",
     variant: "Tea + curry + soap",
-    benefit: "Darjeeling, curry leaves, and handmade soap. No moringa.",
+    benefit: "Three products packed for shipping — not a decorative box. No moringa.",
     price: 20,
     was: null,
     weight: 225,
@@ -130,7 +130,7 @@ export const PRODUCTS = [
     href: "/products/diwali-gift-box/",
     unit: "",
     lab: false,
-    costCopy: "$20 for Darjeeling tea, dried curry leaves, and handmade lavender soap (singles $21.50).",
+    costCopy: "$20 for tea, curry leaves, and soap products packed together (singles $21.50). Not a decorative box.",
   },
   {
     id: "gift-pack",
