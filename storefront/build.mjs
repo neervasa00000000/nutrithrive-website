@@ -267,7 +267,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "moringa-soap-benefits-skin-guide": {
     title: "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
-    description: "Moringa soap benefits for skin mean a plain wash, not a treatment. NutriThrive herbal bar is $7. Free AU shipping at $79.",
+    description: "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping at $79. Australia standard shipping is $9.69 under $79.",
     h1: "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
   },
   "how-long-does-moringa-powder-last-storage-shelf-life-2026": {
