@@ -219,6 +219,8 @@ const ARTICLE_SEO_OVERRIDES = {
     title: "Moringa Brands Compared Australia 2026",
     description: "Compare moringa brands in Australia on origin, processing, and price, then the NutriThrive powder pouch we sell.",
     h1: "Moringa Brands Compared Australia 2026",
+    ledeHtml:
+      `Compare moringa brands in Australia on origin, processing, and price, then NutriThrive <a href="/products/moringa-powder/">400g at $35</a>.`,
   },
   "moringa-capsules-vs-powder-which-is-better-2026": {
     title: "Moringa Powder vs Capsules | We Sell the Powder",
@@ -634,7 +636,8 @@ function journalProduct(article) {
   if (topic === "Curry leaves") return PRODUCTS.find((p) => p.id === "curry-leaves");
   if (topic === "Darjeeling tea") return PRODUCTS.find((p) => p.id === "black-tea");
   if (topic === "Soap & skin") return PRODUCTS.find((p) => p.id === "moringa-soap");
-  return PRODUCTS.find((p) => p.id === "moringa-powder");
+  // Powder articles deep-link the main 400g offer URL, not the 100g size path.
+  return PRODUCTS.find((p) => p.id === "moringa-400g");
 }
 
 function journalCta(article, product) {
@@ -648,7 +651,9 @@ function journalCta(article, product) {
   if (topic === "Soap & skin") return "Shop moringa soap";
   // Powder articles use one stable, purchase-clear CTA. Several manual SEO/CRO
   // fixes were previously lost because rebuilds regenerated weaker labels.
-  if (product?.id === "moringa-powder") return "Shop moringa powder";
+  if (product?.id === "moringa-powder" || product?.id === "moringa-200g" || product?.id === "moringa-400g") {
+    return "Shop moringa powder";
+  }
   return "Shop moringa powder";
 }
 
@@ -874,10 +879,48 @@ function productPayload(p) {
 }
 
 function shopHref(p) {
-  if (p.id === "moringa-200g" || p.id === "moringa-400g") {
-    return `/products/moringa-powder/?v=${encodeURIComponent(p.id)}`;
-  }
+  if (p.id === "moringa-powder") return "/products/moringa-powder/100g/";
+  if (p.id === "moringa-200g") return "/products/moringa-powder/200g/";
+  if (p.id === "moringa-400g") return "/products/moringa-powder/";
   return p.href;
+}
+
+const MORINGA_SIZE_PAGES = {
+  "100g": {
+    variantId: "moringa-powder",
+    title: "Moringa Powder 100g Australia | $11 | NutriThrive",
+    description:
+      "Buy NutriThrive moringa powder 100g for $11. Shade-dried, NMI lab tested, packed in Truganina. Free AU shipping at $79.",
+    h1: "Moringa Powder 100g",
+  },
+  "200g": {
+    variantId: "moringa-200g",
+    title: "Moringa Powder 200g Australia | $21.50 | NutriThrive",
+    description:
+      "Buy NutriThrive moringa powder 200g for $21.50. Shade-dried, NMI lab tested, packed in Truganina. Free AU shipping at $79.",
+    h1: "Moringa Powder 200g",
+  },
+};
+
+function powderSizePageData(sizeSlug) {
+  const size = MORINGA_SIZE_PAGES[sizeSlug];
+  if (!size) return null;
+  const base = PDP["moringa-powder"];
+  const variant = PRODUCTS.find((item) => item.id === size.variantId);
+  const gallery = [
+    [variant.image, `${variant.name} ${variant.variant}`],
+    ...base.gallery.filter(([src]) => src !== variant.image),
+  ];
+  return {
+    ...base,
+    title: size.title,
+    description: size.description,
+    h1: size.h1,
+    forceSeo: true,
+    defaultVariantId: size.variantId,
+    canonicalPath: `/products/moringa-powder/${sizeSlug}/`,
+    gallery,
+  };
 }
 
 function productCard(p, priority = false, opts = {}) {
@@ -1555,7 +1598,7 @@ const PDP = {
       [
         "Why isn’t NutriThrive the cheapest moringa powder?",
         {
-          html: `Some Melbourne packs sit around $7–8/100g. We publish an <strong>NMI lab summary</strong>, shade-dry the leaf, and pack in Truganina. From <strong>$11/100g</strong>. Free AU shipping at <strong>$79</strong>.`,
+          html: `Some Melbourne packs sit around $7–8/100g. We publish an <strong>NMI lab summary</strong>, shade-dry the leaf, and pack in Truganina. Best value is <strong>400g at $35</strong> ($8.75/100g). Free AU shipping at <strong>$79</strong>.`,
         },
       ],
       [
@@ -1754,13 +1797,26 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
-  const purchaseNote = "Taxes included. Shipping calculated at checkout.";
+  const rateNotePages = new Set([
+    "moringa-powder",
+    "black-tea",
+    "curry-leaves",
+    "combo-pack",
+    "moringa-soap",
+  ]);
+  const purchaseNote = rateNotePages.has(slug)
+    ? "Australia standard shipping is $9.69 under $79."
+    : "Taxes included. Shipping calculated at checkout.";
   const shippingPurchaseNote = {
     "moringa-powder":
       "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     "black-tea":
       "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     "curry-leaves":
+      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+    "combo-pack":
+      "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
+    "moringa-soap":
       "Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.",
     "gift-pack": "Free AU shipping at $79. Add another product or a second pack to reach the threshold.",
   }[slug];
@@ -1831,29 +1887,29 @@ function pdpPage(slug, d) {
     "curry-leaves": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/moringa-powder/">moringa powder</a> or <a href="/products/black-tea/">Darjeeling tea</a>.</p>`,
     "black-tea": `<p>Free AU shipping over <strong>$79</strong> — add <a href="/products/moringa-powder/">moringa powder</a> or <a href="/products/curry-leaves/">dried curry leaves</a>.</p>`,
   }[slug] || "";
-  const offerUrl = `${LIVE}/products/${slug}${slug === "moringa-powder" ? "/" : ""}`;
+  const canonicalPath = d.canonicalPath || `/products/${slug}/`;
+  const offerUrl = `${LIVE}${canonicalPath}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: p.name,
+    name: slug === "moringa-powder" ? "Moringa Powder" : p.name,
     description: d.description,
     image: gallery.map(([src]) => absUrl(src)),
     brand: { "@type": "Brand", name: "NutriThrive" },
   };
   if (slug === "moringa-powder") {
-    productSchema.offers = PRODUCTS.filter((item) =>
-      ["moringa-powder", "moringa-200g", "moringa-400g"].includes(item.id)
-    ).map((item) => ({
+    productSchema.sku = buyProduct.sku;
+    productSchema.offers = {
       "@type": "Offer",
-      name: item.variant,
-      sku: item.sku,
+      name: buyProduct.variant,
+      sku: buyProduct.sku,
       url: offerUrl,
       priceCurrency: "AUD",
-      price: String(item.price),
+      price: String(buyProduct.price),
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
-    }));
+    };
   } else {
     productSchema.sku = p.sku;
     productSchema.offers = {
@@ -1865,10 +1921,20 @@ function pdpPage(slug, d) {
       seller: { "@id": `${LIVE}/#localbusiness` },
     };
   }
+  const crumbTrail = [
+    { name: "Home", item: `${LIVE}/` },
+    { name: "Shop", item: `${LIVE}${LIVE_MODE ? "/products/" : "/shop"}` },
+    { name: "Moringa Powder", item: `${LIVE}/products/moringa-powder/` },
+  ];
+  if (slug === "moringa-powder" && d.canonicalPath && d.canonicalPath !== "/products/moringa-powder/") {
+    crumbTrail.push({ name: buyProduct.variant, item: offerUrl });
+  } else if (slug !== "moringa-powder") {
+    crumbTrail.splice(2, 1, { name: p.name, item: offerUrl });
+  }
   return layout({
     title: d.forceSeo ? d.title : liveSeo?.title || d.title,
     description: d.forceSeo ? d.description : liveSeo?.description || d.description,
-    canonicalPath: `/products/${slug}/`,
+    canonicalPath,
     current: d.current,
     preserveTitle: d.forceSeo ? true : Boolean(liveSeo?.title),
     preserveDescription: d.forceSeo ? true : Boolean(liveSeo?.description),
@@ -1892,13 +1958,7 @@ function pdpPage(slug, d) {
             })),
           })
         : "") +
-      jsonLd(
-        breadcrumbSchema([
-          { name: "Home", item: `${LIVE}/` },
-          { name: "Shop", item: `${LIVE}${LIVE_MODE ? "/products/" : "/shop"}` },
-          { name: p.name, item: `${LIVE}/products/${slug}/` },
-        ])
-      ),
+      jsonLd(breadcrumbSchema(crumbTrail)),
     main: `
       <nav class="wrap crumbs" aria-label="Breadcrumb">
         <a href="/">Home</a> / <a href="/shop/">Shop</a> / <span data-pdp-crumb>${esc(p.name)}</span>
@@ -2522,7 +2582,7 @@ function cartPage() {
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
-          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.</p><a class="btn btn-primary" href="${shop}moringa-powder/?v=moringa-400g">Shop 400g best value ($35)</a> <a class="btn btn-secondary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div></div>
+          <div id="cart-lines"><div class="empty-state" data-cart-placeholder><h2>Your cart is empty</h2><p>Free AU shipping at $79. Clear path: two 400g ($35 each) + one 100g ($11) = $81.</p><p>Australia standard shipping is $9.69 under $79.</p><a class="btn btn-primary" href="${shop}moringa-powder/">Shop 400g best value ($35)</a> <a class="btn btn-secondary" href="${shop}">Shop the range</a> <a class="btn btn-secondary" href="${shop}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div></div>
           <div id="cart-buy-again"></div>
         </div>
         <aside class="summary" id="cart-summary" hidden></aside>
@@ -3706,6 +3766,13 @@ function main() {
         const html = pdpPage(slug, PDP[slug]);
         emit(`products/${slug}/index.html`, html);
         writePage(`products/${slug}/index.html`, html, OUT);
+        if (slug === "moringa-powder") {
+          for (const sizeSlug of Object.keys(MORINGA_SIZE_PAGES)) {
+            const sizeHtml = pdpPage(slug, powderSizePageData(sizeSlug));
+            emit(`products/moringa-powder/${sizeSlug}/index.html`, sizeHtml);
+            writePage(`products/moringa-powder/${sizeSlug}/index.html`, sizeHtml, OUT);
+          }
+        }
       }
     }
     console.log(`Wrote live storefront pages: ${[...LIVE_PAGES].join(", ")}.`);
@@ -3772,6 +3839,11 @@ function main() {
     emit("shop/index.html", shopPage(), "products/index.html");
     for (const [slug, data] of Object.entries(PDP)) {
       emit(`products/${slug}/index.html`, pdpPage(slug, data));
+      if (slug === "moringa-powder") {
+        for (const sizeSlug of Object.keys(MORINGA_SIZE_PAGES)) {
+          emit(`products/moringa-powder/${sizeSlug}/index.html`, pdpPage(slug, powderSizePageData(sizeSlug)));
+        }
+      }
     }
     emit("about/index.html", aboutPage(), "pages/about/about.html");
     emit("contact/index.html", contactPage(), "pages/contact/contact.html");

@@ -129,6 +129,9 @@ function fileToUrl(relPosix) {
 
   if (relPosix === "products/index.html") return `${BASE}/products/`;
 
+  const prodSizeIdx = /^products\/([^/]+)\/(100g|200g|400g)\/index\.html$/.exec(relPosix);
+  if (prodSizeIdx) return `${BASE}/products/${prodSizeIdx[1]}/${prodSizeIdx[2]}/`;
+
   const prodIdx = /^products\/([^/]+)\/index\.html$/.exec(relPosix);
   if (prodIdx) return `${BASE}/products/${prodIdx[1]}/`;
 

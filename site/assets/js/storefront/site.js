@@ -554,9 +554,37 @@ function pdpMoney(p) {
   return `${money(p.price)}${unit}${strike}`;
 }
 
+function powderCleanPath(id) {
+  if (id === "moringa-powder") return "/products/moringa-powder/100g/";
+  if (id === "moringa-200g") return "/products/moringa-powder/200g/";
+  if (id === "moringa-400g") return "/products/moringa-powder/";
+  if (id === "combo-pack") return "/products/combo-pack/";
+  return null;
+}
+
+function variantIdFromPath() {
+  const path = String(location.pathname || "").replace(/\/+$/, "");
+  if (path.endsWith("/100g")) return "moringa-powder";
+  if (path.endsWith("/200g")) return "moringa-200g";
+  if (path.endsWith("/400g")) return "moringa-400g";
+  return null;
+}
+
+function samePath(a, b) {
+  const norm = (value) => String(value || "").replace(/\/+$/, "") || "/";
+  return norm(a) === norm(b);
+}
+
 function applyPdpVariant(id, writeUrl) {
   const p = (window.NT_PRODUCTS || []).find((item) => item.id === id);
   if (!p) return;
+  if (writeUrl) {
+    const clean = powderCleanPath(id);
+    if (clean && !samePath(location.pathname, clean)) {
+      location.assign(clean);
+      return;
+    }
+  }
   const img = document.querySelector("[data-pdp-image]");
   const title = document.querySelector("[data-pdp-title]");
   const price = document.querySelector("[data-pdp-price]");
@@ -565,8 +593,8 @@ function applyPdpVariant(id, writeUrl) {
   const crumb = document.querySelector("[data-pdp-crumb]");
   const addBtn = document.querySelector(".pdp [data-add]");
   const buyBtn = document.querySelector(".pdp [data-buy-now]");
-  const bestValueBadge = document.querySelector("[data-best-value-badge]");
   const gallery = document.querySelector(".pdp-gallery");
+  const bestValue = document.querySelector("[data-best-value-badge]");
   if (img) {
     img.src = p.image;
     img.alt = `${p.name} ${p.variant}`;
@@ -579,6 +607,7 @@ function applyPdpVariant(id, writeUrl) {
   if (gallery) {
     gallery.classList.toggle("is-wide", id === "moringa-400g" || id === "combo-pack");
   }
+  if (bestValue) bestValue.hidden = id !== "moringa-400g";
   if (addBtn) {
     addBtn.setAttribute(
       "data-add",
@@ -607,19 +636,14 @@ function applyPdpVariant(id, writeUrl) {
       })
     );
   }
-  if (bestValueBadge) bestValueBadge.hidden = id !== "moringa-400g";
-  if (writeUrl) {
-    const url = new URL(location.href);
-    url.searchParams.set("v", p.id);
-    history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
-    trackEcommerce("view_item", [p]);
-  }
+  if (writeUrl) trackEcommerce("view_item", [p]);
 }
 
 function bindPdpVariant() {
   const select = document.getElementById("variant");
   if (!select) return;
-  const requested = new URLSearchParams(location.search).get("v");
+  const requested =
+    variantIdFromPath() || new URLSearchParams(location.search).get("v");
   const hasRequestedVariant = requested && [...select.options].some((opt) => opt.value === requested);
   if (hasRequestedVariant) {
     select.value = requested;
@@ -638,7 +662,10 @@ function bindPdpVariant() {
   // The server-rendered default is already complete. Rewriting the same hero
   // image during startup creates a second LCP candidate on mobile, delaying
   // the product image even though the asset has already downloaded.
-  if (hasRequestedVariant) applyPdpVariant(select.value, false);
+  // Only hydrate from legacy ?v= query params; clean size paths are SSR'd.
+  if (hasRequestedVariant && !variantIdFromPath() && new URLSearchParams(location.search).get("v")) {
+    applyPdpVariant(select.value, false);
+  }
 }
 
 const OFFER_KEY = "nt-storefront-welcome-offer";
