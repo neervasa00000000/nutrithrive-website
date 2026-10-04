@@ -676,13 +676,15 @@ function journalProduct(article) {
 
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
+  if (article.slug === "diwali-gift-guide-curry-leaves-tea-australia") return "Shop Diwali gift box";
   if (article.slug === "curry-leaves-substitute-what-to-use-2026") return "Shop dried curry leaves";
   if (article.slug === "dried-curry-leaves-quality-guide-how-to-use") return "Shop dried curry leaves";
   if (article.slug === "how-to-brew-darjeeling-tea-perfectly-2026") return "Shop Darjeeling black tea";
+  if (article.slug === "moringa-soap-benefits-skin-guide") return "Shop moringa lavender soap bar";
   const topic = journalTopic(article);
   if (topic === "Curry leaves") return "Get curry leaves";
   if (topic === "Darjeeling tea") return "Try Darjeeling tea";
-  if (topic === "Soap & skin") return "Shop moringa soap";
+  if (topic === "Soap & skin") return "Shop moringa lavender soap bar";
   // Powder articles use one stable, purchase-clear CTA. Several manual SEO/CRO
   // fixes were previously lost because rebuilds regenerated weaker labels.
   if (product?.id === "moringa-powder" || product?.id === "moringa-200g" || product?.id === "moringa-400g") {
@@ -714,10 +716,18 @@ const PRODUCT_GUIDES = {
     ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
     ["Darjeeling versus English Breakfast", "darjeeling-tea-vs-english-breakfast-comparison-2026"],
     ["Darjeeling caffeine vs coffee", "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"],
+    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
   ],
   "moringa-soap": [
     ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
     ["Moringa oil for skin and hair", "moringa-oil-benefits-skin-hair-health-2026"],
+    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
+  ],
+  "gift-pack": [
+    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
+    ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
+    ["Darjeeling buying guide", "darjeeling-black-tea-australia-guide"],
+    ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
   ],
   "diwali-gift-box": [
     ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
@@ -1277,7 +1287,7 @@ function layout({
 <body>
 ${CONTRACT}
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="announce"><span class="announce-full">Order before 2pm Monday–Friday for same-day dispatch · Free AU shipping at $79</span><span class="announce-short">Weekday dispatch before 2pm · Free from $79</span></div>
+<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> — tea, curry leaves &amp; soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · Free AU shipping at $79</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Guide</a></span></div>
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
