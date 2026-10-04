@@ -1922,7 +1922,7 @@ const PDP = {
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Brewed Darjeeling from the Diwali gift box"],
     ],
     underCartNote:
-      "Melbourne metro: order by Mon 2 Nov (before 2pm) for Diwali. Other states: see the dates below.",
+      "Melbourne metro: order by Mon 2 Nov (before 2pm) for Diwali.",
     whatHeading: "What's in the box",
     ingredients:
       "Includes Darjeeling black tea, dried curry leaves (curry patta / kadi patta), and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
@@ -1936,8 +1936,7 @@ const PDP = {
               <li><strong>Dried curry leaves, 30g:</strong> whole leaves for tadka. Use two to three times the fresh amount.</li>
               <li><strong>Handmade moringa &amp; lavender soap, 95g:</strong> melt-and-pour base, moringa leaf, lavender fragrance, dried lavender flowers.</li>
             </ul>
-            <p>Who it's for: relatives you're visiting, a host who has plenty of mithai, neighbours, teachers and colleagues. For bulk orders, contact us.</p>
-            <p><strong>Order by:</strong> VIC metro Mon 2 Nov · NSW/ACT/QLD/SA/TAS Fri 30 Oct · WA/NT Wed 28 Oct · regional Mon 26 Oct · no dispatch Tue 3 Nov.</p>`,
+            <p>Who it's for: relatives you're visiting, a host who has plenty of mithai, neighbours, teachers and colleagues. For bulk orders, contact us.</p>`,
     use: "Give the three products as a pantry gift. Each item is also sold separately. Prefer a version with moringa powder? See the four-item gift pack.",
     faqs: [
       ["What's inside?", "Tea, curry leaves and soap."],
@@ -1946,10 +1945,6 @@ const PDP = {
         {
           html: `No. The only moringa is the leaf in the soap. For powder, see the <a href="/products/gift-pack/">four-item gift pack</a>.`,
         },
-      ],
-      [
-        "Order-by dates?",
-        "VIC metro Mon 2 Nov · NSW/ACT/QLD/SA/TAS Fri 30 Oct · WA/NT Wed 28 Oct · regional Mon 26 Oct · no dispatch Tue 3 Nov.",
       ],
       ["Pickup?", "Yes, from Truganina by arrangement."],
       ["Gift message?", "Add a note at checkout or email us after you order."],
@@ -2038,7 +2033,7 @@ function pdpPage(slug, d) {
     "Packed in Melbourne",
     "Australia-wide delivery",
   ];
-  const proofs = proofItems
+  const proofs = [...proofItems, "Seven-day returns on unopened products."]
     .map((t) => `<li>${check()} ${typeof t === "object" && t.html ? t.html : esc(t)}</li>`)
     .join("");
   const valueCompare =
@@ -2182,17 +2177,12 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(buyProduct)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(buyProduct)}">Buy now</button>
             </div>
-            ${slug === "moringa-powder" ? `<div class="pdp-lab-control">
-              <span>Third-party tested — NMI lab report</span>
-              <a href="/documents/nutrithrive-lab-report-summary.pdf" target="_blank" rel="noopener">View lab report (NMI)</a>
-            </div>` : ""}
             <p class="cost-note" data-pdp-cost>${esc(costNote(buyProduct))}</p>
             <p class="purchase-note">${esc(purchaseNote)}</p>
             ${d.underCartNote ? `<p class="purchase-note">${esc(d.underCartNote)}</p>` : ""}
           </div>
           ${slug === "moringa-powder" ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
           <ul class="pdp-proof">${proofs}</ul>
-          <p class="pdp-service-note">Seven-day returns on unopened products.</p>
         </div>
       </section>
       <section class="prose-block">
