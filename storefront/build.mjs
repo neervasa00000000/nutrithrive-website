@@ -333,6 +333,19 @@ const JOURNAL_REDIRECTS = {
   "best-time-to-take-moringa-powder-morning-or-night-2026": "moringa-before-after-workout-timing-guide-2026",
   "how-much-caffeine-safe-per-day-australia-fsanz-2026": "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
   "curry-leaves-heart-health-cholesterol-evidence-2026": "curry-leaves-health-benefits-what-the-evidence-says-2026",
+  "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026": "darjeeling-black-tea-australia-guide",
+  "cold-brew-darjeeling-australian-spring-2026": "darjeeling-black-tea-australia-guide",
+  "darjeeling-chai-latte-recipe-winter-coffee-alternative-2026": "darjeeling-black-tea-australia-guide",
+  "darjeeling-tea-coffee-replacement-honest-assessment-2026": "darjeeling-black-tea-australia-guide",
+  "darjeeling-tea-health-benefits-research-2026": "darjeeling-black-tea-australia-guide",
+  "can-you-drink-darjeeling-tea-every-day-2026": "darjeeling-black-tea-australia-guide",
+  "is-moringa-worth-it-cost-value-australia-2026": "why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
+  "moringa-30-day-challenge-honest-results": "how-to-add-moringa-to-diet",
+  "moringa-energy-bites-kids-lunchbox-recipe-australia-2026": "moringa-smoothie-recipes-australia-2026",
+  "moringa-energy-what-happens-week-by-week-2026": "how-to-add-moringa-to-diet",
+  "moringa-face-mask-australia-glow-ritual": "moringa-soap-benefits-skin-guide",
+  "natural-pre-workout-moringa-australia-2026": "moringa-before-after-workout-timing-guide-2026",
+  "morning-routine-health-tips-australia-2026": "how-to-add-moringa-to-diet",
 };
 
 // Retired seasonal articles that now lead directly to a product rather than
@@ -424,16 +437,15 @@ const CURATED_RELATED = {
   ],
   "how-to-brew-darjeeling-tea-perfectly-2026": [
     "darjeeling-black-tea-australia-guide",
-    "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026",
+    "darjeeling-tea-vs-english-breakfast-comparison-2026",
     "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
   ],
   "darjeeling-black-tea-australia-guide": [
     "how-to-brew-darjeeling-tea-perfectly-2026",
     "darjeeling-tea-vs-english-breakfast-comparison-2026",
-    "can-you-drink-darjeeling-tea-every-day-2026",
+    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
   ],
   "moringa-soap-benefits-skin-guide": [
-    "moringa-face-mask-australia-glow-ritual",
     "how-to-choose-moringa-powder-australia-2026",
     "what-does-moringa-powder-taste-like-honest-guide-2026",
   ],
@@ -585,7 +597,7 @@ const ARTICLE_CONVERSION_PATHS = {
   },
   "how-to-brew-darjeeling-tea-perfectly-2026": {
     kicker: "Brew what you buy",
-    title: "First-flush Darjeeling from a family farm",
+    title: "Darjeeling loose leaf from a family farm",
     body: "100g of Darjeeling black tea, packed in Truganina. Use the brew times from this guide with the pouch you order.",
     cta: "Shop Darjeeling black tea",
     links: [["Darjeeling buying and brewing guide", "darjeeling-black-tea-australia-guide"]],
@@ -602,7 +614,7 @@ const ARTICLE_CONVERSION_PATHS = {
     title: "Handmade moringa soap from Truganina",
     body: "A $7 handmade bar made by us in Australia. Read the ingredient list and compare it with regular soap before you buy.",
     cta: "Shop moringa soap",
-    links: [["Moringa face mask ritual", "moringa-face-mask-australia-glow-ritual"]],
+    links: [],
   },
 };
 
@@ -680,13 +692,11 @@ const PRODUCT_GUIDES = {
   "black-tea": [
     ["Darjeeling black tea buying guide", "darjeeling-black-tea-australia-guide"],
     ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
-    ["First flush versus second flush", "darjeeling-black-tea-australia-first-flush-second-flush-guide-2026"],
     ["Darjeeling versus English Breakfast", "darjeeling-tea-vs-english-breakfast-comparison-2026"],
-    ["Can you drink Darjeeling tea every day?", "can-you-drink-darjeeling-tea-every-day-2026"],
+    ["Darjeeling caffeine vs coffee", "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"],
   ],
   "moringa-soap": [
     ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
-    ["Moringa face mask ritual", "moringa-face-mask-australia-glow-ritual"],
   ],
   "combo-pack": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
@@ -1694,8 +1704,8 @@ const PDP = {
     process: "Produced by a Darjeeling family farm, selected by NutriThrive and packed in small runs in Truganina.",
     storage: "Keep sealed in a dry environment away from humidity and strong aromas. Use within 18 months after opening.",
     safety: "Contains caffeine. Consider your total daily caffeine intake and seek professional advice if you are pregnant, breastfeeding or sensitive to caffeine.",
-    what: "Do not use boiling water. 85 to 90°C, 1 to 2 teaspoons, 3 to 5 minutes. Boiling water makes it bitter. Milk is optional.",
-    use: "About 40 to 50 mg caffeine per cup. A moderate, steady lift.",
+    what: "Loose-leaf Darjeeling from a family farm. Muscatel and floral notes when brewed gently. About 40 to 50 mg caffeine per cup.",
+    use: "Do not use boiling water. 85 to 90°C, 1 to 2 teaspoons, 3 to 5 minutes. Boiling water makes it bitter. Milk is optional.",
     faqs: [
       ["How do I brew it?", "85 to 90°C water, 3 to 5 minute steep. Avoid boiling water to prevent bitterness."],
       ["How much caffeine?", "About 40 to 50 mg per cup."],
@@ -1721,7 +1731,7 @@ const PDP = {
       ["/assets/images/product_webp/moringa-soap-texture.webp", "Handmade moringa soap on a stone dish with lavender and foam"],
       ["/assets/images/homepage/product-showcase/moringa_soap.webp", "Moringa soap product showcase"],
       ["/assets/images/product_photos/soap.jpeg", "Handmade moringa lavender soap bar"],
-      ["/assets/images/products/moringa_soap.webp", "NutriThrive moringa soap with natural ingredients"],
+      ["/assets/images/products/moringa_soap.webp", "NutriThrive handmade moringa lavender soap"],
     ],
     detailImage: "/assets/images/product_webp/moringa-soap-texture.webp",
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
@@ -1735,7 +1745,7 @@ const PDP = {
     use: "Patch-test if you have very sensitive skin.",
     faqs: [
       ["What size is the bar?", "95g. Compact enough for travel, lasts well with proper drainage."],
-      ["Is it suitable for sensitive skin?", "Made with gentle, natural ingredients; patch-test if you have very sensitive skin."],
+      ["Is it suitable for sensitive skin?", "Patch-test if you have very sensitive skin."],
     ],
   },
   "combo-pack": {
@@ -1779,7 +1789,7 @@ const PDP = {
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "gift-pack"),
     intro:
-      "100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap. Ready to gift.",
+      "100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade moringa lavender soap. Ready to gift.",
     proofs: [
       { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
       "Handmade soap · family-farm tea",
@@ -1988,7 +1998,7 @@ function pdpPage(slug, d) {
           <p class="pdp-eyebrow">NutriThrive · farm to pouch</p>
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
-          <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack"].includes(slug) && buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
+          <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${!["curry-leaves","black-tea","moringa-soap","combo-pack","gift-pack"].includes(slug) && buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
             <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
@@ -3919,16 +3929,11 @@ function main() {
           slug,
         }),
       };
-      if (JOURNAL_REDIRECTS[slug]) {
-        // Redirect stubs are deliberately noindex. Keep their generic metadata
-        // stable instead of inheriting SEO copy from the retired article.
-        emit(`blog/${slug}.html`, redirectPage(slug, JOURNAL_REDIRECTS[slug]), `blog/${slug}.html`);
-        wrapped += 1;
-        continue;
-      }
-      if (JOURNAL_EXTERNAL_REDIRECTS[slug]) {
-        emit(`blog/${slug}.html`, externalRedirectPage(JOURNAL_EXTERNAL_REDIRECTS[slug]), `blog/${slug}.html`);
-        wrapped += 1;
+      if (JOURNAL_REDIRECTS[slug] || JOURNAL_EXTERNAL_REDIRECTS[slug]) {
+        // Do not emit stub HTML. Netlify force-redirects (301!) in site/_redirects
+        // own these URLs; a static file would shadow a soft redirect.
+        const stubPath = path.join(SITE, "blog", `${slug}.html`);
+        if (fs.existsSync(stubPath)) fs.unlinkSync(stubPath);
         continue;
       }
       const prose = extractArticleProse(

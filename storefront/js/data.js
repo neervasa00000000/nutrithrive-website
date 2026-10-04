@@ -124,13 +124,13 @@ export const PRODUCTS = [
     variant: "4 products",
     benefit: "Powder, tea, curry leaves, and soap.",
     price: 35,
-    was: 41.98,
+    was: null,
     weight: 325,
     image: "/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp",
     href: "/products/gift-pack/",
     unit: "",
     lab: true,
-    costCopy: "$35 for four products with a combined regular value of $41.98.",
+    costCopy: "$35 for four products packed together in Truganina.",
   },
 ];
 
@@ -160,14 +160,6 @@ export const REVIEWS = [
   {
     name: "Mai Anh Trần Thúy",
     text: "Black tea is my fav product here!! I usually use their black tea to make roasted milk tea which is fantastic for such hot summer in Melbourne!",
-  },
-  {
-    name: "Dimple Szhane",
-    text: "love it, This Moringa powder has been a game-changer for my gut health. I mix it with warm water and lemon every morning, and my digestion has never been better. I also noticed I've been getting sick less often—must be the immune-boosting properties! The quality is top-notch, and I love that it's organic. Will definitely repurchase",
-  },
-  {
-    name: "Bindu",
-    text: "Tried Moringa powder daily for 30 days. Helps with bloating and slight increase in stamina. good natural supplement.",
   },
   {
     name: "buket",
