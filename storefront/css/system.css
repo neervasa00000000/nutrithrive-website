@@ -304,6 +304,17 @@ textarea {
   min-height: 40px;
 }
 
+.announce a {
+  color: #fff9ee;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.announce a:hover,
+.announce a:focus-visible {
+  color: #ffffff;
+}
+
 .site-header {
   position: sticky;
   top: 0;
