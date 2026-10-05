@@ -1,6 +1,14 @@
 /** Auto-generated — 87 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
+    "slug": "gifts-for-tea-lovers-australia",
+    "title": "Gifts for Tea Lovers Australia: Tea Gift Set Ideas",
+    "description": "Looking for a present for a tea lover? Tea gift set ideas under $40 with Darjeeling loose leaf, a ready tea gift box, and how to build a small tea hamper.",
+    "category": "Darjeeling tea",
+    "href": "/blog/gifts-for-tea-lovers-australia",
+    "image": "/assets/images/og/black-tea-social-1200.jpg"
+  },
+  {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
     "title": "The 30-Plants-a-Week Gut Health Rule",
     "description": "The 30-plants-a-week gut health trend explained. What the microbiome research actually shows. Evidence-aware, practical Australian guidance from NutriThrive.",
@@ -9,12 +17,12 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
-    "slug": "afl-finals-snacks-curry-leaf-tadka",
-    "title": "AFL Finals Snacks: Curry-Leaf Tadka (Dried Leaves $7)",
-    "description": "The snack is curry-leaf tadka over nuts or popcorn. It needs dried curry leaves, which are $7.",
-    "category": "Wellness",
-    "href": "/blog/afl-finals-snacks-curry-leaf-tadka",
-    "image": "/assets/images/blog/AFL.webp"
+    "slug": "diwali-gifts-for-friends-curry-leaf-snacks",
+    "title": "Diwali Gifts for Friends: Curry Leaf Snack Jars & Gift Box",
+    "description": "Diwali gifts for friends that get used: a curry leaf tadka snack jar you can make at home, small gifts under $20 and order-by dates for Sun 8 Nov.",
+    "category": "Curry leaves",
+    "href": "/blog/diwali-gifts-for-friends-curry-leaf-snacks",
+    "image": "/assets/images/product_webp/dried-curry-leaves-30g-main.webp"
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -90,11 +98,11 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-dahl-recipe-30-minutes-australia-2026",
-    "title": "30-Minute Curry Leaf Dal \u2014 Dried Leaves $7",
-    "description": "A genuinely 30-minute dal recipe with real curry leaf tempering. Simple, high-protein, and actually tastes right. Read the practical NutriThrive guide.",
-    "category": "Wellness",
+    "title": "Curry Leaf Dal Recipe: 30-Minute Tadka Dal (Dried Leaves)",
+    "description": "A 30-minute red lentil dal finished with a dried curry leaf and mustard seed tadka. Ingredients, step-by-step method, how many leaves to use and freezing.",
+    "category": "Curry leaves",
     "href": "/blog/curry-leaves-dahl-recipe-30-minutes-australia-2026",
-    "image": "/assets/images/og/moringa-article-1200.jpg"
+    "image": "/assets/images/product_webp/dried-curry-leaves-texture.webp"
   },
   {
     "slug": "curry-leaves-health-benefits-what-the-evidence-says-2026",
@@ -106,19 +114,19 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-recipes-beyond-dal",
-    "title": "How to Use Dried Curry Leaves: 6 Recipes Beyond Dal",
-    "description": "How to cook with dried curry leaves: tadka basics, how many to use, and 6 recipes from lemon rice to curry leaf oil. Shade-dried 30g pouch from Melbourne.",
-    "category": "Wellness",
+    "title": "Cooking with Curry Leaves: 6 Easy Recipes Beyond Dal",
+    "description": "Cooking with curry leaves at home: the 60-second tadka, how many dried leaves to use, and 6 recipes from lemon rice to curry leaf oil and green beans.",
+    "category": "Curry leaves",
     "href": "/blog/curry-leaves-recipes-beyond-dal",
     "image": "/assets/images/blog/curry-leaves-recipes-beyond-dal-hero.webp"
   },
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
-    "title": "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead",
-    "description": "Curry leaf substitute options in Australia: kaffir lime leaf, lemon zest, and when dried leaves beat every swap. Dried pouch $7. Free AU shipping at $79.",
-    "category": "Wellness",
+    "title": "No Fresh Curry Leaves? Best Substitutes and Dried Leaves",
+    "description": "Can't find fresh curry leaves? Use dried curry leaves (2\u20133\u00d7 the volume), or makrut lime leaf or lemon zest. Ratios, what to avoid and where to buy.",
+    "category": "Curry leaves",
     "href": "/blog/curry-leaves-substitute-what-to-use-2026",
-    "image": "/assets/images/homepage/product-showcase/Curry.webp"
+    "image": "/assets/images/blog/dried-curry-leaves-quality-guide-how-to-use-hero.webp"
   },
   {
     "slug": "curry-leaves-tea-how-to-make-benefits-2026",
@@ -130,11 +138,11 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "curry-leaves-vs-curry-powder-difference-explained-2026",
-    "title": "Curry Leaves vs Curry Powder: Different Things, Not Swaps",
-    "description": "Curry leaves and curry powder aren't interchangeable. What each is, when to use them, how many dried leaves equal fresh, and where to buy in Australia.",
-    "category": "Wellness",
+    "title": "Curry Leaves Powder vs Curry Powder: What's the Difference?",
+    "description": "Curry leaves powder is ground curry leaf; curry powder is a spice blend. How they differ, how to grind dried leaves at home, and when to use whole leaves.",
+    "category": "Curry leaves",
     "href": "/blog/curry-leaves-vs-curry-powder-difference-explained-2026",
-    "image": "/assets/images/homepage/product-showcase/Curry.webp"
+    "image": "/assets/images/product_webp/dried-curry-leaves-texture.webp"
   },
   {
     "slug": "cystic-acne-gut-healing-what-actually-cleared-skin-2026",
@@ -154,9 +162,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "darjeeling-tea-vs-english-breakfast-comparison-2026",
-    "title": "Darjeeling vs English Breakfast Tea: Taste, Caffeine, Price",
-    "description": "Darjeeling vs English Breakfast: flavour, strength, caffeine, milk or not, and cost per cup. Plus where to buy Darjeeling loose leaf in Australia.",
-    "category": "Wellness",
+    "title": "Loose Leaf Black Tea: Darjeeling vs English Breakfast",
+    "description": "Choosing a loose leaf black tea? Darjeeling vs English Breakfast, Assam and Ceylon compared: flavour, strength, milk and brewing, plus where to buy in AU.",
+    "category": "Darjeeling tea",
     "href": "/blog/darjeeling-tea-vs-english-breakfast-comparison-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
   },
@@ -178,9 +186,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "dried-curry-leaves-quality-guide-how-to-use",
-    "title": "Dried Curry Leaves That Actually Taste of Something: A Buyer&#39;s Guide",
-    "description": "Dried curry leaves tasting of nothing? How to spot a good pack by colour and aroma, how many to use, how to bloom them in oil and store them in Australia.",
-    "category": "Wellness",
+    "title": "Curry Patta (Kadi Patta) in English: Buy Good Dried Leaves",
+    "description": "Curry patta, kadi patta and karipatta are curry leaves in English. How to choose good dried curry leaves by colour and aroma, how many to use and storage.",
+    "category": "Curry leaves",
     "href": "/blog/dried-curry-leaves-quality-guide-how-to-use",
     "image": "/assets/images/blog/dried-curry-leaves-quality-guide-how-to-use-hero.webp"
   },
@@ -282,9 +290,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-brew-darjeeling-tea-perfectly-2026",
-    "title": "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
-    "description": "Brew Darjeeling loose leaf right: 85\u201395\u00b0C water, 3\u20134 min, 2\u20132.5 g per cup. Milk or not, iced and pot ratios, and where to buy in Australia.",
-    "category": "Wellness",
+    "title": "How to Brew Darjeeling Tea: Bags vs Loose Leaf",
+    "description": "How to brew Darjeeling tea from bags or loose leaf: water temperature, steep time, leaf per cup, milk, iced tea and mug infusers, for Australian kitchens.",
+    "category": "Darjeeling tea",
     "href": "/blog/how-to-brew-darjeeling-tea-perfectly-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
   },
@@ -505,12 +513,12 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
-    "slug": "moringa-soap-benefits-skin-guide",
-    "title": "Moringa Soap Australia: $7 Bar, Not a Skin Treatment",
-    "description": "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping at $79.",
-    "category": "Wellness",
-    "href": "/blog/moringa-soap-benefits-skin-guide",
-    "image": "/assets/images/homepage/product-showcase/moringa_soap.webp"
+    "slug": "handmade-soap-australia-melt-and-pour-guide",
+    "title": "Handmade Soap Australia: What Melt-and-Pour Really Means",
+    "description": "Handmade soap in Australia explained: what melt-and-pour means, how to read a soap label, gift ideas, and our 95g lavender soap bar with moringa leaf.",
+    "category": "Soap & skin",
+    "href": "/blog/handmade-soap-australia-melt-and-pour-guide",
+    "image": "/assets/images/product_webp/moringa-soap-texture.webp"
   },
   {
     "slug": "moringa-vs-ashwagandha-comparison-2026",
