@@ -4635,6 +4635,10 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .shop-moringa-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .shop-product-grid .product-card-variant {
     font-size: 12px;
   }
