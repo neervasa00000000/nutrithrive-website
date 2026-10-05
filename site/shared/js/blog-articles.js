@@ -266,9 +266,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-add-moringa-to-diet",
-    "title": "How to Use Moringa Powder | Add It to Food You Already Eat",
-    "description": "Everyday ways to eat moringa powder in food you already make. Sizes 100g $11, 200g $21.50, 400g $35.",
-    "category": "Wellness",
+    "title": "How to Use Moringa Powder in Everyday Food (AU)",
+    "description": "Add moringa leaf powder to dal, eggs, yoghurt, soups and dough with small spoon amounts. Pouch sizes packed in Truganina.",
+    "category": "Moringa",
     "href": "/blog/how-to-add-moringa-to-diet",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
@@ -307,8 +307,8 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
     "title": "How to Choose Moringa Powder in Australia",
-    "description": "Where to buy moringa powder in Australia and how to choose a pouch. NutriThrive 100g $11, 200g $21.50, 400g $35.",
-    "category": "Wellness",
+    "description": "Woolworths, Coles and Aldi moringa powder checks, label tips, and farm-grown pouches from Truganina. Sizes 100g, 200g, 400g.",
+    "category": "Moringa",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
@@ -322,9 +322,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-make-moringa-tea-recipes-2026",
-    "title": "How to Make Moringa Tea from Powder \u2014 3 Recipes",
-    "description": "Three hot drinks made from moringa powder, not from black tea. Powder sizes are 100g $11, 200g $21.50, 400g $35.",
-    "category": "Wellness",
+    "title": "How to Make Moringa Tea from Powder (AU Guide)",
+    "description": "Make moringa tea from leaf powder: basic cup, iced jar and warm milk methods, plus pouch sizes packed in Truganina, Melbourne.",
+    "category": "Moringa",
     "href": "/blog/how-to-make-moringa-tea-recipes-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
@@ -418,9 +418,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-brands-comparison-australia-2026",
-    "title": "Moringa Brands Compared Australia 2026",
-    "description": "Compare moringa brands in Australia on origin, processing, and price, then the NutriThrive powder pouch we sell.",
-    "category": "Wellness",
+    "title": "Best Moringa Powder Australia? Facts-Only Brand Check",
+    "description": "Compare moringa powder brands in Australia by label, grams, $/100g, organic marks and packing city. NutriThrive sizes and plain facts.",
+    "category": "Moringa",
     "href": "/blog/moringa-brands-comparison-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
@@ -434,17 +434,17 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-capsules-vs-powder-which-is-better-2026",
-    "title": "Moringa Powder vs Capsules | We Sell the Powder",
-    "description": "Comparing moringa capsules with powder? We sell leaf powder, not capsules. 100g $11, 200g $21.50, 400g $35.",
-    "category": "Wellness",
+    "title": "Moringa Powder vs Capsules Australia | We Sell Powder",
+    "description": "Moringa capsules vs leaf powder in Australia: format table, price-per-100g method, and NutriThrive pouch sizes from Truganina.",
+    "category": "Moringa",
     "href": "/blog/moringa-capsules-vs-powder-which-is-better-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Chemist Warehouse Moringa Powder, Capsules &amp; Tablets vs NutriThrive Powder (AU)",
-    "description": "Shopping Chemist Warehouse for moringa powder, capsules, or tablets? We sell leaf powder only: 100g $11, 200g $21.50, 400g $35.",
-    "category": "Wellness",
+    "title": "Chemist Warehouse Moringa: Powder, Capsules & Buying AU",
+    "description": "Chemist Warehouse moringa is usually capsules. Compare powder vs capsules by format and pack size, then buy farm-grown leaf powder online from Truganina.",
+    "category": "Moringa",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
   },
@@ -506,9 +506,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-smoothie-recipes-australia-2026",
-    "title": "Moringa Smoothie Recipes Australia \u2014 Exact Powder Amounts",
-    "description": "Moringa smoothie recipes Australia with exact tsp amounts \u2014 banana mango, peanut butter cacao, and three more.",
-    "category": "Wellness",
+    "title": "Moringa Powder Smoothie Recipes Australia",
+    "description": "Four moringa powder smoothie recipes with teaspoon amounts, flavour tips, and pouch sizes packed in Truganina, Melbourne.",
+    "category": "Moringa",
     "href": "/blog/moringa-smoothie-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
@@ -650,9 +650,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "verify-moringa-quality-premium-buyers-checklist-2026",
-    "title": "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
-    "description": "Eight checks before you buy moringa powder in Australia, then the pouch we pack: 100g $11, 200g $21.50, 400g $35.",
-    "category": "Wellness",
+    "title": "Organic vs Farm-Grown Moringa Powder (Australia)",
+    "description": "What certified organic moringa powder means versus NutriThrive farm-grown leaf powder. Checklists, sizes and Truganina packing facts.",
+    "category": "Moringa",
     "href": "/blog/verify-moringa-quality-premium-buyers-checklist-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
@@ -674,9 +674,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "title": "What Does Moringa Powder Taste Like? Mix It, Then Buy a Pouch",
-    "description": "What does moringa powder taste like? Earthy and a touch bitter in plain water; milder in smoothies and savoury food. NutriThrive powder: 100g $11, 200g $21.50, 400g $35.",
-    "category": "Wellness",
+    "title": "What Does Moringa Powder Taste Like? (Honest AU Guide)",
+    "description": "Honest moringa powder taste notes: grassy leaf flavour, how to soften it in food and drinks, and 100g trial pouches from Truganina.",
+    "category": "Moringa",
     "href": "/blog/what-does-moringa-powder-taste-like-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
@@ -698,9 +698,9 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
-    "title": "Moringa Powder Price Australia \u2014 Why $11 vs $25",
-    "description": "Moringa powder price in Australia: why $11/100g vs $25 at pharmacy shelves \u2014 markup vs value.",
-    "category": "Wellness",
+    "title": "Moringa Powder Price Australia (Dated $/100g)",
+    "description": "NutriThrive moringa powder prices as of 6 Oct 2026: 100g $11, 200g $21.50, 400g $35, with price per 100g and shipping from $79.",
+    "category": "Moringa",
     "href": "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   }

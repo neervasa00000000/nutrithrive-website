@@ -559,6 +559,8 @@ function powderCleanPath(id) {
   if (id === "moringa-200g") return "/products/moringa-powder/200g/";
   if (id === "moringa-400g") return "/products/moringa-powder/";
   if (id === "combo-pack") return "/products/combo-pack/";
+  if (id === "moringa-soap-combo") return "/products/moringa-soap/?v=moringa-soap-combo";
+  if (id === "moringa-soap") return "/products/moringa-soap/";
   return null;
 }
 
@@ -580,9 +582,17 @@ function applyPdpVariant(id, writeUrl) {
   if (!p) return;
   if (writeUrl) {
     const clean = powderCleanPath(id);
-    if (clean && !samePath(location.pathname, clean)) {
-      location.assign(clean);
-      return;
+    if (clean) {
+      const target = new URL(clean, location.origin);
+      const here = (location.pathname.replace(/\/+$/, "") || "/");
+      const there = (target.pathname.replace(/\/+$/, "") || "/");
+      if (here !== there) {
+        location.assign(clean);
+        return;
+      }
+      if (target.search !== location.search) {
+        history.replaceState(null, "", `${target.pathname}${target.search}`);
+      }
     }
   }
   const img = document.querySelector("[data-pdp-image]");
@@ -605,7 +615,7 @@ function applyPdpVariant(id, writeUrl) {
   if (cost) cost.textContent = p.costNote || "";
   if (crumb) crumb.textContent = p.name;
   if (gallery) {
-    gallery.classList.toggle("is-wide", id === "moringa-400g" || id === "combo-pack");
+    gallery.classList.toggle("is-wide", id === "moringa-400g" || id === "combo-pack" || id === "moringa-soap-combo");
   }
   if (bestValue) bestValue.hidden = id !== "moringa-400g";
   if (addBtn) {
