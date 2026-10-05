@@ -193,8 +193,8 @@
 /blog/curry-leaves-health-benefits-what-the-evidence-says-2026 /blog/curry-leaves-health-benefits-what-the-evidence-says-2026.html 200
 
 # Moringa soap: consolidated into skin guide (Sep 2026)
-/blog/moringa-soap-benefits-for-skin-2026.html /blog/moringa-soap-benefits-skin-guide 301!
-/blog/moringa-soap-benefits-for-skin-2026 /blog/moringa-soap-benefits-skin-guide 301!
+/blog/moringa-soap-benefits-for-skin-2026.html /blog/handmade-soap-australia-melt-and-pour-guide 301!
+/blog/moringa-soap-benefits-for-skin-2026 /blog/handmade-soap-australia-melt-and-pour-guide 301!
 
 # Best time to take moringa → workout timing guide (Oct 2026)
 /blog/best-time-to-take-moringa-powder-morning-or-night-2026.html /blog/moringa-before-after-workout-timing-guide-2026 301!
@@ -638,8 +638,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Is Darjeeling Tea a Good Coffee Replacement? An Honest Asses (new June 2026)
 # Can You Drink Darjeeling Tea Every Day? Benefits and Limits (new June 2026)
 # Moringa soap vs regular → soap benefits skin guide (Oct 2026)
-/blog/moringa-soap-vs-regular-soap-comparison-2026.html /blog/moringa-soap-benefits-skin-guide 301!
-/blog/moringa-soap-vs-regular-soap-comparison-2026 /blog/moringa-soap-benefits-skin-guide 301!
+/blog/moringa-soap-vs-regular-soap-comparison-2026.html /blog/handmade-soap-australia-melt-and-pour-guide 301!
+/blog/moringa-soap-vs-regular-soap-comparison-2026 /blog/handmade-soap-australia-melt-and-pour-guide 301!
 # Is Moringa Worth It? An Honest Cost-Per-Nutrient Breakdown f (new June 2026)
 
 # === lifestyle health batch (Jul 2026) ===
@@ -850,13 +850,15 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/curry-leaves-recipes-beyond-dal /blog/curry-leaves-recipes-beyond-dal.html 200
 /blog/diwali-gift-guide-curry-leaves-tea-australia.html /blog/diwali-gift-guide-curry-leaves-tea-australia 301!
 /blog/diwali-gift-guide-curry-leaves-tea-australia /blog/diwali-gift-guide-curry-leaves-tea-australia.html 200
-/blog/how-to-read-a-soap-ingredient-label.html /blog/moringa-soap-benefits-skin-guide 301!
-/blog/how-to-read-a-soap-ingredient-label /blog/moringa-soap-benefits-skin-guide 301!
-/blog/how-to-choose-good-face-wash-skin-type-australia-2026.html /blog/moringa-soap-benefits-skin-guide 301!
-/blog/how-to-choose-good-face-wash-skin-type-australia-2026 /blog/moringa-soap-benefits-skin-guide 301!
+/blog/how-to-read-a-soap-ingredient-label.html /blog/handmade-soap-australia-melt-and-pour-guide 301!
+/blog/how-to-read-a-soap-ingredient-label /blog/handmade-soap-australia-melt-and-pour-guide 301!
+/blog/how-to-choose-good-face-wash-skin-type-australia-2026.html /blog/handmade-soap-australia-melt-and-pour-guide 301!
+/blog/how-to-choose-good-face-wash-skin-type-australia-2026 /blog/handmade-soap-australia-melt-and-pour-guide 301!
 # Father's Day: expired seasonal → gift pack product (Sep 2026)
 /blog/fathers-day-gift-under-40.html /products/gift-pack/ 301!
 /blog/fathers-day-gift-under-40 /products/gift-pack/ 301!
+/blog/afl-finals-snacks-curry-leaf-tadka /blog/diwali-gifts-for-friends-curry-leaf-snacks 301!
+/blog/afl-finals-snacks-curry-leaf-tadka.html /blog/diwali-gifts-for-friends-curry-leaf-snacks 301!
 /blog/afl-finals-snacks-curry-leaf-tadka.html /blog/afl-finals-snacks-curry-leaf-tadka 301!
 /blog/afl-finals-snacks-curry-leaf-tadka /blog/afl-finals-snacks-curry-leaf-tadka.html 200
 /blog/chemist-warehouse-greens-vs-moringa-powder-2026.html /blog/chemist-warehouse-greens-vs-moringa-powder-2026 301!
@@ -868,8 +870,12 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/darjeeling-black-tea-australia-guide.html /blog/darjeeling-black-tea-australia-guide 301!
 /blog/darjeeling-black-tea-australia-guide /blog/darjeeling-black-tea-australia-guide.html 200
 # Darjeeling cluster rewrite pairs (were 404 without 200 rules; Oct 2026)
+/blog/moringa-soap-benefits-skin-guide /blog/handmade-soap-australia-melt-and-pour-guide 301!
+/blog/moringa-soap-benefits-skin-guide.html /blog/handmade-soap-australia-melt-and-pour-guide 301!
 /blog/moringa-soap-benefits-skin-guide.html /blog/moringa-soap-benefits-skin-guide 301!
 /blog/moringa-soap-benefits-skin-guide /blog/moringa-soap-benefits-skin-guide.html 200
+/blog/curry-leaf-podi-recipe-dried-curry-leaves.html /blog/curry-leaf-podi-recipe-dried-curry-leaves 301!
+/blog/curry-leaf-podi-recipe-dried-curry-leaves /blog/curry-leaf-podi-recipe-dried-curry-leaves.html 200
 /blog/quick-healthy-meal-ideas-15-minutes-australia.html /blog/quick-healthy-meal-ideas-15-minutes-australia 301!
 /blog/quick-healthy-meal-ideas-15-minutes-australia /blog/quick-healthy-meal-ideas-15-minutes-australia.html 200
 
@@ -894,8 +900,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026 /blog/moringa-smoothie-recipes-australia-2026 301!
 /blog/moringa-energy-what-happens-week-by-week-2026.html /blog/how-to-add-moringa-to-diet 301!
 /blog/moringa-energy-what-happens-week-by-week-2026 /blog/how-to-add-moringa-to-diet 301!
-/blog/moringa-face-mask-australia-glow-ritual.html /blog/moringa-soap-benefits-skin-guide 301!
-/blog/moringa-face-mask-australia-glow-ritual /blog/moringa-soap-benefits-skin-guide 301!
+/blog/moringa-face-mask-australia-glow-ritual.html /blog/handmade-soap-australia-melt-and-pour-guide 301!
+/blog/moringa-face-mask-australia-glow-ritual /blog/handmade-soap-australia-melt-and-pour-guide 301!
 /blog/natural-pre-workout-moringa-australia-2026.html /blog/moringa-before-after-workout-timing-guide-2026 301!
 /blog/natural-pre-workout-moringa-australia-2026 /blog/moringa-before-after-workout-timing-guide-2026 301!
 /blog/morning-routine-health-tips-australia-2026.html /blog/how-to-add-moringa-to-diet 301!
@@ -927,3 +933,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
+/blog/afl-finals-snacks-curry-leaf-tadka /blog/diwali-gifts-for-friends-curry-leaf-snacks 301
+/blog/moringa-soap-benefits-skin-guide /blog/handmade-soap-australia-melt-and-pour-guide 301
+/blog/diwali-gifts-for-friends-curry-leaf-snacks /blog/diwali-gifts-for-friends-curry-leaf-snacks.html 200
+/blog/handmade-soap-australia-melt-and-pour-guide /blog/handmade-soap-australia-melt-and-pour-guide.html 200
+/blog/gifts-for-tea-lovers-australia /blog/gifts-for-tea-lovers-australia.html 200

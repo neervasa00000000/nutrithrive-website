@@ -58,7 +58,7 @@
       intro: "Keep the bar dry between uses so it lasts. Patch-test if you have very sensitive skin. External use only.",
       links: [
         { href: "/products/moringa-soap/", label: "Soap product notes" },
-        { href: "/blog/moringa-soap-benefits-skin-guide", label: "Soap guide" },
+        { href: "/blog/handmade-soap-australia-melt-and-pour-guide", label: "Soap guide" },
       ],
     },
     "moringa-powder": {
