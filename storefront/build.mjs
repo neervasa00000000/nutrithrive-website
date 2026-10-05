@@ -949,9 +949,9 @@ function shopHref(p) {
 const MORINGA_SIZE_PAGES = {
   "100g": {
     variantId: "moringa-powder",
-    title: "Moringa Powder 100g Australia | $11 | NutriThrive",
+    title: "Moringa Powder 100g Australia | $14 | NutriThrive",
     description:
-      "Buy NutriThrive moringa powder 100g for $11. Shade-dried, NMI lab tested, packed in Truganina. Free AU shipping at $79.",
+      "Buy NutriThrive moringa powder 100g for $14. Shade-dried, NMI lab tested, packed in Truganina. Free AU shipping at $79.",
     h1: "Moringa Powder 100g",
   },
   "200g": {
@@ -1423,7 +1423,7 @@ function homepage() {
     title: liveSeo?.title || "NutriThrive: Lab-tested moringa from Melbourne",
     description:
       liveSeo?.description ||
-      "Shade-dried moringa leaf powder, tested in Australia and packed in Truganina. From $11/100g. Same-day Melbourne dispatch.",
+      "Shade-dried moringa leaf powder, tested in Australia and packed in Truganina. From $14/100g. Same-day Melbourne dispatch.",
     canonicalPath: "/",
     current: "",
     preserveTitle: Boolean(liveSeo?.title),
@@ -1452,7 +1452,7 @@ function homepage() {
           <li><a href="/products/curry-leaves/" data-select-item="curry-leaves">Dried Curry Leaves · $7</a></li>
           <li><a href="/products/black-tea/" data-select-item="black-tea">Darjeeling Black Tea · $7.50</a></li>
           <li><a href="/products/moringa-soap/" data-select-item="moringa-soap">Moringa Soap · $7</a></li>
-          <li><a href="/products/moringa-powder/" data-select-item="moringa-powder">Moringa Powder · from $11</a></li>
+          <li><a href="/products/moringa-powder/" data-select-item="moringa-powder">Moringa Powder · from $14</a></li>
         </ul>
       </nav>
     </div>
@@ -1537,7 +1537,7 @@ ${googleReviewsSection()}
 <section class="cta-band">
   <div class="wrap">
     <h2>Start with the 100g pouch</h2>
-    <p>Lab-tested, shade-dried, packed in Truganina. $11.</p>
+    <p>Lab-tested, shade-dried, packed in Truganina. $14.</p>
     <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
   </div>
 </section>`,
@@ -1548,7 +1548,7 @@ function shopPage() {
   const shopPath = LIVE_MODE ? "/products/" : "/shop";
   return layout({
     title: "Moringa Powder, Curry Leaves, Darjeeling Tea & Moringa Soap | NutriThrive",
-    description: "Shop NutriThrive from Truganina: moringa powder from $11, dried curry leaves $7, Darjeeling tea $7.50, moringa soap $7, plus combo and gift packs. Free AU shipping at $79.",
+    description: "Shop NutriThrive from Truganina: moringa powder from $14, dried curry leaves $7, Darjeeling tea $7.50, moringa soap $7, plus combo and gift packs. Free AU shipping at $79.",
     canonicalPath: shopPath,
     current: "Shop",
     preserveTitle: true,
@@ -1596,12 +1596,12 @@ const PDP = {
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack"].includes(p.id)
     ),
     variantLabels: {
-      "moringa-powder": "100g — $11 · Good for trying NutriThrive",
+      "moringa-powder": "100g — $14 · Good for trying NutriThrive",
       "moringa-200g": "200g — $21.50",
       "moringa-400g": "400g — $35 · BEST VALUE · $8.75 per 100g",
       "combo-pack": "Combo pack — $17 · Moringa + curry leaves",
     },
-    variantHint: "The 400g option saves $21 compared with four packs at the $14 original price.",
+    variantHint: "The 400g option saves $21 compared with four 100g packs at $14 each ($56).",
     intro:
       "Pure moringa powder from our farm — shade-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne.",
     freezeHeroCopy: true,
@@ -1636,11 +1636,11 @@ const PDP = {
     faqs: [
       [
         "Where can I buy moringa powder in Australia?",
-        "You can buy NutriThrive moringa powder directly from our Australian online store. It is grown on our farm, shade-dried, NMI lab-tested in Australia, and packed in Truganina, Victoria. Sizes start at $11 for 100g, with delivery across Australia and free AU shipping from $79.",
+        "You can buy NutriThrive moringa powder directly from our Australian online store. It is grown on our farm, shade-dried, NMI lab-tested in Australia, and packed in Truganina, Victoria. Sizes start at $14 for 100g, with delivery across Australia and free AU shipping from $79.",
       ],
       [
         "Can I buy NutriThrive moringa powder online?",
-        "Yes. Order online from this product page for Australia-wide delivery. The current powder sizes are 100g for $11, 200g for $21.50 and 400g for $35.",
+        "Yes. Order online from this product page for Australia-wide delivery. The current powder sizes are 100g for $14, 200g for $21.50 and 400g for $35.",
       ],
       [
         "Where is NutriThrive moringa powder shipped from?",
@@ -1683,7 +1683,7 @@ const PDP = {
       ],
       [
         "Does NutriThrive offer free shipping?",
-        "Free Australian shipping starts at $79. Moringa powder sizes are 100g for $11, 200g for $21.50 and 400g for $35; curry leaves or Darjeeling tea can be added to reach the threshold.",
+        "Free Australian shipping starts at $79. Moringa powder sizes are 100g for $14, 200g for $21.50 and 400g for $35; curry leaves or Darjeeling tea can be added to reach the threshold.",
       ],
     ],
   },
@@ -1838,7 +1838,7 @@ const PDP = {
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
     detailCaption: "A closer look at the handmade bar, lavender flowers and lather.",
     ingredients:
-      "Melt-and-pour soap base (supplier full list to be confirmed), moringa leaf, lavender fragrance (parfum), dried lavender flowers.",
+      "Melt-and-pour soap base, moringa leaf, lavender fragrance (parfum), dried lavender flowers.",
     origin: "Handmade by NutriThrive in Australia and packed in Truganina, Melbourne.",
     process:
       "We start with a melt-and-pour soap base, add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand in small batches in Australia.",
@@ -2043,13 +2043,13 @@ function pdpPage(slug, d) {
             <div class="pdp-value-rows">
               <div class="pdp-value-row">
                 <p class="pdp-value-size">100g</p>
-                <p class="pdp-value-price">$11</p>
-                <p class="pdp-value-unit">$11.00 per 100g</p>
+                <p class="pdp-value-price">$14</p>
+                <p class="pdp-value-unit">$14.00 per 100g</p>
               </div>
               <div class="pdp-value-row">
                 <p class="pdp-value-size">200g</p>
                 <p class="pdp-value-price">$21.50</p>
-                <p class="pdp-value-unit">$10.75 per 100g · save $0.50</p>
+                <p class="pdp-value-unit">$10.75 per 100g · save $6.50</p>
               </div>
               <div class="pdp-value-row is-best">
                 <p class="pdp-value-size">400g</p>
@@ -2057,7 +2057,7 @@ function pdpPage(slug, d) {
                 <p class="pdp-value-unit">$8.75 per 100g · save $21</p>
               </div>
             </div>
-            <p class="pdp-value-note">Savings compare each larger option with the same weight bought as 100g pouches.</p>
+            <p class="pdp-value-note">Savings compare each larger option with the same weight bought as 100g pouches at $14 each.</p>
           </section>`
       : "";
   const education =
@@ -2311,7 +2311,7 @@ function aboutPage() {
         <div class="wrap split-2">
           <div>
             <h2>Quality should not be out of reach</h2>
-            <p>NutriThrive moringa starts at $11 per 100g. Selling manufacturer-direct helps us keep the price fair while continuing to invest in careful production, appropriate Australian testing and responsible packing.</p>
+            <p>NutriThrive moringa starts at $14 per 100g. Selling manufacturer-direct helps us keep the price fair while continuing to invest in careful production, appropriate Australian testing and responsible packing.</p>
             <p>We would rather earn long-term trust and become part of your routine than make health products feel exclusive.</p>
           </div>
           <div>
@@ -3256,24 +3256,24 @@ function cityPage(city, slug) {
       description: "Buy dried curry leaves, Darjeeling loose leaf tea and handmade lavender soap in Melbourne. Packed in Truganina. Free AU shipping at $79.",
     },
     Sydney: {
-      title: "Moringa Powder Sydney — AU Shipping from Truganina | From $11",
+      title: "Moringa Powder Sydney — AU Shipping from Truganina | From $14",
       h1: "Moringa Powder for Sydney",
-      description: "Order moringa powder to Sydney from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
+      description: "Order moringa powder to Sydney from $14/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
     },
     Perth: {
       title: "Moringa Powder Perth",
       h1: "Moringa Powder Perth",
-      description: "Order moringa powder to Perth from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
+      description: "Order moringa powder to Perth from $14/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
     },
     Brisbane: {
-      title: "Moringa Powder Brisbane — Shipped from Truganina | From $11",
+      title: "Moringa Powder Brisbane — Shipped from Truganina | From $14",
       h1: "Moringa Powder for Brisbane",
-      description: "Order moringa powder to Brisbane from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
+      description: "Order moringa powder to Brisbane from $14/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
     },
     Adelaide: {
-      title: "Moringa Powder Adelaide — Shipped from Truganina | From $11",
+      title: "Moringa Powder Adelaide — Shipped from Truganina | From $14",
       h1: "Moringa Powder for Adelaide",
-      description: "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
+      description: "Order moringa powder to Adelaide from $14/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU ship at $79.",
     },
   }[city];
   const transitLine = {
@@ -3382,7 +3382,7 @@ function cityPage(city, slug) {
                 <li><strong>$7.50</strong><span>Darjeeling 100g</span></li>
                 <li><strong>$20</strong><span>Diwali gift box</span></li>`
     : `<li><strong>100%</strong><span>moringa leaf</span></li>
-                <li><strong>From $11</strong><span>three sizes</span></li>
+                <li><strong>From $14</strong><span>three sizes</span></li>
                 <li><strong>Tracked</strong><span>Australia-wide</span></li>`;
   const melbourneHeroImage = city === "Melbourne"
     ? { src: "/assets/images/product_webp/dried-curry-leaves-30g-main.webp", alt: "NutriThrive 30g dried curry leaves pouch packed in Truganina for Melbourne" }
@@ -3390,7 +3390,7 @@ function cityPage(city, slug) {
   const melbourneCta = city === "Melbourne"
     ? `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Curry leaves, tea and soap from Truganina</h2><p>Shop dried curry leaves, Darjeeling tea, handmade soap, or the $20 Diwali gift box. Free AU shipping at $79.</p></div>
             <div><a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a><a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a><a class="btn btn-secondary" href="${giftHref}">Gift pack $35</a></div>`
-    : `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Moringa powder delivered to ${city}</h2><p>Start with 100g for $11 or compare larger sizes before adding to cart.</p></div>
+    : `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Moringa powder delivered to ${city}</h2><p>Start with 100g for $14 or compare larger sizes before adding to cart.</p></div>
             <div><a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div>`;
   const canonicalPath = slug === "melbourne" ? "/melbourne/" : `/moringa-${slug}/`;
   const cityLinks = [
@@ -3477,7 +3477,7 @@ function cityPage(city, slug) {
               <article class="city-info-card">
                 <span class="city-info-card__number">03</span>
                 <h3>Clear value</h3>
-                <p>100g $11 · 200g $21.50 · 400g $35. The 400g option works out to $8.75 per 100g. Free AU shipping starts at $79.</p>
+                <p>100g $14 · 200g $21.50 · 400g $35. The 400g option works out to $8.75 per 100g. Free AU shipping starts at $79.</p>
                 <a href="${powderHref}">Compare all three sizes <span aria-hidden="true">→</span></a>
               </article>
             </div>

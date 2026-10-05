@@ -1,0 +1,33 @@
+=== HEADERS 2026-10-02T14:43:42Z ===
+HTTP/2 200 
+accept-ranges: bytes
+age: 0
+cache-control: public,max-age=0,must-revalidate
+cache-status: "Netlify Edge"; fwd=miss; fwd-status=200; stored
+content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.paypal.com https://www.paypalobjects.com https://www.googletagmanager.com https://www.google-analytics.com https://www.redditstatic.com https://applepay.cdn-apple.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.paypal.com https://api-m.paypal.com https://api-m.sandbox.paypal.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://ipapi.co https://ip-api.com https://www.redditstatic.com https://pixel-config.reddit.com https://conversions-config.reddit.com https://challenges.cloudflare.com; frame-src https://www.paypal.com https://challenges.cloudflare.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests
+content-security-policy-report-only: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.paypal.com https://www.paypalobjects.com https://www.googletagmanager.com https://www.google-analytics.com https://www.redditstatic.com https://applepay.cdn-apple.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.paypal.com https://api-m.paypal.com https://api-m.sandbox.paypal.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://ipapi.co https://ip-api.com https://www.redditstatic.com https://pixel-config.reddit.com https://conversions-config.reddit.com https://challenges.cloudflare.com; frame-src https://www.paypal.com https://challenges.cloudflare.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co
+content-type: text/html; charset=UTF-8
+date: Fri, 02 Oct 2026 14:43:42 GMT
+etag: "d46c0b5fd87a90bb6011a1e7e09b708f-ssl"
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=(self "https://www.paypal.com")
+referrer-policy: strict-origin-when-cross-origin
+server: Netlify
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+vary: Accept-Encoding
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-nf-request-id: 01M3YH4BYF0W6YK5KQPRJF7GK9
+content-length: 36914
+
+
+=== SENSITIVE PATHS ===
+404 /.env
+404 /.git/config
+404 /wp-config.php
+404 /.htaccess
+404 /config.php
+404 /.DS_Store
+404 /backup.sql
+200 /robots.txt
+200 /sitemap.xml
+404 /.well-known/security.txt

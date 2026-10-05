@@ -14,7 +14,7 @@ const products = [
     description: "Farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
     link: "/products/moringa-powder/100g/",
     image: "/assets/images/product_webp/moringa-powder-100g-main.webp",
-    price: "11.00 AUD",
+    price: "14.00 AUD",
     size: "100g",
   },
   {

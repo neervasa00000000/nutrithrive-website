@@ -3,6 +3,32 @@
 # — 200 rewrites: pretty URLs (no 301s for /cart vs /cart/; use /cart, /about, /contact, /faq everywhere)
 # — Retired blog URLs → 404
 
+# === Deleted posts: correct redirects (Oct 2026 crawl fix) ===
+# Tea posts → closest live post (301)
+/blog/can-you-drink-darjeeling-tea-every-day-2026  /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026  301!
+/blog/darjeeling-tea-coffee-replacement-honest-assessment-2026  /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026  301!
+/blog/cold-brew-darjeeling-australian-spring-2026  /blog/how-to-brew-darjeeling-tea-perfectly-2026  301!
+/blog/darjeeling-chai-latte-recipe-winter-coffee-alternative-2026  /blog/how-to-brew-darjeeling-tea-perfectly-2026  301!
+/blog/darjeeling-black-tea-australia-first-flush-second-flush-guide-2026  /blog/darjeeling-black-tea-australia-guide  301!
+/blog/darjeeling-tea-health-benefits-research-2026  /blog/darjeeling-black-tea-australia-guide  301!
+# Soap
+/blog/moringa-face-mask-australia-glow-ritual  /blog/handmade-soap-australia-melt-and-pour-guide  301!
+# Misc 301
+/blog/morning-routine-health-tips-australia-2026  /blog/  301!
+# Moringa deleted posts → 410 Gone (tell Google they are intentionally removed)
+/blog/moringa-30-day-challenge-honest-results  /404.html  410!
+/blog/moringa-30-day-challenge-honest-results.html  /404.html  410!
+/blog/is-moringa-worth-it-cost-value-australia-2026  /404.html  410!
+/blog/is-moringa-worth-it-cost-value-australia-2026.html  /404.html  410!
+/blog/moringa-energy-what-happens-week-by-week-2026  /404.html  410!
+/blog/moringa-energy-what-happens-week-by-week-2026.html  /404.html  410!
+/blog/natural-pre-workout-moringa-australia-2026  /404.html  410!
+/blog/natural-pre-workout-moringa-australia-2026.html  /404.html  410!
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026  /404.html  410!
+/blog/moringa-energy-bites-kids-lunchbox-recipe-australia-2026.html  /404.html  410!
+/blog/is-moringa-legit-what-science-and-real-users-say-2026  /404.html  410!
+/blog/is-moringa-legit-what-science-and-real-users-say-2026.html  /404.html  410!
+
 # Favicon — legacy /favicon.ico requests → assets folder
 # Duplicate homepage file URL — prefer /
 /index.html / 301!

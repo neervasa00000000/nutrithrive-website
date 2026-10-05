@@ -1,0 +1,5 @@
+[tls-version] [ssl] [info] nutrithrive.com.au:443 ["tls12"]
+[tls-version] [ssl] [info] nutrithrive.com.au:443 ["tls13"]
+[ssl-issuer] [ssl] [info] nutrithrive.com.au:443 ["Let's Encrypt"]
+[ssl-dns-names] [ssl] [info] nutrithrive.com.au:443 ["*.nutrithrive.com.au","nutrithrive.com.au"]
+[wildcard-tls] [ssl] [info] nutrithrive.com.au:443 ["SAN: [*.nutrithrive.com.au nutrithrive.com.au]","CN: nutrithrive.com.au"]
