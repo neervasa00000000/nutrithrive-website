@@ -236,7 +236,7 @@ function renderCart() {
     const sub = items.reduce((n, i) => n + Number(i.price || 0) * Number(i.qty || 1), 0);
     if (!items.length) {
       setLayout(true);
-      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free AU shipping at ${money(auFreeShip())}.</p><a class="btn btn-primary" href="${shopPath()}moringa-powder/">Shop 400g best value ($35)</a> <a class="btn btn-secondary" href="${shopPath()}">Shop the range</a> <a class="btn btn-secondary" href="${shopPath()}moringa-powder/">Shop moringa powder</a><p>Pay with PayPal or card at checkout.</p></div>`;
+      lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free Australian shipping on orders from ${money(auFreeShip())}.</p><a class="btn btn-primary" href="${shopPath()}moringa-powder/">Shop moringa powder</a> <a class="btn btn-secondary" href="${shopPath()}">Shop the range</a></div>`;
       summary.innerHTML = "";
       renderRecs([], 0);
       window.NTRetention?.renderBuyAgain?.(document.getElementById("cart-buy-again"), { source: "cart" });
