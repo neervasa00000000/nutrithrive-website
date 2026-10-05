@@ -5,6 +5,12 @@
 [functions]
   included_files = ["scripts/global/shipping-rates.js", "scripts/global/shipping-rates-node.cjs"]
 
+
+[[headers]]
+  for = "/products/moringa-powder/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
 [[headers]]
   for = "/shared/components/*"
   [headers.values]

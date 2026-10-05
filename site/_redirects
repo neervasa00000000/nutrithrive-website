@@ -4,6 +4,8 @@
 # — Retired blog URLs → 404
 
 # === Deleted posts: correct redirects (Oct 2026 crawl fix) ===
+/blog/post-animal-economy-vegan-ecosystem-2026.html  /404.html  410!
+/blog/post-animal-economy-vegan-ecosystem-2026  /404.html  410!
 # Tea posts → closest live post (301)
 /blog/can-you-drink-darjeeling-tea-every-day-2026  /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026  301!
 /blog/darjeeling-tea-coffee-replacement-honest-assessment-2026  /blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026  301!
