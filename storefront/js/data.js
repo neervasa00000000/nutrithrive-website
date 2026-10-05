@@ -5,8 +5,8 @@ export const PRODUCTS = [
     name: "Moringa Powder",
     variant: "100g",
     benefit: "Shade-dried leaf powder. Nothing else in the bag.",
-    price: 11,
-    was: 14,
+    price: 14,
+    was: null,
     weight: 100,
     image: "/assets/images/product_webp/moringa-powder-100g-main.webp",
     href: "/products/moringa-powder/100g/",
@@ -48,7 +48,7 @@ export const PRODUCTS = [
     lab: true,
     serving: { grams: 3, pack: "400g bundle" },
     detail:
-      "Four 100g pouches of our farm-grown moringa. Save $21 compared with four packs at the $14 original price. Manufactured by NutriThrive and packed in Truganina.",
+      "Four 100g pouches of our farm-grown moringa. Save $21 compared with four 100g packs at $14 each ($56). Manufactured by NutriThrive and packed in Truganina.",
   },
   {
     id: "curry-leaves",
