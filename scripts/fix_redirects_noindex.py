@@ -38,12 +38,12 @@ NEW_RULES = """
 # Soap
 /blog/moringa-face-mask-australia-glow-ritual  /blog/handmade-soap-australia-melt-and-pour-guide  301!
 # Misc 301
-/blog/morning-routine-health-tips-australia-2026  /blog/  301!
-# Moringa deleted posts → 410 Gone (tell Google they are intentionally removed)
+/blog/morning-routine-health-tips-australia-2026  /blog/how-to-add-moringa-to-diet  301!
+# Moringa retired posts: redirect relevant guides; use 410 for removed topics
 /blog/moringa-30-day-challenge-honest-results  /404.html  410!
 /blog/moringa-30-day-challenge-honest-results.html  /404.html  410!
-/blog/is-moringa-worth-it-cost-value-australia-2026  /404.html  410!
-/blog/is-moringa-worth-it-cost-value-australia-2026.html  /404.html  410!
+/blog/is-moringa-worth-it-cost-value-australia-2026  /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026  301!
+/blog/is-moringa-worth-it-cost-value-australia-2026.html  /blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026  301!
 /blog/moringa-energy-what-happens-week-by-week-2026  /404.html  410!
 /blog/moringa-energy-what-happens-week-by-week-2026.html  /404.html  410!
 /blog/natural-pre-workout-moringa-australia-2026  /404.html  410!
