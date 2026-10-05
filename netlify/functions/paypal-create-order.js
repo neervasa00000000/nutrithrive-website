@@ -140,7 +140,7 @@ export async function handler(event) {
         // Authoritative product catalog for server-side pricing/weighting.
         // SECURITY: Do not trust client-provided prices/names/amounts.
         const PRODUCT_CATALOG = {
-            "moringa-powder": { name: "100g Moringa", price: 14.00, weight: 100 },
+            "moringa-powder": { name: "100g Moringa", price: 11.00, weight: 100 },
             "moringa-200g": { name: "200g Moringa", price: 21.50, weight: 200 },
             "moringa-400g": { name: "400g Moringa Bundle", price: 35.00, weight: 400 },
             "moringa-soap": { name: "Moringa Soap", price: 7.00, weight: 95 },
@@ -149,10 +149,11 @@ export async function handler(event) {
             "black-tea": { name: "Darjeeling Black Tea", price: 7.50, weight: 100 },
             "combo-pack": { name: "Premium Combo Pack", price: 17.00, weight: 130 },
             "gift-pack": { name: "Gift Pack", price: 35.00, weight: 325 },
+            "diwali-gift-box": { name: "Diwali Gift Box", price: 20.00, weight: 225 },
 
             // Product page variations (cart ids are moringa-variation-1..6)
             "moringa-variation-1": { name: "400g Moringa Bundle", price: 35.00, weight: 400 },
-            "moringa-variation-2": { name: "100g Moringa", price: 14.00, weight: 100 },
+            "moringa-variation-2": { name: "100g Moringa", price: 11.00, weight: 100 },
             "moringa-variation-3": { name: "Combo Moringa + Dried Curry Leaves", price: 17.00, weight: 130 },
             "moringa-variation-4": { name: "200g Moringa", price: 21.50, weight: 200 },
             "moringa-variation-5": { name: "30g Dried Curry Leaves", price: 7.00, weight: 30 },

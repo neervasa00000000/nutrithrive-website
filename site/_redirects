@@ -961,8 +961,3 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
-/blog/afl-finals-snacks-curry-leaf-tadka /blog/diwali-gifts-for-friends-curry-leaf-snacks 301
-/blog/moringa-soap-benefits-skin-guide /blog/handmade-soap-australia-melt-and-pour-guide 301
-/blog/diwali-gifts-for-friends-curry-leaf-snacks /blog/diwali-gifts-for-friends-curry-leaf-snacks.html 200
-/blog/handmade-soap-australia-melt-and-pour-guide /blog/handmade-soap-australia-melt-and-pour-guide.html 200
-/blog/gifts-for-tea-lovers-australia /blog/gifts-for-tea-lovers-australia.html 200
