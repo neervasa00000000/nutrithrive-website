@@ -16,8 +16,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20260915-1";
-const CSS_ASSET_VERSION = "20260915-1";
+const ASSET_VERSION = "20261006-1";
+const CSS_ASSET_VERSION = "20261006-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
@@ -1606,6 +1606,9 @@ ${googleReviewsSection()}
 
 function shopPage() {
   const shopPath = LIVE_MODE ? "/products/" : "/shop";
+  const moringaIds = new Set(["moringa-powder", "moringa-200g", "moringa-400g"]);
+  const moringaProducts = PRODUCTS.filter((p) => moringaIds.has(p.id));
+  const otherProducts = PRODUCTS.filter((p) => !moringaIds.has(p.id));
   return layout({
     title: "Moringa Powder, Curry Leaves, Darjeeling Tea & Moringa Soap | NutriThrive",
     description: "Shop NutriThrive from Truganina: moringa powder from $11, dried curry leaves $7, Darjeeling tea $7.50, moringa soap $7, plus combo and gift packs. Free AU shipping at $79.",
@@ -1631,11 +1634,30 @@ function shopPage() {
       <section class="page-intro shop-intro wrap">
         <p class="kicker">Farm grown · Australian packed</p>
         <h1>Shop NutriThrive</h1>
+        <p>Start with our farm-grown moringa powder — from $11 — then add curry leaves, tea, soap and gift packs.</p>
+      </section>
+      <section class="section shop-catalog" style="padding-top:0" aria-labelledby="shop-moringa">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Core product</p>
+              <h2 id="shop-moringa">Moringa powder</h2>
+              <p>Shade-dried leaf powder. Packed in Truganina. Free AU shipping from $79.</p>
+            </div>
+            <a href="/products/moringa-powder/">Compare sizes</a>
+          </div>
+          <div class="product-grid shop-product-grid shop-moringa-grid">${moringaProducts.map((product, index) => productCard(product, index === 0, { showVariant: true })).join("")}</div>
+        </div>
       </section>
       <section class="section shop-catalog" style="padding-top:0" aria-labelledby="shop-products">
         <div class="wrap">
-          <h2 id="shop-products" class="visually-hidden">All products</h2>
-          <div class="product-grid shop-product-grid">${PRODUCTS.map((product, index) => productCard(product, index === 0, { showVariant: true })).join("")}</div>
+          <div class="section-head">
+            <div>
+              <p class="kicker">Also from NutriThrive</p>
+              <h2 id="shop-products">Tea, curry leaves, soap &amp; gifts</h2>
+            </div>
+          </div>
+          <div class="product-grid shop-product-grid">${otherProducts.map((product) => productCard(product, false, { showVariant: true })).join("")}</div>
         </div>
       </section>
       ${googleReviewsSection()}`,
