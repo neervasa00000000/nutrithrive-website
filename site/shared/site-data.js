@@ -141,7 +141,7 @@ window.NT_SITE_DATA = {
       tag: '400G BUNDLE',
       badge: 'Bundle',
       price: 35,
-      was: 44,
+      was: 56,
       weight: 400,
       image: '/assets/images/product_photos/moringa-400g-bundle.jpeg',
       href: '/products/moringa-powder/',
@@ -394,7 +394,7 @@ window.NT_SITE_DATA = {
     },
   ],
   moringaVariants: [
-    { id: 'moringa-400g', label: '400g Moringa Bundle — $35.00', price: 35, was: 44, weight: 400 },
+    { id: 'moringa-400g', label: '400g Moringa Bundle — $35.00', price: 35, was: 56, weight: 400 },
     { id: 'moringa-powder-100g', label: '100g Moringa — $11.00', price: 11, was: 14, weight: 100 },
     { id: 'combo-pack', label: 'Combo Moringa + Curry Leaves — $17.00 (was $22.49)', price: 17, was: 22.49, weight: 130 },
     { id: 'moringa-powder-200g', label: '200g Moringa — $21.50 (was $28.00)', price: 21.5, was: 28, weight: 200 },

@@ -1684,7 +1684,7 @@ const PDP = {
       "combo-pack": "Combo pack — $17 · Moringa + curry leaves",
       "moringa-soap-combo": "Powder + soap — $17 · 100g moringa + 95g bar",
     },
-    variantHint: "The 400g option saves $9 compared with four 100g packs at $11 each ($44).",
+    variantHint: "The 400g option saves $21 compared with four packs at the $14 original price.",
     intro:
       "Pure moringa powder from our farm — shade-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne.",
     freezeHeroCopy: true,
@@ -2149,7 +2149,7 @@ function pdpPage(slug, d) {
               <div class="pdp-value-row is-best">
                 <p class="pdp-value-size">400g</p>
                 <p class="pdp-value-price">$35 <span class="pdp-value-flag">BEST VALUE</span></p>
-                <p class="pdp-value-unit">$8.75 per 100g · save $9 vs four 100g pouches</p>
+                <p class="pdp-value-unit">$8.75 per 100g · save $21 vs four at $14</p>
               </div>
             </div>
             <p class="pdp-value-note">Savings compare each larger option with the same weight bought as 100g pouches at $11 each.</p>
