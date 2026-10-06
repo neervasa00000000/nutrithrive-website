@@ -347,10 +347,10 @@ if (home) {
 const startHere = [
   ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead", "$79"],
   ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
-  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Moringa vs Spirulina vs Matcha (Australia): We Sell Moringa Powder", "$79"],
+  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Moringa vs Spirulina vs Matcha (Australia)", "$79"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
   ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$79"],
-  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Plain Moringa Powder vs AG1", "$79"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Plain Moringa vs AG1", "$79"],
 ];
 for (const [rel, expected, postage] of startHere) {
   const html = read(rel);
@@ -378,7 +378,7 @@ if (teaHtml && !teaHtml.includes("<title>Darjeeling Loose Leaf Black Tea Austral
   errors.push("products/black-tea/index.html: title not updated");
 }
 const curryHtml = read("products/curry-leaves/index.html");
-if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | Curry Patta / Kadi Patta $7</title>")) {
+if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | 30g $7</title>")) {
   errors.push("products/curry-leaves/index.html: title not updated");
 }
 
@@ -391,7 +391,7 @@ if (article) {
     errors.push(`${articleRel}: canonical is "${canonical}"`);
   }
   const title = normalizeMetaText(attr(article, /<title>([^<]*)<\/title>/i));
-  if (title !== "How to Use Moringa Powder | Add It to Food You Already Eat") {
+  if (title !== "How to Use Moringa Powder in Everyday Food (AU)") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
