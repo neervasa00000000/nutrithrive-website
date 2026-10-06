@@ -26,8 +26,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
-    "title": "AG1 Alternative Australia: Plain Moringa Powder vs AG1",
-    "description": "AG1 is a multi-ingredient greens scoop; NutriThrive sells plain moringa powder from $11. Compare purpose and price, not a clone. Free AU shipping from $79.",
+    "title": "AG1 Alternative Australia: Moringa Powder vs AG1",
+    "description": "AG1 is a multi-ingredient greens scoop. NutriThrive is plain farm-grown moringa leaf powder — compare purpose and format, then buy the pouch that fits.",
     "category": "Wellness",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026",
     "image": "/assets/images/blog/moringa-replaces-200-supplement-stack-australia-2026.webp"
@@ -74,8 +74,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "chemist-warehouse-greens-vs-moringa-powder-2026",
-    "title": "Chemist Warehouse Greens vs $11 Moringa Powder (Australia)",
-    "description": "A label comparison of a Chemist Warehouse greens blend and single-ingredient moringa powder.",
+    "title": "Chemist Warehouse Greens vs Moringa Powder (Australia)",
+    "description": "Compare Chemist Warehouse greens powders with plain moringa leaf powder: ingredients, format, and when a single-ingredient pouch fits. Farm-grown NutriThrive from Truganina.",
     "category": "Wellness",
     "href": "/blog/chemist-warehouse-greens-vs-moringa-powder-2026",
     "image": "/assets/images/product_photos/moringa-powder-australia-lab-tested.jpg"
@@ -419,7 +419,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-brands-comparison-australia-2026",
     "title": "Best Moringa Powder Australia? Facts-Only Brand Check",
-    "description": "Compare moringa powder brands in Australia by label, grams, $/100g, organic marks and packing city. NutriThrive sizes and plain facts.",
+    "description": "Compare AU moringa powders with a facts-only scorecard: ingredients, organic marks, CoA, pack location — plus iHerb and Amazon notes.",
     "category": "Moringa",
     "href": "/blog/moringa-brands-comparison-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -458,8 +458,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
-    "title": "Moringa Heavy Metals Lab Testing Australia: CoA Checklist Before You Buy",
-    "description": "How to read a moringa certificate of analysis before you pay, then powder at 100g $11, 200g $21.50, 400g $35.",
+    "title": "Moringa Heavy Metals Lab Testing Australia (CoA Guide)",
+    "description": "What to ask before you buy moringa powder: heavy metals, batch CoA, and how NutriThrive links an NMI lab summary from Truganina packing.",
     "category": "Wellness",
     "href": "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -474,8 +474,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-patches-australia-review-do-they-work",
-    "title": "Glorenda &amp; Healrize Moringa Patches Australia: Do They Work?",
-    "description": "We do not sell Glorenda, Healrize, or any moringa patch. Honest Glorenda and Healrize review, then NutriThrive leaf powder from $11.",
+    "title": "Moringa Patches Australia: Glorenda, Healrize & Powder",
+    "description": "What moringa patches claim vs buying leaf powder for food and drinks. NutriThrive sells powder only — farm-grown, packed in Truganina.",
     "category": "Wellness",
     "href": "/blog/moringa-patches-australia-review-do-they-work",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -538,8 +538,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-vs-spirulina-vs-matcha-comparison-australia",
-    "title": "Moringa vs Spirulina vs Matcha (Australia): We Sell Moringa Powder",
-    "description": "Moringa vs spirulina vs matcha for everyday use in Australia. We sell moringa powder only: 100g $11, 200g $21.50, 400g $35.",
+    "title": "Moringa vs Spirulina vs Matcha Powder (Australia)",
+    "description": "Three green powders side by side: taste, typical use, and when single-ingredient moringa leaf powder fits. Farm-grown NutriThrive from Melbourne.",
     "category": "Wellness",
     "href": "/blog/moringa-vs-spirulina-vs-matcha-comparison-australia",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -594,16 +594,16 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "rosabella-moringa-reviews-legit-or-overhyped-2026",
-    "title": "Rosabella Moringa Reviews Australia 2026: We Sell Powder, Not Rosabella",
-    "description": "Australian Rosabella moringa review. We do not sell Rosabella. Buy path is NutriThrive leaf powder from $11.",
+    "title": "Rosabella Moringa Reviews Australia: Powder Buy Path",
+    "description": "We do not sell Rosabella. Honest read on brand search intent, then NutriThrive farm-grown leaf powder sizes packed in Truganina.",
     "category": "Wellness",
     "href": "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
   },
   {
     "slug": "science-shade-drying-vs-sun-drying-moringa",
-    "title": "Shade-Dried vs Sun-Dried Moringa Powder: What to Check Before You Buy",
-    "description": "Shade dried meaning, sun vs shade clues, and whether you can dry moringa leaves in sunlight. Powder from $11. Free AU shipping at $79.",
+    "title": "Shade-Dried vs Sun-Dried Moringa Powder (What to Check)",
+    "description": "How drying method shows up on labels and product pages. NutriThrive shade-dries leaf powder and packs in Truganina.",
     "category": "Wellness",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa",
     "image": "/assets/images/og/moringa-article-1200.jpg"
