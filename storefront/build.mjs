@@ -1677,7 +1677,6 @@ function shopPage() {
               <h2 id="shop-moringa">Moringa powder</h2>
               <p>Shade-dried leaf powder. Packed in Truganina. Free AU shipping from $79.</p>
             </div>
-            <a href="/products/moringa-powder/">Compare sizes</a>
           </div>
           <div class="product-grid shop-product-grid shop-moringa-grid">${moringaProducts.map((product, index) => productCard(product, index === 0, { showVariant: true })).join("")}</div>
         </div>
