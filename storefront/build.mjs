@@ -720,7 +720,7 @@ const ARTICLE_CONVERSION_PATHS = {
     title: "Handmade lavender soap bar from Truganina",
     body: "A $7 handmade soap with moringa leaf and lavender. Separate from oil — this is a rinse-off bar, packed in Melbourne.",
     cta: "Shop handmade soap",
-    links: [["Moringa soap benefits guide", "moringa-soap-benefits-skin-guide"]],
+    links: [["Handmade soap Australia guide", "handmade-soap-australia-melt-and-pour-guide"]],
   },
   "diwali-gift-guide-curry-leaves-tea-australia": {
     kicker: "Ready Diwali hamper",
@@ -818,12 +818,12 @@ const PRODUCT_GUIDES = {
     ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
   ],
   "moringa-soap": [
-    ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
+    ["Handmade soap Australia guide", "handmade-soap-australia-melt-and-pour-guide"],
     ["Moringa oil for skin and hair", "moringa-oil-benefits-skin-hair-health-2026"],
     ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
   ],
   "moringa-soap-combo": [
-    ["Moringa soap benefits and limitations", "moringa-soap-benefits-skin-guide"],
+    ["Handmade soap Australia guide", "handmade-soap-australia-melt-and-pour-guide"],
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
     ["How to take moringa powder", "how-to-add-moringa-to-diet"],
     ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
