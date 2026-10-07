@@ -570,8 +570,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "musashi-protein-powder-australia-comprehensive-guide-2026",
-    "title": "Protein Powder vs Moringa: What Each One Actually Does",
-    "description": "Which protein powder is actually worth it in Australia? We compare whey vs plant vs moringa for purity, value &amp; results. Updated May 2026 with lab data.",
+    "title": "Protein Powder vs Moringa Australia: What Each One Does",
+    "description": "Whey, plant protein and moringa leaf powder do different jobs. How to read an Australian protein label, and where moringa powder (100g $11) fits.",
     "category": "Wellness",
     "href": "/blog/musashi-protein-powder-australia-comprehensive-guide-2026",
     "image": "/assets/images/og/moringa-social-1200.png"
@@ -699,7 +699,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "title": "Moringa Powder Price Australia (Dated $/100g)",
-    "description": "NutriThrive moringa powder prices as of 6 Oct 2026: 100g $11, 200g $21.50, 400g $35, with price per 100g and shipping from $79.",
+    "description": "NutriThrive moringa powder prices as of 6 Oct 2026: 100g $11, 200g $21.50, 400g $35, with price per 100g. Free AU shipping at $79.",
     "category": "Moringa",
     "href": "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
