@@ -1,13 +1,4 @@
-/** Auto-generated — 87 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
-  {
-    "slug": "gifts-for-tea-lovers-australia",
-    "title": "Gifts for Tea Lovers Australia: Tea Gift Set Ideas",
-    "description": "Looking for a present for a tea lover? Tea gift set ideas under $40 with Darjeeling loose leaf, a ready tea gift box, and how to build a small tea hamper.",
-    "category": "Darjeeling tea",
-    "href": "/blog/gifts-for-tea-lovers-australia",
-    "image": "/assets/images/og/black-tea-social-1200.jpg"
-  },
   {
     "slug": "30-different-plants-per-week-gut-health-microbiome-2026",
     "title": "The 30-Plants-a-Week Gut Health Rule",
@@ -15,14 +6,6 @@ window.NT_BLOG_ARTICLES = [
     "category": "Wellness",
     "href": "/blog/30-different-plants-per-week-gut-health-microbiome-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
-  },
-  {
-    "slug": "diwali-gifts-for-friends-curry-leaf-snacks",
-    "title": "Diwali Gifts for Friends: Curry Leaf Snack Jars & Gift Box",
-    "description": "Diwali gifts for friends that get used: a curry leaf tadka snack jar you can make at home, small gifts under $20 and order-by dates for Sun 8 Nov.",
-    "category": "Curry leaves",
-    "href": "/blog/diwali-gifts-for-friends-curry-leaf-snacks",
-    "image": "/assets/images/product_webp/dried-curry-leaves-30g-main.webp"
   },
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
@@ -35,7 +18,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "best-anti-inflammatory-foods-australia-daily-guide-2026",
     "title": "Anti-Inflammatory Foods Australia | Daily Plate Guide",
-    "description": "Anti-inflammatory foods with real evidence for Australians, plus which \u201csuperfood\u201d claims are mostly marketing hype. Read the practical NutriThrive guide.",
+    "description": "Anti-inflammatory foods with real evidence for Australians, plus which “superfood” claims are mostly marketing hype. Read the practical NutriThrive guide.",
     "category": "Wellness",
     "href": "/blog/best-anti-inflammatory-foods-australia-daily-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -123,7 +106,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
     "title": "No Fresh Curry Leaves? Best Substitutes and Dried Leaves",
-    "description": "Can't find fresh curry leaves? Use dried curry leaves (2\u20133\u00d7 the volume), or makrut lime leaf or lemon zest. Ratios, what to avoid and where to buy.",
+    "description": "Can't find fresh curry leaves? Use dried curry leaves (2–3× the volume), or makrut lime leaf or lemon zest. Ratios, what to avoid and where to buy.",
     "category": "Curry leaves",
     "href": "/blog/curry-leaves-substitute-what-to-use-2026",
     "image": "/assets/images/blog/dried-curry-leaves-quality-guide-how-to-use-hero.webp"
@@ -177,6 +160,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/blog/diwali-gift-guide-curry-leaves-tea-australia-hero.webp"
   },
   {
+    "slug": "diwali-gifts-for-friends-curry-leaf-snacks",
+    "title": "Diwali Gifts for Friends: Curry Leaf Snack Jars & Gift Box",
+    "description": "Diwali gifts for friends that get used: a curry leaf tadka snack jar you can make at home, small gifts under $20 and order-by dates for Sun 8 Nov.",
+    "category": "Curry leaves",
+    "href": "/blog/diwali-gifts-for-friends-curry-leaf-snacks",
+    "image": "/assets/images/product_webp/dried-curry-leaves-30g-main.webp"
+  },
+  {
     "slug": "dried-curry-leaves-australia-guide",
     "title": "Curry Leaves at Woolworths, Coles & Aldi: Where to Buy",
     "description": "Can you buy curry leaves at Woolworths, Coles or Aldi? What each listed in Oct 2026 (fresh punnets, dried packs), Indian grocers, online and storage tips.",
@@ -199,6 +190,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Wellness",
     "href": "/blog/fibre-deficiency-australia-bowel-cancer-risk-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "gifts-for-tea-lovers-australia",
+    "title": "Gifts for Tea Lovers Australia: Tea Gift Set Ideas",
+    "description": "Looking for a present for a tea lover? Tea gift set ideas under $40 with Darjeeling loose leaf, a ready tea gift box, and how to build a small tea hamper.",
+    "category": "Darjeeling tea",
+    "href": "/blog/gifts-for-tea-lovers-australia",
+    "image": "/assets/images/og/black-tea-social-1200.jpg"
   },
   {
     "slug": "glp-1-ozempic-nutrition-gaps-what-to-eat-2026",
@@ -225,9 +224,17 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "handmade-soap-australia-melt-and-pour-guide",
+    "title": "Handmade Soap Australia: What Melt-and-Pour Really Means",
+    "description": "Handmade soap in Australia explained: what melt-and-pour means, how to read a soap label, gift ideas, and our 95g lavender soap bar with moringa leaf.",
+    "category": "Soap & skin",
+    "href": "/blog/handmade-soap-australia-melt-and-pour-guide",
+    "image": "/assets/images/product_webp/moringa-soap-texture.webp"
+  },
+  {
     "slug": "high-protein-moringa-recipes-australia-2026",
     "title": "High-Protein Moringa Recipes Australia (Leaf Powder)",
-    "description": "High-protein moringa recipes Australia \u2014 ten meals and shakes with exact tsp leaf powder and 15\u201340g protein per serve.",
+    "description": "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
     "category": "Wellness",
     "href": "/blog/high-protein-moringa-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -259,7 +266,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-much-water-per-day-australians-honest-guide-2026",
     "title": "How Much Water Should You Actually Drink Per Day? (Guide for Australians)",
-    "description": "\u201cEight glasses a day\u201d isn&#39;t strong science. What evidence says about daily fluid needs for Australians, and what actually counts.",
+    "description": "“Eight glasses a day” isn&#39;t strong science. What evidence says about daily fluid needs for Australians, and what actually counts.",
     "category": "Wellness",
     "href": "/blog/how-much-water-per-day-australians-honest-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -306,8 +313,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-choose-moringa-powder-australia-2026",
-    "title": "How to Choose Moringa Powder in Australia",
-    "description": "Woolworths, Coles and Aldi moringa powder checks, label tips, and farm-grown pouches from Truganina. Sizes 100g, 200g, 400g.",
+    "title": "Moringa Powder at Woolworths, Coles or Aldi? (Oct 2026)",
+    "description": "We checked Woolworths, Coles and Aldi for moringa powder. What's listed, what to read on the label, and where to order a 100g pouch online for $11.",
     "category": "Moringa",
     "href": "/blog/how-to-choose-moringa-powder-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -330,8 +337,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
-    "title": "How to Read Moringa Batch Codes \u2014 Freshness Check AU",
-    "description": "How to read moringa batch codes on Australian pouches \u2014 find the lot stamp, match lab paperwork, and spot freshness red flags.",
+    "title": "How to Read Moringa Batch Codes — Freshness Check AU",
+    "description": "How to read moringa batch codes on Australian pouches — find the lot stamp, match lab paperwork, and spot freshness red flags.",
     "category": "Wellness",
     "href": "/blog/how-to-read-moringa-batch-codes-freshness",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -355,7 +362,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
     "title": "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use \u2014 with free AU shipping at $79.",
+    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $79.",
     "category": "Wellness",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -379,7 +386,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
     "title": "Moringa and Berberine Together (Australia 2026)",
-    "description": "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context \u2014 not medical advice. Ask your GP.",
+    "description": "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context — not medical advice. Ask your GP.",
     "category": "Wellness",
     "href": "/blog/moringa-and-berberine-australia-what-science-says-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -394,8 +401,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
-    "title": "Moringa Avocado Toast Recipe Australia \u2014 5 Minutes",
-    "description": "Moringa avocado toast recipe Australia \u2014 exact \u00bd tsp leaf powder, lemon, salt, 5 minutes.",
+    "title": "Moringa Avocado Toast Recipe Australia — 5 Minutes",
+    "description": "Moringa avocado toast recipe Australia — exact ½ tsp leaf powder, lemon, salt, 5 minutes.",
     "category": "Wellness",
     "href": "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -418,8 +425,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-brands-comparison-australia-2026",
-    "title": "Best Moringa Powder Australia? Facts-Only Brand Check",
-    "description": "Compare AU moringa powders with a facts-only scorecard: ingredients, organic marks, CoA, pack location — plus iHerb and Amazon notes.",
+    "title": "Best Moringa Powder in Australia? How to Compare Brands",
+    "description": "No paid rankings. Compare moringa powder brands on ingredients, pack date, lab paperwork and price per 100g, plus what to check on iHerb and Amazon AU.",
     "category": "Moringa",
     "href": "/blog/moringa-brands-comparison-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -434,16 +441,16 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-capsules-vs-powder-which-is-better-2026",
-    "title": "Moringa Powder vs Capsules Australia | We Sell Powder",
-    "description": "Moringa capsules vs leaf powder in Australia: format table, price-per-100g method, and NutriThrive pouch sizes from Truganina.",
+    "title": "Moringa Capsules vs Powder in Australia: Cost & Format",
+    "description": "Capsules or loose leaf powder? A side-by-side format table, how to work out price per 100g, and when a 100g pouch of leaf powder ($11) suits you better.",
     "category": "Moringa",
     "href": "/blog/moringa-capsules-vs-powder-which-is-better-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Chemist Warehouse Moringa: Powder, Capsules & Buying AU",
-    "description": "Chemist Warehouse moringa is usually capsules. Compare powder vs capsules by format and pack size, then buy farm-grown leaf powder online from Truganina.",
+    "title": "Moringa at Chemist Warehouse: Capsules or Powder? (2026)",
+    "description": "Chemist Warehouse mostly lists moringa capsules, not loose powder. Compare formats and pack sizes, then see where to buy leaf powder online from $11.",
     "category": "Moringa",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -513,14 +520,6 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
-    "slug": "handmade-soap-australia-melt-and-pour-guide",
-    "title": "Handmade Soap Australia: What Melt-and-Pour Really Means",
-    "description": "Handmade soap in Australia explained: what melt-and-pour means, how to read a soap label, gift ideas, and our 95g lavender soap bar with moringa leaf.",
-    "category": "Soap & skin",
-    "href": "/blog/handmade-soap-australia-melt-and-pour-guide",
-    "image": "/assets/images/product_webp/moringa-soap-texture.webp"
-  },
-  {
     "slug": "moringa-vs-ashwagandha-comparison-2026",
     "title": "Moringa vs Ashwagandha: Key Differences Explained",
     "description": "Compare moringa and ashwagandha, including what they are, common uses, evidence limits, side effects and when to speak with a health professional.",
@@ -563,7 +562,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
     "title": "Moringa with Vitamin C for Iron Absorption: AU Food Pairing Guide",
-    "description": "How to pair moringa leaf powder with vitamin-C foods for plant iron absorption in Australian kitchens. Food guidance \u2014 then Shop moringa powder.",
+    "description": "How to pair moringa leaf powder with vitamin-C foods for plant iron absorption in Australian kitchens. Food guidance — then Shop moringa powder.",
     "category": "Wellness",
     "href": "/blog/moringa-with-vitamin-c-iron-absorption-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -643,7 +642,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "title": "Ultra-Processed Food in Australia. What It Actually Is and How Much You&#39;re Eating",
-    "description": "What \u201cultra-processed food\u201d actually means in Australia, how much most people eat, and what the research shows, without the lecture.",
+    "description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows, without the lecture.",
     "category": "Wellness",
     "href": "/blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -686,6 +685,14 @@ window.NT_BLOG_ARTICLES = [
     "description": "The best foods for managing perimenopause symptoms, energy, mood, and hormone-friendly nutrition, explained simply. Read the practical NutriThrive guide.",
     "category": "Wellness",
     "href": "/blog/what-to-eat-perimenopause-diet-australia-2026",
+    "image": "/assets/images/og/moringa-article-1200.jpg"
+  },
+  {
+    "slug": "where-to-buy-moringa-leaves-australia",
+    "title": "Where to Buy Moringa Leaves in Australia (Fresh & Dried)",
+    "description": "Moringa leaves = drumstick leaves = malunggay. Where to find fresh, frozen and dried leaves in Australia, what Woolworths lists, and the easy powder swap.",
+    "category": "Moringa",
+    "href": "/blog/where-to-buy-moringa-leaves-australia",
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
