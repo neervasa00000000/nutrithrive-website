@@ -144,6 +144,7 @@ const MORINGA_CLUSTER_SEO_SLUGS = new Set([
   "moringa-patches-australia-review-do-they-work",
   "science-shade-drying-vs-sun-drying-moringa",
   "moringa-vs-spirulina-vs-matcha-comparison-australia",
+  "where-to-buy-moringa-leaves-australia",
 ]);
 
 const ARTICLE_SEO_OVERRIDES = {
@@ -277,8 +278,8 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
   },
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
-    title: "Chemist Warehouse Moringa: Powder, Capsules & Buying AU",
-    description: "Chemist Warehouse moringa is usually capsules. Compare powder vs capsules by format and pack size, then buy farm-grown leaf powder online from Truganina.",
+    title: "Moringa at Chemist Warehouse: Capsules or Powder? (2026)",
+    description: "Chemist Warehouse mostly lists moringa capsules, not loose powder. Compare formats and pack sizes, then see where to buy leaf powder online from $11.",
     h1: "Chemist Warehouse Moringa: Powder, Capsules and What to Buy",
     ogTitle: "Chemist Warehouse Moringa: Powder vs Capsules (AU)",
     ogDescription: "What Chemist Warehouse stocks for moringa, how capsules differ from leaf powder, and NutriThrive pouch sizes packed in Melbourne.",
@@ -286,19 +287,21 @@ const ARTICLE_SEO_OVERRIDES = {
     articleSection: "Moringa",
   },
   "moringa-brands-comparison-australia-2026": {
-    title: "Best Moringa Powder Australia? Facts-Only Brand Check",
-    description: "Compare AU moringa powders with a facts-only scorecard: ingredients, organic marks, CoA, pack location — plus iHerb and Amazon notes.",
+    title: "Best Moringa Powder in Australia? How to Compare Brands",
+    description: "No paid rankings. Compare moringa powder brands on ingredients, pack date, lab paperwork and price per 100g, plus what to check on iHerb and Amazon AU.",
     h1: "Best Moringa Powder Australia? (Facts-Only)",
     ogTitle: "Best Moringa Powder Australia: Facts-Only Brand Check",
     ogDescription: "Facts-only moringa brand scorecard for Australia, with iHerb and Amazon AU checks and NutriThrive pouch facts.",
+    ledeHtml: "Compare AU moringa powders with a facts-only scorecard: ingredients, organic marks, CoA, pack location — plus iHerb and Amazon notes.",
     articleSection: "Moringa",
   },
   "moringa-capsules-vs-powder-which-is-better-2026": {
-    title: "Moringa Powder vs Capsules Australia | We Sell Powder",
-    description: "Moringa capsules vs leaf powder in Australia: format table, price-per-100g method, and NutriThrive pouch sizes from Truganina.",
+    title: "Moringa Capsules vs Powder in Australia: Cost & Format",
+    description: "Capsules or loose leaf powder? A side-by-side format table, how to work out price per 100g, and when a 100g pouch of leaf powder ($11) suits you better.",
     h1: "Moringa Powder vs Capsules in Australia",
     ogTitle: "Moringa Powder vs Capsules Australia",
     ogDescription: "Capsules vs leaf powder as a shopping choice, with NutriThrive pouch sizes packed in Melbourne.",
+    ledeHtml: "Moringa capsules vs leaf powder in Australia: format table, price-per-100g method, and NutriThrive pouch sizes from Truganina.",
     articleSection: "Moringa",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
@@ -320,11 +323,21 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
   },
   "how-to-choose-moringa-powder-australia-2026": {
-    title: "How to Choose Moringa Powder in Australia",
-    description: "Woolworths, Coles and Aldi moringa powder checks, label tips, and farm-grown pouches from Truganina. Sizes 100g, 200g, 400g.",
+    title: "Moringa Powder at Woolworths, Coles or Aldi? (Oct 2026)",
+    description: "We checked Woolworths, Coles and Aldi for moringa powder. What's listed, what to read on the label, and where to order a 100g pouch online for $11.",
     h1: "How to Choose Moringa Powder in Australia (Woolworths, Coles & Online)",
     ogTitle: "Choose Moringa Powder in Australia: Woolworths, Coles, Online",
     ogDescription: "What Woolworths, Coles and Aldi show for moringa powder, plus online pouch sizes packed in Melbourne.",
+    ledeHtml: "Woolworths, Coles and Aldi moringa powder checks, label tips, and farm-grown pouches from Truganina. Sizes 100g, 200g, 400g.",
+    articleSection: "Moringa",
+  },
+  "where-to-buy-moringa-leaves-australia": {
+    title: "Where to Buy Moringa Leaves in Australia (Fresh & Dried)",
+    description: "Moringa leaves = drumstick leaves = malunggay. Where to find fresh, frozen and dried leaves in Australia, what Woolworths lists, and the easy powder swap.",
+    h1: "Where to Buy Moringa Leaves in Australia: Fresh, Frozen, Dried or Powder",
+    ogTitle: "Moringa (Drumstick) Leaves in Australia: Where to Buy",
+    ogDescription: "Fresh, frozen, dried or powder: where Australians find moringa leaves, a names table (malunggay, murungai, sahjan) and a powder swap guide.",
+    ledeHtml: "Drumstick leaves, malunggay, murungai, sahjan: same leaf, many names. Where each format turns up in Australia, and how to swap powder into the dishes you already cook.",
     articleSection: "Moringa",
   },
   "verify-moringa-quality-premium-buyers-checklist-2026": {
@@ -507,6 +520,11 @@ const CURATED_RELATED = {
     "science-shade-drying-vs-sun-drying-moringa",
     "moringa-capsules-vs-powder-which-is-better-2026",
   ],
+  "where-to-buy-moringa-leaves-australia": [
+    "how-to-choose-moringa-powder-australia-2026",
+    "grow-moringa-tree-australia",
+    "what-does-moringa-powder-taste-like-honest-guide-2026",
+  ],
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": [
     "verify-moringa-quality-premium-buyers-checklist-2026",
     "how-to-choose-moringa-powder-australia-2026",
@@ -661,6 +679,14 @@ const ARTICLE_CONVERSION_PATHS = {
     body: "Grown on our farm, shade-dried, NMI lab-tested in Australia and packed in Truganina. Start at $11 for 100g.",
     cta: "our moringa powder",
     links: [["Use the eight-point quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"]],
+    methodology: true,
+  },
+  "where-to-buy-moringa-leaves-australia": {
+    kicker: "Prefer powder to hunting for leaves?",
+    title: "Our moringa leaf powder",
+    body: "Grown on our farm, shade-dried, NMI lab-tested in Australia and packed in Truganina. Start at $11 for 100g.",
+    cta: "Shop moringa powder",
+    links: [["Ways to use moringa powder in everyday food", "how-to-add-moringa-to-diet"]],
     methodology: true,
   },
   "moringa-smoothie-recipes-australia-2026": {
@@ -1698,9 +1724,9 @@ function shopPage() {
 
 const PDP = {
   "moringa-powder": {
-    title: "Buy Moringa Powder Australia | 400g $35 | Free Shipping Over $79 | NutriThrive",
+    title: "Buy Moringa Powder Australia | Leaf Powder from $11",
     description:
-      "Buy moringa powder Australia. 400g best value at $35. NMI lab tested. Free AU shipping from $79.",
+      "Farm-grown moringa leaf powder, shade-dried and NMI lab-tested in Australia. 100g $11, 200g $21.50, 400g $35. Free AU shipping at $79.",
     forceSeo: true,
     current: "Moringa",
     h1: "Moringa Powder Australia",
