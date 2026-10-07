@@ -7,11 +7,6 @@
 
 
 [[headers]]
-  for = "/products/moringa-powder/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-
-[[headers]]
   for = "/shared/components/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
