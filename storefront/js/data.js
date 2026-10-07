@@ -147,7 +147,8 @@ export const PRODUCTS = [
     sku: "NT-DIWALI-BOX",
     name: "Diwali Gift Box",
     variant: "Tea + curry + soap",
-    benefit: "Three products packed for shipping — not a decorative box. No moringa.",
+    benefit:
+      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift.",
     price: 20,
     was: 21.5,
     weight: 225,
@@ -156,6 +157,8 @@ export const PRODUCTS = [
     unit: "",
     lab: false,
     costCopy: "$20 for tea, curry leaves, and soap products packed together in Truganina.",
+    detail:
+      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift.",
   },
   {
     id: "gift-pack",

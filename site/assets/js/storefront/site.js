@@ -646,7 +646,71 @@ function applyPdpVariant(id, writeUrl) {
       })
     );
   }
+  syncStickyAtc(p);
   if (writeUrl) trackEcommerce("view_item", [p]);
+}
+
+function syncStickyAtc(product) {
+  const bar = document.querySelector("[data-pdp-sticky-atc]");
+  if (!bar) return;
+  const nameEl = bar.querySelector("[data-pdp-sticky-name]");
+  const priceEl = bar.querySelector("[data-pdp-sticky-price]");
+  if (product) {
+    if (nameEl) nameEl.textContent = product.name || "";
+    if (priceEl) priceEl.textContent = money(product.price);
+    return;
+  }
+  const addBtn = document.querySelector(".pdp [data-add]");
+  if (!addBtn) return;
+  try {
+    const current = JSON.parse(addBtn.getAttribute("data-add") || "null");
+    if (current) {
+      if (nameEl) nameEl.textContent = current.name || "";
+      if (priceEl) priceEl.textContent = money(current.price);
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
+function bindStickyAtc() {
+  const bar = document.querySelector("[data-pdp-sticky-atc]");
+  const mainBtn = document.querySelector(".pdp [data-add]");
+  if (!bar || !mainBtn) return;
+
+  const stickyBtn = bar.querySelector("[data-pdp-sticky-add]");
+  stickyBtn?.addEventListener("click", () => {
+    mainBtn.click();
+  });
+
+  const mq = window.matchMedia("(max-width: 768px)");
+  const setVisible = (visible) => {
+    const show = visible && mq.matches;
+    bar.classList.toggle("is-visible", show);
+    bar.hidden = !show;
+    document.body.classList.toggle("has-pdp-sticky-atc", show);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+      setVisible(!(entry && entry.isIntersecting));
+    },
+    { threshold: 0.15 }
+  );
+  observer.observe(mainBtn);
+
+  const onMq = () => {
+    if (!mq.matches) setVisible(false);
+    else {
+      const rect = mainBtn.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      setVisible(!inView);
+    }
+  };
+  mq.addEventListener?.("change", onMq);
+  syncStickyAtc();
+  onMq();
 }
 
 function bindPdpVariant() {
@@ -835,6 +899,7 @@ function bindArticleReadingDepth() {
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     bindPdpVariant();
+    bindStickyAtc();
     bindHeader();
     bindGrowthFeatures();
     bindJournalSearch();
@@ -843,6 +908,7 @@ if (document.readyState === "loading") {
   });
 } else {
   bindPdpVariant();
+  bindStickyAtc();
   bindHeader();
   bindGrowthFeatures();
   bindJournalSearch();

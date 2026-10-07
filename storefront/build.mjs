@@ -751,7 +751,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "diwali-gift-guide-curry-leaves-tea-australia": {
     kicker: "Ready Diwali hamper",
     title: "Diwali gift box — tea, curry leaves & soap",
-    body: "Three products for $20 (not a decorative box): Darjeeling, dried curry patta, and handmade lavender soap, packed for shipping in Melbourne.",
+    body: "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift for $20.",
     cta: "Shop Diwali gift box",
     links: [
       ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
@@ -830,9 +830,9 @@ const PRODUCT_GUIDES = {
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
   ],
   "curry-leaves": [
-    ["buy dried curry leaves online", "dried-curry-leaves-australia-guide"],
-    ["buy our dried curry leaves", "dried-curry-leaves-quality-guide-how-to-use"],
-    ["buy curry leaves online", "curry-leaves-substitute-what-to-use-2026"],
+    ["Where to buy curry leaves in Australia", "dried-curry-leaves-australia-guide"],
+    ["How to judge dried curry leaf quality", "dried-curry-leaves-quality-guide-how-to-use"],
+    ["Curry leaf substitutes in Australia", "curry-leaves-substitute-what-to-use-2026"],
     ["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"],
     ["30-minute curry leaf dal recipe", "curry-leaves-dahl-recipe-30-minutes-australia-2026"],
   ],
@@ -2074,8 +2074,13 @@ const PDP = {
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "Handmade lavender soap included in the Diwali gift box"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Brewed Darjeeling from the Diwali gift box"],
     ],
-    underCartNote:
-      "Melbourne metro: order by Mon 2 Nov (before 2pm) for Diwali.",
+    seasonalNotes: {
+      until: "2026-11-08",
+      lines: [
+        "Diwali is Sunday 8 November. For delivery before Diwali, order by 2pm Wednesday 28 October (Melbourne metro) or 2pm Monday 26 October (other states).",
+        "Rural areas can take up to 10 business days — order as early as you can.",
+      ],
+    },
     whatHeading: "What's in the box",
     ingredients:
       "Includes Darjeeling black tea, dried curry leaves (curry patta / kadi patta), and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
@@ -2127,6 +2132,13 @@ const PDP = {
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "30g dried curry leaves included in gift pack"],
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "95g moringa soap included in gift pack"],
     ],
+    seasonalNotes: {
+      until: "2026-11-08",
+      lines: [
+        "Diwali is Sunday 8 November. For delivery before Diwali, order by 2pm Wednesday 28 October (Melbourne metro) or 2pm Monday 26 October (other states).",
+        "Rural areas can take up to 10 business days — order as early as you can.",
+      ],
+    },
     ingredients:
       "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
@@ -2148,7 +2160,7 @@ const PDP = {
       ],
       [
         "Diwali order-by?",
-        "VIC Mon 2 Nov · NSW/ACT/QLD/SA/TAS Fri 30 Oct · WA/NT Wed 28 Oct · regional Mon 26 Oct · no dispatch Tue 3 Nov.",
+        "For delivery before Diwali (Sun 8 Nov): order by 2pm Wed 28 Oct (Melbourne metro) or 2pm Mon 26 Oct (other states). Rural areas can take up to 10 business days.",
       ],
       ["Gift message?", "Add a note at checkout or email us after you order."],
       ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
@@ -2160,6 +2172,14 @@ function pdpPage(slug, d) {
   const p = d.product;
   const purchaseNote = "Taxes included. Shipping calculated at checkout.";
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
+  const buildDate = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
+  const seasonalLines =
+    d.seasonalNotes?.until && buildDate <= d.seasonalNotes.until
+      ? d.seasonalNotes.lines || []
+      : [];
+  const seasonalHtml = seasonalLines
+    .map((line) => `<p class="purchase-note" data-seasonal-note>${esc(line)}</p>`)
+    .join("");
   const buyProduct =
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
   const gallery = d.gallery?.length ? d.gallery : [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`]];
@@ -2333,11 +2353,19 @@ function pdpPage(slug, d) {
             <p class="cost-note" data-pdp-cost>${esc(costNote(buyProduct))}</p>
             <p class="purchase-note">${esc(purchaseNote)}</p>
             ${d.underCartNote ? `<p class="purchase-note">${esc(d.underCartNote)}</p>` : ""}
+            ${seasonalHtml}
           </div>
           ${slug === "moringa-powder" ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
           <ul class="pdp-proof">${proofs}</ul>
         </div>
       </section>
+      <div class="pdp-sticky-atc" data-pdp-sticky-atc hidden role="region" aria-label="Quick add to cart">
+        <div class="pdp-sticky-atc__info">
+          <span class="pdp-sticky-atc__name" data-pdp-sticky-name>${esc(buyProduct.name)}</span>
+          <strong class="pdp-sticky-atc__price" data-pdp-sticky-price>${money(buyProduct.price)}</strong>
+        </div>
+        <button class="btn btn-primary" type="button" data-pdp-sticky-add>Add to cart</button>
+      </div>
       <section class="prose-block">
         <div class="wrap pdp-content">
           ${valueCompare}
