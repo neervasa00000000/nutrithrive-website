@@ -277,6 +277,10 @@ export async function handler(event) {
             };
         }
 
+        // Do not set payment_source here. The JS SDK Buttons (PayPal + Debit/Credit Card)
+        // choose the funding source after createOrder; locking to payment_source.paypal
+        // breaks card checkout. application_context still applies shipping / Pay Now UX
+        // for every funding source the buyer picks.
         const orderRes = await fetch(`${base}/v2/checkout/orders`, {
             method: "POST",
             headers: {
@@ -287,17 +291,14 @@ export async function handler(event) {
             body: JSON.stringify({
                 intent: "CAPTURE",
                 purchase_units: [purchaseUnit],
-                payment_source: {
-                    paypal: {
-                        experience_context: {
-                            payment_method_preference: "IMMEDIATE_PAYMENT_REQUIRED",
-                            landing_page: "LOGIN",
-                            shipping_preference: "GET_FROM_FILE",
-                            user_action: "PAY_NOW",
-                            return_url: CHECKOUT_RETURN_URL,
-                            cancel_url: CHECKOUT_CANCEL_URL,
-                        },
-                    },
+                application_context: {
+                    brand_name: "NutriThrive",
+                    locale: "en-AU",
+                    landing_page: "NO_PREFERENCE",
+                    shipping_preference: "GET_FROM_FILE",
+                    user_action: "PAY_NOW",
+                    return_url: CHECKOUT_RETURN_URL,
+                    cancel_url: CHECKOUT_CANCEL_URL,
                 },
             }),
         });
