@@ -81,6 +81,7 @@ function paypalSdkParams() {
     currency: "AUD",
     locale: "en_AU",
     components: "buttons,funding-eligibility",
+    "enable-funding": "paylater,card",
   };
 }
 
@@ -272,7 +273,10 @@ function initPayPal() {
   let captureToken = null;
   const config = {
     createOrder: function () {
-      const orderItems = cart.items
+      // Re-read cart at click time so qty/country changes are not stale.
+      const liveCart = getCart();
+      const liveCountry = getSelectedCountryCode() || countryCode;
+      const orderItems = (liveCart.items || [])
         .map(function (item) {
           const id = String(item.id || "").trim();
           const quantity = parseInt(item.quantity || 1, 10);
@@ -283,12 +287,12 @@ function initPayPal() {
       if (!orderItems.length) {
         return Promise.reject(new Error("Your cart is empty."));
       }
-      trackPaymentInfo(cart.items);
+      trackPaymentInfo(liveCart.items);
       return fetch("/.netlify/functions/paypal-create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          countryCode: countryCode,
+          countryCode: liveCountry,
           items: orderItems,
         }),
       })
@@ -300,6 +304,7 @@ function initPayPal() {
         });
     },
     onApprove: function (data) {
+      const liveCart = getCart();
       return fetch("/.netlify/functions/paypal-capture-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -308,7 +313,7 @@ function initPayPal() {
         .then((res) => res.json().then((payload) => ({ ok: res.ok, payload })))
         .then((result) => {
           if (!result.ok) throw new Error(result.payload.error || "Payment failed");
-          const items = cart.items || [];
+          const items = liveCart.items || [];
           const qty =
             items.reduce(function (sum, item) {
               return sum + (parseInt(item.quantity || 1, 10) || 1);
