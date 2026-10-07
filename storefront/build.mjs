@@ -252,10 +252,10 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "why-premium-moringa-costs-11-not-25-value-vs-markup-2026": {
     title: "Moringa Powder Price Australia (Dated $/100g)",
-    description: "NutriThrive moringa powder prices as of 6 Oct 2026: 100g $11, 200g $21.50, 400g $35, with price per 100g and shipping from $79.",
+    description: "NutriThrive moringa powder prices as of 6 Oct 2026: 100g $11, 200g $21.50, 400g $35, with price per 100g. Free AU shipping at $79.",
     h1: "Moringa Powder Price in Australia (Dated List Prices)",
     ogTitle: "Moringa Powder Price Australia: Dated List Prices",
-    ogDescription: "Plain moringa powder prices per pouch and per 100g, updated 6 Oct 2026, packed in Truganina.",
+    ogDescription: "NutriThrive moringa powder prices as of 6 Oct 2026: 100g $11, 200g $21.50, 400g $35, with price per 100g. Free AU shipping at $79.",
     articleSection: "Moringa",
   },
   "high-protein-moringa-recipes-australia-2026": {
