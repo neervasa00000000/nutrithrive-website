@@ -24,8 +24,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261007-1";
-const CSS_ASSET_VERSION = "20261006-1";
+const ASSET_VERSION = "20261008-2";
+const CSS_ASSET_VERSION = "20261008-2";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
@@ -2982,7 +2982,7 @@ function paymentPage() {
     : "";
   return layout({
     title: "Payment | NutriThrive Australia",
-    description: "Review your NutriThrive order, confirm shipping country, and complete checkout securely with PayPal or card.",
+    description: "Review your NutriThrive order, confirm shipping country, and complete checkout securely with Apple Pay, PayPal or card.",
     canonicalPath: "/payment",
     current: "",
     preserveTitle: true,
@@ -2997,12 +2997,12 @@ function paymentPage() {
         <div>
           <div class="empty-state" id="pay-empty" hidden>
             <h2>Your cart is empty</h2>
-            <p>Add something from the shop, then return here to pay with PayPal.</p>
+            <p>Add something from the shop, then return here to pay with Apple Pay or PayPal.</p>
             <a class="btn btn-primary" href="${r.shop}">Continue shopping</a>
           </div>
           <div id="pay-form" class="pay-form">
             <p class="pay-copy">All transactions are secure and encrypted.</p>
-            <p class="pay-copy">At checkout, PayPal will show the exact <strong>name, email and full shipping address</strong> stored in your wallet. Review those details carefully. We ship to the address you approve there.</p>
+            <p class="pay-copy">At checkout, Apple Pay or PayPal will show the exact <strong>name, email and full shipping address</strong> stored in your wallet. Review those details carefully. We ship to the address you approve there.</p>
             <div class="field">
               <label for="shipping-country">Shipping country</label>
               <select id="shipping-country">
@@ -3011,6 +3011,7 @@ function paymentPage() {
             </div>
             <div class="pay-box">
               <h2>Choose your payment method</h2>
+              <div id="applepay-container" hidden></div>
               <div id="paypal-button-container">
                 <p class="payment-placeholder">Select a shipping country to continue.</p>
               </div>

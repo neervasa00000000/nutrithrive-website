@@ -24,6 +24,37 @@ function moneyField(currency, amount) {
     };
 }
 
+function cleanAddressPart(value, maxLen) {
+    return String(value ?? "")
+        .replace(/[\0\r\n]/g, " ")
+        .trim()
+        .slice(0, maxLen);
+}
+
+/** Optional Apple Pay / wallet shipping for fulfilment emails. Never trusts amounts. */
+function normalizeShipping(raw) {
+    if (!raw || typeof raw !== "object") return null;
+    const fullName = cleanAddressPart(raw.fullName || raw.name, 120);
+    const line1 = cleanAddressPart(raw.addressLine1 || raw.line1, 300);
+    const line2 = cleanAddressPart(raw.addressLine2 || raw.line2, 300);
+    const city = cleanAddressPart(raw.adminArea2 || raw.city, 120);
+    const state = cleanAddressPart(raw.adminArea1 || raw.state, 120);
+    const postal = cleanAddressPart(raw.postalCode || raw.postal_code, 32);
+    const country = cleanAddressPart(raw.countryCode || raw.country_code, 2).toUpperCase();
+    if (!fullName || !line1 || !city || !postal || !/^[A-Z]{2}$/.test(country)) return null;
+    return {
+        name: { full_name: fullName },
+        address: {
+            address_line_1: line1,
+            ...(line2 ? { address_line_2: line2 } : {}),
+            admin_area_2: city,
+            ...(state ? { admin_area_1: state } : {}),
+            postal_code: postal,
+            country_code: country,
+        },
+    };
+}
+
 export async function handler(event) {
     const requestOrigin = String(getHeader(event, "origin") || "");
     const allowedOrigins = new Set([
@@ -74,7 +105,8 @@ export async function handler(event) {
         }
 
         const payload = JSON.parse(event.body || "{}");
-        const { countryCode, items } = payload;
+        const { countryCode, items, shipping: shippingInput } = payload;
+        const shippingDetails = normalizeShipping(shippingInput);
         const base = (process.env.PAYPAL_BASE || "https://api-m.paypal.com").replace(/\/$/, "");
         const client = process.env.PAYPAL_CLIENT_ID;
         const secret = process.env.PAYPAL_CLIENT_SECRET;
@@ -238,6 +270,7 @@ export async function handler(event) {
                     },
                 },
                 items: paypalItems,
+                ...(shippingDetails ? { shipping: shippingDetails } : {}),
             };
         } else {
             return {
@@ -249,8 +282,9 @@ export async function handler(event) {
 
         // Do not set payment_source here. The JS SDK Buttons (PayPal + Debit/Credit Card)
         // choose the funding source after createOrder; locking to payment_source.paypal
-        // breaks card checkout. application_context still applies shipping / Pay Now UX
-        // for every funding source the buyer picks.
+        // breaks card checkout. Apple Pay attaches payment_source via confirmOrder.
+        // When Apple Pay (or another wallet) already supplied a shipping address, use
+        // SET_PROVIDED_ADDRESS so fulfilment emails get the sheet address.
         const orderRes = await fetch(`${base}/v2/checkout/orders`, {
             method: "POST",
             headers: {
@@ -265,7 +299,7 @@ export async function handler(event) {
                     brand_name: "NutriThrive",
                     locale: "en-AU",
                     landing_page: "NO_PREFERENCE",
-                    shipping_preference: "GET_FROM_FILE",
+                    shipping_preference: shippingDetails ? "SET_PROVIDED_ADDRESS" : "GET_FROM_FILE",
                     user_action: "PAY_NOW",
                     return_url: CHECKOUT_RETURN_URL,
                     cancel_url: CHECKOUT_CANCEL_URL,

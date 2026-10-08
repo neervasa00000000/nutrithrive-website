@@ -2489,6 +2489,26 @@ body.journal-searching .section-head > a {
   margin: 0 0 var(--space-4);
 }
 
+#applepay-container {
+  margin-bottom: var(--space-3);
+}
+
+#applepay-container[hidden] {
+  display: none;
+}
+
+#applepay-container apple-pay-button {
+  --apple-pay-button-width: 100%;
+  --apple-pay-button-height: 44px;
+  --apple-pay-button-border-radius: 4px;
+  --apple-pay-button-padding: 0;
+  --apple-pay-button-box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 44px;
+  cursor: pointer;
+}
+
 #paypal-button-container {
   min-height: 48px;
 }
