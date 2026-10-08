@@ -378,6 +378,36 @@ try {
     assert.equal(body.purchase_units[0].items[0].name, '100g Moringa');
     assert.equal(body.purchase_units[0].shipping.address.postal_code, '3029');
     assert.equal(body.payer.email_address, 'buyer@example.com');
+    assert.equal(body.notification.customerSent, false);
+    assert.equal(body.notification.ownerSent, false);
+  } finally {
+    console.error = originalError;
+    console.warn = originalWarn;
+  }
+  globalThis.fetch = async (url) => {
+    if (String(url).endsWith('/v1/oauth2/token')) {
+      return { ok: true, json: async () => ({ access_token: 'test-token' }) };
+    }
+    if (String(url).endsWith(`/v2/checkout/orders/${orderID}/capture`)) {
+      return { ok: true, json: async () => ({
+        id: orderID,
+        status: 'COMPLETED',
+        purchase_units: [{ payments: { captures: [{ amount: { currency_code: 'AUD', value: '20.69' } }] } }],
+      }) };
+    }
+    if (String(url).endsWith(`/v2/checkout/orders/${orderID}`)) throw new Error('order lookup unavailable');
+    throw new Error(`unexpected request: ${url}`);
+  };
+  console.error = () => {};
+  console.warn = () => {};
+  try {
+    const captureWithFailedLookup = await captureOrder({
+      httpMethod: 'POST',
+      headers: { origin: 'https://nutrithrive.com.au', 'x-nf-client-connection-ip': 'capture-lookup-failed' },
+      body: JSON.stringify({ orderID, captureToken }),
+    });
+    assert.equal(captureWithFailedLookup.statusCode, 200, 'successful payment must not become a retryable error');
+    assert.equal(JSON.parse(captureWithFailedLookup.body).notification.customerSent, false);
   } finally {
     console.error = originalError;
     console.warn = originalWarn;
@@ -428,6 +458,8 @@ try {
       });
       assert.equal(response.statusCode, 200, response.body);
       const details = parseCaptureForEmail(JSON.parse(response.body), appleOrderId);
+      assert.equal(JSON.parse(response.body).notification.customerSent, true);
+      assert.equal(JSON.parse(response.body).notification.ownerSent, true);
       assert.equal(details.customerEmail, 'alex@example.com');
       assert.equal(details.customerName, 'Alex Buyer');
       assert.match(details.shippingAddress, /1 Ridley Place/);

@@ -21,6 +21,16 @@
   const hasQty = Number.isFinite(qty) && qty > 0;
   const hasValue = Number.isFinite(value) && value > 0;
   const hasFacts = Boolean(orderId || itemName || hasQty || hasValue);
+  const notice = params.get("notice");
+  const noticeMessage = {
+    both: "We could not send the confirmation or notify our team automatically.",
+    customer: "We could not send your confirmation email automatically.",
+    owner: "We could not notify our team automatically.",
+  }[notice];
+  if (noticeMessage && orderId) {
+    text("order-notification-message", noticeMessage);
+    show("order-notification-warning", true);
+  }
 
   if (orderId) text("order-id", orderId);
   show("order-id-row", Boolean(orderId));
