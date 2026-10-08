@@ -424,7 +424,7 @@ try {
           id: appleOrderId,
           status: 'COMPLETED',
           purchase_units: [{
-            payments: { captures: [{ amount: { currency_code: 'AUD', value: '20.69' } }] },
+            payments: { captures: [{ id: 'TESTCAPTURE123', amount: { currency_code: 'AUD', value: '20.69' } }] },
           }],
         }) };
       }
@@ -450,8 +450,13 @@ try {
     };
     const savedLog = console.log;
     const savedError = console.error;
+    const savedInfo = console.info;
+    let walletDiagnostic;
     console.log = () => {};
     console.error = () => {};
+    console.info = (message, fields) => {
+      if (String(message).includes('Apple Pay order fields returned by PayPal')) walletDiagnostic = fields;
+    };
     try {
       const response = await captureOrder({
         httpMethod: 'POST',
@@ -463,6 +468,9 @@ try {
       assert.equal(JSON.parse(response.body).notification.customerSent, false, 'Web3Forms cannot send to arbitrary customer addresses');
       assert.equal(JSON.parse(response.body).notification.ownerSent, true);
       assert.equal(details.customerEmail, 'alex@example.com');
+      assert.equal(details.transactionId, 'TESTCAPTURE123');
+      assert.equal(walletDiagnostic.shippingMatchesWallet, false, 'diagnostic must expose PayPal address mismatch without logging the address');
+      assert.equal(walletDiagnostic.buyerEmailMatchesWallet, false);
       assert.equal(details.customerName, 'Alex Buyer');
       assert.match(details.shippingAddress, /1 Ridley Place/);
       assert.doesNotMatch(details.shippingAddress, /Wrong Street/);
@@ -473,9 +481,12 @@ try {
       assert.match(ownerEmail.message, /alex@example\.com/);
       assert.match(ownerEmail.message, /1 Ridley Place/);
       assert.match(ownerEmail.message, /100g Moringa/);
+      assert.match(ownerEmail.message, /PayPal transaction ID: TESTCAPTURE123/);
+      assert.match(ownerEmail.message, /activity\/payment\/TESTCAPTURE123/);
     } finally {
       console.log = savedLog;
       console.error = savedError;
+      console.info = savedInfo;
       delete process.env.WEB3FORMS_ACCESS_KEY;
     }
   }

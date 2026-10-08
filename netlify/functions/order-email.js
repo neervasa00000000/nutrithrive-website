@@ -7,7 +7,7 @@ const OWNER_EMAIL = () => process.env.FORM_EMAIL_TO || "nutrithrive0@gmail.com";
 const SUPPORT_PHONE = "0438 201 419";
 const SUPPORT_EMAIL = "nutrithrive0@gmail.com";
 const DISPATCH_NOTE =
-    "Orders placed before 2:00 PM AEST (Mon–Sun) are usually dispatched the same business day from our Truganina, Melbourne warehouse. Delivery times depend on your location and Australia Post.";
+    "Orders placed before 2:00 PM Monday to Friday are eligible for same-day dispatch from our Truganina, Melbourne warehouse. Delivery times depend on your location and Australia Post.";
 
 function money(value, currency) {
     const n = Number.parseFloat(value);
@@ -130,6 +130,7 @@ export function parseCaptureForEmail(capture, orderId) {
 
     return {
         orderId: cleanLine(orderId || capture?.id, 64),
+        transactionId: cleanLine(paymentCapture?.id, 64),
         invoiceId: cleanLine(unit.invoice_id, 64),
         currency,
         totalValue,
@@ -219,6 +220,7 @@ function buildOwnerEmailBody(details) {
         "",
         `Order reference: ${ref}`,
         `PayPal order ID: ${details.orderId}`,
+        details.transactionId ? `PayPal transaction ID: ${details.transactionId}` : "",
         `Customer: ${details.customerName}`,
         `Customer email: ${details.customerEmail || "(not provided — check Apple Pay / PayPal dashboard)"}`,
         details.phone ? `Customer phone: ${details.phone}` : "",
@@ -236,7 +238,9 @@ function buildOwnerEmailBody(details) {
             ? `Ship to:\n${details.shippingAddress}`
             : "Shipping address: MISSING — check PayPal activity / contact customer before dispatch",
         "",
-        `PayPal: https://www.paypal.com/activity/payment/${encodeURIComponent(details.orderId)}`,
+        details.transactionId
+            ? `PayPal: https://www.paypal.com/activity/payment/${encodeURIComponent(details.transactionId)}`
+            : "",
     ]
         .filter((line) => line !== "")
         .join("\n");

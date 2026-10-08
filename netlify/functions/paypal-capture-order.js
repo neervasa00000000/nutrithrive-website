@@ -159,6 +159,19 @@ export async function handler(event) {
             // Apple Pay approved this address and the server used it for order creation.
             // Keep it for fulfilment even if PayPal's capture omits or replaces contact fields.
             if (proof.walletOrder) {
+                const walletAddress = proof.walletOrder.purchase_units[0].shipping.address;
+                const paypalAddress = capture?.purchase_units?.[0]?.shipping?.address;
+                const paypalDetails = parseCaptureForEmail(capture, orderID);
+                console.info("[paypal-capture-order] Apple Pay order fields returned by PayPal", {
+                    orderSuffix: orderID.slice(-6),
+                    hasShipping: Boolean(paypalAddress),
+                    shippingMatchesWallet: Boolean(paypalAddress) &&
+                        ["address_line_1", "admin_area_2", "postal_code", "country_code"]
+                            .every((field) => paypalAddress[field] === walletAddress[field]),
+                    hasItems: paypalDetails.hasItems,
+                    hasBuyerEmail: Boolean(paypalDetails.customerEmail),
+                    buyerEmailMatchesWallet: paypalDetails.customerEmail === proof.walletOrder.payer.email_address,
+                });
                 capture = mergeOrderDetails(capture, proof.walletOrder);
                 capture.payer = {
                     ...(capture.payer || {}),
