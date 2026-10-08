@@ -3,10 +3,12 @@
 # Or locally: node scripts/apply-blog-launch-schedule.mjs
 name: Blog launch schedule
 
+# on:
+#   schedule:
+#     # 00:05 Australia/Melbourne (14:05 UTC during AEST; close enough year-round)
+#     - cron: '5 14 * * *'
+#   workflow_dispatch:
 on:
-  schedule:
-    # 00:05 Australia/Melbourne (14:05 UTC during AEST; close enough year-round)
-    - cron: '5 14 * * *'
   workflow_dispatch:
 
 permissions:
