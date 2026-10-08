@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Payment | NutriThrive Australia</title>
-  <meta name="description" content="Review your NutriThrive order and pay securely with PayPal or card. Apple Pay is available in Safari on eligible Apple devices.">
+  <meta name="description" content="Review your NutriThrive order, confirm shipping country, and complete checkout securely with Apple Pay, PayPal or card. Read the practical NutriThrive guide.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://nutrithrive.com.au/payment">
   <meta name="geo.region" content="AU-VIC">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nutrithrive.com.au/payment">
   <meta property="og:title" content="Payment | NutriThrive Australia">
-  <meta property="og:description" content="Review your NutriThrive order and pay securely with PayPal or card. Apple Pay is available in Safari on eligible Apple devices.">
+  <meta property="og:description" content="Review your NutriThrive order, confirm shipping country, and complete checkout securely with Apple Pay, PayPal or card. Read the practical NutriThrive guide.">
   <meta property="og:image" content="https://nutrithrive.com.au/assets/images/og/nutrithrive-share-1200x630.jpg">
   <meta property="og:image:secure_url" content="https://nutrithrive.com.au/assets/images/og/nutrithrive-share-1200x630.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="NutriThrive Australia">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Payment | NutriThrive Australia">
-  <meta name="twitter:description" content="Review your NutriThrive order and pay securely with PayPal or card. Apple Pay is available in Safari on eligible Apple devices.">
+  <meta name="twitter:description" content="Review your NutriThrive order, confirm shipping country, and complete checkout securely with Apple Pay, PayPal or card. Read the practical NutriThrive guide.">
   <meta name="twitter:image" content="https://nutrithrive.com.au/assets/images/og/nutrithrive-share-1200x630.jpg">
   <meta name="theme-color" content="#263F2C">
   <link rel="icon" href="/assets/images/logo/favicon.ico?v=20261008-6" sizes="any">
@@ -102,12 +102,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <div>
           <div class="empty-state" id="pay-empty" hidden>
             <h2>Your cart is empty</h2>
-            <p>Add something from the shop, then return here to pay with PayPal or card. Apple Pay is available in Safari on eligible Apple devices.</p>
+            <p>Add something from the shop, then return here to pay with Apple Pay or PayPal.</p>
             <a class="btn btn-primary" href="/products/">Continue shopping</a>
           </div>
           <div id="pay-form" class="pay-form">
             <p class="pay-copy">All transactions are secure and encrypted.</p>
-            <p class="pay-copy">Review your delivery details before paying. With Apple Pay, check the name, email and address shown in Wallet; we ship to the address you approve there.</p>
+            <p class="pay-copy">At checkout, Apple Pay or PayPal will show the exact <strong>name, email and full shipping address</strong> stored in your wallet. Review those details carefully. We ship to the address you approve there.</p>
             <div class="field">
               <label for="shipping-country">Shipping country</label>
               <select id="shipping-country">
@@ -207,7 +207,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <script src="/assets/js/storefront/runtime-cart.min.js?v=20261008-6" defer></script>
 <script src="/assets/js/storefront/search-index.min.js?v=20261008-6" defer></script>
 <script src="/assets/js/storefront/site.min.js?v=20261008-6" defer></script>
-<script src="/assets/js/storefront/runtime-paypal-client-config.min.js?v=20261008-6" defer></script>
+<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js" crossorigin="anonymous" data-nt-apple-pay-sdk="1" defer></script><script src="/assets/js/storefront/runtime-paypal-client-config.min.js?v=20261008-6" defer></script>
 <script src="/assets/js/storefront/runtime-paypal-sdk-loader.min.js?v=20261008-6" defer></script>
 <script src="/assets/js/storefront/runtime-shipping-rates.min.js?v=20261008-6" defer></script><script src="/assets/js/storefront/payment-page.min.js?v=20261008-6" defer></script>
 </body>
