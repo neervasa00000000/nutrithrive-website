@@ -1,6 +1,7 @@
-import { createHmac, randomBytes } from "crypto";
+import { randomBytes } from "crypto";
 import ShippingRates from "../../scripts/global/shipping-rates-node.cjs";
 import { getHeader, getClientIp, isRateLimited } from "./checkout-request.js";
+import { makeCaptureToken } from "./checkout-proof.js";
 
 const CHECKOUT_RETURN_URL = "https://nutrithrive.com.au/payment";
 const CHECKOUT_CANCEL_URL = "https://nutrithrive.com.au/payment";
@@ -128,11 +129,9 @@ export async function handler(event) {
         const payload = JSON.parse(event.body || "{}");
         const { countryCode, items, shipping: shippingInput, email: emailInput, requireShipping } = payload;
         const shippingDetails = normalizeShipping(shippingInput);
-        const payerEmail =
-            normalizeEmail(emailInput) ||
-            normalizeEmail(shippingInput?.email) ||
-            normalizeEmail(shippingInput?.emailAddress) ||
-            "";
+        const payerEmail = requireShipping
+            ? shippingDetails?.email_address || ""
+            : normalizeEmail(emailInput) || shippingDetails?.email_address || "";
 
         // Apple Pay must supply a usable delivery address before we create the order.
         if (requireShipping && !shippingDetails) {
@@ -142,6 +141,13 @@ export async function handler(event) {
                 body: JSON.stringify({
                     error: "A complete delivery name and address are required before paying with Apple Pay.",
                 }),
+            };
+        }
+        if (requireShipping && !payerEmail) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: "A valid email address is required for Apple Pay orders." }),
             };
         }
         const base = (process.env.PAYPAL_BASE || "https://api-m.paypal.com").replace(/\/$/, "");
@@ -168,6 +174,13 @@ export async function handler(event) {
         }
 
         const cc = countryCode.trim().toUpperCase();
+        if (shippingDetails && shippingDetails.address.country_code !== cc) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: "Delivery country does not match the shipping address." }),
+            };
+        }
 
         if (!Array.isArray(items) || items.length < 1) {
             return {
@@ -331,7 +344,6 @@ export async function handler(event) {
             },
             body: JSON.stringify({
                 intent: "CAPTURE",
-                ...(payerEmail ? { payer: { email_address: payerEmail } } : {}),
                 purchase_units: [purchaseUnit],
                 application_context: {
                     brand_name: "NutriThrive",
@@ -348,7 +360,13 @@ export async function handler(event) {
         const order = await orderRes.json();
         if (!orderRes.ok) throw new Error(JSON.stringify(order));
 
-        const captureToken = createHmac("sha256", secret).update(String(order.id)).digest("hex");
+        const walletOrder = requireShipping
+            ? {
+                  payer: { email_address: payerEmail },
+                  purchase_units: [purchaseUnit],
+              }
+            : null;
+        const captureToken = makeCaptureToken(String(order.id), secret, walletOrder);
 
         return {
             statusCode: 200,

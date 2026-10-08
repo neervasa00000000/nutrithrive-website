@@ -344,29 +344,32 @@ export async function sendOrderConfirmationEmails(capture, orderId) {
     const customerSubject = `Order confirmed — NutriThrive (${details.invoiceId || details.orderId})`;
     const ownerSubject = `New order — ${details.invoiceId || details.orderId}`;
 
+    const deliveries = [];
     if (details.customerEmail) {
-        try {
-            result.customerVia = await deliverEmail({
-                to: details.customerEmail,
-                subject: customerSubject,
-                text: buildCustomerEmailBody(details),
-                replyTo: SUPPORT_EMAIL,
-            });
-            result.customerSent = true;
-            console.log("[order-email] customer confirmation sent", {
-                orderId: details.orderId,
-                to: details.customerEmail,
-                via: result.customerVia,
-            });
-        } catch (err) {
-            const message = err?.message || String(err);
-            result.errors.push({ target: "customer", message });
-            console.error("[order-email] customer confirmation failed", {
-                orderId: details.orderId,
-                to: details.customerEmail,
-                error: message,
-            });
-        }
+        deliveries.push((async () => {
+            try {
+                result.customerVia = await deliverEmail({
+                    to: details.customerEmail,
+                    subject: customerSubject,
+                    text: buildCustomerEmailBody(details),
+                    replyTo: SUPPORT_EMAIL,
+                });
+                result.customerSent = true;
+                console.log("[order-email] customer confirmation sent", {
+                    orderId: details.orderId,
+                    to: details.customerEmail,
+                    via: result.customerVia,
+                });
+            } catch (err) {
+                const message = err?.message || String(err);
+                result.errors.push({ target: "customer", message });
+                console.error("[order-email] customer confirmation failed", {
+                    orderId: details.orderId,
+                    to: details.customerEmail,
+                    error: message,
+                });
+            }
+        })());
     } else {
         const message = "No customer email on capture/order (Apple Pay/PayPal payer email missing)";
         result.errors.push({ target: "customer", message });
@@ -376,28 +379,31 @@ export async function sendOrderConfirmationEmails(capture, orderId) {
         });
     }
 
-    try {
-        result.ownerVia = await deliverEmail({
-            to: OWNER_EMAIL(),
-            subject: ownerSubject,
-            text: buildOwnerEmailBody(details),
-            replyTo: details.customerEmail || SUPPORT_EMAIL,
-        });
-        result.ownerSent = true;
-        console.log("[order-email] owner notification sent", {
-            orderId: details.orderId,
-            to: OWNER_EMAIL(),
-            via: result.ownerVia,
-        });
-    } catch (err) {
-        const message = err?.message || String(err);
-        result.errors.push({ target: "owner", message });
-        console.error("[order-email] owner notification failed", {
-            orderId: details.orderId,
-            to: OWNER_EMAIL(),
-            error: message,
-        });
-    }
+    deliveries.push((async () => {
+        try {
+            result.ownerVia = await deliverEmail({
+                to: OWNER_EMAIL(),
+                subject: ownerSubject,
+                text: buildOwnerEmailBody(details),
+                replyTo: details.customerEmail || SUPPORT_EMAIL,
+            });
+            result.ownerSent = true;
+            console.log("[order-email] owner notification sent", {
+                orderId: details.orderId,
+                to: OWNER_EMAIL(),
+                via: result.ownerVia,
+            });
+        } catch (err) {
+            const message = err?.message || String(err);
+            result.errors.push({ target: "owner", message });
+            console.error("[order-email] owner notification failed", {
+                orderId: details.orderId,
+                to: OWNER_EMAIL(),
+                error: message,
+            });
+        }
+    })());
+    await Promise.all(deliveries);
 
     return result;
 }

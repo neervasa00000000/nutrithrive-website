@@ -24,8 +24,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261008-4";
-const CSS_ASSET_VERSION = "20261008-4";
+const ASSET_VERSION = "20261008-5";
+const CSS_ASSET_VERSION = "20261008-5";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
@@ -3025,6 +3025,7 @@ function paymentPage() {
           <h2>Order summary</h2>
           <div id="order-items"></div>
           <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+          <div class="summary-row" id="bundle-discount-row" hidden><span>400g bundle offer</span><span id="bundle-discount">−$0.00</span></div>
           <div class="summary-row"><span>Shipping</span><span id="shipping">Select country</span></div>
           <div class="summary-row total"><span>Total</span><span id="total">$0.00</span></div>
         </aside>
