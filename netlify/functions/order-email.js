@@ -261,7 +261,7 @@ async function sendViaSmtp({ smtpUser, smtpPass, to, subject, text, replyTo }) {
     return "smtp";
 }
 
-async function sendViaWeb3Forms({ accessKey, to, subject, text, fromName, replyToEmail }) {
+async function sendViaWeb3Forms({ accessKey, subject, text, fromName, replyToEmail }) {
     const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -271,7 +271,6 @@ async function sendViaWeb3Forms({ accessKey, to, subject, text, fromName, replyT
             from_name: fromName || "NutriThrive Australia",
             email: replyToEmail || OWNER_EMAIL(),
             message: text,
-            to,
         }),
     });
     const data = await res.json().catch(() => ({}));
@@ -281,7 +280,7 @@ async function sendViaWeb3Forms({ accessKey, to, subject, text, fromName, replyT
     return "web3forms";
 }
 
-async function deliverEmail({ to, subject, text, replyTo }) {
+async function deliverEmail({ to, subject, text, replyTo, allowWeb3Forms = false }) {
     const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
@@ -290,11 +289,12 @@ async function deliverEmail({ to, subject, text, replyTo }) {
     if (smtpUser && smtpPass) {
         attempts.push(() => sendViaSmtp({ smtpUser, smtpPass, to, subject, text, replyTo }));
     }
-    if (web3Key) {
+    // Web3Forms sends to the inbox associated with its access key. Its "to"
+    // field is ordinary form data, so it cannot deliver buyer confirmations.
+    if (web3Key && allowWeb3Forms) {
         attempts.push(() =>
             sendViaWeb3Forms({
                 accessKey: web3Key,
-                to,
                 subject,
                 text,
                 replyToEmail: replyTo || OWNER_EMAIL(),
@@ -312,7 +312,9 @@ async function deliverEmail({ to, subject, text, replyTo }) {
         }
     }
     if (lastErr) throw lastErr;
-    throw new Error("No email provider configured (set SMTP_USER/SMTP_PASS or WEB3FORMS_ACCESS_KEY)");
+    throw new Error(allowWeb3Forms
+        ? "No email provider configured (set SMTP_USER/SMTP_PASS or WEB3FORMS_ACCESS_KEY)"
+        : "Customer email requires SMTP_USER and SMTP_PASS");
 }
 
 /**
@@ -386,6 +388,7 @@ export async function sendOrderConfirmationEmails(capture, orderId) {
                 subject: ownerSubject,
                 text: buildOwnerEmailBody(details),
                 replyTo: details.customerEmail || SUPPORT_EMAIL,
+                allowWeb3Forms: true,
             });
             result.ownerSent = true;
             console.log("[order-email] owner notification sent", {
