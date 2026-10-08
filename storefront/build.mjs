@@ -2,7 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
-import { PRODUCTS, REVIEWS, costNote } from "./js/data.js";
+import { PRODUCTS, REVIEWS, costNote, shippingCostNote } from "./js/data.js";
+
+const PAYMENT_LINE =
+  "Pay online with PayPal or Visa/Mastercard (card processed by PayPal). Phone orders and Truganina pickup: bank transfer, PayID or cash by arrangement.";
+const ADDRESS_LINE = "Ridley Place, Truganina VIC 3029";
+const FREE_SHIP_ANNOUNCE = "Free AU shipping at $79 · Free worldwide at $90";
+const SHIPPING_BAND_LIST =
+  "Australia standard shipping for orders under $79, by parcel weight: up to 250 g $9.69 · 251–500 g $11.12 · 501 g–1 kg $15.20 · 1–3 kg $19.24 · 3–5 kg $23.23.";
 import {
   decodeEntities,
   escapeAttr,
@@ -1418,7 +1425,7 @@ function layout({
 <body>
 ${CONTRACT}
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> — tea, curry leaves &amp; soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · Free AU shipping at $79</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Guide</a></span></div>
+<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> — tea, curry leaves &amp; soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · Free AU shipping at $79</span></div>
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
@@ -1509,7 +1516,7 @@ ${CONTRACT}
     </div>
   </div>
   <div class="wrap footer-base">
-    <span>ABN 32 639 442 616 · 15 Europe Street, Truganina VIC 3029</span>
+    <span>ABN 32 639 442 616 · ${ADDRESS_LINE}</span>
     <span>${footerNote}</span>
   </div>
 </footer>
@@ -1752,7 +1759,7 @@ const PDP = {
       "Grown on our farm",
       "Packed in Melbourne",
       "Same-day weekday dispatch before 2pm",
-      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
+      PAYMENT_LINE,
     ],
     reviews: REVIEWS.filter((review) => MORINGA_FEATURED_REVIEW_NAMES.includes(review.name)),
     gallery: [
@@ -1842,7 +1849,7 @@ const PDP = {
       "Grown on our farm in Gujarat",
       "Packed in Melbourne",
       "Australia-wide delivery",
-      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
+      PAYMENT_LINE,
     ],
     gallery: [
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive dried curry leaves 30g pouch with whole leaves"],
@@ -1906,7 +1913,7 @@ const PDP = {
       "Family-farm Darjeeling",
       "Packed in Melbourne",
       "Australia-wide delivery",
-      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
+      PAYMENT_LINE,
     ],
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
@@ -1973,7 +1980,7 @@ const PDP = {
       "Handmade in Australia",
       "Packed in Melbourne",
       "Australia-wide delivery",
-      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
+      PAYMENT_LINE,
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
@@ -2031,7 +2038,7 @@ const PDP = {
       { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
       "Farm-grown curry leaves",
       "Packed in Melbourne",
-      "Visa · Mastercard · PayPal · Bank transfer · Cash for local pickup",
+      PAYMENT_LINE,
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-curry-leaves-combo-main.webp", "NutriThrive 100g moringa powder and 30g dried curry leaves combo"],
@@ -2067,6 +2074,7 @@ const PDP = {
       "Handmade soap",
       "family-farm tea",
       "Packed in Melbourne",
+      PAYMENT_LINE,
     ],
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "Darjeeling tea included in the Diwali gift box"],
@@ -2124,6 +2132,7 @@ const PDP = {
       "Handmade soap",
       "family-farm tea",
       "Packed in Melbourne",
+      PAYMENT_LINE,
     ],
     gallery: [
       ["/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "NutriThrive gift pack with moringa powder, curry leaves, Darjeeling tea and moringa soap"],
@@ -2170,7 +2179,7 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
-  const purchaseNote = "Taxes included. Shipping calculated at checkout.";
+  const purchaseNote = "Taxes included.";
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const buildDate = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
   const seasonalLines =
@@ -2182,6 +2191,15 @@ function pdpPage(slug, d) {
     .join("");
   const buyProduct =
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
+  const servingCost = costNote(buyProduct);
+  const shipNote = shippingCostNote(buyProduct);
+  // Keep per-serving costNote where it exists; always show a dedicated shipping line.
+  const showServingCost = Boolean(buyProduct.serving);
+  const moringaShipExtra =
+    slug === "moringa-powder"
+      ? `<p class="purchase-note" data-pdp-ship-extra>100 g and 200 g pouches ship for $9.69 on their own.</p>`
+      : "";
+  const shippingHtml = `<p class="purchase-note" data-pdp-ship>${esc(shipNote)}</p>${moringaShipExtra}`;
   const gallery = d.gallery?.length ? d.gallery : [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`]];
   const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
     .map((id) => PRODUCTS.find((item) => item.id === id))
@@ -2240,7 +2258,7 @@ function pdpPage(slug, d) {
           ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : d.use ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : ""}
           ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the available lab summary (PDF)</a> or contact us for current testing details.</p>` : ""}`;
   const shipLadder = {
-    "diwali-gift-box": `<p>Free AU shipping over <strong>$79</strong> — add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
+    "diwali-gift-box": `<p>Free AU shipping on orders of <strong>$79</strong> or more — add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
     "gift-pack": `<p>This pack includes moringa powder. Prefer no moringa? Shop the <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> (tea, curry leaves &amp; soap). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
   }[slug] || "";
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
@@ -2350,7 +2368,8 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(buyProduct)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(buyProduct)}">Buy now</button>
             </div>
-            <p class="cost-note" data-pdp-cost>${esc(costNote(buyProduct))}</p>
+            ${showServingCost ? `<p class="cost-note" data-pdp-cost>${esc(servingCost)}</p>` : `<p class="cost-note" data-pdp-cost>${esc(shipNote)}</p>`}
+            ${showServingCost ? shippingHtml : moringaShipExtra}
             <p class="purchase-note">${esc(purchaseNote)}</p>
             ${d.underCartNote ? `<p class="purchase-note">${esc(d.underCartNote)}</p>` : ""}
             ${seasonalHtml}
@@ -2499,7 +2518,7 @@ function aboutPage() {
             <h2>Testing and transparency</h2>
             <p>Our moringa powder is tested in Australia and we publish the available readable summary. It includes nutrition information and screening results, so you can better understand what you are buying.</p>
             <h2>Visit or contact us</h2>
-            <p>15 Europe Street, Truganina VIC 3029. Call before you arrive: <a href="tel:+61438201419">+61 438 201 419</a>.</p>
+            <p>${ADDRESS_LINE}. Call before you arrive: <a href="tel:+61438201419">+61 438 201 419</a>.</p>
             <p>Daily 9:00 AM to 11:00 PM AEST.</p>
           </div>
         </div>
@@ -2555,7 +2574,7 @@ function contactPage() {
             <h2>Direct</h2>
             <p><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a><br>
             <a href="tel:+61438201419">+61 438 201 419</a></p>
-            <p>15 Europe Street<br>Truganina VIC 3029<br>Melbourne, Australia</p>
+            <p>Ridley Place<br>Truganina VIC 3029<br>Melbourne, Australia</p>
             <p>Daily 9:00 AM to 11:00 PM AEST. Call before visiting.</p>
           </div>
         </div>
@@ -2629,7 +2648,7 @@ function faqPage() {
       items: [
         {
           q: "What is the free shipping threshold?",
-          a: "Free standard shipping on Australian orders of $79 and over, and worldwide on orders of $90 and over. If you think your order should qualify, call +61 438 201 419 and we can process it for you.",
+          a: "Free standard shipping on Australian orders of $79 or more, and worldwide on orders of $90 or more. Free shipping is applied automatically in the cart once you reach the threshold.",
         },
         {
           q: "How fast is shipping from Melbourne?",
@@ -2637,15 +2656,15 @@ function faqPage() {
         },
         {
           q: "Do you offer returns?",
-          a: "Yes. 7 days from delivery, unopened packs only. Original shipping is not refunded. Read the full policy on the shipping and returns page.",
+          a: "Yes. 7 days from delivery, unopened packs only. Original shipping is not refunded. For change-of-mind returns, the customer pays the return postage — contact us before sending a return. Read the full policy on the shipping and returns page.",
         },
         {
           q: "Which payment methods do you accept?",
-          a: "Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup. Checkout is live PayPal/card on nutrithrive.com.au.",
+          a: "Online checkout: PayPal, or Visa/Mastercard processed securely by PayPal. Phone orders and Truganina pickup by arrangement can also be paid by bank transfer, PayID or cash.",
         },
         {
           q: "Can I place an order by phone?",
-          a: "Yes. Call +61 438 201 419 if you need help placing an order or checking free shipping.",
+          a: "Yes. Call +61 438 201 419 if you need help placing an order.",
         },
       ],
     },
@@ -2654,7 +2673,7 @@ function faqPage() {
       items: [
         {
           q: "Who runs NutriThrive?",
-          a: "Neer. The warehouse is at 15 Europe Street, Truganina VIC 3029, Melbourne. Started in 2020, selling to customers from 2024.",
+          a: `Neer. The warehouse is at ${ADDRESS_LINE}, Melbourne. Started in 2020, selling to customers from 2024.`,
         },
         {
           q: "What is the ABN?",
@@ -2725,7 +2744,7 @@ function faqPage() {
           <div class="faq-business">
             <h2>Business details</h2>
             <p>NutriThrive · ABN 32 639 442 616</p>
-            <p>15 Europe Street, Truganina VIC 3029, Melbourne</p>
+            <p>${ADDRESS_LINE}, Melbourne</p>
             <p>Daily 9:00 AM to 11:00 PM AEST · <a href="tel:+61438201419">+61 438 201 419</a></p>
             <p><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></p>
           </div>
@@ -2752,8 +2771,8 @@ function shippingPage() {
     [
       "How do I get free shipping?",
       {
-        html: `Free Australia-wide shipping on orders over <strong>$79</strong>. Under <strong>$79</strong>, Australia standard shipping is <strong>$9.69</strong> at checkout. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.`,
-        text: "Free Australia-wide shipping on orders from $79. Under $79, Australia standard shipping is $9.69 at checkout. Mix powder with curry leaves, Darjeeling tea, soap, or a combo pack.",
+        html: `Free Australia-wide shipping on orders of <strong>$79</strong> or more, and worldwide on orders of <strong>$90</strong> or more. Free shipping is applied automatically in the cart. Under <strong>$79</strong> in Australia, standard rates start from <strong>$9.69</strong> by parcel weight.`,
+        text: "Free Australia-wide shipping on orders of $79 or more, and worldwide on orders of $90 or more. Free shipping is applied automatically in the cart. Under $79 in Australia, standard rates start from $9.69 by parcel weight.",
       },
     ],
     [
@@ -2791,17 +2810,18 @@ function shippingPage() {
       </nav>
       <section class="page-intro wrap-narrow">
         <h1>Shipping and returns</h1>
-        <p class="lede">Orders leave Truganina. Australia standard shipping is <strong>$9.69</strong> under <strong>$79</strong>. Free on Australian orders of <strong>$79</strong> and over, and worldwide on <strong>$90</strong> and over.</p>
+        <p class="lede">Orders leave Truganina. Free on Australian orders of <strong>$79</strong> or more, and worldwide on <strong>$90</strong> or more. Under $79 in Australia, shipping is by parcel weight.</p>
+        <p>${esc(SHIPPING_BAND_LIST)}</p>
         <h2>Dispatch</h2>
-        <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. If you think your order should receive free shipping, call +61 438 201 419 and we can process it for you.</p>
+        <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. Free shipping is applied automatically in the cart once your Australian order reaches $79, or your worldwide order reaches $90.</p>
         <h2>Timing after dispatch</h2>
         <p>Melbourne metro is often 1 to 3 business days. Other metro areas typically 3 to 4 days. Some rural locations take up to 10 days.</p>
         <h2>Tracking</h2>
         <p>When the parcel leaves the warehouse you should get a confirmation email with tracking, if the carrier provides it. If nothing arrives within a couple of business days after dispatch, check spam or email us with your order details.</p>
-        <h2>Returns</h2>
-        <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
+        <h2 id="returns">Returns</h2>
+        <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. For change-of-mind returns, the customer pays the return postage. Contact us before sending a return. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
         <h2>Payments</h2>
-        <p>Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup.</p>
+        <p>Online checkout: PayPal, or Visa/Mastercard processed securely by PayPal. Phone orders and Truganina pickup by arrangement can also be paid by bank transfer, PayID or cash.</p>
         <h2>Shipping FAQ</h2>
         <div class="faq-list">${faqDetails(shippingFaqs)}</div>
         <p><a href="/privacy">Privacy policy</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></p>
@@ -2835,7 +2855,7 @@ function privacyPage() {
         <p>NutriThrive ("we," "us," or "our") is committed to protecting your personal information in accordance with the Privacy Act 1988 (Cth). This policy outlines how we handle your data.</p>
         <p><strong>Legal entity:</strong> NutriThrive</p>
         <p><strong>ABN:</strong> 32 639 442 616</p>
-        <p><strong>Address:</strong> 15 Europe Street, Truganina VIC 3029, Australia</p>
+        <p><strong>Address:</strong> ${ADDRESS_LINE}, Australia</p>
         <p><strong>Contact:</strong> <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a> | <a href="tel:+61438201419">0438 201 419</a></p>
 
         <h3>2. Information we collect</h3>

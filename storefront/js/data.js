@@ -64,7 +64,7 @@ export const PRODUCTS = [
     unit: "/ 30g",
     lab: false,
     costCopy:
-      "Free shipping on Australian orders of $79 or more. Under $79, standard shipping is $9.69.",
+      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "black-tea",
@@ -80,7 +80,7 @@ export const PRODUCTS = [
     unit: "/ 100g",
     lab: false,
     costCopy:
-      "Free shipping on Australian orders of $79 or more. Under $79, standard shipping is $9.69.",
+      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "moringa-soap",
@@ -96,7 +96,7 @@ export const PRODUCTS = [
     unit: "/ 95g",
     lab: false,
     costCopy:
-      "Free shipping on Australian orders of $79 or more. Under $79, standard shipping is $9.69.",
+      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "moringa-soap-combo",
@@ -119,6 +119,8 @@ export const PRODUCTS = [
     },
     detail:
       "100g farm-grown shade-dried moringa powder plus one 95g handmade soap bar. Save vs buying each at the original prices. Packed in Truganina.",
+    costCopy:
+      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "combo-pack",
@@ -141,6 +143,8 @@ export const PRODUCTS = [
     },
     detail:
       "100g moringa powder and 30g dried curry leaves. Morning smoothie and evening tadka from one box.",
+    costCopy:
+      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "diwali-gift-box",
@@ -156,7 +160,8 @@ export const PRODUCTS = [
     href: "/products/diwali-gift-box/",
     unit: "",
     lab: false,
-    costCopy: "$20 for tea, curry leaves, and soap products packed together in Truganina.",
+    costCopy:
+      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
     detail:
       "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift.",
   },
@@ -173,13 +178,35 @@ export const PRODUCTS = [
     href: "/products/gift-pack/",
     unit: "",
     lab: false,
-    costCopy: "$35 for four products packed together in Truganina.",
+    costCopy:
+      "Ships from Truganina. Free shipping on Australian orders of $79 or more; on its own this item ships for $11.12 (251–500 g). Order before 2pm Mon–Fri for same-day dispatch.",
   },
 ];
 
+/** AU Parcel Post zone 2 solo-item rate from scripts/global/shipping-rates.js */
+export function auSoloShippingRate(weightGrams) {
+  const w = Number(weightGrams) || 0;
+  if (w <= 250) return 9.69;
+  if (w <= 500) return 11.12;
+  if (w <= 1000) return 15.2;
+  if (w <= 3000) return 19.24;
+  return 23.23;
+}
+
+export function shippingCostNote(p) {
+  const rate = auSoloShippingRate(p.weight);
+  if (rate === 9.69) {
+    return "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.";
+  }
+  if (rate === 11.12) {
+    return "Ships from Truganina. Free shipping on Australian orders of $79 or more; on its own this item ships for $11.12 (251–500 g). Order before 2pm Mon–Fri for same-day dispatch.";
+  }
+  return `Ships from Truganina. Free shipping on Australian orders of $79 or more; on its own this item ships for $${rate.toFixed(2)}. Order before 2pm Mon–Fri for same-day dispatch.`;
+}
+
 export function costNote(p) {
   const serving = p.serving;
-  if (!serving) return p.costCopy || "";
+  if (!serving) return p.costCopy || shippingCostNote(p);
   const grams = serving.basisGrams ?? p.weight;
   const size = serving.grams;
   const count = grams / size;

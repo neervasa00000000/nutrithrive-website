@@ -6,7 +6,7 @@ window.NT_SITE_DATA = {
     email: 'nutrithrive0@gmail.com',
     phone: '+61 438 201 419',
     phoneTel: '+61438201419',
-    address: '15 Europe Street, Truganina VIC 3029, Melbourne, Australia',
+    address: 'Ridley Place, Truganina VIC 3029, Melbourne, Australia',
     hours: 'Daily 9:00 AM – 11:00 PM AEST',
     abn: '32 639 442 616',
   },
