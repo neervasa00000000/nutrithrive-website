@@ -309,6 +309,12 @@ function finishApprovedPayment(data, captureToken, liveCart, options) {
         item: itemName,
         qty: String(qty),
       });
+      if (capture.notification) {
+        const { customerSent, ownerSent } = capture.notification;
+        if (!customerSent || !ownerSent) {
+          thankYouParams.set("notice", !customerSent && !ownerSent ? "both" : customerSent ? "owner" : "customer");
+        }
+      }
       const thankYouUrl = "/thank-you.html?" + thankYouParams.toString();
       if (options.deferRedirect) {
         return thankYouUrl;

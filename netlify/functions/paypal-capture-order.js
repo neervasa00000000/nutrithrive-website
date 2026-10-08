@@ -8,20 +8,25 @@ function orderNeedsEnrichment(capture, orderId) {
 }
 
 async function fetchOrderRepresentation(base, accessToken, orderID) {
-    const res = await fetch(`${base}/v2/checkout/orders/${orderID}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-            Prefer: "return=representation",
-        },
-    });
-    const body = await res.json();
-    if (!res.ok) {
-        console.warn("[paypal-capture-order] GET order enrichment failed", body);
+    try {
+        const res = await fetch(`${base}/v2/checkout/orders/${orderID}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+                Prefer: "return=representation",
+            },
+        });
+        const body = await res.json();
+        if (!res.ok) {
+            console.warn("[paypal-capture-order] GET order enrichment failed", body);
+            return null;
+        }
+        return body;
+    } catch (err) {
+        console.warn("[paypal-capture-order] GET order enrichment unavailable", err);
         return null;
     }
-    return body;
 }
 
 export async function handler(event) {
@@ -138,39 +143,53 @@ export async function handler(event) {
         let capture = await capRes.json();
         if (!capRes.ok) throw new Error(JSON.stringify(capture));
 
-        // Apple Pay / minimal captures often omit line items, shipping, or payer email.
-        // Pull the full order and merge so confirmation emails stay complete.
-        if (orderNeedsEnrichment(capture, orderID)) {
-            const orderDetails = await fetchOrderRepresentation(base, tokenData.access_token, orderID);
-            if (orderDetails) {
-                capture = mergeOrderDetails(capture, orderDetails);
+        let notification = { customerSent: false, ownerSent: false };
+        // A successful PayPal capture must never become a payment error because
+        // enrichment or email delivery failed after the buyer was charged.
+        try {
+            // Apple Pay / minimal captures often omit line items, shipping, or payer email.
+            // Pull the full order and merge so confirmation emails stay complete.
+            if (orderNeedsEnrichment(capture, orderID)) {
+                const orderDetails = await fetchOrderRepresentation(base, tokenData.access_token, orderID);
+                if (orderDetails) {
+                    capture = mergeOrderDetails(capture, orderDetails);
+                }
             }
-        }
 
-        // Apple Pay approved this address and the server used it for order creation.
-        // Keep it for fulfilment even if PayPal's capture omits or replaces contact fields.
-        if (proof.walletOrder) {
-            capture = mergeOrderDetails(capture, proof.walletOrder);
-            capture.payer = {
-                ...(capture.payer || {}),
-                email_address: proof.walletOrder.payer.email_address,
-                name: {
-                    given_name: proof.walletOrder.purchase_units[0].shipping.name.full_name,
-                    surname: "",
-                },
+            // Apple Pay approved this address and the server used it for order creation.
+            // Keep it for fulfilment even if PayPal's capture omits or replaces contact fields.
+            if (proof.walletOrder) {
+                capture = mergeOrderDetails(capture, proof.walletOrder);
+                capture.payer = {
+                    ...(capture.payer || {}),
+                    email_address: proof.walletOrder.payer.email_address,
+                    name: {
+                        given_name: proof.walletOrder.purchase_units[0].shipping.name.full_name,
+                        surname: "",
+                    },
+                };
+                capture.purchase_units[0].shipping = proof.walletOrder.purchase_units[0].shipping;
+            }
+
+            const emailResult = await sendOrderConfirmationEmails(capture, orderID);
+            notification = {
+                customerSent: emailResult.customerSent,
+                ownerSent: emailResult.ownerSent,
             };
-            capture.purchase_units[0].shipping = proof.walletOrder.purchase_units[0].shipping;
-        }
-
-        const emailResult = await sendOrderConfirmationEmails(capture, orderID);
-        if (emailResult.errors.length) {
-            console.warn("[paypal-capture-order] order email partial failure", emailResult);
+            if (emailResult.errors.length) {
+                console.warn("[paypal-capture-order] order email partial failure", emailResult);
+            }
+        } catch (postCaptureError) {
+            console.error("[paypal-capture-order] post-capture fulfilment failed", postCaptureError);
         }
 
         return {
             statusCode: 200,
             headers,
-            body: JSON.stringify(capture),
+            body: JSON.stringify({
+                ...capture,
+                notification,
+            }),
         };
     } catch (err) {
         console.error("[paypal-capture-order]", err);

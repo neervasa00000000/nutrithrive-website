@@ -24,7 +24,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261008-5";
+const ASSET_VERSION = "20261008-6";
 const CSS_ASSET_VERSION = "20261008-5";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
@@ -3143,7 +3143,7 @@ function thankYouPage() {
           <li>We've received your payment.</li>
           <li>We pack orders in Truganina, Melbourne.</li>
           <li>Orders placed before 2pm Monday to Friday are eligible for same-day dispatch.</li>
-          <li>You should get a confirmation email, then tracking once the parcel leaves if the carrier provides it.</li>
+          <li>Check your email for confirmation, then tracking once the parcel leaves if the carrier provides it.</li>
         </ol>
         <p>Typical metro times after dispatch are on our <a href="${r.shipping}">shipping page</a>.</p>
       </section>`;
@@ -3183,7 +3183,7 @@ function thankYouPage() {
   }
   return layout({
     title: "Order confirmed | NutriThrive Australia",
-    description: "Thank you for your NutriThrive order. We are packing it in Truganina, Melbourne, and will email confirmation shortly.",
+    description: "View your NutriThrive order reference and delivery information after payment.",
     canonicalPath: "/thank-you.html",
     current: "",
     preserveTitle: true,
@@ -3192,7 +3192,12 @@ function thankYouPage() {
     extraFoot,
     main: `<section class="page-intro wrap-narrow order-thanks">
       <h1>Order confirmed</h1>
-      <p class="lede">Thank you — we've received your payment. A confirmation email is on the way.</p>
+      <p class="lede">Thank you — we've received your payment. Keep your order reference below.</p>
+      <div class="notice" id="order-notification-warning" role="status" hidden>
+        <strong>Order confirmed, email delayed</strong>
+        <p id="order-notification-message"></p>
+        <p>Keep your order reference and contact us so we can check fulfilment: <a href="tel:+61438201419">0438 201 419</a> or <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a>. Please do not pay again for this order.</p>
+      </div>
       <dl class="order-thanks-list" id="order-facts" hidden>
         <div class="order-thanks-row" id="order-id-row" hidden><dt>Order reference</dt><dd id="order-id"></dd></div>
         <div class="order-thanks-row" id="order-item-row" hidden><dt>Item</dt><dd id="order-item"></dd></div>
