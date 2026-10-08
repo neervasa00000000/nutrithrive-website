@@ -16,7 +16,7 @@
   },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "15 Europe Street",
+    "streetAddress": "Ridley Place",
     "addressLocality": "Truganina",
     "addressRegion": "VIC",
     "postalCode": "3029",
@@ -27,7 +27,7 @@
     "latitude": -37.8323773,
     "longitude": 144.7187983
   },
-  "hasMap": "https://www.google.com/maps/search/?api=1&query=15+Europe+Street%2C+Truganina+VIC+3029%2C+Australia",
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Ridley+Place%2C+Truganina+VIC+3029%2C+Australia",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
