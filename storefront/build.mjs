@@ -24,8 +24,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261008-6";
-const PAYMENT_ASSET_VERSION = "20261008-8";
+const ASSET_VERSION = "20261008-9";
+const PAYMENT_ASSET_VERSION = "20261008-9";
 const CSS_ASSET_VERSION = "20261008-5";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
@@ -3195,11 +3195,6 @@ function thankYouPage() {
     main: `<section class="page-intro wrap-narrow order-thanks">
       <h1>Order confirmed</h1>
       <p class="lede">Thank you — we've received your payment. Keep your order reference below.</p>
-      <div class="notice" id="order-notification-warning" role="status" hidden>
-        <strong>Order confirmed, email delayed</strong>
-        <p id="order-notification-message"></p>
-        <p>Keep your order reference and contact us so we can check fulfilment: <a href="tel:+61438201419">0438 201 419</a> or <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a>. Please do not pay again for this order.</p>
-      </div>
       <dl class="order-thanks-list" id="order-facts" hidden>
         <div class="order-thanks-row" id="order-id-row" hidden><dt>Order reference</dt><dd id="order-id"></dd></div>
         <div class="order-thanks-row" id="order-item-row" hidden><dt>Item</dt><dd id="order-item"></dd></div>
