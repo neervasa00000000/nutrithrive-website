@@ -449,7 +449,9 @@ try {
       return fetchPayPal(url, options);
     };
     const savedLog = console.log;
+    const savedError = console.error;
     console.log = () => {};
+    console.error = () => {};
     try {
       const response = await captureOrder({
         httpMethod: 'POST',
@@ -458,21 +460,22 @@ try {
       });
       assert.equal(response.statusCode, 200, response.body);
       const details = parseCaptureForEmail(JSON.parse(response.body), appleOrderId);
-      assert.equal(JSON.parse(response.body).notification.customerSent, true);
+      assert.equal(JSON.parse(response.body).notification.customerSent, false, 'Web3Forms cannot send to arbitrary customer addresses');
       assert.equal(JSON.parse(response.body).notification.ownerSent, true);
       assert.equal(details.customerEmail, 'alex@example.com');
       assert.equal(details.customerName, 'Alex Buyer');
       assert.match(details.shippingAddress, /1 Ridley Place/);
       assert.doesNotMatch(details.shippingAddress, /Wrong Street/);
       assert.equal(details.items[0].name, '100g Moringa');
-      assert.equal(sentEmails.length, 2);
-      const ownerEmail = sentEmails.find((email) => email.to === 'nutrithrive0@gmail.com');
+      assert.equal(sentEmails.length, 1);
+      const ownerEmail = sentEmails[0];
       assert.ok(ownerEmail);
       assert.match(ownerEmail.message, /alex@example\.com/);
       assert.match(ownerEmail.message, /1 Ridley Place/);
       assert.match(ownerEmail.message, /100g Moringa/);
     } finally {
       console.log = savedLog;
+      console.error = savedError;
       delete process.env.WEB3FORMS_ACCESS_KEY;
     }
   }
