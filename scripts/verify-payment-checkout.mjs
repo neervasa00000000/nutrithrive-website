@@ -9,6 +9,10 @@ import { fileURLToPath } from 'node:url';
 import { handler as createOrder } from '../netlify/functions/paypal-create-order.js';
 import { handler as captureOrder } from '../netlify/functions/paypal-capture-order.js';
 import { getClientIp, isRateLimited } from '../netlify/functions/checkout-request.js';
+import {
+  mergeOrderDetails,
+  parseCaptureForEmail,
+} from '../netlify/functions/order-email.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (name) => fs.readFileSync(path.join(root, name), 'utf8');
@@ -30,6 +34,8 @@ assert.match(page, /id="paypal-card-container"/, 'card button mount must exist')
 assert.match(page, /id="applepay-container"/, 'Apple Pay button mount must exist');
 assert.match(source, /apple-pay-sdk\.js/, 'Apple Pay JS SDK must load');
 assert.match(page, /applepay\.cdn-apple\.com\/jsapi/, 'payment page must preload Apple Pay JS SDK');
+assert.match(source, /requireShipping:\s*true/, 'Apple Pay must require a delivery address');
+assert.match(source, /mapAppleShippingContact/, 'Apple Pay must map wallet shipping contacts');
 for (const asset of [
   'runtime-paypal-client-config.min.js',
   'runtime-paypal-sdk-loader.min.js',
@@ -142,6 +148,8 @@ try {
       body: JSON.stringify({
         countryCode: 'AU',
         items: [{ id: 'moringa-powder', quantity: 1 }],
+        email: 'alex@example.com',
+        requireShipping: true,
         shipping: {
           fullName: 'Alex Buyer',
           addressLine1: '1 Ridley Place',
@@ -149,14 +157,83 @@ try {
           state: 'VIC',
           postalCode: '3029',
           countryCode: 'AU',
+          email: 'alex@example.com',
+          phone: '0438201419',
         },
       }),
     });
     globalThis.fetch = fetchMock;
     assert.equal(response.statusCode, 200, response.body);
     assert.equal(sentOrder.application_context.shipping_preference, 'SET_PROVIDED_ADDRESS');
+    assert.equal(sentOrder.payer.email_address, 'alex@example.com');
     assert.equal(sentOrder.purchase_units[0].shipping.name.full_name, 'Alex Buyer');
     assert.equal(sentOrder.purchase_units[0].shipping.address.postal_code, '3029');
+    assert.equal(sentOrder.purchase_units[0].shipping.email_address, 'alex@example.com');
+    assert.equal(sentOrder.purchase_units[0].items[0].name, '100g Moringa');
+    assert.ok(sentOrder.purchase_units[0].invoice_id.startsWith('NT-'));
+  }
+  {
+    const missingShip = await createOrder({
+      httpMethod: 'POST',
+      headers: { origin: 'https://nutrithrive.com.au', 'x-nf-client-connection-ip': 'apple-pay-missing-ship' },
+      body: JSON.stringify({
+        countryCode: 'AU',
+        items: [{ id: 'moringa-powder', quantity: 1 }],
+        requireShipping: true,
+      }),
+    });
+    assert.equal(missingShip.statusCode, 400);
+    assert.match(missingShip.body, /delivery name and address/i);
+  }
+
+  {
+    const sparseCapture = {
+      id: 'APPLEPAYORDER1',
+      status: 'COMPLETED',
+      payment_source: { apple_pay: { email_address: 'wallet@example.com' } },
+      purchase_units: [{
+        amount: { currency_code: 'AUD', value: '20.69' },
+        payments: { captures: [{ amount: { currency_code: 'AUD', value: '20.69' } }] },
+      }],
+    };
+    const fullOrder = {
+      id: 'APPLEPAYORDER1',
+      payer: { name: { given_name: 'Alex', surname: 'Buyer' } },
+      purchase_units: [{
+        invoice_id: 'NT-APPLE-1',
+        items: [{ name: '100g Moringa', quantity: '1', unit_amount: { currency_code: 'AUD', value: '11.00' } }],
+        amount: {
+          currency_code: 'AUD',
+          value: '20.69',
+          breakdown: {
+            item_total: { currency_code: 'AUD', value: '11.00' },
+            shipping: { currency_code: 'AUD', value: '9.69' },
+          },
+        },
+        shipping: {
+          name: { full_name: 'Alex Buyer' },
+          email_address: 'alex@example.com',
+          address: {
+            address_line_1: '1 Ridley Place',
+            admin_area_2: 'Truganina',
+            admin_area_1: 'VIC',
+            postal_code: '3029',
+            country_code: 'AU',
+          },
+        },
+      }],
+    };
+    const merged = mergeOrderDetails(sparseCapture, fullOrder);
+    const details = parseCaptureForEmail(merged, 'APPLEPAYORDER1');
+    assert.equal(details.orderId, 'APPLEPAYORDER1');
+    assert.equal(details.invoiceId, 'NT-APPLE-1');
+    assert.equal(details.hasItems, true);
+    assert.equal(details.items[0].name, '100g Moringa');
+    assert.equal(details.hasShippingAddress, true);
+    assert.match(details.shippingAddress, /Ridley Place/);
+    assert.equal(details.customerEmail, 'alex@example.com');
+    assert.equal(details.customerName, 'Alex Buyer');
+    assert.equal(details.totalValue, '20.69');
   }
   // Client prices are duplicated in the server catalog; catch drift before deploy.
   const catalogContext = { window: {} };
@@ -174,18 +251,61 @@ try {
     body: JSON.stringify({ orderID, captureToken: '0'.repeat(64) }),
   });
   assert.equal(invalidToken.statusCode, 403);
-  globalThis.fetch = async (url) => {
+  let sawCapturePrefer = false;
+  let sawOrderGet = false;
+  globalThis.fetch = async (url, options = {}) => {
     if (String(url).endsWith('/v1/oauth2/token')) {
       return { ok: true, json: async () => ({ access_token: 'test-token' }) };
     }
-    assert.ok(String(url).endsWith(`/v2/checkout/orders/${orderID}/capture`));
-    return { ok: true, json: async () => ({
-      id: orderID,
-      status: 'COMPLETED',
-      purchase_units: [{ amount: { currency_code: 'AUD', value: '20.69' }, payments: {
-        captures: [{ amount: { currency_code: 'AUD', value: '20.69' } }],
-      } }],
-    }) };
+    if (String(url).endsWith(`/v2/checkout/orders/${orderID}/capture`)) {
+      sawCapturePrefer = options.headers?.Prefer === 'return=representation';
+      return {
+        ok: true,
+        json: async () => ({
+          id: orderID,
+          status: 'COMPLETED',
+          // Sparse capture (historical Apple Pay failure mode): payment only, no items/address/email.
+          purchase_units: [{
+            amount: { currency_code: 'AUD', value: '20.69' },
+            payments: { captures: [{ amount: { currency_code: 'AUD', value: '20.69' } }] },
+          }],
+        }),
+      };
+    }
+    if (String(url).endsWith(`/v2/checkout/orders/${orderID}`)) {
+      sawOrderGet = true;
+      assert.equal(options.headers?.Prefer, 'return=representation');
+      return {
+        ok: true,
+        json: async () => ({
+          id: orderID,
+          payer: { email_address: 'buyer@example.com', name: { given_name: 'Sam', surname: 'Lee' } },
+          purchase_units: [{
+            invoice_id: 'NT-TEST-1',
+            items: [{ name: '100g Moringa', quantity: '1', unit_amount: { currency_code: 'AUD', value: '11.00' } }],
+            amount: {
+              currency_code: 'AUD',
+              value: '20.69',
+              breakdown: {
+                item_total: { currency_code: 'AUD', value: '11.00' },
+                shipping: { currency_code: 'AUD', value: '9.69' },
+              },
+            },
+            shipping: {
+              name: { full_name: 'Sam Lee' },
+              address: {
+                address_line_1: '1 Ridley Place',
+                admin_area_2: 'Truganina',
+                admin_area_1: 'VIC',
+                postal_code: '3029',
+                country_code: 'AU',
+              },
+            },
+          }],
+        }),
+      };
+    }
+    throw new Error(`unexpected request: ${url}`);
   };
   const originalError = console.error;
   const originalWarn = console.warn;
@@ -198,12 +318,18 @@ try {
       body: JSON.stringify({ orderID, captureToken }),
     });
     assert.equal(capture.statusCode, 200, capture.body);
-    assert.equal(JSON.parse(capture.body).status, 'COMPLETED');
+    const body = JSON.parse(capture.body);
+    assert.equal(body.status, 'COMPLETED');
+    assert.equal(sawCapturePrefer, true, 'capture must request full representation');
+    assert.equal(sawOrderGet, true, 'sparse capture must GET full order for email fields');
+    assert.equal(body.purchase_units[0].items[0].name, '100g Moringa');
+    assert.equal(body.purchase_units[0].shipping.address.postal_code, '3029');
+    assert.equal(body.payer.email_address, 'buyer@example.com');
   } finally {
     console.error = originalError;
     console.warn = originalWarn;
   }
-  console.log('Payment checkout verification passed (assets, card funding, pricing, shipping and capture).');
+  console.log('Payment checkout verification passed (assets, Apple Pay shipping/email, pricing, capture enrichment).');
 } finally {
   globalThis.fetch = originalFetch;
   for (const [key, value] of Object.entries(previousEnv)) {

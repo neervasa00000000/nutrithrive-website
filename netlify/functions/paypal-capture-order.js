@@ -1,6 +1,28 @@
 import { createHmac, timingSafeEqual } from "crypto";
-import { sendOrderConfirmationEmails } from "./order-email.js";
+import { mergeOrderDetails, parseCaptureForEmail, sendOrderConfirmationEmails } from "./order-email.js";
 import { getHeader, getClientIp, isRateLimited } from "./checkout-request.js";
+
+function orderNeedsEnrichment(capture, orderId) {
+    const details = parseCaptureForEmail(capture, orderId);
+    return !details.hasItems || !details.hasShippingAddress || !details.customerEmail;
+}
+
+async function fetchOrderRepresentation(base, accessToken, orderID) {
+    const res = await fetch(`${base}/v2/checkout/orders/${orderID}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+            Prefer: "return=representation",
+        },
+    });
+    const body = await res.json();
+    if (!res.ok) {
+        console.warn("[paypal-capture-order] GET order enrichment failed", body);
+        return null;
+    }
+    return body;
+}
 
 export async function handler(event) {
     const requestOrigin = String(getHeader(event, "origin") || "");
@@ -104,17 +126,27 @@ export async function handler(event) {
         const tokenData = await tokenRes.json();
         if (!tokenRes.ok) throw new Error(JSON.stringify(tokenData));
 
-        // Capture order
+        // Capture order — always request full representation so emails get items/shipping.
         const capRes = await fetch(`${base}/v2/checkout/orders/${orderID}/capture`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${tokenData.access_token}`,
+                Authorization: `Bearer ${tokenData.access_token}`,
+                Prefer: "return=representation",
             },
         });
 
-        const capture = await capRes.json();
+        let capture = await capRes.json();
         if (!capRes.ok) throw new Error(JSON.stringify(capture));
+
+        // Apple Pay / minimal captures often omit line items, shipping, or payer email.
+        // Pull the full order and merge so confirmation emails stay complete.
+        if (orderNeedsEnrichment(capture, orderID)) {
+            const orderDetails = await fetchOrderRepresentation(base, tokenData.access_token, orderID);
+            if (orderDetails) {
+                capture = mergeOrderDetails(capture, orderDetails);
+            }
+        }
 
         const emailResult = await sendOrderConfirmationEmails(capture, orderID);
         if (emailResult.errors.length) {
