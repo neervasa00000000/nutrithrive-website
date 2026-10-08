@@ -29,6 +29,7 @@ assert.match(source, /paypal\.FUNDING\.CARD/, 'card button must still be mounted
 assert.match(page, /id="paypal-card-container"/, 'card button mount must exist');
 assert.match(page, /id="applepay-container"/, 'Apple Pay button mount must exist');
 assert.match(source, /apple-pay-sdk\.js/, 'Apple Pay JS SDK must load');
+assert.match(page, /applepay\.cdn-apple\.com\/jsapi/, 'payment page must preload Apple Pay JS SDK');
 for (const asset of [
   'runtime-paypal-client-config.min.js',
   'runtime-paypal-sdk-loader.min.js',
