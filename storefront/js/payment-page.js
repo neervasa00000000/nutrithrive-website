@@ -157,17 +157,27 @@ function mapAppleShippingContact(contact) {
   if (!contact) return null;
   const nameParts = [contact.givenName, contact.familyName].filter(Boolean);
   const lines = Array.isArray(contact.addressLines) ? contact.addressLines : [];
-  return {
+  const mapped = {
     fullName: nameParts.join(" ").trim() || String(contact.phoneticGivenName || "").trim(),
-    addressLine1: lines[0] || "",
-    addressLine2: lines[1] || "",
-    city: contact.locality || "",
-    state: contact.administrativeArea || "",
-    postalCode: contact.postalCode || "",
+    addressLine1: String(lines[0] || "").trim(),
+    addressLine2: String(lines[1] || "").trim(),
+    city: String(contact.locality || "").trim(),
+    state: String(contact.administrativeArea || "").trim(),
+    postalCode: String(contact.postalCode || "").trim(),
     countryCode: String(contact.countryCode || "").toUpperCase(),
-    email: contact.emailAddress || "",
-    phone: contact.phoneNumber || "",
+    email: String(contact.emailAddress || "").trim(),
+    phone: String(contact.phoneNumber || "").trim(),
   };
+  if (
+    !mapped.fullName ||
+    !mapped.addressLine1 ||
+    !mapped.city ||
+    !mapped.postalCode ||
+    !/^[A-Z]{2}$/.test(mapped.countryCode)
+  ) {
+    return null;
+  }
+  return mapped;
 }
 
 function createPayPalOrder(options) {
@@ -187,6 +197,8 @@ function createPayPalOrder(options) {
     items: orderItems,
   };
   if (options.shipping) body.shipping = options.shipping;
+  if (options.email) body.email = options.email;
+  if (options.requireShipping) body.requireShipping = true;
   return fetch("/.netlify/functions/paypal-create-order", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -425,15 +437,45 @@ function setupApplePay(seq) {
 
           session.onpaymentauthorized = function (event) {
             const shipping = mapAppleShippingContact(event.payment && event.payment.shippingContact);
-            const orderCountry =
-              (shipping && shipping.countryCode) || getSelectedCountryCode() || countryCode;
+            if (!shipping) {
+              console.error("Apple Pay shipping contact incomplete:", event.payment && event.payment.shippingContact);
+              try {
+                session.completePayment(ApplePaySession.STATUS_FAILURE);
+              } catch (completeErr) {
+                /* ignore */
+              }
+              setStatus(
+                "Apple Pay needs your full delivery name, street, suburb, postcode and country. Update the address in the Apple Pay sheet and try again.",
+                true
+              );
+              return;
+            }
+            if (!shipping.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(shipping.email)) {
+              try {
+                session.completePayment(ApplePaySession.STATUS_FAILURE);
+              } catch (completeErr) {
+                /* ignore */
+              }
+              setStatus(
+                "Apple Pay needs an email address so we can send your order confirmation. Add email in the Apple Pay sheet and try again.",
+                true
+              );
+              return;
+            }
+
+            const orderCountry = shipping.countryCode || getSelectedCountryCode() || countryCode;
 
             createPayPalOrder({
               countryCode: orderCountry,
               shipping: shipping,
+              email: shipping.email,
+              requireShipping: true,
               paymentType: "Apple Pay",
             })
               .then(function (created) {
+                if (!created.orderID) {
+                  throw new Error("PayPal did not return an order ID.");
+                }
                 return applepay
                   .confirmOrder({
                     orderId: created.orderID,

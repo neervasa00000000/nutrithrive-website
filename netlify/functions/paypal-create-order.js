@@ -31,6 +31,17 @@ function cleanAddressPart(value, maxLen) {
         .slice(0, maxLen);
 }
 
+function normalizeEmail(value) {
+    const email = cleanAddressPart(value, 320);
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "";
+    return email;
+}
+
+function normalizePhone(value) {
+    const digits = String(value ?? "").replace(/[^\d+]/g, "").slice(0, 20);
+    return digits;
+}
+
 /** Optional Apple Pay / wallet shipping for fulfilment emails. Never trusts amounts. */
 function normalizeShipping(raw) {
     if (!raw || typeof raw !== "object") return null;
@@ -41,9 +52,19 @@ function normalizeShipping(raw) {
     const state = cleanAddressPart(raw.adminArea1 || raw.state, 120);
     const postal = cleanAddressPart(raw.postalCode || raw.postal_code, 32);
     const country = cleanAddressPart(raw.countryCode || raw.country_code, 2).toUpperCase();
+    const email = normalizeEmail(raw.email || raw.emailAddress || raw.email_address);
+    const phone = normalizePhone(raw.phone || raw.phoneNumber || raw.phone_number);
     if (!fullName || !line1 || !city || !postal || !/^[A-Z]{2}$/.test(country)) return null;
     return {
         name: { full_name: fullName },
+        ...(email ? { email_address: email } : {}),
+        ...(phone
+            ? {
+                  phone_number: {
+                      national_number: phone.replace(/^\+/, ""),
+                  },
+              }
+            : {}),
         address: {
             address_line_1: line1,
             ...(line2 ? { address_line_2: line2 } : {}),
@@ -105,8 +126,24 @@ export async function handler(event) {
         }
 
         const payload = JSON.parse(event.body || "{}");
-        const { countryCode, items, shipping: shippingInput } = payload;
+        const { countryCode, items, shipping: shippingInput, email: emailInput, requireShipping } = payload;
         const shippingDetails = normalizeShipping(shippingInput);
+        const payerEmail =
+            normalizeEmail(emailInput) ||
+            normalizeEmail(shippingInput?.email) ||
+            normalizeEmail(shippingInput?.emailAddress) ||
+            "";
+
+        // Apple Pay must supply a usable delivery address before we create the order.
+        if (requireShipping && !shippingDetails) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({
+                    error: "A complete delivery name and address are required before paying with Apple Pay.",
+                }),
+            };
+        }
         const base = (process.env.PAYPAL_BASE || "https://api-m.paypal.com").replace(/\/$/, "");
         const client = process.env.PAYPAL_CLIENT_ID;
         const secret = process.env.PAYPAL_CLIENT_SECRET;
@@ -294,6 +331,7 @@ export async function handler(event) {
             },
             body: JSON.stringify({
                 intent: "CAPTURE",
+                ...(payerEmail ? { payer: { email_address: payerEmail } } : {}),
                 purchase_units: [purchaseUnit],
                 application_context: {
                     brand_name: "NutriThrive",

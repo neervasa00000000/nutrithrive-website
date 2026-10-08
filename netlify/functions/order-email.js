@@ -22,10 +22,13 @@ function cleanLine(value, maxLen = 200) {
         .slice(0, maxLen);
 }
 
-function payerName(payer) {
+function payerName(payer, shipping) {
     const given = cleanLine(payer?.name?.given_name, 80);
     const family = cleanLine(payer?.name?.surname, 80);
-    return [given, family].filter(Boolean).join(" ") || "there";
+    const fromPayer = [given, family].filter(Boolean).join(" ");
+    if (fromPayer) return fromPayer;
+    const fromShipping = cleanLine(shipping?.name?.full_name, 120);
+    return fromShipping || "there";
 }
 
 function formatAddress(shipping) {
@@ -40,6 +43,57 @@ function formatAddress(shipping) {
         cleanLine(addr.country_code, 8),
     ].filter(Boolean);
     return lines.length ? lines.join("\n") : null;
+}
+
+function firstEmail(...candidates) {
+    for (const value of candidates) {
+        const email = cleanLine(value, 320);
+        if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return email;
+    }
+    return "";
+}
+
+function paymentSourceEmail(capture) {
+    const source = capture?.payment_source || {};
+    return firstEmail(source.apple_pay?.email_address, source.paypal?.email_address);
+}
+
+function mergePurchaseUnit(primary = {}, fallback = {}) {
+    return {
+        ...fallback,
+        ...primary,
+        amount: primary.amount || fallback.amount,
+        invoice_id: primary.invoice_id || fallback.invoice_id,
+        items: Array.isArray(primary.items) && primary.items.length ? primary.items : fallback.items || [],
+        shipping: primary.shipping?.address ? primary.shipping : fallback.shipping || primary.shipping,
+        payments: primary.payments || fallback.payments,
+    };
+}
+
+/**
+ * Enrich a sparse capture payload with a full GET /orders representation.
+ * Apple Pay + minimal capture responses often omit items, shipping, or payer email.
+ */
+export function mergeOrderDetails(capture, orderDetails) {
+    if (!orderDetails || typeof orderDetails !== "object") return capture || {};
+    const captureUnit = capture?.purchase_units?.[0] || {};
+    const orderUnit = orderDetails?.purchase_units?.[0] || {};
+    const mergedUnit = mergePurchaseUnit(captureUnit, orderUnit);
+    return {
+        ...orderDetails,
+        ...capture,
+        id: capture?.id || orderDetails?.id,
+        payer: {
+            ...(orderDetails.payer || {}),
+            ...(capture?.payer || {}),
+            email_address:
+                firstEmail(capture?.payer?.email_address, orderDetails?.payer?.email_address) ||
+                undefined,
+            name: capture?.payer?.name || orderDetails?.payer?.name,
+        },
+        payment_source: capture?.payment_source || orderDetails?.payment_source,
+        purchase_units: [mergedUnit],
+    };
 }
 
 export function parseCaptureForEmail(capture, orderId) {
@@ -60,12 +114,22 @@ export function parseCaptureForEmail(capture, orderId) {
     }));
 
     const payer = capture?.payer || {};
-    const customerEmail = cleanLine(payer.email_address, 320);
-    const customerName = payerName(payer);
-    const shippingAddress = formatAddress(unit.shipping);
+    const shipping = unit.shipping || {};
+    const customerEmail = firstEmail(
+        payer.email_address,
+        shipping.email_address,
+        paymentSourceEmail(capture)
+    );
+    const customerName = payerName(payer, shipping);
+    const shippingAddress = formatAddress(shipping);
+    const phone =
+        cleanLine(shipping?.phone_number?.national_number, 32) ||
+        cleanLine(shipping?.phone_number?.country_code, 8) ||
+        cleanLine(payer?.phone?.phone_number?.national_number, 32) ||
+        "";
 
     return {
-        orderId: cleanLine(orderId, 64),
+        orderId: cleanLine(orderId || capture?.id, 64),
         invoiceId: cleanLine(unit.invoice_id, 64),
         currency,
         totalValue,
@@ -75,11 +139,14 @@ export function parseCaptureForEmail(capture, orderId) {
         customerEmail,
         customerName,
         shippingAddress,
+        phone,
+        hasItems: items.length > 0,
+        hasShippingAddress: Boolean(shippingAddress),
     };
 }
 
 function itemLines(items, currency) {
-    if (!items.length) return "  (item details unavailable)\n";
+    if (!items.length) return "  (item details unavailable — check PayPal dashboard)\n";
     return items
         .map((item) => {
             const lineTotal =
@@ -118,6 +185,12 @@ function buildCustomerEmailBody(details) {
 
     if (details.shippingAddress) {
         lines.push("", "Ship to:", details.shippingAddress);
+    } else {
+        lines.push("", "Ship to: We could not read a shipping address from checkout — reply to this email with your full delivery address.");
+    }
+
+    if (details.phone) {
+        lines.push(`Phone: ${details.phone}`);
     }
 
     lines.push(
@@ -132,7 +205,7 @@ function buildCustomerEmailBody(details) {
         `Questions? Reply to this email, write ${SUPPORT_EMAIL}, or call ${SUPPORT_PHONE}.`,
         "",
         "— NutriThrive Australia",
-        "15 Europe Street, Truganina VIC 3029",
+        "Ridley Place, Truganina VIC 3029",
         "https://nutrithrive.com.au"
     );
 
@@ -147,7 +220,8 @@ function buildOwnerEmailBody(details) {
         `Order reference: ${ref}`,
         `PayPal order ID: ${details.orderId}`,
         `Customer: ${details.customerName}`,
-        `Customer email: ${details.customerEmail || "(not provided by PayPal)"}`,
+        `Customer email: ${details.customerEmail || "(not provided — check Apple Pay / PayPal dashboard)"}`,
+        details.phone ? `Customer phone: ${details.phone}` : "",
         "",
         "Items:",
         itemLines(details.items, details.currency),
@@ -158,11 +232,13 @@ function buildOwnerEmailBody(details) {
             : "",
         `Total paid: ${money(details.totalValue, details.currency)}`,
         "",
-        details.shippingAddress ? `Ship to:\n${details.shippingAddress}` : "Shipping address: (check PayPal dashboard)",
+        details.shippingAddress
+            ? `Ship to:\n${details.shippingAddress}`
+            : "Shipping address: MISSING — check PayPal activity / contact customer before dispatch",
         "",
         `PayPal: https://www.paypal.com/activity/payment/${encodeURIComponent(details.orderId)}`,
     ]
-        .filter(Boolean)
+        .filter((line) => line !== "")
         .join("\n");
 }
 
@@ -251,8 +327,19 @@ export async function sendOrderConfirmationEmails(capture, orderId) {
         ownerSent: false,
         customerVia: null,
         ownerVia: null,
+        hasItems: details.hasItems,
+        hasShippingAddress: details.hasShippingAddress,
         errors: [],
     };
+
+    if (!details.hasItems) {
+        result.errors.push({ target: "order", message: "Capture/order missing line items" });
+        console.error("[order-email] missing line items", { orderId: details.orderId });
+    }
+    if (!details.hasShippingAddress) {
+        result.errors.push({ target: "order", message: "Capture/order missing shipping address" });
+        console.error("[order-email] missing shipping address", { orderId: details.orderId });
+    }
 
     const customerSubject = `Order confirmed — NutriThrive (${details.invoiceId || details.orderId})`;
     const ownerSubject = `New order — ${details.invoiceId || details.orderId}`;
@@ -281,7 +368,7 @@ export async function sendOrderConfirmationEmails(capture, orderId) {
             });
         }
     } else {
-        const message = "PayPal capture did not include payer email_address";
+        const message = "No customer email on capture/order (Apple Pay/PayPal payer email missing)";
         result.errors.push({ target: "customer", message });
         console.error("[order-email] customer confirmation skipped", {
             orderId: details.orderId,
