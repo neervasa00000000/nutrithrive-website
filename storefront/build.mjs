@@ -26,6 +26,7 @@ const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261007-1";
 const CSS_ASSET_VERSION = "20261006-1";
+const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
@@ -1538,7 +1539,12 @@ function writePage(rel, html, destRoot = OUT) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   const cacheBusted = html.replace(
     /(src|href)="(\/assets\/[^"?#]+)(?:\?[^"#]*)?"/g,
-    (_match, attribute, assetPath) => `${attribute}="${assetPath}?v=${assetPath.includes("/assets/css/storefront-system") ? CSS_ASSET_VERSION : ASSET_VERSION}"`
+    (_match, attribute, assetPath) => {
+      const version = assetPath.includes("/assets/css/storefront-system")
+        ? (rel === "pages/shop/cart.html" ? CART_CSS_ASSET_VERSION : CSS_ASSET_VERSION)
+        : ASSET_VERSION;
+      return `${attribute}="${assetPath}?v=${version}"`;
+    }
   );
   fs.writeFileSync(file, cacheBusted);
 }
