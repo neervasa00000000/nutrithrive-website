@@ -4,8 +4,9 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { PRODUCTS, REVIEWS, costNote, shippingCostNote } from "./js/data.js";
 
-const PAYMENT_LINE =
-  "Pay online with PayPal or Visa/Mastercard (card processed by PayPal). Phone orders and Truganina pickup: bank transfer, PayID or cash by arrangement.";
+const PAYMENT_LINE = "PayPal or card online · pickup: cash, bank or PayID";
+const PAYMENT_LINE_LONG =
+  "Online: PayPal or card. Phone / Truganina pickup by arrangement: bank transfer, PayID or cash.";
 const ADDRESS_LINE = "Ridley Place, Truganina VIC 3029";
 const FREE_SHIP_ANNOUNCE = "Free AU shipping at $79 · Free worldwide at $90";
 const SHIPPING_BAND_LIST =
@@ -2193,13 +2194,9 @@ function pdpPage(slug, d) {
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
   const servingCost = costNote(buyProduct);
   const shipNote = shippingCostNote(buyProduct);
-  // Keep per-serving costNote where it exists; always show a dedicated shipping line.
+  // Keep per-serving costNote where it exists; always show one short shipping line.
   const showServingCost = Boolean(buyProduct.serving);
-  const moringaShipExtra =
-    slug === "moringa-powder"
-      ? `<p class="purchase-note" data-pdp-ship-extra>100 g and 200 g pouches ship for $9.69 on their own.</p>`
-      : "";
-  const shippingHtml = `<p class="purchase-note" data-pdp-ship>${esc(shipNote)}</p>${moringaShipExtra}`;
+  const shippingHtml = `<p class="purchase-note" data-pdp-ship>${esc(shipNote)}</p>`;
   const gallery = d.gallery?.length ? d.gallery : [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`]];
   const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
     .map((id) => PRODUCTS.find((item) => item.id === id))
@@ -2368,8 +2365,8 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(buyProduct)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(buyProduct)}">Buy now</button>
             </div>
-            ${showServingCost ? `<p class="cost-note" data-pdp-cost>${esc(servingCost)}</p>` : `<p class="cost-note" data-pdp-cost>${esc(shipNote)}</p>`}
-            ${showServingCost ? shippingHtml : moringaShipExtra}
+            ${showServingCost ? `<p class="cost-note" data-pdp-cost>${esc(servingCost)}</p>` : ""}
+            ${shippingHtml}
             <p class="purchase-note">${esc(purchaseNote)}</p>
             ${d.underCartNote ? `<p class="purchase-note">${esc(d.underCartNote)}</p>` : ""}
             ${seasonalHtml}
@@ -2660,7 +2657,7 @@ function faqPage() {
         },
         {
           q: "Which payment methods do you accept?",
-          a: "Online checkout: PayPal, or Visa/Mastercard processed securely by PayPal. Phone orders and Truganina pickup by arrangement can also be paid by bank transfer, PayID or cash.",
+          a: PAYMENT_LINE_LONG,
         },
         {
           q: "Can I place an order by phone?",
@@ -2821,7 +2818,7 @@ function shippingPage() {
         <h2 id="returns">Returns</h2>
         <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. For change-of-mind returns, the customer pays the return postage. Contact us before sending a return. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
         <h2>Payments</h2>
-        <p>Online checkout: PayPal, or Visa/Mastercard processed securely by PayPal. Phone orders and Truganina pickup by arrangement can also be paid by bank transfer, PayID or cash.</p>
+        <p>${esc(PAYMENT_LINE_LONG)}</p>
         <h2>Shipping FAQ</h2>
         <div class="faq-list">${faqDetails(shippingFaqs)}</div>
         <p><a href="/privacy">Privacy policy</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></p>
