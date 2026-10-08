@@ -503,7 +503,7 @@ window.NT_SITE_DATA = {
       icon: 'local_shipping',
       items: [
         { q: 'Which payment methods do you accept?', a: 'Visa, Mastercard, PayPal, bank transfer, and cash for Truganina pickup. Checkout is live PayPal/card on nutrithrive.com.au.' },
-        { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order or checking free shipping eligibility.' },
+        { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order.' },
         { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$79+ and free worldwide shipping on orders of AU$90+.' },
         { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Orders placed before 2pm on business days usually leave Truganina the same day; otherwise within 2 business days (no Sunday dispatch). Melbourne metro is often 1–3 business days after dispatch; other metro areas typically 3–4 days; some rural locations up to 10 days. See /shipping or /melbourne/ for estimates.' },
         { q: 'Do you offer a money-back guarantee?', a: 'Yes—7-day return policy (unopened packs only). Shipping costs are not refunded.' },
