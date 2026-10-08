@@ -33,10 +33,10 @@ for (const code of [built, minified]) {
 assert.match(source, /paypal\.FUNDING\.CARD/, 'card button must still be mounted');
 assert.match(page, /id="paypal-card-container"/, 'card button mount must exist');
 assert.match(page, /id="applepay-container"/, 'Apple Pay button mount must exist');
-assert.match(page, /id="applepay-availability"/, 'unsupported browsers must have a clear Apple Pay note');
-assert.match(page, /Apple Pay is available in Safari/, 'checkout copy must explain Apple Pay availability');
+assert.match(page, /id="applepay-availability"/, 'unavailable Apple Pay note mount must exist');
 assert.match(source, /apple-pay-sdk\.js/, 'Apple Pay JS SDK must load');
-assert.doesNotMatch(page, /src="https:\/\/applepay\.cdn-apple\.com\/jsapi/, 'other browsers must not preload the Apple Pay SDK');
+assert.match(page, /applepay\.cdn-apple\.com\/jsapi/, 'payment page must preload Apple Pay JS SDK');
+assert.match(source, /FUNDING\.APPLEPAY/, 'PayPal Apple Pay funding button must remain as fallback');
 assert.match(source, /requireShipping:\s*true/, 'Apple Pay must require a delivery address');
 assert.match(source, /mapAppleShippingContact/, 'Apple Pay must map wallet shipping contacts');
 assert.match(source, /requiredShippingContactFields:\s*\["name", "email", "postalAddress"\]/, 'Wallet must request only fulfilment contact details');
@@ -65,20 +65,11 @@ const paymentContext = {
   localStorage: { setItem: () => {} },
 };
 vm.runInNewContext(
-  source.replace(/\}\)\(\);\s*$/, '\nwindow.__paymentTest = { updateShippingAndTotal, formatApplePayAmount, isSupportedApplePayBrowser, paypalSdkParams };\n})();'),
+  source.replace(/\}\)\(\);\s*$/, '\nwindow.__paymentTest = { updateShippingAndTotal, formatApplePayAmount, paypalSdkParams };\n})();'),
   paymentContext,
 );
-const browserTest = paymentContext.window.__paymentTest;
-const safariUA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15';
-const chromeUA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
-const braveIOSUA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Brave/1.70 Mobile/15E148 Safari/604.1';
-assert.equal(browserTest.isSupportedApplePayBrowser(safariUA), true);
-assert.equal(browserTest.isSupportedApplePayBrowser(chromeUA), false);
-assert.equal(browserTest.isSupportedApplePayBrowser(braveIOSUA), false);
-paymentContext.window.navigator = { userAgent: safariUA };
-assert.match(browserTest.paypalSdkParams().components, /applepay/);
-paymentContext.window.navigator = { userAgent: chromeUA };
-assert.doesNotMatch(browserTest.paypalSdkParams().components, /applepay/);
+assert.match(paymentContext.window.__paymentTest.paypalSdkParams().components, /applepay/);
+assert.match(paymentContext.window.__paymentTest.paypalSdkParams()['enable-funding'], /applepay/);
 paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 35 }] };
 paymentContext.window.__paymentTest.updateShippingAndTotal();
 assert.equal(paymentElements.get('total').textContent, '$105.00', 'wallet sheet total must include bundle discount');

@@ -86,19 +86,12 @@ function trackPaymentInfo(items, paymentType) {
 }
 
 function paypalSdkParams() {
-  const applePaySupported = isSupportedApplePayBrowser();
   return {
     currency: "AUD",
     locale: "en_AU",
-    components: applePaySupported ? "buttons,funding-eligibility,applepay" : "buttons,funding-eligibility",
-    "enable-funding": applePaySupported ? "paylater,card,applepay" : "paylater,card",
+    components: "buttons,funding-eligibility,applepay",
+    "enable-funding": "paylater,card,applepay",
   };
-}
-
-function isSupportedApplePayBrowser(userAgent) {
-  const ua = String(userAgent || window.navigator?.userAgent || "");
-  return /\bVersion\/[\d.]+.*\bSafari\//i.test(ua) &&
-    !/\b(?:Chrome|CriOS|FxiOS|Edg|EdgiOS|OPR|OPiOS|Brave|DuckDuckGo|GSA|FBAN|FBAV|Instagram)\//i.test(ua);
 }
 
 let applePaySdkPromise = null;
@@ -107,14 +100,27 @@ function loadApplePaySdk() {
   if (window.ApplePaySession) return Promise.resolve();
   if (applePaySdkPromise) return applePaySdkPromise;
   applePaySdkPromise = new Promise(function (resolve, reject) {
+    const existing = document.querySelector('script[data-nt-apple-pay-sdk]');
+    if (existing) {
+      if (window.ApplePaySession) {
+        resolve();
+        return;
+      }
+      existing.addEventListener("load", function () {
+        resolve();
+      });
+      existing.addEventListener("error", function () {
+        reject(new Error("Apple Pay SDK failed to load"));
+      });
+      return;
+    }
     const script = document.createElement("script");
     script.src = "https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js";
     script.async = true;
     script.setAttribute("data-nt-apple-pay-sdk", "1");
     script.crossOrigin = "anonymous";
     script.onload = function () {
-      if (window.ApplePaySession) resolve();
-      else reject(new Error("Apple Pay is unavailable in this browser"));
+      resolve();
     };
     script.onerror = function () {
       reject(new Error("Failed to load Apple Pay SDK"));
@@ -122,7 +128,6 @@ function loadApplePaySdk() {
     (document.head || document.documentElement).appendChild(script);
   }).catch(function (err) {
     applePaySdkPromise = null;
-    document.querySelector('script[data-nt-apple-pay-sdk]')?.remove();
     throw err;
   });
   return applePaySdkPromise;
@@ -339,43 +344,101 @@ function setApplePayNote(message) {
   note.hidden = !message;
 }
 
+function tryPayPalApplePayButton(seq, appleContainer) {
+  if (!appleContainer || typeof paypal === "undefined" || !paypal.FUNDING || !paypal.FUNDING.APPLEPAY) {
+    setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
+    return Promise.resolve(false);
+  }
+  try {
+    const buttons = paypal.Buttons({
+      fundingSource: paypal.FUNDING.APPLEPAY,
+      style: { color: "black", label: "pay", height: 44 },
+      createOrder: function () {
+        return createPayPalOrder({
+          countryCode: getSelectedCountryCode() || "AU",
+          requireShipping: false,
+          paymentType: "Apple Pay",
+        }).then(function (created) {
+          window.__ntApplePayCaptureToken = created.captureToken;
+          window.__ntApplePayCart = created.cart;
+          return created.orderID;
+        });
+      },
+      onApprove: function (data) {
+        return finishApprovedPayment(
+          data,
+          window.__ntApplePayCaptureToken,
+          window.__ntApplePayCart || getCart()
+        ).catch(function (err) {
+          setStatus("Payment error: " + (err.message || "Unknown error"), true);
+        });
+      },
+      onError: function (err) {
+        setStatus("Apple Pay error: " + (err && err.message ? err.message : "Unknown error"), true);
+      },
+    });
+    paypalInstances.push(buttons);
+    if (typeof buttons.isEligible === "function" && !buttons.isEligible()) {
+      setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
+      return Promise.resolve(false);
+    }
+    appleContainer.hidden = false;
+    setApplePayNote("");
+    return buttons
+      .render(appleContainer)
+      .then(function () {
+        if (seq !== paypalMountSeq) {
+          try {
+            buttons.close();
+          } catch (err) {
+            /* ignore */
+          }
+          return false;
+        }
+        return true;
+      })
+      .catch(function (err) {
+        console.warn("PayPal Apple Pay button skipped:", err && err.message);
+        hideApplePayButton();
+        setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
+        return false;
+      });
+  } catch (err) {
+    console.warn("PayPal Apple Pay init skipped:", err && err.message);
+    setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
+    return Promise.resolve(false);
+  }
+}
+
 function setupApplePay(seq) {
   const appleContainer = document.getElementById("applepay-container");
   if (!appleContainer) return Promise.resolve(false);
   hideApplePayButton();
-  if (!isSupportedApplePayBrowser()) {
-    setApplePayNote("Apple Pay is available in Safari on an eligible Apple device. You can pay with PayPal or card here.");
-    return Promise.resolve(false);
-  }
+  setApplePayNote("");
   if (typeof paypal === "undefined" || typeof paypal.Applepay !== "function") {
     console.info("[Apple Pay] PayPal Applepay component not available on this SDK load.");
-    setApplePayNote("Apple Pay is unavailable right now. You can pay with PayPal or card below.");
-    return Promise.resolve(false);
+    return tryPayPalApplePayButton(seq, appleContainer);
   }
 
   return loadApplePaySdk()
     .then(function () {
       if (seq !== paypalMountSeq) return false;
-      if (!window.ApplePaySession) {
-        setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
-        return false;
-      }
-      if (typeof ApplePaySession.supportsVersion === "function" && !ApplePaySession.supportsVersion(4)) {
-        setApplePayNote("Apple Pay needs a newer version of Safari. You can pay with PayPal or card below.");
-        return false;
-      }
-      if (!ApplePaySession.canMakePayments()) {
-        setApplePayNote("Apple Pay needs a supported card in Wallet. You can pay with PayPal or card below.");
-        return false;
-      }
 
       const applepay = paypal.Applepay();
       return applepay.config().then(function (applepayConfig) {
         if (seq !== paypalMountSeq) return false;
         if (!applepayConfig || !applepayConfig.isEligible) {
           console.info("[Apple Pay] PayPal reports merchant/buyer not eligible.", applepayConfig || {});
-          setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
-          return false;
+          return tryPayPalApplePayButton(seq, appleContainer);
+        }
+
+        // Prefer native Apple Pay sheet when the browser supports it.
+        const canNative =
+          window.ApplePaySession &&
+          (!ApplePaySession.supportsVersion || ApplePaySession.supportsVersion(4)) &&
+          ApplePaySession.canMakePayments();
+        if (!canNative) {
+          return tryPayPalApplePayButton(seq, appleContainer);
         }
 
         setApplePayNote("");
@@ -383,7 +446,7 @@ function setupApplePay(seq) {
         appleContainer.innerHTML =
           '<apple-pay-button id="btn-apple-pay" buttonstyle="black" type="buy" locale="en-AU"></apple-pay-button>';
         const button = document.getElementById("btn-apple-pay");
-        if (!button) return false;
+        if (!button) return tryPayPalApplePayButton(seq, appleContainer);
 
         button.addEventListener("click", function () {
           const cart = getCart();
@@ -547,9 +610,7 @@ function setupApplePay(seq) {
     })
     .catch(function (err) {
       console.warn("Apple Pay unavailable:", err && err.message);
-      hideApplePayButton();
-      setApplePayNote("Apple Pay is unavailable right now. You can pay with PayPal or card below.");
-      return false;
+      return tryPayPalApplePayButton(seq, appleContainer);
     });
 }
 
