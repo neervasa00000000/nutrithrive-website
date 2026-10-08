@@ -86,45 +86,46 @@ function trackPaymentInfo(items, paymentType) {
 }
 
 function paypalSdkParams() {
+  const applePaySupported = isSupportedApplePayBrowser();
   return {
     currency: "AUD",
     locale: "en_AU",
-    components: "buttons,funding-eligibility,applepay",
-    "enable-funding": "paylater,card,applepay",
+    components: applePaySupported ? "buttons,funding-eligibility,applepay" : "buttons,funding-eligibility",
+    "enable-funding": applePaySupported ? "paylater,card,applepay" : "paylater,card",
   };
 }
 
+function isSupportedApplePayBrowser(userAgent) {
+  const ua = String(userAgent || window.navigator?.userAgent || "");
+  return /\bVersion\/[\d.]+.*\bSafari\//i.test(ua) &&
+    !/\b(?:Chrome|CriOS|FxiOS|Edg|EdgiOS|OPR|OPiOS|Brave|DuckDuckGo|GSA|FBAN|FBAV|Instagram)\//i.test(ua);
+}
+
+let applePaySdkPromise = null;
+
 function loadApplePaySdk() {
   if (window.ApplePaySession) return Promise.resolve();
-  const existing = document.querySelector('script[data-nt-apple-pay-sdk]');
-  if (existing) {
-    return new Promise(function (resolve, reject) {
-      if (window.ApplePaySession) {
-        resolve();
-        return;
-      }
-      existing.addEventListener("load", function () {
-        resolve();
-      });
-      existing.addEventListener("error", function () {
-        reject(new Error("Apple Pay SDK failed to load"));
-      });
-    });
-  }
-  return new Promise(function (resolve, reject) {
+  if (applePaySdkPromise) return applePaySdkPromise;
+  applePaySdkPromise = new Promise(function (resolve, reject) {
     const script = document.createElement("script");
     script.src = "https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js";
     script.async = true;
     script.setAttribute("data-nt-apple-pay-sdk", "1");
     script.crossOrigin = "anonymous";
     script.onload = function () {
-      resolve();
+      if (window.ApplePaySession) resolve();
+      else reject(new Error("Apple Pay is unavailable in this browser"));
     };
     script.onerror = function () {
       reject(new Error("Failed to load Apple Pay SDK"));
     };
     (document.head || document.documentElement).appendChild(script);
+  }).catch(function (err) {
+    applePaySdkPromise = null;
+    document.querySelector('script[data-nt-apple-pay-sdk]')?.remove();
+    throw err;
   });
+  return applePaySdkPromise;
 }
 
 function loadPayPalSdkForCheckout() {
@@ -331,29 +332,40 @@ function hideApplePayButton() {
   appleContainer.replaceChildren();
 }
 
+function setApplePayNote(message) {
+  const note = document.getElementById("applepay-availability");
+  if (!note) return;
+  note.textContent = message || "";
+  note.hidden = !message;
+}
+
 function setupApplePay(seq) {
   const appleContainer = document.getElementById("applepay-container");
   if (!appleContainer) return Promise.resolve(false);
   hideApplePayButton();
+  if (!isSupportedApplePayBrowser()) {
+    setApplePayNote("Apple Pay is available in Safari on an eligible Apple device. You can pay with PayPal or card here.");
+    return Promise.resolve(false);
+  }
   if (typeof paypal === "undefined" || typeof paypal.Applepay !== "function") {
     console.info("[Apple Pay] PayPal Applepay component not available on this SDK load.");
+    setApplePayNote("Apple Pay is unavailable right now. You can pay with PayPal or card below.");
     return Promise.resolve(false);
   }
 
-  // Load Apple's SDK first — ApplePaySession is missing until then on non-Safari browsers.
   return loadApplePaySdk()
     .then(function () {
       if (seq !== paypalMountSeq) return false;
       if (!window.ApplePaySession) {
-        console.info("[Apple Pay] ApplePaySession missing (use Safari on iPhone/Mac with Wallet set up).");
+        setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
         return false;
       }
       if (typeof ApplePaySession.supportsVersion === "function" && !ApplePaySession.supportsVersion(4)) {
-        console.info("[Apple Pay] This browser does not support Apple Pay JS version 4.");
+        setApplePayNote("Apple Pay needs a newer version of Safari. You can pay with PayPal or card below.");
         return false;
       }
       if (!ApplePaySession.canMakePayments()) {
-        console.info("[Apple Pay] Device cannot make Apple Pay payments (Wallet/Safari required).");
+        setApplePayNote("Apple Pay needs a supported card in Wallet. You can pay with PayPal or card below.");
         return false;
       }
 
@@ -362,9 +374,11 @@ function setupApplePay(seq) {
         if (seq !== paypalMountSeq) return false;
         if (!applepayConfig || !applepayConfig.isEligible) {
           console.info("[Apple Pay] PayPal reports merchant/buyer not eligible.", applepayConfig || {});
+          setApplePayNote("Apple Pay is unavailable on this device. You can pay with PayPal or card below.");
           return false;
         }
 
+        setApplePayNote("");
         appleContainer.hidden = false;
         appleContainer.innerHTML =
           '<apple-pay-button id="btn-apple-pay" buttonstyle="black" type="buy" locale="en-AU"></apple-pay-button>';
@@ -388,8 +402,8 @@ function setupApplePay(seq) {
             currencyCode: "AUD",
             merchantCapabilities: applepayConfig.merchantCapabilities,
             supportedNetworks: applepayConfig.supportedNetworks,
-            requiredBillingContactFields: ["name", "postalAddress"],
-            requiredShippingContactFields: ["name", "phone", "email", "postalAddress"],
+            requiredBillingContactFields: ["postalAddress"],
+            requiredShippingContactFields: ["name", "email", "postalAddress"],
             total: {
               label: "NutriThrive",
               type: "final",
@@ -402,7 +416,7 @@ function setupApplePay(seq) {
             session = new ApplePaySession(4, paymentRequest);
           } catch (err) {
             console.error("Apple Pay session error:", err);
-            setStatus("Apple Pay could not start on this device.", true);
+            setStatus("Apple Pay couldn't start. You can pay with PayPal or card below.", true);
             return;
           }
 
@@ -418,7 +432,7 @@ function setupApplePay(seq) {
               .catch(function (validateError) {
                 console.error("Apple Pay merchant validation failed:", validateError);
                 session.abort();
-                setStatus("Apple Pay could not be verified for this domain.", true);
+                setStatus("Apple Pay is unavailable right now. You can pay with PayPal or card below.", true);
               });
           };
 
@@ -460,7 +474,7 @@ function setupApplePay(seq) {
                 /* ignore */
               }
               setStatus(
-                "Apple Pay needs your full delivery name, street, suburb, postcode and country. Update the address in the Apple Pay sheet and try again.",
+                "Apple Pay needs a complete delivery address. Update it in Wallet, then try again, or use PayPal or card below.",
                 true
               );
               return;
@@ -472,7 +486,7 @@ function setupApplePay(seq) {
                 /* ignore */
               }
               setStatus(
-                "Apple Pay needs an email address so we can send your order confirmation. Add email in the Apple Pay sheet and try again.",
+                "Apple Pay needs an email address for your order. Add it in Wallet, then try again, or use PayPal or card below.",
                 true
               );
               return;
@@ -517,7 +531,7 @@ function setupApplePay(seq) {
                 } catch (completeErr) {
                   /* ignore */
                 }
-                setStatus("Apple Pay error: " + (err.message || "Unknown error"), true);
+                setStatus("Apple Pay couldn't complete. Check your Wallet or PayPal activity before trying again. You can also pay with PayPal or card below.", true);
               });
           };
 
@@ -534,6 +548,7 @@ function setupApplePay(seq) {
     .catch(function (err) {
       console.warn("Apple Pay unavailable:", err && err.message);
       hideApplePayButton();
+      setApplePayNote("Apple Pay is unavailable right now. You can pay with PayPal or card below.");
       return false;
     });
 }
@@ -817,6 +832,8 @@ function bootCheckout() {
 }
 
 function startCheckout() {
+  if (isSupportedApplePayBrowser()) loadApplePaySdk().catch(function () {});
+  else setApplePayNote("Apple Pay is available in Safari on an eligible Apple device. You can pay with PayPal or card here.");
   loadPayPalSdkForCheckout()
     .then(bootCheckout)
     .catch(function (err) {
