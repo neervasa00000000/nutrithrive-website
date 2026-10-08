@@ -893,8 +893,7 @@ function bootCheckout() {
 }
 
 function startCheckout() {
-  if (isSupportedApplePayBrowser()) loadApplePaySdk().catch(function () {});
-  else setApplePayNote("Apple Pay is available in Safari on an eligible Apple device. You can pay with PayPal or card here.");
+  loadApplePaySdk().catch(function () {});
   loadPayPalSdkForCheckout()
     .then(bootCheckout)
     .catch(function (err) {
