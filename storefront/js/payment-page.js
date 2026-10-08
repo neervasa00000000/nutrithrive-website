@@ -81,7 +81,7 @@ function paypalSdkParams() {
     currency: "AUD",
     locale: "en_AU",
     components: "buttons,funding-eligibility,applepay",
-    "enable-funding": "paylater,card",
+    "enable-funding": "paylater,card,applepay",
   };
 }
 
@@ -309,19 +309,34 @@ function setupApplePay(seq) {
   if (!appleContainer) return Promise.resolve(false);
   hideApplePayButton();
   if (typeof paypal === "undefined" || typeof paypal.Applepay !== "function") {
-    return Promise.resolve(false);
-  }
-  if (!window.ApplePaySession || !ApplePaySession.canMakePayments()) {
+    console.info("[Apple Pay] PayPal Applepay component not available on this SDK load.");
     return Promise.resolve(false);
   }
 
+  // Load Apple's SDK first — ApplePaySession is missing until then on non-Safari browsers.
   return loadApplePaySdk()
     .then(function () {
       if (seq !== paypalMountSeq) return false;
+      if (!window.ApplePaySession) {
+        console.info("[Apple Pay] ApplePaySession missing (use Safari on iPhone/Mac with Wallet set up).");
+        return false;
+      }
+      if (typeof ApplePaySession.supportsVersion === "function" && !ApplePaySession.supportsVersion(4)) {
+        console.info("[Apple Pay] This browser does not support Apple Pay JS version 4.");
+        return false;
+      }
+      if (!ApplePaySession.canMakePayments()) {
+        console.info("[Apple Pay] Device cannot make Apple Pay payments (Wallet/Safari required).");
+        return false;
+      }
+
       const applepay = paypal.Applepay();
       return applepay.config().then(function (applepayConfig) {
         if (seq !== paypalMountSeq) return false;
-        if (!applepayConfig || !applepayConfig.isEligible) return false;
+        if (!applepayConfig || !applepayConfig.isEligible) {
+          console.info("[Apple Pay] PayPal reports merchant/buyer not eligible.", applepayConfig || {});
+          return false;
+        }
 
         appleContainer.hidden = false;
         appleContainer.innerHTML =

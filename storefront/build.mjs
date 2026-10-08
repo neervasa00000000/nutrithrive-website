@@ -24,8 +24,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261008-2";
-const CSS_ASSET_VERSION = "20261008-2";
+const ASSET_VERSION = "20261008-3";
+const CSS_ASSET_VERSION = "20261008-3";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
@@ -2986,7 +2986,7 @@ function paymentPage() {
     canonicalPath: "/payment",
     current: "",
     preserveTitle: true,
-    extraFoot: `${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+    extraFoot: `<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js" crossorigin="anonymous" data-nt-apple-pay-sdk="1" defer></script>${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
     robots: "noindex, follow",
     main: `
       <section class="page-intro wrap cart-intro">
