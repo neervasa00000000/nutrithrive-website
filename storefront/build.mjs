@@ -25,6 +25,7 @@ const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261008-6";
+const PAYMENT_ASSET_VERSION = "20261008-7";
 const CSS_ASSET_VERSION = "20261008-5";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
@@ -2982,11 +2983,11 @@ function paymentPage() {
     : "";
   return layout({
     title: "Payment | NutriThrive Australia",
-    description: "Review your NutriThrive order, confirm shipping country, and complete checkout securely with Apple Pay, PayPal or card.",
+    description: "Review your NutriThrive order and pay securely with PayPal or card. Apple Pay is available in Safari on eligible Apple devices.",
     canonicalPath: "/payment",
     current: "",
     preserveTitle: true,
-    extraFoot: `<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js" crossorigin="anonymous" data-nt-apple-pay-sdk="1" defer></script>${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`,
+    extraFoot: `${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${PAYMENT_ASSET_VERSION}" defer></script>`,
     robots: "noindex, follow",
     main: `
       <section class="page-intro wrap cart-intro">
@@ -2997,12 +2998,12 @@ function paymentPage() {
         <div>
           <div class="empty-state" id="pay-empty" hidden>
             <h2>Your cart is empty</h2>
-            <p>Add something from the shop, then return here to pay with Apple Pay or PayPal.</p>
+            <p>Add something from the shop, then return here to pay with PayPal or card. Apple Pay is available in Safari on eligible Apple devices.</p>
             <a class="btn btn-primary" href="${r.shop}">Continue shopping</a>
           </div>
           <div id="pay-form" class="pay-form">
             <p class="pay-copy">All transactions are secure and encrypted.</p>
-            <p class="pay-copy">At checkout, Apple Pay or PayPal will show the exact <strong>name, email and full shipping address</strong> stored in your wallet. Review those details carefully. We ship to the address you approve there.</p>
+            <p class="pay-copy">Review your delivery details before paying. With Apple Pay, check the name, email and address shown in Wallet; we ship to the address you approve there.</p>
             <div class="field">
               <label for="shipping-country">Shipping country</label>
               <select id="shipping-country">
@@ -3012,6 +3013,7 @@ function paymentPage() {
             <div class="pay-box">
               <h2>Choose your payment method</h2>
               <div id="applepay-container" hidden></div>
+              <p class="pay-copy" id="applepay-availability" hidden></p>
               <div id="paypal-button-container">
                 <p class="payment-placeholder">Select a shipping country to continue.</p>
               </div>
