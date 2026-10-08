@@ -44,8 +44,11 @@ jobs:
       - name: Dependency security audit
         run: npm audit --audit-level=critical
 
-      - name: Build assets
-        run: npm run build:minify
+      - name: Build storefront and assets
+        run: npm run build
+
+      - name: Verify payment checkout
+        run: node scripts/verify-payment-checkout.mjs
 
       - name: Verify sitemap URL list
         env:
