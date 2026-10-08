@@ -22,9 +22,13 @@ for (const code of [built, minified]) {
   assert.match(code, /enable-funding/, 'card funding must remain enabled');
   assert.match(code, /paypal-create-order/, 'create-order call must remain available');
   assert.match(code, /paypal-capture-order/, 'capture-order call must remain available');
+  assert.match(code, /applepay/, 'Apple Pay SDK component must remain enabled');
+  assert.match(code, /paypal\.Applepay/, 'Apple Pay button path must remain wired');
 }
 assert.match(source, /paypal\.FUNDING\.CARD/, 'card button must still be mounted');
 assert.match(page, /id="paypal-card-container"/, 'card button mount must exist');
+assert.match(page, /id="applepay-container"/, 'Apple Pay button mount must exist');
+assert.match(source, /apple-pay-sdk\.js/, 'Apple Pay JS SDK must load');
 for (const asset of [
   'runtime-paypal-client-config.min.js',
   'runtime-paypal-sdk-loader.min.js',
@@ -74,7 +78,11 @@ globalThis.fetch = async (url, options) => {
   const order = JSON.parse(options.body);
   assert.equal(order.intent, 'CAPTURE');
   assert.ok(!Object.hasOwn(order, 'payment_source'), 'server must let the SDK choose PayPal or card');
-  assert.equal(order.application_context.shipping_preference, 'GET_FROM_FILE');
+  assert.ok(
+    order.application_context.shipping_preference === 'GET_FROM_FILE' ||
+      order.application_context.shipping_preference === 'SET_PROVIDED_ADDRESS',
+    'shipping preference must be wallet or provided address',
+  );
   return {
     ok: true,
     json: async () => ({ id: `TESTORDER${++orderCount}` }),
@@ -119,6 +127,36 @@ try {
     { id: 'moringa-powder', quantity: 1 },
   ], '81.00', '0.00');
   await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '105.00', '0.00', '35.00');
+  {
+    let sentOrder;
+    const fetchMock = globalThis.fetch;
+    globalThis.fetch = async (...args) => {
+      const response = await fetchMock(...args);
+      if (response.request) sentOrder = response.request;
+      return response;
+    };
+    const response = await createOrder({
+      httpMethod: 'POST',
+      headers: { origin: 'https://nutrithrive.com.au', 'x-nf-client-connection-ip': 'apple-pay-ship' },
+      body: JSON.stringify({
+        countryCode: 'AU',
+        items: [{ id: 'moringa-powder', quantity: 1 }],
+        shipping: {
+          fullName: 'Alex Buyer',
+          addressLine1: '1 Ridley Place',
+          city: 'Truganina',
+          state: 'VIC',
+          postalCode: '3029',
+          countryCode: 'AU',
+        },
+      }),
+    });
+    globalThis.fetch = fetchMock;
+    assert.equal(response.statusCode, 200, response.body);
+    assert.equal(sentOrder.application_context.shipping_preference, 'SET_PROVIDED_ADDRESS');
+    assert.equal(sentOrder.purchase_units[0].shipping.name.full_name, 'Alex Buyer');
+    assert.equal(sentOrder.purchase_units[0].shipping.address.postal_code, '3029');
+  }
   // Client prices are duplicated in the server catalog; catch drift before deploy.
   const catalogContext = { window: {} };
   vm.runInNewContext(read('storefront/js/catalog.js'), catalogContext);

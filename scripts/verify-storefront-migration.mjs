@@ -459,6 +459,7 @@ if (payment) {
   mustInclude("pages/shop/payment.html", "paypal-sdk-loader", "PayPal SDK loader");
   mustInclude("pages/shop/payment.html", "/assets/js/storefront/payment-page", "new payment UI script");
   mustInclude("pages/shop/payment.html", 'id="paypal-button-container"', "PayPal buttons mount");
+  mustInclude("pages/shop/payment.html", 'id="applepay-container"', "Apple Pay button mount");
   mustInclude("pages/shop/payment.html", 'id="shipping-country"', "shipping country select");
   mustNotInclude("pages/shop/payment.html", "design-system.min.css", "old design system CSS");
   mustNotInclude("pages/shop/payment.html", "footer-v2", "old footer");
