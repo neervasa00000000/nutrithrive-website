@@ -8,6 +8,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { handler as createOrder } from '../netlify/functions/paypal-create-order.js';
 import { handler as captureOrder } from '../netlify/functions/paypal-capture-order.js';
+import { verifyCaptureToken } from '../netlify/functions/checkout-proof.js';
 import { getClientIp, isRateLimited } from '../netlify/functions/checkout-request.js';
 import {
   mergeOrderDetails,
@@ -36,6 +37,39 @@ assert.match(source, /apple-pay-sdk\.js/, 'Apple Pay JS SDK must load');
 assert.match(page, /applepay\.cdn-apple\.com\/jsapi/, 'payment page must preload Apple Pay JS SDK');
 assert.match(source, /requireShipping:\s*true/, 'Apple Pay must require a delivery address');
 assert.match(source, /mapAppleShippingContact/, 'Apple Pay must map wallet shipping contacts');
+const paymentElements = new Map([
+  ['shipping-country', { value: 'AU' }],
+  ['subtotal', { textContent: '$0.00' }],
+  ['shipping', { textContent: '' }],
+  ['total', { textContent: '' }],
+  ['bundle-discount', { textContent: '' }],
+  ['bundle-discount-row', { hidden: true }],
+]);
+let paymentCart = { items: [] };
+const paymentContext = {
+  window: {
+    Cart: { get: () => paymentCart },
+    ShippingRates: { calculate: () => 0 },
+    setTimeout: () => 1,
+    clearTimeout: () => {},
+  },
+  document: {
+    readyState: 'loading',
+    addEventListener: () => {},
+    getElementById: (id) => paymentElements.get(id) || null,
+  },
+  localStorage: { setItem: () => {} },
+};
+vm.runInNewContext(
+  source.replace(/\}\)\(\);\s*$/, '\nwindow.__paymentTest = { updateShippingAndTotal, formatApplePayAmount };\n})();'),
+  paymentContext,
+);
+paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 35 }] };
+paymentContext.window.__paymentTest.updateShippingAndTotal();
+assert.equal(paymentElements.get('total').textContent, '$105.00', 'wallet sheet total must include bundle discount');
+assert.equal(paymentContext.window.__paymentTest.formatApplePayAmount(paymentCart), '105.00');
+assert.equal(paymentElements.get('bundle-discount-row').hidden, false);
+assert.equal(paymentElements.get('bundle-discount').textContent, '−$35.00');
 for (const asset of [
   'runtime-paypal-client-config.min.js',
   'runtime-paypal-sdk-loader.min.js',
@@ -134,6 +168,8 @@ try {
     { id: 'moringa-powder', quantity: 1 },
   ], '81.00', '0.00');
   await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '105.00', '0.00', '35.00');
+  let appleOrderId;
+  let appleCaptureToken;
   {
     let sentOrder;
     const fetchMock = globalThis.fetch;
@@ -148,7 +184,7 @@ try {
       body: JSON.stringify({
         countryCode: 'AU',
         items: [{ id: 'moringa-powder', quantity: 1 }],
-        email: 'alex@example.com',
+        email: 'stale@example.com',
         requireShipping: true,
         shipping: {
           fullName: 'Alex Buyer',
@@ -164,8 +200,12 @@ try {
     });
     globalThis.fetch = fetchMock;
     assert.equal(response.statusCode, 200, response.body);
+    appleOrderId = JSON.parse(response.body).orderID;
+    appleCaptureToken = JSON.parse(response.body).captureToken;
+    assert.equal(verifyCaptureToken(appleOrderId, appleCaptureToken, 'test-secret').walletOrder.payer.email_address, 'alex@example.com');
+    assert.equal(verifyCaptureToken(appleOrderId, `${appleCaptureToken}x`, 'test-secret'), null);
     assert.equal(sentOrder.application_context.shipping_preference, 'SET_PROVIDED_ADDRESS');
-    assert.equal(sentOrder.payer.email_address, 'alex@example.com');
+    assert.equal(sentOrder.payer, undefined, 'Apple Pay must provide its own payer during confirmation');
     assert.equal(sentOrder.purchase_units[0].shipping.name.full_name, 'Alex Buyer');
     assert.equal(sentOrder.purchase_units[0].shipping.address.postal_code, '3029');
     assert.equal(sentOrder.purchase_units[0].shipping.email_address, 'alex@example.com');
@@ -184,6 +224,19 @@ try {
     });
     assert.equal(missingShip.statusCode, 400);
     assert.match(missingShip.body, /delivery name and address/i);
+  }
+  {
+    const baseShipping = {
+      fullName: 'Alex Buyer', addressLine1: '1 Ridley Place', city: 'Truganina',
+      postalCode: '3029', countryCode: 'AU',
+    };
+    const event = (shipping) => ({
+      httpMethod: 'POST',
+      headers: { origin: 'https://nutrithrive.com.au', 'x-nf-client-connection-ip': `wallet-invalid-${shipping.email || shipping.countryCode}` },
+      body: JSON.stringify({ countryCode: 'AU', items: [{ id: 'moringa-powder', quantity: 1 }], requireShipping: true, shipping }),
+    });
+    assert.match((await createOrder(event(baseShipping))).body, /valid email address/i);
+    assert.match((await createOrder(event({ ...baseShipping, email: 'alex@example.com', countryCode: 'NZ' }))).body, /does not match/i);
   }
 
   {
@@ -328,6 +381,68 @@ try {
   } finally {
     console.error = originalError;
     console.warn = originalWarn;
+  }
+  {
+    const sentEmails = [];
+    process.env.WEB3FORMS_ACCESS_KEY = 'test-key';
+    globalThis.fetch = async (url) => {
+      if (String(url).endsWith('/v1/oauth2/token')) {
+        return { ok: true, json: async () => ({ access_token: 'test-token' }) };
+      }
+      if (String(url).endsWith(`/v2/checkout/orders/${appleOrderId}/capture`)) {
+        return { ok: true, json: async () => ({
+          id: appleOrderId,
+          status: 'COMPLETED',
+          purchase_units: [{
+            payments: { captures: [{ amount: { currency_code: 'AUD', value: '20.69' } }] },
+          }],
+        }) };
+      }
+      if (String(url).endsWith(`/v2/checkout/orders/${appleOrderId}`)) {
+        return { ok: true, json: async () => ({
+          id: appleOrderId,
+          payer: { email_address: 'wrong@example.com' },
+          purchase_units: [{ shipping: {
+            name: { full_name: 'Wrong Recipient' },
+            address: { address_line_1: 'Wrong Street', admin_area_2: 'Sydney', postal_code: '2000', country_code: 'AU' },
+          } }],
+        }) };
+      }
+      throw new Error(`unexpected request: ${url}`);
+    };
+    const fetchPayPal = globalThis.fetch;
+    globalThis.fetch = async (url, options) => {
+      if (String(url) === 'https://api.web3forms.com/submit') {
+        sentEmails.push(JSON.parse(options.body));
+        return { ok: true, json: async () => ({ success: true }) };
+      }
+      return fetchPayPal(url, options);
+    };
+    const savedLog = console.log;
+    console.log = () => {};
+    try {
+      const response = await captureOrder({
+        httpMethod: 'POST',
+        headers: { origin: 'https://nutrithrive.com.au', 'x-nf-client-connection-ip': 'capture-wallet' },
+        body: JSON.stringify({ orderID: appleOrderId, captureToken: appleCaptureToken }),
+      });
+      assert.equal(response.statusCode, 200, response.body);
+      const details = parseCaptureForEmail(JSON.parse(response.body), appleOrderId);
+      assert.equal(details.customerEmail, 'alex@example.com');
+      assert.equal(details.customerName, 'Alex Buyer');
+      assert.match(details.shippingAddress, /1 Ridley Place/);
+      assert.doesNotMatch(details.shippingAddress, /Wrong Street/);
+      assert.equal(details.items[0].name, '100g Moringa');
+      assert.equal(sentEmails.length, 2);
+      const ownerEmail = sentEmails.find((email) => email.to === 'nutrithrive0@gmail.com');
+      assert.ok(ownerEmail);
+      assert.match(ownerEmail.message, /alex@example\.com/);
+      assert.match(ownerEmail.message, /1 Ridley Place/);
+      assert.match(ownerEmail.message, /100g Moringa/);
+    } finally {
+      console.log = savedLog;
+      delete process.env.WEB3FORMS_ACCESS_KEY;
+    }
   }
   console.log('Payment checkout verification passed (assets, Apple Pay shipping/email, pricing, capture enrichment).');
 } finally {

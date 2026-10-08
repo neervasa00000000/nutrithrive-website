@@ -1,6 +1,6 @@
-import { createHmac, timingSafeEqual } from "crypto";
 import { mergeOrderDetails, parseCaptureForEmail, sendOrderConfirmationEmails } from "./order-email.js";
 import { getHeader, getClientIp, isRateLimited } from "./checkout-request.js";
+import { verifyCaptureToken } from "./checkout-proof.js";
 
 function orderNeedsEnrichment(capture, orderId) {
     const details = parseCaptureForEmail(capture, orderId);
@@ -104,9 +104,8 @@ export async function handler(event) {
         }
 
         // Verify capture token to prevent capturing arbitrary PayPal orders.
-        const expected = createHmac("sha256", secret).update(String(orderID)).digest();
-        const provided = Buffer.from(String(captureToken), "hex");
-        if (provided.length !== expected.length || !timingSafeEqual(provided, expected)) {
+        const proof = verifyCaptureToken(orderID, captureToken, secret);
+        if (!proof) {
             return {
                 statusCode: 403,
                 headers,
@@ -146,6 +145,21 @@ export async function handler(event) {
             if (orderDetails) {
                 capture = mergeOrderDetails(capture, orderDetails);
             }
+        }
+
+        // Apple Pay approved this address and the server used it for order creation.
+        // Keep it for fulfilment even if PayPal's capture omits or replaces contact fields.
+        if (proof.walletOrder) {
+            capture = mergeOrderDetails(capture, proof.walletOrder);
+            capture.payer = {
+                ...(capture.payer || {}),
+                email_address: proof.walletOrder.payer.email_address,
+                name: {
+                    given_name: proof.walletOrder.purchase_units[0].shipping.name.full_name,
+                    surname: "",
+                },
+            };
+            capture.purchase_units[0].shipping = proof.walletOrder.purchase_units[0].shipping;
         }
 
         const emailResult = await sendOrderConfirmationEmails(capture, orderID);

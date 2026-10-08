@@ -2340,6 +2340,8 @@ body.journal-searching .section-head > a {
   font-size: var(--text-sm);
 }
 
+.summary-row[hidden] { display: none; }
+
 .summary-row.total {
   font-size: 18px;
   font-weight: 600;
