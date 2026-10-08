@@ -63,8 +63,6 @@ export const PRODUCTS = [
     href: "/products/curry-leaves/",
     unit: "/ 30g",
     lab: false,
-    costCopy:
-      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "black-tea",
@@ -79,8 +77,6 @@ export const PRODUCTS = [
     href: "/products/black-tea/",
     unit: "/ 100g",
     lab: false,
-    costCopy:
-      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "moringa-soap",
@@ -95,8 +91,6 @@ export const PRODUCTS = [
     href: "/products/moringa-soap/",
     unit: "/ 95g",
     lab: false,
-    costCopy:
-      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "moringa-soap-combo",
@@ -119,8 +113,6 @@ export const PRODUCTS = [
     },
     detail:
       "100g farm-grown shade-dried moringa powder plus one 95g handmade soap bar. Save vs buying each at the original prices. Packed in Truganina.",
-    costCopy:
-      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "combo-pack",
@@ -143,8 +135,6 @@ export const PRODUCTS = [
     },
     detail:
       "100g moringa powder and 30g dried curry leaves. Morning smoothie and evening tadka from one box.",
-    costCopy:
-      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
   },
   {
     id: "diwali-gift-box",
@@ -160,8 +150,6 @@ export const PRODUCTS = [
     href: "/products/diwali-gift-box/",
     unit: "",
     lab: false,
-    costCopy:
-      "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.",
     detail:
       "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift.",
   },
@@ -178,8 +166,6 @@ export const PRODUCTS = [
     href: "/products/gift-pack/",
     unit: "",
     lab: false,
-    costCopy:
-      "Ships from Truganina. Free shipping on Australian orders of $79 or more; on its own this item ships for $11.12 (251–500 g). Order before 2pm Mon–Fri for same-day dispatch.",
   },
 ];
 
@@ -195,18 +181,14 @@ export function auSoloShippingRate(weightGrams) {
 
 export function shippingCostNote(p) {
   const rate = auSoloShippingRate(p.weight);
-  if (rate === 9.69) {
-    return "Ships from Truganina. Free shipping on Australian orders of $79 or more; under $79, standard shipping is $9.69. Order before 2pm Mon–Fri for same-day dispatch.";
-  }
-  if (rate === 11.12) {
-    return "Ships from Truganina. Free shipping on Australian orders of $79 or more; on its own this item ships for $11.12 (251–500 g). Order before 2pm Mon–Fri for same-day dispatch.";
-  }
-  return `Ships from Truganina. Free shipping on Australian orders of $79 or more; on its own this item ships for $${rate.toFixed(2)}. Order before 2pm Mon–Fri for same-day dispatch.`;
+  if (rate === 9.69) return "Free AU shipping at $79+ · $9.69 under · before 2pm Mon–Fri";
+  if (rate === 11.12) return "Free AU shipping at $79+ · $11.12 alone · before 2pm Mon–Fri";
+  return `Free AU shipping at $79+ · $${rate.toFixed(2)} alone · before 2pm Mon–Fri`;
 }
 
 export function costNote(p) {
   const serving = p.serving;
-  if (!serving) return p.costCopy || shippingCostNote(p);
+  if (!serving) return shippingCostNote(p);
   const grams = serving.basisGrams ?? p.weight;
   const size = serving.grams;
   const count = grams / size;
