@@ -102,16 +102,27 @@ function loadApplePaySdk() {
   applePaySdkPromise = new Promise(function (resolve, reject) {
     const existing = document.querySelector('script[data-nt-apple-pay-sdk]');
     if (existing) {
-      if (window.ApplePaySession) {
+      // The preloaded script can finish before checkout starts. In browsers where
+      // ApplePaySession is unavailable, waiting for its old load event hangs.
+      if (window.ApplePaySession || existing.dataset.ntLoaded === "1") {
         resolve();
         return;
       }
-      existing.addEventListener("load", function () {
-        resolve();
-      });
-      existing.addEventListener("error", function () {
+      if (existing.dataset.ntError === "1") {
         reject(new Error("Apple Pay SDK failed to load"));
-      });
+        return;
+      }
+      const timer = window.setTimeout(function () {
+        reject(new Error("Apple Pay SDK timed out"));
+      }, 5000);
+      existing.addEventListener("load", function () {
+        window.clearTimeout(timer);
+        resolve();
+      }, { once: true });
+      existing.addEventListener("error", function () {
+        window.clearTimeout(timer);
+        reject(new Error("Apple Pay SDK failed to load"));
+      }, { once: true });
       return;
     }
     const script = document.createElement("script");
@@ -364,11 +375,13 @@ function tryPayPalApplePayButton(seq, appleContainer) {
           window.__ntApplePayCaptureToken,
           window.__ntApplePayCart || getCart()
         ).catch(function (err) {
-          setStatus("Payment error: " + (err.message || "Unknown error"), true);
+          console.error("Apple Pay capture failed:", err);
+          setStatus("Apple Pay couldn't confirm your order. Check your Wallet or PayPal activity before trying again, or use PayPal or card below.", true);
         });
       },
       onError: function (err) {
-        setStatus("Apple Pay error: " + (err && err.message ? err.message : "Unknown error"), true);
+        console.error("Apple Pay button error:", err);
+        setStatus("Apple Pay couldn't complete. Check your Wallet details, or use PayPal or card below.", true);
       },
     });
     paypalInstances.push(buttons);
