@@ -169,6 +169,19 @@ const ARTICLE_SEO_OVERRIDES = {
     heroAlt: "A bedside table at night with a lamp and a digital clock glowing in the early hours.",
     heroCaptionHtml: `<p class="article-hero-credit"><em>Photo: <a href="https://www.pexels.com/photo/a-lamp-shade-and-a-clock-on-the-bedside-table-6943418/" rel="noopener noreferrer" target="_blank">cottonbro studio / Pexels</a></em></p>`,
   },
+  "eye-twitching-causes-magnesium-australia-2026": {
+    title: "Why Does My Eye Keep Twitching? It's Probably Not Magnesium",
+    description: "Eyelid twitching for days? Two studies found no magnesium link. What usually triggers it, what helps it settle, and when to see a GP in Australia.",
+    h1: "Why Does My Eye Keep Twitching? It's Probably Not Magnesium",
+    ogTitle: "Eye Twitching for Days? What Causes It and When to Worry",
+    ogDescription: "It's probably not magnesium. Common triggers like sleep, screens and caffeine, what helps an eyelid twitch settle, and the signs worth a GP visit.",
+    articleSection: "Wellness",
+    ledeHtml: "Your eyelid has been flickering for days and the internet says you're low on magnesium. Two clinic studies checked, and the twitchers' blood levels were normal. Here's what usually sets it off, what calms it, and when to see a doctor.",
+    heroAlt: "A man rubbing his eyes while sitting at a desk with a laptop",
+    heroImage: "/assets/images/blog/eye-twitching-magnesium-hero-1200.webp",
+    ogImage: "/assets/images/og/eye-twitching-magnesium-og-1200.jpg",
+    heroCaptionHtml: `<p class="article-hero-credit"><em>Photo: Pexels</em></p>`,
+  },
   "dried-curry-leaves-australia-guide": {
     title: "Curry Leaves at Woolworths, Coles & Aldi: Where to Buy",
     description: "Can you buy curry leaves at Woolworths, Coles or Aldi? What each listed in Oct 2026 (fresh punnets, dried packs), Indian grocers, online and storage tips.",
@@ -491,6 +504,11 @@ const REDIRECTED_JOURNAL_SLUGS = new Set(
 );
 
 const CURATED_RELATED = {
+  "eye-twitching-causes-magnesium-australia-2026": [
+    "why-always-tired-nutritional-deficiencies-australia-2026",
+    "waking-up-at-3am-every-night-australia-2026",
+    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+  ],
   "waking-up-at-3am-every-night-australia-2026": [
     "moringa-for-sleep-quality-insomnia-2026",
     "why-always-tired-nutritional-deficiencies-australia-2026",
@@ -596,6 +614,16 @@ const CURATED_RELATED = {
 // clicks. These keep the next step aligned with the reader's query instead of
 // repeating one generic sales message across every guide.
 const ARTICLE_CONVERSION_PATHS = {
+  "eye-twitching-causes-magnesium-australia-2026": {
+    kicker: "A practical next step",
+    title: "Farm-grown moringa leaf powder",
+    body: "NutriThrive products are foods, not treatments for eye twitching. If leaf powder already belongs in your kitchen, pouch sizes start at $11 with free AU shipping at $79.",
+    cta: "View moringa powder",
+    links: [
+      ["Why am I always tired? Nutritional causes", "why-always-tired-nutritional-deficiencies-australia-2026"],
+      ["Waking up at 3am every night", "waking-up-at-3am-every-night-australia-2026"],
+    ],
+  },
   "waking-up-at-3am-every-night-australia-2026": {
     kicker: "If nutrition is part of the picture",
     title: "Magnesium-rich leaf powder for everyday meals",
@@ -4098,7 +4126,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const ledeHtml = seoOverride?.ledeHtml ? (/<[a-z][\s\S]*>/i.test(seoOverride.ledeHtml) ? seoOverride.ledeHtml : esc(seoOverride.ledeHtml)) : esc(description);
   const r = routes();
   const url = r.articleAbs(meta.slug);
-  const image = absUrl(meta.image);
+  const heroSrc = seoOverride?.heroImage || meta.image;
+  const socialImage = seoOverride?.ogImage || meta.image;
+  const image = absUrl(socialImage);
   const category = seoOverride?.articleSection || humanCopy(meta.category);
   const topic = journalTopic(meta);
   const moringaCluster = MORINGA_CLUSTER_SEO_SLUGS.has(meta.slug) || topic === "Moringa guides";
@@ -4169,7 +4199,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     preserveTitle: Boolean(seoOverride?.title || liveSeo?.title),
     preserveDescription: true,
     ogType: "article",
-    ogImage: meta.image,
+    ogImage: socialImage,
     ogImageWidth: 1200,
     ogImageHeight: 675,
     ogTitle: seoOverride?.ogTitle,
@@ -4187,7 +4217,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>
           <p class="lede">${ledeHtml}</p>
-          <div class="article-hero"><img src="${meta.image}" alt="${esc(seoOverride?.heroAlt || title)}" width="1200" height="675" fetchpriority="high"></div>
+          <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="1200" height="675" fetchpriority="high"></div>
           ${seoOverride?.heroCaptionHtml || ""}
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
             <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong></div>
@@ -4286,6 +4316,9 @@ function loadArticles() {
 
 function articleImage(article) {
   const source = article.image || "";
+  if (article.slug === "eye-twitching-causes-magnesium-australia-2026") {
+    return "/assets/images/blog/eye-twitching-magnesium-hero-1200.webp";
+  }
   if (article.slug === "waking-up-at-3am-every-night-australia-2026") {
     return "/assets/images/blog/waking-up-at-3am-every-night-australia-2026.webp";
   }
