@@ -184,6 +184,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/blog/dried-curry-leaves-quality-guide-how-to-use-hero.webp"
   },
   {
+    "slug": "eye-twitching-causes-magnesium-australia-2026",
+    "title": "Why Does My Eye Keep Twitching? It's Probably Not Magnesium",
+    "description": "Eyelid twitching for days? Two studies found no magnesium link. What usually triggers it, what helps it settle, and when to see a GP in Australia.",
+    "category": "Wellness",
+    "href": "/blog/eye-twitching-causes-magnesium-australia-2026",
+    "image": "/assets/images/blog/eye-twitching-magnesium-hero-1200.webp"
+  },
+  {
     "slug": "fibre-deficiency-australia-bowel-cancer-risk-2026",
     "title": "Fibre Deficiency in Australia: The Cancer Risk Most People Don&#39;t Know About",
     "description": "Low fibre is linked to a large share of bowel cancers in Australia. What fibre does, how much you need, and easy ways to eat more.",
