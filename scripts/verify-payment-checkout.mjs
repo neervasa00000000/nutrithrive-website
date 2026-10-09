@@ -36,6 +36,8 @@ assert.match(page, /id="applepay-container"/, 'Apple Pay button mount must exist
 assert.match(page, /id="applepay-availability"/, 'unavailable Apple Pay note mount must exist');
 assert.match(source, /apple-pay-sdk\.js/, 'Apple Pay JS SDK must load');
 assert.match(page, /applepay\.cdn-apple\.com\/jsapi/, 'payment page must preload Apple Pay JS SDK');
+assert.match(page, /data-nt-apple-pay-sdk="1" onload="this\.dataset\.ntLoaded='1'"/, 'Apple Pay SDK preload must report when it has already loaded');
+assert.match(source, /existing\.dataset\.ntLoaded === "1"/, 'Apple Pay setup must handle a preload that finished before checkout started');
 assert.match(source, /FUNDING\.APPLEPAY/, 'PayPal Apple Pay funding button must remain as fallback');
 assert.match(source, /requireShipping:\s*true/, 'Apple Pay must require a delivery address');
 assert.match(source, /mapAppleShippingContact/, 'Apple Pay must map wallet shipping contacts');
@@ -70,6 +72,22 @@ vm.runInNewContext(
 );
 assert.match(paymentContext.window.__paymentTest.paypalSdkParams().components, /applepay/);
 assert.match(paymentContext.window.__paymentTest.paypalSdkParams()['enable-funding'], /applepay/);
+const preloadedAppleSdk = { dataset: { ntLoaded: '1' }, addEventListener: () => {
+  throw new Error('A completed Apple Pay SDK load must not wait for another load event');
+} };
+const preloadContext = {
+  window: {},
+  document: {
+    readyState: 'loading',
+    addEventListener: () => {},
+    querySelector: () => preloadedAppleSdk,
+  },
+};
+vm.runInNewContext(
+  source.replace(/\}\)\(\);\s*$/, '\nwindow.__loadApplePaySdk = loadApplePaySdk;\n})();'),
+  preloadContext,
+);
+await preloadContext.window.__loadApplePaySdk();
 paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 35 }] };
 paymentContext.window.__paymentTest.updateShippingAndTotal();
 assert.equal(paymentElements.get('total').textContent, '$105.00', 'wallet sheet total must include bundle discount');

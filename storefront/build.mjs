@@ -25,7 +25,7 @@ const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261008-9";
-const PAYMENT_ASSET_VERSION = "20261008-9";
+const PAYMENT_ASSET_VERSION = "20261009-1";
 const CSS_ASSET_VERSION = "20261008-5";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
@@ -2987,7 +2987,7 @@ function paymentPage() {
     canonicalPath: "/payment",
     current: "",
     preserveTitle: true,
-    extraFoot: `<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js" crossorigin="anonymous" data-nt-apple-pay-sdk="1" defer></script>${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${PAYMENT_ASSET_VERSION}" defer></script>`,
+    extraFoot: `<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js" crossorigin="anonymous" data-nt-apple-pay-sdk="1" onload="this.dataset.ntLoaded='1'" onerror="this.dataset.ntError='1'" defer></script>${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${PAYMENT_ASSET_VERSION}" defer></script>`,
     robots: "noindex, follow",
     main: `
       <section class="page-intro wrap cart-intro">
@@ -3003,7 +3003,8 @@ function paymentPage() {
           </div>
           <div id="pay-form" class="pay-form">
             <p class="pay-copy">All transactions are secure and encrypted.</p>
-            <p class="pay-copy">At checkout, Apple Pay or PayPal will show the exact <strong>name, email and full shipping address</strong> stored in your wallet. Review those details carefully. We ship to the address you approve there.</p>
+            <p class="pay-copy">Review the <strong>name, email and full delivery address</strong> shown before approving your payment. We ship to the address attached to your order.</p>
+            <p class="pay-copy">Apple Pay is available on eligible devices and browsers. If it does not open here, try Safari on your Apple device, or use PayPal or card below.</p>
             <div class="field">
               <label for="shipping-country">Shipping country</label>
               <select id="shipping-country">
