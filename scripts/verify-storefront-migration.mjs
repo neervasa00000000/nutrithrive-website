@@ -25,6 +25,9 @@ const approvedSeoChanges = {
     description: "This guide has moved to a clearer, consolidated NutriThrive article.",
     canonical: "https://nutrithrive.com.au/blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
   },
+  "blog/waking-up-at-3am-every-night-australia-2026.html": {
+    description: "Wake at 3am every night? Why early-morning waking is so common, the habits that make it worse, and what gets you back to sleep.",
+  },
   "blog/fathers-day-gift-under-40.html": {
     title: "Page moved | NutriThrive",
     description: "This seasonal page now leads to the current NutriThrive product.",
@@ -270,7 +273,7 @@ for (const rel of trackedBlogs) {
     if (renamedJournal) continue;
     if (field === "description") {
       const originalHtml = original(rel);
-      const naiveBefore = normalizeMetaText(naiveMetaContent(originalHtml));
+      const naiveBefore = normalizeMetaText(metaContent(originalHtml, "description") || "");
       const repaired =
         (looksTruncatedMeta(before[field]) || looksTruncatedMeta(naiveBefore) || naiveBefore !== normalizeMetaText(before[field])) &&
         !looksTruncatedMeta(after[field]) &&

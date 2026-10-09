@@ -666,7 +666,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "waking-up-at-3am-every-night-australia-2026",
     "title": "Waking Up at 3am Every Night? What's Going On and What Helps",
-    "description": "You fall asleep fine, then your eyes snap open at 3am and your brain starts on tomorrow's to-do list. Here's why the early hours are the most common time to wake, the everyday habits that make it worse, and what actually gets you back to sleep.",
+    "description": "Wake at 3am every night? Why early-morning waking is so common, the habits that make it worse, and what gets you back to sleep.",
     "category": "Wellness",
     "href": "/blog/waking-up-at-3am-every-night-australia-2026",
     "image": "/assets/images/blog/waking-up-at-3am-every-night-australia-2026.webp"
