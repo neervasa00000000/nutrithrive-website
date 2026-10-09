@@ -1543,6 +1543,9 @@ function writePage(rel, html, destRoot = OUT) {
     (_match, attribute, assetPath) => {
       const version = assetPath.includes("/assets/css/storefront-system")
         ? (rel === "pages/shop/cart.html" ? CART_CSS_ASSET_VERSION : CSS_ASSET_VERSION)
+        : assetPath === "/assets/js/storefront/payment-page.js" ||
+            assetPath === "/assets/js/storefront/payment-page.min.js"
+          ? PAYMENT_ASSET_VERSION
         : ASSET_VERSION;
       return `${attribute}="${assetPath}?v=${version}"`;
     }
