@@ -160,11 +160,12 @@ const MORINGA_CLUSTER_SEO_SLUGS = new Set([
 const ARTICLE_SEO_OVERRIDES = {
   "waking-up-at-3am-every-night-australia-2026": {
     title: "Why Do I Wake Up at 3am and Can't Get Back to Sleep?",
-    description: "You fall asleep fine, then your eyes snap open at 3am and your brain starts on tomorrow's to-do list. Here's why the early hours are the most common time to wake, the everyday habits that make it worse, and what actually gets you back to sleep.",
+    description: "Wake at 3am every night? Why early-morning waking is so common, the habits that make it worse, and what gets you back to sleep.",
     h1: "Waking Up at 3am Every Night? What's Going On and What Helps",
     ogTitle: "Why Do I Wake Up at 3am and Can't Get Back to Sleep?",
     ogDescription: "Why early-morning waking is so common in Australia, the habits that make it worse, and what actually helps you get back to sleep.",
     articleSection: "Sleep",
+    ledeHtml: "You fall asleep fine, then your eyes snap open at 3am and your brain starts on tomorrow's to-do list. Here's why the early hours are the most common time to wake, the everyday habits that make it worse, and what actually gets you back to sleep.",
     heroAlt: "A bedside table at night with a lamp and a digital clock glowing in the early hours.",
     heroCaptionHtml: `<p class="article-hero-credit"><em>Photo: <a href="https://www.pexels.com/photo/a-lamp-shade-and-a-clock-on-the-bedside-table-6943418/" rel="noopener noreferrer" target="_blank">cottonbro studio / Pexels</a></em></p>`,
   },
