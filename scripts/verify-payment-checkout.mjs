@@ -37,6 +37,9 @@ assert.match(page, /id="applepay-availability"/, 'unavailable Apple Pay note mou
 assert.match(source, /apple-pay-sdk\.js/, 'Apple Pay JS SDK must load');
 assert.match(page, /applepay\.cdn-apple\.com\/jsapi/, 'payment page must preload Apple Pay JS SDK');
 assert.match(page, /data-nt-apple-pay-sdk="1" onload="this\.dataset\.ntLoaded='1'"/, 'Apple Pay SDK preload must report when it has already loaded');
+const paymentVersion = read('storefront/build.mjs').match(/const PAYMENT_ASSET_VERSION = "([^"]+)";/)?.[1];
+assert.ok(paymentVersion, 'payment asset version must be defined');
+assert.ok(page.includes(`/payment-page.min.js?v=${paymentVersion}`), 'payment page must use its own checkout script cache version');
 assert.match(source, /existing\.dataset\.ntLoaded === "1"/, 'Apple Pay setup must handle a preload that finished before checkout started');
 assert.match(source, /FUNDING\.APPLEPAY/, 'PayPal Apple Pay funding button must remain as fallback');
 assert.match(source, /requireShipping:\s*true/, 'Apple Pay must require a delivery address');
