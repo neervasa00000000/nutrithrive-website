@@ -155,6 +155,7 @@ const MORINGA_CLUSTER_SEO_SLUGS = new Set([
   "science-shade-drying-vs-sun-drying-moringa",
   "moringa-vs-spirulina-vs-matcha-comparison-australia",
   "where-to-buy-moringa-leaves-australia",
+  "moringa-vs-curry-leaves-difference-australia",
 ]);
 
 const ARTICLE_SEO_OVERRIDES = {
@@ -250,6 +251,22 @@ const ARTICLE_SEO_OVERRIDES = {
     ogTitle: "AG1 Alternative Australia: Moringa Powder vs AG1",
     ogDescription: "AG1 is a blend scoop. NutriThrive is single-ingredient moringa leaf powder — honest format comparison from Truganina.",
     articleSection: "Moringa",
+  },
+  "moringa-vs-curry-leaves-difference-australia": {
+    title: "Moringa vs Curry Leaves: Not the Same Leaf (AU Cook's Guide)",
+    description:
+      "Moringa (drumstick, murungai keerai, malunggay) and curry leaves (kadi patta) are different plants. How to tell them apart and which one your recipe needs.",
+    h1: "Moringa vs Curry Leaves: Two Different Leaves, and Which One Your Recipe Needs",
+    ogTitle: "Moringa vs Curry Leaves: Not the Same Leaf (AU Cook's Guide)",
+    ogDescription:
+      "Moringa (drumstick, murungai keerai, malunggay) and curry leaves (kadi patta) are different plants. How to tell them apart and which one your recipe needs.",
+    articleSection: "Moringa",
+    ledeHtml:
+      "Moringa leaves and curry leaves both turn up in South Indian, Sri Lankan and Filipino cooking, and both get called by several names, but they come from different plants and do different jobs in the pan. Here is how to tell them apart, a name decoder for both, and what to buy in Australia when you can't get fresh.",
+    heroAlt:
+      "NutriThrive 100g moringa powder beside a 30g pouch of dried curry leaves, each with a bowl of the ingredient in front",
+    heroImage: "/assets/images/product_webp/moringa-curry-leaves-combo-main.webp",
+    ogImage: "/assets/images/product_webp/moringa-curry-leaves-combo-main.webp",
   },
   "what-does-moringa-powder-taste-like-honest-guide-2026": {
     title: "What Does Moringa Powder Taste Like? (Honest AU Guide)",
@@ -569,6 +586,11 @@ const CURATED_RELATED = {
     "grow-moringa-tree-australia",
     "what-does-moringa-powder-taste-like-honest-guide-2026",
   ],
+  "moringa-vs-curry-leaves-difference-australia": [
+    "where-to-buy-moringa-leaves-australia",
+    "curry-leaves-vs-curry-powder-difference-explained-2026",
+    "curry-leaves-substitute-what-to-use-2026",
+  ],
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": [
     "verify-moringa-quality-premium-buyers-checklist-2026",
     "how-to-choose-moringa-powder-australia-2026",
@@ -753,6 +775,16 @@ const ARTICLE_CONVERSION_PATHS = {
     links: [["Ways to use moringa powder in everyday food", "how-to-add-moringa-to-diet"]],
     methodology: true,
   },
+  "moringa-vs-curry-leaves-difference-australia": {
+    kicker: "Keep both in the pantry",
+    title: "Moringa powder, from $11",
+    body: "Shade-dried leaf powder packed in Truganina. Dried curry leaves are $7, or both come together in the $17 combo.",
+    cta: "Shop moringa powder",
+    links: [
+      ["Where to buy moringa leaves in Australia", "where-to-buy-moringa-leaves-australia"],
+      ["Curry leaf substitute guide", "curry-leaves-substitute-what-to-use-2026"],
+    ],
+  },
   "moringa-smoothie-recipes-australia-2026": {
     kicker: "For these recipes",
     title: "NutriThrive Moringa Powder",
@@ -825,6 +857,7 @@ const ARTICLE_CONVERSION_PATHS = {
 };
 
 function journalTopic(article) {
+  if (article.slug === "moringa-vs-curry-leaves-difference-australia") return "Moringa guides";
   const value = `${article.slug} ${article.title} ${article.category}`.toLowerCase();
   if (/curry|karipatta|tadka|dahl|diwali/.test(value)) return "Curry leaves";
   if (/darjeeling|black-tea|chai/.test(value) || (/caffeine/.test(value) && !/moringa/.test(value))) return "Darjeeling tea";
@@ -892,6 +925,7 @@ const PRODUCT_GUIDES = {
     ["How to take moringa powder", "how-to-add-moringa-to-diet"],
     ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
+    ["Moringa vs curry leaves", "moringa-vs-curry-leaves-difference-australia"],
   ],
   "curry-leaves": [
     ["Where to buy curry leaves in Australia", "dried-curry-leaves-australia-guide"],
@@ -899,6 +933,7 @@ const PRODUCT_GUIDES = {
     ["Curry leaf substitutes in Australia", "curry-leaves-substitute-what-to-use-2026"],
     ["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"],
     ["30-minute curry leaf dal recipe", "curry-leaves-dahl-recipe-30-minutes-australia-2026"],
+    ["Moringa vs curry leaves", "moringa-vs-curry-leaves-difference-australia"],
   ],
   "black-tea": [
     ["Darjeeling black tea buying guide", "darjeeling-black-tea-australia-guide"],
@@ -938,6 +973,7 @@ const PRODUCT_GUIDES = {
     ["How to take moringa powder", "how-to-add-moringa-to-diet"],
     ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
+    ["Moringa vs curry leaves", "moringa-vs-curry-leaves-difference-australia"],
   ],
 };
 

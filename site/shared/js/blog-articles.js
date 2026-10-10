@@ -544,6 +544,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "moringa-vs-curry-leaves-difference-australia",
+    "title": "Moringa vs Curry Leaves: Not the Same Leaf (AU Cook's Guide)",
+    "description": "Moringa (drumstick, murungai keerai, malunggay) and curry leaves (kadi patta) are different plants. How to tell them apart and which one your recipe needs.",
+    "category": "Moringa",
+    "href": "/blog/moringa-vs-curry-leaves-difference-australia",
+    "image": "/assets/images/product_webp/moringa-curry-leaves-combo-main.webp"
+  },
+  {
     "slug": "moringa-vs-spirulina-vs-matcha-comparison-australia",
     "title": "Moringa vs Spirulina vs Matcha Powder (Australia)",
     "description": "Three green powders side by side: taste, typical use, and when single-ingredient moringa leaf powder fits. Farm-grown NutriThrive from Melbourne.",

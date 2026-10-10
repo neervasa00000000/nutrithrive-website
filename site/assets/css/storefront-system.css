@@ -2969,6 +2969,21 @@ body.journal-searching .section-head > a {
   margin: var(--space-5) 0;
 }
 
+.prose figure {
+  margin: var(--space-5) 0;
+}
+
+.prose figure img {
+  margin: 0;
+}
+
+.prose figcaption {
+  margin-top: var(--space-3);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
 .prose h2 {
   margin-top: var(--space-8);
 }
