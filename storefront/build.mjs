@@ -312,12 +312,12 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa as a Natural Pre-Workout in Australia (2026)",
   },
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
-    title: "Moringa at Chemist Warehouse: Capsules or Powder? (2026)",
-    description: "Chemist Warehouse mostly lists moringa capsules, not loose powder. Compare formats and pack sizes, then see where to buy leaf powder online from $11.",
-    h1: "Chemist Warehouse Moringa: Powder, Capsules and What to Buy",
-    ogTitle: "Chemist Warehouse Moringa: Powder vs Capsules (AU)",
-    ogDescription: "What Chemist Warehouse stocks for moringa, how capsules differ from leaf powder, and NutriThrive pouch sizes packed in Melbourne.",
-    ledeHtml: "Chemist Warehouse moringa is usually capsules. Compare powder vs capsules by format and pack size, then buy farm-grown leaf powder online from Truganina.",
+    title: "Chemist Warehouse Moringa: Capsule Price per 100g vs Powder",
+    description: "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping at $79.",
+    h1: "Moringa at Chemist Warehouse: What's on the Shelf and What It Costs per 100g",
+    ogTitle: "Chemist Warehouse Moringa: Capsule Price per 100g vs Powder",
+    ogDescription: "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping at $79.",
+    ledeHtml: "Chemist Warehouse mostly lists moringa as capsules and tablets, not loose powder. Here is what those bottles hold in grams of leaf, what that works out to per 100g, and where to buy leaf powder if you'd rather use a teaspoon.",
     articleSection: "Moringa",
   },
   "moringa-brands-comparison-australia-2026": {
@@ -3993,7 +3993,7 @@ function extractArticleStructuredData(slug) {
   const blocks = [];
   for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     const raw = match[1].trim();
-    if (/"@type"\s*:\s*"BlogPosting"/.test(raw) || /"@type"\s*:\s*"FAQPage"/.test(raw)) {
+    if (/"@type"\s*:\s*"(?:BlogPosting|Article|FAQPage)"/.test(raw)) {
       blocks.push(`<script type="application/ld+json">${raw}</script>`);
     } else if (/"@type"\s*:\s*"BreadcrumbList"/.test(raw) && /moringa-guides/.test(raw)) {
       blocks.push(`<script type="application/ld+json">${raw}</script>`);

@@ -457,8 +457,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "title": "Moringa at Chemist Warehouse: Capsules or Powder? (2026)",
-    "description": "Chemist Warehouse mostly lists moringa capsules, not loose powder. Compare formats and pack sizes, then see where to buy leaf powder online from $11.",
+    "title": "Chemist Warehouse Moringa: Capsule Price per 100g vs Powder",
+    "description": "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping at $79.",
     "category": "Moringa",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
