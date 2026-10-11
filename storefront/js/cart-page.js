@@ -15,14 +15,15 @@ const PAIRS = {
   "moringa-powder": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap", "combo-pack"],
   "moringa-200g": ["moringa-400g", "curry-leaves", "black-tea", "moringa-soap"],
   "moringa-400g": ["curry-leaves", "black-tea", "moringa-soap"],
-  "curry-leaves": ["black-tea", "combo-pack", "gift-pack"],
-  "black-tea": ["curry-leaves", "gift-pack", "moringa-soap"],
-  "moringa-soap": ["gift-pack", "black-tea", "curry-leaves"],
-  "combo-pack": ["black-tea", "moringa-soap", "gift-pack"],
-  "gift-pack": ["curry-leaves", "black-tea"],
+  "curry-leaves": ["black-tea", "diwali-gift-box", "moringa-soap"],
+  "black-tea": ["curry-leaves", "diwali-gift-box", "moringa-soap"],
+  "moringa-soap": ["diwali-gift-box", "black-tea", "curry-leaves"],
+  "combo-pack": ["black-tea", "moringa-soap", "diwali-gift-box"],
+  "gift-pack": ["curry-leaves", "black-tea", "diwali-gift-box"],
+  "diwali-gift-box": ["black-tea", "curry-leaves", "moringa-soap"],
 };
 
-const POPULAR = ["moringa-powder", "curry-leaves", "black-tea", "moringa-soap"];
+const POPULAR = ["diwali-gift-box", "curry-leaves", "black-tea", "moringa-soap"];
 
 function money(n) {
   return `$${Number(n).toFixed(2)}`;
