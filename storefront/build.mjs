@@ -240,14 +240,14 @@ const ARTICLE_SEO_OVERRIDES = {
     articleSection: "Moringa",
   },
   "curry-leaves-substitute-what-to-use-2026": {
-    title: "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead",
-    description: "Curry leaf substitute options in Australia: kaffir lime leaf, lemon zest, and when dried leaves beat every swap. Dried pouch $7. Free AU shipping at $79.",
-    h1: "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead",
+    title: "Curry Leaf Substitute: Best Swaps, Ratios & What Not to Use",
+    description: "No curry leaves? Dried curry leaves are the closest swap (use 2 to 3x), then makrut lime leaf or bay with lime zest. Ratios by dish. Never curry powder.",
+    h1: "Curry Leaf Substitute: Best Swaps, Ratios and What Not to Use",
   },
   "curry-leaves-tea-how-to-make-benefits-2026": {
-    title: "Curry Leaf Tea: How to Make It with Dried Leaves",
-    description: "Make curry leaf tea from dried leaves: how many to use, steep time, pairings (ginger, lemon, honey) and how to store the pouch so it stays fragrant.",
-    h1: "Curry Leaf Tea: How to Make It with Dried Leaves",
+    title: "How to Make Curry Leaf Tea with Dried Leaves (3 Recipes)",
+    description: "How to make curry leaf tea from dried leaves: 1 tbsp per 500 ml, simmer 5 to 8 min. Plain, ginger-lemon and Darjeeling versions, plus bitter-cup fixes.",
+    h1: "How to Make Curry Leaf Tea with Dried Leaves",
   },
   "grow-moringa-tree-australia": {
     title: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
@@ -392,7 +392,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "how-to-brew-darjeeling-tea-perfectly-2026": {
     title: "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
-    description: "Brew Darjeeling loose leaf right: 85–95°C water, 3–4 min, 2–2.5 g per cup. Milk or not, iced and pot ratios, and where to buy in Australia.",
+    description: "Brew Darjeeling loose leaf: 85 to 95°C, 3 to 4 min, 2 to 2.5 g per 200 ml. First vs second flush settings, pot and iced ratios, where to buy in Australia.",
     h1: "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
   },
   "moringa-vs-coffee-melbourne-energy-hack": {
@@ -456,8 +456,8 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Does Moringa Powder Expire? Shelf Life, Storage, and When to Buy",
   },
   "darjeeling-tea-vs-english-breakfast-comparison-2026": {
-    title: "Darjeeling vs English Breakfast Tea: Taste, Caffeine, Price",
-    description: "Darjeeling vs English Breakfast: flavour, strength, caffeine, milk or not, and cost per cup. Plus where to buy Darjeeling loose leaf in Australia.",
+    title: "Darjeeling vs English Breakfast Tea: Taste, Milk & Caffeine",
+    description: "Darjeeling is a light single-region black tea; English Breakfast is a strong blend for milk. Taste, brew, caffeine and cost per cup and where to buy in AU.",
     h1: "Darjeeling vs English Breakfast Tea: Taste, Caffeine, Price",
   },
   "moringa-vs-whey-protein-comparison-2026": {
@@ -472,7 +472,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026": {
     title: "Darjeeling Tea Caffeine: mg per Cup vs Coffee & Green Tea",
-    description: "How much caffeine is in Darjeeling tea? Per-cup ranges vs coffee, green and English Breakfast, FSANZ daily guidance, and how to brew a lighter cup.",
+    description: "Caffeine in Darjeeling tea: Australian figures per 250 ml cup vs brewed and instant coffee, green tea and cola, the FSANZ daily maximum, and lighter brews.",
     h1: "Darjeeling Tea Caffeine: mg per Cup vs Coffee & Green Tea",
   },
   "curry-leaves-recipes-beyond-dal": {
@@ -489,8 +489,8 @@ const ARTICLE_SEO_OVERRIDES = {
     articleSection: "Moringa",
   },
   "curry-leaves-vs-curry-powder-difference-explained-2026": {
-    title: "Curry Leaves vs Curry Powder: Different Things, Not Swaps",
-    description: "Curry leaves and curry powder aren't interchangeable. What each is, when to use them, how many dried leaves equal fresh, and where to buy in Australia.",
+    title: "Curry Leaves vs Curry Powder: Not the Same, Don't Swap",
+    description: "No, they're not the same. Curry leaves are one herb you fry in oil; curry powder is a spice blend that usually has no curry leaf. What to use instead.",
     h1: "Curry Leaves vs Curry Powder: Different Things, Not Swaps",
   },
   "moringa-wellness-shot-recipe-winter-2026": {
@@ -4176,6 +4176,67 @@ function articleProseWithContents(prose, slug) {
   };
 }
 
+const FAQ_SCHEMA_SLUGS = new Set([
+  "darjeeling-tea-vs-english-breakfast-comparison-2026",
+  "curry-leaves-substitute-what-to-use-2026",
+  "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+  "curry-leaves-vs-curry-powder-difference-explained-2026",
+  "handmade-soap-australia-melt-and-pour-guide",
+  "curry-leaves-tea-how-to-make-benefits-2026",
+  "curry-leaf-podi-recipe-dried-curry-leaves",
+  "how-to-brew-darjeeling-tea-perfectly-2026",
+]);
+
+function faqSchemaFromProse(prose) {
+  const source = String(prose);
+  const faqAt = source.search(/<h2[^>]*\bid=["']faq["'][^>]*>/i);
+  let block = faqAt >= 0 ? source.slice(faqAt) : source;
+  const afterOpen = block.indexOf(">");
+  const rest = block.slice(afterOpen + 1);
+  const nextHeading = rest.search(/<h2[\s>]/i);
+  if (nextHeading >= 0) block = block.slice(0, afterOpen + 1 + nextHeading);
+  const items = [...block.matchAll(/<details[^>]*>\s*<summary[^>]*>([\s\S]*?)<\/summary>\s*<div[^>]*>([\s\S]*?)<\/div>\s*<\/details>/gi)]
+    .map(([, q, a]) => ({
+      "@type": "Question",
+      name: decodeEntities(stripTags(q)).replace(/\s+/g, " ").trim(),
+      acceptedAnswer: { "@type": "Answer", text: decodeEntities(stripTags(a)).replace(/\s+/g, " ").trim() },
+    }))
+    .filter((item) => item.name && item.acceptedAnswer.text);
+  if (items.length < 3) return "";
+  return jsonLd({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items });
+}
+
+const RECIPE_SCHEMA = {
+  "curry-leaf-podi-recipe-dried-curry-leaves": {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    name: "Curry Leaf Podi with Dried Curry Leaves",
+    author: { "@type": "Person", name: "Neer Vasa", url: "https://nutrithrive.com.au/about#founder" },
+    image: ["https://nutrithrive.com.au/assets/images/blog/curry-leaf-podi-spices.webp"],
+    description: "A dry South Indian chutney powder of roasted dals, dried chillies, cumin and dried curry leaves, for rice, idli and dosa.",
+    recipeCuisine: "South Indian",
+    recipeCategory: "Condiment",
+    prepTime: "PT5M",
+    cookTime: "PT10M",
+    totalTime: "PT25M",
+    recipeIngredient: [
+      "10g dried curry leaves", "2 tbsp chana dal", "2 tbsp urad dal",
+      "4 to 6 dried red chillies (or 2 for milder)", "1 tsp cumin seeds", "1/2 tsp black peppercorns",
+      "1 tbsp white sesame seeds (optional)", "small piece tamarind or 1/4 tsp powder (optional)",
+      "1/4 tsp jaggery (optional)", "pinch asafoetida (hing)", "about 1/2 tsp salt"
+    ],
+    recipeInstructions: [
+      { "@type": "HowToStep", text: "Dry-roast the chana dal and urad dal in a heavy pan on low heat until golden and nutty, about 5 to 7 minutes." },
+      { "@type": "HowToStep", text: "Add the dried chillies, cumin and peppercorns and roast about 1 minute until fragrant." },
+      { "@type": "HowToStep", text: "If using sesame, stir it in for about 30 seconds." },
+      { "@type": "HowToStep", text: "Add the dried curry leaves for 1 to 2 minutes until fragrant and crisp, then take the pan off the heat." },
+      { "@type": "HowToStep", text: "Sprinkle in the hing and stir once." },
+      { "@type": "HowToStep", text: "Tip onto a plate and cool completely." },
+      { "@type": "HowToStep", text: "Grind with the salt, and tamarind or jaggery if using, to a coarse, sandy texture. Taste and adjust salt." }
+    ]
+  }
+};
+
 function articlePage(meta, prose, allArticles, liveSeo = null) {
   const shop = journalProduct(meta) || PRODUCTS[0];
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
@@ -4255,6 +4316,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         inLanguage: "en-AU",
       })}
   ${jsonLd(breadcrumbSchema(breadcrumbItems))}`;
+  const faqSchema = !moringaCluster && FAQ_SCHEMA_SLUGS.has(meta.slug) ? faqSchemaFromProse(prose) : "";
+  const recipeSchema = !moringaCluster && RECIPE_SCHEMA[meta.slug] ? jsonLd(RECIPE_SCHEMA[meta.slug]) : "";
   return layout({
     title,
     description,
@@ -4271,7 +4334,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     extraHead: `<meta name="author" content="Neer Vasa">
   <meta property="article:author" content="Neer Vasa">
   <meta property="article:section" content="${esc(category)}">
-  ${preservedStructuredData || defaultStructuredData}`,
+  ${preservedStructuredData || defaultStructuredData}
+  ${faqSchema}
+  ${recipeSchema}`,
     main: `
       <nav class="wrap crumbs" aria-label="Breadcrumb">
         <a href="/">Home</a> / <a href="${r.journal}">Blog</a>${moringaCluster ? ` / <a href="/blog/category/moringa-guides/">Moringa</a>` : ""} / <span>${esc(displayH1)}</span>
