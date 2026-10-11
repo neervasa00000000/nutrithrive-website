@@ -170,6 +170,31 @@ const ARTICLE_SEO_OVERRIDES = {
     heroAlt: "A bedside table at night with a lamp and a digital clock glowing in the early hours.",
     heroCaptionHtml: `<p class="article-hero-credit"><em>Photo: <a href="https://www.pexels.com/photo/a-lamp-shade-and-a-clock-on-the-bedside-table-6943418/" rel="noopener noreferrer" target="_blank">cottonbro studio / Pexels</a></em></p>`,
   },
+  "diwali-hampers-australia": {
+    title: "Diwali Hampers Australia 2026: Under $50, Delivered",
+    description: "Diwali hampers from $20, posted Australia-wide. Compare hamper types and prices, a buying checklist, and order-by dates for Diwali on Sun 8 Nov 2026.",
+    h1: "Diwali Hampers in Australia: Under-$50 Options, Prices and Order-By Dates",
+    ogTitle: "Diwali Hampers in Australia: Under $50, Posted AU-Wide",
+    ogDescription: "Hamper types, real price ranges, a $20 tea, curry leaf and soap box, and order-by dates so your Diwali hamper arrives before Sun 8 Nov.",
+    articleSection: "Curry leaves",
+    ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order for Sunday 8 November.",
+    heroAlt: "NutriThrive Diwali Gift Box items: Darjeeling black tea, dried curry leaves and moringa lavender soap",
+    heroImage: "/assets/images/blog/diwali-hampers-australia-hero.webp",
+    ogImage: "/assets/images/og/diwali-hampers-australia-1200.jpg",
+  },
+  "can-you-eat-green-sprouting-potatoes-australia-2026": {
+    title: "Can You Eat Green or Sprouting Potatoes? The Safe Rule",
+    description: "Green tinge or sprouts on your potatoes? When to peel and cut, when to bin, why cooking doesn't help, and how to store potatoes. Australian guide.",
+    h1: "Can You Eat Green or Sprouting Potatoes? Here's the Safe Rule",
+    ogTitle: "Is It Safe to Eat Green Potatoes If You Peel Them?",
+    ogDescription: "Small green patch or a few sprouts? Cut away generously. Green all over or bitter? Bin it. Why cooking won't fix it, and how to store potatoes.",
+    articleSection: "Wellness",
+    ledeHtml: "You reach into the pantry and the potatoes have grown little shoots, or there's a green tinge under the skin. Do you peel, cut or bin them? Here's what the green actually means, how much is too much, and a simple rule for the bag in your cupboard.",
+    heroAlt: "A woven basket piled high with unwashed potatoes",
+    heroImage: "/assets/images/blog/green-potatoes-safe-to-eat-hero-1200.webp",
+    ogImage: "/assets/images/og/green-potatoes-safe-to-eat-og-1200.jpg",
+    heroCaptionHtml: `<p class="article-hero-credit"><em>Photo: Ellie Burgin / Pexels</em></p>`,
+  },
   "eye-twitching-causes-magnesium-australia-2026": {
     title: "Why Does My Eye Keep Twitching? It's Probably Not Magnesium",
     description: "Eyelid twitching for days? Two studies found no magnesium link. What usually triggers it, what helps it settle, and when to see a GP in Australia.",
@@ -887,7 +912,7 @@ function topicAnchor(name) {
 
 function journalProduct(article) {
   if (article.slug === "fathers-day-gift-under-40") return PRODUCTS.find((p) => p.id === "gift-pack");
-  if (article.slug === "diwali-gift-guide-curry-leaves-tea-australia") {
+  if (article.slug === "diwali-gift-guide-curry-leaves-tea-australia" || article.slug === "diwali-hampers-australia") {
     return PRODUCTS.find((p) => p.id === "diwali-gift-box");
   }
   const topic = journalTopic(article);
@@ -900,7 +925,7 @@ function journalProduct(article) {
 
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
-  if (article.slug === "diwali-gift-guide-curry-leaves-tea-australia") return "Shop Diwali gift box";
+  if (article.slug === "diwali-gift-guide-curry-leaves-tea-australia" || article.slug === "diwali-hampers-australia") return "Shop Diwali gift box";
   if (article.slug === "curry-leaves-substitute-what-to-use-2026") return "Shop dried curry leaves";
   if (article.slug === "dried-curry-leaves-quality-guide-how-to-use") return "Shop dried curry leaves";
   if (article.slug === "how-to-brew-darjeeling-tea-perfectly-2026") return "Shop Darjeeling black tea";
@@ -963,6 +988,7 @@ const PRODUCT_GUIDES = {
   ],
   "diwali-gift-box": [
     ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
+    ["Diwali hampers in Australia", "diwali-hampers-australia"],
     ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
     ["Darjeeling buying guide", "darjeeling-black-tea-australia-guide"],
     ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
@@ -4356,6 +4382,12 @@ function articleImage(article) {
   const source = article.image || "";
   if (article.slug === "eye-twitching-causes-magnesium-australia-2026") {
     return "/assets/images/blog/eye-twitching-magnesium-hero-1200.webp";
+  }
+  if (article.slug === "diwali-hampers-australia") {
+    return "/assets/images/blog/diwali-hampers-australia-hero.webp";
+  }
+  if (article.slug === "can-you-eat-green-sprouting-potatoes-australia-2026") {
+    return "/assets/images/blog/green-potatoes-safe-to-eat-hero-1200.webp";
   }
   if (article.slug === "waking-up-at-3am-every-night-australia-2026") {
     return "/assets/images/blog/waking-up-at-3am-every-night-australia-2026.webp";
