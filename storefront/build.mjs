@@ -250,9 +250,9 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Curry Leaf Tea: How to Make It with Dried Leaves",
   },
   "grow-moringa-tree-australia": {
-    title: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
-    description: "How to grow a moringa tree in Australia: pots, germination, winter, and climate. We do not sell trees, seeds, or seedlings.",
-    h1: "Grow a Moringa Tree in Australia: Pots & Climate Guide",
+    title: "Grow or Buy a Moringa Tree in Australia (Perth, Melbourne)",
+    description: "Where to buy a moringa tree or plant in Australia and how to grow it: in the ground in Perth or Brisbane, in a pot in Melbourne. We don't sell trees or seeds.",
+    h1: "Grow or Buy a Moringa Tree in Australia: Perth, Melbourne and Pots",
   },
   "moringa-and-berberine-australia-what-science-says-2026": {
     title: "Moringa and Berberine Together (Australia 2026)",
