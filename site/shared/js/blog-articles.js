@@ -40,6 +40,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "can-you-eat-green-sprouting-potatoes-australia-2026",
+    "title": "Can You Eat Green or Sprouting Potatoes? Here's the Safe Rule",
+    "description": "Green tinge or sprouts on your potatoes? When to peel and cut, when to bin, why cooking doesn't help, and how to store potatoes. Australian guide.",
+    "category": "Wellness",
+    "href": "/blog/can-you-eat-green-sprouting-potatoes-australia-2026",
+    "image": "/assets/images/blog/green-potatoes-safe-to-eat-hero-1200.webp"
+  },
+  {
     "slug": "can-you-use-dried-curry-leaves-for-hair-2026",
     "title": "Dried Curry Leaves for Hair: How to Use Them (Oil &amp; Rinse)",
     "description": "Using dried curry leaves for hair: coconut-oil infusion, rinse and mask methods, how many leaves, patch-testing, and what the evidence really shows.",
@@ -150,6 +158,14 @@ window.NT_BLOG_ARTICLES = [
     "category": "Darjeeling tea",
     "href": "/blog/darjeeling-tea-vs-english-breakfast-comparison-2026",
     "image": "/assets/images/og/black-tea-social-1200.jpg"
+  },
+  {
+    "slug": "diwali-hampers-australia",
+    "title": "Diwali Hampers in Australia: Under-$50 Options, Prices and Order-By Dates",
+    "description": "Diwali hampers from $20, posted Australia-wide. Compare hamper types and prices, a buying checklist, and order-by dates for Diwali on Sun 8 Nov 2026.",
+    "category": "Curry leaves",
+    "href": "/blog/diwali-hampers-australia",
+    "image": "/assets/images/blog/diwali-hampers-australia-hero.webp"
   },
   {
     "slug": "diwali-gift-guide-curry-leaves-tea-australia",
