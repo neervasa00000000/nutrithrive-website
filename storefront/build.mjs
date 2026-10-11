@@ -8,7 +8,7 @@ const PAYMENT_LINE = "PayPal or card online · pickup: cash, bank or PayID";
 const PAYMENT_LINE_LONG =
   "Online: PayPal or card. Phone / Truganina pickup by arrangement: bank transfer, PayID or cash.";
 const ADDRESS_LINE = "Ridley Place, Truganina VIC 3029";
-const FREE_SHIP_ANNOUNCE = "Free AU shipping at $79 · Free worldwide at $90";
+const FREE_SHIP_ANNOUNCE = "Free AU shipping at $79 · Packed in Truganina, VIC";
 const SHIPPING_BAND_LIST =
   "Australia standard shipping for orders under $79, by parcel weight: up to 250 g $9.69 · 251–500 g $11.12 · 501 g–1 kg $15.20 · 1–3 kg $19.24 · 3–5 kg $23.23.";
 import {
@@ -477,7 +477,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "curry-leaves-recipes-beyond-dal": {
     title: "How to Use Dried Curry Leaves: 6 Recipes Beyond Dal",
-    description: "How to cook with dried curry leaves: tadka basics, how many to use, and 6 recipes from lemon rice to curry leaf oil. Shade-dried 30g pouch from Melbourne.",
+    description: "How to cook with dried curry leaves: tadka basics, how many to use, and 6 recipes from lemon rice to curry leaf oil. Dried 30g pouch, packed in Melbourne.",
     h1: "How to Use Dried Curry Leaves: 6 Recipes Beyond Dal",
   },
   "moringa-vs-spirulina-vs-matcha-comparison-australia": {
@@ -2408,6 +2408,7 @@ function pdpPage(slug, d) {
       price: String(buyProduct.price),
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
+      shippingDetails: { "@type": "OfferShippingDetails", hasShippingService: { "@id": "https://nutrithrive.com.au/shipping#au-free-shipping" } },
     };
   } else {
     productSchema.sku = p.sku;
@@ -2418,6 +2419,7 @@ function pdpPage(slug, d) {
       price: String(p.price),
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
+      shippingDetails: { "@type": "OfferShippingDetails", hasShippingService: { "@id": "https://nutrithrive.com.au/shipping#au-free-shipping" } },
     };
   }
   const crumbTrail = [
@@ -3678,7 +3680,7 @@ function cityPage(city, slug) {
               <article class="city-info-card city-info-card--accent">
                 <span class="city-info-card__number">01</span>
                 <h3>Dried curry leaves · $7 / 30g</h3>
-                <p>Whole shade-dried leaflets for tadka. Also called karipatta, curry patta and kadi patta. Pickup from Truganina by arrangement, or tracked metro delivery in 1–2 days.</p>
+                <p>Whole dried leaflets for tadka. Also called karipatta, curry patta and kadi patta. Pickup from Truganina by arrangement, or tracked metro delivery in 1–2 days.</p>
                 <a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a>
               </article>
               <article class="city-info-card">
@@ -4301,6 +4303,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
               <h2 id="article-product-${esc(meta.slug)}">${esc(conversionPath.title || shop.name)}</h2>
               <p>${esc(conversionPath.body || shop.detail || shop.benefit)}</p>
               <p class="price">${money(shop.price)} ${esc(shop.unit || "")}</p>
+              <p class="ship-note">Delivered Australia-wide from Melbourne · Free AU shipping at $79</p>
               <div class="btn-row">
                 <a class="btn btn-primary" href="${productHref}" data-funnel-event="article_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(conversionCta)}</a>
                 <a class="btn btn-secondary" href="/shipping/" data-funnel-event="article_shipping_click">Delivery & returns</a>

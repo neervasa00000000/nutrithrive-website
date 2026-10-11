@@ -45,11 +45,21 @@
     }
   ],
   "areaServed": [
-    { "@type": "City", "name": "Truganina" },
-    { "@type": "City", "name": "Melbourne" },
+    { "@type": "Country", "name": "Australia" },
     { "@type": "AdministrativeArea", "name": "Victoria" },
-    { "@type": "Country", "name": "Australia" }
+    { "@type": "City", "name": "Melbourne" }
   ],
+  "hasShippingService": {
+    "@type": "ShippingService",
+    "@id": "https://nutrithrive.com.au/shipping#au-free-shipping",
+    "name": "Free AU shipping at $79",
+    "shippingConditions": {
+      "@type": "ShippingConditions",
+      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "AU" },
+      "orderValue": { "@type": "MonetaryAmount", "minValue": 79, "currency": "AUD" },
+      "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "AUD" }
+    }
+  },
   "sameAs": [
     "https://www.facebook.com/nutrithrive",
     "https://www.instagram.com/nutri__thrive/"
