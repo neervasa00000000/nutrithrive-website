@@ -20,6 +20,9 @@ const LIVE = "https://nutrithrive.com.au";
 const errors = [];
 const notes = [];
 const approvedSeoChanges = {
+  "blog/curry-leaves-recipes-beyond-dal.html": {
+    description: "How to cook with dried curry leaves: tadka basics, how many to use, and 6 recipes from lemon rice to curry leaf oil. Dried 30g pouch, packed in Melbourne.",
+  },
   "blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026.html": {
     title: "Guide moved | NutriThrive",
     description: "This guide has moved to a clearer, consolidated NutriThrive article.",
