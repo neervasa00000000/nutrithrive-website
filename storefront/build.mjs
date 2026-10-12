@@ -224,10 +224,10 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Diwali Gift Ideas Australia 2026: Tea, Spice & Soap Gifts",
   },
   "moringa-patches-australia-review-do-they-work": {
-    title: "Moringa Patches Australia: Glorenda, Healrize & Powder",
-    description: "What moringa patches claim vs buying leaf powder for food and drinks. NutriThrive sells powder only — farm-grown, packed in Truganina.",
+    title: "Glorenda & Healrize Moringa Patches: AU Reviews Checked",
+    description: "Glorenda and Healrize moringa patch reviews checked: what the listings say and how a patch differs from leaf powder. We sell powder only, packed in Truganina.",
     h1: "Moringa Patches Australia (Then Leaf Powder)",
-    ogTitle: "Moringa Patches Australia: Glorenda, Healrize & Powder",
+    ogTitle: "Glorenda & Healrize Moringa Patches: AU Reviews Checked",
     ogDescription: "Patch formats vs NutriThrive leaf powder for food and drinks — farm-grown, packed in Truganina.",
     articleSection: "Moringa",
   },
