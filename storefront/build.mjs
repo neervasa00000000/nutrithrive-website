@@ -477,7 +477,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "curry-leaves-recipes-beyond-dal": {
     title: "How to Use Dried Curry Leaves: 6 Recipes Beyond Dal",
-    description: "How to cook with dried curry leaves: tadka basics, how many to use, and 6 recipes from lemon rice to curry leaf oil. Shade-dried 30g pouch from Melbourne.",
+    description: "How to cook with dried curry leaves: tadka basics, how many to use, and 6 recipes from lemon rice to curry leaf oil. Dried 30g pouch, packed in Melbourne.",
     h1: "How to Use Dried Curry Leaves: 6 Recipes Beyond Dal",
   },
   "moringa-vs-spirulina-vs-matcha-comparison-australia": {
