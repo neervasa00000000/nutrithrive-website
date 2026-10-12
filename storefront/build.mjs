@@ -26,7 +26,7 @@ const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261008-9";
 const PAYMENT_ASSET_VERSION = "20261009-1";
-const CSS_ASSET_VERSION = "20261008-5";
+const CSS_ASSET_VERSION = "20261013-1";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
@@ -559,9 +559,34 @@ const CURATED_RELATED = {
     "signs-magnesium-deficiency-australia-what-to-eat-2026",
   ],
   "moringa-patches-australia-review-do-they-work": [
-    "moringa-and-berberine-australia-what-science-says-2026",
     "moringa-brands-comparison-australia-2026",
     "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "rosabella-moringa-reviews-legit-or-overhyped-2026",
+  ],
+  "verify-moringa-quality-premium-buyers-checklist-2026": [
+    "how-to-choose-moringa-powder-australia-2026",
+    "science-shade-drying-vs-sun-drying-moringa",
+    "how-to-read-moringa-batch-codes-freshness",
+  ],
+  "why-premium-moringa-costs-11-not-25-value-vs-markup-2026": [
+    "moringa-capsules-vs-powder-which-is-better-2026",
+    "moringa-brands-comparison-australia-2026",
+    "verify-moringa-quality-premium-buyers-checklist-2026",
+  ],
+  "rosabella-moringa-reviews-legit-or-overhyped-2026": [
+    "moringa-brands-comparison-australia-2026",
+    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "verify-moringa-quality-premium-buyers-checklist-2026",
+  ],
+  "moringa-brands-comparison-australia-2026": [
+    "how-to-choose-moringa-powder-australia-2026",
+    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "verify-moringa-quality-premium-buyers-checklist-2026",
+  ],
+  "how-to-add-moringa-to-diet": [
+    "moringa-smoothie-recipes-australia-2026",
+    "what-does-moringa-powder-taste-like-honest-guide-2026",
+    "high-protein-moringa-recipes-australia-2026",
   ],
   "how-long-does-moringa-powder-last-storage-shelf-life-2026": [
     "how-to-choose-moringa-powder-australia-2026",
@@ -662,6 +687,81 @@ const CURATED_RELATED = {
 // Conversion paths for the ten pages already earning meaningful Search Console
 // clicks. These keep the next step aligned with the reader's query instead of
 // repeating one generic sales message across every guide.
+// Moringa blog → PDP conversion (13 Oct 2026). Prices read from PRODUCTS; never hardcode.
+const shortMoney = (n) => `$${Number.isInteger(Number(n)) ? Number(n) : Number(n).toFixed(2)}`;
+const MORINGA_PRICES = (() => {
+  const p = (id) => PRODUCTS.find((x) => x.id === id)?.price;
+  const p100 = p("moringa-powder");
+  const p200 = p("moringa-200g");
+  const p400 = p("moringa-400g");
+  const curry = p("curry-leaves");
+  const tea = p("black-tea");
+  return {
+    p100: shortMoney(p100),
+    p200: shortMoney(p200),
+    p400: shortMoney(p400),
+    per100In200: shortMoney(p200 / 2),
+    per100In400: shortMoney(p400 / 4),
+    twoBy400: shortMoney(p400 * 2),
+    curry: shortMoney(curry),
+    tea: shortMoney(tea),
+    exampleBasket: shortMoney(p400 * 2 + curry + tea),
+  };
+})();
+const MORINGA_SALES_SLUGS = new Set([
+  "moringa-patches-australia-review-do-they-work",
+  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+  "moringa-brands-comparison-australia-2026",
+  "rosabella-moringa-reviews-legit-or-overhyped-2026",
+  "how-to-choose-moringa-powder-australia-2026",
+  "ag1-alternative-australia-moringa-comparison-2026",
+  "how-long-does-moringa-powder-last-storage-shelf-life-2026",
+  "moringa-vs-coffee-melbourne-energy-hack",
+  "science-shade-drying-vs-sun-drying-moringa",
+  "moringa-vs-whey-protein-comparison-2026",
+  "moringa-capsules-vs-powder-which-is-better-2026",
+  "what-does-moringa-powder-taste-like-honest-guide-2026",
+  "how-to-add-moringa-to-diet",
+]);
+const LAB_PDF = "/documents/nutrithrive-lab-report-summary.pdf";
+const OBJECTION_BLOCKS = {
+  trust: `<p><strong>Who packs your pouch.</strong> NutriThrive is a small Melbourne family business run by founder Neer Vasa. Our moringa leaf is farm-grown and shade-dried, then packed in Truganina, VIC. We publish an <a href="${LAB_PDF}">NMI lab summary (PDF)</a>. We are not certified organic, and we say so.</p>`,
+  price: `<p><strong>Compare on price per 100g of leaf.</strong> Capsule labels list the leaf weight per capsule. Multiply it by the capsule count to get grams, then work out the price per 100g. Our leaf powder is ${MORINGA_PRICES.p100} per 100g, ${MORINGA_PRICES.per100In200} per 100g in the 200g pouch and ${MORINGA_PRICES.per100In400} per 100g in the 400g pouch.</p>`,
+  taste: `<p><strong>What it tastes like, honestly.</strong> Earthy and green, a bit like spinach, with a slightly bitter finish. Most people don't drink it with plain water. Stir ½ to 1 tsp into a smoothie, dal, soup or scrambled eggs and the taste blends into the food. Not sure yet? <a href="/products/moringa-powder/100g/">Start with the 100g pouch for ${MORINGA_PRICES.p100}</a>.</p>`,
+  use: `<p><strong>Three easy ways to use it.</strong></p><ol><li>Blend ½ tsp into a banana smoothie.</li><li>Stir it into dal or soup at the end of cooking.</li><li>Whisk ½ tsp into warm milk with a little honey.</li></ol>`,
+  fresh: `<p><strong>How to check it's fresh.</strong> Look for a bright olive-green colour, a fresh grassy smell and a pack or batch date on the label. Store it sealed, cool and dark. <a href="/blog/how-to-read-moringa-batch-codes-freshness">How to read our batch codes</a>.</p>`,
+};
+const MORINGA_OBJECTIONS = {
+  "moringa-patches-australia-review-do-they-work": ["trust"],
+  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": ["price", "trust"],
+  "moringa-brands-comparison-australia-2026": ["trust"],
+  "rosabella-moringa-reviews-legit-or-overhyped-2026": ["trust"],
+  "how-to-choose-moringa-powder-australia-2026": ["fresh", "trust"],
+  "ag1-alternative-australia-moringa-comparison-2026": ["price", "use"],
+  "how-long-does-moringa-powder-last-storage-shelf-life-2026": ["fresh", "trust"],
+  "moringa-vs-coffee-melbourne-energy-hack": ["taste", "use"],
+  "science-shade-drying-vs-sun-drying-moringa": ["trust", "fresh"],
+  "moringa-vs-whey-protein-comparison-2026": ["price", "use"],
+  "moringa-capsules-vs-powder-which-is-better-2026": ["price"],
+  "what-does-moringa-powder-taste-like-honest-guide-2026": ["taste"],
+  "how-to-add-moringa-to-diet": ["use"],
+};
+function moringaMidCta(slug) {
+  return `<aside class="article-mid-cta" aria-label="Shop moringa powder"><p><strong>Ready to try it?</strong> Leaf powder 100g ${MORINGA_PRICES.p100} · 200g ${MORINGA_PRICES.p200} · 400g ${MORINGA_PRICES.p400} (best value, ${MORINGA_PRICES.per100In400}/100g). Farm-grown, shade-dried, NMI lab summary, packed in Truganina. Free AU shipping at $79.</p><p class="btn-row"><a class="btn btn-primary" href="/products/moringa-powder/" data-funnel-event="article_mid_product_click" data-article="${esc(slug)}" data-product="moringa-400g">Choose your pouch</a> <a class="btn btn-secondary" href="/products/moringa-powder/100g/" data-funnel-event="article_mid_trial_click" data-article="${esc(slug)}" data-product="moringa-powder">Try 100g for ${MORINGA_PRICES.p100}</a></p></aside>`;
+}
+function withMidCta(html, block) {
+  let n = 0;
+  let placed = false;
+  const out = html.replace(/<h2\b/g, (m) => {
+    n += 1;
+    if (n === 2 && !placed) {
+      placed = true;
+      return `${block}${m}`;
+    }
+    return m;
+  });
+  return placed ? out : `${html}${block}`;
+}
 const ARTICLE_CONVERSION_PATHS = {
   "eye-twitching-causes-magnesium-australia-2026": {
     kicker: "A practical next step",
@@ -688,7 +788,7 @@ const ARTICLE_CONVERSION_PATHS = {
     title: "Compare with single-ingredient moringa powder",
     body: "Check the ingredient, Australian testing summary, pouch sizes and current price before deciding which format suits you.",
     cta: "View powder and testing",
-    links: [["Read the berberine interaction guide", "moringa-and-berberine-australia-what-science-says-2026"]],
+    links: [["Compare capsule prices per 100g", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"]],
     methodology: true,
   },
   "how-long-does-moringa-powder-last-storage-shelf-life-2026": {
@@ -4222,6 +4322,11 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const dates = articleDates(prose);
   const enhancedProse = articleProseWithContents(prose, meta.slug);
   const conversionPath = ARTICLE_CONVERSION_PATHS[meta.slug] || {};
+  const isMoringaPowder = ["moringa-powder", "moringa-200g", "moringa-400g"].includes(shop.id);
+  const isMoringaSales = isMoringaPowder && !isHealth && MORINGA_SALES_SLUGS.has(meta.slug);
+  const objectionHtml = isMoringaSales && MORINGA_OBJECTIONS[meta.slug]
+    ? `<aside class="article-objections" aria-label="Before you buy">${MORINGA_OBJECTIONS[meta.slug].map((key) => OBJECTION_BLOCKS[key]).join("")}</aside>`
+    : "";
   const conversionCta = conversionPath.cta || cta;
   const conversionLinks = (conversionPath.links || [])
     .map(([label, slug]) => `<li><a href="${r.article(slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(label)}</a></li>`)
@@ -4284,7 +4389,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="1200" height="675" fetchpriority="high"></div>
           ${seoOverride?.heroCaptionHtml || ""}
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
-            <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong></div>
+            <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · Free AU shipping at $79 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
             <a href="${productHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
           </aside>
           ${enhancedProse.contents}
@@ -4292,15 +4397,17 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             <h2 id="method-${esc(meta.slug)}">How we made this comparison</h2>
             <p>We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions.</p>
           </aside>
-          ` : ""}<div class="prose">${enhancedProse.html}</div>
+          ` : ""}<div class="prose">${isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : enhancedProse.html}</div>
           ${isHealth ? `<aside class="article-safety"><h2>Food guidance, not medical advice</h2><p>This article is general information. NutriThrive products are foods, not treatments. Speak with a qualified healthcare professional if you are pregnant, breastfeeding, managing a health condition or taking medication.</p></aside>` : ""}
+          ${objectionHtml}
           <section class="article-conversion" aria-labelledby="article-product-${esc(meta.slug)}">
             <img src="${shop.image}" alt="${esc(shop.name)} ${esc(shop.variant)}" width="240" height="300" loading="lazy">
             <div>
               <p class="kicker">${esc(conversionPath.kicker || "A practical next step")}</p>
               <h2 id="article-product-${esc(meta.slug)}">${esc(conversionPath.title || shop.name)}</h2>
               <p>${esc(conversionPath.body || shop.detail || shop.benefit)}</p>
-              <p class="price">${money(shop.price)} ${esc(shop.unit || "")}</p>
+              <p class="price">${money(shop.price)} ${esc(shop.unit || "")}</p>${isMoringaPowder && !isHealth ? `
+              <p class="ship-note">${MORINGA_PRICES.per100In400} per 100g in the 400g pouch · Free AU shipping at $79 (for example, two 400g pouches ${MORINGA_PRICES.twoBy400} + curry leaves ${MORINGA_PRICES.curry} + Darjeeling tea ${MORINGA_PRICES.tea} = ${MORINGA_PRICES.exampleBasket}) · Packed in Truganina, VIC · <a href="${LAB_PDF}">NMI lab summary</a></p>` : ""}
               <div class="btn-row">
                 <a class="btn btn-primary" href="${productHref}" data-funnel-event="article_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(conversionCta)}</a>
                 <a class="btn btn-secondary" href="/shipping/" data-funnel-event="article_shipping_click">Delivery & returns</a>
