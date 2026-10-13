@@ -1275,7 +1275,7 @@ function money(n) {
 }
 
 function stars() {
-  return `<span class="stars">${'<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 3.6 14.5 9l6.6-4.6 4 1.4 5.9L12 16.8 6.7 19.5 8.1 13.6 3.5 9.6l6-.6L12 3.6Z"/></svg>'.repeat(5)} 4.9</span>`;
+  return `<span class="stars">${'<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 3.6 14.5 9l6 .6-4.6 4 1.4 5.9L12 16.8 6.7 19.5 8.1 13.6 3.5 9.6l6-.6L12 3.6Z"/></svg>'.repeat(5)} 4.9</span>`;
 }
 
 function check() {
