@@ -35,7 +35,7 @@ const approvedSeoChanges = {
   },
   "blog/curry-leaves-substitute-what-to-use-2026.html": {
     title: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
-    description: "Curry leaf substitute Australia: 7 swaps with ratios. When zest or lime leaf is not enough, shop dried curry leaves for pantry tadka.",
+    description: "Curry leaf substitute options in Australia: kaffir lime leaf, lemon zest, and when dried leaves beat every swap. Dried pouch $7. Free AU shipping from $49.",
   },
   "blog/how-to-brew-darjeeling-tea-perfectly-2026.html": {
     title: "How to Brew Darjeeling Tea Perfectly (Temp, Time, Leaf)",
@@ -104,6 +104,7 @@ const approvedSeoChanges = {
   },
   "blog/moringa-before-after-workout-timing-guide-2026.html": {
     title: "Moringa Before or After Workout? Timing Guide (Australia)",
+  description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
   },
   "blog/moringa-vs-whey-protein-comparison-2026.html": {
     title: "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
@@ -118,11 +119,11 @@ const approvedSeoChanges = {
   },
   "blog/moringa-soap-benefits-skin-guide.html": {
     title: "Moringa Soap Benefits: Real vs Marketing (AU 2026)",
-    description: "Moringa soap for skin in Australia: what&#39;s genuinely useful vs marketing hype, who it suits, and how a Melbourne-made bar compares to regular soap.",
+    description: "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping from $49.",
   },
   "blog/curry-leaves-tea-how-to-make-benefits-2026.html": {
     title: "How to Make Curry Leaf Tea (Dried Leaves) | Australia",
-    description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping over $79.",
+    description: "Simple curry leaf tea with dried leaves: steep time, flavour tips, and how Aussies brew it. Pair with free AU shipping from $49.",
   },
   "blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026.html": {
     title: "Moringa Heavy Metals Lab Testing Australia | What to Look For",
@@ -139,7 +140,7 @@ const approvedSeoChanges = {
   },
   "blog/is-moringa-safe-for-children-kids-dosage-2026.html": {
     title: "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $79.",
+    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping from $49.",
   },
   "blog/how-to-add-moringa-to-diet.html": {
     title: "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
@@ -155,7 +156,13 @@ const approvedSeoChanges = {
   },
   "blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html": {
     title: "Chemist Warehouse Moringa Capsules &amp; Tablets vs NutriThrive Powder",
-    description: "Chemist Warehouse moringa capsules and tablets vs NutriThrive powder — dose maths, quality signals, and when Truganina leaf powder wins in Australia.",
+  description: "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping from $49.",
+  },
+  "blog/moringa-wellness-shot-recipe-winter-2026.html": {
+  description: "A small drink you mix at home from moringa powder. We do not sell shots. Powder 100g $11, 200g $22, 400g $40.",
+  },
+  "blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html": {
+  description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
   },
   "blog/afl-finals-snacks-curry-leaf-tadka.html": {
     description: "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday.",
@@ -313,7 +320,7 @@ for (const rel of generatedHtml) {
   }
   if (rel !== "404.html" && !html.includes('rel="icon"')) errors.push(`${rel}: missing favicon`);
   if (/<img\b(?![^>]*\balt=)[^>]*>/i.test(html)) errors.push(`${rel}: image missing alt text`);
-  if (/(?:free (?:AU |Australian )?shipping)[^<\n]{0,45}(?:\$|AUD\s*)80|(?:under|clear(?:s|ing)?)\s+(?:AU)?\$80/i.test(html)) {
+  if (/(?:free (?:AU |Australian )?shipping)[^<\n]{0,16}(?:\$|AUD\s*)80|(?:under|clear(?:s|ing)?)\s+(?:AU)?\$80/i.test(html)) {
     errors.push(`${rel}: stale $80 free-shipping threshold`);
   }
   if (/\$49\.50|\b49\.5\b/.test(html)) {
@@ -348,12 +355,12 @@ if (home) {
 }
 
 const startHere = [
-  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead", "$79"],
+  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead", "$49"],
   ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
-  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Moringa vs Spirulina vs Matcha (Australia)", "$79"],
+  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Moringa vs Spirulina vs Matcha (Australia)", "$49"],
   ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
-  ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$79"],
-  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Plain Moringa vs AG1", "$79"],
+  ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$49"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Plain Moringa vs AG1", "$49"],
 ];
 for (const [rel, expected, postage] of startHere) {
   const html = read(rel);

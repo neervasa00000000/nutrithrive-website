@@ -98,13 +98,13 @@ async function deliverOwnerEmail({ web3Key, smtpUser, smtpPass, mailPayload }) {
 
     if (smtpUser && smtpPass) {
         attempts.push(async () => {
-            await sendViaSmtp({ smtpUser, smtpPass, ...mailPayload });
+            await sendViaSmtp({ smtpUser, smtpPass,...mailPayload });
             return "smtp";
         });
     }
     if (web3Key) {
         attempts.push(async () => {
-            await sendViaWeb3Forms({ accessKey: web3Key, ...mailPayload });
+            await sendViaWeb3Forms({ accessKey: web3Key,...mailPayload });
             return "web3forms";
         });
     }

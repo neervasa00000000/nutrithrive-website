@@ -24,11 +24,11 @@ Single-ingredient shade-dried moringa leaf powder, batch-tested in Australia, pa
 
 ## Operating Context
 
-Ecommerce storefront plus journal. Orders before 2pm on business days aim for same-day Melbourne dispatch. Free standard shipping on Australian orders AU$79+ and worldwide on AU$90+. Pickup/visit at 15 Europe Street, Truganina VIC 3029 by calling first. Hours listed as daily 9:00 AM – 11:00 PM AEST.
+Ecommerce storefront plus journal. Orders before 2pm on business days aim for same-day Melbourne dispatch. Free standard shipping on Australian orders from AU$49. International postage is calculated from the parcel weight. Pickup/visit at 15 Europe Street, Truganina VIC 3029 by calling first. Hours listed as daily 9:00 AM – 11:00 PM AEST.
 
 ## Capabilities and Constraints
 
-- Products: moringa powder (100g $11, 200g $21.50, 400g bundle $35), moringa soap $7, curry leaves 30g $7, Darjeeling black tea $7.50, combo pack $17, gift pack $35, moringa+soap bundle $17.
+- Products: moringa powder (100g $11, 200g $22, 400g bundle $40), moringa soap $7, curry leaves 30g $7, Darjeeling black tea $7.50, combo pack $17, gift pack $35, moringa+soap bundle $17, Diwali Gift Box $20.
 - Cart, checkout and payment use the production storefront flow, including PayPal and the existing server-side payment functions. Local preview does not submit a real payment.
 - Journal currently holds 128 public articles.
 - Do not invent medical claims, extra reviews, prices, lab results, or customers.

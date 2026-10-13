@@ -27,7 +27,7 @@ function computeBundleDiscount(items) {
     const qty = Number.parseInt(item.quantity || 1, 10);
     return sum + (Number.isFinite(qty) && qty > 0 ? qty : 0);
   }, 0);
-  return Math.floor(bundleQty / 4) * 35;
+  return Math.floor(bundleQty / 4) * 40;
 }
 
 function getSelectedCountryCode() {

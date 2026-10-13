@@ -114,7 +114,7 @@
     if (!base) return showToast("Enter base URL");
 
     const htmlFiles = computeHtmlFiles(folderInput.files);
-    if (!htmlFiles.length) return showToast("Select a folder with .html files");
+    if (!htmlFiles.length) return showToast("Select a folder with.html files");
 
     const items = htmlFiles
       .map((f) => ({ file: f, rel: f.webkitRelativePath || f.name }))
@@ -226,10 +226,10 @@
   function pathFromRelative(rel) {
     // Convert Windows backslashes
     let p = String(rel || "").replace(/\\/g, "/");
-    // Remove leading ./ if present
+    // Remove leading./ if present
     p = p.replace(/^\.\//, "");
 
-    // Only handle .html files
+    // Only handle.html files
     if (!p.toLowerCase().endsWith(".html")) return null;
 
     // Convert index.html -> /
@@ -239,7 +239,7 @@
     if (p.toLowerCase().endsWith("/index.html")) {
       p = p.slice(0, -"/index.html".length) + "/";
     } else {
-      // Remove .html -> clean path without extension
+      // Remove.html -> clean path without extension
       p = p.slice(0, -".html".length);
       // If it was something like pages/about, treat it like a directory path
       p = p + (p.endsWith("/") ? "" : "/");
@@ -319,7 +319,7 @@
 
     const htmlFiles = computeFileList(folderInput.files);
     if (!htmlFiles.length) {
-      showToast("Select a folder with .html files");
+      showToast("Select a folder with.html files");
       return;
     }
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Copy public files from site/ into .netlify-publish/ (flattened to the deploy root).
+ * Copy public files from site/ into.netlify-publish/ (flattened to the deploy root).
  * Live URLs stay /blog/..., /products/..., /robots.txt — not /site/...
  * Run: node scripts/prepare-netlify-publish.mjs && netlify deploy --dir=.netlify-publish --prod
  */
@@ -48,7 +48,7 @@ const publicIndexNowKeyPath = path.join(SITE_ROOT, publicIndexNowKeyFile);
 
   if (!key) {
     console.warn(
-      'IndexNow key not found (missing .indexnow-key and INDEXNOW_KEY env var). Skipping publishing IndexNow verification files.',
+      'IndexNow key not found (missing.indexnow-key and INDEXNOW_KEY env var). Skipping publishing IndexNow verification files.',
     );
   } else {
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) {

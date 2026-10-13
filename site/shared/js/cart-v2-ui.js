@@ -63,9 +63,9 @@
       if (window.ShippingRates?.getAuFreeShippingProgressTarget) {
         return window.ShippingRates.getAuFreeShippingProgressTarget();
       }
-      return d?.getFreeAuThreshold?.() ?? d?.freeAuThreshold ?? 79;
+      return d?.getFreeAuThreshold?.() ?? d?.freeAuThreshold ?? 49;
     }
-    return d?.freeWorldThreshold ?? 90;
+    return Number.POSITIVE_INFINITY;
   }
 
   function weightTierLabel(grams) {

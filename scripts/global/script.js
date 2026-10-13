@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Remove any 'Benefits' nav links globally (page was removed)
     try {
-        const containers = [document.querySelector('.nav-links'), ...Array.from(document.querySelectorAll('.footer-links'))];
+        const containers = [document.querySelector('.nav-links'),...Array.from(document.querySelectorAll('.footer-links'))];
         containers.forEach(nav => {
             if (!nav) return;
             const links = Array.from(nav.querySelectorAll('a'));
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuresSection) {
         if (window.gsap && window.ScrollTrigger) {
             gsap.registerPlugin(ScrollTrigger);
-            gsap.utils.toArray('.features-section.features-clean .feature').forEach((el) => {
+            gsap.utils.toArray('.features-section.features-clean.feature').forEach((el) => {
                 // Enter: blur -> sharp + fade in
                 gsap.fromTo(
                     el,

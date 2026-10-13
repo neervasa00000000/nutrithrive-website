@@ -33,7 +33,7 @@
       out.push(line);
     }
 
-    // Keep trailing newline (nice for .txt)
+    // Keep trailing newline (nice for.txt)
     return out.join("\n").trimEnd() + "\n";
   }
 

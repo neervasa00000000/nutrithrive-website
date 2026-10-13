@@ -22,5 +22,5 @@ for (const name of fs.readdirSync(SRC)) {
   const to = path.join(DEST, name);
   fs.copyFileSync(from, to);
   fs.chmodSync(to, 0o755);
-  console.log(`Installed .git/hooks/${name}`);
+  console.log(`Installed.git/hooks/${name}`);
 }

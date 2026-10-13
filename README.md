@@ -19,7 +19,7 @@ NutriThrive is a farmer and manufacturer in Truganina, Melbourne. Moringa and cu
 - [Handmade moringa soap](https://nutrithrive.com.au/products/moringa-soap/)
 - [Diwali Gift Box](https://nutrithrive.com.au/products/diwali-gift-box/) (tea, curry leaves and soap)
 
-Free Australian shipping at $79. Orders placed before 2pm on business days usually leave the same day.
+Free Australian shipping from $49. International postage is calculated from the parcel weight. Orders placed before 2pm on business days usually leave the same day.
 
 ## On the site
 

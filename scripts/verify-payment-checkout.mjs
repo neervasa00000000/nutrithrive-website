@@ -91,12 +91,12 @@ vm.runInNewContext(
   preloadContext,
 );
 await preloadContext.window.__loadApplePaySdk();
-paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 35 }] };
+paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 40 }] };
 paymentContext.window.__paymentTest.updateShippingAndTotal();
-assert.equal(paymentElements.get('total').textContent, '$105.00', 'wallet sheet total must include bundle discount');
-assert.equal(paymentContext.window.__paymentTest.formatApplePayAmount(paymentCart), '105.00');
+assert.equal(paymentElements.get('total').textContent, '$120.00', 'wallet sheet total must include bundle discount');
+assert.equal(paymentContext.window.__paymentTest.formatApplePayAmount(paymentCart), '120.00');
 assert.equal(paymentElements.get('bundle-discount-row').hidden, false);
-assert.equal(paymentElements.get('bundle-discount').textContent, '−$35.00');
+assert.equal(paymentElements.get('bundle-discount').textContent, '−$40.00');
 for (const asset of [
   'runtime-paypal-client-config.min.js',
   'runtime-paypal-sdk-loader.min.js',
@@ -193,8 +193,8 @@ try {
   await checkCart([
     { id: 'moringa-400g', quantity: 2 },
     { id: 'moringa-powder', quantity: 1 },
-  ], '81.00', '0.00');
-  await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '105.00', '0.00', '35.00');
+  ], '91.00', '0.00');
+  await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '120.00', '0.00', '40.00');
   let appleOrderId;
   let appleCaptureToken;
   {
@@ -263,7 +263,7 @@ try {
       body: JSON.stringify({ countryCode: 'AU', items: [{ id: 'moringa-powder', quantity: 1 }], requireShipping: true, shipping }),
     });
     assert.match((await createOrder(event(baseShipping))).body, /valid email address/i);
-    assert.match((await createOrder(event({ ...baseShipping, email: 'alex@example.com', countryCode: 'NZ' }))).body, /does not match/i);
+    assert.match((await createOrder(event({...baseShipping, email: 'alex@example.com', countryCode: 'NZ' }))).body, /does not match/i);
   }
 
   {
