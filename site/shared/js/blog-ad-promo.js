@@ -1,4 +1,4 @@
-/** Fill .nt-ad-slot placeholders with random NutriThrive product promos (curry leaves / moringa soap). */
+/** Fill.nt-ad-slot placeholders with random NutriThrive product promos (curry leaves / moringa soap). */
 (function (global) {
   function money(n) {
     return '$' + Number(n).toFixed(2).replace(/\.00$/, '');

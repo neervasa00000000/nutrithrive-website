@@ -3,7 +3,7 @@
 
   function initMobileNav() {
     document.querySelectorAll(".topbar-inner").forEach((inner) => {
-      const nav = inner.querySelector(".nav, .labs-nav-menu");
+      const nav = inner.querySelector(".nav,.labs-nav-menu");
       if (!nav || inner.querySelector(".nav-toggle")) return;
 
       const btn = document.createElement("button");
@@ -35,7 +35,7 @@
     const grid = document.getElementById("labsGrid");
     if (!search || !grid) return;
 
-    const posters = [...grid.querySelectorAll(".poster, .labs-poster")];
+    const posters = [...grid.querySelectorAll(".poster,.labs-poster")];
     const filters = [...document.querySelectorAll(".labs-filter")];
     let activeCategory = "all";
 

@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuresSection) {
         if (window.gsap && window.ScrollTrigger) {
             gsap.registerPlugin(ScrollTrigger);
-            gsap.utils.toArray('.features-section.features-clean .feature').forEach((el) => {
+            gsap.utils.toArray('.features-section.features-clean.feature').forEach((el) => {
                 // Enter: blur -> sharp + fade in
                 gsap.fromTo(
                     el,

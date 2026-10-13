@@ -5,9 +5,9 @@
  *
  * lastmod uses the last git commit date per file (with git-index path normalisation and
  * HEAD-date fallback before mtime). Final mtime fallback uses Australia/Melbourne calendar
- * dates so CI (UTC) matches local regeneration for .au — runner-local getDate() caused
+ * dates so CI (UTC) matches local regeneration for.au — runner-local getDate() caused
  * off-by-one lastmod and flaky `git diff` vs committed sitemap.xml.
- * PR builds must use the PR head checkout (see .github/workflows/sitemap.yml), not the
+ * PR builds must use the PR head checkout (see.github/workflows/sitemap.yml), not the
  * merge commit, or git history for lastmod can differ from what authors regenerate locally.
  *
  * Excludes: noindex pages (set INCLUDE_NOINDEX=1 to list them anyway), blocklisted paths,
@@ -72,7 +72,7 @@ function redirectSources() {
   if (!fs.existsSync(file)) return new Set();
   const sources = new Set();
   for (const line of fs.readFileSync(file, "utf8").split(/\r?\n/)) {
-    const [from, , rawStatus] = line.replace(/#.*/, "").trim().split(/\s+/);
+    const [from,, rawStatus] = line.replace(/#.*/, "").trim().split(/\s+/);
     const status = Number.parseInt(rawStatus, 10);
     if (from?.startsWith("/") && !from.includes("*") && status >= 300 && status < 400) {
       sources.add(from);

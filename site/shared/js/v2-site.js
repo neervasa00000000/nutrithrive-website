@@ -57,7 +57,7 @@
   function productFromEl(el) {
     const id = el.dataset.addCart || el.dataset.productId;
     const p = D()?.getProduct?.(id);
-    if (p) return { ...p, quantity: 1 };
+    if (p) return {...p, quantity: 1 };
     return {
       id,
       name: el.dataset.name,
@@ -145,7 +145,7 @@
     document.addEventListener(
       'click',
       (e) => {
-        const addBtn = e.target.closest('[data-add-cart], .nt-add-cart-btn');
+        const addBtn = e.target.closest('[data-add-cart],.nt-add-cart-btn');
         if (!addBtn) return;
         e.preventDefault();
         addToCartFromButton(addBtn);
@@ -469,8 +469,8 @@
       countryCode === 'AU'
         ? auRule?.mode === 'gt'
           ? 'Free AU shipping on orders over $45 (ends 16 Aug)'
-          : `Free AU shipping ${money(data.shipping.freeAuThreshold ?? 79)}+`
-        : `Free worldwide shipping ${money(data.shipping.freeWorldThreshold ?? 90)}+`;
+          : `Free AU shipping ${money(data.shipping.freeAuThreshold ?? 49)}+`
+        : 'Postage is calculated from the parcel weight.';
     const popularCountries = ['AU', 'NZ', 'US', 'GB', 'CA', 'SG', 'IN'];
     const countryList = window.ShippingRates?.getCountryList?.() || [];
     const countryOptions = (countryList.length ? countryList : popularCountries.map((code) => ({ code, name: code })))
@@ -545,7 +545,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
         <div class="lg:col-span-8 space-y-6">
           ${
-            cart.items.length
+            cart.items.length && countryCode === 'AU'
               ? `<div class="bg-pure-white p-6 rounded-xl border border-outline-variant/10">
             <div class="flex justify-between items-center mb-4 text-sm">
               <span class="font-label-lg flex items-center gap-2">
@@ -562,6 +562,8 @@
               <div class="bg-moringa-leaf h-full transition-all" style="width:${pct}%"></div>
             </div>
           </div>`
+  : cart.items.length
+  ? `<div class="bg-pure-white p-6 rounded-xl border border-outline-variant/10"><p class="font-label-lg">Postage is calculated from the parcel weight.</p></div>`
               : ''
           }
           ${lines}
@@ -634,7 +636,7 @@
   function renderPaymentPage() {
     if (
       document.getElementById('paypal-button-container') ||
-      document.querySelector('main.nt-payment-live .checkout-wrap')
+      document.querySelector('main.nt-payment-live.checkout-wrap')
     ) {
       return;
     }

@@ -194,7 +194,7 @@
         missing.push(row);
         return;
       }
-      available.push({ ...product, qty: row.qty });
+      available.push({...product, qty: row.qty });
     });
     return {
       available,

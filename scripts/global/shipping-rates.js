@@ -44,8 +44,8 @@ const YELLOW_RATES = {
 // Zone 4 = UK & Ireland/UK & Europe (BLUE/YELLOW), Zone 5 = Rest of World (YELLOW)
 const COUNTRY_MAPPING = {
     // Australia — GREEN Zone 2 (national mid-rate from rate card)
-    // freeShippingThreshold is the standard ($79). Limited promos are applied in calculateShipping.
-    'AU': { zone: 2, color: 'GREEN', freeShippingThreshold: 79 },
+    // freeShippingThreshold is the standard ($49). Limited promos are applied in calculateShipping.
+    'AU': { zone: 2, color: 'GREEN', freeShippingThreshold: 49 },
     
     // Zone 1 - NZ (BLUE)
     'NZ': { zone: 1, color: 'BLUE' },
@@ -592,9 +592,9 @@ function getCountryInfo(countryCode) {
 }
 
 /**
- * Standing Australian free-shipping threshold is $79.
+ * Standing Australian free-shipping threshold is $49.
  */
-const AU_FREE_SHIPPING_STANDARD = 79;
+const AU_FREE_SHIPPING_STANDARD = 49;
 
 function isAuFreeShippingPromoActive() {
     return false;
@@ -604,8 +604,8 @@ function getAuFreeShippingThreshold() {
     return {
         amount: AU_FREE_SHIPPING_STANDARD,
         mode: 'gte',
-        label: 'from $79',
-        banner: 'Free shipping from $79',
+        label: 'from $49',
+        banner: 'Free shipping from $49',
         endsAtMs: null
     };
 }
@@ -648,12 +648,8 @@ function calculateShipping(countryCode, cartItems, subtotal) {
     const upperCountryCode = countryCode.toUpperCase();
     
     // Free shipping thresholds
-    // 1) Australia: free standard shipping on orders of $79+
+    // Australia: free standard shipping on orders of $49+
     if (upperCountryCode === 'AU' && qualifiesForAuFreeShipping(subtotal)) {
-        return 0;
-    }
-    // 2) All other countries: free shipping at $90+ order value
-    if (upperCountryCode !== 'AU' && subtotal >= 90) {
         return 0;
     }
     

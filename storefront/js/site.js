@@ -122,7 +122,7 @@ function trackCurrentCommercePage() {
 function readCart() {
   if (window.Cart?.get) {
     const cart = window.Cart.get() || { items: [] };
-    return (cart.items || []).map((item) => ({ ...item, qty: Number(item.quantity || 1) }));
+    return (cart.items || []).map((item) => ({...item, qty: Number(item.quantity || 1) }));
   }
   try {
     return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
@@ -205,7 +205,7 @@ window.NT = {
   readCart,
   writeCart,
   addToCart(product, qty = 1) {
-    product = { ...product, image: freshAsset(product.image) };
+    product = {...product, image: freshAsset(product.image) };
     if (window.Cart?.add) {
       window.Cart.add({
         ...product,
@@ -217,16 +217,16 @@ window.NT = {
       updateCartCount();
       emitCartChange();
       announce(`${product.name} added to cart`);
-      trackEcommerce("add_to_cart", [{ ...product, quantity: qty }]);
+      trackEcommerce("add_to_cart", [{...product, quantity: qty }]);
       return;
     }
     const items = readCart();
     const found = items.find((i) => i.id === product.id);
     if (found) found.qty += qty;
-    else items.push({ ...product, qty });
+    else items.push({...product, qty });
     writeCart(items);
     announce(`${product.name} added to cart`);
-    trackEcommerce("add_to_cart", [{ ...product, quantity: qty }]);
+    trackEcommerce("add_to_cart", [{...product, quantity: qty }]);
   },
   setQty(id, qty) {
     if (window.Cart?.updateQuantity) {
@@ -236,7 +236,7 @@ window.NT = {
       return;
     }
     const items = readCart()
-      .map((i) => (i.id === id ? { ...i, qty: Math.max(1, qty) } : i))
+      .map((i) => (i.id === id ? {...i, qty: Math.max(1, qty) } : i))
       .filter((i) => i.qty > 0);
     writeCart(items);
   },
@@ -265,7 +265,7 @@ function recordViewed(product) {
   } catch {
     ids = [];
   }
-  ids = [product.id, ...ids.filter((id) => id !== product.id)].slice(0, 8);
+  ids = [product.id,...ids.filter((id) => id !== product.id)].slice(0, 8);
   localStorage.setItem(VIEWED_KEY, JSON.stringify(ids));
 }
 
@@ -461,7 +461,7 @@ function bindHeader() {
       if (!link || link.hasAttribute("data-funnel-event")) return;
       const href = link.getAttribute("href") || "";
       if (!/\/products(\/|$|\?)/.test(href)) return;
-      if (link.closest("footer, header, .nav-mobile, .announce, .nav-primary")) return;
+      if (link.closest("footer, header,.nav-mobile,.announce,.nav-primary")) return;
       if (!link.closest("main")) return;
       const destination_product = productIdFromHref(href);
       if (!destination_product) return;
@@ -843,7 +843,7 @@ function bindJournalSearch() {
   const sections = [...document.querySelectorAll(".journal-section")];
   const stopWords = new Set(["a", "an", "and", "are", "can", "do", "does", "for", "how", "i", "in", "is", "it", "my", "of", "on", "the", "to", "what", "when", "where", "which", "with"]);
   const aliases = { dosage: "dose take amount serving", dose: "dosage take amount serving", expiry: "storage shelf life last", expire: "storage shelf life last", kids: "children child", tea: "brew drink caffeine darjeeling", skin: "soap face", buy: "choose brands comparison", safe: "safety side effects" };
-  const termsFor = (query) => query.toLowerCase().replace(/[^a-z0-9\s-]/g, " ").split(/\s+/).filter((term) => term.length > 1 && !stopWords.has(term)).flatMap((term) => [term, ...(aliases[term] || "").split(" ").filter(Boolean)]);
+  const termsFor = (query) => query.toLowerCase().replace(/[^a-z0-9\s-]/g, " ").split(/\s+/).filter((term) => term.length > 1 && !stopWords.has(term)).flatMap((term) => [term,...(aliases[term] || "").split(" ").filter(Boolean)]);
   const update = () => {
     const query = input.value.trim();
     const terms = termsFor(query);

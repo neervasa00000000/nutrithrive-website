@@ -386,7 +386,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
     "title": "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping at $79.",
+    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping from $49.",
     "category": "Wellness",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -434,7 +434,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-before-after-workout-timing-guide-2026",
     "title": "Moringa Before or After Workout? Timing Guide (AU)",
-    "description": "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $21.50, 400g $35. Free AU shipping at $79.",
+    "description": "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
     "category": "Wellness",
     "href": "/blog/moringa-before-after-workout-timing-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -474,7 +474,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "title": "Chemist Warehouse Moringa: Capsule Price per 100g vs Powder",
-    "description": "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping at $79.",
+    "description": "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping from $49.",
     "category": "Moringa",
     "href": "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "image": "/assets/images/blog/moringa-chemist-warehouse-vs-nutrithrive-hero.jpg"
@@ -586,7 +586,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-wellness-shot-recipe-winter-2026",
     "title": "Moringa Shot Recipe Australia: Powder You Mix, Not a Shot We Sell",
-    "description": "A small drink you mix at home from moringa powder. We do not sell shots. Powder 100g $11, 200g $21.50, 400g $35.",
+    "description": "A small drink you mix at home from moringa powder. We do not sell shots. Powder 100g $11, 200g $22, 400g $40.",
     "category": "Wellness",
     "href": "/blog/moringa-wellness-shot-recipe-winter-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -746,7 +746,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "title": "Moringa Powder Price Australia (Dated $/100g)",
-    "description": "NutriThrive moringa powder prices as of 6 Oct 2026: 100g $11, 200g $21.50, 400g $35, with price per 100g. Free AU shipping at $79.",
+    "description": "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
     "category": "Moringa",
     "href": "/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"

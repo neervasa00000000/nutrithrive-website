@@ -23,7 +23,7 @@ const committedLocs = extractLocs(committed);
 const gen = spawnSync("node", ["scripts/build-sitemap.cjs"], {
   cwd: ROOT,
   encoding: "utf8",
-  env: { ...process.env, TZ: "Australia/Melbourne" },
+  env: {...process.env, TZ: "Australia/Melbourne" },
 });
 if (gen.status !== 0) {
   console.error(gen.stderr || gen.stdout);

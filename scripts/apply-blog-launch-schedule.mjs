@@ -224,7 +224,7 @@ function runChild(scriptName) {
   const result = spawnSync(process.execPath, [scriptPath], {
     stdio: 'inherit',
     cwd: REPO,
-    env: { ...process.env, TZ },
+    env: {...process.env, TZ },
   });
   if (result.status !== 0) process.exit(result.status ?? 1);
 }

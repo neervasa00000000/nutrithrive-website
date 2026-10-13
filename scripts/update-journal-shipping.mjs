@@ -7,7 +7,7 @@ async function replaceInFile(filePath) {
   try {
     let content = await readFile(filePath, 'utf8');
     const oldString = '$79';
-    const newString = '$79';
+    const newString = '$49';
 
     if (content.includes(oldString)) {
       content = content.replace(new RegExp(oldString.replace(/\$/g, '\\$'), 'g'), newString);

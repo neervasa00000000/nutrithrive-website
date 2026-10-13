@@ -12,8 +12,8 @@ const SITE = path.join(ROOT, 'site');
 const REPLACEMENTS = [
   {
     file: 'pages/homepage/melbourne.html',
-    from: 'Lab-tested moringa powder shipped Australia-wide from Melbourne. Same-day dispatch before 2pm. Free shipping over $79. Sydney, Brisbane, Perth &amp; all states.',
-    to: 'Lab-tested moringa powder from our Truganina warehouse. Same-day dispatch before 2pm on business days. Free shipping over $79 Australia-wide.',
+    from: 'Lab-tested moringa powder shipped Australia-wide from Melbourne. Same-day dispatch before 2pm. Free shipping from $49. Sydney, Brisbane, Perth &amp; all states.',
+    to: 'Lab-tested moringa powder from our Truganina warehouse. Same-day dispatch before 2pm on business days. Free shipping from $49 Australia-wide.',
   },
   {
     file: 'index.html',

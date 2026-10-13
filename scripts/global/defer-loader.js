@@ -47,7 +47,7 @@ window.__NT_DEFER_LOADER_INITIALIZED__ = true;
     const hasExtension = /\.[a-z0-9]+$/i.test(lastSegment);
     if (!hasExtension && !path.endsWith('/')) path += '/';
 
-    // Ensure .html URLs do NOT have a trailing slash.
+    // Ensure.html URLs do NOT have a trailing slash.
     if (path.endsWith('.html/')) path = path.slice(0, -1);
 
     // Collapse duplicate slashes (but preserve leading //? not applicable here).

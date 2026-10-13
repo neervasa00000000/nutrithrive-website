@@ -2,7 +2,7 @@
 /**
  * Production asset pipeline:
  * 1. Compile Tailwind v2 utilities (replaces cdn.tailwindcss.com)
- * 2. Minify first-party .js → .min.js and .css → .min.css
+ * 2. Minify first-party.js →.min.js and.css →.min.css
  * 3. Patch HTML to reference minified assets
  *
  * Run: npm run build
@@ -46,7 +46,7 @@ async function main() {
   fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 
-  const manifestEntries = [...js, ...css];
+  const manifestEntries = [...js,...css];
 
   console.log('→ Patch HTML references…');
   const htmlChanged = await patchHtmlFiles(manifestEntries);

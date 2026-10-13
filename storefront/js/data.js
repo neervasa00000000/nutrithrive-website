@@ -6,7 +6,6 @@ export const PRODUCTS = [
     variant: "100g",
     benefit: "Shade-dried leaf powder. Nothing else in the bag.",
     price: 11,
-    was: 14,
     weight: 100,
     image: "/assets/images/product_webp/moringa-powder-100g-main.webp",
     href: "/products/moringa-powder/100g/",
@@ -22,8 +21,7 @@ export const PRODUCTS = [
     name: "Moringa Powder",
     variant: "200g",
     benefit: "Same powder, more servings.",
-    price: 21.5,
-    was: 28,
+  price: 22,
     weight: 200,
     image: "/assets/images/photos/compressed/moringa-powder-200g-main-square.webp",
     href: "/products/moringa-powder/200g/",
@@ -39,8 +37,7 @@ export const PRODUCTS = [
     name: "400g Moringa Bundle",
     variant: "4 × 100g",
     benefit: "Four pouches. Same batch standards.",
-    price: 35,
-    was: 56,
+  price: 40,
     weight: 400,
     image: "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp",
     href: "/products/moringa-powder/",
@@ -48,7 +45,7 @@ export const PRODUCTS = [
     lab: true,
     serving: { grams: 3, pack: "400g bundle" },
     detail:
-      "Four 100g pouches of our farm-grown moringa. Save $21 compared with four packs at the $14 original price. Manufactured by NutriThrive and packed in Truganina.",
+      "Four 100g pouches of our farm-grown moringa. Manufactured by NutriThrive and packed in Truganina.",
   },
   {
     id: "curry-leaves",
@@ -57,7 +54,6 @@ export const PRODUCTS = [
     variant: "30g",
     benefit: "Farm-grown karipatta from our own farm.",
     price: 7,
-    was: 8.49,
     weight: 30,
     image: "/assets/images/product_webp/dried-curry-leaves-30g-main.webp",
     href: "/products/curry-leaves/",
@@ -71,7 +67,6 @@ export const PRODUCTS = [
     variant: "100g",
     benefit: "From a Darjeeling family farm.",
     price: 7.5,
-    was: 10,
     weight: 100,
     image: "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp",
     href: "/products/black-tea/",
@@ -85,7 +80,6 @@ export const PRODUCTS = [
     variant: "95g",
     benefit: "Handmade by us in Australia.",
     price: 7,
-    was: 9.49,
     weight: 95,
     image: "/assets/images/product_webp/moringa-soap-95g-main.webp",
     href: "/products/moringa-soap/",
@@ -99,7 +93,6 @@ export const PRODUCTS = [
     variant: "Powder + soap",
     benefit: "100g powder and one 95g handmade bar.",
     price: 17,
-    was: 23.39,
     weight: 195,
     image: "/assets/images/product_photos/moringasoapcombo.jpeg",
     href: "/products/moringa-soap/",
@@ -112,7 +105,7 @@ export const PRODUCTS = [
       extra: "Plus one 95g handmade moringa soap bar.",
     },
     detail:
-      "100g farm-grown shade-dried moringa powder plus one 95g handmade soap bar. Save vs buying each at the original prices. Packed in Truganina.",
+      "100g farm-grown shade-dried moringa powder plus one 95g handmade soap bar. Packed in Truganina.",
   },
   {
     id: "combo-pack",
@@ -121,7 +114,6 @@ export const PRODUCTS = [
     variant: "Moringa + curry",
     benefit: "100g powder and 30g curry leaves.",
     price: 17,
-    was: 22.49,
     weight: 130,
     image: "/assets/images/product_webp/moringa-curry-leaves-combo-main.webp",
     href: "/products/combo-pack/",
@@ -144,7 +136,6 @@ export const PRODUCTS = [
     benefit:
       "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift.",
     price: 20,
-    was: 21.5,
     weight: 225,
     image: "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp",
     href: "/products/diwali-gift-box/",
@@ -160,7 +151,6 @@ export const PRODUCTS = [
     variant: "4 products",
     benefit: "Diwali gift pack: powder, tea, curry leaves, and soap.",
     price: 35,
-    was: null,
     weight: 325,
     image: "/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp",
     href: "/products/gift-pack/",
@@ -181,9 +171,9 @@ export function auSoloShippingRate(weightGrams) {
 
 export function shippingCostNote(p) {
   const rate = auSoloShippingRate(p.weight);
-  if (rate === 9.69) return "Free AU shipping at $79+ · $9.69 under · before 2pm Mon–Fri";
-  if (rate === 11.12) return "Free AU shipping at $79+ · $11.12 alone · before 2pm Mon–Fri";
-  return `Free AU shipping at $79+ · $${rate.toFixed(2)} alone · before 2pm Mon–Fri`;
+  if (rate === 9.69) return "Free AU shipping from $49 · $9.69 under · before 2pm Mon–Fri";
+  if (rate === 11.12) return "Free AU shipping from $49 · $11.12 alone · before 2pm Mon–Fri";
+  return `Free AU shipping from $49 · $${rate.toFixed(2)} alone · before 2pm Mon–Fri`;
 }
 
 export function costNote(p) {

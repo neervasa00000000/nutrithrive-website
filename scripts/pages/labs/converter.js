@@ -842,7 +842,7 @@
 
   const toolConfig = {
     pdf_to_text: {
-      hint: "Upload 1 PDF. Output: .txt with best-effort paragraph spacing.",
+      hint: "Upload 1 PDF. Output:.txt with best-effort paragraph spacing.",
       show: []
     },
     image_to_pdf: {
@@ -928,7 +928,7 @@
       show: ["fieldRedactor"]
     },
     dedup_lines: {
-      hint: "Paste text (one line per entry) or upload a .txt file. Removes duplicates while preserving order.",
+      hint: "Paste text (one line per entry) or upload a.txt file. Removes duplicates while preserving order.",
       show: ["fieldDedupText"]
     }
   };
@@ -1009,7 +1009,7 @@
         } else {
           htmlString = (htmlTextEl && htmlTextEl.value) || "";
         }
-        if (!htmlString.trim()) throw new Error("Provide HTML content (paste or upload an .html file).");
+        if (!htmlString.trim()) throw new Error("Provide HTML content (paste or upload an.html file).");
         const blob = await htmlToPdf(htmlString);
         addDownload("HTML → PDF", blob, "html_to_pdf.pdf");
       } else if (tool === "pdf_table_csv") {
@@ -1138,7 +1138,7 @@
         const blob = await pdfRedactRegex(bytes, regexText);
         addDownload("Redacted PDF", blob, "redacted.pdf");
       } else if (tool === "dedup_lines") {
-        // Accept pasted text (textarea) OR an uploaded .txt
+        // Accept pasted text (textarea) OR an uploaded.txt
         let inputText = (dedupTextInput && dedupTextInput.value) ? dedupTextInput.value : "";
 
         const textFile = files.find(
@@ -1149,7 +1149,7 @@
         }
 
         const trimmed = (inputText || "").replace(/\r/g, "");
-        if (!trimmed.trim()) throw new Error("Provide text to deduplicate (paste or upload a .txt file).");
+        if (!trimmed.trim()) throw new Error("Provide text to deduplicate (paste or upload a.txt file).");
 
         const outText = dedupLinesPreserveOrder(trimmed);
         const blob = new Blob([outText], { type: "text/plain;charset=utf-8" });

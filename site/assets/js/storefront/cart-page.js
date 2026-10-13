@@ -152,7 +152,7 @@ function pickRecs(cartItems, subtotal) {
         extra += 30;
         note = "Adds free Australian shipping";
       }
-      return { ...p, score: s + extra, note };
+      return {...p, score: s + extra, note };
     })
     .filter(Boolean)
     .sort((a, b) => b.score - a.score)
@@ -214,7 +214,7 @@ function renderRecs(cartItems, subtotal) {
         const items = readCart();
         const found = items.find((i) => i.id === product.id);
         if (found) found.qty += 1;
-        else items.push({ ...product, qty: 1 });
+        else items.push({...product, qty: 1 });
         writeCart(items);
       }
     });
@@ -307,7 +307,7 @@ function renderCart() {
         }
         if (window.NT?.setQty) window.NT.setQty(id, qty);
         else {
-          writeCart(readCart().map((i) => (i.id === id ? { ...i, qty } : i)));
+          writeCart(readCart().map((i) => (i.id === id ? {...i, qty } : i)));
         }
       });
     });

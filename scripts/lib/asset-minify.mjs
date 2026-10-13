@@ -63,7 +63,7 @@ function publicUrl(repoRel) {
 
 export async function buildTailwind() {
   execSync(
-    'npx tailwindcss -i ./site/assets/css/tailwind-v2-source.css -o ./site/assets/css/tailwind-v2.min.css --minify',
+    'npx tailwindcss -i./site/assets/css/tailwind-v2-source.css -o./site/assets/css/tailwind-v2.min.css --minify',
     { cwd: ROOT, stdio: 'inherit' }
   );
 }
