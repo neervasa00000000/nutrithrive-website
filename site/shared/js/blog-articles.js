@@ -296,6 +296,14 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "how-much-moringa-powder-per-day-dosage-guide",
+    "title": "How Much Moringa Should I Take a Day? A Teaspoon-by-Teaspoon Guide",
+    "description": "Most adults need 1 to 2 level teaspoons of moringa powder a day. When to take it, how to start, taste tips and 3 easy recipes from a Melbourne grower.",
+    "category": "Moringa",
+    "href": "/blog/how-much-moringa-powder-per-day-dosage-guide",
+    "image": "/assets/images/blog/hero-moringa-powder-per-day.webp"
+  },
+  {
     "slug": "how-to-add-moringa-to-diet",
     "title": "How to Use Moringa Powder in Everyday Food (AU)",
     "description": "Add moringa leaf powder to dal, eggs, yoghurt, soups and dough with small spoon amounts. Pouch sizes packed in Truganina.",

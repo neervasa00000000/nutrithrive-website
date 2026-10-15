@@ -155,6 +155,22 @@ const MORINGA_CLUSTER_SEO_SLUGS = new Set([
 ]);
 
 const ARTICLE_SEO_OVERRIDES = {
+  "how-much-moringa-powder-per-day-dosage-guide": {
+    title: "How Much Moringa Powder Per Day? Dose, Timing & Recipes",
+    description: "Most adults need 1 to 2 level teaspoons of moringa powder a day. When to take it, how to start, taste tips and 3 easy recipes from a Melbourne grower.",
+    h1: "How Much Moringa Should I Take a Day? A Teaspoon-by-Teaspoon Guide",
+    ogTitle: "How Much Moringa Powder Per Day? Dose, Timing & Recipes",
+    ogDescription: "Most adults need 1 to 2 level teaspoons of moringa powder a day. When to take it, how to start, taste tips and 3 easy recipes from a Melbourne grower.",
+    articleSection: "Moringa",
+    heroAlt: "Close-up of round green moringa leaves with water droplets on a thin stem",
+    heroCaptionHtml: `<p class="article-hero-credit"><em>Photo: <a href="https://www.pexels.com/photo/healthy-fresh-green-leaves-of-drumstick-tree-with-morning-dew-in-lush-garden-4884816/" rel="noopener noreferrer" target="_blank">Nothing Ahead / Pexels</a></em></p>`,
+    heroImage: "/assets/images/blog/hero-moringa-powder-per-day.webp",
+    heroWidth: 1600,
+    heroHeight: 900,
+    ogImage: "/assets/images/blog/hero-moringa-powder-per-day.jpg",
+    ogImageWidth: 1600,
+    ogImageHeight: 900,
+  },
   "waking-up-at-3am-every-night-australia-2026": {
     title: "Why Do I Wake Up at 3am and Can't Get Back to Sleep?",
     description: "Wake at 3am every night? Why early-morning waking is so common, the habits that make it worse, and what gets you back to sleep.",
@@ -1722,8 +1738,8 @@ function layout({
   <meta property="og:image" content="${esc(image)}">
   <meta property="og:image:secure_url" content="${esc(image)}">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="${canonicalPath === "/blog/how-much-moringa-powder-per-day-dosage-guide" ? ogImageWidth : 1200}">
+  <meta property="og:image:height" content="${canonicalPath === "/blog/how-much-moringa-powder-per-day-dosage-guide" ? ogImageHeight : 630}">
   <meta property="og:image:alt" content="${esc(seoTitle)}">
   <meta property="og:locale" content="en_AU">
   <meta property="og:site_name" content="NutriThrive Australia">
@@ -2301,7 +2317,7 @@ const PDP = {
     },
     variantHint: "The powder + soap bundle is $17.",
     intro:
-      "Our moringa soap is a handmade lavender soap bar, made by us in small batches in Australia. Each 95g bar starts with a melt-and-pour soap base. We add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand and pack them in Truganina, Melbourne. It's an everyday hand and body bar that smells of lavender. [JAY: who pours the bars and how many go in a batch.] $7 a bar, posted Australia-wide.",
+      "Our moringa soap is a handmade lavender soap bar, made by us in small batches in Australia. Each 95g bar starts with a melt-and-pour soap base. We add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand and pack them in Truganina, Melbourne. It's an everyday hand and body bar that smells of lavender. $7 a bar, posted Australia-wide.",
     proofs: [
       "Handmade in Australia",
       "Packed in Melbourne",
@@ -2824,7 +2840,7 @@ function aboutPage() {
         <div class="wrap split-2">
           <div>
             <h2>Why we started NutriThrive</h2>
-            <p>[JAY: the real reason you started NutriThrive in 2023, in two or three sentences, such as what moringa means in your family or what you saw it selling for in Melbourne.]</p>
+            <p>I started NutriThrive in 2023 so people here could buy moringa and curry leaves from our family farm, packed by me in Truganina, at a price that fits an ordinary week.</p>
             <ul>
               <li>Farm-to-customer production with fewer unnecessary markups</li>
               <li>Simple products made without unnecessary fillers</li>
@@ -4422,6 +4438,82 @@ function articleProseWithContents(prose, slug) {
   };
 }
 
+function dosageGuideHead(url, breadcrumbItems) {
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How many teaspoons of moringa powder should I take a day?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most adults do well on 1 to 2 level teaspoons a day, about 2.5 to 5 g. Start with half a teaspoon for the first week. In a 2025 study, people taking three teaspoons (about 7 g) reported more stomach symptoms than those taking one.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is it better to take moringa in the morning or at night?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No study shows a best time. Take it with food at whatever meal you'll remember. Morning works for most people. Moringa leaf has no caffeine, so night is fine too.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I take moringa on an empty stomach?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can, but it's the most common cause of a queasy or unsettled stomach. Having it with food, even a piece of fruit or some yoghurt, usually avoids that.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How long does a 100 g pouch of moringa powder last?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "About 40 level teaspoons, so roughly 5 to 6 weeks at one teaspoon a day, or 3 weeks at two. Once opened, use it within a year and keep it sealed, cool and dark.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I put moringa powder in hot tea or coffee?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can stir it into warm drinks, but let them cool for a minute first rather than pouring on boiling water. Keep it away from coffee and black tea if iron is one of your reasons for taking it, since both can reduce iron absorption.",
+        },
+      },
+    ],
+  };
+  const posting = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    mainEntityOfPage: url,
+    headline: "How Much Moringa Should I Take a Day? A Teaspoon-by-Teaspoon Guide",
+    description: "Most adults need 1 to 2 level teaspoons of moringa powder a day. When to take it, how to start, taste tips and 3 easy recipes from a Melbourne grower.",
+    image: [`${LIVE}/assets/images/blog/hero-moringa-powder-per-day.jpg`],
+    author: {
+      "@type": "Person",
+      name: "Neer Vasa",
+      jobTitle: "Founder",
+      url: `${LIVE}/about#founder`,
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${LIVE}/#organization`,
+      name: "NutriThrive",
+      url: `${LIVE}/`,
+      logo: { "@type": "ImageObject", url: `${LIVE}/assets/images/logo/logo-112.png` },
+    },
+    datePublished: "2026-10-15",
+    dateModified: "2026-10-15",
+    inLanguage: "en-AU",
+    keywords: "how much moringa powder per day, how much moringa powder should i take daily, how much moringa per day, moringa powder how to use, moringa powder when to take, moringa powder morning or night",
+  };
+  return `${jsonLd(posting)}\n  ${jsonLd(faq)}\n  ${jsonLd(breadcrumbSchema(breadcrumbItems))}`;
+}
+
 function articlePage(meta, prose, allArticles, liveSeo = null) {
   const shop = journalProduct(meta) || PRODUCTS[0];
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
@@ -4517,12 +4609,13 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const conversionLinks = (conversionPath.links || [])
     .map(([label, slug]) => `<li><a href="${r.article(slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(label)}</a></li>`)
     .join("");
+  const crumbLabel = meta.slug === "how-much-moringa-powder-per-day-dosage-guide" ? "How Much Moringa Per Day?" : displayH1;
   const breadcrumbItems = moringaCluster
     ? [
         { name: "Home", item: `${LIVE}/` },
         { name: "Blog", item: `${LIVE}/blog/` },
         { name: "Moringa", item: `${LIVE}/blog/category/moringa-guides/` },
-        { name: displayH1, item: url },
+        { name: crumbLabel, item: url },
       ]
     : [
         { name: "Home", item: `${LIVE}/` },
@@ -4546,6 +4639,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         inLanguage: "en-AU",
       })}
   ${jsonLd(breadcrumbSchema(breadcrumbItems))}`;
+  const dosageSchemas = meta.slug === "how-much-moringa-powder-per-day-dosage-guide"
+    ? dosageGuideHead(url, breadcrumbItems)
+    : "";
   return layout({
     title,
     description,
@@ -4555,25 +4651,25 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     preserveDescription: true,
     ogType: "article",
     ogImage: socialImage,
-    ogImageWidth: 1200,
-    ogImageHeight: 675,
+    ogImageWidth: seoOverride?.ogImageWidth || 1200,
+    ogImageHeight: seoOverride?.ogImageHeight || 630,
     ogTitle: desk.title || seoOverride?.ogTitle,
     ogDescription: desk.description || seoOverride?.ogDescription,
     extraHead: `<meta name="author" content="Neer Vasa">
   <meta property="article:author" content="Neer Vasa">
   <meta property="article:section" content="${esc(category)}">
-  ${structuredWithModified || defaultStructuredData}
+  ${dosageSchemas || structuredWithModified || defaultStructuredData}
   ${blogPostingData ? jsonLd(blogPostingData) : ""}`,
     main: `
       <nav class="wrap crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a> / <a href="${r.journal}">Blog</a>${moringaCluster ? ` / <a href="/blog/category/moringa-guides/">Moringa</a>` : ""} / <span>${esc(displayH1)}</span>
+        <a href="/">Home</a> / <a href="${r.journal}">Blog</a>${moringaCluster ? ` / <a href="/blog/category/moringa-guides/">Moringa</a>` : ""} / <span>${esc(crumbLabel)}</span>
       </nav>
       <section class="wrap article-layout">
         <article data-article-slug="${esc(meta.slug)}">
           <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>
           <p class="lede">${ledeHtml}</p>
-          <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="1200" height="675" fetchpriority="high"></div>
+          <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
           ${seoOverride?.heroCaptionHtml || ""}
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
             <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · Free AU shipping from $49 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
