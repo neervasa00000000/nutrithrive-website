@@ -2,9 +2,9 @@
   "/": {
     "h1": "Moringa, curry leaves and Darjeeling tea, packed in Melbourne",
     "old_h1": "Pure moringa. Nothing unnecessary.",
-    "title": "Moringa Powder, Curry Leaves & Darjeeling Tea | NutriThrive",
-    "old_title": "NutriThrive: Moringa Powder, Curry Leaves & Tea | Melbourne",
-    "description": "Farm-grown moringa leaf powder, dried curry leaves and Darjeeling loose leaf tea, NMI lab-tested and packed in Truganina, Melbourne. Posted Australia-wide.",
+    "title": "NutriThrive: Moringa Powder, Curry Leaves and Darjeeling Tea",
+    "old_title": "Moringa Powder, Curry Leaves & Darjeeling Tea | NutriThrive",
+    "description": "NutriThrive sells farm-grown moringa leaf powder, dried curry leaves and Darjeeling loose leaf tea, NMI lab-tested and packed in Truganina, Melbourne.",
     "old_description": "Lab-tested moringa powder, dried curry leaves and Darjeeling tea from Melbourne. NMI tested, from $11. Same-day dispatch. Free AU shipping from $49."
   },
   "/about": {
@@ -144,11 +144,11 @@
     "old_description": "Plain-English nutrition guides for Australians: iron, fibre, sleep, magnesium, gut health and ageing well, with sources and practical food ideas."
   },
   "/products/moringa-powder/": {
-    "h1": "Moringa leaf powder, grown on our family farm",
-    "old_h1": "Moringa Powder Australia",
-    "title": "Buy Moringa Powder Australia | Farm-Grown Leaf Powder",
-    "old_title": "Buy Moringa Powder Australia | Leaf Powder from $11",
-    "description": "Farm-grown moringa leaf powder, sun-dried and NMI lab-tested, packed in Truganina, Melbourne. 100g $11, 200g $22, 400g $40. Posted Australia-wide.",
+    "h1": "Moringa Powder Australia",
+    "old_h1": "Moringa leaf powder, grown on our family farm",
+    "title": "NutriThrive Moringa Powder Australia | Farm-Grown Leaf",
+    "old_title": "Buy Moringa Powder Australia | Farm-Grown Leaf Powder",
+    "description": "NutriThrive farm-grown moringa leaf powder, sun-dried and NMI lab-tested, packed in Truganina VIC. 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
     "old_description": "Farm-grown moringa leaf powder, shade-dried and NMI lab-tested in Australia. 100g $11, 200g $22, 400g $40. Free AU shipping from $49."
   },
   "/products/moringa-powder/100g/": {
@@ -248,19 +248,19 @@
     "old_description": "How to find the lot stamp on a moringa pouch, match it to the seller's lab paperwork, and spot the freshness red flags before you open it."
   },
   "/blog/moringa-brands-comparison-australia-2026": {
-    "h1": "Moringa powder brands in Australia, compared on paper",
-    "old_h1": "Best Moringa Powder Australia? (Facts-Only)",
-    "title": "Moringa Powder Brands in Australia Compared | NutriThrive",
-    "old_title": "Best Moringa Powder in Australia? How to Compare Brands",
-    "description": "How moringa powder brands sold in Australia compare on lab testing, drying, origin, pack size and price per 100g. Dated checks, no paid rankings.",
+    "h1": "Best Moringa Powder in Australia 2026",
+    "old_h1": "Moringa powder brands in Australia, compared on paper",
+    "title": "Best Moringa Powder in Australia 2026: Brands Compared",
+    "old_title": "Moringa Powder Brands in Australia Compared | NutriThrive",
+    "description": "The best moringa powder in Australia for 2026, compared on origin, lab testing, form, price per 100g and shipping. Our verdict and how the others stack up.",
     "old_description": "No paid rankings. Compare moringa powder brands on ingredients, pack date, lab paperwork and price per 100g, plus what to check on iHerb and Amazon AU."
   },
   "/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
-    "h1": "What Chemist Warehouse moringa costs per 100g",
-    "old_h1": "Moringa at Chemist Warehouse: What's on the Shelf and What It Costs per 100g",
-    "title": "Chemist Warehouse Moringa: Price per 100g vs Leaf Powder",
-    "old_title": "Chemist Warehouse Moringa: Capsule Price per 100g vs Powder",
-    "description": "What moringa products Chemist Warehouse lists, and how capsules, tablets and powder compare on form and price per 100g of leaf. Dated check.",
+    "h1": "Moringa at Chemist Warehouse in 2026: Capsules vs Powder",
+    "old_h1": "What Chemist Warehouse moringa costs per 100g",
+    "title": "Moringa at Chemist Warehouse: Capsules vs Powder (2026)",
+    "old_title": "Chemist Warehouse Moringa: Price per 100g vs Leaf Powder",
+    "description": "Which moringa Chemist Warehouse stocks (checked Oct 2026), capsules vs powder, and the price per 100g of leaf. Compare with farm-grown powder from $11.",
     "old_description": "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping from $49."
   },
   "/blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": {
@@ -272,11 +272,11 @@
     "old_description": "What to ask before you buy moringa powder: heavy metals, batch CoA, and how NutriThrive links an NMI lab summary from Truganina packing."
   },
   "/blog/moringa-patches-australia-review-do-they-work": {
-    "h1": "Moringa patches: what the listings claim",
-    "old_h1": "Moringa Patches Australia (Then Leaf Powder)",
-    "title": "Moringa Patches Australia: Glorenda & Healrize Reviewed",
-    "old_title": "Glorenda & Healrize Moringa Patches: AU Reviews Checked",
-    "description": "What Glorenda and Healrize moringa patch listings claim, what evidence exists for skin patches, and how eating leaf powder differs.",
+    "h1": "Moringa Patches in Australia: What Glorenda and Healrize Listings Claim",
+    "old_h1": "Moringa patches: what the listings claim",
+    "title": "Glorenda and Healrize Moringa Patch Reviews: Do They Work?",
+    "old_title": "Moringa Patches Australia: Glorenda & Healrize Reviewed",
+    "description": "Glorenda and Healrize moringa patches sold in Australia: what the listings claim, what research says about skin patches, and what buyers report.",
     "old_description": "Glorenda and Healrize moringa patch reviews checked: what the listings say and how a patch differs from leaf powder. We sell powder only, packed in Truganina."
   },
   "/blog/moringa-powder-victoria-seniors-joint-health": {
@@ -290,9 +290,9 @@
   "/blog/rosabella-moringa-reviews-legit-or-overhyped-2026": {
     "h1": "Rosabella moringa reviews, read by a moringa grower",
     "old_h1": "Rosabella Moringa Reviews Australia (We Sell Powder)",
-    "title": "Rosabella Moringa Reviews: What Buyers Actually Say",
-    "old_title": "Rosabella Moringa Reviews Australia: Powder Buy Path",
-    "description": "What Rosabella moringa reviews say, where it is sold in Australia, and how a plain farm-grown leaf powder compares. We do not sell Rosabella.",
+    "title": "Rosabella Moringa Reviews Australia: Is It Legit?",
+    "old_title": "Rosabella Moringa Reviews: What Buyers Actually Say",
+    "description": "Rosabella moringa reviews, price and where it is sold in Australia, including Chemist Warehouse, and how a farm-grown leaf powder compares.",
     "old_description": "We do not sell Rosabella. Honest read on brand search intent, then NutriThrive farm-grown leaf powder sizes packed in Truganina."
   },
   "/blog/science-shade-drying-vs-sun-drying-moringa": {
@@ -338,9 +338,9 @@
   "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026": {
     "h1": "Does moringa powder expire?",
     "old_h1": "Does Moringa Powder Expire? Shelf Life, Storage, and When to Buy",
-    "title": "How Long Does Moringa Powder Last? Shelf Life & Storage",
-    "old_title": "Does Moringa Powder Expire? Shelf Life and Storage",
-    "description": "How long moringa powder lasts sealed and opened, how to store it in an Australian kitchen, and the colour and smell that tell you it has gone stale.",
+    "title": "Does Moringa Powder Expire? Shelf Life and Storage Guide",
+    "old_title": "How Long Does Moringa Powder Last? Shelf Life & Storage",
+    "description": "Yes, moringa powder goes stale. How long it lasts sealed and opened, how to store it in Australian heat, and the signs it is past its best.",
     "old_description": "Does moringa powder expire? Shelf life, storage tips for Australia, signs it has gone off, and when to restock from $11."
   },
   "/blog/how-to-add-moringa-to-diet": {
@@ -402,9 +402,9 @@
   "/blog/moringa-and-berberine-australia-what-science-says-2026": {
     "h1": "Moringa and berberine: two different things",
     "old_h1": "Moringa and Berberine Together (Australia 2026)",
-    "title": "Moringa vs Berberine: What the Research Says",
-    "old_title": "Moringa and Berberine Together (Australia 2026)",
-    "description": "How moringa leaf powder and berberine differ, how each is sold in Australia, and what current research does and does not show.",
+    "title": "Moringa and Berberine Patches: What the Research Says",
+    "old_title": "Moringa vs Berberine: What the Research Says",
+    "description": "What moringa and berberine are, why Chemist Warehouse patches pair them, what studies have and have not tested, and what to ask before buying.",
     "old_description": "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context, not medical advice. Ask your GP."
   },
   "/blog/moringa-capsules-vs-powder-which-is-better-2026": {
@@ -426,9 +426,9 @@
   "/blog/moringa-vs-coffee-melbourne-energy-hack": {
     "h1": "Moringa and coffee in a Melbourne morning",
     "old_h1": "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
-    "title": "Does Moringa Have Caffeine? Moringa vs Coffee",
-    "old_title": "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
-    "description": "Moringa leaf has no caffeine. How a moringa drink compares with coffee in a morning routine, and how to swap one cup a day.",
+    "title": "Does Moringa Have Caffeine? No. Here Is How It Compares",
+    "old_title": "Does Moringa Have Caffeine? Moringa vs Coffee",
+    "description": "Moringa leaf powder has no caffeine. A side-by-side with coffee, matcha and Darjeeling tea, plus an easy way to swap one coffee a day for a moringa drink.",
     "old_description": "Does moringa leaf powder contain caffeine? No. Here's why it feels different from coffee, and how to stir a little into your morning cup without clumps."
   },
   "/blog/moringa-vs-curry-leaves-difference-australia": {
@@ -466,9 +466,9 @@
   "/blog/grow-moringa-tree-australia": {
     "h1": "Growing moringa in Australia, from someone who farms it",
     "old_h1": "Grow or Buy a Moringa Tree in Australia: Perth, Melbourne and Pots",
-    "title": "How to Grow a Moringa Tree in Australia and Where to Buy",
-    "old_title": "Grow or Buy a Moringa Tree in Australia (Perth, Melbourne)",
-    "description": "Can moringa grow in Australia? Climate zones, Melbourne versus Perth and Brisbane, pots, where to buy trees and seeds, and when powder is easier.",
+    "title": "Moringa Tree Australia: How to Grow It and Where to Buy",
+    "old_title": "How to Grow a Moringa Tree in Australia and Where to Buy",
+    "description": "Can moringa grow in Australia? Climate zones, Melbourne vs Brisbane and Perth, pots, frost, and where to buy seeds and seedlings.",
     "old_description": "Where to buy a moringa tree or plant in Australia and how to grow it: in the ground in Perth or Brisbane, in a pot in Melbourne. We don't sell trees or seeds."
   },
   "/blog/is-moringa-safe-for-children-kids-dosage-2026": {
@@ -642,9 +642,9 @@
   "/blog/dried-curry-leaves-quality-guide-how-to-use": {
     "h1": "Dried curry leaves that still taste of something",
     "old_h1": "Dried Curry Leaves That Actually Taste of Something: A Buyer's Guide",
-    "title": "Dried vs Fresh Curry Leaves: Quality, Flavour & How Much",
-    "old_title": "Dried Curry Leaves: How to Judge Quality & Get Real Flavour",
-    "description": "How many dried curry leaves replace fresh, how to judge quality by colour and smell, and how to get real flavour from dried leaves in a tadka.",
+    "title": "How to Use Dried Curry Leaves: Tadka, Amounts and Swaps",
+    "old_title": "Dried vs Fresh Curry Leaves: Quality, Flavour & How Much",
+    "description": "How to use dried curry leaves in a tadka, dal and rice, how many replace fresh leaves, and how to tell good dried leaves by colour and smell.",
     "old_description": "Dried curry leaves tasting of nothing? How to spot a good pack by colour and aroma, how many to use, how to bloom them in oil and store them in Australia."
   },
   "/blog/darjeeling-black-tea-australia-guide": {

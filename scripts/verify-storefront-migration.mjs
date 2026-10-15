@@ -374,7 +374,7 @@ for (const rel of generatedHtml) {
 const home = read("index.html");
 if (home) {
   const title = attr(home, /<title>([^<]*)<\/title>/i);
-  if (title !== "Moringa Powder, Curry Leaves &amp; Darjeeling Tea | NutriThrive") {
+  if (title !== "NutriThrive: Moringa Powder, Curry Leaves and Darjeeling Tea") {
     errors.push(`homepage title changed: "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(home)) errors.push("homepage is not index,follow");

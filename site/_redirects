@@ -3,6 +3,73 @@
 # — 200 rewrites: pretty URLs (no 301s for /cart vs /cart/; use /cart, /about, /contact, /faq everywhere)
 # — Retired blog URLs → 404
 
+# === Week 1 dead URLs → closest live pages (first match wins over later 410s) ===
+/blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html  /blog/dried-curry-leaves-quality-guide-how-to-use  301!
+/blog/moringa-brands-comparison-australia-2025  /blog/moringa-brands-comparison-australia-2026  301!
+/blog/complete-guide-to-moringa-powder-australia  /blog/how-to-add-moringa-to-diet  301!
+/blog/moringa-chemist-warehouse-freshness-truth.html  /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025  301!
+/blog/moringa-chemist-warehouse-freshness-truth  /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025  301!
+/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide  /blog/dried-curry-leaves-quality-guide-how-to-use  301!
+/blog/moringa-vs-matcha-australia-2025.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/best-moringa-powder-australia-2025  /blog/moringa-brands-comparison-australia-2026  301!
+/blog/best-protein-powder-australia-2025-complete-guide.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/best-clean-protein-powders-moringa-products-australia-2026.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/complete-guide-to-moringa-powder-australia.html  /blog/how-to-add-moringa-to-diet  301!
+/blog/moringa-vs-matcha-australia-2025  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html  /blog/dried-curry-leaves-australia-guide  301!
+/blog/moringa-brands-comparison-australia-2025.html  /blog/moringa-brands-comparison-australia-2026  301!
+/blog/best-clean-protein-powders-moringa-products-australia-2025  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide.html  /blog/dried-curry-leaves-quality-guide-how-to-use  301!
+/blog/how-to-store-dried-curry-leaves-freshness-tips-melbourne-kitchens.html  /blog/dried-curry-leaves-quality-guide-how-to-use  301!
+/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html  /blog/high-protein-moringa-recipes-australia-2026  301!
+/blog/natural-heavy-metal-detox-moringa-cleanse-body.html  /blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026  301!
+/blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html  /blog/how-to-add-moringa-to-diet  301!
+/blog/moringa-vs-matcha-energy-metabolism-2025  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/moringa-vs-superfoods-comparison-australia-2025.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/moringa-magic-natural-glow  /blog/moringa-oil-benefits-skin-hair-health-2026  301!
+/pages/blog/high-protein-snacks-australia-25-options-under-150-calories-2025  /blog/high-protein-moringa-recipes-australia-2026  301!
+/blog/gut-health-superfoods-complete-guide-australia-2026  /blog/30-different-plants-per-week-gut-health-microbiome-2026  301!
+/blog/high-protein-snacks-australia-25-options-under-150-calories-2025  /blog/high-protein-moringa-recipes-australia-2026  301!
+/blog/natural-heavy-metal-detox-moringa-cleanse-body  /blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026  301!
+/blog/natural-joint-pain-relief-moringa-vs-turmeric-2026  /blog/moringa-powder-victoria-seniors-joint-health  301!
+/blog/adaptogenic-superfoods-stress-relief-australia-2025  /blog/moringa-vs-ashwagandha-comparison-2026  301!
+/blog/best-moringa-powder-australia-2026  /blog/moringa-brands-comparison-australia-2026  301!
+/blog/moringa-fitness-athletes-australia-2026  /blog/moringa-before-after-workout-timing-guide-2026  301!
+/blog/dried-curry-leaves-cooking-tips-melbourne  /blog/dried-curry-leaves-quality-guide-how-to-use  301!
+/blog/dried-curry-leaf-hair-oil-recipe  /blog/can-you-use-dried-curry-leaves-for-hair-2026  301!
+/blog/moringa-powder-benefits-ultimate-guide-2024.html  /blog/how-to-add-moringa-to-diet  301!
+/blog/natural-joint-pain-relief-moringa-vs-turmeric-2025.html  /blog/moringa-powder-victoria-seniors-joint-health  301!
+/blog/protein-powder-bloating-fix-moringa  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/moringa-benefits-australia-2026  /blog/how-to-add-moringa-to-diet  301!
+/blog/best-clean-protein-powder-australia-2026-lab-tested-reviews-comparison-expert-buyers-guide.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/moringa-vs-spirulina-which-green-powder-tastes-better.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2026.html  /blog/darjeeling-black-tea-australia-guide  301!
+/blog/moringa-vs-matcha-energy-metabolism-2025.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/natural-pre-workout-moringa-australia-2026  /blog/moringa-before-after-workout-timing-guide-2026  301!
+/blog/natural-energy-boosters-australia-superfoods-2025  /blog/moringa-vs-coffee-melbourne-energy-hack  301!
+/blog/clear-skin-anti-aging-moringa-beauty-superfood  /blog/moringa-oil-benefits-skin-hair-health-2026  301!
+/pages/products/products  /products/  301!
+/blog/affordable-food-budget-eating-family-australia-complete-guide-2025.html  /blog/quick-healthy-meal-ideas-15-minutes-australia  301!
+/blog/best-clean-protein-powder-australia-2025-lab-tested-reviews-comparison-expert-buyers-guide  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/why-australians-cant-sleep-moringa-midnight-reset.html  /blog/waking-up-at-3am-every-night-australia-2026  301!
+/blog/moringa-benefits-protein-powder-australia-2025  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/moringa-benefits-protein-powder-australia-2025.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/gut-health-superfoods-complete-guide-australia-2026.html  /blog/30-different-plants-per-week-gut-health-microbiome-2026  301!
+/blog/moringa-benefits-australia-2026.html  /blog/how-to-add-moringa-to-diet  301!
+/blog/curry-leaves-health-benefits-science-research-australia-2025  /blog/curry-leaves-health-benefits-what-the-evidence-says-2026  301!
+/blog/natural-pre-workout-moringa-australia-2026.html  /blog/moringa-before-after-workout-timing-guide-2026  301!
+/blog/best-moringa-powder-australia-2025-how-to-choose-top-superfoods-compare-brands-boost-wellness.html  /blog/moringa-brands-comparison-australia-2026  301!
+/blog/everything-about-moringa-2025-faq  /blog/how-to-add-moringa-to-diet  301!
+/blog/best-clean-protein-powders-moringa-products-australia-2026  /blog/moringa-vs-whey-protein-comparison-2026  301!
+/blog/moringa-for-breastfeeding-mums-natural-lactation-support.html  /blog/moringa-benefits-for-women-comprehensive-2026  301!
+/blog/moringa-powder-athletes-performance-benefits-australia-2025  /blog/moringa-before-after-workout-timing-guide-2026  301!
+/blog/moringa-brands-comparison-australia-chinese-review.html  /blog/moringa-brands-comparison-australia-2026  301!
+/blog/dried-curry-leaf-powder-recipe-hair-growth  /blog/can-you-use-dried-curry-leaves-for-hair-2026  301!
+/product-detail  /products/moringa-powder/  301!
+/product-detail/  /products/moringa-powder/  301!
+/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html  /blog/musashi-protein-powder-australia-comprehensive-guide-2026  301!
+
 # === Deleted posts: correct redirects (Oct 2026 crawl fix) ===
 /blog/post-animal-economy-vegan-ecosystem-2026.html  /404.html  410!
 /blog/post-animal-economy-vegan-ecosystem-2026  /404.html  410!
@@ -103,7 +170,8 @@
 /pages/blog/nourish-your-body-with-healthy-foods-guide-for-australians-2025.html /blog/ 301!
 /pages/blog/high-protein-snacks-australia-25-options-under-150-calories-2025 /404.html 410!
 /pages/blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html /404.html 410!
-/pages/blog/* /blog/ 301!
+/pages/blog/:slug.html /blog/:slug 301!
+/pages/blog/:slug /blog/:slug 301!
 
 # PHASE 1 REDIRECTS - Delete Duplicates
 
@@ -385,21 +453,31 @@
 /blog/state-of-australian-schooling-2026-comprehensive-analysis.html /blog/ 301!
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods /404.html 410
 /blog/strategic-market-growth-report-australian-wellness-2026-bioharmony-superfoods.html /404.html 410
-# NutriThrive Labs (self-contained browser tools)
-/nutrithrive_labs /nutrithrive_labs/ 301
+# NutriThrive Labs: 200 rewrites to real index files (no slash-adding 301, that looped)
+/nutrithrive_labs /nutrithrive_labs/index.html 200
+/nutrithrive_labs/ /nutrithrive_labs/index.html 200
 # File tools
-/nutrithrive_labs/tools/file/converter /nutrithrive_labs/tools/file/converter/ 301
-/nutrithrive_labs/tools/file/sitemap-generator /nutrithrive_labs/tools/file/sitemap-generator/ 301
+/nutrithrive_labs/tools/file/converter /nutrithrive_labs/tools/file/converter/index.html 200
+/nutrithrive_labs/tools/file/converter/ /nutrithrive_labs/tools/file/converter/index.html 200
+/nutrithrive_labs/tools/file/sitemap-generator /nutrithrive_labs/tools/file/sitemap-generator/index.html 200
+/nutrithrive_labs/tools/file/sitemap-generator/ /nutrithrive_labs/tools/file/sitemap-generator/index.html 200
 # Text tools
-/nutrithrive_labs/tools/text/dedup-lines /nutrithrive_labs/tools/text/dedup-lines/ 301
-/nutrithrive_labs/tools/text/quick-notes /nutrithrive_labs/tools/text/quick-notes/ 301
-/nutrithrive_labs/tools/text/ai-text-detector /nutrithrive_labs/tools/text/ai-text-detector/ 301
+/nutrithrive_labs/tools/text/dedup-lines /nutrithrive_labs/tools/text/dedup-lines/index.html 200
+/nutrithrive_labs/tools/text/dedup-lines/ /nutrithrive_labs/tools/text/dedup-lines/index.html 200
+/nutrithrive_labs/tools/text/quick-notes /nutrithrive_labs/tools/text/quick-notes/index.html 200
+/nutrithrive_labs/tools/text/quick-notes/ /nutrithrive_labs/tools/text/quick-notes/index.html 200
+/nutrithrive_labs/tools/text/ai-text-detector /nutrithrive_labs/tools/text/ai-text-detector/index.html 200
+/nutrithrive_labs/tools/text/ai-text-detector/ /nutrithrive_labs/tools/text/ai-text-detector/index.html 200
 # Productivity tools
-/nutrithrive_labs/tools/productivity/time-converter /nutrithrive_labs/tools/productivity/time-converter/ 301
-/nutrithrive_labs/tools/productivity/pomodoro-timer /nutrithrive_labs/tools/productivity/pomodoro-timer/ 301
-/nutrithrive_labs/tools/productivity/password-generator /nutrithrive_labs/tools/productivity/password-generator/ 301
+/nutrithrive_labs/tools/productivity/time-converter /nutrithrive_labs/tools/productivity/time-converter/index.html 200
+/nutrithrive_labs/tools/productivity/time-converter/ /nutrithrive_labs/tools/productivity/time-converter/index.html 200
+/nutrithrive_labs/tools/productivity/pomodoro-timer /nutrithrive_labs/tools/productivity/pomodoro-timer/index.html 200
+/nutrithrive_labs/tools/productivity/pomodoro-timer/ /nutrithrive_labs/tools/productivity/pomodoro-timer/index.html 200
+/nutrithrive_labs/tools/productivity/password-generator /nutrithrive_labs/tools/productivity/password-generator/index.html 200
+/nutrithrive_labs/tools/productivity/password-generator/ /nutrithrive_labs/tools/productivity/password-generator/index.html 200
 # MediFlow healthcare sub-app
-/nutrithrive_labs/mediflow /nutrithrive_labs/mediflow/ 301
+/nutrithrive_labs/mediflow /nutrithrive_labs/mediflow/index.html 200
+/nutrithrive_labs/mediflow/ /nutrithrive_labs/mediflow/index.html 200
 /nutrithrive_labs/mediflow/features /nutrithrive_labs/mediflow/features.html 200
 /nutrithrive_labs/mediflow/demo /nutrithrive_labs/mediflow/demo.html 200
 /nutrithrive_labs/mediflow/contact /nutrithrive_labs/mediflow/contact.html 200
