@@ -134,7 +134,7 @@ export const PRODUCTS = [
     name: "Diwali Gift Box",
     variant: "Tea + curry + soap",
     benefit:
-      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift.",
+      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina, ready to give as a Diwali gift.",
     price: 20,
     weight: 225,
     image: "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp",
@@ -142,7 +142,7 @@ export const PRODUCTS = [
     unit: "",
     lab: false,
     detail:
-      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift.",
+      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina, ready to give as a Diwali gift.",
   },
   {
     id: "gift-pack",

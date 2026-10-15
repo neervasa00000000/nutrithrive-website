@@ -1261,8 +1261,6 @@ function moringaEducationHtml() {
               <details class="pdp-guide">
                 <summary><span class="pdp-guide-copy"><span id="buy-moringa-australia">Where to buy in Australia</span><small>Ordering and dispatch</small></span><span class="pdp-guide-toggle" aria-hidden="true"></span></summary>
                 <div class="pdp-guide-body">
-                  <p>NutriThrive moringa powder can be ordered directly online in Australia. Our moringa is grown on our farm, Australian lab tested and packed in Truganina, Victoria.</p>
-                  <p>Orders are available for Australia-wide delivery, with same-day weekday dispatch for eligible orders placed before 2pm.</p>
                   <p><a href="#pdp-buy">Choose your size →</a></p>
                 </div>
               </details>
@@ -2146,13 +2144,13 @@ const PDP = {
       [
         "Why isn’t NutriThrive the cheapest moringa powder?",
         {
-          html: `Some Melbourne packs sit around $7–8/100g. We publish an <strong>NMI lab summary</strong>, sun-dry the leaf, and pack in Truganina. Best value is <strong>400g at $40</strong> ($10/100g). Free AU shipping at <strong>$49</strong>.`,
+          html: `We publish an <strong>NMI lab summary</strong>, sun-dry the leaf, and pack in Truganina. Best value is <strong>400g at $40</strong> ($10/100g). Free AU shipping at <strong>$49</strong>.`,
         },
       ],
       [
         "Does Chemist Warehouse sell moringa powder?",
         {
-          html: `CW mainly lists <strong>capsules</strong>. For teaspoon dosing, buy loose powder — see our <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules guide</a>.`,
+          html: `CW mainly lists <strong>capsules</strong>. For teaspoon dosing, buy loose powder. See our <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules guide</a>.`,
         },
       ],
       [
@@ -2199,9 +2197,9 @@ const PDP = {
     safety: "If a pouch ever smells musty or looks damp, don't use it, and let me know.",
     what: "Whole dried leaves of the curry tree (Murraya koenigii), the leaf used for tempering across South Indian, Sri Lankan and Gujarati cooking. It isn't curry powder and doesn't taste like it. The leaf has its own warm, citrusy aroma that comes alive in hot fat. Each pouch holds whole leaves, not crushed powder.",
     useHtml: `<ol>
-              <li>Heat 1–2 tbsp oil or ghee until a mustard seed sizzles straight away.</li>
+              <li>Heat 1 to 2 tbsp oil or ghee until a mustard seed sizzles straight away.</li>
               <li>Add mustard or cumin seeds and let them pop.</li>
-              <li>Add 8–15 dried curry leaves for a pot of dal for 3–4. They should sizzle and darken within 10–20 seconds.</li>
+              <li>Add 8 to 15 dried curry leaves for a pot of dal for 3 to 4. They should sizzle and darken within 10 to 20 seconds.</li>
               <li>Pour the whole tadka over dal, sambar, rasam, vegies or rice. Recipe written for fresh leaves? Use a little more dried leaf and taste as you go. Avoid cold oil and long frying, which turns them bitter.</li>
             </ol>
             <p>New to dried leaves? Try our <a href="/blog/curry-leaf-podi-recipe-dried-curry-leaves">curry leaf podi recipe</a>.</p>`,
@@ -2303,7 +2301,7 @@ const PDP = {
     },
     variantHint: "The powder + soap bundle is $17.",
     intro:
-      "Our moringa soap is a handmade lavender soap bar, made by us in small batches in Australia. Each 95g bar starts with a melt-and-pour soap base. We add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand and pack them in Truganina, Melbourne. It's an everyday hand and body bar with a gentle lavender scent, compact enough for a travel bag or a guest basin, and it makes an easy small gift. $7 a bar, posted Australia-wide.",
+      "Our moringa soap is a handmade lavender soap bar, made by us in small batches in Australia. Each 95g bar starts with a melt-and-pour soap base. We add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand and pack them in Truganina, Melbourne. It's an everyday hand and body bar that smells of lavender. [JAY: who pours the bars and how many go in a batch.] $7 a bar, posted Australia-wide.",
     proofs: [
       "Handmade in Australia",
       "Packed in Melbourne",
@@ -2826,7 +2824,7 @@ function aboutPage() {
         <div class="wrap split-2">
           <div>
             <h2>Why we started NutriThrive</h2>
-            <p>We believe nutritious food and thoughtfully made wellness products should be available to everyone, not treated as expensive luxuries. Our goal is simple: make quality products people can use every day and price them fairly enough to become part of everyday life.</p>
+            <p>[JAY: the real reason you started NutriThrive in 2023, in two or three sentences, such as what moringa means in your family or what you saw it selling for in Melbourne.]</p>
             <ul>
               <li>Farm-to-customer production with fewer unnecessary markups</li>
               <li>Simple products made without unnecessary fillers</li>
@@ -3650,7 +3648,7 @@ function melbournePage() {
     ],
     ["Do you sell fresh curry leaves?", "No, only dried."],
     ["Can I pick up?", "Yes, from Truganina by arrangement."],
-    ["How long is delivery?", "Usually 1–3 business days after dispatch."],
+    ["How long is delivery?", "Usually 1 to 3 business days after dispatch."],
     ["When do I order for Diwali?", "Diwali orders open until Sunday 8 November. No dispatch on Melbourne Cup Day, Tue 3 Nov."],
     ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
   ];
@@ -3677,10 +3675,12 @@ function melbournePage() {
         : `<li><a href="${href}">${name}</a></li>`
     )
     .join("");
+  const desk = deskSeo("/melbourne/");
   return layout({
     title: "Curry Leaves, Darjeeling Tea & Soap Melbourne | NutriThrive",
     description:
-      "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Diwali gift box, packed in Truganina. Melbourne metro 1–3 business days.",
+      desk.description ||
+      "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Diwali gift box, packed in Truganina. Melbourne metro in 1 to 3 business days.",
     preserveTitle: true,
     preserveDescription: true,
     canonicalPath: "/melbourne/",
@@ -3705,15 +3705,15 @@ function melbournePage() {
           <div class="wrap city-local-hero__grid">
             <div class="city-local-hero__copy">
               <p class="city-local-kicker">Packed in Truganina · Melbourne west</p>
-              <h1>Curry Leaves, Darjeeling Tea &amp; Soap in Melbourne</h1>
-              <p class="city-local-lead">Looking for curry leaves in Melbourne? We pack whole dried curry leaves, Darjeeling loose leaf black tea and handmade lavender soap bars in Truganina, in Melbourne's west, and deliver across the city, usually within 1–3 business days of dispatch. Our curry leaves come from our family farm in Gujarat and the tea from a family farm in Darjeeling, and we handmake the soap ourselves in small batches. Order online before 2pm on a weekday for same-day dispatch, or arrange a pickup from Truganina. For Diwali, our tea, curry leaf and soap gift box is ready to give.</p>
+              <h1>${esc(desk.h1 || "Curry leaves, tea and soap delivered in Melbourne")}</h1>
+              <p class="city-local-lead">Looking for curry leaves in Melbourne? We pack whole dried curry leaves, Darjeeling loose leaf black tea and handmade lavender soap bars in Truganina, in Melbourne's west, and deliver across the city, usually within 1 to 3 business days of dispatch. Our curry leaves come from our family farm in Gujarat and the tea from a family farm in Darjeeling, and we handmake the soap ourselves in small batches. Order online before 2pm on a weekday for same-day dispatch, or arrange a pickup from Truganina. For Diwali, our tea, curry leaf and soap gift box is ready to give.</p>
               <div class="city-local-actions">
                 <a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
                 <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
               </div>
               <ul class="city-local-proof" aria-label="Melbourne delivery highlights">
                 <li><strong>Truganina</strong><span>packed in VIC</span></li>
-                <li><strong>1–3 days</strong><span>Melbourne metro</span></li>
+                <li><strong>1 to 3 days</strong><span>Melbourne metro</span></li>
                 <li><strong>Pickup</strong><span>by arrangement</span></li>
               </ul>
             </div>
@@ -3723,7 +3723,7 @@ function melbournePage() {
               </div>
               <figcaption>
                 <span>Typical metro transit</span>
-                <strong>1–3 business days after dispatch</strong>
+                <strong>1 to 3 business days after dispatch</strong>
                 <small>Dispatched from Truganina with tracking</small>
               </figcaption>
             </figure>
@@ -3773,7 +3773,7 @@ function melbournePage() {
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Your Melbourne order</p><h2 id="delivery-heading-melbourne">Delivery to Melbourne and pickup</h2></div>
             </div>
-            <p>Orders before 2pm Monday to Friday usually leave Truganina the same day. Melbourne metro is usually 1–3 business days after dispatch. Free shipping on orders of $49 or more; $9.69 under $49. Pickup from Truganina by arrangement; we don't have a shopfront.</p>
+            <p>Orders before 2pm Monday to Friday usually leave Truganina the same day. Melbourne metro is usually 1 to 3 business days after dispatch. Free shipping on orders of $49 or more; $9.69 under $49. Pickup from Truganina by arrangement; we don't have a shopfront.</p>
           </div>
         </section>
 
