@@ -553,6 +553,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/green-superfood-smoothie-recipes-australia-2026 /404.html 410
 /blog/how-to-add-moringa-to-diet.html /blog/how-to-add-moringa-to-diet 301!
 /blog/how-to-add-moringa-to-diet /blog/how-to-add-moringa-to-diet.html 200
+/blog/how-much-moringa-powder-per-day-dosage-guide.html /blog/how-much-moringa-powder-per-day-dosage-guide 301!
+/blog/how-much-moringa-powder-per-day-dosage-guide /blog/how-much-moringa-powder-per-day-dosage-guide.html 200
 /blog/how-to-choose-greens-powder-australia-2026.html /404.html 410
 /blog/how-to-choose-greens-powder-australia-2026 /404.html 410
 /blog/how-to-choose-moringa-powder-australia-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301!
@@ -817,6 +819,7 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Trailing-slash → no-slash canonical (blog)
 /blog/grow-moringa-tree-australia/ /blog/grow-moringa-tree-australia 301!
 /blog/how-to-add-moringa-to-diet/ /blog/how-to-add-moringa-to-diet 301!
+/blog/how-much-moringa-powder-per-day-dosage-guide/ /blog/how-much-moringa-powder-per-day-dosage-guide 301!
 
 # Soft-404 indexed URLs → Gone (GSC cleanup)
 /blog/best-moringa-powder-australia-2026-what-to-look-for-before-you-buy.html /blog/moringa-brands-comparison-australia-2026 301
