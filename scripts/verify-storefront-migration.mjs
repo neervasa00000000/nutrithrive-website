@@ -34,7 +34,7 @@ const approvedSeoChanges = {
     canonical: "https://nutrithrive.com.au/products/gift-pack/",
   },
   "blog/curry-leaves-substitute-what-to-use-2026.html": {
-    title: "Curry Leaf Substitute Australia — 7 Swaps (+ When to Buy Dried)",
+    title: "Curry Leaf Substitute: What to Use in Australia",
     description: "Curry leaf substitute options in Australia: kaffir lime leaf, lemon zest, and when dried leaves beat every swap. Dried pouch $7. Free AU shipping from $49.",
   },
   "blog/how-to-brew-darjeeling-tea-perfectly-2026.html": {
@@ -59,7 +59,7 @@ const approvedSeoChanges = {
   },
   "blog/ag1-alternative-australia-moringa-comparison-2026.html": {
     title: "AG1 Alternative Australia: AG1 vs Moringa Compared",
-    description: "Compare AG1 and moringa powder in Australia by ingredients, purpose, taste and cost. Moringa is simpler, but it is not a one-to-one AG1 replacement.",
+    description: "AG1 is a multi-ingredient greens scoop. NutriThrive is plain farm-grown moringa leaf powder: compare purpose and format, then buy the pouch that fits.",
   },
   "blog/what-does-moringa-powder-taste-like-honest-guide-2026.html": {
     title: "What Does Moringa Powder Taste Like? Honest Mix Guide",
@@ -70,7 +70,7 @@ const approvedSeoChanges = {
   },
   "blog/moringa-vs-coffee-melbourne-energy-hack.html": {
     title: "Does Moringa Have Caffeine? Vs Coffee in Melbourne",
-    description: "Moringa contains no caffeine and is not a stimulant. Compare it with coffee, learn whether they can be mixed, and choose the right option for your routine.",
+    description: "Does moringa leaf powder contain caffeine? No. Here's why it feels different from coffee, and how to stir a little into your morning cup without clumps.",
   },
   "blog/how-much-caffeine-safe-per-day-australia-fsanz-2026.html": {
     title: "How Much Caffeine Per Day in Australia? FSANZ Guide",
@@ -89,8 +89,8 @@ const approvedSeoChanges = {
     description: "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
   },
   "blog/verify-moringa-quality-premium-buyers-checklist-2026.html": {
-    title: "Moringa Quality Checklist Australia | 8 Checks Before You Buy",
-    description: "8 checks before buying moringa powder in Australia: colour, smell, batch date, lab testing, single-ingredient labels. NMI-tested packs from Truganina.",
+    title: "Farm-Grown vs Certified Moringa Powder: What to Check",
+    description: "What a certification label does and doesn't tell you, and how to check farm-grown moringa leaf powder: origin, drying, batch date and lab paperwork.",
   },
   "blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026.html": {
     title: "Fresh vs Dried Curry Leaves Australia — Taste, Tempering, Storage",
@@ -108,6 +108,7 @@ const approvedSeoChanges = {
   },
   "blog/moringa-vs-whey-protein-comparison-2026.html": {
     title: "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
+    description: "Moringa leaf powder is not a whey replacement. Compare protein per serve, then see how a teaspoon fits into a shake you already make at home.",
   },
   "blog/moringa-vs-ashwagandha-comparison-2026.html": {
     title: "Moringa vs Ashwagandha: Key Differences Explained",
@@ -135,12 +136,12 @@ const approvedSeoChanges = {
     title: "Moringa While Breastfeeding: What Evidence Says (Australia)",
   },
   "blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html": {
-    title: "How Long Does Moringa Powder Last in Australia? (Opened + Sealed)",
+    title: "Does Moringa Powder Expire? Shelf Life and Storage",
     description: "How long does moringa powder last in Australia? Unopened 12–24 months; opened ~18 months if sealed and cool, spring heat, fridge mistakes, Truganina pack dates.",
   },
   "blog/is-moringa-safe-for-children-kids-dosage-2026.html": {
     title: "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping from $49.",
+    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use, with free AU shipping from $49.",
   },
   "blog/how-to-add-moringa-to-diet.html": {
     title: "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
@@ -148,7 +149,7 @@ const approvedSeoChanges = {
   },
   "blog/moringa-and-berberine-australia-what-science-says-2026.html": {
     title: "Moringa and Berberine Together (Australia 2026)",
-    description: "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context — not medical advice. Ask your GP.",
+    description: "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context, not medical advice. Ask your GP.",
   },
   "blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html": {
     title: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
@@ -159,7 +160,8 @@ const approvedSeoChanges = {
   description: "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping from $49.",
   },
   "blog/moringa-wellness-shot-recipe-winter-2026.html": {
-  description: "A small drink you mix at home from moringa powder. We do not sell shots. Powder 100g $11, 200g $22, 400g $40.",
+    title: "Moringa Shot Recipe: A Small Drink You Mix at Home",
+    description: "A short recipe for a small moringa drink you mix at home with lemon and ginger. We sell the leaf powder only: 100g, 200g or 400g pouches.",
   },
   "blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html": {
   description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
@@ -168,16 +170,17 @@ const approvedSeoChanges = {
     description: "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday.",
   },
   "blog/chemist-warehouse-greens-vs-moringa-powder-2026.html": {
-    description: "Chemist Warehouse Vital Organic Greens vs $11 moringa: label walk-through, $/100g maths, and when one shade-dried leaf from Truganina is enough.",
+    description: "Chemist Warehouse greens powders compared with plain moringa leaf powder: ingredients, format and cost, and when a single-ingredient pouch makes sense.",
   },
   "blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026.html": {
-    description: "Moringa avocado toast recipe for Australia: an easy anti-inflammatory breakfast in about 5 minutes, with shade-dried leaf powder tips from Melbourne.",
+    title: "Moringa Avocado Toast: A 5-Minute Breakfast Recipe",
+    description: "Smashed avocado on toast with half a teaspoon of moringa leaf powder, lemon and salt. Ready in five minutes, with tips to keep the flavour mild.",
   },
   "blog/cold-brew-darjeeling-australian-spring-2026.html": {
     description: "Cold-brew Darjeeling tea for Australian spring: fridge method, brew ratios, Melbourne tap tips, and why hot-brew-then-ice goes bitter ($7.50/100g).",
   },
   "blog/high-protein-moringa-recipes-australia-2026.html": {
-    description: "Ten high-protein moringa recipes (15–40g protein per serve) for Australia — tested shakes, bowls, and meals using shade-dried leaf powder daily.",
+    description: "High-protein moringa recipes Australia: ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
   },
   "blog/nutrithrive-dried-curry-leaves-tradition-health.html": {
     title: "Dried Curry Leaves: Health Benefits &amp; Uses in Australia",
@@ -186,6 +189,34 @@ const approvedSeoChanges = {
   "blog/grow-moringa-tree-australia.html": {
     title: "Grow a Moringa Tree in Australia: Pots &amp; Climate Guide",
     description: "How to grow a moringa tree in Australia: pot size, germination, winter dormancy and climate tips for Melbourne, Perth, Qld and warmer AU zones.",
+  },
+  "blog/fibre-deficiency-australia-bowel-cancer-risk-2026.html": {
+    title: "Fibre Deficiency in Australia and Bowel Cancer Risk",
+  },
+  "blog/gut-brain-connection-digestion-mood-mental-health-2026.html": {
+    title: "The Gut-Brain Connection: How Digestion Affects Mood",
+  },
+  "blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026.html": {
+    title: "How to Age Well in Your 40s: Habits for Your 60s",
+  },
+  "blog/how-to-build-balanced-plate-no-calorie-counting-2026.html": {
+    title: "Build a Balanced Plate Without Counting Calories",
+  },
+  "blog/longevity-foods-australia-what-to-eat-live-longer-2026.html": {
+    title: "Longevity Foods: What Australians Should Eat Daily",
+  },
+  "blog/omega-3-deficiency-australia-inflammation-food-sources-2026.html": {
+    title: "Omega-3 Deficiency in Australia: Signs and Food Sources",
+  },
+  "blog/how-to-read-moringa-batch-codes-freshness.html": {
+    title: "How to Read Moringa Batch Codes: A Freshness Check",
+    description: "How to find the lot stamp on a moringa pouch, match it to the seller's lab paperwork, and spot the freshness red flags before you open it.",
+  },
+  "blog/what-does-aust-l-mean-supplement-label-australia-2026.html": {
+    description: "AUST L marks a listed medicine on the ARTG, not a quality stamp. Here's what it means, what it doesn't, and how food powders are labelled differently.",
+  },
+  "blog/moringa-with-vitamin-c-iron-absorption-guide-2026.html": {
+    description: "How to pair moringa leaf powder with vitamin-C foods for plant iron absorption in Australian kitchens. Food guidance, then Shop moringa powder.",
   },
 };
 
