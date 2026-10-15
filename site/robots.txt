@@ -13,6 +13,10 @@ Disallow: /Gork_bot/
 Disallow: /documents/
 Allow: /documents/nutrithrive-lab-report-summary.pdf
 Disallow: /shared/
+Disallow: /.firecrawl/
+Disallow: /scripts/
+Disallow: /audit/
+Disallow: /.build/
 Allow: /
 
 # ====================
@@ -21,6 +25,17 @@ Allow: /
 
 # Google
 User-agent: Googlebot
+Disallow: /nutrithrive_labs/
+Disallow: /nutrithrive-labs/
+Disallow: /crazy-ideas/
+Disallow: /Gork_bot/
+Disallow: /documents/
+Allow: /documents/nutrithrive-lab-report-summary.pdf
+Disallow: /shared/
+Disallow: /.firecrawl/
+Disallow: /scripts/
+Disallow: /audit/
+Disallow: /.build/
 Allow: /
 
 # Google Images
@@ -123,23 +138,6 @@ User-agent: YouBot
 Allow: /
 
 # ====================
-# SITEMAPS
-# ====================
-Sitemap: https://nutrithrive.com.au/sitemap.xml
-
-# ====================
-# DISALLOWED AREAS
-# ====================
-# Local Firecrawl audit snapshots and dev tooling (never public pages)
-Disallow: /.firecrawl/
-Disallow: /scripts/
-Disallow: /audit/
-Disallow: /.build/
-# Disallow admin or private areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
-
-# ====================
 # EXPLICITLY ALLOWED CONTENT
 # ====================
 Allow: /products/
@@ -159,3 +157,5 @@ Allow: /assets/images/logo/
 # ====================
 # Request delay: 1 second between requests (adjust as needed)
 # Crawl-delay: 1
+
+Sitemap: https://nutrithrive.com.au/sitemap.xml

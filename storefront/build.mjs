@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
-import { PRODUCTS, REVIEWS, costNote, shippingCostNote } from "./js/data.js";
+import { PRODUCTS, REVIEWS, auSoloShippingRate, costNote, shippingCostNote } from "./js/data.js";
 
 const PAYMENT_LINE = "PayPal or card online · pickup: cash, bank or PayID";
 const PAYMENT_LINE_LONG =
@@ -385,7 +385,7 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Best Moringa Powder Australia? (Facts-Only)",
     ogTitle: "Best Moringa Powder Australia: Facts-Only Brand Check",
     ogDescription: "Facts-only moringa brand scorecard for Australia, with iHerb and Amazon AU checks and NutriThrive pouch facts.",
-    ledeHtml: "Compare AU moringa powders with a facts-only scorecard: ingredients, organic marks, CoA, pack location — plus iHerb and Amazon notes.",
+    ledeHtml: "Compare AU moringa powders with a facts-only scorecard: ingredients, organic marks, CoA, pack location, plus iHerb and Amazon notes.",
     articleSection: "Moringa",
   },
   "moringa-capsules-vs-powder-which-is-better-2026": {
@@ -2521,6 +2521,8 @@ const PDP = {
 
 function pdpPage(slug, d) {
   const p = d.product;
+  const canonicalPath = d.canonicalPath || `/products/${slug}/`;
+  const mainPowder = canonicalPath === "/products/moringa-powder/";
   const purchaseNote = "Taxes included.";
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
   const buildDate = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
@@ -2565,10 +2567,30 @@ function pdpPage(slug, d) {
   const proofs = [...proofItems, "7-day refund or replacement guarantee."]
     .map((t) => `<li>${check()} ${typeof t === "object" && t.html ? t.html : esc(t)}</li>`)
     .join("");
+  const powder100 = PRODUCTS.find((item) => item.id === "moringa-powder");
+  const powder200 = PRODUCTS.find((item) => item.id === "moringa-200g");
+  const powder400 = PRODUCTS.find((item) => item.id === "moringa-400g");
+  const under49Rate = auSoloShippingRate(powder100?.weight || 100);
+  if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
+    throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
+  }
+  const buyOnline = mainPowder
+    ? `<section class="pdp-buy-online" aria-labelledby="buy-moringa-online">
+            <h2 id="buy-moringa-online">Buy moringa powder online in Australia</h2>
+            <ul class="pdp-buy-list">
+              <li>100g pouch: ${shortMoney(powder100.price)}</li>
+              <li>200g pouch: ${shortMoney(powder200.price)}</li>
+              <li>400g pouch: ${shortMoney(powder400.price)} (best value, ${shortMoney(powder400.price / 4)} per 100g)</li>
+              <li>Free Australia-wide shipping on orders from $49</li>
+              <li>Same-day dispatch on weekday orders before 2pm</li>
+              <li>7-day refund or replacement</li>
+            </ul>
+          </section>`
+    : "";
   const valueCompare =
     slug === "moringa-powder"
       ? `<section class="pdp-value" aria-labelledby="moringa-value">
-            <h2 id="moringa-value">Compare sizes and price per 100g</h2>
+            <h${mainPowder ? "3" : "2"} id="moringa-value">Compare sizes and price per 100g</h${mainPowder ? "3" : "2"}>
             <div class="pdp-value-rows">
               <div class="pdp-value-row">
                 <p class="pdp-value-size">100g</p>
@@ -2600,7 +2622,6 @@ function pdpPage(slug, d) {
     "diwali-gift-box": `<p>Free AU shipping on orders of <strong>$49</strong> or more — add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
     "gift-pack": `<p>This pack includes moringa powder. Prefer no moringa? Shop the <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> (tea, curry leaves &amp; soap). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
   }[slug] || "";
-  const canonicalPath = d.canonicalPath || `/products/${slug}/`;
   const offerUrl = `${LIVE}${canonicalPath}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
   const productSchema = {
@@ -2622,6 +2643,39 @@ function pdpPage(slug, d) {
       price: String(buyProduct.price),
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
+      ...(mainPowder ? {
+        shippingDetails: [
+          {
+            "@type": "OfferShippingDetails",
+            shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
+            shippingRate: { "@type": "MonetaryAmount", value: 0, currency: "AUD" },
+            eligibleTransactionVolume: { "@type": "PriceSpecification", minPrice: 49, priceCurrency: "AUD" },
+            deliveryTime: {
+              "@type": "ShippingDeliveryTime",
+              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
+            },
+          },
+          {
+            "@type": "OfferShippingDetails",
+            shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
+            shippingRate: { "@type": "MonetaryAmount", value: under49Rate, currency: "AUD" },
+            eligibleTransactionVolume: { "@type": "PriceSpecification", maxPrice: 48.99, priceCurrency: "AUD" },
+            deliveryTime: {
+              "@type": "ShippingDeliveryTime",
+              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
+            },
+          },
+        ],
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "AU",
+          returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+          merchantReturnDays: 7,
+          returnMethod: "https://schema.org/ReturnByMail",
+        },
+      } : {}),
     };
   } else {
     productSchema.sku = p.sku;
@@ -2695,7 +2749,8 @@ function pdpPage(slug, d) {
         </div>
         <div class="pdp-buy" id="pdp-buy">
           <p class="pdp-eyebrow">NutriThrive · farm to pouch</p>
-          <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>
+          <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>${mainPowder ? `
+          <p class="pdp-intro">Our moringa leaf powder is farm-grown on our family farm in Gujarat, India. We sun-dry the leaves, mill them to a fine green powder, and pack every pouch ourselves in Truganina, VIC. We have been sending it to kitchens across Australia since 2023. It is 100% moringa leaf with nothing added, and every batch is lab-tested by NMI in Australia. See how it compares in our guide to the <a href="/blog/moringa-brands-comparison-australia-2026">best moringa powder in Australia</a>.</p>` : ""}
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
@@ -2725,7 +2780,7 @@ function pdpPage(slug, d) {
             ${d.underCartNote ? `<p class="purchase-note">${esc(d.underCartNote)}</p>` : ""}
             ${seasonalHtml}
           </div>
-          ${slug === "moringa-powder" ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
+          ${slug === "moringa-powder" && !mainPowder ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
           <ul class="pdp-proof">${proofs}</ul>
         </div>
       </section>
@@ -2738,7 +2793,7 @@ function pdpPage(slug, d) {
       </div>
       <section class="prose-block">
         <div class="wrap pdp-content">
-          ${valueCompare}
+          ${buyOnline}${valueCompare}
           ${education}
           ${shipLadder}
           <div class="product-facts">
@@ -4287,9 +4342,11 @@ function rewriteLinks(html) {
       .replaceAll('href="/shipping"', 'href="/shipping/"')
       .replaceAll('href="/shipping"', 'href="/shipping/"');
   }
+  out = out.replaceAll("NMI lab-tested", "NMI_LAB_TESTED_KEEP");
   return out
     .replaceAll(/style="[^"]*"/g, "")
     .replaceAll(/NMI(?: Australian Government| Government)? lab-tested/gi, "tested in Australia")
+    .replaceAll("NMI_LAB_TESTED_KEEP", "NMI lab-tested")
     .replaceAll(/NMI tested per batch/gi, "supported by an available Australian lab summary")
     .replaceAll(/NMI lab tested/gi, "tested in Australia")
     .replaceAll(/NMI Australian Gov(?:ernment)?(?: lab)?/gi, "Australian laboratory")
@@ -4321,6 +4378,8 @@ function extractArticleStructuredData(slug) {
     if (/"@type"\s*:\s*"(?:BlogPosting|Article|FAQPage)"/.test(raw)) {
       blocks.push(`<script type="application/ld+json">${raw}</script>`);
     } else if (/"@type"\s*:\s*"BreadcrumbList"/.test(raw) && /moringa-guides/.test(raw)) {
+      blocks.push(`<script type="application/ld+json">${raw}</script>`);
+    } else if (/"@type"\s*:\s*"ItemList"/.test(raw)) {
       blocks.push(`<script type="application/ld+json">${raw}</script>`);
     }
   }
@@ -4569,10 +4628,22 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           const data = JSON.parse(raw);
           if (data["@type"] === "Article" || data["@type"] === "BlogPosting") {
             const previousTitle = seoOverride?.title || liveSeo?.title || catalogTitle;
-            if (desk.title && (data.headline === previousTitle || data.headline === desk.old_title)) data.headline = desk.title;
-            if (desk.title && (data.name === previousTitle || data.name === desk.old_title)) data.name = desk.title;
+            const refreshSchema = new Set([
+              "moringa-brands-comparison-australia-2026",
+              "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+              "moringa-patches-australia-review-do-they-work",
+              "rosabella-moringa-reviews-legit-or-overhyped-2026",
+              "moringa-vs-coffee-melbourne-energy-hack",
+              "how-long-does-moringa-powder-last-storage-shelf-life-2026",
+              "grow-moringa-tree-australia",
+              "moringa-and-berberine-australia-what-science-says-2026",
+              "dried-curry-leaves-quality-guide-how-to-use",
+            ]);
+            if (desk.title && (data.headline === previousTitle || data.headline === desk.old_title || refreshSchema.has(meta.slug))) data.headline = desk.title;
+            if (desk.title && (data.name === previousTitle || data.name === desk.old_title || refreshSchema.has(meta.slug))) data.name = desk.title;
+            if (refreshSchema.has(meta.slug) && desk.description) data.description = desk.description;
             if (!data.datePublished && schemaPublished) data.datePublished = schemaPublished;
-            if (!data.dateModified && schemaModified) data.dateModified = schemaModified;
+            if ((!data.dateModified && schemaModified) || (refreshSchema.has(meta.slug) && schemaModified)) data.dateModified = schemaModified;
             return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
           }
         } catch {
@@ -4639,6 +4710,29 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         inLanguage: "en-AU",
       })}
   ${jsonLd(breadcrumbSchema(breadcrumbItems))}`;
+  const underH1 = meta.slug === "moringa-brands-comparison-australia-2026"
+    ? `
+          <div class="quick-verdict">
+            <h2>Our verdict: the best moringa powder in Australia for 2026</h2>
+            <p><strong>Best overall for value and freshness: NutriThrive moringa leaf powder.</strong> It is farm-grown on our family farm in Gujarat, sun-dried, lab-tested by NMI in Australia and packed in Truganina, VIC. It costs $11 per 100g, or $10 per 100g in the 400g pouch, and shipping is free across Australia on orders from $49.</p>
+            <p><strong>Best if you want capsules:</strong> a pharmacy capsule brand, such as those on the Chemist Warehouse shelf. They are easy to carry, but you pay far more per gram of leaf.</p>
+            <p><strong>Best if certification is your priority:</strong> a certified brand from a specialist moringa seller. Check the certificate number on the pack.</p>
+            <p>Yes, we sell one of these. That is why every brand below is judged on the same label facts, and why you can check each one yourself.</p>
+            <p><a href="/products/moringa-powder/">Buy NutriThrive moringa powder</a></p>
+          </div>`
+    : meta.slug === "moringa-patches-australia-review-do-they-work"
+    ? `
+          <div class="quick-verdict">
+            <h2>Quick verdict</h2>
+            <ul>
+              <li>We found no published human trial showing that moringa from Glorenda or Healrize patches gets into the body through the skin.</li>
+              <li>Many buyer reviews describe small patches, slow shipping and hard-to-get refunds.</li>
+              <li>Chemist Warehouse did not list moringa patches when we checked in October 2026.</li>
+              <li>If you want moringa, the simple option is leaf powder you can measure by the teaspoon.</li>
+            </ul>
+            <p><a href="/products/moringa-powder/">See our farm-grown moringa powder</a></p>
+          </div>`
+    : "";
   const dosageSchemas = meta.slug === "how-much-moringa-powder-per-day-dosage-guide"
     ? dosageGuideHead(url, breadcrumbItems)
     : "";
@@ -4667,7 +4761,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
       <section class="wrap article-layout">
         <article data-article-slug="${esc(meta.slug)}">
           <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
-          <h1>${esc(displayH1)}</h1>
+          <h1>${esc(displayH1)}</h1>${underH1}
           <p class="lede">${ledeHtml}</p>
           <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
           ${seoOverride?.heroCaptionHtml || ""}
