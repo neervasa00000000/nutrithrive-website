@@ -114,7 +114,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "curry-leaves-substitute-what-to-use-2026",
     "title": "No Fresh Curry Leaves? Best Substitutes and Dried Leaves",
-    "description": "Can't find fresh curry leaves? Use dried curry leaves (2–3× the volume), or makrut lime leaf or lemon zest. Ratios, what to avoid and where to buy.",
+    "description": "Can't find fresh curry leaves? Use a little more dried leaf than fresh, to taste, or makrut lime leaf or lemon zest. Ratios, what to avoid and where to buy.",
     "category": "Curry leaves",
     "href": "/blog/curry-leaves-substitute-what-to-use-2026",
     "image": "/assets/images/blog/dried-curry-leaves-quality-guide-how-to-use-hero.webp"
@@ -633,8 +633,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "science-shade-drying-vs-sun-drying-moringa",
-    "title": "Shade-Dried vs Sun-Dried Moringa Powder (What to Check)",
-    "description": "How drying method shows up on labels and product pages. NutriThrive shade-dries leaf powder and packs in Truganina.",
+    "title": "Shade-Dried vs Sun-Dried Moringa Powder: What Changes",
+    "description": "How moringa leaves become powder, sun drying versus shade drying, and what each changes in colour and taste. Why we sun-dry ours.",
     "category": "Wellness",
     "href": "/blog/science-shade-drying-vs-sun-drying-moringa",
     "image": "/assets/images/og/moringa-article-1200.jpg"
