@@ -169,11 +169,8 @@ export function auSoloShippingRate(weightGrams) {
   return 23.23;
 }
 
-export function shippingCostNote(p) {
-  const rate = auSoloShippingRate(p.weight);
-  if (rate === 9.69) return "Free AU shipping from $49 · $9.69 under · before 2pm Mon–Fri";
-  if (rate === 11.12) return "Free AU shipping from $49 · $11.12 alone · before 2pm Mon–Fri";
-  return `Free AU shipping from $49 · $${rate.toFixed(2)} alone · before 2pm Mon–Fri`;
+export function shippingCostNote() {
+  return "Free AU shipping on orders from $49. Under $49, shipping starts at $9.69. Order by 2pm Monday to Friday for same-day dispatch.";
 }
 
 export function costNote(p) {
