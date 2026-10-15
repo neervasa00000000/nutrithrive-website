@@ -4,7 +4,7 @@ export const PRODUCTS = [
     sku: "NT-MOR-100G",
     name: "Moringa Powder",
     variant: "100g",
-    benefit: "Shade-dried leaf powder. Nothing else in the bag.",
+    benefit: "Sun-dried leaf powder. Nothing else in the bag.",
     price: 11,
     weight: 100,
     image: "/assets/images/product_webp/moringa-powder-100g-main.webp",
@@ -13,7 +13,7 @@ export const PRODUCTS = [
     lab: true,
     serving: { grams: 3, pack: "100g pouch" },
     detail:
-      "Grown on our farm, shade-dried and manufactured by NutriThrive. Tested in Australia and packed in Truganina. Same-day dispatch before 2pm, Monday to Friday.",
+      "Grown on our farm, sun-dried and manufactured by NutriThrive. Tested in Australia and packed in Truganina. Same-day dispatch before 2pm, Monday to Friday.",
   },
   {
     id: "moringa-200g",
@@ -29,14 +29,14 @@ export const PRODUCTS = [
     lab: true,
     serving: { grams: 3, pack: "200g pouch" },
     detail:
-      "The same farm-grown, shade-dried moringa in a 200g pouch. Manufactured by NutriThrive, tested in Australia and packed in Truganina.",
+      "The same farm-grown, sun-dried moringa in a 200g pouch. Manufactured by NutriThrive, tested in Australia and packed in Truganina.",
   },
   {
     id: "moringa-400g",
     sku: "NT-MOR-400G",
     name: "400g Moringa Bundle",
     variant: "4 × 100g",
-    benefit: "Four pouches. Same batch standards.",
+    benefit: "Four 100g pouches. $10 per 100g.",
   price: 40,
     weight: 400,
     image: "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp",
@@ -105,7 +105,7 @@ export const PRODUCTS = [
       extra: "Plus one 95g handmade moringa soap bar.",
     },
     detail:
-      "100g farm-grown shade-dried moringa powder plus one 95g handmade soap bar. Packed in Truganina.",
+      "100g farm-grown sun-dried moringa powder plus one 95g handmade soap bar. Packed in Truganina.",
   },
   {
     id: "combo-pack",

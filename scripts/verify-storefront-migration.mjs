@@ -18,6 +18,7 @@ import {
 const ROOT = REPO_ROOT;
 const LIVE = "https://nutrithrive.com.au";
 const errors = [];
+const deskSeo = JSON.parse(fs.readFileSync(path.join(ROOT, "storefront/seo-desk-2026-10-15.json"), "utf8"));
 const notes = [];
 const approvedSeoChanges = {
   "blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026.html": {
@@ -305,6 +306,9 @@ for (const rel of trackedBlogs) {
     if (sameSeoText(before[field], after[field])) continue;
     const approvedValue = approvedSeoChanges[rel]?.[field];
     if (approvedValue != null && sameSeoText(approvedValue, after[field])) continue;
+    const deskPath = rel === "blog/index.html" ? "/blog/" : rel.startsWith("blog/") ? `/${rel.replace(/\.html$/, "")}` : "";
+    const deskValue = deskSeo[deskPath]?.[field];
+    if (deskValue != null && sameSeoText(deskValue, after[field])) continue;
     const renamedJournal =
       field === "title" &&
       String(before[field] || "").replace(/Journal/g, "Blog") === String(after[field] || "");
@@ -370,7 +374,7 @@ for (const rel of generatedHtml) {
 const home = read("index.html");
 if (home) {
   const title = attr(home, /<title>([^<]*)<\/title>/i);
-  if (title !== "NutriThrive: Moringa Powder, Curry Leaves &amp; Tea | Melbourne") {
+  if (title !== "Moringa Powder, Curry Leaves &amp; Darjeeling Tea | NutriThrive") {
     errors.push(`homepage title changed: "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(home)) errors.push("homepage is not index,follow");
@@ -386,12 +390,12 @@ if (home) {
 }
 
 const startHere = [
-  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry Leaf Substitute Australia: When to Buy Dried Leaves Instead", "$49"],
-  ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is Moringa Powder Safe for Dogs? AU Dose Checklist", null],
-  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Moringa vs Spirulina vs Matcha (Australia)", "$49"],
-  ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa Side Effects in Australia: Start-Small Guide", null],
-  ["blog/moringa-powder-victoria-seniors-joint-health.html", "How Victorian Seniors Add Moringa Powder to Everyday Meals", "$49"],
-  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 Alternative Australia: Plain Moringa vs AG1", "$49"],
+  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry leaf substitutes, and why none quite match", "$49"],
+  ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Moringa and dogs: ask your vet first", null],
+  ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Three green powders side by side", "$49"],
+  ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa side effects: start with a small amount", null],
+  ["blog/moringa-powder-victoria-seniors-joint-health.html", "How older Victorians add moringa to everyday meals", "$49"],
+  ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 or plain moringa powder? A side-by-side", "$49"],
 ];
 for (const [rel, expected, postage] of startHere) {
   const html = read(rel);
@@ -415,11 +419,11 @@ for (const rel of [
   if (html && !articleHasSubstantialProse(html)) errors.push(`${rel}: article prose is missing or too short`);
 }
 const teaHtml = read("products/black-tea/index.html");
-if (teaHtml && !teaHtml.includes("<title>Darjeeling Loose Leaf Black Tea Australia | 100g $7.50</title>")) {
+if (teaHtml && !teaHtml.includes("<title>Darjeeling Loose Leaf Tea Australia | NutriThrive</title>")) {
   errors.push("products/black-tea/index.html: title not updated");
 }
 const curryHtml = read("products/curry-leaves/index.html");
-if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | 30g $7</title>")) {
+if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | NutriThrive</title>")) {
   errors.push("products/curry-leaves/index.html: title not updated");
 }
 
@@ -432,7 +436,7 @@ if (article) {
     errors.push(`${articleRel}: canonical is "${canonical}"`);
   }
   const title = normalizeMetaText(attr(article, /<title>([^<]*)<\/title>/i));
-  if (title !== "How to Use Moringa Powder in Everyday Food (AU)") {
+  if (title !== "How to Add Moringa Powder to Your Diet: 12 Easy Ways") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
   if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
@@ -449,7 +453,7 @@ if (blogIndex) {
   }
   mustNotInclude("blog/index.html", 'href="/journal/"', "blog index still linking to /journal/");
   const blogH1 = blogIndex.match(/<h1>([^<]*)<\/h1>/i)?.[1];
-  if (blogH1 !== "Blog") errors.push(`blog/index.html H1 is "${blogH1}"`);
+  if (blogH1 !== "Notes from the farm and the kitchen") errors.push(`blog/index.html H1 is "${blogH1}"`);
   mustInclude("blog/index.html", "journal-grid--preview", "blog index topic previews");
   mustInclude("blog/index.html", "Explore all", "blog index explore-more links");
   mustInclude("blog/index.html", "data-journal-extra hidden", "extra blog cards stay collapsed");
