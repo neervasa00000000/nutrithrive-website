@@ -10,7 +10,7 @@ const PAYMENT_LINE_LONG =
 const ADDRESS_LINE = "Ridley Place, Truganina VIC 3029";
 const FREE_SHIP_ANNOUNCE = "Free AU shipping from $49 · Packed in Melbourne";
 const SHIPPING_BAND_LIST =
-  "Australia standard shipping for orders under $49, by parcel weight: up to 250 g $9.69 · 251–500 g $11.12 · 501 g–1 kg $15.20 · 1–3 kg $19.24 · 3–5 kg $23.23.";
+  "Australia standard shipping for orders under $49, by parcel weight: up to 250 g $9.69 · 251 to 500 g $11.12 · 501 g to 1 kg $15.20 · 1 to 3 kg $19.24 · 3 to 5 kg $23.23.";
 import {
   decodeEntities,
   escapeAttr,
@@ -29,6 +29,11 @@ const PAYMENT_ASSET_VERSION = "20261013-1";
 const CSS_ASSET_VERSION = "20261013-2";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
+const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
+function deskSeo(urlPath) {
+  if (!urlPath) return {};
+  return DESK_SEO[urlPath] || DESK_SEO[urlPath.endsWith("/") ? urlPath.slice(0, -1) : `${urlPath}/`] || {};
+}
 const PAYMENT_ONLY = process.env.STOREFRONT_PAYMENT_ONLY === "1";
 const LIVE_PAGES = new Set(
   (process.env.STOREFRONT_PAGES || (PAYMENT_ONLY ? "payment" : ""))
@@ -53,8 +58,6 @@ function retentionFoot(extra = "") {
     : "";
   return `${rates}<script src="${RETENTION_SRC}?v=${ASSET_VERSION}" defer></script>${extra}`;
 }
-
-const CONTRACT = ``;
 
 function routes() {
   if (!LIVE_MODE) {
@@ -340,10 +343,10 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "science-shade-drying-vs-sun-drying-moringa": {
     title: "Shade-Dried vs Sun-Dried Moringa Powder (What to Check)",
-    description: "How drying method shows up on labels and product pages. NutriThrive shade-dries leaf powder and packs in Truganina.",
+    description: "How drying method shows up on labels and product pages. NutriThrive sun-dries leaf powder and packs in Truganina.",
     h1: "Shade-Dried vs Sun-Dried Moringa Powder",
     ogTitle: "Shade-Dried vs Sun-Dried Moringa Powder (What to Check)",
-    ogDescription: "What shade-dried means for moringa leaf powder, what to ask any seller, and NutriThrive’s Truganina pack facts.",
+    ogDescription: "What sun-dried means for moringa leaf powder, what to ask any seller, and NutriThrive’s Truganina pack facts.",
     articleSection: "Moringa",
   },
   "natural-pre-workout-moringa-australia-2026": {
@@ -781,7 +784,7 @@ function per100Calculator(slug) {
 </aside>`;
 }
 const OBJECTION_BLOCKS = {
-  trust: `<p><strong>Who packs your pouch.</strong> NutriThrive is a small Melbourne family business run by founder Neer Vasa. Our moringa leaf is farm-grown and shade-dried, then packed in Truganina, VIC. We publish an <a href="${LAB_PDF}">NMI lab summary (PDF)</a>. We are not certified organic, and we say so.</p>`,
+  trust: `<p><strong>Who packs your pouch.</strong> NutriThrive is a small Melbourne family business run by founder Neer Vasa. Our moringa leaf is farm-grown and sun-dried, then packed in Truganina, VIC. We publish an <a href="${LAB_PDF}">NMI lab summary (PDF)</a>. We are not certified, and we say so.</p>`,
   price: `<p><strong>Compare on price per 100g of leaf.</strong> Capsule labels list the leaf weight per capsule. Multiply it by the capsule count to get grams, then work out the price per 100g. Our leaf powder is ${MORINGA_PRICES.p100} per 100g, ${MORINGA_PRICES.per100In200} per 100g in the 200g pouch and ${MORINGA_PRICES.per100In400} per 100g in the 400g pouch.</p>`,
   taste: `<p><strong>What it tastes like, honestly.</strong> Earthy and green, a bit like spinach, with a slightly bitter finish. Most people don't drink it with plain water. Stir ½ to 1 tsp into a smoothie, dal, soup or scrambled eggs and the taste blends into the food. Not sure yet? <a href="/products/moringa-powder/100g/">Start with the 100g pouch for ${MORINGA_PRICES.p100}</a>.</p>`,
   use: `<p><strong>Three easy ways to use it.</strong></p><ol><li>Blend ½ tsp into a banana smoothie.</li><li>Stir it into dal or soup at the end of cooking.</li><li>Whisk ½ tsp into warm milk with a little honey.</li></ol>`,
@@ -808,7 +811,7 @@ const MORINGA_OBJECTIONS = {
   "moringa-wellness-shot-recipe-winter-2026": ["stock", "trust"],
 };
 function moringaMidCta(slug) {
-  return `<aside class="article-mid-cta" aria-label="Shop moringa powder"><p><strong>Ready to try it?</strong> Leaf powder 100g ${MORINGA_PRICES.p100} · 200g ${MORINGA_PRICES.p200} · 400g ${MORINGA_PRICES.p400} (best value, ${MORINGA_PRICES.per100In400}/100g). Farm-grown, shade-dried, NMI lab summary, packed in Truganina. Free AU shipping from $49.</p><p class="btn-row"><a class="btn btn-primary" href="/products/moringa-powder/" data-funnel-event="article_mid_product_click" data-article="${esc(slug)}" data-product="moringa-400g">Choose your pouch</a> <a class="btn btn-secondary" href="/products/moringa-powder/100g/" data-funnel-event="article_mid_trial_click" data-article="${esc(slug)}" data-product="moringa-powder">Try 100g for ${MORINGA_PRICES.p100}</a></p></aside>`;
+  return `<aside class="article-mid-cta" aria-label="Shop moringa powder"><p><strong>Ready to try it?</strong> Leaf powder 100g ${MORINGA_PRICES.p100} · 200g ${MORINGA_PRICES.p200} · 400g ${MORINGA_PRICES.p400} (best value, ${MORINGA_PRICES.per100In400}/100g). Farm-grown, sun-dried, NMI lab summary, packed in Truganina. Free AU shipping from $49.</p><p class="btn-row"><a class="btn btn-primary" href="/products/moringa-powder/" data-funnel-event="article_mid_product_click" data-article="${esc(slug)}" data-product="moringa-400g">Choose your pouch</a> <a class="btn btn-secondary" href="/products/moringa-powder/100g/" data-funnel-event="article_mid_trial_click" data-article="${esc(slug)}" data-product="moringa-powder">Try 100g for ${MORINGA_PRICES.p100}</a></p></aside>`;
 }
 function stripMidCtas(html) {
   return String(html).replace(/<aside class="article-mid-cta"[\s\S]*?<\/aside>/g, "");
@@ -865,7 +868,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
     kicker: "A Chemist Warehouse alternative",
     title: "Plain moringa leaf powder, priced per 100g",
-    body: "Farm-grown leaf powder, shade-dried, NMI lab summary on the product page, packed in Truganina.",
+    body: "Farm-grown leaf powder, sun-dried, NMI lab summary on the product page, packed in Truganina.",
     cta: "View moringa powder",
     links: [
       ["Woolworths and Coles moringa powder", "how-to-choose-moringa-powder-australia-2026"],
@@ -882,9 +885,9 @@ const ARTICLE_CONVERSION_PATHS = {
   "grow-moringa-tree-australia": {
     kicker: "While your tree grows",
     title: "Use farm-grown moringa leaf powder",
-    body: "A moringa tree takes time to establish. Our powder is grown on our farm, shade-dried and packed in Truganina.",
+    body: "A moringa tree takes time to establish. Our powder is grown on our farm, sun-dried and packed in Truganina.",
     cta: "See farm-grown moringa",
-    links: [["How shade-drying affects moringa", "science-shade-drying-vs-sun-drying-moringa"]],
+    links: [["How sun-drying affects moringa", "science-shade-drying-vs-sun-drying-moringa"]],
   },
   "moringa-and-berberine-australia-what-science-says-2026": {
     kicker: "Check interactions first",
@@ -911,9 +914,9 @@ const ARTICLE_CONVERSION_PATHS = {
   },
   "science-shade-drying-vs-sun-drying-moringa": {
     kicker: "See the finished product",
-    title: "Try our shade-dried moringa powder",
-    body: "Our moringa is grown on our farm, shade-dried as part of our process, tested in Australia and packed in Truganina.",
-    cta: "See shade-dried moringa",
+    title: "Try our sun-dried moringa powder",
+    body: "Our moringa is grown on our family farm in Gujarat, sun-dried to keep its colour, then ground and packed in Truganina.",
+    cta: "See sun-dried moringa",
     links: [["What to check when choosing moringa", "how-to-choose-moringa-powder-australia-2026"]],
   },
   "how-to-add-moringa-to-diet": {
@@ -929,7 +932,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "how-to-make-moringa-tea-recipes-2026": {
     kicker: "For these cups",
     title: "Shop moringa powder for tea and lattes",
-    body: "Shade-dried leaf powder for lemon tea, ginger cups, and the paste-first latte. Packed in Truganina. Free AU shipping from $49.",
+    body: "Sun-dried leaf powder for lemon tea, ginger cups, and the paste-first latte. Packed in Truganina. Free AU shipping from $49.",
     cta: "Shop moringa powder",
     links: [
       ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
@@ -959,7 +962,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "how-to-choose-moringa-powder-australia-2026": {
     kicker: "Apply the checklist",
     title: "Our farm-grown moringa powder",
-    body: "Grown on our farm, shade-dried, NMI lab-tested in Australia and packed in Truganina. Start at $11 for 100g.",
+    body: "Grown on our farm, sun-dried, NMI lab-tested in Australia and packed in Truganina. Start at $11 for 100g.",
     cta: "our moringa powder",
     links: [["Use the eight-point quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"]],
     methodology: true,
@@ -967,7 +970,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "where-to-buy-moringa-leaves-australia": {
     kicker: "Prefer powder to hunting for leaves?",
     title: "Our moringa leaf powder",
-    body: "Grown on our farm, shade-dried, NMI lab-tested in Australia and packed in Truganina. Start at $11 for 100g.",
+    body: "Grown on our farm, sun-dried, NMI lab-tested in Australia and packed in Truganina. Start at $11 for 100g.",
     cta: "Shop moringa powder",
     links: [["Ways to use moringa powder in everyday food", "how-to-add-moringa-to-diet"]],
     methodology: true,
@@ -975,7 +978,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "moringa-vs-curry-leaves-difference-australia": {
     kicker: "Keep both in the pantry",
     title: "Moringa powder, from $11",
-    body: "Shade-dried leaf powder packed in Truganina. Dried curry leaves are $7, or both come together in the $17 combo.",
+    body: "Sun-dried leaf powder packed in Truganina. Dried curry leaves are $7, or both come together in the $17 combo.",
     cta: "Shop moringa powder",
     links: [
       ["Where to buy moringa leaves in Australia", "where-to-buy-moringa-leaves-australia"],
@@ -992,7 +995,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "natural-pre-workout-moringa-australia-2026": {
     kicker: "Soft next step",
     title: "Shop moringa powder",
-    body: "Shade-dried leaf for kitchen mixes before training. Free AU shipping from $49. Packed in Truganina.",
+    body: "Sun-dried leaf for kitchen mixes before training. Free AU shipping from $49. Packed in Truganina.",
     cta: "Shop moringa powder",
     links: [
       ["How to add moringa to your diet", "how-to-add-moringa-to-diet"],
@@ -1044,7 +1047,7 @@ const ARTICLE_CONVERSION_PATHS = {
   "diwali-gift-guide-curry-leaves-tea-australia": {
     kicker: "Ready Diwali hamper",
     title: "Diwali gift box — tea, curry leaves & soap",
-    body: "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina — a ready-to-give Diwali gift for $20.",
+    body: "Darjeeling tea, dried curry leaves from our farm and a handmade moringa soap, packed together in Truganina. Ready to give for Diwali.",
     cta: "Shop Diwali gift box",
     links: [
       ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
@@ -1206,7 +1209,7 @@ function moringaEducationHtml() {
           <section class="pdp-overview" aria-labelledby="why-nutrithrive-moringa">
             <div class="pdp-section-heading">
               <p class="kicker">Farm to pouch</p>
-              <h2 id="why-nutrithrive-moringa">Why choose NutriThrive moringa powder?</h2>
+              <h2 id="why-nutrithrive-moringa">What's in the pouch, and where it's from</h2>
             </div>
             <div class="pdp-why">
               <div>
@@ -1214,16 +1217,12 @@ function moringaEducationHtml() {
                 <p>Our moringa is grown on our own farm and processed by NutriThrive from leaf to finished powder.</p>
               </div>
               <div>
-                <h3>Shade-dried</h3>
-                <p>The leaves are shade-dried as part of our production process before being milled into powder.</p>
+                <h3>Sun-dried</h3>
+                <p>The leaves are sun-dried to keep their colour, then ground into powder and packed.</p>
               </div>
               <div>
                 <h3>Australian lab tested</h3>
                 <p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the lab summary for batch NT042024 (PDF, January 2025)</a>.</p>
-              </div>
-              <div>
-                <h3>Nothing unnecessary</h3>
-                <p>The product contains moringa leaf powder without unnecessary fillers or additives.</p>
               </div>
               <div>
                 <h3>Packed in Melbourne</h3>
@@ -1256,7 +1255,7 @@ function moringaEducationHtml() {
                 <summary><span class="pdp-guide-copy"><span id="moringa-taste">What does moringa powder taste like?</span><small>Flavour and pairing</small></span><span class="pdp-guide-toggle" aria-hidden="true"></span></summary>
                 <div class="pdp-guide-body">
                   <p>Moringa has an earthy, green and slightly bitter flavour. Some people enjoy it simply mixed into drinks, while others prefer combining it with stronger flavours such as fruit, yoghurt or smoothies.</p>
-                  <p><a href="${taste}">Read our complete guide to what moringa powder tastes like →</a></p>
+                  <p><a href="${taste}">What it tastes like, and how to soften it</a></p>
                 </div>
               </details>
               <details class="pdp-guide">
@@ -1332,7 +1331,7 @@ function googleReviewsSection() {
         (r) => `<blockquote class="review-card"><p title="${esc(r.text)}">“${esc(r.text)}”</p><div class="review-meta"><strong>${esc(r.name)}</strong>Verified Google review</div></blockquote>`
       ).join("")}
     </div>
-    <p class="review-disclosure">These are genuine reviews from our Google Business Profile. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
+    <p class="review-disclosure">From our Google Business Profile.</p>
     <p style="margin-top:16px"><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all reviews</a></p>
   </div>
 </section>`;
@@ -1364,14 +1363,14 @@ const MORINGA_SIZE_PAGES = {
     variantId: "moringa-powder",
     title: "Moringa Powder 100g Australia | $11 | NutriThrive",
     description:
-      "Buy NutriThrive moringa powder 100g for $11. Shade-dried, NMI lab tested, packed in Truganina. Free AU shipping from $49.",
+      "Buy NutriThrive moringa powder 100g for $11. Sun-dried, NMI lab tested, packed in Truganina. Free AU shipping from $49.",
     h1: "Moringa Powder 100g",
   },
   "200g": {
     variantId: "moringa-200g",
     title: "Moringa Powder 200g Australia | $22 | NutriThrive",
     description:
-      "Buy NutriThrive moringa powder 200g for $22. Shade-dried, NMI lab tested, packed in Truganina. Free AU shipping from $49.",
+      "Buy NutriThrive moringa powder 200g for $22. Sun-dried, NMI lab tested, packed in Truganina. Free AU shipping from $49.",
     h1: "Moringa Powder 200g",
   },
 };
@@ -1749,7 +1748,6 @@ function layout({
   ${extraHead}
 </head>
 <body>
-${CONTRACT}
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a>: tea, curry leaves and soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · Free AU shipping from $49</span></div>
 <header class="site-header">
@@ -1879,15 +1877,17 @@ function writePage(rel, html, destRoot = OUT) {
 function homepage() {
   const featured = PRODUCTS;
   const liveSeo = LIVE_MODE ? extractSeo(path.join(SITE, "index.html")) : null;
+  const desk = deskSeo("/");
   return layout({
-    title: liveSeo?.title || "NutriThrive: Lab-tested moringa from Melbourne",
+    title: desk.title || liveSeo?.title || "NutriThrive: Lab-tested moringa from Melbourne",
     description:
+      desk.description ||
       liveSeo?.description ||
-      "Shade-dried moringa leaf powder, tested in Australia and packed in Truganina. From $11/100g. Same-day Melbourne dispatch.",
+      "Sun-dried moringa leaf powder, tested in Australia and packed in Truganina. From $11/100g. Same-day Melbourne dispatch.",
     canonicalPath: "/",
     current: "",
-    preserveTitle: Boolean(liveSeo?.title),
-    preserveDescription: Boolean(liveSeo?.description),
+    preserveTitle: Boolean(desk.title || liveSeo?.title),
+    preserveDescription: Boolean(desk.description || liveSeo?.description),
     robots: liveSeo?.robots || undefined,
     extraHead: `<link rel="preload" as="image" href="/assets/images/product_webp/moringa-powder-100g-main.webp" fetchpriority="high">
   ${jsonLd(websiteSchema())}
@@ -1897,8 +1897,8 @@ function homepage() {
   <div class="wrap hero-grid">
     <div>
       <p class="kicker">Our farm · Made by NutriThrive</p>
-      <h1>Pure moringa. Nothing unnecessary.</h1>
-      <p class="lede">Farm-grown, shade-dried and manufactured by us, with Australian testing information published when available. Packed in Truganina.</p>
+      <h1>${esc(deskSeo("/").h1 || "Pure moringa. Nothing unnecessary.")}</h1>
+      <p class="lede">Grown on our family farm in Gujarat, sun-dried, milled by us and packed in Truganina. The lab summary for our current batch is online.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
         <a class="btn btn-secondary" href="/products/diwali-gift-box/">Diwali Gift Box $20</a>
@@ -1924,7 +1924,7 @@ function homepage() {
 </section>
 <div class="wrap">
   <div class="trust-row">
-    <div class="trust-item">${check()}<div><strong>Australian testing</strong><span>Published information when available.</span></div></div>
+    <div class="trust-item">${check()}<div><strong>Our farm</strong><span>Grown on our family farm in Gujarat. Sun-dried, then packed by us in Truganina. Since 2023.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Manufacturer-direct</strong><span>We grow it and make it.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Single-ingredient</strong><span>Leaf powder. No fillers.</span></div></div>
     <div class="trust-item">${check()}<div><strong>Tracked shipping</strong><span>Australia-wide. Free from $49.</span></div></div>
@@ -1934,7 +1934,7 @@ function homepage() {
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Everyday products, fairly priced</h2>
+        <h2>Five things we grow, make or pack ourselves</h2>
       </div>
       <a href="/shop/">Shop all</a>
     </div>
@@ -1947,14 +1947,14 @@ function homepage() {
     <div class="proof-story-head">
       <div>
         <p class="kicker">Farmer and manufacturer</p>
-        <h2>We know where it comes from.<br>Because we grow it.</h2>
+        <h2>We grow it ourselves.<br>Because we grow it.</h2>
       </div>
-      <p>Our moringa and curry leaves are grown on our own farm. We oversee the process from harvest to manufacturing, then pack locally in Truganina. Fewer middlemen helps us keep everyday products fairly priced.</p>
+      <p>Our moringa and curry leaves are grown on our own farm. We oversee the process from harvest to manufacturing, then pack locally in Truganina. Because we grow and pack it ourselves, there's no importer or wholesaler taking a margin.</p>
     </div>
     <ol class="origin-steps" aria-label="From our farm to your order">
       <li><span>01</span><strong>Grown by us</strong><p>Our own farm, harvested by our team.</p></li>
-      <li><span>02</span><strong>Made by us</strong><p>Harvested, shade-dried and manufactured by NutriThrive.</p></li>
-      <li><span>03</span><strong>Checked in Australia</strong><p>Testing information is published when available.</p></li>
+      <li><span>02</span><strong>Made by us</strong><p>Harvested, sun-dried and manufactured by NutriThrive.</p></li>
+      <li><span>03</span><strong>Checked in Australia</strong><p>Our moringa is tested by the National Measurement Institute. The summary for batch NT042024 is online.</p></li>
       <li><span>04</span><strong>Packed in Melbourne</strong><p>Prepared in Truganina and tracked Australia-wide.</p></li>
     </ol>
     <div class="proof-story-actions">
@@ -1998,7 +1998,7 @@ ${googleReviewsSection()}
 <section class="cta-band">
   <div class="wrap">
     <h2>Start with the 100g pouch</h2>
-    <p>Lab-tested, shade-dried, packed in Truganina. $11.</p>
+    <p>From our farm in Gujarat, packed in Truganina. 100g for $11.</p>
     <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
   </div>
 </section>`,
@@ -2007,12 +2007,13 @@ ${googleReviewsSection()}
 
 function shopPage() {
   const shopPath = LIVE_MODE ? "/products/" : "/shop";
+  const desk = deskSeo("/products/");
   const moringaIds = new Set(["moringa-powder", "moringa-200g", "moringa-400g"]);
   const moringaProducts = PRODUCTS.filter((p) => moringaIds.has(p.id));
   const otherProducts = PRODUCTS.filter((p) => !moringaIds.has(p.id));
   return layout({
-    title: "Shop Curry Leaves, Darjeeling Tea, Soap & Moringa",
-    description: "Farm-grown curry leaves $7, Darjeeling tea $7.50, handmade soap $7, moringa from $11, $20 Diwali Gift Box. Packed in Truganina. Free AU shipping from $49.",
+    title: desk.title || "Shop Curry Leaves, Darjeeling Tea, Soap & Moringa",
+    description: desk.description || "Farm-grown curry leaves $7, Darjeeling tea $7.50, handmade soap $7, moringa from $11, $20 Diwali Gift Box. Packed in Truganina. Free AU shipping from $49.",
     canonicalPath: shopPath,
     current: "Shop",
     preserveTitle: true,
@@ -2041,7 +2042,7 @@ function shopPage() {
     main: `
       <section class="page-intro shop-intro wrap">
         <p class="kicker">Farm grown · Australian packed</p>
-        <h1>Shop NutriThrive</h1>
+        <h1>${esc(deskSeo("/products/").h1 || "Shop NutriThrive")}</h1>
         <p>Start with our farm-grown moringa powder — from $11 — then add curry leaves, tea, soap and gift packs.</p>
       </section>
       <section class="section shop-catalog" style="padding-top:0" aria-labelledby="shop-moringa">
@@ -2050,7 +2051,7 @@ function shopPage() {
             <div>
               <p class="kicker">Core product</p>
               <h2 id="shop-moringa">Moringa powder</h2>
-              <p>Shade-dried leaf powder. Packed in Truganina. Free AU shipping from $49.</p>
+              <p>Sun-dried leaf powder. Packed in Truganina. Free AU shipping from $49.</p>
             </div>
           </div>
           <div class="product-grid shop-product-grid shop-moringa-grid">${moringaProducts.map((product, index) => productCard(product, index === 0, { showVariant: true })).join("")}</div>
@@ -2075,7 +2076,7 @@ const PDP = {
   "moringa-powder": {
     title: "Buy Moringa Powder Australia | Leaf Powder from $11",
     description:
-      "Farm-grown moringa leaf powder, shade-dried and NMI lab-tested in Australia. 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
+      "Farm-grown moringa leaf powder, sun-dried and NMI lab-tested in Australia. 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
     forceSeo: true,
     current: "Moringa",
     h1: "Moringa Powder Australia",
@@ -2085,18 +2086,18 @@ const PDP = {
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack", "moringa-soap-combo"].includes(p.id)
     ),
     variantLabels: {
-      "moringa-powder": "100g — $11 · Good for trying NutriThrive",
+      "moringa-powder": "100g · $11 · A good first pouch",
       "moringa-200g": "200g — $22",
-      "moringa-400g": "400g — $40 · BEST VALUE · $10 per 100g",
+      "moringa-400g": "400g · $40 · $10 per 100g",
       "combo-pack": "Combo pack — $17 · Moringa + curry leaves",
       "moringa-soap-combo": "Powder + soap — $17 · 100g moringa + 95g bar",
     },
     variantHint: "400g is $10 per 100g.",
     intro:
-      "Pure moringa powder from our farm, shade-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne. Grown on our family farm in Gujarat, India, and packed in Truganina, Melbourne.",
+      "Moringa leaf powder from our family farm in Gujarat, India. Sun-dried, tested by NMI in Australia, and packed by us in Truganina, Melbourne.",
     freezeHeroCopy: true,
     proofs: [
-      "100% moringa leaf — no fillers",
+      "100% moringa leaf. Nothing added.",
       { html: `<a href="/documents/nutrithrive-lab-report-summary.pdf">Australian lab tested</a>` },
       "Grown on our farm",
       "Packed in Melbourne",
@@ -2118,27 +2119,15 @@ const PDP = {
     detailCaption: "A closer look at the fine texture and natural green colour of the powder.",
     ingredients: "100% moringa (Moringa oleifera) leaf powder. No fillers or blends.",
     origin: "Grown on our own farm. Packed in Truganina, Melbourne.",
-    process: "We grow, harvest, shade-dry and mill the leaves, arrange testing in Australia, then pack in small runs in Truganina.",
-    storage: "Store sealed in a dry environment away from humidity. Use within 18 months after opening.",
+    process: "We grow, harvest, sun-dry and mill the leaves, arrange testing in Australia, then pack in small runs in Truganina.",
+    storage: "Keep it sealed, somewhere cool and dry. Use within 1 year of opening.",
     safety: "Start with a small amount. If you are pregnant, breastfeeding, taking prescription medication or managing a health condition, ask your healthcare professional before regular use.",
-    what: "Bright green powder with a mild, spinach-like smell when you open it. We shade-dry the leaves and publish a lab summary for heavy metals and pesticides.",
+    what: "Bright green powder with a mild, spinach-like smell when you open it. We sun-dry the leaves and publish the NMI nutrition summary for batch NT042024.",
     use: "Add 1 teaspoon (about 3 to 5 grams) to smoothies, juice, or water. Works in soups and salads. Straight in water, most people dislike the flavour. Mixed into food, most people barely notice it.",
     faqs: [
       [
-        "Where can I buy moringa powder in Australia?",
-        "You can buy NutriThrive moringa powder directly from our Australian online store. It is grown on our farm, shade-dried, NMI lab-tested in Australia, and packed in Truganina, Victoria. Sizes start at $11 for 100g, with delivery across Australia and free AU shipping from $49.",
-      ],
-      [
-        "Can I buy NutriThrive moringa powder online?",
-        "Yes. Order online from this product page for Australia-wide delivery. The current powder sizes are 100g for $11, 200g for $22 and 400g for $40.",
-      ],
-      [
         "Where is NutriThrive moringa powder shipped from?",
         "Orders are packed and shipped from Truganina, Melbourne. Local pickup can be arranged from Truganina, and online orders ship across Australia.",
-      ],
-      [
-        "What is in NutriThrive moringa powder?",
-        "NutriThrive Moringa Powder contains 100% moringa leaf powder with no unnecessary fillers or additives.",
       ],
       [
         "What does moringa powder taste like?",
@@ -2146,9 +2135,8 @@ const PDP = {
       ],
       [
         "How should I store moringa powder?",
-        "Store sealed in a dry environment away from humidity. Use within 18 months after opening.",
+        "Keep it sealed, somewhere cool and dry. Use within 1 year of opening.",
       ],
-      ["Where is NutriThrive moringa powder packed?", "NutriThrive moringa powder is packed in Truganina, Victoria."],
       [
         "Is NutriThrive moringa powder tested in Australia?",
         {
@@ -2158,7 +2146,7 @@ const PDP = {
       [
         "Why isn’t NutriThrive the cheapest moringa powder?",
         {
-          html: `Some Melbourne packs sit around $7–8/100g. We publish an <strong>NMI lab summary</strong>, shade-dry the leaf, and pack in Truganina. Best value is <strong>400g at $40</strong> ($10/100g). Free AU shipping at <strong>$49</strong>.`,
+          html: `Some Melbourne packs sit around $7–8/100g. We publish an <strong>NMI lab summary</strong>, sun-dry the leaf, and pack in Truganina. Best value is <strong>400g at $40</strong> ($10/100g). Free AU shipping at <strong>$49</strong>.`,
         },
       ],
       [
@@ -2169,7 +2157,7 @@ const PDP = {
       ],
       [
         "Are you certified organic?",
-        "No ACO badge. Farm leaf plus Australian NMI testing. If you need a certification label, buy certified — then compare price per 100g and certificates of analysis.",
+        "We're not certified. Our leaf is farm-grown and tested by NMI. If certification matters to you, buy a certified brand and compare the price per 100g and the lab paperwork.",
       ],
       [
         "Does NutriThrive offer free shipping?",
@@ -2186,7 +2174,7 @@ const PDP = {
     current: "Curry Leaves",
     product: PRODUCTS.find((p) => p.id === "curry-leaves"),
     intro:
-      "Buy dried curry leaves online from the people who grow them. Our whole curry leaves (also called karipatta, curry patta or kadi patta) are grown on our family farm in Gujarat, dried, and packed in 30g pouches in Truganina, Melbourne. They're made for tadka: drop a small handful into hot oil or ghee with mustard seeds and the aroma carries through dal, sambar, rasam, lemon rice and curries. Dried leaves are quieter than fresh until they hit the oil, so use about two to three times the amount a recipe gives for fresh. $7 for 30g, posted Australia-wide.",
+      "Buy dried curry leaves online from the people who grow them. Our whole curry leaves (also called karipatta, curry patta or kadi patta) are grown on our family farm in Gujarat, dried, and packed in 30g pouches in Truganina, Melbourne. They're made for tadka: drop a small handful into hot oil or ghee with mustard seeds and the aroma carries through dal, sambar, rasam, lemon rice and curries. Drying softens the aroma, so use a little more dried leaf than you would fresh, fry it briefly in hot oil, and taste as you go. $7 for 30g, posted Australia-wide.",
     proofs: [
       "Grown on our farm in Gujarat",
       "Packed in Melbourne",
@@ -2205,22 +2193,22 @@ const PDP = {
     detailCaption: "Whole dried leaves with their naturally curled, pantry-ready texture.",
     ingredients: "100% dried curry leaves (curry patta / kadi patta / karipatta). Nothing added.",
     origin: "Grown on NutriThrive’s farm in Gujarat, India. Packed in Truganina, Melbourne.",
-    process: "We grow and harvest the leaves on our farm in Gujarat, dry them, then pack them in Truganina.",
+    process: "We pick the leaves on our family farm in Gujarat and sun-dry them there to keep their colour. Then I pack them in Truganina.",
     storage:
-      "Keep the pouch sealed in a cool, dry, dark cupboard, away from the stove. Dried leaves don't spoil quickly when kept dry, but their aroma fades, so use an opened pouch within 6–12 months for the best flavour. Check the best-before date on the pouch.",
-    safety: "For culinary use. Check the leaves before use and stop using the product if its aroma, colour or condition changes unexpectedly.",
+      "Keep the pouch sealed in a cool, dry, dark cupboard, away from the stove. Dried leaves don't spoil quickly when kept dry, but their aroma fades, so use an opened pouch within 1 year for the best flavour. Check the best-before date on the pouch.",
+    safety: "If a pouch ever smells musty or looks damp, don't use it, and let me know.",
     what: "Whole dried leaves of the curry tree (Murraya koenigii), the leaf used for tempering across South Indian, Sri Lankan and Gujarati cooking. It isn't curry powder and doesn't taste like it. The leaf has its own warm, citrusy aroma that comes alive in hot fat. Each pouch holds whole leaves, not crushed powder.",
     useHtml: `<ol>
               <li>Heat 1–2 tbsp oil or ghee until a mustard seed sizzles straight away.</li>
               <li>Add mustard or cumin seeds and let them pop.</li>
               <li>Add 8–15 dried curry leaves for a pot of dal for 3–4. They should sizzle and darken within 10–20 seconds.</li>
-              <li>Pour the whole tadka over dal, sambar, rasam, vegies or rice. Recipe written for fresh leaves? Use two to three times the volume in dried. Avoid cold oil and long frying, which turns them bitter.</li>
+              <li>Pour the whole tadka over dal, sambar, rasam, vegies or rice. Recipe written for fresh leaves? Use a little more dried leaf and taste as you go. Avoid cold oil and long frying, which turns them bitter.</li>
             </ol>
             <p>New to dried leaves? Try our <a href="/blog/curry-leaf-podi-recipe-dried-curry-leaves">curry leaf podi recipe</a>.</p>`,
     faqs: [
       [
         "How many dried curry leaves equal fresh?",
-        "About two to three times the volume. Dried leaves are milder until fried in hot oil.",
+        "There's no exact swap. Drying softens the aroma, so use a little more dried leaf than you would fresh, fry it briefly in hot oil, and taste as you go.",
       ],
       [
         "Are curry leaves the same as curry powder?",
@@ -2238,7 +2226,7 @@ const PDP = {
       ],
       [
         "How should I store dried curry leaves?",
-        "Sealed, in a cool, dark cupboard away from steam. Use within 6–12 months of opening.",
+        "Sealed, in a cool, dark cupboard away from steam. Use within 1 year of opening.",
       ],
     ],
   },
@@ -2251,7 +2239,7 @@ const PDP = {
     current: "Tea",
     product: PRODUCTS.find((p) => p.id === "black-tea"),
     intro:
-      "This is Darjeeling loose leaf black tea from a family farm in the Darjeeling district of India, packed in 100g pouches in Truganina, Melbourne. Brewed gently at 85–90°C, it makes a bright amber cup with floral, muscatel notes, lighter and less malty than an English Breakfast blend. A 100g pouch makes about 50 cups at roughly 2g a cup. Drink it plain, or add a splash of milk. Because it's loose leaf, you'll need an infuser, strainer or teapot. $7.50 for 100g, posted Australia-wide.",
+      "This is Darjeeling loose leaf black tea from a family farm in the Darjeeling district of India, packed in 100g pouches in Truganina, Melbourne. Brewed at 85 to 90°C, it makes a bright amber cup with floral, muscatel notes, lighter and less malty than an English Breakfast blend. A 100g pouch makes about 50 cups at roughly 2g a cup. Drink it plain, or add a splash of milk. Because it's loose leaf, you'll need an infuser, strainer or teapot. $7.50 for 100g, posted Australia-wide.",
     proofs: [
       "Family-farm Darjeeling",
       "Packed in Melbourne",
@@ -2271,10 +2259,10 @@ const PDP = {
     ingredients: "100% loose leaf Darjeeling black tea.",
     origin: "Sourced from a family farm in Darjeeling, India. Packed in Truganina, Melbourne.",
     process:
-      "Darjeeling is picked in several harvests, or flushes: a light spring first flush, a fuller summer second flush and a darker autumn flush. Ask us which harvest your pouch is from. Packed in small runs in Truganina.",
+      "Darjeeling is picked in several harvests, or flushes: a light spring first flush, a fuller summer second flush and a darker autumn flush. Packed in small runs in Truganina.",
     storage:
-      "Keep sealed in a dry environment away from humidity and strong aromas. Use an opened pouch within 6–12 months for the best aroma.",
-    safety: "Contains caffeine. Consider your total daily caffeine intake and seek professional advice if you are pregnant, breastfeeding or sensitive to caffeine.",
+      "Keep it sealed, away from the spice rack. Use within 1 year of opening.",
+    safety: "Contains caffeine, about 40 to 50 mg a cup.",
     what: "100% loose leaf Darjeeling black tea, grown in the hill district of Darjeeling, West Bengal. Expect a lighter body than Assam-based breakfast teas, a floral aroma and the grape-like muscatel note Darjeeling is known for, especially brewed below boiling.",
     useHeading: "How to brew",
     useHtml: `<ul>
@@ -2286,15 +2274,11 @@ const PDP = {
             <p>Boiling water makes Darjeeling harsh. Good leaf gives a second, shorter steep. Read <a href="/blog/darjeeling-black-tea-australia-guide#first-flush-vs-second-flush">first flush vs second flush</a>.</p>
             <p>The full method is in our <a href="/blog/how-to-brew-darjeeling-tea-perfectly-2026">how to brew Darjeeling</a> guide.</p>`,
     faqs: [
-      [
-        "First or second flush?",
-        "Contact us and we'll tell you which harvest your pouch is from.",
-      ],
       ["How many cups does 100g make?", "About 50."],
       ["Can I add milk?", "Yes. Use a little more tea and 90–95°C water."],
       [
         "Caffeine?",
-        "About 40–50mg per cup; coffee usually has more. Seek advice if you're pregnant, breastfeeding or sensitive to caffeine.",
+        "About 40 to 50 mg a cup. Most coffee has more.",
       ],
       [
         "Darjeeling vs English Breakfast?",
@@ -2342,8 +2326,8 @@ const PDP = {
     origin: "Handmade by NutriThrive in Australia and packed in Truganina, Melbourne.",
     process:
       "We start with a melt-and-pour soap base, add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand in small batches in Australia.",
-    storage: "Keep in a dry, well-drained area away from humidity between uses. Continue using until the bar is finished.",
-    safety: "For external use only. Avoid contact with eyes. Patch-test before use if you have sensitive skin and stop use if irritation occurs.",
+    storage: "Let it dry on a draining dish between uses and it'll last longer.",
+    safety: "",
     what: "A 95g handmade soap bar for hands and body. It's a melt-and-pour soap: we start with a ready-made soap base and add moringa leaf for colour and flecks, lavender fragrance, and dried lavender flowers on top. It's a wash. It cleans and rinses off, and we don't make skin-care claims for it.",
     use: "Lather with wet hands, wash and rinse. Let it dry on a draining dish between uses. External use only; avoid eyes. Patch-test if you have sensitive skin.",
     faqs: [
@@ -2360,7 +2344,7 @@ const PDP = {
       ["How long does a bar last?", "Longer on a draining dish, out of the shower stream."],
       [
         "What is in the powder + soap option?",
-        "100g farm-grown shade-dried moringa powder and one 95g handmade soap bar for $17.",
+        "100g farm-grown sun-dried moringa powder and one 95g handmade soap bar for $17.",
       ],
       [
         "Good gift?",
@@ -2394,12 +2378,12 @@ const PDP = {
     ingredients: "100% moringa leaf powder and 100% dried curry leaves. Nothing added.",
     origin: "Both products are grown on our own farm in Gujarat and packed in Truganina.",
     process: "We grow and process both products, arrange Australian testing for the moringa, and pack the combination in Truganina.",
-    storage: "Keep both packs sealed in a dry environment away from humidity. Use within 18 months after opening.",
+    storage: "Keep both sealed and dry. Use within 1 year of opening.",
     safety: "Follow the individual product directions. Seek professional advice before regular moringa use if you are pregnant, breastfeeding, taking medication or managing a health condition.",
     what: "Moringa for whatever you blend or stir in; curry leaves for dals and curries. Both packed in Truganina.",
     use: "Each item is also available separately.",
     faqs: [
-      ["What is in the combo?", "100g moringa powder and 30g premium dried curry leaves (karipatta)."],
+      ["What is in the combo?", "100g moringa powder and 30g dried curry leaves (karipatta), both from our farm."],
       ["Can I buy them separately?", "Yes. Each item is also available individually in our shop."],
     ],
   },
@@ -2429,8 +2413,8 @@ const PDP = {
     seasonalNotes: {
       until: "2026-11-08",
       lines: [
-        "Diwali is Sunday 8 November. For delivery before Diwali, order by 2pm Wednesday 28 October (Melbourne metro) or 2pm Monday 26 October (other states).",
-        "Rural areas can take up to 10 business days — order as early as you can.",
+        "Diwali orders open until Sunday 8 November.",
+        "Rural addresses can take up to 10 business days, so order early.",
       ],
     },
     whatHeading: "What's in the box",
@@ -2439,11 +2423,11 @@ const PDP = {
     origin: "Family-farm tea from Darjeeling, farm-grown curry leaves, and soap handmade by us in Australia. Packed in Truganina, Melbourne.",
     process:
       "We pack all three in one box, with the soap wrapped separately so the tea doesn't take on its scent. Packed in Truganina. No moringa powder included.",
-    storage: "Keep the tea and curry sealed and dry. The tea contains caffeine. Keep the soap dry between uses.",
+    storage: "Keep the tea and curry leaves sealed and dry, and the soap on a draining dish.",
     safety: "Soap is for external use only; patch-test if your skin is sensitive. Tea contains caffeine. Follow each product’s directions.",
     whatHtml: `<ul>
-              <li><strong>Darjeeling loose leaf black tea, 100g:</strong> about 50 cups. Floral, muscatel notes at 85–90°C. Contains caffeine (about 40–50mg a cup).</li>
-              <li><strong>Dried curry leaves, 30g:</strong> whole leaves for tadka. Use two to three times the fresh amount.</li>
+              <li><strong>Darjeeling loose leaf black tea, 100g:</strong> About 50 cups. Floral, muscatel notes at 85 to 90°C. Contains caffeine, about 40 to 50 mg a cup.</li>
+              <li><strong>Dried curry leaves, 30g:</strong> whole leaves for tadka. Use a little more than you would fresh, and taste as you go.</li>
               <li><strong>Handmade moringa &amp; lavender soap, 95g:</strong> melt-and-pour base, moringa leaf, lavender fragrance, dried lavender flowers.</li>
             </ul>
             <p>Who it's for: relatives you're visiting, a host who has plenty of mithai, neighbours, teachers and colleagues. For bulk orders, contact us.</p>`,
@@ -2488,16 +2472,16 @@ const PDP = {
     seasonalNotes: {
       until: "2026-11-08",
       lines: [
-        "Diwali is Sunday 8 November. For delivery before Diwali, order by 2pm Wednesday 28 October (Melbourne metro) or 2pm Monday 26 October (other states).",
-        "Rural areas can take up to 10 business days — order as early as you can.",
+        "Diwali orders open until Sunday 8 November.",
+        "Rural addresses can take up to 10 business days, so order early.",
       ],
     },
     ingredients:
       "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
-    process: "We bring together our farm-grown, family-farm and Australian handmade products, then prepare the gift pack in Truganina.",
-    storage: "Keep every product in a dry environment away from humidity. Food products: use an opened pouch within 6–12 months for best aroma; keep the soap dry between uses.",
-    safety: "Follow the directions and safety information for each included product. Soap is for external use only and the tea contains caffeine.",
+    process: "I pack each gift in Truganina: curry leaves and moringa from our farm, tea from a family farm in Darjeeling, and soap we make here.",
+    storage: "Keep everything dry. Use opened food pouches within 1 year.",
+    safety: "The tea contains caffeine. The soap is for hands and body only.",
     what: "A four-product gift pack: Darjeeling tea, curry leaves, handmade lavender soap, and moringa powder. Packed in Truganina for Diwali, housewarmings and thank-yous.",
     use: "Each product is also available individually. For a gift without moringa powder, choose the Diwali Gift Box.",
     faqs: [
@@ -2512,8 +2496,8 @@ const PDP = {
         },
       ],
       [
-        "Diwali order-by?",
-        "For delivery before Diwali (Sun 8 Nov): order by 2pm Wed 28 Oct (Melbourne metro) or 2pm Mon 26 Oct (other states). Rural areas can take up to 10 business days.",
+        "Until when can I order for Diwali?",
+        "Diwali orders open until Sunday 8 November. Delivery times vary by location, and rural areas can take up to 10 business days.",
       ],
       ["Gift message?", "Add a note at checkout or email us after you order."],
       ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
@@ -2564,7 +2548,7 @@ function pdpPage(slug, d) {
     "Packed in Melbourne",
     "Australia-wide delivery",
   ];
-  const proofs = [...proofItems, "Seven-day returns on unopened products."]
+  const proofs = [...proofItems, "7-day refund or replacement guarantee."]
     .map((t) => `<li>${check()} ${typeof t === "object" && t.html ? t.html : esc(t)}</li>`)
     .join("");
   const valueCompare =
@@ -2591,12 +2575,13 @@ function pdpPage(slug, d) {
             <p class="pdp-value-note">400g is $4 less than four 100g pouches at $11 each. 200g is the same price per 100g as the 100g pouch.</p>
           </section>`
       : "";
+  const batchPanel = `<section class="batch-panel" aria-labelledby="batch-h"><h2 id="batch-h">Batch and testing</h2><dl><dt>Batch tested</dt><dd>NT042024</dd><dt>Lab</dt><dd>National Measurement Institute (NMI), Australia</dd><dt>Report date</dt><dd>24 January 2025</dd><dt>What was tested</dt><dd>Nutrition panel</dd><dt>Origin</dt><dd>Grown on our family farm in Gujarat, India</dd><dt>Drying</dt><dd>Sun-dried to keep the colour, then ground</dd><dt>Packed</dt><dd>Truganina, Melbourne</dd><dt>Storage</dt><dd>Keep sealed, cool and dry. Use within 1 year of opening.</dd></dl><p><a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a></p></section>`;
   const education =
     slug === "moringa-powder"
-      ? moringaEducationHtml()
+      ? moringaEducationHtml() + batchPanel
       : `${d.whatHtml ? `<h2>${esc(d.whatHeading || "What it is")}</h2>${d.whatHtml}` : d.what ? `<h2>What it is</h2><p>${esc(d.what)}</p>` : ""}
           ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : d.use ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : ""}
-          ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the lab summary for batch NT042024 (PDF, January 2025)</a> or contact us for current testing details.</p>` : ""}`;
+          ${slug === "combo-pack" ? batchPanel : p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
   const shipLadder = {
     "diwali-gift-box": `<p>Free AU shipping on orders of <strong>$49</strong> or more — add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
     "gift-pack": `<p>This pack includes moringa powder. Prefer no moringa? Shop the <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> (tea, curry leaves &amp; soap). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
@@ -2645,6 +2630,10 @@ function pdpPage(slug, d) {
   } else if (slug !== "moringa-powder") {
     crumbTrail.splice(2, 1, { name: p.name, item: offerUrl });
   }
+  const desk = deskSeo(canonicalPath);
+  if (desk.title) d = { ...d, title: desk.title, forceSeo: true };
+  if (desk.description) d = { ...d, description: desk.description, forceSeo: true };
+  if (desk.h1) d = { ...d, h1: desk.h1 };
   return layout({
     title: d.forceSeo ? d.title : liveSeo?.title || d.title,
     description: d.forceSeo ? d.description : liveSeo?.description || d.description,
@@ -2715,6 +2704,7 @@ function pdpPage(slug, d) {
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(buyProduct)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(buyProduct)}">Buy now</button>
             </div>
+            <p class="purchase-note"><a href="/shipping#returns">7-day guarantee: not happy? Contact us within 7 days of delivery for a refund or replacement.</a></p>
             ${showServingCost ? `<p class="cost-note" data-pdp-cost>${esc(servingCost)}</p>` : ""}
             ${shippingHtml}
             <p class="purchase-note">${esc(purchaseNote)}</p>
@@ -2754,14 +2744,14 @@ function pdpPage(slug, d) {
             </figure>` : ""}
           </div>` : ""}
           <div class="pdp-support-grid">
-            <details class="pdp-support-card safety-note"><summary>Safety information</summary><div><p>${esc(d.safety)}</p></div></details>
+            ${d.safety ? `<details class="pdp-support-card safety-note"><summary>Safety information</summary><div><p>${esc(d.safety)}</p></div></details>` : ""}
             <details class="pdp-support-card delivery-card"><summary>Delivery and returns</summary><div>
               <ul>
                 <li><strong>Melbourne metro:</strong> usually 1–3 business days</li>
                 <li><strong>Other Australian metro areas:</strong> usually 3–4 business days</li>
                 <li><strong>Rural areas:</strong> allow up to 10 business days</li>
                 <li>Occasional carrier delays may add up to 2 business days</li>
-                <li>Seven-day returns on unopened products</li>
+                <li>7-day refund or replacement</li>
                 <li>Local pickup available from Truganina by arrangement</li>
               </ul>
             </div></details>
@@ -2775,19 +2765,18 @@ function pdpPage(slug, d) {
           <section class="pdp-reviews" id="reviews">
             <div class="reviews-head"><h2>Google reviews of NutriThrive</h2>${stars()} <span>from 12 Google reviews</span></div>
             <div class="review-grid review-scroll" aria-label="Google reviews of NutriThrive">${reviews.map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
-            <p class="review-disclosure">These are genuine reviews from our Google Business Profile about NutriThrive. They are not product-specific ratings for this item. They describe individual customer experiences, not guaranteed outcomes or NutriThrive health claims. NutriThrive is not certified organic.</p>
+            <p class="review-disclosure">Reviews of NutriThrive (the business, not this product) from our Google Business Profile.</p>
             <p><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all Google reviews</a></p>
           </section>
           <section class="product-guides" aria-labelledby="product-guides-${esc(slug)}">
             <div>
               <p class="kicker">Make an informed choice</p>
-              <h2 id="product-guides-${esc(slug)}">Helpful ${esc(p.name.toLowerCase())} guides</h2>
-              <p>Practical answers from NutriThrive about choosing, using and caring for this product.</p>
+              <h2 id="product-guides-${esc(slug)}">${slug === "combo-pack" ? "Guides for both" : `Helpful ${esc(p.name.toLowerCase())} guides`}</h2>
             </div>
             <ul>${productGuideLinks(slug)}</ul>
           </section>
           <section class="related-products">
-            <div class="section-head"><div><h2>You may also like</h2><p>More products from the NutriThrive range.</p></div><a href="/shop/">Shop all</a></div>
+            <div class="section-head"><div><h2>You may also like</h2><p>Also from our farm and kitchen</p></div><a href="/shop/">Shop all</a></div>
             <div class="product-grid">${related.map((item) => productCard(item, false, { hideWas: true })).join("")}</div>
           </section>
         </div>
@@ -2797,15 +2786,17 @@ function pdpPage(slug, d) {
 
 function aboutPage() {
   const liveSeo = LIVE_MODE ? extractSeo(path.join(SITE, "pages/about/about.html")) : null;
+  const desk = deskSeo("/about");
   return layout({
-    title: liveSeo?.title || "Our Farm and Purpose | About NutriThrive",
+    title: desk.title || liveSeo?.title || "Our Farm and Purpose | About NutriThrive",
     description:
+      desk.description ||
       liveSeo?.description ||
       "NutriThrive grows and manufactures farm-sourced wellness products, with a mission to make quality health foods affordable and accessible.",
     canonicalPath: "/about",
     current: "About",
-    preserveTitle: Boolean(liveSeo?.title),
-    preserveDescription: Boolean(liveSeo?.description),
+    preserveTitle: Boolean(desk.title || liveSeo?.title),
+    preserveDescription: Boolean(desk.description || liveSeo?.description),
     extraHead:
       jsonLd(
         breadcrumbSchema([
@@ -2823,8 +2814,8 @@ function aboutPage() {
       }),
     main: `
       <section class="page-intro wrap">
-        <h1>From our farm to your family.</h1>
-        <p class="lede">NutriThrive is a farmer and manufacturer, not a reseller. Our moringa and curry leaves begin on our own farm in Gujarat and are made with care from harvest through to the finished pack. We source tea from a Darjeeling family farm and handmake our moringa soap in Australia. From Truganina, we serve customers with clear information, dependable quality and honest prices.</p>
+        <h1>${esc(deskSeo("/about").h1 || "From our farm to your family.")}</h1>
+        <p class="lede">We grow our own moringa and curry leaves. We're not a reseller. Our moringa and curry leaves begin on our own farm in Gujarat and are made with care from harvest through to the finished pack. We source tea from a Darjeeling family farm and handmake our moringa soap in Australia. I pack every order in Truganina and answer the emails myself.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
           <a class="btn btn-secondary" href="/documents/nutrithrive-lab-report-summary.pdf">View lab summary</a>
@@ -2840,37 +2831,36 @@ function aboutPage() {
               <li>Farm-to-customer production with fewer unnecessary markups</li>
               <li>Simple products made without unnecessary fillers</li>
               <li>Clear sizes, ingredients and prices</li>
-              <li>Quality that is practical for families and everyday routines</li>
             </ul>
           </div>
           <div>
             <h2>We grow it. We make it.</h2>
-            <p>Our moringa and curry leaves begin on our own farm in Gujarat, India. We oversee growing, harvesting, shade-drying and manufacturing, then arrange Australian testing and pack in small runs in Truganina.</p>
+            <p>Our moringa and curry leaves begin on our own farm in Gujarat, India. We oversee growing, harvesting, sun-drying and manufacturing, then arrange Australian testing and pack in small runs in Truganina.</p>
             <ol>
               <li>Grown and harvested on our farm</li>
-              <li>Carefully selected and shade-dried</li>
+              <li>Sun-dried on our family farm in Gujarat to keep their colour, then ground and packed.</li>
               <li>Manufactured without unnecessary dilution</li>
               <li>Australian testing information published when available; packed in Truganina</li>
             </ol>
           </div>
         </div>
       </section>
-      <section class="section" id="who-we-are">
+      <section class="section farm-story" id="our-farm">
         <div class="wrap">
-          <h2>Who we are</h2>
-          <p>NutriThrive is run by Neer Vasa from Truganina, in Melbourne's west. We pack every order ourselves, and you can pick up from Truganina by arrangement.</p>
+          <h2>Our farm in Gujarat</h2>
+          <p>I'm Neer Vasa, and I started NutriThrive in 2023. Our moringa and curry leaves are grown on our family farm in Gujarat, India.</p>
+          <p>The leaves are picked on the farm and sun-dried to keep their colour. The moringa is then ground into powder, and everything is packed by me in Truganina, Melbourne, before it's posted to you.</p>
         </div>
       </section>
       <section class="section">
         <div class="wrap split-2">
           <div>
             <h2>Quality should not be out of reach</h2>
-            <p>NutriThrive moringa starts at $11 per 100g. Selling manufacturer-direct helps us keep the price fair while continuing to invest in careful production, appropriate Australian testing and responsible packing.</p>
-            <p>We would rather earn long-term trust and become part of your routine than make health products feel exclusive.</p>
+            <p>NutriThrive moringa starts at $11 per 100g. Selling direct is how we keep it at that price.</p>
           </div>
           <div>
             <h2>Testing and transparency</h2>
-            <p>Our moringa powder is tested in Australia and we publish the available readable summary. It shows the nutrition results for batch NT042024, tested by the National Measurement Institute in January 2025, so you can better understand what you are buying.</p>
+            <p>Our moringa powder is tested in Australia and we publish the available readable summary. It shows the nutrition results for batch NT042024, tested by the National Measurement Institute in January 2025, so you can see exactly what's in it.</p>
             <h2>Visit or contact us</h2>
             <p>${ADDRESS_LINE}. Call before you arrive: <a href="tel:+61438201419">+61 438 201 419</a>.</p>
             <p>Daily 9:00 AM to 11:00 PM AEST.</p>
@@ -2881,9 +2871,10 @@ function aboutPage() {
 }
 
 function contactPage() {
+  const desk = deskSeo("/contact");
   return layout({
-    title: "Contact NutriThrive in Truganina, Melbourne",
-    description: "Contact NutriThrive by email or phone, or arrange a visit to our Truganina location. Ask us about products, batches, orders or local pickup.",
+    title: desk.title || "Contact NutriThrive in Truganina, Melbourne",
+    description: desk.description || "Contact NutriThrive by email or phone, or arrange a visit to our Truganina location. Ask us about products, batches, orders or local pickup.",
     canonicalPath: "/contact",
     current: "",
     extraHead:
@@ -2902,7 +2893,7 @@ function contactPage() {
       }),
     main: `
       <section class="page-intro wrap">
-        <h1>Contact</h1>
+        <h1>${esc(deskSeo("/contact").h1 || "Contact")}</h1>
         <p class="lede">A real address, a phone number, and an inbox we read.</p>
       </section>
       <section class="section" style="padding-top:0">
@@ -2944,7 +2935,7 @@ function faqPage() {
       items: [
         {
           q: "What is NutriThrive Moringa powder?",
-          a: "It is 100% Moringa oleifera leaf powder from our own farm, with no fillers. We grow, harvest, shade-dry and manufacture it, arrange testing in Australia, and pack it in Truganina.",
+          a: "It is 100% Moringa oleifera leaf powder from our own farm, with no fillers. We grow, harvest, sun-dry and manufacture it, arrange testing in Australia, and pack it in Truganina.",
         },
         {
           q: "How much should I take daily?",
@@ -2952,7 +2943,7 @@ function faqPage() {
         },
         {
           q: "Any safety notes?",
-          a: "Leaf powder is widely eaten as food. Skip it if you are on blood thinners unless your GP agrees. If you are pregnant, breastfeeding, or on prescription medication, ask your healthcare provider first. Neer is not a doctor.",
+          a: "Leaf powder is widely eaten as food. Skip it if you are on blood thinners unless your GP agrees. If you are pregnant, breastfeeding, or on prescription medication, ask your healthcare provider first. I'm not a doctor, so please check with yours.",
         },
         {
           q: "What does it taste like?",
@@ -2973,11 +2964,11 @@ function faqPage() {
         },
         {
           q: "How do I use dried curry leaves?",
-          a: "Use about 2 to 3 times the amount you would use fresh. Fry them in hot oil or ghee at the start of the pan. That is when the smell comes through.",
+          a: "Drying softens the aroma, so use a little more than you would fresh and taste as you go. Fry them in hot oil or ghee at the start of the pan. That is when the smell comes through.",
         },
         {
           q: "How should I store them?",
-          a: "Airtight container, away from heat and light. They keep their flavour for 6 months or more in a cool, dry place.",
+          a: "Airtight container, away from heat and light. Opened pouches keep their flavour for up to 1 year in a cool, dry place.",
         },
       ],
     },
@@ -3010,8 +3001,8 @@ function faqPage() {
           a: "Order before 2pm Monday to Friday and we usually dispatch the same day. Melbourne metro is often 1 to 3 business days after that. Other metro areas are around 3 to 4 days, while some rural addresses take up to 10 days.",
         },
         {
-          q: "Do you offer returns?",
-          a: "Yes. 7 days from delivery, unopened packs only. Original shipping is not refunded. For change-of-mind returns, the customer pays the return postage — contact us before sending a return. Read the full policy on the shipping and returns page.",
+          q: "What is your 7-day guarantee?",
+          a: "Contact us within 7 days of delivery and we'll refund or replace your order. Change-of-mind returns must be unopened, and you pay the return postage. Full details are on our shipping and returns page.",
         },
         {
           q: "Which payment methods do you accept?",
@@ -3028,7 +3019,7 @@ function faqPage() {
       items: [
         {
           q: "Who runs NutriThrive?",
-          a: `Neer. The warehouse is at ${ADDRESS_LINE}, Melbourne. Started in 2020, selling to customers from 2024.`,
+          a: `Me, Neer Vasa. I started NutriThrive in 2023 and pack every order at Ridley Place, Truganina. Our leaves are grown on our family farm in Gujarat.`,
         },
         {
           q: "What is the ABN?",
@@ -3072,10 +3063,13 @@ function faqPage() {
   ]);
 
   return layout({
-    title: "Moringa Questions and Answers | NutriThrive Australia",
+    title: deskSeo("/faq").title || "Moringa Questions and Answers | NutriThrive Australia",
     description:
+      deskSeo("/faq").description ||
       "Straight answers on moringa, curry leaves, tea, shipping, returns, privacy and the Truganina business. From Neer in Melbourne.",
     canonicalPath: "/faq",
+    preserveTitle: Boolean(deskSeo("/faq").title),
+    preserveDescription: Boolean(deskSeo("/faq").description),
     extraHead: `${jsonLd(faqSchema)}
   ${jsonLd(crumbs)}`,
     current: "",
@@ -3084,8 +3078,8 @@ function faqPage() {
         <a href="/">Home</a> / <span>FAQ</span>
       </nav>
       <section class="page-intro wrap-narrow">
-        <h1>Questions we get asked</h1>
-        <p class="lede">Straight answers on the powder, curry leaves, tea, shipping, returns, privacy, and who we are. I'm Neer. If yours is not here, email or call.</p>
+        <h1>${esc(deskSeo("/faq").h1 || "Questions we get asked")}</h1>
+        <p class="lede">I'm Neer. These are the questions I get most. If yours isn't here, email or call me.</p>
       </section>
       <section class="section" style="padding-top:0">
         <div class="wrap-narrow">
@@ -3134,8 +3128,8 @@ function shippingPage() {
     [
       "Can I buy / pick up in Melbourne?",
       {
-        html: `Online 24/7. Local pickup from Truganina by arrangement — see our <a href="/melbourne/">Melbourne page</a>.`,
-        text: "Online 24/7. Local pickup from Truganina by arrangement — see our Melbourne page.",
+        html: `Online 24/7. Local pickup from Truganina by arrangement. See our <a href="/melbourne/">Melbourne page</a>.`,
+        text: "Online 24/7. Local pickup from Truganina by arrangement. See our Melbourne page.",
       },
     ],
   ];
@@ -3150,8 +3144,10 @@ function shippingPage() {
     })),
   };
   return layout({
-    title: "Shipping & Free Delivery Australia | Over $49 | NutriThrive",
-    description: "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping from $49 and our seven-day returns information.",
+    title: deskSeo("/shipping").title || "Shipping & Free Delivery Australia | Over $49 | NutriThrive",
+    description: deskSeo("/shipping").description || "See NutriThrive delivery prices, dispatch times, tracking, free Australian shipping from $49 and our seven-day returns information.",
+    preserveTitle: Boolean(deskSeo("/shipping").title),
+    preserveDescription: Boolean(deskSeo("/shipping").description),
     preserveTitle: true,
     canonicalPath: "/shipping",
     extraHead: jsonLd(faqSchema) + jsonLd(
@@ -3166,7 +3162,7 @@ function shippingPage() {
         <a href="/">Home</a> / <span>Shipping and returns</span>
       </nav>
       <section class="page-intro wrap-narrow">
-        <h1>Shipping and returns</h1>
+        <h1>${esc(deskSeo("/shipping").h1 || "Shipping and returns")}</h1>
         <p class="lede">Orders leave Truganina. Free on Australian orders of <strong>$49</strong> or more. Under $49 in Australia, shipping is by parcel weight.</p>
         <p>${esc(SHIPPING_BAND_LIST)}</p>
         <h2>Dispatch</h2>
@@ -3175,8 +3171,8 @@ function shippingPage() {
         <p>Melbourne metro is often 1 to 3 business days. Other metro areas typically 3 to 4 days. Some rural locations take up to 10 days.</p>
         <h2>Tracking</h2>
         <p>When the parcel leaves the warehouse you should get a confirmation email with tracking, if the carrier provides it. If nothing arrives within a couple of business days after dispatch, check spam or email us with your order details.</p>
-        <h2 id="returns">Returns</h2>
-        <p>7 days from delivery, unopened packs only. Original shipping costs are not refunded. For change-of-mind returns, the customer pays the return postage. Contact us before sending a return. If something arrives damaged, contact us within 7 days with photos of the packaging and the item.</p>
+        <h2 id="returns">7-day guarantee</h2>
+        <p>Contact us within 7 days of delivery and we'll refund or replace your order. If something arrived damaged or faulty, send us a photo of the item and packaging, and we'll sort it at no cost to you. Change-of-mind returns must be unopened, and you pay the return postage. Original shipping isn't refunded. Please contact us before you send anything back.</p>
         <h2>Payments</h2>
         <p>${esc(PAYMENT_LINE_LONG)}</p>
         <h2>Shipping FAQ</h2>
@@ -3187,10 +3183,14 @@ function shippingPage() {
 }
 
 function privacyPage() {
+  const desk = deskSeo("/privacy");
   return layout({
-    title: "Privacy Policy and Website Terms | NutriThrive",
+    title: desk.title || "Privacy Policy and Website Terms | NutriThrive",
     description:
+      desk.description ||
       "NutriThrive privacy policy. How we use your data, orders, and refunds for our Melbourne-based superfoods store with Australia-wide delivery.",
+    preserveTitle: Boolean(desk.title),
+    preserveDescription: Boolean(desk.description),
     canonicalPath: "/privacy",
     extraHead: jsonLd(
       breadcrumbSchema([
@@ -3210,7 +3210,7 @@ function privacyPage() {
         <a href="/">Home</a> / <span>Privacy policy</span>
       </nav>
       <article class="page-intro wrap-narrow policy-doc">
-        <h1>Privacy Policy, Terms and Conditions</h1>
+        <h1>${esc(deskSeo("/privacy").h1 || "Privacy Policy, Terms and Conditions")}</h1>
         <p class="updated">Last updated 6 September 2026</p>
 
         <h2>Privacy Policy</h2>
@@ -3651,7 +3651,7 @@ function melbournePage() {
     ["Do you sell fresh curry leaves?", "No, only dried."],
     ["Can I pick up?", "Yes, from Truganina by arrangement."],
     ["How long is delivery?", "Usually 1–3 business days after dispatch."],
-    ["When do I order for Diwali?", "By Mon 2 Nov, 2pm. No dispatch on Tue 3 Nov."],
+    ["When do I order for Diwali?", "Diwali orders open until Sunday 8 November. No dispatch on Melbourne Cup Day, Tue 3 Nov."],
     ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
   ];
   const faqSchema = {
@@ -3763,7 +3763,7 @@ function melbournePage() {
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Festival gifts</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2></div>
             </div>
-            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade lavender soap bar, with no moringa powder, for $20. For Melbourne metro delivery, order by Mon 2 Nov before 2pm. We don't dispatch on Melbourne Cup Day (Tue 3 Nov). Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
+            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade lavender soap bar, with no moringa powder, for $20. Diwali orders open until Sunday 8 November. We don't dispatch on Melbourne Cup Day (Tue 3 Nov). Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
             <p style="margin-top:16px"><a class="btn btn-primary" href="${diwaliHref}">Shop the Diwali Gift Box</a></p>
           </div>
         </section>
@@ -3827,22 +3827,22 @@ function cityPage(city, slug) {
     Sydney: {
       title: "Moringa Powder Sydney: Posted from Melbourne, $11",
       h1: "Moringa Powder for Sydney",
-      description: "Order moringa powder to Sydney from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
+      description: "Order moringa powder to Sydney from $11/100g. NMI lab-tested, sun-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
     },
     Perth: {
       title: "Moringa Powder Perth: Posted from Melbourne, $11",
       h1: "Moringa Powder Perth",
-      description: "Order moringa powder to Perth from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
+      description: "Order moringa powder to Perth from $11/100g. NMI lab-tested, sun-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
     },
     Brisbane: {
       title: "Moringa Powder Brisbane: Posted from Melbourne, $11",
       h1: "Moringa Powder for Brisbane",
-      description: "Order moringa powder to Brisbane from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
+      description: "Order moringa powder to Brisbane from $11/100g. NMI lab-tested, sun-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
     },
     Adelaide: {
       title: "Moringa Powder Adelaide: Posted from Melbourne, $11",
       h1: "Moringa Powder for Adelaide",
-      description: "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
+      description: "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, sun-dried, packed in Truganina Melbourne. Free AU shipping from $49.",
     },
   }[city];
   const transitLine = {
@@ -3899,13 +3899,13 @@ function cityPage(city, slug) {
   };
   const melbourneGuides = city === "Melbourne"
     ? `<li><a href="${verifyHref}"><span>Quality</span>Verify checklist</a></li>
-            <li><a href="${shadeHref}"><span>Drying</span>Shade-dried leaf</a></li>
+            <li><a href="${shadeHref}"><span>Drying</span>Sun-dried leaf</a></li>
             <li><a href="${capsHref}"><span>Format</span>Powder vs capsules</a></li>
             <li><a href="${coffeeHref}"><span>Comparison</span>Moringa vs coffee in Melbourne</a></li>
             <li><a href="${treeHref}"><span>Growing</span>Grow a moringa tree in Australia</a></li>`
     : "";
   const melbourneQuality = city === "Melbourne"
-    ? `<p>Melbourne buyers comparing quality: <a href="${verifyHref}">verify checklist</a> · <a href="${shadeHref}">shade-dried leaf</a> · <a href="${capsHref}">powder vs capsules</a>. Pickup by arrangement from Truganina. Free AU shipping from $49.</p>`
+    ? `<p>Melbourne buyers comparing quality: <a href="${verifyHref}">verify checklist</a> · <a href="${shadeHref}">sun-dried leaf</a> · <a href="${capsHref}">powder vs capsules</a>. Pickup by arrangement from Truganina. Free AU shipping from $49.</p>`
     : "";
   const melbourneCurrySection = city === "Melbourne"
     ? `<section class="city-local-section" id="curry-leaves-melbourne" aria-labelledby="curry-leaves-melbourne-heading">
@@ -3918,7 +3918,7 @@ function cityPage(city, slug) {
               <article class="city-info-card city-info-card--accent">
                 <span class="city-info-card__number">01</span>
                 <h3>Dried curry leaves · $7 / 30g</h3>
-                <p>Whole shade-dried leaflets for tadka. Also called karipatta, curry patta and kadi patta. Pickup from Truganina by arrangement, or tracked metro delivery in 1–2 days.</p>
+                <p>Whole sun-dried leaflets for tadka. Also called karipatta, curry patta and kadi patta. Pickup from Truganina by arrangement, or tracked metro delivery in 1–2 days.</p>
                 <a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a>
               </article>
               <article class="city-info-card">
@@ -3940,7 +3940,7 @@ function cityPage(city, slug) {
     : "";
   const melbourneHeroLead = city === "Melbourne"
     ? "Dried curry leaves, Darjeeling loose leaf tea and handmade lavender soap packed in Truganina. Metro Melbourne delivery is usually 1–2 days after dispatch; local pickup by arrangement."
-    : `Farm-grown, shade-dried moringa leaf powder packed in Truganina and sent directly to ${city}. Choose 100g, 200g or our best-value 400g option.`;
+    : `Farm-grown, sun-dried moringa leaf powder packed in Truganina and sent directly to ${city}. Choose 100g, 200g or our best-value 400g option.`;
   const melbourneHeroActions = city === "Melbourne"
     ? `<a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
                 <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
@@ -3977,6 +3977,10 @@ function cityPage(city, slug) {
   const citySwitcher = orderedCityLinks.map(([name, href]) => name === city
     ? `<li><span class="city-switcher__current" aria-current="page">${name}<small>Current</small></span></li>`
     : `<li><a href="${href}">${name}</a></li>`).join("");
+  const cityDesk = deskSeo(canonicalPath);
+  if (cityDesk.title) citySeo.title = cityDesk.title;
+  if (cityDesk.description) citySeo.description = cityDesk.description;
+  if (cityDesk.h1) citySeo.h1 = cityDesk.h1;
   return layout({
     title: citySeo.title,
     description: citySeo.description,
@@ -4041,7 +4045,7 @@ function cityPage(city, slug) {
               <article class="city-info-card">
                 <span class="city-info-card__number">02</span>
                 <h3>One ingredient</h3>
-                <p>A resealable pouch of 100% moringa leaf powder with no fillers. We grow, shade-dry and manufacture it, then pack it in Truganina.</p>
+                <p>A resealable pouch of 100% moringa leaf powder with no fillers. We grow, sun-dry and manufacture it, then pack it in Truganina.</p>
                 <a href="${powderHref}">See product and lab information <span aria-hidden="true">→</span></a>
               </article>
               <article class="city-info-card">
@@ -4065,7 +4069,7 @@ function cityPage(city, slug) {
               ${melbourneQuality}
               <ul class="city-check-list">
                 <li>Grown on our own farm</li>
-                <li>Shade-dried and manufactured by us</li>
+                <li>Sun-dried and manufactured by us</li>
                 <li>Tested in Australia</li>
                 <li>Packed in Truganina, Melbourne</li>
               </ul>
@@ -4122,6 +4126,7 @@ function journalIndex(articles, opts = {}) {
   const liveSeo = opts.seoFile ? extractSeo(opts.seoFile) : null;
   const r = routes();
   const canonicalPath = opts.canonicalPath || (LIVE_MODE ? "/blog/" : "/journal");
+  const desk = deskSeo(canonicalPath);
   const listArticles = topicFilter
     ? visible
     : articles.filter((article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug));
@@ -4135,22 +4140,22 @@ function journalIndex(articles, opts = {}) {
   const crumbs = [{ name: "Home", item: `${LIVE}/` }, { name: "Blog", item: `${LIVE}/blog` }];
   if (topicFilter) crumbs.push({ name: topicFilter.name, item: `${LIVE}${canonicalPath.replace(/\/$/, "")}` });
   return layout({
-    title: topicFilter
+    title: desk.title || (topicFilter
       ? `${topicFilter.name} | NutriThrive Blog`
-      : liveSeo?.title || "Moringa, Curry Leaves & Tea Blog | NutriThrive",
-    description: topicFilter
+      : liveSeo?.title || "Moringa, Curry Leaves & Tea Blog | NutriThrive"),
+    description: desk.description || (topicFilter
       ? `All ${topicFilter.name.toLowerCase()} guides from NutriThrive — practical Australian notes on choosing, using and storing what we grow and pack.`
-      : liveSeo?.description || "Practical Australian guides to choosing and using moringa, curry leaves and Darjeeling tea, from the NutriThrive farming and manufacturing team.",
+      : liveSeo?.description || "Practical Australian guides to choosing and using moringa, curry leaves and Darjeeling tea, from the NutriThrive farming and manufacturing team."),
     canonicalPath,
     current: "Blog",
-    preserveTitle: Boolean(!topicFilter && liveSeo?.title),
-    preserveDescription: Boolean(!topicFilter && liveSeo?.description),
+    preserveTitle: Boolean(desk.title || (!topicFilter && liveSeo?.title)),
+    preserveDescription: Boolean(desk.description || (!topicFilter && liveSeo?.description)),
     extraHead:
       jsonLd(breadcrumbSchema(crumbs)) +
       jsonLd({
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        name: topicFilter ? `${topicFilter.name} | NutriThrive Blog` : liveSeo?.title || "NutriThrive Blog",
+        name: desk.title || (topicFilter ? `${topicFilter.name} | NutriThrive Blog` : liveSeo?.title || "NutriThrive Blog"),
         url: `${LIVE}${canonicalPath}`,
         isPartOf: { "@id": `${LIVE}/#website` },
         mainEntity: itemListSchema(
@@ -4164,7 +4169,7 @@ function journalIndex(articles, opts = {}) {
       }),
     main: `
       <section class="page-intro wrap">
-        <h1>${topicFilter ? esc(topicFilter.name) : "Blog"}</h1>
+        <h1>${esc(desk.h1 || (topicFilter ? topicFilter.name : "Blog"))}</h1>
         <p class="lede">${topicFilter
           ? `Every ${esc(topicFilter.name.toLowerCase())} guide, in one place.`
           : "Clear answers about choosing, using and storing our products—from the team that grows and manufactures our moringa and curry leaves."}</p>
@@ -4274,7 +4279,7 @@ function rewriteLinks(html) {
     .replaceAll(/NMI Australian Gov(?:ernment)?(?: lab)?/gi, "Australian laboratory")
     .replaceAll(/metal and microbial results for each production batch/gi, "available testing information")
     .replaceAll(/every batch is tested by third-party Australian laboratories[^.]*\./gi, "NutriThrive publishes testing information when it is available.")
-    .replaceAll(/Certificate of Analysis \(CoA\) (?:is )?available for every batch/gi, "Testing information is published when available")
+    .replaceAll(/Certificate of Analysis \(CoA\) (?:is )?available for every batch/gi, "Our moringa is tested by the National Measurement Institute. The summary for batch NT042024 is online.")
     .replaceAll(/provides Certificate of Analysis \(CoA\) for every batch/gi, "publishes testing information when available")
     .replaceAll(/every batch screened in Australian labs \(NMI\)/gi, "Australian testing information published when available")
     .replaceAll(/from partner farms in India/gi, "from our own farm")
@@ -4421,9 +4426,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const shop = journalProduct(meta) || PRODUCTS[0];
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
   const catalogTitle = humanCopy(stripTags(meta.seoTitle || meta.title));
-  const title = seoOverride?.title || liveSeo?.title || catalogTitle;
-  const displayH1 = seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
-  const description = seoOverride?.description || pickSeoDescription({
+  const desk = deskSeo(`/blog/${meta.slug}`);
+  const title = desk.title || seoOverride?.title || liveSeo?.title || catalogTitle;
+  const displayH1 = desk.h1 || seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
+  const description = desk.description || seoOverride?.description || pickSeoDescription({
       file: liveSeo?.description,
       catalog: meta.description,
       slug: meta.slug,
@@ -4470,6 +4476,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         try {
           const data = JSON.parse(raw);
           if (data["@type"] === "Article" || data["@type"] === "BlogPosting") {
+            const previousTitle = seoOverride?.title || liveSeo?.title || catalogTitle;
+            if (desk.title && (data.headline === previousTitle || data.headline === desk.old_title)) data.headline = desk.title;
+            if (desk.title && (data.name === previousTitle || data.name === desk.old_title)) data.name = desk.title;
             if (!data.datePublished && schemaPublished) data.datePublished = schemaPublished;
             if (!data.dateModified && schemaModified) data.dateModified = schemaModified;
             return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
@@ -4548,8 +4557,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     ogImage: socialImage,
     ogImageWidth: 1200,
     ogImageHeight: 675,
-    ogTitle: seoOverride?.ogTitle,
-    ogDescription: seoOverride?.ogDescription,
+    ogTitle: desk.title || seoOverride?.ogTitle,
+    ogDescription: desk.description || seoOverride?.ogDescription,
     extraHead: `<meta name="author" content="Neer Vasa">
   <meta property="article:author" content="Neer Vasa">
   <meta property="article:section" content="${esc(category)}">
@@ -4573,10 +4582,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           ${enhancedProse.contents}
           ${conversionPath.methodology ? `<aside class="article-methodology" aria-labelledby="method-${esc(meta.slug)}">
             <h2 id="method-${esc(meta.slug)}">How we made this comparison</h2>
-            <p>${meta.slug === "how-to-choose-moringa-powder-australia-2026" ? "We sell moringa leaf powder, so read this as a seller's guide and check our sources. The short version: look for one ingredient, a bright green colour, a readable batch date and lab paperwork you can open. Our powder is grown on our family farm in Gujarat, shade-dried and packed in Truganina, Melbourne." : "We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions."}</p>
+            <p>${meta.slug === "how-to-choose-moringa-powder-australia-2026" ? "We sell moringa leaf powder, so read this as a seller's guide and check our sources. The short version: look for one ingredient, a bright green colour, a readable batch date and lab paperwork you can open. Our powder is grown on our family farm in Gujarat, sun-dried and packed in Truganina, Melbourne." : "We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions."}</p>
           </aside>
           ` : ""}<div class="prose">${isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : stripMidCtas(enhancedProse.html)}</div>
-          ${isHealth ? `<aside class="article-safety"><h2>Food guidance, not medical advice</h2><p>This article is general information. NutriThrive products are foods, not treatments. Speak with a qualified healthcare professional if you are pregnant, breastfeeding, managing a health condition or taking medication.</p></aside>` : ""}
+          ${isHealth ? `<aside class="article-safety"><p>This is general food information. If you're pregnant, breastfeeding, on medication or managing a health condition, check with your GP first.</p></aside>` : ""}
           ${isMoringaPowder && !isHealth && CALC_SLUGS.has(meta.slug) ? per100Calculator(meta.slug) : ""}
           ${objectionHtml}
           <section class="article-conversion" aria-labelledby="article-product-${esc(meta.slug)}">
@@ -4602,7 +4611,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <aside class="article-author">
             <p class="kicker">About the author</p>
             <h2><a href="${r.about}#founder" rel="author">Neer Vasa, NutriThrive founder</a></h2>
-            <p>Neer works across NutriThrive’s farming, manufacturing and Melbourne fulfilment. NutriThrive grows moringa and curry leaves on its own farm, sources tea from a Darjeeling family farm, and handmakes moringa soap in Australia.</p>
+            <p>Neer Vasa started NutriThrive in 2023. Our moringa and curry leaves are grown on our family farm in Gujarat, India, and sun-dried to keep their colour. Neer packs every order in Truganina, Melbourne.</p>
           </aside>
         </article>
         <aside class="article-sidebar">
