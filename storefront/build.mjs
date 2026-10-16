@@ -1429,7 +1429,7 @@ function productCard(p, priority = false, opts = {}) {
       <img src="${p.image}" ${responsive ? `${responsive} ` : ""}alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
     </a>
     <div class="product-card-body">
-      <h3><a href="${href}" style="color:inherit;text-decoration:none">${esc(p.name)}</a></h3>
+      <h3><a href="${href}" style="color:inherit;text-decoration:none">${esc(opts.title || p.name)}</a></h3>
       ${opts.showVariant ? `<p class="product-card-variant">${esc(p.variant)}</p>` : ""}
       <p class="benefit">${esc(p.benefit)}</p>
       <p class="price">${money(p.price)}${p.unit ? ` <span style="font-weight:400;color:var(--color-text-secondary);font-size:14px">${esc(p.unit)}</span>` : ""}${was}</p>
@@ -1916,7 +1916,7 @@ function homepage() {
     <div>
       <p class="kicker">Our farm · Made by NutriThrive</p>
       <h1>${esc(deskSeo("/").h1 || "Pure moringa. Nothing unnecessary.")}</h1>
-      <p class="lede">Grown on our family farm in Gujarat, sun-dried, milled by us and packed in Truganina. The lab summary for our current batch is online.</p>
+      <p class="lede">Grown on our family farm in Gujarat, sun-dried, milled by us and packed in Truganina. Our NMI lab summary is online.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
         <a class="btn btn-secondary" href="/products/diwali-gift-box/">Diwali Gift Box $20</a>
@@ -1952,11 +1952,11 @@ function homepage() {
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Five things we grow, make or pack ourselves</h2>
+        <h2>Everything we grow, make or pack ourselves</h2>
       </div>
       <a href="/shop/">Shop all</a>
     </div>
-    <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map((product, index) => productCard(product, index === 0)).join("")}</div>
+    <div class="product-grid product-scroll" aria-label="Complete product range">${featured.map((product, index) => productCard(product, index === 0, { title: product.id === "moringa-powder" ? "Moringa Powder 100g" : product.id === "moringa-200g" ? "Moringa Powder 200g" : "" })).join("")}</div>
     <p class="purchase-note" style="margin-top:16px">Free AU shipping from $49.</p>
   </div>
 </section>
@@ -1965,7 +1965,7 @@ function homepage() {
     <div class="proof-story-head">
       <div>
         <p class="kicker">Farmer and manufacturer</p>
-        <h2>We grow it ourselves.<br>Because we grow it.</h2>
+        <h2>We grow it ourselves.</h2>
       </div>
       <p>Our moringa and curry leaves are grown on our own farm. We oversee the process from harvest to manufacturing, then pack locally in Truganina. Because we grow and pack it ourselves, there's no importer or wholesaler taking a margin.</p>
     </div>
@@ -2417,7 +2417,7 @@ const PDP = {
     proofs: [
       "No moringa powder",
       "Handmade soap",
-      "family-farm tea",
+      "Family-farm tea",
       "Packed in Truganina, VIC",
       PAYMENT_LINE,
     ],
@@ -2475,7 +2475,7 @@ const PDP = {
     proofs: [
       "Four products, one parcel",
       "Handmade soap",
-      "family-farm tea",
+      "Family-farm tea",
       "Packed in Truganina, VIC",
       PAYMENT_LINE,
     ],
@@ -2496,11 +2496,11 @@ const PDP = {
     ingredients:
       "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
-    process: "I pack each gift in Truganina: curry leaves and moringa from our farm, tea from a family farm in Darjeeling, and soap we make here.",
+    process: "We pack each gift in Truganina: curry leaves and moringa from our farm, tea from a family farm in Darjeeling, and soap we make here.",
     storage: "Keep everything dry. Lasts 1 year once opened.",
     safety: "The tea contains caffeine. The soap is for hands and body only.",
     what: "A four-product gift pack: Darjeeling tea, curry leaves, handmade lavender soap, and moringa powder. Packed in Truganina for Diwali, housewarmings and thank-yous.",
-    use: "Each product is also available individually. For a gift without moringa powder, choose the Diwali Gift Box.",
+    use: "Each product is also available individually.",
     faqs: [
       [
         "What's inside?",
@@ -2615,7 +2615,6 @@ function pdpPage(slug, d) {
           ${slug === "combo-pack" ? batchPanel : p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
   const shipLadder = {
     "diwali-gift-box": `<p>Free AU shipping on orders of <strong>$49</strong> or more. Add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
-    "gift-pack": `<p>This pack includes moringa powder. Prefer no moringa? Shop the <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> (tea, curry leaves &amp; soap). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
   }[slug] || "";
   const offerUrl = `${LIVE}${canonicalPath}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
@@ -2905,7 +2904,7 @@ function aboutPage() {
               <li>Grown and harvested on our farm</li>
               <li>Sun-dried on our family farm in Gujarat to keep their colour, then ground and packed.</li>
               <li>Manufactured without unnecessary dilution</li>
-              <li>Australian testing information published when available; packed in Truganina</li>
+              <li>The NMI lab summary for batch NT042024 is online.</li>
             </ol>
           </div>
         </div>
@@ -3347,7 +3346,7 @@ function privacyPage() {
         <p><strong>Wrong location selection:</strong> If you select the wrong country (for example, selecting "Australia" for a US address) to bypass shipping costs or by error, NutriThrive is not responsible for the order. We reserve the right to cancel the order or refuse delivery. We are not liable for lost goods due to incorrect address details provided by the customer.</p>
 
         <h2>Terms of Service and Disclaimer</h2>
-        <h3>1. Product nature (natural vs organic)</h3>
+        <h3>1. Product nature (not certified organic)</h3>
         <p><strong>Natural product:</strong> NutriThrive products are sold as "Natural" products derived from natural ingredients.</p>
         <p><strong>Not certified organic:</strong> We explicitly state that our products are NOT "Certified Organic". We do not hold organic certification.</p>
         <p><strong>Waiver of claims:</strong> NutriThrive makes no representations or warranties of organic certification. By purchasing, you acknowledge the product is not certified organic and agree to release NutriThrive from any liability, claims, or disputes asserting otherwise.</p>
@@ -3773,7 +3772,7 @@ function melbournePage() {
             <div class="city-local-hero__copy">
               <p class="city-local-kicker">Packed in Truganina · Melbourne west</p>
               <h1>${esc(desk.h1 || "Curry leaves, tea and soap delivered in Melbourne")}</h1>
-              <p class="city-local-lead">Looking for curry leaves in Melbourne? We pack whole dried curry leaves, Darjeeling loose leaf black tea and handmade lavender soap bars in Truganina, in Melbourne's west, and deliver across the city, usually within 1 to 3 business days of dispatch. Our curry leaves come from our family farm in Gujarat and the tea from a family farm in Darjeeling, and we handmake the soap ourselves in small batches. Order online before 2pm on a weekday for same-day dispatch, or arrange a pickup from Truganina. For Diwali, our tea, curry leaf and soap gift box is ready to give.</p>
+              <p class="city-local-lead">Looking for curry leaves in Melbourne? We pack whole dried curry leaves, Darjeeling loose leaf black tea and handmade moringa and lavender soap bars in Truganina, in Melbourne's west, and deliver across the city, usually within 1 to 3 business days of dispatch. Our curry leaves come from our family farm in Gujarat and the tea from a family farm in Darjeeling, and we handmake the soap ourselves in small batches. Order online before 2pm on a weekday for same-day dispatch, or arrange a pickup from Truganina. For Diwali, our tea, curry leaf and soap gift box is ready to give.</p>
               <div class="city-local-actions">
                 <a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
                 <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
@@ -3830,7 +3829,7 @@ function melbournePage() {
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Festival gifts</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2></div>
             </div>
-            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade lavender soap bar, with no moringa powder, for $20. Diwali orders open until Sunday 8 November. We don't dispatch on Melbourne Cup Day (Tue 3 Nov). Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
+            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade moringa and lavender soap bar, with no moringa powder, for $20. Diwali orders open until Sunday 8 November. We don't dispatch on Melbourne Cup Day (Tue 3 Nov). Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
             <p style="margin-top:16px"><a class="btn btn-primary" href="${diwaliHref}">Shop the Diwali Gift Box</a></p>
           </div>
         </section>
@@ -3987,7 +3986,7 @@ function cityPage(city, slug) {
               <article class="city-info-card">
                 <span class="city-info-card__number">02</span>
                 <h3>Darjeeling tea &amp; handmade soap</h3>
-                <p>Family-farm Darjeeling loose leaf ($7.50 / 100g) and a handmade lavender soap bar with moringa ($7 / 95g), packed with the same Truganina dispatch window.</p>
+                <p>Family-farm Darjeeling loose leaf ($7.50 / 100g) and a handmade moringa and lavender soap bar with moringa ($7 / 95g), packed with the same Truganina dispatch window.</p>
                 <a href="${teaHref}">Shop Darjeeling tea <span aria-hidden="true">→</span></a>
               </article>
               <article class="city-info-card">
@@ -4002,7 +4001,7 @@ function cityPage(city, slug) {
         </section>`
     : "";
   const melbourneHeroLead = city === "Melbourne"
-    ? "Dried curry leaves, Darjeeling loose leaf tea and handmade lavender soap packed in Truganina. Metro Melbourne delivery is usually 1–2 days after dispatch; local pickup by arrangement."
+    ? "Dried curry leaves, Darjeeling loose leaf tea and handmade moringa and lavender soap packed in Truganina. Metro Melbourne delivery is usually 1–2 days after dispatch; local pickup by arrangement."
     : `Farm-grown, sun-dried moringa leaf powder packed in Truganina and sent directly to ${city}. Choose 100g, 200g or our best-value 400g option.`;
   const melbourneHeroActions = city === "Melbourne"
     ? `<a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
