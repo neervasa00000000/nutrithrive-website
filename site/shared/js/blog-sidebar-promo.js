@@ -23,7 +23,7 @@
       save > 0
         ? '<p class="text-body-sm text-on-surface-variant mb-6">' +
           esc(money(promo.compareAt)) +
-          ' as four singles — save ' +
+          ' as four singles, save ' +
           esc(money(save)) +
           '</p>'
         : '';
@@ -35,7 +35,7 @@
     card.innerHTML =
       '<div class="aspect-square bg-surface-container relative">' +
       '<img alt="' +
-      esc(promo.headline + ' — ' + promo.badge) +
+      esc(promo.headline + ', ' + promo.badge) +
       '" class="w-full h-full object-cover" src="' +
       esc(promo.image) +
       '" loading="lazy" decoding="async"/>' +

@@ -7,7 +7,7 @@
 (function (global) {
     "use strict";
 
-    /** PayPal SDK query param locales (underscore). AU first — primary market. */
+    /** PayPal SDK query param locales (underscore). AU first, primary market. */
     var LOCALE_BY_COUNTRY = {
         AU: "en_AU",
         NZ: "en_NZ",

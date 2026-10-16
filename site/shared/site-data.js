@@ -1,4 +1,4 @@
-/** NutriThrive Website 2.0 — product & site data from live site (schema, product pages, homepage). */
+/** NutriThrive Website 2.0, product & site data from live site (schema, product pages, homepage). */
 window.NT_SITE_DATA = {
   brand: 'NutriThrive',
   tagline: 'Lab-tested moringa, packed in Truganina',
@@ -72,7 +72,7 @@ window.NT_SITE_DATA = {
     {
       id: 'moringa-powder-100g',
       sku: 'NT-MOR-100G',
-      name: 'Moringa Powder — 100g',
+      name: 'Moringa Powder, 100g',
       shortName: 'Moringa Powder',
       tag: '100G PACK • 30 SERVINGS',
       badge: '100g Pack',
@@ -84,7 +84,7 @@ window.NT_SITE_DATA = {
       description: '100% pure shade-dried moringa leaf powder. Lab-tested in Australia.',
       pdp: {
         headline: 'Moringa Powder (100g)',
-        intro: 'Shade-dried leaf powder — nothing else in the bag. Tested in Australia, packed at our Truganina warehouse. Same-day dispatch if you order before 2pm.',
+        intro: 'Shade-dried leaf powder, nothing else in the bag. Tested in Australia, packed at our Truganina warehouse. Same-day dispatch if you order before 2pm.',
         features: [
           { icon: 'eco', text: '100% Pure Moringa' },
           { icon: 'wb_sunny', text: 'Shade-Dried' },
@@ -105,7 +105,7 @@ window.NT_SITE_DATA = {
     {
       id: 'moringa-powder-200g',
       sku: 'NT-MOR-200G',
-      name: 'Moringa Powder — 200g',
+      name: 'Moringa Powder, 200g',
       shortName: '200g Moringa',
       tag: '200G PACK',
       badge: '200g',
@@ -115,8 +115,8 @@ window.NT_SITE_DATA = {
       image: '/assets/images/product_photos/200g.png',
       href: '/products/moringa-powder/',
       pdp: {
-        headline: 'Moringa Powder — 200g',
-        intro: 'Same powder as the 100g pouch — just more of it. Handy if you stir a teaspoon into smoothies every morning.',
+        headline: 'Moringa Powder, 200g',
+        intro: 'Same powder as the 100g pouch, just more of it. Handy if you stir a teaspoon into smoothies every morning.',
         features: [
           { icon: 'eco', text: '100% Pure Moringa' },
           { icon: 'science', text: 'Lab-Tested' },
@@ -127,7 +127,7 @@ window.NT_SITE_DATA = {
         detailBody: 'Roughly 60+ days at one teaspoon a day. Still shade-dried, still lab-tested, still packed in Truganina.',
         faqs: [
           { q: 'How long does 200g last?', a: 'At 1 tsp per day, roughly 60+ servings depending on your dose.' },
-          { q: 'Is it the same powder as the 100g?', a: 'Yes—identical shade-dried leaf powder, batch-tested in Australia.' },
+          { q: 'Is it the same powder as the 100g?', a: 'Yes, identical shade-dried leaf powder, batch-tested in Australia.' },
         ],
         showLabBadge: true,
         variantPicker: true,
@@ -146,7 +146,7 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-powder/',
       pdp: {
         headline: '400g Moringa Bundle',
-        intro: 'Four 100g packs of the same shade-dried powder — useful if you cook for a family or go through a pouch quickly. Free shipping on Australian orders of $49 or more.',
+        intro: 'Four 100g packs of the same shade-dried powder, useful if you cook for a family or go through a pouch quickly. Free shipping on Australian orders of $49 or more.',
         features: [
           { icon: 'savings', text: '400g Bundle' },
           { icon: 'eco', text: '100% Pure Moringa' },
@@ -154,7 +154,7 @@ window.NT_SITE_DATA = {
           { icon: 'location_on', text: 'Melbourne Packed' },
         ],
         detailTitle: 'Stock up, same standards',
-        detailBody: 'We pack in small runs from Truganina — not a giant overseas warehouse. Each pouch gets the same lab check as the single 100g bag.',
+        detailBody: 'We pack in small runs from Truganina, not a giant overseas warehouse. Each pouch gets the same lab check as the single 100g bag.',
         faqs: [
           { q: 'What is included?', a: 'Four 100g packs (400g total) of shade-dried moringa leaf powder.' },
           { q: 'How should I store it?', a: 'Keep pouches sealed in a cool, dry place away from direct sunlight.' },
@@ -177,7 +177,7 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Handmade Moringa & Lavender Soap',
-        intro: '95g bar with moringa leaf in the mix. Nothing fancy — just a straightforward soap we make in small batches.',
+        intro: '95g bar with moringa leaf in the mix. Nothing fancy, just a straightforward soap we make in small batches.',
         features: [
           { icon: 'spa', text: 'Handmade in Australia' },
           { icon: 'eco', text: 'Moringa Infused' },
@@ -186,9 +186,9 @@ window.NT_SITE_DATA = {
         ],
         detailTitle: 'Simple bar, moringa in the recipe',
         detailBody:
-          'Leaf powder plus oils — no long ingredient list. Let the bar dry between uses and it lasts well.',
+          'Leaf powder plus oils, no long ingredient list. Let the bar dry between uses and it lasts well.',
         faqs: [
-          { q: 'What size is the bar?', a: '95g—compact enough for travel, lasts well with proper drainage.' },
+          { q: 'What size is the bar?', a: '95g, compact enough for travel, lasts well with proper drainage.' },
           { q: 'Is it suitable for sensitive skin?', a: 'Patch-test if you have very sensitive skin.' },
         ],
         showLabBadge: false,
@@ -208,7 +208,7 @@ window.NT_SITE_DATA = {
       href: '/products/combo-pack/',
       pdp: {
         headline: 'Moringa + Curry Leaves Combo',
-        intro: '100g moringa powder and 30g dried curry leaves — morning smoothie and evening tadka from one box.',
+        intro: '100g moringa powder and 30g dried curry leaves, morning smoothie and evening tadka from one box.',
         features: [
           { icon: 'inventory_2', text: '2 Products' },
           { icon: 'eco', text: 'Moringa + Curry' },
@@ -219,7 +219,7 @@ window.NT_SITE_DATA = {
         detailBody: 'Moringa for whatever you blend or stir in; curry leaves for dals and curries. Both packed in Truganina.',
         faqs: [
           { q: 'What is in the combo?', a: '100g moringa powder and 30g premium dried curry leaves (karipatta).' },
-          { q: 'Can I buy them separately?', a: 'Yes—each item is also available individually in our shop.' },
+          { q: 'Can I buy them separately?', a: 'Yes, each item is also available individually in our shop.' },
         ],
         showLabBadge: true,
         variantPicker: true,
@@ -239,7 +239,7 @@ window.NT_SITE_DATA = {
       pdp: {
         headline: 'Diwali Gift Box',
         intro:
-          '100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade lavender soap — no moringa. $20 from Melbourne.',
+          '100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade lavender soap, no moringa. $20 from Melbourne.',
         features: [
           { icon: 'card_giftcard', text: 'Diwali Ready' },
           { icon: 'inventory_2', text: '3 Products' },
@@ -277,7 +277,7 @@ window.NT_SITE_DATA = {
       pdp: {
         headline: 'Gift Pack',
         intro:
-          '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap — ready to gift.',
+          '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and 95g moringa lavender soap, ready to gift.',
         features: [
           { icon: 'inventory_2', text: '4 Products' },
           { icon: 'card_giftcard', text: 'Gift Ready' },
@@ -292,7 +292,7 @@ window.NT_SITE_DATA = {
             q: 'What is included?',
             a: '100g moringa powder, 100g Darjeeling black tea, 30g dried curry leaves, and one 95g moringa lavender soap.',
           },
-          { q: 'Can I buy items separately?', a: 'Yes—each product is also available individually in our shop.' },
+          { q: 'Can I buy items separately?', a: 'Yes, each product is also available individually in our shop.' },
         ],
         showLabBadge: true,
         variantPicker: false,
@@ -311,7 +311,7 @@ window.NT_SITE_DATA = {
       href: '/products/moringa-soap/',
       pdp: {
         headline: 'Moringa 100g + Soap 95g Bundle',
-        intro: '100g moringa powder plus one 95g soap bar — cheaper than buying each on its own.',
+        intro: '100g moringa powder plus one 95g soap bar, cheaper than buying each on its own.',
         features: [
           { icon: 'inventory_2', text: 'Powder + Soap' },
           { icon: 'eco', text: 'Powder + Soap' },
@@ -319,10 +319,10 @@ window.NT_SITE_DATA = {
           { icon: 'spa', text: 'Handmade Soap' },
         ],
         detailTitle: 'Powder and bar together',
-        detailBody: 'Same supplier, same warehouse — one less checkout if you wanted both anyway.',
+        detailBody: 'Same supplier, same warehouse, one less checkout if you wanted both anyway.',
         faqs: [
           { q: 'What is included?', a: '100g moringa powder and one 95g moringa soap bar.' },
-          { q: 'Is this a gift-friendly bundle?', a: 'Yes—popular for birthdays and wellness gifts shipped Australia-wide.' },
+          { q: 'Is this a gift-friendly bundle?', a: 'Yes, popular for birthdays and wellness gifts shipped Australia-wide.' },
         ],
         showLabBadge: true,
         variantPicker: true,
@@ -342,7 +342,7 @@ window.NT_SITE_DATA = {
       href: '/products/curry-leaves/',
       pdp: {
         headline: '30g Dried Curry Leaves',
-        intro: 'Premium karipatta from our farm—aromatic, pantry-ready, packed in Melbourne. Use 2–3× vs fresh in tadka.',
+        intro: 'Premium karipatta from our farm, aromatic, pantry-ready, packed in Melbourne. Use 2–3× vs fresh in tadka.',
         features: [
           { icon: 'restaurant', text: 'Premium Karipatta' },
           { icon: 'grass', text: 'Farm Sourced' },
@@ -351,7 +351,7 @@ window.NT_SITE_DATA = {
         ],
         detailTitle: 'Fry them first, always',
         detailBody:
-          'Hot oil or ghee at the start of the pan — that is when the smell kicks in. Works in dals, sambar, and most South Indian dishes.',
+          'Hot oil or ghee at the start of the pan, that is when the smell kicks in. Works in dals, sambar, and most South Indian dishes.',
         faqs: [
           { q: 'How do I use dried vs fresh?', a: 'Use about 2–3 times the amount of dried leaves compared to fresh.' },
           { q: 'How long do they keep?', a: '6+ months in an airtight container in a cool, dry place.' },
@@ -373,7 +373,7 @@ window.NT_SITE_DATA = {
       href: '/products/black-tea/',
       pdp: {
         headline: 'Darjeeling Black Tea',
-        intro: 'Loose-leaf Darjeeling — muscatel and floral notes if you brew it gently. Shipped from our Melbourne warehouse.',
+        intro: 'Loose-leaf Darjeeling, muscatel and floral notes if you brew it gently. Shipped from our Melbourne warehouse.',
         features: [
           { icon: 'local_cafe', text: 'Loose Leaf' },
           { icon: 'terrain', text: 'Darjeeling Origin' },
@@ -385,7 +385,7 @@ window.NT_SITE_DATA = {
           '85–90°C, 1–2 tsp, 3–5 minutes. Boiling water makes it bitter. Milk is optional.',
         faqs: [
           { q: 'How do I brew it?', a: '85–90°C water, 3–5 minute steep. Avoid boiling water to prevent bitterness.' },
-          { q: 'How much caffeine?', a: 'About 40–50mg per cup—a moderate, steady lift.' },
+          { q: 'How much caffeine?', a: 'About 40–50mg per cup, a moderate, steady lift.' },
         ],
         showLabBadge: false,
         variantPicker: false,
@@ -393,12 +393,12 @@ window.NT_SITE_DATA = {
     },
   ],
   moringaVariants: [
-    { id: 'moringa-400g', label: '400g Moringa Bundle — $40.00', price: 40, was: null, weight: 400 },
-    { id: 'moringa-powder-100g', label: '100g Moringa — $11.00', price: 11, was: null, weight: 100 },
-    { id: 'combo-pack', label: 'Combo Moringa + Curry Leaves — $17.00', price: 17, was: null, weight: 130 },
-    { id: 'moringa-powder-200g', label: '200g Moringa — $22.00', price: 22, was: null, weight: 200 },
-    { id: 'curry-leaves-30g', label: '30g Dried Curry Leaves — $7.00', price: 7, was: null, weight: 30 },
-    { id: 'moringa-soap-combo', label: 'Moringa 100g + Soap 95g — $17.00', price: 17, was: null, weight: 195 },
+    { id: 'moringa-400g', label: '400g Moringa Bundle, $40.00', price: 40, was: null, weight: 400 },
+    { id: 'moringa-powder-100g', label: '100g Moringa, $11.00', price: 11, was: null, weight: 100 },
+    { id: 'combo-pack', label: 'Combo Moringa + Curry Leaves, $17.00', price: 17, was: null, weight: 130 },
+    { id: 'moringa-powder-200g', label: '200g Moringa, $22.00', price: 22, was: null, weight: 200 },
+    { id: 'curry-leaves-30g', label: '30g Dried Curry Leaves, $7.00', price: 7, was: null, weight: 30 },
+    { id: 'moringa-soap-combo', label: 'Moringa 100g + Soap 95g, $17.00', price: 17, was: null, weight: 195 },
   ],
   testimonials: [
     { quote: "Black tea is my fav product here!! I usually use their black tea to make roasted milk tea which is fantastic for such hot summer in Melbourne!", author: "Mai Anh Trần Thúy", meta: 'via Google Reviews', initials: "MA", avatarBg: 'bg-primary-fixed' },
@@ -413,11 +413,11 @@ window.NT_SITE_DATA = {
     { quote: "I liked it a lot! You should definitely go for it without a second thought", author: "Priyankari Nath", meta: 'via Google Reviews', initials: "PN", avatarBg: 'bg-primary-fixed' }
   ],
   blogGuides: [
-    { category: "Buyer's Guide", title: 'How to Choose Moringa Powder Australia — Lab Guide', readTime: '9 min read', href: '/blog/how-to-choose-moringa-powder-australia-2026' },
+    { category: "Buyer's Guide", title: 'How to Choose Moringa Powder Australia, Lab Guide', readTime: '9 min read', href: '/blog/how-to-choose-moringa-powder-australia-2026' },
     { category: "Women's Health", title: 'Moringa Benefits for Women: Hormones & Energy', readTime: '12 min read', href: '/blog/moringa-benefits-for-women-comprehensive-2026' },
     { category: 'Safety', title: 'Moringa Side Effects in Australia: Start-Small Guide', readTime: '8 min read', href: '/blog/moringa-side-effects-what-happens-take-too-much-2026' },
   ],
-  /** In-content & sidebar ad slots — random curry leaves / moringa soap (see shared/js/blog-ad-promo.js). */
+  /** In-content & sidebar ad slots, random curry leaves / moringa soap (see shared/js/blog-ad-promo.js). */
   blogAdPromo: {
     products: [
       {
@@ -448,7 +448,7 @@ window.NT_SITE_DATA = {
     moringa400g: {
       badge: 'Buy 3 Get 1',
       headline: '400g Moringa Bundle',
-      description: 'Four 100g packs — save vs buying singles. Same shade-dried, NMI lab-tested powder.',
+      description: 'Four 100g packs, save vs buying singles. Same shade-dried, NMI lab-tested powder.',
       price: 40,
       compareAt: null,
       unit: '/400g',
@@ -471,7 +471,7 @@ window.NT_SITE_DATA = {
         { q: 'What is NutriThrive Moringa powder?', a: 'A single-ingredient moringa leaf powder to add to smoothies, water, yoghurt or meals.', link: { text: 'Shop Moringa Powder', href: '/products/moringa-powder/' } },
         { q: 'How much Moringa powder should I take daily?', a: 'Start with 1/2 tsp per day for a week, then increase to 1 tsp (2–3g) as desired. Mix into smoothies, water, or yogurt.', link: { text: 'Shop Moringa Powder', href: '/products/moringa-powder/' } },
         { q: 'Any safety notes?', a: 'If you have low blood levels or thin blood, avoid use. If you are pregnant, nursing or on medication, seek advice from your healthcare provider.' },
-        { q: 'What does Moringa powder taste like?', a: 'Mild, earthy, spinach-like flavour that blends well with smoothies, juices, and meals—not overpowering.', link: { text: 'Shop Moringa Powder', href: '/products/moringa-powder/' } },
+        { q: 'What does Moringa powder taste like?', a: 'Mild, earthy, spinach-like flavour that blends well with smoothies, juices, and meals, not overpowering.', link: { text: 'Shop Moringa Powder', href: '/products/moringa-powder/' } },
         { q: 'Is it lab tested?', a: 'Yes. Our moringa powder is NMI lab-tested in Australia. Lab summary PDF is on the moringa powder product page.', link: { text: 'View lab report', href: '/documents/nutrithrive-lab-report-summary.pdf', external: true } },
         { q: 'How is the Moringa processed?', a: 'Shade-dried to lock in nutrients and keep the powder vibrant green. We avoid high-heat drying that destroys vitamins.' },
       ],
@@ -482,7 +482,7 @@ window.NT_SITE_DATA = {
       icon: 'restaurant',
       items: [
         { q: 'What are NutriThrive Dried Curry Leaves?', a: 'Premium dried curry leaves (karipatta) from our own farm. Perfect for curries, dals, and South Indian dishes. Packed in Melbourne.', link: { text: 'Shop Curry Leaves', href: '/products/curry-leaves/' } },
-        { q: 'How do I use dried curry leaves?', a: 'Use 2–3× the amount vs fresh. Fry in hot oil or ghee at the start (tadka) to release aroma—ideal for curries, dals, and sambar.', link: { text: 'Shop Curry Leaves', href: '/products/curry-leaves/' } },
+        { q: 'How do I use dried curry leaves?', a: 'Use 2–3× the amount vs fresh. Fry in hot oil or ghee at the start (tadka) to release aroma, ideal for curries, dals, and sambar.', link: { text: 'Shop Curry Leaves', href: '/products/curry-leaves/' } },
         { q: 'How should I store dried curry leaves?', a: 'Keep in an airtight container away from heat and light. Stored properly, flavour lasts 6+ months in a cool, dry place.' },
       ],
     },
@@ -491,9 +491,9 @@ window.NT_SITE_DATA = {
       title: 'Darjeeling Black Tea',
       icon: 'local_cafe',
       items: [
-        { q: 'What is NutriThrive Darjeeling Black Tea?', a: 'Premium Darjeeling black tea—the "champagne of teas"—with muscatel, floral and fruity notes. Shipped from our Melbourne warehouse.' },
+        { q: 'What is NutriThrive Darjeeling Black Tea?', a: 'Premium Darjeeling black tea, the "champagne of teas", with muscatel, floral and fruity notes. Shipped from our Melbourne warehouse.' },
         { q: 'How do I brew Darjeeling black tea?', a: 'Use 1–2 tsp per cup. Heat water to 85–90°C (not boiling). Steep 3–5 minutes. Enjoy plain or with milk and honey.', link: { text: 'Shop Black Tea', href: '/products/black-tea/' } },
-        { q: 'How much caffeine does Darjeeling tea contain?', a: 'About 40–50mg per cup—moderate caffeine for a gentle boost without jitters.' },
+        { q: 'How much caffeine does Darjeeling tea contain?', a: 'About 40–50mg per cup, moderate caffeine for a gentle boost without jitters.' },
       ],
     },
     {
@@ -505,7 +505,7 @@ window.NT_SITE_DATA = {
         { q: 'Can I place an order by phone?', a: 'Yes. Call us on +61 438 201 419 if you need help placing an order.' },
         { q: 'What is the free shipping threshold?', a: 'Free shipping Australia-wide on orders of AU$49 or more. International postage is calculated from the parcel weight.' },
         { q: 'How fast is Australia-wide shipping from Melbourne?', a: 'Orders placed before 2pm on business days usually leave Truganina the same day; otherwise within 2 business days (no Sunday dispatch). Melbourne metro is often 1–3 business days after dispatch; other metro areas typically 3–4 days; some rural locations up to 10 days. See /shipping or /melbourne/ for estimates.' },
-        { q: 'Do you offer a money-back guarantee?', a: 'Yes—7-day return policy (unopened packs only). Shipping costs are not refunded.' },
+        { q: 'Do you offer a money-back guarantee?', a: 'Yes, 7-day return policy (unopened packs only). Shipping costs are not refunded.' },
         { q: 'Where is my order dispatched from?', a: 'All orders ship from our warehouse in Truganina, Melbourne. Order before 2pm on a business day for same-day dispatch when we can.' },
       ],
     },
@@ -514,7 +514,7 @@ window.NT_SITE_DATA = {
       title: 'Other Products',
       icon: 'spa',
       items: [
-        { q: 'What are the nutritional benefits of chia seeds?', a: 'Chia seeds provide omega-3s, fibre, protein and minerals—about 5g omega-3, 10g fibre, and 4g protein per 28g serving. Great for heart health and digestion.' },
+        { q: 'What are the nutritional benefits of chia seeds?', a: 'Chia seeds provide omega-3s, fibre, protein and minerals, about 5g omega-3, 10g fibre, and 4g protein per 28g serving. Great for heart health and digestion.' },
       ],
     },
   ],

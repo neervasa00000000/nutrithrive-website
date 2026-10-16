@@ -52,9 +52,9 @@
 
   function buildPromo(promo, variant) {
     var img = esc(imageUrl(promo.image));
-    var alt = esc(promo.headline + ' — NutriThrive');
+    var alt = esc(promo.headline + ', NutriThrive');
     var href = esc(promo.href);
-    var title = esc(promo.headline + ' — ' + money(promo.price));
+    var title = esc(promo.headline + ', ' + money(promo.price));
     var tagline = esc(promo.tagline);
     var cta = esc(promo.cta || 'Shop →');
 
