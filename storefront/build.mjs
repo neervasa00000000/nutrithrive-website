@@ -2057,7 +2057,7 @@ function shopPage() {
       <section class="page-intro shop-intro wrap">
         <p class="kicker">Farm grown · Australian packed</p>
         <h1>${esc(deskSeo("/products/").h1 || "Shop NutriThrive")}</h1>
-        <p>Start with our farm-grown moringa powder — from $11 — then add curry leaves, tea, soap and gift packs.</p>
+        <p>Start with our farm-grown moringa powder, from $11, then add curry leaves, tea, soap and gift packs.</p>
       </section>
       <section class="section shop-catalog" style="padding-top:0" aria-labelledby="shop-moringa">
         <div class="wrap">
@@ -2101,10 +2101,10 @@ const PDP = {
     ),
     variantLabels: {
       "moringa-powder": "100g · $11 · A good first pouch",
-      "moringa-200g": "200g — $22",
+      "moringa-200g": "200g · $22",
       "moringa-400g": "400g · $40 · $10 per 100g",
-      "combo-pack": "Combo pack — $17 · Moringa + curry leaves",
-      "moringa-soap-combo": "Powder + soap — $17 · 100g moringa + 95g bar",
+      "combo-pack": "Combo pack · $17 · Moringa + curry leaves",
+      "moringa-soap-combo": "Powder + soap · $17 · 100g moringa + 95g bar",
     },
     variantHint: "400g is $10 per 100g.",
     intro:
@@ -2312,8 +2312,8 @@ const PDP = {
     defaultVariantId: "moringa-soap",
     variants: PRODUCTS.filter((p) => ["moringa-soap", "moringa-soap-combo"].includes(p.id)),
     variantLabels: {
-      "moringa-soap": "Soap bar only — $7 · 95g",
-      "moringa-soap-combo": "Powder + soap — $17 · 100g powder + 95g bar",
+      "moringa-soap": "Soap bar only · $7 · 95g",
+      "moringa-soap-combo": "Powder + soap · $17 · 100g powder + 95g bar",
     },
     variantHint: "The powder + soap bundle is $17.",
     intro:
@@ -2619,7 +2619,7 @@ function pdpPage(slug, d) {
           ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : d.use ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : ""}
           ${slug === "combo-pack" ? batchPanel : p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
   const shipLadder = {
-    "diwali-gift-box": `<p>Free AU shipping on orders of <strong>$49</strong> or more — add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
+    "diwali-gift-box": `<p>Free AU shipping on orders of <strong>$49</strong> or more. Add a second box or the <a href="/products/gift-pack/">$35 gift pack</a> (includes moringa). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
     "gift-pack": `<p>This pack includes moringa powder. Prefer no moringa? Shop the <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> (tea, curry leaves &amp; soap). <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>`,
   }[slug] || "";
   const offerUrl = `${LIVE}${canonicalPath}`;
@@ -3623,7 +3623,7 @@ function thankYouPage() {
     extraFoot,
     main: `<section class="page-intro wrap-narrow order-thanks">
       <h1>Order confirmed</h1>
-      <p class="lede">Thank you — we've received your payment. Keep your order reference below.</p>
+      <p class="lede">Thank you. We've received your payment. Keep your order reference below.</p>
       <dl class="order-thanks-list" id="order-facts" hidden>
         <div class="order-thanks-row" id="order-id-row" hidden><dt>Order reference</dt><dd id="order-id"></dd></div>
         <div class="order-thanks-row" id="order-item-row" hidden><dt>Item</dt><dd id="order-item"></dd></div>
@@ -3656,7 +3656,7 @@ function orderHelpPage() {
     extraFoot: retentionFoot(`<script src="${RETENTION_PAGES_SRC}?v=${ASSET_VERSION}" defer></script>`),
     main: `<section class="page-intro wrap-narrow order-thanks" id="order-help-app">
       <h1>Help with your order</h1>
-      <p class="lede">Use this page after delivery. It is for storage, brewing, packing notes, and getting in touch — not a medical or treatment guide.</p>
+      <p class="lede">Use this page after delivery. It is for storage, brewing, packing notes, and getting in touch, not a medical or treatment guide.</p>
       <div class="retention-stack">
         <div id="order-help-blocks"></div>
         <section class="retention-block" aria-labelledby="order-help-support">
@@ -3931,15 +3931,15 @@ function cityPage(city, slug) {
     Perth: "4–6 days",
   }[city];
   const uniqueLine = {
-    Melbourne: "Packed here in Truganina — fastest metro transit on our list (1–2 days).",
+    Melbourne: "Packed here in Truganina, fastest metro transit on our list (1–2 days).",
     Sydney: "Same pouch as Melbourne; typical Sydney transit 2–4 days from Truganina.",
-    Perth: "Same pouch as Melbourne; allow <strong>4–6 days</strong> after dispatch for Perth — tracked.",
+    Perth: "Same pouch as Melbourne; allow <strong>4–6 days</strong> after dispatch for Perth, tracked.",
     Brisbane: `Same pouch as Melbourne; typical Brisbane transit 2–4 days. For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
     Adelaide: "Same pouch as Melbourne; typical Adelaide transit 2–4 days from Truganina.",
   }[city];
   const pouchLine = city === "Melbourne"
-    ? "Melbourne customers get the same pouch we ship Australia-wide — not a different contract pack."
-    : `${city} customers get the same pouch as Melbourne — not a different contract pack.`;
+    ? "Melbourne customers get the same pouch we ship Australia-wide, not a different contract pack."
+    : `${city} customers get the same pouch as Melbourne, not a different contract pack.`;
   const faqs = [
     [
       `How long does shipping take to ${city}?`,
@@ -3950,7 +3950,7 @@ function cityPage(city, slug) {
     ],
     [
       `Is the powder different for ${city}?`,
-      "No — same Truganina batch as Melbourne.",
+      "No, same Truganina batch as Melbourne.",
     ],
     ["When is shipping free?", "Free AU shipping from $49."],
     ["Where is it packed?", "Truganina, Melbourne VIC."],

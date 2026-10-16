@@ -1,5 +1,5 @@
 // Shipping Rates Configuration
-// Source: products/data/shipping_rates_updated.xlsx — MyPost Business Band 1 (July 2026)
+// Source: products/data/shipping_rates_updated.xlsx, MyPost Business Band 1 (July 2026)
 // GREEN = Australia Parcel Post, BLUE = International Express key destinations,
 // YELLOW = International Express other destinations
 // Australia checkout uses Zone 2 rates by weight (national mid-rate).
@@ -43,7 +43,7 @@ const YELLOW_RATES = {
 // Zone 1 = NZ (BLUE), Zone 2 = China/Asia Pacific (BLUE/YELLOW), Zone 3 = USA & Canada (BLUE)
 // Zone 4 = UK & Ireland/UK & Europe (BLUE/YELLOW), Zone 5 = Rest of World (YELLOW)
 const COUNTRY_MAPPING = {
-    // Australia — GREEN Zone 2 (national mid-rate from rate card)
+    // Australia, GREEN Zone 2 (national mid-rate from rate card)
     // freeShippingThreshold is the standard ($49). Limited promos are applied in calculateShipping.
     'AU': { zone: 2, color: 'GREEN', freeShippingThreshold: 49 },
     

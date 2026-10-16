@@ -1,5 +1,5 @@
 /**
- * Website 2.0 — page interactions: cart UI, product PDP, shop, contact, checkout.
+ * Website 2.0, page interactions: cart UI, product PDP, shop, contact, checkout.
  */
 (function () {
 
@@ -338,7 +338,7 @@
     <div>
       <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed/30 text-moringa-leaf rounded-full mb-4">
         <span class="material-symbols-outlined text-[18px]">local_shipping</span>
-        <span class="font-label-sm text-label-sm uppercase tracking-wider">In Stock — Melbourne Dispatch</span>
+        <span class="font-label-sm text-label-sm uppercase tracking-wider">In Stock, Melbourne Dispatch</span>
       </div>
       <h1 id="nt-pdp-title" class="font-display text-headline-lg md:text-display text-forest-deep mb-2">${pdp.headline || p.name}</h1>
       <div class="flex items-baseline gap-4 mb-4 flex-wrap">
@@ -401,7 +401,7 @@
     </div>
     <div class="bg-primary-fixed/20 p-8 rounded-xl border border-moringa-leaf/10 relative overflow-hidden">
       <p class="font-body-md text-body-md text-forest-deep italic relative z-10 mb-4">"I have used various brands of moringa powder but the powder from Nutri-Thrive is the greenest in color and tastes way better than the other moringa powder in the market. The pricing is very reasonable and the shipping was also very quick!!"</p>
-      <p class="font-label-lg text-label-lg text-moringa-leaf relative z-10">— Jay Turakhia · via Google Reviews</p>
+      <p class="font-label-lg text-label-lg text-moringa-leaf relative z-10">,  Jay Turakhia · via Google Reviews</p>
     </div>
   </aside>
 </div>
@@ -1070,7 +1070,7 @@
       countEl.textContent =
         totalPages > 1
           ? `Showing ${start + 1}–${start + slice.length} of ${articles.length} articles (page ${page} of ${totalPages})`
-          : `${articles.length} articles — lab tests, guides, and Melbourne wellness`;
+          : `${articles.length} articles, lab tests, guides, and Melbourne wellness`;
     }
 
     grid.innerHTML = slice.map((a) => blogCardHtml(a)).join('');
@@ -1131,7 +1131,7 @@
       <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
         <header class="text-center mb-12 md:mb-16">
           <h1 class="font-display text-headline-lg-mobile md:text-headline-lg text-forest-deep mb-4">Frequently Asked Questions</h1>
-          <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Answers about moringa, curry leaves, tea, orders and shipping — same info as our live site.</p>
+          <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Answers about moringa, curry leaves, tea, orders and shipping, same info as our live site.</p>
         </header>
         <div class="space-y-10">
           ${cats

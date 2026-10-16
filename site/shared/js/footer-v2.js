@@ -1,4 +1,4 @@
-/** NutriThrive v2 footer — single source for layout-v2.js and legacy pages. */
+/** NutriThrive v2 footer, single source for layout-v2.js and legacy pages. */
 (function (global) {
   function resolveHref(file) {
     return file.startsWith('http') || file.startsWith('/') ? file : `/${file}`;

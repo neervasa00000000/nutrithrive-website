@@ -10,7 +10,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "ag1-alternative-australia-moringa-comparison-2026",
     "title": "AG1 Alternative Australia: Moringa Powder vs AG1",
-    "description": "AG1 is a multi-ingredient greens scoop. NutriThrive is plain farm-grown moringa leaf powder — compare purpose and format, then buy the pouch that fits.",
+    "description": "AG1 is a multi-ingredient greens scoop. NutriThrive is plain farm-grown moringa leaf powder, compare purpose and format, then buy the pouch that fits.",
     "category": "Wellness",
     "href": "/blog/ag1-alternative-australia-moringa-comparison-2026",
     "image": "/assets/images/blog/moringa-replaces-200-supplement-stack-australia-2026.webp"
@@ -258,7 +258,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "high-protein-moringa-recipes-australia-2026",
     "title": "High-Protein Moringa Recipes Australia (Leaf Powder)",
-    "description": "High-protein moringa recipes Australia — ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
+    "description": "High-protein moringa recipes Australia, ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve.",
     "category": "Wellness",
     "href": "/blog/high-protein-moringa-recipes-australia-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -369,8 +369,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "how-to-read-moringa-batch-codes-freshness",
-    "title": "How to Read Moringa Batch Codes — Freshness Check AU",
-    "description": "How to read moringa batch codes on Australian pouches — find the lot stamp, match lab paperwork, and spot freshness red flags.",
+    "title": "How to Read Moringa Batch Codes, Freshness Check AU",
+    "description": "How to read moringa batch codes on Australian pouches, find the lot stamp, match lab paperwork, and spot freshness red flags.",
     "category": "Wellness",
     "href": "/blog/how-to-read-moringa-batch-codes-freshness",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -394,7 +394,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "is-moringa-safe-for-children-kids-dosage-2026",
     "title": "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use — with free AU shipping from $49.",
+    "description": "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use, with free AU shipping from $49.",
     "category": "Wellness",
     "href": "/blog/is-moringa-safe-for-children-kids-dosage-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -418,7 +418,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-and-berberine-australia-what-science-says-2026",
     "title": "Moringa and Berberine Together (Australia 2026)",
-    "description": "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context — not medical advice. Ask your GP.",
+    "description": "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context, not medical advice. Ask your GP.",
     "category": "Wellness",
     "href": "/blog/moringa-and-berberine-australia-what-science-says-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -433,8 +433,8 @@ window.NT_BLOG_ARTICLES = [
   },
   {
     "slug": "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
-    "title": "Moringa Avocado Toast Recipe Australia — 5 Minutes",
-    "description": "Moringa avocado toast recipe Australia — exact ½ tsp leaf powder, lemon, salt, 5 minutes.",
+    "title": "Moringa Avocado Toast Recipe Australia, 5 Minutes",
+    "description": "Moringa avocado toast recipe Australia, exact ½ tsp leaf powder, lemon, salt, 5 minutes.",
     "category": "Wellness",
     "href": "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -514,7 +514,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-patches-australia-review-do-they-work",
     "title": "Moringa Patches Australia: Glorenda, Healrize & Powder",
-    "description": "What moringa patches claim vs buying leaf powder for food and drinks. NutriThrive sells powder only — farm-grown, packed in Truganina.",
+    "description": "What moringa patches claim vs buying leaf powder for food and drinks. NutriThrive sells powder only, farm-grown, packed in Truganina.",
     "category": "Wellness",
     "href": "/blog/moringa-patches-australia-review-do-they-work",
     "image": "/assets/images/og/moringa-article-1200.jpg"
@@ -602,7 +602,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "moringa-with-vitamin-c-iron-absorption-guide-2026",
     "title": "Moringa with Vitamin C for Iron Absorption: AU Food Pairing Guide",
-    "description": "How to pair moringa leaf powder with vitamin-C foods for plant iron absorption in Australian kitchens. Food guidance — then Shop moringa powder.",
+    "description": "How to pair moringa leaf powder with vitamin-C foods for plant iron absorption in Australian kitchens. Food guidance, then Shop moringa powder.",
     "category": "Wellness",
     "href": "/blog/moringa-with-vitamin-c-iron-absorption-guide-2026",
     "image": "/assets/images/og/moringa-article-1200.jpg"

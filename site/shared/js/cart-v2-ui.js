@@ -1,5 +1,5 @@
 /**
- * Live cart UI layer — wraps shared/js/cart.js with shipping estimates for v2 checkout pages.
+ * Live cart UI layer, wraps shared/js/cart.js with shipping estimates for v2 checkout pages.
  */
 (function () {
   if (window.CartV2) return;

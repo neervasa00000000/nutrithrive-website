@@ -1,7 +1,7 @@
 /**
  * Canonical Google Business Profile reviews for NutriThrive (Truganina).
  * Source: Google Maps listing https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7
- * Scraped 26 Jul 2026 — 4.9★ from 11 reviews. Do not invent or rewrite quotes.
+ * Scraped 26 Jul 2026, 4.9★ from 11 reviews. Do not invent or rewrite quotes.
  */
 window.NT_GOOGLE_REVIEWS = {
   sourceUrl: 'https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7',

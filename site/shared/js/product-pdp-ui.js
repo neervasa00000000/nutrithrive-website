@@ -1,4 +1,4 @@
-/** Shared product PDP UI — qty stepper + mobile nav */
+/** Shared product PDP UI, qty stepper + mobile nav */
 window.NT_PDP = window.NT_PDP || {};
 
 window.NT_PDP.setupQty = function () {
