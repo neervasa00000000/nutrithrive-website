@@ -1407,6 +1407,7 @@ function powderSizePageData(sizeSlug) {
     forceSeo: true,
     defaultVariantId: size.variantId,
     canonicalPath: `/products/moringa-powder/${sizeSlug}/`,
+    seoCanonicalPath: "/products/moringa-powder/",
     gallery,
   };
 }
@@ -1644,6 +1645,7 @@ function layout({
   title,
   description,
   canonicalPath = "/",
+  seoCanonicalPath,
   current,
   main,
   extraHead = "",
@@ -1660,6 +1662,7 @@ function layout({
 }) {
   const r = routes();
   const canonical = `${LIVE}${canonicalPath}`;
+  const seoCanonical = `${LIVE}${seoCanonicalPath || canonicalPath}`;
   const image = ogImage ? absUrl(ogImage) : OG_IMAGE;
   const seoTitle = preserveTitle ? title : fitSeoTitle(title);
   const seoDescription = preserveDescription ? description : fitPageDescription(description);
@@ -1727,13 +1730,13 @@ function layout({
   <title>${esc(seoTitle)}</title>
   <meta name="description" content="${esc(seoDescription)}">
   <meta name="robots" content="${esc(robotsContent)}">
-  <link rel="canonical" href="${esc(canonical)}">
+  <link rel="canonical" href="${esc(seoCanonical)}">
   <meta name="geo.region" content="AU-VIC">
   <meta name="geo.placename" content="Truganina, Melbourne VIC">
   <meta name="geo.position" content="-37.8323773;144.7187983">
   <meta name="ICBM" content="-37.8323773, 144.7187983">
   <meta property="og:type" content="${esc(ogType)}">
-  <meta property="og:url" content="${esc(canonical)}">
+  <meta property="og:url" content="${esc(seoCanonical)}">
   <meta property="og:title" content="${esc(ogTitleFinal)}">
   <meta property="og:description" content="${esc(ogDescriptionFinal)}">
   <meta property="og:image" content="${esc(image)}">
@@ -2698,6 +2701,7 @@ function pdpPage(slug, d) {
     title: d.forceSeo ? d.title : liveSeo?.title || d.title,
     description: d.forceSeo ? d.description : liveSeo?.description || d.description,
     canonicalPath,
+    seoCanonicalPath: d.seoCanonicalPath,
     current: d.current,
     preserveTitle: d.forceSeo ? true : Boolean(liveSeo?.title),
     preserveDescription: d.forceSeo ? true : Boolean(liveSeo?.description),

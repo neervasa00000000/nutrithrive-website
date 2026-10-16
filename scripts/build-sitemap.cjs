@@ -304,6 +304,7 @@ function main() {
       }
     }
 
+    if (rel === "products/moringa-powder/100g/index.html" || rel === "products/moringa-powder/200g/index.html") continue;
     const loc = fileToUrl(rel);
     if (redirected.has(new URL(loc).pathname)) continue;
     if (loc.includes("/.firecrawl/") || loc.includes("/.netlify/")) continue;
