@@ -1209,8 +1209,8 @@ function faqDetails(faqs) {
     .join("");
 }
 
+const TEA_REVIEW_NAME = "Mai Anh Trần Thúy";
 const MORINGA_FEATURED_REVIEW_NAMES = [
-  "Mai Anh Trần Thúy",
   "Siv Mey",
   "Priyankari Nath",
 ];
@@ -1333,15 +1333,16 @@ function check() {
 }
 
 function googleReviewsSection() {
+  const starIcons = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 3.6 14.5 9l6 .6-4.6 4 1.4 5.9L12 16.8 6.7 19.5 8.1 13.6 3.5 9.6l6-.6L12 3.6Z"/></svg>'.repeat(5);
+  const reviews = REVIEWS.filter((review) => review.name !== TEA_REVIEW_NAME);
   return `<section class="section" id="reviews">
   <div class="wrap">
     <div class="reviews-head">
-      <span class="reviews-score">4.9</span>
-      ${stars()}
-      <span style="color:var(--color-text-secondary)">Google reviews</span>
+      <span class="stars">${starIcons}</span>
+      <span class="reviews-score">4.9 · Google reviews</span>
     </div>
     <div class="review-grid review-scroll" aria-label="Google reviews">
-      ${REVIEWS.map(
+      ${reviews.map(
         (r) => `<blockquote class="review-card"><p title="${esc(r.text)}">“${esc(r.text)}”</p><div class="review-meta"><strong>${esc(r.name)}</strong>Verified Google review</div></blockquote>`
       ).join("")}
     </div>
@@ -2543,7 +2544,7 @@ function pdpPage(slug, d) {
   const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
     .map((id) => PRODUCTS.find((item) => item.id === id))
     .filter((item) => item && item.id !== p.id && item.href !== p.href);
-  const reviews = d.reviews || REVIEWS;
+  const reviews = (d.reviews || REVIEWS).filter((review) => slug === "black-tea" || review.name !== TEA_REVIEW_NAME);
   const freezeHero = Boolean(d.freezeHeroCopy);
   const selectedVariantId = buyProduct.id;
   const variantSelect = d.variants
