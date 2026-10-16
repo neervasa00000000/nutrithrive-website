@@ -2816,9 +2816,9 @@ function pdpPage(slug, d) {
             ${d.safety ? `<details class="pdp-support-card safety-note"><summary>Safety information</summary><div><p>${esc(d.safety)}</p></div></details>` : ""}
             <details class="pdp-support-card delivery-card"><summary>Delivery and returns</summary><div>
               <ul>
-                <li><strong>Melbourne metro:</strong> usually 1–3 business days</li>
-                <li><strong>Other Australian metro areas:</strong> usually 3–4 business days</li>
-                <li><strong>Rural areas:</strong> allow up to 10 business days</li>
+                <li><strong>Melbourne metro:</strong> usually 1 to 3 business days</li>
+                <li><strong>Other metro areas:</strong> usually 3 to 4 business days</li>
+                <li><strong>Rural and regional areas:</strong> up to 10 business days</li>
                 <li>Occasional carrier delays may add up to 2 business days</li>
                 <li>7-day refund or replacement</li>
                 <li>Local pickup available from Truganina by arrangement</li>
@@ -3067,7 +3067,7 @@ function faqPage() {
         },
         {
           q: "How fast is shipping from Melbourne?",
-          a: "Order before 2pm Monday to Friday and we usually dispatch the same day. Melbourne metro is often 1 to 3 business days after that. Other metro areas are around 3 to 4 days, while some rural addresses take up to 10 days.",
+          a: "Order before 2pm Monday to Friday and we usually dispatch the same day. Melbourne metro usually 1 to 3 business days. Other metro areas usually 3 to 4 business days. Rural and regional areas up to 10 business days.",
         },
         {
           q: "What is your 7-day guarantee?",
@@ -3235,9 +3235,9 @@ function shippingPage() {
         <p class="lede">Orders leave Truganina. Free on Australian orders of <strong>$49</strong> or more. Under $49 in Australia, shipping is by parcel weight.</p>
         <p>${esc(SHIPPING_BAND_LIST)}</p>
         <h2>Dispatch</h2>
-        <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. Free shipping is applied automatically in the cart once your Australian order reaches $49. International postage is calculated from the parcel weight.</p>
+        <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. No dispatch on Melbourne Cup Day (Tue 3 Nov). Free shipping is applied automatically in the cart once your Australian order reaches $49. International postage is calculated from the parcel weight.</p>
         <h2>Timing after dispatch</h2>
-        <p>Melbourne metro is often 1 to 3 business days. Other metro areas typically 3 to 4 days. Some rural locations take up to 10 days.</p>
+        <p>Melbourne metro usually 1 to 3 business days. Other metro areas usually 3 to 4 business days. Rural and regional areas up to 10 business days.</p>
         <h2>Tracking</h2>
         <p>When the parcel leaves Truganina you should get a confirmation email with tracking, if the carrier provides it. If nothing arrives within a couple of business days after dispatch, check spam or email us with your order details.</p>
         <h2 id="returns">7-day guarantee</h2>
@@ -3917,25 +3917,25 @@ function cityPage(city, slug) {
     },
   }[city];
   const transitLine = {
-    Melbourne: "Metro Melbourne typically 1–2 days after dispatch.",
-    Sydney: "Sydney typically 2–4 days after dispatch from Truganina.",
-    Brisbane: "Brisbane typically 2–4 days after dispatch from Truganina.",
-    Adelaide: "Adelaide typically 2–4 days after dispatch from Truganina.",
-    Perth: "Perth typically 4–6 days after dispatch from Truganina.",
+    Melbourne: "Melbourne metro usually 1 to 3 business days after dispatch.",
+    Sydney: "Sydney usually 3 to 4 business days after dispatch.",
+    Brisbane: "Brisbane usually 3 to 4 business days after dispatch.",
+    Adelaide: "Adelaide usually 3 to 4 business days after dispatch.",
+    Perth: "Perth usually 3 to 4 business days after dispatch.",
   }[city];
   const transitLabel = {
-    Melbourne: "1–2 days",
-    Sydney: "2–4 days",
-    Brisbane: "2–4 days",
-    Adelaide: "2–4 days",
-    Perth: "4–6 days",
+    Melbourne: "1 to 3 business days",
+    Sydney: "3 to 4 business days",
+    Brisbane: "3 to 4 business days",
+    Adelaide: "3 to 4 business days",
+    Perth: "3 to 4 business days",
   }[city];
   const uniqueLine = {
-    Melbourne: "Packed here in Truganina, fastest metro transit on our list (1–2 days).",
-    Sydney: "Same pouch as Melbourne; typical Sydney transit 2–4 days from Truganina.",
-    Perth: "Same pouch as Melbourne; allow <strong>4–6 days</strong> after dispatch for Perth, tracked.",
-    Brisbane: `Same pouch as Melbourne; typical Brisbane transit 2–4 days. For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
-    Adelaide: "Same pouch as Melbourne; typical Adelaide transit 2–4 days from Truganina.",
+    Melbourne: "Packed here in Truganina, fastest metro transit on our list (1 to 3 business days).",
+    Sydney: "Same pouch as Melbourne; Sydney is usually 3 to 4 business days after dispatch.",
+    Perth: "Same pouch as Melbourne; Perth is usually 3 to 4 business days after dispatch, tracked.",
+    Brisbane: `Same pouch as Melbourne; Brisbane is usually 3 to 4 business days after dispatch. For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
+    Adelaide: "Same pouch as Melbourne; Adelaide is usually 3 to 4 business days after dispatch.",
   }[city];
   const pouchLine = city === "Melbourne"
     ? "Melbourne customers get the same pouch we ship Australia-wide, not a different contract pack."
