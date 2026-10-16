@@ -4,6 +4,9 @@
 # — Retired blog URLs → 404
 
 # === Week 1 dead URLs → closest live pages (first match wins over later 410s) ===
+/nutrithrive-100g-moringa-powder-pouch-available-for-delivery-to-sydney/  /moringa-sydney/  301
+/terms     /shipping#returns   301
+/refund    /shipping#returns   301
 /blog/dried-curry-leaves-culinary-uses-storage-benefits-complete-guide.html  /blog/dried-curry-leaves-quality-guide-how-to-use  301!
 /blog/moringa-brands-comparison-australia-2025  /blog/moringa-brands-comparison-australia-2026  301!
 /blog/complete-guide-to-moringa-powder-australia  /blog/how-to-add-moringa-to-diet  301!
