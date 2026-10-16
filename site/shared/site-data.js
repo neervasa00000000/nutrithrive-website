@@ -342,7 +342,7 @@ window.NT_SITE_DATA = {
       href: '/products/curry-leaves/',
       pdp: {
         headline: '30g Dried Curry Leaves',
-        intro: 'Premium karipatta from our farm, aromatic, pantry-ready, packed in Melbourne. Use 2–3× vs fresh in tadka.',
+        intro: 'Premium karipatta from our farm, aromatic, pantry-ready, packed in Truganina, VIC. Use 2–3× vs fresh in tadka.',
         features: [
           { icon: 'restaurant', text: 'Premium Karipatta' },
           { icon: 'grass', text: 'Farm Sourced' },
@@ -481,7 +481,7 @@ window.NT_SITE_DATA = {
       title: 'Dried Curry Leaves',
       icon: 'restaurant',
       items: [
-        { q: 'What are NutriThrive Dried Curry Leaves?', a: 'Premium dried curry leaves (karipatta) from our own farm. Perfect for curries, dals, and South Indian dishes. Packed in Melbourne.', link: { text: 'Shop Curry Leaves', href: '/products/curry-leaves/' } },
+        { q: 'What are NutriThrive Dried Curry Leaves?', a: 'Premium dried curry leaves (karipatta) from our own farm. Perfect for curries, dals, and South Indian dishes. Packed in Truganina, VIC.', link: { text: 'Shop Curry Leaves', href: '/products/curry-leaves/' } },
         { q: 'How do I use dried curry leaves?', a: 'Use 2–3× the amount vs fresh. Fry in hot oil or ghee at the start (tadka) to release aroma, ideal for curries, dals, and sambar.', link: { text: 'Shop Curry Leaves', href: '/products/curry-leaves/' } },
         { q: 'How should I store dried curry leaves?', a: 'Keep in an airtight container away from heat and light. Stored properly, flavour lasts 6+ months in a cool, dry place.' },
       ],
