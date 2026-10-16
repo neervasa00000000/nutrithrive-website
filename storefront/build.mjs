@@ -3230,7 +3230,7 @@ function shippingPage() {
         <p class="lede">Orders leave Truganina. Free on Australian orders of <strong>$49</strong> or more. Under $49 in Australia, shipping is by parcel weight.</p>
         <p>${esc(SHIPPING_BAND_LIST)}</p>
         <h2>Dispatch</h2>
-        <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. No dispatch on Melbourne Cup Day (Tue 3 Nov). Free shipping is applied automatically in the cart once your Australian order reaches $49. International postage is calculated from the parcel weight.</p>
+        <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. Free shipping is applied automatically in the cart once your Australian order reaches $49. International postage is calculated from the parcel weight.</p>
         <h2>Timing after dispatch</h2>
         <p>Melbourne metro usually 1 to 3 business days. Other metro areas usually 3 to 4 business days. Rural and regional areas up to 10 business days.</p>
         <h2>Tracking</h2>
@@ -3715,7 +3715,7 @@ function melbournePage() {
     ["Do you sell fresh curry leaves?", "No, only dried."],
     ["Can I pick up?", "Yes, from Truganina by arrangement."],
     ["How long is delivery?", "Usually 1 to 3 business days after dispatch."],
-    ["When do I order for Diwali?", "Diwali orders open until Sunday 8 November. No dispatch on Melbourne Cup Day, Tue 3 Nov."],
+    ["When do I order for Diwali?", "Diwali orders open until Sunday 8 November."],
     ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
   ];
   const faqSchema = {
@@ -3829,7 +3829,7 @@ function melbournePage() {
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Festival gifts</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2></div>
             </div>
-            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade moringa and lavender soap bar, with no moringa powder, for $20. Diwali orders open until Sunday 8 November. We don't dispatch on Melbourne Cup Day (Tue 3 Nov). Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
+            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade moringa and lavender soap bar, with no moringa powder, for $20. Diwali orders open until Sunday 8 November. Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
             <p style="margin-top:16px"><a class="btn btn-primary" href="${diwaliHref}">Shop the Diwali Gift Box</a></p>
           </div>
         </section>
