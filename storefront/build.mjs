@@ -3944,10 +3944,6 @@ function cityPage(city, slug) {
         text: `${transitLine} Dispatch is before 2pm Monday–Friday Melbourne time, with tracking on every order.`,
       },
     ],
-    [
-      `Is the powder different for ${city}?`,
-      "No, same Truganina batch as Melbourne.",
-    ],
     ["When is shipping free?", "Free AU shipping from $49."],
     ["Where is it packed?", "Truganina, Melbourne VIC."],
   ];
@@ -4118,7 +4114,7 @@ function cityPage(city, slug) {
               <article class="city-info-card">
                 <span class="city-info-card__number">03</span>
                 <h3>Clear value</h3>
-                <p>100g $11 · 200g $22 · 400g $40. The 400g option works out to $10 per 100g. Free AU shipping starts at $49.</p>
+                <p>100g $11 · 200g $22 · 400g $40. Free AU shipping starts at $49.</p>
                 <a href="${powderHref}">Compare all three sizes <span aria-hidden="true">→</span></a>
               </article>
             </div>
@@ -4126,34 +4122,6 @@ function cityPage(city, slug) {
         </section>
 
         ${melbourneCurrySection}
-
-        <section class="city-local-section city-local-section--support" aria-labelledby="support-heading-${slug}">
-          <div class="wrap city-support-grid">
-            <article class="city-support-story">
-              <p class="city-local-kicker">Why NutriThrive</p>
-              <h2 id="support-heading-${slug}">The same accountable pouch, wherever you live</h2>
-              <p>One packing location keeps product information and batch handling consistent. ${pouchLine}</p>
-              ${melbourneQuality}
-              <ul class="city-check-list">
-                <li>Grown on our own farm</li>
-                <li>Sun-dried and manufactured by us</li>
-                <li>Tested in Australia</li>
-                <li>Packed in Truganina, Melbourne</li>
-              </ul>
-              <a class="btn btn-secondary" href="${chooseHref}">How to choose moringa</a>
-            </article>
-            <aside class="city-guide-card" aria-labelledby="guide-heading-${slug}">
-              <p class="city-local-kicker">Helpful before ordering</p>
-              <h2 id="guide-heading-${slug}">Quick moringa guides</h2>
-              <ul>
-                <li><a href="${storeHref}"><span>Storage</span>How long moringa powder lasts</a></li>
-                <li><a href="${addHref}"><span>Using it</span>How to mix moringa without bitterness</a></li>
-                <li><a href="${tasteHref}"><span>Taste</span>What moringa powder tastes like</a></li>
-                <li><a href="${r.shipping}"><span>Delivery</span>Shipping times for ${city}</a></li>${melbourneGuides}
-              </ul>
-            </aside>
-          </div>
-        </section>
 
         <section class="city-local-section city-local-section--faq" aria-labelledby="faq-heading-${slug}">
           <div class="wrap city-faq-layout">
