@@ -3101,7 +3101,7 @@ function faqPage() {
       items: [
         {
           q: "Where is the privacy policy?",
-          a: "On the privacy policy page. Last updated 19 January 2026 on the live site. We use your contact and order details to fulfil orders and answer questions.",
+          a: "On our privacy policy page. We use your contact and order details to fulfil orders and answer questions.",
         },
         {
           q: "How do I ask about my data?",
@@ -3338,7 +3338,7 @@ function privacyPage() {
           <li><strong>Condition:</strong> The item must be unopened, sealed, and in its original packaging.</li>
           <li><strong>Procedure:</strong> Contact <a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a> to start the process.</li>
           <li><strong>Cost:</strong> The customer is responsible for all return shipping costs.</li>
-          <li><strong>Refund processing:</strong> Once received and inspected, refunds are processed via PayPal within 5 to 7 business days.</li>
+          <li><strong>Refund processing:</strong> Once received and inspected, we refund to your original payment method. Full returns details are on our <a href="/shipping#returns">shipping and returns page</a>.</li>
         </ul>
         <p>Nothing in this policy excludes, restricts, or modifies any rights you have under the Australian Consumer Law that cannot be excluded.</p>
 
@@ -3350,7 +3350,7 @@ function privacyPage() {
         <h3>1. Product nature (natural vs organic)</h3>
         <p><strong>Natural product:</strong> NutriThrive products are sold as "Natural" products derived from natural ingredients.</p>
         <p><strong>Not certified organic:</strong> We explicitly state that our products are NOT "Certified Organic". We do not hold organic certification.</p>
-        <p><strong>Waiver of claims:</strong> NutriThrive makes no representations or warranties that its products are "Organic." By purchasing, you acknowledge the product is sold strictly as "Natural" and agree to release NutriThrive from any liability, claims, or disputes asserting otherwise.</p>
+        <p><strong>Waiver of claims:</strong> NutriThrive makes no representations or warranties of organic certification. By purchasing, you acknowledge the product is not certified organic and agree to release NutriThrive from any liability, claims, or disputes asserting otherwise.</p>
 
         <h3>2. Limitation of liability</h3>
         <p>To the extent permitted by Australian law, NutriThrive is not liable for any indirect, incidental, or consequential damages arising from the use of our products.</p>
