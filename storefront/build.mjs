@@ -1238,7 +1238,7 @@ function moringaEducationHtml() {
               </div>
               <div>
                 <h3>Australian lab tested</h3>
-                <p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the lab summary for batch NT042024 (PDF, January 2025)</a>.</p>
+                <p>Our moringa is tested by NMI in Australia. See the batch details below.</p>
               </div>
               <div>
                 <h3>Packed in Truganina, VIC</h3>
@@ -2115,7 +2115,6 @@ const PDP = {
       { html: `<a href="/documents/nutrithrive-lab-report-summary.pdf">Australian lab tested</a>` },
       "Grown on our farm",
       "Packed in Truganina, VIC",
-      "Same-day weekday dispatch before 2pm",
       PAYMENT_LINE,
     ],
     reviews: REVIEWS.filter((review) => MORINGA_FEATURED_REVIEW_NAMES.includes(review.name)),
@@ -2564,7 +2563,7 @@ function pdpPage(slug, d) {
     "Packed in Truganina, VIC",
     "Australia-wide delivery",
   ];
-  const proofs = [...proofItems, "7-day refund or replacement guarantee."]
+  const proofs = [...proofItems, ...(slug === "moringa-powder" ? [] : ["7-day refund or replacement guarantee."])]
     .map((t) => `<li>${check()} ${typeof t === "object" && t.html ? t.html : esc(t)}</li>`)
     .join("");
   const powder100 = PRODUCTS.find((item) => item.id === "moringa-powder");
@@ -2574,19 +2573,7 @@ function pdpPage(slug, d) {
   if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
     throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
-  const buyOnline = mainPowder
-    ? `<section class="pdp-buy-online" aria-labelledby="buy-moringa-online">
-            <h2 id="buy-moringa-online">Buy moringa powder online in Australia</h2>
-            <ul class="pdp-buy-list">
-              <li>100g pouch: ${shortMoney(powder100.price)}</li>
-              <li>200g pouch: ${shortMoney(powder200.price)}</li>
-              <li>400g pouch: ${shortMoney(powder400.price)} (best value, ${shortMoney(powder400.price / 4)} per 100g)</li>
-              <li>Free Australia-wide shipping on orders from $49</li>
-              <li>Same-day dispatch on weekday orders before 2pm</li>
-              <li>7-day refund or replacement</li>
-            </ul>
-          </section>`
-    : "";
+  const buyOnline = "";
   const valueCompare =
     slug === "moringa-powder"
       ? `<section class="pdp-value" aria-labelledby="moringa-value">
@@ -2612,9 +2599,13 @@ function pdpPage(slug, d) {
           </section>`
       : "";
   const batchPanel = `<section class="batch-panel" aria-labelledby="batch-h"><h2 id="batch-h">Batch and testing</h2><dl><dt>Batch tested</dt><dd>NT042024</dd><dt>Lab</dt><dd>National Measurement Institute (NMI), Australia</dd><dt>Report date</dt><dd>24 January 2025</dd><dt>What was tested</dt><dd>Nutrition panel</dd><dt>Origin</dt><dd>Grown on our family farm in Gujarat, India</dd><dt>Drying</dt><dd>Sun-dried to keep the colour, then ground</dd><dt>Packed</dt><dd>Truganina, Melbourne</dd><dt>Storage</dt><dd>Keep sealed, cool and dry. Lasts 1 year once opened.</dd></dl><p><a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a></p></section>`;
+  const moringaBatch = batchPanel.replace(
+    "<dt>Origin</dt>",
+    "<dt>Ingredients</dt><dd>100% moringa (Moringa oleifera) leaf powder. No fillers or blends.</dd><dt>Origin</dt>"
+  );
   const education =
     slug === "moringa-powder"
-      ? moringaEducationHtml() + batchPanel
+      ? moringaEducationHtml() + moringaBatch
       : `${d.whatHtml ? `<h2>${esc(d.whatHeading || "What it is")}</h2>${d.whatHtml}` : d.what ? `<h2>What it is</h2><p>${esc(d.what)}</p>` : ""}
           ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : d.use ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : ""}
           ${slug === "combo-pack" ? batchPanel : p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
@@ -2796,12 +2787,12 @@ function pdpPage(slug, d) {
           ${buyOnline}${valueCompare}
           ${education}
           ${shipLadder}
-          <div class="product-facts">
+          ${slug === "moringa-powder" ? "" : `<div class="product-facts">
             <section><h2>Ingredients</h2><p>${esc(d.ingredients)}</p></section>
             <section><h2>Origin</h2><p>${esc(d.origin)}</p></section>
             <section><h2>How we make it</h2><p>${esc(d.process)}</p></section>
             <section><h2>Storage and shelf life</h2><p>${esc(d.storage)}</p></section>
-          </div>
+          </div>`}
           ${(slug === "moringa-powder" || d.detailImage) ? `<div class="pdp-media-story${slug === "moringa-powder" ? " has-editorial" : ""}">
             ${slug === "moringa-powder" ? `<picture class="pdp-editorial-photo">
               <source media="(max-width: 700px)" srcset="/assets/images/photos/compressed/moringa-powder-200g-editorial-mobile.webp" width="1122" height="1402">
@@ -2820,7 +2811,7 @@ function pdpPage(slug, d) {
                 <li><strong>Other metro areas:</strong> usually 3 to 4 business days</li>
                 <li><strong>Rural and regional areas:</strong> up to 10 business days</li>
                 <li>Occasional carrier delays may add up to 2 business days</li>
-                <li>7-day refund or replacement</li>
+                ${slug === "moringa-powder" ? "" : "<li>7-day refund or replacement</li>"}
                 <li>Local pickup available from Truganina by arrangement</li>
               </ul>
             </div></details>
