@@ -8,7 +8,7 @@ const PAYMENT_LINE = "PayPal or card online · pickup: cash, bank or PayID";
 const PAYMENT_LINE_LONG =
   "Online: PayPal or card. Phone / Truganina pickup by arrangement: bank transfer, PayID or cash.";
 const ADDRESS_LINE = "Ridley Place, Truganina VIC 3029";
-const FREE_SHIP_ANNOUNCE = "Free AU shipping from $49 · Packed in Melbourne";
+const FREE_SHIP_ANNOUNCE = "Free AU shipping from $49 · Packed in Truganina, VIC";
 const SHIPPING_BAND_LIST =
   "Australia standard shipping for orders under $49, by parcel weight: up to 250 g $9.69 · 251 to 500 g $11.12 · 501 g to 1 kg $15.20 · 1 to 3 kg $19.24 · 3 to 5 kg $23.23.";
 import {
@@ -1241,7 +1241,7 @@ function moringaEducationHtml() {
                 <p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the lab summary for batch NT042024 (PDF, January 2025)</a>.</p>
               </div>
               <div>
-                <h3>Packed in Melbourne</h3>
+                <h3>Packed in Truganina, VIC</h3>
                 <p>Orders are packed in Truganina, Victoria, with Australia-wide delivery.</p>
               </div>
             </div>
@@ -1969,7 +1969,7 @@ function homepage() {
       <li><span>01</span><strong>Grown by us</strong><p>Our own farm, harvested by our team.</p></li>
       <li><span>02</span><strong>Made by us</strong><p>Harvested, sun-dried and manufactured by NutriThrive.</p></li>
       <li><span>03</span><strong>Checked in Australia</strong><p>Our moringa is tested by the National Measurement Institute. The summary for batch NT042024 is online.</p></li>
-      <li><span>04</span><strong>Packed in Melbourne</strong><p>Prepared in Truganina and tracked Australia-wide.</p></li>
+      <li><span>04</span><strong>Packed in Truganina, VIC</strong><p>Prepared in Truganina and tracked Australia-wide.</p></li>
     </ol>
     <div class="proof-story-actions">
       <a class="btn btn-secondary" href="/about/">Our story</a>
@@ -2114,7 +2114,7 @@ const PDP = {
       "100% moringa leaf. Nothing added.",
       { html: `<a href="/documents/nutrithrive-lab-report-summary.pdf">Australian lab tested</a>` },
       "Grown on our farm",
-      "Packed in Melbourne",
+      "Packed in Truganina, VIC",
       "Same-day weekday dispatch before 2pm",
       PAYMENT_LINE,
     ],
@@ -2182,7 +2182,7 @@ const PDP = {
   "curry-leaves": {
     title: "Buy Dried Curry Leaves Online Australia | 30g $7",
     description:
-      "Buy dried curry leaves online: whole leaves (karipatta, curry patta, kadi patta), 30g for $7. Grown on our Gujarat farm, packed in Melbourne.",
+      "Buy dried curry leaves online: whole leaves (karipatta, curry patta, kadi patta), 30g for $7. Grown on our Gujarat farm, packed in Truganina, VIC.",
     forceSeo: true,
     h1: "Dried Curry Leaves: Buy Online in Australia",
     current: "Curry Leaves",
@@ -2191,7 +2191,7 @@ const PDP = {
       "Buy dried curry leaves online from the people who grow them. Our whole curry leaves (also called karipatta, curry patta or kadi patta) are grown on our family farm in Gujarat, dried, and packed in 30g pouches in Truganina, Melbourne. They're made for tadka: drop a small handful into hot oil or ghee with mustard seeds and the aroma carries through dal, sambar, rasam, lemon rice and curries. Drying softens the aroma, so use a little more dried leaf than you would fresh, fry it briefly in hot oil, and taste as you go. $7 for 30g, posted Australia-wide.",
     proofs: [
       "Grown on our farm in Gujarat",
-      "Packed in Melbourne",
+      "Packed in Truganina, VIC",
       "Australia-wide delivery",
       PAYMENT_LINE,
     ],
@@ -2247,7 +2247,7 @@ const PDP = {
   "black-tea": {
     title: "Darjeeling Loose Leaf Black Tea Australia | 100g $7.50",
     description:
-      "Darjeeling loose leaf black tea, 100g for $7.50 (about 50 cups). From a family farm in Darjeeling, India, packed in Melbourne and posted Australia-wide.",
+      "Darjeeling loose leaf black tea, 100g for $7.50 (about 50 cups). From a family farm in Darjeeling, India, packed in Truganina, VIC and posted Australia-wide.",
     forceSeo: true,
     h1: "Darjeeling Loose Leaf Black Tea",
     current: "Tea",
@@ -2256,7 +2256,7 @@ const PDP = {
       "This is Darjeeling loose leaf black tea from a family farm in the Darjeeling district of India, packed in 100g pouches in Truganina, Melbourne. Brewed at 85 to 90°C, it makes a bright amber cup with floral, muscatel notes, lighter and less malty than an English Breakfast blend. A 100g pouch makes about 50 cups at roughly 2g a cup. Drink it plain, or add a splash of milk. Because it's loose leaf, you'll need an infuser, strainer or teapot. $7.50 for 100g, posted Australia-wide.",
     proofs: [
       "Family-farm Darjeeling",
-      "Packed in Melbourne",
+      "Packed in Truganina, VIC",
       "Australia-wide delivery",
       PAYMENT_LINE,
     ],
@@ -2320,7 +2320,7 @@ const PDP = {
       "Our moringa soap is a handmade lavender soap bar, made by us in small batches in Australia. Each 95g bar starts with a melt-and-pour soap base. We add moringa leaf, lavender fragrance and dried lavender flowers, then pour and finish the bars by hand and pack them in Truganina, Melbourne. It's an everyday hand and body bar that smells of lavender. $7 a bar, posted Australia-wide.",
     proofs: [
       "Handmade in Australia",
-      "Packed in Melbourne",
+      "Packed in Truganina, VIC",
       "Australia-wide delivery",
       PAYMENT_LINE,
     ],
@@ -2379,7 +2379,7 @@ const PDP = {
     proofs: [
       { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
       "Farm-grown curry leaves",
-      "Packed in Melbourne",
+      "Packed in Truganina, VIC",
       PAYMENT_LINE,
     ],
     gallery: [
@@ -2404,7 +2404,7 @@ const PDP = {
   "diwali-gift-box": {
     title: "Diwali Gift Box: Darjeeling Tea, Curry Leaves & Soap | $20",
     description:
-      "Diwali gift box with Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap. No moringa powder. Packed in Melbourne.",
+      "Diwali gift box with Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap. No moringa powder. Packed in Truganina, VIC.",
     forceSeo: true,
     h1: "Diwali Gift Box: Darjeeling Tea, Curry Leaves and Lavender Soap",
     current: "Shop",
@@ -2415,7 +2415,7 @@ const PDP = {
       "No moringa powder",
       "Handmade soap",
       "family-farm tea",
-      "Packed in Melbourne",
+      "Packed in Truganina, VIC",
       PAYMENT_LINE,
     ],
     gallery: [
@@ -2473,7 +2473,7 @@ const PDP = {
       "Four products, one parcel",
       "Handmade soap",
       "family-farm tea",
-      "Packed in Melbourne",
+      "Packed in Truganina, VIC",
       PAYMENT_LINE,
     ],
     gallery: [
@@ -2561,7 +2561,7 @@ function pdpPage(slug, d) {
     ? `<p class="pdp-variant-hint">${esc(d.variantHint)}${slug === "moringa-powder" ? ` <span class="pdp-value-flag pdp-buybox-value-flag" data-best-value-badge hidden>Best value</span>` : ""}</p>`
     : "";
   const proofItems = d.proofs || [
-    "Packed in Melbourne",
+    "Packed in Truganina, VIC",
     "Australia-wide delivery",
   ];
   const proofs = [...proofItems, "7-day refund or replacement guarantee."]
@@ -3029,7 +3029,7 @@ function faqPage() {
       items: [
         {
           q: "What are NutriThrive dried curry leaves?",
-          a: "Karipatta grown on our own farm and packed in Melbourne. Use it in tadka for curries, dals and South Indian cooking.",
+          a: "Karipatta grown on our family farm in Gujarat and packed in Truganina, VIC. Use it in tadka for curries, dals and South Indian cooking.",
         },
         {
           q: "How do I use dried curry leaves?",
@@ -3046,7 +3046,7 @@ function faqPage() {
       items: [
         {
           q: "What is NutriThrive Darjeeling black tea?",
-          a: "Loose-leaf tea sourced from a family farm in Darjeeling, with a floral, muscatel character. We pack it in Melbourne and send it Australia-wide.",
+          a: "Loose-leaf tea sourced from a family farm in Darjeeling, with a floral, muscatel character. We pack it in Truganina, VIC and send it Australia-wide.",
         },
         {
           q: "How do I brew it?",
@@ -3239,7 +3239,7 @@ function shippingPage() {
         <h2>Timing after dispatch</h2>
         <p>Melbourne metro is often 1 to 3 business days. Other metro areas typically 3 to 4 days. Some rural locations take up to 10 days.</p>
         <h2>Tracking</h2>
-        <p>When the parcel leaves the warehouse you should get a confirmation email with tracking, if the carrier provides it. If nothing arrives within a couple of business days after dispatch, check spam or email us with your order details.</p>
+        <p>When the parcel leaves Truganina you should get a confirmation email with tracking, if the carrier provides it. If nothing arrives within a couple of business days after dispatch, check spam or email us with your order details.</p>
         <h2 id="returns">7-day guarantee</h2>
         <p>Contact us within 7 days of delivery and we'll refund or replace your order. If something arrived damaged or faulty, send us a photo of the item and packaging, and we'll sort it at no cost to you. Change-of-mind returns must be unopened, and you pay the return postage. Original shipping isn't refunded. Please contact us before you send anything back.</p>
         <h2>Payments</h2>
@@ -4077,7 +4077,7 @@ function cityPage(city, slug) {
         <section class="city-local-hero">
           <div class="wrap city-local-hero__grid">
             <div class="city-local-hero__copy">
-              <p class="city-local-kicker">Packed in Melbourne · delivered to ${city}</p>
+              <p class="city-local-kicker">Packed in Truganina, VIC · delivered to ${city}</p>
               <h1>${citySeo.h1}</h1>
               <p class="city-local-lead">${melbourneHeroLead}</p>
               <div class="city-local-actions">
