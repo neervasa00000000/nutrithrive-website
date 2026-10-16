@@ -2134,7 +2134,7 @@ const PDP = {
     ingredients: "100% moringa (Moringa oleifera) leaf powder. No fillers or blends.",
     origin: "Grown on our own farm. Packed in Truganina, Melbourne.",
     process: "We grow, harvest, sun-dry and mill the leaves, arrange testing in Australia, then pack in small runs in Truganina.",
-    storage: "Keep it sealed, somewhere cool and dry. Use within 1 year of opening.",
+    storage: "Keep it sealed, somewhere cool and dry. Lasts 1 year once opened.",
     safety: "Start with a small amount. If you are pregnant, breastfeeding, taking prescription medication or managing a health condition, ask your healthcare professional before regular use.",
     what: "Bright green powder with a mild, spinach-like smell when you open it. We sun-dry the leaves and publish the NMI nutrition summary for batch NT042024.",
     use: "Add 1 teaspoon (about 3 to 5 grams) to smoothies, juice, or water. Works in soups and salads. Straight in water, most people dislike the flavour. Mixed into food, most people barely notice it.",
@@ -2149,7 +2149,7 @@ const PDP = {
       ],
       [
         "How should I store moringa powder?",
-        "Keep it sealed, somewhere cool and dry. Use within 1 year of opening.",
+        "Keep it sealed, somewhere cool and dry. Lasts 1 year once opened.",
       ],
       [
         "Is NutriThrive moringa powder tested in Australia?",
@@ -2209,7 +2209,7 @@ const PDP = {
     origin: "Grown on NutriThrive’s farm in Gujarat, India. Packed in Truganina, Melbourne.",
     process: "We pick the leaves on our family farm in Gujarat and sun-dry them there to keep their colour. Then I pack them in Truganina.",
     storage:
-      "Keep the pouch sealed in a cool, dry, dark cupboard, away from the stove. Dried leaves don't spoil quickly when kept dry, but their aroma fades, so use an opened pouch within 1 year for the best flavour. Check the best-before date on the pouch.",
+      "Keep the pouch sealed in a cool, dry, dark cupboard, away from the stove. Dried leaves don't spoil quickly when kept dry, but their aroma fades, and a pouch lasts 1 year once opened. Check the best-before date on the pouch.",
     safety: "If a pouch ever smells musty or looks damp, don't use it, and let me know.",
     what: "Whole dried leaves of the curry tree (Murraya koenigii), the leaf used for tempering across South Indian, Sri Lankan and Gujarati cooking. It isn't curry powder and doesn't taste like it. The leaf has its own warm, citrusy aroma that comes alive in hot fat. Each pouch holds whole leaves, not crushed powder.",
     useHtml: `<ol>
@@ -2240,7 +2240,7 @@ const PDP = {
       ],
       [
         "How should I store dried curry leaves?",
-        "Sealed, in a cool, dark cupboard away from steam. Use within 1 year of opening.",
+        "Sealed, in a cool, dark cupboard away from steam. Lasts 1 year once opened.",
       ],
     ],
   },
@@ -2275,7 +2275,7 @@ const PDP = {
     process:
       "Darjeeling is picked in several harvests, or flushes: a light spring first flush, a fuller summer second flush and a darker autumn flush. Packed in small runs in Truganina.",
     storage:
-      "Keep it sealed, away from the spice rack. Use within 1 year of opening.",
+      "Keep it sealed, away from the spice rack. Lasts 1 year once opened.",
     safety: "Contains caffeine, about 40 to 50 mg a cup.",
     what: "100% loose leaf Darjeeling black tea, grown in the hill district of Darjeeling, West Bengal. Expect a lighter body than Assam-based breakfast teas, a floral aroma and the grape-like muscatel note Darjeeling is known for, especially brewed below boiling.",
     useHeading: "How to brew",
@@ -2392,7 +2392,7 @@ const PDP = {
     ingredients: "100% moringa leaf powder and 100% dried curry leaves. Nothing added.",
     origin: "Both products are grown on our own farm in Gujarat and packed in Truganina.",
     process: "We grow and process both products, arrange Australian testing for the moringa, and pack the combination in Truganina.",
-    storage: "Keep both sealed and dry. Use within 1 year of opening.",
+    storage: "Keep both sealed and dry. Lasts 1 year once opened.",
     safety: "Follow the individual product directions. Seek professional advice before regular moringa use if you are pregnant, breastfeeding, taking medication or managing a health condition.",
     what: "Moringa for whatever you blend or stir in; curry leaves for dals and curries. Both packed in Truganina.",
     use: "Each item is also available separately.",
@@ -2494,7 +2494,7 @@ const PDP = {
       "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
     process: "I pack each gift in Truganina: curry leaves and moringa from our farm, tea from a family farm in Darjeeling, and soap we make here.",
-    storage: "Keep everything dry. Use opened food pouches within 1 year.",
+    storage: "Keep everything dry. Lasts 1 year once opened.",
     safety: "The tea contains caffeine. The soap is for hands and body only.",
     what: "A four-product gift pack: Darjeeling tea, curry leaves, handmade lavender soap, and moringa powder. Packed in Truganina for Diwali, housewarmings and thank-yous.",
     use: "Each product is also available individually. For a gift without moringa powder, choose the Diwali Gift Box.",
@@ -2611,7 +2611,7 @@ function pdpPage(slug, d) {
             <p class="pdp-value-note">400g is $4 less than four 100g pouches at $11 each. 200g is the same price per 100g as the 100g pouch.</p>
           </section>`
       : "";
-  const batchPanel = `<section class="batch-panel" aria-labelledby="batch-h"><h2 id="batch-h">Batch and testing</h2><dl><dt>Batch tested</dt><dd>NT042024</dd><dt>Lab</dt><dd>National Measurement Institute (NMI), Australia</dd><dt>Report date</dt><dd>24 January 2025</dd><dt>What was tested</dt><dd>Nutrition panel</dd><dt>Origin</dt><dd>Grown on our family farm in Gujarat, India</dd><dt>Drying</dt><dd>Sun-dried to keep the colour, then ground</dd><dt>Packed</dt><dd>Truganina, Melbourne</dd><dt>Storage</dt><dd>Keep sealed, cool and dry. Use within 1 year of opening.</dd></dl><p><a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a></p></section>`;
+  const batchPanel = `<section class="batch-panel" aria-labelledby="batch-h"><h2 id="batch-h">Batch and testing</h2><dl><dt>Batch tested</dt><dd>NT042024</dd><dt>Lab</dt><dd>National Measurement Institute (NMI), Australia</dd><dt>Report date</dt><dd>24 January 2025</dd><dt>What was tested</dt><dd>Nutrition panel</dd><dt>Origin</dt><dd>Grown on our family farm in Gujarat, India</dd><dt>Drying</dt><dd>Sun-dried to keep the colour, then ground</dd><dt>Packed</dt><dd>Truganina, Melbourne</dd><dt>Storage</dt><dd>Keep sealed, cool and dry. Lasts 1 year once opened.</dd></dl><p><a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a></p></section>`;
   const education =
     slug === "moringa-powder"
       ? moringaEducationHtml() + batchPanel
@@ -3037,7 +3037,7 @@ function faqPage() {
         },
         {
           q: "How should I store them?",
-          a: "Airtight container, away from heat and light. Opened pouches keep their flavour for up to 1 year in a cool, dry place.",
+          a: "Airtight container, away from heat and light. Keep it cool and dry. Lasts 1 year once opened.",
         },
       ],
     },
