@@ -9,32 +9,11 @@ window.NT_GOOGLE_REVIEWS = {
   reviewCount: 10,
   reviews: [
     {
-      name: 'Mai Anh Trần Thúy',
-      initials: 'MA',
-      stars: 5,
-      when: 'via Google Reviews',
-      text: 'Black tea is my fav product here!! I usually use their black tea to make roasted milk tea which is fantastic for such hot summer in Melbourne!',
-    },
-    {
-      name: 'Jay Turakhia',
-      initials: 'JT',
-      stars: 5,
-      when: 'via Google Reviews',
-      text: 'I have used various brands of moringa powder but the powder from Nutri-Thrive is the greenest in color and tastes way better than the other moringa powder in the market. The pricing is very reasonable and the shipping was also very quick!!',
-    },
-    {
       name: 'chizaram olanma',
       initials: 'CO',
       stars: 5,
       when: 'via Google Reviews',
       text: "I've been using this Moringa powder for a month now, and I can honestly feel the difference! My energy levels have improved, and I love adding it to my morning smoothies. It blends well and doesn't have an overpowering taste. Plus, knowing I'm getting a powerhouse of vitamins, iron, and antioxidants makes it worth it. Highly recommend",
-    },
-    {
-      name: 'Jay Vasa',
-      initials: 'JV',
-      stars: 5,
-      when: 'via Google Reviews',
-      text: 'Moringa has been a game-changer! Better focus, natural energy, and overall wellness boost in just 30 days. Will keep using!',
     },
     {
       name: 'reetysha ramjee',
@@ -49,13 +28,6 @@ window.NT_GOOGLE_REVIEWS = {
       stars: 5,
       when: 'via Google Reviews',
       text: "The product is very good and have been using it over 5 months. It's very helpful if you are on a weight loss journey.",
-    },
-    {
-      name: 'Jay Rohit Sharma',
-      initials: 'JR',
-      stars: 5,
-      when: 'via Google Reviews',
-      text: 'The product is super good and healthy I would definitely like to buy more and again!! Thanks for amazing product it helped me.',
     },
     {
       name: 'Siv Mey',
