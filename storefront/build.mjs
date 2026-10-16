@@ -2932,7 +2932,7 @@ function aboutPage() {
             <p>Our moringa powder is tested in Australia and we publish the available readable summary. It shows the nutrition results for batch NT042024, tested by the National Measurement Institute in January 2025, so you can see exactly what's in it.</p>
             <h2>Visit or contact us</h2>
             <p>${ADDRESS_LINE}. Call before you arrive: <a href="tel:+61438201419">+61 438 201 419</a>.</p>
-            <p>Daily 9:00 AM to 11:00 PM AEST.</p>
+            <p>Daily 9:00 AM to 11:00 PM Melbourne time.</p>
           </div>
         </div>
       </section>`,
@@ -2990,7 +2990,7 @@ function contactPage() {
             <p><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a><br>
             <a href="tel:+61438201419">+61 438 201 419</a></p>
             <p>Ridley Place<br>Truganina VIC 3029<br>Melbourne, Australia</p>
-            <p>Daily 9:00 AM to 11:00 PM AEST. Call before visiting.</p>
+            <p>Daily 9:00 AM to 11:00 PM Melbourne time. Call before visiting.</p>
           </div>
         </div>
       </section>`,
@@ -3096,7 +3096,7 @@ function faqPage() {
         },
         {
           q: "Can I visit?",
-          a: "Call first on +61 438 201 419. Hours are daily 9:00 AM to 11:00 PM AEST. Email nutrithrive0@gmail.com.",
+          a: "Call first on +61 438 201 419. Hours are daily 9:00 AM to 11:00 PM Melbourne time. Email nutrithrive0@gmail.com.",
         },
       ],
     },
@@ -3164,7 +3164,7 @@ function faqPage() {
             <h2>Business details</h2>
             <p>NutriThrive · ABN 32 639 442 616</p>
             <p>${ADDRESS_LINE}, Melbourne</p>
-            <p>Daily 9:00 AM to 11:00 PM AEST · <a href="tel:+61438201419">+61 438 201 419</a></p>
+            <p>Daily 9:00 AM to 11:00 PM Melbourne time · <a href="tel:+61438201419">+61 438 201 419</a></p>
             <p><a href="mailto:nutrithrive0@gmail.com">nutrithrive0@gmail.com</a></p>
           </div>
           <div class="faq-stuck">

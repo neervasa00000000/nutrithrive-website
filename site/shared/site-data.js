@@ -7,7 +7,7 @@ window.NT_SITE_DATA = {
     phone: '+61 438 201 419',
     phoneTel: '+61438201419',
     address: 'Ridley Place, Truganina VIC 3029, Melbourne, Australia',
-    hours: 'Daily 9:00 AM – 11:00 PM AEST',
+    hours: 'Daily 9:00 AM – 11:00 PM Melbourne time',
     abn: '32 639 442 616',
   },
   shipping: {
@@ -96,7 +96,7 @@ window.NT_SITE_DATA = {
           'Bright green powder with a mild, spinach-like smell when you open it. We shade-dry the leaves (not sun-baked on a tarp) and publish a lab summary for heavy metals and pesticides.',
         faqs: [
           { q: 'How do I use Moringa powder?', a: 'Add 1 teaspoon (3–5g) to smoothies, juice, or water. Works great in soups and salads.' },
-          { q: 'Where is it shipped from?', a: 'Packed and shipped from our Truganina, Melbourne warehouse. Same-day dispatch before 2pm AEST.' },
+          { q: 'Where is it shipped from?', a: 'Packed and shipped from our Truganina, Melbourne warehouse. Same-day dispatch before 2pm Melbourne time.' },
         ],
         showLabBadge: true,
         variantPicker: true,
