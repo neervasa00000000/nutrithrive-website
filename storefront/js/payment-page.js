@@ -711,7 +711,7 @@ function updateShippingAndTotal() {
   const discountRow = document.getElementById("bundle-discount-row");
   const discountEl = document.getElementById("bundle-discount");
   const totalEl = document.getElementById("total");
-  if (discountRow) discountRow.hidden = discount === 0;
+  if (discountRow) discountRow.hidden = !(discount > 0);
   if (discountEl) discountEl.textContent = `−${money(discount)}`;
   if (shippingEl) {
     shippingEl.textContent =

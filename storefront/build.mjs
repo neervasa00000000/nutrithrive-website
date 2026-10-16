@@ -2144,7 +2144,7 @@ const PDP = {
     faqs: [
       [
         "Where is NutriThrive moringa powder shipped from?",
-        "Orders are packed and shipped from Truganina, Melbourne. Local pickup can be arranged from Truganina, and online orders ship across Australia.",
+        "Orders are packed and shipped from Truganina, Melbourne. Local pickup from Truganina by arrangement. Online orders ship across Australia.",
       ],
       [
         "What does moringa powder taste like?",
@@ -2817,7 +2817,7 @@ function pdpPage(slug, d) {
                 <li><strong>Rural and regional areas:</strong> up to 10 business days</li>
                 <li>Occasional carrier delays may add up to 2 business days</li>
                 ${slug === "moringa-powder" ? "" : "<li>7-day refund or replacement</li>"}
-                <li>Local pickup available from Truganina by arrangement</li>
+                <li>Local pickup from Truganina by arrangement.</li>
               </ul>
             </div></details>
           </div>
@@ -3372,9 +3372,10 @@ function cartPage() {
   return layout({
     title: "Review Your NutriThrive Shopping Cart | NutriThrive",
     description: LIVE_MODE
-      ? "Review products, quantities and your NutriThrive order subtotal before continuing to secure PayPal checkout."
+      ? "Review products, quantities and your NutriThrive order subtotal before continuing to secure checkout with PayPal or card."
       : "Review products, quantities, delivery estimates and your NutriThrive order subtotal before continuing to the local preview checkout.",
     canonicalPath: "/cart",
+    preserveDescription: true,
     current: "",
     extraFoot: `${retentionFoot(`<script src="${CART_PAGE_SRC}?v=${ASSET_VERSION}" defer></script>`)}
 <script defer>document.addEventListener("DOMContentLoaded",function(){if(window.NT&&typeof window.NT.renderCart==="function")window.NT.renderCart();});</script>`,
@@ -3407,10 +3408,11 @@ function paymentPage() {
     : "";
   return layout({
     title: "Payment | NutriThrive Australia",
-    description: "Review your NutriThrive order, confirm shipping country, and complete checkout securely with Apple Pay, PayPal or card.",
+    description: "Review your NutriThrive order, confirm shipping country, and complete checkout securely with PayPal or card.",
     canonicalPath: "/payment",
     current: "",
     preserveTitle: true,
+    preserveDescription: true,
     extraFoot: `<script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js" crossorigin="anonymous" data-nt-apple-pay-sdk="1" onload="this.dataset.ntLoaded='1'" onerror="this.dataset.ntError='1'" defer></script>${paypalScripts}${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-shipping-rates.js?v=${ASSET_VERSION}" defer></script>` : ""}<script src="${PAYMENT_PAGE_SRC}?v=${PAYMENT_ASSET_VERSION}" defer></script>`,
     robots: "noindex, follow",
     main: `
@@ -3422,7 +3424,7 @@ function paymentPage() {
         <div>
           <div class="empty-state" id="pay-empty" hidden>
             <h2>Your cart is empty</h2>
-            <p>Add something from the shop, then return here to pay with Apple Pay or PayPal.</p>
+            <p>Add something from the shop, then return here to pay with PayPal or card.</p>
             <a class="btn btn-primary" href="${r.shop}">Continue shopping</a>
           </div>
           <div id="pay-form" class="pay-form">
@@ -3439,9 +3441,7 @@ function paymentPage() {
               <h2>Choose your payment method</h2>
               <div id="applepay-container" hidden></div>
               <p class="pay-copy" id="applepay-availability" hidden></p>
-              <div id="paypal-button-container">
-                <p class="payment-placeholder">Select a shipping country to continue.</p>
-              </div>
+              <div id="paypal-button-container"></div>
               <div id="paypal-card-container"></div>
               <p class="pay-powered">Powered by PayPal</p>
               <p class="pay-status" id="pay-status" role="status"></p>
