@@ -15,20 +15,33 @@ function loadOptionalScript(src, id) {
   document.head.appendChild(script);
 }
 
+const NT_GA_DEBUG = new URLSearchParams(window.location.search).get("debug_mode") === "1";
+// js/config are queued before any event so the dataLayer order matches the
+// immediate-load behaviour; only the 176KB gtag.js download is deferred.
+window.gtag("js", new Date());
+window.gtag("config", GOOGLE_MEASUREMENT_ID, {
+  anonymize_ip: true,
+  allow_google_signals: false,
+  ...(NT_GA_DEBUG ? { debug_mode: true } : {}),
+});
+
 function loadGoogleAnalytics() {
   if (document.getElementById("nt-google-analytics")) return;
-  const debugMode = new URLSearchParams(window.location.search).get("debug_mode") === "1";
-  window.gtag("js", new Date());
-  window.gtag("config", GOOGLE_MEASUREMENT_ID, {
-    anonymize_ip: true,
-    allow_google_signals: false,
-    ...(debugMode ? { debug_mode: true } : {}),
-  });
   loadOptionalScript(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`, "nt-google-analytics");
   window.dispatchEvent(new CustomEvent("nt-analytics-ready"));
 }
 
-loadGoogleAnalytics();
+const NT_IMMEDIATE_GA = /^\/(cart|checkout|payment|thank-you|pages\/shop\/(cart|payment|thank-you))/.test(location.pathname)
+  || NT_GA_DEBUG;
+function scheduleGoogleAnalytics() {
+  if (NT_IMMEDIATE_GA) return loadGoogleAnalytics();
+  let done = false;
+  const go = () => { if (done) return; done = true; loadGoogleAnalytics(); };
+  ["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => addEventListener(e, go, { once: true, passive: true }));
+  const idle = () => (window.requestIdleCallback ? requestIdleCallback(go, { timeout: 1500 }) : setTimeout(go, 1200));
+  if (document.readyState === "complete") idle(); else addEventListener("load", idle, { once: true });
+}
+scheduleGoogleAnalytics();
 
 function freshAsset(url) {
   if (!url || !url.startsWith("/assets/") || url.includes("?v=")) return url;
