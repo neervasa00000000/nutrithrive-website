@@ -46,6 +46,16 @@ function trackBeginCheckout() {
   if (window._ntBeginCheckoutSent) return;
   const cart = getCart();
   if (!cart.items || cart.items.length === 0) return;
+  try {
+    const pending = JSON.parse(sessionStorage.getItem("nt-begin-checkout") || "null");
+    sessionStorage.removeItem("nt-begin-checkout");
+    const signature = JSON.stringify(cart.items.map(i => [i.id, Number(i.qty || i.quantity || 1), Number(i.price)]).sort());
+    if (pending && pending.signature === signature && Date.now() - pending.at >= 0 && Date.now() - pending.at < 300000) {
+      window._ntBeginCheckoutSent = true;
+      return;
+    }
+  } catch { /* retain the payment-load fallback when storage is unavailable */ }
+
   if (window.NT && typeof window.NT.trackEcommerce === "function") {
     if (window.NT.trackEcommerce("begin_checkout", cart.items)) {
       window._ntBeginCheckoutSent = true;
