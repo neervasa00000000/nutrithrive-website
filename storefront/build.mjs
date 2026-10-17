@@ -4,6 +4,10 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { PRODUCTS, REVIEWS, auSoloShippingRate, costNote, shippingCostNote } from "./js/data.js";
 
+for (const product of PRODUCTS) {
+  if (!product.image.startsWith("/assets/images/product_webp/")) throw new Error(`Product image must be in product_webp: ${product.id}`);
+}
+
 const PAYMENT_LINE = "PayPal or card online · pickup: cash, bank or PayID";
 const PAYMENT_LINE_LONG =
   "Online: PayPal or card. Phone / Truganina pickup by arrangement: bank transfer, PayID or cash.";
@@ -24,10 +28,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261018-gallery-2";
+const ASSET_VERSION = "20261018-gallery-4";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261018-gallery-3";
-const CART_CSS_ASSET_VERSION = "20261018-gallery-3";
+const CSS_ASSET_VERSION = "20261018-gallery-4";
+const CART_CSS_ASSET_VERSION = "20261018-gallery-4";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -1994,13 +1998,9 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/moringa-powder-400g-bundle-main.webp", "Four NutriThrive 100g moringa powder pouches in the 400g bundle"],
       ["/assets/images/product_webp/moringa-powder-100g-main.webp", "NutriThrive 100g moringa powder pouch with a bowl of green powder"],
-      ["/assets/images/photos/compressed/moringa-powder-200g-main-square.webp", "NutriThrive 200g moringa powder pouch with a bowl of green powder"],
-      ["/assets/images/photos/compressed/moringa-powder-200g-editorial-desktop.webp", "NutriThrive 200g moringa powder pouch in warm botanical light"],
-      ["/assets/images/photos/compressed/moringa-powder-200g-lifestyle-desktop.webp", "NutriThrive 200g moringa powder pouch with a wooden bowl and measuring spoon"],
-      ["/assets/images/photos/compressed/moringa-powder-detail-light.webp", "Finely milled moringa leaf powder in a ceramic bowl and wooden spoon"],
       ["/assets/images/product_webp/moringa-powder-texture.webp", "Finely milled green moringa leaf powder in a ceramic bowl"],
     ],
-    detailImage: "/assets/images/photos/compressed/moringa-powder-detail-light.webp",
+    detailImage: "/assets/images/product_webp/moringa-powder-texture.webp",
     detailAlt: "Finely milled green moringa leaf powder in a ceramic bowl with a wooden spoon",
     detailCaption: "A closer look at the fine texture and natural green colour of the powder.",
     ingredients: "100% moringa (Moringa oleifera) leaf powder. No fillers or blends.",
@@ -2070,9 +2070,6 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive dried curry leaves 30g pouch with whole leaves"],
       ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves (karipatta) in a ceramic bowl"],
-      ["/assets/images/homepage/product-showcase/Curry.webp", "Dried curry leaves product showcase"],
-      ["/assets/images/product_photos/driedcurry.jpeg", "Close-up of whole dried curry leaves"],
-      ["/assets/images/general/CURRY3.png", "Aromatic dried curry leaves ready for tempering"],
     ],
     detailImage: "/assets/images/product_webp/dried-curry-leaves-texture.webp",
     detailAlt: "Whole dried curry leaves (karipatta) in a ceramic bowl",
@@ -2135,9 +2132,6 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Amber Darjeeling black tea with loose leaves in a wooden spoon"],
-      ["/assets/images/homepage/product-showcase/BlackTea.webp", "Darjeeling black tea product showcase"],
-      ["/assets/images/product_photos/blacktea.jpeg", "Loose-leaf Darjeeling tea from family farm"],
-      ["/assets/images/products/BlackTea.webp", "NutriThrive Darjeeling black tea pouch"],
     ],
     detailImage: "/assets/images/product_webp/darjeeling-black-tea-brewed.webp",
     detailAlt: "Amber Darjeeling black tea with loose tea leaves in a wooden spoon",
@@ -2198,11 +2192,7 @@ const PDP = {
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
-      ["/assets/images/product_photos/moringasoapcombo.jpeg", "NutriThrive 100g moringa powder and 95g soap bundle"],
       ["/assets/images/product_webp/moringa-soap-texture.webp", "Handmade moringa soap on a stone dish with lavender and foam"],
-      ["/assets/images/homepage/product-showcase/moringa_soap.webp", "Moringa soap product showcase"],
-      ["/assets/images/product_photos/soap.jpeg", "Handmade moringa lavender soap bar"],
-      ["/assets/images/products/moringa_soap.webp", "NutriThrive handmade moringa lavender soap"],
     ],
     detailImage: "/assets/images/product_webp/moringa-soap-texture.webp",
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
@@ -2256,8 +2246,6 @@ const PDP = {
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-curry-leaves-combo-main.webp", "NutriThrive 100g moringa powder and 30g dried curry leaves combo"],
-      ["/assets/images/homepage/product-showcase/combo.webp", "Moringa and curry leaves combo pack showcase"],
-      ["/assets/images/product_photos/combo.jpeg", "Combo pack with moringa powder and dried curry leaves"],
       ["/assets/images/product_webp/moringa-powder-100g-main.webp", "100g moringa powder included in combo"],
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "30g dried curry leaves included in combo"],
     ],
@@ -2408,8 +2396,8 @@ function pdpPage(slug, d) {
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
   const shipNote = shippingCostNote(buyProduct);
   const shippingHtml = `<p class="purchase-note" data-pdp-ship>${esc(shipNote)}</p>`;
-  const galleryCandidates = [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`], ...(d.gallery || []).filter(([src]) => /\/(?:product_webp|photos\/compressed)\//.test(src)), ...(d.variants || []).map(v => [v.image, `${v.name} ${v.variant}`]), ...(d.detailImage ? [[d.detailImage, d.detailAlt]] : [])];
-  const gallery = galleryCandidates.filter(([src], index, items) => fs.existsSync(path.join(SITE, src)) && items.findIndex(([other]) => other === src) === index);
+  const galleryCandidates = [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`], ...(d.gallery || []).filter(([src]) => src.startsWith("/assets/images/product_webp/")), ...(d.variants || []).map(v => [v.image, `${v.name} ${v.variant}`]), ...(d.detailImage ? [[d.detailImage, d.detailAlt]] : [])];
+  const gallery = galleryCandidates.filter(([src], index, items) => src.startsWith("/assets/images/product_webp/") && fs.existsSync(path.join(SITE, src)) && items.findIndex(([other]) => other === src) === index);
   const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
     .map((id) => PRODUCTS.find((item) => item.id === id))
     .filter((item) => item && item.id !== p.id && item.href !== p.href);
