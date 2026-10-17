@@ -1689,35 +1689,17 @@ function layout({
         </div>
         <p class="form-note">We do not sell your personal information. See our <a href="${r.privacy}">privacy policy</a>.</p>
       </form>`
-    : `<div class="footer-newsletter-copy"><h2>Take 5% off your first order</h2><p>New customers can join for occasional farm notes, useful guides and product offers.</p></div>
+    : `<div class="footer-newsletter-copy"><h2>Farm notes by email</h2><p>Join for occasional farm notes, useful guides and product news.</p></div>
       <form class="newsletter-inline" data-newsletter-form data-source="footer" novalidate>
         <label for="footer-newsletter-email">Email address</label>
         <div class="newsletter-inline-row">
           <input id="footer-newsletter-email" name="email" type="email" autocomplete="email" required>
-          <button class="btn btn-primary" type="submit">Get 5% off</button>
+          <button class="btn btn-primary" type="submit">Join</button>
         </div>
-        <label class="consent-check"><input name="marketingConsent" type="checkbox" required> <span>Yes, email me this code and occasional NutriThrive news and offers. I can unsubscribe at any time.</span></label>
+        <label class="consent-check"><input name="marketingConsent" type="checkbox" required> <span>Yes, email me occasional NutriThrive news. I can unsubscribe at any time.</span></label>
         <p class="form-note">We store your email and consent record to send these messages. We do not sell your personal information. See our <a href="${r.privacy}">privacy policy</a>.</p>
         <p class="form-status" data-newsletter-status role="status"></p>
       </form>`;
-  const welcomeOffer = LIVE_MODE ? "" : `
-<section class="welcome-offer" data-welcome-offer hidden>
-  <button class="modal-backdrop" type="button" data-offer-close aria-label="Close welcome offer"></button>
-  <div class="welcome-card" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-describedby="welcome-copy">
-    <button class="modal-close" type="button" data-offer-close aria-label="Close welcome offer">×</button>
-    <p class="eyebrow">A welcome from our farm</p>
-    <h2 id="welcome-title">Take 5% off your first order</h2>
-    <p id="welcome-copy">New to NutriThrive? Join our occasional emails and we’ll give you the code for 5% off your first order.</p>
-    <form data-newsletter-form data-source="welcome-popup" novalidate>
-      <label class="field" for="welcome-email">Email address<input id="welcome-email" name="email" type="email" autocomplete="email" required></label>
-      <label class="consent-check"><input name="marketingConsent" type="checkbox" required> <span>Yes, email me the code and occasional NutriThrive news and offers. I can unsubscribe at any time.</span></label>
-      <p class="form-note">New customers only. We store your email and consent record; we do not sell your personal information. <a href="${r.privacy}">Privacy policy</a>.</p>
-      <button class="btn btn-primary btn-block" type="submit">Email me 5% off</button>
-      <p class="form-status" data-newsletter-status role="status"></p>
-    </form>
-    <button class="offer-decline" type="button" data-offer-close>No thanks, continue shopping</button>
-  </div>
-</section>`;
   const footerNote = LIVE_MODE
     ? `<a href="${r.privacy}">Privacy policy</a>`
     : `<a href="${r.privacy}">Privacy policy</a>. This is a design preview, not the live store.`;
@@ -1862,7 +1844,6 @@ function layout({
     <span>${footerNote}</span>
   </div>
 </footer>
-${welcomeOffer}
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 ${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-cart.js?v=${ASSET_VERSION}" defer></script>` : ""}
@@ -3451,7 +3432,6 @@ function paymentPage() {
           <h2>Order summary</h2>
           <div id="order-items"></div>
           <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-          <div class="summary-row" id="bundle-discount-row" hidden><span>400g bundle offer</span><span id="bundle-discount">−$0.00</span></div>
           <div class="summary-row"><span>Shipping</span><span id="shipping">Select country</span></div>
           <div class="summary-row total"><span>Total</span><span id="total">$0.00</span></div>
         </aside>
@@ -3470,9 +3450,9 @@ function newsletterPage() {
       </form>`;
   const previewForm = `<form class="form newsletter-page-form" data-newsletter-form data-source="newsletter-page" novalidate>
         <div class="field"><label for="newsletter-email">Email address</label><input id="newsletter-email" name="email" type="email" autocomplete="email" required></div>
-        <label class="consent-check"><input name="marketingConsent" type="checkbox" required> <span>Yes, email me my new-customer code and occasional NutriThrive farm notes, guides and offers. I can unsubscribe at any time.</span></label>
-        <p class="form-note">We store your email and consent record to send these messages. We do not sell your personal information. New customers receive 5% off their first order. See our <a href="${r.privacy}">privacy policy</a>.</p>
-        <button class="btn btn-primary" type="submit">Join and get 5% off</button>
+        <label class="consent-check"><input name="marketingConsent" type="checkbox" required> <span>Yes, email me occasional NutriThrive farm notes and guides. I can unsubscribe at any time.</span></label>
+        <p class="form-note">We store your email and consent record to send these messages. We do not sell your personal information. See our <a href="${r.privacy}">privacy policy</a>.</p>
+        <button class="btn btn-primary" type="submit">Join the list</button>
         <p class="form-status" data-newsletter-status role="status"></p>
       </form>`;
   return layout({

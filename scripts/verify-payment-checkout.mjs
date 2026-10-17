@@ -51,8 +51,6 @@ const paymentElements = new Map([
   ['subtotal', { textContent: '$0.00' }],
   ['shipping', { textContent: '' }],
   ['total', { textContent: '' }],
-  ['bundle-discount', { textContent: '' }],
-  ['bundle-discount-row', { hidden: true }],
 ]);
 let paymentCart = { items: [] };
 const paymentContext = {
@@ -93,10 +91,9 @@ vm.runInNewContext(
 await preloadContext.window.__loadApplePaySdk();
 paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 40 }] };
 paymentContext.window.__paymentTest.updateShippingAndTotal();
-assert.equal(paymentElements.get('total').textContent, '$120.00', 'wallet sheet total must include bundle discount');
-assert.equal(paymentContext.window.__paymentTest.formatApplePayAmount(paymentCart), '120.00');
-assert.equal(paymentElements.get('bundle-discount-row').hidden, false);
-assert.equal(paymentElements.get('bundle-discount').textContent, '−$40.00');
+assert.equal(paymentElements.get('total').textContent, '$160.00', 'no discount: four 400g pouches are charged at full price');
+assert.equal(paymentContext.window.__paymentTest.formatApplePayAmount(paymentCart), '160.00');
+assert.doesNotMatch(source, /discount/i, 'payment page must not apply any discount');
 for (const asset of [
   'runtime-paypal-client-config.min.js',
   'runtime-paypal-sdk-loader.min.js',
@@ -158,7 +155,7 @@ globalThis.fetch = async (url, options) => {
   };
 };
 
-async function checkCart(items, expectedTotal, expectedShipping, expectedDiscount = '0.00') {
+async function checkCart(items, expectedTotal, expectedShipping) {
   let sentOrder;
   const fetchMock = globalThis.fetch;
   globalThis.fetch = async (...args) => {
@@ -179,7 +176,7 @@ async function checkCart(items, expectedTotal, expectedShipping, expectedDiscoun
     const amount = sentOrder.purchase_units[0].amount;
     if (expectedTotal !== null) assert.equal(amount.value, expectedTotal);
     if (expectedShipping !== null) assert.equal(amount.breakdown.shipping.value, expectedShipping);
-    assert.equal(amount.breakdown.discount?.value || '0.00', expectedDiscount);
+    assert.equal(amount.breakdown.discount, undefined, 'PayPal order must not carry a discount');
     assert.equal(amount.breakdown.item_total.currency_code, 'AUD');
     return amount.breakdown.item_total.value;
   } finally {
@@ -194,7 +191,7 @@ try {
     { id: 'moringa-400g', quantity: 2 },
     { id: 'moringa-powder', quantity: 1 },
   ], '91.00', '0.00');
-  await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '120.00', '0.00', '40.00');
+  await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '160.00', '0.00');
   let appleOrderId;
   let appleCaptureToken;
   {
