@@ -5014,7 +5014,8 @@ select {
 .lightbox-toolbar, .lightbox-controls { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 .product-lightbox button { min-width: 44px; min-height: 44px; border: 0; background: #f2f4ef; padding: 10px 16px; border-radius: 4px; cursor: pointer; color: #263f2c; }
 .product-lightbox [data-gallery-enlarged] { display: block; height: min(72dvh, 800px); width: 100%; object-fit: contain; padding: 12px 0; }
-.storefront-refined .pdp-buy { padding-top: 0; }
+.storefront-refined .pdp-buy { padding-top: 0; min-width: 0; }
+.storefront-refined .pdp-gallery-wrap, .storefront-refined .hero-grid > *, .home-feature-grid > * { min-width: 0; }
 .storefront-refined .pdp-buy h1 { font-size: clamp(30px, 3vw, 44px); line-height: 1.15; font-weight: 600; }
 .storefront-refined .pdp-intro { max-width: 52ch; font-size: 16px; line-height: 1.6; }
 .storefront-refined .purchase-panel { background: transparent; border: 0; padding: 0; border-radius: 0; box-shadow: none; }
@@ -5067,7 +5068,7 @@ select {
   .storefront-refined .wrap { width: calc(100% - 36px); }
   .storefront-refined .section { padding-block: 40px; }
   .storefront-refined .hero { padding-block: 28px 12px; }
-  .storefront-refined .hero-grid, .home-feature-grid { grid-template-columns: 1fr; gap: 28px; }
+  .storefront-refined .hero-grid, .home-feature-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .storefront-refined .hero h1 { font-size: clamp(32px, 8vw, 42px); max-width: none; line-height: 1.12; }
   .storefront-refined .hero .lede { margin-block: 18px; font-size: 16px; }
   .hero-collection { gap: 10px; }
@@ -5079,7 +5080,7 @@ select {
   .storefront-refined .product-card-body { padding-top: 12px; }
   .storefront-refined .product-card .btn { width: 100%; min-height: 44px; padding-inline: 8px; }
   .storefront-refined .home-feature-image img { aspect-ratio: 1.3; }
-  .storefront-refined .pdp { grid-template-columns: 1fr; gap: 28px; padding-block: 16px 32px; }
+  .storefront-refined .pdp { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 16px 32px; }
   .storefront-refined .pdp-gallery-wrap { position: static; }
   .storefront-refined .pdp-gallery { aspect-ratio: 1; height: auto; min-height: 0; max-height: none; }
   .storefront-refined .pdp-gallery img { height: 100%; min-height: 0; max-height: none; }
