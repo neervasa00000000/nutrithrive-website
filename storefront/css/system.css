@@ -2857,6 +2857,12 @@ body.journal-searching .section-head > a {
   object-fit: cover;
 }
 
+@media (max-width: 760px) {
+  .article-hero {
+    max-height: 200px;
+  }
+}
+
 .article-quick-product {
   align-items: center;
   background: var(--color-bg-brand);
