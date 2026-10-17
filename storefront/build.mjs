@@ -1388,6 +1388,36 @@ const ORG_SCHEMA = JSON.parse(
 ORG_SCHEMA.description =
   "NutriThrive is a farmer and manufacturer. We grow moringa and curry leaves on our own farm, source tea from a Darjeeling family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.";
 
+const responsiveCache = new Map();
+/** WebP width variants written by scripts/make-responsive-images.py, smallest first. */
+function responsiveVariants(src) {
+  const clean = String(src || "").split("?")[0];
+  if (responsiveCache.has(clean)) return responsiveCache.get(clean);
+  let variants = [];
+  if (clean.startsWith("/assets/")) {
+    const dir = path.join(SITE, path.dirname(clean));
+    const base = path.basename(clean).replace(/\.[a-z0-9]+$/i, "");
+    const pattern = new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}-(\\d+)\\.webp$`);
+    if (fs.existsSync(dir)) {
+      variants = fs.readdirSync(dir)
+        .map((name) => ({ name, width: Number(name.match(pattern)?.[1]) }))
+        .filter((item) => item.width)
+        .sort((a, b) => a.width - b.width)
+        .map(({ name, width }) => ({ src: `${path.dirname(clean)}/${name}`, width }));
+    }
+  }
+  responsiveCache.set(clean, variants);
+  return variants;
+}
+
+/** src/srcset attributes for an image; falls back to the original file when no variants exist. */
+function responsiveImgAttrs(src, sizes, preferredWidth = 800) {
+  const variants = responsiveVariants(src);
+  if (!variants.length) return `src="${src}"`;
+  const pick = variants.find((item) => item.width >= preferredWidth) || variants.at(-1);
+  return `src="${pick.src}" srcset="${variants.map((item) => `${item.src} ${item.width}w`).join(", ")}" sizes="${sizes}"`;
+}
+
 function absUrl(p) {
   if (!p) return OG_IMAGE;
   if (p.startsWith("http")) return p;
@@ -4552,7 +4582,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>${underH1}
           <p class="lede">${ledeHtml}</p>
-          <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
+          <div class="article-hero"><img ${responsiveImgAttrs(heroSrc, "(max-width: 760px) calc(100vw - 32px), 720px")} alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" decoding="async" loading="lazy"></div>
           ${seoOverride?.heroCaptionHtml || ""}
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
             <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · Free AU shipping from $49 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
