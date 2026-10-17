@@ -4,6 +4,10 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { PRODUCTS, REVIEWS, auSoloShippingRate, costNote, shippingCostNote } from "./js/data.js";
 
+for (const product of PRODUCTS) {
+  if (!product.image.startsWith("/assets/images/product_webp/")) throw new Error(`Product image must be in product_webp: ${product.id}`);
+}
+
 const PAYMENT_LINE = "PayPal or card online · pickup: cash, bank or PayID";
 const PAYMENT_LINE_LONG =
   "Online: PayPal or card. Phone / Truganina pickup by arrangement: bank transfer, PayID or cash.";
@@ -24,10 +28,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261017-1";
+const ASSET_VERSION = "20261018-gallery-4";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261017-1";
-const CART_CSS_ASSET_VERSION = "20261017-1";
+const CSS_ASSET_VERSION = "20261018-gallery-4";
+const CART_CSS_ASSET_VERSION = "20261018-gallery-4";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -95,7 +99,8 @@ function navItems() {
     { href: "/products/moringa-powder/", label: "Moringa powder" },
     { href: "/products/black-tea/", label: "Tea" },
     { href: "/products/curry-leaves/", label: "Curry Leaves" },
-    { href: "/products/diwali-gift-box/", label: "Diwali Gift Box" },
+    { href: "/products/moringa-soap/", label: "Soap" },
+    { href: "/products/gift-pack/", label: "Gifts" },
     { href: r.about, label: "About" },
     { href: r.journal, label: "Blog" },
   ];
@@ -1766,6 +1771,7 @@ ${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Trugan
         <li><a href="/products/moringa-powder/">Moringa powder</a></li>
         <li><a href="/products/black-tea/">Darjeeling tea</a></li>
         <li><a href="/products/curry-leaves/">Curry leaves</a></li>
+        <li><a href="/products/moringa-soap/">Handmade soap</a></li>
         <li><a href="/products/diwali-gift-box/">Diwali Gift Box</a></li>
         <li><a href="/products/gift-pack/">Gift pack</a></li>
       </ul>
@@ -1854,17 +1860,17 @@ function homepage() {
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="kicker">Our farm · Made by NutriThrive</p>
+      <p class="kicker">The NutriThrive collection</p>
       <h1>${esc(deskSeo("/").h1 || "Pure moringa. Nothing unnecessary.")}</h1>
-      <p class="lede">Sun-dried moringa from our family farm. Packed in Truganina, from $11 per 100g.</p>
+      <p class="lede">Farm-grown moringa and curry leaves. Darjeeling tea. Handmade soap. Thoughtful gifts. Packed with care in Truganina, Melbourne.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/products/moringa-powder/">Shop moringa powder</a>
-        <a class="text-link" href="/products/">Explore the range →</a>
+        <a class="btn btn-primary" href="/products/">Shop the collection</a>
+        <a class="text-link" href="/products/moringa-powder/">Explore moringa →</a>
       </div>
-      <p class="purchase-note">Free AU shipping from $49 · <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab summary</a></p>
+      <p class="purchase-note">Moringa from $11 · Curry leaves $7 · Tea $7.50 · Soap $7</p>
     </div>
-    <div class="hero-photo">
-      <img src="/assets/images/product_webp/moringa-powder-100g-main.webp" alt="NutriThrive 100g moringa powder pouch with moringa leaves and a bowl of powder" width="1254" height="1254" fetchpriority="high">
+    <div class="hero-collection" aria-label="Explore NutriThrive products">
+      ${featured.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>${index === 0 ? "From " : ""}${money(product.price).replace(/\.00$/, "")}</small></span></a>`).join("")}
     </div>
   </div>
 </section>
@@ -1872,7 +1878,7 @@ function homepage() {
   <div class="wrap">
     <div class="section-head">
       <div>
-        <h2>Meet the range</h2>
+        <h2>Shop everyday favourites</h2>
       </div>
       <a href="/shop/">Shop all</a>
     </div>
@@ -1880,16 +1886,11 @@ function homepage() {
 
   </div>
 </section>
-<section class="section band proof-story">
-  <div class="wrap refinement-story">
-    <div><p class="kicker">Farm to pouch</p><h2>We grow it ourselves.</h2></div>
-    <div><p>Our moringa and curry leaves come from our family farm in Gujarat. We sun-dry and process the leaves, then pack your order in Truganina.</p><p><a href="/about/">Meet NutriThrive →</a></p></div>
-  </div>
-</section>
-<section class="section seasonal-edit"><div class="wrap refinement-story">
-  <div><p class="kicker">Sunday 8 November</p><h2>A little gift. Thoughtfully packed.</h2><a class="btn btn-primary" href="/products/diwali-gift-box/">Diwali Gift Box · $20</a></div>
-  <div><p>Darjeeling tea, whole dried curry leaves and handmade soap.</p>${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Read the Diwali gift guide →</a></p></div>
+<section class="section home-feature"><div class="wrap home-feature-grid">
+  <a class="home-feature-image" href="/products/gift-pack/"><img src="/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp" alt="NutriThrive gift pack with moringa, tea, curry leaves and soap" width="900" height="900" loading="lazy"></a>
+  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. For Diwali, choose the tea, curry leaf and soap box for $20.</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">Diwali Gift Box →</a></div><details class="gift-guide-disclosure"><summary>Diwali gift guides and delivery</summary>${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p></details></div>
 </div></section>
+<section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
 ${googleReviewsSection()}
 <section class="section buying-guide-link"><div class="wrap"><a href="${routes().article("how-to-choose-moringa-powder-australia-2026")}">Choosing moringa? Read our buyer’s guide →</a></div></section>`,
   });
@@ -1997,13 +1998,9 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/moringa-powder-400g-bundle-main.webp", "Four NutriThrive 100g moringa powder pouches in the 400g bundle"],
       ["/assets/images/product_webp/moringa-powder-100g-main.webp", "NutriThrive 100g moringa powder pouch with a bowl of green powder"],
-      ["/assets/images/photos/compressed/moringa-powder-200g-main-square.webp", "NutriThrive 200g moringa powder pouch with a bowl of green powder"],
-      ["/assets/images/photos/compressed/moringa-powder-200g-editorial-desktop.webp", "NutriThrive 200g moringa powder pouch in warm botanical light"],
-      ["/assets/images/photos/compressed/moringa-powder-200g-lifestyle-desktop.webp", "NutriThrive 200g moringa powder pouch with a wooden bowl and measuring spoon"],
-      ["/assets/images/photos/compressed/moringa-powder-detail-light.webp", "Finely milled moringa leaf powder in a ceramic bowl and wooden spoon"],
       ["/assets/images/product_webp/moringa-powder-texture.webp", "Finely milled green moringa leaf powder in a ceramic bowl"],
     ],
-    detailImage: "/assets/images/photos/compressed/moringa-powder-detail-light.webp",
+    detailImage: "/assets/images/product_webp/moringa-powder-texture.webp",
     detailAlt: "Finely milled green moringa leaf powder in a ceramic bowl with a wooden spoon",
     detailCaption: "A closer look at the fine texture and natural green colour of the powder.",
     ingredients: "100% moringa (Moringa oleifera) leaf powder. No fillers or blends.",
@@ -2073,9 +2070,6 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive dried curry leaves 30g pouch with whole leaves"],
       ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves (karipatta) in a ceramic bowl"],
-      ["/assets/images/homepage/product-showcase/Curry.webp", "Dried curry leaves product showcase"],
-      ["/assets/images/product_photos/driedcurry.jpeg", "Close-up of whole dried curry leaves"],
-      ["/assets/images/general/CURRY3.png", "Aromatic dried curry leaves ready for tempering"],
     ],
     detailImage: "/assets/images/product_webp/dried-curry-leaves-texture.webp",
     detailAlt: "Whole dried curry leaves (karipatta) in a ceramic bowl",
@@ -2138,9 +2132,6 @@ const PDP = {
     gallery: [
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Amber Darjeeling black tea with loose leaves in a wooden spoon"],
-      ["/assets/images/homepage/product-showcase/BlackTea.webp", "Darjeeling black tea product showcase"],
-      ["/assets/images/product_photos/blacktea.jpeg", "Loose-leaf Darjeeling tea from family farm"],
-      ["/assets/images/products/BlackTea.webp", "NutriThrive Darjeeling black tea pouch"],
     ],
     detailImage: "/assets/images/product_webp/darjeeling-black-tea-brewed.webp",
     detailAlt: "Amber Darjeeling black tea with loose tea leaves in a wooden spoon",
@@ -2201,11 +2192,7 @@ const PDP = {
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
-      ["/assets/images/product_photos/moringasoapcombo.jpeg", "NutriThrive 100g moringa powder and 95g soap bundle"],
       ["/assets/images/product_webp/moringa-soap-texture.webp", "Handmade moringa soap on a stone dish with lavender and foam"],
-      ["/assets/images/homepage/product-showcase/moringa_soap.webp", "Moringa soap product showcase"],
-      ["/assets/images/product_photos/soap.jpeg", "Handmade moringa lavender soap bar"],
-      ["/assets/images/products/moringa_soap.webp", "NutriThrive handmade moringa lavender soap"],
     ],
     detailImage: "/assets/images/product_webp/moringa-soap-texture.webp",
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
@@ -2259,8 +2246,6 @@ const PDP = {
     ],
     gallery: [
       ["/assets/images/product_webp/moringa-curry-leaves-combo-main.webp", "NutriThrive 100g moringa powder and 30g dried curry leaves combo"],
-      ["/assets/images/homepage/product-showcase/combo.webp", "Moringa and curry leaves combo pack showcase"],
-      ["/assets/images/product_photos/combo.jpeg", "Combo pack with moringa powder and dried curry leaves"],
       ["/assets/images/product_webp/moringa-powder-100g-main.webp", "100g moringa powder included in combo"],
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "30g dried curry leaves included in combo"],
     ],
@@ -2411,7 +2396,8 @@ function pdpPage(slug, d) {
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
   const shipNote = shippingCostNote(buyProduct);
   const shippingHtml = `<p class="purchase-note" data-pdp-ship>${esc(shipNote)}</p>`;
-  const gallery = d.gallery?.length ? d.gallery : [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`]];
+  const galleryCandidates = [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`], ...(d.gallery || []).filter(([src]) => src.startsWith("/assets/images/product_webp/")), ...(d.variants || []).map(v => [v.image, `${v.name} ${v.variant}`]), ...(d.detailImage ? [[d.detailImage, d.detailAlt]] : [])];
+  const gallery = galleryCandidates.filter(([src], index, items) => src.startsWith("/assets/images/product_webp/") && fs.existsSync(path.join(SITE, src)) && items.findIndex(([other]) => other === src) === index);
   const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
     .map((id) => PRODUCTS.find((item) => item.id === id))
     .filter((item) => item && item.id !== p.id && item.href !== p.href);
@@ -2444,17 +2430,12 @@ function pdpPage(slug, d) {
     <li>400g $${powder400.price} + 100g $${powder100.price} = $${powder400.price + powder100.price}, and it ships free</li>
     <li>Free Australia-wide shipping on orders from $49. 7-day refund or replacement.</li></ul>
   </section>` : "";
-  const batchPanel = `<section class="batch-panel" aria-labelledby="batch-h"><h2 id="batch-h">Batch and testing</h2><dl><dt>Batch tested</dt><dd>NT042024</dd><dt>Lab</dt><dd>National Measurement Institute (NMI), Australia</dd><dt>Report date</dt><dd>24 January 2025</dd><dt>What was tested</dt><dd>Nutrition panel</dd><dt>Origin</dt><dd>Grown on our family farm in Gujarat, India</dd><dt>Drying</dt><dd>Sun-dried to keep the colour, then ground</dd><dt>Packed</dt><dd>Truganina, Melbourne</dd><dt>Storage</dt><dd>Keep sealed, cool and dry. Lasts 1 year once opened.</dd></dl><p><a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a></p></section>`;
-  const moringaBatch = batchPanel.replace(
-    "<dt>Origin</dt>",
-    "<dt>Ingredients</dt><dd>100% moringa (Moringa oleifera) leaf powder. No fillers or blends.</dd><dt>Origin</dt>"
-  );
   const education =
     slug === "moringa-powder"
-      ? moringaEducationHtml() + `<details class="pdp-detail-disclosure"><summary>Batch, testing and storage</summary>${moringaBatch}</details>`
+      ? moringaEducationHtml()
       : `${d.whatHtml ? `<h2>${esc(d.whatHeading || "What it is")}</h2>${d.whatHtml}` : d.what ? `<h2>What it is</h2><p>${esc(d.what)}</p>` : ""}
           ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : d.use ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : ""}
-          ${slug === "combo-pack" ? batchPanel : p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
+          ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
   const offerUrl = `${LIVE}${canonicalPath}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
   const productSchema = {
@@ -2577,9 +2558,21 @@ function pdpPage(slug, d) {
       </nav>
       <section class="wrap pdp">
         <div class="pdp-gallery-wrap">
-          <div class="pdp-gallery${buyProduct.id === "moringa-400g" || buyProduct.id === "combo-pack" || buyProduct.id === "moringa-soap-combo" ? " is-wide" : ""}">
-            <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
+          <div class="pdp-gallery">
+            <button class="pdp-gallery-open" type="button" data-gallery-open aria-label="Enlarge product photograph">
+              <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
+              <span class="gallery-zoom-label">View larger ↗</span>
+            </button>
           </div>
+          <div class="pdp-thumbnails" role="group" aria-label="Product photographs">
+            ${gallery.map(([src, alt], index) => `<button type="button" data-gallery-thumb data-src="${src}" data-alt="${esc(alt)}" aria-label="View photo ${index + 1}: ${esc(alt)}" aria-pressed="${index === 0}"><img src="${src}" alt="" width="80" height="80" loading="lazy"></button>`).join("")}
+          </div>
+          <p class="gallery-position" data-gallery-position aria-live="polite">1 / ${gallery.length}</p>
+          <dialog class="product-lightbox" data-gallery-dialog aria-label="Product photographs">
+            <div class="lightbox-toolbar"><span data-gallery-dialog-count>1 / ${gallery.length}</span><button type="button" class="lightbox-close" data-gallery-close aria-label="Close enlarged photograph">Close ×</button></div>
+            <img data-gallery-enlarged src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" loading="lazy">
+            <div class="lightbox-controls"><button type="button" data-gallery-prev aria-label="Previous photograph">← Previous</button><button type="button" data-gallery-next aria-label="Next photograph">Next →</button></div>
+          </dialog>
         </div>
         <div class="pdp-buy" id="pdp-buy">
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>${mainPowder ? `
@@ -2628,8 +2621,7 @@ function pdpPage(slug, d) {
       <section class="prose-block">
         <div class="wrap pdp-content">
           ${buyOnline}
-          ${growthProductBody(slug)}
-          ${education}
+          <div class="pdp-information"><div class="pdp-description">${education}${growthProductBody(slug)}</div><div class="pdp-specifications">
 
           ${slug === "moringa-powder" ? "" : `<details class="pdp-detail-disclosure"><summary>Ingredients, origin and storage</summary><div class="product-facts">
             <section><h2>Ingredients</h2><p>${esc(d.ingredients)}</p></section>
@@ -2637,7 +2629,6 @@ function pdpPage(slug, d) {
             <section><h2>How we make it</h2><p>${esc(d.process)}</p></section>
             <section><h2>Storage and shelf life</h2><p>${esc(d.storage)}</p></section>
           </div></details>`}
-          ${d.detailImage ? `<details class="pdp-detail-disclosure"><summary>See the product up close</summary><figure class="pdp-detail-photo"><img src="${d.detailImage}" alt="${esc(d.detailAlt)}" width="1254" height="1254" loading="lazy"><figcaption>${esc(d.detailCaption)}</figcaption></figure></details>` : ""}
           <div class="pdp-support-grid">
             ${d.safety ? `<details class="pdp-support-card safety-note"><summary>Safety information</summary><div><p>${esc(d.safety)}</p></div></details>` : ""}
             <details class="pdp-support-card delivery-card"><summary>Delivery and returns</summary><div>
@@ -2658,6 +2649,7 @@ function pdpPage(slug, d) {
               ${slug === "moringa-powder" ? FSANZ_PENDING + `<div data-pending="guest-card-test" hidden><details><summary>Do I need a PayPal account?</summary><p>No. Choose 'Debit or Credit Card' at checkout.</p></details></div>` : ""}
             </div>
           </section>
+          </div></div>
           <section class="pdp-reviews" id="reviews">
             <div class="reviews-head"><h2>Google reviews of NutriThrive</h2>${stars()} <span>from 12 Google reviews</span></div>
             <div class="review-grid review-scroll" aria-label="Google reviews of NutriThrive">${reviews.slice(0, 2).map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
@@ -2673,7 +2665,7 @@ function pdpPage(slug, d) {
           </section>
           <section class="related-products">
             <div class="section-head"><div><h2>You may also like</h2><p>Also from our farm and kitchen</p></div><a href="/shop/">Shop all</a></div>
-            <div class="product-grid">${related.map((item) => productCard(item, false, { hideWas: true })).join("")}</div>
+            <div class="product-grid" style="--related-columns:${related.length}">${related.map((item) => productCard(item, false, { hideWas: true })).join("")}</div>
           </section>
         </div>
       </section>`,
