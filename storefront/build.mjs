@@ -1362,12 +1362,12 @@ function productCard(p, priority = false, opts = {}) {
     "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp": "/assets/images/product_webp/moringa-powder-400g-bundle-main-card-640.webp",
     "/assets/images/product_webp/dried-curry-leaves-30g-main.webp": "/assets/images/product_webp/dried-curry-leaves-30g-main-card-640.webp",
   }[p.image];
-  const responsive = cardImage
-    ? `srcset="${cardImage} 640w, ${cardImage.replace("-card-640", "-card-960")} 960w, ${p.image} 1254w" sizes="(max-width: 760px) 70vw, 25vw"`
-    : "";
+  const imageAttrs = cardImage
+    ? `src="${p.image}" srcset="${cardImage} 640w, ${cardImage.replace("-card-640", "-card-960")} 960w, ${p.image} 1254w" sizes="(max-width: 760px) 70vw, 25vw"`
+    : responsiveImgAttrs(p.image, "(max-width: 760px) 70vw, 25vw", 640);
   return `<article class="product-card">
     <a class="product-card-media" href="${href}" aria-label="${esc(p.name)} ${esc(p.variant)}">
-      <img src="${p.image}" ${responsive ? `${responsive} ` : ""}alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
+      <img ${imageAttrs} alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
     </a>
     <div class="product-card-body">
       <h3><a href="${href}" style="color:inherit;text-decoration:none">${esc(opts.title || p.name)}</a></h3>
@@ -1416,6 +1416,18 @@ function responsiveImgAttrs(src, sizes, preferredWidth = 800) {
   if (!variants.length) return `src="${src}"`;
   const pick = variants.find((item) => item.width >= preferredWidth) || variants.at(-1);
   return `src="${pick.src}" srcset="${variants.map((item) => `${item.src} ${item.width}w`).join(", ")}" sizes="${sizes}"`;
+}
+
+const WIDE_IMAGE_SIZES = "(max-width: 760px) calc(100vw - 32px), 560px";
+// Refined PDPs fix the mobile gallery at 152px square below 767px.
+const PDP_GALLERY_SIZES = "(max-width: 767px) 152px, 560px";
+
+/** Preload that matches the candidate the <img> srcset will choose. */
+function preloadImage(src, sizes, preferredWidth = 800) {
+  const variants = responsiveVariants(src);
+  if (!variants.length) return `<link rel="preload" as="image" href="${src}" fetchpriority="high">`;
+  const pick = variants.find((item) => item.width >= preferredWidth) || variants.at(-1);
+  return `<link rel="preload" as="image" href="${pick.src}" imagesrcset="${variants.map((item) => `${item.src} ${item.width}w`).join(", ")}" imagesizes="${sizes}" fetchpriority="high">`;
 }
 
 function absUrl(p) {
@@ -1881,7 +1893,7 @@ function homepage() {
     preserveTitle: Boolean(desk.title || liveSeo?.title),
     preserveDescription: Boolean(desk.description || liveSeo?.description),
     robots: liveSeo?.robots || undefined,
-    extraHead: `<link rel="preload" as="image" href="/assets/images/product_webp/moringa-powder-100g-main.webp" fetchpriority="high">
+    extraHead: `${preloadImage("/assets/images/product_webp/moringa-powder-100g-main.webp", WIDE_IMAGE_SIZES, 960)}
   ${jsonLd(websiteSchema())}
   ${jsonLd({ "@context": "https://schema.org", "@type": "WebPage", "@id": `${LIVE}/#webpage`, url: `${LIVE}/`, name: "NutriThrive", isPartOf: { "@id": `${LIVE}/#website` }, ...pageDateFields() })}`,
     main: `
@@ -1898,7 +1910,7 @@ function homepage() {
       <p class="purchase-note">Free AU shipping from $49 · <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab summary</a></p>
     </div>
     <div class="hero-photo">
-      <img src="/assets/images/product_webp/moringa-powder-100g-main.webp" alt="NutriThrive 100g moringa powder pouch with moringa leaves and a bowl of powder" width="1254" height="1254" fetchpriority="high">
+      <img ${responsiveImgAttrs("/assets/images/product_webp/moringa-powder-100g-main.webp", WIDE_IMAGE_SIZES, 960)} alt="NutriThrive 100g moringa powder pouch with moringa leaves and a bowl of powder" width="1254" height="1254" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -2581,7 +2593,7 @@ function pdpPage(slug, d) {
     ogImage: buyProduct.image,
     ogImageWidth: 900,
     ogImageHeight: 900,
-    extraHead: `<link rel="preload" as="image" href="${gallery[0][0]}" fetchpriority="high">` +
+    extraHead: preloadImage(gallery[0][0], PDP_GALLERY_SIZES, 960) +
       jsonLd(productSchema) +
       jsonLd({
         "@context": "https://schema.org",
@@ -2612,7 +2624,7 @@ function pdpPage(slug, d) {
       <section class="wrap pdp">
         <div class="pdp-gallery-wrap">
           <div class="pdp-gallery${buyProduct.id === "moringa-400g" || buyProduct.id === "combo-pack" || buyProduct.id === "moringa-soap-combo" ? " is-wide" : ""}">
-            <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
+            <img ${responsiveImgAttrs(gallery[0][0], PDP_GALLERY_SIZES, 960)} alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image data-pdp-src="${gallery[0][0]}">
           </div>
         </div>
         <div class="pdp-buy" id="pdp-buy">
@@ -2671,7 +2683,7 @@ function pdpPage(slug, d) {
             <section><h2>How we make it</h2><p>${esc(d.process)}</p></section>
             <section><h2>Storage and shelf life</h2><p>${esc(d.storage)}</p></section>
           </div></details>`}
-          ${d.detailImage ? `<details class="pdp-detail-disclosure"><summary>See the product up close</summary><figure class="pdp-detail-photo"><img src="${d.detailImage}" alt="${esc(d.detailAlt)}" width="1254" height="1254" loading="lazy"><figcaption>${esc(d.detailCaption)}</figcaption></figure></details>` : ""}
+          ${d.detailImage ? `<details class="pdp-detail-disclosure"><summary>See the product up close</summary><figure class="pdp-detail-photo"><img ${responsiveImgAttrs(d.detailImage, WIDE_IMAGE_SIZES, 640)} alt="${esc(d.detailAlt)}" width="1254" height="1254" loading="lazy"><figcaption>${esc(d.detailCaption)}</figcaption></figure></details>` : ""}
           <div class="pdp-support-grid">
             ${d.safety ? `<details class="pdp-support-card safety-note"><summary>Safety information</summary><div><p>${esc(d.safety)}</p></div></details>` : ""}
             <details class="pdp-support-card delivery-card"><summary>Delivery and returns</summary><div>
