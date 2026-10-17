@@ -24,9 +24,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261013-3";
-const PAYMENT_ASSET_VERSION = "20261013-1";
-const CSS_ASSET_VERSION = "20261013-2";
+const ASSET_VERSION = "20261017-1";
+const PAYMENT_ASSET_VERSION = "20261017-1";
+const CSS_ASSET_VERSION = "20261017-1";
 const CART_CSS_ASSET_VERSION = "20261008-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
@@ -1200,6 +1200,10 @@ function productGuideLinks(slug) {
   return guides.map(([label, articleSlug]) => `<li><a href="${r.article(articleSlug)}">${esc(label)}</a></li>`).join("");
 }
 
+function growthProductBody(slug) {
+  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p></details><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Order by late October for delivery before Diwali.</p>", "diwali-gift-box": "<section><h2>Diwali gifts Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Diwali gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order by late October for Diwali; delivery timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Diwali Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
+}
+
 function faqDetails(faqs) {
   return faqs
     .map(([q, a]) => {
@@ -1208,6 +1212,9 @@ function faqDetails(faqs) {
     })
     .join("");
 }
+
+const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Order by late October for delivery before Diwali.</p>";
+const FSANZ_PENDING = "<div data-pending=\"fsanz-approval\" hidden><p>In November 2025 FSANZ decided moringa leaf and powder are not permitted as a food or food ingredient for retail sale in Australia. Read the <a href=\"https://www.foodstandards.gov.au/food-standards-code/applications/application-a1294-moringa-oleifera-novel-food\" rel=\"noopener\">FSANZ notice</a>.</p></div>";
 
 const TEA_REVIEW_NAME = "Mai Anh Trần Thúy";
 const MORINGA_FEATURED_REVIEW_NAMES = [
@@ -1874,6 +1881,8 @@ ${extraFoot}
 }
 
 function writePage(rel, html, destRoot = OUT) {
+  // Preserve existing HOLD articles during the October growth pass.
+  if (/^(?:blog|journal)\//.test(rel) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout/i.test(rel) && fs.existsSync(path.join(destRoot, rel))) return;
   html = applyLivePaths(html);
   const file = path.join(destRoot, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -1922,7 +1931,7 @@ function homepage() {
         <a class="btn btn-secondary" href="/products/diwali-gift-box/">Diwali Gift Box $20</a>
         <a class="btn btn-secondary" href="/documents/nutrithrive-lab-report-summary.pdf">See our lab report</a>
       </div>
-      <p class="purchase-note">Free AU shipping from $49. <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>
+      <section aria-label="Diwali gifts"><p class="purchase-note">Free AU shipping from $49. <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a>.</p>${DIWALI_GROWTH_LINKS}</section>
       ${stars()} <span style="font-size:14px;color:var(--color-text-secondary)">from Google reviews</span>
       <nav class="hero-range" aria-label="Also from NutriThrive">
         <p class="hero-range__label">Also from our farm and kitchen</p>
@@ -2577,7 +2586,12 @@ function pdpPage(slug, d) {
   if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
     throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
-  const buyOnline = "";
+  const buyOnline = mainPowder ? `<section class="pdp-buy-online" aria-labelledby="buy-moringa-online">
+    <h2 id="buy-moringa-online">Buy moringa powder online in Australia</h2>
+    <ul>${[powder100, powder200, powder400].map((item) => `<li>${item.weight === 400 ? "400g (4 × 100g pouches)" : `${item.weight}g pouch`}: $${item.price} (with postage ${money(item.price + auSoloShippingRate(item.weight))}${item.weight === 400 ? `, best value at $${item.price / 4} per 100g` : ""})</li>`).join("")}
+    <li>400g $${powder400.price} + 100g $${powder100.price} = $${powder400.price + powder100.price}, and it ships free</li>
+    <li>Free Australia-wide shipping on orders from $49. 7-day refund or replacement.</li></ul>
+  </section>` : "";
   const valueCompare =
     slug === "moringa-powder"
       ? `<section class="pdp-value" aria-labelledby="moringa-value">
@@ -2753,6 +2767,7 @@ function pdpPage(slug, d) {
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
           </div>
           ${slug === "moringa-powder" ? "" : `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>`}
+          ${slug === "moringa-powder" ? `<p class="pdp-from-price">From $${powder100.price}</p>` : ""}
           ${variantSelect}
           ${variantHint}
           <div class="purchase-panel">
@@ -2789,6 +2804,7 @@ function pdpPage(slug, d) {
       <section class="prose-block">
         <div class="wrap pdp-content">
           ${buyOnline}${valueCompare}
+          ${growthProductBody(slug)}
           ${education}
           ${shipLadder}
           ${slug === "moringa-powder" ? "" : `<div class="product-facts">
@@ -2824,6 +2840,7 @@ function pdpPage(slug, d) {
             <h2>${esc(faqHeading)}</h2>
             <div class="faq-list">
               ${faqDetails(d.faqs)}
+              ${slug === "moringa-powder" ? FSANZ_PENDING : ""}
             </div>
           </section>
           <section class="pdp-reviews" id="reviews">
@@ -3824,6 +3841,7 @@ function melbournePage() {
           </div>
         </section>
 
+        <section class="city-local-section"><div class="wrap"><section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Order <a href="/products/black-tea/">Darjeeling loose leaf tea</a> online or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section><section><h2>Where to buy curry leaves in Melbourne</h2><p>Our <a href="/products/curry-leaves/">30g dried whole curry leaves</a> are packed in Truganina for local pickup by arrangement or delivery.</p></section></div></section>
         <section class="city-local-section" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
           <div class="wrap">
             <div class="city-local-section__head">
@@ -4541,8 +4559,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
   const catalogTitle = humanCopy(stripTags(meta.seoTitle || meta.title));
   const desk = deskSeo(`/blog/${meta.slug}`);
-  const title = desk.title || seoOverride?.title || liveSeo?.title || catalogTitle;
-  const displayH1 = desk.h1 || seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
+  const title = liveSeo?.title || desk.title || seoOverride?.title || catalogTitle;
+  const displayH1 = liveSeo?.h1 || desk.h1 || seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
   const description = desk.description || seoOverride?.description || pickSeoDescription({
       file: liveSeo?.description,
       catalog: meta.description,
@@ -4756,10 +4774,11 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
               <ul class="article-context-links">${conversionLinks}</ul>` : ""}
             </div>
           </section>
+          ${["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
           ${relatedArticles.length ? `<nav class="article-related" aria-labelledby="related-${esc(meta.slug)}">
             <p class="kicker">Continue with</p>
             <h2 id="related-${esc(meta.slug)}">Related ${esc(topic.toLowerCase())}</h2>
-            <ul>${relatedArticles.map((article) => `<li><a href="${r.article(article.slug)}">${esc(humanCopy(stripTags(article.title)))}</a></li>`).join("")}</ul>
+            <ul>${relatedArticles.map((article) => `<li><a href="${r.article(article.slug)}">${esc(["moringa-patches-australia-review-do-they-work", "rosabella-moringa-reviews-legit-or-overhyped-2026"].includes(meta.slug) && article.slug === "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025" ? "Moringa at Chemist Warehouse: capsules vs powder" : humanCopy(stripTags(article.title)))}</a></li>`).join("")}</ul>
           </nav>` : ""}
           <aside class="article-author">
             <p class="kicker">About the author</p>

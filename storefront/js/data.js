@@ -170,7 +170,7 @@ export function auSoloShippingRate(weightGrams) {
 }
 
 export function shippingCostNote() {
-  return "Free AU shipping on orders from $49. Under $49, shipping starts at $9.69. Order by 2pm Monday to Friday for same-day dispatch.";
+  return "Free AU shipping on orders from $49. Under $49, shipping is $9.69–$11.12 depending on weight. Order by 2pm Monday to Friday for same-day dispatch.";
 }
 
 export function costNote(p) {
