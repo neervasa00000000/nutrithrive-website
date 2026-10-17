@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
+import { PRODUCTS } from '../storefront/js/data.js';
 const source = fs.readFileSync('storefront/js/site.js','utf8');
 const fn = source.slice(source.indexOf('function bindProductGallery()'), source.indexOf('function pdpMoney('));
 function node(dataset={}) {
@@ -25,3 +26,18 @@ events['nt-gallery-select']({detail:{src:'/texture.webp'}});assert.equal(image.s
 open.events.click();dialog.events.click({target:dialog});assert.equal(dialog.open,false);
 vm.runInNewContext(fn+'\nbindProductGallery();',{document:{querySelector:()=>null,querySelectorAll:()=>[]}});
 console.log('Gallery: thumbnail selection, responsive-image reset, modal, arrow navigation, wraparound, variant sync and non-product pages pass.');
+
+for (const product of PRODUCTS) {
+  assert.ok(product.image.startsWith('/assets/images/product_webp/'), `Product image folder: ${product.id}`);
+  assert.ok(fs.existsSync(`site${product.image}`), `Missing product image: ${product.id}`);
+}
+for (const dir of fs.readdirSync('site/products', {withFileTypes: true}).filter(entry => entry.isDirectory())) {
+  const path = `site/products/${dir.name}/index.html`;
+  if (!fs.existsSync(path)) continue;
+  const html = fs.readFileSync(path, 'utf8');
+  for (const match of html.matchAll(/(?:src|data-src)="(\/assets\/images\/[^"?]+)(?:\?[^\"]*)?"/g)) {
+    if (match[1].includes('/logo/')) continue;
+    assert.ok(match[1].startsWith('/assets/images/product_webp/'), `${path}: ${match[1]}`);
+  }
+}
+console.log('All product images are present and restricted to product_webp.');
