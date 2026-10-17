@@ -28,6 +28,9 @@ const ASSET_VERSION = "20261017-1";
 const PAYMENT_ASSET_VERSION = "20261017-1";
 const CSS_ASSET_VERSION = "20261017-1";
 const CART_CSS_ASSET_VERSION = "20261017-1";
+// Must match the ?v= hard-coded in the @font-face rules in storefront/css/system.css,
+// otherwise the preload and the CSS request download each font twice.
+const FONT_ASSET_VERSION = "20260831-7";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -1820,6 +1823,7 @@ function writePage(rel, html, destRoot = OUT) {
   const cacheBusted = html.replace(
     /(src|href)="(\/assets\/[^"?#]+)(?:\?[^"#]*)?"/g,
     (_match, attribute, assetPath) => {
+      if (assetPath.startsWith("/assets/fonts/")) return `${attribute}="${assetPath}?v=${FONT_ASSET_VERSION}"`;
       const version = assetPath.includes("/assets/css/storefront-system")
         ? (rel === "pages/shop/cart.html" ? CART_CSS_ASSET_VERSION : CSS_ASSET_VERSION)
         : assetPath === "/assets/js/storefront/payment-page.js" ||
