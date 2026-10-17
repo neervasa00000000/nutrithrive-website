@@ -26,8 +26,8 @@ const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261018-gallery-2";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261018-gallery-2";
-const CART_CSS_ASSET_VERSION = "20261018-gallery-2";
+const CSS_ASSET_VERSION = "20261018-gallery-3";
+const CART_CSS_ASSET_VERSION = "20261018-gallery-3";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -1767,6 +1767,7 @@ ${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Trugan
         <li><a href="/products/moringa-powder/">Moringa powder</a></li>
         <li><a href="/products/black-tea/">Darjeeling tea</a></li>
         <li><a href="/products/curry-leaves/">Curry leaves</a></li>
+        <li><a href="/products/moringa-soap/">Handmade soap</a></li>
         <li><a href="/products/diwali-gift-box/">Diwali Gift Box</a></li>
         <li><a href="/products/gift-pack/">Gift pack</a></li>
       </ul>
