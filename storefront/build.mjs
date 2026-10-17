@@ -24,10 +24,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261018-gallery-1";
+const ASSET_VERSION = "20261018-gallery-2";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261018-gallery-1";
-const CART_CSS_ASSET_VERSION = "20261018-gallery-1";
+const CSS_ASSET_VERSION = "20261018-gallery-2";
+const CART_CSS_ASSET_VERSION = "20261018-gallery-2";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -95,7 +95,8 @@ function navItems() {
     { href: "/products/moringa-powder/", label: "Moringa powder" },
     { href: "/products/black-tea/", label: "Tea" },
     { href: "/products/curry-leaves/", label: "Curry Leaves" },
-    { href: "/products/diwali-gift-box/", label: "Diwali Gift Box" },
+    { href: "/products/moringa-soap/", label: "Soap" },
+    { href: "/products/gift-pack/", label: "Gifts" },
     { href: r.about, label: "About" },
     { href: r.journal, label: "Blog" },
   ];
@@ -1864,7 +1865,7 @@ function homepage() {
       <p class="purchase-note">Moringa from $11 · Curry leaves $7 · Tea $7.50 · Soap $7</p>
     </div>
     <div class="hero-collection" aria-label="Explore NutriThrive products">
-      ${featured.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>from $${product.price}</small></span></a>`).join("")}
+      ${featured.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>${index === 0 ? "From " : ""}${money(product.price).replace(/\.00$/, "")}</small></span></a>`).join("")}
     </div>
   </div>
 </section>
@@ -2406,7 +2407,7 @@ function pdpPage(slug, d) {
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
   const shipNote = shippingCostNote(buyProduct);
   const shippingHtml = `<p class="purchase-note" data-pdp-ship>${esc(shipNote)}</p>`;
-  const galleryCandidates = [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`], ...(d.gallery || []), ...(d.variants || []).map(v => [v.image, `${v.name} ${v.variant}`]), ...(d.detailImage ? [[d.detailImage, d.detailAlt]] : [])];
+  const galleryCandidates = [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`], ...(d.gallery || []).filter(([src]) => /\/(?:product_webp|photos\/compressed)\//.test(src)), ...(d.variants || []).map(v => [v.image, `${v.name} ${v.variant}`]), ...(d.detailImage ? [[d.detailImage, d.detailAlt]] : [])];
   const gallery = galleryCandidates.filter(([src], index, items) => fs.existsSync(path.join(SITE, src)) && items.findIndex(([other]) => other === src) === index);
   const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
     .map((id) => PRODUCTS.find((item) => item.id === id))
