@@ -27,7 +27,7 @@ const OUT = __dirname;
 const ASSET_VERSION = "20261017-1";
 const PAYMENT_ASSET_VERSION = "20261017-1";
 const CSS_ASSET_VERSION = "20261017-1";
-const CART_CSS_ASSET_VERSION = "20261008-1";
+const CART_CSS_ASSET_VERSION = "20261017-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -1882,7 +1882,7 @@ ${extraFoot}
 
 function writePage(rel, html, destRoot = OUT) {
   // Preserve existing HOLD articles during the October growth pass.
-  if (/^(?:blog|journal)\//.test(rel) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout/i.test(rel) && fs.existsSync(path.join(destRoot, rel))) return;
+  if (/^(?:blog|journal)\//.test(rel) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout|side-effects|safe-for|diabet|allerg|medicat|liver|kidney|breast|detox|fertil|hormone|immune|dosage|powder-per-day|benefits-for-women|deficien/i.test(rel) && fs.existsSync(path.join(destRoot, rel))) return;
   html = applyLivePaths(html);
   const file = path.join(destRoot, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -2840,7 +2840,7 @@ function pdpPage(slug, d) {
             <h2>${esc(faqHeading)}</h2>
             <div class="faq-list">
               ${faqDetails(d.faqs)}
-              ${slug === "moringa-powder" ? FSANZ_PENDING : ""}
+              ${slug === "moringa-powder" ? FSANZ_PENDING + `<div data-pending="guest-card-test" hidden><details><summary>Do I need a PayPal account?</summary><p>No. Choose 'Debit or Credit Card' at checkout.</p></details></div>` : ""}
             </div>
           </section>
           <section class="pdp-reviews" id="reviews">
@@ -3460,6 +3460,7 @@ function paymentPage() {
               <div id="paypal-button-container"></div>
               <div id="paypal-card-container"></div>
               <p class="pay-powered">Powered by PayPal</p>
+              <p class="pay-copy" data-pending="guest-card-test" hidden>No PayPal account needed: choose Debit or Credit Card.</p>
               <p class="pay-status" id="pay-status" role="status"></p>
             </div>
           </div>

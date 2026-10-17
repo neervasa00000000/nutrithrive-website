@@ -52,7 +52,7 @@ const approvedSeoChanges = {
   },
   "blog/moringa-side-effects-what-happens-take-too-much-2026.html": {
     title: "Moringa Side Effects in Australia: Start-Small Guide",
-    description: "Moringa powder side effects in Australia: digestive upset, nausea, loose stools — who should avoid it, how to start small, and what the safety research says.",
+    description: "Common moringa side effects such as an upset stomach, how much is too much in a day, who should check with a GP first, and how to start with a quarter teaspoon.",
   },
   "blog/moringa-powder-victoria-seniors-joint-health.html": {
     title: "How Victorian Seniors Add Moringa Powder to Everyday Meals",
