@@ -498,21 +498,7 @@ function bindHeader() {
     });
   });
 
-  const mainGalleryImage = document.querySelector("[data-pdp-image]");
-  document.querySelectorAll("[data-gallery-thumb]").forEach((thumb) => {
-    thumb.addEventListener("click", () => {
-      const src = thumb.getAttribute("data-src");
-      const alt = thumb.getAttribute("data-alt") || "Product photograph";
-      if (mainGalleryImage && src) {
-        mainGalleryImage.src = src;
-        mainGalleryImage.alt = alt;
-      }
-      document.querySelectorAll("[data-gallery-thumb]").forEach((item) =>
-        item.removeAttribute("aria-current")
-      );
-      thumb.setAttribute("aria-current", "true");
-    });
-  });
+  bindProductGallery();
 
   document.querySelectorAll("[data-qty-minus]").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -544,6 +530,50 @@ function bindHeader() {
       }
     }
   }
+}
+
+function bindProductGallery() {
+  const image = document.querySelector("[data-pdp-image]");
+  const thumbs = [...document.querySelectorAll("[data-gallery-thumb]")];
+  const dialog = document.querySelector("[data-gallery-dialog]");
+  if (!image || !thumbs.length || !dialog) return;
+  let index = 0;
+  const enlarged = dialog.querySelector("[data-gallery-enlarged]");
+  function show(next) {
+    index = (next + thumbs.length) % thumbs.length;
+    const thumb = thumbs[index];
+    const src = thumb.dataset.src;
+    const alt = thumb.dataset.alt || "Product photograph";
+    image.removeAttribute("srcset");
+    image.src = src;
+    image.alt = alt;
+    enlarged.src = src;
+    enlarged.alt = alt;
+    thumbs.forEach((item, i) => item.setAttribute("aria-pressed", String(i === index)));
+    const count = `${index + 1} / ${thumbs.length}`;
+    document.querySelector("[data-gallery-position]").textContent = count;
+    dialog.querySelector("[data-gallery-dialog-count]").textContent = count;
+  }
+  thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => show(i)));
+  document.querySelector("[data-gallery-open]").addEventListener("click", () => {
+    const active = thumbs.findIndex(thumb => new URL(thumb.dataset.src, location.href).pathname === new URL(image.src, location.href).pathname);
+    show(active < 0 ? 0 : active);
+    dialog.showModal();
+  });
+  dialog.querySelector("[data-gallery-close]").addEventListener("click", () => dialog.close());
+  dialog.querySelector("[data-gallery-prev]").addEventListener("click", () => show(index - 1));
+  dialog.querySelector("[data-gallery-next]").addEventListener("click", () => show(index + 1));
+  dialog.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      show(index + (event.key === "ArrowLeft" ? -1 : 1));
+    }
+  });
+  dialog.addEventListener("click", event => { if (event.target === dialog) dialog.close(); });
+  document.addEventListener("nt-gallery-select", event => {
+    const selected = thumbs.findIndex(thumb => new URL(thumb.dataset.src, location.href).pathname === new URL(event.detail.src, location.href).pathname);
+    if (selected >= 0) show(selected);
+  });
 }
 
 function pdpMoney(p) {
@@ -606,7 +636,9 @@ function applyPdpVariant(id, writeUrl) {
   const gallery = document.querySelector(".pdp-gallery");
   const bestValue = document.querySelector("[data-best-value-badge]");
   if (img) {
+    img.removeAttribute("srcset");
     img.src = p.image;
+    document.dispatchEvent(new CustomEvent("nt-gallery-select", { detail: { src: p.image } }));
     img.alt = `${p.name} ${p.variant}`;
   }
   if (title) title.textContent = p.name;
