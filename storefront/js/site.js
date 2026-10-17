@@ -445,6 +445,7 @@ function bindHeader() {
         article_slug: element.dataset.article || undefined,
         product_id: element.dataset.product || undefined,
         link_url: element.getAttribute("href") || undefined,
+        link_position: element.dataset.position || undefined,
       });
     });
   });
