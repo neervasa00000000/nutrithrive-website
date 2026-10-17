@@ -34,7 +34,7 @@ export const PRODUCTS = [
   {
     id: "moringa-400g",
     sku: "NT-MOR-400G",
-    name: "400g Moringa Bundle",
+    name: "Moringa Powder 400g",
     variant: "4 × 100g",
     benefit: "Four 100g pouches. $10 per 100g.",
   price: 40,

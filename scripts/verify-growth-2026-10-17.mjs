@@ -30,6 +30,6 @@ for (const file of paths.filter(p => p.endsWith('.html'))) {
   assert.deepEqual(after.match(/<title>.*?<\/title>/gs), before.match(/<title>.*?<\/title>/gs), `${file}: title frozen`);
   assert.deepEqual(after.match(/<h1\b[^>]*>.*?<\/h1>/gs), before.match(/<h1\b[^>]*>.*?<\/h1>/gs), `${file}: H1 frozen`);
   if (['site/index.html', 'site/products/moringa-powder/index.html'].includes(file)) assert.deepEqual(after.match(/<meta name="description"[^>]*>/g), before.match(/<meta name="description"[^>]*>/g));
-  if (/site\/blog\//.test(file) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout/i.test(file)) assert.equal(after, before, `${file}: HOLD`);
+  if (/site\/blog\//.test(file) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout|side-effects|safe-for|diabet|allerg|medicat|liver|kidney|breast|detox|fertil|hormone|immune|dosage|powder-per-day|benefits-for-women|deficien/i.test(file)) assert.equal(after, before, `${file}: HOLD`);
 }
 console.log('Growth content, metadata, shipping and HOLD checks passed.');

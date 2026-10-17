@@ -8,7 +8,7 @@ function auFreeShip() {
   if (Number.isFinite(fromRetention) && fromRetention > 0) return fromRetention;
   const fromRates = window.ShippingRates?.getAuFreeShippingProgressTarget?.();
   if (Number.isFinite(fromRates) && fromRates > 0) return fromRates;
-  return 79;
+  return 49;
 }
 
 const PAIRS = {
@@ -222,6 +222,7 @@ function renderRecs(cartItems, subtotal) {
 }
 
 function setLayout(empty) {
+  document.body.classList.toggle("has-mobile-checkout", !empty);
   document.getElementById("cart-layout")?.classList.toggle("is-empty", empty);
   const summary = document.getElementById("cart-summary");
   if (summary) summary.hidden = empty;
@@ -290,6 +291,10 @@ function renderCart() {
     <div class="summary-row total"><span>Estimated total</span><span>${money(sub + ship)}</span></div>
     ${progressHtml}
     <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Continue to secure checkout <span aria-hidden="true">→</span></a>
+    <div class="cart-mobile-checkout" aria-label="Mobile checkout">
+      <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Checkout · ${money(sub + ship)}</a>
+      <small>Estimated total including Australian shipping</small>
+    </div>
     <ul class="cart-assurances" aria-label="Checkout information">
       <li>Secure PayPal and card payment</li>
       <li>Seven-day returns on unopened products</li>
@@ -334,6 +339,21 @@ function trackCartView() {
     window._ntViewCartSent = true;
   }
 }
+
+function trackCheckoutClick(event) {
+  if (!event.target.closest?.(".cart-checkout")) return;
+  const items = readCart();
+  if (!items.length || window._ntBeginCheckoutSent) return;
+  if (!window.NT?.trackEcommerce?.("begin_checkout", items, { transport_type: "beacon" })) return;
+  window._ntBeginCheckoutSent = true;
+  // Carry successful tracking across the full-page navigation. Payment consumes
+  // this once, only for the same cart and a recent click; direct visits still fire.
+  const signature = JSON.stringify(items.map(i => [i.id, Number(i.qty || i.quantity || 1), Number(i.price)]).sort());
+  try { sessionStorage.setItem("nt-begin-checkout", JSON.stringify({ signature, at: Date.now() })); } catch { /* storage can be disabled */ }
+}
+document.addEventListener("click", trackCheckoutClick);
+window.addEventListener("nt-cart-change", () => { window._ntBeginCheckoutSent = false; });
+window.addEventListener("pageshow", () => { window._ntBeginCheckoutSent = false; });
 
 function bootCartPage() {
   renderCart();
