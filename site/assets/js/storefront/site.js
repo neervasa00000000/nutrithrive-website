@@ -902,15 +902,39 @@ function bindArticleReadingDepth() {
   if (!article) return;
   const slug = article.dataset.articleSlug || location.pathname.split("/").filter(Boolean).at(-1) || "article";
   const sent = new Set();
+  const report = (percent) => {
+    if (sent.has(percent)) return;
+    sent.add(percent);
+    trackEvent("article_read_depth", { article_slug: slug, percent_scrolled: percent });
+  };
+  const prose = article.querySelector(".prose");
+  const children = prose ? [...prose.children] : [];
+  if (children.length && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        report(Number(entry.target.dataset.readDepth));
+        observer.unobserve(entry.target);
+      });
+      if (sent.size === 2) observer.disconnect();
+    });
+    [50, 90].forEach((percent) => {
+      const sentinel = document.createElement("div");
+      sentinel.dataset.readDepth = String(percent);
+      sentinel.setAttribute("aria-hidden", "true");
+      sentinel.style.cssText = "height:0;margin:0;padding:0";
+      prose.insertBefore(sentinel, children[Math.min(children.length - 1, Math.floor((children.length * percent) / 100))]);
+      observer.observe(sentinel);
+    });
+    return;
+  }
   const measure = () => {
     const rect = article.getBoundingClientRect();
     const articleTop = window.scrollY + rect.top;
     const readable = Math.max(1, article.offsetHeight - window.innerHeight);
     const depth = Math.max(0, Math.min(100, ((window.scrollY - articleTop + window.innerHeight) / readable) * 100));
     [50, 90].forEach((percent) => {
-      if (depth < percent || sent.has(percent)) return;
-      sent.add(percent);
-      trackEvent("article_read_depth", { article_slug: slug, percent_scrolled: percent });
+      if (depth >= percent) report(percent);
     });
     if (sent.size === 2) window.removeEventListener("scroll", measure);
   };
@@ -918,22 +942,30 @@ function bindArticleReadingDepth() {
   measure();
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    bindPdpVariant();
-    bindStickyAtc();
-    bindHeader();
-    bindGrowthFeatures();
-    bindJournalSearch();
-    bindArticleReadingDepth();
-    setTimeout(() => emitCartChange(), 0);
-  });
-} else {
+function whenIdle(fn) {
+  if ("requestIdleCallback" in window) window.requestIdleCallback(fn, { timeout: 2000 });
+  else setTimeout(fn, 200);
+}
+
+function initSite() {
   bindPdpVariant();
   bindStickyAtc();
   bindHeader();
-  bindGrowthFeatures();
-  bindJournalSearch();
+  if (/^\/(blog|journal)(\/|$)/.test(location.pathname)) {
+    whenIdle(() => {
+      bindGrowthFeatures();
+      bindJournalSearch();
+    });
+  } else {
+    bindGrowthFeatures();
+    bindJournalSearch();
+  }
   bindArticleReadingDepth();
   setTimeout(() => emitCartChange(), 0);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initSite);
+} else {
+  initSite();
 }
