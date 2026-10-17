@@ -16,6 +16,7 @@ import {
   minifyCssFiles,
   patchHtmlFiles,
 } from './lib/asset-minify.mjs';
+import { inlineCriticalCss } from './lib/critical-css.mjs';
 
 const skipTailwind = process.argv.includes('--skip-tailwind');
 
@@ -51,6 +52,13 @@ async function main() {
   console.log('→ Patch HTML references…');
   const htmlChanged = await patchHtmlFiles(manifestEntries);
   console.log(`   ${htmlChanged} HTML files updated`);
+
+  console.log('→ Inline critical CSS…');
+  const critical = await inlineCriticalCss(path.join(ROOT, 'site'));
+  console.log(`   ${critical.processed} pages inlined`);
+  if (critical.oversized.length) {
+    throw new Error(`Critical CSS over 14KB on: ${critical.oversized.join(', ')}`);
+  }
 
   const twCss = path.join(ROOT, 'site/assets/css/tailwind-v2.min.css');
   const twSize = fs.existsSync(twCss) ? fs.statSync(twCss).size : 0;
