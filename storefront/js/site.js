@@ -15,20 +15,33 @@ function loadOptionalScript(src, id) {
   document.head.appendChild(script);
 }
 
+const NT_GA_DEBUG = new URLSearchParams(window.location.search).get("debug_mode") === "1";
+// js/config are queued before any event so the dataLayer order matches the
+// immediate-load behaviour; only the 176KB gtag.js download is deferred.
+window.gtag("js", new Date());
+window.gtag("config", GOOGLE_MEASUREMENT_ID, {
+  anonymize_ip: true,
+  allow_google_signals: false,
+  ...(NT_GA_DEBUG ? { debug_mode: true } : {}),
+});
+
 function loadGoogleAnalytics() {
   if (document.getElementById("nt-google-analytics")) return;
-  const debugMode = new URLSearchParams(window.location.search).get("debug_mode") === "1";
-  window.gtag("js", new Date());
-  window.gtag("config", GOOGLE_MEASUREMENT_ID, {
-    anonymize_ip: true,
-    allow_google_signals: false,
-    ...(debugMode ? { debug_mode: true } : {}),
-  });
   loadOptionalScript(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`, "nt-google-analytics");
   window.dispatchEvent(new CustomEvent("nt-analytics-ready"));
 }
 
-loadGoogleAnalytics();
+const NT_IMMEDIATE_GA = /^\/(cart|checkout|payment|thank-you|pages\/shop\/(cart|payment|thank-you))/.test(location.pathname)
+  || NT_GA_DEBUG;
+function scheduleGoogleAnalytics() {
+  if (NT_IMMEDIATE_GA) return loadGoogleAnalytics();
+  let done = false;
+  const go = () => { if (done) return; done = true; loadGoogleAnalytics(); };
+  ["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => addEventListener(e, go, { once: true, passive: true }));
+  const idle = () => (window.requestIdleCallback ? requestIdleCallback(go, { timeout: 1500 }) : setTimeout(go, 1200));
+  if (document.readyState === "complete") idle(); else addEventListener("load", idle, { once: true });
+}
+scheduleGoogleAnalytics();
 
 function freshAsset(url) {
   if (!url || !url.startsWith("/assets/") || url.includes("?v=")) return url;
@@ -432,6 +445,7 @@ function bindHeader() {
         article_slug: element.dataset.article || undefined,
         product_id: element.dataset.product || undefined,
         link_url: element.getAttribute("href") || undefined,
+        link_position: element.dataset.position || undefined,
       });
     });
   });
@@ -504,7 +518,10 @@ function bindHeader() {
       const src = thumb.getAttribute("data-src");
       const alt = thumb.getAttribute("data-alt") || "Product photograph";
       if (mainGalleryImage && src) {
+        mainGalleryImage.removeAttribute("srcset");
+        mainGalleryImage.removeAttribute("sizes");
         mainGalleryImage.src = src;
+        mainGalleryImage.dataset.pdpSrc = src;
         mainGalleryImage.alt = alt;
       }
       document.querySelectorAll("[data-gallery-thumb]").forEach((item) =>
@@ -606,7 +623,12 @@ function applyPdpVariant(id, writeUrl) {
   const gallery = document.querySelector(".pdp-gallery");
   const bestValue = document.querySelector("[data-best-value-badge]");
   if (img) {
-    img.src = p.image;
+    if (img.dataset.pdpSrc?.split("?")[0] !== p.image) {
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+      img.src = p.image;
+      img.dataset.pdpSrc = p.image;
+    }
     img.alt = `${p.name} ${p.variant}`;
   }
   if (title) title.textContent = p.name;
@@ -880,15 +902,39 @@ function bindArticleReadingDepth() {
   if (!article) return;
   const slug = article.dataset.articleSlug || location.pathname.split("/").filter(Boolean).at(-1) || "article";
   const sent = new Set();
+  const report = (percent) => {
+    if (sent.has(percent)) return;
+    sent.add(percent);
+    trackEvent("article_read_depth", { article_slug: slug, percent_scrolled: percent });
+  };
+  const prose = article.querySelector(".prose");
+  const children = prose ? [...prose.children] : [];
+  if (children.length && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        report(Number(entry.target.dataset.readDepth));
+        observer.unobserve(entry.target);
+      });
+      if (sent.size === 2) observer.disconnect();
+    });
+    [50, 90].forEach((percent) => {
+      const sentinel = document.createElement("div");
+      sentinel.dataset.readDepth = String(percent);
+      sentinel.setAttribute("aria-hidden", "true");
+      sentinel.style.cssText = "height:0;margin:0;padding:0";
+      prose.insertBefore(sentinel, children[Math.min(children.length - 1, Math.floor((children.length * percent) / 100))]);
+      observer.observe(sentinel);
+    });
+    return;
+  }
   const measure = () => {
     const rect = article.getBoundingClientRect();
     const articleTop = window.scrollY + rect.top;
     const readable = Math.max(1, article.offsetHeight - window.innerHeight);
     const depth = Math.max(0, Math.min(100, ((window.scrollY - articleTop + window.innerHeight) / readable) * 100));
     [50, 90].forEach((percent) => {
-      if (depth < percent || sent.has(percent)) return;
-      sent.add(percent);
-      trackEvent("article_read_depth", { article_slug: slug, percent_scrolled: percent });
+      if (depth >= percent) report(percent);
     });
     if (sent.size === 2) window.removeEventListener("scroll", measure);
   };
@@ -896,22 +942,30 @@ function bindArticleReadingDepth() {
   measure();
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    bindPdpVariant();
-    bindStickyAtc();
-    bindHeader();
-    bindGrowthFeatures();
-    bindJournalSearch();
-    bindArticleReadingDepth();
-    setTimeout(() => emitCartChange(), 0);
-  });
-} else {
+function whenIdle(fn) {
+  if ("requestIdleCallback" in window) window.requestIdleCallback(fn, { timeout: 2000 });
+  else setTimeout(fn, 200);
+}
+
+function initSite() {
   bindPdpVariant();
   bindStickyAtc();
   bindHeader();
-  bindGrowthFeatures();
-  bindJournalSearch();
+  if (/^\/(blog|journal)(\/|$)/.test(location.pathname)) {
+    whenIdle(() => {
+      bindGrowthFeatures();
+      bindJournalSearch();
+    });
+  } else {
+    bindGrowthFeatures();
+    bindJournalSearch();
+  }
   bindArticleReadingDepth();
   setTimeout(() => emitCartChange(), 0);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initSite);
+} else {
+  initSite();
 }

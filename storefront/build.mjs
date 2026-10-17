@@ -28,6 +28,9 @@ const ASSET_VERSION = "20261017-1";
 const PAYMENT_ASSET_VERSION = "20261017-1";
 const CSS_ASSET_VERSION = "20261017-1";
 const CART_CSS_ASSET_VERSION = "20261017-1";
+// Must match the ?v= hard-coded in the @font-face rules in storefront/css/system.css,
+// otherwise the preload and the CSS request download each font twice.
+const FONT_ASSET_VERSION = "20260831-7";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -594,6 +597,9 @@ const REDIRECTED_JOURNAL_SLUGS = new Set(
     .map((match) => match[1])
 );
 
+// Health-sensitive blog paths are preserved as-is and never linked from keep-reading blocks.
+const HOLD_SLUG_RE = /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout|side-effects|safe-for|diabet|allerg|medicat|liver|kidney|breast|detox|fertil|hormone|immune|dosage|powder-per-day|benefits-for-women|deficien/i;
+
 const CURATED_RELATED = {
   "eye-twitching-causes-magnesium-australia-2026": [
     "why-always-tired-nutritional-deficiencies-australia-2026",
@@ -609,6 +615,8 @@ const CURATED_RELATED = {
     "moringa-brands-comparison-australia-2026",
     "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "rosabella-moringa-reviews-legit-or-overhyped-2026",
+    "moringa-capsules-vs-powder-which-is-better-2026",
+    "how-to-choose-moringa-powder-australia-2026",
   ],
   "verify-moringa-quality-premium-buyers-checklist-2026": [
     "how-to-choose-moringa-powder-australia-2026",
@@ -1359,12 +1367,12 @@ function productCard(p, priority = false, opts = {}) {
     "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp": "/assets/images/product_webp/moringa-powder-400g-bundle-main-card-640.webp",
     "/assets/images/product_webp/dried-curry-leaves-30g-main.webp": "/assets/images/product_webp/dried-curry-leaves-30g-main-card-640.webp",
   }[p.image];
-  const responsive = cardImage
-    ? `srcset="${cardImage} 640w, ${cardImage.replace("-card-640", "-card-960")} 960w, ${p.image} 1254w" sizes="(max-width: 760px) 70vw, 25vw"`
-    : "";
+  const imageAttrs = cardImage
+    ? `src="${p.image}" srcset="${cardImage} 640w, ${cardImage.replace("-card-640", "-card-960")} 960w, ${p.image} 1254w" sizes="(max-width: 760px) 70vw, 25vw"`
+    : responsiveImgAttrs(p.image, "(max-width: 760px) 70vw, 25vw", 640);
   return `<article class="product-card">
     <a class="product-card-media" href="${href}" aria-label="${esc(p.name)} ${esc(p.variant)}">
-      <img src="${p.image}" ${responsive ? `${responsive} ` : ""}alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
+      <img ${imageAttrs} alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
     </a>
     <div class="product-card-body">
       <h3><a href="${href}" style="color:inherit;text-decoration:none">${esc(opts.title || p.name)}</a></h3>
@@ -1384,6 +1392,48 @@ const ORG_SCHEMA = JSON.parse(
 );
 ORG_SCHEMA.description =
   "NutriThrive is a farmer and manufacturer. We grow moringa and curry leaves on our own farm, source tea from a Darjeeling family farm, handmake moringa soap in Australia, and pack orders in Truganina, Melbourne.";
+
+const responsiveCache = new Map();
+/** WebP width variants written by scripts/make-responsive-images.py, smallest first. */
+function responsiveVariants(src) {
+  const clean = String(src || "").split("?")[0];
+  if (responsiveCache.has(clean)) return responsiveCache.get(clean);
+  let variants = [];
+  if (clean.startsWith("/assets/")) {
+    const dir = path.join(SITE, path.dirname(clean));
+    const base = path.basename(clean).replace(/\.[a-z0-9]+$/i, "");
+    const pattern = new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}-(\\d+)\\.webp$`);
+    if (fs.existsSync(dir)) {
+      variants = fs.readdirSync(dir)
+        .map((name) => ({ name, width: Number(name.match(pattern)?.[1]) }))
+        .filter((item) => item.width)
+        .sort((a, b) => a.width - b.width)
+        .map(({ name, width }) => ({ src: `${path.dirname(clean)}/${name}`, width }));
+    }
+  }
+  responsiveCache.set(clean, variants);
+  return variants;
+}
+
+/** src/srcset attributes for an image; falls back to the original file when no variants exist. */
+function responsiveImgAttrs(src, sizes, preferredWidth = 800) {
+  const variants = responsiveVariants(src);
+  if (!variants.length) return `src="${src}"`;
+  const pick = variants.find((item) => item.width >= preferredWidth) || variants.at(-1);
+  return `src="${pick.src}" srcset="${variants.map((item) => `${item.src} ${item.width}w`).join(", ")}" sizes="${sizes}"`;
+}
+
+const WIDE_IMAGE_SIZES = "(max-width: 760px) calc(100vw - 32px), 560px";
+// Refined PDPs fix the mobile gallery at 152px square below 767px.
+const PDP_GALLERY_SIZES = "(max-width: 767px) 152px, 560px";
+
+/** Preload that matches the candidate the <img> srcset will choose. */
+function preloadImage(src, sizes, preferredWidth = 800) {
+  const variants = responsiveVariants(src);
+  if (!variants.length) return `<link rel="preload" as="image" href="${src}" fetchpriority="high">`;
+  const pick = variants.find((item) => item.width >= preferredWidth) || variants.at(-1);
+  return `<link rel="preload" as="image" href="${pick.src}" imagesrcset="${variants.map((item) => `${item.src} ${item.width}w`).join(", ")}" imagesizes="${sizes}" fetchpriority="high">`;
+}
 
 function absUrl(p) {
   if (!p) return OG_IMAGE;
@@ -1813,13 +1863,14 @@ ${extraFoot}
 function writePage(rel, html, destRoot = OUT) {
   if (process.env.STOREFRONT_PAGES_ONLY === "1" && /^(blog|journal)\//.test(rel)) return;
   // Preserve existing HOLD articles during the October growth pass.
-  if (/^(?:blog|journal)\//.test(rel) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout|side-effects|safe-for|diabet|allerg|medicat|liver|kidney|breast|detox|fertil|hormone|immune|dosage|powder-per-day|benefits-for-women|deficien/i.test(rel) && fs.existsSync(path.join(destRoot, rel))) return;
+  if (/^(?:blog|journal)\//.test(rel) && HOLD_SLUG_RE.test(rel) && fs.existsSync(path.join(destRoot, rel))) return;
   html = applyLivePaths(html);
   const file = path.join(destRoot, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   const cacheBusted = html.replace(
     /(src|href)="(\/assets\/[^"?#]+)(?:\?[^"#]*)?"/g,
     (_match, attribute, assetPath) => {
+      if (assetPath.startsWith("/assets/fonts/")) return `${attribute}="${assetPath}?v=${FONT_ASSET_VERSION}"`;
       const version = assetPath.includes("/assets/css/storefront-system")
         ? (rel === "pages/shop/cart.html" ? CART_CSS_ASSET_VERSION : CSS_ASSET_VERSION)
         : assetPath === "/assets/js/storefront/payment-page.js" ||
@@ -1847,7 +1898,7 @@ function homepage() {
     preserveTitle: Boolean(desk.title || liveSeo?.title),
     preserveDescription: Boolean(desk.description || liveSeo?.description),
     robots: liveSeo?.robots || undefined,
-    extraHead: `<link rel="preload" as="image" href="/assets/images/product_webp/moringa-powder-100g-main.webp" fetchpriority="high">
+    extraHead: `${preloadImage("/assets/images/product_webp/moringa-powder-100g-main.webp", WIDE_IMAGE_SIZES, 960)}
   ${jsonLd(websiteSchema())}
   ${jsonLd({ "@context": "https://schema.org", "@type": "WebPage", "@id": `${LIVE}/#webpage`, url: `${LIVE}/`, name: "NutriThrive", isPartOf: { "@id": `${LIVE}/#website` }, ...pageDateFields() })}`,
     main: `
@@ -1864,7 +1915,7 @@ function homepage() {
       <p class="purchase-note">Free AU shipping from $49 · <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI lab summary</a></p>
     </div>
     <div class="hero-photo">
-      <img src="/assets/images/product_webp/moringa-powder-100g-main.webp" alt="NutriThrive 100g moringa powder pouch with moringa leaves and a bowl of powder" width="1254" height="1254" fetchpriority="high">
+      <img ${responsiveImgAttrs("/assets/images/product_webp/moringa-powder-100g-main.webp", WIDE_IMAGE_SIZES, 960)} alt="NutriThrive 100g moringa powder pouch with moringa leaves and a bowl of powder" width="1254" height="1254" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -2547,7 +2598,7 @@ function pdpPage(slug, d) {
     ogImage: buyProduct.image,
     ogImageWidth: 900,
     ogImageHeight: 900,
-    extraHead: `<link rel="preload" as="image" href="${gallery[0][0]}" fetchpriority="high">` +
+    extraHead: preloadImage(gallery[0][0], PDP_GALLERY_SIZES, 960) +
       jsonLd(productSchema) +
       jsonLd({
         "@context": "https://schema.org",
@@ -2578,7 +2629,7 @@ function pdpPage(slug, d) {
       <section class="wrap pdp">
         <div class="pdp-gallery-wrap">
           <div class="pdp-gallery${buyProduct.id === "moringa-400g" || buyProduct.id === "combo-pack" || buyProduct.id === "moringa-soap-combo" ? " is-wide" : ""}">
-            <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
+            <img ${responsiveImgAttrs(gallery[0][0], PDP_GALLERY_SIZES, 960)} alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image data-pdp-src="${gallery[0][0]}">
           </div>
         </div>
         <div class="pdp-buy" id="pdp-buy">
@@ -2637,7 +2688,7 @@ function pdpPage(slug, d) {
             <section><h2>How we make it</h2><p>${esc(d.process)}</p></section>
             <section><h2>Storage and shelf life</h2><p>${esc(d.storage)}</p></section>
           </div></details>`}
-          ${d.detailImage ? `<details class="pdp-detail-disclosure"><summary>See the product up close</summary><figure class="pdp-detail-photo"><img src="${d.detailImage}" alt="${esc(d.detailAlt)}" width="1254" height="1254" loading="lazy"><figcaption>${esc(d.detailCaption)}</figcaption></figure></details>` : ""}
+          ${d.detailImage ? `<details class="pdp-detail-disclosure"><summary>See the product up close</summary><figure class="pdp-detail-photo"><img ${responsiveImgAttrs(d.detailImage, WIDE_IMAGE_SIZES, 640)} alt="${esc(d.detailAlt)}" width="1254" height="1254" loading="lazy"><figcaption>${esc(d.detailCaption)}</figcaption></figure></details>` : ""}
           <div class="pdp-support-grid">
             ${d.safety ? `<details class="pdp-support-card safety-note"><summary>Safety information</summary><div><p>${esc(d.safety)}</p></div></details>` : ""}
             <details class="pdp-support-card delivery-card"><summary>Delivery and returns</summary><div>
@@ -4182,9 +4233,10 @@ function extractArticleProse(slug, fallbackHtml) {
   // Production articles are already wrapped in `.prose`. Use the balanced
   // extractor for that wrapper too; the old non-greedy fallback stopped at
   // the first nested </div> and could collapse a long article to its lede.
+  const hoistedAnswer = extractInnerByClass(html, "article-answer").trim();
   for (const cls of ["blog-v2-prose", "main-content", "blog-post-content", "content-wrapper", "prose"]) {
     const extracted = extractInnerByClass(html, cls);
-    if (extracted.trim().length > 200) return rewriteLinks(extracted);
+    if (extracted.trim().length > 200) return rewriteLinks(`${hoistedAnswer}${extracted}`);
   }
   const migrated = html.match(/<div class="prose">([\s\S]*?)<\/div>\s*(?:<aside class="article-safety"|<section class="article-conversion")/);
   if (migrated && migrated[1].trim().length > 400) return rewriteLinks(migrated[1]);
@@ -4256,7 +4308,7 @@ function articleDates(prose) {
   };
 }
 
-function articleProseWithContents(prose, slug) {
+function articleProseWithContents(prose, slug, { hoistAnswer = false } = {}) {
   const used = new Set();
   const headings = [];
   const html = String(prose).replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/gi, (match, attrs, inner) => {
@@ -4271,15 +4323,116 @@ function articleProseWithContents(prose, slug) {
     headings.push({ id, label });
     return `<h2${existing ? attrs : `${attrs} id="${esc(id)}"`}>${inner}</h2>`;
   });
-  if (headings.length < 4) return { html, contents: "" };
-  const visibleHeadings = headings.slice(0, 8);
+  const hoisted = hoistAnswer ? hoistQuickAnswer(html) : null;
+  const answer = hoisted?.answer || "";
+  const body = hoisted?.html || html;
+  const listed = headings.filter(({ id }) => !answer.includes(`id="${id}"`));
+  if (listed.length < 4) return { html: body, answer, contents: "" };
   return {
-    html,
-    contents: `<nav class="article-toc" aria-labelledby="contents-${esc(slug)}">
-      <h2 id="contents-${esc(slug)}">On this page</h2>
-      <ol>${visibleHeadings.map(({ id, label }) => `<li><a href="#${esc(id)}" data-funnel-event="article_contents_click" data-article="${esc(slug)}">${esc(label)}</a></li>`).join("")}${headings.length > visibleHeadings.length ? `<li class="article-toc-more">${headings.length - visibleHeadings.length} more sections follow</li>` : ""}</ol>
-    </nav>`,
+    html: body,
+    answer,
+    contents: `<details class="article-toc">
+      <summary>On this page (${listed.length} sections)</summary>
+      <ol>${listed.map(({ id, label }) => `<li><a href="#${esc(id)}" data-funnel-event="article_contents_click" data-article="${esc(slug)}">${esc(label)}</a></li>`).join("")}</ol>
+    </details>`,
   };
+}
+
+/** Index just past the element that opens at `start`, or -1 if it never closes. */
+function balancedElementEnd(html, start) {
+  const tag = html.slice(start).match(/^<([a-z][a-z0-9]*)/i)?.[1];
+  if (!tag) return -1;
+  const re = new RegExp(`<${tag}\\b|</${tag}>`, "gi");
+  re.lastIndex = start;
+  let depth = 0;
+  let m;
+  while ((m = re.exec(html))) {
+    depth += m[0][1] === "/" ? -1 : 1;
+    if (depth === 0) return m.index + m[0].length;
+  }
+  return -1;
+}
+
+function isBalancedFragment(fragment) {
+  return ["div", "section", "aside", "ul", "ol", "details", "table"].every((tag) =>
+    (fragment.match(new RegExp(`<${tag}\\b`, "gi")) || []).length === (fragment.match(new RegExp(`</${tag}>`, "gi")) || []).length);
+}
+
+/** Lift a leading "Quick answer"/"Quick verdict" H2 section out of the prose. */
+function hoistQuickAnswer(html) {
+  const re = /<h2\b[^>]*>([\s\S]*?)<\/h2>/gi;
+  for (let count = 0, m; count < 3 && (m = re.exec(html)); count += 1) {
+    if (!/^quick (answer|verdict)/i.test(decodeEntities(stripTags(m[1])).trim())) continue;
+    const wrapper = html.slice(0, m.index).match(/<(div|section)\b[^>]*>\s*$/i);
+    let start = m.index;
+    let end;
+    if (wrapper) {
+      start = m.index - wrapper[0].length;
+      end = balancedElementEnd(html, start);
+    } else {
+      const after = m.index + m[0].length;
+      const next = html.slice(after).search(/<h2\b|<section\b|<aside class="article-mid-cta"/i);
+      end = next < 0 ? html.length : after + next;
+    }
+    if (end < 0) return null;
+    const block = html.slice(start, end);
+    if (!isBalancedFragment(block) || (block.match(/<h2\b/gi) || []).length !== 1) return null;
+    const before = html.slice(0, start);
+    const after = html.slice(end);
+    return { answer: block.trim(), html: before.trim() ? before + after : after.replace(/^\s+/, "") };
+  }
+  return null;
+}
+
+/** Blocks the template injects into `.prose`; stripped before re-injecting on rebuild. */
+function stripInjectedProse(html) {
+  return String(html)
+    .replace(/<aside class="keep-reading[^"]*"[\s\S]*?<\/aside>/g, "")
+    .replace(/<aside class="article-methodology"[\s\S]*?<\/aside>/g, "");
+}
+
+/** Insert `block` before the nth prose H2 (and before a mid CTA sitting directly above it). */
+function insertBeforeH2(html, n, block) {
+  const re = /<h2\b/gi;
+  let m;
+  let count = 0;
+  while ((m = re.exec(html))) {
+    count += 1;
+    if (count !== n) continue;
+    let pos = m.index;
+    const midCta = html.lastIndexOf('<aside class="article-mid-cta"', pos);
+    if (midCta >= 0 && /^<aside[\s\S]*<\/aside>\s*(?:<section\b[^>]*>\s*)?$/.test(html.slice(midCta, pos)) && !/<h2\b/i.test(html.slice(midCta, pos))) pos = midCta;
+    return html.slice(0, pos) + block + html.slice(pos);
+  }
+  return null;
+}
+
+function keepReadingWhy(description) {
+  const text = humanCopy(decodeEntities(stripTags(description || ""))).replace(/\s+/g, " ").trim();
+  const sentence = text.match(/^.*?[.!?](?=\s|$)/)?.[0] || text;
+  if (sentence.length <= 90) return sentence;
+  return `${sentence.slice(0, 89).replace(/\s+\S*$/, "")}…`;
+}
+
+function keepReadingLabel(slug, article) {
+  return ["moringa-patches-australia-review-do-they-work", "rosabella-moringa-reviews-legit-or-overhyped-2026"].includes(slug) && article.slug === "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
+    ? "Moringa at Chemist Warehouse: capsules vs powder"
+    : humanCopy(stripTags(article.title));
+}
+
+function keepReadingBlock(slug, articles, position) {
+  if (!articles.length) return "";
+  const r = routes();
+  const headingId = `keep-reading-${position}-${esc(slug)}`;
+  const heading = position === "end"
+    ? `<h2 id="${headingId}">Keep reading</h2>`
+    : `<p class="kr-heading" id="${headingId}">Keep reading</p>`;
+  const items = articles.map((article) => {
+    const thumb = responsiveVariants(article.image)[0]?.src || article.image;
+    const why = keepReadingWhy(article.description);
+    return `<li><a href="${r.article(article.slug)}" data-funnel-event="article_keep_reading_click" data-article="${esc(slug)}" data-position="${position}">${thumb ? `<img src="${thumb}" alt="" width="96" height="96" loading="lazy" decoding="async">` : ""}<span class="kr-text"><span class="kr-title">${esc(keepReadingLabel(slug, article))}</span>${why ? `<span class="kr-why">${esc(why)}</span>` : ""}</span></a></li>`;
+  }).join("");
+  return `<aside class="keep-reading keep-reading-${position}" aria-labelledby="${headingId}">${heading}<ul>${items}</ul></aside>`;
 }
 
 function dosageGuideHead(url, breadcrumbItems) {
@@ -4399,9 +4552,6 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const neighboringArticles = allArticles.length > 1
     ? [allArticles[(currentGlobalIndex + 1) % allArticles.length], allArticles[(currentGlobalIndex + 2) % allArticles.length]]
     : [];
-  const relatedArticles = [...curatedRelated, priorityArticle,...nextArticles,...globalRelated,...neighboringArticles]
-    .filter((article, index, list) => article && article.slug !== meta.slug && list.findIndex((item) => item?.slug === article.slug) === index)
-    .slice(0, 3);
   const dates = articleDates(prose);
   const gitDates = !dates.publishedIso || !dates.modifiedIso ? gitFileDates(`site/blog/${meta.slug}.html`) : { published: "", modified: "" };
   const schemaPublished = dates.publishedIso || gitDates.published;
@@ -4454,7 +4604,6 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     },
     mainEntityOfPage: url,
   } : null;
-  const enhancedProse = articleProseWithContents(prose, meta.slug);
   const conversionPath = ARTICLE_CONVERSION_PATHS[meta.slug] || {};
   const isMoringaPowder = ["moringa-powder", "moringa-200g", "moringa-400g"].includes(shop.id);
   const isMoringaSales = isMoringaPowder && !isHealth && MORINGA_SALES_SLUGS.has(meta.slug);
@@ -4518,6 +4667,22 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             <p><a href="/products/moringa-powder/">See our farm-grown moringa powder</a></p>
           </div>`
     : "";
+  const enhancedProse = articleProseWithContents(stripMidCtas(stripInjectedProse(prose)), meta.slug, { hoistAnswer: !underH1 });
+  const keepReadingArticles = [...curatedRelated, priorityArticle, ...nextArticles, ...globalRelated, ...neighboringArticles]
+    .filter((article, index, list) => article && article.slug !== meta.slug && !HOLD_SLUG_RE.test(article.slug) && !/organic/i.test(`${article.title} ${article.description}`) && list.findIndex((item) => item?.slug === article.slug) === index);
+  const proseH2Count = (enhancedProse.html.match(/<h2\b/gi) || []).length;
+  const midKeepReading = proseH2Count >= 5 ? keepReadingArticles.slice(0, 2) : [];
+  const endKeepReading = keepReadingArticles.filter((article) => !midKeepReading.includes(article)).slice(0, 3);
+  let proseHtml = isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : enhancedProse.html;
+  if (midKeepReading.length === 2) proseHtml = insertBeforeH2(proseHtml, 4, keepReadingBlock(meta.slug, midKeepReading, "mid")) || proseHtml;
+  if (conversionPath.methodology) {
+    const methodology = `<aside class="article-methodology" aria-labelledby="method-${esc(meta.slug)}">
+            <h2 id="method-${esc(meta.slug)}">How we made this comparison</h2>
+            <p>${meta.slug === "how-to-choose-moringa-powder-australia-2026" ? "We sell moringa leaf powder, so read this as a seller's guide and check our sources. The short version: look for one ingredient, a bright green colour, a readable batch date and lab paperwork you can open. Our powder is grown on our family farm in Gujarat, sun-dried and packed in Truganina, Melbourne." : "We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions."}</p>
+          </aside>`;
+    proseHtml = insertBeforeH2(proseHtml, 2, methodology) || `${methodology}${proseHtml}`;
+  }
+  const quickProductMoringa = isMoringaPowder && !isHealth && meta.slug !== "fathers-day-gift-under-40";
   const dosageSchemas = meta.slug === "how-much-moringa-powder-per-day-dosage-guide"
     ? dosageGuideHead(url, breadcrumbItems)
     : "";
@@ -4548,21 +4713,19 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>${underH1}
           <p class="lede">${ledeHtml}</p>
-          <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
-          ${seoOverride?.heroCaptionHtml || ""}
+          ${enhancedProse.answer ? `<section class="article-answer" aria-label="Quick answer">${enhancedProse.answer}</section>` : ""}
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
-            <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · Free AU shipping from $49 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
+            <div><span>Related product</span><strong>${quickProductMoringa ? `From ${MORINGA_PRICES.p100} · 100g pouch` : esc(quickProductLabel)}</strong>${quickProductMoringa ? `<small class="article-quick-facts">400g (4 × 100g) ${MORINGA_PRICES.p400}, best value · Free AU shipping from $49 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
             <a href="${productHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
           </aside>
           ${enhancedProse.contents}
-          ${conversionPath.methodology ? `<aside class="article-methodology" aria-labelledby="method-${esc(meta.slug)}">
-            <h2 id="method-${esc(meta.slug)}">How we made this comparison</h2>
-            <p>${meta.slug === "how-to-choose-moringa-powder-australia-2026" ? "We sell moringa leaf powder, so read this as a seller's guide and check our sources. The short version: look for one ingredient, a bright green colour, a readable batch date and lab paperwork you can open. Our powder is grown on our family farm in Gujarat, sun-dried and packed in Truganina, Melbourne." : "We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions."}</p>
-          </aside>
-          ` : ""}<div class="prose">${isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : stripMidCtas(enhancedProse.html)}</div>
+          <div class="article-hero"><img ${responsiveImgAttrs(heroSrc, "(max-width: 760px) calc(100vw - 32px), 720px")} alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" decoding="async" loading="lazy"></div>
+          ${seoOverride?.heroCaptionHtml || ""}
+          <div class="prose">${proseHtml}</div>
           ${isHealth ? `<aside class="article-safety"><p>This is general food information. If you're pregnant, breastfeeding, on medication or managing a health condition, check with your GP first.</p></aside>` : ""}
           ${isMoringaPowder && !isHealth && CALC_SLUGS.has(meta.slug) ? per100Calculator(meta.slug) : ""}
           ${objectionHtml}
+          ${keepReadingBlock(meta.slug, endKeepReading, "end")}
           <section class="article-conversion" aria-labelledby="article-product-${esc(meta.slug)}">
             <img src="${shop.image}" alt="${esc(shop.name)} ${esc(shop.variant)}" width="240" height="300" loading="lazy">
             <div>
@@ -4579,11 +4742,6 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             </div>
           </section>
           ${["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
-          ${relatedArticles.length ? `<nav class="article-related" aria-labelledby="related-${esc(meta.slug)}">
-            <p class="kicker">Continue with</p>
-            <h2 id="related-${esc(meta.slug)}">Related ${esc(topic.toLowerCase())}</h2>
-            <ul>${relatedArticles.map((article) => `<li><a href="${r.article(article.slug)}">${esc(["moringa-patches-australia-review-do-they-work", "rosabella-moringa-reviews-legit-or-overhyped-2026"].includes(meta.slug) && article.slug === "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025" ? "Moringa at Chemist Warehouse: capsules vs powder" : humanCopy(stripTags(article.title)))}</a></li>`).join("")}</ul>
-          </nav>` : ""}
           <aside class="article-author">
             <p class="kicker">About the author</p>
             <h2><a href="${r.about}#founder" rel="author">Neer Vasa, NutriThrive founder</a></h2>

@@ -364,7 +364,7 @@ for (const rel of generatedHtml) {
   if (/^blog\/[^/]+\.html$/.test(rel) && rel !== "blog/index.html" && /content="index,\s*follow"/i.test(html)) {
     if (!html.includes("article-quick-product")) errors.push(`${rel}: missing early article-to-product path`);
     if (!html.includes("article-conversion")) errors.push(`${rel}: missing article product conversion section`);
-    if (!html.includes("article-related")) errors.push(`${rel}: missing related article navigation`);
+    if (!html.includes("article-related") && !html.includes("keep-reading-end")) errors.push(`${rel}: missing related article navigation`);
     if (/Compare our moringa|Get moringa for this guide/.test(html)) {
       errors.push(`${rel}: weak moringa CTA label returned`);
     }
