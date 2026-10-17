@@ -172,6 +172,7 @@ export async function patchHtmlFiles(manifestEntries) {
   });
   let changed = 0;
   for (const rel of htmlFiles) {
+    if (process.env.STOREFRONT_PAGES_ONLY === "1" && /^blog\//.test(rel)) continue;
     // HOLD articles must retain their existing published HTML.
     if (/blog\//.test(rel) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout|side-effects|safe-for|diabet|allerg|medicat|liver|kidney|breast|detox|fertil|hormone|immune|dosage|powder-per-day|benefits-for-women|deficien/i.test(rel)) continue;
     const fp = path.join(SITE, rel);
