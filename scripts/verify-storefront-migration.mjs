@@ -390,10 +390,10 @@ if (home) {
 }
 
 const startHere = [
-  ["blog/curry-leaves-substitute-what-to-use-2026.html", "Curry leaf substitutes, and why none quite match", "$49"],
-  ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Moringa and dogs: ask your vet first", null],
+  ["blog/curry-leaves-substitute-what-to-use-2026.html", "The best curry leaves substitute, and what to use in each dish", "$49"],
+  ["blog/is-moringa-safe-for-dogs-benefits-dosage-australia-2026.html", "Is moringa safe for dogs? What Australian owners should know", null],
   ["blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html", "Three green powders side by side", "$49"],
-  ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa side effects: start with a small amount", null],
+  ["blog/moringa-side-effects-what-happens-take-too-much-2026.html", "Moringa side effects: what happens if you take too much", null],
   ["blog/moringa-powder-victoria-seniors-joint-health.html", "How older Victorians add moringa to everyday meals", "$49"],
   ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 or plain moringa powder? A side-by-side", "$49"],
 ];

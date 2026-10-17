@@ -90,7 +90,7 @@
     },
   };
 
-  // Initial timing assumptions only, not measured reorder behaviour.
+  // Initial timing assumptions only — not measured reorder behaviour.
   const REORDER_ASSUMPTION_DAYS = {
     "curry-leaves": 45,
     "black-tea": 40,

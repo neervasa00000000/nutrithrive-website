@@ -772,7 +772,7 @@ function bindNewsletterForms() {
       };
       localStorage.setItem(SIGNUP_KEY, JSON.stringify(record));
       localStorage.setItem(OFFER_KEY, JSON.stringify({ state: "joined", at: Date.now() }));
-      if (status) status.innerHTML = `Thanks, your preview code is <strong>WELCOME5</strong>. Use it at checkout. No email is actually sent from this local preview.`;
+      if (status) status.innerHTML = `Thanks — your preview code is <strong>WELCOME5</strong>. Use it at checkout. No email is actually sent from this local preview.`;
       form.querySelector('button[type="submit"]')?.setAttribute("disabled", "");
       announce("Welcome code WELCOME5 is ready");
     });
