@@ -517,7 +517,10 @@ function bindHeader() {
       const src = thumb.getAttribute("data-src");
       const alt = thumb.getAttribute("data-alt") || "Product photograph";
       if (mainGalleryImage && src) {
+        mainGalleryImage.removeAttribute("srcset");
+        mainGalleryImage.removeAttribute("sizes");
         mainGalleryImage.src = src;
+        mainGalleryImage.dataset.pdpSrc = src;
         mainGalleryImage.alt = alt;
       }
       document.querySelectorAll("[data-gallery-thumb]").forEach((item) =>
@@ -619,7 +622,12 @@ function applyPdpVariant(id, writeUrl) {
   const gallery = document.querySelector(".pdp-gallery");
   const bestValue = document.querySelector("[data-best-value-badge]");
   if (img) {
-    img.src = p.image;
+    if (img.dataset.pdpSrc?.split("?")[0] !== p.image) {
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+      img.src = p.image;
+      img.dataset.pdpSrc = p.image;
+    }
     img.alt = `${p.name} ${p.variant}`;
   }
   if (title) title.textContent = p.name;
