@@ -5097,3 +5097,36 @@ select {
   .storefront-refined .footer-grid > div:first-child { grid-column: 1/-1; }
   .storefront-refined .footer-grid li a { display: inline-flex; align-items: center; min-height: 44px; }
 }
+
+/* Shipping: readable policy information with a compact, shared hierarchy. */
+.storefront-refined .site-footer h2 { font-size: 16px; line-height: 1.4; letter-spacing: 0; margin: 0 0 18px; }
+.shipping-page { padding-bottom: 64px; }
+.shipping-page .crumbs { padding-inline: 0; }
+.shipping-intro { padding: 24px 0 40px; }
+.storefront-refined .shipping-intro h1 { font-size: clamp(30px, 3.2vw, 44px); max-width: none; line-height: 1.15; margin: 0 0 16px; }
+.shipping-intro p { margin: 0; color: var(--muted, #626b61); font-size: 18px; }
+.shipping-overview, .shipping-support { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 64px; }
+.shipping-support { border-top: 1px solid #dfe4dc; margin-top: 40px; padding-top: 36px; }
+.storefront-refined .shipping-page h2 { font-size: 24px; margin: 0 0 20px; letter-spacing: -.025em; }
+.shipping-page h3 { font-size: 16px; margin: 24px 0 8px; }
+.shipping-page p { line-height: 1.65; }
+.shipping-free { background: #eef3e9; padding: 16px 20px; margin: 0 0 22px; }
+.shipping-free strong, .shipping-free span { display: block; }
+.shipping-free span { font-size: 14px; margin-top: 3px; }
+.shipping-rates { width: 100%; border-collapse: collapse; font-size: 15px; }
+.shipping-rates caption { text-align: left; margin-bottom: 12px; font-size: 14px; }
+.shipping-rates th, .shipping-rates td { padding: 10px 0; border-bottom: 1px solid #dfe4dc; text-align: left; }
+.shipping-rates th:last-child, .shipping-rates td:last-child { text-align: right; white-space: nowrap; }
+.shipping-note { font-size: 14px; color: var(--muted, #626b61); }
+.shipping-times { margin: 0; font-size: 15px; }
+.shipping-times > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #dfe4dc; }
+.shipping-times dd { margin: 0; text-align: right; }
+.storefront-refined .shipping-faq-heading { margin-top: 28px; }
+.shipping-page .faq-list summary { padding-block: 16px; font-size: 15px; }
+@media (max-width: 760px) {
+  .shipping-overview, .shipping-support { grid-template-columns: minmax(0,1fr); gap: 32px; }
+  .shipping-intro { padding: 16px 0 28px; }
+  .shipping-intro p { font-size: 16px; }
+  .shipping-support { margin-top: 32px; padding-top: 28px; }
+  .shipping-page { padding-bottom: 40px; }
+}
