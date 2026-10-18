@@ -30,8 +30,8 @@ const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261018-gallery-4";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261018-gallery-4";
-const CART_CSS_ASSET_VERSION = "20261018-gallery-4";
+const CSS_ASSET_VERSION = "20261018-shipping-1";
+const CART_CSS_ASSET_VERSION = "20261018-shipping-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -3003,7 +3003,7 @@ function faqPage() {
 function shippingPage() {
   const shippingFaqs = [
     [
-      "Where do you ship moringa powder from?",
+      "Where do you dispatch orders from?",
       "We pack and dispatch from Truganina, Melbourne. Australia-wide tracked shipping.",
     ],
     [
@@ -3046,27 +3046,61 @@ function shippingPage() {
     ),
     current: "",
     main: `
-      <nav class="wrap-narrow crumbs" aria-label="Breadcrumb">
+      <div class="wrap shipping-page">
+      <nav class="crumbs" aria-label="Breadcrumb">
         <a href="/">Home</a> / <span>Shipping and returns</span>
       </nav>
-      <section class="page-intro wrap-narrow">
+      <header class="shipping-intro">
         <h1>${esc(deskSeo("/shipping").h1 || "Shipping and returns")}</h1>
-        <p class="lede">Orders leave Truganina. Free on Australian orders of <strong>$49</strong> or more. Under $49 in Australia, shipping is by parcel weight.</p>
-        <p>${esc(SHIPPING_BAND_LIST)}</p>
-        <h2>Dispatch</h2>
-        <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch. Free shipping is applied automatically in the cart once your Australian order reaches $49. International postage is calculated from the parcel weight.</p>
-        <h2>Timing after dispatch</h2>
-        <p>Melbourne metro usually 1 to 3 business days. Other metro areas usually 3 to 4 business days. Rural and regional areas up to 10 business days.</p>
-        <h2>Tracking</h2>
-        <p>When the parcel leaves Truganina you should get a confirmation email with tracking, if the carrier provides it. If nothing arrives within a couple of business days after dispatch, check spam or email us with your order details.</p>
-        <h2 id="returns">7-day guarantee</h2>
-        <p>Contact us within 7 days of delivery and we'll refund or replace your order. If something arrived damaged or faulty, send us a photo of the item and packaging, and we'll sort it at no cost to you. Change-of-mind returns must be unopened, and you pay the return postage. Original shipping isn't refunded. Please contact us before you send anything back.</p>
-        <h2>Payments</h2>
-        <p>${esc(PAYMENT_LINE_LONG)}</p>
-        <h2>Shipping FAQ</h2>
-        <div class="faq-list">${faqDetails(shippingFaqs)}</div>
-        <p><a href="/privacy">Privacy policy</a> · <a href="/faq">FAQ</a> · <a href="/contact">Contact</a></p>
-      </section>`,
+        <p>Dispatched from Truganina, Melbourne. Delivered across Australia.</p>
+      </header>
+      <div class="shipping-overview">
+        <section aria-labelledby="shipping-rates">
+          <h2 id="shipping-rates">Shipping rates</h2>
+          <p class="shipping-free"><strong>Free Australian shipping on orders $49+</strong><span>Applied automatically in your cart.</span></p>
+          <table class="shipping-rates">
+            <caption>Australian standard shipping for orders under $49</caption>
+            <thead><tr><th scope="col">Parcel weight</th><th scope="col">Shipping</th></tr></thead>
+            <tbody>
+              <tr><td>Up to 250 g</td><td>$9.69</td></tr>
+              <tr><td>Over 250 g to 500 g</td><td>$11.12</td></tr>
+              <tr><td>Over 500 g to 1 kg</td><td>$15.20</td></tr>
+              <tr><td>Over 1 kg to 3 kg</td><td>$19.24</td></tr>
+              <tr><td>Over 3 kg to 5 kg</td><td>$23.23</td></tr>
+            </tbody>
+          </table>
+          <p class="shipping-note">International postage is calculated from the parcel weight.</p>
+        </section>
+        <section aria-labelledby="shipping-delivery">
+          <h2 id="shipping-delivery">Dispatch and delivery</h2>
+          <p>Order before 2pm Monday to Friday for same-day Melbourne dispatch.</p>
+          <h3>Estimated time after dispatch</h3>
+          <dl class="shipping-times">
+            <div><dt>Melbourne metro</dt><dd>1–3 business days</dd></div>
+            <div><dt>Other metro areas</dt><dd>3–4 business days</dd></div>
+            <div><dt>Rural and regional</dt><dd>Up to 10 business days</dd></div>
+          </dl>
+          <h3>Track your order</h3>
+          <p>When your parcel leaves Truganina, we'll email your tracking details if the carrier provides them. If you haven't received an email within a couple of business days, check spam or <a href="/contact">contact us</a> with your order details.</p>
+          <h3>Local pickup</h3>
+          <p>Pickup from Truganina is available by arrangement. <a href="/contact">Arrange a pickup</a>.</p>
+        </section>
+      </div>
+      <div class="shipping-support">
+        <section aria-labelledby="returns">
+          <h2 id="returns">7-day guarantee</h2>
+          <p>Contact us within 7 days of delivery and we'll refund or replace your order. If something arrived damaged or faulty, send us a photo of the item and packaging, and we'll sort it at no cost to you.</p>
+          <p>Change-of-mind returns must be unopened, and you pay the return postage. Original shipping isn't refunded. Please contact us before you send anything back.</p>
+          <a href="/contact">Get help with an order →</a>
+        </section>
+        <section aria-labelledby="shipping-payments">
+          <h2 id="shipping-payments">Payments</h2>
+          <p>${esc(PAYMENT_LINE_LONG)}</p>
+          <h2 class="shipping-faq-heading">Shipping FAQ</h2>
+          <div class="faq-list">${faqDetails(shippingFaqs)}</div>
+        </section>
+      </div>
+      </div>`,
   });
 }
 
