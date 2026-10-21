@@ -47,8 +47,8 @@ jobs:
       - name: Build storefront and assets
         run: npm run build
 
-      - name: Verify payment checkout
-        run: node scripts/verify-payment-checkout.mjs
+      - name: Verify commerce flows and SEO
+        run: npm run verify:commerce
 
       - name: Verify sitemap URL list
         env:
