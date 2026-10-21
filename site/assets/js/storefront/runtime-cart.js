@@ -35,25 +35,49 @@ function initCart() {
     updateCartUI();
 }
 
-// Get cart from localStorage
-function getCart() {
-    try {
-        const cartData = localStorage.getItem(CART_STORAGE_KEY);
-        return cartData ? JSON.parse(cartData) : null;
-    } catch (e) {
-        console.error('Error reading cart:', e);
-        return null;
-    }
+// Treat saved data as untrusted: old tabs, interrupted writes and extensions can
+// leave invalid shapes or stale totals. Keep valid lines and recompute the totals.
+let memoryCart = null;
+let storageUnavailable = false;
+function normalizeCart(raw) {
+    if (!raw || !Array.isArray(raw.items)) return { items: [], total: 0, itemCount: 0 };
+    const items = raw.items.filter(item => {
+        if (!item || typeof item.id !== 'string' || !item.id.trim()) return false;
+        const price = Number(item.price);
+        const quantity = Number(item.quantity);
+        return item.price !== null && item.price !== '' && Number.isFinite(price) && price >= 0 &&
+            Number.isInteger(quantity) && quantity >= 1 && quantity <= 99;
+    }).map(item => ({
+        ...item,
+        price: Number(item.price),
+        quantity: Number(item.quantity),
+        weight: Number.isFinite(Number(item.weight)) && Number(item.weight) >= 0 ? Number(item.weight) : 0,
+    }));
+    return calculateCartTotals({ items });
 }
 
-// Save cart to localStorage
-function saveCart(cart) {
+function getCart() {
+    if (storageUnavailable) return memoryCart;
     try {
-        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-        updateCartUI();
+        const cartData = localStorage.getItem(CART_STORAGE_KEY);
+        memoryCart = cartData ? normalizeCart(JSON.parse(cartData)) : null;
     } catch (e) {
-        console.error('Error saving cart:', e);
+        console.warn('Cart storage unavailable; using this page session.', e);
+        storageUnavailable = true;
     }
+    return memoryCart;
+}
+
+function saveCart(cart) {
+    memoryCart = normalizeCart(cart);
+    try {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(memoryCart));
+        storageUnavailable = false;
+    } catch (e) {
+        storageUnavailable = true;
+        console.warn('Cart could not be saved across pages.', e);
+    }
+    updateCartUI();
 }
 
 // Calculate cart totals
@@ -95,12 +119,19 @@ function trackRedditAddToCart(product, qtyAdded) {
 // Add item to cart
 function addToCart(product) {
     const cart = getCart() || { items: [], total: 0, itemCount: 0 };
+    const quantity = Number(product?.quantity ?? 1);
+    const price = Number(product?.price);
+    if (!product || typeof product.id !== 'string' || !product.id.trim() ||
+        !Number.isInteger(quantity) || quantity < 1 || quantity > 99 ||
+        product.price === null || product.price === '' || !Number.isFinite(price) || price < 0) return cart;
     
     // Check if product already in cart
     const existingIndex = cart.items.findIndex(item => item.id === product.id);
     
     if (existingIndex >= 0) {
-        cart.items[existingIndex].quantity = parseInt(cart.items[existingIndex].quantity) + parseInt(product.quantity || 1);
+        cart.items[existingIndex].quantity = Math.min(99, cart.items[existingIndex].quantity + quantity);
+        cart.items[existingIndex].price = price;
+        cart.items[existingIndex].name = product.name || cart.items[existingIndex].name;
         if (product.variant) cart.items[existingIndex].variant = product.variant;
         if (product.href) cart.items[existingIndex].href = product.href;
         if (product.weight) cart.items[existingIndex].weight = parseFloat(product.weight);
@@ -112,7 +143,7 @@ function addToCart(product) {
             name: product.name,
             price: parseFloat(product.price),
             weight: parseFloat(product.weight || 0),
-            quantity: parseInt(product.quantity || 1),
+            quantity,
             image: product.image || '',
             variant: product.variant || '',
             href: product.href || ''
@@ -149,7 +180,8 @@ function updateCartQuantity(productId, quantity) {
     
     const item = cart.items.find(item => item.id === productId);
     if (item) {
-        const newQuantity = parseInt(quantity);
+        const newQuantity = Number(quantity);
+        if (!Number.isInteger(newQuantity) || newQuantity > 99) return cart;
         if (newQuantity <= 0) {
             return removeFromCart(productId);
         }

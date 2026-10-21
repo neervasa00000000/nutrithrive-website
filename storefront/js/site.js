@@ -176,7 +176,7 @@ function adoptPreviewCart() {
   } catch {
     preview = [];
   }
-  localStorage.removeItem(CART_KEY);
+  try { localStorage.removeItem(CART_KEY); } catch { /* storage may be blocked */ }
   if (!Array.isArray(preview) || !preview.length) return;
   const liveItems = window.Cart.get()?.items || [];
   if (liveItems.length) return;
@@ -265,8 +265,9 @@ function recordViewed(product) {
   } catch {
     ids = [];
   }
-  ids = [product.id,...ids.filter((id) => id !== product.id)].slice(0, 8);
-  localStorage.setItem(VIEWED_KEY, JSON.stringify(ids));
+  if (!Array.isArray(ids)) ids = [];
+  ids = [product.id,...ids.filter((id) => typeof id === "string" && id !== product.id)].slice(0, 8);
+  try { localStorage.setItem(VIEWED_KEY, JSON.stringify(ids)); } catch { /* optional history must not interrupt shopping */ }
 }
 
 function announce(text) {

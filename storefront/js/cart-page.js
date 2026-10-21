@@ -102,7 +102,8 @@ function writeCart(items) {
 
 function viewedIds() {
   try {
-    return JSON.parse(localStorage.getItem(VIEWED_KEY) || "[]");
+    const ids = JSON.parse(localStorage.getItem(VIEWED_KEY) || "[]");
+    return Array.isArray(ids) ? ids.filter(id => typeof id === "string") : [];
   } catch {
     return [];
   }
