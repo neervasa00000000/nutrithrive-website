@@ -159,6 +159,39 @@ const MORINGA_CLUSTER_SEO_SLUGS = new Set([
   "moringa-vs-curry-leaves-difference-australia",
 ]);
 
+// 16 Oct 2026 answer-box SEO, restored 23 Oct. Headlines stay equal to the visible H1.
+const BLOG_SEO_BASELINE = {
+  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
+    description: "Every moringa product at Chemist Warehouse checked Oct 2026: powder, capsules and tablets, price per 100g of leaf, and how farm-grown powder from $11 compares.",
+    ogTitle: "Moringa at Chemist Warehouse 2026: Powder, Capsules, Price",
+  },
+  "rosabella-moringa-reviews-legit-or-overhyped-2026": {
+    description: "Rosabella moringa reviews from Australian buyers, price per serve, where it is sold including Chemist Warehouse, and how a farm-grown leaf powder compares.",
+    ogTitle: "Rosabella Moringa Reviews Australia 2026: Legit or Hype?",
+  },
+  "grow-moringa-tree-australia": {
+    description: "Can moringa grow where you live in Australia? Climate zones from Perth to Brisbane, frost, pots, seeds and seedlings, plus leaf powder if you cannot grow it.",
+    ogTitle: "How to Grow a Moringa Tree in Australia: Climate Guide",
+  },
+  "moringa-vs-coffee-melbourne-energy-hack": {
+    description: "Moringa leaf powder has no caffeine. See how a cup compares with coffee, matcha and Darjeeling tea, and a simple way to swap one coffee a day for moringa.",
+    ogTitle: "Does Moringa Have Caffeine? Moringa vs Coffee and Matcha",
+  },
+  "science-shade-drying-vs-sun-drying-moringa": {
+    description: "How moringa leaves are dried for powder: shade drying versus sun drying, what each changes in colour, taste and smell, and why our Gujarat farm sun-dries.",
+    ogTitle: "Shade Drying vs Sun Drying Moringa Leaves: What Changes",
+  },
+  "curry-leaves-substitute-what-to-use-2026": {
+    description: "Out of curry leaves? The best substitutes, from lime leaves to bay and basil, which dishes each suits, and when dried curry leaves are the easier pantry swap.",
+    ogTitle: "Best Curry Leaves Substitute: What to Use in Each Dish",
+  },
+  "moringa-patches-australia-review-do-they-work": {
+    description: "Glorenda and Healrize moringa patch reviews from Australian buyers, whether Chemist Warehouse stocks moringa weight loss patches, and what the research shows.",
+    ogTitle: "Glorenda Moringa Patch Reviews: Chemist Warehouse? (2026)",
+  },
+};
+const BLOG_SEO_UPDATED = "2026-10-23";
+
 const ARTICLE_SEO_OVERRIDES = {
   "how-much-moringa-powder-per-day-dosage-guide": {
     title: "How Much Moringa Powder Per Day? Dose, Timing & Recipes",
@@ -4391,7 +4424,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const desk = deskSeo(`/blog/${meta.slug}`);
   const title = liveSeo?.title || desk.title || seoOverride?.title || catalogTitle;
   const displayH1 = liveSeo?.h1 || desk.h1 || seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
-  const description = desk.description || seoOverride?.description || pickSeoDescription({
+  const seoBaseline = BLOG_SEO_BASELINE[meta.slug];
+  const description = seoBaseline?.description || desk.description || seoOverride?.description || pickSeoDescription({
       file: liveSeo?.description,
       catalog: meta.description,
       slug: meta.slug,
@@ -4405,7 +4439,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const category = seoOverride?.articleSection || humanCopy(meta.category);
   const topic = journalTopic(meta);
   const moringaCluster = MORINGA_CLUSTER_SEO_SLUGS.has(meta.slug) || topic === "Moringa guides";
-  const preservedStructuredData = moringaCluster ? extractArticleStructuredData(meta.slug) : "";
+  const preservedStructuredData = moringaCluster || seoBaseline ? extractArticleStructuredData(meta.slug) : "";
   const cta = journalCta(meta, shop);
   const productHref = shopHref(shop);
   const quickProductLabel = meta.slug === "fathers-day-gift-under-40"
@@ -4438,6 +4472,13 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         try {
           const data = JSON.parse(raw);
           if (data["@type"] === "Article" || data["@type"] === "BlogPosting") {
+            if (seoBaseline) {
+              data.headline = displayH1;
+              if (data.name) data.name = displayH1;
+              data.description = seoBaseline.description;
+              data.dateModified = BLOG_SEO_UPDATED;
+              return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
+            }
             const previousTitle = seoOverride?.title || liveSeo?.title || catalogTitle;
             const refreshSchema = new Set([
               "moringa-brands-comparison-australia-2026",
@@ -4509,7 +4550,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     : `${jsonLd({
         "@context": "https://schema.org",
         "@type": "Article",
-        headline: title,
+        headline: seoBaseline ? displayH1 : title,
         description,
         image: [image],
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -4558,8 +4599,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     ogImage: socialImage,
     ogImageWidth: seoOverride?.ogImageWidth || 1200,
     ogImageHeight: seoOverride?.ogImageHeight || 630,
-    ogTitle: desk.title || seoOverride?.ogTitle,
-    ogDescription: desk.description || seoOverride?.ogDescription,
+    ogTitle: seoBaseline?.ogTitle || desk.title || seoOverride?.ogTitle,
+    ogDescription: seoBaseline?.description || desk.description || seoOverride?.ogDescription,
     extraHead: `<meta name="author" content="Neer Vasa">
   <meta property="article:author" content="Neer Vasa">
   <meta property="article:section" content="${esc(category)}">
@@ -4571,7 +4612,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
       </nav>
       <section class="wrap article-layout">
         <article data-article-slug="${esc(meta.slug)}">
-          <p class="meta-line">${esc(topic)}${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
+          <p class="meta-line">${esc(topic)}${seoBaseline ? ` · Last updated: <time datetime="${BLOG_SEO_UPDATED}">23 October 2026</time>` : `${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""}`} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>${underH1}
           <p class="lede">${ledeHtml}</p>
           <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
