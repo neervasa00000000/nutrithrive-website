@@ -4465,6 +4465,19 @@ function reattachLiftedAnswer(html, prose) {
   return `${box}${prose}`;
 }
 
+function liftShortAnswer(html) {
+  const outer = takeFirstAnswerBox(html);
+  if (!outer.box) return outer;
+  const nestedAt = outer.box.indexOf('<div class="answer-box"', 1);
+  if (nestedAt < 0) return outer;
+  const inner = takeFirstAnswerBox(outer.box.slice(nestedAt));
+  if (!inner.box) return outer;
+  const kept = `${outer.box.slice(0, nestedAt)}${inner.html}`;
+  const start = html.indexOf(outer.box);
+  if (start < 0) return outer;
+  return { box: inner.box, html: `${html.slice(0, start)}${kept}${html.slice(start + outer.box.length)}` };
+}
+
 function takeFirstAnswerBox(html) {
   const start = html.indexOf('<div class="answer-box"');
   if (start < 0) return { html, box: "" };
@@ -4616,7 +4629,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   let proseHtml = isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : stripMidCtas(enhancedProse.html);
   let liftedAnswer = "";
   if (firstScreen && !skipAnswerLift) {
-    const lifted = takeFirstAnswerBox(proseHtml);
+    const lifted = liftShortAnswer(proseHtml);
     proseHtml = lifted.html;
     liftedAnswer = lifted.box;
   }
