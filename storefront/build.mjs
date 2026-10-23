@@ -192,6 +192,15 @@ const BLOG_SEO_BASELINE = {
 };
 const BLOG_SEO_UPDATED = "2026-10-23";
 
+const NOINDEX_BLOG_SLUGS = new Set([
+  "cystic-acne-gut-healing-what-actually-cleared-skin-2026",
+  "30-different-plants-per-week-gut-health-microbiome-2026",
+  "chronic-fatigue-what-actually-fixed-it-2026",
+  "moringa-before-after-workout-timing-guide-2026",
+  "moringa-smoothie-recipes-australia-2026",
+  "moringa-vs-ashwagandha-comparison-2026",
+]);
+
 const ARTICLE_SEO_OVERRIDES = {
   "how-much-moringa-powder-per-day-dosage-guide": {
     title: "How Much Moringa Powder Per Day? Dose, Timing & Recipes",
@@ -4601,6 +4610,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     ogImageHeight: seoOverride?.ogImageHeight || 630,
     ogTitle: seoBaseline?.ogTitle || desk.title || seoOverride?.ogTitle,
     ogDescription: seoBaseline?.description || desk.description || seoOverride?.ogDescription,
+    robots: NOINDEX_BLOG_SLUGS.has(meta.slug) ? "noindex, follow" : undefined,
     extraHead: `<meta name="author" content="Neer Vasa">
   <meta property="article:author" content="Neer Vasa">
   <meta property="article:section" content="${esc(category)}">
@@ -4906,7 +4916,7 @@ function main() {
   const r = routes();
   const articles = loadArticles().map((article) => ({...article, image: articleImage(article) }));
   const activeArticles = articles.filter(
-    (article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug)
+    (article) => !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug) && !NOINDEX_BLOG_SLUGS.has(article.slug)
   );
   const search = [
     ...PRODUCTS.map((p) => ({
