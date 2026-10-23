@@ -5159,7 +5159,7 @@ select {
 @media (max-width: 860px) {
   .storefront-refined .pdp-gallery {
     aspect-ratio: auto;
-    max-height: 260px;
+    max-height: 100px;
   }
 
   .storefront-refined .pdp-gallery-open {
@@ -5169,7 +5169,28 @@ select {
   .storefront-refined .pdp-gallery img {
     width: 100%;
     height: auto;
-    max-height: 260px;
+    max-height: 100px;
     object-fit: contain;
+  }
+
+  .storefront-refined .pdp-thumbnails,
+  .storefront-refined .gallery-position,
+  .storefront-refined .pdp-from-price {
+    display: none;
+  }
+
+  .storefront-refined .pdp-intro {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .storefront-refined .pdp-delivery-line {
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .storefront-refined .purchase-panel {
+    margin-top: 8px;
   }
 }
