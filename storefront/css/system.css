@@ -1164,27 +1164,24 @@ body.journal-searching .section-head > a {
   margin-bottom: 8px;
   font-size: var(--text-sm);
 }
-.newsletter-inline-row, .discount-form > div { display: flex; gap: 8px; }
-.newsletter-inline-row input, .discount-form input { min-width: 0; flex: 1; min-height: 48px; border: 1px solid var(--color-border); border-radius: 12px; padding: 10px 14px; background: #fff; color: var(--color-text); font-size: 16px; }
+.newsletter-inline-row { display: flex; gap: 8px; }
+.newsletter-inline-row input { min-width: 0; flex: 1; min-height: 48px; border: 1px solid var(--color-border); border-radius: 12px; padding: 10px 14px; background: #fff; color: var(--color-text); font-size: 16px; }
 .newsletter-inline-row .btn { flex: 0 0 auto; white-space: nowrap; }
 .consent-check { display: grid !important; grid-template-columns: 20px 1fr; gap: 10px; align-items: start !important; margin-top: 14px; color: var(--color-text-secondary); line-height: 1.45; }
 .consent-check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--color-primary); }
 .form-note, .form-status { color: var(--color-text-secondary); font-size: 13px; line-height: 1.5; margin-top: 10px; }
 .form-status:empty { display: none; }
-.footer-text-button, .offer-decline { appearance: none; background: none; border: 0; padding: 0; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+.footer-text-button { appearance: none; background: none; border: 0; padding: 0; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
 .btn-block { width: 100%; }
 .modal-open { overflow: hidden; }
 
-.welcome-offer, .cookie-modal { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 20px; }
-.welcome-offer[hidden], .cookie-modal[hidden], .cookie-banner[hidden] { display: none; }
+.cookie-modal { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 20px; }
+.cookie-modal[hidden], .cookie-banner[hidden] { display: none; }
 .modal-backdrop { position: absolute; inset: 0; border: 0; background: rgba(12, 22, 16, .58); backdrop-filter: blur(4px); }
-.welcome-card, .cookie-card { position: relative; z-index: 1; width: min(100%, 520px); max-height: calc(100dvh - 40px); overflow: auto; background: #fffdf8; border: 1px solid var(--color-border); border-radius: 24px; padding: clamp(24px, 5vw, 44px); box-shadow: 0 24px 80px rgba(12, 22, 16, .24); }
-.welcome-card h2, .cookie-card h2 { font-size: clamp(30px, 5vw, 46px); margin-bottom: 12px; }
-.welcome-card > p:not(.eyebrow) { color: var(--color-text-secondary); }
-.welcome-card form { margin-top: 24px; }
+.cookie-card { position: relative; z-index: 1; width: min(100%, 520px); max-height: calc(100dvh - 40px); overflow: auto; background: #fffdf8; border: 1px solid var(--color-border); border-radius: 24px; padding: clamp(24px, 5vw, 44px); box-shadow: 0 24px 80px rgba(12, 22, 16, .24); }
+.cookie-card h2 { font-size: clamp(30px, 5vw, 46px); margin-bottom: 12px; }
 .modal-close { position: absolute; top: 12px; right: 14px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; font-size: 28px; cursor: pointer; }
 .modal-close:hover { background: var(--color-bg-soft); }
-.offer-decline { display: block; margin: 16px auto 0; font-size: 14px; }
 
 .cookie-banner {
   position: fixed;
@@ -1209,10 +1206,6 @@ body.journal-searching .section-head > a {
 .cookie-choice span { display: grid; gap: 3px; }
 .cookie-choice small { color: var(--color-text-secondary); }
 .cookie-choice input { width: 22px; height: 22px; accent-color: var(--color-primary); }
-.discount-form { padding: 16px 0; border-block: 1px solid var(--color-border); margin: 14px 0; }
-.discount-form label { display: block; font-weight: 700; margin-bottom: 8px; }
-.discount-form p { min-height: 20px; margin: 6px 0 0; font-size: 13px; color: var(--color-text-secondary); }
-.summary-row.discount { color: var(--color-primary); }
 .not-found { min-height: 64vh; display: grid; align-content: center; padding-block: clamp(72px, 12vw, 150px); text-align: center; }
 .not-found h1 { max-width: 760px; margin-inline: auto; }
 .not-found .lede { max-width: 680px; margin-inline: auto; }
@@ -1225,9 +1218,9 @@ body.journal-searching .section-head > a {
 @media (max-width: 680px) {
   .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; padding: 12px; }
   .cookie-actions { margin-top: 0; }
-  .welcome-offer, .cookie-modal { align-items: end; padding: 0; }
-  .welcome-card, .cookie-card { width: 100%; max-height: 92dvh; border-radius: 24px 24px 0 0; padding: 28px 20px 24px; }
-  .newsletter-inline-row, .discount-form > div { align-items: stretch; }
+  .cookie-modal { align-items: end; padding: 0; }
+  .cookie-card { width: 100%; max-height: 92dvh; border-radius: 24px 24px 0 0; padding: 28px 20px 24px; }
+  .newsletter-inline-row { align-items: stretch; }
   .newsletter-inline-row { display: grid; }
   .newsletter-inline-row .btn { width: 100%; }
   .footer-newsletter { display: block; padding: var(--space-6) 0 0; }

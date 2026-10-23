@@ -438,21 +438,6 @@ window.NT_SITE_DATA = {
       },
     ],
   },
-  /** Right-sidebar promo card injected on blog articles (see shared/js/blog-sidebar-promo.js). */
-  blogSidebarPromo: {
-    excludeSlugs: ['quick-healthy-meal-ideas-15-minutes-australia'],
-    moringa400g: {
-      badge: 'Buy 3 Get 1',
-      headline: '400g Moringa Bundle',
-      description: 'Four 100g packs, save vs buying singles. Same shade-dried, NMI lab-tested powder.',
-      price: 40,
-      compareAt: null,
-      unit: '/400g',
-      image: '/assets/images/product_photos/moringa-400g-bundle.jpeg',
-      href: '/products/moringa-powder/',
-      cta: 'Shop 400g Bundle →',
-    },
-  },
   cartUrl: '/cart',
   paymentUrl: '/payment',
   orderThankYouUrl: '/thank-you.html',

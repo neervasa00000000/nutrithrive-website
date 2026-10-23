@@ -21,15 +21,6 @@ function computeSubtotal(items) {
   );
 }
 
-function computeBundleDiscount(items) {
-  const bundleQty = (items || []).reduce(function (sum, item) {
-    if (item.id !== "moringa-400g" && item.id !== "moringa-variation-1") return sum;
-    const qty = Number.parseInt(item.quantity || 1, 10);
-    return sum + (Number.isFinite(qty) && qty > 0 ? qty : 0);
-  }, 0);
-  return Math.floor(bundleQty / 4) * 40;
-}
-
 function getSelectedCountryCode() {
   const select = document.getElementById("shipping-country");
   return select && select.value ? select.value.toUpperCase() : "AU";
@@ -533,7 +524,7 @@ function setupApplePay(seq) {
               const raw = window.ShippingRates.calculate(contactCountry, liveCart.items, subtotal);
               shippingCost = raw === null || raw === undefined ? 0 : Number(raw) || 0;
             }
-            const amount = Number((subtotal + shippingCost - computeBundleDiscount(liveCart.items)).toFixed(2)).toFixed(2);
+            const amount = Number((subtotal + shippingCost).toFixed(2)).toFixed(2);
             paymentRequest.total = {
               label: "NutriThrive",
               type: "final",
@@ -711,23 +702,18 @@ function updateShippingAndTotal() {
     localStorage.setItem("nutrithrive_country", country);
   }
   const subtotal = computeSubtotal(cart.items);
-  const discount = computeBundleDiscount(cart.items);
   const shipping =
     country && window.ShippingRates
       ? window.ShippingRates.calculate(country, cart.items, subtotal)
       : null;
   const shippingValue = shipping === null ? null : Number.parseFloat(shipping) || 0;
   const shippingEl = document.getElementById("shipping");
-  const discountRow = document.getElementById("bundle-discount-row");
-  const discountEl = document.getElementById("bundle-discount");
   const totalEl = document.getElementById("total");
-  if (discountRow) discountRow.hidden = !(discount > 0);
-  if (discountEl) discountEl.textContent = `−${money(discount)}`;
   if (shippingEl) {
     shippingEl.textContent =
       shippingValue === null ? "Select country" : shippingValue === 0 ? "Free" : money(shippingValue);
   }
-  if (totalEl) totalEl.textContent = money(subtotal + (shippingValue || 0) - discount);
+  if (totalEl) totalEl.textContent = money(subtotal + (shippingValue || 0));
   schedulePayPalInit();
 }
 

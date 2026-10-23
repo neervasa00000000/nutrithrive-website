@@ -774,7 +774,6 @@ function bindPdpVariant() {
   }
 }
 
-const OFFER_KEY = "nt-storefront-welcome-offer";
 const SIGNUP_KEY = "nt-storefront-newsletter-signup";
 
 function bindNewsletterForms() {
@@ -803,10 +802,9 @@ function bindNewsletterForms() {
         previewOnly: true,
       };
       localStorage.setItem(SIGNUP_KEY, JSON.stringify(record));
-      localStorage.setItem(OFFER_KEY, JSON.stringify({ state: "joined", at: Date.now() }));
-      if (status) status.innerHTML = `Thanks — your preview code is <strong>WELCOME5</strong>. Use it at checkout. No email is actually sent from this local preview.`;
+      if (status) status.textContent = "Thanks, you are on the list. No email is actually sent from this local preview.";
       form.querySelector('button[type="submit"]')?.setAttribute("disabled", "");
-      announce("Welcome code WELCOME5 is ready");
+      announce("Signed up");
     });
   });
 }
@@ -831,26 +829,6 @@ function bindUnsubscribeForm() {
   });
 }
 
-function bindWelcomeOffer() {
-  const offer = document.querySelector("[data-welcome-offer]");
-  if (!offer || localStorage.getItem(SIGNUP_KEY) || localStorage.getItem(OFFER_KEY)) return;
-  let lastFocus = null;
-  const close = () => {
-    offer.hidden = true;
-    document.body.classList.remove("modal-open");
-    localStorage.setItem(OFFER_KEY, JSON.stringify({ state: "dismissed", at: Date.now() }));
-    lastFocus?.focus?.();
-  };
-  offer.querySelectorAll("[data-offer-close]").forEach((button) => button.addEventListener("click", close));
-  setTimeout(() => {
-    if (localStorage.getItem(SIGNUP_KEY) || localStorage.getItem(OFFER_KEY)) return;
-    lastFocus = document.activeElement;
-    offer.hidden = false;
-    document.body.classList.add("modal-open");
-    offer.querySelector("input")?.focus();
-  }, 7000);
-}
-
 function isLiveSite() {
   return document.documentElement.dataset.ntLive === "1";
 }
@@ -859,7 +837,6 @@ function bindGrowthFeatures() {
   if (!isLiveSite()) {
     bindNewsletterForms();
     bindUnsubscribeForm();
-    bindWelcomeOffer();
   }
 }
 
