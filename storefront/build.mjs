@@ -4449,6 +4449,22 @@ const FIRST_SCREEN_SLUGS = new Set([
   "moringa-patches-australia-review-do-they-work",
 ]);
 
+function stripRelatedNavs(html) {
+  let out = String(html);
+  for (let i = 0; i < 20 && out.includes('class="article-related"'); i += 1) {
+    out = out.replace(/<nav class="article-related"[\s\S]*?<\/nav>/, "");
+  }
+  return out;
+}
+
+function reattachLiftedAnswer(html, prose) {
+  const proseAt = html.indexOf('<div class="prose">');
+  const head = proseAt > 0 ? html.slice(0, proseAt) : "";
+  const { box } = takeFirstAnswerBox(head);
+  if (!box || prose.includes(box)) return prose;
+  return `${box}${prose}`;
+}
+
 function takeFirstAnswerBox(html) {
   const start = html.indexOf('<div class="answer-box"');
   if (start < 0) return { html, box: "" };
@@ -4585,7 +4601,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     },
     mainEntityOfPage: url,
   } : null;
-  const enhancedProse = articleProseWithContents(prose, meta.slug);
+  const sourcePath = path.join(SITE, "blog", `${meta.slug}.html`);
+  const sourceHtml = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, "utf8") : "";
+  const stableProse = reattachLiftedAnswer(sourceHtml, stripRelatedNavs(prose));
+  const enhancedProse = articleProseWithContents(stableProse, meta.slug);
   const conversionPath = ARTICLE_CONVERSION_PATHS[meta.slug] || {};
   const isMoringaPowder = ["moringa-powder", "moringa-200g", "moringa-400g"].includes(shop.id);
   const isMoringaSales = isMoringaPowder && !isHealth && MORINGA_SALES_SLUGS.has(meta.slug);
@@ -4619,7 +4638,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const nextStep = firstScreen
     ? `<p class="article-next-step"><a href="/products/moringa-powder/100g/" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="moringa-powder">Try a 100g pouch, ${MORINGA_PRICES.p100}</a> · Free AU shipping from $49</p>${earlyLinks ? `<p class="article-next-step">${earlyLinks}</p>` : ""}`
     : "";
-  if (firstScreen && relatedNav) proseHtml = insertAfterFirstH2Section(proseHtml, relatedNav);
+  if (firstScreen && relatedNav && !proseHtml.includes('class="article-related"')) proseHtml = insertAfterFirstH2Section(proseHtml, relatedNav);
   const conversionCta = conversionPath.cta || cta;
   const conversionLinks = (conversionPath.links || [])
     .map(([label, slug]) => `<li><a href="${r.article(slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(label)}</a></li>`)
