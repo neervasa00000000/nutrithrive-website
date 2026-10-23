@@ -2463,6 +2463,7 @@ function pdpPage(slug, d) {
   const powder200 = PRODUCTS.find((item) => item.id === "moringa-200g");
   const powder400 = PRODUCTS.find((item) => item.id === "moringa-400g");
   const under49Rate = auSoloShippingRate(powder100?.weight || 100);
+  const freeShipFrom = (shippingCostNote().match(/\$\d+/) || ["$49"])[0];
   if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
     throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
@@ -2621,6 +2622,7 @@ function pdpPage(slug, d) {
           <p class="pdp-intro">Farm-grown, sun-dried moringa leaf. Nothing added. Packed in Truganina. <a href="/documents/nutrithrive-lab-report-summary.pdf">See the NMI summary for batch NT042024</a>.</p>` : ""}
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
+          ${mainPowder ? `<p class="pdp-delivery-line">Free AU shipping from ${freeShipFrom} · Under ${freeShipFrom}, postage from ${shortMoney(under49Rate)} · 400g ${shortMoney(powder400.price)} + 100g ${shortMoney(powder100.price)} = ${shortMoney(powder400.price + powder100.price)}, ships free</p>` : ""}
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
             <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
@@ -2657,6 +2659,7 @@ function pdpPage(slug, d) {
         <div class="pdp-sticky-atc__info">
           <span class="pdp-sticky-atc__name" data-pdp-sticky-name>${esc(buyProduct.name)}</span>
           <strong class="pdp-sticky-atc__price" data-pdp-sticky-price>${money(buyProduct.price)}</strong>
+          ${mainPowder ? `<small class="pdp-sticky-atc__ship">Free AU shipping from ${freeShipFrom}</small>` : ""}
         </div>
         <button class="btn btn-primary" type="button" data-pdp-sticky-add>Add to cart</button>
       </div>
