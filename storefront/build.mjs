@@ -29,9 +29,10 @@ const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261018-gallery-4";
+const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261018-shipping-1";
-const CART_CSS_ASSET_VERSION = "20261018-shipping-1";
+const CSS_ASSET_VERSION = "20261023-engagement-1";
+const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 function deskSeo(urlPath) {
@@ -1397,18 +1398,26 @@ function powderSizePageData(sizeSlug) {
   };
 }
 
+function cardSrcset(image, sizes) {
+  const mapped = {
+    "/assets/images/photos/compressed/moringa-powder-200g-main-square.webp": "/assets/images/photos/compressed/moringa-powder-200g-main-square-card-640.webp",
+  }[image];
+  const card640 = mapped
+    || (image.includes("/product_webp/") && image.endsWith("-main.webp")
+      ? image.replace(/-main\.webp$/, "-main-card-640.webp")
+      : image.endsWith("/moringa-powder-texture.webp")
+        ? image.replace(/\.webp$/, "-card-640.webp")
+        : "");
+  if (!card640) return "";
+  const card960 = card640.replace("-card-640", "-card-960");
+  return `srcset="${card640} 640w, ${card960} 960w, ${image} 1254w" sizes="${sizes}"`;
+}
+
 function productCard(p, priority = false, opts = {}) {
   const was =
     !opts.hideWas && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : "";
   const href = shopHref(p);
-  const cardImage = {
-    "/assets/images/photos/compressed/moringa-powder-200g-main-square.webp": "/assets/images/photos/compressed/moringa-powder-200g-main-square-card-640.webp",
-    "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp": "/assets/images/product_webp/moringa-powder-400g-bundle-main-card-640.webp",
-    "/assets/images/product_webp/dried-curry-leaves-30g-main.webp": "/assets/images/product_webp/dried-curry-leaves-30g-main-card-640.webp",
-  }[p.image];
-  const responsive = cardImage
-    ? `srcset="${cardImage} 640w, ${cardImage.replace("-card-640", "-card-960")} 960w, ${p.image} 1254w" sizes="(max-width: 760px) 70vw, 25vw"`
-    : "";
+  const responsive = cardSrcset(p.image, "(max-width: 760px) 70vw, 25vw");
   return `<article class="product-card">
     <a class="product-card-media" href="${href}" aria-label="${esc(p.name)} ${esc(p.variant)}">
       <img src="${p.image}" ${responsive ? `${responsive} ` : ""}alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
@@ -1868,7 +1877,9 @@ function writePage(rel, html, destRoot = OUT) {
   const cacheBusted = html.replace(
     /(src|href)="(\/assets\/[^"?#]+)(?:\?[^"#]*)?"/g,
     (_match, attribute, assetPath) => {
-      const version = assetPath.includes("/assets/css/storefront-system")
+      const version = assetPath.startsWith("/assets/fonts/")
+        ? FONT_ASSET_VERSION
+        : assetPath.includes("/assets/css/storefront-system")
         ? (rel === "pages/shop/cart.html" ? CART_CSS_ASSET_VERSION : CSS_ASSET_VERSION)
         : assetPath === "/assets/js/storefront/payment-page.js" ||
             assetPath === "/assets/js/storefront/payment-page.min.js"
@@ -2608,7 +2619,7 @@ function pdpPage(slug, d) {
             </button>
           </div>
           <div class="pdp-thumbnails" role="group" aria-label="Product photographs">
-            ${gallery.map(([src, alt], index) => `<button type="button" data-gallery-thumb data-src="${src}" data-alt="${esc(alt)}" aria-label="View photo ${index + 1}: ${esc(alt)}" aria-pressed="${index === 0}"><img src="${src}" alt="" width="80" height="80" loading="lazy"></button>`).join("")}
+            ${gallery.map(([src, alt], index) => `<button type="button" data-gallery-thumb data-src="${src}" data-alt="${esc(alt)}" aria-label="View photo ${index + 1}: ${esc(alt)}" aria-pressed="${index === 0}"><img src="${src}" ${cardSrcset(src, "68px")} alt="" width="80" height="80" loading="lazy"></button>`).join("")}
           </div>
           <p class="gallery-position" data-gallery-position aria-live="polite">1 / ${gallery.length}</p>
           <dialog class="product-lightbox" data-gallery-dialog aria-label="Product photographs">
