@@ -653,8 +653,8 @@ const CURATED_RELATED = {
     "signs-magnesium-deficiency-australia-what-to-eat-2026",
   ],
   "moringa-patches-australia-review-do-they-work": [
-    "moringa-brands-comparison-australia-2026",
     "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "moringa-brands-comparison-australia-2026",
     "rosabella-moringa-reviews-legit-or-overhyped-2026",
   ],
   "verify-moringa-quality-premium-buyers-checklist-2026": [
@@ -668,13 +668,13 @@ const CURATED_RELATED = {
     "verify-moringa-quality-premium-buyers-checklist-2026",
   ],
   "rosabella-moringa-reviews-legit-or-overhyped-2026": [
-    "moringa-brands-comparison-australia-2026",
     "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "moringa-brands-comparison-australia-2026",
     "verify-moringa-quality-premium-buyers-checklist-2026",
   ],
   "moringa-brands-comparison-australia-2026": [
-    "how-to-choose-moringa-powder-australia-2026",
     "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "how-to-choose-moringa-powder-australia-2026",
     "verify-moringa-quality-premium-buyers-checklist-2026",
   ],
   "how-to-add-moringa-to-diet": [
@@ -688,9 +688,9 @@ const CURATED_RELATED = {
     "what-does-moringa-powder-taste-like-honest-guide-2026",
   ],
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": [
-    "chemist-warehouse-greens-vs-moringa-powder-2026",
-    "moringa-capsules-vs-powder-which-is-better-2026",
+    "moringa-brands-comparison-australia-2026",
     "how-to-choose-moringa-powder-australia-2026",
+    "moringa-capsules-vs-powder-which-is-better-2026",
   ],
   "is-moringa-safe-for-children-kids-dosage-2026": [
     "moringa-side-effects-what-happens-take-too-much-2026",
@@ -703,9 +703,9 @@ const CURATED_RELATED = {
     "moringa-side-effects-what-happens-take-too-much-2026",
   ],
   "grow-moringa-tree-australia": [
-    "science-shade-drying-vs-sun-drying-moringa",
-    "how-to-read-moringa-batch-codes-freshness",
     "how-to-choose-moringa-powder-australia-2026",
+    "moringa-brands-comparison-australia-2026",
+    "science-shade-drying-vs-sun-drying-moringa",
   ],
   "cold-brew-darjeeling-australian-spring-2026": [
     "how-to-brew-darjeeling-tea-perfectly-2026",
@@ -723,9 +723,9 @@ const CURATED_RELATED = {
     "how-to-add-moringa-to-diet",
   ],
   "how-to-choose-moringa-powder-australia-2026": [
+    "moringa-brands-comparison-australia-2026",
+    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
     "verify-moringa-quality-premium-buyers-checklist-2026",
-    "science-shade-drying-vs-sun-drying-moringa",
-    "moringa-capsules-vs-powder-which-is-better-2026",
   ],
   "where-to-buy-moringa-leaves-australia": [
     "how-to-choose-moringa-powder-australia-2026",
@@ -4426,6 +4426,47 @@ function dosageGuideHead(url, breadcrumbItems) {
   return `${jsonLd(posting)}\n  ${jsonLd(faq)}\n  ${jsonLd(breadcrumbSchema(breadcrumbItems))}`;
 }
 
+const FIRST_SCREEN_SLUGS = new Set([
+  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+  "rosabella-moringa-reviews-legit-or-overhyped-2026",
+  "how-to-choose-moringa-powder-australia-2026",
+  "grow-moringa-tree-australia",
+  "moringa-brands-comparison-australia-2026",
+  "moringa-patches-australia-review-do-they-work",
+]);
+
+function takeFirstAnswerBox(html) {
+  const start = html.indexOf('<div class="answer-box"');
+  if (start < 0) return { html, box: "" };
+  let depth = 0;
+  let cursor = start;
+  while (cursor < html.length) {
+    const open = html.indexOf("<div", cursor);
+    const close = html.indexOf("</div>", cursor);
+    if (close < 0) break;
+    if (open !== -1 && open < close) {
+      depth += 1;
+      cursor = open + 4;
+    } else {
+      depth -= 1;
+      cursor = close + 6;
+      if (depth === 0) {
+        return { box: html.slice(start, cursor), html: `${html.slice(0, start)}${html.slice(cursor)}` };
+      }
+    }
+  }
+  return { html, box: "" };
+}
+
+function insertAfterFirstH2Section(html, block) {
+  const close = html.search(/<\/h2>/i);
+  if (close < 0) return `${block}${html}`;
+  const afterClose = close + 5;
+  const nextHeading = html.slice(afterClose).search(/<h2\b/i);
+  const at = nextHeading < 0 ? html.length : afterClose + nextHeading;
+  return `${html.slice(0, at)}${block}${html.slice(at)}`;
+}
+
 function articlePage(meta, prose, allArticles, liveSeo = null) {
   const shop = journalProduct(meta) || PRODUCTS[0];
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
@@ -4537,6 +4578,34 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const objectionHtml = isMoringaSales && MORINGA_OBJECTIONS[meta.slug]
     ? `<aside class="article-objections" aria-label="Before you buy">${MORINGA_OBJECTIONS[meta.slug].map((key) => OBJECTION_BLOCKS[key]).join("")}</aside>`
     : "";
+  const firstScreen = FIRST_SCREEN_SLUGS.has(meta.slug);
+  const skipAnswerLift = meta.slug === "moringa-patches-australia-review-do-they-work" || meta.slug === "moringa-brands-comparison-australia-2026";
+  let proseHtml = isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : stripMidCtas(enhancedProse.html);
+  let liftedAnswer = "";
+  if (firstScreen && !skipAnswerLift) {
+    const lifted = takeFirstAnswerBox(proseHtml);
+    proseHtml = lifted.html;
+    liftedAnswer = lifted.box;
+  }
+  const shownQuickLabel = firstScreen && isMoringaPowder ? `Moringa powder 100g · ${MORINGA_PRICES.p100}` : quickProductLabel;
+  const shownQuickHref = firstScreen && isMoringaPowder ? "/products/moringa-powder/100g/" : productHref;
+  const relatedLabel = (article) =>
+    ["moringa-patches-australia-review-do-they-work", "rosabella-moringa-reviews-legit-or-overhyped-2026"].includes(meta.slug) &&
+    article.slug === "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
+      ? "Moringa at Chemist Warehouse: capsules vs powder"
+      : humanCopy(stripTags(article.title));
+  const relatedNav = relatedArticles.length
+    ? `<nav class="article-related" aria-labelledby="related-${esc(meta.slug)}">
+            <p class="kicker">Continue with</p>
+            <h2 id="related-${esc(meta.slug)}">Related ${esc(topic.toLowerCase())}</h2>
+            <ul>${relatedArticles.map((article) => `<li><a href="${r.article(article.slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(relatedLabel(article))}</a></li>`).join("")}</ul>
+          </nav>`
+    : "";
+  const earlyLinks = relatedArticles.slice(0, 2).map((article) => `<a href="${r.article(article.slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(relatedLabel(article))}</a>`).join(" · ");
+  const nextStep = firstScreen
+    ? `<p class="article-next-step"><a href="/products/moringa-powder/100g/" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="moringa-powder">Try a 100g pouch, ${MORINGA_PRICES.p100}</a> · Free AU shipping from $49</p>${earlyLinks ? `<p class="article-next-step">${earlyLinks}</p>` : ""}`
+    : "";
+  if (firstScreen && relatedNav) proseHtml = insertAfterFirstH2Section(proseHtml, relatedNav);
   const conversionCta = conversionPath.cta || cta;
   const conversionLinks = (conversionPath.links || [])
     .map(([label, slug]) => `<li><a href="${r.article(slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(label)}</a></li>`)
@@ -4624,19 +4693,21 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         <article data-article-slug="${esc(meta.slug)}">
           <p class="meta-line">${esc(topic)}${seoBaseline ? ` · Last updated: <time datetime="${BLOG_SEO_UPDATED}">23 October 2026</time>` : `${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""}`} · By <a href="${r.about}#founder" rel="author">Neer Vasa</a></p>
           <h1>${esc(displayH1)}</h1>${underH1}
+          ${liftedAnswer}
+          ${nextStep}
           <p class="lede">${ledeHtml}</p>
           <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
           ${seoOverride?.heroCaptionHtml || ""}
           <aside class="article-quick-product" aria-label="Related NutriThrive product">
-            <div><span>Related product</span><strong>${esc(quickProductLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · Free AU shipping from $49 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
-            <a href="${productHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
+            <div><span>Related product</span><strong>${esc(shownQuickLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · Free AU shipping from $49 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
+            <a href="${shownQuickHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(firstScreen && isMoringaPowder ? "moringa-powder" : shop.id)}">${esc(cta)}</a>
           </aside>
           ${enhancedProse.contents}
           ${conversionPath.methodology ? `<aside class="article-methodology" aria-labelledby="method-${esc(meta.slug)}">
             <h2 id="method-${esc(meta.slug)}">How we made this comparison</h2>
             <p>${meta.slug === "how-to-choose-moringa-powder-australia-2026" ? "We sell moringa leaf powder, so read this as a seller's guide and check our sources. The short version: look for one ingredient, a bright green colour, a readable batch date and lab paperwork you can open. Our powder is grown on our family farm in Gujarat, sun-dried and packed in Truganina, Melbourne." : "We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions."}</p>
           </aside>
-          ` : ""}<div class="prose">${isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : stripMidCtas(enhancedProse.html)}</div>
+          ` : ""}<div class="prose">${proseHtml}</div>
           ${isHealth ? `<aside class="article-safety"><p>This is general food information. If you're pregnant, breastfeeding, on medication or managing a health condition, check with your GP first.</p></aside>` : ""}
           ${isMoringaPowder && !isHealth && CALC_SLUGS.has(meta.slug) ? per100Calculator(meta.slug) : ""}
           ${objectionHtml}
@@ -4656,11 +4727,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             </div>
           </section>
           ${["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
-          ${relatedArticles.length ? `<nav class="article-related" aria-labelledby="related-${esc(meta.slug)}">
-            <p class="kicker">Continue with</p>
-            <h2 id="related-${esc(meta.slug)}">Related ${esc(topic.toLowerCase())}</h2>
-            <ul>${relatedArticles.map((article) => `<li><a href="${r.article(article.slug)}">${esc(["moringa-patches-australia-review-do-they-work", "rosabella-moringa-reviews-legit-or-overhyped-2026"].includes(meta.slug) && article.slug === "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025" ? "Moringa at Chemist Warehouse: capsules vs powder" : humanCopy(stripTags(article.title)))}</a></li>`).join("")}</ul>
-          </nav>` : ""}
+          ${firstScreen ? "" : relatedNav}
           <aside class="article-author">
             <p class="kicker">About the author</p>
             <h2><a href="${r.about}#founder" rel="author">Neer Vasa, NutriThrive founder</a></h2>
