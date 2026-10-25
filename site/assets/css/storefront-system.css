@@ -2143,6 +2143,8 @@ body.journal-searching .section-head > a {
 }
 
 .cart-main { grid-area: main; }
+#cart-ship-offer { margin: 0 0 var(--space-4); }
+#cart-ship-offer:empty { display: none; }
 #cart-recs { grid-area: recs; min-width: 0; }
 #cart-summary { grid-area: summary; }
 

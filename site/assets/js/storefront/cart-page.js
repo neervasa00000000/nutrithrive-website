@@ -154,7 +154,7 @@ function pickRecs(cartItems, subtotal) {
       }
       return {...p, score: s + extra, note };
     })
-    .filter(Boolean)
+    .filter((item) => item && item.id !== shipOfferProduct(subtotal)?.id)
     .sort((a, b) => b.score - a.score)
     .slice(0, 4);
   const comboInCart = cartItems.some((item) => item.id === "combo-pack");
@@ -176,35 +176,30 @@ function recHeading(cartItems, recs) {
   return "Goes well with your cart";
 }
 
-function renderRecs(cartItems, subtotal) {
-  const root = document.getElementById("cart-recs");
-  if (!root) return;
-  const recs = pickRecs(cartItems, subtotal);
-  if (!recs.length) {
-    root.innerHTML = "";
-    return;
-  }
-  root.innerHTML = `
-    <section class="cart-recs" aria-label="Recommended products">
-      <h2>${esc(recHeading(cartItems, recs))}</h2>
-      <div class="cart-recs-grid">
-        ${recs
-          .map(
-            (p) => `<article class="cart-rec">
-              <a class="cart-rec-media" href="${esc(p.href)}">
-                <img src="${esc(p.image)}" alt="" width="120" height="120">
+function shipOfferProduct(subtotal) {
+  const powder = catalog().find((product) => product.id === "moringa-powder");
+  const price = Number(powder?.price);
+  const threshold = auFreeShip();
+  if (!powder || !(price > 0) || !(subtotal > 0)) return null;
+  if (!(subtotal < threshold && subtotal + price >= threshold)) return null;
+  return {...powder, note: "Adds free Australian shipping" };
+}
+
+function recCard(product) {
+  return `<article class="cart-rec">
+              <a class="cart-rec-media" href="${esc(product.href)}">
+                <img src="${esc(product.image)}" alt="" width="120" height="120">
               </a>
               <div>
-                <h3><a href="${esc(p.href)}">${esc(p.name)}</a></h3>
-                <p class="cart-rec-meta">${esc(p.variant)} · ${money(p.price)}</p>
-                <p class="cart-rec-note">${esc(p.note)}</p>
-                <button class="btn btn-secondary" type="button" data-rec-add="${esc(p.id)}">Add</button>
+                <h3><a href="${esc(product.href)}">${esc(product.name)}</a></h3>
+                <p class="cart-rec-meta">${esc(product.variant)} · ${money(product.price)}</p>
+                <p class="cart-rec-note">${esc(product.note)}</p>
+                <button class="btn btn-secondary" type="button" data-rec-add="${esc(product.id)}">Add</button>
               </div>
-            </article>`
-          )
-          .join("")}
-      </div>
-    </section>`;
+            </article>`;
+}
+
+function bindRecAdds(root) {
   root.querySelectorAll("[data-rec-add]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const product = catalog().find((p) => p.id === btn.getAttribute("data-rec-add"));
@@ -219,6 +214,42 @@ function renderRecs(cartItems, subtotal) {
       }
     });
   });
+}
+
+function renderShipOffer(subtotal) {
+  const main = document.querySelector?.(".cart-main");
+  if (!main) return;
+  const offer = shipOfferProduct(subtotal);
+  let slot = document.getElementById("cart-ship-offer");
+  if (!offer) {
+    slot?.remove();
+    return;
+  }
+  if (!slot) {
+    slot = document.createElement("div");
+    slot.id = "cart-ship-offer";
+  }
+  if (main.firstElementChild !== slot) main.prepend(slot);
+  slot.innerHTML = recCard(offer);
+  bindRecAdds(slot);
+}
+
+function renderRecs(cartItems, subtotal) {
+  const root = document.getElementById("cart-recs");
+  if (!root) return;
+  const recs = pickRecs(cartItems, subtotal);
+  if (!recs.length) {
+    root.innerHTML = "";
+    return;
+  }
+  root.innerHTML = `
+    <section class="cart-recs" aria-label="Recommended products">
+      <h2>${esc(recHeading(cartItems, recs))}</h2>
+      <div class="cart-recs-grid">
+        ${recs.map((product) => recCard(product)).join("")}
+      </div>
+    </section>`;
+  bindRecAdds(root);
 }
 
 function setLayout(empty) {
@@ -239,11 +270,13 @@ function renderCart() {
       setLayout(true);
       lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free Australian shipping on orders from ${money(auFreeShip())}.</p><a class="btn btn-primary" href="${shopPath()}moringa-powder/">Shop moringa powder</a> <a class="btn btn-secondary" href="${shopPath()}">Shop the range</a></div>`;
       summary.innerHTML = "";
+      renderShipOffer(0);
       renderRecs([], 0);
       window.NTRetention?.renderBuyAgain?.(document.getElementById("cart-buy-again"), { source: "cart" });
       return;
     }
     setLayout(false);
+    renderShipOffer(sub);
     lines.innerHTML = items
       .map((item) => {
         const qty = Number(item.qty || 1);
