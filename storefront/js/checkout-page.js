@@ -40,3 +40,29 @@ if (summary) {
 }
 
 renderSummary();
+
+const previewForm = document.querySelector("form.form");
+previewForm?.addEventListener("submit", (event) => {
+  if (window._ntBeginCheckoutSent || !items.length) return;
+  event.preventDefault();
+  let left = false;
+  const leave = () => {
+    if (left) return;
+    left = true;
+    window._ntBeginCheckoutSent = true;
+    previewForm.submit();
+  };
+  let timer = 0;
+  const sent = window.NT?.trackEcommerce?.("begin_checkout", items, {
+    transport_type: "beacon",
+    event_callback() {
+      if (timer) window.clearTimeout(timer);
+      leave();
+    },
+  });
+  if (!sent || left) {
+    if (!left) leave();
+    return;
+  }
+  timer = window.setTimeout(leave, 1000);
+});

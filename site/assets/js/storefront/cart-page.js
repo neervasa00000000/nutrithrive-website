@@ -340,16 +340,49 @@ function trackCartView() {
   }
 }
 
-function trackCheckoutClick(event) {
-  if (!event.target.closest?.(".cart-checkout")) return;
-  const items = readCart();
-  if (!items.length || window._ntBeginCheckoutSent) return;
-  if (!window.NT?.trackEcommerce?.("begin_checkout", items, { transport_type: "beacon" })) return;
+function rememberBeginCheckout(items) {
   window._ntBeginCheckoutSent = true;
   // Carry successful tracking across the full-page navigation. Payment consumes
   // this once, only for the same cart and a recent click; direct visits still fire.
   const signature = JSON.stringify(items.map(i => [i.id, Number(i.qty || i.quantity || 1), Number(i.price)]).sort());
   try { sessionStorage.setItem("nt-begin-checkout", JSON.stringify({ signature, at: Date.now() })); } catch { /* storage can be disabled */ }
+}
+
+function trackCheckoutClick(event) {
+  const link = event.target.closest?.(".cart-checkout");
+  if (!link) return;
+  const items = readCart();
+  if (!items.length || window._ntBeginCheckoutSent) return;
+  const href = typeof link.getAttribute === "function" ? (link.getAttribute("href") || checkoutPath()) : "";
+  const holdNavigation = typeof event.preventDefault === "function" && typeof link.getAttribute === "function";
+  let left = false;
+  const leave = () => {
+    if (left || !href) return;
+    left = true;
+    window.location.assign(href);
+  };
+  const finish = () => {
+    if (!window._ntBeginCheckoutSent) rememberBeginCheckout(items);
+    leave();
+  };
+  if (holdNavigation) event.preventDefault();
+  let timer = 0;
+  const sent = window.NT?.trackEcommerce?.("begin_checkout", items, {
+    transport_type: "beacon",
+    event_callback() {
+      if (timer) window.clearTimeout(timer);
+      finish();
+    },
+  });
+  if (!sent) {
+    if (holdNavigation) leave();
+    return;
+  }
+  if (!holdNavigation || window._ntBeginCheckoutSent) {
+    if (!window._ntBeginCheckoutSent) finish();
+    return;
+  }
+  timer = window.setTimeout(finish, 1000);
 }
 document.addEventListener("click", trackCheckoutClick);
 window.addEventListener("nt-cart-change", () => { window._ntBeginCheckoutSent = false; });
