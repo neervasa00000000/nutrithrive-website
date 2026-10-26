@@ -1873,7 +1873,16 @@ function writePage(rel, html, destRoot = OUT) {
 }
 
 function homepage() {
+  const buildDate = process.env.BUILD_DATE || new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Australia/Melbourne",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+  const showDiwaliCard = buildDate <= "2026-11-08";
   const featured = ["moringa-powder", "curry-leaves", "black-tea", "moringa-soap"].map(id => PRODUCTS.find(p => p.id === id));
+  const diwaliCard = PRODUCTS.find((product) => product.id === "diwali-gift-box");
+  const heroProducts = showDiwaliCard && diwaliCard ? [featured[0], diwaliCard, ...featured.slice(1)] : featured;
   const liveSeo = LIVE_MODE ? extractSeo(path.join(SITE, "index.html")) : null;
   const desk = deskSeo("/");
   return layout({
@@ -1904,7 +1913,7 @@ function homepage() {
       <p class="purchase-note">Moringa from $11 · Curry leaves $7 · Tea $7.50 · Soap $7</p>
     </div>
     <div class="hero-collection" aria-label="Explore NutriThrive products">
-      ${featured.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>${index === 0 ? "From " : ""}${money(product.price).replace(/\.00$/, "")}</small></span></a>`).join("")}
+      ${heroProducts.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>${product.id === "moringa-powder" ? "From " : ""}${money(product.price).replace(/\.00$/, "")}</small></span></a>`).join("")}
     </div>
   </div>
 </section>
