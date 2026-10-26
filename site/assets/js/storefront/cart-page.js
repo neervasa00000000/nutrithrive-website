@@ -192,7 +192,7 @@ function renderRecs(cartItems, subtotal) {
           .map(
             (p) => `<article class="cart-rec">
               <a class="cart-rec-media" href="${esc(p.href)}">
-                <img src="${esc(p.image)}" alt="" width="120" height="120">
+                <img src="${esc(window.NT?.productThumbnail?.(p.image) || p.image)}" alt="" width="120" height="120" loading="lazy">
               </a>
               <div>
                 <h3><a href="${esc(p.href)}">${esc(p.name)}</a></h3>
@@ -249,7 +249,7 @@ function renderCart() {
         const qty = Number(item.qty || 1);
         return `<article class="cart-line">
         <a class="cart-line__media" href="${esc(item.href || shopPath())}" aria-label="View ${esc(item.name)}">
-          <img src="${esc(item.image)}" alt="" width="112" height="112">
+          <img src="${esc(window.NT?.productThumbnail?.(item.image) || item.image)}" alt="" width="112" height="112">
         </a>
         <div class="cart-line__content">
           <div class="cart-line__heading">

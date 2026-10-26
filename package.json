@@ -16,7 +16,9 @@
     "storefront:verify": "node scripts/verify-storefront-migration.mjs",
     "seo:audit": "node scripts/audit-seo.mjs",
     "storefront:serve": "node scripts/serve-storefront-preview.mjs",
-    "blog:launch:apply": "node scripts/apply-blog-launch-schedule.mjs"
+    "blog:launch:apply": "node scripts/apply-blog-launch-schedule.mjs",
+    "images:products": "node scripts/generate-product-image-sizes.mjs",
+    "verify:performance": "node scripts/verify-performance.mjs"
   },
   "dependencies": {
     "nodemailer": "^9.0.1"
@@ -28,6 +30,7 @@
     "esbuild": "^0.25.0",
     "fast-glob": "^3.3.3",
     "netlify-cli": "^27.8.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17"
   },
   "overrides": {

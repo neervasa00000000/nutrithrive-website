@@ -338,7 +338,7 @@
     const qty = Number(opts.qty || 1);
     const showQty = Boolean(opts.showQty);
     return `<article class="retention-card" data-product-id="${esc(product.id)}">
-      <a class="retention-card__media" href="${esc(product.href)}"><img src="${esc(product.image)}" alt="" width="96" height="96"></a>
+      <a class="retention-card__media" href="${esc(product.href)}"><img src="${esc(window.NT?.productThumbnail?.(product.image) || product.image)}" alt="" width="96" height="96" loading="lazy"></a>
       <div class="retention-card__body">
         <h3><a href="${esc(product.href)}">${esc(product.name)}</a></h3>
         <p>${esc(product.variant || "")} · ${money(product.price)}</p>
