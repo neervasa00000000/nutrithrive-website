@@ -2413,6 +2413,20 @@ const PDP = {
   },
 };
 
+function deliveredPriceLine(product) {
+  const price = Number(product?.price);
+  const weight = Number(product?.weight);
+  const freeShip = Number((shippingCostNote().match(/\$(\d+(?:\.\d+)?)/) || [])[1]);
+  if (!(price > 0) || !(freeShip > 0) || !(price < freeShip)) return "";
+  if (!(weight > 0)) {
+    console.warn(`No delivered line for ${product?.id || "unknown product"}: no weight`);
+    return "";
+  }
+  const postage = auSoloShippingRate(weight);
+  const total = price + postage;
+  return `<p class="pdp-delivery-line">Delivered: ${shortMoney(price)} + ${shortMoney(postage)} postage = ${shortMoney(total)} · Free AU shipping from ${shortMoney(freeShip)}</p>`;
+}
+
 function pdpPage(slug, d) {
   const p = d.product;
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
@@ -2459,6 +2473,7 @@ function pdpPage(slug, d) {
   if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
     throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
+  const deliveredHtml = mainPowder ? "" : deliveredPriceLine(buyProduct);
   const buyOnline = mainPowder ? `<section class="pdp-buy-online" aria-labelledby="buy-moringa-online">
     <h2 id="buy-moringa-online">Buy moringa powder online in Australia</h2>
     <ul>${[powder100, powder200, powder400].map((item) => `<li>${item.weight === 400 ? "400g (4 × 100g pouches)" : `${item.weight}g pouch`}: $${item.price} (with postage ${money(item.price + auSoloShippingRate(item.weight))}${item.weight === 400 ? `, best value at $${item.price / 4} per 100g` : ""})</li>`).join("")}
@@ -2635,7 +2650,7 @@ function pdpPage(slug, d) {
             <div class="pdp-actions">
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(buyProduct)}" data-label="Add to cart">Add to cart</button>
               <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(buyProduct)}">Buy now</button>
-            </div>
+            </div>${deliveredHtml ? `\n            ${deliveredHtml}` : ""}
             <p class="purchase-note"><a href="/shipping#returns">7-day guarantee: not happy? Contact us within 7 days of delivery for a refund or replacement.</a></p>
 
             ${shippingHtml}
