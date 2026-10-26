@@ -433,7 +433,7 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Best Moringa Powder Australia? (Facts-Only)",
     ogTitle: "Best Moringa Powder Australia: Facts-Only Brand Check",
     ogDescription: "Facts-only moringa brand scorecard for Australia, with iHerb and Amazon AU checks and NutriThrive pouch facts.",
-    ledeHtml: "Compare AU moringa powders with a facts-only scorecard: ingredients, organic marks, CoA, pack location, plus iHerb and Amazon notes.",
+    ledeHtml: "Compare AU moringa powders with a facts-only scorecard: ingredients, certification marks, CoA, pack location, plus iHerb and Amazon notes.",
     articleSection: "Moringa",
   },
   "moringa-capsules-vs-powder-which-is-better-2026": {
@@ -4232,6 +4232,18 @@ function extractArticleStructuredData(slug) {
   return blocks.join("\n  ");
 }
 
+function extractFaqPageSchema(slug) {
+  const file = path.join(SITE, "blog", `${slug}.html`);
+  if (!fs.existsSync(file)) return "";
+  const html = fs.readFileSync(file, "utf8");
+  const blocks = [];
+  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    const raw = match[1].trim();
+    if (/"@type"\s*:\s*"FAQPage"/.test(raw)) blocks.push(`<script type="application/ld+json">${raw}</script>`);
+  }
+  return blocks.join("\n  ");
+}
+
 function extractArticleProse(slug, fallbackHtml) {
   const file = path.join(SITE, "blog", `${slug}.html`);
   let html = "";
@@ -4497,7 +4509,14 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const title = liveSeo?.title || desk.title || seoOverride?.title || catalogTitle;
   const displayH1 = liveSeo?.h1 || desk.h1 || seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
   const seoBaseline = BLOG_SEO_BASELINE[meta.slug];
-  const description = seoBaseline?.description || desk.description || seoOverride?.description || pickSeoDescription({
+  const pageSeo = new Set([
+    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+    "diwali-hampers-australia",
+    "moringa-brands-comparison-australia-2026",
+    "grow-moringa-tree-australia",
+    "rosabella-moringa-reviews-legit-or-overhyped-2026",
+  ]);
+  const description = (pageSeo.has(meta.slug) && liveSeo?.description) || seoBaseline?.description || desk.description || seoOverride?.description || pickSeoDescription({
       file: liveSeo?.description,
       catalog: meta.description,
       slug: meta.slug,
@@ -4545,9 +4564,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           const data = JSON.parse(raw);
           if (data["@type"] === "Article" || data["@type"] === "BlogPosting") {
             if (seoBaseline) {
-              data.headline = displayH1;
-              if (data.name) data.name = displayH1;
-              data.description = seoBaseline.description;
+              data.headline = pageSeo.has(meta.slug) ? title : displayH1;
+              if (data.name) data.name = pageSeo.has(meta.slug) ? title : displayH1;
+              data.description = pageSeo.has(meta.slug) ? description : seoBaseline.description;
               data.dateModified = BLOG_SEO_UPDATED;
               return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
             }
@@ -4563,9 +4582,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
               "moringa-and-berberine-australia-what-science-says-2026",
               "dried-curry-leaves-quality-guide-how-to-use",
             ]);
-            if (desk.title && (data.headline === previousTitle || data.headline === desk.old_title || refreshSchema.has(meta.slug))) data.headline = desk.title;
-            if (desk.title && (data.name === previousTitle || data.name === desk.old_title || refreshSchema.has(meta.slug))) data.name = desk.title;
-            if (refreshSchema.has(meta.slug) && desk.description) data.description = desk.description;
+            if (desk.title && (data.headline === previousTitle || data.headline === desk.old_title || refreshSchema.has(meta.slug))) data.headline = pageSeo.has(meta.slug) ? title : desk.title;
+            if (desk.title && (data.name === previousTitle || data.name === desk.old_title || refreshSchema.has(meta.slug))) data.name = pageSeo.has(meta.slug) ? title : desk.title;
+            if (refreshSchema.has(meta.slug) && desk.description) data.description = pageSeo.has(meta.slug) ? description : desk.description;
             if (!data.datePublished && schemaPublished) data.datePublished = schemaPublished;
             if ((!data.dateModified && schemaModified) || (refreshSchema.has(meta.slug) && schemaModified)) data.dateModified = schemaModified;
             return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
@@ -4615,7 +4634,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const shownQuickLabel = firstScreen && isMoringaPowder ? `Moringa powder 100g · ${MORINGA_PRICES.p100}` : quickProductLabel;
   const shownQuickHref = firstScreen && isMoringaPowder ? "/products/moringa-powder/100g/" : productHref;
   const relatedLabel = (article) =>
-    ["moringa-patches-australia-review-do-they-work", "rosabella-moringa-reviews-legit-or-overhyped-2026"].includes(meta.slug) &&
+    meta.slug === "moringa-brands-comparison-australia-2026" &&
+    article.slug === "verify-moringa-quality-premium-buyers-checklist-2026"
+      ? "Certified vs farm-grown moringa powder"
+      : ["moringa-patches-australia-review-do-they-work", "rosabella-moringa-reviews-legit-or-overhyped-2026"].includes(meta.slug) &&
     article.slug === "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
       ? "Moringa at Chemist Warehouse: capsules vs powder"
       : humanCopy(stripTags(article.title));
@@ -4665,6 +4687,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         inLanguage: "en-AU",
       })}
   ${jsonLd(breadcrumbSchema(breadcrumbItems))}`;
+  const extraFaq = preservedStructuredData.includes("FAQPage") ? "" : extractFaqPageSchema(meta.slug);
   const underH1 = meta.slug === "moringa-brands-comparison-australia-2026"
     ? `
           <div class="quick-verdict">
@@ -4702,13 +4725,14 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     ogImage: socialImage,
     ogImageWidth: seoOverride?.ogImageWidth || 1200,
     ogImageHeight: seoOverride?.ogImageHeight || 630,
-    ogTitle: seoBaseline?.ogTitle || desk.title || seoOverride?.ogTitle,
-    ogDescription: seoBaseline?.description || desk.description || seoOverride?.ogDescription,
+    ogTitle: (pageSeo.has(meta.slug) && title) || seoBaseline?.ogTitle || desk.title || seoOverride?.ogTitle,
+    ogDescription: (pageSeo.has(meta.slug) && description) || seoBaseline?.description || desk.description || seoOverride?.ogDescription,
     robots: NOINDEX_BLOG_SLUGS.has(meta.slug) ? "noindex, follow" : undefined,
     extraHead: `<meta name="author" content="Neer Vasa">
   <meta property="article:author" content="Neer Vasa">
   <meta property="article:section" content="${esc(category)}">
   ${dosageSchemas || structuredWithModified || defaultStructuredData}
+  ${extraFaq}
   ${blogPostingData ? jsonLd(blogPostingData) : ""}`,
     main: `
       <nav class="wrap crumbs" aria-label="Breadcrumb">
