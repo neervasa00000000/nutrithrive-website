@@ -3815,10 +3815,44 @@ function cityPage(city, slug) {
   }[city];
   const uniqueLine = {
     Melbourne: "Packed here in Truganina, fastest metro transit on our list (1 to 3 business days).",
-    Sydney: "Same pouch as Melbourne; Sydney is usually 3 to 4 business days after dispatch.",
-    Perth: "Same pouch as Melbourne; Perth is usually 3 to 4 business days after dispatch, tracked.",
-    Brisbane: `Same pouch as Melbourne; Brisbane is usually 3 to 4 business days after dispatch. For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
-    Adelaide: "Same pouch as Melbourne; Adelaide is usually 3 to 4 business days after dispatch.",
+    Sydney: "",
+    Perth: "",
+    Brisbane: "",
+    Adelaide: "",
+  }[city];
+  const postageLine = `Postage is by weight and costs the same to ${city} as anywhere in Australia: $9.69 up to 250g, $11.12 for 251–500g, free from $49. A 100g pouch is $20.69 delivered, 200g is $31.69 and 400g is $51.12. Add a 100g pouch to a 400g ($51 total) and shipping is free.`;
+  const postageFaq = "No. Postage is by weight and the same Australia-wide: $9.69 up to 250g, $11.12 for 251–500g, and free from $49.";
+  const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
+  const growGuideHref = `${r.article("grow-moringa-tree-australia")}#grow-by-city`;
+  const localOrdering = {
+    Sydney: {
+      state: "NSW",
+      cutoff: "That's 2pm in Sydney too.",
+      intro:
+        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 2pm in Sydney too. Sydney uses the same time as Melbourne, including through daylight saving, so you do not add or subtract an hour. A weekday order placed before 2pm Sydney time is dispatched from Truganina the same day. A weekday order placed after 2pm Sydney time is not.",
+      localHtml: `Looking for fresh moringa leaves in Sydney? We sell dried moringa leaf powder only; see <a href="${leavesGuideHref}">where to buy moringa leaves in Australia</a>.`,
+    },
+    Brisbane: {
+      state: "QLD",
+      cutoff: "Queensland has no daylight saving, so that's 1pm in Brisbane from October to April and 2pm the rest of the year.",
+      intro:
+        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. Queensland has no daylight saving, so that's 1pm in Brisbane from October to April and 2pm the rest of the year. Brisbane does not move its clock when Melbourne does. From October to April, use 1pm Brisbane time. For the rest of the year, use 2pm Brisbane time.",
+      localHtml: `For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
+    },
+    Perth: {
+      state: "WA",
+      cutoff: "That's 11am in Perth from October to April and 12pm the rest of the year.",
+      intro:
+        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 11am in Perth from October to April and 12pm the rest of the year. From October to April, the Perth cut-off is 11am. For the rest of the year, the Perth cut-off is 12pm. Use the earlier morning time only in those October to April months.",
+      localHtml: `Growing your own in Perth? See <a href="${growGuideHref}">our moringa growing guide by city</a>.`,
+    },
+    Adelaide: {
+      state: "SA",
+      cutoff: "That's 1:30pm in Adelaide all year.",
+      intro:
+        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 1:30pm in Adelaide all year. Adelaide's cut-off stays 1:30pm in every month, including October to April, because the gap to Melbourne time does not change. A weekday order placed before 1:30pm Adelaide time is dispatched from Truganina the same day. A weekday order placed after 1:30pm Adelaide time is not.",
+      localHtml: `Growing your own in Adelaide? See <a href="${growGuideHref}">our moringa growing guide by city</a>.`,
+    },
   }[city];
   const pouchLine = city === "Melbourne"
     ? "Melbourne customers get the same pouch we ship Australia-wide, not a different contract pack."
@@ -3834,6 +3868,33 @@ function cityPage(city, slug) {
     ["When is shipping free?", "Free AU shipping from $49."],
     ["Where is it packed?", "Truganina, Melbourne VIC."],
   ];
+  if (localOrdering) {
+    faqs.push([`Does postage cost more to ${city}?`, postageFaq]);
+    if (city === "Sydney") {
+      faqs.push([
+        "Do you sell fresh moringa leaves in Sydney?",
+        "No. We sell dried moringa leaf powder in 100g, 200g and 400g pouches, posted from Truganina, VIC.",
+      ]);
+    } else {
+      faqs.push([
+        `What time do I order in ${city} for same-day dispatch?`,
+        `Order before 2pm Monday to Friday, Melbourne time. ${localOrdering.cutoff}`,
+      ]);
+    }
+  }
+  const orderingSection = localOrdering
+    ? `<section class="city-local-section" id="ordering-from-${slug}" aria-labelledby="ordering-from-${slug}-heading">
+          <div class="wrap">
+            <div class="city-local-section__head">
+              <div><p class="city-local-kicker">Local time and postage</p><h2 id="ordering-from-${slug}-heading">Ordering from ${city}</h2></div>
+            </div>
+            <p>${esc(localOrdering.intro)}</p>
+            <p>${esc(postageLine)}</p>
+            <p>${esc(`Regional and rural ${localOrdering.state} addresses can take up to 10 business days.`)}</p>
+            <p>${localOrdering.localHtml}</p>
+          </div>
+        </section>`
+    : "";
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -3977,7 +4038,7 @@ function cityPage(city, slug) {
           <div class="wrap">
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Your ${city} order</p><h2 id="delivery-heading-${slug}">Shipping to ${city}</h2></div>
-              <p>${uniqueLine}</p>
+              ${uniqueLine ? `<p>${uniqueLine}</p>` : ""}
             </div>
             <div class="city-info-grid">
               <article class="city-info-card city-info-card--accent">
@@ -4001,6 +4062,8 @@ function cityPage(city, slug) {
             </div>
           </div>
         </section>
+
+        ${orderingSection}
 
         ${melbourneCurrySection}
 
