@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { PRODUCTS } from "../storefront/js/data.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LIVE = "https://nutrithrive.com.au";
@@ -30,7 +31,7 @@ const products = [
   {
     id: "moringa-powder-400g",
     group: "moringa-powder",
-    title: "NutriThrive Moringa Powder 400g Bundle",
+    title: "NutriThrive Moringa Powder 400g",
     description: "Four 100g pouches of farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
     link: "/products/moringa-powder/",
     image: "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp",
@@ -81,6 +82,19 @@ const products = [
     isBundle: true,
   },
 ];
+
+const diwali = PRODUCTS.find((product) => product.id === "diwali-gift-box");
+if (!diwali || !(Number(diwali.price) > 0) || !(Number(diwali.weight) > 0) || !diwali.href || !diwali.image) {
+  throw new Error("diwali-gift-box needs a price, weight, link and image in storefront/js/data.js");
+}
+products.push({
+  id: "diwali-gift-box",
+  title: "NutriThrive Diwali Gift Box: Darjeeling Tea, Curry Leaves and Soap",
+  description: diwali.detail || diwali.benefit,
+  link: diwali.href,
+  image: diwali.image,
+  price: `${Number(diwali.price).toFixed(2)} AUD`,
+});
 
 function xml(value) {
   return String(value)
