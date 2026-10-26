@@ -2427,6 +2427,15 @@ function deliveredPriceLine(product) {
   return `<p class="pdp-delivery-line">Delivered: ${shortMoney(price)} + ${shortMoney(postage)} postage = ${shortMoney(total)} · Free AU shipping from ${shortMoney(freeShip)}</p>`;
 }
 
+function diwaliQuantityLine(product) {
+  const price = Number(product?.price);
+  const freeShip = Number((shippingCostNote().match(/\$(\d+(?:\.\d+)?)/) || [])[1]);
+  const boxes = 3;
+  const total = price * boxes;
+  if (!(price > 0) || !(freeShip > 0) || !(total >= freeShip)) return "";
+  return `<p class="pdp-delivery-line">Gifting more than one family? ${boxes} boxes are ${shortMoney(total)} and ship free.</p>`;
+}
+
 function pdpPage(slug, d) {
   const p = d.product;
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
@@ -2473,7 +2482,9 @@ function pdpPage(slug, d) {
   if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
     throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
-  const deliveredHtml = mainPowder ? "" : deliveredPriceLine(buyProduct);
+  const deliveredParts = [mainPowder ? "" : deliveredPriceLine(buyProduct)];
+  if (slug === "diwali-gift-box") deliveredParts.push(diwaliQuantityLine(buyProduct));
+  const deliveredHtml = deliveredParts.filter(Boolean).join("\n            ");
   const buyOnline = mainPowder ? `<section class="pdp-buy-online" aria-labelledby="buy-moringa-online">
     <h2 id="buy-moringa-online">Buy moringa powder online in Australia</h2>
     <ul>${[powder100, powder200, powder400].map((item) => `<li>${item.weight === 400 ? "400g (4 × 100g pouches)" : `${item.weight}g pouch`}: $${item.price} (with postage ${money(item.price + auSoloShippingRate(item.weight))}${item.weight === 400 ? `, best value at $${item.price / 4} per 100g` : ""})</li>`).join("")}
