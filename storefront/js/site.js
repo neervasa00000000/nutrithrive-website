@@ -35,6 +35,11 @@ function freshAsset(url) {
   return `${url}?v=${ASSET_VERSION}`;
 }
 
+function productThumbnail(image) {
+  if (typeof image !== "string" || !image.includes("/assets/images/product_webp/") || /-card-\d+\.webp/.test(image)) return image;
+  return image.replace(/\.webp(?=\?|$)/, "-card-320.webp");
+}
+
 const icons = {
   search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>',
   cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 7h15l-1.4 8.2a2 2 0 0 1-2 1.6H9.2a2 2 0 0 1-2-1.6L6 7Z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>',
@@ -198,6 +203,7 @@ function updateCartCount() {
 }
 
 window.NT = {
+  productThumbnail,
   money,
   analyticsItem,
   trackEvent,
