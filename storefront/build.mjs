@@ -31,7 +31,7 @@ const OUT = __dirname;
 const ASSET_VERSION = "20261026-performance-2";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261026-disclosure-1";
+const CSS_ASSET_VERSION = "20261026-melbourne-1";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
@@ -3708,34 +3708,29 @@ function melbournePage() {
       ) + jsonLd(faqSchema),
     current: "",
     main: `
-      <div class="city-page" data-city="melbourne">
+      <div class="city-page melbourne-shop" data-city="melbourne">
 
         <section class="city-local-hero">
           <div class="wrap city-local-hero__grid">
             <div class="city-local-hero__copy">
               <p class="city-local-kicker">Packed in Truganina · Melbourne west</p>
               <h1>${esc(desk.h1 || "Curry leaves, tea and soap delivered in Melbourne")}</h1>
-              <p class="city-local-lead">Dried curry leaves from $7, Darjeeling tea and handmade soap. Packed in Truganina. Melbourne metro delivery usually takes 1 to 3 business days, with pickup by arrangement.</p>
+              <p class="city-local-lead">Farm-grown leaves, Darjeeling tea and handmade soap. Packed with care in Truganina, ready for your Melbourne pantry and everyday rituals.</p>
               <div class="city-local-actions">
-                <a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
-                <a class="btn btn-secondary" href="${powder100Href}">Try 100g for $11</a>
-                ${diwaliOpen ? `<a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>` : ""}
+                <a class="btn btn-primary" href="#what-we-pack">Shop the Melbourne range</a>
+                <a class="melbourne-text-link" href="#delivery-melbourne">Delivery &amp; local pickup →</a>
               </div>
               <ul class="city-local-proof" aria-label="Melbourne delivery highlights">
-                <li><strong>Truganina</strong><span>packed in VIC</span></li>
+                <li><strong>Free shipping $49+</strong><span>Australian orders</span></li>
                 <li><strong>1 to 3 days</strong><span>Melbourne metro</span></li>
                 <li><strong>Pickup</strong><span>by arrangement</span></li>
               </ul>
             </div>
             <figure class="city-local-visual">
               <div class="city-local-visual__image">
-                <img src="/assets/images/product_webp/dried-curry-leaves-30g-main.webp" alt="NutriThrive 30g dried curry leaves pouch packed in Truganina for Melbourne" width="1254" height="1254" fetchpriority="high">
+                <img src="/assets/images/product_webp/dried-curry-leaves-30g-main.webp" ${cardSrcset("/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "(max-width: 767px) calc(100vw - 36px), 440px")} alt="NutriThrive 30g dried curry leaves pouch packed in Truganina for Melbourne" width="1254" height="1254" fetchpriority="high">
               </div>
-              <figcaption>
-                <span>Typical metro transit</span>
-                <strong>1 to 3 business days after dispatch</strong>
-                <small>Dispatched from Truganina with tracking</small>
-              </figcaption>
+              <figcaption><span>From our family farm</span><strong>Dried curry leaves · $7 / 30g</strong><a href="${curryHref}">Discover the product →</a></figcaption>
             </figure>
           </div>
         </section>
@@ -3745,43 +3740,15 @@ function melbournePage() {
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">From Truganina</p><h2 id="what-we-pack-heading">What we pack in Truganina</h2></div>
             </div>
-            <div class="city-info-grid">
-              <article class="city-info-card city-info-card--accent">
-                <span class="city-info-card__number">01</span>
-                <h3>Where to buy curry leaves in Melbourne</h3><p><strong>30g dried whole leaves · $7</strong></p>
-                <p>Whole leaves (karipatta / kadi patta) from our farm in Gujarat for tadka, dal, sambar and curries.</p>
-                <a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="city-info-card">
-                <span class="city-info-card__number">02</span>
-                <h3>Loose leaf tea Melbourne</h3><p><strong>Darjeeling 100g · $7.50</strong></p>
-                <p>From a family farm in Darjeeling, about 50 cups a pouch. Brew at 85–90°C for 3–5 minutes.</p>
-                <a href="${teaHref}">Shop Darjeeling tea <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="city-info-card">
-                <span class="city-info-card__number">03</span>
-                <h3>Handmade moringa &amp; lavender soap · 95g · $7</h3>
-                <p>Handmade by us in small batches from a melt-and-pour soap base with moringa leaf, lavender fragrance and dried lavender flowers.</p>
-                <a href="${soapHref}">Shop handmade soap <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="city-info-card">
-                <span class="city-info-card__number">04</span>
-                <h3>Moringa leaf powder · 100g $11</h3>
-                <p>Sun-dried moringa leaf powder in 100g, 200g and 400g pouches ($11, $22, $40), packed in Truganina. Pickup by arrangement.</p>
-                <a href="${powder100Href}">Try 100g for $11 <span aria-hidden="true">→</span></a>
-              </article>
-            </div>
+            <div class="product-grid melbourne-products" aria-label="Shop the Melbourne range">${["curry-leaves", "black-tea", "moringa-soap", "moringa-powder"].map(id => productCard(PRODUCTS.find(p => p.id === id)).replace(/ +\n/g, "\n")).join("")}</div>
             <p style="margin-top:16px"><a href="${leavesGuideHref}">Looking for moringa leaves? See where to buy moringa leaves in Australia</a></p>
           </div>
         </section>
 
-        ${diwaliOpen ? `<section class="city-local-section" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
-          <div class="wrap">
-            <div class="city-local-section__head">
-              <div><p class="city-local-kicker">Festival gifts</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2></div>
-            </div>
-            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade moringa and lavender soap bar, with no moringa powder, for $20. ${esc(diwaliOrderLine)} Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
-            <p style="margin-top:16px"><a class="btn btn-primary" href="${diwaliHref}">Shop the Diwali Gift Box</a></p>
+        ${diwaliOpen ? `<section class="city-local-section melbourne-gifting" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
+          <div class="wrap melbourne-gift-grid">
+            <div><p class="city-local-kicker">A little something to share</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2><p>Darjeeling tea, farm-grown curry leaves and handmade soap. Three thoughtful favourites, packed together for $20.</p><a class="btn btn-primary" href="${diwaliHref}">Explore the $20 gift box</a></div>
+            <div class="melbourne-gift-note"><h3>Ready for Sunday 8 November</h3><p>${esc(diwaliOrderLine)}</p><p>Prefer to collect? <a href="/contact">Arrange pickup from Truganina</a>. For team or community gifts, contact us with quantities and dates.</p></div>
           </div>
         </section>` : ""}
 
@@ -3790,7 +3757,11 @@ function melbournePage() {
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Your Melbourne order</p><h2 id="delivery-heading-melbourne">Delivery to Melbourne and pickup</h2></div>
             </div>
-            <p>Orders before 2pm Monday to Friday usually leave Truganina the same day. Melbourne metro is usually 1 to 3 business days after dispatch. Free shipping on orders from $49; otherwise postage is calculated by weight. Pickup from Truganina by arrangement; we don't have a shopfront.</p>
+            <div class="melbourne-delivery-grid">
+              <div><h3>Dispatched locally</h3><p>Order before 2pm Monday to Friday for same-day dispatch from Truganina.</p></div>
+              <div><h3>Delivered to your door</h3><p>Melbourne metro usually takes 1–3 business days after dispatch. Free AU shipping from $49; under $49, postage is calculated by weight.</p><a href="/shipping">See shipping rates →</a></div>
+              <div><h3>Prefer to pick up?</h3><p>Collect from Truganina by arrangement. We don’t have a shopfront, so please contact us before visiting.</p><a href="/contact">Arrange local pickup →</a></div>
+            </div>
           </div>
         </section>
 
