@@ -31,7 +31,7 @@ const OUT = __dirname;
 const ASSET_VERSION = "20261026-performance-2";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261026-home-compact-2";
+const CSS_ASSET_VERSION = "20261026-disclosure-1";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));

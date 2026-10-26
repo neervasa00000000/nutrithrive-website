@@ -5153,18 +5153,21 @@ select {
 
 @media (max-width: 860px) {
   .storefront-refined .pdp-gallery {
-    aspect-ratio: auto;
-    max-height: 100px;
+    width: 100%;
+    max-width: 380px;
+    margin-inline: auto;
+    aspect-ratio: 1;
+    max-height: none;
   }
 
   .storefront-refined .pdp-gallery-open {
-    height: auto;
+    height: 100%;
   }
 
   .storefront-refined .pdp-gallery img {
     width: 100%;
-    height: auto;
-    max-height: 100px;
+    height: 100%;
+    max-height: none;
     object-fit: contain;
   }
 
@@ -5261,3 +5264,30 @@ select {
   .storefront-refined .hero-compact .purchase-note { margin-top: 12px; }
   .storefront-refined .hero-compact + .section { padding-top: 24px; }
 }
+
+/* One consistent disclosure affordance throughout storefront pages. */
+.storefront-refined details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+}
+.storefront-refined details > summary::-webkit-details-marker { display: none; }
+.storefront-refined details > summary::marker { content: ""; }
+.storefront-refined details > summary::after {
+  content: "+";
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: 0;
+  transform: none;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+}
+.storefront-refined details[open] > summary::after { content: "−"; transform: none; margin: 0; }
+.storefront-refined .pdp-guide-toggle { display: none; }
