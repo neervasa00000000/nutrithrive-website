@@ -5255,5 +5255,9 @@ select {
   .storefront-refined .hero-compact .hero-grid { gap: 20px; }
   .hero-compact .hero-collection { max-width: 460px; width: 100%; justify-self: center; }
   .hero-compact .hero-collection-item img { aspect-ratio: 1.35; }
+  .storefront-refined .hero-compact .hero-actions { flex-direction: row; justify-content: flex-start; gap: 4px 14px; margin-bottom: 0; }
+  .hero-compact .hero-actions .btn { flex: 0 1 auto; width: auto; padding-inline: 16px; }
+  .storefront-refined .hero-compact .hero-actions .text-link { font-size: 14px; }
+  .storefront-refined .hero-compact .purchase-note { margin-top: 12px; }
   .storefront-refined .hero-compact + .section { padding-top: 24px; }
 }
