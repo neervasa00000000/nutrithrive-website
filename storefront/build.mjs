@@ -1840,6 +1840,7 @@ ${refined ? "" : `<div class="footer-newsletter">${newsletterBlock}</div>`}
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 ${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-cart.js?v=${ASSET_VERSION}" defer></script>` : ""}
+${refined ? "" : `<script src="${SEARCH_SRC}?v=${ASSET_VERSION}" defer></script>`}
 <script src="${SITE_SRC}?v=${ASSET_VERSION}" defer></script>
 ${extraFoot}
 </body>

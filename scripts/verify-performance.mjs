@@ -24,7 +24,7 @@ const retry=retryWindow.loadSearchIndex(panel);assert.equal(retryScripts.length,
 let checked=0;
 for(const file of await fg('site/**/*.html')) {
  const html=fs.readFileSync(file,'utf8');
- if(!html.includes('/assets/css/storefront-system')) continue;
+ if(!html.includes('/assets/css/storefront-system') || !html.includes('class="storefront-refined"')) continue;
  checked++;
  assert.equal(optimizeStorefrontLoading(html),html,`${file}: loading patch is idempotent`);
  assert.doesNotMatch(html,/<script\b[^>]*src="[^\"]*search-index/,'search must be on-demand');

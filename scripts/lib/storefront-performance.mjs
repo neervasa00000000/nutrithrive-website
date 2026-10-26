@@ -2,7 +2,7 @@
 // particular, article copy, structured data and metadata remain untouched.
 export const PERFORMANCE_VERSION = '20261026-performance-1';
 export function optimizeStorefrontLoading(html) {
-  if (!html.includes('/assets/css/storefront-system')) return html;
+  if (!html.includes('/assets/css/storefront-system') || !html.includes('class="storefront-refined"')) return html;
   let out = html;
   const searchTag = /<script\b[^>]*\bsrc="(\/assets\/js\/storefront\/search-index(?:\.min)?\.js)(?:\?[^\"]*)?"[^>]*><\/script>\s*/g;
   if (searchTag.test(out)) {
