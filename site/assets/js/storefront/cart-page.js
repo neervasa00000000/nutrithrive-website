@@ -154,7 +154,7 @@ function pickRecs(cartItems, subtotal) {
       }
       return {...p, score: s + extra, note };
     })
-    .filter(Boolean)
+    .filter((item) => item && item.id !== shipOfferProduct(subtotal)?.id)
     .sort((a, b) => b.score - a.score)
     .slice(0, 4);
   const comboInCart = cartItems.some((item) => item.id === "combo-pack");
@@ -176,35 +176,30 @@ function recHeading(cartItems, recs) {
   return "Goes well with your cart";
 }
 
-function renderRecs(cartItems, subtotal) {
-  const root = document.getElementById("cart-recs");
-  if (!root) return;
-  const recs = pickRecs(cartItems, subtotal);
-  if (!recs.length) {
-    root.innerHTML = "";
-    return;
-  }
-  root.innerHTML = `
-    <section class="cart-recs" aria-label="Recommended products">
-      <h2>${esc(recHeading(cartItems, recs))}</h2>
-      <div class="cart-recs-grid">
-        ${recs
-          .map(
-            (p) => `<article class="cart-rec">
-              <a class="cart-rec-media" href="${esc(p.href)}">
-                <img src="${esc(window.NT?.productThumbnail?.(p.image) || p.image)}" alt="" width="120" height="120" loading="lazy">
+function shipOfferProduct(subtotal) {
+  const powder = catalog().find((product) => product.id === "moringa-powder");
+  const price = Number(powder?.price);
+  const threshold = auFreeShip();
+  if (!powder || !(price > 0) || !(subtotal > 0)) return null;
+  if (!(subtotal < threshold && subtotal + price >= threshold)) return null;
+  return {...powder, note: "Adds free Australian shipping" };
+}
+
+function recCard(product) {
+  return `<article class="cart-rec">
+              <a class="cart-rec-media" href="${esc(product.href)}">
+                <img src="${esc(window.NT?.productThumbnail?.(product.image) || product.image)}" alt="" width="120" height="120" loading="lazy">
               </a>
               <div>
-                <h3><a href="${esc(p.href)}">${esc(p.name)}</a></h3>
-                <p class="cart-rec-meta">${esc(p.variant)} · ${money(p.price)}</p>
-                <p class="cart-rec-note">${esc(p.note)}</p>
-                <button class="btn btn-secondary" type="button" data-rec-add="${esc(p.id)}">Add</button>
+                <h3><a href="${esc(product.href)}">${esc(product.name)}</a></h3>
+                <p class="cart-rec-meta">${esc(product.variant)} · ${money(product.price)}</p>
+                <p class="cart-rec-note">${esc(product.note)}</p>
+                <button class="btn btn-secondary" type="button" data-rec-add="${esc(product.id)}">Add</button>
               </div>
-            </article>`
-          )
-          .join("")}
-      </div>
-    </section>`;
+            </article>`;
+}
+
+function bindRecAdds(root) {
   root.querySelectorAll("[data-rec-add]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const product = catalog().find((p) => p.id === btn.getAttribute("data-rec-add"));
@@ -219,6 +214,42 @@ function renderRecs(cartItems, subtotal) {
       }
     });
   });
+}
+
+function renderShipOffer(subtotal) {
+  const main = document.querySelector?.(".cart-main");
+  if (!main) return;
+  const offer = shipOfferProduct(subtotal);
+  let slot = document.getElementById("cart-ship-offer");
+  if (!offer) {
+    slot?.remove();
+    return;
+  }
+  if (!slot) {
+    slot = document.createElement("div");
+    slot.id = "cart-ship-offer";
+  }
+  if (main.firstElementChild !== slot) main.prepend(slot);
+  slot.innerHTML = recCard(offer);
+  bindRecAdds(slot);
+}
+
+function renderRecs(cartItems, subtotal) {
+  const root = document.getElementById("cart-recs");
+  if (!root) return;
+  const recs = pickRecs(cartItems, subtotal);
+  if (!recs.length) {
+    root.innerHTML = "";
+    return;
+  }
+  root.innerHTML = `
+    <section class="cart-recs" aria-label="Recommended products">
+      <h2>${esc(recHeading(cartItems, recs))}</h2>
+      <div class="cart-recs-grid">
+        ${recs.map((product) => recCard(product)).join("")}
+      </div>
+    </section>`;
+  bindRecAdds(root);
 }
 
 function setLayout(empty) {
@@ -239,17 +270,19 @@ function renderCart() {
       setLayout(true);
       lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free Australian shipping on orders from ${money(auFreeShip())}.</p><a class="btn btn-primary" href="${shopPath()}moringa-powder/">Shop moringa powder</a> <a class="btn btn-secondary" href="${shopPath()}">Shop the range</a></div>`;
       summary.innerHTML = "";
+      renderShipOffer(0);
       renderRecs([], 0);
       window.NTRetention?.renderBuyAgain?.(document.getElementById("cart-buy-again"), { source: "cart" });
       return;
     }
     setLayout(false);
+    renderShipOffer(sub);
     lines.innerHTML = items
       .map((item) => {
         const qty = Number(item.qty || 1);
         return `<article class="cart-line">
         <a class="cart-line__media" href="${esc(item.href || shopPath())}" aria-label="View ${esc(item.name)}">
-          <img src="${esc(window.NT?.productThumbnail?.(item.image) || item.image)}" alt="" width="112" height="112">
+          <img src="${esc(item.image)}" alt="" width="112" height="112">
         </a>
         <div class="cart-line__content">
           <div class="cart-line__heading">
@@ -340,16 +373,49 @@ function trackCartView() {
   }
 }
 
-function trackCheckoutClick(event) {
-  if (!event.target.closest?.(".cart-checkout")) return;
-  const items = readCart();
-  if (!items.length || window._ntBeginCheckoutSent) return;
-  if (!window.NT?.trackEcommerce?.("begin_checkout", items, { transport_type: "beacon" })) return;
+function rememberBeginCheckout(items) {
   window._ntBeginCheckoutSent = true;
   // Carry successful tracking across the full-page navigation. Payment consumes
   // this once, only for the same cart and a recent click; direct visits still fire.
   const signature = JSON.stringify(items.map(i => [i.id, Number(i.qty || i.quantity || 1), Number(i.price)]).sort());
   try { sessionStorage.setItem("nt-begin-checkout", JSON.stringify({ signature, at: Date.now() })); } catch { /* storage can be disabled */ }
+}
+
+function trackCheckoutClick(event) {
+  const link = event.target.closest?.(".cart-checkout");
+  if (!link) return;
+  const items = readCart();
+  if (!items.length || window._ntBeginCheckoutSent) return;
+  const href = typeof link.getAttribute === "function" ? (link.getAttribute("href") || checkoutPath()) : "";
+  const holdNavigation = typeof event.preventDefault === "function" && typeof link.getAttribute === "function";
+  let left = false;
+  const leave = () => {
+    if (left || !href) return;
+    left = true;
+    window.location.assign(href);
+  };
+  const finish = () => {
+    if (!window._ntBeginCheckoutSent) rememberBeginCheckout(items);
+    leave();
+  };
+  if (holdNavigation) event.preventDefault();
+  let timer = 0;
+  const sent = window.NT?.trackEcommerce?.("begin_checkout", items, {
+    transport_type: "beacon",
+    event_callback() {
+      if (timer) window.clearTimeout(timer);
+      finish();
+    },
+  });
+  if (!sent) {
+    if (holdNavigation) leave();
+    return;
+  }
+  if (!holdNavigation || window._ntBeginCheckoutSent) {
+    if (!window._ntBeginCheckoutSent) finish();
+    return;
+  }
+  timer = window.setTimeout(finish, 1000);
 }
 document.addEventListener("click", trackCheckoutClick);
 window.addEventListener("nt-cart-change", () => { window._ntBeginCheckoutSent = false; });

@@ -2143,6 +2143,8 @@ body.journal-searching .section-head > a {
 }
 
 .cart-main { grid-area: main; }
+#cart-ship-offer { margin: 0 0 var(--space-4); }
+#cart-ship-offer:empty { display: none; }
 #cart-recs { grid-area: recs; min-width: 0; }
 #cart-summary { grid-area: summary; }
 
@@ -5185,5 +5187,58 @@ select {
 
   .storefront-refined .purchase-panel {
     margin-top: 8px;
+  }
+}
+
+/* Payment first screen: total, then PayPal and card, on a phone. */
+@media (max-width: 480px) {
+  body:has(#pay-layout) .cart-intro {
+    padding-block: 8px 4px;
+  }
+
+  #pay-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  #pay-summary {
+    order: 1;
+    padding: 16px;
+  }
+
+  #pay-layout > div {
+    order: 2;
+  }
+
+  #pay-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #pay-form > .pay-box {
+    order: 1;
+  }
+
+  #pay-form > .field {
+    order: 2;
+  }
+
+  #pay-form > .pay-copy {
+    order: 3;
+  }
+
+  #pay-layout .pay-box {
+    padding: 16px;
+  }
+
+  #pay-layout .pay-box h2 {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+
+  #pay-layout #paypal-button-container,
+  #pay-layout #paypal-card-container {
+    min-height: 55px;
   }
 }

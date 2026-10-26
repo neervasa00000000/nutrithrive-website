@@ -112,9 +112,18 @@
     persistLastOrder(items);
     renderRetention(items);
 
+    if (window._ntPurchaseInflight === orderId) return;
+    window._ntPurchaseInflight = orderId;
+
     const purchaseValue = Number(snapshot?.value || (hasValue ? value : 0));
     const shippingValue = Number(snapshot?.shipping || 0);
     let analyticsSent = false;
+    let recorded = false;
+    const recordPurchase = () => {
+      if (recorded) return;
+      recorded = true;
+      localStorage.setItem(dedupeKey, new Date().toISOString());
+    };
 
     if (items.length && window.NT?.trackEcommerce) {
       analyticsSent = window.NT.trackEcommerce("purchase", items, {
@@ -122,6 +131,8 @@
         value: purchaseValue,
         tax: 0,
         shipping: shippingValue,
+        transport_type: "beacon",
+        event_callback: recordPurchase,
       });
     } else if (typeof window.gtag === "function") {
       const payload = {
@@ -129,6 +140,8 @@
         currency: "AUD",
         tax: 0,
         shipping: shippingValue,
+        transport_type: "beacon",
+        event_callback: recordPurchase,
       };
       if (purchaseValue > 0) payload.value = purchaseValue;
       if (items.length) payload.items = items;
@@ -140,7 +153,8 @@
       const conversionId = `purchase_${String(orderId).replace(/[^a-zA-Z0-9_-]/g, "")}`;
       window.rdt("track", "Purchase", { conversionId });
     }
-    if (analyticsSent) localStorage.setItem(dedupeKey, new Date().toISOString());
+    if (analyticsSent) window.setTimeout(recordPurchase, 1000);
+    else window._ntPurchaseInflight = "";
   }
 
   sendPurchase();
