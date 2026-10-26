@@ -28,7 +28,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261018-gallery-4";
+const ASSET_VERSION = "20261026-performance-1";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261017-1";
 const CSS_ASSET_VERSION = "20261023-engagement-1";
@@ -1399,25 +1399,24 @@ function powderSizePageData(sizeSlug) {
 }
 
 function cardSrcset(image, sizes) {
-  const mapped = {
-    "/assets/images/photos/compressed/moringa-powder-200g-main-square.webp": "/assets/images/photos/compressed/moringa-powder-200g-main-square-card-640.webp",
-  }[image];
-  const card640 = mapped
-    || (image.includes("/product_webp/") && image.endsWith("-main.webp")
-      ? image.replace(/-main\.webp$/, "-main-card-640.webp")
-      : image.endsWith("/moringa-powder-texture.webp")
-        ? image.replace(/\.webp$/, "-card-640.webp")
-        : "");
-  if (!card640) return "";
-  const card960 = card640.replace("-card-640", "-card-960");
-  return `srcset="${card640} 640w, ${card960} 960w, ${image} 1254w" sizes="${sizes}"`;
+  if (!image.startsWith("/assets/images/product_webp/") || !image.endsWith(".webp")) return "";
+  const candidates = [160, 320, 640, 960].map(width => ({
+    width, src: image.replace(/\.webp$/, `-card-${width}.webp`),
+  })).filter(({src}) => fs.existsSync(path.join(SITE, src)));
+  if (!candidates.length) return "";
+  return `srcset="${candidates.map(({src, width}) => `${src} ${width}w`).join(", ")}, ${image} 1254w" sizes="${sizes}"`;
+}
+
+function productImagePreload(image, sizes) {
+  const responsive = cardSrcset(image, sizes).replace('srcset=', 'imagesrcset=').replace(' sizes=', ' imagesizes=');
+  return `<link rel="preload" as="image" href="${image}" ${responsive} fetchpriority="high">`;
 }
 
 function productCard(p, priority = false, opts = {}) {
   const was =
     !opts.hideWas && p.was && p.was > p.price ? ` <s>${money(p.was)}</s>` : "";
   const href = shopHref(p);
-  const responsive = cardSrcset(p.image, "(max-width: 760px) 70vw, 25vw");
+  const responsive = cardSrcset(p.image, "(max-width: 760px) calc((100vw - 52px) / 2), (max-width: 1100px) 30vw, 316px");
   return `<article class="product-card">
     <a class="product-card-media" href="${href}" aria-label="${esc(p.name)} ${esc(p.variant)}">
       <img src="${p.image}" ${responsive ? `${responsive} ` : ""}alt="${esc(p.name)} ${esc(p.variant)} product" width="1254" height="1254" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}>
@@ -1734,7 +1733,7 @@ function layout({
   <link rel="icon" type="image/png" href="/assets/images/logo/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="/assets/images/logo/apple-touch-icon.png">
   <link rel="alternate" type="text/plain" href="${LIVE}/llms.txt" title="llms.txt">
-  <link rel="preload" href="/assets/fonts/fraunces-latin-500-600.woff2" as="font" type="font/woff2" crossorigin>
+${refined ? "" : '<link rel="preload" href="/assets/fonts/fraunces-latin-500-600.woff2" as="font" type="font/woff2" crossorigin>'}
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${CSS_HREF}">
   <script src="${CATALOG_SRC}?v=${ASSET_VERSION}" defer></script>
@@ -1774,12 +1773,12 @@ ${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Trugan
     </ul>
   </nav>
 </header>
-<div class="search-panel" id="search-panel" hidden>
+<div class="search-panel" id="search-panel" data-search-index="${LIVE_MODE ? SEARCH_SRC.replace(/\.js$/, ".min.js") : SEARCH_SRC}?v=${ASSET_VERSION}" hidden>
   <div class="search-sheet" role="dialog" aria-modal="true" aria-label="Search the site">
     <label class="field" for="search-input">Search
       <input id="search-input" type="search" placeholder="Moringa, tea, guides…" autocomplete="off">
     </label>
-    <div class="search-results" id="search-results"></div>
+    <div class="search-results" id="search-results" role="status" aria-live="polite"></div>
     <button class="btn btn-secondary" type="button" data-search-close style="margin-top:16px">Close search</button>
   </div>
 </div>
@@ -1841,7 +1840,6 @@ ${refined ? "" : `<div class="footer-newsletter">${newsletterBlock}</div>`}
 <div id="nt-live" class="visually-hidden" aria-live="polite"></div>
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 ${LIVE_MODE ? `<script src="/assets/js/storefront/runtime-cart.js?v=${ASSET_VERSION}" defer></script>` : ""}
-<script src="${SEARCH_SRC}?v=${ASSET_VERSION}" defer></script>
 <script src="${SITE_SRC}?v=${ASSET_VERSION}" defer></script>
 ${extraFoot}
 </body>
@@ -1887,7 +1885,7 @@ function homepage() {
     preserveTitle: Boolean(desk.title || liveSeo?.title),
     preserveDescription: Boolean(desk.description || liveSeo?.description),
     robots: liveSeo?.robots || undefined,
-    extraHead: `<link rel="preload" as="image" href="/assets/images/product_webp/moringa-powder-100g-main.webp" fetchpriority="high">
+    extraHead: `${productImagePreload("/assets/images/product_webp/moringa-powder-100g-main.webp", "(max-width: 760px) calc((100vw - 52px) / 2), (max-width: 1100px) 24vw, 300px")}
   ${jsonLd(websiteSchema())}
   ${jsonLd({ "@context": "https://schema.org", "@type": "WebPage", "@id": `${LIVE}/#webpage`, url: `${LIVE}/`, name: "NutriThrive", isPartOf: { "@id": `${LIVE}/#website` }, ...pageDateFields() })}`,
     main: `
@@ -1904,7 +1902,7 @@ function homepage() {
       <p class="purchase-note">Moringa from $11 · Curry leaves $7 · Tea $7.50 · Soap $7</p>
     </div>
     <div class="hero-collection" aria-label="Explore NutriThrive products">
-      ${featured.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>${index === 0 ? "From " : ""}${money(product.price).replace(/\.00$/, "")}</small></span></a>`).join("")}
+      ${featured.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" ${cardSrcset(product.image, "(max-width: 760px) calc((100vw - 52px) / 2), (max-width: 1100px) 24vw, 300px")} alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>${index === 0 ? "From " : ""}${money(product.price).replace(/\.00$/, "")}</small></span></a>`).join("")}
     </div>
   </div>
 </section>
@@ -1921,7 +1919,7 @@ function homepage() {
   </div>
 </section>
 <section class="section home-feature"><div class="wrap home-feature-grid">
-  <a class="home-feature-image" href="/products/gift-pack/"><img src="/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp" alt="NutriThrive gift pack with moringa, tea, curry leaves and soap" width="900" height="900" loading="lazy"></a>
+  <a class="home-feature-image" href="/products/gift-pack/"><img src="/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp" ${cardSrcset("/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "(max-width: 760px) calc(100vw - 36px), 48vw")} alt="NutriThrive gift pack with moringa, tea, curry leaves and soap" width="900" height="900" loading="lazy"></a>
   <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. For Diwali, choose the tea, curry leaf and soap box for $20.</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">Diwali Gift Box →</a></div><details class="gift-guide-disclosure"><summary>Diwali gift guides and delivery</summary>${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p></details></div>
 </div></section>
 <section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
@@ -2563,7 +2561,7 @@ function pdpPage(slug, d) {
     ogImage: buyProduct.image,
     ogImageWidth: 900,
     ogImageHeight: 900,
-    extraHead: `<link rel="preload" as="image" href="${gallery[0][0]}" fetchpriority="high">` +
+    extraHead: productImagePreload(gallery[0][0], "(max-width: 760px) calc(100vw - 36px), 48vw") +
       jsonLd(productSchema) +
       jsonLd({
         "@context": "https://schema.org",
@@ -2595,7 +2593,7 @@ function pdpPage(slug, d) {
         <div class="pdp-gallery-wrap">
           <div class="pdp-gallery">
             <button class="pdp-gallery-open" type="button" data-gallery-open aria-label="Enlarge product photograph">
-              <img src="${gallery[0][0]}" alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
+              <img src="${gallery[0][0]}" ${cardSrcset(gallery[0][0], "(max-width: 760px) calc(100vw - 36px), 48vw")} alt="${esc(gallery[0][1])}" width="900" height="900" fetchpriority="high" data-pdp-image>
               <span class="gallery-zoom-label">View larger ↗</span>
             </button>
           </div>

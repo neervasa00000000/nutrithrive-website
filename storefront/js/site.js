@@ -278,6 +278,24 @@ function announce(text) {
   });
 }
 
+let searchIndexPromise = null;
+function loadSearchIndex(panel) {
+  if (Array.isArray(window.NT_SEARCH)) return Promise.resolve();
+  if (searchIndexPromise) return searchIndexPromise;
+  searchIndexPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = panel.dataset.searchIndex;
+    script.async = true;
+    script.onload = () => {
+      if (Array.isArray(window.NT_SEARCH)) resolve();
+      else { script.remove(); searchIndexPromise = null; reject(new Error("Search data unavailable")); }
+    };
+    script.onerror = () => { script.remove(); searchIndexPromise = null; reject(new Error("Search could not load")); };
+    document.head.appendChild(script);
+  });
+  return searchIndexPromise;
+}
+
 function bindHeader() {
   const menuBtn = document.querySelector("[data-menu]");
   const mobile = document.getElementById("nav-mobile");
@@ -317,6 +335,12 @@ function bindHeader() {
       searchBtn.setAttribute("aria-expanded", "true");
       document.body.classList.add("dialog-open");
       input?.focus();
+      if (results && !Array.isArray(window.NT_SEARCH)) results.textContent = "Loading search…";
+      loadSearchIndex(panel).then(() => {
+        input?.dispatchEvent(new Event("input"));
+      }).catch(() => {
+        if (results) results.textContent = "Search couldn't load. Close and reopen search to try again.";
+      });
     });
     panel.addEventListener("click", (e) => {
       if (e.target === panel) close();
@@ -352,7 +376,8 @@ function bindHeader() {
           : q === "darjeeling" || q.includes("darjeeling")
             ? "darjeeling black tea"
             : "";
-      const hits = (window.NT_SEARCH || []).filter((item) => {
+      if (!Array.isArray(window.NT_SEARCH)) { results.textContent = "Loading search…"; return; }
+      const hits = window.NT_SEARCH.filter((item) => {
         const hay = `${item.title} ${item.blurb || ""}`.toLowerCase();
         return hay.includes(q) || (extraNeedle && hay.includes(extraNeedle));
       });
@@ -636,9 +661,13 @@ function applyPdpVariant(id, writeUrl) {
   const gallery = document.querySelector(".pdp-gallery");
   const bestValue = document.querySelector("[data-best-value-badge]");
   if (img) {
-    img.removeAttribute("srcset");
-    img.src = p.image;
-    document.dispatchEvent(new CustomEvent("nt-gallery-select", { detail: { src: p.image } }));
+    // Keep the server-rendered responsive source on initial setup. Only a real
+    // variant change needs a different source and gallery selection.
+    if (new URL(img.src, location.href).pathname !== new URL(p.image, location.href).pathname) {
+      img.removeAttribute("srcset");
+      img.src = p.image;
+      document.dispatchEvent(new CustomEvent("nt-gallery-select", { detail: { src: p.image } }));
+    }
     img.alt = `${p.name} ${p.variant}`;
   }
   if (title) title.textContent = p.name;
