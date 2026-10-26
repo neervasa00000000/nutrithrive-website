@@ -64,40 +64,40 @@
   "/melbourne/": {
     "h1": "Curry leaves, tea and soap delivered in Melbourne",
     "old_h1": "Curry Leaves, Darjeeling Tea & Soap in Melbourne",
-    "description": "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Diwali gift box, packed in Truganina. Melbourne metro in 1 to 3 business days.",
-    "old_description": "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Diwali gift box, packed in Truganina. Melbourne metro 1–3 business days."
+    "description": "Dried curry leaves $7, Darjeeling tea $7.50, soap $7 and moringa powder from $11, packed in Truganina. Melbourne metro 1 to 3 business days, or pickup.",
+    "old_description": "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Diwali gift box, packed in Truganina. Melbourne metro in 1 to 3 business days."
   },
   "/moringa-sydney/": {
     "h1": "Moringa powder posted to Sydney",
     "old_h1": "Moringa Powder for Sydney",
-    "title": "Moringa Powder Sydney | Posted from Melbourne",
-    "old_title": "Moringa Powder Sydney: Posted from Melbourne, $11",
-    "description": "Farm-grown moringa leaf powder posted to Sydney from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49.",
-    "old_description": "Order moringa powder to Sydney from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49."
+    "title": "Moringa Powder Sydney: $11 per 100g, Posted from Melbourne",
+    "old_title": "Moringa Powder Sydney | Posted from Melbourne",
+    "description": "Moringa leaf powder posted to Sydney from Truganina, VIC. 100g $11, 200g $22, 400g $40, tracked, with free AU shipping from $49. Sun-dried.",
+    "old_description": "Farm-grown moringa leaf powder posted to Sydney from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49."
   },
   "/moringa-brisbane/": {
     "h1": "Moringa powder posted to Brisbane",
     "old_h1": "Moringa Powder for Brisbane",
-    "title": "Moringa Powder Brisbane | Posted from Melbourne",
-    "old_title": "Moringa Powder Brisbane: Posted from Melbourne, $11",
-    "description": "Farm-grown moringa leaf powder posted to Brisbane from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49.",
-    "old_description": "Order moringa powder to Brisbane from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49."
+    "title": "Moringa Powder Brisbane: $11 per 100g, Posted from Melbourne",
+    "old_title": "Moringa Powder Brisbane | Posted from Melbourne",
+    "description": "Moringa leaf powder posted to Brisbane from Truganina, VIC. 100g $11, 200g $22, 400g $40, tracked, with free AU shipping from $49. Sun-dried.",
+    "old_description": "Farm-grown moringa leaf powder posted to Brisbane from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49."
   },
   "/moringa-perth/": {
     "h1": "Moringa powder posted to Perth",
     "old_h1": "Moringa Powder Perth",
-    "title": "Moringa Powder Perth | Posted from Melbourne",
-    "old_title": "Moringa Powder Perth: Posted from Melbourne, $11",
-    "description": "Farm-grown moringa leaf powder posted to Perth from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49.",
-    "old_description": "Order moringa powder to Perth from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49."
+    "title": "Moringa Powder Perth: $11 per 100g, Posted from Melbourne",
+    "old_title": "Moringa Powder Perth | Posted from Melbourne",
+    "description": "Moringa leaf powder posted to Perth from Truganina, VIC. 100g $11, 200g $22, 400g $40, tracked, with free AU shipping from $49. Sun-dried.",
+    "old_description": "Farm-grown moringa leaf powder posted to Perth from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49."
   },
   "/moringa-adelaide/": {
     "h1": "Moringa powder posted to Adelaide",
     "old_h1": "Moringa Powder for Adelaide",
-    "title": "Moringa Powder Adelaide | Posted from Melbourne",
-    "old_title": "Moringa Powder Adelaide: Posted from Melbourne, $11",
-    "description": "Farm-grown moringa leaf powder posted to Adelaide from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49.",
-    "old_description": "Order moringa powder to Adelaide from $11/100g. NMI lab-tested, shade-dried, packed in Truganina Melbourne. Free AU shipping from $49."
+    "title": "Moringa Powder Adelaide: $11 per 100g, Posted from Melbourne",
+    "old_title": "Moringa Powder Adelaide | Posted from Melbourne",
+    "description": "Moringa leaf powder posted to Adelaide from Truganina, VIC. 100g $11, 200g $22, 400g $40, tracked, with free AU shipping from $49. Sun-dried.",
+    "old_description": "Farm-grown moringa leaf powder posted to Adelaide from Truganina, Melbourne. Sun-dried, NMI lab-tested. 100g pouch $11, free shipping over $49."
   },
   "/blog/category/moringa-guides/": {
     "title": "Moringa Powder Guides: Buying, Safety & Use | NutriThrive",
