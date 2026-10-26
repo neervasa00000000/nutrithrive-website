@@ -31,7 +31,7 @@ const OUT = __dirname;
 const ASSET_VERSION = "20261026-performance-2";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261023-engagement-1";
+const CSS_ASSET_VERSION = "20261026-home-compact-2";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
@@ -1872,16 +1872,8 @@ function writePage(rel, html, destRoot = OUT) {
 }
 
 function homepage() {
-  const buildDate = process.env.BUILD_DATE || new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Australia/Melbourne",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date());
-  const showDiwaliCard = buildDate <= "2026-11-08";
   const featured = ["moringa-powder", "curry-leaves", "black-tea", "moringa-soap"].map(id => PRODUCTS.find(p => p.id === id));
-  const diwaliCard = PRODUCTS.find((product) => product.id === "diwali-gift-box");
-  const heroProducts = showDiwaliCard && diwaliCard ? [featured[0], diwaliCard, ...featured.slice(1)] : featured;
+  const heroProducts = featured;
   const liveSeo = LIVE_MODE ? extractSeo(path.join(SITE, "index.html")) : null;
   const desk = deskSeo("/");
   return layout({
@@ -1899,7 +1891,7 @@ function homepage() {
   ${jsonLd(websiteSchema())}
   ${jsonLd({ "@context": "https://schema.org", "@type": "WebPage", "@id": `${LIVE}/#webpage`, url: `${LIVE}/`, name: "NutriThrive", isPartOf: { "@id": `${LIVE}/#website` }, ...pageDateFields() })}`,
     main: `
-<section class="hero">
+<section class="hero hero-compact">
   <div class="wrap hero-grid">
     <div>
       <p class="kicker">The NutriThrive collection</p>
