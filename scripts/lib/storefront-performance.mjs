@@ -1,6 +1,6 @@
 // Apply only loading-attribute changes to preserved storefront HTML. In
 // particular, article copy, structured data and metadata remain untouched.
-export const PERFORMANCE_VERSION = '20261026-performance-1';
+export const PERFORMANCE_VERSION = '20261026-performance-2';
 export function optimizeStorefrontLoading(html) {
   if (!html.includes('/assets/css/storefront-system') || !html.includes('class="storefront-refined"')) return html;
   let out = html;

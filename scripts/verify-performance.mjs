@@ -33,7 +33,7 @@ for(const file of await fg('site/**/*.html')) {
  checked++;
  assert.equal(optimizeStorefrontLoading(html),html,`${file}: loading patch is idempotent`);
  assert.doesNotMatch(html,/<script\b[^>]*src="[^\"]*search-index/,'search must be on-demand');
- assert.match(html,/data-search-index="\/assets\/js\/storefront\/search-index.min.js\?v=20261026-performance-1"/);
+ assert.match(html,/data-search-index="\/assets\/js\/storefront\/search-index.min.js\?v=20261026-performance-2"/);
  if(html.includes('class="storefront-refined"')) assert.doesNotMatch(html,/<link[^>]*rel="preload"[^>]*fraunces/);
  for(const tag of html.matchAll(/<(?:img|link)\b[^>]*(?:srcset|imagesrcset)="([^"]+)"[^>]*>/g)) {
   for(const candidate of tag[1].split(',')) {
