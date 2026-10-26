@@ -175,8 +175,8 @@ const BLOG_SEO_BASELINE = {
     ogTitle: "How to Grow a Moringa Tree in Australia: Climate Guide",
   },
   "moringa-vs-coffee-melbourne-energy-hack": {
-    description: "Moringa leaf powder has no caffeine. See how a cup compares with coffee, matcha and Darjeeling tea, and a simple way to swap one coffee a day for moringa.",
-    ogTitle: "Does Moringa Have Caffeine? Moringa vs Coffee and Matcha",
+    description: "No, moringa leaf powder has no caffeine. With 1 in 5 cafes lifting flat white prices in Oct 2026, compare a 15 to 19c Darjeeling cup brewed at home.",
+    ogTitle: "Does Moringa Have Caffeine? No. Moringa vs Coffee (2026)",
   },
   "science-shade-drying-vs-sun-drying-moringa": {
     description: "How moringa leaves are dried for powder: shade drying versus sun drying, what each changes in colour, taste and smell, and why our Gujarat farm sun-dries.",
@@ -331,10 +331,10 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Dried Curry Leaves That Actually Taste of Something: A Buyer's Guide",
   },
   "ag1-alternative-australia-moringa-comparison-2026": {
-    title: "AG1 Alternative Australia: Moringa Powder vs AG1",
-    description: "AG1 is a multi-ingredient greens scoop. NutriThrive is plain farm-grown moringa leaf powder: compare purpose and format, then buy the pouch that fits.",
+    title: "AG1 Alternative Australia: Cost, Chemist Warehouse & Moringa",
+    description: "AG1 or one-ingredient moringa leaf powder? Compare cost per 100g, delivered prices and what we could confirm about AG1 in Australia (27 Oct 2026).",
     h1: "AG1 Alternative Australia: Plain Moringa vs AG1",
-    ogTitle: "AG1 Alternative Australia: Moringa Powder vs AG1",
+    ogTitle: "AG1 Alternative Australia: Cost, Chemist Warehouse & Moringa",
     ogDescription: "AG1 is a blend scoop. NutriThrive is single-ingredient moringa leaf powder: honest format comparison from Truganina.",
     articleSection: "Moringa",
   },
@@ -459,8 +459,8 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
   },
   "moringa-vs-coffee-melbourne-energy-hack": {
-    title: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
-    description: "Does moringa leaf powder contain caffeine? No. Here's why it feels different from coffee, and how to stir a little into your morning cup without clumps.",
+    title: "Does Moringa Have Caffeine? No. Moringa vs Coffee (2026)",
+    description: "No, moringa leaf powder has no caffeine. With 1 in 5 cafes lifting flat white prices in Oct 2026, compare a 15 to 19c Darjeeling cup brewed at home.",
     h1: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
   },
   "how-to-choose-moringa-powder-australia-2026": {
@@ -861,9 +861,9 @@ const MORINGA_OBJECTIONS = {
   "moringa-brands-comparison-australia-2026": ["trust"],
   "rosabella-moringa-reviews-legit-or-overhyped-2026": ["trust"],
   "how-to-choose-moringa-powder-australia-2026": ["fresh", "trust"],
-  "ag1-alternative-australia-moringa-comparison-2026": ["price", "use"],
+  "ag1-alternative-australia-moringa-comparison-2026": ["price", "trust"],
   "how-long-does-moringa-powder-last-storage-shelf-life-2026": ["fresh", "trust"],
-  "moringa-vs-coffee-melbourne-energy-hack": ["taste", "use"],
+  "moringa-vs-coffee-melbourne-energy-hack": ["trust"],
   "science-shade-drying-vs-sun-drying-moringa": ["trust", "fresh"],
   "moringa-vs-whey-protein-comparison-2026": ["price", "use"],
   "moringa-capsules-vs-powder-which-is-better-2026": ["price"],
