@@ -31,7 +31,7 @@ const OUT = __dirname;
 const ASSET_VERSION = "20261026-performance-2";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261026-melbourne-1";
+const CSS_ASSET_VERSION = "20261026-city-range-1";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
@@ -3641,6 +3641,18 @@ function diwaliGiftListingOpen(now = new Date()) {
   return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}` <= "2026-11-08T23:59";
 }
 
+// One catalogue for every delivery city; prices, images and cart IDs come from PRODUCTS.
+function cityCatalogue(city) {
+  const groups = [
+    ["Everyday favourites", ["moringa-powder", "curry-leaves", "black-tea", "moringa-soap"]],
+    ["Larger sizes, bundles & gifts", ["moringa-200g", "moringa-400g", "combo-pack", "moringa-soap-combo", "gift-pack", "diwali-gift-box"]],
+  ];
+  return `<section class="city-local-section city-catalogue" id="what-we-pack" aria-labelledby="what-we-pack-heading">
+    <div class="wrap"><div class="city-local-section__head"><p class="city-local-kicker">Packed in Truganina · delivered to ${esc(city)}</p><h2 id="what-we-pack-heading">Shop our full range</h2><p>Moringa, curry leaves, Darjeeling tea and handmade soap. Choose a favourite or bring a few together.</p></div>
+    ${groups.map(([title, ids]) => `<div class="city-product-group"><h3>${esc(title)}</h3><div class="product-grid city-products">${ids.filter(id => id !== "diwali-gift-box" || diwaliGiftListingOpen()).map(id => productCard(PRODUCTS.find(p => p.id === id), false, { showVariant: true })).join("")}</div></div>`).join("")}
+    </div></section>`;
+}
+
 function melbournePage() {
   const r = routes();
   const curryHref = "/products/curry-leaves/";
@@ -3708,7 +3720,7 @@ function melbournePage() {
       ) + jsonLd(faqSchema),
     current: "",
     main: `
-      <div class="city-page melbourne-shop" data-city="melbourne">
+      <div class="city-page city-shop" data-city="melbourne">
 
         <section class="city-local-hero">
           <div class="wrap city-local-hero__grid">
@@ -3718,7 +3730,7 @@ function melbournePage() {
               <p class="city-local-lead">Farm-grown leaves, Darjeeling tea and handmade soap. Packed with care in Truganina, ready for your Melbourne pantry and everyday rituals.</p>
               <div class="city-local-actions">
                 <a class="btn btn-primary" href="#what-we-pack">Shop the Melbourne range</a>
-                <a class="melbourne-text-link" href="#delivery-melbourne">Delivery &amp; local pickup →</a>
+                <a class="city-text-link" href="#delivery-melbourne">Delivery &amp; local pickup →</a>
               </div>
               <ul class="city-local-proof" aria-label="Melbourne delivery highlights">
                 <li><strong>Free shipping $49+</strong><span>Australian orders</span></li>
@@ -3735,20 +3747,12 @@ function melbournePage() {
           </div>
         </section>
 
-        <section class="city-local-section" id="what-we-pack" aria-labelledby="what-we-pack-heading">
-          <div class="wrap">
-            <div class="city-local-section__head">
-              <div><p class="city-local-kicker">From Truganina</p><h2 id="what-we-pack-heading">What we pack in Truganina</h2></div>
-            </div>
-            <div class="product-grid melbourne-products" aria-label="Shop the Melbourne range">${["curry-leaves", "black-tea", "moringa-soap", "moringa-powder"].map(id => productCard(PRODUCTS.find(p => p.id === id)).replace(/ +\n/g, "\n")).join("")}</div>
-            <p style="margin-top:16px"><a href="${leavesGuideHref}">Looking for moringa leaves? See where to buy moringa leaves in Australia</a></p>
-          </div>
-        </section>
+        ${cityCatalogue("Melbourne")}
 
-        ${diwaliOpen ? `<section class="city-local-section melbourne-gifting" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
-          <div class="wrap melbourne-gift-grid">
+        ${diwaliOpen ? `<section class="city-local-section city-gifting" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
+          <div class="wrap city-gift-grid">
             <div><p class="city-local-kicker">A little something to share</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2><p>Darjeeling tea, farm-grown curry leaves and handmade soap. Three thoughtful favourites, packed together for $20.</p><a class="btn btn-primary" href="${diwaliHref}">Explore the $20 gift box</a></div>
-            <div class="melbourne-gift-note"><h3>Ready for Sunday 8 November</h3><p>${esc(diwaliOrderLine)}</p><p>Prefer to collect? <a href="/contact">Arrange pickup from Truganina</a>. For team or community gifts, contact us with quantities and dates.</p></div>
+            <div class="city-gift-note"><h3>Ready for Sunday 8 November</h3><p>${esc(diwaliOrderLine)}</p><p>Prefer to collect? <a href="/contact">Arrange pickup from Truganina</a>. For team or community gifts, contact us with quantities and dates.</p></div>
           </div>
         </section>` : ""}
 
@@ -3757,7 +3761,7 @@ function melbournePage() {
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Your Melbourne order</p><h2 id="delivery-heading-melbourne">Delivery to Melbourne and pickup</h2></div>
             </div>
-            <div class="melbourne-delivery-grid">
+            <div class="city-delivery-grid">
               <div><h3>Dispatched locally</h3><p>Order before 2pm Monday to Friday for same-day dispatch from Truganina.</p></div>
               <div><h3>Delivered to your door</h3><p>Melbourne metro usually takes 1–3 business days after dispatch. Free AU shipping from $49; under $49, postage is calculated by weight.</p><a href="/shipping">See shipping rates →</a></div>
               <div><h3>Prefer to pick up?</h3><p>Collect from Truganina by arrangement. We don’t have a shopfront, so please contact us before visiting.</p><a href="/contact">Arrange local pickup →</a></div>
@@ -3789,23 +3793,6 @@ function melbournePage() {
 
 function cityPage(city, slug) {
   const r = routes();
-  const powderHref = "/products/moringa-powder/";
-  const giftHref = "/products/gift-pack/";
-  const curryHref = "/products/curry-leaves/";
-  const teaHref = "/products/black-tea/";
-  const soapHref = "/products/moringa-soap/";
-  const diwaliHref = "/products/diwali-gift-box/";
-  const diwaliGuideHref = r.article("diwali-gift-guide-curry-leaves-tea-australia");
-  const curryGuideHref = r.article("dried-curry-leaves-australia-guide");
-  const storeHref = r.article("how-long-does-moringa-powder-last-storage-shelf-life-2026");
-  const addHref = r.article("how-to-add-moringa-to-diet");
-  const tasteHref = r.article("what-does-moringa-powder-taste-like-honest-guide-2026");
-  const chooseHref = r.article("how-to-choose-moringa-powder-australia-2026");
-  const coffeeHref = r.article("moringa-vs-coffee-melbourne-energy-hack");
-  const treeHref = r.article("grow-moringa-tree-australia");
-  const verifyHref = r.article("verify-moringa-quality-premium-buyers-checklist-2026");
-  const shadeHref = r.article("science-shade-drying-vs-sun-drying-moringa");
-  const capsHref = r.article("moringa-capsules-vs-powder-which-is-better-2026");
   const citySeo = {
     Melbourne: {
       title: "Curry Leaves, Darjeeling Tea & Soap Melbourne | NutriThrive",
@@ -3854,51 +3841,13 @@ function cityPage(city, slug) {
     Brisbane: "",
     Adelaide: "",
   }[city];
-  const postageLine = `Postage is by weight and costs the same to ${city} as anywhere in Australia: $9.69 up to 250g, $11.12 for 251–500g, free from $49. A 100g pouch is $20.69 delivered, 200g is $31.69 and 400g is $51.12. Add a 100g pouch to a 400g ($51 total) and shipping is free.`;
-  const postageFaq = "No. Postage is by weight and the same Australia-wide: $9.69 up to 250g, $11.12 for 251–500g, and free from $49.";
-  const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
-  const growGuideHref = `${r.article("grow-moringa-tree-australia")}#grow-by-city`;
   const localOrdering = {
-    Sydney: {
-      state: "NSW",
-      cutoff: "That's 2pm in Sydney too.",
-      intro:
-        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 2pm in Sydney too. Sydney uses the same time as Melbourne, including through daylight saving, so you do not add or subtract an hour. A weekday order placed before 2pm Sydney time is dispatched from Truganina the same day. A weekday order placed after 2pm Sydney time is not.",
-      localHtml: `Looking for fresh moringa leaves in Sydney? We sell dried moringa leaf powder only; see <a href="${leavesGuideHref}">where to buy moringa leaves in Australia</a>.`,
-      close:
-        "On a Sydney clock the same-day hour is 2pm, Monday to Friday. That's 2pm in Sydney too. Daylight saving does not create a Sydney-only hour. Choose the 100g pouch before 2pm Sydney time on a weekday.",
-    },
-    Brisbane: {
-      state: "QLD",
-      cutoff: "Queensland has no daylight saving, so that's 1pm in Brisbane from October to April and 2pm the rest of the year.",
-      intro:
-        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. Queensland has no daylight saving, so that's 1pm in Brisbane from October to April and 2pm the rest of the year. Brisbane does not move its clock when Melbourne does. From October to April, use 1pm Brisbane time. For the rest of the year, use 2pm Brisbane time.",
-      localHtml: `For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
-      close:
-        "Count Brisbane's same-day hour as 1pm while Melbourne is on daylight saving, and as 2pm when Melbourne is not. Queensland has no daylight saving, so that's 1pm in Brisbane from October to April and 2pm the rest of the year.",
-    },
-    Perth: {
-      state: "WA",
-      cutoff: "That's 11am in Perth from October to April and 12pm the rest of the year.",
-      intro:
-        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 11am in Perth from October to April and 12pm the rest of the year. From October to April, the Perth cut-off is 11am. For the rest of the year, the Perth cut-off is 12pm. Use the earlier morning time only in those October to April months.",
-      localHtml: `Growing your own in Perth? See <a href="${growGuideHref}">our moringa growing guide by city</a>.`,
-      close:
-        "Perth's morning deadline is 11am from October to April, then 12pm outside those months. That's 11am in Perth from October to April and 12pm the rest of the year. Use the 11am deadline only while Melbourne is on daylight saving. Western Australia does not change clocks in October, so the Perth hour moves only when Melbourne does.",
-    },
-    Adelaide: {
-      state: "SA",
-      cutoff: "That's 1:30pm in Adelaide all year.",
-      intro:
-        "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 1:30pm in Adelaide all year. Adelaide's cut-off stays 1:30pm in every month, including October to April, because the gap to Melbourne time does not change. A weekday order placed before 1:30pm Adelaide time is dispatched from Truganina the same day. A weekday order placed after 1:30pm Adelaide time is not.",
-      localHtml: `Growing your own in Adelaide? See <a href="${growGuideHref}">our moringa growing guide by city</a>.`,
-      close:
-        "Set an Adelaide reminder for 1:30pm on weekdays. That's 1:30pm in Adelaide all year. October does not move it, and April does not move it. The half-hour gap to Melbourne time is the whole conversion. South Australia changes clocks on Victoria's dates, so an Adelaide clock stays 30 minutes behind Melbourne.",
-    },
+    Sydney: { cutoff: "That’s 2pm in Sydney too." },
+    Brisbane: { cutoff: "In Brisbane, that’s 1pm while Melbourne is on daylight saving, or 2pm otherwise." },
+    Perth: { cutoff: "In Perth, that’s 11am while Melbourne is on daylight saving, or 12pm otherwise." },
+    Adelaide: { cutoff: "That’s 1:30pm in Adelaide all year." },
   }[city];
-  const pouchLine = city === "Melbourne"
-    ? "Melbourne customers get the same pouch we ship Australia-wide, not a different contract pack."
-    : `${city} customers get the same pouch as Melbourne, not a different contract pack.`;
+  const postageFaq = "No. Postage is by weight and the same Australia-wide: $9.69 up to 250g, $11.12 for 251–500g, and free from $49.";
   const faqs = [
     [
       `How long does shipping take to ${city}?`,
@@ -3924,19 +3873,6 @@ function cityPage(city, slug) {
       ]);
     }
   }
-  const orderingSection = localOrdering
-    ? `<section class="city-local-section" id="ordering-from-${slug}" aria-labelledby="ordering-from-${slug}-heading">
-          <div class="wrap">
-            <div class="city-local-section__head">
-              <div><p class="city-local-kicker">Local time and postage</p><h2 id="ordering-from-${slug}-heading">Ordering from ${city}</h2></div>
-            </div>
-            <p>${esc(localOrdering.intro)}</p>
-            <p>${esc(postageLine)}</p>
-            <p>${esc(`Regional and rural ${localOrdering.state} addresses can take up to 10 business days.`)}</p>
-            <p>${localOrdering.localHtml}</p>
-          </div>
-        </section>`
-    : "";
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -3950,95 +3886,9 @@ function cityPage(city, slug) {
       },
     })),
   };
-  const melbourneGuides = city === "Melbourne"
-    ? `<li><a href="${verifyHref}"><span>Quality</span>Verify checklist</a></li>
-            <li><a href="${shadeHref}"><span>Drying</span>Sun-dried leaf</a></li>
-            <li><a href="${capsHref}"><span>Format</span>Powder vs capsules</a></li>
-            <li><a href="${coffeeHref}"><span>Comparison</span>Moringa vs coffee in Melbourne</a></li>
-            <li><a href="${treeHref}"><span>Growing</span>Grow a moringa tree in Australia</a></li>`
-    : "";
-  const melbourneQuality = city === "Melbourne"
-    ? `<p>Melbourne buyers comparing quality: <a href="${verifyHref}">verify checklist</a> · <a href="${shadeHref}">sun-dried leaf</a> · <a href="${capsHref}">powder vs capsules</a>. Pickup by arrangement from Truganina. Free AU shipping from $49.</p>`
-    : "";
-  const melbourneCurrySection = city === "Melbourne"
-    ? `<section class="city-local-section" id="curry-leaves-melbourne" aria-labelledby="curry-leaves-melbourne-heading">
-          <div class="wrap">
-            <div class="city-local-section__head">
-              <div><p class="city-local-kicker">Melbourne pantry staples</p><h2 id="curry-leaves-melbourne-heading">Dried curry leaves in Melbourne</h2></div>
-              <p>Farm-grown curry patta / kadi patta, packed in Truganina for metro Melbourne cooks who want dried leaves on hand between Woolworths or Coles fresh punnets.</p>
-            </div>
-            <div class="city-info-grid">
-              <article class="city-info-card city-info-card--accent">
-                <span class="city-info-card__number">01</span>
-                <h3>Dried curry leaves · $7 / 30g</h3>
-                <p>Whole sun-dried leaflets for tadka. Also called karipatta, curry patta and kadi patta. Pickup from Truganina by arrangement, or tracked metro delivery in 1–2 days.</p>
-                <a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="city-info-card">
-                <span class="city-info-card__number">02</span>
-                <h3>Darjeeling tea &amp; handmade soap</h3>
-                <p>Family-farm Darjeeling loose leaf ($7.50 / 100g) and a handmade moringa and lavender soap bar with moringa ($7 / 95g), packed with the same Truganina dispatch window.</p>
-                <a href="${teaHref}">Shop Darjeeling tea <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="city-info-card">
-                <span class="city-info-card__number">03</span>
-                <h3>Diwali gift box · $20</h3>
-                <p>Tea, curry leaves and soap with no moringa powder. Truganina pickup or Australia-wide shipping. Order-by dates are in the Diwali gift guide. Pick up a <a href="${diwaliHref}">Diwali Gift Box</a> from Truganina by arrangement.</p>
-                <a href="${diwaliHref}">Shop the Diwali gift box <span aria-hidden="true">→</span></a>
-              </article>
-            </div>
-            <p style="margin-top:20px"><a href="${curryGuideHref}">Where to buy dried curry leaves in Australia</a> · <a href="${diwaliGuideHref}">Diwali gifts in Melbourne</a> · <a href="${soapHref}">Handmade soap</a></p>
-          </div>
-        </section>`
-    : "";
-  const melbourneHeroLead = city === "Melbourne"
-    ? "Dried curry leaves, Darjeeling loose leaf tea and handmade moringa and lavender soap packed in Truganina. Metro Melbourne delivery is usually 1–2 days after dispatch; local pickup by arrangement."
-    : `Farm-grown, sun-dried moringa leaf powder packed in Truganina and sent directly to ${city}. Choose 100g, 200g or our best-value 400g option.`;
-  const melbourneHeroActions = city === "Melbourne"
-    ? `<a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
-                <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
-                <a class="btn btn-secondary" href="#curry-leaves-melbourne">Melbourne pantry staples</a>`
-    : `<a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a>
-                <a class="btn btn-secondary" href="/products/moringa-powder/100g/">Try 100g for $11</a>
-                <a class="btn btn-secondary" href="#delivery-${slug}">See ${city} delivery</a>`;
-  const melbourneProof = city === "Melbourne"
-    ? `<li><strong>$7</strong><span>curry leaves 30g</span></li>
-                <li><strong>$7.50</strong><span>Darjeeling 100g</span></li>
-                <li><strong>$20</strong><span>Diwali gift box</span></li>`
-    : `<li><strong>100%</strong><span>moringa leaf</span></li>
-                <li><strong>From $11</strong><span>three sizes</span></li>
-                <li><strong>Tracked</strong><span>Australia-wide</span></li>`;
   const melbourneHeroImage = city === "Melbourne"
     ? { src: "/assets/images/product_webp/dried-curry-leaves-30g-main.webp", alt: "NutriThrive 30g dried curry leaves pouch packed in Truganina for Melbourne" }
     : { src: "/assets/images/product_webp/moringa-powder-100g-main.webp", alt: `NutriThrive 100g moringa powder pouch available for delivery to ${city}` };
-  const melbourneCta = city === "Melbourne"
-    ? `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Curry leaves, tea and soap from Truganina</h2><p>Shop dried curry leaves, Darjeeling tea, handmade soap, or the $20 Diwali gift box. Free AU shipping from $49.</p></div>
-            <div><a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a><a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a><a class="btn btn-secondary" href="${giftHref}">Gift pack $35</a></div>`
-    : `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Moringa powder delivered to ${city}</h2><p>Start with 100g for $11 or compare larger sizes before adding to cart.</p></div>
-            <div><a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div>`;
-  const diwaliStillListed = diwaliGiftListingOpen();
-  const alsoPostedCards = [
-    `<article class="city-info-card"><h3>Dried curry leaves</h3><p>30g · $7</p><a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a></article>`,
-    `<article class="city-info-card"><h3>Darjeeling loose leaf tea</h3><p>100g · $7.50</p><a href="${teaHref}">Shop Darjeeling tea <span aria-hidden="true">→</span></a></article>`,
-  ];
-  if (diwaliStillListed) {
-    alsoPostedCards.push(
-      `<article class="city-info-card"><h3>Diwali Gift Box</h3><p>$20</p><a href="${diwaliHref}">Shop the Diwali Gift Box <span aria-hidden="true">→</span></a></article>`
-    );
-  }
-  const alsoPostedSection = localOrdering
-    ? `<section class="city-local-section" id="also-posted-${slug}" aria-labelledby="also-posted-${slug}-heading">
-          <div class="wrap">
-            <div class="city-local-section__head">
-              <div><h2 id="also-posted-${slug}-heading">Also posted to ${city}</h2></div>
-            </div>
-            <div class="city-info-grid">${alsoPostedCards.join("")}</div>
-          </div>
-        </section>`
-    : "";
-  const cityCta = localOrdering
-    ? `<section class="city-local-cta"><div class="wrap city-local-cta__inner"><div><p class="city-local-kicker">Same-day dispatch</p><h2 id="city-cta-${slug}">Ordering deadline in ${city}</h2><p>${esc(localOrdering.close)}</p></div><div><a class="btn btn-primary" href="/products/moringa-powder/100g/">Try 100g for $11</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div></div></section>`
-    : "";
   const canonicalPath = slug === "melbourne" ? "/melbourne/" : `/moringa-${slug}/`;
   const cityLinks = [
     ["Melbourne", "/melbourne/"],
@@ -4072,25 +3922,25 @@ function cityPage(city, slug) {
     ) + jsonLd(faqSchema),
     current: "",
     main: `
-      <div class="city-page" data-city="${slug}">
+      <div class="city-page city-shop" data-city="${slug}">
 
         <section class="city-local-hero">
           <div class="wrap city-local-hero__grid">
             <div class="city-local-hero__copy">
               <p class="city-local-kicker">Packed in Truganina, VIC · delivered to ${city}</p>
               <h1>${citySeo.h1}</h1>
-              <p class="city-local-lead">${melbourneHeroLead}</p>
+              <p class="city-local-lead">Farm-grown moringa and curry leaves, Darjeeling tea, handmade soap and thoughtful gifts. Packed in Truganina and delivered to ${esc(city)}.</p>
               <div class="city-local-actions">
-                ${melbourneHeroActions}
+                <a class="btn btn-primary" href="#what-we-pack">Shop the full range</a><a class="city-text-link" href="#delivery-${slug}">Delivery to ${esc(city)} →</a>
               </div>
-              ${localOrdering ? `<p class="city-hero-note">100g delivered to ${city}: $20.69. Free AU shipping from $49.</p>` : ""}
+
               <ul class="city-local-proof" aria-label="Product highlights">
-                ${melbourneProof}
+                <li><strong>Free shipping $49+</strong><span>Australian orders</span></li><li><strong>From $7</strong><span>everyday favourites</span></li><li><strong>Tracked delivery</strong><span>from Truganina</span></li>
               </ul>
             </div>
             <figure class="city-local-visual">
               <div class="city-local-visual__image">
-                <img src="${melbourneHeroImage.src}" alt="${esc(melbourneHeroImage.alt)}" width="1254" height="1254" fetchpriority="high">
+                <img src="${melbourneHeroImage.src}" ${cardSrcset(melbourneHeroImage.src, "(max-width: 767px) calc(100vw - 36px), 440px")} alt="${esc(melbourneHeroImage.alt)}" width="1254" height="1254" fetchpriority="high">
               </div>
               <figcaption>
                 <span>Typical metro transit</span>
@@ -4101,52 +3951,38 @@ function cityPage(city, slug) {
           </div>
         </section>
 
+        ${cityCatalogue(city)}
+
         <section class="city-local-section city-local-section--delivery" id="delivery-${slug}" aria-labelledby="delivery-heading-${slug}">
           <div class="wrap">
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Your ${city} order</p><h2 id="delivery-heading-${slug}">Shipping to ${city}</h2></div>
               ${uniqueLine ? `<p>${uniqueLine}</p>` : ""}
             </div>
-            <div class="city-info-grid">
-              <article class="city-info-card city-info-card--accent">
-                <span class="city-info-card__number">01</span>
-                <h3>Delivery to ${city}</h3>
-                <p>${esc(transitLine)} Orders placed before 2pm Monday–Friday are eligible for same-day dispatch. Every order includes tracking.</p>
-                <a href="${r.shipping}">View full shipping information <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="city-info-card">
-                <span class="city-info-card__number">02</span>
-                <h3>One ingredient</h3>
-                <p>A resealable pouch of 100% moringa leaf powder with no fillers. We grow, sun-dry and manufacture it, then pack it in Truganina.</p>
-                <a href="${powderHref}">See product and lab information <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="city-info-card">
-                <span class="city-info-card__number">03</span>
-                <h3>Clear value</h3>
-                <p>100g $11 · 200g $22 · 400g $40. Free AU shipping starts at $49.</p>
-                <a href="${powderHref}">Compare all three sizes <span aria-hidden="true">→</span></a>
-              </article>
+            <div class="city-delivery-grid">
+              <div><h3>Dispatch from Truganina</h3><p>Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. ${esc(localOrdering?.cutoff || "")}</p></div>
+              <div><h3>Delivery to your door</h3><p>${esc(transitLine)} Regional and rural addresses can take up to 10 business days. Every order includes tracking.</p><a href="${r.shipping}">Delivery information →</a></div>
+              <div><h3>Free AU shipping from $49</h3><p>Under $49, postage is calculated by parcel weight: $9.69 up to 250g and $11.12 for 251–500g. Higher weights have different rates.</p><a href="${r.shipping}">See all shipping rates →</a></div>
             </div>
           </div>
         </section>
 
-        ${orderingSection}
 
-        ${melbourneCurrySection}
+
+
 
         <section class="city-local-section city-local-section--faq" aria-labelledby="faq-heading-${slug}">
           <div class="wrap city-faq-layout">
             <div class="city-faq-intro">
               <p class="city-local-kicker">Quick answers</p>
-              <h2 id="faq-heading-${slug}">Ordering moringa in ${city}</h2>
-              <p>Everything most customers need before choosing a pouch. For anything else, see our complete shipping information.</p>
+              <h2 id="faq-heading-${slug}">${city} delivery FAQs</h2>
+              <p>Delivery, dispatch and shipping costs for your order.</p>
             </div>
             <div class="faq-list city-faq-list">${faqDetails(faqs)}</div>
           </div>
         </section>
 
-        ${alsoPostedSection}
-        ${cityCta}
+
 
         <nav class="city-switcher" aria-label="Choose delivery city">
           <div class="wrap city-switcher__inner">
