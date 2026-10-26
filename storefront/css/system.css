@@ -5264,3 +5264,30 @@ select {
   .storefront-refined .hero-compact .purchase-note { margin-top: 12px; }
   .storefront-refined .hero-compact + .section { padding-top: 24px; }
 }
+
+/* One consistent disclosure affordance throughout storefront pages. */
+.storefront-refined details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+}
+.storefront-refined details > summary::-webkit-details-marker { display: none; }
+.storefront-refined details > summary::marker { content: ""; }
+.storefront-refined details > summary::after {
+  content: "+";
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: 0;
+  transform: none;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+}
+.storefront-refined details[open] > summary::after { content: "−"; transform: none; margin: 0; }
+.storefront-refined .pdp-guide-toggle { display: none; }
