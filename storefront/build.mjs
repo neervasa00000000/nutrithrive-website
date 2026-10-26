@@ -3595,12 +3595,36 @@ function emitCityLandings() {
   emit("moringa-adelaide/index.html", cityPage("Adelaide", "adelaide"));
 }
 
+function diwaliGiftListingOpen(now = new Date()) {
+  const override = process.env.BUILD_DATE;
+  if (override) return override.slice(0, 10) <= "2026-11-08";
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-AU", {
+      timeZone: "Australia/Melbourne",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+    })
+      .formatToParts(now)
+      .map((part) => [part.type, part.value])
+  );
+  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}` <= "2026-11-08T23:59";
+}
+
 function melbournePage() {
   const r = routes();
   const curryHref = "/products/curry-leaves/";
   const teaHref = "/products/black-tea/";
   const soapHref = "/products/moringa-soap/";
   const diwaliHref = "/products/diwali-gift-box/";
+  const powder100Href = "/products/moringa-powder/100g/";
+  const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
+  const diwaliOpen = diwaliGiftListingOpen();
+  const diwaliOrderLine =
+    "For delivery before Diwali (Sunday 8 November), order by Fri 30 Oct for metro addresses. Regional and rural delivery can take longer, so please order soon.";
   const faqs = [
     [
       "Where can I buy curry leaves in Melbourne?",
@@ -3609,9 +3633,13 @@ function melbournePage() {
     ["Do you sell fresh curry leaves?", "No, only dried."],
     ["Can I pick up?", "Yes, from Truganina by arrangement."],
     ["How long is delivery?", "Usually 1 to 3 business days after dispatch."],
-    ["When do I order for Diwali?", "For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses."],
     ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
+    [
+      "Do you sell moringa powder in Melbourne?",
+      "Yes. Sun-dried moringa leaf powder, 100g $11, 200g $22 or 400g $40, packed in Truganina. Delivery or pickup by arrangement.",
+    ],
   ];
+  if (diwaliOpen) faqs.splice(4, 0, ["When do I order for Diwali?", diwaliOrderLine]);
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -3663,7 +3691,8 @@ function melbournePage() {
               <p class="city-local-lead">Dried curry leaves from $7, Darjeeling tea and handmade soap. Packed in Truganina. Melbourne metro delivery usually takes 1 to 3 business days, with pickup by arrangement.</p>
               <div class="city-local-actions">
                 <a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a>
-                <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
+                <a class="btn btn-secondary" href="${powder100Href}">Try 100g for $11</a>
+                ${diwaliOpen ? `<a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>` : ""}
               </div>
               <ul class="city-local-proof" aria-label="Melbourne delivery highlights">
                 <li><strong>Truganina</strong><span>packed in VIC</span></li>
@@ -3708,19 +3737,26 @@ function melbournePage() {
                 <p>Handmade by us in small batches from a melt-and-pour soap base with moringa leaf, lavender fragrance and dried lavender flowers.</p>
                 <a href="${soapHref}">Shop handmade soap <span aria-hidden="true">→</span></a>
               </article>
+              <article class="city-info-card">
+                <span class="city-info-card__number">04</span>
+                <h3>Moringa leaf powder · 100g $11</h3>
+                <p>Sun-dried moringa leaf powder in 100g, 200g and 400g pouches ($11, $22, $40), packed in Truganina. Pickup by arrangement.</p>
+                <a href="${powder100Href}">Try 100g for $11 <span aria-hidden="true">→</span></a>
+              </article>
             </div>
+            <p style="margin-top:16px"><a href="${leavesGuideHref}">Looking for moringa leaves? See where to buy moringa leaves in Australia</a></p>
           </div>
         </section>
 
-        <section class="city-local-section" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
+        ${diwaliOpen ? `<section class="city-local-section" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
           <div class="wrap">
             <div class="city-local-section__head">
               <div><p class="city-local-kicker">Festival gifts</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2></div>
             </div>
-            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade moringa and lavender soap bar, with no moringa powder, for $20. For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses. Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
+            <p>Diwali is Sunday 8 November 2026. Our Diwali Gift Box has 100g Darjeeling loose leaf tea, 30g dried curry leaves and a handmade moringa and lavender soap bar, with no moringa powder, for $20. ${esc(diwaliOrderLine)} Prefer to collect? Message us to arrange a pickup from Truganina. Buying for a team, temple or community group? Contact us with numbers and dates.</p>
             <p style="margin-top:16px"><a class="btn btn-primary" href="${diwaliHref}">Shop the Diwali Gift Box</a></p>
           </div>
-        </section>
+        </section>` : ""}
 
         <section class="city-local-section city-local-section--delivery" id="delivery-melbourne" aria-labelledby="delivery-heading-melbourne">
           <div class="wrap">
@@ -3831,6 +3867,8 @@ function cityPage(city, slug) {
       intro:
         "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 2pm in Sydney too. Sydney uses the same time as Melbourne, including through daylight saving, so you do not add or subtract an hour. A weekday order placed before 2pm Sydney time is dispatched from Truganina the same day. A weekday order placed after 2pm Sydney time is not.",
       localHtml: `Looking for fresh moringa leaves in Sydney? We sell dried moringa leaf powder only; see <a href="${leavesGuideHref}">where to buy moringa leaves in Australia</a>.`,
+      close:
+        "On a Sydney clock the same-day hour is 2pm, Monday to Friday. That's 2pm in Sydney too. Daylight saving does not create a Sydney-only hour. Choose the 100g pouch before 2pm Sydney time on a weekday.",
     },
     Brisbane: {
       state: "QLD",
@@ -3838,6 +3876,8 @@ function cityPage(city, slug) {
       intro:
         "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. Queensland has no daylight saving, so that's 1pm in Brisbane from October to April and 2pm the rest of the year. Brisbane does not move its clock when Melbourne does. From October to April, use 1pm Brisbane time. For the rest of the year, use 2pm Brisbane time.",
       localHtml: `For heat/humidity storage tips see the <a href="${storeHref}">shelf-life guide</a>.`,
+      close:
+        "Count Brisbane's same-day hour as 1pm while Melbourne is on daylight saving, and as 2pm when Melbourne is not. Queensland has no daylight saving, so that's 1pm in Brisbane from October to April and 2pm the rest of the year.",
     },
     Perth: {
       state: "WA",
@@ -3845,6 +3885,8 @@ function cityPage(city, slug) {
       intro:
         "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 11am in Perth from October to April and 12pm the rest of the year. From October to April, the Perth cut-off is 11am. For the rest of the year, the Perth cut-off is 12pm. Use the earlier morning time only in those October to April months.",
       localHtml: `Growing your own in Perth? See <a href="${growGuideHref}">our moringa growing guide by city</a>.`,
+      close:
+        "Perth's morning deadline is 11am from October to April, then 12pm outside those months. That's 11am in Perth from October to April and 12pm the rest of the year. Use the 11am deadline only while Melbourne is on daylight saving. Western Australia does not change clocks in October, so the Perth hour moves only when Melbourne does.",
     },
     Adelaide: {
       state: "SA",
@@ -3852,6 +3894,8 @@ function cityPage(city, slug) {
       intro:
         "Order before 2pm Monday to Friday, Melbourne time, for same-day dispatch. That's 1:30pm in Adelaide all year. Adelaide's cut-off stays 1:30pm in every month, including October to April, because the gap to Melbourne time does not change. A weekday order placed before 1:30pm Adelaide time is dispatched from Truganina the same day. A weekday order placed after 1:30pm Adelaide time is not.",
       localHtml: `Growing your own in Adelaide? See <a href="${growGuideHref}">our moringa growing guide by city</a>.`,
+      close:
+        "Set an Adelaide reminder for 1:30pm on weekdays. That's 1:30pm in Adelaide all year. October does not move it, and April does not move it. The half-hour gap to Melbourne time is the whole conversion. South Australia changes clocks on Victoria's dates, so an Adelaide clock stays 30 minutes behind Melbourne.",
     },
   }[city];
   const pouchLine = city === "Melbourne"
@@ -3957,6 +4001,7 @@ function cityPage(city, slug) {
                 <a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a>
                 <a class="btn btn-secondary" href="#curry-leaves-melbourne">Melbourne pantry staples</a>`
     : `<a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a>
+                <a class="btn btn-secondary" href="/products/moringa-powder/100g/">Try 100g for $11</a>
                 <a class="btn btn-secondary" href="#delivery-${slug}">See ${city} delivery</a>`;
   const melbourneProof = city === "Melbourne"
     ? `<li><strong>$7</strong><span>curry leaves 30g</span></li>
@@ -3973,6 +4018,29 @@ function cityPage(city, slug) {
             <div><a class="btn btn-primary" href="${curryHref}">Shop dried curry leaves</a><a class="btn btn-secondary" href="${diwaliHref}">Diwali Gift Box $20</a><a class="btn btn-secondary" href="${giftHref}">Gift pack $35</a></div>`
     : `<div><p class="city-local-kicker">Ready when you are</p><h2 id="city-cta-${slug}">Moringa powder delivered to ${city}</h2><p>Start with 100g for $11 or compare larger sizes before adding to cart.</p></div>
             <div><a class="btn btn-primary" href="${powderHref}">Shop moringa powder</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div>`;
+  const diwaliStillListed = diwaliGiftListingOpen();
+  const alsoPostedCards = [
+    `<article class="city-info-card"><h3>Dried curry leaves</h3><p>30g · $7</p><a href="${curryHref}">Shop dried curry leaves <span aria-hidden="true">→</span></a></article>`,
+    `<article class="city-info-card"><h3>Darjeeling loose leaf tea</h3><p>100g · $7.50</p><a href="${teaHref}">Shop Darjeeling tea <span aria-hidden="true">→</span></a></article>`,
+  ];
+  if (diwaliStillListed) {
+    alsoPostedCards.push(
+      `<article class="city-info-card"><h3>Diwali Gift Box</h3><p>$20</p><a href="${diwaliHref}">Shop the Diwali Gift Box <span aria-hidden="true">→</span></a></article>`
+    );
+  }
+  const alsoPostedSection = localOrdering
+    ? `<section class="city-local-section" id="also-posted-${slug}" aria-labelledby="also-posted-${slug}-heading">
+          <div class="wrap">
+            <div class="city-local-section__head">
+              <div><h2 id="also-posted-${slug}-heading">Also posted to ${city}</h2></div>
+            </div>
+            <div class="city-info-grid">${alsoPostedCards.join("")}</div>
+          </div>
+        </section>`
+    : "";
+  const cityCta = localOrdering
+    ? `<section class="city-local-cta"><div class="wrap city-local-cta__inner"><div><p class="city-local-kicker">Same-day dispatch</p><h2 id="city-cta-${slug}">Ordering deadline in ${city}</h2><p>${esc(localOrdering.close)}</p></div><div><a class="btn btn-primary" href="/products/moringa-powder/100g/">Try 100g for $11</a><a class="btn btn-secondary" href="${giftHref}">See the gift pack</a></div></div></section>`
+    : "";
   const canonicalPath = slug === "melbourne" ? "/melbourne/" : `/moringa-${slug}/`;
   const cityLinks = [
     ["Melbourne", "/melbourne/"],
@@ -4017,6 +4085,7 @@ function cityPage(city, slug) {
               <div class="city-local-actions">
                 ${melbourneHeroActions}
               </div>
+              ${localOrdering ? `<p class="city-hero-note">100g delivered to ${city}: $20.69. Free AU shipping from $49.</p>` : ""}
               <ul class="city-local-proof" aria-label="Product highlights">
                 ${melbourneProof}
               </ul>
@@ -4078,6 +4147,8 @@ function cityPage(city, slug) {
           </div>
         </section>
 
+        ${alsoPostedSection}
+        ${cityCta}
 
         <nav class="city-switcher" aria-label="Choose delivery city">
           <div class="wrap city-switcher__inner">
