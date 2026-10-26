@@ -5153,18 +5153,21 @@ select {
 
 @media (max-width: 860px) {
   .storefront-refined .pdp-gallery {
-    aspect-ratio: auto;
-    max-height: 100px;
+    width: 100%;
+    max-width: 380px;
+    margin-inline: auto;
+    aspect-ratio: 1;
+    max-height: none;
   }
 
   .storefront-refined .pdp-gallery-open {
-    height: auto;
+    height: 100%;
   }
 
   .storefront-refined .pdp-gallery img {
     width: 100%;
-    height: auto;
-    max-height: 100px;
+    height: 100%;
+    max-height: none;
     object-fit: contain;
   }
 
