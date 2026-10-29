@@ -1262,6 +1262,13 @@ function faqDetails(faqs) {
 }
 
 const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p>";
+const CHRISTMAS_SHIPPING_NOTE =
+  "For Christmas, Australia Post's last metro Parcel Post dates from Victoria are Tue 22 Dec within Victoria, Mon 21 Dec to NSW, ACT, Qld, SA and Tas, Fri 18 Dec to WA and Wed 16 Dec to the NT. Please order well before these dates, and earlier for regional addresses.";
+const CHRISTMAS_NOTES = {
+  from: "2026-11-09",
+  until: "2026-12-22",
+  lines: [CHRISTMAS_SHIPPING_NOTE],
+};
 const FSANZ_PENDING = "<div data-pending=\"fsanz-approval\" hidden><p>In November 2025 FSANZ decided moringa leaf and powder are not permitted as a food or food ingredient for retail sale in Australia. Read the <a href=\"https://www.foodstandards.gov.au/food-standards-code/applications/application-a1294-moringa-oleifera-novel-food\" rel=\"noopener\">FSANZ notice</a>.</p></div>";
 
 const TEA_REVIEW_NAME = "Mai Anh Trần Thúy";
@@ -1743,7 +1750,7 @@ ${refined ? "" : '<link rel="preload" href="/assets/fonts/fraunces-latin-500-600
 </head>
 <body${refined ? ' class="storefront-refined"' : ""}>
 <a class="skip-link" href="#main">Skip to content</a>
-${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Truganina</div>` : `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a>: tea, curry leaves and soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · Free AU shipping from $49</span></div>`}
+${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Truganina</div>` : diwaliGiftListingOpen() ? `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a>: tea, curry leaves and soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · Free AU shipping from $49</span></div>` : `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">$20 gift box</a>: Darjeeling tea, curry leaves and soap · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">$20 gift box</a> · Free AU shipping from $49</span></div>`}
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
@@ -1922,7 +1929,7 @@ function homepage() {
 </section>
 <section class="section home-feature"><div class="wrap home-feature-grid">
   <a class="home-feature-image" href="/products/gift-pack/"><img src="/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp" ${cardSrcset("/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "(max-width: 760px) calc(100vw - 36px), 48vw")} alt="NutriThrive gift pack with moringa, tea, curry leaves and soap" width="900" height="900" loading="lazy"></a>
-  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. For Diwali, choose the tea, curry leaf and soap box for $20.</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">Diwali Gift Box →</a></div><details class="gift-guide-disclosure"><summary>Diwali gift guides and delivery</summary>${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p></details></div>
+  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. ${diwaliGiftListingOpen() ? "For Diwali, choose the tea, curry leaf and soap box for $20." : "For a smaller gift or Secret Santa, choose the tea, curry leaf and soap box for $20."}</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">${diwaliGiftListingOpen() ? "Diwali Gift Box →" : "$20 gift box →"}</a></div><details class="gift-guide-disclosure"><summary>${diwaliGiftListingOpen() ? "Diwali gift guides and delivery" : "Gift guides and Christmas delivery"}</summary>${diwaliGiftListingOpen() ? `${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p>` : `<p>${esc(CHRISTMAS_SHIPPING_NOTE)}</p>`}</details></div>
 </div></section>
 <section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
 ${googleReviewsSection()}
@@ -2105,6 +2112,7 @@ const PDP = {
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive dried curry leaves 30g pouch with whole leaves"],
       ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves (karipatta) in a ceramic bowl"],
     ],
+    christmasNotes: CHRISTMAS_NOTES,
     detailImage: "/assets/images/product_webp/dried-curry-leaves-texture.webp",
     detailAlt: "Whole dried curry leaves (karipatta) in a ceramic bowl",
     detailCaption: "Whole dried leaves with their naturally curled, pantry-ready texture.",
@@ -2167,6 +2175,7 @@ const PDP = {
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Amber Darjeeling black tea with loose leaves in a wooden spoon"],
     ],
+    christmasNotes: CHRISTMAS_NOTES,
     detailImage: "/assets/images/product_webp/darjeeling-black-tea-brewed.webp",
     detailAlt: "Amber Darjeeling black tea with loose tea leaves in a wooden spoon",
     detailCaption: "Loose Darjeeling leaves and the warm amber colour of a gently brewed cup.",
@@ -2228,6 +2237,7 @@ const PDP = {
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
       ["/assets/images/product_webp/moringa-soap-texture.webp", "Handmade moringa soap on a stone dish with lavender and foam"],
     ],
+    christmasNotes: CHRISTMAS_NOTES,
     detailImage: "/assets/images/product_webp/moringa-soap-texture.webp",
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
     detailCaption: "A closer look at the handmade bar, lavender flowers and lather.",
@@ -2324,6 +2334,7 @@ const PDP = {
         "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
     },
+    christmasNotes: CHRISTMAS_NOTES,
     whatHeading: "What's in the box",
     ingredients:
       "Includes Darjeeling black tea, dried curry leaves (curry patta / kadi patta), and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
@@ -2382,6 +2393,7 @@ const PDP = {
         "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
     },
+    christmasNotes: CHRISTMAS_NOTES,
     ingredients:
       "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
@@ -2439,11 +2451,17 @@ function pdpPage(slug, d) {
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
   const mainPowder = canonicalPath === "/products/moringa-powder/";
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
-  const buildDate = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
-  const seasonalLines =
-    d.seasonalNotes?.until && buildDate <= d.seasonalNotes.until
+  const buildDate = melbourneBuildDate();
+  const seasonalLines = [
+    ...(d.seasonalNotes?.until && buildDate <= d.seasonalNotes.until
       ? d.seasonalNotes.lines || []
-      : [];
+      : []),
+    ...(d.christmasNotes &&
+    (!d.christmasNotes.from || buildDate >= d.christmasNotes.from) &&
+    (!d.christmasNotes.until || buildDate <= d.christmasNotes.until)
+      ? d.christmasNotes.lines || []
+      : []),
+  ];
   const seasonalHtml = seasonalLines
     .map((line) => `<p class="purchase-note" data-seasonal-note>${esc(line)}</p>`)
     .join("");
@@ -3620,23 +3638,24 @@ function emitCityLandings() {
   emit("moringa-adelaide/index.html", cityPage("Adelaide", "adelaide"));
 }
 
-function diwaliGiftListingOpen(now = new Date()) {
+function melbourneBuildDate(now = new Date()) {
   const override = process.env.BUILD_DATE;
-  if (override) return override.slice(0, 10) <= "2026-11-08";
+  if (override) return override.slice(0, 10);
   const parts = Object.fromEntries(
     new Intl.DateTimeFormat("en-AU", {
       timeZone: "Australia/Melbourne",
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      hourCycle: "h23",
     })
       .formatToParts(now)
       .map((part) => [part.type, part.value])
   );
-  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}` <= "2026-11-08T23:59";
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+function diwaliGiftListingOpen(now = new Date()) {
+  return melbourneBuildDate(now) <= "2026-11-08";
 }
 
 // One catalogue for every delivery city; prices, images and cart IDs come from PRODUCTS.
@@ -4741,7 +4760,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
               <ul class="article-context-links">${conversionLinks}</ul>` : ""}
             </div>
           </section>
-          ${["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
+          ${diwaliGiftListingOpen() && ["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
           ${firstScreen ? "" : relatedNav}
           <aside class="article-author">
             <p class="kicker">About the author</p>
