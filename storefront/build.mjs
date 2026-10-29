@@ -2446,6 +2446,59 @@ function diwaliQuantityLine(product) {
   return `<p class="pdp-delivery-line">Gifting more than one family? ${boxes} boxes are ${shortMoney(total)} and ship free.</p>`;
 }
 
+function offerShippingAndReturns(weightGrams) {
+  const weight = Number(weightGrams);
+  if (!(weight > 0)) {
+    throw new Error(`Product Offer requires positive weightGrams; got ${weightGrams}`);
+  }
+  return {
+    shippingDetails: [
+      {
+        "@type": "OfferShippingDetails",
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
+        shippingRate: { "@type": "MonetaryAmount", value: 0, currency: "AUD" },
+        eligibleTransactionVolume: { "@type": "PriceSpecification", minPrice: 49, priceCurrency: "AUD" },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
+        },
+      },
+      {
+        "@type": "OfferShippingDetails",
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
+        shippingRate: { "@type": "MonetaryAmount", value: auSoloShippingRate(weight), currency: "AUD" },
+        eligibleTransactionVolume: { "@type": "PriceSpecification", maxPrice: 48.99, priceCurrency: "AUD" },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
+        },
+      },
+    ],
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "AU",
+      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      merchantReturnDays: 7,
+      returnMethod: "https://schema.org/ReturnByMail",
+    },
+  };
+}
+
+function verifyProductOfferSchema(productSchema, contextLabel = "Product") {
+  const offers = productSchema?.offers;
+  if (!offers || !["Offer", "AggregateOffer"].includes(offers["@type"])) {
+    throw new Error(`${contextLabel} schema missing Offer/AggregateOffer`);
+  }
+  if (!Array.isArray(offers.shippingDetails) || offers.shippingDetails.length === 0) {
+    throw new Error(`${contextLabel} ${offers["@type"]} missing shippingDetails`);
+  }
+  if (!offers.hasMerchantReturnPolicy || offers.hasMerchantReturnPolicy["@type"] !== "MerchantReturnPolicy") {
+    throw new Error(`${contextLabel} ${offers["@type"]} missing hasMerchantReturnPolicy`);
+  }
+}
+
 function pdpPage(slug, d) {
   const p = d.product;
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
@@ -2515,59 +2568,43 @@ function pdpPage(slug, d) {
           ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
   const offerUrl = `${LIVE}${canonicalPath}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
+  const schemaImages =
+    slug === "moringa-powder"
+      ? gallery.filter(([src]) => path.basename(src).startsWith("moringa-powder-")).map(([src]) => absUrl(src))
+      : gallery.map(([src]) => absUrl(src));
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: slug === "moringa-powder" ? "Moringa Powder" : p.name,
     description: d.description,
-    image: gallery.map(([src]) => absUrl(src)),
+    image: schemaImages,
     brand: { "@type": "Brand", name: "NutriThrive" },
   };
   if (slug === "moringa-powder") {
     productSchema.sku = buyProduct.sku;
-    productSchema.offers = {
-      "@type": "Offer",
-      name: buyProduct.variant,
-      sku: buyProduct.sku,
-      url: offerUrl,
-      priceCurrency: "AUD",
-      price: String(buyProduct.price),
-      availability: "https://schema.org/InStock",
-      seller: { "@id": `${LIVE}/#localbusiness` },
-      ...(mainPowder ? {
-        shippingDetails: [
-          {
-            "@type": "OfferShippingDetails",
-            shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
-            shippingRate: { "@type": "MonetaryAmount", value: 0, currency: "AUD" },
-            eligibleTransactionVolume: { "@type": "PriceSpecification", minPrice: 49, priceCurrency: "AUD" },
-            deliveryTime: {
-              "@type": "ShippingDeliveryTime",
-              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
-              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
-            },
-          },
-          {
-            "@type": "OfferShippingDetails",
-            shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
-            shippingRate: { "@type": "MonetaryAmount", value: under49Rate, currency: "AUD" },
-            eligibleTransactionVolume: { "@type": "PriceSpecification", maxPrice: 48.99, priceCurrency: "AUD" },
-            deliveryTime: {
-              "@type": "ShippingDeliveryTime",
-              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
-              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
-            },
-          },
-        ],
-        hasMerchantReturnPolicy: {
-          "@type": "MerchantReturnPolicy",
-          applicableCountry: "AU",
-          returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-          merchantReturnDays: 7,
-          returnMethod: "https://schema.org/ReturnByMail",
-        },
-      } : {}),
-    };
+    productSchema.offers = mainPowder
+      ? {
+          "@type": "AggregateOffer",
+          url: offerUrl,
+          priceCurrency: "AUD",
+          lowPrice: "11",
+          highPrice: "40",
+          offerCount: 3,
+          availability: "https://schema.org/InStock",
+          seller: { "@id": `${LIVE}/#localbusiness` },
+          ...offerShippingAndReturns(powder100?.weight || 100),
+        }
+      : {
+          "@type": "Offer",
+          name: buyProduct.variant,
+          sku: buyProduct.sku,
+          url: offerUrl,
+          priceCurrency: "AUD",
+          price: String(buyProduct.price),
+          availability: "https://schema.org/InStock",
+          seller: { "@id": `${LIVE}/#localbusiness` },
+          ...offerShippingAndReturns(buyProduct.weight),
+        };
   } else {
     productSchema.sku = p.sku;
     productSchema.offers = {
@@ -2577,8 +2614,10 @@ function pdpPage(slug, d) {
       price: String(p.price),
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
+      ...offerShippingAndReturns(p.weight),
     };
   }
+  verifyProductOfferSchema(productSchema, canonicalPath);
   const crumbTrail = [
     { name: "Home", item: `${LIVE}/` },
     { name: "Shop", item: `${LIVE}${LIVE_MODE ? "/products/" : "/shop"}` },
@@ -2656,7 +2695,7 @@ function pdpPage(slug, d) {
           <p class="pdp-intro">Farm-grown, sun-dried moringa leaf. Nothing added. Packed in Truganina. <a href="/documents/nutrithrive-lab-report-summary.pdf">See the NMI summary for batch NT042024</a>.</p>` : ""}
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
-          ${mainPowder ? `<p class="pdp-delivery-line">Free AU shipping from ${freeShipFrom} · Under ${freeShipFrom}, postage from ${shortMoney(under49Rate)} · 400g ${shortMoney(powder400.price)} + 100g ${shortMoney(powder100.price)} = ${shortMoney(powder400.price + powder100.price)}, ships free</p>` : ""}
+          ${mainPowder ? `<p class="pdp-delivery-line">Free AU shipping from ${freeShipFrom} · Under ${freeShipFrom}, postage ${shortMoney(auSoloShippingRate(100))}–${shortMoney(auSoloShippingRate(400))} · 400g ${shortMoney(powder400.price)} + 100g ${shortMoney(powder100.price)} = ${shortMoney(powder400.price + powder100.price)}, ships free</p>` : ""}
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
             <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
