@@ -419,11 +419,11 @@ for (const rel of [
   if (html && !articleHasSubstantialProse(html)) errors.push(`${rel}: article prose is missing or too short`);
 }
 const teaHtml = read("products/black-tea/index.html");
-if (teaHtml && !teaHtml.includes("<title>Darjeeling Loose Leaf Tea Australia | NutriThrive</title>")) {
+if (teaHtml && !teaHtml.includes("<title>Darjeeling Loose Leaf Tea 100g, $7.50 | NutriThrive</title>")) {
   errors.push("products/black-tea/index.html: title not updated");
 }
 const curryHtml = read("products/curry-leaves/index.html");
-if (curryHtml && !curryHtml.includes("<title>Buy Dried Curry Leaves Online Australia | NutriThrive</title>")) {
+if (curryHtml && !curryHtml.includes("<title>Dried Curry Leaves 30g, $7 | Buy Online Australia</title>")) {
   errors.push("products/curry-leaves/index.html: title not updated");
 }
 

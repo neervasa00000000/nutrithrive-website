@@ -2083,7 +2083,7 @@ const PDP = {
         },
       ],
       [
-        "Are you certified organic?",
+        "Are you certified?",
         "We're not certified. Our leaf is farm-grown and tested by NMI. If certification matters to you, buy a certified brand and compare the price per 100g and the lab paperwork.",
       ],
       [
@@ -2256,8 +2256,8 @@ const PDP = {
         "A melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
       ],
       [
-        "Is it natural, organic or cold process?",
-        "No. It's melt-and-pour, not certified organic, and we don't call it natural or cold process.",
+        "Is it natural or cold process?",
+        "No. It's melt-and-pour, not certified, and we don't call it natural or cold process.",
       ],
       ["What does it smell like?", "Gentle lavender."],
       ["Sensitive skin?", "Patch-test first; stop if irritation occurs."],
@@ -4843,7 +4843,16 @@ function stripTags(s) {
 function loadArticles() {
   const src = fs.readFileSync(path.join(SITE, "shared/js/blog-articles.js"), "utf8");
   const json = src.replace(/^[\s\S]*?window\.NT_BLOG_ARTICLES = /, "").replace(/;\s*$/, "");
-  const articles = JSON.parse(json);
+  const articles = JSON.parse(json).map((article) =>
+    article.slug === "verify-moringa-quality-premium-buyers-checklist-2026"
+      ? {
+          ...article,
+          title: "Certified vs Farm-Grown Moringa Powder: What to Check",
+          description:
+            "What a certification logo on a moringa label does and does not tell you, and what to check instead: lab tests, drying method and pack date.",
+        }
+      : article
+  );
   const known = new Set(articles.map((article) => article.slug));
   for (const name of fs.readdirSync(path.join(SITE, "blog"))) {
     if (!name.endsWith(".html") || name === "index.html" || name.includes(".partial.")) continue;
