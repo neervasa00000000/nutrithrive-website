@@ -237,7 +237,7 @@ const ARTICLE_SEO_OVERRIDES = {
     ogTitle: "Diwali Hampers in Australia: Under $50, Posted AU-Wide",
     ogDescription: "Hamper types, real price ranges, a $20 tea, curry leaf and soap box, and order-by dates so your Diwali hamper arrives before Sun 8 Nov.",
     articleSection: "Curry leaves",
-    ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order. For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.",
+    ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
     heroAlt: "NutriThrive Diwali Gift Box items: Darjeeling black tea, dried curry leaves and moringa lavender soap",
     heroImage: "/assets/images/blog/diwali-hampers-australia-hero.webp",
     ogImage: "/assets/images/og/diwali-hampers-australia-1200.jpg",
@@ -1249,7 +1249,7 @@ function productGuideLinks(slug) {
 }
 
 function growthProductBody(slug) {
-  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.</p></details>", "diwali-gift-box": "<section><h2>Diwali gifts Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Diwali gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order by late October for Diwali; delivery timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Diwali Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
+  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p></details>", "diwali-gift-box": "<section><h2>Diwali gifts Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Diwali gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order by late October for Diwali; delivery timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Diwali Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
 }
 
 function faqDetails(faqs) {
@@ -1261,7 +1261,7 @@ function faqDetails(faqs) {
     .join("");
 }
 
-const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.</p>";
+const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p>";
 const FSANZ_PENDING = "<div data-pending=\"fsanz-approval\" hidden><p>In November 2025 FSANZ decided moringa leaf and powder are not permitted as a food or food ingredient for retail sale in Australia. Read the <a href=\"https://www.foodstandards.gov.au/food-standards-code/applications/application-a1294-moringa-oleifera-novel-food\" rel=\"noopener\">FSANZ notice</a>.</p></div>";
 
 const TEA_REVIEW_NAME = "Mai Anh Trần Thúy";
@@ -2321,8 +2321,7 @@ const PDP = {
     seasonalNotes: {
       until: "2026-11-08",
       lines: [
-        "For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.",
-        "Rural addresses can take up to 10 business days, so order early.",
+        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
     },
     whatHeading: "What's in the box",
@@ -2350,7 +2349,7 @@ const PDP = {
       ],
       ["Pickup?", "Yes, from Truganina by arrangement."],
       ["Gift message?", "Add a note at checkout or email us after you order."],
-      ["Bulk?", "Yes, ideally by Fri 23 Oct. Contact us with numbers, postcodes and dates."],
+      ["Bulk?", "Yes. Contact us with numbers, postcodes and dates."],
     ],
   },
   "gift-pack": {
@@ -2380,8 +2379,7 @@ const PDP = {
     seasonalNotes: {
       until: "2026-11-08",
       lines: [
-        "For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.",
-        "Rural addresses can take up to 10 business days, so order early.",
+        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
     },
     ingredients:
@@ -2405,7 +2403,7 @@ const PDP = {
       ],
       [
         "Until when can I order for Diwali?",
-        "For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses. Delivery times vary by location, and rural areas can take up to 10 business days.",
+        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
       ["Gift message?", "Add a note at checkout or email us after you order."],
       ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
@@ -3663,7 +3661,7 @@ function melbournePage() {
   const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
   const diwaliOpen = diwaliGiftListingOpen();
   const diwaliOrderLine =
-    "For delivery before Diwali (Sunday 8 November), order by Fri 30 Oct for metro addresses. Regional and rural delivery can take longer, so please order soon.";
+    "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.";
   const faqs = [
     [
       "Where can I buy curry leaves in Melbourne?",
