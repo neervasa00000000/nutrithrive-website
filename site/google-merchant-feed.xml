@@ -7,13 +7,16 @@
     <item>
       <g:id>moringa-powder-100g</g:id>
       <g:title>NutriThrive Moringa Powder 100g</g:title>
-      <g:description>Farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
+      <g:description>Farm-grown, sun-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
       <g:link>https://nutrithrive.com.au/products/moringa-powder/100g/</g:link>
       <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/moringa-powder-100g-main.webp</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>11.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Moringa leaf powder</g:product_type>
+      <g:shipping_weight>100 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>9.69 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
       <g:item_group_id>moringa-powder</g:item_group_id>
       <g:size>100g</g:size>
@@ -21,13 +24,16 @@
     <item>
       <g:id>moringa-powder-200g</g:id>
       <g:title>NutriThrive Moringa Powder 200g</g:title>
-      <g:description>Farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
+      <g:description>Farm-grown, sun-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
       <g:link>https://nutrithrive.com.au/products/moringa-powder/200g/</g:link>
       <g:image_link>https://nutrithrive.com.au/assets/images/photos/compressed/moringa-powder-200g-main-square.webp</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>22.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Moringa leaf powder</g:product_type>
+      <g:shipping_weight>200 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>9.69 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
       <g:item_group_id>moringa-powder</g:item_group_id>
       <g:size>200g</g:size>
@@ -35,13 +41,16 @@
     <item>
       <g:id>moringa-powder-400g</g:id>
       <g:title>NutriThrive Moringa Powder 400g</g:title>
-      <g:description>Four 100g pouches of farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
+      <g:description>Four 100g pouches of farm-grown, sun-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.</g:description>
       <g:link>https://nutrithrive.com.au/products/moringa-powder/</g:link>
       <g:image_link>https://nutrithrive.com.au/assets/images/product_webp/moringa-powder-400g-bundle-main.webp</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>40.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Moringa leaf powder</g:product_type>
+      <g:shipping_weight>400 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>11.12 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
       <g:item_group_id>moringa-powder</g:item_group_id>
       <g:size>400g</g:size>
@@ -57,6 +66,9 @@
       <g:price>7.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Dried curry leaves</g:product_type>
+      <g:shipping_weight>30 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>9.69 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -69,6 +81,9 @@
       <g:price>7.50 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Darjeeling loose leaf tea</g:product_type>
+      <g:shipping_weight>100 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>9.69 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -81,6 +96,9 @@
       <g:price>7.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Handmade soap</g:product_type>
+      <g:shipping_weight>95 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>9.69 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -93,6 +111,9 @@
       <g:price>17.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Gift packs and bundles</g:product_type>
+      <g:shipping_weight>130 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>9.69 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
       <g:is_bundle>yes</g:is_bundle>
     </item>
@@ -106,6 +127,9 @@
       <g:price>35.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Gift packs and bundles</g:product_type>
+      <g:shipping_weight>325 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>11.12 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
       <g:is_bundle>yes</g:is_bundle>
     </item>
@@ -119,6 +143,9 @@
       <g:price>20.00 AUD</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>Gift packs and bundles</g:product_type>
+      <g:shipping_weight>225 g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>9.69 AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
   </channel>

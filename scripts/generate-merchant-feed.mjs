@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { PRODUCTS } from "../storefront/js/data.js";
+import { PRODUCTS, auSoloShippingRate } from "../storefront/js/data.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LIVE = "https://nutrithrive.com.au";
@@ -10,9 +10,11 @@ const OUT = path.join(ROOT, "site", "google-merchant-feed.xml");
 const products = [
   {
     id: "moringa-powder-100g",
+    dataId: "moringa-powder",
+    productType: "Moringa leaf powder",
     group: "moringa-powder",
     title: "NutriThrive Moringa Powder 100g",
-    description: "Farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
+    description: "Farm-grown, sun-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
     link: "/products/moringa-powder/100g/",
     image: "/assets/images/product_webp/moringa-powder-100g-main.webp",
     price: "11.00 AUD",
@@ -20,9 +22,11 @@ const products = [
   },
   {
     id: "moringa-powder-200g",
+    dataId: "moringa-200g",
+    productType: "Moringa leaf powder",
     group: "moringa-powder",
     title: "NutriThrive Moringa Powder 200g",
-    description: "Farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
+    description: "Farm-grown, sun-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
     link: "/products/moringa-powder/200g/",
     image: "/assets/images/photos/compressed/moringa-powder-200g-main-square.webp",
     price: "22.00 AUD",
@@ -30,9 +34,11 @@ const products = [
   },
   {
     id: "moringa-powder-400g",
+    dataId: "moringa-400g",
+    productType: "Moringa leaf powder",
     group: "moringa-powder",
     title: "NutriThrive Moringa Powder 400g",
-    description: "Four 100g pouches of farm-grown, shade-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
+    description: "Four 100g pouches of farm-grown, sun-dried moringa leaf powder. NMI lab-tested in Australia and packed in Truganina.",
     link: "/products/moringa-powder/",
     image: "/assets/images/product_webp/moringa-powder-400g-bundle-main.webp",
     price: "40.00 AUD",
@@ -41,6 +47,8 @@ const products = [
   },
   {
     id: "dried-curry-leaves-30g",
+    dataId: "curry-leaves",
+    productType: "Dried curry leaves",
     title: "NutriThrive Dried Curry Leaves 30g",
     description: "Whole dried curry leaves grown on our farm and packed in Truganina for curries, dal and tadka.",
     link: "/products/curry-leaves/",
@@ -49,6 +57,8 @@ const products = [
   },
   {
     id: "darjeeling-black-tea-100g",
+    dataId: "black-tea",
+    productType: "Darjeeling loose leaf tea",
     title: "NutriThrive Darjeeling Black Tea 100g",
     description: "Loose-leaf Darjeeling black tea sourced from a family farm and packed in Truganina.",
     link: "/products/black-tea/",
@@ -57,6 +67,8 @@ const products = [
   },
   {
     id: "moringa-soap-95g",
+    dataId: "moringa-soap",
+    productType: "Handmade soap",
     title: "NutriThrive Moringa Soap 95g",
     description: "Handmade moringa soap made in Australia and packed in Truganina.",
     link: "/products/moringa-soap/",
@@ -65,6 +77,8 @@ const products = [
   },
   {
     id: "moringa-curry-combo-pack",
+    dataId: "combo-pack",
+    productType: "Gift packs and bundles",
     title: "NutriThrive Moringa and Curry Leaves Combo Pack",
     description: "A 100g moringa powder pouch and a 30g dried curry leaves pack, packed together in Truganina.",
     link: "/products/combo-pack/",
@@ -74,6 +88,8 @@ const products = [
   },
   {
     id: "nutrithrive-gift-pack",
+    dataId: "gift-pack",
+    productType: "Gift packs and bundles",
     title: "NutriThrive Four Product Gift Pack",
     description: "Moringa powder, Darjeeling tea, dried curry leaves and handmade moringa soap in one gift pack.",
     link: "/products/gift-pack/",
@@ -89,12 +105,24 @@ if (!diwali || !(Number(diwali.price) > 0) || !(Number(diwali.weight) > 0) || !d
 }
 products.push({
   id: "diwali-gift-box",
+  dataId: "diwali-gift-box",
+  productType: "Gift packs and bundles",
   title: "NutriThrive Diwali Gift Box: Darjeeling Tea, Curry Leaves and Soap",
   description: diwali.detail || diwali.benefit,
   link: diwali.href,
   image: diwali.image,
   price: `${Number(diwali.price).toFixed(2)} AUD`,
 });
+
+for (const product of products) {
+  const source = PRODUCTS.find((item) => item.id === product.dataId);
+  const weight = Number(source?.weight);
+  if (!source || !(weight > 0)) {
+    throw new Error(`Missing cart weight in storefront/js/data.js for feed item ${product.id} (${product.dataId})`);
+  }
+  product.weight = weight;
+  product.shippingRate = auSoloShippingRate(weight).toFixed(2);
+}
 
 function xml(value) {
   return String(value)
@@ -119,6 +147,9 @@ const items = products.map((product) => `    <item>
       <g:price>${xml(product.price)}</g:price>
       <g:condition>new</g:condition>
       <g:brand>NutriThrive</g:brand>
+      <g:product_type>${xml(product.productType)}</g:product_type>
+      <g:shipping_weight>${xml(product.weight)} g</g:shipping_weight>
+      <g:shipping><g:country>AU</g:country><g:service>Standard</g:service><g:price>${xml(product.shippingRate)} AUD</g:price></g:shipping>
       <g:identifier_exists>no</g:identifier_exists>${product.group ? `
       <g:item_group_id>${xml(product.group)}</g:item_group_id>` : ""}${product.size ? `
       <g:size>${xml(product.size)}</g:size>` : ""}${product.multipack ? `

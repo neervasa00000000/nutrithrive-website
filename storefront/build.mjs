@@ -237,7 +237,7 @@ const ARTICLE_SEO_OVERRIDES = {
     ogTitle: "Diwali Hampers in Australia: Under $50, Posted AU-Wide",
     ogDescription: "Hamper types, real price ranges, a $20 tea, curry leaf and soap box, and order-by dates so your Diwali hamper arrives before Sun 8 Nov.",
     articleSection: "Curry leaves",
-    ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order. For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.",
+    ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
     heroAlt: "NutriThrive Diwali Gift Box items: Darjeeling black tea, dried curry leaves and moringa lavender soap",
     heroImage: "/assets/images/blog/diwali-hampers-australia-hero.webp",
     ogImage: "/assets/images/og/diwali-hampers-australia-1200.jpg",
@@ -1249,7 +1249,7 @@ function productGuideLinks(slug) {
 }
 
 function growthProductBody(slug) {
-  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.</p></details>", "diwali-gift-box": "<section><h2>Diwali gifts Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Diwali gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order by late October for Diwali; delivery timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Diwali Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
+  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p></details>", "diwali-gift-box": "<section><h2>Diwali gifts Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Diwali gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order by late October for Diwali; delivery timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Diwali Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
 }
 
 function faqDetails(faqs) {
@@ -1261,7 +1261,14 @@ function faqDetails(faqs) {
     .join("");
 }
 
-const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.</p>";
+const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p>";
+const CHRISTMAS_SHIPPING_NOTE =
+  "For Christmas, Australia Post's last metro Parcel Post dates from Victoria are Tue 22 Dec within Victoria, Mon 21 Dec to NSW, ACT, Qld, SA and Tas, Fri 18 Dec to WA and Wed 16 Dec to the NT. Please order well before these dates, and earlier for regional addresses.";
+const CHRISTMAS_NOTES = {
+  from: "2026-11-09",
+  until: "2026-12-22",
+  lines: [CHRISTMAS_SHIPPING_NOTE],
+};
 const FSANZ_PENDING = "<div data-pending=\"fsanz-approval\" hidden><p>In November 2025 FSANZ decided moringa leaf and powder are not permitted as a food or food ingredient for retail sale in Australia. Read the <a href=\"https://www.foodstandards.gov.au/food-standards-code/applications/application-a1294-moringa-oleifera-novel-food\" rel=\"noopener\">FSANZ notice</a>.</p></div>";
 
 const TEA_REVIEW_NAME = "Mai Anh Trần Thúy";
@@ -1743,7 +1750,7 @@ ${refined ? "" : '<link rel="preload" href="/assets/fonts/fraunces-latin-500-600
 </head>
 <body${refined ? ' class="storefront-refined"' : ""}>
 <a class="skip-link" href="#main">Skip to content</a>
-${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Truganina</div>` : `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a>: tea, curry leaves and soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · Free AU shipping from $49</span></div>`}
+${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Truganina</div>` : diwaliGiftListingOpen() ? `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a>: tea, curry leaves and soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · Free AU shipping from $49</span></div>` : `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">$20 gift box</a>: Darjeeling tea, curry leaves and soap · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">$20 gift box</a> · Free AU shipping from $49</span></div>`}
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
@@ -1922,7 +1929,7 @@ function homepage() {
 </section>
 <section class="section home-feature"><div class="wrap home-feature-grid">
   <a class="home-feature-image" href="/products/gift-pack/"><img src="/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp" ${cardSrcset("/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "(max-width: 760px) calc(100vw - 36px), 48vw")} alt="NutriThrive gift pack with moringa, tea, curry leaves and soap" width="900" height="900" loading="lazy"></a>
-  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. For Diwali, choose the tea, curry leaf and soap box for $20.</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">Diwali Gift Box →</a></div><details class="gift-guide-disclosure"><summary>Diwali gift guides and delivery</summary>${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p></details></div>
+  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. ${diwaliGiftListingOpen() ? "For Diwali, choose the tea, curry leaf and soap box for $20." : "For a smaller gift or Secret Santa, choose the tea, curry leaf and soap box for $20."}</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">${diwaliGiftListingOpen() ? "Diwali Gift Box →" : "$20 gift box →"}</a></div><details class="gift-guide-disclosure"><summary>${diwaliGiftListingOpen() ? "Diwali gift guides and delivery" : "Gift guides and Christmas delivery"}</summary>${diwaliGiftListingOpen() ? `${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p>` : `<p>${esc(CHRISTMAS_SHIPPING_NOTE)}</p>`}</details></div>
 </div></section>
 <section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
 ${googleReviewsSection()}
@@ -2076,7 +2083,7 @@ const PDP = {
         },
       ],
       [
-        "Are you certified organic?",
+        "Are you certified?",
         "We're not certified. Our leaf is farm-grown and tested by NMI. If certification matters to you, buy a certified brand and compare the price per 100g and the lab paperwork.",
       ],
       [
@@ -2105,6 +2112,7 @@ const PDP = {
       ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "NutriThrive dried curry leaves 30g pouch with whole leaves"],
       ["/assets/images/product_webp/dried-curry-leaves-texture.webp", "Whole dried curry leaves (karipatta) in a ceramic bowl"],
     ],
+    christmasNotes: CHRISTMAS_NOTES,
     detailImage: "/assets/images/product_webp/dried-curry-leaves-texture.webp",
     detailAlt: "Whole dried curry leaves (karipatta) in a ceramic bowl",
     detailCaption: "Whole dried leaves with their naturally curled, pantry-ready texture.",
@@ -2167,6 +2175,7 @@ const PDP = {
       ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "NutriThrive 100g Darjeeling black tea pouch with brewed tea"],
       ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Amber Darjeeling black tea with loose leaves in a wooden spoon"],
     ],
+    christmasNotes: CHRISTMAS_NOTES,
     detailImage: "/assets/images/product_webp/darjeeling-black-tea-brewed.webp",
     detailAlt: "Amber Darjeeling black tea with loose tea leaves in a wooden spoon",
     detailCaption: "Loose Darjeeling leaves and the warm amber colour of a gently brewed cup.",
@@ -2228,6 +2237,7 @@ const PDP = {
       ["/assets/images/product_webp/moringa-soap-95g-main.webp", "NutriThrive handmade 95g moringa soap with lavender flowers"],
       ["/assets/images/product_webp/moringa-soap-texture.webp", "Handmade moringa soap on a stone dish with lavender and foam"],
     ],
+    christmasNotes: CHRISTMAS_NOTES,
     detailImage: "/assets/images/product_webp/moringa-soap-texture.webp",
     detailAlt: "Handmade moringa soap bar with lavender flowers and soft foam on a stone dish",
     detailCaption: "A closer look at the handmade bar, lavender flowers and lather.",
@@ -2246,8 +2256,8 @@ const PDP = {
         "A melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
       ],
       [
-        "Is it natural, organic or cold process?",
-        "No. It's melt-and-pour, not certified organic, and we don't call it natural or cold process.",
+        "Is it natural or cold process?",
+        "No. It's melt-and-pour, not certified, and we don't call it natural or cold process.",
       ],
       ["What does it smell like?", "Gentle lavender."],
       ["Sensitive skin?", "Patch-test first; stop if irritation occurs."],
@@ -2321,10 +2331,10 @@ const PDP = {
     seasonalNotes: {
       until: "2026-11-08",
       lines: [
-        "For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.",
-        "Rural addresses can take up to 10 business days, so order early.",
+        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
     },
+    christmasNotes: CHRISTMAS_NOTES,
     whatHeading: "What's in the box",
     ingredients:
       "Includes Darjeeling black tea, dried curry leaves (curry patta / kadi patta), and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
@@ -2350,7 +2360,7 @@ const PDP = {
       ],
       ["Pickup?", "Yes, from Truganina by arrangement."],
       ["Gift message?", "Add a note at checkout or email us after you order."],
-      ["Bulk?", "Yes, ideally by Fri 23 Oct. Contact us with numbers, postcodes and dates."],
+      ["Bulk?", "Yes. Contact us with numbers, postcodes and dates."],
     ],
   },
   "gift-pack": {
@@ -2380,10 +2390,10 @@ const PDP = {
     seasonalNotes: {
       until: "2026-11-08",
       lines: [
-        "For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses.",
-        "Rural addresses can take up to 10 business days, so order early.",
+        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
     },
+    christmasNotes: CHRISTMAS_NOTES,
     ingredients:
       "Includes moringa leaf powder, Darjeeling black tea, dried curry leaves, and soap made with melt-and-pour soap base, moringa leaf, lavender fragrance and dried lavender flowers.",
     origin: "Farm-grown moringa and curry leaves, family-farm tea from Darjeeling, and moringa soap handmade by us in Australia.",
@@ -2405,7 +2415,7 @@ const PDP = {
       ],
       [
         "Until when can I order for Diwali?",
-        "For delivery before Diwali (Sunday 8 November), order by Mon 26 Oct Australia-wide, or Fri 30 Oct for metro addresses. Delivery times vary by location, and rural areas can take up to 10 business days.",
+        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
       ],
       ["Gift message?", "Add a note at checkout or email us after you order."],
       ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
@@ -2436,16 +2446,75 @@ function diwaliQuantityLine(product) {
   return `<p class="pdp-delivery-line">Gifting more than one family? ${boxes} boxes are ${shortMoney(total)} and ship free.</p>`;
 }
 
+function offerShippingAndReturns(weightGrams) {
+  const weight = Number(weightGrams);
+  if (!(weight > 0)) {
+    throw new Error(`Product Offer requires positive weightGrams; got ${weightGrams}`);
+  }
+  return {
+    shippingDetails: [
+      {
+        "@type": "OfferShippingDetails",
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
+        shippingRate: { "@type": "MonetaryAmount", value: 0, currency: "AUD" },
+        eligibleTransactionVolume: { "@type": "PriceSpecification", minPrice: 49, priceCurrency: "AUD" },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
+        },
+      },
+      {
+        "@type": "OfferShippingDetails",
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
+        shippingRate: { "@type": "MonetaryAmount", value: auSoloShippingRate(weight), currency: "AUD" },
+        eligibleTransactionVolume: { "@type": "PriceSpecification", maxPrice: 48.99, priceCurrency: "AUD" },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
+        },
+      },
+    ],
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "AU",
+      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      merchantReturnDays: 7,
+      returnMethod: "https://schema.org/ReturnByMail",
+    },
+  };
+}
+
+function verifyProductOfferSchema(productSchema, contextLabel = "Product") {
+  const offers = productSchema?.offers;
+  if (!offers || !["Offer", "AggregateOffer"].includes(offers["@type"])) {
+    throw new Error(`${contextLabel} schema missing Offer/AggregateOffer`);
+  }
+  if (!Array.isArray(offers.shippingDetails) || offers.shippingDetails.length === 0) {
+    throw new Error(`${contextLabel} ${offers["@type"]} missing shippingDetails`);
+  }
+  if (!offers.hasMerchantReturnPolicy || offers.hasMerchantReturnPolicy["@type"] !== "MerchantReturnPolicy") {
+    throw new Error(`${contextLabel} ${offers["@type"]} missing hasMerchantReturnPolicy`);
+  }
+}
+
 function pdpPage(slug, d) {
   const p = d.product;
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
   const mainPowder = canonicalPath === "/products/moringa-powder/";
   const liveSeo = LIVE_MODE && !d.forceSeo ? extractSeo(path.join(SITE, "products", slug, "index.html")) : null;
-  const buildDate = process.env.BUILD_DATE || new Date().toISOString().slice(0, 10);
-  const seasonalLines =
-    d.seasonalNotes?.until && buildDate <= d.seasonalNotes.until
+  const buildDate = melbourneBuildDate();
+  const seasonalLines = [
+    ...(d.seasonalNotes?.until && buildDate <= d.seasonalNotes.until
       ? d.seasonalNotes.lines || []
-      : [];
+      : []),
+    ...(d.christmasNotes &&
+    (!d.christmasNotes.from || buildDate >= d.christmasNotes.from) &&
+    (!d.christmasNotes.until || buildDate <= d.christmasNotes.until)
+      ? d.christmasNotes.lines || []
+      : []),
+  ];
   const seasonalHtml = seasonalLines
     .map((line) => `<p class="purchase-note" data-seasonal-note>${esc(line)}</p>`)
     .join("");
@@ -2499,59 +2568,43 @@ function pdpPage(slug, d) {
           ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
   const offerUrl = `${LIVE}${canonicalPath}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
+  const schemaImages =
+    slug === "moringa-powder"
+      ? gallery.filter(([src]) => path.basename(src).startsWith("moringa-powder-")).map(([src]) => absUrl(src))
+      : gallery.map(([src]) => absUrl(src));
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: slug === "moringa-powder" ? "Moringa Powder" : p.name,
     description: d.description,
-    image: gallery.map(([src]) => absUrl(src)),
+    image: schemaImages,
     brand: { "@type": "Brand", name: "NutriThrive" },
   };
   if (slug === "moringa-powder") {
     productSchema.sku = buyProduct.sku;
-    productSchema.offers = {
-      "@type": "Offer",
-      name: buyProduct.variant,
-      sku: buyProduct.sku,
-      url: offerUrl,
-      priceCurrency: "AUD",
-      price: String(buyProduct.price),
-      availability: "https://schema.org/InStock",
-      seller: { "@id": `${LIVE}/#localbusiness` },
-      ...(mainPowder ? {
-        shippingDetails: [
-          {
-            "@type": "OfferShippingDetails",
-            shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
-            shippingRate: { "@type": "MonetaryAmount", value: 0, currency: "AUD" },
-            eligibleTransactionVolume: { "@type": "PriceSpecification", minPrice: 49, priceCurrency: "AUD" },
-            deliveryTime: {
-              "@type": "ShippingDeliveryTime",
-              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
-              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
-            },
-          },
-          {
-            "@type": "OfferShippingDetails",
-            shippingDestination: { "@type": "DefinedRegion", addressCountry: "AU" },
-            shippingRate: { "@type": "MonetaryAmount", value: under49Rate, currency: "AUD" },
-            eligibleTransactionVolume: { "@type": "PriceSpecification", maxPrice: 48.99, priceCurrency: "AUD" },
-            deliveryTime: {
-              "@type": "ShippingDeliveryTime",
-              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
-              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 10, unitCode: "DAY" },
-            },
-          },
-        ],
-        hasMerchantReturnPolicy: {
-          "@type": "MerchantReturnPolicy",
-          applicableCountry: "AU",
-          returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-          merchantReturnDays: 7,
-          returnMethod: "https://schema.org/ReturnByMail",
-        },
-      } : {}),
-    };
+    productSchema.offers = mainPowder
+      ? {
+          "@type": "AggregateOffer",
+          url: offerUrl,
+          priceCurrency: "AUD",
+          lowPrice: "11",
+          highPrice: "40",
+          offerCount: 3,
+          availability: "https://schema.org/InStock",
+          seller: { "@id": `${LIVE}/#localbusiness` },
+          ...offerShippingAndReturns(powder100?.weight || 100),
+        }
+      : {
+          "@type": "Offer",
+          name: buyProduct.variant,
+          sku: buyProduct.sku,
+          url: offerUrl,
+          priceCurrency: "AUD",
+          price: String(buyProduct.price),
+          availability: "https://schema.org/InStock",
+          seller: { "@id": `${LIVE}/#localbusiness` },
+          ...offerShippingAndReturns(buyProduct.weight),
+        };
   } else {
     productSchema.sku = p.sku;
     productSchema.offers = {
@@ -2561,8 +2614,10 @@ function pdpPage(slug, d) {
       price: String(p.price),
       availability: "https://schema.org/InStock",
       seller: { "@id": `${LIVE}/#localbusiness` },
+      ...offerShippingAndReturns(p.weight),
     };
   }
+  verifyProductOfferSchema(productSchema, canonicalPath);
   const crumbTrail = [
     { name: "Home", item: `${LIVE}/` },
     { name: "Shop", item: `${LIVE}${LIVE_MODE ? "/products/" : "/shop"}` },
@@ -2640,7 +2695,7 @@ function pdpPage(slug, d) {
           <p class="pdp-intro">Farm-grown, sun-dried moringa leaf. Nothing added. Packed in Truganina. <a href="/documents/nutrithrive-lab-report-summary.pdf">See the NMI summary for batch NT042024</a>.</p>` : ""}
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
-          ${mainPowder ? `<p class="pdp-delivery-line">Free AU shipping from ${freeShipFrom} · Under ${freeShipFrom}, postage from ${shortMoney(under49Rate)} · 400g ${shortMoney(powder400.price)} + 100g ${shortMoney(powder100.price)} = ${shortMoney(powder400.price + powder100.price)}, ships free</p>` : ""}
+          ${mainPowder ? `<p class="pdp-delivery-line">Free AU shipping from ${freeShipFrom} · Under ${freeShipFrom}, postage ${shortMoney(auSoloShippingRate(100))}–${shortMoney(auSoloShippingRate(400))} · 400g ${shortMoney(powder400.price)} + 100g ${shortMoney(powder100.price)} = ${shortMoney(powder400.price + powder100.price)}, ships free</p>` : ""}
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
             <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
@@ -3622,23 +3677,24 @@ function emitCityLandings() {
   emit("moringa-adelaide/index.html", cityPage("Adelaide", "adelaide"));
 }
 
-function diwaliGiftListingOpen(now = new Date()) {
+function melbourneBuildDate(now = new Date()) {
   const override = process.env.BUILD_DATE;
-  if (override) return override.slice(0, 10) <= "2026-11-08";
+  if (override) return override.slice(0, 10);
   const parts = Object.fromEntries(
     new Intl.DateTimeFormat("en-AU", {
       timeZone: "Australia/Melbourne",
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      hourCycle: "h23",
     })
       .formatToParts(now)
       .map((part) => [part.type, part.value])
   );
-  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}` <= "2026-11-08T23:59";
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+function diwaliGiftListingOpen(now = new Date()) {
+  return melbourneBuildDate(now) <= "2026-11-08";
 }
 
 // One catalogue for every delivery city; prices, images and cart IDs come from PRODUCTS.
@@ -3663,7 +3719,7 @@ function melbournePage() {
   const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
   const diwaliOpen = diwaliGiftListingOpen();
   const diwaliOrderLine =
-    "For delivery before Diwali (Sunday 8 November), order by Fri 30 Oct for metro addresses. Regional and rural delivery can take longer, so please order soon.";
+    "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.";
   const faqs = [
     [
       "Where can I buy curry leaves in Melbourne?",
@@ -4743,7 +4799,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
               <ul class="article-context-links">${conversionLinks}</ul>` : ""}
             </div>
           </section>
-          ${["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
+          ${diwaliGiftListingOpen() && ["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
           ${firstScreen ? "" : relatedNav}
           <aside class="article-author">
             <p class="kicker">About the author</p>
@@ -4787,7 +4843,16 @@ function stripTags(s) {
 function loadArticles() {
   const src = fs.readFileSync(path.join(SITE, "shared/js/blog-articles.js"), "utf8");
   const json = src.replace(/^[\s\S]*?window\.NT_BLOG_ARTICLES = /, "").replace(/;\s*$/, "");
-  const articles = JSON.parse(json);
+  const articles = JSON.parse(json).map((article) =>
+    article.slug === "verify-moringa-quality-premium-buyers-checklist-2026"
+      ? {
+          ...article,
+          title: "Certified vs Farm-Grown Moringa Powder: What to Check",
+          description:
+            "What a certification logo on a moringa label does and does not tell you, and what to check instead: lab tests, drying method and pack date.",
+        }
+      : article
+  );
   const known = new Set(articles.map((article) => article.slug));
   for (const name of fs.readdirSync(path.join(SITE, "blog"))) {
     if (!name.endsWith(".html") || name === "index.html" || name.includes(".partial.")) continue;
