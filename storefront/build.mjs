@@ -238,7 +238,7 @@ const ARTICLE_SEO_OVERRIDES = {
     ogDescription: "Hamper types, real price ranges, a $20 tea, curry leaf and soap box, and order-by dates so your Diwali hamper arrives before Sun 8 Nov.",
     articleSection: "Curry leaves",
     ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
-    heroAlt: "NutriThrive Diwali Gift Box items: Darjeeling black tea, dried curry leaves and moringa lavender soap",
+    heroAlt: "NutriThrive Christmas Gift Box items: Darjeeling black tea, dried curry leaves and moringa lavender soap",
     heroImage: "/assets/images/blog/diwali-hampers-australia-hero.webp",
     ogImage: "/assets/images/og/diwali-hampers-australia-1200.jpg",
   },
@@ -1019,9 +1019,9 @@ const ARTICLE_CONVERSION_PATHS = {
   },
   "diwali-hampers-australia": {
     kicker: "A practical next step",
-    title: "Diwali Gift Box",
+    title: "Christmas Gift Box",
     body: "Sending a few? Three boxes come to $60 and ship free Australia-wide.",
-    cta: "Choose your Diwali Gift Boxes",
+    cta: "Choose your Christmas Gift Boxes",
   },
   "how-to-choose-moringa-powder-australia-2026": {
     kicker: "Apply the checklist",
@@ -1110,9 +1110,9 @@ const ARTICLE_CONVERSION_PATHS = {
   },
   "diwali-gift-guide-curry-leaves-tea-australia": {
     kicker: "Ready Diwali hamper",
-    title: "Diwali gift box — tea, curry leaves & soap",
+    title: "Christmas gift box — tea, curry leaves & soap",
     body: "Darjeeling tea, dried curry leaves from our farm and a handmade moringa soap, packed together in Truganina. Ready to give for Diwali.",
-    cta: "Shop Diwali gift box",
+    cta: "Shop Christmas gift box",
     links: [
       ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
       ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
@@ -1162,7 +1162,7 @@ function journalProduct(article) {
 
 function journalCta(article, product) {
   if (article.slug === "fathers-day-gift-under-40") return "Shop Gift Pack, $35";
-  if (article.slug === "diwali-gift-guide-curry-leaves-tea-australia" || article.slug === "diwali-hampers-australia") return "Shop Diwali gift box";
+  if (article.slug === "diwali-gift-guide-curry-leaves-tea-australia" || article.slug === "diwali-hampers-australia") return "Shop Christmas gift box";
   if (article.slug === "curry-leaves-substitute-what-to-use-2026") return "Shop dried curry leaves";
   if (article.slug === "dried-curry-leaves-quality-guide-how-to-use") return "Shop dried curry leaves";
   if (article.slug === "how-to-brew-darjeeling-tea-perfectly-2026") return "Shop Darjeeling black tea";
@@ -1249,7 +1249,7 @@ function productGuideLinks(slug) {
 }
 
 function growthProductBody(slug) {
-  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p></details>", "diwali-gift-box": "<section><h2>Diwali gifts Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Diwali gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order by late October for Diwali; delivery timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Diwali Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
+  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Christmas gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p></details>", "diwali-gift-box": "<section><h2>Christmas gift box Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Christmas gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order early for Christmas delivery; timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Christmas Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
 }
 
 function faqDetails(faqs) {
@@ -1261,7 +1261,7 @@ function faqDetails(faqs) {
     .join("");
 }
 
-const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Diwali gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p>";
+const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Christmas gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p>";
 const CHRISTMAS_SHIPPING_NOTE =
   "For Christmas, Australia Post's last metro Parcel Post dates from Victoria are Tue 22 Dec within Victoria, Mon 21 Dec to NSW, ACT, Qld, SA and Tas, Fri 18 Dec to WA and Wed 16 Dec to the NT. Please order well before these dates, and earlier for regional addresses.";
 const CHRISTMAS_NOTES = {
@@ -1750,7 +1750,7 @@ ${refined ? "" : '<link rel="preload" href="/assets/fonts/fraunces-latin-500-600
 </head>
 <body${refined ? ' class="storefront-refined"' : ""}>
 <a class="skip-link" href="#main">Skip to content</a>
-${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Truganina</div>` : diwaliGiftListingOpen() ? `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a>: tea, curry leaves and soap · <a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Gift guide</a> · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Diwali Gift Box $20</a> · Free AU shipping from $49</span></div>` : `<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">$20 gift box</a>: Darjeeling tea, curry leaves and soap · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">$20 gift box</a> · Free AU shipping from $49</span></div>`}
+${`<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Christmas gift box $20</a> · 3 boxes $60 ship free · Darjeeling tea, curry leaves and soap · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Christmas gift box $20</a> · 3 boxes $60 ship free</span></div>`}
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
@@ -1811,7 +1811,7 @@ ${refined ? `<div class="announce">Free AU shipping from $49 · Packed in Trugan
         <li><a href="/products/black-tea/">Darjeeling tea</a></li>
         <li><a href="/products/curry-leaves/">Curry leaves</a></li>
         <li><a href="/products/moringa-soap/">Handmade soap</a></li>
-        <li><a href="/products/diwali-gift-box/">Diwali Gift Box</a></li>
+        <li><a href="/products/diwali-gift-box/">Christmas Gift Box</a></li>
         <li><a href="/products/gift-pack/">Gift pack</a></li>
       </ul>
     </div>
@@ -1929,7 +1929,7 @@ function homepage() {
 </section>
 <section class="section home-feature"><div class="wrap home-feature-grid">
   <a class="home-feature-image" href="/products/gift-pack/"><img src="/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp" ${cardSrcset("/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "(max-width: 760px) calc(100vw - 36px), 48vw")} alt="NutriThrive gift pack with moringa, tea, curry leaves and soap" width="900" height="900" loading="lazy"></a>
-  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. ${diwaliGiftListingOpen() ? "For Diwali, choose the tea, curry leaf and soap box for $20." : "For a smaller gift or Secret Santa, choose the tea, curry leaf and soap box for $20."}</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">${diwaliGiftListingOpen() ? "Diwali Gift Box →" : "$20 gift box →"}</a></div><details class="gift-guide-disclosure"><summary>${diwaliGiftListingOpen() ? "Diwali gift guides and delivery" : "Gift guides and Christmas delivery"}</summary>${diwaliGiftListingOpen() ? `${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p>` : `<p>${esc(CHRISTMAS_SHIPPING_NOTE)}</p>`}</details></div>
+  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. ${diwaliGiftListingOpen() ? "For Diwali, choose the tea, curry leaf and soap box for $20." : "For Christmas, choose the tea, curry leaf and soap Christmas gift box for $20."}</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">Christmas Gift Box →</a></div><details class="gift-guide-disclosure"><summary>${diwaliGiftListingOpen() ? "Diwali gift guides and delivery" : "Gift guides and Christmas delivery"}</summary>${diwaliGiftListingOpen() ? `${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p>` : `<p>${esc(CHRISTMAS_SHIPPING_NOTE)}</p>`}</details></div>
 </div></section>
 <section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
 ${googleReviewsSection()}
@@ -1945,7 +1945,7 @@ function shopPage() {
   const otherProducts = PRODUCTS.filter((p) => !moringaIds.has(p.id));
   return layout({
     title: desk.title || "Shop Curry Leaves, Darjeeling Tea, Soap & Moringa",
-    description: desk.description || "Farm-grown curry leaves $7, Darjeeling tea $7.50, handmade soap $7, moringa from $11, $20 Diwali Gift Box. Packed in Truganina. Free AU shipping from $49.",
+    description: desk.description || "Farm-grown curry leaves $7, Darjeeling tea $7.50, handmade soap $7, moringa from $11, $20 Christmas Gift Box. Packed in Truganina. Free AU shipping from $49.",
     canonicalPath: shopPath,
     current: "Shop",
     preserveTitle: true,
@@ -2269,7 +2269,7 @@ const PDP = {
       [
         "Good gift?",
         {
-          html: `Yes. It's also in the <a href="/products/diwali-gift-box/">Diwali Gift Box</a>.`,
+          html: `Yes. It's also in the <a href="/products/diwali-gift-box/">Christmas Gift Box</a>.`,
         },
       ],
     ],
@@ -2306,15 +2306,15 @@ const PDP = {
     ],
   },
   "diwali-gift-box": {
-    title: "Diwali Gift Box: Darjeeling Tea, Curry Leaves & Soap | $20",
+    title: "Christmas Gift Box: Darjeeling Tea, Curry Leaves & Soap | $20",
     description:
-      "Diwali gift box with Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap. No moringa powder. Packed in Truganina, VIC.",
+      "Christmas gift box with Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap. No moringa powder. Packed in Truganina, VIC.",
     forceSeo: true,
-    h1: "Diwali Gift Box: Darjeeling Tea, Curry Leaves and Lavender Soap",
+    h1: "Christmas Gift Box: Darjeeling tea, curry leaves and soap",
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "diwali-gift-box"),
     intro:
-      "Our Diwali gift box brings together three things people use long after the sweets are gone: 100g of Darjeeling loose leaf black tea from a family farm in Darjeeling, 30g of whole dried curry leaves from our farm in Gujarat, and a 95g moringa and lavender soap bar we handmake in Australia. There's no moringa powder in this box. We pack it in Truganina, Melbourne, ready to give to family, hosts, neighbours or colleagues this Diwali, Sunday 8 November 2026. Order before 2pm on a weekday for same-day dispatch, posted Australia-wide or picked up in Truganina by arrangement.",
+      "Our Christmas gift box brings together three things people use after the wrapping paper is gone: 100g of Darjeeling loose leaf black tea from a family farm in Darjeeling, 30g of whole dried curry leaves from our farm in Gujarat, and a 95g moringa and lavender soap bar we handmake in Australia. There's no moringa powder in this box. We pack it in Truganina, Melbourne, ready to give to family, hosts, neighbours, teachers or colleagues. Order early for Christmas delivery. Order before 2pm on a weekday for same-day dispatch, posted Australia-wide or picked up in Truganina by arrangement.",
     proofs: [
       "No moringa powder",
       "Handmade soap",
@@ -2323,16 +2323,14 @@ const PDP = {
       PAYMENT_LINE,
     ],
     gallery: [
-      ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "Darjeeling tea included in the Diwali gift box"],
-      ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "Dried curry leaves included in the Diwali gift box"],
-      ["/assets/images/product_webp/moringa-soap-95g-main.webp", "Handmade lavender soap included in the Diwali gift box"],
-      ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Brewed Darjeeling from the Diwali gift box"],
+      ["/assets/images/product_webp/darjeeling-black-tea-100g-main.webp", "Darjeeling tea included in the Christmas gift box"],
+      ["/assets/images/product_webp/dried-curry-leaves-30g-main.webp", "Dried curry leaves included in the Christmas gift box"],
+      ["/assets/images/product_webp/moringa-soap-95g-main.webp", "Handmade lavender soap included in the Christmas gift box"],
+      ["/assets/images/product_webp/darjeeling-black-tea-brewed.webp", "Brewed Darjeeling from the Christmas gift box"],
     ],
     seasonalNotes: {
       until: "2026-11-08",
-      lines: [
-        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
-      ],
+      lines: [],
     },
     christmasNotes: CHRISTMAS_NOTES,
     whatHeading: "What's in the box",
@@ -2372,7 +2370,7 @@ const PDP = {
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "gift-pack"),
     intro:
-      "This gift pack puts four NutriThrive products in one parcel: 100g Darjeeling loose leaf black tea, 30g dried curry leaves, a 95g handmade moringa and lavender soap bar, and 100g moringa leaf powder. It's packed in Truganina, Melbourne and posted Australia-wide, ready to hand over as a Diwali gift pack, a housewarming present or a thank-you. If you'd like a gift without moringa powder, choose our Diwali Gift Box. $35. Each product is also sold on its own.",
+      "This gift pack puts four NutriThrive products in one parcel: 100g Darjeeling loose leaf black tea, 30g dried curry leaves, a 95g handmade moringa and lavender soap bar, and 100g moringa leaf powder. It's packed in Truganina, Melbourne and posted Australia-wide, ready to hand over as a Christmas gift pack, a housewarming present or a thank-you. If you'd like a gift without moringa powder, choose our Christmas Gift Box. $35. Each product is also sold on its own.",
     proofs: [
       "Four products, one parcel",
       "Handmade soap",
@@ -2389,9 +2387,7 @@ const PDP = {
     ],
     seasonalNotes: {
       until: "2026-11-08",
-      lines: [
-        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
-      ],
+      lines: [],
     },
     christmasNotes: CHRISTMAS_NOTES,
     ingredients:
@@ -2400,7 +2396,7 @@ const PDP = {
     process: "We pack each gift in Truganina: curry leaves and moringa from our farm, tea from a family farm in Darjeeling, and soap we make here.",
     storage: "Keep everything dry. Lasts 1 year once opened.",
     safety: "The tea contains caffeine. The soap is for hands and body only.",
-    what: "A four-product gift pack: Darjeeling tea, curry leaves, handmade lavender soap, and moringa powder. Packed in Truganina for Diwali, housewarmings and thank-yous.",
+    what: "A four-product gift pack: Darjeeling tea, curry leaves, handmade lavender soap, and moringa powder. Packed in Truganina for Christmas, housewarmings and thank-yous.",
     use: "Each product is also available individually.",
     faqs: [
       [
@@ -2410,12 +2406,12 @@ const PDP = {
       [
         "Is there a version without moringa?",
         {
-          html: `Yes, the <a href="/products/diwali-gift-box/">Diwali Gift Box</a>.`,
+          html: `Yes, the <a href="/products/diwali-gift-box/">Christmas Gift Box</a>.`,
         },
       ],
       [
-        "Until when can I order for Diwali?",
-        "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
+        "Until when can I order for Christmas?",
+        "Order early for Christmas delivery. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10.",
       ],
       ["Gift message?", "Add a note at checkout or email us after you order."],
       ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
@@ -3694,7 +3690,8 @@ function melbourneBuildDate(now = new Date()) {
 }
 
 function diwaliGiftListingOpen(now = new Date()) {
-  return melbourneBuildDate(now) <= "2026-11-08";
+  // Product renamed to Christmas Gift Box; keep URL /products/diwali-gift-box/.
+  return false;
 }
 
 // One catalogue for every delivery city; prices, images and cart IDs come from PRODUCTS.
@@ -3705,7 +3702,7 @@ function cityCatalogue(city) {
   ];
   return `<section class="city-local-section city-catalogue" id="what-we-pack" aria-labelledby="what-we-pack-heading">
     <div class="wrap"><div class="city-local-section__head"><p class="city-local-kicker">Packed in Truganina · delivered to ${esc(city)}</p><h2 id="what-we-pack-heading">Shop our full range</h2><p>Moringa, curry leaves, Darjeeling tea and handmade soap. Choose a favourite or bring a few together.</p></div>
-    ${groups.map(([title, ids]) => `<div class="city-product-group"><h3>${esc(title)}</h3><div class="product-grid city-products">${ids.filter(id => id !== "diwali-gift-box" || diwaliGiftListingOpen()).map(id => productCard(PRODUCTS.find(p => p.id === id), false, { showVariant: true })).join("")}</div></div>`).join("")}
+    ${groups.map(([title, ids]) => `<div class="city-product-group"><h3>${esc(title)}</h3><div class="product-grid city-products">${ids.map(id => productCard(PRODUCTS.find(p => p.id === id), false, { showVariant: true })).join("")}</div></div>`).join("")}
     </div></section>`;
 }
 
@@ -3717,9 +3714,8 @@ function melbournePage() {
   const diwaliHref = "/products/diwali-gift-box/";
   const powder100Href = "/products/moringa-powder/100g/";
   const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
-  const diwaliOpen = diwaliGiftListingOpen();
-  const diwaliOrderLine =
-    "Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.";
+  const christmasOrderLine =
+    "Order early for Christmas delivery. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10.";
   const faqs = [
     [
       "Where can I buy curry leaves in Melbourne?",
@@ -3728,13 +3724,13 @@ function melbournePage() {
     ["Do you sell fresh curry leaves?", "No, only dried."],
     ["Can I pick up?", "Yes, from Truganina by arrangement."],
     ["How long is delivery?", "Usually 1 to 3 business days after dispatch."],
+    ["When should I order for Christmas?", christmasOrderLine],
     ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
     [
       "Do you sell moringa powder in Melbourne?",
       "Yes. Sun-dried moringa leaf powder, 100g $11, 200g $22 or 400g $40, packed in Truganina. Delivery or pickup by arrangement.",
     ],
   ];
-  if (diwaliOpen) faqs.splice(4, 0, ["When do I order for Diwali?", diwaliOrderLine]);
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -3763,7 +3759,7 @@ function melbournePage() {
     title: "Curry Leaves, Darjeeling Tea & Soap Melbourne | NutriThrive",
     description:
       desk.description ||
-      "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Diwali gift box, packed in Truganina. Melbourne metro in 1 to 3 business days.",
+      "Dried curry leaves, Darjeeling loose leaf tea, handmade lavender soap and a Christmas gift box, packed in Truganina. Melbourne metro in 1 to 3 business days.",
     preserveTitle: true,
     preserveDescription: true,
     canonicalPath: "/melbourne/",
@@ -3805,12 +3801,12 @@ function melbournePage() {
 
         ${cityCatalogue("Melbourne")}
 
-        ${diwaliOpen ? `<section class="city-local-section city-gifting" id="diwali-melbourne" aria-labelledby="diwali-melbourne-heading">
+        <section class="city-local-section city-gifting" id="christmas-melbourne" aria-labelledby="christmas-melbourne-heading">
           <div class="wrap city-gift-grid">
-            <div><p class="city-local-kicker">A little something to share</p><h2 id="diwali-melbourne-heading">Diwali gifts in Melbourne</h2><p>Darjeeling tea, farm-grown curry leaves and handmade soap. Three thoughtful favourites, packed together for $20.</p><a class="btn btn-primary" href="${diwaliHref}">Explore the $20 gift box</a></div>
-            <div class="city-gift-note"><h3>Ready for Sunday 8 November</h3><p>${esc(diwaliOrderLine)}</p><p>Prefer to collect? <a href="/contact">Arrange pickup from Truganina</a>. For team or community gifts, contact us with quantities and dates.</p></div>
+            <div><p class="city-local-kicker">A little something to share</p><h2 id="christmas-melbourne-heading">Christmas gifts in Melbourne</h2><p>Darjeeling tea, farm-grown curry leaves and handmade soap. Three thoughtful favourites, packed together for $20.</p><a class="btn btn-primary" href="${diwaliHref}">Explore the $20 Christmas gift box</a></div>
+            <div class="city-gift-note"><h3>Christmas delivery</h3><p>${esc(christmasOrderLine)}</p><p>Prefer to collect? <a href="/contact">Arrange pickup from Truganina</a>. For team or community gifts, contact us with quantities and dates.</p></div>
           </div>
-        </section>` : ""}
+        </section>
 
         <section class="city-local-section city-local-section--delivery" id="delivery-melbourne" aria-labelledby="delivery-heading-melbourne">
           <div class="wrap">
@@ -4114,7 +4110,7 @@ function journalIndex(articles, opts = {}) {
         <p class="lede">${topicFilter
           ? `Every ${esc(topicFilter.name.toLowerCase())} guide, in one place.`
           : "Clear answers about choosing, using and storing our products—from the team that grows and manufactures our moringa and curry leaves."}</p>
-        ${topicFilter ? "" : `<p class="purchase-note">Diwali 2026 (Sun 8 Nov): <a href="/products/diwali-gift-box/">$20 Diwali gift box</a> · <a href="${r.article("diwali-gift-guide-curry-leaves-tea-australia")}">Diwali gift guide</a>.</p>`}
+        ${topicFilter ? "" : `<p class="purchase-note">Christmas gifts: <a href="/products/diwali-gift-box/">$20 Christmas gift box</a> · Order early for Christmas delivery.</p>`}
         <form class="journal-search" role="search" data-journal-search-form>
           <label for="journal-search">What would you like to know?</label>
           <div class="journal-search-box">

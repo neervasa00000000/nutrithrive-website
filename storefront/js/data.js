@@ -131,10 +131,10 @@ export const PRODUCTS = [
   {
     id: "diwali-gift-box",
     sku: "NT-DIWALI-BOX",
-    name: "Diwali Gift Box",
+    name: "Christmas Gift Box",
     variant: "Tea + curry + soap",
     benefit:
-      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina, ready to give as a Diwali gift.",
+      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina as a Christmas gift box for neighbours, teachers and colleagues.",
     price: 20,
     weight: 225,
     image: "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp",
@@ -142,14 +142,14 @@ export const PRODUCTS = [
     unit: "",
     lab: false,
     detail:
-      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina, ready to give as a Diwali gift.",
+      "Darjeeling tea, farm-grown dried curry leaves and a handmade moringa soap bar, packed together in Truganina as a Christmas gift box for neighbours, teachers and colleagues.",
   },
   {
     id: "gift-pack",
     sku: "NT-GIFT-325G",
     name: "Gift Pack",
     variant: "4 products",
-    benefit: "Diwali gift pack: powder, tea, curry leaves, and soap.",
+    benefit: "Gift pack: powder, tea, curry leaves, and soap.",
     price: 35,
     weight: 325,
     image: "/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp",

@@ -51,7 +51,7 @@
     "title": "Shop Moringa Powder, Curry Leaves, Tea & Soap | NutriThrive",
     "old_title": "Shop Curry Leaves, Darjeeling Tea, Soap & Moringa",
     "description": "Farm-grown moringa leaf powder, dried curry leaves, Darjeeling loose leaf tea, moringa soap and gift packs, packed in Truganina, Melbourne.",
-    "old_description": "Farm-grown curry leaves $7, Darjeeling tea $7.50, handmade soap $7, moringa from $11, $20 Diwali Gift Box. Packed in Truganina. Free AU shipping from $49."
+    "old_description": "Farm-grown curry leaves $7, Darjeeling tea $7.50, handmade soap $7, moringa from $11, $20 Christmas Gift Box. Packed in Truganina. Free AU shipping from $49."
   },
   "/blog/": {
     "h1": "Notes from the farm and the kitchen",
@@ -200,11 +200,11 @@
     "old_description": "One 100g pouch of farm-grown moringa leaf powder and 30g of whole dried curry leaves for $17. Packed in Truganina, Melbourne. Free AU shipping from $49."
   },
   "/products/diwali-gift-box/": {
-    "h1": "Diwali gift box: tea, curry leaves and soap",
+    "h1": "Christmas Gift Box: Darjeeling tea, curry leaves and soap",
     "old_h1": "Diwali Gift Box: Darjeeling Tea, Curry Leaves and Lavender Soap",
-    "title": "Diwali Gift Box: Darjeeling Tea, Curry Leaves & Soap",
+    "title": "Christmas Gift Box: Darjeeling Tea, Curry Leaves & Soap",
     "old_title": "Diwali Gift Box: Darjeeling Tea, Curry Leaves & Soap | $20",
-    "description": "Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap in one Diwali gift box, $20. Packed in Truganina, VIC.",
+    "description": "Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap in one Christmas gift box, $20. Packed in Truganina, VIC. Order early for Christmas delivery.",
     "old_description": "Diwali gift box with Darjeeling loose leaf tea 100g, dried curry leaves 30g and a handmade lavender soap. No moringa powder. Packed in Truganina, VIC."
   },
   "/products/gift-pack/": {
@@ -241,7 +241,7 @@
   },
   "/blog/how-to-read-moringa-batch-codes-freshness": {
     "h1": "Reading the batch code on a moringa pouch",
-    "old_h1": "How to Read Moringa Batch Codes — Freshness Check AU",
+    "old_h1": "How to Read Moringa Batch Codes \u2014 Freshness Check AU",
     "title": "How to Read Moringa Batch Codes and Check Freshness",
     "old_title": "How to Read Moringa Batch Codes: A Freshness Check",
     "description": "Where to find the lot code and best-before date on a moringa pouch, how to match it to lab paperwork, and what fresh powder looks and smells like.",
@@ -333,7 +333,7 @@
     "title": "Is Moringa Powder High in Protein? Recipes That Add Up",
     "old_title": "High-Protein Moringa Recipes Australia (Leaf Powder)",
     "description": "How much protein moringa leaf powder adds per serve, and ten recipes that pair it with eggs, yoghurt, lentils and tofu for a real protein count.",
-    "old_description": "High-protein moringa recipes Australia: ten meals and shakes with exact tsp leaf powder and 15–40g protein per serve."
+    "old_description": "High-protein moringa recipes Australia: ten meals and shakes with exact tsp leaf powder and 15\u201340g protein per serve."
   },
   "/blog/how-long-does-moringa-powder-last-storage-shelf-life-2026": {
     "h1": "Does moringa powder expire?",
@@ -361,7 +361,7 @@
   },
   "/blog/moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026": {
     "h1": "Moringa avocado toast in five minutes",
-    "old_h1": "Moringa Avocado Toast Recipe Australia — 5 Minutes",
+    "old_h1": "Moringa Avocado Toast Recipe Australia \u2014 5 Minutes",
     "title": "Moringa Avocado Toast: A 5-Minute Green Breakfast",
     "old_title": "Moringa Avocado Toast: A 5-Minute Breakfast Recipe",
     "description": "Smashed avocado on toast with half a teaspoon of moringa leaf powder, lemon and chilli. How much powder to use and easy swaps.",
@@ -468,7 +468,7 @@
     "old_h1": "Grow or Buy a Moringa Tree in Australia: Perth, Melbourne and Pots",
     "title": "Grow a Moringa Tree in Australia: Perth, Melbourne & Pots",
     "old_title": "How to Grow a Moringa Tree in Australia and Where to Buy",
-    "description": "Can moringa grow in Perth, Brisbane or Melbourne? Frost-free zones, growing it in a 40–60 L pot with winter shelter, and starting from seed or seedling.",
+    "description": "Can moringa grow in Perth, Brisbane or Melbourne? Frost-free zones, growing it in a 40\u201360 L pot with winter shelter, and starting from seed or seedling.",
     "old_description": "Where to buy a moringa tree or plant in Australia and how to grow it: in the ground in Perth or Brisbane, in a pot in Melbourne. We don't sell trees or seeds."
   },
   "/blog/is-moringa-safe-for-children-kids-dosage-2026": {
@@ -676,8 +676,8 @@
     "old_h1": "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
     "title": "How to Brew Darjeeling Tea: Temperature, Time & Ratio",
     "old_title": "How to Brew Darjeeling Tea: Temp, Time & Ratio (Loose Leaf)",
-    "description": "Water at 85 to 90°C, 2g of leaf per cup and 3 to 4 minutes. How to brew Darjeeling loose leaf, with or without milk, and avoid a bitter cup.",
-    "old_description": "Brew Darjeeling loose leaf right: 85–95°C water, 3–4 min, 2–2.5 g per cup. Milk or not, iced and pot ratios, and where to buy in Australia."
+    "description": "Water at 85 to 90\u00b0C, 2g of leaf per cup and 3 to 4 minutes. How to brew Darjeeling loose leaf, with or without milk, and avoid a bitter cup.",
+    "old_description": "Brew Darjeeling loose leaf right: 85\u201395\u00b0C water, 3\u20134 min, 2\u20132.5 g per cup. Milk or not, iced and pot ratios, and where to buy in Australia."
   },
   "/blog/gifts-for-tea-lovers-australia": {
     "h1": "Gifts for tea lovers",
@@ -731,7 +731,7 @@
     "title": "Anti-Inflammatory Foods in Australia: Daily Plate Guide",
     "old_title": "Anti-Inflammatory Foods Australia | Daily Plate Guide",
     "description": "Everyday foods linked with an anti-inflammatory eating pattern, the claims that do not hold up, and an easy way to build them into a daily plate.",
-    "old_description": "Anti-inflammatory foods with real evidence for Australians, plus which “superfood” claims are mostly marketing hype. Read the practical NutriThrive guide."
+    "old_description": "Anti-inflammatory foods with real evidence for Australians, plus which \u201csuperfood\u201d claims are mostly marketing hype. Read the practical NutriThrive guide."
   },
   "/blog/best-plant-based-iron-foods-australia-absorption-guide-2026": {
     "h1": "Plant foods with the most iron, and how to absorb it",
@@ -823,7 +823,7 @@
     "title": "How Much Water Should You Drink per Day in Australia?",
     "old_title": "How Much Water Should You Actually Drink Per Day?",
     "description": "'Eight glasses' is not strong science. How much fluid adults need in Australia, how heat and exercise change it, and how to tell you're drinking enough.",
-    "old_description": "“Eight glasses a day” isn't strong science. What evidence says about daily fluid needs for Australians, and what actually counts."
+    "old_description": "\u201cEight glasses a day\u201d isn't strong science. What evidence says about daily fluid needs for Australians, and what actually counts."
   },
   "/blog/how-to-age-well-in-your-40s-healthy-ageing-australia-2026": {
     "h1": "Habits in your 40s that shape your 60s",
@@ -935,7 +935,7 @@
     "title": "Ultra-Processed Food in Australia: List & How Much We Eat",
     "old_title": "Ultra-Processed Food in Australia | NutriThrive",
     "description": "What counts as ultra-processed food in Australia, common examples, how much Australians eat, and easy swaps.",
-    "old_description": "What “ultra-processed food” actually means in Australia, how much most people eat, and what the research shows, without the lecture."
+    "old_description": "What \u201cultra-processed food\u201d actually means in Australia, how much most people eat, and what the research shows, without the lecture."
   },
   "/blog/vitamin-d-deficiency-australia-abs-sunny-country-2026": {
     "h1": "Low vitamin D in a sunny country",

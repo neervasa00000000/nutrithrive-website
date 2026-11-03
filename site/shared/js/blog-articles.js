@@ -170,7 +170,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "diwali-gift-guide-curry-leaves-tea-australia",
     "title": "Diwali Gift Ideas Australia 2026: Tea, Spice & Soap Gifts",
-    "description": "Diwali is Sun 8 Nov 2026. Tea, curry leaf and soap gift ideas, a ready Diwali gift box, small hampers and order-by dates for every state.",
+    "description": "Diwali is Sun 8 Nov 2026. Tea, curry leaf and soap gift ideas, a ready Christmas gift box, small hampers and order-by dates for every state.",
     "category": "Wellness",
     "href": "/blog/diwali-gift-guide-curry-leaves-tea-australia",
     "image": "/assets/images/blog/diwali-gift-guide-curry-leaves-tea-australia-hero.webp"

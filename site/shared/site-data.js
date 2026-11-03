@@ -228,7 +228,7 @@ window.NT_SITE_DATA = {
     {
       id: 'diwali-gift-box',
       sku: 'NT-DIWALI-BOX',
-      name: 'Diwali Gift Box',
+      name: 'Christmas Gift Box',
       tag: 'TEA + CURRY + SOAP · NO MORINGA',
       badge: 'Diwali',
       price: 20,
@@ -237,7 +237,7 @@ window.NT_SITE_DATA = {
       image: '/assets/images/product_webp/darjeeling-black-tea-100g-main.webp',
       href: '/products/diwali-gift-box/',
       pdp: {
-        headline: 'Diwali Gift Box',
+        headline: 'Christmas Gift Box',
         intro:
           '100g Darjeeling black tea, 30g dried curry leaves, and 95g handmade lavender soap, no moringa. $20 from Melbourne.',
         features: [
@@ -596,7 +596,7 @@ window.NT_SITE_DATA = {
       badge: 'Combo',
     },
     'diwali-gift-box': {
-      title: 'Diwali Gift Box',
+      title: 'Christmas Gift Box',
       meta: 'Tea + Curry + Soap · No Moringa',
       badge: 'Diwali',
     },

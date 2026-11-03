@@ -107,7 +107,7 @@ products.push({
   id: "diwali-gift-box",
   dataId: "diwali-gift-box",
   productType: "Gift packs and bundles",
-  title: "NutriThrive Diwali Gift Box: Darjeeling Tea, Curry Leaves and Soap",
+  title: "NutriThrive Christmas Gift Box: Darjeeling Tea, Curry Leaves and Soap",
   description: diwali.detail || diwali.benefit,
   link: diwali.href,
   image: diwali.image,
