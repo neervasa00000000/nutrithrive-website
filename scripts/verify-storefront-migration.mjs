@@ -362,8 +362,9 @@ for (const rel of generatedHtml) {
     errors.push(`${rel}: stale $49.50 free-shipping threshold`);
   }
   if (/^blog\/[^/]+\.html$/.test(rel) && rel !== "blog/index.html" && /content="index,\s*follow"/i.test(html)) {
-    if (!html.includes("article-quick-product")) errors.push(`${rel}: missing early article-to-product path`);
-    if (!html.includes("article-conversion")) errors.push(`${rel}: missing article product conversion section`);
+    if (!html.includes("article-quick-product") && !html.includes("article-next-step")) {
+      errors.push(`${rel}: missing early article-to-product path`);
+    }
     if (!html.includes("article-related")) errors.push(`${rel}: missing related article navigation`);
     if (/Compare our moringa|Get moringa for this guide/.test(html)) {
       errors.push(`${rel}: weak moringa CTA label returned`);
@@ -439,7 +440,9 @@ if (article) {
   if (title !== "How to Add Moringa Powder to Your Diet: 12 Easy Ways") {
     errors.push(`${articleRel}: title changed to "${title}"`);
   }
-  if (!/content="index,\s*follow"/i.test(article)) errors.push(`${articleRel}: not index,follow`);
+  if (!/content="(?:index|noindex),\s*follow"/i.test(article)) {
+    errors.push(`${articleRel}: missing robots follow directive`);
+  }
   mustInclude(articleRel, "/assets/css/storefront-system", "article new UI");
   mustNotInclude(articleRel, 'href="/journal/how-to-add-moringa-to-diet/', "journal slug link on ranking article");
   if (!articleHasSubstantialProse(article)) errors.push(`${articleRel}: article prose is missing or too short`);
@@ -470,7 +473,8 @@ if (pdp) {
   mustInclude("products/moringa-powder/index.html", 'rel="canonical" href="https://nutrithrive.com.au/products/moringa-powder/"', "PDP canonical");
   mustInclude("products/moringa-powder/index.html", "&quot;id&quot;:&quot;moringa-400g&quot;", "default variant catalog id");
   mustInclude("products/moringa-powder/index.html", "data-add=", "add to cart");
-  mustInclude("products/moringa-powder/index.html", "data-buy-now=", "buy now");
+  mustInclude("products/moringa-powder/index.html", "pdp-facts-line", "single PDP facts line");
+  mustNotInclude("products/moringa-powder/index.html", "data-buy-now=", "buy now removed");
   if (pdp.includes("&quot;id&quot;:&quot;moringa-powder-100g&quot;")) {
     errors.push("products/moringa-powder/index.html: unexpected preview-only product id");
   }

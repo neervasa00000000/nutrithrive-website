@@ -200,6 +200,12 @@ const NOINDEX_BLOG_SLUGS = new Set([
   "moringa-before-after-workout-timing-guide-2026",
   "moringa-smoothie-recipes-australia-2026",
   "moringa-vs-ashwagandha-comparison-2026",
+  "how-much-moringa-powder-per-day-dosage-guide",
+  "moringa-wellness-shot-recipe-winter-2026",
+  "high-protein-moringa-recipes-australia-2026",
+  "moringa-avocado-toast-recipe-anti-inflammatory-breakfast-2026",
+  "how-to-add-moringa-to-diet",
+  "how-to-make-moringa-tea-recipes-2026",
 ]);
 
 const ARTICLE_SEO_OVERRIDES = {
@@ -424,7 +430,7 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Moringa at Chemist Warehouse: What's on the Shelf and What It Costs per 100g",
     ogTitle: "Chemist Warehouse Moringa: Capsule Price per 100g vs Powder",
     ogDescription: "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping from $49.",
-    ledeHtml: "Chemist Warehouse mostly lists moringa as capsules and tablets, not loose powder. Here is what those bottles hold in grams of leaf, what that works out to per 100g, and where to buy leaf powder if you'd rather use a teaspoon.",
+    ledeHtml: "Chemist Warehouse mostly lists moringa as capsules and tablets, not loose powder. Here is what those bottles hold in grams of leaf, what that works out to per 100g, and where to buy loose leaf powder.",
     articleSection: "Moringa",
   },
   "moringa-brands-comparison-australia-2026": {
@@ -499,7 +505,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": {
     title: "Moringa Heavy Metals Lab Testing Australia (CoA Guide)",
-    description: "What to ask before you buy moringa powder: heavy metals, batch CoA, and how NutriThrive links an NMI lab summary from Truganina packing.",
+    description: "What to ask before you buy moringa powder: heavy metals and batch CoAs..",
     h1: "Moringa Heavy Metals & Lab Testing in Australia",
     ogTitle: "Moringa Heavy Metals Lab Testing Australia (CoA Guide)",
     ogDescription: "CoA checklist for moringa powder in Australia, plus NutriThrive’s NMI lab summary from Truganina packing.",
@@ -850,8 +856,8 @@ function per100Calculator(slug) {
 const OBJECTION_BLOCKS = {
   trust: `<p><strong>Who packs your pouch.</strong> NutriThrive is a small Melbourne family business run by founder Neer Vasa. Our moringa leaf is farm-grown and sun-dried, then packed in Truganina, VIC. We publish an <a href="${LAB_PDF}">NMI lab summary (PDF)</a>. We are not certified, and we say so.</p>`,
   price: `<p><strong>Compare on price per 100g of leaf.</strong> Capsule labels list the leaf weight per capsule. Multiply it by the capsule count to get grams, then work out the price per 100g. Our leaf powder is ${MORINGA_PRICES.p100} per 100g, ${MORINGA_PRICES.per100In200} per 100g in the 200g pouch and ${MORINGA_PRICES.per100In400} per 100g in the 400g pouch.</p>`,
-  taste: `<p><strong>What it tastes like, honestly.</strong> Earthy and green, a bit like spinach, with a slightly bitter finish. Most people don't drink it with plain water. Stir ½ to 1 tsp into a smoothie, dal, soup or scrambled eggs and the taste blends into the food. Not sure yet? <a href="/products/moringa-powder/100g/">Start with the 100g pouch for ${MORINGA_PRICES.p100}</a>.</p>`,
-  use: `<p><strong>Three easy ways to use it.</strong></p><ol><li>Blend ½ tsp into a banana smoothie.</li><li>Stir it into dal or soup at the end of cooking.</li><li>Whisk ½ tsp into warm milk with a little honey.</li></ol>`,
+  taste: `<p><strong>What it tastes like, honestly.</strong> Earthy and green, a bit like spinach, with a slightly bitter finish.</p>`,
+  use: `<p><strong>What it is.</strong> One ingredient: farm-grown moringa leaf powder, packed in Truganina.</p>`,
   stock: `<p><strong>Stock up for the week.</strong> 400g moringa ${MORINGA_PRICES.p400} plus <a href="/products/curry-leaves/">dried curry leaves ${MORINGA_PRICES.curry}</a> for dal and tadka. Trying moringa first? <a href="/products/moringa-powder/100g/">100g is ${MORINGA_PRICES.p100}</a>.</p>`,
   fresh: `<p><strong>How to check it's fresh.</strong> Look for a bright olive-green colour, a fresh grassy smell and a pack or batch date on the label. Store it sealed, cool and dark. <a href="/blog/how-to-read-moringa-batch-codes-freshness">How to read our batch codes</a>.</p>`,
 };
@@ -918,7 +924,7 @@ const ARTICLE_CONVERSION_PATHS = {
     kicker: "After the patch comparison",
     title: "Compare with single-ingredient moringa powder",
     body: "Check the ingredient, Australian testing summary, pouch sizes and current price before deciding which format suits you.",
-    cta: "View powder and testing",
+    cta: "Shop moringa powder",
     links: [["Compare capsule prices per 100g", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"]],
     methodology: true,
   },
@@ -972,7 +978,7 @@ const ARTICLE_CONVERSION_PATHS = {
     kicker: "Compare our product",
     title: "See exactly what is in the NutriThrive pouch",
     body: "Review the ingredient, origin, current price, available testing summary and sizes without relying on a brand claim alone.",
-    cta: "View powder and testing",
+    cta: "Shop moringa powder",
     links: [["Use the moringa quality checklist", "verify-moringa-quality-premium-buyers-checklist-2026"]],
     methodology: true,
   },
@@ -1182,63 +1188,41 @@ function journalCta(article, product) {
 const PRODUCT_GUIDES = {
   "moringa-powder": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
-    ["How shade-drying compares with sun-drying", "science-shade-drying-vs-sun-drying-moringa"],
-    ["Eight checks before you buy", "verify-moringa-quality-premium-buyers-checklist-2026"],
     ["Moringa capsules versus powder", "moringa-capsules-vs-powder-which-is-better-2026"],
-    ["Chemist Warehouse moringa versus NutriThrive powder", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"],
-    ["How to take moringa powder", "how-to-add-moringa-to-diet"],
-    ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
     ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
-    ["Moringa vs curry leaves", "moringa-vs-curry-leaves-difference-australia"],
   ],
   "curry-leaves": [
     ["Where to buy curry leaves in Australia", "dried-curry-leaves-australia-guide"],
     ["How to judge dried curry leaf quality", "dried-curry-leaves-quality-guide-how-to-use"],
-    ["Curry leaf substitutes in Australia", "curry-leaves-substitute-what-to-use-2026"],
     ["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"],
-    ["30-minute curry leaf dal recipe", "curry-leaves-dahl-recipe-30-minutes-australia-2026"],
-    ["Moringa vs curry leaves", "moringa-vs-curry-leaves-difference-australia"],
   ],
   "black-tea": [
     ["Darjeeling black tea buying guide", "darjeeling-black-tea-australia-guide"],
     ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
     ["Darjeeling versus English Breakfast", "darjeeling-tea-vs-english-breakfast-comparison-2026"],
-    ["Darjeeling caffeine vs coffee", "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"],
-    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
   ],
   "moringa-soap": [
     ["Handmade soap Australia guide", "handmade-soap-australia-melt-and-pour-guide"],
     ["Moringa oil for skin and hair", "moringa-oil-benefits-skin-hair-health-2026"],
-    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
   ],
   "moringa-soap-combo": [
     ["Handmade soap Australia guide", "handmade-soap-australia-melt-and-pour-guide"],
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
-    ["How to take moringa powder", "how-to-add-moringa-to-diet"],
-    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
   ],
   "gift-pack": [
-    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
     ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
     ["Curry leaf recipes beyond dal", "curry-leaves-recipes-beyond-dal"],
     ["Darjeeling buying guide", "darjeeling-black-tea-australia-guide"],
   ],
   "diwali-gift-box": [
-    ["Diwali gift ideas Australia 2026", "diwali-gift-guide-curry-leaves-tea-australia"],
-    ["Diwali hampers in Australia", "diwali-hampers-australia"],
     ["Where to buy dried curry leaves", "dried-curry-leaves-australia-guide"],
     ["Darjeeling buying guide", "darjeeling-black-tea-australia-guide"],
     ["How to brew Darjeeling tea", "how-to-brew-darjeeling-tea-perfectly-2026"],
   ],
   "combo-pack": [
     ["How to choose moringa powder", "how-to-choose-moringa-powder-australia-2026"],
-    ["How shade-drying compares with sun-drying", "science-shade-drying-vs-sun-drying-moringa"],
-    ["Eight checks before you buy", "verify-moringa-quality-premium-buyers-checklist-2026"],
     ["Moringa capsules versus powder", "moringa-capsules-vs-powder-which-is-better-2026"],
-    ["How to take moringa powder", "how-to-add-moringa-to-diet"],
-    ["What moringa powder tastes like", "what-does-moringa-powder-taste-like-honest-guide-2026"],
-    ["How to store moringa powder", "how-long-does-moringa-powder-last-storage-shelf-life-2026"],
-    ["Moringa vs curry leaves", "moringa-vs-curry-leaves-difference-australia"],
+    ["Where to buy curry leaves in Australia", "dried-curry-leaves-australia-guide"],
   ],
 };
 
@@ -1249,7 +1233,7 @@ function productGuideLinks(slug) {
 }
 
 function growthProductBody(slug) {
-  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p><p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Christmas gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p></details>", "diwali-gift-box": "<section><h2>Christmas gift box Australia: what's in the box</h2><p>Darjeeling loose leaf tea 100g, whole dried curry leaves 30g and a handmade lavender soap bar 95g, packed in Truganina for $20.</p></section><details><summary>Do you ship Christmas gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order early for Christmas delivery; timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "<section><h2>Tea gift set Australia</h2><p>Our $35 gift pack includes 100g Darjeeling tea, 30g dried curry leaves, a 95g handmade soap bar and 100g moringa powder.</p></section><details><summary>Is there a Darjeeling tea gift box?</summary><p>Yes. Choose this four-product gift pack or the $20 Christmas Gift Box with tea, curry leaves and soap.</p></details><section><h2>Handmade soap gift set</h2><p>Each gift pack includes a moringa and lavender soap bar we handmake in Australia.</p></section>", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
+  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p></details>", "diwali-gift-box": "<details><summary>Do you ship Christmas gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order early for Christmas delivery; timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
 }
 
 function faqDetails(faqs) {
@@ -1750,7 +1734,7 @@ ${refined ? "" : '<link rel="preload" href="/assets/fonts/fraunces-latin-500-600
 </head>
 <body${refined ? ' class="storefront-refined"' : ""}>
 <a class="skip-link" href="#main">Skip to content</a>
-${`<div class="announce"><span class="announce-full"><a href="/products/diwali-gift-box/">Christmas gift box $20</a> · 3 boxes $60 ship free · Darjeeling tea, curry leaves and soap · ${FREE_SHIP_ANNOUNCE}</span><span class="announce-short"><a href="/products/diwali-gift-box/">Christmas gift box $20</a> · 3 boxes $60 ship free</span></div>`}
+${`<div class="announce"><span class="announce-full">Free AU shipping from $49</span><span class="announce-short">Free AU shipping from $49</span></div>`}
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="/">
@@ -1908,10 +1892,9 @@ function homepage() {
         <a class="btn btn-primary" href="/products/">Shop the collection</a>
         <a class="text-link" href="/products/moringa-powder/">Explore moringa →</a>
       </div>
-      <p class="purchase-note">Moringa from $11 · Curry leaves $7 · Tea $7.50 · Soap $7</p>
     </div>
     <div class="hero-collection" aria-label="Explore NutriThrive products">
-      ${heroProducts.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" ${cardSrcset(product.image, "(max-width: 760px) calc((100vw - 52px) / 2), (max-width: 1100px) 24vw, 300px")} alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)} <small>${product.id === "moringa-powder" ? "From " : ""}${money(product.price).replace(/\.00$/, "")}</small></span></a>`).join("")}
+      ${heroProducts.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" ${cardSrcset(product.image, "(max-width: 760px) calc((100vw - 52px) / 2), (max-width: 1100px) 24vw, 300px")} alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)}</span></a>`).join("")}
     </div>
   </div>
 </section>
@@ -1932,8 +1915,7 @@ function homepage() {
   <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. ${diwaliGiftListingOpen() ? "For Diwali, choose the tea, curry leaf and soap box for $20." : "For Christmas, choose the tea, curry leaf and soap Christmas gift box for $20."}</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">Christmas Gift Box →</a></div><details class="gift-guide-disclosure"><summary>${diwaliGiftListingOpen() ? "Diwali gift guides and delivery" : "Gift guides and Christmas delivery"}</summary>${diwaliGiftListingOpen() ? `${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p>` : `<p>${esc(CHRISTMAS_SHIPPING_NOTE)}</p>`}</details></div>
 </div></section>
 <section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
-${googleReviewsSection()}
-<section class="section buying-guide-link"><div class="wrap"><a href="${routes().article("how-to-choose-moringa-powder-australia-2026")}">Choosing moringa? Read our buyer’s guide →</a></div></section>`,
+${googleReviewsSection()}`,
   });
 }
 
@@ -1983,7 +1965,6 @@ function shopPage() {
             <div>
               <p class="kicker">Core product</p>
               <h2 id="shop-moringa">Moringa powder</h2>
-              <p>Sun-dried leaf powder. Packed in Truganina. Free AU shipping from $49.</p>
             </div>
           </div>
           <div class="product-grid shop-product-grid shop-moringa-grid">${moringaProducts.map((product, index) => productCard(product, index === 0, { showVariant: true })).join("")}</div>
@@ -2018,13 +1999,12 @@ const PDP = {
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack", "moringa-soap-combo"].includes(p.id)
     ),
     variantLabels: {
-      "moringa-powder": "100g · $11 · A good first pouch",
+      "moringa-powder": "100g · $11",
       "moringa-200g": "200g · $22",
       "moringa-400g": "400g · $40 · $10 per 100g",
       "combo-pack": "Combo pack · $17 · Moringa + curry leaves",
       "moringa-soap-combo": "Powder + soap · $17 · 100g moringa + 95g bar",
     },
-    variantHint: "400g is $10 per 100g.",
     intro:
       "Moringa leaf powder from our family farm in Gujarat, India. Sun-dried, tested by NMI in Australia, and packed by us in Truganina, Melbourne.",
     freezeHeroCopy: true,
@@ -2058,7 +2038,7 @@ const PDP = {
       ],
       [
         "What does moringa powder taste like?",
-        "Moringa powder has an earthy, leafy and slightly bitter flavour. Many people mix it into smoothies, yoghurt, juice or meals to combine it with other flavours.",
+        "Moringa powder has an earthy, leafy and slightly bitter flavour.",
       ],
       [
         "How should I store moringa powder?",
@@ -2079,7 +2059,7 @@ const PDP = {
       [
         "Does Chemist Warehouse sell moringa powder?",
         {
-          html: `CW mainly lists <strong>capsules</strong>. For teaspoon dosing, buy loose powder. See our <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules guide</a>.`,
+          html: `CW mainly lists <strong>capsules</strong>. We sell loose leaf powder only. See our <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">powder vs capsules guide</a>.`,
         },
       ],
       [
@@ -2281,7 +2261,7 @@ const PDP = {
     forceSeo: true,
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "combo-pack"),
-    intro: "100g moringa powder and 30g dried curry leaves. Grown on our family farm in Gujarat, India, and packed in Truganina, Melbourne. Morning smoothie and evening tadka from one box.",
+    intro: "100g moringa powder and 30g dried curry leaves, packed together in Truganina.",
     proofs: [
       { html: `Includes <a href="/documents/nutrithrive-lab-report-summary.pdf">NMI-tested moringa</a>` },
       "Farm-grown curry leaves",
@@ -2298,8 +2278,8 @@ const PDP = {
     process: "We grow and process both products, arrange Australian testing for the moringa, and pack the combination in Truganina.",
     storage: "Keep both sealed and dry. Lasts 1 year once opened.",
     safety: "Follow the individual product directions. Seek professional advice before regular moringa use if you are pregnant, breastfeeding, taking medication or managing a health condition.",
-    what: "Moringa for whatever you blend or stir in; curry leaves for dals and curries. Both packed in Truganina.",
-    use: "Each item is also available separately.",
+    what: "Moringa leaf powder and whole dried curry leaves, both from our family farm in Gujarat and packed in Truganina.",
+    use: "",
     faqs: [
       ["What is in the combo?", "100g moringa powder and 30g dried curry leaves (karipatta), both from our farm."],
       ["Can I buy them separately?", "Yes. Each item is also available individually in our shop."],
@@ -2347,9 +2327,8 @@ const PDP = {
               <li><strong>Handmade moringa &amp; lavender soap, 95g:</strong> melt-and-pour base, moringa leaf, lavender fragrance, dried lavender flowers.</li>
             </ul>
             <p>Who it's for: relatives you're visiting, a host who has plenty of mithai, neighbours, teachers and colleagues. For bulk orders, contact us.</p>`,
-    use: "Give the three products as a pantry gift. Each item is also sold separately. Prefer a version with moringa powder? See the four-item gift pack.",
+    use: "",
     faqs: [
-      ["What's inside?", "Tea, curry leaves and soap."],
       [
         "Does it contain moringa powder?",
         {
@@ -2397,7 +2376,7 @@ const PDP = {
     storage: "Keep everything dry. Lasts 1 year once opened.",
     safety: "The tea contains caffeine. The soap is for hands and body only.",
     what: "A four-product gift pack: Darjeeling tea, curry leaves, handmade lavender soap, and moringa powder. Packed in Truganina for Christmas, housewarmings and thank-yous.",
-    use: "Each product is also available individually.",
+    use: "",
     faqs: [
       [
         "What's inside?",
@@ -2511,13 +2490,9 @@ function pdpPage(slug, d) {
       ? d.christmasNotes.lines || []
       : []),
   ];
-  const seasonalHtml = seasonalLines
-    .map((line) => `<p class="purchase-note" data-seasonal-note>${esc(line)}</p>`)
-    .join("");
   const buyProduct =
     (d.defaultVariantId && d.variants?.find((item) => item.id === d.defaultVariantId)) || p;
-  const shipNote = shippingCostNote(buyProduct);
-  const shippingHtml = `<p class="purchase-note" data-pdp-ship>${esc(shipNote)}</p>`;
+  const factsLine = `<p class="purchase-note pdp-facts-line">Ships from Truganina, VIC. Order by 2pm Mon–Fri for same-day dispatch. <a href="/shipping#returns">7-day refund or replacement</a>.</p>`;
   const galleryCandidates = [[buyProduct.image, `${buyProduct.name} ${buyProduct.variant}`], ...(d.gallery || []).filter(([src]) => src.startsWith("/assets/images/product_webp/")), ...(d.variants || []).map(v => [v.image, `${v.name} ${v.variant}`]), ...(d.detailImage ? [[d.detailImage, d.detailAlt]] : [])];
   const gallery = galleryCandidates.filter(([src], index, items) => src.startsWith("/assets/images/product_webp/") && fs.existsSync(path.join(SITE, src)) && items.findIndex(([other]) => other === src) === index);
   const related = ["black-tea", "curry-leaves", "moringa-soap", "diwali-gift-box"]
@@ -2547,20 +2522,13 @@ function pdpPage(slug, d) {
   if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
     throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
-  const deliveredParts = [mainPowder ? "" : deliveredPriceLine(buyProduct)];
-  if (slug === "diwali-gift-box") deliveredParts.push(diwaliQuantityLine(buyProduct));
-  const deliveredHtml = deliveredParts.filter(Boolean).join("\n            ");
-  const buyOnline = mainPowder ? `<section class="pdp-buy-online" aria-labelledby="buy-moringa-online">
-    <h2 id="buy-moringa-online">Buy moringa powder online in Australia</h2>
-    <ul>${[powder100, powder200, powder400].map((item) => `<li>${item.weight === 400 ? "400g (4 × 100g pouches)" : `${item.weight}g pouch`}: $${item.price} (with postage ${money(item.price + auSoloShippingRate(item.weight))}${item.weight === 400 ? `, best value at $${item.price / 4} per 100g` : ""})</li>`).join("")}
-    <li>400g $${powder400.price} + 100g $${powder100.price} = $${powder400.price + powder100.price}, and it ships free</li>
-    <li>Free Australia-wide shipping on orders from $49. 7-day refund or replacement.</li></ul>
-  </section>` : "";
+  const deliveredHtml = "";
+  const buyOnline = "";
   const education =
     slug === "moringa-powder"
       ? moringaEducationHtml()
       : `${d.whatHtml ? `<h2>${esc(d.whatHeading || "What it is")}</h2>${d.whatHtml}` : d.what ? `<h2>What it is</h2><p>${esc(d.what)}</p>` : ""}
-          ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : d.use ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : ""}
+          ${d.useHtml ? `<h2>${esc(d.useHeading || "How to use")}</h2>${d.useHtml}` : (d.use && String(d.use).trim() ? `<h2>How to use</h2><p>${esc(d.use)}</p>` : "")}
           ${p.lab ? `<h2>Testing</h2><p>Our moringa is tested in Australia. <a href="/documents/nutrithrive-lab-report-summary.pdf">Read the NMI summary for batch NT042024 (PDF, January 2025)</a>.</p>` : ""}`;
   const offerUrl = `${LIVE}${canonicalPath}`;
   const faqHeading = slug === "moringa-powder" ? "Moringa powder FAQs" : "Frequently asked questions";
@@ -2691,7 +2659,6 @@ function pdpPage(slug, d) {
           <p class="pdp-intro">Farm-grown, sun-dried moringa leaf. Nothing added. Packed in Truganina. <a href="/documents/nutrithrive-lab-report-summary.pdf">See the NMI summary for batch NT042024</a>.</p>` : ""}
           <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
-          ${mainPowder ? `<p class="pdp-delivery-line">Free AU shipping from ${freeShipFrom} · Under ${freeShipFrom}, postage ${shortMoney(auSoloShippingRate(100))}–${shortMoney(auSoloShippingRate(400))} · 400g ${shortMoney(powder400.price)} + 100g ${shortMoney(powder100.price)} = ${shortMoney(powder400.price + powder100.price)}, ships free</p>` : ""}
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
             <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
@@ -2711,14 +2678,8 @@ function pdpPage(slug, d) {
             </div>
             <div class="pdp-actions">
               <button class="btn btn-primary btn-block" type="button" data-add="${productPayload(buyProduct)}" data-label="Add to cart">Add to cart</button>
-              <button class="btn btn-secondary btn-block" type="button" data-buy-now="${productPayload(buyProduct)}">Buy now</button>
-            </div>${deliveredHtml ? `\n            ${deliveredHtml}` : ""}
-            <p class="purchase-note"><a href="/shipping#returns">7-day guarantee: not happy? Contact us within 7 days of delivery for a refund or replacement.</a></p>
-
-            ${shippingHtml}
-
-            ${d.underCartNote ? `<p class="purchase-note">${esc(d.underCartNote)}</p>` : ""}
-            ${seasonalHtml}
+            </div>
+            ${factsLine}
           </div>
           ${slug === "moringa-powder" && !mainPowder ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
 
@@ -2728,7 +2689,6 @@ function pdpPage(slug, d) {
         <div class="pdp-sticky-atc__info">
           <span class="pdp-sticky-atc__name" data-pdp-sticky-name>${esc(buyProduct.name)}</span>
           <strong class="pdp-sticky-atc__price" data-pdp-sticky-price>${money(buyProduct.price)}</strong>
-          ${mainPowder ? `<small class="pdp-sticky-atc__ship">Free AU shipping from ${freeShipFrom}</small>` : ""}
         </div>
         <button class="btn btn-primary" type="button" data-pdp-sticky-add>Add to cart</button>
       </div>
@@ -2772,14 +2732,9 @@ function pdpPage(slug, d) {
           </section>
           <section class="product-guides" aria-labelledby="product-guides-${esc(slug)}">
             <div>
-              <p class="kicker">Make an informed choice</p>
               <h2 id="product-guides-${esc(slug)}">${slug === "combo-pack" ? "Guides for both" : `Helpful ${esc(p.name.toLowerCase())} guides`}</h2>
             </div>
             <ul>${productGuideLinks(slug)}</ul>
-          </section>
-          <section class="related-products">
-            <div class="section-head"><div><h2>You may also like</h2><p>Also from our farm and kitchen</p></div><a href="/shop/">Shop all</a></div>
-            <div class="product-grid" style="--related-columns:${related.length}">${related.map((item) => productCard(item, false, { hideWas: true })).join("")}</div>
           </section>
         </div>
       </section>`,
@@ -2938,10 +2893,6 @@ function faqPage() {
         {
           q: "What is NutriThrive Moringa powder?",
           a: "It is 100% Moringa oleifera leaf powder from our own farm, with no fillers. We grow, harvest, sun-dry and manufacture it, arrange testing in Australia, and pack it in Truganina.",
-        },
-        {
-          q: "How much should I take daily?",
-          a: "Start with half a teaspoon a day for a week. Most adults then use 1 teaspoon (about 2 to 3 grams) once or twice a day if it sits well. Take it with food.",
         },
         {
           q: "Any safety notes?",
@@ -4644,7 +4595,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     : "";
   const firstScreen = FIRST_SCREEN_SLUGS.has(meta.slug);
   const skipAnswerLift = meta.slug === "moringa-patches-australia-review-do-they-work" || meta.slug === "moringa-brands-comparison-australia-2026";
-  let proseHtml = isMoringaSales ? withMidCta(enhancedProse.html, moringaMidCta(meta.slug)) : stripMidCtas(enhancedProse.html);
+  let proseHtml = stripMidCtas(enhancedProse.html);
   let liftedAnswer = "";
   if (firstScreen && !skipAnswerLift) {
     const lifted = liftShortAnswer(proseHtml);
@@ -4670,7 +4621,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     : "";
   const earlyLinks = relatedArticles.slice(0, 2).map((article) => `<a href="${r.article(article.slug)}" data-funnel-event="article_context_link_click" data-article="${esc(meta.slug)}">${esc(relatedLabel(article))}</a>`).join(" · ");
   const nextStep = firstScreen
-    ? `<p class="article-next-step"><a href="/products/moringa-powder/100g/" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="moringa-powder">Try a 100g pouch, ${MORINGA_PRICES.p100}</a> · Free AU shipping from $49</p>${earlyLinks ? `<p class="article-next-step">${earlyLinks}</p>` : ""}`
+    ? (meta.slug === "diwali-hampers-australia"
+        ? `<p class="article-next-step"><a href="/products/diwali-gift-box/" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="diwali-gift-box">Shop Christmas gift box</a></p>`
+        : `<p class="article-next-step"><a href="/products/moringa-powder/100g/" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="moringa-powder">Try a 100g pouch, ${MORINGA_PRICES.p100}</a></p>`)
     : "";
   if (firstScreen && relatedNav && !proseHtml.includes('class="article-related"')) proseHtml = insertAfterFirstH2Section(proseHtml, relatedNav);
   const conversionCta = conversionPath.cta || cta;
@@ -4716,7 +4669,6 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             <p><strong>Best if you want capsules:</strong> a pharmacy capsule brand, such as those on the Chemist Warehouse shelf. They are easy to carry, but you pay far more per gram of leaf.</p>
             <p><strong>Best if certification is your priority:</strong> a certified brand from a specialist moringa seller. Check the certificate number on the pack.</p>
             <p>Yes, we sell one of these. That is why every brand below is judged on the same label facts, and why you can check each one yourself.</p>
-            <p><a href="/products/moringa-powder/">Buy NutriThrive moringa powder</a></p>
           </div>`
     : meta.slug === "moringa-patches-australia-review-do-they-work"
     ? `
@@ -4726,9 +4678,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
               <li>We found no published human trial showing that moringa from Glorenda or Healrize patches gets into the body through the skin.</li>
               <li>Many buyer reviews describe small patches, slow shipping and hard-to-get refunds.</li>
               <li>Chemist Warehouse did not list moringa patches when we checked in October 2026.</li>
-              <li>If you want moringa, the simple option is leaf powder you can measure by the teaspoon.</li>
+              <li>If you want moringa leaf itself, our powder is one ingredient: moringa leaf.</li>
             </ul>
-            <p><a href="/products/moringa-powder/">See our farm-grown moringa powder</a></p>
           </div>`
     : "";
   const dosageSchemas = meta.slug === "how-much-moringa-powder-per-day-dosage-guide"
@@ -4767,10 +4718,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           <p class="lede">${ledeHtml}</p>
           <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
           ${seoOverride?.heroCaptionHtml || ""}
-          <aside class="article-quick-product" aria-label="Related NutriThrive product">
-            <div><span>Related product</span><strong>${esc(shownQuickLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · Free AU shipping from $49 · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
+          ${firstScreen ? "" : `<aside class="article-quick-product" aria-label="Related NutriThrive product">
+            <div><span>Related product</span><strong>${esc(shownQuickLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
             <a href="${shownQuickHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(firstScreen && isMoringaPowder ? "moringa-powder" : shop.id)}">${esc(cta)}</a>
-          </aside>
+          </aside>`}
           ${enhancedProse.contents}
           ${conversionPath.methodology ? `<aside class="article-methodology" aria-labelledby="method-${esc(meta.slug)}">
             <h2 id="method-${esc(meta.slug)}">How we made this comparison</h2>
@@ -4780,21 +4731,6 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           ${isHealth ? `<aside class="article-safety"><p>This is general food information. If you're pregnant, breastfeeding, on medication or managing a health condition, check with your GP first.</p></aside>` : ""}
           ${isMoringaPowder && !isHealth && CALC_SLUGS.has(meta.slug) ? per100Calculator(meta.slug) : ""}
           ${objectionHtml}
-          <section class="article-conversion" aria-labelledby="article-product-${esc(meta.slug)}">
-            <img src="${shop.image}" alt="${esc(shop.name)} ${esc(shop.variant)}" width="240" height="300" loading="lazy">
-            <div>
-              <p class="kicker">${esc(conversionPath.kicker || "A practical next step")}</p>
-              <h2 id="article-product-${esc(meta.slug)}">${esc(conversionPath.title || shop.name)}</h2>
-              <p>${esc(conversionPath.body || shop.detail || shop.benefit)}</p>
-              <p class="price">${money(shop.price)} ${esc(shop.unit || "")}</p>${isMoringaPowder && !isHealth ? `
-              <p class="ship-note">${MORINGA_PRICES.per100In400} per 100g in the 400g pouch · Free AU shipping on orders from $49 · Packed in Truganina, VIC · <a href="${LAB_PDF}">NMI lab summary</a></p>` : ""}
-              <div class="btn-row">
-                <a class="btn btn-primary" href="${productHref}" data-funnel-event="article_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(conversionCta)}</a>
-                <a class="btn btn-secondary" href="/shipping/" data-funnel-event="article_shipping_click">Delivery & returns</a>
-              </div>${conversionLinks ? `
-              <ul class="article-context-links">${conversionLinks}</ul>` : ""}
-            </div>
-          </section>
           ${diwaliGiftListingOpen() && ["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
           ${firstScreen ? "" : relatedNav}
           <aside class="article-author">
@@ -4803,18 +4739,6 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             <p>Neer Vasa started NutriThrive in 2023. Our moringa and curry leaves are grown on our family farm in Gujarat, India, and sun-dried to keep their colour. Neer packs every order in Truganina, Melbourne.</p>
           </aside>
         </article>
-        <aside class="article-sidebar">
-          <p class="kicker">From guide to product</p>
-          <h2>${esc(shop.name)}</h2>
-          <p>${esc(shop.benefit)}</p>
-          <p class="price" style="font-weight:600;font-size:20px;margin:0 0 16px">${money(shop.price)} ${esc(shop.unit || "")}</p>
-          <a class="btn btn-primary btn-block" href="${productHref}" data-funnel-event="article_sidebar_product_click" data-article="${esc(meta.slug)}" data-product="${esc(shop.id)}">${esc(cta)}</a>
-          <ul class="article-trust-list">
-            <li>Manufacturer direct</li>
-            <li>Weekday dispatch before 2pm</li>
-            <li>Australia-wide delivery</li>
-          </ul>
-        </aside>
       </section>`,
   });
 }

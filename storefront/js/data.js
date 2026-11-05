@@ -126,7 +126,7 @@ export const PRODUCTS = [
       extra: "Plus 30g dried curry leaves.",
     },
     detail:
-      "100g moringa powder and 30g dried curry leaves. Morning smoothie and evening tadka from one box.",
+      "100g moringa powder and 30g dried curry leaves, packed together in Truganina.",
   },
   {
     id: "diwali-gift-box",
