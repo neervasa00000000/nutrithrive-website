@@ -93,6 +93,10 @@ const approvedSeoChanges = {
     title: "Dried Curry Leaves at Coles, Woolworths & Aldi (2026)",
     description: "Do Coles or Woolworths sell dried curry leaves? What we found on 9 Nov 2026, Indian grocer prices, and whole dried leaves posted anywhere in Australia.",
   },
+  "blog/darjeeling-black-tea-australia-guide.html": {
+    title: "Darjeeling Tea at Woolworths, Coles & T2: 2026 Prices",
+    description: "Where to buy Darjeeling tea in Australia: Woolworths, Coles, T2, Lupicia and Queen Vic Market, with prices per 100g checked 9 Nov 2026.",
+  },
   "blog/verify-moringa-quality-premium-buyers-checklist-2026.html": {
     title: "Farm-Grown vs Certified Moringa Powder: What to Check",
     description: "What a certification label does and doesn't tell you, and how to check farm-grown moringa leaf powder: origin, drying, batch date and lab paperwork.",

@@ -284,9 +284,13 @@ const ARTICLE_SEO_OVERRIDES = {
     articleSection: "Curry leaves",
   },
   "darjeeling-black-tea-australia-guide": {
-    title: "Where to Buy Darjeeling Tea in Australia (2026 Guide)",
-    description: "Where to buy Darjeeling tea in Australia: Twinings at Coles and Woolworths, T2, specialist loose leaf and our 100g pouch, with prices per 100g (Oct 2026).",
-    h1: "Where to Buy Darjeeling Tea in Australia (2026 Guide)",
+    title: "Darjeeling Tea at Woolworths, Coles & T2: 2026 Prices",
+    description: "Where to buy Darjeeling tea in Australia: Woolworths, Coles, T2, Lupicia and Queen Vic Market, with prices per 100g checked 9 Nov 2026.",
+    h1: "Where to buy Darjeeling tea in Australia: Woolworths, Coles, T2 and loose leaf",
+    ogTitle: "Darjeeling Tea at Woolworths, Coles & T2: 2026 Prices",
+    ogDescription: "Where to buy Darjeeling tea in Australia: Woolworths, Coles, T2, Lupicia and Queen Vic Market, with prices per 100g checked 9 Nov 2026.",
+    ledeHtml: "Woolworths, Coles, T2, Lupicia and Queen Vic Market prices for Darjeeling tea on 9 November 2026, plus a 100g loose leaf pouch from Truganina.",
+    articleSection: "Darjeeling tea",
   },
   "diwali-gift-guide-curry-leaves-tea-australia": {
     title: "Diwali Gift Ideas Australia 2026: Tea, Spice & Soap Gifts",
@@ -778,7 +782,6 @@ const CURATED_RELATED = {
     "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
   ],
   "darjeeling-black-tea-australia-guide": [
-    "how-to-brew-darjeeling-tea-perfectly-2026",
     "darjeeling-tea-vs-english-breakfast-comparison-2026",
     "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
   ],
@@ -2177,7 +2180,7 @@ const PDP = {
               <li><strong>With milk:</strong> 3g, 90–95°C, 4–5 min</li>
               <li><strong>Iced:</strong> 4g in 150ml hot water, 4 min, then pour over ice</li>
             </ul>
-            <p>Boiling water makes Darjeeling harsh. Good leaf gives a second, shorter steep. Read <a href="/blog/darjeeling-black-tea-australia-guide#first-flush-vs-second-flush">first flush vs second flush</a>.</p>
+            <p>Boiling water makes Darjeeling harsh. Good leaf gives a second, shorter steep. Read <a href="/blog/darjeeling-black-tea-australia-guide#what-to-check">what to check on the pack</a>, including flush.</p>
             <p>The full method is in our <a href="/blog/how-to-brew-darjeeling-tea-perfectly-2026">how to brew Darjeeling</a> guide.</p>`,
     faqs: [
       ["How many cups does 100g make?", "About 50."],
