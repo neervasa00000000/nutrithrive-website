@@ -14,12 +14,12 @@
 /blog/moringa-chemist-warehouse-freshness-truth.html  /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025  301!
 /blog/moringa-chemist-warehouse-freshness-truth  /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025  301!
 /blog/fresh-vs-dried-curry-leaves-melbourne-complete-guide  /blog/dried-curry-leaves-quality-guide-how-to-use  301!
-/blog/moringa-vs-matcha-australia-2025.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/moringa-vs-matcha-australia-2025.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!
 /blog/best-moringa-powder-australia-2025  /blog/moringa-brands-comparison-australia-2026  301!
 /blog/best-protein-powder-australia-2025-complete-guide.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
 /blog/best-clean-protein-powders-moringa-products-australia-2026.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
 /blog/complete-guide-to-moringa-powder-australia.html  /blog/how-to-add-moringa-to-diet  301!
-/blog/moringa-vs-matcha-australia-2025  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/moringa-vs-matcha-australia-2025 /blog/ag1-alternative-australia-moringa-comparison-2026 301!
 /blog/where-to-buy-dried-curry-leaves-melbourne-complete-local-buyers-guide.html  /blog/dried-curry-leaves-australia-guide  301!
 /blog/moringa-brands-comparison-australia-2025.html  /blog/moringa-brands-comparison-australia-2026  301!
 /blog/best-clean-protein-powders-moringa-products-australia-2025  /blog/moringa-vs-whey-protein-comparison-2026  301!
@@ -28,8 +28,8 @@
 /blog/high-protein-snacks-australia-25-options-under-150-calories-2025.html  /blog/high-protein-moringa-recipes-australia-2026  301!
 /blog/natural-heavy-metal-detox-moringa-cleanse-body.html  /blog/moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026  301!
 /blog/moringa-powder-ultimate-superfood-guide-australian-health-2026.html  /blog/how-to-add-moringa-to-diet  301!
-/blog/moringa-vs-matcha-energy-metabolism-2025  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
-/blog/moringa-vs-superfoods-comparison-australia-2025.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/moringa-vs-matcha-energy-metabolism-2025 /blog/ag1-alternative-australia-moringa-comparison-2026 301!
+/blog/moringa-vs-superfoods-comparison-australia-2025.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!
 /blog/best-protein-brands-australia-seniors-over-70-2026-strength-vitality-guide.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
 /blog/moringa-magic-natural-glow  /blog/moringa-oil-benefits-skin-hair-health-2026  301!
 /pages/blog/high-protein-snacks-australia-25-options-under-150-calories-2025  /blog/high-protein-moringa-recipes-australia-2026  301!
@@ -47,9 +47,9 @@
 /blog/protein-powder-bloating-fix-moringa  /blog/moringa-vs-whey-protein-comparison-2026  301!
 /blog/moringa-benefits-australia-2026  /blog/how-to-add-moringa-to-diet  301!
 /blog/best-clean-protein-powder-australia-2026-lab-tested-reviews-comparison-expert-buyers-guide.html  /blog/moringa-vs-whey-protein-comparison-2026  301!
-/blog/moringa-vs-spirulina-which-green-powder-tastes-better.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/moringa-vs-spirulina-which-green-powder-tastes-better.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!
 /blog/black-tea-health-benefits-melbourne-premium-darjeeling-assam-guide-2026.html  /blog/darjeeling-black-tea-australia-guide  301!
-/blog/moringa-vs-matcha-energy-metabolism-2025.html  /blog/moringa-vs-spirulina-vs-matcha-comparison-australia  301!
+/blog/moringa-vs-matcha-energy-metabolism-2025.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!
 /blog/natural-pre-workout-moringa-australia-2026  /blog/moringa-before-after-workout-timing-guide-2026  301!
 /blog/natural-energy-boosters-australia-superfoods-2025  /blog/moringa-vs-coffee-melbourne-energy-hack  301!
 /blog/clear-skin-anti-aging-moringa-beauty-superfood  /blog/moringa-oil-benefits-skin-hair-health-2026  301!
@@ -72,7 +72,6 @@
 /blog/dried-curry-leaf-powder-recipe-hair-growth  /blog/can-you-use-dried-curry-leaves-for-hair-2026  301!
 /product-detail  /products/moringa-powder/  301!
 /product-detail/  /products/moringa-powder/  301!
-/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html  /blog/musashi-protein-powder-australia-comprehensive-guide-2026  301!
 
 # === Deleted posts: correct redirects (Oct 2026 crawl fix) ===
 /blog/post-animal-economy-vegan-ecosystem-2026.html  /404.html  410!
@@ -212,14 +211,14 @@
 /blog/what-does-moringa-do-for-your-body-complete-guide-2026 /blog/how-to-add-moringa-to-diet 301
 
 # Wrong slug (404) → live comparison article
-/blog/moringa-vs-spirulina-vs-matcha-australia-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/moringa-vs-spirulina-vs-matcha-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/moringa-vs-spirulina-vs-matcha-australia-2026 /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/moringa-vs-spirulina-vs-matcha-australia-2026.html /blog/ag1-alternative-australia-moringa-comparison-2026 301
 
 # PHASE 1 — Zombie 404s still indexed in Google (GSC recrawl after deploy)
 /blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness.html /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/best-moringa-powder-australia-2026-how-to-choose-top-superfoods-compare-brands-boost-wellness /blog/how-to-choose-moringa-powder-australia-2026 301
-/blog/natural-energy-boosters-australia-superfoods-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/natural-energy-boosters-australia-superfoods-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/natural-energy-boosters-australia-superfoods-2026.html /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/natural-energy-boosters-australia-superfoods-2026 /blog/ag1-alternative-australia-moringa-comparison-2026 301
 /blog/moringa-powder-benefits-uses-how-to-choose-best-one-australia-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/moringa-powder-benefits-uses-how-to-choose-best-one-australia-2026 /blog/how-to-choose-moringa-powder-australia-2026 301
 /blog/ultimate-guide-moringa-curry-leaves-australia-2026.html /blog/dried-curry-leaves-australia-guide 301
@@ -337,12 +336,12 @@
 /moringa-adelaide/index.html /moringa-adelaide/ 301!
 
 # Retired blog slugs → live canonical (GSC still shows old URLs)
-/blog/moringa-vs-matcha-energy-metabolism-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/moringa-vs-matcha-energy-metabolism-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/moringa-vs-matcha-energy-metabolism-2026 /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/moringa-vs-matcha-energy-metabolism-2026.html /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026 /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/moringa-vs-matcha-superfood-comparison-melbourne-2026.html /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/spirulina-vs-moringa-vs-matcha-gut-health-2026-scientific-review.html /blog/ag1-alternative-australia-moringa-comparison-2026 301
 /blog/best-protein-powder-australia-2026-complete-guide /blog/moringa-vs-whey-protein-comparison-2026 301
 /blog/best-protein-powder-australia-2026-complete-guide.html /blog/moringa-vs-whey-protein-comparison-2026 301
 /blog/nutri-thrive-clean-moringa-protein-2026-guide /blog/moringa-vs-whey-protein-comparison-2026 301!
@@ -428,7 +427,6 @@
 # Pretty blog URLs (extensionless) → canonical .html
 
 # Pretty blog URL → canonical .html (live post; do not 404)
-/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /blog/musashi-protein-powder-australia-comprehensive-guide-2026.html 200
 /blog/fresh-vs-dried-curry-leaves-substitute-guide /blog/curry-leaves-substitute-what-to-use-2026 301!
 /blog/fresh-vs-dried-curry-leaves-substitute-guide.html /blog/curry-leaves-substitute-what-to-use-2026 301!
 
@@ -614,13 +612,13 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/affordable-superfoods-organic-tax-marketplace-wellness-vic-nsw-qld-2026 /404.html 410
 /blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026.html /404.html 410
 /blog/are-your-supplements-ultra-processed-hidden-fillers-australia-2026 /404.html 410
-/blog/best-superfoods-australia-comparison-health-conscious-adults.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301!
-/blog/best-superfoods-australia-comparison-health-conscious-adults /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301!
+/blog/best-superfoods-australia-comparison-health-conscious-adults.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!
+/blog/best-superfoods-australia-comparison-health-conscious-adults /blog/ag1-alternative-australia-moringa-comparison-2026 301!
 /blog/chronic-fatigue-what-actually-fixed-it-2026.html /blog/chronic-fatigue-what-actually-fixed-it-2026 301!
 /blog/chronic-fatigue-what-actually-fixed-it-2026 /blog/chronic-fatigue-what-actually-fixed-it-2026.html 200
 # cortisol-belly-fat — merged into calm-mind pillar (see cortisol cluster block below)
-/blog/best-greens-powder-australia-2026.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
-/blog/best-greens-powder-australia-2026 /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301
+/blog/best-greens-powder-australia-2026.html /blog/ag1-alternative-australia-moringa-comparison-2026 301
+/blog/best-greens-powder-australia-2026 /blog/ag1-alternative-australia-moringa-comparison-2026 301
 /blog/high-protein-moringa-recipes-australia-2026.html /blog/high-protein-moringa-recipes-australia-2026 301!
 /blog/high-protein-moringa-recipes-australia-2026 /blog/high-protein-moringa-recipes-australia-2026.html 200
 /blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026.html /blog/cystic-acne-gut-healing-what-actually-cleared-skin-2026 301!
@@ -664,7 +662,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/moringa-vs-coffee-melbourne-energy-hack /blog/moringa-vs-coffee-melbourne-energy-hack.html 200
 /blog/moringa-vs-coffee-melbourne /blog/moringa-vs-coffee-melbourne-energy-hack 301!
 /blog/moringa-vs-coffee-melbourne/ /blog/moringa-vs-coffee-melbourne-energy-hack 301!
-/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html /blog/moringa-vs-spirulina-vs-matcha-comparison-australia 301!
 /blog/nutrithrive-dried-curry-leaves-tradition-health.html /blog/dried-curry-leaves-australia-guide 301!
 /blog/nutrithrive-dried-curry-leaves-tradition-health /blog/dried-curry-leaves-australia-guide 301!
 /blog/quit-sugar-90-days-honest-diary-melbourne-2026.html /404.html 410
@@ -781,8 +778,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/best-plant-based-iron-foods-australia-absorption-guide-2026.html /blog/best-plant-based-iron-foods-australia-absorption-guide-2026 301!
 /blog/best-plant-based-iron-foods-australia-absorption-guide-2026 /blog/best-plant-based-iron-foods-australia-absorption-guide-2026.html 200
 # How Much Water Should You Actually Drink Per Day? (The Hones (lifestyle health Jul 2026)
-/blog/how-much-water-per-day-australians-honest-guide-2026.html /blog/how-much-water-per-day-australians-honest-guide-2026 301!
-/blog/how-much-water-per-day-australians-honest-guide-2026 /blog/how-much-water-per-day-australians-honest-guide-2026.html 200
 
 # Fibre Deficiency in Australia: The Cancer Risk Most People D (lifestyle health Jul 2026)
 /blog/fibre-deficiency-australia-bowel-cancer-risk-2026.html /blog/fibre-deficiency-australia-bowel-cancer-risk-2026 301!
@@ -796,17 +791,9 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 # Why Chronic Stress Makes You Gain Weight (And What to Do Abo (lifestyle health Jul 2026)
 # stress-weight-gain — merged into calm-mind cortisol pillar (Jul 2026 audit)
 # Seed Oils: Are They Actually Bad for You? The Honest Austral (lifestyle health Jul 2026)
-/blog/seed-oils-bad-for-you-honest-research-australia-2026.html /blog/seed-oils-bad-for-you-honest-research-australia-2026 301!
-/blog/seed-oils-bad-for-you-honest-research-australia-2026 /blog/seed-oils-bad-for-you-honest-research-australia-2026.html 200
 # Strength Training for Women Over 35: Why the Evidence Has Sh (lifestyle health Jul 2026)
-/blog/strength-training-women-over-35-why-it-matters-2026.html /blog/strength-training-women-over-35-why-it-matters-2026 301!
-/blog/strength-training-women-over-35-why-it-matters-2026 /blog/strength-training-women-over-35-why-it-matters-2026.html 200
 # What Happens to Your Body When You Stop Eating Ultra-Process (lifestyle health Jul 2026)
-/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026.html /blog/stop-eating-ultra-processed-food-30-days-what-happens-2026 301!
-/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026 /blog/stop-eating-ultra-processed-food-30-days-what-happens-2026.html 200
 # How to Build a Balanced Plate at Every Meal (No Calorie Coun (lifestyle health Jul 2026)
-/blog/how-to-build-balanced-plate-no-calorie-counting-2026.html /blog/how-to-build-balanced-plate-no-calorie-counting-2026 301!
-/blog/how-to-build-balanced-plate-no-calorie-counting-2026 /blog/how-to-build-balanced-plate-no-calorie-counting-2026.html 200
 # Omega-3 Deficiency in Australia: The Silent Driver of Inflam (lifestyle health Jul 2026)
 /blog/omega-3-deficiency-australia-inflammation-food-sources-2026.html /blog/omega-3-deficiency-australia-inflammation-food-sources-2026 301!
 /blog/omega-3-deficiency-australia-inflammation-food-sources-2026 /blog/omega-3-deficiency-australia-inflammation-food-sources-2026.html 200
@@ -974,8 +961,6 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/afl-finals-snacks-curry-leaf-tadka.html /blog/diwali-gifts-for-friends-curry-leaf-snacks 301!
 /blog/afl-finals-snacks-curry-leaf-tadka.html /blog/afl-finals-snacks-curry-leaf-tadka 301!
 /blog/afl-finals-snacks-curry-leaf-tadka /blog/afl-finals-snacks-curry-leaf-tadka.html 200
-/blog/chemist-warehouse-greens-vs-moringa-powder-2026.html /blog/chemist-warehouse-greens-vs-moringa-powder-2026 301!
-/blog/chemist-warehouse-greens-vs-moringa-powder-2026 /blog/chemist-warehouse-greens-vs-moringa-powder-2026.html 200
 
 # Pillar guides (2026-08-13)
 /blog/dried-curry-leaves-australia-guide.html /blog/dried-curry-leaves-australia-guide 301!
@@ -1046,3 +1031,21 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
+
+# Blog cleanup 9 Nov 2026: 410 Gone + 301 consolidations
+/blog/how-much-water-per-day-australians-honest-guide-2026 /404.html 410!
+/blog/how-much-water-per-day-australians-honest-guide-2026.html /404.html 410!
+/blog/how-to-build-balanced-plate-no-calorie-counting-2026 /404.html 410!
+/blog/how-to-build-balanced-plate-no-calorie-counting-2026.html /404.html 410!
+/blog/seed-oils-bad-for-you-honest-research-australia-2026 /404.html 410!
+/blog/seed-oils-bad-for-you-honest-research-australia-2026.html /404.html 410!
+/blog/strength-training-women-over-35-why-it-matters-2026 /404.html 410!
+/blog/strength-training-women-over-35-why-it-matters-2026.html /404.html 410!
+/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /404.html 410!
+/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html /404.html 410!
+/blog/chemist-warehouse-greens-vs-moringa-powder-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301!
+/blog/chemist-warehouse-greens-vs-moringa-powder-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301!
+/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026 /blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026 301!
+/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026.html /blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026 301!
+/blog/moringa-vs-spirulina-vs-matcha-comparison-australia /blog/ag1-alternative-australia-moringa-comparison-2026 301!
+/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!

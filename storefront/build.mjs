@@ -194,6 +194,12 @@ const BLOG_SEO_BASELINE = {
 const BLOG_SEO_UPDATED = "2026-10-23";
 
 const NOINDEX_BLOG_SLUGS = new Set([
+  "what-does-moringa-powder-taste-like-honest-guide-2026",
+  "moringa-vs-whey-protein-comparison-2026",
+  "how-to-eat-more-vegetables-practical-guide-australia-2026",
+  "longevity-foods-australia-what-to-eat-live-longer-2026",
+  "how-much-protein-australian-women-need-honest-guide-2026",
+  "waking-up-at-3am-every-night-australia-2026",
   "cystic-acne-gut-healing-what-actually-cleared-skin-2026",
   "30-different-plants-per-week-gut-health-microbiome-2026",
   "chronic-fatigue-what-actually-fixed-it-2026",
@@ -616,6 +622,9 @@ const ARTICLE_SEO_OVERRIDES = {
 };
 
 const JOURNAL_REDIRECTS = {
+  "chemist-warehouse-greens-vs-moringa-powder-2026": "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+  "stop-eating-ultra-processed-food-30-days-what-happens-2026": "ultra-processed-food-australia-what-it-means-how-much-you-eat-2026",
+  "moringa-vs-spirulina-vs-matcha-comparison-australia": "ag1-alternative-australia-moringa-comparison-2026",
   "is-moringa-safe-during-pregnancy-2026": "moringa-pregnancy-safe-australia-trimester-guide-2026",
   "moringa-smoothie-recipes-australia-easy-2026": "moringa-smoothie-recipes-australia-2026",
   "stress-weight-gain-cortisol-mechanism-what-to-do-2026": "moringa-calm-mind-stress-brain-fog-cortisol-science-2026",
@@ -659,135 +668,85 @@ const REDIRECTED_JOURNAL_SLUGS = new Set(
 
 const CURATED_RELATED = {
   "eye-twitching-causes-magnesium-australia-2026": [
-    "why-always-tired-nutritional-deficiencies-australia-2026",
-    "waking-up-at-3am-every-night-australia-2026",
-    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+    "eye-twitching-causes-magnesium-australia-2026",
   ],
   "waking-up-at-3am-every-night-australia-2026": [
-    "moringa-for-sleep-quality-insomnia-2026",
-    "why-always-tired-nutritional-deficiencies-australia-2026",
-    "signs-magnesium-deficiency-australia-what-to-eat-2026",
+    "waking-up-at-3am-every-night-australia-2026",
   ],
   "moringa-patches-australia-review-do-they-work": [
-    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "moringa-brands-comparison-australia-2026",
-    "rosabella-moringa-reviews-legit-or-overhyped-2026",
+    "moringa-patches-australia-review-do-they-work",
   ],
   "verify-moringa-quality-premium-buyers-checklist-2026": [
-    "how-to-choose-moringa-powder-australia-2026",
-    "science-shade-drying-vs-sun-drying-moringa",
-    "how-to-read-moringa-batch-codes-freshness",
+    "verify-moringa-quality-premium-buyers-checklist-2026",
   ],
   "why-premium-moringa-costs-11-not-25-value-vs-markup-2026": [
-    "moringa-capsules-vs-powder-which-is-better-2026",
-    "moringa-brands-comparison-australia-2026",
-    "verify-moringa-quality-premium-buyers-checklist-2026",
+    "why-premium-moringa-costs-11-not-25-value-vs-markup-2026",
   ],
   "rosabella-moringa-reviews-legit-or-overhyped-2026": [
-    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "moringa-capsules-vs-powder-which-is-better-2026",
+    "rosabella-moringa-reviews-legit-or-overhyped-2026",
   ],
   "moringa-brands-comparison-australia-2026": [
-    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "how-to-choose-moringa-powder-australia-2026",
-    "verify-moringa-quality-premium-buyers-checklist-2026",
+    "moringa-brands-comparison-australia-2026",
   ],
   "how-to-add-moringa-to-diet": [
-    "moringa-smoothie-recipes-australia-2026",
-    "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "high-protein-moringa-recipes-australia-2026",
+    "how-to-add-moringa-to-diet",
   ],
   "how-long-does-moringa-powder-last-storage-shelf-life-2026": [
-    "how-to-choose-moringa-powder-australia-2026",
-    "how-to-read-moringa-batch-codes-freshness",
-    "what-does-moringa-powder-taste-like-honest-guide-2026",
-  ],
-  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": [
-    "moringa-brands-comparison-australia-2026",
-    "how-to-choose-moringa-powder-australia-2026",
-    "moringa-capsules-vs-powder-which-is-better-2026",
-  ],
-  "is-moringa-safe-for-children-kids-dosage-2026": [
-    "moringa-side-effects-what-happens-take-too-much-2026",
-    "moringa-energy-bites-kids-lunchbox-recipe-australia-2026",
-    "how-to-add-moringa-to-diet",
-  ],
-  "moringa-and-berberine-australia-what-science-says-2026": [
-    "moringa-patches-australia-review-do-they-work",
-    "moringa-and-blood-sugar-diabetes-research-2026",
-    "moringa-side-effects-what-happens-take-too-much-2026",
-  ],
-  "grow-moringa-tree-australia": [
-    "how-to-choose-moringa-powder-australia-2026",
-    "moringa-brands-comparison-australia-2026",
-    "science-shade-drying-vs-sun-drying-moringa",
-  ],
-  "cold-brew-darjeeling-australian-spring-2026": [
-    "how-to-brew-darjeeling-tea-perfectly-2026",
-    "darjeeling-chai-latte-recipe-winter-coffee-alternative-2026",
-    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
-  ],
-  "what-does-moringa-powder-taste-like-honest-guide-2026": [
-    "how-to-add-moringa-to-diet",
-    "moringa-smoothie-recipes-australia-2026",
-    "how-to-choose-moringa-powder-australia-2026",
-  ],
-  "moringa-capsules-vs-powder-which-is-better-2026": [
-    "how-to-choose-moringa-powder-australia-2026",
-    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "how-to-add-moringa-to-diet",
-  ],
-  "how-to-choose-moringa-powder-australia-2026": [
-    "moringa-brands-comparison-australia-2026",
-    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "verify-moringa-quality-premium-buyers-checklist-2026",
-  ],
-  "where-to-buy-moringa-leaves-australia": [
-    "how-to-choose-moringa-powder-australia-2026",
-    "grow-moringa-tree-australia",
-    "what-does-moringa-powder-taste-like-honest-guide-2026",
-  ],
-  "moringa-vs-curry-leaves-difference-australia": [
-    "where-to-buy-moringa-leaves-australia",
-    "curry-leaves-vs-curry-powder-difference-explained-2026",
-    "curry-leaves-substitute-what-to-use-2026",
-  ],
-  "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": [
-    "verify-moringa-quality-premium-buyers-checklist-2026",
-    "how-to-choose-moringa-powder-australia-2026",
-    "moringa-brands-comparison-australia-2026",
-  ],
-  "moringa-smoothie-recipes-australia-2026": [
-    "what-does-moringa-powder-taste-like-honest-guide-2026",
-    "how-to-add-moringa-to-diet",
     "how-long-does-moringa-powder-last-storage-shelf-life-2026",
   ],
+  "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": [
+    "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
+  ],
+  "is-moringa-safe-for-children-kids-dosage-2026": [
+    "is-moringa-safe-for-children-kids-dosage-2026",
+  ],
+  "moringa-and-berberine-australia-what-science-says-2026": [
+    "moringa-and-berberine-australia-what-science-says-2026",
+  ],
+  "grow-moringa-tree-australia": [
+    "grow-moringa-tree-australia",
+  ],
+  "cold-brew-darjeeling-australian-spring-2026": [
+    "cold-brew-darjeeling-australian-spring-2026",
+  ],
+  "what-does-moringa-powder-taste-like-honest-guide-2026": [
+    "what-does-moringa-powder-taste-like-honest-guide-2026",
+  ],
+  "moringa-capsules-vs-powder-which-is-better-2026": [
+    "moringa-capsules-vs-powder-which-is-better-2026",
+  ],
+  "how-to-choose-moringa-powder-australia-2026": [
+    "how-to-choose-moringa-powder-australia-2026",
+  ],
+  "where-to-buy-moringa-leaves-australia": [
+    "where-to-buy-moringa-leaves-australia",
+  ],
+  "moringa-vs-curry-leaves-difference-australia": [
+    "moringa-vs-curry-leaves-difference-australia",
+  ],
+  "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026": [
+    "moringa-heavy-metals-lab-testing-australia-what-to-look-for-2026",
+  ],
+  "moringa-smoothie-recipes-australia-2026": [
+    "moringa-smoothie-recipes-australia-2026",
+  ],
   "natural-pre-workout-moringa-australia-2026": [
-    "moringa-before-after-workout-timing-guide-2026",
-    "how-to-add-moringa-to-diet",
-    "moringa-vs-coffee-melbourne-energy-hack",
+    "natural-pre-workout-moringa-australia-2026",
   ],
   "dried-curry-leaves-australia-guide": [
-    "dried-curry-leaves-quality-guide-how-to-use",
-    "curry-leaves-substitute-what-to-use-2026",
+    "dried-curry-leaves-australia-guide",
   ],
   "dried-curry-leaves-quality-guide-how-to-use": [
-    "dried-curry-leaves-australia-guide",
-    "curry-leaves-recipes-beyond-dal",
-    "curry-leaves-substitute-what-to-use-2026",
+    "dried-curry-leaves-quality-guide-how-to-use",
   ],
   "how-to-brew-darjeeling-tea-perfectly-2026": [
-    "darjeeling-black-tea-australia-guide",
-    "darjeeling-tea-vs-english-breakfast-comparison-2026",
-    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+    "how-to-brew-darjeeling-tea-perfectly-2026",
   ],
   "darjeeling-black-tea-australia-guide": [
-    "darjeeling-tea-vs-english-breakfast-comparison-2026",
-    "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026",
+    "darjeeling-black-tea-australia-guide",
   ],
   "moringa-soap-benefits-skin-guide": [
-    "how-to-choose-moringa-powder-australia-2026",
-    "what-does-moringa-powder-taste-like-honest-guide-2026",
+    "moringa-soap-benefits-skin-guide",
   ],
 };
 
