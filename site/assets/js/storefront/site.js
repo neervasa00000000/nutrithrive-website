@@ -761,9 +761,10 @@ function bindStickyAtc() {
   const observer = new IntersectionObserver(
     (entries) => {
       const entry = entries[0];
-      setVisible(!(entry && entry.isIntersecting));
+      // Treat the main button as "in view" only when it is fully on screen.
+      setVisible(!(entry && entry.isIntersecting && entry.intersectionRatio >= 0.99));
     },
-    { threshold: 0.15 }
+    { threshold: [0, 0.99, 1] }
   );
   observer.observe(mainBtn);
 
@@ -771,7 +772,7 @@ function bindStickyAtc() {
     if (!mq.matches) setVisible(false);
     else {
       const rect = mainBtn.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
       setVisible(!inView);
     }
   };

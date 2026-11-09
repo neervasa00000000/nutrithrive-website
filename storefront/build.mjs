@@ -243,7 +243,7 @@ const ARTICLE_SEO_OVERRIDES = {
     ogTitle: "Diwali Hampers in Australia: Under $50, Posted AU-Wide",
     ogDescription: "Hamper types, real price ranges, a $20 tea, curry leaf and soap box, and order-by dates so your Diwali hamper arrives before Sun 8 Nov.",
     articleSection: "Curry leaves",
-    ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.",
+    ledeHtml: "A buyer's guide to Diwali hampers in Australia: the main hamper types, what they cost, what to check before you pay, and when to order. Diwali was on Sunday 8 November. Our $20 Diwali Gift Box (Darjeeling tea, curry leaves and a handmade soap) is now sold as our Christmas Gift Box, for neighbours, teachers and colleagues.",
     heroAlt: "NutriThrive Christmas Gift Box items: Darjeeling black tea, dried curry leaves and moringa lavender soap",
     heroImage: "/assets/images/blog/diwali-hampers-australia-hero.webp",
     ogImage: "/assets/images/og/diwali-hampers-australia-1200.jpg",
@@ -1233,7 +1233,7 @@ function productGuideLinks(slug) {
 }
 
 function growthProductBody(slug) {
-  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p></details>", "diwali-gift-box": "<details><summary>Do you ship Christmas gift boxes Australia-wide?</summary><p>Yes. We ship Australia-wide, with free shipping on orders from $49. Order early for Christmas delivery; timing depends on your postcode.</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
+  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p></details>", "diwali-gift-box": "<details><summary>Do you ship Christmas gift boxes Australia-wide?</summary><p>Yes, Australia-wide. For delivery before Christmas, order by 2pm on Tue 22 Dec for Victoria, Mon 21 Dec for metro NSW, ACT, Qld, SA and Tas, Fri 18 Dec for WA and Wed 16 Dec for NT (Australia Post's last Parcel Post dates; regional areas need a few extra days).</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
 }
 
 function faqDetails(faqs) {
@@ -2068,7 +2068,7 @@ const PDP = {
       ],
       [
         "Does NutriThrive offer free shipping?",
-        "Free Australian shipping starts at $49. Moringa powder sizes are 100g for $11, 200g for $22 and 400g for $40; curry leaves or Darjeeling tea can be added to reach the threshold.",
+        "Yes, on Australian orders from $49.",
       ],
     ],
   },
@@ -2294,7 +2294,7 @@ const PDP = {
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "diwali-gift-box"),
     intro:
-      "Our Christmas gift box brings together three things people use after the wrapping paper is gone: 100g of Darjeeling loose leaf black tea from a family farm in Darjeeling, 30g of whole dried curry leaves from our farm in Gujarat, and a 95g moringa and lavender soap bar we handmake in Australia. There's no moringa powder in this box. We pack it in Truganina, Melbourne, ready to give to family, hosts, neighbours, teachers or colleagues. Order early for Christmas delivery. Order before 2pm on a weekday for same-day dispatch, posted Australia-wide or picked up in Truganina by arrangement.",
+      "Our Christmas gift box brings together three things people use after the wrapping paper is gone: 100g of Darjeeling loose leaf black tea from a family farm in Darjeeling, 30g of whole dried curry leaves from our farm in Gujarat, and a 95g moringa and lavender soap bar we handmake in Australia. There's no moringa powder in this box. We pack it in Truganina, Melbourne, ready to give to family, hosts, neighbours, teachers or colleagues. Order by Mon 21 Dec for Christmas delivery to metro areas. Order before 2pm on a weekday for same-day dispatch, posted Australia-wide or picked up in Truganina by arrangement.",
     proofs: [
       "No moringa powder",
       "Handmade soap",
@@ -2390,7 +2390,7 @@ const PDP = {
       ],
       [
         "Until when can I order for Christmas?",
-        "Order early for Christmas delivery. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10.",
+        "For delivery before Christmas, order by 2pm on Tue 22 Dec for Melbourne and Victoria, Mon 21 Dec for metro NSW, ACT, Qld, SA and Tas, Fri 18 Dec for WA and Wed 16 Dec for NT. These are Australia Post's last Parcel Post dates from Victoria; regional areas need a few extra days.",
       ],
       ["Gift message?", "Add a note at checkout or email us after you order."],
       ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
@@ -3666,7 +3666,7 @@ function melbournePage() {
   const powder100Href = "/products/moringa-powder/100g/";
   const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
   const christmasOrderLine =
-    "Order early for Christmas delivery. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10.";
+    "Order by Tue 22 Dec for Christmas delivery in Melbourne.";
   const faqs = [
     [
       "Where can I buy curry leaves in Melbourne?",
@@ -4061,7 +4061,7 @@ function journalIndex(articles, opts = {}) {
         <p class="lede">${topicFilter
           ? `Every ${esc(topicFilter.name.toLowerCase())} guide, in one place.`
           : "Clear answers about choosing, using and storing our products—from the team that grows and manufactures our moringa and curry leaves."}</p>
-        ${topicFilter ? "" : `<p class="purchase-note">Christmas gifts: <a href="/products/diwali-gift-box/">$20 Christmas gift box</a> · Order early for Christmas delivery.</p>`}
+        ${topicFilter ? "" : `<p class="purchase-note">Christmas gifts: <a href="/products/diwali-gift-box/">$20 Christmas gift box</a> · Order by Mon 21 Dec for Christmas delivery to metro areas.</p>`}
         <form class="journal-search" role="search" data-journal-search-form>
           <label for="journal-search">What would you like to know?</label>
           <div class="journal-search-box">
@@ -4678,7 +4678,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
               <li>We found no published human trial showing that moringa from Glorenda or Healrize patches gets into the body through the skin.</li>
               <li>Many buyer reviews describe small patches, slow shipping and hard-to-get refunds.</li>
               <li>Chemist Warehouse did not list moringa patches when we checked in October 2026.</li>
-              <li>If you want moringa leaf itself, our powder is one ingredient: moringa leaf.</li>
+              <li>If you'd rather buy moringa from a seller you can check: one ingredient, an Australian ABN and address (Truganina, VIC) and a 7-day refund or replacement.</li>
             </ul>
           </div>`
     : "";
