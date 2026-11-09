@@ -470,12 +470,12 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
   },
   "how-to-choose-moringa-powder-australia-2026": {
-    title: "Moringa Powder at Woolworths, Coles or Aldi? (Oct 2026)",
-    description: "We checked Woolworths, Coles and Aldi for moringa powder. What's listed, what to read on the label, and where to order a 100g pouch online for $11.",
-    h1: "How to Choose Moringa Powder in Australia (Woolworths, Coles & Online)",
-    ogTitle: "Choose Moringa Powder in Australia: Woolworths, Coles, Online",
-    ogDescription: "What Woolworths, Coles and Aldi show for moringa powder, plus online pouch sizes packed in Melbourne.",
-    ledeHtml: "Woolworths, Coles and Aldi moringa powder checks, label tips, and farm-grown pouches from Truganina. Sizes 100g, 200g, 400g.",
+    title: "Moringa Powder at Coles, Woolworths & Aldi (Nov 2026)",
+    description: "Does Coles, Woolworths or Aldi sell moringa powder? What each listed on 9 Nov 2026, prices per 100g, and who actually ships the pouch.",
+    h1: "Moringa powder at Coles, Woolworths and Aldi: what we found in November 2026",
+    ogTitle: "Moringa Powder at Coles, Woolworths & Aldi (Nov 2026)",
+    ogDescription: "Does Coles, Woolworths or Aldi sell moringa powder? What each listed on 9 Nov 2026, prices per 100g, and who actually ships the pouch.",
+    ledeHtml: "Coles, Woolworths and Aldi online checks on 9 November 2026: who lists moringa powder, what it costs per 100g, and who ships the pouch.",
     articleSection: "Moringa",
   },
   "where-to-buy-moringa-leaves-australia": {
