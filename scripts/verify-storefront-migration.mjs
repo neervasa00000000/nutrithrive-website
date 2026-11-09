@@ -153,8 +153,8 @@ const approvedSeoChanges = {
     description: "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context, not medical advice. Ask your GP.",
   },
   "blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html": {
-    title: "Rosabella Moringa Reviews AU 2026: Legit or Hype?",
-    description: "Rosabella moringa reviews (AU 2026): lab transparency gaps, price per gram vs pure leaf powder, and when NutriThrive powder is the clearer buy.",
+    title: "Rosabella Moringa in Australia: Price, Recall, Reviews",
+    description: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
   },
   "blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html": {
     title: "Chemist Warehouse Moringa Capsules &amp; Tablets vs NutriThrive Powder",

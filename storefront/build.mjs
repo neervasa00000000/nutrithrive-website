@@ -167,8 +167,8 @@ const BLOG_SEO_BASELINE = {
     ogTitle: "Moringa at Chemist Warehouse 2026: Powder, Capsules, Price",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
-    description: "Rosabella moringa reviews from Australian buyers, price per serve, where it is sold including Chemist Warehouse, and how a farm-grown leaf powder compares.",
-    ogTitle: "Rosabella Moringa Reviews Australia 2026: Legit or Hype?",
+    description: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
+    ogTitle: "Rosabella Moringa in Australia: Price, Recall, Reviews",
   },
   "grow-moringa-tree-australia": {
     description: "Can moringa grow where you live in Australia? Climate zones from Perth to Brisbane, frost, pots, seeds and seedlings, plus leaf powder if you cannot grow it.",
@@ -452,11 +452,12 @@ const ARTICLE_SEO_OVERRIDES = {
     articleSection: "Moringa",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
-    title: "Rosabella Moringa Reviews Australia: Powder Buy Path",
-    description: "We do not sell Rosabella. Honest read on brand search intent, then NutriThrive farm-grown leaf powder sizes packed in Truganina.",
-    h1: "Rosabella Moringa Reviews Australia (We Sell Powder)",
-    ogTitle: "Rosabella Moringa Reviews Australia: Powder Buy Path",
-    ogDescription: "Facts-only Rosabella search intent, then NutriThrive farm-grown moringa leaf powder from Truganina.",
+    title: "Rosabella Moringa in Australia: Price, Recall, Reviews",
+    description: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
+    h1: "Rosabella moringa in Australia: where to buy, price, recall and reviews",
+    ogTitle: "Rosabella Moringa in Australia: Price, Recall, Reviews",
+    ogDescription: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
+    ledeHtml: "Rosabella moringa ships to Australia from Ohio. Australian prices on 9 November 2026, the February 2026 lot recall, what its reviews show, and a local pouch.",
     articleSection: "Moringa",
   },
   "how-to-brew-darjeeling-tea-perfectly-2026": {
@@ -676,8 +677,7 @@ const CURATED_RELATED = {
   ],
   "rosabella-moringa-reviews-legit-or-overhyped-2026": [
     "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
-    "moringa-brands-comparison-australia-2026",
-    "verify-moringa-quality-premium-buyers-checklist-2026",
+    "moringa-capsules-vs-powder-which-is-better-2026",
   ],
   "moringa-brands-comparison-australia-2026": [
     "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025",
