@@ -1233,7 +1233,7 @@ function productGuideLinks(slug) {
 }
 
 function growthProductBody(slug) {
-  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p></details>", "diwali-gift-box": "<details><summary>Do you ship Christmas gift boxes Australia-wide?</summary><p>Yes, Australia-wide. For delivery before Christmas, order by 2pm on Tue 22 Dec for Victoria, Mon 21 Dec for metro NSW, ACT, Qld, SA and Tas, Fri 18 Dec for WA and Wed 16 Dec for NT (Australia Post's last Parcel Post dates; regional areas need a few extra days).</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
+  return {"curry-leaves": "<section><h2>Dried kadi patta vs fresh curry leaves</h2><p>Our 30g pack contains dried whole curry leaves. Fresh supermarket punnets are smaller and contain water, so compare the format as well as the pack weight.</p></section><details><summary>Do you sell curry leaf powder?</summary><p>We sell whole dried leaves only, not curry leaf powder.</p></details>", "diwali-gift-box": "<details><summary>Do you ship Christmas gift boxes Australia-wide?</summary><p>Yes, Australia-wide. For delivery before Christmas, order by 2pm on Mon 21 Dec for Victoria, Fri 18 Dec for metro NSW, ACT, Qld, SA and Tas, Thu 17 Dec for WA and Tue 15 Dec for NT (one business day before Australia Post's last Parcel Post dates, so a 2pm order can still lodge by 2:30pm; regional areas need a few extra days).</p></details><details><summary>Is this a good Indian gift box for friends?</summary><p>It brings together Darjeeling tea, curry leaves from our family farm in Gujarat and soap handmade in Australia. Check your friend’s preferences before choosing.</p></details>", "gift-pack": "", "black-tea": "<section><h2>Loose leaf tea Melbourne (Truganina pickup by arrangement)</h2><p>Our Darjeeling black tea comes in a 100g pack. Order online for delivery or contact us to arrange pickup from Ridley Place, Truganina VIC 3029.</p></section>", "moringa-soap": "<section><h2>Handmade soap Melbourne</h2><p>We handmake our moringa and lavender soap in Australia and pack orders in Truganina. Arrange local pickup or order for delivery.</p></section>"}[slug] || "";
 }
 
 function faqDetails(faqs) {
@@ -1247,10 +1247,10 @@ function faqDetails(faqs) {
 
 const DIWALI_GROWTH_LINKS = "<p>Shopping for Diwali (Sunday 8 November)? See our <a href=\"/blog/diwali-hampers-australia\">Diwali hampers in Australia</a>, <a href=\"/blog/gifts-for-tea-lovers-australia\">gifts for tea lovers under $20</a>, <a href=\"/blog/diwali-gifts-for-friends-curry-leaf-snacks\">Diwali gifts for friends</a> and the <a href=\"/products/diwali-gift-box/\">Christmas gift box</a>. Diwali is Sunday 8 November. Melbourne metro delivery usually takes 1 to 3 business days after dispatch, other metro areas 3 to 4, and regional or rural areas up to 10, so please order soon.</p>";
 const CHRISTMAS_SHIPPING_NOTE =
-  "For Christmas, Australia Post's last metro Parcel Post dates from Victoria are Tue 22 Dec within Victoria, Mon 21 Dec to NSW, ACT, Qld, SA and Tas, Fri 18 Dec to WA and Wed 16 Dec to the NT. Please order well before these dates, and earlier for regional addresses.";
+  "For Christmas, order by Mon 21 Dec within Victoria, Fri 18 Dec to metro NSW, ACT, Qld, SA and Tas, Thu 17 Dec to WA and Tue 15 Dec to the NT. Those are one business day before Australia Post's last metro Parcel Post dates from Victoria, so a 2pm order can still lodge by 2:30pm; regional addresses need a few extra days.";
 const CHRISTMAS_NOTES = {
   from: "2026-11-09",
-  until: "2026-12-22",
+  until: "2026-12-21",
   lines: [CHRISTMAS_SHIPPING_NOTE],
 };
 const FSANZ_PENDING = "<div data-pending=\"fsanz-approval\" hidden><p>In November 2025 FSANZ decided moringa leaf and powder are not permitted as a food or food ingredient for retail sale in Australia. Read the <a href=\"https://www.foodstandards.gov.au/food-standards-code/applications/application-a1294-moringa-oleifera-novel-food\" rel=\"noopener\">FSANZ notice</a>.</p></div>";
@@ -2294,7 +2294,7 @@ const PDP = {
     current: "Shop",
     product: PRODUCTS.find((p) => p.id === "diwali-gift-box"),
     intro:
-      "Our Christmas gift box brings together three things people use after the wrapping paper is gone: 100g of Darjeeling loose leaf black tea from a family farm in Darjeeling, 30g of whole dried curry leaves from our farm in Gujarat, and a 95g moringa and lavender soap bar we handmake in Australia. There's no moringa powder in this box. We pack it in Truganina, Melbourne, ready to give to family, hosts, neighbours, teachers or colleagues. Order by Mon 21 Dec for Christmas delivery to metro areas. Order before 2pm on a weekday for same-day dispatch, posted Australia-wide or picked up in Truganina by arrangement.",
+      "Our Christmas gift box brings together three things people use after the wrapping paper is gone: 100g of Darjeeling loose leaf black tea from a family farm in Darjeeling, 30g of whole dried curry leaves from our farm in Gujarat, and a 95g moringa and lavender soap bar we handmake in Australia. There's no moringa powder in this box. We pack it in Truganina, Melbourne, ready to give to family, hosts, neighbours, teachers or colleagues. Order by Fri 18 Dec for Christmas delivery to metro areas. Order before 2pm on a weekday for same-day dispatch, posted Australia-wide or picked up in Truganina by arrangement.",
     proofs: [
       "No moringa powder",
       "Handmade soap",
@@ -2390,7 +2390,7 @@ const PDP = {
       ],
       [
         "Until when can I order for Christmas?",
-        "For delivery before Christmas, order by 2pm on Tue 22 Dec for Melbourne and Victoria, Mon 21 Dec for metro NSW, ACT, Qld, SA and Tas, Fri 18 Dec for WA and Wed 16 Dec for NT. These are Australia Post's last Parcel Post dates from Victoria; regional areas need a few extra days.",
+        "For delivery before Christmas, order by 2pm on Mon 21 Dec for Melbourne and Victoria, Fri 18 Dec for metro NSW, ACT, Qld, SA and Tas, Thu 17 Dec for WA and Tue 15 Dec for NT. These are one business day before Australia Post's last Parcel Post dates from Victoria, so a 2pm order can still lodge by 2:30pm; regional areas need a few extra days.",
       ],
       ["Gift message?", "Add a note at checkout or email us after you order."],
       ["Bulk orders?", "Contact us with numbers, postcodes and dates."],
@@ -3666,7 +3666,7 @@ function melbournePage() {
   const powder100Href = "/products/moringa-powder/100g/";
   const leavesGuideHref = r.article("where-to-buy-moringa-leaves-australia");
   const christmasOrderLine =
-    "Order by Tue 22 Dec for Christmas delivery in Melbourne.";
+    "Order by Mon 21 Dec for Christmas delivery in Melbourne.";
   const faqs = [
     [
       "Where can I buy curry leaves in Melbourne?",
@@ -4061,7 +4061,7 @@ function journalIndex(articles, opts = {}) {
         <p class="lede">${topicFilter
           ? `Every ${esc(topicFilter.name.toLowerCase())} guide, in one place.`
           : "Clear answers about choosing, using and storing our products—from the team that grows and manufactures our moringa and curry leaves."}</p>
-        ${topicFilter ? "" : `<p class="purchase-note">Christmas gifts: <a href="/products/diwali-gift-box/">$20 Christmas gift box</a> · Order by Mon 21 Dec for Christmas delivery to metro areas.</p>`}
+        ${topicFilter ? "" : `<p class="purchase-note">Christmas gifts: <a href="/products/diwali-gift-box/">$20 Christmas gift box</a> · Order by Fri 18 Dec for Christmas delivery to metro areas.</p>`}
         <form class="journal-search" role="search" data-journal-search-form>
           <label for="journal-search">What would you like to know?</label>
           <div class="journal-search-box">
