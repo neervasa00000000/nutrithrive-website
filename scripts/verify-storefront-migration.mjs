@@ -89,6 +89,10 @@ const approvedSeoChanges = {
     title: "How to Choose Moringa Powder in Australia | Lab Checklist",
     description: "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
   },
+  "blog/dried-curry-leaves-australia-guide.html": {
+    title: "Dried Curry Leaves at Coles, Woolworths & Aldi (2026)",
+    description: "Do Coles or Woolworths sell dried curry leaves? What we found on 9 Nov 2026, Indian grocer prices, and whole dried leaves posted anywhere in Australia.",
+  },
   "blog/verify-moringa-quality-premium-buyers-checklist-2026.html": {
     title: "Farm-Grown vs Certified Moringa Powder: What to Check",
     description: "What a certification label does and doesn't tell you, and how to check farm-grown moringa leaf powder: origin, drying, batch date and lab paperwork.",

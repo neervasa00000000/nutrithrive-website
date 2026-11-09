@@ -275,9 +275,13 @@ const ARTICLE_SEO_OVERRIDES = {
     heroCaptionHtml: `<p class="article-hero-credit"><em>Photo: Pexels</em></p>`,
   },
   "dried-curry-leaves-australia-guide": {
-    title: "Curry Leaves at Woolworths, Coles & Aldi: Where to Buy",
-    description: "Can you buy curry leaves at Woolworths, Coles or Aldi? What each listed in Oct 2026 (fresh punnets, dried packs), Indian grocers, online and storage tips.",
-    h1: "Where to Buy Curry Leaves in Australia: Woolworths, Coles, Aldi and Online",
+    title: "Dried Curry Leaves at Coles, Woolworths & Aldi (2026)",
+    description: "Do Coles or Woolworths sell dried curry leaves? What we found on 9 Nov 2026, Indian grocer prices, and whole dried leaves posted anywhere in Australia.",
+    h1: "Dried curry leaves in Australia: Coles, Woolworths, Aldi and Indian grocers",
+    ogTitle: "Dried Curry Leaves at Coles, Woolworths & Aldi (2026)",
+    ogDescription: "Do Coles or Woolworths sell dried curry leaves? What we found on 9 Nov 2026, Indian grocer prices, and whole dried leaves posted anywhere in Australia.",
+    ledeHtml: "Coles, Woolworths and Aldi online checks on 9 November 2026: who lists dried curry leaves, what Indian grocers charge, and a whole-leaf pantry pouch from Truganina.",
+    articleSection: "Curry leaves",
   },
   "darjeeling-black-tea-australia-guide": {
     title: "Where to Buy Darjeeling Tea in Australia (2026 Guide)",
@@ -761,7 +765,6 @@ const CURATED_RELATED = {
   ],
   "dried-curry-leaves-australia-guide": [
     "dried-curry-leaves-quality-guide-how-to-use",
-    "curry-leaves-recipes-beyond-dal",
     "curry-leaves-substitute-what-to-use-2026",
   ],
   "dried-curry-leaves-quality-guide-how-to-use": [
