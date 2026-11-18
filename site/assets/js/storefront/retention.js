@@ -117,11 +117,17 @@
   function auThreshold() {
     const fromRates = window.ShippingRates?.getAuFreeShippingProgressTarget?.();
     const n = Number(fromRates);
-    return Number.isFinite(n) && n > 0 ? n : 79;
+    return Number.isFinite(n) && n > 0 ? n : 49;
   }
 
   function money(n) {
     return `$${Number(n).toFixed(2)}`;
+  }
+
+  function shipAwayLabel(amount) {
+    const n = Math.max(0, Number(amount) || 0);
+    const rounded = Math.round(n * 100) / 100;
+    return Number.isInteger(rounded) ? `$${rounded}` : `$${rounded.toFixed(2)}`;
   }
 
   function esc(value) {
@@ -244,11 +250,9 @@
       remaining,
       unlocked,
       percent: Math.min(100, Math.max(0, (sub / threshold) * 100)),
-      message: !sub
-        ? `Free Australian shipping from ${money(threshold)}`
-        : unlocked
-          ? "You've unlocked free Australian shipping"
-          : `${money(remaining)} away from free Australian shipping`,
+      message: unlocked
+        ? "You've unlocked FREE AU shipping"
+        : `You're ${shipAwayLabel(remaining)} away from FREE shipping`,
     };
   }
 

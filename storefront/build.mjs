@@ -28,10 +28,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261026-performance-2";
+const ASSET_VERSION = "20261119-cro-1";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261017-1";
-const CSS_ASSET_VERSION = "20261026-city-range-1";
+const CSS_ASSET_VERSION = "20261119-cro-1";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
@@ -1281,7 +1281,7 @@ function googleReviewsSection() {
   <div class="wrap">
     <div class="reviews-head">
       <span class="stars">${starIcons}</span>
-      <span class="reviews-score">4.9 · Google reviews</span>
+      <span class="reviews-score">4.9 stars (12 Google reviews)</span>
     </div>
     <div class="review-grid review-scroll" aria-label="Google reviews">
       ${reviews.map(
@@ -1827,9 +1827,41 @@ function writePage(rel, html, destRoot = OUT) {
   fs.writeFileSync(file, cacheBusted);
 }
 
+function christmasGiftSection() {
+  const giftImg = "/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp";
+  const boxImg = "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp";
+  return `<section class="section christmas-gifts" id="christmas-gifts" aria-labelledby="christmas-gifts-heading">
+  <div class="wrap">
+    <p class="kicker">Christmas</p>
+    <h2 id="christmas-gifts-heading">Gift Pack $35 and Christmas Gift Box $20</h2>
+    <p class="christmas-order-by">Order by 21 Dec in VIC for Christmas.</p>
+    <ul class="christmas-cutoffs">
+      <li>VIC: Mon 21 Dec</li>
+      <li>Metro NSW, ACT, Qld, SA and Tas: Fri 18 Dec</li>
+      <li>WA: Thu 17 Dec</li>
+      <li>NT: Tue 15 Dec</li>
+    </ul>
+    <div class="christmas-grid">
+      <article class="christmas-card">
+        <a href="/products/gift-pack/"><img src="${giftImg}" ${cardSrcset(giftImg, "(max-width: 760px) calc(100vw - 32px), 280px")} alt="NutriThrive Gift Pack with moringa, tea, curry leaves and soap" width="600" height="600" loading="lazy"></a>
+        <h3><a href="/products/gift-pack/">Gift Pack $35</a></h3>
+        <p>Darjeeling tea, curry leaves, handmade soap and 100g moringa powder. Packed in Truganina.</p>
+        <a class="btn btn-primary" href="/products/gift-pack/">Shop Gift Pack</a>
+      </article>
+      <article class="christmas-card">
+        <a href="/products/diwali-gift-box/"><img src="${boxImg}" ${cardSrcset(boxImg, "(max-width: 760px) calc(100vw - 32px), 280px")} alt="Darjeeling tea in the NutriThrive Christmas Gift Box" width="600" height="600" loading="lazy"></a>
+        <h3><a href="/products/diwali-gift-box/">Christmas Gift Box $20</a></h3>
+        <p>Darjeeling tea, curry leaves and handmade soap. No moringa powder in this box.</p>
+        <a class="btn btn-secondary" href="/products/diwali-gift-box/">Shop Christmas Box</a>
+      </article>
+    </div>
+  </div>
+</section>`;
+}
+
 function homepage() {
   const featured = ["moringa-powder", "curry-leaves", "black-tea", "moringa-soap"].map(id => PRODUCTS.find(p => p.id === id));
-  const heroProducts = featured;
+  const heroImage = "/assets/images/product_webp/moringa-powder-100g-main.webp";
   const liveSeo = LIVE_MODE ? extractSeo(path.join(SITE, "index.html")) : null;
   const desk = deskSeo("/");
   return layout({
@@ -1843,26 +1875,35 @@ function homepage() {
     preserveTitle: Boolean(desk.title || liveSeo?.title),
     preserveDescription: Boolean(desk.description || liveSeo?.description),
     robots: liveSeo?.robots || undefined,
-    extraHead: `${productImagePreload("/assets/images/product_webp/moringa-powder-100g-main.webp", "(max-width: 760px) calc((100vw - 52px) / 2), (max-width: 1100px) 24vw, 300px")}
+    extraHead: `${productImagePreload(heroImage, "(max-width: 760px) calc(100vw - 32px), min(520px, 46vw)")}
   ${jsonLd(websiteSchema())}
   ${jsonLd({ "@context": "https://schema.org", "@type": "WebPage", "@id": `${LIVE}/#webpage`, url: `${LIVE}/`, name: "NutriThrive", isPartOf: { "@id": `${LIVE}/#website` }, ...pageDateFields() })}`,
     main: `
-<section class="hero hero-compact">
+<section class="hero hero-moringa">
   <div class="wrap hero-grid">
     <div>
-      <p class="kicker">The NutriThrive collection</p>
-      <h1>${esc(deskSeo("/").h1 || "Pure moringa. Nothing unnecessary.")}</h1>
-      <p class="lede">Farm-grown moringa and curry leaves. Darjeeling tea. Handmade soap. Thoughtful gifts. Packed with care in Truganina, Melbourne.</p>
+      <p class="kicker">100% moringa leaf · Packed in Truganina</p>
+      <h1>Moringa Powder $11 / 100g</h1>
+      <p class="lede">Farm-grown, sun-dried, NMI lab-tested in Australia. Packed in Truganina, Melbourne.</p>
+      <ul class="trust-badges" aria-label="Trust">
+        <li>NMI Lab Tested</li>
+        <li>4.9 stars (12 Google reviews)</li>
+        <li>Free AU Shipping $49+</li>
+      </ul>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/products/">Shop the collection</a>
-        <a class="text-link" href="/products/moringa-powder/">Explore moringa →</a>
+        <a class="btn btn-primary" href="/products/moringa-powder/">Shop Moringa - $11</a>
+        <a class="btn btn-secondary" href="/blog/moringa-brands-comparison-australia-2026">Compare Prices</a>
       </div>
     </div>
-    <div class="hero-collection" aria-label="Explore NutriThrive products">
-      ${heroProducts.map((product, index) => `<a class="hero-collection-item" href="${product.href}"><img src="${product.image}" ${cardSrcset(product.image, "(max-width: 760px) calc((100vw - 52px) / 2), (max-width: 1100px) 24vw, 300px")} alt="${esc(product.name)}" width="600" height="600" ${index === 0 ? 'fetchpriority="high"' : 'loading="eager"'}><span>${esc(product.name)}</span></a>`).join("")}
+    <div class="hero-product">
+      <img src="${heroImage}" ${cardSrcset(heroImage, "(max-width: 760px) calc(100vw - 32px), min(520px, 46vw)")} alt="NutriThrive moringa leaf powder, 100g pouch" width="1254" height="1254" fetchpriority="high">
     </div>
   </div>
+  <div class="wrap">
+    <p class="price-compare">NutriThrive $11/100g vs Rosabella ~$217/100g vs Chemist Warehouse capsules ~$132/100g. Rosabella is $52 for 60 capsules (24g leaf). Chemist Warehouse figure is capsules, not loose powder.</p>
+  </div>
 </section>
+${christmasGiftSection()}
 <section class="section">
   <div class="wrap">
     <div class="section-head">
@@ -1871,14 +1912,10 @@ function homepage() {
       </div>
       <a href="/shop/">Shop all</a>
     </div>
-    <div class="product-grid product-scroll" aria-label="Featured product range">${featured.map((product, index) => productCard(product, index === 0, { title: product.id === "moringa-powder" ? "Moringa Powder 100g" : product.id === "moringa-200g" ? "Moringa Powder 200g" : "" })).join("")}</div>
+    <div class="product-grid product-scroll" aria-label="Featured product range">${featured.map((product) => productCard(product, false, { title: product.id === "moringa-powder" ? "Moringa Powder 100g" : product.id === "moringa-200g" ? "Moringa Powder 200g" : "" })).join("")}</div>
 
   </div>
 </section>
-<section class="section home-feature"><div class="wrap home-feature-grid">
-  <a class="home-feature-image" href="/products/gift-pack/"><img src="/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp" ${cardSrcset("/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp", "(max-width: 760px) calc(100vw - 36px), 48vw")} alt="NutriThrive gift pack with moringa, tea, curry leaves and soap" width="900" height="900" loading="lazy"></a>
-  <div><p class="kicker">Made to share</p><h2>A good gift, beautifully simple.</h2><p>Tea, curry leaves, handmade soap and moringa, brought together in our $35 gift pack. ${diwaliGiftListingOpen() ? "For Diwali, choose the tea, curry leaf and soap box for $20." : "For Christmas, choose the tea, curry leaf and soap Christmas gift box for $20."}</p><div class="hero-actions"><a class="btn btn-primary" href="/products/gift-pack/">Explore gift packs</a><a href="/products/diwali-gift-box/">Christmas Gift Box →</a></div><details class="gift-guide-disclosure"><summary>${diwaliGiftListingOpen() ? "Diwali gift guides and delivery" : "Gift guides and Christmas delivery"}</summary>${diwaliGiftListingOpen() ? `${DIWALI_GROWTH_LINKS}<p><a href="/blog/diwali-gift-guide-curry-leaves-tea-australia">Diwali gift guide</a></p>` : `<p>${esc(CHRISTMAS_SHIPPING_NOTE)}</p>`}</details></div>
-</div></section>
 <section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
 ${googleReviewsSection()}`,
   });
@@ -1964,8 +2001,8 @@ const PDP = {
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack", "moringa-soap-combo"].includes(p.id)
     ),
     variantLabels: {
-      "moringa-powder": "100g · $11",
-      "moringa-200g": "200g · $22",
+      "moringa-powder": "100g · $11 · $11 per 100g",
+      "moringa-200g": "200g · $22 · $11 per 100g",
       "moringa-400g": "400g · $40 · $10 per 100g",
       "combo-pack": "Combo pack · $17 · Moringa + curry leaves",
       "moringa-soap-combo": "Powder + soap · $17 · 100g moringa + 95g bar",
@@ -1993,9 +2030,9 @@ const PDP = {
     origin: "Grown on our own farm. Packed in Truganina, Melbourne.",
     process: "We grow, harvest, sun-dry and mill the leaves, arrange testing in Australia, then pack in small runs in Truganina.",
     storage: "Keep it sealed, somewhere cool and dry. Lasts 1 year once opened.",
-    safety: "Start with a small amount. If you are pregnant, breastfeeding, taking prescription medication or managing a health condition, ask your healthcare professional before regular use.",
+    safety: "Moringa leaf powder is a nutrient-dense food to use as part of a balanced diet. Start with a small amount. Talk to your GP if pregnant, breastfeeding, on medication, or managing a health condition.",
     what: "Bright green powder with a mild, spinach-like smell when you open it. We sun-dry the leaves and publish the NMI nutrition summary for batch NT042024.",
-    use: "Add 1 teaspoon (about 3 to 5 grams) to smoothies, juice, or water. Works in soups and salads. Straight in water, most people dislike the flavour. Mixed into food, most people barely notice it.",
+    use: "Start with 1/4 to 1/2 tsp in a smoothie, yoghurt, soup or eggs. Start small.",
     faqs: [
       [
         "Where is NutriThrive moringa powder shipped from?",
@@ -2029,7 +2066,7 @@ const PDP = {
       ],
       [
         "Are you certified?",
-        "We're not certified. Our leaf is farm-grown and tested by NMI. If certification matters to you, buy a certified brand and compare the price per 100g and the lab paperwork.",
+        "Farm-grown, not certified organic. Our leaf is tested by NMI. If certification matters to you, buy a certified brand and compare the price per 100g and the lab paperwork.",
       ],
       [
         "Does NutriThrive offer free shipping?",
@@ -2439,6 +2476,84 @@ function verifyProductOfferSchema(productSchema, contextLabel = "Product") {
   }
 }
 
+function powderPer100Label(product) {
+  if (!product) return "";
+  if (product.id === "moringa-400g") return "$10 per 100g";
+  if (product.id === "moringa-powder" || product.id === "moringa-200g") return "$11 per 100g";
+  return "";
+}
+
+function moringaSizePrices(selectedId) {
+  const sizes = ["moringa-powder", "moringa-200g", "moringa-400g"]
+    .map((id) => PRODUCTS.find((item) => item.id === id))
+    .filter(Boolean);
+  return `<div class="pdp-size-prices" role="list" aria-label="Price per 100 grams">${sizes
+    .map((item) => {
+      const grams = item.id === "moringa-powder" ? "100g" : item.id === "moringa-200g" ? "200g" : "400g";
+      return `<button type="button" class="pdp-size-price${item.id === selectedId ? " is-selected" : ""}" data-select-variant="${item.id}">
+        <span>${grams}</span><strong>${money(item.price)}</strong><small>${powderPer100Label(item)}</small>
+      </button>`;
+    })
+    .join("")}</div>`;
+}
+
+function bundlePayload(items) {
+  return esc(
+    JSON.stringify(
+      items.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        image: item.image,
+        href: item.href,
+        variant: item.variant,
+        weight: item.weight || 0,
+      }))
+    )
+  );
+}
+
+function moringaBundleCards() {
+  const powder = PRODUCTS.find((item) => item.id === "moringa-400g");
+  const soap = PRODUCTS.find((item) => item.id === "moringa-soap-combo");
+  const curry = PRODUCTS.find((item) => item.id === "combo-pack");
+  const card = (title, items) => `<article class="bundle-card">
+      <h3>${title}</h3>
+      <button class="btn btn-primary" type="button" data-add-bundle="${bundlePayload(items)}" data-label="Add bundle · $57">Add bundle · $57</button>
+    </article>`;
+  return `<section class="bundle-cards" aria-label="Reach free shipping">
+    <h2>Reach FREE shipping</h2>
+    ${card("400g Moringa $40 + Moringa Soap $17 = $57", [powder, soap])}
+    ${card("400g $40 + Curry Leaves $17 = $57", [powder, curry])}
+  </section>`;
+}
+
+function moringaSubscribeWaitlist(visible) {
+  return `<div class="subscribe-waitlist" data-subscribe-waitlist ${visible ? "" : "hidden"}>
+    <p class="subscribe-waitlist__offer"><strong>Subscribe &amp; Save 10%</strong></p>
+    <p>400g every 60 days - $36, pause or cancel anytime.</p>
+    <p>This is a waitlist only. It does not start a subscription or take payment.</p>
+    <form class="subscribe-form" name="subscription-waitlist" method="POST" action="/pages/newsletter/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" data-subscribe-form>
+      <input type="hidden" name="form-name" value="subscription-waitlist">
+      <input type="hidden" name="offer" value="400g every 60 days at $36">
+      <p class="visually-hidden"><label>Don’t fill this in <input name="bot-field"></label></p>
+      <label for="subscribe-email">Email</label>
+      <div class="subscribe-form__row">
+        <input id="subscribe-email" name="email" type="email" autocomplete="email" required>
+        <button class="btn btn-secondary" type="submit">Join waitlist for subscription</button>
+      </div>
+      <p class="form-status" data-subscribe-status role="status"></p>
+    </form>
+  </div>`;
+}
+
+function shipBarHtml() {
+  return `<div class="ship-bar-space" data-ship-space></div><div class="ship-bar" data-ship-bar role="status">
+    <p data-ship-bar-text>You're $49 away from FREE shipping</p>
+    <div class="ship-bar__track" data-ship-bar-track role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="49" aria-valuenow="0" aria-valuetext="You're $49 away from FREE shipping"><span data-ship-bar-fill></span></div>
+  </div>`;
+}
+
 function pdpPage(slug, d) {
   const p = d.product;
   const canonicalPath = d.canonicalPath || `/products/${slug}/`;
@@ -2546,6 +2661,23 @@ function pdpPage(slug, d) {
       ...offerShippingAndReturns(p.weight),
     };
   }
+  if (slug === "moringa-powder") {
+    productSchema.hasVariant = [powder100, powder200, powder400].filter(Boolean).map((item) => ({
+      "@type": "Product",
+      name: `Moringa Powder ${item.id === "moringa-400g" ? "400g" : item.variant}`,
+      sku: item.sku,
+      image: absUrl(item.image),
+      offers: {
+        "@type": "Offer",
+        url: `${LIVE}${item.href}`,
+        priceCurrency: "AUD",
+        price: String(item.price),
+        availability: "https://schema.org/InStock",
+        seller: { "@id": `${LIVE}/#localbusiness` },
+        ...offerShippingAndReturns(item.weight),
+      },
+    }));
+  }
   verifyProductOfferSchema(productSchema, canonicalPath);
   const crumbTrail = [
     { name: "Home", item: `${LIVE}/` },
@@ -2598,6 +2730,7 @@ function pdpPage(slug, d) {
         : "") +
       jsonLd(breadcrumbSchema(crumbTrail)),
     main: `
+      ${shipBarHtml()}
       <nav class="wrap crumbs" aria-label="Breadcrumb">
         <a href="/">Home</a> / <a href="/shop/">Shop</a> / <span data-pdp-crumb>${esc(p.name)}</span>
       </nav>
@@ -2621,17 +2754,21 @@ function pdpPage(slug, d) {
         </div>
         <div class="pdp-buy" id="pdp-buy">
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>${mainPowder ? `
-          <p class="pdp-intro">Farm-grown, sun-dried moringa leaf. Nothing added. Packed in Truganina. <a href="/documents/nutrithrive-lab-report-summary.pdf">See the NMI summary for batch NT042024</a>.</p>` : ""}
-          <p class="stock-status"><span aria-hidden="true"></span> In stock · ready to dispatch</p>
+          <p class="pdp-intro">100% moringa leaf only. No fillers, no binders, no flow agents. Farm-grown, not certified organic. Sun-dried and packed in Truganina, Melbourne.</p>` : ""}
+          <p class="stock-status"><span aria-hidden="true"></span> ${slug === "moringa-powder" ? "In Stock - Packed in Truganina" : "In stock · ready to dispatch"}</p>
+          ${slug === "moringa-powder" ? `<p class="dispatch-note">Order before 2pm for same-day dispatch</p>` : ""}
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
+          ${slug === "moringa-powder" ? `<p class="pdp-unit-label" data-pdp-unit-price>${powderPer100Label(buyProduct)}</p>${moringaSizePrices(selectedVariantId)}` : ""}
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
-            <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
-            <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all</a>
+            <a class="pdp-proof-rating" href="#reviews">${stars()}<span>4.9 stars (12 Google reviews)</span></a>
+            <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">Google Business Profile</a>
           </div>
+          ${slug === "moringa-powder" ? `<p class="pdp-lab-link"><a href="/documents/nutrithrive-lab-report-summary.pdf">Read NMI Lab Summary (PDF)</a></p>` : ""}
           ${slug === "moringa-powder" ? "" : `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(p.detail || p.benefit)}</p>`}
-          ${slug === "moringa-powder" ? `<p class="pdp-from-price">From $${powder100.price}</p>` : ""}
+          ${slug === "moringa-powder" ? "" : ""}
           ${variantSelect}
           ${variantHint}
+          ${slug === "moringa-powder" ? `<section class="pdp-how-to" aria-labelledby="how-to-use-moringa"><h2 id="how-to-use-moringa">How to use</h2><p>Start with 1/4 to 1/2 tsp in a smoothie, yoghurt, soup or eggs. Start small. Moringa leaf powder is a nutrient-dense food to use as part of a balanced diet.</p></section>` : ""}
           <div class="purchase-panel">
             <div class="qty">
               <label for="qty">Quantity</label>
@@ -2646,10 +2783,13 @@ function pdpPage(slug, d) {
             </div>
             ${factsLine}
           </div>
+          ${slug === "moringa-powder" ? moringaBundleCards() : ""}
+          ${slug === "moringa-powder" ? moringaSubscribeWaitlist(buyProduct.id === "moringa-400g") : ""}
           ${slug === "moringa-powder" && !mainPowder ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
 
         </div>
       </section>
+      ${slug === "moringa-powder" ? christmasGiftSection() : ""}
       <div class="pdp-sticky-atc" data-pdp-sticky-atc hidden role="region" aria-label="Quick add to cart">
         <div class="pdp-sticky-atc__info">
           <span class="pdp-sticky-atc__name" data-pdp-sticky-name>${esc(buyProduct.name)}</span>
@@ -2690,10 +2830,10 @@ function pdpPage(slug, d) {
           </section>
           </div></div>
           <section class="pdp-reviews" id="reviews">
-            <div class="reviews-head"><h2>Google reviews of NutriThrive</h2>${stars()} <span>from 12 Google reviews</span></div>
-            <div class="review-grid review-scroll" aria-label="Google reviews of NutriThrive">${reviews.slice(0, 2).map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>Verified Google review</div></blockquote>`).join("")}</div>
-            <p class="review-disclosure">Reviews of NutriThrive (the business, not this product) from our Google Business Profile.</p>
-            <p><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">See all Google reviews</a></p>
+            <div class="reviews-head"><h2>Google reviews of NutriThrive</h2>${stars()} <span>${slug === "moringa-powder" ? "4.9 stars from 12 Google reviews" : "from 12 Google reviews"}</span></div>
+            <div class="review-grid review-scroll" aria-label="Google reviews of NutriThrive">${(slug === "moringa-powder" ? REVIEWS : reviews.slice(0, 2)).map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>${review.stars ? ` ${review.stars} stars` : ""} · Verified Google review</div></blockquote>`).join("")}</div>
+            <p class="review-disclosure">4.9 stars from 12 Google reviews. The quotes below are from that Google Business Profile. Reviews are of NutriThrive, not this product alone.</p>
+            <p><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">Google Business Profile</a></p>
           </section>
           <section class="product-guides" aria-labelledby="product-guides-${esc(slug)}">
             <div>
@@ -3268,6 +3408,7 @@ function cartPage() {
 <script defer>document.addEventListener("DOMContentLoaded",function(){if(window.NT&&typeof window.NT.renderCart==="function")window.NT.renderCart();});</script>`,
     robots: "noindex, nofollow",
     main: `
+      ${shipBarHtml()}
       <section class="page-intro wrap cart-intro">
         <div>
           <p class="eyebrow">Your order</p>

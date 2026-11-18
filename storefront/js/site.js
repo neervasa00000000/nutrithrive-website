@@ -79,11 +79,60 @@ function trackEvent(name, params = {}) {
 function trackEcommerce(name, items, extra = {}) {
   const rows = analyticsItems(items);
   const value = rows.reduce((total, item) => total + item.price * item.quantity, 0);
+  // GA4 (G-WH21SW75WP) already sends view_item, add_to_cart, begin_checkout and purchase.
+  // TODO: Meta Pixel is not installed. The privacy page says we do not use advertising pixels.
+  // Do not add a pixel ID here. If one is approved later, map those same four events only.
   return trackEvent(name, {
     currency: "AUD",
     value: Number(value.toFixed(2)),
     items: rows,
     ...extra,
+  });
+}
+
+const FREE_SHIP_AUD = 49;
+
+function shipAwayLabel(amount) {
+  const n = Math.max(0, Number(amount) || 0);
+  const rounded = Math.round(n * 100) / 100;
+  return Number.isInteger(rounded) ? `$${rounded}` : `$${rounded.toFixed(2)}`;
+}
+
+function shipBarMessage(subtotal) {
+  const sub = Number(subtotal) || 0;
+  if (sub >= FREE_SHIP_AUD) return "You've unlocked FREE AU shipping";
+  return `You're ${shipAwayLabel(FREE_SHIP_AUD - sub)} away from FREE shipping`;
+}
+
+function placeShipBars() {
+  const header = document.querySelector(".site-header");
+  const top = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
+  document.querySelectorAll("[data-ship-bar]").forEach((bar) => {
+    bar.style.top = `${top}px`;
+    const space = bar.previousElementSibling;
+    if (space?.hasAttribute("data-ship-space")) space.style.height = `${bar.offsetHeight}px`;
+  });
+}
+
+function updateShipBars() {
+  const bars = document.querySelectorAll("[data-ship-bar]");
+  if (!bars.length || !window.NT?.subtotal) return;
+  placeShipBars();
+  const sub = window.NT.subtotal();
+  const text = shipBarMessage(sub);
+  const percent = Math.min(100, Math.max(0, (sub / FREE_SHIP_AUD) * 100));
+  bars.forEach((bar) => {
+    bar.hidden = false;
+    bar.classList.toggle("is-complete", sub >= FREE_SHIP_AUD);
+    const label = bar.querySelector("[data-ship-bar-text]");
+    if (label) label.textContent = text;
+    const fill = bar.querySelector("[data-ship-bar-fill]");
+    if (fill) fill.style.width = `${percent}%`;
+    const track = bar.querySelector("[data-ship-bar-track]");
+    if (track) {
+      track.setAttribute("aria-valuenow", String(Math.min(FREE_SHIP_AUD, Math.round(sub * 100) / 100)));
+      track.setAttribute("aria-valuetext", text);
+    }
   });
 }
 
@@ -407,6 +456,64 @@ function bindHeader() {
     });
   }
 
+  document.querySelectorAll("[data-add-bundle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const raw = btn.getAttribute("data-add-bundle");
+      if (!raw) return;
+      try {
+        const items = JSON.parse(raw);
+        if (!Array.isArray(items) || !items.length) return;
+        items.forEach((product) => window.NT.addToCart(product, 1));
+        btn.textContent = "Added";
+        setTimeout(() => {
+          btn.textContent = btn.getAttribute("data-label") || "Add bundle · $57";
+        }, 1400);
+      } catch (err) {
+        console.error("Could not add bundle", err);
+      }
+    });
+  });
+
+  document.querySelectorAll("[data-select-variant]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const select = document.getElementById("variant");
+      const id = btn.getAttribute("data-select-variant");
+      if (!select || !id) return;
+      select.value = id;
+      select.dispatchEvent(new Event("change"));
+    });
+  });
+
+  document.querySelectorAll("[data-subscribe-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      if (document.documentElement.dataset.ntLive === "1") return;
+      event.preventDefault();
+      const email = form.querySelector('input[name="email"]');
+      const status = form.querySelector("[data-subscribe-status]");
+      if (!email?.checkValidity()) {
+        if (status) status.textContent = "Enter a valid email address.";
+        email?.focus();
+        return;
+      }
+      const record = {
+        email: email.value.trim(),
+        offer: "400g every 60 days at $36",
+        source: "subscription-waitlist",
+        joinedAt: new Date().toISOString(),
+        previewOnly: true,
+      };
+      try {
+        const existing = JSON.parse(localStorage.getItem("nt-subscription-waitlist") || "[]");
+        existing.push(record);
+        localStorage.setItem("nt-subscription-waitlist", JSON.stringify(existing));
+      } catch {
+        /* storage can be disabled */
+      }
+      if (status) status.textContent = "You're on the waitlist. This does not start a subscription or take payment.";
+      form.reset();
+    });
+  });
+
   document.querySelectorAll("[data-add]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const raw = btn.getAttribute("data-add");
@@ -685,6 +792,16 @@ function applyPdpVariant(id, writeUrl) {
     gallery.classList.toggle("is-wide", id === "moringa-400g" || id === "combo-pack" || id === "moringa-soap-combo");
   }
   if (bestValue) bestValue.hidden = id !== "moringa-400g";
+  const unit = document.querySelector("[data-pdp-unit-price]");
+  if (unit) {
+    unit.textContent =
+      id === "moringa-400g" ? "$10 per 100g" : id === "moringa-powder" || id === "moringa-200g" ? "$11 per 100g" : "";
+  }
+  document.querySelectorAll("[data-select-variant]").forEach((button) => {
+    button.classList.toggle("is-selected", button.getAttribute("data-select-variant") === id);
+  });
+  const subscribe = document.querySelector("[data-subscribe-waitlist]");
+  if (subscribe) subscribe.hidden = id !== "moringa-400g";
   if (addBtn) {
     addBtn.setAttribute(
       "data-add",
@@ -949,6 +1066,10 @@ if (document.readyState === "loading") {
     bindGrowthFeatures();
     bindJournalSearch();
     bindArticleReadingDepth();
+    updateShipBars();
+    window.addEventListener("nt-cart-change", updateShipBars);
+    window.addEventListener("scroll", placeShipBars, { passive: true });
+    window.addEventListener("resize", placeShipBars);
     setTimeout(() => emitCartChange(), 0);
   });
 } else {
@@ -958,5 +1079,9 @@ if (document.readyState === "loading") {
   bindGrowthFeatures();
   bindJournalSearch();
   bindArticleReadingDepth();
+  updateShipBars();
+  window.addEventListener("nt-cart-change", updateShipBars);
+  window.addEventListener("scroll", placeShipBars, { passive: true });
+  window.addEventListener("resize", placeShipBars);
   setTimeout(() => emitCartChange(), 0);
 }

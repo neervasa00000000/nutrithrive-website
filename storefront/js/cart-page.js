@@ -28,6 +28,12 @@ function money(n) {
   return `$${Number(n).toFixed(2)}`;
 }
 
+function shipAwayLabel(amount) {
+  const n = Math.max(0, Number(amount) || 0);
+  const rounded = Math.round(n * 100) / 100;
+  return Number.isInteger(rounded) ? `$${rounded}` : `$${rounded.toFixed(2)}`;
+}
+
 function esc(s) {
   return String(s)
     .replaceAll("&", "&amp;")
@@ -308,8 +314,8 @@ function renderCart() {
       unlocked: sub >= auFreeShip(),
       percent: Math.min(100, Math.max(0, (sub / auFreeShip()) * 100)),
       message: sub >= auFreeShip()
-        ? "You've unlocked free Australian shipping"
-        : `${money(auFreeShip() - sub)} away from free Australian shipping`,
+        ? "You've unlocked FREE AU shipping"
+        : `You're ${shipAwayLabel(auFreeShip() - sub)} away from FREE shipping`,
     };
     const progressHtml = window.NTRetention?.progressHtml?.(sub, { track: true }) || `<div class="shipping-progress ${progress.unlocked ? "is-complete" : ""}">
       <div class="shipping-progress__copy"><strong>${esc(progress.message)}</strong><span>${money(progress.threshold)} target</span></div>
