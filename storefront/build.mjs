@@ -36,6 +36,7 @@ const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
 const MONEY_BLOG_EDITS = JSON.parse(fs.readFileSync(path.join(__dirname, "content/money-blogs.json"), "utf8"));
+const NEW_BLOGS = JSON.parse(fs.readFileSync(path.join(__dirname, "content/new-blogs.json"), "utf8"));
 function deskSeo(urlPath) {
   if (!urlPath) return {};
   return DESK_SEO[urlPath] || DESK_SEO[urlPath.endsWith("/") ? urlPath.slice(0, -1) : `${urlPath}/`] || {};
@@ -1866,7 +1867,7 @@ function writePage(rel, html, destRoot = OUT) {
       process.env.STOREFRONT_REFRESH_PROTECTED_BLOGS !== "1" && fs.existsSync(path.join(destRoot, rel))) return;
   // Preserve existing HOLD articles during the October growth pass.
   // The kids dosage guide is an exception: its title, meta and end CTA are updated in this build.
-  const heldException = /is-moringa-safe-for-children-kids-dosage-2026/.test(rel);
+  const heldException = /is-moringa-safe-for-children-kids-dosage-2026/.test(rel) || Boolean(NEW_BLOGS[protectedSlug]);
   if (!heldException && /^(?:blog|journal)\//.test(rel) && /health|pregnan|children|kids|dogs?|medical|blood|thyroid|cholesterol|pcos|menopause|anxiety|stress|gut|weight|sleep|iron|vitamin|magnesium|cortisol|berberine|inflamm|workout|pre-workout|side-effects|safe-for|diabet|allerg|medicat|liver|kidney|breast|detox|fertil|hormone|immune|dosage|powder-per-day|benefits-for-women|deficien/i.test(rel) && fs.existsSync(path.join(destRoot, rel))) return;
   html = applyLivePaths(html);
   const file = path.join(destRoot, rel);
@@ -4348,7 +4349,7 @@ function extractFaqPageSchema(slug) {
 }
 
 function extractArticleProse(slug, fallbackHtml) {
-  const moneyBlog = MONEY_BLOG_EDITS[slug];
+  const moneyBlog = MONEY_BLOG_EDITS[slug] || NEW_BLOGS[slug];
   if (moneyBlog) return fs.readFileSync(path.join(__dirname, "content", moneyBlog.source), "utf8");
   const file = path.join(SITE, "blog", `${slug}.html`);
   let html = "";
@@ -4640,7 +4641,7 @@ const FORCE_BLOG_SEO = {
   "moringa-powder-hair-growth-australia-2026": {
     title: "Moringa Powder for Hair Growth Australia: What It Can & Cannot Do",
     h1: "Moringa Powder for Hair Growth in Australia",
-    description: "Moringa powder for hair growth in Australia? Searches are up 150% in 2026. It is not a hair-loss treatment. It is a food that adds iron, zinc, vitamin A and protein to your diet. NutriThrive leaf powder is $11 for 100g, packed in Truganina."
+    description: "Moringa powder for hair growth in Australia: food, not a hair-loss treatment. Evidence, nutrition limits and when to see your GP. Leaf powder $11/100g."
   },
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
     title: "Moringa Powder Chemist Warehouse vs NutriThrive $11 - Price Per 100g Compared",
@@ -4679,7 +4680,7 @@ const FORCE_BLOG_SEO = {
 };
 
 function articlePage(meta, prose, allArticles, liveSeo = null) {
-  const moneyBlog = MONEY_BLOG_EDITS[meta.slug];
+  const moneyBlog = MONEY_BLOG_EDITS[meta.slug] || NEW_BLOGS[meta.slug];
   if (moneyBlog) allArticles = allArticles.filter(article => !NOINDEX_BLOG_SLUGS.has(article.slug) && !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug));
   const shop = journalProduct(meta) || PRODUCTS[0];
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
@@ -4739,8 +4740,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     dates.modifiedLabel = "19 Nov 2026";
   }
   const gitDates = !dates.publishedIso || !dates.modifiedIso ? gitFileDates(`site/blog/${meta.slug}.html`) : { published: "", modified: "" };
-  const schemaPublished = dates.publishedIso || gitDates.published;
-  const schemaModified = dates.modifiedIso || gitDates.modified || schemaPublished;
+  const schemaPublished = moneyBlog?.published || dates.publishedIso || gitDates.published;
+  const schemaModified = moneyBlog?.modified || dates.modifiedIso || gitDates.modified || schemaPublished;
   if (!schemaPublished) skippedArticleDates.push(meta.slug);
   const structuredWithModified = preservedStructuredData
     ? preservedStructuredData.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (match, raw) => {
@@ -4752,6 +4753,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           }
           if (moneyBlog && data["@type"] === "FAQPage") return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
             if (data["@type"] === "Article" || data["@type"] === "BlogPosting") {
+            if (meta.slug === "moringa-powder-hair-growth-australia-2026") data.description = description;
             if (data.author && typeof data.author === "object" && !Array.isArray(data.author)) data.author.name = "Neer Vasa, NutriThrive founder";
             if (moneyBlog) {
               data.headline = displayH1;
@@ -4894,7 +4896,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         inLanguage: "en-AU",
       })}
   ${jsonLd(breadcrumbSchema(breadcrumbItems))}`;
-  const extraFaq = preservedStructuredData.includes("FAQPage") ? "" : extractFaqPageSchema(meta.slug);
+  const extraFaq = preservedStructuredData.includes("FAQPage") ? "" : moneyBlog?.faqs?.length
+    ? jsonLd({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: moneyBlog.faqs.map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) })
+    : extractFaqPageSchema(meta.slug);
   const underH1 = meta.slug === "moringa-brands-comparison-australia-2026"
     ? `
           <div class="quick-verdict">

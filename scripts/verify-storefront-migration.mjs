@@ -21,6 +21,9 @@ const errors = [];
 const deskSeo = JSON.parse(fs.readFileSync(path.join(ROOT, "storefront/seo-desk-2026-10-15.json"), "utf8"));
 const notes = [];
 const approvedSeoChanges = {
+  "blog/moringa-powder-hair-growth-australia-2026.html": {
+    description: "Moringa powder for hair growth in Australia: food, not a hair-loss treatment. Evidence, nutrition limits and when to see your GP. Leaf powder $11/100g.",
+  },
   "blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026.html": {
     title: "Guide moved | NutriThrive",
     description: "This guide has moved to a clearer, consolidated NutriThrive article.",

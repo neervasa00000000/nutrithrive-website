@@ -1,4 +1,4 @@
-/** Auto-generated — 72 blog articles. Run: node scripts/build-live-v2.mjs */
+/** Blog catalogue. Editorial source: storefront/content/new-blogs.json. */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "afl-finals-snacks-curry-leaf-tadka",
@@ -20,6 +20,15 @@ window.NT_BLOG_ARTICLES = [
     "description": "Everyday foods linked with an anti-inflammatory eating pattern, the claims that do not hold up, and an easy way to build them into a daily plate.",
     "category": "Wellness",
     "href": "/blog/best-anti-inflammatory-foods-australia-daily-guide-2026"
+  },
+  {
+    "slug": "best-moringa-capsules-australia-2026",
+    "title": "Best Moringa Capsules in Australia 2026",
+    "seoTitle": "Best Moringa Capsules in Australia 2026: Chemist Warehouse, Price Per 100g Compared",
+    "description": "Best moringa capsules Australia? Chemist Warehouse: Forest Super Foods $79 for 60g leaf. NutriThrive powder is $11 for 100g. Price per 100g compared.",
+    "category": "Moringa",
+    "href": "/blog/best-moringa-capsules-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
   },
   {
     "slug": "best-plant-based-iron-foods-australia-absorption-guide-2026",
@@ -62,6 +71,15 @@ window.NT_BLOG_ARTICLES = [
     "description": "Make curry leaf podi from dried curry leaves: roasted dal, chilli and garlic ground into a powder for rice, idli and dosa. Keeps for weeks.",
     "category": "Wellness",
     "href": "/blog/curry-leaf-podi-recipe-dried-curry-leaves"
+  },
+  {
+    "slug": "curry-leaves-coles-woolworths-australia-2026",
+    "title": "Curry Leaves at Coles & Woolworths Australia",
+    "seoTitle": "Curry Leaves at Coles & Woolworths Australia: Where to Buy Dried Curry Leaves",
+    "description": "Where to buy curry leaves at Coles and Woolworths? Fresh vs dried, what to check in store and online, and a dried option packed in Melbourne.",
+    "category": "Curry Leaves",
+    "href": "/blog/curry-leaves-coles-woolworths-australia-2026",
+    "image": "/assets/images/product_webp/dried-curry-leaves-texture.webp"
   },
   {
     "slug": "curry-leaves-dahl-recipe-30-minutes-australia-2026",
@@ -218,6 +236,15 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026"
   },
   {
+    "slug": "how-much-moringa-powder-per-day-australia-2026",
+    "title": "How Much Moringa Powder Per Day in Australia",
+    "seoTitle": "How Much Moringa Powder Per Day in Australia? Dosage & Safety",
+    "description": "How much moringa powder per day? No established medical dose. A small food amount, measuring tips, safety precautions and cost per gram in Australia.",
+    "category": "Moringa",
+    "href": "/blog/how-much-moringa-powder-per-day-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
+  },
+  {
     "slug": "how-to-age-well-in-your-40s-healthy-ageing-australia-2026",
     "title": "Habits in your 40s that shape your 60s",
     "description": "Practical habits for healthy ageing in your 40s: protein, strength training, sleep and nutrient-dense food, written for Australians.",
@@ -367,6 +394,15 @@ window.NT_BLOG_ARTICLES = [
     "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
+    "slug": "moringa-powder-iron-deficiency-australia-2026",
+    "title": "Moringa Powder for Iron Deficiency in Australia",
+    "seoTitle": "Moringa Powder for Iron Deficiency Australia: Iron, Vitamin C & How to Use It",
+    "description": "Moringa powder for iron deficiency in Australia? Leaf powder adds iron and vitamin C as food. $11 for 100g. Not a treatment — see your GP first.",
+    "category": "Moringa",
+    "href": "/blog/moringa-powder-iron-deficiency-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
+  },
+  {
     "slug": "moringa-powder-victoria-seniors-joint-health",
     "title": "How older Victorians add moringa to everyday meals",
     "description": "Simple ways older Victorians add moringa leaf powder to everyday meals, teaspoon starting amounts, and where to buy it in Melbourne.",
@@ -491,6 +527,15 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa leaves are drumstick leaves or malunggay. Where to find them fresh, frozen, dried or as powder in Australia, from Indian grocers to online.",
     "category": "Wellness",
     "href": "/blog/where-to-buy-moringa-leaves-australia"
+  },
+  {
+    "slug": "where-to-buy-moringa-powder-australia-2026",
+    "title": "Where to Buy Moringa Powder in Australia",
+    "seoTitle": "Where to Buy Moringa Powder in Australia: Coles, Chemist Warehouse & $11 Direct",
+    "description": "Where to buy moringa powder in Australia: supermarkets, capsules and marketplaces compared. NutriThrive leaf powder is $11/100g; free AU shipping from $49.",
+    "category": "Moringa",
+    "href": "/blog/where-to-buy-moringa-powder-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
   },
   {
     "slug": "why-always-tired-nutritional-deficiencies-australia-2026",
