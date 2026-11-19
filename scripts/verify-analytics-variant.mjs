@@ -13,7 +13,7 @@ function variantIdFromPathFor(pathname) {
 // Exercise both DOM-ready paths without loading tags or sending GA requests.
 for (const file of ['storefront/js/site.js', 'site/assets/js/storefront/site.js']) {
   const source = readFileSync(file, 'utf8');
-  const variantBinding = source.slice(source.indexOf('function bindPdpVariant()'), source.indexOf('const OFFER_KEY'));
+  const variantBinding = source.slice(source.indexOf('function bindPdpVariant()'), source.indexOf('const SIGNUP_KEY'));
   const startup = source.slice(source.lastIndexOf('if (document.readyState === "loading")'));
   const cases = [
     { pathname: '/products/moringa-powder/', search: '', hydrate: false },
@@ -44,7 +44,7 @@ for (const file of ['storefront/js/site.js', 'site/assets/js/storefront/site.js'
         variantIdFromPath: () => variantIdFromPathFor(testCase.pathname),
         applyPdpVariant: id => { product = id; },
         bindHeader: () => views.push(product),
-        bindGrowthFeatures() {}, bindJournalSearch() {}, bindArticleReadingDepth() {},
+        bindStickyAtc() {}, bindGrowthFeatures() {}, bindJournalSearch() {}, bindArticleReadingDepth() {},
         emitCartChange() {}, setTimeout() {},
       };
       vm.runInNewContext(variantBinding + startup, context);

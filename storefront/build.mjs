@@ -28,10 +28,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261119-cro-1";
+const ASSET_VERSION = "20261119-shopping-2";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261119-purchase-1";
-const CSS_ASSET_VERSION = "20261119-facts-1";
+const CSS_ASSET_VERSION = "20261119-shopping-2";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
@@ -1883,42 +1883,18 @@ function writePage(rel, html, destRoot = OUT) {
 }
 
 function christmasGiftSection() {
-  const giftImg = "/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp";
-  const boxImg = "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp";
-  const giftSizes = "(max-width: 759px) calc(100vw - 36px), (max-width: 1000px) calc(50vw - 40px), 640px";
+  const gifts = [
+    { id: "gift-pack", copy: "Moringa powder, Darjeeling tea, curry leaves and handmade soap." },
+    { id: "diwali-gift-box", copy: "Darjeeling tea, curry leaves and handmade soap." },
+  ];
   return `<section class="section christmas-gifts" id="christmas-gifts" aria-labelledby="christmas-gifts-heading">
   <div class="wrap">
-    <div class="christmas-head">
-      <div class="christmas-intro">
-        <p class="kicker">Christmas</p>
-        <h2 id="christmas-gifts-heading"><span class="christmas-line">Gift Pack $35 and </span><span class="christmas-line">Christmas Gift Box $20</span></h2>
-        <p class="christmas-order-by">Order by 21 Dec in VIC for Christmas.</p>
-      </div>
-      <ul class="christmas-cutoffs" aria-label="Last order dates for Christmas delivery">
-        <li><span>VIC</span><strong>Mon 21 Dec</strong></li>
-        <li><span>Metro NSW, ACT, Qld, SA and Tas</span><strong>Fri 18 Dec</strong></li>
-        <li><span>WA</span><strong>Thu 17 Dec</strong></li>
-        <li><span>NT</span><strong>Tue 15 Dec</strong></li>
-      </ul>
-    </div>
-    <div class="christmas-grid">
-      <article class="christmas-card">
-        <a class="christmas-card__media" href="/products/gift-pack/"><img src="${giftImg}" ${cardSrcset(giftImg, giftSizes)} alt="NutriThrive Gift Pack with moringa, tea, curry leaves and soap" width="600" height="600" loading="lazy"></a>
-        <div class="christmas-card__body">
-          <h3><a href="/products/gift-pack/"><span>Gift Pack</span><span class="christmas-price">$35</span></a></h3>
-          <p>Darjeeling tea, curry leaves, handmade soap and 100g moringa powder. Packed in Truganina.</p>
-          <a class="btn btn-primary" href="/products/gift-pack/">Shop Gift Pack</a>
-        </div>
-      </article>
-      <article class="christmas-card">
-        <a class="christmas-card__media" href="/products/diwali-gift-box/"><img src="${boxImg}" ${cardSrcset(boxImg, giftSizes)} alt="Darjeeling tea in the NutriThrive Christmas Gift Box" width="600" height="600" loading="lazy"></a>
-        <div class="christmas-card__body">
-          <h3><a href="/products/diwali-gift-box/"><span>Christmas Gift Box</span><span class="christmas-price">$20</span></a></h3>
-          <p>Darjeeling tea, curry leaves and handmade soap. No moringa powder in this box.</p>
-          <a class="btn btn-secondary" href="/products/diwali-gift-box/">Shop Christmas Box</a>
-        </div>
-      </article>
-    </div>
+    <div class="christmas-head"><div><p class="kicker">Christmas gifting</p><h2 id="christmas-gifts-heading">A thoughtful gift, simply packed.</h2></div></div>
+    <div class="christmas-grid">${gifts.map(({id, copy}) => {
+      const product = PRODUCTS.find(p => p.id === id);
+      return `<article class="christmas-card"><a class="christmas-card__media" href="${product.href}"><img src="${product.image}" ${cardSrcset(product.image, "(max-width: 599px) 104px, 144px")} alt="${esc(id === "diwali-gift-box" ? "Darjeeling tea included in the Christmas Gift Box" : product.name)}" width="144" height="144" loading="lazy"></a><div class="christmas-card__body"><h3><a href="${product.href}"><span>${esc(product.name)}</span><span class="christmas-price">${money(product.price)}</span></a></h3><p>${copy}</p><a class="christmas-shop-link" href="${product.href}">Shop ${esc(product.name)} <span aria-hidden="true">→</span></a></div></article>`;
+    }).join("")}</div>
+    <details class="christmas-delivery"><summary>Christmas delivery dates</summary><div><p>For Christmas delivery, order by the date for your destination. Regional and rural addresses may need more time.</p><dl class="christmas-cutoffs"><div><dt>VIC</dt><dd>Mon 21 Dec</dd></div><div><dt>Metro NSW, ACT, QLD, SA &amp; TAS</dt><dd>Fri 18 Dec</dd></div><div><dt>WA</dt><dd>Thu 17 Dec</dd></div><div><dt>NT</dt><dd>Tue 15 Dec</dd></div></dl><p><a href="/shipping">Shipping information</a></p></div></details>
   </div>
 </section>`;
 }
@@ -1963,7 +1939,6 @@ function homepage() {
     </div>
   </div>
 </section>
-${christmasGiftSection()}
 <section class="section">
   <div class="wrap">
     <div class="section-head">
@@ -1976,6 +1951,7 @@ ${christmasGiftSection()}
 
   </div>
 </section>
+${christmasGiftSection()}
 <section class="section origin-note"><div class="wrap"><p class="kicker">A small team. A direct connection.</p><h2>From our family farm to Truganina.</h2><p>We grow the moringa and curry leaves on our family farm in Gujarat, source tea from a Darjeeling family farm and handmake our soap in Australia. Every order is packed by us in Melbourne.</p><a href="/about/">Meet NutriThrive →</a></div></section>
 ${googleReviewsSection()}`,
   });
@@ -2543,20 +2519,6 @@ function powderPer100Label(product) {
   return `$${Number.isInteger(per) ? per : per.toFixed(2)} per 100g`;
 }
 
-function moringaSizePrices(selectedId) {
-  const sizes = ["moringa-powder", "moringa-200g", "moringa-400g"]
-    .map((id) => PRODUCTS.find((item) => item.id === id))
-    .filter(Boolean);
-  return `<div class="pdp-size-prices" role="list" aria-label="Price per 100 grams">${sizes
-    .map((item) => {
-      const grams = item.id === "moringa-powder" ? "100g" : item.id === "moringa-200g" ? "200g" : "400g";
-      return `<button type="button" class="pdp-size-price${item.id === selectedId ? " is-selected" : ""}" data-select-variant="${item.id}">
-        <span>${grams}</span><strong>${money(item.price)}</strong><small>${powderPer100Label(item)}</small>
-      </button>`;
-    })
-    .join("")}</div>`;
-}
-
 function bundlePayload(items) {
   return esc(
     JSON.stringify(
@@ -2608,13 +2570,6 @@ function moringaSubscribeWaitlist(visible) {
       </div>
       <p class="form-status" data-subscribe-status role="status"></p>
     </form>
-  </div>`;
-}
-
-function shipBarHtml() {
-  return `<div class="ship-bar-space" data-ship-space></div><div class="ship-bar" data-ship-bar role="status">
-    <p data-ship-bar-text>You're $49 away from FREE shipping</p>
-    <div class="ship-bar__track" data-ship-bar-track role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="49" aria-valuenow="0" aria-valuetext="You're $49 away from FREE shipping"><span data-ship-bar-fill></span></div>
   </div>`;
 }
 
@@ -2822,22 +2777,18 @@ function pdpPage(slug, d) {
           </dialog>
         </div>
         <div class="pdp-buy" id="pdp-buy">
-          <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>${mainPowder ? `
-          <p class="pdp-intro">Buy moringa powder in Australia for ${MORINGA_PRICES.p100} per 100g. The 100g pouch is ${MORINGA_PRICES.p100}, the 200g pouch is ${MORINGA_PRICES.p200}, and the 400g pouch is ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400} per 100g). It is 100% moringa leaf only, with no fillers, no binders and no flow agents. It is farm-grown, sun-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne.</p>` : ""}
-          <p class="stock-status"><span aria-hidden="true"></span> ${slug === "moringa-powder" ? "In Stock - Packed in Truganina" : "In stock · ready to dispatch"}</p>
-          ${slug === "moringa-powder" ? `<p class="dispatch-note">Order before 2pm for same-day dispatch</p>` : ""}
+          <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>
+          <p class="stock-status"><span aria-hidden="true"></span> ${slug === "moringa-powder" ? "In stock · packed in Truganina" : "In stock · ready to dispatch"}</p>
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
-          ${slug === "moringa-powder" ? `<p class="pdp-unit-label" data-pdp-unit-price>${powderPer100Label(buyProduct)}</p>${moringaSizePrices(selectedVariantId)}` : ""}
+          ${slug === "moringa-powder" ? `<p class="pdp-unit-label" data-pdp-unit-price>${powderPer100Label(buyProduct)}</p>` : ""}
           <div class="pdp-proof-strip" aria-label="Proof and reviews">
-            <a class="pdp-proof-rating" href="#reviews">${stars()}<span>4.9 stars (12 Google reviews)</span></a>
+            <a class="pdp-proof-rating" href="#reviews">${stars()}<span>12 Google reviews</span></a>
             <a class="pdp-proof-see-all" href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">Google Business Profile</a>
           </div>
-          ${slug === "moringa-powder" ? `<p class="pdp-lab-link"><a href="/documents/nutrithrive-lab-report-summary.pdf">Read NMI Lab Summary (PDF)</a></p>` : ""}
           ${slug === "moringa-powder" ? "" : `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(p.detail || p.benefit)}</p>`}
           ${slug === "moringa-powder" ? "" : ""}
           ${variantSelect}
           ${variantHint}
-          ${slug === "moringa-powder" ? `<section class="pdp-how-to" aria-labelledby="how-to-use-moringa"><h2 id="how-to-use-moringa">How to use</h2><p>Start with 1/4 to 1/2 tsp in a smoothie, yoghurt, soup or eggs. Start small. Moringa leaf powder is a nutrient-dense food to use as part of a balanced diet.</p></section>` : ""}
           <div class="purchase-panel">
             <div class="qty">
               <label for="qty">Quantity</label>
@@ -2852,12 +2803,14 @@ function pdpPage(slug, d) {
             </div>
             ${factsLine}
           </div>
+          ${slug === "moringa-powder" ? `<p class="pdp-lab-link"><a href="/documents/nutrithrive-lab-report-summary.pdf">Read NMI Lab Summary (PDF)</a></p>` : ""}
+          ${mainPowder ? `
+          <p class="pdp-intro">Buy moringa powder in Australia for ${MORINGA_PRICES.p100} per 100g. The 100g pouch is ${MORINGA_PRICES.p100}, the 200g pouch is ${MORINGA_PRICES.p200}, and the 400g pouch is ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400} per 100g). It is 100% moringa leaf only, with no fillers, no binders and no flow agents. It is farm-grown, sun-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne.</p>` : ""}
           ${slug === "moringa-powder" && !mainPowder ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
 
         </div>
       </section>
       ${mainPowder ? moringaFactsHtml() : ""}
-      ${slug === "moringa-powder" ? christmasGiftSection() : ""}
       <div class="pdp-sticky-atc" data-pdp-sticky-atc hidden role="region" aria-label="Quick add to cart">
         <div class="pdp-sticky-atc__info">
           <span class="pdp-sticky-atc__name" data-pdp-sticky-name>${esc(buyProduct.name)}</span>
@@ -2868,7 +2821,7 @@ function pdpPage(slug, d) {
       <section class="prose-block">
         <div class="wrap pdp-content">
           ${buyOnline}
-          <div class="pdp-information"><div class="pdp-description">${education}${growthProductBody(slug)}</div><div class="pdp-specifications">
+          <div class="pdp-information"><div class="pdp-description">${education}${slug === "moringa-powder" ? `<section class="pdp-how-to" aria-labelledby="how-to-use-moringa"><h2 id="how-to-use-moringa">How to use</h2><p>Start with 1/4 to 1/2 tsp in a smoothie, yoghurt, soup or eggs. Start small. Moringa leaf powder is a nutrient-dense food to use as part of a balanced diet.</p></section>` : ""}${growthProductBody(slug)}</div><div class="pdp-specifications">
 
           ${slug === "moringa-powder" ? "" : `<details class="pdp-detail-disclosure"><summary>Ingredients, origin and storage</summary><div class="product-facts">
             <section><h2>Ingredients</h2><p>${esc(d.ingredients)}</p></section>
@@ -2898,9 +2851,9 @@ function pdpPage(slug, d) {
           </section>
           </div></div>
           <section class="pdp-reviews" id="reviews">
-            <div class="reviews-head"><h2>Google reviews of NutriThrive</h2>${stars()} <span>${slug === "moringa-powder" ? "4.9 stars from 12 Google reviews" : "from 12 Google reviews"}</span></div>
+            <div class="reviews-head"><h2>Google reviews of NutriThrive</h2>${stars()} <span>from 12 Google reviews</span></div>
             <div class="review-grid review-scroll" aria-label="Google reviews of NutriThrive">${(slug === "moringa-powder" ? REVIEWS : reviews.slice(0, 2)).map((review) => `<blockquote class="review-card"><p title="${esc(review.text)}">“${esc(review.text)}”</p><div class="review-meta"><strong>${esc(review.name)}</strong>${review.stars ? ` ${review.stars} stars` : ""} · Verified Google review</div></blockquote>`).join("")}</div>
-            <p class="review-disclosure">4.9 stars from 12 Google reviews. The quotes below are from that Google Business Profile. Reviews are of NutriThrive, not this product alone.</p>
+            <p class="review-disclosure">4.9 stars from 12 Google reviews. These quotes are from our Google Business Profile. Reviews are of NutriThrive, not this product alone.</p>
             <p><a href="https://maps.app.goo.gl/9VQVEUQSeGm4XfGB7">Google Business Profile</a></p>
           </section>
           <section class="product-guides" aria-labelledby="product-guides-${esc(slug)}">
@@ -2910,7 +2863,8 @@ function pdpPage(slug, d) {
             <ul>${productGuideLinks(slug)}</ul>
           </section>
         </div>
-      </section>`,
+      </section>
+      ${slug === "moringa-powder" ? christmasGiftSection() : ""}`.replace(/^[ \t]+$/gm, ""),
   });
 }
 

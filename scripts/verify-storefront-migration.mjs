@@ -704,7 +704,8 @@ for (const eventName of ["view_item_list", "select_item", "view_item", "add_to_c
 }
 const cartJs = read("assets/js/storefront/cart-page.js");
 if (!cartJs.includes("view_cart")) errors.push("cart page script lost GA view_cart event");
-if (!cartJs.includes("shipping-progress")) errors.push("cart page script lost free-shipping progress indicator");
+if (!cartJs.includes("cart-shipping-note")) errors.push("cart page script lost its shipping-threshold note");
+mustNotInclude("pages/shop/cart.html", "data-ship-bar", "removed floating shipping-progress banner");
 mustNotInclude("index.html", "googletagmanager.com/gtag", "inline analytics tag");
 mustNotInclude("index.html", "data-cookie-banner", "cookie banner");
 mustNotInclude("index.html", "data-cookie-settings", "cookie settings");
