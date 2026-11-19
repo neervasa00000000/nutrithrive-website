@@ -39,7 +39,18 @@ function initCart() {
 function getCart() {
     try {
         const cartData = localStorage.getItem(CART_STORAGE_KEY);
-        return cartData ? JSON.parse(cartData) : null;
+        const cart = cartData ? JSON.parse(cartData) : null;
+        // Saved baskets may predate a price or product-name update.
+        if (cart && Array.isArray(cart.items) && Array.isArray(window.NT_PRODUCTS)) {
+            cart.items = cart.items.map(item => {
+                const product = window.NT_PRODUCTS.find(product => product.id === item.id);
+                return product ? { ...item, price: product.price, name: product.name,
+                    weight: product.weight, image: product.image, href: product.href,
+                    variant: product.variant } : item;
+            });
+            calculateCartTotals(cart);
+        }
+        return cart;
     } catch (e) {
         console.error('Error reading cart:', e);
         return null;

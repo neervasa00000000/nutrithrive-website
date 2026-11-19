@@ -65,9 +65,9 @@ function mapCartItems(items) {
       return {
         ...item,
         qty,
-        price: Number(item.price || catalogItem?.price || 0),
+        price: Number(catalogItem?.price ?? item.price ?? 0),
         image: item.image || catalogItem?.image || "",
-        name: item.name || catalogItem?.name || "NutriThrive product",
+        name: catalogItem?.name || item.name || "NutriThrive product",
         variant: item.variant || catalogItem?.variant || "",
       };
     })
@@ -160,9 +160,9 @@ function pickRecs(cartItems, subtotal) {
       }
       return {...p, score: s + extra, note };
     })
-    .filter((item) => item && item.id !== shipOfferProduct(subtotal)?.id)
+    .filter(Boolean)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 4);
+    .slice(0, 2);
   const comboInCart = cartItems.some((item) => item.id === "combo-pack");
   if (comboInCart) {
     const bundleAt = recs.findIndex((item) => item.id === "moringa-400g");
@@ -180,15 +180,6 @@ function recHeading(cartItems, recs) {
   if (!cartItems.length) return "A few to start with";
   if (recs.some((r) => r.note === "Adds free Australian shipping")) return "Add these to reach free shipping";
   return "Goes well with your cart";
-}
-
-function shipOfferProduct(subtotal) {
-  const powder = catalog().find((product) => product.id === "moringa-powder");
-  const price = Number(powder?.price);
-  const threshold = auFreeShip();
-  if (!powder || !(price > 0) || !(subtotal > 0)) return null;
-  if (!(subtotal < threshold && subtotal + price >= threshold)) return null;
-  return {...powder, note: "Adds free Australian shipping" };
 }
 
 function recCard(product) {
@@ -220,24 +211,6 @@ function bindRecAdds(root) {
       }
     });
   });
-}
-
-function renderShipOffer(subtotal) {
-  const main = document.querySelector?.(".cart-main");
-  if (!main) return;
-  const offer = shipOfferProduct(subtotal);
-  let slot = document.getElementById("cart-ship-offer");
-  if (!offer) {
-    slot?.remove();
-    return;
-  }
-  if (!slot) {
-    slot = document.createElement("div");
-    slot.id = "cart-ship-offer";
-  }
-  if (main.firstElementChild !== slot) main.prepend(slot);
-  slot.innerHTML = recCard(offer);
-  bindRecAdds(slot);
 }
 
 function renderRecs(cartItems, subtotal) {
@@ -276,13 +249,11 @@ function renderCart() {
       setLayout(true);
       lines.innerHTML = `<div class="empty-state"><h2>Your cart is empty</h2><p>Free Australian shipping on orders from ${money(auFreeShip())}.</p><a class="btn btn-primary" href="${shopPath()}moringa-powder/">Shop moringa powder</a> <a class="btn btn-secondary" href="${shopPath()}">Shop the range</a></div>`;
       summary.innerHTML = "";
-      renderShipOffer(0);
       renderRecs([], 0);
       window.NTRetention?.renderBuyAgain?.(document.getElementById("cart-buy-again"), { source: "cart" });
       return;
     }
     setLayout(false);
-    renderShipOffer(sub);
     lines.innerHTML = items
       .map((item) => {
         const qty = Number(item.qty || 1);
@@ -309,26 +280,12 @@ function renderCart() {
       })
       .join("");
     const ship = shippingFor(items, sub);
-    const progress = window.NTRetention?.shippingProgress?.(sub) || {
-      threshold: auFreeShip(),
-      unlocked: sub >= auFreeShip(),
-      percent: Math.min(100, Math.max(0, (sub / auFreeShip()) * 100)),
-      message: sub >= auFreeShip()
-        ? "You've unlocked FREE AU shipping"
-        : `You're ${shipAwayLabel(auFreeShip() - sub)} away from FREE shipping`,
-    };
-    const progressHtml = window.NTRetention?.progressHtml?.(sub, { track: true }) || `<div class="shipping-progress ${progress.unlocked ? "is-complete" : ""}">
-      <div class="shipping-progress__copy"><strong>${esc(progress.message)}</strong><span>${money(progress.threshold)} target</span></div>
-      <div class="shipping-progress__track" role="progressbar" aria-label="Progress towards free Australian shipping" aria-valuemin="0" aria-valuemax="${progress.threshold}" aria-valuenow="${Math.min(progress.threshold, Number(sub.toFixed(2)))}" aria-valuetext="${esc(progress.message)}">
-        <span style="width:${Number(progress.percent).toFixed(2)}%"></span>
-      </div>
-    </div>`;
     summary.innerHTML = `
     <h2>Order summary</h2>
     <div class="summary-row"><span>Subtotal</span><span>${money(sub)}</span></div>
     <div class="summary-row"><span>Shipping</span><span>${ship === 0 ? "Free" : money(ship)}</span></div>
     <div class="summary-row total"><span>Estimated total</span><span>${money(sub + ship)}</span></div>
-    ${progressHtml}
+    <p class="cart-shipping-note">Free Australian shipping on orders from ${money(auFreeShip())}.</p>
     <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Continue to secure checkout <span aria-hidden="true">→</span></a>
     <div class="cart-mobile-checkout" aria-label="Mobile checkout">
       <a class="btn btn-primary btn-block cart-checkout" href="${checkoutPath()}">Checkout · ${money(sub + ship)}</a>

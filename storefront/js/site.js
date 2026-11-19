@@ -90,52 +90,6 @@ function trackEcommerce(name, items, extra = {}) {
   });
 }
 
-const FREE_SHIP_AUD = 49;
-
-function shipAwayLabel(amount) {
-  const n = Math.max(0, Number(amount) || 0);
-  const rounded = Math.round(n * 100) / 100;
-  return Number.isInteger(rounded) ? `$${rounded}` : `$${rounded.toFixed(2)}`;
-}
-
-function shipBarMessage(subtotal) {
-  const sub = Number(subtotal) || 0;
-  if (sub >= FREE_SHIP_AUD) return "You've unlocked FREE AU shipping";
-  return `You're ${shipAwayLabel(FREE_SHIP_AUD - sub)} away from FREE shipping`;
-}
-
-function placeShipBars() {
-  const header = document.querySelector(".site-header");
-  const top = header ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
-  document.querySelectorAll("[data-ship-bar]").forEach((bar) => {
-    bar.style.top = `${top}px`;
-    const space = bar.previousElementSibling;
-    if (space?.hasAttribute("data-ship-space")) space.style.height = `${bar.offsetHeight}px`;
-  });
-}
-
-function updateShipBars() {
-  const bars = document.querySelectorAll("[data-ship-bar]");
-  if (!bars.length || !window.NT?.subtotal) return;
-  placeShipBars();
-  const sub = window.NT.subtotal();
-  const text = shipBarMessage(sub);
-  const percent = Math.min(100, Math.max(0, (sub / FREE_SHIP_AUD) * 100));
-  bars.forEach((bar) => {
-    bar.hidden = false;
-    bar.classList.toggle("is-complete", sub >= FREE_SHIP_AUD);
-    const label = bar.querySelector("[data-ship-bar-text]");
-    if (label) label.textContent = text;
-    const fill = bar.querySelector("[data-ship-bar-fill]");
-    if (fill) fill.style.width = `${percent}%`;
-    const track = bar.querySelector("[data-ship-bar-track]");
-    if (track) {
-      track.setAttribute("aria-valuenow", String(Math.min(FREE_SHIP_AUD, Math.round(sub * 100) / 100)));
-      track.setAttribute("aria-valuetext", text);
-    }
-  });
-}
-
 function trackCurrentCommercePage() {
   const listedProducts = [];
   const listedIds = new Set();
@@ -1075,10 +1029,6 @@ if (document.readyState === "loading") {
     bindGrowthFeatures();
     bindJournalSearch();
     bindArticleReadingDepth();
-    updateShipBars();
-    window.addEventListener("nt-cart-change", updateShipBars);
-    window.addEventListener("scroll", placeShipBars, { passive: true });
-    window.addEventListener("resize", placeShipBars);
     setTimeout(() => emitCartChange(), 0);
   });
 } else {
@@ -1088,9 +1038,5 @@ if (document.readyState === "loading") {
   bindGrowthFeatures();
   bindJournalSearch();
   bindArticleReadingDepth();
-  updateShipBars();
-  window.addEventListener("nt-cart-change", updateShipBars);
-  window.addEventListener("scroll", placeShipBars, { passive: true });
-  window.addEventListener("resize", placeShipBars);
   setTimeout(() => emitCartChange(), 0);
 }
